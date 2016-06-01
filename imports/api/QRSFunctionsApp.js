@@ -54,7 +54,7 @@ export function generateStreamAndApp(customers) {
                             .then(function(resultOfStreamStep) { //Copy the APP
                                 console.log('STEP 2 COPY the app: result Of create Stream Step: ', resultOfStreamStep);
                                 console.log('Now calling copy app');
-                                return copyApp(templateApp.guid, customer.name + ' - ' + templateApp.name)
+                                // return copyApp(templateApp.guid, customer.name + ' - ' + templateApp.name)
                             })
                             // .then(function(appGuid){ //Publish into streamId
                             // 	console.log('STEP 3 PUBLISH: APP HAS BEEN COPIED AND HAS RECEIVED GUID', appGuid);
@@ -112,30 +112,22 @@ export function getApps() {
 
 };
 
-
 export function copyApp(guid, name) {
-    // console.log('Copy template: '+guid+' to new app: '+name);
+    console.log('Copy template: ' + guid + ' to new app: ' + name);
     check(guid, String);
     check(name, String);
 
-    return new Promise(function(resolve, reject) {
-        HTTP.call('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?name=' + name + '&xrfkey=' + config.xrfkey, {
+    var convertAsyncToSync = Meteor.wrapAsync(HTTP.call),
+        resultOfAsyncToSync = convertAsyncToSync('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?name=' + name + '&xrfkey=' + config.xrfkey, {
             headers: {
                 'hdr-usr': config.headerValue,
                 'X-Qlik-xrfkey': config.xrfkey
             }
-        }, function(error, response) {
-            if (error) {
-                console.error('error app copy', error);
-                throw new Meteor.Error('error app copy', error)
-                reject(error);
-            } else {
-                // console.log('Copy app:  HTTP request gave response', response.data );
-                console.log('Copy app HTTP call success:  the generated guid: ', response.data.id);
-                resolve(response.data.id); //return app Guid
-            }
         });
-    })
+
+    return resultOfAsyncToSync;
+
+
 };
 
 export function publishApp(appGuid, appName, streamId) {
