@@ -1,0 +1,1002 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"QRS",
+				"QRSFunctions"
+			],
+			[
+				"c",
+				"ctrl"
+			],
+			[
+				"reje",
+				"Rejected"
+			],
+			[
+				"mete",
+				"Meteor"
+			],
+			[
+				"cust",
+				"customer"
+			],
+			[
+				"custom",
+				"customers"
+			],
+			[
+				"gen",
+				"generationPromise"
+			],
+			[
+				"_",
+				"_QRSconfig"
+			],
+			[
+				"find",
+				"findOne"
+			],
+			[
+				"conf",
+				"config"
+			],
+			[
+				"THE",
+				"then"
+			],
+			[
+				"temp",
+				"templateApps"
+			],
+			[
+				"custo",
+				"customerName"
+			],
+			[
+				"err",
+				"error"
+			],
+			[
+				"pr",
+				"promise"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"tea",
+				"template"
+			],
+			[
+				"q",
+				"qDocId"
+			],
+			[
+				"current",
+				"currentApp"
+			],
+			[
+				"Temp",
+				"TemplateApps"
+			],
+			[
+				"curr",
+				"currentApp"
+			],
+			[
+				"templ",
+				"TemplateApps"
+			],
+			[
+				"re",
+				"result"
+			],
+			[
+				"u",
+				"updateSenseInfo2"
+			],
+			[
+				"update",
+				"updateSenseInfo"
+			],
+			[
+				"l",
+				"log"
+			],
+			[
+				"h",
+				"href"
+			],
+			[
+				"qd",
+				"qDocName"
+			],
+			[
+				"info",
+				"information"
+			],
+			[
+				"he",
+				"headerValue"
+			],
+			[
+				"in",
+				"insert"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"app",
+				"Apps"
+			],
+			[
+				"get",
+				"getApps"
+			],
+			[
+				"updat",
+				"updateAppsCollection"
+			],
+			[
+				"count",
+				"countStreams"
+			],
+			[
+				"counta",
+				"countApps"
+			],
+			[
+				"cur",
+				"currentApp"
+			],
+			[
+				"del",
+				"deleteApp"
+			],
+			[
+				"dete",
+				"deleteApp"
+			],
+			[
+				"doc",
+				"docList"
+			],
+			[
+				"qS",
+				"QSocksConfig"
+			],
+			[
+				"Q",
+				"QSocksConfig"
+			],
+			[
+				"con",
+				"config"
+			],
+			[
+				"cop",
+				"copyApp"
+			],
+			[
+				"create",
+				"createStream"
+			],
+			[
+				"e",
+				"each"
+			],
+			[
+				"par",
+				"parseDate"
+			],
+			[
+				"formatte",
+				"formattedDate"
+			],
+			[
+				"dat",
+				"formatDate"
+			],
+			[
+				"format",
+				"formatDate"
+			],
+			[
+				"tit",
+				"totalWeight"
+			],
+			[
+				"t",
+				"totalWeight"
+			],
+			[
+				"tota",
+				"totalQuantity"
+			],
+			[
+				"local",
+				"localhost"
+			],
+			[
+				"aan",
+				"aantalBakjes3P"
+			],
+			[
+				"tot",
+				"totalQ"
+			],
+			[
+				"pro",
+				"productGroup"
+			],
+			[
+				"currentc",
+				"currentCartId"
+			],
+			[
+				"prod",
+				"productGroup"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"to",
+				"totalQ"
+			],
+			[
+				"cu",
+				"currentProduct3P"
+			],
+			[
+				"fin",
+				"findOne"
+			],
+			[
+				"per",
+				"showPersons"
+			],
+			[
+				"valu",
+				"valueOf"
+			],
+			[
+				"nu",
+				"numberOfPersons"
+			],
+			[
+				"car",
+				"cartItemWeight"
+			],
+			[
+				"cart",
+				"cartItemWeight"
+			],
+			[
+				"val",
+				"valueOf"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"cate",
+				"category"
+			],
+			[
+				"curre",
+				"currentCategory"
+			],
+			[
+				"Cat",
+				"categories"
+			],
+			[
+				"se",
+				"session"
+			],
+			[
+				"fo",
+				"format"
+			],
+			[
+				"su",
+				"submit"
+			],
+			[
+				"uni",
+				"unitWeight"
+			],
+			[
+				"un",
+				"unitWeight"
+			],
+			[
+				"PRO",
+				"properties"
+			],
+			[
+				"foc",
+				"FOCUS"
+			],
+			[
+				"if",
+				"iframe	Tag"
+			],
+			[
+				"sel",
+				"selectedProduct"
+			],
+			[
+				"Prod",
+				"ProductId"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "imports/ui/body.html",
+			"settings":
+			{
+				"buffer_size": 6611,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/body.js",
+			"settings":
+			{
+				"buffer_size": 11216,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "import { Meteor } from 'meteor/meteor';\nimport { http } from 'meteor/meteor';\nimport { Apps, TemplateApps } from '/imports/api/apps.js';\n\n//import meteor collections\nimport { Streams } from '/imports/api/streams.js';\nimport { Customers } from '/imports/api/customers.js';\nimport * as QRSFunctions from '/imports/api/QRSFunctions';\n\n//import config for Qlik Sense QRS and Engine API\nimport { config, engineConfig, certs } from '/imports/api/config.js';\n// import {  } from '/imports/api/config.js'; \n// import { certs } from '/imports/api/config.js'; \n\n\n//insyall NPM modules\nvar fs = require('fs');\nvar qsocks = require('qsocks');\nvar QRS = require('qrs');\n// import 'meteor/mvrx:bluebird';\nvar Promise = require(\"bluebird\");\nvar qrs = null;\nvar generatedAppGuid = '';\n\n\nfunction getApps() {\n    console.log('server: getApps');\n    return qsocks.Connect(engineConfig)\n        .then(function(global) {\n\n            //We can now interact with the global class, for example fetch the document list.\n            //qsocks mimics the Engine API, refer to the Engine API documentation for available methods.\n            global.getDocList()\n                .then(function(docList) {\n\n                    // docList.forEach(function(doc) {\n                    // 	console.log(doc.qDocName);\n                    // });\n                    return docList;\n                });\n\n        });\n\n};\n\n\n/*\n//	//for each customer\n	//create stream if not already exist\n	//copy app\n	//publish to stream\n	//add 'generated' tag\n	*/\nfunction generateStreamAndApp(customers) {\n    console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');\n\n    var templateApps = TemplateApps.find()\n        .fetch();\n    if (!TemplateApps.find()\n        .count()) { //user has not specified a template\n        throw new Meteor.Error('No Template', 'user has not specified a template for which apps can be generated');\n    }\n    if (!customers.length) { // = 0\n        throw new Meteor.Error('No customers', 'user has not specified at least one customer for which an app can be generated');\n    }\n\n    //FOR EACH TEPMPLATE\n    var generationEndedPromise = Promise.all(Promise.map(templateApps, function(templateApp) {\n                // console.log('the current template app: ', templateApp.name);\n\n                //FOR EACH CUSTOMER\n                return Promise.all(Promise.map(customers, function(customer) {\n                        // return Promise.all(_.map(customers, function(customer){	\n                        console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);\n\n                        var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object\n                        if (stream) {\n                            var streamId = stream.id;\n                        }\n                        var myPromise = new Promise(function(resolve, reject) {\n                                if (!streamId) {\n                                    console.log('No stream for customer exist, so create one: ' + customer.name);\n                                    createStream(customer.name);\n                                } else {\n                                    resolve('No need to createa a stream, already exists' + Streams.find({ name: customer.name })\n                                        .count() + ' time(s)');\n                                }\n                            })\n                            .then(function(resultOfStreamStep) { //Copy the APP\n                                console.log('STEP 2 COPY the app: result Of create Stream Step: ', resultOfStreamStep);\n                                console.log('Now calling copy app for customer ' + customer.name + ' and template app: ' + templateApp.name);\n                                return copyApp(templateApp.guid, customer.name + ' - ' + templateApp.name)\n                            })\n                            // .then(function(appGuid){ //Publish into streamId\n                            // 	console.log('STEP 3 PUBLISH: APP HAS BEEN COPIED AND HAS RECEIVED GUID', appGuid);\n                            // 	return publishApp(appGuid, templateApp.name, streamId) //return publishApp(appGuid, templateApp.name+' - ' +customer.name , streamId)\n                            // })\n                            .then(function() {\n                                console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);\n                                console.log('	');\n                            })\n                            .catch(function(err) {\n                                console.error(err);\n                                // throw new Meteor.Error('Catch error app generation chain: App generation failed', 'err');\n                            })\n                            .done();\n                        return myPromise;\n\n                    }, { concurrency: 1 })) //each customer Promise.all\n            }) //each template\n        ) //promise all generation total\n\n    return generationEndedPromise;\n};\n\nfunction createStream(name) {\n    console.log('create the stream with name', name);\n    return qrs.post('/qrs/stream', null, { \"name\": name })\n        .then(\n            function fulfilled(result) {\n                // console.log('stream create promosi fulfilled, result of create stream promise', result);\n                streamId = result.id;\n                resolve('created stream with id ' + result.id);\n            },\n            function Rejected(error) {\n                // console.error('Promise Rejected: Error when trying to copy the app', error);\n                reject('Promise Rejected: Error when trying to create a stream');\n            })\n};\n\n\nfunction copyApp(guid, name) {\n    // console.log('Copy template: '+guid+' to new app: '+name);\n    check(guid, String);\n    check(name, String);\n\n    return new Promise(function(resolve, reject) {\n        HTTP.call('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?name=' + name + '&xrfkey=' + config.xrfkey, {\n            headers: {\n                'hdr-usr': config.headerValue,\n                'X-Qlik-xrfkey': config.xrfkey\n            }\n        }, function(error, response) {\n            if (error) {\n                console.error('error app copy', error);\n                throw new Meteor.Error('error app copy', error)\n                reject(error);\n            } else {\n                // console.log('Copy app:  HTTP request gave response', response.data );\n                console.log('Copy app HTTP call success:  the generated guid: ', response.data.id);\n                resolve(response.data.id); //return app Guid\n            }\n        });\n    })\n};\n\nfunction publishApp(appGuid, appName, streamId) {\n    console.log('Publish app: ' + appName + ' to stream: ' + streamId);\n    check(appGuid, String);\n    check(appName, String);\n    check(streamId, String);\n\n    return new Promise(function(resolve, reject) {\n        HTTP.call('put', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + config.xrfkey, {\n            headers: {\n                'hdr-usr': config.headerValue,\n                'X-Qlik-xrfkey': config.xrfkey\n            }\n        }, function(error, response) {\n            if (error) {\n                console.error('error publishApp', error);\n                throw new Meteor.Error('error publish App', error)\n                reject(error);\n            } else {\n                // console.log( response );\n                resolve('publishApp success');\n            }\n        });\n    })\n\n};\n\n\nfunction deleteApp(guid) {\n    return HTTP.call('DELETE', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + config.xrfkey, {\n        headers: {\n            'hdr-usr': config.headerValue,\n            'X-Qlik-xrfkey': config.xrfkey\n        }\n    }, function(error, response) {\n        if (error) {\n            console.error(error);\n            throw new Meteor.Error('error app delete', error)\n        } else {\n            console.log(response);\n            return response;\n        }\n    });\n};\n\nfunction deleteStream(guid) {\n    return HTTP.call('DELETE', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/stream/' + guid + '?xrfkey=' + config.xrfkey, {\n        headers: {\n            'hdr-usr': config.headerValue,\n            'X-Qlik-xrfkey': config.xrfkey\n        }\n    }, function(error, response) {\n        if (error) {\n            console.error(error);\n            throw new Meteor.Error('error stream delete', error)\n        } else {\n            console.log(response);\n            return response;\n        }\n    });\n};\n\n\nfunction getStreams() {\n    return qrs.get('/qrs/stream/full');\n};\n\nMeteor.methods({\n    generateStreamAndApp(customers) {\n        check(customers, Array);\n        generateStreamAndApp(customers)\n            .then(\n                function fulfilled(result) {\n                    console.log('generation promise fulfilled, result of promise', result);\n                    // resolve('Generation success ');\n                    return 'Generation success';\n                },\n                function Rejected(error) {\n                    console.error('Promise Rejected: Error when trying generate the apps', error);\n                    throw new Meteor.Error('Generation failed', 'Promise Rejected: Error when trying to generate the apps');\n                })\n    },\n    getApps() {\n        return new Promise((resolve, reject) => {\n                qsocks.Connect(engineConfig)\n                    .then(function(global) {\n                        global.getDocList()\n                            .then(function(docList) {\n                                resolve(docList);\n                            });\n                    })\n            })\n            .catch(err => {\n                throw new Meteor.Error(err)\n            })\n    },\n    copyApp(guid, name) {\n        check(guid, String);\n        check(name, String);\n        return copyApp(guid, name);\n    },\n    deleteApp(guid) {\n        check(guid, String);\n        return deleteApp(guid);\n    },\n    deleteStream(guid) {\n        check(guid, String);\n        return deleteStream(guid);\n    },\n    countApps() {\n        return qrs.get('/qrs/app/count');\n    },\n    countStreams() {\n        return qrs.get('/qrs/stream/count');\n    },\n    createStream(name) {\n        return createStream(name);\n    },\n    getStreams() {\n        return getStreams();\n    },\n    getSecurityRules() {\n        return getSecurityRules();\n    },\n    removeAllCustomers: function() {\n        return Customers.remove({});\n    },\n    updateAppsCollection() {\n        console.log('Method: update the local mongoDB with fresh data from Qlik Sense');\n\n        try {\n            Apps.remove();\n        } catch (error) {\n            throw new Meteor.Error('Unable to remove apps from collection', error.message)\n        };\n\n        var myPromise = qrs.get('/qrs/app/full')\n            .then(\n                function fulfilled(docList) {\n                    try {\n                        console.log('try to insert document array into mongo');\n                        docList.forEach(doc => {\n                            Apps.insert(doc);\n                            console.log('inserted document ', doc.qDocName);\n                        });\n                    } catch (error) { console.log(error) }\n\n                },\n                function Rejected(error) {\n                    console.error('uh oh: ', error); // 'uh oh: something bad happened’\n                })\n            .catch(function(error) {\n                console.log('Caught!', error);\n                throw new Meteor.Error('Unable to get streams from Sense', error.message);\n            });\n    }\n});\n\nMeteor.startup(() => {\n    qrs = new QRS(config);\n});\n\n\n\n\n//CODE WITH NPM QRS, THAT GENERATES DOUBLE APPS\n// function copyApp (guid, name) {\n// 	console.log('Copy template: '+guid+' to new app: '+name);\n// 	check(guid, String);\n// 	check(name, String);\n// 	return qrs.post('/qrs/app/'+guid+'/copy', [{\"key\": \"name\", \"value\": name}])\n// 	.then(\n// 		function fulfilled (result) {\n// 			console.log('result of copy app promise', result);\n// 			return result;\n// 		},\n// 		function Rejected (error){\n// 			console.error('Promise Rejected: Error when trying to copy the app', error);\n// 			throw new Meteor.Error('App copy failed', 'App copy failed');\n// 		})\n// };\n\n\n// return \n// qsocks.Connect(engineConfig)\n// .then(function(global) {\n// 	console.log(global);\n// 	return global.getDocList()\n// }).then(function(docList){\n// 	console.log('DE DOC LIST IS: ', docList);\n// 	return docList;\n// })\n",
+			"file": "server/main.js",
+			"file_size": 12870,
+			"file_write_time": 131092518550914971,
+			"settings":
+			{
+				"buffer_size": 12926,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "import { Meteor } from 'meteor/meteor';\nimport { http } from 'meteor/meteor';\nimport { Apps, TemplateApps } from '/imports/api/apps.js';\n\n//import meteor collections\nimport { Streams } from '/imports/api/streams.js';\nimport { Customers } from '/imports/api/customers.js';\n\n//import config for Qlik Sense QRS and Engine API\nimport { config, engineConfig, certs } from '/imports/api/config.js';\n\n\n//insyall NPM modules\nvar fs = require('fs');\nvar qsocks = require('qsocks');\nvar QRS = require('qrs');\n// import 'meteor/mvrx:bluebird';\nvar Promise = require(\"bluebird\");\nvar qrs = null;\nvar generatedAppGuid = '';\n",
+			"file": "imports/api/QRSFunctions.js",
+			"file_size": 1,
+			"file_write_time": 131092519430608868,
+			"settings":
+			{
+				"buffer_size": 611,
+				"line_ending": "Windows",
+				"name": "s"
+			}
+		},
+		{
+			"file": "imports/ui/customer.js",
+			"settings":
+			{
+				"buffer_size": 1413,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/api/clientConfig.js",
+			"settings":
+			{
+				"buffer_size": 78,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/api/apps.js",
+			"settings":
+			{
+				"buffer_size": 155,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "instal",
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			],
+			[
+				"tern",
+				"TernJS: Reload"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 153.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Meteor projects/qrsmeteor",
+		"/C/Meteor projects/qrsmeteor/imports",
+		"/C/Meteor projects/qrsmeteor/imports/api",
+		"/C/Meteor projects/qrsmeteor/imports/ui",
+		"/C/Meteor projects/qrsmeteor/server"
+	],
+	"file_history":
+	[
+		"/F/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/F/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Meteor projects/qrsmeteor/client/main.js",
+		"/C/Meteor projects/qrsmeteor/server/seeds.js",
+		"/C/Meteor projects/qrsmeteor/imports/api/config.js",
+		"/C/Meteor projects/qrsmeteor/imports/api/customers.js",
+		"/C/Meteor projects/qrsmeteor/imports/ui/customer.js",
+		"/C/Meteor projects/qrsmeteor/imports/ui/customer.html",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/.meteor/local/build/programs/server/app/app.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/api/apps.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/node_modules/qrs/lib/qrs.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/ui/customer.html",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/ui/customer.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/api/config.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/server/config.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/lib/globalHelpers.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/api/streams.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/ui/body_2008ENT_May-21-102958-2016_Conflict.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/server/main.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/api/collections.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/ui/body.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/server/publications.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/lib/collections.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/client/main.js",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/client/main.css",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/server/QRS_API.js",
+		"/C/Users/Qlik/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/client/lib/custom.semantic.json",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/ui/body.html",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/server/seeds.js",
+		"/C/Users/Qlik/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/qrs.sublime-project",
+		"/C/Users/Qlik/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Meteor projects/slager 10dec/lib/Collections/carts.js",
+		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/Orders.html",
+		"/C/Meteor projects/slager 10dec/client/templates/supportive/nav.html",
+		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/ordersEdit.html",
+		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/Orders.js",
+		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/ordersEdit.js",
+		"/C/Meteor projects/slager 10dec/server/seeds.js",
+		"/C/Meteor projects/slager 10dec/client/templates/supportive/layout2.html",
+		"/C/Meteor projects/slager 10dec/client/lib/vizualizations/pivotReport.js",
+		"/C/Meteor projects/slager 10dec/mup.json",
+		"/C/Meteor projects/slager 10dec/mup.json_ORG",
+		"/C/Meteor projects/slager 10dec/client/templates/app/Order/show.html",
+		"/C/Meteor projects/slager 10dec/server/cartMethods.js",
+		"/C/Meteor projects/slager 10dec/client/templates/app/Order/show.js",
+		"/C/Meteor projects/slager 10dec/lib/main.js",
+		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/ordersByPickUpDay.js",
+		"/C/Meteor projects/slager 10dec/client/lib/vizualizations/pivotReport.html",
+		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/ordersByPickUpDay.html",
+		"/C/Meteor projects/slager 10dec/client/lib/vizualizations/pivot.js",
+		"/C/Meteor projects/slager 10dec/server/houston_config.js",
+		"/C/Meteor projects/slager 10dec/client/templates/supportive/loginPage.html",
+		"/C/Meteor projects/slager 10dec/client/templates/app/product/editProduct.js",
+		"/C/Meteor projects/slager 10dec/client/templates/app/product/editProduct.html",
+		"/C/Meteor projects/slager 10dec/server/publications.js",
+		"/C/Meteor projects/slager 10dec/client/templates/supportive/login.js",
+		"/C/Meteor projects/slager 10dec/client/templates/supportive/register.js",
+		"/C/Meteor projects/slager 10dec/client/templates/supportive/login.html",
+		"/C/Meteor projects/slager 10dec/client/templates/app/product/productOverview.html",
+		"/C/Meteor projects/slager 10dec/lib/Collections/productList.js",
+		"/C/Meteor projects/slager 10dec/client/templates/app/Cart/cartShow.js",
+		"/C/Meteor projects/slager 10dec/client/templates/app/Cart/cartShow.html",
+		"/C/Meteor projects/slager 10dec/client/templates/app/Order/product.js",
+		"/C/Meteor projects/slager 10dec/server/publications_NLSCH-MBJ1_dec-19-174648-2015_Conflict.js",
+		"/C/Meteor projects/slager 10dec/.meteor/local/build/programs/server/app/server/cartMethods.js",
+		"/C/Meteor projects/slager 10dec/client/lib/vizualizations/pivot.nl.js",
+		"/C/Meteor projects/slager 10dec/client/lib/vizualizations/d3_renderers.js",
+		"/C/Meteor projects/slager 10dec/client/stylesheets/pivot.css",
+		"/C/Meteor projects/slager 10dec/lib/permissions.js",
+		"/C/Meteor projects/slager 10dec/client/templates/app/homeAbout.js",
+		"/C/Meteor projects/slager 10dec/client/templates/app/homeAbout.html",
+		"/C/Meteor projects/slager 10dec/packages.json",
+		"/C/Meteor projects/slager 10dec/client/templates/app/product/addProduct.html",
+		"/C/Meteor projects/slager 10dec/client/templates/supportive/nav.js",
+		"/C/Meteor projects/slager 10dec/client/templates/supportive/accessDenied.html",
+		"/C/Meteor projects/slager 10dec/client/stylesheets/blockquote.css",
+		"/C/Meteor projects/slager 10dec/lib/router.js",
+		"/C/Meteor projects/slager 10dec/client/cartFunctions.js",
+		"/C/Meteor projects/slager 10dec/client/config/notification.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/Order/show.html",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/Order/show.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/lib/main.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/stylesheets/semantic.css",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/Reports/ordersByPickUpDay.html",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/Reports/Orders.html",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/supportive/Loading/loading.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/layout2.html",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/footer.html",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/nav.html",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/supportive/Loading/loading.html",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/layout.html",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/categoryForm.html",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/bestelling.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/bestelling.html",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/node_modules/qlik-auth/index.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/lib/custom.semantic.json",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/lib/router.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/Bestelling/show.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/Reports/ordersByPickUpDay.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/server/cartMethods.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/Bestelling/show.html",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/server/publications.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/lib/Collections/carts.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/lib/Collections/seeds.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/Reports/Orders.js",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/homeIndex.html",
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/error.html",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/lib/router.js",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/templates/products/show.html",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/lib/shopping_cart.js",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/templates/_partials/product_tile.html",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/templates/checkout/show.html",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/templates/cart/show.html",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/config/notification.js",
+		"/C/Users/Qlik/Meteor projects/Slager/server/sales_repo.js",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/lib/collections/vendors.js",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/lib/collections/carts.js",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/lib/collections/products.js",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/lib/permissions.js",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/templates/home/index.js",
+		"/C/Users/Qlik/Meteor projects/rocketshop/client/stylesheets/app.css",
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/templates/app/loading.js",
+		"/C/Users/Qlik/Meteor projects/rocketshop/client/templates/home/index.html",
+		"/C/Users/Qlik/Meteor projects/rocketshop/lib/router.js",
+		"/C/Users/Qlik/Meteor projects/rocketshop/client/templates/app/loading.js",
+		"/C/Users/Qlik/Meteor projects/rocketshop/client/templates/app/layout.html"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+			"C:\\Meteor projects\\slager 10dec\\client",
+			"C:\\Meteor projects\\slager 10dec",
+			"C:\\Users\\Qlik\\Meteor projects\\firstmeteor",
+			"C:\\Users\\Qlik\\Meteor projects\\pluralsight\\1-exercise-files\\rocket-shop-complete",
+			"C:\\Users\\Qlik\\Meteor projects\\pluralsight\\1-exercise-files\\rocket-shop-complete\\client",
+			"C:\\Users\\Qlik\\Meteor projects\\pluralsight\\1-exercise-files\\rocket-shop-complete\\server",
+			"C:\\Users\\Qlik\\Meteor projects\\pluralsight\\1-exercise-files\\rocket-shop-complete\\lib",
+			"C:\\Users\\Qlik\\Meteor projects\\pluralsight\\1-exercise-files\\rocket-shop-complete"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"guid: currentApp.qDocId,",
+			"Promise",
+			"errerror",
+			"Meteor.error",
+			"update",
+			"Customers",
+			"new Promise",
+			"Promise",
+			"selected",
+			"\"TRUE\"",
+			"updateAppsCollection",
+			"\\",
+			"export",
+			"save",
+			"tern",
+			"tenr",
+			"method",
+			"Searching",
+			"nav",
+			"pivot",
+			"bestelling",
+			"removeFromCart",
+			"pivotUI",
+			"ordersByPickUpDay",
+			"Category",
+			"session",
+			"<template name=\"bestelling\">",
+			"atError",
+			"money",
+			"sAlert",
+			"check",
+			"check : function",
+			"addToCart",
+			"money",
+			"productTile",
+			"prodoctTile",
+			"check",
+			"addToCart",
+			"userKey",
+			"subscribe",
+			"vendor",
+			"vendors",
+			"cart",
+			"Carts",
+			"pathfor",
+			"router",
+			"js/qlik",
+			"Leaderboard",
+			"ProductList"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"P",
+			"Meteor.Error",
+			"new P",
+			"P",
+			"checked",
+			"true",
+			"updateSenseInfo",
+			"\\\\",
+			"",
+			"category",
+			"",
+			"customers",
+			"order",
+			"Orders",
+			"Slagerij"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "imports/ui/body.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6611,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1689,
+								1689
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "imports/ui/body.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11216,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7055,
+								7055
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2824.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "server/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12926,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								552,
+								552
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1170.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "imports/api/QRSFunctions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 611,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								271,
+								271
+							]
+						],
+						"settings":
+						{
+							"auto_name": "s",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "imports/ui/customer.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1398,
+								1398
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "imports/api/clientConfig.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 78,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13,
+								13
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "imports/api/apps.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 155,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "qrs.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 249.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
