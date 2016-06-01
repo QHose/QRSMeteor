@@ -30,18 +30,16 @@ export function deleteStream(guid) {
     });
 };
 
-
 export function getStreams() {
     return qrs.get('/qrs/stream/full');
 };
-
 
 export function createStream(name) {
     console.log('create the stream with name', name);
     return qrs.post('/qrs/stream', null, { "name": name })
         .then(
             function fulfilled(result) {
-                // console.log('stream create promosi fulfilled, result of create stream promise', result);
+                console.log('call to qrs.post(/qrs/stream to create a stream promise fulfilled, the result QRS promise is: ', result);
                 streamId = result.id;
                 resolve('created stream with id ' + result.id);
             },

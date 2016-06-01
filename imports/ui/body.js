@@ -205,7 +205,7 @@ Template.body.events({
             //DELETE Stream
             if (event.target.className == "deleteStream") {
                 var currentStream = this;
-                console.log('delete stream clicked: ' + currentStream.name, this);
+                console.log('delete stream clicked: ' + currentStream.name);
                 Meteor.call('deleteStream', this.id, (error, result) => {
                         if (error) {
                             sAlert.error(error);

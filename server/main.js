@@ -3,10 +3,10 @@ import { http } from 'meteor/meteor';
 import { Apps, TemplateApps } from '/imports/api/apps.js';
 
 //import meteor collections
-import { Streams } from '/imports/api/streams.js';
-import { Customers } from '/imports/api/customers.js';
-import * as QSApp from '/imports/api/QRSFunctions';
-import * as QSStream from '/imports/api/QRSFunctions';
+import { Streams } from '/imports/api/streams';
+import { Customers } from '/imports/api/customers';
+import * as QSApp from '/imports/api/QRSFunctionsApp';
+import * as QSStream from '/imports/api/QRSFunctionsStream';
 
 //import config for Qlik Sense QRS and Engine API
 import { config, engineConfig, certs } from '/imports/api/config.js';
@@ -63,29 +63,31 @@ Meteor.methods({
         check(guid, String);
         return QSApp.deleteApp(guid);
     },
+    removeAllCustomers: function() {
+        return QSApp.Customers.remove({});
+    },
+
+    //STREAM METHODS
     deleteStream(guid) {
         check(guid, String);
-        return QSApp.deleteStream(guid);
-    },
-    countApps() {
-        return QSApp.qrs.get('/qrs/app/count');
-    },
-    countStreams() {
-        return QSApp.qrs.get('/qrs/stream/count');
+        return QSStream.deleteStream(guid);
     },
     createStream(name) {
         return QSStream.createStream(name);
     },
     getStreams() {
-        console.log(QS);
         return QSStream.getStreams();
     },
     getSecurityRules() {
         return QSApp.getSecurityRules();
     },
-    removeAllCustomers: function() {
-        return QSApp.Customers.remove({});
+    //NPM QRS CALLS
+    countApps() {
+        return qrs.get('/qrs/app/count');
     },
+    countStreams() {
+        return qrs.get('/qrs/stream/count');
+    }
     // updateAppsCollection() {
     //     console.log('Method: update the local mongoDB with fresh data from Qlik Sense');
 
@@ -126,28 +128,28 @@ Meteor.methods({
 
 //CODE WITH NPM QRS, THAT GENERATES DOUBLE APPS
 // function copyApp (guid, name) {
-// 	console.log('Copy template: '+guid+' to new app: '+name);
-// 	check(guid, String);
-// 	check(name, String);
-// 	return qrs.post('/qrs/app/'+guid+'/copy', [{"key": "name", "value": name}])
-// 	.then(
-// 		function fulfilled (result) {
-// 			console.log('result of copy app promise', result);
-// 			return result;
-// 		},
-// 		function Rejected (error){
-// 			console.error('Promise Rejected: Error when trying to copy the app', error);
-// 			throw new Meteor.Error('App copy failed', 'App copy failed');
-// 		})
+//  console.log('Copy template: '+guid+' to new app: '+name);
+//  check(guid, String);
+//  check(name, String);
+//  return qrs.post('/qrs/app/'+guid+'/copy', [{"key": "name", "value": name}])
+//  .then(
+//      function fulfilled (result) {
+//          console.log('result of copy app promise', result);
+//          return result;
+//      },
+//      function Rejected (error){
+//          console.error('Promise Rejected: Error when trying to copy the app', error);
+//          throw new Meteor.Error('App copy failed', 'App copy failed');
+//      })
 // };
 
 
 // return 
 // qsocks.Connect(engineConfig)
 // .then(function(global) {
-// 	console.log(global);
-// 	return global.getDocList()
+//  console.log(global);
+//  return global.getDocList()
 // }).then(function(docList){
-// 	console.log('DE DOC LIST IS: ', docList);
-// 	return docList;
+//  console.log('DE DOC LIST IS: ', docList);
+//  return docList;
 // })

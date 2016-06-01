@@ -1,10 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import { http } from 'meteor/meteor';
-import { Apps, TemplateApps } from '/imports/api/apps.js';
+import { Apps, TemplateApps } from '/imports/api/apps';
+import * as QSStream from '/imports/api/QRSFunctionsStream';
 
 //import meteor collections
-import { Streams } from '/imports/api/streams.js';
-import { Customers } from '/imports/api/customers.js';
+import { Streams } from '/imports/api/streams';
+import { Customers } from '/imports/api/customers';
 
 //import config for Qlik Sense QRS and Engine API
 import { config, engineConfig, certs } from '/imports/api/config.js';
@@ -48,10 +49,11 @@ export function generateStreamAndApp(customers) {
                 return Promise.all(Promise.map(customers, function(customer) {
                         // return Promise.all(_.map(customers, function(customer){	
                         console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
-                        checkStreamStatus() //create a stream for the customer if it not already exists
-                        .then(function(resultOfStreamStep) { //Copy the APP
+
+                        checkStreamStatus(customer) //create a stream for the customer if it not already exists
+                            .then(function(resultOfStreamStep) { //Copy the APP
                                 console.log('STEP 2 COPY the app: result Of create Stream Step: ', resultOfStreamStep);
-                                console.log('Now calling copy app for customer ' + customer.name + ' and template app: ' + templateApp.name);
+                                console.log('Now calling copy app');
                                 return copyApp(templateApp.guid, customer.name + ' - ' + templateApp.name)
                             })
                             // .then(function(appGuid){ //Publish into streamId
@@ -66,9 +68,6 @@ export function generateStreamAndApp(customers) {
                                 console.error(err);
                                 // throw new Meteor.Error('Catch error app generation chain: App generation failed', 'err');
                             })
-                            .done();
-                        return myPromise;
-
                     }, { concurrency: 1 })) //each customer Promise.all
             }) //each template
         ) //promise all generation total
@@ -76,21 +75,21 @@ export function generateStreamAndApp(customers) {
     return generationEndedPromise;
 };
 
-function checkStreamStatus() {
+function checkStreamStatus(customer) {
+    console.log('checkStreamStatus for: ' + customer.name);
     var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
     if (stream) {
         var streamId = stream.id;
     }
-    var myPromise = new Promise(function(resolve, reject) {
+    return new Promise(function(resolve, reject) {
         if (!streamId) {
             console.log('No stream for customer exist, so create one: ' + customer.name);
-            createStream(customer.name);
+            return QSStream.createStream(customer.name);
         } else {
             resolve('No need to createa a stream, already exists' + Streams.find({ name: customer.name })
                 .count() + ' time(s)');
         }
     })
-    return myPromise;
 }
 
 export function getApps() {
