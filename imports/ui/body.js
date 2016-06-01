@@ -255,6 +255,7 @@ var updateSenseInfo2 = function updateSenseInfo2() {
     // Meteor.call('updateAppsCollection', function(error, docList){
     Meteor.call('getApps', function(error, docList) {
         if (error) {
+            throw new Meteor.Error('Unable to get the apps from Qlik Sense', error.message);
             console.error(error);
         } else {
             console.log('Sense changed, so we called meteor.method to update the information we have about APPS');
@@ -272,7 +273,7 @@ var updateSenseInfo2 = function updateSenseInfo2() {
 
     Meteor.call('getStreams', function(error, streams) {
         if (error) {
-            throw new Meteor.error('Unable to get the streams from Qlik Sense', error.message);
+            throw new Meteor.Error('Unable to get the streams from Qlik Sense', error.message);
         } else {
             console.log('new streams received from Sense, so update the local mongoDB information we have about Streams');
             

@@ -27,7 +27,7 @@ var Promise = require("bluebird");
 	- @TODO add reload task
 */
 
-function generateStreamAndApp(customers) {
+export function generateStreamAndApp(customers) {
     console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
 
     var templateApps = TemplateApps.find()
@@ -93,7 +93,7 @@ function checkStreamStatus() {
     return myPromise;
 }
 
-function getApps() {
+export function getApps() {
     console.log('server: getApps');
     return qsocks.Connect(engineConfig)
         .then(function(global) {
@@ -114,7 +114,7 @@ function getApps() {
 };
 
 
-function copyApp(guid, name) {
+export function copyApp(guid, name) {
     // console.log('Copy template: '+guid+' to new app: '+name);
     check(guid, String);
     check(name, String);
@@ -139,7 +139,7 @@ function copyApp(guid, name) {
     })
 };
 
-function publishApp(appGuid, appName, streamId) {
+export function publishApp(appGuid, appName, streamId) {
     console.log('Publish app: ' + appName + ' to stream: ' + streamId);
     check(appGuid, String);
     check(appName, String);
@@ -165,7 +165,7 @@ function publishApp(appGuid, appName, streamId) {
 };
 
 
-function deleteApp(guid) {
+export function deleteApp(guid) {
     return HTTP.call('DELETE', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + config.xrfkey, {
         headers: {
             'hdr-usr': config.headerValue,
@@ -180,45 +180,4 @@ function deleteApp(guid) {
             return response;
         }
     });
-};
-
-
-
-//STREAM FUNCTIONS
-function deleteStream(guid) {
-    return HTTP.call('DELETE', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/stream/' + guid + '?xrfkey=' + config.xrfkey, {
-        headers: {
-            'hdr-usr': config.headerValue,
-            'X-Qlik-xrfkey': config.xrfkey
-        }
-    }, function(error, response) {
-        if (error) {
-            console.error(error);
-            throw new Meteor.Error('error stream delete', error)
-        } else {
-            console.log(response);
-            return response;
-        }
-    });
-};
-
-
-function getStreams() {
-    return qrs.get('/qrs/stream/full');
-};
-
-
-function createStream(name) {
-    console.log('create the stream with name', name);
-    return qrs.post('/qrs/stream', null, { "name": name })
-        .then(
-            function fulfilled(result) {
-                // console.log('stream create promosi fulfilled, result of create stream promise', result);
-                streamId = result.id;
-                resolve('created stream with id ' + result.id);
-            },
-            function Rejected(error) {
-                // console.error('Promise Rejected: Error when trying to copy the app', error);
-                reject('Promise Rejected: Error when trying to create a stream');
-            })
 };

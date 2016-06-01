@@ -76,6 +76,7 @@ Meteor.methods({
         return QS.createStream(name);
     },
     getStreams() {
+        console.log(QS);
         return QS.getStreams();
     },
     getSecurityRules() {
