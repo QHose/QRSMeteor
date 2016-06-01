@@ -2,17 +2,11 @@ import { Meteor } from 'meteor/meteor';
 import { http } from 'meteor/meteor';
 import { Apps, TemplateApps } from '/imports/api/apps.js';
 
-//import meteor collections
-import { Streams } from '/imports/api/streams.js';
-import { Customers } from '/imports/api/customers.js';
-
 //import config for Qlik Sense QRS and Engine API
 import { config, engineConfig, certs } from '/imports/api/config.js';
 
 
-//insyall NPM modules
-var fs = require('fs');
-var qsocks = require('qsocks');
+//install NPM modules
 var QRS = require('qrs');
 qrs = new QRS(config);
 var Promise = require("bluebird");
