@@ -274,8 +274,8 @@ var updateSenseInfo2 = function updateSenseInfo2() {
         if (error) {
             throw new Meteor.error('Unable to get the streams from Qlik Sense', error.message);
         } else {
-            console.log('Sense changed, so update the information we have about Streams');
-            // console.log(streams);
+            console.log('new streams received from Sense, so update the local mongoDB information we have about Streams');
+            
             // Delete all existing streams from database
             Streams.find().forEach(function(stream) {
                 Streams.remove(stream._id);

@@ -115,9 +115,9 @@ Meteor.methods({
     }
 });
 
-Meteor.startup(() => {
-    qrs = new QRS(config);
-});
+// Meteor.startup(() => {
+//     qrs = new QRS(config);
+// });
 
 
 
