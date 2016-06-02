@@ -58,6 +58,7 @@ Meteor.methods({
     },
     deleteApp(guid) {
         check(guid, String);
+        console.log('method deleteApp');
         return QSApp.deleteApp(guid);
     },
     removeAllCustomers: function() {

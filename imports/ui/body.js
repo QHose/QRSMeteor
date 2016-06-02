@@ -178,7 +178,6 @@ Template.body.events({
     // }
     // },
     'click .reactive-table tbody tr': function(event) {
-            console.log('app table clicked')
             var currentApp = this;
             // console.log(event);
 

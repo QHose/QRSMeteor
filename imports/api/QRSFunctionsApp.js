@@ -8,7 +8,7 @@ import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 
 //import config for Qlik Sense QRS and Engine API
-import { config, engineConfig, certs } from '/imports/api/config.js';
+import { config, engineConfig, certs, headers } from '/imports/api/config.js';
 
 
 //insyall NPM modules
@@ -53,12 +53,12 @@ export function generateStreamAndApp(customers) {
 
     //FOR EACH CUSTOMER
     // return Promise.all(
-            return customers.reduce(function(prev, curr) {
-                return prev.then(function() {
-                    return generateAppForTemplate(templateApp, curr)
-                })
-            }, Promise.resolve())
-            .then(function() {}) //reduce, 
+    return customers.reduce(function(prev, curr) {
+            return prev.then(function() {
+                return generateAppForTemplate(templateApp, curr)
+            })
+        }, Promise.resolve())
+        .then(function() {}) //reduce, 
         // ) //each customer Promise.all,
         //             }) //templateApp.then
         //     }) //each template
@@ -91,7 +91,7 @@ function generateAppForTemplate(templateApp, customer) {
 };
 
 export function copyApp(guid, name) {
-    console.log('Copy template: '+guid+' to new app: '+name);
+    console.log('Copy template: ' + guid + ' to new app: ' + name);
     check(guid, String);
     check(name, String);
 
@@ -196,18 +196,13 @@ export function publishApp(appGuid, appName, streamId, customerName) {
 
 
 export function deleteApp(guid) {
-    return HTTP.call('DELETE', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + config.xrfkey, {
-        headers: {
-            'hdr-usr': config.headerValue,
-            'X-Qlik-xrfkey': config.xrfkey
-        }
-    }, function(error, response) {
-        if (error) {
-            console.error(error);
-            throw new Meteor.Error('error app delete', error)
-        } else {
-            console.log(response);
-            return response;
-        }
-    });
+    console.log('QRSApp sync deleteApp');
+    try {
+        const result = HTTP.del('http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + config.xrfkey, {
+            headers: headers
+        })
+        return result;        
+    } catch (err) {
+        throw new Meteor.Error('App delete failed', err.message);
+    }
 };
