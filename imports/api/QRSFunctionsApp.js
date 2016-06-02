@@ -77,7 +77,7 @@ function generateAppForTemplate(templateApp, customer) {
         })
         .then(function(appGuid) { //Publish into streamId
             console.log('STEP 3 PUBLISH: APP HAS BEEN COPIED AND HAS RECEIVED GUID', appGuid);
-            return publishApp(appGuid, templateApp.name, result.streamId) //return publishApp(appGuid, templateApp.name+' - ' +customer.name , streamId)
+            return publishApp(appGuid, templateApp.name, result.streamId, customer.name) //return publishApp(appGuid, templateApp.name+' - ' +customer.name , streamId)
         })
         .then(function() {
             console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
@@ -166,18 +166,25 @@ export function getApps() {
 };
 
 
-export function publishApp(appGuid, appName, streamId) {
+export function publishApp(appGuid, appName, streamId, customerName) {
     console.log('Publish app: ' + appName + ' to stream: ' + streamId);
     check(appGuid, String);
     check(appName, String);
     check(streamId, String);
 
+    console.log('de customerName is:'+customerName);
+
     return new Promise(function(resolve, reject) {
-        HTTP.call('put', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + config.xrfkey, {
+        HTTP.call('put', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + appGuid + '/publish', {
             headers: {
                 'hdr-usr': config.headerValue,
                 'X-Qlik-xrfkey': config.xrfkey
-            }
+            },
+            params:{
+            	'xrfkey': config.xrfkey,
+            	'stream': streamId,
+            	'name': customerName+'-'+appName
+            },
         }, function(error, response) {
             if (error) {
                 console.error('error publishApp', error);
