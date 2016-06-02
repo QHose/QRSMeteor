@@ -16,7 +16,7 @@ var fs = require('fs');
 var qsocks = require('qsocks');
 var QRS = require('qrs');
 qrs = new QRS(config);
-var Promise = require("bluebird");
+// var Promise = require("bluebird");
 
 
 /* APP GENERATION:
@@ -41,37 +41,53 @@ export function generateStreamAndApp(customers) {
         throw new Meteor.Error('No customers', 'user has not specified at least one customer for which an app can be generated');
     }
 
-    //FOR EACH TEPMPLATE
-    var generationEndedPromise = Promise.all(Promise.map(templateApps, function(templateApp) {
-                // console.log('the current template app: ', templateApp.name);
+    templateApp = {
+            "_id": "TfN3XCoxCNEi4dFk4",
+            "name": "Executive Performance Mgmt",
+            "guid": "05aeca7d-c267-4b8d-bf08-98f7c77afef1"
+        }
+        // //FOR EACH TEPMPLATE
+        // return Promise.all( //wait till ALL promises are ended (resolved or rejected) (everything, each iteration over the templateApps) is finished before you send the result back to the client
+        //         templateApps.reduce(function(templateApp, next) {
+        //             return templateApp.then(function() {
 
-                //FOR EACH CUSTOMER
-                return Promise.all(Promise.map(customers, function(customer) {
-                        // return Promise.all(_.map(customers, function(customer){	
-                        console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+    //FOR EACH CUSTOMER
+    return Promise.all(
+            customers.reduce(function(prev, curr) {
+                return prev.then(function() {
+                    return generateAppForTemplate(templateApp, curr)
+                })
+            }, Promise.resolve())
+            .then(function() {}) //reduce, 
+        ) //each customer Promise.all,
+        //             }) //templateApp.then
+        //     }) //each template
+        // ) //promise all generation total
+};
 
-                        checkStreamStatus(customer) //create a stream for the customer if it not already exists
-                            .then(function(resultOfStreamStep) { //Copy the APP
-                                console.log('STEP 2 COPY the app: result Of create Stream Step: ', resultOfStreamStep);                                
-                                return copyApp(templateApp.guid, customer.name + ' - ' + templateApp.name)
-                            })
-                            // .then(function(appGuid){ //Publish into streamId
-                            // 	console.log('STEP 3 PUBLISH: APP HAS BEEN COPIED AND HAS RECEIVED GUID', appGuid);
-                            // 	return publishApp(appGuid, templateApp.name, streamId) //return publishApp(appGuid, templateApp.name+' - ' +customer.name , streamId)
-                            // })
-                            .then(function() {
-                                console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
-                                console.log('	');
-                            })
-                            .catch(function(err) {
-                                console.error(err);
-                                // throw new Meteor.Error('Catch error app generation chain: App generation failed', 'err');
-                            })
-                    }, { concurrency: 1 })) //each customer Promise.all
-            }) //each template
-        ) //promise all generation total
+function generateAppForTemplate(templateApp, customer) {
+	result = {};
+    console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 
-    return generationEndedPromise;
+    checkStreamStatus(customer) //create a stream for the customer if it not already exists
+        .then(function(streamId) { //Copy the APP
+            console.log('STEP 2 COPY the app: result Of create Stream step: stream has id: ', streamId);
+            result.streamId = streamId;
+            return copyApp(templateApp.guid, customer.name + ' - ' + templateApp.name)
+        })
+        .then(function(appGuid) { //Publish into streamId
+            console.log('STEP 3 PUBLISH: APP HAS BEEN COPIED AND HAS RECEIVED GUID', appGuid);
+            return publishApp(appGuid, templateApp.name, result.streamId) //return publishApp(appGuid, templateApp.name+' - ' +customer.name , streamId)
+        })
+        .then(function() {
+            console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+            console.log('	');
+            return Promise.resolve('FINISHED');
+        })
+        .catch(function(err) {
+            console.error(err);
+            // throw new Meteor.Error('Catch error app generation chain: App generation failed', 'err');
+        })
 };
 
 export function copyApp(guid, name) {
@@ -85,8 +101,8 @@ export function copyApp(guid, name) {
                 'hdr-usr': config.headerValue,
                 'X-Qlik-xrfkey': config.xrfkey
             }
-        });     
-    return resultOfAsyncToSync;
+        });
+    return resultOfAsyncToSync.data.id;
 };
 
 
@@ -101,8 +117,7 @@ function checkStreamStatus(customer) {
             console.log('No stream for customer exist, so create one: ' + customer.name);
             return QSStream.createStream(customer.name);
         } else {
-            resolve('No need to createa a stream, already exists' + Streams.find({ name: customer.name })
-                .count() + ' time(s)');
+            resolve(streamId);
         }
     })
 }
@@ -126,7 +141,6 @@ export function getApps() {
         });
 
 };
-
 
 
 export function publishApp(appGuid, appName, streamId) {

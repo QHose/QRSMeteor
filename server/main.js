@@ -18,11 +18,8 @@ import { config, engineConfig, certs } from '/imports/api/config.js';
 var fs = require('fs');
 var qsocks = require('qsocks');
 var QRS = require('qrs');
-// import 'meteor/mvrx:bluebird';
-var Promise = require("bluebird");
+// var Promise = require("bluebird");
 var qrs = null;
-var generatedAppGuid = '';
-
 
 Meteor.methods({
     generateStreamAndApp(customers) {

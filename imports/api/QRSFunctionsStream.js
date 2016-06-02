@@ -8,8 +8,8 @@ import { config, engineConfig, certs } from '/imports/api/config.js';
 
 //install NPM modules
 var QRS = require('qrs');
-qrs = new QRS(config);
-var Promise = require("bluebird");
+var qrs = new QRS(config);
+// var Promise = require("bluebird");
 
 
 //STREAM FUNCTIONS

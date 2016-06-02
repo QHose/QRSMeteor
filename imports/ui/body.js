@@ -173,7 +173,7 @@ Template.body.events({
     'click .reactive-table tbody tr': function(event) {
             console.log('app table clicked')
             var currentApp = this;
-            console.log(event);
+            // console.log(event);
 
             if (event.target.className == "markAsTemplate") {
                 console.log('markAsTemplate app clicked: ' + currentApp.qDocName);
@@ -211,7 +211,7 @@ Template.body.events({
                             sAlert.error(error);
                             console.log(error);
                         } else {
-                            console.log('Stream removed', result);
+                            console.log('Stream removed');
                             sAlert.success(currentStream.name + "' deleted in the QMC");
                             updateSenseInfo();
                         }
