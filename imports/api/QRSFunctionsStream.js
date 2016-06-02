@@ -3,7 +3,7 @@ import { http } from 'meteor/meteor';
 import { Apps, TemplateApps } from '/imports/api/apps.js';
 
 //import config for Qlik Sense QRS and Engine API
-import { config, engineConfig, certs } from '/imports/api/config.js';
+import { config, engineConfig, certs, authHeaders } from '/imports/api/config.js';
 
 
 //install NPM modules
@@ -40,7 +40,7 @@ export function createStream(name) {
 
     try {
         const result = HTTP.post('http://' + config.host + '/' + config.virtualProxy + '/qrs/stream', {
-            headers: headers,
+            headers: authHeaders,
             params: { 'xrfkey': config.xrfkey },
             data: { "name": name }
         })

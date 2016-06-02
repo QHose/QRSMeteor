@@ -73,7 +73,7 @@ export const engineConfig = _engineConfig;
 export const config = _QRSconfig;
 export const certs = certs;
 
-export const headers = {
+export const authHeaders = {
     'hdr-usr': config.headerValue,
     'X-Qlik-xrfkey': config.xrfkey
 }

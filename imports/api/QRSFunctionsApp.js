@@ -8,7 +8,7 @@ import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 
 //import config for Qlik Sense QRS and Engine API
-import { config, engineConfig, certs, headers } from '/imports/api/config.js';
+import { config, engineConfig, certs, authHeaders } from '/imports/api/config.js';
 
 
 //insyall NPM modules

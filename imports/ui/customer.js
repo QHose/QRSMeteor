@@ -27,7 +27,7 @@ Template.customer.events({
         console.log(err);
       } else {
         console.log('generateStream succes', result);
-        sAlert.success('Streams created for this customer'+customerName); //, and apps have been published into the customer stream ');
+        sAlert.success('Streams created for customer: '+customerName); 
         updateSenseInfo();
       }
     });
