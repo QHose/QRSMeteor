@@ -34,17 +34,47 @@ export function getStreams() {
     return qrs.get('/qrs/stream/full');
 };
 
+
 export function createStream(name) {
-    console.log('create the stream with name', name);
-    return qrs.post('/qrs/stream', null, { "name": name })
-        .then(
-            function fulfilled(result) {
-                console.log('call to qrs.post(/qrs/stream to create a stream promise fulfilled, the result QRS promise is: ', result);
-                streamId = result.id;
-                resolve('created stream with id ' + result.id);
+    console.log('QRS Functions Stream, create the stream with name', name);
+
+    return new Promise(function(resolve, reject) {
+        HTTP.call('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/stream',  {
+            headers: {
+                'hdr-usr': config.headerValue,
+                'X-Qlik-xrfkey': config.xrfkey
             },
-            function Rejected(error) {
-                // console.error('Promise Rejected: Error when trying to copy the app', error);
-                reject('Promise Rejected: Error when trying to create a stream');
-            })
+            params:{'xrfkey': config.xrfkey},
+            data:{ "name": name }
+        }, function(error, response) {
+            if (error) {
+                console.error('error createStream', error);
+                throw new Meteor.Error('error stream create', error.message)
+                reject(error);
+            } else {
+                // console.log('Copy app:  HTTP request gave response', response.data );
+                console.log('create stream HTTP call success:  the generated guid: ', response.data.id);
+                resolve(response.data.id); //return stream Guid
+            }
+        });
+    })
+
+
 };
+
+
+// export function createStream(name) {
+//     console.log('QRS Functions Stream, create the stream with name', name);
+//     return qrs.post('/qrs/stream', null, { "name": name })
+//         .then(
+//             function fulfilled(result) {
+//                 streamId = result.id;
+//                 console.log('call to NPM qrs.post(/qrs/stream to create a stream fulfilled, the result QRS promise is: ', streamId);
+//                 return streamId;
+//             },
+//             function Rejected(error) {
+//                 // console.error('Promise Rejected: Error when trying to copy the app', error);
+//                 throw new Meteor.Error('create stream failed', error.message);
+//                 reject('Promise Rejected: Error when trying to create a stream');
+//             })
+// };

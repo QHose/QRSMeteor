@@ -44,7 +44,7 @@ export function generateStreamAndApp(customers) {
     templateApp = {
             "_id": "TfN3XCoxCNEi4dFk4",
             "name": "Executive Performance Mgmt",
-            "guid": "05aeca7d-c267-4b8d-bf08-98f7c77afef1"
+            "guid": 'effa6799-49f2-4da0-9a9c-aaa47252da18'
         }
         // //FOR EACH TEPMPLATE
         // return Promise.all( //wait till ALL promises are ended (resolved or rejected) (everything, each iteration over the templateApps) is finished before you send the result back to the client
@@ -66,7 +66,7 @@ export function generateStreamAndApp(customers) {
 };
 
 function generateAppForTemplate(templateApp, customer) {
-	result = {};
+    var result = {};
     console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 
     checkStreamStatus(customer) //create a stream for the customer if it not already exists
@@ -90,36 +90,59 @@ function generateAppForTemplate(templateApp, customer) {
         })
 };
 
-export function copyApp(guid, name) {
-    console.log('Copy template: ' + guid + ' to new app: ' + name);
-    check(guid, String);
-    check(name, String);
+function copyApp (guid, name) {
+	// console.log('Copy template: '+guid+' to new app: '+name);
+	check(guid, String);
+	check(name, String);
 
-    var convertAsyncToSync = Meteor.wrapAsync(HTTP.call),
-        resultOfAsyncToSync = convertAsyncToSync('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?name=' + name + '&xrfkey=' + config.xrfkey, {
-            headers: {
-                'hdr-usr': config.headerValue,
-                'X-Qlik-xrfkey': config.xrfkey
-            }
-        });
-    return resultOfAsyncToSync.data.id;
+	return new Promise(function(resolve, reject){ 
+		HTTP.call( 'post', 'http://'+config.host+'/'+config.virtualProxy+'/qrs/app/'+guid+'/copy?name='+name+'&xrfkey='+config.xrfkey, 
+		{
+			headers: {
+				'hdr-usr' : config.headerValue,
+				'X-Qlik-xrfkey': config.xrfkey
+			}
+		}, function( error, response ) {
+			if ( error ) {
+				console.error('error app copy',  error );
+				throw new Meteor.Error('error app copy', error)
+				reject(error);
+			} else {
+				// console.log('Copy app:  HTTP request gave response', response.data );
+				console.log('Copy app HTTP call success:  the generated guid: ', response.data.id);				
+				resolve(response.data.id); //return app Guid
+			}
+		});
+	})
 };
+
+
+// export function copyApp(guid, name) {
+//     console.log('Copy template: ' + guid + ' to new app: ' + name);
+//     check(guid, String);
+//     check(name, String);
+
+//     var convertAsyncToSync = Meteor.wrapAsync(HTTP.call),
+//         resultOfAsyncToSync = convertAsyncToSync('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?name=' + name + '&xrfkey=' + config.xrfkey, {
+//             headers: {
+//                 'hdr-usr': config.headerValue,
+//                 'X-Qlik-xrfkey': config.xrfkey
+//             }
+//         });
+//     return resultOfAsyncToSync.data.id;
+// };
 
 
 function checkStreamStatus(customer) {
     console.log('checkStreamStatus for: ' + customer.name);
     var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
     if (stream) {
-        var streamId = stream.id;
+    	console.log('Stream already exists: ', stream.id);
+        return Promise.resolve(stream.id);
+    } else {
+        console.log('No stream for customer exist, so create one: ' + customer.name);
+        return QSStream.createStream(customer.name);
     }
-    return new Promise(function(resolve, reject) {
-        if (!streamId) {
-            console.log('No stream for customer exist, so create one: ' + customer.name);
-            return QSStream.createStream(customer.name);
-        } else {
-            resolve(streamId);
-        }
-    })
 }
 
 export function getApps() {
