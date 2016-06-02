@@ -248,7 +248,11 @@ export var updateSenseInfo = function updateSenseInfo() {
     Meteor.setTimeout(() => {
         updateSenseInfo2();
 <<<<<<< HEAD
+<<<<<<< HEAD
     }, 8000);
+=======
+    }, 4000);
+>>>>>>> parent of d1601bf... Alles werkt, knoppen netjes gemaakt van de generate button
 =======
     }, 4000);
 >>>>>>> parent of d1601bf... Alles werkt, knoppen netjes gemaakt van de generate button

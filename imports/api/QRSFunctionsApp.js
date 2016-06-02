@@ -20,12 +20,12 @@ qrs = new QRS(config);
 
 
 /* APP GENERATION:
-	-for each customer
-	- create stream if not already exist
-	- copy app
-	- publish to stream
-	- @TODO add 'generated' tag
-	- @TODO add reload task
+    -for each customer
+    - create stream if not already exist
+    - copy app
+    - publish to stream
+    - @TODO add 'generated' tag
+    - @TODO add reload task
 */
 
 export function generateStreamAndApp(customers) {
@@ -81,7 +81,7 @@ function generateAppForTemplate(templateApp, customer) {
         })
         .then(function() {
             console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
-            console.log('	');
+            console.log('   ');
             return Promise.resolve('FINISHED');
         })
         .catch(function(err) {
@@ -90,30 +90,29 @@ function generateAppForTemplate(templateApp, customer) {
         })
 };
 
-function copyApp (guid, name) {
-	// console.log('Copy template: '+guid+' to new app: '+name);
-	check(guid, String);
-	check(name, String);
+function copyApp(guid, name) {
+    // console.log('Copy template: '+guid+' to new app: '+name);
+    check(guid, String);
+    check(name, String);
 
-	return new Promise(function(resolve, reject){ 
-		HTTP.call( 'post', 'http://'+config.host+'/'+config.virtualProxy+'/qrs/app/'+guid+'/copy?name='+name+'&xrfkey='+config.xrfkey, 
-		{
-			headers: {
-				'hdr-usr' : config.headerValue,
-				'X-Qlik-xrfkey': config.xrfkey
-			}
-		}, function( error, response ) {
-			if ( error ) {
-				console.error('error app copy',  error );
-				throw new Meteor.Error('error app copy', error)
-				reject(error);
-			} else {
-				// console.log('Copy app:  HTTP request gave response', response.data );
-				console.log('Copy app HTTP call success:  the generated guid: ', response.data.id);				
-				resolve(response.data.id); //return app Guid
-			}
-		});
-	})
+    return new Promise(function(resolve, reject) {
+        HTTP.call('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?name=' + name + '&xrfkey=' + config.xrfkey, {
+            headers: {
+                'hdr-usr': config.headerValue,
+                'X-Qlik-xrfkey': config.xrfkey
+            }
+        }, function(error, response) {
+            if (error) {
+                console.error('error app copy', error);
+                throw new Meteor.Error('error app copy', error)
+                reject(error);
+            } else {
+                // console.log('Copy app:  HTTP request gave response', response.data );
+                console.log('Copy app HTTP call success:  the generated guid: ', response.data.id);
+                resolve(response.data.id); //return app Guid
+            }
+        });
+    })
 };
 
 
@@ -137,7 +136,7 @@ function checkStreamStatus(customer) {
     console.log('checkStreamStatus for: ' + customer.name);
     var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
     if (stream) {
-    	console.log('Stream already exists: ', stream.id);
+        console.log('Stream already exists: ', stream.id);
         return Promise.resolve(stream.id);
     } else {
         console.log('No stream for customer exist, so create one: ' + customer.name);
@@ -156,7 +155,7 @@ export function getApps() {
                 .then(function(docList) {
 
                     // docList.forEach(function(doc) {
-                    // 	console.log(doc.qDocName);
+                    //  console.log(doc.qDocName);
                     // });
                     return docList;
                 });
@@ -172,19 +171,14 @@ export function publishApp(appGuid, appName, streamId, customerName) {
     check(appName, String);
     check(streamId, String);
 
-    console.log('de customerName is:'+customerName);
+    console.log('de customerName is:' + customerName);
 
     return new Promise(function(resolve, reject) {
-        HTTP.call('put', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + appGuid + '/publish', {
+        HTTP.call('put', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + config.xrfkey, {
             headers: {
                 'hdr-usr': config.headerValue,
                 'X-Qlik-xrfkey': config.xrfkey
-            },
-            params:{
-            	'xrfkey': config.xrfkey,
-            	'stream': streamId,
-            	'name': customerName+'-'+appName
-            },
+            }
         }, function(error, response) {
             if (error) {
                 console.error('error publishApp', error);
@@ -196,6 +190,8 @@ export function publishApp(appGuid, appName, streamId, customerName) {
             }
         });
     })
+
+
 };
 
 
