@@ -52,14 +52,14 @@ export function generateStreamAndApp(customers) {
         //             return templateApp.then(function() {
 
     //FOR EACH CUSTOMER
-    return Promise.all(
-            customers.reduce(function(prev, curr) {
+    // return Promise.all(
+            return customers.reduce(function(prev, curr) {
                 return prev.then(function() {
                     return generateAppForTemplate(templateApp, curr)
                 })
             }, Promise.resolve())
             .then(function() {}) //reduce, 
-        ) //each customer Promise.all,
+        // ) //each customer Promise.all,
         //             }) //templateApp.then
         //     }) //each template
         // ) //promise all generation total

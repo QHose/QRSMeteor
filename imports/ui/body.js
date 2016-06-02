@@ -25,13 +25,16 @@ Template.body.helpers({
         return TemplateApps.find();
     },
     countStreams() {
-        return Streams.find().count();
+        return Streams.find()
+            .count();
     },
     countApps() {
-        return Apps.find().count();
+        return Apps.find()
+            .count();
     },
     formatDate(date) {
-        return moment(date).format('DD-MM-YYYY');
+        return moment(date)
+            .format('DD-MM-YYYY');
     },
     appSettings: function() {
         return {
@@ -54,7 +57,8 @@ Template.body.helpers({
                     label: 'ModifiedDate',
                     hidden: true,
                     fn: function(value) {
-                        return moment(value).format('DD-MM-YYYY');
+                        return moment(value)
+                            .format('DD-MM-YYYY');
                     }
                 }, {
                     key: 'qMeta.stream.name',
@@ -68,7 +72,8 @@ Template.body.helpers({
                     label: 'Last reload',
                     hidden: true,
                     fn: function(value) {
-                        return moment(value).format('DD-MM-YYYY');
+                        return moment(value)
+                            .format('DD-MM-YYYY');
                     }
                 },
                 // { key: 'qConnectedUsers', label: 'ConnectedUsers' },
@@ -117,7 +122,8 @@ Template.body.helpers({
                     key: 'createdDate',
                     label: 'Created date',
                     fn: function(value, object) {
-                        return moment(value).format('DD-MM-YYYY');
+                        return moment(value)
+                            .format('DD-MM-YYYY');
                     }
                 }, {
                     key: 'deleteStream',
@@ -149,7 +155,8 @@ Template.body.events({
     'click .generateStreamAndApp' () {
         console.log('click event generateStreamAndApp');
 
-        var selectedCustomers = Customers.find({ checked: true }).fetch();
+        var selectedCustomers = Customers.find({ checked: true })
+            .fetch();
         // console.log('get customers from database, and pass them to the generateStreamAndApp method', selectedCustomers);
 
         Meteor.call('generateStreamAndApp', selectedCustomers, function(err, result) {
@@ -236,26 +243,20 @@ Template.body.events({
     'click .toggleAllCustomers' () {
         console.log('deSelect all dummyCustomers clicked');
 
-        _.each(Customers.find({}).fetch(), function(customer) {
-            Customers.update(customer._id, {
-                $set: { checked: !customer.checked },
-            });
-        })
+        _.each(Customers.find({})
+            .fetch(),
+            function(customer) {
+                Customers.update(customer._id, {
+                    $set: { checked: !customer.checked },
+                });
+            })
     }
 }); //end Meteor events
 
 export var updateSenseInfo = function updateSenseInfo() {
     Meteor.setTimeout(() => {
-        updateSenseInfo2();
-<<<<<<< HEAD
-<<<<<<< HEAD
-    }, 8000);
-=======
-    }, 4000);
->>>>>>> parent of d1601bf... Alles werkt, knoppen netjes gemaakt van de generate button
-=======
-    }, 4000);
->>>>>>> parent of d1601bf... Alles werkt, knoppen netjes gemaakt van de generate button
+        updateSenseInfo2()
+    }, 8000)
 };
 
 var updateSenseInfo2 = function updateSenseInfo2() {
@@ -268,9 +269,10 @@ var updateSenseInfo2 = function updateSenseInfo2() {
         } else {
             console.log('Sense changed, so we called meteor.method to update the information we have about APPS');
             // Delete all existing apps from database
-            Apps.find().forEach(function(app) {
-                Apps.remove(app._id);
-            });
+            Apps.find()
+                .forEach(function(app) {
+                    Apps.remove(app._id);
+                });
 
             //insert all docs into the database
             docList.forEach(function(doc) {
@@ -284,11 +286,12 @@ var updateSenseInfo2 = function updateSenseInfo2() {
             throw new Meteor.Error('Unable to get the streams from Qlik Sense', error.message);
         } else {
             console.log('new streams received from Sense, so update the local mongoDB information we have about Streams');
-            
+
             // Delete all existing streams from database
-            Streams.find().forEach(function(stream) {
-                Streams.remove(stream._id);
-            });
+            Streams.find()
+                .forEach(function(stream) {
+                    Streams.remove(stream._id);
+                });
 
             //insert all docs into the database
             streams.forEach(function(stream) {
@@ -307,5 +310,6 @@ Template.body.onCreated(function() {
 })
 
 Template.body.onRendered(function() {
-    this.$(".dropdown").dropdown();
+    this.$(".dropdown")
+        .dropdown();
 });
