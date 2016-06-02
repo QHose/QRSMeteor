@@ -183,7 +183,7 @@ export function publishApp(appGuid, appName, streamId, customerName) {
             params:{
             	'xrfkey': config.xrfkey,
             	'stream': streamId,
-            	'name': customerName+'-'+appName
+            	'name': appName
             },
         }, function(error, response) {
             if (error) {
