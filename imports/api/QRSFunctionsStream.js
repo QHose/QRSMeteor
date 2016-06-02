@@ -14,20 +14,14 @@ var qrs = new QRS(config);
 
 //STREAM FUNCTIONS
 export function deleteStream(guid) {
-    return HTTP.call('DELETE', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/stream/' + guid + '?xrfkey=' + config.xrfkey, {
-        headers: {
-            'hdr-usr': config.headerValue,
-            'X-Qlik-xrfkey': config.xrfkey
-        }
-    }, function(error, response) {
-        if (error) {
-            console.error(error);
-            throw new Meteor.Error('error stream delete', error)
-        } else {
-            console.log(response);
-            return response;
-        }
-    });
+    try {
+        const result = HTTP.del('http://' + config.host + '/' + config.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + config.xrfkey, {
+            headers: authHeaders                       
+        })
+        return result;
+    } catch (err) {
+        throw new Meteor.Error('Create stream failed', err.message);
+    }
 };
 
 export function getStreams() {
