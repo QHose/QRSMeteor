@@ -52,9 +52,8 @@ export function generateStreamAndApp(customers) {
 
                         checkStreamStatus(customer) //create a stream for the customer if it not already exists
                             .then(function(resultOfStreamStep) { //Copy the APP
-                                console.log('STEP 2 COPY the app: result Of create Stream Step: ', resultOfStreamStep);
-                                console.log('Now calling copy app');
-                                // return copyApp(templateApp.guid, customer.name + ' - ' + templateApp.name)
+                                console.log('STEP 2 COPY the app: result Of create Stream Step: ', resultOfStreamStep);                                
+                                return copyApp(templateApp.guid, customer.name + ' - ' + templateApp.name)
                             })
                             // .then(function(appGuid){ //Publish into streamId
                             // 	console.log('STEP 3 PUBLISH: APP HAS BEEN COPIED AND HAS RECEIVED GUID', appGuid);
@@ -74,6 +73,22 @@ export function generateStreamAndApp(customers) {
 
     return generationEndedPromise;
 };
+
+export function copyApp(guid, name) {
+    console.log('Copy template: ' + guid + ' to new app: ' + name);
+    check(guid, String);
+    check(name, String);
+
+    var convertAsyncToSync = Meteor.wrapAsync(HTTP.call),
+        resultOfAsyncToSync = convertAsyncToSync('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?name=' + name + '&xrfkey=' + config.xrfkey, {
+            headers: {
+                'hdr-usr': config.headerValue,
+                'X-Qlik-xrfkey': config.xrfkey
+            }
+        });     
+    return resultOfAsyncToSync;
+};
+
 
 function checkStreamStatus(customer) {
     console.log('checkStreamStatus for: ' + customer.name);
@@ -112,23 +127,7 @@ export function getApps() {
 
 };
 
-export function copyApp(guid, name) {
-    console.log('Copy template: ' + guid + ' to new app: ' + name);
-    check(guid, String);
-    check(name, String);
 
-    var convertAsyncToSync = Meteor.wrapAsync(HTTP.call),
-        resultOfAsyncToSync = convertAsyncToSync('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?name=' + name + '&xrfkey=' + config.xrfkey, {
-            headers: {
-                'hdr-usr': config.headerValue,
-                'X-Qlik-xrfkey': config.xrfkey
-            }
-        });
-
-    return resultOfAsyncToSync;
-
-
-};
 
 export function publishApp(appGuid, appName, streamId) {
     console.log('Publish app: ' + appName + ' to stream: ' + streamId);
