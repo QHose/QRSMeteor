@@ -247,7 +247,7 @@ Template.body.events({
 export var updateSenseInfo = function updateSenseInfo() {
     Meteor.setTimeout(() => {
         updateSenseInfo2();
-    }, 4000);
+    }, 12000);
 };
 
 var updateSenseInfo2 = function updateSenseInfo2() {

@@ -86,7 +86,7 @@ function generateAppForTemplate(templateApp, customer) {
         })
         .catch(function(err) {
             console.error(err);
-            // throw new Meteor.Error('Catch error app generation chain: App generation failed', 'err');
+            throw new Meteor.Error('Catch error app generation chain: App generation failed', err.message);
         })
 };
 

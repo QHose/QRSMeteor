@@ -61,7 +61,7 @@ Meteor.methods({
         return QSApp.deleteApp(guid);
     },
     removeAllCustomers: function() {
-        return QSApp.Customers.remove({});
+        return Customers.remove({});
     },
 
     //STREAM METHODS
