@@ -46,23 +46,22 @@ export function generateStreamAndApp(customers) {
             "name": "Executive Performance Mgmt",
             "guid": 'effa6799-49f2-4da0-9a9c-aaa47252da18'
         }
-        //FOR EACH TEPMPLATE
-    return 
-    // Promise.all( //wait till ALL promises are ended (resolved or rejected) (everything, each iteration over the templateApps) is finished before you send the result back to the client
-            templateApps.reduce(function(templateApp, next) {
-                return templateApp.then(function() {
+        // //FOR EACH TEPMPLATE
+        // return Promise.all( //wait till ALL promises are ended (resolved or rejected) (everything, each iteration over the templateApps) is finished before you send the result back to the client
+        //         templateApps.reduce(function(templateApp, next) {
+        //             return templateApp.then(function() {
 
-                        //FOR EACH CUSTOMER
-                        return Promise.all(
-                                customers.reduce(function(prev, curr) {
-                                    return prev.then(function() {
-                                        return generateAppForTemplate(templateApp, curr)
-                                    })
-                                }, Promise.resolve())
-                                .then(function() {}) //reduce, 
-                            ) //each customer Promise.all,
-                    }) //templateApp.then
-            }) //each template
+    //FOR EACH CUSTOMER
+    return Promise.all(
+            customers.reduce(function(prev, curr) {
+                return prev.then(function() {
+                    return generateAppForTemplate(templateApp, curr)
+                })
+            }, Promise.resolve())
+            .then(function() {}) //reduce, 
+        ) //each customer Promise.all,
+        //             }) //templateApp.then
+        //     }) //each template
         // ) //promise all generation total
 };
 
@@ -91,29 +90,30 @@ function generateAppForTemplate(templateApp, customer) {
         })
 };
 
-function copyApp(guid, name) {
-    // console.log('Copy template: '+guid+' to new app: '+name);
-    check(guid, String);
-    check(name, String);
+function copyApp (guid, name) {
+	// console.log('Copy template: '+guid+' to new app: '+name);
+	check(guid, String);
+	check(name, String);
 
-    return new Promise(function(resolve, reject) {
-        HTTP.call('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?name=' + name + '&xrfkey=' + config.xrfkey, {
-            headers: {
-                'hdr-usr': config.headerValue,
-                'X-Qlik-xrfkey': config.xrfkey
-            }
-        }, function(error, response) {
-            if (error) {
-                console.error('error app copy', error);
-                throw new Meteor.Error('error app copy', error)
-                reject(error);
-            } else {
-                // console.log('Copy app:  HTTP request gave response', response.data );
-                console.log('Copy app HTTP call success:  the generated guid: ', response.data.id);
-                resolve(response.data.id); //return app Guid
-            }
-        });
-    })
+	return new Promise(function(resolve, reject){ 
+		HTTP.call( 'post', 'http://'+config.host+'/'+config.virtualProxy+'/qrs/app/'+guid+'/copy?name='+name+'&xrfkey='+config.xrfkey, 
+		{
+			headers: {
+				'hdr-usr' : config.headerValue,
+				'X-Qlik-xrfkey': config.xrfkey
+			}
+		}, function( error, response ) {
+			if ( error ) {
+				console.error('error app copy',  error );
+				throw new Meteor.Error('error app copy', error)
+				reject(error);
+			} else {
+				// console.log('Copy app:  HTTP request gave response', response.data );
+				console.log('Copy app HTTP call success:  the generated guid: ', response.data.id);				
+				resolve(response.data.id); //return app Guid
+			}
+		});
+	})
 };
 
 
@@ -137,7 +137,7 @@ function checkStreamStatus(customer) {
     console.log('checkStreamStatus for: ' + customer.name);
     var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
     if (stream) {
-        console.log('Stream already exists: ', stream.id);
+    	console.log('Stream already exists: ', stream.id);
         return Promise.resolve(stream.id);
     } else {
         console.log('No stream for customer exist, so create one: ' + customer.name);
