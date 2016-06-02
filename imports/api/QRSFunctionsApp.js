@@ -137,7 +137,7 @@ function checkStreamStatus(customer) {
     var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
     if (stream) {
         console.log('Stream already exists: ', stream.id);
-        return Promise.resolve(stream.id);
+        return stream.id
     } else {
         console.log('No stream for customer exist, so create one: ' + customer.name);
         return QSStream.createStream(customer.name);

@@ -36,30 +36,18 @@ export function getStreams() {
 
 
 export function createStream(name) {
-    console.log('QRS Functions Stream, create the stream with name', name);
+    console.log('QRS sync Functions Stream, create the stream with name', name);
 
-    return new Promise(function(resolve, reject) {
-        HTTP.call('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/stream',  {
-            headers: {
-                'hdr-usr': config.headerValue,
-                'X-Qlik-xrfkey': config.xrfkey
-            },
-            params:{'xrfkey': config.xrfkey},
-            data:{ "name": name }
-        }, function(error, response) {
-            if (error) {
-                console.error('error createStream', error);
-                throw new Meteor.Error('error stream create', error.message)
-                reject(error);
-            } else {
-                // console.log('Copy app:  HTTP request gave response', response.data );
-                console.log('create stream HTTP call success:  the generated guid: ', response.data.id);
-                resolve(response.data.id); //return stream Guid
-            }
-        });
-    })
-
-
+    try {
+        const result = HTTP.post('http://' + config.host + '/' + config.virtualProxy + '/qrs/stream', {
+            headers: headers,
+            params: { 'xrfkey': config.xrfkey },
+            data: { "name": name }
+        })
+        return result;
+    } catch (err) {
+        throw new Meteor.Error('Create stream failed', err.message);
+    }
 };
 
 
