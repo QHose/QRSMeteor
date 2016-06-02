@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Customers } from '../api/customers.js';
+import { TemplateApps } from '../api/apps.js';
 import { updateSenseInfo } from './body.js';
 
 import './customer.html';
@@ -31,15 +32,17 @@ Template.customer.events({
       }
     });
   },
-  'click .generateApp'() {
-    var customerName = this.name;
-    Meteor.call('copyApp',customerName, function(err, result) {
+  'click .copyApp'() {
+    console.log('copyApp clicked');
+    var customer = this; //if you click on a row in the customer template, the current customer is available in this
+
+    Meteor.call('copyAppForOneCustomer',customer, function(err, result) {
       if (err) {
         sAlert.error(err);
         console.log(err);
       } else {
-        console.log('generateApp succes', result);
-        sAlert.success('Streams created for this customer'+customerName); //, and apps have been published into the customer stream ');
+        console.log('copy app succes', result);
+        sAlert.success('App copied for customer: '+customerName); //, and apps have been published into the customer stream ');
         updateSenseInfo();
       }
     });

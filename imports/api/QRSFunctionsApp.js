@@ -90,8 +90,8 @@ function generateAppForTemplate(templateApp, customer) {
         })
 };
 
-function copyApp(guid, name) {
-    // console.log('Copy template: '+guid+' to new app: '+name);
+export function copyApp(guid, name) {
+    console.log('Copy template: '+guid+' to new app: '+name);
     check(guid, String);
     check(name, String);
 
