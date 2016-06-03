@@ -58,9 +58,10 @@ Meteor.methods({
         return QSApp.copyApp(guid, name);
     },
     copyAppSelectedCustomers(currentApp) { //the app the user clicked on        
-        check(currentApp, Object);
+        if(!currentApp){throw new Meteor.Error('no App selected to copy')};
+        
         customers = Customers.find({ checked: true }); //all selected customers
-        check(customers);
+        if(! customers){throw new Meteor.Error('no customers selected to copy the app for')};
 
         customers
             .forEach(customer => {
