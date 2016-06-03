@@ -91,28 +91,20 @@ function generateAppForTemplate(templateApp, customer) {
 };
 
 export function copyApp(guid, name) {
-    console.log('Copy template: ' + guid + ' to new app: ' + name);
     check(guid, String);
     check(name, String);
+    console.log('QRS sync Functions Appp, copy the app id' + guid + 'to app with name: ', name);
 
-    return new Promise(function(resolve, reject) {
-        HTTP.call('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?name=' + name + '&xrfkey=' + config.xrfkey, {
-            headers: {
-                'hdr-usr': config.headerValue,
-                'X-Qlik-xrfkey': config.xrfkey
-            }
-        }, function(error, response) {
-            if (error) {
-                console.error('error app copy', error);
-                throw new Meteor.Error('error app copy', error)
-                reject(error);
-            } else {
-                // console.log('Copy app:  HTTP request gave response', response.data );
-                console.log('Copy app HTTP call success:  the generated guid: ', response.data.id);
-                resolve(response.data.id); //return app Guid
-            }
-        });
-    })
+    try {
+        const result = HTTP.post('http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?', {
+            headers: authHeaders,
+            params: { 'xrfkey': config.xrfkey, 'name': name },
+            data: { "name": name }
+        })
+        return result;
+    } catch (err) {
+        throw new Meteor.Error('Create stream failed', err.message);
+    }
 };
 
 
@@ -199,9 +191,9 @@ export function deleteApp(guid) {
     console.log('QRSApp sync deleteApp');
     try {
         const result = HTTP.del('http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + config.xrfkey, {
-            headers: headers
+            headers: authHeaders
         })
-        return result;        
+        return result;
     } catch (err) {
         throw new Meteor.Error('App delete failed', err.message);
     }
