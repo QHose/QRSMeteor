@@ -201,21 +201,10 @@ Template.body.events({
             //Copy APP
             if (event.target.className === "copyApp") {
                 console.log('Copy app clicked: ' + currentApp.qDocName);
-                try {
-                    if (Customers.find({ checked: true })) //there are selected customers
-                    {
-                        Meteor.call('copyAppSelectedCustomers', currentApp); //contains QVF guid of the current iteration over the apps
-                        updateSenseInfo();
-                        sAlert.success("QVF '" + currentApp.qDocName + " copied in the QMC");
-                    } else{
-                        throw new Meteor.Error('No customers selected to copy the app for');
-                    }
 
-                } catch (err) {
-                    throw new Meteor.Error('Copy app failed', err.message);
-                }
-
-
+                Meteor.call('copyAppSelectedCustomers', currentApp); //contains QVF guid of the current iteration over the apps    
+                sAlert.success("QVF '" + currentApp.qDocName + " copied in the QMC");
+                updateSenseInfo();
 
             }
 
@@ -246,7 +235,7 @@ Template.body.events({
                             console.log(error);
                         } else {
                             console.log('Stream removed');
-                            sAlert.success('Stream: '+currentStream.name + " deleted in the QMC");
+                            sAlert.success('Stream: ' + currentStream.name + " deleted in the QMC");
                             updateSenseInfo();
                         }
                     }) //method call 

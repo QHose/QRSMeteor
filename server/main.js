@@ -57,76 +57,75 @@ Meteor.methods({
 
         return QSApp.copyApp(guid, name);
     },
-    copyAppSelectedCustomers(currentApp) {  //the app the user clicked on
+    copyAppSelectedCustomers(currentApp) { //the app the user clicked on        
         check(currentApp, Object);
-        
-        Customers.find({ checked: true })
+        customers = Customers.find({ checked: true }); //all selected customers
+        check(customers);
+
+        customers
             .forEach(customer => {
-                Meteor.call('copyApp', currentApp.qDocId, customer.name+'-'+currentApp.qDocName );
+                Meteor.call('copyApp', currentApp.qDocId, customer.name + '-' + currentApp.qDocName);
             });
+    },
+    deleteApp(guid) {
+        check(guid, String);
+        console.log('method deleteApp');
+        return QSApp.deleteApp(guid);
+    },
+    removeAllCustomers: function() {
+        return QSApp.Customers.remove({});
+    },
 
-    
-    return QSApp.copyApp(guid, name);
-},
-deleteApp(guid) {
-    check(guid, String);
-    console.log('method deleteApp');
-    return QSApp.deleteApp(guid);
-},
-removeAllCustomers: function() {
-    return QSApp.Customers.remove({});
-},
+    //STREAM METHODS
+    deleteStream(guid) {
+        check(guid, String);
+        return QSStream.deleteStream(guid);
+    },
+    createStream(name) {
+        return QSStream.createStream(name);
+    },
+    getStreams() {
+        return QSStream.getStreams();
+    },
+    getSecurityRules() {
+        return QSApp.getSecurityRules();
+    },
+    //NPM QRS CALLS
+    countApps() {
+        return qrs.get('/qrs/app/count');
+    },
+    countStreams() {
+        return qrs.get('/qrs/stream/count');
+    }
+    // updateAppsCollection() {
+    //     console.log('Method: update the local mongoDB with fresh data from Qlik Sense');
 
-//STREAM METHODS
-deleteStream(guid) {
-    check(guid, String);
-    return QSStream.deleteStream(guid);
-},
-createStream(name) {
-    return QSStream.createStream(name);
-},
-getStreams() {
-    return QSStream.getStreams();
-},
-getSecurityRules() {
-    return QSApp.getSecurityRules();
-},
-//NPM QRS CALLS
-countApps() {
-    return qrs.get('/qrs/app/count');
-},
-countStreams() {
-    return qrs.get('/qrs/stream/count');
-}
-// updateAppsCollection() {
-//     console.log('Method: update the local mongoDB with fresh data from Qlik Sense');
+    //     try {
+    //         Apps.remove();
+    //     } catch (error) {
+    //         throw new Meteor.Error('Unable to remove apps from collection', error.message)
+    //     };
 
-//     try {
-//         Apps.remove();
-//     } catch (error) {
-//         throw new Meteor.Error('Unable to remove apps from collection', error.message)
-//     };
+    //     var myPromise = qrs.get('/qrs/app/full')
+    //         .then(
+    //             function fulfilled(docList) {
+    //                 try {
+    //                     console.log('try to insert document array into mongo');
+    //                     docList.forEach(doc => {
+    //                         Apps.insert(doc);
+    //                         console.log('inserted document ', doc.qDocName);
+    //                     });
+    //                 } catch (error) { console.log(error) }
 
-//     var myPromise = qrs.get('/qrs/app/full')
-//         .then(
-//             function fulfilled(docList) {
-//                 try {
-//                     console.log('try to insert document array into mongo');
-//                     docList.forEach(doc => {
-//                         Apps.insert(doc);
-//                         console.log('inserted document ', doc.qDocName);
-//                     });
-//                 } catch (error) { console.log(error) }
-
-//             },
-//             function Rejected(error) {
-//                 console.error('uh oh: ', error); // 'uh oh: something bad happened’
-//             })
-//         .catch(function(error) {
-//             console.log('Caught!', error);
-//             throw new Meteor.Error('Unable to get streams from Sense', error.message);
-//         });
-// }
+    //             },
+    //             function Rejected(error) {
+    //                 console.error('uh oh: ', error); // 'uh oh: something bad happened’
+    //             })
+    //         .catch(function(error) {
+    //             console.log('Caught!', error);
+    //             throw new Meteor.Error('Unable to get streams from Sense', error.message);
+    //         });
+    // }
 });
 
 // Meteor.startup(() => {
