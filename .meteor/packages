@@ -31,3 +31,5 @@ http
 fortawesome:fontawesome
 twbs:bootstrap
 mvrx:bluebird
+aldeed:autoform
+aldeed:collection2

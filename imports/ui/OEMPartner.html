@@ -1,0 +1,100 @@
+<template name='OEMPartner'>
+    <div class="ui segment">
+        <div class="ui message">
+            <div class="header">
+                Generate streams and apps via the API's
+            </div>
+            <ul class="list">
+                <li>Select the customers for which you want to generate the streams and apps </li>
+                <li>We will create 1 stream per customer </li>
+                <li>A copy will be made for each selected template and published in the stream for that customer </li>
+                <li>Press dummy/delete and 100+ dummy customers will be inserted/deleted</li>
+            </ul>
+        </div>
+    </div>
+    <div class="ui segment">
+        <i class="users icon"></i>
+        <div class="ui left input">
+            <form class="new-customer">
+                <input type="text" name="text" placeholder="Add new customer" />
+            </form>
+        </div>
+        <div class="ui teal buttons">
+            <div class="ui button generateStreamAndApp">Generate</div>
+            <div class="ui floating dropdown icon button">
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
+                    <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
+                    <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui segment">
+        <h4>Apps will be generated of each of these template apps</h4>
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>App (QVF)</th>
+                    <th>Don't mark as template</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each templateApps}}
+                <tr>
+                    <td> {{name}}</td>
+                    <td class="removeTemplateApp"><i class="remove circle icon"></i></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <div class="ui segment">
+        <h4> Customers stored in the database of our fictive SaaS platform </h4>
+        <table class="ui celled striped table">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Delete customer</th>                    
+                    <th>Generate Stream</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each customers}} {{> customer}} {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <!-- <div class="ui segment">
+        <h4> Engine API configuration </h4> {{> quickForm collection=engineConfigCollection doc=engineConfig id="updateEngineConfig" type="update"}}
+    </div> -->
+    <!--  <div class="ui segment">
+                <h4> Steps to generate an app </h4>
+                <div class="ui three top attached steps">
+                    <div class="step">
+                        <i class="truck icon"></i>
+                        <div class="content">
+                            <div class="title">Sense</div>
+                            <div class="description">Specify how to connect to Sense</div>
+                        </div>
+                    </div>
+                    <div class="active step">
+                        <i class="payment icon"></i>
+                        <div class="content">
+                            <div class="title">Engina API</div>
+                            <div class="description">How can Qsocks connect?</div>
+                        </div>
+                    </div>
+                    <div class="disabled step">
+                        <i class="info icon"></i>
+                        <div class="content">
+                            <div class="title">QRS API</div>
+                            <div class="description">How can we connect to the QRS API?</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui attached segment">
+                    <p></p>
+                </div>
+            </div> -->
+</template>

@@ -1,232 +1,34 @@
 <body>
-
-  <!-- Navigation bar -->
-  <div class="ui fixed inverted menu">      
-    <a href="#" class="header item">
-      <!-- <img class="logo" src="assets/images/logo.png">  -->
-      Qlik Sense API: OEM App generation
-    </a>  
-
-  </div>
-  {{> sAlert}} 
-
-
-  <div class="ui three column doubling grid">
-
-    <div class="column">
-      <div class="ui segment">  
-        <div class="ui message">
-          <div class="header">
-            Generate streams and apps via the API's
-          </div>
-          <ul class="list">
-            <li>Select the customers for which you want to generate the streams and apps </li>
-            <li>We will create 1 stream per customer </li>
-            <li>A copy will be made for each selected template and published in the stream for that customer </li>
-            <li>Press dummy/delete and 100+ dummy customers will be inserted/deleted</li>
-          </ul>
+    <!-- Navigation bar -->
+    <div class="ui fixed inverted menu">
+        <a href="#" class="header item">
+            <img class="logo" src="images/sense.png"> Qlik Sense API: OEM App generation demo
+        </a>
+    </div>
+    {{> sAlert}}
+    <div class="ui three column doubling grid">
+        <div class="column">
+            {{> OEMPartner}}
         </div>
-      </div>
-
-      <div class="ui segment"> 
-        <i class="users icon"></i>
-        <div class="ui left input">
-
-          <form class="new-customer">
-            <input type="text" name="text" placeholder="Add new customer" />
-          </form>   
-        </div>
-        <div class="ui teal buttons">
-          <div class="ui button generateStreamAndApp">Generate</div>
-          <div class="ui floating dropdown icon button">
-            <i class="dropdown icon"></i>
-            <div class="menu">
-              <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
-              <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
-              <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
+        <div class="column">
+            <div class="column">
+                <div class="ui segment">
+                    <h4 class="ui horizontal divider header">
+                    <i class="tag dashboard"></i>
+                  Currently {{countApps}} apps in Qlik Sense
+                </h4> {{> reactiveTable settings=appSettings}}
+                </div>
             </div>
-          </div>
         </div>
-
-
-        <!-- <div class="ui button" tabindex="0">
-          Focusable
-        </div> -->
-      </div>
-
-      <div class="ui segment">
-        <h4>Apps will be generated of each of these template apps</h4>
-        <table class="ui celled table">            
-          <thead>
-            <tr>
-              <th>App (QVF)</th>      
-              <th>Don't mark as template</th>      
-            </tr>
-          </thead>
-          <tbody>
-            {{#each templateApps}}
-            <tr>
-              <td> {{name}}</td>                
-              <td class="removeTemplateApp"><i class="remove circle icon"></i></td>
-            </tr>
-            {{/each}}
-          </tbody>
-        </table>
-        
-      </div>
-
-      <div class="ui segment">
-        <h4> Customers stored in the database of our fictive SaaS platform </h4>
-        <table class="ui celled striped table">
-          <thead>
-            <tr>              
-              <th>Customer</th>
-              <th>Delete customer</th>
-              <th>Generate App</th>
-              <th>Generate Stream</th>            
-            </tr>
-          </thead>
-          <tbody>
-            {{#each customers}}
-            {{> customer}}
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
-
-
-
-
-    </div>
-
-
-    <div class="column">
-
-      <div class="column">
-        <div class="ui segment">
-         <h4 class="ui horizontal divider header">
-          <i class="tag dashboard"></i>
-          Currently {{countApps}} apps in Qlik Sense
-        </h4>
-
-        {{> reactiveTable settings=appSettings}}
-        
-
-        <!-- <table class="ui celled table">
-          <thead>
-            <tr>
-              <th>App</th>
-              <th>Description</th>
-              <th>Published?</th>
-              <th>Stream </th>
-              <th>delete?</th>
-            </tr></thead>
-            <tbody>
-              {{#each apps}}
-              <tr>
-                <td> {{qDocName}}</td>
-                <td>{{qMeta.description}}</td>
-                <td>{{qMeta.published}}</td>
-                <td>{{qMeta.stream}}</td>
-                <td class="deleteApp"><i class="remove icon"></i> </td>
-
-              </tr>
-              {{/each}}
-            </tbody>
-          </table> -->
-        </div>
-      </div>
-    </div>
-
-    <div class="column">
-
-      <div class="column">
-        <div class="ui segment">
-         <h4 class="ui horizontal divider header">
+        <div class="column">
+            <div class="column">
+                <div class="ui segment">
+                    <h4 class="ui horizontal divider header">
           <i class="tag icon"></i>
           Currently {{countStreams}} streams in Qlik Sense
-        </h4>
-        {{> reactiveTable settings=streamSettings}}
-     <!--    <table class="ui celled table">
-          <thead>
-            <tr>
-              <th>Stream</th>
-              <th>Owner UDC - UserID</th>
-              <th>Date created</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each streams}}
-            <tr>
-              <td> {{name}}</td>  
-              <td> {{owner.userDirectory}} - {{owner.userId}}</td>  
-              <td> {{formatDate createdDate}}</td>                  
-            </tr>
-            {{/each}}
-          </tbody>
-        </table> -->
-      </div>
-    </div>
-  </div>
-
-
-      <!-- <div class="column">
-        <div class="ui segment">
-         <div class="ui grid">
-          <div class="four wide column">
-            <div class="ui vertical fluid tabular menu">
-              <a class="active item">
-                Bio
-              </a>
-              <a class="item">
-                Pics
-              </a>
-              <a class="item">
-                Companies
-              </a>
-              <a class="item">
-                Links
-              </a>
+        </h4> {{> reactiveTable settings=streamSettings}}
+                </div>
             </div>
-          </div>
-          <div class="twelve wide stretched column">
-            <div class="ui segment">
-              This is an stretched grid column. This segment will always match the tab height
-            </div>
-          </div>
         </div>
-
-      </div>
     </div>
-  -->
-</div> 
-
 </body>
-
- <!--  <div class="column">
-          <div class="ui segment">Content</div>
-        </div>
-      </div> -->
-
-
-
-       <!-- 
-        <table>
-          <tr> <i class="users icon"></i>
-            <div class="ui left input">
-
-              <form class="new-customer">
-                <input type="text" name="text" placeholder="Add new customer" />
-              </form>            
-            </div></tr>
-            <tr><button class="ui button generateStreamAndApp">
-              Generate the streams and apps
-            </button> </tr>
-            <tr><button class="ui button insertDummyCustomers">
-              Insert dummy customers
-            </button> </tr>
-            <tr> <button class="ui button deleteAllCustomers">
-              delete all customers
-            </button></tr>
-          </table>
-        -->

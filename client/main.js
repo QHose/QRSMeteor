@@ -1,4 +1,13 @@
-import '../imports/ui/body.js';
+import '../imports/ui/body';
+import '/imports/ui/UIHelpers';
+import { Template } from 'meteor/templating';
+import { Apps, TemplateApps } from '/imports/api/apps.js'
+import { Streams } from '/imports/api/streams.js'
+import { EngineConfig } from '/imports/api/config.js'
+
+import moment from 'moment';
+import lodash from 'lodash';
+
 
 Meteor.startup(function () {
 // console.log('configure sAlert');

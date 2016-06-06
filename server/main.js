@@ -14,7 +14,7 @@ import { config, engineConfig, certs } from '/imports/api/config.js';
 // import { certs } from '/imports/api/config.js'; 
 
 
-//insyall NPM modules
+//install NPM modules
 var fs = require('fs');
 var qsocks = require('qsocks');
 var QRS = require('qrs');
@@ -58,10 +58,14 @@ Meteor.methods({
         return QSApp.copyApp(guid, name);
     },
     copyAppSelectedCustomers(currentApp) { //the app the user clicked on        
-        if(!currentApp){throw new Meteor.Error('no App selected to copy')};
-        
+        if (!currentApp) {
+            throw new Meteor.Error('no App selected to copy')
+        };
+
         customers = Customers.find({ checked: true }); //all selected customers
-        if(! customers){throw new Meteor.Error('no customers selected to copy the app for')};
+        if (!customers) {
+            throw new Meteor.Error('no customers selected to copy the app for')
+        };
 
         customers
             .forEach(customer => {
@@ -74,7 +78,7 @@ Meteor.methods({
         return QSApp.deleteApp(guid);
     },
     removeAllCustomers: function() {
-        return QSApp.Customers.remove({});
+        return Customers.remove({});
     },
 
     //STREAM METHODS
@@ -129,37 +133,16 @@ Meteor.methods({
     // }
 });
 
-// Meteor.startup(() => {
-//     qrs = new QRS(config);
-// });
-
-
-
-
-//CODE WITH NPM QRS, THAT GENERATES DOUBLE APPS
-// function copyApp (guid, name) {
-//  console.log('Copy template: '+guid+' to new app: '+name);
-//  check(guid, String);
-//  check(name, String);
-//  return qrs.post('/qrs/app/'+guid+'/copy', [{"key": "name", "value": name}])
-//  .then(
-//      function fulfilled (result) {
-//          console.log('result of copy app promise', result);
-//          return result;
-//      },
-//      function Rejected (error){
-//          console.error('Promise Rejected: Error when trying to copy the app', error);
-//          throw new Meteor.Error('App copy failed', 'App copy failed');
-//      })
-// };
-
-
-// return 
-// qsocks.Connect(engineConfig)
-// .then(function(global) {
-//  console.log(global);
-//  return global.getDocList()
-// }).then(function(docList){
-//  console.log('DE DOC LIST IS: ', docList);
-//  return docList;
-// })
+Meteor.startup(() => {
+    
+    qsocks.Connect(engineConfig)
+        .then(function(global) {
+            // Connected
+            console.log('Meteor is connected to Sense Engine API');
+        }, function(err) {
+            // Something went wrong
+            console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
+            console.error('the settings are: ', engineConfig)
+            throw new Meteor.Error('Could not connect to Sense Engine API', err.message);
+        });
+});

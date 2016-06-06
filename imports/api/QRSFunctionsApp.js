@@ -8,14 +8,14 @@ import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 
 //import config for Qlik Sense QRS and Engine API
-import { config, engineConfig, certs, authHeaders } from '/imports/api/config.js';
+import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
 
 
 //insyall NPM modules
 var fs = require('fs');
 var qsocks = require('qsocks');
 var QRS = require('qrs');
-qrs = new QRS(config);
+qrs = new QRS(senseConfig);
 // var Promise = require("bluebird");
 
 
@@ -96,33 +96,16 @@ export function copyApp(guid, name) {
     console.log('QRS sync Functions Appp, copy the app id' + guid + 'to app with name: ', name);
 
     try {
-        const result = HTTP.post('http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?', {
+        const result = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy?', {
             headers: authHeaders,
-            params: { 'xrfkey': config.xrfkey, 'name': name },
+            params: { 'xrfkey': senseConfig.xrfkey, 'name': name },
             data: { "name": name }
         })
         return result;
     } catch (err) {
-        throw new Meteor.Error('Create stream failed', err.message);
+        throw new Meteor.Error('Copy app for selected customers failed', err.message);
     }
 };
-
-
-// export function copyApp(guid, name) {
-//     console.log('Copy template: ' + guid + ' to new app: ' + name);
-//     check(guid, String);
-//     check(name, String);
-
-//     var convertAsyncToSync = Meteor.wrapAsync(HTTP.call),
-//         resultOfAsyncToSync = convertAsyncToSync('post', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '/copy?name=' + name + '&xrfkey=' + config.xrfkey, {
-//             headers: {
-//                 'hdr-usr': config.headerValue,
-//                 'X-Qlik-xrfkey': config.xrfkey
-//             }
-//         });
-//     return resultOfAsyncToSync.data.id;
-// };
-
 
 function checkStreamStatus(customer) {
     console.log('checkStreamStatus for: ' + customer.name);
@@ -136,24 +119,19 @@ function checkStreamStatus(customer) {
     }
 }
 
+//Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
 export function getApps() {
     console.log('server: getApps');
     return qsocks.Connect(engineConfig)
         .then(function(global) {
-
             //We can now interact with the global class, for example fetch the document list.
-            //qsocks mimics the Engine API, refer to the Engine API documentation for available methods.
+            //qsocks mimics the Engine API, refer to the Engine API documentation or the engine api explorer for available methods.
             global.getDocList()
                 .then(function(docList) {
-
-                    // docList.forEach(function(doc) {
-                    //  console.log(doc.qDocName);
-                    // });
                     return docList;
                 });
 
         });
-
 };
 
 
@@ -166,10 +144,10 @@ export function publishApp(appGuid, appName, streamId, customerName) {
     console.log('de customerName is:' + customerName);
 
     return new Promise(function(resolve, reject) {
-        HTTP.call('put', 'http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + config.xrfkey, {
+        HTTP.call('put', 'http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
             headers: {
-                'hdr-usr': config.headerValue,
-                'X-Qlik-xrfkey': config.xrfkey
+                'hdr-usr': senseConfig.headerValue,
+                'X-Qlik-xrfkey': senseConfig.xrfkey
             }
         }, function(error, response) {
             if (error) {
@@ -190,7 +168,7 @@ export function publishApp(appGuid, appName, streamId, customerName) {
 export function deleteApp(guid) {
     console.log('QRSApp sync deleteApp');
     try {
-        const result = HTTP.del('http://' + config.host + '/' + config.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + config.xrfkey, {
+        const result = HTTP.del('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders
         })
         return result;

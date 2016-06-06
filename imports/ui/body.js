@@ -2,28 +2,19 @@ import { Template } from 'meteor/templating';
 import { Customers, dummyCustomers } from '../api/customers.js';
 import { Session } from 'meteor/session';
 import { config } from '/imports/api/clientConfig.js';
-// import * from '/lib/globalHelpers.js';
+
 
 import './body.html';
 import { Apps, TemplateApps } from '/imports/api/apps.js'
 import { Streams } from '/imports/api/streams.js'
 import './customer.js';
+import './OEMPartner.js';
 import moment from 'moment';
 import lodash from 'lodash';
 
 _ = lodash;
 
-Template.body.helpers({
-    customers() {
-        return Customers.find({}, { sort: { checked: -1 } });
-    },
-    // apps(){
-    //   //return Session.get('qApps'); 
-    //   return Apps.find();
-    // },
-    templateApps() {
-        return TemplateApps.find();
-    },
+Template.body.helpers({   
     countStreams() {
         return Streams.find()
             .count();
@@ -39,7 +30,7 @@ Template.body.helpers({
     appSettings: function() {
         return {
             collection: Apps,
-            rowsPerPage: 20,
+            rowsPerPage: 10,
             showFilter: true,
             showColumnToggles: true,
             // fields: ['customer', 'telephone', 'email', 'status', 'itemCount', 'deliveryDate', 'remarks'],
@@ -112,7 +103,7 @@ Template.body.helpers({
     streamSettings: function() {
         return {
             collection: Streams,
-            rowsPerPage: 20,
+            rowsPerPage: 10,
             showFilter: true,
             showColumnToggles: true,
             fields: [
@@ -143,46 +134,7 @@ Template.body.helpers({
     }
 });
 
-Template.body.events({
-    'submit .new-customer' (event) {
-        // Prevent default browser form submit
-        event.preventDefault();
-        // Get value from form element
-        const target = event.target;
-        const customerName = target.text.value;
-        // Insert a task into the collection
-        Customers.insert({
-            name: customerName,
-            createdAt: new Date(), // current time
-        });
-        // Clear form
-        target.text.value = '';
-    },
-    'click .generateStreamAndApp' () {
-        console.log('click event generateStreamAndApp');
-
-        var selectedCustomers = Customers.find({ checked: true })
-            .fetch();
-        // console.log('get customers from database, and pass them to the generateStreamAndApp method', selectedCustomers);
-
-        Meteor.call('generateStreamAndApp', selectedCustomers, function(err, result) {
-            if (err) {
-                sAlert.error(err);
-                console.log(err);
-            } else {
-                console.log('generateStreamAndApp succes', result);
-                sAlert.success('Streams and apps created, and apps have been published into the stream of the customer ');
-                updateSenseInfo();
-            }
-        });
-    },
-    //   //DELETE APP
-    //   'click .reactive-table tbody tr .deleteApp'(){    
-    // // checks if the actual clicked element has the class `delete`
-    // if (event.target.className == "deleteApp") {
-    //   console.log('delte app clicked',this);
-    // }
-    // },
+Template.body.events({    
     'click .reactive-table tbody tr': function(event) {
             var currentApp = this;
             // console.log(event);
@@ -241,32 +193,7 @@ Template.body.events({
                     }) //method call 
             } //delete stream event target
 
-        } //'click .reactive-table tbody tr
-        ,
-    'click .removeTemplateApp' () {
-        TemplateApps.remove(this._id);
-    },
-    'click .insertDummyCustomers' () {
-        _.each(dummyCustomers, function(customer) {
-            Customers.insert(customer);
-            console.log("Inserted " + customer.name);
-        })
-    },
-    'click .deleteAllCustomers' () {
-        console.log('delete all dummyCustomers clicked');
-        Meteor.call('removeAllCustomers');
-    },
-    'click .toggleAllCustomers' () {
-        console.log('deSelect all dummyCustomers clicked');
-
-        _.each(Customers.find({})
-            .fetch(),
-            function(customer) {
-                Customers.update(customer._id, {
-                    $set: { checked: !customer.checked },
-                });
-            })
-    }
+        } //'click .reactive-table tbody tr        
 }); //end Meteor events
 
 export var updateSenseInfo = function updateSenseInfo() {
@@ -324,8 +251,3 @@ Template.body.onCreated(function() {
     updateSenseInfo2();
 
 })
-
-Template.body.onRendered(function() {
-    this.$(".dropdown")
-        .dropdown();
-});
