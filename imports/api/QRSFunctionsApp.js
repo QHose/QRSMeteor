@@ -19,15 +19,6 @@ qrs = new QRS(senseConfig);
 // var Promise = require("bluebird");
 
 
-/* APP GENERATION:
-    -for each customer
-    - create stream if not already exist
-    - copy app
-    - publish to stream
-    - @TODO add 'generated' tag
-    - @TODO add reload task
-*/
-
 export function generateStreamAndApp(customers) {
     console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
 
@@ -41,54 +32,40 @@ export function generateStreamAndApp(customers) {
         throw new Meteor.Error('No customers', 'user has not specified at least one customer for which an app can be generated');
     }
 
-    templateApp = {
-            "_id": "TfN3XCoxCNEi4dFk4",
-            "name": "Executive Performance Mgmt",
-            "guid": 'effa6799-49f2-4da0-9a9c-aaa47252da18'
-        }
-        // //FOR EACH TEPMPLATE
-        // return Promise.all( //wait till ALL promises are ended (resolved or rejected) (everything, each iteration over the templateApps) is finished before you send the result back to the client
-        //         templateApps.reduce(function(templateApp, next) {
-        //             return templateApp.then(function() {
-
-    //FOR EACH CUSTOMER
-    // return Promise.all(
-    return customers.reduce(function(prev, curr) {
-            return prev.then(function() {
-                return generateAppForTemplate(templateApp, curr)
-            })
-        }, Promise.resolve())
-        .then(function() {}) //reduce, 
-        // ) //each customer Promise.all,
-        //             }) //templateApp.then
-        //     }) //each template
-        // ) //promise all generation total
+    customers.forEach(function(customer) {
+        templateApps.forEach(function(templateApp) {
+            generateAppForTemplate(templateApp, customer);
+        })
+    });
 };
+
+
+/* APP GENERATION:
+    -for each customer
+    - create stream if not already exist
+    - copy app
+    - publish to stream
+    - @TODO add 'generated' tag
+    - @TODO add reload task
+*/
 
 function generateAppForTemplate(templateApp, customer) {
     var result = {};
     console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 
-    checkStreamStatus(customer) //create a stream for the customer if it not already exists
-        .then(function(streamId) { //Copy the APP
-            console.log('STEP 2 COPY the app: result Of create Stream step: stream has id: ', streamId);
-            result.streamId = streamId;
-            return copyApp(templateApp.guid, customer.name + ' - ' + templateApp.name)
-        })
-        .then(function(appGuid) { //Publish into streamId
-            console.log('STEP 3 PUBLISH: APP HAS BEEN COPIED AND HAS RECEIVED GUID', appGuid);
-            return publishApp(appGuid, templateApp.name, result.streamId, customer.name) //return publishApp(appGuid, templateApp.name+' - ' +customer.name , streamId)
-        })
-        .then(function() {
-            console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
-            console.log('   ');
-            return Promise.resolve('FINISHED');
-        })
-        .catch(function(err) {
-            console.error(err);
-            // throw new Meteor.Error('Catch error app generation chain: App generation failed', 'err');
-        })
+    var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists
+    
+    var newAppId = copyApp(templateApp.guid, customer.name + ' - ' + templateApp.name).data.id;
+    console.log('result from step 2: the new app id is: ', newAppId);
+    
+    var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name); 
+    console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 };
+
+
+
+
+
 
 export function copyApp(guid, name) {
     check(guid, String);
@@ -115,7 +92,7 @@ function checkStreamStatus(customer) {
         return stream.id
     } else {
         console.log('No stream for customer exist, so create one: ' + customer.name);
-        return QSStream.createStream(customer.name);
+        return QSStream.createStream(customer.name).data.id;
     }
 }
 
@@ -135,36 +112,6 @@ export function getApps() {
 };
 
 
-export function publishApp(appGuid, appName, streamId, customerName) {
-    console.log('Publish app: ' + appName + ' to stream: ' + streamId);
-    check(appGuid, String);
-    check(appName, String);
-    check(streamId, String);
-
-    console.log('de customerName is:' + customerName);
-
-    return new Promise(function(resolve, reject) {
-        HTTP.call('put', 'http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
-            headers: {
-                'hdr-usr': senseConfig.headerValue,
-                'X-Qlik-xrfkey': senseConfig.xrfkey
-            }
-        }, function(error, response) {
-            if (error) {
-                console.error('error publishApp', error);
-                throw new Meteor.Error('error publish App', error)
-                reject(error);
-            } else {
-                // console.log( response );
-                resolve('publishApp success');
-            }
-        });
-    })
-
-
-};
-
-
 export function deleteApp(guid) {
     console.log('QRSApp sync deleteApp');
     try {
@@ -174,5 +121,25 @@ export function deleteApp(guid) {
         return result;
     } catch (err) {
         throw new Meteor.Error('App delete failed', err.message);
+    }
+};
+
+export function publishApp(appGuid, appName, streamId, customerName) {
+    console.log('Publish app: ' + appName + ' to stream: ' + streamId);
+    check(appGuid, String);
+    check(appName, String);
+    check(streamId, String);
+
+    console.log('de customerName is:' + customerName);
+    try {
+        const result = HTTP.call('put', 'http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
+            headers: {
+                'hdr-usr': senseConfig.headerValue,
+                'X-Qlik-xrfkey': senseConfig.xrfkey
+            }
+        })
+        return result;
+    } catch (err) {
+        throw new Meteor.Error('Publication of app ' + appName + ' for customer ' + customerName + ' failed: ', err.message);
     }
 };

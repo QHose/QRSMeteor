@@ -77,7 +77,7 @@ Template.body.helpers({
                     }
                 }, {
                     key: 'copyApp',
-                    label: 'Copy app',
+                    label: 'Copy app selected customers',
                     fn: function() {
                         return new Spacebars.SafeString('<i class="copy icon"></i>')
                     }
@@ -155,7 +155,7 @@ Template.body.events({
                 console.log('Copy app clicked: ' + currentApp.qDocName);
 
                 Meteor.call('copyAppSelectedCustomers', currentApp); //contains QVF guid of the current iteration over the apps    
-                sAlert.success("QVF '" + currentApp.qDocName + " copied in the QMC");
+                sAlert.success("QVF '" + currentApp.qDocName + " copied in the QMC for each of the selected customers");
                 updateSenseInfo();
 
             }
@@ -199,7 +199,7 @@ Template.body.events({
 export var updateSenseInfo = function updateSenseInfo() {
     Meteor.setTimeout(() => {
         updateSenseInfo2()
-    }, 8000)
+    }, 3000)
 };
 
 var updateSenseInfo2 = function updateSenseInfo2() {

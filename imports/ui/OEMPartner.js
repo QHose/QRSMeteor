@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import { EngineConfig } from '/imports/api/config.js';
 import { Apps, TemplateApps } from '/imports/api/apps.js'
 import { Customers, dummyCustomers } from '../api/customers.js';
+import { updateSenseInfo } from './body.js';
 import { Streams } from '/imports/api/streams.js'
 
 import './OEMPartner.html';

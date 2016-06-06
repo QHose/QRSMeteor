@@ -24,17 +24,8 @@ var qrs = null;
 Meteor.methods({
     generateStreamAndApp(customers) {
         check(customers, Array);
-        QSApp.generateStreamAndApp(customers)
-            .then(
-                function fulfilled(result) {
-                    console.log('generation promise fulfilled, result of promise', result);
-                    // resolve('Generation success ');
-                    return 'Generation success';
-                },
-                function Rejected(error) {
-                    console.error('Promise Rejected: Error when trying generate the apps', error);
-                    throw new Meteor.Error('Generation failed', 'Promise Rejected: Error when trying to generate the apps');
-                })
+        return QSApp.generateStreamAndApp(customers);           
+                
     },
     //GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)
     getApps() {
