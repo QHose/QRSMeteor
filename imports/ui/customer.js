@@ -23,11 +23,9 @@ Template.customer.events({
   	var customerName = this.name;
     Meteor.call('createStream',customerName, function(err, result) {
       if (err) {
-        sAlert.error(err);
-        console.log(err);
-      } else {
-        console.log('generateStream succes', result);
-        sAlert.success('Streams created for customer: '+customerName); 
+        sAlert.error(err);        
+      } else {        
+        sAlert.success('Stream created for customer: '+customerName); 
         updateSenseInfo();
       }
     })
