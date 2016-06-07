@@ -52,7 +52,7 @@ Template.OEMPartner.events({
                 console.log(err);
             } else {
                 console.log('generateStreamAndApp succes', result);
-                sAlert.success('Streams and apps created, and apps have been published into the stream of the customer ');
+                sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');
                 updateSenseInfo();
             }
         });

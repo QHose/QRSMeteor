@@ -105,7 +105,7 @@ export function getApps() {
             headers: authHeaders,
             params:{'xrfkey': senseConfig.xrfkey}          
         })
-        console.log('http get result %j',result.data);
+        console.log('http get result %j',result);
         return result.data;
     } catch (err) {
         throw new Meteor.Error('getApps failed', err.message);

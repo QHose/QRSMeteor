@@ -141,11 +141,11 @@ Template.body.events({
             // console.log(event);
 
             if (event.target.className == "markAsTemplate") {
-                console.log('markAsTemplate app clicked: ' + currentApp.qDocName);
+                console.log('markAsTemplate app clicked: ' + currentApp.name);
                 TemplateApps.upsert(currentApp._id, {
                     $set: {
-                        name: currentApp.qDocName,
-                        guid: currentApp.qDocId,
+                        name: currentApp.name,
+                        guid: currentApp.ìd,
                         checked: !this.checked
                     },
                 });
@@ -153,10 +153,10 @@ Template.body.events({
 
             //Copy APP
             if (event.target.className === "copyApp") {
-                console.log('Copy app clicked: ' + currentApp.qDocName);
+                console.log('Copy app clicked: ' + currentApp.name);
 
                 Meteor.call('copyAppSelectedCustomers', currentApp); //contains QVF guid of the current iteration over the apps    
-                sAlert.success("QVF '" + currentApp.qDocName + " copied in the QMC for each of the selected customers");
+                sAlert.success("QVF '" + currentApp.name + " copied in Qlik Sense via the QRS API for each of the selected customers");
                 updateSenseInfo();
 
             }
@@ -164,14 +164,14 @@ Template.body.events({
 
             //DELETE APP
             if (event.target.className === "deleteApp") {
-                console.log('delete app clicked: ' + currentApp.qDocName);
-                Meteor.call('deleteApp', this.qDocId, (error, result) => {
+                console.log('delete app clicked: ' + currentApp.name);
+                Meteor.call('deleteApp', this.id, (error, result) => {
                         if (error) {
                             sAlert.error(error);
                             console.log(error);
                         } else {
                             console.log('app removed');
-                            sAlert.success("APP " + currentApp.qDocName + " deleted in the QMC");
+                            sAlert.success("APP " + currentApp.name + " deleted in Qlik Sense via the QRS API");
                             updateSenseInfo();
 
                         }
@@ -188,7 +188,7 @@ Template.body.events({
                             console.log(error);
                         } else {
                             console.log('Stream removed');
-                            sAlert.success('Stream: ' + currentStream.name + " deleted in the QMC");
+                            sAlert.success('Stream: ' + currentStream.name + " deleted in Qlik Sense via the QRS API");
                             updateSenseInfo();
                         }
                     }) //method call 
@@ -197,18 +197,12 @@ Template.body.events({
         } //'click .reactive-table tbody tr        
 }); //end Meteor events
 
-export var updateSenseInfo = function updateSenseInfo() {
-    Meteor.setTimeout(() => {
-        updateSenseInfo2()
-    }, 3000)
-};
-
-var updateSenseInfo2 = function updateSenseInfo2() {
+var updateSenseInfo = function     () {
     Meteor.call('updateAppsCollection');
 };
 
 Template.body.onCreated(function() {
     console.log('template created, so load the current info from Sense using the QRS API WITHOUT DELAY');
-    updateSenseInfo2();
+    updateSenseInfo();
 
 })

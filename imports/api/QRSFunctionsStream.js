@@ -30,7 +30,7 @@ export function getStreams() {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }            
         })
-        return result.data;
+        return result;
     } catch (err) {
         throw new Meteor.Error('getStreams failed', err.message);
     }
