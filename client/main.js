@@ -10,11 +10,11 @@ import lodash from 'lodash';
 
 
 Meteor.startup(function () {
-// console.log('configure sAlert');
+console.log('configure sAlert');
     sAlert.config({
         effect: 'genie',
         position: 'top',
-        timeout: 4000,
+        timeout: 6000,
         html: false,
         onRouteClose: true,
         stack: true,

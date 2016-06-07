@@ -1,9 +1,9 @@
-//import meteor collections
-import { Apps, TemplateApps } from '/imports/api/apps';
-import { Streams } from '/imports/api/streams';
-import { Customers } from '/imports/api/customers';
+// //import meteor collections
+// import { Apps, TemplateApps } from '/imports/api/apps';
+// import { Streams } from '/imports/api/streams';
+// import { Customers } from '/imports/api/customers';
 
-import * as QSApp from '/imports/api/QRSFunctionsApp';
+// import * as QSApp from '/imports/api/QRSFunctionsApp';
 
 if (Meteor.isClient) {
 	console.log('Setup generic helper functions, for functions every template needs');

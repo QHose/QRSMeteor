@@ -30,7 +30,7 @@ Template.customer.events({
         sAlert.success('Streams created for customer: '+customerName); 
         updateSenseInfo();
       }
-    });
+    })
   },
   // 'click .copyApp'() {
   //   console.log('copyApp clicked');

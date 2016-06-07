@@ -9,7 +9,7 @@ import * as QSApp from '/imports/api/QRSFunctionsApp';
 import * as QSStream from '/imports/api/QRSFunctionsStream';
 
 //import config for Qlik Sense QRS and Engine API
-import { config, engineConfig, certs } from '/imports/api/config.js';
+import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
 // import {  } from '/imports/api/config.js'; 
 // import { certs } from '/imports/api/config.js'; 
 
@@ -26,24 +26,7 @@ Meteor.methods({
         check(customers, Array);
         return QSApp.generateStreamAndApp(customers);
 
-    },
-    //GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)
-    getApps() {
-        return QSApp.getApps();
-        // appListSync = Meteor.wrapAsync(qsocks.Connect(engineConfig)
-        //     .then(function(global) {
-        //         global.getDocList()
-        //             .then(function(docList) {
-        //                 return (docList);
-        //             });
-        //     })
-        //     .catch(err => {
-        //         throw new Meteor.Error(err)
-        //     }));
-        // result = appListSync();
-        // return result;
-
-    },
+    },    
     copyApp(guid, name) {
         check(guid, String);
         check(name, String);
@@ -62,7 +45,7 @@ Meteor.methods({
 
         customers
             .forEach(customer => {
-                Meteor.call('copyApp', currentApp.qDocId, customer.name + '-' + currentApp.qDocName);
+                Meteor.call('copyApp', currentApp.id, customer.name + '-' + currentApp.name);
             });
     },
     deleteApp(guid) {
@@ -95,51 +78,64 @@ Meteor.methods({
     countStreams() {
         return qrs.get('/qrs/stream/count');
     },
-    updateAppsCollection() {
+    updateLocalSenseCopy() {
         console.log('Method: update the local mongoDB with fresh data from Qlik Sense');
+        //delete the local content of the database before updating it
+        Apps.remove({});
+        Streams.remove({});
 
-        try {
-            Apps.remove();
-        } catch (error) {
-            throw new Meteor.Error('Unable to remove apps from collection', error.message)
-        };
-
-        //Update the apps with fresh info from Sense
-        appList = QSApp.getApps();
-
-        _.each(appList, app => {
-            // console.log('the current app to insert', app);
+        //Update the Apps and Streams with fresh info from Sense        
+        _.each(QSApp.getApps(), app => {            
             Apps.insert(app);
-            // console.log('inserted document ', app.name);
         });
 
-        //Update the Streams with fresh info from Sense
-        streamList = QSStream.getStreams();
-
-        _.each(streamList, stream => {            
+        _.each(QSStream.getStreams(), stream => {            
             Streams.insert(stream);
-            // console.log('inserted stream ', stream.name);
         });
+    },
+    checkSenseIsReady() {
+        //TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS
+        qsocks.Connect(engineConfig)
+            .then(function(global) {
+                // Connected
+                console.log('Meteor is connected to Sense Engine API');
+            }, function(err) {
+                // Something went wrong
+                console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
+                console.error('the settings are: ', engineConfig)
+                throw new Meteor.Error('Could not connect to Sense Engine API', err.message);
+            });
+        
+        //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP
+        try {
+            const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
+                headers: authHeaders,
+                params: { 'xrfkey': senseConfig.xrfkey }
+            })
+        } catch (err) {
+            throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Firewalls open?', err.message);
+        }
     }
-
-    // //Update the apps with fresh info from Sense
-    // var streamList = QSStream.getStreams(); _.each(streamList, stream => {
-    //     Streams.insert(stream);
-    //     console.log('inserted stream ', stream.name);
 });
 
+// Meteor.startup(() => {
+//     Meteor.call('updateLocalSenseCopy');
+// });
 
+//GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)
+    // getApps() {
+    //     return QSApp.getApps();
+    //     // appListSync = Meteor.wrapAsync(qsocks.Connect(engineConfig)
+    //     //     .then(function(global) {
+    //     //         global.getDocList()
+    //     //             .then(function(docList) {
+    //     //                 return (docList);
+    //     //             });
+    //     //     })
+    //     //     .catch(err => {
+    //     //         throw new Meteor.Error(err)
+    //     //     }));
+    //     // result = appListSync();
+    //     // return result;
 
-Meteor.startup(() => {
-
-    qsocks.Connect(engineConfig)
-        .then(function(global) {
-            // Connected
-            console.log('Meteor is connected to Sense Engine API');
-        }, function(err) {
-            // Something went wrong
-            console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
-            console.error('the settings are: ', engineConfig)
-            throw new Meteor.Error('Could not connect to Sense Engine API', err.message);
-        });
-});
+    // },

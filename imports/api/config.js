@@ -86,6 +86,7 @@ if (Meteor.isServer) {
         ca: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/root.pem')
     }
 
+    //@todo: this engine config works, so this one can be created by creating a new object and filling it with properties from senseConfig and cert values
     var _engineConfig = {
         host: senseConfig.host,
         isSecure: senseConfig.isSecure,

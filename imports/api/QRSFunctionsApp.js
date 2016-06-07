@@ -9,6 +9,8 @@ import { Customers } from '/imports/api/customers';
 
 //import config for Qlik Sense QRS and Engine API
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
+import lodash from 'lodash';
+_ = lodash;
 
 
 //insyall NPM modules
@@ -22,15 +24,8 @@ qrs = new QRS(senseConfig);
 export function generateStreamAndApp(customers) {
     console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
 
-    var templateApps = TemplateApps.find()
-        .fetch();
-    if (!TemplateApps.find()
-        .count()) { //user has not specified a template
-        throw new Meteor.Error('No Template', 'user has not specified a template for which apps can be generated');
-    }
-    if (!customers.length) { // = 0
-        throw new Meteor.Error('No customers', 'user has not specified at least one customer for which an app can be generated');
-    }
+    var templateApps = checkTemplateAppExists(); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
+    checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?
 
     customers.forEach(function(customer) {
         templateApps.forEach(function(templateApp) {
@@ -40,20 +35,49 @@ export function generateStreamAndApp(customers) {
 };
 
 function generateAppForTemplate(templateApp, customer) {
-    var result = {};
+    console.log(templateApp);
     console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 
     var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists
     console.log('result from step 1: the (new) stream ID is: ', streamId);
 
-    var newAppId = copyApp(templateApp.guid, customer.name + ' - ' + templateApp.name).data.id;
+    var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name)
+        .data.id;
     console.log('result from step 2: the new app id is: ', newAppId);
-    
-    var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name); 
+
+    var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
     console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 
-    // Meteor.call('updateAppsCollection');
+    Meteor.call('updateLocalSenseCopy');
 };
+
+function checkCustomersAreSelected(customers) {
+    if (!customers.length) { // = 0
+        throw new Meteor.Error('No customers', 'user has not specified at least one customer for which an app can be generated');
+    }
+};
+
+function checkTemplateAppExists() {
+    //These are the apps that the OEM partner has in his database, but do they still exists on the qliks sense side?
+    var templateApps = TemplateApps.find()
+        .fetch();
+    if (templateApps.length === 0) { //user has not specified a template
+        throw new Meteor.Error('No Template', 'user has not specified a template for which apps can be generated');
+    }
+
+    currentAppsInSense = getApps();
+    _.each(templateApps, function(templateApp) {
+        var templateFound = _.some(currentAppsInSense,  ['id', templateApp.id]);            
+        
+        if (!templateFound) {
+            throw new Meteor.Error('You have selected a Qlik Sense App: '+templateApp.name+' with guid: '+templateApp.id+' which does not exist in Sense anymore. Have you deleted the template in Sense?');
+        } else {
+            console.log('checkTemplateAppExists: True, template guid exist: ', templateApp.id);
+        }
+    })
+    return templateApps;
+};
+
 
 export function copyApp(guid, name) {
     check(guid, String);
@@ -72,6 +96,7 @@ export function copyApp(guid, name) {
     }
 };
 
+
 function checkStreamStatus(customer) {
     console.log('checkStreamStatus for: ' + customer.name);
     var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
@@ -80,7 +105,8 @@ function checkStreamStatus(customer) {
         return stream.id
     } else {
         console.log('No stream for customer exist, so create one: ' + customer.name);
-        return QSStream.createStream(customer.name).data.id;
+        return QSStream.createStream(customer.name)
+            .data.id;
     }
 }
 
@@ -99,13 +125,13 @@ export function getAppsViaEngine() {
         });
 };
 
-export function getApps() {    
+export function getApps() {
     try {
-        const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full',{ //?xrfkey=' + senseConfig.xrfkey, {
-            headers: authHeaders,
-            params:{'xrfkey': senseConfig.xrfkey}          
-        })
-        console.log('http get result %j',result);
+        const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
+                headers: authHeaders,
+                params: { 'xrfkey': senseConfig.xrfkey }
+            })
+            // console.log('http get result %j',result);
         return result.data;
     } catch (err) {
         throw new Meteor.Error('getApps failed', err.message);
@@ -130,7 +156,7 @@ export function publishApp(appGuid, appName, streamId, customerName) {
     check(appGuid, String);
     check(appName, String);
     check(streamId, String);
-    
+
     try {
         const result = HTTP.call('put', 'http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
             headers: {

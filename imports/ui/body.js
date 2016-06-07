@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { Customers, dummyCustomers } from '../api/customers';
 import { Session } from 'meteor/session';
 import { config } from '/imports/api/clientConfig';
-// import '/imports/ui/UIHelpers';
+import '/imports/ui/UIHelpers';
 
 
 import './body.html';
@@ -145,7 +145,7 @@ Template.body.events({
                 TemplateApps.upsert(currentApp._id, {
                     $set: {
                         name: currentApp.name,
-                        guid: currentApp.ìd,
+                        id: currentApp.id,
                         checked: !this.checked
                     },
                 });
@@ -155,12 +155,15 @@ Template.body.events({
             if (event.target.className === "copyApp") {
                 console.log('Copy app clicked: ' + currentApp.name);
 
-                Meteor.call('copyAppSelectedCustomers', currentApp); //contains QVF guid of the current iteration over the apps    
-                sAlert.success("QVF '" + currentApp.name + " copied in Qlik Sense via the QRS API for each of the selected customers");
-                updateSenseInfo();
-
+                Meteor.call('copyAppSelectedCustomers', currentApp, (error, result) => { //contains QVF guid of the current iteration over the apps  
+                        if (error) {
+                            sAlert.error(error);                            
+                        } else {
+                            sAlert.success("QVF '" + currentApp.name + " copied in Qlik Sense via the QRS API for each of the selected customers");
+                            updateSenseInfo();
+                        }
+                    }) //method call 
             }
-
 
             //DELETE APP
             if (event.target.className === "deleteApp") {
@@ -197,12 +200,23 @@ Template.body.events({
         } //'click .reactive-table tbody tr        
 }); //end Meteor events
 
-var updateSenseInfo = function     () {
-    Meteor.call('updateAppsCollection');
+var updateSenseInfo = function() {
+    // console.log('call method to update Sense info');
+    Meteor.call('updateLocalSenseCopy');
 };
 
-Template.body.onCreated(function() {
-    console.log('template created, so load the current info from Sense using the QRS API WITHOUT DELAY');
+
+//this code gets executed if the page has been loaded, so a good moment to Connect to Sense a get the most recent apps and streams
+Template.body.onRendered(function() {
+    console.log('try to connect to Qlik Sense using the config provided so far');
+    Meteor.call('checkSenseIsReady', (error, result) => {
+        if (error) {
+            sAlert.error(error);
+        } else {
+            console.log('Connection to Sense success');
+        }
+    })
+
     updateSenseInfo();
 
 })
