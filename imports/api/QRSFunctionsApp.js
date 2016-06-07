@@ -39,33 +39,21 @@ export function generateStreamAndApp(customers) {
     });
 };
 
-
-/* APP GENERATION:
-    -for each customer
-    - create stream if not already exist
-    - copy app
-    - publish to stream
-    - @TODO add 'generated' tag
-    - @TODO add reload task
-*/
-
 function generateAppForTemplate(templateApp, customer) {
     var result = {};
     console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 
     var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists
-    
+    console.log('result from step 1: the (new) stream ID is: ', streamId);
+
     var newAppId = copyApp(templateApp.guid, customer.name + ' - ' + templateApp.name).data.id;
     console.log('result from step 2: the new app id is: ', newAppId);
     
     var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name); 
     console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+
+    // Meteor.call('updateAppsCollection');
 };
-
-
-
-
-
 
 export function copyApp(guid, name) {
     check(guid, String);
@@ -97,7 +85,7 @@ function checkStreamStatus(customer) {
 }
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
-export function getApps() {
+export function getAppsViaEngine() {
     console.log('server: getApps');
     return qsocks.Connect(engineConfig)
         .then(function(global) {
@@ -109,6 +97,19 @@ export function getApps() {
                 });
 
         });
+};
+
+export function getApps() {    
+    try {
+        const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full',{ //?xrfkey=' + senseConfig.xrfkey, {
+            headers: authHeaders,
+            params:{'xrfkey': senseConfig.xrfkey}          
+        })
+        console.log('http get result %j',result.data);
+        return result.data;
+    } catch (err) {
+        throw new Meteor.Error('getApps failed', err.message);
+    }
 };
 
 
@@ -129,8 +130,7 @@ export function publishApp(appGuid, appName, streamId, customerName) {
     check(appGuid, String);
     check(appName, String);
     check(streamId, String);
-
-    console.log('de customerName is:' + customerName);
+    
     try {
         const result = HTTP.call('put', 'http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
             headers: {

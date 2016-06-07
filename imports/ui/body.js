@@ -1,20 +1,21 @@
 import { Template } from 'meteor/templating';
-import { Customers, dummyCustomers } from '../api/customers.js';
+import { Customers, dummyCustomers } from '../api/customers';
 import { Session } from 'meteor/session';
-import { config } from '/imports/api/clientConfig.js';
+import { config } from '/imports/api/clientConfig';
+// import '/imports/ui/UIHelpers';
 
 
 import './body.html';
-import { Apps, TemplateApps } from '/imports/api/apps.js'
-import { Streams } from '/imports/api/streams.js'
-import './customer.js';
-import './OEMPartner.js';
+import { Apps, TemplateApps } from '/imports/api/apps'
+import { Streams } from '/imports/api/streams'
+import './customer';
+import './OEMPartner';
 import moment from 'moment';
 import lodash from 'lodash';
 
 _ = lodash;
 
-Template.body.helpers({   
+Template.body.helpers({
     countStreams() {
         return Streams.find()
             .count();
@@ -35,16 +36,16 @@ Template.body.helpers({
             showColumnToggles: true,
             // fields: ['customer', 'telephone', 'email', 'status', 'itemCount', 'deliveryDate', 'remarks'],
             fields: [
-                { key: 'qDocName', label: 'App' }, {
-                    key: 'qDocId',
+                { key: 'name', label: 'App' }, {
+                    key: 'id',
                     label: 'Guid',
                     fn: function(value) {
                         // return new Spacebars.SafeString('<a href=http://'+config.host+'/'+config.virtualProxy+'/sense/app/'+value+'>'+value+'</a>');
                         return new Spacebars.SafeString('<a href=http://' + config.host + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
                     }
                 },
-                { key: 'qMeta.description', label: 'description', hidden: true }, {
-                    key: 'qMeta.modifiedDate',
+                { key: 'description', label: 'description', hidden: true }, {
+                    key: 'modifiedDate',
                     label: 'ModifiedDate',
                     hidden: true,
                     fn: function(value) {
@@ -52,13 +53,13 @@ Template.body.helpers({
                             .format('DD-MM-YYYY');
                     }
                 }, {
-                    key: 'qMeta.stream.name',
+                    key: 'stream.name',
                     label: 'Stream',
                     fn: function(value, object) {
                         return value;
                     }
                 },
-                { key: 'qMeta.published', label: 'Published', hidden: true }, {
+                { key: 'published', label: 'Published', hidden: true }, {
                     key: 'qLastReloadTime',
                     label: 'Last reload',
                     hidden: true,
@@ -69,7 +70,7 @@ Template.body.helpers({
                 },
                 // { key: 'qConnectedUsers', label: 'ConnectedUsers' },
                 {
-                    key: 'qMeta.qFileSize',
+                    key: 'fileSize  ',
                     label: 'File size',
                     hidden: true,
                     fn: function(value) {
@@ -134,7 +135,7 @@ Template.body.helpers({
     }
 });
 
-Template.body.events({    
+Template.body.events({
     'click .reactive-table tbody tr': function(event) {
             var currentApp = this;
             // console.log(event);
@@ -203,47 +204,7 @@ export var updateSenseInfo = function updateSenseInfo() {
 };
 
 var updateSenseInfo2 = function updateSenseInfo2() {
-
-    // Meteor.call('updateAppsCollection', function(error, docList){
-    Meteor.call('getApps', function(error, docList) {
-        if (error) {
-            throw new Meteor.Error('Unable to get the apps from Qlik Sense', error.message);
-            console.error(error);
-        } else {
-            console.log('Sense changed, so we called meteor.method to update the information we have about APPS');
-            // Delete all existing apps from database
-            Apps.find()
-                .forEach(function(app) {
-                    Apps.remove(app._id);
-                });
-
-            //insert all docs into the database
-            docList.forEach(function(doc) {
-                Apps.insert(doc);
-            })
-        }
-    });
-
-    Meteor.call('getStreams', function(error, streams) {
-        if (error) {
-            throw new Meteor.Error('Unable to get the streams from Qlik Sense', error.message);
-        } else {
-            console.log('new streams received from Sense, so update the local mongoDB information we have about Streams');
-
-            // Delete all existing streams from database
-            Streams.find()
-                .forEach(function(stream) {
-                    Streams.remove(stream._id);
-                });
-
-            //insert all docs into the database
-            streams.forEach(function(stream) {
-                // console.log(stream);
-                Streams.insert(stream);
-            })
-        }
-    });
-
+    Meteor.call('updateAppsCollection');
 };
 
 Template.body.onCreated(function() {

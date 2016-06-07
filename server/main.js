@@ -24,23 +24,25 @@ var qrs = null;
 Meteor.methods({
     generateStreamAndApp(customers) {
         check(customers, Array);
-        return QSApp.generateStreamAndApp(customers);           
-                
+        return QSApp.generateStreamAndApp(customers);
+
     },
     //GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)
     getApps() {
-        return new Promise((resolve, reject) => {
-                qsocks.Connect(engineConfig)
-                    .then(function(global) {
-                        global.getDocList()
-                            .then(function(docList) {
-                                resolve(docList);
-                            });
-                    })
-            })
-            .catch(err => {
-                throw new Meteor.Error(err)
-            })
+        return QSApp.getApps();
+        // appListSync = Meteor.wrapAsync(qsocks.Connect(engineConfig)
+        //     .then(function(global) {
+        //         global.getDocList()
+        //             .then(function(docList) {
+        //                 return (docList);
+        //             });
+        //     })
+        //     .catch(err => {
+        //         throw new Meteor.Error(err)
+        //     }));
+        // result = appListSync();
+        // return result;
+
     },
     copyApp(guid, name) {
         check(guid, String);
@@ -92,40 +94,44 @@ Meteor.methods({
     },
     countStreams() {
         return qrs.get('/qrs/stream/count');
+    },
+    updateAppsCollection() {
+        console.log('Method: update the local mongoDB with fresh data from Qlik Sense');
+
+        try {
+            Apps.remove();
+        } catch (error) {
+            throw new Meteor.Error('Unable to remove apps from collection', error.message)
+        };
+
+        //Update the apps with fresh info from Sense
+        appList = QSApp.getApps();
+
+        _.each(appList, app => {
+            // console.log('the current app to insert', app);
+            Apps.insert(app);
+            // console.log('inserted document ', app.name);
+        });
+
+        //Update the Streams with fresh info from Sense
+        streamList = QSStream.getStreams();
+
+        _.each(streamList, stream => {            
+            Streams.insert(stream);
+            // console.log('inserted stream ', stream.name);
+        });
     }
-    // updateAppsCollection() {
-    //     console.log('Method: update the local mongoDB with fresh data from Qlik Sense');
 
-    //     try {
-    //         Apps.remove();
-    //     } catch (error) {
-    //         throw new Meteor.Error('Unable to remove apps from collection', error.message)
-    //     };
-
-    //     var myPromise = qrs.get('/qrs/app/full')
-    //         .then(
-    //             function fulfilled(docList) {
-    //                 try {
-    //                     console.log('try to insert document array into mongo');
-    //                     docList.forEach(doc => {
-    //                         Apps.insert(doc);
-    //                         console.log('inserted document ', doc.qDocName);
-    //                     });
-    //                 } catch (error) { console.log(error) }
-
-    //             },
-    //             function Rejected(error) {
-    //                 console.error('uh oh: ', error); // 'uh oh: something bad happened’
-    //             })
-    //         .catch(function(error) {
-    //             console.log('Caught!', error);
-    //             throw new Meteor.Error('Unable to get streams from Sense', error.message);
-    //         });
-    // }
+    // //Update the apps with fresh info from Sense
+    // var streamList = QSStream.getStreams(); _.each(streamList, stream => {
+    //     Streams.insert(stream);
+    //     console.log('inserted stream ', stream.name);
 });
 
+
+
 Meteor.startup(() => {
-    
+
     qsocks.Connect(engineConfig)
         .then(function(global) {
             // Connected

@@ -13,12 +13,12 @@ if (Meteor.isClient) {
         return formatDate(date);
     });
 
-    Template.registerHelper('formatNumber', function(myNumber) {
-        var commaFormat = d3.format(",");
-        // The expression /,/g is a regular expression that matches all commas.
-        return commaFormat(myNumber)
-            .replace(/,/g, ".");
-    });
+    // Template.registerHelper('formatNumber', function(myNumber) {
+    //     var commaFormat = d3.format(",");
+    //     // The expression /,/g is a regular expression that matches all commas.
+    //     return commaFormat(myNumber)
+    //         .replace(/,/g, ".");
+    // });
 
     Template.registerHelper('isSelected', function(someValue) {
         return someValue ? 'selected' : '';

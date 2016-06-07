@@ -24,8 +24,16 @@ export function deleteStream(guid) {
     }
 };
 
-export function getStreams() {
-    return qrs.get('/qrs/stream/full');
+export function getStreams() {    
+    try {
+        const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/stream/full', {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey }            
+        })
+        return result.data;
+    } catch (err) {
+        throw new Meteor.Error('getStreams failed', err.message);
+    }
 };
 
 
@@ -43,20 +51,3 @@ export function createStream(name) {
         throw new Meteor.Error('Create stream failed', err.message);
     }
 };
-
-
-// export function createStream(name) {
-//     console.log('QRS Functions Stream, create the stream with name', name);
-//     return qrs.post('/qrs/stream', null, { "name": name })
-//         .then(
-//             function fulfilled(result) {
-//                 streamId = result.id;
-//                 console.log('call to NPM qrs.post(/qrs/stream to create a stream fulfilled, the result QRS promise is: ', streamId);
-//                 return streamId;
-//             },
-//             function Rejected(error) {
-//                 // console.error('Promise Rejected: Error when trying to copy the app', error);
-//                 throw new Meteor.Error('create stream failed', error.message);
-//                 reject('Promise Rejected: Error when trying to create a stream');
-//             })
-// };

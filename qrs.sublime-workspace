@@ -4,12 +4,104 @@
 		"selected_items":
 		[
 			[
-				"name",
-				"name"
+				"con",
+				"content"
+			],
+			[
+				"QA",
+				"QSApp"
+			],
+			[
+				"stre",
+				"stream"
+			],
+			[
+				"QS",
+				"QSStream"
+			],
+			[
+				"QR",
+				"QRSFunctionsApp"
+			],
+			[
+				"app",
+				"appList"
+			],
+			[
+				"new",
+				"newAppId"
+			],
+			[
+				"templ",
+				"templateApp"
+			],
+			[
+				"te",
+				"templateApps"
+			],
+			[
+				"cust",
+				"customer"
+			],
+			[
+				"stream",
+				"streamId"
+			],
+			[
+				"pu",
+				"publishApp"
+			],
+			[
+				"_",
+				"_engineConfig"
+			],
+			[
+				"th",
+				"throw"
+			],
+			[
+				"Cer",
+				"CertsConfig"
+			],
+			[
+				"NPM",
+				"NPM_QRS"
+			],
+			[
+				"QRS",
+				"QRSConfig"
+			],
+			[
+				"INSER",
+				"insert"
+			],
+			[
+				"eNGIN",
+				"EngineConfig"
+			],
+			[
+				"certi",
+				"Certificate"
+			],
+			[
+				"qrs",
+				"QRSConfig"
+			],
+			[
+				"Co",
+				"Config"
 			],
 			[
 				"Cus",
-				"customers"
+				"Customers"
+			],
+			[
+				"Cu",
+				"Customers"
+			],
+			[
+				"name",
+				"qDocName"
 			],
 			[
 				"qd",
@@ -28,28 +120,12 @@
 				"templates"
 			],
 			[
-				"QS",
-				"QSApp"
-			],
-			[
 				"pro",
 				"Promise"
 			],
 			[
-				"con",
-				"console"
-			],
-			[
-				"cust",
-				"customerName"
-			],
-			[
 				"me",
 				"message"
-			],
-			[
-				"stre",
-				"createStream"
 			],
 			[
 				"re",
@@ -80,10 +156,6 @@
 				"customer"
 			],
 			[
-				"QRS",
-				"QRSFunctions"
-			],
-			[
 				"c",
 				"ctrl"
 			],
@@ -102,10 +174,6 @@
 			[
 				"gen",
 				"generationPromise"
-			],
-			[
-				"_",
-				"_QRSconfig"
 			],
 			[
 				"find",
@@ -152,10 +220,6 @@
 				"currentApp"
 			],
 			[
-				"templ",
-				"TemplateApps"
-			],
-			[
 				"u",
 				"updateSenseInfo2"
 			],
@@ -186,10 +250,6 @@
 			[
 				"for",
 				"forEach"
-			],
-			[
-				"app",
-				"Apps"
 			],
 			[
 				"get",
@@ -388,13 +448,28 @@
 	"buffers":
 	[
 		{
-			"contents": "<body>\n\n  <!-- Navigation bar -->\n  <div class=\"ui fixed inverted menu\">      \n    <a href=\"#\" class=\"header item\">\n      <img class=\"logo\" src=\"images/sense.png\"> \n      Qlik Sense API: OEM App generation demo\n    </a>  \n\n  </div>\n  {{> sAlert}} \n\n\n  <div class=\"ui three column doubling grid\">\n\n    <div class=\"column\">\n      <div class=\"ui segment\">  \n        <div class=\"ui message\">\n          <div class=\"header\">\n            Generate streams and apps via the API's\n          </div>\n          <ul class=\"list\">\n            <li>Select the customers for which you want to generate the streams and apps </li>\n            <li>We will create 1 stream per customer </li>\n            <li>A copy will be made for each selected template and published in the stream for that customer </li>\n            <li>Press dummy/delete and 100+ dummy customers will be inserted/deleted</li>\n          </ul>\n        </div>\n      </div>\n\n      <div class=\"ui segment\"> \n        <i class=\"users icon\"></i>\n        <div class=\"ui left input\">\n\n          <form class=\"new-customer\">\n            <input type=\"text\" name=\"text\" placeholder=\"Add new customer\" />\n          </form>   \n        </div>\n        <div class=\"ui teal buttons\">\n          <div class=\"ui button generateStreamAndApp\">Generate</div>\n          <div class=\"ui floating dropdown icon button\">\n            <i class=\"dropdown icon\"></i>\n            <div class=\"menu\">\n              <div class=\"item insertDummyCustomers\"><i class=\"edit icon \"></i> Insert dummy customers</div>\n              <div class=\"item deleteAllCustomers\"><i class=\"delete icon \"></i> Delete all customers</div>\n              <div class=\"item toggleAllCustomers\"><i class=\"refresh icon\"></i> Toggle the selected customers</div>\n            </div>\n          </div>\n        </div>\n\n      </div>\n\n      <div class=\"ui segment\">\n        <h4>Apps will be generated of each of these template apps</h4>\n        <table class=\"ui celled table\">            \n          <thead>\n            <tr>\n              <th>App (QVF)</th>      \n              <th>Don't mark as template</th>      \n            </tr>\n          </thead>\n          <tbody>\n            {{#each templateApps}}\n            <tr>\n              <td> {{name}}</td>                \n              <td class=\"removeTemplateApp\"><i class=\"remove circle icon\"></i></td>\n            </tr>\n            {{/each}}\n          </tbody>\n        </table>\n        \n      </div>\n\n      <div class=\"ui segment\">\n        <h4> Customers stored in the database of our fictive SaaS platform </h4>\n        <table class=\"ui celled striped table\">\n          <thead>\n            <tr>              \n              <th>Customer</th>\n              <th>Delete customer</th>\n              <th>Generate App</th>\n              <th>Generate Stream</th>            \n            </tr>\n          </thead>\n          <tbody>\n            {{#each customers}}\n            {{> customer}}\n            {{/each}}\n          </tbody>\n        </table>\n      </div>\n\n       <div class=\"ui segment\">\n        <h4> Steps to generate an app </h4>\n        \n<div class=\"ui three top attached steps\">\n  <div class=\"step\">\n    <i class=\"truck icon\"></i>\n    <div class=\"content\">\n      <div class=\"title\">Sense</div>\n      <div class=\"description\">Specify how to connect to Sense</div>\n    </div>\n  </div>\n  <div class=\"active step\">\n    <i class=\"payment icon\"></i>\n    <div class=\"content\">\n      <div class=\"title\">Engina API</div>\n      <div class=\"description\">How can Qsocks connect?</div>\n    </div>\n  </div>\n  <div class=\"disabled step\">\n    <i class=\"info icon\"></i>\n    <div class=\"content\">\n      <div class=\"title\">QRS API</div>\n      <div class=\"description\">How can we connect to the QRS API?</div>\n    </div>\n  </div>\n</div>\n<div class=\"ui attached segment\">\n  <p></p>\n</div>\n  \n\n      </div>\n\n\n\n\n    </div>\n\n\n    <div class=\"column\">\n\n      <div class=\"column\">\n        <div class=\"ui segment\">\n         <h4 class=\"ui horizontal divider header\">\n          <i class=\"tag dashboard\"></i>\n          Currently {{countApps}} apps in Qlik Sense\n        </h4>\n\n        {{> reactiveTable settings=appSettings}}\n        \n        </div>\n      </div>\n    </div>\n\n    <div class=\"column\">\n\n      <div class=\"column\">\n        <div class=\"ui segment\">\n         <h4 class=\"ui horizontal divider header\">\n          <i class=\"tag icon\"></i>\n          Currently {{countStreams}} streams in Qlik Sense\n        </h4>\n        {{> reactiveTable settings=streamSettings}}\n  \n      </div>\n    </div>\n  </div>\n\n\n</div> \n\n</body>\n",
-			"file": "imports/ui/body.html",
-			"file_size": 4689,
-			"file_write_time": 131096288514620055,
+			"file": "imports/ui/OEMPartner.html",
 			"settings":
 			{
-				"buffer_size": 4527,
+				"buffer_size": 4265,
+				"line_ending": "Windows",
+				"name": "<template name="
+			}
+		},
+		{
+			"file": "imports/ui/OEMPartner.js",
+			"settings":
+			{
+				"buffer_size": 3155,
+				"line_ending": "Windows",
+				"name": "df"
+			}
+		},
+		{
+			"file": "imports/ui/body.html",
+			"settings":
+			{
+				"buffer_size": 1162,
 				"line_ending": "Windows"
 			}
 		},
@@ -402,7 +477,7 @@
 			"file": "imports/ui/body.js",
 			"settings":
 			{
-				"buffer_size": 12191,
+				"buffer_size": 8175,
 				"line_ending": "Windows"
 			}
 		},
@@ -410,7 +485,7 @@
 			"file": "server/main.js",
 			"settings":
 			{
-				"buffer_size": 5552,
+				"buffer_size": 4561,
 				"line_ending": "Windows"
 			}
 		},
@@ -418,31 +493,7 @@
 			"file": "imports/api/QRSFunctionsApp.js",
 			"settings":
 			{
-				"buffer_size": 7561,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/api/config.js",
-			"settings":
-			{
-				"buffer_size": 2311,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/customer.js",
-			"settings":
-			{
-				"buffer_size": 1511,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/customer.html",
-			"settings":
-			{
-				"buffer_size": 397,
+				"buffer_size": 5668,
 				"line_ending": "Windows"
 			}
 		},
@@ -450,7 +501,7 @@
 			"file": "imports/api/QRSFunctionsStream.js",
 			"settings":
 			{
-				"buffer_size": 2148,
+				"buffer_size": 1697,
 				"line_ending": "Windows"
 			}
 		}
@@ -518,20 +569,25 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qrs/lib"
 	],
 	"file_history":
 	[
-		"/F/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/User/Preferences.sublime-settings",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/config.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/apps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/QRSFunctionsStream.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/QRSFunctionsApp.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qrs/lib/qrs.js",
+		"/F/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/User/Preferences.sublime-settings",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/apps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/body.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/body.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/clientConfig.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.js",
 		"/F/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
 		"/F/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/User/Default (Windows).sublime-keymap",
 		"/C/Meteor projects/qrsmeteor/client/main.js",
@@ -644,12 +700,7 @@
 		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/lib/router.js",
 		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/templates/products/show.html",
 		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/lib/shopping_cart.js",
-		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/templates/_partials/product_tile.html",
-		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/templates/checkout/show.html",
-		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/templates/cart/show.html",
-		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/config/notification.js",
-		"/C/Users/Qlik/Meteor projects/Slager/server/sales_repo.js",
-		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/lib/collections/vendors.js"
+		"/C/Users/Qlik/Meteor projects/pluralsight/1-exercise-files/rocket-shop-complete/client/templates/_partials/product_tile.html"
 	],
 	"find":
 	{
@@ -675,7 +726,16 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-			"rowsPerPage",
+			".js",
+			"senseConfig",
+			"_QRSconfig",
+			"Mongo.Collection",
+			"config",
+			"EngineConfig",
+			"config",
+			"NPM_QRS",
+			"config",
+			"QRS",
 			"checked",
 			"create",
 			"headers",
@@ -741,6 +801,12 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
+			"''",
+			"",
+			"_senseConfig",
+			"senseConfig",
+			"NPM_QRS",
 			"QSApp.",
 			"return QS.",
 			"P",
@@ -768,24 +834,84 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "imports/ui/body.html",
+					"file": "imports/ui/OEMPartner.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4527,
+						"buffer_size": 4265,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3800,
-								3800
+								2646,
+								2646
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<template name=",
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 390.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "imports/ui/OEMPartner.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3155,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2799,
+								2799
+							]
+						],
+						"settings":
+						{
+							"auto_name": "df",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 468.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "imports/ui/body.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1162,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1068,
+								1068
 							]
 						],
 						"settings":
@@ -795,27 +921,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1264.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 3,
 					"file": "imports/ui/body.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12191,
+						"buffer_size": 8175,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4458,
-								4458
+								236,
+								205
 							]
 						],
 						"settings":
@@ -825,57 +951,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2829.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "server/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5552,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2158,
-								2182
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 632.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "imports/api/QRSFunctionsApp.js",
+					"buffer": 4,
+					"file": "server/main.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7561,
+						"buffer_size": 4561,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4351,
-								4351
+								3258,
+								3502
 							]
 						],
 						"settings":
@@ -885,27 +981,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 853.0,
+						"translation.y": 1027.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "imports/api/config.js",
+					"buffer": 5,
+					"file": "imports/api/QRSFunctionsApp.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2311,
+						"buffer_size": 5668,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2175,
-								2186
+								4350,
+								4350
 							]
 						],
 						"settings":
@@ -915,85 +1011,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 650.0,
+						"translation.y": 849.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "imports/ui/customer.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1511,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								893,
-								893
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "imports/ui/customer.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 397,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								217,
-								217
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
 					"file": "imports/api/QRSFunctionsStream.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2148,
+						"buffer_size": 1697,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1459,
-								1189
+								1121,
+								1121
 							]
 						],
 						"settings":
@@ -1006,7 +1044,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
