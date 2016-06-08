@@ -13,7 +13,7 @@ import lodash from 'lodash';
 _ = lodash;
 
 
-//insyall NPM modules
+//install NPM modules
 var fs = require('fs');
 var qsocks = require('qsocks');
 var QRS = require('qrs');
@@ -67,10 +67,10 @@ function checkTemplateAppExists() {
 
     currentAppsInSense = getApps();
     _.each(templateApps, function(templateApp) {
-        var templateFound = _.some(currentAppsInSense,  ['id', templateApp.id]);            
-        
+        var templateFound = _.some(currentAppsInSense, ['id', templateApp.id]);
+
         if (!templateFound) {
-            throw new Meteor.Error('You have selected a Qlik Sense App: '+templateApp.name+' with guid: '+templateApp.id+' which does not exist in Sense anymore. Have you deleted the template in Sense?');
+            throw new Meteor.Error('You have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
         } else {
             console.log('checkTemplateAppExists: True, template guid exist: ', templateApp.id);
         }
@@ -78,11 +78,29 @@ function checkTemplateAppExists() {
     return templateApps;
 };
 
+function createTag(name) {
+    check(name, String);
+    console.log('QRS Functions Appp, create a tag: ' + name);
+
+    try {
+        const result = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/Tag', {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey},
+            data: { "name": name }
+        })
+        console.log('the result of tag creation');
+        console.log(result);
+        return result;
+    } catch (err) {
+        throw new Meteor.Error('Tag: '+name+' create failed ', err.message);
+    }
+};
+
 
 export function copyApp(guid, name) {
     check(guid, String);
     check(name, String);
-    console.log('QRS sync Functions Appp, copy the app id' + guid + 'to app with name: ', name);
+    console.log('QRS Functions Appp, copy the app id' + guid + 'to app with name: ', name);
 
     try {
         const result = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy?', {

@@ -8,20 +8,22 @@ import { Streams } from '/imports/api/streams.js'
 import './OEMPartner.html';
 
 
-Template.OEMPartner.helpers({    
-    engineConfig() {        
-        return EngineConfig.findOne({});            
+Template.OEMPartner.helpers({
+    engineConfig() {
+        return EngineConfig.findOne({});
     },
-    engineConfigCollection(){        
+    engineConfigCollection() {
         return EngineConfig;
     },
     customers() {
         return Customers.find({}, { sort: { checked: -1 } });
-    },   
+    },
     templateApps() {
         return TemplateApps.find();
     },
-    
+    loading() {
+        return Session.get('loadingIndicator');
+    }
 });
 
 Template.OEMPartner.events({
@@ -41,6 +43,7 @@ Template.OEMPartner.events({
     },
     'click .generateStreamAndApp' () {
         console.log('click event generateStreamAndApp');
+        Session.set('loadingIndicator', 'loading');
 
         var selectedCustomers = Customers.find({ checked: true })
             .fetch();
@@ -50,13 +53,14 @@ Template.OEMPartner.events({
             if (err) {
                 sAlert.error(err);
                 console.log(err);
+                Session.set('loadingIndicator', '');
             } else {
+                Session.set('loadingIndicator', '');
                 console.log('generateStreamAndApp succes', result);
-                sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');
-                updateSenseInfo();
+                sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');                
             }
         });
-    },   
+    },
     'click .removeTemplateApp' () {
         TemplateApps.remove(this._id);
     },
@@ -67,12 +71,12 @@ Template.OEMPartner.events({
         })
     },
     'click .deleteAllCustomers' () {
-        console.log('delete all dummyCustomers clicked');        
+        console.log('delete all dummyCustomers clicked');
         Meteor.call('removeAllCustomers', function(err, result) {
             if (err) {
-                sAlert.error(err);                
-            } else {                
-                sAlert.success('All customers have been deleted from the local database of the SaaS platform');            
+                sAlert.error(err);
+            } else {
+                sAlert.success('All customers have been deleted from the local database of the SaaS platform');
             }
         });
     },
