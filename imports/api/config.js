@@ -6,6 +6,7 @@ export const QRSConfig = new Mongo.Collection('QRSConfig');
 
 var _senseConfig = {
         "host": '2008ENT',
+        "port":80,
         "useSSL": false,
         "xrfkey": 'ABCDEFG123456789',
         "authentication": "header",
@@ -15,10 +16,11 @@ var _senseConfig = {
         isSecure: true
     };
 
+if (Meteor.isServer) {
     QRSConfig.remove({});
     QRSConfig.insert(_senseConfig);
     console.log("Inserted config for NPM module NPM QRS: " + _senseConfig);
-
+}
 
 export const senseConfig = QRSConfig.findOne({});
 
@@ -113,10 +115,10 @@ export const engineConfig = _engineConfig; //EngineConfig.findOne();
 
 
 //CONFIG FOR HTTP MODULE (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)
-
+// var c = QRSConfig.findOne({})
 export const authHeaders = {
-    'hdr-usr': senseConfig.headerValue,
-    'X-Qlik-xrfkey': senseConfig.xrfkey
+    'hdr-usr': _senseConfig.headerValue,
+    'X-Qlik-xrfkey': _senseConfig.xrfkey
 }
 
 
