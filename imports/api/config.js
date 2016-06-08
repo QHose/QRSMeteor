@@ -21,7 +21,7 @@ if (QRSConfig.find()
     console.log("Inserted config for NPM module NPM QRS: " + _senseConfig);
 }
 
-export const senseConfig = QRSConfig.findOne();
+export const senseConfig = QRSConfig.findOne({});
 
 //config for the ENGINE API WITH QSOCKS
 export const EngineConfig = new Mongo.Collection('engineConfig');

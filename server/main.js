@@ -112,8 +112,10 @@ Meteor.methods({
                 headers: authHeaders,
                 params: { 'xrfkey': senseConfig.xrfkey }
             })
+            return true;
         } catch (err) {
-            throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Firewalls open?', err.message);
+            return false;
+            throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');
         }
     }
 });

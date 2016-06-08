@@ -20,7 +20,7 @@
             </form>
         </div>
         <div class="ui teal buttons">
-            <div class="ui button generateStreamAndApp">Generate</div>
+            <div class="ui {{loading}} button generateStreamAndApp">Generate</div>
             <div class="ui floating dropdown icon button">
                 <i class="dropdown icon"></i>
                 <div class="menu">
@@ -32,6 +32,18 @@
         </div>
     </div>
     <div class="ui segment">
+        {{#if noTemplateApps}}
+        <div class="ui icon message">
+            <!-- <i class="Dashboard icon"></i> -->
+            <img class="icon" src="images/app.png">
+            <div class="content">
+                <div class="header">
+                    You have not selected a template app yet
+                </div>
+                <p>Please select the app you would like to use as a basis template for which we will create a copy for each of your selected customers</p>
+            </div>
+        </div>
+        {{else}}
         <h4>Apps will be generated of each of these template apps</h4>
         <table class="ui celled table">
             <thead>
@@ -49,14 +61,28 @@
                 {{/each}}
             </tbody>
         </table>
+        {{/if}}
     </div>
     <div class="ui segment">
+    {{#if noCustomers}}
+        <div class="ui icon message">
+            <!-- <i class="Dashboard icon"></i> -->
+            <img class="icon" src="images/customers.png">
+            <div class="content">
+                <div class="header">
+                    You have no customers in your shop.
+                </div>
+                <li>Let's insert some by hand, in the add new customer box above </li>
+                <li>Or press the blue arrow, next to the generate button, to insert 100+ dummy customers for our Fictive SaaS environment </li>
+            </div>
+        </div>
+        {{else}}
         <h4> Customers stored in the database of our fictive SaaS platform </h4>
         <table class="ui celled striped table">
             <thead>
                 <tr>
                     <th>Customer</th>
-                    <th>Delete customer</th>                    
+                    <th>Delete customer</th>
                     <th>Generate Stream</th>
                 </tr>
             </thead>
@@ -64,6 +90,7 @@
                 {{#each customers}} {{> customer}} {{/each}}
             </tbody>
         </table>
+    {{/if}}
     </div>
     <!-- <div class="ui segment">
         <h4> Engine API configuration </h4> {{> quickForm collection=engineConfigCollection doc=engineConfig id="updateEngineConfig" type="update"}}

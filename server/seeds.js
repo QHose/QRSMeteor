@@ -135,11 +135,11 @@ var customers =
 {"name":"Esso","collection":"Esso"},
 {"name":"BP","collection":"BP"}];
 
-if (Customers.find().count() === 0){ 
-  _.each(customers, function(customer){
-    Customers.insert(customer);
-    console.log("Inserted "+ customer.name);
-  })
-}
+//if (Customers.find().count() === 0){ 
+ // _.each(customers, function(customer){
+  //  Customers.insert(customer);
+//    console.log("Inserted "+ customer.name);
+ // })
+//}
 
 

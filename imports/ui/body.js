@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import { Customers, dummyCustomers } from '../api/customers';
 import { Session } from 'meteor/session';
 import { config } from '/imports/api/clientConfig';
+import { QRSConfig } from '/imports/api/config';
 import '/imports/ui/UIHelpers';
 
 
@@ -138,7 +139,7 @@ Template.body.helpers({
 Template.body.events({
     'click .reactive-table tbody tr': function(event) {
             var currentApp = this;
-            // console.log(event);
+            console.log(event);
 
             if (event.target.className == "markAsTemplate") {
                 console.log('markAsTemplate app clicked: ' + currentApp.name);
@@ -200,7 +201,7 @@ Template.body.events({
         } //'click .reactive-table tbody tr        
 }); //end Meteor events
 
-var updateSenseInfo = function() {
+export var updateSenseInfo = function() {
     // console.log('call method to update Sense info');
     Meteor.call('updateLocalSenseCopy');
 };
@@ -212,8 +213,8 @@ Template.body.onRendered(function() {
     Meteor.call('checkSenseIsReady', (error, result) => {
         if (error) {
             sAlert.error(error);
-        } else {
-            console.log('Connection to Sense success');
+        } else {            
+            if(result){console.log('Connection to Sense success');}
         }
     })
 
