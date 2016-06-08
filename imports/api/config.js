@@ -15,11 +15,10 @@ var _senseConfig = {
         isSecure: true
     };
 
-if (QRSConfig.find()
-    .count() === 0) {    
+    QRSConfig.remove({});
     QRSConfig.insert(_senseConfig);
     console.log("Inserted config for NPM module NPM QRS: " + _senseConfig);
-}
+
 
 export const senseConfig = QRSConfig.findOne({});
 
