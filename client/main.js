@@ -1,5 +1,10 @@
-import '../imports/ui/body';
+import '../imports/ui/body.js';
 import '/imports/ui/UIHelpers';
+import '/imports/ui/customer.js';
+import '/imports/ui/OEMPartner.js';
+import '/imports/ui/checkConfig.js';
+
+
 import { Template } from 'meteor/templating';
 import { Apps, TemplateApps } from '/imports/api/apps.js'
 import { Streams } from '/imports/api/streams.js'
@@ -7,13 +12,14 @@ import { EngineConfig } from '/imports/api/config.js'
 
 import moment from 'moment';
 import lodash from 'lodash';
+_ = lodash;
 
 
 Meteor.startup(function () {
 console.log('configure sAlert');
     sAlert.config({
         effect: 'genie',
-        position: 'top',
+        // position: 'top',
         timeout: 6000,
         html: false,
         onRouteClose: true,

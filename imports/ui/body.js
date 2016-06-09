@@ -17,6 +17,12 @@ import lodash from 'lodash';
 _ = lodash;
 
 Template.body.helpers({
+    senseConnection() {
+        const instance = Template.instance();
+        console.log('the value of instance connection get:', Session.get('senseConnection')); 
+        // return instance.connection.get();
+        return Session.get('senseConnection');
+    },
     countStreams() {
         return Streams.find()
             .count();
@@ -158,7 +164,7 @@ Template.body.events({
 
                 Meteor.call('copyAppSelectedCustomers', currentApp, (error, result) => { //contains QVF guid of the current iteration over the apps  
                         if (error) {
-                            sAlert.error(error);                            
+                            sAlert.error(error);
                         } else {
                             sAlert.success("QVF '" + currentApp.name + " copied in Qlik Sense via the QRS API for each of the selected customers");
                             updateSenseInfo();
@@ -209,15 +215,5 @@ export var updateSenseInfo = function() {
 
 //this code gets executed if the page has been loaded, so a good moment to Connect to Sense a get the most recent apps and streams
 Template.body.onRendered(function() {
-    console.log('try to connect to Qlik Sense using the config provided so far');
-    Meteor.call('checkSenseIsReady', (error, result) => {
-        if (error) {
-            sAlert.error(error);
-        } else {            
-            if(result){console.log('Connection to Sense success');}
-        }
-    })
-
     updateSenseInfo();
-
 })

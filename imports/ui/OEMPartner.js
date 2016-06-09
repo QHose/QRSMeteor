@@ -23,6 +23,17 @@ Template.OEMPartner.helpers({
     },
     loading() {
         return Session.get('loadingIndicator');
+    },
+    NrCustomers() {
+        return Customers.find()
+            .count();
+    },
+    completedStep1() {
+        return Customers.find().count() ? 'Completed':'';
+    },
+    completedStep2() {
+        return TemplateApps.find()
+            .count() ? 'Completed':'';
     }
 });
 
@@ -57,7 +68,7 @@ Template.OEMPartner.events({
             } else {
                 Session.set('loadingIndicator', '');
                 console.log('generateStreamAndApp succes', result);
-                sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');                
+                sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');
             }
         });
     },
