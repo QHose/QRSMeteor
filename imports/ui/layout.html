@@ -8,10 +8,11 @@
     <div class="ui main text container">
         {{> sAlert}}
     </div>
-    {{#if senseConnection}}
-        {{> yield}}
-    {{else}} 
+    {{#if NoSenseConnection}}
+        
         {{> checkConfig}} 
+    {{else}} 
+        {{> yield}}
     {{/if}}
 
 </template>

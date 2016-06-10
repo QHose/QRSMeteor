@@ -20,7 +20,7 @@ Template.OEMPartner.helpers({
     },
     NrCustomers() {
         return Customers.find()
-            .count();
+        .count();
     },
     linkToApp() {
         config = QRSConfig.findOne();
@@ -48,7 +48,7 @@ Template.OEMPartner.events({
         Session.set('loadingIndicator', 'loading');
 
         var selectedCustomers = Customers.find({ checked: true })
-            .fetch();
+        .fetch();
         // console.log('get customers from database, and pass them to the generateStreamAndApp method', selectedCustomers);
 
         Meteor.call('generateStreamAndApp', selectedCustomers, function(err, result) {
@@ -97,5 +97,5 @@ Template.OEMPartner.events({
 
 Template.OEMPartner.onRendered(function() {
     this.$(".dropdown")
-        .dropdown();
+    .dropdown();
 });
