@@ -1,7 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Customers } from '../api/customers.js';
 import { TemplateApps } from '../api/apps.js';
-import { updateSenseInfo } from './body.js';
 
 import './customer.html';
 

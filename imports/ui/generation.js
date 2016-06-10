@@ -6,7 +6,7 @@ import { QRSConfig } from '/imports/api/config';
 import '/imports/ui/UIHelpers';
 
 
-import './body.html';
+import './generation.html';
 import { Apps, TemplateApps } from '/imports/api/apps'
 import { Streams } from '/imports/api/streams'
 import './customer';
