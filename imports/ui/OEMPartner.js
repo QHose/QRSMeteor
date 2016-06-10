@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { EngineConfig } from '/imports/api/config.js';
+import { QRSConfig } from '/imports/api/config.js';
 import { Apps, TemplateApps } from '/imports/api/apps.js'
 import { Customers, dummyCustomers } from '../api/customers.js';
 import { updateSenseInfo } from './body.js';
@@ -9,12 +9,6 @@ import './OEMPartner.html';
 
 
 Template.OEMPartner.helpers({
-    engineConfig() {
-        return EngineConfig.findOne({});
-    },
-    engineConfigCollection() {
-        return EngineConfig;
-    },
     customers() {
         return Customers.find({}, { sort: { checked: -1 } });
     },
@@ -27,6 +21,10 @@ Template.OEMPartner.helpers({
     NrCustomers() {
         return Customers.find()
             .count();
+    },
+    linkToApp() {
+        config = QRSConfig.findOne();
+        return 'http://' + config.host + '/sense/app/' + this.id
     }
 });
 

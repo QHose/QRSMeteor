@@ -9,6 +9,7 @@ import '/imports/ui/layout.js';
 import '/imports/ui/pages/homeAbout.html';
 import '/imports/ui/pages/QMC.html';
 import '/imports/ui/pages/securityRules.html';
+import '/imports/ui/notFound.html';
 
 
 import { Template } from 'meteor/templating';
