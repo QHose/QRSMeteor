@@ -2,6 +2,7 @@ import '../imports/ui/body.js';
 import '/imports/ui/UIHelpers';
 import '/imports/ui/customer.js';
 import '/imports/ui/OEMPartner.js';
+import '/imports/ui/steps.js';
 import '/imports/ui/checkConfig.js';
 
 

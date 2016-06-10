@@ -2,7 +2,7 @@
     <div class="ui segment">
         <div class="ui message">
             <div class="header">
-                This column shows you a fictive OEM parntner of Qlik.
+                This column shows you a fictive OEM partner of Qlik.
             </div>
             <ul class="list">
                 <li>We have a local MongoDB running to store our customers and Sense configuration. (press control M to see these collections)</li>
@@ -13,38 +13,33 @@
                 <li>Press dummy/delete and some dummy customers will be inserted/deleted</li>
             </ul>
         </div>
-       <!--  <div class="ui fluid vertical steps">
-            <div class="{{completedStep1}} step">
-            <i class="truck icon"></i>
-                <div class="content">
-                    <div class="title">Customers</div>
-                    <div class="description">Insert and select some dummy customers</div>
-                </div>
-            </div>
-            <div class="{{completedStep2}} step">
-            <i class="truck icon"></i>
-                <div class="content">
-                    <div class="title">Templates</div>
-                    <div class="description">Select some template apps</div>
-                </div>
-            </div>
-            <div class="active step">
-                <div class="content">
-                    <div class="title">Generate</div>
-                    <div class="description">Create apps and streams for each customer</div>
-                </div>
-            </div>
-        </div> -->
     </div>
     <div class="ui segment">
-        <i class="users icon"></i>
-        <div class="ui left input">
-            <form class="new-customer">
-                <input type="text" name="text" placeholder="Add new customer" />
-            </form>
+        <div class="ui animated button" tabindex="0">
+            <div class="visible content">Next</div>
+            <div class="hidden content">
+                <i class="right arrow icon"></i>
+            </div>
         </div>
-        <div class="ui teal buttons">
-            <div class="ui {{loading}} button generateStreamAndApp">Generate</div>
+        <div class="ui vertical animated button" tabindex="0">
+            <div class="hidden content">Shop</div>
+            <div class="visible content">
+                <i class="shop icon"></i>
+            </div>
+        </div>
+        <div class="ui animated fade button" tabindex="0">
+            <div class="visible content">Sign-up for a Pro account</div>
+            <div class="hidden content">
+                $12.99 a month
+            </div>
+        </div>
+        <!-- <div class="ui teal buttons">
+            <div class="ui animated {{loading}} button generateStreamAndApp" tabindex="0">
+                <div class="visible content">Generate</div>
+                <div class="hidden content">
+                    <i class="right arrow icon"></i>
+                </div>
+            </div>
             <div class="ui floating dropdown icon button">
                 <i class="dropdown icon"></i>
                 <div class="menu">
@@ -54,6 +49,44 @@
                 </div>
             </div>
         </div>
+    </div> -->
+    </div>
+    <div class="ui segment">
+        <!-- <i class="users icon"></i> -->
+        <div class="ui left input">
+            <form class="new-customer">
+                <input type="text" name="text" placeholder="Add new customer" />
+            </form>
+        </div>
+        {{#if noCustomers}}
+        <div class="ui icon message">
+            <img class="icon" src="images/customers.png">
+            <div class="content">
+                <div class="header">
+                    Customers
+                </div>
+                <li>You have no customers in your shop.</li>
+                <li>Let's insert some by hand, in the add new customer box above </li>
+                <li>Or press the blue arrow, next to the generate button, to insert 100+ dummy customers for our Fictive SaaS environment </li>
+            </div>
+        </div>
+        {{else}}
+        <h4> 
+        <!-- <img class="icon" src="images/customers.png"> -->
+        {{NrCustomers}} Customers stored in the database of our fictive SaaS platform </h4>
+        <table class="ui celled striped table">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Delete customer</th>
+                    <th>Generate Stream</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each customers}} {{> customer}} {{/each}}
+            </tbody>
+        </table>
+        {{/if}}
     </div>
     <div class="ui segment">
         {{#if noTemplateApps}}
@@ -62,7 +95,7 @@
             <img class="icon" src="images/app.png">
             <div class="content">
                 <div class="header">
-                    You have not selected a template app yet
+                    Template apps
                 </div>
                 <p>Please select the app you would like to use as a basis template for which we will create a copy for each of your selected customers</p>
             </div>
@@ -83,35 +116,6 @@
                     <td class="removeTemplateApp"><i class="remove circle icon"></i></td>
                 </tr>
                 {{/each}}
-            </tbody>
-        </table>
-        {{/if}}
-    </div>
-    <div class="ui segment">
-        {{#if noCustomers}}
-        <div class="ui icon message">
-            <!-- <i class="Dashboard icon"></i> -->
-            <img class="icon" src="images/customers.png">
-            <div class="content">
-                <div class="header">
-                    You have no customers in your shop.
-                </div>
-                <li>Let's insert some by hand, in the add new customer box above </li>
-                <li>Or press the blue arrow, next to the generate button, to insert 100+ dummy customers for our Fictive SaaS environment </li>
-            </div>
-        </div>
-        {{else}}
-        <h4> <img class="icon" src="images/customers.png">{{NrCustomers}} Customers stored in the database of our fictive SaaS platform </h4>
-        <table class="ui celled striped table">
-            <thead>
-                <tr>
-                    <th>Customer</th>
-                    <th>Delete customer</th>
-                    <th>Generate Stream</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each customers}} {{> customer}} {{/each}}
             </tbody>
         </table>
         {{/if}}

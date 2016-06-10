@@ -33,3 +33,4 @@ twbs:bootstrap
 mvrx:bluebird
 aldeed:autoform
 aldeed:collection2
+iron:router

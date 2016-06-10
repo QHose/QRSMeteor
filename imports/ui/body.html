@@ -9,28 +9,30 @@
         {{> sAlert}}
     </div>
     {{#if senseConnection}}
-    <div class="ui three column doubling grid">
-        <div class="column">
-            {{> OEMPartner}}
+    {{> steps}}
+    <div class="ui two column stackable grid">
+        <div class="five wide column">
+            <div class="ui segment"> {{> OEMPartner}}</div>
         </div>
-        <div class="column">
-            <div class="column">
-                <div class="ui segment">
-                    <h4 class="ui horizontal divider header">
-            <img class="icon" src="images/app.png">
-            Currently {{countApps}} apps in Qlik Sense
-          </h4> {{> reactiveTable settings=appSettings}}
-                </div>
+        <div class="one wide column">
+            <div class="ui vertical divider">
+                <h2 class="ui header">  
+              <img class="icon" src="images/generate.png">
+        </h2>
             </div>
         </div>
-        <div class="column">
-            <div class="column">
-                <div class="ui segment">
-                    <h4 class="ui horizontal divider header">
-            <img class="icon" src="images/stream.png">
-            Currently {{countStreams}} streams in Qlik Sense
-          </h4> {{> reactiveTable settings=streamSettings}}
-                </div>
+        <div class="ten wide column">
+            <div class="ui segment">
+                <h3 class="ui header">            
+                <img class="icon" src="images/stream.png">
+                Currently {{countStreams}}  streams in Qlik Sense
+            </h3> {{> reactiveTable settings=streamSettings}}
+            </div>
+            <div class="ui segment">
+                <h3 class="ui header">
+                <img class="icon" src="images/app.png">
+                Currently {{countApps}}  apps in Qlik Sense
+            </h3> {{> reactiveTable settings=appSettings}}
             </div>
         </div>
     </div>

@@ -38,7 +38,7 @@ Template.body.helpers({
     appSettings: function() {
         return {
             collection: Apps,
-            rowsPerPage: 10,
+            rowsPerPage: 5,
             showFilter: true,
             showColumnToggles: true,
             // fields: ['customer', 'telephone', 'email', 'status', 'itemCount', 'deliveryDate', 'remarks'],
@@ -111,7 +111,7 @@ Template.body.helpers({
     streamSettings: function() {
         return {
             collection: Streams,
-            rowsPerPage: 10,
+            rowsPerPage: 5,
             showFilter: true,
             showColumnToggles: true,
             fields: [

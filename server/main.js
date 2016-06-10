@@ -7,6 +7,7 @@ import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 import * as QSApp from '/imports/api/QRSFunctionsApp';
 import * as QSStream from '/imports/api/QRSFunctionsStream';
+import * as QSSystem from '/imports/api/QRSFunctionsSystemRules';
 
 //import config for Qlik Sense QRS and Engine API
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
@@ -69,7 +70,7 @@ Meteor.methods({
         return QSStream.getStreams();
     },
     getSecurityRules() {
-        return QSApp.getSecurityRules();
+        return QSSystem.getSecurityRules();
     },
     //NPM QRS CALLS
     countApps() {
@@ -93,39 +94,39 @@ Meteor.methods({
             Streams.insert(stream);
         });
     },
-    checkSenseIsReady() {
-        console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');
+    // checkSenseIsReady() {
+    //     console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');
         
-        // try {
-        // qsocks.Connect(engineConfig)
-        //     .then(function(global) {
-        //         // Connected
-        //         console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');
-        //         return true;
-        //     }, function(err) {
-        //         // Something went wrong
-        //         console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
-        //         console.error('the settings are: ', engineConfig)
-        //         return false
-        //         // throw new Meteor.Error('Could not connect to Sense Engine API', err.message);
-        //     });
+    //     // try {
+    //     // qsocks.Connect(engineConfig)
+    //     //     .then(function(global) {
+    //     //         // Connected
+    //     //         console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');
+    //     //         return true;
+    //     //     }, function(err) {
+    //     //         // Something went wrong
+    //     //         console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
+    //     //         console.error('the settings are: ', engineConfig)
+    //     //         return false
+    //     //         // throw new Meteor.Error('Could not connect to Sense Engine API', err.message);
+    //     //     });
         
-        //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP
-        try{
-            const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
-                headers: authHeaders,
-                params: { 'xrfkey': senseConfig.xrfkey }
-            })//http get
-            console.log(result);
-            if(result.statuscode === 200){
-                console.log('We got a result back from Sense with statuscode 200: Success')
-                return true;}
-            else{return false}
-        } catch (err) {
-            return false;
-            // throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');
-        }
-    }
+    //     //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP
+    //     try{
+    //         const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
+    //             headers: authHeaders,
+    //             params: { 'xrfkey': senseConfig.xrfkey }
+    //         })//http get
+    //         console.log(result);
+    //         if(result.statuscode === 200){
+    //             console.log('We got a result back from Sense with statuscode 200: Success')
+    //             return true;}
+    //         else{return false}
+    //     } catch (err) {
+    //         return false;
+    //         // throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');
+    //     }
+    // }
 });
 
 // Meteor.startup(() => {

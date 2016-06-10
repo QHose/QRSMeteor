@@ -1,14 +1,18 @@
 <template name='checkConfig'>
     <div class="ui container">
         <div class="ui warning message">
-            <i class="close icon"></i>
             <div class="header">
-                We can't connect to Qlik sense at the moment
+                <i class="warning sign icon"></i> We can't connect to Qlik sense at the moment
             </div>
             <li> Ensure Qlik Sense is running, and wait at least 10 minutes before all the services have started. (they have a delayed start)</li>
             <li> Ensure you have installed this Meteor tool at the same machine as Qlik Sense. Otherwise make sure you have exported the client certificate</li>
             <li> Please check the configuration options below</li>
         </div>
-        {{> quickForm collection=senseConfigCollection doc=senseConfig id="updatesenseConfig" type="update"}}
+        <h3 class="ui aligned header">Please verify the settings below</h3>
+        <div class="ui two column center stackable grid container">
+            <div class="column">
+                <div class="ui segment">{{> quickForm collection=senseConfigCollection doc=senseConfig id="updatesenseConfig" type="update"}}</div>
+            </div>
+        </div>
     </div>
 </template>
