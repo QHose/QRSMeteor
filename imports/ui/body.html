@@ -1,18 +1,8 @@
-<body>
-    <!-- Navigation bar -->
-    <div class="ui fixed inverted menu">
-        <a href="#" class="header item">
-            <img class="logo" src="images/sense.png"> Qlik Sense API: OEM App generation demo
-        </a>
-    </div>
-    <div class="ui main text container">
-        {{> sAlert}}
-    </div>
-    {{#if senseConnection}}
+<template name='generation'>
     {{> steps}}
     <div class="ui two column stackable grid">
         <div class="five wide column">
-            <div class="ui segment"> {{> OEMPartner}}</div>
+            {{> OEMPartner}}
         </div>
         <div class="one wide column">
             <div class="ui vertical divider">
@@ -25,16 +15,15 @@
             <div class="ui segment">
                 <h3 class="ui header">            
                 <img class="icon" src="images/stream.png">
-                Currently {{countStreams}}  streams in Qlik Sense
+                Received {{countStreams}}  streams via QRS API from Qlik Sense
             </h3> {{> reactiveTable settings=streamSettings}}
             </div>
             <div class="ui segment">
                 <h3 class="ui header">
                 <img class="icon" src="images/app.png">
-                Currently {{countApps}}  apps in Qlik Sense
+                Received {{countApps}}  streams via QRS API from Qlik Sense
             </h3> {{> reactiveTable settings=appSettings}}
             </div>
         </div>
     </div>
-    {{else}} {{> checkConfig}} {{/if}}
-</body>
+</template>

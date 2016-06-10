@@ -16,13 +16,7 @@ import lodash from 'lodash';
 
 _ = lodash;
 
-Template.body.helpers({
-    senseConnection() {
-        const instance = Template.instance();
-        console.log('the value of instance connection get:', Session.get('senseConnection')); 
-        // return instance.connection.get();
-        return Session.get('senseConnection');
-    },
+Template.generation.helpers({
     countStreams() {
         return Streams.find()
             .count();
@@ -142,7 +136,7 @@ Template.body.helpers({
     }
 });
 
-Template.body.events({
+Template.generation.events({
     'click .reactive-table tbody tr': function(event) {
             var currentApp = this;
             console.log(event);
@@ -214,6 +208,6 @@ export var updateSenseInfo = function() {
 
 
 //this code gets executed if the page has been loaded, so a good moment to Connect to Sense a get the most recent apps and streams
-Template.body.onRendered(function() {
+Template.generation.onRendered(function() {
     updateSenseInfo();
 })

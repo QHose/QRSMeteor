@@ -14,43 +14,7 @@
             </ul>
         </div>
     </div>
-    <div class="ui segment">
-        <div class="ui animated button" tabindex="0">
-            <div class="visible content">Next</div>
-            <div class="hidden content">
-                <i class="right arrow icon"></i>
-            </div>
-        </div>
-        <div class="ui vertical animated button" tabindex="0">
-            <div class="hidden content">Shop</div>
-            <div class="visible content">
-                <i class="shop icon"></i>
-            </div>
-        </div>
-        <div class="ui animated fade button" tabindex="0">
-            <div class="visible content">Sign-up for a Pro account</div>
-            <div class="hidden content">
-                $12.99 a month
-            </div>
-        </div>
-        <!-- <div class="ui teal buttons">
-            <div class="ui animated {{loading}} button generateStreamAndApp" tabindex="0">
-                <div class="visible content">Generate</div>
-                <div class="hidden content">
-                    <i class="right arrow icon"></i>
-                </div>
-            </div>
-            <div class="ui floating dropdown icon button">
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                    <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
-                    <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
-                    <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    </div>
+    
     <div class="ui segment">
         <!-- <i class="users icon"></i> -->
         <div class="ui left input">
@@ -58,6 +22,19 @@
                 <input type="text" name="text" placeholder="Add new customer" />
             </form>
         </div>
+
+        <!-- APP GENERATION BUTTON -->
+        <div class="ui teal buttons">
+        <div class="ui {{loading}} button generateStreamAndApp">Generate</div>
+        <div class="ui floating dropdown icon button">
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
+                <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
+                <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
+            </div>
+        </div>
+    </div>
         {{#if noCustomers}}
         <div class="ui icon message">
             <img class="icon" src="images/customers.png">

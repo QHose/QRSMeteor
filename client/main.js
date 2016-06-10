@@ -4,6 +4,11 @@ import '/imports/ui/customer.js';
 import '/imports/ui/OEMPartner.js';
 import '/imports/ui/steps.js';
 import '/imports/ui/checkConfig.js';
+import '/imports/ui/router.js';
+import '/imports/ui/layout.js';
+import '/imports/ui/pages/homeAbout.html';
+import '/imports/ui/pages/QMC.html';
+import '/imports/ui/pages/securityRules.html';
 
 
 import { Template } from 'meteor/templating';
