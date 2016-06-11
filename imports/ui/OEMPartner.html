@@ -14,29 +14,38 @@
             </ul>
         </div>
     </div>
-    
     <div class="ui segment">
-        <!-- <i class="users icon"></i> -->
+        <div class="header">
+           <h4>Simulate a user login for a specific customer</h4>
+        </div>
+        <div class="ui left input">
+            <form class="currentUser">
+                <input type="text" name="text" placeholder="current 'logged in' user" />
+                <input type="text" name="text" placeholder="group of 'logged in' user" />
+            </form>
+        </div>
+    </div>
+    <div class="ui segment">
+        <i class="users icon"></i>
         <div class="ui left input">
             <form class="new-customer">
                 <input type="text" name="text" placeholder="Add new customer" />
             </form>
         </div>
-
         <!-- APP GENERATION BUTTON -->
         <div class="ui teal buttons">
-        <div class="ui {{loading}} button generateStreamAndApp">Generate</div>
-        {{#unless loading}}
-        <div class="ui floating dropdown icon button">
-            <i class="dropdown icon"></i>
-            <div class="menu">
-                <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
-                <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
-                <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
+            <div class="ui {{loading}} button generateStreamAndApp">Generate</div>
+            {{#unless loading}}
+            <div class="ui floating dropdown icon button">
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
+                    <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
+                    <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
+                </div>
             </div>
+            {{/unless}}
         </div>
-        {{/unless}}
-    </div>
         {{#if noCustomers}}
         <div class="ui icon message">
             <img class="icon" src="images/customers.png">

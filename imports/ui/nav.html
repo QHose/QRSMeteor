@@ -5,38 +5,10 @@
         </a>
         {{#if currentUser}}
         <div class="ui simple dropdown item">
-            Via IFrame <i class="dropdown icon"></i>
+            Admin <i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item" href="{{pathFor 'hub'}}">See the hub</a>
-                <a class="item" href="{{pathFor 'app'}}">See 1 app</a>
-                <a class="item" href="{{pathFor '1chart'}}">See 1 chart</a>
-                <a class="item" href="{{pathFor 'multipleCharts'}}">See multiple charts</a>
-            </div>
-        </div>
-        <div class="ui simple dropdown item">
-            Via Div tags <i class="dropdown icon"></i>
-            <div class="menu">
-                <a class="item" href="{{pathFor 'divSheet'}}">See 1 sheet</a>
-                <a class="item" href="{{pathFor 'multipleDivs'}}">See multiple charts</a>
-                <a class="item" href="{{pathFor 'multipleDivsAndCustomControls'}}">See multiple charts combined with custom HTML object filled with Sense data</a>
-            </div>
-        </div>
-        <a class="item" href="/admin">Admin console</a>
-        <div class="ui simple dropdown item">
-            Sense dasbhoards <i class="dropdown icon"></i>
-            <div class="menu">
-                <a class="item" href="{{pathFor 'appList'}}">Which apps are available?</a>
-                <a class="item" href="{{pathFor 'QRS.pathList'}}">Which QRS endpoints are available?</a>
-                <!-- <div class="divider"></div>
-                    <div class="header">Header Item</div>
-                    <div class="item">
-                        <i class="dropdown icon"></i> Sub Menu
-                        <div class="menu">
-                            <a class="item" href="#">Link Item</a>
-                            <a class="item" href="#">Link Item</a>
-                        </div>
-                    </div> -->
-                <!-- <a class="item" href="#">Link Item</a> -->
+                <a class="item" href="{{pathFor 'users'}}">Insert users</a>
+                
             </div>
         </div>
         {{else}}

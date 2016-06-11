@@ -4,12 +4,14 @@ import '/imports/ui/customer.js';
 import '/imports/ui/OEMPartner.js';
 import '/imports/ui/steps.js';
 import '/imports/ui/router.js';
+import '/imports/ui/layout.html';
 import '/imports/ui/layout.js';
 import '/imports/ui/pages/homeAbout.html';
 import '/imports/ui/pages/QMC.html';
 import '/imports/ui/pages/securityRules.html';
 import '/imports/ui/notFound.html';
 import '/imports/ui/nav.html';
+import '/imports/ui/users.html';
 import '/imports/startup/accounts-config.js';
 
 

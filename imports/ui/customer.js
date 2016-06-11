@@ -3,6 +3,8 @@ import { Customers } from '../api/customers.js';
 import { TemplateApps } from '../api/apps.js';
 import './customer.html';
 
+
+
 Template.customer.events({
   'click .toggle-checked'() {
     // Set the checked property to the opposite of its current value

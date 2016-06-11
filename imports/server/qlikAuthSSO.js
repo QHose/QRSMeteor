@@ -5,7 +5,7 @@ import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/conf
 
 Picker.route( '/sso', function( params, request, response, next ) {
   console.log("Meteor's authentication module qlikAuthSSO.js receiced the forwarded request from Qlik Sense proxy. Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships");
-  console.log(request);
+  // console.log(request);
 
   	//Define user directory, user identity and attributes
       var profile = {

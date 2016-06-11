@@ -1,4 +1,4 @@
-import '/imports/ui/layout.html';
+
 
 Router.configure({
   layoutTemplate : 'layout',
@@ -10,6 +10,7 @@ Router.route('/', function () {
   this.render('generation');
 });
 
+Router.route('/users');
 Router.route('/generation');
 Router.route('/securityRules');
 Router.route('/QMC');

@@ -6,7 +6,6 @@ import { Streams } from '/imports/api/streams.js'
 
 import './OEMPartner.html';
 
-
 Template.OEMPartner.helpers({
     customers() {
         return Customers.find({}, { sort: { checked: -1 } });
@@ -43,6 +42,18 @@ Template.OEMPartner.events({
         });
         // Clear form
         target.text.value = '';
+    },
+    'submit .currentUser' (event) {
+        // Prevent default browser form submit
+        event.preventDefault();
+        // Get value from form element
+        const target = event.target;
+        const currentUSer = target.text.value;
+        
+        Session.set('currentUser', currentUser)
+        
+        // // Clear form
+        // target.text.value = '';
     },
     'click .generateStreamAndApp' () {
         console.log('click event generateStreamAndApp');

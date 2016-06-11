@@ -50,6 +50,8 @@ if (Meteor.isClient) {
         return Streams.find();
     });
 
+    Template.registerHelper("Customers", Customers);
+
     Template.registerHelper('senseConfig', function() {
         console.log('UI Register Helper');
         return QRSConfig.findOne();
