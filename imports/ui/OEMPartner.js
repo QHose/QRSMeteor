@@ -37,7 +37,9 @@ Template.OEMPartner.events({
         // Insert a task into the collection
         Customers.insert({
             name: customerName,
+            checked: true,
             createdAt: new Date(), // current time
+            createdBy: Meteor.user()
         });
         // Clear form
         target.text.value = '';

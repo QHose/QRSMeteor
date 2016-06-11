@@ -9,8 +9,8 @@ Picker.route( '/sso', function( params, request, response, next ) {
 
   	//Define user directory, user identity and attributes
       var profile = {
-        'UserDirectory': 'QLIK', 
-        'UserId': 'rikard',
+        'UserDirectory': '2008ENT', 
+        'UserId': 'test',//this.userId,
         'Attributes': [{'Group': 'Shell'}]
       }
      
