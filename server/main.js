@@ -11,8 +11,7 @@ import * as QSSystem from '/imports/api/QRSFunctionsSystemRules';
 
 //import config for Qlik Sense QRS and Engine API
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
-// import {  } from '/imports/api/config.js'; 
-// import { certs } from '/imports/api/config.js'; 
+import '/imports/server/qlikAuthSSO.js';  
 
 
 //install NPM modules

@@ -62,8 +62,11 @@ QRSConfig.attachSchema(new SimpleSchema({
     headerKey: {
         type: String,
         label: "headerKey"
-    },    
-     
+    },
+    headerValue: {
+        type: String,
+        label: "Format: UDC\\user, enter the user that will execute the REST calls on the Sense server. Ensure the user has rootAdmin role and a license."
+    },         
     isSecure: {
         type: Boolean,
         label: "isSecure"
@@ -76,6 +79,10 @@ if (Meteor.isServer) {
     /**
      * Connects directly to the QIX Engine, bypassing the Qlik Sense Proxy.
      * This method of connecting requires access to the Qlik Sense Certificates in PFX format and uses a service account.
+      //Get and verify parameters from qlik auth
+        options.Certificate = options.Certificate || 'client.pem';
+        options.CertificateKey = options.CertificateKey || 'client_key.pem';
+        options.PassPhrase = options.PassPhrase || '';
      */
     var _certs = {
         server_key: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/server_key.pem'),
