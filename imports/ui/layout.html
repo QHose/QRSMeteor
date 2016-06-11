@@ -1,13 +1,9 @@
 <template name="layout">
     <!-- Navigation bar -->
-    <div class="ui fixed inverted menu">
-        <a href="#" class="header item">
-            <img class="logo" src="images/sense.png"> The power of Qlik Sense QRS API: OEM Sense Publiser
-        </a>
-    </div>
-    <div class="ui main text container">
+    {{> nav}}
+    
         {{> sAlert}}
-    </div>
+    
     {{#if NoSenseConnection}}
         
         {{> checkConfig}} 

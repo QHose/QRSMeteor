@@ -34,3 +34,5 @@ mvrx:bluebird
 aldeed:autoform
 aldeed:collection2
 iron:router
+accounts-ui
+accounts-password

@@ -9,6 +9,8 @@ import '/imports/ui/pages/homeAbout.html';
 import '/imports/ui/pages/QMC.html';
 import '/imports/ui/pages/securityRules.html';
 import '/imports/ui/notFound.html';
+import '/imports/ui/nav.html';
+import '/imports/startup/accounts-config.js';
 
 
 import { Template } from 'meteor/templating';
@@ -22,11 +24,11 @@ _ = lodash;
 
 
 Meteor.startup(function () {
-console.log('configure sAlert');
+// console.log('configure sAlert, the popup messaging service');
     sAlert.config({
         effect: 'genie',
         // position: 'top',
-        timeout: 6000,
+        timeout: 7000,
         html: false,
         onRouteClose: true,
         stack: true,

@@ -1,9 +1,7 @@
 import { Template } from 'meteor/templating';
 import { Customers } from '../api/customers.js';
 import { TemplateApps } from '../api/apps.js';
-
 import './customer.html';
-
 
 Template.customer.events({
   'click .toggle-checked'() {
