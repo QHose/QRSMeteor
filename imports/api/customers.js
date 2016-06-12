@@ -2,43 +2,43 @@ import { Mongo } from 'meteor/mongo';
 
 export const Customers = new Mongo.Collection('customers');
 
-// Customers.attachSchema(new SimpleSchema({
-//     name: {
-//         type: String,
-//         label: "Name of your customer"
-//     },
-//     checked: {
-//         type: Boolean,
-//         label: "Selected for the generation?",
-//         optional: true
-//     },
-//     createdAt: {
-//         type: Date,
-//         label: "Date created",
-//         optional: true
-//     },
-//     createdBy: {
-//         type: Object,
-//         label: "Date created",
-//         optional: true
-//     },
-//     users: {
-//         type: Array,
-//         optional: true
-//     },
-//     "users.$": {
-//         type: Object
-//     },
-//     "users.$.name": {
-//         type: String
-//     },
-//     "users.$.group": {
-//         type: String
-//     },
-//     "users.$.country": {
-//         type: String
-//     }
-// }));
+Customers.attachSchema(new SimpleSchema({
+    name: {
+        type: String,
+        label: "Name of your customer"
+    },
+    checked: {
+        type: Boolean,
+        label: "Selected for the generation?",
+        optional: true
+    },
+    createdAt: {
+        type: Date,
+        label: "Date created",
+        optional: true
+    },
+    createdBy: {
+        type: Object,
+        label: "Date created",
+        optional: true
+    },
+    users: {
+        type: Array,
+        optional: true
+    },
+    "users.$": {
+        type: Object
+    },
+    "users.$.name": {
+        type: String
+    },
+    "users.$.group": {
+        type: String
+    },
+    "users.$.country": {
+        type: String
+    }
+}));
 
 export const dummyCustomers = [{ "name": "A&R Partners", "checked": true },
     { "name": "A2Z Solutions", "checked": true },

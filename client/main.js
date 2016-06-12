@@ -12,11 +12,13 @@ import '/imports/ui/pages/securityRules.html';
 import '/imports/ui/notFound.html';
 import '/imports/ui/nav.html';
 import '/imports/ui/users.html';
+import '/imports/ui/users.js';
 import '/imports/startup/accounts-config.js';
 
 
 import { Template } from 'meteor/templating';
-import { Apps, TemplateApps } from '/imports/api/apps.js'
+import { Apps, TemplateApps } from '/imports/api/apps.js';
+import { Customers } from '/imports/api/customers';
 import { Streams } from '/imports/api/streams.js'
 import { EngineConfig } from '/imports/api/config.js'
 
@@ -55,5 +57,7 @@ Meteor.startup(function () {
         //     /* Code here will be executed once the alert closes. */
         // }
     });
+
+      AutoForm.setDefaultTemplate("semanticUI");
 
 });
