@@ -30,10 +30,11 @@ juliancwirko:s-alert-genie
 http
 fortawesome:fontawesome
 twbs:bootstrap
-mvrx:bluebird
 aldeed:autoform
 aldeed:collection2
 iron:router
 accounts-ui
 accounts-password
 meteorhacks:picker
+fabienb4:autoform-semantic-ui
+semantic:ui-css
