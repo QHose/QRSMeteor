@@ -35,6 +35,9 @@ Customers.attachSchema(new SimpleSchema({
     "users.$.group": {
         type: String
     },
+    "users.$.currentlyLoggedIn?": {
+        type: Boolean
+    },
     "users.$.country": {
         type: String
     }
