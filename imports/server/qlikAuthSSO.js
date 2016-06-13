@@ -10,7 +10,7 @@ Picker.route('/sso', function(params, request, response, next) {
     //Define user directory, user identity and attributes
     var profile = {
         'UserDirectory': '2008ENT',
-        'UserId':  Session.get('currentUser');
+        'UserId':  Session.get('currentUser'),
         'Attributes': [{ 'group': 'Shell' }]
     }
     console.log('Request ticket for this profile: ', profile);

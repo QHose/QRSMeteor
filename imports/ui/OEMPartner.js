@@ -58,6 +58,15 @@ Template.OEMPartner.events({
         // Prevent default browser form submit
         var currentUser = template.$("#currentUser")
             .val();
+        
+        Meteor.call('simulateUserLogin', currentUser);
+        Customers.update({ _id: 100 }, {
+            $set: {
+                quantity: 500,
+                details: { model: "14Q3", make: "xyz" },
+                tags: ["coats", "outerwear", "clothing"]
+            }
+        })
         Session.set('currentUser', currentUser);
     },
     'click .generateStreamAndApp' () {

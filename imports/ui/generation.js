@@ -177,7 +177,6 @@ Template.generation.events({
                             console.log('app removed');
                             sAlert.success("APP " + currentApp.name + " deleted in Qlik Sense via the QRS API");
                             updateSenseInfo();
-
                         }
                     }) //method call 
             } //end if delete button is clicked 
