@@ -13,7 +13,6 @@ import './customer';
 import './OEMPartner';
 import moment from 'moment';
 import lodash from 'lodash';
-
 _ = lodash;
 
 Template.generation.helpers({

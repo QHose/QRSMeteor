@@ -10,6 +10,17 @@ Template.OEMPartner.helpers({
     customers() {
         return Customers.find({}, { sort: { checked: -1 } });
     },
+    users() {
+        var usersArray = [];
+        var customers = Customers.find()
+            .fetch();
+        customers.map(customer => {
+            for (var user of customer.users) {
+                usersArray.push(user);
+            }
+        });
+        return usersArray;
+    },
     templateApps() {
         return TemplateApps.find();
     },
@@ -18,7 +29,7 @@ Template.OEMPartner.helpers({
     },
     NrCustomers() {
         return Customers.find()
-        .count();
+            .count();
     },
     linkToApp() {
         config = QRSConfig.findOne();
@@ -43,24 +54,18 @@ Template.OEMPartner.events({
         // Clear form
         target.text.value = '';
     },
-    'submit .currentUser' (event) {
+    'change #currentUser' (event, template) {
         // Prevent default browser form submit
-        event.preventDefault();
-        // Get value from form element
-        const target = event.target;
-        const currentUSer = target.text.value;
-        
-        Session.set('currentUser', currentUser)
-        
-        // // Clear form
-        // target.text.value = '';
+        var currentUser = template.$("#currentUser")
+            .val();
+        Session.set('currentUser', currentUser);
     },
     'click .generateStreamAndApp' () {
         console.log('click event generateStreamAndApp');
         Session.set('loadingIndicator', 'loading');
 
         var selectedCustomers = Customers.find({ checked: true })
-        .fetch();
+            .fetch();
         // console.log('get customers from database, and pass them to the generateStreamAndApp method', selectedCustomers);
 
         Meteor.call('generateStreamAndApp', selectedCustomers, function(err, result) {
@@ -109,5 +114,5 @@ Template.OEMPartner.events({
 
 Template.OEMPartner.onRendered(function() {
     this.$(".dropdown")
-    .dropdown();
+        .dropdown();
 });
