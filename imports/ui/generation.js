@@ -6,17 +6,16 @@ import { QRSConfig } from '/imports/api/config';
 import '/imports/ui/UIHelpers';
 
 
-import './body.html';
+import './generation.html';
 import { Apps, TemplateApps } from '/imports/api/apps'
 import { Streams } from '/imports/api/streams'
 import './customer';
 import './OEMPartner';
 import moment from 'moment';
 import lodash from 'lodash';
-
 _ = lodash;
 
-Template.body.helpers({
+Template.generation.helpers({
     countStreams() {
         return Streams.find()
             .count();
@@ -32,7 +31,7 @@ Template.body.helpers({
     appSettings: function() {
         return {
             collection: Apps,
-            rowsPerPage: 10,
+            rowsPerPage: 5,
             showFilter: true,
             showColumnToggles: true,
             // fields: ['customer', 'telephone', 'email', 'status', 'itemCount', 'deliveryDate', 'remarks'],
@@ -41,8 +40,8 @@ Template.body.helpers({
                     key: 'id',
                     label: 'Guid',
                     fn: function(value) {
-                        // return new Spacebars.SafeString('<a href=http://'+config.host+'/'+config.virtualProxy+'/sense/app/'+value+'>'+value+'</a>');
-                        return new Spacebars.SafeString('<a href=http://' + config.host + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
+                        return new Spacebars.SafeString('<a href=http://' + config.host + '/' + config.virtualProxy + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
+                        // return new Spacebars.SafeString('<a href=http://' + config.host + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
                     }
                 },
                 { key: 'description', label: 'description', hidden: true }, {
@@ -105,7 +104,7 @@ Template.body.helpers({
     streamSettings: function() {
         return {
             collection: Streams,
-            rowsPerPage: 10,
+            rowsPerPage: 5,
             showFilter: true,
             showColumnToggles: true,
             fields: [
@@ -115,7 +114,8 @@ Template.body.helpers({
                     key: 'id',
                     label: 'Guid',
                     fn: function(value) {
-                        return new Spacebars.SafeString('<a href=http://' + config.host + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
+                        return new Spacebars.SafeString('<a href=http://' + config.host + '/' + config.virtualProxy + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
+                        // return new Spacebars.SafeString('<a href=http://' + config.host + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
                     }
                 }, {
                     key: 'createdDate',
@@ -136,7 +136,7 @@ Template.body.helpers({
     }
 });
 
-Template.body.events({
+Template.generation.events({
     'click .reactive-table tbody tr': function(event) {
             var currentApp = this;
             console.log(event);
@@ -158,7 +158,7 @@ Template.body.events({
 
                 Meteor.call('copyAppSelectedCustomers', currentApp, (error, result) => { //contains QVF guid of the current iteration over the apps  
                         if (error) {
-                            sAlert.error(error);                            
+                            sAlert.error(error);
                         } else {
                             sAlert.success("QVF '" + currentApp.name + " copied in Qlik Sense via the QRS API for each of the selected customers");
                             updateSenseInfo();
@@ -177,7 +177,6 @@ Template.body.events({
                             console.log('app removed');
                             sAlert.success("APP " + currentApp.name + " deleted in Qlik Sense via the QRS API");
                             updateSenseInfo();
-
                         }
                     }) //method call 
             } //end if delete button is clicked 
@@ -208,16 +207,6 @@ export var updateSenseInfo = function() {
 
 
 //this code gets executed if the page has been loaded, so a good moment to Connect to Sense a get the most recent apps and streams
-Template.body.onRendered(function() {
-    console.log('try to connect to Qlik Sense using the config provided so far');
-    Meteor.call('checkSenseIsReady', (error, result) => {
-        if (error) {
-            sAlert.error(error);
-        } else {            
-            if(result){console.log('Connection to Sense success');}
-        }
-    })
-
+Template.generation.onRendered(function() {
     updateSenseInfo();
-
 })

@@ -1,0 +1,22 @@
+<template name="nav">
+    <div class="ui fixed inverted menu">
+        <a href="{{pathFor 'generation'}}" class="header item">            
+            <img class="logo" src="images/sense.png"> The power of Qlik Sense QRS API: SaaS Multi-tenant Publisher
+        </a>
+        {{#if currentUser}}
+        <div class="ui simple dropdown item">
+            Admin <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="{{pathFor 'users'}}">Insert users</a>
+                
+            </div>
+        </div>
+        {{else}}
+        <div class="ui segment inverted">
+            {{> loginButtons align="right"}}
+        </div>
+        {{/if}}
+    </div>
+</template>
+
+

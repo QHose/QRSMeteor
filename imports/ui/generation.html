@@ -1,0 +1,29 @@
+<template name='generation'>
+    {{> steps}}
+    <div class="ui two column stackable grid">
+        <div class="five wide column">
+            {{> OEMPartner}}
+        </div>
+        <div class="one wide column">
+            <div class="ui vertical divider">
+                <h2 class="ui header">  
+              <img class="icon" src="images/generate.png">
+        </h2>
+            </div>
+        </div>
+        <div class="ten wide column">
+            <div class="ui segment">
+                <h3 class="ui header">            
+                <img class="icon" src="images/stream.png">
+                Received {{countStreams}}  streams via QRS API from Qlik Sense
+            </h3> {{> reactiveTable settings=streamSettings}}
+            </div>
+            <div class="ui segment">
+                <h3 class="ui header">
+                <img class="icon" src="images/app.png">
+                Received {{countApps}}  apps via QRS API from Qlik Sense
+            </h3> {{> reactiveTable settings=appSettings}}
+            </div>
+        </div>
+    </div>
+</template>

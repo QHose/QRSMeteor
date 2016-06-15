@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "meteor-node-stubs": "^0.2.3",
+    "qlik-auth": "^1.2.3",
     "qrs": "^2.0.2"
   }
 }

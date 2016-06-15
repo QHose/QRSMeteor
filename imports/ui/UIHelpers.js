@@ -2,7 +2,7 @@
 import { Apps, TemplateApps } from '/imports/api/apps';
 import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
-//import { senseConfig, QRSConfig } from '/imports/api/config';
+import { senseConfig, QRSConfig } from '/imports/api/config';
 
 if (Meteor.isClient) {
 	console.log('Setup generic helper functions, for functions every template needs');
@@ -33,17 +33,6 @@ if (Meteor.isClient) {
         .count();
     });
 
-    Template.registerHelper('noSenseConnection', function() {
-        /*
-        Meteor.call('checkSenseIsReady', (error, result) => {
-            if (error) {
-                return true
-                sAlert.error(error);
-            } 
-    })   */
-    return false;
-    });
-
     //generic helpers to return the collection to the blaze template
     Template.registerHelper('customersCollection', function() {
         return Customers.find({}, { sort: { checked: -1 } });
@@ -60,13 +49,16 @@ if (Meteor.isClient) {
     Template.registerHelper('streamsCollection', function() {
         return Streams.find();
     });
-/*
+
+    Template.registerHelper("Customers", Customers);
+
     Template.registerHelper('senseConfig', function() {
-        return senseConfig;
+        console.log('UI Register Helper');
+        return QRSConfig.findOne();
     });
     Template.registerHelper('senseConfigCollection', function() {
         return QRSConfig;
     });
 
-*/
+
 }

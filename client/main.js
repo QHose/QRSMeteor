@@ -1,20 +1,40 @@
-import '../imports/ui/body';
+import '../imports/ui/generation.js';
 import '/imports/ui/UIHelpers';
+import '/imports/ui/customer.js';
+import '/imports/ui/OEMPartner.js';
+import '/imports/ui/steps.js';
+import '/imports/ui/router.js';
+import '/imports/ui/layout.html';
+import '/imports/ui/layout.js';
+import '/imports/ui/pages/homeAbout.html';
+import '/imports/ui/pages/QMC.html';
+import '/imports/ui/pages/securityRules.html';
+import '/imports/ui/notFound.html';
+import '/imports/ui/nav.html';
+import '/imports/ui/users.html';
+import '/imports/ui/users.js';
+// import '/imports/ui/SSO.js';
+// import '/imports/ui/SSO.html';
+import '/imports/startup/accounts-config.js';
+
+
 import { Template } from 'meteor/templating';
-import { Apps, TemplateApps } from '/imports/api/apps.js'
+import { Apps, TemplateApps } from '/imports/api/apps.js';
+import { Customers } from '/imports/api/customers';
 import { Streams } from '/imports/api/streams.js'
 import { EngineConfig } from '/imports/api/config.js'
 
 import moment from 'moment';
 import lodash from 'lodash';
+_ = lodash;
 
 
 Meteor.startup(function () {
-console.log('configure sAlert');
+// console.log('configure sAlert, the popup messaging service');
     sAlert.config({
         effect: 'genie',
-        position: 'top',
-        timeout: 6000,
+        // position: 'top',
+        timeout: 7000,
         html: false,
         onRouteClose: true,
         stack: true,
@@ -39,5 +59,7 @@ console.log('configure sAlert');
         //     /* Code here will be executed once the alert closes. */
         // }
     });
+
+      AutoForm.setDefaultTemplate("semanticUI");
 
 });

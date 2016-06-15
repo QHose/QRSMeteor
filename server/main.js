@@ -7,11 +7,12 @@ import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 import * as QSApp from '/imports/api/QRSFunctionsApp';
 import * as QSStream from '/imports/api/QRSFunctionsStream';
+import * as QSSystem from '/imports/api/QRSFunctionsSystemRules';
+import qlikauth from 'qlik-auth';
 
 //import config for Qlik Sense QRS and Engine API
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
-// import {  } from '/imports/api/config.js'; 
-// import { certs } from '/imports/api/config.js'; 
+import '/imports/server/qlikAuthSSO.js';
 
 
 //install NPM modules
@@ -22,11 +23,48 @@ var QRS = require('qrs');
 var qrs = null;
 
 Meteor.methods({
+    resetLoggedInUser() {
+        console.log("Method resetLoggedInUsers");
+
+        Customers.find().forEach(function(customer){
+            _.forEach(customer.users, function(user){
+                user.currentlyLoggedIn= false;
+            })
+        })
+
+        //https://docs.mongodb.com/manual/tutorial/update-documents/#update-multiple-documents
+        // Customers.update({
+        // }, {
+        //     $set: {
+        //         'users.$': {
+        //             'currentlyLoggedIn': false
+        //         }
+        //     }
+        // });
+        // // Customers.update({}, {
+        //     $set: {
+        //         'users.$.currentlyLoggedIn': false
+        //     }
+        // }, {
+        //     upsert: true,
+        //     multi: true,
+        // })
+    },
+    simulateUserLogin(name) {
+        check(name, String);
+        Meteor.call('resetLoggedInUser');
+        console.log('method: simulateUserLogin');
+        Customers.update({ "users.name": name }, {
+            $set: {
+                'users.$.currentlyLoggedIn': true
+            }
+        })
+    },
     generateStreamAndApp(customers) {
         check(customers, Array);
         return QSApp.generateStreamAndApp(customers);
 
-    },    
+    },
     copyApp(guid, name) {
         check(guid, String);
         check(name, String);
@@ -69,7 +107,7 @@ Meteor.methods({
         return QSStream.getStreams();
     },
     getSecurityRules() {
-        return QSApp.getSecurityRules();
+        return QSSystem.getSecurityRules();
     },
     //NPM QRS CALLS
     countApps() {
@@ -85,39 +123,47 @@ Meteor.methods({
         Streams.remove({});
 
         //Update the Apps and Streams with fresh info from Sense        
-        _.each(QSApp.getApps(), app => {            
+        _.each(QSApp.getApps(), app => {
             Apps.insert(app);
         });
 
-        _.each(QSStream.getStreams(), stream => {            
+        _.each(QSStream.getStreams(), stream => {
             Streams.insert(stream);
         });
     },
-    checkSenseIsReady() {
-        //TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS
-        qsocks.Connect(engineConfig)
-            .then(function(global) {
-                // Connected
-                console.log('Meteor is connected to Sense Engine API');
-            }, function(err) {
-                // Something went wrong
-                console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
-                console.error('the settings are: ', engineConfig)
-                throw new Meteor.Error('Could not connect to Sense Engine API', err.message);
-            });
-        
-        //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP
-        try {
-            const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
-                headers: authHeaders,
-                params: { 'xrfkey': senseConfig.xrfkey }
-            })
-            return true;
-        } catch (err) {
-            return false;
-            throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');
-        }
-    }
+    // checkSenseIsReady() {
+    //     console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');
+
+    //     // try {
+    //     // qsocks.Connect(engineConfig)
+    //     //     .then(function(global) {
+    //     //         // Connected
+    //     //         console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');
+    //     //         return true;
+    //     //     }, function(err) {
+    //     //         // Something went wrong
+    //     //         console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
+    //     //         console.error('the settings are: ', engineConfig)
+    //     //         return false
+    //     //         // throw new Meteor.Error('Could not connect to Sense Engine API', err.message);
+    //     //     });
+
+    //     //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP
+    //     try{
+    //         const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
+    //             headers: authHeaders,
+    //             params: { 'xrfkey': senseConfig.xrfkey }
+    //         })//http get
+    //         console.log(result);
+    //         if(result.statuscode === 200){
+    //             console.log('We got a result back from Sense with statuscode 200: Success')
+    //             return true;}
+    //         else{return false}
+    //     } catch (err) {
+    //         return false;
+    //         // throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');
+    //     }
+    // }
 });
 
 // Meteor.startup(() => {
@@ -125,19 +171,19 @@ Meteor.methods({
 // });
 
 //GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)
-    // getApps() {
-    //     return QSApp.getApps();
-    //     // appListSync = Meteor.wrapAsync(qsocks.Connect(engineConfig)
-    //     //     .then(function(global) {
-    //     //         global.getDocList()
-    //     //             .then(function(docList) {
-    //     //                 return (docList);
-    //     //             });
-    //     //     })
-    //     //     .catch(err => {
-    //     //         throw new Meteor.Error(err)
-    //     //     }));
-    //     // result = appListSync();
-    //     // return result;
+// getApps() {
+//     return QSApp.getApps();
+//     // appListSync = Meteor.wrapAsync(qsocks.Connect(engineConfig)
+//     //     .then(function(global) {
+//     //         global.getDocList()
+//     //             .then(function(docList) {
+//     //                 return (docList);
+//     //             });
+//     //     })
+//     //     .catch(err => {
+//     //         throw new Meteor.Error(err)
+//     //     }));
+//     // result = appListSync();
+//     // return result;
 
-    // },
+// },

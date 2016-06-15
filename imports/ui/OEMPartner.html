@@ -2,25 +2,47 @@
     <div class="ui segment">
         <div class="ui message">
             <div class="header">
-                Generate streams and apps via the API's
+                This column shows you a fictive OEM partner of Qlik.
             </div>
             <ul class="list">
+                <li>We have a local MongoDB running to store our customers and Sense configuration. (press control M to see these collections)</li>
+                <li>Generate streams and apps via the REST API's of Qlik Sense</li>
                 <li>Select the customers for which you want to generate the streams and apps </li>
                 <li>We will create 1 stream per customer </li>
                 <li>A copy will be made for each selected template and published in the stream for that customer </li>
-                <li>Press dummy/delete and 100+ dummy customers will be inserted/deleted</li>
+                <li>Press dummy/delete and some dummy customers will be inserted/deleted</li>
             </ul>
         </div>
     </div>
     <div class="ui segment">
-        <i class="users icon"></i>
+        <div class="header">
+            <h4>Simulate a user login</h4>
+            <p> We will pass this user and his group membership to Qlik Sense to ensure Single Sign on</p>
+        </div>
+        <div class="ui selection dropdown">
+            <input type="hidden" id="currentUser">
+            <i class="dropdown icon"></i>
+            <div class="default text">User</div>
+            <div class="menu">
+                {{#each users}}
+                <div class="item" data-value="{{name}}" data-text="{{name}}">
+                    <i class="male icon"></i> {{name}}
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="ui segment">
+        <!-- <i class="users icon"></i> -->
         <div class="ui left input">
             <form class="new-customer">
                 <input type="text" name="text" placeholder="Add new customer" />
             </form>
         </div>
+        <!-- APP GENERATION BUTTON -->
         <div class="ui teal buttons">
             <div class="ui {{loading}} button generateStreamAndApp">Generate</div>
+            {{#unless loading}}
             <div class="ui floating dropdown icon button">
                 <i class="dropdown icon"></i>
                 <div class="menu">
@@ -29,55 +51,24 @@
                     <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
                 </div>
             </div>
+            {{/unless}}
         </div>
-    </div>
-    <div class="ui segment">
-        {{#if noTemplateApps}}
+        {{#if noCustomers}}
         <div class="ui icon message">
-            <!-- <i class="Dashboard icon"></i> -->
-            <img class="icon" src="images/app.png">
-            <div class="content">
-                <div class="header">
-                    You have not selected a template app yet
-                </div>
-                <p>Please select the app you would like to use as a basis template for which we will create a copy for each of your selected customers</p>
-            </div>
-        </div>
-        {{else}}
-        <h4><img class="icon" src="images/app.png">Apps will be generated of each of these template apps</h4>
-        <table class="ui celled table">
-            <thead>
-                <tr>
-                    <th>App (QVF)</th>
-                    <th>Don't mark as template</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each templateApps}}
-                <tr>
-                    <td> {{name}}</td>
-                    <td class="removeTemplateApp"><i class="remove circle icon"></i></td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-        {{/if}}
-    </div>
-    <div class="ui segment">
-    {{#if noCustomers}}
-        <div class="ui icon message">
-            <!-- <i class="Dashboard icon"></i> -->
             <img class="icon" src="images/customers.png">
             <div class="content">
                 <div class="header">
-                    You have no customers in your shop.
+                    Customers
                 </div>
+                <li>You have no customers in your shop.</li>
                 <li>Let's insert some by hand, in the add new customer box above </li>
                 <li>Or press the blue arrow, next to the generate button, to insert 100+ dummy customers for our Fictive SaaS environment </li>
             </div>
         </div>
         {{else}}
-        <h4> <img class="icon" src="images/customers.png">Customers stored in the database of our fictive SaaS platform </h4>
+        <h4> 
+        <img class="icon" src="images/customers.png">
+        {{NrCustomers}} Customers stored in the database of our fictive SaaS platform </h4>
         <table class="ui celled striped table">
             <thead>
                 <tr>
@@ -90,7 +81,39 @@
                 {{#each customers}} {{> customer}} {{/each}}
             </tbody>
         </table>
-    {{/if}}
+        {{/if}}
+    </div>
+    <div class="ui segment">
+        {{#if noTemplateApps}}
+        <div class="ui icon message">
+            <!-- <i class="Dashboard icon"></i> -->
+            <img class="icon" src="images/app.png">
+            <div class="content">
+                <div class="header">
+                    Template apps
+                </div>
+                <p>Please select the app you would like to use as a basis template for which we will create a copy for each of your selected customers</p>
+            </div>
+        </div>
+        {{else}}
+        <h4><img class="icon" src="images/app.png">   Apps will be generated of each of these template apps</h4>
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>App (QVF)</th>
+                    <th>Don't mark as template</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each templateApps}}
+                <tr>
+                    <td> <a href={{linkToApp}} target=_blank> {{name}} </a></td>
+                    <td class="removeTemplateApp"><i class="remove circle icon"></i></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{/if}}
     </div>
     <!-- <div class="ui segment">
         <h4> Engine API configuration </h4> {{> quickForm collection=engineConfigCollection doc=engineConfig id="updateEngineConfig" type="update"}}

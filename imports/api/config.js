@@ -2,10 +2,11 @@ import { Mongo } from 'meteor/mongo';
 
 //SETUP NPM QRS MODULE 
 export const QRSConfig = new Mongo.Collection('QRSConfig');
+export const EngineConfig = new Mongo.Collection('engineConfig');
 //config for QRS
 
 var _senseConfig = {
-        "host": '2008ENT',
+        "host": '2008ENT', //window.location.hostname, on client side
         "port":80,
         "useSSL": false,
         "xrfkey": 'ABCDEFG123456789',
@@ -16,24 +17,21 @@ var _senseConfig = {
         isSecure: true
     };
 
+//CONFIG FOR HTTP MODULE (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)
+export const authHeaders = {
+    'hdr-usr': _senseConfig.headerValue,
+    'X-Qlik-xrfkey': _senseConfig.xrfkey
+}
+
+
 if (Meteor.isServer) {
     QRSConfig.remove({});
     QRSConfig.insert(_senseConfig);
-    console.log("Inserted config for NPM module NPM QRS: " + _senseConfig);
+    console.log("Inserted config to connect to Sense via HTTP REST calls: ");
+    console.log(_senseConfig);
 }
 
-export const senseConfig = QRSConfig.findOne({});
-
-//config for the ENGINE API WITH QSOCKS
-export const EngineConfig = new Mongo.Collection('engineConfig');
-export const CertsConfig = new Mongo.Collection('certsConfig');
-
-//SSL CERTIFICATES CONFIG
-/**
- * Location for Qlik Sense certs.
- * No need to change on a standard Qlik Sense installation
- */
-
+export const senseConfig = QRSConfig.findOne();
 
 //Attach a database schema so we can auto create insert and update forms in the front end, and can validate the input
 QRSConfig.attachSchema(new SimpleSchema({
@@ -64,8 +62,11 @@ QRSConfig.attachSchema(new SimpleSchema({
     headerKey: {
         type: String,
         label: "headerKey"
-    },    
-     
+    },
+    headerValue: {
+        type: String,
+        label: "Format: UDC\\user, enter the user that will execute the REST calls on the Sense server. Ensure the user has rootAdmin role and a license."
+    },         
     isSecure: {
         type: Boolean,
         label: "isSecure"
@@ -78,6 +79,10 @@ if (Meteor.isServer) {
     /**
      * Connects directly to the QIX Engine, bypassing the Qlik Sense Proxy.
      * This method of connecting requires access to the Qlik Sense Certificates in PFX format and uses a service account.
+      //Get and verify parameters from qlik auth
+        options.Certificate = options.Certificate || 'client.pem';
+        options.CertificateKey = options.CertificateKey || 'client_key.pem';
+        options.PassPhrase = options.PassPhrase || '';
      */
     var _certs = {
         server_key: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/server_key.pem'),
@@ -100,26 +105,9 @@ if (Meteor.isServer) {
         ca: _certs.ca,
         passphrase: null,
         rejectUnauthorized: false // Don't reject self-signed certs
-    };
-
-    if (EngineConfig.find()
-        .count() === 0) {
-        EngineConfig.insert(_engineConfig);
-        console.log("Inserted config for NPM module QSOCKS: ", _engineConfig);
-        CertsConfig.insert(_certs);
-    }
+    };    
 }
 
 
 export const engineConfig = _engineConfig; //EngineConfig.findOne();
 
-
-//CONFIG FOR HTTP MODULE (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)
-// var c = QRSConfig.findOne({})
-export const authHeaders = {
-    'hdr-usr': _senseConfig.headerValue,
-    'X-Qlik-xrfkey': _senseConfig.xrfkey
-}
-
-
-export const certs = CertsConfig.findOne({});
