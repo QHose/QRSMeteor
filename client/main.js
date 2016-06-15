@@ -13,8 +13,8 @@ import '/imports/ui/notFound.html';
 import '/imports/ui/nav.html';
 import '/imports/ui/users.html';
 import '/imports/ui/users.js';
-import '/imports/ui/SSO.js';
-import '/imports/ui/SSO.html';
+// import '/imports/ui/SSO.js';
+// import '/imports/ui/SSO.html';
 import '/imports/startup/accounts-config.js';
 
 

@@ -14,7 +14,7 @@ Template.OEMPartner.helpers({
         var usersArray = [];
         var customers = Customers.find()
             .fetch();
-        customers.map(customer => {
+        customers.map(customer => { //flatten the array of users over all documents into a single array
             for (var user of customer.users) {
                 usersArray.push(user);
             }
@@ -32,7 +32,7 @@ Template.OEMPartner.helpers({
             .count();
     },
     linkToApp() {
-        config = QRSConfig.findOne();
+        var config = QRSConfig.findOne();
         return 'http://' + config.host + '/sense/app/' + this.id
     }
 });
@@ -55,19 +55,14 @@ Template.OEMPartner.events({
         target.text.value = '';
     },
     'change #currentUser' (event, template) {
-        // Prevent default browser form submit
         var currentUser = template.$("#currentUser")
             .val();
-        
-        Meteor.call('simulateUserLogin', currentUser);
-        Customers.update({ _id: 100 }, {
-            $set: {
-                quantity: 500,
-                details: { model: "14Q3", make: "xyz" },
-                tags: ["coats", "outerwear", "clothing"]
-            }
-        })
-        Session.set('currentUser', currentUser);
+        console.log('helper: user made a selection in the simulateUserLogin box, for user: ' + currentUser);
+        try {
+            Meteor.call('simulateUserLogin', currentUser);
+        } catch(err) {
+            sAlert.error(err.message);
+        }
     },
     'click .generateStreamAndApp' () {
         console.log('click event generateStreamAndApp');

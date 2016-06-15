@@ -23,38 +23,40 @@ var QRS = require('qrs');
 var qrs = null;
 
 Meteor.methods({
-    SSO(user) {
-        // check(user, Object);
-        console.log('In Meteor server side method. We received user: ' + user + ' for which we request a ticket at the Sense QPS using the Node package Qlikauth');
-        //Define user directory, user identity and attributes
-        var profile = {
-            'UserDirectory': '2008ENT',
-            'UserId': user,
-            'Attributes': [{ 'group': 'Shell' }]
-        }
-        console.log('Request ticket for this profile: ', profile);
-        var options = {
-                'Certificate': senseConfig.cert, //'C:/Users/Qlik/Meteor projects/qlikauth-meteor/node_modules/qlik-auth/client.pfx',
-                'PassPhrase': ''
-            }
-            //Make call for ticket request
-        qlikauth.requestTicket(request, response, profile, options);
-    },
     resetLoggedInUser() {
         console.log("Method resetLoggedInUsers");
-        Customers.update({}, {
-            $set: {
-                'user.currentlyLoggedIn' : false
-            }
+
+        Customers.find().forEach(function(customer){
+            _.forEach(customer.users, function(user){
+                user.currentlyLoggedIn= false;
+            })
         })
+
+        //https://docs.mongodb.com/manual/tutorial/update-documents/#update-multiple-documents
+        // Customers.update({
+        // }, {
+        //     $set: {
+        //         'users.$': {
+        //             'currentlyLoggedIn': false
+        //         }
+        //     }
+        // });
+        // // Customers.update({}, {
+        //     $set: {
+        //         'users.$.currentlyLoggedIn': false
+        //     }
+        // }, {
+        //     upsert: true,
+        //     multi: true,
+        // })
     },
     simulateUserLogin(name) {
-        check(name);
+        check(name, String);
         Meteor.call('resetLoggedInUser');
         console.log('method: simulateUserLogin');
-        Customers.update({"name": name}, {
+        Customers.update({ "users.name": name }, {
             $set: {
-                'user.currentlyLoggedIn' : true
+                'users.$.currentlyLoggedIn': true
             }
         })
     },

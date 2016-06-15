@@ -23,7 +23,7 @@ Customers.attachSchema(new SimpleSchema({
         optional: true
     },
     users: {
-        type: Array,
+        type: [Object],
         optional: true
     },
     "users.$": {
