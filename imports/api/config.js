@@ -37,7 +37,7 @@ export const senseConfig = QRSConfig.findOne();
 QRSConfig.attachSchema(new SimpleSchema({
     host: {
         type: String,
-        label: "Host where Sense runs (ensure you have also put this name in the proxy whitelist",
+        label: "Host where Sense runs (ensure you have also put this name in the proxy whitelist)",
     },
     useSSL: {
         type: Boolean,

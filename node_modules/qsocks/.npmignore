@@ -1,0 +1,7 @@
+node_modules/
+test.js
+*.log
+logs
+pids
+*.pid
+*.seed

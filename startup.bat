@@ -1,2 +1,2 @@
-cd C:\Users\MBJ\Documents\GitHub\QRSMeteor
+cd C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor
 meteor
