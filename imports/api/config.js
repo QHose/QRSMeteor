@@ -6,16 +6,16 @@ export const EngineConfig = new Mongo.Collection('engineConfig');
 //config for QRS
 
 var _senseConfig = {
-        "host": '2008ENT', //window.location.hostname, on client side
-        "port":80,
-        "useSSL": false,
-        "xrfkey": 'ABCDEFG123456789',
-        "authentication": "header",
-        "virtualProxy": "hdr", //used to connect via REST to Sense, we authenticate via a http header. not for production!!!
-        "virtualProxyClientUsage": "meteor",
-        "headerKey": 'hdr-usr',
-        "headerValue": '2008ENT\\Qlik',
-        isSecure: true
+        "host": Meteor.settings.host,
+        "port":Meteor.settings.port,
+        "useSSL": Meteor.settings.useSSL,
+        "xrfkey": Meteor.settings.xrfkey,
+        "authentication": Meteor.settings.authentication,
+        "virtualProxy": Meteor.settings.virtualProxy, //used to connect via REST to Sense, we authenticate via a http header. not for production!!!
+        "virtualProxyClientUsage": Meteor.settings.virtualProxyClientUsage,
+        "headerKey": Meteor.settings.headerKey,
+        "headerValue": Meteor.settings.headerValue,
+        "isSecure": Meteor.settings.isSecure,
     };
 
 //CONFIG FOR HTTP MODULE (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)
@@ -32,7 +32,7 @@ if (Meteor.isServer) {
     console.log(_senseConfig);
 }
 
-export const senseConfig = QRSConfig.findOne();
+export const senseConfig = _senseConfig;
 
 //Attach a database schema so we can auto create insert and update forms in the front end, and can validate the input
 QRSConfig.attachSchema(new SimpleSchema({
@@ -95,16 +95,16 @@ if (Meteor.isServer) {
 
     //@todo: this engine config works, so this one can be created by creating a new object and filling it with properties from senseConfig and cert values
     var _engineConfig = {
-        host: senseConfig.host,
-        isSecure: senseConfig.isSecure,
-        port: '4747',
+        host: _senseConfig.host,
+        isSecure: _senseConfig.isSecure,
+        port: Meteor.settings.enginePort,
         headers: {
-            'X-Qlik-User': 'UserDirectory=2008ENT;UserId=Qlik'
+            'X-Qlik-User': Meteor.settings.engineHeaders,
         },
         key: _certs.key,
         cert: _certs.cert,
         ca: _certs.ca,
-        passphrase: null,
+        passphrase: Meteor.settings.passphrase,
         rejectUnauthorized: false // Don't reject self-signed certs
     };    
 }
