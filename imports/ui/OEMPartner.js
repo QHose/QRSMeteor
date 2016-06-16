@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { QRSConfig } from '/imports/api/config.js';
+import { senseConfig as config } from '/imports/api/config.js';
 import { Apps, TemplateApps } from '/imports/api/apps.js'
 import { Customers, dummyCustomers } from '../api/customers.js';
 import { Streams } from '/imports/api/streams.js'
@@ -31,8 +31,7 @@ Template.OEMPartner.helpers({
         return Customers.find()
             .count();
     },
-    linkToApp() {
-        var config = QRSConfig.findOne();
+    linkToApp() {        
         return 'http://' + config.host + '/sense/app/' + this.id
     }
 });

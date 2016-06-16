@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { Customers, dummyCustomers } from '../api/customers';
 import { Session } from 'meteor/session';
 // import { config } from '/imports/api/clientConfig';
-import { QRSConfig } from '/imports/api/config';
+import { senseConfig as config } from '/imports/api/config';
 import '/imports/ui/UIHelpers';
 
 
@@ -15,8 +15,6 @@ import moment from 'moment';
 import lodash from 'lodash';
 _ = lodash;
 
-
-var config = QRSConfig.findOne();
 
 Template.generation.helpers({
     countStreams() {
@@ -32,7 +30,7 @@ Template.generation.helpers({
             .format('DD-MM-YYYY');
     },
     appSettings: function() {
-        console.log('client generation helper: get app table, the config used to generate the URLs to Sense: '+config);
+        console.log('client generation helper: get app table, the config used to generate the URLs to Sense: ', config);
         return {
             collection: Apps,
             rowsPerPage: 5,
