@@ -202,11 +202,9 @@ Template.generation.events({
         } //'click .reactive-table tbody tr        
 }); //end Meteor events
 
-export var updateSenseInfo = function() {
-    // console.log('call method to update Sense info');
+export var updateSenseInfo = function() {    
     Meteor.call('updateLocalSenseCopy');
 };
-
 
 //this code gets executed if the page has been loaded, so a good moment to Connect to Sense a get the most recent apps and streams
 Template.generation.onRendered(function() {

@@ -26,29 +26,17 @@ Meteor.methods({
     resetLoggedInUser() {
         console.log("Method resetLoggedInUsers");
 
-        Customers.find().forEach(function(customer){
-            _.forEach(customer.users, function(user){
-                user.currentlyLoggedIn= false;
-            })
-        })
+        Customers.find()
+            .forEach(function(customer) {
+                var updatedUsers = _.map(customer.users, function(user) {
+                    user.currentlyLoggedIn = false;
+                    return user;
+                })
 
-        //https://docs.mongodb.com/manual/tutorial/update-documents/#update-multiple-documents
-        // Customers.update({
-        // }, {
-        //     $set: {
-        //         'users.$': {
-        //             'currentlyLoggedIn': false
-        //         }
-        //     }
-        // });
-        // // Customers.update({}, {
-        //     $set: {
-        //         'users.$.currentlyLoggedIn': false
-        //     }
-        // }, {
-        //     upsert: true,
-        //     multi: true,
-        // })
+                Customers.update(customer._id, {
+                    $set: { users: updatedUsers },
+                });
+            })
     },
     simulateUserLogin(name) {
         check(name, String);

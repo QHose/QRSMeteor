@@ -16,6 +16,7 @@ var _senseConfig = {
         "headerKey": Meteor.settings.public.headerKey,
         "headerValue": Meteor.settings.public.headerValue,
         "isSecure": Meteor.settings.public.isSecure,
+        "UDC": Meteor.settings.public.UDC
     };
 
 //CONFIG FOR HTTP MODULE (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)
@@ -24,7 +25,7 @@ export const authHeaders = {
     'X-Qlik-xrfkey': _senseConfig.xrfkey
 }
 
-console.log('This Sense SaaS demo tool uses this config: ', Meteor.settings.public);
+console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.public);
 
 export const senseConfig = _senseConfig;
 
