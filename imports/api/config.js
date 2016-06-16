@@ -11,7 +11,8 @@ var _senseConfig = {
         "useSSL": false,
         "xrfkey": 'ABCDEFG123456789',
         "authentication": "header",
-        "virtualProxy": "hdr",
+        "virtualProxy": "hdr", //used to connect via REST to Sense, we authenticate via a http header. not for production!!!
+        "virtualProxyClientUsage": "meteor",
         "headerKey": 'hdr-usr',
         "headerValue": '2008ENT\\Qlik',
         isSecure: true

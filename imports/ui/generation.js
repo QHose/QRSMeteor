@@ -1,7 +1,7 @@
 import { Template } from 'meteor/templating';
 import { Customers, dummyCustomers } from '../api/customers';
 import { Session } from 'meteor/session';
-import { config } from '/imports/api/clientConfig';
+// import { config } from '/imports/api/clientConfig';
 import { QRSConfig } from '/imports/api/config';
 import '/imports/ui/UIHelpers';
 
@@ -14,6 +14,9 @@ import './OEMPartner';
 import moment from 'moment';
 import lodash from 'lodash';
 _ = lodash;
+
+
+var config = QRSConfig.findOne();
 
 Template.generation.helpers({
     countStreams() {
@@ -29,6 +32,7 @@ Template.generation.helpers({
             .format('DD-MM-YYYY');
     },
     appSettings: function() {
+        console.log('client generation helper: get app table, the config used to generate the URLs to Sense: '+config);
         return {
             collection: Apps,
             rowsPerPage: 5,
@@ -40,7 +44,7 @@ Template.generation.helpers({
                     key: 'id',
                     label: 'Guid',
                     fn: function(value) {
-                        return new Spacebars.SafeString('<a href=http://' + config.host + '/' + config.virtualProxy + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
+                        return new Spacebars.SafeString('<a href=http://' + config.host + '/' + config.virtualProxyClientUsage + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
                         // return new Spacebars.SafeString('<a href=http://' + config.host + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
                     }
                 },
@@ -114,7 +118,7 @@ Template.generation.helpers({
                     key: 'id',
                     label: 'Guid',
                     fn: function(value) {
-                        return new Spacebars.SafeString('<a href=http://' + config.host + '/' + config.virtualProxy + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
+                        return new Spacebars.SafeString('<a href=http://' + config.host + '/' + config.virtualProxyClientUsage + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
                         // return new Spacebars.SafeString('<a href=http://' + config.host + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
                     }
                 }, {

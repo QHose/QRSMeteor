@@ -15,7 +15,7 @@ Picker.route('/sso', function(params, request, response, next) {
 
     //Define user directory, user identity and attributes
     var profile = {
-        'UserDirectory': '2008ENT',
+        'UserDirectory': senseConfig.host, //'2008ENT',
         'UserId':  'john', //Session.get('currentUser'),
         'Attributes': [{ 'group': 'Shell' }]
     }
