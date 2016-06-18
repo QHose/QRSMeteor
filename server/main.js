@@ -7,6 +7,7 @@ import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 import * as QSApp from '/imports/api/QRSFunctionsApp';
 import * as QSStream from '/imports/api/QRSFunctionsStream';
+import * as QSProxy from '/imports/api/QPSFunctions';
 import * as QSSystem from '/imports/api/QRSFunctionsSystemRules';
 import qlikauth from 'qlik-auth';
 
@@ -25,7 +26,7 @@ var qrs = null;
 Meteor.methods({
     resetLoggedInUser() {
         console.log("Method resetLoggedInUsers");
-        Customers.update({}, {$set: "users.$.currentlyLoggedIn": false })
+        
         Customers.find()
             .forEach(function(customer) {
                 var updatedUsers = _.map(customer.users, function(user) {
@@ -36,7 +37,9 @@ Meteor.methods({
                 Customers.update(customer._id, {
                     $set: { users: updatedUsers },
                 });
-            })
+            });
+        QSProxy.logoutUser();
+
     },
     simulateUserLogin(name) {
         check(name, String);

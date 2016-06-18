@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"Co",
+				"console"
+			],
+			[
+				"QS",
+				"QSProxy"
+			],
+			[
 				"new",
 				"newUsers"
 			],
@@ -156,10 +164,6 @@
 				"stream"
 			],
 			[
-				"QS",
-				"QSStream"
-			],
-			[
 				"QR",
 				"QRSFunctionsApp"
 			],
@@ -202,10 +206,6 @@
 			[
 				"qrs",
 				"QRSConfig"
-			],
-			[
-				"Co",
-				"Config"
 			],
 			[
 				"Cus",
@@ -527,23 +527,39 @@
 			"file": "imports/server/qlikAuthSSO.js",
 			"settings":
 			{
-				"buffer_size": 2170,
+				"buffer_size": 2187,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "node_modules/qlik-auth/index.js",
-			"settings":
-			{
-				"buffer_size": 11128,
-				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "server/main.js",
 			"settings":
 			{
-				"buffer_size": 6082,
+				"buffer_size": 6176,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/api/QPSFunctions.js",
+			"settings":
+			{
+				"buffer_size": 1169,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/OEMPartner.html",
+			"settings":
+			{
+				"buffer_size": 5458,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/OEMPartner.js",
+			"settings":
+			{
+				"buffer_size": 4257,
 				"line_ending": "Windows"
 			}
 		}
@@ -607,34 +623,38 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qlik-auth",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
 	[
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server/qlikAuthSSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/QRSFunctionsApp.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/QPSFunctions.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server/qlikAuthSSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/config.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/checkConfig.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/clientConfig.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/SSO.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qlik-auth/index.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js",
@@ -652,7 +672,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/QRSFunctionsSystemRules.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/routes.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/seeds.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.css",
@@ -741,8 +760,7 @@
 		"/C/Meteor projects/slager 10dec/client/cartFunctions.js",
 		"/C/Meteor projects/slager 10dec/client/config/notification.js",
 		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/Order/show.html",
-		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/Order/show.js",
-		"/C/Users/Qlik/Meteor projects/firstmeteor/lib/main.js"
+		"/C/Users/Qlik/Meteor projects/firstmeteor/client/templates/app/Order/show.js"
 	],
 	"find":
 	{
@@ -774,6 +792,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"profile",
+			"users",
 			"Meteor.settings",
 			"QRSConfig",
 			"'",
@@ -884,6 +904,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"passport",
 			"Meteor.settings.public",
 			"\"",
 			"'",
@@ -930,7 +951,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -960,7 +981,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -969,15 +990,133 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2170,
+						"buffer_size": 2187,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1691,
-								1691
+								0,
+								913
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "server/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6176,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1360,
+								1360
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "imports/api/QPSFunctions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1169,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								487,
+								487
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "imports/ui/OEMPartner.html",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 5458,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1539,
+								1995
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 45.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "imports/ui/OEMPartner.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4257,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								463,
+								463
 							]
 						],
 						"settings":
@@ -991,66 +1130,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "node_modules/qlik-auth/index.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 11128,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4844,
-								4844
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1669.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "server/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6082,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1142,
-								1142
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 90.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1133,7 +1212,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 331.0,
+	"side_bar_width": 194.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

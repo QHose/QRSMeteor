@@ -11,15 +11,7 @@ Template.OEMPartner.helpers({
         return Customers.find({}, { sort: { checked: -1 } });
     },
     users() {
-        var usersArray = [];
-        var customers = Customers.find()
-            .fetch();
-        customers.map(customer => { //flatten the array of users over all documents into a single array
-            for (var user of customer.users) {
-                usersArray.push(user);
-            }
-        });
-        return usersArray;
+        return Session.get('users');
     },
     templateApps() {
         return TemplateApps.find();
@@ -118,4 +110,15 @@ Template.OEMPartner.events({
 Template.OEMPartner.onRendered(function() {
     this.$(".dropdown")
         .dropdown();
+
+    var usersArray = [];
+        var customers = Customers.find()
+            .fetch();
+        customers.map(customer => { //flatten the array of users over all documents into a single array
+            for (var user of customer.users) {
+                usersArray.push(user);
+            }
+        });
+        console.log('We obtained the following users out of the customers: '+usersArray);
+        Session.set('users', usersArray);
 });

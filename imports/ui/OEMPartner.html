@@ -15,6 +15,17 @@
         </div>
     </div>
     <div class="ui segment">
+        {{#unless users}}
+        <div class="ui icon message">
+            <img class="icon" src="images/id.png">
+            <div class="content">
+                <div class="header">
+                    <h4>No users</h4>
+                </div>
+                <p> Please insert at least one user in a customer so we can simulate the Single Sign on</p>
+            </div>
+        </div>
+        {{else}}
         <div class="header">
             <h4>Simulate a user login</h4>
             <p> We will pass this user and his group membership to Qlik Sense to ensure Single Sign on</p>
@@ -31,6 +42,7 @@
                 {{/each}}
             </div>
         </div>
+        {{/unless}}
     </div>
     <div class="ui segment">
         <!-- <i class="users icon"></i> -->
@@ -58,11 +70,11 @@
             <img class="icon" src="images/customers.png">
             <div class="content">
                 <div class="header">
-                    Customers
+                    No customers
                 </div>
                 <li>You have no customers in your shop.</li>
                 <li>Let's insert some by hand, in the add new customer box above </li>
-                <li>Or press the blue arrow, next to the generate button, to insert 100+ dummy customers for our Fictive SaaS environment </li>
+                <li>Or press the blue arrow, next to the generate button, to insert some dummy customers for our Fictive SaaS environment </li>
             </div>
         </div>
         {{else}}
@@ -90,7 +102,7 @@
             <img class="icon" src="images/app.png">
             <div class="content">
                 <div class="header">
-                    Template apps
+                    No template apps
                 </div>
                 <p>Please select the app you would like to use as a basis template for which we will create a copy for each of your selected customers</p>
             </div>

@@ -13,9 +13,7 @@ Template.customer.events({
     });
   },
   'click .delete'() {
-    Customers.remove(this._id);
-    //todo: remove the stream too
-    // updateSenseInfo();
+    Customers.remove(this._id);    
   }
   ,
   'click .generateStream'() {
