@@ -11,7 +11,8 @@ Template.OEMPartner.helpers({
         return Customers.find({}, { sort: { checked: -1 } });
     },
     users() {
-        return Session.get('users');
+        return Session.get('usersArray');
+
     },
     templateApps() {
         return TemplateApps.find();
@@ -23,7 +24,7 @@ Template.OEMPartner.helpers({
         return Customers.find()
             .count();
     },
-    linkToApp() {        
+    linkToApp() {
         return 'http://' + config.host + '/sense/app/' + this.id
     }
 });
@@ -51,7 +52,7 @@ Template.OEMPartner.events({
         console.log('helper: user made a selection in the simulateUserLogin box, for user: ' + currentUser);
         try {
             Meteor.call('simulateUserLogin', currentUser);
-        } catch(err) {
+        } catch (err) {
             sAlert.error(err.message);
         }
     },
@@ -112,13 +113,14 @@ Template.OEMPartner.onRendered(function() {
         .dropdown();
 
     var usersArray = [];
-        var customers = Customers.find()
-            .fetch();
-        customers.map(customer => { //flatten the array of users over all documents into a single array
-            for (var user of customer.users) {
-                usersArray.push(user);
-            }
-        });
-        console.log('We obtained the following users out of the customers: '+usersArray);
-        Session.set('users', usersArray);
+    var customers = Customers.find()
+        .fetch();
+    customers.map(customer => { //flatten the array of users over all documents into a single array
+        for (var user of customer.users) {
+            usersArray.push(user);
+        }
+    });
+    console.log('We obtained the following users out of the customers: ');
+    console.log(usersArray);
+    Session.set('usersArray', usersArray);
 });
