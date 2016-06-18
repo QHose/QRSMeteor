@@ -4,18 +4,18 @@
             <div class="header">
                 This column shows you a fictive OEM partner of Qlik.
             </div>
-            <ul class="list">
-                <li>We have a local MongoDB running to store our customers and Sense configuration. (press control M to see these collections)</li>
+            <!-- <ul class="list"> -->
+                <p>We have a local MongoDB running to store our customers and Sense configuration. (press control M to see these collections)</p>
                 <!-- <li>Generate streams and apps via the REST API's of Qlik Sense</li>
                 <li>Select the customers for which you want to generate the streams and apps </li>
                 <li>We will create 1 stream per customer </li>
                 <li>A copy will be made for each selected template and published in the stream for that customer </li>
                 <li>Press dummy/delete and some dummy customers will be inserted/deleted</li> -->
-            </ul>
+            <!-- </ul> -->
         </div>
     </div>
     <div class="ui segment">
-        {{#unless users}}
+     {{#if noCustomers}}
         <div class="ui icon message">
             <img class="icon" src="images/id.png">
             <div class="content">
@@ -31,23 +31,24 @@
             <div class="content">
                 <div class="header">
                     <h4>Simulate a user login</h4>
-                    <p> We will pass this user and his group membership to Qlik Sense to ensure Single Sign on</p>
+                    
                 </div>
+                <p> We will pass this user and his group membership in a JSON object to Qlik Sense and in this way we create a Single Sign on</p>
                 <div class="ui selection dropdown">
                     <input type="hidden" id="currentUser">
                     <i class="dropdown icon"></i>
                     <div class="default text">User</div>
                     <div class="menu">
-                        {{#each users}}
+                        {{#each customers}} {{#each users}}
                         <div class="item" data-value="{{name}}" data-text="{{name}}">
                             <i class="male icon"></i> {{name}}
                         </div>
-                        {{/each}}
+                        {{/each}} {{/each}}
                     </div>
                 </div>
             </div>
         </div>
-        {{/unless}}
+        {{/if}}
     </div>
     <div class="ui segment">
         <!-- <i class="users icon"></i> -->
@@ -70,7 +71,7 @@
             </div>
             {{/unless}}
         </div>
-        {{#if noCustomers}}
+      {{#if noCustomers}}
         <div class="ui icon message">
             <img class="icon" src="images/customers.png">
             <div class="content">
