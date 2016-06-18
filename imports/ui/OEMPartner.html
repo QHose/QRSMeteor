@@ -26,20 +26,25 @@
             </div>
         </div>
         {{else}}
-        <div class="header">
-            <h4>Simulate a user login</h4>
-            <p> We will pass this user and his group membership to Qlik Sense to ensure Single Sign on</p>
-        </div>
-        <div class="ui selection dropdown">
-            <input type="hidden" id="currentUser">
-            <i class="dropdown icon"></i>
-            <div class="default text">User</div>
-            <div class="menu">
-                {{#each users}}
-                <div class="item" data-value="{{name}}" data-text="{{name}}">
-                    <i class="male icon"></i> {{name}}
+        <div class="ui icon message">
+            <img class="icon" src="images/id.png">
+            <div class="content">
+                <div class="header">
+                    <h4>Simulate a user login</h4>
+                    <p> We will pass this user and his group membership to Qlik Sense to ensure Single Sign on</p>
                 </div>
-                {{/each}}
+                <div class="ui selection dropdown">
+                    <input type="hidden" id="currentUser">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">User</div>
+                    <div class="menu">
+                        {{#each users}}
+                        <div class="item" data-value="{{name}}" data-text="{{name}}">
+                            <i class="male icon"></i> {{name}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
             </div>
         </div>
         {{/unless}}
