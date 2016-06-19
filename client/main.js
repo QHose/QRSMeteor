@@ -13,6 +13,8 @@ import '/imports/ui/notFound.html';
 import '/imports/ui/nav.html';
 import '/imports/ui/users.html';
 import '/imports/ui/users.js';
+import '/imports/ui/simulateUserLogin.html';
+import '/imports/ui/simulateUserLogin.js';
 import '/imports/startup/accounts-config.js';
 
 

@@ -5,7 +5,7 @@ import { Customers } from '/imports/api/customers';
 import { senseConfig } from '/imports/api/config';
 
 if (Meteor.isClient) {
-	console.log('Setup generic helper functions, for functions every template needs');
+    console.log('Setup generic helper functions, for functions every template needs');
     // Template.registerHelper('formatDate', function(date) {
     //     // console.log('in formate Date helper'+ date);
     //     // return formatDate(date);
@@ -23,14 +23,18 @@ if (Meteor.isClient) {
         return someValue ? 'selected' : '';
     });
 
+    Template.registerHelper('customers', function() {
+        return Customers.find({}, { sort: { checked: -1 } });
+    });
+
     Template.registerHelper('noCustomers', function() {
         return !Customers.find({})
-        .count();
+            .count();
     });
 
     Template.registerHelper('noTemplateApps', function() {
         return !TemplateApps.find({})
-        .count();
+            .count();
     });
 
     //generic helpers to return the collection to the blaze template

@@ -1,8 +1,10 @@
 import { Template } from 'meteor/templating';
 import { senseConfig as config } from '/imports/api/config.js';
+import { ironRouter} from 'meteor/iron:router';
 import { Apps, TemplateApps } from '/imports/api/apps.js'
 import { Customers, dummyCustomers } from '../api/customers.js';
 import { Streams } from '/imports/api/streams.js'
+import '/imports/ui/UIHelpers';
 
 AutoForm.addHooks(['insertCustomerForm'], {
   onSuccess: function(operation, result, template) {
@@ -11,15 +13,12 @@ AutoForm.addHooks(['insertCustomerForm'], {
   }
 });
 
-Template.users.helpers({
-    customers() {
-        return Customers.find({}, { sort: { checked: -1 } });
-    }
-})
-
 Template.users.events({
     'click .delete' () {
         Customers.remove(this._id);
+    },
+    'click .backToGeneration' () {
+        Router.go('generation');
     }
 
 });

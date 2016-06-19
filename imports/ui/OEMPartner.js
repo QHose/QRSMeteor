@@ -7,12 +7,6 @@ import { Streams } from '/imports/api/streams.js'
 import './OEMPartner.html';
 
 Template.OEMPartner.helpers({
-    customers() {
-        return Customers.find({}, { sort: { checked: -1 } });
-    },
-    // users() {
-    //     return Customers.find({}, { sort: { checked: -1 } }).fetch().users;
-    // },
     templateApps() {
         return TemplateApps.find();
     },
@@ -107,11 +101,9 @@ Template.OEMPartner.events({
     }
 }); //end Meteor events
 
-// Template.OEMPartner.onRendered(function() {
-//     this.$(".dropdown")
-//         .dropdown();
-// });
-
-Meteor.defer(() => {
-    this.$(".dropdown").dropdown();
+Template.OEMPartner.onRendered(function() {
+    Meteor.defer(() => {
+        Template.instance().$(".dropdown")
+            .dropdown();
+    });
 });

@@ -153,6 +153,7 @@ Template.generation.helpers({
                     }
                 },
                 { key: 'createDate', label: 'Date' },
+                { key: 'createdBy', label: 'Created by' },
             ]
         };
     }
