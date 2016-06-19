@@ -107,7 +107,11 @@ Template.OEMPartner.events({
     }
 }); //end Meteor events
 
-Template.OEMPartner.onRendered(function() {
-    this.$(".dropdown")
-        .dropdown();
+// Template.OEMPartner.onRendered(function() {
+//     this.$(".dropdown")
+//         .dropdown();
+// });
+
+Meteor.defer(() => {
+    this.$(".dropdown").dropdown();
 });

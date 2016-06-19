@@ -142,11 +142,16 @@ Template.generation.helpers({
             collection: APILogs,
             rowsPerPage: 5,
             showFilter: true,
-            showColumnToggles: false,
+            showColumnToggles: true,
             fields: [
                 { key: 'action', label: 'Action' },
-                { key: 'request', label: 'Request' },
-                { key: 'response', label: 'Response' },                
+                { key: 'request', label: 'Request' }, {
+                    key: 'response',
+                    label: 'Response',
+                    fn: function(value) {
+                        return new Spacebars.SafeString('<pre id="json">' + JSON.stringify(value, undefined, 2) + '</pre>')
+                    }
+                },
                 { key: 'createDate', label: 'Date' },
             ]
         };
@@ -217,7 +222,7 @@ Template.generation.events({
         } //'click .reactive-table tbody tr        
 }); //end Meteor events
 
-export var updateSenseInfo = function() {    
+export var updateSenseInfo = function() {
     Meteor.call('updateLocalSenseCopy');
 };
 

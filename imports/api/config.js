@@ -1,5 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 
+
+//This is the config that we need to make available on the client (the webpage)
 if (Meteor.isClient) {
     var _senseConfig = {
         "host": Meteor.settings.public.host,
@@ -10,11 +12,8 @@ if (Meteor.isClient) {
 
 }
 
-
-
-console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.public);
-
 if (Meteor.isServer) {
+    console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.public);
     import crypto from 'crypto';
     import fs from 'fs';
 
@@ -31,7 +30,7 @@ if (Meteor.isServer) {
         "isSecure": Meteor.settings.public.isSecure,
         "UDC": Meteor.settings.public.UDC
     };
-   
+
     //CONFIG FOR HTTP MODULE WITH HEADER AUTH (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)
     export const authHeaders = {
         'hdr-usr': _senseConfig.headerValue,
