@@ -9,6 +9,7 @@ import { Customers } from '/imports/api/customers';
 
 //import config for Qlik Sense QRS and Engine API
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
+import { REST_Log } from '/imports/api/APILogs';
 import lodash from 'lodash';
 _ = lodash;
 
@@ -85,14 +86,14 @@ function createTag(name) {
     try {
         const result = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/Tag', {
             headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey},
+            params: { 'xrfkey': senseConfig.xrfkey },
             data: { "name": name }
         })
         console.log('the result of tag creation');
         console.log(result);
         return result;
     } catch (err) {
-        throw new Meteor.Error('Tag: '+name+' create failed ', err.message);
+        throw new Meteor.Error('Tag: ' + name + ' create failed ', err.message);
     }
 };
 
@@ -130,7 +131,7 @@ function checkStreamStatus(customer) {
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
 export function getAppsViaEngine() {
-    console.log('server: getApps');
+    console.log('server: QSSOCKS getApps');
     return qsocks.Connect(engineConfig)
         .then(function(global) {
             //We can now interact with the global class, for example fetch the document list.
@@ -145,11 +146,16 @@ export function getAppsViaEngine() {
 
 export function getApps() {
     try {
+        const call = {};
+        call.action = 'Get the current list of apps'; 
+        call.request = 'HTTP.get(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full';
         const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
                 headers: authHeaders,
                 params: { 'xrfkey': senseConfig.xrfkey }
             })
             // console.log('http get result %j',result);
+        call.response = result;
+        REST_Log(call);
         return result.data;
     } catch (err) {
         throw new Meteor.Error('getApps failed', err.message);
@@ -160,9 +166,13 @@ export function getApps() {
 export function deleteApp(guid) {
     console.log('QRSApp sync deleteApp');
     try {
+        const call = {};
+        call.request = 'HTTP.del(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey;
         const result = HTTP.del('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders
         })
+        call.response = result;
+        APILogs.insert(call);
         return result;
     } catch (err) {
         throw new Meteor.Error('App delete failed', err.message);

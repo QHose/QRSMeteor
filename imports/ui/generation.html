@@ -28,6 +28,12 @@
                 Received {{countApps}}  apps via QRS API from Qlik Sense
             </h3> {{> reactiveTable settings=appSettings}}
             </div>
+              <div class="ui segment">
+                <h3 class="ui header">
+                <img class="icon" src="images/app.png">
+                We have sent and received these REST API calls
+            </h3> {{> reactiveTable settings=RESTCallSettings}}
+            </div>
         </div>
     </div>
 </template>

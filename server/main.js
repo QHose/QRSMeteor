@@ -112,7 +112,7 @@ Meteor.methods({
         return qrs.get('/qrs/stream/count');
     },
     updateLocalSenseCopy() {
-        console.log('Method: update the local mongoDB with fresh data from Qlik Sense');
+        console.log('Method: update the local mongoDB with fresh data from Qlik Sense: call QRS API getStreams and getApps');
         //delete the local content of the database before updating it
         Apps.remove({});
         Streams.remove({});

@@ -7,8 +7,9 @@ import '/imports/ui/UIHelpers';
 
 
 import './generation.html';
-import { Apps, TemplateApps } from '/imports/api/apps'
-import { Streams } from '/imports/api/streams'
+import { Apps, TemplateApps } from '/imports/api/apps';
+import { APILogs } from '/imports/api/APILogs';
+import { Streams } from '/imports/api/streams';
 import './customer';
 import './OEMPartner';
 import moment from 'moment';
@@ -133,6 +134,20 @@ Template.generation.helpers({
                         return new Spacebars.SafeString('<i class="remove circle icon"></i>')
                     }
                 },
+            ]
+        };
+    },
+    RESTCallSettings: function() {
+        return {
+            collection: APILogs,
+            rowsPerPage: 5,
+            showFilter: true,
+            showColumnToggles: false,
+            fields: [
+                { key: 'action', label: 'Action' },
+                { key: 'request', label: 'Request' },
+                { key: 'response', label: 'Response' },                
+                { key: 'createDate', label: 'Date' },
             ]
         };
     }

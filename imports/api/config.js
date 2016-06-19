@@ -1,12 +1,28 @@
 import { Mongo } from 'meteor/mongo';
 
-//config for QRS
+if (Meteor.isClient) {
+    var _senseConfig = {
+        "host": Meteor.settings.public.host,
+        "port": Meteor.settings.public.port,
+        "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
+        "UDC": Meteor.settings.public.UDC
+    };
 
-var _senseConfig = {
+}
+
+
+
+console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.public);
+
+if (Meteor.isServer) {
+    import crypto from 'crypto';
+    import fs from 'fs';
+
+    var _senseConfig = {
         "host": Meteor.settings.public.host,
         "port": Meteor.settings.public.port,
         "useSSL": Meteor.settings.public.useSSL,
-        "xrfkey": Meteor.settings.public.xrfkey,
+        "xrfkey": generateXrfkey(),
         "authentication": Meteor.settings.public.authentication,
         "virtualProxy": Meteor.settings.public.virtualProxy, //used to connect via REST to Sense, we authenticate via a http header. not for production!!!
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
@@ -15,19 +31,13 @@ var _senseConfig = {
         "isSecure": Meteor.settings.public.isSecure,
         "UDC": Meteor.settings.public.UDC
     };
+   
+    //CONFIG FOR HTTP MODULE WITH HEADER AUTH (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)
+    export const authHeaders = {
+        'hdr-usr': _senseConfig.headerValue,
+        'X-Qlik-xrfkey': _senseConfig.xrfkey
+    }
 
-//CONFIG FOR HTTP MODULE (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)
-export const authHeaders = {
-    'hdr-usr': _senseConfig.headerValue,
-    'X-Qlik-xrfkey': _senseConfig.xrfkey
-}
-
-console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.public);
-
-export const senseConfig = _senseConfig;
-
-if (Meteor.isServer) {
-    var fs = require('fs');
     var _certs = {
         // server_key: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/server_key.pem'),
         // server_cert: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/server.pem'),
@@ -50,8 +60,23 @@ if (Meteor.isServer) {
         ca: _certs.ca,
         passphrase: Meteor.settings.public.passphrase,
         rejectUnauthorized: false // Don't reject self-signed certs
-    };    
+    };
+}
+
+function generateXrfkey(size, chars) {
+    size = size || 16;
+    chars = chars || 'abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789';
+
+    var rnd = crypto.randomBytes(size),
+        value = new Array(size),
+        len = chars.length;
+
+    for (var i = 0; i < size; i++) {
+        value[i] = chars[rnd[i] % len]
+    };
+
+    return value.join('');
 }
 
 export const engineConfig = _engineConfig; //EngineConfig.findOne();
-
+export const senseConfig = _senseConfig;

@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { http } from 'meteor/meteor';
 import { Apps, TemplateApps } from '/imports/api/apps';
 import * as QSStream from '/imports/api/server/QRSFunctionsStream';
+import { APILogs } from '/imports/api/APILogs';
 
 //import meteor collections
 import { Streams } from '/imports/api/streams';
