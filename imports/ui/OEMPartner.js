@@ -10,9 +10,6 @@ Template.OEMPartner.helpers({
     customers() {
         return Customers.find({}, { sort: { checked: -1 } });
     },
-    // users() {
-    //     return Customers.find({}, { sort: { checked: -1 } }).fetch().users;
-    // },
     templateApps() {
         return TemplateApps.find();
     },
