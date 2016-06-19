@@ -13,16 +13,14 @@ import '/imports/ui/notFound.html';
 import '/imports/ui/nav.html';
 import '/imports/ui/users.html';
 import '/imports/ui/users.js';
-// import '/imports/ui/SSO.js';
-// import '/imports/ui/SSO.html';
 import '/imports/startup/accounts-config.js';
 
 
 import { Template } from 'meteor/templating';
-import { Apps, TemplateApps } from '/imports/api/apps.js';
+import { Apps, TemplateApps } from '/imports/api/apps';
 import { Customers } from '/imports/api/customers';
-import { Streams } from '/imports/api/streams.js'
-import { EngineConfig } from '/imports/api/config.js'
+import { Streams } from '/imports/api/streams'
+import { APILogs } from '/imports/api/APILogs'
 
 import moment from 'moment';
 import lodash from 'lodash';

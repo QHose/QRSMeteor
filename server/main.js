@@ -1,18 +1,18 @@
 import { Meteor } from 'meteor/meteor';
 import { http } from 'meteor/meteor';
-import { Apps, TemplateApps } from '/imports/api/apps.js';
+import { Apps, TemplateApps } from '/imports/api/apps';
 
 //import meteor collections
 import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
-import * as QSApp from '/imports/api/QRSFunctionsApp';
-import * as QSStream from '/imports/api/QRSFunctionsStream';
-import * as QSProxy from '/imports/api/QPSFunctions';
-import * as QSSystem from '/imports/api/QRSFunctionsSystemRules';
+import * as QSApp from '/imports/api/server/QRSFunctionsApp';
+import * as QSStream from '/imports/api/server/QRSFunctionsStream';
+import * as QSProxy from '/imports/api/server/QPSFunctions';
+import * as QSSystem from '/imports/api/server/QRSFunctionsSystemRules';
 import qlikauth from 'qlik-auth';
 
 //import config for Qlik Sense QRS and Engine API
-import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
+import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config';
 import '/imports/server/qlikAuthSSO.js';
 
 
@@ -26,7 +26,11 @@ var qrs = null;
 Meteor.methods({
     resetLoggedInUser() {
         console.log("Method resetLoggedInUsers");
-        
+
+        //call the QPS logout api, to invalidate the session cookie
+        QSProxy.logoutUser();
+
+        //reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.
         Customers.find()
             .forEach(function(customer) {
                 var updatedUsers = _.map(customer.users, function(user) {
@@ -38,7 +42,7 @@ Meteor.methods({
                     $set: { users: updatedUsers },
                 });
             });
-        QSProxy.logoutUser();
+
 
     },
     simulateUserLogin(name) {

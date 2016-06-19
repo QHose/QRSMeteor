@@ -1,8 +1,5 @@
 import { Mongo } from 'meteor/mongo';
 
-//SETUP NPM QRS MODULE 
-
-export const EngineConfig = new Mongo.Collection('engineConfig');
 //config for QRS
 
 var _senseConfig = {
