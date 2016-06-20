@@ -26,7 +26,6 @@ var qrs = null;
 Meteor.methods({
     resetLoggedInUser() {
         console.log("Method resetLoggedInUsers");
-
         //call the QPS logout api, to invalidate the session cookie
         QSProxy.logoutUser();
 
