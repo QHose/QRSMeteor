@@ -11,6 +11,7 @@ import '/imports/ui/pages/QMC.html';
 import '/imports/ui/pages/securityRules.html';
 import '/imports/ui/notFound.html';
 import '/imports/ui/nav.html';
+import '/imports/ui/nav.js';
 import '/imports/ui/users.html';
 import '/imports/ui/users.js';
 import '/imports/ui/simulateUserLogin.html';

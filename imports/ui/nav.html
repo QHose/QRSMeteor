@@ -1,22 +1,38 @@
 <template name="nav">
-    <div class="ui fixed inverted menu">
-        <a href="{{pathFor 'generation'}}" class="header item">            
-            <img class="logo" src="images/sense.png"> The power of Qlik Sense QRS API: SaaS Multi-tenant Publisher
-        </a>
-        {{#if currentUser}}
-        <div class="ui simple dropdown item">
-            Admin <i class="dropdown icon"></i>
-            <div class="menu">
-                <a class="item" href="{{pathFor 'users'}}">Insert users</a>
-                
+    <div class="inverted ui menu">
+        <a class="browse item">
+    Browse
+    <i class="dropdown icon"></i>
+  </a>
+    </div>
+    <div class="ui fluid popup bottom left transition hidden">
+        <div class="ui four column relaxed equal height divided grid">
+            <div class="Customers">
+                <h4 class="ui header">Customers</h4>
+                <div class="ui link list">
+                    <a class="item" href="{{pathFor 'users'}}">Insert customers with users</a>
+                </div>
+            </div>
+            <div class="column">
+                <h4 class="ui header">Single Sign on</h4>
+                <div class="ui link list">
+                    <a class="item">Simulate the user sign on using ticketing</a>
+                </div>
+            </div>
+            <div class="column">
+                <h4 class="ui header">Security</h4>
+                <div class="ui link list">
+                    <a class="item">View Sense security rules</a>
+                    <a class="item">View security documentation</a>
+                </div>
+            </div>
+            <div class="column">
+                <h4 class="ui header">API</h4>
+                <div class="ui link list">
+                    <a class="item">API documentation</a>
+                    <a class="item">See REST Calls between this tool and Sense</a>
+                </div>
             </div>
         </div>
-        {{else}}
-        <div class="ui segment inverted">
-            {{> loginButtons align="right"}}
-        </div>
-        {{/if}}
     </div>
 </template>
-
-
