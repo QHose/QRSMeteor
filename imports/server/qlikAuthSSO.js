@@ -17,24 +17,24 @@ Router.route('/sso', function(request, response, next) {
     //now we have the document, we can look in the array of users, to find the one that is logged in.
     if (!customer) {
         this.response.end("You have not selected a user you want to simulate the Single Sign on with. Please select a user on the left side of the screen");
-    } else {
-        var user = _.find(customer.users, { 'currentlyLoggedIn': true });
-
-        //Create a paspoort (ticket) request: user directory, user identity and attributes
-        var passport = {
-            'UserDirectory': senseConfig.UDC, //Specify a dummy value to ensure userID's are unique E.g. "Dummy"
-            'UserId': user.name, //the current user that we are going to login with
-            'Attributes': [{ 'group': customer.name }, //attributes supply the group membership from the source system to Qlik Sense
-                { 'group': user.country },
-                { 'group': user.group }
-            ]
-        }
-        console.log('Request ticket for this users "passport": ', passport.Attributes);
-        var options = {
-                'Certificate': senseConfig.cert, //'C:/Users/Qlik/Meteor projects/qlikauth-meteor/node_modules/qlik-auth/client.pfx',
-                'PassPhrase': ''
-            }
-            //Make call for ticket request
-        qlikauth.requestTicket(request, response, passport, options);
     }
+    var user = _.find(customer.users, { 'currentlyLoggedIn': true });
+
+    //Create a paspoort (ticket) request: user directory, user identity and attributes
+    var passport = {
+        'UserDirectory': senseConfig.UDC, //Specify a dummy value to ensure userID's are unique E.g. "Dummy"
+        'UserId': user.name, //the current user that we are going to login with
+        'Attributes': [{'group': customer.name}, //attributes supply the group membership from the source system to Qlik Sense
+            {'group': user.country},
+            {'group': user.group}
+        ] 
+    }
+    console.log('Request ticket for this users "passport": ', passport.Attributes);
+    var options = {
+            'Certificate': senseConfig.cert, //'C:/Users/Qlik/Meteor projects/qlikauth-meteor/node_modules/qlik-auth/client.pfx',
+            'PassPhrase': ''
+        }
+        //Make call for ticket request
+    qlikauth.requestTicket(request, response, passport, options);
+
 }, { where: 'server' });

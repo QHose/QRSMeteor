@@ -4,7 +4,6 @@ import { Session } from 'meteor/session';
 // import { config } from '/imports/api/clientConfig';
 import { senseConfig as config } from '/imports/api/config';
 import '/imports/ui/UIHelpers';
-import {formatDateTime} from '/imports/ui/UIHelpers';
 
 
 import './generation.html';
@@ -53,10 +52,8 @@ Template.generation.helpers({
                     label: 'ModifiedDate',
                     hidden: true,
                     fn: function(value) {
-                        return formatDateTime(value);
-                        
-                        // return moment(value)
-                        //     .format('DD-MM-YYYY');
+                        return moment(value)
+                            .format('DD-MM-YYYY');
                     }
                 }, {
                     key: 'stream.name',
@@ -70,9 +67,8 @@ Template.generation.helpers({
                     label: 'Last reload',
                     hidden: true,
                     fn: function(value) {
-                        return formatDateTime(value);
-                        // return moment(value)
-                        //     .format('DD-MM-YYYY');
+                        return moment(value)
+                            .format('DD-MM-YYYY');
                     }
                 },
                 // { key: 'qConnectedUsers', label: 'ConnectedUsers' },
@@ -128,7 +124,8 @@ Template.generation.helpers({
                     key: 'createdDate',
                     label: 'Created date',
                     fn: function(value, object) {
-                        return formatDateTime(value);                        
+                        return moment(value)
+                            .format('DD-MM-YYYY');
                     }
                 }, {
                     key: 'deleteStream',
@@ -155,13 +152,6 @@ Template.generation.helpers({
                         return new Spacebars.SafeString('<pre id="json">' + JSON.stringify(value, undefined, 2) + '</pre>')
                     }
                 },
-                {
-                    key: 'createDate',
-                    label: 'Created date',
-                    fn: function(value, object) {
-                        return formatDateTime(value);                        
-                    }
-                },                 
                 { key: 'createDate', label: 'Date' },
                 { key: 'createdBy', label: 'Created by' },
             ]
