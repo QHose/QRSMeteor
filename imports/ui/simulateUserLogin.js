@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { senseConfig as config } from '/imports/api/config.js';
 import { Apps, TemplateApps } from '/imports/api/apps.js'

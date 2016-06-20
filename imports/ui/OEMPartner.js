@@ -39,16 +39,6 @@ Template.OEMPartner.events({
         // Clear form
         target.text.value = '';
     },
-    'change #currentUser' (event, template) {
-        var currentUser = template.$("#currentUser")
-            .val();
-        console.log('helper: user made a selection in the simulateUserLogin box, for user: ' + currentUser);
-        try {
-            Meteor.call('simulateUserLogin', currentUser);
-        } catch (err) {
-            sAlert.error(err.message);
-        }
-    },
     'click .generateStreamAndApp' () {
         console.log('click event generateStreamAndApp');
         Session.set('loadingIndicator', 'loading');
@@ -101,9 +91,3 @@ Template.OEMPartner.events({
     }
 }); //end Meteor events
 
-Template.OEMPartner.onRendered(function() {
-    Meteor.defer(() => {
-        Template.instance().$(".dropdown")
-            .dropdown();
-    });
-});
