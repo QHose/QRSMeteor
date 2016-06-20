@@ -1,38 +1,40 @@
 <template name="nav">
-    <div class="inverted ui menu">
-        <a class="browse item">
-    Browse
-    <i class="dropdown icon"></i>
-  </a>
-    </div>
-    <div class="ui fluid popup bottom left transition hidden">
-        <div class="ui four column relaxed equal height divided grid">
-            <div class="Customers">
-                <h4 class="ui header">Customers</h4>
-                <div class="ui link list">
-                    <a class="item" href="{{pathFor 'users'}}">Insert customers with users</a>
+    <div class="ui fixed inverted menu">
+        <!-- <div class="ui container"> -->
+        <a href="{{pathFor 'generation'}}" class="header item">
+            <img class="logo" src="images/sense.png"> The power of Qlik Sense QRS API: SaaS Multi-tenant Publisher
+        </a>
+        <!-- <div class="right menu"> -->
+            <div class="ui simple dropdown item">
+                Customers & Users <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="{{pathFor 'users'}}">Insert users</a>
+                    <a class="item">Simulate the user sign on</a>
                 </div>
             </div>
-            <div class="column">
-                <h4 class="ui header">Single Sign on</h4>
-                <div class="ui link list">
-                    <a class="item">Simulate the user sign on using ticketing</a>
-                </div>
-            </div>
-            <div class="column">
-                <h4 class="ui header">Security</h4>
-                <div class="ui link list">
-                    <a class="item">View Sense security rules</a>
-                    <a class="item">View security documentation</a>
-                </div>
-            </div>
-            <div class="column">
-                <h4 class="ui header">API</h4>
-                <div class="ui link list">
-                    <a class="item">API documentation</a>
-                    <a class="item">See REST Calls between this tool and Sense</a>
-                </div>
+        <!-- </div> -->
+        <div class="ui simple dropdown item">
+            Documentation <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FIntroduction%20to%20Qlik%20Sense%20%28Ext%5C%29%7C65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0%2F%29
+onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Introduction%20to%20Qlik%20Sense%20(Ext)&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0}&end" target="_blank">Introduction to Qlik Sense</a>
+                <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FIntegration%20overview%20-%20Embedded%20analytics%7C407276F9-01A5-4CBF-AD54-7AEFE86739D8%2F%29
+onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Integration%20overview%20-%20Embedded%20analytics&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={407276F9-01A5-4CBF-AD54-7AEFE86739D8}&end" target="_blank">Integration overview</a>
+                <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FSecurity%20integration%3A%20Provide%20Single%20Sign%20On%20and%20share%20access%20rights%7C51692548-CA14-46D7-BCE5-69C1473E44BD%2F%29
+onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Security%20integration%20Provide%20Single%20Sign%20On%20and%20share%20access%20rights&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={51692548-CA14-46D7-BCE5-69C1473E44BD}&end" target="_blank">Security</a>
+                <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FProcess%20integration%20and%20automation%20using%20API%27s%7C2FD7AA8E-6890-45ED-8D30-893E30BC2569%2F%29
+onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Process%20integration%20and%20automation%20using%20API's&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={2FD7AA8E-6890-45ED-8D30-893E30BC2569}&end" target="_blank">API's</a>
+                <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FData%20integration%3A%20Combine%20sources%20into%20one%20associative%20model%7C0997EDB0-0439-4DCA-9F5C-699AA1804319%2F%29
+onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Data%20integration%20Combine%20sources%20into%20one%20associative%20model&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={0997EDB0-0439-4DCA-9F5C-699AA1804319}&end" target="_blank">Data integration</a>
+                <div class="divider"></div>
+                <div class="header">POC Evaluation criteria</div>
+                <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F2%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary%7CA89DAA5F-F20A-4A68-AF02-E58549F53D20%2F%29
+onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#2%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={A89DAA5F-F20A-4A68-AF02-E58549F53D20}&end" target="_blank">2: Desktop proof of concept pre-visit document summary</a>
+                <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F2%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary%7CA89DAA5F-F20A-4A68-AF02-E58549F53D20%2F%29
+onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#2%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={A89DAA5F-F20A-4A68-AF02-E58549F53D20}&end" target="_blank">3: Detailed steps for a POC</a>
             </div>
         </div>
     </div>
+    <!-- </div> -->
+    
 </template>

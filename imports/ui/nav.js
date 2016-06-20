@@ -9,5 +9,13 @@ import { Template } from 'meteor/templating';
 Template.nav.onRendered(function() {
     console.log('nav onRendered');
     this.$('.ui.menu')
-     .popup()
+        .popup({
+                position: 'bottom left',
+                delay: {
+                    show: 300,
+                    hide: 800
+                }
+            }
+
+        )
 });
