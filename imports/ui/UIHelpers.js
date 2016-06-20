@@ -19,9 +19,18 @@ if (Meteor.isClient) {
     //         .replace(/,/g, ".");
     // });
 
+    export function formatDatetime(date){
+        return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+    };
+
     Template.registerHelper('isSelected', function(someValue) {
         return someValue ? 'selected' : '';
     });
+
+    Template.registerHelper('formatDateTime', function(date) {
+        return formatDatetime(date);
+    });
+    
 
     Template.registerHelper('customers', function() {
         return Customers.find({}, { sort: { checked: -1 } });
