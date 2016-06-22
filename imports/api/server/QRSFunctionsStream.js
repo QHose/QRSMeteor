@@ -35,8 +35,7 @@ export function getStreams() {
             params: { 'xrfkey': senseConfig.xrfkey }            
         })
         call.response = result;
-        REST_Log(call);
-        console.log(result.data);
+        REST_Log(call);        
         return result.data;
     } catch (err) {
         throw new Meteor.Error('getStreams failed', err.message);
@@ -48,11 +47,16 @@ export function createStream(name) {
     console.log('QRS sync Functions Stream, create the stream with name', name);
 
     try {
+        call.action = 'Create stream'; 
+        call.request = "HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/stream', { headers: "+authHeaders+ ", params: { 'xrfkey': "+senseConfig.xrfkey +"}, data: { name: " + name +"}})"; 
+
         const result = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/stream', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: { "name": name }
         })
+        call.response = result;
+        REST_Log(call);        
         return result;
     } catch (err) {
         throw new Meteor.Error('Create stream failed', err.message);
