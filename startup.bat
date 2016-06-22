@@ -1,2 +1,2 @@
-cd C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor
-meteor
+cd C:\Users\MBJ\Documents\GitHub\QRSMeteor
+meteor --settings settings-development.json

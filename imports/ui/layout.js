@@ -21,7 +21,7 @@ Template.layout.onRendered(function() {
     if (error) {      
       console.error(error);
       Session.set('NoSenseConnection', true);
-      sAlert.error("We can't connect to Qlik Sense, is sense running, virtual proxy configured?");
+      sAlert.error("We can't connect to Qlik Sense, is your Sense VM running, all services started? , virtual proxy 'hdr' configured?");
     } else {
       var message = "Connected to Qlik Sense via the REST API's, we have tested this by requesting the list of streams via the QRS REST API."; 
       console.log(message);

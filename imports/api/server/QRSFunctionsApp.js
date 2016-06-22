@@ -172,7 +172,7 @@ export function deleteApp(guid) {
             headers: authHeaders
         })
         call.response = result;
-        APILogs.insert(call);
+        REST_Log(call);
         return result;
     } catch (err) {
         throw new Meteor.Error('App delete failed', err.message);
