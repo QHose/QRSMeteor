@@ -218,3 +218,4 @@ pip-log.txt
 .mr.developer.cfg
 settings-development.json
 settings-production.json
+startup.bat
