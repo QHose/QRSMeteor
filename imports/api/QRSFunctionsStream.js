@@ -4,7 +4,6 @@ import { Apps, TemplateApps } from '/imports/api/apps.js';
 
 //import config for Qlik Sense QRS and Engine API
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
-import { REST_Log } from '/imports/api/APILogs';
 
 
 //install NPM modules
@@ -27,16 +26,11 @@ export function deleteStream(guid) {
 
 export function getStreams() {    
     try {
-        const call = {};
-        call.action = 'Get the current list of streams'; 
-        call.request = 'HTTP.get(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/stream/full';
         const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/stream/full', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }            
         })
-        call.response = result;
-        REST_Log(call);
-        console.log(result.data);
+        // console.log(result.data);
         return result.data;
     } catch (err) {
         throw new Meteor.Error('getStreams failed', err.message);

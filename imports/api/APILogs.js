@@ -4,7 +4,7 @@ export const APILogs = new Mongo.Collection('apiLogs');
 
 export function REST_Log(call){
 	call.createDate = new Date()
-	call.createdBy = Meteor.user().name;
+	call.createdBy = Meteor.user();
 	APILogs.insert(call);
 
 }
