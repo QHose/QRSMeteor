@@ -43,10 +43,44 @@ Customers.attachSchema(new SimpleSchema({
     }
 }));
 
-export const dummyCustomers = [{ "name": "A&R Partners", "checked": true },
-    { "name": "A2Z Solutions", "checked": true },
-    { "name": "Aaron D. Meyer & Associates", "checked": true },
-    { "name": "Aaron Products", "checked": true },
+export const dummyCustomers = [{
+        "name": "Shell",
+        "checked": true, 
+        "users": [{
+            "name": "John",
+            "group": "Manager",
+            "currentlyLoggedIn": false,
+            "country": "NL"
+        }]
+    },
+    {
+        "name": "Esso",
+        "checked": true,
+        "users": [{
+            "name": "Peter",
+            "group": "Manager",
+            "currentlyLoggedIn": false,
+            "country": "NL"
+        }]
+    },
+    {
+        "name": "BP",
+        "checked": true,
+        "users": [{
+            "name": "Stefan",
+            "group": "Manager",
+            "currentlyLoggedIn": false,
+            "country": "NL"
+        }]
+    }
+
+
+
+
+    // { "name": "A&R Partners", "checked": true },
+    //     { "name": "A2Z Solutions", "checked": true },
+    //     { "name": "Aaron D. Meyer & Associates", "checked": true },
+    //     { "name": "Aaron Products", "checked": true },
     // { "name": "Active Data", "checked": true },
     // { "name": "Ben and Jerry’s", "checked": true },
     // { "name": "Benedict", "checked": true },
@@ -172,5 +206,4 @@ export const dummyCustomers = [{ "name": "A&R Partners", "checked": true },
     // { "name": "Zero Assumption Recovery", "checked": true },
     // { "name": "Zilog", "checked": true },
     // { "name": "Zitel", "checked": true },
-    { "name": "Zocalo", "checked": true }
 ]
