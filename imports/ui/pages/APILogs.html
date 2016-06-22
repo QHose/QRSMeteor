@@ -1,12 +1,13 @@
 <template name='APILogs'>
-    <div class="ui container">
-        <div class="ui segments">
-            <div class="ui segment">
-                <h3 class="ui header">
+<div class="ui one column stackable grid">
+    <div class="column">
+        <div class="ui segment">
+            <h3 class="ui header">
                 <img class="icon" src="images/API.png">
                 We have sent and received these REST API calls
             </h3> {{> reactiveTable settings=RESTCallSettings}}
-            </div>
         </div>
     </div>
+</div>
+    
 </template>
