@@ -17,6 +17,7 @@ Router.route('/SSO', function(){
 
 });
 Router.route('/users');
+Router.route('/APILogs');
 Router.route('/generation');
 Router.route('/securityRules');
 Router.route('/QMC');

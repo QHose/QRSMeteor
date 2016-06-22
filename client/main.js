@@ -14,6 +14,8 @@ import '/imports/ui/nav.html';
 import '/imports/ui/nav.js';
 import '/imports/ui/users.html';
 import '/imports/ui/users.js';
+import '/imports/ui/APILogs.html';
+import '/imports/ui/APILogs.js';
 import '/imports/ui/simulateUserLogin.html';
 import '/imports/ui/simulateUserLogin.js';
 import '/imports/startup/accounts-config.js';

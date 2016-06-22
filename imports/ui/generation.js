@@ -136,27 +136,7 @@ Template.generation.helpers({
                 },
             ]
         };
-    },
-    RESTCallSettings: function() {
-        return {
-            collection: APILogs,
-            rowsPerPage: 5,
-            showFilter: true,
-            showColumnToggles: true,
-            fields: [
-                { key: 'action', label: 'Action' },
-                { key: 'request', label: 'Request' }, {
-                    key: 'response',
-                    label: 'Response',
-                    fn: function(value) {
-                        return new Spacebars.SafeString('<pre id="json">' + JSON.stringify(value, undefined, 2) + '</pre>')
-                    }
-                },
-                { key: 'createDate', label: 'Date' },
-                { key: 'createdBy', label: 'Created by' },
-            ]
-        };
-    }
+    }    
 });
 
 Template.generation.events({
