@@ -55,6 +55,7 @@ Meteor.methods({
         })
     },
     generateStreamAndApp(customers) {
+        console.log('generateStreamAndApp');
         check(customers, Array);
         return QSApp.generateStreamAndApp(customers);
 
