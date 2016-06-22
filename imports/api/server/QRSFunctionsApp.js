@@ -167,6 +167,7 @@ export function deleteApp(guid) {
     console.log('QRSApp sync deleteApp');
     try {
         const call = {};
+        call.action = 'Delete app'; 
         call.request = 'HTTP.del(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey;
         const result = HTTP.del('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders
@@ -192,6 +193,11 @@ export function publishApp(appGuid, appName, streamId, customerName) {
                 'X-Qlik-xrfkey': senseConfig.xrfkey
             }
         })
+        //logging into database
+        call.action = 'Publish app'; 
+        call.request = 'HTTP.call(put, http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey +", {headers: {'hdr-usr': "+senseConfig.headerValue,+ 'X-Qlik-xrfkey:'+ senseConfig.xrfkey+'}';
+        call.response = result;
+        REST_Log(call);
         return result;
     } catch (err) {
         throw new Meteor.Error('Publication of app ' + appName + ' for customer ' + customerName + ' failed: ', err.message);
