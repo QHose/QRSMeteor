@@ -37,15 +37,36 @@ if (Meteor.isServer) {
         'X-Qlik-xrfkey': _senseConfig.xrfkey
     }
 
-    var _certs = {
+    export const _certs = {
         // server_key: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/server_key.pem'),
         // server_cert: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/server.pem'),
-        // key: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/client_key.pem'),
+        key: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/client_key.pem'),
         cert: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/client.pem'),
         // ca: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/root.pem')
     }
 
-    //@todo: this engine config works, so this one can be created by creating a new object and filling it with properties from senseConfig and cert values
+    export var certicate_communication_options = {
+        rejectUnauthorized: false,
+        hostname: _senseConfig.host,
+        port: Meteor.settings.public.proxyPort,
+        headers: {
+            'x-qlik-xrfkey': _senseConfig.xrfkey,
+            'X-Qlik-User':  Meteor.settings.public.engineHeaders,
+            'Content-Type': 'application/json'
+        },
+        key: _certs.key,
+        cert: _certs.cert
+    };
+
+    
+
+    export const securityInfo = {
+        'xrfkey': _senseConfig.xrfkey,
+        'key': _certs.key,
+        'cert': _certs.cert,
+        'port': 4243,
+    }
+
 
     var _engineConfig = {
         host: _senseConfig.host,

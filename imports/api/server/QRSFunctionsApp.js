@@ -93,7 +93,7 @@ function createTag(name) {
         console.log(result);
         return result;
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw new Meteor.Error('Tag: ' + name + ' create failed ', err.message);
     }
 };
@@ -112,7 +112,7 @@ export function copyApp(guid, name) {
         })
         return result;
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw new Meteor.Error('Copy app for selected customers failed', err.message);
     }
 };
@@ -160,7 +160,7 @@ export function getApps() {
         REST_Log(call);
         return result.data;
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw new Meteor.Error('getApps failed', err.message);
     }
 };
@@ -179,7 +179,7 @@ export function deleteApp(guid) {
         REST_Log(call);
         return result;
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw new Meteor.Error('App delete failed', err.message);
     }
 };
@@ -205,7 +205,7 @@ export function publishApp(appGuid, appName, streamId, customerName) {
         REST_Log(call);
         return result;
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw new Meteor.Error('Publication of app ' + appName + ' for customer ' + customerName + ' failed: ', err.message);
     }
 };
