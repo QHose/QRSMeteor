@@ -60,19 +60,19 @@
                     <h4>{{NrCustomers}} Customers stored in the database of our fictive SaaS platform </h4>
                 </div>
             </div>
-            <table class="ui celled striped table">
-                <thead>
-                    <tr>
-                        <th>Customer</th>
-                        <th>Delete customer</th>
-                        <th>Generate Stream</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each customers}} {{> customer}} {{/each}}
-                </tbody>
-            </table>
         </div>
+        <table class="ui celled striped table">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Delete customer</th>
+                    <th>Generate Stream</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each customers}} {{> customer}} {{/each}}
+            </tbody>
+        </table>
         {{/if}} {{#if noTemplateApps}}
         <div class="ui icon message">
             <img class="icon" src="images/app.png">
