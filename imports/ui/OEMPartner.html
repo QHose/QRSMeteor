@@ -45,9 +45,11 @@
                 <div class="header">
                     No customers
                 </div>
-                <li>You have no customers in your shop.</li>
-                <li>Let's insert some by hand, in the add new customer box above or <a href="{{pathFor 'users'}}"> here </a> if you also want to test single sign on </li>
-                <li>Or press the blue arrow, next to the generate button, to insert some dummy customers</li>
+                <ul>
+                    <li>You have no customers in your shop.</li>
+                    <li>Let's insert some by hand, in the add new customer box above or <a href="{{pathFor 'users'}}"> here </a> if you also want to test single sign on </li>
+                    <li>Or press the blue arrow, next to the generate button, to insert some dummy customers</li>
+                </ul>
             </div>
         </div>
         {{else}}
@@ -57,59 +59,56 @@
                 <div class="header">
                     <h4>{{NrCustomers}} Customers stored in the database of our fictive SaaS platform </h4>
                 </div>
-                <table class="ui celled striped table">
-                    <thead>
-                        <tr>
-                            <th>Customer</th>
-                            <th>Delete customer</th>
-                            <th>Generate Stream</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each customers}} {{> customer}} {{/each}}
-                    </tbody>
-                </table>
             </div>
-        </div>
-        {{/if}}
-        <div class="ui segment">
-            {{#if noTemplateApps}}
-            <div class="ui icon message">
-                <img class="icon" src="images/app.png">
-                <div class="content">
-                    <div class="header">
-                        <h4>No template apps</h4>
-                    </div>
-                    <p>Please select the app you would like to use as a basis template for which we will create a copy for each of your selected customers</p>
-                </div>
-            </div>
-            {{else}}
-            <div class="ui icon message">
-                <img class="icon" src="images/app.png">
-                <div class="content">
-                    <div class="header">
-                        <h4>Template apps</h4>
-                    </div>
-                    <p>We will create a customer stream and publish a copy of each template app</p>
-                </div>
-            </div>
-            <table class="ui celled table">
+            <table class="ui celled striped table">
                 <thead>
                     <tr>
-                        <th>App (QVF)</th>
-                        <th>Don't mark as template</th>
+                        <th>Customer</th>
+                        <th>Delete customer</th>
+                        <th>Generate Stream</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{#each templateApps}}
-                    <tr>
-                        <td> <a href={{linkToApp}} target=_blank> {{name}} </a></td>
-                        <td class="removeTemplateApp"><i class="remove circle icon"></i></td>
-                    </tr>
-                    {{/each}}
+                    {{#each customers}} {{> customer}} {{/each}}
                 </tbody>
             </table>
-            {{/if}}
         </div>
+        {{/if}} {{#if noTemplateApps}}
+        <div class="ui icon message">
+            <img class="icon" src="images/app.png">
+            <div class="content">
+                <div class="header">
+                    <h4>No template apps</h4>
+                </div>
+                <p>Please select the app you would like to use as a basis template for which we will create a copy for each of your selected customers</p>
+            </div>
+        </div>
+        {{else}}
+        <div class="ui icon message">
+            <img class="icon" src="images/app.png">
+            <div class="content">
+                <div class="header">
+                    <h4>Template apps</h4>
+                </div>
+                <p>We will create a customer stream and publish a copy of each template app</p>
+            </div>
+        </div>
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>App (QVF)</th>
+                    <th>Don't mark as template</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each templateApps}}
+                <tr>
+                    <td> <a href={{linkToApp}} target=_blank> {{name}} </a></td>
+                    <td class="removeTemplateApp"><i class="remove circle icon"></i></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{/if}}
     </div>
 </template>
