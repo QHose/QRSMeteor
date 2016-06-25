@@ -20,13 +20,12 @@ Template.securityRules.helpers({
 })
 
 Template.securityRules.onRendered(function() {
-    console.log('Get the security Rules from Sense');
+    console.log('Get the system rules from Sense');
   Meteor.call('getSecurityRules', (error, result) => {
     if (error) {      
       console.error(error);      
       sAlert.error("We can't connect to Qlik Sense, is your Sense VM running, all services started? , virtual proxy 'hdr' configured?");
     } else {
-      console.log('we received these security rules; ', result);
       Session.set('securityRules', result);
     }
   });

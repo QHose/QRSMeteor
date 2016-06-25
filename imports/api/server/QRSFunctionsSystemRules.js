@@ -18,7 +18,6 @@ export function getSecurityRules() {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }            
         })
-        // console.log(result.data);
         return result.data;
     } catch (err) {
         console.error(err);
