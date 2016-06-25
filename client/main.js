@@ -7,6 +7,8 @@ import '/imports/ui/router.js';
 import '/imports/ui/layout.html';
 import '/imports/ui/layout.js';
 import '/imports/ui/pages/homeAbout.html';
+import '/imports/ui/pages/homeAbout.js';
+import '/imports/ui/pages/homeAbout.css';
 import '/imports/ui/pages/QMC.html';
 import '/imports/ui/notFound.html';
 import '/imports/ui/nav.html';
