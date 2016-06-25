@@ -12,7 +12,9 @@ Template.securityRules.helpers({
         };
     },
     getSecurityRules: function(){
+        console.log(Session.get('securityRules'));
         return Session.get('securityRules');
+
     }
 
 })
@@ -24,7 +26,7 @@ Template.securityRules.onRendered(function() {
       console.error(error);      
       sAlert.error("We can't connect to Qlik Sense, is your Sense VM running, all services started? , virtual proxy 'hdr' configured?");
     } else {
-      console.log('we received these security rules; ', securityRules);
+      console.log('we received these security rules; ', result);
       Session.set('securityRules', result);
     }
   });
