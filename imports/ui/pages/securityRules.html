@@ -1,3 +1,13 @@
 <template name='securityRules'>
-security rules .... coming....
+<div class="ui one column stackable grid">
+    <div class="column">
+        <div class="ui segment">
+            <h3 class="ui header">
+                <img class="icon" src="images/securityRules.png">
+                We received the following Security rules via the QRS API
+            </h3> {{> reactiveTable collection='getSecurityRules' settings=securityRulesSettings}}
+        </div>
+    </div>
+</div>
+    
 </template>

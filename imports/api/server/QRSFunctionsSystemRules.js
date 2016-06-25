@@ -14,13 +14,14 @@ import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/conf
 
 export function getSecurityRules() {    
     try {
-        const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/system/full', {
+        const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/systemrule', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }            
         })
         // console.log(result.data);
         return result.data;
     } catch (err) {
+        console.error(err);
         throw new Meteor.Error('get system rules failed', err.message);
     }
 };
