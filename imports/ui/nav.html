@@ -5,12 +5,18 @@
             <img class="logo" src="images/sense.png"> Multi-tenant Publisher
         </a>
         <!-- <div class="right menu"> -->
-        <a href="{{pathFor 'introduction'}}" class="item">Start here</a>
+        <div class="ui simple dropdown item">
+            Start here <i class="dropdown icon"></i>
+            <div class="menu">
+                <a href="{{pathFor 'introduction'}}" class="item">Quick intro video, but powerful</a>
+                <a href="{{pathFor 'introductionExtended'}}" class="item">Extended video, showing all integration options</a>
+            </div>
+        </div>
         <div class="ui simple dropdown item">
             Customers & Users <i class="dropdown icon"></i>
             <div class="menu">
                 <a class="item" href="{{pathFor 'users'}}">Insert users</a>
-                <a class="item" href="{{webIntegrationServerURL}}/hub" target="_blank" >Simulate the user sign on</a>
+                <a class="item" href="{{webIntegrationServerURL}}/hub" target="_blank">Simulate the user sign on</a>
             </div>
         </div>
         <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>
@@ -18,13 +24,6 @@
         <!-- </div> -->
         <div class="ui simple dropdown item">
             Documentation <i class="dropdown icon"></i>
-            
-
-
-
-
-
-
             <div class="menu">
                 <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FIntroduction%20to%20Qlik%20Sense%20%28Ext%5C%29%7C65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0%2F%29
 onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Introduction%20to%20Qlik%20Sense%20(Ext)&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0}&end" target="_blank">Introduction to Qlik Sense</a>

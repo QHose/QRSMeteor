@@ -7,7 +7,7 @@ Router.configure({
 });
 
 Router.route('/', function () {
-  this.render('generation');
+  this.render('introduction');
 });
 
 Router.route('/SSOClient', function(){
@@ -20,6 +20,7 @@ Router.route('/users');
 Router.route('/homeAbout');
 Router.route('/APILogs');
 Router.route('/introduction');
+Router.route('/introductionExtended');
 Router.route('/generation');
 Router.route('/securityRules');
 Router.route('/QMC');
