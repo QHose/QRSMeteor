@@ -21,6 +21,7 @@ Router.route('/homeAbout');
 Router.route('/APILogs');
 Router.route('/introduction');
 Router.route('/introductionExtended');
+Router.route('/introductionSecurity');
 Router.route('/generation');
 Router.route('/securityRules');
 Router.route('/QMC');

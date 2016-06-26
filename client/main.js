@@ -8,6 +8,7 @@ import '/imports/ui/layout.html';
 import '/imports/ui/layout.js';
 import '/imports/ui/pages/introduction.html';
 import '/imports/ui/pages/introductionExtended.html';
+import '/imports/ui/pages/introductionSecurity.html';
 import '/imports/ui/pages/homeAbout.html';
 import '/imports/ui/pages/homeAbout.js';
 import '/imports/ui/pages/homeAbout.css';
