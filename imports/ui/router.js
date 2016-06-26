@@ -19,6 +19,7 @@ Router.route('/SSOClient', function(){
 Router.route('/users');
 Router.route('/homeAbout');
 Router.route('/APILogs');
+Router.route('/introduction');
 Router.route('/generation');
 Router.route('/securityRules');
 Router.route('/QMC');
