@@ -44,7 +44,7 @@ function generateAppForTemplate(templateApp, customer) {
 
     var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name)
         .data.id;
-    console.log('result from step 2: the new app id is: ', newAppId);
+    
 
     var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
     console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
@@ -110,6 +110,7 @@ export function copyApp(guid, name) {
             params: { 'xrfkey': senseConfig.xrfkey, 'name': name },
             data: { "name": name }
         })
+        console.log('result from step 2: the new app id is: ', result);
         return result;
     } catch (err) {
         console.error(err);

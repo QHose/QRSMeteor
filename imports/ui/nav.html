@@ -12,15 +12,20 @@
                 <a class="item" href="{{webIntegrationServerURL}}/hub" target="_blank">Simulate the user sign on</a>
             </div>
         </div>
-        <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>
-        <a href="{{pathFor 'securityRules'}}" class="item">Rules Engine</a>
+        <div class="ui simple dropdown item">
+            QMC <i class="dropdown icon"></i>
+            <div class="menu">
+                <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>
+                <a href="{{pathFor 'securityRules'}}" class="item">Rules Engine</a>
+            </div>
+        </div>
         <!-- </div> -->
         <div class="ui simple dropdown item">
             Videos <i class="dropdown icon"></i>
             <div class="menu">
-                <a href="{{pathFor 'introduction'}}" class="item">Quick intro video, but powerful</a>
-                <a href="{{pathFor 'introductionExtended'}}" class="item">Extended video, showing all integration options</a>
-                <a href="{{pathFor 'introductionSecurity'}}" class="item">Video that explains the OEM Sense security approach</a>
+                <a href="{{pathFor 'introduction'}}" class="item">Quick and flashy OEM introduction video (1m)</a>
+                <a href="{{pathFor 'introductionExtended'}}" class="item">Extended video, showing all integration options (4m)</a>
+                <a href="{{pathFor 'introductionSecurity'}}" class="item">(BETA) Video that explains the OEM Sense security approach</a>
             </div>
         </div>
         <div class="ui simple dropdown item">
