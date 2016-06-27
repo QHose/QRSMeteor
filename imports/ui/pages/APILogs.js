@@ -8,6 +8,8 @@ Template.APILogs.helpers({
         return {
             collection: APILogs,
             rowsPerPage: 10,
+            responsive: true,
+            autoWidth: true,
             showFilter: true,
             showColumnToggles: true,
             fields: [
