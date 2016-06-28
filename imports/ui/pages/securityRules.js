@@ -8,25 +8,23 @@ Template.securityRules.helpers({
         return {
             rowsPerPage: 10,
             showFilter: true,
-            showColumnToggles: true            
+            showColumnToggles: true
         };
     },
-    getSecurityRules: function(){
+    getSecurityRules: function() {
         console.log(Session.get('securityRules'));
         return Session.get('securityRules');
-
     }
 
 })
 
 Template.securityRules.onRendered(function() {
     console.log('Get the system rules from Sense');
-  Meteor.call('getSecurityRules', (error, result) => {
-    if (error) {      
-      console.error(error);      
-      sAlert.error("We can't connect to Qlik Sense, is your Sense VM running, all services started? , virtual proxy 'hdr' configured?");
-    } else {
-      Session.set('securityRules', result);
-    }
-  });
+    Meteor.call('getSecurityRules', (error, result) => {
+        if (error) {
+            console.error(error);
+        } else {
+            Session.set('securityRules', result);
+        }
+    });
 })

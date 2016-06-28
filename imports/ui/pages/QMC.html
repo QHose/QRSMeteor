@@ -1,13 +1,9 @@
 <template name='QMC'>
-    <div class="ui message">
-        <div class="header">
-            This example shows how to integrate the Qlik Sense QMC in your website
-        </div>
-        <!-- 
-		<ul class="list">                            
-		<li>This page includes an Iframe object which points to the QMC on the Sense server</li>                               
-		
-		</ul> -->
+    <div class="ui container">
+        <h3 class="ui header">
+                <img class="icon" src="images/API.png">
+                This example shows how to integrate the Qlik Sense QMC in your website
+            </h3>
+        <iframe src="{{senseServerQMC}}" width="100%" height="900"></iframe>
     </div>
-    <iframe src={{appURL}} width="100%" height="900"></iframe>
 </template>

@@ -19,6 +19,14 @@ if (Meteor.isClient) {
     //         .replace(/,/g, ".");
     // });
 
+    Template.registerHelper('senseServerHub', function() {
+        return 'http://'+ senseConfig.host+':'+senseConfig.port+'/hub';
+    }),
+    
+    Template.registerHelper('senseServerQMC', function() {
+        return 'http://'+ senseConfig.host+':'+senseConfig.port+'/qmc';
+    }),
+
     Template.registerHelper('isSelected', function(someValue) {
         return someValue ? 'selected' : '';
     });

@@ -9,7 +9,8 @@
             Customers & Users <i class="dropdown icon"></i>
             <div class="menu">
                 <a class="item" href="{{pathFor 'users'}}">Insert users</a>
-                <a class="item" href="{{webIntegrationServerURL}}/hub" target="_blank">Simulate the user sign on</a>
+                <a class="item" href="{{senseServerHub}}" target="_blank">Hub: Simulate the user sign on, and see that the hub automatically shows authorized content only</a>
+                <a class="item" href="{{senseServerQMC}}" target="_blank">QMC: Simulate the user sign on, and show how an admin can only see resources from its own company</a>
             </div>
         </div>
         <div class="ui simple dropdown item">
@@ -17,6 +18,7 @@
             <div class="menu">
                 <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>
                 <a href="{{pathFor 'securityRules'}}" class="item">Rules Engine</a>
+                <a href="{{pathFor 'QMC'}}" class="item">View QMC (Qlik Management Console)</a>
             </div>
         </div>
         <!-- </div> -->
