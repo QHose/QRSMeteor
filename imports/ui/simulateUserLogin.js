@@ -6,21 +6,18 @@ import { Customers, dummyCustomers } from '../api/customers.js';
 import { Streams } from '/imports/api/streams.js'
 
 Template.simulateUserLogin.onRendered(function() {
-    $('.ui.dropdown')
-        .dropdown();
+   $('.ui.dropdown')
+  .dropdown()
+;
 });
 
 Template.simulateUserLogin.events({
     'change #currentUser' (event, template) {
         var currentUser = template.$("#currentUser")
             .val();
-        template.state.set('previousUser', currentUser);
-
         console.log('helper: user made a selection in the simulateUserLogin box, for user: ' + currentUser);
         try {
             Meteor.call('simulateUserLogin', currentUser);
-
-            template.state.set('previousUser', currentUser);
         } catch (err) {
             sAlert.error(err.message);
         }
