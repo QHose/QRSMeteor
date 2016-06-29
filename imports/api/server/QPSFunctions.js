@@ -14,10 +14,10 @@ https://<QPS machine name>:4243/<path>
 */
 
 export function logoutUser(name) {
-    console.log('QPS Functions: logout the current user');
+    console.log('******** QPS Functions: logout the current user: ', name);
 
     if (name) {
-        console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTP call: ', certicate_communication_options);
+        // console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTP call: ', certicate_communication_options);
 
         try {
             const call = {};
@@ -35,7 +35,4 @@ export function logoutUser(name) {
             throw new Meteor.Error('Logout user failed', err.message);
         }
     }
-
-}
-
 };

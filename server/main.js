@@ -51,7 +51,7 @@ Meteor.methods({
     simulateUserLogin(name) {
         check(name, String);
         Meteor.call('resetLoggedInUser');
-        console.log('*** method: try to simulate User Login for: ' + name);
+        console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: ' + name);
         Customers.update({ "users.name": name }, {
             $set: {
                 'users.$.currentlyLoggedIn': true

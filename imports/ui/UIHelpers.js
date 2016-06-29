@@ -20,16 +20,17 @@ if (Meteor.isClient) {
     // });
 
     Template.registerHelper('senseServerHub', function() {
-        return 'http://'+ senseConfig.host+':'+senseConfig.port+'/'+senseConfig.virtualProxyClientUsage+'/hub';
-    }),
-    
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/hub';
+    });
+
     Template.registerHelper('senseServerQMC', function() {
-        return 'http://'+ senseConfig.host+':'+senseConfig.port+'/'+senseConfig.virtualProxyClientUsage+'/qmc';
-    }),
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/qmc';
+    });
 
     Template.registerHelper('webIntegrationDemo', function() {
-        return 'http://'+ senseConfig.host+':'+senseConfig.webIntegrationDemoPort;
-    }),
+        return 'http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort;
+    });
+
 
     Template.registerHelper('isSelected', function(someValue) {
         return someValue ? 'selected' : '';
