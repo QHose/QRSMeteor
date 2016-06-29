@@ -7,7 +7,8 @@ if (Meteor.isClient) {
         "host": Meteor.settings.public.host,
         "port": Meteor.settings.public.port,
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
-        "UDC": Meteor.settings.public.UDC
+        "UDC": Meteor.settings.public.UDC,
+        "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
     };
 
 }
@@ -48,7 +49,6 @@ if (Meteor.isServer) {
     export var certicate_communication_options = {
         rejectUnauthorized: false,
         hostname: _senseConfig.host,
-        port: Meteor.settings.public.proxyPort,
         headers: {
             'x-qlik-xrfkey': _senseConfig.xrfkey,
             'X-Qlik-User':  Meteor.settings.public.engineHeaders,

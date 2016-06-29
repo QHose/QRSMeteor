@@ -27,6 +27,10 @@ if (Meteor.isClient) {
         return 'http://'+ senseConfig.host+':'+senseConfig.port+'/'+senseConfig.virtualProxyClientUsage+'/qmc';
     }),
 
+    Template.registerHelper('webIntegrationDemo', function() {
+        return 'http://'+ senseConfig.host+':'+senseConfig.webIntegrationDemoPort;
+    }),
+
     Template.registerHelper('isSelected', function(someValue) {
         return someValue ? 'selected' : '';
     });
