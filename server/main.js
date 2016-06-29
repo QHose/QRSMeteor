@@ -35,7 +35,7 @@ Meteor.methods({
                     user.currentlyLoggedIn = false;
 
                     //and just logout everybody in the user list                            
-                    // QSProxy.logoutUser(user.name);
+                    QSProxy.logoutUser(user.name);
 
                     return user;
                 })

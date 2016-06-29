@@ -66,6 +66,4 @@ if (Meteor.isClient) {
     Template.registerHelper('streamsCollection', function() {
         return Streams.find();
     });
-
-    Template.registerHelper("Customers", Customers);
 }

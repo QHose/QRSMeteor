@@ -46,15 +46,16 @@ Template.OEMPartner.events({
 
         var selectedCustomers = Customers.find({ checked: true })
             .fetch();
-        // console.log('get customers from database, and pass them to the generateStreamAndApp method', selectedCustomers);
-
+        
         Meteor.call('generateStreamAndApp', selectedCustomers, function(err, result) {
             if (err) {
                 sAlert.error(err);
                 console.log(err);
                 Session.set('loadingIndicator', '');
+                Session.set('generated?', false);
             } else {
                 Session.set('loadingIndicator', '');
+                Session.set('generated?', true);
                 console.log('generateStreamAndApp succes', result);
                 sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');
             }
