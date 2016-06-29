@@ -13,25 +13,22 @@ When communicating with the QPS APIs, the URL is as follows:
 https://<QPS machine name>:4243/<path>
 */
 
-export function logoutUser() {
+export function logoutUser(name) {
     console.log('QPS Functions: logout the current user');
 
-    var customer = Customers.findOne({ 'users.currentlyLoggedIn': true });
-    if (customer) { //someone should be logged in according to the database
-        var user = _.find(customer.users, { 'currentlyLoggedIn': true });
-        if (user) {
+        if (name) {
             console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTP call: ', certicate_communication_options);
 
             try {
                 const call = {};
-                call.action = 'logout user: ' + user.name;
-                call.response = HTTP.call('DELETE', 'https://' + senseConfig.host + ':4243/qps/user/' + senseConfig.UDC + '/' + user.name + '?xrfkey=' + senseConfig.xrfkey, { 'npmRequestOptions': certicate_communication_options })
+                call.action = 'logout user: ' + name;
+                call.response = HTTP.call('DELETE', 'https://' + senseConfig.host + ':4243/qps/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey, { 'npmRequestOptions': certicate_communication_options })
 
                 //logging only:
-                call.request = 'HTTP.del(https://' + senseConfig.host + ':4243/qps/user/' + senseConfig.UDC + '/' + user.name + '?xrfkey=' + senseConfig.xrfkey;
+                call.request = 'HTTP.del(https://' + senseConfig.host + ':4243/qps/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey;
                 REST_Log(call);
-                console.log(call.request);
-                console.log(call.response);
+                console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+                console.log('The HTTP RESPONSE from Sense QPS API: ',call.response);
 
             } catch (err) {
                 console.error(err);

@@ -26,21 +26,24 @@ var qrs = null;
 Meteor.methods({
     resetLoggedInUser() {
         console.log("***Method resetLoggedInUsers");
-        console.log('call the QPS logout api, to invalidate the session cookie');
-
-        QSProxy.logoutUser();
+        console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
 
         //reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.
         Customers.find()
             .forEach(function(customer) {
                 var updatedUsers = _.map(customer.users, function(user) {
                     user.currentlyLoggedIn = false;
+
+                    //and just logout everybody in the user list                            
+                    QSProxy.logoutUser(user.name);
+
                     return user;
                 })
 
                 Customers.update(customer._id, {
                     $set: { users: updatedUsers },
                 });
+
             });
 
 

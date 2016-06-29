@@ -32,6 +32,10 @@ if (Meteor.isServer) {
         "UDC": Meteor.settings.public.UDC
     };
 
+    if (!_senseConfig.host){
+        throw new Meteor.Error('You have not started this meteor project with: meteor --settings settings-development.json ? You missed the reference to this settings file, or it is empty?');
+    }
+
     //CONFIG FOR HTTP MODULE WITH HEADER AUTH (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)
     export const authHeaders = {
         'hdr-usr': _senseConfig.headerValue,
