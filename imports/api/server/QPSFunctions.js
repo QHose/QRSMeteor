@@ -24,6 +24,7 @@ export function logoutUser() {
 
             try {
                 const call = {};
+                call.action = 'logout user: ' + user.name;
                 call.response = HTTP.call('DELETE', 'https://' + senseConfig.host + ':4243/qps/user/' + senseConfig.UDC + '/' + user.name + '?xrfkey=' + senseConfig.xrfkey, { 'npmRequestOptions': certicate_communication_options })
 
                 //logging only:
