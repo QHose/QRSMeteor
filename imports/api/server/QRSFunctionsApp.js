@@ -17,9 +17,8 @@ _ = lodash;
 //install NPM modules
 var fs = require('fs');
 var qsocks = require('qsocks');
-var QRS = require('qrs');
-qrs = new QRS(senseConfig);
-// var Promise = require("bluebird");
+// var QRS = require('qrs');
+// qrs = new QRS(senseConfig);
 
 
 export function generateStreamAndApp(customers) {
