@@ -12,7 +12,7 @@ Router.route('/sso', function(request, response, next) {
 
     //first find the customers that have a logged in users (mongo returns a complete document)
     var customer = Customers.findOne({ 'users.currentlyLoggedIn': true });
-    console.log('the simulated login received from the database: ', customer);
+    console.log('In our local database we can find the customer with the currentlyLoggedIn set to true, the customer which contains the user that we selected with the dropdown: ', customer);
 
     //now we have the document, we can look in the array of users, to find the one that is logged in.
     if (!customer) {
