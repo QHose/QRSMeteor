@@ -41,7 +41,7 @@ Router.route('/sso', function(request, response, next) {
 }, { where: 'server' });
 
 Router.route('/updateSenseInfo', function(request, response, next) {
-    console.log('We got an incoming REST Call from Sense, this means the Sense Repository has changed');
+    console.log('We got an incoming REST Call from the Sense Notification handler, this means the Sense Repository has changed');
     Meteor.call('updateLocalSenseCopy');
 }, { where: 'server' });
 

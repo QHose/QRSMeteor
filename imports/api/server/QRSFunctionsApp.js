@@ -44,7 +44,6 @@ function generateAppForTemplate(templateApp, customer) {
         'streamId': streamId,
         'appId': newAppId
     })
-    Meteor.call('updateLocalSenseCopy');
 };
 
 function checkCustomersAreSelected(customers) {
@@ -173,7 +172,6 @@ export function deleteApp(guid) {
         const result = HTTP.del('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders
         })
-        Meteor.call('updateLocalSenseCopy');
         
         //logging only
         call.action = 'Delete app';

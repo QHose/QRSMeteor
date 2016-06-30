@@ -28,17 +28,17 @@ Meteor.startup(function() {
         const resultApp = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
-            data:  "http://nlsch-mbj1:3000/updateSenseInfo"
+            data:  Meteor.settings.public.notificationURL
         })
 
-        const resultStream = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
-            headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey },
-            data:  "http://nlsch-mbj1:3000/updateSenseInfo"
-        })
+        // const resultStream = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
+        //     headers: authHeaders,
+        //     params: { 'xrfkey': senseConfig.xrfkey },
+        //     data:  "http://nlsch-mbj1:3000/updateSenseInfo"
+        // })
 
         console.log('the result from sense register App notification was: ', resultApp);
-        console.log('the result from sense register Stream notification was: ', resultStream);
+        // console.log('the result from sense register Stream notification was: ', resultStream);
     } catch (err) {
         console.error(err);
         throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
@@ -105,7 +105,6 @@ Meteor.methods({
     copyApp(guid, name) {
         check(guid, String);
         check(name, String);
-        Meteor.call('updateLocalSenseCopy');
         return QSApp.copyApp(guid, name);
     },
     copyAppSelectedCustomers(currentApp) { //the app the user clicked on        
