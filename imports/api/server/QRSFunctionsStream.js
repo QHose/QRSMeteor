@@ -6,13 +6,6 @@ import { Apps, TemplateApps } from '/imports/api/apps.js';
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
 import { REST_Log } from '/imports/api/APILogs';
 
-
-//install NPM modules
-var QRS = require('qrs');
-var qrs = new QRS(senseConfig);
-// var Promise = require("bluebird");
-
-
 //STREAM FUNCTIONS
 export function deleteStream(guid) {
     try {

@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { http } from 'meteor/meteor';
-import { Apps, TemplateApps } from '/imports/api/apps';
+import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
 import * as QSStream from '/imports/api/server/QRSFunctionsStream';
 
 //import meteor collections
@@ -17,9 +17,6 @@ _ = lodash;
 //install NPM modules
 var fs = require('fs');
 var qsocks = require('qsocks');
-// var QRS = require('qrs');
-// qrs = new QRS(senseConfig);
-
 
 export function generateStreamAndApp(customers) {
     console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
@@ -37,17 +34,16 @@ export function generateStreamAndApp(customers) {
 function generateAppForTemplate(templateApp, customer) {
     console.log(templateApp);
     console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
-
-    var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists
-    console.log('result from step 1: the (new) stream ID is: ', streamId);
-
-    var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name)
-        .data.id;
-    
-
+    var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
+    var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name);
     var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
     console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 
+    GeneratedResources.insert({
+        'customer': customer.name,
+        'streamId': streamId,
+        'appId': newAppId
+    })
     Meteor.call('updateLocalSenseCopy');
 };
 
@@ -109,8 +105,8 @@ export function copyApp(guid, name) {
             params: { 'xrfkey': senseConfig.xrfkey, 'name': name },
             data: { "name": name }
         })
-        console.log('result from step 2: the new app id is: ', result);
-        return result;
+        console.log('Step 2: the new app id is: ', result.data.id);
+        return result.data.id;
     } catch (err) {
         console.error(err);
         throw new Meteor.Error('Copy app for selected customers failed', err.message);
@@ -119,16 +115,19 @@ export function copyApp(guid, name) {
 
 
 function checkStreamStatus(customer) {
-    console.log('checkStreamStatus for: ' + customer.name);
+    // console.log('checkStreamStatus for: ' + customer.name);
     var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
+    var streamId = '';
     if (stream) {
         console.log('Stream already exists: ', stream.id);
-        return stream.id
+        streamId = stream.id;
     } else {
         console.log('No stream for customer exist, so create one: ' + customer.name);
-        return QSStream.createStream(customer.name)
+        streamId = QSStream.createStream(customer.name)
             .data.id;
     }
+    console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
+    return streamId;
 }
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
@@ -149,7 +148,7 @@ export function getAppsViaEngine() {
 export function getApps() {
     try {
         const call = {};
-        call.action = 'Get the current list of apps'; 
+        call.action = 'Get the current list of apps';
         call.request = 'HTTP.get(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full';
         const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
                 headers: authHeaders,
@@ -170,7 +169,7 @@ export function deleteApp(guid) {
     console.log('QRSApp sync deleteApp');
     try {
         const call = {};
-        call.action = 'Delete app'; 
+        call.action = 'Delete app';
         call.request = 'HTTP.del(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey;
         const result = HTTP.del('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders
@@ -192,15 +191,15 @@ export function publishApp(appGuid, appName, streamId, customerName) {
 
     try {
         const result = HTTP.call('put', 'http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
-            headers: {
-                'hdr-usr': senseConfig.headerValue,
-                'X-Qlik-xrfkey': senseConfig.xrfkey
-            }
-        })
-        //logging into database
+                headers: {
+                    'hdr-usr': senseConfig.headerValue,
+                    'X-Qlik-xrfkey': senseConfig.xrfkey
+                }
+            })
+            //logging into database
         const call = {};
-        call.action = 'Publish app'; 
-        call.request = 'HTTP.call(put, http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey +", {headers: {'hdr-usr': "+senseConfig.headerValue,+ 'X-Qlik-xrfkey:'+ senseConfig.xrfkey+'}';
+        call.action = 'Publish app';
+        call.request = 'HTTP.call(put, http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey + ", {headers: {'hdr-usr': " + senseConfig.headerValue, +'X-Qlik-xrfkey:' + senseConfig.xrfkey + '}';
         call.response = result;
         REST_Log(call);
         return result;

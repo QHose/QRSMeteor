@@ -1,7 +1,7 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
 import { senseConfig as config } from '/imports/api/config.js';
-import { Apps, TemplateApps } from '/imports/api/apps.js'
+import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps.js'
 import { Customers, dummyCustomers } from '../api/customers.js';
 import { Streams } from '/imports/api/streams.js'
 
@@ -40,13 +40,16 @@ Template.OEMPartner.events({
         // Clear form
         target.text.value = '';
     },
+    'click .resetEnvironment' () {        
+        Meteor.call('resetEnvironment');
+    },
     'click .generateStreamAndApp' () {
         console.log('click event generateStreamAndApp');
         Session.set('loadingIndicator', 'loading');
 
         var selectedCustomers = Customers.find({ checked: true })
             .fetch();
-        
+
         Meteor.call('generateStreamAndApp', selectedCustomers, function(err, result) {
             if (err) {
                 sAlert.error(err);
@@ -92,4 +95,3 @@ Template.OEMPartner.events({
             })
     }
 }); //end Meteor events
-

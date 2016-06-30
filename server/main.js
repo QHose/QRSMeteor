@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { http } from 'meteor/meteor';
-import { Apps, TemplateApps } from '/imports/api/apps';
+import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
 
 //import meteor collections
 import { Streams } from '/imports/api/streams';
@@ -19,11 +19,17 @@ import '/imports/server/qlikAuthSSO.js';
 //install NPM modules
 var fs = require('fs');
 var qsocks = require('qsocks');
-var QRS = require('qrs');
-// var Promise = require("bluebird");
-var qrs = null;
 
 Meteor.methods({
+    resetEnvironment() {
+        console.log('resetEnvironment method');
+        GeneratedResources.find()
+            .forEach(function(resource) {
+                console.log('resetEnvironment for resource', resource);
+                Meteor.call('deleteApp', resource.appId);
+                Meteor.call('deleteStream', resource.streamId);
+            })
+    },
     resetLoggedInUser() {
         console.log("***Method resetLoggedInUsers");
         console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
@@ -67,7 +73,7 @@ Meteor.methods({
     copyApp(guid, name) {
         check(guid, String);
         check(name, String);
-
+        Meteor.call('updateLocalSenseCopy');
         return QSApp.copyApp(guid, name);
     },
     copyAppSelectedCustomers(currentApp) { //the app the user clicked on        
@@ -88,6 +94,7 @@ Meteor.methods({
     deleteApp(guid) {
         check(guid, String);
         console.log('method deleteApp');
+
         return QSApp.deleteApp(guid);
     },
     removeAllCustomers: function() {
@@ -107,13 +114,6 @@ Meteor.methods({
     },
     getSecurityRules() {
         return QSSystem.getSecurityRules();
-    },
-    //NPM QRS CALLS
-    countApps() {
-        return qrs.get('/qrs/app/count');
-    },
-    countStreams() {
-        return qrs.get('/qrs/stream/count');
     },
     updateLocalSenseCopy() {
         console.log('Method: update the local mongoDB with fresh data from Qlik Sense: call QRS API getStreams and getApps');
