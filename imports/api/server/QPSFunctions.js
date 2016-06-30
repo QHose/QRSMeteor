@@ -22,7 +22,7 @@ export function logoutUser(name) {
         try {
             const call = {};
             call.action = 'logout user: ' + name;
-            call.response = HTTP.call('DELETE', 'https://' + senseConfig.host + ':4243/'+senseConfig.virtualProxyClientUsage+'/qps/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey, { 'npmRequestOptions': certicate_communication_options })
+            call.response = HTTP.call('DELETE', 'https://' + senseConfig.host + ':4243/qps/'+senseConfig.virtualProxyClientUsage+'/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey, { 'npmRequestOptions': certicate_communication_options })
 
             //logging purposes only:
             call.request = 'HTTP.del(https://' + senseConfig.host + ':4243/qps/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey;
