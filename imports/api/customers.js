@@ -33,13 +33,15 @@ Customers.attachSchema(new SimpleSchema({
         type: String
     },
     "users.$.group": {
-        type: String
+        type: String,
+        allowedValues: ['Consumer', 'Contributor', 'Admin']
     },
     "users.$.currentlyLoggedIn": {
         type: Boolean
     },
     "users.$.country": {
-        type: String
+        type: String,
+        allowedValues: ['NL', 'BE', 'DE']
     }
 }));
 
@@ -48,7 +50,13 @@ export const dummyCustomers = [{
         "checked": true, 
         "users": [{
             "name": "John",
-            "group": "Manager",
+            "group": "Consumer",
+            "currentlyLoggedIn": false,
+            "country": "NL"
+        },
+        {
+            "name": "Paul",
+            "group": "Admin",
             "currentlyLoggedIn": false,
             "country": "NL"
         }]
@@ -58,7 +66,7 @@ export const dummyCustomers = [{
         "checked": true,
         "users": [{
             "name": "Peter",
-            "group": "Manager",
+            "group": "Consumer",
             "currentlyLoggedIn": false,
             "country": "NL"
         }]
@@ -68,7 +76,7 @@ export const dummyCustomers = [{
         "checked": true,
         "users": [{
             "name": "Stefan",
-            "group": "Manager",
+            "group": "Consumer",
             "currentlyLoggedIn": false,
             "country": "NL"
         }]
