@@ -261,3 +261,4 @@ jspm_packages
 .node_repl_history
 qrs.sublime-workspace
 qrs.sublime-workspace
+*.sublime-workspace

@@ -39,3 +39,9 @@ Router.route('/sso', function(request, response, next) {
         qlikauth.requestTicket(request, response, passport, options);
     }
 }, { where: 'server' });
+
+Router.route('/updateSenseInfo', function(request, response, next) {
+    console.log('We got an incoming REST Call from Sense, this means the Sense Repository has changed');
+    Meteor.call('updateLocalSenseCopy');
+}, { where: 'server' });
+
