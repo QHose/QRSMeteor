@@ -30,7 +30,6 @@ Meteor.methods({
                 Meteor.call('deleteStream', resource.streamId);
             })
         GeneratedResources.remove({});
-
     },
     resetLoggedInUser() {
         console.log("***Method resetLoggedInUsers");

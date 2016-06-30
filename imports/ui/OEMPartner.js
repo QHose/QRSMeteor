@@ -41,7 +41,18 @@ Template.OEMPartner.events({
         target.text.value = '';
     },
     'click .resetEnvironment' () {        
-        Meteor.call('resetEnvironment');
+        Session.set('loadingIndicator', 'loading');
+        Meteor.call('resetEnvironment', function(err, res){
+            if (err) {
+                sAlert.error(err);
+                console.log(err);
+                Session.set('loadingIndicator', '');             
+            } else {
+                Session.set('loadingIndicator', '');                                
+                sAlert.success('We have deleted all the previously generated streams and apps, so you have a fresh demo environment.');
+            }
+        });        
+        Session.set('generated?', false);
     },
     'click .generateStreamAndApp' () {
         console.log('click event generateStreamAndApp');

@@ -16,7 +16,7 @@ export function deleteStream(guid) {
         Meteor.call('updateLocalSenseCopy');
         return result;
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw new Meteor.Error('Create stream failed', err.message);
     }
 };
@@ -34,7 +34,7 @@ export function getStreams() {
         REST_Log(call);        
         return result.data;
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw new Meteor.Error('getStreams failed', err.message);
     }
 };
@@ -58,7 +58,7 @@ export function createStream(name) {
         REST_Log(call);        
         return result;
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw new Meteor.Error('Create stream failed', err.message);
     }
 };
