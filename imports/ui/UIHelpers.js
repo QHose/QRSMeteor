@@ -40,6 +40,9 @@ if (Meteor.isClient) {
         return Customers.find({}, { sort: { checked: -1 } });
     });
 
+    //used for Aldeed autoform
+    Template.registerHelper("Customers", Customers);
+
     Template.registerHelper('noCustomers', function() {
         return !Customers.find({})
             .count();

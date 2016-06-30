@@ -30,7 +30,6 @@ juliancwirko:s-alert-genie
 http
 fortawesome:fontawesome
 twbs:bootstrap
-aldeed:autoform
 aldeed:collection2
 iron:router
 accounts-ui
@@ -39,3 +38,4 @@ meteorhacks:picker
 fabienb4:autoform-semantic-ui
 semantic:ui-css
 astronomerio:core
+aldeed:autoform
