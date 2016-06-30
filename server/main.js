@@ -26,10 +26,16 @@ Meteor.methods({
         GeneratedResources.find()
             .forEach(function(resource) {
                 console.log('resetEnvironment for resource', resource);
-                Meteor.call('deleteApp', resource.appId);
-                Meteor.call('deleteStream', resource.streamId);
+                try {
+                    Meteor.call('deleteApp', resource.appId);
+                    Meteor.call('deleteStream', resource.streamId);
+                } catch (err) {
+                    console.error('we got one resource in the generated list, that has already been removed manually', resource);       
+                } //don't bother if generated resources do not exists, just continue
             })
         GeneratedResources.remove({});
+        TemplateApps.remove({});
+        Customers.remove({});
     },
     resetLoggedInUser() {
         console.log("***Method resetLoggedInUsers");
