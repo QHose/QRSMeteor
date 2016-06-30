@@ -166,14 +166,18 @@ export function getApps() {
 
 
 export function deleteApp(guid) {
-    console.log('QRSApp sync deleteApp');
+    console.log('QRSApp sync deleteApp: ', guid);
     try {
         const call = {};
-        call.action = 'Delete app';
-        call.request = 'HTTP.del(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey;
+
         const result = HTTP.del('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders
         })
+        Meteor.call('updateLocalSenseCopy');
+        
+        //logging only
+        call.action = 'Delete app';
+        call.request = 'HTTP.del(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey;
         call.response = result;
         REST_Log(call);
         return result;

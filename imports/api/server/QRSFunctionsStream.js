@@ -8,10 +8,12 @@ import { REST_Log } from '/imports/api/APILogs';
 
 //STREAM FUNCTIONS
 export function deleteStream(guid) {
+    console.log('deleteStream: ', guid)
     try {
         const result = HTTP.del('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders                       
         })
+        Meteor.call('updateLocalSenseCopy');
         return result;
     } catch (err) {
         console.log(err);
@@ -47,7 +49,7 @@ export function createStream(name) {
             params: { 'xrfkey': senseConfig.xrfkey },
             data: { "name": name }
         })
-
+        Meteor.call('updateLocalSenseCopy');
         //logging
         const call = {};
         call.action = 'Create stream'; 
