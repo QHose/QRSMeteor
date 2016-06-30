@@ -34,7 +34,7 @@ Template.generation.helpers({
         console.log('client generation helper: get app table, the config used to generate the URLs to Sense: ', config);
         return {
             collection: Apps,
-            rowsPerPage: 5,
+            rowsPerPage: 10,
             showFilter: true,
             showColumnToggles: true,
             // fields: ['customer', 'telephone', 'email', 'status', 'itemCount', 'deliveryDate', 'remarks'],
@@ -210,4 +210,5 @@ export var updateSenseInfo = function() {
 //this code gets executed if the page has been loaded, so a good moment to Connect to Sense a get the most recent apps and streams
 Template.generation.onRendered(function() {
     updateSenseInfo();
+    Session.set('generated?', false);
 })

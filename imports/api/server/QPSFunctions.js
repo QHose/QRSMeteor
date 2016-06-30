@@ -8,27 +8,31 @@ import lodash from 'lodash';
 _ = lodash;
 
 
-export function logoutUser() {
-    console.log('QPS Functions: logout the current user');
-    var customer = Customers.findOne({ 'users.currentlyLoggedIn': true });
-    var user = _.find(customer.users, { 'currentlyLoggedIn': true });
-    console.log('We will try the logout the user via the Qlik Sense logout API, we have read the simulated currently logged in user from the database: ', user.name);
+/*
+When communicating with the QPS APIs, the URL is as follows:
+https://<QPS machine name>:4243/<path>
+*/
 
-    console.log('We will try to authenticate to Sense using the options object in the HTTP call', certicate_communication_options);
+export function logoutUser(name) {
+    console.log('******** QPS Functions: logout the current user: ', name);
 
-    try {
-        const call = {};
-        call.action = 'logout the current user: ' + user.name;
-        // call.request = 'HTTP.del(http://' + senseConfig.host + '/qps/' + senseConfig.virtualProxy + '/user/' + senseConfig.UDC + '/' + user.name;
-        call.response = HTTP.call('DELETE' ,'http://' + senseConfig.host + '/qps/user/' + senseConfig.UDC + '/' + user.name + '?xrfkey=' + senseConfig.xrfkey,        
-            {npmRequestOptions: certicate_communication_options}
-        )
-        REST_Log(call);
-        console.log(call.request);
-        console.log(call.response);
+    if (name) {
+        // console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTP call: ', certicate_communication_options);
 
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('Logout user failed', err.message);
+        try {
+            const call = {};
+            call.action = 'logout user: ' + name;
+            call.response = HTTP.call('DELETE', 'https://' + senseConfig.host + ':4243/qps/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey, { 'npmRequestOptions': certicate_communication_options })
+
+            //logging purposes only:
+            call.request = 'HTTP.del(https://' + senseConfig.host + ':4243/qps/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey;
+            REST_Log(call);
+            console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+            console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+
+        } catch (err) {
+            console.error(err);
+            throw new Meteor.Error('Logout user failed', err.message);
+        }
     }
 };

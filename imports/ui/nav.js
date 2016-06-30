@@ -5,11 +5,6 @@ import { senseConfig as config } from '/imports/api/config.js';
 // import { Customers, dummyCustomers } from '../api/customers.js';
 // import { Streams } from '/imports/api/streams.js'
 
-Template.nav.helpers({
-	webIntegrationServerURL() {
-        return 'http://'+ window.location.hostname+':'+Meteor.settings.public.webIntegrationDemoPort;
-    },
-});
 
 Template.nav.onRendered(function() {
     this.$('.ui.menu')

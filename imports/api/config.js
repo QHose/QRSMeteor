@@ -7,7 +7,8 @@ if (Meteor.isClient) {
         "host": Meteor.settings.public.host,
         "port": Meteor.settings.public.port,
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
-        "UDC": Meteor.settings.public.UDC
+        "UDC": Meteor.settings.public.UDC,
+        "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
     };
 
 }
@@ -31,6 +32,10 @@ if (Meteor.isServer) {
         "UDC": Meteor.settings.public.UDC
     };
 
+    if (!_senseConfig.host){
+        throw new Meteor.Error('You have not started this meteor project with: meteor --settings settings-development.json ? You missed the reference to this settings file, or it is empty?');
+    }
+
     //CONFIG FOR HTTP MODULE WITH HEADER AUTH (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)
     export const authHeaders = {
         'hdr-usr': _senseConfig.headerValue,
@@ -48,7 +53,6 @@ if (Meteor.isServer) {
     export var certicate_communication_options = {
         rejectUnauthorized: false,
         hostname: _senseConfig.host,
-        port: Meteor.settings.public.proxyPort,
         headers: {
             'x-qlik-xrfkey': _senseConfig.xrfkey,
             'X-Qlik-User':  Meteor.settings.public.engineHeaders,

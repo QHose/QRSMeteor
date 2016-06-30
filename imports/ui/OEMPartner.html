@@ -2,17 +2,17 @@
     <div class="ui segment">
         <div class="ui message">
             <div class="header">
-            <h4>This column shows you a fictive OEM partner of Qlik.</h4>
-                
+                <h4>This column shows you a fictive OEM partner of Qlik.</h4>
             </div>
-            <!-- <ul class="list"> -->
-            <p>We have a local MongoDB running to store our customers and Sense configuration. (press control M to see these collections)</p>
-            <!-- <li>Generate streams and apps via the REST API's of Qlik Sense</li>
-                <li>Select the customers for which you want to generate the streams and apps </li>
+            <ul class="list">
+                <li>See introduction to this app video <a href="{{pathFor 'users'}}"> here </a></li>
+                <li>Generate streams and apps via the REST API's of Qlik Sense</li>
+                <li>Select the template and customers for which you want to generate the streams and apps </li>
                 <li>We will create 1 stream per customer </li>
                 <li>A copy will be made for each selected template and published in the stream for that customer </li>
-                <li>Press dummy/delete and some dummy customers will be inserted/deleted</li> -->
-            <!-- </ul> -->
+                <li>(Press control + M to see the local MongoDb database)</li>
+                <!-- <li>Press dummy/delete and some dummy customers will be inserted/deleted</li> -->
+            </ul>
         </div>
     </div>
     <div class="ui segment">
@@ -28,23 +28,24 @@
         <!-- APP GENERATION BUTTON -->
         <div class="ui teal buttons">
             <div class="ui {{loading}} button generateStreamAndApp">Generate</div>
-            {{#unless loading}}
+            <!-- {{#unless loading}} -->
             <div class="ui floating dropdown icon button">
                 <i class="dropdown icon"></i>
                 <div class="menu">
+                    <div class="item resetEnvironment"><i class="delete icon "></i> Initialize demo</div>
                     <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
-                    <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
+                    <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>                    
                     <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
                 </div>
             </div>
-            {{/unless}}
+            <!-- {{/unless}} -->
         </div>
         {{#if noCustomers}}
         <div class="ui icon message">
             <img class="icon" src="images/customers.png">
             <div class="content">
                 <div class="header">
-                <h4>No customers</h4>                    
+                    <h4>No customers</h4>
                 </div>
                 <ul>
                     <li>You have no customers in your shop.</li>
@@ -81,7 +82,7 @@
                 <div class="header">
                     <h4>No template apps</h4>
                 </div>
-                <p>Please select the Qlik Sense App (on the right) you would like to use as a basis template.  We will create a copy and publish it into the "customer name" stream  for each of your selected customers</p>
+                <p>Please select the Qlik Sense App (on the right) you would like to use as a basis template. We will create a copy and publish it into the "customer name" stream for each of your selected customers</p>
             </div>
         </div>
         {{else}}

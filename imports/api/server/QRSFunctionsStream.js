@@ -6,22 +6,17 @@ import { Apps, TemplateApps } from '/imports/api/apps.js';
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
 import { REST_Log } from '/imports/api/APILogs';
 
-
-//install NPM modules
-var QRS = require('qrs');
-var qrs = new QRS(senseConfig);
-// var Promise = require("bluebird");
-
-
 //STREAM FUNCTIONS
 export function deleteStream(guid) {
+    console.log('deleteStream: ', guid)
     try {
         const result = HTTP.del('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders                       
         })
+        Meteor.call('updateLocalSenseCopy');
         return result;
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw new Meteor.Error('Create stream failed', err.message);
     }
 };
@@ -39,7 +34,7 @@ export function getStreams() {
         REST_Log(call);        
         return result.data;
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw new Meteor.Error('getStreams failed', err.message);
     }
 };
@@ -54,7 +49,7 @@ export function createStream(name) {
             params: { 'xrfkey': senseConfig.xrfkey },
             data: { "name": name }
         })
-
+        Meteor.call('updateLocalSenseCopy');
         //logging
         const call = {};
         call.action = 'Create stream'; 
@@ -63,7 +58,7 @@ export function createStream(name) {
         REST_Log(call);        
         return result;
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw new Meteor.Error('Create stream failed', err.message);
     }
 };

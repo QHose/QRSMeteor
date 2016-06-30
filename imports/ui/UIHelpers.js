@@ -20,12 +20,17 @@ if (Meteor.isClient) {
     // });
 
     Template.registerHelper('senseServerHub', function() {
-        return 'http://'+ senseConfig.host+':'+senseConfig.port+'/'+senseConfig.virtualProxyClientUsage+'/hub';
-    }),
-    
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/hub';
+    });
+
     Template.registerHelper('senseServerQMC', function() {
-        return 'http://'+ senseConfig.host+':'+senseConfig.port+'/'+senseConfig.virtualProxyClientUsage+'/qmc';
-    }),
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/qmc';
+    });
+
+    Template.registerHelper('webIntegrationDemo', function() {
+        return 'http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort;
+    });
+
 
     Template.registerHelper('isSelected', function(someValue) {
         return someValue ? 'selected' : '';
@@ -34,6 +39,9 @@ if (Meteor.isClient) {
     Template.registerHelper('customers', function() {
         return Customers.find({}, { sort: { checked: -1 } });
     });
+
+    //used for Aldeed autoform
+    Template.registerHelper("Customers", Customers);
 
     Template.registerHelper('noCustomers', function() {
         return !Customers.find({})
@@ -61,6 +69,4 @@ if (Meteor.isClient) {
     Template.registerHelper('streamsCollection', function() {
         return Streams.find();
     });
-
-    Template.registerHelper("Customers", Customers);
 }

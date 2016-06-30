@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { http } from 'meteor/meteor';
-import { Apps, TemplateApps } from '/imports/api/apps';
+import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
 
 //import meteor collections
 import { Streams } from '/imports/api/streams';
@@ -19,27 +19,38 @@ import '/imports/server/qlikAuthSSO.js';
 //install NPM modules
 var fs = require('fs');
 var qsocks = require('qsocks');
-var QRS = require('qrs');
-// var Promise = require("bluebird");
-var qrs = null;
 
 Meteor.methods({
+    resetEnvironment() {
+        console.log('resetEnvironment method');
+        GeneratedResources.find()
+            .forEach(function(resource) {
+                console.log('resetEnvironment for resource', resource);
+                Meteor.call('deleteApp', resource.appId);
+                Meteor.call('deleteStream', resource.streamId);
+            })
+        GeneratedResources.remove({});
+    },
     resetLoggedInUser() {
-        console.log("Method resetLoggedInUsers");
-        //call the QPS logout api, to invalidate the session cookie
-        // QSProxy.logoutUser();
+        console.log("***Method resetLoggedInUsers");
+        console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
 
         //reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.
         Customers.find()
             .forEach(function(customer) {
                 var updatedUsers = _.map(customer.users, function(user) {
                     user.currentlyLoggedIn = false;
+
+                    //and just logout everybody in the user list                            
+                    // QSProxy.logoutUser(user.name);
+
                     return user;
                 })
 
                 Customers.update(customer._id, {
                     $set: { users: updatedUsers },
                 });
+
             });
 
 
@@ -47,7 +58,7 @@ Meteor.methods({
     simulateUserLogin(name) {
         check(name, String);
         Meteor.call('resetLoggedInUser');
-        console.log('method: simulateUserLogin for: '+name);
+        console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: ' + name);
         Customers.update({ "users.name": name }, {
             $set: {
                 'users.$.currentlyLoggedIn': true
@@ -63,7 +74,7 @@ Meteor.methods({
     copyApp(guid, name) {
         check(guid, String);
         check(name, String);
-
+        Meteor.call('updateLocalSenseCopy');
         return QSApp.copyApp(guid, name);
     },
     copyAppSelectedCustomers(currentApp) { //the app the user clicked on        
@@ -84,6 +95,7 @@ Meteor.methods({
     deleteApp(guid) {
         check(guid, String);
         console.log('method deleteApp');
+
         return QSApp.deleteApp(guid);
     },
     removeAllCustomers: function() {
@@ -103,13 +115,6 @@ Meteor.methods({
     },
     getSecurityRules() {
         return QSSystem.getSecurityRules();
-    },
-    //NPM QRS CALLS
-    countApps() {
-        return qrs.get('/qrs/app/count');
-    },
-    countStreams() {
-        return qrs.get('/qrs/stream/count');
     },
     updateLocalSenseCopy() {
         console.log('Method: update the local mongoDB with fresh data from Qlik Sense: call QRS API getStreams and getApps');
