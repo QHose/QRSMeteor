@@ -206,4 +206,5 @@ Template.generation.events({
 //this code gets executed if the page has been loaded, so a good moment to Connect to Sense a get the most recent apps and streams
 Template.generation.onRendered(function() {
     Session.set('generated?', false);
+     Meteor.call('updateLocalSenseCopy');
 })
