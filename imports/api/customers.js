@@ -34,7 +34,7 @@ Customers.attachSchema(new SimpleSchema({
     },
     "users.$.group": {
         type: String,
-        allowedValues: ['Consumer', 'Contributor', 'Admin']
+        allowedValues: ['Consumer', 'Contributor', 'Developer', 'Admin']
     },
     "users.$.currentlyLoggedIn": {
         type: Boolean
