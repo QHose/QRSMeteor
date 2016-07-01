@@ -34,7 +34,7 @@ Meteor.startup(function() {
         const resultStream = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
-            data:  "http://nlsch-mbj1:3000/updateSenseInfo"
+            data:  Meteor.settings.public.notificationURL
         })
 
         console.log('the result from sense register App notification was: ', resultApp);
@@ -52,8 +52,8 @@ Meteor.methods({
             .forEach(function(resource) {
                 console.log('resetEnvironment for resource', resource);
                 try {
-                    Meteor.call('deleteApp', resource.appId);
                     Meteor.call('deleteStream', resource.streamId);
+                    Meteor.call('deleteApp', resource.appId);                    
                 } catch (err) {
                     console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);       
                 } //don't bother if generated resources do not exists, just continue

@@ -1,10 +1,8 @@
 <template name='generation'>
-    <div class="one column row">
-        <div class="column">
-            <div class="ui segment">{{> steps}}</div>
-        </div>        
+    <div class="ui first container">
+        {{> steps}}
     </div>
-    <div class="ui two column stackable grid">
+    <div class="ui three column stackable grid">
         <div class="six wide column">
             {{> OEMPartner}}
         </div>
@@ -26,7 +24,7 @@
                 <h4 class="ui header">
                 <img class="icon" src="images/app.png">
                 Received {{countApps}}  apps via QRS API from Qlik Sense
-            </h4> {{> reactiveTable settings=appSettings}}            
+            </h4> {{> reactiveTable settings=appSettings}}
             </div>
         </div>
     </div>

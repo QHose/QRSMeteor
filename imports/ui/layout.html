@@ -1,16 +1,14 @@
 <template name="layout">
     <!-- Navigation bar -->
-        <div class="ui container">
     {{> nav}}
+    <div class="ui grid">
+        <div class="one wide column">
+        </div>
+        <div class="fourteen wide column">
+            {{> sAlert}} {{#if NoSenseConnection}} {{> checkConfig}} {{else}} {{> yield}} {{/if}}
+        </div>
+        <div class="one wide column">
+        </div>
     </div>
     
-        {{> sAlert}}
-    
-    {{#if NoSenseConnection}}
-        
-        {{> checkConfig}} 
-    {{else}} 
-        {{> yield}}
-    {{/if}}
-
 </template>
