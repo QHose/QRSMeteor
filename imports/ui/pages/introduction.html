@@ -1,23 +1,77 @@
 <template name="introduction">
-    <div class="container">
-        <div class="ui icon message">
-            <img class="icon" src="images/API.png">
-            <div class="content">
-                <div class="header">
-                    <h4> The power of the Qlik Sense 3 API's</h4>
+    <div class="ui vertical stripe segment">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="eight wide column">
+                    <h3 class="ui header">Embed Qlik Sense</h3>
+                    <p>We integrate complete dashboards, sheets or individual objects using an Iframe or Div tag. All Sense functionality "is delivered via webserver", all web based; web sockets, javascript, CSS3, HTML5 and Angular.</p>
+                    <h3 class="ui header">You software is in the lead</h3>
+                    <p>Using our .NET API which includes a Vis. Studio plugin, javascript, REST API's, you can automate everything. So your software can control and configure Sense. You can even create complete dashboards or individual charts on the fly.</p>
                 </div>
-                <ul>
-                    <li>Please see the video below for a quick but shiny introduction to this Node.js and MongoDB based demo SaaS platform</li>
-                    <li>Qlik  <a href="{{pathFor 'generation'}}"> here</a> to see the OEM Qlik Sense Multi Tenant app generation demo </li>
-                    <li>See the extended version <a href="{{pathFor 'introductionExtended'}}"> here </a></li>
-                    <li>See an introduction to an OEM security approach with Qlik Sense <a href="{{pathFor 'introductionSecurity'}}"> here </a></li>
-                </ul>
+                <div class="six wide right floated column">
+                    text
+                </div>
+            </div>
+            <div class="row">
+                <div class="center aligned column">
+                    <a href="{{pathFor 'generation'}}" class="ui huge button">See SaaS multi-tenant demo</a>
+                </div>
             </div>
         </div>
-        <div class="ui one column centered grid">
-            <div class="column centered">            
-                <iframe width="854" height="480" src="https://www.youtube.com/embed/eiI-y2OEbv0" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="ui vertical stripe quote segment">
+        <div class="ui equal width stackable internally celled grid">
+            <div class="row">
+                <div class="column">
+                    <h3>Quick introduction video (1m)</h3>
+                    <iframe width="400" height=225 src="https://www.youtube.com/embed/eiI-y2OEbv0" frameborder="0" allowfullscreen></iframe>
+                    <div class="ui text container">
+                        <h3 class="ui header">What do you see?</h3>
+                        <div class="left aligned">
+                            <ul>
+                                <li>Please see this video for a quick but shiny introduction to this Node.js and MongoDB based demo SaaS platform </li>
+                                <li>Include any javascript chart or any HTML you like</li>
+                                <li>Let end users extend the content you deliver. You give them a 80% starting template and let them create remaining 20%</li>
+                                <li>This will save you 80% of the time you now spend on reports that are "never close to what the customer wanted..." </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="column">
+                    <h3>Extented introduction to SaaS with Qlik Sense</h3>
+                    <iframe width="400" height="225" src="https://www.youtube.com/embed/PyaNoWmpBHo" frameborder="0" allowfullscreen></iframe>
+                    <div class="ui text container">
+                        <h3 class="ui header">What do you see?</h3>
+                        <div class="left aligned">
+                            <ul>
+                                <li>Please see this video for an introduction to this Node.js and MongoDB based Qlik Sense SaaS multi-tenant demo platform. This demo is meant to show you how you can steer and control Qlik Sense out of your software. Off course you can always use our Qlik management console to do your IT management activities by hand, but we think automation is always better... </li>
+                                <li>We will start with an introduction to Qlik Sense, what is a dashboard/app/QVF file? </li>
+                                <li>Then we will quickly show you our 100% web based architecture, in which both development as well as consuming the content can be done using your mobile device! No more fat clients to maintain and update</li>
+                                <li>Then we will guide and show you this demo tool works, which buttons to push so you can start generating stuff in Qlik Sense. All done remotely without touching the Qlik Sense management console (QMC) but instead by using this remote (non Qlik) Meteor.JS application </li>
+                                <li> BTW do you already you know can just record the manual activity you do? E.g. you can copy an app in the QMC, and use the Chrome developer tool (F12) to record this step. You can then just copy paste the REST API call in you software...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="ui vertical stripe segment">
+        <div class="ui text container">
+            <h3 class="ui header">Flexible attribute based access control</h3>
+            <ul>
+                <li>
+                    <b> Authentication: </b> We re-use your existing way to authenticate the users. We will insert a little piece of code inside your existing "security module". In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via a SSL certificate exchange). And send this info about the user (userId, group membership) in a JSON object to Sense (we call this ticketing).
+                </li>
+                <li>
+                    <b>Authorization </b> Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name.
+                </li>
+                <li>See an introduction to an OEM security approach with Qlik Sense <a href="{{pathFor 'introductionSecurity'}}"> here </a></li>
+            </ul>
+            <a href="https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FSecurity%20integration%20Provide%20Single%20Sign%20On%20and%20share%20access%20%7C6cf86403-7d74-4baf-bc32-32158b0d63c1%2F%29" target="_blank" class="ui large button">Read More</a>
+            <h4 class="ui horizontal header divider">
+        
         </div>
     </div>
 </template>
