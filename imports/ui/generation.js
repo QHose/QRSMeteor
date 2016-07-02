@@ -58,6 +58,7 @@ Template.generation.helpers({
                 }, {
                     key: 'stream.name',
                     label: 'Stream',
+                    sortOrder: 1,
                     fn: function(value, object) {
                         return value;
                     }
