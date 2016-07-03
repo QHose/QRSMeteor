@@ -55,7 +55,7 @@ export const dummyCustomers = [{
             "country": "NL"
         },
         {
-            "name": "Paul - admin",
+            "name": "Paul",
             "group": "Admin",
             "currentlyLoggedIn": false,
             "country": "NL"
