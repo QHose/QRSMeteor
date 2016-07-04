@@ -23,6 +23,7 @@ Template.customer.events({
         sAlert.error(err);        
       } else {        
         sAlert.success('Stream created for customer: '+customerName); 
+        updateSenseInfo();
       }
     })
   },
@@ -37,6 +38,7 @@ Template.customer.events({
   //     } else {
   //       console.log('copy app succes', result);
   //       sAlert.success('App copied for customer: '+customerName); //, and apps have been published into the customer stream ');
+  //       updateSenseInfo();
   //     }
   //   });
   // }

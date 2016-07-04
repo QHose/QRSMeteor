@@ -137,7 +137,7 @@ Template.generation.helpers({
                 },
             ]
         };
-    }
+    }    
 });
 
 Template.generation.events({
@@ -165,7 +165,7 @@ Template.generation.events({
                             sAlert.error(error);
                         } else {
                             sAlert.success("QVF '" + currentApp.name + " copied in Qlik Sense via the QRS API for each of the selected customers");
-
+                            updateSenseInfo();
                         }
                     }) //method call 
             }
@@ -180,7 +180,7 @@ Template.generation.events({
                         } else {
                             console.log('app removed');
                             sAlert.success("APP " + currentApp.name + " deleted in Qlik Sense via the QRS API");
-
+                            updateSenseInfo();
                         }
                     }) //method call 
             } //end if delete button is clicked 
@@ -196,7 +196,7 @@ Template.generation.events({
                         } else {
                             console.log('Stream removed');
                             sAlert.success('Stream: ' + currentStream.name + " deleted in Qlik Sense via the QRS API");
-
+                            updateSenseInfo();
                         }
                     }) //method call 
             } //delete stream event target
@@ -204,8 +204,13 @@ Template.generation.events({
         } //'click .reactive-table tbody tr        
 }); //end Meteor events
 
+export var updateSenseInfo = function() {
+    Meteor.call('updateLocalSenseCopy');
+};
+
 //this code gets executed if the page has been loaded, so a good moment to Connect to Sense a get the most recent apps and streams
 Template.generation.onRendered(function() {
+    updateSenseInfo();
     Session.set('generated?', false);
      Meteor.call('updateLocalSenseCopy');
 })
