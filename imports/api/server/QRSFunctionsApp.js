@@ -94,6 +94,27 @@ function createTag(name) {
 };
 
 
+function createSelection(type, guid) {
+    check(name, String);
+    console.log('QRS Functions Appp, create a tag: ' + name);
+
+    try {
+        const result = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/Selection', {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey },
+            data: { items: [{type: type, objectID: guid}] }
+        })
+        console.log('the result of selection for type: ',type+' '+guid);
+        console.log(result);
+        return result;
+    } catch (err) {
+        console.error(err);
+        throw new Meteor.Error('Tag: ' + name + ' create failed ', err.message);
+    }
+};
+
+
+
 export function copyApp(guid, name) {
     check(guid, String);
     check(name, String);
