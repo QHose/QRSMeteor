@@ -25,9 +25,9 @@ Router.route('/sso', function(request, response, next) {
         var passport = {
             'UserDirectory': senseConfig.UDC, //Specify a dummy value to ensure userID's are unique E.g. "Dummy"
             'UserId': user.name, //the current user that we are going to login with
-            'Attributes': [{ 'group': customer.name }, //attributes supply the group membership from the source system to Qlik Sense
-                { 'group': user.country },
-                { 'group': user.group }
+            'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
+                { 'group': user.country.toUpperCase() },
+                { 'group': user.group.toUpperCase() }
             ]
         }
         console.log('Request ticket for this users "passport": ', passport.Attributes);
