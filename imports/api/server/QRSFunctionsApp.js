@@ -198,7 +198,7 @@ export function copyApp(guid, name) {
         })
         var newGuid = result.data.id;
         console.log('Step 2: the new app id is: ', newGuid);
-        addTag('App', newGuid);
+        //addTag('App', newGuid);
         return newGuid;
     } catch (err) {
         console.error(err);
