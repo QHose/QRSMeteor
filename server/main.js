@@ -22,10 +22,10 @@ var qsocks = require('qsocks');
 
 Meteor.startup(function() {
 
-    console.log('QRS register notification on meteor startup');
+    console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
 
     try {
-        const resultApp = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
+        const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data:  Meteor.settings.public.notificationURL
