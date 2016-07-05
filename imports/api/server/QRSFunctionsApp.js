@@ -84,8 +84,15 @@ function createTag(name) {
             params: { 'xrfkey': senseConfig.xrfkey },
             data: { "name": name }
         })
-        console.log('the result of tag creation');
-        console.log(result);
+
+
+        //logging only
+        const call = {};
+        call.action = 'create Tag';
+        call.request = 'HTTP.get(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/tag';
+        call.response = result;
+        REST_Log(call);
+
         return result;
     } catch (err) {
         console.error(err);
@@ -93,26 +100,89 @@ function createTag(name) {
     }
 };
 
+function addTag(type, guid, tagName) {
+    check(type, String);
+    check(guid, String);
+
+    //check if tag with tagName already exists
+
+    var selectionId = createSelection(type, guid);
+    addTagViaSyntheticToType('App', selectionId, tagGuid)
+
+}
 
 function createSelection(type, guid) {
-    check(name, String);
-    console.log('QRS Functions Appp, create a tag: ' + name);
+    check(type, String);
+    check(guid, String);
+    console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);
 
     try {
         const result = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/Selection', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
-            data: { items: [{type: type, objectID: guid}] }
+            data: { items: [{ type: type, objectID: guid }] }
         })
-        console.log('the result of selection for type: ',type+' '+guid);
+        console.log('the result of selection for type: ', type + ' ' + guid);
+        console.log(result);
+        return result.id;
+    } catch (err) {
+        console.error(err);
+        throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
+    }
+};
+
+function deleteSelection(selectionId) {
+    check(selectionId, String);    
+    console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
+
+    try {
+        const result = HTTP.delete('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/Selection/'+selectionId, {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey }            
+        })        
+        console.log(result);
+        return result.id;
+    } catch (err) {
+        console.error(err);
+        throw new Meteor.Error('Selection delete failed: ', err.message);
+    }
+};
+
+function buildModDate()
+{   
+   var d = new Date();
+   return d.toISOString();
+}
+
+function addTagViaSyntheticToType(type, selectionId, tagGuid) {
+    check(type, String);
+    check(guid, String);
+    console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
+
+    try {
+        const result = HTTP.put('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey },
+            data: {
+                "latestModifiedDate": buildModDate(),
+                "properties": [{
+                    "name": "refList_Tag",
+                    "value": {
+                        "added": [tagGuid]
+                    },
+                    "valueIsModified": true
+                }],
+                "type": type
+            }
+        })
+        console.log('the result of selection for type: ', type + ' ' + guid);
         console.log(result);
         return result;
     } catch (err) {
         console.error(err);
-        throw new Meteor.Error('Tag: ' + name + ' create failed ', err.message);
+        throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
     }
 };
-
 
 
 export function copyApp(guid, name) {
@@ -126,8 +196,10 @@ export function copyApp(guid, name) {
             params: { 'xrfkey': senseConfig.xrfkey, 'name': name },
             data: { "name": name }
         })
-        console.log('Step 2: the new app id is: ', result.data.id);
-        return result.data.id;
+        var newGuid = result.data.id;
+        console.log('Step 2: the new app id is: ', newGuid);
+        addTag('App', newGuid);
+        return newGuid;
     } catch (err) {
         console.error(err);
         throw new Meteor.Error('Copy app for selected customers failed', err.message);
@@ -166,16 +238,19 @@ export function getAppsViaEngine() {
         });
 };
 
+
 export function getApps() {
     try {
-        const call = {};
-        call.action = 'Get the current list of apps';
-        call.request = 'HTTP.get(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full';
+
         const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
                 headers: authHeaders,
                 params: { 'xrfkey': senseConfig.xrfkey }
             })
             // console.log('http get result %j',result);
+            //logging only
+        const call = {};
+        call.action = 'Get the current list of apps';
+        call.request = 'HTTP.get(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/full';
         call.response = result;
         REST_Log(call);
         return result.data;
@@ -195,7 +270,7 @@ export function deleteApp(guid) {
             headers: authHeaders
         })
         Meteor.call('updateLocalSenseCopy');
-        
+
         //logging only
         call.action = 'Delete app';
         call.request = 'HTTP.del(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey;

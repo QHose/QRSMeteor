@@ -30,7 +30,7 @@ Router.route('/sso', function(request, response, next) {
                 { 'group': user.group.toUpperCase() }
             ]
         }
-        console.log('Request ticket for this users "passport": ', passport.Attributes);
+        console.log('Request ticket for this user passport": ', passport);
         var options = {
                 'Certificate': senseConfig.cert, //'C:/Users/Qlik/Meteor projects/qlikauth-meteor/node_modules/qlik-auth/client.pfx',
                 'PassPhrase': ''

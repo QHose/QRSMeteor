@@ -45,7 +45,7 @@ Meteor.startup(function() {
     }
 });
 
-Meteor.methods({
+Meteor.methods({    
     resetEnvironment() {
         console.log('resetEnvironment method');
         GeneratedResources.find()
