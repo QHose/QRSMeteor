@@ -28,13 +28,13 @@ Meteor.startup(function() {
         const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
-            data:  Meteor.settings.public.notificationURL
+            data: Meteor.settings.public.notificationURL + '/apps'
         })
 
-        const resultStream = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
+        const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
-            data:  Meteor.settings.public.notificationURL
+            data: Meteor.settings.public.notificationURL + '/streams'
         })
 
         console.log('the result from sense register App notification was: ', resultApp);
@@ -45,7 +45,7 @@ Meteor.startup(function() {
     }
 });
 
-Meteor.methods({    
+Meteor.methods({
     resetEnvironment() {
         console.log('resetEnvironment method');
         GeneratedResources.find()
@@ -53,9 +53,9 @@ Meteor.methods({
                 console.log('resetEnvironment for resource', resource);
                 try {
                     Meteor.call('deleteStream', resource.streamId);
-                    Meteor.call('deleteApp', resource.appId);                    
+                    Meteor.call('deleteApp', resource.appId);
                 } catch (err) {
-                    console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);       
+                    console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
                 } //don't bother if generated resources do not exists, just continue
             })
         GeneratedResources.remove({});
@@ -146,6 +146,26 @@ Meteor.methods({
     getSecurityRules() {
         return QSSystem.getSecurityRules();
     },
+
+    updateLocalSenseCopyApps() {
+        //delete the local content of the database before updating it
+        Apps.remove({});
+
+        //Update the Apps with fresh info from Sense        
+        _.each(QSApp.getApps(), app => {
+            Apps.insert(app);
+        });
+    },
+    updateLocalSenseCopyStreams() {
+        //delete the local content of the database before updating it        
+        Streams.remove({});
+
+        //Update the Streams with fresh info from Sense        
+        _.each(QSStream.getStreams(), stream => {
+            Streams.insert(stream);
+        });
+    },
+
     updateLocalSenseCopy() {
         // console.log('Method: update the local mongoDB with fresh data from Qlik Sense: call QRS API getStreams and getApps');
         //delete the local content of the database before updating it

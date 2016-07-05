@@ -40,8 +40,13 @@ Router.route('/sso', function(request, response, next) {
     }
 }, { where: 'server' });
 
-Router.route('/updateSenseInfo', function(request, response, next) {
-    console.log('++++++++++++We got an incoming REST Call from the Sense Notification handler, this means the Sense Repository has changed');
-    Meteor.call('updateLocalSenseCopy');
+Router.route('/updateSenseInfo/apps', function(request, response, next) {
+    console.log('++++++++++++We got an incoming REST Call from the Sense Notification handler for APPS, this means the Sense Repository has changed');
+    Meteor.call('updateLocalSenseCopyApps');
+}, { where: 'server' });
+
+Router.route('/updateSenseInfo/streams', function(request, response, next) {
+    console.log('++++++++++++We got an incoming REST Call from the Sense Notification handler for STREAMS, this means the Sense Repository has changed');
+    Meteor.call('updateLocalSenseCopyStreams');
 }, { where: 'server' });
 
