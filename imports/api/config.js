@@ -20,6 +20,7 @@ if (Meteor.isServer) {
 
     var _senseConfig = {
         "host": Meteor.settings.public.host,
+        "SenseServerInternalLanIP": Meteor.settings.public.SenseServerInternalLanIP,
         "port": Meteor.settings.public.port,
         "useSSL": Meteor.settings.public.useSSL,
         "xrfkey": generateXrfkey(),
@@ -32,7 +33,7 @@ if (Meteor.isServer) {
         "UDC": Meteor.settings.public.UDC
     };
 
-    if (!_senseConfig.host){
+    if (!_senseConfig.host) {
         throw new Meteor.Error('You have not started this meteor project with: meteor --settings settings-development.json ? You missed the reference to this settings file, or it is empty?');
     }
 
@@ -55,14 +56,14 @@ if (Meteor.isServer) {
         hostname: _senseConfig.host,
         headers: {
             'x-qlik-xrfkey': _senseConfig.xrfkey,
-            'X-Qlik-User':  Meteor.settings.public.engineHeaders,
+            'X-Qlik-User': Meteor.settings.public.engineHeaders,
             'Content-Type': 'application/json'
         },
         key: _certs.key,
         cert: _certs.cert
     };
 
-    
+
 
     export const securityInfo = {
         'xrfkey': _senseConfig.xrfkey,
