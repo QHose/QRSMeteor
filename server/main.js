@@ -26,13 +26,13 @@ Meteor.startup(function() {
     console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
     console.log('***************** The notification URL for Streams is: ' + Meteor.settings.public.notificationURL + '/streams');
     try {
-        const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
+        const resultApp = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: Meteor.settings.public.notificationURL + '/apps'
         })
 
-        const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
+        const resultStream = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: Meteor.settings.public.notificationURL + '/streams'
