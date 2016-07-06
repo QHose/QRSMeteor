@@ -53,7 +53,7 @@ if (Meteor.isServer) {
 
     export var certicate_communication_options = {
         rejectUnauthorized: false,
-        hostname: _senseConfig.host,
+        hostname: _senseConfig.SenseServerInternalLanIP,
         headers: {
             'x-qlik-xrfkey': _senseConfig.xrfkey,
             'X-Qlik-User': Meteor.settings.public.engineHeaders,
