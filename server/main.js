@@ -36,7 +36,7 @@ Meteor.startup(function() {
             params: { 'xrfkey': senseConfig.xrfkey },
             data: Meteor.settings.public.notificationURL + '/streams'
         })
-
+        console.log('***************** The notification URL for Streams is: '+Meteor.settings.public.notificationURL + '/streams');
         console.log('the result from sense register App notification was: ', resultApp);
         console.log('the result from sense register Stream notification was: ', resultStream);
     } catch (err) {
