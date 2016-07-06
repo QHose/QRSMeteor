@@ -17,15 +17,16 @@ export function logoutUser(name) {
     console.log('******** QPS Functions: logout the current user: ', name);
 
     if (name) {
-        // console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTP call: ', certicate_communication_options);
-
+        console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTP call: ', certicate_communication_options);
+        console.log('Meteor tries to logout the user on this URL: https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/'+senseConfig.virtualProxyClientUsage+'/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey;
         try {
             const call = {};
             call.action = 'logout user: ' + name;
+
             call.response = HTTP.call('DELETE', 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/'+senseConfig.virtualProxyClientUsage+'/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey, { 'npmRequestOptions': certicate_communication_options })
 
             //logging purposes only:
-            call.request = 'HTTP.del(https://' + SenseServerInternalLanIP + ':4243/qps/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey;
+            call.request = 'HTTP.del(https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey;
             REST_Log(call);
             console.log('The HTTP REQUEST to Sense QPS API:', call.request);
             console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
