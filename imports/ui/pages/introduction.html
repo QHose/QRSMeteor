@@ -1,6 +1,6 @@
 <template name="introduction">
     <div class="ui container">
-        <div class="ui vertical stripe segment">
+        <div class="ui basic segment">
             <div class="ui middle aligned stackable grid container">
                 <div class="row">
                     <div class="ten wide column">
@@ -20,18 +20,24 @@
                 </div>
             </div>
         </div>
-        <div class="ui vertical stripe quote segment">
-            <div class="ui equal width stackable internally celled grid">
-                <div class="center aligned row">
-                    <div class="column">
-                        <h3>Quick introduction video (1m)</h3>
-                        <div class="centered aligned">
-                            <iframe width="400" height="226" src="https://www.youtube.com/embed/eiI-y2OEbv0" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <div class="ui left aligned basic segment">
-                            <p>The things you might see</p>
-                            <ul>
-                                <li>See the whole story in your data. Simply because we load <b>all</b> of the fields and tables. And we connect all the data that is related to each other. We call this an associative database. You will model the data only once, and then users can choose any field they like.</li>
+        <div class="ui grid">
+            <!-- Embed Youtube video -->
+            <div class="two column row">
+                <div class="column">
+                    <h4 class="ui header">Quick Video (1m)</h4>
+                    <div class="ui embed" data-url="https://www.youtube.com/embed/eiI-y2OEbv0" data-placeholder="/images/introVideoSaaS1m.png"></div>
+                    <div class="item">
+                        <div class="content">
+                            <a class="header">Contents</a>
+                            <div class="meta">
+                                <span></span>
+                            </div>
+                            <div class="description">
+                                <p>In a quick overview you will see the key components of a Qlik Sense integration </p>
+                            </div>
+                            <div class="extra">
+                                <ul>
+                                <li>See the whole story in your data. Simply because we load <b>all</b> of the fields and tables. And we connect all the data that is related to each other. We call this an associative data warehouse. You will model the data only once, and then users can extend the charts and sheets your provide and choose any field they like. Next to being one of the fastest databases, as an extra you will get all the functions you expect from a data warehouse</li>
                                 <li>Users can add extra data to the model you give them to start with. Qlik will help the user find the correct match to the existing model. We call this visual data modelling. </li>
                                 <li>Qlik sense is both a visualization tool as well as a super fast in memory data warehouse. This means you can do all things you are used too in your current data warehouse. Like combining multiple data sources into one model</li>
                                 <li>For super fast design you can use our of the box Qlik Sense charts</li>
@@ -42,40 +48,50 @@
                                     This will save you 80% of the time you now spend on reports that are "never close to what the customer wanted..."
                                 </li>
                             </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="column">
-                        <h3>Extented introduction video (4m)</h3>
-                        <div class="centered aligned">
-                            <iframe width="400" height="226" src="https://www.youtube.com/embed/PyaNoWmpBHo" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <div class="ui left aligned basic segment">
-                            <p>Please see this video for an introduction to this Node.js and MongoDB based Qlik Sense SaaS multi-tenant demo platform. This demo is meant to show you how you can setup a multi-tenant SaaS system using Qlik Sense to deliver the data or the vizualizations.</p>
-                        </div>
-                        <div class="ui left aligned basic segment">
-                            <p>The topics we discuss are</p>
-                            <ul>
+                </div>
+                <div class="column">
+                    <h4 class="ui header">Extended Video (4m)</h4>
+                    <div class="ui embed" data-url="https://www.youtube.com/embed/PyaNoWmpBHo" data-placeholder="/images/introVideoSaaS4m.png"></div>
+                    <div class="item">
+                        <div class="content">
+                            <a class="header">Contents</a>
+                            <div class="meta">
+                                <span></span>
+                            </div>
+                            <div class="description">
+                                <p>Please see this video for an introduction to this Node.js and MongoDB based Qlik Sense SaaS multi-tenant demo platform. This demo is meant to show you how you can setup a multi-tenant SaaS system using Qlik Sense to deliver the data or the vizualizations to your SaaS platform.</p>
+                            </div>
+                            <div class="extra">
+                                 
+                                 <ul>
                                 <li>What is a dashboard (app)?</li>
                                 <li>What is the architecture of Qlik Sense?</li>
                                 <li>How can we automate the deployment for SaaS?</li>
+                                <li>Demo of a "custom made" website that interacts with Sense via the REST and websockets API's</li>
                                 <li>How can we integrate the content in your website?</li>
                             </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
         <div class="ui vertical stripe segment">
             <div class="ui middle aligned stackable grid container">
                 <h3 class="ui header">Flexible attribute based access control</h3>
                 <div class="row">
+                    <div class="three wide left floated column">
+                        <img class="ui fluid image" src="images/id_big.png">
+                    </div>
                     <div class="ten wide column">
                         <h4 class="ui header">Authentication - Single Sign on using tickets (tokens)</h4> We re-use your existing way to authenticate the users. We will insert a little piece of code inside your existing "security module". In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via a SSL certificate exchange). And send this info about the user (userId, group membership) in a JSON object to Sense (we call this ticketing).
                         <h4 class="ui header">Authorization</h4> Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name. See an introduction video to an OEM security approach with Qlik Sense <a href="{{pathFor 'introductionSecurity'}}"> here </a>
                     </div>
-                    <div class="four wide right floated column">
-                        <img class="ui fluid image" src="images/id_big.png">
-                    </div>
+                    
                 </div>
                 <div class="row">
                     <div class="center aligned column">
