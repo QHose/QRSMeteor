@@ -25,4 +25,7 @@ Router.route('/introductionSecurity');
 Router.route('/generation');
 Router.route('/securityRules');
 Router.route('/QMC');
+Router.route('/webIntegration');
+
+
 

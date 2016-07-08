@@ -23,14 +23,10 @@
         <a class="ui labeled icon button" href="{{pathFor 'users'}}"> <i class="edit icon "></i>1: Insert Customers</a>
         <!-- APP GENERATION BUTTON -->
         <div class="ui buttons">
-            <button class="ui labeled icon button resetEnvironment">
-                <i class="undo icon "></i> Initialize demo
-            </button>
-            <div class="or"></div>
             <div class="ui buttons">
-                <div class="ui {{loading}} positive button generateStreamAndApp"><i class="play icon "></i> 3: Generate</div>
+                <div class="ui {{loading}} button resetEnvironment"><i class="undo icon "></i> Initialize demo</div>
                 <!-- {{#unless loading}} -->
-                <div class="ui positive floating dropdown icon button">
+                <div class="ui floating dropdown icon button">
                     <i class="dropdown icon"></i>
                     <div class="menu">
                         <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
@@ -40,6 +36,8 @@
                 </div>
                 <!-- {{/unless}} -->
             </div>
+            <div class="or"></div>
+            <div class="ui {{loading}} positive button generateStreamAndApp"><i class="play icon "></i> 3: Generate</div>
         </div>
         {{#if noCustomers}}
         <div class="ui icon message">

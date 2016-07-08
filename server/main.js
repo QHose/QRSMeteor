@@ -41,8 +41,8 @@ Meteor.startup(function() {
         console.log('the result from sense register App notification was: ', resultApp);
         console.log('the result from sense register Stream notification was: ', resultStream);
     } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
+        console.error('Create notification subscription in sense qrs failed',err);
+        // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
     }
 });
 
