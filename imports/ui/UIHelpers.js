@@ -48,6 +48,10 @@ if (Meteor.isClient) {
             .count();
     });
 
+    Template.registerHelper('readyToGenerate', function() {
+        return Customers.find({}).count() &&  TemplateApps.find()
+            .count() ;
+    });
     Template.registerHelper('noTemplateApps', function() {
         return !TemplateApps.find({})
             .count();

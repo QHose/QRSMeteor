@@ -1,7 +1,7 @@
 <template name='OEMPartner'>
     <div class="ui segment">
         <div class="ui icon message">
-            <i class="info circle icon"></i>
+           <img class="icon" src="images/intro.png">
             <div class="content">
                 <div class="header">
                     Let's start generating apps
@@ -34,10 +34,13 @@
                         <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
                     </div>
                 </div>
-                <!-- {{/unless}} -->
+        
             </div>
+            {{#if readyToGenerate}}
             <div class="or"></div>
             <div class="ui {{loading}} positive button generateStreamAndApp"><i class="play icon "></i> 3: Generate</div>
+            {{/if}}
+
         </div>
         {{#if noCustomers}}
         <div class="ui icon message">
