@@ -1,18 +1,13 @@
 <template name='OEMPartner'>
     <div class="ui segment">
-        <div class="ui message">
-            <div class="header">
-                <h4>This column shows your SaaS platform.</h4>
+        <div class="ui icon message">
+            <i class="info circle icon"></i>
+            <div class="content">
+                <div class="header">
+                    Let's start generating apps
+                </div>
+                <p>Select the "my first template" app on the right. A copy will be made for each selected template and published in the stream for that customer</p>
             </div>
-            <ul class="list">
-                <li>See introduction to this app video <a href="{{pathFor 'introduction'}}"> here </a></li>
-                <li>Generate streams and apps via the REST API's of Qlik Sense</li>
-                <li>Select the template and customers for which you want to generate the streams and apps </li>
-                <li>We will create 1 stream per customer </li>
-                <li>A copy will be made for each selected template and published in the stream for that customer </li>
-                <li>(Press control + M to see the local MongoDb database)</li>
-                <!-- <li>Press dummy/delete and some dummy customers will be inserted/deleted</li> -->
-            </ul>
         </div>
     </div>
     <div class="ui segment">
@@ -25,7 +20,6 @@
                 <input type="text" name="text" placeholder="Add new customer" />
             </form>
         </div> -->
-        
         <a class="ui labeled icon button" href="{{pathFor 'users'}}"> <i class="edit icon "></i>1: Insert Customers</a>
         <!-- APP GENERATION BUTTON -->
         <div class="ui buttons">

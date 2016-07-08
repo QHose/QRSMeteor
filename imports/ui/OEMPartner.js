@@ -107,3 +107,13 @@ Template.OEMPartner.events({
             })
     }
 }); //end Meteor events
+
+
+
+Template.OEMPartner.onRendered(function() {
+    console.log('OEMPartner onRendered');
+
+     // Template.instance().$('.ui.page.dimmer').dimmer('show');
+
+  
+})
