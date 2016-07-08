@@ -34,7 +34,7 @@ Template.generation.helpers({
         console.log('client generation helper: get app table, the config used to generate the URLs to Sense: ', config);
         return {
             collection: Apps,
-            rowsPerPage: 10,
+            rowsPerPage: 5,
             showFilter: true,
             showColumnToggles: true,
             // fields: ['customer', 'telephone', 'email', 'status', 'itemCount', 'deliveryDate', 'remarks'],
