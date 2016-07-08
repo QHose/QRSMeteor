@@ -81,22 +81,20 @@
             </div>
         </div>
         <div class="ui very padded segment">
-            <div class="ui vertical stripe segment">
-                <div class="ui middle aligned stackable grid container">
-                    <h3 class="ui header">Flexible attribute based access control</h3>
-                    <div class="row">
-                        <div class="three wide left floated column">
-                            <img class="ui fluid image" src="images/id_big.png">
-                        </div>
-                        <div class="ten wide column">
-                            <h4 class="ui header">Authentication - Single Sign on using tickets (tokens)</h4> We re-use your existing way to authenticate the users. We will insert a little piece of code inside your existing "security module". In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via a SSL certificate exchange). And send this info about the user (userId, group membership) in a JSON object to Sense (we call this ticketing).
-                            <h4 class="ui header">Authorization</h4> Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name. See an introduction video to an OEM security approach with Qlik Sense <a href="{{pathFor 'introductionSecurity'}}"> here </a>
-                        </div>
+            <div class="ui middle aligned stackable grid container">
+                <h3 class="ui header">Flexible attribute based access control</h3>
+                <div class="row">
+                    <div class="three wide left floated column">
+                        <img class="ui fluid image" src="images/id_big.png">
                     </div>
-                    <div class="row">
-                        <div class="center aligned column">
-                            <a href="https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FSecurity%20integration%20Provide%20Single%20Sign%20On%20and%20share%20access%20%7C6cf86403-7d74-4baf-bc32-32158b0d63c1%2F%29" target="_blank" class="ui large button">Read More</a>
-                        </div>
+                    <div class="ten wide column">
+                        <h4 class="ui header">Authentication - Single Sign on using tickets (tokens)</h4> We re-use your existing way to authenticate the users. We will insert a little piece of code inside your existing "security module". In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via a SSL certificate exchange). And send this info about the user (userId, group membership) in a JSON object to Sense (we call this ticketing).
+                        <h4 class="ui header">Authorization</h4> Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name. See an introduction video to an OEM security approach with Qlik Sense <a href="{{pathFor 'introductionSecurity'}}"> here </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="center aligned column">
+                        <a href="https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FSecurity%20integration%20Provide%20Single%20Sign%20On%20and%20share%20access%20%7C6cf86403-7d74-4baf-bc32-32158b0d63c1%2F%29" target="_blank" class="ui large button">Read More</a>
                     </div>
                 </div>
             </div>
