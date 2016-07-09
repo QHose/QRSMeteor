@@ -54,10 +54,14 @@ Meteor.methods({
                 console.log('resetEnvironment for resource', resource);
                 try {
                     Meteor.call('deleteStream', resource.streamId);
-                    Meteor.call('deleteApp', resource.appId);
                 } catch (err) {
                     console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
                 } //don't bother if generated resources do not exists, just continue
+                try {                   
+                    Meteor.call('deleteApp', resource.appId);
+                } catch (err) {
+                    console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
+                } 
             })
         GeneratedResources.remove({});
         TemplateApps.remove({});
