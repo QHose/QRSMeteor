@@ -48,11 +48,6 @@ if (Meteor.isClient) {
             .count();
     });
 
-    Template.registerHelper('readyToGenerate', function() {
-        return Customers.find({})
-            .count() && TemplateApps.find()
-            .count();
-    });
     Template.registerHelper('noTemplateApps', function() {
         return !TemplateApps.find({})
             .count();
@@ -75,14 +70,35 @@ if (Meteor.isClient) {
         return Streams.find();
     });
 
-    Template.registerHelper('readyToTestSSO', function() {
-        return Session.get('generated?');
+    Template.registerHelper('freshEnvironment', function() {
+        return !Customers.find()
+            .count() && !TemplateApps.find()
+            .count()
     });
 
     Template.registerHelper('readyToSelectTemplate', function() {
         return Customers.find()
+            .count() && !TemplateApps.find()
+            .count()
+    });
+
+    Template.registerHelper('templateButNoCustomer', function() {
+        return !Customers.find()
+            .count() && TemplateApps.find()
+            .count()
+    });
+
+    Template.registerHelper('readyToGenerate', function() {
+        return Customers.find({})
+            .count() && TemplateApps.find()
             .count();
     });
+
+    Template.registerHelper('generationFinished', function() {
+        return (Session.equals('loadingIndicator', 'loading') || Session.get('generated?'));
+    });
+
+    Template.registerHelper('readyToTestSSO', function() {
+        return Session.get('generated?');
+    });
 }
-
-

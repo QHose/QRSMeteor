@@ -1,34 +1,61 @@
 <template name='OEMPartner'>
     <div class="ui segment">
         <div class="ui icon message">
-           <img class="icon" src="images/intro.png">
+            <img class="icon" src="images/intro.png">
             <div class="content">
+                {{#if freshEnvironment}}
                 <div class="header">
-                    Let's start generating apps
+                    1: Let's start publising apps for your customers
+                </div>                
+                <p>
+                    First insert some customers in your SaaS platform
+                </p>
+                {{/if}}
+                {{#if  readyToSelectTemplate}}
+                <div class="header">
+                    2: Select a template app
                 </div>
-                <p>Select the "my first template" app on the right. A copy will be made for each selected template and published in the stream for that customer</p>
+                <p>
+                    Select the "my first template" app on the right.
+                </p>
+                {{/if}}
+                {{#if  readyToGenerate}}
+                <div class="header">
+                    3: Start publishing
+                </div>
+                <p>
+                    Press the generate button to publish a copy of the template app in the "customer name" stream
+                </p>
+                {{/if}}
+                {{#if  templateButNoCustomer}}
+                <div class="header">
+                    Customers
+                </div>
+                <p>
+                    You already selected a template, but please re-insert your customers
+                </p>
+                {{/if}}
+                {{#if  readyToTestSSO}}
+                <div class="header">
+                    4: Test Single Sign On
+                </div>
+                <p>
+                    Select a user to test single sign on, including authorizations you have supplied when creating the user (the groups). In the "Customers & Users" menu you can see Qlik Sense embedded via IFrame's and  Div tags in your SaaS platform. If you press any link on this page you will go to Qlik Sense directly. Both options use ticketing to ensure Single Sign On. 
+                </p>
+                {{/if}}
             </div>
         </div>
     </div>
     {{#if readyToTestSSO}}
     <div class="ui segment">
-    
         {{> simulateUserLogin}}
     </div>
     {{/if}}
     <div class="ui segment">
-        <!-- <i class="users icon"></i> -->
-        <!--  <div class="ui left input">
-            <form class="new-customer">
-                <input type="text" name="text" placeholder="Add new customer" />
-            </form>
-        </div> -->
         <a class="ui {{loading}} labeled icon button" href="{{pathFor 'users'}}"> <i class="edit icon "></i>1: Insert Customers</a>
-        <!-- APP GENERATION BUTTON -->
         <div class="ui buttons">
             <div class="ui buttons">
                 <div class="ui {{loading}} button resetEnvironment"><i class="undo icon "></i> Initialize demo</div>
-                <!-- {{#unless loading}} -->
                 <div class="ui floating dropdown icon button">
                     <i class="dropdown icon"></i>
                     <div class="menu">
@@ -37,13 +64,11 @@
                         <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
                     </div>
                 </div>
-        
             </div>
             {{#if readyToGenerate}}
             <div class="or"></div>
             <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i> 3: Generate</div>
             {{/if}}
-
         </div>
         {{#if noCustomers}}
         <div class="ui icon message">
@@ -53,7 +78,7 @@
                     <h4>No customers</h4>
                 </div>
                 <ul>
-                    <li>You have no customers in your shop.</li>
+                    <li>You have no customers in your SaaS platform.</li>
                     <li>Let's <a href="{{pathFor 'users'}}"> insert some customers with users</a>, and after the generation is completed you can also test single sign on </li>
                     <li>Or <a class="insertDummyCustomers"> insert dummy customers</a></li>
                 </ul>
@@ -80,10 +105,7 @@
                 {{#each customers}} {{> customer}} {{/each}}
             </tbody>
         </table>
-
-        {{#if readyToSelectTemplate}}
-
-        {{/if}} {{#if noTemplateApps}}
+        {{#if readyToSelectTemplate}} {{/if}} {{#if noTemplateApps}}
         <div class="ui icon message">
             <img class="icon" src="images/app.png">
             <div class="content">
@@ -119,7 +141,6 @@
                 {{/each}}
             </tbody>
         </table>
-        {{/if}}
-        {{/if}}
+        {{/if}} {{/if}}
     </div>
 </template>
