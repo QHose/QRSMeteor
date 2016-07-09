@@ -49,8 +49,9 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('readyToGenerate', function() {
-        return Customers.find({}).count() &&  TemplateApps.find()
-            .count() ;
+        return Customers.find({})
+            .count() && TemplateApps.find()
+            .count();
     });
     Template.registerHelper('noTemplateApps', function() {
         return !TemplateApps.find({})
@@ -73,4 +74,15 @@ if (Meteor.isClient) {
     Template.registerHelper('streamsCollection', function() {
         return Streams.find();
     });
+
+    Template.registerHelper('readyToTestSSO', function() {
+        return Session.get('generated?');
+    });
+
+    Template.registerHelper('readyToSelectTemplate', function() {
+        return Customers.find()
+            .count();
+    });
 }
+
+

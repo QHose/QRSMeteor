@@ -112,6 +112,8 @@ Template.OEMPartner.events({
 
 Template.OEMPartner.onRendered(function() {
     console.log('OEMPartner onRendered');
+    $('.ui.dropdown')
+  .dropdown()
 
      // Template.instance().$('.ui.page.dimmer').dimmer('show');
 
