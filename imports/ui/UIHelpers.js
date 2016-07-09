@@ -99,6 +99,8 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('readyToTestSSO', function() {
-        return Session.get('generated?');
+        return Session.get('generated?')&&Customers.find()
+            .count() && TemplateApps.find()
+            .count();
     });
 }
