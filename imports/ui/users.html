@@ -54,13 +54,14 @@
                 <fieldset>
                     {{> afQuickField name='name'}} {{> afQuickField name='users'}}
                 </fieldset>
-                <button type="submit" class="ui button">
-                    Insert
-                </button>
+                <div class="ui padded buttons">
+                    <button type="submit" class="ui success button">
+                       <i class="edit icon "></i>  Insert
+                    </button>
+                    <div class="or"></div>
+                    <div class="ui button backToGeneration"><i class="play icon "></i> Back to generation</div>
+                </div>
                 {{/autoForm}}
-                <button class="ui button backToGeneration">
-                    home
-                </button>
             </div>
         </div>
     </div>
