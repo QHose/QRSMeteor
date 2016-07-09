@@ -10,9 +10,12 @@
             </div>
         </div>
     </div>
+    {{#if readyToTestSSO}}
     <div class="ui segment">
+    
         {{> simulateUserLogin}}
     </div>
+    {{/if}}
     <div class="ui segment">
         <!-- <i class="users icon"></i> -->
         <!--  <div class="ui left input">
@@ -20,7 +23,7 @@
                 <input type="text" name="text" placeholder="Add new customer" />
             </form>
         </div> -->
-        <a class="ui labeled icon button" href="{{pathFor 'users'}}"> <i class="edit icon "></i>1: Insert Customers</a>
+        <a class="ui {{loading}} labeled icon button" href="{{pathFor 'users'}}"> <i class="edit icon "></i>1: Insert Customers</a>
         <!-- APP GENERATION BUTTON -->
         <div class="ui buttons">
             <div class="ui buttons">
@@ -51,8 +54,8 @@
                 </div>
                 <ul>
                     <li>You have no customers in your shop.</li>
-                    <li>Let's insert some by hand, in the add new customer box above or <a href="{{pathFor 'users'}}"> here </a> if you also want to test single sign on </li>
-                    <li>Or press the blue arrow, next to the generate button, to insert some dummy customers</li>
+                    <li>Let's <a href="{{pathFor 'users'}}"> insert some customers with users</a>, and after the generation is completed you can also test single sign on </li>
+                    <li>Or <a class="insertDummyCustomers"> insert dummy customers</a></li>
                 </ul>
             </div>
         </div>
@@ -77,6 +80,9 @@
                 {{#each customers}} {{> customer}} {{/each}}
             </tbody>
         </table>
+
+        {{#if readyToSelectTemplate}}
+
         {{/if}} {{#if noTemplateApps}}
         <div class="ui icon message">
             <img class="icon" src="images/app.png">
@@ -84,7 +90,7 @@
                 <div class="header">
                     <h4>No template apps</h4>
                 </div>
-                <p>Please select the Qlik Sense App (on the right) you would like to use as a basis template. We will create a copy and publish it into the "customer name" stream for each of your selected customers</p>
+                <p>Please select an App in the templates stream (on the right) which you would like to use as a basis template. We will create a copy and publish it into the "customer name" stream for each of your selected customers</p>
             </div>
         </div>
         {{else}}
@@ -113,6 +119,7 @@
                 {{/each}}
             </tbody>
         </table>
+        {{/if}}
         {{/if}}
     </div>
 </template>
