@@ -91,7 +91,7 @@ if (Meteor.isClient) {
     Template.registerHelper('readyToGenerate', function() {
         return Customers.find({})
             .count() && TemplateApps.find()
-            .count();
+            .count() && !Session.get('generated?') && !Session.equals('loadingIndicator', 'loading');
     });
 
     Template.registerHelper('generationFinished', function() {

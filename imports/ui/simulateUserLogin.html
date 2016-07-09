@@ -16,7 +16,7 @@
             <div class="header">
                 <h4>Simulate a user login</h4>
             </div>
-            <p> After you selected a user click on any link on the right. And notice the difference in apps and streams visible. We will pass this user and his group membership in a ticket (JSON object) to Qlik Sense and in this way we create a Single Sign on.</p>
+            <p> Try different users and notice the difference in apps and streams visible. If you want to test row level security you can open the "row level security app"  in the "Everyone" Stream. We can create a single sign on experience, because we request a Sense Ticket which includes the user and his group membership. See <a href="{{pathFor 'introductionSecurity'}}" class="item">Security integration video</a> for more information</p>
             <div class="ui selection dropdown">
                 <input id="currentUser" type="hidden">
                 <div class="default text">Select a user</div>

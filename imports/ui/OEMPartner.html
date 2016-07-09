@@ -40,8 +40,14 @@
                     4: Test Single Sign On
                 </div>
                 <p>
-                    Select a user to test single sign on, including authorizations you have supplied when creating the user (the groups). In the "Customers & Users" menu you can see Qlik Sense embedded via IFrame's and  Div tags in your SaaS platform. If you press any link on this page you will go to Qlik Sense directly. Both options use ticketing to ensure Single Sign On. 
+                    Select a user to test single sign on, including authorizations you have supplied when creating the user (the groups). In the "Customers & Users" menu you can see <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Qlik Sense embedded in your SaaS platform</a> via IFrame's and  Div tags. If you press any link on this page you will go to Qlik Sense directly. Both options use ticketing to ensure Single Sign On. 
                 </p>
+                {{/if}}
+                {{#if  loading}}
+                <div class="header">
+                    3: App publishing is in progress...
+                </div>
+                <p>This application is now sending REST API calls to the Qlik Sense QRS and Engine API. You can view the calls and the responses <a href="{{pathFor 'APILogs'}}" class="item">QMC - API Calls menu</a></p>
                 {{/if}}
             </div>
         </div>
