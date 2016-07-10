@@ -7,8 +7,9 @@ import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/conf
 
 Router.route('/sso', function(request, response, next) {
 
-    console.log("Meteor's authentication module qlikAuthSSO.js received the forwarded request from Qlik Sense proxy. Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships");
-    // console.log(request);
+    console.log("Meteor's authentication module qlikAuthSSO.js received the forwarded request from Qlik Sense proxy.");
+    console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
+    
 
     //first find the customers that have a logged in users (mongo returns a complete document)
     var customer = Customers.findOne({ 'users.currentlyLoggedIn': true });

@@ -17,7 +17,7 @@ export function logoutUser(name) {
     console.log('******** QPS Functions: logout the current user: ', name);
 
     if (name) {
-        console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTP call: ', certicate_communication_options);
+        console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTPs call: ');//, certicate_communication_options);
         console.log('Meteor tries to logout the user on this URL: https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/'+senseConfig.virtualProxyClientUsage+'/user/' + senseConfig.UDC + '/' + name);
         try {
             const call = {};
