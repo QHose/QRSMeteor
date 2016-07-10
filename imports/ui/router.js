@@ -22,10 +22,12 @@ Router.route('/APILogs');
 Router.route('/introduction');
 Router.route('/introductionExtended');
 Router.route('/introductionSecurity');
+Router.route('/SecurityDeepDive');
 Router.route('/generation');
 Router.route('/securityRules');
 Router.route('/QMC');
 Router.route('/webIntegration');
+
 
 
 
