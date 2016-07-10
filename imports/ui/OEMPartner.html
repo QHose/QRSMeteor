@@ -5,7 +5,7 @@
             <div class="content">
                 {{#if freshEnvironment}}
                 <div class="header">
-                    1: Let's start publising apps for your customers
+                    1: Let's start publishing apps for your customers
                 </div>                
                 <p>
                     First insert some customers in your SaaS platform
@@ -40,7 +40,7 @@
                     4: Test Single Sign On
                 </div>
                 <p>
-                    Select a user to test single sign on, including authorizations you have supplied when creating the user (the groups). In the "Customers & Users" menu you can see <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Qlik Sense embedded in your SaaS platform</a> via IFrame's and  Div tags. If you press any link on this page you will go to Qlik Sense directly. Both options use ticketing to ensure Single Sign On. 
+                    Select a user to test Single Sign On. For this user a ticket will be generated which inludes your SaaS platform's authorizations (the groups) in a dynamic way. If your system changes the authorizations Sense will update too. In the "Customers & Users" menu you can see <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Qlik Sense embedded in your SaaS platform</a> via IFrame's and DIV tags. If you press any link on this page you will go to Qlik Sense directly. Both options use the ticketing approach. (Watch the URL if you change a user, you will see a ticket request.) 
                 </p>
                 {{/if}}
                 {{#if  loading}}
@@ -104,7 +104,7 @@
                 <tr>
                     <th>Customer</th>
                     <th>Delete customer</th>
-                    <th>Generate Stream</th>
+                    <th>Generate stream</th>
                 </tr>
             </thead>
             <tbody>
@@ -118,7 +118,7 @@
                 <div class="header">
                     <h4>No template apps</h4>
                 </div>
-                <p>Please select an App in the templates stream (on the right) which you would like to use as a basis template. We will create a copy and publish it into the "customer name" stream for each of your selected customers</p>
+                <p>Please select an app in the templates stream (on the right) which you would like to use as a basis template. We will create a copy and publish it into the "customer name" stream for each of your selected customers</p>
             </div>
         </div>
         {{else}}
