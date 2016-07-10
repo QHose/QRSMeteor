@@ -5,9 +5,9 @@ import { APILogs } from '/imports/api/APILogs';
 
 
 Template.introductionSecurity.onRendered(function() {
-    console.log('introductionSecurity onRendered');
+     Template.instance().$('.ui.embed').embed();  
+})
 
-     Template.instance().$('.ui.embed').embed();
-
-  
+Template.SecurityDeepDive.onRendered(function() {
+     Template.instance().$('.ui.embed').embed();  
 })
