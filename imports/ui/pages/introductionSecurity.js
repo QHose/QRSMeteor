@@ -11,3 +11,7 @@ Template.introductionSecurity.onRendered(function() {
 Template.SecurityDeepDive.onRendered(function() {
      Template.instance().$('.ui.embed').embed();  
 })
+
+Template.architecture.onRendered(function() {
+     Template.instance().$('.ui.embed').embed();  
+})
