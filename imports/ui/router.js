@@ -27,7 +27,7 @@ Router.route('/generation');
 Router.route('/securityRules');
 Router.route('/QMC');
 Router.route('/webIntegration');
-
+Router.route('/architecture');
 
 
 

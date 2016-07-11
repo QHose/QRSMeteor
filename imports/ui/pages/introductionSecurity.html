@@ -21,7 +21,6 @@
         </div>
     </div>
 </template>
-
 <template name="SecurityDeepDive">
     <div class="container">
         <div class="ui icon message">
@@ -32,7 +31,7 @@
                 </div>
                 <ul>
                     <li>Authentication: We re-use your existing way to authenticate the users. We will insert a little piece of code inside your existing "security module". In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via a SSL certificate exchange). And send this info about the user (userId, group membership) in a JSON object to Sense (we call this ticketing). </li>
-                    <li>Authorization; Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name. </li>
+                    <li>Authorization; Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton. Allow access to resources if: "User.group = Stream.name". </li>
                 </ul>
                 <p>
                 </p>
@@ -41,6 +40,32 @@
         <div class="ui one column centered grid">
             <div class="column centered">
                 <div class="ui embed" data-url="https://www.youtube.com/embed/Biohf3mWqWQ" data-placeholder="/images/DeepDiveVideoSecurity.png"></div>
+            </div>
+        </div>
+    </div>
+</template>
+<template name="architecture">
+    <div class="container">
+        <div class="ui icon message">
+            <img class="icon" src="images/id.png">
+            <div class="content">
+                <div class="header">
+                    <h4> Qlik Sense architecture and deployment</h4>
+                </div>
+                <p>
+                Qlik Sense Platform consist of different productsd
+                <ul>
+                </ul>
+                <li>Qlik Sense Desktop. Freeware client with a local installation on a pc. Available for a single user </li>
+                <li>Qlik Sense Enterprise Server based variation with additional capabilities such as, but not limited to, governance, security, Self Service BI integrated in a web frontend  </li>
+                <li>Qlik Analytics Platform A variation of Qlik Sense Enterprise designed for embedded solution using a CPU core based license model. More focused to OEM offering OEM=Original equipment manufacturer is a company that makes a part or subsystem that is used in another company's end product. </li>
+                <li>Qlik Cloud Qlik offers a Software as a Service (SaaS) solution both free and a paid subscription model </li>                
+                </p>
+            </div>
+        </div>
+        <div class="ui one column centered grid">
+            <div class="column centered">
+                <div class="ui embed" data-url="https://www.youtube.com/embed/RVeV-H56epg" data-placeholder="/images/DeepDiveVideoSecurity.png"></div>
             </div>
         </div>
     </div>
