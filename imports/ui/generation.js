@@ -132,7 +132,7 @@ Template.generation.helpers({
                     key: 'deleteStream',
                     label: 'Delete',
                     fn: function() {
-                        return new Spacebars.SafeString('<i class="remove circle icon"></i>')
+                        return new Spacebars.SafeString('<i class="remove circle icon markAsTemplate"></i>')
                     }
                 },
             ]
