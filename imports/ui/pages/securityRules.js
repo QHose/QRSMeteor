@@ -24,6 +24,7 @@ Template.securityRules.onRendered(function() {
         if (error) {
             console.error(error);
         } else {
+            console.log('********* onRendered, System rules received from Sense: ',result);
             Session.set('securityRules', result);
         }
     });
