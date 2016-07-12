@@ -14,10 +14,11 @@ import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/conf
 
 export function getSecurityRules() {    
     try {
-        const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/systemrule', {
+        const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/systemrule', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }            
         })
+        console.log('getSecurityRules, meteor received these rules from sense, ', result.data);
         return result.data;
     } catch (err) {
         console.error(err);
