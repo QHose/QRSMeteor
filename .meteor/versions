@@ -11,7 +11,6 @@ aldeed:simple-schema@1.5.3
 allow-deny@1.0.5
 anti:i18n@0.4.3
 aslagle:reactive-table@0.8.32
-astronomerio:core@0.2.20
 autopublish@1.0.7
 autoupdate@1.2.11
 babel-compiler@6.8.4
