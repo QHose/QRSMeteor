@@ -25,7 +25,7 @@
                     </thead>
                     <tbody>
                         {{#each customers}}
-                        <tr>
+                        <tr class="customer-row">
                             <td>
                                 <input type="checkbox" checked="{{checked}}" class="toggle-checked" /> {{name}}
                             </td>
@@ -35,6 +35,16 @@
                     </tbody>
                 </table>
                 {{/if}}
+            </div>
+            <div class="ui segment">
+                {{#autoForm id="afUpdateDemo" type=formType collection=Customers doc=selectedPersonDoc autosave=autoSaveMode}} {{> afQuickField name='name'}} 
+                <fieldset>
+                    {{> afQuickField name='name'}} {{> afQuickField name='users'}}
+                </fieldset> {{#unless autoSaveMode}}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" disabled="{{disableButtons}}">Submit</button>                    
+                </div>
+                {{/unless}} {{/autoForm}}
             </div>
         </div>
         <div class="column">
@@ -56,7 +66,7 @@
                 </fieldset>
                 <div class="ui padded buttons">
                     <button type="submit" class="ui success button">
-                       <i class="edit icon "></i>  Insert
+                        <i class="edit icon "></i> Insert
                     </button>
                     <div class="or"></div>
                     <div class="ui button backToGeneration"><i class="play icon "></i> Back to generation</div>
