@@ -6,19 +6,19 @@
         </a>
         <!-- <div class="right menu"> -->
         <div class="ui simple dropdown item">
-            Customers & Users <i class="dropdown icon"></i>
+            Your SaaS platorm <i class="dropdown icon"></i>
             <div class="menu">
-                <!-- <a class="item" href="{{pathFor 'users'}}">Insert users</a> -->
                 <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Your SaaS platform with Qlik Sense embedded</a>
-                <a class="item" href="{{senseServerHub}}" target="_blank">(Restricted) Qlik Sense Hub using Single Sign On</a>
-                <a class="item" href="{{senseServerQMC}}" target="_blank">(Restricted) Qlik Sense QMC using Single Sign On</a>                
+                <a class="item" href="{{senseServerHub}}" target="_blank">Not integrated, Hub using Single Sign On</a>
+                <a class="item" href="{{senseServerQMC}}" target="_blank">Not integrated, QMC using Single Sign On</a>
+                <a class="item" href="{{pathFor 'users'}}">Manage customers and users</a>
             </div>
         </div>
         <div class="ui simple dropdown item">
-            QMC <i class="dropdown icon"></i>
+            QMC & API <i class="dropdown icon"></i>
             <div class="menu">
                 <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>
-                <a href="{{pathFor 'securityRules'}}" class="item">Rules Engine</a>
+                <a href="{{pathFor 'securityRules'}}" class="item">QMC System rules</a>
                 <!-- <a href="{{pathFor 'QMC'}}" class="item">View QMC (Qlik Management Console)</a> -->
             </div>
         </div>
@@ -31,7 +31,6 @@
                 <a href="{{pathFor 'introductionSecurity'}}" class="item">Introduction to security integration</a>
                 <a href="{{pathFor 'SecurityDeepDive'}}" class="item">Deep dive security integration</a>
                 <a href="{{pathFor 'webIntegration'}}" class="item">Web integration</a>
-
                 <a href="http://www.youtube.com/playlist?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel" class="item">YouTube video playlist</a>
             </div>
         </div>

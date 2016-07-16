@@ -48,7 +48,12 @@ Meteor.startup(function() {
 
 Meteor.methods({
     resetEnvironment() {
-        console.log('resetEnvironment method');
+        Meteor.call('removeGeneratedResources');
+        TemplateApps.remove({});
+        Customers.remove({});
+    },
+    removeGeneratedResources(){
+        console.log('remove GeneratedResources method, before we make new ones');
         GeneratedResources.find()
             .forEach(function(resource) {
                 console.log('resetEnvironment for resource', resource);
@@ -64,8 +69,6 @@ Meteor.methods({
                 } 
             })
         GeneratedResources.remove({});
-        TemplateApps.remove({});
-        Customers.remove({});
     },
     resetLoggedInUser() {
         console.log("***Method resetLoggedInUsers");
@@ -104,7 +107,8 @@ Meteor.methods({
     generateStreamAndApp(customers) {
         console.log('generateStreamAndApp');
         check(customers, Array);
-        return QSApp.generateStreamAndApp(customers);
+        Meteor.call('removeGeneratedResources'); //first clean the environment
+        return QSApp.generateStreamAndApp(customers); //then, create the new stuff
 
     },
     copyApp(guid, name) {
