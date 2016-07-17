@@ -6,6 +6,14 @@ Router.configure({
   notFoundTemplate: 'notFound'
 });
 
+AccountsTemplates.configure({
+    defaultLayout: 'layout',
+});
+
+Router.plugin('ensureSignedIn', {
+    only: ['generation', 'users']
+});
+
 Router.route('/', function () {
   this.render('introduction');
 });
