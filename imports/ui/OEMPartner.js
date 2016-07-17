@@ -19,7 +19,7 @@ Template.OEMPartner.helpers({
             .count();
     },
     linkToApp() {
-        return 'http://' + config.host + '/sense/app/' + this.id
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/sense/app/' + this.id
     }
 });
 

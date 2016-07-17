@@ -3,3 +3,8 @@
 .container {
     margin-top: 4em;
   }
+
+	/* Define the hover highlight color for the table row */
+    tr:hover {
+          background-color: #C0D535;
+    }
