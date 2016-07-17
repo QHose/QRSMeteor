@@ -3,18 +3,21 @@
         <div class="column">
             <div class="ui segment">
                 {{#if noCustomers}}
-                <div class="ui message">
-                    <div class="header">
-                        No customers
+                <div class="ui icon message">
+                    <!-- <img class="icon" src="images/customers.png"> -->
+                    <div class="content">
+                        <div class="header">
+                            <h4>No customers</h4>
+                        </div>
+                        <p>Please enter some customers on the right.</p>
                     </div>
-                    <p>Please enter some customers on the right</p>
                 </div>
                 {{else}}
                 <div class="ui message">
                     <div class="header">
-                        Our fictive customers
+                        Your customers
                     </div>
-                    <p>Below you will find the customers you have entered in the local Mongo Database. Using this list we can create streams, apps, tags or whatever we like in Qlik Sense via the Qlik Sense repository API and the Engine API</p>
+                    <p>Below you will find the customers you have entered in the local Mongo Database of your SaaS plaform. Based on "this table" we can create streams, apps, tags or whatever we like in Qlik Sense via the Qlik Sense repository and the Engine API. Press a customer name to update.</p>
                 </div>
                 <table class="ui celled striped table">
                     <thead>
@@ -25,39 +28,48 @@
                     </thead>
                     <tbody>
                         {{#each customers}}
-                        <tr class="customer-row">
-                            <td>
-                                <input type="checkbox" checked="{{checked}}" class="toggle-checked" /> {{name}}
+                        <tr class="customer-row {{active}}">
+                            <td class="{{ribbon}}">
+                                {{name}}
                             </td>
                             <td class='delete'><i class="remove circle icon"></i></td>
                         </tr>
                         {{/each}}
                     </tbody>
                 </table>
-                {{/if}}
-            </div>
-            <div class="ui segment">
-                {{#autoForm id="afUpdateDemo" type=formType collection=Customers doc=selectedPersonDoc autosave=autoSaveMode}} {{> afQuickField name='name'}} 
-                <fieldset>
-                    {{> afQuickField name='name'}} {{> afQuickField name='users'}}
-                </fieldset> {{#unless autoSaveMode}}
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary" disabled="{{disableButtons}}">Submit</button>                    
+
+                {{#unless disableButtons}}
+                <div class="ui message">
+                    <div class="header">
+                        Update
+                    </div>
+                    <p>Please update any value you like below.</p>
                 </div>
-                {{/unless}} {{/autoForm}}
+                <div class="ui">
+                    {{#autoForm id="afUpdateDemo" type=formType collection=Customers doc=selectedCustomerDoc autosave=autoSaveMode}} 
+                    {{> afQuickField name='name'}}
+                    <fieldset>
+                         {{> afQuickField name='users'}}
+                    </fieldset>                     
+                    {{/autoForm}}
+                </div>
+                {{/unless}}
+                {{/if}}
+
             </div>
         </div>
+
         <div class="column">
             <div class="ui segment">
                 <div class="ui icon message">
                     <img class="icon" src="images/customers.png">
                     <div class="content">
                         <div class="header">
-                            Insert a new customer in the local database of our SaaS platform
+                            Insert a new customer
                         </div>
                         <li>Please enter a new customer for our SaaS platform </li>
-                        <li>Maybe you also want to add some users so we can test the Single Sign on into to Qlik Sense </li>
-                        <li>You can always see all active databases by pressing "Control-M" </li>
+                        <li>This information is only stored in this demo platform (MongoDB). There is no need to create these customers and users in Qlik Sense.</li>
+                        <li>Maybe you also want to add some users so we can test the Single Sign on into to Qlik Sense </li>                        
                     </div>
                 </div>
                 {{#autoForm collection=Customers id="insertCustomerForm" type="insert"}}

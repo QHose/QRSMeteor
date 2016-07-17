@@ -18,10 +18,10 @@ Template.users.helpers({
         //return Session.get("autoSaveMode") ? true : false;
         return true;
     },
-    selectedPersonDoc: function() {
+    selectedCustomerDoc: function() {
         return Customers.findOne(Session.get("selectedCustomer"));
     },
-    isSelectedPerson: function() {
+    isSelectedCustomer: function() {
         return Session.equals("selectedCustomer", this._id);
     },
     formType: function() {
@@ -33,13 +33,25 @@ Template.users.helpers({
     },
     disableButtons: function() {
         return !Session.get("selectedCustomer");
-    }
+    },
+    ribbon: function() {
+        return  Session.equals("selectedCustomer", this._id)? "ui ribbon label":'';
+    },
+    active: function() {
+        return  Session.equals("activeCustomer", this._id)? "active":'';
+    },
 });
 
 
 Template.users.events({
+    '.customer-row' (event, template) {
+        console.log('mouseenter event user table');
+        // var row = event.currentTarget;
+        Session.set("activeCustomer", this._id);
+    },
     'click .delete' () {
         Customers.remove(this._id);
+        Session.set("selectedCustomer", '');
     },
     'click .backToGeneration' () {
         Router.go('generation');
