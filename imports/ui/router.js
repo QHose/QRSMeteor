@@ -28,12 +28,12 @@ Router.route('/', function () {
   this.render('introduction');
 });
 
-Router.route('/SSOClient', function(){
-	console.log('router: the request is: '+ req);
-	var req = this.request;
-	console.log(this);
+// Router.route('/SSOClient', function(){
+// 	console.log('router: the request is: '+ req);
+// 	var req = this.request;
+// 	console.log(this);
 
-});
+// });
 
 Router.route('/users');
 Router.route('/homeAbout');
