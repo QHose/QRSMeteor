@@ -32,7 +32,6 @@ fortawesome:fontawesome
 twbs:bootstrap
 aldeed:collection2
 iron:router
-accounts-ui
 accounts-password
 meteorhacks:picker
 fabienb4:autoform-semantic-ui
