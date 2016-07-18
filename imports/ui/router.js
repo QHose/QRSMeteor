@@ -10,6 +10,16 @@ AccountsTemplates.configure({
     defaultLayout: 'layout',
 });
 
+// AccountsTemplates.configureRoute('signIn');
+// AccountsTemplates.configureRoute('changePwd');
+// AccountsTemplates.configureRoute('enrollAccount');
+// AccountsTemplates.configureRoute('forgotPwd');
+// AccountsTemplates.configureRoute('resetPwd');
+// AccountsTemplates.configureRoute('signIn');
+// AccountsTemplates.configureRoute('signUp');
+
+
+
 Router.plugin('ensureSignedIn', {
     only: ['generation', 'users']
 });
@@ -24,6 +34,7 @@ Router.route('/SSOClient', function(){
 	console.log(this);
 
 });
+
 Router.route('/users');
 Router.route('/homeAbout');
 Router.route('/APILogs');

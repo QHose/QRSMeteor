@@ -24,7 +24,7 @@ Meteor.startup(function() {
 
     console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
     console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
-    console.log('***************** The notification URL for Streams is: ' + Meteor.settings.public.notificationURL + '/streams');
+    console.log('********* The notification URL for Streams is: ' + Meteor.settings.public.notificationURL + '/streams');
     try {
         const resultApp = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
             headers: authHeaders,
