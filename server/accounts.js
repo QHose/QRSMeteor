@@ -7,6 +7,5 @@ Accounts.onCreateUser(function (options, user) {
         user.roles = ['admin'];
     }
 
-
     return user;
 });
