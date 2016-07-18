@@ -65,3 +65,9 @@ Template.users.events({
     }
 
 });
+
+Template.users.onRendered(function() {
+  AutoForm.setDefaultTemplate("semanticUI");
+})
+
+
