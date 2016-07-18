@@ -5,7 +5,6 @@ Accounts.ui.config({
 });
 
 AdminConfig = {
-    adminEmails: ['bieshose@gmail.com'],
     collections: {
         Users: {},
         Apps: {},

@@ -41,8 +41,8 @@ import lodash from 'lodash';
 _ = lodash;
 
 
-Meteor.startup(function () {
-// console.log('configure sAlert, the popup messaging service');
+Meteor.startup(function() {
+    // console.log('configure sAlert, the popup messaging service');
     sAlert.config({
         effect: 'genie',
         // position: 'top',
@@ -52,11 +52,13 @@ Meteor.startup(function () {
         stack: true,
         offset: 0, // in px - will be added to first alert (bottom or top - depends of the position in config)
         beep: false,
-        
+
         onClose: _.noop //
-        
+
     });
 
-      AutoForm.setDefaultTemplate("semanticUI");
+      
+    AutoForm.setDefaultTemplate("semanticUI");
+    
 
 });
