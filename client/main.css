@@ -3,3 +3,7 @@
 .container {
     margin-top: 4em;
   }
+
+.ui.grid {
+    margin-top: 0.2em;
+  }

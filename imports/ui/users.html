@@ -37,28 +37,28 @@
                         {{/each}}
                     </tbody>
                 </table>
-
                 {{#unless disableButtons}}
-                <div class="ui message">
-                    <div class="header">
-                        Update
-                    </div>
-                    <p>Please update any value you like below.</p>
-                </div>
+                <h4 class="ui horizontal divider header">
+  <i class="tag icon"></i>
+  Update
+</h4>
+        <!-- <div class="ui message">
+    <div class="header">
+        Update
+    </div>
+    <p>Please update any value you like below.</p>
+</div>
+ -->
                 <div class="ui">
-                    {{#autoForm id="afUpdateDemo" type=formType collection=Customers doc=selectedCustomerDoc autosave=autoSaveMode}} 
-                    {{> afQuickField name='name'}}
+                    {{#autoForm id="afUpdateDemo" type=formType collection=Customers doc=selectedCustomerDoc autosave=autoSaveMode}} {{> afQuickField name='name'}}
                     <fieldset>
-                         {{> afQuickField name='users'}}
-                    </fieldset>                     
+                        {{> afQuickField name='users'}}
+                    </fieldset>
                     {{/autoForm}}
                 </div>
-                {{/unless}}
-                {{/if}}
-
+                {{/unless}} {{/if}}
             </div>
         </div>
-
         <div class="column">
             <div class="ui segment">
                 <div class="ui icon message">
@@ -67,9 +67,9 @@
                         <div class="header">
                             Insert a new customer
                         </div>
-                        <li>Please enter a new customer for our SaaS platform </li>
-                        <li>This information is only stored in this demo platform (MongoDB). There is no need to create these customers and users in Qlik Sense.</li>
-                        <li>Maybe you also want to add some users so we can test the Single Sign on into to Qlik Sense </li>                        
+                        <li>Please enter a new customer and users for your SaaS platform </li>
+                        <li>Or <a class="insertDummyCustomers"> insert some dummy customers. If you use these you can also test the row level security. </a></li>
+                        <li>This information is only stored in this demo platform (MongoDB). There is no need to create these customers and users in Qlik Sense. We make use of a dynamic user directory connector (UDC), if the user and groups do not yet exist Qlik Sense creates the user on the fly.</li>                        
                     </div>
                 </div>
                 {{#autoForm collection=Customers id="insertCustomerForm" type="insert"}}

@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
-import { senseConfig as config } from '/imports/api/config.js';
+import { senseConfig } from '/imports/api/config.js';
 import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps.js'
 import { Customers, dummyCustomers } from '../api/customers.js';
 import { Streams } from '/imports/api/streams.js'
@@ -19,7 +19,7 @@ Template.OEMPartner.helpers({
             .count();
     },
     linkToApp() {
-        return 'http://' + config.host + '/sense/app/' + this.id
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/sense/app/' + this.id
     }
 });
 

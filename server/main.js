@@ -21,10 +21,9 @@ var fs = require('fs');
 var qsocks = require('qsocks');
 
 Meteor.startup(function() {
-
     console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
     console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
-    console.log('***************** The notification URL for Streams is: ' + Meteor.settings.public.notificationURL + '/streams');
+    console.log('********* The notification URL for Streams is: ' + Meteor.settings.public.notificationURL + '/streams');
     try {
         const resultApp = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
             headers: authHeaders,
@@ -41,7 +40,7 @@ Meteor.startup(function() {
         console.log('the result from sense register App notification was: ', resultApp);
         console.log('the result from sense register Stream notification was: ', resultStream);
     } catch (err) {
-        console.error('Create notification subscription in sense qrs failed',err);
+        console.error('Create notification subscription in sense qrs failed', err);
         // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
     }
 });
@@ -52,7 +51,7 @@ Meteor.methods({
         TemplateApps.remove({});
         Customers.remove({});
     },
-    removeGeneratedResources(){
+    removeGeneratedResources() {
         console.log('remove GeneratedResources method, before we make new ones');
         GeneratedResources.find()
             .forEach(function(resource) {
@@ -62,11 +61,11 @@ Meteor.methods({
                 } catch (err) {
                     console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
                 } //don't bother if generated resources do not exists, just continue
-                try {                   
+                try {
                     Meteor.call('deleteApp', resource.appId);
                 } catch (err) {
                     console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
-                } 
+                }
             })
         GeneratedResources.remove({});
     },
@@ -246,3 +245,5 @@ Meteor.methods({
 //     // return result;
 
 // },
+
+

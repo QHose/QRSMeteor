@@ -38,3 +38,11 @@ meteorhacks:picker
 fabienb4:autoform-semantic-ui
 semantic:ui-css
 aldeed:autoform
+useraccounts:semantic-ui
+accounts-facebook
+accounts-google
+useraccounts:iron-routing
+alanning:roles
+service-configuration
+yogiben:admin
+dburles:collection-helpers
