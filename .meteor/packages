@@ -32,7 +32,6 @@ fortawesome:fontawesome
 twbs:bootstrap
 aldeed:collection2
 iron:router
-accounts-password
 meteorhacks:picker
 fabienb4:autoform-semantic-ui
 semantic:ui-css
@@ -46,3 +45,4 @@ dburles:collection-helpers
 accounts-ui
 useraccounts:iron-routing
 useraccounts:semantic-ui
+accounts-password

@@ -14,6 +14,7 @@ import qlikauth from 'qlik-auth';
 //import config for Qlik Sense QRS and Engine API
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config';
 import '/imports/server/qlikAuthSSO.js';
+import '/imports/startup/accounts-config.js';
 
 
 //install NPM modules

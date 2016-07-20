@@ -66,7 +66,7 @@ Meteor.startup(function() {
 //Facebook sync
  window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1159455147433477',
+      appId      : Meteor.settings.public.facebook.clientId,
       xfbml      : true,
       version    : 'v2.7'
     });
