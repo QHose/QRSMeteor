@@ -19,18 +19,18 @@ if (Meteor.isServer) {
     import fs from 'fs';
 
     var _senseConfig = {
-        "host": Meteor.settings.public.host,
-        "SenseServerInternalLanIP": Meteor.settings.public.SenseServerInternalLanIP,
-        "port": Meteor.settings.public.port,
-        "useSSL": Meteor.settings.public.useSSL,
+        "host": Meteor.settings.private.host,
+        "SenseServerInternalLanIP": Meteor.settings.private.SenseServerInternalLanIP,
+        "port": Meteor.settings.private.port,
+        "useSSL": Meteor.settings.private.useSSL,
         "xrfkey": generateXrfkey(),
-        "authentication": Meteor.settings.public.authentication,
-        "virtualProxy": Meteor.settings.public.virtualProxy, //used to connect via REST to Sense, we authenticate via a http header. not for production!!!
-        "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
-        "headerKey": Meteor.settings.public.headerKey,
-        "headerValue": Meteor.settings.public.headerValue,
-        "isSecure": Meteor.settings.public.isSecure,
-        "UDC": Meteor.settings.public.UDC
+        "authentication": Meteor.settings.private.authentication,
+        "virtualProxy": Meteor.settings.private.virtualProxy, //used to connect via REST to Sense, we authenticate via a http header. not for production!!!
+        "virtualProxyClientUsage": Meteor.settings.private.virtualProxyClientUsage,
+        "headerKey": Meteor.settings.private.headerKey,
+        "headerValue": Meteor.settings.private.headerValue,
+        "isSecure": Meteor.settings.private.isSecure,
+        "UDC": Meteor.settings.private.UDC
     };
 
     if (!_senseConfig.host) {
@@ -56,7 +56,7 @@ if (Meteor.isServer) {
         hostname: _senseConfig.SenseServerInternalLanIP,
         headers: {
             'x-qlik-xrfkey': _senseConfig.xrfkey,
-            'X-Qlik-User': Meteor.settings.public.engineHeaders,
+            'X-Qlik-User': Meteor.settings.private.engineHeaders,
             'Content-Type': 'application/json'
         },
         key: _certs.key,
@@ -76,14 +76,14 @@ if (Meteor.isServer) {
     var _engineConfig = {
         host: _senseConfig.host,
         isSecure: _senseConfig.isSecure,
-        port: Meteor.settings.public.enginePort,
+        port: Meteor.settings.private.enginePort,
         headers: {
-            'X-Qlik-User': Meteor.settings.public.engineHeaders,
+            'X-Qlik-User': Meteor.settings.private.engineHeaders,
         },
         key: _certs.key,
         cert: _certs.cert,
         ca: _certs.ca,
-        passphrase: Meteor.settings.public.passphrase,
+        passphrase: Meteor.settings.private.passphrase,
         rejectUnauthorized: false // Don't reject self-signed certs
     };
 }

@@ -3,6 +3,8 @@ import { Meteor } from 'meteor/meteor';
 
 import './layout.html';
 import './checkConfig.html';
+import '/imports/ui/nav.html';
+import '/imports/ui/nav.js';
 
 Template.layout.helpers({
     NoSenseConnection() {

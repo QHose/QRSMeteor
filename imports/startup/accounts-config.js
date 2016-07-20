@@ -1,14 +1,17 @@
 import { Accounts } from 'meteor/accounts-base';
 
-Accounts.ui.config({
-    passwordSignupFields: 'USERNAME_ONLY',
-});
+// Accounts.ui.config({
+//     passwordSignupFields: 'USERNAME_ONLY',
+// });
 
-AdminConfig = {
-    collections: {
-        Users: {},
-        Apps: {},
-        Streams: {},
-        GeneratedResources: {}
-    }
-}
+
+
+// AdminConfig = {
+//     collections: {
+//         users: {},
+//         apps: {},
+//         streams: {},
+//         generatedResources: {}
+//     }
+// }
+

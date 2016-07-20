@@ -23,18 +23,18 @@ var qsocks = require('qsocks');
 Meteor.startup(function() {
     console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
     console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
-    console.log('********* The notification URL for Streams is: ' + Meteor.settings.public.notificationURL + '/streams');
+    console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');
     try {
         const resultApp = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
-            data: Meteor.settings.public.notificationURL + '/apps'
+            data: Meteor.settings.private.notificationURL + '/apps'
         })
 
         const resultStream = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
-            data: Meteor.settings.public.notificationURL + '/streams'
+            data: Meteor.settings.private.notificationURL + '/streams'
         })
 
         console.log('the result from sense register App notification was: ', resultApp);
@@ -245,15 +245,3 @@ Meteor.methods({
 //     // return result;
 
 // },
-
-
-// first, remove configuration entry in case service is already configured
-ServiceConfiguration.configurations.remove({
-  service: "google"
-});
-ServiceConfiguration.configurations.insert({
-  service: "google",
-  clientId: "411682799732-r38hgfr9nlh0c0udigt4ln23ma8db93k.apps.googleusercontent.com",
-  loginStyle: "popup",
-  secret: "YCP43OPc_-tGlVqvj-o-hbu1"
-});

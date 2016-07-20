@@ -9,3 +9,35 @@ Accounts.onCreateUser(function (options, user) {
 
     return user;
 });
+
+ServiceConfiguration.configurations.upsert({
+  service: "facebook"
+}, {
+  $set: {
+    clientId: Meteor.settings.private.facebook.clientId,
+    loginStyle: "popup",
+    secret: Meteor.settings.private.facebook.secret
+  }
+});
+
+ServiceConfiguration.configurations.upsert({
+  service: "google"
+}, {
+  $set: {
+    clientId: Meteor.settings.private.google.clientId,
+    loginStyle: "popup",
+    secret: Meteor.settings.private.google.secret
+  }
+});
+
+
+// // first, remove configuration entry in case service is already configured
+// ServiceConfiguration.configurations.remove({
+//   service: "google"
+// });
+// ServiceConfiguration.configurations.insert({
+//   service: "google",
+//   clientId: "411682799732-r38hgfr9nlh0c0udigt4ln23ma8db93k.apps.googleusercontent.com",
+//   loginStyle: "popup",
+//   secret: "YCP43OPc_-tGlVqvj-o-hbu1"
+// });
