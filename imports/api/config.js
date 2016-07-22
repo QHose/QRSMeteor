@@ -46,8 +46,8 @@ if (Meteor.isServer) {
     export const _certs = {
         // server_key: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/server_key.pem'),
         // server_cert: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/server.pem'),
-        key: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/client_key.pem'),
-        cert: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/client.pem'),
+        key: fs.readFileSync(Meteor.settings.private.certificatesDirectory+'/client_key.pem'),
+        cert: fs.readFileSync(Meteor.settings.private.certificatesDirectory+'/client.pem'),
         // ca: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/root.pem')
     }
 
@@ -74,7 +74,7 @@ if (Meteor.isServer) {
 
 
     var _engineConfig = {
-        host: _senseConfig.host,
+        host: _senseConfig.SenseServerInternalLanIP,
         isSecure: _senseConfig.isSecure,
         port: Meteor.settings.private.enginePort,
         headers: {
@@ -82,7 +82,7 @@ if (Meteor.isServer) {
         },
         key: _certs.key,
         cert: _certs.cert,
-        ca: _certs.ca,
+        // ca: _certs.ca,
         passphrase: Meteor.settings.private.passphrase,
         rejectUnauthorized: false // Don't reject self-signed certs
     };
