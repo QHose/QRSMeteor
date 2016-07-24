@@ -3,8 +3,6 @@ accounts-facebook@1.0.10
 accounts-google@1.0.10
 accounts-oauth@1.1.13
 accounts-password@1.1.13
-accounts-ui@1.1.9
-accounts-ui-unstyled@1.1.12
 alanning:roles@1.2.15
 aldeed:autoform@5.8.1
 aldeed:collection2@2.9.1

@@ -14,7 +14,7 @@ ServiceConfiguration.configurations.upsert({
   service: "facebook"
 }, {
   $set: {
-    clientId: Meteor.settings.private.facebook.clientId,
+    appId : Meteor.settings.private.facebook.clientId,
     loginStyle: "popup",
     secret: Meteor.settings.private.facebook.secret
   }

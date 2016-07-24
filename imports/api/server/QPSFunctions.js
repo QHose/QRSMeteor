@@ -11,10 +11,12 @@ _ = lodash;
 /*
 When communicating with the QPS APIs, the URL is as follows:
 https://<QPS machine name>:4243/<path>
+
+Each proxy has its own session cookie, so you have to logout the users per proxy used.
 */
 
 export function logoutUser(name) {
-    console.log('******** QPS Functions: logout the current user: ', name);
+    console.log('******** QPS Functions: logout the current: '+ name+ ' on proxy: '+senseConfig.virtualProxyClientUsage);
 
     if (name) {
         console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTPs call: ');//, certicate_communication_options);
