@@ -539,23 +539,23 @@
 			"file": "server/accounts.js",
 			"settings":
 			{
-				"buffer_size": 1150,
+				"buffer_size": 1148,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "client/main.js",
+			"file": "imports/api/server/QPSFunctions.js",
 			"settings":
 			{
-				"buffer_size": 2437,
+				"buffer_size": 2014,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "server/main.js",
+			"file": "imports/ui/nav.html",
 			"settings":
 			{
-				"buffer_size": 10030,
+				"buffer_size": 8410,
 				"line_ending": "Windows"
 			}
 		},
@@ -563,7 +563,7 @@
 			"file": "imports/api/config.js",
 			"settings":
 			{
-				"buffer_size": 4096,
+				"buffer_size": 4095,
 				"line_ending": "Windows"
 			}
 		},
@@ -571,7 +571,7 @@
 			"file": "settings-development.json",
 			"settings":
 			{
-				"buffer_size": 1266,
+				"buffer_size": 1285,
 				"line_ending": "Windows"
 			}
 		}
@@ -634,14 +634,15 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/startup",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
+		"/C/Users/Qlik/Documents/QRSMeteor (2)/QRSMeteor",
+		"/C/Users/Qlik/Documents/QRSMeteor (2)/QRSMeteor/imports",
+		"/C/Users/Qlik/Documents/QRSMeteor (2)/QRSMeteor/imports/api",
+		"/C/Users/Qlik/Documents/QRSMeteor (2)/QRSMeteor/imports/api/server",
+		"/C/Users/Qlik/Documents/QRSMeteor (2)/QRSMeteor/imports/ui"
 	],
 	"file_history":
 	[
+		"/C/Users/Qlik/Documents/QRSMeteor (2)/QRSMeteor/client/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js",
@@ -768,8 +769,7 @@
 		"/C/Meteor projects/slager 10dec/server/cartMethods.js",
 		"/C/Meteor projects/slager 10dec/client/templates/app/Order/show.js",
 		"/C/Meteor projects/slager 10dec/lib/main.js",
-		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/ordersByPickUpDay.js",
-		"/C/Meteor projects/slager 10dec/client/lib/vizualizations/pivotReport.html"
+		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/ordersByPickUpDay.js"
 	],
 	"find":
 	{
@@ -1031,7 +1031,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -1077,13 +1077,15 @@
 						"selection":
 						[
 							[
-								285,
-								285
+								226,
+								226
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1098,20 +1100,22 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1150,
+						"buffer_size": 1148,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								623,
-								631
+								406,
+								406
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1122,49 +1126,19 @@
 				},
 				{
 					"buffer": 3,
-					"file": "client/main.js",
+					"file": "imports/api/server/QPSFunctions.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2437,
+						"buffer_size": 2014,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2076,
-								2022
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1151.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "server/main.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 10030,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								664,
+								687
 							]
 						],
 						"settings":
@@ -1174,10 +1148,40 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2075.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "imports/ui/nav.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8410,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8315,
+								8347
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1479.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1186,15 +1190,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4096,
+						"buffer_size": 4095,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3487,
-								3487
+								1275,
+								1275
 							]
 						],
 						"settings":
@@ -1204,27 +1208,33 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1023.0,
+						"translation.y": 3.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 1,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
 				{
 					"buffer": 6,
 					"file": "settings-development.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1266,
+						"buffer_size": 1285,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								493,
-								493
+								326,
+								326
 							]
 						],
 						"settings":
@@ -1237,7 +1247,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1260,11 +1270,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1306,7 +1323,7 @@
 		[
 			[
 				"",
-				"C:\\Users\\MBJ\\Documents\\GitHub\\senseWebIntegration\\Sense3.sublime-project"
+				"C:\\Users\\Qlik\\Meteor projects\\Sense3\\Sense3.sublime-project"
 			]
 		],
 		"width": 570.0
@@ -1320,7 +1337,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

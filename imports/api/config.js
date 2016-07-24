@@ -26,7 +26,7 @@ if (Meteor.isServer) {
         "xrfkey": generateXrfkey(),
         "authentication": Meteor.settings.private.authentication,
         "virtualProxy": Meteor.settings.private.virtualProxy, //used to connect via REST to Sense, we authenticate via a http header. not for production!!!
-        "virtualProxyClientUsage": Meteor.settings.private.virtualProxyClientUsage,
+        "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "headerKey": Meteor.settings.private.headerKey,
         "headerValue": Meteor.settings.private.headerValue,
         "isSecure": Meteor.settings.private.isSecure,
