@@ -39,7 +39,7 @@ meteor-base             # Packages every Meteor app needs to have
 meteorhacks:picker
 mobile-experience       # Packages for a great mobile UX
 mongo                   # The database Meteor supports right now
-msavin:mongol
+msavin:mongol 			# lets you see the mongoDB in the client interface
 reactive-var            # Reactive variable for tracker
 semantic:ui
 semantic:ui-css

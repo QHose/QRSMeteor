@@ -1,6 +1,6 @@
 <template name="layout">
     <!-- Navigation bar -->
-    {{> nav}}
+    {{> yield region='nav'}}
     <div class="ui grid">
         <div class="one wide column">
         </div>
@@ -10,8 +10,24 @@
         <div class="one wide column">
         </div>
     </div>
-    <div class="ui inverted section divider"></div>
+    {{> yield region='footer'}}
+    
+</template>
+
+
+<template name="footer">
+  <div id="footer" class="ui footer page one column grid">
+    <div class="column">
+      <div class="ui divider"></div>
+      <div>
+        <i class="copyright icon"></i> Martijn Biesbroek & Raymond Neves
+      </div>
+    </div>
+  </div>
+</template>
+<!-- 
+
+<div class="ui inverted section divider"></div>
     <div class="ui sticky stickyBottom">
         <i class="copyright icon"></i> Martijn Biesbroek & Raymond Neves
-    </div>
-</template>
+    </div> -->

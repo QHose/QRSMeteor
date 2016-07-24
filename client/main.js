@@ -1,11 +1,10 @@
-import '../imports/ui/generation.js';
+import '/imports/ui/generation.js';
 import '/imports/ui/UIHelpers';
 import '/imports/ui/customer.js';
-import '/imports/ui/router.js';
-import '/imports/ui/OEMPartner.js';
-import '/imports/ui/steps.js';
 import '/imports/ui/layout.html';
 import '/imports/ui/layout.js';
+import '/imports/ui/OEMPartner.js';
+import '/imports/ui/steps.js';
 import '/imports/ui/pages/introduction.html';
 import '/imports/ui/pages/introduction.js';
 import '/imports/ui/pages/webIntegration.html';
