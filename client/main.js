@@ -17,6 +17,7 @@ import '/imports/ui/pages/homeAbout.css';
 import '/imports/ui/pages/QMC.html';
 import '/imports/ui/notFound.html'; 
 import '/imports/ui/security_templates.html';
+import '/imports/ui/security_templates.js';
 import '/imports/ui/users.html';
 import '/imports/ui/users.js';
 import '/imports/ui/pages/APILogs.html';
