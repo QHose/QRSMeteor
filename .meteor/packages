@@ -52,3 +52,5 @@ twbs:bootstrap
 yogiben:admin  				#Admin interface
 zimme:active-route
 alanning:roles  			#authorization roles
+accounts-password
+accounts-ui
