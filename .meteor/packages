@@ -12,8 +12,6 @@
 # Meteor packages used by this project, one per line.
 accounts-facebook
 accounts-google
-useraccounts:iron-routing 	# router add on for authenticated routes
-useraccounts:semantic-ui 	# Semantic ui login interface
 service-configuration
 
 aldeed:autoform
