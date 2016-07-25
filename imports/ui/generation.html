@@ -1,4 +1,5 @@
 <template name='generation'>
+    <!-- {{#if currentUser}} -->
     <div class="row" style="margin-bottom: 1em; margin-top: 1em;">
         <div class="left floated ui column">
             {{> steps}}
@@ -32,4 +33,8 @@
             </div>
         </div>
     </div>
+    <!-- {{else}}
+        <li><a href="{{pathFor route='register'}}">Register</a></li>
+        <li><a href="{{pathFor route='login'}}">Login</a></li>
+    {{/if}} -->
 </template>

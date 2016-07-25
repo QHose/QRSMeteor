@@ -10,11 +10,12 @@
 # but you can also edit it by hand.
 # Check this file (and the other files in this directory) into your repository.
 # Meteor packages used by this project, one per line.
+accounts-password
 accounts-facebook
 accounts-google
-useraccounts:iron-routing 	# router add on for authenticated routes
-useraccounts:semantic-ui 	# Semantic ui login interface
 service-configuration
+useraccounts:iron-routing
+useraccounts:semantic-ui
 
 aldeed:autoform
 aldeed:collection2
@@ -52,5 +53,5 @@ twbs:bootstrap
 yogiben:admin  				#Admin interface
 zimme:active-route
 alanning:roles  			#authorization roles
-accounts-password
-accounts-ui
+
+

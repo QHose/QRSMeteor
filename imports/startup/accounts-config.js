@@ -1,5 +1,5 @@
-import { Accounts } from 'meteor/accounts-base';
-
+// import { Accounts } from 'meteor/accounts-base';
+ 
 AccountsTemplates.configure({
     // Behavior
     confirmPassword: false,
@@ -25,9 +25,9 @@ AccountsTemplates.configure({
     positiveFeedback: true,
     showValidating: true,
 
-    // Privacy Policy and Terms of Use
-    privacyUrl: 'privacy',
-    termsUrl: 'terms-of-use',
+    // // Privacy Policy and Terms of Use
+    // privacyUrl: 'privacy',
+    // termsUrl: 'terms-of-use',
 
     // Redirects
     homeRoutePath: '/',
@@ -54,31 +54,9 @@ AccountsTemplates.configure({
     },
 });
 
-
-// AccountsTemplates.configure({
-//     defaultLayout: 'layout',
-// });
-
 AccountsTemplates.configureRoute('signIn');
 AccountsTemplates.configureRoute('changePwd');
 AccountsTemplates.configureRoute('enrollAccount');
 // AccountsTemplates.configureRoute('forgotPwd');
 AccountsTemplates.configureRoute('resetPwd');
 AccountsTemplates.configureRoute('signUp');
-
-
-// Accounts.ui.config({
-//     passwordSignupFields: 'USERNAME_ONLY',
-// });
-
-
-
-// AdminConfig = {
-//     collections: {
-//         users: {},
-//         apps: {},
-//         streams: {},
-//         generatedResources: {}
-//     }
-// }
-

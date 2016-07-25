@@ -6,9 +6,8 @@ import { Customers, dummyCustomers } from '../api/customers.js';
 import { Streams } from '/imports/api/streams.js'
 
 Template.simulateUserLogin.onRendered(function() {
-   $('.ui.dropdown')
-  .dropdown()
-;
+    $('.ui.dropdown')
+        .dropdown();
 });
 
 Template.simulateUserLogin.events({
