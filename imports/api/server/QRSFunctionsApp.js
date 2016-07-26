@@ -36,6 +36,7 @@ function generateAppForTemplate(templateApp, customer) {
     console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
     var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
     var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name);
+    var app = reloadAppAndReplaceScriptviaEngine(newAppId,'');
     var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
     console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 
@@ -132,14 +133,14 @@ function createSelection(type, guid) {
 };
 
 function deleteSelection(selectionId) {
-    check(selectionId, String);    
+    check(selectionId, String);
     console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
 
     try {
-        const result = HTTP.delete('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/Selection/'+selectionId, {
+        const result = HTTP.delete('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId, {
             headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey }            
-        })        
+            params: { 'xrfkey': senseConfig.xrfkey }
+        })
         console.log(result);
         return result.id;
     } catch (err) {
@@ -148,10 +149,9 @@ function deleteSelection(selectionId) {
     }
 };
 
-function buildModDate()
-{   
-   var d = new Date();
-   return d.toISOString();
+function buildModDate() {
+    var d = new Date();
+    return d.toISOString();
 }
 
 function addTagViaSyntheticToType(type, selectionId, tagGuid) {
@@ -218,12 +218,47 @@ function checkStreamStatus(customer) {
         console.log('No stream for customer exist, so create one: ' + customer.name);
         streamId = QSStream.createStream(customer.name)
             .data.id;
+        console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
+        return streamId;
     }
-    console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
-    return streamId;
 }
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
+export function reloadAppAndReplaceScriptviaEngine(docId, scriptReplace) {
+    console.log('server: QSSOCKS reloadAppviaEngine');
+    //source loic: https://github.com/pouc/qlik-elastic/blob/master/app.js
+    var scriptMarker = '§search_terms§';
+
+    return qsocks.Connect(engineConfig)
+        .then(function(global) {
+            return global.openDoc(docId);
+        })
+        .then(function(doc) {
+            console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for docID: ', docId);
+            return doc.getScript()
+                .then(function(script) {
+                    // if you want to replace the database connection per customer use the script below.
+                    //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
+                    return doc.setScript(script) //we now just include the old script in this app
+                        .then(function(result) {
+                            console.log('Script replaced');
+                            return doc;
+                        })
+                });
+        })
+        .then(function(doc) {
+            return doc.doReload()
+                .then(function(result) {
+                    console.log('Reload : ' + result);
+                    return doc.doSave()
+                        .then(function(result) {
+                            console.log('Save : ' + result);
+                            return doc;
+                        });
+                })
+        });
+}
+
 export function getAppsViaEngine() {
     console.log('server: QSSOCKS getApps');
     return qsocks.Connect(engineConfig)
@@ -237,7 +272,6 @@ export function getAppsViaEngine() {
 
         });
 };
-
 
 export function getApps() {
     try {

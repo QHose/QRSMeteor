@@ -1,5 +1,4 @@
-// import { Accounts } from 'meteor/accounts-base';
- 
+
 AccountsTemplates.configure({
     // Behavior
     confirmPassword: false,
@@ -42,7 +41,7 @@ AccountsTemplates.configure({
     // Texts
     texts: {
       button: {
-          signUp: "Register Now!"
+          signUp: "Register now to start using the Qlik Sense SaaS demo"
       },
       socialSignUp: "Register",
       socialIcons: {
@@ -60,3 +59,4 @@ AccountsTemplates.configureRoute('enrollAccount');
 // AccountsTemplates.configureRoute('forgotPwd');
 AccountsTemplates.configureRoute('resetPwd');
 AccountsTemplates.configureRoute('signUp');
+
