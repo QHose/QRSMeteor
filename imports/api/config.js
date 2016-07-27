@@ -1,4 +1,5 @@
 import { Mongo } from 'meteor/mongo';
+import { Random } from 'meteor/random'
 
 
 //This is the config that we need to make available on the client (the webpage)
@@ -89,19 +90,8 @@ if (Meteor.isServer) {
     };
 }
 
-function generateXrfkey(size, chars) {
-    size = size || 16;
-    chars = chars || 'abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789';
-
-    var rnd = crypto.randomBytes(size),
-        value = new Array(size),
-        len = chars.length;
-
-    for (var i = 0; i < size; i++) {
-        value[i] = chars[rnd[i] % len]
-    };
-
-    return value.join('');
+function generateXrfkey() {
+    return Random.hexString(16);
 }
 
 export const engineConfig = _engineConfig; //EngineConfig.findOne();
