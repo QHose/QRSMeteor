@@ -31,11 +31,11 @@ export function generateStreamAndApp(customers) {
     });
 };
 
-function generateAppForTemplate(templateApp, customer) {
+async function generateAppForTemplate(templateApp, customer) {
     console.log(templateApp);
     console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 
-    (async function() {
+    try {
         var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
         var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name);
 
@@ -43,39 +43,38 @@ function generateAppForTemplate(templateApp, customer) {
 
         var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
         console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
-
-        GeneratedResources.insert({
-            'customer': customer.name,
-            'streamId': streamId,
-            'appId': newAppId
-        });
-        Meteor.call('updateLocalSenseCopy');
-    }());
-
-
-    
+    } catch (err) {
+        console.error(err);
+    }
+    GeneratedResources.insert({
+        'customer': customer.name,
+        'streamId': streamId,
+        'appId': newAppId
+    });
+    Meteor.call('updateLocalSenseCopy');
+    return;
 };
 
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
-function reloadAppAndReplaceScriptviaEngine(docId, scriptReplace) {
+function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
     console.log('server: QSSOCKS reloadAppviaEngine');
 
     //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
     var scriptMarker = '§dummyDatabaseString§';
     var _global = {};
 
-    // engineConfig.appname = docId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
-    // console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ',engineConfig.appname);
+    engineConfig.appname = appId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
+    console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ',engineConfig.appname);
 
     return qsocks.Connect(engineConfig)
         .then(function(global) {
             console.log('connected to Qsocks');
             _global = global;
-            return global.openDoc(docId)
+            return global.openDoc(appId,'','','',true) //global.openDoc(appId)
         })
         .then(function(doc) {
-            console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for docID: ', docId);
+            console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for appId: ', appId);
             return doc.getScript()
                 .then(function(script) {
                     // if you want to replace the database connection per customer use the script below.
@@ -102,6 +101,7 @@ function reloadAppAndReplaceScriptviaEngine(docId, scriptReplace) {
         })
         .catch((error) => {
             console.error('ERROR while reloading the new app: ', error);
+            throw new Meteor.error(error);
         });
 }
 
@@ -276,7 +276,7 @@ function checkStreamStatus(customer) {
         console.log('No stream for customer exist, so create one: ' + customer.name);
         streamId = QSStream.createStream(customer.name)
             .data.id;
-        console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);        
+        console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
     }
     return streamId;
 }
