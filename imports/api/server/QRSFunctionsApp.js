@@ -34,10 +34,10 @@ export function generateStreamAndApp(customers) {
 function generateAppForTemplate(templateApp, customer) {
     console.log(templateApp);
     console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
-    var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
+    //var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
     var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name);
-    var app = reloadAppAndReplaceScriptviaEngine(newAppId,'');
-    var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
+    //var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
+    reloadAppAndReplaceScriptviaEngine(newAppId, '');
     console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 
     GeneratedResources.insert({
@@ -47,6 +47,50 @@ function generateAppForTemplate(templateApp, customer) {
     })
     Meteor.call('updateLocalSenseCopy');
 };
+
+
+//Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
+async function reloadAppAndReplaceScriptviaEngine(docId, scriptReplace) {
+    console.log('server: QSSOCKS reloadAppviaEngine');
+
+    //source loic: https://github.com/pouc/qlik-elastic/blob/master/app.js
+    var scriptMarker = '§search_terms§';
+
+    engineConfig.appname = docId;
+
+    return await qsocks.Connect(engineConfig)
+        .then(function(global) {
+            return global.openDoc(docId);
+        })
+        .then(function(doc) {
+            console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for docID: ', docId);
+            return doc.getScript()
+                .then(function(script) {
+                    // if you want to replace the database connection per customer use the script below.
+                    //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
+                    return doc.setScript(script) //we now just include the old script in this app
+                        .then(function(result) {
+                            console.log('Script replaced');
+                            return doc;
+                        })
+                });
+        })
+        .then(function(doc) {
+            return doc.doReload()
+                .then(function(result) {
+                    console.log('Reload : ' + result);
+                    return doc.doSave()
+                        .then(function(result) {
+                            console.log('Save : ', result);
+                            return doc;
+                        });
+                })
+        })
+        .catch((error) => {
+            console.error('ERROR while reloading the new app: ', error);
+        });
+}
+
 
 function checkCustomersAreSelected(customers) {
     if (!customers.length) { // = 0
@@ -223,41 +267,6 @@ function checkStreamStatus(customer) {
     }
 }
 
-//Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
-export function reloadAppAndReplaceScriptviaEngine(docId, scriptReplace) {
-    console.log('server: QSSOCKS reloadAppviaEngine');
-    //source loic: https://github.com/pouc/qlik-elastic/blob/master/app.js
-    var scriptMarker = '§search_terms§';
-
-    return qsocks.Connect(engineConfig)
-        .then(function(global) {
-            return global.openDoc(docId);
-        })
-        .then(function(doc) {
-            console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for docID: ', docId);
-            return doc.getScript()
-                .then(function(script) {
-                    // if you want to replace the database connection per customer use the script below.
-                    //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
-                    return doc.setScript(script) //we now just include the old script in this app
-                        .then(function(result) {
-                            console.log('Script replaced');
-                            return doc;
-                        })
-                });
-        })
-        .then(function(doc) {
-            return doc.doReload()
-                .then(function(result) {
-                    console.log('Reload : ' + result);
-                    return doc.doSave()
-                        .then(function(result) {
-                            console.log('Save : ' + result);
-                            return doc;
-                        });
-                })
-        });
-}
 
 export function getAppsViaEngine() {
     console.log('server: QSSOCKS getApps');

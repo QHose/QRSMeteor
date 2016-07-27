@@ -72,19 +72,20 @@ if (Meteor.isServer) {
         'port': 4243,
     }
 
-
+//used for QSocks, the engine API javascript wrapper
     var _engineConfig = {
         host: _senseConfig.SenseServerInternalLanIP,
         isSecure: _senseConfig.isSecure,
         port: Meteor.settings.private.enginePort,
+        UDC: _.strRight(Meteor.settings.private.engineHeaders,'/'),
+        user: _.strLeftBack(Meteor.settings.private.engineHeaders,'/'),
         headers: {
             'X-Qlik-User': Meteor.settings.private.engineHeaders,
         },
         key: _certs.key,
-        cert: _certs.cert,
-        // ca: _certs.ca,
         passphrase: Meteor.settings.private.passphrase,
-        rejectUnauthorized: false // Don't reject self-signed certs
+        rejectUnauthorized: false, // Don't reject self-signed certs
+        appname: ''
     };
 }
 
