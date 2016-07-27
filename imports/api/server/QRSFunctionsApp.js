@@ -52,7 +52,7 @@ function generateAppForTemplate(templateApp, customer) {
 
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
-async function reloadAppAndReplaceScriptviaEngine(docId, scriptReplace) {
+function reloadAppAndReplaceScriptviaEngine(docId, scriptReplace) {
     console.log('server: QSSOCKS reloadAppviaEngine');
 
     //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
@@ -60,8 +60,8 @@ async function reloadAppAndReplaceScriptviaEngine(docId, scriptReplace) {
 
     engineConfig.appname = docId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
     console.log('Connect to Engine with a new connection for each appName: ',engineConfig);
-    
-    return await qsocks.Connect(engineConfig)
+
+    return qsocks.Connect(engineConfig)
         .then(function(global) {
             return global.openDoc(docId);
         })

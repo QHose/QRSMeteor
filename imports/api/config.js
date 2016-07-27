@@ -92,7 +92,7 @@ if (Meteor.isServer) {
     };
 }
 
-console.log(' ############ _ heeft waarde', _);
+// console.log(' ############ _ heeft waarde', _);
 
 function generateXrfkey() {
     return Random.hexString(16);
