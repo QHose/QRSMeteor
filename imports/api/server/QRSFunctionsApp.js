@@ -34,18 +34,20 @@ export function generateStreamAndApp(customers) {
 function generateAppForTemplate(templateApp, customer) {
     console.log(templateApp);
     console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
-    //var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
+    var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
     var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name);
-    //var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
-    reloadAppAndReplaceScriptviaEngine(newAppId, '');
-    console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+    reloadAppAndReplaceScriptviaEngine(newAppId, '')
+        .then(function(doc) {
+            var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
+            console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 
-    GeneratedResources.insert({
-        'customer': customer.name,
-        'streamId': streamId,
-        'appId': newAppId
-    })
-    Meteor.call('updateLocalSenseCopy');
+            GeneratedResources.insert({
+                'customer': customer.name,
+                'streamId': streamId,
+                'appId': newAppId
+            });
+            Meteor.call('updateLocalSenseCopy');
+        })
 };
 
 
@@ -53,11 +55,12 @@ function generateAppForTemplate(templateApp, customer) {
 async function reloadAppAndReplaceScriptviaEngine(docId, scriptReplace) {
     console.log('server: QSSOCKS reloadAppviaEngine');
 
-    //source loic: https://github.com/pouc/qlik-elastic/blob/master/app.js
+    //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
     var scriptMarker = '§search_terms§';
 
-    engineConfig.appname = docId;
-
+    engineConfig.appname = docId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
+    console.log('Connect to Engine with a new connection for each appName: ',engineConfig);
+    
     return await qsocks.Connect(engineConfig)
         .then(function(global) {
             return global.openDoc(docId);

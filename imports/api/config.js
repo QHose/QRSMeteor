@@ -1,5 +1,7 @@
 import { Mongo } from 'meteor/mongo';
-import { Random } from 'meteor/random'
+import { Random } from 'meteor/random';
+import _ from 'meteor/underscore';
+
 
 
 //This is the config that we need to make available on the client (the webpage)
@@ -78,8 +80,8 @@ if (Meteor.isServer) {
         host: _senseConfig.SenseServerInternalLanIP,
         isSecure: _senseConfig.isSecure,
         port: Meteor.settings.private.enginePort,
-        UDC: _.strRight(Meteor.settings.private.engineHeaders,'/'),
-        user: _.strLeftBack(Meteor.settings.private.engineHeaders,'/'),
+        UDC: Meteor.settings.private.engineUDC,
+        user:Meteor.settings.private.engineUser,
         headers: {
             'X-Qlik-User': Meteor.settings.private.engineHeaders,
         },
@@ -89,6 +91,8 @@ if (Meteor.isServer) {
         appname: ''
     };
 }
+
+console.log(' ############ _ heeft waarde', _);
 
 function generateXrfkey() {
     return Random.hexString(16);
