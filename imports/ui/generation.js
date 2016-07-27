@@ -64,12 +64,12 @@ Template.generation.helpers({
                     }
                 },
                 { key: 'published', label: 'Published', hidden: true }, {
-                    key: 'qLastReloadTime',
+                    key: 'lastReloadTime',
                     label: 'Last reload',
                     hidden: true,
                     fn: function(value) {
-                        return moment(value)
-                            .format('DD-MM-YYYY');
+                        return value;
+                        //moment(value).format('DD-MM-YYYY');
                     }
                 },
                 // { key: 'qConnectedUsers', label: 'ConnectedUsers' },
