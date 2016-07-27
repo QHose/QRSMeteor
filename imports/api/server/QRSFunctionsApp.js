@@ -23,12 +23,13 @@ export function generateStreamAndApp(customers) {
 
     var templateApps = checkTemplateAppExists(); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
     checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?
-
-    customers.forEach(function(customer) {
-        templateApps.forEach(function(templateApp) {
+    for (const customer of customers) {
+        //customers.forEach(function(customer) {
+        // templateApps.forEach(function(templateApp) {
+            for (const templateApp of templateApps) {
             generateAppForTemplate(templateApp, customer);
-        })
-    });
+        }
+    };
 };
 
 async function generateAppForTemplate(templateApp, customer) {
@@ -65,13 +66,13 @@ function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
     var _global = {};
 
     engineConfig.appname = appId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
-    console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ',engineConfig.appname);
+    console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname);
 
     return qsocks.Connect(engineConfig)
         .then(function(global) {
             console.log('connected to Qsocks');
             _global = global;
-            return global.openDoc(appId,'','','',true) //global.openDoc(appId)
+            return global.openDoc(appId, '', '', '', true) //global.openDoc(appId)
         })
         .then(function(doc) {
             console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for appId: ', appId);
