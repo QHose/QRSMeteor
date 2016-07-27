@@ -34,20 +34,26 @@ export function generateStreamAndApp(customers) {
 function generateAppForTemplate(templateApp, customer) {
     console.log(templateApp);
     console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
-    var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
-    var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name);
-    reloadAppAndReplaceScriptviaEngine(newAppId, '')
-        .then(function(doc) {
-            var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
-            console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
 
-            GeneratedResources.insert({
-                'customer': customer.name,
-                'streamId': streamId,
-                'appId': newAppId
-            });
-            Meteor.call('updateLocalSenseCopy');
-        })
+    (async function() {
+        var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
+        var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name);
+
+        var result = await reloadAppAndReplaceScriptviaEngine(newAppId, '');
+
+        var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
+        console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+
+        GeneratedResources.insert({
+            'customer': customer.name,
+            'streamId': streamId,
+            'appId': newAppId
+        });
+        Meteor.call('updateLocalSenseCopy');
+    }());
+
+
+    
 };
 
 
@@ -56,14 +62,17 @@ function reloadAppAndReplaceScriptviaEngine(docId, scriptReplace) {
     console.log('server: QSSOCKS reloadAppviaEngine');
 
     //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
-    var scriptMarker = '§search_terms§';
+    var scriptMarker = '§dummyDatabaseString§';
+    var _global = {};
 
-    engineConfig.appname = docId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
-    console.log('Connect to Engine with a new connection for each appName: ',engineConfig);
+    // engineConfig.appname = docId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
+    // console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ',engineConfig.appname);
 
     return qsocks.Connect(engineConfig)
         .then(function(global) {
-            return global.openDoc(docId);
+            console.log('connected to Qsocks');
+            _global = global;
+            return global.openDoc(docId)
         })
         .then(function(doc) {
             console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for docID: ', docId);
@@ -71,6 +80,7 @@ function reloadAppAndReplaceScriptviaEngine(docId, scriptReplace) {
                 .then(function(script) {
                     // if you want to replace the database connection per customer use the script below.
                     //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
+                    //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
                     return doc.setScript(script) //we now just include the old script in this app
                         .then(function(result) {
                             console.log('Script replaced');
@@ -85,6 +95,7 @@ function reloadAppAndReplaceScriptviaEngine(docId, scriptReplace) {
                     return doc.doSave()
                         .then(function(result) {
                             console.log('Save : ', result);
+                            _global.connection.close();
                             return doc;
                         });
                 })
@@ -265,9 +276,9 @@ function checkStreamStatus(customer) {
         console.log('No stream for customer exist, so create one: ' + customer.name);
         streamId = QSStream.createStream(customer.name)
             .data.id;
-        console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
-        return streamId;
+        console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);        
     }
+    return streamId;
 }
 
 

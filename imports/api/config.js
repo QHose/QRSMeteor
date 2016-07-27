@@ -87,6 +87,7 @@ var _engineConfig = {
         cert: _certs.cert,        
         passphrase: Meteor.settings.private.passphrase,
         rejectUnauthorized: false, // Don't reject self-signed certs
+        appname: null
     };
 }
 
