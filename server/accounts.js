@@ -1,12 +1,12 @@
-ServiceConfiguration.configurations.upsert({
-  service: "facebook"
-}, {
-  $set: {
-    appId : Meteor.settings.private.facebook.clientId,
-    loginStyle: "popup",
-    secret: Meteor.settings.private.facebook.secret
-  }
-});
+// ServiceConfiguration.configurations.upsert({
+//   service: "facebook"
+// }, {
+//   $set: {
+//     appId : Meteor.settings.private.facebook.clientId,
+//     loginStyle: "popup",
+//     secret: Meteor.settings.private.facebook.secret
+//   }
+// });
 
 ServiceConfiguration.configurations.upsert({
   service: "google"
