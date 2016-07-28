@@ -3,7 +3,7 @@ import qlikauth from 'qlik-auth';
 import { Apps, TemplateApps } from '/imports/api/apps.js'
 import { Customers, dummyCustomers } from '../api/customers.js';
 import { Streams } from '/imports/api/streams.js'
-import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
+import { senseConfig, engineConfig, _certs, authHeaders } from '/imports/api/config.js';
 
 Router.route('/sso', function(request, response, next) {
 
@@ -33,10 +33,11 @@ Router.route('/sso', function(request, response, next) {
         }
         console.log('Request ticket for this user passport": ', passport);
         var options = {
-                'Certificate': senseConfig.cert, //'C:/Users/Qlik/Meteor projects/qlikauth-meteor/node_modules/qlik-auth/client.pfx',
+                'Certificate': _certs.cert, //'C:/Users/Qlik/Meteor projects/qlikauth-meteor/node_modules/qlik-auth/client.pfx',
+                'CertificateKey': _certs.key,
                 'PassPhrase': ''
             }
-            //Make call for ticket request
+        console.log('Make call for ticket request with these options: ', options);
         qlikauth.requestTicket(request, response, passport, options);
     }
 }, { where: 'server' });

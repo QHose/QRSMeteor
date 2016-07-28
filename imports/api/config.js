@@ -17,7 +17,7 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-    console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.public);
+    console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.private);
     import crypto from 'crypto';
     import fs from 'fs';
 
@@ -54,6 +54,8 @@ if (Meteor.isServer) {
         // ca: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/root.pem')
     }
 
+    // console.log('The certificates used for Qlik Auth: ', _certs);
+
     export var certicate_communication_options = {
         rejectUnauthorized: false,
         hostname: _senseConfig.SenseServerInternalLanIP,
@@ -65,8 +67,6 @@ if (Meteor.isServer) {
         key: _certs.key,
         cert: _certs.cert
     };
-
-
 
     export const securityInfo = {
         'xrfkey': _senseConfig.xrfkey,
