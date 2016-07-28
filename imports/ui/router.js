@@ -31,6 +31,6 @@ Router.route('/QMC');
 Router.route('/webIntegration');
 Router.route('/architecture');
 
-Router.route('/register');
-Router.route('/login');
+// Router.route('/register');
+// Router.route('/login');
 
