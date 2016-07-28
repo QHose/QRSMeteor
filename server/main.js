@@ -23,7 +23,7 @@ var qsocks = require('qsocks');
 
 Meteor.startup(function() {
 
-    process.env.ROOT_URL = 'http://' + Meteor.settings.private.host;
+    process.env.ROOT_URL = 'http://' + Meteor.settings.public.host;
 
     console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
     console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
