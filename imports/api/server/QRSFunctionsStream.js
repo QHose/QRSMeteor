@@ -10,7 +10,7 @@ import { REST_Log } from '/imports/api/APILogs';
 export function deleteStream(guid) {
     console.log('deleteStream: ', guid)
     try {
-        const result = HTTP.del('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey, {
+        const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders                       
         })
         Meteor.call('updateLocalSenseCopy');
@@ -25,8 +25,8 @@ export function getStreams() {
     try {
         const call = {};
         call.action = 'Get the current list of streams'; 
-        call.request = 'HTTP.get(http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/stream/full';
-        const result = HTTP.get('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/stream/full', {
+        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/stream/full';
+        const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/stream/full', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }            
         })
@@ -44,7 +44,7 @@ export function createStream(name) {
     console.log('QRS sync Functions Stream, create the stream with name', name);
 
     try {     
-        const result = HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/stream', {
+        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/stream', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: { "name": name }
@@ -53,7 +53,7 @@ export function createStream(name) {
         //logging
         const call = {};
         call.action = 'Create stream'; 
-        call.request = "HTTP.post('http://' + senseConfig.host + '/' + senseConfig.virtualProxy + '/qrs/stream', { headers: "+authHeaders+ ", params: { 'xrfkey': "+senseConfig.xrfkey +"}, data: { name: " + name +"}})"; 
+        call.request = "HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/stream', { headers: "+authHeaders+ ", params: { 'xrfkey': "+senseConfig.xrfkey +"}, data: { name: " + name +"}})"; 
         call.response = result;
         REST_Log(call);        
         return result;

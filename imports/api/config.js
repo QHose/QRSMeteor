@@ -22,7 +22,7 @@ if (Meteor.isServer) {
     import fs from 'fs';
 
     var _senseConfig = {
-        "host": Meteor.settings.private.host,
+        "host": Meteor.settings.public.host,
         "SenseServerInternalLanIP": Meteor.settings.private.SenseServerInternalLanIP,
         "port": Meteor.settings.private.port,
         "useSSL": Meteor.settings.private.useSSL,
