@@ -26,16 +26,16 @@ Meteor.startup(function() {
     process.env.ROOT_URL = 'http://' + Meteor.settings.private.host;
 
     console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
-    console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
+    console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
     console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');
     try {
-        const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
+        const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/notification?name=app', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: Meteor.settings.private.notificationURL + '/apps'
         })
 
-        const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
+        const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/notification?name=stream', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: Meteor.settings.private.notificationURL + '/streams'
@@ -212,7 +212,7 @@ Meteor.methods({
 
     //     //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP
     //     try{
-    //         const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
+    //         const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
     //             headers: authHeaders,
     //             params: { 'xrfkey': senseConfig.xrfkey }
     //         })//http get
