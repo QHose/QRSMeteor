@@ -2,10 +2,10 @@ Router.configure({
     layoutTemplate: 'layout',
     // loadingTemplate: 'loading',
     notFoundTemplate: 'notFound',
-    yieldTemplates: {
-        nav: { to: 'nav' },
-        footer: { to: 'footer' },
-    }
+    // yieldTemplates: {
+    //     nav: { to: 'nav' },
+    //     footer: { to: 'footer' },
+    // }
 });
 // console.log('de AccountsTemplates is ',AccountsTemplates);
 

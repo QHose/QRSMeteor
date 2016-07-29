@@ -1,6 +1,7 @@
 <template name="layout">
     <!-- Navigation bar -->
-    {{> yield region='nav'}}
+    <!-- {{> yield region='nav'}} -->
+    {{> nav}}
     <div class="ui grid">
         <div class="one wide column">
         </div>
@@ -10,7 +11,8 @@
         <div class="one wide column">
         </div>
     </div>
-    {{> yield region='footer'}}
+    {{> footer}}
+    <!-- {{> yield region='footer'}} -->
     
 </template>
 
