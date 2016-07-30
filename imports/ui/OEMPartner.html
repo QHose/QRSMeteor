@@ -40,6 +40,7 @@
                     4: Test Single Sign On
                 </div>
                 <p>
+                    Select a user to test Single Sign On. For this user a ticket will be generated which inludes your SaaS platform's authorizations (the groups) in a dynamic way. If your system <a class="item" href="{{pathFor 'users'}}">changes the authorizations</a> Sense refelects the changes too. This means you don't have to create users and roles in Sense. In the "Your SaaS platform" menu you can see <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Qlik Sense embedded in your SaaS platform</a> via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See <a href="{{pathFor 'introductionSecurity'}}" class="item">Security integration videos</a> for more information.
                 </p>
                 {{/if}}
                 {{#if  loading}}
