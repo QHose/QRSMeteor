@@ -32,15 +32,3 @@ Template.layout.onRendered(function() {
     }
   });
 });
-
-
-user.environment.group="Developer"
-and
-(
-(resource.resourcetype = "App" and resource.stream.HasPrivilege("read")) 
-or 
-(resource.resourcetype = "App.Object" 
-and 
-resource.app.HasPrivilege("read")
-)
-)
