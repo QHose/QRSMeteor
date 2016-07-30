@@ -4,16 +4,16 @@
             <div class="ui middle aligned stackable grid container">
                 <div class="row">
                     <div class="eight wide column">                    
-                        <h3 class="ui header">Introduction to the SaaS with Qlik Sense demo platfom</h3>
-                        <p>Please see the video's below for a quick introduction to this <a href="{{pathFor 'generation'}}"> demo platform</a>. You will see a screen divided into two parts. The left side shows "your SaaS platform" with customers and selected template apps for each customer. The right side shows you the information we received via the REST API's from Qlik Sense. We assume you want to create a "broker". A piece of software that you already use in your software today to create or maintain the applications for the custmers of your SaaS platform.</p>
+                        <h3 class="ui header">Welcome to the SaaS with Qlik Sense demo platfom</h3>
+                        <p>This platform is build to demonstrate the power of the Qlik Sense API's. Please see the video's below for an introduction. In the demo you will see a screen divided into two parts. The left side shows "the broker" in your SaaS platform. In your software you normally store the customers and their rights and the relevant template apps. The right side shows you the information we received via the REST API's from Qlik Sense. We assume you want to create a "broker". A piece of software that you already use in your software today to create or maintain the applications for the custmers of your SaaS platform.</p>
 
                         <p> This demo shows you the Sense activities you can automate in your platform. You can record the REST call from each manual activity in the QMC and use this code to create/delete/reload/publish streams/apps via REST calls in your software. We will not cover all use cases, but it should give you a feeling for 80% of the cases on how you can use the API's yourself.</p> 
                         <h3 class="ui header">How to use the demo?</h3>
-                        <p> The principle is very simple. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL connect load script). Because you can insert a custom script you can also specify customer specific data models like "free fields and tables").   In the end we make a stream  (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.</p>
+                        <p> The principle is very simple. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "free fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.</p>
                         <ol><li>You first have to enter some customers</li>
                         <li>then you select a template app on the right of the screen (this is the Qlik Sense side)</li>
 <li>Press generate</li>
-<li>Select a user, and test the single sing on. Notice that each user only sees its own stream and apps. You can test row level security by opening the "row level security" app in the everyone stream. User John will only see Shell data. Paul is a super admin, and can see all data. using Paul can also use test multi-tenant  <a href="{{senseServerQMC}}" target="_blank">QMC access</a>. Paul will only see (or if you want; reload/manage) Shell streams and apps.</li>
+<li>Select a user, and test the single sing on.</li>
                         </ol> 
                         
                     </div>
