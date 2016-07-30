@@ -18,7 +18,7 @@ export function getSecurityRules() {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }            
         })
-        console.log('getSecurityRules, meteor received these rules from sense, ', result);
+        console.log('getSecurityRules, meteor received the rules from Sense');
         return result.data;
     } catch (err) {
         console.error(err);
