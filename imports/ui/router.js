@@ -7,8 +7,6 @@ Router.configure({
     //     footer: { to: 'footer' },
     // }
 });
-// console.log('de AccountsTemplates is ',AccountsTemplates);
-
 
 Router.plugin('ensureSignedIn', {
     only: ['generation', 'users']

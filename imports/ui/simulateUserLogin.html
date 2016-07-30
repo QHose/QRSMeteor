@@ -16,18 +16,16 @@
             <div class="header">
                 <h4>Simulate a user login</h4>
             </div>
-            <p> Try different users and notice the difference in apps and streams visible. If you want to test row level security you can open the "row level security app"  in the "Everyone" Stream. We can create a single sign on experience, because we request a Sense Ticket which includes the user and his group membership. See <a href="{{pathFor 'introductionSecurity'}}" class="item">Security integration video</a> for more information</p>
-            <div class="ui selection dropdown">
-                <input id="currentUser" type="hidden">
-                <div class="default text">Select a user</div>
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                    {{#each customers}} {{#each users}}
-                    <div class="item" data-value="{{name}}" data-text="{{name}}">
-                        <i class="male icon"></i> {{name}} ({{../name}})
-                    </div>
-                    {{/each}} {{/each}}
+            <p> Try different users and notice the difference in apps and streams visible. If you want to test row level security you can open the "row level security app" in the "Everyone" Stream. A user with role consumer can only display, contributors can create sheets in existing apps, developers can create apps and load data. </p>
+            <input id="currentUser" type="hidden">
+            <div class="default text">Select a user</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                {{#each customers}} {{#each users}}
+                <div class="item" data-value="{{name}}" data-text="{{name}}">
+                    <i class="male icon"></i> {{name}} ({{../name}})
                 </div>
+                {{/each}} {{/each}}
             </div>
         </div>
     </div>
