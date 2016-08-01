@@ -6,6 +6,7 @@
         </a>
         <!-- <div class="right menu"> -->
         
+        {{#if currentUser}}
         <div class="ui simple dropdown item">
             Your SaaS platorm <i class="dropdown icon"></i>
             <div class="menu">
@@ -26,6 +27,7 @@
                 <!-- <a href="{{pathFor 'QMC'}}" class="item">View QMC (Qlik Management Console)</a> -->
             </div>
         </div>
+        {{/if}}
         <!-- </div> -->
         <div class="ui simple dropdown item">
             Videos <i class="dropdown icon"></i>
