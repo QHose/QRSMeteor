@@ -1,0 +1,39 @@
+{
+    "public": {
+        "host": "2008ENT",
+        "port": 80, 
+        "UDC": "OEM_HOST", 
+        "virtualProxyClientUsage": "meteor",                       
+        "webIntegrationHost": "localhost",
+        "webIntegrationDemoPort": 3030,
+        "facebook":{
+            "clientId": "1753311453043"         
+        }                        
+    },
+    "private": {
+        "host": "2008ENT",
+        "port": 80, 
+        "certificatesDirectory": "C:\\Repository\\Exported Certificates\\.Local Certificates",
+        "notificationURL": "http://nlsch-mbj3:3000/updateSenseInfo",
+        "SenseServerInternalLanIP": "2008ENT",        
+        "useSSL": false,
+        "passphrase": null,
+        "authentication": "header",
+        "virtualProxy": "hdr",
+        "headerKey": "hdr-usr",
+        "UDC": "OEM_HOST",        
+        "headerValue": "2008ENT\\Qlik",        
+        "isSecure": true,
+        "engineHeaders": "UserDirectory=2008ENT;UserId=Qlik",
+        "enginePort": 4747,
+        "proxyPort": 4243,
+        "google":{
+            "clientId": "-.apps.googleusercontent.com",
+            "secret": "YCP43OPc_---hbu1"
+        },
+        "facebook":{
+            "clientId": "efefe",
+            "secret": "rfrfrf"
+        }
+    }
+}
