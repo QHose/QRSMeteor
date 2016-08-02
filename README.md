@@ -15,6 +15,8 @@ This demo tries to show you the activities from Sense that you can automate in y
 
 The principle is very simple. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "free fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.
 
+![alt tag](https://raw.githubusercontent.com/QHose/QRSMeteor/master/public/images/quick intro to SaaS with Sense.gif)
+
 You first have to enter some customers
 Select the "my first template" app on the right of the screen (this is the Qlik Sense side)
 Press generate
