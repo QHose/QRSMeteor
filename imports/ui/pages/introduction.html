@@ -1,29 +1,31 @@
 <template name="introduction">
     <div class="ui container">
         <div class="ui very padded segment">
-            <div class="ui middle aligned stackable grid container">
+            <div class="ui middle aligned stackable grid">
                 <div class="row">
-                    <div class="eight wide column">
-                        <h3 class="ui header">Welcome to the SaaS with Qlik Sense demo platfom</h3>
-                        <p>This <a href="https://www.meteor.com/">Meteor.js</a> based demo platform <a href="https://github.com/QHose/QRSMeteor">(GitHub)</a> has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please look at the video's below for an introduction. In the demo you will see a screen divided into two parts.</p>
-                        <ol>
-                            <li> The left side shows "the broker" in your SaaS platform; a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights and the relevant template apps (depending on what the customer has configured in your platform).
-                            </li>
-                            <li>The right side shows you the result of the activities of the broker; the apps and streams automatically created in Qlik Sense. This is also the side where you have to select your first template app. </li>
-                        </ol>
-                        <p> This demo tries to show you the activities from Sense that you can automate in your platform. Sense internally also works with the same REST API's you can use, so you can record the REST call from each manual activity in the QMC and use this code to create/delete/reload/publish streams and apps in your software. We will not cover all the use cases, lets say we cover 80%, but the examples and code provided should give you enough convidence to build the remaining 20% yourself.</p>
-                        <h3 class="ui header">How to use the demo?</h3>
-                        <p> The principle is very simple. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "free fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.</p>
-                        <ol>
-                            <li>You first have to enter some customers</li>
-                            <li>Select the "my first template" app on the right of the screen (this is the Qlik Sense side)</li>
-                            <li>Press generate</li>
-                            <li>Select a user, and test the single sing on.</li>
-                        </ol>
-                    </div>
-                    <div class="eight wide right floated column">
+                    <h3 class="ui header">The power of API's; the SaaS with Qlik Sense demo platfom</h3>
+                    <p>This <a href="https://www.meteor.com/">Meteor.js</a> based <a href="https://github.com/QHose/QRSMeteor">demo platform</a> has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please look at the video's below for an introduction. In the demo you will see a screen divided into two parts.</p>
+                    <ul>
+                        <li> The left side shows "the broker" in your SaaS platform; a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights and the relevant template apps (depending on what the customer has configured in your platform).
+                        </li>
+                        <li>The right side shows you the result of the activities of the broker; the apps and streams automatically created in Qlik Sense.</li>
+                    </ul>
+                    <p> This demo guides you on how you can automate each manual step in Qlik Sense. Sense works internally with the same API's as you can use, so you can record the REST call from each manual activity in the QMC and use this code to create/delete/reload/publish streams and apps in your software. We will not cover all the use cases, lets say we cover 80%, but the examples and code provided should give you enough convidence to build the remaining 20% yourself.</p>
+                </div>
+                <div class="row">
+                    <div class="eight wide centered floated column">
                         <img class="ui fluid image" src="images/quick intro to SaaS with Sense.gif">
                     </div>
+                </div>
+                <div class="row">
+                    <h3 class="ui header">How to use the demo?</h3>
+                    <p> The principle is very simple. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "free fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.</p>
+                    <ol>
+                        <li>You first have to enter some customers</li>
+                        <li>Select the "my first template" app on the right of the screen (this is the Qlik Sense side)</li>
+                        <li>Press generate</li>
+                        <li>Select a user, and test the single sing on.</li>
+                    </ol>
                 </div>
                 <div class="row">
                     <div class="center aligned column">
@@ -60,7 +62,7 @@
                         </div>
                     </div>
                     <div class="column">
-                        <h4 class="ui header">Extended Video (8m)</h4>
+                        <h4 class="ui header">Extended Video (m)</h4>
                         <div class="ui embed" data-url="https://www.youtube.com/embed/RuL8p2DiPF4" data-placeholder="/images/introVideoSaaS4m.png"></div>
                         <div class="item">
                             <div class="content">
