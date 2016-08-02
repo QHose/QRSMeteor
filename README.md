@@ -1,8 +1,11 @@
 # Welcome to the SaaS with Qlik Sense demo platfom
 
-See http://92-111-9-190.static.chello.nl for a real demo.
-Watch https://youtu.be/RuL8p2DiPF4 to understand the concept. Or this playlist to learn more about the security and complete integration setup, https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk
+### See http://92-111-9-190.static.chello.nl for a real demo.
+### Watch https://youtu.be/RuL8p2DiPF4 to understand the concept. 
+### Or https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk
+for a complete playlist to learn more about the security and complete integration setup, 
 
+# Introduction
 This "non Qlik" but Meteor.js based platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please look at the video's below for an introduction. In the demo you will see a screen divided into two parts.
 
 The left side shows "the broker" in your SaaS platform; a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights and the relevant template apps (depending on what the customer has configured in your platform).
