@@ -16,3 +16,7 @@ You first have to enter some customers
 Select the "my first template" app on the right of the screen (this is the Qlik Sense side)
 Press generate
 Select a user, and test the single sing on.
+
+# REST calls
+The main connection between Meteor and Qlik Sense can be found here https://github.com/QHose/QRSMeteor/tree/master/imports/api/server
+Don't get distracted by the API_LOG object. I only need that for the demo, to insert the request and response from the call in the database. so you can view the results here http://saaswithqlik.com/APILogs
