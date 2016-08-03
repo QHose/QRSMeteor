@@ -24,7 +24,7 @@ Select the "my first template" app on the right of the screen (this is the Qlik 
 Press generate
 Select a user, and test the single sing on.
 
-# REST calls
+# Automation using the REST calls
 The main connection between Meteor and Qlik Sense can be found here https://github.com/QHose/QRSMeteor/tree/master/imports/api/server
 Don't get distracted by the API_LOG object. I only need that for the demo, to insert the request and response from the call in the database.
 
@@ -32,3 +32,6 @@ Don't get distracted by the API_LOG object. I only need that for the demo, to in
 
 # Authentication
 The internal REST calls use both certificate (QPS logout for example) and header authentication only for demo purposes. In production you would normally only use certificates, unless you have a authenticating reverse proxy. The end users connect to Sense via the Meteor virtual proxy (Sense QMC config item). Make sure that you also logout the user on this proxy. (you can login/logout per proxy!)
+
+# Thank you
+For always being available to support us with this project: Johan Bäcklin, Alexander Karlsson, Jeffrey Goldberg, Rob Fallows (MDG)
