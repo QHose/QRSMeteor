@@ -40,18 +40,18 @@ Template.OEMPartner.events({
         // Clear form
         target.text.value = '';
     },
-    'click .resetEnvironment' () {        
+    'click .resetEnvironment' () {
         Session.set('loadingIndicator', 'loading');
-        Meteor.call('resetEnvironment', function(err, res){
+        Meteor.call('resetEnvironment', function(err, res) {
             if (err) {
                 sAlert.error(err);
                 console.log(err);
-                Session.set('loadingIndicator', '');             
+                Session.set('loadingIndicator', '');
             } else {
-                Session.set('loadingIndicator', '');                                
+                Session.set('loadingIndicator', '');
                 sAlert.success('We have deleted all the previously generated streams and apps, so you have a fresh demo environment.');
             }
-        });        
+        });
         Session.set('generated?', false);
     },
     'click .generateStreamAndApp' () {
@@ -79,7 +79,8 @@ Template.OEMPartner.events({
     'click .removeTemplateApp' () {
         TemplateApps.remove(this._id);
     },
-    'click .insertDummyCustomers' () {
+    'click .insertDummyCustomers' (event) {
+        event.preventDefault();
         _.each(dummyCustomers, function(customer) {
             Customers.insert(customer);
             console.log("Inserted " + customer.name);
@@ -105,6 +106,12 @@ Template.OEMPartner.events({
                     $set: { checked: !customer.checked },
                 });
             })
+    },
+    'click .selfservice' () {
+        console.log('click selfservice modeal');
+
+        $('.ui.modal')
+            .modal('show');
     }
 }); //end Meteor events
 
@@ -112,5 +119,6 @@ Template.OEMPartner.events({
 
 Template.OEMPartner.onRendered(function() {
     $('.ui.dropdown')
-  .dropdown()  
+        .dropdown();
+
 })

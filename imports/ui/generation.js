@@ -43,7 +43,7 @@ Template.generation.helpers({
                     key: 'id',
                     label: 'Guid',
                     fn: function(value) {
-                        return new Spacebars.SafeString('<a href=http://' + config.host +':'+config.port + '/' + config.virtualProxyClientUsage + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
+                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
                         // return new Spacebars.SafeString('<a href=http://' + config.host + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
                     }
                 },
@@ -118,7 +118,7 @@ Template.generation.helpers({
                     key: 'id',
                     label: 'Guid',
                     fn: function(value) {
-                        return new Spacebars.SafeString('<a href=http://' + config.host +':'+config.port+ '/' + config.virtualProxyClientUsage + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
+                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
                         // return new Spacebars.SafeString('<a href=http://' + config.host + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
                     }
                 }, {
@@ -137,7 +137,7 @@ Template.generation.helpers({
                 },
             ]
         };
-    }    
+    }
 });
 
 Template.generation.events({
@@ -212,5 +212,23 @@ export var updateSenseInfo = function() {
 Template.generation.onRendered(function() {
     updateSenseInfo();
     // Session.set('generated?', false);
-     Meteor.call('updateLocalSenseCopy');
+    Meteor.call('updateLocalSenseCopy');
+
+    console.log('generated onRendered: Check if we have a connection to Sense?');
+    $('.dimmer')
+        .dimmer('show');
+    Meteor.call('getStreams', (error, result) => {
+        if (error) {
+            console.error(error);
+            Session.set('NoSenseConnection', true);
+            sAlert.error("We can't connect to Qlik Sense, is your Sense VM running, all services started?, virtual proxy 'hdr' configured? Check the host settings in settings-XYZ.json in the root folder");
+        } else {
+            var message = "Connected to Qlik Sense via the REST and websocket APIs. We registered a QRS notification event to ensure this MeteorJs platform automatically updates when Sense changes.";
+            console.log(message);
+            sAlert.success(message);
+            Session.set('NoSenseConnection', false);
+        }
+        $('.dimmer')
+            .dimmer('hide');
+    });
 })

@@ -1,55 +1,67 @@
 <template name='OEMPartner'>
-    <div class="ui segment">
-        <div class="ui icon message">
-            <img class="icon" src="images/intro.png">
-            <div class="content">
-                {{#if freshEnvironment}}
-                <div class="header">
-                    1: Let's start publishing apps for your customers
-                </div>                
-                <p>
-                    First insert some customers in your SaaS platform
-                </p>
-                {{/if}}
-                {{#if  readyToSelectTemplate}}
-                <div class="header">
-                    2: Select a template app
-                </div>
-                <p>
-                    Select the "my first template" app on the right.
-                </p>
-                {{/if}}
-                {{#if  readyToGenerate}}
-                <div class="header">
-                    3: Start publishing
-                </div>
-                <p>
-                    Press the generate button to publish a copy of the template app in the "customer name" stream. Next to this we will also replace the script with a customer specific one. This to enable to connect to a specific database or load free tables and fields. (which are specific to each customer).
-                </p>
-                {{/if}}
-                {{#if  templateButNoCustomer}}
-                <div class="header">
-                    Customers
-                </div>
-                <p>
-                    You already selected a template, but please re-insert your customers.
-                </p>
-                {{/if}}
-                {{#if  readyToTestSSO}}
-                <div class="header">
-                    4: Test Single Sign On
-                </div>
-                <p>
-                    Select a user to test Single Sign On. For this user a ticket will be generated which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles in Sense. In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information.
-                </p>
-                {{/if}}
-                {{#if  loading}}
-                <div class="header">
-                    3: API communication is in progress...
-                </div>
-                <p>This application is now sending REST API calls to the Qlik Sense QRS and Engine API. You can view the HTTP REST requests and the responses in the <a href="{{pathFor 'APILogs'}}" class="item">QMC - API Calls menu</a></p>
-                {{/if}}
+    <div class="ui modal">
+        <i class="close icon"></i>
+        <div class="ui header">Please see the overview of our layered approach to the self service functionality in Qlik Sense</div>
+        <img class="ui huge image" src="/images/SelfServiceBI.png">
+        <div class="description">
+            <!-- <p>For more information see this <1a href="#" class="selfservice"> governed self service approach document </a></p> -->
+        </div>
+        <div class="actions">
+            <!-- <div class="ui black deny button">
+                    Nope
+                </div> -->
+            <div class="ui positive right labeled icon button">
+                I got it...
+                <i class="checkmark icon"></i>
             </div>
+        </div>
+    </div>
+    <div class="ui icon message">
+        <img class="icon" src="images/intro.png">
+        <div class="content">
+            {{#if freshEnvironment}}
+            <div class="header">
+                1: Let's start publishing apps for your customers
+            </div>
+            <p>
+                First insert some customers in your SaaS platform.
+                <li>You can use these customers later on to generate streams and apps. </li>
+                <li> With the users and their roles you can test the single sign and our <a href="#" class="selfservice"> governed self service approach </a> in step 4.</li>
+            </p>
+            {{/if}} {{#if readyToSelectTemplate}}
+            <div class="header">
+                2: Select a template app
+            </div>
+            <p>
+                Select the "my first template" app on the right.
+            </p>
+            {{/if}} {{#if readyToGenerate}}
+            <div class="header">
+                3: Start publishing
+            </div>
+            <p>
+                Press the generate button to publish a copy of the template app in the "customer name" stream. Next to this we will also replace the script with a customer specific one. This to enable to connect to a specific database or load free tables and fields. (which are specific to each customer).
+            </p>
+            {{/if}} {{#if templateButNoCustomer}}
+            <div class="header">
+                Customers
+            </div>
+            <p>
+                You already selected a template, but please re-insert your customers.
+            </p>
+            {{/if}} {{#if readyToTestSSO}}
+            <div class="header">
+                4: Test Single Sign On
+            </div>
+            <p>
+                Select a user to test Single Sign On. For this user a ticket will be generated which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles in Sense. In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information.
+            </p>
+            {{/if}} {{#if loading}}
+            <div class="header">
+                3: API communication is in progress...
+            </div>
+            <p>This application is now sending REST API calls to the Qlik Sense QRS and Engine API. You can view the HTTP REST requests and the responses in the <a href="{{pathFor 'APILogs'}}" class="item">QMC - API Calls menu</a></p>
+            {{/if}}
         </div>
     </div>
     {{#if readyToTestSSO}}
@@ -84,9 +96,8 @@
                     <h4>No customers</h4>
                 </div>
                 <ul>
-                    <li>You have no customers in your SaaS platform.</li>
-                    <li>Let's <a href="{{pathFor 'users'}}"> insert some customers with users</a>, and after the generation is completed you can also test single sign on </li>
-                    <li>Or <a class="insertDummyCustomers"> insert dummy customers</a> (use these if you want to test row level security)</li>
+                    <li>This demo simulates your SaaS platform. Therefore we first need to <a href="{{pathFor 'users'}}">insert some customers and users</a></li>
+                    <li>Or <a href="#" class="insertDummyCustomers"> insert dummy customers</a> (use these if you want to test row level security)</li>
                 </ul>
             </div>
         </div>

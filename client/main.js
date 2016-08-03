@@ -45,7 +45,7 @@ Meteor.startup(function() {
     sAlert.config({
         effect: 'genie',
         // position: 'top',
-        timeout: 7000,
+        timeout: 9000,
         html: false,
         onRouteClose: true,
         stack: true,

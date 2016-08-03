@@ -1,5 +1,4 @@
 <template name='generation'>
-    <!-- {{#if currentUser}} -->
     <div class="row" style="margin-bottom: 1em; margin-top: 1em;">
         <div class="left floated ui column">
             {{> steps}}
@@ -19,12 +18,26 @@
             </div>
             <div class="nine wide column">
                 <div class="ui segment">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui text loader">Receiving the Streams from Qlik Sense via the QRS API... <br> '/qrs/stream/full'</div>
+                            </div>
+                        </div>
+                    </div>
                     <h4 class="ui header">            
                 <img class="icon" src="images/stream.png">
                 Received {{countStreams}}  streams via QRS API from Qlik Sense
             </h4> {{> reactiveTable settings=streamSettings}}
                 </div>
                 <div class="ui segment">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui text loader">Receiving the apps from Qlik Sense via the QRS API... <br> '/qrs/app/full'</div>
+                            </div>
+                        </div>
+                    </div>
                     <h4 class="ui header">
                 <img class="icon" src="images/app.png">
                 Received {{countApps}}  apps via QRS API from Qlik Sense
@@ -33,8 +46,4 @@
             </div>
         </div>
     </div>
-    <!-- {{else}}
-        <li><a href="{{pathFor route='register'}}">Register</a></li>
-        <li><a href="{{pathFor route='login'}}">Login</a></li>
-    {{/if}} -->
 </template>

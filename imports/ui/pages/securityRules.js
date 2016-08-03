@@ -23,15 +23,17 @@ Template.securityRules.helpers({
 
 Template.securityRules.onRendered(function() {
     console.log('Get the system rules from Sense');
-    Session.set('loadingIndicator', 'active');
+$('.dimmer').dimmer('show');
+    
     Meteor.call('getSecurityRules', (error, result) => {
         if (error) {
             console.error(error);
-            Session.set('loadingIndicator', ''); 
+            Session.set('loadingIndicator', '');
         } else {
-            console.log('********* onRendered, System rules received from Sense: ',result);
+            console.log('********* onRendered, System rules received from Sense: ', result);
             Session.set('securityRules', result);
-            Session.set('loadingIndicator', ''); 
         }
+        $('.dimmer').dimmer('hide');
     });
+
 })
