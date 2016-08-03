@@ -2,7 +2,7 @@
 
 Demo site http://92-111-9-190.static.chello.nl/
 
-Watch [a link](https://youtu.be/RuL8p2DiPF4 to) learn the concept of the demo.
+Watch [a link](https://youtu.be/RuL8p2DiPF4?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) learn the concept of the demo.
 
 Watch [a link](https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) for a complete playlist on Sense integration. The topics include security, web integration (QAP) and architecture.
 
