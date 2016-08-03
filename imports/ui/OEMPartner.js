@@ -107,9 +107,7 @@ Template.OEMPartner.events({
                 });
             })
     },
-    'click .selfservice' () {
-        console.log('click selfservice modeal');
-
+    'click .selfservice' () {       
         $('.ui.modal')
             .modal('show');
     }

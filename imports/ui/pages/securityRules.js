@@ -21,10 +21,18 @@ Template.securityRules.helpers({
 
 })
 
+Template.securityRules.events({
+    'click .selfservice ' () {        
+        $('.ui.modal')
+            .modal('show');
+    }
+})
+
 Template.securityRules.onRendered(function() {
     console.log('Get the system rules from Sense');
-$('.dimmer').dimmer('show');
-    
+    $('.dimmer')
+        .dimmer('show');
+
     Meteor.call('getSecurityRules', (error, result) => {
         if (error) {
             console.error(error);
@@ -33,7 +41,8 @@ $('.dimmer').dimmer('show');
             console.log('********* onRendered, System rules received from Sense: ', result);
             Session.set('securityRules', result);
         }
-        $('.dimmer').dimmer('hide');
+        $('.dimmer')
+            .dimmer('hide');
     });
 
 })

@@ -1,13 +1,24 @@
 <template name='APILogs'>
-<div class="ui one column stackable grid">
-    <div class="column">
-        <div class="ui segment">
+    <div class="ui stackable grid">
+        <div class="row">
             <h3 class="ui header">
-                <img class="icon" src="images/API.png">
-                We have sent and received these REST API calls
-            </h3> {{> reactiveTable settings=RESTCallSettings}}
+                <!-- <img class="icon" src="images/API.png"> -->
+                Overview of sent and received REST API calls between Qlik Sense and your SaaS application</h3>
         </div>
+        <div class="row">
+            <div class="four wide column">
+                <p>On the right you will find an introduction of the manual QMC activities we have automated by making use of the QRS and Engine API. See the API part in the documentation menu above for more information on APIs.</p>
+                <h4>Use the demo source code</h4>
+                <p>You can find the key source code which perform the calls <a href="https://github.com/QHose/QRSMeteor/tree/master/imports/api/server">here</a>. Most likely your SaaS platform already uses REST APIs, so just copy the code and and start automating...</p>
+            </div>
+            <div class="six wide left floated column">
+                <img class="ui image" src="/images/introduction to SaaS demo platform deep dive short.gif">
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="ui header">            
+                Real time overview of the JSON messages being sent</h3>
+        </div>
+        {{> reactiveTable settings=RESTCallSettings}}
     </div>
-</div>
-    
 </template>

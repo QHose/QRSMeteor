@@ -1,24 +1,42 @@
 <template name='securityRules'>
     <div class="ui one column stackable grid">
         <div class="column">
-            <div class="ui segment">               
-                <div class="ui icon message">
-                    <img class="icon" src="images/securityRules.png">
-                    <div class="content">
-                        <div class="header">
-                            <h4>We received the following system rules via the QRS API</h4>
-                        </div>
+            <div class="ui icon message">
+                <img class="icon" src="images/securityRules.png">
+                <div class="content">
+                    <div class="header">
+                        <h4>We received the following system rules via the QRS API</h4>
+                    </div>
+                    <p>Below you will find the system rules of Qlik Sense. They consist of multiple categories.
+                        <h4>Flexible security using the security rules</h4> Filter on 'Z_' to find the security rules that secure the whole platform. In a large software integration deal we secured 400.000 apps with just 2 end user facing security rules (give read access to all apps in the customer name stream if the group of the user matches the name of the stream. Later on we added the contributor and developer roles and matching rules. You can test authorizations possible in the governed <a href="#" class="selfservice">self service</a> tests in step 4.</p>
+                    <p>See the security videos or documentation in the menu above for more information.</p>
+                </div>
+            </div>
+            <div class="ui dimmer">
+                <div class="content">
+                    <div class="center">
+                        <div class="ui indeterminate text loader">Loading the system and security rules via the Qlik Sense QRS API
+                            <br> (Method: get - "/qrs/systemrule" )</div>
                     </div>
                 </div>
-                 <div class="ui dimmer">
-                    <div class="content">
-                        <div class="center">
-                            <div class="ui indeterminate text loader">Loading the system and security rules via the Qlik Sense QRS API
-                                <br> (Method: get - "/qrs/systemrule" )</div>
-                        </div>
-                    </div>
-                </div>
-                {{> reactiveTable collection=getSecurityRules settings=securityRulesSettings}}
+            </div>
+            {{> reactiveTable collection=getSecurityRules settings=securityRulesSettings}}
+        </div>
+    </div>
+    <div class="ui modal">
+        <i class="close icon"></i>
+        <div class="ui header">Please see the overview of our layered approach to the self service functionality in Qlik Sense</div>
+        <img class="ui fluid image" src="/images/SelfServiceBI.png">
+        <div class="description">
+            <!-- <p>For more information see this <1a href="#" class="selfservice"> governed self service approach document </a></p> -->
+        </div>
+        <div class="actions">
+            <!-- <div class="ui black deny button">
+                    Nope
+                </div> -->
+            <div class="ui positive right labeled icon button">
+                I got it...
+                <i class="checkmark icon"></i>
             </div>
         </div>
     </div>
