@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { http } from 'meteor/meteor';
 import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
+import { APILogs } from '/imports/api/APILogs';
 
 //import meteor collections
 import { Streams } from '/imports/api/streams';
@@ -55,6 +56,7 @@ Meteor.methods({
         Meteor.call('removeGeneratedResources');
         TemplateApps.remove({});
         Customers.remove({});
+        APILogs.remove({});
     },
     removeGeneratedResources() {
         console.log('remove GeneratedResources method, before we make new ones');
