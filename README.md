@@ -3,7 +3,8 @@
 Demo site http://92-111-9-190.static.chello.nl/
 
 Watch https://youtu.be/RuL8p2DiPF4 to understand the concept. 
-Or https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk for a complete playlist to learn more about the security and complete integration setup, 
+
+Watch https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk for a complete playlist to learn more about the security and complete integration setup, 
 
 # Introduction
 This "non Qlik" but Meteor.js based platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please look at the video's below for an introduction. In the demo you will see a screen divided into two parts.
