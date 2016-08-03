@@ -1,14 +1,7 @@
 <template name='securityRules'>
     <div class="ui one column stackable grid">
         <div class="column">
-            <div class="ui segment">
-                {{#if active}}
-                <div class="ui segment" style="height: 300px;"> >
-                    <div class="ui active dimmer">
-                        <div class="ui large text loader">Loading the system and security rules via the Qlik Sense QRS API <br> (Method: get - "/qrs/systemrule" )</div>
-                    </div>
-                </div>
-                {{else}}
+            <div class="ui segment">               
                 <div class="ui icon message">
                     <img class="icon" src="images/securityRules.png">
                     <div class="content">
@@ -17,7 +10,15 @@
                         </div>
                     </div>
                 </div>
-                {{> reactiveTable collection=getSecurityRules settings=securityRulesSettings}} {{/if}}
+                 <div class="ui dimmer">
+                    <div class="content">
+                        <div class="center">
+                            <div class="ui indeterminate text loader">Loading the system and security rules via the Qlik Sense QRS API
+                                <br> (Method: get - "/qrs/systemrule" )</div>
+                        </div>
+                    </div>
+                </div>
+                {{> reactiveTable collection=getSecurityRules settings=securityRulesSettings}}
             </div>
         </div>
     </div>
