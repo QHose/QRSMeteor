@@ -300,19 +300,15 @@ export function getAppsViaEngine() {
 
 export function getApps() {
     try {
-
-        const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
+        const call = {};
+        call.action = 'Get list of apps';
+        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full';
+        call.response = HTTP.get(call.request, { //?xrfkey=' + senseConfig.xrfkey, {
                 headers: authHeaders,
                 params: { 'xrfkey': senseConfig.xrfkey }
-            })
-            // console.log('http get result %j',result);
-            //logging only
-        const call = {};
-        call.action = 'Get the current list of apps';
-        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full';
-        call.response = result;
+            });
         REST_Log(call);
-        return result.data;
+        return call.response.result.data;
     } catch (err) {
         console.error(err);
         throw new Meteor.Error('getApps failed', err.message);
