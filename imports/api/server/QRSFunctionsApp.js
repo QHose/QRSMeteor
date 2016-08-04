@@ -308,7 +308,7 @@ export function getApps() {
                 params: { 'xrfkey': senseConfig.xrfkey }
             });
         REST_Log(call);
-        return call.response.result.data;
+        return call.response.data;
     } catch (err) {
         console.error(err);
         throw new Meteor.Error('getApps failed', err.message);
