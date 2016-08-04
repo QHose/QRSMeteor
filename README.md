@@ -6,6 +6,8 @@ Watch [this video](https://youtu.be/RuL8p2DiPF4?list=PLqJfqgR62cVAZxS34WGnByjASK
 
 Watch [this playlist](https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) for a complete overview on Sense integration. The topics include security, web integration (QAP) and architecture.
 
+See [qlik community](https://community.qlik.com/docs/DOC-9533) for an introduction to Qlik Sense integration
+
 # Introduction
 This "non Qlik" but Meteor.js based platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please look at the video's below for an introduction. In the demo you will see a screen divided into two parts.
 
