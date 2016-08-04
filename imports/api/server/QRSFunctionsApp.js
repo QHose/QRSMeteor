@@ -246,11 +246,16 @@ export function copyApp(guid, name) {
     console.log('QRS Functions Appp, copy the app id' + guid + 'to app with name: ', name);
 
     try {
-        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy?', {
+        const call ={};
+        call.action = 'Copy app'; 
+        call.request = 'http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy?'
+
+        call.result = HTTP.post(call.request, {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey, 'name': name },
             data: { "name": name }
         })
+        REST_Log(call);    
         var newGuid = result.data.id;
         console.log('Step 2: the new app id is: ', newGuid);
         //addTag('App', newGuid);

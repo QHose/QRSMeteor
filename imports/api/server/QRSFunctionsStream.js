@@ -27,11 +27,10 @@ export function getStreams() {
         call.action = 'Get the current list of streams'; 
         call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/full';
         // console.log('Try to get the stream from Sense at this url: ' , call.request);
-        const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/full', {
+        call.response = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/full', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }            
-        })
-        call.response = result;
+        })        
         REST_Log(call);        
         return result.data;
     } catch (err) {
