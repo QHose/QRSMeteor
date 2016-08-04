@@ -7,6 +7,7 @@
                     <h4> OEM security approach for Qlik Sense</h4>
                 </div>
                 <ul>
+                    <li>Get a complete overview of most Qlik Sense aspects in 1 A0 page for use on your wall: <a class="item" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a></li>
                     <li>Also see the deep dive security integration <a href="{{pathFor 'SecurityDeepDive'}}" class="item">video</a></li>
                     <li>Authentication: We re-use your existing way to authenticate the users. We will insert a little piece of code inside your existing "security module". In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via a SSL certificate exchange). And send this info about the user (userId, group membership) in a JSON object to Sense (we call this ticketing). </li>
                     <li>Authorization; Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name. </li>
@@ -31,6 +32,7 @@
                     <h4> Deep Dive OEM security approach for Qlik Sense</h4>
                 </div>
                 <ul>
+                    <li>Get our complete architecture overview, including node configurations, network and application security, in 1 A0 page on your wall: <a class="item" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a></li>
                     <li>Authentication: We re-use your existing way to authenticate the users. We will insert a little piece of code inside your existing "security module". In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via a SSL certificate exchange). And send this info about the user (userId, group membership) in a JSON object to Sense (we call this ticketing). </li>
                     <li>Authorization; Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton. Allow access to resources if: "User.group = Stream.name". </li>
                 </ul>
@@ -54,13 +56,12 @@
                     <h4> Qlik Sense architecture and deployment</h4>
                 </div>
                 <p>
-                The Qlik Sense Platform consist of different products:
-                <ul>
-                </ul>
+                Get our complete architecture in 1 A0 page: <a class="item" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a>. In bullets below we show you some Qlik Products. View the complete list at Qlik.com. 
+                <ul>                
                 <li>Qlik Sense Desktop. Freeware client with a local installation on a pc. Available for a single user </li>
-                <li>Qlik Sense Enterprise Server based variation with additional capabilities such as, but not limited to, governance, security, Self Service BI integrated in a web front end  </li>
-                <li>Qlik Analytics Platform A variation of Qlik Sense Enterprise designed for embedded solution using a CPU core based license model. More focused to OEM offering OEM=Original equipment manufacturer is a company that makes a part or subsystem that is used in another company's end product. </li>
-                <li>Qlik Cloud Qlik offers a Software as a Service (SaaS) solution both free and a paid subscription model </li>                
+                <li>Qlik Sense Enterprise Server based variation with additional capabilities such as, but not limited to, governance, security, Self Service BI integrated in a web front end </li>
+                <li>Qlik Analytics Platform; provides a subset of the capabilities of Qlik Sense Enterprise designed for embedded solution using a CPU core based license model.</li>                
+                </ul>          
                 </p>
             </div>
         </div>
