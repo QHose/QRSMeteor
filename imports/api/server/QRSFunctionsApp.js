@@ -256,7 +256,7 @@ export function copyApp(guid, name) {
             data: { "name": name }
         })
         REST_Log(call);    
-        var newGuid = result.data.id;
+        var newGuid = call.result.data.id;
         console.log('Step 2: the new app id is: ', newGuid);
         //addTag('App', newGuid);
         return newGuid;
