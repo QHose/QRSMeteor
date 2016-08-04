@@ -74,7 +74,7 @@ Template.generation.helpers({
                 },
                 // { key: 'qConnectedUsers', label: 'ConnectedUsers' },
                 {
-                    key: 'fileSize  ',
+                    key: 'fileSize',
                     label: 'File size',
                     hidden: true,
                     fn: function(value) {
