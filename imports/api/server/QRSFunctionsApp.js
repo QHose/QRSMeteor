@@ -303,7 +303,7 @@ export function getApps() {
         const call = {};
         call.action = 'Get list of apps';
         call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full';
-        call.response = HTTP.get(call.request, { //?xrfkey=' + senseConfig.xrfkey, {
+        call.response = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
                 headers: authHeaders,
                 params: { 'xrfkey': senseConfig.xrfkey }
             });
