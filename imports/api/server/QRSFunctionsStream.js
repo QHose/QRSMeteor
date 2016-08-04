@@ -56,7 +56,7 @@ export function createStream(name) {
         call.request = "HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream', { headers: "+authHeaders+ ", params: { 'xrfkey': "+senseConfig.xrfkey +"}, data: { name: " + name +"}})"; 
         call.response = result;
         REST_Log(call);        
-        return call.response.result;
+        return call.response;
     } catch (err) {
         console.error(err);
         throw new Meteor.Error('Create stream failed ', err.message);
