@@ -24,14 +24,12 @@ export function logoutUser(name) {
         try {
             const call = {};
             call.action = 'logout user: ' + name;
-
-            call.response = HTTP.call('DELETE', 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/'+senseConfig.virtualProxyClientUsage+'/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey, { 'npmRequestOptions': certicate_communication_options })
-
-            //logging purposes only:
-            call.request = 'HTTP.del(https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey;
+            call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/'+senseConfig.virtualProxyClientUsage+'/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
+            call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
+            
             REST_Log(call);
-            console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-            console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+            // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+            // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
 
         } catch (err) {
             console.error(err);
