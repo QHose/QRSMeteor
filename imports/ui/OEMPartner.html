@@ -1,34 +1,10 @@
 <template name='OEMPartner'>
-    <div class="ui modal SSBI">
+    <div class="ui modal">
         <i class="close icon"></i>
         <div class="ui header">Please see the overview of our layered approach to the self service functionality in Qlik Sense</div>
         <img class="ui fluid image" src="/images/SelfServiceBI.png">
         <div class="description">
             <!-- <p>For more information see this <1a href="#" class="selfservice"> governed self service approach document </a></p> -->
-        </div>
-        <div class="actions">
-            <!-- <div class="ui black deny button">
-                    Nope
-                </div> -->
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
-    <div class="ui modal APIAutomation">
-        <div class="ui icon message">
-            <img class="icon" src="images/id.png">
-            <div class="content">
-                <div class="header">
-                    <h4> API automation: a quick introduction</h4>
-                </div>
-            </div>
-        </div>
-        <div class="ui one column centered grid">
-            <div class="column centered">
-                <div class="ui embed" data-url="https://www.youtube.com/embed/wVVbP7a5-I8" data-placeholder="/images/Multi-tenant SaaS Applications with Qlik Sense in the Cloud (OEM).png"></div>
-            </div>
         </div>
         <div class="actions">
             <!-- <div class="ui black deny button">
@@ -64,34 +40,30 @@
                 3: Start publishing
             </div>
             <p>
-                If you press generate a sequence of activities will be executed automatically via the API's. You can test each activity also manually (and see the <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>).
-                <br> For example you can press "generate stream" next to the customer to create a stream. "Copy app" to manually copy the app for each selected customer.
-                <br> Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay or who have activited the app in your software, so this "selection" simulates that use case.</p>
+                <h4>Test manual steps first</h4>If you press generate a sequence of activities will be executed automatically via the API's. You can test each activity also manually (and see the <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>). <br> For example you can press "create stream" next to the customer to create a stream. "Copy app" to manually copy the app for each selected customer. <br> Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay or who have activited the app in your software, so this "selection" simulates that use case.</p>
             <p>
                 <h4>Fully automated app generation</h4>We can also automate each manual step, this happens when you press the generate button. It will publish a copy of the template app in the "customer name" stream. Next to this we will also replace the script with a customer specific and reload the app. This to enable the use case to connect to customer specific databases and to load free tables and fields which are specific to each customer.
-                <p>
-                    <p> See a quick introduction video about the concept of API automation here </p>
-                </p>
-                {{/if}} {{#if templateButNoCustomer}}
-                <div class="header">
-                    Customers
-                </div>
-                <p>
-                    You already selected a template, but please re-insert your customers.
-                </p>
-                {{/if}} {{#if readyToTestSSO}}
-                <div class="header">
-                    4: Test Single Sign On
-                </div>
-                <p>
-                    Select a user to test Single Sign On. For this user a ticket will be generated which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles in Sense. In the your <a href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information.
-                </p>
-                {{/if}} {{#if loading}}
-                <div class="header">
-                    3: API communication is in progress...
-                </div>
-                <p>This application is now sending REST API calls to the Qlik Sense QRS and Engine API. You can view the HTTP REST requests and the responses in the <a href="{{pathFor 'APILogs'}}" class="item">QMC - API Calls menu</a></p>
-                {{/if}}
+            </p>
+            {{/if}} {{#if templateButNoCustomer}}
+            <div class="header">
+                Customers
+            </div>
+            <p>
+                You already selected a template, but please re-insert your customers.
+            </p>
+            {{/if}} {{#if readyToTestSSO}}
+            <div class="header">
+                4: Test Single Sign On
+            </div>
+            <p>
+                Select a user to test Single Sign On. For this user a ticket will be generated which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles in Sense. In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information.
+            </p>
+            {{/if}} {{#if loading}}
+            <div class="header">
+                3: API communication is in progress...
+            </div>
+            <p>This application is now sending REST API calls to the Qlik Sense QRS and Engine API. You can view the HTTP REST requests and the responses in the <a href="{{pathFor 'APILogs'}}" class="item">QMC - API Calls menu</a></p>
+            {{/if}}
         </div>
     </div>
     {{#if readyToTestSSO}}
