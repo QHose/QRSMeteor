@@ -9,7 +9,7 @@ Template.APILogs.helpers({
             collection: APILogs,
             rowsPerPage: 10,
             responsive: true,
-            autoWidth: true,
+            autoWidth: false,
             showFilter: true,
             showColumnToggles: true,
             fields: [
@@ -21,7 +21,7 @@ Template.APILogs.helpers({
                         return new Spacebars.SafeString('<pre id="json">' + JSON.stringify(value, undefined, 2) + '</pre>')
                     }
                 },
-                { key: 'createDate', label: 'Date' },
+                { key: 'createDate', label: 'Date', sortOrder: 0, sortDirection: 'descending'  },
                 { key: 'createdBy', label: 'Created by' },
             ]
         };

@@ -24,7 +24,7 @@ export function generateStreamAndApp(customers) {
     var templateApps = checkTemplateAppExists(); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
     checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?
     for (const customer of customers) {
-            for (const templateApp of templateApps) {
+        for (const templateApp of templateApps) {
             generateAppForTemplate(templateApp, customer);
         }
     };
@@ -37,7 +37,7 @@ function generateAppForTemplate(templateApp, customer) {
     try {
         var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
         var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name);
-        var result =  reloadAppAndReplaceScriptviaEngine(newAppId, '');
+        var result = reloadAppAndReplaceScriptviaEngine(newAppId, '');
         var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
         console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
     } catch (err) {
@@ -66,20 +66,28 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
 
     return await qsocks.Connect(engineConfig)
         .then(function(global) {
-            console.log('connected to Qsocks');
+            // console.log('connected to Qsocks');
             _global = global;
-            return global.openDoc(appId, '', '', '', true) //global.openDoc(appId)
+            return global.openDoc(appId, '', '', '', true) //global.openDoc(appId), this code opens the app without data, that is faster!
         })
         .then(function(doc) {
             console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for appId: ', appId);
             return doc.getScript()
                 .then(function(script) {
+                    var call = {};
+                    call.action = 'Replace script'
+                    call.request = 'We extracted the following script from the app: ' + script;
+                    REST_Log(call);
                     // if you want to replace the database connection per customer use the script below.
                     //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
                     //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
                     return doc.setScript(script) //we now just include the old script in this app
                         .then(function(result) {
-                            console.log('Script replaced');
+                            var call = {};
+                            call.action = 'Replace script'
+                            call.request = 'The script of the app has been replaced with a customer specific one';
+                            REST_Log(call);
+                            // console.log('Script replaced');
                             return doc;
                         })
                 });
@@ -87,10 +95,18 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
         .then(function(doc) {
             return doc.doReload()
                 .then(function(result) {
-                    console.log('Reload : ' + result);
+                    var call = {};
+                    call.action = 'Reload app'
+                    call.request = 'The app has been reloaded: ' + result;
+                    REST_Log(call);
+                    // console.log('Reload : ' + result);
                     return doc.doSave()
                         .then(function(result) {
-                            console.log('Save : ', result);
+                            var call = {};
+                            call.action = 'Save app'
+                            call.request = 'App ' + appId+' saved success';
+                            REST_Log(call);
+                            // console.log('Save : ', result);
                             _global.connection.close();
                             return doc;
                         });
@@ -135,7 +151,7 @@ function createTag(name) {
     console.log('QRS Functions Appp, create a tag: ' + name);
 
     try {
-        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/Tag', {
+        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Tag', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: { "name": name }
@@ -145,7 +161,7 @@ function createTag(name) {
         //logging only
         const call = {};
         call.action = 'create Tag';
-        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/tag';
+        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/tag';
         call.response = result;
         REST_Log(call);
 
@@ -173,7 +189,7 @@ function createSelection(type, guid) {
     console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);
 
     try {
-        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/Selection', {
+        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: { items: [{ type: type, objectID: guid }] }
@@ -192,7 +208,7 @@ function deleteSelection(selectionId) {
     console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
 
     try {
-        const result = HTTP.delete('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/Selection/' + selectionId, {
+        const result = HTTP.delete('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId, {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }
         })
@@ -215,7 +231,7 @@ function addTagViaSyntheticToType(type, selectionId, tagGuid) {
     console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
 
     try {
-        const result = HTTP.put('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
+        const result = HTTP.put('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: {
@@ -246,16 +262,16 @@ export function copyApp(guid, name) {
     console.log('QRS Functions Appp, copy the app id' + guid + 'to app with name: ', name);
 
     try {
-        const call ={};
-        call.action = 'Copy app'; 
-        call.request = 'http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy?'
+        const call = {};
+        call.action = 'Copy app';
+        call.request = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy?'
 
         call.result = HTTP.post(call.request, {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey, 'name': name },
             data: { "name": name }
         })
-        REST_Log(call);    
+        REST_Log(call);
         var newGuid = call.result.data.id;
         console.log('Step 2: the new app id is: ', newGuid);
         //addTag('App', newGuid);
@@ -302,11 +318,11 @@ export function getApps() {
     try {
         const call = {};
         call.action = 'Get list of apps';
-        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full';
-        call.response = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
-                headers: authHeaders,
-                params: { 'xrfkey': senseConfig.xrfkey }
-            });
+        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/full';
+        call.response = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey }
+        });
         REST_Log(call);
         return call.response.data;
     } catch (err) {
@@ -321,14 +337,14 @@ export function deleteApp(guid) {
     try {
         const call = {};
 
-        const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
+        const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders
         })
         Meteor.call('updateLocalSenseCopy');
 
         //logging only
         call.action = 'Delete app';
-        call.request = 'HTTP.del(http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey;
+        call.request = 'HTTP.del(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey;
         call.response = result;
         REST_Log(call);
         return result;
@@ -345,7 +361,7 @@ export function publishApp(appGuid, appName, streamId, customerName) {
     check(streamId, String);
 
     try {
-        const result = HTTP.call('put', 'http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
+        const result = HTTP.call('put', 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
                 headers: {
                     'hdr-usr': senseConfig.headerValue,
                     'X-Qlik-xrfkey': senseConfig.xrfkey
@@ -354,7 +370,7 @@ export function publishApp(appGuid, appName, streamId, customerName) {
             //logging into database
         const call = {};
         call.action = 'Publish app';
-        call.request = 'HTTP.call(put, http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey + ", {headers: {'hdr-usr': " + senseConfig.headerValue, +'X-Qlik-xrfkey:' + senseConfig.xrfkey + '}';
+        call.request = 'HTTP.call(put, http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey + ", {headers: {'hdr-usr': " + senseConfig.headerValue, +'X-Qlik-xrfkey:' + senseConfig.xrfkey + '}';
         call.response = result;
         REST_Log(call);
         return result;
