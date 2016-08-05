@@ -4,12 +4,13 @@ import { Apps, TemplateApps } from '/imports/api/apps.js'
 import { Customers, dummyCustomers } from '../api/customers.js';
 import { Streams } from '/imports/api/streams.js'
 import { senseConfig, engineConfig, _certs, authHeaders } from '/imports/api/config.js';
+import { REST_Log } from '/imports/api/APILogs';
 
 Router.route('/sso', function(request, response, next) {
 
     console.log("Meteor's authentication module qlikAuthSSO.js received the forwarded request from Qlik Sense proxy.");
     console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
-    
+
 
     //first find the customers that have a logged in users (mongo returns a complete document)
     var customer = Customers.findOne({ 'users.currentlyLoggedIn': true });
@@ -32,23 +33,45 @@ Router.route('/sso', function(request, response, next) {
             ]
         }
         console.log('Request ticket for this user passport": ', passport);
+
+        //logging only
+        var call = {};
+        call.action = 'Request ticket (SSO)'
+        call.request = 'Request ticket for this user passport: ": ' + JSON.stringify(passport);
+        REST_Log(call);
+
         var options = {
-                'Certificate': _certs.cert, //'C:/Users/Qlik/Meteor projects/qlikauth-meteor/node_modules/qlik-auth/client.pfx',
-                'CertificateKey': _certs.key,
-                'PassPhrase': ''
-            }
+            'Certificate': _certs.cert, //'C:/Users/Qlik/Meteor projects/qlikauth-meteor/node_modules/qlik-auth/client.pfx',
+            'CertificateKey': _certs.key,
+            'PassPhrase': ''
+        }
         console.log('Make call for ticket request with these options: ', options);
         qlikauth.requestTicket(request, response, passport, options);
+
+        //logging only        
+        call.action = 'Ticket request config (SSO)'
+        call.request = 'Make call for ticket request with these options: ', options;
+        REST_Log(call);
+
     }
 }, { where: 'server' });
 
 Router.route('/updateSenseInfo/apps', function(request, response, next) {
-    console.log('++++++++++++We got an incoming REST Call from the Sense Notification handler for APPS, this means the Sense Repository has changed');
+    // console.log('++++++++++++We got an incoming REST Call from the Sense Notification handler for APPS, this means the Sense Repository has changed');
+    //logging only
+    var call = {};
+    call.action = 'Notification apps'
+    call.request = 'We got an incoming REST Call from the Sense Notification handler for APPS, this means the Sense Repository has changed';
+    REST_Log(call);
     Meteor.call('updateLocalSenseCopyApps');
 }, { where: 'server' });
 
 Router.route('/updateSenseInfo/streams', function(request, response, next) {
-    console.log('++++++++++++We got an incoming REST Call from the Sense Notification handler for STREAMS, this means the Sense Repository has changed');
+    // console.log('++++++++++++We got an incoming REST Call from the Sense Notification handler for STREAMS, this means the Sense Repository has changed');
+    //logging only
+    var call = {};
+    call.action = 'Notification streams'
+    call.request = 'We got an incoming REST Call from the Sense Notification handler for APPS, this means the Sense Repository has changed';
+    REST_Log(call);
     Meteor.call('updateLocalSenseCopyStreams');
 }, { where: 'server' });
-
