@@ -108,7 +108,11 @@ Template.OEMPartner.events({
             })
     },
     'click .selfservice' () {       
-        $('.ui.modal')
+        $('.ui.modal.SSBI')
+            .modal('show');
+    },
+    'click .APIAutomation' () {       
+        $('.ui.modal.APIAutomation')
             .modal('show');
     }
 }); //end Meteor events

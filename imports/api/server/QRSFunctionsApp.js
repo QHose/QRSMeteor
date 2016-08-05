@@ -33,12 +33,22 @@ export function generateStreamAndApp(customers) {
 function generateAppForTemplate(templateApp, customer) {
     console.log(templateApp);
     console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+    const call = {};
+    call.action = 'Start of generation';
+    call.request = 'START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name;
+    REST_Log(call);
 
     try {
         var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
         var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name);
         var result = reloadAppAndReplaceScriptviaEngine(newAppId, '');
         var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name);
+
+        //logging only
+        const call = {};
+        call.action = 'Finished';
+        call.request = 'FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name;
+        REST_Log(call);
         console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
     } catch (err) {
         console.error(err);
@@ -68,6 +78,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
     call.request = 'Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
     REST_Log(call);
 
+    //use ES7 await function so this code will run in synchronous mode
     return await qsocks.Connect(engineConfig)
         .then(function(global) {
             // console.log('connected to Qsocks');
