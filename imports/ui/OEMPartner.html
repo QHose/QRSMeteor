@@ -40,7 +40,7 @@
                 3: Start publishing
             </div>
             <p>
-                <h4>Test manual steps first</h4>If you press generate a sequence of activities will be executed automatically via the API's. You can test each activity also manually (and see the <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>). <br> For example you can press "create stream" next to the customer to create a stream. "Copy app" to manually copy the app for each selected customer. <br> Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay or who have activited the app in your software, so this "selection" simulates that use case.</p>
+                If you press generate a sequence of activities will be executed automatically via the API's. You can test each activity also manually (and see the <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>). <br> For example you can press "generate stream" next to the customer to create a stream. "Copy app" to manually copy the app for each selected customer. <br> Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay or who have activited the app in your software, so this "selection" simulates that use case.</p>
             <p>
                 <h4>Fully automated app generation</h4>We can also automate each manual step, this happens when you press the generate button. It will publish a copy of the template app in the "customer name" stream. Next to this we will also replace the script with a customer specific and reload the app. This to enable the use case to connect to customer specific databases and to load free tables and fields which are specific to each customer.
             </p>
@@ -56,7 +56,7 @@
                 4: Test Single Sign On
             </div>
             <p>
-                Select a user to test Single Sign On. For this user a ticket will be generated which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles in Sense. In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information.
+                Select a user to test Single Sign On. For this user a ticket will be generated which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles in Sense. In the your <a href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information.
             </p>
             {{/if}} {{#if loading}}
             <div class="header">

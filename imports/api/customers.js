@@ -41,7 +41,7 @@ Customers.attachSchema(new SimpleSchema({
     },
     "users.$.country": {
         type: String,
-        allowedValues: ['NL', 'BE', 'DE']
+        allowedValues: ['NL', 'USA', 'DE']
     }
 }));
 
@@ -55,8 +55,8 @@ export const dummyCustomers = [{
             "country": "NL"
         },
         {
-            "name": "Paul",
-            "group": "Admin",
+            "name": "Linda",
+            "group": "Contributor",
             "currentlyLoggedIn": false,
             "country": "NL"
         },
@@ -65,7 +65,14 @@ export const dummyCustomers = [{
             "group": "Developer",
             "currentlyLoggedIn": false,
             "country": "NL"
-        }]
+        },
+        {
+            "name": "Paul",
+            "group": "Admin",
+            "currentlyLoggedIn": false,
+            "country": "NL"
+        }
+        ]
     },
     {
         "name": "Esso",
