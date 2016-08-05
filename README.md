@@ -3,6 +3,9 @@
 Demo site http://92-111-9-190.static.chello.nl/
 
 Watch [this video](https://youtu.be/RuL8p2DiPF4?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) to learn the concept of the SaaS automation demo.
+![alt tag](https://raw.githubusercontent.com/QHose/QRSMeteor/master/public/images/only generation explanation.gif)
+
+
 
 Watch [this playlist](https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) for a complete overview on Sense integration. The topics include security, web integration (QAP) and architecture.
 
@@ -31,6 +34,7 @@ The main connection between Meteor and Qlik Sense can be found here https://gith
 Don't get distracted by the API_LOG object. I only need that for the demo, to insert the request and response from the call in the database.
 
 ![alt tag](https://raw.githubusercontent.com/QHose/QRSMeteor/master/public/images/introduction to SaaS demo platform deep dive short.gif)
+
 
 # Authentication
 The internal REST calls use both certificate (QPS logout for example) and header authentication only for demo purposes. In production you would normally only use certificates, unless you have a authenticating reverse proxy. The end users connect to Sense via the Meteor virtual proxy (Sense QMC config item). Make sure that you also logout the user on this proxy. (you can login/logout per proxy!)
