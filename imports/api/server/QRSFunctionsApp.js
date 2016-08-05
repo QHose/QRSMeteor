@@ -62,7 +62,11 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
     var _global = {};
 
     engineConfig.appname = appId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
-    console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname);
+    // console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname);
+    var call = {};
+    call.action = 'QSSOCKS connect to engine';
+    call.request = 'Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
+    REST_Log(call);
 
     return await qsocks.Connect(engineConfig)
         .then(function(global) {
@@ -104,7 +108,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
                         .then(function(result) {
                             var call = {};
                             call.action = 'Save app'
-                            call.request = 'App ' + appId+' saved success';
+                            call.request = 'App ' + appId + ' saved success';
                             REST_Log(call);
                             // console.log('Save : ', result);
                             _global.connection.close();
