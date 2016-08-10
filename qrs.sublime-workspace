@@ -519,6 +519,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "imports/ui/OEMPartner.html",
+			"settings":
+			{
+				"buffer_size": 11312,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -583,8 +591,7 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui"
 	],
 	"file_history":
 	[
@@ -983,8 +990,39 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "imports/ui/OEMPartner.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11312,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4381,
+								4381
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1300.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
