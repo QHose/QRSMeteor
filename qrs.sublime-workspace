@@ -4,8 +4,12 @@
 		"selected_items":
 		[
 			[
+				"app",
+				"appId"
+			],
+			[
 				"re",
-				"request"
+				"result"
 			],
 			[
 				"u",
@@ -26,10 +30,6 @@
 			[
 				"_",
 				"_global"
-			],
-			[
-				"app",
-				"appname"
 			],
 			[
 				"ap",
@@ -519,36 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"contents": "<template name='OEMPartner'>\n    <div class=\"ui modal\">\n        <i class=\"close icon\"></i>\n        <div class=\"ui header\">Please see the overview of our layered approach to the self service functionality in Qlik Sense</div>\n        <img class=\"ui fluid image\" src=\"/images/SelfServiceBI.png\">\n        <div class=\"description\">\n            <!-- <p>For more information see this <1a href=\"#\" class=\"selfservice\"> governed self service approach document </a></p> -->\n        </div>\n        <div class=\"actions\">\n            <!-- <div class=\"ui black deny button\">\n                    Nope\n                </div> -->\n            <div class=\"ui positive right labeled icon button\">\n                I got it...\n                <i class=\"checkmark icon\"></i>\n            </div>\n        </div>\n    </div>\n    <div class=\"ui icon message\">\n        <img class=\"icon\" src=\"images/intro.png\">\n        <div class=\"content\">\n            {{#if freshEnvironment}}\n            <div class=\"header\">\n                1: Let's start publishing apps for your customers\n            </div>\n            <p>\n                First insert some customers with users in your SaaS platform.\n                <li>You can use these customers later on to generate streams and apps. </li>\n                <li>You can use the users to test the single sign and our layered approach to governed <a href=\"#\" class=\"selfservice\">self service</a> in step 4.</li>\n            </p>\n            {{/if}} {{#if readyToSelectTemplate}}\n            <div class=\"header\">\n                2: Select a template app\n            </div>\n            <p>\n                Select the \"my first template\" app on the right.\n            </p>\n            {{/if}} {{#if readyToGenerate}}\n            <div class=\"header\">\n                3: Start publishing\n            </div>\n            <p>\n                <h4>Test manual steps first</h4>\n                If you press generate a sequence of activities will be executed automatically via the API's. You can test each activity also manually (and see the <a href=\"{{pathFor 'APILogs'}}\" class=\"item\">API Calls</a>). For example you can press \"create stream\" next to the customer to create a stream. \"Copy app\" to manually copy the app for each selected customer. Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay you or who have activited the app in your software, so this \"selection\" simulates that use case.</p><p>\n                <h4>Fully automated app generation</h4>\n                We can also automate each manual step, this happens when you press the generate button. It will publish a copy of the template app in the \"customer name\" stream. Next to this we will also replace the script with a customer specific and reload the app. This to enable the use case to connect to customer specific databases and to load free tables and fields which are specific to each customer.\n            </p>\n            {{/if}} {{#if templateButNoCustomer}}\n            <div class=\"header\">\n                Customers\n            </div>\n            <p>\n                You already selected a template, but please re-insert your customers.\n            </p>\n            {{/if}} {{#if readyToTestSSO}}\n            <div class=\"header\">\n                4: Test Single Sign On\n            </div>\n            <p>\n                Select a user to test Single Sign On. For this user a ticket will be generated which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles in Sense. In the your <a class=\"item\" href=\"{{webIntegrationDemo}}/hub\" target=\"_blank\">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href=\"{{pathFor 'introductionSecurity'}}\" class=\"item\">videos</a> for more information.\n            </p>\n            {{/if}} {{#if loading}}\n            <div class=\"header\">\n                3: API communication is in progress...\n            </div>\n            <p>This application is now sending REST API calls to the Qlik Sense QRS and Engine API. You can view the HTTP REST requests and the responses in the <a href=\"{{pathFor 'APILogs'}}\" class=\"item\">QMC - API Calls menu</a></p>\n            {{/if}}\n        </div>\n    </div>\n    {{#if readyToTestSSO}}\n    <div class=\"ui segment\">\n        {{> simulateUserLogin}}\n    </div>\n    {{/if}}\n    <div class=\"ui segment\">\n        <a class=\"ui {{loading}} labeled icon button\" href=\"{{pathFor 'users'}}\"> <i class=\"edit icon \"></i>1: Insert Customers</a>\n        <div class=\"ui buttons\">\n            <div class=\"ui buttons\">\n                <div class=\"ui {{loading}} button resetEnvironment\"><i class=\"undo icon \"></i> Initialize demo</div>\n                <div class=\"ui floating dropdown icon button\">\n                    <i class=\"dropdown icon\"></i>\n                    <div class=\"menu\">\n                        <div class=\"item insertDummyCustomers\"><i class=\"edit icon \"></i> Insert dummy customers</div>\n                        <div class=\"item deleteAllCustomers\"><i class=\"delete icon \"></i> Delete all customers</div>\n                        <div class=\"item toggleAllCustomers\"><i class=\"refresh icon\"></i> Toggle the selected customers</div>\n                    </div>\n                </div>\n            </div>\n            {{#if readyToGenerate}}\n            <div class=\"or\"></div>\n            <div class=\"ui {{loading}} primary button generateStreamAndApp\"><i class=\"play icon \"></i> 3: Generate</div>\n            {{/if}}\n        </div>\n        {{#if noCustomers}}\n        <div class=\"ui icon message\">\n            <img class=\"icon\" src=\"images/customers.png\">\n            <div class=\"content\">\n                <div class=\"header\">\n                    <h4>No customers</h4>\n                </div>\n                <ul>\n                    <li>This demo simulates your SaaS platform. Therefore we first need to <a href=\"{{pathFor 'users'}}\">insert</a> some customers and users</li>\n                    <li>Or <a href=\"#\" class=\"insertDummyCustomers\"> insert dummy </a>customers (use these if you want to test row level security)</li>\n                </ul>\n            </div>\n        </div>\n        {{else}}\n        <div class=\"ui icon message\">\n            <img class=\"icon\" src=\"images/customers.png\">\n            <div class=\"content\">\n                <div class=\"header\">\n                    <h4>{{NrCustomers}} Customers stored in the database of your SaaS platform </h4>\n                </div>\n            </div>\n        </div>\n        <table class=\"ui celled striped table\">\n            <thead>\n                <tr>\n                    <th>Customer</th>\n                    <th>Delete customer</th>\n                    <th>Generate stream</th>\n                </tr>\n            </thead>\n            <tbody>\n                {{#each customers}} {{> customer}} {{/each}}\n            </tbody>\n        </table>\n        {{#if readyToSelectTemplate}} {{/if}} {{#if noTemplateApps}}\n        <div class=\"ui icon message\">\n            <img class=\"icon\" src=\"images/app.png\">\n            <div class=\"content\">\n                <div class=\"header\">\n                    <h4>No template apps</h4>\n                </div>\n                <p>Please select an app in the templates stream (on the right) which you would like to use as a basis template. We will create a copy and publish it into the \"customer name\" stream for each of your selected customers</p>\n            </div>\n        </div>\n        {{else}}\n        <div class=\"ui icon message\">\n            <img class=\"icon\" src=\"images/app.png\">\n            <div class=\"content\">\n                <div class=\"header\">\n                    <h4>Template apps</h4>\n                </div>\n                <p>We will create a \"customer name\" stream, replace the script, reload and publish a copy of each template app for each of your customers</p>\n            </div>\n        </div>\n        <table class=\"ui celled table\">\n            <thead>\n                <tr>\n                    <th>App (QVF)</th>\n                    <th>Don't mark as template</th>\n                </tr>\n            </thead>\n            <tbody>\n                {{#each templateApps}}\n                <tr>\n                    <td> <a href={{linkToApp}} target=_blank> {{name}} </a></td>\n                    <td class=\"removeTemplateApp\"><i class=\"remove circle icon\"></i></td>\n                </tr>\n                {{/each}}\n            </tbody>\n        </table>\n        {{/if}} {{/if}}\n    </div>\n</template>\n",
-			"file": "imports/ui/OEMPartner.html",
-			"file_size": 8821,
-			"file_write_time": 131147943267259063,
-			"settings":
-			{
-				"buffer_size": 8666,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/OEMPartner.js",
-			"settings":
-			{
-				"buffer_size": 4149,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "{\n    \"adminEmails\": mbj@qlik.com,\n    \"public\": {\n        \"host\": \"PRESALES1\",\n        \"port\": 81, \n        \"UDC\": \"OEM_HOST\", \n        \"virtualProxyClientUsage\": \"meteor\",                       \n        \"webIntegrationHost\": \"localhost\",\n        \"webIntegrationDemoPort\": 3030,\n        \"facebook\":{\n            \"clientId\": \"1754933311453043\"         \n        }                        \n    },\n    \"private\": {\n        \"host\": \"PRESALES1\",\n        \"port\": 81, \n        \"certificatesDirectory\": \"C:\\\\Repository\\\\Exported Certificates\\\\.Local Certificates\",\n        \"notificationURL\": \"http://nlsch-mbj3:3000/updateSenseInfo\",\n        \"SenseServerInternalLanIP\": \"PRESALES1\",        \n        \"useSSL\": false,\n        \"passphrase\": null,\n        \"authentication\": \"header\",\n        \"virtualProxy\": \"hdr\",\n        \"headerKey\": \"hdr-usr\",\n        \"UDC\": \"OEM_HOST\",        \n        \"headerValue\": \"PRESALES1\\\\Qlik\",        \n        \"isSecure\": true,\n        \"engineHeaders\": \"UserDirectory=PRESALES1;UserId=Qlik\",\n        \"enginePort\": 4747,\n        \"proxyPort\": 4243,\n        \"google\":{\n            \"clientId\": \"411682799732-r38hgfr9nlh0c0udigt4ln23ma8db93k.apps.googleusercontent.com\",\n            \"secret\": \"YCP43OPc_-tGlVqvj-o-hbu1\"\n        },\n        \"facebook\":{\n            \"clientId\": \"1754933311453043\",\n            \"secret\": \"e05dbcd949f8cdbd0892ac81e5eb5da4\"\n        }\n    }\n}\n",
-			"file": "settings-development.json",
-			"file_size": 1389,
-			"file_write_time": 131147130731901654,
-			"settings":
-			{
-				"buffer_size": 1383,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -609,35 +579,39 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/lib",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages"
 	],
 	"file_history":
 	[
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsStream.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/APILogs.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server/qlikAuthSSO.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsStream.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/securityRules.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/securityRules.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.html",
@@ -648,8 +622,6 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/server/yogiben.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/accounts.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qlik-auth/index.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server/qlikAuthSSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/config.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qsocks/qsocks.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/startup/accounts-config.js",
@@ -677,13 +649,10 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/apps.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/APILogs.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/package.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/QMC.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.html",
 		"/C/Users/MBJ/Desktop/jacob.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/startUp.bat",
@@ -750,13 +719,14 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 58.0
 	},
 	"find_in_files":
 	{
 		"height": 102.0,
 		"where_history":
 		[
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
@@ -810,6 +780,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"facebook",
+			"Shell",
 			"architecture",
 			"192.168.1.150",
 			"2008ENT",
@@ -935,9 +907,7 @@
 			"_QRSconfig",
 			"Mongo.Collection",
 			"config",
-			"EngineConfig",
-			"config",
-			"NPM_QRS"
+			"EngineConfig"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1013,99 +983,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "imports/ui/OEMPartner.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8666,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5688,
-								5688
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2744.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "imports/ui/OEMPartner.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4149,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								960,
-								960
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "settings-development.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1383,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								34,
-								34
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
