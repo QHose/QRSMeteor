@@ -23,6 +23,11 @@ if (Meteor.isClient) {
         return 'wVVbP7a5-I8';
     });
 
+    Template.registerHelper('doc_securtityIntegration', function() {
+        return 'https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FSecurity%20integration%3A%20Provide%20Single%20Sign%20On%20and%20share%20access%20rights%7C51692548-CA14-46D7-BCE5-69C1473E44BD%2F%29
+onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Security%20integration%20Provide%20Single%20Sign%20On%20and%20share%20access%20rights&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={51692548-CA14-46D7-BCE5-69C1473E44BD}&end';
+    });
+
     Template.registerHelper('senseServerHub', function() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/hub';
     });
