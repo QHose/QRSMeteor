@@ -1,5 +1,28 @@
 <template name="introduction">
     <div class="ui container">
+        <div class="ui modal stepByStep">
+            <div class="ui icon message">
+                <img class="icon" src="images/intro.png">
+                <div class="content">
+                    <div class="header">
+                        <h4>Step by step guide on how to use this demo platform</h4>
+                    </div>
+                    <p>This video is just a selection of the extended introduction video. This video shows you "where to click". Please watch the extended video for a complete overview. You can also watch a specific video from the "video menu" in the top menu.</p>
+                </div>
+            </div>
+            <div class="ui one column centered grid">
+                <div class="column centered">
+                    <!-- <div class="ui embed" data-url="https://www.youtube.com/embed/wVVbP7a5-I8" data-placeholder="/images/API.png"></div> -->
+                 <iframe width="854" height="480" src="https://www.youtube.com/embed/T9a3s5cnvPE" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui positive right labeled icon button">
+                    I got it...
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
         <div class="ui very padded segment">
             <div class="ui stackable grid">
                 <div class="row">
@@ -18,11 +41,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h3 class="ui header">How to use the demo?</h3>
-                    <p> This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "free fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.</p>
+                    <h3 class="ui header">How to use the demo?</h3> 
+                    
+                    <p> You can watch the step by step video <a href="#" class="stepByStep">here</a>. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "free fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.</p>
                     <ol>
-                        <li>You first have to enter some customers</li>
-                        <li>Select the "my first template" app on the right of the screen (this is the Qlik Sense side)</li>
+                        <li>You first have to enter some customers. In real life you already have the users in your SaaS platform and you just pass on the user and its group membership in the security ticket. This means you don't have to maintain users or groups in Qlik Sense; only app templates.)</li>
+                        <li>Select the "my first template" app on the right of the screen (this is the Qlik Sense side). Later on, if you create new apps using a user with the "Developer" role you can also use these as a template.</li>
                         <li>Press generate</li>
                         <li>Select a user, and test the single sing on.</li>
                     </ol>

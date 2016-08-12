@@ -523,7 +523,7 @@
 			"file": "imports/ui/OEMPartner.html",
 			"settings":
 			{
-				"buffer_size": 11312,
+				"buffer_size": 11590,
 				"line_ending": "Windows"
 			}
 		}
@@ -999,15 +999,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11312,
+						"buffer_size": 11590,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4381,
-								4381
+								3763,
+								3763
 							]
 						],
 						"settings":
@@ -1017,7 +1017,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1300.0,
+						"translation.y": 1277.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
