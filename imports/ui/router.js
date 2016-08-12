@@ -9,7 +9,7 @@ Router.configure({
 });
 
 Router.plugin('ensureSignedIn', {
-    only: ['generation', 'users']
+    // only: ['generation', 'users']
 });
 
 Router.route('/', function() {
