@@ -10,6 +10,10 @@ Template.introduction.events({
     'click .stepByStep' () {
         $('.ui.modal.stepByStep')
             .modal('show');
+    },
+     'click .howDoesSaaSAutomationWork' () {
+        $('.ui.modal.howDoesSaaSAutomationWork')
+            .modal('show');
     }
 });
 

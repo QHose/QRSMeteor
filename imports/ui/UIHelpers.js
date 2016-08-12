@@ -19,6 +19,10 @@ if (Meteor.isClient) {
     //         .replace(/,/g, ".");
     // });
 
+    Template.registerHelper('URL_howDoesSaaSAutomationWork', function() {
+        return 'wVVbP7a5-I8';
+    });
+
     Template.registerHelper('senseServerHub', function() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/hub';
     });
@@ -103,4 +107,5 @@ if (Meteor.isClient) {
             .count() && TemplateApps.find()
             .count();
     });
+
 }
