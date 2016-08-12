@@ -141,18 +141,27 @@
                     <div class="ten wide column">
                         <h3 class="ui header">Embed Qlik Sense</h3>
                         <p>We integrate complete our hub, apps, sheets or individual objects using an Iframe or Div tag. All Sense functionality "is delivered via a webserver", called the proxy (QPS). This is nice because it means everything in Sense is web technology based; web sockets, javascript, CSS3, HTML5 and Angular.</p>
+                        <div class="center aligned column">
+                            <div class="ui mini buttons">
+                                <a href="{{doc_webIntegration}}" target="_blank" class="ui button">Read more</a>
+                                <div class="or"></div>
+                                <a href="{{pathFor 'webIntegration'}}" class="ui positive button">Watch video</a>
+                            </div>
+                        </div>
                         <h3 class="ui header">Your software controls Qlik Sense</h3>
-                        <p>Using our .NET API, a Visual Studio plugin, javascript and REST API's you can automate everything. So your software can control and configure Sense. Using this mechanism you can for example create apps with specific (big)data on demand for each customer. You can even create complete dashboards or individual charts on the fly. This removes the need to design everything up front.</p>
+                        <p>Using our .NET API, a Visual Studio plugin, javascript and REST API's you can automate everything. So your software can control and configure Sense. Using this mechanism you can for example create apps with specific (big)data on demand for each customer. You can even create complete dashboards or individual charts on the fly. This removes the need to design everything up front.</p>                        
+                        <div class="center aligned column">
+                            <div class="ui mini buttons">
+                                <a href="{{doc_processIntegration}}" target="_blank" class="ui button">Read more</a>
+                                <div class="or"></div>
+                                <a href="#" class="ui positive button howDoesSaaSAutomationWork">Watch video</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="four wide right floated column">
                         <img class="ui fluid image" src="images/embed.png">
                     </div>
-                </div>
-                <div class="row">
-                    <div class="center aligned column">
-                        <a href="#" class="ui large button howDoesSaaSAutomationWork">Show video</a>
-                    </div>
-                </div>
+                </div>                
             </div>
         </div>
         <div class="ui very padded segment">
@@ -164,16 +173,17 @@
                     </div>
                     <div class="ten wide column">
                         <h4 class="ui header">Authentication - Single Sign on using tickets (tokens)</h4> We re-use your existing way to authenticate the users. We will insert a little piece of code inside your existing "security module". In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via a SSL certificate exchange). And send this info about the user (userId, group membership) in a JSON object to Sense (we call this ticketing).
-                        <h4 class="ui header">Authorization</h4> Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name. See an introduction video to an OEM security approach with Qlik Sense <a href="{{pathFor 'introductionSecurity'}}"> here </a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="center aligned column">
-                        <div class="ui large buttons">
-                            <button href="{{doc_securtityIntegration}}" target="_blank" class="ui button">Read more</button>
-                            <div class="or"></div>
-                            <button href="{{pathFor 'introductionSecurity'}}" class="ui positive button">Watch video</button>                            
-                        </div>                        
+                        <h4 class="ui header">Authorization</h4> Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name. 
+                        <div class="ui horizontal divider">
+                            <!-- Or -->
+                        </div>
+                        <div class="center aligned column">
+                            <div class="ui mini buttons">
+                                <a href="{{doc_securtityIntegration}}" target="_blank" class="ui button">Read more</a>
+                                <div class="or"></div>
+                                <a href="{{pathFor 'introductionSecurity'}}" class="ui positive button">Watch video</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

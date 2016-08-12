@@ -19,13 +19,33 @@ if (Meteor.isClient) {
     //         .replace(/,/g, ".");
     // });
 
+
+    Template.registerHelper('URL_Youtube_playlist', function() {
+        return 'https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';
+    });
+
+
     Template.registerHelper('URL_howDoesSaaSAutomationWork', function() {
         return 'wVVbP7a5-I8';
     });
 
     Template.registerHelper('doc_securtityIntegration', function() {
-        return 'https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FSecurity%20integration%3A%20Provide%20Single%20Sign%20On%20and%20share%20access%20rights%7C51692548-CA14-46D7-BCE5-69C1473E44BD%2F%29
-onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Security%20integration%20Provide%20Single%20Sign%20On%20and%20share%20access%20rights&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={51692548-CA14-46D7-BCE5-69C1473E44BD}&end';
+        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FSecurity%20integration%20Provide%20Single%20Sign%20On%20and%20share%20access%20%7C4a2a16e2-5900-4967-97f9-b2d824c7bee1%2F%29';
+    });
+    Template.registerHelper('doc_processIntegration', function() {
+        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FProcess%20integration%20and%20automation%20using%20API%27s%7C269d7763-b98f-4b15-aeb1-6d983b91edc0%2F%29';
+    });
+
+
+    Template.registerHelper('doc_integrationOverview', function() {
+        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FIntegration%20overview%20-%20Embedded%20analytics%7C4c1bc9c6-3f43-4565-b397-cd6dafe3578b%2F%29';
+    });
+
+    Template.registerHelper('doc_webIntegration', function() {
+        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FWeb%20integration%20embed%20Sense%20charts%20or%20data%20inside%20your%20%7C00dd03fd-8c4e-48ce-92b2-54b4cab815e6%2F%29';
+    });
+    Template.registerHelper('doc_dataIntegration', function() {
+        return 'https: //onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FData%20integration%20Combine%20sources%20into%20one%20associative%20model%7Ce669a0a2-9a83-470e-aae8-ba63ac500038%2F%29';
     });
 
     Template.registerHelper('senseServerHub', function() {
@@ -108,7 +128,7 @@ onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/
     });
 
     Template.registerHelper('readyToTestSSO', function() {
-        return Session.get('generated?')&&Customers.find()
+        return Session.get('generated?') && Customers.find()
             .count() && TemplateApps.find()
             .count();
     });
