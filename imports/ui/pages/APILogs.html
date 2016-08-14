@@ -17,8 +17,14 @@
         </div>
         <div class="row">
             <h3 class="ui header">            
+                Sequence diagram</h3>
+            <p>In this schema you will see the flow from the user requesting the demo page, though the source code of this demo platform to Qlik Sense and back</p>
+            <div class="diagram">Andrew->China: Says Hello Note right of China: China thinks\nabout it China-->Andrew: How are you? Andrew->>China: I am good thanks!</div>
+        </div>
+        <div class="row">
+            <h3 class="ui header">            
                 Real time JSON messages (API)</h3>
-                <p>In the table below you will see a real time overview of the JSON messages being sent between Qlik Sense QRS and the Engine API. You can search for specific words like app, stream, notification, logout etc. to view the API request from this demo platform and the response from Qlik Sense.</p>
+            <p>In the table below you will see a real time overview of the JSON messages being sent between Qlik Sense QRS and the Engine API. You can search for specific words like app, stream, notification, logout etc. to view the API request from this demo platform and the response from Qlik Sense.</p>
         </div>
         {{> reactiveTable settings=RESTCallSettings}}
     </div>

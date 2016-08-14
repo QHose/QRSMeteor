@@ -1,7 +1,13 @@
 import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
+import _ from 'underscore';
 import '/imports/ui/UIHelpers';
 import { APILogs } from '/imports/api/APILogs';
+import '/imports/ui/external/raphael-min';
+import '/imports/ui/external/sequence-diagram-min';
+// import '/imports/ui/external/underscore-min';
+
+console.log('de value of _', _);
 
 Template.APILogs.helpers({
     RESTCallSettings: function() {
@@ -27,3 +33,7 @@ Template.APILogs.helpers({
         };
     }
 })
+
+Template.APILogs.onRendered(function() {
+    $(".diagram").sequenceDiagram({theme: 'hand'});
+});
