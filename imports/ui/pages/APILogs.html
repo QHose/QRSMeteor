@@ -1,26 +1,41 @@
 <template name='APILogs'>
-    <div class="ui stackable grid">
+    <div class="ui stackable grid container">
         <div class="row">
             <h3 class="ui header">
                 <!-- <img class="icon" src="images/API.png"> -->
-                Overview of the API communication between Qlik and your SaaS platform</h3>
+                Overview and source code of the API communication between Qlik and your SaaS platform</h3>
         </div>
-        <div class="row">
-            <div class="four wide column">
+        <div class="row ui segment">
+            <div class="eight wide column">
                 <p>On the right you will find an introduction of the manual QMC activities we have automated by making use of the QRS and Engine API. See the API part in the documentation menu above for more information on APIs.</p>
                 <h4>Use the demo source code</h4>
                 <p>You can find the key source code which perform the calls <a href="https://github.com/QHose/QRSMeteor/tree/master/imports/api/server">here</a>. Most likely your SaaS platform already uses REST APIs, so just copy the code and and start automating...</p>
+                <div class="center aligned column">
+                    <div class="ui mini buttons">
+                        <a href="{{doc_sourceCode}}" target="_blank" class="ui button">Source code guide</a>
+                        <div class="or"></div>
+                        <a href="https://github.com/QHose/QRSMeteor" target="_blank" class="ui button">Source code GitHub</a>
+                    </div>
+                </div>
             </div>
-            <div class="six wide left floated column">
+            <div class="right floated eight wide column">
                 <img class="ui image" src="/images/introduction to SaaS demo platform deep dive short.gif">
             </div>
         </div>
-        <div class="row">
-            <h3 class="ui header">            
-                Sequence diagram</h3>
-            <p>In this schema you will see the flow from the user requesting the demo page, though the source code of this demo platform to Qlik Sense and back</p>
-            <div class="mermaid">
-                CHART DEFINITION GOES HERE
+        <div class="row ui segment">
+            <div class="eight wide column">
+                <h4>Sequence diagrams</h4>
+                <p>We understand that understanding someone else's source code is complex therefore we created both a high level and a deep dive sequence diagram for the multi-tenant app publishing part.</p>
+                <div class="center aligned column">
+                    <div class="ui mini buttons">
+                        <a href="#" class="ui button sequenceOverview">High level diagram</a>
+                        <div class="or"></div>
+                        <a href="#" class="ui button sequenceGeneration">Generation diagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="right floated eight wide column">
+                <img class="ui image" src="/images/Sequence diagram generation 1.png">
             </div>
         </div>
         <div class="row">
@@ -29,5 +44,33 @@
             <p>In the table below you will see a real time overview of the JSON messages being sent between Qlik Sense QRS and the Engine API. You can search for specific words like app, stream, notification, logout etc. to view the API request from this demo platform and the response from Qlik Sense.</p>
         </div>
         {{> reactiveTable settings=RESTCallSettings}}
+    </div>
+    <div class="ui modal sequenceOverview">
+        <i class="close icon"></i>
+        <div class="ui header">Sequence diagram of high level source code interaction</div>
+        <div class="description">
+            <p>In this schema you will see the flow from the user requesting the demo page, though the source code of this demo platform to Qlik Sense and back</p>
+        </div>
+        {{> sequenceDiagramOverview}}
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                I got it...
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+    <div class="ui basic modal sequenceGeneration">
+        <i class="close icon"></i>
+        <div class="ui header">Deep dive sequence diagram of the generation part</div>
+        <div class="description">
+            <p>In this schema you will see the flow from the user requesting generation page via a click on the button on the introduction page. We skip the part of the user inserting customers and selecting a template. The thing which is explained on this page is the interaction between Meteor, Qlik Sense QRS and Engine APIs. In general you perform activities on QMC level with the QRS API and stuff inside an app with the Engine API.</p>
+        </div>
+        {{> sequenceDiagramGeneration}}
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                I got it...
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
     </div>
 </template>

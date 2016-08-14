@@ -41,6 +41,10 @@ if (Meteor.isClient) {
         return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FIntegration%20overview%20-%20Embedded%20analytics%7C4c1bc9c6-3f43-4565-b397-cd6dafe3578b%2F%29';
     });
 
+    Template.registerHelper('doc_sourceCode', function() {
+        return 'https://onedrive.live.com/edit.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727!1330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FQlik%20Sense%20SaaS%20demo%20tool%20documentation%20of%20source%20code%7C642dd24c-4af8-4a71-9190-b9f6d62cb339%2F%29';
+    });
+
     Template.registerHelper('doc_webIntegration', function() {
         return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FWeb%20integration%20embed%20Sense%20charts%20or%20data%20inside%20your%20%7C00dd03fd-8c4e-48ce-92b2-54b4cab815e6%2F%29';
     });
