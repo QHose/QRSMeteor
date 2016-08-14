@@ -23,7 +23,7 @@ Template.APILogs.helpers({
                         return new Spacebars.SafeString('<pre id="json">' + JSON.stringify(value, undefined, 2) + '</pre>')
                     }
                 },
-                { key: 'createDate', label: 'Date', sortOrder: 0, sortDirection: 'descending'  },
+                { key: 'createDate', label: 'Date', sortOrder: 0, sortDirection: 'descending' },
                 { key: 'createdBy', label: 'Created by' },
             ]
         };
@@ -31,16 +31,22 @@ Template.APILogs.helpers({
 })
 
 Template.APILogs.events({
-    'click .sequenceOverview' () {       
+    'click .sequenceOverview' () {
         $('.ui.modal.sequenceOverview')
-            .modal('show');
+            // .modal({
+            //     // observeChanges: true,
+            //     detachable: false
+            // })
+            .modal('show')
+            // .modal('refresh');
     },
-    'click .sequenceGeneration' () {       
+    'click .sequenceGeneration' () {
         $('.ui.modal.sequenceGeneration')
-            .modal('show');
+            .modal('show')
+            // .modal('refresh');
     }
 })
 
 Template.APILogs.onRendered(function() {
-   
+
 });

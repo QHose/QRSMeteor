@@ -1,11 +1,25 @@
 <template name='APILogs'>
     <div class="ui stackable grid container">
+        <div class="ui modal sequenceOverview">
+            <i class="close icon"></i>
+            <div class="ui header">Sequence diagram of high level source code interaction</div>
+            <div class="description">
+                <p>In this schema you will see the flow from the user requesting the demo page, though the source code of this demo platform to Qlik Sense and back</p>
+            </div>
+            {{> sequenceDiagramOverview}}
+            <div class="actions">
+                <div class="ui positive right labeled icon button">
+                    I got it...
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <h3 class="ui header">
                 <!-- <img class="icon" src="images/API.png"> -->
                 Overview and source code of the API communication between Qlik and your SaaS platform</h3>
         </div>
-        <div class="row ui segment">
+        <div class="row">
             <div class="eight wide column">
                 <p>On the right you will find an introduction of the manual QMC activities we have automated by making use of the QRS and Engine API. See the API part in the documentation menu above for more information on APIs.</p>
                 <h4>Use the demo source code</h4>
@@ -22,7 +36,8 @@
                 <img class="ui image" src="/images/introduction to SaaS demo platform deep dive short.gif">
             </div>
         </div>
-        <div class="row ui segment">
+        <div class="ui divider"></div>
+        <div class="row">
             <div class="eight wide column">
                 <h4>Sequence diagrams</h4>
                 <p>We understand that understanding someone else's source code is complex therefore we created both a high level and a deep dive sequence diagram for the multi-tenant app publishing part.</p>
@@ -38,6 +53,7 @@
                 <img class="ui image" src="/images/Sequence diagram generation 1.png">
             </div>
         </div>
+        <div class="ui divider"></div>
         <div class="row">
             <h3 class="ui header">            
                 Real time JSON messages (API)</h3>
@@ -45,21 +61,7 @@
         </div>
         {{> reactiveTable settings=RESTCallSettings}}
     </div>
-    <div class="ui modal sequenceOverview">
-        <i class="close icon"></i>
-        <div class="ui header">Sequence diagram of high level source code interaction</div>
-        <div class="description">
-            <p>In this schema you will see the flow from the user requesting the demo page, though the source code of this demo platform to Qlik Sense and back</p>
-        </div>
-        {{> sequenceDiagramOverview}}
-        <div class="actions">
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
-    <div class="ui basic modal sequenceGeneration">
+    <div class="ui modal sequenceGeneration">
         <i class="close icon"></i>
         <div class="ui header">Deep dive sequence diagram of the generation part</div>
         <div class="description">

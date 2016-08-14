@@ -1,198 +1,198 @@
 <template name='OEMPartner'>
-    <div class="ui modal SSBI">
-        <i class="close icon"></i>
-        <div class="ui header">Please see the overview of our layered approach to the self service functionality in Qlik Sense</div>
-        <img class="ui fluid image" src="/images/SelfServiceBI.png">
-        <div class="description">
-            <!-- <p>For more information see this <1a href="#" class="selfservice"> governed self service approach document </a></p> -->
-        </div>
-        <div class="actions">
-            <!-- <div class="ui black deny button">
-                    Nope
-                </div> -->
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
-    <div class="ui modal APIAutomation">
         <div class="ui icon message">
-            <img class="icon" src="images/API.png">
+            <img class="icon" src="images/intro.png">
             <div class="content">
+                {{#if freshEnvironment}}
                 <div class="header">
-                    <h4> API automation: a quick introduction</h4>
+                    1: Let's start publishing apps for your customers
                 </div>
-                <p>Please note there is no sound yet...</p>
-                <p>This <a href="https://github.com/QHose/QRSMeteor">open source</a> (non-Qlik) <a href="https://www.meteor.com/">Meteor.js</a> based demo platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please look at the video below for an introduction. In the demo you will see a screen divided into two parts.</p>
-                <ul>
-                    <li> The left side shows "the broker" in your SaaS platform; a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights and the relevant template apps (depending on what the customer has configured in your platform).
-                    </li>
-                    <li>The right side shows you the result of the activities of the broker; the apps and streams automatically created in Qlik Sense.</li>
-                </ul>
-                <p> This demo guides you on how you can automate each manual step in Qlik Sense. Sense works internally with the same API's as you can use, so you can record the REST call from each manual activity in the QMC and use this code to create/delete/reload/publish streams and apps in your software. We will not cover all the use cases, lets say we cover 80%, but the examples and code provided should give you enough convidence to build the remaining 20% yourself.</p>
+                <p>
+                    First insert some customers with users in your SaaS platform. (Just for demo purposes, to show Qlik can work with dynamic users. In real life you already have the users in your SaaS platform and you just pass on the user and its group membership in the security ticket. This means you don't have to maintain users in Qlik Sense only apps.)
+                    <li>You can use these customers later on to generate streams and apps. </li>
+                    <li>You can use the users to test the single sign and our layered approach to governed <a href="#" class="selfservice">self service</a> in step 4.</li>
+                </p>
+                {{/if}} {{#if readyToSelectTemplate}}
+                <div class="header">
+                    2: Select a template app
+                </div>
+                <p>
+                    Select the "my first template" app on the right.
+                </p>
+                {{/if}} {{#if readyToGenerate}}
+                <div class="header">
+                    3: Start publishing
+                </div>
+                <p>
+                    If you press generate a sequence of activities will be executed automatically via the API's. You can test each activity also manually (and see the <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>).
+                    <br> For example you can press "create stream" next to the customer to create a stream. "Copy app" to manually copy the app for each selected customer.
+                    <br> Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay or who have activited the app in your software, so this "selection" simulates that use case.</p>
+                <p>
+                    <h4>Fully automated app generation</h4>You can also automate each step, this happens when you press the generate button. It execute a chain of actions; it will publish a copy of the template app in the "customer name" stream. Next to this it replaces and reloads the script with a customer specific one.
+                </p>
+                <p>See more information about the generation or API automation <a href="#" class="APIAutomation">here</a> </p>
+                {{/if}} {{#if templateButNoCustomer}}
+                <div class="header">
+                    Customers
+                </div>
+                <p>
+                    You already selected a template, but please re-insert your customers.
+                </p>
+                {{/if}} {{#if readyToTestSSO}}
+                <div class="header">
+                    4: Test Single Sign On
+                </div>
+                <p>
+                    Select a user to test Single Sign On. For this user a ticket will be generated which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles in Sense. In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information.
+                </p>
+                {{/if}} {{#if loading}}
+                <div class="header">
+                    3: API communication is in progress...
+                </div>
+                <p>This application is now sending REST API calls to the Qlik Sense QRS and Engine API. You can view the HTTP REST requests and the responses in the <a href="{{pathFor 'APILogs'}}" class="item">QMC - API Calls menu</a></p>
+                {{/if}}
             </div>
         </div>
-        <div class="ui one column centered grid">
-            <div class="column centered">
-                <!-- <div class="ui embed" data-url="https://www.youtube.com/embed/wVVbP7a5-I8" data-placeholder="/images/API.png"></div> -->
-                <iframe width="854" height="480" src="https://www.youtube.com/embed/wVVbP7a5-I8" frameborder="0" allowfullscreen></iframe>
-            </div>
+        {{#if readyToTestSSO}}
+        <div class="ui segment">
+            {{> simulateUserLogin}}
         </div>
-        <div class="actions">
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
-    <div class="ui icon message">
-        <img class="icon" src="images/intro.png">
-        <div class="content">
-            {{#if freshEnvironment}}
-            <div class="header">
-                1: Let's start publishing apps for your customers
-            </div>
-            <p>
-                First insert some customers with users in your SaaS platform. (Just for demo purposes, to show Qlik can work with dynamic users. In real life you already have the users in your SaaS platform and you just pass on the user and its group membership in the security ticket. This means you don't have to maintain users in Qlik Sense only apps.)
-                <li>You can use these customers later on to generate streams and apps. </li>
-                <li>You can use the users to test the single sign and our layered approach to governed <a href="#" class="selfservice">self service</a> in step 4.</li>
-            </p>
-            {{/if}} {{#if readyToSelectTemplate}}
-            <div class="header">
-                2: Select a template app
-            </div>
-            <p>
-                Select the "my first template" app on the right.
-            </p>
-            {{/if}} {{#if readyToGenerate}}
-            <div class="header">
-                3: Start publishing
-            </div>
-            <p>
-                If you press generate a sequence of activities will be executed automatically via the API's. You can test each activity also manually (and see the <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>).
-                <br> For example you can press "create stream" next to the customer to create a stream. "Copy app" to manually copy the app for each selected customer.
-                <br> Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay or who have activited the app in your software, so this "selection" simulates that use case.</p>
-            <p>
-                <h4>Fully automated app generation</h4>We can also automate each manual step, this happens when you press the generate button. It will publish a copy of the template app in the "customer name" stream. Next to this we will also replace the script with a customer specific and reload the app. This to enable the use case to connect to customer specific databases and to load free tables and fields which are specific to each customer.
-            </p>
-            <p>See more information about the generation or API automation <a href="#" class="APIAutomation">here</a> </p>
-            {{/if}} {{#if templateButNoCustomer}}
-            <div class="header">
-                Customers
-            </div>
-            <p>
-                You already selected a template, but please re-insert your customers.
-            </p>
-            {{/if}} {{#if readyToTestSSO}}
-            <div class="header">
-                4: Test Single Sign On
-            </div>
-            <p>
-                Select a user to test Single Sign On. For this user a ticket will be generated which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles in Sense. In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information.
-            </p>
-            {{/if}} {{#if loading}}
-            <div class="header">
-                3: API communication is in progress...
-            </div>
-            <p>This application is now sending REST API calls to the Qlik Sense QRS and Engine API. You can view the HTTP REST requests and the responses in the <a href="{{pathFor 'APILogs'}}" class="item">QMC - API Calls menu</a></p>
-            {{/if}}
-        </div>
-    </div>
-    {{#if readyToTestSSO}}
-    <div class="ui segment">
-        {{> simulateUserLogin}}
-    </div>
-    {{/if}}
-    <div class="ui segment">
-        <a class="ui {{loading}} labeled icon button" href="{{pathFor 'users'}}"> <i class="edit icon "></i>1: Insert Customers</a>
-        <div class="ui buttons">
+        {{/if}}
+        <div class="ui segment">
+            <a class="ui {{loading}} labeled icon button" href="{{pathFor 'users'}}"> <i class="edit icon "></i>1: Insert Customers</a>
             <div class="ui buttons">
-                <div class="ui {{loading}} button resetEnvironment"><i class="undo icon "></i> Initialize demo</div>
-                <div class="ui floating dropdown icon button">
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
-                        <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
-                        <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
+                <div class="ui buttons">
+                    <div class="ui {{loading}} button resetEnvironment"><i class="undo icon "></i> Initialize demo</div>
+                    <div class="ui floating dropdown icon button">
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
+                            <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
+                            <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
+                        </div>
+                    </div>
+                </div>
+                {{#if readyToGenerate}}
+                <div class="or"></div>
+                <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i> 3: Generate</div>
+                {{/if}}
+            </div>
+            {{#if noCustomers}}
+            <div class="ui icon message">
+                <img class="icon" src="images/customers.png">
+                <div class="content">
+                    <div class="header">
+                        <h4>No customers</h4>
+                    </div>
+                    <ul>
+                        <li>This demo simulates the first day of your SaaS platform. Therefore we first need to <a href="{{pathFor 'users'}}">insert</a> some customers and users</li>
+                        <li>Or <a href="#" class="insertDummyCustomers"> load existing (dummy) </a>customers (use these if you want to test row level security)</li>
+                    </ul>
+                </div>
+            </div>
+            {{else}}
+            <div class="ui icon message">
+                <img class="icon" src="images/customers.png">
+                <div class="content">
+                    <div class="header">
+                        <h4>{{NrCustomers}} Customers stored in the database of your SaaS platform </h4>
                     </div>
                 </div>
             </div>
-            {{#if readyToGenerate}}
-            <div class="or"></div>
-            <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i> 3: Generate</div>
-            {{/if}}
-        </div>
-        {{#if noCustomers}}
-        <div class="ui icon message">
-            <img class="icon" src="images/customers.png">
-            <div class="content">
-                <div class="header">
-                    <h4>No customers</h4>
-                </div>
-                <ul>
-                    <li>This demo simulates the first day of your SaaS platform. Therefore we first need to <a href="{{pathFor 'users'}}">insert</a> some customers and users</li>
-                    <li>Or <a href="#" class="insertDummyCustomers"> load existing (dummy) </a>customers (use these if you want to test row level security)</li>
-                </ul>
-            </div>
-        </div>
-        {{else}}
-        <div class="ui icon message">
-            <img class="icon" src="images/customers.png">
-            <div class="content">
-                <div class="header">
-                    <h4>{{NrCustomers}} Customers stored in the database of your SaaS platform </h4>
+            <table class="ui celled striped table">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Delete customer</th>
+                        <th>Generate stream</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each customers}} {{> customer}} {{/each}}
+                </tbody>
+            </table>
+            {{#if readyToSelectTemplate}} {{/if}} {{#if noTemplateApps}}
+            <div class="ui icon message">
+                <img class="icon" src="images/app.png">
+                <div class="content">
+                    <div class="header">
+                        <h4>No template apps</h4>
+                    </div>
+                    <p>Please select an app in the templates stream (on the right) which you would like to use as a basis template. We will create a copy and publish it into the "customer name" stream for each of your selected customers</p>
                 </div>
             </div>
-        </div>
-        <table class="ui celled striped table">
-            <thead>
-                <tr>
-                    <th>Customer</th>
-                    <th>Delete customer</th>
-                    <th>Generate stream</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each customers}} {{> customer}} {{/each}}
-            </tbody>
-        </table>
-        {{#if readyToSelectTemplate}} {{/if}} {{#if noTemplateApps}}
-        <div class="ui icon message">
-            <img class="icon" src="images/app.png">
-            <div class="content">
-                <div class="header">
-                    <h4>No template apps</h4>
+            {{else}}
+            <div class="ui icon message">
+                <img class="icon" src="images/app.png">
+                <div class="content">
+                    <div class="header">
+                        <h4>Template apps</h4>
+                    </div>
+                    <p>We will create a "customer name" stream, replace the script, reload and publish a copy of each template app for each of your customers</p>
                 </div>
-                <p>Please select an app in the templates stream (on the right) which you would like to use as a basis template. We will create a copy and publish it into the "customer name" stream for each of your selected customers</p>
+            </div>
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>App (QVF)</th>
+                        <th>Don't mark as template</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each templateApps}}
+                    <tr>
+                        <td> <a href={{linkToApp}} target=_blank> {{name}} </a></td>
+                        <td class="removeTemplateApp"><i class="remove circle icon"></i></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{/if}} {{/if}}
+        </div>
+        <div class="ui modal SSBI">
+            <i class="close icon"></i>
+            <div class="ui header">Please see the overview of our layered approach to the self service functionality in Qlik Sense</div>
+            <img class="ui fluid image" src="/images/SelfServiceBI.png">
+            <div class="description">
+                <!-- <p>For more information see this <1a href="#" class="selfservice"> governed self service approach document </a></p> -->
+            </div>
+            <div class="actions">
+                <!-- <div class="ui black deny button">
+                    Nope
+                </div> -->
+                <div class="ui positive right labeled icon button">
+                    I got it...
+                    <i class="checkmark icon"></i>
+                </div>
             </div>
         </div>
-        {{else}}
-        <div class="ui icon message">
-            <img class="icon" src="images/app.png">
-            <div class="content">
-                <div class="header">
-                    <h4>Template apps</h4>
+        <div class="ui modal APIAutomation">
+            <div class="ui icon message">
+                <img class="icon" src="images/API.png">
+                <div class="content">
+                    <div class="header">
+                        <h4> API automation: a quick introduction</h4>
+                    </div>
+                    <p>Please note there is no sound yet...</p>
+                    <p>This <a href="https://github.com/QHose/QRSMeteor">open source</a> (non-Qlik) <a href="https://www.meteor.com/">Meteor.js</a> based demo platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please look at the video below for an introduction. In the demo you will see a screen divided into two parts.</p>
+                    <ul>
+                        <li> The left side shows "the broker" in your SaaS platform; a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights and the relevant template apps (depending on what the customer has configured in your platform).
+                        </li>
+                        <li>The right side shows you the result of the activities of the broker; the apps and streams automatically created in Qlik Sense.</li>
+                    </ul>
+                    <p> This demo guides you on how you can automate each manual step in Qlik Sense. Sense works internally with the same API's as you can use, so you can record the REST call from each manual activity in the QMC and use this code to create/delete/reload/publish streams and apps in your software. We will not cover all the use cases, lets say we cover 80%, but the examples and code provided should give you enough convidence to build the remaining 20% yourself.</p>
                 </div>
-                <p>We will create a "customer name" stream, replace the script, reload and publish a copy of each template app for each of your customers</p>
+            </div>
+            <div class="ui one column centered grid">
+                <div class="column centered">
+                    <!-- <div class="ui embed" data-url="https://www.youtube.com/embed/wVVbP7a5-I8" data-placeholder="/images/API.png"></div> -->
+                    <iframe width="854" height="480" src="https://www.youtube.com/embed/wVVbP7a5-I8" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui positive right labeled icon button">
+                    I got it...
+                    <i class="checkmark icon"></i>
+                </div>
             </div>
         </div>
-        <table class="ui celled table">
-            <thead>
-                <tr>
-                    <th>App (QVF)</th>
-                    <th>Don't mark as template</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each templateApps}}
-                <tr>
-                    <td> <a href={{linkToApp}} target=_blank> {{name}} </a></td>
-                    <td class="removeTemplateApp"><i class="remove circle icon"></i></td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-        {{/if}} {{/if}}
-    </div>
 </template>
