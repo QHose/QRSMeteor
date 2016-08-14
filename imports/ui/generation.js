@@ -48,7 +48,7 @@ Template.generation.helpers({
                 }, {
                     key: 'id',
                     label: 'Guid',
-                     hidden: true,
+                    hidden: true,
                     fn: function(value) {
                         return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
                     }
@@ -117,15 +117,20 @@ Template.generation.helpers({
             rowsPerPage: 5,
             showFilter: true,
             showColumnToggles: true,
-            fields: [
-                { key: 'name', label: 'Stream' },
+            fields: [{
+                    key: 'name',
+                    label: 'Stream',
+                    fn: function(value, object, key) {
+                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
+                    }
+                },
                 // { key: 'id', label: 'Guid' }, 
                 {
                     key: 'id',
                     label: 'Guid',
+                     hidden: true,
                     fn: function(value) {
-                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
-                        // return new Spacebars.SafeString('<a href=http://' + config.host + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
+                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + object.id + ' target="_blank">' + value + '</a>');
                     }
                 }, {
                     key: 'createdDate',
