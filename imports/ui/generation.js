@@ -38,13 +38,19 @@ Template.generation.helpers({
             showFilter: true,
             showColumnToggles: true,
             // fields: ['customer', 'telephone', 'email', 'status', 'itemCount', 'deliveryDate', 'remarks'],
-            fields: [
-                { key: 'name', label: 'App' }, {
+            fields: [{
+                    key: 'name',
+                    label: 'App',
+                    fn: function(value, object, key) {
+                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/sense/app/' + object.id + ' target="_blank">' + value + '</a>');
+                    }
+
+                }, {
                     key: 'id',
                     label: 'Guid',
+                     hidden: true,
                     fn: function(value) {
                         return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
-                        // return new Spacebars.SafeString('<a href=http://' + config.host + '/sense/app/' + value + ' target="_blank">' + value + '</a>');
                     }
                 },
                 { key: 'description', label: 'description', hidden: true }, {
