@@ -3,15 +3,15 @@ import { Session } from 'meteor/session';
 import '/imports/ui/UIHelpers';
 import { APILogs } from '/imports/api/APILogs';
 import './sequenceDiagrams.html'
+import _ from 'lodash'; 
 
 
 Template.APILogs.helpers({
     RESTCallSettings: function() {
         return {
-            collection: APILogs,
             rowsPerPage: 10,
             responsive: true,
-            autoWidth: false,
+            autoWidth: true,
             showFilter: true,
             showColumnToggles: true,
             fields: [
@@ -27,6 +27,9 @@ Template.APILogs.helpers({
                 { key: 'createdBy', label: 'Created by' },
             ]
         };
+    },
+    restrictedApiLogs: function(){
+        return APILogs.find({}, {fields: {'response.content': 0}});
     }
 })
 
@@ -44,6 +47,7 @@ Template.APILogs.events({
         $('.ui.modal.sequenceGeneration')
             .modal('show')
             // .modal('refresh');
+
     }
 })
 

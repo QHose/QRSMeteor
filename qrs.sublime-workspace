@@ -4,12 +4,16 @@
 		"selected_items":
 		[
 			[
-				"app",
-				"appId"
+				"re",
+				"return"
 			],
 			[
-				"re",
-				"result"
+				"nu",
+				"numberOfUsers"
+			],
+			[
+				"app",
+				"appId"
 			],
 			[
 				"u",
@@ -510,21 +514,33 @@
 			[
 				"prod",
 				"productGroup"
-			],
-			[
-				"fun",
-				"function"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "imports/ui/OEMPartner.html",
+			"file": "imports/ui/pages/APILogs.html",
 			"settings":
 			{
-				"buffer_size": 11590,
+				"buffer_size": 4687,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/pages/APILogs.js",
+			"settings":
+			{
+				"buffer_size": 1661,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 268,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -535,7 +551,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 104.0,
+		"height": 181.0,
 		"last_filter": "instal",
 		"selected_items":
 		[
@@ -564,7 +580,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 416.0
+		"width": 714.0
 	},
 	"console":
 	{
@@ -587,30 +603,44 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/startup",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/lib",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
 	[
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor/packages",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/sequenceDiagrams.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
+		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/sequenceDiagrams.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/lib/yogiben.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/accounts.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/startup/accounts-config.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsStream.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/APILogs.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server/qlikAuthSSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.css",
@@ -620,30 +650,22 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/securityRules.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/securityRules.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsSystemRules.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/lib/yogiben.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/server/yogiben.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/accounts.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qlik-auth/index.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/config.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qsocks/qsocks.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/startup/accounts-config.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/security_templates.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/security_templates.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/security_templates.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/lib/router.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor/packages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.js",
 		"/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/system/service.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.css",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/site/globals/site.variables.import.less",
@@ -653,7 +675,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/definitions/modules/progress.import.less",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/themes/default/globals/site.variables.import.less",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/site/globals/reset.variables.import.less",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/apps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/package.json",
@@ -720,9 +741,7 @@
 		"/C/Meteor projects/slager 10dec/client/templates/supportive/nav.html",
 		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/ordersEdit.html",
 		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/Orders.js",
-		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/ordersEdit.js",
-		"/C/Meteor projects/slager 10dec/server/seeds.js",
-		"/C/Meteor projects/slager 10dec/client/templates/supportive/layout2.html"
+		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/ordersEdit.js"
 	],
 	"find":
 	{
@@ -733,6 +752,9 @@
 		"height": 102.0,
 		"where_history":
 		[
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor",
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor",
@@ -787,6 +809,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"consumer",
+			"value",
+			"six",
+			"lodash",
+			"first",
+			"forbidclientaccountcreation",
+			"accountcreation",
+			"accountcre",
+			"tiny",
+			"large",
+			"button",
 			"facebook",
 			"Shell",
 			"architecture",
@@ -903,18 +936,7 @@
 			"qDocId",
 			"guid",
 			"config",
-			"UpdateLocalSenseCopy",
-			"updateAppsCollection",
-			"updateSenseInfo2",
-			"in the QMC",
-			"currentApp.qDocName",
-			"qDocId",
-			".js",
-			"senseConfig",
-			"_QRSconfig",
-			"Mongo.Collection",
-			"config",
-			"EngineConfig"
+			"UpdateLocalSenseCopy"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -922,6 +944,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"mini",
+			"tiny",
 			"PRESALES1",
 			"senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy",
 			"senseConfig.SenseServerInternalLanIP",
@@ -990,24 +1014,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "imports/ui/OEMPartner.html",
+					"file": "imports/ui/pages/APILogs.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11590,
+						"buffer_size": 4687,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3763,
-								3763
+								4687,
+								4687
 							]
 						],
 						"settings":
@@ -1017,7 +1041,65 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1277.0,
+						"translation.y": 955.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "imports/ui/pages/APILogs.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1661,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1132,
+								1132
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/User/Preferences.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 268,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								86,
+								86
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1028,7 +1110,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 33.0
 	},
 	"input":
 	{
@@ -1069,7 +1151,7 @@
 	"project": "qrs.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 108.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1115,7 +1197,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 617.0,
+	"side_bar_width": 455.0,
 	"status_bar_visible": false,
 	"template_settings":
 	{
