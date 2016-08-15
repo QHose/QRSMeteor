@@ -122,6 +122,10 @@ Template.OEMPartner.events({
 Template.OEMPartner.onRendered(function() {
     const templateAppsHandle = Meteor.subscribe('templateApps');
 
+    Template.instance()
+        .$('.ui.embed')
+        .embed();
+
     $('.ui.dropdown')
         .dropdown();
 
