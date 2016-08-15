@@ -68,7 +68,7 @@
                             Insert a new customer
                         </div>
                         <li>Please enter a new customer and users for your SaaS platform </li>
-                        <li>This information is only stored in this demo platform (MongoDB). There is no need to create these customers and users in Qlik Sense. We make use of a dynamic user directory connector (UDC), if the user and groups do not yet exist Qlik Sense creates the user on the fly. The current authorizations are always passed on from your SaaS platform to Qlik Sense.</li>
+                        <li>This information is only stored in this demo platform (MongoDB). There is no need to create these customers and users in Qlik Sense. We make use of a dynamic user directory connector (UDC). The user and its current authorizations are always passed on from your SaaS platform to Qlik Sense each time the user logs in.</li>
                     </div>
                 </div>
                 {{#autoForm collection=Customers id="insertCustomerForm" type="insert"}}

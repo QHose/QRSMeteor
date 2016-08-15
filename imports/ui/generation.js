@@ -38,13 +38,13 @@ Template.generation.helpers({
             showFilter: true,
             showColumnToggles: true,
             // fields: ['customer', 'telephone', 'email', 'status', 'itemCount', 'deliveryDate', 'remarks'],
+
             fields: [{
                     key: 'name',
                     label: 'App',
                     fn: function(value, object, key) {
                         return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/sense/app/' + object.id + ' target="_blank">' + value + '</a>');
                     }
-
                 }, {
                     key: 'id',
                     label: 'Guid',
@@ -68,18 +68,18 @@ Template.generation.helpers({
                     fn: function(value, object) {
                         return value;
                     }
-                },
-                { key: 'published', label: 'Published', hidden: true }, {
+                }, {
+                    key: 'published',
+                    label: 'Published',
+                    hidden: true
+                }, {
                     key: 'lastReloadTime',
                     label: 'Last reload',
                     hidden: true,
                     fn: function(value) {
-                        return value;
-                        //moment(value).format('DD-MM-YYYY');
+                        return moment(value).format('MMMM Do YYYY, h:mm:ss a');
                     }
-                },
-                // { key: 'qConnectedUsers', label: 'ConnectedUsers' },
-                {
+                }, {
                     key: 'fileSize',
                     label: 'File size',
                     hidden: true,
@@ -104,10 +104,7 @@ Template.generation.helpers({
                     fn: function() {
                         return new Spacebars.SafeString('<i class="add circle icon"></i>')
                     }
-                },
-                // { key: 'update', label: 'Bekijk bestelling', fn: function(){return 'Bekijk'} }, // { key: 'update', label: 'Ga naar bestelling', fn: function (value) {
-                //  return new Spacebars.SafeString("<a href="+Router.route['bestelling'].path({_id:value})+">details</a>");
-                // }}
+                }
             ]
         };
     }, //app settings
@@ -128,7 +125,7 @@ Template.generation.helpers({
                 {
                     key: 'id',
                     label: 'Guid',
-                     hidden: true,
+                    hidden: true,
                     fn: function(value) {
                         return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + object.id + ' target="_blank">' + value + '</a>');
                     }
@@ -244,7 +241,7 @@ Template.generation.onRendered(function() {
     });
 })
 
-Template.generation.onCreated(function () {
+Template.generation.onCreated(function() {
     const appsHandle = Meteor.subscribe('apps');
     const streamsHandle = Meteor.subscribe('streams');
     const generatedResourcesHandle = Meteor.subscribe('generatedResources');
