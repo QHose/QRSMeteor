@@ -249,6 +249,5 @@ Template.generation.onCreated(function () {
     const streamsHandle = Meteor.subscribe('streams');
     const generatedResourcesHandle = Meteor.subscribe('generatedResources');
     const customersHandle = Meteor.subscribe('customers');
-    const apiLogsHandle = Meteor.subscribe('apiLogs');
 
 })
