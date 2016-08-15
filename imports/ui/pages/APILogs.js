@@ -3,7 +3,7 @@ import { Session } from 'meteor/session';
 import '/imports/ui/UIHelpers';
 import { APILogs } from '/imports/api/APILogs';
 import './sequenceDiagrams.html'
-import _ from 'lodash'; 
+import moment from 'moment';
 
 
 Template.APILogs.helpers({
@@ -22,14 +22,29 @@ Template.APILogs.helpers({
                     fn: function(value) {
                         return new Spacebars.SafeString('<pre id="json">' + JSON.stringify(value, undefined, 2) + '</pre>')
                     }
+                }, {
+                    key: 'createDate',
+                    label: 'Date',
+                    sortOrder: 0,
+                    sortDirection: 'descending',
+                    fn: function(value) {
+                        return value.toLocaleDateString();
+                    }
+                }, {
+                    key: 'createDate',
+                    label: 'Time',
+                    sortOrder: 1,
+                    sortDirection: 'descending',
+                    fn: function(value) {
+                        return value.toLocaleTimeString();
+                    }
                 },
-                { key: 'createDate', label: 'Date', sortOrder: 0, sortDirection: 'descending' },
                 { key: 'createdBy', label: 'Created by' },
             ]
         };
     },
-    restrictedApiLogs: function(){
-        return APILogs.find({}, {fields: {'response.content': 0}});
+    restrictedApiLogs: function() {
+        return APILogs.find({}, { fields: { 'response.content': 0 } });
     }
 })
 

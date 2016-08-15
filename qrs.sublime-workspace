@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"a",
+				"APILogs"
+			],
+			[
 				"re",
 				"return"
 			],
@@ -510,10 +514,6 @@
 			[
 				"currentc",
 				"currentCartId"
-			],
-			[
-				"prod",
-				"productGroup"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "imports/ui/pages/APILogs.html",
 			"settings":
 			{
-				"buffer_size": 4687,
+				"buffer_size": 4720,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,16 +531,16 @@
 			"file": "imports/ui/pages/APILogs.js",
 			"settings":
 			{
-				"buffer_size": 1661,
+				"buffer_size": 1879,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/User/Preferences.sublime-settings",
+			"file": "imports/ui/generation.js",
 			"settings":
 			{
-				"buffer_size": 268,
-				"line_ending": "Unix"
+				"buffer_size": 10285,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -580,7 +580,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 714.0
+		"width": 779.0
 	},
 	"console":
 	{
@@ -603,7 +603,6 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/startup",
@@ -614,6 +613,7 @@
 	],
 	"file_history":
 	[
+		"/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/User/Preferences.sublime-settings",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
@@ -740,8 +740,7 @@
 		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/Orders.html",
 		"/C/Meteor projects/slager 10dec/client/templates/supportive/nav.html",
 		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/ordersEdit.html",
-		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/Orders.js",
-		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/ordersEdit.js"
+		"/C/Meteor projects/slager 10dec/client/templates/app/Reports/Orders.js"
 	],
 	"find":
 	{
@@ -1014,7 +1013,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1023,15 +1022,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4687,
+						"buffer_size": 4720,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4687,
-								4687
+								3696,
+								3696
 							]
 						],
 						"settings":
@@ -1041,7 +1040,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 955.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -1053,15 +1052,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1661,
+						"buffer_size": 1879,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1132,
-								1132
+								1135,
+								1135
 							]
 						],
 						"settings":
@@ -1074,35 +1073,37 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/User/Preferences.sublime-settings",
-					"semi_transient": false,
+					"file": "imports/ui/generation.js",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 268,
+						"buffer_size": 10285,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								86,
-								86
+								2290,
+								2430
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 655.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

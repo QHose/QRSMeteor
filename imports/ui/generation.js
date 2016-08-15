@@ -243,3 +243,12 @@ Template.generation.onRendered(function() {
             .dimmer('hide');
     });
 })
+
+Template.generation.onCreated(function () {
+    const appsHandle = Meteor.subscribe('apps');
+    const streamsHandle = Meteor.subscribe('streams');
+    const generatedResourcesHandle = Meteor.subscribe('generatedResources');
+    const customersHandle = Meteor.subscribe('customers');
+    const apiLogsHandle = Meteor.subscribe('apiLogs');
+
+})
