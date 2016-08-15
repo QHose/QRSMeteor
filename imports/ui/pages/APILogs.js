@@ -67,5 +67,5 @@ Template.APILogs.events({
 })
 
 Template.APILogs.onRendered(function() {
-
+    const apiLogsHandle = Meteor.subscribe('apiLogs')
 });

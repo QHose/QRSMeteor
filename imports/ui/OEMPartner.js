@@ -107,11 +107,11 @@ Template.OEMPartner.events({
                 });
             })
     },
-    'click .selfservice' () {       
+    'click .selfservice' () {
         $('.ui.modal.SSBI')
             .modal('show');
     },
-    'click .APIAutomation' () {       
+    'click .APIAutomation' () {
         $('.ui.modal.APIAutomation')
             .modal('show');
     }
@@ -120,6 +120,8 @@ Template.OEMPartner.events({
 
 
 Template.OEMPartner.onRendered(function() {
+    const templateAppsHandle = Meteor.subscribe('templateApps');
+
     $('.ui.dropdown')
         .dropdown();
 
