@@ -42,7 +42,7 @@
   <i class="tag icon"></i>
   Update
 </h4>
-        <!-- <div class="ui message">
+                <!-- <div class="ui message">
     <div class="header">
         Update
     </div>
@@ -68,8 +68,7 @@
                             Insert a new customer
                         </div>
                         <li>Please enter a new customer and users for your SaaS platform </li>
-                        <li>Or <a class="insertDummyCustomers"> insert some dummy customers. If you use these you can also test the row level security. </a></li>
-                        <li>This information is only stored in this demo platform (MongoDB). There is no need to create these customers and users in Qlik Sense. We make use of a dynamic user directory connector (UDC), if the user and groups do not yet exist Qlik Sense creates the user on the fly.</li>                        
+                        <li>This information is only stored in this demo platform (MongoDB). There is no need to create these customers and users in Qlik Sense. We make use of a dynamic user directory connector (UDC), if the user and groups do not yet exist Qlik Sense creates the user on the fly. The current authorizations are always passed on from your SaaS platform to Qlik Sense.</li>
                     </div>
                 </div>
                 {{#autoForm collection=Customers id="insertCustomerForm" type="insert"}}
