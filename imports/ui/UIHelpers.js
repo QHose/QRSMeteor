@@ -56,6 +56,10 @@ if (Meteor.isClient) {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/hub';
     });
 
+    Template.registerHelper('senseServerDevHub', function() {
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/dev-hub';
+    });
+
     Template.registerHelper('senseServerQMC', function() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/qmc';
     });
