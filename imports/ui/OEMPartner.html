@@ -51,8 +51,9 @@
                 3: API communication is in progress...
             </div>
             <p>This application is now sending REST and websocket based API calls to the Qlik Sense QRS and Engine API.
+                   {{> reactiveTable collection=apiLogs settings=RESTCallSettings}}
                 <br>
-                <a href="{{pathFor 'APILogs'}}" target="_blank" class="ui mini button">See the calls</a>
+                <a href="{{pathFor 'APILogs'}}" target="_blank" class="ui mini button">See all calls</a>
             </p>
             {{/if}}
         </div>

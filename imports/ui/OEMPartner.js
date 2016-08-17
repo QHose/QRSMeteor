@@ -4,6 +4,7 @@ import { senseConfig } from '/imports/api/config.js';
 import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps.js'
 import { Customers, dummyCustomers } from '../api/customers.js';
 import { Streams } from '/imports/api/streams.js'
+import { APILogs } from '/imports/api/APILogs';
 
 import './OEMPartner.html';
 
@@ -20,6 +21,30 @@ Template.OEMPartner.helpers({
     },
     linkToApp() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/sense/app/' + this.id
+    },
+    RESTCallSettings: function() {
+        return {
+            rowsPerPage: 5,
+            responsive: true,
+            autoWidth: true,
+            showFilter: false,
+            showColumnToggles: false,
+            fields: [
+                { key: 'action', label: 'Action' },
+                { key: 'request', label: 'Request' },
+                {
+                    key: 'createDate',
+                    hidden: true,
+                    label: 'Create Date',
+                    sortOrder: 0,
+                    sortDirection: 'descending'
+                }
+            ]
+        };
+    }
+    ,
+    apiLogs: function() {
+        return APILogs.find({});
     }
 });
 
