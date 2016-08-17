@@ -118,7 +118,7 @@ Template.generation.helpers({
                     key: 'name',
                     label: 'Stream',
                     fn: function(value, object, key) {
-                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + value + ' target="_blank">' + value + '</a>');
+                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + object.id  + ' target="_blank">' + value + '</a>');
                     }
                 },
                 // { key: 'id', label: 'Guid' }, 
