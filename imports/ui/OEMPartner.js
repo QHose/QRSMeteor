@@ -24,7 +24,7 @@ Template.OEMPartner.helpers({
     },
     RESTCallSettings: function() {
         return {
-            rowsPerPage: 5,
+            rowsPerPage: 3,
             responsive: true,
             autoWidth: true,
             showFilter: false,
@@ -41,10 +41,9 @@ Template.OEMPartner.helpers({
                 }
             ]
         };
-    }
-    ,
-    apiLogs: function() {
-        return APILogs.find({});
+    },
+    restrictedApiLogs: function() {
+        return APILogs.find({}, { fields: { 'response.content': 0 } });
     }
 });
 
@@ -146,6 +145,7 @@ Template.OEMPartner.events({
 
 Template.OEMPartner.onRendered(function() {
     const templateAppsHandle = Meteor.subscribe('templateApps');
+    const apiLogsHandle = Meteor.subscribe('apiLogs');
 
     Template.instance()
         .$('.ui.embed')

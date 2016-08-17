@@ -75,6 +75,7 @@ Meteor.methods({
                 }
             })
         GeneratedResources.remove({});
+        APILogs.remove({}); 
     },
     resetLoggedInUser() {
         console.log("***Method resetLoggedInUsers");
