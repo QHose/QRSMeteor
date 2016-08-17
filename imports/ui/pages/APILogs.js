@@ -25,7 +25,7 @@ Template.APILogs.helpers({
                 }, {
                     key: 'createDate',
                     label: 'Date',
-                    sortOrder: 0,
+                    // sortOrder: 0,
                     sortDirection: 'descending',
                     fn: function(value) {
                         return value.toLocaleDateString();
@@ -33,13 +33,20 @@ Template.APILogs.helpers({
                 }, {
                     key: 'createDate',
                     label: 'Time',
-                    sortOrder: 1,
+                    // sortOrder: 1,
                     sortDirection: 'descending',
                     fn: function(value) {
                         return value.toLocaleTimeString();
                     }
                 },
-                { key: 'createdBy', label: 'Created by' },
+                { key: 'createdBy', label: 'Created by' }, 
+                {
+                    key: 'createDate',
+                    hidden: true,
+                    label: 'Create Date',
+                    sortOrder: 0,
+                    sortDirection: 'descending'
+                }
             ]
         };
     },
