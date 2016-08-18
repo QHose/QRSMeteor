@@ -60,6 +60,12 @@ Meteor.methods({
     },
     removeGeneratedResources() {
         console.log('remove GeneratedResources method, before we make new ones');
+        //logging only
+        const call = {};
+        call.action = 'Remove renerated resources';
+        call.request = '';
+        REST_Log(call);
+
         GeneratedResources.find()
             .forEach(function(resource) {
                 console.log('resetEnvironment for resource', resource);
@@ -141,6 +147,11 @@ Meteor.methods({
     deleteApp(guid) {
         check(guid, String);
         console.log('method deleteApp');
+        //logging only
+        const call = {};
+        call.action = 'Delete app';
+        call.request = 'Delete app: '+guid;
+        REST_Log(call);
 
         return QSApp.deleteApp(guid);
     },
@@ -151,6 +162,12 @@ Meteor.methods({
     //STREAM METHODS
     deleteStream(guid) {
         check(guid, String);
+        //logging only
+        const call = {};
+        call.action = 'Delete stream';
+        call.request = 'Delete stream: '+guid;
+        REST_Log(call);
+
         return QSStream.deleteStream(guid);
     },
     createStream(name) {
