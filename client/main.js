@@ -33,8 +33,6 @@ import { Streams } from '/imports/api/streams'
 import { APILogs } from '/imports/api/APILogs'
 
 import moment from 'moment';
-import lodash from 'lodash';
-_ = lodash;
 
 
 Meteor.startup(function() {

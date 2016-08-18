@@ -24,7 +24,7 @@ export function deleteStream(guid) {
 export function getStreams() {    
     try {
         const call = {};
-        call.action = 'Get the list of streams'; 
+        call.action = 'Get list of streams'; 
         call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/full';
         // console.log('Try to get the stream from Sense at this url: ' , call.request);
         call.response = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/full', {

@@ -25,9 +25,10 @@ Template.OEMPartner.helpers({
     RESTCallSettings: function() {
         return {
             rowsPerPage: 3,
-            responsive: true,
-            autoWidth: true,
+            responsive: false,
+            autoWidth: false,
             showFilter: false,
+            showNavigation: 'never',
             showColumnToggles: false,
             fields: [
                 { key: 'action', label: 'Action' },

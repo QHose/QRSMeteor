@@ -23,15 +23,15 @@
                     <li>Developers can create apps and load data.</li>
                     <li>Admins can maintain their customer apps in the QMC</li>
                 </ul>                
-                <br> You can maintain users and groups <a class="item" href="{{pathFor 'users'}}">here</a>, logout or switch user, and notice the changed authorizations.</p>
-                <div class="ui selection dropdown">
+                <br> You can maintain users and groups <a class="item" href="{{pathFor 'users'}}">here</a>, logout or switch user, and notice the changed authorizations. After you selected a user you can see Qlik Sense embedded <a href="{{webIntegrationDemo}}/hub" target="_blank">here</a>.</p>
+                <div class="ui fluid selection dropdown">
                     <input id="currentUser" type="hidden">
                     <div class="default text">Select a user</div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
                         {{#each customers}} {{#each users}}
                         <div class="item" data-value="{{name}}" data-text="{{name}}">
-                            <i class="male icon"></i> {{name}} ({{../name}})
+                            <i class="male icon"></i> {{name}} - ({{group}} for customer {{../name}})
                         </div>
                         {{/each}} {{/each}}
                     </div>

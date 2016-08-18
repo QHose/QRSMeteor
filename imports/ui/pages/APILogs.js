@@ -3,6 +3,7 @@ import { Session } from 'meteor/session';
 import '/imports/ui/UIHelpers';
 import { APILogs } from '/imports/api/APILogs';
 import './sequenceDiagrams.html'
+import './sequenceDiagrams.js'
 import moment from 'moment';
 
 
@@ -25,7 +26,6 @@ Template.APILogs.helpers({
                 }, {
                     key: 'createDate',
                     label: 'Date',
-                    sortOrder: 0,
                     sortDirection: 'descending',
                     fn: function(value) {
                         return value.toLocaleDateString();
@@ -33,13 +33,17 @@ Template.APILogs.helpers({
                 }, {
                     key: 'createDate',
                     label: 'Time',
-                    sortOrder: 1,
                     sortDirection: 'descending',
                     fn: function(value) {
                         return value.toLocaleTimeString();
                     }
-                },
-                { key: 'createdBy', label: 'Created by' },
+                }, {
+                    key: 'createDate',
+                    label: 'Time',
+                    hidden: true,
+                    sortOrder: 0,
+                    sortDirection: 'descending'                    
+                }
             ]
         };
     },
