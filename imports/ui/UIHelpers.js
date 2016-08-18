@@ -29,10 +29,6 @@ if (Meteor.isClient) {
         return 'wVVbP7a5-I8';
     });
 
-    Template.registerHelper('URL_howDoesSaaSAutomationWork', function() {
-        return 'wVVbP7a5-I8';
-    });
-
     Template.registerHelper('doc_securtityIntegration', function() {
         return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FSecurity%20integration%20Provide%20Single%20Sign%20On%20and%20share%20access%20%7C4a2a16e2-5900-4967-97f9-b2d824c7bee1%2F%29';
     });
