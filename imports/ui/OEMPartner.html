@@ -64,7 +64,9 @@
     </div>
     {{/if}}
     <div class="ui segment">
+     {{#if freshEnvironment}}
         <a class="ui {{loading}} labeled icon button" href="{{pathFor 'users'}}"> <i class="edit icon "></i>1: Insert Customers</a>
+    {{/if}}
         <div class="ui buttons">
             <div class="ui buttons">
                 <div class="ui {{loading}} button resetEnvironment"><i class="undo icon "></i> Initialize demo</div>
