@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { http } from 'meteor/meteor';
 import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
-import { APILogs } from '/imports/api/APILogs';
+import { APILogs, REST_Log } from '/imports/api/APILogs';
 
 //import meteor collections
 import { Streams } from '/imports/api/streams';
