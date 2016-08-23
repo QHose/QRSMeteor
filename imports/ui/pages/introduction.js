@@ -26,6 +26,6 @@ Template.introduction.onRendered(function() {
 
     Template.instance()
         .$('.ui.accordion')
-        .accordion();
+        .accordion({ exclusive: false });
 
 })
