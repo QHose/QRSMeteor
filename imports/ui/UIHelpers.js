@@ -42,7 +42,7 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('doc_sourceCode', function() {
-        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FQlik%20Sense%20SaaS%20demo%20tool%20documentation%20of%20source%20code%7C126c382e-2f4c-4875-9969-7bfebabda7c8%2F%29';
+        return 'https://1drv.ms/u/s!AidXpyhZQAUIijLcJOUvCjwv__nc?wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FQlik%20Sense%20SaaS%20demo%20tool%20documentation%20of%20source%20code%7C126C382E-2F4C-4875-9969-7BFEBABDA7C8%2F%29';
     });
 
     Template.registerHelper('doc_webIntegration', function() {

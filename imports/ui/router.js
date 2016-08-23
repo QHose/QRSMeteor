@@ -28,6 +28,8 @@ Router.route('/securityRules');
 Router.route('/QMC');
 Router.route('/webIntegration');
 Router.route('/architecture');
+Router.route('/sequenceDiagramOverview');
+Router.route('/sequenceDiagramGeneration');
 
 // Router.route('/register');
 // Router.route('/login');
