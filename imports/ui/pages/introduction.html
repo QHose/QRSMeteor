@@ -1,16 +1,25 @@
-<template name="introduction">   
+<template name="introduction">
     <div class="ui container">
         <div class="ui very padded segment">
             <div class="ui stackable grid">
                 <div class="row">
                     <h3 class="ui header">The power of API's; the SaaS with Qlik Sense demo platform</h3>
-                    <p>This <a href="https://github.com/QHose/QRSMeteor">open source</a> (non-Qlik) <a href="https://www.meteor.com/">Meteor.js</a> based demo platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please watch this <a href="#" class="howDoesSaaSAutomationWork">video</a> for a quick introduction to the concept of SaaS automation (4m and not technical) or the video's below for an general introduction. In the demo you will see a screen divided into two parts.</p>
-                    <ul>
-                        <li> The left side shows "the broker" in your SaaS platform; a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights and the relevant template apps (depending on what the customer has configured in your platform).
-                        </li>
-                        <li>The right side shows you the result of the activities of the broker; the apps and streams automatically created in Qlik Sense.</li>
-                    </ul>
-                    <p> This demo guides you on how you can automate each manual step in Qlik Sense. Sense works internally with the same API's as you can use, so you can record the REST call from each manual activity in the QMC and use this code to create/delete/reload/publish streams and apps in your software. We will not cover all the use cases, lets say we cover 80%, but the examples and code provided should give you enough convidence to build the remaining 20% yourself.</p>
+                    <p>This <a href="https://github.com/QHose/QRSMeteor">open source</a> (non-Qlik) <a href="https://www.meteor.com/">Meteor.js</a> based demo platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please watch this <a href="#" class="howDoesSaaSAutomationWork">video</a> for a quick introduction to the concept of SaaS automation or the video's below for an general introduction. </p>
+                    <div class="ui accordion">
+                        <div class="title">
+                            <i class="dropdown icon"></i> Read more about the concept of API automation...
+                        </div>
+                        <div class="content">
+                            <p class="transition hidden">
+                                In the demo you will see a screen divided into two parts.</p>
+                            <ul>
+                                <li> The left side shows "the broker" in your SaaS platform; a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights and the relevant template apps (depending on what the customer has configured in your platform).
+                                </li>
+                                <li>The right side shows you the result of the activities of the broker; the apps and streams automatically created in Qlik Sense.</li>
+                            </ul>
+                            <p> This demo guides you on how you can automate each manual step in Qlik Sense. Sense works internally with the same API's as you can use, so you can record the REST call from each manual activity in the QMC and use this code to create/delete/reload/publish streams and apps in your software. We will not cover all the use cases, lets say we cover 80%, but the examples and code provided should give you enough convidence to build the remaining 20% yourself.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="eight wide centered floated column">
@@ -20,12 +29,21 @@
                 <div class="row">
                     <h3 class="ui header">How to use the demo?</h3>
                     <p> You can watch the step by step video <a href="#" class="stepByStep">here</a>. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "custom fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.</p>
-                    <ol>
-                        <li>You first have to enter some customers. In real life you already have the users in your SaaS platform and you just pass on the user and its group membership in the security ticket. This means you don't have to maintain users or groups in Qlik Sense; only app templates.)</li>
-                        <li>Select the "my first template" app on the right of the screen (this is the Qlik Sense side). Later on, if you create new apps using a user with the "Developer" role you can also use these as a template.</li>
-                        <li>Press generate</li>
-                        <li>Select a user, and test the single sing on.</li>
-                    </ol>
+                    <div class="ui accordion">
+                        <div class="title">
+                            <i class="dropdown icon"></i> Execute these 4 steps...
+                        </div>
+                        <div class="content">
+                            <p class="transition hidden">
+                                <ol>
+                                    <li>You first have to enter some customers. In real life you already have the users in your SaaS platform and you just pass on the user and its group membership in the security ticket. This means you don't have to maintain users or groups in Qlik Sense; only app templates.)</li>
+                                    <li>Select the "my first template" app on the right of the screen (this is the Qlik Sense side). Later on, if you create new apps using a user with the "Developer" role you can also use these as a template.</li>
+                                    <li>Press generate</li>
+                                    <li>Select a user, and test the single sing on.</li>
+                                </ol>
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="center aligned column">
@@ -103,7 +121,7 @@
                             </div>
                         </div>
                         <h3 class="ui header">The power of APIs: Your software controls Qlik Sense</h3>
-                        <p>Using our .NET API, a Visual Studio plugin, javascript and REST API's you can automate each manual step. This means your software can control and configure Qlik Sense. Using this mechanism you can for example create/delete/reload apps for each of your customers customer. You can even create complete dashboards or individual charts on the fly. This removes the need to design everything up front.</p>                        
+                        <p>Using our .NET API, a Visual Studio plugin, javascript and REST API's you can automate each manual step. This means your software can control and configure Qlik Sense. Using this mechanism you can for example create/delete/reload apps for each of your customers customer. You can even create complete dashboards or individual charts on the fly. This removes the need to design everything up front.</p>
                         <div class="center aligned column">
                             <div class="ui mini buttons">
                                 <a href="{{doc_processIntegration}}" target="_blank" class="ui button">Read more</a>
@@ -115,7 +133,7 @@
                     <div class="four wide right floated column">
                         <img class="ui fluid image" src="images/embed.png">
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
         <div class="ui very padded segment">
@@ -127,7 +145,7 @@
                     </div>
                     <div class="ten wide column">
                         <h4 class="ui header">Authentication - Single Sign on using tickets (tokens)</h4> We re-use your existing way to authenticate the users. We will insert a little piece of code inside your existing "security module". In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via a SSL certificate exchange). And send this info about the user (userId, group membership) in a JSON object to Sense (we call this ticketing).
-                        <h4 class="ui header">Authorization</h4> Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name. 
+                        <h4 class="ui header">Authorization</h4> Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name.
                         <div class="ui horizontal divider">
                             <!-- Or -->
                         </div>
@@ -143,7 +161,7 @@
             </div>
         </div>
     </div>
-     <div class="ui modal stepByStep">
+    <div class="ui modal stepByStep">
         <div class="ui icon message">
             <img class="icon" src="images/intro.png">
             <div class="content">

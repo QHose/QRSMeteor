@@ -11,7 +11,7 @@ Template.introduction.events({
         $('.ui.modal.stepByStep')
             .modal('show');
     },
-     'click .howDoesSaaSAutomationWork' () {
+    'click .howDoesSaaSAutomationWork' () {
         $('.ui.modal.howDoesSaaSAutomationWork')
             .modal('show');
     }
@@ -24,5 +24,8 @@ Template.introduction.onRendered(function() {
         .$('.ui.embed')
         .embed();
 
+    Template.instance()
+        .$('.ui.accordion')
+        .accordion();
 
 })
