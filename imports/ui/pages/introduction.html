@@ -1,16 +1,47 @@
 <template name="introduction">
     <div class="ui container">
         <div class="ui very padded segment">
-            <div class="ui stackable grid">
+            <div class="ui middle aligned stackable grid container">
                 <div class="row">
-                    <h3 class="ui header">The power of API's; the SaaS with Qlik Sense demo platform</h3>
-                    <p>This <a href="https://github.com/QHose/QRSMeteor">open source</a> (non-Qlik) <a href="https://www.meteor.com/">Meteor.js</a> based demo platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please watch this <a href="#" class="howDoesSaaSAutomationWork">video</a> for a quick introduction to the concept of SaaS automation or the video's below for an general introduction. </p>
-                    <div class="eight wide centered floated column">
+                    <div class="seven wide column">
+                        <h3 class="ui header">The power of API's; the SaaS with Qlik Sense demo platform</h3>
+                        <p>This <a href="https://github.com/QHose/QRSMeteor">open source</a> (non-Qlik) <a href="https://www.meteor.com/">Meteor.js</a> based demo platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please watch this <a href="#" class="howDoesSaaSAutomationWork">video</a> for a quick introduction to the concept of SaaS automation or the video's below for an general introduction. </p>
+                        <h3 class="ui header">How to use the demo?</h3>
+                        <p> You can watch the step by step video <a href="#" class="stepByStep">here</a>. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "custom fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.
+                            <div class="ui accordion">
+                                <div class="title">
+                                    <i class="dropdown icon"></i> Execute these 4 steps...
+                                </div>
+                                <div class="content">
+                                    <p class="transition hidden">
+                                        <ol>
+                                            <li>You first have to enter some customers. In real life you already have the users in your SaaS platform and you just pass on the user and its group membership in the security ticket. This means you don't have to maintain users or groups in Qlik Sense; only app templates.)</li>
+                                            <li>Select the "my first template" app on the right of the screen (this is the Qlik Sense side). Later on, if you create new apps using a user with the "Developer" role you can also use these as a template.</li>
+                                            <li>Press generate</li>
+                                            <li>Select a user, and test the single sing on.</li>
+                                        </ol>
+                                    </p>
+                                </div>
+                            </div>
+                        </p>
+                        <div class="center aligned column">
+                            <div class="center aligned column">
+                                <div class="ui large buttons">
+                                    <a href="#" class="ui  button stepByStep">Step by step video</a>
+                                    <div class="or"></div>
+                                    <a href="{{pathFor 'generation'}}" class="ui positive button">Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nine wide right floated column">
                         <img class="ui fluid image" src="images/introduction to SaaS demo platform deep dive short.gif">
                     </div>
+                </div>
+                <div class="row">
                     <div class="ui accordion">
                         <div class="title">
-                            <i class="dropdown icon"></i> Read more about the concept of API automation...
+                            <i class="dropdown icon"></i> Read more about the concept of API this SaaS with Qlik Sense demo platform...
                         </div>
                         <div class="content ui segment">
                             <h4 class="transition hidden">
@@ -77,40 +108,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <h3 class="ui header">How to use the demo?</h3>
-                    <p> You can watch the step by step video <a href="#" class="stepByStep">here</a>. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "custom fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.
-                        <div class="ui accordion">
-                            <div class="title">
-                                <i class="dropdown icon"></i> Execute these 4 steps...
-                            </div>
-                            <div class="content">
-                                <p class="transition hidden">
-                                    <ol>
-                                        <li>You first have to enter some customers. In real life you already have the users in your SaaS platform and you just pass on the user and its group membership in the security ticket. This means you don't have to maintain users or groups in Qlik Sense; only app templates.)</li>
-                                        <li>Select the "my first template" app on the right of the screen (this is the Qlik Sense side). Later on, if you create new apps using a user with the "Developer" role you can also use these as a template.</li>
-                                        <li>Press generate</li>
-                                        <li>Select a user, and test the single sing on.</li>
-                                    </ol>
-                                </p>
-                            </div>
-                        </div>
-                    </p>
-                </div>
-                <div class="row">
-                    <div class="center aligned column">
-                        <div class="ui large buttons">
-                            <a href="#" class="ui  button stepByStep">Step by step video</a>
-                            <div class="or"></div>
-                            <a href="{{pathFor 'generation'}}" class="ui positive button">Demo</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-        <!--  <div class="ui very padded segment">
-            
-        </div> -->
         <div class="ui very padded segment">
             <div class="ui middle aligned stackable grid container">
                 <div class="row">
