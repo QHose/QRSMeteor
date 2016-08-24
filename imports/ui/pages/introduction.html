@@ -5,7 +5,16 @@
                 <div class="row">
                     <div class="seven wide column">
                         <h3 class="ui header">The power of API's; the SaaS with Qlik Sense demo platform</h3>
-                        <p>This <a href="https://github.com/QHose/QRSMeteor">open source</a> (non-Qlik) <a href="https://www.meteor.com/">Meteor.js</a> based demo platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please watch this <a href="#" class="howDoesSaaSAutomationWork">video</a> for a quick introduction to the concept of SaaS automation or the video's below for an general introduction. </p>
+                        <p>This <a href="https://github.com/QHose/QRSMeteor">open source</a> (non-Qlik) <a href="https://www.meteor.com/">Meteor.js</a> based demo platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform.
+                            <!-- Please watch the <a href="#" class="howDoesSaaSAutomationWork">video</a> for a quick introduction to the concept of SaaS automation or the video's below for an general introduction. -->
+                            <div class="center aligned column">
+                                <div class="ui mini buttons">
+                                    <!-- <a href="{{doc_processIntegration}}" target="_blank" class="ui button">Read more</a>
+                                    <div class="or"></div> -->
+                                    <a href="#" class="ui button howDoesSaaSAutomationWork">Short introduction video</a>
+                                </div>
+                            </div>
+                        </p>
                         <h3 class="ui header">How to use the demo?</h3>
                         <p> You can watch the step by step video <a href="#" class="stepByStep">here</a>. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "custom fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.
                             <div class="ui accordion">
@@ -15,10 +24,10 @@
                                 <div class="content">
                                     <p class="transition hidden">
                                         <ol>
-                                            <li>You first have to enter some customers. In real life you already have the users in your SaaS platform and you just pass on the user and its group membership in the security ticket. This means you don't have to maintain users or groups in Qlik Sense; only app templates.)</li>
-                                            <li>Select the "my first template" app on the right of the screen (this is the Qlik Sense side). Later on, if you create new apps using a user with the "Developer" role you can also use these as a template.</li>
-                                            <li>Press generate</li>
-                                            <li>Select a user, and test the single sing on.</li>
+                                            <li><b>Insert some (dummy)</b> customers. In real life you already have the users in your SaaS platform and you just pass on the user and its group membership in the security ticket. This means you don't have to maintain users or groups in Qlik Sense; only app templates.)</li>
+                                            <li><b>Select the "my first template"</b> app on the right of the screen (this is the Qlik Sense side). Later on, if you create new apps using a user with the "Developer" role you can also use these as a template.</li>
+                                            <li><b>Press generate</b>, this wil make a copy of the template app for each of your customers. It replaces the script with a customer specific one and reloads the app...</li>
+                                            <li><b>Select a user, and test the single sing on</b> and make sure that each cusomter can only see its own data (streams and apps). You can also test row level security by opening the app in the "everyone stream".</li>
                                         </ol>
                                     </p>
                                 </div>
@@ -114,15 +123,6 @@
             <div class="ui middle aligned stackable grid container">
                 <div class="row">
                     <div class="ten wide column">
-                        <h3 class="ui header">Embed Qlik Sense</h3>
-                        <p>We integrate complete our hub, apps, sheets or individual objects using an Iframe or Div tag. All Sense functionality "is delivered via a webserver", called the proxy (QPS). This is nice because it means everything in Sense is web technology based; web sockets, javascript, CSS3, HTML5 and Angular.</p>
-                        <div class="center aligned column">
-                            <div class="ui mini buttons">
-                                <a href="{{doc_webIntegration}}" target="_blank" class="ui button">Read more</a>
-                                <div class="or"></div>
-                                <a href="{{pathFor 'webIntegration'}}" class="ui positive button">Watch video</a>
-                            </div>
-                        </div>
                         <h3 class="ui header">The power of APIs: Your software controls Qlik Sense</h3>
                         <p>Using our .NET API, a Visual Studio plugin, javascript and REST API's you can automate each manual step. This means your software can control and configure Qlik Sense. Using this mechanism you can for example create/delete/reload apps for each of your customers customer. You can even create complete dashboards or individual charts on the fly. This removes the need to design everything up front.</p>
                         <div class="center aligned column">
@@ -130,6 +130,15 @@
                                 <a href="{{doc_processIntegration}}" target="_blank" class="ui button">Read more</a>
                                 <div class="or"></div>
                                 <a href="#" class="ui positive button howDoesSaaSAutomationWork">Watch video</a>
+                            </div>
+                        </div>
+                        <h3 class="ui header">Embed Qlik Sense</h3>
+                        <p>We integrate complete our hub, apps, sheets or individual objects using an Iframe or Div tag. All Sense functionality "is delivered via a webserver", called the proxy (QPS). This is nice because it means everything in Sense is web technology based; web sockets, javascript, CSS3, HTML5 and Angular.</p>
+                        <div class="center aligned column">
+                            <div class="ui mini buttons">
+                                <a href="{{doc_webIntegration}}" target="_blank" class="ui button">Read more</a>
+                                <div class="or"></div>
+                                <a href="{{pathFor 'webIntegration'}}" class="ui positive button">Watch video</a>
                             </div>
                         </div>
                     </div>
@@ -154,9 +163,9 @@
                         </div>
                         <div class="center aligned column">
                             <div class="ui mini buttons">
-                                <a href="{{doc_securtityIntegration}}" target="_blank" class="ui button">Read more</a>
-                                <div class="or"></div>
-                                <a href="{{pathFor 'introductionSecurity'}}" class="ui positive button">Watch video</a>
+                                <!-- <a href="{{doc_securtityIntegration}}" target="_blank" class="ui button">Read more</a>
+                                <div class="or"></div> -->
+                                <a href="{{pathFor 'introductionSecurity'}}" class="ui button">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -187,6 +196,9 @@
             </div>
         </div>
     </div>
+    {{>modalSaaSautomation}}
+</template>
+<template name="modalSaaSautomation">
     <div class="ui modal howDoesSaaSAutomationWork">
         <div class="ui icon message">
             <img class="icon" src="images/intro.png">

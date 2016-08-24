@@ -9,38 +9,42 @@ import { APILogs } from '/imports/api/APILogs';
 import './OEMPartner.html';
 
 Template.OEMPartner.helpers({
-    templateApps() {
-        return TemplateApps.find();
-    },
-    loading() {
-        return Session.get('loadingIndicator');
-    },
-    NrCustomers() {
-        return Customers.find()
-            .count();
-    },
-    linkToApp() {
-        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/sense/app/' + this.id
-    },
-    RESTCallSettings: function() {
-        return {
-            rowsPerPage: 3,
-            responsive: false,
-            autoWidth: false,
-            showFilter: false,
-            showNavigation: 'never',
-            showColumnToggles: false,
-            fields: [
-                { key: 'action', label: 'Action' },
-                { key: 'request', label: 'Request' },
-                {
+            templateApps() {
+                return TemplateApps.find();
+            },
+            loading() {
+                return Session.get('loadingIndicator');
+            },
+            NrCustomers() {
+                return Customers.find()
+                    .count();
+            },
+            linkToApp() {
+                return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/sense/app/' + this.id
+            },
+            RESTCallSettings: function() {
+                return {
+                    rowsPerPage: 3,
+                    responsive: true,
+                    autoWidth: true,
+                    showFilter: false,
+                    showNavigation: 'never',
+                    showColumnToggles: false,
+                    fields: [{
+                        key: 'action',
+                        label: 'Action'
+                    }, {
+                        key: 'request',
+                        label: 'Request',
+                        cellClass: "overflow: hidden; text - overflow: ellipsis"
+                    }
+                , {
                     key: 'createDate',
                     hidden: true,
                     label: 'Create Date',
                     sortOrder: 0,
                     sortDirection: 'descending'
-                }
-            ]
+                }]
         };
     },
     restrictedApiLogs: function() {

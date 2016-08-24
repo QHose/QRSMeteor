@@ -42,7 +42,7 @@ Template.APILogs.helpers({
                     label: 'Time',
                     hidden: true,
                     sortOrder: 0,
-                    sortDirection: 'descending'                    
+                    sortDirection: 'descending'
                 }
             ]
         };
@@ -67,9 +67,14 @@ Template.APILogs.events({
             .modal('show')
             // .modal('refresh');
 
+    },
+    'click .howDoesSaaSAutomationWork' () {
+        $('.ui.modal.howDoesSaaSAutomationWork')
+            .modal('show');
     }
 })
 
 Template.APILogs.onRendered(function() {
     const apiLogsHandle = Meteor.subscribe('apiLogs')
 });
+

@@ -1,116 +1,98 @@
 <template name="introductionSecurity">
-    <div class="container">
-        <div class="ui icon message">
-            <img class="icon" src="images/id.png">
-            <div class="content">
-                <div class="header">
-                    <h4> OEM security approach for Qlik Sense</h4>
-                </div>
-                <ul>                    
-                    <li><b>Authentication</b>: We re-use your existing way to authenticate the users. We will insert a little piece of code inside your existing "security module". In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via a SSL certificate exchange). And send this info about the user (userId, group membership) in a JSON object to Sense (we call this ticketing). </li>
-                    <li><b>Authorization</b>; Qlik Sense uses a fully dynamic way to authorize on any resource like streams, apps and sheets. This means you don't have to load or create users and groups in Qlik Sense. We receive the users credentials in a security ticket and based on this information we configure the Qlik Sense security rules. Security rules secure all the resources, so based on the userId and group membership from your SaaS platform streams (a way to group apps), apps, sheets (all called "resources" in our rule based security model) are shown or not. </li>
-                    <li>Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name. See current <a href="{{pathFor 'securityRules'}}" class="item">Qlik Sense security rules</a>. </li>
-                </ul>
-                <p>
-                    <ul>For more information you can check
-                        <li>The <a class="item" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a></li>
-                        <li>This <a href="#" class="mindMapSecurity">mindmap</a> for a 1 pager on security integration</li>
-                        <li>The security integration <a href="{{doc_securtityIntegration}}" target="_blank">documentation</a></li>
-                    </ul>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="ui grid">
-        <div class="row">
-            <div class="center aligned column">
-                <a href="#" class="ui huge button integratedFlowModal">Show me the integrated flow</a>
-            </div>
-        </div>
-        <div class="two column row">
-            <div class="column">
-                <h4 class="ui header">Security overview</h4>
-                <div class="ui embed" data-url="https://www.youtube.com/embed/XJ9dOHoMiXE" data-placeholder="/images/introVideoSecurity.png"></div>
-                <div class="item">
-                    <div class="content">
-                        <a class="header">Contents</a>
-                        <div class="meta">
-                            <span></span>
-                        </div>
-                        <div class="description">
-                            <p>In a quick overview you will see the key components for securing a Qlik Sense integration. </p>
-                        </div>
-                        <div class="extra">
-                        </div>
+    <div class="ui container">
+        <div class="ui very padded segment">
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="seven wide column">
+                        <h3 class="ui header">Integrated security flow</h3>
+                        <p>Your goal is to create and provide within a multi-tenant SaaS platform environment - embedded analytics – with your core application(s) where each of your customers would see and use only their data for their analytic needs. It’s possible for each customer to have a more fine grained authorization structure. As an example, it is possible to provide authorizations for a specific department or country within a dashboard. In our demonstration we will take you step by step through the integration process flow and you will see a simple solution in which both of our fictitious users, Peter and John, go to the same website, but see different things based on their authorizations. Qlik Sense makes this possible because it uses a dynamic attribute-based security approach in which we re-use all the pre-existing users and roles from your SaaS platform. This ensures Qlik Sense stays automatically in sync and avoids the overhead of double maintenance.</p>
                     </div>
-                </div>
-            </div>
-            <div class="column">
-                <h4 class="ui header">Security deep dive</h4>
-                <div class="ui embed" data-url="https://www.youtube.com/embed/k9zYr9eJk0w" data-placeholder="/images/DeepDiveVideoSecurity.png"></div>
-                <div class="item">
-                    <div class="content">
-                        <a class="header">Contents</a>
-                        <div class="meta">
-                            <span></span>
-                        </div>
-                        <div class="description">
-                            <p>A deep dive introduction in which you see the complete authentication and authorization flow. This includes real code examples and security rules.</p>
-                        </div>
-                        <div class="extra">
-                        </div>
+                    <div class="nine wide right floated column">
+                        <img class="ui fluid image" src="images/only full integration flow.gif">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="ui modal mindMapSecurity">
-        <div class="ui icon message">
-            <img class="icon" src="images/API.png">
-            <div class="content">
-                <div class="header">
-                    <h4>Mindmap of the Qlik Sense OEM security model</h4>
+        <div class="ui very padded segment">
+            <div class="ui middle aligned stackable grid container">
+                <h3 class="ui header">Flexible attribute based access control</h3>
+                <div class="row">
+                    <div class="three wide left floated column">
+                        <img class="ui fluid image" src="images/id_big.png">
+                    </div>
+                    <div class="ten wide column">
+                        <h4 class="ui header">Authentication - Single Sign on using tickets (tokens)</h4> We re-use your existing way to authenticate the users. We will insert a little piece of code inside your existing "security module". In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via a SSL certificate exchange). And send this info about the user (userId, group membership) in a JSON object to Sense (we call this ticketing).
+                        <h4 class="ui header">Authorization</h4> Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name.
+                    </div>
                 </div>
-                <p>This is a summary of a common approach to embed Qlik Sense security in your SaaS platform.</p>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="ui one column centered grid">
-            <div class="column centered">
-                <img class="ui fluid image" src="/images/mindMapSecurityIntegration.png">
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
-    <div class="ui modal integratedFlowModal">
-        <div class="ui icon message">
-            <img class="icon" src="images/API.png">
-            <div class="content">
-                <div class="header">
-                    <h4>Summary video of the integration flow</h4>
+                <div class="row">
+                    <p>
+                        <div class="center aligned column">
+                            <div class="center aligned column">
+                                <div class="ui mini buttons">
+                                    <a href="{{doc_securtityIntegration}}" target="_blank" class="ui button">Read more</a>
+                                    <div class="or"></div>
+                                    <a class="ui button" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a>
+                                    <div class="or"></div>
+                                    <a href="#" class="ui button mindMapSecurity">Mindmap</a>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
                 </div>
-                <p>This is a summary of a complete integration flow with web integration using IFrame, DIV tags or on the fly generation of charts. No matter which type of integration you use, you always have to get passed the Qlik Sense Proxy (QPS) which performs the authentication. After you pass this check, the authorization process using the QMC security rules and section access for row-level security inside an app.</p>
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="ui one column centered grid">
-            <div class="column centered">
-                <img class="ui fluid image" src="/images/only full integration flow.gif">
-                <!-- <div class="ui embed" data-url="https://www.youtube.com/embed/Rnyt650C5jY" data-placeholder="/images/qlik sense integrated security flow.png"></div> -->
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
+                <div class="row">
+                    <div class="ui accordion">
+                        <div class="title">
+                            <i class="dropdown icon"></i> Or see the videos...
+                        </div>
+                        <div class="content">
+                            <p class="transition hidden">
+                                <div class="ui grid">
+                                    <div class="two column row">
+                                        <div class="column">
+                                            <h4 class="ui header">Security overview</h4>
+                                            <div class="ui embed" data-url="https://www.youtube.com/embed/XJ9dOHoMiXE" data-placeholder="/images/introVideoSecurity.png"></div>
+                                            <div class="item">
+                                                <div class="content">
+                                                    <a class="header">Contents</a>
+                                                    <div class="meta">
+                                                        <span></span>
+                                                    </div>
+                                                    <div class="description">
+                                                        <p>In a quick overview you will see the key components for securing a Qlik Sense integration. </p>
+                                                    </div>
+                                                    <div class="extra">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="column">
+                                            <h4 class="ui header">Security deep dive</h4>
+                                            <div class="ui embed" data-url="https://www.youtube.com/embed/k9zYr9eJk0w" data-placeholder="/images/DeepDiveVideoSecurity.png"></div>
+                                            <div class="item">
+                                                <div class="content">
+                                                    <a class="header">Contents</a>
+                                                    <div class="meta">
+                                                        <span></span>
+                                                    </div>
+                                                    <div class="description">
+                                                        <p>A deep dive introduction in which you see the complete authentication and authorization flow. This includes real code examples and security rules.</p>
+                                                    </div>
+                                                    <div class="extra">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    {{> modalMindMapSecurity}}
 </template>
 <template name="architecture">
     <div class="container">
@@ -133,6 +115,31 @@
         <div class="ui one column centered grid">
             <div class="column centered">
                 <div class="ui embed" data-url="https://www.youtube.com/embed/RVeV-H56epg" data-placeholder="/images/introVideoArchitecture.png"></div>
+            </div>
+        </div>
+    </div>
+</template>
+<template name="modalMindMapSecurity">
+    <div class="ui modal mindMapSecurity">
+        <div class="ui icon message">
+            <img class="icon" src="images/API.png">
+            <div class="content">
+                <div class="header">
+                    <h4>Mindmap of the Qlik Sense OEM security model</h4>
+                </div>
+                <p>This is a summary of a common approach to embed Qlik Sense security in your SaaS platform.</p>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="ui one column centered grid">
+            <div class="column centered">
+                <img class="ui fluid image" src="/images/mindMapSecurityIntegration.png">
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                I got it...
+                <i class="checkmark icon"></i>
             </div>
         </div>
     </div>

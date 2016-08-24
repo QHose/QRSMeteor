@@ -30,7 +30,7 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('doc_securtityIntegration', function() {
-        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FSecurity%20integration%20Provide%20Single%20Sign%20On%20and%20share%20access%20%7C4a2a16e2-5900-4967-97f9-b2d824c7bee1%2F%29';
+        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FSecurity%20integration%20Provide%20Single%20Sign%20On%20and%20share%20access%20%7C418784e0-b7f9-4207-9772-a2f740862533%2F%29';
     });
     Template.registerHelper('doc_processIntegration', function() {
         return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FProcess%20integration%20and%20automation%20using%20API%27s%7C269d7763-b98f-4b15-aeb1-6d983b91edc0%2F%29';
