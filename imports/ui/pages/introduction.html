@@ -5,18 +5,26 @@
                 <div class="row">
                     <div class="seven wide column">
                         <h3 class="ui header">The power of API's; the SaaS with Qlik Sense demo platform</h3>
-                        <p>This <a href="https://github.com/QHose/QRSMeteor">open source</a> (non-Qlik) <a href="https://www.meteor.com/">Meteor.js</a> based demo platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform.
-                            <!-- Please watch the <a href="#" class="howDoesSaaSAutomationWork">video</a> for a quick introduction to the concept of SaaS automation or the video's below for an general introduction. -->
-                            <div class="center aligned column">
-                                <div class="ui mini buttons">
-                                    <!-- <a href="{{doc_processIntegration}}" target="_blank" class="ui button">Read more</a>
-                                    <div class="or"></div> -->
-                                    <a href="#" class="ui button howDoesSaaSAutomationWork">Short introduction video</a>
+                        <p>Today we will show you how you can easily demonstrate the power of the Qlik Sense APIs to customers and partners to fully extend and take advantage of Qlik Sense to embed analytics within a multi-tenant SaaS application environment.
+                            <div class="ui accordion">
+                                <div class="title">
+                                    <div class="ui mini buttons">
+                                        <a href="" class="ui button dropdown">Read more</a>
+                                        <div class="or"></div>
+                                        <a href="#" class="ui positive button howDoesSaaSAutomationWork">Introduction video</a>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <p class="transition hidden">
+                                        APIs are our secret sauce and the website we will explore today is specifically designed to illustrate the unique selling points of our Qlik Sense APIs. The objective of this presentation is to simplify and explain the power of the Qlik Sense APIs in a language that can be easily understood by non-technical business users or decision-makers through a ‘sample’ step-by-step walk-through. We developed this learning environment from our experiences with Netherlands customer, Exact and AFAS, as well as other key customer accounts. The objective of this approach is to explain, excite and reassure senior executives and management about the Qlik platform through illustrations of its ease of use and full automation capabilities. </p>
+                                    <p>This presentation leads up to a full demonstration environment that helps bridge the gap for our non-technical prospects and provides a clear and simple pathway to understand and digest key data points about embedding Qlik Sense in a multi tenant SaaS application platform. A key outcome for using this demonstration asset is to mitigate early in the sales cycle potential risk and at same time build enthusiasm/interest for Qlik Sense, its capabilities and showcase our readiness to support the customer or partner’s vision for embedding analytics within their application suite. </p>
+                                    <p>This prospect experience is supported by several linked assets including the following: a demo website which simulates the SaaS platform of an OEM partner, aligned to videos and documentation illustrating each integration topic and finally a presentation moving the audience through a journey which highlights key aspects of Qlik Sense, its APIs and the overall value of Qlik.
+                                    </p>
                                 </div>
                             </div>
                         </p>
                         <h3 class="ui header">How to use the demo?</h3>
-                        <p> You can watch the step by step video <a href="#" class="stepByStep">here</a>. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "custom fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.
+                        <p> This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "custom fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream.
                             <div class="ui accordion">
                                 <div class="title">
                                     <i class="dropdown icon"></i> Execute these 4 steps...
@@ -35,10 +43,10 @@
                         </p>
                         <div class="center aligned column">
                             <div class="center aligned column">
-                                <div class="ui large buttons">
+                                <div class="ui mini buttons">
                                     <a href="#" class="ui  button stepByStep">Step by step video</a>
                                     <div class="or"></div>
-                                    <a href="{{pathFor 'generation'}}" class="ui positive button">Demo</a>
+                                    <a href="{{pathFor 'generation'}}" class="ui positive button">Go to the demo</a>
                                 </div>
                             </div>
                         </div>
@@ -122,28 +130,36 @@
         <div class="ui very padded segment">
             <div class="ui middle aligned stackable grid container">
                 <div class="row">
-                    <div class="ten wide column">
-                        <h3 class="ui header">The power of APIs: Your software controls Qlik Sense</h3>
+                    <div class="seven wide left floated column">
+                        <img class="ui fluid image" src="images/qlik sense embedded example.png">
+                    </div>
+                    <div class="seven wide column">
+                        <h3 class="ui header">APIs: Your platform manages Qlik Sense</h3>
                         <p>Using our .NET API, a Visual Studio plugin, javascript and REST API's you can automate each manual step. This means your software can control and configure Qlik Sense. Using this mechanism you can for example create/delete/reload apps for each of your customers customer. You can even create complete dashboards or individual charts on the fly. This removes the need to design everything up front.</p>
                         <div class="center aligned column">
                             <div class="ui mini buttons">
-                                <a href="{{doc_processIntegration}}" target="_blank" class="ui button">Read more</a>
-                                <div class="or"></div>
-                                <a href="#" class="ui positive button howDoesSaaSAutomationWork">Watch video</a>
+                                <a href="{{pathFor 'APILogs'}}" class="ui button">Read more</a>
                             </div>
                         </div>
                         <h3 class="ui header">Embed Qlik Sense</h3>
-                        <p>We integrate complete our hub, apps, sheets or individual objects using an Iframe or Div tag. All Sense functionality "is delivered via a webserver", called the proxy (QPS). This is nice because it means everything in Sense is web technology based; web sockets, javascript, CSS3, HTML5 and Angular.</p>
-                        <div class="center aligned column">
-                            <div class="ui mini buttons">
-                                <a href="{{doc_webIntegration}}" target="_blank" class="ui button">Read more</a>
-                                <div class="or"></div>
-                                <a href="{{pathFor 'webIntegration'}}" class="ui positive button">Watch video</a>
+                        <p>The beauty of Qlik is it allows you choices for your integration. You can choose the level of web integration according to your business requirements. On the client side, you can choose to use our client/front-end or you can create your own. If you use the Qlik Sense client you have the following options. You can integrate the hub, an app, a sheet or individual charts. In most cases you have the flexibility to control whether you would like to see our menu, our selection bar or whether or not you would like to provide initial selections or make the charts static so that no selections are possible at all.
+                        </p>
+                        <div class="ui accordion">
+                            <div class="active title">
+                                <i class="dropdown icon"></i>
+                                What would the end result look like for a succesful integration of Qlik Sense into your application architecture?
+                            </div>
+                            <div class="active content">
+                                <p>Your goal is to create within a multi-tenant SaaS platform environment - embedded analytics - within your core application(s) where each of your customers would see and use only their data. It’s possible for each customer to have a more fine grained authorization structure. </p>
+                                <p>As an example, it is possible to provide authorizations for a specific department or country within a dashboard. Ultimately you will see a simple solution in our demonstration in which both of our fictitious users, Peter and John, go to the same website, but see different things based on their authorizations. Qlik Sense makes this possible because it uses a dynamic attribute-based security approach in which we re-use all the pre-existing users and roles from your SaaS platform. This ensures Qlik Sense stays automatically in synch and avoids the overhead of double maintenance.
+                                </p>
                             </div>
                         </div>
-                    </div>
-                    <div class="four wide right floated column">
-                        <img class="ui fluid image" src="images/embed.png">
+                        <div class="center aligned column">
+                            <div class="ui mini buttons">
+                                <a href="{{pathFor 'webIntegration'}}" class="ui button">Read more</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -172,31 +188,31 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="ui modal stepByStep">
-        <div class="ui icon message">
-            <img class="icon" src="images/intro.png">
-            <div class="content">
-                <div class="header">
-                    <h4>Step by step guide on how to use this demo platform</h4>
+        <div class="ui modal stepByStep">
+            <div class="ui icon message">
+                <img class="icon" src="images/intro.png">
+                <div class="content">
+                    <div class="header">
+                        <h4>Step by step guide on how to use this demo platform</h4>
+                    </div>
+                    <p>This video is just a selection of the extended introduction video. This video shows you "where to click". Please watch the extended video for a complete overview. You can also watch a specific video from the "video menu" in the top menu.</p>
                 </div>
-                <p>This video is just a selection of the extended introduction video. This video shows you "where to click". Please watch the extended video for a complete overview. You can also watch a specific video from the "video menu" in the top menu.</p>
+            </div>
+            <div class="ui one column centered grid">
+                <div class="column centered">
+                    <!-- <div class="ui embed" data-url="https://www.youtube.com/embed/wVVbP7a5-I8" data-placeholder="/images/API.png"></div> -->
+                    <iframe width="854" height="480" src="https://www.youtube.com/embed/T9a3s5cnvPE" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui positive right labeled icon button">
+                    I got it...
+                    <i class="checkmark icon"></i>
+                </div>
             </div>
         </div>
-        <div class="ui one column centered grid">
-            <div class="column centered">
-                <!-- <div class="ui embed" data-url="https://www.youtube.com/embed/wVVbP7a5-I8" data-placeholder="/images/API.png"></div> -->
-                <iframe width="854" height="480" src="https://www.youtube.com/embed/T9a3s5cnvPE" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
+        {{>modalSaaSautomation}}
     </div>
-    {{>modalSaaSautomation}}
 </template>
 <template name="modalSaaSautomation">
     <div class="ui modal howDoesSaaSAutomationWork">
