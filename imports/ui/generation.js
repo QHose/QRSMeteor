@@ -75,7 +75,8 @@ Template.generation.helpers({
                     label: 'Last reload',
                     hidden: true,
                     fn: function(value) {
-                        return moment(value).format('MMMM Do YYYY, h:mm:ss a');
+                        return moment(value)
+                            .format('MMMM Do YYYY, h:mm:ss a');
                     }
                 }, {
                     key: 'fileSize',
@@ -87,12 +88,14 @@ Template.generation.helpers({
                 }, {
                     key: 'copyApp',
                     label: 'Copy app selected customers',
+                    hidden: true,
                     fn: function() {
                         return new Spacebars.SafeString('<i class="copy icon"></i>')
                     }
                 }, {
                     key: 'deleteApp',
                     label: 'Delete app',
+                    hidden: true,
                     fn: function() {
                         return new Spacebars.SafeString('<i class="remove circle icon"></i>')
                     }
@@ -116,7 +119,7 @@ Template.generation.helpers({
                     key: 'name',
                     label: 'Stream',
                     fn: function(value, object, key) {
-                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + object.id  + ' target="_blank">' + value + '</a>');
+                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + object.id + ' target="_blank">' + value + '</a>');
                     }
                 },
                 // { key: 'id', label: 'Guid' }, 
@@ -137,6 +140,7 @@ Template.generation.helpers({
                 }, {
                     key: 'deleteStream',
                     label: 'Delete',
+                    hidden: true,
                     fn: function() {
                         return new Spacebars.SafeString('<i class="remove circle icon markAsTemplate"></i>')
                     }
