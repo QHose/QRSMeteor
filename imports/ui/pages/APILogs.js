@@ -71,10 +71,17 @@ Template.APILogs.events({
     'click .howDoesSaaSAutomationWork' () {
         $('.ui.modal.howDoesSaaSAutomationWork')
             .modal('show');
+    },
+     'click .APIIntegrationMindMap' () {
+        $('.ui.modal.APIIntegrationMindMap')
+            .modal('show');
     }
 })
 
 Template.APILogs.onRendered(function() {
-    const apiLogsHandle = Meteor.subscribe('apiLogs')
-});
+    const apiLogsHandle = Meteor.subscribe('apiLogs');
 
+     Template.instance()
+        .$('.ui.accordion')
+        .accordion({ exclusive: false });
+});

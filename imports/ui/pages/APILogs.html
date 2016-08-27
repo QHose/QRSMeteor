@@ -8,27 +8,36 @@
         <div class="row">
             <div class="eight wide column">
                 <p>This <a href="https://github.com/QHose/QRSMeteor">open source</a> (non-Qlik) <a href="https://www.meteor.com/">Meteor.js</a> based demo platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. On the right you will find an introduction of the manual QMC activities we have automated by making use of the QRS and Engine API.</p>
-                <div class="center aligned column">
-                    <div class="ui mini buttons">
-                        <a href="{{doc_processIntegration}}" target="_blank" class="ui button">Read more on APIs</a>
-                       <!--  <div class="or"></div>
-                        <a href="#" target="_blank" class="ui button howDoesSaaSAutomationWork">Intro video</a>
-                        <div class="or"></div>
-                        <a href="#" target="_blank" class="ui button">API Mindmap</a> -->
-                    </div>
-                </div>
-                <h4>Use the demo source code</h4>
-                <p>You can find the key source code which perform the calls here. Most likely your SaaS platform already uses REST APIs, so just copy the code and and start automating...</p>
-                <div class="center aligned column">
-                    <div class="ui mini buttons">
-<!--                         <a href="{{doc_sourceCode}}" target="_blank" class="ui button">Source code guide</a>
-                        <div class="or"></div>
- -->                        <a href="https://github.com/QHose/QRSMeteor" target="_blank" class="ui button">Source code GitHub</a>
-                    </div>
+                <div class="ui mini buttons">
+                    <a href="{{doc_processIntegration}}" target="_blank" class="ui button">Read more on APIs</a>
+                    <div class="or"></div>
+                    <a href="#" class="ui button APIIntegrationMindMap">Mindmap</a>
                 </div>
             </div>
             <div class="right floated eight wide column">
                 <img class="ui image" src="/images/only generation explanation.gif">
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="row">
+            <div class="eight wide column">
+                <h4>Use the demo source code</h4>
+                <p>This demo platform provides you a wrapper around the Qlik Sense QMC so you can "manage" Qlik Sense. If you click certain buttons, API calls are send to Qlik Sense. Using these calls you can for example create streams and apps. Most likely your SaaS platform already uses REST APIs, so just copy the code and and start automating... The tasks we automated is what we call the "generation". The key steps to be done for each customer for each template are
+                    <ul>
+                        <li><a href="https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsStream.js#L43">Create stream with the name of the customer</a></li>
+                        <li><a href="https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L274">Copy template app</a></li>
+                        <li><a href="https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L93">Replace the script and reload the app</a>(this makes dynamic dataloading from big data sources possible. Examples include Hadoop, MongoDB (used in this demo), google Big Query etc.</li>
+                        <li><a href="https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L372">Publish app in customer stream</a></li>
+                    </ul>
+                </p>
+                <div class="center aligned column">
+                    <div class="ui mini buttons">
+                        <a href="{{doc_sourceCode}}" target="_blank" class="ui button">Source code guide</a>
+                    </div>
+                </div>
+            </div>
+            <div class="right floated eight wide column">
+                <img class="ui image" src="/images/jsGenerationLoop.png">
             </div>
         </div>
         <div class="ui divider"></div>
@@ -48,13 +57,13 @@
                 <img class="ui image" src="/images/Sequence diagram generation 1.png">
             </div>
         </div>
-    </div>
-    <div class="ui divider"></div>
-    <div class="row">
-        <h3 class="ui header">            
+        <div class="ui divider"></div>
+        <div class="row">
+            <h3 class="ui header">            
                 Real time JSON messages (API)</h3>
-        <p>In the table below you will see a real time overview of the JSON messages being sent between Qlik Sense QRS and the Engine API. You can search for specific words like app, stream, notification, logout etc. to view the API request from this demo platform and the response from Qlik Sense.</p>
-        {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}}
+            <p>In the table below you will see a real time overview of the JSON messages being sent between Qlik Sense QRS and the Engine API. You can search for specific words like app, stream, notification, logout etc. to view the API request from this demo platform and the response from Qlik Sense.</p>
+            {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}}
+        </div>
     </div>
     <div class="ui fullscreen modal sequenceGeneration">
         <i class="close icon"></i>
@@ -84,5 +93,29 @@
             </div>
         </div>
     </div>
-    {{>modalSaaSautomation}}
+    {{>modalSaaSautomation}} {{>APIIntegrationMindMap}}
+</template>
+<template name="APIIntegrationMindMap">
+    <div class="ui modal APIIntegrationMindMap">
+        <div class="ui icon message">
+            <img class="icon" src="images/API.png">
+            <div class="content">
+                <div class="header">
+                    <h4>Overview of the API's to be used by your SaaS platform</h4>
+                </div>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="ui one column centered grid">
+            <div class="column centered">
+                <img class="ui fluid image" src="/images/mindMapAPIIntegration.png">
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                I got it...
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
 </template>
