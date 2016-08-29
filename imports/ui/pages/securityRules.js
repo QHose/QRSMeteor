@@ -23,7 +23,7 @@ Template.securityRules.helpers({
 
 Template.securityRules.events({
     'click .selfservice ' () {        
-        $('.ui.modal')
+        $('.ui.modal.SSBI')
             .modal('show');
     }
 })
