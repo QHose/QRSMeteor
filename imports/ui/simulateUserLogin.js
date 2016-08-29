@@ -20,5 +20,9 @@ Template.simulateUserLogin.events({
         } catch (err) {
             sAlert.error(err.message);
         }
-    }
+    },
+    'click .selfservice' () {
+        $('.ui.modal.SSBI')
+            .modal('show');
+    },
 });

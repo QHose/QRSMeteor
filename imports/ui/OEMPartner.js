@@ -9,42 +9,41 @@ import { APILogs } from '/imports/api/APILogs';
 import './OEMPartner.html';
 
 Template.OEMPartner.helpers({
-            templateApps() {
-                return TemplateApps.find();
-            },
-            loading() {
-                return Session.get('loadingIndicator');
-            },
-            NrCustomers() {
-                return Customers.find()
-                    .count();
-            },
-            linkToApp() {
-                return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/sense/app/' + this.id
-            },
-            RESTCallSettings: function() {
-                return {
-                    rowsPerPage: 3,
-                    responsive: true,
-                    autoWidth: true,
-                    showFilter: false,
-                    showNavigation: 'never',
-                    showColumnToggles: false,
-                    fields: [{
-                        key: 'action',
-                        label: 'Action'
-                    }, {
-                        key: 'request',
-                        label: 'Request',
-                        cellClass: "overflow: hidden; text - overflow: ellipsis"
-                    }
-                , {
-                    key: 'createDate',
-                    hidden: true,
-                    label: 'Create Date',
-                    sortOrder: 0,
-                    sortDirection: 'descending'
-                }]
+    templateApps() {
+        return TemplateApps.find();
+    },
+    loading() {
+        return Session.get('loadingIndicator');
+    },
+    NrCustomers() {
+        return Customers.find()
+            .count();
+    },
+    linkToApp() {
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/sense/app/' + this.id
+    },
+    RESTCallSettings: function() {
+        return {
+            rowsPerPage: 3,
+            responsive: true,
+            autoWidth: true,
+            showFilter: false,
+            showNavigation: 'never',
+            showColumnToggles: false,
+            fields: [{
+                key: 'action',
+                label: 'Action'
+            }, {
+                key: 'request',
+                label: 'Request',
+                cellClass: "overflow: hidden; text - overflow: ellipsis"
+            }, {
+                key: 'createDate',
+                hidden: true,
+                label: 'Create Date',
+                sortOrder: 0,
+                sortDirection: 'descending'
+            }]
         };
     },
     restrictedApiLogs: function() {
@@ -156,7 +155,13 @@ Template.OEMPartner.onRendered(function() {
         .$('.ui.embed')
         .embed();
 
-    $('.ui.dropdown')
+    Template.instance()
+        .$('.ui.dropdown')
         .dropdown();
+})
+
+Template.step4.onRendered(function() {
+    this.$('.ui.accordion')
+        .accordion();
 
 })

@@ -18,24 +18,34 @@
             </div>
             <p> Try different users and notice the difference in apps and streams visible. If you want to test row level security, use the "dummy customers" in step 1, and open the "row level security app" in the "Everyone" Stream. A user with role
                 <ul>
-                    <li>Consumers can only display</li>
-                    <li>Contributors can create sheets in existing apps</li>
-                    <li>Developers can create apps and load data.</li>
-                    <li>Admins can maintain their customer apps in the QMC</li>
-                </ul>                
-                <br> You can maintain users and groups <a class="item" href="{{pathFor 'users'}}">here</a>, logout or switch user, and notice the changed authorizations. After you selected a user you can see Qlik Sense embedded <a href="{{webIntegrationDemo}}/hub" target="_blank">here</a>.</p>
-                <div class="ui fluid selection dropdown">
-                    <input id="currentUser" type="hidden">
-                    <div class="default text">Select a user</div>
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        {{#each customers}} {{#each users}}
-                        <div class="item" data-value="{{name}}" data-text="{{name}}">
-                            <i class="male icon"></i> {{name}} - ({{group}} for customer {{../name}})
-                        </div>
-                        {{/each}} {{/each}}
-                    </div>
+                    <li>Consumer can only display</li>
+                    <li>Contributor can create sheets in existing apps</li>
+                    <li>Developer can create apps and load data.</li>
+                    <li>Admin can maintain their customer apps in the QMC</li>
+                </ul>
+                <br>You can maintain users and groups, logout or switch user, and notice the changed authorizations. Some users have access to create sheets or apps, others can only display and select.
+            </p>
+            <p>
+                <div class="ui fluid mini buttons">
+                    <a class="ui button" href="{{pathFor 'users'}}">Users and groups</a>
+                    <div class="or"></div>
+                    <a href="#" class="ui button selfservice">Levels of self service</a>
+                    <div class="or"></div>
+                    <a class="ui positive button" href="{{webIntegrationDemo}}/hub" target="_blank">See Qlik Sense embedded</a>
                 </div>
+            </p>
+            <div class="ui fluid selection dropdown">
+                <input id="currentUser" type="hidden">
+                <div class="default text">Select a user</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    {{#each customers}} {{#each users}}
+                    <div class="item" data-value="{{name}}" data-text="{{name}}">
+                        <i class="male icon"></i> {{name}} ({{group}} for customer {{../name}})
+                    </div>
+                    {{/each}} {{/each}}
+                </div>
+            </div>
         </div>
     </div>
     <!--  {{/if}} -->

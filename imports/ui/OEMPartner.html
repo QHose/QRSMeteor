@@ -39,21 +39,11 @@
             <p>
                 You already selected a template, but please re-insert your customers.
             </p>
-            {{/if}} {{#if readyToTestSSO}}
-            <div class="header">
-                4: Test Single Sign On
-            </div>
-            <p>
-                Select a user to test Single Sign On. For this user a ticket will be generated which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles in Sense. In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information.
-            </p>
-            {{/if}} {{#if loading}}
+            {{/if}} {{#if readyToTestSSO}} {{> step4}} {{/if}} {{#if loading}}
             <div class="header">
                 3: API communication is in progress...
             </div>
-            <p>This application is now sending REST and websocket based API calls to the Qlik Sense QRS and Engine API. See the sequence diagrams and calls <a href="{{pathFor 'APILogs'}}" target="_blank">here</a>
-
-                   {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}}
-                
+            <p>This application is now sending REST and websocket based API calls to the Qlik Sense QRS and Engine API. See the sequence diagrams and calls <a href="{{pathFor 'APILogs'}}" target="_blank">here</a> {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}}
             </p>
             {{/if}}
         </div>
@@ -64,9 +54,9 @@
     </div>
     {{/if}}
     <div class="ui segment">
-     {{#if freshEnvironment}}
+        {{#if freshEnvironment}}
         <a class="ui {{loading}} labeled icon button" href="{{pathFor 'users'}}"> <i class="edit icon "></i>1: Insert Customers</a>
-    {{/if}}
+        {{/if}}
         <div class="ui buttons">
             <div class="ui buttons">
                 <div class="ui {{loading}} button resetEnvironment"><i class="undo icon "></i> Initialize demo</div>
@@ -156,23 +146,6 @@
         </table>
         {{/if}} {{/if}}
     </div>
-    <div class="ui modal SSBI">
-        <i class="close icon"></i>
-        <div class="ui header">Please see the overview of our layered approach to the self service functionality in Qlik Sense</div>
-        <img class="ui fluid image" src="/images/SelfServiceBI.png">
-        <div class="description">
-            <!-- <p>For more information see this <1a href="#" class="selfservice"> governed self service approach document </a></p> -->
-        </div>
-        <div class="actions">
-            <!-- <div class="ui black deny button">
-                    Nope
-                </div> -->
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
     <div class="ui modal APIAutomation">
         <div class="ui icon message">
             <img class="icon" src="images/API.png">
@@ -204,3 +177,20 @@
         </div>
     </div>
 </template>
+<Template name="step4">
+    <div class="header">
+        4: Test Single Sign On
+    </div>
+    <p>
+        Select a user to test Single Sign On.
+        <div class="ui accordion">
+            <div class="title">
+                <i class="dropdown icon"></i>Read more...
+            </div>
+            <div class="content">
+                <p>If you select a user a ticket will be requested which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles up front in Qlik Sense.</p>
+                <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
+            </div>
+        </div>
+    </p>
+</Template>

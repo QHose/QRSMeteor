@@ -4,12 +4,14 @@
         <div class="one wide column">
         </div>
         <div class="fourteen wide column">
+        {{> modals}}
             {{> sAlert}} {{#if NoSenseConnection}} {{> checkConfig}} {{else}} {{> yield}} {{/if}}            
         </div>
         <div class="one wide column">
         </div>
     </div>
     {{> footer}}
+    
     <!-- {{> yield region='footer'}} -->
 </template>
 <template name="footer">
@@ -22,9 +24,24 @@
         </div>
     </div>
 </template>
-<!-- 
 
-<div class="ui inverted section divider"></div>
-    <div class="ui sticky stickyBottom">
-        <i class="copyright icon"></i> Martijn Biesbroek & Raymond Neves
-    </div> -->
+<template name="modals">
+    <div class="ui modal SSBI">
+        <i class="close icon"></i>
+        <div class="ui header">Please see the overview of our layered approach to the self service functionality in Qlik Sense</div>
+        <img class="ui fluid image" src="/images/SelfServiceBI.png">
+        <div class="description">
+            <!-- <p>For more information see this <1a href="#" class="selfservice"> governed self service approach document </a></p> -->
+        </div>
+        <div class="actions">
+            <!-- <div class="ui black deny button">
+                    Nope
+                </div> -->
+            <div class="ui positive right labeled icon button">
+                I got it...
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+
+</template>
