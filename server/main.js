@@ -54,7 +54,7 @@ Meteor.startup(function() {
 Meteor.methods({
     resetEnvironment() {
         Meteor.call('removeGeneratedResources');
-        TemplateApps.remove({});
+        TemplateApps.remove({'generationUserId': Meteor.userId() });
         Customers.remove({});
         APILogs.remove({});
     },

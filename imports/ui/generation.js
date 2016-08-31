@@ -161,6 +161,7 @@ Template.generation.events({
                     $set: {
                         name: currentApp.name,
                         id: currentApp.id,
+                        generationUserId: Meteor.userId(),
                         checked: !this.checked
                     },
                 });
