@@ -47,7 +47,7 @@ function generateAppForTemplate(templateApp, customer) {
         //logging only
         const call = {};
         call.action = 'Finished';
-        call.request = 'FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name;
+        call.request = 'FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR CUSTOMER: ' + customer.name;
         REST_Log(call);
         console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
     } catch (err) {
