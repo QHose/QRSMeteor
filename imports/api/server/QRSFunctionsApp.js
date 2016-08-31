@@ -54,6 +54,7 @@ function generateAppForTemplate(templateApp, customer) {
         console.error(err);
     }
     GeneratedResources.insert({
+        'generationUserId':  Meteor.userId(),
         'customer': customer.name,
         'streamId': streamId,
         'appId': newAppId
