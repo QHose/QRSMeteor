@@ -83,10 +83,9 @@ Template.OEMPartner.events({
         Session.set('generated?', false);
     },
     'click .generateStreamAndApp' () {
-        console.log('click event generateStreamAndApp');
         Session.set('loadingIndicator', 'loading');
 
-        var selectedCustomers = Customers.find({ checked: true })
+        var selectedCustomers = Customers.find({ checked: true})
             .fetch();
 
         Meteor.call('generateStreamAndApp', selectedCustomers, function(err, result) {
@@ -110,12 +109,11 @@ Template.OEMPartner.events({
     'click .insertDummyCustomers' (event) {
         event.preventDefault();
         _.each(dummyCustomers, function(customer) {
+            customer.generationUserId = Meteor.userId();
             Customers.insert(customer);
-            console.log("Inserted " + customer.name);
         })
     },
     'click .deleteAllCustomers' () {
-        console.log('delete all dummyCustomers clicked');
         Meteor.call('removeAllCustomers', function(err, result) {
             if (err) {
                 sAlert.error(err);
