@@ -22,6 +22,9 @@ Customers.attachSchema(new SimpleSchema({
         label: "Date created",
         optional: true
     },
+    generationUserId: {
+        type: String,
+    },
     users: {
         type: [Object],
         optional: true
@@ -47,34 +50,29 @@ Customers.attachSchema(new SimpleSchema({
 
 export const dummyCustomers = [{
         "name": "Shell",
-        "checked": true, 
+        "checked": true,
         "users": [{
             "name": "John",
             "group": "Consumer",
             "currentlyLoggedIn": false,
             "country": "NL"
-        },
-        {
+        }, {
             "name": "Linda",
             "group": "Contributor",
             "currentlyLoggedIn": false,
             "country": "NL"
-        },
-        {
+        }, {
             "name": "Martin",
             "group": "Developer",
             "currentlyLoggedIn": false,
             "country": "NL"
-        },
-        {
+        }, {
             "name": "Paul",
             "group": "Admin",
             "currentlyLoggedIn": false,
             "country": "NL"
-        }
-        ]
-    },
-    {
+        }]
+    }, {
         "name": "Esso",
         "checked": true,
         "users": [{
@@ -83,8 +81,7 @@ export const dummyCustomers = [{
             "currentlyLoggedIn": false,
             "country": "NL"
         }]
-    },
-    {
+    }, {
         "name": "BP",
         "checked": true,
         "users": [{

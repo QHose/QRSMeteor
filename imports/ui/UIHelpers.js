@@ -24,6 +24,10 @@ if (Meteor.isClient) {
         return 'https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';
     });
 
+    Template.registerHelper('URL_Youtube_integrated_flow', function() {
+        return 'https://www.youtube.com/watch?v=60Da9-d8f9s';
+    });
+
 
     Template.registerHelper('URL_howDoesSaaSAutomationWork', function() {
         return 'wVVbP7a5-I8';

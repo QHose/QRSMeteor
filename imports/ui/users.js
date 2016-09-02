@@ -10,6 +10,11 @@ AutoForm.addHooks(['insertCustomerForm'], {
     onSuccess: function(operation, result, template) {
         sAlert.success('We inserted the customer into our local Mongo Database');
         //Router.go("/posts");
+    },
+    insert: function(customer) { //the customer form which is submitted by the aldeed:autoform: https://github.com/aldeed/meteor-autoform#callbackshooks
+        customer.generationUserId =Meteor.userId();
+        this.result(customer);
+        //Router.go("/posts");
     }
 });
 
