@@ -41,10 +41,9 @@ Meteor.publish('streams', function(generatedStreamsFromUser) {
     this.ready();
 });
 Meteor.publish('templateApps', function() {
-    if (this.userId) {
-        return TemplatesApps.find({ 'generationUserId': this.userId });
-    }
-    this.ready();
+
+    return TemplatesApps.find();
+
 });
 
 Meteor.publish('generatedResources', function() {
