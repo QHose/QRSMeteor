@@ -7,7 +7,7 @@ import '/imports/ui/UIHelpers';
 
 
 import './generation.html';
-import { Apps, TemplateApps } from '/imports/api/apps';
+import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
 import { APILogs } from '/imports/api/APILogs';
 import { Streams } from '/imports/api/streams';
 import './customer';
@@ -126,10 +126,7 @@ Template.generation.helpers({
                 {
                     key: 'id',
                     label: 'Guid',
-                    hidden: true,
-                    fn: function(value) {
-                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + object.id + ' target="_blank">' + value + '</a>');
-                    }
+                    hidden: true
                 }, {
                     key: 'createdDate',
                     label: 'Created date',
@@ -245,9 +242,31 @@ Template.generation.onRendered(function() {
 })
 
 Template.generation.onCreated(function() {
-    const appsHandle = Meteor.subscribe('apps');
-    const streamsHandle = Meteor.subscribe('streams');
-    const generatedResourcesHandle = Meteor.subscribe('generatedResources');
-    const customersHandle = Meteor.subscribe('customers');
+    this.subscribe('streams');
+    this.subscribe('customers');
 
+    var self = this;
+    self.autorun(function() {
+        self.subscribe('generatedResources', function() {
+            console.log('generatedResources changed, so update the apps subscription');
+            Tracker.autorun(function() {
+                const generatedAppsFromUser = GeneratedResources.find()
+                    .map(function(resource) {
+                        return resource.appId;
+                    });
+                console.log('onCreated generatedResources are: ', generatedAppsFromUser);
+                //now get all the apps from Qlik Sense, but filter them so that only the apps are show which the current user has generated
+                Meteor.subscribe('apps', generatedAppsFromUser);
+            })
+
+            //do the same but now for the streams
+            Tracker.autorun(function() {
+                const generatedStreamsFromUser = GeneratedResources.find()
+                    .map(function(resource) {
+                        return resource.streamId;
+                    })
+                Meteor.subscribe('streams', generatedStreamsFromUser);
+            });
+        })
+    })
 })

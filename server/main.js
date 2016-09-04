@@ -28,16 +28,16 @@ Meteor.startup(function() {
 
 
     console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
-    console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
+    console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
     console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');
     try {
-        const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/notification?name=app', {
+        const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: Meteor.settings.private.notificationURL + '/apps'
         })
 
-        const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/notification?name=stream', {
+        const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: Meteor.settings.private.notificationURL + '/streams'
@@ -52,23 +52,31 @@ Meteor.startup(function() {
 });
 
 Meteor.methods({
+    generateStreamAndApp(customers) {
+        console.log('generateStreamAndApp');
+        check(customers, Array);
+
+        Meteor.call('removeGeneratedResources'); //first clean the environment
+        return QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff
+
+    },
     resetEnvironment() {
         Meteor.call('removeGeneratedResources');
-        TemplateApps.remove({'generationUserId': Meteor.userId() });
-        Customers.remove({});
-        APILogs.remove({});
+        TemplateApps.remove({ 'generationUserId': Meteor.userId() });
+        Customers.remove({ 'generationUserId': Meteor.userId() });
+        APILogs.remove({ 'generationUserId': Meteor.userId() });
     },
     removeGeneratedResources() {
         console.log('remove GeneratedResources method, before we make new ones');
         //logging only
         const call = {};
-        call.action = 'Remove renerated resources';
-        call.request = '';
+        call.action = 'Remove generated resources';
+        call.request = 'Remove all apps and streams in Qlik Sense for userId: '+  Meteor.userId();
         REST_Log(call);
 
-        GeneratedResources.find()
+        GeneratedResources.find({'generationUserId':   Meteor.userId()})
             .forEach(function(resource) {
-                console.log('resetEnvironment for resource', resource);
+                console.log('resetEnvironment for userId',  Meteor.userId());
                 try {
                     Meteor.call('deleteStream', resource.streamId);
                 } catch (err) {
@@ -80,8 +88,8 @@ Meteor.methods({
                     console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
                 }
             })
-        GeneratedResources.remove({});
-        APILogs.remove({}); 
+        GeneratedResources.remove({'generationUserId':   Meteor.userId()});
+        APILogs.remove({'generationUserId':   Meteor.userId()});
     },
     resetLoggedInUser() {
         console.log("***Method resetLoggedInUsers");
@@ -117,13 +125,6 @@ Meteor.methods({
             }
         })
     },
-    generateStreamAndApp(customers) {
-        console.log('generateStreamAndApp');
-        check(customers, Array);
-        Meteor.call('removeGeneratedResources'); //first clean the environment
-        return QSApp.generateStreamAndApp(customers); //then, create the new stuff
-
-    },
     copyApp(guid, name) {
         check(guid, String);
         check(name, String);
@@ -150,7 +151,7 @@ Meteor.methods({
         //logging only
         const call = {};
         call.action = 'Delete app';
-        call.request = 'Delete app: '+guid;
+        call.request = 'Delete app: ' + guid;
         REST_Log(call);
 
         return QSApp.deleteApp(guid);
@@ -165,7 +166,7 @@ Meteor.methods({
         //logging only
         const call = {};
         call.action = 'Delete stream';
-        call.request = 'Delete stream: '+guid;
+        call.request = 'Delete stream: ' + guid;
         REST_Log(call);
 
         return QSStream.deleteStream(guid);

@@ -26,7 +26,7 @@ Template.OEMPartner.helpers({
         return {
             rowsPerPage: 3,
             responsive: true,
-            autoWidth: true,
+            autoWidth: false,
             showFilter: false,
             showNavigation: 'never',
             showColumnToggles: false,
@@ -85,7 +85,7 @@ Template.OEMPartner.events({
     'click .generateStreamAndApp' () {
         Session.set('loadingIndicator', 'loading');
 
-        var selectedCustomers = Customers.find({ checked: true})
+        var selectedCustomers = Customers.find({ checked: true })
             .fetch();
 
         Meteor.call('generateStreamAndApp', selectedCustomers, function(err, result) {
@@ -100,6 +100,13 @@ Template.OEMPartner.events({
                 console.log('generateStreamAndApp succes', result);
                 sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');
                 Meteor.call('updateLocalSenseCopy');
+                // const generatedAppsFromUser = GeneratedResources.find()
+                //     .map(function(resource) {
+                //         return resource.appId;
+                //     });
+                // console.log('onCreated generatedResources are: ', generatedAppsFromUser);
+                // //now get all the apps from Qlik Sense, but filter them so that only the apps are show which the current user has generated
+                // Meteor.subscribe('apps', generatedAppsFromUser);
             }
         });
     },
@@ -159,6 +166,12 @@ Template.OEMPartner.onRendered(function() {
 })
 
 Template.step4.onRendered(function() {
+    this.$('.ui.accordion')
+        .accordion();
+
+})
+
+Template.step3.onRendered(function() {
     this.$('.ui.accordion')
         .accordion();
 

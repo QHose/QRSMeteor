@@ -18,23 +18,24 @@ _ = lodash;
 var fs = require('fs');
 var qsocks = require('qsocks');
 
-export function generateStreamAndApp(customers) {
+export function generateStreamAndApp(customers, generationUserId) {
     console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
 
     var templateApps = checkTemplateAppExists(); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
     checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?
     for (const customer of customers) {
         for (const templateApp of templateApps) {
-            generateAppForTemplate(templateApp, customer);
+            generateAppForTemplate(templateApp, customer, generationUserId);
         }
     };
 };
 
-function generateAppForTemplate(templateApp, customer) {
+function generateAppForTemplate(templateApp, customer, generationUserId) {
     console.log(templateApp);
-    console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+    console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR USERkey: '+generationUserId);
     const call = {};
     call.action = 'Start of generation';
+    call.createdBy = generationUserId;
     call.request = 'START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name;
     REST_Log(call);
 
@@ -54,7 +55,7 @@ function generateAppForTemplate(templateApp, customer) {
         console.error(err);
     }
     GeneratedResources.insert({
-        'generationUserId':  Meteor.userId(),
+        'generationUserId':  generationUserId,
         'customer': customer.name,
         'streamId': streamId,
         'appId': newAppId

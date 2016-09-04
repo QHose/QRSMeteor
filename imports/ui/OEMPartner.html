@@ -21,17 +21,7 @@
                 Select the "my first template" app on the right. If you create apps using a user with role 'developer', then you can also use this one as template.
             </p>
             {{/if}} {{#if readyToGenerate}}
-            <div class="header">
-                3: Start publishing
-            </div>
-            <p>
-                If you press generate a sequence of activities will be executed automatically via the API's. You can test each activity also manually (and see the <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>).
-                <br> For example you can press "create stream" next to the customer to create a stream. "Copy app" to manually copy the app for each selected customer.
-                <br> Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay or who have activited the app in your software, so this "selection" simulates that use case.</p>
-            <p>
-                <h4>Fully automated app generation</h4>You can also automate each step, this happens when you press the generate button. It executes a chain of actions; it will publish a copy of the template app in the "customer name" stream. Next to this it replaces and reloads the script with a customer specific one.
-            </p>
-            <p>See more information about the generation or API automation <a href="#" class="APIAutomation">here</a> </p>
+            {{> step3}}
             {{/if}} {{#if templateButNoCustomer}}
             <div class="header">
                 Customers
@@ -43,7 +33,7 @@
             <div class="header">
                 3: API communication is in progress...
             </div>
-            <p>This application is now sending REST and websocket based API calls to the Qlik Sense QRS and Engine API. See the sequence diagrams and calls <a href="{{pathFor 'APILogs'}}" target="_blank">here</a>. {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}}
+            <p>This application is now sending REST and websocket based API calls to the Qlik Sense QRS and Engine API. See more info about API's, the source code, sequence diagrams and a real time API call overview <a href="{{pathFor 'APILogs'}}" target="_blank">here</a>. {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}}
             </p>
             {{/if}}
         </div>
@@ -189,7 +179,30 @@
             </div>
             <div class="content">
                 <p>If you select a user a ticket will be requested which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles up front in Qlik Sense.</p>
-                <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
+                <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. MAKE SURE YOU USED INSERT DUMMY CUSTOMERS (because of the row level security). On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
+            </div>
+        </div>
+    </p>
+</Template>
+<Template name="step3">
+    <div class="header">
+        3: Press generate
+    </div>
+    <p>
+        Press the green generation button to start creating streams and apps for each of your selected customers.
+        <div class="ui accordion">
+            <div class="title">
+                <i class="dropdown icon"></i>Read more...
+            </div>
+            <div class="content">
+                <p>
+                    If you press generate a sequence of activities will be executed automatically via the API's. You can test each activity also manually (and see the <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>).
+                    <br> For example you can press "create stream" next to the customer to create a stream. "Copy app" to manually copy the app for each selected customer.
+                    <br> Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay or who have activited the app in your software, so this "selection" simulates that use case.</p>
+                <p>
+                    <h4>Fully automated app generation</h4>You can also automate each step, this happens when you press the generate button. It executes a chain of actions; it will publish a copy of the template app in the "customer name" stream. Next to this it replaces and reloads the script with a customer specific one.
+                </p>
+                <p>See more information about the generation or API automation <a href="#" class="APIAutomation">here</a> </p>
             </div>
         </div>
     </p>
