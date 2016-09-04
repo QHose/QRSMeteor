@@ -42,20 +42,24 @@ Meteor.publish('streams', function(generatedStreamsFromUser) {
 });
 Meteor.publish('templateApps', function() {
 
-    return TemplatesApps.find();
+    return TemplateApps.find();
 
+    this.ready();
 });
 
 Meteor.publish('generatedResources', function() {
     return GeneratedResources.find({ 'generationUserId': this.userId });
+    this.ready();
 });
 
 Meteor.publish('customers', function() {
     return Customers.find({ 'generationUserId': this.userId });
+    this.ready();
 });
 
 Meteor.publish('apiLogs', function() {
     return APILogs.find();
+    this.ready();
 });
 
 Meteor.publish('users', function() {
