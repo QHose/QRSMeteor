@@ -30,6 +30,9 @@ Meteor.publish('streams', function(generatedStreamsFromUser) {
         return Streams.find();
 
     } else {
+        if (!generatedAppsFromUser) {
+            generatedAppsFromUser = [];
+        }
         return Streams.find({
             $or: [{ "id": { "$in": generatedStreamsFromUser } }, { "name": "Templates" }, { "name": "Everyone" }]
         });
@@ -38,7 +41,10 @@ Meteor.publish('streams', function(generatedStreamsFromUser) {
     this.ready();
 });
 Meteor.publish('templateApps', function() {
-    return TemplateApps.find({ 'generationUserId': this.userId });
+    if (this.userId) {
+        return TemplatesApps.find({ 'generationUserId': this.userId });
+    }
+    this.ready();
 });
 
 Meteor.publish('generatedResources', function() {
