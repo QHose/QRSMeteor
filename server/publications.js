@@ -30,8 +30,8 @@ Meteor.publish('streams', function(generatedStreamsFromUser) {
         return Streams.find();
 
     } else {
-        if (!generatedAppsFromUser) {
-            generatedAppsFromUser = [];
+        if (!generatedStreamsFromUser) {
+            generatedStreamsFromUser = [];
         }
         return Streams.find({
             $or: [{ "id": { "$in": generatedStreamsFromUser } }, { "name": "Templates" }, { "name": "Everyone" }]
