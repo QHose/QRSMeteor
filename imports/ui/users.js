@@ -75,4 +75,6 @@ Template.users.onRendered(function() {
   AutoForm.setDefaultTemplate("semanticUI");
 })
 
-
+Template.users.onCreated(function(){
+     this.subscribe('customers');
+})
