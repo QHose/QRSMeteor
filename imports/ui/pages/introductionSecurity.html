@@ -50,8 +50,8 @@
                                 <div class="ui grid">
                                     <div class="two column row">
                                         <div class="column">
-                                            <h4 class="ui header">Security overview</h4>
-                                            <div class="ui embed" data-url="https://www.youtube.com/embed/XJ9dOHoMiXE" data-placeholder="/images/introVideoSecurity.png"></div>
+                                            <h4 class="ui header">Overview of the web and security flow (1M)</h4>
+                                            <div class="ui embed" data-url='{{URL_Youtube_integrated_flow}}' data-placeholder="/images/qlik sense integrated security flow.png"></div>
                                             <div class="item">
                                                 <div class="content">
                                                     <a class="header">Contents</a>
@@ -59,16 +59,38 @@
                                                         <span></span>
                                                     </div>
                                                     <div class="description">
-                                                        <p>In a quick overview you will see the key components for securing a Qlik Sense integration. </p>
+                                                        <p>This perspective provides more details on the technical integration flow.
+                                                        </p>
+                                                    </div>
+                                                    <div class="extra">
+                                                     Let’s walk through it: A user logs in into your multi-tenant SaaS application platform. Your platform contains some Qlik Sense information in an IFrame or DIV tag. The proxy intercepts the request and redirects the user to the authentication module of your SaaS platform. Your platform knows the identity and group membership of the user and It requests an access ticket for this user. We redirect the user’s request back to the proxy, but now with the ticket number appended to the URL. Qlik Sense validates the request and will set a session cookie. Now the authentication is complete and Qlik Sense will evaluate the security rules and will only present the authorized streams and apps to the user.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="column">
+                                            <h4 class="ui header">Security overview</h4>
+                                            <div class="ui embed" data-url='{{URL_Youtube_security_introduction}}' data-placeholder="/images/introVideoSecurity.png"></div>
+                                            <div class="item">
+                                                <div class="content">
+                                                    <a class="header">Contents</a>
+                                                    <div class="meta">
+                                                        <span></span>
+                                                    </div>
+                                                    <div class="description">
+                                                        <p>In a quick overview you will see the key components for securing a Qlik Sense integration. Your goal is to create within a multi-tenant SaaS platform environment - embedded analytics - within your core application(s) where each of your customers would see and use only their data. It’s possible for each customer to have a more fine grained authorization structure. As an example, it is possible to provide authorizations for a specific department or country within a dashboard. Ultimately you will see a simple solution in our demonstration in which both of our fictitious users, Peter and John, go to the same website, but see different things based on their authorizations. Qlik Sense makes this possible because it uses a dynamic attribute-based security approach in which we re-use all the pre-existing users and roles from your SaaS platform. This ensures Qlik Sense stays automatically in synch and avoids the overhead of double maintenance.
+                                                        </p>
                                                     </div>
                                                     <div class="extra">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="two column row">
                                         <div class="column">
                                             <h4 class="ui header">Security deep dive</h4>
-                                            <div class="ui embed" data-url="https://www.youtube.com/embed/k9zYr9eJk0w" data-placeholder="/images/DeepDiveVideoSecurity.png"></div>
+                                            <div class="ui embed" data-url='{{URL_Youtube_security_deepDive}}' data-placeholder="/images/DeepDiveVideoSecurity.png"></div>
                                             <div class="item">
                                                 <div class="content">
                                                     <a class="header">Contents</a>
@@ -114,7 +136,7 @@
         </div>
         <div class="ui one column centered grid">
             <div class="column centered">
-                <div class="ui embed" data-url="https://www.youtube.com/embed/RVeV-H56epg" data-placeholder="/images/introVideoArchitecture.png"></div>
+                <div class="ui embed" data-url='{{URL_Youtube_architecture_introduction}}' data-placeholder="/images/introVideoArchitecture.png"></div>
             </div>
         </div>
     </div>

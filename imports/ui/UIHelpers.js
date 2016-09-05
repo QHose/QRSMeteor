@@ -25,7 +25,24 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('URL_Youtube_integrated_flow', function() {
-        return 'https://www.youtube.com/watch?v=l7W8u7VipiE';
+        return "https://www.youtube.com/embed/l7W8u7VipiE?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
+    });
+
+
+    Template.registerHelper('URL_Youtube_webintegration_introduction', function() {
+        return "https://www.youtube.com/embed/V_rajm0F2h4?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
+    });
+
+    Template.registerHelper('URL_Youtube_architecture_introduction', function() {
+        return "https://www.youtube.com/embed/sv5nKDvmRPI?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
+    });
+
+    Template.registerHelper('URL_Youtube_security_introduction', function() {
+        return "https://www.youtube.com/embed/XJ9dOHoMiXE?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
+    });
+
+Template.registerHelper('URL_Youtube_security_deepDive', function() {
+        return "https://www.youtube.com/embed/k9zYr9eJk0w?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
     });
 
 
