@@ -41,12 +41,16 @@ if (Meteor.isClient) {
         return "https://www.youtube.com/embed/XJ9dOHoMiXE?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
     });
 
-Template.registerHelper('URL_Youtube_security_deepDive', function() {
+    Template.registerHelper('URL_Youtube_security_deepDive', function() {
         return "https://www.youtube.com/embed/k9zYr9eJk0w?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
     });
 
+    Template.registerHelper('URL_Youtube_concept_behind', function() {
+        return "https://www.youtube.com/embed/JwBOco6fozo?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
+    });
 
-    Template.registerHelper('URL_howDoesSaaSAutomationWork', function() {
+
+    Template.registerHelper('URL_howDoesSaaSAutomationWork', function() { //concept behind the demo
         return 'JwBOco6fozo';
     });
 
