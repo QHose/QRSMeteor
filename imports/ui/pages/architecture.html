@@ -1,17 +1,19 @@
 <template name="architecture">
-    <div class="ui grid">
-    <div class="row"> <h2>Integrated architecture</h2> </div>
-        <div class="two column row">
-            <div class="column ui segment">{{>introductionArchitecturePage}}</div>
-            <div class="column">
+    <div class="ui grid container">
+        <div class="row">
+            <h2>Integrated architecture</h2> </div>
+        <div class="row">
+            <div class="seven wide column">
+                {{>introductionArchitecturePage}}
+            </div>
+            <div class="nine wide right floated column">
                 <div class="ui embed" data-url='{{URL_Youtube_architecture_introduction}}' data-placeholder="/images/introVideoArchitecture.png"></div>
             </div>
         </div>
         <div class="one column row">
-
             <div class="column ui segment">
-   <h3>Integrated architecture diagram</h3>
-             <img class="ui fluid image" src="images/integratedArchitecture.png"></div>
+                <h3>Integrated architecture diagram</h3>
+                <img class="ui fluid image" src="images/integratedArchitecture.png"></div>
         </div>
     </div>
 </template>
