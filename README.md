@@ -2,7 +2,7 @@
 
 Demo site unavailable till further notice.
 
-Watch [this video](https://youtu.be/RuL8p2DiPF4?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) to learn the concept of the SaaS automation demo.
+Watch [this video](https://youtu.be/JwBOco6fozo) to learn the concept of the SaaS automation demo.
 ![alt tag](https://raw.githubusercontent.com/QHose/QRSMeteor/master/public/images/only generation explanation.gif)
 
 
