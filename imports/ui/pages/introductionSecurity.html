@@ -63,7 +63,7 @@
                                                         </p>
                                                     </div>
                                                     <div class="extra">
-                                                     Let’s walk through it: A user logs in into your multi-tenant SaaS application platform. Your platform contains some Qlik Sense information in an IFrame or DIV tag. The proxy intercepts the request and redirects the user to the authentication module of your SaaS platform. Your platform knows the identity and group membership of the user and It requests an access ticket for this user. We redirect the user’s request back to the proxy, but now with the ticket number appended to the URL. Qlik Sense validates the request and will set a session cookie. Now the authentication is complete and Qlik Sense will evaluate the security rules and will only present the authorized streams and apps to the user.
+                                                        Let’s walk through it: A user logs in into your multi-tenant SaaS application platform. Your platform contains some Qlik Sense information in an IFrame or DIV tag. The proxy intercepts the request and redirects the user to the authentication module of your SaaS platform. Your platform knows the identity and group membership of the user and It requests an access ticket for this user. We redirect the user’s request back to the proxy, but now with the ticket number appended to the URL. Qlik Sense validates the request and will set a session cookie. Now the authentication is complete and Qlik Sense will evaluate the security rules and will only present the authorized streams and apps to the user.
                                                     </div>
                                                 </div>
                                             </div>
@@ -116,31 +116,7 @@
     </div>
     {{> modalMindMapSecurity}}
 </template>
-<template name="architecture">
-    <div class="container">
-        <div class="ui icon message">
-            <img class="icon" src="images/id.png">
-            <div class="content">
-                <div class="header">
-                    <h4> Qlik Sense architecture and deployment</h4>
-                </div>
-                <p>
-                    Get our complete architecture in 1 A0 page: <a class="item" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a>. In bullets below we show you some Qlik Products. View the complete list at Qlik.com.
-                    <ul>
-                        <li>Qlik Sense Desktop. Freeware client with a local installation on a pc. Available for a single user </li>
-                        <li>Qlik Sense Enterprise Server based variation with additional capabilities such as, but not limited to, governance, security, Self Service BI integrated in a web front end </li>
-                        <li>Qlik Analytics Platform; provides a subset of the capabilities of Qlik Sense Enterprise designed for embedded solution using a CPU core based license model.</li>
-                    </ul>
-                </p>
-            </div>
-        </div>
-        <div class="ui one column centered grid">
-            <div class="column centered">
-                <div class="ui embed" data-url='{{URL_Youtube_architecture_introduction}}' data-placeholder="/images/introVideoArchitecture.png"></div>
-            </div>
-        </div>
-    </div>
-</template>
+
 <template name="modalMindMapSecurity">
     <div class="ui modal mindMapSecurity">
         <div class="ui icon message">

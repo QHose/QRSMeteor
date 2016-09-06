@@ -1,0 +1,58 @@
+<template name="architecture">
+    <div class="ui grid">
+    <div class="row"> <h2>Integrated architecture</h2> </div>
+        <div class="two column row">
+            <div class="column ui segment">{{>introductionArchitecturePage}}</div>
+            <div class="column">
+                <div class="ui embed" data-url='{{URL_Youtube_architecture_introduction}}' data-placeholder="/images/introVideoArchitecture.png"></div>
+            </div>
+        </div>
+        <div class="one column row">
+
+            <div class="column ui segment">
+   <h3>Integrated architecture diagram</h3>
+             <img class="ui fluid image" src="images/integratedArchitecture.png"></div>
+        </div>
+    </div>
+</template>
+<template name="introductionArchitecturePage">
+    <h4> Qlik Sense architecture and deployment</h4>
+    <p> The integration of two software platforms entails multiple considerations. Each platform has its own nuances. In our approach here , we deconstruct our integration approach into the following categories: dashboard, data, security, web, APIs and architecture. </p>
+    <div class="ui accordion">
+        <div class="title">
+            <i class="dropdown icon"></i> Click here to read more...
+        </div>
+        <div class="content">
+            <p class="transition hidden">
+                <p>
+                    <h5>Web integration</h5> In the picture below you will find all integration aspects together in 1 overview for a typical OEM architecture, in which we have
+                </p>
+                <ul>
+                    <li>Your webserver which serves your existing SaaS platform</li>
+                    <li>Qlik Sense which also acts as a webserver (it delivers JSON content via the web or API clients)</li>
+                    <li>You can choose the level of web integration according to your business requirements. On the client side, you can choose to use our client/front-end or you can create your own. If you use the Qlik Sense client you have the following options.</li>
+                    <ul>
+                        <li>You can integrate the hub, an app, a sheet or individual charts.</li>
+                        <li>In most cases you have the flexibility to control whether you would like to see our menu, our selection bar or whether or not you would like to provide initial selections or make the charts static so that no selections are possible at all.
+                        </li>
+                    </ul>
+                </ul>
+                <h5>Data integration</h5>
+                <p>A powerful data integration capability for cleansing, transforming, and unifying multiple, disparate data sources for analysis. A robust data integration layer creates a unified view of information from many different sources, without requiring external tools or data repositories. This includes databases, twitter, facebook or any other REST/JOSN API, HTTP get web content found in tables, and Big Data sources. So, you will get 1 model of the truth in which all sources are combined, no data left behind and it is not needed to create 1 view as input for 1 dashboard and no separate cubes or queries anymore to maintain.</p>
+                <ul>
+                    <li>We’ve assumed you have a database per customer instance and you also have a master database which contains the customers, the database connections, user rights and possibly customer specific custom tables and fields.
+                    </li>
+                </ul>
+                <h5>Security integration</h5>
+                <p>Actually you don't need to do so much on the security side. You don't create users or groups in Sense. You just supply the userID and group membership in the security ticket. Based on the info in the ticket access is provided.</p>
+                <h5>Process integration (automatic creation of dashboards)</h5>
+                <p>In the demo you will see the broker in action. But what are the activities that the SaaS broker automates in the demo? What are the steps or stages?</p>
+                <li>First it will create a stream for each customer. </li>
+                <li>Secondly it will copy the template app. </li>
+                <li>Next it replaces the script with a customer-specific one, or in most cases you just have to replace the database connection.</li>
+                <li>Using the new script, the app is reloaded. You can also use this mechanism to query big data sources like MongoDB. This is where we basically make a compressed copy of the data and create the associative model.</li>
+                <li>In the final stage we publish the app in the stream with the name of the customer.</li>
+            </p>
+        </div>
+    </div>
+</template>

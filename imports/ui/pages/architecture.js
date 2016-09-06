@@ -1,3 +1,4 @@
+
 import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
 import '/imports/ui/UIHelpers';
@@ -25,3 +26,15 @@ Template.introductionSecurity.onRendered(function() {
 
 })
 
+Template.architecture.onRendered(function() {
+    Template.instance()
+        .$('.ui.embed')
+        .embed();
+})
+
+Template.introductionArchitecturePage.onRendered(function() {
+
+    Template.instance()
+        .$('.ui.accordion')
+        .accordion({ exclusive: false });
+})

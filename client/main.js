@@ -18,6 +18,8 @@ import '/imports/ui/users.html';
 import '/imports/ui/users.js';
 import '/imports/ui/pages/APILogs.html';
 import '/imports/ui/pages/APILogs.js';
+import '/imports/ui/pages/architecture.html';
+import '/imports/ui/pages/architecture.js';
 import '/imports/ui/simulateUserLogin.html';
 import '/imports/ui/simulateUserLogin.js';
 import '/imports/ui/pages/securityRules.html';
