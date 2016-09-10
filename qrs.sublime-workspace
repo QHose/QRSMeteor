@@ -4,7 +4,27 @@
 		"selected_items":
 		[
 			[
+				"user",
+				"users"
+			],
+			[
+				"Temp",
+				"Template"
+			],
+			[
+				"gee",
+				"generatedStreamsFromUser"
+			],
+			[
 				"ge",
+				"generatedResources"
+			],
+			[
+				"gene",
+				"generatedResources"
+			],
+			[
+				"geen",
 				"generatedAppsFromUser"
 			],
 			[
@@ -74,10 +94,6 @@
 			[
 				"int",
 				"introductionSecurity"
-			],
-			[
-				"gene",
-				"GeneratedResources"
 			],
 			[
 				"get",
@@ -170,10 +186,6 @@
 			[
 				"res",
 				"result"
-			],
-			[
-				"user",
-				"usersArray"
 			],
 			[
 				"Co",
@@ -420,10 +432,6 @@
 				"currentApp"
 			],
 			[
-				"Temp",
-				"TemplateApps"
-			],
-			[
 				"update",
 				"updateSenseInfo"
 			],
@@ -506,24 +514,16 @@
 			[
 				"aan",
 				"aantalBakjes3P"
-			],
-			[
-				"tot",
-				"totalQ"
-			],
-			[
-				"currentc",
-				"currentCartId"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "server/publications.js",
+			"file": "imports/ui/generation.js",
 			"settings":
 			{
-				"buffer_size": 1865,
+				"buffer_size": 11048,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,44 +531,7 @@
 			"file": "imports/ui/OEMPartner.js",
 			"settings":
 			{
-				"buffer_size": 5591,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "// import meteor collections\nimport { Apps, TemplateApps } from '/imports/api/apps';\nimport { Streams } from '/imports/api/streams';\nimport { Customers } from '/imports/api/customers';\nimport { senseConfig } from '/imports/api/config';\n\nif (Meteor.isClient) {\n    console.log('Setup generic helper functions, for functions every template needs');\n    // Template.registerHelper('formatDate', function(date) {\n    //     // console.log('in formate Date helper'+ date);\n    //     // return formatDate(date);\n    //     return formatDate(date);\n    // });\n\n    // // Template.registerHelper('formatNumber', function(myNumber) {\n    //     var commaFormat = d3.format(\",\");\n    //     // The expression /,/g is a regular expression that matches all commas.\n    //     return commaFormat(myNumber)\n    //         .replace(/,/g, \".\");\n    // });\n\n\n    Template.registerHelper('URL_Youtube_playlist', function() {\n        return 'https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';\n    });\n\n    Template.registerHelper('URL_Youtube_integrated_flow', function() {\n        return 'https://www.youtube.com/watch?v=60Da9-d8f9s';\n    });\n\n\n    Template.registerHelper('URL_howDoesSaaSAutomationWork', function() {\n        return 'wVVbP7a5-I8';\n    });\n\n    Template.registerHelper('doc_securtityIntegration', function() {\n        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FSecurity%20integration%20Provide%20Single%20Sign%20On%20and%20share%20access%20%7C418784e0-b7f9-4207-9772-a2f740862533%2F%29';\n    });\n    Template.registerHelper('doc_processIntegration', function() {\n        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FProcess%20integration%20and%20automation%20using%20API%27s%7C269d7763-b98f-4b15-aeb1-6d983b91edc0%2F%29';\n    });\n\n\n    Template.registerHelper('doc_integrationOverview', function() {\n        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FIntegration%20overview%20-%20Embedded%20analytics%7C4c1bc9c6-3f43-4565-b397-cd6dafe3578b%2F%29';\n    });\n\n    Template.registerHelper('doc_sourceCode', function() {\n        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FQlik%20Sense%20SaaS%20demo%20tool%20documentation%20of%20source%20code%7C126c382e-2f4c-4875-9969-7bfebabda7c8%2F%29';\n    });\n\n    Template.registerHelper('doc_webIntegration', function() {\n        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FWeb%20integration%20embed%20Sense%20charts%20or%20data%20inside%20your%20%7C00dd03fd-8c4e-48ce-92b2-54b4cab815e6%2F%29';\n    });\n    Template.registerHelper('doc_dataIntegration', function() {\n        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FData%20integration%20Combine%20sources%20into%20one%20associative%20model%7Ce669a0a2-9a83-470e-aae8-ba63ac500038%2F%29';\n    });\n\n    Template.registerHelper('senseServerHub', function() {\n        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/hub';\n    });\n\n    Template.registerHelper('senseServerDevHub', function() {\n        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/dev-hub';\n    });\n\n    Template.registerHelper('senseServerQMC', function() {\n        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/qmc';\n    });\n\n    Template.registerHelper('webIntegrationDemo', function() {\n        return 'http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort;\n    });\n\n\n    Template.registerHelper('isSelected', function(someValue) {\n        return someValue ? 'selected' : '';\n    });\n\n    Template.registerHelper('customers', function() {\n        return Customers.find({}, { sort: { checked: -1 } });\n    });\n\n    //used for Aldeed autoform\n    Template.registerHelper(\"Customers\", Customers);\n\n    Template.registerHelper('noCustomers', function() {\n        return !Customers.find({})\n            .count();\n    });\n\n    Template.registerHelper('noTemplateApps', function() {\n        return !TemplateApps.find({})\n            .count();\n    });\n\n    //generic helpers to return the collection to the blaze template\n    Template.registerHelper('customersCollection', function() {\n        return Customers.find({}, { sort: { checked: -1 } });\n    });\n\n    Template.registerHelper('templateAppsCollection', function() {\n        return TemplateApps.find();\n    });\n\n    Template.registerHelper('appsCollection', function() {\n        return Apps.find();\n    });\n\n    Template.registerHelper('streamsCollection', function() {\n        return Streams.find();\n    });\n\n    Template.registerHelper('freshEnvironment', function() {\n        return !Customers.find()\n            .count() && !TemplateApps.find()\n            .count()\n    });\n\n    Template.registerHelper('readyToSelectTemplate', function() {\n        return Customers.find()\n            .count() && !TemplateApps.find()\n            .count()\n    });\n\n    Template.registerHelper('templateButNoCustomer', function() {\n        return !Customers.find()\n            .count() && TemplateApps.find()\n            .count()\n    });\n\n    Template.registerHelper('readyToGenerate', function() {\n        return Customers.find({})\n            .count() && TemplateApps.find()\n            .count() && !Session.get('generated?') && !Session.equals('loadingIndicator', 'loading');\n    });\n\n    Template.registerHelper('generationFinished', function() {\n        return (Session.equals('loadingIndicator', 'loading') || Session.get('generated?'));\n    });\n\n    Template.registerHelper('readyToTestSSO', function() {\n        return Session.get('generated?') && Customers.find()\n            .count() && TemplateApps.find()\n            .count();\n    });\n\n}\n",
-			"file": "imports/ui/UIHelpers.js",
-			"file_size": 6815,
-			"file_write_time": 131165291342433293,
-			"settings":
-			{
-				"buffer_size": 6814,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 49 files for \"flow\"\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\OEMPartner.html:\n  190              <div class=\"content\">\n  191                  <p>If you select a user a ticket will be requested which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles up front in Qlik Sense.</p>\n  192:                 <p>In the your <a class=\"item\" href=\"{{webIntegrationDemo}}/hub\" target=\"_blank\">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href=\"{{pathFor 'introductionSecurity'}}\" class=\"item\">videos</a> for more information on the complete security flow.</p>\n  193              </div>\n  194          </div>\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\OEMPartner.js:\n   37                  key: 'request',\n   38                  label: 'Request',\n   39:                 cellClass: \"overflow: hidden; text - overflow: ellipsis\"\n   40              }, {\n   41                  key: 'createDate',\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\pages\\APILogs.html:\n   70          <div class=\"ui header\">Deep dive sequence diagram of the generation part</div>\n   71          <div class=\"description\">\n   72:             <p>In this schema you will see the flow from the user requesting generation page via a click on the button on the introduction page. We skip the part of the user inserting customers and selecting a template. The thing which is explained on this page is the interaction between Meteor, Qlik Sense QRS and Engine APIs. In general you perform activities on QMC level with the QRS API and stuff inside an app with the Engine API.</p>\n   73          </div>\n   74          {{> sequenceDiagramGeneration}}\n   ..\n   84          <div class=\"ui header\">Sequence diagram of high level source code interaction</div>\n   85          <div class=\"description\">\n   86:             <p>In this schema you will see the flow from the user requesting the demo page, though the source code of this demo platform to Qlik Sense and back</p>\n   87          </div>\n   88          {{> sequenceDiagramOverview}}\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\pages\\introductionSecurity.html:\n    5                  <div class=\"row\">\n    6                      <div class=\"seven wide column\">\n    7:                         <h3 class=\"ui header\">Integrated security flow</h3>\n    8:                         <p>Your goal is to create and provide within a multi-tenant SaaS platform environment - embedded analytics – with your core application(s) where each of your customers would see and use only their data for their analytic needs. It’s possible for each customer to have a more fine grained authorization structure. As an example, it is possible to provide authorizations for a specific department or country within a dashboard. In our demonstration we will take you step by step through the integration process flow and you will see a simple solution in which both of our fictitious users, Peter and John, go to the same website, but see different things based on their authorizations. Qlik Sense makes this possible because it uses a dynamic attribute-based security approach in which we re-use all the pre-existing users and roles from your SaaS platform. This ensures Qlik Sense stays automatically in sync and avoids the overhead of double maintenance.</p>\n    9                      </div>\n   10                      <div class=\"nine wide right floated column\">\n   11:                         <img class=\"ui fluid image\" src=\"images/only full integration flow.gif\">\n   12                      </div>\n   13                  </div>\n   ..\n   77                                                      </div>\n   78                                                      <div class=\"description\">\n   79:                                                         <p>A deep dive introduction in which you see the complete authentication and authorization flow. This includes real code examples and security rules.</p>\n   80                                                      </div>\n   81                                                      <div class=\"extra\">\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\pages\\introductionSecurity.js:\n    9              .modal('show');\n   10      },\n   11:     'click .integratedFlowModal' () {\n   12:         $('.ui.modal.integratedFlowModal')\n   13              .modal('show');\n   14      }\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\pages\\webIntegration.html:\n   42              <div class=\"column centered\">\n   43                  <img class=\"ui fluid image\" src=\"/images/mindMapWebIntegration.png\">\n   44:                 <!-- <div class=\"ui embed\" data-url=\"https://www.youtube.com/embed/Rnyt650C5jY\" data-placeholder=\"/images/qlik sense integrated security flow.png\"></div> -->\n   45              </div>\n   46          </div>\n\n12 matches across 6 files\n",
-			"settings":
-			{
-				"buffer_size": 5060,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "imports/ui/users.js",
-			"settings":
-			{
-				"buffer_size": 2487,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/generation.js",
-			"settings":
-			{
-				"buffer_size": 10358,
+				"buffer_size": 5926,
 				"line_ending": "Windows"
 			}
 		},
@@ -576,15 +539,15 @@
 			"file": "server/main.js",
 			"settings":
 			{
-				"buffer_size": 10931,
+				"buffer_size": 11219,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/api/server/QRSFunctionsApp.js",
+			"file": "imports/server/qlikAuthSSO.js",
 			"settings":
 			{
-				"buffer_size": 16596,
+				"buffer_size": 4165,
 				"line_ending": "Windows"
 			}
 		}
@@ -648,6 +611,7 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server",
@@ -656,34 +620,42 @@
 	],
 	"file_history":
 	[
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/APILogs.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.html",
+		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
+		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/publications.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/accounts.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/APILogs.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/securityRules.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/securityRules.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/mbj/Documents/Qlik/Sense/Extensions/heatmap/ralfbecher-QlikSense_Extension_2DimHeatmap-b88b592/bi-irregular-2dim-heatmap/bi-irregular-2dim-heatmap.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/test.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/sequenceDiagrams.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/client/stylesheets/sequenceDiagrams.css",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/sequenceDiagrams.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsStream.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor/packages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/qrs.sublime-project",
@@ -691,23 +663,18 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/sequence diagrams/sequenceDiagrams.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/sequenceDiagrams.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/publications.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/lib/yogiben.js",
 		"/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/User/Preferences.sublime-settings",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/sequenceDiagrams.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/accounts.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/startup/accounts-config.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server/qlikAuthSSO.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsSystemRules.js",
@@ -720,7 +687,6 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/security_templates.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/lib/router.js",
 		"/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/system/service.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/site/globals/site.variables.import.less",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/site/globals/site.overrides.import.less",
@@ -781,19 +747,18 @@
 		"/C/Users/Qlik/Meteor projects/qrsmeteor/lib/collections.js",
 		"/C/Users/Qlik/Meteor projects/qrsmeteor/client/main.js",
 		"/C/Users/Qlik/Meteor projects/qrsmeteor/client/main.css",
-		"/C/Users/Qlik/Meteor projects/qrsmeteor/server/QRS_API.js",
-		"/C/Users/Qlik/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
-		"/C/Users/Qlik/Meteor projects/qrsmeteor/client/lib/custom.semantic.json"
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/server/QRS_API.js"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 64.0
 	},
 	"find_in_files":
 	{
 		"height": 102.0,
 		"where_history":
 		[
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
@@ -861,6 +826,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"init",
+			"initialize",
+			"d",
+			"conceptBehind",
+			"URL_howDoesSaaSAutomationWork",
+			"this",
+			"delete",
+			"REST_Log",
 			"flow",
 			"hook",
 			"dummyCustomers",
@@ -980,15 +953,7 @@
 			"/imports/api/QRSFunctionsSystemRules",
 			"from '/imports/api/QRSFunctionsStream';",
 			"if",
-			"profile",
-			"users",
-			"Meteor.settings",
-			"QRSConfig",
-			"'",
-			"\"",
-			"EngineConfig",
-			"five wide column",
-			"virtualProxy"
+			"profile"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1068,24 +1033,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "server/publications.js",
+					"file": "imports/ui/generation.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1865,
+						"buffer_size": 11048,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								963,
-								979
+								5600,
+								5600
 							]
 						],
 						"settings":
@@ -1094,11 +1059,11 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 2769.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1107,15 +1072,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5591,
+						"buffer_size": 5926,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3841,
-								3841
+								40,
+								42
 							]
 						],
 						"settings":
@@ -1124,107 +1089,22 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 2363.0,
+						"translation.x": -0.0,
+						"translation.y": 1309.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "imports/ui/UIHelpers.js",
+					"file": "server/main.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6814,
+						"buffer_size": 11219,
 						"regions":
 						{
-						},
-						"selection":
-						[
-							[
-								1139,
-								1139
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5060,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										798,
-										802
-									],
-									[
-										1042,
-										1046
-									],
-									[
-										1067,
-										1071
-									],
-									[
-										1410,
-										1414
-									],
-									[
-										2074,
-										2078
-									],
-									[
-										2516,
-										2520
-									],
-									[
-										3066,
-										3070
-									],
-									[
-										3715,
-										3719
-									],
-									[
-										4101,
-										4105
-									],
-									[
-										4470,
-										4474
-									],
-									[
-										4524,
-										4528
-									],
-									[
-										4964,
-										4968
-									]
-								],
-								"scope": ""
-							}
 						},
 						"selection":
 						[
@@ -1235,67 +1115,32 @@
 						],
 						"settings":
 						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ 	].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "imports/ui/users.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2487,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1216,
-								1216
-							]
-						],
-						"settings":
-						{
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 356.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "imports/ui/generation.js",
-					"semi_transient": false,
+					"buffer": 3,
+					"file": "imports/server/qlikAuthSSO.js",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 10358,
+						"buffer_size": 4165,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6389,
-								6423
+								2776,
+								2783
 							]
 						],
 						"settings":
@@ -1305,70 +1150,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": -0.0,
-						"translation.y": 4784.0,
+						"translation.y": 165.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "server/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10931,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5557,
-								5557
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 2642.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "imports/api/server/QRSFunctionsApp.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16596,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								677,
-								677
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1376,7 +1161,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 21.0
 	},
 	"input":
 	{
@@ -1417,7 +1202,7 @@
 	"project": "qrs.sublime-project",
 	"replace":
 	{
-		"height": 108.0
+		"height": 38.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1463,7 +1248,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 469.0,
+	"side_bar_width": 566.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

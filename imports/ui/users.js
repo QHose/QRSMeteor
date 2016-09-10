@@ -6,16 +6,25 @@ import { Customers, dummyCustomers } from '../api/customers.js';
 import { Streams } from '/imports/api/streams.js'
 import '/imports/ui/UIHelpers';
 
+
+//http://www.webtempest.com/meteor-js-autoform-tutorial
 AutoForm.addHooks(['insertCustomerForm'], {
     onSuccess: function(operation, result, template) {
-        sAlert.success('We inserted the customer into our local Mongo Database');
+        sAlert.success('We inserted the customer into your local MongoDB, we will forward this user to Qlik Sense via a security ticket.');
         //Router.go("/posts");
     },
-    insert: function(customer) { //the customer form which is submitted by the aldeed:autoform: https://github.com/aldeed/meteor-autoform#callbackshooks
-        customer.generationUserId =Meteor.userId();
-        this.result(customer);
-        //Router.go("/posts");
-    }
+    before: {
+        // Replace `formType` with the form `type` attribute to which this hook applies
+        insert: function(customer) {
+            // Potentially alter the doc
+            if (Meteor.userId()) {
+                customer.generationUserId = Meteor.userId();
+            }
+            console.log('insert users add hook', customer);
+            // this.result(customer); 
+            return customer;
+        }
+    },
 });
 
 Template.users.helpers({
@@ -40,10 +49,10 @@ Template.users.helpers({
         return !Session.get("selectedCustomer");
     },
     ribbon: function() {
-        return  Session.equals("selectedCustomer", this._id)? "ui ribbon label":'';
+        return Session.equals("selectedCustomer", this._id) ? "ui ribbon label" : '';
     },
     active: function() {
-        return  Session.equals("activeCustomer", this._id)? "active":'';
+        return Session.equals("activeCustomer", this._id) ? "active" : '';
     },
 });
 
@@ -71,10 +80,10 @@ Template.users.events({
 
 });
 
-Template.users.onRendered(function() {
-  AutoForm.setDefaultTemplate("semanticUI");
+Template.users.onRendered(function() {  
+    AutoForm.setDefaultTemplate("semanticUI");
 })
 
-Template.users.onCreated(function(){
-     this.subscribe('customers');
+Template.users.onCreated(function() {
+    this.subscribe('customers');
 })

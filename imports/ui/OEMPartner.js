@@ -100,13 +100,6 @@ Template.OEMPartner.events({
                 console.log('generateStreamAndApp succes', result);
                 sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');
                 Meteor.call('updateLocalSenseCopy');
-                // const generatedAppsFromUser = GeneratedResources.find()
-                //     .map(function(resource) {
-                //         return resource.appId;
-                //     });
-                // console.log('onCreated generatedResources are: ', generatedAppsFromUser);
-                // //now get all the apps from Qlik Sense, but filter them so that only the apps are show which the current user has generated
-                // Meteor.subscribe('apps', generatedAppsFromUser);
             }
         });
     },
