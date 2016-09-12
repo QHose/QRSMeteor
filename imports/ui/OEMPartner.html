@@ -20,9 +20,7 @@
             <p>
                 Select the "my first template" app on the right. If you create apps using a user with role 'developer', then you can also use this one as template.
             </p>
-            {{/if}} {{#if readyToGenerate}}
-            {{> step3}}
-            {{/if}} {{#if templateButNoCustomer}}
+            {{/if}} {{#if readyToGenerate}} {{> step3}} {{/if}} {{#if templateButNoCustomer}}
             <div class="header">
                 Customers
             </div>
@@ -44,9 +42,6 @@
     </div>
     {{/if}}
     <div class="ui segment">
-        {{#if freshEnvironment}}
-        <a class="ui {{loading}} labeled icon button" href="{{pathFor 'users'}}"> <i class="edit icon "></i>1: Insert Customers</a>
-        {{/if}}
         <div class="ui buttons">
             <div class="ui buttons">
                 <div class="ui {{loading}} button resetEnvironment"><i class="undo icon "></i> Initialize demo</div>
@@ -71,10 +66,14 @@
                 <div class="header">
                     <h4>No customers</h4>
                 </div>
-                <ul>
+                <p> <!-- {{#if freshEnvironment}} -->
+                This demo simulates the first day of your SaaS platform. Therefore we first need to insert some customers using the button below. <br>
+                    <a class="ui labeled icon button insertDummyCustomers" href="#"> <i class="edit icon"></i>1: Insert Customers</a>
+               <!--      {{/if}} --></p>
+                <!--  <ul>
                     <li>This demo simulates the first day of your SaaS platform. Therefore we first need to <a href="{{pathFor 'users'}}">insert</a> some customers and users.</li>
                     <li>Or <a href="#" class="insertDummyCustomers"> load existing (dummy) </a>customers (use these if you want to test row level security and the web integration demo (via the "Your SaaS platform" menu). You can only use your own customers and users for the generation part of the demo).</li>
-                </ul>
+                </ul> -->
             </div>
         </div>
         {{else}}

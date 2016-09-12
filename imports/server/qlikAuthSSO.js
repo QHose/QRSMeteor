@@ -25,7 +25,7 @@ Router.route('/sso', function(request, response, next) {
 
         //Create a paspoort (ticket) request: user directory, user identity and attributes
         var passport = {
-            'UserDirectory': senseConfig.UDC, //Specify a dummy value to ensure userID's are unique E.g. "Dummy"
+            'UserDirectory': senseConfig.UDC, //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or the name of the customer domain if you need a Virtual proxy per customer
             'UserId': user.name, //the current user that we are going to login with
             'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
                 { 'group': user.country.toUpperCase() },
