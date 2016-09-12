@@ -49,7 +49,7 @@ Customers.attachSchema(new SimpleSchema({
 }));
 
 export const dummyCustomers = [{
-        "name": "Sunny Petrol",
+        "name": "Shell",
         "checked": true,
         "users": [{
             "name": "John",
@@ -73,7 +73,7 @@ export const dummyCustomers = [{
             "country": "NL"
         }]
     }, {
-        "name": "Cloudy Petrol ",
+        "name": "Esso",
         "checked": true,
         "users": [{
             "name": "Peter",
@@ -82,7 +82,7 @@ export const dummyCustomers = [{
             "country": "NL"
         }]
     }, {
-        "name": "Spoily Petrol",
+        "name": "BP",
         "checked": true,
         "users": [{
             "name": "Stefan",
