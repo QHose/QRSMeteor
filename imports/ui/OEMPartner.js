@@ -112,6 +112,17 @@ Template.OEMPartner.events({
             customer.generationUserId = Meteor.userId();
             Customers.insert(customer);
         })
+
+        const templateAppId = Meteor.settings.public.templateAppId;
+        console.log('templateAppId:', templateAppId);
+        TemplateApps.upsert(templateAppId, {
+            $set: {
+                name: "My first template",
+                id: templateAppId,
+                generationUserId: Meteor.userId(),
+                checked: true
+            },
+        });
     },
     'click .deleteAllCustomers' () {
         Meteor.call('removeAllCustomers', function(err, result) {

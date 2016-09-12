@@ -14,9 +14,9 @@ Meteor.publish('apps', function(generatedAppsFromUser) {
         console.log('Client subscribed to collection, with these generated app ids: ', generatedAppsFromUser);
         if (!generatedAppsFromUser) {
             generatedAppsFromUser = [];
-            console.log('##### No generated resources exists yet, so only show the template apps')
+            // console.log('##### No generated resources exists yet, so only show the template apps')
         } else {
-            console.log('### publication recevied these generated app ids for the user: ', generatedAppsFromUser);
+            // console.log('### publication recevied these generated app ids for the user: ', generatedAppsFromUser);
         }
         return Apps.find({
             $or: [{ "id": { "$in": generatedAppsFromUser } }, { "stream.name": "Templates" }, { "stream.name": "Everyone" }]
@@ -41,9 +41,7 @@ Meteor.publish('streams', function(generatedStreamsFromUser) {
     this.ready();
 });
 Meteor.publish('templateApps', function() {
-
     return TemplateApps.find();
-
     this.ready();
 });
 
@@ -65,9 +63,7 @@ Meteor.publish('apiLogs', function() {
 Meteor.publish('users', function() {
     //See https://github.com/alanning/meteor-roles
     if (Roles.userIsInRole(this.userId, ['admin'], Roles.GLOBAL_GROUP)) {
-
         return APILogs.find();
-
     } else {
         // user not authorized. do not publish secrets
         this.stop();

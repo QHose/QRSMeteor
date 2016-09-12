@@ -254,7 +254,7 @@ Template.generation.onCreated(function() {
                     .map(function(resource) {
                         return resource.appId;
                     });
-                console.log('onCreated generatedResources are: ', generatedAppsFromUser);
+                // console.log('onCreated generatedResources are: ', generatedAppsFromUser);
                 //now get all the apps from Qlik Sense, but filter them so that only the apps are show which the current user has generated
                 Meteor.subscribe('apps', generatedAppsFromUser);
             })
