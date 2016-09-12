@@ -9,7 +9,7 @@ import { Customers } from '/imports/api/customers';
 
 //import config for Qlik Sense QRS and Engine API
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
-import { REST_Log } from '/imports/api/APILogs';
+import { APILogs, REST_Log } from '/imports/api/APILogs';
 import lodash from 'lodash';
 _ = lodash;
 
@@ -91,10 +91,10 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
             console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for appId: ', appId);
             return doc.getScript()
                 .then(function(script) {
-                    console.log('get Script success, ', script);
+                    // console.log('get Script success, ', script);
 
                     // var call = {};
-                    // call.action = 'Replace script'
+                    // call.action = 'Replace script';
                     // call.request = 'We extracted the following script from the app: ' + script;
                     // REST_Log(call);
                     // if you want to replace the database connection per customer use the script below.

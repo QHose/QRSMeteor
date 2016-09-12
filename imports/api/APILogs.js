@@ -6,5 +6,5 @@ export function REST_Log(call){
 	call.createDate = new Date();
 	call.createdBy = null; //this.userId;
 	APILogs.insert(call);
-
+	return;
 }
