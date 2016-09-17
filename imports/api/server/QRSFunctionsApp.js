@@ -287,7 +287,7 @@ export function copyApp(guid, name) {
 
         call.result = HTTP.post(call.request, {
             headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey, 'name': name },
+            params: { 'xrfkey': senseConfig.xrfkey, 'name': name }, //probably a redundant name here...
             data: { "name": name }
         })
         REST_Log(call);

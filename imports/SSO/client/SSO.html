@@ -1,14 +1,18 @@
 <template name="SSO">
-    <h1>Method Redirect</h1>
-    <p>To slow things down for demo purposes we have put a page in the middle (between the user trying to access Qlik Sense and your SaaS platform which has to request a ticket). Normally this would be an automatic redirect from your SaaS platform to Qlik Sense.</p>
-    <p> On this page you will see a button. If you click it, Meteor will get the current selected user (of the dropdown) out of MongoDB for the user that is currently logged in in the demo platform. Then it will request a ticket for this user, and redirect it back to Qlik Sense with the ticket appended in the URL.</p>
-    <p>Qlik Sense redirected the users browsers to the page you are currently watching (setting of the virtual Qlik Sense proxy). It included these parameters which we can use to redirect the user. For more information also see the <a href="https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication.htm">help </a>
-        <ul>
-            {{#with receivedParamsQlikSense}}
-            <li>proxyRestUri: {{proxyRestUri}}</li>
-            <li>targetId: {{targetId}} (if you supply this in your ticket request, you will get the orginal URL the user tried to open back)</li>
-            {{/with}}
-        </ul>
-    </p>
-    <button>Redirect Me!</button>
+    <div class="ui container">
+        <h3>Single sign on (ticket request) redirect demo page</h3>
+        <p>To slow things down for demo purposes we have put a page in the middle (between the user trying to access Qlik Sense and your SaaS platform which has to request a ticket). Normally this would be an automatic redirect from your SaaS platform to Qlik Sense.</p>
+        <p> On this page you will see a button. If you click it, Meteor will get the current selected user (of the dropdown) out of MongoDB for the user that is currently logged in in the demo platform. Then it will request a ticket for this user, and redirect it back to Qlik Sense with the ticket appended in the URL.</p>
+        <p>Qlik Sense redirected the users browsers to the page you are currently watching (setting of the virtual Qlik Sense proxy). It included these parameters which we can use to redirect the user. For more information also see the <a href="https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication.htm">help.</a>
+            <ul>
+                {{#with receivedParamsQlikSense}}
+                <li>proxyRestUri: {{proxyRestUri}}</li>
+                <li>targetId: {{targetId}} (if you supply this in your ticket request, you will get the orginal URL the user tried to open back)</li>
+                {{/with}}
+            </ul>
+        </p>
+        <button>Redirect Me!</button>
+        <h3>Sequence diagram of the ticketing process flow</h3>
+        <iframe src="http://knsv.github.io/mermaid/live_editor/#/view/c2VxdWVuY2VEaWFncmFtCkJyb3dzZXItPj5NZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IFVzZXIgbG9ncyBpbiBpbnRvIE1ldGVvciAKQnJvd3Nlci0-PiBQcm94eTogSUZyYW1lIHRyaWVzIHRvIG9wZW4gU2Vuc2UgY29udGVudCB2aWEgbGluayB0aGF0IGNvbnRhaW5zIC9wcm94eS8KUHJveHktPj4gTWV0ZW9yIFNTTzogUmVkaXJlY3QgcmVxdWVzdCB0byBhdXRoLiBNb2R1bGUgb2YgTWV0ZW9yCk5vdGUgcmlnaHQgb2YgTWV0ZW9yIFNTTzogU2luY2UgdGhlIHVzZXIgaXMgYWxyZWFkeSBsb2dnZWQgaW4gaW4gTWV0ZW9yLCB3ZSBjYW4gcmVxdWVzdCB0aGUgdXNlcklEIGFuZCBncm91cCBtZW1iZXJzaGlwIGZyb20gdGhlIE1ldGVvciBzZXNzaW9uLgpNZXRlb3IgU1NPLT4-UHJveHk6IFJlcXVlc3QgdGlja2V0IHdpdGggdXNlcklkIGFuZCBncm91cHMKTm90ZSByaWdodCBvZiBNZXRlb3IgU1NPOiBVc2UgdGhlIHJlZGlyZWN0IHBhcmFtZXRlciB0byBmb3J3YXJkIHRoZSB1c2VyIGJhY2sgdG8gdGhlIHBhZ2UgaGUgaW5pdGlhbGx5IHRyaWVkIHRvIGFjY2Vzcy4KUHJveHktPj4gTWV0ZW9yIFNTTzogTWV0ZW9yIHJldHVybnMgYSB0aWNrZXQgbnVtYmVyIChhbmQgcG9zc2libHkgcmVkaXJlY3QgVVJMKSB3aGljaCB5b3UgaGF2ZSB0byBhcHBlbmQgaW4gdGhlIFVSTCAKTWV0ZW9yIFNTTy0-PiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IEZvcndhcmQgdGhlIHVzZXIgYmFjayB0byBRbGlrIFNlbnNlIChvciB0aGUgcmVkaXJlY3QgVVJMKQ" width="100%" height="700"></iframe>
+    </div>
 </template>

@@ -2,11 +2,12 @@
  import { Apps, TemplateApps } from '/imports/api/apps.js'
  import { REST_Log } from '/imports/api/APILogs';
  import { http } from 'meteor/meteor';
+ import { Session } from 'meteor/session';
 
 
  Template.SSO.helpers({
      receivedParamsQlikSense: function() {
-         return Template.instance().receivedParamsQlikSense.get();
+         return Session.get('senseParams');
      }
  });
 
@@ -24,12 +25,10 @@
          call.request = 'Qlik Sense proxy provided these parameters', Router.current().params.query;
          REST_Log(call);
 
-         var proxyRestUri = template.receivedParamsQlikSense.proxyRestUri.get();
-         var targetId = template.receivedParamsQlikSense.TargetId.get();
+         var senseParams = Session.get('senseParams');
+         console.log('call the server with options:', senseParams);
 
-         console.log('call the server with options:',proxyRestUri, targetId);
-
-         Meteor.call('getRedirectUrl',proxyRestUri, targetId, (error, redirectUrl) => {
+         Meteor.call('getRedirectUrl',senseParams.proxyRestUri, senseParams.targetId, (error, redirectUrl) => {
              call.action = 'forward the user back to Sense';
              call.request = 'The browser received this redirectUrl, so replace the current url in the browser with this new one: ' + redirectUrl;
              REST_Log(call);
@@ -55,6 +54,5 @@
               */
      const senseParams = Router.current().params.query;
      console.log('template sso onCreated, we received these params from Qlik Sense', senseParams);
-     this.receivedParamsQlikSense = new ReactiveVar;
-     this.receivedParamsQlikSense.set(senseParams);
+     Session.set('senseParams', senseParams);
  })

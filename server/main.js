@@ -70,13 +70,14 @@ Meteor.methods({
 
             //Create a paspoort (ticket) request: user directory, user identity and attributes
             var passport = {
-                'UserDirectory': senseConfig.UDC, //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or the name of the customer domain if you need a Virtual proxy per customer
+                'UserDirectory': Meteor.userId(), //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
                 'UserId': user.name, //the current user that we are going to login with
                 'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
                     { 'group': user.country.toUpperCase() },
                     { 'group': user.group.toUpperCase() }
                 ]
             }
+
             // console.log('Request ticket for this user passport": ', passport);
 
             //logging only
@@ -137,7 +138,7 @@ Meteor.methods({
                     user.currentlyLoggedIn = false;
 
                     //and just logout everybody in the user list                            
-                    QSProxy.logoutUser(user.name);
+                    QSProxy.logoutUser(Meteor.userId(), user.name);
 
                     return user;
                 })

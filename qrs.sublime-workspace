@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"se",
+				"senseParams"
+			],
+			[
+				"redire",
+				"redirectUrl"
+			],
+			[
+				"err",
+				"error"
+			],
+			[
+				"l",
+				"log"
+			],
+			[
+				"pro",
+				"proxyRestUri"
+			],
+			[
+				"reques",
+				"requestTicket"
+			],
+			[
 				"redi",
 				"redirectURI"
 			],
@@ -268,10 +292,6 @@
 				"div	Tag"
 			],
 			[
-				"pro",
-				"profile"
-			],
-			[
 				"ti",
 				"ticket"
 			],
@@ -294,10 +314,6 @@
 			[
 				"chec",
 				"checkSenseIsReady"
-			],
-			[
-				"l",
-				"loading"
 			],
 			[
 				"templat",
@@ -416,10 +432,6 @@
 				"then"
 			],
 			[
-				"err",
-				"error"
-			],
-			[
 				"pr",
 				"promise"
 			],
@@ -502,31 +514,24 @@
 			[
 				"tit",
 				"totalWeight"
-			],
-			[
-				"t",
-				"totalWeight"
-			],
-			[
-				"tota",
-				"totalQuantity"
-			],
-			[
-				"local",
-				"localhost"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": " import { Meteor } from 'meteor/meteor';\n import qlikauth from 'qlik-auth';\n import { Apps, TemplateApps } from '/imports/api/apps.js'\n import { Customers, dummyCustomers } from '../api/customers.js';\n import { Streams } from '/imports/api/streams.js'\n import { senseConfig, engineConfig, _certs, authHeaders } from '/imports/api/config.js';\n import { REST_Log } from '/imports/api/APILogs';\n import { http } from 'meteor/meteor';\n\n if (Meteor.isClient) {\n     Template.SSO.events({\n         'click button': (event) => {\n             $(event.currentTarget).html('Redirecting ...');\n             Meteor.call('getRedirectUrl', (error, redirectUrl) => {\n\n                 //Send JSON request for ticket\n                 var jsonrequest = JSON.stringify({\n                     'UserDirectory': profile.UserDirectory,\n                     'UserId': profile.UserId,\n                     'Attributes': profile.Attributes || [],\n                     'TargetId': options.TargetId.toString()\n                 });\n                 window.location.replace(redirectUrl);\n             });\n         }\n     });\n\n     Template.SSO.onCreated(function() {\n         console.log('template sso onCreated');\n\n\n     })\n }\n\n Router.route('/sso', function(request, response, next) {\n\n\n });\n\n Router.route('/updateSenseInfo/apps', function(request, response, next) {\n     // console.log('++++++++++++We got an incoming REST Call from the Sense Notification handler for APPS, this means the Sense Repository has changed');\n     //logging only\n     var call = {};\n     call.action = 'Notification apps'\n     call.request = 'We got an incoming REST Call from the Sense Notification handler for APPS, this means the Sense Repository has changed';\n     REST_Log(call);\n     Meteor.call('updateLocalSenseCopyApps');\n }, { where: 'server' });\n\n Router.route('/updateSenseInfo/streams', function(request, response, next) {\n     // console.log('++++++++++++We got an incoming REST Call from the Sense Notification handler for STREAMS, this means the Sense Repository has changed');\n     //logging only\n     var call = {};\n     call.action = 'Notification streams'\n     call.request = 'We got an incoming REST Call from the Sense Notification handler for APPS, this means the Sense Repository has changed';\n     REST_Log(call);\n     Meteor.call('updateLocalSenseCopyStreams');\n }, { where: 'server' });\n",
-			"file": "imports/SSO/sso.js",
-			"file_size": 2066,
-			"file_write_time": 131182259177898691,
+			"file": "imports/SSO/client/SSO.html",
 			"settings":
 			{
-				"buffer_size": 2366,
+				"buffer_size": 2711,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/SSO/client/SSO.js",
+			"settings":
+			{
+				"buffer_size": 2600,
 				"line_ending": "Windows"
 			}
 		},
@@ -534,7 +539,15 @@
 			"file": "server/main.js",
 			"settings":
 			{
-				"buffer_size": 14105,
+				"buffer_size": 13685,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/api/server/QPSFunctions.js",
+			"settings":
+			{
+				"buffer_size": 5485,
 				"line_ending": "Windows"
 			}
 		},
@@ -547,37 +560,10 @@
 			}
 		},
 		{
-			"file": "imports/api/server/QPSFunctions.js",
-			"settings":
-			{
-				"buffer_size": 1962,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "imports/api/server/QRSFunctionsApp.js",
 			"settings":
 			{
-				"buffer_size": 16851,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "var url = require('url');\nvar fs = require('fs');\nvar http = require('http');\nvar https = require('https');\nvar crypto = require('crypto');\nvar util = require('util');\nvar urljoin = require('url-join');\nvar _ = require(\"underscore\");\n\nfunction getFileRealPath(s) {\n    try {\n        return fs.realpathSync(s);\n    } catch (e) {\n        return null;\n    }\n}\n\nfunction getCertificates(cert, certKey) {\n    var certificate = {};\n    // var _cert = null;\n    // var _certKey = null;\n\n    // var files = [\"client.pem\", \"client.pfx\", \"C:\\\\ProgramData\\\\Qlik\\\\Sense\\\\Repository\\\\Exported Certificates\\\\.Local Certificates\\\\client.pem\"];\n    // files.unshift(cert);\n    // files = _.uniq(files);\n\n    // for (var obj in files) {\n    //     _cert = getFileRealPath(files[obj]);\n    //     if (_cert != null)\n    //         break;\n    // }\n\n    // if (_cert != null) {\n    //     try {\n    //         if (_cert.toLowerCase().indexOf(\".pem\") > 0) {\n    //             // .pem\n    //             var files = [\"client_key.pem\", \"C:\\\\ProgramData\\\\Qlik\\\\Sense\\\\Repository\\\\Exported Certificates\\\\.Local Certificates\\\\client_key.pem\"];\n    //             files.unshift(certKey);\n    //             files = _.uniq(files);\n\n    //             for (var obj in files) {\n    //                 _certKey = getFileRealPath(files[obj]);\n\n    //                 if (_certKey != null) {\n                        certificate.cert = cert;\n                        certificate.key = certKey;\n    //                     break;\n    //                 }\n    //             }\n    //         } else {\n    //             // .pfx\n    //             certificate.pfx = fs.readFileSync(_cert);\n    //         }\n    //     } catch (e) {\n    //         // nothing to see here...\n    //     }\n    // }\n    return certificate;\n}\n\n\nmodule.exports = {\n\n    init: function (req, res) {\n\n        //Store targetId and proxyRestUri in a global object\n        if (url.parse(req.url, true).query.targetId != undefined) {\n            global.qlikAuthSession = {\n                \"targetId\": url.parse(req.url, true).query.targetId,\n                \"proxyRestUri\": url.parse(req.url, true).query.proxyRestUri\n            };\n        }\n    },\n\n    requestTicket: function (req, res, profile, options) {\n\n        if (!options)\n            var options = {};\n\n        //Get and verify parameters\n        options.Certificate = options.Certificate || 'client.pem';\n        options.CertificateKey = options.CertificateKey || 'client_key.pem';\n        options.PassPhrase = options.PassPhrase || '';\n        options.ProxyRestUri = options.ProxyRestUri || url.parse(req.url, true).query.proxyRestUri;\n        options.TargetId = options.TargetId || url.parse(req.url, true).query.targetId;\n\n        if (global.qlikAuthSession) {\n            options.ProxyRestUri = global.qlikAuthSession.proxyRestUri;\n            options.TargetId = global.qlikAuthSession.targetId;\n        }\n\n        if (!options.ProxyRestUri || !options.TargetId || !profile.UserId) {\n            res.end('Missing parameters');\n            return;\n        }\n\n        //Configure parameters for the ticket request\n        var xrfkey = this.generateXrfkey();\n        var settings = {\n            host: url.parse(options.ProxyRestUri).hostname,\n            port: url.parse(options.ProxyRestUri).port,\n            path: urljoin(url.parse(options.ProxyRestUri).path, 'ticket?xrfkey=' + xrfkey),\n            method: 'POST',\n            headers: {'X-Qlik-Xrfkey': xrfkey, 'Content-Type': 'application/json'},\n            passphrase: options.PassPhrase,\n            rejectUnauthorized: false,\n            agent: false\n        };\n\n        //Locate certificate\n        var cert = getCertificates(options.Certificate, options.CertificateKey);\n        if (cert.cert === undefined || cert.key === undefined) {\n            if (cert.pfx === undefined) {\n                res.end('Client certificate or key was not found');\n                return;\n            }\n        }\n        settings = _.extend(settings, cert);\n\n        //Send ticket request\n        var ticketreq = https.request(settings, function (ticketres) {\n            ticketres.on('data', function (d) {\n                //Parse ticket response\n                var ticket = JSON.parse(d.toString());\n\n                //Build redirect including ticket\n                if (ticket.TargetUri.indexOf(\"?\") > 0) {\n                    redirectURI = ticket.TargetUri + '&QlikTicket=' + ticket.Ticket;\n                } else {\n                    redirectURI = ticket.TargetUri + '?QlikTicket=' + ticket.Ticket;\n                }\n                \n                return redirectURI;\n                // res.writeHead(302, {'Location': redirectURI});\n                // res.end();\n            });\n        });\n\n\n        // //Send JSON request for ticket\n        // var jsonrequest = JSON.stringify({\n        //     'UserDirectory': profile.UserDirectory,\n        //     'UserId': profile.UserId,\n        //     'Attributes': profile.Attributes || [],\n        //     'TargetId': options.TargetId.toString()\n        // });\n        // ticketreq.write(jsonrequest);\n        // ticketreq.end();\n\n        // ticketreq.on('error', function (e) {\n        //     res.end(e.toString());\n        // });\n    },\n\n    //Note: most session stuff is experimental, uncomplete and not tested properly...\n\n    addSession: function (req, res, profile, options) {\n        this.sessionHelper(req, res, profile, options, 'POST');\n    },\n\n    //Not finished...\n    getSession: function (req, res, profile, options) {\n        this.sessionHelper(req, res, profile, options, 'GET');\n    },\n\n    //Not finished...\n    deleteSession: function (req, res, profile, options) {\n        this.sessionHelper(req, res, profile, options, 'DELETE');\n    },\n\n    getSessionId: function (req) {\n        var sessionid = req.url.substring(req.url.lastIndexOf('/') + 1, req.url.indexOf('?'));\n        return sessionid != 'session' ? sessionid : null;\n    },\n\n    sessionHelper: function (req, res, profile, options, method) {\n\n        profile.SessionId = profile.SessionId || this.getSessionId(req);\n\n        console.log(\"SessionId: \" + profile.SessionId);\n\n        if (!options)\n            var options = {};\n\n        //Get and verify parameters\n        options.Certificate = options.Certificate || './client.pem';\n        options.CertificateKey = options.CertificateKey || './client_key.pem';\n        options.PassPhrase = options.PassPhrase || '';\n        options.ProxyRestUri = options.ProxyRestUri || 'http://localhost:4243/qps';\n\n        if (!options.ProxyRestUri || !profile.UserId) {\n            console.log('Missing parameters');\n            return;\n        }\n\n        //Configure parameters for the session request\n        var xrfkey = this.generateXrfkey();\n\n        if (method == \"POST\")\n           var endpoint = 'session?xrfkey=' + xrfkey;\n        else\n           var endpoint = 'session/' + profile.SessionId + '?xrfkey=' + xrfkey;\n\n        var settings = {\n            host: url.parse(options.ProxyRestUri).hostname,\n            port: url.parse(options.ProxyRestUri).port,\n            path: urljoin(url.parse(options.ProxyRestUri).path, endpoint),\n            method: method,\n            headers: {'X-Qlik-Xrfkey': xrfkey, 'Content-Type': 'application/json'},\n            passphrase: options.PassPhrase,\n            rejectUnauthorized: false,\n            agent: false\n        };\n\n        //Locate certificate\n        var cert = getCertificates(options.Certificate, options.CertificateKey);\n        if (cert.cert === undefined || cert.key === undefined) {\n            if (cert.pfx === undefined) {\n                console.log('Client certificate or key was not found');\n                return;\n            }\n        }\n        settings = _.extend(settings, cert);\n\n        //Send session request\n        var sessionreq = https.request(settings, function (sessionres) {\n            sessionres.on('data', function (d) {\n                console.log(JSON.parse(d.toString()));\n                res.write(d);\n                res.end();\n            });\n        });\n\n        //Send JSON request for ticket\n        var jsonrequest = JSON.stringify({\n            'UserDirectory': profile.UserDirectory,\n            'UserId': profile.UserId,\n            'Attributes': profile.Attributes || [],\n            'SessionId': profile.SessionId\n        });\n        sessionreq.write(jsonrequest);\n        sessionreq.end();\n\n        sessionreq.on('error', function (e) {\n            console.log('Error' + e);\n        });\n    },\n\n    generateXrfkey: function (size, chars) {\n\n        size = size || 16;\n        chars = chars || 'abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789';\n\n        var rnd = crypto.randomBytes(size), value = new Array(size), len = chars.length;\n\n        for (var i = 0; i < size; i++) {\n            value[i] = chars[rnd[i] % len]\n        };\n\n        return value.join('');\n    },\n\n    requestWebTicket: function (req, res, profile, options) {\n\n        if (!options)\n            var options = {};\n\n        //Get parameters\n        options.Host = options.Host || 'http://localhost';\n        options.TryUrl = options.TryUrl || '/QlikView'\n        options.BackUrl = options.BackUrl || '';\n        options.RedirectUrl = options.RedirectUrl || options.Host;\n \n        var tryUrl = options.Document ? '/QvAjaxZfc/opendoc.htm?document=' + options.Document : options.TryUrl\n\n        var settings = {\n            host: url.parse(options.Host).hostname,\n            port: url.parse(options.Host).port,\n            path: '/QvAJAXZfc/GetWebTicket.aspx',\n            method: 'POST'\n        };\n\n        //Configure groups\n        var groups = '';\n        if (profile.Groups && profile.Groups.length > 0) {\n            groups = '<GroupList>';\n            for (var i = profile.Groups.length - 1; i >= 0; i--) {\n                groups += '<string>' + profile.Groups[i] + '</string>';\n            };\n            groups += '</GroupList><GroupsIsNames>true</GroupsIsNames>';\n        }\n\n        var user = profile.UserDirectory + (profile.UserDirectory ? '\\\\' : '') + profile.UserId;\n\n        var body = util.format('<Global method=\"GetWebTicket\"><UserId>%s</UserId>%s</Global>', user, groups);\n\n        //Send webticket request\n        var ticketreq = http.request(settings, function (ticketres) {\n            ticketres.on('data', function (d) {\n                try {\n                    var ticket = d.toString().match('<_retval_>(.*)</_retval_>')[1];\n                    if (ticket.length == 40) {\n                        var redirectURI = util.format('%s/QvAJAXZfc/Authenticate.aspx?type=html&webticket=%s&try=%s&back=%s', options.RedirectUrl, ticket, tryUrl, options.BackUrl)\n                        res.writeHead(302, {'Location': redirectURI});\n                        res.end();\n                    }\n                    else {\n                        res.write(d.toString);\n                        res.end();\n                    }\n                }\n                catch (e) {\n                    res.write(\"Error retrieving webticket\");\n                    res.end();\n                }\n            });\n        });\n\n        ticketreq.write(body);\n        ticketreq.end();\n\n        ticketreq.on('error', function (e) {\n            console.log('Error' + e);\n        });\n    }\n};\n\n",
-			"file": "node_modules/qlik-auth/index.js",
-			"file_size": 11510,
-			"file_write_time": 131142105791467032,
-			"settings":
-			{
-				"buffer_size": 11280,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "settings-development.json",
-			"settings":
-			{
-				"buffer_size": 1452,
+				"buffer_size": 16861,
 				"line_ending": "Windows"
 			}
 		}
@@ -644,24 +630,39 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
 	[
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
+		"/C/Users/mbj/Documents/GitHub/QRSMeteor/server/routes.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/sso.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/sso.html",
+		"/C/Users/mbj/Documents/GitHub/QRSMeteor/server/sso.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/sso.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/package.json",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/SSO.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/SSO.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/config.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qlik-auth/index.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/server/qlikAuthSSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/.custom.semantic.json",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/SSO/sso.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/SSO/sso.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/apps.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/config.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/publications.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
@@ -671,7 +672,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
@@ -684,12 +684,9 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/securityRules.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.js",
 		"/C/Users/mbj/Documents/Qlik/Sense/Extensions/heatmap/ralfbecher-QlikSense_Extension_2DimHeatmap-b88b592/bi-irregular-2dim-heatmap/bi-irregular-2dim-heatmap.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/test.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/sequenceDiagrams.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/client/stylesheets/sequenceDiagrams.css",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/sequenceDiagrams.js",
@@ -709,12 +706,10 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.css",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsSystemRules.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/server/yogiben.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qlik-auth/index.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qsocks/qsocks.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/security_templates.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/security_templates.html",
@@ -729,7 +724,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/themes/default/globals/site.variables.import.less",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/site/globals/reset.variables.import.less",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/package.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/QMC.html",
@@ -737,7 +731,6 @@
 		"/C/Users/MBJ/Desktop/jacob.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/startUp.bat",
 		"/F/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/User/Default (Windows).sublime-keymap",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/startup/simulateUserLogin.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qrs/index.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qrs/lib/qrs.js",
@@ -746,7 +739,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/QPSFunctions.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/checkConfig.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/clientConfig.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/SSO.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/checkConfig.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/body.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/notFound.html",
@@ -771,12 +763,7 @@
 		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/api/config.js",
 		"/C/Users/Qlik/Meteor projects/qrsmeteor/server/config.js",
 		"/C/Users/Qlik/Meteor projects/qrsmeteor/lib/globalHelpers.js",
-		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/api/streams.js",
-		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/ui/body_2008ENT_May-21-102958-2016_Conflict.js",
-		"/C/Users/Qlik/Meteor projects/qrsmeteor/server/main.js",
-		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/api/collections.js",
-		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/ui/body.js",
-		"/C/Users/Qlik/Meteor projects/qrsmeteor/server/publications.js"
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/api/streams.js"
 	],
 	"find":
 	{
@@ -856,6 +843,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"proxyRestUri",
+			"cert",
+			"url",
+			"profile",
+			"step4",
+			"../api/customers.js",
+			"genera",
+			"getFileRealPath",
+			"cert.cert",
+			"onBeforeAction",
 			"ip",
 			"external",
 			"First",
@@ -973,17 +970,7 @@
 			"updateLocalSenseCopy",
 			"the",
 			"connection",
-			"formatDatetime",
-			"externalHostNameMeteor",
-			"simulateUserLogin",
-			"APILogs.insert",
-			"APILog",
-			"sync",
-			"from '/imports/api/QRSFunctionsApp';",
-			"authHeaders",
-			"certs",
-			"from '/imports/api/QRSFunctionsStream';",
-			"from '/imports/api/QRSFunctionsSystemRules';"
+			"formatDatetime"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -991,6 +978,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"passport",
+			"options.Certificate",
 			"rgb(220,220,220)",
 			"fill: rgb(215,215,217);",
 			"mini",
@@ -1063,24 +1052,54 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "imports/SSO/sso.js",
+					"file": "imports/SSO/client/SSO.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2366,
+						"buffer_size": 2711,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								945,
-								945
+								2674,
+								2674
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "imports/SSO/client/SSO.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2600,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1161,
+								1161
 							]
 						],
 						"settings":
@@ -1090,27 +1109,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 120.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
 					"file": "server/main.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14105,
+						"buffer_size": 13685,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5524,
-								5524
+								5212,
+								5212
 							]
 						],
 						"settings":
@@ -1120,14 +1139,44 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1273.0,
+						"translation.y": 2272.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
+					"file": "imports/api/server/QPSFunctions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5485,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								856,
+								856
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 1691.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "imports/api/config.js",
 					"semi_transient": false,
 					"settings":
@@ -1139,8 +1188,8 @@
 						"selection":
 						[
 							[
-								253,
-								257
+								2907,
+								2921
 							]
 						],
 						"settings":
@@ -1149,28 +1198,28 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 1122.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "imports/api/server/QPSFunctions.js",
+					"buffer": 5,
+					"file": "imports/api/server/QRSFunctionsApp.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1962,
+						"buffer_size": 16861,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1214,
-								1265
+								402,
+								490
 							]
 						],
 						"settings":
@@ -1184,96 +1233,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "imports/api/server/QRSFunctionsApp.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16851,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								77,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "node_modules/qlik-auth/index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11280,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5059,
-								5222
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2727.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "settings-development.json",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 1452,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								691,
-								691
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1322,7 +1281,7 @@
 	"project": "qrs.sublime-project",
 	"replace":
 	{
-		"height": 38.0
+		"height": 120.0
 	},
 	"save_all_on_build": true,
 	"select_file":

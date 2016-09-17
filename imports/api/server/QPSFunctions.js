@@ -3,18 +3,18 @@ import { Customers } from '/imports/api/customers';
 import { REST_Log } from '/imports/api/APILogs';
 
 //import config for Qlik Sense QRS
-import { senseConfig, _certs, authHeadersCertificate, certicate_communication_options } from '/imports/api/config.js';
+import { senseConfig, _certs, authHeadersCertificate, authHeaders, certicate_communication_options } from '/imports/api/config.js';
 import lodash from 'lodash';
 _ = lodash;
-var url = require('url');
-var fs = require('fs');
-var http = require('http');
-var https = require('https');
-var crypto = require('crypto');
-var util = require('util');
-import { Random } from 'meteor/random';
-var urljoin = require('url-join');
-var _ = require("underscore");
+// var url = require('url');
+// var fs = require('fs');
+// var http = require('http');
+// var https = require('https');
+// var crypto = require('crypto');
+// var util = require('util');
+// import { Random } from 'meteor/random';
+// var urljoin = require('url-join');
+// var _ = require("underscore");
 
 
 
@@ -50,85 +50,45 @@ export function logoutUser(UDC, name) {
 
 
 export function getRedirectURL(passport, proxyRestUri, targetId) {
-    var options = {
-                'Certificate': _certs.cert, //'C:/Users/Qlik/Meteor projects/qlikauth-meteor/node_modules/qlik-auth/client.pfx',
-                'CertificateKey': _certs.key,
-                'PassPhrase': ''
-            }
+    check(passport, Object);
+    check(proxyRestUri, String);
+    check(targetId, String);
 
-    console.log('entered server side requestTicket module for user and passport', passport, proxyRestUri);
+    // console.log('entered server side requestTicket module for user and passport', passport, proxyRestUri);
     //see https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
 
-    
-    //Get and verify parameters
-    options.Certificate = options.Certificate || 'client.pem';
-    options.CertificateKey = options.CertificateKey || 'client_key.pem';
-    // options.PassPhrase = options.PassPhrase || '';
-    options.ProxyRestUri = proxyRestUri; 
-    options.TargetId = targetId || '';
-
-    console.log('The options for requesting a ticket are: ', options)
-
-    // check(options.Certificate, Object);
-    // check(options.CertificateKey, String);
-    check(options.ProxyRestUri, String);
-
-
-    //Configure parameters for the ticket request
-    var settings = {
-        // passphrase: options.PassPhrase,
-        rejectUnauthorized: false,
-        agent: false
-    };
-
-
-    //check if certificate is filled, and create separate cert object
-    
-    var cert = {};
-    cert.cert = options.Certificate;
-    cert.key = options.CertificateKey;
-    settings = _.extend(settings, cert);
-
-    console.log('proxyRestUri: ', options.ProxyRestUri);
-    //Send ticket request
+    var ticketRequestBody = passport;
+    ticketRequestBody.TargetId = targetId;
+    console.log('The passport for requesting a ticket: ', passport);
+  
     try {
-        const call = {};
+        var call = {};
         call.action = 'Request ticket';
-        call.request = options.ProxyRestUri+'ticket?xrfkey=' +certicate_communication_options.x-qlik-xrfkey;
-        call.response = HTTP.call('POST', call.request, { 'npmRequestOptions': certicate_communication_options });
+        call.request = proxyRestUri + 'ticket'; //we use the proxy rest uri which we got from the redirect from the proxy (the first bounce)
+        call.response = HTTP.call('POST', call.request, {
+            'npmRequestOptions': certicate_communication_options,
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey },
+            data: passport //the user and group info for which we want to create a ticket
+        });
 
         REST_Log(call);
-        console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-        console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
-
     } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('Logout user failed', err.message);
+        console.error('REST call to request a ticket failed', err);
+        throw new Meteor.Error('Request ticket failed', err.message);
     }
 
+    // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+    // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+    var ticketResponse = call.response.data;
 
-    // var ticketreq = https.request(settings, function(ticketres) {
-    //     ticketres.on('data', function(d) {
-    //         //Parse ticket response
-    //         var ticket = JSON.parse(d.toString());
+    //Build redirect URL for the client including the ticket
+    if (ticketResponse.TargetUri.indexOf("?") > 0) {
+        redirectURI = ticketResponse.TargetUri + '&QlikTicket=' + ticketResponse.Ticket;
+    } else {
+        redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
+    }
 
-    //         //Build redirect including ticket
-    //         if (ticket.TargetUri.indexOf("?") > 0) {
-    //             redirectURI = ticket.TargetUri + '&QlikTicket=' + ticket.Ticket;
-    //         } else {
-    //             redirectURI = ticket.TargetUri + '?QlikTicket=' + ticket.Ticket;
-    //         }
-
-    //         console.log('Meteor server side create this redirect url: ', redirectURI);
-    //         return redirectURI;
-    //         //in the code below you would redirect the request server side, in my case I have to do it client side, so I 
-    //         //just return the redirectURI to the client
-    //         // res.writeHead(302, {'Location': redirectURI});
-    //         // res.end();
-    //     });
-    // });
+    console.log('Meteor server side created this redirect url: ', redirectURI);
+    return redirectURI;
 }
-
-function generateXrfkey() {
-    return Random.hexString(16);
-};
