@@ -32,7 +32,7 @@ export function generateStreamAndApp(customers, generationUserId) {
 
 function generateAppForTemplate(templateApp, customer, generationUserId) {
     console.log(templateApp);
-    console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR USERkey: ' + generationUserId);
+    console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
     const call = {};
     call.action = 'Start of generation';
     call.createdBy = generationUserId;
@@ -134,7 +134,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
         .catch((error) => {
             console.error('ERROR while reloading the new app: ', error);
             throw new Meteor.error(error);
-        });
+        }); 
 }
 
 

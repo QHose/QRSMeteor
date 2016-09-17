@@ -10,7 +10,7 @@ import moment from 'moment';
 Template.APILogs.helpers({
     RESTCallSettings: function() {
         return {
-            rowsPerPage: 10,
+            rowsPerPage: 5,
             responsive: true,
             autoWidth: true,
             showFilter: true,

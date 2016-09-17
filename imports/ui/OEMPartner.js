@@ -85,7 +85,7 @@ Template.OEMPartner.events({
     'click .generateStreamAndApp' () {
         Session.set('loadingIndicator', 'loading');
 
-        var selectedCustomers = Customers.find({ checked: true })
+        var selectedCustomers = Customers.find({generationUserId: Meteor.userId(), checked: true })
             .fetch();
 
         Meteor.call('generateStreamAndApp', selectedCustomers, function(err, result) {

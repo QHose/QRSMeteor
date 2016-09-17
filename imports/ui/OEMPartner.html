@@ -36,10 +36,10 @@
             {{/if}}
         </div>
     </div>
-    {{#if readyToTestSSO}}
-    <div class="ui segment">
+    {{#if readyToTestSSO}}     
+    
         {{> simulateUserLogin}}
-    </div>
+  
     {{/if}}
     <div class="ui segment">
         <div class="ui buttons">
@@ -66,10 +66,13 @@
                 <div class="header">
                     <h4>No customers</h4>
                 </div>
-                <p> <!-- {{#if freshEnvironment}} -->
-                This demo simulates the first day of your SaaS platform. Therefore we first need to insert some customers using the button below. <br>
+                <p>
+                    <!-- {{#if freshEnvironment}} -->
+                    This demo simulates the first day of your SaaS platform. Therefore we first need to insert some customers using the button below.
+                    <br>
                     <a class="ui labeled icon button insertDummyCustomers" href="#"> <i class="edit icon"></i>1: Insert Customers</a>
-               <!--      {{/if}} --></p>
+                    <!--      {{/if}} -->
+                </p>
                 <!--  <ul>
                     <li>This demo simulates the first day of your SaaS platform. Therefore we first need to <a href="{{pathFor 'users'}}">insert</a> some customers and users.</li>
                     <li>Or <a href="#" class="insertDummyCustomers"> load existing (dummy) </a>customers (use these if you want to test row level security and the web integration demo (via the "Your SaaS platform" menu). You can only use your own customers and users for the generation part of the demo).</li>
@@ -140,9 +143,8 @@
             <img class="icon" src="images/API.png">
             <div class="content">
                 <div class="header">
-                    <h4> API automation: a quick introduction</h4>
+                    <h4> API automation: an introduction</h4>
                 </div>
-                <p>Please note there is no sound yet...</p>
                 <p>This <a href="https://github.com/QHose/QRSMeteor">open source</a> (non-Qlik) <a href="https://www.meteor.com/">Meteor.js</a> based demo platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please look at the video below for an introduction. In the demo you will see a screen divided into two parts.</p>
                 <ul>
                     <li> The left side shows "the broker" in your SaaS platform; a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights and the relevant template apps (depending on what the customer has configured in your platform).
@@ -166,22 +168,22 @@
         </div>
     </div>
 </template>
-<Template name="step4">
-    <div class="header">
-        4: Test Single Sign On
-    </div>
-    <p>
-        Select a user to test Single Sign On.
-        <div class="ui accordion">
-            <div class="title">
-                <i class="dropdown icon"></i>Read more...
-            </div>
-            <div class="content">
-                <p>If you select a user a ticket will be requested which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles up front in Qlik Sense.</p>
-                <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. MAKE SURE YOU USED INSERT DUMMY CUSTOMERS (because of the row level security). On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
-            </div>
+<Template name="step4">   
+        <div class="header">
+            4: Test Single Sign On
         </div>
-    </p>
+        <p>
+            Select a user to test Single Sign On.
+            <div class="ui accordion">
+                <div class="title">
+                    <i class="dropdown icon"></i>Read more...
+                </div>
+                <div class="content">
+                    <p>If you select a user a ticket will be requested which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles up front in Qlik Sense.</p>
+                    <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. Its best to use the dummy customers so you can also test row level security, and the web integration examples also make use of this row level restricted app (each user can only see their own sales orders). On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
+                </div>
+            </div>
+        </p>
 </Template>
 <Template name="step3">
     <div class="header">

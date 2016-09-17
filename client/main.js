@@ -16,6 +16,8 @@ import '/imports/ui/pages/QMC.html';
 import '/imports/ui/notFound.html'; 
 import '/imports/ui/users.html';
 import '/imports/ui/users.js';
+import '/imports/SSO/client/SSO.html';
+import '/imports/SSO/client/SSO.js';
 import '/imports/ui/pages/APILogs.html';
 import '/imports/ui/pages/APILogs.js';
 import '/imports/ui/pages/architecture.html';
@@ -25,8 +27,6 @@ import '/imports/ui/simulateUserLogin.js';
 import '/imports/ui/pages/securityRules.html';
 import '/imports/ui/pages/securityRules.js';
 import '/imports/startup/accounts-config.js';
-
-
 
 import { Template } from 'meteor/templating';
 import { Apps, TemplateApps } from '/imports/api/apps';

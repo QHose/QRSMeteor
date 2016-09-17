@@ -1,0 +1,14 @@
+<template name="SSO">
+    <h1>Method Redirect</h1>
+    <p>To slow things down for demo purposes we have put a page in the middle (between the user trying to access Qlik Sense and your SaaS platform which has to request a ticket). Normally this would be an automatic redirect from your SaaS platform to Qlik Sense.</p>
+    <p> On this page you will see a button. If you click it, Meteor will get the current selected user (of the dropdown) out of MongoDB for the user that is currently logged in in the demo platform. Then it will request a ticket for this user, and redirect it back to Qlik Sense with the ticket appended in the URL.</p>
+    <p>Qlik Sense redirected the users browsers to the page you are currently watching (setting of the virtual Qlik Sense proxy). It included these parameters which we can use to redirect the user. For more information also see the <a href="https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication.htm">help </a>
+        <ul>
+            {{#with receivedParamsQlikSense}}
+            <li>proxyRestUri: {{proxyRestUri}}</li>
+            <li>targetId: {{targetId}} (if you supply this in your ticket request, you will get the orginal URL the user tried to open back)</li>
+            {{/with}}
+        </ul>
+    </p>
+    <button>Redirect Me!</button>
+</template>

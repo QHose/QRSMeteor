@@ -39,7 +39,7 @@ meteorhacks:picker
 mobile-experience@1.0.4       # Packages for a great mobile UX
 mongo@1.1.12                   # The database Meteor supports right now
 msavin:mongol 			# lets you see the mongoDB in the client interface
-reactive-var@1.0.10            # Reactive variable for tracker
+reactive-var            # Reactive variable for tracker
 semantic:ui
 semantic:ui-css
 

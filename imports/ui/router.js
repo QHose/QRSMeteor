@@ -31,6 +31,9 @@ Router.route('/architecture');
 Router.route('/sequenceDiagramOverview');
 Router.route('/sequenceDiagramGeneration');
 
+//Single sing on integration route, this is the route you configure in Qlik sense proxy
+Router.route('/SSO');
+
 // Router.route('/register');
 // Router.route('/login');
 
