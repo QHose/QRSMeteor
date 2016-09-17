@@ -10,11 +10,9 @@ import * as QSApp from '/imports/api/server/QRSFunctionsApp';
 import * as QSStream from '/imports/api/server/QRSFunctionsStream';
 import * as QSProxy from '/imports/api/server/QPSFunctions';
 import * as QSSystem from '/imports/api/server/QRSFunctionsSystemRules';
-import qlikauth from 'qlik-auth';
 
 //import config for Qlik Sense QRS and Engine API
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config';
-import '/imports/server/qlikAuthSSO.js';
 import '/imports/startup/accounts-config.js';
 
 
@@ -52,8 +50,45 @@ Meteor.startup(function() {
 });
 
 Meteor.methods({
+    getRedirectUrl(proxyRestUri, targetId) {
+        console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
+        var call = {};
+        call.action = 'Server SSO'
+        call.request = 'Meteor server side method getRedirectUrl received a incoming method call from the meteor client. Meteor server will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.';
+        REST_Log(call);
+
+        //first find the customers that have a logged in users (mongo returns a complete document)
+        var customer = Customers.findOne({ generationUserId: Meteor.userId(), 'users.currentlyLoggedIn': true });
+        console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + Meteor.userId() + ', the customer which contains the user that the user selected with the dropdown: ', customer);
+
+        //now we have the document, we can look in the array of users, to find the one that is logged in.
+        if (!customer) {
+            const error = 'You have not selected a user you want to simulate the Single Sign on with. Please select a user on the left side of the screen';
+            throw new Meteor.Error('No user', error);
+        } else {
+            var user = _.find(customer.users, { 'currentlyLoggedIn': true });
+
+            //Create a paspoort (ticket) request: user directory, user identity and attributes
+            var passport = {
+                'UserDirectory': senseConfig.UDC, //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or the name of the customer domain if you need a Virtual proxy per customer
+                'UserId': user.name, //the current user that we are going to login with
+                'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
+                    { 'group': user.country.toUpperCase() },
+                    { 'group': user.group.toUpperCase() }
+                ]
+            }
+            // console.log('Request ticket for this user passport": ', passport);
+
+            //logging only
+            call.action = 'Request ticket (SSO)'
+            call.request = 'Request ticket for this user passport: ": ' + JSON.stringify(passport);
+            REST_Log(call);
+
+            return QSProxy.getRedirectURL(passport, proxyRestUri, targetId);
+        }
+    },
     generateStreamAndApp(customers) {
-        console.log('generateStreamAndApp');
+        // console.log('generateStreamAndApp');
         check(customers, Array);
 
         Meteor.call('removeGeneratedResources'); //first clean the environment
@@ -71,12 +106,12 @@ Meteor.methods({
         //logging only
         const call = {};
         call.action = 'Remove generated resources';
-        call.request = 'Remove all apps and streams in Qlik Sense for userId: '+  Meteor.userId();
+        call.request = 'Remove all apps and streams in Qlik Sense for userId: ' + Meteor.userId();
         REST_Log(call);
 
-        GeneratedResources.find({'generationUserId':   Meteor.userId()})
+        GeneratedResources.find({ 'generationUserId': Meteor.userId() })
             .forEach(function(resource) {
-                console.log('resetEnvironment for userId',  Meteor.userId());
+                console.log('resetEnvironment for userId', Meteor.userId());
                 try {
                     Meteor.call('deleteStream', resource.streamId);
                 } catch (err) {
@@ -88,15 +123,15 @@ Meteor.methods({
                     console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
                 }
             })
-        GeneratedResources.remove({'generationUserId':   Meteor.userId()});
-        APILogs.remove({'generationUserId':   Meteor.userId()});
+        GeneratedResources.remove({ 'generationUserId': Meteor.userId() });
+        APILogs.remove({ 'generationUserId': Meteor.userId() });
     },
     resetLoggedInUser() {
         console.log("***Method resetLoggedInUsers");
         console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
 
         //reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.
-        Customers.find()
+        Customers.find({ 'generationUserId': Meteor.userId() })
             .forEach(function(customer) {
                 var updatedUsers = _.map(customer.users, function(user) {
                     user.currentlyLoggedIn = false;
