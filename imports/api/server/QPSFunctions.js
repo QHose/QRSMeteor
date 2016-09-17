@@ -25,16 +25,16 @@ https://<QPS machine name>:4243/<path>
 Each proxy has its own session cookie, so you have to logout the users per proxy used.
 */
 
-export function logoutUser(name) {
-    console.log('******** QPS Functions: logout the current: ' + name + ' on proxy: ' + senseConfig.virtualProxyClientUsage);
+export function logoutUser(UDC, name) {
+    // console.log('******** QPS Functions: logout the current: ' + name + ' on proxy: ' + senseConfig.virtualProxyClientUsage);
 
     if (name) {
-        console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTPs call: '); //, certicate_communication_options);
-        console.log('Meteor tries to logout the user on this URL: https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + senseConfig.UDC + '/' + name);
+        // console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTPs call: '); //, certicate_communication_options);
+        // console.log('Meteor tries to logout the user on this URL: https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + senseConfig.UDC + '/' + name);
         try {
             const call = {};
             call.action = 'logout user: ' + name;
-            call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + senseConfig.UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
+            call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
             call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
 
             REST_Log(call);
@@ -56,14 +56,14 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
                 'PassPhrase': ''
             }
 
-    console.log('entered server side requestTicket module');
+    console.log('entered server side requestTicket module for user and passport', passport, proxyRestUri);
     //see https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
 
     
     //Get and verify parameters
     options.Certificate = options.Certificate || 'client.pem';
     options.CertificateKey = options.CertificateKey || 'client_key.pem';
-    options.PassPhrase = options.PassPhrase || '';
+    // options.PassPhrase = options.PassPhrase || '';
     options.ProxyRestUri = proxyRestUri; 
     options.TargetId = targetId || '';
 
@@ -76,10 +76,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
 
     //Configure parameters for the ticket request
     var settings = {
-        path: urljoin(url.parse(options.ProxyRestUri).path, 'ticket?xrfkey=' + xrfkey),
-        method: 'POST',
-        headers: { 'X-Qlik-Xrfkey': xrfkey, 'Content-Type': 'application/json' },
-        passphrase: options.PassPhrase,
+        // passphrase: options.PassPhrase,
         rejectUnauthorized: false,
         agent: false
     };
@@ -98,7 +95,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
         const call = {};
         call.action = 'Request ticket';
         call.request = options.ProxyRestUri+'ticket?xrfkey=' +certicate_communication_options.x-qlik-xrfkey;
-        call.response = HTTP.call('POST', call.request, { 'npmRequestOptions': certicate_communication_options })
+        call.response = HTTP.call('POST', call.request, { 'npmRequestOptions': certicate_communication_options });
 
         REST_Log(call);
         console.log('The HTTP REQUEST to Sense QPS API:', call.request);
