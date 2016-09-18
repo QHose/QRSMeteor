@@ -3,6 +3,7 @@ import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
 import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 import { APILogs } from '/imports/api/APILogs';
+import moment from 'moment';
 
 //only fill the local mongoDB that runs in the browser with data that belongs to the user...
 //https://www.meteor.com/tutorials/blaze/publish-and-subscribe
@@ -56,7 +57,13 @@ Meteor.publish('customers', function() {
 });
 
 Meteor.publish('apiLogs', function() {
-    return APILogs.find();
+    const selector = {
+        "createDate": {
+            $lt: new Date(),
+            $gte: new Date(new Date().setDate(new Date().getDate() - 1))  //show only the last day  of api logs
+        }
+    };
+    return APILogs.find(selector);
     this.ready();
 });
 

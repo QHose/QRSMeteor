@@ -85,7 +85,7 @@ Template.OEMPartner.events({
     'click .generateStreamAndApp' () {
         Session.set('loadingIndicator', 'loading');
 
-        var selectedCustomers = Customers.find({generationUserId: Meteor.userId(), checked: true })
+        var selectedCustomers = Customers.find({ generationUserId: Meteor.userId(), checked: true })
             .fetch();
 
         Meteor.call('generateStreamAndApp', selectedCustomers, function(err, result) {
@@ -155,11 +155,12 @@ Template.OEMPartner.events({
 }); //end Meteor events
 
 
-
-Template.OEMPartner.onRendered(function() {
+Template.OEMPartner.onCreated(function() {
     const templateAppsHandle = Meteor.subscribe('templateApps');
     const apiLogsHandle = Meteor.subscribe('apiLogs');
+});
 
+Template.OEMPartner.onRendered(function() {
     Template.instance()
         .$('.ui.embed')
         .embed();

@@ -79,9 +79,12 @@ Template.APILogs.events({
 })
 
 Template.APILogs.onRendered(function() {
-    const apiLogsHandle = Meteor.subscribe('apiLogs');
-
      Template.instance()
         .$('.ui.accordion')
         .accordion({ exclusive: false });
+});
+
+
+Template.APILogs.onCreated(function() {
+    const apiLogsHandle = Meteor.subscribe('apiLogs');
 });

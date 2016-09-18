@@ -22,12 +22,12 @@ var qsocks = require('qsocks');
 
 Meteor.startup(function() {
     process.env.ROOT_URL = 'http://' + Meteor.settings.public.host;
-    console.log('********* Meteor runs on host ROOT_URL: ', process.env.ROOT_URL);
+    //console.log('********* Meteor runs on host ROOT_URL: ', process.env.ROOT_URL);
 
 
-    console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
-    console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
-    console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');
+    //console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
+    //console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
+    //console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');
     try {
         const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
             headers: authHeaders,
@@ -40,9 +40,9 @@ Meteor.startup(function() {
             params: { 'xrfkey': senseConfig.xrfkey },
             data: Meteor.settings.private.notificationURL + '/streams'
         })
-        console.log('Register notication success');
-        // console.log('the result from sense register App notification was: ', resultApp);
-        // console.log('the result from sense register Stream notification was: ', resultStream);
+        //console.log('Register notication success');
+        // //console.log('the result from sense register App notification was: ', resultApp);
+        // //console.log('the result from sense register Stream notification was: ', resultStream);
     } catch (err) {
         console.error('Create notification subscription in sense qrs failed', err);
         // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
@@ -51,7 +51,7 @@ Meteor.startup(function() {
 
 Meteor.methods({
     getRedirectUrl(proxyRestUri, targetId) {
-        console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
+        //console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
         var call = {};
         call.action = 'Server SSO'
         call.request = 'Meteor server side method getRedirectUrl received a incoming method call from the meteor client. Meteor server will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.';
@@ -59,7 +59,7 @@ Meteor.methods({
 
         //first find the customers that have a logged in users (mongo returns a complete document)
         var customer = Customers.findOne({ generationUserId: Meteor.userId(), 'users.currentlyLoggedIn': true });
-        console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + Meteor.userId() + ', the customer which contains the user that the user selected with the dropdown: ', customer);
+        //console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + Meteor.userId() + ', the customer which contains the user that the user selected with the dropdown: ', customer);
 
         //now we have the document, we can look in the array of users, to find the one that is logged in.
         if (!customer) {
@@ -78,7 +78,7 @@ Meteor.methods({
                 ]
             }
 
-            // console.log('Request ticket for this user passport": ', passport);
+            // //console.log('Request ticket for this user passport": ', passport);
 
             //logging only
             call.action = 'Request ticket (SSO)'
@@ -89,7 +89,7 @@ Meteor.methods({
         }
     },
     generateStreamAndApp(customers) {
-        // console.log('generateStreamAndApp');
+        // //console.log('generateStreamAndApp');
         check(customers, Array);
 
         Meteor.call('removeGeneratedResources'); //first clean the environment
@@ -103,7 +103,7 @@ Meteor.methods({
         APILogs.remove({ 'generationUserId': Meteor.userId() });
     },
     removeGeneratedResources() {
-        console.log('remove GeneratedResources method, before we make new ones');
+        //console.log('remove GeneratedResources method, before we make new ones');
         //logging only
         const call = {};
         call.action = 'Remove generated resources';
@@ -112,7 +112,7 @@ Meteor.methods({
 
         GeneratedResources.find({ 'generationUserId': Meteor.userId() })
             .forEach(function(resource) {
-                console.log('resetEnvironment for userId', Meteor.userId());
+                //console.log('resetEnvironment for userId', Meteor.userId());
                 try {
                     Meteor.call('deleteStream', resource.streamId);
                 } catch (err) {
@@ -128,8 +128,8 @@ Meteor.methods({
         APILogs.remove({ 'generationUserId': Meteor.userId() });
     },
     resetLoggedInUser() {
-        console.log("***Method resetLoggedInUsers");
-        console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
+        //console.log("***Method resetLoggedInUsers");
+        //console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
 
         //reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.
         Customers.find({ 'generationUserId': Meteor.userId() })
@@ -154,7 +154,7 @@ Meteor.methods({
     simulateUserLogin(name) {
         check(name, String);
         Meteor.call('resetLoggedInUser');
-        console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: ' + name);
+        //console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: ' + name);
         Customers.update({ "users.name": name }, {
             $set: {
                 'users.$.currentlyLoggedIn': true
@@ -183,7 +183,7 @@ Meteor.methods({
     },
     deleteApp(guid) {
         check(guid, String);
-        console.log('method deleteApp');
+        //console.log('method deleteApp');
         //logging only
         const call = {};
         call.action = 'Delete app';
@@ -237,7 +237,7 @@ Meteor.methods({
     },
 
     updateLocalSenseCopy() {
-        // console.log('Method: update the local mongoDB with fresh data from Qlik Sense: call QRS API getStreams and getApps');
+        // //console.log('Method: update the local mongoDB with fresh data from Qlik Sense: call QRS API getStreams and getApps');
         //delete the local content of the database before updating it
         Apps.remove({});
         Streams.remove({});
@@ -252,13 +252,13 @@ Meteor.methods({
         });
     },
     // checkSenseIsReady() {
-    //     console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');
+    //     //console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');
 
     //     // try {
     //     // qsocks.Connect(engineConfig)
     //     //     .then(function(global) {
     //     //         // Connected
-    //     //         console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');
+    //     //         //console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');
     //     //         return true;
     //     //     }, function(err) {
     //     //         // Something went wrong
@@ -274,9 +274,9 @@ Meteor.methods({
     //             headers: authHeaders,
     //             params: { 'xrfkey': senseConfig.xrfkey }
     //         })//http get
-    //         console.log(result);
+    //         //console.log(result);
     //         if(result.statuscode === 200){
-    //             console.log('We got a result back from Sense with statuscode 200: Success')
+    //             //console.log('We got a result back from Sense with statuscode 200: Success')
     //             return true;}
     //         else{return false}
     //     } catch (err) {

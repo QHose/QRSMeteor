@@ -26,11 +26,11 @@ Each proxy has its own session cookie, so you have to logout the users per proxy
 */
 
 export function logoutUser(UDC, name) {
-    // console.log('******** QPS Functions: logout the current: ' + name + ' on proxy: ' + senseConfig.virtualProxyClientUsage);
+    // //console.log('******** QPS Functions: logout the current: ' + name + ' on proxy: ' + senseConfig.virtualProxyClientUsage);
 
     if (name) {
-        // console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTPs call: '); //, certicate_communication_options);
-        // console.log('Meteor tries to logout the user on this URL: https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + senseConfig.UDC + '/' + name);
+        // //console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTPs call: '); //, certicate_communication_options);
+        // //console.log('Meteor tries to logout the user on this URL: https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + senseConfig.UDC + '/' + name);
         try {
             const call = {};
             call.action = 'logout user: ' + name;
@@ -38,8 +38,8 @@ export function logoutUser(UDC, name) {
             call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
 
             REST_Log(call);
-            // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-            // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+            // //console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+            // //console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
 
         } catch (err) {
             console.error(err);
@@ -54,12 +54,12 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
     check(proxyRestUri, String);
     check(targetId, String);
 
-    // console.log('entered server side requestTicket module for user and passport', passport, proxyRestUri);
+    // //console.log('entered server side requestTicket module for user and passport', passport, proxyRestUri);
     //see https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
 
     var ticketRequestBody = passport;
     ticketRequestBody.TargetId = targetId;
-    console.log('The passport for requesting a ticket: ', passport);
+    //console.log('The passport for requesting a ticket: ', passport);
   
     try {
         var call = {};
@@ -78,8 +78,8 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
         throw new Meteor.Error('Request ticket failed', err.message);
     }
 
-    // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-    // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+    // //console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+    // //console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
     var ticketResponse = call.response.data;
 
     //Build redirect URL for the client including the ticket
@@ -89,6 +89,6 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
         redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
     }
 
-    console.log('Meteor server side created this redirect url: ', redirectURI);
+    //console.log('Meteor server side created this redirect url: ', redirectURI);
     return redirectURI;
 }

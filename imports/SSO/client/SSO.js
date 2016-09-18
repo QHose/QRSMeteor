@@ -28,31 +28,30 @@
          var senseParams = Session.get('senseParams');
          console.log('call the server with options:', senseParams);
 
-         Meteor.call('getRedirectUrl',senseParams.proxyRestUri, senseParams.targetId, (error, redirectUrl) => {
+         Meteor.call('getRedirectUrl', senseParams.proxyRestUri, senseParams.targetId, (error, redirectUrl) => {
              call.action = 'forward the user back to Sense';
              call.request = 'The browser received this redirectUrl, so replace the current url in the browser with this new one: ' + redirectUrl;
              REST_Log(call);
              window.location.replace(redirectUrl);
          });
-
-
      }
  });
 
  Template.SSO.onCreated(function() {
-     /*
-          From within a route, use:
-             
-              // URL: http://example.com/page/?myquerykey=true
-              this.params.query   // returns the full query object
-              this.params.query.myquerykey   // returns a particular query value
-              Similarly, outside of the route (but still inside the client code), and inside your template, use:
-
-              // URL: http://example.com/page/?myquerykey=true
-              Router.current().params.query
-              Router.current().params.query.myquerykey
-              */
      const senseParams = Router.current().params.query;
      console.log('template sso onCreated, we received these params from Qlik Sense', senseParams);
      Session.set('senseParams', senseParams);
  })
+
+ /*
+     From within a route, use:
+        
+         // URL: http://example.com/page/?myquerykey=true
+         this.params.query   // returns the full query object
+         this.params.query.myquerykey   // returns a particular query value
+         Similarly, outside of the route (but still inside the client code), and inside your template, use:
+
+         // URL: http://example.com/page/?myquerykey=true
+         Router.current().params.query
+         Router.current().params.query.myquerykey
+         */
