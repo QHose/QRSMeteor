@@ -47,14 +47,14 @@ Meteor.startup(function() {
         console.error('Create notification subscription in sense qrs failed', err);
         // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
     }
-    console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
-    TemplateApps._ensureIndex({ "generationUserId": 1, "id": 1 });
-    GeneratedResources._ensureIndex({ "generationUserId": 1, "id": 1 });
-    Apps._ensureIndex({ "id": 1 });
-    Customers._ensureIndex({ "generationUserId": 1 });
-    Streams._ensureIndex({ "id": 1 });
-    APILogs._ensureIndex({ "createdBy": 1 });
-    APILogs._ensureIndex({ "createDate": 1 });
+    // console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
+    // TemplateApps._ensureIndex({ "generationUserId": 1, "id": 1 });
+    // GeneratedResources._ensureIndex({ "generationUserId": 1, "id": 1 });
+    // Apps._ensureIndex({ "id": 1 });
+    // Customers._ensureIndex({ "generationUserId": 1 });
+    // Streams._ensureIndex({ "id": 1 });
+    // APILogs._ensureIndex({ "createdBy": 1 });
+    // APILogs._ensureIndex({ "createDate": 1 });
 });
 
 
