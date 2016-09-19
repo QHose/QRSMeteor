@@ -81,7 +81,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
     console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
     var ticketResponse = call.response.data;
     call.action = 'Ticket response';
-    call.request = ticketResponse;
+    call.request = JSON.stringify(ticketResponse);
     call.response = '';
     REST_Log(call);
 
