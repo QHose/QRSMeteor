@@ -3,6 +3,7 @@ import { Mongo } from 'meteor/mongo';
 export const Customers = new Mongo.Collection('customers');
 
 Meteor.startup(function () {  
+  console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
   Customers._ensureIndex({ "generationUserId": 1});
 });
 
