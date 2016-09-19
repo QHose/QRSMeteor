@@ -3,6 +3,7 @@
  import { REST_Log } from '/imports/api/APILogs';
  import { http } from 'meteor/meteor';
  import { Session } from 'meteor/session';
+import { senseConfig } from '/imports/api/config.js';
 
 
  Template.SSO.helpers({
@@ -27,8 +28,9 @@
 
          var senseParams = Session.get('senseParams');
          console.log('call the server with options:', senseParams);
+         var updateProxyRestUri = 'https://'+senseConfig.host+':4243/qps/meteor/';
 
-         Meteor.call('getRedirectUrl', senseParams.proxyRestUri, senseParams.targetId, (error, redirectUrl) => {
+         Meteor.call('getRedirectUrl', updateProxyRestUri, senseParams.targetId, (error, redirectUrl) => {
              call.action = 'forward the user back to Sense';
              call.request = 'The browser received this redirectUrl, so replace the current url in the browser with this new one: ' + redirectUrl;
              REST_Log(call);
