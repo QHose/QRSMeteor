@@ -29,6 +29,7 @@ import { senseConfig } from '/imports/api/config.js';
          var senseParams = Session.get('senseParams');
          console.log('call the server with options:', senseParams);
          var updateProxyRestUri = 'https://'+senseConfig.host+':4243/qps/meteor/';
+         console.log('overwrite the proxyRestURI with an external available URL', updateProxyRestUri);
 
          Meteor.call('getRedirectUrl', updateProxyRestUri, senseParams.targetId, (error, redirectUrl) => {
              call.action = 'forward the user back to Sense';
