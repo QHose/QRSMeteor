@@ -32,7 +32,7 @@ import { senseConfig } from '/imports/api/config.js';
 
          Meteor.call('getRedirectUrl', updateProxyRestUri, senseParams.targetId, (error, redirectUrl) => {
              call.action = 'forward the user back to Sense';
-             call.request = 'The browser received this redirectUrl, so replace the current url in the browser with this new one: ' + redirectUrl;
+             call.request = 'The browser received a redirectUrl, so replace the current url in the browser with this new one: ' + redirectUrl;
              REST_Log(call);
              window.location.replace(redirectUrl);
          });

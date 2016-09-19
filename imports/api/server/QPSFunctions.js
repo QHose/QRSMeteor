@@ -60,7 +60,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
     var ticketRequestBody = passport;
     ticketRequestBody.TargetId = targetId;
     //console.log('The passport for requesting a ticket: ', passport);
-  
+
     try {
         var call = {};
         call.action = 'Request ticket';
@@ -71,7 +71,6 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
             params: { 'xrfkey': senseConfig.xrfkey },
             data: passport //the user and group info for which we want to create a ticket
         });
-
         REST_Log(call);
     } catch (err) {
         console.error('REST call to request a ticket failed', err);
@@ -81,6 +80,11 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
     // //console.log('The HTTP REQUEST to Sense QPS API:', call.request);
     // //console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
     var ticketResponse = call.response.data;
+    call.action = 'Ticket response';
+    call.request = ticketResponse;
+    call.response = '';
+    REST_Log(call);
+
 
     //Build redirect URL for the client including the ticket
     if (ticketResponse.TargetUri.indexOf("?") > 0) {
