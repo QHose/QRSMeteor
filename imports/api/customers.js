@@ -2,6 +2,10 @@ import { Mongo } from 'meteor/mongo';
 
 export const Customers = new Mongo.Collection('customers');
 
+Meteor.startup(function () {  
+  Customers._ensureIndex({ "generationUserId": 1});
+});
+
 Customers.attachSchema(new SimpleSchema({
     name: {
         type: String,

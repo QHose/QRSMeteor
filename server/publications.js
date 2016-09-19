@@ -42,7 +42,7 @@ Meteor.publish('streams', function(generatedStreamsFromUser) {
     this.ready();
 });
 Meteor.publish('templateApps', function() {
-    return TemplateApps.find();
+    return TemplateApps.find({ 'generationUserId': this.userId });
     this.ready();
 });
 
