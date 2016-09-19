@@ -23,16 +23,16 @@ import { senseConfig } from '/imports/api/config.js';
          REST_Log(call);
 
          call.action = 'SSO Sense parameters'
-         call.request = 'Qlik Sense proxy provided these parameters', Router.current().params.query;
+         call.request = 'Qlik Sense proxy provided these parameters:'+ Router.current().params.query;
          REST_Log(call);
 
          var senseParams = Session.get('senseParams');
          console.log('call the server with options:', senseParams);
-         var updateProxyRestUri = 'https://'+senseConfig.host+':4243/qps/meteor/';
-         console.log('overwrite the proxyRestURI with an external available URL', updateProxyRestUri);
+         // var updateProxyRestUri = 'https://'+senseConfig.host+':4243/qps/meteor/';
+         // console.log('overwrite the proxyRestURI with an external available URL', updateProxyRestUri);
 
-         Meteor.call('getRedirectUrl', updateProxyRestUri, senseParams.targetId, (error, redirectUrl) => {
-             call.action = 'forward the user back to Sense';
+         Meteor.call('getRedirectUrl', senseParams.proxyRestUri, senseParams.targetId, (error, redirectUrl) => {
+             call.action = 'Redirect URL received';
              call.request = 'The browser received a redirectUrl, so replace the current url in the browser with this new one: ' + redirectUrl;
              REST_Log(call);
              window.location.replace(redirectUrl);
