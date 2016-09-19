@@ -36,18 +36,26 @@ Meteor.startup(function() {
         })
 
         const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
-            headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey },
-            data: Meteor.settings.private.notificationURL + '/streams'
-        })
-        //console.log('Register notication success');
-        // //console.log('the result from sense register App notification was: ', resultApp);
-        // //console.log('the result from sense register Stream notification was: ', resultStream);
+                headers: authHeaders,
+                params: { 'xrfkey': senseConfig.xrfkey },
+                data: Meteor.settings.private.notificationURL + '/streams'
+            })
+            //console.log('Register notication success');
+            // //console.log('the result from sense register App notification was: ', resultApp);
+            // //console.log('the result from sense register Stream notification was: ', resultStream);
     } catch (err) {
         console.error('Create notification subscription in sense qrs failed', err);
         // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
     }
+    console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
+    TemplateApps._ensureIndex({ "generationUserId": 1, "id": 1 });
+    GeneratedResources._ensureIndex({ "generationUserId": 1, "id": 1 });
+    Apps._ensureIndex({ "id": 1 });
+    Customers._ensureIndex({ "generationUserId": 1 });
+    Streams._ensureIndex({ "id": 1 });
 });
+
+
 
 Meteor.methods({
     getRedirectUrl(proxyRestUri, targetId) {

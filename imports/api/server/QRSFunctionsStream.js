@@ -13,6 +13,11 @@ export function deleteStream(guid) {
         const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders                       
         })
+        const call = {};
+        call.action = 'delete stream'; 
+        call.request = "HTTP.del('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey";
+        call.response = result;
+        REST_Log(call);        
         Meteor.call('updateLocalSenseCopy');
         return result;
     } catch (err) {
