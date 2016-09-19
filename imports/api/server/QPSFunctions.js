@@ -54,12 +54,12 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
     check(proxyRestUri, String);
     check(targetId, String);
 
-    // //console.log('entered server side requestTicket module for user and passport', passport, proxyRestUri);
+    console.log('entered server side requestTicket module for user and passport', passport, proxyRestUri);
     //see https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
 
     var ticketRequestBody = passport;
     ticketRequestBody.TargetId = targetId;
-    //console.log('The passport for requesting a ticket: ', passport);
+    console.log('The passport for requesting a ticket: ', passport);
 
     try {
         var call = {};
@@ -78,7 +78,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
     }
 
     // //console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-    // //console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+    console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
     var ticketResponse = call.response.data;
     call.action = 'Ticket response';
     call.request = ticketResponse;
