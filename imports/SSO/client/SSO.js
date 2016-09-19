@@ -23,7 +23,7 @@ import { senseConfig } from '/imports/api/config.js';
          REST_Log(call);
 
          call.action = 'SSO Sense parameters'
-         call.request = 'Qlik Sense proxy provided these parameters:'+ Router.current().params.query;
+         call.request = 'Qlik Sense proxy provided these parameters:'+ JSON.stringify(Router.current().params.query);
          REST_Log(call);
 
          var senseParams = Session.get('senseParams');

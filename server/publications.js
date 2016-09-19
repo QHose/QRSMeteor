@@ -12,7 +12,7 @@ Meteor.publish('apps', function(generatedAppsFromUser) {
         return Apps.find();
 
     } else {
-        console.log('Client subscribed to collection, with these generated app ids: ', generatedAppsFromUser);
+        //console.log('Client subscribed to collection, with these generated app ids: ', generatedAppsFromUser);
         if (!generatedAppsFromUser) {
             generatedAppsFromUser = [];
             // console.log('##### No generated resources exists yet, so only show the template apps')
