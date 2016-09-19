@@ -85,7 +85,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
     call.response = '';
     REST_Log(call);
 
-    
+
     //Build redirect URL for the client including the ticket
     if (ticketResponse.TargetUri.indexOf("?") > 0) {
         redirectURI = ticketResponse.TargetUri + '&QlikTicket=' + ticketResponse.Ticket;
@@ -93,6 +93,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
         redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
     }
 
+    if(!redirectURI){ redirectURI = "http://"+senseConfig.host+":"+senseConfig.port+"/"+senseConfig.virtualProxyClientUsage+"/"+hub;}
     console.log('Meteor server side created this redirect url: ', redirectURI);
     return redirectURI;
 }
