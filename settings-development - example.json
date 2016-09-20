@@ -1,39 +1,41 @@
 {
+    "adminEmails": "mbj@qlik.com",
     "public": {
-        "host": "2008ENT",
-        "port": 80, 
+        "host": "PRESALES1",
+        "port": 81, 
         "UDC": "OEM_HOST", 
         "virtualProxyClientUsage": "meteor",                       
         "webIntegrationHost": "localhost",
         "webIntegrationDemoPort": 3030,
         "facebook":{
-            "clientId": "1753311453043"         
-        }                        
+            "clientId": "dfdf"         
+        },
+        "templateAppId": "5658d4a5-0102-4b74-9c5d-1b01c2430c8f"                        
     },
     "private": {
-        "host": "2008ENT",
-        "port": 80, 
+        "host": "PRESALES1",
+        "port": 81, 
         "certificatesDirectory": "C:\\Repository\\Exported Certificates\\.Local Certificates",
         "notificationURL": "http://nlsch-mbj3:3000/updateSenseInfo",
-        "SenseServerInternalLanIP": "2008ENT",        
+        "SenseServerInternalLanIP": "PRESALES1",        
         "useSSL": false,
         "passphrase": null,
         "authentication": "header",
         "virtualProxy": "hdr",
         "headerKey": "hdr-usr",
         "UDC": "OEM_HOST",        
-        "headerValue": "2008ENT\\Qlik",        
+        "headerValue": "PRESALES1\\meteor",        
         "isSecure": true,
-        "engineHeaders": "UserDirectory=2008ENT;UserId=Qlik",
+        "engineHeaders": "UserDirectory=PRESALES1;UserId=Qlik",
         "enginePort": 4747,
         "proxyPort": 4243,
         "google":{
-            "clientId": "-.apps.googleusercontent.com",
-            "secret": "YCP43OPc_---hbu1"
+            "clientId": "df-df.apps.googleusercontent.com",
+            "secret": "YCP43OPc_-df-o-hbu1"
         },
         "facebook":{
-            "clientId": "efefe",
-            "secret": "rfrfrf"
+            "clientId": "df",
+            "secret": "df"
         }
     }
 }

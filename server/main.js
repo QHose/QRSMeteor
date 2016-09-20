@@ -63,7 +63,7 @@ Meteor.methods({
     getRedirectUrl(proxyRestUri, targetId) {
         console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
         var call = {};
-        call.action = 'Server SSO'
+        call.action = 'Server getRedirectUrl method'
         call.request = 'Meteor server side method getRedirectUrl received a incoming method call from the meteor client. Meteor server will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.';
         REST_Log(call);
 
