@@ -47,21 +47,21 @@ Meteor.startup(function() {
         console.error('Create notification subscription in sense qrs failed', err);
         // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
     }
-    // console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
-    // TemplateApps._ensureIndex({ "generationUserId": 1, "id": 1 });
-    // GeneratedResources._ensureIndex({ "generationUserId": 1, "id": 1 });
-    // Apps._ensureIndex({ "id": 1 });
-    // Customers._ensureIndex({ "generationUserId": 1 });
-    // Streams._ensureIndex({ "id": 1 });
-    // APILogs._ensureIndex({ "createdBy": 1 });
-    // APILogs._ensureIndex({ "createDate": 1 });
+    console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
+    TemplateApps._ensureIndex({ "generationUserId": 1, "id": 1 });
+    GeneratedResources._ensureIndex({ "generationUserId": 1, "id": 1 });
+    Apps._ensureIndex({ "id": 1 });
+    Customers._ensureIndex({ "generationUserId": 1 });
+    Streams._ensureIndex({ "id": 1 });
+    APILogs._ensureIndex({ "createdBy": 1 });
+    APILogs._ensureIndex({ "createDate": 1 });
 });
 
 
 
 Meteor.methods({
     getRedirectUrl(proxyRestUri, targetId) {
-        //console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
+        console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
         var call = {};
         call.action = 'Server SSO'
         call.request = 'Meteor server side method getRedirectUrl received a incoming method call from the meteor client. Meteor server will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.';

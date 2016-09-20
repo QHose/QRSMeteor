@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"tic",
+				"ticketResponse"
+			],
+			[
+				"re",
+				"response"
+			],
+			[
 				"gene",
 				"generationUserId"
 			],
@@ -74,10 +82,6 @@
 			[
 				"gen",
 				"generatedStreamsFromUser"
-			],
-			[
-				"re",
-				"resource"
 			],
 			[
 				"tem",
@@ -510,28 +514,51 @@
 			[
 				"formatte",
 				"formattedDate"
-			],
-			[
-				"dat",
-				"formatDate"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "imports/ui/generation.js",
+			"file": "imports/SSO/client/SSO.js",
 			"settings":
 			{
-				"buffer_size": 11051,
+				"buffer_size": 2672,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/OEMPartner.js",
+			"file": "imports/SSO/client/SSO.html",
 			"settings":
 			{
-				"buffer_size": 5876,
+				"buffer_size": 3745,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "import { Meteor } from 'meteor/meteor';\nimport { http } from 'meteor/meteor';\nimport { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';\nimport { APILogs, REST_Log } from '/imports/api/APILogs';\n\n//import meteor collections\nimport { Streams } from '/imports/api/streams';\nimport { Customers } from '/imports/api/customers';\nimport * as QSApp from '/imports/api/server/QRSFunctionsApp';\nimport * as QSStream from '/imports/api/server/QRSFunctionsStream';\nimport * as QSProxy from '/imports/api/server/QPSFunctions';\nimport * as QSSystem from '/imports/api/server/QRSFunctionsSystemRules';\n\n//import config for Qlik Sense QRS and Engine API\nimport { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config';\nimport '/imports/startup/accounts-config.js';\n\n\n//install NPM modules\nvar fs = require('fs');\nvar qsocks = require('qsocks');\n\nMeteor.startup(function() {\n    process.env.ROOT_URL = 'http://' + Meteor.settings.public.host;\n    //console.log('********* Meteor runs on host ROOT_URL: ', process.env.ROOT_URL);\n\n\n    //console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');\n    //console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');\n    //console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');\n    try {\n        const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {\n            headers: authHeaders,\n            params: { 'xrfkey': senseConfig.xrfkey },\n            data: Meteor.settings.private.notificationURL + '/apps'\n        })\n\n        const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {\n                headers: authHeaders,\n                params: { 'xrfkey': senseConfig.xrfkey },\n                data: Meteor.settings.private.notificationURL + '/streams'\n            })\n            //console.log('Register notication success');\n            // //console.log('the result from sense register App notification was: ', resultApp);\n            // //console.log('the result from sense register Stream notification was: ', resultStream);\n    } catch (err) {\n        console.error('Create notification subscription in sense qrs failed', err);\n        // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);\n    }\n    console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');\n    TemplateApps._ensureIndex({ \"generationUserId\": 1, \"id\": 1 });\n    GeneratedResources._ensureIndex({ \"generationUserId\": 1, \"id\": 1 });\n    Apps._ensureIndex({ \"id\": 1 });\n    Customers._ensureIndex({ \"generationUserId\": 1 });\n    Streams._ensureIndex({ \"id\": 1 });\n    APILogs._ensureIndex({ \"createdBy\": 1 });\n    APILogs._ensureIndex({ \"createDate\": 1 });\n});\n\n\n\nMeteor.methods({\n    getRedirectUrl(proxyRestUri, targetId) {\n        console.log(\"Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.\");\n        var call = {};\n        call.action = 'Server getRedirectUrl method'\n        call.request = 'Meteor server side method getRedirectUrl received a incoming method call from the meteor client. Meteor server will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.';\n        REST_Log(call);\n\n        //first find the customers that have a logged in users (mongo returns a complete document)\n        var customer = Customers.findOne({ generationUserId: Meteor.userId(), 'users.currentlyLoggedIn': true });\n        //console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + Meteor.userId() + ', the customer which contains the user that the user selected with the dropdown: ', customer);\n\n        //now we have the document, we can look in the array of users, to find the one that is logged in.\n        if (!customer) {\n            const error = 'You have not selected a user you want to simulate the Single Sign on with. Please select a user on the left side of the screen';\n            throw new Meteor.Error('No user', error);\n        } else {\n            var user = _.find(customer.users, { 'currentlyLoggedIn': true });\n\n            //Create a paspoort (ticket) request: user directory, user identity and attributes\n            var passport = {\n                'UserDirectory': Meteor.userId(), //Specify a dummy value to ensure userID's are unique E.g. \"Dummy\", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer\n                'UserId': user.name, //the current user that we are going to login with\n                'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense\n                    { 'group': user.country.toUpperCase() },\n                    { 'group': user.group.toUpperCase() }\n                ]\n            }\n\n            // //console.log('Request ticket for this user passport\": ', passport);\n\n            //logging only\n            call.action = 'Request ticket (SSO)'\n            call.request = 'Request ticket for this user passport: \": ' + JSON.stringify(passport);\n            REST_Log(call);\n\n            return QSProxy.getRedirectURL(passport, proxyRestUri, targetId);\n        }\n    },\n    generateStreamAndApp(customers) {\n        // //console.log('generateStreamAndApp');\n        check(customers, Array);\n\n        Meteor.call('removeGeneratedResources'); //first clean the environment\n        return QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff\n\n    },\n    resetEnvironment() {\n        Meteor.call('removeGeneratedResources');\n        TemplateApps.remove({ 'generationUserId': Meteor.userId() });\n        Customers.remove({ 'generationUserId': Meteor.userId() });\n        APILogs.remove({ 'generationUserId': Meteor.userId() });\n    },\n    removeGeneratedResources() {\n        //console.log('remove GeneratedResources method, before we make new ones');\n        //logging only\n        const call = {};\n        call.action = 'Remove generated resources';\n        call.request = 'Remove all apps and streams in Qlik Sense for userId: ' + Meteor.userId();\n        REST_Log(call);\n\n        GeneratedResources.find({ 'generationUserId': Meteor.userId() })\n            .forEach(function(resource) {\n                //console.log('resetEnvironment for userId', Meteor.userId());\n                try {\n                    Meteor.call('deleteStream', resource.streamId);\n                } catch (err) {\n                    console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);\n                } //don't bother if generated resources do not exists, just continue\n                try {\n                    Meteor.call('deleteApp', resource.appId);\n                } catch (err) {\n                    console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);\n                }\n            })\n        GeneratedResources.remove({ 'generationUserId': Meteor.userId() });\n        APILogs.remove({ 'generationUserId': Meteor.userId() });\n    },\n    resetLoggedInUser() {\n        //console.log(\"***Method resetLoggedInUsers\");\n        //console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');\n\n        //reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.\n        Customers.find({ 'generationUserId': Meteor.userId() })\n            .forEach(function(customer) {\n                var updatedUsers = _.map(customer.users, function(user) {\n                    user.currentlyLoggedIn = false;\n\n                    //and just logout everybody in the user list                            \n                    QSProxy.logoutUser(Meteor.userId(), user.name);\n\n                    return user;\n                })\n\n                Customers.update(customer._id, {\n                    $set: { users: updatedUsers },\n                });\n\n            });\n\n\n    },\n    simulateUserLogin(name) {\n        check(name, String);\n        Meteor.call('resetLoggedInUser');\n        //console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: ' + name);\n        Customers.update({ \"users.name\": name }, {\n            $set: {\n                'users.$.currentlyLoggedIn': true\n            }\n        })\n    },\n    copyApp(guid, name) {\n        check(guid, String);\n        check(name, String);\n        return QSApp.copyApp(guid, name);\n    },\n    copyAppSelectedCustomers(currentApp) { //the app the user clicked on        \n        if (!currentApp) {\n            throw new Meteor.Error('no App selected to copy')\n        };\n\n        customers = Customers.find({ checked: true }); //all selected customers\n        if (!customers) {\n            throw new Meteor.Error('no customers selected to copy the app for')\n        };\n\n        customers\n            .forEach(customer => {\n                Meteor.call('copyApp', currentApp.id, customer.name + '-' + currentApp.name);\n            });\n    },\n    deleteApp(guid) {\n        check(guid, String);\n        //console.log('method deleteApp');\n        //logging only\n        const call = {};\n        call.action = 'Delete app';\n        call.request = 'Delete app: ' + guid;\n        REST_Log(call);\n\n        return QSApp.deleteApp(guid);\n    },\n    removeAllCustomers: function() {\n        return Customers.remove({});\n    },\n\n    //STREAM METHODS\n    deleteStream(guid) {\n        check(guid, String);\n        //logging only\n        const call = {};\n        call.action = 'Delete stream';\n        call.request = 'Delete stream: ' + guid;\n        REST_Log(call);\n\n        return QSStream.deleteStream(guid);\n    },\n    createStream(name) {\n        return QSStream.createStream(name);\n    },\n    getStreams() {\n        return QSStream.getStreams();\n    },\n    getSecurityRules() {\n        return QSSystem.getSecurityRules();\n    },\n\n    updateLocalSenseCopyApps() {\n        //delete the local content of the database before updating it\n        Apps.remove({});\n\n        //Update the Apps with fresh info from Sense        \n        _.each(QSApp.getApps(), app => {\n            Apps.insert(app);\n        });\n    },\n    updateLocalSenseCopyStreams() {\n        //delete the local content of the database before updating it        \n        Streams.remove({});\n\n        //Update the Streams with fresh info from Sense        \n        _.each(QSStream.getStreams(), stream => {\n            Streams.insert(stream);\n        });\n    },\n\n    updateLocalSenseCopy() {\n        // //console.log('Method: update the local mongoDB with fresh data from Qlik Sense: call QRS API getStreams and getApps');\n        //delete the local content of the database before updating it\n        Apps.remove({});\n        Streams.remove({});\n\n        //Update the Apps and Streams with fresh info from Sense        \n        _.each(QSApp.getApps(), app => {\n            Apps.insert(app);\n        });\n\n        _.each(QSStream.getStreams(), stream => {\n            Streams.insert(stream);\n        });\n    },\n    // checkSenseIsReady() {\n    //     //console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');\n\n    //     // try {\n    //     // qsocks.Connect(engineConfig)\n    //     //     .then(function(global) {\n    //     //         // Connected\n    //     //         //console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');\n    //     //         return true;\n    //     //     }, function(err) {\n    //     //         // Something went wrong\n    //     //         console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);\n    //     //         console.error('the settings are: ', engineConfig)\n    //     //         return false\n    //     //         // throw new Meteor.Error('Could not connect to Sense Engine API', err.message);\n    //     //     });\n\n    //     //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP\n    //     try{\n    //         const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {\n    //             headers: authHeaders,\n    //             params: { 'xrfkey': senseConfig.xrfkey }\n    //         })//http get\n    //         //console.log(result);\n    //         if(result.statuscode === 200){\n    //             //console.log('We got a result back from Sense with statuscode 200: Success')\n    //             return true;}\n    //         else{return false}\n    //     } catch (err) {\n    //         return false;\n    //         // throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');\n    //     }\n    // }\n});\n\n\n\n//GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)\n// getApps() {\n//     return QSApp.getApps();\n//     // appListSync = Meteor.wrapAsync(qsocks.Connect(engineConfig)\n//     //     .then(function(global) {\n//     //         global.getDocList()\n//     //             .then(function(docList) {\n//     //                 return (docList);\n//     //             });\n//     //     })\n//     //     .catch(err => {\n//     //         throw new Meteor.Error(err)\n//     //     }));\n//     // result = appListSync();\n//     // return result;\n\n// },\n",
+			"file": "server/main.js",
+			"file_size": 14713,
+			"file_write_time": 131188009535671408,
+			"settings":
+			{
+				"buffer_size": 14414,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/api/server/QPSFunctions.js",
+			"settings":
+			{
+				"buffer_size": 4378,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/api/config.js",
+			"settings":
+			{
+				"buffer_size": 4044,
 				"line_ending": "Windows"
 			}
 		}
@@ -596,24 +623,34 @@
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
 	[
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/APILogs.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/publications.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/apps.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/streams.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsStream.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/config.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/server/routes.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/sso.js",
@@ -624,8 +661,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/sso.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/package.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/SSO.html",
@@ -635,8 +670,6 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/SSO/sso.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/SSO/sso.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/apps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
@@ -658,7 +691,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/sequenceDiagrams.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/client/stylesheets/sequenceDiagrams.css",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/sequenceDiagrams.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsStream.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor/packages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/qrs.sublime-project",
@@ -727,12 +759,11 @@
 		"/C/Users/Qlik/Meteor projects/qrsmeteor/node_modules/qrs/lib/qrs.js",
 		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/ui/customer.html",
 		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/ui/customer.js",
-		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/api/config.js",
-		"/C/Users/Qlik/Meteor projects/qrsmeteor/server/config.js"
+		"/C/Users/Qlik/Meteor projects/qrsmeteor/imports/api/config.js"
 	],
 	"find":
 	{
-		"height": 64.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -808,6 +839,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"_ensureIndex",
+			"delete",
+			"TemplateApps",
+			"template",
 			"REST_Log",
 			"console.log",
 			"ticket",
@@ -931,11 +966,7 @@
 			"qrs",
 			"QRS",
 			"window",
-			"user.name",
-			"URL",
-			"h3",
-			"catch",
-			"call"
+			"user.name"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1018,24 +1049,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "imports/ui/generation.js",
+					"file": "imports/SSO/client/SSO.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11051,
+						"buffer_size": 2672,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9887,
-								9915
+								1162,
+								1162
 							]
 						],
 						"settings":
@@ -1044,28 +1075,88 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 6663.0,
+						"translation.x": 0.0,
+						"translation.y": 14.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "imports/SSO/client/SSO.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3745,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1505,
+								1505
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "server/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14414,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3555,
+								3555
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 546.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "imports/ui/OEMPartner.js",
+					"buffer": 3,
+					"file": "imports/api/server/QPSFunctions.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5876,
+						"buffer_size": 4378,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5500,
-								5334
+								4270,
+								4142
 							]
 						],
 						"settings":
@@ -1074,11 +1165,41 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 4045.0,
+						"translation.x": 0.0,
+						"translation.y": 179.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "imports/api/config.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4044,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								343,
+								366
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1127,7 +1248,7 @@
 	"project": "qrs.sublime-project",
 	"replace":
 	{
-		"height": 120.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1173,7 +1294,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 519.0,
+	"side_bar_width": 483.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
