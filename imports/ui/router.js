@@ -1,4 +1,4 @@
-//Layout Configuration.
+//Layout Configuration. http://stackoverflow.com/questions/28864942/meteor-use-2-different-layouts-ironrouter
 Router.configure({
     layoutTemplate: 'layout',
     notFoundTemplate: 'notFound',
