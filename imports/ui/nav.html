@@ -34,13 +34,12 @@
                 <a href="https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk" target="_blank" class="item">YouTube playlist of all the videos on this site</a>
                 <div class="divider"></div>
                 <div class="header">Technical videos </div>
-                <a href="{{pathFor 'introductionSecurity'}}" class="item">Security integration</a>               
+                <a href="{{pathFor 'introductionSecurity'}}" class="item">Security integration</a>
                 <a href="{{pathFor 'webIntegration'}}" class="item">Web integration</a>
                 <a href="{{pathFor 'architecture'}}" class="item">Architecture and deployment</a>
                 <a href="http://www.youtube.com/playlist?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel" target="_blank" class="item">YouTube Qlik Sense playlist</a>
             </div>
         </div>
-         {{#if currentUser}}
         <div class="ui simple dropdown item">
             Documentation <i class="dropdown icon"></i>
             <div class="menu">
@@ -61,7 +60,8 @@ onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/
                 onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#2%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={A89DAA5F-F20A-4A68-AF02-E58549F53D20}&end" target="_blank">2: Proof of concept pre-visit document summary</a>
                 <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F3%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20detailed%7C2390CE6E-173A-499D-9574-C0294E62B16D%2F%29" target="_blank">3: Detailed steps for a POC</a>
             </div>
-        </div>        
+        </div>
+        {{#if currentUser}}
         <div class="ui right floated item">
             <a href="#" class="logout">Logout</a>
         </div>
