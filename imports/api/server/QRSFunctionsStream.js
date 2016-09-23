@@ -14,7 +14,7 @@ export function deleteStream(guid) {
             headers: authHeaders                       
         })
         const call = {};
-        call.action = 'delete stream'; 
+        call.action = 'Delete stream'; 
         call.request = "HTTP.del('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey";
         call.response = result;
         REST_Log(call);        
