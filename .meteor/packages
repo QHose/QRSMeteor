@@ -11,7 +11,7 @@
 # Check this file (and the other files in this directory) into your repository.
 # Meteor packages used by this project, one per line.
 accounts-password@1.3.0
-# accounts-google
+accounts-google
 service-configuration@1.0.10
 useraccounts:iron-routing
 useraccounts:semantic-ui

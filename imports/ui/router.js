@@ -1,19 +1,19 @@
+//Layout Configuration.
 Router.configure({
     layoutTemplate: 'layout',
-    // loadingTemplate: 'loading',
     notFoundTemplate: 'notFound',
-    // yieldTemplates: {
-    //     nav: { to: 'nav' },
-    //     footer: { to: 'footer' },
-    // }
 });
 
+
+//make sure certain path are for authenticated users only
 Router.plugin('ensureSignedIn', {
     only: ['generation', 'users', 'SSO']
 });
 
+
+//map paths to blaze templates
 Router.route('/', function() {
-    this.render('introduction'); 
+    this.render('introduction');
 });
 
 Router.route('/users');
@@ -32,8 +32,11 @@ Router.route('/sequenceDiagramOverview');
 Router.route('/sequenceDiagramGeneration');
 
 //Single sing on integration route, this is the route you configure in Qlik sense proxy
-Router.route('/SSO');
+
+Router.route('/SSO', {
+	template: 'SSO',
+    layoutTemplate: 'SSOLayout'
+});
 
 // Router.route('/register');
 // Router.route('/login');
-

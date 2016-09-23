@@ -3,7 +3,7 @@ AccountsTemplates.configure({
     // Behavior
     confirmPassword: false,
     enablePasswordChange: true,
-    forbidClientAccountCreation: true,
+    forbidClientAccountCreation: false,
     overrideLoginErrors: true,
     sendVerificationEmail: false,
     lowercaseUsername: false,
@@ -54,9 +54,9 @@ AccountsTemplates.configure({
 });
 
 AccountsTemplates.configureRoute('signIn');
-// AccountsTemplates.configureRoute('changePwd');
+AccountsTemplates.configureRoute('changePwd');
 // AccountsTemplates.configureRoute('enrollAccount');
 // AccountsTemplates.configureRoute('forgotPwd');
 // AccountsTemplates.configureRoute('resetPwd');
-// AccountsTemplates.configureRoute('signUp');
+AccountsTemplates.configureRoute('signUp');
 
