@@ -57,13 +57,15 @@ Meteor.publish('customers', function() {
 });
 
 Meteor.publish('apiLogs', function() {
-    const selector = {
-        "createDate": {
-            $lt: new Date(),
-            $gte: new Date(new Date().setDate(new Date().getDate() - 0.05))  //show only the last hour  of api logs
-        }
+    // const selector = {
+    //     "createDate": {
+    //         $lt: new Date(),
+    //         $gte: new Date(new Date().setDate(new Date().getDate() - 0.05))  //show only the last hour  of api logs
+    //     }
+    const selector =  {sort: {createDate: -1}, limit: 30}
+
     };
-    return APILogs.find(selector);
+    return APILogs.find({}, selector);
     this.ready();
 });
 
