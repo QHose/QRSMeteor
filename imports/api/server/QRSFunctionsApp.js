@@ -93,19 +93,19 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
                 .then(function(script) {
                     // //console.log('get Script success, ', script);
 
-                    // var call = {};
-                    // call.action = 'Replace script';
-                    // call.request = 'We extracted the following script from the app: ' + script;
-                    // REST_Log(call);
+                    var call = {};
+                    call.action = 'Replace script';
+                    call.request = 'We extracted the following script from the app: ' + script;
+                    REST_Log(call);
                     // if you want to replace the database connection per customer use the script below.
                     //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
                     //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
                     return doc.setScript(script) //we now just include the old script in this app
                         .then(function(result) {
-                            // var call = {};
-                            // call.action = 'Replace script'
-                            // call.request = 'The script of the app has been replaced with a customer specific one';
-                            // REST_Log(call);
+                            var call = {};
+                            call.action = 'Replace script'
+                            call.request = 'The script of the app has been replaced with a customer specific one';
+                            REST_Log(call);
                             //console.log('Script replaced');
                             return doc;
                         })
@@ -114,17 +114,17 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
         .then(function(doc) {
             return doc.doReload()
                 .then(function(result) {
-                    // var call = {};
-                    // call.action = 'Reload app'
-                    // call.request = 'The app has been reloaded: ' + result;
-                    // REST_Log(call);
+                    var call = {};
+                    call.action = 'Reload app'
+                    call.request = 'The app has been reloaded: ' + result;
+                    REST_Log(call);
                     // //console.log('Reload : ' + result);
                     return doc.doSave()
                         .then(function(result) {
-                            // var call = {};
-                            // call.action = 'Save app'
-                            // call.request = 'App ' + appId + ' saved success';
-                            // REST_Log(call);
+                            var call = {};
+                            call.action = 'Save app'
+                            call.request = 'App ' + appId + ' saved success';
+                            REST_Log(call);
                             // //console.log('Save : ', result);
                             _global.connection.close();
                             return doc;
