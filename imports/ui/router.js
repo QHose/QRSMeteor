@@ -9,11 +9,11 @@ Router.configure({
 });
 
 Router.plugin('ensureSignedIn', {
-    // only: ['generation', 'users']
+    only: ['generation', 'users', 'SSO']
 });
 
 Router.route('/', function() {
-    this.render('introduction');
+    this.render('introduction'); 
 });
 
 Router.route('/users');

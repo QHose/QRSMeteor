@@ -3,7 +3,7 @@
  import { REST_Log } from '/imports/api/APILogs';
  import { http } from 'meteor/meteor';
  import { Session } from 'meteor/session';
-import { senseConfig } from '/imports/api/config.js';
+ import { senseConfig } from '/imports/api/config.js';
 
 
  Template.SSO.helpers({
@@ -23,7 +23,7 @@ import { senseConfig } from '/imports/api/config.js';
          REST_Log(call);
 
          call.action = 'SSO Sense parameters'
-         call.request = 'Qlik Sense proxy provided these parameters:'+ JSON.stringify(Router.current().params.query);
+         call.request = 'Qlik Sense proxy provided these parameters:' + JSON.stringify(Router.current().params.query);
          REST_Log(call);
 
          var senseParams = Session.get('senseParams');
@@ -46,15 +46,9 @@ import { senseConfig } from '/imports/api/config.js';
      Session.set('senseParams', senseParams);
  })
 
- /*
-     From within a route, use:
-        
-         // URL: http://example.com/page/?myquerykey=true
-         this.params.query   // returns the full query object
-         this.params.query.myquerykey   // returns a particular query value
-         Similarly, outside of the route (but still inside the client code), and inside your template, use:
 
-         // URL: http://example.com/page/?myquerykey=true
-         Router.current().params.query
-         Router.current().params.query.myquerykey
-         */
+ Template.SSO.onRendered(function() {
+     Template.instance()
+         .$('.ui.accordion')
+         .accordion({ exclusive: false });
+ })

@@ -60,7 +60,7 @@ Meteor.publish('apiLogs', function() {
     const selector = {
         "createDate": {
             $lt: new Date(),
-            $gte: new Date(new Date().setDate(new Date().getDate() - 1))  //show only the last day  of api logs
+            $gte: new Date(new Date().setDate(new Date().getDate() - 1/24))  //show only the last hour  of api logs
         }
     };
     return APILogs.find(selector);
@@ -70,7 +70,7 @@ Meteor.publish('apiLogs', function() {
 Meteor.publish('users', function() {
     //See https://github.com/alanning/meteor-roles
     if (Roles.userIsInRole(this.userId, ['admin'], Roles.GLOBAL_GROUP)) {
-        return APILogs.find();
+        return Meteor.users.find();
     } else {
         // user not authorized. do not publish secrets
         this.stop();
