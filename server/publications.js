@@ -62,9 +62,15 @@ Meteor.publish('apiLogs', function() {
     //         $lt: new Date(),
     //         $gte: new Date(new Date().setDate(new Date().getDate() - 0.05))  //show only the last hour  of api logs
     //     }
-    const selector =  {sort: {createDate: -1}, limit: 30}
+    //};
+    //     today: function() {
+    //     var now = moment().toDate();
+    //     return Posts.find({createdAt : { $gte : now }});
+    // }
 
-    };
+    const selector = { sort: { createDate: -1 }, limit: 50 }
+
+
     return APILogs.find({}, selector);
     this.ready();
 });
