@@ -81,7 +81,7 @@ Meteor.methods({
             console.log('UserID currently logged in in the demo platform: ' +loggedInUser+'. Meteor server side thinks the meteor.userId is '+Meteor.userId()+'. We use this as the UDC name');
             //Create a paspoort (ticket) request: user directory, user identity and attributes
             var passport = {
-                'UserDirectory': loggedInUser, //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
+                'UserDirectory': Meteor.userId(), //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
                 'UserId': user.name, //the current user that we are going to login with
                 'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
                     { 'group': user.country.toUpperCase() },
