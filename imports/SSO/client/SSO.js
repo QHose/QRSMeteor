@@ -23,7 +23,7 @@
          REST_Log(call);
 
          call.action = 'STEP 2: Get request QPS parameters'
-         call.request = 'Qlik Sense proxy provided these parameters:' + JSON.stringify(Router.current().params.query);
+         call.request = 'UserId logged in user: '+Meteor.userId()+'. Qlik Sense proxy provided these parameters:' + JSON.stringify(Router.current().params.query);
          REST_Log(call);
 
          var senseParams = Session.get('senseParams');
@@ -31,7 +31,7 @@
          // var updateProxyRestUri = 'https://'+senseConfig.host+':4243/qps/meteor/';
          // console.log('overwrite the proxyRestURI with an external available URL', updateProxyRestUri);
 
-         Meteor.call('getRedirectUrl', senseParams.proxyRestUri, senseParams.targetId, (error, redirectUrl) => {
+         Meteor.call('getRedirectUrl', senseParams.proxyRestUri, senseParams.targetId, Meteor.userId(), (error, redirectUrl) => {
              call.action = 'Redirect URL received';
              call.request = 'The browser received a redirectUrl, so replace the current url in the browser with this new one: ' + redirectUrl;
              REST_Log(call);
@@ -42,13 +42,11 @@
 
  Template.SSO.onCreated(function() {
      const senseParams = Router.current().params.query;
-     console.log('template sso onCreated, we received these params from Qlik Sense', senseParams);
      Session.set('senseParams', senseParams);
  })
-
 
  Template.SSO.onRendered(function() {
      Template.instance()
          .$('.ui.accordion')
-         .accordion({ exclusive: false });
+         .accordion();
  })

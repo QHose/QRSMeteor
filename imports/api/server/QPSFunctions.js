@@ -78,7 +78,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
     }
 
     // //console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-    console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+    // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
     var ticketResponse = call.response.data;
     call.action = 'STEP 6: Use Ticket response to create redirect url';
     call.request = 'Use the redirect url we got back and the ticket string to make a redirect url for the client. Format: '+ticketResponse.TargetUri+'?QlikTicket=' + ticketResponse.Ticket +'. JSON received: '+ticketResponse

@@ -9,7 +9,6 @@ export function REST_Log(call, userId = 'Not defined') {
         APILogs.rawCollection().insert(call);
     } else {
         APILogs.insert(call);
-
     }
     return;
 
