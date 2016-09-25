@@ -19,10 +19,12 @@ var fs = require('fs');
 var qsocks = require('qsocks');
 
 export function generateStreamAndApp(customers, generationUserId) {
-    //console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
+    console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
 
-    var templateApps = checkTemplateAppExists(); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
+    var templateApps = checkTemplateAppExists(generationUserId); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
     checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?
+    console.log('generateStreamAndApp selected customers are: ', customers);
+    console.log('the template apps are', templateApps);
     for (const customer of customers) {
         for (const templateApp of templateApps) {
             generateAppForTemplate(templateApp, customer, generationUserId);
@@ -31,12 +33,12 @@ export function generateStreamAndApp(customers, generationUserId) {
 };
 
 function generateAppForTemplate(templateApp, customer, generationUserId) {
-    //console.log(templateApp);
-    //console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
+    console.log(templateApp);
+    console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
     const call = {};
     call.action = 'Start of generation';
     call.createdBy = generationUserId;
-    call.request = 'START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name;
+    call.request = 'Start creating app ' + templateApp.name + ' for customer ' + customer.name;
     REST_Log(call, generationUserId);
 
     try {
@@ -48,9 +50,9 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
         //logging only
         const call = {};
         call.action = 'Finished';
-        call.request = 'FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR CUSTOMER: ' + customer.name;
+        call.request = 'App has ' + templateApp.name + ' has been created and reloaded by connecting to its database for customer: ' + customer.name;
         REST_Log(call, generationUserId);
-        //console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+        console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
     } catch (err) {
         console.error(err);
     }
@@ -67,14 +69,14 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
 async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
-    //console.log('server: QSSOCKS reloadAppviaEngine');
+    console.log('server: QSSOCKS reloadAppviaEngine');
 
     //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
     var scriptMarker = '§dummyDatabaseString§';
     var _global = {};
 
     engineConfig.appname = appId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
-    // //console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname);
+    // console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname);
     var call = {};
     call.action = 'QSSOCKS connect to engine';
     call.request = 'Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
@@ -83,15 +85,15 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
     //use ES7 await function so this code will run in synchronous mode
     return await qsocks.Connect(engineConfig)
         .then(function(global) {
-            // //console.log('connected to Qsocks');
+            // console.log('connected to Qsocks');
             _global = global;
             return global.openDoc(appId, '', '', '', true) //global.openDoc(appId), this code opens the app without data, that is faster!
         })
         .then(function(doc) {
-            //console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for appId: ', appId);
+            console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for appId: ', appId);
             return doc.getScript()
                 .then(function(script) {
-                    // //console.log('get Script success, ', script);
+                    // console.log('get Script success, ', script);
 
                     var call = {};
                     call.action = 'Replace script';
@@ -106,7 +108,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
                             call.action = 'Replace script'
                             call.request = 'The script of the app has been replaced with a customer specific one';
                             REST_Log(call);
-                            //console.log('Script replaced');
+                            console.log('Script replaced');
                             return doc;
                         })
                 });
@@ -118,14 +120,14 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
                     call.action = 'Reload app'
                     call.request = 'The app has been reloaded: ' + result;
                     REST_Log(call);
-                    // //console.log('Reload : ' + result);
+                    // console.log('Reload : ' + result);
                     return doc.doSave()
                         .then(function(result) {
                             var call = {};
                             call.action = 'Save app'
                             call.request = 'App ' + appId + ' saved success';
                             REST_Log(call);
-                            // //console.log('Save : ', result);
+                            // console.log('Save : ', result);
                             _global.connection.close();
                             return doc;
                         });
@@ -144,9 +146,9 @@ function checkCustomersAreSelected(customers) {
     }
 };
 
-function checkTemplateAppExists() {
+function checkTemplateAppExists(generationUserId) {
     //These are the apps that the OEM partner has in his database, but do they still exists on the qliks sense side?
-    var templateApps = TemplateApps.find()
+    var templateApps = TemplateApps.find({ 'generationUserId': Meteor.userId() })
         .fetch();
     if (templateApps.length === 0) { //user has not specified a template
         throw new Meteor.Error('No Template', 'user has not specified a template for which apps can be generated');
@@ -159,7 +161,7 @@ function checkTemplateAppExists() {
         if (!templateFound) {
             throw new Meteor.Error('You have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
         } else {
-            //console.log('checkTemplateAppExists: True, template guid exist: ', templateApp.id);
+            console.log('checkTemplateAppExists: True, template guid exist: ', templateApp.id);
         }
     })
     return templateApps;
@@ -167,7 +169,7 @@ function checkTemplateAppExists() {
 
 function createTag(name) {
     check(name, String);
-    //console.log('QRS Functions Appp, create a tag: ' + name);
+    console.log('QRS Functions Appp, create a tag: ' + name);
 
     try {
         const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Tag', {
@@ -205,7 +207,7 @@ function addTag(type, guid, tagName) {
 function createSelection(type, guid) {
     check(type, String);
     check(guid, String);
-    //console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);
+    console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);
 
     try {
         const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection', {
@@ -213,8 +215,8 @@ function createSelection(type, guid) {
                 params: { 'xrfkey': senseConfig.xrfkey },
                 data: { items: [{ type: type, objectID: guid }] }
             })
-            //console.log('the result of selection for type: ', type + ' ' + guid);
-            //console.log(result);
+            console.log('the result of selection for type: ', type + ' ' + guid);
+            console.log(result);
         return result.id;
     } catch (err) {
         console.error(err);
@@ -224,14 +226,14 @@ function createSelection(type, guid) {
 
 function deleteSelection(selectionId) {
     check(selectionId, String);
-    //console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
+    console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
 
     try {
         const result = HTTP.delete('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId, {
                 headers: authHeaders,
                 params: { 'xrfkey': senseConfig.xrfkey }
             })
-            //console.log(result);
+            console.log(result);
         return result.id;
     } catch (err) {
         console.error(err);
@@ -247,7 +249,7 @@ function buildModDate() {
 function addTagViaSyntheticToType(type, selectionId, tagGuid) {
     check(type, String);
     check(guid, String);
-    //console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
+    console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
 
     try {
         const result = HTTP.put('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
@@ -265,8 +267,8 @@ function addTagViaSyntheticToType(type, selectionId, tagGuid) {
                     "type": type
                 }
             })
-            //console.log('the result of selection for type: ', type + ' ' + guid);
-            //console.log(result);
+            console.log('the result of selection for type: ', type + ' ' + guid);
+            console.log(result);
         return result;
     } catch (err) {
         console.error(err);
@@ -278,7 +280,7 @@ function addTagViaSyntheticToType(type, selectionId, tagGuid) {
 export function copyApp(guid, name, generationUserId) {
     check(guid, String);
     check(name, String);
-    //console.log('QRS Functions Appp, copy the app id' + guid + 'to app with name: ', name);
+    console.log('QRS Functions Appp, copy the app id' + guid + 'to app with name: ', name);
 
     try {
         const call = {};
@@ -292,7 +294,7 @@ export function copyApp(guid, name, generationUserId) {
         })
         REST_Log(call, generationUserId);
         var newGuid = call.result.data.id;
-        //console.log('Step 2: the new app id is: ', newGuid);
+        console.log('Step 2: the new app id is: ', newGuid);
         //addTag('App', newGuid);
         return newGuid;
     } catch (err) {
@@ -303,24 +305,24 @@ export function copyApp(guid, name, generationUserId) {
 
 
 function checkStreamStatus(customer) {
-    // //console.log('checkStreamStatus for: ' + customer.name);
+    // console.log('checkStreamStatus for: ' + customer.name);
     var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
     var streamId = '';
     if (stream) {
-        //console.log('Stream already exists: ', stream.id);
+        console.log('Stream already exists: ', stream.id);
         streamId = stream.id;
     } else {
-        //console.log('No stream for customer exist, so create one: ' + customer.name);
+        console.log('No stream for customer exist, so create one: ' + customer.name);
         streamId = QSStream.createStream(customer.name)
             .data.id;
-        //console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
+        console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
     }
     return streamId;
 }
 
 
 export function getAppsViaEngine() {
-    //console.log('server: QSSOCKS getApps');
+    console.log('server: QSSOCKS getApps');
     return qsocks.Connect(engineConfig)
         .then(function(global) {
             //We can now interact with the global class, for example fetch the document list.
@@ -352,7 +354,7 @@ export function getApps() {
 
 
 export function deleteApp(guid) {
-    //console.log('QRSApp sync deleteApp: ', guid);
+    console.log('QRSApp sync deleteApp: ', guid);
     try {
         const call = {};
 
@@ -374,7 +376,7 @@ export function deleteApp(guid) {
 };
 
 export function publishApp(appGuid, appName, streamId, customerName, generationUserId) {
-    //console.log('Publish app: ' + appName + ' to stream: ' + streamId);
+    console.log('Publish app: ' + appName + ' to stream: ' + streamId);
     check(appGuid, String);
     check(appName, String);
     check(streamId, String);
