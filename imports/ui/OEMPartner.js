@@ -93,10 +93,10 @@ Template.OEMPartner.events({
                 sAlert.error(err);
                 console.log(err);
                 Session.set('loadingIndicator', '');
-                Session.set('generated?', false);
+                Session.setAuth('generated?', false);
             } else {
                 Session.set('loadingIndicator', '');
-                Session.set('generated?', true);
+                Session.setAuth('generated?', true);                
                 console.log('generateStreamAndApp succes', result);
                 sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');
                 Meteor.call('updateLocalSenseCopy');

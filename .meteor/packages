@@ -55,3 +55,4 @@ alanning:roles  			#authorization roles
 
 
 shell-server
+u2622:persistent-session

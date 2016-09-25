@@ -4,7 +4,7 @@ export const APILogs = new Mongo.Collection('apiLogs');
 
 export function REST_Log(call, userId = 'Not defined') {
     call.createDate = new Date();
-    call.createdBy = userId
+    call.createdBy = userId;
     if (Meteor.isServer) {
         APILogs.rawCollection().insert(call);
     } else {

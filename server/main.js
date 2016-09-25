@@ -54,7 +54,9 @@ Meteor.startup(function() {
     APILogs._ensureIndex({ "createdBy": 1 });
     APILogs._ensureIndex({ "createDate": 1 });
 
-    Meteor.setTimeout(function() { APILogs.remove() }, 86400000); //remove all logs every day
+    //remove the api logs on each server start
+    APILogs.remove({});
+    Meteor.setTimeout(function() { APILogs.remove({}) }, 26400000); //remove all logs every couple hours
 });
 
 

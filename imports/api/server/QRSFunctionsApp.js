@@ -23,8 +23,6 @@ export function generateStreamAndApp(customers, generationUserId) {
 
     var templateApps = checkTemplateAppExists(generationUserId); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
     checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?
-    console.log('generateStreamAndApp selected customers are: ', customers);
-    console.log('the template apps are', templateApps);
     for (const customer of customers) {
         for (const templateApp of templateApps) {
             generateAppForTemplate(templateApp, customer, generationUserId);

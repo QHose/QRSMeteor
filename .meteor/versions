@@ -12,6 +12,7 @@ aldeed:simple-schema@1.5.3
 aldeed:tabular@1.4.2
 aldeed:template-extension@4.0.0
 allow-deny@1.0.5
+amplify@1.0.0
 anti:i18n@0.4.3
 aslagle:reactive-table@0.8.34
 autoupdate@1.2.11
@@ -123,6 +124,7 @@ templating@1.1.14
 templating-tools@1.0.4
 tracker@1.1.0
 twbs:bootstrap@3.3.6
+u2622:persistent-session@0.4.4
 ui@1.0.11
 underscore@1.0.9
 url@1.0.10
