@@ -60,7 +60,7 @@ Meteor.startup(function() {
 
 
 Meteor.methods({
-    getRedirectUrl(proxyRestUri, targetId) {
+    getRedirectUrl(proxyRestUri, targetId, loggedInUser) {
         console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
         var call = {};
         call.action = 'STEP 3: Server getRedirectUrl method'
@@ -68,8 +68,8 @@ Meteor.methods({
         REST_Log(call);
 
         //first find the customers that have a logged in users (mongo returns a complete document)
-        var customer = Customers.findOne({ generationUserId: Meteor.userId(), 'users.currentlyLoggedIn': true });
-        //console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + Meteor.userId() + ', the customer which contains the user that the user selected with the dropdown: ', customer);
+        var customer = Customers.findOne({ generationUserId: loggedInUser, 'users.currentlyLoggedIn': true });
+        console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + loggedInUser+ ', the customer which contains the user that the user selected with the dropdown: ', customer);
 
         //now we have the document, we can look in the array of users, to find the one that is logged in.
         if (!customer) {
@@ -78,9 +78,10 @@ Meteor.methods({
         } else {
             var user = _.find(customer.users, { 'currentlyLoggedIn': true });
 
+            console.log('UserID currently logged in in the demo platform: ' +loggedInUser+'. Meteor server side thinks the meteor.userId is '+Meteor.userId()+'. We use this as the UDC name');
             //Create a paspoort (ticket) request: user directory, user identity and attributes
             var passport = {
-                'UserDirectory': Meteor.userId(), //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
+                'UserDirectory': loggedInUser, //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
                 'UserId': user.name, //the current user that we are going to login with
                 'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
                     { 'group': user.country.toUpperCase() },
@@ -88,10 +89,10 @@ Meteor.methods({
                 ]
             }
 
-            // //console.log('Request ticket for this user passport": ', passport);
+            console.log('Request ticket for this user passport": ', passport);
 
             //logging only
-            call.action = 'STEP 4: Request ticket (SSO)'
+            call.action = 'STEP 4: Request ticket (SSO)';
             call.request = 'Request ticket for this user passport: ": ' + JSON.stringify(passport);
             REST_Log(call);
 
@@ -164,8 +165,8 @@ Meteor.methods({
     simulateUserLogin(name) {
         check(name, String);
         Meteor.call('resetLoggedInUser');
-        //console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: ' + name);
-        Customers.update({ "users.name": name }, {
+        console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: generationUserId: '+ Meteor.userId() +' & users.name:'+ name);
+        Customers.update({ 'generationUserId': Meteor.userId(), "users.name": name }, {
             $set: {
                 'users.$.currentlyLoggedIn': true
             }
@@ -178,12 +179,12 @@ Meteor.methods({
     },
     copyAppSelectedCustomers(currentApp) { //the app the user clicked on        
         if (!currentApp) {
-            throw new Meteor.Error('no App selected to copy')
+            throw new Meteor.Error('No App selected to copy')
         };
 
-        customers = Customers.find({ checked: true }); //all selected customers
+        customers = Customers.find({'generationUserId': Meteor.userId(), checked: true }); //all selected customers
         if (!customers) {
-            throw new Meteor.Error('no customers selected to copy the app for')
+            throw new Meteor.Error('No customers selected to copy the app for')
         };
 
         customers
@@ -203,7 +204,7 @@ Meteor.methods({
         return QSApp.deleteApp(guid);
     },
     removeAllCustomers: function() {
-        return Customers.remove({});
+        return Customers.remove({'generationUserId': Meteor.userId()});
     },
 
     //STREAM METHODS

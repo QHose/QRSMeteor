@@ -14,7 +14,7 @@ Template.simulateUserLogin.events({
     'change #currentUser' (event, template) {
         var currentUser = template.$("#currentUser")
             .val();
-        console.log('helper: user made a selection in the simulateUserLogin box, for user: ' + currentUser);
+        console.log('helper: user made a selection in the simulateUserLogin box, for user: ' + currentUser+' with Meteor.userId():'+Meteor.userId());
         try {
             Meteor.call('simulateUserLogin', currentUser);
         } catch (err) {
