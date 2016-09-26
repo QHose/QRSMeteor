@@ -20,7 +20,8 @@ Meteor.publish('apps', function(generatedAppsFromUser) {
             // console.log('### publication recevied these generated app ids for the user: ', generatedAppsFromUser);
         }
         return Apps.find({
-            $or: [{ "id": { "$in": generatedAppsFromUser } }, { "stream.name": "Templates" }, { "stream.name": "Everyone" }]
+            $or: [{ "id": { "$in": generatedAppsFromUser } }, { "stream.name": "Templates" }//, { "stream.name": "Everyone" }
+            ]
         });
     }
     this.ready();
@@ -35,7 +36,8 @@ Meteor.publish('streams', function(generatedStreamsFromUser) {
             generatedStreamsFromUser = [];
         }
         return Streams.find({
-            $or: [{ "id": { "$in": generatedStreamsFromUser } }, { "name": "Templates" }, { "name": "Everyone" }]
+            $or: [{ "id": { "$in": generatedStreamsFromUser } }, { "name": "Templates" }//, { "name": "Everyone" }
+            ]
         });
 
     }
