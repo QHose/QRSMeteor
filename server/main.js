@@ -127,7 +127,7 @@ Meteor.methods({
             .forEach(function(resource) {
                 //console.log('resetEnvironment for userId', Meteor.userId());
                 try {
-                    Meteor.call('deleteStream', resource.streamId);
+                    //Meteor.call('deleteStream', resource.streamId); //26-9 can't delete stream, because each user creates a stream with the same name...
                 } catch (err) {
                     console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
                 } //don't bother if generated resources do not exists, just continue
