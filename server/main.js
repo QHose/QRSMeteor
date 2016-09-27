@@ -59,7 +59,7 @@ Meteor.startup(function() {
     Meteor.setTimeout(function() {
         console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
         removeGeneratedResources({})
-    }, 86400000); //remove all logs every couple hours
+    }, 86400000); //remove all logs every day
 });
 
 
@@ -121,11 +121,12 @@ Meteor.methods({
     removeGeneratedResources(generationUserSelection) {
         //console.log('remove GeneratedResources method, before we make new ones');
         //logging only
+        if(generationUserSelection){
         const call = {};
         call.action = 'Remove generated resources';
         call.request = 'Remove all apps and streams in Qlik Sense for userId: ' + generationUserSelection.generationUserId;
         REST_Log(call);
-
+    }
         GeneratedResources.find(generationUserSelection)
             .forEach(function(resource) {
                 //console.log('resetEnvironment for userId', Meteor.userId());
