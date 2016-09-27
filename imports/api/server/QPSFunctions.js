@@ -6,16 +6,6 @@ import { REST_Log } from '/imports/api/APILogs';
 import { senseConfig, _certs, authHeadersCertificate, authHeaders, certicate_communication_options } from '/imports/api/config.js';
 import lodash from 'lodash';
 _ = lodash;
-// var url = require('url');
-// var fs = require('fs');
-// var http = require('http');
-// var https = require('https');
-// var crypto = require('crypto');
-// var util = require('util');
-// import { Random } from 'meteor/random';
-// var urljoin = require('url-join');
-// var _ = require("underscore");
-
 
 
 /*
@@ -48,7 +38,7 @@ export function logoutUser(UDC, name) {
     }
 };
 
-
+//based on Rikard Braathen's QlikAuth module
 export function getRedirectURL(passport, proxyRestUri, targetId) {
     check(passport, Object);
     check(proxyRestUri, String);

@@ -190,47 +190,22 @@
                                                     </p>
                                                 </div>
                                                 <div class="extra">
-                                                    <p>This site illustrates
-                                                    </p>
+                                                    This site illustrates
                                                     <ul>
-                                                        <li>the power of Qlik Sense API’s
+                                                        <li>The power of Qlik Sense API’s
                                                         </li>
-                                                        <li>covers 80% of SaaS use cases
+                                                        <li>A good practise approach to solve 80% of the SaaS use cases
                                                         </li>
-                                                        <li>and gives sufficient guidance on how to build the remaining 20% use cases
+                                                        <li>And should give sufficient guidance on how to build the remaining 20% use cases
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="column">
-                                        <!-- 
-                                        <h4 class="ui header">Introduction web integration</h4>
-                                        <div class="ui embed" data-url="{{URL_Youtube_webintegration_introduction}}" data-placeholder="/images/qlik sense embedded example.png"></div>
-                                        <div class="item">
-                                            <div class="content">
-                                                <a class="header">Contents</a>
-                                                <div class="meta">
-                                                    <span></span>
-                                                </div>
-                                                <div class="description">
-                                                    <p>The beauty of Qlik is it allows you choices for your integration. You can choose the level of web integration according to your business requirements. On the client side, you can choose to use our client/front-end or you can create your own.
-                                                    </p>
-                                                </div>
-                                                <div class="extra">
-                                                    <p>If you use the Qlik Sense client you have the following options.
-                                                    </p>
-                                                    <ul>
-                                                        <li>You can integrate the hub, an app, a sheet or individual charts.
-                                                        </li>
-                                                        <li>In most cases you have the flexibility to control whether you would like to see our menu, our selection bar or whether or not you would like to provide initial selections or make the charts static so that no selections are possible at all.
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                     --></div>
+                                    <div class="column">{{>videoSecurityFlow}}</div>
+                                    <div class="column">{{>videoSecurityIntroduction}}</div>
+                                    <div class="column">{{>videoSecurityDeepDive}}</div>
                                 </div>
                             </div>
                         </div>
@@ -277,9 +252,9 @@
         </div>
         <div class="ui very padded segment">
             <div class="ui middle aligned stackable grid container">
-                <h3 class="ui header">Security integration</h3>
                 <div class="row">
-                    <div class="ten wide column">
+                    <div class="nine wide column">
+                        <h3 class="ui header">Security integration</h3>
                         <h4 class="ui header">Authentication - Single Sign on</h4> We re-use your existing way to authenticate the users. We will insert a little piece of code inside your existing "security module". In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via a SSL certificate exchange). And send this info about the user (userId, group membership) in a JSON object to Sense (we call this ticketing).
                         <h4 class="ui header">Authorization</h4> Based on the userId and group membership streams (a way to group apps, like HR/Finance), apps, sheets (all called "resources" in our rule based security model) are shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer its own stream we can grant access if the name of the stream (your company name) equals the the name of the company we received from your website in the ticket. We can all control this by adding 1 row of security configuraton: User.group = Stream.name.
                         <div class="ui horizontal divider">

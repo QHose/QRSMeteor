@@ -56,7 +56,10 @@ Meteor.startup(function() {
 
     //remove the api logs on each server start
     APILogs.remove({});
-    Meteor.setTimeout(function() { APILogs.remove({}) }, 26400000); //remove all logs every couple hours
+    Meteor.setTimeout(function() {
+        console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
+        removeGeneratedResources({})
+    }, 86400000); //remove all logs every couple hours
 });
 
 
@@ -105,25 +108,25 @@ Meteor.methods({
         // //console.log('generateStreamAndApp');
         check(customers, Array);
 
-        Meteor.call('removeGeneratedResources'); //first clean the environment
+        Meteor.call('removeGeneratedResources', { 'generationUserId': Meteor.userId() }); //first clean the environment
         return QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff
 
     },
     resetEnvironment() {
-        Meteor.call('removeGeneratedResources');
+        Meteor.call('removeGeneratedResources', { 'generationUserId': Meteor.userId() });
         TemplateApps.remove({ 'generationUserId': Meteor.userId() });
         Customers.remove({ 'generationUserId': Meteor.userId() });
         APILogs.remove({ 'generationUserId': Meteor.userId() });
     },
-    removeGeneratedResources() {
+    removeGeneratedResources(generationUserSelection) {
         //console.log('remove GeneratedResources method, before we make new ones');
         //logging only
         const call = {};
         call.action = 'Remove generated resources';
-        call.request = 'Remove all apps and streams in Qlik Sense for userId: ' + Meteor.userId();
+        call.request = 'Remove all apps and streams in Qlik Sense for userId: ' + generationUserSelection.generationUserId;
         REST_Log(call);
 
-        GeneratedResources.find({ 'generationUserId': Meteor.userId() })
+        GeneratedResources.find(generationUserSelection)
             .forEach(function(resource) {
                 //console.log('resetEnvironment for userId', Meteor.userId());
                 try {
@@ -137,8 +140,8 @@ Meteor.methods({
                     console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
                 }
             })
-        GeneratedResources.remove({ 'generationUserId': Meteor.userId() });
-        APILogs.remove({ 'generationUserId': Meteor.userId() });
+        GeneratedResources.remove(generationUserSelection);
+        APILogs.remove(generationUserSelection);
     },
     resetLoggedInUser() {
         //console.log("***Method resetLoggedInUsers");
@@ -152,7 +155,6 @@ Meteor.methods({
 
                     //and just logout everybody in the user list                            
                     QSProxy.logoutUser(Meteor.userId(), user.name);
-
                     return user;
                 })
 
