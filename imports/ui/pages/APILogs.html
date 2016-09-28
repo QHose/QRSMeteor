@@ -24,10 +24,10 @@
                 <h4>Use the demo source code</h4>
                 <p>This demo platform provides you a wrapper around the Qlik Sense QMC so you can "manage" Qlik Sense. If you click certain buttons, API calls are sent to Qlik Sense. Using these calls you can for example create streams and apps or any other activity that you can do in the QMC or app. Most likely your SaaS platform already uses REST APIs, so just copy the code and and start automating... The tasks we automated is what we call the "generation". The key steps to be done for each customer for each template are
                     <ul>
-                        <li><a href="https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsStream.js#L43">Create stream with the name of the customer</a></li>
-                        <li><a href="https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L274">Copy template app</a></li>
-                        <li><a href="https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L93">Replace the script and reload the app</a>(this makes dynamic dataloading from big data sources possible. Examples include Hadoop, MongoDB (used in this demo), google Big Query etc.</li>
-                        <li><a href="https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L372">Publish app in customer stream</a></li>
+                        <li><a href="{{github_create_stream}}">Create stream with the name of the customer</a></li>
+                        <li><a href="{{github_copy_app}}">Copy template app</a></li>
+                        <li><a href="{{github_replace_and_reload_app}}">Replace the script and reload the app</a>(this makes dynamic dataloading from big data sources possible. Examples include Hadoop, MongoDB (used in this demo), google Big Query etc.</li>
+                        <li><a href="{{github_publish_app}}">Publish app in customer stream</a></li>
                     </ul>
                 </p>
                 <div class="center aligned column">

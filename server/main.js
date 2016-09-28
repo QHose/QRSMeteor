@@ -56,9 +56,9 @@ Meteor.startup(function() {
 
     //remove the api logs on each server start
     APILogs.remove({});
-    Meteor.setTimeout(function() {
+    Meteor.setInterval(function() {
         console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
-        removeGeneratedResources({})
+        Meteor.call('removeGeneratedResources', {});
     }, 86400000); //remove all logs every day
 });
 
@@ -121,24 +121,30 @@ Meteor.methods({
     removeGeneratedResources(generationUserSelection) {
         //console.log('remove GeneratedResources method, before we make new ones');
         //logging only
-        if(generationUserSelection){
-        const call = {};
-        call.action = 'Remove generated resources';
-        call.request = 'Remove all apps and streams in Qlik Sense for userId: ' + generationUserSelection.generationUserId;
-        REST_Log(call);
-    }
+        if (generationUserSelection) {
+            const call = {};
+            call.action = 'Remove generated resources';
+            call.request = 'Remove all apps and streams in Qlik Sense for userId: ' + generationUserSelection.generationUserId;
+            REST_Log(call);
+        }
         GeneratedResources.find(generationUserSelection)
             .forEach(function(resource) {
-                //console.log('resetEnvironment for userId', Meteor.userId());
-                try {
-                    //Meteor.call('deleteStream', resource.streamId); //26-9 can't delete stream, because each user creates a stream with the same name...
-                } catch (err) {
-                    console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
-                } //don't bother if generated resources do not exists, just continue
+                this.unblock()
+                //console.log('resetEnvironment for userId', Meteor.userId());generationUserSelection.generationUserId
+
+                //If not selection was given, we want to reset the whole environment, so also delete the streams.
+                if (!generationUserSelection.generationUserId) {
+                    try {
+                        Meteor.call('deleteStream', resource.streamId); //26-9 can't delete stream, because each user creates a stream with the same name...
+                    } catch (err) {
+                        //console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
+                    } //don't bother if generated resources do not exists, just continue
+                }
+                //delete apps always
                 try {
                     Meteor.call('deleteApp', resource.appId);
                 } catch (err) {
-                    console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
+                    //console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
                 }
             })
         GeneratedResources.remove(generationUserSelection);
@@ -164,8 +170,6 @@ Meteor.methods({
                 });
 
             });
-
-
     },
     simulateUserLogin(name) {
         check(name, String);
