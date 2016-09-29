@@ -129,7 +129,7 @@ Meteor.methods({
         }
         GeneratedResources.find(generationUserSelection)
             .forEach(function(resource) {
-                this.unblock()
+                // this.unblock()
                 //console.log('resetEnvironment for userId', Meteor.userId());generationUserSelection.generationUserId
 
                 //If not selection was given, we want to reset the whole environment, so also delete the streams.
