@@ -19,7 +19,7 @@ var fs = require('fs');
 var qsocks = require('qsocks');
 
 export function generateStreamAndApp(customers, generationUserId) {
-    console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
+    // console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
 
     var templateApps = checkTemplateAppExists(generationUserId); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
     checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?
@@ -31,8 +31,8 @@ export function generateStreamAndApp(customers, generationUserId) {
 };
 
 function generateAppForTemplate(templateApp, customer, generationUserId) {
-    console.log(templateApp);
-    console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
+    // console.log(templateApp);
+    // console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
     const call = {};
     call.action = 'Start of generation';
     call.createdBy = generationUserId;
@@ -50,7 +50,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
         call.action = 'Finished';
         call.request = 'App has ' + templateApp.name + ' has been created and reloaded by connecting to its database for customer: ' + customer.name;
         REST_Log(call, generationUserId);
-        console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+        // console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
     } catch (err) {
         console.error(err);
     }
@@ -67,7 +67,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
 async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
-    console.log('server: QSSOCKS reloadAppviaEngine');
+    // console.log('server: QSSOCKS reloadAppviaEngine');
 
     //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
     var scriptMarker = '§dummyDatabaseString§';
@@ -88,7 +88,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
             return global.openDoc(appId, '', '', '', true) //global.openDoc(appId), this code opens the app without data, that is faster!
         })
         .then(function(doc) {
-            console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for appId: ', appId);
+            // console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for appId: ', appId);
             return doc.getScript()
                 .then(function(script) {
                     // console.log('get Script success, ', script);
@@ -106,7 +106,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
                             call.action = 'Replace script'
                             call.request = 'The script of the app has been replaced with a customer specific one';
                             REST_Log(call);
-                            console.log('Script replaced');
+                            // console.log('Script replaced');
                             return doc;
                         })
                 });
@@ -278,7 +278,7 @@ function addTagViaSyntheticToType(type, selectionId, tagGuid) {
 export function copyApp(guid, name, generationUserId) {
     check(guid, String);
     check(name, String);
-    console.log('QRS Functions Appp, copy the app id' + guid + 'to app with name: ', name);
+    // console.log('QRS Functions Appp, copy the app id' + guid + 'to app with name: ', name);
 
     try {
         const call = {};
@@ -292,7 +292,7 @@ export function copyApp(guid, name, generationUserId) {
         })
         REST_Log(call, generationUserId);
         var newGuid = call.result.data.id;
-        console.log('Step 2: the new app id is: ', newGuid);
+        // console.log('Step 2: the new app id is: ', newGuid);
         //addTag('App', newGuid);
         return newGuid;
     } catch (err) {
@@ -307,20 +307,20 @@ function checkStreamStatus(customer) {
     var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
     var streamId = '';
     if (stream) {
-        console.log('Stream already exists: ', stream.id);
+        // console.log('Stream already exists: ', stream.id);
         streamId = stream.id;
     } else {
         console.log('No stream for customer exist, so create one: ' + customer.name);
         streamId = QSStream.createStream(customer.name)
             .data.id;
-        console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
+        // console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
     }
     return streamId;
 }
 
 
 export function getAppsViaEngine() {
-    console.log('server: QSSOCKS getApps');
+    // console.log('server: QSSOCKS getApps');
     return qsocks.Connect(engineConfig)
         .then(function(global) {
             //We can now interact with the global class, for example fetch the document list.
@@ -352,7 +352,7 @@ export function getApps() {
 
 
 export function deleteApp(guid) {
-    console.log('QRSApp sync deleteApp: ', guid);
+    // console.log('QRSApp sync deleteApp: ', guid);
     try {
         const call = {};
 
@@ -374,7 +374,7 @@ export function deleteApp(guid) {
 };
 
 export function publishApp(appGuid, appName, streamId, customerName, generationUserId) {
-    console.log('Publish app: ' + appName + ' to stream: ' + streamId);
+    // console.log('Publish app: ' + appName + ' to stream: ' + streamId);
     check(appGuid, String);
     check(appName, String);
     check(streamId, String);
