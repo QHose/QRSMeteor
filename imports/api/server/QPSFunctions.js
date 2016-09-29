@@ -44,12 +44,12 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
     check(proxyRestUri, String);
     check(targetId, String);
 
-    console.log('entered server side requestTicket module for user and passport', passport, proxyRestUri);
+    // console.log('entered server side requestTicket module for user and passport', passport, proxyRestUri);
     //see https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
 
     var ticketRequestBody = passport;
     ticketRequestBody.TargetId = targetId;
-    console.log('The passport for requesting a ticket: ', passport);
+    // console.log('The passport for requesting a ticket: ', passport);
 
     try {
         var call = {};
@@ -83,6 +83,6 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
     }
 
     if(!redirectURI){ redirectURI = "http://"+senseConfig.host+":"+senseConfig.port+"/"+senseConfig.virtualProxyClientUsage+"/"+hub;}
-    console.log('Meteor server side created this redirect url: ', redirectURI);
+    // console.log('Meteor server side created this redirect url: ', redirectURI);
     return redirectURI;
 }

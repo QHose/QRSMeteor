@@ -66,7 +66,7 @@ Meteor.startup(function() {
 
 Meteor.methods({
     getRedirectUrl(proxyRestUri, targetId, loggedInUser) {
-        console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
+        // console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
         var call = {};
         call.action = 'STEP 3: Server getRedirectUrl method'
         call.request = 'Meteor server side method getRedirectUrl received a incoming method call from the meteor client. Meteor server will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.';
@@ -74,7 +74,7 @@ Meteor.methods({
 
         //first find the customers that have a logged in users (mongo returns a complete document)
         var customer = Customers.findOne({ generationUserId: loggedInUser, 'users.currentlyLoggedIn': true });
-        console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + loggedInUser + ', the customer which contains the user that the user selected with the dropdown: ', customer);
+        // console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + loggedInUser + ', the customer which contains the user that the user selected with the dropdown: ', customer);
 
         //now we have the document, we can look in the array of users, to find the one that is logged in.
         if (!customer) {
@@ -94,9 +94,10 @@ Meteor.methods({
                 ]
             }
 
-            console.log('Request ticket for this user passport": ', passport);
+            // console.log('Request ticket for this user passport": ', passport);
 
             //logging only
+            var call = {};
             call.action = 'STEP 4: Request ticket (SSO)';
             call.request = 'Request ticket for this user passport: ": ' + JSON.stringify(passport);
             REST_Log(call);
