@@ -94,7 +94,7 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('github_publish_app', function() {
-        return "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#376";
+        return "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L376";
     });
 
     Template.registerHelper('github_logout_user', function() {
