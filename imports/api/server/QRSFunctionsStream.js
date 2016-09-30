@@ -21,7 +21,7 @@ export function deleteStream(guid) {
         Meteor.call('updateLocalSenseCopy');
         return result;
     } catch (err) {
-        console.error(err);
+        // console.error(err);
         throw new Meteor.Error('Delete stream failed', err.message);
     }
 };
