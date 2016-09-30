@@ -32,8 +32,9 @@ Template.simulateUserLogin.events({
             .val();
         if (!currentUser) {
             sAlert.error('No user, please select a user in the dropdown');
+            return;
         } else {
-            Router.go('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
+            window.open('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort+'/hub');
         }
     },
 });
