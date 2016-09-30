@@ -22,7 +22,7 @@ export function deleteStream(guid) {
         return result;
     } catch (err) {
         // console.error(err);
-        throw new Meteor.Error('Delete stream failed', err.message);
+        // throw new Meteor.Error('Delete stream failed', err.message);
     }
 };
 
