@@ -43,6 +43,7 @@
     {{/if}}
     <div class="ui segment">
         <div class="ui buttons">
+        {{#unless noCustomers}}
             <div class="ui buttons">
                 <div class="ui {{loading}} button resetEnvironment"><i class="undo icon "></i> Initialize demo</div>
                 <div class="ui floating dropdown icon button">
@@ -54,6 +55,7 @@
                     </div>
                 </div>
             </div>
+            {{/unless}}
             {{#if readyToGenerate}}
             <div class="or"></div>
             <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i> 3: Generate</div>
@@ -70,7 +72,7 @@
                     <!-- {{#if freshEnvironment}} -->
                     This demo simulates the first day of your SaaS platform. Therefore we first need to insert some customers in your SaaS platform using the button below. Note that we don't have to create users or groups in Qlik Sense. 
                     <br>
-                    <a class="ui labeled icon button insertDummyCustomers" href="#"> <i class="edit icon"></i>1: Insert Customers</a>
+                    <a class="ui labeled icon positive button insertDummyCustomers" href="#"> <i class="edit icon"></i>1: Insert Customers</a>
                     <!--      {{/if}} -->
                 </p>
                 <!--  <ul>
