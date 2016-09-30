@@ -54,8 +54,12 @@ Meteor.startup(function() {
     APILogs._ensureIndex({ "createdBy": 1 });
     APILogs._ensureIndex({ "createDate": 1 });
 
-    //remove the api logs on each server start
-    APILogs.remove({});
+    console.log('remove the all generated resources on each server start');
+    Meteor.setTimeout(function() {
+        console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
+        Meteor.call('removeGeneratedResources', {});
+    }, 0); //remove all logs every day
+
     Meteor.setInterval(function() {
         console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
         Meteor.call('removeGeneratedResources', {});
