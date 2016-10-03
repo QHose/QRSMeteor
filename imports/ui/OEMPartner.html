@@ -36,14 +36,10 @@
             {{/if}}
         </div>
     </div>
-    {{#if readyToTestSSO}}     
-    
-        {{> simulateUserLogin}}
-  
-    {{/if}}
+    {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}}
     <div class="ui segment">
         <div class="ui buttons">
-        {{#unless noCustomers}}
+            {{#unless noCustomers}}
             <div class="ui buttons">
                 <div class="ui {{loading}} button resetEnvironment"><i class="undo icon "></i> Initialize demo</div>
                 <div class="ui floating dropdown icon button">
@@ -55,8 +51,7 @@
                     </div>
                 </div>
             </div>
-            {{/unless}}
-            {{#if readyToGenerate}}
+            {{/unless}} {{#if readyToGenerate}}
             <div class="or"></div>
             <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i> 3: Generate</div>
             {{/if}}
@@ -70,11 +65,11 @@
                 </div>
                 <p>
                     <!-- {{#if freshEnvironment}} -->
-                    This demo simulates the first day of your SaaS platform. Therefore we first need to insert some customers in your SaaS platform using the button below. Note that we don't have to create users or groups in Qlik Sense. 
-                    <br>
+                    This demo simulates the first day of your SaaS platform. Therefore we first need to insert some customers in your SaaS platform using the button below. Note that you don't have to create users or groups in Qlik Sense. The only things you create manually using the Hub, or fully automated using the API's are the streams and apps.
+                    </p>
                     <a class="ui labeled icon primary small button insertDummyCustomers" href="#"> <i class="edit icon"></i>1: Insert Customers</a>
                     <!--      {{/if}} -->
-                </p>
+                
                 <!--  <ul>
                     <li>This demo simulates the first day of your SaaS platform. Therefore we first need to <a href="{{pathFor 'users'}}">insert</a> some customers and users.</li>
                     <li>Or <a href="#" class="insertDummyCustomers"> load existing (dummy) </a>customers (use these if you want to test row level security and the web integration demo (via the "Your SaaS platform" menu). You can only use your own customers and users for the generation part of the demo).</li>
@@ -170,22 +165,24 @@
         </div>
     </div>
 </template>
-<Template name="step4">   
-        <div class="header">
-            4: Test Single Sign On
-        </div>
-        <p>
-            Select a user to test Single Sign On.
-            <div class="ui accordion">
-                <div class="title">
-                    <i class="dropdown icon"></i>Read more...
-                </div>
-                <div class="content">
-                    <p>If you select a user a ticket will be requested which inludes your SaaS platform's authorizations (the groups) in a dynamic way. This means you don't have to create users and roles up front in Qlik Sense.</p>
-                    <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. Its best to use the dummy customers so you can also test row level security, and the web integration examples also make use of this row level restricted app (each user can only see their own sales orders). On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
-                </div>
+<Template name="step4">
+    <div class="header">
+        4: Test Single Sign On
+    </div>
+    <p>
+        Select a user in the dropdown below to test the single sign on between your SaaS platform and Qlik Sense.
+        <div class="ui accordion">
+            <div class="title">
+                <i class="dropdown icon"></i>Read more...
             </div>
-        </p>
+            <div class="content">
+                <p>We have now finished creating the content per customer. So a good time to look at how Qlik can re-use your SaaS platforms authorizations and implement single sign on. On this page you will see a dropdown, this dropdown contains the users of your SaaS platform. Using this dropdown we can simulate a user login (without having to insert passwords etc.). In this way you can easily test the single sign on process, and make sure your platform is in the lead. You can try to create new customers and users in the  <a href="{{pathFor 'users'}}">manage customers and users</a> menu.</p>
+                <p>
+                    If you select a user a ticket will be requested which inludes your SaaS platform's current authorizations (the groups) in a dynamic way. This means you don't have to create users and roles up front in Qlik Sense. The <a href="{{pathFor 'securityRules'}}" class="item">QMC security rules</a> are also created in a dynamic way, so we can protect the apps and streams with a couple of generic rules. The row/column level security is done via a special section in the script of an app (QVF). In this demo we used the group (Country) to ensure each user only sees his country in the "row level security app" in the " everyone stream.</p>
+                <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
+            </div>
+        </div>
+    </p>
 </Template>
 <Template name="step3">
     <div class="header">
