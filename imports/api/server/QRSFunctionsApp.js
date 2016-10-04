@@ -60,7 +60,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
         'streamId': streamId,
         'appId': newAppId
     });
-    Meteor.call('updateLocalSenseCopy');
+    // Meteor.call('updateLocalSenseCopy');
     return;
 };
 
