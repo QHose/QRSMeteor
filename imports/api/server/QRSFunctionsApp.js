@@ -359,7 +359,7 @@ export function deleteApp(guid) {
         const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders
         })
-        Meteor.call('updateLocalSenseCopy');
+        // Meteor.call('updateLocalSenseCopy');
 
         //logging only
         call.action = 'Delete app';
