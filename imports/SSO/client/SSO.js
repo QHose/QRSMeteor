@@ -27,9 +27,8 @@
          REST_Log(call);
 
          var senseParams = Session.get('senseParams');
-         console.log('call the server with options:', senseParams);
-         // var updateProxyRestUri = 'https://'+senseConfig.host+':4243/qps/meteor/';
-         // console.log('overwrite the proxyRestURI with an external available URL', updateProxyRestUri);
+         console.log('call the server with options reveived from Qlik Sense QPS response: ', senseParams);         
+         console.log('overwrite the proxyRestURI with an external available URL', updateProxyRestUri);
 
          Meteor.call('getRedirectUrl', senseParams.proxyRestUri, senseParams.targetId, Meteor.userId(), (error, redirectUrl) => {
              call.action = 'Redirect URL received';
