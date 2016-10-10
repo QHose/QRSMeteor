@@ -24,7 +24,7 @@ Template.OEMPartner.helpers({
     },
     RESTCallSettings: function() {
         return {
-            rowsPerPage: 3,
+            rowsPerPage: 6,
             responsive: true,
             autoWidth: false,
             showFilter: false,
@@ -99,7 +99,6 @@ Template.OEMPartner.events({
                 Session.setAuth('generated?', true);                
                 console.log('generateStreamAndApp succes', result);
                 sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');
-                Meteor.call('updateLocalSenseCopy');
             }
         });
     },
