@@ -26,25 +26,29 @@ Meteor.startup(function() {
     //console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
     //console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
     //console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');
-    try {
-        const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
-            headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey },
-            data: Meteor.settings.private.notificationURL + '/apps'
-        })
+    
+    ////Create notification listener in Qlik sense
+    // try {
+    //     const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
+    //         headers: authHeaders,
+    //         params: { 'xrfkey': senseConfig.xrfkey },
+    //         data: Meteor.settings.private.notificationURL + '/apps'
+    //     })
 
-        const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
-                headers: authHeaders,
-                params: { 'xrfkey': senseConfig.xrfkey },
-                data: Meteor.settings.private.notificationURL + '/streams'
-            })
-            //console.log('Register notication success');
-            // //console.log('the result from sense register App notification was: ', resultApp);
-            // //console.log('the result from sense register Stream notification was: ', resultStream);
-    } catch (err) {
-        console.error('Create notification subscription in sense qrs failed', err);
-        // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
-    }
+    //     const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
+    //             headers: authHeaders,
+    //             params: { 'xrfkey': senseConfig.xrfkey },
+    //             data: Meteor.settings.private.notificationURL + '/streams'
+    //         })
+    //         //console.log('Register notication success');
+    //         // //console.log('the result from sense register App notification was: ', resultApp);
+    //         // //console.log('the result from sense register Stream notification was: ', resultStream);
+    // } catch (err) {
+    //     console.error('Create notification subscription in sense qrs failed', err);
+    //     // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
+    // }
+
+    
     console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
     TemplateApps._ensureIndex({ "generationUserId": 1, "id": 1 });
     GeneratedResources._ensureIndex({ "generationUserId": 1, "id": 1 });
@@ -189,7 +193,9 @@ Meteor.methods({
     copyApp(guid, name) {
         check(guid, String);
         check(name, String);
-        return QSApp.copyApp(guid, name);
+        const id = QSApp.copyApp(guid, name);
+        Meteor.call('updateLocalSenseCopy');
+        return id;
     },
     copyAppSelectedCustomers(currentApp) { //the app the user clicked on        
         if (!currentApp) {
@@ -215,7 +221,9 @@ Meteor.methods({
         call.request = 'Delete app: ' + guid;
         REST_Log(call);
 
-        return QSApp.deleteApp(guid);
+        const id = QSApp.deleteApp(guid);
+        Meteor.call('updateLocalSenseCopy');
+        return id;
     },
     removeAllCustomers: function() {
         return Customers.remove({ 'generationUserId': Meteor.userId() });
@@ -230,7 +238,9 @@ Meteor.methods({
         call.request = 'Delete stream: ' + guid;
         REST_Log(call);
 
-        return QSStream.deleteStream(guid);
+        const id = QSStream.deleteStream(guid);
+        Meteor.call('updateLocalSenseCopy');
+        return id;
     },
     createStream(name) {
         return QSStream.createStream(name);
