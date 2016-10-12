@@ -33,11 +33,13 @@ Template.OEMPartner.helpers({
             fields: [{
                 key: 'action',
                 label: 'Action'
-            }, {
-                key: 'request',
-                label: 'Request',
-                cellClass: "overflow: hidden; text - overflow: ellipsis"
-            }, {
+            }, 
+            // {
+            //     key: 'request',
+            //     label: 'Request',
+            //     cellClass: "overflow: hidden; text - overflow: ellipsis"
+            // },
+             {
                 key: 'createDate',
                 hidden: true,
                 label: 'Create Date',
