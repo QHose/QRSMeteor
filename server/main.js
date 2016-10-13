@@ -28,7 +28,6 @@ Meteor.startup(function() {
     //console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');
 
     //Create notification listener in Qlik sense https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Notification-Remove-Change-Subscription.htm
-    //we first delete it, and then register it again, to prevent sense sends double notifications
     try {
         const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
             headers: authHeaders,
@@ -225,16 +224,20 @@ Meteor.methods({
     },
     deleteApp(guid) {
         check(guid, String);
-        //console.log('method deleteApp');
-        //logging only
-        const call = {};
-        call.action = 'Delete app';
-        call.request = 'Delete app: ' + guid;
-        REST_Log(call);
+        if (guid !== Meteor.settings.public.templateAppId) {
+            //console.log('method deleteApp');
+            //logging only
+            const call = {};
+            call.action = 'Delete app';
+            call.request = 'Delete app: ' + guid;
+            REST_Log(call);
 
-        const id = QSApp.deleteApp(guid);
-        Meteor.call('updateLocalSenseCopy');
-        return id;
+            const id = QSApp.deleteApp(guid);
+            Meteor.call('updateLocalSenseCopy');
+            return id;
+        } else {
+            throw new Meteor.Error('youCantDeleteTemplateApp');
+        }
     },
     removeAllCustomers: function() {
         return Customers.remove({ 'generationUserId': Meteor.userId() });
