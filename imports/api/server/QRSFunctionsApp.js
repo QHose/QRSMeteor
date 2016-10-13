@@ -76,7 +76,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
     engineConfig.appname = appId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
     // console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname);
     var call = {};
-    call.action = 'QSSOCKS connect to engine';
+    call.action = 'Connect to engine using Qsocks (Engine API wrapper)';
     call.request = 'Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
     REST_Log(call);
 
@@ -94,16 +94,16 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
                     // console.log('get Script success, ', script);
 
                     var call = {};
-                    call.action = 'Replace script';
+                    call.action = 'Extract current script';
                     call.request = 'We extracted the following script from the app: ' + script;
                     REST_Log(call);
                     // if you want to replace the database connection per customer use the script below.
                     //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
                     //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
                     return doc.setScript(script) //we now just include the old script in this app
-                        .then(function(result) {
+                        .then(function(result) {    
                             var call = {};
-                            call.action = 'Replace script'
+                            call.action = 'Replace the script (or just update the db connection)'
                             call.request = 'The script of the app has been replaced with a customer specific one';
                             REST_Log(call);
                             // console.log('Script replaced');

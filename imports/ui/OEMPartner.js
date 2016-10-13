@@ -5,6 +5,7 @@ import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps.js'
 import { Customers, dummyCustomers } from '../api/customers.js';
 import { Streams } from '/imports/api/streams.js'
 import { APILogs } from '/imports/api/APILogs';
+import { freshEnvironment } from '/imports/ui/UIHelpers';
 
 import './OEMPartner.html';
 
@@ -31,21 +32,22 @@ Template.OEMPartner.helpers({
             showNavigation: 'never',
             showColumnToggles: false,
             fields: [{
-                key: 'action',
-                label: 'Action'
-            }, 
-            // {
-            //     key: 'request',
-            //     label: 'Request',
-            //     cellClass: "overflow: hidden; text - overflow: ellipsis"
-            // },
-             {
-                key: 'createDate',
-                hidden: true,
-                label: 'Create Date',
-                sortOrder: 0,
-                sortDirection: 'descending'
-            }]
+                    key: 'action',
+                    label: 'Action'
+                },
+                // {
+                //     key: 'request',
+                //     label: 'Request',
+                //     cellClass: "overflow: hidden; text - overflow: ellipsis"
+                // },
+                {
+                    key: 'createDate',
+                    hidden: true,
+                    label: 'Create Date',
+                    sortOrder: 0,
+                    sortDirection: 'descending'
+                }
+            ]
         };
     },
     restrictedApiLogs: function() {
@@ -98,7 +100,7 @@ Template.OEMPartner.events({
                 Session.setAuth('generated?', false);
             } else {
                 Session.set('loadingIndicator', '');
-                Session.setAuth('generated?', true);                
+                Session.setAuth('generated?', true);
                 console.log('generateStreamAndApp succes', result);
                 sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');
             }
@@ -109,21 +111,7 @@ Template.OEMPartner.events({
     },
     'click .insertDummyCustomers' (event) {
         event.preventDefault();
-        _.each(dummyCustomers, function(customer) {
-            customer.generationUserId = Meteor.userId();
-            Customers.insert(customer);
-        })
-
-        const templateAppId = Meteor.settings.public.templateAppId;
-        console.log('templateAppId:', templateAppId);
-        TemplateApps.upsert(templateAppId, {
-            $set: {
-                name: "My first template",
-                id: templateAppId,
-                generationUserId: Meteor.userId(),
-                checked: true
-            },
-        });
+        insertTemplateAndDummyCustomers();
     },
     'click .deleteAllCustomers' () {
         Meteor.call('removeAllCustomers', function(err, result) {
@@ -155,10 +143,31 @@ Template.OEMPartner.events({
     }
 }); //end Meteor events
 
+function insertTemplateAndDummyCustomers() {
+    _.each(dummyCustomers, function(customer) {
+        customer.generationUserId = Meteor.userId();
+        Customers.insert(customer);
+    })
+
+    const templateAppId = Meteor.settings.public.templateAppId;
+    console.log('templateAppId:', templateAppId);
+    TemplateApps.upsert(templateAppId, {
+        $set: {
+            name: "My first template",
+            id: templateAppId,
+            generationUserId: Meteor.userId(),
+            checked: true
+        },
+    });
+}
 
 Template.OEMPartner.onCreated(function() {
     const templateAppsHandle = Meteor.subscribe('templateApps');
     const apiLogsHandle = Meteor.subscribe('apiLogs');
+
+    if(freshEnvironment){insertTemplateAndDummyCustomers()}
+
+
 });
 
 Template.OEMPartner.onRendered(function() {

@@ -58,10 +58,6 @@ if (Meteor.isClient) {
         return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FHow%20to%20demo%20the%20Qlik%20Sense%20SaaS%20demo%20platform%7Cdb26fbc0-5631-4532-b719-a7cd4e6b7f55%2F%29';
     });
 
-
-
-
-
     Template.registerHelper('doc_securtityIntegration', function() {
         return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FSecurity%20integration%20Provide%20Single%20Sign%20On%20and%20share%20access%20%7Cecde3e29-5853-49a7-a29c-47851b46fc41%2F%29';
     });
@@ -165,10 +161,14 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('freshEnvironment', function() {
-        return !Customers.find()
+       return freshEnvironment();
+    });
+
+    export function freshEnvironment(){
+         return !Customers.find()
             .count() && !TemplateApps.find()
             .count()
-    });
+    }
 
     Template.registerHelper('readyToSelectTemplate', function() {
         return Customers.find()
