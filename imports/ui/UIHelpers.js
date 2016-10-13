@@ -161,11 +161,15 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('freshEnvironment', function() {
-       return freshEnvironment();
+        return freshEnvironment();
     });
 
-    export function freshEnvironment(){
-         return !Customers.find()
+    export function freshEnvironment() {
+        console.log('freshEnvironment has value: ',
+            !Customers.find()
+                .count() && !TemplateApps.find()
+                .count());
+        return !Customers.find()
             .count() && !TemplateApps.find()
             .count()
     }

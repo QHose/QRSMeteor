@@ -150,7 +150,7 @@ function insertTemplateAndDummyCustomers() {
     })
 
     const templateAppId = Meteor.settings.public.templateAppId;
-    console.log('templateAppId:', templateAppId);
+    console.log('Insert insertTemplateAndDummyCustomers, with templateAppId', templateAppId);
     TemplateApps.upsert(templateAppId, {
         $set: {
             name: "My first template",
@@ -162,12 +162,18 @@ function insertTemplateAndDummyCustomers() {
 }
 
 Template.OEMPartner.onCreated(function() {
+    //see https://guide.meteor.com/data-loading.html
     const templateAppsHandle = Meteor.subscribe('templateApps');
     const apiLogsHandle = Meteor.subscribe('apiLogs');
-
-    if(freshEnvironment){insertTemplateAndDummyCustomers()}
-
-
+    const customersHandle = Meteor.subscribe('customers', { //http://stackoverflow.com/questions/28621132/meteor-subscribe-callback
+        onReady: function() {
+            if (freshEnvironment()) {
+                console.log('There is a freshEnvironment');
+                insertTemplateAndDummyCustomers()
+            };
+        },
+        onError: function() { console.log("onError", arguments); }
+    });
 });
 
 Template.OEMPartner.onRendered(function() {

@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"te",
+				"templateAppId"
+			],
+			[
+				"is",
+				"isReady"
+			],
+			[
+				"fresh",
+				"freshEnvironment"
+			],
+			[
+				"cos",
+				"console"
+			],
+			[
 				"sec",
 				"securityFlow"
 			],
@@ -344,10 +360,6 @@
 				"templateFound"
 			],
 			[
-				"te",
-				"templateApp"
-			],
-			[
 				"updat",
 				"updateLocalSenseCopy"
 			],
@@ -502,74 +514,51 @@
 			[
 				"Q",
 				"QSocksConfig"
-			],
-			[
-				"create",
-				"createStream"
-			],
-			[
-				"e",
-				"each"
-			],
-			[
-				"par",
-				"parseDate"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "server/main.js",
+			"file": "imports/ui/OEMPartner.html",
 			"settings":
 			{
-				"buffer_size": 16369,
+				"buffer_size": 13235,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": ".gitattributes",
+			"file": "imports/ui/OEMPartner.js",
 			"settings":
 			{
-				"buffer_size": 378,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/router.js",
-			"settings":
-			{
-				"buffer_size": 1142,
+				"buffer_size": 6779,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/layout.html",
+			"file": "imports/ui/generation.js",
 			"settings":
 			{
-				"buffer_size": 2409,
+				"buffer_size": 10910,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/api/server/QRSFunctionsApp.js",
+			"settings":
+			{
+				"buffer_size": 17335,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<template name=\"nav\">\n    <div class=\"ui fixed inverted menu\">\n        <!-- <div class=\"ui container\"> -->\n        <a href=\"{{pathFor 'introduction'}}\" class=\"header item\">\n            <img class=\"logo\" src=\"images/sense.png\"> Multi-tenant Publisher\n        </a>\n        <!-- <div class=\"right menu\"> -->\n        {{#if currentUser}}\n        <div class=\"ui simple dropdown item\">\n            Your SaaS platorm <i class=\"dropdown icon\"></i>\n            <div class=\"menu\">\n                {{#if readyToTestSSO}}\n                <a class=\"item\" href=\"{{webIntegrationDemo}}/hub\" target=\"_blank\">Your SaaS platform with Qlik Sense embedded</a>\n                <a class=\"item\" href=\"{{senseServerHub}}\" target=\"_blank\">Not integrated, Hub using Single Sign On</a>\n                <a class=\"item\" href=\"{{senseServerQMC}}\" target=\"_blank\">Not integrated, QMC using Single Sign On</a> {{/if}}\n                <a class=\"item\" href=\"{{pathFor 'users'}}\">Manage customers and users</a>\n            </div>\n        </div>\n        <div class=\"ui simple dropdown item\">\n            QMC & API <i class=\"dropdown icon\"></i>\n            <div class=\"menu\">\n                <a href=\"{{pathFor 'APILogs'}}\" class=\"item\">API Calls</a>\n                <a href=\"{{pathFor 'securityRules'}}\" class=\"item\">QMC System rules</a>\n                <!-- <a href=\"{{doc_sourceCode}}\" class=\"item\">View source code of this demo platform</a> -->\n            </div>\n        </div>\n        {{/if}}\n        <!-- </div> -->\n        <div class=\"ui simple dropdown item\">\n            Videos <i class=\"dropdown icon\"></i>\n            <div class=\"menu\">\n                <!-- <a href=\"{{pathFor 'introduction'}}\" class=\"item\">Introduction videos to the concept of this demo</a> -->\n                <a href=\"https://www.youtube.com/watch?v=T9a3s5cnvPE\" class=\"item\" target=\"_blank\">Step by Step demo instructions</a>\n                <a href=\"https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk\" target=\"_blank\" class=\"item\">YouTube playlist of all the videos on this site</a>\n                <div class=\"divider\"></div>\n                <div class=\"header\">Technical videos</div>\n                <a href=\"{{pathFor 'introductionSecurity'}}\" class=\"item\">Security integration</a>\n                <a href=\"{{pathFor 'webIntegration'}}\" class=\"item\">Web integration</a>\n                <a href=\"{{pathFor 'architecture'}}\" class=\"item\">Architecture and deployment</a>\n                <a href=\"http://www.youtube.com/playlist?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel\" target=\"_blank\" class=\"item\">Generic Qlik Sense playlist</a>\n            </div>\n        </div>\n        <div class=\"ui simple dropdown item\">\n            Documentation <i class=\"dropdown icon\"></i>\n            <div class=\"menu\">\n                <a class=\"item\" href=\"https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FIntroduction%20to%20Qlik%20Sense%20%28Ext%5C%29%7C65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0%2F%29\nonenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Introduction%20to%20Qlik%20Sense%20(Ext)&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0}&end\" target=\"_blank\">Introduction to Qlik Sense</a>\n                <a class=\"item\" href=\"https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FIntegration%20overview%20-%20Embedded%20analytics%7C407276F9-01A5-4CBF-AD54-7AEFE86739D8%2F%29\nonenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Integration%20overview%20-%20Embedded%20analytics&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={407276F9-01A5-4CBF-AD54-7AEFE86739D8}&end\" target=\"_blank\">Integration overview</a>\n                <a class=\"item\" href=\"/images/QlikSense%20TopologiesV0_18.pdf\" target=\"_blank\">Qlik Sense the big picture: Topology sheet</a>\n                <a class=\"item\" href=\"{{doc_webIntegration}}\" target=\"_blank\">Web integration</a>\n                <a class=\"item\" href=\"{{doc_securtityIntegration}}\" target=\"_blank\">Security integration</a>\n                <a class=\"item\" href=\"https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FProcess%20integration%20and%20automation%20using%20API%27s%7Ca49986de-9191-4321-88f3-c286fdff0b83%2F%29\" target=\"_blank\">API - Process integration</a>\n                <a class=\"item\" href=\"{{doc_dataIntegration}}\" target=\"_blank\">Data integration</a>\n                <div class=\"divider\"></div>\n                <div class=\"header\">POC Evaluation criteria</div>\n                <!--                 <a class=\"item\" href=\"https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2F0%20Our%20integration%20approach%7C5d087372-31b5-4d44-98e1-bc62ce741b8e%2F%29\" target=\"_blank\">0: Qlik OEM integration approach - management summary</a>\n                <a class=\"item\" href=\"https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2F1%20Desktop%20proof%20of%20concept%20High%20level%20overview%7C4dcdd947-a669-42bb-8dde-9c65de838925%2F%29\" target=\"_blank\">1: Proof of concept pre-visit management summary</a>\n --><a class=\"item\" href=\"https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F2%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary%7CA89DAA5F-F20A-4A68-AF02-E58549F53D20%2F%29\n                onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#2%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={A89DAA5F-F20A-4A68-AF02-E58549F53D20}&end\" target=\"_blank\">2: Proof of concept pre-visit document summary</a>\n                <a class=\"item\" href=\"https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F3%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20detailed%7C2390CE6E-173A-499D-9574-C0294E62B16D%2F%29\" target=\"_blank\">3: Detailed steps for a POC</a>\n            </div>\n        </div>\n        {{#if currentUser}}\n        <div class=\"ui right floated item\">\n            <a href=\"#\" class=\"logout\">Logout</a>\n        </div>\n        {{/if}}\n    </div>\n</template>\n",
-			"file": "imports/ui/nav.html",
-			"file_size": 7132,
-			"file_write_time": 131201457602471956,
+			"file": "imports/ui/UIHelpers.js",
 			"settings":
 			{
-				"buffer_size": 7062,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "client/main.js",
-			"settings":
-			{
-				"buffer_size": 2888,
+				"buffer_size": 11334,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -638,19 +627,26 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/startup",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui"
 	],
 	"file_history":
 	[
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/legal.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/docker image run.bat",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/testBat.bat",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/routes.js",
@@ -658,12 +654,9 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/Dockerfile",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/.dockerignore",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/docker image run.bat",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.js",
@@ -674,7 +667,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/publications.js",
@@ -683,7 +675,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/security_templates.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/startup/accounts-config.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/package.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-production.json",
@@ -691,10 +682,8 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/apps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/streams.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/server/routes.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/sso.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/sso.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/server/sso.js",
@@ -857,6 +846,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"insert",
 			"United states",
 			"Update",
 			"update",
@@ -983,8 +973,7 @@
 			"AdminConfig ",
 			"atNavButton",
 			"isSelectedCustomer",
-			"isSelectedPerson",
-			"People"
+			"isSelectedPerson"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1074,19 +1063,49 @@
 			[
 				{
 					"buffer": 0,
-					"file": "server/main.js",
+					"file": "imports/ui/OEMPartner.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16369,
+						"buffer_size": 13235,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1562,
-								2854
+								4189,
+								4189
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1315.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "imports/ui/OEMPartner.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6779,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5757,
+								6026
 							]
 						],
 						"settings":
@@ -1095,36 +1114,8 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 2219.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": ".gitattributes",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 378,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 4328.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1132,57 +1123,59 @@
 				},
 				{
 					"buffer": 2,
-					"file": "imports/ui/router.js",
+					"file": "imports/ui/generation.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1142,
+						"buffer_size": 10910,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								917,
-								917
+								9774,
+								9745
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 6735.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "imports/ui/layout.html",
+					"file": "imports/api/server/QRSFunctionsApp.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2409,
+						"buffer_size": 17335,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1471,
-								1471
+								3700,
+								3700
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 402.0,
+						"translation.x": -0.0,
+						"translation.y": 1955.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -1190,62 +1183,32 @@
 				},
 				{
 					"buffer": 4,
-					"file": "imports/ui/nav.html",
+					"file": "imports/ui/UIHelpers.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7062,
+						"buffer_size": 11334,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1549,
-								1549
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 540.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "client/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2888,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								802,
-								802
+								10287,
+								10325
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 4204.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
