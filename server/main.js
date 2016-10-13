@@ -244,7 +244,9 @@ Meteor.methods({
         return id;
     },
     createStream(name) {
-        return QSStream.createStream(name);
+        const id = QSStream.createStream(name);
+        Meteor.call('updateLocalSenseCopy');
+        return id;
     },
     getStreams() {
         return QSStream.getStreams();
