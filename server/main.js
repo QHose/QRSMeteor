@@ -27,26 +27,26 @@ Meteor.startup(function() {
     //console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
     //console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');
 
-    //Create notification listener in Qlik sense https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Notification-Remove-Change-Subscription.htm
-    try {
-        const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
-            headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey },
-            data: Meteor.settings.private.notificationURL + '/apps'
-        })
+    // //Create notification listener in Qlik sense https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Notification-Remove-Change-Subscription.htm
+    // try {
+    //     const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
+    //         headers: authHeaders,
+    //         params: { 'xrfkey': senseConfig.xrfkey },
+    //         data: Meteor.settings.private.notificationURL + '/apps'
+    //     })
 
-        const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
-                headers: authHeaders,
-                params: { 'xrfkey': senseConfig.xrfkey },
-                data: Meteor.settings.private.notificationURL + '/streams'
-            })
-            //console.log('Register notication success');
-            // //console.log('the result from sense register App notification was: ', resultApp);
-            // //console.log('the result from sense register Stream notification was: ', resultStream);
-    } catch (err) {
-        console.error('Create notification subscription in sense qrs failed', err);
-        // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
-    }
+    //     const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
+    //             headers: authHeaders,
+    //             params: { 'xrfkey': senseConfig.xrfkey },
+    //             data: Meteor.settings.private.notificationURL + '/streams'
+    //         })
+    //         //console.log('Register notication success');
+    //         // //console.log('the result from sense register App notification was: ', resultApp);
+    //         // //console.log('the result from sense register Stream notification was: ', resultStream);
+    // } catch (err) {
+    //     console.error('Create notification subscription in sense qrs failed', err);
+    //     // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
+    // }
 
 
     console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
@@ -225,7 +225,6 @@ Meteor.methods({
     deleteApp(guid) {
         check(guid, String);
         if (guid !== Meteor.settings.public.templateAppId) {
-            //console.log('method deleteApp');
             //logging only
             const call = {};
             call.action = 'Delete app';
