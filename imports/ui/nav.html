@@ -1,9 +1,10 @@
 <template name="nav">
     <div class="ui fixed inverted menu">
         <!-- <div class="ui container"> -->
-        <a href="{{pathFor 'introduction'}}" class="header item">
+        <a href="{{pathFor 'generation'}}" class="header item">
             <img class="logo" src="images/sense.png"> Multi-tenant Publisher
         </a>
+        <a href="{{pathFor 'introduction'}}" class="header item">Intro</a>
         <!-- <div class="right menu"> -->
         {{#if currentUser}}
         <div class="ui simple dropdown item">
