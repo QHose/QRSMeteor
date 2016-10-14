@@ -73,46 +73,6 @@ Meteor.startup(function() {
 
 
 Meteor.methods({
-    getRedirectUrl(proxyRestUri, targetId, loggedInUser) {
-        // console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
-        var call = {};
-        call.action = 'STEP 3: Server getRedirectUrl method'
-        call.request = 'Meteor server side method getRedirectUrl received a incoming method call from the meteor client. Meteor server will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.';
-        REST_Log(call);
-
-        //first find the customers that have a logged in users (mongo returns a complete document)
-        var customer = Customers.findOne({ generationUserId: loggedInUser, 'users.currentlyLoggedIn': true });
-        // console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + loggedInUser + ', the customer which contains the user that the user selected with the dropdown: ', customer);
-
-        //now we have the document, we can look in the array of users, to find the one that is logged in.
-        if (!customer) {
-            const error = 'You have not selected a user you want to simulate the Single Sign on with. Please select a user on the left side of the screen';
-            throw new Meteor.Error('No user', error);
-        } else {
-            var user = _.find(customer.users, { 'currentlyLoggedIn': true });
-
-            console.log('UserID currently logged in in the demo platform: ' + loggedInUser + '. Meteor server side thinks the meteor.userId is ' + Meteor.userId() + '. We use this as the UDC name');
-            //Create a paspoort (ticket) request: user directory, user identity and attributes
-            var passport = {
-                'UserDirectory': Meteor.userId(), //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
-                'UserId': user.name, //the current user that we are going to login with
-                'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
-                    { 'group': user.country.toUpperCase() },
-                    { 'group': user.group.toUpperCase() }
-                ]
-            }
-
-            // console.log('Request ticket for this user passport": ', passport);
-
-            //logging only
-            var call = {};
-            call.action = 'STEP 4: Request ticket (SSO)';
-            call.request = 'Request ticket for this user passport: ": ' + JSON.stringify(passport);
-            REST_Log(call);
-
-            return QSProxy.getRedirectURL(passport, proxyRestUri, targetId);
-        }
-    },
     generateStreamAndApp(customers) {
         // //console.log('generateStreamAndApp');
         check(customers, Array);
@@ -160,37 +120,6 @@ Meteor.methods({
         GeneratedResources.remove(generationUserSelection);
         APILogs.remove(generationUserSelection);
     },
-    resetLoggedInUser() {
-        //console.log("***Method resetLoggedInUsers");
-        //console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
-
-        //reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.
-        Customers.find({ 'generationUserId': Meteor.userId() })
-            .forEach(function(customer) {
-                var updatedUsers = _.map(customer.users, function(user) {
-                    user.currentlyLoggedIn = false;
-
-                    //and just logout everybody in the user list                            
-                    QSProxy.logoutUser(Meteor.userId(), user.name);
-                    return user;
-                })
-
-                Customers.update(customer._id, {
-                    $set: { users: updatedUsers },
-                });
-
-            });
-    },
-    simulateUserLogin(name) {
-        check(name, String);
-        Meteor.call('resetLoggedInUser');
-        console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: generationUserId: ' + Meteor.userId() + ' & users.name:' + name);
-        Customers.update({ 'generationUserId': Meteor.userId(), "users.name": name }, {
-            $set: {
-                'users.$.currentlyLoggedIn': true
-            }
-        })
-    },
     copyApp(guid, name) {
         check(guid, String);
         check(name, String);
@@ -235,7 +164,7 @@ Meteor.methods({
             Meteor.call('updateLocalSenseCopy');
             return id;
         } else {
-            throw new Meteor.Error('youCantDeleteTemplateApp');
+            throw new Meteor.Error("you can't delete the template app with guid: ", guid);
         }
     },
     removeAllCustomers: function() {
@@ -309,42 +238,44 @@ Meteor.methods({
             Streams.insert(stream);
         });
     },
-    // checkSenseIsReady() {
-    //     //console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');
 
-    //     // try {
-    //     // qsocks.Connect(engineConfig)
-    //     //     .then(function(global) {
-    //     //         // Connected
-    //     //         //console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');
-    //     //         return true;
-    //     //     }, function(err) {
-    //     //         // Something went wrong
-    //     //         console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
-    //     //         console.error('the settings are: ', engineConfig)
-    //     //         return false
-    //     //         // throw new Meteor.Error('Could not connect to Sense Engine API', err.message);
-    //     //     });
-
-    //     //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP
-    //     try{
-    //         const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
-    //             headers: authHeaders,
-    //             params: { 'xrfkey': senseConfig.xrfkey }
-    //         })//http get
-    //         //console.log(result);
-    //         if(result.statuscode === 200){
-    //             //console.log('We got a result back from Sense with statuscode 200: Success')
-    //             return true;}
-    //         else{return false}
-    //     } catch (err) {
-    //         return false;
-    //         // throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');
-    //     }
-    // }
 });
 
 
+
+// checkSenseIsReady() {
+//     //console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');
+
+//     // try {
+//     // qsocks.Connect(engineConfig)
+//     //     .then(function(global) {
+//     //         // Connected
+//     //         //console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');
+//     //         return true;
+//     //     }, function(err) {
+//     //         // Something went wrong
+//     //         console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
+//     //         console.error('the settings are: ', engineConfig)
+//     //         return false
+//     //         // throw new Meteor.Error('Could not connect to Sense Engine API', err.message);
+//     //     });
+
+//     //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP
+//     try{
+//         const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
+//             headers: authHeaders,
+//             params: { 'xrfkey': senseConfig.xrfkey }
+//         })//http get
+//         //console.log(result);
+//         if(result.statuscode === 200){
+//             //console.log('We got a result back from Sense with statuscode 200: Success')
+//             return true;}
+//         else{return false}
+//     } catch (err) {
+//         return false;
+//         // throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');
+//     }
+// }
 
 //GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)
 // getApps() {
