@@ -103,7 +103,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
                     return doc.setScript(script) //we now just include the old script in this app
                         .then(function(result) {    
                             var call = {};
-                            call.action = 'Replace the script (or just update the db connection)'
+                            call.action = 'Replace the complete ETL script (or just update the database connection with the customer specific one)'
                             call.request = 'The script of the app has been replaced with a customer specific one';
                             REST_Log(call);
                             // console.log('Script replaced');
