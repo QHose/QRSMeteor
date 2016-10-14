@@ -216,12 +216,10 @@ export var updateSenseInfo = function() {
 //this code gets executed if the page has been loaded, so a good moment to Connect to Sense a get the most recent apps and streams
 Template.generation.onRendered(function() {
     updateSenseInfo();
-    // Session.set('generated?', false);
-    Meteor.call('updateLocalSenseCopy');
 
     console.log('generated onRendered: Check if we have a connection to Sense?');
-    $('.dimmer')
-        .dimmer('show');
+    // $('.dimmer')
+    //     .dimmer('show');
     Meteor.call('getStreams', (error, result) => {
         if (error) {
             console.error(error);
@@ -233,8 +231,8 @@ Template.generation.onRendered(function() {
             sAlert.success(message);
             Session.set('NoSenseConnection', false);
         }
-        $('.dimmer')
-            .dimmer('hide');
+        // $('.dimmer')
+        //     .dimmer('hide');
     });
 })
 
