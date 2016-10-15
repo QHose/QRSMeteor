@@ -136,6 +136,9 @@ Template.OEMPartner.events({
     'click .backToGenerationStep' () {
         Session.set('generated?', false);
     },
+    'click .forwardToSSOStep' () {
+        Session.set('generated?', false);
+    },
     'click .selfservice' () {
         $('.ui.modal.SSBI')
             .modal('show');
