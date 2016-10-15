@@ -39,7 +39,10 @@
     {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}}
     <div class="ui segment">
         <div class="ui buttons">
-            {{#unless noCustomers}}
+            {{#unless noCustomers}} 
+            {{#if readyToTestSSO}}
+            <div class="ui button backToGenerationStep"><i class="play icon"></i>Back to generation</div>
+            {{/if}}
             <div class="ui buttons">
                 <div class="ui {{loading}} button resetEnvironment"><i class="undo icon"></i>Cleanup demo</div>
                 <div class="ui floating dropdown icon button">
