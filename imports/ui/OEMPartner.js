@@ -204,9 +204,10 @@ Template.mainButtonsCustomers.onRendered(function() {
         .$('.ui.dropdown')
         .dropdown();
 
-    Template.instance()
-        .$('.resetEnvironment')
-        .popup();
+    this.$('.resetEnvironment')
+        .popup({
+            inline: true
+        })
 })
 
 
