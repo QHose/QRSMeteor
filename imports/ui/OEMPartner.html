@@ -18,7 +18,7 @@
                 2: Select a template app
             </div>
             <p>
-                Select the "my first template" app on the right. If you create apps using a user with role 'developer', then you can also use this one as template.
+                Select the "my first template" app on the right.<!--  If you create apps using a user with role 'developer', then you can also use this one as template. -->
             </p>
             {{/if}} {{#if readyToGenerate}} {{> step3}} {{/if}} {{#if templateButNoCustomer}}
             <div class="header">
@@ -39,27 +39,12 @@
     {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}}
     <div class="ui segment">
         <div class="ui buttons">
-            {{#unless noCustomers}} 
-            {{#if readyToTestSSO}}
-            <div class="ui button backToGenerationStep"><i class="play icon"></i>Back to generation</div>
-            {{/if}}
-            <div class="ui buttons">
-                <div class="ui {{loading}} button resetEnvironment"><i class="undo icon"></i>Cleanup demo</div>
-                <div class="ui floating dropdown icon button">
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
-                        <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
-                        <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
-                    </div>
-                </div>
-            </div>
-            {{/unless}} {{#if readyToGenerate}}
-            <div class="or"></div>
+            {{#if readyToGenerate}}
             <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i> 3: Generate</div>
-            {{/if}}
+            <div class="or"></div>
+            {{/if}} {{#unless noCustomers}} {{> mainButtonsCustomers}} {{/unless}}
         </div>
-        {{#if noCustomers}}
+        {{#if or noCustomers templateButNoCustomer}}
         <div class="ui icon message">
             <img class="icon" src="images/customers.png">
             <div class="content">
@@ -68,12 +53,9 @@
                 </div>
                 <p>
                     {{#if freshEnvironment}}
-                    <!--  This demo simulates the first day of your SaaS platform. Therefore we first need to insert some customers in your SaaS platform using the button below. Note that you don't have to create users or groups in Qlik Sense. The only things you create manually using the Hub, or fully automated using the API's are the streams and apps.
-                    </p>
-                    <a class="ui labeled icon primary small button insertDummyCustomers" href="#"> <i class="edit icon"></i>1: Insert Customers</a> -->
                     You have resetted the demo environment, and therefore this demo now simulates the first day of your SaaS platform. As a first step we need to insert some customers and users if you like to create your own, or load predefined (dummy) customers.
                     <div class="ui mini buttons">
-                        <a href="{{pathFor 'users'}}" target="_blank" class="ui button">Insert your own customers</a>
+                        <a href="{{pathFor 'users'}}" class="ui button">Insert your own customers</a>
                         <div class="or"></div>
                         <a href="#" class="ui button insertDummyCustomers">Use predefined customers</a>
                     </div>
@@ -212,3 +194,26 @@
         </div>
     </p>
 </Template>
+<template name="mainButtonsCustomers">
+    <div class="ui buttons">
+        <div class="ui {{loading}} button resetEnvironment"><i class="undo icon"></i>
+            <!-- Cleanup demo -->
+        </div>
+        <div class="ui floating dropdown icon button">
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
+                <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
+                <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
+            </div>
+        </div>
+    </div>
+    {{#if readyToTestSSO}}
+    <div class="ui button backToGenerationStep"><i class="mail reply icon"></i>
+        <!-- Back to generation -->
+    </div>
+    {{/if}} {{#if readyToGenerate}}
+    <div class="ui button forwardToSSOStep"><i class="mail forward icon"></i>
+    </div>
+    {{/if}}
+</template>

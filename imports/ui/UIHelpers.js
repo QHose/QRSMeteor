@@ -165,10 +165,9 @@ if (Meteor.isClient) {
     });
 
     export function freshEnvironment() {
-        console.log('freshEnvironment has value: ',
-            !Customers.find()
-                .count() && !TemplateApps.find()
-                .count());
+        console.log('freshEnvironment has value: ', !Customers.find()
+            .count() && !TemplateApps.find()
+            .count());
         return !Customers.find()
             .count() && !TemplateApps.find()
             .count()
@@ -200,6 +199,13 @@ if (Meteor.isClient) {
         return Session.get('generated?') && Customers.find()
             .count() && TemplateApps.find()
             .count();
+    });
+
+    Template.registerHelper('and', (a, b) => {
+        return a && b;
+    });
+    Template.registerHelper('or', (a, b) => {
+        return a || b;
     });
 
 }

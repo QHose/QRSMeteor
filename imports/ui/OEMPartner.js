@@ -109,36 +109,6 @@ Template.OEMPartner.events({
     'click .removeTemplateApp' () {
         TemplateApps.remove(this._id);
     },
-    'click .insertDummyCustomers' (event) {
-        event.preventDefault();
-        insertTemplateAndDummyCustomers();
-    },
-    'click .deleteAllCustomers' () {
-        Meteor.call('removeAllCustomers', function(err, result) {
-            if (err) {
-                sAlert.error(err);
-            } else {
-                sAlert.success('All customers have been deleted from the local database of the SaaS platform');
-            }
-        });
-    },
-    'click .toggleAllCustomers' () {
-        console.log('deSelect all dummyCustomers clicked');
-
-        _.each(Customers.find({})
-            .fetch(),
-            function(customer) {
-                Customers.update(customer._id, {
-                    $set: { checked: !customer.checked },
-                });
-            })
-    },
-    'click .backToGenerationStep' () {
-        Session.set('generated?', false);
-    },
-    'click .forwardToSSOStep' () {
-        Session.set('generated?', false);
-    },
     'click .selfservice' () {
         $('.ui.modal.SSBI')
             .modal('show');
@@ -146,6 +116,10 @@ Template.OEMPartner.events({
     'click .APIAutomation' () {
         $('.ui.modal.APIAutomation')
             .modal('show');
+    },
+    'click .insertDummyCustomers' (event) {
+        event.preventDefault();
+        insertTemplateAndDummyCustomers();
     }
 }); //end Meteor events
 
@@ -167,6 +141,43 @@ function insertTemplateAndDummyCustomers() {
     });
 }
 
+Template.mainButtonsCustomers.events({
+    'click .forwardToSSOStep' () {
+        console.log('forward to step 4 sso clicked');
+        Session.set('generated?', true);
+    },
+    'click .backToGenerationStep' () {
+        Session.set('generated?', false);
+    },
+    'click .deleteAllCustomers' () {
+        Meteor.call('removeAllCustomers', function(err, result) {
+            if (err) {
+                sAlert.error(err);
+            } else {
+                sAlert.success('All customers have been deleted from the local database of the SaaS platform');
+            }
+        });
+    },
+    'click .toggleAllCustomers' () {
+        console.log('deSelect all dummyCustomers clicked');
+
+        _.each(Customers.find({})
+            .fetch(),
+            function(customer) {
+                Customers.update(customer._id, {
+                    $set: { checked: !customer.checked },
+                });
+            })
+    },
+    'hoover .resetEnvironment': function(event, template) {
+        template.$(event.currentTarget).popup({
+            title: 'test',
+            content: 'test',
+            on: 'click'
+        });
+    }
+})
+
 Template.OEMPartner.onCreated(function() {
     //see https://guide.meteor.com/data-loading.html
     const templateAppsHandle = Meteor.subscribe('templateApps');
@@ -186,11 +197,18 @@ Template.OEMPartner.onRendered(function() {
     Template.instance()
         .$('.ui.embed')
         .embed();
+})
 
+Template.mainButtonsCustomers.onRendered(function() {
     Template.instance()
         .$('.ui.dropdown')
         .dropdown();
+
+    Template.instance()
+        .$('.resetEnvironment')
+        .popup();
 })
+
 
 Template.step4.onRendered(function() {
     this.$('.ui.accordion')
