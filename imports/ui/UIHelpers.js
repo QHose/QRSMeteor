@@ -165,13 +165,8 @@ if (Meteor.isClient) {
     });
 
     export function freshEnvironment() {
-        console.log('freshEnvironment has value: ', !Customers.find()
-            .count() && !TemplateApps.find()
-            .count());
-        return !Customers.find()
-            .count() && !TemplateApps.find()
-            .count()
-    }
+        return !Customers.find().count() && !TemplateApps.find().count()
+    }; 
 
     Template.registerHelper('readyToSelectTemplate', function() {
         return Customers.find()

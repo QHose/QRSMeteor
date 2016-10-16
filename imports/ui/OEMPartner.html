@@ -18,7 +18,8 @@
                 2: Select a template app
             </div>
             <p>
-                Select the "my first template" app on the right.<!--  If you create apps using a user with role 'developer', then you can also use this one as template. -->
+                Select the "my first template" app on the right.
+                <!--  If you create apps using a user with role 'developer', then you can also use this one as template. -->
             </p>
             {{/if}} {{#if readyToGenerate}} {{> step3}} {{/if}} {{#if templateButNoCustomer}}
             <div class="header">
@@ -52,8 +53,7 @@
                     <h4>No customers</h4>
                 </div>
                 <p>
-                    {{#if freshEnvironment}}
-                    You have resetted the demo environment, and therefore this demo now simulates the first day of your SaaS platform. As a first step we need to insert some customers and users if you like to create your own, or load predefined (dummy) customers.
+                    {{#if freshEnvironment}} You have resetted the demo environment, and therefore this demo now simulates the first day of your SaaS platform. As a first step we need to insert some customers and users if you like to create your own, or load predefined (dummy) customers.
                     <div class="ui mini buttons">
                         <a href="{{pathFor 'users'}}" class="ui button">Insert your own customers</a>
                         <div class="or"></div>
@@ -195,6 +195,9 @@
     </p>
 </Template>
 <template name="mainButtonsCustomers">
+    <div class="ui icon button" data-tooltip="Add users to your feed">
+        <i class="add icon"></i>
+    </div>
     <div class="ui buttons">
         <div class="ui {{loading}} button resetEnvironment"><i class="undo icon"></i>
             <!-- Cleanup demo -->
