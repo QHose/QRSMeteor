@@ -39,12 +39,12 @@
     </div>
     {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}}
     <div class="ui segment">
-        <div class="ui buttons">
-            {{#if readyToGenerate}}
-            <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i> 3: Generate</div>
-            <div class="or"></div>
-            {{/if}} {{#unless noCustomers}} {{> mainButtonsCustomers}} {{/unless}}
-        </div>
+        <!-- <div class="ui buttons"> -->
+        {{#if readyToGenerate}}
+        <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i> 3: Generate</div>
+        <!-- <div class="or"></div> -->
+        {{/if}} {{#unless noCustomers}} {{> mainButtonsCustomers}} {{/unless}}
+        <!-- </div> -->
         {{#if or noCustomers templateButNoCustomer}}
         <div class="ui icon message">
             <img class="icon" src="images/customers.png">
@@ -195,30 +195,27 @@
     </p>
 </Template>
 <template name="mainButtonsCustomers">
-    <div class="ui buttons">
-        <div class="ui {{loading}} button resetEnvironment"><i class="undo icon"></i>
-            <!-- Cleanup demo -->
-        </div>
-        <div class="ui button">Activator</div>
-        <div class="ui special popup">
-            <div class="header">Custom Header</div>
-            <div class="ui button">Click Me</div>
-        </div>
-        <div class="ui floating dropdown icon button">
-            <i class="dropdown icon"></i>
-            <div class="menu">
-                <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
-                <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
-                <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
-            </div>
+    <!-- <div class="ui buttons"> -->
+    <div class="ui {{loading}} basic button resetEnvironment"><i class="undo icon"></i>
+        <!-- Cleanup demo -->
+    </div>
+    <div class="ui floating basic dropdown icon button">
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
+            <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
+            <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
         </div>
     </div>
-    {{#if readyToTestSSO}}
-    <div class="ui button backToGenerationStep"><i class="mail reply icon"></i>
+    <!-- </div> -->
+    {{#if readyToTestSSO}}{{>backToGenerationStep}} {{/if}} {{#if readyToGenerate}} {{>forwardToSSOStep}} {{/if}}
+</template>
+<template name="backToGenerationStep">
+    <div class="ui basic button backToGenerationStep"><i class="mail reply icon"></i>
         <!-- Back to generation -->
     </div>
-    {{/if}} {{#if readyToGenerate}}
-    <div class="ui button forwardToSSOStep"><i class="mail forward icon"></i>
+</template>
+<template name="forwardToSSOStep">
+    <div class="ui basic button forwardToSSOStep"><i class="mail forward icon"></i>
     </div>
-    {{/if}}
 </template>

@@ -206,15 +206,32 @@ Template.mainButtonsCustomers.onRendered(function() {
 
     this.$('.resetEnvironment')
         .popup({
-            inline: true
-        })
+            content: 'Delete all apps and streams you have generated'
+        });
+
+    this.$('.forwardToSSOStep')
+        .popup({
+            content: 'Go forward one step without generating first, this lets you test the single sign on using the users and their groups.'
+        });
 })
 
+Template.forwardToSSOStep.onRendered(function() {
+    this.$('.forwardToSSOStep')
+        .popup({
+            content: 'Go forward one step without generating first, this lets you test the single sign on using the users and their groups. Choose the row level security app for example.'
+        });
+})
+
+Template.backToGenerationStep.onRendered(function() {
+    this.$('.backToGenerationStep')
+        .popup({
+            content: 'Go back one step, this lets you generate the apps and streams again'
+        });
+})
 
 Template.step4.onRendered(function() {
     this.$('.ui.accordion')
         .accordion();
-
 })
 
 Template.step3.onRendered(function() {
