@@ -131,13 +131,11 @@ function insertTemplateAndDummyCustomers() {
 
     const templateAppId = Meteor.settings.public.templateAppId;
     console.log('Insert insertTemplateAndDummyCustomers, with templateAppId', templateAppId);
-    TemplateApps.upsert(templateAppId, {
-        $set: {
-            name: "My first template",
-            id: templateAppId,
-            generationUserId: Meteor.userId(),
-            checked: true
-        },
+    TemplateApps.insert({
+        name: "My first template",
+        id: templateAppId,
+        generationUserId: Meteor.userId(),
+        checked: true
     });
 }
 
