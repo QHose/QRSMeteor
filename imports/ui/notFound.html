@@ -1,21 +1,16 @@
 <template name="notFound">
-	<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="error-template">
-                <h1>
-                    Oops!</h1>
-                <h2>
-                    404 Not Found</h2>
-                <div class="error-details">
-                    Sorry, an error has occured, Requested page not found!
-                </div>
-                <div class="error-actions">
-                    <a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                        Take Me Home </a>
-                </div>
+    <div class="ui container">
+        <div class="ui error message">
+            <i class="close icon"></i>
+            <div class="header">
+                There was some errors with your submission
             </div>
+            <ul class="list">
+                <li>You probably did not select a user in the dropdown in step 4</li>
+                <li>Therefore we can't "single sign you" into Qlik Sense. (if you do select a user, the demo plaform will normally request a ticket for you.)</li>
+            </ul>
+            <br>
+            <a href="{{pathFor 'generation'}}" class="ui centered button">Go back to the demo</a>
         </div>
     </div>
-</div>
 </template>
