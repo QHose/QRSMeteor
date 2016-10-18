@@ -75,7 +75,7 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('doc_webIntegration', function() {
-        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FWeb%20integration%20embed%20Sense%20charts%20or%20data%20inside%20your%20%7C1e0df32c-d6be-4944-a4e6-6cea57447a59%2F%29';
+        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FWeb%20integration%20embed%20Sense%20charts%20or%20data%20inside%20your%20%7Cf0a1b951-668d-4c9f-9e85-b39a5ef1e05c%2F%29';
     });
     Template.registerHelper('doc_dataIntegration', function() {
         return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FData%20integration%20Combine%20sources%20into%20one%20associative%20model%7Ce669a0a2-9a83-470e-aae8-ba63ac500038%2F%29';
