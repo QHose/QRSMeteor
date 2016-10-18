@@ -39,7 +39,7 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('URL_Youtube_webintegration_extended', function() {
-        return "https://www.youtube.com/embed/Z2_nD0aPxnE";
+        return "https://www.youtube.com/embed/xbdF5KrJ5Yk";
     });
 
     Template.registerHelper('URL_Youtube_architecture_introduction', function() {
