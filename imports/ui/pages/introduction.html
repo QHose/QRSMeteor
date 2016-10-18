@@ -1,5 +1,17 @@
 <template name="introduction">
-    <div class="ui container">
+    <div class="ui grid">
+            <div class="fourteen wide column ui raised segment">
+                {{> introConcept}}
+            </div>            
+            <div class="fourteen wide column ui very padded raised segment">
+                {{> introAPI}}
+            </div>
+            <div class="fourteen wide column ui very padded raised segment">
+                {{> introSecurity}}
+            </div>
+        <!-- </div> -->
+    </div>
+    <!-- <div class="ui container">
         <div class="ui very padded segment">
             {{> introConcept}}
         </div>
@@ -9,8 +21,7 @@
         <div class="ui very padded segment">
             {{> introSecurity}}
         </div>
-       
-    </div>
+    </div> -->
 </template>
 <template name="introConcept">
     <div class="ui middle aligned stackable grid container">
@@ -219,8 +230,8 @@
                             <div class="column">{{>videoSecurityFlow}}</div>
                             <div class="column">{{>videoSecurityIntroduction}}</div>
                             <div class="column">{{>videoSecurityDeepDive}}</div>
-<!--                             <div class="column">{{>videoWebExtended}}</div>
- -->                        </div>
+                            <!--                             <div class="column">{{>videoWebExtended}}</div>
+ --></div>
                     </div>
                 </div>
             </div>
