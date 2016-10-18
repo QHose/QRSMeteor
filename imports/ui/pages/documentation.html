@@ -1,7 +1,7 @@
 <template name="documentation">
     <div class="ui top attached tabular menu">
         <!-- <a class="item" data-tab="first">Data</a> -->
-        <a class="item" data-tab="second">Security</a>
+        <a class="item active" data-tab="second">Security</a>
         <a class="item" data-tab="third">Web</a>
         <a class="item" data-tab="fourth">APIs</a>
         <a class="item" data-tab="fifth">Generic</a>
@@ -9,10 +9,10 @@
     <!-- <div class="ui bottom attached tab segment" data-tab="first">
         First
     </div> -->
-    <div class="ui bottom attached tab segment" data-tab="second">
+    <div class="ui bottom attached tab segment active" data-tab="second">
         {{> introductionSecurity}}
     </div>
-    <div class="ui bottom attached tab segment active" data-tab="third">
+    <div class="ui bottom attached tab segment" data-tab="third">
         {{> webIntegration}}
     </div>
     <div class="ui bottom attached tab segment" data-tab="fourth">
