@@ -19,6 +19,8 @@ import '/imports/ui/users.js';
 import '/imports/SSO/client/SSO.html';
 import '/imports/SSO/client/SSO.js';
 import '/imports/ui/pages/legal.html';
+import '/imports/ui/pages/documentation.html';
+import '/imports/ui/pages/documentation.js';
 import '/imports/ui/pages/APILogs.html';
 import '/imports/ui/pages/APILogs.js';
 import '/imports/ui/pages/architecture.html';
