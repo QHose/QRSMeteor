@@ -1,10 +1,11 @@
 <template name="documentation">
     <div class="ui top attached tabular menu">
         <!-- <a class="item" data-tab="first">Data</a> -->
-        <a class="item active" data-tab="second">Security</a>
-        <a class="item" data-tab="third">Web</a>
-        <a class="item" data-tab="fourth">APIs</a>
-        <a class="item" data-tab="fifth">Generic</a>
+        <a class="header item active" data-tab="second">Security</a>
+        <a class="header item" data-tab="third">Web</a>
+        <a class="header item" data-tab="fourth">APIs</a>
+        <a class="header item" data-tab="fifth">Architecture</a>
+        <a class="header item" data-tab="six">Generic</a>
     </div>
     <!-- <div class="ui bottom attached tab segment" data-tab="first">
         First
@@ -18,7 +19,10 @@
     <div class="ui bottom attached tab segment" data-tab="fourth">
         {{> APILogs}}
     </div>
-    <div class="ui bottom attached tab segment" data-tab="fifth">
+     <div class="ui bottom attached tab segment" data-tab="fifth">
+        {{> architecture}}
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="six">
         {{> genericDocumentation}}
     </div>
 </template>
