@@ -31,6 +31,7 @@ Router.route('/architecture');
 Router.route('/sequenceDiagramOverview');
 Router.route('/sequenceDiagramGeneration');
 Router.route('/legal');
+Router.route('/documentation');
 
 //Single sing on integration route, this is the route you configure in Qlik sense proxy
 
