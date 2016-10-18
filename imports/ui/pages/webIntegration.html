@@ -21,9 +21,12 @@
                 </div>
             </div>
         </div>
-        <div class="ui one column centered grid">
+        <div class="ui two column centered grid">
             <div class="column centered">
-                <div class="ui embed" data-url='{{URL_Youtube_webintegration_introduction}}' data-placeholder="/images/introVideoQAP.png"></div>
+            {{> videoWebIntroduction}}
+            </div>
+            <div class="column centered">
+            {{> videoWebExtended}}
             </div>
         </div>
     </div>
@@ -54,4 +57,37 @@
 </template>
 <template name="webIntegrationText">
     <p>There are multiple ways to integrate Qlik Sense into your website. You can design apps and charts upfront or generate them on the fly. Our <a href="https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/Dev-Hub/Content/Overview/dev-hub-startpage.htm">development hub</a> or the <a href="http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Plugins/Content/GettingStarted/GettingStarted.htm">Visual Studio plugin </a> helps you to generate the code for you. (These tools will make a link between a Qlik Sense resource ID and a HTML IFrame or DIV)</p>
+</template>
+<template name="videoWebIntroduction">
+    <h4 class="ui header">Web integration overview</h4>
+    <div class="ui embed" data-url='{{URL_Youtube_webintegration_introduction}}' data-placeholder="/images/qlik sense embedded example.png"></div>
+    <div class="item">
+        <div class="content">
+            <a class="header">Contents</a>
+            <div class="meta">
+                <span></span>
+            </div>
+            <div class="description">
+                In a quick overview you will see the key components for embedding Qlik Sense. Your goal is to create within a multi-tenant SaaS platform environment - embedded analytics - within your core application(s) where each of your customers would see and use only their data.
+            </div>
+            <div class="extra">
+            </div>
+        </div>
+    </div>
+</template>
+<template name="videoWebExtended">
+    <h4 class="ui header">Web integration deep dive (Qlik Analytics Platform)</h4>
+    <div class="ui embed" data-url='{{URL_Youtube_webintegration_extended}}' data-placeholder="/images/qlik sense embedded example.png"></div>
+    <div class="item">
+        <div class="content">
+            <a class="header">Contents</a>
+            <div class="meta">
+                <span></span>
+            </div>
+            <div class="description">Welcome to this Qlik video about the ease of embedding analytics using Qlik Sense and the Qlik Analytics Platform – what we typically refer to as ‘QAP’.
+            </div>
+            <div class="extra">
+            </div>
+        </div>
+    </div>
 </template>
