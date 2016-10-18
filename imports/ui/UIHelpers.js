@@ -19,11 +19,16 @@ if (Meteor.isClient) {
     //         .replace(/,/g, ".");
     // });
 
+    Template.registerHelper('URL_Youtube_howToDemo', function() {
+        return 'https://www.youtube.com/watch?v=T9a3s5cnvPE&index=6&list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';
+    });
+    Template.registerHelper('URL_Youtube_quickIntro', function() {
+        return '';
+    });
 
     Template.registerHelper('URL_Youtube_playlist', function() {
         return 'https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';
     });
-
     Template.registerHelper('URL_Youtube_integrated_flow', function() {
         return "https://www.youtube.com/embed/l7W8u7VipiE?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
     });
@@ -166,7 +171,7 @@ if (Meteor.isClient) {
 
     export function freshEnvironment() {
         return !Customers.find().count() && !TemplateApps.find().count()
-    }; 
+    };
 
     Template.registerHelper('readyToSelectTemplate', function() {
         return Customers.find()
