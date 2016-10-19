@@ -36,7 +36,7 @@
                             <div class="ui mini buttons">
                                 <a href="" class="ui button dropdown">Read more</a>
                                 <div class="or"></div>
-                                <a href="#" class="ui youtube button howDoesSaaSAutomationWork"><i class="youtube icon"></i> Introduction video</a>
+                                <a href="#" class="ui button howDoesSaaSAutomationWork"><i class="youtube icon"></i> Introduction video</a>
                             </div>
                         </div>
                         <div class="content">
@@ -54,8 +54,6 @@
                         <div class="title">
                             <div class="ui mini buttons">
                                 <a href="" class="ui button dropdown">Read more</a>
-                                <div class="or"></div>
-                                <a href="{{pathFor 'generation'}}" class="ui positive button">Go to the demo</a>
                             </div>
                         </div>
                         <div class="content">
@@ -85,7 +83,11 @@
             <div class="column">
                 <div class="ui accordion">
                     <div class="title">
-                        <a href="#" class="ui dropdown youtube mini button"><i class="youtube icon"></i>Video overview</a>
+                        <div class="ui medium buttons">
+                            <a href="#" class="ui dropdown youtube button"><i class="youtube icon"></i>Video overview</a>
+                            <div class="or"></div>
+                            <a href="{{pathFor 'generation'}}" class="ui positive button">Go to the demo</a>
+                        </div>
                         <!--                     <i class="dropdown icon"></i> Click here to see videos about the concept and the technology used.
  --></div>
                     <div class="content ui segment">
@@ -99,6 +101,7 @@
                             </p>
                             <ul class="list">
                                 <li>Introduction to the demo platform and integration in general</li>
+                                <li>Architecture</li>
                                 <li>Security</li>
                                 <li>Web integration</li>
                             </ul>
