@@ -157,7 +157,7 @@ Template.mainButtonsCustomers.events({
         });
     },
     'click .toggleAllCustomers' () {
-        console.log('deSelect all dummyCustomers clicked');
+        // console.log('deSelect all dummyCustomers clicked');
 
         _.each(Customers.find({})
             .fetch(),
@@ -167,12 +167,9 @@ Template.mainButtonsCustomers.events({
                 });
             })
     },
-    'hoover .resetEnvironment': function(event, template) {
-        template.$(event.currentTarget).popup({
-            title: 'test',
-            content: 'test',
-            on: 'click'
-        });
+    'click': function(event, template){
+        console.log('generic click pressed in OEMPartner.js');
+       Template.instance().$('.button').popup('remove popup')
     }
 })
 
@@ -196,6 +193,7 @@ Template.OEMPartner.onRendered(function() {
         .$('.ui.embed')
         .embed();
 })
+
 
 Template.mainButtonsCustomers.onRendered(function() {
     Template.instance()
