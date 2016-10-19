@@ -1,14 +1,14 @@
 <template name="introduction">
     <div class="ui grid">
-            <div class="fourteen wide column ui raised segment">
-                {{> introConcept}}
-            </div>            
-            <div class="fourteen wide column ui very padded raised segment">
-                {{> introAPI}}
-            </div>
-            <div class="fourteen wide column ui very padded raised segment">
-                {{> introSecurity}}
-            </div>
+        <div class="fourteen wide column ui raised segment">
+            {{> introConcept}}
+        </div>
+        <div class="fourteen wide column ui very padded raised segment">
+            {{> introAPI}}
+        </div>
+        <div class="fourteen wide column ui very padded raised segment">
+            {{> introSecurity}}
+        </div>
         <!-- </div> -->
     </div>
     <!-- <div class="ui container">
@@ -49,17 +49,12 @@
                     </div>
                 </p>
                 <h3 class="ui header">How to use the demo?</h3>
-                <p>To put it simply, this demo shows you how you can copy an app (dashboard) which serves as a "template layout" for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database. Because you can insert a custom script you can also specify customer specific data models like "custom fields and tables" or create them on the fly in order to connect to big data sources. In the end we make a stream per customer and publish the app into this stream.
+                <p>To put it simply, this demo shows you how you can copy an app (dashboard) which serves as a "template layout" for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database. Because you can insert a custom script you can also specify customer specific data models like "custom fields and tables" or create them on the fly in order to connect to big data sources. In the end we make a stream per customer and publish the app into this stream. If you would like some guidance please look at our "how to" <a href="#" class="stepByStep">Video</a> or <a href="{{doc_demo_manual}}" class="" target="_blank">"How to" Manual</a>. .
                     <div class="ui accordion">
                         <div class="title">
                             <div class="ui fluid mini buttons">
-                                <a href="" class="ui button dropdown">Quick intro</a>
-                                <div class="or"></div>
-                                <a href="#" class="ui  button stepByStep">"How to" Video</a>
-                                <div class="or"></div>
-                                <a href="{{doc_demo_manual}}" class="ui  button" target="_blank">"How to" Manual</a>
-                                <div class="or"></div>
-                                <a href="{{pathFor 'generation'}}" class="ui positive button">Go to the demo</a>
+                                <a href="" class="ui dropdown">Quick intro</a>
+                                
                             </div>
                         </div>
                         <div class="content">
@@ -79,6 +74,7 @@
                             </p>
                         </div>
                     </div>
+                    <a href="{{pathFor 'generation'}}" class="ui positive button">Go to the demo</a>
                 </p>
             </div>
             <div class="nine wide right floated column">
