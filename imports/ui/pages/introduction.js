@@ -21,10 +21,6 @@ Template.introduction.onRendered(function() {
     // console.log('introduction onRendered');
 
     Template.instance()
-        .$('.ui.embed')
-        .embed();
-
-    Template.instance()
         .$('.ui.accordion')
         .accordion({ exclusive: false });
 
