@@ -217,6 +217,9 @@ export var updateSenseInfo = function() {
 Template.generation.onRendered(function() {
     updateSenseInfo();
 
+    this.$('.ui.accordion')
+        .accordion();
+
     console.log('generated onRendered: Check if we have a connection to Sense?');
     // $('.dimmer')
     //     .dimmer('show');
@@ -231,10 +234,10 @@ Template.generation.onRendered(function() {
             sAlert.success(message);
             Session.set('NoSenseConnection', false);
         }
-        // $('.dimmer')
-        //     .dimmer('hide');
     });
+
 })
+
 
 Template.generation.onCreated(function() {
     this.subscribe('streams');

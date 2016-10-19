@@ -12,8 +12,8 @@
             <div class="one wide column">
                 <div class="ui vertical divider">
                     <h2 class="ui header">  
-              <img class="icon" src="images/generate.png">
-        </h2>
+                      <img class="icon" src="images/generate.png">
+                  </h2>
                 </div>
             </div>
             <div class="eight wide column">
@@ -21,27 +21,44 @@
                     <div class="ui dimmer">
                         <div class="content">
                             <div class="center">
-                                <div class="ui indeterminate text loader">Receiving the Streams from Qlik Sense via the QRS API... <br> '/qrs/stream/full'</div>
+                                <div class="ui indeterminate text loader">Receiving the Streams from Qlik Sense via the QRS API...
+                                    <br> '/qrs/stream/full'</div>
                             </div>
                         </div>
                     </div>
-                    <h4 class="ui header">            
-                <img class="icon" src="images/stream.png">
-                Received {{countStreams}}  streams via QRS API from Qlik Sense
-            </h4> {{> reactiveTable settings=streamSettings}}
+                    <div class="ui accordion">
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            <h4 class="ui dropdown">            
+                                <img class="icon" src="images/stream.png">
+                                Received {{countStreams}}  streams via QRS API from Qlik Sense
+                            </h4>
+                        </div>
+                        <div class="content">
+                            {{> reactiveTable settings=streamSettings}}
+                        </div>
+                    </div>
                 </div>
                 <div class="ui segment">
                     <div class="ui dimmer">
                         <div class="content">
                             <div class="center">
-                                <div class="ui indeterminate text loader">Receiving the apps from Qlik Sense via the QRS API... <br> '/qrs/app/full'</div>
+                                <div class="ui indeterminate text loader">Receiving the apps from Qlik Sense via the QRS API...
+                                    <br> '/qrs/app/full'</div>
                             </div>
                         </div>
                     </div>
-                    <h4 class="ui header">
-                <img class="icon" src="images/app.png">
-                Received {{countApps}}  apps via QRS API from Qlik Sense
-            </h4> {{> reactiveTable settings=appSettings}}
+                    <div class="ui accordion">
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            <h4 class="ui dropdown">            
+                                    <img class="icon" src="images/app.png">
+                                    Received {{countApps}}  apps via QRS API from Qlik Sense                            </h4>
+                        </div>
+                        <div class="content">
+                            {{> reactiveTable settings=streamSettings}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
