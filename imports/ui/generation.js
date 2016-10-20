@@ -14,19 +14,10 @@ import './customer';
 import './OEMPartner';
 import moment from 'moment';
 
-
-Template.generation.helpers({
-    countStreams() {
-        return Streams.find()
-            .count();
-    },
-    countApps() {
+Template.generationApps.helpers({
+     countApps() {
         return Apps.find()
             .count();
-    },
-    formatDate(date) {
-        return moment(date)
-            .format('DD-MM-YYYY');
     },
     appSettings: function() {
         console.log('client generation helper: get app table, the config used to generate the URLs to Sense: ', config);
@@ -108,7 +99,14 @@ Template.generation.helpers({
                 }
             ]
         };
-    }, //app settings
+    },
+})
+
+Template.generationStreams.helpers({
+    countStreams() {
+        return Streams.find()
+            .count();
+    },
     streamSettings: function() {
         return {
             collection: Streams,
@@ -145,7 +143,7 @@ Template.generation.helpers({
             ]
         };
     }
-});
+})
 
 Template.generation.events({
     'click .reactive-table tbody tr': function(event) {

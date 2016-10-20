@@ -6,11 +6,10 @@ import { senseConfig } from '/imports/api/config';
 
 if (Meteor.isClient) {
     // console.log('Setup generic helper functions, for functions every template needs');
-    // Template.registerHelper('formatDate', function(date) {
-    //     // console.log('in formate Date helper'+ date);
-    //     // return formatDate(date);
-    //     return formatDate(date);
-    // });
+    Template.registerHelper('formatDate', function(date) {
+        return moment(date)
+        .format('DD-MM-YYYY');
+    });
 
     // // Template.registerHelper('formatNumber', function(myNumber) {
     //     var commaFormat = d3.format(",");
@@ -144,12 +143,12 @@ if (Meteor.isClient) {
 
     Template.registerHelper('noCustomers', function() {
         return !Customers.find({})
-            .count();
+        .count();
     });
 
     Template.registerHelper('noTemplateApps', function() {
         return !TemplateApps.find({})
-            .count();
+        .count();
     });
 
     //generic helpers to return the collection to the blaze template
@@ -179,20 +178,20 @@ if (Meteor.isClient) {
 
     Template.registerHelper('readyToSelectTemplate', function() {
         return Customers.find()
-            .count() && !TemplateApps.find()
-            .count()
+        .count() && !TemplateApps.find()
+        .count()
     });
 
     Template.registerHelper('templateButNoCustomer', function() {
         return !Customers.find()
-            .count() && TemplateApps.find()
-            .count()
+        .count() && TemplateApps.find()
+        .count()
     });
 
     Template.registerHelper('readyToGenerate', function() {
         return Customers.find({})
-            .count() && TemplateApps.find()
-            .count() && !Session.get('generated?') && !Session.equals('loadingIndicator', 'loading');
+        .count() && TemplateApps.find()
+        .count() && !Session.get('generated?') && !Session.equals('loadingIndicator', 'loading');
     });
 
     Template.registerHelper('generationFinished', function() {
@@ -201,8 +200,8 @@ if (Meteor.isClient) {
 
     Template.registerHelper('readyToTestSSO', function() {
         return Session.get('generated?') && Customers.find()
-            .count() && TemplateApps.find()
-            .count();
+        .count() && TemplateApps.find()
+        .count();
     });
 
     Template.registerHelper('and', (a, b) => {
