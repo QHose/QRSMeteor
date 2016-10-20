@@ -79,14 +79,14 @@ Template.generationApps.helpers({
                 }, {
                     key: 'copyApp',
                     label: 'Copy app selected customers',
-                    hidden: true,
+                    hidden: false,
                     fn: function() {
                         return new Spacebars.SafeString('<i class="copy icon"></i>')
                     }
                 }, {
                     key: 'deleteApp',
                     label: 'Delete app',
-                    hidden: true,
+                    hidden: false,
                     fn: function() {
                         return new Spacebars.SafeString('<i class="remove circle icon"></i>')
                     }
@@ -136,7 +136,7 @@ Template.generationStreams.helpers({
                 }, {
                     key: 'deleteStream',
                     label: 'Delete',
-                    hidden: true,
+                    hidden: false,
                     fn: function() {
                         return new Spacebars.SafeString('<i class="remove circle icon markAsTemplate"></i>')
                     }

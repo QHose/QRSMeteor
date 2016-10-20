@@ -43,7 +43,7 @@
                 <div class="title">
                     <h3 class="ui header">
                         <i class="dropdown icon"></i>
-                        <img class="ui dropdown image" src="images/stream.png">
+                        <img class="ui dropdown tiny image" src="images/stream.png">
                         <div class="content">
                             {{countStreams}} Streams                            
                         </div>
@@ -65,16 +65,16 @@
                     </div>
                 </div>
                 <!-- <div class="ui accordion"> -->
-                    <div class="title">
+                    <div class="{{#if readyToSelectTemplate}}active{{/if}} title">
                         <h3 class="ui header">
                             <i class="dropdown icon"></i>
-                            <img class="ui dropdown image" src="images/app.png">
+                            <img class="ui dropdown tiny image" src="images/app.png">
                             <div class="content">
                                {{countApps}} Apps                         
                             </div>
                         </h3>
                     </div>
-                    <div class="content">
+                    <div class="{{#if readyToSelectTemplate}}active{{/if}} content">
                      <!-- <h2 class="ui header">Received {{countApps}} apps via the QRS API</h2> -->
                      {{> reactiveTable settings=appSettings}}
                  <!-- </div> -->

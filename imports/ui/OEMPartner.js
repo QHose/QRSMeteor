@@ -10,15 +10,8 @@ import { freshEnvironment } from '/imports/ui/UIHelpers';
 import './OEMPartner.html';
 
 Template.OEMPartner.helpers({
-    templateApps() {
-        return TemplateApps.find();
-    },
     loading() {
         return Session.get('loadingIndicator');
-    },
-    NrCustomers() {
-        return Customers.find()
-            .count();
     },
     linkToApp() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/sense/app/' + this.id
@@ -106,9 +99,6 @@ Template.OEMPartner.events({
             }
         });
     },
-    'click .removeTemplateApp' () {
-        TemplateApps.remove(this._id);
-    },
     'click .selfservice' () {
         $('.ui.modal.SSBI')
             .modal('show');
@@ -122,6 +112,40 @@ Template.OEMPartner.events({
         insertTemplateAndDummyCustomers();
     }
 }); //end Meteor events
+
+Template.templateOverview.helpers({
+    templateApps() {
+        return TemplateApps.find();
+    },
+    NrTemplates() {
+        return TemplateApps.find()
+            .count();
+    },
+})
+
+Template.templateOverview.events({
+    'click .removeTemplateApp' () {
+        TemplateApps.remove(this._id);
+    },
+    
+})
+
+Template.customerOverview.helpers({
+    NrCustomers() {
+        return Customers.find()
+            .count();
+    },
+})
+
+Template.customerOverview.onRendered(function() {
+    this.$('.ui.accordion')
+        .accordion();
+})
+
+Template.templateOverview.onRendered(function() {
+    this.$('.ui.accordion')
+        .accordion();
+})
 
 function insertTemplateAndDummyCustomers() {
     _.each(dummyCustomers, function(customer) {

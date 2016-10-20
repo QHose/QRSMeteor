@@ -54,7 +54,8 @@
                 </div>
                 <p>
                     {{#if freshEnvironment}} You have resetted the demo environment, and therefore this demo now simulates the first day of your SaaS platform. As a first step we need to insert some customers and users if you like to create your own, or load predefined (dummy) customers.
-                   <br> <div class="ui fluid mini buttons">
+                    <br>
+                    <div class="ui fluid mini buttons">
                         <a href="{{pathFor 'users'}}" class="ui button">Insert your own customers</a>
                         <div class="or"></div>
                         <a href="#" class="ui button insertDummyCustomers">Use predefined customers</a>
@@ -64,27 +65,8 @@
             </div>
         </div>
         {{else}}
-        <div class="ui icon message">
-            <img class="icon" src="images/customers.png">
-            <div class="content">
-                <div class="header">
-                    <h4>{{NrCustomers}} Customers stored in the database of your SaaS platform </h4>
-                </div>
-            </div>
-        </div>
-        <table class="ui celled striped table">
-            <thead>
-                <tr>
-                    <th>Customer</th>
-                    <th>Delete customer</th>
-                    <th>Generate stream</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each customers}} {{> customer}} {{/each}}
-            </tbody>
-        </table>
-        {{#if readyToSelectTemplate}} {{/if}} {{#if noTemplateApps}}
+        {{> customerOverview}}
+        {{#if noTemplateApps}}
         <div class="ui icon message">
             <img class="icon" src="images/app.png">
             <div class="content">
@@ -94,33 +76,7 @@
                 <p>Please select an app in the templates stream (on the right) which you would like to use as a basis template. We will create a copy and publish it into the "customer name" stream for each of your selected customers</p>
             </div>
         </div>
-        {{else}}
-        <div class="ui icon message">
-            <img class="icon" src="images/app.png">
-            <div class="content">
-                <div class="header">
-                    <h4>Template apps</h4>
-                </div>
-                <p>We will create a "customer name" stream, replace the script, reload and publish a copy of each template app for each of your customers</p>
-            </div>
-        </div>
-        <table class="ui celled table">
-            <thead>
-                <tr>
-                    <th>App (QVF)</th>
-                    <th>Don't mark as template</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each templateApps}}
-                <tr>
-                    <td> <a href={{linkToApp}} target=_blank> {{name}} </a></td>
-                    <td class="removeTemplateApp"><i class="remove circle icon"></i></td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-        {{/if}} {{/if}}
+        {{else}} {{> templateOverview}} {{/if}} {{/if}}
     </div>
     <div class="ui modal APIAutomation">
         <div class="ui icon message">
@@ -146,6 +102,72 @@
         </div>
     </div>
 </template>
+<template name="customerOverview">
+    <div class="ui icon message">
+        <img class="icon" src="images/customers.png">
+        <div class="content">
+            <div class="header">
+                <h4>{{NrCustomers}} Customer(s) stored in the database of your SaaS platform </h4>
+            </div>
+        </div>
+    </div>
+    <div class="ui styled fluid accordion">
+      <div class="title">
+        <i class="dropdown icon"></i>
+        View the customers
+    </div>
+    <div class="content">
+        <table class="ui celled striped table">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Delete customer</th>
+                    <th>Generate stream</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each customers}} {{> customer}} {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</template>
+<template name="templateOverview">
+    <div class="ui icon message">
+        <img class="icon" src="images/app.png">
+        <div class="content">
+            <div class="header">
+                <h4>{{NrTemplates}} Selected template app(s)</h4>
+            </div>
+            <p>We will create a "customer name" stream, replace the script, reload and publish a copy of each template app for each of your customers</p>
+        </div>
+    </div>
+    <div class="ui styled fluid accordion">
+       <div class="title">
+        <i class="dropdown icon"></i>
+        View selected templates
+    </div>
+    <div class="content">
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>App (QVF)</th>
+                    <th>Don't mark as template</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each templateApps}}
+                <tr>
+                    <td> <a href={{linkToApp}} target=_blank> {{name}} </a></td>
+                    <td class="removeTemplateApp"><i class="remove circle icon"></i></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+</template>
 <Template name="step4">
     <div class="header">
         4: Test Single Sign On
@@ -160,56 +182,56 @@
                 <p>We have now finished creating the content per customer. So a good time to look at how Qlik can re-use your SaaS platforms authorizations and implement single sign on. On this page you will see a dropdown, this dropdown contains the users of your SaaS platform. Using this dropdown we can simulate a user login (without having to insert passwords etc.). In this way you can easily test the single sign on process, and make sure your platform is in the lead. You can try to create new customers and users in the <a href="{{pathFor 'users'}}">manage customers and users</a> menu.</p>
                 <p>
                     If you select a user a ticket will be requested which inludes your SaaS platform's current authorizations (the groups) in a dynamic way. This means you don't have to create users and roles up front in Qlik Sense. The <a href="{{pathFor 'securityRules'}}" class="item">QMC security rules</a> are also created in a dynamic way, so we can protect the apps and streams with a couple of generic rules. The row/column level security is done via a special section in the script of an app (QVF). In this demo we used the group (Country) to ensure each user only sees his country in the "row level security app" in the " everyone stream.</p>
-                <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
+                    <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
+                </div>
             </div>
+        </p>
+    </Template>
+    <Template name="step3">
+        <div class="header">
+            3: Press generate
         </div>
-    </p>
-</Template>
-<Template name="step3">
-    <div class="header">
-        3: Press generate
-    </div>
-    <p>
-        Press the green generation button to start creating streams and apps for each of your selected customers.
-        <div class="ui accordion">
-            <div class="title">
-                <i class="dropdown icon"></i>Read more...
+        <p>
+            Press the green generation button to start creating streams and apps for each of your selected customers.
+            <div class="ui accordion">
+                <div class="title">
+                    <i class="dropdown icon"></i>Read more...
+                </div>
+                <div class="content">
+                    <p>
+                        If you press generate a sequence of activities will be executed automatically via the API's. You can test each activity also manually and see the <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>. By clicking on the "columns" button you can select extra buttons.
+                        <br> For example you can press "create stream" next to the customer to create a stream. "Copy app" to manually copy the app for each selected customer.
+                        <br> Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay or who have activited the app in your software, so this "selection" simulates that use case.</p>
+                        <p>
+                            <h4>Fully automated app generation</h4>You can also automate each step, this happens when you press the generate button. It executes a chain of actions; it will publish a copy of the template app in the "customer name" stream. Next to this it replaces and reloads the script with a customer specific one.
+                        </p>
+                        <p>See more information about the generation or API automation <a href="#" class="APIAutomation">here</a> </p>
+                    </div>
+                </div>
+            </p>
+        </Template>
+        <template name="mainButtonsCustomers">
+            <!-- <div class="ui buttons"> -->
+            <div class="ui {{loading}} basic button resetEnvironment"><i class="delete icon"></i>
+                <!-- Cleanup demo -->
             </div>
-            <div class="content">
-                <p>
-                    If you press generate a sequence of activities will be executed automatically via the API's. You can test each activity also manually and see the <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>. By clicking on the "columns" button you can select extra buttons.
-                    <br> For example you can press "create stream" next to the customer to create a stream. "Copy app" to manually copy the app for each selected customer.
-                    <br> Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay or who have activited the app in your software, so this "selection" simulates that use case.</p>
-                <p>
-                    <h4>Fully automated app generation</h4>You can also automate each step, this happens when you press the generate button. It executes a chain of actions; it will publish a copy of the template app in the "customer name" stream. Next to this it replaces and reloads the script with a customer specific one.
-                </p>
-                <p>See more information about the generation or API automation <a href="#" class="APIAutomation">here</a> </p>
+            <div class="ui floating basic dropdown icon button">
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
+                    <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
+                    <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
+                </div>
             </div>
-        </div>
-    </p>
-</Template>
-<template name="mainButtonsCustomers">
-    <!-- <div class="ui buttons"> -->
-    <div class="ui {{loading}} basic button resetEnvironment"><i class="delete icon"></i>
-        <!-- Cleanup demo -->
-    </div>
-    <div class="ui floating basic dropdown icon button">
-        <i class="dropdown icon"></i>
-        <div class="menu">
-            <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
-            <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
-            <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
-        </div>
-    </div>
-    <!-- </div> -->
-    {{#if readyToTestSSO}}{{>backToGenerationStep}} {{/if}} {{#if readyToGenerate}} {{>forwardToSSOStep}} {{/if}}
-</template>
-<template name="backToGenerationStep">
-    <div class="ui basic button backToGenerationStep"><i class="mail reply icon"></i>
-        <!-- Back to generation -->
-    </div>
-</template>
-<template name="forwardToSSOStep">
-    <div class="ui basic button forwardToSSOStep"><i class="mail forward icon"></i>
-    </div>
-</template>
+            <!-- </div> -->
+            {{#if readyToTestSSO}}{{>backToGenerationStep}} {{/if}} {{#if readyToGenerate}} {{>forwardToSSOStep}} {{/if}}
+        </template>
+        <template name="backToGenerationStep">
+            <div class="ui basic button backToGenerationStep"><i class="mail reply icon"></i>
+                <!-- Back to generation -->
+            </div>
+        </template>
+        <template name="forwardToSSOStep">
+            <div class="ui basic button forwardToSSOStep"><i class="mail forward icon"></i>
+            </div>
+        </template>

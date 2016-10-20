@@ -19,9 +19,9 @@ AutoForm.addHooks(['insertCustomerForm'], {
             // Potentially alter the doc
             if (Meteor.userId()) {
                 customer.generationUserId = Meteor.userId();
+                customer.checked = true;
             }
             console.log('insert users add hook', customer);
-            // this.result(customer); 
             return customer;
         }
     },
