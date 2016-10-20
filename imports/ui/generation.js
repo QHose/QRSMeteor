@@ -271,7 +271,8 @@ Template.generation.onCreated(function() {
 Template.generationStreams.onRendered(function() {
     this.$('.title')
         .popup({
-            content: 'Via the QRS API we obtained the list of streams',
+            title: 'Streams',
+            content: 'Via the QRS API we obtained the list of streams. Streams are a way to group apps that share a common purpose. In our case we give each customer its own stream.',
             delay: {
                 show: 2500,
                 hide: 0
@@ -282,7 +283,8 @@ Template.generationStreams.onRendered(function() {
 Template.generationApps.onRendered(function() {
     this.$('.title')
         .popup({
-            content: 'Via the QRS API we obtained the list of streams',
+            title: 'Apps',
+            content: 'Via the QRS API we obtained the list of apps (dashboards). The app is at the core of Qlik Sense. An app is loaded with data, and the visualizations the app contains allow you and your colleagues to explore the data.',
             delay: {
                 show: 2500,
                 hide: 0
