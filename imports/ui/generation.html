@@ -8,7 +8,7 @@
         <div class="ui three column stackable grid">
             <div class="seven wide column">
                 <h3 class="ui dividing header">
-                    Example admin panel in your Saas Platform (admin)</h3> {{> OEMPartner}}
+                Example admin panel in your Saas Platform</h3> {{> OEMPartner}}
                 </div>
                 <div class="one wide column">
                     <div class="ui vertical divider">
@@ -19,9 +19,13 @@
               </div>
               <div class="eight wide column">
                 <h3 class="ui dividing header">
-                    Qlik Sense</h3>
-                    <div class="ui"> {{> generationStreams }}</div>
-                    <div class="ui "> {{> generationApps }}</div>
+                    Information received from Qlik Sense</h3>
+
+
+                    <div class="ui accordion">
+                        <div class="ui"> {{> generationStreams }}</div>
+                        <div class="ui "> {{> generationApps }}</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,21 +39,21 @@
                     </div>
                 </div>
             </div>
-            <div class="ui accordion">
+            <!-- <div class="ui accordion"> -->
                 <div class="title">
-                    <h2 class="ui header">
+                    <h3 class="ui header">
                         <i class="dropdown icon"></i>
                         <img class="ui dropdown image" src="images/stream.png">
                         <div class="content">
-                            Streams                            
+                            {{countStreams}} Streams                            
                         </div>
-                    </h2>
+                    </h3>
                 </div>
                 <div class="content">
                     <!-- <h4 class="ui header">Received {{countStreams}} streams via the QRS API</h4> -->
                     {{> reactiveTable settings=streamSettings}}
                 </div>
-            </div>
+            <!-- </div> -->
         </template>
         <template name="generationApps">
             <div class="ui dimmer">
@@ -60,51 +64,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="ui accordion">
+                <!-- <div class="ui accordion"> -->
                     <div class="title">
-                        <h2 class="ui header">
+                        <h3 class="ui header">
                             <i class="dropdown icon"></i>
                             <img class="ui dropdown image" src="images/app.png">
                             <div class="content">
-                                Apps                            
+                               {{countApps}} Apps                         
                             </div>
-                        </h2>
+                        </h3>
                     </div>
                     <div class="content">
-                       <h2 class="ui header">Received {{countApps}} apps via the QRS API</h2>
-                       {{> reactiveTable settings=appSettings}}
-                   </div>
-               </div>
-           </template>
-           <template name="generationApps2">
-            <div class="ui dimmer">
-                <div class="content">
-                    <div class="center">
-                        <div class="ui indeterminate text loader">Receiving the apps from Qlik Sense via the QRS API...
-                            <br> '/qrs/app/full'</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui accordion">
-        <!-- <div class="title">
-                        <i class="dropdown icon"></i>
-                        <h4 class="ui dropdown">            
-                            <img class="icon" src="images/app.png">
-                            Received {{countApps}}  apps via QRS API from Qlik Sense                            </h4>
-                        </div> -->
-                        <div class="title">
-                            <h2 class="ui header">
-                                <i class="dropdown icon"></i>
-                                <img class="ui dropdown image" src="images/app.png">
-                                <div class="content">
-                                    Apps
-                                    <div class="sub header">The app is at the core of Qlik Sense. An app or dashbaord is loaded with data, and the visualizations the app contains allow you and your colleagues to explore the data.</div>
-                                </div>
-                            </h2>
-                        </div>
-                        <div class="content">
-                            {{> reactiveTable settings=appSettings}}
-                        </div>
-                    </div>
-                </template>
+                     <!-- <h2 class="ui header">Received {{countApps}} apps via the QRS API</h2> -->
+                     {{> reactiveTable settings=appSettings}}
+                 <!-- </div> -->
+             </div>
+         </template>
+         
 

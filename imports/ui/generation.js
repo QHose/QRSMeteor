@@ -15,7 +15,7 @@ import './OEMPartner';
 import moment from 'moment';
 
 Template.generationApps.helpers({
-     countApps() {
+    countApps() {
         return Apps.find()
             .count();
     },
@@ -128,6 +128,7 @@ Template.generationStreams.helpers({
                 }, {
                     key: 'createdDate',
                     label: 'Created date',
+                    hidden: true,
                     fn: function(value, object) {
                         return moment(value)
                             .format('DD-MM-YYYY');
@@ -265,4 +266,26 @@ Template.generation.onCreated(function() {
             });
         })
     })
+})
+
+Template.generationStreams.onRendered(function() {
+    this.$('.title')
+        .popup({
+            content: 'Via the QRS API we obtained the list of streams',
+            delay: {
+                show: 2500,
+                hide: 0
+            }
+        });
+})
+
+Template.generationApps.onRendered(function() {
+    this.$('.title')
+        .popup({
+            content: 'Via the QRS API we obtained the list of streams',
+            delay: {
+                show: 2500,
+                hide: 0
+            }
+        });
 })
