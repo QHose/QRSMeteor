@@ -18,7 +18,7 @@
     <div class="ui dropdown item">
         Your SaaS platorm <i class="dropdown icon"></i>
         <div class="menu">
-            {{#if readyToTestSSO}}
+            <a href="{{pathFor 'securityRules'}}" class="item">QMC System rules</a> {{#if readyToTestSSO}}
             <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Your SaaS platform with Qlik Sense embedded</a>
             <a class="item" href="{{senseServerHub}}" target="_blank">Not integrated, Hub using Single Sign On</a>
             <a class="item" href="{{senseServerQMC}}" target="_blank">Not integrated, QMC using Single Sign On</a> {{/if}}
