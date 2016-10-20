@@ -44,7 +44,6 @@ Meteor.methods({
                     { 'group': user.group.toUpperCase() }
                 ]
             }
-
             // console.log('Request ticket for this user passport": ', passport);
 
             //logging only
@@ -80,7 +79,7 @@ Meteor.methods({
     simulateUserLogin(name) {
         check(name, String);
         Meteor.call('resetLoggedInUser');
-        console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: generationUserId: ' + Meteor.userId() + ' & users.name:' + name);
+        // console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: generationUserId: ' + Meteor.userId() + ' & users.name:' + name);
         Customers.update({ 'generationUserId': Meteor.userId(), "users.name": name }, {
             $set: {
                 'users.$.currentlyLoggedIn': true

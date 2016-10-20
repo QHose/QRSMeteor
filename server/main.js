@@ -83,6 +83,7 @@ Meteor.methods({
         return;
     },
     resetEnvironment() {
+        Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
         Meteor.call('removeGeneratedResources', { 'generationUserId': Meteor.userId() });
         TemplateApps.remove({ 'generationUserId': Meteor.userId() });
         Customers.remove({ 'generationUserId': Meteor.userId() });

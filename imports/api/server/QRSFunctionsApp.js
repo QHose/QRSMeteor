@@ -352,7 +352,7 @@ export function getApps() {
 
 
 export function deleteApp(guid) {
-    // console.log('QRSApp sync deleteApp: ', guid);
+    console.log('QRSApp deleteApp: ', guid);
     try {
         const call = {};
 

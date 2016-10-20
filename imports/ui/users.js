@@ -64,7 +64,8 @@ Template.users.events({
         Session.set("activeCustomer", this._id);
     },
     'click .delete' () {
-        Customers.remove(this._id);
+        Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
+        Customers.remove(this._id);        
         Session.set("selectedCustomer", '');
     },
     'click .backToGeneration' () {
@@ -74,10 +75,9 @@ Template.users.events({
         Session.set("selectedCustomer", this._id);
         console.log('customer click, selectedCustomer', this._id);
     },
-    'change .autosave-toggle': function() {
-        Session.set("autoSaveMode", !Session.get("autoSaveMode"));
+    'change' () {
+        Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
     }
-
 });
 
 Template.users.onRendered(function() {  
