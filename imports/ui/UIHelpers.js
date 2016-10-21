@@ -29,7 +29,7 @@ if (Meteor.isClient) {
         return 'https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';
     });
     Template.registerHelper('URL_Youtube_integrated_flow', function() {
-        return "https://www.youtube.com/embed/l7W8u7VipiE?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
+        return "https://www.youtube.com/embed/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
     });
 
 
