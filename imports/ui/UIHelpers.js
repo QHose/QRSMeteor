@@ -32,6 +32,10 @@ if (Meteor.isClient) {
         return "https://www.youtube.com/embed/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
     });
 
+   Template.registerHelper('URL_Youtube_generic_security_intro', function() {
+        return "https://www.youtube.com/embed/sdCVsMzTf64";
+    });
+
 
     Template.registerHelper('URL_Youtube_webintegration_introduction', function() {
         return "https://www.youtube.com/embed/V_rajm0F2h4?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";

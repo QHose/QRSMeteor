@@ -54,7 +54,10 @@
                         <div class="two column row">
                             <div class="column">{{>videoSecurityFlow}}</div>
                             <div class="column">{{>videoSecurityIntroduction}}</div>
+                        </div>
+                        <div class="two column row">
                             <div class="column">{{>videoSecurityDeepDive}}</div>
+                            <div class="column">{{>videoGenericSecurityIntro}}</div>
                         </div>
                     </div>
                 </div>
@@ -85,6 +88,23 @@
             <div class="ui positive right labeled icon button">
                 I got it...
                 <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+</template>
+<template name="videoGenericSecurityIntro">
+    <h4 class="ui header">Introduction to Qlik Sense security</h4>
+    <div class="ui embed" data-url='{{URL_Youtube_generic_security_intro}}' data-placeholder="/images/genericSecuritySlide.png"></div>
+    <div class="item">
+        <div class="content">
+            <a class="header">Contents</a>
+            <div class="meta">
+                <span></span>
+            </div>
+            <div class="description">
+                A basic introduction to Qlik Sense security, like authentication and authorization in general. (No integration specific topics).
+            </div>
+            <div class="extra">
             </div>
         </div>
     </div>
