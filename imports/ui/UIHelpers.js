@@ -41,8 +41,9 @@ if (Meteor.isClient) {
         return "https://www.youtube.com/embed/V_rajm0F2h4?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
     });
 
+//QAP
     Template.registerHelper('URL_Youtube_webintegration_extended', function() {
-        return "https://www.youtube.com/embed/xbdF5KrJ5Yk";
+        return "https://www.youtube.com/embed/iM_tlwGYJoM";
     });
 
     Template.registerHelper('URL_Youtube_architecture_introduction', function() {
