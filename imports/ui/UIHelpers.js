@@ -38,7 +38,7 @@ if (Meteor.isClient) {
 
 
     Template.registerHelper('URL_Youtube_webintegration_introduction', function() {
-        return "https://www.youtube.com/embed/V_rajm0F2h4?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
+        return "https://www.youtube.com/embed/zuNvZ_UTmow?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
     });
 
 //QAP
