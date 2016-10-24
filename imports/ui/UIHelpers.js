@@ -84,7 +84,7 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('doc_sourceCode', function() {
-        return '';
+        return 'https://github.com/QHose/QRSMeteor/blob/master/Sense%20Demo%20materials/Qlik%20Sense%20SaaS%20demo%20tool%20documentation%20of%20source%20code.docx';
     });
 
     Template.registerHelper('doc_webIntegration', function() {
