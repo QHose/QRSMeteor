@@ -34,7 +34,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
     // console.log(templateApp);
     // console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
     const call = {};
-    call.action = 'Start of generation';
+    call.action = 'Start of generation for '+customer.name;
     call.createdBy = generationUserId;
     call.request = 'Start creating app ' + templateApp.name + ' for customer ' + customer.name;
     REST_Log(call, generationUserId);
