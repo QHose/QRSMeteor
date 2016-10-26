@@ -55,7 +55,7 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('URL_Youtube_security_deepDive', function() {
-        return "https://www.youtube.com/embed/NwYkGjaYj8A";
+        return "https://www.youtube.com/embed/D3XNHGUbySs";
     });
 
     Template.registerHelper('URL_Youtube_concept_behind', function() {
