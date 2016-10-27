@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"video",
+				"videoOverview2"
+			],
+			[
 				"Te",
 				"TemplateApps"
 			],
@@ -510,30 +514,52 @@
 			[
 				"h",
 				"href"
-			],
-			[
-				"info",
-				"information"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "imports/ui/UIHelpers.js",
+			"file": "imports/ui/pages/videoOverview.html",
 			"settings":
 			{
-				"buffer_size": 11735,
+				"buffer_size": 12344,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/generation.html",
+			"file": "imports/api/server/QRSFunctionsApp.js",
 			"settings":
 			{
-				"buffer_size": 3785,
+				"buffer_size": 17395,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/pages/architecture.html",
+			"settings":
+			{
+				"buffer_size": 4813,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/pages/videoOverview.js",
+			"settings":
+			{
+				"buffer_size": 193,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/pages/introduction.js",
+			"settings":
+			{
+				"buffer_size": 625,
 				"line_ending": "Windows"
 			}
 		},
@@ -541,42 +567,7 @@
 			"file": "imports/ui/pages/introduction.html",
 			"settings":
 			{
-				"buffer_size": 17080,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/steps.html",
-			"settings":
-			{
-				"buffer_size": 1312,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/pages/documentation.html",
-			"settings":
-			{
-				"buffer_size": 5890,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/pages/securityRules.html",
-			"settings":
-			{
-				"buffer_size": 2099,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/pages/videoOverview.html",
-			"settings":
-			{
-				"buffer_size": 9012,
+				"buffer_size": 17087,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -585,34 +576,7 @@
 			"file": "imports/ui/pages/introductionSecurity.html",
 			"settings":
 			{
-				"buffer_size": 9814,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/pages/webIntegration.html",
-			"settings":
-			{
-				"buffer_size": 5135,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/pages/APILogs.html",
-			"settings":
-			{
-				"buffer_size": 9458,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/layout.html",
-			"settings":
-			{
-				"buffer_size": 2420,
+				"buffer_size": 9757,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -682,22 +646,28 @@
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
 	[
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/test.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
@@ -705,26 +675,19 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/notFound.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor/packages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/legal.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/docker image run.bat",
@@ -816,12 +779,11 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/checkConfig.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/clientConfig.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/checkConfig.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/body.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/body.html"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/body.js"
 	],
 	"find":
 	{
-		"height": 64.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -906,6 +868,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"how to",
 			"shell",
 			"Mini",
 			"qap",
@@ -1032,8 +995,7 @@
 			"192.168.1.150",
 			"2008ENT",
 			"cert",
-			"uses",
-			"senseConfig.SenseServerInternalLanIP + '/' + senseConfig.virtualProxy"
+			"uses"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1127,19 +1089,49 @@
 			[
 				{
 					"buffer": 0,
-					"file": "imports/ui/UIHelpers.js",
+					"file": "imports/ui/pages/videoOverview.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11735,
+						"buffer_size": 12344,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1677,
-								1677
+								9320,
+								9320
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1728.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "imports/api/server/QRSFunctionsApp.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17395,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1683,
+								1683
 							]
 						],
 						"settings":
@@ -1149,138 +1141,19 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 827.0,
+						"translation.y": 207.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "imports/ui/generation.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3785,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1674,
-								1674
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 432.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "imports/ui/pages/introduction.html",
+					"file": "imports/ui/pages/architecture.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17080,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								920,
-								920
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 270.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "imports/ui/steps.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1312,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1205,
-								1205
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "imports/ui/pages/documentation.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5890,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1807,
-								1972
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 972.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "imports/ui/pages/securityRules.html",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 2099,
+						"buffer_size": 4813,
 						"regions":
 						{
 						},
@@ -1301,119 +1174,57 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "imports/ui/pages/videoOverview.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 193,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								118,
+								187
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "imports/ui/pages/videoOverview.html",
+					"buffer": 4,
+					"file": "imports/ui/pages/introduction.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9012,
+						"buffer_size": 625,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1975,
-								1975
+								433,
+								624
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 90.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "imports/ui/pages/introductionSecurity.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9814,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3879,
-								3982
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "imports/ui/pages/webIntegration.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5135,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1420,
-								1549
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "imports/ui/pages/APILogs.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9458,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1142,
-								1142
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -1425,20 +1236,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "imports/ui/layout.html",
+					"buffer": 5,
+					"file": "imports/ui/pages/introduction.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2420,
+						"buffer_size": 17087,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								778,
-								781
+								8753,
+								8753
 							]
 						],
 						"settings":
@@ -1448,10 +1259,40 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1458.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "imports/ui/pages/introductionSecurity.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9757,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4635,
+								4649
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 810.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -1500,7 +1341,7 @@
 	"project": "qrs.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 120.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1546,7 +1387,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 501.0,
+	"side_bar_width": 627.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
