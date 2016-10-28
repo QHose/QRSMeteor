@@ -33,9 +33,9 @@
                     <div class="center aligned column">
                         <div class="center aligned column">
                             <div class="ui mini buttons">
-<!--                                 <a href="{{doc_securtityIntegration}}" target="_blank" class="ui button">Read more</a>
+                                <a href="{{doc_securtityIntegration}}" target="_blank" class="ui button">Read more</a>
                                 <div class="or"></div>
- -->                                <a class="ui button" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a>
+                                <a class="ui button" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a>
                                 <div class="or"></div>
                                 <a href="#" class="ui button mindMapSecurity">Mindmap</a>
                             </div>
@@ -49,23 +49,26 @@
         <div class="ui middle aligned stackable grid container">
             <h3 class="ui header">Security videos</h3>
             <div class="row">
-                <div class="content ui">
-                    <div class="ui padded grid">
-                        <div class="two column row">
-                            <div class="column">{{>videoSecurityFlow}}</div>
-                            <!-- <div class="column">{{>videoSecurityIntroduction}}</div> -->
-                            <div class="column">{{>videoGenericSecurityIntro}}</div>
-                        </div>
-                        <div class="two column row">
-                            <div class="column">{{>videoSecurityDeepDive}}</div>                            
-                        </div>
-                    </div>
-                </div>
+                {{> securityVideos}}
             </div>
         </div>
     </div>
     <!-- </div> -->
     {{> modalMindMapSecurity}}
+</template>
+<template name="securityVideos">
+    <div class="content ui">
+        <div class="ui padded grid">
+            <div class="two column row">
+                <div class="column">{{>videoSecurityFlow}}</div>
+                <!-- <div class="column">{{>videoSecurityIntroduction}}</div> -->
+                <div class="column">{{>videoGenericSecurityIntro}}</div>
+            </div>
+            <div class="two column row">
+                <div class="column">{{>videoSecurityDeepDive}}</div>
+            </div>
+        </div>
+    </div>
 </template>
 <template name="modalMindMapSecurity">
     <div class="ui modal mindMapSecurity">
@@ -139,8 +142,6 @@
                 In a quick overview you will see the key components for securing a Qlik Sense integration. Your goal is to create within a multi-tenant SaaS platform environment - embedded analytics - within your core application(s) where each of your customers would see and use only their data.
             </div>
             <div class="extra">
-                <!--                 As an example, it is possible to provide authorizations for a specific department or country within a dashboard. Ultimately you will see a simple solution in our demonstration in which both of our fictitious users, Peter and John, go to the same website, but see different things based on their authorizations. Qlik Sense makes this possible because it uses a dynamic attribute-based security approach in which we re-use all the pre-existing users and roles from your SaaS platform. This ensures Qlik Sense stays automatically in synch and avoids the overhead of double maintenance.
- -->
             </div>
         </div>
     </div>
