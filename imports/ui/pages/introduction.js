@@ -18,10 +18,18 @@ Template.introduction.events({
 });
 
 Template.introduction.onRendered(function() {
-    // console.log('introduction onRendered');
-
     Template.instance()
         .$('.ui.accordion')
         .accordion({ exclusive: false });
+
+    Template.instance().$('.ui.positive.button')
+        .popup({
+            title: 'Multi-tenant demo',
+            content: 'Press "register" on the bottom of the next page to create an account. This ensures you will get your own demo space within Qlik Sense.',
+            delay: {
+                show: 100,
+                hide: 0
+            }
+        });
 
 })
