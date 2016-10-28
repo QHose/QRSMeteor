@@ -190,10 +190,6 @@ Template.mainButtonsCustomers.events({
                     $set: { checked: !customer.checked },
                 });
             })
-    },
-    'click': function(event, template){
-        console.log('generic click pressed in OEMPartner.js');
-       Template.instance().$('.button').popup('remove popup')
     }
 })
 
