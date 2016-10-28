@@ -14,9 +14,15 @@ Template.layout.helpers({
     }
 });
 
+Template.layout.events({
+    'click': function(event, template) {
+        Template.instance().$('.button').popup('remove popup')
+    }
+})
+
 
 Template.layout.onRendered(function() {
-  // const instance = this;
-  // instance.connection = new ReactiveVar();
- 
+    // const instance = this;
+    // instance.connection = new ReactiveVar();
+
 });
