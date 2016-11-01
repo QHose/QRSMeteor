@@ -1,4 +1,4 @@
-<template name="webIntegration">
+<template name="webIntegration2">
     <div class="container">
         <div class="ui icon message">
             <img class="icon" src="images/API.png">
@@ -15,7 +15,7 @@
                 <div class="center aligned column">
                     <div class="ui mini buttons">
                         <a href="#" class="webIntegrationMindMap ui button">Mindmap</a>
-                      <!--   <div class="or"></div>
+                        <!--   <div class="or"></div>
                         <a href="{{doc_webIntegration}}" target="_blank" class="ui button">Read more</a> -->
                     </div>
                 </div>
@@ -23,34 +23,10 @@
         </div>
         <div class="ui two column centered grid">
             <div class="column centered">
-            {{> videoWebIntroduction}}
+                {{> videoWebIntroduction}}
             </div>
             <div class="column centered">
-            {{> videoWebExtended}}
-            </div>
-        </div>
-    </div>
-    <div class="ui modal webIntegrationMindMap">
-        <div class="ui icon message">
-            <img class="icon" src="images/API.png">
-            <div class="content">
-                <div class="header">
-                    <h4>Mindmap to integrate Qlik Sense in your SaaS platform</h4>
-                </div>
-                {{> webIntegrationText}}
-            </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="ui one column centered grid">
-            <div class="column centered">
-                <img class="ui fluid image" src="/images/mindMapWebIntegration.png">
-                <!-- <div class="ui embed" data-url="https://www.youtube.com/embed/Rnyt650C5jY" data-placeholder="/images/qlik sense integrated security flow.png"></div> -->
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
+                {{> videoWebExtended}}
             </div>
         </div>
     </div>
@@ -91,3 +67,69 @@
         </div>
     </div>
 </template>
+<template name="webIntegration">
+    <div class="ui very padded segment">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="seven wide column">
+                    <h3 class="ui header">Embed Qlik Sense in your SaaS platform</h3>
+                    <p>You can integrate the Qlik Sense hub, apps, sheets or individual objects using an Iframe or Div tag. All Sense functionality "is delivered via a webserver", called the proxy (QPS). The visual parts of Qlik Sense are based on common web technology like web sockets, javascript, CSS3, HTML5 and Angular. If you want to use our software to create apps, then you need the Qlik Sense Client contained in the Hub of Qlik Sense Enterprise. If you just want to display sheets or charts you can use both QAP and Qlik Sense Enterprise.</p>
+                    {{> webIntegrationText}}
+                    <div class="center aligned column">
+                        <div class="ui mini buttons">
+                            <a href="#" class="webIntegrationMindMap ui button">Mindmap</a>
+                            <!--   <div class="or"></div>
+                        <a href="{{doc_webIntegration}}" target="_blank" class="ui button">Read more</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="nine wide right floated column">
+                    <img class="ui fluid image" src="images/qlik sense embedded example.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui very padded segment">
+        {{>webVideos}}
+    </div>
+    {{>webIntegrationMindMap}}
+</template>
+<template name="webIntegrationMindMap">
+    <div class="ui modal webIntegrationMindMap">
+        <div class="ui icon message">
+            <img class="icon" src="images/API.png">
+            <div class="content">
+                <div class="header">
+                    <h4>Mindmap to integrate Qlik Sense in your SaaS platform</h4>
+                </div>
+                {{> webIntegrationText}}
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="ui one column centered grid">
+            <div class="column centered">
+                <img class="ui fluid image" src="/images/mindMapWebIntegration.png">
+                <!-- <div class="ui embed" data-url="https://www.youtube.com/embed/Rnyt650C5jY" data-placeholder="/images/qlik sense integrated security flow.png"></div> -->
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui positive right labeled icon button">
+                I got it...
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+</template>
+<template name="webVideos">
+    <div class="content ui">
+        <div class="ui padded grid">
+            <div class="two column row">
+                <div class="column"> {{> videoWebIntroduction}}</div>
+                <div class="column">
+                    {{> videoWebExtended}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
