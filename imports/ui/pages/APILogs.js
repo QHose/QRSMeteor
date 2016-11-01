@@ -11,8 +11,8 @@ Template.APILogs.helpers({
     RESTCallSettings: function() {
         return {
             rowsPerPage: 20,
-            responsive: true,
-            autoWidth: true,
+            responsive: false,
+            autoWidth: false,
             showFilter: true,
             showColumnToggles: true,
             fields: [
