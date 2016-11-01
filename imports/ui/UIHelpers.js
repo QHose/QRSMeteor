@@ -62,13 +62,8 @@ if (Meteor.isClient) {
         return "https://www.youtube.com/embed/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
     });
 
-
-    // Template.registerHelper('URL_howDoesSaaSAutomationWork', function() { //concept behind the demo
-    //     return 'JwBOco6fozo';
-    // });
-
-    Template.registerHelper('doc_demo_manual', function() { //concept behind the demo
-        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FHow%20to%20demo%20the%20Qlik%20Sense%20SaaS%20demo%20platform%7Cdb26fbc0-5631-4532-b719-a7cd4e6b7f55%2F%29';
+    Template.registerHelper('doc_demo_manual', function() { 
+        return '/docs/How to demo the Qlik Sense SaaS demo platform.pdf';
     });
 
     Template.registerHelper('doc_securtityIntegration', function() {
@@ -84,11 +79,11 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('doc_sourceCode', function() {
-        return 'https://github.com/QHose/QRSMeteor/blob/master/Sense%20Demo%20materials/Qlik%20Sense%20SaaS%20demo%20tool%20documentation%20of%20source%20code.docx';
+        return '/docs/Qlik Sense SaaS demo tool documentation of source code.docx';
     });
 
     Template.registerHelper('doc_webIntegration', function() {
-        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FWeb%20integration%20embed%20Sense%20charts%20or%20data%20inside%20your%20%7Cf0a1b951-668d-4c9f-9e85-b39a5ef1e05c%2F%29';
+        return 'docs/Web integration embed Sense charts or data inside your own website.pdf';
     });
     Template.registerHelper('doc_dataIntegration', function() {
         return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FData%20integration%20Combine%20sources%20into%20one%20associative%20model%7Ce669a0a2-9a83-470e-aae8-ba63ac500038%2F%29';
