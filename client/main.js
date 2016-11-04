@@ -57,14 +57,9 @@ Meteor.startup(function() {
 
         onClose: _.noop //
 
-    });
-
-      
-    AutoForm.setDefaultTemplate("semanticUI");
-    
-
+    });      
+    AutoForm.setDefaultTemplate("semanticUI");  
 });
-
 
 //Facebook sync
  window.fbAsyncInit = function() {

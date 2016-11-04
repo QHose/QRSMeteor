@@ -168,7 +168,7 @@ Template.mainButtonsCustomers.events({
         console.log('forward to step 4 sso clicked');
         Session.set('generated?', true);
     },
-    'click .backToGenerationStep' () {
+    'click .step4Buttons' () {
         Session.set('generated?', false);
     },
     'click .deleteAllCustomers' () {
@@ -238,8 +238,8 @@ Template.forwardToSSOStep.onRendered(function() {
         });
 })
 
-Template.backToGenerationStep.onRendered(function() {
-    this.$('.backToGenerationStep')
+Template.step4Buttons.onRendered(function() {
+    this.$('.step4Buttons')
         .popup({
             content: 'Go back one step, this lets you generate the apps and streams again'
         });

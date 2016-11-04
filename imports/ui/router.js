@@ -19,6 +19,7 @@ Router.route('/', function() {
 Router.route('/users');
 Router.route('/homeAbout');
 Router.route('/APILogs');
+Router.route('/ApiLogsTable');
 Router.route('/introduction');
 Router.route('/introductionExtended');
 Router.route('/introductionSecurity');

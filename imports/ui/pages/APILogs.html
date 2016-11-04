@@ -52,16 +52,13 @@
         <!--  <div class="right floated eight wide column">
             <img class="ui image" src="/images/Sequence diagram generation 1.png">
         </div> -->
-    <!-- </div> -->
-    <!-- <div class="ui divider"></div> -->
-    <!-- <div class="ui grid"> -->
-        <div class="ui sixteen wide column">
-            <div class="row">
-                <h3 class="ui header">            
-                Real time JSON messages (API)</h3>
-                <p>In the table below you will see a real time overview of JSON messages being sent between Qlik Sense QRS and the Engine API. You can search for specific words like app, stream, notification, logout etc. to view the API request from this demo platform and the response from Qlik Sense.</p>
-                {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}}
-            </div>
+        <!-- </div> -->
+        <!-- <div class="ui divider"></div> -->
+        <!-- <div class="ui grid"> -->
+        <div class="sixteen wide column">
+            
+                {{> ApiLogsTable}}
+         
         </div>
     </div>
     <div class="ui fullscreen modal sequenceGeneration">
@@ -93,6 +90,29 @@
         </div>
     </div>
     {{>modalSaaSautomation}} {{>APIIntegrationMindMap}}
+</template>
+<template name="ApiLogsTable">
+    <h3 class="ui header">Real time JSON messages (API)</h3>
+    <p>In the table below you will see a real time overview of JSON messages being sent between this SaaS platform and the Qlik Sense QRS and the Engine API. You can search for specific words like app, stream, SSO, ticket, logout etc. to view the request and the response from Qlik Sense.</p>
+        <!-- {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}} -->
+        <table class="ui fixed table">
+            <thead>
+                <tr>
+                    <th class="two wide">Action</th>
+                    <th class="six wide">Request from SaaS platform</th>
+                    <th class="eight wide">Response from Qlik Sense</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each restrictedApiLogs}}
+                <tr>
+                    <td>{{action}}</td>
+                    <td>{{request}}</td>
+                    <td>{{formattedResponse response}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
 </template>
 <template name="APIIntegrationMindMap">
     <div class="ui modal APIIntegrationMindMap">

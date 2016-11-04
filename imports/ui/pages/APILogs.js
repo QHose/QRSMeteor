@@ -7,7 +7,7 @@ import './sequenceDiagrams.js'
 import moment from 'moment';
 
 
-Template.APILogs.helpers({
+Template.ApiLogsTable.helpers({
     RESTCallSettings: function() {
         return {
             rowsPerPage: 20,
@@ -17,11 +17,13 @@ Template.APILogs.helpers({
             showColumnToggles: true,
             fields: [
                 { key: 'action', label: 'Action' },
-                { key: 'request', label: 'Request' }, {
+                { key: 'request', label: 'Request from SaaS platform' }, {
                     key: 'response',
-                    label: 'Response',
+                    label: 'Response from Qlik Sense',
                     fn: function(value) {
-                        return new Spacebars.SafeString('<pre id="json">' + JSON.stringify(value, undefined, 2) + '</pre>')
+                        if (value) {
+                            return new Spacebars.SafeString('<pre id="json">' + JSON.stringify(value, undefined, 2) + '</pre>')
+                        }
                     }
                 }, {
                     key: 'createDate',
@@ -48,8 +50,19 @@ Template.APILogs.helpers({
         };
     },
     restrictedApiLogs: function() {
-        return APILogs.find({}, { fields: { 'response.content': 0 } });
+        return APILogs.find({}, {
+            fields: {
+                'response.content': 0,
+                // 'response.headers.set-cookie': 0 
+            }
+        });
+    },
+    formattedResponse: function(value) {
+        if (value) {
+            return new Spacebars.SafeString('<pre id="json">' + JSON.stringify(value, undefined, 2) + '</pre>')
+        }
     }
+
 })
 
 Template.APILogs.events({
@@ -72,19 +85,19 @@ Template.APILogs.events({
         $('.ui.modal.howDoesSaaSAutomationWork')
             .modal('show');
     },
-     'click .APIIntegrationMindMap' () {
+    'click .APIIntegrationMindMap' () {
         $('.ui.modal.APIIntegrationMindMap')
             .modal('show');
     }
 })
 
 Template.APILogs.onRendered(function() {
-     Template.instance()
+    Template.instance()
         .$('.ui.accordion')
         .accordion({ exclusive: false });
 });
 
 
-Template.APILogs.onCreated(function() {
+Template.ApiLogsTable.onCreated(function() {
     const apiLogsHandle = Meteor.subscribe('apiLogs');
 });
