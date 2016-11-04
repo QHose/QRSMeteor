@@ -222,8 +222,8 @@
     {{#if readyToTestSSO}}{{>step4Buttons}} {{/if}} {{#if readyToGenerate}} {{>forwardToSSOStep}} {{/if}}
 </template>
 <template name="step4Buttons">
-    <div class="ui basic button step4Buttons"><i class="mail reply icon"></i> </div>
-    <a href="{{pathFor 'ApiLogsTable'}}"  target="_blank" class="ui basic button"><i class="list layout icon"></i> </a>
+    <div class="ui basic button backToStep3"><i class="mail reply icon"></i> </div>
+    <a href="{{pathFor 'ApiLogsTable'}}"  target="_blank" class="ui basic button ApiLogsTable"><i class="list layout icon"></i> </a>
 </template>
 <template name="forwardToSSOStep">
     <div class="ui basic button forwardToSSOStep"><i class="mail forward icon"></i>

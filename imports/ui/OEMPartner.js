@@ -127,7 +127,7 @@ Template.templateOverview.events({
     'click .removeTemplateApp' () {
         TemplateApps.remove(this._id);
     },
-    
+
 })
 
 Template.customerOverview.helpers({
@@ -239,10 +239,14 @@ Template.forwardToSSOStep.onRendered(function() {
 })
 
 Template.step4Buttons.onRendered(function() {
-    this.$('.step4Buttons')
+    this.$('.backToStep3')
         .popup({
             content: 'Go back one step, this lets you generate the apps and streams again'
         });
+    this.$('.ApiLogsTable')
+        .popup({
+            content: 'View the API calls'
+        });    
 })
 
 Template.step4.onRendered(function() {

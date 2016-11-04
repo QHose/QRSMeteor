@@ -9,7 +9,7 @@
     Documentation
   </a> {{#if currentUser}}
         <div class="ui right floated item">
-            <a href="#" class="logout">Logout</a>
+            <a href="#" class="logout item">Logout</a>
         </div>
         {{/if}}
     </div>
@@ -26,74 +26,4 @@
         </div>
     </div>
 </template>
-<template name="test">
-    <div class="ui fixed inverted menu">
-        <!-- <div class="ui container"> -->
-        <a href="{{pathFor 'generation'}}" class="header item">
-            <img class="logo" src="images/sense.png"> Multi-tenant Publisher
-        </a>
-        <a href="{{pathFor 'introduction'}}" class="header item">Intro</a>
-        <!-- <div class="right menu"> -->
-        {{#if currentUser}}
-        <div class="ui simple dropdown item">
-            Your SaaS platorm <i class="dropdown icon"></i>
-            <div class="menu">
-                {{#if readyToTestSSO}}
-                <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Your SaaS platform with Qlik Sense embedded</a>
-                <a class="item" href="{{senseServerHub}}" target="_blank">Not integrated, Hub using Single Sign On</a>
-                <a class="item" href="{{senseServerQMC}}" target="_blank">Not integrated, QMC using Single Sign On</a> {{/if}}
-                <a class="item" href="{{pathFor 'users'}}">Manage customers and users</a>
-            </div>
-        </div>
-        <div class="ui simple dropdown item">
-            QMC & API <i class="dropdown icon"></i>
-            <div class="menu">
-                <a href="{{pathFor 'APILogs'}}" class="item">API Calls</a>
-                <a href="{{pathFor 'securityRules'}}" class="item">QMC System rules</a>
-                <!-- <a href="{{doc_sourceCode}}" class="item">View source code of this demo platform</a> -->
-            </div>
-        </div>
-        {{/if}}
-        <!-- </div> -->
-        <div class="ui simple dropdown item">
-            Videos <i class="dropdown icon"></i>
-            <div class="menu">
-                <!-- <a href="{{pathFor 'introduction'}}" class="item">Introduction videos to the concept of this demo</a> -->
-                <a href="https://www.youtube.com/watch?v=T9a3s5cnvPE" class="item" target="_blank">Step by Step demo instructions</a>
-                <a href="https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk" target="_blank" class="item">YouTube playlist of all the videos on this site</a>
-                <div class="divider"></div>
-                <div class="header">Technical videos</div>
-                <a href="{{pathFor 'introductionSecurity'}}" class="item">Security integration</a>
-                <a href="{{pathFor 'webIntegration'}}" class="item">Web integration</a>
-                <a href="{{pathFor 'architecture'}}" class="item">Architecture and deployment</a>
-                <a href="http://www.youtube.com/playlist?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel" target="_blank" class="item">Generic Qlik Sense playlist</a>
-            </div>
-        </div>
-        <div class="ui simple dropdown item">
-            Documentation <i class="dropdown icon"></i>
-            <div class="menu">
-                <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FIntroduction%20to%20Qlik%20Sense%20%28Ext%5C%29%7C65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0%2F%29
-onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Introduction%20to%20Qlik%20Sense%20(Ext)&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0}&end" target="_blank">Introduction to Qlik Sense</a>
-                <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FIntegration%20overview%20-%20Embedded%20analytics%7C407276F9-01A5-4CBF-AD54-7AEFE86739D8%2F%29
-onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Integration%20overview%20-%20Embedded%20analytics&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={407276F9-01A5-4CBF-AD54-7AEFE86739D8}&end" target="_blank">Integration overview</a>
-                <a class="item" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Qlik Sense the big picture: Topology sheet</a>
-                <a class="item" href="{{doc_webIntegration}}" target="_blank">Web integration</a>
-                <a class="item" href="{{doc_securtityIntegration}}" target="_blank">Security integration</a>
-                <a class="item" href="https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FProcess%20integration%20and%20automation%20using%20API%27s%7Ca49986de-9191-4321-88f3-c286fdff0b83%2F%29" target="_blank">API - Process integration</a>
-                <a class="item" href="{{doc_dataIntegration}}" target="_blank">Data integration</a>
-                <div class="divider"></div>
-                <div class="header">POC Evaluation criteria</div>
-                <!--                 <a class="item" href="https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2F0%20Our%20integration%20approach%7C5d087372-31b5-4d44-98e1-bc62ce741b8e%2F%29" target="_blank">0: Qlik OEM integration approach - management summary</a>
-                <a class="item" href="https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2F1%20Desktop%20proof%20of%20concept%20High%20level%20overview%7C4dcdd947-a669-42bb-8dde-9c65de838925%2F%29" target="_blank">1: Proof of concept pre-visit management summary</a>
- --><a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F2%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary%7CA89DAA5F-F20A-4A68-AF02-E58549F53D20%2F%29
-                onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#2%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={A89DAA5F-F20A-4A68-AF02-E58549F53D20}&end" target="_blank">2: Proof of concept pre-visit document summary</a>
-                <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F3%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20detailed%7C2390CE6E-173A-499D-9574-C0294E62B16D%2F%29" target="_blank">3: Detailed steps for a POC</a>
-            </div>
-        </div>
-        {{#if currentUser}}
-        <div class="ui right floated item">
-            <a href="#" class="logout item">Logout</a>
-        </div>
-        {{/if}}
-    </div>
-</template>
+
