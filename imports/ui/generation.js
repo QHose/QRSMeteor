@@ -284,7 +284,7 @@ Template.generationApps.onRendered(function() {
     this.$('.title')
         .popup({
             title: 'Apps',
-            content: 'Via the QRS API we obtained the list of apps (dashboards). The app is at the core of Qlik Sense. An app is loaded with data, and the visualizations the app contains allow you and your colleagues to explore the data.',
+            content: 'Via the QRS API we obtained the list of apps (dashboards). The app is at the core of Qlik Sense. An app is loaded with data, and the visualizations the app contains allow your customers to explore the data.',
             delay: {
                 show: 1500,
                 hide: 0

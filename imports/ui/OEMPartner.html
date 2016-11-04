@@ -4,7 +4,7 @@
         <div class="content">
             {{#if freshEnvironment}}
             <div class="header">
-                1: Let's start publishing apps for your customers
+                Step 1: Let's start to setup the SaaS demo environment
             </div>
             <p>
                 First insert some customers with users in your SaaS platform.
@@ -15,7 +15,7 @@
             </p>
             {{/if}} {{#if readyToSelectTemplate}}
             <div class="header">
-                2: Select a template app
+                Step 2: Select a template app
             </div>
             <p>
                 Select the "my first template" app on the right.
@@ -30,7 +30,7 @@
             </p>
             {{/if}} {{#if readyToTestSSO}} {{> step4}} {{/if}} {{#if loading}}
             <div class="header">
-                3: API communication is in progress...
+                Step 3: API communication is in progress...
             </div>
             <p>This application is now sending REST and websocket based API calls to the Qlik Sense QRS and Engine API. See more info about API's, the source code, sequence diagrams and a real time API call overview in the <a href="{{pathFor 'ApiLogsTable'}}" target="_blank">API logs</a>. {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}}
             </p>
@@ -38,43 +38,42 @@
         </div>
     </div>
     {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}}
-    <div class="ui ">
-        <!-- <div class="ui buttons"> -->
-        {{#if readyToGenerate}}
-        <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i> 3: Generate</div>
-        <!-- <div class="or"></div> -->
-        {{/if}} {{#unless noCustomers}} {{> mainButtonsCustomers}} {{/unless}}
-        <!-- </div> -->
-        {{#if or noCustomers templateButNoCustomer}}
-        <div class="ui icon message">
-            <img class="icon" src="images/customers.png">
-            <div class="content">
-                <div class="header">
-                    <h4>No customers</h4>
-                </div>
-                {{#if freshEnvironment}}
-                <p>You have resetted the demo environment, and therefore this demo now simulates the first day of your SaaS platform. As a first step we need to insert some customers, or use the dummy customers (Sunny and Cloudy Petrol) we created for you.
-                </p>
-                <div class="ui fluid mini buttons">
-                    <a href="{{pathFor 'users'}}" class="ui button">Insert customers</a>
-                    <div class="or"></div>
-                    <a href="#" class="ui button insertDummyCustomers">Use dummy customers</a>
-                </div>
-                {{/if}}
+    
+    {{#unless noCustomers}} {{> mainButtonsCustomers}} {{/unless}}
+    {{#if readyToGenerate}}
+    <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i>Generate</div>
+    
+    {{/if}} 
+    
+    {{#if or noCustomers templateButNoCustomer}}
+    <div class="ui icon message">
+        <img class="icon" src="images/customers.png">
+        <div class="content">
+            <div class="header">
+                <h4>No customers</h4>
+            </div>
+            <p>You have resetted the demo environment, and therefore this demo now simulates the first day of your SaaS platform. As a first step we need to insert some customers, or use the dummy customers (Sunny and Cloudy Petrol) we created for you.
+            </p>
+            <div class="ui fluid mini buttons">
+                <a href="{{pathFor 'users'}}" class="ui button">Insert customers</a>
+                <div class="or"></div>
+                <a href="#" class="ui button insertDummyCustomers">Use dummy customers and template app</a>
             </div>
         </div>
-        {{else}} {{> customerOverview}} {{#if noTemplateApps}}
-        <div class="ui icon message">
-            <img class="icon" src="images/app.png">
-            <div class="content">
-                <div class="header">
-                    <h4>No template apps</h4>
-                </div>
-                <p>Please select an app in the templates stream (on the right) which you would like to use as a basis template. We will create a copy and publish it into the "customer name" stream for each of your selected customers</p>
-            </div>
-        </div>
-        {{else}} {{> templateOverview}} {{/if}} {{/if}}
     </div>
+    <!-- {{else}} {{> customerOverview}}  -->
+    {{#if readyToSelectTemplate}}
+    <div class="ui icon message">
+        <img class="icon" src="images/app.png">
+        <div class="content">
+            <div class="header">
+                <h4>No template apps</h4>
+            </div>
+            <p>Please select an app in the templates stream (on the right) which you would like to use as a basis template. We will create a copy and publish it into the "customer name" stream for each of your selected customers</p>
+        </div>
+    </div>
+    {{else}}
+    <!-- {{> templateOverview}} -->{{/if}} {{/if}}
     <div class="ui modal APIAutomation">
         <div class="ui icon message">
             <img class="icon" src="images/API.png">
@@ -164,21 +163,27 @@
 </template>
 <Template name="step3">
     <div class="header">
-        3: Press generate
+        Step 3: Generate streams and apps
     </div>
     <p>
         Press the green generation button to start creating streams and apps for each of your selected customers.
         <div class="ui accordion">
             <div class="title">
-                <i class="dropdown icon"></i>Read more...
+                <i class="dropdown icon"></i>Read more on SaaS provisioning...
             </div>
             <div class="content">
-                <p>
-                    If you press generate a sequence of activities will be executed automatically via the API's. You can test each activity also manually and see the <a href="{{pathFor 'ApiLogsTable'}}" class="item">API Calls</a>. By clicking on the "columns" button you can select extra buttons.
-                    <br> For example you can press "create stream" next to the customer to create a stream, or press "Copy app" to manually copy the app for each selected customer.
+                <h4>Manual activities</h4>
+                <p>This demo platform provides you with a wrapper around the Qlik Sense QMC, so you can send API calls to Qlik Sense by pressing certain buttons. Using these calls you can, for example, create streams and apps or complete any other activity that you’d be able to do in the QMC or app. Each activity you do is logged. In these logs you can see the request from this demo platform and the responses from Qlik Sense.
+                    <br>
+                    <a href="{{pathFor 'ApiLogsTable'}}" class="ui mini button">API calls</a>
+                    <br> For example you can press
+                    <ul>
+                        <li>"create stream" next to the customer to create a stream.</li>
+                        <li>"Copy app" to manually copy the app for each selected customer.</li>
+                    </ul> 
                     <br> Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay or who have activited the app in your software, so this "selection" simulates that use case.</p>
                 <p>
-                    <h4>Fully automated app generation</h4>You can also automate each step, this happens when you press the generate button. It executes a chain of actions; it will publish a copy of the template app in the "customer name" stream. Next to this it replaces and reloads the script with a customer specific one.
+                    <h4>Fully automated SaaS provisioning</h4>{{> usingTheDemo}}
                 </p>
                 <p>See more information about the generation or API automation <a href="#" class="APIAutomation">here</a> </p>
             </div>
@@ -200,11 +205,15 @@
                 <p>
                     If you select a user a ticket will be requested which inludes your SaaS platform's current authorizations (the groups) in a dynamic way. This means you don't have to create users and roles up front in Qlik Sense. The <a href="{{pathFor 'securityRules'}}" class="item">QMC security rules</a> are also created in a dynamic way, so we can protect the apps and streams with a couple of generic rules. The row/column level security is done via a special section in the script of an app (QVF). In this demo we used the group (Country) to ensure each user only sees his country in the "row level security app" in the " everyone stream.</p>
                 <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
+                <div class="ui fluid mini buttons">
+                    <a class="ui mini button" href="{{pathFor 'users'}}">Users and groups</a>
+                    <div class="or"></div>
+                    <a href="#" class="ui mini button selfservice">Levels of self service</a>
+                </div>
             </div>
         </div>
     </p>
 </Template>
-
 <template name="mainButtonsCustomers">
     <!-- <div class="ui buttons"> -->
     <div class="ui {{loading}} basic button resetEnvironment"><i class="delete icon"></i>
@@ -223,7 +232,7 @@
 </template>
 <template name="step4Buttons">
     <div class="ui basic button backToStep3"><i class="mail reply icon"></i> </div>
-    <a href="{{pathFor 'ApiLogsTable'}}"  target="_blank" class="ui basic button ApiLogsTable"><i class="list layout icon"></i> </a>
+    <a href="{{pathFor 'ApiLogsTable'}}" target="_blank" class="ui basic button ApiLogsTable"><i class="list layout icon"></i> </a>
 </template>
 <template name="forwardToSSOStep">
     <div class="ui basic button forwardToSSOStep"><i class="mail forward icon"></i>

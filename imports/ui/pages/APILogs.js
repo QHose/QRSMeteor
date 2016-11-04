@@ -54,7 +54,8 @@ Template.ApiLogsTable.helpers({
             fields: {
                 'response.content': 0,
                 // 'response.headers.set-cookie': 0 
-            }
+            },
+            sort: { createDate: -1 }
         });
     },
     formattedResponse: function(value) {

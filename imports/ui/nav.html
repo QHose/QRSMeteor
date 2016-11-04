@@ -1,7 +1,8 @@
 <template name="nav">
     <div class="ui secondary menu navbar">
         <a href="{{pathFor 'introduction'}}" class="header item">
-            <img class="logo" src="images/sense.png">Home</a>
+            <!-- <img class="logo" src="images/sense.png"> -->
+            Home</a>
         <a href="{{pathFor 'generation'}}" class="header item">
            Demo
         </a> {{#if isDemoPage}} {{> yourSaasPlatformMenu}} {{/if}}
@@ -20,9 +21,10 @@
         <div class="menu">
             <a href="{{pathFor 'securityRules'}}" class="item">QMC System rules</a> {{#if readyToTestSSO}}
             <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Your SaaS platform with Qlik Sense embedded</a>
-            <a class="item" href="{{senseServerHub}}" target="_blank">Not integrated, Hub using Single Sign On</a>
-            <a class="item" href="{{senseServerQMC}}" target="_blank">Not integrated, QMC using Single Sign On</a> {{/if}}
-            <a class="item" href="{{pathFor 'users'}}">Manage customers and users</a>
+            <a class="item" href="{{senseServerHub}}" target="_blank">Not embedded, Hub using Single Sign On</a>
+            <a class="item" href="{{senseServerQMC}}" target="_blank">Not embedded, QMC using Single Sign On</a> {{/if}}
+            <a class="item" href="{{pathFor 'users'}}">Customers and users</a>
+            <a class="item" href="{{pathFor 'templateOverview'}}">Selected template apps</a>
         </div>
     </div>
 </template>

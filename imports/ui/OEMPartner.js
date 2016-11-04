@@ -168,7 +168,7 @@ Template.mainButtonsCustomers.events({
         console.log('forward to step 4 sso clicked');
         Session.set('generated?', true);
     },
-    'click .step4Buttons' () {
+    'click .backToStep3' () {
         Session.set('generated?', false);
     },
     'click .deleteAllCustomers' () {

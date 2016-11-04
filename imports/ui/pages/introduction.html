@@ -1,8 +1,8 @@
 <template name="introduction">
-    <div class="ui grid">
-        <div class="fourteen wide column ui raised segment">
+    <div class="ui relaxed grid raised segment">
+        
             {{> introConcept}}
-        </div>
+        
         <!-- <div class="fourteen wide column ui very padded raised segment">
             {{> introAPI}}
         </div>
@@ -24,84 +24,80 @@
     </div> -->
 </template>
 <template name="introConcept">
-    <div class="ui middle aligned padded grid container">
-        <div class="row">
-            <div class="seven wide column">
-             <h3 class="ui header">The SaaS with Qlik Sense demo platform</h3>
-                <p>Questions about the SaaS with Qlik Sense demo platform? Today we’d like to show you how you can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment.
-                    <div class="ui accordion">
-                        <div class="title">
-                            <div class="ui mini buttons">
-                                <a href="" class="ui button dropdown">Read more</a>
-                                <div class="or"></div>
-                                <a href="#" class="ui button howDoesSaaSAutomationWork"><i class="youtube icon"></i> Introduction video</a>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <p class="transition hidden">APIs are our secret sauce so this website is specifically designed to illustrate the unique selling points of our Qlik Sense APIs. Our goal is to illustrate the power of Qlik Sense APIs in language that can be easily understood by non-technical business users or decision-makers via our step-by-step walk-through. This learning environment was developed using our experiences with AFAS, as well as other key customer accounts. We are eager to explain, excite and reassure senior executives and management about the Qlik platform by modeling its ease of use and full automation capabilities.</p>
-                            <p>This presentation precedes our full demonstration environment, aiming to bridge any knowledge gaps for our non-technical prospects while providing a clear and simple pathway towards understanding how to embed Qlik Sense in a multi-tenant SaaS application platform. A key outcome for using this demonstration asset is to mitigate potential risk early in the sales cycle, build enthusiasm/interest for Qlik Sense and its capabilities, and showcase our readiness to support the customer or partner’s vision for embedding analytics within their application suite.</p>
-                            <p>This prospect experience is supported by several linked assets. We have a demo website which simulates the SaaS platform of an OEM partner, including videos and documentation illustrating each integration topic and a presentation taking the audience through a journey which highlights key aspects of Qlik Sense, its APIs and the overall value of Qlik.</p>
-                        </div>
+    <div class="seven wide column">
+        <h3 class="ui header">The SaaS with Qlik Sense demo platform</h3>
+        <p>Questions about the SaaS with Qlik Sense demo platform? Today we’d like to show you how you can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment.
+            <div class="ui accordion">
+                <div class="title">
+                    <div class="ui mini buttons">
+                        <a href="" class="ui button dropdown">Read more</a>
+                        <div class="or"></div>
+                        <a href="#" class="ui button howDoesSaaSAutomationWork"><i class="youtube icon"></i> Introduction video</a>
                     </div>
-                </p>
-                <h3 class="ui header">Using the demo</h3>
-                <p>This demo shows you how to copy an app (dashboard) which serves as a "template layout" for each of your customers. Besides creating a copy, we will also reload the app with data from the customer database. Because you are able to insert a custom script, you can also specify customer specific data models like "custom fields and tables" or create them on the fly in order to connect to big data sources. In the end we make a unique stream for each customer and publish the app into this stream. If you need additional guidance please look at our "How to" <a href="#" class="stepByStep">Video</a> or <a href="{{doc_demo_manual}}" class="" target="_blank">Manual</a>.
-                    <div class="ui accordion">
-                        <div class="title">
-                            <div class="ui mini buttons">
-                                <a href="" class="ui button dropdown">Read more</a>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <p class="transition hidden">
-                                In the demo you will see a screen divided into two parts:
-                                <ul>
-                                    <li>The left side shows "the broker" in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights, and the relevant template apps (depending on what the customer has configured in your platform).</li>
-                                    <li>The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense.</li>
-                                </ul>
-                                In order to finish the demo, you must complete the following steps:
-                                <ol>
-                                    <li><b>Select your customers</b>. In your SaaS platform you have the ability to store which customers should receive which apps. We simulate this feature by letting you select the customers. By pressing the button, you also select an "app" to be used as a template for the layout.</li>
-                                    <li><b>Press generate</b>, This will make a copy of the template app for each of your customers. It replaces the generic script with a customer specific one and reloads the app.</li>
-                                    <li><b>Select a user and press the green button.</b> This allows you to test the single sign on and make sure that each customer can only see their own data (streams and apps). You can also test row level security by opening the "row level security" app in the "everyone stream". This demonstrates that each user only sees the values pertaining to the country of their group membership.</li>
-                                </ol>
-                            </p>
-                        </div>
-                    </div>
-                </p>
+                </div>
+                <div class="content">
+                    <p class="transition hidden">APIs are our secret sauce so this website is specifically designed to illustrate the unique selling points of our Qlik Sense APIs. Our goal is to illustrate the power of Qlik Sense APIs in language that can be easily understood by non-technical business users or decision-makers via our step-by-step walk-through. This learning environment was developed using our experiences with AFAS, as well as other key customer accounts. We are eager to explain, excite and reassure senior executives and management about the Qlik platform by modeling its ease of use and full automation capabilities.</p>
+                    <p>This presentation precedes our full demonstration environment, aiming to bridge any knowledge gaps for our non-technical prospects while providing a clear and simple pathway towards understanding how to embed Qlik Sense in a multi-tenant SaaS application platform. A key outcome for using this demonstration asset is to mitigate potential risk early in the sales cycle, build enthusiasm/interest for Qlik Sense and its capabilities, and showcase our readiness to support the customer or partner’s vision for embedding analytics within their application suite.</p>
+                    <p>This prospect experience is supported by several linked assets. We have a demo website which simulates the SaaS platform of an OEM partner, including videos and documentation illustrating each integration topic and a presentation taking the audience through a journey which highlights key aspects of Qlik Sense, its APIs and the overall value of Qlik.</p>
+                </div>
             </div>
-            <div class="nine wide right floated column">
-                <img class="ui fluid image" src="images/only generation explanation.gif">
-            </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <div class="ui accordion">
-                    <div class="title">
-                        <div class="ui medium buttons">
-                            <a href="#" class="ui dropdown youtube button"><i class="youtube icon"></i>Video overview</a>
-                            <div class="or"></div>
-                            <a href="{{pathFor 'generation'}}" class="ui positive button">Multi-tenant demo</a>
-                        </div>
+        </p>
+        <h3 class="ui header">Using the demo</h3>
+        <p>{{> usingTheDemo}}
+            <div class="ui accordion">
+                <div class="title">
+                    <div class="ui mini buttons">
+                        <a href="" class="ui button dropdown">Read more</a>
                     </div>
-                    <div class="content ui segment">
-                        <h4 class="transition hidden">
+                </div>
+                <div class="content">
+                    <p class="transition hidden">
+                        In the demo you will see a screen divided into two parts:
+                        <ul>
+                            <li>The left side shows "the broker" in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights, and the relevant template apps (depending on what the customer has configured in your platform).</li>
+                            <li>The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense.</li>
+                        </ul>
+                        In order to finish the demo, you must complete the following steps:
+                        <ol>
+                            <li><b>Select your customers</b>. In your SaaS platform you have the ability to store which customers should receive which apps. We simulate this feature by letting you select the customers. By pressing the button, you also select an "app" to be used as a template for the layout.</li>
+                            <li><b>Press generate</b>, This will make a copy of the template app for each of your customers. It replaces the generic script with a customer specific one and reloads the app.</li>
+                            <li><b>Select a user and press the green button.</b> This allows you to test the single sign on and make sure that each customer can only see their own data (streams and apps). You can also test row level security by opening the "row level security" app in the "everyone stream". This demonstrates that each user only sees the values pertaining to the country of their group membership.</li>
+                        </ol>
+                    </p>
+                </div>
+            </div>
+        </p>
+    </div>
+    <div class="nine wide right floated column">
+        <img class="ui fluid image" src="images/only generation explanation.gif">
+    </div>
+    <div class="row">
+        <div class="column">
+            <div class="ui accordion">
+                <div class="title">
+                    <div class="ui medium buttons">
+                        <a href="#" class="ui dropdown youtube button"><i class="youtube icon"></i>Video overview</a>
+                        <div class="or"></div>
+                        <a href="{{pathFor 'generation'}}" class="ui positive button">Multi-tenant demo</a>
+                    </div>
+                </div>
+                <div class="content ui segment">
+                    <h4 class="transition hidden">
                                 </h4>
-                        <div class="ui message">
-                            <div class="header">
-                                Video overview
-                            </div>
-                            <p>The videos below have been especially designed to explain you a common approach to embed Qlik Sense in your SaaS platform. It is not the only approach, but normally will cover 80% of the use cases and will get you started.
-                            </p>
-                            <ul class="list">
-                                <li>Introduction to the demo platform and integration in general</li>
-                                <li>Architecture</li>
-                                <li>Security</li>
-                                <li>Web integration</li>
-                            </ul>
+                    <div class="ui message">
+                        <div class="header">
+                            Video overview
                         </div>
-                        {{> videoOverview}}
+                        <p>The videos below have been especially designed to explain you a common approach to embed Qlik Sense in your SaaS platform. It is not the only approach, but normally will cover 80% of the use cases and will get you started.
+                        </p>
+                        <ul class="list">
+                            <li>Introduction to the demo platform and integration in general</li>
+                            <li>Architecture</li>
+                            <li>Security</li>
+                            <li>Web integration</li>
+                        </ul>
                     </div>
+                    {{> videoOverview}}
                 </div>
             </div>
         </div>
@@ -217,3 +213,5 @@
         </div>
     </div>
 </template>
+
+<template name="usingTheDemo">This demo shows you how to copy an app (dashboard) which serves as a "template layout" for each of your customers. Besides creating a copy, we will also reload the app with data from the customer database. Because you are able to insert a custom script, you can also specify customer specific data models like "custom fields and tables" or create them on the fly in order to connect to big data sources. In the end we make a unique stream for each customer and publish the app into this stream. If you need additional guidance please look at our "How to" <a href="#" class="stepByStep">Video</a> or <a href="{{doc_demo_manual}}" class="" target="_blank">Manual</a>.</template>
