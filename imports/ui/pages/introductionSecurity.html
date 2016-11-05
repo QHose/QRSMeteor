@@ -1,40 +1,34 @@
 <template name="introductionSecurity">
-    <div class="ui very padded grid">
-        <div class="five wide column">
-            <h3 class="ui header">Integrated security flow</h3>
-            <p>Your goal is to create embedded analytics using the Qlik platform within a multi-tenant SaaS environment, where each of your customers would only have access to their own data. It’s possible for each customer to have a more finely tuned authorization structure. For example, it is possible to provide authorizations for a specific department or country within a dashboard. You’ll see a simple solution in our demonstration where both of our fictitious users, Peter and John, go to the same website, but see different things based on their authorizations. Qlik Sense makes this possible because it uses a dynamic, attribute-based security approach in which we re-use all the pre-existing users and roles from your SaaS platform. This ensures Qlik Sense stays in sync automatically and avoids the overhead of double maintenance.</p>
-            <div class="ui mini buttons">
-                <a href="{{seq_ticketing_flow}}" target="_blank" class="ui button">Sequence diagram of the ticketing flow used in this demo</a>
-            </div>
+    <div class="ui text container">
+        <h3 class="ui header">Security integration</h3>
+        <!-- <img class="ui large right floated image" src="images/full integration flow.gif"> -->
+        <p>Your goal is to create embedded analytics using the Qlik platform within a multi-tenant SaaS environment, where each of your customers would only have access to their own data. It’s possible for each customer to have a more finely tuned authorization structure. For example, it is possible to provide authorizations for a specific department or country within a dashboard. You’ll see a simple solution in our demonstration where both of our fictitious users, Peter and John, go to the same website, but see different things based on their authorizations. Qlik Sense makes this possible because it uses a dynamic, attribute-based security approach in which we re-use all the pre-existing users and roles from your SaaS platform. This ensures Qlik Sense stays in sync automatically and avoids the overhead of double maintenance.</p>
+        <div class="ui mini buttons">
+            <a href="{{seq_ticketing_flow}}" target="_blank" class="ui button">Sequence diagram of the ticketing flow used in this demo</a>
         </div>
-        <div class="six wide column">
-            <img class="ui fluid image" src="images/full integration flow.gif">
-        </div>
-        <div class="ui five wide column">
-            <h4 class="ui header">Authentication</h4> We re-use your existing way of authenticating users. We insert a small piece of code inside your existing "security module.” In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via an SSL certificate exchange), and send this information about the user (user ID, group membership) in a JSON object to Sense (we call this ticketing).
-            <h4 class="ui header">Authorization</h4> Based on the user ID and group membership streams, apps and sheets called "resources" in our rule based security model) are either shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer their own stream, we can grant access if the name of the stream (the company name) matches the name of the company we received from the website in the ticket. This can be controlled by adding 1 row of security configuration: User.group = resource.name.
+        <h4 class="ui header">Authentication</h4>
+        <img class="ui small left floated image" src="images/id.png"> We re-use your existing way of authenticating users. We insert a small piece of code inside your existing "security module.” In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via an SSL certificate exchange), and send this information about the user (user ID, group membership) in a JSON object to Sense (we call this ticketing).
+        <h4 class="ui header">Authorization</h4>
+        <img class="ui small right floated image" src="images/securityRules.png">Based on the user ID and group membership streams, apps and sheets called "resources" in our rule based security model) are either shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer their own stream, we can grant access if the name of the stream (the company name) matches the name of the company we received from the website in the ticket. This can be controlled by adding 1 row of security configuration: User.group = resource.name.
+        <div class="center aligned column">
             <div class="center aligned column">
-                <div class="center aligned column">
-                    <div class="ui mini buttons">
-                        <a href="{{doc_securtityIntegration}}" target="_blank" class="ui button">Read more</a>
-                        <div class="or"></div>
-                        <a class="ui button" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a>
-                        <div class="or"></div>
-                        <a href="#" class="ui button mindMapSecurity">Mindmap</a>
-                    </div>
+                <div class="ui mini buttons">
+                    <a href="{{doc_securtityIntegration}}" target="_blank" class="ui button">Read more</a>
+                    <div class="or"></div>
+                    <a class="ui button" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a>
+                    <div class="or"></div>
+                    <a href="#" class="ui button mindMapSecurity">Mindmap</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="ui very padded segment">        
-            <h3 class="ui header">Videos</h3>            
-                {{> securityVideos}}           
+    <div class="ui container segment">
+        <h3 class="ui header">Videos</h3> {{> securityVideos}}
     </div>
-    <!-- </div> -->
     {{> modalMindMapSecurity}}
 </template>
 <template name="securityVideos">
-    <div class="ui padded grid">
+    <div class="ui grid">
         <div class="five wide column">{{>videoSecurityFlow}}</div>
         <!-- <div class="column">{{>videoSecurityIntroduction}}</div> -->
         <div class="five wide column">{{>videoGenericSecurityIntro}}</div>
