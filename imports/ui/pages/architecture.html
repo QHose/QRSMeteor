@@ -1,61 +1,111 @@
 <template name="architecture">
-    <div class="ui very padded grid">
-        <div class="seven wide column">
-            <h3>Integrated architecture</h3> {{>introductionArchitecturePage}}
-        </div>
-        <div class="nine wide right floated column">
-            <div class="ui embed" data-url='{{URL_Youtube_architecture_introduction}}' data-placeholder="/images/introVideoArchitecture.png"></div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="sixteen wide column">
-            <div class="column ui segment">
-                <h3>Integrated architecture diagram</h3>
-                <img class="ui fluid image" src="images/integratedArchitecture.png">
+    <div class="ui text container">
+        <h3>Integrated architecture</h3> {{>introductionArchitecturePage}}
+    </div>
+    <div class="sixteen wide column">
+        <div class="ui segment">
+            <h4>Videos</h4>
+            <div class="ui grid">
+                <div class="five wide column"> {{> introVideoArchitecture}}</div>
+                <div class="five wide column">{{> introVideoArchitectureMike}}</div>
+                <div class="five wide column">{{> introVideoArchitectureMarcus}}</div>
             </div>
+        </div>
+        <div class="ui segment">
+            <h3>Integrated architecture diagram</h3>
+            <img class="ui fluid image" src="images/integratedArchitecture.png">
         </div>
     </div>
 </template>
 <template name="introductionArchitecturePage">
     <!--     <h4> Qlik Sense architecture and deployment</h4>
 -->
-    <p> The integration of two software platforms entails multiple considerations. Each platform has its own nuances. In our approach here , we deconstruct our integration approach into the following categories: dashboard, data, security, web, APIs and architecture.</p> 
+    <p> The integration of two software platforms entails multiple considerations. Each platform has its own nuances. In our approach here , we deconstruct our integration approach into the following categories: dashboard, data, security, web, APIs and architecture.</p>
     <a class="ui mini button" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a>
-    <div class="ui accordion">
-        <div class="title">
-            <i class="dropdown icon"></i> Click here to read more...
-        </div>
+    <h4>Web integration</h4>
+    <!-- <img class="ui small right floated image" src="images/embed.png"> -->
+    <p> In the picture at the bottom of this page you will find all integration aspects together in 1 overview for a typical SaaS provisioning architecture, in which we have
+        <ul>
+            <li>Your SaaS platform's server</li>
+            <li>Qlik Sense server</li>
+            <li>A database per customer</li>
+            <li>A master configuration database</li>
+            <li>Your current API "broker"</li>
+        </ul>
+    </p>
+    <div class="ui divider"></div>
+    <h4>Data integration</h4>
+    <img class="ui large left floated image" src="images/dataIntegrationIntro.png">
+    <p>A powerful <a href="http://www.qlik.com/us/products/data-sources">data integration capability</a> for cleansing, transforming, and unifying multiple, disparate data sources for analysis. A robust data integration layer creates a unified view of information from many different sources, without requiring external tools or data repositories.
+    </p>
+    <p>
+        In the demo we’ve assumed you have a database per customer instance and you also have a master database which contains the customers, the database connections, user rights and possibly customer specific custom tables and fields.
+    </p>
+    <div class="ui divider"></div>
+    <img class="ui tiny right floated image" src="images/id.png">
+    <h4>Security integration</h4>
+    <p>Actually you don't need to do so much on the security side. You don't create users or groups in Sense. You just supply the userID and group membership in the security ticket. Based on the info in the ticket access is provided. Resources are protected using the <a href="https://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/property-based-access-control.htm">security rules</a>, data filtering inside an app is enforced using <a href="https://help.qlik.com/en-US/sense/3.1/Subsystems/Hub/Content/Scripting/Security/manage-security-with-section-access.htm">"section access"</a>.</p>
+    <div class="ui divider"></div>
+    <h4>API - Process integration</h4>
+    <p>In the demo you will see the broker in action. But what are the activities that the SaaS broker automates in the demo? What are the steps or stages?</p>
+    <ul>
+        <li>First it will create a stream for each customer. </li>
+        <li>Secondly it will copy the template app. </li>
+        <li>Next it replaces the script with a customer-specific one, or in most cases you just have to replace the database connection.</li>
+        <li>Using the new script, the app is reloaded. You can also use this mechanism to query big data sources like MongoDB. This is where we basically make a compressed copy of the data and create the associative model.</li>
+        <li>In the final stage we publish the app in the stream with the name of the customer.</li>
+    </ul>
+</template>
+<template name="introVideoArchitecture">
+    <h4 class="ui header">Integrated architecture (3M)</h4>
+    <div class="ui embed" data-url="{{URL_Youtube_architecture_introduction}}" data-placeholder="/images/integratedArchitecture.png"></div>
+    <div class="item">
         <div class="content">
-            <p class="transition hidden">
-                <h5>Web integration</h5> In the picture below you will find all integration aspects together in 1 overview for a typical OEM architecture, in which we have
+            <a class="header">Contents</a>
+            <div class="meta">
+                <span></span>
+            </div>
+            <div class="description">
+                <p>Let’s review the Qlik Sense architecture integration considerations at a high level. </p>
+            </div>
+            <div class="extra">
                 <ul>
-                    <li>Your SaaS platform's server</li>
-                    <li>Qlik Sense server</li>
-                    <li>A database per customer</li>
-                    <li>A master configuration database</li>
-                    <li>Your current API "broker"</li>
+                    <li>What are the key compononents of Qlik Sense?</li>
+                    <li>How can you load data?</li>
+                    <li>How can you connect to the Qlik Sense Hub and management console (QMC)? </li>
+                    <li>Authentication integration and use of APIs</li>
                 </ul>
-                <div class="ui divider"></div>
-                <h5>Data integration</h5>
-                <p>A powerful data integration capability for cleansing, transforming, and unifying multiple, disparate data sources for analysis. A robust data integration layer creates a unified view of information from many different sources, without requiring external tools or data repositories.
-                </p>
-                <ul>
-                    <li>We’ve assumed you have a database per customer instance and you also have a master database which contains the customers, the database connections, user rights and possibly customer specific custom tables and fields.
-                    </li>
-                </ul>
-                <div class="ui divider"></div>
-                <h5>Security integration</h5>
-                <p>Actually you don't need to do so much on the security side. You don't create users or groups in Sense. You just supply the userID and group membership in the security ticket. Based on the info in the ticket access is provided.</p>
-                <div class="ui divider"></div>
-                <h5>Process integration</h5>
-                <p>In the demo you will see the broker in action. But what are the activities that the SaaS broker automates in the demo? What are the steps or stages?</p>
-                <ul>
-                    <li>First it will create a stream for each customer. </li>
-                    <li>Secondly it will copy the template app. </li>
-                    <li>Next it replaces the script with a customer-specific one, or in most cases you just have to replace the database connection.</li>
-                    <li>Using the new script, the app is reloaded. You can also use this mechanism to query big data sources like MongoDB. This is where we basically make a compressed copy of the data and create the associative model.</li>
-                    <li>In the final stage we publish the app in the stream with the name of the customer.</li>
-                </ul>
-            </p>
+            </div>
+        </div>
+    </div>
+</template>
+<template name="introVideoArchitectureMike">
+    <h4 class="ui header">Introduction architecture (5M)</h4>
+    <div class="ui embed" data-url="https://www.youtube.com/embed/4w5mMar5o-M"></div>
+    <div class="item">
+        <div class="content">
+            <a class="header">Contents</a>
+            <div class="meta">
+                <span></span>
+            </div>
+            <div class="description">
+                <p>This video presents a brief overview of the Qlik Sense platform architecture.</p>
+            </div>
+        </div>
+    </div>
+</template>
+<template name="introVideoArchitectureMarcus">
+    <h4 class="ui header">Scalability (9M)</h4>
+    <div class="ui embed" data-url="https://www.youtube.com/embed/XZx9nKLR4ps"></div>
+    <div class="item">
+        <div class="content">
+            <a class="header">Contents</a>
+            <div class="meta">
+                <span></span>
+            </div>
+            <div class="description">
+                <p>Marcus Spitzmiller, Master Principal Enterprise Architect, presents this high level presentation which is targeted toward technical leaders (IT, BI) that need to understand how the capabilities within Qlik Sense enable visual analytics to be scaled within an organization.</p>
+            </div>
         </div>
     </div>
 </template>
