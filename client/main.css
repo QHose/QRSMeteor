@@ -21,11 +21,11 @@ pre {
 }
 
 .text.container .left.floated.image {
-    margin: 2em 2em 2em -4em;
+    margin: 2em 2em 2em -5em;
 }
 
 .text.container .right.floated.image {
-    margin: 2em -4em 2em 4em;
+    margin: 2em -4em 2em 5em;
 }
 
 .overlay {
