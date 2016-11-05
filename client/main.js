@@ -24,6 +24,8 @@ import '/imports/ui/pages/documentation.js';
 import '/imports/ui/pages/APILogs.html';
 import '/imports/ui/pages/videoOverview.html';
 import '/imports/ui/pages/APILogs.js';
+import '/imports/ui/pages/modals.html';
+import '/imports/ui/pages/modals.js';
 import '/imports/ui/pages/videoOverview.html';
 import '/imports/ui/pages/videoOverview.js';
 import '/imports/ui/pages/architecture.html';

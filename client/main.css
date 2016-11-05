@@ -1,4 +1,5 @@
 /*CSS declarations go here */
+
 .container {
     margin-top: 4em;
 }
@@ -18,3 +19,25 @@
 pre {
     white-space: pre-wrap;
 }
+
+.text.container .left.floated.image {
+    margin: 2em 2em 2em -4em;
+}
+
+.text.container .right.floated.image {
+    margin: 2em -4em 2em 4em;
+}
+
+.overlay {
+    float: left;
+    margin: 0em 3em 1em 0em;
+  }
+  .overlay .menu {
+    position: relative;
+    left: 0;
+    transition: left 0.5s ease;
+  }
+
+.overlay.fixed .menu {
+    left: 800px;
+  }

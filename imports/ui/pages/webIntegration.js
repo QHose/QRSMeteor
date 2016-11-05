@@ -12,11 +12,7 @@ Template.webIntegration.events({
 })
 
 Template.webIntegration.onRendered(function() {
-    console.log('webIntegration onRendered');
-
     Template.instance()
         .$('.ui.embed')
         .embed();
-
-
 })

@@ -1,8 +1,6 @@
 <template name="introduction">
-    <div class="ui relaxed grid raised segment">
-        
-            {{> introConcept}}
-        
+    <div class="ui two column doubling stackable grid container raised segment">
+        {{> introConcept}}
         <!-- <div class="fourteen wide column ui very padded raised segment">
             {{> introAPI}}
         </div>
@@ -24,16 +22,18 @@
     </div> -->
 </template>
 <template name="introConcept">
-    <div class="seven wide column">
+    <div class="sixteen wide column">
         <h3 class="ui header">The SaaS with Qlik Sense demo platform</h3>
+    </div>
+    <div class="seven wide column">
         <p>Questions about the SaaS with Qlik Sense demo platform? Today we’d like to show you how you can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment.
             <div class="ui accordion">
                 <div class="title">
-                    <div class="ui mini buttons">
-                        <a href="" class="ui button dropdown">Read more</a>
-                        <div class="or"></div>
+                    <!-- <div class="ui mini buttons"> -->
+                    <a href="" class="ui mini button dropdown">Read more</a>
+                    <!-- <div class="or"></div>
                         <a href="#" class="ui button howDoesSaaSAutomationWork"><i class="youtube icon"></i> Introduction video</a>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="content">
                     <p class="transition hidden">APIs are our secret sauce so this website is specifically designed to illustrate the unique selling points of our Qlik Sense APIs. Our goal is to illustrate the power of Qlik Sense APIs in language that can be easily understood by non-technical business users or decision-makers via our step-by-step walk-through. This learning environment was developed using our experiences with AFAS, as well as other key customer accounts. We are eager to explain, excite and reassure senior executives and management about the Qlik platform by modeling its ease of use and full automation capabilities.</p>
@@ -69,10 +69,12 @@
         </p>
     </div>
     <div class="nine wide right floated column">
-        <img class="ui fluid image" src="images/only generation explanation.gif">
+        <DIV class="ui embed fluid image" data-url='{{URL_Youtube_concept_behind}}' data-placeholder="/images/only generation explanation.gif"></DIV>
+        <!--         <img class="ui fluid image" src="images/only generation explanation.gif">
+ -->
     </div>
-    <div class="row">
-        <div class="column">
+    <div class="sixteen wide column">
+        <p>
             <div class="ui accordion">
                 <div class="title">
                     <div class="ui medium buttons">
@@ -100,7 +102,7 @@
                     {{> videoOverview}}
                 </div>
             </div>
-        </div>
+        </p>
     </div>
 </template>
 <template name="introAPI">
@@ -160,55 +162,6 @@
             </div>
             <div class="three wide right floated column">
                 <img class="ui fluid image" src="images/id_big.png">
-            </div>
-        </div>
-    </div>
-</template>
-<template name="modalStepByStep">
-    <div class="ui modal stepByStep">
-        <div class="ui icon message">
-            <img class="icon" src="images/intro.png">
-            <div class="content">
-                <div class="header">
-                    <h4>Step by step guide on how to use this demo platform</h4>
-                </div>
-                <p>This video is just a selection of the extended introduction video. This video shows you "where to click". Please watch the extended video for a complete overview. You can also watch a specific video from the "video menu" in the top menu.</p>
-            </div>
-        </div>
-        <div class="ui one column centered grid">
-            <div class="column centered">
-                <!-- <div class="ui embed" data-url="https://www.youtube.com/embed/wVVbP7a5-I8" data-placeholder="/images/API.png"></div> -->
-                <iframe width="854" height="480" src="https://www.youtube.com/embed/T9a3s5cnvPE" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
-</template>
-<template name="modalSaaSautomation">
-    <div class="ui modal howDoesSaaSAutomationWork">
-        <div class="ui icon message">
-            <img class="icon" src="images/intro.png">
-            <div class="content">
-                <div class="header">
-                    <h4>What are the key concepts of SaaS automation using Qlik Sense?</h4>
-                </div>
-                <p>This video highlights only the concepts of SaaS automation. In will explain you the concept of template apps, the broker, and that we will create a copy of the template for each of your customers.</p>
-            </div>
-        </div>
-        <div class="ui one column centered grid">
-            <div class="column centered">
-                <iframe width="854" height="480" src="{{URL_Youtube_concept_behind}}" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
             </div>
         </div>
     </div>

@@ -34,7 +34,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
     // console.log(templateApp);
     // console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
     const call = {};
-    call.action = 'Start of generation for '+customer.name;
+    call.action = 'Start of generation of app '+templateApp.name+' for '+customer.name;
     call.createdBy = generationUserId;
     call.request = 'Start creating app ' + templateApp.name + ' for customer ' + customer.name;
     REST_Log(call, generationUserId);
@@ -47,8 +47,8 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 
         //logging only
         const call = {};
-        call.action = 'Finished';
-        call.request = 'App has ' + templateApp.name + ' has been created and reloaded by connecting to its database for customer: ' + customer.name;
+        call.action = 'Finished generation for '+customer.name;
+        call.request = templateApp.name + ' has been created and reloaded with data from the ' + customer.name+' database';
         REST_Log(call, generationUserId);
         // console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
     } catch (err) {
