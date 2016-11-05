@@ -5,6 +5,7 @@ import './layout.html';
 import './checkConfig.html';
 import '/imports/ui/nav.html';
 import '/imports/ui/nav.js';
+// import './pages/modals.html';
 
 Template.layout.helpers({
     NoSenseConnection() {
@@ -15,5 +16,21 @@ Template.layout.helpers({
 Template.layout.events({
     'click': function(event, template) {
         Template.instance().$('.button').popup('remove popup')
-    }
+    },
+    'click .stepByStep' () {
+        $('.ui.modal.stepByStep')
+            .modal('show');
+    },
+    'click .howDoesSaaSAutomationWork' () {
+        $('.ui.modal.howDoesSaaSAutomationWork')
+            .modal('show');
+    },
+    'click .selfservice' () {
+        $('.ui.modal.SSBI')
+            .modal('show');
+    },
+    'click .APIAutomation' () {
+        $('.ui.modal.APIAutomation')
+            .modal('show');
+    },
 })

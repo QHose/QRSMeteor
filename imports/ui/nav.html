@@ -1,18 +1,20 @@
 <template name="nav">
-    <div class="ui secondary menu navbar">
-        <a href="{{pathFor 'introduction'}}" class="header item">
-            <!-- <img class="logo" src="images/sense.png"> -->
-            Home</a>
-        <a href="{{pathFor 'generation'}}" class="header item">
+    <div class="row">
+        <div class="ui secondary menu navbar">
+            <a href="{{pathFor 'introduction'}}" class="header item">
+                <!-- <img class="logo" src="images/sense.png"> -->
+                Home</a>
+            <a href="{{pathFor 'generation'}}" class="header item">
            Demo
         </a> {{#if isDemoPage}} {{> yourSaasPlatformMenu}} {{/if}}
-        <a href="{{pathFor 'documentation'}}" class="item">
+            <a href="{{pathFor 'documentation'}}" class="item">
     Documentation
   </a> {{#if currentUser}}
-        <div class="ui right floated item">
-            <a href="#" class="logout item">Logout</a>
+            <div class="ui right floated item">
+                <a href="#" class="logout item">Logout</a>
+            </div>
+            {{/if}}
         </div>
-        {{/if}}
     </div>
 </template>
 <template name="yourSaasPlatformMenu">
@@ -28,4 +30,3 @@
         </div>
     </div>
 </template>
-

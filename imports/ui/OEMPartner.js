@@ -99,14 +99,6 @@ Template.OEMPartner.events({
             }
         });
     },
-    'click .selfservice' () {
-        $('.ui.modal.SSBI')
-            .modal('show');
-    },
-    'click .APIAutomation' () {
-        $('.ui.modal.APIAutomation')
-            .modal('show');
-    },
     'click .insertDummyCustomers' (event) {
         event.preventDefault();
         insertTemplateAndDummyCustomers();
