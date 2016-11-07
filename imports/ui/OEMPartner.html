@@ -30,15 +30,15 @@
             </p>
             {{/if}} {{#if readyToTestSSO}} {{> step4}} {{/if}} {{#if loading}}
             <div class="header">
-                Step 3: API communication is in progress...
+                API communication is in progress...
             </div>
-            <p>This application is now sending REST and websocket based API calls to the Qlik Sense QRS and Engine API. See more info about API's, the source code, sequence diagrams and a real time API call overview in the <a href="{{pathFor 'ApiLogsTable'}}" target="_blank">API logs</a>. {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}}
+            <p>Your SaaS platform is now sending API calls to the Qlik Sense. See more info about what we do here in the <a href="{{pathFor 'ApiLogsTable'}}" target="_blank">API logs</a>. {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}}
             </p>
             {{/if}}
         </div>
     </div>
     {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}} {{#unless noCustomers}} {{> mainButtonsCustomers}} {{/unless}} {{#if readyToGenerate}}
-    <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i>Generate</div>
+    <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i>Start</div>
     {{/if}} {{#if or noCustomers templateButNoCustomer}}
     <div class="ui icon message">
         <img class="icon" src="images/customers.png">

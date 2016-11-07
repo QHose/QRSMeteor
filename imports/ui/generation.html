@@ -1,87 +1,85 @@
 <template name='generation'>
     <div class="row">
         <!-- <div class="left floated ui column"> -->
-         <div class="header">
-                <h4>In order to finish the demo, you must complete the following steps</h4>
-            </div>
-            {{> steps}}
+        <div class="header">
+            <h4>In order to finish the demo, you must complete the following steps</h4>
+        </div>
+        {{> steps}}
         <!-- </div> -->
+    </div>
+    <div class="row">
     </div>
     <div class="row">
         <div class="ui three column stackable grid">
             <div class="eight wide column">
                 <h4 class="ui dividing header">
                 Example admin panel in your Saas Platform</h4> {{> OEMPartner}}
-                </div>
-                <div class="one wide column">
-                    <div class="ui vertical divider">
-                        <h2 class="ui header">  
+            </div>
+            <div class="two wide column">
+                <div class="ui vertical divider">
+                    <h2 class="ui header">  
                           <img class="icon" src="images/generate.png">
                       </h2>
-                  </div>
-              </div>
-              <div class="seven wide column">
+                </div>
+            </div>
+            <div class="six wide column">
                 <h4 class="ui dividing header">
                     Information received from Qlik Sense</h4>
-
-
-                    <div class="ui styled fluid accordion">
-                        <div class="ui"> {{> generationStreams }}</div>
-                        <div class="ui "> {{> generationApps }}</div>
-                    </div>
+                <div class="ui styled fluid accordion">
+                    <div class="ui"> {{> generationStreams }}</div>
+                    <div class="ui "> {{> generationApps }}</div>
                 </div>
             </div>
         </div>
-    </template>
-    <template name="generationStreams">
-        <div class="ui dimmer">
-            <div class="content">
-                <div class="center">
-                    <div class="ui indeterminate text loader">Receiving the Streams from Qlik Sense via the QRS API...
-                        <br> '/qrs/stream/full'</div>
-                    </div>
-                </div>
+    </div>
+</template>
+<template name="generationStreams">
+    <div class="ui dimmer">
+        <div class="content">
+            <div class="center">
+                <div class="ui indeterminate text loader">Receiving the Streams from Qlik Sense via the QRS API...
+                    <br> '/qrs/stream/full'</div>
             </div>
-            <!-- <div class="ui accordion"> -->
-                <div class="title">
-                    <h4 class="ui header">
+        </div>
+    </div>
+    <!-- <div class="ui accordion"> -->
+    <div class="title">
+        <h4 class="ui header">
                         <i class="dropdown icon"></i>
                         <img class="ui dropdown mini image" src="images/stream.png">
                         <div class="content">
                             {{countStreams}} Streams                            
                         </div>
                     </h4>
-                </div>
-                <div class="content">
-                    <!-- <h4 class="ui header">Received {{countStreams}} streams via the QRS API</h4> -->
-                    {{> reactiveTable settings=streamSettings}}
-                </div>
-            <!-- </div> -->
-        </template>
-        <template name="generationApps">
-            <div class="ui dimmer">
-                <div class="content">
-                    <div class="center">
-                        <div class="ui indeterminate text loader">Receiving the Apps from Qlik Sense via the QRS API...
-                            <br> '/qrs/apps/full'</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="ui accordion"> -->
-                    <div class="{{#if readyToSelectTemplate}}active{{/if}} title">
-                        <h4 class="ui header">
+    </div>
+    <div class="content">
+        <!-- <h4 class="ui header">Received {{countStreams}} streams via the QRS API</h4> -->
+        {{> reactiveTable settings=streamSettings}}
+    </div>
+    <!-- </div> -->
+</template>
+<template name="generationApps">
+    <div class="ui dimmer">
+        <div class="content">
+            <div class="center">
+                <div class="ui indeterminate text loader">Receiving the Apps from Qlik Sense via the QRS API...
+                    <br> '/qrs/apps/full'</div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="ui accordion"> -->
+    <div class="{{#if readyToSelectTemplate}}active{{/if}} title">
+        <h4 class="ui header">
                             <i class="dropdown icon"></i>
                             <img class="ui dropdown mini image" src="images/app.png">
                             <div class="content">
                                {{countApps}} Apps                         
                             </div>
                         </h4>
-                    </div>
-                    <div class="{{#if readyToSelectTemplate}}active{{/if}} content">
-                     <!-- <h2 class="ui header">Received {{countApps}} apps via the QRS API</h2> -->
-                     {{> reactiveTable settings=appSettings}}
-                 <!-- </div> -->
-             </div>
-         </template>
-         
-
+    </div>
+    <div class="{{#if readyToSelectTemplate}}active{{/if}} content">
+        <!-- <h2 class="ui header">Received {{countApps}} apps via the QRS API</h2> -->
+        {{> reactiveTable settings=appSettings}}
+        <!-- </div> -->
+    </div>
+</template>

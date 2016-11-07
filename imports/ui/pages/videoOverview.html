@@ -1,10 +1,10 @@
 <template name="videoOverview">
-    <div class="ui very padded grid">
+    <div class="ui three column centered grid">
         <!-- Embed Youtube video -->
         <div class="ui horizontal divider">
             Introduction to demo
         </div>
-        <div class="five wide column">
+        <div class="column">
             <h4 class="ui header">Quick Video (1M)</h4>
             <div class="ui embed" data-url="https://www.youtube.com/embed/eiI-y2OEbv0" data-placeholder="/images/introVideoSaaS1m.png"></div>
             <div class="item">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="five wide column">
+        <div class="column">
             <h4 class="ui header">Introduction (7M)</h4>
             <div class="ui embed" data-url="https://www.youtube.com/embed/K-zfD_vAPso" data-placeholder="/images/conceptBehind.png"></div>
             <div class="item">
@@ -48,10 +48,10 @@
                 </div>
             </div>
         </div>
-        <div class="five wide column">
+        <div class="column">
             {{> introVideoArchitecture}}
         </div>
-        <div class="five wide column">
+        <div class="column">
             <h4 class="ui header">Introduction web integration (1M)</h4>
             <div class="ui embed" data-url="{{URL_Youtube_webintegration_introduction}}" data-placeholder="/images/qlik sense embedded example.png"></div>
             <div class="item">
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-        <div class="five wide column">
+        <div class="column">
             <h4 class="ui header">Concept of SaaS provisioning (4M)</h4>
             <div class="ui embed" data-url="{{URL_Youtube_concept_behind}}" data-placeholder="/images/simple intro to saas automation.gif"></div>
             <div class="item">
@@ -87,7 +87,8 @@
                         <span></span>
                     </div>
                     <div class="description">
-                        <p>We are using a different, more comprehensive approach to explain and illustrate how the Qlik platform could be used to embed analytics within a multi-tenant SaaS environment. First, we created a separate demo website to help you see, understand and fully experience what this means from your perspective, as a SaaS application platform provider, to integrate and embed your analytics with Qlik. <!-- We chose this approach for the following reasons:
+                        <p>We are using a different, more comprehensive approach to explain and illustrate how the Qlik platform could be used to embed analytics within a multi-tenant SaaS environment. First, we created a separate demo website to help you see, understand and fully experience what this means from your perspective, as a SaaS application platform provider, to integrate and embed your analytics with Qlik.
+                            <!-- We chose this approach for the following reasons:
                             <ul>
                                 <li>A separate website helps validate and demonstrate how we embed Qlik Sense into a SaaS platform.
                                 </li>
@@ -97,7 +98,7 @@
                         </p>
                     </div>
                     <div class="extra">
-                       <!--  This site illustrates
+                        <!--  This site illustrates
                         <ul>
                             <li>The power of Qlik Sense API’s
                             </li>
@@ -113,13 +114,13 @@
         <div class="ui horizontal divider">
             Security integration
         </div>
-        <div class="five wide column">{{>videoGenericSecurityIntro}}</div>
-        <div class="five wide column">{{>videoSecurityFlow}}</div>
+        <div class="column">{{>videoGenericSecurityIntro}}</div>
+        <div class="column">{{>videoSecurityFlow}}</div>
         <!-- <div class="five wide c">{{>videoSecurityIntroduction}}</div> -->
-        <div class="five wide column">{{>videoSecurityDeepDive}}</div>
+        <div class="column">{{>videoSecurityDeepDive}}</div>
         <div class="ui horizontal divider">
             Web integration
         </div>
-        <div class="five wide column">{{>videoWebExtended}}</div>
+        <div class="column">{{>videoWebExtended}}</div>
     </div>
 </template>
