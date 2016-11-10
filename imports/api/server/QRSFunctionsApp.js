@@ -76,7 +76,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
     engineConfig.appname = appId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
     // console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname);
     var call = {};
-    call.action = 'Connect to engine using Qsocks (Engine API wrapper)';
+    call.action = 'Connect to engine API (QSocks)';
     call.request = 'Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
     REST_Log(call);
 
@@ -342,7 +342,7 @@ export function getApps() {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }
         });
-        // REST_Log(call);
+        REST_Log(call);
         return call.response.data;
     } catch (err) {
         console.error(err);

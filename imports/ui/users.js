@@ -10,7 +10,7 @@ import '/imports/ui/UIHelpers';
 //http://www.webtempest.com/meteor-js-autoform-tutorial
 AutoForm.addHooks(['insertCustomerForm'], {
     onSuccess: function(operation, result, template) {
-        sAlert.success('We inserted the customer into your local MongoDB, we will forward this user to Qlik Sense via a security ticket.');
+        sAlert.success('We inserted the customer into your local MongoDB.');
         //Router.go("/posts");
     },
     before: {
@@ -69,6 +69,7 @@ Template.users.events({
         Session.set("selectedCustomer", '');
     },
     'click .backToGeneration' () {
+        Session.set('currentStep', 2);
         Router.go('generation');
     },
     'click .customer-row': function() {

@@ -15,4 +15,13 @@ Template.webIntegration.onRendered(function() {
     Template.instance()
         .$('.ui.embed')
         .embed();
+
+    // // lazy load images
+    // Template.instance()
+    //     .$('.image')
+    //     .visibility({
+    //         type: 'image',
+    //         transition: 'vertical flip in',
+    //         duration: 500
+    //     });
 })

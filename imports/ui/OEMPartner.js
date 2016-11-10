@@ -16,6 +16,10 @@ Template.OEMPartner.helpers({
     linkToApp() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/sense/app/' + this.id
     },
+    appsInTemplateStream() {
+        console.log('apps found', Apps.find({ "stream.name": "Templates" }).fetch());
+        return Apps.find({ "stream.name": "Templates" });
+    },
     RESTCallSettings: function() {
         return {
             rowsPerPage: 6,
@@ -77,7 +81,9 @@ Template.OEMPartner.events({
                 sAlert.success('We have deleted all the previously generated streams and apps, so you have a fresh demo environment.');
             }
         });
+        Session.set('currentStep', 1);
         Session.set('generated?', false);
+        // Session.set('goToSt', false);
     },
     'click .generateStreamAndApp' () {
         Session.set('loadingIndicator', 'loading');
@@ -102,8 +108,28 @@ Template.OEMPartner.events({
     'click .insertDummyCustomers' (event) {
         event.preventDefault();
         insertTemplateAndDummyCustomers();
-    }
+    },
+    'click .goToStep3' (event) {
+        Session.set('currentStep', 3);
+    },
+
 }); //end Meteor events
+
+Template.templateCheckBox.events({
+    'change .checkbox.template' (event) {
+        console.log('selectie box change, this heeft waarde ', this);
+        var currentApp = this;
+
+        TemplateApps.upsert(currentApp.id, {
+            $set: {
+                name: currentApp.name,
+                id: currentApp.id,
+                generationUserId: Meteor.userId(),
+                checked: !this.checked
+            },
+        });
+    }
+})
 
 Template.templateOverview.helpers({
     templateApps() {
@@ -147,6 +173,7 @@ function insertTemplateAndDummyCustomers() {
 
     const templateAppId = Meteor.settings.public.templateAppId;
     console.log('Insert insertTemplateAndDummyCustomers, with templateAppId', templateAppId);
+    Session.set('currentStep', 3);
     TemplateApps.insert({
         name: "My first template",
         id: templateAppId,
@@ -206,6 +233,12 @@ Template.OEMPartner.onRendered(function() {
         .embed();
 })
 
+Template.templateCheckBox.onRendered(function() {
+    Template.instance()
+        .$('.ui.toggle.checkbox')
+        .checkbox();
+})
+
 
 Template.mainButtonsCustomers.onRendered(function() {
     Template.instance()
@@ -238,7 +271,7 @@ Template.step4Buttons.onRendered(function() {
     this.$('.ApiLogsTable')
         .popup({
             content: 'View the API calls'
-        });    
+        });
 })
 
 Template.step4.onRendered(function() {

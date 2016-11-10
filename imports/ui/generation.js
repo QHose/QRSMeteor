@@ -76,27 +76,30 @@ Template.generationApps.helpers({
                     fn: function(value) {
                         return value / 1000000
                     }
-                }, {
-                    key: 'copyApp',
-                    label: 'Copy app selected customers',
-                    hidden: false,
-                    fn: function() {
-                        return new Spacebars.SafeString('<i class="copy icon"></i>')
-                    }
-                }, {
-                    key: 'deleteApp',
-                    label: 'Delete app',
-                    hidden: false,
-                    fn: function() {
-                        return new Spacebars.SafeString('<i class="remove circle icon"></i>')
-                    }
-                }, {
-                    key: 'markAsTemplate',
-                    label: 'Template app for generation?',
-                    fn: function() {
-                        return new Spacebars.SafeString('<i class="add circle icon"></i>')
-                    }
-                }
+                },
+                //  {
+                //     key: 'copyApp',
+                //     label: 'Copy app selected customers',
+                //     hidden: true,
+                //     fn: function() {
+                //         return new Spacebars.SafeString('<i class="copy icon"></i>')
+                //     }
+                // }, 
+                // {
+                //     key: 'deleteApp',
+                //     label: 'Delete app',
+                //     hidden: true,
+                //     fn: function() {
+                //         return new Spacebars.SafeString('<i class="remove circle icon"></i>')
+                //     }
+                // }, 
+                // {
+                //     key: 'markAsTemplate',
+                //     label: 'Template app for generation?',
+                //     fn: function() {
+                //         return new Spacebars.SafeString('<i class="add circle icon"></i>')
+                //     }
+                // }
             ]
         };
     },
@@ -136,7 +139,7 @@ Template.generationStreams.helpers({
                 }, {
                     key: 'deleteStream',
                     label: 'Delete',
-                    hidden: false,
+                    hidden: true,
                     fn: function() {
                         return new Spacebars.SafeString('<i class="remove circle icon markAsTemplate"></i>')
                     }
@@ -151,17 +154,17 @@ Template.generation.events({
             var currentApp = this;
             console.log(event);
 
-            if (event.target.className == "markAsTemplate") {
-                console.log('markAsTemplate app clicked: ' + currentApp.name);
-                TemplateApps.upsert(currentApp._id, {
-                    $set: {
-                        name: currentApp.name,
-                        id: currentApp.id,
-                        generationUserId: Meteor.userId(),
-                        checked: !this.checked
-                    },
-                });
-            }
+            // if (event.target.className == "markAsTemplate") {
+            //     console.log('markAsTemplate app clicked: ' + currentApp.name);
+            //     TemplateApps.upsert(currentApp._id, {
+            //         $set: {
+            //             name: currentApp.name,
+            //             id: currentApp.id,
+            //             generationUserId: Meteor.userId(),
+            //             checked: !this.checked
+            //         },
+            //     });
+            // }
 
             //Copy APP
             if (event.target.className === "copyApp") {

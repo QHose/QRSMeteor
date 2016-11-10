@@ -8,7 +8,7 @@ if (Meteor.isClient) {
     // console.log('Setup generic helper functions, for functions every template needs');
     Template.registerHelper('formatDate', function(date) {
         return moment(date)
-        .format('DD-MM-YYYY');
+            .format('DD-MM-YYYY');
     });
 
     // // Template.registerHelper('formatNumber', function(myNumber) {
@@ -32,7 +32,7 @@ if (Meteor.isClient) {
         return "https://www.youtube.com/embed/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
     });
 
-   Template.registerHelper('URL_Youtube_generic_security_intro', function() {
+    Template.registerHelper('URL_Youtube_generic_security_intro', function() {
         return "https://www.youtube.com/embed/sdCVsMzTf64";
     });
 
@@ -41,7 +41,7 @@ if (Meteor.isClient) {
         return "https://www.youtube.com/embed/zuNvZ_UTmow?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
     });
 
-//QAP
+    //QAP
     Template.registerHelper('URL_Youtube_webintegration_extended', function() {
         return "https://www.youtube.com/embed/iM_tlwGYJoM";
     });
@@ -62,7 +62,7 @@ if (Meteor.isClient) {
         return "https://www.youtube.com/embed/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
     });
 
-    Template.registerHelper('doc_demo_manual', function() { 
+    Template.registerHelper('doc_demo_manual', function() {
         return '/docs/How to demo the Qlik Sense SaaS demo platform.pdf';
     });
 
@@ -143,12 +143,12 @@ if (Meteor.isClient) {
 
     Template.registerHelper('noCustomers', function() {
         return !Customers.find({})
-        .count();
+            .count();
     });
 
     Template.registerHelper('noTemplateApps', function() {
         return !TemplateApps.find({})
-        .count();
+            .count();
     });
 
     //generic helpers to return the collection to the blaze template
@@ -177,31 +177,48 @@ if (Meteor.isClient) {
     };
 
     Template.registerHelper('readyToSelectTemplate', function() {
-        return Customers.find()
-        .count() && !TemplateApps.find()
-        .count()
+        return currentStep() === 2
     });
 
     Template.registerHelper('templateButNoCustomer', function() {
         return !Customers.find()
-        .count() && TemplateApps.find()
-        .count()
+            .count() && TemplateApps.find()
+            .count()
     });
 
     Template.registerHelper('readyToGenerate', function() {
-        return Customers.find({})
-        .count() && TemplateApps.find()
-        .count() && !Session.get('generated?') && !Session.equals('loadingIndicator', 'loading');
+        console.log('the current step session',Session.get('currentStep') );
+        console.log('value of currentStep() ', currentStep());
+        return currentStep() === 3;
     });
+
+    function currentStep() {
+        //step 2
+        if (Customers.find()
+            .count() && Session.get('currentStep') === 2) {
+            return 2 }
+        //step 3
+        else if (
+            Customers.find().count() &&
+            TemplateApps.find().count() &&
+            !Session.get('generated?') &&
+            Session.get('currentStep') === 3 &&
+            !Session.equals('loadingIndicator', 'loading')) {
+            console.log('currentStep is ', 3)
+            return 3
+        } else if (Session.get('generated?') && Customers.find()
+            .count() && TemplateApps.find()
+            .count()) {
+            return 4
+        }
+    }
 
     Template.registerHelper('generationFinished', function() {
         return (Session.equals('loadingIndicator', 'loading') || Session.get('generated?'));
     });
 
     Template.registerHelper('readyToTestSSO', function() {
-        return Session.get('generated?') && Customers.find()
-        .count() && TemplateApps.find()
-        .count();
+        return currentStep() === 4
     });
 
     Template.registerHelper('and', (a, b) => {
