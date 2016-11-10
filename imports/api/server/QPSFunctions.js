@@ -96,7 +96,7 @@ export function logoutUser(UDC, name) {
         // //console.log('Meteor tries to logout the user on this URL: https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + senseConfig.UDC + '/' + name);
         try {
             const call = {};
-            call.action = 'logout user: ' + name;
+            call.action = 'Logout user: ' + name;
             call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
             call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
 

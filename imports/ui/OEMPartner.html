@@ -18,8 +18,7 @@
                 Step 2: Select a template app
             </div>
             <p>
-               Please select an app in the templates stream (on the right) which you would like to use as a basis template. We will create a copy, reload and publish it into the "customer name" stream for each of your selected customers. (Also called SaaS provisioning). {{# each appsInTemplateStream}} {{> templateCheckBox}} {{/each}}
-               <div class="ui positive button goToStep3">Go to step 3</div>
+                Please select an app in the templates stream (on the right) which you would like to use as a basis template. We will create a copy, reload and publish it into the "customer name" stream for each of your selected customers. (Also called SaaS provisioning). {{# each appsInTemplateStream}} {{> templateCheckBox}} {{/each}}
             </p>
             {{/if}} {{#if readyToGenerate}} {{> step3}} {{/if}} {{#if templateButNoCustomer}}
             <div class="header">
@@ -32,12 +31,11 @@
             <div class="header">
                 API communication is in progress...
             </div>
-            <p>Your SaaS platform is now sending API calls to the Qlik Sense. See more info about what we do here in the <a href="{{pathFor 'ApiLogsTable'}}" target="_blank">API logs</a>. {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}}
-            </p>
-            {{/if}}
+            <p>Your SaaS platform is now sending API calls to the Qlik Sense. Below you will find a summary of the actions we have automated. See more info about what we do here in the <a href="{{pathFor 'ApiLogs'}}" target="_blank">API documentation</a>.</p>
+            {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}} {{/if}}
         </div>
     </div>
-    {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}} {{#unless noCustomers}} {{> mainButtonsCustomers}} {{/unless}} {{#if readyToGenerate}}
+    {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}} {{#unless noCustomers}} {{> mainButtonsCustomers}} {{/unless}} {{#if step3}}
     <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i>Start</div>
     {{/if}} {{#if or noCustomers templateButNoCustomer}}
     <div class="ui icon message">
@@ -56,7 +54,7 @@
         </div>
     </div>
     <!-- {{else}} {{> customerOverview}}  -->
-  <!--   {{#if readyToSelectTemplate}}
+    <!--   {{#if readyToSelectTemplate}}
     <div class="ui icon message">
         <img class="icon" src="images/app.png">
         <div class="content">
@@ -67,7 +65,7 @@
         </div>
     </div>
     {{else}}
-    {{> templateOverview}}{{/if}} --> {{/if}}
+    {{> templateOverview}}{{/if}} -->{{/if}}
 </template>
 <template name="customerOverview">
     <div class="ui icon message">
@@ -142,7 +140,7 @@
 </template>
 <Template name="step3">
     <div class="header">
-        Create Qlik Sense apps
+        Start provisioning (automatic creation) of Qlik Sense apps
     </div>
     <p>
         Press the green button to start the SaaS provisioning for the customers below:
@@ -197,8 +195,13 @@
     </p>
 </Template>
 <template name="mainButtonsCustomers">
-    <div class="ui {{loading}} basic button resetEnvironment"><i class="delete icon"></i>
+    {{#if showLogsButton}}
+    <div class="ui {{loading}} basic button resetEnvironment"><i class="delete icon"></i> 
     </div>
+    {{/if}}
+    {{#if readyToSelectTemplate}}
+    <div class="ui positive button goToStep3">Go to step 3</div>
+    {{/if}}
     <!-- <div class="ui floating basic dropdown icon button">
         <i class="dropdown icon"></i>
         <div class="menu">
@@ -207,11 +210,11 @@
             <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
         </div>
     </div> -->
-    {{#if readyToTestSSO}}{{>step4Buttons}} {{/if}} {{#if readyToGenerate}} {{>forwardToSSOStep}} {{/if}}
+    {{#if readyToTestSSO}}{{>step4Buttons}} {{/if}} {{#if readyToGenerate}} {{>forwardToSSOStep}} {{/if}} {{#if showLogsButton}}
+    <a href="{{pathFor 'ApiLogsTable'}}" target="_blank" class="ui basic button ApiLogsTable"><i class="list layout icon"></i> </a> {{/if}}
 </template>
 <template name="step4Buttons">
     <div class="ui basic button backToStep3"><i class="mail reply icon"></i> </div>
-    <a href="{{pathFor 'ApiLogsTable'}}" target="_blank" class="ui basic button ApiLogsTable"><i class="list layout icon"></i> </a>
 </template>
 <template name="forwardToSSOStep">
     <div class="ui basic button forwardToSSOStep"><i class="mail forward icon"></i>

@@ -10,9 +10,6 @@ import { freshEnvironment } from '/imports/ui/UIHelpers';
 import './OEMPartner.html';
 
 Template.OEMPartner.helpers({
-    loading() {
-        return Session.get('loadingIndicator');
-    },
     linkToApp() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/sense/app/' + this.id
     },
@@ -100,6 +97,7 @@ Template.OEMPartner.events({
             } else {
                 Session.set('loadingIndicator', '');
                 Session.setAuth('generated?', true);
+                Session.setAuth('currentStep', 4);
                 console.log('generateStreamAndApp succes', result);
                 sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');
             }
@@ -110,7 +108,7 @@ Template.OEMPartner.events({
         insertTemplateAndDummyCustomers();
     },
     'click .goToStep3' (event) {
-        Session.set('currentStep', 3);
+        Session.setAuth('currentStep', 3);
     },
 
 }); //end Meteor events
@@ -173,22 +171,28 @@ function insertTemplateAndDummyCustomers() {
 
     const templateAppId = Meteor.settings.public.templateAppId;
     console.log('Insert insertTemplateAndDummyCustomers, with templateAppId', templateAppId);
-    Session.set('currentStep', 3);
+    Session.setAuth('currentStep', 3);
     TemplateApps.insert({
         name: "My first template",
         id: templateAppId,
         generationUserId: Meteor.userId(),
         checked: true
     });
+ 
+ sAlert.success('We inserted some dummy customers and selected a template app for you. Now you can press start to start the provisioning of your SaaS platform');
+
 }
 
 Template.mainButtonsCustomers.events({
     'click .forwardToSSOStep' () {
         console.log('forward to step 4 sso clicked');
-        Session.set('generated?', true);
+        // Session.setAuth('generated?', true);
+        Session.setAuth('currentStep', 4);       
+
     },
     'click .backToStep3' () {
-        Session.set('generated?', false);
+        // Session.setAuth('generated?', false);
+        Session.setAuth('currentStep', 3);
     },
     'click .deleteAllCustomers' () {
         Meteor.call('removeAllCustomers', function(err, result) {
@@ -221,6 +225,7 @@ Template.OEMPartner.onCreated(function() {
             if (freshEnvironment()) {
                 console.log('There is a freshEnvironment');
                 insertTemplateAndDummyCustomers()
+                Session.setAuth('currentStep', 3);
             };
         },
         onError: function() { console.log("onError", arguments); }
@@ -228,6 +233,7 @@ Template.OEMPartner.onCreated(function() {
 });
 
 Template.OEMPartner.onRendered(function() {
+    if(!Session.get('currentStep')){Session.set('currentStep', 3);}
     Template.instance()
         .$('.ui.embed')
         .embed();
@@ -247,30 +253,31 @@ Template.mainButtonsCustomers.onRendered(function() {
 
     this.$('.resetEnvironment')
         .popup({
-            content: 'Delete all apps and streams you have generated'
+            title: 'Reset demo',
+            content: 'Delete all apps and streams you have generated.'
         });
 
-    this.$('.forwardToSSOStep')
+     this.$('.button.ApiLogsTable')
         .popup({
-            content: 'Go forward one step without generating first, this lets you test the single sign on using the users and their groups.'
+            title: 'API Calls',
+            content: 'View the API calls between this demo platform and Qlik Sense.'
         });
+    
 })
 
 Template.forwardToSSOStep.onRendered(function() {
     this.$('.forwardToSSOStep')
         .popup({
-            content: 'Go forward one step without generating first, this lets you test the single sign on using the users and their groups. Choose the row level security app for example.'
+             title: 'Go to step 4',
+            content: 'Go forward one step without generating first, this lets you test the single sign on using the users and their groups.'
         });
 })
 
 Template.step4Buttons.onRendered(function() {
     this.$('.backToStep3')
         .popup({
-            content: 'Go back one step, this lets you generate the apps and streams again'
-        });
-    this.$('.ApiLogsTable')
-        .popup({
-            content: 'View the API calls'
+             title: 'Go to step 3',
+            content: 'Go back one step, this enables you to start restart the generation of streams and apps (provisioning).'
         });
 })
 

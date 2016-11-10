@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"pr",
+				"provisioning"
+			],
+			[
+				"curr",
+				"currentStep"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"ste",
+				"step3Active"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"tem",
+				"templateCheckBox"
+			],
+			[
 				"redi",
 				"redirectUser"
 			],
@@ -38,10 +62,6 @@
 			[
 				"temp",
 				"templateOverview"
-			],
-			[
-				"ste",
-				"step1CustomerScreen"
 			],
 			[
 				"generationA",
@@ -90,10 +110,6 @@
 			[
 				"user",
 				"userId"
-			],
-			[
-				"tem",
-				"templateApps"
 			],
 			[
 				"cust",
@@ -348,10 +364,6 @@
 				"check"
 			],
 			[
-				"curr",
-				"currentUser"
-			],
-			[
 				"ur",
 				"usersArray"
 			],
@@ -500,86 +512,54 @@
 				"then"
 			],
 			[
-				"pr",
-				"promise"
-			],
-			[
 				"tea",
 				"template"
-			],
-			[
-				"q",
-				"qDocId"
-			],
-			[
-				"current",
-				"currentApp"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "imports/SSO/client/SSO.html",
-			"settings":
-			{
-				"buffer_size": 4655,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "imports/ui/OEMPartner.html",
 			"settings":
 			{
-				"buffer_size": 11390,
+				"buffer_size": 11919,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/steps.html",
+			"file": "imports/ui/generation.html",
 			"settings":
 			{
-				"buffer_size": 1286,
+				"buffer_size": 3217,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/steps.js",
+			"file": "imports/ui/UIHelpers.js",
 			"settings":
 			{
-				"buffer_size": 1512,
+				"buffer_size": 11205,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/nav.html",
+			"file": "imports/ui/OEMPartner.js",
 			"settings":
 			{
-				"buffer_size": 1531,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/layout.html",
-			"settings":
-			{
-				"buffer_size": 4798,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<template name=\"architecture\">\n    <div class=\"ui text container\">\n        <h3>Integrated architecture</h3> {{>introductionArchitecturePage}}\n    </div>\n    <div class=\"sixteen wide column\">\n        <div class=\"ui segment\">\n            <h4>Videos</h4>\n            <div class=\"ui three column centered grid\">\n                <div class=\"column\"> {{> introVideoArchitecture}}</div>\n                <!-- <div class=\"column\"> {{> introVideoArchitectureMike}}</div>\n                <div class=\"column\"> {{> introVideoArchitectureMarcus}}</div> -->\n            </div>\n        </div>\n        <div class=\"ui segment\">\n            <h3>Integrated architecture diagram</h3>\n            <p> In the picture below you will find all integration aspects together in 1 overview for a typical SaaS provisioning architecture, in which we have:\n                <ul>\n                    <li>Your SaaS platform's server</li>\n                    <li>Qlik Sense server</li>\n                    <li>A database per customer</li>\n                    <li>A master configuration database</li>\n                    <li>Your current API \"broker\"</li>\n                </ul>\n            </p>\n            <img class=\"ui fluid image\" src=\"images/integratedArchitecture.png\">\n        </div>\n    </div>\n</template>\n<template name=\"introductionArchitecturePage\">\n    <!--     <h4> Qlik Sense architecture and deployment</h4>\n-->\n    <p> The integration of two software platforms entails multiple considerations. Each platform has its own nuances. In our approach here , we deconstruct our integration approach into the following categories: dashboard, data, security, web, APIs and architecture.</p>\n    <h4>Integration flow summary</h4>\n    <p>The picture below outlines the key integration aspects.\n        <UL>\n            <li> A user logs in into your multi-tenant SaaS application platform. Your platform contains some Qlik Sense information in an IFrame or DIV tag.</li>\n            <li>The proxy intercepts the request and redirects the user to the authentication module of your SaaS platform. Your platform knows the identity and group membership of the user and It requests an access ticket for this user.</li>\n            <li> We redirect the user’s request back to the proxy, but now with the ticket number appended to the URL. Qlik Sense validates the request and will set a session cookie.</li>\n            <li> Now the authentication is complete and Qlik Sense will evaluate the security rules and will only present the authorized streams and apps to the user.</li> \n        </UL>\n       \n    </p>\n    <img class=\"ui centered image\" src=\"images/summary_integrated_architecture.png\">\n    <h4>Web integration</h4>\n    <p>You can integrate the Qlik Sense hub, apps, sheets or individual objects using an Iframe or DIV tag. All functionality is delivered via a webserver called the proxy (QPS). The QPS also performs the authentication check, and redirects the user to your SaaS platform to request the ticket if not yet authenticated via a session cookie.\n        <div class=\"ui mini buttons\">\n            <!-- <a href=\"http://knsv.github.io/mermaid/live_editor/#/view/c2VxdWVuY2VEaWFncmFtClVzZXItPj5Zb3VyIFNhYVMgcGxhdGZvcm06IGJyb3dzZSAKWW91ciBTYWFTIHBsYXRmb3JtLT4-IFFsaWsgU2Vuc2U6IEdldCBkYXRhL2NoYXJ0cwpOb3RlIHJpZ2h0IG9mIFlvdXIgU2FhUyBwbGF0Zm9ybTpJZiB0aGUgdXNlciBoYXMgbm8gc2Vzc2lvbiBmb3IgUWxpaywgeW91ciBTYWFTIHBsYXRmb3JtIHdpbGwgcmVxdWVzdCBhIHRpY2tldCBjb250YWluaW5nIHRoZSB1c2VySUQgYW5kIGdyb3Vwcy4KUWxpayBTZW5zZS0tPj5Zb3VyIFNhYVMgcGxhdGZvcm06IEpTT04gUmVzcG9uc2UKTm90ZSByaWdodCBvZiBRbGlrIFNlbnNlOlNlbnNlIG9ubHkgcmV0dXJucyBhdXRob3JpemVkIHJlc291cmNlcyBhbmQgZGF0YSBmb3IgdGhlIGdyb3VwcyBvZiB0aGUgdXNlci4KWW91ciBTYWFTIHBsYXRmb3JtLS0-PlVzZXI6IEVtYmVkZGVkIHBhZ2U\" class=\"ui button\">Simple sequence diagram</a>\n        <div class=\"or\"></div> -->\n            <a class=\"ui button\" href=\"/images/QlikSense%20TopologiesV0_18.pdf\" target=\"_blank\">Topology sheet</a>\n        </div>\n    </p>\n    <div class=\"ui divider\"></div>\n    <h4>Data integration</h4>\n    <p>A powerful <a href=\"http://www.qlik.com/us/products/data-sources\">data integration capability</a> for cleansing, transforming, and unifying multiple, disparate data sources for analysis. A robust data integration layer creates a unified view of information from many different sources, without requiring external tools or data repositories.\n    </p>\n    <img class=\"ui large centered image\" src=\"images/dataIntegrationIntro.png\">\n    <p>\n        In the demo we’ve assumed you have a database per customer instance and you also have a master database which contains the customers, the database connections, user rights and possibly customer specific custom tables and fields.\n    </p>\n    <div class=\"ui divider\"></div>\n    <!-- <img class=\"ui tiny right floated image\" src=\"images/id.png\"> -->\n    <h4>Security integration</h4>\n    <p>Actually you don't need to do so much on the security side. You don't create users or groups in Sense. You just supply the userID and group membership in the security ticket. Based on the info in the ticket access is provided. Resources are protected using the <a href=\"https://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/property-based-access-control.htm\">security rules</a>, data filtering inside an app is enforced using <a href=\"https://help.qlik.com/en-US/sense/3.1/Subsystems/Hub/Content/Scripting/Security/manage-security-with-section-access.htm\">\"section access\"</a>.</p>\n    <div class=\"ui divider\"></div>\n    <h4>API - Process integration</h4>\n    <p>In the demo you will see the broker in action. But what are the activities that the SaaS broker automates in the demo? What are the steps or stages?</p>\n    <ul>\n        <li>First it will create a stream for each customer. </li>\n        <li>Secondly it will copy the template app. </li>\n        <li>Next it replaces the script with a customer-specific one, or in most cases you just have to replace the database connection.</li>\n        <li>Using the new script, the app is reloaded. You can also use this mechanism to query big data sources like MongoDB. This is where we basically make a compressed copy of the data and create the associative model.</li>\n        <li>In the final stage we publish the app in the stream with the name of the customer.</li>\n    </ul>\n</template>\n<template name=\"introVideoArchitecture\">\n    <h4 class=\"ui header\">Integrated architecture (3M)</h4>\n    <div class=\"ui embed\" data-url=\"{{URL_Youtube_architecture_introduction}}\" data-placeholder=\"/images/integratedArchitecture.png\"></div>\n    <div class=\"item\">\n        <div class=\"content\">\n            <a class=\"header\">Contents</a>\n            <div class=\"meta\">\n                <span></span>\n            </div>\n            <div class=\"description\">\n                <p>Let’s review the Qlik Sense architecture integration considerations at a high level. </p>\n            </div>\n            <div class=\"extra\">\n                <ul>\n                    <li>What are the key compononents of Qlik Sense?</li>\n                    <li>How can you load data?</li>\n                    <li>How can you connect to the Qlik Sense Hub and management console (QMC)? </li>\n                    <li>Authentication integration and use of APIs</li>\n                </ul>\n            </div>\n        </div>\n    </div>\n</template>\n<template name=\"introVideoArchitectureMike\">\n    <h4 class=\"ui header\">Introduction architecture (5M)</h4>\n    <div class=\"ui embed\" data-url=\"https://www.youtube.com/embed/4w5mMar5o-M\"></div>\n    <div class=\"item\">\n        <div class=\"content\">\n            <a class=\"header\">Contents</a>\n            <div class=\"meta\">\n                <span></span>\n            </div>\n            <div class=\"description\">\n                <p>This video presents a brief overview of the Qlik Sense platform architecture.</p>\n            </div>\n        </div>\n    </div>\n</template>\n<template name=\"introVideoArchitectureMarcus\">\n    <h4 class=\"ui header\">Scalability (9M)</h4>\n    <div class=\"ui embed\" data-url=\"https://www.youtube.com/embed/XZx9nKLR4ps\"></div>\n    <div class=\"item\">\n        <div class=\"content\">\n            <a class=\"header\">Contents</a>\n            <div class=\"meta\">\n                <span></span>\n            </div>\n            <div class=\"description\">\n                <p>Marcus Spitzmiller, Master Principal Enterprise Architect, presents this high level presentation which is targeted toward technical leaders (IT, BI) that need to understand how the capabilities within Qlik Sense enable visual analytics to be scaled within an organization.</p>\n            </div>\n        </div>\n    </div>\n</template>\n",
-			"file": "imports/ui/pages/architecture.html",
-			"file_size": 8776,
-			"file_write_time": 131230846611712761,
-			"settings":
-			{
-				"buffer_size": 8644,
+				"buffer_size": 9337,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/generation.js",
+			"settings":
+			{
+				"buffer_size": 11812,
 				"line_ending": "Windows"
 			}
 		}
@@ -654,40 +634,43 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
 	[
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.css",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/modals.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/modals.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/modals.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/publications.js",
@@ -703,8 +686,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/test.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.js",
@@ -718,7 +699,6 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/Dockerfile",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/.dockerignore",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/docker image run.bat",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsStream.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/config.js",
@@ -776,7 +756,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/themes/default/globals/site.variables.import.less",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/site/globals/reset.variables.import.less",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/QMC.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.html",
 		"/C/Users/MBJ/Desktop/jacob.html",
@@ -884,6 +863,30 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"dummy",
+			"create qlik",
+			"saas platform",
+			"logs",
+			"popup",
+			"start",
+			"intro",
+			"backToStep3",
+			"backToStep3 ",
+			"goto",
+			"insertTemplateAndDummyCustomers",
+			"logout",
+			"readyToGenerate",
+			"reset",
+			"insertTemplateAndDummyCustomers",
+			"no template",
+			"each",
+			"sal",
+			"getapp",
+			"selected",
+			"templateOverview",
+			"TemplateApps",
+			"each",
+			"create app",
 			"h3",
 			"h4",
 			"create",
@@ -987,31 +990,7 @@
 			"console.log",
 			"ticket",
 			"data",
-			"qlik",
-			"targetId",
-			"proxyRestUri",
-			"cert",
-			"url",
-			"profile",
-			"step4",
-			"../api/customers.js",
-			"genera",
-			"getFileRealPath",
-			"cert.cert",
-			"onBeforeAction",
-			"ip",
-			"external",
-			"First",
-			"first",
-			"init",
-			"initialize",
-			"d",
-			"conceptBehind",
-			"URL_howDoesSaaSAutomationWork",
-			"this",
-			"delete",
-			"REST_Log",
-			"flow"
+			"qlik"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1112,54 +1091,24 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "imports/SSO/client/SSO.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4655,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								208,
-								208
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "imports/ui/OEMPartner.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11390,
+						"buffer_size": 11919,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5964,
-								5964
+								6387,
+								6387
 							]
 						],
 						"settings":
@@ -1169,7 +1118,37 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3677.0,
+						"translation.y": 3366.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "imports/ui/generation.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3217,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1291,
+								1292
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 930.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -1177,48 +1156,85 @@
 				},
 				{
 					"buffer": 2,
-					"file": "imports/ui/steps.html",
+					"file": "imports/ui/UIHelpers.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1286,
+						"buffer_size": 11205,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1007,
-								1007
+								9932,
+								9946
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 5022.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
 				{
 					"buffer": 3,
-					"file": "imports/ui/steps.js",
+					"file": "imports/ui/OEMPartner.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1512,
+						"buffer_size": 9337,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1131,
-								1131
+								6068,
+								6068
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3955.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "imports/ui/generation.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11812,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								66,
+								71
 							]
 						],
 						"settings":
@@ -1232,96 +1248,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "imports/ui/nav.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1531,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								91,
-								97
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "imports/ui/layout.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4798,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								100,
-								100
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "imports/ui/pages/architecture.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8644,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2541,
-								2541
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 275.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1344,11 +1270,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.38776448942,
 			1.0
 		],
 		"rows":
@@ -1408,7 +1341,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

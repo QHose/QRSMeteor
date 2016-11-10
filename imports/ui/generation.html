@@ -13,7 +13,7 @@
         <div class="ui three column stackable grid">
             <div class="eight wide column">
                 <h4 class="ui dividing header">
-                Saas Platform: admin panel </h4> {{> OEMPartner}}
+                Your Saas Platform: admin panel </h4> {{> OEMPartner}}
             </div>
             <div class="two wide column">
                 <div class="ui vertical divider">
@@ -22,12 +22,14 @@
                       </h2>
                 </div>
             </div>
-            <div class="six wide column">
+            <div class="ui six wide column">
                 <h4 class="ui dividing header">
                     Qlik Sense</h4>
+                <!-- <div class="ui indeterminate text loader">Preparing Files</div> -->
                 <div class="ui styled fluid accordion">
                     <div class="ui"> {{> generationStreams }}</div>
                     <div class="ui "> {{> generationApps }}</div>
+                    <div class="ui {{#if loading}} active {{/if}} inverted dimmer"> <div class="ui indeterminate text loader">Your SaaS platform is now controlling Qlik Sense by making use of <a href="{{pathFor 'ApiLogsTable'}}" target="_blank">API calls</a> </div></div>
                 </div>
             </div>
         </div>
