@@ -234,8 +234,8 @@ if (Meteor.isClient) {
             TemplateApps.find().count()) {
             return 4;
         } else {
-            Session.set('currentStep', 3);
-            return 3;
+            Session.set('currentStep', 1);
+            return 1;
         }
     }
 
