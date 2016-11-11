@@ -1,0 +1,29 @@
+<template name="customerOverview">
+    <div class="ui icon message">
+        <img class="icon" src="images/customers.png">
+        <div class="content">
+            <div class="header">
+                <h4>{{NrCustomers}} Customer(s) stored in the database of your SaaS platform </h4>
+            </div>
+        </div>
+    </div>
+    <div class="ui styled fluid accordion">
+        <div class="title">
+            <i class="dropdown icon"></i> View the customers
+        </div>
+        <div class="content">
+            <table class="ui celled striped table">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Delete customer</th>
+                        <th>Generate stream</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each customers}} {{> customer}} {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

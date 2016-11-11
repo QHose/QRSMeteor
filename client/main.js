@@ -1,11 +1,9 @@
 import '/imports/ui/router.js';
-import '/imports/ui/generation.js';
+import '/imports/ui/generation/generation.js';
 import '/imports/ui/UIHelpers';
-import '/imports/ui/customer.js';
+import '/imports/ui/generation/customer.js';
 import '/imports/ui/layout.html';
 import '/imports/ui/layout.js';
-import '/imports/ui/OEMPartner.js';
-import '/imports/ui/steps.js';
 import '/imports/ui/pages/introduction.html';
 import '/imports/ui/pages/introduction.js';
 import '/imports/ui/pages/webIntegration.html';
@@ -47,7 +45,7 @@ Meteor.startup(function() {
     // console.log('configure sAlert, the popup messaging service');
     sAlert.config({
         effect: 'genie',
-        // position: 'top',
+        position: 'top',
         timeout: 9000,
         html: false,
         onRouteClose: true,

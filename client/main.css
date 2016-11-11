@@ -1,5 +1,10 @@
 /*CSS declarations go here */
 
+.s-alert-success {
+    background: #5EA819;  /* your background color here */
+    color: #fff  /* your text color here */
+}
+
 .container {
     margin-top: 4em;
 }

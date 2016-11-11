@@ -18,7 +18,8 @@
                 Step 2: Select a template app
             </div>
             <p>
-                Please select an app in the templates stream (on the right) which you would like to use as a basis template. We will create a copy, reload and publish it into the "customer name" stream for each of your selected customers. (Also called SaaS provisioning). {{# each appsInTemplateStream}} {{> templateCheckBox}} {{/each}}
+                Please select the apps which you would like to use as a template for the layout (base sheets in the app). In step 3 we will create a copy of this template for each of your selected customers. (Also called SaaS provisioning). 
+                {{# each appsInTemplateStream}} {{> templateCheckBox}} {{/each}}
             </p>
             {{/if}} {{#if readyToGenerate}} {{> step3}} {{/if}} {{#if templateButNoCustomer}}
             <div class="header">
@@ -35,7 +36,7 @@
             {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}} {{/if}}
         </div>
     </div>
-    {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}} {{#unless noCustomers}} {{> mainButtonsCustomers}} {{/unless}} {{#if step3}}
+    {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}} {{#unless noCustomers}} {{> mainButtons}} {{/unless}} {{#if step3}}
     <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i>Start</div>
     {{/if}} {{#if or noCustomers templateButNoCustomer}}
     <div class="ui icon message">
@@ -67,39 +68,11 @@
     {{else}}
     {{> templateOverview}}{{/if}} -->{{/if}}
 </template>
-<template name="customerOverview">
-    <div class="ui icon message">
-        <img class="icon" src="images/customers.png">
-        <div class="content">
-            <div class="header">
-                <h4>{{NrCustomers}} Customer(s) stored in the database of your SaaS platform </h4>
-            </div>
-        </div>
-    </div>
-    <div class="ui styled fluid accordion">
-        <div class="title">
-            <i class="dropdown icon"></i> View the customers
-        </div>
-        <div class="content">
-            <table class="ui celled striped table">
-                <thead>
-                    <tr>
-                        <th>Customer</th>
-                        <th>Delete customer</th>
-                        <th>Generate stream</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each customers}} {{> customer}} {{/each}}
-                </tbody>
-            </table>
-        </div>
-    </div>
-</template>
+
 <template name="templateCheckBox">
     <div class="field">
         <div class="ui toggle checkbox template">
-            <input type="checkbox" name="gift" tabindex="0" class="hidden">
+            <input type="checkbox" name="templateSelector" >
             <label>{{name}}</label>
         </div>
     </div>
@@ -140,10 +113,10 @@
 </template>
 <Template name="step3">
     <div class="header">
-        Start provisioning (automatic creation) of Qlik Sense apps
+        Start provisioning Qlik Sense apps
     </div>
     <p>
-        Press the green button to start the SaaS provisioning for the customers below:
+        Press the green button to start the SaaS provisioning (the automatic creation of streams and apps)  for the customers below:
         <ul>
             {{#each customers}}
             <li>
@@ -194,23 +167,16 @@
         </div>
     </p>
 </Template>
-<template name="mainButtonsCustomers">
-    {{#if showLogsButton}}
+<template name="mainButtons">
+    {{#if step3or4}}
     <div class="ui {{loading}} basic button resetEnvironment"><i class="delete icon"></i> 
     </div>
     {{/if}}
     {{#if readyToSelectTemplate}}
     <div class="ui positive button goToStep3">Go to step 3</div>
     {{/if}}
-    <!-- <div class="ui floating basic dropdown icon button">
-        <i class="dropdown icon"></i>
-        <div class="menu">
-            <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
-            <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
-            <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
-        </div>
-    </div> -->
-    {{#if readyToTestSSO}}{{>step4Buttons}} {{/if}} {{#if readyToGenerate}} {{>forwardToSSOStep}} {{/if}} {{#if showLogsButton}}
+    
+    {{#if readyToTestSSO}}{{>step4Buttons}} {{/if}} {{#if readyToGenerate}} {{>forwardToSSOStep}} {{/if}} {{#if step3or4}}
     <a href="{{pathFor 'ApiLogsTable'}}" target="_blank" class="ui basic button ApiLogsTable"><i class="list layout icon"></i> </a> {{/if}}
 </template>
 <template name="step4Buttons">
@@ -220,3 +186,12 @@
     <div class="ui basic button forwardToSSOStep"><i class="mail forward icon"></i>
     </div>
 </template>
+
+<!-- <div class="ui floating basic dropdown icon button">
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <div class="item insertDummyCustomers"><i class="edit icon "></i> Insert dummy customers</div>
+            <div class="item deleteAllCustomers"><i class="delete icon "></i> Delete all customers</div>
+            <div class="item toggleAllCustomers"><i class="refresh icon"></i> Toggle the selected customers</div>
+        </div>
+    </div> -->

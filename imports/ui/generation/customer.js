@@ -1,6 +1,5 @@
 import { Template } from 'meteor/templating';
-import { Customers } from '../api/customers.js';
-import { TemplateApps } from '../api/apps.js';
+import { Customers } from '/imports/api/customers';
 import './customer.html';
 
 

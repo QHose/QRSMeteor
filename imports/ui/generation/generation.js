@@ -1,17 +1,18 @@
 import { Template } from 'meteor/templating';
-import { Customers, dummyCustomers } from '../api/customers';
+import { Customers, dummyCustomers } from '/imports/api/customers';
 import { Session } from 'meteor/session';
-// import { config } from '/imports/api/clientConfig';
 import { senseConfig as config } from '/imports/api/config';
 import '/imports/ui/UIHelpers';
 
 
 import './generation.html';
+import './steps.js';
+
 import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
 import { APILogs } from '/imports/api/APILogs';
 import { Streams } from '/imports/api/streams';
 import './customer';
-import './OEMPartner';
+import './OEMPartnerSide/OEMPartner';
 import moment from 'moment';
 
 Template.generationApps.helpers({

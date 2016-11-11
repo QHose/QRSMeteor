@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"ce",
+				"checkboxValue"
+			],
+			[
 				"pr",
 				"provisioning"
 			],
@@ -510,10 +514,6 @@
 			[
 				"THE",
 				"then"
-			],
-			[
-				"tea",
-				"template"
 			]
 		]
 	},
@@ -523,25 +523,7 @@
 			"file": "imports/ui/OEMPartner.html",
 			"settings":
 			{
-				"buffer_size": 11919,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/generation.html",
-			"settings":
-			{
-				"buffer_size": 3217,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/UIHelpers.js",
-			"settings":
-			{
-				"buffer_size": 11205,
+				"buffer_size": 11991,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,7 +532,7 @@
 			"file": "imports/ui/OEMPartner.js",
 			"settings":
 			{
-				"buffer_size": 9337,
+				"buffer_size": 9442,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -638,12 +620,13 @@
 	],
 	"file_history":
 	[
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
@@ -651,7 +634,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
@@ -769,7 +751,7 @@
 	],
 	"find":
 	{
-		"height": 64.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -863,6 +845,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"templateCheckBox",
+			"Select Customers\nWho needs a \"copy\" \nof the selected \ntemplate?\nSelect template\nThis is an app you \ncreated using the hub or APIs \nand published in the templates stream.\nStart provisioning\nCreate a stream, copy app,\ninsert script, reload and \npublish the app for each customer.\nTest\nTest the Single Sign On\nwith the users and groups \nfrom your platform.",
+			"see qlik",
+			"event",
+			"reset",
+			"loading",
 			"dummy",
 			"create qlik",
 			"saas platform",
@@ -984,13 +972,7 @@
 			" console.log(",
 			"_ensureIndex",
 			"delete",
-			"TemplateApps",
-			"template",
-			"REST_Log",
-			"console.log",
-			"ticket",
-			"data",
-			"qlik"
+			"TemplateApps"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1100,15 +1082,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11919,
+						"buffer_size": 11991,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6387,
-								6387
+								4950,
+								4950
 							]
 						],
 						"settings":
@@ -1118,70 +1100,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3366.0,
+						"translation.y": 1182.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "imports/ui/generation.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3217,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1291,
-								1292
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 930.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "imports/ui/UIHelpers.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11205,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9932,
-								9946
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 5022.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1191,20 +1113,20 @@
 			"sheets":
 			[
 				{
-					"buffer": 3,
+					"buffer": 1,
 					"file": "imports/ui/OEMPartner.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9337,
+						"buffer_size": 9442,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6068,
-								6068
+								4941,
+								4941
 							]
 						],
 						"settings":
@@ -1214,14 +1136,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3955.0,
+						"translation.y": 1100.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 2,
 					"file": "imports/ui/generation.js",
 					"semi_transient": false,
 					"settings":
@@ -1247,7 +1169,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1281,7 +1203,7 @@
 		"cols":
 		[
 			0.0,
-			0.38776448942,
+			0.506254072753,
 			1.0
 		],
 		"rows":
@@ -1349,7 +1271,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 579.0,
+	"side_bar_width": 380.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

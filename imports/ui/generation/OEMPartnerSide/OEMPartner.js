@@ -2,12 +2,13 @@ import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
 import { senseConfig } from '/imports/api/config.js';
 import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps.js'
-import { Customers, dummyCustomers } from '../api/customers.js';
+import { Customers, dummyCustomers } from '/imports/api/customers.js';
 import { Streams } from '/imports/api/streams.js'
 import { APILogs } from '/imports/api/APILogs';
 import { freshEnvironment } from '/imports/ui/UIHelpers';
 
 import './OEMPartner.html';
+import './customerOverview.js';
 
 Template.OEMPartner.helpers({
     linkToApp() {
@@ -114,18 +115,24 @@ Template.OEMPartner.events({
 }); //end Meteor events
 
 Template.templateCheckBox.events({
-    'change .checkbox.template' (event) {
+    'change .checkbox.template' (event, template) {
         console.log('selectie box change, this heeft waarde ', this);
+        console.log(event.target.checked);
         var currentApp = this;
 
-        TemplateApps.upsert(currentApp.id, {
-            $set: {
-                name: currentApp.name,
-                id: currentApp.id,
-                generationUserId: Meteor.userId(),
-                checked: !this.checked
-            },
-        });
+        if (event.target.checked) {
+            console.log("Task marked as checked.");
+            TemplateApps.upsert(currentApp.id, {
+                $set: {
+                    name: currentApp.name,
+                    id: currentApp.id,
+                    generationUserId: Meteor.userId(),
+                },
+            });
+        } else {
+            console.log("Task marked as unchecked.");
+            // TemplateApps.remove({currentApp.id});
+        }
     }
 })
 
@@ -144,18 +151,6 @@ Template.templateOverview.events({
         TemplateApps.remove(this._id);
     },
 
-})
-
-Template.customerOverview.helpers({
-    NrCustomers() {
-        return Customers.find()
-            .count();
-    },
-})
-
-Template.customerOverview.onRendered(function() {
-    this.$('.ui.accordion')
-        .accordion();
 })
 
 Template.templateOverview.onRendered(function() {
@@ -178,16 +173,16 @@ function insertTemplateAndDummyCustomers() {
         generationUserId: Meteor.userId(),
         checked: true
     });
- 
- sAlert.success('We inserted some dummy customers and selected a template app for you. Now you can press start to start the provisioning of your SaaS platform');
+
+    sAlert.success('We inserted some dummy customers and selected a template app for you. Now you can press start to start the provisioning of your SaaS platform');
 
 }
 
-Template.mainButtonsCustomers.events({
+Template.mainButtons.events({
     'click .forwardToSSOStep' () {
         console.log('forward to step 4 sso clicked');
         // Session.setAuth('generated?', true);
-        Session.setAuth('currentStep', 4);       
+        Session.setAuth('currentStep', 4);
 
     },
     'click .backToStep3' () {
@@ -233,20 +228,13 @@ Template.OEMPartner.onCreated(function() {
 });
 
 Template.OEMPartner.onRendered(function() {
-    if(!Session.get('currentStep')){Session.set('currentStep', 3);}
+    if (!Session.get('currentStep')) { Session.set('currentStep', 3); }
     Template.instance()
         .$('.ui.embed')
         .embed();
 })
 
-Template.templateCheckBox.onRendered(function() {
-    Template.instance()
-        .$('.ui.toggle.checkbox')
-        .checkbox();
-})
-
-
-Template.mainButtonsCustomers.onRendered(function() {
+Template.mainButtons.onRendered(function() {
     Template.instance()
         .$('.ui.dropdown')
         .dropdown();
@@ -257,29 +245,30 @@ Template.mainButtonsCustomers.onRendered(function() {
             content: 'Delete all apps and streams you have generated.'
         });
 
-     this.$('.button.ApiLogsTable')
+    this.$('.button.ApiLogsTable')
         .popup({
             title: 'API Calls',
             content: 'View the API calls between this demo platform and Qlik Sense.'
         });
-    
-})
 
-Template.forwardToSSOStep.onRendered(function() {
     this.$('.forwardToSSOStep')
         .popup({
-             title: 'Go to step 4',
+            title: 'Go to step 4',
             content: 'Go forward one step without generating first, this lets you test the single sign on using the users and their groups.'
         });
-})
-
-Template.step4Buttons.onRendered(function() {
     this.$('.backToStep3')
         .popup({
-             title: 'Go to step 3',
+            title: 'Go to step 3',
             content: 'Go back one step, this enables you to start restart the generation of streams and apps (provisioning).'
         });
 })
+
+Template.templateCheckBox.onRendered(function() {
+    Template.instance()
+        .$('.ui.toggle.checkbox')
+        .checkbox();
+})
+
 
 Template.step4.onRendered(function() {
     this.$('.ui.accordion')

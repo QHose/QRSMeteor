@@ -55,7 +55,7 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('URL_Youtube_security_deepDive', function() {
-        return "https://www.youtube.com/embed/D3XNHGUbySs";
+        return "https://www.youtube.com/embed/0E9i5Pf2Hjg";
     });
 
     Template.registerHelper('URL_Youtube_concept_behind', function() {
@@ -200,12 +200,12 @@ if (Meteor.isClient) {
         return Session.get('currentStep') === 3
     });
 
-    Template.registerHelper('showLogsButton', function() {
+    Template.registerHelper('step3or4', function() {
         return Session.get('currentStep') === 3 || Session.get('currentStep') === 4;
     });
 
 
-    function currentStep() {
+    export function currentStep() {
 
         //step 2
         if (Customers.find()
