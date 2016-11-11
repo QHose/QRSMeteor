@@ -1,6 +1,7 @@
 <template name="mainButtons">
+    {{#unless stepEqualTo 1}}
     <div class="ui {{loading}} basic button resetEnvironment"><i class="delete icon"></i></div>
-
+    {{/unless}}
     {{#if stepEqualTo 2}}
         <div class="ui basic button backToStep1"><i class="mail reply icon"></i> </div>
     {{/if}}
