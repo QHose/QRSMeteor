@@ -226,6 +226,8 @@ export var updateSenseInfo = function() {
 
 //this code gets executed if the page has been loaded, so a good moment to Connect to Sense a get the most recent apps and streams
 Template.generation.onRendered(function() {
+    if(!Session.get('currentStep')){Session.set('currentStep',1) }
+
     updateSenseInfo();
 
     this.$('.ui.accordion')
