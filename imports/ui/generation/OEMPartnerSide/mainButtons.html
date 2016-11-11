@@ -1,26 +1,28 @@
 <template name="mainButtons">
+    <div class="ui {{loading}} basic button resetEnvironment"><i class="delete icon"></i></div>
+
     {{#if stepEqualTo 2}}
         <div class="ui basic button backToStep1"><i class="mail reply icon"></i> </div>
     {{/if}}
 
-    {{#if step3or4}}
-    <div class="ui {{loading}} basic button resetEnvironment"><i class="delete icon"></i> 
-    </div>
-    {{/if}}
     {{#if readyToSelectTemplate}}
     <div class="ui positive button goToStep3">Go to step 3</div>
     {{/if}}
         
     {{#if step3or4}}
-    <a href="{{pathFor 'ApiLogsTable'}}" target="_blank" class="ui basic button ApiLogsTable"><i class="list layout icon"></i> </a> 
+    <a href="{{pathFor 'ApiLogsTable'}}" target="_blank" class="ui basic button ApiLogsTable"><i class="list layout icon"></i>API calls</a> 
     {{/if}}
+
+    {{# unless loading}}
     {{#if stepEqualTo 3}}
     <div class="ui basic button backToStep2"><i class="mail reply icon"></i> </div>
     <div class="ui basic button forwardToSSOStep"><i class="mail forward icon"></i></div>
     <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i>Start</div>
     {{/if}} 
+    
 
 {{#if stepEqualTo 4}}
     <div class="ui basic button backToStep3"><i class="mail reply icon"></i> </div>
 {{/if}}
+{{/unless}}
 </template>

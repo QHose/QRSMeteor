@@ -191,9 +191,9 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('readyToGenerate', function() {
-        // console.log('the current step session', Session.get('currentStep'));
-        // console.log('value of currentStep() ', currentStep());
-        return currentStep() === 3;
+        console.log('the current step session', Session.get('currentStep'));
+        console.log('value of currentStep() ', currentStep());
+        return currentStep() === 3 && !Session.equals('loadingIndicator', 'loading') ;
     });
 
     Template.registerHelper('step3', function() {
@@ -201,11 +201,13 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('step3or4', function() {
-        return Session.get('currentStep') === 3 || Session.get('currentStep') === 4;
+        return Session.get('currentStep') === 3 ||
+        Session.get('currentStep') === 4 ||
+        Session.equals('loadingIndicator', 'loading')
     });
 
     Template.registerHelper('stepEqualTo', function(stepNr) {
-        return currentStep()===stepNr;
+        return currentStep() === stepNr;
     });
 
     export function currentStep() {
@@ -231,6 +233,9 @@ if (Meteor.isClient) {
             Customers.find().count() &&
             TemplateApps.find().count()) {
             return 4;
+        } else {
+            Session.set('currentStep', 3);
+            return 3;
         }
     }
 

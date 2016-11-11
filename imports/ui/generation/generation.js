@@ -33,7 +33,11 @@ Template.generationApps.helpers({
                     key: 'name',
                     label: 'App',
                     fn: function(value, object, key) {
-                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/sense/app/' + object.id + ' target="_blank">' + value + '</a>');
+                        if (Session.get('currentStep') === 4) {
+                            return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/sense/app/' + object.id + ' target="_blank">' + value + '</a>');
+                        } else {
+                            return object.name
+                        }
                     }
                 }, {
                     key: 'id',
@@ -121,7 +125,11 @@ Template.generationStreams.helpers({
                     key: 'name',
                     label: 'Stream',
                     fn: function(value, object, key) {
-                        return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + object.id + ' target="_blank">' + value + '</a>');
+                        if (Session.get('currentStep') === 4) {
+                            return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + object.id + ' target="_blank">' + value + '</a>');
+                        } else {
+                            return object.name
+                        }
                     }
                 },
                 // { key: 'id', label: 'Guid' }, 
