@@ -89,6 +89,20 @@ Meteor.methods({
         Customers.remove({ 'generationUserId': Meteor.userId() });
         APILogs.remove({ 'generationUserId': Meteor.userId() });
     },
+    upsertTemplate(selector, currentApp) {
+        console.log('upsert template')
+        TemplateApps.upsert(selector, {
+            $set: {
+                name: currentApp.name,
+                id: currentApp.id,
+                generationUserId: Meteor.userId(),
+            },
+        });
+    },
+    removeTemplate(selector, currentApp) {
+        console.log('remove template')
+        TemplateApps.remove(selector);
+    },
     removeGeneratedResources(generationUserSelection) {
         //console.log('remove GeneratedResources method, before we make new ones');
         //logging only

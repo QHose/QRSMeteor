@@ -26,8 +26,6 @@ import '/imports/ui/pages/videoOverview.html';
 import '/imports/ui/pages/videoOverview.js';
 import '/imports/ui/pages/architecture.html';
 import '/imports/ui/pages/architecture.js';
-import '/imports/ui/simulateUserLogin.html';
-import '/imports/ui/simulateUserLogin.js';
 import '/imports/ui/pages/securityRules.html';
 import '/imports/ui/pages/securityRules.js';
 import '/imports/startup/accounts-config.js';

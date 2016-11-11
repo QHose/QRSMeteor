@@ -18,7 +18,7 @@
                 Step 2: Select a template app
             </div>
             <p>
-                Please select the apps which you would like to use as a template for the layout (base sheets in the app). In step 3 we will create a copy of this template for each of your selected customers. (Also called SaaS provisioning). 
+                Which apps should be made available for your customers? <!-- In step 3 we will create a copy of this template for each of your selected customers. (Also called SaaS provisioning). --> 
                 {{# each appsInTemplateStream}} {{> templateCheckBox}} {{/each}}
             </p>
             {{/if}} {{#if readyToGenerate}} {{> step3}} {{/if}} {{#if templateButNoCustomer}}
@@ -32,13 +32,11 @@
             <div class="header">
                 API communication is in progress...
             </div>
-            <p>Your SaaS platform is now sending API calls to the Qlik Sense. Below you will find a summary of the actions we have automated. See more info about what we do here in the <a href="{{pathFor 'ApiLogs'}}" target="_blank">API documentation</a>.</p>
+            <p>Your SaaS platform is now sending API calls to the Qlik Sense. Below you will find a summary of the actions we have automated. See more info about what we do here in the <a href="{{pathFor 'APILogs'}}" target="_blank">API documentation</a>.</p>
             {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}} {{/if}}
         </div>
     </div>
-    {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}} {{#unless noCustomers}} {{> mainButtons}} {{/unless}} {{#if step3}}
-    <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i>Start</div>
-    {{/if}} {{#if or noCustomers templateButNoCustomer}}
+    {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}} {{> mainButtons}} {{#if or noCustomers templateButNoCustomer}}
     <div class="ui icon message">
         <img class="icon" src="images/customers.png">
         <div class="content">
@@ -72,7 +70,7 @@
 <template name="templateCheckBox">
     <div class="field">
         <div class="ui toggle checkbox template">
-            <input type="checkbox" name="templateSelector" >
+            <input type="checkbox" {{checked}} name="templateSelector" >
             <label>{{name}}</label>
         </div>
     </div>
@@ -111,81 +109,7 @@
         </div>
     </div>
 </template>
-<Template name="step3">
-    <div class="header">
-        Start provisioning Qlik Sense apps
-    </div>
-    <p>
-        Press the green button to start the SaaS provisioning (the automatic creation of streams and apps)  for the customers below:
-        <ul>
-            {{#each customers}}
-            <li>
-                {{name}}
-            </li> {{/each}}
-        </ul>
-        <div class="ui accordion">
-            <div class="title">
-                <i class="dropdown icon"></i>Read more on SaaS provisioning...
-            </div>
-            <div class="content">
-                <h4>Manual activities</h4>
-                <p>This demo platform provides you with a wrapper around the Qlik Sense <a href="https://help.qlik.com/en-US/sense/3.1/Content/Videos/Videos-qmc-intro.htm">QMC</a>, so you can send API calls to Qlik Sense by pressing certain buttons. Using these calls you can, for example, create streams and apps or complete any other activity that you’d be able to do in the QMC or app. Each activity you do is <a href="{{pathFor 'ApiLogsTable'}}" class="item">logged</a>. In these logs you can see the request from this demo platform and the responses from Qlik Sense. For example you can press
-                    <ul>
-                        <li>"create stream" next to the customer to create a stream.</li>
-                        <li>"Copy app" to manually copy the app for each selected customer.</li>
-                    </ul>
-                    <!-- Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the apps only for customers who pay or who have activited the app in your software, so this "selection" simulates that use case. -->
-                </p>
-                <p>
-                    <h4>Fully automated SaaS provisioning</h4>{{> usingTheDemo}}
-                </p>
-            </div>
-        </div>
-    </p>
-</Template>
-<Template name="step4">
-    <div class="header">
-        4: Test Single Sign On
-    </div>
-    <p>
-        Select a user in the dropdown below to test the single sign on between your SaaS platform and Qlik Sense.
-        <div class="ui accordion">
-            <div class="title">
-                <i class="dropdown icon"></i>Read more...
-            </div>
-            <div class="content">
-                <p>We have now finished creating the content per customer. So a good time to look at how Qlik can re-use your SaaS platforms authorizations and implement single sign on. On this page you will see a dropdown, this dropdown contains the users of your SaaS platform. Using this dropdown we can simulate a user login (without having to insert passwords etc.). In this way you can easily test the single sign on process, and make sure your platform is in the lead. You can try to create new customers and users in the <a href="{{pathFor 'users'}}">manage customers and users</a> menu.</p>
-                <p>
-                    If you select a user a ticket will be requested which inludes your SaaS platform's current authorizations (the groups) in a dynamic way. This means you don't have to create users and roles up front in Qlik Sense. The <a href="{{pathFor 'securityRules'}}" class="item">QMC security rules</a> are also created in a dynamic way, so we can protect the apps and streams with a couple of generic rules. The row/column level security is done via a special section in the script of an app (QVF). In this demo we used the group (Country) to ensure each user only sees his country in the "row level security app" in the " everyone stream.</p>
-                <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
-                <div class="ui fluid mini buttons">
-                    <a class="ui mini button" href="{{pathFor 'users'}}">Users and groups</a>
-                    <div class="or"></div>
-                    <a href="#" class="ui mini button selfservice">Levels of self service</a>
-                </div>
-            </div>
-        </div>
-    </p>
-</Template>
-<template name="mainButtons">
-    {{#if step3or4}}
-    <div class="ui {{loading}} basic button resetEnvironment"><i class="delete icon"></i> 
-    </div>
-    {{/if}}
-    {{#if readyToSelectTemplate}}
-    <div class="ui positive button goToStep3">Go to step 3</div>
-    {{/if}}
-    
-    {{#if readyToTestSSO}}{{>step4Buttons}} {{/if}} {{#if readyToGenerate}} {{>forwardToSSOStep}} {{/if}} {{#if step3or4}}
-    <a href="{{pathFor 'ApiLogsTable'}}" target="_blank" class="ui basic button ApiLogsTable"><i class="list layout icon"></i> </a> {{/if}}
-</template>
-<template name="step4Buttons">
-    <div class="ui basic button backToStep3"><i class="mail reply icon"></i> </div>
-</template>
-<template name="forwardToSSOStep">
-    <div class="ui basic button forwardToSSOStep"><i class="mail forward icon"></i>
-    </div>
-</template>
+
 
 <!-- <div class="ui floating basic dropdown icon button">
         <i class="dropdown icon"></i>

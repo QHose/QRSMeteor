@@ -4,7 +4,7 @@
             <div class="ui segment">
                 {{#if noCustomers}}
                 <div class="ui icon message">
-                    <!-- <img class="icon" src="images/customers.png"> -->
+                    <img class="icon" src="images/customers.png">
                     <div class="content">
                         <div class="header">
                             <h4>No customers</h4>
@@ -13,11 +13,21 @@
                     </div>
                 </div>
                 {{else}}
-                <div class="ui message">
+                <!-- <div class="ui message">
                     <div class="header">
                         Your customers
                     </div>
                     <p>Below you will find the customers you have entered in the local Mongo Database of your SaaS plaform. Based on "this table" we can create streams, apps, tags or whatever we like in Qlik Sense via the Qlik Sense repository and the Engine API. Press a customer name to update.</p>
+                </div> -->
+                <div class="ui icon message">
+                    <img class="icon" src="images/customers.png">
+                    <div class="content">
+                        <div class="header">
+                            Customers in your SaaS platform
+                        </div>
+                        <p>Below you will find the customers you have entered in the local Mongo Database of your SaaS plaform.
+                            <!-- Based on "this table" we can create streams, apps or whatever we like in Qlik Sense via the Qlik Sense repository (QRS) and the Engine API. -->Press a customer name to update.</p>
+                    </div>
                 </div>
                 <table class="ui celled striped table">
                     <thead>
@@ -42,13 +52,6 @@
   <i class="tag icon"></i>
   Update
 </h4>
-                <!-- <div class="ui message">
-    <div class="header">
-        Update
-    </div>
-    <p>Please update any value you like below.</p>
-</div>
- -->
                 <div class="ui">
                     {{#autoForm id="afUpdateDemo" type=formType collection=Customers doc=selectedCustomerDoc autosave=autoSaveMode}} {{> afQuickField name='name'}}
                     <fieldset>
@@ -61,25 +64,20 @@
         </div>
         <div class="column">
             <div class="ui segment">
-                <div class="ui icon message">
-                    <img class="icon" src="images/customers.png">
-                    <div class="content">
-                        <div class="header">
-                            Insert a new customer
-                        </div>
-                        <ul>
+                <h3 class="ui header">
+                    Insert a new customer
+                </h3>
+                <!-- <ul>
                             <li>Please enter a new customer and users for your SaaS platform </li>
                             <li>This information is only stored in this demo platform (MongoDB). There is no need to create these customers and users in Qlik Sense. We make use of a dynamic user directory connector (UDC). The user and its current authorizations are always passed on from your SaaS platform to Qlik Sense each time the user logs in.</li>
-                        </ul>
-                    </div>
-                </div>
+                        </ul> -->
                 {{#autoForm collection=Customers id="insertCustomerForm" type="insert"}}
                 <fieldset>
                     {{> afQuickField name='name'}} {{> afQuickField name='users'}}
                 </fieldset>
                 <div class="ui padded buttons">
                     <button type="submit" class="ui success button">
-                        <i class="edit icon "></i> Insert
+                        <i class="edit icon "></i> Insert customer
                     </button>
                     <div class="or"></div>
                     <div class="ui button backToGeneration"><i class="play icon "></i> Back to demo</div>

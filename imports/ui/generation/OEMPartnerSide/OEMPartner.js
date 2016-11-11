@@ -9,13 +9,21 @@ import { freshEnvironment } from '/imports/ui/UIHelpers';
 
 import './OEMPartner.html';
 import './customerOverview.js';
+import './simulateUserLogin.js';
+import './step3';
+import './step4';
+import './mainButtons';
+
+import lodash from 'lodash';
+_ = lodash;
+
+
 
 Template.OEMPartner.helpers({
     linkToApp() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/sense/app/' + this.id
     },
     appsInTemplateStream() {
-        console.log('apps found', Apps.find({ "stream.name": "Templates" }).fetch());
         return Apps.find({ "stream.name": "Templates" });
     },
     RESTCallSettings: function() {
@@ -50,6 +58,14 @@ Template.OEMPartner.helpers({
     }
 });
 
+Template.templateCheckBox.helpers({
+    checked() {
+        var selectedTemplates = TemplateApps.find().fetch();
+        var templateSelected = _.some(selectedTemplates, ['id', this.id]);
+        return templateSelected ? 'checked' : '';
+    },
+})
+
 Template.OEMPartner.events({
     'submit .new-customer' (event) {
         // Prevent default browser form submit
@@ -76,7 +92,7 @@ Template.OEMPartner.events({
                 Session.set('loadingIndicator', '');
             } else {
                 Session.set('loadingIndicator', '');
-                sAlert.success('We have deleted all the previously generated streams and apps, so you have a fresh demo environment.');
+                sAlert.success('Using the APIs, we have deleted all the previously generated streams and apps, so you have a fresh demo environment.');
             }
         });
         Session.set('currentStep', 1);
@@ -109,29 +125,29 @@ Template.OEMPartner.events({
         insertTemplateAndDummyCustomers();
     },
     'click .goToStep3' (event) {
-        Session.setAuth('currentStep', 3);
+        if (TemplateApps.find().count()) {
+            Session.setAuth('currentStep', 3);
+        }else
+        {
+            sAlert.error('Please select at least one template');
+        }
     },
 
 }); //end Meteor events
 
 Template.templateCheckBox.events({
     'change .checkbox.template' (event, template) {
-        console.log('selectie box change, this heeft waarde ', this);
-        console.log(event.target.checked);
         var currentApp = this;
+        var selector = {
+            'generationUserId': Meteor.userId(),
+            'id': currentApp.id
+        };
 
         if (event.target.checked) {
-            console.log("Task marked as checked.");
-            TemplateApps.upsert(currentApp.id, {
-                $set: {
-                    name: currentApp.name,
-                    id: currentApp.id,
-                    generationUserId: Meteor.userId(),
-                },
-            });
+            Meteor.call('upsertTemplate', selector, currentApp);
+
         } else {
-            console.log("Task marked as unchecked.");
-            // TemplateApps.remove({currentApp.id});
+            Meteor.call('removeTemplate', selector, currentApp);
         }
     }
 })
@@ -178,38 +194,6 @@ function insertTemplateAndDummyCustomers() {
 
 }
 
-Template.mainButtons.events({
-    'click .forwardToSSOStep' () {
-        console.log('forward to step 4 sso clicked');
-        // Session.setAuth('generated?', true);
-        Session.setAuth('currentStep', 4);
-
-    },
-    'click .backToStep3' () {
-        // Session.setAuth('generated?', false);
-        Session.setAuth('currentStep', 3);
-    },
-    'click .deleteAllCustomers' () {
-        Meteor.call('removeAllCustomers', function(err, result) {
-            if (err) {
-                sAlert.error(err);
-            } else {
-                sAlert.success('All customers have been deleted from the local database of the SaaS platform');
-            }
-        });
-    },
-    'click .toggleAllCustomers' () {
-        // console.log('deSelect all dummyCustomers clicked');
-
-        _.each(Customers.find({})
-            .fetch(),
-            function(customer) {
-                Customers.update(customer._id, {
-                    $set: { checked: !customer.checked },
-                });
-            })
-    }
-})
 
 Template.OEMPartner.onCreated(function() {
     //see https://guide.meteor.com/data-loading.html
@@ -234,49 +218,9 @@ Template.OEMPartner.onRendered(function() {
         .embed();
 })
 
-Template.mainButtons.onRendered(function() {
-    Template.instance()
-        .$('.ui.dropdown')
-        .dropdown();
-
-    this.$('.resetEnvironment')
-        .popup({
-            title: 'Reset demo',
-            content: 'Delete all apps and streams you have generated.'
-        });
-
-    this.$('.button.ApiLogsTable')
-        .popup({
-            title: 'API Calls',
-            content: 'View the API calls between this demo platform and Qlik Sense.'
-        });
-
-    this.$('.forwardToSSOStep')
-        .popup({
-            title: 'Go to step 4',
-            content: 'Go forward one step without generating first, this lets you test the single sign on using the users and their groups.'
-        });
-    this.$('.backToStep3')
-        .popup({
-            title: 'Go to step 3',
-            content: 'Go back one step, this enables you to start restart the generation of streams and apps (provisioning).'
-        });
-})
 
 Template.templateCheckBox.onRendered(function() {
     Template.instance()
         .$('.ui.toggle.checkbox')
         .checkbox();
-})
-
-
-Template.step4.onRendered(function() {
-    this.$('.ui.accordion')
-        .accordion();
-})
-
-Template.step3.onRendered(function() {
-    this.$('.ui.accordion')
-        .accordion();
-
 })

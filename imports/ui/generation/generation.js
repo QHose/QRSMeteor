@@ -232,7 +232,7 @@ Template.generation.onRendered(function() {
             Session.set('NoSenseConnection', true);
             sAlert.error("We can't connect to Qlik Sense, is your Sense VM running, all services started?, virtual proxy 'hdr' configured? Check the host settings in settings-XYZ.json in the root folder");
         } else {
-            var message = "Connected to Qlik Sense via the REST and websocket APIs. We registered a QRS notification event to ensure this MeteorJs platform automatically updates when Sense changes.";
+            var message = "Connected to Qlik Sense via the REST and websocket APIs. We registered a QRS notification event to ensure this MeteorJs platform automatically updates when Qlik Sense changes.";
             console.log(message);
             sAlert.success(message);
             Session.set('NoSenseConnection', false);
