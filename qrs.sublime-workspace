@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"Te",
+				"Template"
+			],
+			[
+				"Tem",
+				"TemplateApps"
+			],
+			[
+				"template",
+				"templateSelected"
+			],
+			[
+				"curr",
+				"currentApp"
+			],
+			[
 				"ste",
 				"stepNr"
 			],
@@ -18,10 +34,6 @@
 			[
 				"pr",
 				"provisioning"
-			],
-			[
-				"curr",
-				"currentStep"
 			],
 			[
 				"fun",
@@ -54,14 +66,6 @@
 			[
 				"video",
 				"videoOverview2"
-			],
-			[
-				"Te",
-				"TemplateApps"
-			],
-			[
-				"template",
-				"templateOverview"
 			],
 			[
 				"customer",
@@ -510,48 +514,52 @@
 			[
 				"find",
 				"findOne"
-			],
-			[
-				"conf",
-				"config"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "<template name='OEMPartner'>\n    <div class=\"ui icon message\">\n        <img class=\"icon\" src=\"images/intro.png\">\n        <div class=\"content\">\n            {{#if freshEnvironment}}\n            <div class=\"header\">\n                Step 1: Let's start to setup the SaaS demo environment\n            </div>\n            <p>\n                First insert some customers with users in your SaaS platform.\n                <ul>\n                    <li>You can use these customers later on to generate streams and apps. </li>\n                    <li>You can use the users to test the single sign and our layered approach to governed <a href=\"#\" class=\"selfservice\">self service</a> in step 4.</li>\n                </ul>\n            </p>\n            {{/if}} {{#if readyToSelectTemplate}}\n            <div class=\"header\">\n                Step 2: Select a template app\n            </div>\n            <p>\n                Please select the apps which you would like to use as a template for the layout (base sheets in the app). In step 3 we will create a copy of this template for each of your selected customers. (Also called SaaS provisioning). \n                {{# each appsInTemplateStream}} {{> templateCheckBox}} {{/each}}\n            </p>\n            {{/if}} {{#if readyToGenerate}} {{> step3}} {{/if}} {{#if templateButNoCustomer}}\n            <div class=\"header\">\n                Customers\n            </div>\n            <p>\n                You already selected a template, but please re-insert your customers.\n            </p>\n            {{/if}} {{#if readyToTestSSO}} {{> step4}} {{/if}} {{#if loading}}\n            <div class=\"header\">\n                API communication is in progress...\n            </div>\n            <p>Your SaaS platform is now sending API calls to the Qlik Sense. Below you will find a summary of the actions we have automated. See more info about what we do here in the <a href=\"{{pathFor 'ApiLogs'}}\" target=\"_blank\">API documentation</a>.</p>\n            {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}} {{/if}}\n        </div>\n    </div>\n    {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}} {{> mainButtons}} {{#if or noCustomers templateButNoCustomer}}\n    <div class=\"ui icon message\">\n        <img class=\"icon\" src=\"images/customers.png\">\n        <div class=\"content\">\n            <div class=\"header\">\n                <h4>No customers</h4>\n            </div>\n            <p>You have resetted the demo environment, and therefore this demo now simulates the first day of your SaaS platform. As a first step we need to insert some customers, or use the dummy customers (Sunny and Cloudy Petrol) we created for you.\n            </p>\n            <div class=\"ui fluid mini buttons\">\n                <a href=\"{{pathFor 'users'}}\" class=\"ui button\">Insert customers</a>\n                <div class=\"or\"></div>\n                <a href=\"#\" class=\"ui button insertDummyCustomers\">Use dummy customers and template app</a>\n            </div>\n        </div>\n    </div>\n    <!-- {{else}} {{> customerOverview}}  -->\n    <!--   {{#if readyToSelectTemplate}}\n    <div class=\"ui icon message\">\n        <img class=\"icon\" src=\"images/app.png\">\n        <div class=\"content\">\n            <div class=\"header\">\n                <h4>No template apps</h4>\n            </div>\n            <p>Please select an app in the templates stream (on the right) which you would like to use as a basis template. We will create a copy and publish it into the \"customer name\" stream for each of your selected customers</p>\n        </div>\n    </div>\n    {{else}}\n    {{> templateOverview}}{{/if}} -->{{/if}}\n</template>\n\n<template name=\"templateCheckBox\">\n    <div class=\"field\">\n        <div class=\"ui toggle checkbox template\">\n            <input type=\"checkbox\" name=\"templateSelector\" >\n            <label>{{name}}</label>\n        </div>\n    </div>\n</template>\n<template name=\"templateOverview\">\n    <div class=\"ui icon message\">\n        <img class=\"icon\" src=\"images/app.png\">\n        <div class=\"content\">\n            <div class=\"header\">\n                <h4>{{NrTemplates}} Selected template app(s)</h4>\n            </div>\n            <p>We will create a \"customer name\" stream, replace the script, reload and publish a copy of each template app for each of your customers</p>\n        </div>\n    </div>\n    <div class=\"ui styled fluid accordion\">\n        <div class=\"title\">\n            <i class=\"dropdown icon\"></i> View selected templates\n        </div>\n        <div class=\"content\">\n            <table class=\"ui celled table\">\n                <thead>\n                    <tr>\n                        <th>App (QVF)</th>\n                        <th>Don't mark as template</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    {{#each templateApps}}\n                    <tr>\n                        <td> <a href={{linkToApp}} target=_blank> {{name}} </a></td>\n                        <td class=\"removeTemplateApp\"><i class=\"remove circle icon\"></i></td>\n                    </tr>\n                    {{/each}}\n                </tbody>\n            </table>\n        </div>\n    </div>\n</template>\n\n\n<!-- <div class=\"ui floating basic dropdown icon button\">\n        <i class=\"dropdown icon\"></i>\n        <div class=\"menu\">\n            <div class=\"item insertDummyCustomers\"><i class=\"edit icon \"></i> Insert dummy customers</div>\n            <div class=\"item deleteAllCustomers\"><i class=\"delete icon \"></i> Delete all customers</div>\n            <div class=\"item toggleAllCustomers\"><i class=\"refresh icon\"></i> Toggle the selected customers</div>\n        </div>\n    </div> -->",
-			"file": "imports/ui/generation/OEMPartnerSide/OEMPartner.html",
-			"file_size": 5814,
-			"file_write_time": 131233495828874064,
+			"file": "imports/ui/users.html",
 			"settings":
 			{
-				"buffer_size": 5639,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "client/lib/site/globals/site.variables.import.less",
-			"settings":
-			{
-				"buffer_size": 192,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/generation/OEMPartnerSide/OEMPartner.js",
-			"settings":
-			{
-				"buffer_size": 7185,
+				"buffer_size": 4477,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.html",
+			"file": "imports/ui/generation/OEMPartnerSide/OEMPartner.html",
 			"settings":
 			{
-				"buffer_size": 930,
+				"buffer_size": 5740,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/generation/OEMPartnerSide/mainButtons.html",
+			"settings":
+			{
+				"buffer_size": 1081,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/generation/OEMPartnerSide/mainButtons.js",
+			"settings":
+			{
+				"buffer_size": 2958,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/generation/generation.html",
+			"settings":
+			{
+				"buffer_size": 3576,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -560,16 +568,16 @@
 			"file": "imports/ui/generation/generation.js",
 			"settings":
 			{
-				"buffer_size": 11805,
+				"buffer_size": 12201,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.js",
+			"file": "imports/ui/generation/OEMPartnerSide/OEMPartner.js",
 			"settings":
 			{
-				"buffer_size": 2357,
+				"buffer_size": 7223,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -578,7 +586,7 @@
 			"file": "imports/ui/UIHelpers.js",
 			"settings":
 			{
-				"buffer_size": 11424,
+				"buffer_size": 12152,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -655,10 +663,24 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
 	[
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/OEMPartner.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/customer.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/OEMPartner.html",
+		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step3.html",
+		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step4.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.js",
@@ -670,11 +692,9 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step3.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/customerOverview.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/site/globals/site.variables.import.less",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/steps.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/steps.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/customerOverview.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/customerOverview.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/customer.js",
@@ -685,8 +705,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
@@ -696,7 +714,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
@@ -725,7 +742,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/test.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.js",
@@ -779,14 +795,7 @@
 		"/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/User/Preferences.sublime-settings",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/sequenceDiagrams.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.css",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsSystemRules.js",
-		"/C/Users/mbj/Documents/GitHub/QRSMeteor/server/yogiben.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/qsocks/qsocks.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/security_templates.html",
-		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/security_templates.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/lib/router.js"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/homeAbout.html"
 	],
 	"find":
 	{
@@ -797,6 +806,7 @@
 		"height": 102.0,
 		"where_history":
 		[
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
@@ -884,6 +894,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"insertTemplateAndDummyCustomers",
+			"onrender",
+			"dummy",
+			"INSERT",
+			"Session.set",
+			"fresh",
+			"start pro",
+			"insert",
+			"template",
+			"some",
+			"ApiLogs",
+			"forwardToSSOStep",
+			"remove",
+			"start prov",
 			"step3",
 			"simulate",
 			"step3",
@@ -997,21 +1021,7 @@
 			"deleteapp",
 			"delete",
 			"Meteor.call('updateLocalSenseCopy');",
-			"notification",
-			"certificates",
-			"see",
-			"generate",
-			"stepByStep",
-			"stream",
-			"console",
-			"complete",
-			"80",
-			"removeGeneratedResources",
-			"step",
-			"get list of apps",
-			"step",
-			"localhost",
-			"modal"
+			"notification"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1119,19 +1129,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "imports/ui/generation/OEMPartnerSide/OEMPartner.html",
+					"file": "imports/ui/users.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5639,
+						"buffer_size": 4477,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5159,
-								5159
+								2932,
+								2932
 							]
 						],
 						"settings":
@@ -1141,91 +1151,57 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1290.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "imports/ui/generation/OEMPartnerSide/OEMPartner.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5740,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1674,
+								1674
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "client/lib/site/globals/site.variables.import.less",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 192,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								129,
-								135
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
 					"buffer": 2,
-					"file": "imports/ui/generation/OEMPartnerSide/OEMPartner.js",
+					"file": "imports/ui/generation/OEMPartnerSide/mainButtons.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7185,
+						"buffer_size": 1081,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4244,
-								4249
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 1107.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 3,
-					"file": "/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 930,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								684,
-								684
+								57,
+								57
 							]
 						],
 						"settings":
@@ -1238,60 +1214,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "imports/ui/generation/generation.js",
+					"buffer": 3,
+					"file": "imports/ui/generation/OEMPartnerSide/mainButtons.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11805,
+						"buffer_size": 2958,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 5,
-					"file": "/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2357,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								414,
-								414
+								2132,
+								2132
 							]
 						],
 						"settings":
@@ -1308,20 +1248,56 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "imports/ui/UIHelpers.js",
+					"buffer": 4,
+					"file": "imports/ui/generation/generation.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11424,
+						"buffer_size": 3576,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10163,
-								10163
+								653,
+								653
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 5,
+					"file": "imports/ui/generation/generation.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12201,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								66,
+								71
 							]
 						],
 						"settings":
@@ -1331,10 +1307,76 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2397.0,
+						"translation.y": 3690.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "imports/ui/generation/OEMPartnerSide/OEMPartner.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7223,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7019,
+								7019
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 2157.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 7,
+					"file": "imports/ui/UIHelpers.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12152,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11707,
+								11707
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2565.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1435,7 +1477,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 2,
 	"settings":
 	{
 	},
@@ -1443,7 +1485,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 380.0,
+	"side_bar_width": 335.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
