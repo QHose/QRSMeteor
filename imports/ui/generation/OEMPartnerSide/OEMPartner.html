@@ -2,7 +2,7 @@
     <div class="ui icon message">
         <img class="icon" src="images/intro.png">
         <div class="content">
-            {{#if freshEnvironment}}
+            {{#if stepEqualTo 0}}
             <div class="header">
                 Step 1: Let's start to setup the SaaS demo environment
             </div>
@@ -13,7 +13,8 @@
                     <li>You can use the users to test the single sign and our layered approach to governed <a href="#" class="selfservice">self service</a> in step 4.</li>
                 </ul>
             </p>
-            {{/if}} {{#if readyToSelectTemplate}}
+            {{/if}} 
+            {{#if stepEqualTo 2}}
             <div class="header">
                 Step 2: Select a template app
             </div>
@@ -22,14 +23,21 @@
                 {{# each appsInTemplateStream}} {{> templateCheckBox}} {{/each}}
             </p>
             <p>Note: We received these apps via an API call</p>
-            {{/if}} {{#if readyToGenerate}} {{> step3}} {{/if}} {{#if templateButNoCustomer}}
+            {{/if}} 
+            {{#if templateButNoCustomer}}
             <div class="header">
                 Customers
             </div>
             <p>
                 You already selected a template, but please re-insert your customers.
             </p>
-            {{/if}} {{#if readyToTestSSO}} {{> step4}} {{/if}} {{#if loading}}
+            {{/if}}
+
+            {{#if stepEqualTo 3}} {{> step3}} {{/if}} 
+
+              {{#if stepEqualTo 4}} {{> step4}} {{/if}} 
+
+              {{#if loading}}
             <div class="header">
                 API communication is in progress...
             </div>
@@ -49,7 +57,7 @@
             <div class="ui fluid mini buttons">
                 <a href="{{pathFor 'users'}}" class="ui button">Insert customers</a>
                 <div class="or"></div>
-                <a href="#" class="ui button insertDummyCustomers">Use dummy customers and template app</a>
+                <a href="#" class="ui positive button insertDummyCustomers">Use dummy customers and template app</a>
             </div>
         </div>
     </div>

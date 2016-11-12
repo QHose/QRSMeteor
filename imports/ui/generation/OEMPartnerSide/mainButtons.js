@@ -63,7 +63,7 @@ Template.mainButtons.onRendered(function() {
      this.$('.backToStep1')
         .popup({
             title: 'Back to step 1',
-            content: 'Go back on step, in order to maintain the customers.'
+            content: 'Go back one step, in order to maintain the customers and users.'
         });
 
     this.$('.backToStep2')

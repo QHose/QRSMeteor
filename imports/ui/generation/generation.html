@@ -15,26 +15,28 @@
                 <h4 class="ui dividing header">
                 Your Saas Platform: admin panel </h4> {{> OEMPartner}}
             </div>
-            {{# if step3or4}}
-            <div class="two wide column">
-                <div class="ui vertical divider">
-                    <h2 class="ui header">  
+            {{# if step3or4}} {{> QlikSense}} {{/if}}
+        </div>
+    </div>
+</template>
+<template name="QlikSense">
+    <div class="two wide column">
+        <div class="ui vertical divider">
+            <h2 class="ui header">  
                           <img class="icon" src="images/generate.png">
                       </h2>
-                </div>
-            </div>
-            <div class="ui six wide column">
-            
-                <h4 class="ui dividing header">
+        </div>
+    </div>
+    <div class="ui six wide column">
+        <h4 class="ui dividing header">
                     Qlik Sense</h4>
-                <!-- <div class="ui indeterminate text loader">Preparing Files</div> -->
-                <div class="ui styled fluid accordion">
-                    <div class="ui"> {{> generationStreams }}</div>
-                    <div class="ui "> {{> generationApps }}</div>
-                    <div class="ui {{#if loading}} active {{/if}} inverted dimmer"> <div class="ui indeterminate text loader">Your SaaS platform is now managing Qlik Sense via <a href="{{pathFor 'ApiLogsTable'}}" target="_blank">API calls</a> </div></div>
-                </div>            
+        <!-- <div class="ui indeterminate text loader">Preparing Files</div> -->
+        <div class="ui styled fluid accordion">
+            <div class="ui"> {{> generationStreams }}</div>
+            <div class="ui "> {{> generationApps }}</div>
+            <div class="ui {{#if loading}} active {{/if}} inverted dimmer">
+                <div class="ui indeterminate text loader">Your SaaS platform is now managing Qlik Sense via <a href="{{pathFor 'ApiLogsTable'}}" target="_blank">API calls</a> </div>
             </div>
-            {{/if}}
         </div>
     </div>
 </template>

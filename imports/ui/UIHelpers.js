@@ -178,10 +178,9 @@ if (Meteor.isClient) {
 
     export function freshEnvironment() {
         if (!Customers.find().count() && !TemplateApps.find().count()) {
-            Session.set('currentStep', 1);
+            Session.set('currentStep', 0);
             return true
         }
-
     };
 
     Template.registerHelper('readyToSelectTemplate', function() {
@@ -195,8 +194,6 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('readyToGenerate', function() {
-        console.log('the current step session', Session.get('currentStep'));
-        console.log('value of currentStep() ', currentStep());
         return currentStep() === 3 && !Session.equals('loadingIndicator', 'loading');
     });
 
@@ -211,24 +208,34 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('stepEqualTo', function(stepNr) {
+        console.log('the current step session', Session.get('currentStep'));
+        console.log('value of currentStep() ', currentStep());
         return currentStep() === stepNr;
     });
 
     export function currentStep() {
 
-        //step 2
-        if (Customers.find()
-            .count() && Session.get('currentStep') === 2) {
+        //step 0: fresh/resetted environment
+        if (freshEnvironment()) {
+            return 0
+        }
+        //step 1 insert customers
+        else if (!Customers.find().count() || Session.get('currentStep') === 1) {
+            return 1
+        }
+        //step 2 there are customers, but no template
+        else if (
+            (Customers.find().count() && !TemplateApps.find().count()) 
+            || Session.get('currentStep') === 2) {
             return 2
         }
         //step 3
         else if (
-            Customers.find().count() &&
-            TemplateApps.find().count() &&
-            // !Session.get('generated?') &&
-            Session.get('currentStep') === 3 &&
+            Customers.find().count() && 
+            TemplateApps.find().count() && 
+            Session.get('currentStep') === 3 && 
             !Session.equals('loadingIndicator', 'loading')) {
-            // console.log('currentStep is ', 3)
+            console.log('loading indicator is ', Session.get('loadingIndicator') )
             return 3
         }
         //step 4
@@ -237,9 +244,13 @@ if (Meteor.isClient) {
             Customers.find().count() &&
             TemplateApps.find().count()) {
             return 4;
-        } else {
-            Session.set('currentStep', 1);
-            return 1;
+        } 
+        else if (Session.equals('loadingIndicator', 'loading')){
+            return;
+        }
+        else {
+            Session.set('currentStep', 3);
+            return 3;
         }
     }
 

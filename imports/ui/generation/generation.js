@@ -226,12 +226,7 @@ export var updateSenseInfo = function() {
 
 //this code gets executed if the page has been loaded, so a good moment to Connect to Sense a get the most recent apps and streams
 Template.generation.onRendered(function() {
-    if(!Session.get('currentStep')){Session.set('currentStep',1) }
-
     updateSenseInfo();
-
-    this.$('.ui.accordion')
-        .accordion();
 
     console.log('generated onRendered: Check if we have a connection to Sense?');
     // $('.dimmer')
@@ -244,11 +239,16 @@ Template.generation.onRendered(function() {
         } else {
             var message = "Connected to Qlik Sense via the REST and websocket APIs. We registered a QRS notification event to ensure this MeteorJs platform automatically updates when Qlik Sense changes.";
             console.log(message);
-            sAlert.success(message);
+            // sAlert.success(message);
             Session.set('NoSenseConnection', false);
         }
     });
 
+})
+
+Template.QlikSense.onRendered(function(){
+    this.$('.ui.accordion')
+        .accordion();
 })
 
 

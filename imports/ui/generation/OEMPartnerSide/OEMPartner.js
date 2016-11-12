@@ -201,18 +201,17 @@ Template.OEMPartner.onCreated(function() {
     const apiLogsHandle = Meteor.subscribe('apiLogs');
     const customersHandle = Meteor.subscribe('customers', { //http://stackoverflow.com/questions/28621132/meteor-subscribe-callback
         onReady: function() {
-            if (freshEnvironment()) {
-                console.log('There is a freshEnvironment');
-                insertTemplateAndDummyCustomers()
-                Session.setAuth('currentStep', 3);
-            };
+            // if (freshEnvironment()) {
+            //     console.log('There is a freshEnvironment');
+            //     insertTemplateAndDummyCustomers()
+            //     Session.setAuth('currentStep', 3);
+            // };
         },
         onError: function() { console.log("onError", arguments); }
     });
 });
 
 Template.OEMPartner.onRendered(function() {
-    if (!Session.get('currentStep')) { Session.set('currentStep', 3); }
     Template.instance()
         .$('.ui.embed')
         .embed();
