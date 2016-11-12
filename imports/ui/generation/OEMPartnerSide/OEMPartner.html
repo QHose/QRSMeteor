@@ -22,7 +22,7 @@
                 Which apps should be made available for your customers? <!-- In step 3 we will create a copy of this template for each of your selected customers. (Also called SaaS provisioning). --> 
                 {{# each appsInTemplateStream}} {{> templateCheckBox}} {{/each}}
             </p>
-            <p>Note: We received these apps via an API call</p>
+            <p>Note: We received these apps dynamically via an API call.</p>
             {{/if}} 
             {{#if templateButNoCustomer}}
             <div class="header">

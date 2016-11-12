@@ -47,7 +47,19 @@ Template.mainButtons.events({
                     $set: { checked: !customer.checked },
                 });
             })
-    }
+    },
+    'click .button.webIntegrationDemo' (event, template) {
+        // Prevent default browser form submit
+        event.preventDefault();
+        var currentUser =  Session.get('currentUser');
+
+        if (!currentUser) {
+            sAlert.error('No user, please select a user in the dropdown');
+            return;
+        } else {
+            window.open('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort+'/hub');
+        }
+    },
 })
 
 Template.mainButtons.onRendered(function() {
