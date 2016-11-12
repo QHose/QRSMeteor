@@ -259,7 +259,7 @@ Template.generation.onCreated(function() {
     var self = this;
     self.autorun(function() {
         self.subscribe('generatedResources', function() {
-            console.log('generatedResources changed, so update the apps subscription');
+            // console.log('generatedResources changed, so update the apps subscription');
             Tracker.autorun(function() {
                 const generatedAppsFromUser = GeneratedResources.find()
                     .map(function(resource) {
