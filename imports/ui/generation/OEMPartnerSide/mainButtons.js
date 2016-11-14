@@ -89,6 +89,12 @@ Template.mainButtons.onRendered(function() {
             content: 'View the API calls between this demo platform and Qlik Sense.'
         });
 
+    this.$('.button.generateStreamAndApp')
+        .popup({
+            title: 'Start provisioning',
+            content: 'Create the selected apps for each customer.'
+        });
+
     this.$('.forwardToSSOStep')
         .popup({
             title: 'Go to step 4',
