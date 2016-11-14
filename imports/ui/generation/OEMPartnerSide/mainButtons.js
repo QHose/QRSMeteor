@@ -13,7 +13,6 @@ Template.mainButtons.events({
         console.log('forward to step 4 sso clicked');
         // Session.setAuth('generated?', true);
         Session.setAuth('currentStep', 4);
-
     },
     'click .backToStep3' () {
         Session.setAuth('currentStep', 3);
@@ -51,13 +50,13 @@ Template.mainButtons.events({
     'click .button.webIntegrationDemo' (event, template) {
         // Prevent default browser form submit
         event.preventDefault();
-        var currentUser =  Session.get('currentUser');
+        var currentUser = Session.get('currentUser');
 
         if (!currentUser) {
             sAlert.error('No user, please select a user in the dropdown');
             return;
         } else {
-            window.open('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort+'/hub');
+            window.open('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort + '/hub');
         }
     },
 })
@@ -72,22 +71,6 @@ Template.mainButtons.onRendered(function() {
             title: 'Reset demo',
             content: 'Delete all apps and streams you have generated.'
         });
-     this.$('.backToStep1')
-        .popup({
-            title: 'Back to step 1',
-            content: 'Go back one step, in order to maintain the customers and users.'
-        });
-
-    this.$('.backToStep2')
-        .popup({
-            title: 'Back to step 2',
-            content: 'Go back on step, in order to select the template apps.'
-        });
-    this.$('.button.ApiLogsTable')
-        .popup({
-            title: 'API Calls',
-            content: 'View the API calls between this demo platform and Qlik Sense.'
-        });
 
     this.$('.button.generateStreamAndApp')
         .popup({
@@ -95,14 +78,43 @@ Template.mainButtons.onRendered(function() {
             content: 'Create the selected apps for each customer.'
         });
 
+
+})
+Template.step2Buttons.onRendered(function() {
+    this.$('.backToStep1')
+        .popup({
+            title: 'Back to step 1',
+            content: 'Go back one step, in order to maintain the customers and users.'
+        });
+})
+
+Template.APIButton.onRendered(function() {
+    this.$('.button.ApiLogsTable')
+        .popup({
+            title: 'API Calls',
+            content: 'View the API calls between this demo platform and Qlik Sense.'
+        });
+})
+
+Template.step3Buttons.onRendered(function() {
+    this.$('.backToStep2')
+        .popup({
+            title: 'Back to step 2',
+            content: 'Go back on step, in order to select the template apps.'
+        });
     this.$('.forwardToSSOStep')
         .popup({
             title: 'Go to step 4',
             content: 'Go forward one step without generating first, this lets you test the single sign on using the users and their groups.'
         });
+
+
+});
+
+Template.step4Buttons.onRendered(function() {
     this.$('.backToStep3')
         .popup({
             title: 'Back to step 3',
             content: 'Go back one step, this enables you to start restart the generation of streams and apps (provisioning).'
         });
-})
+});

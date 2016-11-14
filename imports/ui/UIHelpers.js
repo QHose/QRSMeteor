@@ -225,8 +225,8 @@ if (Meteor.isClient) {
         }
         //step 2 there are customers, but no template
         else if (
-            (Customers.find().count() && !TemplateApps.find().count()) 
-            || Session.get('currentStep') === 2) {
+            // (Customers.find().count() && !TemplateApps.find().count()) &&
+            Session.get('currentStep') === 2) {
             return 2
         }
         //step 3
@@ -235,7 +235,7 @@ if (Meteor.isClient) {
             TemplateApps.find().count() && 
             Session.get('currentStep') === 3 && 
             !Session.equals('loadingIndicator', 'loading')) {
-            console.log('loading indicator is ', Session.get('loadingIndicator') )
+            // console.log('loading indicator is ', Session.get('loadingIndicator') )
             return 3
         }
         //step 4

@@ -33,7 +33,7 @@ Template.generationApps.helpers({
                     key: 'name',
                     label: 'App',
                     fn: function(value, object, key) {
-                        if (Session.get('currentStep') === 4) {
+                        if (Session.get('currentStep') === 4 && Session.get('currentUser')) {
                             return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/sense/app/' + object.id + ' target="_blank">' + value + '</a>');
                         } else {
                             return object.name
@@ -125,7 +125,7 @@ Template.generationStreams.helpers({
                     key: 'name',
                     label: 'Stream',
                     fn: function(value, object, key) {
-                        if (Session.get('currentStep') === 4) {
+                        if (Session.get('currentStep') === 4 && Session.get('currentUser')) {
                             return new Spacebars.SafeString('<a href=http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/hub/stream/' + object.id + ' target="_blank">' + value + '</a>');
                         } else {
                             return object.name
@@ -226,6 +226,9 @@ export var updateSenseInfo = function() {
 
 //this code gets executed if the page has been loaded, so a good moment to Connect to Sense a get the most recent apps and streams
 Template.generation.onRendered(function() {
+    if (!Session.get('currentStep')) {
+        Session.set('currentStep', 1);
+    }
     updateSenseInfo();
 
     console.log('generated onRendered: Check if we have a connection to Sense?');
@@ -246,7 +249,7 @@ Template.generation.onRendered(function() {
 
 })
 
-Template.QlikSense.onRendered(function(){
+Template.QlikSense.onRendered(function() {
     this.$('.ui.accordion')
         .accordion();
 })

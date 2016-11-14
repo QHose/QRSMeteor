@@ -36,7 +36,7 @@ Template.OEMPartner.helpers({
             showColumnToggles: false,
             fields: [{
                     key: 'action',
-                    label: 'Action'
+                    label: 'Activities that are currently being executed via API calls'
                 },
                 // {
                 //     key: 'request',
@@ -116,7 +116,7 @@ Template.OEMPartner.events({
                 Session.setAuth('generated?', true);
                 Session.setAuth('currentStep', 4);
                 console.log('generateStreamAndApp succes', result);
-                sAlert.success('We have created an app for each customer. Also we created a stream per customer.');
+                sAlert.success('We have created "a copy" of the template app for each customer. And to group the apps, we created a stream with the name of the customer');
             }
         });
     },
@@ -127,8 +127,8 @@ Template.OEMPartner.events({
     'click .goToStep3' (event) {
         if (TemplateApps.find().count()) {
             Session.setAuth('currentStep', 3);
-        }else
-        {
+            sAlert.success('We have now selected the customers and the apps they need. Now press start to create the apps in Qlik Sense');
+        } else {
             sAlert.error('Please select at least one template');
         }
     },
@@ -180,18 +180,18 @@ function insertTemplateAndDummyCustomers() {
         Customers.insert(customer);
     })
 
-    const templateAppId = Meteor.settings.public.templateAppId;
-    console.log('Insert insertTemplateAndDummyCustomers, with templateAppId', templateAppId);
-    Session.setAuth('currentStep', 3);
-    TemplateApps.insert({
-        name: "My first template",
-        id: templateAppId,
-        generationUserId: Meteor.userId(),
-        checked: true
-    });
+    // const templateAppId = Meteor.settings.public.templateAppId;
+    // console.log('Insert insertTemplateAndDummyCustomers, with templateAppId', templateAppId);
+    Session.setAuth('currentStep', 2);
 
-    sAlert.success('We inserted some dummy customers and selected a template app for you. Now you can press start to start the provisioning of your SaaS platform');
+    // TemplateApps.insert({
+    //     name: "My first template",
+    //     id: templateAppId,
+    //     generationUserId: Meteor.userId(),
+    //     checked: true
+    // });
 
+    sAlert.success('We have inserted some dummy customers in the database of your SaaS platform. Which apps should they receive?');
 }
 
 

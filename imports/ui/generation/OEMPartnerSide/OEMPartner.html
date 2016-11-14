@@ -13,39 +13,33 @@
                     <li>You can use the users to test the single sign and our layered approach to governed <a href="#" class="selfservice">self service</a> in step 4.</li>
                 </ul>
             </p>
-            {{/if}} 
-            {{#if stepEqualTo 2}}
+            {{/if}} {{#if stepEqualTo 2}}
             <div class="header">
                 Step 2: Select a template app
             </div>
             <p>
-                Which apps should be made available for your customers? <!-- In step 3 we will create a copy of this template for each of your selected customers. (Also called SaaS provisioning). --> 
+                Which apps should be made available for your customers?
+                <!-- In step 3 we will create a copy of this template for each of your selected customers. (Also called SaaS provisioning). -->
                 {{# each appsInTemplateStream}} {{> templateCheckBox}} {{/each}}
             </p>
-            <p>Note: We received these apps dynamically via an API call.</p>
-            {{/if}} 
-            {{#if templateButNoCustomer}}
+            <!-- <p>Note: We received these apps dynamically via an API call.</p> -->
+            {{/if}} {{#if templateButNoCustomer}}
             <div class="header">
                 Customers
             </div>
             <p>
                 You already selected a template, but please re-insert your customers.
             </p>
-            {{/if}}
-
-            {{#if stepEqualTo 3}} {{> step3}} {{/if}} 
-
-              {{#if stepEqualTo 4}} {{> step4}} {{/if}} 
-
-              {{#if loading}}
+            {{/if}} {{#if stepEqualTo 3}} {{> step3}} {{/if}} {{#if stepEqualTo 4}} {{> step4}} {{/if}} {{#if loading}}
             <div class="header">
                 API communication is in progress...
             </div>
             <p>Your SaaS platform is now sending API calls to the Qlik Sense. Below you will find a summary of the actions we have automated. See more info about what we do here in the <a href="{{pathFor 'APILogs'}}" target="_blank">API documentation</a>.</p>
-            {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}} {{/if}}
+            {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}}
+            {{/if}}
         </div>
     </div>
-    {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}} {{> mainButtons}} {{#if or noCustomers templateButNoCustomer}}
+     {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}} {{> mainButtons}} {{#if or noCustomers templateButNoCustomer}}
     <div class="ui icon message">
         <img class="icon" src="images/customers.png">
         <div class="content">
@@ -54,10 +48,10 @@
             </div>
             <p>You have resetted the demo environment, and therefore this demo now simulates the first day of your SaaS platform. As a first step we need to insert some customers, or use the dummy customers (Sunny and Cloudy Petrol) we created for you.
             </p>
-            <div class="ui fluid mini buttons">
+            <div class="ui small buttons">
                 <a href="{{pathFor 'users'}}" class="ui button">Insert customers</a>
                 <div class="or"></div>
-                <a href="#" class="ui positive button insertDummyCustomers">Use dummy customers and template app</a>
+                <a href="#" class="ui positive button insertDummyCustomers">Use dummy customers</a>
             </div>
         </div>
     </div>
@@ -75,11 +69,10 @@
     {{else}}
     {{> templateOverview}}{{/if}} -->{{/if}}
 </template>
-
 <template name="templateCheckBox">
     <div class="field">
         <div class="ui toggle checkbox template">
-            <input type="checkbox" {{checked}} name="templateSelector" >
+            <input type="checkbox" {{checked}} name="templateSelector">
             <label>{{name}}</label>
         </div>
     </div>
@@ -118,8 +111,6 @@
         </div>
     </div>
 </template>
-
-
 <!-- <div class="ui floating basic dropdown icon button">
         <i class="dropdown icon"></i>
         <div class="menu">
