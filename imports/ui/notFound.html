@@ -1,17 +1,20 @@
 <template name="notFound">
     <div class="ui container">
-        <div class="ui error message">
-            <i class="close icon"></i>
-            <div class="header">
-                There was some error with your submission
+        <div class="ui success icon message">
+            <i class="ban icon"></i>
+            <div class="content">
+                <div class="header">
+                    Qlik Sense prevents unauthorized access
+                </div>
+                <ul class="list">
+                    <li>Qlik Sense is secured against unauthorized access. Your SaaS platform controls this access.</li>
+                    <li>You probably did not select a user in the dropdown in step 4</li>
+                    <li>Therefore we can't "single sign on you" into Qlik Sense. (if you do select a user, the demo plaform will normally request a ticket for you.)</li>
+                    <li>Or, you clicked on a page that does not exist.</li>
+                </ul>
+                <br>
+                <a href="{{pathFor 'generation'}}" class="ui centered button">Go back to the demo</a>
             </div>
-            <ul class="list">
-                <li>You probably did not select a user in the dropdown in step 4</li>
-                <li>Therefore we can't "single sign on you" into Qlik Sense. (if you do select a user, the demo plaform will normally request a ticket for you.)</li>
-                <li>Or, you clicked on a page that does not exist.</li>
-            </ul>
-            <br>
-            <a href="{{pathFor 'generation'}}" class="ui centered button">Go back to the demo</a>
         </div>
     </div>
 </template>
