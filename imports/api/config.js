@@ -10,7 +10,6 @@ if (Meteor.isClient) {
         "host": Meteor.settings.public.host,
         "port": Meteor.settings.public.port,
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
-        "UDC": Meteor.settings.public.UDC,
         "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
     };
 
@@ -33,7 +32,6 @@ if (Meteor.isServer) {
         "headerKey": Meteor.settings.private.headerKey,
         "headerValue": Meteor.settings.private.headerValue,
         "isSecure": Meteor.settings.private.isSecure,
-        "UDC": Meteor.settings.private.UDC
     };
 
     if (!_senseConfig.host) {
