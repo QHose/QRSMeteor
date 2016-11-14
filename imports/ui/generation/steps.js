@@ -4,7 +4,12 @@ import { currentStep } from '/imports/ui/UIHelpers'
 Template.steps.helpers({
     stepStatus(stepNr) {
         if (currentStep() === stepNr) {
-            return 'active'
+            if (stepNr === 4 && Session.get('currentUser')) {
+                return 'completed';
+            } else {
+                return 'active'
+            }
+
         } else if (stepNr < currentStep()) {
             return 'completed';
         } else {
