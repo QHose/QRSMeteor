@@ -92,7 +92,7 @@ Template.OEMPartner.events({
                 Session.set('loadingIndicator', '');
             } else {
                 Session.set('loadingIndicator', '');
-                sAlert.success('Using the APIs, we have deleted all the previously generated streams and apps, so you have a fresh demo environment.');
+                sAlert.success("Qlik Sense has been cleaned up. We've removed all streams and apps");
             }
         });
         Session.set('currentStep', 1);
@@ -116,7 +116,7 @@ Template.OEMPartner.events({
                 Session.setAuth('generated?', true);
                 Session.setAuth('currentStep', 4);
                 console.log('generateStreamAndApp succes', result);
-                sAlert.success('For each selected customer a stream equal to the name of the customer has been made, and a copy of the template has been published in this stream');
+                sAlert.success('We have created an app for each customer. Also we created a stream per customer.');
             }
         });
     },
