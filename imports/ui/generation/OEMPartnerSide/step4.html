@@ -1,24 +1,26 @@
 <Template name="step4">
-    <div class="header">
-        4: Test Single Sign On
-    </div>
-    <p>
-        Select a user in the dropdown below to test the single sign on between your SaaS platform and Qlik Sense.
-        <div class="ui accordion">
-            <div class="title">
-                <i class="dropdown icon"></i>Read more...
-            </div>
-            <div class="content">
-                <p>We have now finished creating the content per customer. So a good time to look at how Qlik can re-use your SaaS platforms authorizations and implement single sign on. On this page you will see a dropdown, this dropdown contains the users of your SaaS platform. Using this dropdown we can simulate a user login (without having to insert passwords etc.). In this way you can easily test the single sign on process, and make sure your platform is in the lead. You can try to create new customers and users in the <a href="{{pathFor 'users'}}">manage customers and users</a> menu.</p>
-                <p>
-                    If you select a user a ticket will be requested which inludes your SaaS platform's current authorizations (the groups) in a dynamic way. This means you don't have to create users and roles up front in Qlik Sense. The <a href="{{pathFor 'securityRules'}}" class="item">QMC security rules</a> are also created in a dynamic way, so we can protect the apps and streams with a couple of generic rules. The row/column level security is done via a special section in the script of an app (QVF). In this demo we used the group (Country) to ensure each user only sees his country in the "row level security app" in the " everyone stream.</p>
-                <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
-                <div class="ui fluid mini buttons">
-                    <a class="ui mini button" href="{{pathFor 'users'}}">Users and groups</a>
-                    <div class="or"></div>
-                    <a href="#" class="ui mini button selfservice">Levels of self service</a>
+    <div class="step4">
+        <div class="header">
+            4: Test Single Sign On
+        </div>
+        <p>
+            Select a user in the dropdown below to test the single sign on between your SaaS platform and Qlik Sense.
+            <div class="ui accordion">
+                <div class="title">
+                    <i class="dropdown icon"></i>Read more...
+                </div>
+                <div class="content">
+                    <p>We have now finished creating the content per customer. So a good time to look at how Qlik can re-use your SaaS platforms authorizations and implement single sign on. On this page you will see a dropdown, this dropdown contains the users of your SaaS platform. Using this dropdown we can simulate a user login (without having to insert passwords etc.). In this way you can easily test the single sign on process, and make sure your platform is in the lead. You can try to create new customers and users in the <a href="{{pathFor 'users'}}">manage customers and users</a> menu.</p>
+                    <p>
+                        If you select a user a ticket will be requested which inludes your SaaS platform's current authorizations (the groups) in a dynamic way. This means you don't have to create users and roles up front in Qlik Sense. The <a href="{{pathFor 'securityRules'}}" class="item">QMC security rules</a> are also created in a dynamic way, so we can protect the apps and streams with a couple of generic rules. The row/column level security is done via a special section in the script of an app (QVF). In this demo we used the group (Country) to ensure each user only sees his country in the "row level security app" in the " everyone stream.</p>
+                    <p>In the your <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">SaaS platform</a> menu you can see Qlik Sense embedded via IFrame's and DIV tags. On the other side, if you press any link on the current page you will go to Qlik Sense directly. See security integration <a href="{{pathFor 'introductionSecurity'}}" class="item">videos</a> for more information on the complete security flow.</p>
+                    <div class="ui fluid mini buttons">
+                        <a class="ui mini button" href="{{pathFor 'users'}}">Users and groups</a>
+                        <div class="or"></div>
+                        <a href="#" class="ui mini button selfservice">Levels of self service</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </p>
+        </p>
+    </div>
 </Template>

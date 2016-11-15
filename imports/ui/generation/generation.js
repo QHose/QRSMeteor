@@ -145,14 +145,15 @@ Template.generationStreams.helpers({
                         return moment(value)
                             .format('DD-MM-YYYY');
                     }
-                }, {
-                    key: 'deleteStream',
-                    label: 'Delete',
-                    hidden: true,
-                    fn: function() {
-                        return new Spacebars.SafeString('<i class="remove circle icon markAsTemplate"></i>')
-                    }
-                },
+                }, 
+                // {
+                //     key: 'deleteStream',
+                //     label: 'Delete',
+                //     hidden: true,
+                //     fn: function() {
+                //         return new Spacebars.SafeString('<i class="remove circle icon markAsTemplate"></i>')
+                //     }
+                // },
             ]
         };
     }
@@ -256,8 +257,8 @@ Template.QlikSense.onRendered(function() {
 
 
 Template.generation.onCreated(function() {
-    this.subscribe('streams');
-    this.subscribe('customers');
+    // this.subscribe('streams');
+    // this.subscribe('customers');
 
     var self = this;
     self.autorun(function() {

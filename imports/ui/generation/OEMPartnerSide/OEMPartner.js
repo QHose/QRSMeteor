@@ -10,6 +10,7 @@ import { freshEnvironment } from '/imports/ui/UIHelpers';
 import './OEMPartner.html';
 import './customerOverview.js';
 import './simulateUserLogin.js';
+import './step2';
 import './step3';
 import './step4';
 import './mainButtons';
@@ -22,9 +23,6 @@ _ = lodash;
 Template.OEMPartner.helpers({
     linkToApp() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/sense/app/' + this.id
-    },
-    appsInTemplateStream() {
-        return Apps.find({ "stream.name": "Templates" });
     },
     RESTCallSettings: function() {
         return {
@@ -58,13 +56,6 @@ Template.OEMPartner.helpers({
     }
 });
 
-Template.templateCheckBox.helpers({
-    checked() {
-        var selectedTemplates = TemplateApps.find().fetch();
-        var templateSelected = _.some(selectedTemplates, ['id', this.id]);
-        return templateSelected ? 'checked' : '';
-    },
-})
 
 Template.OEMPartner.events({
     'submit .new-customer' (event) {
@@ -135,44 +126,6 @@ Template.OEMPartner.events({
 
 }); //end Meteor events
 
-Template.templateCheckBox.events({
-    'change .checkbox.template' (event, template) {
-        var currentApp = this;
-        var selector = {
-            'generationUserId': Meteor.userId(),
-            'id': currentApp.id
-        };
-
-        if (event.target.checked) {
-            Meteor.call('upsertTemplate', selector, currentApp);
-
-        } else {
-            Meteor.call('removeTemplate', selector, currentApp);
-        }
-    }
-})
-
-Template.templateOverview.helpers({
-    templateApps() {
-        return TemplateApps.find();
-    },
-    NrTemplates() {
-        return TemplateApps.find()
-            .count();
-    },
-})
-
-Template.templateOverview.events({
-    'click .removeTemplateApp' () {
-        TemplateApps.remove(this._id);
-    },
-
-})
-
-Template.templateOverview.onRendered(function() {
-    this.$('.ui.accordion')
-        .accordion();
-})
 
 function insertTemplateAndDummyCustomers() {
     _.each(dummyCustomers, function(customer) {
@@ -195,21 +148,21 @@ function insertTemplateAndDummyCustomers() {
 }
 
 
-Template.OEMPartner.onCreated(function() {
-    //see https://guide.meteor.com/data-loading.html
-    const templateAppsHandle = Meteor.subscribe('templateApps');
-    const apiLogsHandle = Meteor.subscribe('apiLogs');
-    const customersHandle = Meteor.subscribe('customers', { //http://stackoverflow.com/questions/28621132/meteor-subscribe-callback
-        onReady: function() {
-            // if (freshEnvironment()) {
-            //     console.log('There is a freshEnvironment');
-            //     insertTemplateAndDummyCustomers()
-            //     Session.setAuth('currentStep', 3);
-            // };
-        },
-        onError: function() { console.log("onError", arguments); }
-    });
-});
+// Template.OEMPartner.onCreated(function() {
+//     //see https://guide.meteor.com/data-loading.html
+//     const templateAppsHandle = Meteor.subscribe('templateApps');
+//     const apiLogsHandle = Meteor.subscribe('apiLogs');
+//     const customersHandle = Meteor.subscribe('customers', { //http://stackoverflow.com/questions/28621132/meteor-subscribe-callback
+//         onReady: function() {
+//             // if (freshEnvironment()) {
+//             //     console.log('There is a freshEnvironment');
+//             //     insertTemplateAndDummyCustomers()
+//             //     Session.setAuth('currentStep', 3);
+//             // };
+//         },
+//         onError: function() { console.log("onError", arguments); }
+//     });
+// });
 
 Template.OEMPartner.onRendered(function() {
     Template.instance()

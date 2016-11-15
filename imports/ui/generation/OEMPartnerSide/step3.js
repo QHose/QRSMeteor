@@ -16,4 +16,7 @@ Template.step3.helpers({
 Template.step3.onRendered(function() {
     this.$('.ui.accordion')
         .accordion();
+
+    this.$('.step3')
+        .transition('scale in');
 })

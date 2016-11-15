@@ -5,8 +5,10 @@ import { senseConfig as config } from '/imports/api/config.js';
 import './simulateUserLogin.html';
 
 Template.simulateUserLogin.onRendered(function() {
-    $('.ui.dropdown')
+    this.$('.ui.dropdown')
         .dropdown();
+    this.$('.message')
+        .transition('scale in');
 });
 
 Template.simulateUserLogin.events({
