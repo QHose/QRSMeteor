@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
 
 import './layout.html';
-import './checkConfig.html';
+import '../checkConfig.html';
 import '/imports/ui/nav.html';
 import '/imports/ui/nav.js';
 // import './pages/modals.html';

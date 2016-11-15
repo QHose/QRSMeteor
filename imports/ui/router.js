@@ -34,9 +34,9 @@ Router.route('/sequenceDiagramGeneration');
 Router.route('/legal');
 Router.route('/documentation');
 Router.route('/templateOverview');
+Router.route('/useCaseSelection');
 
 //Single sing on integration route, this is the route you configure in Qlik sense proxy
-
 Router.route('/SSO', {
 	template: 'SSO',
     layoutTemplate: 'SSOLayout'
@@ -44,3 +44,21 @@ Router.route('/SSO', {
 
 // Router.route('/register');
 // Router.route('/login');
+
+Router.route('/start', function () {
+  // use the template named ApplicationLayout for our layout
+  this.layout('ApplicationLayout');
+
+  // render the Post template into the "main" region
+  // {{> yield}}
+  this.render('Post');
+
+  // render the PostAside template into the yield region named "aside" 
+  // {{> yield "aside"}}
+  this.render('PostAside', {to: 'aside'});
+
+  // render the PostFooter template into the yield region named "footer" 
+  // {{> yield "footer"}}
+  this.render('PostFooter', {to: 'footer'});
+
+});
