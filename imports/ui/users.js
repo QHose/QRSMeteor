@@ -65,7 +65,7 @@ Template.users.events({
     },
     'click .delete' () {
         Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
-        Customers.remove(this._id);        
+        Customers.remove(this._id);
         Session.set("selectedCustomer", '');
     },
     'click .backToGeneration' () {
@@ -87,4 +87,8 @@ Template.users.onRendered(function() {  
 
 Template.users.onCreated(function() {
     this.subscribe('customers');
+})
+
+Template.users.onDestroyed(function() {
+    Session.set("activeCustomer", null);
 })

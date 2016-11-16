@@ -4,9 +4,17 @@ import { senseConfig as config } from '/imports/api/config.js';
 
 import './simulateUserLogin.html';
 
+Template.simulateUserLogin.helpers({
+    currentUser() {
+        return Session.get('currentUser');
+    }
+})
+
 Template.simulateUserLogin.onRendered(function() {
-    this.$('.ui.dropdown')
-        .dropdown();
+    console.log('user from session: ', Session.get('currentUser'))
+    this.$('.ui.dropdown').dropdown({'set selected': 'A'});
+    this.$('.ui.dropdown').dropdown('refresh');
+
     this.$('.message')
         .transition('scale in');
 });

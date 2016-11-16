@@ -56,8 +56,8 @@ Meteor.methods({
         }
     },
     resetLoggedInUser() {
-        //console.log("***Method resetLoggedInUsers");
-        //console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
+        console.log("***Method resetLoggedInUsers");
+        console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
 
         //reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.
         Customers.find({ 'generationUserId': Meteor.userId() })
@@ -79,7 +79,7 @@ Meteor.methods({
     simulateUserLogin(name) {
         check(name, String);
         Meteor.call('resetLoggedInUser');
-        // console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: generationUserId: ' + Meteor.userId() + ' & users.name:' + name);
+        console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: generationUserId: ' + Meteor.userId() + ' & users.name:' + name);
         Customers.update({ 'generationUserId': Meteor.userId(), "users.name": name }, {
             $set: {
                 'users.$.currentlyLoggedIn': true
@@ -101,8 +101,8 @@ export function logoutUser(UDC, name) {
             call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
 
             REST_Log(call);
-            // //console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-            // //console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+            console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+            console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
 
         } catch (err) {
             console.error(err);

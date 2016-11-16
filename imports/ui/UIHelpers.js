@@ -221,6 +221,7 @@ if (Meteor.isClient) {
         }
         //step 1 insert customers
         else if (!Customers.find().count() || Session.get('currentStep') === 1) {
+            Router.go('users');
             return 1
         }
         //step 2 there are customers, but no template

@@ -1,0 +1,76 @@
+<template name="SSBISenseApp">
+    <iframe src="{{appURL}}" width="100%" height="900"></iframe>
+</template>
+<template name="SSBIUsers">
+    <h3 class="ui header">Please click on a user</h3>
+    <div class="ui special  cards">
+        <div class=" card">
+            <div class="blurring dimmable image">
+                <div class="ui dimmer">
+                    <div class="content">
+                        <div class="center">
+                            <div class="ui button consumer">Select this user</div>
+                        </div>
+                    </div>
+                </div> <img src="images/QlikConsumer.png">
+            </div>
+            <div class="content">
+                <a class="header">Consumer</a>
+                <div class="description">
+                    <span class="date">This user can only "analyse"</span>
+                </div>
+            </div>
+        </div>
+        <div class=" card">
+            <div class="blurring dimmable image">
+                <div class="ui dimmer">
+                    <div class="content">
+                        <div class="center">
+                            <div class="ui button contributor">Select this user</div>
+                        </div>
+                    </div>
+                </div> <img src="images/QlikContributor.png">
+            </div>
+            <div class="content">
+                <a class="header">Contributor</a>
+                <div class="description">
+                    <span class="date">A basic introduction to Qlik Sense security. Including authentication and authorization basics. We show how you can authorize on streams and apps, and how you can implement row level security.</span>
+                </div>
+            </div>
+        </div>
+        <div class=" card">
+            <div class="blurring dimmable image">
+                <div class="ui dimmer">
+                    <div class="content">
+                        <div class="center">
+                            <div class="ui button developer">Select this user</div>
+                        </div>
+                    </div>
+                </div> <img src="images/QlikDeveloper.png">
+            </div>
+            <div class="content">
+                <a class="header">Developer</a>
+                <div class="description">
+                    <span class="date">Can create apps</span>
+                </div>
+            </div>
+        </div>
+        <div class=" card">
+            <div class="blurring dimmable image">
+                <div class="ui dimmer">
+                    <div class="content">
+                        <div class="center">
+                            <div class="ui button admin">Select this user</div>
+                        </div>
+                    </div>
+                </div> <img src="images/QlikAdmin.png">
+            </div>
+            <div class="content">
+                <a class="header">Admin</a>
+                <div class="description">
+                    <span class="date">QMC access</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

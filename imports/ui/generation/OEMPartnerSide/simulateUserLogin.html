@@ -16,20 +16,23 @@
             <div class="header">
                 <h4>Simulate a user login</h4>
             </div>
-            Try different users and notice the difference in apps and streams visible. Test row level security (by making use of the country group of the user), in the "row level security app" in the "Everyone" Stream. Notice that a user with role
-                <ul>
-                    <li>Consumer can only display</li>
-                    <li>Contributor can create sheets</li>
-                    <li>Developer can create apps and load data</li>
-                    <li>Admin can maintain apps in the QMC</li>
-                </ul>            
+            Try different users and notice the difference in visible streams, apps and access to functionality. Test row level security (based on the "country group"), in the "row level security app" in the "Everyone" Stream. Notice that a user with role
+            <ul>
+                <li>Consumer can only display</li>
+                <li>Contributor can create sheets</li>
+                <li>Developer can create apps and load data</li>
+                <li>Admin can maintain apps in the QMC</li>
+            </ul>
             <div class="ui grid">
                 <div class="ten wide column">
                     <div class="ui fluid selection dropdown">
                         <input id="currentUser" type="hidden">
+                        <i class="user icon"></i> {{#if currentUser}} {{currentUser}} {{else}}
                         <div class="default text">Select a user</div>
+                        {{/if}}
                         <i class="dropdown icon"></i>
                         <div class="menu">
+                        <div class="header">Users from step 1</div>
                             {{#each customers}} {{#each users}}
                             <div class="item" data-value="{{name}}" data-text="{{name}}">
                                 <i class="male icon"></i> {{name}} ({{group}} - {{../name}})
@@ -39,7 +42,6 @@
                     </div>
                 </div>
                 <div class="six wide column">
-                
                 </div>
             </div>
         </div>

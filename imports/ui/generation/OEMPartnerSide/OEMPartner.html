@@ -1,6 +1,11 @@
 <template name='OEMPartner'>
     <div class="ui icon message">
+{{#if stepEqualTo 2}}
+        <img class="icon" src="images/app.png">
+
+{{else}}
         <img class="icon" src="images/intro.png">
+{{/if}}
         <div class="content">
             {{#if stepEqualTo 0}}
             <div class="header">
@@ -9,8 +14,8 @@
             <p>
                 First insert some customers with users in your SaaS platform.
                 <ul>
-                    <li>You can use these customers later on to generate streams and apps. </li>
-                    <li>You can use the users to test the single sign and our layered approach to governed <a href="#" class="selfservice">self service</a> in step 4.</li>
+                    <li>You can use these customers later to generate streams and apps in step 3.</li>
+                    <li>You can use the users to test the single sign on and our layered approach to governed <a href="#" class="selfservice">self service</a> in step 4.</li>
                 </ul>
             </p>
             {{/if}} {{#if stepEqualTo 2}}

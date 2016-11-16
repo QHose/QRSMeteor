@@ -1,50 +1,75 @@
 <template name="useCaseSelection">
-    <div class="ui centered container">
-        <div class="ui special cards">
-            <div class="card">
+    <div class="ui container">
+        <h3 class="ui header">Please select your demo use case</h3>
+        <div class="ui special fluid cards">
+            <div class="fluid card">
                 <div class="blurring dimmable image">
-                {{> useCaseDimmer}}
-                    <img src="images/ssbi.png">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <a href="{{pathFor 'introduction'}}" class="ui button">Select this demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="images/SoftwareAsAService.png">
                 </div>
                 <div class="content">
                     <a class="header">SaaS provisioning</a>
                     <div class="meta">
-                        <span class="date">Use APIs to create streams and apps and provision your SaaS platform</span>
+                    <span class="date">Here we show you how you can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment</span>
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <div class="fluid card">
                 <div class="blurring dimmable image">
-                {{> useCaseDimmer}}
-                    <img src="images/ssbi.png">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <a href="{{pathFor 'selfService'}}" class="ui button">Select this demo</a>
+                            </div>
+                        </div>
+                    </div> <img src="images/QlikSelfServiceBI.png">
                 </div>
                 <div class="content">
-                    <a class="header">SaaS provisioning</a>
+                    <a class="header">Self Service</a>
                     <div class="meta">
-                        <span class="date">Use APIs to create streams and apps and provision your SaaS platform</span>
+                        <span class="date">Using a layered approach to functionality, this demo shows how users can create personalized reports and dynamic dashboards to explore vast amounts of data and find meaningful insights</span>
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <div class="fluid card">
                 <div class="blurring dimmable image">
-                {{> useCaseDimmer}}
-                    <img src="images/ssbi.png">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui button">Select this demo</div>
+                            </div>
+                        </div>
+                    </div> <img src="images/Security.png">
                 </div>
                 <div class="content">
-                    <a class="header">SaaS provisioning</a>
+                    <a class="header">Security</a>
                     <div class="meta">
-                        <span class="date">Use APIs to create streams and apps and provision your SaaS platform</span>
+                        <span class="date">A basic introduction to Qlik Sense security. Including authentication and authorization basics. We show how you can authorize on streams and apps, and how you can implement row level security.</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</template>
-<template name="useCaseDimmer">
-    <div class="ui dimmer">
-        <div class="content">
-            <div class="center">
-                <div class="ui button">Select this demo</div>
+            <div class="fluid card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui button">Select this demo</div>
+                            </div>
+                        </div>
+                    </div> <img src="images/WebIntegration.png">
+                </div>
+                <div class="content">
+                    <a class="header">Web integration</a>
+                    <div class="meta">
+                        <span class="date">What would the end result look like for a succesful integration of Qlik Sense into your application architecture?</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

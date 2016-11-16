@@ -1,31 +1,14 @@
 <template name="ApplicationLayout">
-  <header>
+  
+<div class="ui two column grid">
     <h1>{{title}}</h1>
-  </header>
+        <div class="seven wide column">
+           {{> yield "aside"}}
+        </div>
+        <div class="eight wide column">
+         {{> yield}}        
+        </div>
+    </div>
 
-  <aside>
-    {{> yield "aside"}}
-  </aside>
-
-  <article>
-    {{> yield}}
-  </article>
-
-  <footer>
-    {{> yield "footer"}}
-  </footer>
 </template>
 
-<template name="Post">
-  <p>
-    post content
-  </p>
-</template>
-
-<template name="PostFooter">
-  Some post specific footer content.
-</template>
-
-<template name="PostAside">
-  Some post specific aside content.
-</template>

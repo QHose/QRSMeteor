@@ -11,10 +11,10 @@ Router.plugin('ensureSignedIn', {
 });
 
 
-//map paths to blaze templates
-Router.route('/', function() {
-    this.render('introduction');
-});
+// //map paths to blaze templates
+// Router.route('/', function() {
+//     this.render('introduction');
+// });
 
 Router.route('/users');
 Router.route('/homeAbout');
@@ -45,20 +45,18 @@ Router.route('/SSO', {
 // Router.route('/register');
 // Router.route('/login');
 
-Router.route('/start', function () {
+Router.route('/', function () {
+  // use the template named ApplicationLayout for our layout
+  this.layout('');
+  this.render('useCaseSelection');
+  // this.render('PostAside', {to: 'aside'});
+  // this.render('PostFooter', {to: 'footer'});
+});
+
+Router.route('/selfService', function () {
   // use the template named ApplicationLayout for our layout
   this.layout('ApplicationLayout');
-
-  // render the Post template into the "main" region
-  // {{> yield}}
-  this.render('Post');
-
-  // render the PostAside template into the yield region named "aside" 
-  // {{> yield "aside"}}
-  this.render('PostAside', {to: 'aside'});
-
-  // render the PostFooter template into the yield region named "footer" 
-  // {{> yield "footer"}}
-  this.render('PostFooter', {to: 'footer'});
-
+  this.render('SSBISenseApp');
+  this.render('SSBIUsers', {to: 'aside'});
+  // this.render('PostFooter', {to: 'footer'});
 });

@@ -86,7 +86,7 @@ Template.OEMPartner.events({
                 sAlert.success("Qlik Sense has been cleaned up. We've removed all streams and apps");
             }
         });
-        Session.set('currentStep', 1);
+        Session.set('currentStep', 0);
         Session.set('generated?', false);
         // Session.set('goToSt', false);
     },
@@ -144,7 +144,7 @@ function insertTemplateAndDummyCustomers() {
     //     checked: true
     // });
 
-    sAlert.success('We have inserted some dummy customers in the database of your SaaS platform. Which apps should they receive?');
+    sAlert.success('We have pre-selected some fictitious customers. Which apps will you provide your customers?');
 }
 
 
