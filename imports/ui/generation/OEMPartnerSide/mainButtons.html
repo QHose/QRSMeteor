@@ -1,44 +1,24 @@
 <template name="mainButtons">
     {{#unless stepEqualTo 0}}
     <div class="ui {{loading}} basic button resetEnvironment"><i class="delete icon"></i></div>
-    {{/unless}}
-    {{#if stepEqualTo 2}}
-    {{> step2Buttons}}
-    {{/if}}
-
-    {{#if readyToSelectTemplate}}
+    {{/unless}} {{#if stepEqualTo 2}} {{> step2Buttons}} {{/if}} {{#if readyToSelectTemplate}}
     <div class="ui positive button goToStep3">Go to step 3</div>
-    {{/if}}
-        
-    {{#if step3or4}} {{> APIButton}}
-    {{/if}}
-
-    {{# unless loading}}
-    {{#if stepEqualTo 3}}
-     {{>step3Buttons}}
-    {{/if}} 
-    
-
-{{#if stepEqualTo 4}}
-    {{> step4Buttons}}
-{{/if}}
-{{/unless}}
+    {{/if}} {{#if step3or4}} {{> APIButton}} {{/if}} {{# unless loading}} {{#if stepEqualTo 3}} {{>step3Buttons}} {{/if}} {{#if stepEqualTo 4}} {{> step4Buttons}} {{/if}} {{/unless}}
 </template>
 <template name="step2Buttons">
-        <div class="ui basic button backToStep1"><i class="mail reply icon"></i> </div>
+    <div class="ui basic button backToStep1"><i class="mail reply icon"></i> </div>
 </template>
 <template name="step3Buttons">
-<div class="ui basic button backToStep2"><i class="mail reply icon"></i> </div>
+    <div class="ui basic button backToStep2"><i class="mail reply icon"></i> </div>
     <div class="ui basic button forwardToSSOStep"><i class="mail forward icon"></i></div>
     <div class="ui {{loading}} primary button generateStreamAndApp"><i class="play icon "></i>Start</div>
 </template>
-
 <template name="step4Buttons">
-<div class="ui basic button backToStep3"><i class="mail reply icon"></i> </div>
+    <div class="ui basic button backToStep3"><i class="mail reply icon"></i> </div>
+    {{#if userSelected}}
     <div class="ui positive button webIntegrationDemo" href="{{webIntegrationDemo}}/hub" target="_blank">Test user login</div>
+    {{/if}} 
 </template>
-
 <template name="APIButton">
-        <a href="{{pathFor 'ApiLogsTable'}}" target="_blank" class="ui basic button ApiLogsTable"><i class="list layout icon"></i>API calls</a> 
-
+    <a href="{{pathFor 'ApiLogsTable'}}" target="_blank" class="ui basic button ApiLogsTable"><i class="list layout icon"></i>API calls</a>
 </template>

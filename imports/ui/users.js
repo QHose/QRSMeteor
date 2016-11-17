@@ -89,6 +89,6 @@ Template.users.onCreated(function() {
     this.subscribe('customers');
 })
 
-Template.users.onDestroyed(function() {
-    Session.set("activeCustomer", null);
-})
+// Template.users.onDestroyed(function() {
+//     Session.set("activeCustomer", null);
+// })

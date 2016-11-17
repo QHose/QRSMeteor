@@ -1,14 +1,20 @@
-<template name="ApplicationLayout">
-  
-<div class="ui two column grid">
-    <h1>{{title}}</h1>
-        <div class="seven wide column">
-           {{> yield "aside"}}
+<template name="regionLayout">
+    <div class="ui relaxed very padded stackable grid">
+       <!--  <div class="one wide column">
+        </div> -->
+        <div class="sixteen wide column">
+            {{> yield "nav"}}
+            <div class="ui three column stackable grid">
+                <div class="five wide column"> {{> yield "aside"}} </div>
+                <div class="eleven wide column"> {{> yield}}</div>
+            </div>
         </div>
-        <div class="eight wide column">
-         {{> yield}}        
-        </div>
+       <!--  <div class="one wide column">
+        </div> -->
     </div>
-
 </template>
-
+<template name="oneColumnCenteredLayout">
+    <div class="ui two column centered grid">
+        <div class="column">{{> yield }}</div>
+    </div>
+</template>

@@ -1,7 +1,7 @@
 <template name="nav">
     <div class="row">
         <div class="ui secondary menu navbar">
-            <a href="{{pathFor 'introduction'}}" class="header item">
+            <a href="{{pathFor 'useCaseSelection'}}" class="header item">
                 <!-- <img class="logo" src="images/sense.png"> -->
                 Home</a>
             <a href="{{pathFor 'generation'}}" class="header item">
@@ -27,6 +27,20 @@
             <a class="item" href="{{senseServerQMC}}" target="_blank">Not embedded, QMC using Single Sign On</a> {{/if}}
             <a class="item" href="{{pathFor 'users'}}">Customers and users</a>
             <a class="item" href="{{pathFor 'templateOverview'}}">Template apps</a>
+        </div>
+    </div>
+</template>
+<template name="SSBINav">
+    <div class="row">
+        <div class="ui secondary menu navbar">
+            <a href="{{pathFor 'useCaseSelection'}}" class="header item">
+                <!-- <img class="logo" src="images/sense.png"> -->
+                Home</a>
+            {{#if currentUser}}
+            <div class="ui right floated item">
+                <a href="#" class="logout item">Logout</a>
+            </div>
+            {{/if}}
         </div>
     </div>
 </template>

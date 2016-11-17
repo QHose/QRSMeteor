@@ -34,7 +34,7 @@ Meteor.methods({
         } else {
             var user = _.find(customer.users, { 'currentlyLoggedIn': true });
 
-            console.log('UserID currently logged in in the demo platform: ' + loggedInUser + '. Meteor server side thinks the meteor.userId is ' + Meteor.userId() + '. We use this as the UDC name');
+            // console.log('UserID currently logged in in the demo platform: ' + loggedInUser + '. Meteor server side thinks the meteor.userId is ' + Meteor.userId() + '. We use this as the UDC name');
             //Create a paspoort (ticket) request: user directory, user identity and attributes
             var passport = {
                 'UserDirectory': Meteor.userId(), //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
@@ -44,7 +44,7 @@ Meteor.methods({
                     { 'group': user.group.toUpperCase() }
                 ]
             }
-            // console.log('Request ticket for this user passport": ', passport);
+            console.log('Request ticket for this user passport": ', passport);
 
             //logging only
             var call = {};
@@ -56,8 +56,8 @@ Meteor.methods({
         }
     },
     resetLoggedInUser() {
-        console.log("***Method resetLoggedInUsers");
-        console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
+        // console.log("***Method resetLoggedInUsers");
+        // console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
 
         //reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.
         Customers.find({ 'generationUserId': Meteor.userId() })
@@ -79,12 +79,14 @@ Meteor.methods({
     simulateUserLogin(name) {
         check(name, String);
         Meteor.call('resetLoggedInUser');
-        console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: generationUserId: ' + Meteor.userId() + ' & users.name:' + name);
+        // console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: generationUserId: ' + Meteor.userId() + ' & users.name:' + name);
         Customers.update({ 'generationUserId': Meteor.userId(), "users.name": name }, {
             $set: {
                 'users.$.currentlyLoggedIn': true
             }
         })
+
+        return;
     }
 });
 
@@ -101,8 +103,8 @@ export function logoutUser(UDC, name) {
             call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
 
             REST_Log(call);
-            console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-            console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+            // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+            // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
 
         } catch (err) {
             console.error(err);

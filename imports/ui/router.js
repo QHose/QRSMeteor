@@ -7,14 +7,14 @@ Router.configure({
 
 //make sure certain path are for authenticated users only
 Router.plugin('ensureSignedIn', {
-    only: ['generation', 'users', 'SSO']
+    only: ['generation', 'users', 'SSO', 'useCaseSelection']
 });
 
 
 // //map paths to blaze templates
-// Router.route('/', function() {
-//     this.render('introduction');
-// });
+Router.route('/', function() {
+    this.render('introduction');
+});
 
 Router.route('/users');
 Router.route('/homeAbout');
@@ -34,29 +34,36 @@ Router.route('/sequenceDiagramGeneration');
 Router.route('/legal');
 Router.route('/documentation');
 Router.route('/templateOverview');
-Router.route('/useCaseSelection');
+// Router.route('/useCaseSelection');
 
 //Single sing on integration route, this is the route you configure in Qlik sense proxy
 Router.route('/SSO', {
-	template: 'SSO',
+    template: 'SSO',
     layoutTemplate: 'SSOLayout'
 });
 
+// Router.route('/', function() {
+//     this.render('', { to: 'nav' });
+//     this.layout('regionLayout');
+//     this.render('useCaseSelection');
+// });
+
+Router.route('/useCaseSelection', function() {
+    this.layout('oneColumnCenteredLayout');
+    this.render('useCaseSelection');
+});
+
+
+Router.route('/selfService', function() {
+    this.layout('regionLayout');
+    this.render('SSBINav', { to: 'nav' });
+    this.render('SSBIUsers', { to: 'aside' });
+    this.render('SSBISenseApp');
+});
+
+
+
+
+
 // Router.route('/register');
 // Router.route('/login');
-
-Router.route('/', function () {
-  // use the template named ApplicationLayout for our layout
-  this.layout('');
-  this.render('useCaseSelection');
-  // this.render('PostAside', {to: 'aside'});
-  // this.render('PostFooter', {to: 'footer'});
-});
-
-Router.route('/selfService', function () {
-  // use the template named ApplicationLayout for our layout
-  this.layout('ApplicationLayout');
-  this.render('SSBISenseApp');
-  this.render('SSBIUsers', {to: 'aside'});
-  // this.render('PostFooter', {to: 'footer'});
-});

@@ -8,6 +8,8 @@ import { APILogs } from '/imports/api/APILogs';
 
 import './mainButtons.html'
 
+
+
 Template.mainButtons.events({
     'click .forwardToSSOStep' () {
         console.log('forward to step 4 sso clicked');
@@ -110,6 +112,12 @@ Template.step3Buttons.onRendered(function() {
 
 
 });
+
+Template.step4Buttons.helpers({
+    userSelected() {
+        return Session.get('currentUser');
+    }
+})
 
 Template.step4Buttons.onRendered(function() {
     this.$('.backToStep3')
