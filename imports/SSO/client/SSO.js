@@ -22,9 +22,11 @@
  function redirectUser() {
      // console.log('SSO template, button clicked, now request a ticket server side');
      //logging only
+     var message = "Qlik Sense proxy redirected the users browser to the /sso page client side. Here we can check which user is currently logged in, and call the server using this UserID (Meteor knows the userID if a client makes a server method call)";
+     console.log(message);
      var call = {};
      call.action = 'STEP 1: Client side SSO'
-     call.request = 'Qlik Sense proxy redirected the users browser to the /sso page client side. Here we can check which user is currently logged in, and call the server using this UserID (Meteor knows the userID if a client makes a server method call)';
+     call.request = message;
      REST_Log(call);
 
      call.action = 'STEP 2: Get request QPS parameters'

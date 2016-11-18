@@ -208,8 +208,8 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('stepEqualTo', function(stepNr) {
-        console.log('the current step session', Session.get('currentStep'));
-        console.log('value of currentStep() ', currentStep());
+        // console.log('the current step session', Session.get('currentStep'));
+        // console.log('value of currentStep() ', currentStep());
         return currentStep() === stepNr;
     });
 

@@ -4,6 +4,7 @@ import { Session } from 'meteor/session';
 import { senseConfig as config } from '/imports/api/config';
 import '/imports/ui/UIHelpers';
 import _ from 'meteor/underscore';
+import { insertTemplateAndDummyCustomers } from '/imports/ui/generation/OEMPartnerSide/OEMPartner';
 
 import './SSBI.html';
 
@@ -16,6 +17,9 @@ Template.SSBISenseApp.helpers({
         if (appURL) {
             return appURL;
         }
+    },
+    ready() {
+        return Session.get('userType') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
     }
 });
 
@@ -23,6 +27,10 @@ Template.SSBIUsers.helpers({
     userType(type) {
         console.log('usertype: ', Session.get('userType'));
         return Session.equals('userType', type) ? true : '';
+    },
+    loading() {
+        console.log('loading in helper is ', Session.get('loadingIndicator'));
+        return Session.get('loadingIndicator');
     }
 })
 
@@ -46,14 +54,31 @@ Template.SSBIUsers.events({
         Session.set('userType', 'admin');
         console.log('click login admin');
         login('Paul');
+    },
+    'click .selfservice ' () {
+        $('.ui.modal.SSBI')
+            .modal('show');
+    },
+    'click .selfservice ' () {
+        $('.ui.modal.SSBI')
+            .modal('show');
     }
 });
+
+Template.SSBIUsers.onCreated(function() {
+    // Meteor.call('resetLoggedInUser');
+})
 
 Template.SSBIUsers.onRendered(function() {
     Session.set('userType', null);
     this.$('.dimmable.image').dimmer({
         on: 'hover'
     });
+    this.$('.ui.accordion')
+        .accordion();
+
+    this.$('.userList')
+        .transition('scale in');
 })
 
 function successmessage() {
@@ -63,6 +88,9 @@ function successmessage() {
 function login(user) {
     console.log('login ', user, Meteor.userId());
     try {
+        Session.set('loadingIndicator', 'loading');
+        console.log('loading in login function is ', Session.get('loadingIndicator'));
+
         Meteor.call('simulateUserLogin', user, (error, result) => {
             if (error) {
                 sAlert.error(error);
@@ -70,7 +98,7 @@ function login(user) {
             } else {
                 console.log('All other users logged out, and we inserted the new user ' + user + ' in the local database');
                 var server = 'http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage;
-                var appURL = server + '/sense/app/' + Meteor.settings.public.SSBIAppSheetString;
+                var appURL = server + '/sense/app/' + Meteor.settings.public.SSBIApp;
                 if (user === 'Paul') {
                     console.log('user is paul, so change url to QMC');
                     appURL = server + '/qmc';
@@ -87,6 +115,7 @@ function login(user) {
                 sAlert.success('We switched the user in Qlik Sense');
             }
         })
+        Session.set('loadingIndicator', '');
     } catch (err) {
         sAlert.error(err.message);
     }

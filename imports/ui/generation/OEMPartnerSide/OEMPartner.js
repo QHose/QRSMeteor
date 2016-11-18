@@ -127,7 +127,7 @@ Template.OEMPartner.events({
 }); //end Meteor events
 
 
-function insertTemplateAndDummyCustomers() {
+export function insertTemplateAndDummyCustomers() {
     _.each(dummyCustomers, function(customer) {
         customer.generationUserId = Meteor.userId();
         Customers.insert(customer);

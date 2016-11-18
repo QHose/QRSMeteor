@@ -60,7 +60,7 @@
                         In order to finish the demo, you must complete the following steps:
                         <ol>
                             <li><b>Select your customers</b>. In your SaaS platform you have the ability to store which customers should receive which apps. We simulate this feature by letting you select the customers. By pressing the button, you also select an "app" to be used as a template for the layout.</li>
-                            <li><b>Press generate</b>, This will make a copy of the template app for each of your customers. It replaces the generic script with a customer specific one and reloads the app.</li>
+                            <li><b>Press generate</b>, This will make a copy of the template app for each of your customers. It replaces the generic script with a customer specific one and reloads the app. Because you are able to insert a custom script, you can also specify customer specific data models like "custom fields and tables" or create them on the fly in order to connect to big data sources. In the end we make a unique stream for each customer and publish the app into this stream.</li>
                             <li><b>Select a user and press the green button.</b> This allows you to test the single sign on and make sure that each customer can only see their own data (streams and apps). You can also test row level security by opening the "row level security" app in the "everyone stream". This demonstrates that each user only sees the values pertaining to the country of their group membership.</li>
                         </ol>
                     </p>
@@ -69,7 +69,8 @@
         </p>
     </div>
     <div class="nine wide right floated column">
-        <DIV class="ui embed fluid image" data-url='{{URL_Youtube_concept_behind}}' data-placeholder="/images/only generation explanation.gif"></DIV>
+    <a href="{{URL_Youtube_concept_behind}}" target="_blank"><img class="ui fluid image" src="images/only generation explanation.gif"></a>
+     <!--    <DIV class="ui fluid image" data-url='{{URL_Youtube_concept_behind}}' data-placeholder="/images/only generation explanation.gif"></DIV> -->
         <!--         <img class="ui fluid image" src="images/only generation explanation.gif">
  -->
     </div>
@@ -166,4 +167,4 @@
         </div>
     </div>
 </template>
-<template name="usingTheDemo">This demo shows you how to copy an app (dashboard) which serves as a "template layout" for each of your customers (<a href="#" class="APIAutomation">explained in this video</a>). Besides creating a copy, we will also reload the app with data from the customer database. Because you are able to insert a custom script, you can also specify customer specific data models like "custom fields and tables" or create them on the fly in order to connect to big data sources. In the end we make a unique stream for each customer and publish the app into this stream. If you need additional guidance please look at our "How to" <a href="#" class="stepByStep">Video</a> or <a href="{{doc_demo_manual}}" class="" target="_blank">Manual</a>.</template>
+<template name="usingTheDemo">This demo shows you how to copy an app (dashboard) which serves as a "template layout" for each of your customers (<a href="{{URL_Youtube_concept_behind}}"  target="_blank">explained in this video</a>). Besides creating a copy, we will also reload the app with data from the customer database. <!-- Because you are able to insert a custom script, you can also specify customer specific data models like "custom fields and tables" or create them on the fly in order to connect to big data sources. In the end we make a unique stream for each customer and publish the app into this stream. --> If you need additional guidance please look at our "How to" <a href="#" class="stepByStep">Video</a> or <a href="{{doc_demo_manual}}" class="" target="_blank">Manual</a>.</template>
