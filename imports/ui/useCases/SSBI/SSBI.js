@@ -3,12 +3,13 @@ import { Customers, dummyCustomers } from '/imports/api/customers';
 import { Session } from 'meteor/session';
 import { senseConfig as config } from '/imports/api/config';
 import '/imports/ui/UIHelpers';
+import _ from 'meteor/underscore';
 
 import './SSBI.html';
 
 Template.SSBISenseApp.helpers({
     appURL() {
-        var appURL = 'http://presales1:81/meteor/hub';//Session.get('appURL');
+        var appURL = 'http://presales1:81/meteor/hub'; //Session.get('appURL');
 
         // var appURL = 'http://presales1:81/meteor/sense/app/40ef70c9-be76-4844-ac6a-d53195146c85/sheet/puEpZK/state/analysis';//Session.get('appURL');
         console.log('de app url is: ', appURL);
@@ -55,6 +56,10 @@ Template.SSBIUsers.onRendered(function() {
     });
 })
 
+function successmessage() {
+
+}
+
 function login(user) {
     console.log('login ', user, Meteor.userId());
     try {
@@ -64,12 +69,22 @@ function login(user) {
                 console.log(error);
             } else {
                 console.log('All other users logged out, and we inserted the new user ' + user + ' in the local database');
-                sAlert.success('We have changed the logged in user');
-                Session.set('appURL', 'http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage + '/sense/app/' + Meteor.settings.public.SSBIAppSheetString)
+                var server = 'http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage;
+                var appURL = server + '/sense/app/' + Meteor.settings.public.SSBIAppSheetString;
+                if (user === 'Paul') {
+                    console.log('user is paul, so change url to QMC');
+                    appURL = server + '/qmc';
+                } else if (user === 'Martin') {
+                    var id = Meteor.settings.public.SSBIApp;
+                    appURL = server + '/hub';
+                }
+
+                $("iframe").attr("src", appURL);
                 var myFrame = document.querySelector('iframe');
-                // console.log('refresh Iframe url', myFrame);
+                console.log('refresh Iframe url', myFrame);
                 // myFrame.contentWindow.location.reload(true);
                 myFrame.parentNode.replaceChild(myFrame.cloneNode(), myFrame);
+                sAlert.success('We switched the user in Qlik Sense');
             }
         })
     } catch (err) {
