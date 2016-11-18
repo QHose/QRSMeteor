@@ -8,7 +8,7 @@
                         <h4>Qlik Sense system rules</h4>
                     </div>
                     <p>Below you will find the system rules of Qlik Sense received via the <a href="https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Special-Purpose-Paths.htm">QRS API</a>. They consist of multiple categories; security, license and sync rules. Using the security rules you can create a fully dynamic security model, in which you don't have to "hard code" roles, groups or users.</p>
-                    <p> Filter on 'Z_' to find the security rules that secure the whole platform. In a large software integration deal we secured 400.000 apps with just 2 end user facing security rules (give read access to all apps in the customer name stream if the group of the user matches the name of the stream. Later on we added the contributor and developer roles and matching rules. You can test authorizations possible in the governed <a href="#" class="selfservice">self service</a> tests in step 4 of the demo.</p>
+                    <p> In text box below, filter on ‘Z_’ to expose the security rules that secure the whole platform. In a large software integration deal we secured 400.000 apps with just 2 end user facing security rules (give read access to all apps in the customer name stream if the group of the user matches the name of the stream. Later on we added the contributor and developer roles and matching rules. You can test authorizations possible in the governed <a href="#" class="selfservice">self service</a> tests in step 4 of the demo.</p>
                     <p>See the <a href="{{pathFor 'introductionSecurity'}}" class="item">Security integration</a> documentation for more information.</p>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-            {{> reactiveTable collection=getSecurityRules settings=securityRulesSettings}}
+            {{> reactiveTable class="ui celled table" collection=getSecurityRules settings=securityRulesSettings}}
         </div>
     </div>
 </template>

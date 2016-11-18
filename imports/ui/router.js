@@ -21,6 +21,7 @@ Router.route('/homeAbout');
 Router.route('/APILogs');
 Router.route('/ApiLogsTable');
 Router.route('/introduction');
+Router.route('/videoOverview');
 Router.route('/introductionExtended');
 Router.route('/introductionSecurity');
 Router.route('/SecurityDeepDive');
