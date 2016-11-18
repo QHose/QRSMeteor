@@ -27,10 +27,6 @@ Template.SSBIUsers.helpers({
     userType(type) {
         console.log('usertype: ', Session.get('userType'));
         return Session.equals('userType', type) ? true : '';
-    },
-    loading() {
-        console.log('loading in helper is ', Session.get('loadingIndicator'));
-        return Session.get('loadingIndicator');
     }
 })
 
