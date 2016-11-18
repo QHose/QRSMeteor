@@ -8,11 +8,14 @@ import { insertTemplateAndDummyCustomers } from '/imports/ui/generation/OEMPartn
 
 import './SSBI.html';
 
+const server = 'http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage;
+const QMCUrl = server + '/qmc';
+const hubUrl = server + '/hub';
+const appUrl = server + '/sense/app/' + Meteor.settings.public.SSBIApp;
+
 Template.SSBISenseApp.helpers({
     appURL() {
         var appURL = 'http://presales1:81/meteor/hub'; //Session.get('appURL');
-
-        // var appURL = 'http://presales1:81/meteor/sense/app/40ef70c9-be76-4844-ac6a-d53195146c85/sheet/puEpZK/state/analysis';//Session.get('appURL');
         console.log('de app url is: ', appURL);
         if (appURL) {
             return appURL;
@@ -58,6 +61,15 @@ Template.SSBIUsers.events({
     'click .selfservice ' () {
         $('.ui.modal.SSBI')
             .modal('show');
+    },
+    'click .button.hub ' () {
+       refreshIframe(hubUrl);
+    },
+    'click .button.sheet ' () {
+       refreshIframe(appUrl);
+    },
+    'click .button.QMC ' () {
+       refreshIframe(QMCUrl);
     }
 });
 
@@ -87,32 +99,35 @@ function login(user) {
         Session.set('loadingIndicator', 'loading');
         console.log('loading in login function is ', Session.get('loadingIndicator'));
 
+        var URLtoOpen = appUrl;
         Meteor.call('simulateUserLogin', user, (error, result) => {
             if (error) {
                 sAlert.error(error);
                 console.log(error);
             } else {
                 console.log('All other users logged out, and we inserted the new user ' + user + ' in the local database');
-                var server = 'http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage;
-                var appURL = server + '/sense/app/' + Meteor.settings.public.SSBIApp;
+
                 if (user === 'Paul') {
                     console.log('user is paul, so change url to QMC');
-                    appURL = server + '/qmc';
+                    URLtoOpen = server + '/qmc';
                 } else if (user === 'Martin') {
                     var id = Meteor.settings.public.SSBIApp;
-                    appURL = server + '/hub';
+                    URLtoOpen = hubUrl;
                 }
-
-                $("iframe").attr("src", appURL);
-                var myFrame = document.querySelector('iframe');
-                console.log('refresh Iframe url', myFrame);
-                // myFrame.contentWindow.location.reload(true);
-                myFrame.parentNode.replaceChild(myFrame.cloneNode(), myFrame);
-                sAlert.success('We switched the user in Qlik Sense');
+                refreshIframe(URLtoOpen);
+                sAlert.success(user + ' is now logged in into Qlik Sense');
+                Session.set('loadingIndicator', '');
             }
         })
-        Session.set('loadingIndicator', '');
     } catch (err) {
         sAlert.error(err.message);
     }
+};
+
+function refreshIframe(URLtoOpen) {
+    $("iframe").attr("src", URLtoOpen);
+    var myFrame = document.querySelector('iframe');
+    console.log('refresh Iframe url', myFrame);
+    // myFrame.contentWindow.location.reload(true);
+    myFrame.parentNode.replaceChild(myFrame.cloneNode(), myFrame);
 };

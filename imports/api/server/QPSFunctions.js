@@ -94,7 +94,7 @@ Meteor.methods({
                 }
             }, {},function(error, numberAffectedDocuments) {
             if (numberAffectedDocuments===0) { //if nothing is updated, insert some dummy customers
-                console.log('simulateUserLogin numberAffectedDocuments: ', numberAffectedDocuments);
+                // console.log('simulateUserLogin numberAffectedDocuments: ', numberAffectedDocuments);
                 //name does not yet exist in the customers created by the current demo user. So insert our dummy customers.numberAffectedDocuments
                 insertDummyCustomers();
                 Customers.update({ 'generationUserId': Meteor.userId(), "users.name": name }, {

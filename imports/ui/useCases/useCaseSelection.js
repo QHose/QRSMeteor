@@ -12,4 +12,7 @@ Template.useCaseSelection.onRendered(function() {
     this.$('.special.cards .image').dimmer({
         on: 'hover'
     });
+
+    this.$('.cards')
+        .transition('scale in');
 })

@@ -173,6 +173,7 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('loading', function() {
+        console.log('loading indicator in helper is: ', Session.get('loadingIndicator'));
         return Session.get('loadingIndicator');
     });
 
