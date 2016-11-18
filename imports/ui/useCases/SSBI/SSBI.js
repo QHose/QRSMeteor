@@ -15,10 +15,8 @@ const appUrl = server + '/sense/app/' + Meteor.settings.public.SSBIApp;
 
 Template.SSBISenseApp.helpers({
     appURL() {
-        console.log('de app url is: ', appURL);
-        if (appURL) {
-            return appURL;
-        }
+        console.log('de app url is: ', appUrl);
+            return appUrl;
     },
     ready() {
         return Session.get('userType') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
