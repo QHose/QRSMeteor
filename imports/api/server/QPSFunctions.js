@@ -44,7 +44,7 @@ Meteor.methods({
                     { 'group': user.group.toUpperCase() }
                 ]
             }
-            console.log('Request ticket for this user passport": ', passport);
+            // console.log('Request ticket for this user passport": ', passport);
 
             //logging only
             var call = {};
