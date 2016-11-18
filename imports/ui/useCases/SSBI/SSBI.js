@@ -14,13 +14,13 @@ const hubUrl = server + '/hub';
 const appUrl = server + '/sense/app/' + Meteor.settings.public.SSBIApp;
 
 Template.SSBISenseApp.helpers({
-    appURL() {
-        var appURL = 'http://presales1:81/meteor/hub'; //Session.get('appURL');
-        console.log('de app url is: ', appURL);
-        if (appURL) {
-            return appURL;
-        }
-    },
+    // appURL() {
+    //     var appURL = 'http://presales1:81/meteor/hub'; //Session.get('appURL');
+    //     console.log('de app url is: ', appURL);
+    //     if (appURL) {
+    //         return appURL;
+    //     }
+    // },
     ready() {
         return Session.get('userType') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
     }
