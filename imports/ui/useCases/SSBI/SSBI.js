@@ -16,10 +16,10 @@ const appUrl = server + '/sense/app/' + Meteor.settings.public.SSBIApp;
 Template.SSBISenseApp.helpers({
     appURL() {
         console.log('de app url is: ', appUrl);
-            return appUrl;
+        return appUrl;
     },
     ready() {
-        return Session.get('userType') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
+        return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
     }
 });
 
@@ -27,28 +27,25 @@ Template.SSBIUsers.helpers({
     userType(type) {
         console.log('usertype: ', Session.get('userType'));
         return Session.equals('userType', type) ? true : '';
+    },
+    currentUser() {
+        if (Session.get('currentUser')) {
+            return '(' + Session.get('currentUser') + ' currently logged in)';
+        }
     }
 })
 
 Template.SSBIUsers.events({
     'click .consumer' () {
-        console.log('click login consumer');
-        Session.set('userType', 'consumer');
         login('John');
     },
     'click .contributor' () {
-        console.log('login contributor');
-        Session.set('userType', 'contributor');
         login('Linda');
     },
     'click .developer' () {
-        console.log('click login contributor');
-        Session.set('userType', 'developer');
         login('Martin');
     },
     'click .admin' () {
-        Session.set('userType', 'admin');
-        console.log('click login admin');
         login('Paul');
     },
     'click .selfservice ' () {
@@ -60,13 +57,13 @@ Template.SSBIUsers.events({
             .modal('show');
     },
     'click .button.hub ' () {
-       refreshIframe(hubUrl);
+        refreshIframe(hubUrl);
     },
     'click .button.sheet ' () {
-       refreshIframe(appUrl);
+        refreshIframe(appUrl);
     },
     'click .button.QMC ' () {
-       refreshIframe(QMCUrl);
+        refreshIframe(QMCUrl);
     }
 });
 
@@ -114,6 +111,7 @@ function login(user) {
                 refreshIframe(URLtoOpen);
                 sAlert.success(user + ' is now logged in into Qlik Sense');
                 Session.set('loadingIndicator', '');
+                Session.set('currentUser', user);
             }
         })
     } catch (err) {
