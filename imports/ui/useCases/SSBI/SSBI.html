@@ -1,12 +1,11 @@
 <template name="SSBISenseApp">
-    <h3 class="ui dividing header">Qlik Sense</h3>
-    <div class="IFrameSense">
-        {{#if showIFrame}} {{> SSBISenseIFrame}}
-        {{/if}}
-    </div>
+    {{#if show}} {{> SSBISenseIFrame}} {{/if}}
 </template>
 <template name="SSBISenseIFrame">
-    <iframe class="SenseIframe" src="{{appURL}}" width="100%" height="800" frameBorder="0"></iframe>
+    <div class="IFrameSense">
+        <h3 class="ui dividing header">Qlik Sense</h3>
+        <iframe class="SenseIframe" src="{{appURL}}" width="100%" height="800" frameBorder="0"></iframe>
+    </div>
 </template>
 <template name="SSBIUsers">
     <h3 class="ui dividing header">Governed self service demo</h3>

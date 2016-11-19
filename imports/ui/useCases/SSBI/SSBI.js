@@ -14,16 +14,26 @@ const hubUrl = server + '/hub';
 const appUrl = server + '/sense/app/' + Meteor.settings.public.SSBIApp;
 
 Template.SSBISenseApp.helpers({
-    showIFrame() {
-        return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
+    show() {
+        console.log('show iframe?: ', showIFrame());
+        return showIFrame();
     }
 });
 
+function showIFrame() {
+    return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
+}
+
+Template.SSBISenseIFrame.onRendered(function() {
+    this.$('.IFrameSense')
+        .transition('slide in right');
+})
+
 Template.SSBISenseIFrame.helpers({
     appURL() {
-        console.log('de app url is: ', appUrl);
+        console.log('SSBISenseIFrame: de app url is: ', appUrl);
         return appUrl;
-    }
+    },
 });
 
 Template.SSBIUsers.helpers({
@@ -39,7 +49,7 @@ Template.SSBIUsers.helpers({
     user() {
         return Session.get('currentUser');
     },
-    showSenseButtons(){
+    showSenseButtons() {
         return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
     }
 })
@@ -86,17 +96,17 @@ Template.userCards.onRendered(function() {
     this.$('.dimmable.image').dimmer({
         on: 'hover'
     });
-    this.$('.userList')
+    this.$('.column')
         .transition('scale in');
 })
 
 Template.senseButtons.onRendered(function() {
-     this.$('.SenseIframe')
+    this.$('.SenseIframe')
         .transition('swing up');
 })
 
 Template.senseButtons.onRendered(function() {
-     this.$('.SenseIframe')
+    this.$('.SenseIframe')
         .transition('scale in');
 })
 
@@ -124,7 +134,6 @@ function login(user) {
                 Session.set('loadingIndicator', '');
                 // refreshIframe(URLtoOpen);
                 sAlert.success(user + ' is now logged in into Qlik Sense');
-
             }
         })
     } catch (err) {
