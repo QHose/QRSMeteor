@@ -13,6 +13,11 @@
     margin-top: 0.2em;
 }
 
+
+.ui.segment.SSBI {
+  min-height: 250px;
+}
+
 .deleteStream,
 .copyApp,
 .deleteApp,
