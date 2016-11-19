@@ -14,12 +14,15 @@ const hubUrl = server + '/hub';
 const appUrl = server + '/sense/app/' + Meteor.settings.public.SSBIApp;
 
 Template.SSBISenseApp.helpers({
+    showIFrame() {
+        return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
+    }
+});
+
+Template.SSBISenseIFrame.helpers({
     appURL() {
         console.log('de app url is: ', appUrl);
         return appUrl;
-    },
-    ready() {
-        return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
     }
 });
 
@@ -32,6 +35,12 @@ Template.SSBIUsers.helpers({
         if (Session.get('currentUser')) {
             return '(' + Session.get('currentUser') + ' currently logged in)';
         }
+    },
+    user() {
+        return Session.get('currentUser');
+    },
+    showSenseButtons(){
+        return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
     }
 })
 
@@ -47,10 +56,6 @@ Template.SSBIUsers.events({
     },
     'click .admin' () {
         login('Paul');
-    },
-    'click .selfservice ' () {
-        $('.ui.modal.SSBI')
-            .modal('show');
     },
     'click .selfservice ' () {
         $('.ui.modal.SSBI')
@@ -72,26 +77,34 @@ Template.SSBIUsers.onCreated(function() {
 })
 
 Template.SSBIUsers.onRendered(function() {
+    this.$('.ui.accordion')
+        .accordion();
+})
+
+Template.userCards.onRendered(function() {
     Session.set('userType', null);
     this.$('.dimmable.image').dimmer({
         on: 'hover'
     });
-    this.$('.ui.accordion')
-        .accordion();
-
     this.$('.userList')
         .transition('scale in');
 })
 
-function successmessage() {
+Template.senseButtons.onRendered(function() {
+     this.$('.SenseIframe')
+        .transition('swing up');
+})
 
-}
+Template.senseButtons.onRendered(function() {
+     this.$('.SenseIframe')
+        .transition('scale in');
+})
 
 function login(user) {
     console.log('login ', user, Meteor.userId());
     try {
         Session.set('loadingIndicator', 'loading');
-        console.log('loading in login function is ', Session.get('loadingIndicator'));
+        Session.set('currentUser', user);
 
         var URLtoOpen = appUrl;
         Meteor.call('simulateUserLogin', user, (error, result) => {
@@ -108,10 +121,10 @@ function login(user) {
                     var id = Meteor.settings.public.SSBIApp;
                     URLtoOpen = hubUrl;
                 }
-                refreshIframe(URLtoOpen);
-                sAlert.success(user + ' is now logged in into Qlik Sense');
                 Session.set('loadingIndicator', '');
-                Session.set('currentUser', user);
+                // refreshIframe(URLtoOpen);
+                sAlert.success(user + ' is now logged in into Qlik Sense');
+
             }
         })
     } catch (err) {
@@ -120,9 +133,9 @@ function login(user) {
 };
 
 function refreshIframe(URLtoOpen) {
+    console.log('refresh Iframe url', URLtoOpen);
     $("iframe").attr("src", URLtoOpen);
     var myFrame = document.querySelector('iframe');
-    console.log('refresh Iframe url', myFrame);
-    // myFrame.contentWindow.location.reload(true);
+    console.log('refresh this Iframe DIV in Dom', myFrame);
     myFrame.parentNode.replaceChild(myFrame.cloneNode(), myFrame);
 };
