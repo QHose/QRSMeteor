@@ -40,5 +40,9 @@ The main connection between Meteor and Qlik Sense can be found here https://gith
 # Authentication
 The internal REST calls use both certificate (QPS logout for example) and header authentication only for demo purposes. In production you would normally only use certificates, unless you have a authenticating reverse proxy. The end users connect to Sense via the Meteor virtual proxy (Sense QMC config item). Make sure that you also logout the user on this proxy. (you can login/logout per proxy!)
 
+# Setup your own SaaS provisioning system using this code
+
+See [this manual](https://github.com/QHose/QRSMeteor/blob/master/public/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.mht)
+
 # Thank you
 For always being available to support us with this project: Johan Bäcklin, Alexander Karlsson, Jeffrey Goldberg, Rob Fallows (Centiq Ltd)
