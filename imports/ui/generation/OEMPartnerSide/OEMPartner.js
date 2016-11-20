@@ -114,6 +114,8 @@ Template.OEMPartner.events({
     'click .insertDummyCustomers' (event) {
         event.preventDefault();
         insertTemplateAndDummyCustomers();
+        sAlert.success('We have pre-selected some fictitious customers. Which apps will you provide your customers?');
+        Session.setAuth('currentStep', 2);
     },
     'click .goToStep3' (event) {
         if (TemplateApps.find().count()) {
@@ -135,7 +137,7 @@ export function insertTemplateAndDummyCustomers() {
 
     // const templateAppId = Meteor.settings.public.templateAppId;
     // console.log('Insert insertTemplateAndDummyCustomers, with templateAppId', templateAppId);
-    Session.setAuth('currentStep', 2);
+    
 
     // TemplateApps.insert({
     //     name: "My first template",
@@ -144,7 +146,6 @@ export function insertTemplateAndDummyCustomers() {
     //     checked: true
     // });
 
-    sAlert.success('We have pre-selected some fictitious customers. Which apps will you provide your customers?');
 }
 
 

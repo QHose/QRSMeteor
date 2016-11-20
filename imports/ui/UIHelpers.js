@@ -209,7 +209,7 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('stepEqualTo', function(stepNr) {
-        // console.log('the current step session', Session.get('currentStep'));
+        // console.log('the current step session', Session.get('currentStep'));//
         // console.log('value of currentStep() ', currentStep());
         return currentStep() === stepNr;
     });
@@ -221,7 +221,7 @@ if (Meteor.isClient) {
             return 0
         }
         //step 1 insert customers
-        else if (!Customers.find().count() || Session.get('currentStep') === 1) {
+        else if (Session.get('currentStep') === 1) {
             Router.go('users');
             return 1
         }
@@ -233,8 +233,8 @@ if (Meteor.isClient) {
         }
         //step 3
         else if (
-            Customers.find().count() && 
-            TemplateApps.find().count() && 
+            // Customers.find().count() && 
+            // TemplateApps.find().count() && 
             Session.get('currentStep') === 3 && 
             !Session.equals('loadingIndicator', 'loading')) {
             // console.log('loading indicator is ', Session.get('loadingIndicator') )
@@ -242,9 +242,11 @@ if (Meteor.isClient) {
         }
         //step 4
         else if (
-            Session.get('currentStep') === 4 &&
-            Customers.find().count() &&
-            TemplateApps.find().count()) {
+            Session.get('currentStep') === 4 
+            // &&
+            // Customers.find().count() &&
+            // TemplateApps.find().count()
+            ) {
             return 4;
         } 
         else if (Session.equals('loadingIndicator', 'loading')){

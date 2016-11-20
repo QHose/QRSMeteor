@@ -28,6 +28,8 @@ AutoForm.addHooks(['insertCustomerForm'], {
     },
 });
 
+SimpleSchema.debug = true;
+
 Template.users.helpers({
     autoSaveMode: function() {
         //return Session.get("autoSaveMode") ? true : false;
@@ -70,6 +72,7 @@ Template.users.events({
         Session.set("selectedCustomer", '');
     },
     'click .backToGeneration' () {
+        console.log('go to step 2 clicked')
         Session.set('currentStep', 2);
         Router.go('generation');
     },
@@ -97,16 +100,19 @@ Template.users.events({
 function refreshModal() {
     return $('.ui.modal.insertCustomer').modal('refresh');
 }
-// Template.insertCustomer.events({
-//     'keypress ' () {
-//         console.log('something changed');
-//         $('.ui.modal.insertCustomer').modal('refresh');
-//     },
-// })
+Template.insertCustomer.events({
+    // 'keypress ' () {
+    //     console.log('something changed');
+    //     $('.ui.modal.insertCustomer').modal('refresh');
+    // },
+    'click .closeInsertModal'(){
+       $('.ui.modal.insertCustomer').modal('hide'); 
+    }
+})
 
-// Template.modalRefresher.onRendered(function() {
-//     $('.ui.modal.insertCustomer').modal('refresh');
-// });
+Template.modalRefresher.onRendered(function() {
+    $('.ui.modal.insertCustomer').modal('refresh');
+});
 
 Template.users.onRendered(function() {  
     AutoForm.setDefaultTemplate("semanticUI");
@@ -119,4 +125,5 @@ Template.insertCustomer.onRendered(function() {  
 
 Template.users.onCreated(function() {
     this.subscribe('customers');
+    Session.set('currentStep', 1);
 })

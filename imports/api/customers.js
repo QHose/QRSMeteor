@@ -5,7 +5,7 @@ export const Customers = new Mongo.Collection('customers');
 Customers.attachSchema(new SimpleSchema({
     name: {
         type: String,
-        label: "Name of your customer"
+        label: "Customer name"
     },
     checked: {
         type: Boolean,
@@ -40,7 +40,8 @@ Customers.attachSchema(new SimpleSchema({
         allowedValues: ['Consumer', 'Contributor', 'Developer', 'Admin']
     },
     "users.$.currentlyLoggedIn": {
-        type: Boolean
+        type: Boolean,
+        optional: true
     },
     "users.$.country": {
         type: String,
