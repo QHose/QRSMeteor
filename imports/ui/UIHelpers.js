@@ -179,7 +179,7 @@ if (Meteor.isClient) {
 
     export function freshEnvironment() {
         if (!Customers.find().count() && !TemplateApps.find().count()) {
-            Session.set('currentStep', 0);
+            // Session.set('currentStep', 0);
             return true
         }
     };
@@ -209,12 +209,12 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('stepEqualTo', function(stepNr) {
-        // console.log('the current step session', Session.get('currentStep'));//
         // console.log('value of currentStep() ', currentStep());
         return currentStep() === stepNr;
     });
 
     export function currentStep() {
+        console.log('the current step session', Session.get('currentStep'));//
 
         //step 0: fresh/resetted environment
         if (freshEnvironment()) {

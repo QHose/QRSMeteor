@@ -28,7 +28,7 @@ AutoForm.addHooks(['insertCustomerForm'], {
     },
 });
 
-SimpleSchema.debug = true;
+// SimpleSchema.debug = true;
 
 Template.users.helpers({
     autoSaveMode: function() {
