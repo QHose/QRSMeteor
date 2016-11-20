@@ -13,9 +13,9 @@
         </div>
         <div class="row">
             <div class="column">
-                <h3 class="ui dividing header">
-                    Your Customers
-                </h3>
+                <h4 class="ui dividing header">
+                    Your Saas Platform: Customers
+                </h4>
                 <!-- <div class="ui segment"> -->
                 {{#if noCustomers}}
                 <div class="ui icon message">
@@ -61,9 +61,12 @@
                     <div class="or"></div>
                     <div class="ui positive button backToGeneration"><i class="play icon "></i> Go to step 2</div>
                 </div>
-                {{#unless disableButtons}}
-                <h4 class="ui horizontal divider header">
-                      <i class="tag icon"></i>
+                {{/if}}
+                <!-- </div> -->
+            </div>
+            <div class="column">{{#unless disableButtons}}
+                <h4 class="ui dividing header">
+                      <!-- <i class="tag icon"></i> -->
                       Update
                   </h4>
                 <!-- <div class="ui"> -->
@@ -73,9 +76,7 @@
                 </fieldset>
                 {{/autoForm}}
                 <!-- </div> -->
-                {{/unless}} {{/if}}
-                <!-- </div> -->
-            </div>
+                {{/unless}} </div>
         </div>
     </div>
 </template>

@@ -101,10 +101,10 @@ function refreshModal() {
     return $('.ui.modal.insertCustomer').modal('refresh');
 }
 Template.insertCustomer.events({
-    // 'keypress ' () {
-    //     console.log('something changed');
-    //     $('.ui.modal.insertCustomer').modal('refresh');
-    // },
+    'keypress ' () {
+        console.log('something changed');
+        $('.ui.modal.insertCustomer').modal('refresh');
+    },
     'click .closeInsertModal'(){
        $('.ui.modal.insertCustomer').modal('hide'); 
     }
