@@ -1,21 +1,28 @@
 <template name='users'>
     {{> stepsRow}}
     <div class="ui two column stackable grid">
+        <div class="ui modal insertCustomer">
+            {{> insertCustomer}} {{> modalRefresher}}
+        </div>
         <div class="row">
             <div class="column">
-                <div class="ui segment">
-                    {{#if noCustomers}}
-                    <div class="ui icon message">
-                        <img class="icon" src="images/customers.png">
-                        <div class="content">
-                            <div class="header">
-                                <h4>No customers</h4>
-                            </div>
-                            <p>Please enter some customers on the right.</p>
+                <h3 class="ui dividing header">
+                    Your Customers
+                </h3>
+                <a href="#" class="ui right floated positive button insertNewCustomer">Insert new customer</a>
+                <!-- <div class="ui segment"> -->
+                {{#if noCustomers}}
+                <div class="ui icon message">
+                    <img class="icon" src="images/customers.png">
+                    <div class="content">
+                        <div class="header">
+                            <h4>No customers</h4>
                         </div>
+                        <p>Please enter some customers on the right.</p>
                     </div>
-                    {{else}}
-                    <!-- <div class="ui message">
+                </div>
+                <a href="#" class="ui right floated positive button insertDummyCustomers">Use fictitious customers</a> {{else}}
+                <!-- <div class="ui message">
                     <div class="header">
                         Your customers
                     </div>
@@ -29,65 +36,55 @@
                         </div>
                         <p>Below you will find the customers you have entered in the local Mongo Database of your SaaS plaform.
                             <!-- Based on "this table" we can create streams, apps or whatever we like in Qlik Sense via the Qlik Sense repository (QRS) and the Engine API. -->Press a customer name to update.</p>
-                        </div>
                     </div>
-                    <table class="ui simple table">
-                        <thead>
-                            <tr>
-                                <th>Customer</th>
-                                <th>Delete customer</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each customers}}
-                            <tr class="customer-row {{active}}">
-                                <td class="{{ribbon}}">
-                                    {{name}}
-                                </td>
-                                <td class='delete'><i class="remove circle icon"></i></td>
-                            </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
-                    <div class="ui positive button backToGeneration"><i class="play icon "></i> Go to step 2</div>
-                    {{#unless disableButtons}}
-                    <h4 class="ui horizontal divider header">
+                </div>
+                <table class="ui simple table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Delete customer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each customers}}
+                        <tr class="customer-row {{active}}">
+                            <td class="{{ribbon}}">
+                                {{name}}
+                            </td>
+                            <td class='delete'><i class="remove circle icon"></i></td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <div class="ui positive button backToGeneration"><i class="play icon "></i> Go to step 2</div>
+                {{#unless disableButtons}}
+                <h4 class="ui horizontal divider header">
                       <i class="tag icon"></i>
                       Update
                   </h4>
-                  <!-- <div class="ui"> -->
-                  {{#autoForm id="afUpdateDemo" omitFields="users.$.currentlyLoggedIn" type=formType collection=Customers doc=selectedCustomerDoc autosave=autoSaveMode}} {{> afQuickField name='name'}}
-                  <fieldset>
+                <!-- <div class="ui"> -->
+                {{#autoForm id="afUpdateDemo" omitFields="users.$.currentlyLoggedIn" type=formType collection=Customers doc=selectedCustomerDoc autosave=autoSaveMode}} {{> afQuickField name='name'}}
+                <fieldset>
                     {{> afQuickField name='users'}}
                 </fieldset>
                 {{/autoForm}}
                 <!-- </div> -->
                 {{/unless}} {{/if}}
-            </div>
-        </div>
-        <div class="column">
-            <div class="ui segment">
-                <h3 class="ui header">
-                    Insert a new customer
-                </h3>
-                    <!-- <ul>
-                            <li>Please enter a new customer and users for your SaaS platform </li>
-                            <li>This information is only stored in this demo platform (MongoDB). There is no need to create these customers and users in Qlik Sense. We make use of a dynamic user directory connector (UDC). The user and its current authorizations are always passed on from your SaaS platform to Qlik Sense each time the user logs in.</li>
-                        </ul> -->
-                        {{#autoForm collection=Customers id="insertCustomerForm" omitFields="users.$.currentlyLoggedIn" type="insert"}}
-                        <fieldset>
-                            {{> afQuickField name='name'}} {{> afQuickField name='users'}}
-                        </fieldset>
-                        <div class="ui padded buttons">
-                            <button type="submit" class="ui success button">
-                                <i class="edit icon "></i> Insert customer
-                            </button>
-                        <!--                     <div class="or"></div>
-                    <div class="ui button backToGeneration"><i class="play icon "></i> Back to demo</div>
-                --></div>
-                {{/autoForm}}
+                <!-- </div> -->
             </div>
         </div>
     </div>
-</div>
+</template>
+<template name="modalRefresher">
+</template>
+<template name="insertCustomer">
+    {{#autoForm collection=Customers id="insertCustomerForm" omitFields="users.$.currentlyLoggedIn" type="insert"}}
+    <fieldset>
+        {{> afQuickField name='name'}} {{> afQuickField name='users'}}
+    </fieldset>
+    <div class="ui padded buttons">
+        <button type="submit" class="ui success button">
+            <i class="edit icon "></i> Insert customer</button>
+    </div>
+    {{/autoForm}}
 </template>

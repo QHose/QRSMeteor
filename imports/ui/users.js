@@ -5,6 +5,7 @@ import { Apps, TemplateApps } from '/imports/api/apps.js'
 import { Customers, dummyCustomers } from '../api/customers.js';
 import { Streams } from '/imports/api/streams.js'
 import '/imports/ui/UIHelpers';
+import { insertTemplateAndDummyCustomers } from '/imports/ui/generation/OEMPartnerSide/OEMPartner';
 
 
 //http://www.webtempest.com/meteor-js-autoform-tutorial
@@ -78,17 +79,33 @@ Template.users.events({
     },
     'change' () {
         Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
+    },
+    'click .insertDummyCustomers' (event) {
+        event.preventDefault();
+        insertTemplateAndDummyCustomers();
+    },
+    'click .insertNewCustomer' () {
+        $('.ui.modal.insertCustomer')
+            .modal('show');
     }
+});
+
+Template.insertCustomer.events({
+    'change' () {
+        console.log('something changed');
+        $('.ui.modal.insertCustomer').modal('refresh');
+    },
+})
+
+Template.modalRefresher.onRendered(function() {
+    $('.ui.modal.insertCustomer').modal('refresh');
 });
 
 Template.users.onRendered(function() {  
     AutoForm.setDefaultTemplate("semanticUI");
 })
 
+
 Template.users.onCreated(function() {
     this.subscribe('customers');
 })
-
-// Template.users.onDestroyed(function() {
-//     Session.set("activeCustomer", null);
-// })
