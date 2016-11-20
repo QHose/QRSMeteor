@@ -89,7 +89,7 @@ Template.users.events({
         insertTemplateAndDummyCustomers();
     },
     'click .insertNewCustomer' () {
-        $('.ui.modal.insertCustomer')
+        $('#insertCustomer')
             .modal('show');
         Meteor.setTimeout(function(){refreshModal()}, 1);
         Meteor.setTimeout(function(){refreshModal()}, 2);
@@ -98,20 +98,20 @@ Template.users.events({
 
 
 function refreshModal() {
-    return $('.ui.modal.insertCustomer').modal('refresh');
+    return $('#insertCustomer').modal('refresh');
 }
 Template.insertCustomer.events({
     'keypress ' () {
         console.log('something changed');
-        $('.ui.modal.insertCustomer').modal('refresh');
+        $('#insertCustomer').modal('refresh');
     },
     'click .closeInsertModal'(){
-       $('.ui.modal.insertCustomer').modal('hide'); 
+       $('#insertCustomer').modal('hide'); 
     }
 })
 
 Template.modalRefresher.onRendered(function() {
-    $('.ui.modal.insertCustomer').modal('refresh');
+    $('#insertCustomer').modal('refresh');
 });
 
 Template.users.onRendered(function() {  
@@ -119,7 +119,7 @@ Template.users.onRendered(function() {  
 })
 
 Template.insertCustomer.onRendered(function() {  
-    this.$('.ui.modal.insertCustomer').modal('refresh');
+    this.$('#insertCustomer').modal('refresh');
 })
 
 
