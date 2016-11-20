@@ -21,7 +21,7 @@ AutoForm.addHooks(['insertCustomerForm'], {
                 customer.generationUserId = Meteor.userId();
                 customer.checked = true;
             }
-            console.log('insert users add hook', customer);
+            // console.log('insert users add hook', customer);
             return customer;
         }
     },
