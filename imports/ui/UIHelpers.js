@@ -214,7 +214,7 @@ if (Meteor.isClient) {
     });
 
     export function currentStep() {
-        console.log('the current step session', Session.get('currentStep'));//
+        // console.log('the current step session', Session.get('currentStep'));//
 
         //step 0: fresh/resetted environment
         if (freshEnvironment()) {

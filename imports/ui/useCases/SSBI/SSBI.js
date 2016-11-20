@@ -11,7 +11,9 @@ import './SSBI.html';
 const server = 'http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage;
 const QMCUrl = server + '/qmc';
 const hubUrl = server + '/hub';
-const appUrl = server + '/sense/app/' + Meteor.settings.public.SSBIApp;
+const sheetUrl = server + '/sense/app/' + Meteor.settings.public.SSBIApp;
+const appUrl = server + '/sense/app/' + Meteor.settings.public.SSBIAppSheetString;
+
 
 Template.SSBISenseApp.helpers({
     show() {
@@ -75,6 +77,9 @@ Template.SSBIUsers.events({
         refreshIframe(hubUrl);
     },
     'click .button.sheet ' () {
+        refreshIframe(sheetUrl);
+    },
+    'click .button.app ' () {
         refreshIframe(appUrl);
     },
     'click .button.QMC ' () {
@@ -132,7 +137,7 @@ function login(user) {
                     URLtoOpen = hubUrl;
                 }
                 Session.set('loadingIndicator', '');
-                // refreshIframe(URLtoOpen);
+                //refreshIframe(URLtoOpen);
                 sAlert.success(user + ' is now logged in into Qlik Sense');
             }
         })

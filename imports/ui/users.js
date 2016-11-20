@@ -102,7 +102,7 @@ function refreshModal() {
 }
 Template.insertCustomer.events({
     'keypress ' () {
-        console.log('something changed');
+        // console.log('something changed');
         $('#insertCustomer').modal('refresh');
     },
     'click .closeInsertModal'(){
