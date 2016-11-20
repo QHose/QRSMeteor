@@ -9,7 +9,7 @@
                 <h3 class="ui dividing header">
                     Your Customers
                 </h3>
-                <a href="#" class="ui right floated positive button insertNewCustomer">Insert new customer</a>
+                
                 <!-- <div class="ui segment"> -->
                 {{#if noCustomers}}
                 <div class="ui icon message">
@@ -56,7 +56,11 @@
                         {{/each}}
                     </tbody>
                 </table>
+                <div class="ui buttons">
+                <a href="#" class="ui button insertNewCustomer">Insert new customer</a>
+                 <div class="or"></div>
                 <div class="ui positive button backToGeneration"><i class="play icon "></i> Go to step 2</div>
+                </div>
                 {{#unless disableButtons}}
                 <h4 class="ui horizontal divider header">
                       <i class="tag icon"></i>

@@ -78,6 +78,7 @@ Template.users.events({
         console.log('customer click, selectedCustomer', this._id);
     },
     'change' () {
+        console.log('something changed resetLoggedInUser');
         Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
     },
     'click .insertDummyCustomers' (event) {
@@ -87,22 +88,32 @@ Template.users.events({
     'click .insertNewCustomer' () {
         $('.ui.modal.insertCustomer')
             .modal('show');
+        Meteor.setTimeout(function(){refreshModal()}, 1);
+        Meteor.setTimeout(function(){refreshModal()}, 2);
     }
 });
 
-Template.insertCustomer.events({
-    'change' () {
-        console.log('something changed');
-        $('.ui.modal.insertCustomer').modal('refresh');
-    },
-})
 
-Template.modalRefresher.onRendered(function() {
-    $('.ui.modal.insertCustomer').modal('refresh');
-});
+function refreshModal() {
+    return $('.ui.modal.insertCustomer').modal('refresh');
+}
+// Template.insertCustomer.events({
+//     'keypress ' () {
+//         console.log('something changed');
+//         $('.ui.modal.insertCustomer').modal('refresh');
+//     },
+// })
+
+// Template.modalRefresher.onRendered(function() {
+//     $('.ui.modal.insertCustomer').modal('refresh');
+// });
 
 Template.users.onRendered(function() {  
     AutoForm.setDefaultTemplate("semanticUI");
+})
+
+Template.insertCustomer.onRendered(function() {  
+    this.$('.ui.modal.insertCustomer').modal('refresh');
 })
 
 
