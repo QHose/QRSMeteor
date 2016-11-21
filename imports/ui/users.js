@@ -92,9 +92,9 @@ Template.users.events({
         $('#insertCustomer')
             .modal({ observeChanges: true })
             .modal('show');
-        Meteor.setTimeout(function() { refreshModal() }, 1);
-        Meteor.setTimeout(function() { refreshModal() }, 2);
+            refreshModal();
     }
+
 });
 
 
@@ -103,10 +103,6 @@ function refreshModal() {
     return $('#insertCustomer').modal('refresh');
 }
 Template.insertCustomer.events({
-    // 'keypress ' () {
-    //     // console.log('something changed');
-    //     $('#insertCustomer').modal('refresh');
-    // },
     'click .closeInsertModal' () {
         $('#insertCustomer').modal('hide');
     }
