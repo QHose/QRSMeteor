@@ -90,23 +90,25 @@ Template.users.events({
     },
     'click .insertNewCustomer' () {
         $('#insertCustomer')
+            .modal({ observeChanges: true })
             .modal('show');
-        Meteor.setTimeout(function(){refreshModal()}, 1);
-        Meteor.setTimeout(function(){refreshModal()}, 2);
+        Meteor.setTimeout(function() { refreshModal() }, 1);
+        Meteor.setTimeout(function() { refreshModal() }, 2);
     }
 });
 
 
 function refreshModal() {
+    Meteor.setTimeout(function() { refreshModal() }, 1);
     return $('#insertCustomer').modal('refresh');
 }
 Template.insertCustomer.events({
-    'keypress ' () {
-        // console.log('something changed');
-        $('#insertCustomer').modal('refresh');
-    },
-    'click .closeInsertModal'(){
-       $('#insertCustomer').modal('hide'); 
+    // 'keypress ' () {
+    //     // console.log('something changed');
+    //     $('#insertCustomer').modal('refresh');
+    // },
+    'click .closeInsertModal' () {
+        $('#insertCustomer').modal('hide');
     }
 })
 
