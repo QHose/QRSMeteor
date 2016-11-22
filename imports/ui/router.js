@@ -17,6 +17,7 @@ Router.route('/', function() {
 });
 
 Router.route('/users');
+Router.route('/userOverview');
 Router.route('/homeAbout');
 Router.route('/APILogs');
 Router.route('/ApiLogsTable');
@@ -64,7 +65,7 @@ Router.route('/selfService', function() {
 
 
 
-
+Router.route('/signup');
 
 // Router.route('/register');
 // Router.route('/login');
