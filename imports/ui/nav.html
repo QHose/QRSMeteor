@@ -12,6 +12,9 @@
   </a> {{#if currentUser}}
             <div class="ui right floated item">
                 <a href="#" class="logout item">Logout</a>
+                {{#if isInRole 'admin' }}
+                <a class="item" href="{{pathFor 'userOverview'}}">User list</a>
+                {{/if}}
             </div>
             {{/if}}
         </div>
@@ -36,7 +39,7 @@
             <a href="{{pathFor 'useCaseSelection'}}" class="header item">
                 <!-- <img class="logo" src="images/sense.png"> -->
                 Home</a>
-           <!--  {{#if currentUser}}
+            <!--  {{#if currentUser}}
             <div class="ui right floated item">
                 <a href="#" class="logout item">Logout</a>
             </div>
