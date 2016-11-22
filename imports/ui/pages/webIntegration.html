@@ -3,8 +3,9 @@
     <div class="ui text container">
         <h3 class="ui header">Web integration: Embed Qlik Sense</h3>
         <!-- <img class="ui medium left floated image" src="images/embed.png"> -->
-        <p>The beauty of Qlik is that it presents you with choices for your integration. You can choose your desired level of web integration according to your business requirements, and on the client side, you can choose to use our client/front-end or create your own.</p>
-        <p>You can integrate the hub, an app, a sheet or individual charts. In most cases you have the flexibility to control whether you would like to see our menu, our selection bar, or whether or not you would like to provide initial selections as opposed to making the charts static so that no selections are possible at all.</p>
+        <p>Qlik allows integration options. You can choose your desired level of web integration according to your business requirements. On the client side, you can use either the Qlik client or create your own client.</p>
+        <p>If you choose to use the Qlik Sense Client, you have the following integration options: integrate the hub, an app, a sheet or individual charts. In most cases you have the ability to control whether you see our menu, see a selection bar or whether or not you provide initial selections to make charts static.
+        </p>
         <h4 class="ui header">How would a successful integration of Qlik Sense into your application architecture look?</h4>
         <img class="ui medium right floated image" src="images/qlik sense embedded example.png">
         <p>Your goal is to create embedded analytics using the Qlik platform within a multi-tenant SaaS environment, where each of your customers would only have access to their own data. It’s possible for each customer to have a more finely tuned authorization structure.</p>
@@ -21,45 +22,47 @@
                         <a href="{{doc_webIntegration}}" target="_blank" class="ui button">Community whitepaper</a> -->
             </DIV>
         </DIV>
-        <h4 class="ui header">Videos</h4> {{>webVideos}} {{>webIntegrationMindMap}}
     </DIV>
+    <div class="ui container segment">
+        <h4 class="ui header">Videos</h4> {{>webVideos}} {{>webIntegrationMindMap}}
+    </div>
 </template>
 <template name="webVideos">
-    <DIV class="ui segment">
-    <div class="ui three column centered grid">
+    <!-- <DIV class="ui segment"> -->
+        <div class="ui three column centered grid">
             <DIV class="column"> {{> videoWebIntroduction}}</DIV>
             <DIV class="column">{{> videoWebExtended}}</DIV>
         </DIV>
-    </DIV>
+    <!-- </DIV> -->
 </template>
 <template name="videoWebIntroduction">
     <h4 class="ui header">Web integration overview</h4>
     <DIV class="ui embed" data-url='{{URL_Youtube_webintegration_introduction}}' data-placeholder="/images/qlik sense embedded example.png"></DIV>
     <DIV class="item">
-        <DIV class="content">
-            <a class="header">Contents</a>
+        <!-- <DIV class="content">
+            
             <DIV class="meta">
                 <span></span>
             </DIV>
             <DIV class="description">In this quick overview you’ll see the key options for embedding Qlik Sense.</DIV>
             <DIV class="extra">
             </DIV>
-        </DIV>
+        </DIV> -->
     </DIV>
 </template>
 <template name="videoWebExtended">
     <h4 class="ui header">Exploring web integration</h4>
     <DIV class="ui embed" data-url='{{URL_Youtube_webintegration_extended}}' data-placeholder="/images/introVideoQAP.png"></DIV>
     <DIV class="item">
-        <DIV class="content">
-            <a class="header">Contents</a>
+        <!-- <DIV class="content">
+            
             <DIV class="meta">
                 <span></span>
             </DIV>
             <DIV class="description">This video is about the ease of embedding analytics using Qlik Sense and the Qlik Analytics Platform – what we typically refer to as ‘QAP’</DIV>
             <DIV class="extra">
             </DIV>
-        </DIV>
+        </DIV> -->
     </DIV>
 </template>
 <template name="webIntegrationMindMap">

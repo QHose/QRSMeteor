@@ -1,16 +1,16 @@
 <template name="architecture">
     <div class="ui text container">
         <h3>Integrated architecture</h3> {{>introductionArchitecturePage}}
-    </div>
-    <div class="sixteen wide column">
-        <div class="ui segment">
-            <h4>Videos</h4>
-            <div class="ui three column centered grid">
-                <div class="column"> {{> introVideoArchitecture}}</div>
-                <!-- <div class="column"> {{> introVideoArchitectureMike}}</div>
+        <!-- <div class="ui container segment"> -->
+        <h3>Video</h3>
+        <div class="ui two colum centered grid">
+            <div class="column"> {{> introVideoArchitecture}}</div>
+            <!-- <div class="column"> {{> introVideoArchitectureMike}}</div>
                 <div class="column"> {{> introVideoArchitectureMarcus}}</div> -->
-            </div>
         </div>
+    </div>
+    <!-- </div> -->
+    <div class="sixteen wide column">
         <div class="ui segment">
             <h3>Integrated architecture diagram</h3>
             <p> In the picture below you will find all integration aspects together in 1 overview for a typical SaaS provisioning architecture, in which we have:
@@ -36,9 +36,8 @@
             <li> A user logs in into your multi-tenant SaaS application platform. Your platform contains some Qlik Sense information in an IFrame or DIV tag.</li>
             <li>The proxy intercepts the request and redirects the user to the authentication module of your SaaS platform. Your platform knows the identity and group membership of the user and It requests an access ticket for this user.</li>
             <li> We redirect the user’s request back to the proxy, but now with the ticket number appended to the URL. Qlik Sense validates the request and will set a session cookie.</li>
-            <li> Now the authentication is complete and Qlik Sense will evaluate the security rules and will only present the authorized streams and apps to the user.</li> 
+            <li> Now the authentication is complete and Qlik Sense will evaluate the security rules and will only present the authorized streams and apps to the user.</li>
         </UL>
-       
     </p>
     <img class="ui centered image" src="images/summary_integrated_architecture.png">
     <h4>Web integration</h4>
@@ -74,21 +73,20 @@
 </template>
 <template name="introVideoArchitecture">
     <h4 class="ui header">Integrated architecture (3M)</h4>
-    <div class="ui embed" data-url="{{URL_Youtube_architecture_introduction}}" data-placeholder="/images/integratedArchitecture.png"></div>
+    <div class="ui embed" data-url="{{URL_Youtube_architecture_introduction}}" data-placeholder="/images/integratedArchitectureVideo.png"></div>
     <div class="item">
         <div class="content">
-            <a class="header">Contents</a>
             <div class="meta">
                 <span></span>
             </div>
             <div class="description">
-                <p>Let’s review the Qlik Sense architecture integration considerations at a high level. </p>
+                <p>Qlik Sense architecture integration considerations:</p>
             </div>
             <div class="extra">
                 <ul>
-                    <li>What are the key compononents of Qlik Sense?</li>
-                    <li>How can you load data?</li>
-                    <li>How can you connect to the Qlik Sense Hub and management console (QMC)? </li>
+                    <li>What are the Qlik Sense key components?</li>
+                    <li>How do you load data?</li>
+                    <li>How do you connect to the Qlik Sense Hub and management console (QMC)? </li>
                     <li>Authentication integration and use of APIs</li>
                 </ul>
             </div>
@@ -100,7 +98,6 @@
     <div class="ui embed" data-url="https://www.youtube.com/embed/4w5mMar5o-M"></div>
     <div class="item">
         <div class="content">
-            <a class="header">Contents</a>
             <div class="meta">
                 <span></span>
             </div>
@@ -115,7 +112,6 @@
     <div class="ui embed" data-url="https://www.youtube.com/embed/XZx9nKLR4ps"></div>
     <div class="item">
         <div class="content">
-            <a class="header">Contents</a>
             <div class="meta">
                 <span></span>
             </div>

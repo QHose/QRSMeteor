@@ -5,7 +5,7 @@ Template.userOverview.helpers({
     users() {
     	var users = Meteor.users.find().fetch();
     	if(users){
-    		console.log('users received: ', users);
+    		// console.log('users received: ', users);
     		return users
     	}
     },
