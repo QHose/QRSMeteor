@@ -16,7 +16,7 @@ Each proxy has its own session cookie, so you have to logout the users per proxy
 */
 
 Meteor.methods({
-    getRedirectUrl(proxyRestUri, targetId, loggedInUser) {
+    currentlyLoggedInUser() {
         // console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
         var call = {};
         call.action = 'STEP 3: Server getRedirectUrl method'
@@ -24,7 +24,7 @@ Meteor.methods({
         REST_Log(call);
 
         //first find the customers that have a logged in users (mongo returns a complete document)
-        var customer = Customers.findOne({ generationUserId: loggedInUser, 'users.currentlyLoggedIn': true });
+        var customer = Customers.findOne({ generationUserId:  Meteor.userId(), 'users.currentlyLoggedIn': true });
         // console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + loggedInUser + ', the customer which contains the user that the user selected with the dropdown: ', customer);
 
         //now we have the document, we can look in the array of users, to find the one that is logged in.
@@ -33,27 +33,35 @@ Meteor.methods({
             throw new Meteor.Error('No user', error);
         } else {
             var user = _.find(customer.users, { 'currentlyLoggedIn': true });
-
-            // console.log('UserID currently logged in in the demo platform: ' + loggedInUser + '. Meteor server side thinks the meteor.userId is ' + Meteor.userId() + '. We use this as the UDC name');
-            //Create a paspoort (ticket) request: user directory, user identity and attributes
-            var passport = {
-                    'UserDirectory': Meteor.userId(), //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
-                    'UserId': user.name, //the current user that we are going to login with
-                    'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
-                        { 'group': user.country.toUpperCase() },
-                        { 'group': user.group.toUpperCase() }
-                    ]
-                }
-                console.log('Request ticket for this user passport": ', passport);
-
-            //logging only
-            var call = {};
-            call.action = 'STEP 4: Request ticket (SSO)';
-            call.request = 'Request ticket for this user passport: ": ' + JSON.stringify(passport);
-            REST_Log(call);
-
-            return getRedirectURL(passport, proxyRestUri, targetId);
+            var response = {};
+            response.user = user;
+            response.customer = customer;
+            return response;
         }
+    },
+    getRedirectUrl(proxyRestUri, targetId, loggedInUser) {
+        var response = Meteor.call('currentlyLoggedInUser');
+        var customer =response.customer;
+        var user = response.user;
+
+        // console.log('UserID currently logged in in the demo platform: ' + loggedInUser + '. Meteor server side thinks the meteor.userId is ' + Meteor.userId() + '. We use this as the UDC name');
+        //Create a paspoort (ticket) request: user directory, user identity and attributes
+        var passport = {
+            'UserDirectory': Meteor.userId(), //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
+            'UserId': user.name, //the current user that we are going to login with
+            'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
+                { 'group': user.country.toUpperCase() },
+                { 'group': user.group.toUpperCase() }
+            ]
+        }
+
+        //logging only
+        var call = {};
+        call.action = 'STEP 4: Request ticket (SSO)';
+        call.request = 'Request ticket for this user passport: ": ' + JSON.stringify(passport);
+        REST_Log(call);
+
+        return getRedirectURL(passport, proxyRestUri, targetId);
     },
     resetLoggedInUser() {
         // console.log("***Method resetLoggedInUsers");
@@ -88,20 +96,20 @@ Meteor.methods({
             }
         ];
 
-        Customers.update( { 'generationUserId': Meteor.userId(), "users.name": name }, {
-                $set: {
-                    'users.$.currentlyLoggedIn': true
-                }
-            }, {},function(error, numberAffectedDocuments) {
-            if (numberAffectedDocuments===0) { //if nothing is updated, insert some dummy customers
+        Customers.update({ 'generationUserId': Meteor.userId(), "users.name": name }, {
+            $set: {
+                'users.$.currentlyLoggedIn': true
+            }
+        }, {}, function(error, numberAffectedDocuments) {
+            if (numberAffectedDocuments === 0) { //if nothing is updated, insert some dummy customers
                 // console.log('simulateUserLogin numberAffectedDocuments: ', numberAffectedDocuments);
                 //name does not yet exist in the customers created by the current demo user. So insert our dummy customers.numberAffectedDocuments
                 insertDummyCustomers(Meteor.userId());
                 Customers.update({ 'generationUserId': Meteor.userId(), "users.name": name }, {
-                $set: {
-                    'users.$.currentlyLoggedIn': true
-                }
-            });
+                    $set: {
+                        'users.$.currentlyLoggedIn': true
+                    }
+                });
             }
         })
     }
