@@ -600,12 +600,15 @@
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI"
 	],
 	"file_history":
 	[
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
@@ -642,7 +645,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/notFound.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/useCaseSelection.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
