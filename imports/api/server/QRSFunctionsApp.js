@@ -41,7 +41,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 
     try {
         var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
-        var newAppId = copyApp(templateApp.id, customer.name + ' - ' + templateApp.name, generationUserId);
+        var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
         var result = reloadAppAndReplaceScriptviaEngine(newAppId, '', generationUserId);
         var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
 

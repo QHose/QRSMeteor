@@ -117,6 +117,7 @@ Meteor.methods({
 })
 
 function insertDummyCustomers(generationUserId) {
+    console.log('insertDummyCustomers called for generationUserId: ', generationUserId);
     _.each(dummyCustomers, function(customer) {
         customer.generationUserId = generationUserId;
         Customers.insert(customer);
