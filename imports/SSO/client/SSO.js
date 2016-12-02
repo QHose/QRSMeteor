@@ -4,7 +4,11 @@
  import { http } from 'meteor/meteor';
  import { Session } from 'meteor/session';
  import { senseConfig } from '/imports/api/config.js';
+ import { HTTP } from 'meteor/http'
 
+ //<script src=https://<sense-server>/<virtual-proxy-if-any>/resources/translate/en-US/common.js></script>
+ //try to execute this script to make sure a session cookie is set. DIV tag integration together with ticketing directly does not work.
+ // import {*} from 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/resources/translate/en-US/common.js';
 
  Template.SSO.helpers({
      receivedParamsQlikSense: function() {
