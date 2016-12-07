@@ -6,7 +6,9 @@ import { APILogs } from '/imports/api/APILogs';
 Template.introductionSecurity.events({
     'click .mindMapSecurity' () {
         $('.ui.modal.mindMapSecurity')
-            .modal('show');
+            .modal('show')
+            .modal('refresh')
+            .modal('refresh');
     },
     'click .integratedFlowModal' () {
         $('.ui.modal.integratedFlowModal')
@@ -24,4 +26,3 @@ Template.introductionSecurity.onRendered(function() {
         .accordion({ exclusive: false });
 
 })
-

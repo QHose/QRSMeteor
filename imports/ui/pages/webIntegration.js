@@ -7,7 +7,9 @@ import { APILogs } from '/imports/api/APILogs';
 Template.webIntegration.events({
     'click .webIntegrationMindMap' () {
         $('.ui.modal.webIntegrationMindMap')
-            .modal('show');
+            .modal('show')
+            .modal('refresh')
+            .modal('refresh');
     }
 })
 

@@ -69,26 +69,27 @@ Template.ApiLogsTable.helpers({
 Template.APILogs.events({
     'click .sequenceOverview' () {
         $('.ui.modal.sequenceOverview')
-            // .modal({
-            //     // observeChanges: true,
-            //     detachable: false
-            // })
             .modal('show')
-            // .modal('refresh');
+            .modal('refresh')
+            .modal('refresh');
+        // .modal({
+        //     // observeChanges: true,
+        //     detachable: false
+        // })
+
+
     },
     'click .sequenceGeneration' () {
         $('.ui.modal.sequenceGeneration')
             .modal('show')
-            // .modal('refresh');
-
-    },
-    'click .howDoesSaaSAutomationWork' () {
-        $('.ui.modal.howDoesSaaSAutomationWork')
-            .modal('show');
+            .modal('refresh')
+            .modal('refresh');
     },
     'click .APIIntegrationMindMap' () {
         $('.ui.modal.APIIntegrationMindMap')
-            .modal('show');
+            .modal('show')
+            .modal('refresh')
+            .modal('refresh');
     }
 })
 
