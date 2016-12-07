@@ -28,7 +28,7 @@
     doesn't do any harm and gives us a fresh start.
 */
 
-html, body, div, span, applet, object, iframe,
+/*html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -48,7 +48,7 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
-
+*/
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -81,7 +81,7 @@ table {
     And yes, there is a lot of repetition there because of -prefixes but we don't
     want to leave anybody behind.
 */
-body {
+#impress {
     font-family: 'PT Sans', sans-serif;
     min-height: 740px;
 
