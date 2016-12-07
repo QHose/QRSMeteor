@@ -44,6 +44,12 @@ Router.route('/SSO', {
     layoutTemplate: 'SSOLayout'
 });
 
+Router.route('/impress', {
+    template: 'impress',
+    layoutTemplate: 'SSOLayout'
+});
+
+// Router.route('/impress');
 // Router.route('/', function() {
 //     this.render('', { to: 'nav' });
 //     this.layout('regionLayout');

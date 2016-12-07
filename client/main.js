@@ -16,6 +16,7 @@ import '/imports/ui/notFound.html';
 import '/imports/ui/useCases/useCaseSelection.js';
 import '/imports/ui/users.html';
 import '/imports/ui/users.js';
+import '/imports/ui/impress/impress.js';
 import '/imports/SSO/client/SSO.html';
 import '/imports/SSO/client/SSO.js';
 import '/imports/ui/pages/legal.html';
