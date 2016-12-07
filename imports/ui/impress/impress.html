@@ -14,7 +14,7 @@
         presentation to work.
         
         This style below contains styles only for demo presentation. Browse it to see how impress.js
-        classes are used to style presentation steps, or how to apply fallback styles, but I don't want
+        classes are used to style presentation z steps, or how to apply fallback styles, but I don't want
         you to use them directly in your presentation.
         
         Be creative, build your own. We don't really want all impress.js presentations to look the same,
@@ -41,7 +41,7 @@
     When impress.js script detects that browser supports all required features, this class name will
     be removed.
     
-    The class name on body element also depends on currently active presentation step. More details about
+    The class name on body element also depends on currently active presentation z step. More details about
     it can be found later, when `hint` element is being described.
     
 -->
@@ -57,7 +57,7 @@
     
     Now that's the core element used by impress.js.
     
-    That's the wrapper for your presentation steps. In this element all the impress.js magic happens.
+    That's the wrapper for your presentation z steps. In this element all the impress.js magic happens.
     It doesn't have to be a `<div>`. Only `id` is important here as that's how the script find it.
     
     You probably won't need it now, but there are some configuration options that can be set on this element.
@@ -75,7 +75,7 @@
     
 -->
     <div id="impress">
-        <div id="questions" class="step slide" data-x="-1000" data-y="-1500">
+        <div id="questions" class="z step slide" data-x="-1000" data-y="-1500">
             <q>Questions about SaaS and multi-tenancy with Qlik Sense?
                 <!-- Press Space or swipe right -->
             </q>
@@ -86,29 +86,30 @@
         </div>
         <!--
         
-        The `id` attribute of the step element is used to identify it in the URL, but it's optional.
-        If it is not defined, it will get a default value of `step-N` where N is a number of slide.
+        The `id` attribute of the z step element is used to identify it in the URL, but it's optional.
+        If it is not defined, it will get a default value of `z step-N` where N is a number of slide.
         
-        So in the example below it'll be `step-2`.
+        So in the example below it'll be `z step-2`.
         
-        The hash part of the url when this step is active will be `#/step-2`.
+        The hash part of the url when this z step is active will be `#/z step-2`.
         
-        You can also use `#step-2` in a link, to point directly to this particular step.
+        You can also use `#z step-2` in a link, to point directly to this particular z step.
         
-        Please note, that while `#/step-2` (with slash) would also work in a link it's not recommended.
-        Using classic `id`-based links like `#step-2` makes these links usable also in fallback mode.
+        Please note, that while `#/z step-2` (with slash) would also work in a link it's not recommended.
+        Using classic `id`-based links like `#z step-2` makes these links usable also in fallback mode.
         
     -->
-        <div class="step slide" data-x="0" data-y="-1500">
+        <div class="z step slide" data-x="0" data-y="-1500">
             <q>In our demonstration site, we show and reveal how you can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment.</q>
         </div>
-        <div class="step slide" data-x="1000" data-y="-1500">
-            This demo shows you how to copy an app (dashboard) which serves as a "template layout" for each of your customers.
+        <div class="z step slide" data-x="1000" data-y="-1500">
+            <h3 class="ui dividing header">            This demo shows you how to copy an app (dashboard) which serves as a "template layout" for each of your customers.
+</h3>
             <div class="ui embed" data-url="{{URL_Youtube_concept_behind}}" data-placeholder="/images/simple intro to saas automation.gif"></div>
         </div>
         <!--
         
-        This is an example of step element being scaled.
+        This is an example of z step element being scaled.
         
         Again, we use a `data-` attribute, this time it's `data-scale="4"`, so it means that this
         element will be 4 times larger than the others.
@@ -116,7 +117,7 @@
         down (4 times) to make it back to its correct size.
         
     -->
-        <div id="title" class="step slide" data-x="0" data-y="0" data-scale="4">
+        <div id="title" class="z step" data-x="0" data-y="0" data-scale="4">
             <h5 class="ui dividing header">SaaS provisioning demo steps</h5>
             <q> Which customers should automatically receive which apps? </q>
         </div>
@@ -128,8 +129,8 @@
         element should be rotated by 90 degrees clockwise.
         
     -->
-        <div id="its" class="step slide" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
-            <h1 class="ui dividing header">Step 1: customers</h1>
+        <div id="its" class="z step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
+            <h1 class="ui dividing header">step 1: customers</h1>
             <p>In your SaaS platform you have the ability to store which customers should receive which apps. We simulate this feature by letting you insert some customers.</p>
         </div>
         <!--
@@ -141,43 +142,43 @@
         positioned far away from us (by 3000px).
         
     -->
-        <div id="tiny" class="step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
-            <h1 class="ui dividing header">Step 2: template apps</h1> Which apps will you provide your customers?
+        <div id="tiny" class="z step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
+            <h1 class="ui dividing header">step 2: template apps</h1> Which apps will you provide your customers?
         </div>
         <!--
         
-        This step here doesn't introduce anything new when it comes to data attributes, but you
+        This z step here doesn't introduce anything new when it comes to data attributes, but you
         should notice in the demo that some words of this text are being animated.
-        It's a very basic CSS transition that is applied to the elements when this step element is
+        It's a very basic CSS transition that is applied to the elements when this z step element is
         reached.
         
-        At the very beginning of the presentation all step elements are given the class of `future`.
+        At the very beginning of the presentation all z step elements are given the class of `future`.
         It means that they haven't been visited yet.
         
-        When the presentation moves to given step `future` is changed to `present` class name.
-        That's how animation on this step works - text moves when the step has `present` class.
+        When the presentation moves to given z step `future` is changed to `present` class name.
+        That's how animation on this z step works - text moves when the z step has `present` class.
         
-        Finally when the step is left the `present` class is removed from the element and `past`
+        Finally when the z step is left the `present` class is removed from the element and `past`
         class is added.
         
-        So basically every step element has one of three classes: `future`, `present` and `past`.
-        Only one current step has the `present` class.
+        So basically every z step element has one of three classes: `future`, `present` and `past`.
+        Only one current z step has the `present` class.
         
     -->
-        <div id="ing" class="step" data-x="3500" data-y="-850" data-rotate="270" data-scale="6">
-            <h1 class="ui dividing header">Step 3: start provisioning</h1>
+        <div id="ing" class="z step" data-x="3500" data-y="-850" data-rotate="0" data-scale="6">
+            <h1 class="ui dividing header">step 3: start provisioning</h1>
             <p>Press <a href="{{pathFor 'generation'}}" class="positioning ui positive button">start</a>, and automatically create <b class="rotating">apps</b> for each <b class="scaling">customer</b> by making use of the Qlik Sense APIs.</p>
         </div>
-        <div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">
+        <div id="imagination" class="z step" data-x="6700" data-y="-300" data-scale="6">
             <p>the only <b>limit</b> is your <b class="imagination">imagination</b></p>
         </div>
-        <div id="source" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
+        <div id="source" class="z step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
             <p>want to know more?</p>
             <q>Use the <a href="{{pathFor 'APILogs'}}">source code</a> or <a href="{{pathFor 'documentation'}}">
     documentation
   </a></q>
         </div>
-        <!-- <div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">
+        <!-- <div id="one-more-thing" class="z step" data-x="6000" data-y="4000" data-scale="2">
             <p>one more thing...</p>
         </div>
         
@@ -192,26 +193,26 @@
         as `data-rotate` (these two are basically aliases).
         
     
-        <div id="its-in-3d" class="step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <div id="its-in-3d" class="z step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
             <p><span class="have">have</span> <span class="you">you</span> <span class="noticed">noticed</span> <span class="its">it’s</span> <span class="in">in</span> <b>3D<sup>*</sup></b>?</p>
             <span class="footnote">* beat that, prezi ;)</span>
         </div> -->
         <!--
         
-        So to summarize of all the possible attributes used to position presentation steps, we have:
+        So to summarize of all the possible attributes used to position presentation z steps, we have:
         
-        * `data-x`, `data-y`, `data-z` - they define the position of **the center** of step element on
+        * `data-x`, `data-y`, `data-z` - they define the position of **the center** of z step element on
             the canvas in pixels; their default value is 0;
         * `data-rotate-x`, `data-rotate-y`, 'data-rotate-z`, `data-rotate` - they define the rotation of
             the element around given axis in degrees; their default value is 0; `data-rotate` and `data-rotate-z`
             are exactly the same;
-        * `data-scale` - defines the scale of step element; default value is 1
+        * `data-scale` - defines the scale of z step element; default value is 1
         
         These values are used by impress.js in CSS transformation functions, so for more information consult
         CSS transfrom docs: https://developer.mozilla.org/en/CSS/transform
         
     -->
-        <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+        <div id="overview" class="z step" data-x="3000" data-y="1500" data-scale="10">
         </div>
     </div>
     <!--
@@ -220,13 +221,13 @@
     
     But it can show you how to use impress.js features in creative way.
     
-    When the presentation step is shown (selected) its element gets the class of "active" and the body element
-    gets the class based on active step id `impress-on-ID` (where ID is the step's id)... It may not be
-    so clear because of all these "ids" in previous sentence, so for example when the first step (the one with
+    When the presentation z step is shown (selected) its element gets the class of "active" and the body element
+    gets the class based on active z step id `impress-on-ID` (where ID is the z step's id)... It may not be
+    so clear because of all these "ids" in previous sentence, so for example when the first z step (the one with
     the id of `bored`) is active, body element gets a class of `impress-on-bored`.
     
     This class is used by this hint below. Check CSS file to see how it's shown with delayed CSS animation when
-    the first step of presentation is visible for a couple of seconds.
+    the first z step of presentation is visible for a couple of seconds.
     
     ...
     
