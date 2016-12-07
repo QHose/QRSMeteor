@@ -45,15 +45,16 @@
     it can be found later, when `hint` element is being described.
     
 -->
+
     <!-- <body class="impress-not-supported"> -->
-    <!--
+        <!--
     For example this fallback message is only visible when there is `impress-not-supported` class on body.
 -->
-    <div class="fallback-message">
-        <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
-        <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
-    </div>
-    <!--
+        <div class="fallback-message">
+            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+            <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+        </div>
+        <!--
     
     Now that's the core element used by impress.js.
     
@@ -74,17 +75,14 @@
     right around the corner of this tag ;)
     
 -->
-    <div id="impress">
-        <div id="questions" class="step slide" data-x="-1000" data-y="-1500">
-            <q>Questions about SaaS and multi-tenancy with Qlik Sense?
-                <!-- Press Space or swipe right -->
-            </q>
-            <!-- <div class="ui horizontal divider"> -->
-            <!--  Or
+        <div id="impress">
+
+        
+   
+            <div id="bored" class="step slide" data-x="0" data-y="0">
+                <q>Aren’t you just <b>bored</b> with all those slides-based presentations?</q>
             </div>
-            <a href="{{pathFor 'useCaseSelection'}}" class="ui positive centered button">Go to the demo</a> -->
-        </div>
-        <!--
+            <!--
         
         The `id` attribute of the step element is used to identify it in the URL, but it's optional.
         If it is not defined, it will get a default value of `step-N` where N is a number of slide.
@@ -99,14 +97,13 @@
         Using classic `id`-based links like `#step-2` makes these links usable also in fallback mode.
         
     -->
-        <div class="step slide" data-x="0" data-y="-1500">
-            <q>In our demonstration site, we show and reveal how you can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment.</q>
-        </div>
-        <div class="step slide" data-x="1000" data-y="-1500">
-            This demo shows you how to copy an app (dashboard) which serves as a "template layout" for each of your customers.
-            <div class="ui embed" data-url="{{URL_Youtube_concept_behind}}" data-placeholder="/images/simple intro to saas automation.gif"></div>
-        </div>
-        <!--
+            <div class="step slide" data-x="0" data-y="-1500">
+                <q>Don’t you think that presentations given <strong>in modern browsers</strong> shouldn’t <strong>copy the limits</strong> of ‘classic’ slide decks?</q>
+            </div>
+            <div class="step slide" data-x="1000" data-y="-1500">
+                <q>Would you like to <strong>impress your audience</strong> with <strong>stunning visualization</strong> of your talk?</q>
+            </div>
+            <!--
         
         This is an example of step element being scaled.
         
@@ -116,11 +113,12 @@
         down (4 times) to make it back to its correct size.
         
     -->
-        <div id="title" class="iStep slide" data-x="0" data-y="0" data-scale="4">
-            <h5 class="ui dividing header">SaaS provisioning demo steps</h5>
-            <q> Which customers should automatically receive which apps? </q>
-        </div>
-        <!--
+            <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
+                <span class="try">then you should try</span>
+                <h1>impress.js<sup>*</sup></h1>
+                <span class="footnote"><sup>*</sup> no rhyme intended</span>
+            </div>
+            <!--
         
         This element introduces rotation.
         
@@ -128,11 +126,15 @@
         element should be rotated by 90 degrees clockwise.
         
     -->
-        <div id="its" class="iStep slide" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
-            <h1 class="ui dividing header">Step 1: customers</h1>
-            <p>In your SaaS platform you have the ability to store which customers should receive which apps. We simulate this feature by letting you insert some customers.</p>
-        </div>
-        <!--
+            <div id="its" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
+                <p>It’s a <strong>presentation tool</strong>
+                    <br/> inspired by the idea behind <a href="http://prezi.com">prezi.com</a>
+                    <br/> and based on the <strong>power of CSS3 transforms and transitions</strong> in modern browsers.</p>
+            </div>
+            <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
+                <p>visualize your <b>big</b> <span class="thoughts">thoughts</span></p>
+            </div>
+            <!--
         
         And now it gets really exciting! We move into third dimension!
         
@@ -141,10 +143,10 @@
         positioned far away from us (by 3000px).
         
     -->
-        <div id="tiny" class="iStep" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
-            <h1 class="ui dividing header">Step 2: template apps</h1> Which apps will you provide your customers?
-        </div>
-        <!--
+            <div id="tiny" class="step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
+                <p>and <b>tiny</b> ideas</p>
+            </div>
+            <!--
         
         This step here doesn't introduce anything new when it comes to data attributes, but you
         should notice in the demo that some words of this text are being animated.
@@ -164,23 +166,20 @@
         Only one current step has the `present` class.
         
     -->
-        <div id="ing" class="iStep" data-x="3500" data-y="-850" data-rotate="270" data-scale="6">
-            <h1 class="ui dividing header">Step 3: start provisioning</h1>
-            <p>Press <a href="{{pathFor 'generation'}}" class="positioning ui positive button">start</a>, and automatically create <b class="rotating">apps</b> for each <b class="scaling">customer</b> by making use of the Qlik Sense APIs.</p>
-        </div>
-        <div id="imagination" class="iStep" data-x="6700" data-y="-300" data-scale="6">
-            <p>the only <b>limit</b> is your <b class="imagination">imagination</b></p>
-        </div>
-        <div id="source" class="iStep" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
-            <p>want to know more?</p>
-            <q>Use the <a href="{{pathFor 'APILogs'}}">source code</a> or <a href="{{pathFor 'documentation'}}">
-    documentation
-  </a></q>
-        </div>
-        <!-- <div id="one-more-thing" class="iStep" data-x="6000" data-y="4000" data-scale="2">
-            <p>one more thing...</p>
-        </div>
-        
+            <div id="ing" class="step" data-x="3500" data-y="-850" data-rotate="270" data-scale="6">
+                <p>by <b class="positioning">positioning</b>, <b class="rotating">rotating</b> and <b class="scaling">scaling</b> them on an infinite canvas</p>
+            </div>
+            <div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">
+                <p>the only <b>limit</b> is your <b class="imagination">imagination</b></p>
+            </div>
+            <div id="source" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
+                <p>want to know more?</p>
+                <q><a href="http://github.com/bartaz/impress.js">use the source</a>, Luke!</q>
+            </div>
+            <div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">
+                <p>one more thing...</p>
+            </div>
+            <!--
         
         And the last one shows full power and flexibility of impress.js.
         
@@ -191,12 +190,12 @@
         You can of course rotate it around Z axis with `data-rotate-z` - it has exactly the same effect
         as `data-rotate` (these two are basically aliases).
         
-    
-        <div id="its-in-3d" class="iStep" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
-            <p><span class="have">have</span> <span class="you">you</span> <span class="noticed">noticed</span> <span class="its">it’s</span> <span class="in">in</span> <b>3D<sup>*</sup></b>?</p>
-            <span class="footnote">* beat that, prezi ;)</span>
-        </div> -->
-        <!--
+    -->
+            <div id="its-in-3d" class="step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+                <p><span class="have">have</span> <span class="you">you</span> <span class="noticed">noticed</span> <span class="its">it’s</span> <span class="in">in</span> <b>3D<sup>*</sup></b>?</p>
+                <span class="footnote">* beat that, prezi ;)</span>
+            </div>
+            <!--
         
         So to summarize of all the possible attributes used to position presentation steps, we have:
         
@@ -211,10 +210,10 @@
         CSS transfrom docs: https://developer.mozilla.org/en/CSS/transform
         
     -->
-        <div id="overview" class="iStep" data-x="3000" data-y="1500" data-scale="10">
+            <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+            </div>
         </div>
-    </div>
-    <!--
+        <!--
     
     Hint is not related to impress.js in any way.
     
@@ -238,7 +237,7 @@
     Just sayin' ;)
     
 -->
-    <div class="hint">
-        <p>Use a spacebar or arrow keys to navigate</p>
-    </div>
+        <div class="hint">
+            <p>Use a spacebar or arrow keys to navigate</p>
+        </div>
 </template>

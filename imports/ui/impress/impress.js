@@ -13,10 +13,6 @@ Template.impress.onRendered(function() {
 	
 	api.init();
 	console.log(api);
-
-    Template.instance()
-        .$('.ui.embed')
-        .embed();
     
     // The `impress()` function also gives you access to the API that controls the presentation.
     
