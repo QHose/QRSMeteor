@@ -4,17 +4,16 @@
             <a href="{{pathFor 'useCaseSelection'}}" class="header item">
                 <!-- <img class="logo" src="images/sense.png"> -->
                 Home</a>
-            <a href="{{pathFor 'generation'}}" class="header item">
-           Demo
-        </a> {{#if isDemoPage}} {{> yourSaasPlatformMenu}} {{/if}}
-            <a href="{{pathFor 'documentation'}}" class="item">
-    Documentation
-  </a> {{#if currentUser}}
+                {{#unless isDemoPage}}
+                <a href="{{pathFor 'generation'}}" class="header item">
+                 Demo       
+             </a> {{/unless}} {{#if isDemoPage}} {{> yourSaasPlatformMenu}} {{/if}}
+             <a href="{{pathFor 'documentation'}}" class="item">
+                Documentation
+            </a> {{#if currentUser}}
             <div class="ui right floated item">
-                <a href="#" class="logout item">Logout</a>
-                {{#if isInRole 'admin' }}
-                <a class="item" href="{{pathFor 'userOverview'}}">User list</a>
-                {{/if}}
+                <a href="#" class="logout item">Logout</a> {{#if isInRole 'admin' }}
+                <a class="item" href="{{pathFor 'userOverview'}}">User list</a> {{/if}}
             </div>
             {{/if}}
         </div>
