@@ -7,18 +7,16 @@ import 'impress';
 import './impress.html';
 import './impress.css';
 
-var api ={};
+var api = {};
 
 Template.impress.onCreated(function() {
-        location.reload();
+    // location.reload();
 
     // $('body').addClass('impress-supported impress-enabled impress-on-questions');
 })
 
 Template.impress.onRendered(function() {
-    console.log('impress onRendered');
-     api = impress();
-    console.log('impress API: ', api);
+    api = impress();
     api.init();
 
     Template.instance()
@@ -31,6 +29,7 @@ Template.impress.onRendered(function() {
 
 Template.impress.onDestroyed(function() {
     console.log('impress onDestroyed');
+    $('body').attr('style', 'height: 100%;');
     // $('body').removeClass('impress-supported impress-enabled impress-on-questions');
     // api = null;
 })
