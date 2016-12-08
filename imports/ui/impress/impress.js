@@ -25,8 +25,8 @@ Template.impress.onRendered(function() {
         .$('.ui.embed')
         .embed();
 
-    // this.$('.slide')
-    //     .transition('scale in');
+    this.$('.slide')
+        .transition('scale in');
 })
 
 Template.impress.onDestroyed(function() {

@@ -167,7 +167,7 @@ em {
     We start with basics to make sure it displays correctly in everywhere ...
 */
 
-.step {
+.z.step {
     position: relative;
     width: 900px;
     padding: 40px;
@@ -189,7 +189,7 @@ em {
     Basically we remove the margin and make inactive steps a little bit transparent.
 */
 
-.impress-enabled .step {
+.impress-enabled .z.step {
     margin: 0;
     opacity: 0.3;
     -webkit-transition: opacity 1s;
@@ -199,7 +199,7 @@ em {
     transition: opacity 1s;
 }
 
-.impress-enabled .step.active {
+.impress-enabled .z.step.active {
     opacity: 1
 }
 
@@ -327,6 +327,11 @@ em {
     width: 500px
 }
 
+#demoStep4 {
+    width: 500px;
+    font-size: 28px;
+    text-align: center;
+}
 
 /*
     ... so we define display to `inline-block` to enable transforms and
@@ -535,7 +540,7 @@ em {
     `impress-on-` class.
 */
 
-.impress-on-overview .step {
+.impress-on-overview .z.step {
     opacity: 1;
     cursor: pointer;
 }
