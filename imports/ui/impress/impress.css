@@ -323,6 +323,12 @@ em {
     This step has some animated text ...
 */
 
+.video p {
+    display: block;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
 #demoStep3 {
     width: 500px
 }
