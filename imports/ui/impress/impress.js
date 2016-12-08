@@ -10,9 +10,7 @@ import './impress.css';
 var api = {};
 
 Template.impress.onCreated(function() {
-    // location.reload();
-
-    // $('body').addClass('impress-supported impress-enabled impress-on-questions');
+    location.reload();
 })
 
 Template.impress.onRendered(function() {
@@ -22,14 +20,9 @@ Template.impress.onRendered(function() {
     Template.instance()
         .$('.ui.embed')
         .embed();
-
-    this.$('.slide')
-        .transition('scale in');
 })
 
 Template.impress.onDestroyed(function() {
     console.log('impress onDestroyed');
     $('body').attr('style', 'height: 100%;');
-    // $('body').removeClass('impress-supported impress-enabled impress-on-questions');
-    // api = null;
 })
