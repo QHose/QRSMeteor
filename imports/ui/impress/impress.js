@@ -10,7 +10,7 @@ import './impress.css';
 var api = {};
 
 Template.impress.onCreated(function() {
-    // location.reload();
+    location.reload();
 
     // $('body').addClass('impress-supported impress-enabled impress-on-questions');
 })
