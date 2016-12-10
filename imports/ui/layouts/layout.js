@@ -15,7 +15,7 @@ Template.layout.helpers({
 
 Template.layout.events({
     'click': function(event, template) {
-        Template.instance().$('.button').popup('remove popup')
+        Template.instance().$('*').popup('remove popup')
     },
     'click .stepByStep' () {
         $('.ui.modal.stepByStep')

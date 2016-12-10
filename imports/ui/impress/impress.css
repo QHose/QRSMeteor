@@ -551,6 +551,10 @@ em {
     cursor: pointer;
 }
 
+/*.future {
+  display: none;
+}
+*/
 
 /*
     Now, when we have all the steps styled let's give users a hint how to navigate

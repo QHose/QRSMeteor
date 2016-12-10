@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"cente",
+				"centered"
+			],
+			[
+				"pos",
+				"positioning"
+			],
+			[
+				"on",
+				"onDestroyed"
+			],
+			[
 				"ins",
 				"insertDummyCustomers"
 			],
@@ -26,10 +38,6 @@
 			[
 				"insert",
 				"insertCustomer"
-			],
-			[
-				"on",
-				"onRendered"
 			],
 			[
 				"sho",
@@ -506,57 +514,53 @@
 			[
 				"Cer",
 				"CertsConfig"
-			],
-			[
-				"NPM",
-				"NPM_QRS"
-			],
-			[
-				"QRS",
-				"QRSConfig"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "",
+			"file": "imports/ui/impress/impress.css",
 			"settings":
 			{
 				"buffer_size": 0,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "import { Meteor } from 'meteor/meteor';\nimport { Template } from 'meteor/templating';\nimport { senseConfig as config } from '/imports/api/config.js';\n\nimport './simulateUserLogin.html';\n\nTemplate.simulateUserLogin.helpers({\n    currentUser() {\n        return Session.get('currentUser');\n    }\n})\n\nTemplate.simulateUserLogin.onRendered(function() {\n    console.log('user from session: ', Session.get('currentUser'))\n    this.$('.ui.dropdown').dropdown({'set selected': 'A'});\n    this.$('.ui.dropdown').dropdown('refresh');\n\n    this.$('.message')\n        .transition('scale in');\n});\n\nTemplate.simulateUserLogin.events({\n    'change #currentUser' (event, template) {\n        var currentUser = template.$(\"#currentUser\")\n            .val();\n        Session.set('currentUser', currentUser);\n        console.log('helper: user made a selection in the simulateUserLogin box, for user: ' + currentUser + ' with Meteor.userId():' + Meteor.userId());\n        try {\n            Meteor.call('simulateUserLogin', currentUser);\n        } catch (err) {\n            sAlert.error(err.message);\n        }\n    },\n    'click .selfservice' () {\n        $('.ui.modal.SSBI')\n            .modal('show');\n    }\n});\n",
-			"file": "imports/ui/generation/OEMPartnerSide/simulateUserLogin.js",
-			"file_size": 1230,
-			"file_write_time": 131237616883067254,
+			"file": "imports/ui/nav.html",
 			"settings":
 			{
-				"buffer_size": 1192,
+				"buffer_size": 2223,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<template name='simulateUserLogin'>\n    <!-- {{#if noCustomers}}\n    <div class=\"ui icon message\">\n        <img class=\"icon\" src=\"images/id.png\">\n        <div class=\"content\">\n            <div class=\"header\">\n                <h4>No users</h4>\n            </div>\n            <p> Please insert at least one user in a customer so we can simulate the Single Sign on</p>\n        </div>\n    </div>\n    {{else}} -->\n    <div class=\"ui icon message\">\n        <img class=\"icon\" src=\"images/id.png\">\n        <div class=\"content\">\n            <div class=\"header\">\n                <h4>Simulate a user login</h4>\n            </div>\n            Try different users and notice the difference in visible streams, apps and access to functionality. Test row level security (based on the \"country group\"), in the \"row level security app\" in the \"Everyone\" Stream. Notice that a user with role\n            <ul>\n                <li>Consumer can only display</li>\n                <li>Contributor can create sheets</li>\n                <li>Developer can create apps and load data</li>\n                <li>Admin can maintain apps in the QMC</li>\n            </ul>\n            <!-- <div class=\"ui grid\">\n                <div class=\"one column\"> -->\n                    <div class=\"ui fluid selection dropdown\">\n                        <input id=\"currentUser\" type=\"hidden\">\n                        <i class=\"user icon\"></i> {{#if currentUser}} {{currentUser}} {{else}}\n                        <div class=\"default text\">Select a user</div>\n                        {{/if}}\n                        <i class=\"dropdown icon\"></i>\n                        <div class=\"menu\">\n                        <div class=\"header\">Users from step 1</div>\n                            {{#each customers}} {{#each users}}\n                            <div class=\"item\" data-value=\"{{name}}\" data-text=\"{{name}}\">\n                                <i class=\"male icon\"></i> {{name}} ({{group}} - {{../name}})\n                            </div>\n                            {{/each}} {{/each}}\n                        </div>\n                    </div>\n                <!-- </div>\n                <div class=\"six wide column\">\n                </div>\n            </div> -->\n        </div>\n    </div>\n    <!--  {{/if}} -->\n</template>\n",
-			"file": "imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
-			"file_size": 2329,
-			"file_write_time": 131238806485106125,
+			"file": "imports/ui/impress/impress.html",
 			"settings":
 			{
-				"buffer_size": 2279,
+				"buffer_size": 13327,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<template name=\"SSO\">\n    <div class=\"ui dimmer\">\n        <div class=\"content\">\n            <div class=\"center\">\n                \n            </div>\n        </div>\n    </div>\n    <!-- <div class=\"ui container\">\n        <h3>Single sign on (ticket request) redirect demo page</h3>\n        <p>To slow things down for demo purposes we have put a \"page in the middle\".\n            <ul>\n                <li>between the user trying to access Qlik Sense</li>\n                <li>and the demo site (your SaaS platform), in which the user is already logged in. So this is a perfect place to get the users id and groups (or any array of fields you would like to use to authorize on) and communicate these values to the Qlik Sense Proxy via the ticketing process.</li>\n                <li>This allows Qlik Sense to re-use these groups in the resource and \"row/column level\" authorizations.</li>\n            </ul>\n            <div class=\"ui accordion\">\n                <div class=\"title\">\n                    <a href=\"\" class=\"ui dropdown icon\"></a>Read more...\n                </div>\n                <div class=\"content\">\n                    <h4>Introduction</h4>\n                    <p> In production scenarios you won't see this page and it would be an automatic redirect from your SaaS platform to Qlik Sense. But then everything would go too fast to see what is happening umder the hood. To slow things down we have put this page in the middle. This and the <a target=\"_blank\" href=\"{{pathFor 'APILogs'}}\">API Calls</a> page allow us to explain you the security for the demo platform. Each time you switch a user you will see this page. Because each time you swith a user, we will log out \"all\" users using the QPS API, and we will request a new ticket for the selected user. </p>\n                    <h4>New ticket for each selected user</h4>\n                    <p>On this page you will see a large green button. If you click it, Meteor (or your SaaS platform) will get the current selected (logged in) user and its group membership out of MongoDB. Then it will request a ticket for this user and groups (server side). After receiving the ticket, we try to redirect the user back to Qlik Sense for the URL he initially tried to access (targetURL) with the ticket appended in the URL.</p>\n                    <h4>Technical background</h4>\n                    <p>What basically happens it that we are \"constantly changing the url of the browser\".\n                        <ul>\n                            <li> First the user tries to open a page with Qlik Sense embedded. So the browser hits the Qlik Sense Proxy because an IFrame or DIV points to a URL which includes the proxy path.</li>\n                            <li> We configured the proxy so that only authenticated users are allowed to pass. This basically means that the user needs to have a valid \"virtual proxy specific\" session cookie.</li>\n                            <li> Qlik Sense Proxy redirects the users' browser to the page you are currently watching (the \"authentication redirect\" setting of the virtual proxy). We have to store somewhere what the URL of the proxy QPS API is, and which page the user tried to access, therefore the Proxy included the parameters below which we can use to redirect the user (change the url of the browser) after we received the ticket. For more information also see the <a href=\"https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication.htm\">help.</a></li>\n                            <ul>\n                                {{#with receivedParamsQlikSense}}\n                                <li>proxyRestUri: {{proxyRestUri}}</li>\n                                <li>targetId: {{targetId}} (if you supply this in your ticket request, you will get the orginal URL the user tried to open back)</li>\n                                {{/with}}\n                            </ul>\n                        </ul>\n                    </p>\n                    <h3>Sequence diagram of the ticketing process flow</h3>\n                    <iframe src=\"{{seq_ticketing_flow}}\" width=\"100%\" height=\"700\"></iframe>\n                </div>\n            </div>\n        </p>\n        <div class=\"ui mini buttons\">\n            <a href=\"{{pathFor 'introductionSecurity'}}\" class=\"ui button\" target=\"_blank\">Read more about Security</a>\n            <div class=\"or\"></div>\n            <button class=\"ui positive button\">Request a ticket for the logged in user</button>\n        </div>\n    </div> -->\n</template>\n",
-			"file": "imports/SSO/client/SSO.html",
-			"file_size": 4706,
-			"file_write_time": 131249863794869424,
+			"file": "imports/ui/impress/impress.js",
 			"settings":
 			{
-				"buffer_size": 4563,
+				"buffer_size": 612,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/useCases/useCaseSelection.html",
+			"settings":
+			{
+				"buffer_size": 3497,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -632,29 +636,48 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/stylesheets",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI"
 	],
 	"file_history":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/useCaseSelection.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/stylesheets/main.css",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/introSlide.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.css",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/Impress/impress.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/Impress/impress.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI/SSBI.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
+		"/C/Users/mbj/Documents/GitHub/QRSMeteor/client/stylesheets/impress.css",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.css",
+		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.js",
+		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/Impress/impress.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/regionLayout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI/SSBI.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/useCaseSelection.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
@@ -667,7 +690,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/publications.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/securityRules.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users/login.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/startup/accounts-config.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/accounts.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/lib/yogiben.js",
@@ -675,9 +697,6 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/Login/login.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/Login/login.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.css",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI/SSBI.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/OEMPartner.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/steps.html",
@@ -685,13 +704,10 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/notFound.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/steps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/regionLayout.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI/SSBI.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI/SSBI.js",
@@ -733,14 +749,10 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/customer.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/modals.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/modals.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/pages/modals.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/users.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/streams.js",
@@ -759,27 +771,18 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/Dockerfile",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/.dockerignore",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/docker image run.bat",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsStream.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.gitignore",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/security_templates.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/package.json",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-production.json",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development - example.json",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/apps.js",
-		"/C/Users/mbj/Documents/GitHub/QRSMeteor/server/routes.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/sso.js"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/simulateUserLogin.js"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 64.0
 	},
 	"find_in_files":
 	{
 		"height": 102.0,
 		"where_history":
 		[
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client\\lib",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\server",
@@ -881,6 +884,45 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"a",
+			"font",
+			"app",
+			"demo",
+			"go to",
+			"videos",
+			"source",
+			".step",
+			"auto",
+			"overflow",
+			"position",
+			"scrol",
+			"scro",
+			"source",
+			"#ing",
+			"positioning",
+			"imagin",
+			"z.",
+			"ta",
+			"table",
+			"p",
+			".ing",
+			"ing",
+			"saas",
+			".step",
+			"step",
+			"css",
+			".step",
+			"step",
+			"iStep",
+			"step",
+			".step",
+			"step",
+			"class=\"step\"",
+			".step",
+			"step",
+			"bored",
+			"tittle",
+			"q",
 			"simulateUserLogin",
 			"webIntegrationDemo",
 			"concept",
@@ -969,46 +1011,7 @@
 			"see qlik",
 			"event",
 			"reset",
-			"loading",
-			"dummy",
-			"create qlik",
-			"saas platform",
-			"logs",
-			"popup",
-			"start",
-			"intro",
-			"backToStep3",
-			"backToStep3 ",
-			"goto",
-			"insertTemplateAndDummyCustomers",
-			"logout",
-			"readyToGenerate",
-			"reset",
-			"insertTemplateAndDummyCustomers",
-			"no template",
-			"each",
-			"sal",
-			"getapp",
-			"selected",
-			"templateOverview",
-			"TemplateApps",
-			"each",
-			"create app",
-			"h3",
-			"h4",
-			"create",
-			" <div class=\"five wide column\">",
-			"introVideoArchitecture",
-			"generate",
-			"button",
-			"buttton",
-			"group",
-			"h5",
-			"h3",
-			"customerov",
-			"customerover",
-			"view ",
-			"customer"
+			"loading"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1016,6 +1019,19 @@
 		"regex": false,
 		"replace_history":
 		[
+			".z.step",
+			"#demoStep3",
+			"",
+			".z.step",
+			"z step",
+			".iStep",
+			"iStep",
+			"step",
+			".iStep",
+			"class=\"iStep\"",
+			".iStep",
+			"iStep",
+			"questions",
 			"",
 			"#insertCustomer",
 			"<div class=\"ui segment SSBI\">",
@@ -1115,7 +1131,7 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
@@ -1126,6 +1142,7 @@
 			[
 				{
 					"buffer": 0,
+					"file": "imports/ui/impress/impress.css",
 					"semi_transient": false,
 					"settings":
 					{
@@ -1142,31 +1159,94 @@
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "imports/ui/generation/OEMPartnerSide/simulateUserLogin.js",
+					"file": "imports/ui/nav.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1192,
+						"buffer_size": 2223,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								625,
-								625
+								1355,
+								1370
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "imports/ui/impress/impress.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13327,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4457,
+								4457
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1652.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "imports/ui/impress/impress.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 612,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								309,
+								326
 							]
 						],
 						"settings":
@@ -1180,69 +1260,38 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2279,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "imports/SSO/client/SSO.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4563,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								129,
-								129
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "imports/ui/useCases/useCaseSelection.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3497,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								582,
+								582
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1291,7 +1340,7 @@
 	"project": "qrs.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 120.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1337,7 +1386,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 777.0,
+	"side_bar_width": 519.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
