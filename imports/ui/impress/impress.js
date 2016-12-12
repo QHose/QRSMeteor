@@ -15,7 +15,8 @@ Template.impress.onRendered(function() {
     impressInitialized = Session.get('impressInitialized');
     if (!impressInitialized) {
         console.log('impress was NOT yet initialized');
-        impress().init();
+        api = impress();
+        api.init();
         Session.set('impressInitialized', true);
     } else {
         console.log('impress was ALREADY initialized');
@@ -26,26 +27,25 @@ Template.impress.onRendered(function() {
         .$('.ui.embed')
         .embed();
 
-    Meteor.setTimeout(function() {
-        this.$('.slide.one')
+    // Meteor.setTimeout(function() {
+        this.$('.z.step.slide.one')
             .popup({
                 title: 'Start the presentation',
-                content: 'Press right on your keyboard'
+                content: 'Press your space or left/right arrows to navigate.'
             })
-    }, 2000)
+    // }, 2000)
 
     $(window).on('keydown, click', function(e) {
         $('.slide').popup('remove popup');
     });
 })
 
-Template.impress.events({
-    'click, keydown': function(event, template) {
-        console.log('key down', event);
-    },
-})
+// Template.impress.events({
+//     'click, keydown': function(event, template) {
+//         console.log('key down', impress);
+//     },
+// })
 
 Template.impress.onDestroyed(function() {
-    console.log('impress onDestroyed');
     $('body').attr('style', 'height: 100%;');
 })

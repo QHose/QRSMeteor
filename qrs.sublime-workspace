@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"margi",
+				"margin-left"
+			],
+			[
+				"imp",
+				"impressInitialized〔variable〕"
+			],
+			[
 				"cente",
 				"centered"
 			],
@@ -506,14 +514,6 @@
 			[
 				"pu",
 				"publishApp"
-			],
-			[
-				"th",
-				"throw"
-			],
-			[
-				"Cer",
-				"CertsConfig"
 			]
 		]
 	},
@@ -523,16 +523,16 @@
 			"file": "imports/ui/impress/impress.css",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 18511,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/nav.html",
+			"file": "client/stylesheets/main.css",
 			"settings":
 			{
-				"buffer_size": 2223,
+				"buffer_size": 883,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -541,7 +541,7 @@
 			"file": "imports/ui/impress/impress.html",
 			"settings":
 			{
-				"buffer_size": 13327,
+				"buffer_size": 6846,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,9 +550,52 @@
 			"file": "imports/ui/impress/impress.js",
 			"settings":
 			{
-				"buffer_size": 612,
+				"buffer_size": 1375,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/main.js",
+			"settings":
+			{
+				"buffer_size": 3162,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/generation/OEMPartnerSide/users.js",
+			"settings":
+			{
+				"buffer_size": 4115,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/layouts/layout.js",
+			"settings":
+			{
+				"buffer_size": 1671,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/layouts/layout.html",
+			"settings":
+			{
+				"buffer_size": 4875,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "node_modules/impress.js/js/impress.js",
+			"settings":
+			{
+				"buffer_size": 32396,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -636,14 +679,17 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/stylesheets",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts"
 	],
 	"file_history":
 	[
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/useCaseSelection.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/stylesheets/main.css",
@@ -682,8 +728,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/users/userOverview.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor/packages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/securityRules.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/users/userOverview.js",
@@ -884,6 +928,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"initialized",
+			"init",
 			"a",
 			"font",
 			"app",
@@ -1009,9 +1055,7 @@
 			"templateCheckBox",
 			"Select Customers\nWho needs a \"copy\" \nof the selected \ntemplate?\nSelect template\nThis is an app you \ncreated using the hub or APIs \nand published in the templates stream.\nStart provisioning\nCreate a stream, copy app,\ninsert script, reload and \npublish the app for each customer.\nTest\nTest the Single Sign On\nwith the users and groups \nfrom your platform.",
 			"see qlik",
-			"event",
-			"reset",
-			"loading"
+			"event"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1146,15 +1190,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 18511,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1567,
+								1567
 							]
 						],
 						"settings":
@@ -1164,41 +1208,40 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1620.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "imports/ui/nav.html",
+					"file": "client/stylesheets/main.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2223,
+						"buffer_size": 883,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1355,
-								1370
+								81,
+								81
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1207,15 +1250,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13327,
+						"buffer_size": 6846,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4457,
-								4457
+								968,
+								976
 							]
 						],
 						"settings":
@@ -1226,10 +1269,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1652.0,
+						"translation.y": 264.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1238,15 +1281,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 612,
+						"buffer_size": 1375,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								309,
-								326
+								815,
+								815
 							]
 						],
 						"settings":
@@ -1265,6 +1308,159 @@
 				},
 				{
 					"buffer": 4,
+					"file": "client/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3162,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								739,
+								739
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "imports/ui/generation/OEMPartnerSide/users.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4115,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								470,
+								470
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "imports/ui/layouts/layout.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1671,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								391,
+								391
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "imports/ui/layouts/layout.html",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 4875,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "node_modules/impress.js/js/impress.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 32396,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								26650,
+								26675
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 17291.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
 					"file": "imports/ui/useCases/useCaseSelection.html",
 					"semi_transient": false,
 					"settings":
@@ -1291,7 +1487,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]

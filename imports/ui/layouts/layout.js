@@ -14,7 +14,7 @@ Template.layout.helpers({
 });
 
 Template.layout.events({
-    'click': function(event, template) {
+    'keydown, click': function(event, template) {
         Template.instance().$('*').popup('remove popup')
     },
     'click .stepByStep' () {

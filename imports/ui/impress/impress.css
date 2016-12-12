@@ -141,7 +141,7 @@ em {
     And then we hide the message, when support is detected in the browser.
 */
 
-.fallback-message {
+/*.fallback-message {
     font-family: sans-serif;
     line-height: 1.3;
     width: 780px;
@@ -155,7 +155,9 @@ em {
 .fallback-message p {
     margin-bottom: 10px;
 }
+*/
 
+/*hide the fallback message if impress is supported*/
 .impress-supported .fallback-message {
     display: none;
 }
