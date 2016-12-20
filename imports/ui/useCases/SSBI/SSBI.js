@@ -33,16 +33,12 @@ Template.SSBISenseIFrame.onRendered(function() {
 
 Template.SSBISenseIFrame.helpers({
     appURL() {
-        console.log('SSBISenseIFrame: de app url is: ', appUrl);
-        return appUrl;
+        console.log('SSBISenseIFrame: de app url is: ', Session.get('appUrl'));
+        return Session.get('appUrl');
     },
 });
 
 Template.SSBIUsers.helpers({
-    userType(type) {
-        console.log('usertype: ', Session.get('userType'));
-        return Session.equals('userType', type) ? true : '';
-    },
     currentUser() {
         if (Session.get('currentUser')) {
             return '(' + Session.get('currentUser') + ' currently logged in)';
@@ -71,7 +67,10 @@ Template.SSBIUsers.events({
     },
     'click .selfservice ' () {
         $('.ui.modal.SSBI')
-            .modal('show');
+            .modal('show')
+            .modal('refresh')
+            .modal('refresh');
+
     },
     'click .button.hub ' () {
         refreshIframe(hubUrl);
@@ -88,7 +87,7 @@ Template.SSBIUsers.events({
 });
 
 Template.SSBIUsers.onCreated(function() {
-    // Meteor.call('resetLoggedInUser');
+    Session.set('appUrl', appUrl);
 })
 
 Template.SSBIUsers.onRendered(function() {
@@ -97,7 +96,6 @@ Template.SSBIUsers.onRendered(function() {
 })
 
 Template.userCards.onRendered(function() {
-    Session.set('userType', null);
     this.$('.dimmable.image').dimmer({
         on: 'hover'
     });
@@ -119,37 +117,40 @@ function login(user) {
     console.log('login ', user, Meteor.userId());
     try {
         Session.set('loadingIndicator', 'loading');
-        Session.set('currentUser', user);
+        // Session.set('currentUser', user);
 
-        var URLtoOpen = appUrl;
-        Meteor.call('simulateUserLogin', user, (error, result) => {
-            if (error) {
-                sAlert.error(error);
-                console.log(error);
-            } else {
-                console.log('All other users logged out, and we inserted the new user ' + user + ' in the local database');
+        var URLtoOpen = Session.get('appUrl');
+            Meteor.call('simulateUserLogin', user, (error, result) => {
+                if (error) {
+                    sAlert.error(error);
+                    console.log(error);
+                } else {
+                    console.log('All other users logged out, and we inserted the new user ' + user + ' in the local database');
 
-                if (user === 'Paul') {
-                    console.log('user is paul, so change url to QMC');
-                    URLtoOpen = server + '/qmc';
-                } else if (user === 'Martin') {
-                    var id = Meteor.settings.public.SSBIApp;
-                    URLtoOpen = hubUrl;
+                    // if (user === 'Paul') {
+                    //     console.log('user is paul, so change url to QMC');
+                    //     URLtoOpen = server + '/qmc';
+                    // } else if (user === 'Martin') {
+                    //     var id = Meteor.settings.public.SSBIApp;
+                    //     URLtoOpen = hubUrl;
+                    // }
+                    Session.set('loadingIndicator', '');
+                    //refreshIframe(URLtoOpen);
+                    sAlert.success(user + ' is now logged in into Qlik Sense');
                 }
-                Session.set('loadingIndicator', '');
-                //refreshIframe(URLtoOpen);
-                sAlert.success(user + ' is now logged in into Qlik Sense');
-            }
-        })
-    } catch (err) {
-        sAlert.error(err.message);
-    }
-};
+            })
+        }
+        catch (err) {
+            console.error(err);
+            sAlert.error(err.message);
+        }
+    };
 
-function refreshIframe(URLtoOpen) {
-    console.log('refresh Iframe url', URLtoOpen);
-    $("iframe").attr("src", URLtoOpen);
-    var myFrame = document.querySelector('iframe');
-    console.log('refresh this Iframe DIV in Dom', myFrame);
-    myFrame.parentNode.replaceChild(myFrame.cloneNode(), myFrame);
-};
+    function refreshIframe(URLtoOpen) {
+        console.log('refresh Iframe url', URLtoOpen);
+        Session.set('appUrl', appUrl);
+        $("iframe").attr("src", URLtoOpen);
+        var myFrame = document.querySelector('iframe');
+        console.log('refresh this Iframe DIV in Dom', myFrame);
+        myFrame.parentNode.replaceChild(myFrame.cloneNode(), myFrame);
+    };

@@ -66,6 +66,10 @@ if (Meteor.isClient) {
         return '/docs/How to demo the Qlik Sense SaaS demo platform.pdf';
     });
 
+    Template.registerHelper('doc_sec_function_task_matrix', function() {
+        return '/docs/QlikSense Authorizations - Function and Tasks_Demo.xlsx';
+    });
+
     Template.registerHelper('doc_securtityIntegration', function() {
         return 'https://community.qlik.com/docs/DOC-17599';
     });
