@@ -19,19 +19,27 @@ Template.layout.events({
     },
     'click .stepByStep' () {
         $('.ui.modal.stepByStep')
-            .modal('show');
+            .modal('show')
+            .modal('refresh')
+            .modal('refresh');
     },
     'click .howDoesSaaSAutomationWork' () {
         $('.ui.modal.howDoesSaaSAutomationWork')
-            .modal('show');
+            .modal('show')
+            .modal('refresh')
+            .modal('refresh');
     },
     'click .selfservice' () {
         $('.ui.modal.SSBI')
-            .modal('show');
+            .modal('show')
+            .modal('refresh')
+            .modal('refresh');
     },
     'click .APIAutomation' () {
         $('.ui.modal.APIAutomation')
-            .modal('show');
+            .modal('show')
+            .modal('refresh')
+            .modal('refresh');
     },
 })
 
