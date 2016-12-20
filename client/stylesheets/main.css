@@ -28,6 +28,7 @@
 
 .ui.segment.SSBI {
   min-height: 250px;
+  max-width: 250px;
 }
 
 .deleteStream,

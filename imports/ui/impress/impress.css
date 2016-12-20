@@ -355,6 +355,19 @@ em {
     transition: 0.5s;
 }
 
+#APIUseCases {
+    font-size: 22px;
+}
+
+#APIUseCases .title{
+    font-size: 40px;
+}
+
+#APIUseCases li{
+    font-size: 0.8em;
+}
+
+
 
 /*
     ... and we want 'positioning` word to move up a bit when the step gets
@@ -405,18 +418,6 @@ em {
     transition-delay: 0.5s;
 }
 
-
-/*
-    The 'imagination' step is again some boring font-sizing.
-*/
-
-#imagination {
-    width: 600px;
-}
-
-#imagination .imagination {
-    font-size: 78px;
-}
 
 
 /*
