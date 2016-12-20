@@ -21,30 +21,12 @@ Template.impress.onRendered(function() {
     } else {
         console.log('impress was ALREADY initialized');
         location.reload();
-    }
+    }    
 
     Template.instance()
         .$('.ui.embed')
         .embed();
-
-    // Meteor.setTimeout(function() {
-        this.$('.z.step.slide.one')
-            .popup({
-                title: 'Start the presentation',
-                content: 'Press your space or left/right arrows to navigate.'
-            })
-    // }, 2000)
-
-    $(window).on('keydown, click', function(e) {
-        $('.slide').popup('remove popup');
-    });
 })
-
-// Template.impress.events({
-//     'click, keydown': function(event, template) {
-//         console.log('key down', impress);
-//     },
-// })
 
 Template.impress.onDestroyed(function() {
     $('body').attr('style', 'height: 100%;');
