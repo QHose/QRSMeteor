@@ -17,7 +17,7 @@ const appUrl = server + '/sense/app/' + Meteor.settings.public.SSBIAppSheetStrin
 
 Template.SSBISenseApp.helpers({
     show() {
-        console.log('SSBISenseApp helper, show iframe?: ', showIFrame());
+        // console.log('SSBISenseApp helper, show iframe?: ', showIFrame());
         return showIFrame();
     }
 });
@@ -33,7 +33,7 @@ Template.SSBISenseIFrame.onRendered(function() {
 
 Template.SSBISenseIFrame.helpers({
     appURL() {
-        console.log('SSBISenseIFrame helper: de app url is: ', Session.get('appUrl'));
+        // console.log('SSBISenseIFrame helper: de app url is: ', Session.get('appUrl'));
         return Session.get('appUrl');
     },
 });
@@ -114,7 +114,7 @@ Template.senseButtons.onRendered(function() {
 // })
 
 function login(user) {
-    console.log('login ', user, Meteor.userId());
+    // console.log('login ', user, Meteor.userId());
     try {
         Session.set('loadingIndicator', 'loading');
         Session.set('currentUser', user);
@@ -127,14 +127,6 @@ function login(user) {
                     console.log(error);
                 } else {
                     console.log('All other users logged out, and we inserted the new user ' + user + ' in the local database');
-
-                    // if (user === 'Paul') {
-                    //     console.log('user is paul, so change url to QMC');
-                    //     URLtoOpen = server + '/qmc';
-                    // } else if (user === 'Martin') {
-                    //     var id = Meteor.settings.public.SSBIApp;
-                    //     URLtoOpen = hubUrl;
-                    // }
                     Session.set('loadingIndicator', '');                    
                     refreshIframe(URLtoOpen);
                     sAlert.success(user + ' is now logged in into Qlik Sense');
@@ -152,9 +144,4 @@ function login(user) {
         Session.set('loadingIndicator', 'loading');
         console.log('function refresh Iframe,  url', URLtoOpen);
         Session.set('loadingIndicator', '');
-
-        // $("iframe").attr("src", URLtoOpen);
-        // var myFrame = document.querySelector('iframe');
-        // console.log('refresh this Iframe DIV in Dom', myFrame);
-        // myFrame.parentNode.replaceChild(myFrame.cloneNode(), myFrame);
     };
