@@ -17,7 +17,7 @@ const appUrl = server + '/sense/app/' + Meteor.settings.public.SSBIAppSheetStrin
 
 Template.SSBISenseApp.helpers({
     show() {
-        console.log('show iframe?: ', showIFrame());
+        console.log('SSBISenseApp helper, show iframe?: ', showIFrame());
         return showIFrame();
     }
 });
@@ -33,7 +33,7 @@ Template.SSBISenseIFrame.onRendered(function() {
 
 Template.SSBISenseIFrame.helpers({
     appURL() {
-        console.log('SSBISenseIFrame: de app url is: ', Session.get('appUrl'));
+        console.log('SSBISenseIFrame helper: de app url is: ', Session.get('appUrl'));
         return Session.get('appUrl');
     },
 });
@@ -117,9 +117,10 @@ function login(user) {
     console.log('login ', user, Meteor.userId());
     try {
         Session.set('loadingIndicator', 'loading');
-        // Session.set('currentUser', user);
+        Session.set('currentUser', user);
 
         var URLtoOpen = Session.get('appUrl');
+        console.log('login: the url to open from session is: ', URLtoOpen);
             Meteor.call('simulateUserLogin', user, (error, result) => {
                 if (error) {
                     sAlert.error(error);
@@ -134,8 +135,8 @@ function login(user) {
                     //     var id = Meteor.settings.public.SSBIApp;
                     //     URLtoOpen = hubUrl;
                     // }
-                    Session.set('loadingIndicator', '');
-                    //refreshIframe(URLtoOpen);
+                    Session.set('loadingIndicator', '');                    
+                    refreshIframe(URLtoOpen);
                     sAlert.success(user + ' is now logged in into Qlik Sense');
                 }
             })
@@ -147,8 +148,11 @@ function login(user) {
     };
 
     function refreshIframe(URLtoOpen) {
-        console.log('refresh Iframe url', URLtoOpen);
-        Session.set('appUrl', appUrl);
+        Session.set('appUrl', URLtoOpen);
+        Session.set('loadingIndicator', 'loading');
+        console.log('function refresh Iframe,  url', URLtoOpen);
+        Session.set('loadingIndicator', '');
+
         $("iframe").attr("src", URLtoOpen);
         var myFrame = document.querySelector('iframe');
         console.log('refresh this Iframe DIV in Dom', myFrame);
