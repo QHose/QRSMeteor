@@ -108,10 +108,10 @@ Template.senseButtons.onRendered(function() {
         .transition('swing up');
 })
 
-Template.senseButtons.onRendered(function() {
-    this.$('.SenseIframe')
-        .transition('scale in');
-})
+// Template.senseButtons.onRendered(function() {
+//     this.$('.SenseIframe')
+//         .transition('scale in');
+// })
 
 function login(user) {
     console.log('login ', user, Meteor.userId());
@@ -153,8 +153,8 @@ function login(user) {
         console.log('function refresh Iframe,  url', URLtoOpen);
         Session.set('loadingIndicator', '');
 
-        $("iframe").attr("src", URLtoOpen);
-        var myFrame = document.querySelector('iframe');
-        console.log('refresh this Iframe DIV in Dom', myFrame);
-        myFrame.parentNode.replaceChild(myFrame.cloneNode(), myFrame);
+        // $("iframe").attr("src", URLtoOpen);
+        // var myFrame = document.querySelector('iframe');
+        // console.log('refresh this Iframe DIV in Dom', myFrame);
+        // myFrame.parentNode.replaceChild(myFrame.cloneNode(), myFrame);
     };

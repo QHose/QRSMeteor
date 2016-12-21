@@ -2,7 +2,7 @@ import './steps.html';
 import { currentStep } from '/imports/ui/UIHelpers'
 
 Template.steps.helpers({
-    stepStatus(stepNr) {
+    stepStatus(stepNr) {    
         if(currentStep() === 0 && stepNr === 1){
             return 'active'
         }
