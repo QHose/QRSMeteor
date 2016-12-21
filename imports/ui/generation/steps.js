@@ -3,7 +3,10 @@ import { currentStep } from '/imports/ui/UIHelpers'
 
 Template.steps.helpers({
     stepStatus(stepNr) {
-        if (currentStep() === stepNr ) {
+        if(currentStep() === 0 && stepNr === 1){
+            return 'active'
+        }
+        else if (currentStep() === stepNr ) {
             if (stepNr === 4 && Session.get('currentUser')) {
                 return 'completed';
             } else {
