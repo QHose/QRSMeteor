@@ -127,6 +127,23 @@ em {
         text-shadow: -1px -1px 2px rgba(100, 100, 100, 0.5);
     }
 
+.slide {
+    background-image: url("/images/Qlik_Leftcorner_Icon.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+#APIUseCases {
+    font-size: 2em;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    background: green;
+    /* width and height can be anything, as long as they're equal */
+}
 
 
 /*
@@ -244,6 +261,7 @@ em {
 }
 
 
+
 /*
     And now we start to style each step separately.
 
@@ -271,8 +289,8 @@ em {
     transform: translateZ(20px);
 }
 
-#title h1 {
-    font-size: 190px;
+.title h1 {
+    font-size: 120px;
     -webkit-transform: translateZ(50px);
     -moz-transform: translateZ(50px);
     -ms-transform: translateZ(50px);
@@ -292,10 +310,10 @@ em {
     Let's move to 'big thoughts' with centered text and custom font sizes.
 */
 
-#big {
+.big {
     width: 600px;
     text-align: center;
-    font-size: 60px;
+    font-size: 180px;
     line-height: 1;
 }
 
