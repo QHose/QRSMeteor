@@ -16,19 +16,44 @@ Template.integrationTopicsCircular.helpers({
     },
     level: function(level) {
         var row = this;
-        console.log('row is ', this);
         level -= 1;
         return row[level].qText
     },
-    allItemsOfLevel: function(level) {
-        console.log('all items of level helper');
-        var topics = Session.get(integrationTopics);
+    itemsOfLevel: function(level) {
+        // console.log('all items of level', this);
+        level -= 2; //get the name of the parent
+        var parent = this[level].qText;
+        if (parent) {
+          return getLocalValuesOfLevel(parent); //using the parent, get all items that have this name as parent
+        }
     },
     XValue(index) {
-        console.log('xvalue helper, x:', index);
         return 1200 * index;
+    },
+    test(){
+      console.log('test this', this);
     }
 });
+
+var setCurrentSlideEventHelper = function() {
+    $(document).on('impress:stepenter', function(e) {
+        var currentSlide = $(e.target).attr('id');
+        Session.set('currentSlide', currentSlide);
+    });
+}
+
+var getLocalValuesOfLevel = function(parentText) {
+    // console.log('get all level 3 for level 2 with text:', parentText);
+    var result = [];
+    var topics = Session.get('integrationTopics');
+    var level3Data = _.filter(topics, function(row) {
+        if (row[1].qText === parentText) {
+          if(row[2].qText){result.push(row[2].qText)}
+        }
+    })
+    // console.log('level3Data:', result);
+    return result;
+}
 
 
 Template.integrationTopicsCircular.onRendered(function() {
@@ -39,6 +64,7 @@ Template.integrationTopicsCircular.onRendered(function() {
 Template.integrationTopicsCircular.onRendered(function() {
     api = impress();
     api.init();
+    setCurrentSlideEventHelper();
     // impressInitialized = Session.get('impressInitialized');
     // if (!impressInitialized) {
     //     console.log('impress was NOT yet initialized');
@@ -90,8 +116,8 @@ function getValuesOfLevel(level2Text) {
                             model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
                                 console.log('Result set from Qlik Sense:', data);
                                 var table = data[0].qMatrix;
-                                console.log('Data set contained in QMatrix', table);
-                                Session.set('integrationTopics', table)
+                                console.log('Level 3 data', table);
+                                Session.set('level3Data', table)
                             })
                         })
 
@@ -134,9 +160,9 @@ function getTableWithEnigma(appId) {
                         })
                         .then(model => {
                             model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
-                                console.log('Result set from Qlik Sense:', data);
+                                // console.log('Result set from Qlik Sense:', data);
                                 var table = data[0].qMatrix;
-                                console.log('Data set contained in QMatrix', table);
+                                // console.log('Data set contained in QMatrix', table);
                                 Session.set('integrationTopics', table)
                             })
                         })
@@ -183,9 +209,9 @@ function getLevel1And2(appId) {
                         })
                         .then(model => {
                             model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
-                                console.log('Result set from Qlik Sense:', data);
+                                // console.log('Result set from Qlik Sense:', data);
                                 var table = data[0].qMatrix;
-                                console.log('Main levels contained in QMatrix', table);
+                                // console.log('Main levels contained in QMatrix', table);
                                 Session.set('mainTopics', table)
                             })
                         })
