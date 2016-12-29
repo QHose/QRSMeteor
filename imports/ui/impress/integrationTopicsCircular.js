@@ -12,10 +12,11 @@ Template.integrationTopicsCircular.helpers({
         console.log('integrationTopicsCircular helper get topics');
         return Session.get('integrationTopics');
     },
-    level: function(row) {
-        console.log('row is ', row);
-        // level -= 1;
-        // return row[level].qText
+    level: function(level) {
+      var row = this;
+        console.log('row is ', this);
+        level -= 1;
+        return row[level].qText
     },
     allItemsOfLevel: function(level) {
       console.log('all items of level helper');
