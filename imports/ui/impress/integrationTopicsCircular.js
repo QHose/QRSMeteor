@@ -7,33 +7,8 @@ _ = lodash;
 const enigma = require('enigma');
 var appId = 'f094b3f0-529f-4c4d-9a60-a1305c8c19b0';
 
-// Template.dynamicSlide.helpers({
-//     level: function(level) {
-//         level -= 1;
-//         return this[level].qText
-//     },
-//     allItemsOfLevel: function(level) {
-//       console.log('all items of level helper');
-//         var topics = Session.get(integrationTopics);
-
-
-//         // _.each(topics, function(row) {
-//         //     row
-//         // })[3][1].qText
-
-//     },
-//     XValue(index) {
-//       console.log('xvalue helper, x:', index);
-//         return 500 * index;
-//     }
-// });
-
-Template.integrationTopicsCircular.helpers({
-    topics() {
-        console.log('integrationTopicsCircular helper get topics');
-        return Session.get('integrationTopics');
-    },
-     level: function(level) {
+Template.dynamicSlide.helpers({
+    level: function(level) {
         level -= 1;
         return this[level].qText
     },
@@ -50,6 +25,13 @@ Template.integrationTopicsCircular.helpers({
     XValue(index) {
       console.log('xvalue helper, x:', index);
         return 500 * index;
+    }
+});
+
+Template.integrationTopicsCircular.helpers({
+    topics() {
+        console.log('integrationTopicsCircular helper get topics');
+        return Session.get('integrationTopics');
     }
 })
 

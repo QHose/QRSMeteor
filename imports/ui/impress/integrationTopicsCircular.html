@@ -1,19 +1,9 @@
 <template name="integrationTopicsCircular">
     <div id="impress">
-       <!--  {{#each row in topics }}
-        <h3 class="ui dividing header">{{level 1}}</h3>
-        <q>{{level 2}}</q>
-        {{> Template.dynamic template="dynamicSlide" data=row}}       
-        {{/each}} -->
-
         {{#each row in topics }}
-         <tr>
-            {{#each cell in row}}
-            <td> {{cell.qText}} </td> 
-            {{/each}}
-        </tr> 
-         {{/each}}
-
+     
+        {{> Template.dynamic template="dynamicSlide" data=row}}       
+        {{/each}}
     </div>
 </template>
 <template name="dynamicSlide">
