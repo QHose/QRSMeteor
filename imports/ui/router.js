@@ -49,12 +49,14 @@ Router.route('/impress', {
     layoutTemplate: 'SSOLayout'
 });
 
-// Router.route('/impress');
-// Router.route('/', function() {
-//     this.render('', { to: 'nav' });
-//     this.layout('regionLayout');
-//     this.render('useCaseSelection');
-// });
+Router.route('/integrationTopics', {
+    template: 'integrationTopics',
+    layoutTemplate: 'SSOLayout'
+});
+Router.route('/integrationTopicsCircular', {
+    template: 'integrationTopicsCircular',
+    layoutTemplate: 'SSOLayout'
+});
 
 Router.route('/useCaseSelection', function() {
     this.layout('oneColumnCenteredLayout');

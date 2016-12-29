@@ -7,15 +7,26 @@ import 'impress';
 import './impress.html';
 import './integrationTopics.html';
 import './integrationTopics.js';
+import './integrationTopics.css';
 import './impress.css';
-import './integrationTopicsCircular.html';
-import './integrationTopicsCircular.js';
 
 var api = {};
 
-Template.impress.onCreated(function() {})
+Template.integrationTopics.onCreated(function() {
+    document.addEventListener("impress:stepenter", function(event) {
+        var data_type = $(".active").attr("data-type");
+        if (data_type == 'portfolio') {
+            $(".active .small").show();
+            $(".active .large").hide();
+        } else if (data_type == 'portfolio-gallery') {
+            $(".small").hide();
+            $(".large").show();
+        }
+    }, false);
 
-Template.impress.onRendered(function() {
+})
+
+Template.integrationTopics.onRendered(function() {
     impressInitialized = Session.get('impressInitialized');
     if (!impressInitialized) {
         console.log('impress was NOT yet initialized');
@@ -25,7 +36,7 @@ Template.impress.onRendered(function() {
     } else {
         console.log('impress was ALREADY initialized');
         location.reload();
-    }    
+    }
 
     Template.instance()
         .$('.ui.embed')

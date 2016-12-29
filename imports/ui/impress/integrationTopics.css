@@ -1,0 +1,48 @@
+
+.portfolio{
+    background: #f8f8f8;
+    height: 500px;
+    margin: 10px 30px;
+    width: 600px;
+
+}
+
+.portfolio .small{
+    display: none;
+}
+
+.portfolio-left{
+    width: 650px;
+    float: left;
+    padding-top: 10px;
+    
+}
+.portfolio-left img{
+    border:10px solid #FFF;
+    outline: 2px solid #cfcfcf;
+    margin: 20px;
+}
+.portfolio-right{
+    width:400px;
+    float: left;
+    margin: 40px 20px;
+}
+
+.project-title{
+border-bottom: 5px solid #CD2828;
+    color: #000000;
+    font-family: "Arvo";
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.project-site{
+
+}
+
+.project-desc{
+font-size: 18px;
+color:#4B4A4A;
+margin: 20px 0;
+}
