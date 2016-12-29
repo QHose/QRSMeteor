@@ -44,7 +44,7 @@ Template.integrationTopicsCircular.onRendered(function() {
         Session.set('impressInitialized', true);
     } else {
         console.log('impress was ALREADY initialized');
-        //location.reload();
+        // location.reload();
     }
 
     Template.instance()
