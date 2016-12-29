@@ -7,45 +7,39 @@ _ = lodash;
 const enigma = require('enigma');
 var appId = 'f094b3f0-529f-4c4d-9a60-a1305c8c19b0';
 
-Template.dynamicSlide.helpers({
-    level: function(level) {
-        level -= 1;
-        return this[level].qText
+Template.integrationTopicsCircular.helpers({
+   topics() {
+        console.log('integrationTopicsCircular helper get topics');
+        return Session.get('integrationTopics');
+    },
+    level: function(row) {
+        console.log('row is ', row);
+        // level -= 1;
+        // return row[level].qText
     },
     allItemsOfLevel: function(level) {
       console.log('all items of level helper');
         var topics = Session.get(integrationTopics);
-
-
-        // _.each(topics, function(row) {
-        //     row
-        // })[3][1].qText
-
     },
     XValue(index) {
       console.log('xvalue helper, x:', index);
-        return 500 * index;
+        return 1200 * index;
     }
 });
 
-Template.integrationTopicsCircular.helpers({
-    topics() {
-        console.log('integrationTopicsCircular helper get topics');
-        return Session.get('integrationTopics');
-    }
-})
-
 Template.integrationTopicsCircular.onRendered(function() {
-    impressInitialized = Session.get('impressInitialized');
-    if (!impressInitialized) {
-        console.log('impress was NOT yet initialized');
-        api = impress();
+  api = impress();
         api.init();
-        Session.set('impressInitialized', true);
-    } else {
-        console.log('impress was ALREADY initialized');
-        // location.reload();
-    }
+    // impressInitialized = Session.get('impressInitialized');
+    // if (!impressInitialized) {
+    //     console.log('impress was NOT yet initialized');
+    //     api = impress();
+    //     api.init();
+    //     Session.set('impressInitialized', true);
+    // } else {
+    //     console.log('impress was ALREADY initialized');
+    //     // location.reload();
+    // }
 
     Template.instance()
         .$('.ui.embed')

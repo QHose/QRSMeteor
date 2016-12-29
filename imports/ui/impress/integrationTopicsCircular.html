@@ -1,8 +1,12 @@
 <template name="integrationTopicsCircular">
     <div id="impress">
         {{#each row in topics }}
-     
-        {{> Template.dynamic template="dynamicSlide" data=row}}       
+        <div class="z step slide one" data-x="{{XValue @index}}" data-y="-1500">
+            <h3 class="ui centered dividing header">{{level row 1}} - {{level 2}}</h3>
+            <q></q>
+            <!--             <img class="ui small centered image" src="images/embed.png">
+ --></div>
+       
         {{/each}}
     </div>
 </template>
@@ -13,6 +17,9 @@
         <!--             <img class="ui small centered image" src="images/embed.png">
  --></div>
 </template>
+
+ <!-- {{> Template.dynamic template="dynamicSlide" data=row}}        -->
+
 <!-- <tr>
         {{#each row in topics }}
             {{#each cell in row}}
