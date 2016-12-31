@@ -2,31 +2,31 @@
     <div id="impress">
         {{#each mainTopics }}
         <div class="z step slide one" data-x="{{XValue @index}}" data-y="-1500">
-            <h1 class="ui centered dividing header">{{level 1}} - {{level 2}}</h1>
-            {{#each item in itemsOfLevel 3}}
-            <q>{{item}}</q>
-            {{/each}}
-            <!--             <img class="ui small centered image" src="images/embed.png">
- --></div>
-       
-        {{/each}}
+            <h2 class="ui dividing header" style="margin-left: 160px">{{level 1}} - {{level 2}}
+			</h2>
+            <div class="ui list" style="margin-left: 175px">
+                {{#each item in itemsOfLevel 3}}
+                <div class="item">
+                    <h3>{{{item}}}</h3>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+      
     </div>
 </template>
-
 <template name="dynamicSlide">
-    <div class="z step slide one" data-x="{{XValue ../@index}}" data-y="-1500">
+    <div class="ui container z step slide" data-x="{{XValue ../@index}}" data-y="-1500">
         <h3 class="ui centered dividing header">{{level 1}} - {{level 2}}</h3>
         <q></q>
         <!--             <img class="ui small centered image" src="images/embed.png">
- --></div>
+    --></div>
 </template>
-
- <!-- {{> Template.dynamic template="dynamicSlide" data=row}}        -->
-
+<!-- {{> Template.dynamic template="dynamicSlide" data=row}}        -->
 <!-- <tr>
         {{#each row in topics }}
             {{#each cell in row}}
             <td> {{cell.qText}} </td> 
             {{/each}}
         </tr> 
-         {{/each}}-->
+        {{/each}}-->

@@ -20,18 +20,14 @@ Template.integrationTopicsCircular.helpers({
         return row[level].qText
     },
     itemsOfLevel: function(level) {
-        // console.log('all items of level', this);
-        level -= 2; //get the name of the parent
-        var parent = this[level].qText;
-        if (parent) {
-          return getLocalValuesOfLevel(parent); //using the parent, get all items that have this name as parent
+        var parents = this[level - 3].qText + this[level - 2].qText; //get the names of the parents
+        if (parents) {
+            console.log('Parent is not empty:', parents);
+            return getLocalValuesOfLevel(parents); //using the parent, get all items that have this name as parent
         }
     },
     XValue(index) {
         return 1200 * index;
-    },
-    test(){
-      console.log('test this', this);
     }
 });
 
@@ -47,8 +43,9 @@ var getLocalValuesOfLevel = function(parentText) {
     var result = [];
     var topics = Session.get('integrationTopics');
     var level3Data = _.filter(topics, function(row) {
-        if (row[1].qText === parentText) {
-          if(row[2].qText){result.push(row[2].qText)}
+        var parents = row[0].qText + row[1].qText;
+        if (parents === parentText) {
+            if (row[2].qText) { result.push(row[2].qText) }
         }
     })
     // console.log('level3Data:', result);
@@ -59,11 +56,24 @@ var getLocalValuesOfLevel = function(parentText) {
 Template.integrationTopicsCircular.onRendered(function() {
     getTableWithEnigma(appId);
     getLevel1And2(appId);
+
+      Template.instance()
+        .$('.ui.embed')
+        .embed();
 })
 
 Template.integrationTopicsCircular.onRendered(function() {
-    api = impress();
-    api.init();
+    Tracker.autorun(function() {
+        var topics = Session.get('integrationTopics');
+        if (topics) {
+            console.log('impress initialized, topics');
+            Meteor.setTimeout(function(){impress().init();}, 0);            
+        }
+        else{
+            console.log('wait to init impress, topics not yet loaded');
+        }
+    })
+
     setCurrentSlideEventHelper();
     // impressInitialized = Session.get('impressInitialized');
     // if (!impressInitialized) {
