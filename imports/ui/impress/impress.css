@@ -137,15 +137,6 @@ em {
     font-size: 2em;
 }
 
-.circle {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    background: green;
-    /* width and height can be anything, as long as they're equal */
-}
-
-
 /*
     Because the main point behind the impress.js demo is to demo impress.js
     we display a fallback message for users with browsers that don't support
@@ -260,19 +251,6 @@ em {
     white-space: nowrap;
 }
 
-
-
-/*
-    And now we start to style each step separately.
-
-    I agree that this may be not the most efficient, object-oriented and
-    scalable way of styling, but most of steps have quite a custom look
-    and typography tricks here and there, so they had to be styled separately.
-
-    First is the title step with a big <h1> (no room for padding) and some
-    3D positioning along Z axis.
-*/
-
 #title {
     padding: 0;
 }
@@ -337,11 +315,6 @@ em {
     width: 500px;
     text-align: center;
 }
-
-
-/*
-    This step has some animated text ...
-*/
 
 .video p {
     display: block;
@@ -436,120 +409,6 @@ em {
     transition-delay: 0.5s;
 }
 
-
-
-/*
-    There is nothing really special about 'use the source, Luke' step, too,
-    except maybe of the Yoda background.
-
-    As you can see below I've 'hard-coded' it in data URL.
-    That's not the best way to serve images, but because that's just this one
-    I decided it will be OK to have it this way.
-
-    Just make sure you don't blindly copy this approach.
-*/
-
-
-/*
-    And the "it's in 3D" step again brings some 3D typography - just for fun.
-
-    Because we want to position <span> elements in 3D we set transform-style to
-    `preserve-3d` on the paragraph.
-    It is not needed by webkit browsers, but it is in Firefox. It's hard to say
-    which behaviour is correct as 3D transforms spec is not very clear about it.
-*/
-
-#its-in-3d p {
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    /* Y U need this Firefox?! */
-    -ms-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-}
-
-
-/*
-    Below we position each word separately along Z axis and we want it to transition
-    to default position in 0.5s when the step gets `present` class.
-
-    Quite a simple idea, but lot's of styles and prefixes.
-*/
-
-#its-in-3d span,
-#its-in-3d b {
-    display: inline-block;
-    -webkit-transform: translateZ(40px);
-    -moz-transform: translateZ(40px);
-    -ms-transform: translateZ(40px);
-    -o-transform: translateZ(40px);
-    transform: translateZ(40px);
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
-}
-
-#its-in-3d .have {
-    -webkit-transform: translateZ(-40px);
-    -moz-transform: translateZ(-40px);
-    -ms-transform: translateZ(-40px);
-    -o-transform: translateZ(-40px);
-    transform: translateZ(-40px);
-}
-
-#its-in-3d .you {
-    -webkit-transform: translateZ(20px);
-    -moz-transform: translateZ(20px);
-    -ms-transform: translateZ(20px);
-    -o-transform: translateZ(20px);
-    transform: translateZ(20px);
-}
-
-#its-in-3d .noticed {
-    -webkit-transform: translateZ(-40px);
-    -moz-transform: translateZ(-40px);
-    -ms-transform: translateZ(-40px);
-    -o-transform: translateZ(-40px);
-    transform: translateZ(-40px);
-}
-
-#its-in-3d .its {
-    -webkit-transform: translateZ(60px);
-    -moz-transform: translateZ(60px);
-    -ms-transform: translateZ(60px);
-    -o-transform: translateZ(60px);
-    transform: translateZ(60px);
-}
-
-#its-in-3d .in {
-    -webkit-transform: translateZ(-10px);
-    -moz-transform: translateZ(-10px);
-    -ms-transform: translateZ(-10px);
-    -o-transform: translateZ(-10px);
-    transform: translateZ(-10px);
-}
-
-#its-in-3d .footnote {
-    font-size: 32px;
-    -webkit-transform: translateZ(-10px);
-    -moz-transform: translateZ(-10px);
-    -ms-transform: translateZ(-10px);
-    -o-transform: translateZ(-10px);
-    transform: translateZ(-10px);
-}
-
-#its-in-3d.present span,
-#its-in-3d.present b {
-    -webkit-transform: translateZ(0px);
-    -moz-transform: translateZ(0px);
-    -ms-transform: translateZ(0px);
-    -o-transform: translateZ(0px);
-    transform: translateZ(0px);
-}
-
-
 /*
     The last step is an overview.
     There is no content in it, so we make sure it's not visible because we want
@@ -577,47 +436,6 @@ em {
 }
 */
 
-/*
-    Now, when we have all the steps styled let's give users a hint how to navigate
-    around the presentation.
-
-    The best way to do this would be to use JavaScript, show a delayed hint for a
-    first time users, then hide it and store a status in cookie or localStorage...
-
-    But I wanted to have some CSS fun and avoid additional scripting...
-
-    Let me explain it first, so maybe the transition magic will be more readable
-    when you read the code.
-
-    First of all I wanted the hint to appear only when user is idle for a while.
-    You can't detect the 'idle' state in CSS, but I delayed a appearing of the
-    hint by 5s using transition-delay.
-
-    You also can't detect in CSS if the user is a first-time visitor, so I had to
-    make an assumption that I'll only show the hint on the first step. And when
-    the step is changed hide the hint, because I can assume that user already
-    knows how to navigate.
-
-    To summarize it - hint is shown when the user is on the first step for longer
-    than 5 seconds.
-
-    The other problem I had was caused by the fact that I wanted the hint to fade
-    in and out. It can be easily achieved by transitioning the opacity property.
-    But that also meant that the hint was always on the screen, even if totally
-    transparent. It covered part of the screen and you couldn't correctly clicked
-    through it.
-    Unfortunately you cannot transition between display `block` and `none` in pure
-    CSS, so I needed a way to not only fade out the hint but also move it out of
-    the screen.
-
-    I solved this problem by positioning the hint below the bottom of the screen
-    with CSS transform and moving it up to show it. But I also didn't want this move
-    to be visible. I wanted the hint only to fade in and out visually, so I delayed
-    the fade in transition, so it starts when the hint is already in its correct
-    position on the screen.
-
-    I know, it sounds complicated ... maybe it would be easier with the code?
-*/
 
 .hint {
     /*
