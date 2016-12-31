@@ -8,8 +8,7 @@ import './impress.html';
 import './integrationTopics.html';
 import './integrationTopics.js';
 import './impress.css';
-import './integrationTopicsCircular.html';
-import './integrationTopicsCircular.js';
+import './ppt_integration.js';
 
 var api = {};
 

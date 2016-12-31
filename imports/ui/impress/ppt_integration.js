@@ -1,13 +1,13 @@
 import { senseConfig } from '/imports/api/config.js';
-var qsocks = require('qsocks');
-import './integrationTopics.js';
-import lodash from 'lodash';
-_ = lodash;
+import './ppt_integration.html';
+
+// import lodash from 'lodash';
+// _ = lodash;
 
 const enigma = require('enigma');
 var appId = 'f094b3f0-529f-4c4d-9a60-a1305c8c19b0';
 
-Template.integrationTopicsCircular.helpers({
+Template.ppt_integration.helpers({
     mainTopics() {
         return Session.get('mainTopics');
     },
@@ -22,7 +22,7 @@ Template.integrationTopicsCircular.helpers({
     itemsOfLevel: function(level) {
         var parents = this[level - 3].qText + this[level - 2].qText; //get the names of the parents
         if (parents) {
-            console.log('Parent is not empty:', parents);
+            // console.log('Parent is not empty:', parents);
             return getLocalValuesOfLevel(parents); //using the parent, get all items that have this name as parent
         }
     },
@@ -53,7 +53,7 @@ var getLocalValuesOfLevel = function(parentText) {
 }
 
 
-Template.integrationTopicsCircular.onRendered(function() {
+Template.ppt_integration.onRendered(function() {
     getTableWithEnigma(appId);
     getLevel1And2(appId);
 
@@ -62,7 +62,7 @@ Template.integrationTopicsCircular.onRendered(function() {
         .embed();
 })
 
-Template.integrationTopicsCircular.onRendered(function() {
+Template.ppt_integration.onRendered(function() {
     Tracker.autorun(function() {
         var topics = Session.get('integrationTopics');
         if (topics) {

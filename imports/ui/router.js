@@ -36,9 +36,13 @@ Router.route('/sequenceDiagramGeneration');
 Router.route('/legal');
 Router.route('/documentation');
 Router.route('/templateOverview');
-// Router.route('/useCaseSelection');
 
 //Single sing on integration route, this is the route you configure in Qlik sense proxy
+Router.route('/ppt_integration', {
+    template: 'ppt_integration',
+    layoutTemplate: 'SSOLayout'
+});
+
 Router.route('/SSO', {
     template: 'SSO',
     layoutTemplate: 'SSOLayout'
@@ -49,9 +53,9 @@ Router.route('/impress', {
     layoutTemplate: 'SSOLayout'
 });
 
-Router.route('/integrationTopics', {
-    template: 'integrationTopics',
-    layoutTemplate: 'SSOLayout'
+Router.route('/integration', {
+    template: 'ppt_integrationMain',
+    // layoutTemplate: 'SSOLayout'
 });
 Router.route('/integrationTopicsCircular', {
     template: 'integrationTopicsCircular',
