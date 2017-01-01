@@ -7,6 +7,17 @@ import './ppt_integration.html';
 const enigma = require('enigma');
 var appId = 'f094b3f0-529f-4c4d-9a60-a1305c8c19b0';
 
+Template.ppt_integrationMain.helpers({
+    mainTopics() {
+        // console.log('ppt main, mainTopics is:',Session.get('mainTopics').length);
+        return Session.get('mainTopics');
+    }
+})
+
+Template.ppt_integrationMain.onRendered(function() {
+    getLevel1And2();
+})
+
 Template.ppt_integration.helpers({
     mainTopics() {
         return Session.get('mainTopics');
@@ -15,8 +26,9 @@ Template.ppt_integration.helpers({
         return Session.get('integrationTopics');
     },
     level: function(level) {
+        // console.log('level helper', this);
         var row = this;
-        level -= 1;
+        level -= 1
         return row[level].qText
     },
     itemsOfLevel: function(level) {
@@ -43,38 +55,41 @@ var getLocalValuesOfLevel = function(parentText) {
     var result = [];
     var topics = Session.get('integrationTopics');
     var level3Data = _.filter(topics, function(row) {
-        var parents = row[0].qText + row[1].qText;
-        if (parents === parentText) {
-            if (row[2].qText) { result.push(row[2].qText) }
-        }
-    })
-    // console.log('level3Data:', result);
+            var parents = row[0].qText + row[1].qText;
+            if (parents === parentText) {
+                if (row[2].qText) { result.push(row[2].qText) }
+            }
+        })
+        // console.log('level3Data:', result);
     return result;
 }
 
 
 Template.ppt_integration.onRendered(function() {
-    getTableWithEnigma(appId);
-    getLevel1And2(appId);
+    getTableWithEnigma();
+    getLevel1And2();
+    appChangeListener()
 
-      Template.instance()
+    Template.instance()
         .$('.ui.embed')
         .embed();
 })
 
 Template.ppt_integration.onRendered(function() {
-    Tracker.autorun(function() {
-        var topics = Session.get('integrationTopics');
-        if (topics) {
-            console.log('impress initialized, topics');
-            Meteor.setTimeout(function(){impress().init();}, 0);            
-        }
-        else{
-            console.log('wait to init impress, topics not yet loaded');
-        }
-    })
 
-    setCurrentSlideEventHelper();
+                Meteor.setTimeout(function() { impress().init(); }, 1000);
+
+    // Tracker.autorun(function() {
+    //     var topics = Session.get('integrationTopics');
+    //     if (topics) {
+    //         console.log('impress initialized, topics');
+    //         Meteor.setTimeout(function() { impress().init(); }, 0);
+    //     } else {
+    //         console.log('wait to init impress, topics not yet loaded');
+    //     }
+    // })
+
+    // setCurrentSlideEventHelper();
     // impressInitialized = Session.get('impressInitialized');
     // if (!impressInitialized) {
     //     console.log('impress was NOT yet initialized');
@@ -90,6 +105,30 @@ Template.ppt_integration.onRendered(function() {
         .$('.ui.embed')
         .embed();
 })
+
+var appChangeListener = function appChangeListener() {
+    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
+        .then(qixschema => {
+            enigma.getService('qix', {
+                    schema: qixschema,
+                    appId: appId,
+                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+                        host: senseConfig.host,
+                        prefix: senseConfig.virtualProxyClientUsage,
+                        port: senseConfig.port,
+                        unsecure: true
+                    }
+                })
+                .then(qix => {
+                    qix.app.on('changed', () => {
+                        console.log('Instance was changed');
+                        location.reload();
+                        // getTableWithEnigma();
+                        // getLevel1And2();
+                    });
+                })
+        })
+}
 
 function getValuesOfLevel(level2Text) {
 
@@ -139,7 +178,7 @@ function getValuesOfLevel(level2Text) {
 }
 
 
-function getTableWithEnigma(appId) {
+function getTableWithEnigma() {
 
     $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
         .then(qixschema => {
@@ -184,7 +223,7 @@ function getTableWithEnigma(appId) {
 
 }
 
-function getLevel1And2(appId) {
+function getLevel1And2() {
 
     $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
         .then(qixschema => {

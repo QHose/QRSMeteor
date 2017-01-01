@@ -2,10 +2,12 @@
     <div class="ui grid">
         <div class="row">
             <div class="four wide column">
-            <iframe src='http://presales1:81/meteor/single/?appid=f094b3f0-529f-4c4d-9a60-a1305c8c19b0&obj=TpAUrwN' height="600" style='border:none;'></iframe>
+                <iframe src='http://presales1:81/meteor/single/?appid=f094b3f0-529f-4c4d-9a60-a1305c8c19b0&obj=TpAUrwN' height="600" style='border:none;'></iframe>
             </div>
             <div class="ten wide column wrap">
+                {{#if mainTopics}}
                 <iframe src="{{pathFor 'ppt_integration'}}" width="900" height="700" frameBorder="0"></iframe>
+                {{/if}}
             </div>
             <div class="two wide column">
             </div>
@@ -15,26 +17,20 @@
 <template name="ppt_integration">
     <div id="impress">
         {{#each mainTopics }}
-        <div class="z step slide" data-x="{{XValue @index}}" data-y="-1500">
-            <h2 class="ui dividing header" style="margin-left: 160px">{{level 1}} - {{level 2}}
-			</h2>
-            <div class="ui list" style="margin-left: 175px">
-                {{#each item in itemsOfLevel 3}}
-                <div class="item">
-                    <h3>{{{item}}}</h3>
+<!--         {{level 1}} - {{level 2}}
+ -->            <div class="z step slide" data-x="{{XValue @index}}" data-y="-1500">
+                <h2 class="ui dividing header" style="margin-left: 160px">{{level 1}} - {{level 2}}
+                </h2>
+                <div class="ui list" style="margin-left: 175px">
+                    {{#each item in itemsOfLevel 3}}
+                    <div class="item">
+                        <h3>{{{item}}}</h3>
+                    </div>
+                    {{/each}}
                 </div>
-                {{/each}}
             </div>
-        </div>
         {{/each}}
     </div>
-</template>
-<template name="dynamicSlide">
-    <div class="ui container z step slide" data-x="{{XValue ../@index}}" data-y="-1500">
-        <h3 class="ui centered dividing header">{{level 1}} - {{level 2}}</h3>
-        <q></q>
-        <!--             <img class="ui small centered image" src="images/embed.png">
-    --></div>
 </template>
 <!-- {{> Template.dynamic template="dynamicSlide" data=row}}        -->
 <!-- <tr>
