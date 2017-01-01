@@ -1,15 +1,13 @@
 <template name="ppt_integrationMain">
     <div class="ui grid">
         <div class="row">
-            <div class="four wide column">
-                <iframe src='http://presales1:81/meteor/single/?appid=f094b3f0-529f-4c4d-9a60-a1305c8c19b0&obj=TpAUrwN' height="600" style='border:none;'></iframe>
+            <div class="seven wide column">
+                <iframe src='http://presales1:81/meteor/single/?appid=f094b3f0-529f-4c4d-9a60-a1305c8c19b0&obj=TpAUrwN&opt=currsel&select=clearall' width="100%" height="600" style='border:none;'></iframe>
             </div>
-            <div class="ten wide column wrap">
-                {{#if mainTopics}}
-                <iframe src="{{pathFor 'ppt_integration'}}" width="900" height="700" frameBorder="0"></iframe>
-                {{/if}}
-            </div>
-            <div class="two wide column">
+            <div class="nine wide column">
+                <!-- {{#if mainTopics}} -->
+                <iframe src="{{pathFor 'ppt_integration'}}" width="100%" height="600" frameBorder="0"></iframe>
+                <!-- {{/if}} -->
             </div>
         </div>
     </div>
