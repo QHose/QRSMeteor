@@ -1,10 +1,10 @@
 <template name="ppt_integrationMain">
     <div class="ui grid">
         <div class="row">
-            <div class="seven wide column">
-                <iframe src='http://presales1:81/meteor/single/?appid=f094b3f0-529f-4c4d-9a60-a1305c8c19b0&obj=RZuJ&select=clearall' width="100%" height="600" style='border:none;'></iframe>
+            <div class="four wide column">
+                <iframe src='http://presales1:81/meteor/single/?appid=f094b3f0-529f-4c4d-9a60-a1305c8c19b0&obj=RZuJ&opt=currsel' width="100%" height="600" style='border:none;'></iframe>
             </div>
-            <div class="nine wide column">
+            <div class="twelve wide column">
                 <!-- {{#if mainTopics}} -->
                 <iframe src="{{pathFor 'ppt_integration'}}" width="100%" height="600" frameBorder="0"></iframe>
                 <!-- {{/if}} -->
@@ -15,18 +15,13 @@
 <template name="ppt_integration">
     <div id="impress">
         {{#each mainTopics }}
-<!--         {{level 1}} - {{level 2}}
- -->            <div class="z step slide" data-x="{{XValue @index}}" data-y="-1500">
-                <h2 class="ui dividing header" style="margin-left: 160px">{{level 1}} - {{level 2}}
+        <div class="z step slide" data-x="{{XValue @index}}" data-y="-1500">
+            <h2 class="ui dividing header" style="margin-left: 160px">{{level 1}} - {{level 2}}
                 </h2>
-                <div class="ui list" style="margin-left: 175px">
-                    {{#each item in itemsOfLevel 3}}
-                    <div class="item">
-                        <h3>{{{item}}}</h3>
-                    </div>
-                    {{/each}}
-                </div>
+            <div class="ui list">
+                {{#each item in itemsOfLevel 3}} {{{formatted item}}} {{/each}}
             </div>
+        </div>
         {{/each}}
     </div>
 </template>

@@ -3,7 +3,8 @@ import './ppt_integration.html';
 
 // import lodash from 'lodash';
 // _ = lodash;
-
+var showdown = require('showdown');
+var converter = new showdown.Converter();
 const enigma = require('enigma');
 var appId = 'f094b3f0-529f-4c4d-9a60-a1305c8c19b0';
 
@@ -39,9 +40,38 @@ Template.ppt_integration.helpers({
         }
     },
     XValue(index) {
-        return 1200 * index;
+        return 1000 * index;
+    },
+    formatted(text) {
+        if (youtube_parser(text)) { //youtube video url
+            console.log('found an youtube link so embed with semeantic', text)
+            var videoId = youtube_parser(text);
+            var html = '<div class="ui embed" style="margin-left: 50px" data-source="youtube" data-id="'+videoId+'" data-icon="video" data-placeholder="images/API.png"></div>'
+            console.log('generated video link: ', html);
+            return html;
+        } else if (checkTextIsImage(text)) { //image
+            console.log('found an image', text)
+            return '<img class="ui centered image" src="images/' + text + '">'
+        }
+        // else if(text.substring(0, 1) === '['){
+
+        // } 
+        else { //text 
+            console.log('convert to: ', converter.makeHtml(text));
+            return '<div class="item" style="margin-left: 175px"><h3>' + converter.makeHtml(text) + '</h3></div>';
+        }
     }
 });
+
+function checkTextIsImage(text) {
+    return (text.match(/\.(jpeg|jpg|gif|png)$/) != null);
+}
+
+function youtube_parser(url){
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    return (match&&match[7].length==11)? match[7] : false;
+}
 
 var setCurrentSlideEventHelper = function() {
     $(document).on('impress:stepenter', function(e) {
@@ -69,15 +99,33 @@ Template.ppt_integration.onRendered(function() {
     getTableWithEnigma();
     getLevel1And2();
     appChangeListener()
-
-    Template.instance()
-        .$('.ui.embed')
-        .embed();
 })
 
 Template.ppt_integration.onRendered(function() {
 
-                Meteor.setTimeout(function() { impress().init(); }, 1000);
+    // // Tracker.autorun(function() {
+    // //     if (Session.get('integrationTopics')) {
+    // //         Tracker.afterFlush(function() {
+    // Meteor.defer(function() { // code to execute after Session update
+    //     try {
+    //         impress().init();
+    //     } catch (err) {
+    //         console.error(err)
+    //     }
+    // });
+    // //     });
+    // // }
+    // // })
+
+
+
+
+    Meteor.setTimeout(function() { 
+        impress().init(); 
+
+       $('.ui.embed')
+        .embed();
+    }, 1000);
 
     // Tracker.autorun(function() {
     //     var topics = Session.get('integrationTopics');
@@ -212,7 +260,8 @@ function getTableWithEnigma() {
                                 // console.log('Result set from Qlik Sense:', data);
                                 var table = data[0].qMatrix;
                                 // console.log('Data set contained in QMatrix', table);
-                                Session.set('integrationTopics', table)
+                                Session.set('integrationTopics', table);
+                                Tracker.flush();
                             })
                         })
 
