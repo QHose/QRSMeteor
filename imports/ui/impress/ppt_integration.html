@@ -16,9 +16,17 @@
     <div id="impress">
         {{#each mainTopics }}
         <div class="z step slide" data-x="{{XValue @index}}" data-y="-1500">
-            <h2 class="ui dividing header" style="margin-left: 160px">{{level 1}} - {{level 2}}
+            <h2 style="margin-left: 160px" class="ui header">
+<!--   <img src="/images/API.png">
+ -->  <div class="content">
+    {{level 1}}
+    <div class="sub header">{{level 2}}</div>
+  </div>
+</h2>
+            <!-- <h2 class="ui dividing header" style="margin-left: 160px"> 
                 </h2>
-            <div class="ui list">
+ -->
+            <div class="ui list" style="margin-top: 60px">
                 {{#each item in itemsOfLevel 3}} {{{formatted item}}} {{/each}}
             </div>
         </div>

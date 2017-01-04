@@ -46,16 +46,15 @@ Template.ppt_integration.helpers({
         if (youtube_parser(text)) { //youtube video url
             console.log('found an youtube link so embed with semeantic', text)
             var videoId = youtube_parser(text);
-            var html = '<div class="ui embed" style="margin-left: 50px" data-source="youtube" data-id="'+videoId+'" data-icon="video" data-placeholder="images/API.png"></div>'
+            var html = '<div class="ui embed" style="margin-left: 50px, padding-top: 80px" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/API.png"></div>'
             console.log('generated video link: ', html);
             return html;
         } else if (checkTextIsImage(text)) { //image
             console.log('found an image', text)
-            return '<img class="ui centered image" src="images/' + text + '">'
+            return '<img class="ui centered image" style="margin-top: 20px" src="images/' + text + '">'
+        } else if (text.startsWith('<')) { //custom HTML
+            return text;
         }
-        // else if(text.substring(0, 1) === '['){
-
-        // } 
         else { //text 
             console.log('convert to: ', converter.makeHtml(text));
             return '<div class="item" style="margin-left: 175px"><h3>' + converter.makeHtml(text) + '</h3></div>';
@@ -67,10 +66,10 @@ function checkTextIsImage(text) {
     return (text.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }
 
-function youtube_parser(url){
+function youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
-    return (match&&match[7].length==11)? match[7] : false;
+    return (match && match[7].length == 11) ? match[7] : false;
 }
 
 var setCurrentSlideEventHelper = function() {
@@ -120,11 +119,11 @@ Template.ppt_integration.onRendered(function() {
 
 
 
-    Meteor.setTimeout(function() { 
-        impress().init(); 
+    Meteor.setTimeout(function() {
+        impress().init();
 
-       $('.ui.embed')
-        .embed();
+        $('.ui.embed')
+            .embed();
     }, 1000);
 
     // Tracker.autorun(function() {

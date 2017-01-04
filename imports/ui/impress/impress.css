@@ -75,6 +75,7 @@ em {
     background-image: url("/images/Qlik_Leftcorner_Icon.png");
     background-repeat: no-repeat;
     background-position: left top;
+    overflow: hidden;
     display: block;
     width: 900px;
     height: 700px;
