@@ -1,13 +1,12 @@
 <template name="ppt_integrationMain">
+ <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <div class="ui grid">
         <div class="row">
             <div class="four wide column">
                 <iframe src='http://presales1:81/meteor/single/?appid=f094b3f0-529f-4c4d-9a60-a1305c8c19b0&obj=RZuJ&opt=currsel' width="100%" height="600" style='border:none;'></iframe>
             </div>
             <div class="twelve wide column">
-                <!-- {{#if mainTopics}} -->
-                <iframe src="{{pathFor 'ppt_integration'}}" width="100%" height="600" frameBorder="0"></iframe>
-                <!-- {{/if}} -->
+                <iframe src="{{pathFor 'ppt_integration'}}" width="100%" height="800" frameBorder="0"></iframe>
             </div>
         </div>
     </div>
@@ -15,18 +14,18 @@
 <template name="ppt_integration">
     <div id="impress">
         {{#each mainTopics }}
-        <div class="z step slide" data-x="{{XValue @index}}" data-y="-1500">
+        <div class="z {{stepVisible this}} slide" data-x="{{XValue @index}}" data-y="-1500" style="visibility: {{visibility this}};">
             <h2 style="margin-left: 160px" class="ui header">
-<!--   <img src="/images/API.png">
- -->  <div class="content">
-    {{level 1}}
-    <div class="sub header">{{level 2}}</div>
-  </div>
-</h2>
+                <div class="content">
+                    {{level 1}}
+                    <div class="sub header">{{level 2}}</div>
+                </div>
+            </h2>
             <!-- <h2 class="ui dividing header" style="margin-left: 160px"> 
                 </h2>
- -->
+            -->
             <div class="ui list" style="margin-top: 60px">
+            <!--?prettify lang=javascript linenums=true?-->
                 {{#each item in itemsOfLevel 3}} {{{formatted item}}} {{/each}}
             </div>
         </div>

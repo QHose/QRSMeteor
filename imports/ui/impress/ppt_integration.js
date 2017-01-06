@@ -1,8 +1,8 @@
 import { senseConfig } from '/imports/api/config.js';
 import './ppt_integration.html';
 
-// import lodash from 'lodash';
-// _ = lodash;
+import lodash from 'lodash';
+_ = lodash;
 var showdown = require('showdown');
 var converter = new showdown.Converter();
 const enigma = require('enigma');
@@ -44,23 +44,43 @@ Template.ppt_integration.helpers({
     },
     formatted(text) {
         if (youtube_parser(text)) { //youtube video url
-            console.log('found an youtube link so embed with semeantic', text)
+            // console.log('found an youtube link so embed with the formatting of semantic ui', text)
             var videoId = youtube_parser(text);
             var html = '<div class="ui embed" style="margin-left: 50px, padding-top: 80px" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/API.png"></div>'
-            console.log('generated video link: ', html);
+                // console.log('generated video link: ', html);
             return html;
         } else if (checkTextIsImage(text)) { //image
-            console.log('found an image', text)
+            // console.log('found an image', text)
             return '<img class="ui centered image" style="margin-top: 20px" src="images/' + text + '">'
         } else if (text.startsWith('<')) { //custom HTML
             return text;
-        }
-        else { //text 
-            console.log('convert to: ', converter.makeHtml(text));
+        } else { //text 
+            // console.log('Markdown converter: ', converter.makeHtml(text));
+             // return converter.makeHtml(text) 
             return '<div class="item" style="margin-left: 175px"><h3>' + converter.makeHtml(text) + '</h3></div>';
         }
+    },
+    visibility(currentSlide) {
+        return slideIsVisible(currentSlide) ? 'visible' : 'hidden';
+    },
+    stepVisible(currentSlide) {
+        return slideIsVisible(currentSlide) ? 'step' : '';
     }
 });
+
+function slideIsVisible(currentSlide) {
+    // var allSlides = Session.get('selectedDataSet'); //all slides
+    //     var result = allSlides.find(function(slide) {
+    //         var test = getLevel1and2Names(slide) === getLevel1and2Names(currentSlide)
+    //         return test;    
+    //     });
+    //     return result;
+    return true;
+}
+
+function getLevel1and2Names(slide) {
+    return slide[0].qText + '-' + slide[1].qText;
+}
 
 function checkTextIsImage(text) {
     return (text.match(/\.(jpeg|jpg|gif|png)$/) != null);
@@ -95,62 +115,25 @@ var getLocalValuesOfLevel = function(parentText) {
 
 
 Template.ppt_integration.onRendered(function() {
-    getTableWithEnigma();
+    getLevel1to3('integrationTopics');
+    getLevel1to3('selectedDataSet');
     getLevel1And2();
-    appChangeListener()
+    appChangeListener();
 })
 
 Template.ppt_integration.onRendered(function() {
-
-    // // Tracker.autorun(function() {
-    // //     if (Session.get('integrationTopics')) {
-    // //         Tracker.afterFlush(function() {
-    // Meteor.defer(function() { // code to execute after Session update
-    //     try {
-    //         impress().init();
-    //     } catch (err) {
-    //         console.error(err)
-    //     }
-    // });
-    // //     });
-    // // }
-    // // })
-
-
-
-
     Meteor.setTimeout(function() {
-        impress().init();
-
-        $('.ui.embed')
+        console.log('iterate over Code element');
+        $('code').each(function(i, obj) {
+            // console.log('convert Code element', obj);
+            autoindent(obj);
+        });
+    $('pre').addClass('prettyprint');
+     impress().init();
+         $('.ui.embed')
             .embed();
-    }, 1000);
-
-    // Tracker.autorun(function() {
-    //     var topics = Session.get('integrationTopics');
-    //     if (topics) {
-    //         console.log('impress initialized, topics');
-    //         Meteor.setTimeout(function() { impress().init(); }, 0);
-    //     } else {
-    //         console.log('wait to init impress, topics not yet loaded');
-    //     }
-    // })
-
-    // setCurrentSlideEventHelper();
-    // impressInitialized = Session.get('impressInitialized');
-    // if (!impressInitialized) {
-    //     console.log('impress was NOT yet initialized');
-    //     api = impress();
-    //     api.init();
-    //     Session.set('impressInitialized', true);
-    // } else {
-    //     console.log('impress was ALREADY initialized');
-    //     // location.reload();
-    // }
-
-    Template.instance()
-        .$('.ui.embed')
-        .embed();
+       
+    }, 5000);
 })
 
 var appChangeListener = function appChangeListener() {
@@ -168,10 +151,9 @@ var appChangeListener = function appChangeListener() {
                 })
                 .then(qix => {
                     qix.app.on('changed', () => {
-                        console.log('Instance was changed');
+                        console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
+                        // getLevel1to3('selectedDataSet');
                         location.reload();
-                        // getTableWithEnigma();
-                        // getLevel1And2();
                     });
                 })
         })
@@ -224,9 +206,7 @@ function getValuesOfLevel(level2Text) {
 
 }
 
-
-function getTableWithEnigma() {
-
+function getLevel1to3(sessionName) {
     $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
         .then(qixschema => {
 
@@ -258,17 +238,14 @@ function getTableWithEnigma() {
                             model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
                                 // console.log('Result set from Qlik Sense:', data);
                                 var table = data[0].qMatrix;
-                                // console.log('Data set contained in QMatrix', table);
-                                Session.set('integrationTopics', table);
-                                Tracker.flush();
+                                console.log('New data received, now stored in in session var ', sessionName);
+                                Session.set(sessionName, table);
                             })
                         })
 
                 })
 
         })
-
-
 }
 
 function getLevel1And2() {
@@ -319,6 +296,42 @@ function getLevel1And2() {
 
 
 }
+
+/**
+ * Auto-indent overflowing lines
+ * @author Rob W http://stackoverflow.com/u/938089
+ * @param code_elem HTMLCodeElement (or any element containing *plain text*)
+ */
+function autoindent(code_elem) {
+    // Grab the lines
+    var textContent = document.textContent === null ? 'textContent' : 'innerText';
+    var lines = code_elem[textContent].split(/\r?\n/),
+        fragment = document.createDocumentFragment(),
+        dummy, space_width, i, prefix_len, line_elem;
+
+    // Calculate the width of white space
+    // Assume that inline element inherit styles from parent (<code>)
+    dummy = document.createElement('span');
+    code_elem.appendChild(dummy);
+    // offsetWidth includes padding and border, explicitly override the style:
+    dummy.style.cssText = 'border:0;padding:0;';
+    dummy[textContent] = '          ';
+    space_width = dummy.offsetWidth / 10;
+    // Wipe contents
+    code_elem.innerHTML = '';
+
+    for (i = 0; i < lines.length; i++) {
+        // NOTE: All preceeding white space (including tabs is included)
+        prefix_len = /^\s*/.exec(lines[i])[0].length;
+        line_elem = fragment.appendChild(document.createElement('div'));
+        line_elem.style.marginLeft = space_width * prefix_len + 'px';
+        line_elem[textContent] = lines[i].substring(prefix_len);
+    }
+    code_elem.appendChild(fragment);
+}
+
+
+//examples only
 
 function exampleAlex() {
     $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
@@ -412,6 +425,7 @@ function createCube(app) {
         })
     })
 }
+
 
 function createList(app) {
     //Define our listbox definition.
