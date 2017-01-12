@@ -40,7 +40,7 @@ Template.ppt_integration.helpers({
         }
     },
     XValue(index) {
-        return 1000 * index;
+        return 1100 * index;
     },
     formatted(text) {
         if (youtube_parser(text)) { //youtube video url
@@ -56,8 +56,10 @@ Template.ppt_integration.helpers({
             return text;
         } else { //text 
             // console.log('Markdown converter: ', converter.makeHtml(text));
-             // return converter.makeHtml(text) 
-            return '<div class="item" style="margin-left: 175px"><h3>' + converter.makeHtml(text) + '</h3></div>';
+            // return converter.makeHtml(text) 
+            var result = converter.makeHtml(text);
+            // return result;
+            return '<div class="item" style="margin-left: 160px"><h3>' + result + '</h3></div>';
         }
     },
     visibility(currentSlide) {
@@ -122,18 +124,26 @@ Template.ppt_integration.onRendered(function() {
 })
 
 Template.ppt_integration.onRendered(function() {
+    $('.ui.sidebar')
+        .sidebar('toggle');
+
     Meteor.setTimeout(function() {
-        console.log('iterate over Code element');
+        // console.log('iterate over Code element');
         $('code').each(function(i, obj) {
             // console.log('convert Code element', obj);
             autoindent(obj);
         });
-    $('pre').addClass('prettyprint');
-     impress().init();
-         $('.ui.embed')
+
+        $('pre').addClass('prettyprint');
+
+        PR.prettyPrint();
+
+        $('.ui.embed')
             .embed();
-       
-    }, 5000);
+
+        impress().init();
+
+    }, 3000);
 })
 
 var appChangeListener = function appChangeListener() {

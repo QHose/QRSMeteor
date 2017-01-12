@@ -6,34 +6,35 @@
         <div class="one wide column">
         </div>
         <div class="fourteen wide column">
-            {{> nav}} 
-            {{> modals}} 
-            {{> sAlert}} {{#if NoSenseConnection}} {{> checkConfig}} {{else}} {{> yield}} {{/if}}
+            {{> nav}} {{> modals}} {{> sAlert}} {{#if NoSenseConnection}} {{> checkConfig}} {{else}} {{> yield}} {{/if}}
         </div>
         <div class="one wide column">
         </div>
     </div>
     {{> footer}}
-    <!-- {{> yield region='footer'}} -->
+</template>
+<template name="presentationLayout">
+    
+        {{> yield}}
 </template>
 <template name="footer">
     <div id="footer" class="ui footer page one column grid">
         <div class="column">
             <div class="ui divider"></div>
-            Integration approach, demo site, documentation and videos created by Martijn Biesbroek & Raymond Neves. Review by Catherine Frye, QVF design by Patrick Tehubijuluw. Voice-over Stephen Jasionowski. <!-- This is an open source demo site (not an official Qlik product and as such not supported by Qlik). The main purpose is to give you an idea how powerful the APIs are. Another goal is to give you a starting template with the source code, instruction videos and documentation. The <a href="http://help.qlik.com/en-US/sense-developer/3.0/Content/Home-developer.htm">APIs</a> used are supported by Qlik. The source code is available on <a href="https://github.com/QHose/QRSMeteor">github</a> using the The MIT License (MIT).  -->See the terms of usage of this site <a href="{{pathFor 'legal'}}">here</a>.
+            Integration approach, demo site, documentation and videos created by Martijn Biesbroek & Raymond Neves. Review by Catherine Frye, QVF design by Patrick Tehubijuluw. Voice-over Stephen Jasionowski.
+            <!-- This is an open source demo site (not an official Qlik product and as such not supported by Qlik). The main purpose is to give you an idea how powerful the APIs are. Another goal is to give you a starting template with the source code, instruction videos and documentation. The <a href="http://help.qlik.com/en-US/sense-developer/3.0/Content/Home-developer.htm">APIs</a> used are supported by Qlik. The source code is available on <a href="https://github.com/QHose/QRSMeteor">github</a> using the The MIT License (MIT).  -->See the terms of usage of this site <a href="{{pathFor 'legal'}}">here</a>.
         </div>
     </div>
 </template>
 <template name="modals">
-{{> modalSSBI}}
-{{> modalStepByStep}}
-{{> modalSaaSautomation}}
+    {{> modalSSBI}} {{> modalStepByStep}} {{> modalSaaSautomation}}
 </template>
 <template name="modalSSBI">
     <div class="ui modal SSBI">
-    <div class="ui icon message">
-<!--             <img class="icon" src="images/securityRules.png">
- -->            <div class="content">
+        <div class="ui icon message">
+            <!--             <img class="icon" src="images/securityRules.png">
+ -->
+            <div class="content">
                 <div class="header">
                     <h4>Example layered approach to the self service functionality</h4>
                 </div>
@@ -42,7 +43,7 @@
         </div>
         <img class="ui fluid image" src="/images/SelfServiceBI.png">
         <div class="description">
-           <p></p>
+            <p></p>
         </div>
         <div class="actions">
             <!-- <div class="ui black deny button">
@@ -103,4 +104,3 @@
         </div>
     </div>
 </template>
-

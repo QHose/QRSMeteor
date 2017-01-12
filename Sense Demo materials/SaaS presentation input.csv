@@ -1,0 +1,738 @@
+﻿"Level 1","Level 2","Level 3","Level 4","Priority","Progress","Start","Due","Duration (Days)","Milestone","Resources",
+"Preparation questions","Create exercises up front?","Study saasdemo",,,,,,,,,
+"Preparation questions","Create exercises up front?","Create video kit ",,,,,,,,,
+"Preparation questions","Demo SaaS","Web","Explain and use dev-hub",,,,,,,,
+"Preparation questions","Demo SaaS","Web","IFrame",,,,,,,,
+"Preparation questions","Demo SaaS","Web","Div",,,,,,,,
+"Preparation questions","Demo SaaS","Security","QPS",,,,,,,,
+"Preparation questions","Demo SaaS","Security","Setup security rules",,,,,,,,
+"Preparation questions","Demo SaaS","Security","Get ticket",,,,,,,,
+"Preparation questions","Demo SaaS","Security","Section access",,,,,,,,
+"Preparation questions","Demo API","QRS","Get streams with postman",,,,,,,,
+"Preparation questions","Demo API","Engine ","Demo API explorer",,,,,,,,
+"Preparation questions","Trouble shooting topics","Section access issue",,,,,,,,,
+"Preparation questions","Trouble shooting topics","No proxy redirect",,,,,,,,,
+"Preparation questions","Trouble shooting topics","Host and cookie incorrect",,,,,,,,,
+"Preparation questions","Trouble shooting topics","Wrong certificate, hostname",,,,,,,,,
+"Preparation questions","Key components to get started?","Qlik Sense server",,,,,,,,,
+"Preparation questions","Key components to get started?","Web server",,,,,,,,,
+"Preparation questions","Key components to get started?","Configure Qlik Sense proxy for your needs",,,,,,,,,
+"Preparation questions","Key components to get started?","Code editor (ID)",,,,,,,,,
+"Preparation questions","Key components to get started?","HTML",,,,,,,,,
+"Preparation questions","Key components to get started?","Javascript",,,,,,,,,
+"Preparation questions","Key components to get started?","CSS",,,,,,,,,
+"Preparation questions","Key components to get started?","JSON",,,,,,,,,
+"Preparation questions","Things to do by us","Create new VM",,,,,,,,,
+"Preparation questions","Things to do by us","Create snapshot for each issue",,,,,,,,,
+"Preparation questions","Things to do by us","Create daniel JSFiddle for web integration examples",,,,,,,,,
+"Preparation questions","Things to do by us","Install postman on cloud vm","try if you can connect to port 81 on the internet",,,,,,,,
+"Workshop Introduction","1 minute SaaS demo intro video","https://youtu.be/eiI-y2OEbv0?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
+"Workshop Introduction","Create presentation using the Engine API","Engine API - load raw data mindmap example.png",,,,,,,,,
+"Workshop Introduction","Goal of the session","Introduction to SaaS technology",,,,,,,,,
+"Workshop Introduction","Goal of the session","Be able to support SaaS use cases",,,,,,,,,
+"Workshop Introduction","Goal of the session","Learn Qlik Sense SaaS problem solving",,,,,,,,,
+"Workshop Introduction","Agenda","<iframe src=""/support.html"" width=""1200px"" height=""1200"" frameBorder=""0""></iframe>",,,,,,,,,
+"Workshop Introduction","Agenda","Introduction to SaaS","Draw integrated architecture on whiteboard",,,,,,,,
+"Workshop Introduction","Agenda","Introduction to SaaS","Server",,,,,,,,
+"Workshop Introduction","Agenda","Introduction to SaaS","sense",,,,,,,,
+"Workshop Introduction","Agenda","Introduction to SaaS","user",,,,,,,,
+"Workshop Introduction","Agenda","Demonstration to all concepts using SaaSdemo","Only saas automation",,,,,,,,
+"Workshop Introduction","Agenda","SaaS demo explanation slides",,,,,,,,,
+"Workshop Introduction","Agenda","Process automation (API)",,,,,,,,,
+"Workshop Introduction","Agenda","Web integration",,,,,,,,,
+"Workshop Introduction","Agenda","Security integration",,,,,,,,,
+"Workshop Introduction","Introduction video","https://youtu.be/K-zfD_vAPso?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
+"Introduction to SaaS","History","We used to install software, but now you can also access your software online.",,,,,,,,,
+"Introduction to SaaS","History","All users go to the same site and have their *own space*",,,,,,,,,
+"Introduction to SaaS","History","qlik sense embedded example.png",,,,,,,,,
+"Introduction to SaaS","What is SaaS?","Software which is licensed on a subscription basis and is centrally hosted",,,,,,,,,
+"Introduction to SaaS","What is SaaS?","Example: Gmail.com",,,,,,,,,
+"Introduction to SaaS","What is SaaS?","All users (tenants) go to a gmail.com.",,,,,,,,,
+"Introduction to SaaS","What is SaaS?","No local software installed",,,,,,,,,
+"SaaSDemo.qlik.com","History","APIs are our secret sauce so this website is specifically designed to illustrate the unique selling points of our Qlik Sense APIs.",,,,,,,,,
+"SaaSDemo.qlik.com","History"," Our goal is to illustrate the power of Qlik Sense APIs in language that can be easily understood by non-technical business users or decision-makers via our step-by-step walk-through.",,,,,,,,,
+"SaaSDemo.qlik.com","History","useCasesOverview.png",,,,,,,,,
+"SaaSDemo.qlik.com","Goals","The collateral includes videos and a PowerPoint presentation taking the audience on a Journey highlighting key aspects of Qlik Sense, the APIs and the value of Qlik.  This journey culminates in an easy to use demonstration website which includes:",,,,,,,,,
+"SaaSDemo.qlik.com","Goals","- Multi-tenant solution for both Qlik Sense Hub and QMC.",,,,,,,,,
+"SaaSDemo.qlik.com","Goals","- Qlik Sense ""loop and reduce"" mechanism",,,,,,,,,
+"SaaSDemo.qlik.com","Goals","- API, source code",,,,,,,,,
+"SaaSDemo.qlik.com","Goals","- API, the generated REST API request and responses",,,,,,,,,
+"SaaSDemo.qlik.com","Goals","- Facilitate different levels of self service",,,,,,,,,
+"SaaSDemo.qlik.com","Goals","- Flexible security rules",,,,,,,,,
+"SaaSDemo.qlik.com","Goals","- Qlik Sense embedding",,,,,,,,,
+"SaaSDemo.qlik.com","Goals","- SaaS with Qlik Sense demonstration",,,,,,,,,
+"SaaSDemo.qlik.com","Example of a multi-tenant scenario","qlik sense embedded example.png",,,,,,,,,
+"SaaSDemo.qlik.com","Typical integration topics","integrationTopics.png",,,,,,,,,
+"SaaSDemo.qlik.com","SaaS demo architecture","saas demo architecture introduction of components.png",,,,,,,,,
+"SaaSDemo.qlik.com","Qlik Sense architecture","https://youtu.be/sv5nKDvmRPI?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
+"SaaSDemo.qlik.com","Introduction video","https://youtu.be/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
+"SaaSDemo.qlik.com","Introduction video","[SaaS with Qlik Sense  documentation](\documentation)",,,,,,,,,
+"SaaSDemo.qlik.com","OEM good practice summary","Create a template app  per business process/area",,,,,,,,,
+"SaaSDemo.qlik.com","OEM good practice summary","Template app contains the layout like sheets and charts",,,,,,,,,
+"SaaSDemo.qlik.com","OEM good practice summary","The data will be loaded in the app via a customer specific script.",,,,,,,,,
+"SaaSDemo.qlik.com","OEM good practice summary"," This script can be injected using the APIs",,,,,,,,,
+"SaaSDemo.qlik.com","The concept behind SaaS automation","concept behind intro.png",,,,,,,,,
+"SaaSDemo.qlik.com","The concept behind in more detail","deepDiveGeneration.png",,,,,,,,,
+"SaaSDemo.qlik.com","Summary of the automated activities using the APIs","jsGenerationLoop.png",,,,,,,,,
+"SaaSDemo.qlik.com","Summary of the automated activities using the APIs","Automation
+- Create stream
+- Copy app
+- Replace script and reload app
+- Publish app",,,,,,,,,
+"SaaSDemo.qlik.com","Summary of the automated activities using the APIs","Security
+- Login users via a ticket
+- The ticket contains the userId and groups from the source system
+- logout",,,,,,,,,
+"SaaSDemo.qlik.com","Summary of the automated activities using the APIs","Clean up demo environment
+- remove old streams and apps",,,,,,,,,
+"SaaSDemo.qlik.com","Summary of the automated activities using the APIs","See [API source code](/APILogs)",,,,,,,,,
+"API -  generic introduction","How to get started with browsing the internet?","You need to know with *sites* are available",,,,,,,,,
+"API -  generic introduction","An overview of HTTP","Fetching_a_page.png",,,,,,,,,
+"API -  generic introduction","introduction to the concepts","A server (a web site) needs information from Qlik Sense",,,,,,,,,
+"API -  generic introduction","introduction to the concepts","How can these servers talk with each other?",,,,,,,,,
+"API -  generic introduction","introduction to the concepts","In other words: Which APIs does it provide?",,,,,,,,,
+"API -  generic introduction","introduction to the concepts","API - server to server example.png",,,,,,,,,
+"API -  generic introduction","What is an API?","Used in computer programming",,,,,,,,,
+"API -  generic introduction","What is an API?","A set of communication methods between software applications",,,,,,,,,
+"API -  generic introduction","What is an API?","A common language (JSON) ensures they can talk with each other",,,,,,,,,
+"API -  generic introduction","What is an API?","API - basic example.png",,,,,,,,,
+"API -  generic introduction","What is an API?","API - engine explorer - request response.png",,,,,,,,,
+"API -  generic introduction","What is the power of APIs?","Create new things that are not there out of the box",,,,,,,,,
+"API -  generic introduction","What is the power of APIs?","Embed Qlik Sense in other applications",,,,,,,,,
+"API -  generic introduction","What is the power of APIs?","Create extra layers around the QMC",,,,,,,,,
+"API -  generic introduction","What is the power of APIs?","Automate manual steps or processes",,,,,,,,,
+"API -  generic introduction","What is the power of APIs?","Connect systems and share information",,,,,,,,,
+"API -  generic introduction","What is the power of APIs?","Create single sign on between systems",,,,,,,,,
+"API -  generic introduction","Basic API call example without the need to login (authentication)","API - basic example without login.png",,,,,,,,,
+"API -  generic introduction","Basic API call example with the need to login (authentication)","API - basic example.png",,,,,,,,,
+"API -  generic introduction","How to get started with a REST API?","You need to know with *endpoints* are available",,,,,,,,,
+"API -  generic introduction","Example QRS API endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Special-Purpose-Paths.htm)",,,,,,,,,
+"API -  generic introduction","Example QRS API endpoints","QRS API - special purpose endpoints.png",,,,,,,,,
+"API -  generic introduction","Introduction to REST- open a webpage","flow - open webpage.png",,,,,,,,,
+"API -  generic introduction","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,,,,,,,,
+"API -  generic introduction","Generic REST API flow","API - Generic REST api flow.png",,,,,,,,,
+"API -  generic introduction","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,,,,,,,,
+"Web","Overview","https://youtu.be/zuNvZ_UTmow",,,,,,,,,
+"Web","Introduction video to Qlik Analytics Platform (QAP)","https://youtu.be/iM_tlwGYJoM?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
+"Web","Options to embed, extend or use the data of Qlik Sense","SaaS_Extend_Reuse_Onthefly.png",,,,,,,,,
+"Web","Options to embed, extend or use the data of Qlik Sense","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,,,,,,,,
+"Web","Which Qlik Sense resources can you embed?","web-resources to embed.png",,,,,,,,,
+"Web","Which options do you have to embed the resources?","web - options to integrate content.png",,,,,,,,,
+"Web","How to get started: The Qlik Sense Dev-hub","This tool helps to create the code for you. (also see the Visual Studio plugin)",,,,,,,,,
+"Web","How to get started: The Qlik Sense Dev-hub","https://youtu.be/mn9GspU-tDI?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG",,,,,,,,,
+"Web","IFrame - App and Single integration API","Web - iframe integration.png",,,,,,,,,
+"Web","IFrame - App and Single integration API","Making a selection
+```
+http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sheetid}/state/analysis/select/{field}/{value1;value2}
+```",,,,,,,,,
+"Web","IFrame - App and Single integration API","[See Qlik help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/AppIntegrationAPI/app-integration-api.htm)",,,,,,,,,
+"Web","IFrame - App and Single integration API","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,,,,,,,,
+"Web","How to get started: Dev-hub (3M)","https://youtu.be/MyTQ7Lu0yFI?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,,,,,,,,
+"Web","How to get started: Dev-hub (15M)","https://youtu.be/mn9GspU-tDI?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG",,,,,,,,,
+"Web","Capabilities API - key component interaction","Capabilities API - DIV tag require.js flow.png",,,,,,,,,
+"Web","Demo Dev-hub IFrame","Dev-hub",,,,,,,,,
+"Web","Demo Dev-hub IFrame","SaaS demo ",,,,,,,,,
+"Web","Capabilties API ","flow - capabilities API end to end.png",,,,,,,,,
+"Web","Capabilties API ","First connect to Qlik Sense using the config
+```
+var config = {
+ host: ""saasdemo.qlik.com"",
+ prefix: ""/anon/"",
+ port: 81,
+ isSecure: false;
+}
+````",,,,,,,,,
+"Web","Capabilties API ","Get charts via require.js
+```
+require( [""js/qlik""], function ( qlik ) {
+
+ var app = qlik.openApp('6bd9b09d-15ad-4d3e-8149-dbb32ce1e1b0', config);
+
+app.getObject('SalesByCountry','Ggpaxa');
+```
+",,,,,,,,,
+"Web","Capabilties API ","[See demo on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/multipleDivs)",,,,,,,,,
+"Web","Demo Dev-hub Mashup","Dev-hub",,,,,,,,,
+"Web","Demo Dev-hub Mashup","SaaS demo ",,,,,,,,,
+"Web","Create charts on the fly","If you don't want to create charts up front, you can create them on the fly using javascript or visual web components.",,,,,,,,,
+"Web","Create charts on the fly","[Vizualizations API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/VisualizationAPI/VisualizationAPI.htm), use javascript to create charts",,,,,,,,,
+"Web","Create charts on the fly","```
+app.visualization.create('barchart',[""Case Owner Group"",""=Avg([Case Duration Time])""],
+ {""title"":""On the fly barchart""}
+```",,,,,,,,,
+"Web","Create charts on the fly","[Visuals web components](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/QlikVisual/qlik-visual.htm). Use Sense HTML Tags in a declarative manner","",,,,,,,,
+"Web","Create charts on the fly","```
+<qlik-visual appid=""Helpdesk Management.qvf""     
+type=""barchart""     cols='[""Case Owner Group"",""=Avg([Case Duration Time])""]'     
+options='{""title"":""On the fly barchart""}'></qlik-visual>
+```",,,,,,,,,
+"Web","Create charts on the fly","[Try it via JS Fiddle](https://jsfiddle.net/mindspank/fs62hwk3/3/)",,,,,,,,,
+"Web","Create charts on the fly","[See example on SaaS demo](http://saasdemo.qlik.com:8080/onTheFlybarChart)",,,,,,,,,
+"Web","Create charts on the fly","[See the Qlik Sense help examples](http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Mashups/Content/Howtos/create-visualization-on-the-fly.htm)",,,,,,,,,
+"Web","Create charts on the fly","qlik-visuals-result.png",,,,,,,,,
+"Web","Vizualisation API introduction video","https://youtu.be/_pddhxg5__o",,,,,,,,,
+"Web","Qlik Sense as high performance data warehouse","Qlik Sense will return JSON objects based on your query on the fly",,,,,,,,,
+"Web","Qlik Sense as high performance data warehouse","Data will be kept in sync via websocket events",,,,,,,,,
+"Web","Qlik Sense as high performance data warehouse","You can query Sense from your SaaS Platform, in order to
+* pass on or get selected values, 
+* get a list of values/tables, or 
+* create a write back from Sense to your website",,,,,,,,,
+"Web","Table API","API- table api - get table.png",,,,,,,,,
+"Web","Table API","```
+ require.config({
+        baseUrl: ""http://"" + qConfig.host + (qConfig.port ? "":"" + qConfig.port : """") + qConfig.prefix + ""resources""
+    });
+
+    require([""js/qlik""], function(qlik) {
+        var app = qlik.openApp(Meteor.settings.public.multipleDivAppGuid, qConfig);
+
+        table = app.createTable([""Country"", ""City""], [""Sum(SalesAmount)""], { rows: 3000 });
+
+        var listener = function() {
+           //Data is ready, now populate your HTML
+        };
+        table.OnData.bind(listener); //bind the listener
+    })
+```",,,,,,,,,
+"Security - functional design","Introduction to application level security","Authentication: Who is the user?",,,,,,,,,
+"Security - functional design","Introduction to application level security","Authorization: What can he do?",,,,,,,,,
+"Security - functional design","Introduction to application level security","securityRules.png",,,,,,,,,
+"Security - functional design","Introduction video","https://youtu.be/sdCVsMzTf64?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
+"Security - functional design","No one size fits all approach","security - no one size fits all.png",,,,,,,,,
+"Security - functional design","No one size fits all approach","So implement your design in Qlik Sense according to your business needs. ",,,,,,,,,
+"Security - functional design","Qlik Sense security as part of a governance framework","Key risks to mitigate for a typical organization
+- Unreliable reporting
+- Multiple version of the truth
+- User requirements are not met
+- Performance issues
+- Information is disclosed to unauthorized persons",,,,,,,,,
+"Security - functional design","Qlik Sense security as part of a governance framework","**Key controls**
+- Create an approved authorization design
+- Create a matching Qlik Sense security design using the 
+    security rules  and 
+    section access",,,,,,,,,
+"Security - functional design","Example Qlik Sense authorization concept design","Function and Tasks_Demo.png",,,,,,,,,
+"Security - functional design","Example Qlik Sense authorization concept design","Download the Excel [here](http://saasdemo.qlik.com/docs/QlikSense%20Authorizations%20-%20Function%20and%20Tasks_Demo.xlsx)",,,,,,,,,
+"Security - technical design","From functional to Qlik Sense authorization design","Now you have your *functional design* ready you can start creating Qlik Sense *technical authorization design*",,,,,,,,,
+"Security - technical design","From functional to Qlik Sense authorization design","Key questions to ask in order to segregate duties between users:
+- where are the users stored?
+- can you re-use exsting (AD) groups outside of Qlik?
+- or do you have to create groups/roles in Qlik Sense?",,,,,,,,,
+"Security - technical design","Typical questions to ask to get started...","- User - how does he login?
+- Which device does he use? 
+- Where is he located? Internal in domain/office - external
+- Where are the servers? And how do they authenticate?
+- Which authenticated method to use for Qlik Sense?  AD, header, SAML, ticket?
+- Where can you get the group membership from? (for authorization purposes)",,,,,,,,,
+"Security - technical design","Introduction to security using an airport","https://youtu.be/sdCVsMzTf64?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk&t=332",,,,,,,,,
+"Security - technical design","Authentication - who are the users?","Internal (domain) end users",,,,,,,,,
+"Security - technical design","Authentication - who are the users?","External users (not in domain)",,,,,,,,,
+"Security - technical design","Authentication - who are the users?","External service (API) users (not in domain)",,,,,,,,,
+"Security - technical design","Authentication - who are the users?","Sense service accounts",,,,,,,,,
+"Security - technical design","Authentication - who are the users?","Repository service account",,,,,,,,,
+"Security - technical design","Where are the user's identity stored?","Active directory",,,,,,,,,
+"Security - technical design","Where are the user's identity stored?","LDAP",,,,,,,,,
+"Security - technical design","Where are the user's identity stored?","Salesforce",,,,,,,,,
+"Security - technical design","Where are the user's identity stored?","Facebook",,,,,,,,,
+"Security - technical design","Where are the user's identity stored?","Database",,,,,,,,,
+"Security - technical design","Where are the user's identity stored?","Excel / File",,,,,,,,,
+"Security - technical design","Where are the user's identity stored?","HR system",,,,,,,,,
+"Security - technical design","Qlik Sense user directory connector (UDC)","Get user attributes from an identity store (e.g. active directory) like",,,,,,,,,
+"Security - technical design","Qlik Sense user directory connector (UDC)","Group membership",,,,,,,,,
+"Security - technical design","Qlik Sense user directory connector (UDC)","Email",,,,,,,,,
+"Security - technical design","Qlik Sense user directory connector (UDC)","These attributes can be used in Qlik Sense (security) rules.",,,,,,,,,
+"Security - technical design","Qlik Sense user directory connector (UDC)","Typical use: re-use groups from AD in your security rules.",,,,,,,,,
+"Security - technical design","Integrated Security flow (1M)","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
+"Security - technical design","High level authentication and authorization flow","security - high level authentication and authorization flow.png",,,,,,,,,
+"Security - technical design","User opens an app","flow - user opens app.png",,,,,,,,,
+"Security - technical design","Qlik Sense security flow when opening an app","SenseSecurityFlow.png",,,,,,,,,
+"Security - technical design","Integrated security flow","security flow complete.png",,,,,,,,,
+"Security - technical design","Qlik Sense security overview","securityOverview.png",,,,,,,,,
+"Security - technical design","Qlik Sense authorization in 2 steps","Setup security in 2 steps
+- Step 1 Resource Authorization (using the Security Rules in the QMC)
+- Step 2 Data filter (using section Access in the script of an app)",,,,,,,,,
+"Security - technical design","Authorization step 1: QMC security rules","security rules - step 1 allow the user to.png",,,,,,,,,
+"Security - technical design","Authorization step 2: section access overview","section access intro data reduction open app.png",,,,,,,,,
+"Security - technical design","Authorization step 2: section access","security - authorization step 2 section access.png",,,,,,,,,
+"Security - technical design","Authorization step 2: section access data reduction example","section access - data reduction examples.png",,,,,,,,,
+"Security - technical design","Row level security using groups in section access","sectionAccess groups.png",,,,,,,,,
+"Security - technical design","Audit the effectiveness using the audit tool","security rules audit.png",,,,,,,,,
+"Security - technical design","Qlik Sense security overview","securityOverview.png",,,,,,,,,
+"SaaS demo security","Summary overview","OEMscenarioSecurity.png",,,,,,,,,
+"SaaS demo security","Summary overview","[SaaS demo documentation and videos](http://saasdemo.qlik.com/introductionSecurity)",,,,,,,,,
+"SaaS demo security","SaaS demo security setup","Qlik Sense configuration
+- A stream per customer
+- Ticket contains userId and group
+- Security rules secure streams, apps, sheets and other resources like buttons.
+- Section access for row/column level security
+
+- group from ticket is re-used in both security rules and section access",,,,,,,,,
+"SaaS demo security","SaaS Security Deep Dive","https://youtu.be/0E9i5Pf2Hjg",,,,,,,,,
+"SaaS demo security","Integrated security flow: authentication and authorization","integratedArchitecture.png",,,,,,,,,
+"SaaS demo security","Extended example Self Service process","ssbi task overview.png",,,,,,,,,
+"SaaS demo security","Qlik Sense security overview","securityOverview.png",,,,,,,,,
+"SaaS demo security","Introduction to self service: a consumer","SSBI consumer.png",,,,,,,,,
+"SaaS demo security","Security rule Consumer","Authorize stream only, give access to all apps inside",,,,,,,,,
+"SaaS demo security","Security rule Consumer","Use the group of the ticket in the rule",,,,,,,,,
+"SaaS demo security","Security rule Consumer","Stream
+```
+((resource.name=user.environment.group or (resource.name=""Everyone"") )) 
+```",,,,,,,,,
+"SaaS demo security","Security rule Consumer","App_*, App.Object_*
+```
+(resource.stream.HasPrivilege(""read"")) or (resource.resourcetype = ""App.Object"" and resource.published =""true"" and resource.app.HasPrivilege(""read""))
+```
+",,,,,,,,,
+"SaaS demo security","Security rule Consumer","[SaaS demo security rules](http://saasdemo.qlik.com/securityRules)",,,,,,,,,
+"SaaS demo security","Introduction to self service: a contributor","SSBI contributor.png",,,,,,,,,
+"SaaS demo security","Security rule contributor","A user with group contributor is allowed to create sheets in existing apps, but no app creation",,,,,,,,,
+"SaaS demo security","Security rule contributor","```
+ user.environment.group=""Contributor"" and resource.published =""false"" and resource.app.HasPrivilege(""read"")
+```",,,,,,,,,
+"SaaS demo security","Introduction to self service: a developer","ssbi developer.png",,,,,,,,,
+"SaaS demo security","Security rule developer","A user with group developer is allowed to create apps, sheets and load data. And the owner of a resource should be able to do Update and Delete actions if the resource is not published to a stream",,,,,,,,,
+"SaaS demo security","Security rule developer","```
+ user.environment.group = ""Developer"" and ((resource.owner = user and resource.stream.Empty()) or (resource.app.HasPrivilege(""read"") and resource.published =""false"" ))
+```",,,,,,,,,
+"SaaS demo security","Introduction to self service: a customer specific admin","ssbi customer admin.png",,,,,,,,,
+"SaaS demo security","Security rule: customer specific admin","Administrators are only allowed to maintain the apps and app.object in the QMC",,,,,,,,,
+"SaaS demo security","Security rule: customer specific admin","```
+((user.environment.group=""Admin"")) and ( resource.HasPrivilege(""read"") or resource.app.HasPrivilege(""read"") )
+```",,,,,,,,,
+"SaaS demo security","Sheet promotion example","The sheet below demonstrates the division between own work and community",,,,,,,,,
+"SaaS demo security","Sheet promotion example","communitySheets.png",,,,,,,,,
+"API","Qlik Sense embedded - API integrated architecture use cases","Let's look at a common scenario
+- Qlik Sense charts/data are embedded into a website.",,,,,,,,,
+"API","Qlik Sense embedded - API integrated architecture use cases","Authentication: How can you ensure that the user will be automatically logged in?",,,,,,,,,
+"API","Qlik Sense embedded - API integrated architecture use cases","Authorization: And will only see its own data?",,,,,,,,,
+"API","Qlik Sense embedded - API integrated architecture use cases","summary_integrated_architecture.png",,,,,,,,,
+"API","APIs - both the browser and servers can talk to Qlik Sense","API- both server and user can talk to Sense.png",,,,,,,,,
+"API","Client - Server: Which use cases belong where?","Front end focused
+- Automate things on behalf of an end user
+- Open app
+- Make selection
+- Get chart or data",,,,,,,,,
+"API","Client - Server: Which use cases belong where?","Server side focused
+- login user (request ticket)
+- QMC activities like delete or reload app.
+- Perform back end activities (insert configuration, licenses, security rules, apps)",,,,,,,,,
+"API","Front end focussed API overview","API- overview of what they do.png",,,,,,,,,
+"API","Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,,,,,,,,
+"API","Back end focussed API overview","Back-end_API-Overview.png",,,,,,,,,
+"API","API architecture interaction matrix","API components overview.png",,,,,,,,,
+"API","Next we demonstrate some examples","Embedding the Hub",,,,,,,,,
+"API","Next we demonstrate some examples","Creating extra functionality in Qlik Sense",,,,,,,,,
+"API","Next we demonstrate some examples","Requesting a list of apps from a SaaS platform",,,,,,,,,
+"API","Next we demonstrate some examples","Remember: always think where you are, to see which APIs you need to use",,,,,,,,,
+"API","Embed Qlik Sense in other applications","[See SaaSdemo.qlik.com for a example where we embedded the hub](http://saasdemo.qlik.com:8080/)",,,,,,,,,
+"API","Embed Qlik Sense in other applications","Saasdemo web integration hub.png",,,,,,,,,
+"API","Create extra functionality in Qlik Sense using extentions","extentionsExamples.png",,,,,,,,,
+"API","Extentions 2","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-api-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,,,,,,,,
+"API","Extentions 2","No limits, you can programatically make selections and get data out of Qlik Sense and format it as you like.",,,,,,,,,
+"API","Example of API interaction using header authentication","flow - REST get apps.png",,,,,,,,,
+"API","Example of API interaction using header authentication","postman request.png",,,,,,,,,
+"API","Example of API interaction using header authentication","postman response.png",,,,,,,,,
+"API","The location, the use case and programming language matters","All activities inside an app
+- Capabilities API
+- Engine API",,,,,,,,,
+"API","The location, the use case and programming language matters","All activities that you would normally do in the QMC:
+- QRS API",,,,,,,,,
+"API","The location, the use case and programming language matters","Based on javascript, REST or websockets.",,,,,,,,,
+"API","The location, the use case and programming language matters","[See all APIs here](https://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm)",,,,,,,,,
+"API","Building Windows applications","Use the
+-  [.NET SDK](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/NetSDKAPI/Content/QvNetClient_Reference/Net-Sdk-Reference-Redirect.htm) and 
+- [visual studio plugin](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Plugins/Content/Introduction/Plugin-Intro.htm) to integrate Qlik Sense in your own Windows .NET applications.",,,,,,,,,
+"API","Building Windows applications","When you have installed the plugin you will be able to:
+- Connect to Qlik Sense servers.
+- See all your apps, with related sheets and objects.
+- See a preview of the object.
+- See the properties of the server and charts.
+- Drag-and-drop objects (in different modes) directly into your code.",,,,,,,,,
+"API","Example options to get charts/data in your SaaS platform","API - options - web page wants sum of sales per country.png",,,,,,,,,
+"API","How to connect to the Javascript, Engine or QRS API?","API flow browser to capabilities engine qrs api.png",,,,,,,,,
+"API","QRS API","What can you do with the QRS API?
+- Basically everything you can do in the Qlik Sense Management Console (QMC)
+- copy/delete apps and streams
+- reload apps
+- get and update system rules",,,,,,,,,
+"API","QRS API","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,,,,,,,,
+"API","How to create the source code?","[Visual studio plugin](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Plugins/Content/Introduction/Plugin-Intro.htm)",,,,,,,,,
+"API","How to create the source code?","[Development hub](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Dev-Hub/Content/Overview/dev-hub-launch-dev-hub.htm)",,,,,,,,,
+"API","Certificate authentication requirements","All services in the Qlik Sense deployment authenticate their communication using an SSL certificate. ",,,,,,,,,
+"API","Certificate authentication requirements","The same certificate can also be used to authenticate with the Qlik Sense Repository Service (QRS) and Proxy (QPS) API. When authenticating using this method, the communication is made directly against the QRS/QPS.",,,,,,,,,
+"API","Certificate authentication requirements","If APIs are to be accessed from a remote server, client certificates need to be exported from the Qlik Management Console (QMC) and installed on the calling server.",,,,,,,,,
+"API","Certificate authentication requirements","All requests must carry administrator level permissions",,,,,,,,,
+"API","Proxy - Cross origin issues","Proxy - settings.png",,,,,,,,,
+"API","Proxy - Cross origin issues","CORS error.png",,,,,,,,,
+"API","Javascript or CSS won't load","Try to open the link in your browser and see the result",,,,,,,,,
+"API","Javascript or CSS won't load","Do you see the source code? (ok)",,,,,,,,,
+"QRS API","Introduction to REST APIs","Most Qlik Sense APIs are delivered as a REpresentational State Transfer (REST) web service that contains a number of endpoints (also referred to as paths) that are used to execute various functions.",,,,,,,,,
+"QRS API","Introduction to REST APIs","To communicate with these endpoints, HTTP calls that contain GET, POST, PUT, or DELETE requests are made.",,,,,,,,,
+"QRS API","Introduction to REST- open a web page","flow - open webpage.png",,,,,,,,,
+"QRS API","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,,,,,,,,
+"QRS API","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,,,,,,,,
+"QRS API","Authenticating requests","The calls must be authenticated with a user with the required permission.",,,,,,,,,
+"QRS API","Authenticating requests","Make sure you understand which user make the request
+- Client side?
+- Server side?",,,,,,,,,
+"QRS API","Authenticating requests","Make sure you implement a flow if the user is not yet authenticated",,,,,,,,,
+"QRS API","Authenticating requests","[See help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Connect-API-Authenticate-Reqs.htm)",,,,,,,,,
+"QRS API","Authenticating with the server certificate","To authenticate using this method:
+- The location where the authentication request originates must have a copy of the client SSL certificate.
+- If you plan to access the APIs from a remote server, you must export client certificates from the Qlik Management Console (QMC) and install them on the calling server.",,,,,,,,,
+"QRS API","Authenticating with the server certificate","[See exporting certificate](http://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/export-certificates.htm)",,,,,,,,,
+"QRS API","Authenticating with a Windows user account","You must send requests via the proxy server URL",,,,,,,,,
+"QRS API","Authenticating with an HTTP header","You can use a custom HTTP header to authenticate requests. This header contains the
+-  user name to be presented to the Qlik Sense Repository Service (QRS) API. 
+- In this case, you must send requests via the proxy server URL.",,,,,,,,,
+"QRS API","Authenticating with an HTTP header","PostManCopyApp.png",,,,,,,,,
+"QRS API","Authenticating with an HTTP header","header authentication.png",,,,,,,,,
+"QRS API","Example API request with header authentication","Request from client",,,,,,,,,
+"QRS API","Example API request with header authentication","postman request.png",,,,,,,,,
+"QRS API","Example API request with header authentication","Response from Qlik Sense",,,,,,,,,
+"QRS API","Example API request with header authentication","postman response.png",,,,,,,,,
+"QRS API","Using Xrfkey headers","A common vulnerability in web clients is cross-site request forgery, which lets an attacker impersonate a user when accessing a system. To protect against this vulnerability, calls to the Qlik Sense Repository Service (QRS) API must include the following:",,,,,,,,,
+"QRS API","Using Xrfkey headers","To protect you have to use a header and parameter:
+- Xrfkey parameter: Must equal 16 arbitrary characters. 
+- x-Qlik-Xrfkey: Custom HTTP header. The format is as follows:",,,,,,,,,
+"QRS API","Using Xrfkey headers","```
+const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey, {
+            headers: authHeaders                       
+        })
+```",,,,,,,,,
+"QRS API","Using Xrfkey headers","```
+ export const authHeaders = {
+        'hdr-usr': _senseConfig.headerValue,
+        'X-Qlik-xrfkey': _senseConfig.xrfkey
+    }
+```",,,,,,,,,
+"QRS API","Example header API call","Example API call that returns all server node configurations in the repository database:",,,,,,,,,
+"QRS API","Example header API call","```
+https://localhost:4242/qrs/servernodeconfiguration/full?Xrfkey= abcdefghijklmnop HTTP/1.1
+Accept-Encoding: gzip,deflate
+X-Qlik-User: UserDirectory=INTERNAL; UserId=sa_repository
+Accept-Charset: utf-8; q=0.9, us-ascii;q=0.1, iso-8859-1
+Accept: text/xml; q=0.1, application/json; q=0.2
+X-Qlik-Xrfkey: abcdefghijklmnop
+Host: localhost:4242
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
+```",,,,,,,,,
+"QRS API","Methods and IDs","QRS API - methods and IDs.png",,,,,,,,,
+"QRS API","Which end points are available?","*Basically you can do all the things you normally do in the QMC*",,,,,,,,,
+"QRS API","How do you create a REST URL? General purpose endpoints","When communicating directly with the QRS API, the URL is as follows:",,,,,,,,,
+"QRS API","How do you create a REST URL? General purpose endpoints","```
+https://<QRS machine name>:4242/<path>
+```",,,,,,,,,
+"QRS API","How do you create a REST URL? General purpose endpoints","To call a path, replace <path> with a proper path, such as:",,,,,,,,,
+"QRS API","How do you create a REST URL? General purpose endpoints","```
+/qrs/[type]/count?filter={filter}
+```",,,,,,,,,
+"QRS API","How do you create a REST URL? General purpose endpoints","In the path, replace [type] with a proper entity type:",,,,,,,,,
+"QRS API","How do you create a REST URL? General purpose endpoints","```
+/qrs/user/count?filter={filter}
+```",,,,,,,,,
+"QRS API","How do you create a REST URL? General purpose endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-General-Purpose-Paths.htm)",,,,,,,,,
+"QRS API","How do you create a REST URL? General purpose endpoints","Optionally, filter the returned entities:",,,,,,,,,
+"QRS API","How do you create a REST URL? General purpose endpoints","```
+/qrs/user/count?filter=Name eq 'Joe Smith'
+```",,,,,,,,,
+"QRS API","Special purpose endpoints","QRS API - special purpose endpoints.png",,,,,,,,,
+"QRS API","Special purpose endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Special-Purpose-Paths.htm)",,,,,,,,,
+"QRS API","App: Make copy","Request",,,,,,,,,
+"QRS API","App: Make copy","```
+/qrs/app/{id}/copy?name={name}
+```",,,,,,,,,
+"QRS API","App: Make copy","Return value",,,,,,,,,
+"QRS API","App: Make copy","```
+App:
+{
+   ""customProperties"": null,
+   ""owner"":    {
+      ""userId"": """",
+      ""userDirectory"": """",
+      ""name"": """",
+      ""id"": ""00000000-0000-0000-0000-000000000000""
+   },
+   ""name"": """",
+   ""appId"": """",
+   ""publishTime"": ""0001-01-01T00:00:00.000Z"",
+   ""published"": boolean,
+   ""tags"": [   {
+      ""name"": """",
+      ""id"": ""00000000-0000-0000-0000-000000000000""
+   }],
+   ""stream"": {
+     ""name"": """",
+      ""id"": ""00000000-0000-0000-0000-000000000000""
+   }],
+   ""fileSize"": """",
+   ""privileges"": null,
+  ""id"": ""00000000-0000-0000-0000-000000000000""
+}
+```",,,,,,,,,
+"QRS API","Example start a task","QRS - start task.png",,,,,,,,,
+"QRS API","Exercises","Next we are going to use Postman (Chrome app) to connect to the
+- QRS API using
+- Header authentication",,,,,,,,,
+"Proxy (QPS) API","When do you need it?","API - logout user.png",,,,,,,,,
+"Proxy (QPS) API","When do you need it?","Login/logout users",,,,,,,,,
+"Proxy (QPS) API","When do you need it?","Create Single Sign On",,,,,,,,,
+"Proxy (QPS) API","When do you need it?","Pass authorizations (group memberships) from external system to Qlik Sense",,,,,,,,,
+"Proxy (QPS) API","When do you need it?","Other cases
+- session sharing
+- load balancing",,,,,,,,,
+"Proxy (QPS) API","Connecting to the QPS API","[See Qlik help for the QPS REST API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Introduction.htm)",,,,,,,,,
+"Proxy (QPS) API","Connecting to the QPS API","The request must be authenticated",,,,,,,,,
+"Proxy (QPS) API","Connecting to the QPS API","An Xrfkey must be passed to prevent cross-site scripting attacks",,,,,,,,,
+"Proxy (QPS) API","Connecting to the QPS API","Example call
+```
+https://<QPS machine name>:4243/qps/{virtual proxy/}user
+```",,,,,,,,,
+"Proxy (QPS) API","Connecting to the QPS API","Note they swichted the virtual proxy location compared to other APIs!",,,,,,,,,
+"Proxy (QPS) API","Example Header authentication setup","header authentication.png",,,,,,,,,
+"Proxy (QPS) API","Example API request with header authentication","Request from client",,,,,,,,,
+"Proxy (QPS) API","Example API request with header authentication","postman request.png",,,,,,,,,
+"Proxy (QPS) API","Example API request with header authentication","Response from Qlik Sense",,,,,,,,,
+"Proxy (QPS) API","Example API request with header authentication","postman response.png",,,,,,,,,
+"Proxy (QPS) API","Using certificate - Example code to logout a user from server side of SaaS platform","API - logout user.png",,,,,,,,,
+"Proxy (QPS) API","Using certificate - Example code to logout a user from server side of SaaS platform","```
+call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
+```",,,,,,,,,
+"Proxy (QPS) API","Using certificate - Example code to logout a user from server side of SaaS platform","```
+call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
+```",,,,,,,,,
+"Proxy (QPS) API","Ticketing intro video","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
+"Proxy (QPS) API","Ticketing deep dive intro video","https://youtu.be/0E9i5Pf2Hjg?t=761",,,,,,,,,
+"Proxy (QPS) API","Ticketing - create ticket (passport)","Create a javascript object with the user information (like a passport)",,,,,,,,,
+"Proxy (QPS) API","Ticketing - create ticket (passport)","```
+var passport = {
+            'UserDirectory': Meteor.userId(), 
+            'UserId': user.name, //the current user that we are going to login with
+            'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
+                { 'group': user.country.toUpperCase() },
+                { 'group': user.group.toUpperCase() }
+            ]
+        }
+```",,,,,,,,,
+"Proxy (QPS) API","Ticketing - create ticket (passport)","[See the source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L49)",,,,,,,,,
+"Proxy (QPS) API","Ticketing - request ticket","Supply the passport when you request an access ticket for Qlik Sense",,,,,,,,,
+"Proxy (QPS) API","Ticketing - request ticket","```
+call.request = proxyRestUri + 'ticket';         
+call.response = HTTP.call('POST', call.request, {
+            'npmRequestOptions': certicate_communication_options,
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey },
+            data: passport //the user and group info for which we want to create a ticket
+        });
+```",,,,,,,,,
+"Proxy (QPS) API","Ticketing - request ticket","Authenticate your call via certificates
+```
+ export var certicate_communication_options = {
+        rejectUnauthorized: false,
+        hostname: _senseConfig.SenseServerInternalLanIP,
+        headers: {
+            'x-qlik-xrfkey': _senseConfig.xrfkey,
+            'X-Qlik-User': ""UserDirectory=PRESALES1;UserId=Qlik"",
+            'Content-Type': 'application/json'
+        },
+        key: _certs.key,
+        cert: _certs.cert
+    };
+```",,,,,,,,,
+"Proxy (QPS) API","Ticketing - request ticket","[See the source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L165)",,,,,,,,,
+"Proxy (QPS) API","Ticketing - create redirect URL for the user","```
+redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
+```",,,,,,,,,
+"Proxy (QPS) API","Header authentication requirements","Create virtual proxy for header authentication",,,,,,,,,
+"Proxy (QPS) API","Header authentication requirements","QMC - proxy - header authentication setup.png",,,,,,,,,
+"Proxy (QPS) API","Server side - SSO with QlikAuth","Use Rikard Braathens [QlikAuth module](https://github.com/braathen/qlik-auth)",,,,,,,,,
+"Proxy (QPS) API","Server side - SSO with QlikAuth","Example Node.js code",,,,,,,,,
+"Proxy (QPS) API","Server side - SSO with QlikAuth","```
+//Define user directory, user identity and attributes
+      var profile = {
+        'UserDirectory': 'QLIK', 
+        'UserId': 'rikard',
+        'Attributes': [{'Group': 'ExampleGroup'}]
+      }
+
+      //Make call for ticket request
+      qlikauth.requestTicket(req, res, profile);
+```",,,,,,,,,
+"Engine API","Engine API","What can you do with the Engine API?
+- Basically everything you can do when you open an app in the hub.
+- Get list of streams and apps
+- Open an app
+- Get the layout (sheets and charts)
+- Insert script
+- Reload the app
+- Copy an app",,,,,,,,,
+"Engine API","Which end points are available?","Use the engine API explorer of the dev-hub",,,,,,,,,
+"Engine API","Which end points are available?","Engine API - example screenshot.png",,,,,,,,,
+"Engine API","Introduction video: Engine API explorer","This tool lets you see 
+- which functionality is available
+- what are the requests and responses",,,,,,,,,
+"Engine API","Introduction video: Engine API explorer","https://youtu.be/LqcFDe7V-CU?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,,,,,,,,
+"Engine API","Demo Dev-hub Engine API explorer","Dev-hub",,,,,,,,,
+"Engine API","Demo Dev-hub Engine API explorer","SaaS demo ",,,,,,,,,
+"Engine API","Enigma component architecture","web - enigma integration.png",,,,,,,,,
+"Engine API","Engine API flow","API - Engine - get table data.png",,,,,,,,,
+"Engine API","Example get list of apps","Client sends to Engine API
+```
+{
+ ""handle"": -1,
+ ""method"": ""GetDocList"",
+ ""params"": {},
+ ""outKey"": -1,
+ ""jsonrpc"": ""2.0"",
+ ""id"": 3
+}
+```",,,,,,,,,
+"Engine API","Example get list of apps","Server responds
+``` 
+{
+ ""jsonrpc"": ""2.0"",
+ ""id"": 3,
+ ""result"": {
+  ""qDocList"": [
+   {
+    ""qDocName"": ""Cloudy Petrol - My first template"",
+    ""qConnectedUsers"": 0,
+    ""qFileTime"": 0,
+    ""qFileSize"": 0,
+    ""qDocId"": ""435bbe2a-3d78-425e-9e2c-c48cae8f60f3"",
+    ""qMeta"": {
+     ""modifiedDate"": ""2016-10-11T17:27:03.820Z"",
+     ""published"": false,
+     ""publishTime"": ""1753-01-01T00:00:00.000Z"",
+```",,,,,,,,,
+"Engine API","Example get table (hypercube)","In this example we will get a ""table"" of data out of Qlik Sense using the Engine API",,,,,,,,,
+"Engine API","Example get table (hypercube)","The Engine API is a websocket based protocol (JSON RPC)",,,,,,,,,
+"Engine API","Example get table (hypercube)","Because our website is written in Javanscript. We use a javascript library Enigma.js to ""talk to the Qlik Sense Eninge API",,,,,,,,,
+"Engine API","Example get table (hypercube)","[see example code](https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs)",,,,,,,,,
+"Engine API","Process flow of communication between components","flow - enigma.png",,,,,,,,,
+"Engine API","Get schema","```
+$.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
+        .then(qixschema => {
+```",,,,,,,,,
+"Engine API","Connect to engine","```
+$.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
+        .then(qixschema => {
+            enigma.getService('qix', {
+                    schema: qixschema,
+                    appId: appId,
+                    session: { 
+                        host: senseConfig.host,
+                        prefix: senseConfig.virtualProxyClientUsage,
+                        port: senseConfig.port,
+                        unsecure: true
+                    }
+                })
+```",,,,,,,,,
+"Engine API","createSessionObject","```
+qix.app.createSessionObject({
+                            qInfo: { qType: 'cube' },
+                            qHyperCubeDef: {
+                                qDimensions: [{
+                                    qDef: { qFieldDefs: ['Level 3'] }
+                                }],
+                                qMeasures: [{
+                                    qDef: {
+                                        // qLabel: 'Number of Beers',
+                                        qDef: ""=Count({<[Level 2]={'"" + level2Text + ""'}>}1)""
+                                    }
+                                }]
+                            }
+                        })
+```",,,,,,,,,
+"Engine API","Create a event listener to keep in sync with Qlik Sense","```
+var appChangeListener = function appChangeListener() {
+    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
+        .then(qixschema => {
+            enigma.getService('qix', {
+                    schema: qixschema,
+                    appId: appId,
+                    session: {
+                        host: senseConfig.host,
+                        prefix: senseConfig.virtualProxyClientUsage,
+                        port: senseConfig.port,
+                        unsecure: true
+                    }
+                })
+                .then(qix => {
+                    qix.app.on('changed', () => {
+                        console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
+                    });
+                })
+        })
+}
+```",,,,,,,,,
+"Engine API","Create a event listener to keep in sync with Qlik Sense","[More Enigma Examples](/https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs)",,,,,,,,,
+"Engine API","Engine API examples/tips","Connect to Engine API with [Enigma.js](https://github.com/qlik-oss/enigma.js/tree/master/examples)",,,,,,,,,
+"Engine API","Engine API examples/tips","[Examples](https://github.com/qlik-oss/enigma.js/tree/master/examples)",,,,,,,,,
+"Engine API","Engine API examples/tips","[QSocks examples](https://github.com/mindspank/qsocks/tree/master/examples)",,,,,,,,,
+"Engine API","Engine API examples/tips","[Engine API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/introducing-engine-API.htm)",,,,,,,,,
+"Engine API","Engine API examples/tips","PS: the function names are camelCase in enigma.js",,,,,,,,,
+"Architecture","Integration architecture introduction video","https://youtu.be/sv5nKDvmRPI",,,,,,,,,
+"Architecture","Integration architecture overview","SaaSarchitecture.png",,,,,,,,,
+"Architecture","Assess application architecture","End user",,,,,,,,,
+"Architecture","Assess application architecture","Servers",,,,,,,,,
+"Architecture","Assess application architecture","Databases",,,,,,,,,
+"Architecture","Assess application architecture","Firewalls",,,,,,,,,
+"Architecture","Assess application architecture","Ports",,,,,,,,,
+"Architecture","How to draw application architecture",,,,,,,,,,
+"Architecture","Topics","Infrastructure",,,,,,,,,
+"Architecture","Topics","Application architecture",,,,,,,,,
+"Architecture","Infrastructure","Hardware",,,,,,,,,
+"Architecture","Infrastructure","Location setup",,,,,,,,,
+"Architecture","Application architecture","Qlik in-memory approach",,,,,,,,,
+"Architecture","Application architecture","App components (QVF)",,,,,,,,,
+"Architecture","Application architecture","Associative engine",,,,,,,,,
+"Architecture","Application architecture","QVD",,,,,,,,,
+"Architecture","Application architecture","Compression",,,,,,,,,
+"Architecture","Application architecture","Datasources to connect",,,,,,,,,
+"Architecture","Application architecture","Development lifecycle",,,,,,,,,
+"Architecture","Development lifecycle","Development",,,,,,,,,
+"Architecture","Development lifecycle","Test",,,,,,,,,
+"Architecture","Development lifecycle","Production",,,,,,,,,
+"Architecture","Infrastructure design ","1 node",,,,,,,,,
+"Architecture","Infrastructure design ","Multi node",,,,,,,,,
+"Architecture","Infrastructure design ","High availability",,,,,,,,,
+"Architecture","Infrastructure design ","Disaster recovery",,,,,,,,,
+"Architecture","Infrastructure design ","Scalability",,,,,,,,,
+"App","What is an app?","[go to the demo](http://saasdemo.qlik.com/selfService)",,,,,,,,,
+"App","What is an app?","laptop.png",,,,,,,,,
+"App","Introduction video","https://youtu.be/XL1Ph-RAxAE",,,,,,,,,
+"App","Contents of an app","contents of an app.png",,,,,,,,,
+"App","Data integration overview","dataIntegrationIntro.png",,,,,,,,,
+"App","In the hub apps are grouped per stream","web-resources to embed.png",,,,,,,,,
+"Data","Connectors","[Connectors on Qlik help](https://help.qlik.com/en-US/connectors/Content/QlikSense.htm)",,,,,,,,,
+"Data","Connectors","[Connector videos](https://help.qlik.com/en-US/connectors/Content/Videos/Videos.htm)",,,,,,,,,
+"Data","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,,,,,,,,
+"Data","Incremental load script","You can also combine your actuals with historic data from a QVD.",,,,,,,,,
+"Data","Incremental load script","```
+LET LastExecTime = date(ReloadTime(),'YYYY-MM-DD hh:mm:ss');
+LET BeginningThisExecTime= date(now(),'YYYY-MM-DD hh:mm:ss');
+
+QV_Table:
+SQL SELECT PrimaryKey, X, Y FROM DB_TABLE
+WHERE ModificationTime >= #$(LastExecTime)#
+   AND ModificationTime < #$(BeginningThisExecTime)#;
+
+Concatenate
+LOAD PrimaryKey, X, Y FROM File.QVD;
+
+STORE QV_Table INTO File.QVD;
+```",,,,,,,,,
+"Data","Compression",,,,,,,,,,
+"Data","Script","ETL functionality.png",,,,,,,,,
+"Data","REST connectors","https://www.youtube.com/watch?v=FqwNU_pnFt4&list=PLkRFvjyuHFvIVnReipVR0QfUcQ4X2shXw",,,,,,,,,
+"Other","New to Qlik Sense","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)",,,,,,,,,
+"Other","Licensing","qlik sense tokens license.png",,,,,,,,,
+"Other","QAP","Delighting developers","web - QAP delighting developers.png",,,,,,,,
+"Other","QAP","Lifecycle","web - qap lifecycle.png",,,,,,,,
+"Other","QAP","Key advantages","* 100% web based
+* Responsive and smart
+* 1 app for  mobile, desktop and web integration
+* No fat clients",,,,,,,,
+"Other","QAP","Key advantages","web - QAP delighting developers.png",,,,,,,,

@@ -55,7 +55,7 @@ Router.route('/impress', {
 
 Router.route('/integration', {
     template: 'ppt_integrationMain',
-    // layoutTemplate: 'SSOLayout'
+    layoutTemplate: 'presentationLayout'
 });
 Router.route('/integrationTopicsCircular', {
     template: 'integrationTopicsCircular',
