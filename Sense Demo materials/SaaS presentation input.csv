@@ -66,7 +66,7 @@
 "SaaSDemo.qlik.com","SaaS demo architecture introduction","saas demo architecture introduction of components.png",,,,,,,,,
 "SaaSDemo.qlik.com","Qlik Sense architecture","https://youtu.be/sv5nKDvmRPI?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
 "SaaSDemo.qlik.com","SaaS demo architecture introduction 2","integrated Architecture saasdemo setup.png",,,,,,,,,
-"SaaSDemo.qlik.com","Saas demo architecture deep dive","v",,,,,,,,,
+"SaaSDemo.qlik.com","Saas demo architecture deep dive","integratedArchitecture.png",,,,,,,,,
 "SaaSDemo.qlik.com","Introduction video","https://youtu.be/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
 "SaaSDemo.qlik.com","Introduction video","[SaaS with Qlik Sense  documentation](\documentation)",,,,,,,,,
 "SaaSDemo.qlik.com","OEM good practice summary","Create a template app  per business process/area",,,,,,,,,
@@ -88,8 +88,6 @@
 "SaaSDemo.qlik.com","Summary of the automated activities using the APIs","Clean up demo environment
 - remove old streams and apps",,,,,,,,,
 "SaaSDemo.qlik.com","Summary of the automated activities using the APIs","See [API source code](/APILogs)",,,,,,,,,
-"API -  generic introduction","How to get started with browsing the internet?","You need to know with *sites* are available",,,,,,,,,
-"API -  generic introduction","An overview of HTTP","Fetching_a_page.png",,,,,,,,,
 "API -  generic introduction","introduction to the concepts","A server (a web site) needs information from Qlik Sense",,,,,,,,,
 "API -  generic introduction","introduction to the concepts","How can these servers talk with each other?",,,,,,,,,
 "API -  generic introduction","introduction to the concepts","In other words: Which APIs does it provide?",,,,,,,,,
@@ -105,26 +103,51 @@
 "API -  generic introduction","What is the power of APIs?","Automate manual steps or processes",,,,,,,,,
 "API -  generic introduction","What is the power of APIs?","Connect systems and share information",,,,,,,,,
 "API -  generic introduction","What is the power of APIs?","Create single sign on between systems",,,,,,,,,
-"API -  generic introduction","Basic API call example without the need to login (authentication)","API - basic example without login.png",,,,,,,,,
-"API -  generic introduction","Basic API call example with the need to login (authentication)","API - basic example.png",,,,,,,,,
+"API -  generic introduction","Question -  How do you browse the internet today?","You need to know with *sites* are available right?",,,,,,,,,
 "API -  generic introduction","How to get started with a REST API?","You need to know with *endpoints* are available",,,,,,,,,
 "API -  generic introduction","Example QRS API endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Special-Purpose-Paths.htm)",,,,,,,,,
 "API -  generic introduction","Example QRS API endpoints","QRS API - special purpose endpoints.png",,,,,,,,,
+"API -  generic introduction","Introduction to requests and responses - you want to read a book","Suppose you want to read The Hobbit. You might do something like this:
+- Look up the address of your local library
+- Walk to the library
+- Find the right shelf
+- Pick up The Hobbit",,,,,,,,,
+"API -  generic introduction","Introduction to requests and responses - you want to read a book","[source](http://www.gondolin.org.uk/hdiw/web/fetching)",,,,,,,,,
+"API -  generic introduction","Introduction to requests and responses - you want to read a webpage","Now, suppose you want to read a web page, maybe this one:
+``` http://www.gondolin.org.uk/hdiw/web.html.
+```
+
+- Look up the address of the server, www.gondolin.org.uk 
+- Connect to the server
+- Look in the appropriate directory (/hdiw)
+- Copy the page to a file to your computer (web.html).",,,,,,,,,
+"API -  generic introduction","Introduction to requests and responses - you want to read a webpage","[source](http://www.gondolin.org.uk/hdiw/web/fetching)",,,,,,,,,
+"API -  generic introduction","An overview of HTTP - many things happen if you open a page","Fetching_a_page.png",,,,,,,,,
+"API -  generic introduction","Basic API call example without the need to login (authentication)","API - basic example without login.png",,,,,,,,,
+"API -  generic introduction","Basic API call example with the need to login (authentication)","API - basic example.png",,,,,,,,,
 "API -  generic introduction","Introduction to REST- open a webpage","flow - open webpage.png",,,,,,,,,
 "API -  generic introduction","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,,,,,,,,
+"API -  generic introduction","Example API request with header authentication","Request from client",,,,,,,,,
+"API -  generic introduction","Example API request with header authentication","postman request.png",,,,,,,,,
+"API -  generic introduction","Example API request with header authentication","Response from Qlik Sense",,,,,,,,,
+"API -  generic introduction","Example API request with header authentication","postman response.png",,,,,,,,,
 "API -  generic introduction","Generic REST API flow","API - Generic REST api flow.png",,,,,,,,,
 "API -  generic introduction","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,,,,,,,,
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","async - user orders pizza.png",,,,,,,,,
 "API -  generic introduction","Async programming - What are the sequental steps when a computer orders a pizza?","async - computer orders pizza.png",,,,,,,,,
+"API -  generic introduction","ASync compared","async - user orders pizza.png",,,,,,,,,
+"API -  generic introduction","ASync compared","async - computer orders pizza.png",,,,,,,,,
+"API -  generic introduction","Async example using the vizualization API ","Config object to tell Qlik API where to connect.",,,,,,,,,
 "API -  generic introduction","Async example using the vizualization API ","```
-// Config object to tell Qlik API where to connect.
 var config = {
   host: 'saasdemo.qlik.com',
   isSecure: false,
   prefix: '/anon/',
   port: 81
 };
-
+```",,,,,,,,,
+"API -  generic introduction","Async example using the vizualization API ","Create the chart on the fly",,,,,,,,,
+"API -  generic introduction","Async example using the vizualization API ","```
 // Configure require config
 require.config( {
  baseUrl: ( config.isSecure ? ""https://"" : ""http://"" ) + config.host + (config.port ? "":"" + config.port: """") + config.prefix + ""resources""
@@ -139,8 +162,6 @@ app.visualization.create('barchart',[""Country"",""=count(Customer)""],
 ).then(function(vis){
  vis.show(""placeholder"");
  });
-
-
 });
 ```",,,,,,,,,
 "API -  generic introduction","Async example using the vizualization API ","[see the fiddle](http://jsfiddle.net/dlumkeman/oa6d9qgy)",,,,,,,,,
@@ -334,6 +355,9 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 ```",,,,,,,,,
 "SaaS demo security","Sheet promotion example","The sheet below demonstrates the division between own work and community",,,,,,,,,
 "SaaS demo security","Sheet promotion example","communitySheets.png",,,,,,,,,
+"SaaS demo security","Example: Give access to 1 app","App is not published",,,,,,,,,
+"SaaS demo security","Example: Give access to 1 app","Security rules - give access to 1 unpublished app.png",,,,,,,,,
+"SaaS demo security","Example: Give access to 1 app","app - unpublished - no stream.png",,,,,,,,,
 "API","Qlik Sense embedded - API integrated architecture use cases","Let's look at a common scenario
 - Qlik Sense charts/data are embedded into a website.",,,,,,,,,
 "API","Qlik Sense embedded - API integrated architecture use cases","Authentication: How can you ensure that the user will be automatically logged in?",,,,,,,,,
