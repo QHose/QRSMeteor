@@ -63,8 +63,10 @@
 "SaaSDemo.qlik.com","Goals","- SaaS with Qlik Sense demonstration",,,,,,,,,
 "SaaSDemo.qlik.com","Example of a multi-tenant scenario","qlik sense embedded example.png",,,,,,,,,
 "SaaSDemo.qlik.com","Typical integration topics","integrationTopics.png",,,,,,,,,
-"SaaSDemo.qlik.com","SaaS demo architecture","saas demo architecture introduction of components.png",,,,,,,,,
+"SaaSDemo.qlik.com","SaaS demo architecture introduction","saas demo architecture introduction of components.png",,,,,,,,,
 "SaaSDemo.qlik.com","Qlik Sense architecture","https://youtu.be/sv5nKDvmRPI?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","integrated Architecture saasdemo setup.png",,,,,,,,,
+"SaaSDemo.qlik.com","Saas demo architecture deep dive","v",,,,,,,,,
 "SaaSDemo.qlik.com","Introduction video","https://youtu.be/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
 "SaaSDemo.qlik.com","Introduction video","[SaaS with Qlik Sense  documentation](\documentation)",,,,,,,,,
 "SaaSDemo.qlik.com","OEM good practice summary","Create a template app  per business process/area",,,,,,,,,
@@ -112,6 +114,36 @@
 "API -  generic introduction","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,,,,,,,,
 "API -  generic introduction","Generic REST API flow","API - Generic REST api flow.png",,,,,,,,,
 "API -  generic introduction","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,,,,,,,,
+"API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","async - user orders pizza.png",,,,,,,,,
+"API -  generic introduction","Async programming - What are the sequental steps when a computer orders a pizza?","async - computer orders pizza.png",,,,,,,,,
+"API -  generic introduction","Async example using the vizualization API ","```
+// Config object to tell Qlik API where to connect.
+var config = {
+  host: 'saasdemo.qlik.com',
+  isSecure: false,
+  prefix: '/anon/',
+  port: 81
+};
+
+// Configure require config
+require.config( {
+ baseUrl: ( config.isSecure ? ""https://"" : ""http://"" ) + config.host + (config.port ? "":"" + config.port: """") + config.prefix + ""resources""
+} );
+
+require(['js/qlik'], function(qlik) {
+
+  var app = qlik.openApp('6bd9b09d-15ad-4d3e-8149-dbb32ce1e1b0', config);
+ 
+app.visualization.create('barchart',[""Country"",""=count(Customer)""],
+ {""title"":""On the fly barchart""}
+).then(function(vis){
+ vis.show(""placeholder"");
+ });
+
+
+});
+```",,,,,,,,,
+"API -  generic introduction","Async example using the vizualization API ","[see the fiddle](http://jsfiddle.net/dlumkeman/oa6d9qgy)",,,,,,,,,
 "Web","Overview","https://youtu.be/zuNvZ_UTmow",,,,,,,,,
 "Web","Introduction video to Qlik Analytics Platform (QAP)","https://youtu.be/iM_tlwGYJoM?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
 "Web","Options to embed, extend or use the data of Qlik Sense","SaaS_Extend_Reuse_Onthefly.png",,,,,,,,,
@@ -244,6 +276,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Security - technical design","Qlik Sense user directory connector (UDC)","Typical use: re-use groups from AD in your security rules.",,,,,,,,,
 "Security - technical design","Integrated Security flow (1M)","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
 "Security - technical design","High level authentication and authorization flow","security - high level authentication and authorization flow.png",,,,,,,,,
+"Security - technical design","Introduction to ticketing for dummies","flow - ticketing authentication for dummies.png",,,,,,,,,
 "Security - technical design","User opens an app","flow - user opens app.png",,,,,,,,,
 "Security - technical design","Qlik Sense security flow when opening an app","SenseSecurityFlow.png",,,,,,,,,
 "Security - technical design","Integrated security flow","security flow complete.png",,,,,,,,,
@@ -362,8 +395,15 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "API","Certificate authentication requirements","The same certificate can also be used to authenticate with the Qlik Sense Repository Service (QRS) and Proxy (QPS) API. When authenticating using this method, the communication is made directly against the QRS/QPS.",,,,,,,,,
 "API","Certificate authentication requirements","If APIs are to be accessed from a remote server, client certificates need to be exported from the Qlik Management Console (QMC) and installed on the calling server.",,,,,,,,,
 "API","Certificate authentication requirements","All requests must carry administrator level permissions",,,,,,,,,
+"API","Subtopic","Make a simple architecture diagram",,,,,,,,,
+"API","Subtopic","Always start to make the solution as simple as possible",,,,,,,,,
+"API","Subtopic","Try to open the app directly (hub)",,,,,,,,,
+"API","Subtopic","Press F12- console to see if you have errors ",,,,,,,,,
+"API","Subtopic","Try to close your browser an  re-open",,,,,,,,,
+"API","Subtopic","Press F5 / Refresh page",,,,,,,,,
 "API","Proxy - Cross origin issues","Proxy - settings.png",,,,,,,,,
 "API","Proxy - Cross origin issues","CORS error.png",,,,,,,,,
+"API","Proxy - Cross origin issues","error - XMLhttprequest cannot load - access control allow origin header not present.png",,,,,,,,,
 "API","Javascript or CSS won't load","Try to open the link in your browser and see the result",,,,,,,,,
 "API","Javascript or CSS won't load","Do you see the source code? (ok)",,,,,,,,,
 "QRS API","Introduction to REST APIs","Most Qlik Sense APIs are delivered as a REpresentational State Transfer (REST) web service that contains a number of endpoints (also referred to as paths) that are used to execute various functions.",,,,,,,,,
@@ -474,7 +514,30 @@ App:
 "QRS API","Example start a task","QRS - start task.png",,,,,,,,,
 "QRS API","Exercises","Next we are going to use Postman (Chrome app) to connect to the
 - QRS API using
+- Windows authentication
 - Header authentication",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Here we will load QRS API data in a QVF",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","We will load the data via a REST Connector ",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","So in this case a REST endpoint can be compared to loading from a database",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Create a new Qlik Sense application.",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Click 'Add data', and choose the Rest connector:",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","In the 'Create a connection - Rest' dialogue, choose",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Use Windows authentication = Yes (see below for more)",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","URL > the name of the Rest endpoint.  See API Paths for a full listing of possible paths. E.g. /QRS/USER/FULL)",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Query parameters xrfkey = - ABCDEFG123456789 (value can be different as long as it matches x-Qlik-xrfkey)",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Query headers
+- x-Qlik-xrfkey = ABCDEFG123456789
+- User-Agent = Windows
+- Name = <name of the data connection>",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","[source Marcus](https://confluence.qliktech.com/pages/viewpage.action?spaceKey=~msi&title=Query+the+Qlik+Sense+Repository+API+with+the+Qlik+REST+Connector)",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Data - REST API load data from QRS.png",,,,,,,,,
+"QRS API","QVF - REST connector: Extra information about authentication options","#The Qlik REST Connector offers several authentication choices:",,,,,,,,,
+"QRS API","QVF - REST connector: Extra information about authentication options","Windows authentication = true >> Windows Integrated Security (NTLM).",,,,,,,,,
+"QRS API","QVF - REST connector: Extra information about authentication options","Windows authentication = false and User Name / Password >> Forms / Basic auth",,,,,,,,,
+"QRS API","QVF - REST connector: Extra information about authentication options","Windows authentication = false and populate Query headers with user id >> HTTP Header Authentication",,,,,,,,,
+"QRS API","QVF - REST connector: Extra information about authentication options","Windows authentication  = false and Use Certificate = Installed or From File >> Authenticate via SSL Certs.  Note that with this method, you must connect directly to the Repository (port 4242) instead of through the Proxy (443 or 80)",,,,,,,,,
+"QRS API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,,,,,,,,
+"QRS API","Exercise 2: Get apps via Postman with header authentication","header authentication.png",,,,,,,,,
 "Proxy (QPS) API","When do you need it?","API - logout user.png",,,,,,,,,
 "Proxy (QPS) API","When do you need it?","Login/logout users",,,,,,,,,
 "Proxy (QPS) API","When do you need it?","Create Single Sign On",,,,,,,,,
