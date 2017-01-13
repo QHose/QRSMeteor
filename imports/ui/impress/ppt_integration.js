@@ -6,17 +6,27 @@ _ = lodash;
 var showdown = require('showdown');
 var converter = new showdown.Converter();
 const enigma = require('enigma');
-var appId = 'f094b3f0-529f-4c4d-9a60-a1305c8c19b0';
+var appId = Meteor.settings.public.IntegrationPresenatationApp;
 
 Template.ppt_integrationMain.helpers({
     mainTopics() {
         // console.log('ppt main, mainTopics is:',Session.get('mainTopics').length);
         return Session.get('mainTopics');
+    },
+    appURL(){
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage+'/single/?appid='+appId+'&obj=RZuJ&opt=currsel' ;
     }
 })
 
 Template.ppt_integrationMain.onRendered(function() {
     getLevel1And2();
+})
+
+Template.ppt_integrationMain.events({
+    'click .launch': function(event) {
+         $('.ui.sidebar')
+        .sidebar('toggle');
+    }
 })
 
 Template.ppt_integration.helpers({
@@ -124,9 +134,7 @@ Template.ppt_integration.onRendered(function() {
 })
 
 Template.ppt_integration.onRendered(function() {
-    $('.ui.sidebar')
-        .sidebar('toggle');
-
+   
     Meteor.setTimeout(function() {
         // console.log('iterate over Code element');
         $('code').each(function(i, obj) {

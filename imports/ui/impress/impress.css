@@ -15,7 +15,7 @@ section {
     backface-visibility: hidden;
 }
 
- a {
+ /*a {
     outline: none;
     color: #404d5b;
     text-decoration: none;
@@ -29,7 +29,7 @@ section {
  a::after {
     pointer-events: none;
     backface-visibility: hidden;
-}
+}*/
 
 
 

@@ -129,6 +129,10 @@ if (Meteor.isClient) {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/qmc';
     });
 
+     Template.registerHelper('senseServer', function() {
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage ;
+    });
+
     Template.registerHelper('webIntegrationDemo', function() {
         return 'http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort;
     });
