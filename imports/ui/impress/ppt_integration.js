@@ -14,7 +14,8 @@ Template.ppt_integrationMain.helpers({
         return Session.get('mainTopics');
     },
     appURL(){
-        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage+'/single/?appid='+appId+'&obj=RZuJ&opt=currsel' ;
+        //removed the meteor virtual proxy
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/single/?appid='+appId+'&obj=RZuJ&opt=currsel' ;
     }
 })
 
