@@ -2,40 +2,41 @@
     "adminEmails": "mbj@qlik.com",
     "public": {
         "host": "PRESALES1",
-        "port": 81, 
-        "UDC": "OEM_HOST", 
-        "virtualProxyClientUsage": "meteor",                       
-        "webIntegrationHost": "localhost",
+        "port": 81,
+        "UDC": "OEM_HOST",
+        "virtualProxyClientUsage": "meteor",
+        "webIntegrationHost": "nlsch-mbj3",
         "webIntegrationDemoPort": 3030,
-        "facebook":{
-            "clientId": "dfdf"         
-        },
-        "templateAppId": "5658d4a5-0102-4b74-9c5d-1b01c2430c8f"                        
+        "SSBIAppSheetString": "40ef70c9-be76-4844-ac6a-d53195146c85/sheet/puEpZK/state/analysis",
+        "SSBIApp": "40ef70c9-be76-4844-ac6a-d53195146c85",
+        "facebook": {
+            "clientId": "dfdf"
+        }
     },
     "private": {
         "host": "PRESALES1",
-        "port": 81, 
-        "certificatesDirectory": "C:\\Repository\\Exported Certificates\\.Local Certificates",
+        "port": 81,
+        "certificatesDirectory": "C:\\Users\\mbj\\Documents\\GitHub\\QRSMeteor",
         "notificationURL": "http://nlsch-mbj3:3000/updateSenseInfo",
-        "SenseServerInternalLanIP": "PRESALES1",        
+        "SenseServerInternalLanIP": "PRESALES1",
         "useSSL": false,
         "passphrase": null,
         "authentication": "header",
         "virtualProxy": "hdr",
         "headerKey": "hdr-usr",
-        "UDC": "OEM_HOST",        
-        "headerValue": "PRESALES1\\meteor",        
+        "UDC": "OEM_HOST",
+        "headerValue": "PRESALES1\\meteor",
         "isSecure": true,
         "engineHeaders": "UserDirectory=PRESALES1;UserId=Qlik",
         "enginePort": 4747,
         "proxyPort": 4243,
-        "google":{
-            "clientId": "df-df.apps.googleusercontent.com",
-            "secret": "YCP43OPc_-df-o-hbu1"
-        },
-        "facebook":{
-            "clientId": "df",
+        "google": {
+            "clientId": "-.apps.googleusercontent.com",
             "secret": "df"
+        },
+        "facebook": {
+            "clientId": "1754933311453043",
+            "secret": "d”
         }
     }
 }
