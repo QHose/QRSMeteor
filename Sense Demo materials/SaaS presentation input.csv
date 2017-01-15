@@ -31,7 +31,6 @@
 "Workshop Introduction","Goal of the session","Introduction to SaaS technology",,,,,,,,,
 "Workshop Introduction","Goal of the session","Be able to support SaaS use cases",,,,,,,,,
 "Workshop Introduction","Goal of the session","Learn Qlik Sense SaaS problem solving",,,,,,,,,
-"Workshop Introduction","Agenda","<iframe src=""/support.html"" width=""1200px"" height=""1200"" frameBorder=""0""></iframe>",,,,,,,,,
 "Workshop Introduction","Agenda","Introduction to SaaS","Draw integrated architecture on whiteboard",,,,,,,,
 "Workshop Introduction","Agenda","Introduction to SaaS","Server",,,,,,,,
 "Workshop Introduction","Agenda","Introduction to SaaS","sense",,,,,,,,
@@ -134,6 +133,8 @@
 "API -  generic introduction","Generic REST API flow","API - Generic REST api flow.png",,,,,,,,,
 "API -  generic introduction","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,,,,,,,,
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","async - user orders pizza.png",,,,,,,,,
+"API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","beeper.jpg",,,,,,,,,
+"API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","[source](https://sc01.alicdn.com/kf/HTB11B8LHVXXXXbEXpXXq6xXFXXXs/221385864/HTB11B8LHVXXXXbEXpXXq6xXFXXXs.jpg)",,,,,,,,,
 "API -  generic introduction","Async programming - What are the sequental steps when a computer orders a pizza?","async - computer orders pizza.png",,,,,,,,,
 "API -  generic introduction","ASync compared","async - user orders pizza.png",,,,,,,,,
 "API -  generic introduction","ASync compared","async - computer orders pizza.png",,,,,,,,,
@@ -148,7 +149,6 @@ var config = {
 ```",,,,,,,,,
 "API -  generic introduction","Async example using the vizualization API ","Create the chart on the fly",,,,,,,,,
 "API -  generic introduction","Async example using the vizualization API ","```
-// Configure require config
 require.config( {
  baseUrl: ( config.isSecure ? ""https://"" : ""http://"" ) + config.host + (config.port ? "":"" + config.port: """") + config.prefix + ""resources""
 } );
@@ -165,26 +165,33 @@ app.visualization.create('barchart',[""Country"",""=count(Customer)""],
 });
 ```",,,,,,,,,
 "API -  generic introduction","Async example using the vizualization API ","[see the fiddle](http://jsfiddle.net/dlumkeman/oa6d9qgy)",,,,,,,,,
+"Web","APIs - Qlik sense api overview",,,,,,,,,,
 "Web","Overview","https://youtu.be/zuNvZ_UTmow",,,,,,,,,
 "Web","Introduction video to Qlik Analytics Platform (QAP)","https://youtu.be/iM_tlwGYJoM?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
 "Web","Options to embed, extend or use the data of Qlik Sense","SaaS_Extend_Reuse_Onthefly.png",,,,,,,,,
 "Web","Options to embed, extend or use the data of Qlik Sense","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,,,,,,,,
 "Web","Which Qlik Sense resources can you embed?","web-resources to embed.png",,,,,,,,,
 "Web","Which options do you have to embed the resources?","web - options to integrate content.png",,,,,,,,,
-"Web","How to get started: The Qlik Sense Dev-hub","This tool helps to create the code for you. (also see the Visual Studio plugin)",,,,,,,,,
 "Web","How to get started: The Qlik Sense Dev-hub","https://youtu.be/mn9GspU-tDI?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG",,,,,,,,,
+"Web","How to get started: The Qlik Sense Dev-hub","This tool helps to create the source code for you. (also see the Visual Studio plugin)",,,,,,,,,
+"Web","IFrame - App and Single integration API","https://youtu.be/LSxV7ysLlGs?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,,,,,,,,
 "Web","IFrame - App and Single integration API","Web - iframe integration.png",,,,,,,,,
-"Web","IFrame - App and Single integration API","Making a selection
+"Web","IFrame - App and Single integration API","Example IFrame URL
 ```
 http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sheetid}/state/analysis/select/{field}/{value1;value2}
 ```",,,,,,,,,
 "Web","IFrame - App and Single integration API","[See Qlik help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/AppIntegrationAPI/app-integration-api.htm)",,,,,,,,,
 "Web","IFrame - App and Single integration API","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,,,,,,,,
+"Web","Demo Dev-hub IFrame","Dev-hub",,,,,,,,,
+"Web","Demo Dev-hub IFrame","SaaS demo ",,,,,,,,,
+"Web","Exercise IFrame","How can you see the source URL of the IFrame?",,,,,,,,,
+"Web","Exercise IFrame","Which proxy does it use?",,,,,,,,,
+"Web","Exercise IFrame","If we want to use windows authentication, what should we change?",,,,,,,,,
+"Web","Exercise IFrame","How can we clear the selections if the IFrame loads?",,,,,,,,,
+"Web","Exercise IFrame","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,,,,,,,,
 "Web","How to get started: Dev-hub (3M)","https://youtu.be/MyTQ7Lu0yFI?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,,,,,,,,
 "Web","How to get started: Dev-hub (15M)","https://youtu.be/mn9GspU-tDI?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG",,,,,,,,,
 "Web","Capabilities API - key component interaction","Capabilities API - DIV tag require.js flow.png",,,,,,,,,
-"Web","Demo Dev-hub IFrame","Dev-hub",,,,,,,,,
-"Web","Demo Dev-hub IFrame","SaaS demo ",,,,,,,,,
 "Web","Capabilties API ","flow - capabilities API end to end.png",,,,,,,,,
 "Web","Capabilties API ","First connect to Qlik Sense using the config
 ```
@@ -247,6 +254,8 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
         table.OnData.bind(listener); //bind the listener
     })
 ```",,,,,,,,,
+"Web","Widgets","https://youtu.be/KJ9r-tMJ9OM?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,,,,,,,,
+"Web","Extentions","https://youtu.be/QAeQKSVlhis",,,,,,,,,
 "Security - functional design","Introduction to application level security","Authentication: Who is the user?",,,,,,,,,
 "Security - functional design","Introduction to application level security","Authorization: What can he do?",,,,,,,,,
 "Security - functional design","Introduction to application level security","securityRules.png",,,,,,,,,
@@ -562,13 +571,18 @@ App:
 "QRS API","QVF - REST connector: Extra information about authentication options","Windows authentication  = false and Use Certificate = Installed or From File >> Authenticate via SSL Certs.  Note that with this method, you must connect directly to the Repository (port 4242) instead of through the Proxy (443 or 80)",,,,,,,,,
 "QRS API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,,,,,,,,
 "QRS API","Exercise 2: Get apps via Postman with header authentication","header authentication.png",,,,,,,,,
-"Proxy (QPS) API","When do you need it?","API - logout user.png",,,,,,,,,
+"Proxy (QPS) API","APIs - Qlik sense api overview",,,,,,,,,,
+"Proxy (QPS) API","APIs - Qlik sense api overview",,,,,,,,,,
 "Proxy (QPS) API","When do you need it?","Login/logout users",,,,,,,,,
 "Proxy (QPS) API","When do you need it?","Create Single Sign On",,,,,,,,,
 "Proxy (QPS) API","When do you need it?","Pass authorizations (group memberships) from external system to Qlik Sense",,,,,,,,,
 "Proxy (QPS) API","When do you need it?","Other cases
 - session sharing
 - load balancing",,,,,,,,,
+"Proxy (QPS) API","Example: logout a user via the QPS API","API - logout user.png",,,,,,,,,
+"Proxy (QPS) API","Options to connect","windows authentication",,,,,,,,,
+"Proxy (QPS) API","Options to connect","Header authentication",,,,,,,,,
+"Proxy (QPS) API","Options to connect","certificates",,,,,,,,,
 "Proxy (QPS) API","Connecting to the QPS API","[See Qlik help for the QPS REST API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Introduction.htm)",,,,,,,,,
 "Proxy (QPS) API","Connecting to the QPS API","The request must be authenticated",,,,,,,,,
 "Proxy (QPS) API","Connecting to the QPS API","An Xrfkey must be passed to prevent cross-site scripting attacks",,,,,,,,,
@@ -646,8 +660,10 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
       //Make call for ticket request
       qlikauth.requestTicket(req, res, profile);
 ```",,,,,,,,,
-"Engine API","Engine API","What can you do with the Engine API?
-- Basically everything you can do when you open an app in the hub.
+"Engine API","APIs - Qlik sense api overview",,,,,,,,,,
+"Engine API","Engine API","What can you do with the Engine API?",,,,,,,,,
+"Engine API","Engine API","
+Basically everything you can do when you open an app in the hub.
 - Get list of streams and apps
 - Open an app
 - Get the layout (sheets and charts)
@@ -760,6 +776,8 @@ var appChangeListener = function appChangeListener() {
 "Engine API","Engine API examples/tips","[QSocks examples](https://github.com/mindspank/qsocks/tree/master/examples)",,,,,,,,,
 "Engine API","Engine API examples/tips","[Engine API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/introducing-engine-API.htm)",,,,,,,,,
 "Engine API","Engine API examples/tips","PS: the function names are camelCase in enigma.js",,,,,,,,,
+"Engine API","Exercise 1: get a list of apps via the engine API explorer in the dev-hub","Engine API - example screenshot.png",,,,,,,,,
+"Engine API","Exercise 2: create a new folder connection to c:\temp","https://youtu.be/HmmZfPjqSMw",,,,,,,,,
 "Architecture","Integration architecture introduction video","https://youtu.be/sv5nKDvmRPI",,,,,,,,,
 "Architecture","Integration architecture overview","SaaSarchitecture.png",,,,,,,,,
 "Architecture","Assess application architecture","End user",,,,,,,,,
