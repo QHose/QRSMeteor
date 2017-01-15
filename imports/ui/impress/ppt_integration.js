@@ -13,8 +13,8 @@ Template.ppt_integrationMain.helpers({
         // console.log('ppt main, mainTopics is:',Session.get('mainTopics').length);
         return Session.get('mainTopics');
     },
-    appURL(){
-        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage+'/single/?appid='+appId+'&obj=RZuJ&opt=currsel' ;
+    appURL() {
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&obj=RZuJ&opt=currsel';
     }
 })
 
@@ -24,8 +24,8 @@ Template.ppt_integrationMain.onRendered(function() {
 
 Template.ppt_integrationMain.events({
     'click .launch': function(event) {
-         $('.ui.sidebar')
-        .sidebar('toggle');
+        $('.ui.sidebar')
+            .sidebar('toggle');
     }
 })
 
@@ -134,7 +134,7 @@ Template.ppt_integration.onRendered(function() {
 })
 
 Template.ppt_integration.onRendered(function() {
-   
+
     Meteor.setTimeout(function() {
         // console.log('iterate over Code element');
         $('code').each(function(i, obj) {
@@ -162,7 +162,7 @@ var appChangeListener = function appChangeListener() {
                     appId: appId,
                     session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
                         host: senseConfig.host,
-                        prefix: senseConfig.virtualProxyClientUsage,
+                        prefix: 'anon',
                         port: senseConfig.port,
                         unsecure: true
                     }
@@ -177,8 +177,8 @@ var appChangeListener = function appChangeListener() {
         })
 }
 
-function getValuesOfLevel(level2Text) {
-
+function getValuesOfLevel(level) {
+    console.log('getLocalValuesOfLevel: ', level);
     $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
         .then(qixschema => {
 
@@ -187,7 +187,7 @@ function getValuesOfLevel(level2Text) {
                     appId: appId,
                     session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
                         host: senseConfig.host,
-                        prefix: senseConfig.virtualProxyClientUsage,
+                        prefix: 'anon',
                         port: senseConfig.port,
                         unsecure: true
                     }
@@ -198,12 +198,12 @@ function getValuesOfLevel(level2Text) {
                             qInfo: { qType: 'cube' },
                             qHyperCubeDef: {
                                 qDimensions: [{
-                                    qDef: { qFieldDefs: ['Level 3'] }
+                                    qDef: { qFieldDefs: [level] }
                                 }],
                                 qMeasures: [{
                                     qDef: {
-                                        // qLabel: 'Number of Beers',
-                                        qDef: "=Count({<[Level 2]={'" + level2Text + "'}>}1)"
+                                        qLabel: 'Count',
+                                        qDef: "=Sum(1)"
                                     }
                                 }]
                             }
@@ -212,7 +212,7 @@ function getValuesOfLevel(level2Text) {
                             model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
                                 console.log('Result set from Qlik Sense:', data);
                                 var table = data[0].qMatrix;
-                                console.log('Level 3 data', table);
+                                console.log('Level ' + level + ' data:', table);
                                 Session.set('level3Data', table)
                             })
                         })
@@ -233,7 +233,7 @@ function getLevel1to3(sessionName) {
                     appId: appId,
                     session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
                         host: senseConfig.host,
-                        prefix: senseConfig.virtualProxyClientUsage,
+                        prefix: 'anon',
                         port: senseConfig.port,
                         unsecure: true
                     }
@@ -276,7 +276,7 @@ function getLevel1And2() {
                     appId: appId,
                     session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
                         host: senseConfig.host,
-                        prefix: senseConfig.virtualProxyClientUsage,
+                        prefix: 'anon',
                         port: senseConfig.port,
                         unsecure: true
                     }
