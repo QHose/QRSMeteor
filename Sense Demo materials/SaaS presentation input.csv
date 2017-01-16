@@ -80,7 +80,7 @@
 - SaaS platform (web) server
 - Qlik Sense server
 - an authentication method used by both",,,,,,,,,
-"API -  generic introduction","Key components to get started?","Code editor (IDE)",,,,,,,,,
+"API -  generic introduction","Key components to get started?","Using APIs means programming, so you need a code editor (IDE). Use the dev-hub to get you started.",,,,,,,,,
 "API -  generic introduction","Key components to get started?","Knownledge required
 - HTML
 - Javascript
@@ -101,8 +101,8 @@
 - Look in the appropriate directory (/hdiw)
 - Copy the page to a file to your computer (web.html).",,,,,,,,,
 "API -  generic introduction","Introduction to requests and responses - you want to read a webpage","[source](http://www.gondolin.org.uk/hdiw/web/fetching)",,,,,,,,,
-"API -  generic introduction","Question -  How do you browse the internet today?","You need to know which *sites* are available right?",,,,,,,,,
-"API -  generic introduction","How to get started with a REST API?","You need to know with *endpoints* are available",,,,,,,,,
+"API -  generic introduction","Question -  How do you browse the internet today?","<q>You need to know which *sites* are available, right?</q>",,,,,,,,,
+"API -  generic introduction","How to get started with a REST API?","<q>You need to know with *endpoints* are available</q>",,,,,,,,,
 "API -  generic introduction","Example QRS API endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Special-Purpose-Paths.htm)",,,,,,,,,
 "API -  generic introduction","Example QRS API endpoints","QRS API - special purpose endpoints.png",,,,,,,,,
 "API -  generic introduction","Basic API call example without the need to login (authentication)","API - basic example without login.png",,,,,,,,,
@@ -115,7 +115,6 @@
 "API -  generic introduction","Example API request with header authentication","postman response.png",,,,,,,,,
 "API -  generic introduction","Generic REST API flow","API - Generic REST api flow.png",,,,,,,,,
 "API -  generic introduction","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,,,,,,,,
-"API -  generic introduction","An overview of HTTP - many things happen if you open a page","Fetching_a_page.png",,,,,,,,,
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","async - user orders pizza.png",,,,,,,,,
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","beeper.jpg",,,,,,,,,
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","[source](https://sc01.alicdn.com/kf/HTB11B8LHVXXXXbEXpXXq6xXFXXXs/221385864/HTB11B8LHVXXXXbEXpXXq6xXFXXXs.jpg)",,,,,,,,,
@@ -149,22 +148,36 @@ app.visualization.create('barchart',[""Country"",""=count(Customer)""],
 });
 ```",,,,,,,,,
 "API -  generic introduction","Async example using the vizualization API ","[see the fiddle](http://jsfiddle.net/dlumkeman/oa6d9qgy)",,,,,,,,,
+"API -  generic introduction","But there are more ways to wait...","Callback functions",,,,,,,,,
+"API -  generic introduction","But there are more ways to wait...","```
+Template.ppt_integration.onRendered(function() {
+Session.set('slideLoading', true);
+})
+```",,,,,,,,,
+"API -  generic introduction","But there are more ways to wait...","Events",,,,,,,,,
+"API -  generic introduction","But there are more ways to wait...","```
+$(document).on('someEvent', function(e) {
+        var currentSlide = $(e.target).attr('id');
+        Session.set('currentSlide', currentSlide);
+    });
+```",,,,,,,,,
 "Web","Overview","https://youtu.be/zuNvZ_UTmow",,,,,,,,,
 "Web","Introduction video to Qlik Analytics Platform (QAP)","https://youtu.be/iM_tlwGYJoM?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
-"Web","Options to embed, extend or use the data of Qlik Sense","SaaS_Extend_Reuse_Onthefly.png",,,,,,,,,
-"Web","Options to embed, extend or use the data of Qlik Sense","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,,,,,,,,
+"Web","Front end focussed API overview","API- overview of what they do.png",,,,,,,,,
+"Web","Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,,,,,,,,
 "Web","Which Qlik Sense resources can you embed?","web-resources to embed.png",,,,,,,,,
 "Web","Which options do you have to embed the resources?","web - options to integrate content.png",,,,,,,,,
 "Web","How to get started: The Qlik Sense Dev-hub","https://youtu.be/mn9GspU-tDI?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG",,,,,,,,,
 "Web","How to get started: The Qlik Sense Dev-hub","This tool helps to create the source code for you. (also see the Visual Studio plugin)",,,,,,,,,
+"Web","IFrame integration","<q> IFrame integration</q>",,,,,,,,,
 "Web","IFrame - App and Single integration API","https://youtu.be/LSxV7ysLlGs?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,,,,,,,,
-"Web","IFrame - App and Single integration API","Web - iframe integration.png",,,,,,,,,
-"Web","IFrame - App and Single integration API","Example IFrame URL
+"Web","IFrame - App and Single integration API (2)","Web - iframe integration.png",,,,,,,,,
+"Web","IFrame - App and Single integration API (2)","Example IFrame URL
 ```
 http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sheetid}/state/analysis/select/{field}/{value1;value2}
 ```",,,,,,,,,
-"Web","IFrame - App and Single integration API","[See Qlik help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/AppIntegrationAPI/app-integration-api.htm)",,,,,,,,,
-"Web","IFrame - App and Single integration API","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,,,,,,,,
+"Web","IFrame - App and Single integration API (2)","[See Qlik help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/AppIntegrationAPI/app-integration-api.htm)",,,,,,,,,
+"Web","IFrame - App and Single integration API (2)","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,,,,,,,,
 "Web","Demo Dev-hub IFrame","Dev-hub",,,,,,,,,
 "Web","Demo Dev-hub IFrame","SaaS demo ",,,,,,,,,
 "Web","Exercise IFrame","How do you:
@@ -178,9 +191,11 @@ http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sh
 "Web","Exercise IFrame","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,,,,,,,,
 "Web","How to get started: Dev-hub (3M)","https://youtu.be/MyTQ7Lu0yFI?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,,,,,,,,
 "Web","How to get started: Dev-hub (15M)","https://youtu.be/mn9GspU-tDI?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG",,,,,,,,,
+"Web","An overview of HTTP - many things happen if you open a page","Fetching_a_page.png",,,,,,,,,
+"Web","Capabilities API","<q>Capabilities API</q>",,,,,,,,,
 "Web","Capabilities API - key component interaction","Capabilities API - DIV tag require.js flow.png",,,,,,,,,
-"Web","Capabilties API ","flow - capabilities API end to end.png",,,,,,,,,
-"Web","Capabilties API ","First connect to Qlik Sense using the config
+"Web","Capabilties API - example code","flow - capabilities API end to end.png",,,,,,,,,
+"Web","Capabilties API - example code","First connect to Qlik Sense using the config
 ```
 var config = {
  host: ""saasdemo.qlik.com"",
@@ -189,7 +204,7 @@ var config = {
  isSecure: false;
 }
 ````",,,,,,,,,
-"Web","Capabilties API ","Get charts via require.js
+"Web","Capabilties API - example code","Get charts via require.js
 ```
 require( [""js/qlik""], function ( qlik ) {
 
@@ -198,9 +213,10 @@ require( [""js/qlik""], function ( qlik ) {
 app.getObject('SalesByCountry','Ggpaxa');
 ```
 ",,,,,,,,,
-"Web","Capabilties API ","[See demo on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/multipleDivs)",,,,,,,,,
+"Web","Capabilties API - example code","[See demo on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/multipleDivs)",,,,,,,,,
 "Web","Demo Dev-hub Mashup","Dev-hub",,,,,,,,,
 "Web","Demo Dev-hub Mashup","SaaS demo ",,,,,,,,,
+"Web","On the fly","<q>On the fly</q>",,,,,,,,,
 "Web","Create charts on the fly","If you don't want to create charts up front, you can create them on the fly using javascript or visual web components.",,,,,,,,,
 "Web","Create charts on the fly","[Vizualizations API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/VisualizationAPI/VisualizationAPI.htm), use javascript to create charts",,,,,,,,,
 "Web","Create charts on the fly","```
@@ -218,6 +234,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web","Create charts on the fly","[See the Qlik Sense help examples](http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Mashups/Content/Howtos/create-visualization-on-the-fly.htm)",,,,,,,,,
 "Web","Create charts on the fly","qlik-visuals-result.png",,,,,,,,,
 "Web","Vizualisation API introduction video","https://youtu.be/_pddhxg5__o",,,,,,,,,
+"Web","Data only","<q>Data only</q>",,,,,,,,,
 "Web","Qlik Sense as high performance data warehouse","Qlik Sense will return JSON objects based on your query on the fly",,,,,,,,,
 "Web","Qlik Sense as high performance data warehouse","Data will be kept in sync via websocket events",,,,,,,,,
 "Web","Qlik Sense as high performance data warehouse","You can query Sense from your SaaS Platform, in order to
@@ -262,11 +279,11 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
     section access",,,,,,,,,
 "Security - functional design","Example Qlik Sense authorization concept design","Function and Tasks_Demo.png",,,,,,,,,
 "Security - functional design","Example Qlik Sense authorization concept design","Download the Excel [here](http://saasdemo.qlik.com/docs/QlikSense%20Authorizations%20-%20Function%20and%20Tasks_Demo.xlsx)",,,,,,,,,
-"Security - technical design","From functional to Qlik Sense authorization design","Now you have your *functional design* ready you can start creating Qlik Sense *technical authorization design*",,,,,,,,,
+"Security - technical design","From functional to Qlik Sense authorization design","Now you have your *functional design*  ready you can start creating your Qlik Sense *technical authorization design*",,,,,,,,,
 "Security - technical design","From functional to Qlik Sense authorization design","Key questions to ask in order to segregate duties between users:
 - where are the users stored?
 - can you re-use exsting (AD) groups outside of Qlik?
-- or do you have to create groups/roles in Qlik Sense?",,,,,,,,,
+- or do you need some option to create and assign groups/roles to users in Qlik Sense?",,,,,,,,,
 "Security - technical design","Typical questions to ask to get started...","- User - how does he login?
 - Which device does he use? 
 - Where is he located? Internal in domain/office - external
@@ -286,6 +303,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Security - technical design","Where are the user's identity stored?","Database",,,,,,,,,
 "Security - technical design","Where are the user's identity stored?","Excel / File",,,,,,,,,
 "Security - technical design","Where are the user's identity stored?","HR system",,,,,,,,,
+"Security - technical design","Recap UDC: users and groups","QPS - Qlik does not store users and passwords.png",,,,,,,,,
 "Security - technical design","Qlik Sense user directory connector (UDC)","Get user attributes from an identity store (e.g. active directory) like",,,,,,,,,
 "Security - technical design","Qlik Sense user directory connector (UDC)","Group membership",,,,,,,,,
 "Security - technical design","Qlik Sense user directory connector (UDC)","Email",,,,,,,,,
@@ -293,9 +311,9 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Security - technical design","Qlik Sense user directory connector (UDC)","Typical use: re-use groups from AD in your security rules.",,,,,,,,,
 "Security - technical design","Integrated Security flow (1M)","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
 "Security - technical design","High level authentication and authorization flow","security - high level authentication and authorization flow.png",,,,,,,,,
-"Security - technical design","Introduction to ticketing for dummies","flow - ticketing authentication for dummies.png",,,,,,,,,
 "Security - technical design","User opens an app","flow - user opens app.png",,,,,,,,,
 "Security - technical design","Qlik Sense security flow when opening an app","SenseSecurityFlow.png",,,,,,,,,
+"Security - technical design","Introduction to ticketing for dummies","flow - ticketing authentication for dummies.png",,,,,,,,,
 "Security - technical design","Integrated security flow","security flow complete.png",,,,,,,,,
 "Security - technical design","Qlik Sense security overview","securityOverview.png",,,,,,,,,
 "Security - technical design","Qlik Sense authorization in 2 steps","Setup security in 2 steps
@@ -390,7 +408,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 - Engine API",,,,,,,,,
 "API","The location, the use case and programming language matters","All activities that you would normally do in the QMC:
 - QRS API",,,,,,,,,
-"API","The location, the use case and programming language matters","Based on javascript, REST or websockets.",,,,,,,,,
+"API","The location, the use case and programming language matters","Based on javascript, REST, .NET or websockets.",,,,,,,,,
 "API","The location, the use case and programming language matters","[See all APIs here](https://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm)",,,,,,,,,
 "API","Building Windows applications","Use the
 -  [.NET SDK](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/NetSDKAPI/Content/QvNetClient_Reference/Net-Sdk-Reference-Redirect.htm) and 
@@ -572,12 +590,15 @@ App:
 "Proxy (QPS) API","Qlik Sense can get the users identity in a couple of ways","Header",,,,,,,,,
 "Proxy (QPS) API","Qlik Sense can get the users identity in a couple of ways","SAML",,,,,,,,,
 "Proxy (QPS) API","When to use which authentication method?","<q>You connect Qlik Sense to the method ""used today"" by the SaaS platform</q>",,,,,,,,,
-"Proxy (QPS) API","When to use which authentication method?","<q>With SaaS that is ticketing or SAML most of the time</q>",,,,,,,,,
+"Proxy (QPS) API","When to use which authentication method? (2)","<q>With SaaS that is ticketing or SAML most of the time</q>",,,,,,,,,
+"Proxy (QPS) API","The URL triggers a specific virtual proxy","http://presales1:81/sense/app/f094b3f0-529f-4c4d-9a60-a1305c8c19b0",,,,,,,,,
+"Proxy (QPS) API","The URL triggers a specific virtual proxy","http://presales1:81/*anon*/sense/app/f094b3f0-529f-4c4d-9a60-a1305c8c19b0",,,,,,,,,
+"Proxy (QPS) API","The URL triggers a specific virtual proxy","http://presales1:81/*ticket*/sense/app/f094b3f0-529f-4c4d-9a60-a1305c8c19b0",,,,,,,,,
 "Proxy (QPS) API","You create a virtual proxy per authentication method","QPS - virtual proxy per authentication method.png",,,,,,,,,
-"Proxy (QPS) API","When do you use the QPS API?","##If you have an external system (like a SaaS platform) and you want to:",,,,,,,,,
-"Proxy (QPS) API","When do you use the QPS API?","Login/logout users",,,,,,,,,
-"Proxy (QPS) API","When do you use the QPS API?","Create Single Sign On",,,,,,,,,
-"Proxy (QPS) API","When do you use the QPS API?","Pass authorizations (group memberships) from external system to Qlik Sense",,,,,,,,,
+"Proxy (QPS) API","When do you use the QPS API?","If you have an external system (like a SaaS platform) and you want to:
+- Login/logout users
+- Create Single Sign On
+- Pass authorizations (group memberships) from external system to Qlik Sense",,,,,,,,,
 "Proxy (QPS) API","When do you use the QPS API?","Other cases
 - session sharing
 - load balancing",,,,,,,,,
@@ -587,29 +608,32 @@ App:
 "Proxy (QPS) API","Options to connect to the QPS API (from another system, not a user)","windows authentication",,,,,,,,,
 "Proxy (QPS) API","Options to connect to the QPS API (from another system, not a user)","Header authentication",,,,,,,,,
 "Proxy (QPS) API","Options to connect to the QPS API (from another system, not a user)","Certificates",,,,,,,,,
-"Proxy (QPS) API","Connecting to the QPS API","###Make sure you check the following",,,,,,,,,
-"Proxy (QPS) API","Connecting to the QPS API","The request must be authenticated",,,,,,,,,
-"Proxy (QPS) API","Connecting to the QPS API","An Xrfkey must be passed to prevent cross-site scripting attacks",,,,,,,,,
-"Proxy (QPS) API","Connecting to the QPS API","###Example QPS REST API call
-```
+"Proxy (QPS) API","Connecting to the QPS API","##Make sure you check the following",,,,,,,,,
+"Proxy (QPS) API","Connecting to the QPS API","- The request must be authenticated",,,,,,,,,
+"Proxy (QPS) API","Connecting to the QPS API","- An Xrfkey must be passed to prevent cross-site scripting attacks",,,,,,,,,
+"Proxy (QPS) API","Connecting to the QPS API","###Example QPS REST API call",,,,,,,,,
+"Proxy (QPS) API","Connecting to the QPS API","```
 https://<QPS machine name>:4243/qps/{virtual proxy/}user
 ```",,,,,,,,,
 "Proxy (QPS) API","Connecting to the QPS API","[See Qlik help for more info about the QPS API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Introduction.htm)",,,,,,,,,
-"Proxy (QPS) API","Using certificate - Example code to logout a user from server side of SaaS platform","API - logout user.png",,,,,,,,,
-"Proxy (QPS) API","Using certificate - Example code to logout a user from server side of SaaS platform","```
+"Proxy (QPS) API","Using certificate - Example code to logout a user (server side)","API - logout user.png",,,,,,,,,
+"Proxy (QPS) API","Using certificate - Example code to logout a user (server side)","```
 call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
 ```",,,,,,,,,
-"Proxy (QPS) API","Using certificate - Example code to logout a user from server side of SaaS platform","```
+"Proxy (QPS) API","Using certificate - Example code to logout a user (server side)","```
 call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
 ```",,,,,,,,,
 "Proxy (QPS) API","Ticketing intro video","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
 "Proxy (QPS) API","Ticketing deep dive intro video","https://youtu.be/0E9i5Pf2Hjg?t=761",,,,,,,,,
-"Proxy (QPS) API","Ticketing - create ticket (passport)","Create a javascript object with the user information (like a passport)",,,,,,,,,
+"Proxy (QPS) API","Introduction to ticketing for dummies","flow - ticketing authentication for dummies.png",,,,,,,,,
+"Proxy (QPS) API","Ticketing - create ticket (passport)","Create a javascript object
+-  with the user information (like a passport). 
+-  group all users per tenant in a UDC. ",,,,,,,,,
 "Proxy (QPS) API","Ticketing - create ticket (passport)","```
 var passport = {
-            'UserDirectory': Meteor.userId(), 
-            'UserId': user.name, //the current user that we are going to login with
-            'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
+            'UserDirectory': customer, 
+            'UserId': user.name, 
+            'Attributes': [{ 'group': customer.name.toUpperCase() },
                 { 'group': user.country.toUpperCase() },
                 { 'group': user.group.toUpperCase() }
             ]
