@@ -49,6 +49,9 @@ Template.ppt_integration.helpers({
             return getLocalValuesOfLevel(parents); //using the parent, get all items that have this name as parent
         }
     },
+    loading(){
+        return  Session.get('slideLoading');
+    },
     XValue(index) {
         return 1100 * index;
     },
@@ -134,7 +137,7 @@ Template.ppt_integration.onRendered(function() {
 })
 
 Template.ppt_integration.onRendered(function() {
-
+Session.set('slideLoading', true);
     Meteor.setTimeout(function() {
         // console.log('iterate over Code element');
         $('code').each(function(i, obj) {
@@ -150,6 +153,7 @@ Template.ppt_integration.onRendered(function() {
             .embed();
 
         impress().init();
+        Session.set('slideLoading', false);
 
     }, 3000);
 })

@@ -3,7 +3,7 @@
         <i class="content icon"></i>
         <span class="text">Qlik Sense Engine API Slide generator</span>
     </div>
-    <div class="ui sidebar" style="width: 800px">
+    <div class="ui sidebar" style="width: 600px">
         <iframe src='{{appURL}}' class="frame" style="margin-top: 45px"></iframe>
     </div>
     <div class="pusher">
@@ -15,10 +15,15 @@
 <template name="ppt_integration">
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <div id="impress">
-        <div class="step slide" data-x="0"  data-z="0" data-scale="19" >
+        <div class="step slide" data-x="0" data-z="0" data-scale="19">
+        <h1 style="margin-left: 160px" class="ui header">
+                <div class="content">
+                    Agenda for the workshop
+                </div>
+            </h1>
             <img class="ui centered image" style="margin-top: 60px" src="images/support workshop agenda.png">
         </div>
-        {{#each mainTopics }}
+        {{#if mainTopics}} {{#each mainTopics }}
         <div class="z {{stepVisible this}} slide" data-x="{{XValue @index}}" data-y="-1500" data-z="-1500" style="visibility: {{visibility this}};">
             <h1 style="margin-left: 160px" class="ui header">
                 <div class="content">
@@ -31,7 +36,22 @@
                 {{#each item in itemsOfLevel 3}} {{{formatted item}}} {{/each}}
             </div>
         </div>
-        {{/each}}
+        {{/each}} {{else}}
+        <div class="ui negative message">
+            <i class="close icon"></i>
+            <div class="header">
+                We're sorry we can't create your presentation...
+            </div>
+            <ul class="list">
+                <li>Make new selection</li>
+                <li>Refresh your browser</li>
+                <li>Issue can also occur with a slow internet connection or computer.</li>
+            </ul>
+        </div>
+        {{/if}}
+    </div>
+    <div class="ui {{#if loading}} active {{/if}} dimmer">
+        <div class="ui indeterminate text loader">Connecting to Qlik Sense Engine API to get all data for the presentation.</div>
     </div>
 </template>
 <!-- {{> Template.dynamic template="dynamicSlide" data=row}}        -->
