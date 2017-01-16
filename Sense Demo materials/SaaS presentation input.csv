@@ -67,7 +67,7 @@
 "API -  generic introduction","What is an API?","Used in computer programming",,,,,,,,,
 "API -  generic introduction","What is an API?","A set of communication methods between software applications",,,,,,,,,
 "API -  generic introduction","What is an API?","A common language (JSON) ensures they can talk with each other",,,,,,,,,
-"API -  generic introduction","What is an API?","API - basic example.png",,,,,,,,,
+"API -  generic introduction","What is an API?","API - basic example without login.png",,,,,,,,,
 "API -  generic introduction","What is an API?","API - engine explorer - request response.png",,,,,,,,,
 "API -  generic introduction","What is the power of APIs?","Create new things that are not there out of the box",,,,,,,,,
 "API -  generic introduction","What is the power of APIs?","Embed Qlik Sense in other applications",,,,,,,,,
@@ -75,19 +75,17 @@
 "API -  generic introduction","What is the power of APIs?","Automate manual steps or processes",,,,,,,,,
 "API -  generic introduction","What is the power of APIs?","Connect systems and share information",,,,,,,,,
 "API -  generic introduction","What is the power of APIs?","Create single sign on between systems",,,,,,,,,
-"API -  generic introduction","Key components to get started?","Qlik Sense server",,,,,,,,,
-"API -  generic introduction","Key components to get started?","Web server",,,,,,,,,
-"API -  generic introduction","Key components to get started?","Configure Qlik Sense proxy for your needs",,,,,,,,,
+"API -  generic introduction","Lets look at some examples of ""embedding"" using Qlik Sense web integration APIs","https://youtu.be/EF2pakVYu3s",,,,,,,,,
+"API -  generic introduction","Key components to get started?","It all starts with 2 systems that want to talk or do something together
+- SaaS platform (web) server
+- Qlik Sense server
+- an authentication method used by both",,,,,,,,,
 "API -  generic introduction","Key components to get started?","Code editor (IDE)",,,,,,,,,
 "API -  generic introduction","Key components to get started?","Knownledge required
 - HTML
 - Javascript
 - CSS
 - JSON",,,,,,,,,
-"API -  generic introduction","Question -  How do you browse the internet today?","You need to know with *sites* are available right?",,,,,,,,,
-"API -  generic introduction","How to get started with a REST API?","You need to know with *endpoints* are available",,,,,,,,,
-"API -  generic introduction","Example QRS API endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Special-Purpose-Paths.htm)",,,,,,,,,
-"API -  generic introduction","Example QRS API endpoints","QRS API - special purpose endpoints.png",,,,,,,,,
 "API -  generic introduction","Introduction to requests and responses - you want to read a book","Suppose you want to read The Hobbit. You might do something like this:
 - Look up the address of your local library
 - Walk to the library
@@ -103,7 +101,10 @@
 - Look in the appropriate directory (/hdiw)
 - Copy the page to a file to your computer (web.html).",,,,,,,,,
 "API -  generic introduction","Introduction to requests and responses - you want to read a webpage","[source](http://www.gondolin.org.uk/hdiw/web/fetching)",,,,,,,,,
-"API -  generic introduction","An overview of HTTP - many things happen if you open a page","Fetching_a_page.png",,,,,,,,,
+"API -  generic introduction","Question -  How do you browse the internet today?","You need to know which *sites* are available right?",,,,,,,,,
+"API -  generic introduction","How to get started with a REST API?","You need to know with *endpoints* are available",,,,,,,,,
+"API -  generic introduction","Example QRS API endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Special-Purpose-Paths.htm)",,,,,,,,,
+"API -  generic introduction","Example QRS API endpoints","QRS API - special purpose endpoints.png",,,,,,,,,
 "API -  generic introduction","Basic API call example without the need to login (authentication)","API - basic example without login.png",,,,,,,,,
 "API -  generic introduction","Basic API call example with the need to login (authentication)","API - basic example.png",,,,,,,,,
 "API -  generic introduction","Introduction to REST- open a webpage","flow - open webpage.png",,,,,,,,,
@@ -114,6 +115,7 @@
 "API -  generic introduction","Example API request with header authentication","postman response.png",,,,,,,,,
 "API -  generic introduction","Generic REST API flow","API - Generic REST api flow.png",,,,,,,,,
 "API -  generic introduction","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,,,,,,,,
+"API -  generic introduction","An overview of HTTP - many things happen if you open a page","Fetching_a_page.png",,,,,,,,,
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","async - user orders pizza.png",,,,,,,,,
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","beeper.jpg",,,,,,,,,
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","[source](https://sc01.alicdn.com/kf/HTB11B8LHVXXXXbEXpXXq6xXFXXXs/221385864/HTB11B8LHVXXXXbEXpXXq6xXFXXXs.jpg)",,,,,,,,,
@@ -165,6 +167,10 @@ http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sh
 "Web","IFrame - App and Single integration API","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,,,,,,,,
 "Web","Demo Dev-hub IFrame","Dev-hub",,,,,,,,,
 "Web","Demo Dev-hub IFrame","SaaS demo ",,,,,,,,,
+"Web","Exercise IFrame","How do you:
+- Get the APP URL
+- Get the Sheet URL
+- Get an object ID",,,,,,,,,
 "Web","Exercise IFrame","How can you see the source URL of the IFrame?",,,,,,,,,
 "Web","Exercise IFrame","Which proxy does it use?",,,,,,,,,
 "Web","Exercise IFrame","If we want to use windows authentication, what should we change?",,,,,,,,,
@@ -395,6 +401,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 - See a preview of the object.
 - See the properties of the server and charts.
 - Drag-and-drop objects (in different modes) directly into your code.",,,,,,,,,
+"API","Introduction video Visual Studio plugin","https://youtu.be/tbH5pHDwYXg",,,,,,,,,
 "API","Example options to get charts/data in your SaaS platform","API - options - web page wants sum of sales per country.png",,,,,,,,,
 "API","How to connect to the Javascript, Engine or QRS API?","API flow browser to capabilities engine qrs api.png",,,,,,,,,
 "API","QRS API","What can you do with the QRS API?
@@ -425,6 +432,9 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "QRS API","Introduction to REST- open a web page","flow - open webpage.png",,,,,,,,,
 "QRS API","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,,,,,,,,
 "QRS API","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,,,,,,,,
+"QRS API","QRS - architecture diagram","QRS - architecture.png",,,,,,,,,
+"QRS API","QRS API Introduction video 1","https://youtu.be/-WLu_q_7Z24",,,,,,,,,
+"QRS API","QRS API Introduction video 2","https://youtu.be/sxrSyWjcsFc",,,,,,,,,
 "QRS API","Authenticating requests","The calls must be authenticated with a user with the required permission.",,,,,,,,,
 "QRS API","Authenticating requests","Make sure you understand which user make the request
 - Client side?
@@ -552,29 +562,39 @@ App:
 "QRS API","QVF - REST connector: Extra information about authentication options","Windows authentication  = false and Use Certificate = Installed or From File >> Authenticate via SSL Certs.  Note that with this method, you must connect directly to the Repository (port 4242) instead of through the Proxy (443 or 80)",,,,,,,,,
 "QRS API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,,,,,,,,
 "QRS API","Exercise 2: Get apps via Postman with header authentication","header authentication.png",,,,,,,,,
-"Proxy (QPS) API","When do you need it?","Login/logout users",,,,,,,,,
-"Proxy (QPS) API","When do you need it?","Create Single Sign On",,,,,,,,,
-"Proxy (QPS) API","When do you need it?","Pass authorizations (group memberships) from external system to Qlik Sense",,,,,,,,,
-"Proxy (QPS) API","When do you need it?","Other cases
+"Proxy (QPS) API","What is the Qlik Sense proxy?","The ""entry door"" to Qlik Sense (most of the times)",,,,,,,,,
+"Proxy (QPS) API","What is the Qlik Sense proxy?","Handles authentication: login/logout",,,,,,,,,
+"Proxy (QPS) API","What is the Qlik Sense proxy?","Creates a session for the user",,,,,,,,,
+"Proxy (QPS) API","What is the Qlik Sense proxy?","So if multiple devices or IFrames connect, they share the same context or session state (selections etc.)",,,,,,,,,
+"Proxy (QPS) API","Remember: You don't store credentials in Qlik Sense","QPS - Qlik does not store users and passwords.png",,,,,,,,,
+"Proxy (QPS) API","Qlik Sense can get the users identity in a couple of ways","Windows - Active Directory",,,,,,,,,
+"Proxy (QPS) API","Qlik Sense can get the users identity in a couple of ways","Ticket",,,,,,,,,
+"Proxy (QPS) API","Qlik Sense can get the users identity in a couple of ways","Header",,,,,,,,,
+"Proxy (QPS) API","Qlik Sense can get the users identity in a couple of ways","SAML",,,,,,,,,
+"Proxy (QPS) API","When to use which authentication method?","<q>You connect Qlik Sense to the method ""used today"" by the SaaS platform</q>",,,,,,,,,
+"Proxy (QPS) API","When to use which authentication method?","<q>With SaaS that is ticketing or SAML most of the time</q>",,,,,,,,,
+"Proxy (QPS) API","You create a virtual proxy per authentication method","QPS - virtual proxy per authentication method.png",,,,,,,,,
+"Proxy (QPS) API","When do you use the QPS API?","##If you have an external system (like a SaaS platform) and you want to:",,,,,,,,,
+"Proxy (QPS) API","When do you use the QPS API?","Login/logout users",,,,,,,,,
+"Proxy (QPS) API","When do you use the QPS API?","Create Single Sign On",,,,,,,,,
+"Proxy (QPS) API","When do you use the QPS API?","Pass authorizations (group memberships) from external system to Qlik Sense",,,,,,,,,
+"Proxy (QPS) API","When do you use the QPS API?","Other cases
 - session sharing
 - load balancing",,,,,,,,,
+"Proxy (QPS) API","Example: create a single sign on with a SaaS platform","QPS - introduction to security flow.png",,,,,,,,,
+"Proxy (QPS) API","QPS architecture diagram","QPS - architecture.png",,,,,,,,,
 "Proxy (QPS) API","Example: logout a user via the QPS API","API - logout user.png",,,,,,,,,
-"Proxy (QPS) API","Options to connect","windows authentication",,,,,,,,,
-"Proxy (QPS) API","Options to connect","Header authentication",,,,,,,,,
-"Proxy (QPS) API","Options to connect","certificates",,,,,,,,,
-"Proxy (QPS) API","Connecting to the QPS API","[See Qlik help for the QPS REST API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Introduction.htm)",,,,,,,,,
+"Proxy (QPS) API","Options to connect to the QPS API (from another system, not a user)","windows authentication",,,,,,,,,
+"Proxy (QPS) API","Options to connect to the QPS API (from another system, not a user)","Header authentication",,,,,,,,,
+"Proxy (QPS) API","Options to connect to the QPS API (from another system, not a user)","Certificates",,,,,,,,,
+"Proxy (QPS) API","Connecting to the QPS API","###Make sure you check the following",,,,,,,,,
 "Proxy (QPS) API","Connecting to the QPS API","The request must be authenticated",,,,,,,,,
 "Proxy (QPS) API","Connecting to the QPS API","An Xrfkey must be passed to prevent cross-site scripting attacks",,,,,,,,,
-"Proxy (QPS) API","Connecting to the QPS API","Example call
+"Proxy (QPS) API","Connecting to the QPS API","###Example QPS REST API call
 ```
 https://<QPS machine name>:4243/qps/{virtual proxy/}user
 ```",,,,,,,,,
-"Proxy (QPS) API","Connecting to the QPS API","Note they swichted the virtual proxy location compared to other APIs!",,,,,,,,,
-"Proxy (QPS) API","Example Header authentication setup","header authentication.png",,,,,,,,,
-"Proxy (QPS) API","Example API request with header authentication","Request from client",,,,,,,,,
-"Proxy (QPS) API","Example API request with header authentication","postman request.png",,,,,,,,,
-"Proxy (QPS) API","Example API request with header authentication","Response from Qlik Sense",,,,,,,,,
-"Proxy (QPS) API","Example API request with header authentication","postman response.png",,,,,,,,,
+"Proxy (QPS) API","Connecting to the QPS API","[See Qlik help for more info about the QPS API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Introduction.htm)",,,,,,,,,
 "Proxy (QPS) API","Using certificate - Example code to logout a user from server side of SaaS platform","API - logout user.png",,,,,,,,,
 "Proxy (QPS) API","Using certificate - Example code to logout a user from server side of SaaS platform","```
 call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
@@ -624,6 +644,12 @@ call.response = HTTP.call('POST', call.request, {
 "Proxy (QPS) API","Ticketing - create redirect URL for the user","```
 redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 ```",,,,,,,,,
+"Proxy (QPS) API","Example Header authentication setup","header authentication.png",,,,,,,,,
+"Proxy (QPS) API","Example API request with header authentication","Request from client",,,,,,,,,
+"Proxy (QPS) API","Example API request with header authentication","postman request.png",,,,,,,,,
+"Proxy (QPS) API","Example API request with header authentication","Response from Qlik Sense",,,,,,,,,
+"Proxy (QPS) API","Example API request with header authentication","postman response.png",,,,,,,,,
+"Proxy (QPS) API","Architecture scenarios","qps - reverse proxy architecture.png",,,,,,,,,
 "Proxy (QPS) API","Header authentication requirements","Create virtual proxy for header authentication",,,,,,,,,
 "Proxy (QPS) API","Header authentication requirements","QMC - proxy - header authentication setup.png",,,,,,,,,
 "Proxy (QPS) API","Server side - SSO with QlikAuth","Use Rikard Braathens [QlikAuth module](https://github.com/braathen/qlik-auth)",,,,,,,,,
@@ -639,7 +665,16 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
       //Make call for ticket request
       qlikauth.requestTicket(req, res, profile);
 ```",,,,,,,,,
-"Engine API","APIs - Qlik sense api overview",,,,,,,,,,
+"Proxy (QPS) API","Example code to logout a user via QPS API call","API - logout user.png",,,,,,,,,
+"Proxy (QPS) API","Example code to logout a user via QPS API call","``` 
+call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
+```",,,,,,,,,
+"Proxy (QPS) API","Example code to logout a user via QPS API call","``` call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
+``` ",,,,,,,,,
+"Proxy (QPS) API","Proxy - Cross origin issues","Proxy - settings.png",,,,,,,,,
+"Proxy (QPS) API","Proxy - Cross origin issues","CORS error.png",,,,,,,,,
+"Proxy (QPS) API","Proxy - Cross origin issues","error - XMLhttprequest cannot load - access control allow origin header not present.png",,,,,,,,,
+"Engine API","Introduction to QIX Engine API","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,,,,,,,,
 "Engine API","Engine API","What can you do with the Engine API?",,,,,,,,,
 "Engine API","Engine API","
 Basically everything you can do when you open an app in the hub.
@@ -649,8 +684,9 @@ Basically everything you can do when you open an app in the hub.
 - Insert script
 - Reload the app
 - Copy an app",,,,,,,,,
-"Engine API","Which end points are available?","Use the engine API explorer of the dev-hub",,,,,,,,,
-"Engine API","Which end points are available?","Engine API - example screenshot.png",,,,,,,,,
+"Engine API","Engine API - architecture","Engine API - architecture.png",,,,,,,,,
+"Engine API","What can you do? Which end points are available?","Use the engine API explorer of the dev-hub",,,,,,,,,
+"Engine API","What can you do? Which end points are available?","Engine API - example screenshot.png",,,,,,,,,
 "Engine API","Introduction video: Engine API explorer","This tool lets you see 
 - which functionality is available
 - what are the requests and responses",,,,,,,,,
@@ -788,6 +824,7 @@ var appChangeListener = function appChangeListener() {
 "App","What is an app?","laptop.png",,,,,,,,,
 "App","Introduction video","https://youtu.be/XL1Ph-RAxAE",,,,,,,,,
 "App","Contents of an app","contents of an app.png",,,,,,,,,
+"App","What is governed self service?","https://youtu.be/pQae9S8S_vQ?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,,,,,,,,
 "App","Data integration overview","dataIntegrationIntro.png",,,,,,,,,
 "App","In the hub apps are grouped per stream","web-resources to embed.png",,,,,,,,,
 "Data","Connectors","[Connectors on Qlik help](https://help.qlik.com/en-US/connectors/Content/QlikSense.htm)",,,,,,,,,
