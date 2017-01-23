@@ -37,10 +37,18 @@ Template.ppt_integration.helpers({
         return Session.get('integrationTopics');
     },
     level: function(level) {
-        // console.log('level helper', this);
-        var row = this;
-        level -= 1
-        return row[level].qText
+        return textOfLevel(this, level);
+    },
+    newLevel1Topic(currentRow) {
+        // console.log('newTopic helper');
+        //Read all rows from the excel, if the last loaded does not equal the current row, then we have a new topic 
+        // var currentLevel1 = textOfLevel(currentRow, 1);
+        // console.log('the current row is', currentLevel1)
+        // if (!Session.equals('lastLevelRead', currentLevel1) {
+        //     console.log('There is a new topic:', currentLevel1);
+        //     Session.set('lastLevelRead', currentLevel1);
+        //     return true;
+        // };
     },
     itemsOfLevel: function(level) {
         var parents = this[level - 3].qText + this[level - 2].qText; //get the names of the parents
@@ -49,8 +57,8 @@ Template.ppt_integration.helpers({
             return getLocalValuesOfLevel(parents); //using the parent, get all items that have this name as parent
         }
     },
-    loading(){
-        return  Session.get('slideLoading');
+    loading() {
+        return Session.get('slideLoading');
     },
     XValue(index) {
         return 1100 * index;
@@ -82,6 +90,11 @@ Template.ppt_integration.helpers({
         return slideIsVisible(currentSlide) ? 'step' : '';
     }
 });
+
+function textOfLevel(row, level) {
+    level -= 1
+    return row[level].qText
+}
 
 function slideIsVisible(currentSlide) {
     // var allSlides = Session.get('selectedDataSet'); //all slides
@@ -137,7 +150,7 @@ Template.ppt_integration.onRendered(function() {
 })
 
 Template.ppt_integration.onRendered(function() {
-Session.set('slideLoading', true);
+    Session.set('slideLoading', true);
     Meteor.setTimeout(function() {
         // console.log('iterate over Code element');
         $('code').each(function(i, obj) {
@@ -155,7 +168,7 @@ Session.set('slideLoading', true);
         impress().init();
         Session.set('slideLoading', false);
 
-    }, 3000);
+    }, 5000);
 })
 
 var appChangeListener = function appChangeListener() {
