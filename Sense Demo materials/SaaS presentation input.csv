@@ -565,6 +565,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "API","Javascript or CSS won't load","Do you see the source code? (ok)",,,,,,,,,
 "QRS API","Introduction to REST APIs","Most Qlik Sense APIs are delivered as a REpresentational State Transfer (REST) web service that contains a number of endpoints (also referred to as paths) that are used to execute various functions.",,,,,,,,,
 "QRS API","Introduction to REST APIs","To communicate with these endpoints, HTTP calls that contain GET, POST, PUT, or DELETE requests are made.",,,,,,,,,
+"QRS API","Video: REST API concepts and examples","https://youtu.be/7YcW25PHnAA",,,,,,,,,
 "QRS API","Introduction to REST- open a web page","flow - open webpage.png",,,,,,,,,
 "QRS API","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,,,,,,,,
 "QRS API","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,,,,,,,,
@@ -696,6 +697,7 @@ App:
 "QRS API","QVF - REST connector: Extra information about authentication options","Windows authentication = false and User Name / Password >> Forms / Basic auth",,,,,,,,,
 "QRS API","QVF - REST connector: Extra information about authentication options","Windows authentication = false and populate Query headers with user id >> HTTP Header Authentication",,,,,,,,,
 "QRS API","QVF - REST connector: Extra information about authentication options","Windows authentication  = false and Use Certificate = Installed or From File >> Authenticate via SSL Certs.  Note that with this method, you must connect directly to the Repository (port 4242) instead of through the Proxy (443 or 80)",,,,,,,,,
+"QRS API","Video: introduction to postman","https://www.youtube.com/watch?v=jBjXVrS8nXs",,,,,,,,,
 "QRS API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,,,,,,,,
 "QRS API","Exercise 2: Get apps via Postman with header authentication","header authentication.png",,,,,,,,,
 "QRS API","Problem solving 1:  get streams via Postman","QRS API - broken XREF example.png",,,,,,,,,
@@ -818,8 +820,8 @@ call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' 
 "Proxy (QPS) API","Proxy - Cross origin issues","Proxy - settings.png",,,,,,,,,
 "Proxy (QPS) API","Proxy - Cross origin issues","CORS error.png",,,,,,,,,
 "Proxy (QPS) API","Proxy - Cross origin issues","error - XMLhttprequest cannot load - access control allow origin header not present.png",,,,,,,,,
-"Proxy (QPS) API","Exercise 1: Ticketing fails","Go to snapshot 3 and solve the issue",,,,,,,,,
-"Proxy (QPS) API","Exercise 1: Ticketing fails","Go to your server/selfService to see the issue",,,,,,,,,
+"Proxy (QPS) API","Exercise 1: Ticketing and connection fails","Go to snapshot 3 and solve the issue","proxy service is not running, we blocked port 4243 on the sense server via the firewall",,,,,,,,
+"Proxy (QPS) API","Exercise 1: Ticketing and connection fails","Go to your server/selfService to see the issue",,,,,,,,,
 "Engine API","Introduction to QIX Engine API","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,,,,,,,,
 "Engine API","Engine API","What can you do with the Engine API?",,,,,,,,,
 "Engine API","Engine API","
@@ -1005,3 +1007,6 @@ STORE QV_Table INTO File.QVD;
 * 1 app for  mobile, desktop and web integration
 * No fat clients",,,,,,,,
 "Other","QAP","Key advantages","web - QAP delighting developers.png",,,,,,,,
+"New node","Video: introduction to postman","https://www.youtube.com/watch?v=jBjXVrS8nXs",,,,,,,,,
+"New node","Problem solving 1:  get streams via Postman","QRS API - broken XREF example.png",,,,,,,,,
+"New node","Problem solving 1:  get streams via Postman","[Open postman app in chrome](https://www.getpostman.com/collections/3168aed89bc40c99790a)",,,,,,,,,
