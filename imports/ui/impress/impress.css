@@ -35,6 +35,7 @@ section {
 
 blockquote,
 q {
+    text-align: center;
     quotes: none;
 }
 
