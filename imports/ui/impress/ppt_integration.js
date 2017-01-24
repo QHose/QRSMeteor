@@ -144,7 +144,7 @@ var getLocalValuesOfLevel = function(parentText) {
 
 Template.ppt_integration.onRendered(function() {
     getLevel1to3('integrationTopics');
-    getLevel1to3('selectedDataSet');
+    // getLevel1to3('selectedDataSet');
     getLevel1And2();
     appChangeListener();
 })

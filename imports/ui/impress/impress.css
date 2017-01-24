@@ -1,5 +1,6 @@
 .frame {
   display: block;
+  overflow: auto;
   width: 100vw;
   height: 100vh;
   max-width: 100%;
