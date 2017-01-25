@@ -15,7 +15,7 @@
 <template name="ppt_integration">
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <div id="impress">
-         <!-- <div class="step slide" data-x="-4000" data-z="90" data-scale="19" data-rotate="300">
+        <!-- <div class="step slide" data-x="-4000" data-z="90" data-scale="19" data-rotate="300">
             <h1 style="margin-left: 160px" class="ui header">
                 <div class="content">
                     Agenda for the workshop
@@ -23,16 +23,14 @@
             </h1>
             <img class="ui centered image" style="margin-top: 60px" src="images/support workshop agenda.png">
         </div> -->
-        {{#if mainTopics}} {{#each mainTopics }} 
-        {{#if chapterSlide this}}
-       <div class="z {{stepVisible this}} slide" data-x="{{XValue @index}}" data-y="-1500" data-z="1500" style="visibility: {{visibility this}};">
-                   <img class="ui centered image" style="margin-top: 60px" src="images/support workshop agenda.png">
-
+        {{#if mainTopics}} {{#each mainTopics }} {{#if chapterSlide this}}
+        <div class="z {{stepVisible this}} slide" data-x="{{XValue @index}}" data-y="-1500" data-z="1" style="visibility: {{visibility this}};">
+            <img class="ui centered image" style="margin-top: 60px" src="images/support workshop agenda.png">
             <q>{{this}}</q>
-        </div> 
+        </div>
         <!-- {{> pageBreaker}} -->
         {{else}}
-        <div class="z {{stepVisible this}} slide" data-x="{{XValue @index}}" data-y="-1500" data-rotate-x="-90" data-z="-1500" style="visibility: {{visibility this}};">
+        <div class="z {{stepVisible this}} slide" data-x="{{XValue @index}}" data-y="-1500" data-rotate-z="40" data-z="-1000" style="visibility: {{visibility this}};">
             <h2 style="margin-left: 160px" class="ui header">
                 <div class="content">
                     {{level 1}}
@@ -44,8 +42,7 @@
                 {{#each item in itemsOfLevel 3}} {{{formatted item}}} {{/each}}
             </div>
         </div>
-        {{/if}}
-        {{/each}} {{else}} {{> errorPresentation}} {{/if}}
+        {{/if}} {{/each}} {{else}} {{> errorPresentation}} {{/if}}
     </div>
     <div class="ui {{#if loading}} active {{/if}} dimmer">
         <div class="ui indeterminate text loader">Connecting to Qlik Sense Engine API to get all data for the presentation.</div>

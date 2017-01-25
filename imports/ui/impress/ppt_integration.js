@@ -57,7 +57,7 @@ Template.ppt_integration.helpers({
         return Session.get('slideLoading');
     },
     XValue(index) {
-        return 1100 * index;
+        return 1200 * index;
     },
     formatted(text) {
         if (youtube_parser(text)) { //youtube video url
