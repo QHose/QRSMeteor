@@ -648,6 +648,7 @@ User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
 ```",,,,,,,,,
 "QRS API","Methods and IDs","QRS API - methods and IDs.png",,,,,,,,,
 "QRS API","Which end points are available?","*Basically you can do all the things you normally do in the QMC*",,,,,,,,,
+"QRS API","Use the Chrome console to ""record"" Sense calls","QRS - start task chrome console.png",,,,,,,,,
 "QRS API","How do you create a REST URL? General purpose endpoints","When communicating directly with the QRS API, the URL is as follows:",,,,,,,,,
 "QRS API","How do you create a REST URL? General purpose endpoints","```
 https://<QRS machine name>:4242/<path>
@@ -749,12 +750,12 @@ App:
 "Proxy (QPS) API","Qlik Sense can get the users identity in a couple of ways","Header",,,,,,,,,
 "Proxy (QPS) API","Qlik Sense can get the users identity in a couple of ways","SAML",,,,,,,,,
 "Proxy (QPS) API","When to use which authentication method? (2)","<q>With SaaS that is ticketing or SAML most of the time</q>",,,,,,,,,
-"Proxy (QPS) API","The URL or prefix used triggers a specific virtual proxy","##If you use an URL (e.g. in IFrame)
-- http://presales1:81/sense/app/f094b3f0-529f-4c4d-9a60-a1305c8c19b0
+"Proxy (QPS) API","The URL or prefix used triggers a specific virtual proxy","##If you use an URL (e.g. in IFrame)",,,,,,,,,
+"Proxy (QPS) API","The URL or prefix used triggers a specific virtual proxy","- http://presales1:81/sense/app/f094b3f0-529f-4c4d-9a60-a1305c8c19b0
 - http://presales1:81/*anon*/sense/app/f094b3f0-529f-4c4d-9a60-a1305c8c19b0
 - http://presales1:81/*ticket*/sense/app/f094b3f0-529f-4c4d-9a60-a1305c8c19b0",,,,,,,,,
-"Proxy (QPS) API","The URL or prefix used triggers a specific virtual proxy","##If you use an API (like capabilities or engine)
-- Connect to Qlik Sense using the config that mentoins the prefix = *virtual proxy*
+"Proxy (QPS) API","The URL or prefix used triggers a specific virtual proxy","##Use the prefix, If you use an API",,,,,,,,,
+"Proxy (QPS) API","The URL or prefix used triggers a specific virtual proxy","
 ```
 var config = {
  host: ""saasdemo.qlik.com"",
