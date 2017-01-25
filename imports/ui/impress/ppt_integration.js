@@ -18,9 +18,9 @@ Template.ppt_integrationMain.helpers({
     }
 })
 
-Template.ppt_integrationMain.onRendered(function() {
-    getLevel1And2();
-})
+// Template.ppt_integrationMain.onRendered(function() {
+//     getLevel1And2();
+// })
 
 Template.ppt_integrationMain.events({
     'click .launch': function(event) {
@@ -39,16 +39,12 @@ Template.ppt_integration.helpers({
     level: function(level) {
         return textOfLevel(this, level);
     },
-    newLevel1Topic(currentRow) {
-        // console.log('newTopic helper');
-        //Read all rows from the excel, if the last loaded does not equal the current row, then we have a new topic 
-        // var currentLevel1 = textOfLevel(currentRow, 1);
-        // console.log('the current row is', currentLevel1)
-        // if (!Session.equals('lastLevelRead', currentLevel1) {
-        //     console.log('There is a new topic:', currentLevel1);
-        //     Session.set('lastLevelRead', currentLevel1);
-        //     return true;
-        // };
+    chapterSlide(currentRow) {
+        // console.log('newTopic helper, currentRow, ', currentRow);
+        if (typeof(currentRow) === 'string') { //we got a chapter slide
+            // console.log('we found a chapter slide', currentRow);
+            return true
+        }
     },
     itemsOfLevel: function(level) {
         var parents = this[level - 3].qText + this[level - 2].qText; //get the names of the parents
@@ -273,14 +269,31 @@ function getLevel1to3(sessionName) {
                             model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
                                 // console.log('Result set from Qlik Sense:', data);
                                 var table = data[0].qMatrix;
-                                console.log('New data received, now stored in in session var ', sessionName);
-                                Session.set(sessionName, table);
+                                var tableWithChapters = insertSectionBreakers(table);
+                                console.log('New data received, chapters added and now stored in in session var ', sessionName);
+                                Session.set(sessionName, tableWithChapters);
                             })
                         })
 
                 })
 
         })
+}
+
+function insertSectionBreakers(table) {
+    var currentLevel1, previousLevel1 = '';
+    var newTableWithChapter = [];
+
+    table.forEach(function(currentRow) {
+        var currentLevel1 = textOfLevel(currentRow, 1);
+        if (previousLevel1 !== currentLevel1) {
+            newTableWithChapter.push(currentLevel1)
+            previousLevel1 = currentLevel1;
+        }
+        newTableWithChapter.push(currentRow);
+    });
+    console.log('table with chapters is', newTableWithChapter);
+    return newTableWithChapter;
 }
 
 function getLevel1And2() {
@@ -321,7 +334,9 @@ function getLevel1And2() {
                                 // console.log('Result set from Qlik Sense:', data);
                                 var table = data[0].qMatrix;
                                 // console.log('Main levels contained in QMatrix', table);
-                                Session.set('mainTopics', table)
+                                var tableWithChapters = insertSectionBreakers(table);
+                                console.log('mainTopics, chapters added and now stored in in session var mainTopics');
+                                Session.set('mainTopics', tableWithChapters)
                             })
                         })
 
