@@ -292,7 +292,7 @@ function insertSectionBreakers(table) {
         }
         newTableWithChapter.push(currentRow);
     });
-    console.log('table with chapters is', newTableWithChapter);
+    // console.log('table with chapters is', newTableWithChapter);
     return newTableWithChapter;
 }
 
@@ -335,7 +335,7 @@ function getLevel1And2() {
                                 var table = data[0].qMatrix;
                                 // console.log('Main levels contained in QMatrix', table);
                                 var tableWithChapters = insertSectionBreakers(table);
-                                console.log('mainTopics, chapters added and now stored in in session var mainTopics');
+                                console.log('mainTopics, chapters added and now stored in in session var mainTopics', tableWithChapters);
                                 Session.set('mainTopics', tableWithChapters)
                             })
                         })
