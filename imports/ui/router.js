@@ -7,7 +7,7 @@ Router.configure({
 
 //make sure certain path are for authenticated users only
 Router.plugin('ensureSignedIn', {
-    only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration']
+    only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService']
 });
 
 
