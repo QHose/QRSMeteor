@@ -314,13 +314,17 @@ function getLevel1And2() {
                 .then(qix => {
 
                     qix.app.createSessionObject({
-                            qInfo: { qType: 'cube' },
+                            qInfo: { qType: 'martijn' },
                             qHyperCubeDef: {
                                 qDimensions: [{
                                     qDef: { qFieldDefs: ['Level 1'] }
                                 }, {
-                                    qDef: { qFieldDefs: ['Level 2'] }
-                                }],
+                                    qDef: { qFieldDefs: ['Level 2'] }                                    
+                                }, 
+                                // {
+                                //     qDef: { qFieldDefs: ['CSVRowNo'] }                                    
+                                // }
+                                ],
                                 qMeasures: [{
                                     qDef: {
                                         qLabel: 'Count of level 1',
@@ -330,11 +334,13 @@ function getLevel1And2() {
                             }
                         })
                         .then(model => {
-                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
+                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 4, qHeight: 1000 }]).then(data => {
                                 // console.log('Result set from Qlik Sense:', data);
                                 var table = data[0].qMatrix;
                                 // console.log('Main levels contained in QMatrix', table);
                                 var tableWithChapters = insertSectionBreakers(table);
+                                var sortedArray = _.sortBy(tableWithChapters, function(o){ return })
+
                                 console.log('mainTopics, chapters added and now stored in in session var mainTopics', tableWithChapters);
                                 Session.set('mainTopics', tableWithChapters)
                             })
@@ -346,6 +352,7 @@ function getLevel1And2() {
 
 
 }
+
 
 /**
  * Auto-indent overflowing lines

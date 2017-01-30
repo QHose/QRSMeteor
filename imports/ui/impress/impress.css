@@ -1,5 +1,7 @@
 .frame {
   display: block;
+  position: absolute;
+  margin-top: 60px:;
   overflow: auto;
   width: 100vw;
   height: 100vh;
@@ -91,8 +93,9 @@ em {
     overflow: auto;
     margin: 70px;
     display: block;
-    width: 1000px;
+    width: 900px;
     min-height: 600px;
+    height: 100%-60px;
     padding: 40px 60px;
     background-color: white;
     border: 1px solid rgba(0, 0, 0, .3);

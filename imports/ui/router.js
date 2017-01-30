@@ -7,13 +7,13 @@ Router.configure({
 
 //make sure certain path are for authenticated users only
 Router.plugin('ensureSignedIn', {
-    only: ['generation', 'users', 'SSO', 'useCaseSelection']
+    only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration']
 });
 
 
 // //map paths to blaze templates
 Router.route('/', function() {
-    this.render('introduction');
+    this.render('useCaseSelection');
 });
 
 Router.route('/users');
