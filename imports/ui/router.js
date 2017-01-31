@@ -13,6 +13,7 @@ Router.plugin('ensureSignedIn', {
 
 // //map paths to blaze templates
 Router.route('/', function() {
+    this.layout('oneColumnCenteredLayout');
     this.render('useCaseSelection');
 });
 
