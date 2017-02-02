@@ -8,6 +8,36 @@ var converter = new showdown.Converter();
 const enigma = require('enigma');
 var appId = Meteor.settings.public.IntegrationPresenatationApp;
 
+Template.ppt_integration.onRendered(function() {
+    getLevel1to3('integrationTopics');
+    // getLevel1to3('selectedDataSet');
+    getLevel1And2();
+    appChangeListener();
+})
+
+Template.ppt_integration.onRendered(function() {
+    Session.set('slideLoading', true);
+    Meteor.setTimeout(function() {
+        // console.log('iterate over Code element');
+        $('code').each(function(i, obj) {
+            // console.log('convert Code element', obj);
+            autoindent(obj);
+        });
+
+        $('pre').addClass('prettyprint');
+
+        PR.prettyPrint();
+
+        $('.ui.embed')
+            .embed();
+
+        impress().init();
+        impress().goto(0);
+        Session.set('slideLoading', false);
+
+    }, 3000);
+})
+
 Template.ppt_integrationMain.helpers({
     mainTopics() {
         // console.log('ppt main, mainTopics is:',Session.get('mainTopics').length);
@@ -40,14 +70,13 @@ Template.ppt_integration.helpers({
         return textOfLevel(this, level);
     },
     chapterSlide(currentRow) {
-        // console.log('newTopic helper, currentRow, ', currentRow);
         if (typeof(currentRow) === 'string') { //we got a chapter slide
             // console.log('we found a chapter slide', currentRow);
             return true
         }
     },
     itemsOfLevel: function(level) {
-        var parents = this[level - 3].qText + this[level - 2].qText; //get the names of the parents
+        var parents = this[level - 3].qText + this[level - 2].qText; //get the names of the parents of the current slide (level 1 and 2)
         if (parents) {
             // console.log('Parent is not empty:', parents);
             return getLocalValuesOfLevel(parents); //using the parent, get all items that have this name as parent
@@ -126,46 +155,17 @@ var setCurrentSlideEventHelper = function() {
 var getLocalValuesOfLevel = function(parentText) {
     // console.log('get all level 3 for level 2 with text:', parentText);
     var result = [];
-    var topics = Session.get('integrationTopics');
+    var topics = Session.get('integrationTopics'); //the level 1 and 2 values
     var level3Data = _.filter(topics, function(row) {
             var parents = row[0].qText + row[1].qText;
-            if (parents === parentText) {
-                if (row[2].qText) { result.push(row[2].qText) }
+            if (parents === parentText) { //if the current level 1 and 2 combination matches 
+                if (row[2].qText) { result.push(row[2].qText) } //add the level 3 value to the new level3Data array
             }
         })
         // console.log('level3Data:', result);
     return result;
 }
 
-
-Template.ppt_integration.onRendered(function() {
-    getLevel1to3('integrationTopics');
-    // getLevel1to3('selectedDataSet');
-    getLevel1And2();
-    appChangeListener();
-})
-
-Template.ppt_integration.onRendered(function() {
-    Session.set('slideLoading', true);
-    Meteor.setTimeout(function() {
-        // console.log('iterate over Code element');
-        $('code').each(function(i, obj) {
-            // console.log('convert Code element', obj);
-            autoindent(obj);
-        });
-
-        $('pre').addClass('prettyprint');
-
-        PR.prettyPrint();
-
-        $('.ui.embed')
-            .embed();
-
-        impress().init();
-        Session.set('slideLoading', false);
-
-    }, 5000);
-})
 
 var appChangeListener = function appChangeListener() {
     $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
@@ -212,20 +212,14 @@ function getValuesOfLevel(level) {
                             qHyperCubeDef: {
                                 qDimensions: [{
                                     qDef: { qFieldDefs: [level] }
-                                }],
-                                qMeasures: [{
-                                    qDef: {
-                                        qLabel: 'Count',
-                                        qDef: "=Sum(1)"
-                                    }
                                 }]
                             }
                         })
                         .then(model => {
                             model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
-                                console.log('Result set from Qlik Sense:', data);
+                                // console.log('Result set from Qlik Sense:', data);
                                 var table = data[0].qMatrix;
-                                console.log('Level ' + level + ' data:', table);
+                                // console.log('Level ' + level + ' data:', table);
                                 Session.set('level3Data', table)
                             })
                         })
@@ -312,35 +306,12 @@ function getLevel1And2() {
                     }
                 })
                 .then(qix => {
-
-                    qix.app.createSessionObject({
-                            qInfo: { qType: 'martijn' },
-                            qHyperCubeDef: {
-                                qDimensions: [{
-                                    qDef: { qFieldDefs: ['Level 1'] }
-                                }, {
-                                    qDef: { qFieldDefs: ['Level 2'] }                                    
-                                }, 
-                                // {
-                                //     qDef: { qFieldDefs: ['CSVRowNo'] }                                    
-                                // }
-                                ],
-                                qMeasures: [{
-                                    qDef: {
-                                        qLabel: 'Count of level 1',
-                                        qDef: '=Count(1)'
-                                    }
-                                }],
-                            }
-                        })
+                    qix.app.getObject('emeXGd') //get an existing object out of an app
                         .then(model => {
-                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 4, qHeight: 1000 }]).then(data => {
+                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {
                                 // console.log('Result set from Qlik Sense:', data);
-                                var table = data[0].qMatrix;
-                                // console.log('Main levels contained in QMatrix', table);
+                                var table = data[0].qMatrix;                                
                                 var tableWithChapters = insertSectionBreakers(table);
-                                var sortedArray = _.sortBy(tableWithChapters, function(o){ return })
-
                                 console.log('mainTopics, chapters added and now stored in in session var mainTopics', tableWithChapters);
                                 Session.set('mainTopics', tableWithChapters)
                             })

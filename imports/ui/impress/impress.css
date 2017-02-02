@@ -1,24 +1,56 @@
+/*iframe {
+    width: 960px;
+    height: 100%;
+    overflow: hidden;
+    border: none;
+}
+*/
 .frame {
-  display: block;
-  position: absolute;
-  margin-top: 60px:;
-  overflow: auto;
-  width: 100vw;
-  height: 100vh;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0 none;
-  box-sizing: border-box;
+    display: block;
+    position: absolute;
+    margin-top: 60px;
+    overflow: hidden;
+    width: 100vw;
+    height: 95%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    box-sizing: border-box;
+}
+
+.slide {
+    background-image: url("/images/Qlik_Leftcorner_Icon.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+    overflow: auto;
+    margin: 70px;
+    display: block;
+    width: 900px;
+    min-height: 600px;
+    /*height: 100%;*/
+    padding: 40px 60px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    color: rgb(102, 102, 102);
+    /*text-shadow: 0 2px 2px rgba(0, 0, 0, .1);*/
+    /*font-family: 'Open Sans', Arial, sans-serif;*/
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: -1px;
 }
 
 section {
     position: relative;
-    z-index: 1; /* needed for setting pseudo-element z-index */
+    z-index: 1;
+    /* needed for setting pseudo-element z-index */
     backface-visibility: hidden;
 }
 
- /*a {
+
+/*a {
     outline: none;
     color: #404d5b;
     text-decoration: none;
@@ -33,8 +65,6 @@ section {
     pointer-events: none;
     backface-visibility: hidden;
 }*/
-
-
 
 blockquote,
 q {
@@ -75,38 +105,6 @@ strong {
 i,
 em {
     font-style: italic
-}
-
-#wrap {
-    min-height: 400px;
-    top: 400px;
-    margin: 20px auto;
-    overflow: hidden;
-    position: relative;
-    width: 960px;
-}
-
-.slide {
-    background-image: url("/images/Qlik_Leftcorner_Icon.png");
-    background-repeat: no-repeat;
-    background-position: left top;
-    overflow: auto;
-    margin: 70px;
-    display: block;
-    width: 900px;
-    min-height: 600px;
-    height: 100%-60px;
-    padding: 40px 60px;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, .3);
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
-    color: rgb(102, 102, 102);
-    /*text-shadow: 0 2px 2px rgba(0, 0, 0, .1);*/
-    /*font-family: 'Open Sans', Arial, sans-serif;*/
-    font-size: 30px;
-    line-height: 36px;
-    letter-spacing: -1px;
 }
 
 .slide q {
@@ -183,8 +181,6 @@ em {
 
     They cover everything what you see on first three steps of the demo.
 */
-
-
 
 #title {
     padding: 0;

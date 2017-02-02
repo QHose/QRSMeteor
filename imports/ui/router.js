@@ -38,12 +38,12 @@ Router.route('/legal');
 Router.route('/documentation');
 Router.route('/templateOverview');
 
-//Single sing on integration route, this is the route you configure in Qlik sense proxy
 Router.route('/ppt_integration', {
     template: 'ppt_integration',
     layoutTemplate: 'SSOLayout'
 });
 
+// Single sing on integration route, this is the route you configure in Qlik sense proxy
 Router.route('/SSO', {
     template: 'SSO',
     layoutTemplate: 'SSOLayout'

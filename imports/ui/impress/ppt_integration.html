@@ -4,7 +4,7 @@
         <span class="text">Qlik Sense Engine API Slide generator</span>
     </div>
     <div class="ui sidebar" style="width: 600px">
-        <iframe src='{{appURL}}' class="frame" style="margin-top: 45px"></iframe>
+        <iframe src='{{appURL}}' class="frame" style="margin-top: 45px"> </iframe>
     </div>
     <div class="pusher">
         <div class="twelve wide column">
@@ -15,14 +15,6 @@
 <template name="ppt_integration">
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <div id="impress">
-        <!-- <div class="step slide" data-x="-4000" data-z="90" data-scale="19" data-rotate="300">
-            <h1 style="margin-left: 160px" class="ui header">
-                <div class="content">
-                    Agenda for the workshop
-                </div>
-            </h1>
-            <img class="ui centered image" style="margin-top: 60px" src="images/support workshop agenda.png">
-        </div> -->
         {{#if mainTopics}} {{#each mainTopics }} {{#if chapterSlide this}}
         <div class="z {{stepVisible this}} slide" data-x="{{XValue @index}}" data-z="1000   " style="visibility: {{visibility this}};">
             <img class="ui centered image" style="margin-top: 60px" src="images/integrationTopics.png">
@@ -49,7 +41,7 @@
             <p>Click on the screen and <br/> use a spacebar or arrow keys to navigate</p>
         </div>
     <div class="ui {{#if loading}} active {{/if}} dimmer">
-        <div class="ui indeterminate text loader">Connecting to Qlik Sense Engine API to get all the data for the presentation.</div>
+        <div class="ui indeterminate text loader">Connecting to Qlik Sense Engine API to get all the data for the presentation. <br> Once the data is ready we use Impress.js to create an online presentation</div>
     </div>
 </template>
 <template name="pageBreaker">
