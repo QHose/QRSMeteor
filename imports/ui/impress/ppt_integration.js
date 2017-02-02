@@ -43,7 +43,7 @@ Template.ppt_integrationMain.helpers({
         // console.log('ppt main, mainTopics is:',Session.get('mainTopics').length);
         return Session.get('mainTopics');
     },
-    appURL() {
+    IFrameURLChapterSelection() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&obj=RZuJ&opt=currsel';
     }
 })
@@ -306,7 +306,7 @@ function getLevel1And2() {
                     }
                 })
                 .then(qix => {
-                    qix.app.getObject('emeXGd') //get an existing object out of an app
+                    qix.app.getObject('pskL') //get an existing object out of an app
                         .then(model => {
                             model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {
                                 // console.log('Result set from Qlik Sense:', data);
