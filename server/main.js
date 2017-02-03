@@ -67,7 +67,7 @@ Meteor.startup(function() {
     Meteor.setInterval(function() {
         console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
         Meteor.call('removeGeneratedResources', {});
-    }, 7 * 86400000); //remove all logs every 7 days
+    }, 1 * 86400000); //remove all logs every 1 day
 });
 
 
