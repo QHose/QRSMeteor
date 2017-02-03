@@ -53,6 +53,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
         // console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
     } catch (err) {
         console.error(err);
+         throw new Meteor.Error('Generation failed', 'The server has an internal error, please check the server command logs');
     }
     GeneratedResources.insert({
         'generationUserId': generationUserId,
