@@ -35,7 +35,7 @@ Template.ppt_integration.onRendered(function() {
         impress().goto(0);
         Session.set('slideLoading', false);
 
-    }, 3000);
+    }, 4000);
 })
 
 Template.ppt_integrationMain.helpers({
