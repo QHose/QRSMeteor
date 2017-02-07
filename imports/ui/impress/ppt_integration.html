@@ -14,8 +14,8 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <div id="impress">
         {{#if mainTopics}} {{#each mainTopics }} {{#if chapterSlide this}}
-        <div class="z step slide" data-x="{{XValue @index}}" data-z="1000">
-            <img class="ui centered image" style="margin-top: 60px" src="images/integrationTopics.png">
+        <div class="z step breaker" data-x="{{XValue @index}}" data-z="1000" style="height: 100%">
+            <!-- <img class="ui centered image" style="margin-top: 60px" src="images/integrationTopics.png"> -->
             <q>{{this}}</q>
         </div>
         <!-- {{> pageBreaker}} -->
@@ -34,8 +34,8 @@
         </div>
         {{/if}} {{/each}} 
 
-        <div class="z step" data-x="-1000" data-z="3000">
-            <img class="ui fluid image" src="images/presentation thank you.png">
+        <div class="z step thankYou" data-x="-1000" data-z="3000" style="">
+            <img class="ui bottom aligned fluid image" src="images/presentation thank you.png">
         </div>
 
         {{else}} {{> errorPresentation}} {{/if}}

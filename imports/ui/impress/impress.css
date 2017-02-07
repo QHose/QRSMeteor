@@ -5,18 +5,49 @@
     border: none;
 }
 */
+
+#impress {
+    font-family: 'PT Sans', sans-serif;
+    min-height: 740px;
+    background: rgb(215, 215, 215);
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background: -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background: -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background: -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background: radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+}
+
 .frame {
     display: block;
     position: absolute;
     margin-top: 60px;
     overflow: hidden;
     width: 100vw;
-    height: 95%;
+    height: 100%;
     /*max-width: 100%;*/
     margin: 0;
     padding: 0;
     border: 0 none;
     box-sizing: border-box;
+}
+
+
+.z.step {
+    position: absolute;
+    min-width: 900px;
+    overflow: auto;
+    padding: 40px;
+    margin: 20px auto;
+    margin-top: 80px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'PT Serif', georgia, serif;
+    font-size: 48px;
+    line-height: 1.5;
 }
 
 .slide {
@@ -28,6 +59,7 @@
     display: block;
     width: 900px;
     min-height: 600px;
+    max-height: 100vh;
     /*height: 100%;*/
     padding: 40px 60px;
     background-color: white;
@@ -40,6 +72,45 @@
     font-size: 30px;
     line-height: 36px;
     letter-spacing: -1px;
+}
+
+.breaker {
+    background-image: url("/images/Qlik breaker.png");
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: left top;
+    overflow: auto;
+    margin: 70px;
+    display: block;
+    width: 900px;
+    min-height: 600px;
+    max-height: 100%;
+    /*height: 100%;*/
+    padding: 40px 60px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    color: rgb(102, 102, 102);
+    /*text-shadow: 0 2px 2px rgba(0, 0, 0, .1);*/
+    /*font-family: 'Open Sans', Arial, sans-serif;*/
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: -1px;
+
+}
+
+
+.thankYou {  
+    overflow: auto;
+    margin: 70px;
+    display: block;
+    width: 900px;
+    min-height: 600px;
+    max-height: 100vh;
+    /*height: 100%;*/
+    padding: 40px 60px;
+    
 }
 
 section {
@@ -80,17 +151,6 @@ q:after {
     content: none;
 }
 
-#impress {
-    font-family: 'PT Sans', sans-serif;
-    min-height: 740px;
-    background: rgb(215, 215, 215);
-    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
-    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background: -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background: -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background: -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background: radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-}
 
 
 /*
@@ -135,21 +195,6 @@ em {
 
     We start with basics to make sure it displays correctly in everywhere ...
 */
-
-.z.step {
-    position: relative;
-    min-width: 900px;
-    padding: 40px;
-    margin: 20px auto;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
-    font-family: 'PT Serif', georgia, serif;
-    font-size: 48px;
-    line-height: 1.5;
-}
 
 
 /*
