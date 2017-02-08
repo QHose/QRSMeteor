@@ -35,7 +35,7 @@ Template.ppt_integration.onRendered(function() {
         impress().goto(0);
         Session.set('slideLoading', false);
 
-    }, 4000);
+    }, 3000);
 })
 
 Template.ppt_integrationMain.helpers({
@@ -97,7 +97,7 @@ Template.ppt_integration.helpers({
             return html;
         } else if (checkTextIsImage(text)) { //image
             // console.log('found an image', text)
-            return '<img class="ui centered image" style="margin-top: 20px" src="images/' + text + '">'
+            return '<img class="ui massive centered image" style="margin-top: 20px" src="images/' + text + '">'
         } else if (text.startsWith('<')) { //custom HTML
             return text;
         } else { //text 
