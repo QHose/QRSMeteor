@@ -14,9 +14,9 @@
 * Web integration options
 * Governed Self Service
 * SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Sales",
-"Workshop Introduction","Agenda","What is a Qlik Sense app?",,"","","","","         0","0","Sales, 30 Minute intro",
+"Workshop Introduction","Agenda","What is governed self service with Qlik Sense?",,"","","","","         0","0","Sales, 30 Minute intro",
 "Workshop Introduction","Agenda","Introduction to SaaS",,"","","","","         0","0","Sales",
-"Workshop Introduction","Agenda","Demonstration of all integration aspects using SaaSdemo.qlik.com",,"","","","","         0","0","Sales",
+"Workshop Introduction","Agenda","Convince your prospect by demoing key integration using SaaSdemo.qlik.com",,"","","","","         0","0","Sales",
 "Workshop Introduction","Agenda","Practise to give the demo yourself
 * Web integration options
 * Governed Self Service
@@ -224,7 +224,7 @@ $(""#btn_1"").click(function() {
 "Web","Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,"","","","","         0","0","PreSales",
 "Web","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales",
 "Web","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","PreSales, Sales",
-"Web","How to get started: The Qlik Sense Dev-hub (15M)","https://youtu.be/mn9GspU-tDI?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG",,"","","","","         0","0","PreSales",
+"Web","How to get started: The Qlik Sense Dev-hub (15M)","https://www.youtube.com/watch?v=hjFlpj7uLl4&feature=share",,"","","","","         0","0","PreSales",
 "Web","How to get started: The Qlik Sense Dev-hub (15M)","This tool helps to create the source code for you. (also see the Visual Studio plugin)",,"","","","","         0","0","PreSales",
 "Web","IFrame integration","<q> IFrame integration</q>",,"","","","","         0","0","PreSales",
 "Web","IFrame integration","web - options to integrate content.png",,"","","","","         0","0","PreSales",
@@ -1145,6 +1145,10 @@ document.addEventListener('click', function(e) {
 "Data","Connectors","[Connectors on Qlik help](https://help.qlik.com/en-US/connectors/Content/QlikSense.htm)",,"","","","","         0","0","PreSales",
 "Data","Connectors","[Connector videos](https://help.qlik.com/en-US/connectors/Content/Videos/Videos.htm)",,"","","","","         0","0","PreSales",
 "Data","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,"","","","","         0","0","PreSales",
+"Data","Use QVDs to re-use entities in multiple apps and enrich them","data - bus matrix dimensions to business process.png",,"","","","","         0","0","PreSales",
+"Data","Use QVDs to re-use entities in multiple apps and enrich them","In this scenario we would like to create 1 business intelligence environment for the whole company. In order to do this, you first have to divide your company into processes, and define which entities are relevant per process:",,"","","","","         0","0","PreSales",
+"Data","Use QVDs to create an ETL application architecture","data - data flow layers.png",,"","","","","         0","0","PreSales",
+"Data","Data governance","data governance flow ETL.png",,"","","","","         0","0","PreSales",
 "Data","Incremental load script","You can also combine your actuals with historic data from a QVD.",,"","","","","         0","0","PreSales",
 "Data","Incremental load script","```
 LET LastExecTime = date(ReloadTime(),'YYYY-MM-DD hh:mm:ss');
@@ -1160,9 +1164,13 @@ LOAD PrimaryKey, X, Y FROM File.QVD;
 
 STORE QV_Table INTO File.QVD;
 ```",,"","","","","         0","0","PreSales",
-"Data","Compression",,,"","","","","         0","0","PreSales",
+"Data","Compression","Indexes compressed data into memory – up to 90x compression",,"","","","","         0","0","Sales",
+"Data","Compression","Enables associative search and analysis",,"","","","","         0","0","Sales",
+"Data","Compression","Supports 100’s millions to billions of rows of data",,"","","","","         0","0","Sales",
+"Data","Compression","data - compression.png",,"","","","","         0","0","Sales",
 "Data","Script","ETL functionality.png",,"","","","","         0","0","PreSales",
-"Data","REST connectors","https://www.youtube.com/watch?v=FqwNU_pnFt4&list=PLkRFvjyuHFvIVnReipVR0QfUcQ4X2shXw",,"","","","","         0","0","PreSales",
+"Data","REST connector introduction","https://www.youtube.com/watch?v=FqwNU_pnFt4&list=PLkRFvjyuHFvIVnReipVR0QfUcQ4X2shXw",,"","","","","         0","0","PreSales",
+"Data","Video: Rest connector - Loading multiple pages","https://youtu.be/QlCT55_712I",,"","","","","         0","0","R&D",
 "Other","New to Qlik Sense","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)",,,,,,,,,
 "Other","Licensing","qlik sense tokens license.png",,"","","","","         0","0","Sales",
 "Other","QAP","Delighting developers","web - QAP delighting developers.png",,,,,,,,
