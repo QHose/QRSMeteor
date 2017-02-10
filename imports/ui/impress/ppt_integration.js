@@ -1,42 +1,23 @@
 import { senseConfig } from '/imports/api/config.js';
 import './ppt_integration.html';
-
 import lodash from 'lodash';
+import hljs from 'highlight.js'
 _ = lodash;
+
+// var hljs = require('hljs');
 var showdown = require('showdown');
 var converter = new showdown.Converter();
 const enigma = require('enigma');
 var appId = Meteor.settings.public.IntegrationPresenatationApp;
 
 Template.ppt_integration.onRendered(function() {
+    Session.set('slideLoading', true);
     getLevel1to3('integrationTopics');
     // getLevel1to3('selectedDataSet');
     getLevel1And2();
     appChangeListener();
 })
 
-Template.ppt_integration.onRendered(function() {
-    Session.set('slideLoading', true);
-    Meteor.setTimeout(function() {
-        // console.log('iterate over Code element');
-        $('code').each(function(i, obj) {
-            // console.log('convert Code element', obj);
-            autoindent(obj);
-        });
-
-        $('pre').addClass('prettyprint');
-
-        PR.prettyPrint();
-
-        $('.ui.embed')
-            .embed();
-
-        impress().init();
-        impress().goto(0);
-        Session.set('slideLoading', false);
-
-    }, 3000);
-})
 
 Template.ppt_integrationMain.helpers({
     mainTopics() {
@@ -47,10 +28,6 @@ Template.ppt_integrationMain.helpers({
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&obj=RZuJ&opt=currsel';
     }
 })
-
-// Template.ppt_integrationMain.onRendered(function() {
-//     getLevel1And2();
-// })
 
 Template.ppt_integrationMain.events({
     'click .launch': function(event) {
@@ -164,6 +141,51 @@ var getLocalValuesOfLevel = function(parentText) {
         })
         // console.log('level3Data:', result);
     return result;
+}
+
+function getLevel1And2() {
+
+    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
+        .then(qixschema => {
+
+            enigma.getService('qix', {
+                    schema: qixschema,
+                    appId: appId,
+                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+                        host: senseConfig.host,
+                        prefix: 'anon',
+                        port: senseConfig.port,
+                        unsecure: true
+                    }
+                })
+                .then(qix => {
+                    qix.app.getObject('pskL') //get an existing object out of an app, if you import an app this stays the same
+                        .then(model => {
+                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {
+                                // console.log('Result set from Qlik Sense:', data);
+                                var table = data[0].qMatrix;
+                                var tableWithChapters = insertSectionBreakers(table);
+                                console.log('mainTopics, chapters added and now stored in in session var mainTopics', tableWithChapters);
+                                Session.set('mainTopics', tableWithChapters)
+                                Meteor.setTimeout(function() {                                
+
+                                    impress().init();
+                                    impress().goto(0);
+                                    Session.set('slideLoading', false);
+                                    $('.ui.embed').embed();
+
+                                    $('pre code').each(function(i, block) {
+                                        hljs.highlightBlock(block);
+                                    });
+                                }, 1000);
+                            })
+                        })
+
+                })
+
+        })
+
+
 }
 
 
@@ -290,39 +312,6 @@ function insertSectionBreakers(table) {
     return newTableWithChapter;
 }
 
-function getLevel1And2() {
-
-    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
-        .then(qixschema => {
-
-            enigma.getService('qix', {
-                    schema: qixschema,
-                    appId: appId,
-                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-                        host: senseConfig.host,
-                        prefix: 'anon',
-                        port: senseConfig.port,
-                        unsecure: true
-                    }
-                })
-                .then(qix => {
-                    qix.app.getObject('pskL') //get an existing object out of an app
-                        .then(model => {
-                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {
-                                // console.log('Result set from Qlik Sense:', data);
-                                var table = data[0].qMatrix;                                
-                                var tableWithChapters = insertSectionBreakers(table);
-                                console.log('mainTopics, chapters added and now stored in in session var mainTopics', tableWithChapters);
-                                Session.set('mainTopics', tableWithChapters)
-                            })
-                        })
-
-                })
-
-        })
-
-
-}
 
 
 /**
@@ -356,151 +345,4 @@ function autoindent(code_elem) {
         line_elem[textContent] = lines[i].substring(prefix_len);
     }
     code_elem.appendChild(fragment);
-}
-
-
-//examples only
-
-function exampleAlex() {
-    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
-        .then(qixschema => {
-
-            enigma.getService('qix', {
-                    schema: qixschema,
-                    appId: 'b82e6aa9-04a3-4573-b3da-201cab14dfca',
-                    session: {
-                        host: 'branch.qlik.com',
-                        prefix: '/anon/',
-
-                    }
-                })
-                .then(qix => {
-
-                    qix.app.createSessionObject({
-                            qInfo: { qType: 'cube' },
-                            qHyperCubeDef: {
-                                qDimensions: [{
-                                    qDef: { qFieldDefs: ['Dim1'] }
-                                }, {
-                                    qDef: { qFieldDefs: ['Dim2'] }
-                                }, {
-                                    qDef: { qFieldDefs: ['Dim3'] }
-                                }]
-                            }
-                        })
-                        .then(model => {
-                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
-                                console.log(data)
-                            })
-                        })
-
-                })
-
-        })
-}
-
-//http://playground.qlik.com/learn/engine/hypercube
-//https://gist.github.com/mindspank/58b3080a342b1cd937e6
-//https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/WorkingWithAppsAndVisualizations/CreateVisualizations/create-hypercube.htm
-function createCube(app) {
-    // Create a Generic Session Object
-    app.createSessionObject({
-        qInfo: {
-            qType: 'mycubiecube'
-        },
-        // A HyperCube Structure
-        qHyperCubeDef: {
-            "qDimensions": [{
-                "qDef": {
-                    "qFieldDefs": [
-                        "Level 1"
-                    ]
-                }
-            }, {
-                "qDef": {
-                    "qFieldDefs": [
-                        "Level 3"
-                    ]
-                }
-            }, {
-                "qDef": {
-                    "qFieldDefs": [
-                        "Level 3"
-                    ]
-                }
-            }],
-            qMeasures: [{
-                qDef: {
-                    qLabel: 'Count of level 1',
-                    qDef: '=Count(1)'
-                }
-            }],
-            qInitialDataFetch: [{
-                qWidth: 10,
-                qHeight: 4000,
-                qTop: 0,
-                qLeft: 0
-            }]
-        },
-        // Independent calculation using a ValueExpression
-        total: {
-            qValueExpression: { qExpr: "=Count(1)" }
-        }
-
-    }).then(function(cube) {
-        return cube.getLayout().then(function(layout) {
-            return console.log('result of cube: ', layout);
-        })
-    })
-}
-
-
-function createList(app) {
-    //Define our listbox definition.
-    //Optional parameters has been omitted
-    //Refer to documentation for a full list of properties
-    //https://help.qlik.com/sense/en-us/developer/Subsystems/EngineAPI/Content/GenericObject/PropertyLevel/ListObjectDef.htm
-    var obj = {
-        "qInfo": {
-            "qId": "LB01",
-            "qType": "ListObject"
-        },
-        "qListObjectDef": {
-            "qDef": {
-                "qFieldDefs": [
-                    "Month"
-                ],
-                "qFieldLabels": [
-                    "Month"
-                ],
-                "qSortCriterias": [{
-                    "qSortByExpression": -1,
-                    "qExpression": {
-                        "qv": "=sum([Sales Amount])"
-                    }
-                }]
-            },
-            "qInitialDataFetch": [{
-                "qTop": 0,
-                "qLeft": 0,
-                "qHeight": 100,
-                "qWidth": 2
-            }],
-            "qExpressions": [{
-                "qExpr": "=sum([Sales Amount])"
-            }]
-        }
-    };
-
-    //Create the listbox as a session object which will persist over the session and then be deleted.
-    app.createSessionObject(obj).then(function(list) {
-
-        //List has been created and handle returned.
-        //Get the layout of the listobject.
-        list.getLayout().then(function(layout) {
-            //Layout, model and data is retured.
-            console.log(layout)
-        })
-    })
-
 }

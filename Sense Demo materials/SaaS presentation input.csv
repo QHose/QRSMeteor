@@ -1058,6 +1058,151 @@ var appChangeListener = function appChangeListener() {
 }
 ```",,"","","","","         0","0","R&D",
 "Engine API","Create a event listener to keep in sync with Qlik Sense","[More Enigma Examples](/https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs)",,"","","","","         0","0","R&D",
+"Engine API","Example code: get list","```
+
+function createList(app) {
+    //Define our listbox definition.
+    //Optional parameters has been omitted
+    //Refer to documentation for a full list of properties
+    //https://help.qlik.com/sense/en-us/developer/Subsystems/EngineAPI/Content/GenericObject/PropertyLevel/ListObjectDef.htm
+    var obj = {
+        ""qInfo"": {
+            ""qId"": ""LB01"",
+            ""qType"": ""ListObject""
+        },
+        ""qListObjectDef"": {
+            ""qDef"": {
+                ""qFieldDefs"": [
+                    ""Month""
+                ],
+                ""qFieldLabels"": [
+                    ""Month""
+                ],
+                ""qSortCriterias"": [{
+                    ""qSortByExpression"": -1,
+                    ""qExpression"": {
+                        ""qv"": ""=sum([Sales Amount])""
+                    }
+                }]
+            },
+            ""qInitialDataFetch"": [{
+                ""qTop"": 0,
+                ""qLeft"": 0,
+                ""qHeight"": 100,
+                ""qWidth"": 2
+            }],
+            ""qExpressions"": [{
+                ""qExpr"": ""=sum([Sales Amount])""
+            }]
+        }
+    };
+
+    //Create the listbox as a session object which will persist over the session and then be deleted.
+    app.createSessionObject(obj).then(function(list) {
+
+        //List has been created and handle returned.
+        //Get the layout of the listobject.
+        list.getLayout().then(function(layout) {
+            //Layout, model and data is retured.
+            console.log(layout)
+        })
+    })
+
+}
+```",,,,,,,,,
+"Engine API","Example code: create a hyperCube","```
+//http://playground.qlik.com/learn/engine/hypercube
+//https://gist.github.com/mindspank/58b3080a342b1cd937e6
+//https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/WorkingWithAppsAndVisualizations/CreateVisualizations/create-hypercube.htm
+function createCube(app) {
+    // Create a Generic Session Object
+    app.createSessionObject({
+        qInfo: {
+            qType: 'mycubiecube'
+        },
+        // A HyperCube Structure
+        qHyperCubeDef: {
+            ""qDimensions"": [{
+                ""qDef"": {
+                    ""qFieldDefs"": [
+                        ""Level 1""
+                    ]
+                }
+            }, {
+                ""qDef"": {
+                    ""qFieldDefs"": [
+                        ""Level 3""
+                    ]
+                }
+            }, {
+                ""qDef"": {
+                    ""qFieldDefs"": [
+                        ""Level 3""
+                    ]
+                }
+            }],
+            qMeasures: [{
+                qDef: {
+                    qLabel: 'Count of level 1',
+                    qDef: '=Count(1)'
+                }
+            }],
+            qInitialDataFetch: [{
+                qWidth: 10,
+                qHeight: 4000,
+                qTop: 0,
+                qLeft: 0
+            }]
+        },
+        // Independent calculation using a ValueExpression
+        total: {
+            qValueExpression: { qExpr: ""=Count(1)"" }
+        }
+
+    }).then(function(cube) {
+        return cube.getLayout().then(function(layout) {
+            return console.log('result of cube: ', layout);
+        })
+    })
+}
+```",,,,,,,,,
+"Engine API","Example code: create session object - hyperCube","```
+  $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
+        .then(qixschema => {
+
+            enigma.getService('qix', {
+                    schema: qixschema,
+                    appId: 'b82e6aa9-04a3-4573-b3da-201cab14dfca',
+                    session: {
+                        host: 'branch.qlik.com',
+                        prefix: '/anon/',
+
+                    }
+                })
+                .then(qix => {
+
+                    qix.app.createSessionObject({
+                            qInfo: { qType: 'cube' },
+                            qHyperCubeDef: {
+                                qDimensions: [{
+                                    qDef: { qFieldDefs: ['Dim1'] }
+                                }, {
+                                    qDef: { qFieldDefs: ['Dim2'] }
+                                }, {
+                                    qDef: { qFieldDefs: ['Dim3'] }
+                                }]
+                            }
+                        })
+                        .then(model => {
+                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
+                                console.log(data)
+                            })
+                        })
+
+                })
+
+        })
+```",,,,,,,,,
 "Engine API","Exercise 1: get a list of apps via the engine API explorer in the dev-hub","Engine API - example screenshot.png",,"","","","","         0","0","R&D",
 "Engine API","Exercise 2: create a new folder connection to c:\temp","https://youtu.be/HmmZfPjqSMw",,"","","","","         0","0","R&D",
 "Engine API","Exercise 3: get an existing object","Go to the engine API explorer",,"","","","","         0","0","R&D",
@@ -1142,6 +1287,20 @@ document.addEventListener('click', function(e) {
 "Architecture","Infrastructure design ","High availability",,,,,,,,,
 "Architecture","Infrastructure design ","Disaster recovery",,,,,,,,,
 "Architecture","Infrastructure design ","Scalability",,,,,,,,,
+"Architecture","Architecture example 1: 1 server Active directory","Internal users only",,,,,,,,,
+"Architecture","Architecture example 1: 1 server Active directory","Users connect to the Qlik Sense hub directly via the default virtual proxy",,,,,,,,,
+"Architecture","Architecture example 1: 1 server Active directory","architecture - windows domain internal user.png",,,,,,,,,
+"Architecture","Architecture example 2 : 1 server Active directory with external users","Internal users",,,,,,,,,
+"Architecture","Architecture example 2 : 1 server Active directory with external users","External users connect to Qlik Sense via the internet",,,,,,,,,
+"Architecture","Architecture example 2 : 1 server Active directory with external users","Users connect to the Qlik Sense hub directly via the default virtual proxy",,,,,,,,,
+"Architecture","Architecture example 2 : 1 server Active directory with external users","windows domain with external users.png",,,,,,,,,
+"Architecture","Architecture example : 1 Qlik Sense behind authenticating reverse proxy with header authentication","Internal users",,,,,,,,,
+"Architecture","Architecture example : 1 Qlik Sense behind authenticating reverse proxy with header authentication","External users connect to Qlik Sense via the internet",,,,,,,,,
+"Architecture","Architecture example : 1 Qlik Sense behind authenticating reverse proxy with header authentication","Users connect to the Qlik Sense hub directly via the default virtual proxy",,,,,,,,,
+"Architecture","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","External users connect via SaaS platform to Qlik Sense",,,,,,,,,
+"Architecture","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","Users connect to the Qlik Sense hub directly or via an IFrame",,,,,,,,,
+"Architecture","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","the SaaS platform contains a DIV tag integration",,,,,,,,,
+"Architecture","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","SSO is enforced using a ticket",,,,,,,,,
 "Data","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
 "Data","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,"","","","","         0","0","PreSales",
 "Data","How to create a QVD? ","data - create qvd.png",,"","","","","         0","0","PreSales",
