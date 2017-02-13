@@ -25,12 +25,11 @@ This demo tries to show you the activities from Sense that you can automate in y
 
 The principle is very simple. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "free fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.
 
-On the landing page you will find a how to demo manual and video
 
 ![alt tag](https://raw.githubusercontent.com/QHose/QRSMeteor/master/public/images/simple intro to saas automation.gif)
 
 You first have to enter some customers
-Select the "my first template" app on the right of the screen (this is the Qlik Sense side)
+Select a template
 Press generate
 Select a user, and test the single sing on.
 
@@ -40,9 +39,13 @@ The main connection between Meteor and Qlik Sense can be found here https://gith
 # Authentication
 The internal REST calls use both certificate (QPS logout for example) and header authentication only for demo purposes. In production you would normally only use certificates, unless you have a authenticating reverse proxy. The end users connect to Sense via the Meteor virtual proxy (Sense QMC config item). Make sure that you also logout the user on this proxy. (you can login/logout per proxy!)
 
+# Source code 
+
+[see this manual](https://github.com/QHose/QRSMeteor/blob/master/public/docs/Qlik%20Sense%20SaaS%20demo%20tool%20documentation%20of%20source%20code.docx) to learn more about this source code.
+
 # Setup your own SaaS provisioning system using this code
 
-See [this manual](https://github.com/QHose/QRSMeteor/blob/master/public/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.mht)
+See [this manual](https://github.com/QHose/QRSMeteor/blob/master/public/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.docx)
 
 # Thank you
 For always being available to support us with this project: Johan Bäcklin, Alexander Karlsson, Jeffrey Goldberg, Rob Fallows (Centiq Ltd)
