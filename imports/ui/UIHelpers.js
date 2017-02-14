@@ -86,6 +86,10 @@ if (Meteor.isClient) {
         return '/docs/Qlik Sense SaaS demo tool documentation of source code.docx';
     });
 
+    Template.registerHelper('doc_demo_setup_instructions', function() {
+        return '/docs/Qlik Sense SaaS demo tool setup instructions.docx';
+    });
+
     Template.registerHelper('doc_webIntegration', function() {
         return 'docs/Web integration embed Sense charts or data inside your own website.pdf';
     });
