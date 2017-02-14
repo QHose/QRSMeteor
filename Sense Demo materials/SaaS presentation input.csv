@@ -223,6 +223,7 @@ $(""#btn_1"").click(function() {
 "Web","Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,"","","","","         0","0","PreSales",
 "Web","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales",
 "Web","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","PreSales, Sales",
+"Web","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise.png",,,,,,,,,
 "Web","How to get started: The Qlik Sense Dev-hub (15M)","https://www.youtube.com/watch?v=hjFlpj7uLl4&feature=share",,"","","","","         0","0","PreSales",
 "Web","How to get started: The Qlik Sense Dev-hub (15M)","This tool helps to create the source code for you. (also see the Visual Studio plugin)",,"","","","","         0","0","PreSales",
 "Web","IFrame integration","<q> IFrame integration</q>",,"","","","","         0","0","PreSales",
@@ -1340,10 +1341,11 @@ STORE QV_Table INTO File.QVD;
 "Data","Video: Rest connector - Loading multiple pages","https://youtu.be/QlCT55_712I",,"","","","","         0","0","R&D",
 "Other","New to Qlik Sense","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)",,,,,,,,,
 "Other","Licensing","qlik sense tokens license.png",,"","","","","         0","0","Sales",
-"Other","QAP","Delighting developers","web - QAP delighting developers.png",,,,,,,,
-"Other","QAP","Lifecycle","web - qap lifecycle.png",,,,,,,,
-"Other","QAP","Key advantages","* 100% web based
+"Other","QAP",,,,,,,,,,
+"QAP","Delighting developers","web - QAP delighting developers.png",,,,,,,,,
+"QAP","Lifecycle","web - qap lifecycle.png",,,,,,,,,
+"QAP","Key advantages","web - QAP delighting developers.png",,,,,,,,,
+"QAP","Key advantages","* 100% web based
 * Responsive and smart
 * 1 app for  mobile, desktop and web integration
-* No fat clients",,,,,,,,
-"Other","QAP","Key advantages","web - QAP delighting developers.png",,,,,,,,
+* No fat clients",,,,,,,,,
