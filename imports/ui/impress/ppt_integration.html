@@ -11,13 +11,9 @@
     </div>
 </template>
 <template name="ppt_integration">
-    <!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
-    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script> -->
-    
     <div id="impress">
         {{#if mainTopics}} {{#each mainTopics }} {{#if chapterSlide this}}
         <div class="z step slide breaker" data-x="{{XValue @index}}" data-z="1000" style="height: 100%">
-            <!-- <img class="ui centered image" style="margin-top: 60px" src="images/integrationTopics.png"> -->
             {{this}}
         </div>
         <!-- {{> pageBreaker}} -->
@@ -30,7 +26,6 @@
                 </div>
             </h2>
             <div class="ui list" style="margin-top: 60px">
-                <!-- ?prettify lang=javascript linenums=true? -->
                 {{#each item in itemsOfLevel 3}} {{{formatted item}}} {{/each}}
             </div>
         </div>
@@ -41,12 +36,12 @@
         {{else}} {{> errorPresentation}} {{/if}}
     </div>
     <div class="hint">
-        <p>Click on the screen and
-            <br/> use a spacebar or arrow keys to navigate</p>
+        <p>Select a workshop (left top menu), click on the screen and
+            <br/>use a spacebar or arrow keys to navigate</p>
     </div>
     <div class="ui {{#if loading}} active {{/if}} dimmer">
-        <div class="ui indeterminate text loader">Connecting to Qlik Sense Engine API to get all the data for the presentation.
-            <br> Once the data is ready we use Impress.js to create an online presentation</div>
+        <div class="ui indeterminate text loader">Connecting to Qlik Sense Engine API to get the data for the presentation.
+            <br> Once the raw data is ready we use some javascript to create a presentation.</div>
     </div>
 </template>
 <template name="pageBreaker">
