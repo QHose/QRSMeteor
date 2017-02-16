@@ -10,13 +10,20 @@ var converter = new showdown.Converter();
 const enigma = require('enigma');
 var appId = Meteor.settings.public.IntegrationPresenatationApp;
 
+Template.ppt_integrationMain.onRendered(function() {
+     $('.ui.sidebar')
+        .sidebar('setting', 'transition', 'overlay')
+        .sidebar('toggle');
+})
 Template.ppt_integration.onRendered(function() {
+   
     Session.set('slideLoading', true);
     getLevel1to3('integrationTopics');
     // getLevel1to3('selectedDataSet');
     getLevel1And2();
     appChangeListener();
 })
+
 
 
 Template.ppt_integrationMain.helpers({
@@ -167,7 +174,7 @@ function getLevel1And2() {
                                 var tableWithChapters = insertSectionBreakers(table);
                                 console.log('mainTopics, chapters added and now stored in in session var mainTopics', tableWithChapters);
                                 Session.set('mainTopics', tableWithChapters)
-                                Meteor.setTimeout(function() {                                
+                                Meteor.setTimeout(function() {
 
                                     impress().init();
                                     impress().goto(0);
