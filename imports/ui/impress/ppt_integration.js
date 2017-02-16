@@ -27,10 +27,10 @@ Template.ppt_integration.onRendered(function() {
 
 
 Template.ppt_integrationMain.helpers({
-    mainTopics() {
-        // console.log('ppt main, mainTopics is:',Session.get('mainTopics').length);
-        return Session.get('mainTopics');
-    },
+    showPresentation() {
+        console.log('show the IFRAME');
+        return Session.get('showPresentation');
+    },    
     IFrameURLChapterSelection() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&obj=RZuJ&opt=currsel';
     }
@@ -40,8 +40,22 @@ Template.ppt_integrationMain.events({
     'click .launch': function(event) {
         $('.ui.sidebar')
             .sidebar('toggle');
+    },
+     'mouseover .sidebar.integration': function(event) {
+       Session.set('showPresentation', false);
+    },
+     'mouseout .sidebar.integration': function(event) {
+       console.log('loosefocus event');
+       Session.set('showPresentation', true);
     }
 })
+
+// Template.ppt_integration.events({
+//      'mouseover': function(event) {
+//        console.log('mouseover event presentation');
+//        Session.set('showPresentation', true);
+//     }
+// })
 
 Template.ppt_integration.helpers({
     mainTopics() {
