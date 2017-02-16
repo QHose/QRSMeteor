@@ -6,32 +6,35 @@
     <div class="ui sidebar integration" style="width: 900px;">
         <iframe src='{{IFrameURLChapterSelection}}' style=" margin-top: 45px; width:100%; height: 100%;border: 0 none;"> </iframe>
     </div>
-    <div class="pusher"> 
-    {{#if showPresentation}}
+    <div class="pusher">
+        {{#if showPresentation}}
         <iframe allowfullscreen src="{{pathFor 'ppt_integration'}}" class="frame"></iframe>
-    {{/if}}
+        {{/if}}
     </div>
 </template>
 <template name="ppt_integration">
     <div id="impress">
         {{#if mainTopics}} {{#each mainTopics }} {{#if chapterSlide this}}
+        <!--         Create a chapter breaker if the level 1 has changed in the current row
+ -->
         <div class="z step slide breaker" data-x="{{XValue @index}}" data-z="1000" style="height: 100%">
             {{this}}
         </div>
-        <!-- {{> pageBreaker}} -->
         {{else}}
-        <div class="z {{stepVisible this}} slide integration" data-x="{{XValue @index}}" data-rotate-x="30" data-z="-1000" style="visibility: {{visibility this}};">
-            <h2 style="margin-left: 160px" class="ui header">
+        <div class="z step slide integration" data-x="{{XValue @index}}" data-rotate-x="30" data-z="-1000">
+            <h2 style="" class="ui header">
                 <div class="content">
                     {{level 1}}
-                    <div class="sub header" style="font-size: 1.2em">{{level 2}}</div>
+                    <div class="sub header">{{level 2}}</div>
                 </div>
             </h2>
-            <div class="ui list" style="margin-top: 60px">
+            <div id="bullets" class="ui list">
                 {{#each item in itemsOfLevel 3}} {{{formatted item}}} {{/each}}
             </div>
         </div>
         {{/if}} {{/each}}
+        <!--         If all the slides have been generated insert a last thank you slide
+ -->
         <div class="z step thankYou" data-x="-1000" data-z="3000" style="">
             <img class="ui bottom aligned fluid image" src="images/presentation thank you.png">
         </div>
@@ -42,8 +45,9 @@
             <br/>use a spacebar or arrow keys to navigate</p>
     </div>
     <div class="ui {{#if loading}} active {{/if}} dimmer">
-        <div class="ui indeterminate text loader" style="font-size: 1.3em">Connecting to Qlik Sense Engine API to get the data for the presentation.
-            <br> Once the raw data is ready we use some javascript to create a presentation.</div>
+        <div class="ui indeterminate text loader" style="font-size: 1.3em">
+            <h2>Connecting to Qlik Sense Engine API to get the data for the presentation.
+            <br> Once the raw data is ready we use some javascript to create a presentation. </h2></div>
     </div>
 </template>
 <template name="pageBreaker">

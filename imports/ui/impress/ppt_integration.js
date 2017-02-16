@@ -11,15 +11,12 @@ const enigma = require('enigma');
 var appId = Meteor.settings.public.IntegrationPresenatationApp;
 
 Template.ppt_integrationMain.onRendered(function() {
-     $('.ui.sidebar')
-        .sidebar('setting', 'transition', 'overlay')
+     this.$('.ui.sidebar')
         .sidebar('toggle');
 })
-Template.ppt_integration.onRendered(function() {
-   
+Template.ppt_integration.onRendered(function() {   
     Session.set('slideLoading', true);
     getLevel1to3('integrationTopics');
-    // getLevel1to3('selectedDataSet');
     getLevel1And2();
     appChangeListener();
 })
@@ -45,24 +42,18 @@ Template.ppt_integrationMain.events({
        Session.set('showPresentation', false);
     },
      'mouseout .sidebar.integration': function(event) {
-       console.log('loosefocus event');
        Session.set('showPresentation', true);
+        // $('.ui.sidebar')
+        // .sidebar('toggle'); //Does not work...
     }
 })
 
-// Template.ppt_integration.events({
-//      'mouseover': function(event) {
-//        console.log('mouseover event presentation');
-//        Session.set('showPresentation', true);
-//     }
-// })
-
 Template.ppt_integration.helpers({
     mainTopics() {
-        return Session.get('mainTopics');
+        return Session.get('mainTopics'); //only the level 1 and 2 colums, we need this for the headers of the slide
     },
     topics() {
-        return Session.get('integrationTopics');
+        return Session.get('integrationTopics'); //all level 1 2 and 3 data, we need level 3 for the bullets/images of the slide
     },
     level: function(level) {
         return textOfLevel(this, level);
@@ -73,7 +64,7 @@ Template.ppt_integration.helpers({
             return true
         }
     },
-    itemsOfLevel: function(level) {
+    itemsOfLevel: function(level) { //get all child items of a specific level, normally you will insert level 3 
         var parents = this[level - 3].qText + this[level - 2].qText; //get the names of the parents of the current slide (level 1 and 2)
         if (parents) {
             // console.log('Parent is not empty:', parents);
@@ -84,7 +75,7 @@ Template.ppt_integration.helpers({
         return Session.get('slideLoading');
     },
     XValue(index) {
-        return 1200 * index;
+        return 1300 * index;
     },
     formatted(text) {
         if (youtube_parser(text)) { //youtube video url
@@ -105,28 +96,12 @@ Template.ppt_integration.helpers({
             // return result;
             return '<div class="item" style="margin-left: 160px"><h3>' + result + '</h3></div>';
         }
-    },
-    visibility(currentSlide) {
-        return slideIsVisible(currentSlide) ? 'visible' : 'hidden';
-    },
-    stepVisible(currentSlide) {
-        return slideIsVisible(currentSlide) ? 'step' : '';
     }
 });
 
 function textOfLevel(row, level) {
     level -= 1
     return row[level].qText
-}
-
-function slideIsVisible(currentSlide) {
-    // var allSlides = Session.get('selectedDataSet'); //all slides
-    //     var result = allSlides.find(function(slide) {
-    //         var test = getLevel1and2Names(slide) === getLevel1and2Names(currentSlide)
-    //         return test;    
-    //     });
-    //     return result;
-    return true;
 }
 
 function getLevel1and2Names(slide) {
@@ -225,7 +200,7 @@ var appChangeListener = function appChangeListener() {
                 })
                 .then(qix => {
                     qix.app.on('changed', () => {
-                        console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
+                        // console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
                         // getLevel1to3('selectedDataSet');
                         location.reload();
                     });
@@ -307,7 +282,7 @@ function getLevel1to3(sessionName) {
                                 // console.log('Result set from Qlik Sense:', data);
                                 var table = data[0].qMatrix;
                                 var tableWithChapters = insertSectionBreakers(table);
-                                console.log('New data received, chapters added and now stored in in session var ', sessionName);
+                                // console.log('New data received, chapters added and now stored in in session var ', sessionName);
                                 Session.set(sessionName, tableWithChapters);
                             })
                         })
