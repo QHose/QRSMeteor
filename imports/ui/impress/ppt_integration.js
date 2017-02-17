@@ -81,12 +81,12 @@ Template.ppt_integration.helpers({
         if (youtube_parser(text)) { //youtube video url
             // console.log('found an youtube link so embed with the formatting of semantic ui', text)
             var videoId = youtube_parser(text);
-            var html = '<div class="ui embed" style="margin-left: 50px, padding-top: 80px" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div>'
+            var html = '<div class="ui embed" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div>'
                 // console.log('generated video link: ', html);
             return html;
         } else if (checkTextIsImage(text)) { //image
             // console.log('found an image', text)
-            return '<img class="ui massive centered image" style="margin-top: 20px" src="images/' + text + '">'
+            return '<img class="ui massive centered image"  src="images/' + text + '">'
         } else if (text.startsWith('<')) { //custom HTML
             return text;
         } else { //text 

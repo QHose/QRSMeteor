@@ -85,8 +85,13 @@
 "SaaSDemo.qlik.com","Now take 10 minutes to do it yourself. SaaSDemo.Qlik.com: SaaS with Qlik Sense","[SaaSDemo.Qlik.com](http://saasdemo.qlik.com)",,"","","","","         0","0","Sales",
 "SaaSDemo.qlik.com","SaaS demo architecture introduction","saas demo architecture introduction of components.png",,"","","","","         0","0","PreSales",
 "SaaSDemo.qlik.com","Introduction video integrated Qlik Sense architecture","https://youtu.be/sv5nKDvmRPI?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales, 30 Minute intro",
-"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","integrated Architecture saasdemo setup.png",,"","","","","         0","0","R&D",
-"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","Note: both humans and systems can interact with other humans and systems",,"","","","","         0","0","R&D",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","architecture - OEM SaaS scenario.png",,"","","","","         0","0","R&D",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","R&D",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","R&D",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","SSO is enforced using a ticket with userID and his groups",,"","","","","         0","0","R&D",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","R&D",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 3","integrated Architecture saasdemo setup.png",,"","","","","         0","0","R&D",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 3","Note: both humans and systems can interact with other humans and systems",,"","","","","         0","0","R&D",
 "SaaSDemo.qlik.com","Saas demo architecture deep dive","integratedArchitecture.png",,"","","","","         0","0","R&D",
 "SaaSDemo.qlik.com","Qlik Sense architecture -  Topology overview","[Click here for the Qlik Sense topology](http://saasdemo.qlik.com/images/QlikSense%20TopologiesV0_18.pdf)",,"","","","","         0","0","PreSales",
 "SaaSDemo.qlik.com","Qlik Sense architecture -  Topology overview","architecture - topology.png",,"","","","","         0","0","PreSales",
@@ -224,82 +229,82 @@ $(""#btn_1"").click(function() {
   alert(""Btn 1 Clicked"");
 });
 ```",,"","","","","         0","0","PreSales",
-"Web","Introduction video to Qlik Analytics Platform (QAP)","https://youtu.be/iM_tlwGYJoM?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales, PreSales",
-"Web","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales",
-"Web","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","PreSales, Sales",
-"Web","Front end focussed API overview","API- overview of what they do.png",,"","","","","         0","0","PreSales",
-"Web","Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,"","","","","         0","0","PreSales",
-"Web","How to get started: The Qlik Sense Dev-hub (15M)","https://www.youtube.com/watch?v=hjFlpj7uLl4&feature=share",,"","","","","         0","0","PreSales",
-"Web","How to get started: The Qlik Sense Dev-hub (15M)","This tool helps to create the source code for you. (also see the Visual Studio plugin)",,"","","","","         0","0","PreSales",
-"Web","IFrame integration","<q> IFrame integration</q>",,"","","","","         0","0","PreSales",
-"Web","IFrame integration","web - options to integrate content.png",,"","","","","         0","0","PreSales",
-"Web","Exercise 0: create your first IFrame","With an IFrame you can embed an complete web site. Lets create our first IFrame.",,"","","","","         0","0","Exercises",
-"Web","Exercise 0: create your first IFrame","Go to [w3schools.com](http://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe)",,"","","","","         0","0","Exercises",
-"Web","Exercise 0: create your first IFrame","Change the url to qlik.com",,"","","","","         0","0","Exercises",
-"Web","Exercise 0: create your first IFrame","##Introduction to CSS",,"","","","","         0","0","Exercises",
-"Web","Exercise 0: create your first IFrame","How can we make the IFrame bigger?","```
+"Web integration","Introduction video to Qlik Analytics Platform (QAP)","https://youtu.be/iM_tlwGYJoM?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales, PreSales",
+"Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales",
+"Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","PreSales, Sales",
+"Web integration","Front end focussed API overview","API- overview of what they do.png",,"","","","","         0","0","PreSales",
+"Web integration","Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,"","","","","         0","0","PreSales",
+"Web integration","How to get started: The Qlik Sense Dev-hub (12M) - Inspiration of things you can do...","https://www.youtube.com/watch?v=hjFlpj7uLl4&feature=share",,"","","","","         0","0","PreSales",
+"Web integration","How to get started: The Qlik Sense Dev-hub (12M) - Inspiration of things you can do...","This tool helps to create the source code for you. (also see the Visual Studio plugin)",,"","","","","         0","0","PreSales",
+"Web integration","IFrame integration","<q> IFrame integration</q>",,"","","","","         0","0","PreSales",
+"Web integration","IFrame integration","web - options to integrate content.png",,"","","","","         0","0","PreSales",
+"Web integration","Exercise 0: create your first IFrame","With an IFrame you can embed an complete web site. Lets create our first IFrame.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 0: create your first IFrame","Go to [w3schools.com](http://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 0: create your first IFrame","Change the url to qlik.com",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 0: create your first IFrame","##Introduction to CSS",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 0: create your first IFrame","How can we make the IFrame bigger?","```
 style='border:none; width:100%; height:300px'
 ```",,,,,,,,
-"Web","Exercise 0: create your first IFrame","Or remove the border?",,"","","","","         0","0","Exercises",
-"Web","IFrame - App and Single integration API","https://youtu.be/LSxV7ysLlGs?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","PreSales",
-"Web","IFrame - App and Single integration API (2)","Web - iframe integration.png",,"","","","","         0","0","PreSales",
-"Web","IFrame - App and Single integration API (2)","Example IFrame URL
+"Web integration","Exercise 0: create your first IFrame","Or remove the border?",,"","","","","         0","0","Exercises",
+"Web integration","IFrame - App and Single integration API","https://youtu.be/LSxV7ysLlGs?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","PreSales",
+"Web integration","IFrame - App and Single integration API (2)","Web - iframe integration.png",,"","","","","         0","0","PreSales",
+"Web integration","IFrame - App and Single integration API (2)","Example IFrame URL
 ```
 http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sheetid}/state/analysis
 ```",,"","","","","         0","0","PreSales",
-"Web","IFrame - App and Single integration API (2)","Example IFrame URL with selections
+"Web integration","IFrame - App and Single integration API (2)","Example IFrame URL with selections
 ```
 http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sheetid}/state/analysis/select/{field}/{value1;value2}
 ```",,"","","","","         0","0","PreSales",
-"Web","IFrame - App and Single integration API (2)","[See Qlik help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/AppIntegrationAPI/app-integration-api.htm)",,"","","","","         0","0","PreSales",
-"Web","IFrame - App and Single integration API (2)","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,"","","","","         0","0","PreSales",
-"Web","Demonstration of the Dev-hub: Single object integration (IFrame)","[See IFrame examples on SaaS demo ](http://saasdemo.qlik.com:8080/)",,"","","","","         0","0","PreSales",
-"Web","Exercise IFrame 1: Connect to Qlik Sense","Go to the examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 1: Connect to Qlik Sense","##Some questions about interacting with Qlik Sense.",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 1: Connect to Qlik Sense","Lets think about possible ways to retreive
+"Web integration","IFrame - App and Single integration API (2)","[See Qlik help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/AppIntegrationAPI/app-integration-api.htm)",,"","","","","         0","0","PreSales",
+"Web integration","IFrame - App and Single integration API (2)","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,"","","","","         0","0","PreSales",
+"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","[See IFrame examples on SaaS demo ](http://saasdemo.qlik.com:8080/)",,"","","","","         0","0","PreSales",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Go to the examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","##Some questions about interacting with Qlik Sense.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Lets think about possible ways to retreive
 - An app URL
 - the Sheet URL
 - an object ID",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 1: Connect to Qlik Sense","How can you see the source URL of the IFrame?",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 1: Connect to Qlik Sense","Which proxy does it use?",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 1: Connect to Qlik Sense","If we want to use windows authentication, what should we change?",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 1: Connect to Qlik Sense","How can we clear the selections if the IFrame loads?",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 2: Open anonymous Dev-Hub","Goal: Learn to lookup, the server, the ports, and the virtual proxy settings",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 2: Open anonymous Dev-Hub","Try to open the SaaSdemo.qlik.com dev-hub via the a virtual proxy that has been configured for anonymous access.",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 2: Open anonymous Dev-Hub","If you need information, ask your trainer...",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 3.1: Create  your first IFrame object integration","Go to single-configurator",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 3.1: Create  your first IFrame object integration","Select Sales and customers app",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 3.1: Create  your first IFrame object integration","Select object sales by country",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 3.1: Create  your first IFrame object integration","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 3.1: Create  your first IFrame object integration","See the [answer here](http://jsfiddle.net/dlumkeman/hy67kxov/)",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Go to single-configurator",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Select Sales and customers app",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Select sheet dashboard",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 3.2: Create  your first IFrame sheet integration","See the [answer here](http://jsfiddle.net/dlumkeman/3qac38cd/)",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Go to single-configurator",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Select Sales and customers app",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Select sheet dashboard",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Ensure the IFrame loads with a selection... ",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Now create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 4: Create your first sheet object integration that sets a selection","[See the answer](http://jsfiddle.net/dlumkeman/d8oe54v3/)",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Go to single-configurator",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Select Sales and customers app",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Select 3 objects that you like and paste the IFrame source code in your fiddle",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","If your charts are too small you can use some CSS in the IFrame tag to make the objects bigger",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","```
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","How can you see the source URL of the IFrame?",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Which proxy does it use?",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","If we want to use windows authentication, what should we change?",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","How can we clear the selections if the IFrame loads?",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 2: Open anonymous Dev-Hub","Goal: Learn to lookup, the server, the ports, and the virtual proxy settings",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 2: Open anonymous Dev-Hub","Try to open the SaaSdemo.qlik.com dev-hub via the a virtual proxy that has been configured for anonymous access.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 2: Open anonymous Dev-Hub","If you need information, ask your trainer...",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Go to single-configurator",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Select Sales and customers app",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Select object sales by country",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","See the [answer here](http://jsfiddle.net/dlumkeman/hy67kxov/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Go to single-configurator",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Select Sales and customers app",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Select sheet dashboard",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","See the [answer here](http://jsfiddle.net/dlumkeman/3qac38cd/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Go to single-configurator",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Select Sales and customers app",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Select sheet dashboard",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Ensure the IFrame loads with a selection... ",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Now create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 4: Create your first sheet object integration that sets a selection","[See the answer](http://jsfiddle.net/dlumkeman/d8oe54v3/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Go to single-configurator",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Select Sales and customers app",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Select 3 objects that you like and paste the IFrame source code in your fiddle",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","If your charts are too small you can use some CSS in the IFrame tag to make the objects bigger",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","```
 style='border:none; width:100%; height:300px'
 ```",,"","","","","         0","0","Exercises",
-"Web","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
-"Web","Exercise 6: how can we enable HTTP or HTTPS for Qlik Sense?","You can't mix http with https, so where can we change this setting in Qlik Sense?",,"","","","","         0","0","Exercises",
-"Web","Capabilities API","<q>DIV tag integration with Capabilities API</q>",,"","","","","         0","0","PreSales",
-"Web","Capabilities API","web - options to integrate content.png",,"","","","","         0","0","PreSales",
-"Web","Video: integrate mashups using the Dev-hub (15M)","https://youtu.be/mn9GspU-tDI?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG",,"","","","","         0","0","PreSales",
-"Web","An overview of HTTP - many things are loaded in the browser if you open a page","web - contents of a webpage.png",,"","","","","         0","0","PreSales",
-"Web","Demo Dev-hub:  Mashup editor","Dev-hub: demo mashup editor",,"","","","","         0","0","PreSales",
-"Web","Demo Dev-hub:  Mashup editor","SaaS demo: div tag integration example",,"","","","","         0","0","PreSales",
-"Web","Capabilties API - example code","flow - capabilities API end to end.png",,"","","","","         0","0","PreSales",
-"Web","Capabilties API - example code","First connect to Qlik Sense using the config
+"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 6: how can we enable HTTP or HTTPS for Qlik Sense?","You can't mix http with https, so where can we change this setting in Qlik Sense?",,"","","","","         0","0","Exercises",
+"Web integration","Capabilities API","<q>DIV tag integration with Capabilities API</q>",,"","","","","         0","0","PreSales",
+"Web integration","Capabilities API","web - options to integrate content.png",,"","","","","         0","0","PreSales",
+"Web integration","Video: integrate mashups using the Dev-hub (15M)","https://youtu.be/mn9GspU-tDI?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG",,"","","","","         0","0","PreSales",
+"Web integration","An overview of HTTP - many things are loaded in the browser if you open a page","web - contents of a webpage.png",,"","","","","         0","0","PreSales",
+"Web integration","Demo Dev-hub:  Mashup editor","Dev-hub: demo mashup editor",,"","","","","         0","0","PreSales",
+"Web integration","Demo Dev-hub:  Mashup editor","SaaS demo: div tag integration example",,"","","","","         0","0","PreSales",
+"Web integration","Capabilties API - example code","flow - capabilities API end to end.png",,"","","","","         0","0","PreSales",
+"Web integration","Capabilties API - example code","First connect to Qlik Sense using the config
 ```
 var config = {
  host: ""saasdemo.qlik.com"",
@@ -308,7 +313,7 @@ var config = {
  isSecure: false;
 }
 ```",,"","","","","         0","0","PreSales",
-"Web","Capabilties API - example code","Get charts via qlik.js loaded via require.js on the client
+"Web integration","Capabilties API - example code","Get charts via qlik.js loaded via require.js on the client
 ```
 require( [""js/qlik""], function ( qlik ) {
 
@@ -317,21 +322,21 @@ require( [""js/qlik""], function ( qlik ) {
 app.getObject('DIV1','Ggpaxa');
 ```
 ",,"","","","","         0","0","PreSales",
-"Web","Capabilties API - example code","[See demo on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/multipleDivs)",,"","","","","         0","0","PreSales",
-"Web","Make sure the user is authenticated before you show a mashup","Challenge: if the user is not yet authenticated you well get a websocket error (the red box on previous slide)",,,,,,,,,
-"Web","Make sure the user is authenticated before you show a mashup","To make sure the user is always authenticated you can put a small HTML file on the Qlik Sense server. (returnUrl.html )",,,,,,,,,
-"Web","Make sure the user is authenticated before you show a mashup","```
+"Web integration","Capabilties API - example code","[See demo on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/multipleDivs)",,"","","","","         0","0","PreSales",
+"Web integration","Make sure the user is authenticated before you show a mashup","Challenge: if the user is not yet authenticated you well get a websocket error (the red box on previous slide)",,"","","","","         0","0","R&D",
+"Web integration","Make sure the user is authenticated before you show a mashup","To make sure the user is always authenticated you can put a small HTML file on the Qlik Sense server. (C:\Program Files\Qlik\Sense\Client\returnUrl.html)",,"","","","","         0","0","R&D",
+"Web integration","Make sure the user is authenticated before you show a mashup","```
 <!doctype html>
 <html><head><script>window.location=decodeURIComponent((RegExp('returnUrl=(.+?)(&|$)').exec(location.search)||[,null])[1]);</script></head></html>
-```",,,,,,,,,
-"Web","Make sure the user is authenticated before you show a mashup","In your HTML you first check if the user has access to the Qlik javascript files.  I perform a check to see if the user is authenticated by checking if they could access the qlik script (which is protected by the Proxy):
+```",,"","","","","         0","0","R&D",
+"Web integration","Make sure the user is authenticated before you show a mashup","In your HTML you first check if the user has access to the Qlik javascript files.  I perform a check to see if the user is authenticated by checking if they could access the qlik script (which is protected by the Proxy):
 ```
 if ( typeof(qlik) == 'undefined' ){ window.location=config.returnUrl;}
-```",,,,,,,,,
-"Web","Make sure the user is authenticated before you show a mashup","Here’s the point of returnUrl.html if the user is unauthenticated:
+```",,"","","","","         0","0","R&D",
+"Web integration","Make sure the user is authenticated before you show a mashup","Here’s the point of returnUrl.html if the user is unauthenticated:
 · The user is sent to whatever Authentication module you have defined in the QMC – this can be google/salesforce/local authentication module/default windows authentication.
-The user authenticates and is then sent back to whatever mashup page the user came from, this can be a portal, a regular webpage or whatever.",,,,,,,,,
-"Web","Make sure the user is authenticated before you show a mashup","Example code from the SaaSDemo platform. This is the check I do when the [mashup page](http://saasdemo.qlik.com:8080/multipleDivs) is ready.
+The user authenticates and is then sent back to whatever mashup page the user came from, this can be a portal, a regular webpage or whatever.",,"","","","","         0","0","R&D",
+"Web integration","Make sure the user is authenticated before you show a mashup","Example code from the SaaSDemo platform. This is the check I do when the [mashup page](http://saasdemo.qlik.com:8080/multipleDivs) is ready.
 ```
 checkAuthenticatedInQlik = function checkAuthenticatedInQlik(sourceURL){
  require.config({
@@ -348,81 +353,81 @@ checkAuthenticatedInQlik = function checkAuthenticatedInQlik(sourceURL){
             }
         })
 }
-```",,,,,,,,,
-"Web","Capabilities API - Host whitelist explained ","Capabilities API - DIV tag require.js flow.png",,"","","","","         0","0","PreSales",
-"Web","Capabilities API - Host whitelist explained ","<q>Which domains have access to Qlik Sense Proxy web sockets?</q>",,"","","","","         0","0","PreSales",
-"Web","Mashup using DIV tags - key component interaction flow","capabilities API - DIV tag Saas platform to proxy.png",,"","","","","         0","0","PreSales",
-"Web","Cross site scripting explained (XSS)","web - cross site scripting explained.png",,"","","","","         0","0","PreSales",
-"Web","Cross site scripting explained (XSS)","Note: setting the *Access-Control-Allow-Origin* addition header or populating the host whitelist has the same effect",,"","","","","         0","0","R&D",
-"Web","Cross site scripting explained (XSS)","[see mozilla help](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)",,"","","","","         0","0","R&D",
-"Web","Cross site scripting explained (XSS)","Page something.com loads up the Capabilities API and connects to server qliksense.com
+```",,"","","","","         0","0","R&D",
+"Web integration","Capabilities API - Host whitelist explained ","Capabilities API - DIV tag require.js flow.png",,"","","","","         0","0","PreSales",
+"Web integration","Capabilities API - Host whitelist explained ","<q>Which domains have access to Qlik Sense Proxy web sockets?</q>",,"","","","","         0","0","PreSales",
+"Web integration","Mashup using DIV tags - key component interaction flow","capabilities API - DIV tag Saas platform to proxy.png",,"","","","","         0","0","PreSales",
+"Web integration","Cross site scripting explained (XSS)","web - cross site scripting explained.png",,"","","","","         0","0","PreSales",
+"Web integration","Cross site scripting explained (XSS)","Note: setting the *Access-Control-Allow-Origin* addition header or populating the host whitelist has the same effect",,"","","","","         0","0","R&D",
+"Web integration","Cross site scripting explained (XSS)","[see mozilla help](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)",,"","","","","         0","0","R&D",
+"Web integration","Cross site scripting explained (XSS)","Page something.com loads up the Capabilities API and connects to server qliksense.com
 qliksense.com will then check if something.com  is a allowed origin by matching it against it's whitelist list.
 If so, allow access otherwise deny access with a 403 response",,"","","","","         0","0","R&D",
-"Web","Proxy setting to prevent cross origin issues","Proxy - settings.png",,"","","","","         0","0","R&D",
-"Web","Proxy setting to prevent cross origin issues","CORS error.png",,"","","","","         0","0","R&D",
-"Web","Proxy setting to prevent cross origin issues","error - XMLhttprequest cannot load - access control allow origin header not present.png",,"","","","","         0","0","R&D",
-"Web","Proxy setting to prevent cross origin issues","Note: use this wisely since it is also a security control.",,"","","","","         0","0","R&D",
-"Web","Things you need to know about require.js","Javascript variable names can be global. To prevent conflicts between modules we use require.js.",,"","","","","         0","0","R&D",
-"Web","Things you need to know about require.js","Require.js loads only the pieces of software needed. (packages, or modules)",,"","","","","         0","0","R&D",
-"Web","Things you need to know about require.js","Qlik inserted some extra code",,"","","","","         0","0","R&D",
-"Web","Things you need to know about require.js","So Qlik require is not equal to require.js",,"","","","","         0","0","R&D",
-"Web","Things you need to know about require.js","You really need to use the version that ships with your Sense version",,"","","","","         0","0","R&D",
-"Web","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Go to the dev-hub, mashup editor",,"","","","","         0","0","Exercises",
-"Web","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Create a new mashup project: exercise <groupName> - 1 ",,"","","","","         0","0","Exercises",
-"Web","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Select Sales and customers app",,"","","","","         0","0","Exercises",
-"Web","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Drag and drop some objects and select preview",,"","","","","         0","0","Exercises",
-"Web","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Now try to disable interactivity",,"","","","","         0","0","Exercises",
-"Web","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Try to set a selection",,"","","","","         0","0","Exercises",
-"Web","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Insert a selection bar",,"","","","","         0","0","Exercises",
-"Web","Exercise 2: create a mashup in an external webserver (JSFiddle)","Now we try to put your new mashup from exercise 1 on an external server.",,"","","","","         0","0","Exercises",
-"Web","Exercise 2: create a mashup in an external webserver (JSFiddle)","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/rv3r73rj/)",,"","","","","         0","0","Exercises",
-"Web","Exercise 2: create a mashup in an external webserver (JSFiddle)","Paste the relevant parts from the dev-hub into the fiddle
+"Web integration","Proxy setting to prevent cross origin issues","Proxy - settings.png",,"","","","","         0","0","R&D",
+"Web integration","Proxy setting to prevent cross origin issues","CORS error.png",,"","","","","         0","0","R&D",
+"Web integration","Proxy setting to prevent cross origin issues","error - XMLhttprequest cannot load - access control allow origin header not present.png",,"","","","","         0","0","R&D",
+"Web integration","Proxy setting to prevent cross origin issues","Note: use this wisely since it is also a security control.",,"","","","","         0","0","R&D",
+"Web integration","Things you need to know about require.js","Javascript variable names can be global. To prevent conflicts between modules we use require.js.",,"","","","","         0","0","R&D",
+"Web integration","Things you need to know about require.js","Require.js loads only the pieces of software needed. (packages, or modules)",,"","","","","         0","0","R&D",
+"Web integration","Things you need to know about require.js","Qlik inserted some extra code",,"","","","","         0","0","R&D",
+"Web integration","Things you need to know about require.js","So Qlik require is not equal to require.js",,"","","","","         0","0","R&D",
+"Web integration","Things you need to know about require.js","You really need to use the version that ships with your Sense version",,"","","","","         0","0","R&D",
+"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Go to the dev-hub, mashup editor",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Create a new mashup project: exercise <groupName> - 1 ",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Select Sales and customers app",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Drag and drop some objects and select preview",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Now try to disable interactivity",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Try to set a selection",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Insert a selection bar",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","Now we try to put your new mashup from exercise 1 on an external server.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/rv3r73rj/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","Paste the relevant parts from the dev-hub into the fiddle
 - copy javascript to the javascript part
 - refer to the new placeholder IDs in your javascript",,"","","","","         0","0","Exercises",
-"Web","Exercise 2: create a mashup in an external webserver (JSFiddle)","It could be.... that you have to add ```fiddle.jshell.net``` to your virtual proxy whitelist",,"","","","","         0","0","Exercises",
-"Web","Exercise 2: create a mashup in an external webserver (JSFiddle)","[Solution code](http://jsfiddle.net/dlumkeman/9a69ye4b/)",,"","","","","         0","0","Exercises",
-"Web","On the fly","<q>Create charts on the fly using the Vizualization API</q>",,"","","","","         0","0","PreSales",
-"Web","On the fly","web - options to integrate content.png",,"","","","","         0","0","PreSales",
-"Web","Vizualisation API introduction video","https://youtu.be/_pddhxg5__o",,"","","","","         0","0","PreSales",
-"Web","Create charts on the fly","If you don't want to create charts up front, you can create them on the fly using javascript or visual web components.",,"","","","","         0","0","PreSales",
-"Web","Create charts on the fly","[Vizualizations API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/VisualizationAPI/VisualizationAPI.htm), use javascript to create charts",,"","","","","         0","0","PreSales",
-"Web","Create charts on the fly","```
+"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","It could be.... that you have to add ```fiddle.jshell.net``` to your virtual proxy whitelist",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","[Solution code](http://jsfiddle.net/dlumkeman/9a69ye4b/)",,"","","","","         0","0","Exercises",
+"Web integration","On the fly","<q>Create charts on the fly using the Vizualization API</q>",,"","","","","         0","0","PreSales",
+"Web integration","On the fly","web - options to integrate content.png",,"","","","","         0","0","PreSales",
+"Web integration","Vizualisation API introduction video","https://youtu.be/_pddhxg5__o",,"","","","","         0","0","PreSales",
+"Web integration","Create charts on the fly","If you don't want to create charts up front, you can create them on the fly using javascript or visual web components.",,"","","","","         0","0","PreSales",
+"Web integration","Create charts on the fly","[Vizualizations API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/VisualizationAPI/VisualizationAPI.htm), use javascript to create charts",,"","","","","         0","0","PreSales",
+"Web integration","Create charts on the fly","```
 app.visualization.create('barchart',[""Case Owner Group"",""=Avg([Case Duration Time])""],
  {""title"":""On the fly barchart""}
 ```",,"","","","","         0","0","PreSales",
-"Web","Create charts on the fly","[Visuals web components](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/QlikVisual/qlik-visual.htm). Use Sense HTML Tags in a declarative manner","",,,,,,,,
-"Web","Create charts on the fly","```
+"Web integration","Create charts on the fly","[Visuals web components](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/QlikVisual/qlik-visual.htm). Use Sense HTML Tags in a declarative manner","",,,,,,,,
+"Web integration","Create charts on the fly","```
 <qlik-visual appid=""Helpdesk Management.qvf""     
 type=""barchart""     cols='[""Case Owner Group"",""=Avg([Case Duration Time])""]'     
 options='{""title"":""On the fly barchart""}'></qlik-visual>
 ```",,"","","","","         0","0","PreSales",
-"Web","Create charts on the fly","[Try it via JS Fiddle](https://jsfiddle.net/mindspank/fs62hwk3/3/)",,"","","","","         0","0","PreSales",
-"Web","Create charts on the fly","[See example on SaaS demo](http://saasdemo.qlik.com:8080/onTheFlybarChart)",,"","","","","         0","0","PreSales",
-"Web","Create charts on the fly","[See the Qlik Sense help examples](http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Mashups/Content/Howtos/create-visualization-on-the-fly.htm)",,"","","","","         0","0","PreSales",
-"Web","Create charts on the fly","qlik-visuals-result.png",,"","","","","         0","0","PreSales",
-"Web","Exercise 1: Create a bar chart using the vizualization API","Use [this fiddle](http://jsfiddle.net/dlumkeman/rv3r73rj/) as a starting template",,"","","","","         0","0","Exercises",
-"Web","Exercise 1: Create a bar chart using the vizualization API","Copy the config and some other useful scripts from your mashup API dev-hub code",,"","","","","         0","0","Exercises",
-"Web","Exercise 1: Create a bar chart using the vizualization API","[Use the Vizualizations API help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/VisualizationAPI/VisualizationAPI.htm)",,"","","","","         0","0","Exercises",
-"Web","Exercise 1: Create a bar chart using the vizualization API","[See the answer here](http://jsfiddle.net/dlumkeman/oa6d9qgy/)",,"","","","","         0","0","Exercises",
-"Web","Data only","<q>Data only</q>",,"","","","","         0","0","PreSales",
-"Web","Data only","web - options to integrate content.png",,"","","","","         0","0","PreSales",
-"Web","Use case","Use this if you have your own vizualization libraries (software)",,"","","","","         0","0","PreSales",
-"Web","Use case","You only use the associative model of Qlik",,"","","","","         0","0","PreSales",
-"Web","Use case","The layout is done via non Qlik software",,"","","","","         0","0","PreSales",
-"Web","Use case","SaaS platform and Qlik Sense will be kept in sync via websocket events if something changes in Qlik Sense.",,"","","","","         0","0","PreSales",
-"Web","Use case","No limits, you can programatically make selections and get data out of Qlik Sense and format it as you like.",,"","","","","         0","0","PreSales",
-"Web","Use case","[See an example on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/tableUsingWidgets)",,"","","","","         0","0","PreSales",
-"Web","Qlik Sense as high performance data warehouse","You can query Sense from your SaaS Platform, in order to
+"Web integration","Create charts on the fly","[Try it via JS Fiddle](https://jsfiddle.net/mindspank/fs62hwk3/3/)",,"","","","","         0","0","PreSales",
+"Web integration","Create charts on the fly","[See example on SaaS demo](http://saasdemo.qlik.com:8080/onTheFlybarChart)",,"","","","","         0","0","PreSales",
+"Web integration","Create charts on the fly","[See the Qlik Sense help examples](http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Mashups/Content/Howtos/create-visualization-on-the-fly.htm)",,"","","","","         0","0","PreSales",
+"Web integration","Create charts on the fly","qlik-visuals-result.png",,"","","","","         0","0","PreSales",
+"Web integration","Exercise 1: Create a bar chart using the vizualization API","Use [this fiddle](http://jsfiddle.net/dlumkeman/rv3r73rj/) as a starting template",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 1: Create a bar chart using the vizualization API","Copy the config and some other useful scripts from your mashup API dev-hub code",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 1: Create a bar chart using the vizualization API","[Use the Vizualizations API help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/VisualizationAPI/VisualizationAPI.htm)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 1: Create a bar chart using the vizualization API","[See the answer here](http://jsfiddle.net/dlumkeman/oa6d9qgy/)",,"","","","","         0","0","Exercises",
+"Web integration","Data only","<q>Data only</q>",,"","","","","         0","0","PreSales",
+"Web integration","Data only","web - options to integrate content.png",,"","","","","         0","0","PreSales",
+"Web integration","Use case","Use this if you have your own vizualization libraries (software)",,"","","","","         0","0","PreSales",
+"Web integration","Use case","You only use the associative model of Qlik",,"","","","","         0","0","PreSales",
+"Web integration","Use case","The layout is done via non Qlik software",,"","","","","         0","0","PreSales",
+"Web integration","Use case","SaaS platform and Qlik Sense will be kept in sync via websocket events if something changes in Qlik Sense.",,"","","","","         0","0","PreSales",
+"Web integration","Use case","No limits, you can programatically make selections and get data out of Qlik Sense and format it as you like.",,"","","","","         0","0","PreSales",
+"Web integration","Use case","[See an example on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/tableUsingWidgets)",,"","","","","         0","0","PreSales",
+"Web integration","Qlik Sense as high performance data warehouse","You can query Sense from your SaaS Platform, in order to
 * make a selection
 * get selected values, 
 * get a list of values
 * create a query and vizualize with your own library (D3, google charts)
 * register events to get associativity
 * maintain Sense",,"","","","","         0","0","R&D",
-"Web","Qlik Sense as high performance data warehouse","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","R&D",
-"Web","Qlik Sense as high performance data warehouse","postman response.png",,"","","","","         0","0","R&D",
-"Web","Table API","API- table api - get table.png",,"","","","","         0","0","R&D",
-"Web","Table API","```
+"Web integration","Qlik Sense as high performance data warehouse","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","R&D",
+"Web integration","Qlik Sense as high performance data warehouse","postman response.png",,"","","","","         0","0","R&D",
+"Web integration","Table API","API- table api - get table.png",,"","","","","         0","0","R&D",
+"Web integration","Table API","```
  require.config({
         baseUrl: ""http://"" + qConfig.host + (qConfig.port ? "":"" + qConfig.port : """") + qConfig.prefix + ""resources""
     });
@@ -438,26 +443,26 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
         table.OnData.bind(listener); //bind the listener
     })
 ```",,"","","","","         0","0","R&D",
-"Web","Widgets","https://youtu.be/KJ9r-tMJ9OM?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","R&D",
-"Web","Extentions","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","R&D",
-"Web","Web integration problem solving 1","Issue: DIV tag does not work","Qlik Sense ports are blocked",,,,,,,,
-"Web","Web integration problem solving 1","Issue: DIV tag does not work","Section access is active, and username or group is not present",,,,,,,,
-"Web","Web integration problem solving 1","Issue: DIV tag does not work","App is not published",,,,,,,,
-"Web","Web integration problem solving 1","go to VM snapshot 1",,"","","","","         0","0","Support",
-"Web","Web integration problem solving 2","Issue: DIV tag does not work","whitelist does not contain server name",,,,,,,,
-"Web","Web integration problem solving 2","Issue: DIV tag does not work","Virtual Proxy not linked to proxy",,,,,,,,
-"Web","Web integration problem solving 2","Issue: DIV tag does not work","Access allow origin header not present in proxy advanced settings",,,,,,,,
-"Web","Web integration problem solving 2","go to VM snapshot 2",,"","","","","         0","0","Support",
-"Web","Web integration problem solving 3","Issue: App integration IFrame too small",,"","","","","         0","0","Support",
-"Web","Web integration problem solving 3","[Go to this link to see the issue and solve it](http://jsfiddle.net/dlumkeman/d8oe54v3/)",,"","","","","         0","0","Support",
-"Web","Web integration problem solving 4","Issue: Qlik Sense does not respond to clicks","NoInteraction option is set to true in IFrame url",,,,,,,,
-"Web","Web integration problem solving 4","[Go to this link to see the issue and solve it](http://jsfiddle.net/dlumkeman/bxuvqftw/)","<iframe src='http://saasdemo.qlik.com:81/anon/single/?appid=6bd9b09d-15ad-4d3e-8149-dbb32ce1e1b0&sheet=PumJhh&select=Country,Canada&select=City,Vancouver'style='border:none; width:100%; height:800px'></iframe>",,,,,,,,
-"Web","Web integration problem - fiddle 1","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/nk7qyvkj/)","wrong proxy",,,,,,,,
-"Web","Web integration problem - fiddle 2","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/est1ccsj/)","https instead of http",,,,,,,,
-"Web","Web integration problem - fiddle 3","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/Ljv9r2Lz/)","Wrong port",,,,,,,,
-"Web","Web integration problem - fiddle 4","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/zz9ftg5y/)","wrong objectID",,,,,,,,
-"Web","Web integration problem - fiddle 5","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/we00bs5h/)","Wrong require.js version",,,,,,,,
-"Web","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise.png",,"","","","","         0","0","PreSales",
+"Web integration","Widgets","https://youtu.be/KJ9r-tMJ9OM?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","R&D",
+"Web integration","Extentions","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","R&D",
+"Web integration","Web integration problem solving 1","Issue: DIV tag does not work","Qlik Sense ports are blocked",,,,,,,,
+"Web integration","Web integration problem solving 1","Issue: DIV tag does not work","Section access is active, and username or group is not present",,,,,,,,
+"Web integration","Web integration problem solving 1","Issue: DIV tag does not work","App is not published",,,,,,,,
+"Web integration","Web integration problem solving 1","go to VM snapshot 1",,"","","","","         0","0","Support",
+"Web integration","Web integration problem solving 2","Issue: DIV tag does not work","whitelist does not contain server name",,,,,,,,
+"Web integration","Web integration problem solving 2","Issue: DIV tag does not work","Virtual Proxy not linked to proxy",,,,,,,,
+"Web integration","Web integration problem solving 2","Issue: DIV tag does not work","Access allow origin header not present in proxy advanced settings",,,,,,,,
+"Web integration","Web integration problem solving 2","go to VM snapshot 2",,"","","","","         0","0","Support",
+"Web integration","Web integration problem solving 3","Issue: App integration IFrame too small",,"","","","","         0","0","Support",
+"Web integration","Web integration problem solving 3","[Go to this link to see the issue and solve it](http://jsfiddle.net/dlumkeman/d8oe54v3/)",,"","","","","         0","0","Support",
+"Web integration","Web integration problem solving 4","Issue: Qlik Sense does not respond to clicks","NoInteraction option is set to true in IFrame url",,,,,,,,
+"Web integration","Web integration problem solving 4","[Go to this link to see the issue and solve it](http://jsfiddle.net/dlumkeman/bxuvqftw/)","<iframe src='http://saasdemo.qlik.com:81/anon/single/?appid=6bd9b09d-15ad-4d3e-8149-dbb32ce1e1b0&sheet=PumJhh&select=Country,Canada&select=City,Vancouver'style='border:none; width:100%; height:800px'></iframe>",,,,,,,,
+"Web integration","Web integration problem - fiddle 1","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/nk7qyvkj/)","wrong proxy",,,,,,,,
+"Web integration","Web integration problem - fiddle 2","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/est1ccsj/)","https instead of http",,,,,,,,
+"Web integration","Web integration problem - fiddle 3","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/Ljv9r2Lz/)","Wrong port",,,,,,,,
+"Web integration","Web integration problem - fiddle 4","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/zz9ftg5y/)","wrong objectID",,,,,,,,
+"Web integration","Web integration problem - fiddle 5","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/we00bs5h/)","Wrong require.js version",,,,,,,,
+"Web integration","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise.png",,"","","","","         0","0","PreSales",
 "Security - functional design","Introduction to application level security","Authentication: Who is the user?",,,,,,,,,
 "Security - functional design","Introduction to application level security","Authorization: What can he do?",,"","","","","         0","0","PreSales",
 "Security - functional design","Introduction to application level security","securityRules.png",,"","","","","         0","0","PreSales",
@@ -585,89 +590,89 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "SaaS demo security","Example: Give access to 1 app (guid)","App is not published",,"","","","","         0","0","PreSales",
 "SaaS demo security","Example: Give access to 1 app (guid)","Security rules - give access to 1 unpublished app.png",,"","","","","         0","0","PreSales",
 "SaaS demo security","Example: Give access to 1 app (guid)","app - unpublished - no stream.png",,"","","","","         0","0","PreSales",
-"API","Lets look at some Qlik Sense integration scenarios","Qlik Sense charts/data are embedded into a website.",,"","","","","         0","0","R&D, PreSales",
-"API","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","R&D, PreSales",
-"API","Lets look at some Qlik Sense integration scenarios","Authorization: And will only see its own data?",,"","","","","         0","0","R&D, PreSales",
-"API","Lets look at some Qlik Sense integration scenarios","summary_integrated_architecture.png",,"","","","","         0","0","R&D, PreSales",
-"API","Video: APIs have business value","https://www.youtube.com/watch?v=43GwNbJ_YBY&t=497s",,"","","","","         0","0","R&D, PreSales",
-"API","APIs - both the browser and servers can talk to Qlik Sense","API- both server and user can talk to Sense.png",,"","","","","         0","0","R&D",
-"API","Client - Server: Which use cases belong where?","Front end focused
+"API integration","Lets look at some Qlik Sense integration scenarios","Qlik Sense charts/data are embedded into a website.",,"","","","","         0","0","R&D, PreSales",
+"API integration","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","R&D, PreSales",
+"API integration","Lets look at some Qlik Sense integration scenarios","Authorization: And will only see its own data?",,"","","","","         0","0","R&D, PreSales",
+"API integration","Lets look at some Qlik Sense integration scenarios","summary_integrated_architecture.png",,"","","","","         0","0","R&D, PreSales",
+"API integration","Video: APIs have business value","https://www.youtube.com/watch?v=43GwNbJ_YBY&t=497s",,"","","","","         0","0","R&D, PreSales",
+"API integration","APIs - both the browser and servers can talk to Qlik Sense","API- both server and user can talk to Sense.png",,"","","","","         0","0","R&D",
+"API integration","Client - Server: Which use cases belong where?","Front end focused
 - Automate things on behalf of an end user
 - Open app
 - Make selection
 - Get chart or data",,"","","","","         0","0","R&D",
-"API","Client - Server: Which use cases belong where?","Server side focused
+"API integration","Client - Server: Which use cases belong where?","Server side focused
 - login user (request ticket)
 - QMC activities like delete or reload app.
 - Perform back end activities (insert configuration, licenses, security rules, apps)",,"","","","","         0","0","R&D",
-"API","Qlik Sense API summary","APIs - Qlik sense api overview.png",,"","","","","         0","0","R&D, PreSales",
-"API","Front end focussed API overview","API- overview of what they do.png",,"","","","","         0","0","R&D, PreSales",
-"API","Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,"","","","","         0","0","R&D, PreSales",
-"API","Client facing APIs use the Engine API","API - all apis have engine api as the basis.png",,,,,,,,,
-"API","Font end APIs: Next we demonstrate some examples","Embedding the Hub",,"","","","","         0","0","R&D, PreSales",
-"API","Font end APIs: Next we demonstrate some examples","Creating extra functionality in Qlik Sense",,"","","","","         0","0","R&D, PreSales",
-"API","Font end APIs: Next we demonstrate some examples","Requesting a list of apps from a SaaS platform",,"","","","","         0","0","R&D, PreSales",
-"API","Font end APIs: Next we demonstrate some examples","Remember: always think where you are, to see which APIs you need to use",,"","","","","         0","0","R&D",
-"API","Font end APIs: Embed Qlik Sense in other applications","[See SaaSdemo.qlik.com for a example where we embedded the hub](http://saasdemo.qlik.com:8080/)",,"","","","","         0","0","R&D, PreSales",
-"API","Font end APIs: Embed Qlik Sense in other applications","Saasdemo web integration hub.png",,"","","","","         0","0","R&D, PreSales",
-"API","Font end APIs Create extra functionality in Qlik Sense using extentions","extentionsExamples.png",,"","","","","         0","0","R&D, PreSales",
-"API","Font end APIs Create extra functionality in Qlik Sense using extentions","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-api-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","R&D, PreSales",
-"API","Example of an API interaction where we connect via the browser to the QRS API using header authentication","flow - REST get apps.png",,"","","","","         0","0","R&D, PreSales",
-"API","Example of an API interaction where we connect via the browser to the QRS API using header authentication","postman request.png",,"","","","","         0","0","R&D, PreSales",
-"API","Example of an API interaction where we connect via the browser to the QRS API using header authentication","postman response.png",,"","","","","         0","0","R&D, PreSales",
-"API","Back end focussed API overview","Back-end_API-Overview.png",,"","","","","         0","0","R&D, PreSales",
-"API","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","R&D, PreSales",
-"API","Whiteboard exercise","Create a diagram on the whiteboard that reflects your current architecture.  ",,"","","","","         0","0","R&D, Exercises",
-"API","Whiteboard exercise","Servers",,"","","","","         0","0","R&D, Exercises",
-"API","Whiteboard exercise","Ip adresses",,"","","","","         0","0","R&D, Exercises",
-"API","Whiteboard exercise","Ports",,"","","","","         0","0","R&D, Exercises",
-"API","The location, the use case and programming language matters","All activities inside an app
+"API integration","Qlik Sense API summary","APIs - Qlik sense api overview.png",,"","","","","         0","0","R&D, PreSales",
+"API integration","Front end focussed API overview","API- overview of what they do.png",,"","","","","         0","0","R&D, PreSales",
+"API integration","Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,"","","","","         0","0","R&D, PreSales",
+"API integration","Client facing APIs use the Engine API","API - all apis have engine api as the basis.png",,,,,,,,,
+"API integration","Font end APIs: Next we demonstrate some examples","Embedding the Hub",,"","","","","         0","0","R&D, PreSales",
+"API integration","Font end APIs: Next we demonstrate some examples","Creating extra functionality in Qlik Sense",,"","","","","         0","0","R&D, PreSales",
+"API integration","Font end APIs: Next we demonstrate some examples","Requesting a list of apps from a SaaS platform",,"","","","","         0","0","R&D, PreSales",
+"API integration","Font end APIs: Next we demonstrate some examples","Remember: always think where you are, to see which APIs you need to use",,"","","","","         0","0","R&D",
+"API integration","Font end APIs: Embed Qlik Sense in other applications","[See SaaSdemo.qlik.com for a example where we embedded the hub](http://saasdemo.qlik.com:8080/)",,"","","","","         0","0","R&D, PreSales",
+"API integration","Font end APIs: Embed Qlik Sense in other applications","Saasdemo web integration hub.png",,"","","","","         0","0","R&D, PreSales",
+"API integration","Font end APIs Create extra functionality in Qlik Sense using extentions","extentionsExamples.png",,"","","","","         0","0","R&D, PreSales",
+"API integration","Font end APIs Create extra functionality in Qlik Sense using extentions","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-api-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","R&D, PreSales",
+"API integration","Example of an API interaction where we connect via the browser to the QRS API using header authentication","flow - REST get apps.png",,"","","","","         0","0","R&D, PreSales",
+"API integration","Example of an API interaction where we connect via the browser to the QRS API using header authentication","postman request.png",,"","","","","         0","0","R&D, PreSales",
+"API integration","Example of an API interaction where we connect via the browser to the QRS API using header authentication","postman response.png",,"","","","","         0","0","R&D, PreSales",
+"API integration","Back end focussed API overview","Back-end_API-Overview.png",,"","","","","         0","0","R&D, PreSales",
+"API integration","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","R&D, PreSales",
+"API integration","Whiteboard exercise","Create a diagram on the whiteboard that reflects your current architecture.  ",,"","","","","         0","0","R&D, Exercises",
+"API integration","Whiteboard exercise","Servers",,"","","","","         0","0","R&D, Exercises",
+"API integration","Whiteboard exercise","Ip adresses",,"","","","","         0","0","R&D, Exercises",
+"API integration","Whiteboard exercise","Ports",,"","","","","         0","0","R&D, Exercises",
+"API integration","The location, the use case and programming language matters","All activities inside an app
 - Capabilities API
 - Engine API",,"","","","","         0","0","R&D",
-"API","The location, the use case and programming language matters","All activities that you would normally do in the QMC:
+"API integration","The location, the use case and programming language matters","All activities that you would normally do in the QMC:
 - QRS API",,"","","","","         0","0","R&D",
-"API","The location, the use case and programming language matters","Based on javascript, REST, .NET or websockets.",,"","","","","         0","0","R&D",
-"API","The location, the use case and programming language matters","[See all APIs here](https://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm)",,"","","","","         0","0","R&D",
-"API","Building Windows applications","Use the
+"API integration","The location, the use case and programming language matters","Based on javascript, REST, .NET or websockets.",,"","","","","         0","0","R&D",
+"API integration","The location, the use case and programming language matters","[See all APIs here](https://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm)",,"","","","","         0","0","R&D",
+"API integration","Building Windows applications","Use the
 -  [.NET SDK](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/NetSDKAPI/Content/QvNetClient_Reference/Net-Sdk-Reference-Redirect.htm) and 
 - [visual studio plugin](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Plugins/Content/Introduction/Plugin-Intro.htm) to integrate Qlik Sense in your own Windows .NET applications.",,"","","","","         0","0","R&D",
-"API","Building Windows applications","When you have installed the plugin you will be able to:
+"API integration","Building Windows applications","When you have installed the plugin you will be able to:
 - Connect to Qlik Sense servers.
 - See all your apps, with related sheets and objects.
 - See a preview of the object.
 - See the properties of the server and charts.
 - Drag-and-drop objects (in different modes) directly into your code.",,"","","","","         0","0","R&D",
-"API","Introduction video Visual Studio plugin","https://youtu.be/tbH5pHDwYXg",,"","","","","         0","0","R&D",
-"API","Example options to get charts/data in your SaaS platform","API - options - web page wants sum of sales per country.png",,"","","","","         0","0","R&D",
-"API","How to connect to the Javascript, Engine or QRS API?","API flow browser to capabilities engine qrs api.png",,"","","","","         0","0","R&D",
-"API","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","R&D",
-"API","QPS API","Login",,"","","","","         0","0","R&D, PreSales",
-"API","QPS API","Logout",,"","","","","         0","0","R&D, PreSales",
-"API","QPS API","Load balancing",,"","","","","         0","0","R&D, PreSales",
-"API","QRS API","What can you do with the QRS API?
+"API integration","Introduction video Visual Studio plugin","https://youtu.be/tbH5pHDwYXg",,"","","","","         0","0","R&D",
+"API integration","Example options to get charts/data in your SaaS platform","API - options - web page wants sum of sales per country.png",,"","","","","         0","0","R&D",
+"API integration","How to connect to the Javascript, Engine or QRS API?","API flow browser to capabilities engine qrs api.png",,"","","","","         0","0","R&D",
+"API integration","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","R&D",
+"API integration","QPS API","Login",,"","","","","         0","0","R&D, PreSales",
+"API integration","QPS API","Logout",,"","","","","         0","0","R&D, PreSales",
+"API integration","QPS API","Load balancing",,"","","","","         0","0","R&D, PreSales",
+"API integration","QRS API","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
 - copy/delete apps and streams
 - reload apps
 - get and update system rules
 - get (extract) and update settings",,"","","","","         0","0","R&D, PreSales",
-"API","QRS API","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","R&D, PreSales",
-"API","Engine API","Automate everything inside a QVF",,"","","","","         0","0","R&D, PreSales",
-"API","How to create the source code?","[Visual studio plugin](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Plugins/Content/Introduction/Plugin-Intro.htm)",,"","","","","         0","0","R&D",
-"API","How to create the source code?","[Development hub](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Dev-Hub/Content/Overview/dev-hub-launch-dev-hub.htm)",,"","","","","         0","0","R&D",
-"API","Certificate authentication requirements","All services in the Qlik Sense deployment authenticate their communication using an SSL certificate. ",,"","","","","         0","0","R&D",
-"API","Certificate authentication requirements","The same certificate can also be used to authenticate with the Qlik Sense Repository Service (QRS) and Proxy (QPS) API. When authenticating using this method, the communication is made directly against the QRS/QPS.",,"","","","","         0","0","R&D",
-"API","Certificate authentication requirements","If APIs are to be accessed from a remote server, client certificates need to be exported from the Qlik Management Console (QMC) and installed on the calling server.",,"","","","","         0","0","R&D",
-"API","Certificate authentication requirements","All requests must carry administrator level permissions",,"","","","","         0","0","R&D",
-"API","How to debug issues?","Make a simple architecture diagram",,"","","","","         0","0","R&D",
-"API","How to debug issues?","Always start to make the solution as simple as possible",,"","","","","         0","0","R&D",
-"API","How to debug issues?","Try to open the app directly (hub)",,"","","","","         0","0","R&D",
-"API","How to debug issues?","Press F12- console to see if you have errors ",,"","","","","         0","0","R&D",
-"API","How to debug issues?","Try to close your browser an  re-open",,"","","","","         0","0","R&D",
-"API","How to debug issues?","Press F5 / Refresh page",,"","","","","         0","0","R&D",
-"API","Javascript or CSS won't load","Check browser console (F12) for errors",,"","","","","         0","0","R&D",
-"API","Javascript or CSS won't load","Check the source location of the files the HTML tries to load. ",,"","","","","         0","0","R&D",
-"API","Javascript or CSS won't load","Try to open the link in your browser and see the result",,"","","","","         0","0","R&D",
-"API","Javascript or CSS won't load","Do you see the source code? (ok)",,"","","","","         0","0","R&D",
+"API integration","QRS API","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","R&D, PreSales",
+"API integration","Engine API","Automate everything inside a QVF",,"","","","","         0","0","R&D, PreSales",
+"API integration","How to create the source code?","[Visual studio plugin](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Plugins/Content/Introduction/Plugin-Intro.htm)",,"","","","","         0","0","R&D",
+"API integration","How to create the source code?","[Development hub](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Dev-Hub/Content/Overview/dev-hub-launch-dev-hub.htm)",,"","","","","         0","0","R&D",
+"API integration","Certificate authentication requirements","All services in the Qlik Sense deployment authenticate their communication using an SSL certificate. ",,"","","","","         0","0","R&D",
+"API integration","Certificate authentication requirements","The same certificate can also be used to authenticate with the Qlik Sense Repository Service (QRS) and Proxy (QPS) API. When authenticating using this method, the communication is made directly against the QRS/QPS.",,"","","","","         0","0","R&D",
+"API integration","Certificate authentication requirements","If APIs are to be accessed from a remote server, client certificates need to be exported from the Qlik Management Console (QMC) and installed on the calling server.",,"","","","","         0","0","R&D",
+"API integration","Certificate authentication requirements","All requests must carry administrator level permissions",,"","","","","         0","0","R&D",
+"API integration","How to debug issues?","Make a simple architecture diagram",,"","","","","         0","0","R&D",
+"API integration","How to debug issues?","Always start to make the solution as simple as possible",,"","","","","         0","0","R&D",
+"API integration","How to debug issues?","Try to open the app directly (hub)",,"","","","","         0","0","R&D",
+"API integration","How to debug issues?","Press F12- console to see if you have errors ",,"","","","","         0","0","R&D",
+"API integration","How to debug issues?","Try to close your browser an  re-open",,"","","","","         0","0","R&D",
+"API integration","How to debug issues?","Press F5 / Refresh page",,"","","","","         0","0","R&D",
+"API integration","Javascript or CSS won't load","Check browser console (F12) for errors",,"","","","","         0","0","R&D",
+"API integration","Javascript or CSS won't load","Check the source location of the files the HTML tries to load. ",,"","","","","         0","0","R&D",
+"API integration","Javascript or CSS won't load","Try to open the link in your browser and see the result",,"","","","","         0","0","R&D",
+"API integration","Javascript or CSS won't load","Do you see the source code? (ok)",,"","","","","         0","0","R&D",
 "QRS API","What is the QRS REST API?","<q>Basically an extra layer around the QMC</q>",,"","","","","         0","0","R&D, PreSales",
 "QRS API","What can you do with the QRS REST API?","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
@@ -970,8 +975,7 @@ call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' 
 "Proxy (QPS) API","Exercise 1: Ticketing and connection fails","Go to snapshot 3 and solve the issue","proxy service is not running, we blocked port 4243 on the sense server via the firewall","","","","","         0","0","Exercises",
 "Proxy (QPS) API","Exercise 1: Ticketing and connection fails","Go to your server/selfService to see the issue",,"","","","","         0","0","Exercises",
 "Engine API","Introduction to QIX Engine API","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","R&D",
-"Engine API","Engine API","What can you do with the Engine API?",,"","","","","         0","0","R&D",
-"Engine API","Engine API","
+"Engine API","What can you do with the Engine API?","
 Basically everything you can do when you open an app in the hub.
 - Get list of streams and apps
 - Open an app
@@ -981,16 +985,17 @@ Basically everything you can do when you open an app in the hub.
 - Copy an app",,"","","","","         0","0","R&D",
 "Engine API","What can you do? Which end points are available?","Use the engine API explorer of the dev-hub",,"","","","","         0","0","R&D",
 "Engine API","What can you do? Which end points are available?","Engine API - example screenshot.png",,"","","","","         0","0","R&D",
-"Engine API","Introduction video: Engine API explorer","This tool lets you see 
-- which functionality is available
-- what are the requests and responses",,"","","","","         0","0","R&D",
+"Engine API","Introduction video: Engine API explorer","This tool demonstrates
+- the methods you can call
+- the requests and responses",,"","","","","         0","0","R&D",
+"Engine API","Introduction video: Engine API explorer","Check the help for the required parameters, or the schema matching your Sense version.",,,,,,,,,
 "Engine API","Introduction video: Engine API explorer","https://youtu.be/LqcFDe7V-CU?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","R&D",
 "Engine API","Demo Dev-hub Engine API explorer","Dev-hub",,"","","","","         0","0","R&D",
 "Engine API","Demo Dev-hub Engine API explorer","SaaS demo ",,"","","","","         0","0","R&D",
 "Engine API","How to connect","engine API - how to connect.png",,"","","","","         0","0","R&D",
 "Engine API","Enigma component architecture","web - enigma integration.png",,"","","","","         0","0","R&D",
 "Engine API","Example Engine API flow when you create a session object (on the fly) for a chart","API - Engine - get table data.png",,"","","","","         0","0","R&D",
-"Engine API","Engine API - architecture","Engine API - architecture.png",,"","","","","         0","0","R&D",
+"Engine API","Engine API - architecture","Engine API - architecture.png",,,,,,,,,
 "Engine API","Enigma - Example code","```
 const enigma = require('enigma.js');
 const qixSchema = require('./node_modules/enigma.js/schemas/qix/3.1/schema.json');
@@ -1354,22 +1359,22 @@ document.addEventListener('click', function(e) {
 "Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","External users connect to Qlik Sense via the internet",,"","","","","         0","0","R&D",
 "Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","R&D",
 "Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","architecture - authenticating reverse proxy.png",,"","","","","         0","0","R&D",
-"Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","External users connect via SaaS platform to Qlik Sense",,"","","","","         0","0","PreSales",
-"Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","Users connect to the Qlik Sense hub directly or via an IFrame",,"","","","","         0","0","PreSales",
-"Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","the SaaS platform contains a DIV tag integration",,"","","","","         0","0","PreSales",
-"Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","SSO is enforced using a ticket",,"","","","","         0","0","PreSales",
 "Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","architecture - OEM SaaS scenario.png",,"","","","","         0","0","PreSales",
-"Data","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
-"Data","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,"","","","","         0","0","PreSales",
-"Data","How to create a QVD? ","data - create qvd.png",,"","","","","         0","0","PreSales",
-"Data","Use QVDs to re-use entities in multiple apps and enrich them","data - bus matrix dimensions to business process.png",,"","","","","         0","0","PreSales",
-"Data","Use QVDs to re-use entities in multiple apps and enrich them","In this scenario we would like to create 1 business intelligence environment for the whole company. In order to do this, you first have to divide your company into processes, and define which entities are relevant per process:",,"","","","","         0","0","PreSales",
-"Data","Use QVDs to create an ETL application architecture","data - data flow layers.png",,"","","","","         0","0","PreSales",
-"Data","Connectors","[Connectors on Qlik help](https://help.qlik.com/en-US/connectors/Content/QlikSense.htm)",,"","","","","         0","0","PreSales",
-"Data","Connectors","[Connector videos](https://help.qlik.com/en-US/connectors/Content/Videos/Videos.htm)",,"","","","","         0","0","PreSales",
-"Data","Data governance","data governance flow ETL.png",,"","","","","         0","0","PreSales",
-"Data","Incremental load script","You can also combine your actuals with historic data from a QVD.",,"","","","","         0","0","PreSales",
-"Data","Incremental load script","```
+"Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","PreSales",
+"Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","PreSales",
+"Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","SSO is enforced using a ticket with userID and his groups",,"","","","","         0","0","PreSales",
+"Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","PreSales",
+"Data integration","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
+"Data integration","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,"","","","","         0","0","PreSales",
+"Data integration","How to create a QVD? ","data - create qvd.png",,"","","","","         0","0","PreSales",
+"Data integration","Use QVDs to re-use entities in multiple apps and enrich them","data - bus matrix dimensions to business process.png",,"","","","","         0","0","PreSales",
+"Data integration","Use QVDs to re-use entities in multiple apps and enrich them","In this scenario we would like to create 1 business intelligence environment for the whole company. In order to do this, you first have to divide your company into processes, and define which entities are relevant per process:",,"","","","","         0","0","PreSales",
+"Data integration","Use QVDs to create an ETL application architecture","data - data flow layers.png",,"","","","","         0","0","PreSales",
+"Data integration","Connectors","[Connectors on Qlik help](https://help.qlik.com/en-US/connectors/Content/QlikSense.htm)",,"","","","","         0","0","PreSales",
+"Data integration","Connectors","[Connector videos](https://help.qlik.com/en-US/connectors/Content/Videos/Videos.htm)",,"","","","","         0","0","PreSales",
+"Data integration","Data governance","data governance flow ETL.png",,"","","","","         0","0","PreSales",
+"Data integration","Incremental load script","You can also combine your actuals with historic data from a QVD.",,"","","","","         0","0","PreSales",
+"Data integration","Incremental load script","```
 LET LastExecTime = date(ReloadTime(),'YYYY-MM-DD hh:mm:ss');
 LET BeginningThisExecTime= date(now(),'YYYY-MM-DD hh:mm:ss');
 
@@ -1383,13 +1388,13 @@ LOAD PrimaryKey, X, Y FROM File.QVD;
 
 STORE QV_Table INTO File.QVD;
 ```",,"","","","","         0","0","PreSales",
-"Data","Compression","Indexes compressed data into memory – up to 90x compression",,"","","","","         0","0","Sales",
-"Data","Compression","Enables associative search and analysis",,"","","","","         0","0","Sales",
-"Data","Compression","Supports 100’s millions to billions of rows of data",,"","","","","         0","0","Sales",
-"Data","Compression","data - compression.png",,"","","","","         0","0","Sales",
-"Data","Script","ETL functionality.png",,"","","","","         0","0","PreSales",
-"Data","REST connector introduction","https://www.youtube.com/watch?v=FqwNU_pnFt4&list=PLkRFvjyuHFvIVnReipVR0QfUcQ4X2shXw",,"","","","","         0","0","PreSales",
-"Data","Video: Rest connector - Loading multiple pages","https://youtu.be/QlCT55_712I",,"","","","","         0","0","R&D",
+"Data integration","Compression","Indexes compressed data into memory – up to 90x compression",,"","","","","         0","0","Sales",
+"Data integration","Compression","Enables associative search and analysis",,"","","","","         0","0","Sales",
+"Data integration","Compression","Supports 100’s millions to billions of rows of data",,"","","","","         0","0","Sales",
+"Data integration","Compression","data - compression.png",,"","","","","         0","0","Sales",
+"Data integration","Script","ETL functionality.png",,"","","","","         0","0","PreSales",
+"Data integration","REST connector introduction","https://www.youtube.com/watch?v=FqwNU_pnFt4&list=PLkRFvjyuHFvIVnReipVR0QfUcQ4X2shXw",,"","","","","         0","0","PreSales",
+"Data integration","Video: Rest connector - Loading multiple pages","https://youtu.be/QlCT55_712I",,"","","","","         0","0","R&D",
 "Other","New to Qlik Sense","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)",,,,,,,,,
 "Other","Licensing","qlik sense tokens license.png",,"","","","","         0","0","Sales",
 "Other","QAP",,,,,,,,,,

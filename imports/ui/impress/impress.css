@@ -26,7 +26,7 @@
 
 .z.step {
     position: absolute;
-    min-width: 900px;
+    width: 900px;
     overflow: auto;
     padding: 40px;
     margin: 20px auto;
@@ -41,6 +41,13 @@
     line-height: 1.5;
 }
 
+.slide q {
+    display: block;
+    font-size: 50px;
+    line-height: 72px;
+    margin-top: 100px;
+}
+
 .slide.integration {
     width: 1200px;
     min-height: 800px;
@@ -51,9 +58,11 @@
     font-size: 1.3em;
 }
 
-h2.ui.header .sub.header {
+.integration h2.ui.header .sub.header {
     font-size: 1.3em;
 }
+
+
 /*.slide.integration .sub.header {
     font-size: 1.2em
 }*/
@@ -64,16 +73,39 @@ h2.ui.header .sub.header {
 
 .slide.integration li {
     font-size: 1.3em
-    }
-
-.slide.integration q {
-    width: 1200px;
-    min-height: 600px;
-
 }
 
-.slide p {
-    font-size: 1.4em;
+.slide .embed {
+    /*margin-left: 50px, ;*/
+    margin-top: 80px;
+}
+
+.slide.integration q {
+    margin: auto;
+    width: 700px;
+    text-align: center;
+    display: block;
+    font-size: 50px;
+    line-height: 72px;
+    margin-top: 180px;
+}
+
+.slide q strong {
+    white-space: nowrap;
+}
+
+.slide.integration p {
+    font-size: 1.5em;
+    margin-top: 40px;
+}
+
+.slide.integration p + p {
+    color: black;
+    margin-top: 20px;
+}
+
+.slide.integration .image {
+    margin-top: 50px;
 }
 
 .slide {
@@ -104,7 +136,7 @@ h2.ui.header .sub.header {
     background-image: url("/images/Qlik breaker.png");
     font-size: 50px;
     text-align: center;
-    top:10px;
+    top: 10px;
 }
 
 .thankYou {
@@ -169,17 +201,6 @@ strong {
 i,
 em {
     font-style: italic
-}
-
-.slide q {
-    display: block;
-    font-size: 50px;
-    line-height: 72px;
-    margin-top: 100px;
-}
-
-.slide q strong {
-    white-space: nowrap;
 }
 
 #APIUseCases {

@@ -22,32 +22,31 @@
         </div>
         {{else}}
         <div class="z step slide integration" data-x="{{XValue @index}}" data-rotate-x="30" data-z="-1000">
-            <h2 style="" class="ui header">
+            <h2 class="ui header">
                 <div class="content">
                     {{level 1}}
                     <div class="sub header">{{level 2}}</div>
                 </div>
-            </h2>
-            <div id="bullets" class="ui list">
-                {{#each item in itemsOfLevel 3}} {{{formatted item}}} {{/each}}
-            </div>
+            </h2> 
+            {{#each item in itemsOfLevel 3}} {{{formatted item}}} {{/each}}
         </div>
+
         {{/if}} {{/each}}
         <!--         If all the slides have been generated insert a last thank you slide
  -->
-        <div class="z step thankYou" data-x="-1000" data-z="3000" style="">
+        <div class="z step thankYou" data-x="-1000" data-z="3000">
             <img class="ui bottom aligned fluid image" src="images/presentation thank you.png">
         </div>
         {{else}} {{> errorPresentation}} {{/if}}
     </div>
     <div class="hint">
-        <p>Select a workshop (left top menu), click on the screen and
+        <p>Select a workshop, click on the screen and
             <br/>use a spacebar or arrow keys to navigate</p>
     </div>
     <div class="ui {{#if loading}} active {{/if}} dimmer">
         <div class="ui indeterminate text loader" style="font-size: 1.3em">
-            <h2>Connecting to Qlik Sense Engine API to get the data for the presentation.
-            <br> Once the raw data is ready we use some javascript to create a presentation. </h2></div>
+            <h2>Creating your slides with data from the Engine API.
+  </h2></div>
     </div>
 </template>
 <template name="pageBreaker">
