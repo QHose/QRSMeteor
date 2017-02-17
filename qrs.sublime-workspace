@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"min",
+				"min-height"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
 				"tr",
 				"target\tAttr"
 			],
@@ -506,14 +514,6 @@
 			[
 				"fa",
 				"false"
-			],
-			[
-				"int",
-				"introductionSecurity"
-			],
-			[
-				"del",
-				"delete"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "imports/ui/impress/ppt_integration.html",
 			"settings":
 			{
-				"buffer_size": 3027,
+				"buffer_size": 3157,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -538,10 +538,13 @@
 			}
 		},
 		{
+			"contents": "#impress {\n    font-family: 'PT Sans', sans-serif;\n    min-height: 740px;\n    background: rgb(215, 215, 215);\n    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));\n    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));\n    background: -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));\n    background: -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));\n    background: -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));\n    background: radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));\n}\n\n.frame {\n    display: block;\n    position: absolute;\n    /*margin-top: 60px;*/\n    overflow: hidden;\n    width: 100vw;\n    height: calc(100% - 60px); //add height for other browsers too\n    /*max-width: 100%;*/\n    margin: 0;\n    padding: 0;\n    border: 0 none;\n    box-sizing: border-box;\n}\n\n.z.step {\n    position: absolute;\n    min-width: 900px;\n    overflow: auto;\n    padding: 40px;\n    margin: 20px auto;\n    margin-top: 80px;\n    -webkit-box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    -ms-box-sizing: border-box;\n    -o-box-sizing: border-box;\n    box-sizing: border-box;\n    font-family: 'PT Serif', georgia, serif;\n    font-size: 48px;\n    line-height: 1.5;\n}\n\n.slide.integration {\n    width: 1200px;\n    min-height: 600px;\n}\n\n.slide .ui.header .content {\n    margin-left: 160px;\n    font-size: 1.3em;\n}\n\nh2.ui.header .sub.header {\n    font-size: 1.3em;\n}\n/*.slide.integration .sub.header {\n    font-size: 1.2em\n}*/\n\n.slide.integration .list {\n    margin-top: 60px\n}\n\n.slide.integration li {\n    font-size: 1.3em\n    }\n\n.slide.integration q {\n    width: 1200px;\n    min-height: 600px;\n\n}\n\n.slide p {\n    font-size: 1.4em;\n}\n\n.slide {\n    background-image: url(\"/images/Qlik_Leftcorner_Icon.png\");\n    background-repeat: no-repeat;\n    background-position: left top;\n    overflow: auto;\n    margin: 70px;\n    display: block;\n    width: 900px;\n    min-height: 600px;\n    max-height: 100vh;\n    /*height: 100%;*/\n    padding: 40px 60px;\n    background-color: white;\n    border: 1px solid rgba(0, 0, 0, .3);\n    border-radius: 10px;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);\n    color: rgb(102, 102, 102);\n    /*text-shadow: 0 2px 2px rgba(0, 0, 0, .1);*/\n    /*font-family: 'Open Sans', Arial, sans-serif;*/\n    font-size: 30px;\n    line-height: 26px;\n    letter-spacing: -1px;\n}\n\n.breaker {\n    background-image: url(\"/images/Qlik breaker.png\");\n    font-size: 50px;\n    text-align: center;\n    top:10px;\n}\n\n.thankYou {\n    overflow: auto;\n    margin: 70px;\n    display: block;\n    width: 900px;\n    min-height: 600px;\n    max-height: 100vh;\n    /*height: 100%;*/\n    padding: 40px 60px;\n}\n\nsection {\n    position: relative;\n    z-index: 1;\n    /* needed for setting pseudo-element z-index */\n    backface-visibility: hidden;\n}\n\n\n/*a {\n    outline: none;\n    color: #404d5b;\n    text-decoration: none;\n    white-space: nowrap;\n    position: relative;\n    display: inline-block;\n    vertical-align: bottom;\n}\n\n a::before,\n a::after {\n    pointer-events: none;\n    backface-visibility: hidden;\n}*/\n\nblockquote,\nq {\n    text-align: center;\n    quotes: none;\n}\n\nblockquote:before,\nblockquote:after,\nq:before,\nq:after {\n    content: '';\n    content: none;\n}\n\n\n/*\n    Now let's bring some text styles back ...\n*/\n\nb,\nstrong {\n    font-weight: bold\n}\n\ni,\nem {\n    font-style: italic\n}\n\n.slide q {\n    display: block;\n    font-size: 50px;\n    line-height: 72px;\n    margin-top: 100px;\n}\n\n.slide q strong {\n    white-space: nowrap;\n}\n\n#APIUseCases {\n    font-size: 2em;\n}\n\n\n/*hide the fallback message if impress is supported*/\n\n.impress-supported .fallback-message {\n    display: none;\n}\n\n\n/*\n    Now let's style the presentation steps.\n\n    We start with basics to make sure it displays correctly in everywhere ...\n*/\n\n\n/*\n    ... and we enhance the styles for impress.js.\n\n    Basically we remove the margin and make inactive steps a little bit transparent.\n*/\n\n.impress-enabled .z.step {\n    margin: 0;\n    opacity: 0.3;\n    -webkit-transition: opacity 1s;\n    -moz-transition: opacity 1s;\n    -ms-transition: opacity 1s;\n    -o-transition: opacity 1s;\n    transition: opacity 1s;\n}\n\n.impress-enabled .z.step.active {\n    opacity: 1\n}\n\n\n/*\n    These 'slide' step styles were heavily inspired by HTML5 Slides:\n    http://html5slides.googlecode.com/svn/trunk/styles.css\n\n    ;)\n\n    They cover everything what you see on first three steps of the demo.\n*/\n\n#title {\n    padding: 0;\n}\n\n#title .try {\n    font-size: 64px;\n    position: absolute;\n    top: -0.5em;\n    left: 1.5em;\n    -webkit-transform: translateZ(20px);\n    -moz-transform: translateZ(20px);\n    -ms-transform: translateZ(20px);\n    -o-transform: translateZ(20px);\n    transform: translateZ(20px);\n}\n\n.title h1 {\n    font-size: 120px;\n    -webkit-transform: translateZ(50px);\n    -moz-transform: translateZ(50px);\n    -ms-transform: translateZ(50px);\n    -o-transform: translateZ(50px);\n    transform: translateZ(50px);\n}\n\n#title .footnote {\n    font-size: 32px;\n}\n\n\n/*\n    Second step is nothing special, just a text with a link, so it doesn't need\n    any special styling.\n\n    Let's move to 'big thoughts' with centered text and custom font sizes.\n*/\n\n.big {\n    width: 600px;\n    text-align: center;\n    font-size: 180px;\n    line-height: 1;\n}\n\n#big b {\n    display: block;\n    font-size: 250px;\n    line-height: 250px;\n}\n\n#big .thoughts {\n    font-size: 90px;\n    line-height: 150px;\n}\n\n\n/*\n    'Tiny ideas' just need some tiny styling.\n*/\n\n#tiny {\n    width: 500px;\n    text-align: center;\n}\n\n.video p {\n    display: block;\n    font-size: 20px;\n    margin-top: 10px;\n}\n\n#demoStep3 {\n    width: 500px\n}\n\n#demoStep4 {\n    width: 500px;\n    font-size: 28px;\n    text-align: center;\n}\n\n\n/*\n    ... so we define display to `inline-block` to enable transforms and\n    transition duration to 0.5s ...\n*/\n\n#demoStep3 b {\n    display: inline-block;\n    -webkit-transition: 0.5s;\n    -moz-transition: 0.5s;\n    -ms-transition: 0.5s;\n    -o-transition: 0.5s;\n    transition: 0.5s;\n}\n\n#APIUseCases {\n    font-size: 22px;\n}\n\n#APIUseCases .title {\n    font-size: 40px;\n}\n\n#APIUseCases li {\n    font-size: 0.8em;\n}\n\n\n/*\n    ... and we want 'positioning` word to move up a bit when the step gets\n    `present` class ...\n*/\n\n.present .positioning {\n    -webkit-transform: translateY(-10px);\n    -moz-transform: translateY(-10px);\n    -ms-transform: translateY(-10px);\n    -o-transform: translateY(-10px);\n    transform: translateY(-10px);\n}\n\n\n/*\n    ... 'rotating' to rotate a quarter of a second later ...\n*/\n\n.present .rotating {\n    -webkit-transform: rotate(-10deg);\n    -moz-transform: rotate(-10deg);\n    -ms-transform: rotate(-10deg);\n    -o-transform: rotate(-10deg);\n    transform: rotate(-10deg);\n    -webkit-transition-delay: 0.25s;\n    -moz-transition-delay: 0.25s;\n    -ms-transition-delay: 0.25s;\n    -o-transition-delay: 0.25s;\n    transition-delay: 0.25s;\n}\n\n\n/*\n    ... and 'scaling' to scale down after another quarter of a second.\n*/\n\n.present .scaling {\n    -webkit-transform: scale(0.7);\n    -moz-transform: scale(0.7);\n    -ms-transform: scale(0.7);\n    -o-transform: scale(0.7);\n    transform: scale(0.7);\n    -webkit-transition-delay: 0.5s;\n    -moz-transition-delay: 0.5s;\n    -ms-transition-delay: 0.5s;\n    -o-transition-delay: 0.5s;\n    transition-delay: 0.5s;\n}\n\n\n/*\n    The last step is an overview.\n    There is no content in it, so we make sure it's not visible because we want\n    to be able to click on other steps.\n\n*/\n\n#overview {\n    display: none\n}\n\n\n/*\n    We also make other steps visible and give them a pointer cursor using the\n    `impress-on-` class.\n*/\n\n.impress-on-overview .z.step {\n    opacity: 1;\n    cursor: pointer;\n}\n\n\n/*.future {\n  display: none;\n}\n*/\n\n\n/*\n    Now, when we have all the steps styled let's give users a hint how to navigate\n    around the presentation.\n\n    The best way to do this would be to use JavaScript, show a delayed hint for a\n    first time users, then hide it and store a status in cookie or localStorage...\n\n    But I wanted to have some CSS fun and avoid additional scripting...\n\n    Let me explain it first, so maybe the transition magic will be more readable\n    when you read the code.\n\n    First of all I wanted the hint to appear only when user is idle for a while.\n    You can't detect the 'idle' state in CSS, but I delayed a appearing of the\n    hint by 5s using transition-delay.\n\n    You also can't detect in CSS if the user is a first-time visitor, so I had to\n    make an assumption that I'll only show the hint on the first step. And when\n    the step is changed hide the hint, because I can assume that user already\n    knows how to navigate.\n\n    To summarize it - hint is shown when the user is on the first step for longer\n    than 5 seconds.\n\n    The other problem I had was caused by the fact that I wanted the hint to fade\n    in and out. It can be easily achieved by transitioning the opacity property.\n    But that also meant that the hint was always on the screen, even if totally\n    transparent. It covered part of the screen and you couldn't correctly clicked\n    through it.\n    Unfortunately you cannot transition between display `block` and `none` in pure\n    CSS, so I needed a way to not only fade out the hint but also move it out of\n    the screen.\n\n    I solved this problem by positioning the hint below the bottom of the screen\n    with CSS transform and moving it up to show it. But I also didn't want this move\n    to be visible. I wanted the hint only to fade in and out visually, so I delayed\n    the fade in transition, so it starts when the hint is already in its correct\n    position on the screen.\n\n    I know, it sounds complicated ... maybe it would be easier with the code?\n*/\n\n.hint {\n    /*\n        We hide the hint until presentation is started and from browsers not supporting\n        impress.js, as they will have a linear scrollable view ...\n    */\n    display: none;\n    /*\n        ... and give it some fixed position and nice styles.\n    */\n    position: fixed;\n    left: 0;\n    right: 0;\n    bottom: 200px;\n    background: rgba(0, 0, 0, 0.5);\n    color: #EEE;\n    text-align: center;\n    font-size: 50px;\n    padding: 20px;\n    z-index: 100;\n    /*\n        By default we don't want the hint to be visible, so we make it transparent ...\n    */\n    opacity: 0;\n    /*\n        ... and position it below the bottom of the screen (relative to it's fixed position)\n    */\n    -webkit-transform: translateY(400px);\n    -moz-transform: translateY(400px);\n    -ms-transform: translateY(400px);\n    -o-transform: translateY(400px);\n    transform: translateY(400px);\n    /*\n        Now let's imagine that the hint is visible and we want to fade it out and move out\n        of the screen.\n\n        So we define the transition on the opacity property with 1s duration and another\n        transition on transform property delayed by 1s so it will happen after the fade out\n        on opacity finished.\n\n        This way user will not see the hint moving down.\n    */\n    -webkit-transition: opacity 1s, -webkit-transform 0.5s 1s;\n    -moz-transition: opacity 1s, -moz-transform 0.5s 1s;\n    -ms-transition: opacity 1s, -ms-transform 0.5s 1s;\n    -o-transition: opacity 1s, -o-transform 0.5s 1s;\n    transition: opacity 1s, transform 0.5s 1s;\n}\n\n\n/*\n    Now we 'enable' the hint when presentation is initialized ...\n*/\n\n.impress-enabled .hint {\n    display: block\n}\n\n\n/*\n    ... and we will show it when the first step (with id 'bored') is active.\n*/\n\n\n/*.impress-on-bored .hint {*/\n\n.impress-on-step-1 .hint {\n    /*\n        We remove the transparency and position the hint in its default fixed\n        position.\n    */\n    opacity: 1;\n    -webkit-transform: translateY(0px);\n    -moz-transform: translateY(0px);\n    -ms-transform: translateY(0px);\n    -o-transform: translateY(0px);\n    transform: translateY(0px);\n    /*\n        Now for fade in transition we have the oposite situation from the one\n        above.\n\n        First after 4.5s delay we animate the transform property to move the hint\n        into its correct position and after that we fade it in with opacity\n        transition.\n    */\n    -webkit-transition: opacity 1s 5s, -webkit-transform 0.5s 4.5s;\n    -moz-transition: opacity 1s 5s, -moz-transform 0.5s 4.5s;\n    -ms-transition: opacity 1s 5s, -ms-transform 0.5s 4.5s;\n    -o-transition: opacity 1s 5s, -o-transform 0.5s 4.5s;\n    transition: opacity 1s 5s, transform 0.5s 4.5s;\n}\n\n\n/*\n    And as the last thing there is a workaround for quite strange bug.\n    It happens a lot in Chrome. I don't remember if I've seen it in Firefox.\n\n    Sometimes the element positioned in 3D (especially when it's moved back\n    along Z axis) is not clickable, because it falls 'behind' the <body>\n    element.\n\n    To prevent this, I decided to make <body> non clickable by setting\n    pointer-events property to `none` value.\n    Value if this property is inherited, so to make everything else clickable\n    I bring it back on the #impress element.\n\n    If you want to know more about `pointer-events` here are some docs:\n    https://developer.mozilla.org/en/CSS/pointer-events\n\n    There is one very important thing to notice about this workaround - it makes\n    everything 'unclickable' except what's in #impress element.\n\n    So use it wisely ... or don't use at all.\n*/\n\n\n/*.impress-enabled          { pointer-events: none }\n.impress-enabled #impress { pointer-events: auto }*/\n\n\n/*\n    There is one funny thing I just realized.\n\n    Thanks to this workaround above everything except #impress element is invisible\n    for click events. That means that the hint element is also not clickable.\n    So basically all of this transforms and delayed transitions trickery was probably\n    not needed at all...\n\n    But it was fun to learn about it, wasn't it?\n*/\n\n\n/*\n    That's all I have for you in this file.\n    Thanks for reading. I hope you enjoyed it at least as much as I enjoyed writing it\n    for you.\n*/\n",
 			"file": "imports/ui/impress/impress.css",
+			"file_size": 14762,
+			"file_write_time": 131317358467119658,
 			"settings":
 			{
-				"buffer_size": 13724,
+				"buffer_size": 14033,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,7 +553,7 @@
 			"file": "imports/ui/impress/ppt_integration.js",
 			"settings":
 			{
-				"buffer_size": 13514,
+				"buffer_size": 13513,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -764,7 +767,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -876,6 +879,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"top",
+			"new data",
+			"events",
 			"hint",
 			"81",
 			"export",
@@ -1000,10 +1006,7 @@
 			"positioning",
 			"imagin",
 			"z.",
-			"ta",
-			"table",
-			"p",
-			".ing"
+			"ta"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1139,7 +1142,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1148,15 +1151,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3027,
+						"buffer_size": 3157,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								636,
-								636
+								1374,
+								1381
 							]
 						],
 						"settings":
@@ -1167,7 +1170,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 102.0,
+						"translation.y": 179.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1198,10 +1201,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 938.0,
+						"translation.y": 1198.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1210,15 +1213,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13724,
+						"buffer_size": 14033,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8278,
-								8282
+								2544,
+								2535
 							]
 						],
 						"settings":
@@ -1228,10 +1231,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8923.0,
+						"translation.y": 1869.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1240,15 +1243,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13514,
+						"buffer_size": 13513,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2502,
-								2502
+								2638,
+								2638
 							]
 						],
 						"settings":
@@ -1259,7 +1262,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1103.0,
+						"translation.y": 1217.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -1270,7 +1273,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 31.0
 	},
 	"input":
 	{
@@ -1311,7 +1314,7 @@
 	"project": "qrs.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 58.0
 	},
 	"save_all_on_build": true,
 	"select_file":

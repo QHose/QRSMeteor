@@ -43,7 +43,7 @@
 
 .slide.integration {
     width: 1200px;
-    min-height: 600px;
+    min-height: 800px;
 }
 
 .slide .ui.header .content {
@@ -104,11 +104,7 @@ h2.ui.header .sub.header {
     background-image: url("/images/Qlik breaker.png");
     font-size: 50px;
     text-align: center;
-    /*vertical-align: text-top;*/
-  /*  background-repeat: no-repeat;
-    background-position: left top;*/
-    /*overflow: auto;*/
-    /**/
+    top:10px;
 }
 
 .thankYou {
