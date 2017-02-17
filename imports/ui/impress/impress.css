@@ -24,21 +24,104 @@
     box-sizing: border-box;
 }
 
-.z.step {
+.impress-enabled .z.step {
+    margin: 0;
+    opacity: 0.3;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -ms-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.impress-enabled .z.step.active {
+    opacity: 1
+}
+
+.z.step.slide.integration.breaker {
+    background-image: url("/images/Qlik breaker.png");
+    width: 1100px;
+    height: 900px;
+    padding: 20px;
+    font-size: 50px;
+    text-align: center;
+    top: 20px;
+}
+
+
+.z.step.slide.integration {
+    font-size: 1.5em;
+    width: 1200px;
+    height: 1000px;
+    min-height: 800px;
+    line-height: 30px;
     position: absolute;
-    width: 900px;
     overflow: auto;
     padding: 40px;
     margin: 20px auto;
-    margin-top: 80px;
+    /*margin-top: 80px;*/
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box;
-    font-family: 'PT Serif', georgia, serif;
-    font-size: 48px;
-    line-height: 1.5;
+    background-image: url("/images/Qlik_Leftcorner_Icon.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    color: rgb(102, 102, 102);
+}
+
+.slide .ui.header .content {
+    margin-left: 160px;
+    font-size: 1.3em;
+}
+
+.integration h2.ui.header .sub.header {
+    margin-top: 10px;
+    font-size: 1.3em;
+}
+
+.slide .embed {
+    margin-top: 80px;
+}
+
+.slide.integration > div
+ {
+    margin-left: 160px;
+    margin-top: 20px;
+}
+
+.slide.integration div >  {
+    margin-top: 25%;
+}
+
+.slide p:first-of-type {
+    margin-top: 60px;
+}
+
+.slide.integration p {
+    font-size: 1.3em;
+}
+
+.slide.integration q {
+    /*margin: auto;*/
+    width: 700px;
+    text-align: center;
+    display: block;
+    font-size: 50px;
+    line-height: 72px;
+    margin-top: 110px;
+}
+
+.slide.integration div:first-of-type q {
+    margin-top: 25%;
+}
+
+.slide q strong {
+    white-space: nowrap;
 }
 
 .slide q {
@@ -48,61 +131,34 @@
     margin-top: 100px;
 }
 
-.slide.integration {
-    width: 1200px;
-    min-height: 800px;
-}
-
-.slide .ui.header .content {
-    margin-left: 160px;
-    font-size: 1.3em;
-}
-
-.integration h2.ui.header .sub.header {
-    font-size: 1.3em;
-}
-
-
-/*.slide.integration .sub.header {
-    font-size: 1.2em
-}*/
-
-.slide.integration .list {
-    margin-top: 60px
-}
-
-.slide.integration li {
-    font-size: 1.3em
-}
-
-.slide .embed {
-    /*margin-left: 50px, ;*/
-    margin-top: 80px;
-}
-
-.slide.integration q {
-    margin: auto;
-    width: 700px;
-    text-align: center;
+.slide blockquote {
     display: block;
-    font-size: 50px;
-    line-height: 72px;
-    margin-top: 180px;
+    margin-top: 80px;
+    width: 900px;
+    font-size: 45px;
+    font-style: italic;
+    width: 500px;
+    margin: 0.25em 0;
+    padding: 0.25em 40px;
+    line-height: 1.45;
+    position: relative;
+    color: #383838;
 }
 
-.slide q strong {
-    white-space: nowrap;
+.slide blockquote:before {
+    margin-left: 160px;
+    display: block;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    color: #7a7a7a;
 }
 
-.slide.integration .item:first-of-type p {
-    font-size: 1.5em;
-    margin-top: 60px;
+.slide.integration blockquote:first-of-type p {
+    margin-top: 90px;
 }
-
-.slide.integration p {
-    margin-top: 20px;
-}
-
 
 .slide.integration .image {
     margin-top: 50px;
@@ -110,41 +166,11 @@
 
 .pusher .message {
     position: absolute;
+    font-size: 1.5em;
     top: 20%;
     left: 600px;
-    width: 400px;
+    width: 500px;
     margin: -15% 0 0 -25%;
-}
-
-.slide {
-    background-image: url("/images/Qlik_Leftcorner_Icon.png");
-    background-repeat: no-repeat;
-    background-position: left top;
-    overflow: auto;
-    margin: 70px;
-    display: block;
-    width: 900px;
-    min-height: 600px;
-    max-height: 100vh;
-    /*height: 100%;*/
-    padding: 40px 60px;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, .3);
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
-    color: rgb(102, 102, 102);
-    /*text-shadow: 0 2px 2px rgba(0, 0, 0, .1);*/
-    /*font-family: 'Open Sans', Arial, sans-serif;*/
-    font-size: 30px;
-    line-height: 26px;
-    letter-spacing: -1px;
-}
-
-.breaker {
-    background-image: url("/images/Qlik breaker.png");
-    font-size: 50px;
-    text-align: center;
-    top: 10px;
 }
 
 .thankYou {
@@ -182,14 +208,11 @@ section {
     backface-visibility: hidden;
 }*/
 
-blockquote,
 q {
     text-align: center;
     quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
 q:before,
 q:after {
     content: '';
@@ -235,20 +258,6 @@ em {
 
     Basically we remove the margin and make inactive steps a little bit transparent.
 */
-
-.impress-enabled .z.step {
-    margin: 0;
-    opacity: 0.3;
-    -webkit-transition: opacity 1s;
-    -moz-transition: opacity 1s;
-    -ms-transition: opacity 1s;
-    -o-transition: opacity 1s;
-    transition: opacity 1s;
-}
-
-.impress-enabled .z.step.active {
-    opacity: 1
-}
 
 
 /*

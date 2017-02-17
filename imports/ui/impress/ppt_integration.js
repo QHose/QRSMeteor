@@ -11,10 +11,10 @@ const enigma = require('enigma');
 var appId = Meteor.settings.public.IntegrationPresenatationApp;
 
 Template.ppt_integrationMain.onRendered(function() {
-     this.$('.ui.sidebar')
+    this.$('.ui.sidebar')
         .sidebar('toggle');
 })
-Template.ppt_integration.onRendered(function() {   
+Template.ppt_integration.onRendered(function() {
     Session.set('slideLoading', true);
     getLevel1to3('integrationTopics');
     getLevel1And2();
@@ -25,9 +25,9 @@ Template.ppt_integration.onRendered(function() {
 
 Template.ppt_integrationMain.helpers({
     showPresentation() {
-        console.log('show the IFRAME');
+        // console.log('show the IFRAME');
         return Session.get('showPresentation');
-    },    
+    },
     IFrameURLChapterSelection() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&obj=RZuJ&opt=currsel';
     }
@@ -38,11 +38,11 @@ Template.ppt_integrationMain.events({
         $('.ui.sidebar')
             .sidebar('toggle');
     },
-     'mouseover .sidebar.integration': function(event) {
-       Session.set('showPresentation', false);
+    'mouseover .sidebar.integration': function(event) {
+        Session.set('showPresentation', false);
     },
-     'mouseout .sidebar.integration': function(event) {
-       Session.set('showPresentation', true);
+    'mouseout .sidebar.integration': function(event) {
+        Session.set('showPresentation', true);
     }
 })
 
@@ -73,7 +73,7 @@ Template.ppt_integration.helpers({
         return Session.get('slideLoading');
     },
     XValue(index) {
-        return 1300 * index;
+        return 2000 * index;
     },
     formatted(text) {
         if (youtube_parser(text)) { //youtube video url
@@ -82,17 +82,17 @@ Template.ppt_integration.helpers({
             var html = '<div class="ui embed" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div>'
                 // console.log('generated video link: ', html);
             return html;
+        } else if (text.startsWith('<')) { //custom HTML
+            return text;
         } else if (checkTextIsImage(text)) { //image
             // console.log('found an image', text)
             return '<img class="ui massive centered image"  src="images/' + text + '">'
-        } else if (text.startsWith('<')) { //custom HTML
-            return text;
         } else { //text 
             // console.log('Markdown converter: ', converter.makeHtml(text));
-            // return converter.makeHtml(text) 
-            var result = converter.makeHtml(text);
-            // return result;
-            return '<div class="item" style="margin-left: 160px"><h3>' + result + '</h3></div>';
+            return converter.makeHtml(text) 
+            // var result = converter.makeHtml(text);
+            // // return result;
+            // return '<div class="item" style="margin-left: 160px"><h3>' + result + '</h3></div>';
         }
     }
 });

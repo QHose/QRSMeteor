@@ -27,8 +27,10 @@
         {{#if mainTopics}} {{#each mainTopics }} {{#if chapterSlide this}}
         <!--         Create a chapter breaker if the level 1 has changed in the current row
  -->
-        <div class="z step slide breaker" data-x="{{XValue @index}}" data-z="1000" style="height: 100%">
+        <div class="z step slide integration breaker" data-x="{{XValue @index}}" data-z="1000" style="height: 100%">
+        <h1 class="ui header" style="font-size: 50px;">
             {{this}}
+        </h1>
         </div>
         {{else}}
         <div class="z step slide integration" data-x="{{XValue @index}}" data-rotate-x="30" data-z="-1000">
@@ -37,7 +39,10 @@
                     {{level 1}}
                     <div class="sub header">{{level 2}}</div>
                 </div>
-            </h2> {{#each item in itemsOfLevel 3}} {{{formatted item}}} {{/each}}
+            </h2> 
+            <div class="slideContent">
+            {{#each item in itemsOfLevel 3}} {{{formatted item}}} {{/each}}
+            </div>
         </div>
         {{/if}} {{/each}}
         <!--         If all the slides have been generated insert a last thank you slide
