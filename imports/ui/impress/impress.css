@@ -94,18 +94,26 @@
     white-space: nowrap;
 }
 
-.slide.integration p {
+.slide.integration .item:first-of-type p {
     font-size: 1.5em;
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
-.slide.integration p + p {
-    color: black;
+.slide.integration p {
     margin-top: 20px;
 }
 
+
 .slide.integration .image {
     margin-top: 50px;
+}
+
+.pusher .message {
+    position: absolute;
+    top: 20%;
+    left: 600px;
+    width: 400px;
+    margin: -15% 0 0 -25%;
 }
 
 .slide {

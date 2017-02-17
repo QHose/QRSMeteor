@@ -43,8 +43,6 @@ Template.ppt_integrationMain.events({
     },
      'mouseout .sidebar.integration': function(event) {
        Session.set('showPresentation', true);
-        // $('.ui.sidebar')
-        // .sidebar('toggle'); //Does not work...
     }
 })
 
