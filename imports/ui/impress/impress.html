@@ -23,47 +23,48 @@
     </div>
     <div id="impress">
         <!-- SLIDE 1 -->
-        <div class="z step slide one" data-x="-1000" data-y="-1500">
+        <div class="z step introduction slide one" data-x="-0" data-y="-1100">
             <q>Questions about SaaS and multi-tenancy with Qlik Sense?
             </q>
             <div class="ui horizontal divider">
                 Or
             </div>
-            <a href="{{pathFor 'generation'}}" class="ui positive centered button">Go to the demo</a>
+            <a href="{{pathFor 'generation'}}" class="ui positive centered button" style="margin-left: 40%">Go to the demo</a>
         </div>
         <!-- SLIDE 2 -->
-        <div class="z step slide" data-x="0" data-y="-1500">
-            <q>In our demonstration site, we show and reveal how you can easily leverage the power of the Qlik Sense <b>APIs</b> within a <b>multi-tenant SaaS application</b> environment.</q>
+        <div class="z step introduction slide" data-x="0" data-y="-1500" data-z="-1000" data-scale="10">
+            <q>Here we demonstrate the power of the Qlik Sense <b>APIs</b> within a <b>multi-tenant SaaS application</b> environment.</q>
         </div>
         <!-- SLIDE 3 -->
-        <div class="z step slide video" data-x="1000" data-y="-1500" style="background-image:none">
+        <div class="z step introduction slide video" data-x="5000" data-y="-1500" data-rotate="50" data-z="-1200" style="background-image:none">
             <h3 class="ui dividing header">Introduction video (4M)
             </h3>
             <div class="ui embed" data-url="{{URL_Youtube_concept_behind}}" data-placeholder="/images/concept behind deep dive.png"> </div>
-            <p>This demo demonstrates you how to copy an app which serves as a "template layout" for each of your customers. Next, we will guide you through the 4 steps.</p>
+            <p>This video explains how your SaaS platform can copy an app which serves as a "template layout" for each of your customers. Next, we will guide you through the 4 steps.</p>
         </div>
-        <div id="demoStep1" class="z step" data-z="-3000" data-x="-550" data-y="1000" data-rotate="80">
+        <div id="demoStep1" class="z step introduction" data-z="-3000" data-x="5000" data-y="1000" data-rotate="80">
             <h1 class="ui dividing header">Demo step 1: customers</h1>
             <img class="ui tiny left floated image" src="images/customers.png">
             <p>Which customers need Qlik Sense?
             </p>
         </div>
-        <div id="demoStep2" class="z step" data-x="-825" data-y="325" data-z="0" data-rotate="0">
+        <div id="demoStep2" class="z step introduction" data-x="6000" data-y="325" data-z="-3500" data-rotate="25">
             <h1 class="ui dividing header">Demo step 2: template apps</h1><img class="ui tiny left floated image" src="images/app.png">Which <b class="rotating">apps</b> should your customers get?
         </div>
-        <div id="demoStep3" class="z step" data-x="3600" data-y="-850" data-rotate="0" data-scale="4">
+        <div id="demoStep3" class="z step introduction" data-x="7000" data-y="-850" data-rotate="25">
             <h1 class="ui dividing header">Demo step 3: provisioning</h1>
             <p>
-                Automatically create the <b>apps</b>
-                for each <b>customer</b>
+                Automatically create the <b>apps</b> for each <b>customer</b>
             </p>
-        </div>
-        <div id="demoStep4" class="z step" data-x="2400" data-y="4500" data-rotate="25">
+            <img class="ui large image" src="images/saas demo concept simple.png"> 
+            </div>
+
+        <div id="demoStep4" class="z step introduction" data-rotate-x ="90">
             <h3 class="ui dividing header">Demo step 4: Test security and web integration</h3>
-            <q>Test the <b>Single Sign On</b>, with your own users and groups, <strong>embedded</strong> in your platform.</q>
+            <p>Test the <b>Single Sign On</b>, with your own users and groups, <strong>embedded</strong> in your platform.</p>
             <img class="ui small centered image" src="images/embed.png">
         </div>
-        <div id="APIUseCases" class="z step" data-x="6700" data-y="-300" style="font-size: 2em; margin: auto;">
+        <div id="APIUseCases" class="z step introduction"  data-rotate-x ="90" style="font-size: 2em; margin: auto;">
             <h1 class="ui icon header">
                <img class="ui tiny image" src="images/API.png">
                <div class="content">
@@ -79,8 +80,9 @@
                 <li><a target="_blank" href="{{github_publish_app}}">Publish the app in the customer stream</a></li>
             </ul>
         </div>
-        <div id="sourceCode" class="z step" data-x="6300" data-y="2500" data-rotate="20" data-scale="4">
-            <q>Want to know more?</q> <br>
+        <div id="sourceCode" class="z step introduction" data-x="6300" data-y="2500" data-rotate="20" data-scale="4">
+            <q>Want to know more?</q>
+            <br>
             <div class="ui buttons">
                 <a class="ui button" target="_blank" href="{{pathFor 'APILogs'}}">API & Source code</a>
                 <div class="or"></div>
@@ -89,10 +91,10 @@
                 <a href={{pathFor 'videoOverview'}} class="ui dropdown youtube button"><i class="youtube icon"></i>Video overview</a>
             </div>
         </div>
-        <div id="one-more-thing" class="z step" data-x="5000" data-y="1350" data-scale="8">
+        <div id="one-more-thing" class="z step introduction" data-x="5000" data-y="1350" data-scale="8">
             <a href="{{pathFor 'generation'}}" class="massive ui positive centered button">Go to the demo</a>
         </div>
-        <!--  <div id="overview" class="z step" data-x="3000" data-y="1500" data-scale="10">
+        <!--  <div id="overview" class="z step introduction" data-x="3000" data-y="1500" data-scale="10">
     </div> -->
     </div>
     <!--
@@ -101,13 +103,13 @@
     
     But it can show you how to use impress.js features in creative way.
     
-    When the presentation z step is shown (selected) its element gets the class of "active" and the body element
-    gets the class based on active z step id `impress-on-ID` (where ID is the z step's id)... It may not be
-    so clear because of all these "ids" in previous sentence, so for example when the first z step (the one with
+    When the presentation z step introduction is shown (selected) its element gets the class of "active" and the body element
+    gets the class based on active z step introduction id `impress-on-ID` (where ID is the z step introduction's id)... It may not be
+    so clear because of all these "ids" in previous sentence, so for example when the first z step introduction (the one with
     the id of `bored`) is active, body element gets a class of `impress-on-bored`.
     
     This class is used by this hint below. Check CSS file to see how it's shown with delayed CSS animation when
-    the first z step of presentation is visible for a couple of seconds.
+    the first z step introduction of presentation is visible for a couple of seconds.
     
     ...
     
@@ -120,6 +122,7 @@
     
 -->
     <div class="hint">
-        <p>Click on the screen and <br> use a spacebar or arrow keys to navigate</p>
+        <p>Click on the screen and
+            <br> use a spacebar or arrow keys to navigate in this presentation</p>
     </div>
 </template>

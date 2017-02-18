@@ -217,21 +217,23 @@ section {
 }
 
 
-/*a {
-    outline: none;
-    color: #404d5b;
-    text-decoration: none;
-    white-space: nowrap;
-    position: relative;
-    display: inline-block;
-    vertical-align: bottom;
+/*INTRODUCTION PRESENTATION*/
+
+.step.introduction {
+    width: 1000px;
+    font-size: 2em;
 }
 
- a::before,
- a::after {
-    pointer-events: none;
-    backface-visibility: hidden;
-}*/
+.slide.introduction q {
+    margin: auto;
+    width: 700px;
+    text-align: center;
+    display: block;
+    font-size: 50px;
+    line-height: 72px;
+    margin-top: 110px;
+}
+
 
 q {
     text-align: center;
@@ -400,6 +402,7 @@ em {
 
 #APIUseCases li {
     font-size: 0.8em;
+    line-height: 30px;
 }
 
 
