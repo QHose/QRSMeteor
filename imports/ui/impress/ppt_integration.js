@@ -89,10 +89,8 @@ Template.ppt_integration.helpers({
             return '<img class="ui massive centered image"  src="images/' + text + '">'
         } else { //text 
             // console.log('Markdown converter: ', converter.makeHtml(text));
-            return converter.makeHtml(text) 
-            // var result = converter.makeHtml(text);
-            // // return result;
-            // return '<div class="item" style="margin-left: 160px"><h3>' + result + '</h3></div>';
+            var result = converter.makeHtml(text);
+            return '<div class="markdownItem">' + result + '</div>';
         }
     }
 });

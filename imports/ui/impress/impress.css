@@ -48,7 +48,6 @@
     top: 20px;
 }
 
-
 .z.step.slide.integration {
     font-size: 1.5em;
     width: 1200px;
@@ -74,6 +73,9 @@
     color: rgb(102, 102, 102);
 }
 
+
+/*HEADER*/
+
 .slide .ui.header .content {
     margin-left: 160px;
     font-size: 1.3em;
@@ -84,19 +86,33 @@
     font-size: 1.3em;
 }
 
+
+/*YOUTUBE*/
+
 .slide .embed {
     margin-top: 80px;
 }
 
-.slide.integration > div
- {
+
+/*.slide.integration > div {
     margin-left: 160px;
     margin-top: 20px;
 }
+*/
 
-.slide.integration div >  {
+
+/*LEVEL 3 MARKDOWN GENERATED CODE*/
+
+.slide.integration .markdownItem {
+    margin-left: 160px
+}
+
+
+/*
+.slide.integration div > {
     margin-top: 25%;
 }
+*/
 
 .slide p:first-of-type {
     margin-top: 60px;
@@ -107,7 +123,7 @@
 }
 
 .slide.integration q {
-    /*margin: auto;*/
+    margin: auto;
     width: 700px;
     text-align: center;
     display: block;
@@ -123,21 +139,17 @@
 .slide q strong {
     white-space: nowrap;
 }
-
+/*
 .slide q {
     display: block;
     font-size: 50px;
     line-height: 72px;
     margin-top: 100px;
-}
+}*/
 
 .slide blockquote {
-    display: block;
-    margin-top: 80px;
-    width: 900px;
-    font-size: 45px;
+    font-size: 30px;
     font-style: italic;
-    width: 500px;
     margin: 0.25em 0;
     padding: 0.25em 40px;
     line-height: 1.45;
@@ -145,6 +157,12 @@
     color: #383838;
 }
 
+.slide blockquote p {
+    color: #5EA819;
+}
+
+
+/*
 .slide blockquote:before {
     margin-left: 160px;
     display: block;
@@ -154,11 +172,12 @@
     left: -20px;
     top: -20px;
     color: #7a7a7a;
-}
+}*/
 
-.slide.integration blockquote:first-of-type p {
+
+/*.slide.integration blockquote:first-of-type p {
     margin-top: 90px;
-}
+}*/
 
 .slide.integration .image {
     margin-top: 50px;
@@ -166,12 +185,18 @@
 
 .pusher .message {
     position: absolute;
+    background-color: white; 
     font-size: 1.5em;
     top: 20%;
     left: 600px;
-    width: 500px;
+    width: 400px;
     margin: -15% 0 0 -25%;
 }
+
+.pusher .message .image{
+    margin: 20px;
+}
+
 
 .thankYou {
     overflow: auto;
