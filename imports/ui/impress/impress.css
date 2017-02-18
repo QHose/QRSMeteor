@@ -86,6 +86,10 @@
     font-size: 1.3em;
 }
 
+/*SLIDE CONTENT CONTAINER*/
+.slideContent {
+    margin-top: 60px;   
+}
 
 /*YOUTUBE*/
 
@@ -114,9 +118,10 @@
 }
 */
 
-.slide p:first-of-type {
+/*.slide p:first-of-type {
     margin-top: 60px;
-}
+    background-color: yellow;
+}*/
 
 .slide.integration p {
     font-size: 1.3em;
@@ -132,10 +137,9 @@
     margin-top: 110px;
 }
 
-.slide.integration div:first-of-type q {
-    margin-top: 25%;
+.markdownItem {
+    margin-top: 20px;
 }
-
 .slide q strong {
     white-space: nowrap;
 }
