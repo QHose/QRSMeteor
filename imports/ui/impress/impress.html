@@ -29,10 +29,12 @@
             <div class="ui horizontal divider">
                 Or
             </div>
-            <a href="{{pathFor 'generation'}}" class="ui positive centered button" style="margin-left: 40%">Go to the demo</a>
+            <q>
+                <a href="{{pathFor 'generation'}}" class="ui positive massive centered button">Go to the demo</a>
+            </q>
         </div>
         <!-- SLIDE 2 -->
-        <div class="z step introduction slide" data-x="0" data-y="-1500" data-z="-1000" data-scale="10">
+        <div class="z step introduction slide" data-x="900" data-y="-400" data-z="2000">
             <q>Here we demonstrate the power of the Qlik Sense <b>APIs</b> within a <b>multi-tenant SaaS application</b> environment.</q>
         </div>
         <!-- SLIDE 3 -->
@@ -42,29 +44,35 @@
             <div class="ui embed" data-url="{{URL_Youtube_concept_behind}}" data-placeholder="/images/concept behind deep dive.png"> </div>
             <p>This video explains how your SaaS platform can copy an app which serves as a "template layout" for each of your customers. Next, we will guide you through the 4 steps.</p>
         </div>
-        <div id="demoStep1" class="z step introduction" data-z="-3000" data-x="5000" data-y="1000" data-rotate="80">
+
+
+        <!-- DEMO STEP 1 -->
+        <div id="demoStep1" class="z step introduction" data-z="-3000" data-x="4000" data-y="600" >
             <h1 class="ui dividing header">Demo step 1: customers</h1>
             <img class="ui tiny left floated image" src="images/customers.png">
             <p>Which customers need Qlik Sense?
             </p>
         </div>
-        <div id="demoStep2" class="z step introduction" data-x="6000" data-y="325" data-z="-3500" data-rotate="25">
+
+        <!-- DEMO STEP 2 -->
+        <div id="demoStep2" class="z step introduction" data-z="-3000" data-x="4000" data-y="900" >
             <h1 class="ui dividing header">Demo step 2: template apps</h1><img class="ui tiny left floated image" src="images/app.png">Which <b class="rotating">apps</b> should your customers get?
         </div>
-        <div id="demoStep3" class="z step introduction" data-x="7000" data-y="-850" data-rotate="25">
+        <!-- DEMO STEP 3 -->
+
+        <div id="demoStep3" class="z step introduction" data-z="-3000" data-x="5000" data-y="900" data-rotate-x="90" >
             <h1 class="ui dividing header">Demo step 3: provisioning</h1>
             <p>
                 Automatically create the <b>apps</b> for each <b>customer</b>
             </p>
-            <img class="ui large image" src="images/saas demo concept simple.png"> 
-            </div>
-
-        <div id="demoStep4" class="z step introduction" data-rotate-x ="90">
+            <img class="ui large image" src="images/saas demo concept simple.png">
+        </div>
+        <div id="demoStep4" class="z step introduction" data-z="-3000" data-x="9000" data-y="900" data-rotate-y="90" >
             <h3 class="ui dividing header">Demo step 4: Test security and web integration</h3>
             <p>Test the <b>Single Sign On</b>, with your own users and groups, <strong>embedded</strong> in your platform.</p>
             <img class="ui small centered image" src="images/embed.png">
         </div>
-        <div id="APIUseCases" class="z step introduction"  data-rotate-x ="90" style="font-size: 2em; margin: auto;">
+        <div id="APIUseCases" class="z step introduction" data-rotate-x="90" style="font-size: 2em; margin: auto;">
             <h1 class="ui icon header">
                <img class="ui tiny image" src="images/API.png">
                <div class="content">
