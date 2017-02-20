@@ -1,5 +1,8 @@
 <template name="ppt_integrationMain">
     <div class="ui very wide sidebar integration">
+   <!--  <button class="ui postive button">
+  Start the presentation
+</button> -->
         <iframe src='{{IFrameURLChapterSelection}}' class="selector" style=""> </iframe>
     </div>
     <div class="pusher">
@@ -64,9 +67,11 @@
         {{else}}{{> errorPresentation}} {{/if}}
     </div>
     <div class="hint">
-        <p>Select a workshop,
-            <br> click on the right part of the screen and
-            <br/>use a spacebar or arrow keys to navigate</p>
+        <p><!-- Select a workshop,
+            <br> click on the right part of the screen and -->
+            Click on the sceen and
+            <br/>
+            use a spacebar or arrow keys to navigate</p>
     </div>
     <div class="ui {{#if loading}} active {{/if}} dimmer">
         <div class="ui indeterminate text loader" style="font-size: 1.3em">

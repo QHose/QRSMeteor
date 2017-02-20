@@ -36,9 +36,15 @@ Template.ppt_integrationMain.helpers({
 
 Template.ppt_integrationMain.events({
     'click .launch': function(event) {
+        // console.log('button clicked');
+        $('.ui.sidebar')
+            .sidebar('toggle');
+    },
+    'click .button': function(event) {
         console.log('button clicked');
         $('.ui.sidebar')
             .sidebar('toggle');
+        Session.set('showPresentation', true);
     },
     'click .pusher': function(event) {
         console.log('user clicked in the iframe with the seletions');

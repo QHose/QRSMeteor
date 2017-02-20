@@ -67,7 +67,7 @@
 .z.step.slide.integration {
     font-size: 1.5em;
     width: 1200px;
-    height: 1000px;
+    height: calc(100vh - 70px);
     min-height: 800px;
     line-height: 30px;
     position: absolute;
