@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"MAR",
+				"margin-top"
+			],
+			[
 				"margin",
 				"margin-top"
 			],
@@ -510,10 +514,6 @@
 			[
 				"u",
 				"ul\tTag"
-			],
-			[
-				"cer",
-				"certKey"
 			]
 		]
 	},
@@ -532,7 +532,7 @@
 			"file": "imports/ui/impress/ppt_integration.html",
 			"settings":
 			{
-				"buffer_size": 4149,
+				"buffer_size": 4129,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -559,7 +559,7 @@
 			"file": "imports/ui/impress/impress.css",
 			"settings":
 			{
-				"buffer_size": 14908,
+				"buffer_size": 14988,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -887,6 +887,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"slideContent",
 			"sourcecode",
 			"data-rotate=\"80\"",
 			"rotate",
@@ -1013,8 +1014,7 @@
 			"*.css",
 			"dropdown",
 			"userType",
-			"root",
-			"init"
+			"root"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1183,7 +1183,7 @@
 						"translation.y": 491.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1192,15 +1192,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4149,
+						"buffer_size": 4129,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								266,
-								266
+								35,
+								35
 							]
 						],
 						"settings":
@@ -1285,15 +1285,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14908,
+						"buffer_size": 14988,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7038,
-								7038
+								2964,
+								2964
 							]
 						],
 						"settings":
@@ -1303,10 +1303,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 6575.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

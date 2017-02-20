@@ -1,5 +1,5 @@
 #impress {
-    font-family: 'PT Sans', sans-serif;
+    /*font-family: 'PT Sans', sans-serif;*/
     min-height: 740px;
     background: rgb(215, 215, 215);
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
@@ -13,15 +13,21 @@
 .frame {
     display: block;
     position: absolute;
-    /*margin-top: 60px;*/
+    /*top: 45px;*/
     overflow: hidden;
     width: 100vw;
-    height: calc(100% - 60px); //add height for other browsers too
-    /*max-width: 100%;*/
+    height: calc(100% - 60px);
+    /*//add height for other browsers too*/
     margin: 0;
     padding: 0;
     border: 0 none;
     box-sizing: border-box;
+}
+
+.selector {
+    height: calc(100% - 5px);
+    width: inherit;
+    overflow: hidden;
 }
 
 .impress-enabled .z.step {
@@ -86,10 +92,13 @@
     font-size: 1.3em;
 }
 
+
 /*SLIDE CONTENT CONTAINER*/
+
 .slideContent {
-    margin-top: 60px;   
+    margin-top: 60px;
 }
+
 
 /*YOUTUBE*/
 
@@ -118,6 +127,7 @@
 }
 */
 
+
 /*.slide p:first-of-type {
     margin-top: 60px;
     background-color: yellow;
@@ -140,9 +150,12 @@
 .markdownItem {
     margin-top: 20px;
 }
+
 .slide q strong {
     white-space: nowrap;
 }
+
+
 /*
 .slide q {
     display: block;
@@ -154,7 +167,7 @@
 .slide blockquote {
     font-size: 30px;
     font-style: italic;
-    margin: 0.25em 0;
+    margin: 130px 0;
     padding: 0.25em 40px;
     line-height: 1.45;
     position: relative;
@@ -184,23 +197,22 @@
 }*/
 
 .slide.integration .image {
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .pusher .message {
     position: absolute;
-    background-color: white; 
+    background-color: white;
     font-size: 1.5em;
-    top: 20%;
+    top: 400px;
     left: 600px;
     width: 400px;
     margin: -15% 0 0 -25%;
 }
 
-.pusher .message .image{
+.pusher .message .image {
     margin: 20px;
 }
-
 
 .thankYou {
     overflow: auto;
@@ -237,7 +249,6 @@ section {
     line-height: 72px;
     margin-top: 110px;
 }
-
 
 q {
     text-align: center;
@@ -408,8 +419,9 @@ em {
     font-size: 0.8em;
     line-height: 30px;
 }
+
 #sourceCode .buttons {
-        margin-top: 30px;
+    margin-top: 30px;
 }
 
 
