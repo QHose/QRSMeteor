@@ -11,7 +11,7 @@ const enigma = require('enigma');
 var appId = Meteor.settings.public.IntegrationPresenatationApp;
 
 Template.ppt_integrationMain.onRendered(function() {
-    Session.set('clickedInSelection', false);
+    // Session.set('clickedInSelection', false);
     this.$('.ui.sidebar')
         .sidebar('toggle');
 })
@@ -27,7 +27,7 @@ Template.ppt_integration.onRendered(function() {
 Template.ppt_integrationMain.helpers({
     showPresentation() {
         // console.log('show the IFRAME');
-        return Session.get('showPresentation') && Session.get('clickedInSelection');
+        return Session.get('showPresentation'); //&& Session.get('clickedInSelection');
     },
     IFrameURLChapterSelection() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&obj=RZuJ&opt=currsel';
@@ -46,10 +46,10 @@ Template.ppt_integrationMain.events({
             .sidebar('toggle');
         Session.set('showPresentation', true);
     },
-    'click .pusher': function(event) {
-        console.log('user clicked in the iframe with the seletions');
-        Session.set('clickedInSelection', true);
-    },
+    // 'click .sidebar': function(event) {
+    //     console.log('user clicked in the iframe with the seletions');
+    //     Session.set('clickedInSelection', true);
+    // },
     'mouseover .sidebar.integration': function(event) {
         Session.set('showPresentation', false);
     },

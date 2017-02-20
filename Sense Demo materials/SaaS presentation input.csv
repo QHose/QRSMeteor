@@ -412,12 +412,12 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Exercise 1: Create a bar chart using the vizualization API","[See the answer here](http://jsfiddle.net/dlumkeman/oa6d9qgy/)",,"","","","","         0","0","Exercises",
 "Web integration","Data only","<q>Data only</q>",,"","","","","         0","0","PreSales",
 "Web integration","Data only","web - options to integrate content.png",,"","","","","         0","0","PreSales",
-"Web integration","Use case","Use this if you have your own vizualization libraries (software)",,"","","","","         0","0","PreSales",
-"Web integration","Use case","You only use the associative model of Qlik",,"","","","","         0","0","PreSales",
-"Web integration","Use case","The layout is done via non Qlik software",,"","","","","         0","0","PreSales",
-"Web integration","Use case","SaaS platform and Qlik Sense will be kept in sync via websocket events if something changes in Qlik Sense.",,"","","","","         0","0","PreSales",
-"Web integration","Use case","No limits, you can programatically make selections and get data out of Qlik Sense and format it as you like.",,"","","","","         0","0","PreSales",
-"Web integration","Use case","[See an example on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/tableUsingWidgets)",,"","","","","         0","0","PreSales",
+"Web integration","When do you use the data only approach?","Use this if you have your own vizualization libraries (software)",,"","","","","         0","0","PreSales",
+"Web integration","When do you use the data only approach?","You only use the associative model of Qlik",,"","","","","         0","0","PreSales",
+"Web integration","When do you use the data only approach?","The layout is done via non Qlik software",,"","","","","         0","0","PreSales",
+"Web integration","When do you use the data only approach?","SaaS platform and Qlik Sense will be kept in sync via websocket events if something changes in Qlik Sense.",,"","","","","         0","0","PreSales",
+"Web integration","When do you use the data only approach?","No limits, you can programatically make selections and get data out of Qlik Sense and format it as you like.",,"","","","","         0","0","PreSales",
+"Web integration","When do you use the data only approach?","[See an example on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/tableUsingWidgets)",,"","","","","         0","0","PreSales",
 "Web integration","Qlik Sense as high performance data warehouse","You can query Sense from your SaaS Platform, in order to
 * make a selection
 * get selected values, 
@@ -466,17 +466,17 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise.png",,"","","","","         0","0","PreSales",
 "Security - functional design","Introduction to application level security","Authentication: Who is the user?",,,,,,,,,
 "Security - functional design","Introduction to application level security","Authorization: What can he do?",,"","","","","         0","0","PreSales",
-"Security - functional design","Introduction to application level security","securityRules.png",,"","","","","         0","0","PreSales",
+"Security - functional design","Introduction to application level security","<img class=""ui medium centered image"" src=""images/securityRules.png"">",,,,,,,,,
 "Security - functional design","Introduction video","https://youtu.be/sdCVsMzTf64?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales",
 "Security - functional design","No one size fits all approach","security - no one size fits all.png",,"","","","","         0","0","PreSales",
 "Security - functional design","No one size fits all approach","So implement your design in Qlik Sense according to your business needs. ",,"","","","","         0","0","PreSales",
-"Security - functional design","Qlik Sense security as part of a governance framework","Key risks to mitigate for a typical organization
+"Security - functional design","Qlik Sense security as part of a governance framework","## Key risks to mitigate for a typical organization
 - Unreliable reporting
 - Multiple version of the truth
 - User requirements are not met
 - Performance issues
 - Information is disclosed to unauthorized persons",,"","","","","         0","0","PreSales",
-"Security - functional design","Qlik Sense security as part of a governance framework","**Key controls**
+"Security - functional design","Qlik Sense security as part of a governance framework","## Key controls
 - Create an approved authorization design
 - Create a matching Qlik Sense security design using the 
     security rules  and 
@@ -529,6 +529,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Security - technical design","Authorization step 2: section access","security - authorization step 2 section access.png",,"","","","","         0","0","PreSales",
 "Security - technical design","Authorization step 2: section access data reduction example","section access - data reduction examples.png",,"","","","","         0","0","PreSales",
 "Security - technical design","Row level security using groups in section access","sectionAccess groups.png",,"","","","","         0","0","PreSales",
+"Security - technical design","Qlik Sense security overview","securityOverview.png",,"","","","","         0","0","PreSales",
 "Security - technical design","Some other topics","<q>Some other topics you need to know of</q>",,"","","","","         0","0","PreSales",
 "Security - technical design","User Directory Connector (UDC)","<q>User Directory Connector</q>",,"","","","","         0","0","R&D",
 "Security - technical design","What is a UDC","UDC - what is a UDC.png",,"","","","","         0","0","R&D",
@@ -540,9 +541,8 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Security - technical design","Qlik Sense user directory connector (UDC)","Typical use: re-use groups from AD in your security rules.",,"","","","","         0","0","R&D",
 "Security - technical design","What a UDC is not","<q>You can NOT authenticate users via a Qlik Sense UDC</q>",,"","","","","         0","0","R&D",
 "Security - technical design","Audit the effectiveness using the audit tool","security rules audit.png",,"","","","","         0","0","PreSales",
-"Security - technical design","Qlik Sense security overview","securityOverview.png",,"","","","","         0","0","PreSales",
 "Security - technical design","Typical activities you need in security rules for common tasks","security rules - activities that you need to do common tasks.png",,"","","","","         0","0","R&D",
-"Security - technical design","Example source code of ticketing integration with Node.Js and Qlikauth","See [this page](http://webofwork.com/authenticate-qlik-sense-in-an-nodejs-express-app-on-an-external-web-host/)",,"","","","","         0","0","PreSales",
+"Security - technical design","Example source code of ticketing integration with Node.Js and Qlikauth","See [this page](http://webofwork.com/authenticate-qlik-sense-in-an-nodejs-express-app-on-an-external-web-host/)",,"","","","","         0","0","R&D",
 "SaaS demo security","Summary overview","saasdemo security overview.png",,"","","","","         0","0","PreSales",
 "SaaS demo security","Summary overview","[SaaS demo documentation and videos](http://saasdemo.qlik.com/introductionSecurity)",,"","","","","         0","0","PreSales",
 "SaaS demo security","SaaS demo security setup","Qlik Sense configuration
@@ -657,7 +657,9 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 - get and update system rules
 - get (extract) and update settings",,"","","","","         0","0","R&D, PreSales",
 "API integration","QRS API","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","R&D, PreSales",
-"API integration","Engine API","Automate everything inside a QVF",,"","","","","         0","0","R&D, PreSales",
+"API integration","Engine API","What can you do with the Engine API?
+- Automate all the activities you would normally do 
+""inside an app""",,"","","","","         0","0","R&D, PreSales",
 "API integration","How to create the source code?","[Visual studio plugin](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Plugins/Content/Introduction/Plugin-Intro.htm)",,"","","","","         0","0","R&D",
 "API integration","How to create the source code?","[Development hub](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Dev-Hub/Content/Overview/dev-hub-launch-dev-hub.htm)",,"","","","","         0","0","R&D",
 "API integration","Certificate authentication requirements","All services in the Qlik Sense deployment authenticate their communication using an SSL certificate. ",,"","","","","         0","0","R&D",
@@ -691,7 +693,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "QRS API","QRS - architecture diagram","QRS - architecture.png",,"","","","","         0","0","R&D",
 "QRS API","QRS API Introduction video 1","https://youtu.be/-WLu_q_7Z24",,"","","","","         0","0","R&D",
 "QRS API","Key things to look for when you want to have authenticated REST calls","The calls must be authenticated with a user with the required permission.",,"","","","","         0","0","R&D",
-"QRS API","Key things to look for when you want to have authenticated REST calls","Make sure you understand which user make the request
+"QRS API","Key things to look for when you want to have authenticated REST calls","Make sure you understand which user makes the request
 - Client side?
 - Server side?",,"","","","","         0","0","R&D",
 "QRS API","Key things to look for when you want to have authenticated REST calls","Make sure you implement a flow if the user is not yet authenticated",,"","","","","         0","0","R&D",
@@ -700,7 +702,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 - The location where the authentication request originates must have a copy of the client SSL certificate.
 - If you plan to access the APIs from a remote server, you must export client certificates from the Qlik Management Console (QMC) and install them on the calling server.",,"","","","","         0","0","R&D",
 "QRS API","How to authenticate with the server certificate?","[See exporting certificate](http://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/export-certificates.htm)",,"","","","","         0","0","R&D",
-"QRS API","How to authenticate with a Windows user account","You must send requests via the proxy server URL",,"","","","","         0","0","R&D",
+"QRS API","How to authenticate with a Windows user account","You must send requests via the windows virtual proxy server URL",,"","","","","         0","0","R&D",
 "QRS API","Authenticating with an HTTP header","You can use a custom HTTP header to authenticate requests. This header contains the
 -  user name to be presented to the Qlik Sense Repository Service (QRS) API. 
 - In this case, you must send requests via the proxy server URL.",,"","","","","         0","0","R&D",
@@ -725,8 +727,8 @@ const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP +':' + 
         'X-Qlik-xrfkey': _senseConfig.xrfkey
     }
 ```",,"","","","","         0","0","R&D",
-"QRS API","Example header API call","Example API call that returns all server node configurations in the repository database:",,"","","","","         0","0","R&D",
-"QRS API","Example header API call","```
+"QRS API","Example HTTP header for an API call using header authentication","Example API call that returns all server node configurations in the repository database:",,"","","","","         0","0","R&D",
+"QRS API","Example HTTP header for an API call using header authentication","```
 https://localhost:4242/qrs/servernodeconfiguration/full?Xrfkey= abcdefghijklmnop HTTP/1.1
 Accept-Encoding: gzip,deflate
 X-Qlik-User: UserDirectory=INTERNAL; UserId=sa_repository
@@ -738,7 +740,6 @@ Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
 ```",,"","","","","         0","0","R&D",
 "QRS API","Methods and IDs","QRS API - methods and IDs.png",,"","","","","         0","0","R&D",
-"QRS API","Which end points are available?","*Basically you can do all the things you normally do in the QMC*",,"","","","","         0","0","R&D",
 "QRS API","Use the Chrome console to ""record"" Sense calls","QRS - start task chrome console.png",,"","","","","         0","0","R&D",
 "QRS API","How do you create a REST URL? General purpose endpoints","When communicating directly with the QRS API, the URL is as follows:",,"","","","","         0","0","R&D",
 "QRS API","How do you create a REST URL? General purpose endpoints","```
@@ -792,60 +793,60 @@ App:
 }
 ```",,"","","","","         0","0","R&D",
 "QRS API","Example start a task","QRS - start task.png",,"","","","","         0","0","R&D",
-"QRS API","Exercises","Next we are going to use Postman (Chrome app) to connect to the
-- QRS API using
-- Windows authentication
-- Header authentication",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Here we will load QRS API data in a QVF",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","We will load the data via a REST Connector ",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","So in this case a REST endpoint can be compared to loading from a database",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Create a new Qlik Sense application.",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Click 'Add data', and choose the Rest connector:",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","In the 'Create a connection - Rest' dialogue, choose",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Use Windows authentication = Yes (see below for more)",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","URL > the name of the Rest endpoint.  See API Paths for a full listing of possible paths. E.g. /QRS/USER/FULL)",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Query parameters xrfkey = - ABCDEFG123456789 (value can be different as long as it matches x-Qlik-xrfkey)",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Query headers
-- x-Qlik-xrfkey = ABCDEFG123456789
-- User-Agent = Windows
-- Name = <name of the data connection>",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","[source Marcus](https://confluence.qliktech.com/pages/viewpage.action?spaceKey=~msi&title=Query+the+Qlik+Sense+Repository+API+with+the+Qlik+REST+Connector)",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Data - REST API load data from QRS.png",,"","","","","         0","0","R&D, Exercises",
+"QRS API","Connect to a REST endpoint using the script of a QVF","Use the REST connector",,,,,,,,,
+"QRS API","Connect to a REST endpoint using the script of a QVF","In this way you can also connect to the QRS API",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Here we will load QRS API data in a QVF",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","We will load the data via a REST Connector ",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","So in this case a REST endpoint can be compared to loading from a database",,"","","","","         0","0","Exercises",
 "QRS API","QVF - REST connector: The Qlik REST Connector offers several authentication choices","Windows authentication = true >> Windows Integrated Security (NTLM).",,"","","","","         0","0","R&D",
 "QRS API","QVF - REST connector: The Qlik REST Connector offers several authentication choices","Windows authentication = false and User Name / Password >> Forms / Basic auth",,"","","","","         0","0","R&D",
 "QRS API","QVF - REST connector: The Qlik REST Connector offers several authentication choices","Windows authentication = false and populate Query headers with user id >> HTTP Header Authentication",,"","","","","         0","0","R&D",
 "QRS API","QVF - REST connector: The Qlik REST Connector offers several authentication choices","Windows authentication  = false and Use Certificate = Installed or From File >> Authenticate via SSL Certs.  Note that with this method, you must connect directly to the Repository (port 4242) instead of through the Proxy (443 or 80)",,"","","","","         0","0","R&D",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Create a new Qlik Sense application.",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Click 'Add data', and choose the Rest connector:",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","In the 'Create a connection - Rest' dialogue, choose",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Use Windows authentication = Yes (see below for more)",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","URL > the name of the Rest endpoint.  See API Paths for a full listing of possible paths. E.g. /QRS/USER/FULL)",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Query parameters xrfkey = - ABCDEFG123456789 (value can be different as long as it matches x-Qlik-xrfkey)",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Query headers
+- x-Qlik-xrfkey = ABCDEFG123456789
+- User-Agent = Windows
+- Name = <name of the data connection>",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","[source Marcus](https://confluence.qliktech.com/pages/viewpage.action?spaceKey=~msi&title=Query+the+Qlik+Sense+Repository+API+with+the+Qlik+REST+Connector)",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Data - REST API load data from QRS.png",,"","","","","         0","0","Exercises",
 "QRS API","Video: introduction to postman","https://www.youtube.com/watch?v=jBjXVrS8nXs",,"","","","","         0","0","R&D",
-"QRS API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 2: Get apps via Postman with header authentication","header authentication.png",,"","","","","         0","0","R&D, Exercises",
+"QRS API","Exercise 2","Next we are going to use Postman (Chrome app) to connect to the QRS API using
+- Header authentication",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 2: Get apps via Postman with header authentication","header authentication.png",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 3: get all systemrules","Try to get an overview of all the security rules (part of systemrules)",,"","","","","         0","0","R&D, Exercises",
 "QRS API","Exercise 3: get all systemrules","You can search the QRS help for special purpose endpoints",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Problem solving 1:  get streams via Postman","QRS API - broken XREF example.png",,"","","","","         0","0","R&D",
-"QRS API","Problem solving 1:  get streams via Postman","[Open postman app in chrome](https://www.getpostman.com/collections/3168aed89bc40c99790a)",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","What is the Qlik Sense proxy?","The ""entry door"" to Qlik Sense (most of the times)",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","What is the Qlik Sense proxy?","Handles authentication: login/logout",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","What is the Qlik Sense proxy?","Creates a session for the user",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","What is the Qlik Sense proxy?","So if multiple devices or IFrames connect, they share the same context or session state (selections etc.)",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","When do you use the QPS API?","If you have an external system (like a SaaS platform) and you want to:
+"QRS API","Problem solving 1:  get streams via Postman","QRS API - broken XREF example.png",,"","","","","         0","0","Support",
+"QRS API","Problem solving 1:  get streams via Postman","[Open postman app in chrome](https://www.getpostman.com/collections/3168aed89bc40c99790a)",,"","","","","         0","0","Support",
+"QPS API","What is the Qlik Sense proxy?","The ""entry door"" to Qlik Sense (most of the times)",,"","","","","         0","0","R&D",
+"QPS API","What is the Qlik Sense proxy?","Handles authentication: login/logout",,"","","","","         0","0","R&D",
+"QPS API","What is the Qlik Sense proxy?","Creates a session for the user",,"","","","","         0","0","R&D",
+"QPS API","What is the Qlik Sense proxy?","So if multiple devices or IFrames connect, they share the same context or session state (selections etc.)",,"","","","","         0","0","R&D",
+"QPS API","When do you use the QPS API?","If you have an external system (like a SaaS platform) and you want to:
 - Login/logout users
 - Create Single Sign On
 - Pass authorizations (group memberships) from external system to Qlik Sense",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","When do you use the QPS API?","Other cases
+"QPS API","When do you use the QPS API?","Other cases
 - session sharing
 - load balancing",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Remember: You don't store credentials in Qlik Sense","QPS - Qlik does not store users and passwords.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","When to use which authentication method?","<q>You connect Qlik Sense to the method ""used today"" by the SaaS platform</q>",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Qlik Sense can get the users identity in a couple of ways","Windows - Active Directory",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Qlik Sense can get the users identity in a couple of ways","Ticket",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Qlik Sense can get the users identity in a couple of ways","Header",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Qlik Sense can get the users identity in a couple of ways","SAML",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","When to use which authentication method? (2)","<q>With SaaS that is ticketing or SAML most of the time</q>",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","The URL or prefix used triggers a specific virtual proxy","##If you use an URL (e.g. in IFrame)",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","The URL or prefix used triggers a specific virtual proxy","- http://presales1:81/sense/app/f094b3f0-529f-4c4d-9a60-a1305c8c19b0
+"QPS API","Remember: You don't store credentials in Qlik Sense","QPS - Qlik does not store users and passwords.png",,"","","","","         0","0","R&D",
+"QPS API","When to use which authentication method?","<q>You connect Qlik Sense to the method ""used today"" by the SaaS platform</q>",,"","","","","         0","0","R&D",
+"QPS API","Qlik Sense can get the users identity in a couple of ways","Windows - Active Directory",,"","","","","         0","0","R&D",
+"QPS API","Qlik Sense can get the users identity in a couple of ways","Ticket",,"","","","","         0","0","R&D",
+"QPS API","Qlik Sense can get the users identity in a couple of ways","Header",,"","","","","         0","0","R&D",
+"QPS API","Qlik Sense can get the users identity in a couple of ways","SAML",,"","","","","         0","0","R&D",
+"QPS API","When to use which authentication method? (2)","<q>With SaaS that is ticketing or SAML most of the time</q>",,"","","","","         0","0","R&D",
+"QPS API","The URL or prefix used triggers a specific virtual proxy","##If you use an URL (e.g. in IFrame)",,"","","","","         0","0","R&D",
+"QPS API","The URL or prefix used triggers a specific virtual proxy","- http://presales1:81/sense/app/f094b3f0-529f-4c4d-9a60-a1305c8c19b0
 - http://presales1:81/*anon*/sense/app/f094b3f0-529f-4c4d-9a60-a1305c8c19b0
 - http://presales1:81/*ticket*/sense/app/f094b3f0-529f-4c4d-9a60-a1305c8c19b0",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","The URL or prefix used triggers a specific virtual proxy","##Use the prefix, If you use an API",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","The URL or prefix used triggers a specific virtual proxy","
+"QPS API","The URL or prefix used triggers a specific virtual proxy","##Use the prefix, If you use an API",,"","","","","         0","0","R&D",
+"QPS API","The URL or prefix used triggers a specific virtual proxy","
 ```
 var config = {
  host: ""saasdemo.qlik.com"",
@@ -854,46 +855,46 @@ var config = {
  isSecure: false;
 }
 ```",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","You create a virtual proxy per authentication method","QPS - virtual proxy per authentication method.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Example: create a single sign on with a SaaS platform","QPS - introduction to security flow.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Example: logout a user via the QPS API","API - logout user.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Connecting to the QPS API","##Make sure you check the following",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Connecting to the QPS API","- The request must be authenticated",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Connecting to the QPS API","- An Xrfkey must be passed to prevent cross-site scripting attacks",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Connecting to the QPS API","###Example QPS REST API call",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Connecting to the QPS API","```
+"QPS API","You create a virtual proxy per authentication method","QPS - virtual proxy per authentication method.png",,"","","","","         0","0","R&D",
+"QPS API","Example: create a single sign on with a SaaS platform","QPS - introduction to security flow.png",,"","","","","         0","0","R&D",
+"QPS API","Example: logout a user via the QPS API","API - logout user.png",,"","","","","         0","0","R&D",
+"QPS API","Connecting to the QPS API","##Make sure you check the following",,"","","","","         0","0","R&D",
+"QPS API","Connecting to the QPS API","- The request must be authenticated",,"","","","","         0","0","R&D",
+"QPS API","Connecting to the QPS API","- An Xrfkey must be passed to prevent cross-site scripting attacks",,"","","","","         0","0","R&D",
+"QPS API","Connecting to the QPS API","###Example QPS REST API call",,"","","","","         0","0","R&D",
+"QPS API","Connecting to the QPS API","```
 https://<QPS machine name>:4243/qps/{virtual proxy/}user
 ```",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Connecting to the QPS API","[See Qlik help for more info about the QPS API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Introduction.htm)",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Question about QPS entry points....","<q>Did you notice the QPS has a front door (port 80/443) and a back door? (4243)</q>",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","How to create an authenticated connection to the QPS API? ","Windows authentication",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","How to create an authenticated connection to the QPS API? ","Header authentication",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","How to create an authenticated connection to the QPS API? ","Certificates",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","How to authenticate with a Windows user account","You must send requests via the proxy server URL",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","How to authenticate with a Windows user account","```
+"QPS API","Connecting to the QPS API","[See Qlik help for more info about the QPS API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Introduction.htm)",,"","","","","         0","0","R&D",
+"QPS API","Question about QPS entry points....","<q>Did you notice the QPS has a front door (port 80/443) and a back door? (4243)</q>",,"","","","","         0","0","R&D",
+"QPS API","How to create an authenticated connection to the QPS API? ","Windows authentication",,"","","","","         0","0","R&D",
+"QPS API","How to create an authenticated connection to the QPS API? ","Header authentication",,"","","","","         0","0","R&D",
+"QPS API","How to create an authenticated connection to the QPS API? ","Certificates",,"","","","","         0","0","R&D",
+"QPS API","How to authenticate with a Windows user account","You must send requests via the proxy server URL",,"","","","","         0","0","R&D",
+"QPS API","How to authenticate with a Windows user account","```
 https://<QPS machine name>:4243/qps/{virtual proxy/}user
 ```",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","How to authenticate with the server certificate?","To authenticate using this method:
+"QPS API","How to authenticate with the server certificate?","To authenticate using this method:
 - The location where the authentication request originates must have a copy of the client SSL certificate.
 - If you plan to access the APIs from a remote server, you must export client certificates from the Qlik Management Console (QMC) and install them on the calling server.",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","How to authenticate with the server certificate?","[See exporting certificate](http://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/export-certificates.htm)",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Using certificate - Example code to logout a user (server side)","API - logout user.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Using certificate - Example code to logout a user (server side)","```
+"QPS API","How to authenticate with the server certificate?","[See exporting certificate](http://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/export-certificates.htm)",,"","","","","         0","0","R&D",
+"QPS API","Using certificate - Example code to logout a user (server side)","API - logout user.png",,"","","","","         0","0","R&D",
+"QPS API","Using certificate - Example code to logout a user (server side)","```
 call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
 ```",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Using certificate - Example code to logout a user (server side)","```
+"QPS API","Using certificate - Example code to logout a user (server side)","```
 call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
 ```",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Ticketing","<q>Ticketing</q>",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Remember: You don't store credentials in Qlik Sense","QPS - Qlik does not store users and passwords.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Ticketing - Browser redirects explained","QPS - authentication redirect flow in browser for dummies.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Ticketing for dummies","flow - ticketing authentication for dummies.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Video: end to end security integration flow","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Ticketing deep dive intro video","https://youtu.be/0E9i5Pf2Hjg?t=761",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Ticketing - create ticket (passport)","Create a javascript object
+"QPS API","Ticketing","<q>Ticketing</q>",,"","","","","         0","0","R&D",
+"QPS API","Remember: You don't store credentials in Qlik Sense","QPS - Qlik does not store users and passwords.png",,"","","","","         0","0","R&D",
+"QPS API","Ticketing - Browser redirects explained","QPS - authentication redirect flow in browser for dummies.png",,"","","","","         0","0","R&D",
+"QPS API","Ticketing for dummies","flow - ticketing authentication for dummies.png",,"","","","","         0","0","R&D",
+"QPS API","Video: end to end security integration flow","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","R&D",
+"QPS API","Ticketing deep dive intro video","https://youtu.be/0E9i5Pf2Hjg?t=761",,"","","","","         0","0","R&D",
+"QPS API","Ticketing - create ticket (passport)","Create a javascript object
 -  with the user information (like a passport). 
 -  group all users per tenant in a UDC. ",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Ticketing - create ticket (passport)","```
+"QPS API","Ticketing - create ticket (passport)","```
 var passport = {
             'UserDirectory': customer, 
             'UserId': user.name, 
@@ -903,9 +904,9 @@ var passport = {
             ]
         }
 ```",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Ticketing - create ticket (passport)","[See the source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L49)",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Ticketing - request ticket","Supply the passport when you request an access ticket for Qlik Sense",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Ticketing - request ticket","```
+"QPS API","Ticketing - create ticket (passport)","[See the source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L49)",,"","","","","         0","0","R&D",
+"QPS API","Ticketing - request ticket","Supply the passport when you request an access ticket for Qlik Sense",,"","","","","         0","0","R&D",
+"QPS API","Ticketing - request ticket","```
 call.request = proxyRestUri + 'ticket';         
 call.response = HTTP.call('POST', call.request, {
             'npmRequestOptions': certicate_communication_options,
@@ -914,7 +915,7 @@ call.response = HTTP.call('POST', call.request, {
             data: passport //the user and group info for which we want to create a ticket
         });
 ```",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Ticketing - request ticket","Authenticate your call via certificates
+"QPS API","Ticketing - request ticket","Authenticate your call via certificates
 ```
  export var certicate_communication_options = {
         rejectUnauthorized: false,
@@ -928,32 +929,32 @@ call.response = HTTP.call('POST', call.request, {
         cert: _certs.cert
     };
 ```",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Ticketing - request ticket","[See the source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L165)",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Ticketing - create redirect URL for the user","```
+"QPS API","Ticketing - request ticket","[See the source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L165)",,"","","","","         0","0","R&D",
+"QPS API","Ticketing - create redirect URL for the user","```
 redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 ```",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Header","<q>Header authentication</q>",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","When to use header authentication?","Normally used within large environments",,,,,,,,,
-"Proxy (QPS) API","When to use header authentication?","In which the already have a system that handles the authentication of the user",,,,,,,,,
-"Proxy (QPS) API","When to use header authentication?","Which inserts a HTTP header so other business applications like Qlik Sense can re-use that information. ",,,,,,,,,
-"Proxy (QPS) API","When to use header authentication?","ONLY to be used in specific architecture scenarios",,,,,,,,,
-"Proxy (QPS) API","Header authentication flow","QPS - header auth flow.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Example architecture with header authentication","architecture - authenticating reverse proxy.png",,,,,,,,,
-"Proxy (QPS) API","Example Header authentication setup","QPS - header auth virtual proxy settings 2.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Did you see a security risk here?",,,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Headers should be used wisely","<q>Everyone can just insert his own credentials so always use in combination with reverse proxy</q>",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Example API request with header authentication","Request from client",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Example API request with header authentication","postman request.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Example API request with header authentication","Response from Qlik Sense",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Example API request with header authentication","postman response.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Header authentication requirements","Create virtual proxy for header authentication",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Header authentication requirements","QMC - proxy - header authentication setup.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Proxy architecture scenarios","<q>Proxy architecture scenarios</q>",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","QPS architecture diagram","QPS - architecture.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Architecture scenarios","qps - reverse proxy architecture.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Server side - SSO with QlikAuth","Use Rikard Braathens [QlikAuth module](https://github.com/braathen/qlik-auth)",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Server side - SSO with QlikAuth","Example Node.js code",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Server side - SSO with QlikAuth","```
+"QPS API","Header","<q>Header authentication</q>",,"","","","","         0","0","R&D",
+"QPS API","When to use header authentication?","Normally used within large environments",,,,,,,,,
+"QPS API","When to use header authentication?","In which the already have a system that handles the authentication of the user",,,,,,,,,
+"QPS API","When to use header authentication?","Which inserts a HTTP header so other business applications like Qlik Sense can re-use that information. ",,,,,,,,,
+"QPS API","When to use header authentication?","ONLY to be used in specific architecture scenarios",,,,,,,,,
+"QPS API","Header authentication flow","QPS - header auth flow.png",,"","","","","         0","0","R&D",
+"QPS API","Example architecture with header authentication","architecture - authenticating reverse proxy.png",,,,,,,,,
+"QPS API","Example Header authentication setup","QPS - header auth virtual proxy settings 2.png",,"","","","","         0","0","R&D",
+"QPS API","Did you see a security risk here?",,,"","","","","         0","0","R&D",
+"QPS API","Headers should be used wisely","<q>Everyone can just insert his own credentials so always use in combination with reverse proxy</q>",,"","","","","         0","0","R&D",
+"QPS API","Example API request with header authentication","Request from client",,"","","","","         0","0","R&D",
+"QPS API","Example API request with header authentication","postman request.png",,"","","","","         0","0","R&D",
+"QPS API","Example API request with header authentication","Response from Qlik Sense",,"","","","","         0","0","R&D",
+"QPS API","Example API request with header authentication","postman response.png",,"","","","","         0","0","R&D",
+"QPS API","Header authentication requirements","Create virtual proxy for header authentication",,"","","","","         0","0","R&D",
+"QPS API","Header authentication requirements","QMC - proxy - header authentication setup.png",,"","","","","         0","0","R&D",
+"QPS API","Proxy architecture scenarios","<q>Proxy architecture scenarios</q>",,"","","","","         0","0","R&D",
+"QPS API","QPS architecture diagram","QPS - architecture.png",,"","","","","         0","0","R&D",
+"QPS API","Architecture scenarios","qps - reverse proxy architecture.png",,"","","","","         0","0","R&D",
+"QPS API","Server side - SSO with QlikAuth","Use Rikard Braathens [QlikAuth module](https://github.com/braathen/qlik-auth)",,"","","","","         0","0","R&D",
+"QPS API","Server side - SSO with QlikAuth","Example Node.js code",,"","","","","         0","0","R&D",
+"QPS API","Server side - SSO with QlikAuth","```
 //Define user directory, user identity and attributes
       var profile = {
         'UserDirectory': 'QLIK', 
@@ -964,17 +965,18 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
       //Make call for ticket request
       qlikauth.requestTicket(req, res, profile);
 ```",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Example code to logout a user via QPS API call","API - logout user.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Example code to logout a user via QPS API call","``` 
+"QPS API","Example code to logout a user via QPS API call","API - logout user.png",,"","","","","         0","0","R&D",
+"QPS API","Example code to logout a user via QPS API call","``` 
 call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
 ```",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Example code to logout a user via QPS API call","``` call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
+"QPS API","Example code to logout a user via QPS API call","``` 
+call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
 ``` ",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Proxy - Cross origin issues","Proxy - settings.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Proxy - Cross origin issues","CORS error.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Proxy - Cross origin issues","error - XMLhttprequest cannot load - access control allow origin header not present.png",,"","","","","         0","0","R&D",
-"Proxy (QPS) API","Exercise 1: Ticketing and connection fails","Go to snapshot 3 and solve the issue","proxy service is not running, we blocked port 4243 on the sense server via the firewall","","","","","         0","0","Exercises",
-"Proxy (QPS) API","Exercise 1: Ticketing and connection fails","Go to your server/selfService to see the issue",,"","","","","         0","0","Exercises",
+"QPS API","Proxy - Cross origin issues","Proxy - settings.png",,"","","","","         0","0","R&D",
+"QPS API","Proxy - Cross origin issues","CORS error.png",,"","","","","         0","0","R&D",
+"QPS API","Proxy - Cross origin issues","error - XMLhttprequest cannot load - access control allow origin header not present.png",,"","","","","         0","0","R&D",
+"QPS API","Exercise 1: Ticketing and connection fails","Go to snapshot 3 and solve the issue","proxy service is not running, we blocked port 4243 on the sense server via the firewall","","","","","         0","0","Exercises",
+"QPS API","Exercise 1: Ticketing and connection fails","Go to your server/selfService to see the issue",,"","","","","         0","0","Exercises",
 "Engine API","Introduction to QIX Engine API","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","R&D",
 "Engine API","What can you do with the Engine API?","
 Basically everything you can do when you open an app in the hub.
@@ -1365,6 +1367,12 @@ document.addEventListener('click', function(e) {
 "Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","PreSales",
 "Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","SSO is enforced using a ticket with userID and his groups",,"","","","","         0","0","PreSales",
 "Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 6: use the Qlik Sense server to host your mashup","Users authenticate via Auth0 (external user mgt system)",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 6: use the Qlik Sense server to host your mashup","Group membership is loaded via a UDC",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 6: use the Qlik Sense server to host your mashup","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 6: use the Qlik Sense server to host your mashup","First a ""selection page"" is presented. The selected App Id is stored in the HTTP session.",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 6: use the Qlik Sense server to host your mashup","Based on the selection, a specific mashup is loaded.",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 6: use the Qlik Sense server to host your mashup","architecture - multi tenant solution only using a Sense server with mashup.png",,"","","","","         0","0","PreSales",
 "Data integration","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","data - create qvd.png",,"","","","","         0","0","PreSales",
