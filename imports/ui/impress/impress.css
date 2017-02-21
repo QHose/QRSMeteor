@@ -44,7 +44,7 @@
     opacity: 1
 }
 
-.z.step.slide.integration.breaker {
+.z.step.integration.breaker {
     background-image: url("/images/Qlik breaker.png");
     width: 1100px;
     height: 800px;
@@ -65,29 +65,17 @@
     color: rgb(102, 102, 102);
 }
 
-.z.step.slide.integration {
+.z.step.container.segment {
     font-size: 1.5em;
-    width: 1200px;
+    min-height: 600px;
+    min-width: 1200px;
     height: calc(100vh - 100px);
-    /*min-height: 800px;*/
     line-height: 30px;
-    position: absolute;
     overflow: auto;
     padding: 40px;
-    /*margin: 20px auto;*/
-    /*margin-top: 80px;*/
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
     background-image: url("/images/Qlik_Leftcorner_Icon.png");
     background-repeat: no-repeat;
     background-position: left top;
-    border: 1px solid rgba(0, 0, 0, .3);
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
-    color: rgb(102, 102, 102);
 }
 
 
@@ -127,7 +115,7 @@
 
 /*LEVEL 3 MARKDOWN GENERATED CODE*/
 
-.slide.integration .markdownItem {
+.segment.integration .markdownItem {
     margin-left: 160px
 }
 
@@ -144,11 +132,11 @@
     background-color: yellow;
 }*/
 
-.slide.integration p {
+.step.integration p {
     font-size: 1.3em;
 }
 
-.slide.integration q {
+.step.integration q {
     margin: auto;
     width: 700px;
     text-align: center;
@@ -175,7 +163,8 @@
     margin-top: 100px;
 }*/
 
-.slide blockquote {
+
+/*.slide blockquote {
     font-size: 30px;
     font-style: italic;
     margin: 130px 0;
@@ -183,10 +172,11 @@
     line-height: 1.45;
     position: relative;
     color: #383838;
-}
+}*/
 
-.slide blockquote p {
+.step.integration blockquote p {
     color: #5EA819;
+    font-size: 2em;
 }
 
 
@@ -207,7 +197,7 @@
     margin-top: 90px;
 }*/
 
-.slide.integration .image {
+.integration .image {
     margin-top: 40px;
 }
 

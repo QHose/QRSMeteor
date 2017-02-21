@@ -1,6 +1,6 @@
 <template name="ppt_integrationMain">
     <div class="ui very wide sidebar integration">
-   <!--  <button class="ui postive button">
+        <!--  <button class="ui postive button">
   Start the presentation
 </button> -->
         <iframe src='{{IFrameURLChapterSelection}}' class="selector" style=""> </iframe>
@@ -10,27 +10,27 @@
             <i class="content icon"></i>
             <span class="text">Engine API Slide generator (<a href="{{pathFor 'legal'}}">PROTOTYPE</a>)</span>
         </div>
-            {{#if showPresentation}}
-                <iframe allowfullscreen src="{{pathFor 'ppt_integration'}}" class="frame"></iframe>
-            {{else}}
-                <div class="ui icon message" style="width: 600px">
-                    <!-- <i class="help icon"></i> -->
-                    <div class="content">
-                        <div class="header">
-                            How to use this presentation generator?
-                        </div>
-                        <p>THIS IS A PROTOTYPE TO DEMO THE POWER OF THE QAP, AND ALL SLIDES ARE WORK IN PROGRESS.</p>
-                        <p>In this demo we demonstrate that Qlik Sense can be used as centralized data engine for users and systems in your organization. And we can quickly help you to find the answers you need via our associative search.
-                        </p>
-                        <ul class="ui list" style="margin-left: 20px">
-                            <li>First select your workshop, topics or use the search box to look for specific topics (like 'app', 'security', 'authentication', 'flow' or 'architecture' etc.). </li>
-                            <li>Next, click on this side of the screen to start the presentation.</li>
-                            <li>You can always go back to make more selections via the left top menu <i class="content icon"></i></li>
-                        </ul>
-                        <img class="ui centered image" src="images/Engine API slide generator easy flow.png">
+        {{#if showPresentation}}
+            <iframe allowfullscreen src="{{pathFor 'ppt_integration'}}" class="frame"></iframe>
+        {{else}}
+            <div class="ui icon message" style="width: 600px">
+                <!-- <i class="help icon"></i> -->
+                <div class="content">
+                    <div class="header">
+                        How to use this presentation generator?
                     </div>
+                    <p>THIS IS A PROTOTYPE TO DEMO THE POWER OF THE QAP, AND ALL SLIDES ARE WORK IN PROGRESS.</p>
+                    <p>In this demo we demonstrate that Qlik Sense can be used as centralized data engine for users and systems in your organization. And we can quickly help you to find the answers you need via our associative search.
+                    </p>
+                    <ul class="ui list" style="margin-left: 20px">
+                        <li>First select your workshop, topics or use the search box to look for specific topics (like 'app', 'security', 'authentication', 'flow' or 'architecture' etc.). </li>
+                        <li>Next, click on this side of the screen to start the presentation.</li>
+                        <li>You can always go back to make more selections via the left top menu <i class="content icon"></i></li>
+                    </ul>
+                    <img class="ui centered image" src="images/Engine API slide generator easy flow.png">
                 </div>
-            {{/if}}
+            </div>
+        {{/if}}
     </div>
 </template>
 <template name="ppt_integration">
@@ -38,23 +38,26 @@
         {{#if mainTopics}}
             {{#each mainTopics }}
                 {{#if chapterSlide this}}
-                    <!--         Create a chapter breaker if the level 1 has changed in the current row
-                -->
-                    <div class="z step slide integration breaker" data-x="{{XValue @index}}" data-z="1000">
+                    <!--         Create a chapter breaker if the level 1 has changed in the current row-->
+                    <div class="z step integration breaker ui segment" data-x="{{XValue @index}}" data-z="1000">
                         <h1 class="ui header" style="font-size: 50px;">
                         {{this}}
                     </h1>
                     </div>
                 {{else}}
-                    <div class="z step slide integration" data-x="{{XValue @index}}" data-rotate-x="30" data-z="-1000">
-                        <h2 class="ui header">
+                    <div class="z step ui text container raised segment integration" data-x="{{XValue @index}}" data-rotate-x="30" data-z="-1000">
+                        <h2 class="ui center aligned header">
                         <div class="content">
                             {{level 1}}
-                            <div class="sub header">{{level 2}}</div>
+                            <div class="sub header">
+                                {{level 2}}
+                            </div>
                         </div>
                     </h2>
                         <div class="slideContent">
-                            {{#each item in itemsOfLevel 3}} {{{formatted item}}} {{/each}}
+                            {{#each item in itemsOfLevel 3}}
+                                {{{formatted item}}}
+                            {{/each}}
                         </div>
                     </div>
                 {{/if}}
@@ -67,11 +70,9 @@
         {{else}}{{> errorPresentation}} {{/if}}
     </div>
     <div class="hint">
-        <p><!-- Select a workshop,
-            <br> click on the right part of the screen and -->
+        <p>
             Click on the sceen and
-            <br/>
-            use a spacebar or arrow keys to navigate</p>
+            <br/> use a spacebar or arrow keys to navigate</p>
     </div>
     <div class="ui {{#if loading}} active {{/if}} dimmer">
         <div class="ui indeterminate text loader" style="font-size: 1.3em">

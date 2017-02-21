@@ -9,6 +9,7 @@ var showdown = require('showdown');
 var converter = new showdown.Converter();
 const enigma = require('enigma');
 var appId = Meteor.settings.public.IntegrationPresenatationApp;
+var IntegrationPresenatationSelectionObject = 'RZuJ';
 
 Template.ppt_integrationMain.onRendered(function() {
     // Session.set('clickedInSelection', false);
@@ -30,7 +31,7 @@ Template.ppt_integrationMain.helpers({
         return Session.get('showPresentation'); //&& Session.get('clickedInSelection');
     },
     IFrameURLChapterSelection() {
-        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&obj=RZuJ&opt=currsel';
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&obj=' + IntegrationPresenatationSelectionObject + '&opt=currsel';
     }
 })
 
@@ -98,11 +99,17 @@ Template.ppt_integration.helpers({
             return text;
         } else if (checkTextIsImage(text)) { //image
             // console.log('found an image', text)
-            return '<img class="ui massive centered image"  src="images/' + text + '">'
-        } else { //text 
-            // console.log('Markdown converter: ', converter.makeHtml(text));
+            return '<img class="ui massive centered integration image"  src="images/' + text + '">'
+        } else { //text, convert the text (which can include markdown syntax) to valid HTML
             var result = converter.makeHtml(text);
-            return '<div class="markdownItem">' + result + '</div>';
+            if (result.substring(1, 11) === 'blockquote') {
+                return '<div class="ui green very padded segment">' + result + '</div>';
+            }
+            if (result.substring(1, 1) === 'p') {
+
+            } else {
+                return '<div class="markdownItem">' + result + '</div>';
+            }
         }
     }
 });
