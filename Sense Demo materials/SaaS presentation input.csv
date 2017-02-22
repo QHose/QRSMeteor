@@ -3,7 +3,7 @@
 "Workshop Introduction","Introduction","Qlik Sense experience level?",,"","","","","         0","0","PreSales",
 "Workshop Introduction","Introduction","Worked with APIs before?",,"","","","","         0","0","PreSales",
 "Workshop Introduction","Introduction","What do you expect from this session?",,"","","","","         0","0","PreSales",
-"Workshop Introduction","Please write your your questions on a postit","postIt.jpg",,,,,,,,,
+"Workshop Introduction","Please write your your questions on a postit","postIt.jpg",,"","","","","         0","0","Support",
 "Workshop Introduction","1 minute SaaS demo intro video","https://youtu.be/eiI-y2OEbv0?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales, 30 Minute intro",
 "Workshop Introduction","What's so special about this presentation?","> We have used the Qlik APIs to get the data out of the app",,"","","","","         0","0","Sales, 30 Minute intro",
 "Workshop Introduction","What's so special about this presentation?"," <img class=""ui large centered image"" src=""images/Engine API slide generator easy flow.png"">",,"","","","","         0","0","30 Minute intro, Sales",
@@ -214,15 +214,15 @@ app.visualization.create('barchart',[""Case owner"",""=avg(Duration)""],
 table = app.createTable([""Country"", ""Category""], [""Sum(SalesAmount)""], { rows: 1000 });
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Events","Sense will send an event message if the data is ready for use",,"","","","","         0","0","PreSales",
-"API -  generic introduction","But there are more ways to wait: Events"," ```          
-        table.OnData.bind(listener);
+"API -  generic introduction","But there are more ways to wait: Events"," ``` 
+table.OnData.bind(listener);
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Events","If we receveive the event, we wil execute a callback function: listener",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Events"," ```
-var listener = function() {
-            createGoogleMapChart(googleFormattedData);
-        };
-        table.OnData.bind(listener); //bind the listener
+var listener = function() {          createGoogleMapChart(googleFormattedData);
+};
+
+table.OnData.bind(listener); //bind the listener
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Callback functions","The code in the function is executed when the button is clicked",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Callback functions","```
@@ -717,9 +717,8 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 - Xrfkey parameter: Must equal 16 arbitrary characters. 
 - x-Qlik-Xrfkey: Custom HTTP header. The format is as follows:",,"","","","","         0","0","R&D",
 "QRS API","Using Xrfkey headers","```
-const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey, {
-            headers: authHeaders                       
-        })
+'http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey, {
+            headers: authHeaders
 ```",,"","","","","         0","0","R&D",
 "QRS API","Using Xrfkey headers","```
  export const authHeaders = {
@@ -818,9 +817,12 @@ App:
 "QRS API","Exercise 2","Next we are going to use Postman (Chrome app) to connect to the QRS API using
 - Header authentication",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 2: Get apps via Postman with header authentication","Try to get a list of apps, in the screenshot you see an example for copying an app.",,,,,,,,,
+"QRS API","Exercise 2: Get apps via Postman with header authentication","Make sure you include the QREF key (two times)",,,,,,,,,
+"QRS API","Exercise 2: Get apps via Postman with header authentication","Specify a correct virtual proxy. ",,,,,,,,,
 "QRS API","Exercise 2: Get apps via Postman with header authentication","header authentication.png",,"","","","","         0","0","Exercises",
-"QRS API","Exercise 3: get all systemrules","Try to get an overview of all the security rules (part of systemrules)",,"","","","","         0","0","R&D, Exercises",
-"QRS API","Exercise 3: get all systemrules","You can search the QRS help for special purpose endpoints",,"","","","","         0","0","R&D, Exercises",
+"QRS API","Exercise 3: get all systemrules via a postman call","Try to get an overview of all the security rules (part of systemrules)",,"","","","","         0","0","R&D, Exercises",
+"QRS API","Exercise 3: get all systemrules via a postman call","You can search the QRS help for special purpose endpoints",,"","","","","         0","0","R&D, Exercises",
 "QRS API","Problem solving 1:  get streams via Postman","QRS API - broken XREF example.png",,"","","","","         0","0","Support",
 "QRS API","Problem solving 1:  get streams via Postman","[Open postman app in chrome](https://www.getpostman.com/collections/3168aed89bc40c99790a)",,"","","","","         0","0","Support",
 "QPS API","What is the Qlik Sense proxy?","The ""entry door"" to Qlik Sense (most of the times)",,"","","","","         0","0","R&D",
@@ -1349,18 +1351,19 @@ document.addEventListener('click', function(e) {
 "Architecture","Architecture example 1: 1 server Active directory","Internal users only",,"","","","","         0","0","PreSales",
 "Architecture","Architecture example 1: 1 server Active directory","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales",
 "Architecture","Architecture example 1: 1 server Active directory","architecture - windows domain internal user.png",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 1: 1 server Active directory","QlikSense - Architectures single server.png",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 2 : 1 server Active directory with external users","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 2 : 1 server Active directory with external users","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 2 : 1 server Active directory with external users","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 2 : 1 server Active directory with external users","windows domain with external users.png",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 3: 1 Qlik Sense behind reverse proxy with header authentication","Internal users",,"","","","","         0","0","R&D",
-"Architecture","Architecture example 3: 1 Qlik Sense behind reverse proxy with header authentication","External users connect to Qlik Sense via the internet",,"","","","","         0","0","R&D",
-"Architecture","Architecture example 3: 1 Qlik Sense behind reverse proxy with header authentication","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","R&D",
-"Architecture","Architecture example 3: 1 Qlik Sense behind reverse proxy with header authentication","architecture - reverse proxy.png",,"","","","","         0","0","R&D",
-"Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","Internal users",,"","","","","         0","0","R&D",
-"Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","External users connect to Qlik Sense via the internet",,"","","","","         0","0","R&D",
-"Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","R&D",
+"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users","QlikSense - Architectures single server.png",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","windows domain with external users.png",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","architecture - reverse proxy.png",,"","","","","         0","0","R&D",
+"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","Make sure your proxy supports websockets and forwards all the ports needed for http and or https",,,,,,,,,
+"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","As always put correct server names in the proxy whitelist.",,,,,,,,,
+"Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","External users connect to Qlik Sense via the internet to a virtual proxy configured for *header authentication*.",,"","","","","         0","0","PreSales",
 "Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","architecture - authenticating reverse proxy.png",,"","","","","         0","0","R&D",
 "Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","architecture - OEM SaaS scenario.png",,"","","","","         0","0","PreSales",
 "Architecture","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","PreSales",
@@ -1404,6 +1407,13 @@ STORE QV_Table INTO File.QVD;
 "Data integration","Script","ETL functionality.png",,"","","","","         0","0","PreSales",
 "Data integration","REST connector introduction","https://www.youtube.com/watch?v=FqwNU_pnFt4&list=PLkRFvjyuHFvIVnReipVR0QfUcQ4X2shXw",,"","","","","         0","0","PreSales",
 "Data integration","Video: Rest connector - Loading multiple pages","https://youtu.be/QlCT55_712I",,"","","","","         0","0","R&D",
+"Data integration","Video: Datamarket introduction","# The Qlik DataMarket helps you find, connect and manage data from external sources",,,,,,,,,
+"Data integration","Video: Datamarket introduction","> Qlik DataMarket provides a complete cloud-based data service to a large variety of external syndicated data sources via a subscription model. Access a comprehensive library of external data that is always ready-to-use to augment and cross reference your internal data to add outward context and provide deeper insights.",,,,,,,,,
+"Data integration","Video: Datamarket introduction","[Datamarket datasheet](http://www.qlik.com/us/-/media/files/resource-library/global-us/direct/datasheets/ds-qlik-datamarket-en.pdf?la=en)",,,,,,,,,
+"Data integration","Video: Datamarket introduction","https://www.youtube.com/watch?v=0p04AZipJbA&feature=share",,"","","","","         0","0","Sales",
+"Data integration","Video: Datamarket - how to use and model your data using smart load","https://www.youtube.com/watch?v=w37fz88BrZk&feature=share",,"","","","","         0","0","PreSales",
+"Data integration","Video: Datamarket - how to use and model your data using smart load","[Qlik Internal only Datamarket demo](https://solutions.qliktech.com/hub/stream/a09332b7-7bec-4b57-a1b1-ffbf25c3eea5)",,,,,,,,,
+"Data integration","Datamarket - architecture of the data loading flow","datamarket flow overview architecture.png",,,,,,,,,
 "Other","New to Qlik Sense","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)",,,,,,,,,
 "Other","Licensing","qlik sense tokens license.png",,"","","","","         0","0","Sales",
 "Other","QAP",,,,,,,,,,
