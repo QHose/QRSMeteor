@@ -3,12 +3,13 @@ import { Session } from 'meteor/session';
 import { senseConfig as config } from '/imports/api/config';
 import '/imports/ui/UIHelpers';
 
-import 'impress';
+// import 'impress';
 import './impress.html';
 import './integrationTopics.html';
 import './integrationTopics.js';
 import './impress.css';
 import './ppt_integration.js';
+import './impressJSModifiedSource.js'
 
 var api = {};
 
@@ -34,3 +35,4 @@ Template.impress.onRendered(function() {
 Template.impress.onDestroyed(function() {
     $('body').attr('style', 'height: 100%;');
 })
+

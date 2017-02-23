@@ -10,6 +10,8 @@ var converter = new showdown.Converter();
 const enigma = require('enigma');
 var appId = Meteor.settings.public.IntegrationPresenatationApp;
 var IntegrationPresenatationSelectionObject = 'RZuJ';
+var IntegrationPresenatationSortedDataObject = 'pskL';
+
 
 Template.ppt_integrationMain.onRendered(function() {
     // Session.set('clickedInSelection', false);
@@ -170,13 +172,13 @@ function getLevel1And2() {
                     }
                 })
                 .then(qix => {
-                    qix.app.getObject('pskL') //get an existing object out of an app, if you import an app this stays the same
+                    qix.app.getObject(IntegrationPresenatationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same
                         .then(model => {
                             model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {
                                 // console.log('Result set from Qlik Sense:', data);
                                 var table = data[0].qMatrix;
                                 var tableWithChapters = insertSectionBreakers(table);
-                                console.log('mainTopics, chapters added and now stored in in session var mainTopics', tableWithChapters);
+                                console.log('Slides loaded, and we added extra chapter breakers. Object now stored in in session var mainTopics, so slides can be created by impress.js', tableWithChapters);
                                 Session.set('mainTopics', tableWithChapters)
                                 Meteor.setTimeout(function() {
 
@@ -188,6 +190,8 @@ function getLevel1And2() {
                                     $('pre code').each(function(i, block) {
                                         hljs.highlightBlock(block);
                                     });
+
+                                    // initProgressBar();
                                 }, 1000);
                             })
                         })

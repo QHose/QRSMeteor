@@ -3,7 +3,7 @@ import { Session } from 'meteor/session';
 import { senseConfig as config } from '/imports/api/config';
 import '/imports/ui/UIHelpers';
 
-import 'impress';
+// import 'impress';
 import './impress.html';
 import './integrationTopics.html';
 import './integrationTopics.js';

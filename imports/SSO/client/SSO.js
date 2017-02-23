@@ -42,8 +42,9 @@
 
      Meteor.call('getRedirectUrl', senseParams.proxyRestUri, senseParams.targetId, Meteor.userId(), (error, redirectUrl) => {
          if (error) {
+             sAlert.error(error);
              console.error('Meteor SSO page, could not get a redirectUrl from Qlik Sense', error)
-         }else {
+         } else {
              call.action = 'Redirect URL received';
              call.request = 'The browser received a redirectUrl, so replace the current url in the browser with this new one: ' + redirectUrl;
              REST_Log(call);
