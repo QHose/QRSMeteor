@@ -101,7 +101,7 @@ Template.ppt_integration.helpers({
             return text;
         } else if (checkTextIsImage(text)) { //image
             // console.log('found an image', text)
-            return '<img class="ui massive centered integration image"  src="images/' + text + '">'
+            return '<img class="ui huge centered integration image"  src="images/' + text + '">'
         } else { //text, convert the text (which can include markdown syntax) to valid HTML
             var result = converter.makeHtml(text);
             if (result.substring(1, 11) === 'blockquote') {
@@ -185,11 +185,17 @@ function getLevel1And2() {
                                     impress().init();
                                     impress().goto(0);
                                     Session.set('slideLoading', false);
+
+                                    //init the youtube videos via semanticUI
                                     $('.ui.embed').embed();
 
+                                    //make sure all code gets highlighted using highlight.js
                                     $('pre code').each(function(i, block) {
                                         hljs.highlightBlock(block);
                                     });
+
+                                    //ensure all links open on a new tab
+                                    $('a[href^="http://"], a[href^="https://"]').attr('target','_blank');
 
                                     // initProgressBar();
                                 }, 1000);
