@@ -50,7 +50,7 @@
     opacity: 1
 }
 
-.z.step.integration.breaker {
+.z.step.ui.segment.integrationBreaker {
     background-image: url("/images/Qlik breaker.png");
     width: 1100px;
     height: 800px;
@@ -60,7 +60,7 @@
     top: 20px;
 }
 
-.slide.one {
+/*.slide.one {
     background-image: url("/images/Qlik_Leftcorner_Icon.png");
     height: 800px;
     background-repeat: no-repeat;
@@ -70,13 +70,12 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
     color: rgb(102, 102, 102);
 }
-
-.z.step.container.segment {
+*/
+.z.step.ui.segment.integration {
     /*font-size: 1.5em;*/
     min-height: 600px;
-    width: 1200px;
     max-height: calc(100vh);
-    line-height: 30px;
+    width: 1000px !important;
     overflow: auto;
     padding: 40px;
     background-image: url("/images/Qlik_Leftcorner_Icon.png");
@@ -87,7 +86,7 @@
 
 /*HEADER*/
 
-.integration h2.ui.header .sub.header {
+.integration.main.header {
     margin-top: 10px 0 0 160px;
     font-size: 1.3em;
 }
@@ -108,31 +107,11 @@
 }
 
 
-/*.slide.integration > div {
-    margin-left: 160px;
-    margin-top: 20px;
-}
-*/
-
-
 /*LEVEL 3 MARKDOWN GENERATED CODE*/
 
 .segment.integration .markdownItem {
     margin-left: 60px
 }
-
-
-/*
-.slide.integration div > {
-    margin-top: 25%;
-}
-*/
-
-
-/*.slide p:first-of-type {
-    margin-top: 60px;
-    background-color: yellow;
-    }*/
 
 .step.integration p {
     font-size: 1.3em;
@@ -140,7 +119,7 @@
 
 .step.integration q {
     margin: auto;
-    width: 700px;
+    width: 100%;
     text-align: center;
     display: block;
     font-size: 50px;
@@ -152,58 +131,24 @@
     margin-top: 20px;
 }
 
-.slide q strong {
+/*.integration q strong {
     white-space: nowrap;
+}*/
+
+.integration em, .slide q {
+    color: #5ea819;
 }
-
-
-/*
-.slide q {
-    display: block;
-    font-size: 50px;
-    line-height: 72px;
-    margin-top: 100px;
-    }*/
-
-
-/*.slide blockquote {
-    font-size: 30px;
-    font-style: italic;
-    margin: 130px 0;
-    padding: 0.25em 40px;
-    line-height: 1.45;
-    position: relative;
-    color: #383838;
-    }*/
 
 .step.integration blockquote p {
     color: #5EA819;
     font-size: 2em;
+    text-align: center;
 }
-
-
-/*
-.slide blockquote:before {
-    margin-left: 160px;
-    display: block;
-    content: "\201C";
-    font-size: 80px;
-    position: absolute;
-    left: -20px;
-    top: -20px;
-    color: #7a7a7a;
-    }*/
-
-
-/*.slide.integration blockquote:first-of-type p {
-    margin-top: 90px;
-    }*/
 
 .integration .image {
     margin-top: 40px;
     width: 900px;
 }
-
 
 .pusher .ui.message {
     /*position: absolute;*/

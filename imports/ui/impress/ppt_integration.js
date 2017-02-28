@@ -11,6 +11,7 @@ const enigma = require('enigma');
 var appId = Meteor.settings.public.IntegrationPresenatationApp;
 var IntegrationPresenatationSelectionObject = 'RZuJ';
 var IntegrationPresenatationSortedDataObject = 'pskL';
+var slideWidth = 2000;
 
 
 Template.ppt_integrationMain.onRendered(function() {
@@ -49,10 +50,6 @@ Template.ppt_integrationMain.events({
             .sidebar('toggle');
         Session.set('showPresentation', true);
     },
-    // 'click .sidebar': function(event) {
-    //     console.log('user clicked in the iframe with the seletions');
-    //     Session.set('clickedInSelection', true);
-    // },
     'mouseover .sidebar.integration': function(event) {
         Session.set('showPresentation', false);
     },
@@ -88,7 +85,11 @@ Template.ppt_integration.helpers({
         return Session.get('slideLoading');
     },
     XValue(index) {
-        return 2000 * index;
+        Session.set('currentSlideNumber', index);
+        return slideWidth * index;
+    },
+    thankYouXvalue(){
+        return Session.get('currentSlideNumber') * slideWidth;
     },
     formatted(text) {
         if (youtube_parser(text)) { //youtube video url

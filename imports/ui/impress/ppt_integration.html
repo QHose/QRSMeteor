@@ -8,7 +8,7 @@
     <div class="pusher">
         <div class="ui black big launch right attached fixed button" style="background-color: #545454">
             <i class="content icon"></i>
-            <span class="text">Engine API Slide generator (<a href="{{pathFor 'legal'}}">PROTOTYPE</a>)</span>
+            <span class="text">Engine API Slide generator explaining SaaS with Qlik Sense (<a href="{{pathFor 'legal'}}">PROTOTYPE</a>)</span>
         </div>
         {{#if showPresentation}}
             <iframe allowfullscreen src="{{pathFor 'ppt_integration'}}" class="frame"></iframe>
@@ -40,14 +40,14 @@
             {{#each mainTopics }}
                 {{#if chapterSlide this}}
                     <!--         Create a chapter breaker if the level 1 has changed in the current row-->
-                    <div class="z step integration breaker ui segment" data-x="{{XValue @index}}" data-z="1000">
+                    <div class="z step ui segment integrationBreaker" data-x="{{XValue @index}}" data-z="3000">
                         <h1 class="ui header" style="font-size: 50px;">
-                        {{this}}
+                        Next: {{this}}
                     </h1>
                     </div>
                 {{else}}
-                    <div class="z step ui text container raised segment integration" data-x="{{XValue @index}}" data-rotate-x="30" data-z="-1000">
-                        <h2 class="ui center aligned header">
+                    <div class="z step ui ten wide column raised segment integration" data-x="{{XValue @index}}" data-rotate-x="30" data-z="-1000">
+                        <h2 class="ui center aligned main header">
                         <div class="content">
                             {{level 1}}
                             <div class="sub header">
@@ -65,7 +65,7 @@
             {{/each}}
             <!--         If all the slides have been generated insert a last thank you slide
         -->
-            <div class="z step thankYou" data-x="-1000" data-z="3000">
+            <div class="z step thankYou" data-x="{{thankYouXvalue}}" data-z="3000">
                 <img class="ui bottom aligned fluid image" src="images/presentation thank you.png">
             </div>
         {{else}}{{> errorPresentation}} {{/if}}
