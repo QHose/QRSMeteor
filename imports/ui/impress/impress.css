@@ -72,7 +72,7 @@
 }
 */
 .z.step.ui.segment.integration {
-    /*font-size: 1.5em;*/
+    font-size: 1.3em;
     min-height: 600px;
     max-height: calc(100vh);
     width: 1000px !important;
