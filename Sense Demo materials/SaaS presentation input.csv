@@ -36,8 +36,8 @@
 "Workshop Introduction","Video - generic introduction to APIs","https://www.youtube.com/watch?v=s7wmiS2mSXY",,"","","","","         0","0","Sales",
 "Workshop Introduction","Video introduction - SaaSDemo project ","https://youtu.be/K-zfD_vAPso?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales",
 "What is an app?","Video: What is governed self service?","https://youtu.be/pQae9S8S_vQ?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","PreSales, 30 Minute intro",
-"What is an app?","What is an governed self service using Qlik Sense apps?","[Lets view a demo](http://saasdemo.qlik.com/selfService)",,"","","","","         0","0","Sales, 30 Minute intro",
-"What is an app?","What is an governed self service using Qlik Sense apps?","laptop.png",,"","","","","         0","0","Sales, 30 Minute intro",
+"What is an app?","What is governed self service using Qlik Sense apps?","[Lets view a demo](http://saasdemo.qlik.com/selfService)",,"","","","","         0","0","Sales, 30 Minute intro",
+"What is an app?","What is governed self service using Qlik Sense apps?","laptop.png",,"","","","","         0","0","Sales, 30 Minute intro",
 "What is an app?","Contents of an app","contents of an app.png",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
 "What is an app?","In the hub apps are grouped per stream","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales, OEM technical (2 hours)",
 "What is an app?","Introduction video to build your first app (1 hour)","https://youtu.be/XL1Ph-RAxAE",,"","","","","         0","0","PreSales",
@@ -321,9 +321,10 @@ var config = {
 ```
 require( [""js/qlik""], function ( qlik ) {
 
- var app = qlik.openApp('6bd9b09d-15ad-4d3e-8149-dbb32ce1e1b0', config);
+var app = qlik.openApp('6bd9b09d-15ad-4d3e-8149-dbb32ce1e1b0', config);
 
 app.getObject('DIV1','Ggpaxa');
+})
 ```
 ",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
 "Web integration","Capabilties API - example code","[See demo on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/multipleDivs)",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
@@ -571,9 +572,11 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 ```
 ((resource.name=user.environment.group or (resource.name=""Everyone"") )) 
 ```",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
-"SaaS demo security","Security rule Consumer","App_*, App.Object_*
+"SaaS demo security","Security rule Consumer","App_*,  App.Object_*
 ```
-(resource.stream.HasPrivilege(""read"")) or (resource.resourcetype = ""App.Object"" and resource.published =""true"" and resource.app.HasPrivilege(""read""))
+(resource.stream.HasPrivilege(""read"")) 
+or 
+(resource.resourcetype = ""App.Object"" and resource.published =""true"" and resource.app.HasPrivilege(""read""))
 ```
 ",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
 "SaaS demo security","Security rule Consumer","[SaaS demo security rules](http://saasdemo.qlik.com/securityRules)",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
@@ -587,7 +590,11 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "SaaS demo security","Introduction to self service: a developer","ssbi developer.png",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
 "SaaS demo security","Security rule developer","A user with group developer is allowed to create apps, sheets and load data. And the owner of a resource should be able to do Update and Delete actions if the resource is not published to a stream",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
 "SaaS demo security","Security rule developer","```
- user.environment.group = ""Developer"" and ((resource.owner = user and resource.stream.Empty()) or (resource.app.HasPrivilege(""read"") and resource.published =""false"" ))
+ user.environment.group = ""Developer"" 
+and 
+((resource.owner = user and resource.stream.Empty()) 
+or
+(resource.app.HasPrivilege(""read"") and resource.published =""false""))
 ```",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
 "SaaS demo security","Introduction to self service: a customer specific admin","ssbi customer admin.png",,"","","","","         0","0","PreSales",
 "SaaS demo security","Security rule: customer specific admin","Administrators are only allowed to maintain the apps and app.object in the QMC",,"","","","","         0","0","PreSales",
@@ -1319,7 +1326,7 @@ document.addEventListener('click', function(e) {
 ```",,"","","","","         0","0","R&D",
 "Engine API","Create hypercube definition tip","Then either copy the output in the console or just type `copy(qliksenseobject)` and it will be copied to clipboard",,"","","","","         0","0","R&D",
 "Architecture","Integration architecture introduction video","https://youtu.be/sv5nKDvmRPI",,"","","","","         0","0","PreSales",
-"Architecture","Integration architecture overview","SaaSarchitecture.png",,"","","","","         0","0","PreSales",
+"Architecture","Integration architecture overview","SaaSarchitecture.png",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
 "Architecture","Qlik Sense Topology ","[Click here for the Qlik Sense topology](http://saasdemo.qlik.com/images/QlikSense%20TopologiesV0_18.pdf)",,"","","","","         0","0","PreSales",
 "Architecture","Qlik Sense Topology ","architecture - topology.png",,"","","","","         0","0","PreSales",
 "Architecture","Exercise 1: Draw an application architecture for a single server, internal user installation on the whiteboard","End user",,"","","","","         0","0","Exercises",
@@ -1332,33 +1339,31 @@ document.addEventListener('click', function(e) {
 "Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Databases",,"","","","","         0","0","Exercises",
 "Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Firewalls",,"","","","","         0","0","Exercises",
 "Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Ports",,"","","","","         0","0","Exercises",
-"Architecture","Key architecture topics","Infrastructure",,"","","","","         0","0","Support",
-"Architecture","Key architecture topics","Application architecture",,"","","","","         0","0","Support",
-"Architecture","Infrastructure","Hardware",,"","","","","         0","0","Support",
-"Architecture","Infrastructure","Location setup: Where are your servers and users?",,"","","","","         0","0","Support",
-"Architecture","Application architecture","Qlik in-memory approach",,"","","","","         0","0","Support",
-"Architecture","Application architecture","App components (QVF)",,"","","","","         0","0","Support",
-"Architecture","Application architecture","Associative engine",,"","","","","         0","0","Support",
-"Architecture","Application architecture","QVD",,"","","","","         0","0","Support",
-"Architecture","Application architecture","Compression",,"","","","","         0","0","Support",
-"Architecture","Application architecture","Datasources to connect",,"","","","","         0","0","Support",
-"Architecture","Application architecture","Development lifecycle",,"","","","","         0","0","Support",
-"Architecture","Development lifecycle","Development",,"","","","","         0","0","Support",
-"Architecture","Development lifecycle","Test",,"","","","","         0","0","Support",
-"Architecture","Development lifecycle","Production",,"","","","","         0","0","Support",
+"Architecture","Key architecture topics","Infrastructure",,,,,,,,,
+"Architecture","Key architecture topics","Application architecture",,,,,,,,,
+"Architecture","Application architecture","Qlik in-memory approach",,,,,,,,,
+"Architecture","Application architecture","App components (QVF)",,,,,,,,,
+"Architecture","Application architecture","Associative engine",,,,,,,,,
+"Architecture","Application architecture","QVD",,,,,,,,,
+"Architecture","Application architecture","Compression",,,,,,,,,
+"Architecture","Application architecture","Datasources to connect",,,,,,,,,
+"Architecture","Application architecture","Development lifecycle",,,,,,,,,
+"Architecture","Development lifecycle","Development",,,,,,,,,
+"Architecture","Development lifecycle","Test",,,,,,,,,
+"Architecture","Development lifecycle","Production",,,,,,,,,
 "Architecture","Infrastructure design ","1 node",,,,,,,,,
 "Architecture","Infrastructure design ","Multi node",,,,,,,,,
 "Architecture","Infrastructure design ","High availability",,,,,,,,,
 "Architecture","Infrastructure design ","Disaster recovery",,,,,,,,,
 "Architecture","Infrastructure design ","Scalability",,,,,,,,,
-"Architecture","Architecture example 1: 1 server Active directory","Internal users only",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 1: 1 server Active directory","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 1: 1 server Active directory","Internal users only",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
+"Architecture","Architecture example 1: 1 server Active directory","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
 "Architecture","Architecture example 1: 1 server Active directory","architecture - windows domain internal user.png",,"","","","","         0","0","PreSales",
 "Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users","QlikSense - Architectures single server.png",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","windows domain with external users.png",,"","","","","         0","0","PreSales",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","windows domain with external users.png",,"","","","","         0","0","PreSales, OEM technical (2 hours)",
 "Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","PreSales",
 "Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,"","","","","         0","0","PreSales",
 "Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales",

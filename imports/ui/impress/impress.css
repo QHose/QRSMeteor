@@ -60,6 +60,7 @@
     top: 20px;
 }
 
+
 /*.slide.one {
     background-image: url("/images/Qlik_Leftcorner_Icon.png");
     height: 800px;
@@ -71,6 +72,7 @@
     color: rgb(102, 102, 102);
 }
 */
+
 .z.step.ui.segment.integration {
     font-size: 1.3em;
     min-height: 600px;
@@ -86,9 +88,12 @@
 
 /*HEADER*/
 
+.integration .content {        
+    margin-left: 100px;
+}
+
 .integration.main.header {
-    margin-top: 10px 0 0 160px;
-    font-size: 1.3em;
+    margin-top: 10px 0 0 160px;    
 }
 
 
@@ -131,11 +136,13 @@
     margin-top: 20px;
 }
 
+
 /*.integration q strong {
     white-space: nowrap;
 }*/
 
-.integration em, .slide q {
+.integration em,
+.slide q {
     color: #5ea819;
 }
 
