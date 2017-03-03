@@ -30,6 +30,13 @@
     box-sizing: border-box;
 }
 
+.SenseEmbedFrame {
+    border: 0 none;
+    width: 100%;
+    height: 800px;
+    margin: 0px;
+}
+
 .selector {
     height: calc(100% - 5px);
     width: inherit;

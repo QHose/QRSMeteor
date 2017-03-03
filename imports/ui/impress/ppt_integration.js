@@ -24,8 +24,25 @@ Template.ppt_integration.onRendered(function() {
     getLevel1to3('integrationTopics');
     getLevel1And2();
     appChangeListener();
-})
 
+    $('.slideContent').css({"visibility":"hidden"}); //prevent an issue when impress has qlik sense embedded via iframes...
+
+    $('#impress').on('impress:stepenter', function() {
+        $('.slideContent').css({"visibility":"visible"});
+        var step = $(this);
+        // console.log('step is ', step);
+        //init the youtube videos via semanticUI
+        step.find('.ui.embed').embed();
+
+        //make sure all code gets highlighted using highlight.js
+        step.find('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        //ensure all links open on a new tab
+        step.find('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
+    });
+})
 
 
 Template.ppt_integrationMain.helpers({
@@ -88,7 +105,7 @@ Template.ppt_integration.helpers({
         Session.set('currentSlideNumber', index);
         return slideWidth * index;
     },
-    thankYouXvalue(){
+    thankYouXvalue() {
         return Session.get('currentSlideNumber') * slideWidth;
     },
     formatted(text) {
@@ -186,19 +203,6 @@ function getLevel1And2() {
                                     impress().init();
                                     impress().goto(0);
                                     Session.set('slideLoading', false);
-
-                                    //init the youtube videos via semanticUI
-                                    $('.ui.embed').embed();
-
-                                    //make sure all code gets highlighted using highlight.js
-                                    $('pre code').each(function(i, block) {
-                                        hljs.highlightBlock(block);
-                                    });
-
-                                    //ensure all links open on a new tab
-                                    $('a[href^="http://"], a[href^="https://"]').attr('target','_blank');
-
-                                    // initProgressBar();
                                 }, 1000);
                             })
                         })
