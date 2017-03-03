@@ -229,8 +229,10 @@ $(""#btn_1"").click(function() {
   alert(""Btn 1 Clicked"");
 });
 ```",,"","","","","         0","0","PreSales",
-"Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales, Technical - 2 hours",
+"Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales, Technical - 1 hour",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Embed Qlik Sense in other applications","Lets look at [SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/) for a example where we embedded the hub, apps and objects",,"","","","","         0","0","Technical - 1 hour",
+"Web integration","Embed Qlik Sense in other applications","Saasdemo web integration hub.png",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Example - Embed the Qlik Sense Hub","<iframe src=""http://PRESALES1:81/meteor/hub"" style=""width: 100%; height: 800px;""></iframe>",,,,,,,,,
 "Web integration","Example - Embed an app","<iframe src=""http://localhost:3030/onlySheet"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
 "Web integration","Example - Embed an app","[Bigger example](http://saasdemo.qlik.com:8080/app)",,,,,,,,,
@@ -313,7 +315,7 @@ style='border:none; width:100%; height:300px'
 "Web integration","Capabilities API","web - options to integrate content.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","Video: integrate mashups using the Dev-hub (15M)","https://youtu.be/mn9GspU-tDI?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG",,"","","","","         0","0","PreSales",
 "Web integration","An overview of HTTP - many things are loaded in the browser if you open a page","web - contents of a webpage.png",,"","","","","         0","0","PreSales",
-"Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","[SaaS demo: div tag integration example](http://saasdemo.qlik.com:8080/multipleDivs)",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","[SaaS demo: div tag integration example](http://saasdemo.qlik.com:8080/multipleDivs)",,"","","","","         0","0","Technical - 2 hours, Technical - 1 hour",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","Dev-hub: demo mashup editor",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Capabilties API - example code","flow - capabilities API end to end.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Capabilties API - example code","First connect to Qlik Sense using the config
