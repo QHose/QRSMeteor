@@ -58,7 +58,7 @@
 "SaaSDemo.qlik.com","History","APIs are our secret sauce so the SaaSDemo.Qlik.com website is specifically designed to illustrate the unique selling points of our Qlik Sense APIs.",,"","","","","         0","0","Sales",
 "SaaSDemo.qlik.com","History"," Our goal is to illustrate *the power of Qlik Sense APIs* in language that can be easily understood by non-technical business users or decision-makers via our *step-by-step walk-through*.",,"","","","","         0","0","Sales",
 "SaaSDemo.qlik.com","History","useCasesOverview.png",,"","","","","         0","0","Sales",
-"SaaSDemo.qlik.com","What is SaaSDemo.qlik.com?","> This demo website simulates the SaaS platform of an OEM partner",,"","","","","         0","0","Introduction - 30 minutes",
+"SaaSDemo.qlik.com","What is SaaSDemo.qlik.com?","> This demo website simulates your SaaS platform",,"","","","","         0","0","Introduction - 30 minutes",
 "SaaSDemo.qlik.com","Goals further explained","Take the audience on a journey highlighting key aspects of Qlik Sense, the APIs and the value of Qlik.  This journey culminates in an easy to use demonstration website which includes:",,"","","","","         0","0","PreSales",
 "SaaSDemo.qlik.com","Goals further explained","- Multi-tenant API solution for both Qlik Sense Hub and QMC. (*Loop and reduce*)",,"","","","","         0","0","PreSales",
 "SaaSDemo.qlik.com","Goals further explained","- SaaS with Qlik Sense demonstration",,"","","","","         0","0","PreSales",
@@ -67,10 +67,10 @@
 "SaaSDemo.qlik.com","Goals further explained","- Flexible security rules",,"","","","","         0","0","PreSales",
 "SaaSDemo.qlik.com","Goals further explained","- Qlik Sense embedding",,"","","","","         0","0","PreSales",
 "SaaSDemo.qlik.com","Introduction to a SaaS multi-tenant scenario","qlik sense embedded example.png",,"","","","","         0","0","Sales, Introduction - 30 minutes",
-"SaaSDemo.qlik.com","The embedded analytics goals of the OEM partner ","Your goal is to create within a *multi-tenant* SaaS platform environment  *embedded analytics* within your core application",,"","","","","         0","0","Sales, Introduction - 30 minutes",
-"SaaSDemo.qlik.com","The embedded analytics goals of the OEM partner ","Provide self service apps capabilities",,"","","","","         0","0","PreSales, Introduction - 30 minutes",
-"SaaSDemo.qlik.com","The embedded analytics goals of the OEM partner ","Easy maintenance via API based automation",,"","","","","         0","0","PreSales, Introduction - 30 minutes",
-"SaaSDemo.qlik.com","The embedded analytics goals of the OEM partner ","concept behind intro.png",,"","","","","         0","0","Sales, Introduction - 30 minutes",
+"SaaSDemo.qlik.com","Typical goals of a SaaS platform provider","Your goal is to create within a *multi-tenant* SaaS platform environment  *embedded analytics* within your core application",,"","","","","         0","0","Sales, Introduction - 30 minutes",
+"SaaSDemo.qlik.com","Typical goals of a SaaS platform provider","Provide self service apps capabilities",,"","","","","         0","0","PreSales, Introduction - 30 minutes",
+"SaaSDemo.qlik.com","Typical goals of a SaaS platform provider","Easy maintenance via API based automation",,"","","","","         0","0","PreSales, Introduction - 30 minutes",
+"SaaSDemo.qlik.com","Typical goals of a SaaS platform provider","concept behind intro.png",,"","","","","         0","0","Sales, Introduction - 30 minutes",
 "SaaSDemo.qlik.com","In the SaaSDemo environment we created a demo for each use case","useCasesOverview.png",,"","","","","         0","0","Sales",
 "SaaSDemo.qlik.com","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png",,"","","","","         0","0","Technical - 2 hours",
 "SaaSDemo.qlik.com","Demonstration SaaSDemo.Qlik.com: Web integration","saas demo Web integration screenshot.png",,"","","","","         0","0","Sales",
@@ -87,11 +87,11 @@
 "SaaSDemo.qlik.com","Now take 10 minutes to do it yourself. SaaS provisioning demo","useCasesOverview.png",,"","","","","         0","0","Sales",
 "SaaSDemo.qlik.com","Now take 10 minutes to do it yourself. SaaS provisioning demo","[SaaSDemo.Qlik.com](http://saasdemo.qlik.com)",,"","","","","         0","0","Sales",
 "SaaSDemo.qlik.com","SaaS demo architecture introduction","saas demo architecture introduction of components.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","architecture - OEM SaaS scenario.png",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
-"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
-"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
-"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","SSO is enforced using a ticket with userID and his groups",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
-"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","architecture - OEM SaaS scenario.png",,"","","","","         0","0","Technical - 1 hour",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","Technical - 1 hour",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","Technical - 1 hour",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","Single Sign On is enforced using a ticket with userID and his groups",,"","","","","         0","0","Technical - 1 hour",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction 2","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","Technical - 1 hour",
 "SaaSDemo.qlik.com","SaaS demo architecture introduction 3","integrated Architecture saasdemo setup.png",,"","","","","         0","0","Deep dive",
 "SaaSDemo.qlik.com","SaaS demo architecture introduction 3","Note: both humans and systems can interact with other humans and systems",,"","","","","         0","0","Deep dive",
 "SaaSDemo.qlik.com","Saas demo architecture deep dive","integratedArchitecture.png",,"","","","","         0","0","Deep dive",
@@ -230,10 +230,19 @@ $(""#btn_1"").click(function() {
 });
 ```",,"","","","","         0","0","PreSales",
 "Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales, Technical - 2 hours",
+"Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Example - Embed the Qlik Sense Hub","<iframe src=""http://PRESALES1:81/meteor/hub"" style=""width: 100%; height: 800px;""></iframe>",,"","","","","         0","0","Introduction - 30 minutes, Sales",
+"Web integration","Example - Embed an app","<iframe src=""http://localhost:3030/onlySheet"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
+"Web integration","Example - Embed an app","[Bigger example](http://saasdemo.qlik.com:8080/app)",,,,,,,,,
+"Web integration","Example - Embed a chart","<iframe src=""http://localhost:3030/onlyChart"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Example - Embed multiple objects with single IFrames ","<iframe src=""http://localhost:3030/onlyMultipleIframes"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
+"Web integration","Example - Embed multiple objects with DIV tags","<iframe src=""http://localhost:3030/onlyMultipleDivs"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Introduction - 30 minutes, Sales",
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","PreSales, Sales, Technical - 2 hours",
 "Web integration","Introduction video to Qlik Analytics Platform (QAP)","https://youtu.be/iM_tlwGYJoM?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales, PreSales, Technical - 2 hours",
+"Web integration","Web integration examples","[Marketing 360](http://webapps.qlik.com/marketing360/index.html#/web)",,,,,,,,,
 "Web integration","Web integration examples","[European datamarket](http://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","Technical - 2 hours, PreSales",
-"Web integration","Web integration examples","[Qlik Web integration demo page](http://webapps.qlik.com/#/)",,"","","","","         0","0","Technical - 2 hours, PreSales",
+"Web integration","Web integration examples","More demos on [Qlik Web integration demo page](http://webapps.qlik.com/#/)",,"","","","","         0","0","Technical - 2 hours, PreSales",
+"Web integration","Web integration examples","web - marketing 360 screenshot.png",,,,,,,,,
 "Web integration","Front end focussed API overview","API- overview of what they do.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","How to get started: The Qlik Sense Dev-hub (12M) - Inspiration of things you can do...","https://www.youtube.com/watch?v=hjFlpj7uLl4&feature=share",,"","","","","         0","0","PreSales",
@@ -376,6 +385,10 @@ If so, allow access otherwise deny access with a 403 response",,"","","","","   
 "Web integration","Things you need to know about require.js","Qlik inserted some extra code",,"","","","","         0","0","Deep dive",
 "Web integration","Things you need to know about require.js","So Qlik require is not equal to require.js",,"","","","","         0","0","Deep dive",
 "Web integration","Things you need to know about require.js","You really need to use the version that ships with your Sense version",,"","","","","         0","0","Deep dive",
+"Web integration","Dev-hub Mashup templates","You can create your own templates to be used by your users",,"","","","","         0","0","Deep dive",
+"Web integration","Dev-hub Mashup templates","See [this community link](https://community.qlik.com/blogs/qlikviewdesignblog/2017/02/24/introducing-dar-mashup-template) for a nice starter",,"","","","","         0","0","Deep dive",
+"Web integration","Dev-hub Mashup templates","https://youtu.be/O5uuzKWMS7I",,"","","","","         0","0","Deep dive",
+"Web integration","",,,,,,,,,,
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Go to the dev-hub, mashup editor",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Create a new mashup project: exercise <groupName> - 1 ",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Select Sales and customers app",,"","","","","         0","0","Exercises",
@@ -472,6 +485,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Web integration problem - fiddle 4","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/zz9ftg5y/)","wrong objectID",,,,,,,,
 "Web integration","Web integration problem - fiddle 5","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/we00bs5h/)","Wrong require.js version",,,,,,,,
 "Web integration","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise.png",,"","","","","         0","0","PreSales",
+"Web integration","More information","Always checkout Stefan Walters posts. Like this [web integration tutorial](https://github.com/stefanwalther/awesome-qap#building-visualization-extensions)",,,,,,,,,
 "Security - functional design","Introduction to application level security","Authentication: Who is the user?",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - functional design","Introduction to application level security","Authorization: What can he do?",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - functional design","Introduction to application level security","<img class=""ui medium centered image"" src=""images/securityRules.png"">",,"","","","","         0","0","PreSales, Technical - 1 day",
@@ -554,58 +568,58 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Security - technical design","What a UDC is not","<q>You can NOT authenticate users via a Qlik Sense UDC</q>",,"","","","","         0","0","Deep dive",
 "Security - technical design","Audit the effectiveness using the audit tool","security rules audit.png",,"","","","","         0","0","PreSales",
 "Security - technical design","Typical activities you need in security rules for common tasks","security rules - activities that you need to do common tasks.png",,"","","","","         0","0","Deep dive",
-"SaaS demo security","Summary overview","saasdemo security overview.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"SaaS demo security","Summary overview","[SaaS demo documentation and videos](http://saasdemo.qlik.com/introductionSecurity)",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"SaaS demo security","SaaS demo security setup","Qlik Sense configuration
+"Security - Concept of SaaSdemo.qlik.com","Summary overview","saasdemo security overview.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
+"Security - Concept of SaaSdemo.qlik.com","Summary overview","[SaaS demo documentation and videos](http://saasdemo.qlik.com/introductionSecurity)",,"","","","","         0","0","PreSales, Technical - 2 hours",
+"Security - Concept of SaaSdemo.qlik.com","SaaS demo security setup","Qlik Sense configuration
 - A stream per customer
 - Ticket contains userId and group
 - Security rules secure streams, apps, sheets and other resources like buttons.
 - Section access for row/column level security
 
 - group from ticket is re-used in both security rules and section access",,"","","","","         0","0","PreSales",
-"SaaS demo security","SaaS Security Deep Dive","https://youtu.be/0E9i5Pf2Hjg",,"","","","","         0","0","PreSales",
-"SaaS demo security","Integrated security flow: authentication and authorization","integratedArchitecture.png",,"","","","","         0","0","PreSales",
-"SaaS demo security","Ticketing - sequence diagrams","[Click here to see the sequence diagrams for a client side redirect](http://knsv.github.io/mermaid/live_editor/#/view/c2VxdWVuY2VEaWFncmFtCkJyb3dzZXItPj5NZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IFVzZXIgbG9ncyBpbiBpbnRvIE1ldGVvciAKQnJvd3Nlci0-PiBQcm94eTogSUZyYW1lIHRyaWVzIHRvIG9wZW4gU2Vuc2UgY29udGVudCB2aWEgbGluayB0aGF0IGNvbnRhaW5zIC9wcm94eS8KUHJveHktPj5NZXRlb3IgU1NPIGNsaWVudDogUmVkaXJlY3QgcmVxdWVzdCB0byB3ZWJwYWdlIG9uIHRoZSBjbGllbnQgKGNsaWVudCBzaWRlIHJvdXRlKS4KCk5vdGUgcmlnaHQgb2YgUHJveHk6IFByb3h5IGFsc28gaW5jbHVkZXMgdGFyZ2V0SWQgPSA8SUQgZm9yIHRoZSBvcmlnaW5hbCBVUkkgdGhhdCB0aGUgdXNlciB0cmllcyB0byBhY2Nlc3M-LCBhbmQgcHJveHlSZXN0VXJpID0gPHRoZSBVUkkgd2hlcmUgdGhlIGF1dGhlbnRpY2F0aW9uIG1vZHVsZSBjYW4gYWNjZXNzIHRoZSBSRVNUIEFQST4KTWV0ZW9yIFNTTyBjbGllbnQtPk1ldGVvciBzZXJ2ZXI6ICBjbGllbnQgY2FsbHMgKHVzZXIgYXdhcmUpIHNlcnZlciBzaWRlIG1ldGhvZApOb3RlIHJpZ2h0IG9mIE1ldGVvciBzZXJ2ZXI6IFNpbmNlIHRoZSB1c2VyIGlzIGFscmVhZHkgbG9nZ2VkIGluIGluIE1ldGVvciwgd2UgY2FuIHJlcXVlc3QgdGhlIHVzZXJJRCBhbmQgZ3JvdXAgbWVtYmVyc2hpcCBmcm9tIHRoZSBNZXRlb3Igc2Vzc2lvbi4gVHJ1c3QgbWVjaGFuaXNtOiBTZXJ2ZXIgaW1wb3J0ZWQgUWxpayBTZW5zZSBjbGllbnQgY2VydGlmaWNhdGUuCk1ldGVvciBzZXJ2ZXItPj5RUFMgQVBJOiBSZXF1ZXN0IHRpY2tldCBhdCBRUFMgQVBJLCBwcm92aWRlIHRoZSB1c2VySWQgYW5kIGdyb3VwcyBpbiBKU09OLgpOb3RlIHJpZ2h0IG9mIE1ldGVvciBzZXJ2ZXI6IE9wdGlvbmFsbHkgaW5jbHVkZSB0aGUgcmVkaXJlY3QgcGFyYW1ldGVyIHRvIGZvcndhcmQgdGhlIHVzZXIgYmFjayB0byB0aGUgcGFnZSBoZSBpbml0aWFsbHkgdHJpZWQgdG8gYWNjZXNzLgpRUFMgQVBJLS0-Pk1ldGVvciBzZXJ2ZXI6IFFQUyBBUEkgcmV0dXJucyBhIHRpY2tldCBudW1iZXIgKGFuZCBwb3NzaWJseSByZWRpcmVjdCBVUkwpIHdoaWNoIHlvdSBoYXZlIHRvIGFwcGVuZCBpbiB0aGUgVVJMIApNZXRlb3Igc2VydmVyLS0-PiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IENyZWF0ZSBhIHJlZGlyZWN0IFVSTCB3aGljaCB0aGUgY2xpZW50IGNvZGUgY2FuIHB1dCBpbiB0aGUgYnJvd3NlciBVUkwgYmFyLiAKTm90ZSByaWdodCBvZiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IENsaWVudCBzaWRlIGNvZGUsIHJlcGxhY2VzIHRoZSB1cmwgaW4gYnJvd3NlciwgYW5kIGZvcndhcmRzIHRoZSB1c2VyIHRvIFFsaWsgU2Vuc2UuIFVzZXIgbm93IHJlY2VpdmVzIGEgUWxpayBTZW5zZSBzZXNzaW9uIGNvb2tpZSAoc2VlIHZpcnR1YWwgcHJveHkgY29uZmlnKSwgYW5kIGFuZCBzdWNoIHNpbmdsZSBzaWduIG9uIGlzIGNvbmZpZ3VyZWQu)",,"","","","","         0","0","PreSales",
-"SaaS demo security","Ticketing - sequence diagrams","security - sequence diagram ticketing.png",,"","","","","         0","0","PreSales",
-"SaaS demo security","Extended example Self Service process","ssbi task overview.png",,"","","","","         0","0","PreSales",
-"SaaS demo security","Qlik Sense security overview","securityOverview.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"SaaS demo security","Introduction to self service: a consumer","SSBI consumer.png",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Security rule Consumer","Authorize stream only, give access to all apps inside",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Security rule Consumer","Use the group of the ticket in the rule",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Security rule Consumer","Stream*
+"Security - Concept of SaaSdemo.qlik.com","SaaS Security Deep Dive","https://youtu.be/0E9i5Pf2Hjg",,"","","","","         0","0","PreSales",
+"Security - Concept of SaaSdemo.qlik.com","Integrated security flow: authentication and authorization","integratedArchitecture.png",,"","","","","         0","0","PreSales",
+"Security - Concept of SaaSdemo.qlik.com","Ticketing - sequence diagrams","[Click here to see the sequence diagrams for a client side redirect](http://knsv.github.io/mermaid/live_editor/#/view/c2VxdWVuY2VEaWFncmFtCkJyb3dzZXItPj5NZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IFVzZXIgbG9ncyBpbiBpbnRvIE1ldGVvciAKQnJvd3Nlci0-PiBQcm94eTogSUZyYW1lIHRyaWVzIHRvIG9wZW4gU2Vuc2UgY29udGVudCB2aWEgbGluayB0aGF0IGNvbnRhaW5zIC9wcm94eS8KUHJveHktPj5NZXRlb3IgU1NPIGNsaWVudDogUmVkaXJlY3QgcmVxdWVzdCB0byB3ZWJwYWdlIG9uIHRoZSBjbGllbnQgKGNsaWVudCBzaWRlIHJvdXRlKS4KCk5vdGUgcmlnaHQgb2YgUHJveHk6IFByb3h5IGFsc28gaW5jbHVkZXMgdGFyZ2V0SWQgPSA8SUQgZm9yIHRoZSBvcmlnaW5hbCBVUkkgdGhhdCB0aGUgdXNlciB0cmllcyB0byBhY2Nlc3M-LCBhbmQgcHJveHlSZXN0VXJpID0gPHRoZSBVUkkgd2hlcmUgdGhlIGF1dGhlbnRpY2F0aW9uIG1vZHVsZSBjYW4gYWNjZXNzIHRoZSBSRVNUIEFQST4KTWV0ZW9yIFNTTyBjbGllbnQtPk1ldGVvciBzZXJ2ZXI6ICBjbGllbnQgY2FsbHMgKHVzZXIgYXdhcmUpIHNlcnZlciBzaWRlIG1ldGhvZApOb3RlIHJpZ2h0IG9mIE1ldGVvciBzZXJ2ZXI6IFNpbmNlIHRoZSB1c2VyIGlzIGFscmVhZHkgbG9nZ2VkIGluIGluIE1ldGVvciwgd2UgY2FuIHJlcXVlc3QgdGhlIHVzZXJJRCBhbmQgZ3JvdXAgbWVtYmVyc2hpcCBmcm9tIHRoZSBNZXRlb3Igc2Vzc2lvbi4gVHJ1c3QgbWVjaGFuaXNtOiBTZXJ2ZXIgaW1wb3J0ZWQgUWxpayBTZW5zZSBjbGllbnQgY2VydGlmaWNhdGUuCk1ldGVvciBzZXJ2ZXItPj5RUFMgQVBJOiBSZXF1ZXN0IHRpY2tldCBhdCBRUFMgQVBJLCBwcm92aWRlIHRoZSB1c2VySWQgYW5kIGdyb3VwcyBpbiBKU09OLgpOb3RlIHJpZ2h0IG9mIE1ldGVvciBzZXJ2ZXI6IE9wdGlvbmFsbHkgaW5jbHVkZSB0aGUgcmVkaXJlY3QgcGFyYW1ldGVyIHRvIGZvcndhcmQgdGhlIHVzZXIgYmFjayB0byB0aGUgcGFnZSBoZSBpbml0aWFsbHkgdHJpZWQgdG8gYWNjZXNzLgpRUFMgQVBJLS0-Pk1ldGVvciBzZXJ2ZXI6IFFQUyBBUEkgcmV0dXJucyBhIHRpY2tldCBudW1iZXIgKGFuZCBwb3NzaWJseSByZWRpcmVjdCBVUkwpIHdoaWNoIHlvdSBoYXZlIHRvIGFwcGVuZCBpbiB0aGUgVVJMIApNZXRlb3Igc2VydmVyLS0-PiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IENyZWF0ZSBhIHJlZGlyZWN0IFVSTCB3aGljaCB0aGUgY2xpZW50IGNvZGUgY2FuIHB1dCBpbiB0aGUgYnJvd3NlciBVUkwgYmFyLiAKTm90ZSByaWdodCBvZiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IENsaWVudCBzaWRlIGNvZGUsIHJlcGxhY2VzIHRoZSB1cmwgaW4gYnJvd3NlciwgYW5kIGZvcndhcmRzIHRoZSB1c2VyIHRvIFFsaWsgU2Vuc2UuIFVzZXIgbm93IHJlY2VpdmVzIGEgUWxpayBTZW5zZSBzZXNzaW9uIGNvb2tpZSAoc2VlIHZpcnR1YWwgcHJveHkgY29uZmlnKSwgYW5kIGFuZCBzdWNoIHNpbmdsZSBzaWduIG9uIGlzIGNvbmZpZ3VyZWQu)",,"","","","","         0","0","PreSales",
+"Security - Concept of SaaSdemo.qlik.com","Ticketing - sequence diagrams","security - sequence diagram ticketing.png",,"","","","","         0","0","PreSales",
+"Security - Concept of SaaSdemo.qlik.com","Extended example Self Service process","ssbi task overview.png",,"","","","","         0","0","PreSales",
+"Security - Concept of SaaSdemo.qlik.com","Qlik Sense security overview","securityOverview.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
+"Security - Concept of SaaSdemo.qlik.com","Introduction to self service: a consumer","SSBI consumer.png",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - Concept of SaaSdemo.qlik.com","Security rule Consumer","Authorize stream only, give access to all apps inside",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - Concept of SaaSdemo.qlik.com","Security rule Consumer","Use the group of the ticket in the rule",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - Concept of SaaSdemo.qlik.com","Security rule Consumer","Stream*
 ```
 ((resource.name=user.environment.group or (resource.name=""Everyone"") )) 
 ```",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Security rule Consumer","App_*,  App.Object_*
+"Security - Concept of SaaSdemo.qlik.com","Security rule Consumer","App_*,  App.Object_*
 ```
 (resource.stream.HasPrivilege(""read"")) 
 or 
 (resource.resourcetype = ""App.Object"" and resource.published =""true"" and resource.app.HasPrivilege(""read""))
 ```
 ",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Security rule Consumer","[SaaS demo security rules](http://saasdemo.qlik.com/securityRules)",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Introduction to self service: a contributor","SSBI contributor.png",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Sheet promotion example","The sheet below demonstrates the division between own work and community",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Sheet promotion example","communitySheets.png",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Security rule contributor","A user with group contributor is allowed to create sheets in existing apps, but no app creation",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Security rule contributor","```
+"Security - Concept of SaaSdemo.qlik.com","Security rule Consumer","[SaaS demo security rules](http://saasdemo.qlik.com/securityRules)",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - Concept of SaaSdemo.qlik.com","Introduction to self service: a contributor","SSBI contributor.png",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - Concept of SaaSdemo.qlik.com","Sheet promotion example","The sheet below demonstrates the division between own work and community",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - Concept of SaaSdemo.qlik.com","Sheet promotion example","communitySheets.png",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - Concept of SaaSdemo.qlik.com","Security rule contributor","A user with group contributor is allowed to create sheets in existing apps, but no app creation",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - Concept of SaaSdemo.qlik.com","Security rule contributor","```
  user.environment.group=""Contributor"" and resource.published =""false"" and resource.app.HasPrivilege(""read"")
 ```",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Introduction to self service: a developer","ssbi developer.png",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Security rule developer","A user with group developer is allowed to create apps, sheets and load data. And the owner of a resource should be able to do Update and Delete actions if the resource is not published to a stream",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Security rule developer","```
+"Security - Concept of SaaSdemo.qlik.com","Introduction to self service: a developer","ssbi developer.png",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - Concept of SaaSdemo.qlik.com","Security rule developer","A user with group developer is allowed to create apps, sheets and load data. And the owner of a resource should be able to do Update and Delete actions if the resource is not published to a stream",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - Concept of SaaSdemo.qlik.com","Security rule developer","```
  user.environment.group = ""Developer"" 
 and 
 ((resource.owner = user and resource.stream.Empty()) 
 or
 (resource.app.HasPrivilege(""read"") and resource.published =""false""))
 ```",,"","","","","         0","0","PreSales, Technical - 1 day",
-"SaaS demo security","Introduction to self service: a customer specific admin","ssbi customer admin.png",,"","","","","         0","0","PreSales",
-"SaaS demo security","Security rule: customer specific admin","Administrators are only allowed to maintain the apps and app.object in the QMC",,"","","","","         0","0","PreSales",
-"SaaS demo security","Security rule: customer specific admin","```
+"Security - Concept of SaaSdemo.qlik.com","Introduction to self service: a customer specific admin","ssbi customer admin.png",,"","","","","         0","0","PreSales",
+"Security - Concept of SaaSdemo.qlik.com","Security rule: customer specific admin","Administrators are only allowed to maintain the apps and app.object in the QMC",,"","","","","         0","0","PreSales",
+"Security - Concept of SaaSdemo.qlik.com","Security rule: customer specific admin","```
 ((user.environment.group=""Admin"")) and ( resource.HasPrivilege(""read"") or resource.app.HasPrivilege(""read"") )
 ```",,"","","","","         0","0","PreSales",
-"API integration","Lets look at some Qlik Sense integration scenarios","Qlik Sense charts/data are embedded into a website.",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
+"API integration","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "API integration","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "API integration","Lets look at some Qlik Sense integration scenarios","Authorization: And will only see its own data?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "API integration","Lets look at some Qlik Sense integration scenarios","summary_integrated_architecture.png",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
@@ -690,6 +704,9 @@ or
 "API integration","Javascript or CSS won't load","Check the source location of the files the HTML tries to load. ",,"","","","","         0","0","Deep dive",
 "API integration","Javascript or CSS won't load","Try to open the link in your browser and see the result",,"","","","","         0","0","Deep dive",
 "API integration","Javascript or CSS won't load","Do you see the source code? (ok)",,"","","","","         0","0","Deep dive",
+"API integration","API tools on the community","Always check [Branch.qlik.com](for the latest tools)",,"","","","","         0","0","Deep dive",
+"API integration","API tools on the community","A nice tool that adds extra features (approve sheets, download security rules) to Qlik Sense is the [EA powertools](http://branch.qlik.com/#!/project/57f67b7c06e8670cd284e852)",,"","","","","         0","0","Deep dive",
+"API integration","API tools on the community","EA powertools.png",,"","","","","         0","0","Deep dive",
 "QRS API","What is the QRS REST API?","> Basically an extra layer around the QMC",,"","","","","         0","0","Deep dive, PreSales",
 "QRS API","What can you do with the QRS REST API?","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
@@ -906,7 +923,7 @@ call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certica
 "QPS API","Ticketing - Browser redirects explained","QPS - authentication redirect flow in browser for dummies.png",,"","","","","         0","0","Deep dive",
 "QPS API","Ticketing for dummies","flow - ticketing authentication for dummies.png",,"","","","","         0","0","Deep dive",
 "QPS API","Video: end to end security integration flow","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Deep dive",
-"QPS API","Ticketing deep dive intro video","https://youtu.be/0E9i5Pf2Hjg?t=761",,"","","","","         0","0","Deep dive",
+"QPS API","Ticketing deep dive intro video","https://youtu.be/0E9i5Pf2Hjg?start=761",,"","","","","         0","0","Deep dive",
 "QPS API","Ticketing - create ticket (passport)","Create a javascript object
 -  with the user information (like a passport). 
 -  group all users per tenant in a UDC. ",,"","","","","         0","0","Deep dive",
