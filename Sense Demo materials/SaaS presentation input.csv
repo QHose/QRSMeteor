@@ -235,7 +235,7 @@ $(""#btn_1"").click(function() {
 "Web integration","Embed Qlik Sense in other applications","Saasdemo web integration hub.png",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Example - Embed the Qlik Sense Hub","<iframe src=""http://saasdemo.qlik.com:81/meteor/hub"" style=""width: 100%; height: 800px;""></iframe>",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Example - Embed a chart","<iframe src=""http://saasdemo.qlik.com:8080/onlyChart"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Technical - 1 hour",
-"Web integration","Example - Embed multiple objects with DIV tags","<iframe src=""http://saasdemo.qlik.com/onlyMultipleDivs"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
+"Web integration","Example - Embed multiple objects with DIV tags","<iframe src=""http://saasdemo.qlik.com:8080/onlyMultipleDivs"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","PreSales, Sales, Technical - 2 hours",
 "Web integration","Introduction video to Qlik Analytics Platform (QAP)","https://youtu.be/iM_tlwGYJoM?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales, PreSales, Technical - 2 hours",
 "Web integration","Web integration examples","[Marketing 360](http://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","Technical - 2 hours",
