@@ -113,9 +113,8 @@
 
 /*YOUTUBE*/
 
-.integration .embed {
-    margin-top: 80px;
-    /*width: 900px;*/
+.integration .videoPlaceholder {
+    width: 70%;
 }
 
 
@@ -143,6 +142,9 @@
     margin-top: 20px;
 }
 
+pre {
+  background-color: #a6a28c;
+}
 
 /*.integration q strong {
     white-space: nowrap;

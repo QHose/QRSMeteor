@@ -33,7 +33,6 @@ Template.ppt_integration.onRendered(function() {
         var activeStep = $(this).find('.active.step').attr('id');
         //convert the id value step-2 to 2
         var activeStepNr = activeStep.substr(activeStep.indexOf("-") + 1);
-        console.log('entered step nr', activeStepNr);
         Session.set('activeStepNr', activeStepNr);
 
     });
@@ -43,15 +42,20 @@ Template.integrationSlideContent.onRendered(function() {
 
     //init the youtube videos via semanticUI
     this.$('.ui.embed').embed();
-    
-    this.$('*').transition({
+
+    this.$('.markdownItem, .videoPlaceholder').transition({
         animation: 'fade in',
-        duration: '1s',
+        duration: '4s',
+    });
+
+      this.$('img').transition({
+        animation: 'fade in',
+        duration: '3s',
     });
 
     this.$('blockquote').transition({
         animation: 'fade in',
-        duration: '2s',
+        duration: '5s',
     });
 
     //make sure all code gets highlighted using highlight.js
@@ -108,10 +112,8 @@ Template.integrationSlide.helpers({
         // return setXValue(index);
     },
     slideActive(slideNr) {
-        // console.log('slidnr', slideNr);
-        console.log('session slide', Session.get('activeStepNr'));
-        // console.log('active slide?', Session.get('activeStepNr')==slideNr);
-        return Session.get('activeStepNr') == slideNr + 1;
+        //active slide gets set via impress, that fires an event. see ppt_integration.onRendered
+        return Session.get('activeStepNr') >= slideNr + 1;
     },
     step() {
         return Session.get('activeStepNr');
@@ -130,7 +132,7 @@ Template.integrationSlideContent.helpers({
         if (youtube_parser(text)) { //youtube video url
             // console.log('found an youtube link so embed with the formatting of semantic ui', text)
             var videoId = youtube_parser(text);
-            var html = '<div class="ui embed" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div>'
+            var html = '<div class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div></div>'
                 // console.log('generated video link: ', html);
             return html;
         } else if (text.startsWith('<')) { //custom HTML
