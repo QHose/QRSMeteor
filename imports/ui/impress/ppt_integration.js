@@ -25,12 +25,15 @@ Template.ppt_integration.onRendered(function() {
     getLevel1And2();
     appChangeListener();
 
-    $('.slideContent').css({"visibility":"hidden"}); //prevent an issue when impress has qlik sense embedded via iframes...
-
     $('#impress').on('impress:stepenter', function() {
-        $('.slideContent').css({"visibility":"visible"});
+        $('.slideContent').css({ "visibility": "visible" });
         var step = $(this);
         // console.log('step is ', step);
+
+        //ensure we only show the content of the current step via IF condition in the template (only show content if slideNr = currentSlide)
+        var activeStepNr = $(this).find('.step').attr('id');
+        Session.set('activeStepNr', activeStepNr);
+
         //init the youtube videos via semanticUI
         step.find('.ui.embed').embed();
 
@@ -55,58 +58,51 @@ Template.ppt_integrationMain.helpers({
     }
 })
 
-Template.ppt_integrationMain.events({
-    'click .launch': function(event) {
-        // console.log('button clicked');
-        $('.ui.sidebar')
-            .sidebar('toggle');
-    },
-    'click .button': function(event) {
-        console.log('button clicked');
-        $('.ui.sidebar')
-            .sidebar('toggle');
-        Session.set('showPresentation', true);
-    },
-    'mouseover .sidebar.integration': function(event) {
-        Session.set('showPresentation', false);
-    },
-    'mouseout .sidebar.integration': function(event) {
-        Session.set('showPresentation', true);
-    }
-})
-
 Template.ppt_integration.helpers({
     mainTopics() {
         return Session.get('mainTopics'); //only the level 1 and 2 colums, we need this for the headers of the slide
     },
-    topics() {
-        return Session.get('integrationTopics'); //all level 1 2 and 3 data, we need level 3 for the bullets/images of the slide
-    },
-    level: function(level) {
-        return textOfLevel(this, level);
-    },
+    // topics() {
+    //     return Session.get('integrationTopics'); //all level 1 2 and 3 data, we need level 3 for the bullets/images of the slide
+    // },
     chapterSlide(currentRow) {
         if (typeof(currentRow) === 'string') { //we got a chapter slide
             // console.log('we found a chapter slide', currentRow);
             return true
         }
     },
+    XValue(index) {
+        return setXValue(index);
+    },
+    loading() {
+        return Session.get('slideLoading');
+    },
+    thankYouXvalue() {
+        return Session.get('currentSlideNumber') * slideWidth;
+    }
+});
+
+Template.integrationSlide.helpers({
+    level(level, slide) {
+        return textOfLevel(slide, level);
+    },
+    XValue(index) {
+        Session.set('currentSlideNumber', index);
+        return slideWidth * index;
+        // return setXValue(index);
+    },
+    slideActive() {
+
+    }
+})
+
+Template.integrationSlideContent.helpers({
     itemsOfLevel: function(level) { //get all child items of a specific level, normally you will insert level 3 
         var parents = this[level - 3].qText + this[level - 2].qText; //get the names of the parents of the current slide (level 1 and 2)
         if (parents) {
             // console.log('Parent is not empty:', parents);
             return getLocalValuesOfLevel(parents); //using the parent, get all items that have this name as parent
         }
-    },
-    loading() {
-        return Session.get('slideLoading');
-    },
-    XValue(index) {
-        Session.set('currentSlideNumber', index);
-        return slideWidth * index;
-    },
-    thankYouXvalue() {
-        return Session.get('currentSlideNumber') * slideWidth;
     },
     formatted(text) {
         if (youtube_parser(text)) { //youtube video url
@@ -132,7 +128,34 @@ Template.ppt_integration.helpers({
             }
         }
     }
-});
+})
+
+Template.ppt_integrationMain.events({
+    'click .launch': function(event) {
+        // console.log('button clicked');
+        $('.ui.sidebar')
+            .sidebar('toggle');
+    },
+    'click .button': function(event) {
+        console.log('button clicked');
+        $('.ui.sidebar')
+            .sidebar('toggle');
+        Session.set('showPresentation', true);
+    },
+    'mouseover .sidebar.integration': function(event) {
+        Session.set('showPresentation', false);
+    },
+    'mouseout .sidebar.integration': function(event) {
+        Session.set('showPresentation', true);
+    }
+})
+
+
+function setXValue(index) {
+    Session.set('currentSlideNumber', index);
+    return slideWidth * index;
+}
+
 
 function textOfLevel(row, level) {
     level -= 1
@@ -202,8 +225,9 @@ function getLevel1And2() {
 
                                     impress().init();
                                     impress().goto(0);
+                                    $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
                                     Session.set('slideLoading', false);
-                                }, 1000);
+                                }, 100);
                             })
                         })
 

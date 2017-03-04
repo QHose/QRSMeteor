@@ -20,13 +20,14 @@
                             How to use the Engine API slide generator?
                         </div>
                         <!-- <p>THIS IS A PROTOTYPE TO DEMO THE POWER OF THE QAP, AND ALL SLIDES ARE WORK IN PROGRESS.</p>
- -->
-                        <p>In this PROTOTYPE we demonstrate that Qlik Sense can be used as centralized data engine for users and systems in your organization. And we can quickly help you to find the answers you need via our associative search.
+                    -->
+                        <p>This is a PROTOTYPE and for now you need to USE CHROME AS BROWSER. Here we demonstrate that Qlik Sense can be used as centralized data engine for users and systems in your organization. And we can quickly help you to find the answers you need via our associative search.
                         </p>
                         <ul class="ui list" style="margin-left: 20px">
                             <li>First select your workshop, topics or use the search box to look for specific topics (like 'app', 'security', 'authentication', 'flow' or 'architecture' etc.). </li>
                             <li>Next, click on this side of the screen to start the presentation.</li>
                             <li>You can always go back to make more selections via the left top menu <i class="content icon"></i></li>
+                            <li>Use the zoom of your browser if slides don't fit ("control -" on your keyboard)</li>
                         </ul>
                         <img class="ui centered image" src="images/Engine API slide generator easy flow.png">
                     </div>
@@ -37,54 +38,68 @@
 </template>
 <template name="ppt_integration">
     <div id="impress">
-        {{#if mainTopics}}
-            {{#each mainTopics }}
-                {{#if chapterSlide this}}
-                    <!--         Create a chapter breaker if the level 1 has changed in the current row-->
-                    <div class="z step ui segment integrationBreaker" data-x="{{XValue @index}}" data-z="2000">
-                        <h1 class="ui header" style="font-size: 50px;">
-                Next: {{this}}
-            </h1>
-                    </div>
-                {{else}}
-                    <div class="z step ui ten wide column raised segment integration" data-x="{{XValue @index}}" data-rotate-x="30" data-z="-1000">
-                        <h2 class="ui center aligned main header">
-                <div class="content">
-                    {{level 1}}
-                    <div class="sub header" style="font-size: 1.2em;">
-                    {{level 2}}
+        {{#each mainTopics }}
+            {{#if chapterSlide this}}
+                <!--         Create a chapter breaker if the level 1 has changed in the current row-->
+                <div class="z step ui segment integrationBreaker" data-x="{{XValue @index}}" data-z="2000">
+                    <h1 class="ui header" style="font-size: 50px;">
+                            Next: {{this}}
+                    </h1>
+                </div>
+            {{else}}
+                <!-- CREATE A SLIDE, the index is the current slide in the loop, all slide info is contained in this -->
+                {{> integrationSlide slide=this slideNr=@index}}
+            {{/if}}
+        {{/each}}
+        <!--         If all the slides have been generated insert a last thank you slide
+    -->
+    </div>
+    {{> hintAndProgressBar}}
+     <div class="ui {{#if loading}} active {{/if}} dimmer">
+        <div class="ui indeterminate text loader" style="font-size: 1.3em">
+            <h2>Creating your slides with data from the Engine API.
+            </h2>
+        </div>
+    </div>
+</template>
+<template name="integrationSlide">
+    <div class="z step ui ten wide column raised segment integration" data-x="{{XValue slideNr}}" data-rotate-x="30" data-z="-1000">
+        <h2 class="ui center aligned main header">
+            <div class="content">
+                {{level 1 slide}}
+                <div class="sub header" style="font-size: 1.2em;">
+                    {{level 2 slide}}
                 </div>
             </div>
-        </h2>
-                        <div class="slideContent">
-                            {{#each item in itemsOfLevel 3}}
-                                {{{formatted item}}}
-                            {{/each}}
-                        </div>
-                    </div>
-                {{/if}}
-            {{/each}}
-            <!--         If all the slides have been generated insert a last thank you slide
-        -->
-            <div class="z step thankYou" data-x="{{thankYouXvalue}}" data-z="3000">
-                <img class="ui bottom aligned fluid image" src="images/presentation thank you.png">
-            </div>
-        {{else}}{{> errorPresentation}} {{/if}}
+         </h2>
+        {{#if slideActive}}
+            {{> slideContent}}
+        {{/if}}
     </div>
+</template>
+<template name="integrationSlideContent">
+    <div class="slideContent">
+        {{#each item in itemsOfLevel 3}}
+            {{{formatted item}}}
+        {{/each}}
+    </div>
+</template>
+<template name="thankYouSlide">
+    <div class="z step thankYou" data-x="{{thankYouXvalue}}" data-z="3000">
+        <img class="ui bottom aligned fluid image" src="images/presentation thank you.png">
+    </div>
+</template>
+<template name="hintAndProgressBar">
     <div class="hint">
         <p>
             Click on the sceen and
-            <br/> use a spacebar or arrow keys to navigate</p>
+            <br/> use a spacebar or arrow keys to navigate
+        </p>
     </div>
     <div class="progressbar">
         <div></div>
     </div>
     <div class="progress"></div>
-    <div class="ui {{#if loading}} active {{/if}} dimmer">
-        <div class="ui indeterminate text loader" style="font-size: 1.3em">
-            <h2>Creating your slides with data from the Engine API.
-                </h2></div>
-    </div>
 </template>
 <template name="pageBreaker">
 </template>
