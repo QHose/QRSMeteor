@@ -28,25 +28,41 @@ Template.ppt_integration.onRendered(function() {
     $('#impress').on('impress:stepenter', function() {
         $('.slideContent').css({ "visibility": "visible" });
         var step = $(this);
-        // console.log('step is ', step);
 
         //ensure we only show the content of the current step via IF condition in the template (only show content if slideNr = currentSlide)
-        var activeStepNr = $(this).find('.step').attr('id');
+        var activeStep = $(this).find('.active.step').attr('id');
+        //convert the id value step-2 to 2
+        var activeStepNr = activeStep.substr(activeStep.indexOf("-") + 1);
+        console.log('entered step nr', activeStepNr);
         Session.set('activeStepNr', activeStepNr);
 
-        //init the youtube videos via semanticUI
-        step.find('.ui.embed').embed();
-
-        //make sure all code gets highlighted using highlight.js
-        step.find('pre code').each(function(i, block) {
-            hljs.highlightBlock(block);
-        });
-
-        //ensure all links open on a new tab
-        step.find('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
     });
 })
 
+Template.integrationSlideContent.onRendered(function() {
+
+    //init the youtube videos via semanticUI
+    this.$('.ui.embed').embed();
+    
+    this.$('*').transition({
+        animation: 'fade in',
+        duration: '1s',
+    });
+
+    this.$('blockquote').transition({
+        animation: 'fade in',
+        duration: '2s',
+    });
+
+    //make sure all code gets highlighted using highlight.js
+    this.$('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    //ensure all links open on a new tab
+    this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
+
+})
 
 Template.ppt_integrationMain.helpers({
     showPresentation() {
@@ -91,14 +107,20 @@ Template.integrationSlide.helpers({
         return slideWidth * index;
         // return setXValue(index);
     },
-    slideActive() {
-
+    slideActive(slideNr) {
+        // console.log('slidnr', slideNr);
+        console.log('session slide', Session.get('activeStepNr'));
+        // console.log('active slide?', Session.get('activeStepNr')==slideNr);
+        return Session.get('activeStepNr') == slideNr + 1;
+    },
+    step() {
+        return Session.get('activeStepNr');
     }
 })
 
 Template.integrationSlideContent.helpers({
-    itemsOfLevel: function(level) { //get all child items of a specific level, normally you will insert level 3 
-        var parents = this[level - 3].qText + this[level - 2].qText; //get the names of the parents of the current slide (level 1 and 2)
+    itemsOfLevel: function(level, slide) { //get all child items of a specific level, normally you will insert level 3 
+        var parents = slide[level - 3].qText + slide[level - 2].qText; //get the names of the parents of the current slide (level 1 and 2)
         if (parents) {
             // console.log('Parent is not empty:', parents);
             return getLocalValuesOfLevel(parents); //using the parent, get all items that have this name as parent

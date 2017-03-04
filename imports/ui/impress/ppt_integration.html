@@ -38,12 +38,12 @@
 </template>
 <template name="ppt_integration">
     <div id="impress">
-        {{#each mainTopics }}
+        {{#each mainTopics }} <!-- for each header: a level 1 and 2 combination -->
             {{#if chapterSlide this}}
                 <!--         Create a chapter breaker if the level 1 has changed in the current row-->
                 <div class="z step ui segment integrationBreaker" data-x="{{XValue @index}}" data-z="2000">
                     <h1 class="ui header" style="font-size: 50px;">
-                            Next: {{this}}
+                            Next: {{this}} <!-- The current level 1 and 2 headers -->
                     </h1>
                 </div>
             {{else}}
@@ -72,14 +72,17 @@
                 </div>
             </div>
          </h2>
-        {{#if slideActive}}
-            {{> slideContent}}
+        <!--  step in session is {{step}}
+         Current step in HTML is {{slideNr}}
+         step is active? {{slideActive slideNr}} -->
+        {{#if slideActive slideNr}} 
+            {{> integrationSlideContent slideNr=slideNr slide=slide}}            
         {{/if}}
     </div>
 </template>
 <template name="integrationSlideContent">
     <div class="slideContent">
-        {{#each item in itemsOfLevel 3}}
+        {{#each item in itemsOfLevel 3 slide}}
             {{{formatted item}}}
         {{/each}}
     </div>
