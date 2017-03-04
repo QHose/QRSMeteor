@@ -45,7 +45,7 @@ Template.integrationSlideContent.onRendered(function() {
 
     this.$('.markdownItem, .videoPlaceholder').transition({
         animation: 'fade in',
-        duration: '4s',
+        duration: '3s',
     });
 
       this.$('img').transition({
