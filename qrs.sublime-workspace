@@ -523,7 +523,7 @@
 			"file": "imports/ui/impress/ppt_integration.html",
 			"settings":
 			{
-				"buffer_size": 5798,
+				"buffer_size": 5799,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,7 +532,7 @@
 			"file": "imports/ui/impress/impress.css",
 			"settings":
 			{
-				"buffer_size": 15318,
+				"buffer_size": 15373,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -891,6 +891,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"segment",
 			"URL",
 			"mind",
 			"Mind",
@@ -1017,8 +1018,7 @@
 			"RZuJ",
 			"slide",
 			"on",
-			"tracker",
-			"removeChild"
+			"tracker"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1157,7 +1157,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1166,15 +1166,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5798,
+						"buffer_size": 5799,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4593,
-								4551
+								3389,
+								3389
 							]
 						],
 						"settings":
@@ -1185,10 +1185,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 742.0,
+						"translation.y": 766.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1197,15 +1197,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15318,
+						"buffer_size": 15373,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2844,
-								2844
+								1070,
+								1070
 							]
 						],
 						"settings":
@@ -1215,10 +1215,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1061.0,
+						"translation.y": 205.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1282,13 +1282,7 @@
 					},
 					"stack_index": 4,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 4,
 					"file": "imports/ui/impress/ppt_integration.js",
@@ -1302,8 +1296,8 @@
 						"selection":
 						[
 							[
-								2145,
-								2145
+								5410,
+								5417
 							]
 						],
 						"settings":
@@ -1314,7 +1308,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 420.0,
+						"translation.y": 1670.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1340,18 +1334,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.38163787588,
 			1.0
 		],
 		"rows":
@@ -1391,7 +1378,7 @@
 	},
 	"select_project":
 	{
-		"height": 1000.0,
+		"height": 885.0,
 		"last_filter": "",
 		"selected_items":
 		[
@@ -1411,7 +1398,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -1419,7 +1406,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 155.0,
+	"side_bar_width": 312.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

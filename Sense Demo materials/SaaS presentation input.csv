@@ -229,8 +229,11 @@ $(""#btn_1"").click(function() {
   alert(""Btn 1 Clicked"");
 });
 ```",,"","","","","         0","0","PreSales",
-"Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales, Technical - 1 hour",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales, Technical - 1 hour",
+"Web integration","Example: Embed the hub","<iframe src=""http://saasdemo.qlik.com:81/meteor/hub"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales",
+"Web integration","Example: Embed a chart","<iframe src=""http://saasdemo.qlik.com:8080/onlyChart"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
+"Web integration","Example: Combine charts and drag and drop","<iframe src=""http://saasdemo.qlik.com:8080/onlyMultipleDivs"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales",
 "Web integration","Embed Qlik Sense in other applications","Lets look at [SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/) where we embedded the hub, apps and objects or just plain data",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Embed Qlik Sense in other applications","Saasdemo web integration hub.png",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","PreSales, Sales, Technical - 2 hours",
@@ -311,8 +314,8 @@ style='border:none; width:100%; height:300px'
 "Web integration","An overview of HTTP - many things are loaded in the browser if you open a page","web - contents of a webpage.png",,"","","","","         0","0","PreSales",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","[SaaS demo: div tag integration example](http://saasdemo.qlik.com:8080/multipleDivs)",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","Dev-hub: demo mashup editor",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Capabilties API - example code","flow - capabilities API end to end.png",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Capabilties API - example code","First connect to Qlik Sense using the config
+"Web integration","Capabilties API - example code embed chart using a DIV tag","flow - capabilities API end to end.png",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Capabilties API - example code embed chart using a DIV tag","First connect to Qlik Sense using the config
 ```
 var config = {
  host: ""saasdemo.qlik.com"",
@@ -321,7 +324,7 @@ var config = {
  isSecure: false;
 }
 ```",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Capabilties API - example code","Get charts via qlik.js loaded via require.js on the client
+"Web integration","Capabilties API - example code embed chart using a DIV tag","Get charts via qlik.js loaded via require.js on the client
 ```
 require( [""js/qlik""], function ( qlik ) {
 
@@ -331,7 +334,37 @@ app.getObject('DIV1','Ggpaxa');
 })
 ```
 ",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Capabilties API - example code","[See demo on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/multipleDivs)",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Capabilties API - example code embed chart using a DIV tag","[See demo on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/multipleDivs)",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Capabilties API - make a selection","```
+var config = {
+ host: window.location.hostname,
+ prefix: prefix,
+ port: window.location.port,
+ isSecure: window.location.protocol === ""https:""
+};
+require([""js/qlik""], function(qlik) {
+ // open the app
+ var app = qlik.openApp('c31e2aba-3b46-4b13-8b87-c5c2514dea1d', config);
+ //select values - simplified syntax
+ app.field('LastName').selectValues([""Jones""], true, true);
+});
+```",,"","","","","         0","0","Deep dive",
+"Web integration","Capabilties API - make a selection","[help](https://help.qlik.com/en-US/sense-developer/3.2/Subsystems/APIs/Content/MashupAPI/qlik-field-interface.htm)",,"","","","","         0","0","Deep dive",
+"Web integration","Capabilties API - clear selection","```
+var config = {
+ host: window.location.hostname,
+ prefix: prefix,
+ port: window.location.port,
+ isSecure: window.location.protocol === ""https:""
+};
+require([""js/qlik""], function(qlik) {
+ // open the app
+ var app = qlik.openApp('c31e2aba-3b46-4b13-8b87-c5c2514dea1d', config);
+ //get a field reference and clear the field selection
+ var lastNameField = app.field('LastName');
+ lastNameField.clear();
+});
+```",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","Challenge: if the user is not yet authenticated you well get a websocket error (the red box on previous slide)",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","To make sure the user is always authenticated you can put a small HTML file on the Qlik Sense server. (C:\Program Files\Qlik\Sense\Client\returnUrl.html)",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","```
