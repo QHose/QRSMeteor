@@ -61,6 +61,9 @@ Template.ApiLogsTable.helpers({
     },
     formattedResponse: function(value) {
         //make sure all code gets highlighted using highlight.js                
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
         if (value) {
             return new Spacebars.SafeString(JSON.stringify(value, undefined, 2));
         }
