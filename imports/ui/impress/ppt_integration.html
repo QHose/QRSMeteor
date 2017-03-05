@@ -38,7 +38,8 @@
 </template>
 <template name="ppt_integration">
     <div id="impress">
-        {{#each mainTopics }} <!-- for each header: a level 1 and 2 combination -->
+        {{#each mainTopics }}
+            <!-- for each header: a level 1 and 2 combination -->
             {{#if chapterSlide this}}
                 <!--         Create a chapter breaker if the level 1 has changed in the current row-->
                 <div class="z step ui segment integrationBreaker" data-x="{{XValue @index}}" data-z="2000">
@@ -53,9 +54,12 @@
         {{/each}}
         <!--         If all the slides have been generated insert a last thank you slide
     -->
+        <div class="z step thankYou" data-x="{{XValue}}" data-z="3000">
+            <img class="ui bottom aligned fluid image" src="images/presentation thank you.png">
+        </div>
     </div>
     {{> hintAndProgressBar}}
-     <div class="ui {{#if loading}} active {{/if}} dimmer">
+    <div class="ui {{#if loading}} active {{/if}} dimmer">
         <div class="ui indeterminate text loader" style="font-size: 1.3em">
             <h2>Creating your slides with data from the Engine API.
             </h2>
@@ -75,8 +79,8 @@
         <!--  step in session is {{step}}
          Current step in HTML is {{slideNr}}
          step is active? {{slideActive slideNr}} -->
-        {{#if slideActive slideNr}} 
-            {{> integrationSlideContent slideNr=slideNr slide=slide}}            
+        {{#if slideActive slideNr}}
+            {{> integrationSlideContent slideNr=slideNr slide=slide}}
         {{/if}}
     </div>
 </template>
@@ -85,11 +89,6 @@
         {{#each item in itemsOfLevel 3 slide}}
             {{{formatted item}}}
         {{/each}}
-    </div>
-</template>
-<template name="thankYouSlide">
-    <div class="z step thankYou" data-x="{{thankYouXvalue}}" data-z="3000">
-        <img class="ui bottom aligned fluid image" src="images/presentation thank you.png">
     </div>
 </template>
 <template name="hintAndProgressBar">

@@ -143,6 +143,9 @@
 }
 
 pre {
+    padding: 0 !important;
+}
+.integration pre {
   background-color: #a6a28c;
 }
 
@@ -213,7 +216,7 @@ section {
     display: block;
     font-size: 50px;
     line-height: 72px;
-    margin-top: 110px;
+    /*margin-top: 110px;*/
 }
 
 q {

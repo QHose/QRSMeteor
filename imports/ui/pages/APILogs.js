@@ -4,6 +4,7 @@ import '/imports/ui/UIHelpers';
 import { APILogs } from '/imports/api/APILogs';
 import './sequenceDiagrams.html'
 import './sequenceDiagrams.js'
+import hljs from 'highlight.js'
 import moment from 'moment';
 
 
@@ -59,8 +60,9 @@ Template.ApiLogsTable.helpers({
         });
     },
     formattedResponse: function(value) {
+        //make sure all code gets highlighted using highlight.js                
         if (value) {
-            return new Spacebars.SafeString('<pre id="json">' + JSON.stringify(value, undefined, 2) + '</pre>')
+            return new Spacebars.SafeString(JSON.stringify(value, undefined, 2));
         }
     }
 
@@ -97,6 +99,16 @@ Template.APILogs.onRendered(function() {
     Template.instance()
         .$('.ui.accordion')
         .accordion({ exclusive: false });
+
+    Tracker.autorun(function() {
+        console.log('API log table changed so, tracker runs after which we can update the code using highlight.js');
+        var temp = APILogs.find();
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+    });
+
+
 });
 
 
