@@ -34,7 +34,7 @@
 .SenseEmbedFrame {
     border: 0 none;
     width: 100%;
-    height: calc(100vh - 50px);
+    height: 600px; /*calc(100vh - 50px);*/
     margin: 0px;
 }
 

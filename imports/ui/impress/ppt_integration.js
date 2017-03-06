@@ -9,7 +9,7 @@ var showdown = require('showdown');
 var converter = new showdown.Converter();
 const enigma = require('enigma');
 var appId = Meteor.settings.public.IntegrationPresenatationApp;
-var IntegrationPresenatationSelectionObject = 'RZuJ';
+var IntegrationPresenatationSelectionSheet = 'DYTpxv';
 var IntegrationPresenatationSortedDataObject = 'pskL';
 var slideWidth = 2000;
 
@@ -74,7 +74,7 @@ Template.ppt_integrationMain.helpers({
         return Session.get('showPresentation'); //&& Session.get('clickedInSelection');
     },
     IFrameURLChapterSelection() {
-        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&obj=' + IntegrationPresenatationSelectionObject + '&opt=currsel';
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&sheet=' + IntegrationPresenatationSelectionSheet + '&opt=currsel';
     }
 })
 
