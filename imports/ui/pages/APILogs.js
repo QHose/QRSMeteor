@@ -9,47 +9,45 @@ import moment from 'moment';
 
 
 Template.ApiLogsTable.helpers({
-    RESTCallSettings: function() {
-        return {
-            rowsPerPage: 20,
-            responsive: false,
-            autoWidth: false,
-            showFilter: true,
-            showColumnToggles: true,
-            fields: [
-                { key: 'action', label: 'Action' },
-                { key: 'request', label: 'Request from SaaS platform' }, {
-                    key: 'response',
-                    label: 'Response from Qlik Sense',
-                    fn: function(value) {
-                        if (value) {
-                            return new Spacebars.SafeString('<pre id="json">' + JSON.stringify(value, undefined, 2) + '</pre>')
-                        }
-                    }
-                }, {
-                    key: 'createDate',
-                    label: 'Date',
-                    sortDirection: 'descending',
-                    fn: function(value) {
-                        return value.toLocaleDateString();
-                    }
-                }, {
-                    key: 'createDate',
-                    label: 'Time',
-                    sortDirection: 'descending',
-                    fn: function(value) {
-                        return value.toLocaleTimeString();
-                    }
-                }, {
-                    key: 'createDate',
-                    label: 'Time',
-                    hidden: true,
-                    sortOrder: 0,
-                    sortDirection: 'descending'
-                }
-            ]
-        };
-    },
+    // RESTCallSettings: function() {
+    //     return {
+    //         rowsPerPage: 20,
+    //         responsive: false,
+    //         autoWidth: false,
+    //         showFilter: true,
+    //         showColumnToggles: true,
+    //         fields: [
+    //             { key: 'action', label: 'Action' },
+    //             { key: 'request', label: 'Request from SaaS platform' }, {
+    //                 key: 'response',
+    //                 label: 'Response from Qlik Sense',
+    //                 fn: function(value) {
+    //                     return formatResponse()
+    //                 }
+    //             }, {
+    //                 key: 'createDate',
+    //                 label: 'Date',
+    //                 sortDirection: 'descending',
+    //                 fn: function(value) {
+    //                     return value.toLocaleDateString();
+    //                 }
+    //             }, {
+    //                 key: 'createDate',
+    //                 label: 'Time',
+    //                 sortDirection: 'descending',
+    //                 fn: function(value) {
+    //                     return value.toLocaleTimeString();
+    //                 }
+    //             }, {
+    //                 key: 'createDate',
+    //                 label: 'Time',
+    //                 hidden: true,
+    //                 sortOrder: 0,
+    //                 sortDirection: 'descending'
+    //             }
+    //         ]
+    //     };
+    // },
     restrictedApiLogs: function() {
         return APILogs.find({}, {
             fields: {
@@ -60,16 +58,19 @@ Template.ApiLogsTable.helpers({
         });
     },
     formattedResponse: function(value) {
-        //make sure all code gets highlighted using highlight.js                
-        $('pre code').each(function(i, block) {
-            hljs.highlightBlock(block);
-        });
-        if (value) {
-            return new Spacebars.SafeString(JSON.stringify(value, undefined, 2));
-        }
+        return formatResponse(value);
     }
 
 })
+
+//convert a js object to a html string with extra classes added. 
+function formatResponse(value) {
+    if (value) {
+        var objectToString = new Spacebars.SafeString(JSON.stringify(value, undefined, 2));
+        var highlighted = hljs.highlightAuto(objectToString.string).value;
+        return highlighted;
+    }
+}
 
 Template.APILogs.events({
     'click .sequenceOverview' () {
@@ -102,16 +103,6 @@ Template.APILogs.onRendered(function() {
     Template.instance()
         .$('.ui.accordion')
         .accordion({ exclusive: false });
-
-    Tracker.autorun(function() {
-        console.log('API log table changed so, tracker runs after which we can update the code using highlight.js');
-        var temp = APILogs.find();
-        $('pre code').each(function(i, block) {
-            hljs.highlightBlock(block);
-        });
-    });
-
-
 });
 
 

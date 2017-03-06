@@ -100,9 +100,11 @@
             {{#each restrictedApiLogs}}
                 <tr>
                     <td>{{action}}</td>
-                    <td>{{request}}</td>
                     <td>
-                        <pre><code>{{formattedResponse response}}</code></pre>
+                        {{request}}
+                    </td>
+                    <td>
+                        <pre><code>{{{formattedResponse response}}}</code></pre>
                     </td>
                 </tr>
             {{/each}}

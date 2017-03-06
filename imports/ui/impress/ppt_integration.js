@@ -48,7 +48,7 @@ Template.integrationSlideContent.onRendered(function() {
         duration: '3s',
     });
 
-      this.$('img').transition({
+    this.$('img').transition({
         animation: 'fade in',
         duration: '3s',
     });
@@ -144,9 +144,6 @@ Template.integrationSlideContent.helpers({
             var result = converter.makeHtml(text);
             if (result.substring(1, 11) === 'blockquote') {
                 return '<div class="ui green very padded segment">' + result + '</div>';
-            }
-            if (result.substring(1, 1) === 'p') {
-
             } else {
                 return '<div class="markdownItem">' + result + '</div>';
             }
