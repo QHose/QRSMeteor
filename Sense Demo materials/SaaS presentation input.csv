@@ -168,10 +168,42 @@ http://saasdemo.qlik.com:81/anon/qmc/tasks
 "API -  generic introduction","High level - What happens when you open a web page? (2)","web - browsing the web - request response.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Detailed - what happens when you open a web page?","web - browsing the web - request response detailed.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,"","","","","         0","0","PreSales",
-"API -  generic introduction","Example Get a list of apps via an API call","Request from client:  do you have a list of apps?",,"","","","","         0","0","PreSales",
-"API -  generic introduction","Example Get a list of apps via an API call","postman request.png",,"","","","","         0","0","PreSales",
-"API -  generic introduction","Example Get a list of apps via an API call","Response from Qlik Sense: here you have your list of apps and their information in JSON format",,"","","","","         0","0","PreSales",
-"API -  generic introduction","Example Get a list of apps via an API call","postman response.png",,"","","","","         0","0","PreSales",
+"API -  generic introduction","Example *Get appList* via an API call","Request from client:  do you have a list of apps?",,"","","","","         0","0","PreSales",
+"API -  generic introduction","Example *Get appList* via an API call","postman request.png",,"","","","","         0","0","PreSales",
+"API -  generic introduction","Example *Get appList* via an API call","Response from Qlik Sense: here you have your list of apps and their information in JSON format",,"","","","","         0","0","PreSales",
+"API -  generic introduction","Example *Get appList* via an API call","```
+{
+ ""jsonrpc"": ""2.0"",
+ ""id"": 4,
+ ""result"": {
+  ""qDocList"": [
+   {
+    ""qDocName"": ""gerdg"",
+    ""qConnectedUsers"": 0,
+    ""qFileTime"": 0,
+    ""qFileSize"": 0,
+    ""qDocId"": ""fee96ae7-16b2-4a4c-b5e5-e9b72f251627"",
+    ""qMeta"": {
+     ""modifiedDate"": ""2017-03-03T10:06:19.281Z"",
+     ""published"": false,
+     ""publishTime"": ""1753-01-01T00:00:00.000Z"",
+     ""privileges"": [
+      ""read"",
+      ""update"",
+      ""delete""
+     ],
+     ""description"": """",
+     ""qFileSize"": 126824,
+     ""dynamicColor"": """",
+     ""create"": null,
+     ""stream"": null,
+     ""canCreateDataConnections"": false
+    },
+    ""qLastReloadTime"": ""1753-01-01T00:00:00.000Z"",
+    ""qTitle"": ""gerdg"",
+    ""qThumbnail"": {}
+   },
+```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Generic REST flow explained: How to connect, get or modify something, and give the answer back to the user?","API - Generic REST api flow.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Delete an app via REST call: an HTTP request, with method delete to a specific endpoint","flow - REST delete app.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","async - user orders pizza.png",,"","","","","         0","0","PreSales",
@@ -735,9 +767,10 @@ or
 "API integration","Javascript or CSS won't load","Check the source location of the files the HTML tries to load. ",,"","","","","         0","0","Deep dive",
 "API integration","Javascript or CSS won't load","Try to open the link in your browser and see the result",,"","","","","         0","0","Deep dive",
 "API integration","Javascript or CSS won't load","Do you see the source code? (ok)",,"","","","","         0","0","Deep dive",
-"API integration","API tools on the community","Always check [Branch.qlik.com](for the latest tools)",,"","","","","         0","0","Deep dive",
-"API integration","API tools on the community","A nice tool that adds extra features (approve sheets, download security rules) to Qlik Sense is the [EA powertools](http://branch.qlik.com/#!/project/57f67b7c06e8670cd284e852)",,"","","","","         0","0","Deep dive",
-"API integration","API tools on the community","EA powertools.png",,"","","","","         0","0","Deep dive",
+"API integration","API tools on the community","Always check [Branch.qlik.com](for the latest tools)",,"","","","","         0","0","Technical - 1 day",
+"API integration","API tools on the community","[Export and back-up app via JSON export](http://branch.qlik.com/#!/project/56728f52d1e497241ae698c7)",,"","","","","         0","0","Technical - 1 day",
+"API integration","API tools on the community","A nice tool that adds extra features (approve sheets, download security rules) to Qlik Sense is the [EA powertools](http://branch.qlik.com/#!/project/57f67b7c06e8670cd284e852)",,"","","","","         0","0","Technical - 1 day",
+"API integration","API tools on the community","EA powertools.png",,"","","","","         0","0","Technical - 1 day",
 "QRS API","What is the QRS REST API?","> Basically an extra layer around the QMC",,"","","","","         0","0","Deep dive, PreSales",
 "QRS API","What can you do with the QRS REST API?","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
