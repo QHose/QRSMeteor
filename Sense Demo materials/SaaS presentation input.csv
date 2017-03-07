@@ -20,13 +20,10 @@
 * Web integration options
 * Governed Self Service
 * SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Sales, OEM bootcamp, Technical - 1 hour",
-"Workshop Introduction","Goal of the session","APIs
-- QRS
-- QPS",,"","","","","         0","0","PreSales",
 "Workshop Introduction","Agenda","What is governed self service with Qlik Sense?",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "Workshop Introduction","Agenda","Introduction to SaaS",,"","","","","         0","0","Sales, OEM bootcamp",
 "Workshop Introduction","Agenda","Explain common integration use cases using SaaSdemo.qlik.com",,"","","","","         0","0","Sales, OEM bootcamp",
-"Workshop Introduction","Agenda","Practise to give the demo yourself
+"Workshop Introduction","Agenda","Practise to do and give the demo yourself
 * Web integration options
 * Governed Self Service
 * SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Sales, OEM bootcamp",
@@ -89,7 +86,7 @@
 "SaaSDemo.qlik.com","Demonstration: Create apps for each of your customers and their users.","[SaaSDemo.Qlik.com](http://saasdemo.qlik.com)",,"","","","","         0","0","Sales, Introduction - 30 minutes",
 "SaaSDemo.qlik.com","Now take 10 minutes to do it yourself. SaaS provisioning demo","useCasesOverview.png",,"","","","","         0","0","Sales",
 "SaaSDemo.qlik.com","Now take 10 minutes to do it yourself. SaaS provisioning demo","[SaaSDemo.Qlik.com](http://saasdemo.qlik.com)",,"","","","","         0","0","Sales",
-"SaaSDemo.qlik.com","SaaS demo architecture introduction","saas demo architecture introduction of components.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
+"SaaSDemo.qlik.com","SaaS demo architecture introduction","saas demo architecture introduction of components.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
 "SaaSDemo.qlik.com","SaaS demo architecture introduction 2","architecture - OEM SaaS scenario.png",,"","","","","         0","0","Technical - 1 hour",
 "SaaSDemo.qlik.com","SaaS demo architecture introduction 2","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","Technical - 1 hour",
 "SaaSDemo.qlik.com","SaaS demo architecture introduction 2","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","Technical - 1 hour",
@@ -237,16 +234,20 @@ $(""#btn_1"").click(function() {
 "Web integration","Example: Embed the hub","<iframe src=""http://saasdemo.qlik.com:81/meteor/hub"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "Web integration","Example: Embed a chart","<iframe src=""http://saasdemo.qlik.com:8080/only1Chart"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "Web integration","Example: Combine charts and drag and drop","<iframe src=""http://saasdemo.qlik.com:8080/onlyMultipleDivs"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
-"Web integration","Web integration examples","[Marketing 360](http://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
-"Web integration","Web integration examples","[European datamarket](http://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
-"Web integration","Web integration examples","More demos on [Qlik Web integration demo page](http://webapps.qlik.com/#/)",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
-"Web integration","Web integration examples","web - marketing 360 screenshot.png",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
-"Web integration","Embed Qlik Sense in other applications","Lets look at [SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/) where we embedded the hub, apps and objects or just plain data",,"","","","","         0","0","Technical - 1 hour, OEM bootcamp",
-"Web integration","Embed Qlik Sense in other applications","Saasdemo web integration hub.png",,"","","","","         0","0","Technical - 1 hour, OEM bootcamp",
+"Web integration","Web integration examples","[Marketing 360](http://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"Web integration","Web integration examples","[European datamarket](http://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","OEM bootcamp, Technical - 1 day, PreSales",
+"Web integration","Web integration examples","More demos on [Qlik Web integration demo page](http://webapps.qlik.com/#/)",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"Web integration","Web integration examples","web - marketing 360 screenshot.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","PreSales, Sales, Technical - 2 hours, OEM bootcamp",
+"Web integration","Embed Qlik Sense in other applications","Lets look at [SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/) where we embedded
+- the hub, 
+- apps 
+- single objects 
+- or we used just the data",,"","","","","         0","0","Technical - 1 hour, OEM bootcamp",
+"Web integration","Embed Qlik Sense in other applications","Saasdemo web integration hub.png",,"","","","","         0","0","Technical - 1 hour, OEM bootcamp",
 "Web integration","Introduction video to Qlik Analytics Platform (QAP)","https://youtu.be/iM_tlwGYJoM?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales, PreSales, Technical - 2 hours, OEM bootcamp",
-"Web integration","Front end focussed API overview","API- overview of what they do.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
-"Web integration","Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
+"Web integration","Front end focussed API overview","API- overview of what they do.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"Web integration","Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
 "Web integration","How to get started: The Qlik Sense Dev-hub (12M) - Inspiration of things you can do...","https://www.youtube.com/watch?v=hjFlpj7uLl4&feature=share",,"","","","","         0","0","PreSales",
 "Web integration","How to get started: The Qlik Sense Dev-hub (12M) - Inspiration of things you can do...","This tool helps to create the source code for you. (also see the Visual Studio plugin)",,"","","","","         0","0","PreSales",
 "Web integration","IFrame integration","<q> IFrame integration</q>",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
@@ -400,7 +401,7 @@ app.getObject('DIV1','Ggpaxa');
 ```
 ",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
 "Web integration","Capabilities API - example code to embed chart using a DIV tag","[See demo on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/multipleDivs)",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
-"Web integration","Capabilities API - flow chart","flow - capabilities API end to end.png",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
+"Web integration","Capabilities API - flow chart","flow - capabilities API end to end.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
 "Web integration","Mashup using DIV tags - key component interaction flow","capabilities API - DIV tag Saas platform to proxy.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Cross site scripting explained (XSS)","web - cross site scripting explained.png",,"","","","","         0","0","PreSales",
 "Web integration","Cross site scripting explained (XSS)","Note: setting the *Access-Control-Allow-Origin* addition header or populating the host whitelist has the same effect",,"","","","","         0","0","Deep dive",
@@ -420,7 +421,6 @@ If so, allow access otherwise deny access with a 403 response",,"","","","","   
 "Web integration","Dev-hub Mashup templates","You can create your own templates to be used by your users",,"","","","","         0","0","Deep dive",
 "Web integration","Dev-hub Mashup templates","See [this community link](https://community.qlik.com/blogs/qlikviewdesignblog/2017/02/24/introducing-dar-mashup-template) for a nice starter",,"","","","","         0","0","Deep dive",
 "Web integration","Dev-hub Mashup templates","https://youtu.be/O5uuzKWMS7I",,"","","","","         0","0","Deep dive",
-"Web integration","",,,,,,,,,,
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Go to the dev-hub, mashup editor",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Create a new mashup project: exercise <groupName> - 1 ",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Select Sales and customers app",,"","","","","         0","0","Exercises",
@@ -437,7 +437,7 @@ If so, allow access otherwise deny access with a 403 response",,"","","","","   
 "Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","[Solution code](http://jsfiddle.net/dlumkeman/9a69ye4b/)",,"","","","","         0","0","Exercises",
 "Web integration","On the fly","<q>Create charts on the fly using the Vizualization API</q>",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","On the fly","web - options to integrate content.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
-"Web integration","Vizualisation API introduction video","https://youtu.be/_pddhxg5__o",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
+"Web integration","Vizualisation API introduction video","https://youtu.be/_pddhxg5__o",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
 "Web integration","Create charts on the fly","If you don't want to create charts up front, you can create them on the fly using javascript or visual web components.",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Create charts on the fly","[Vizualizations API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/VisualizationAPI/VisualizationAPI.htm), use javascript to create charts",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Create charts on the fly","```
@@ -450,7 +450,7 @@ app.visualization.create('barchart',[""Case Owner Group"",""=Avg([Case Duration 
 type=""barchart""     cols='[""Case Owner Group"",""=Avg([Case Duration Time])""]'     
 options='{""title"":""On the fly barchart""}'></qlik-visual>
 ```",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
-"Web integration","Create charts on the fly","[Try it via JS Fiddle](https://jsfiddle.net/mindspank/fs62hwk3/3/)",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
+"Web integration","Create charts on the fly","[Try it via JS Fiddle](https://jsfiddle.net/mindspank/fs62hwk3/3/)",,"","","","","         0","0","PreSales, OEM bootcamp",
 "Web integration","Create charts on the fly","[See example on SaaS demo](http://saasdemo.qlik.com:8080/onTheFlybarChart)",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Create charts on the fly","[See the Qlik Sense help examples](http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Mashups/Content/Howtos/create-visualization-on-the-fly.htm)",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Create charts on the fly","qlik-visuals-result.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
@@ -495,9 +495,9 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
     })
 ```",,"","","","","         0","0","Deep dive, Technical - 2 hours, OEM bootcamp",
 "Web integration","Widgets","https://youtu.be/KJ9r-tMJ9OM?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","Deep dive",
-"Web integration","Extentions","<q>Extentions</q>",,,,,,,,,
-"Web integration","Extentions -  Create extra functionality inside an app using javascript","extentionsExamples.png",,"","","","","         0","0","Deep dive, PreSales",
-"Web integration","Extentions -  Create extra functionality inside an app using javascript","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-api-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales",
+"Web integration","Extentions",">Extentions",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Extentions -  Create extra functionality inside an app using javascript","extentionsExamples.png",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
+"Web integration","Extentions -  Create extra functionality inside an app using javascript","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-api-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Web integration","Extentions","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","Deep dive",
 "Web integration","Web integration problem solving 1","Issue: DIV tag does not work","Qlik Sense ports are blocked",,,,,,,,
 "Web integration","Web integration problem solving 1","Issue: DIV tag does not work","Section access is active, and username or group is not present",,,,,,,,
@@ -516,7 +516,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Web integration problem - fiddle 3","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/Ljv9r2Lz/)","Wrong port",,,,,,,,
 "Web integration","Web integration problem - fiddle 4","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/zz9ftg5y/)","wrong objectID",,,,,,,,
 "Web integration","Web integration problem - fiddle 5","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/we00bs5h/)","Wrong require.js version",,,,,,,,
-"Web integration","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise.png",,"","","","","         0","0","PreSales",
+"Web integration","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise.png",,"","","","","         0","0","Technical - 1 day",
 "Web integration","More information","Always checkout Stefan Walters posts. Like this [web integration tutorial](https://github.com/stefanwalther/awesome-qap#building-visualization-extensions)",,,,,,,,,
 "Security - functional design","Introduction to application level security","Authentication: Who is the user?",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
 "Security - functional design","Introduction to application level security","Authorization: What can he do?",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
@@ -549,7 +549,6 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Security - technical design","Typical questions to ask to get started...","Where are the servers? And how do they authenticate?",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
 "Security - technical design","Typical questions to ask to get started...","Which authenticated method to use for Qlik Sense?  AD, header, SAML, ticket?",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
 "Security - technical design","Introduction to security using an airport","https://youtu.be/sdCVsMzTf64?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk&start=332",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
-"Security - technical design","Integrated Security flow using ticketing common for SaaS integration (1M)","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales, Introduction - 30 minutes, Technical - 1 day, OEM bootcamp",
 "Security - technical design","Authentication","<q>Authentication</q>",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
 "Security - technical design","Authentication - who are the users?","Internal (domain) end users",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
 "Security - technical design","Authentication - who are the users?","External users (not in domain)",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
@@ -575,12 +574,13 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Security - technical design","User opens an app","flow - user opens app.png",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
 "Security - technical design","High level authentication and authorization flow","security - high level authentication and authorization flow.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Security - technical design","Qlik Sense security flow when opening an app","SenseSecurityFlow.png",,"","","","","         0","0","PreSales",
-"Security - technical design","Introduction to ticketing for dummies","QPS - introduction to security flow.png",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
-"Security - technical design","Integrated security flow using ticketing","security flow complete.png",,"","","","","         0","0","PreSales",
+"Security - technical design","Introduction to ticketing","QPS - introduction to security flow.png",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
+"Security - technical design","Integrated security flow using ticketing","security flow complete.png",,"","","","","         0","0","Technical - 1 day",
+"Security - technical design","Video: end to end security integration flow (1M)","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales",
 "Security - technical design","Qlik Sense security overview","securityOverview.png",,"","","","","         0","0","PreSales, Technical - 1 hour, OEM bootcamp",
 "Security - technical design","Qlik Sense authorization in 2 steps","Setup security in 2 steps
-- Step 1 Resource Authorization (using the Security Rules in the QMC)
-- Step 2 Data filter (using section Access in the script of an app)",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
+- Step 1 *Resource Authorization* (using the Security Rules in the QMC)
+- Step 2 Data filter (using *section access* in the script of an app)",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
 "Security - technical design","Authorization step 1: QMC security rules","security rules - step 1 allow the user to.png",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
 "Security - technical design","Authorization step 2: section access overview","section access intro data reduction open app.png",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
 "Security - technical design","Authorization step 2: section access overview","[See this row level security demo](http://saasdemo.qlik.com/selfService). Here each user can only see data from the country he belongs too.",,,,,,,,,
@@ -614,7 +614,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Security - Concept of SaaSdemo.qlik.com","Ticketing - sequence diagrams","[Click here to see the sequence diagrams for a client side redirect](http://knsv.github.io/mermaid/live_editor/#/view/c2VxdWVuY2VEaWFncmFtCkJyb3dzZXItPj5NZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IFVzZXIgbG9ncyBpbiBpbnRvIE1ldGVvciAKQnJvd3Nlci0-PiBQcm94eTogSUZyYW1lIHRyaWVzIHRvIG9wZW4gU2Vuc2UgY29udGVudCB2aWEgbGluayB0aGF0IGNvbnRhaW5zIC9wcm94eS8KUHJveHktPj5NZXRlb3IgU1NPIGNsaWVudDogUmVkaXJlY3QgcmVxdWVzdCB0byB3ZWJwYWdlIG9uIHRoZSBjbGllbnQgKGNsaWVudCBzaWRlIHJvdXRlKS4KCk5vdGUgcmlnaHQgb2YgUHJveHk6IFByb3h5IGFsc28gaW5jbHVkZXMgdGFyZ2V0SWQgPSA8SUQgZm9yIHRoZSBvcmlnaW5hbCBVUkkgdGhhdCB0aGUgdXNlciB0cmllcyB0byBhY2Nlc3M-LCBhbmQgcHJveHlSZXN0VXJpID0gPHRoZSBVUkkgd2hlcmUgdGhlIGF1dGhlbnRpY2F0aW9uIG1vZHVsZSBjYW4gYWNjZXNzIHRoZSBSRVNUIEFQST4KTWV0ZW9yIFNTTyBjbGllbnQtPk1ldGVvciBzZXJ2ZXI6ICBjbGllbnQgY2FsbHMgKHVzZXIgYXdhcmUpIHNlcnZlciBzaWRlIG1ldGhvZApOb3RlIHJpZ2h0IG9mIE1ldGVvciBzZXJ2ZXI6IFNpbmNlIHRoZSB1c2VyIGlzIGFscmVhZHkgbG9nZ2VkIGluIGluIE1ldGVvciwgd2UgY2FuIHJlcXVlc3QgdGhlIHVzZXJJRCBhbmQgZ3JvdXAgbWVtYmVyc2hpcCBmcm9tIHRoZSBNZXRlb3Igc2Vzc2lvbi4gVHJ1c3QgbWVjaGFuaXNtOiBTZXJ2ZXIgaW1wb3J0ZWQgUWxpayBTZW5zZSBjbGllbnQgY2VydGlmaWNhdGUuCk1ldGVvciBzZXJ2ZXItPj5RUFMgQVBJOiBSZXF1ZXN0IHRpY2tldCBhdCBRUFMgQVBJLCBwcm92aWRlIHRoZSB1c2VySWQgYW5kIGdyb3VwcyBpbiBKU09OLgpOb3RlIHJpZ2h0IG9mIE1ldGVvciBzZXJ2ZXI6IE9wdGlvbmFsbHkgaW5jbHVkZSB0aGUgcmVkaXJlY3QgcGFyYW1ldGVyIHRvIGZvcndhcmQgdGhlIHVzZXIgYmFjayB0byB0aGUgcGFnZSBoZSBpbml0aWFsbHkgdHJpZWQgdG8gYWNjZXNzLgpRUFMgQVBJLS0-Pk1ldGVvciBzZXJ2ZXI6IFFQUyBBUEkgcmV0dXJucyBhIHRpY2tldCBudW1iZXIgKGFuZCBwb3NzaWJseSByZWRpcmVjdCBVUkwpIHdoaWNoIHlvdSBoYXZlIHRvIGFwcGVuZCBpbiB0aGUgVVJMIApNZXRlb3Igc2VydmVyLS0-PiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IENyZWF0ZSBhIHJlZGlyZWN0IFVSTCB3aGljaCB0aGUgY2xpZW50IGNvZGUgY2FuIHB1dCBpbiB0aGUgYnJvd3NlciBVUkwgYmFyLiAKTm90ZSByaWdodCBvZiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IENsaWVudCBzaWRlIGNvZGUsIHJlcGxhY2VzIHRoZSB1cmwgaW4gYnJvd3NlciwgYW5kIGZvcndhcmRzIHRoZSB1c2VyIHRvIFFsaWsgU2Vuc2UuIFVzZXIgbm93IHJlY2VpdmVzIGEgUWxpayBTZW5zZSBzZXNzaW9uIGNvb2tpZSAoc2VlIHZpcnR1YWwgcHJveHkgY29uZmlnKSwgYW5kIGFuZCBzdWNoIHNpbmdsZSBzaWduIG9uIGlzIGNvbmZpZ3VyZWQu)",,"","","","","         0","0","PreSales",
 "Security - Concept of SaaSdemo.qlik.com","Ticketing - sequence diagrams","security - sequence diagram ticketing.png",,"","","","","         0","0","PreSales",
 "Security - Concept of SaaSdemo.qlik.com","Extended example Self Service process","ssbi task overview.png",,"","","","","         0","0","PreSales",
-"Security - Concept of SaaSdemo.qlik.com","Qlik Sense security overview","securityOverview.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
+"Security - Concept of SaaSdemo.qlik.com","Qlik Sense security overview","securityOverview.png",,"","","","","         0","0","PreSales, OEM bootcamp",
 "Security - Concept of SaaSdemo.qlik.com","Introduction to self service: a consumer","SSBI consumer.png",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
 "Security - Concept of SaaSdemo.qlik.com","Security rule Consumer","Authorize stream only, give access to all apps inside",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
 "Security - Concept of SaaSdemo.qlik.com","Security rule Consumer","Use the group of the ticket in the rule",,"","","","","         0","0","PreSales, Technical - 1 day, OEM bootcamp",
@@ -704,22 +704,21 @@ or
 - See the properties of the server and charts.
 - Drag-and-drop objects (in different modes) directly into your code.",,"","","","","         0","0","Deep dive",
 "API integration","Introduction video Visual Studio plugin","https://youtu.be/tbH5pHDwYXg",,"","","","","         0","0","Deep dive",
-"API integration","Example options to get charts/data in your SaaS platform","API - options - web page wants sum of sales per country.png",,"","","","","         0","0","Deep dive, Technical - 2 hours, OEM bootcamp",
 "API integration","How to connect to the Javascript, Engine or QRS API?","API flow browser to capabilities engine qrs api.png",,"","","","","         0","0","Deep dive",
-"API integration","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Deep dive",
-"API integration","QPS API","Login",,"","","","","         0","0","Deep dive, PreSales",
-"API integration","QPS API","Logout",,"","","","","         0","0","Deep dive, PreSales",
-"API integration","QPS API","Load balancing",,"","","","","         0","0","Deep dive, PreSales",
+"API integration","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Technical - 2 hours",
+"API integration","QPS API","Login",,"","","","","         0","0","Technical - 1 day",
+"API integration","QPS API","Logout",,"","","","","         0","0","Technical - 1 day",
+"API integration","QPS API","Load balancing",,"","","","","         0","0","Technical - 1 day",
 "API integration","QRS API","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
 - copy/delete apps and streams
 - reload apps
 - get and update system rules
-- get (extract) and update settings",,"","","","","         0","0","Deep dive, PreSales",
+- get (extract) and update settings",,"","","","","         0","0","Technical - 1 day",
 "API integration","QRS API","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","Deep dive, PreSales",
 "API integration","Engine API","What can you do with the Engine API?
 - Automate all the activities you would normally do 
-""inside an app""",,"","","","","         0","0","Deep dive, PreSales",
+""inside an app""",,"","","","","         0","0","Technical - 1 day",
 "API integration","How to create the source code?","[Visual studio plugin](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Plugins/Content/Introduction/Plugin-Intro.htm)",,"","","","","         0","0","Deep dive",
 "API integration","How to create the source code?","[Development hub](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Dev-Hub/Content/Overview/dev-hub-launch-dev-hub.htm)",,"","","","","         0","0","Deep dive",
 "API integration","Certificate authentication requirements","All services in the Qlik Sense deployment authenticate their communication using an SSL certificate. ",,"","","","","         0","0","Deep dive",
@@ -888,20 +887,19 @@ App:
 "QRS API","Exercise 3: get all systemrules via a postman call","You can search the QRS help for special purpose endpoints",,"","","","","         0","0","Deep dive, Exercises",
 "QRS API","Problem solving 1:  get streams via Postman","QRS API - broken XREF example.png",,"","","","","         0","0","Support",
 "QRS API","Problem solving 1:  get streams via Postman","[Open postman app in chrome](https://www.getpostman.com/collections/3168aed89bc40c99790a)",,"","","","","         0","0","Support",
-"QPS API","What is the Qlik Sense proxy?","The ""entry door"" to Qlik Sense (most of the times)",,"","","","","         0","0","Technical - 2 hours",
-"QPS API","What is the Qlik Sense proxy?","Handles authentication: login/logout",,"","","","","         0","0","Technical - 2 hours",
-"QPS API","What is the Qlik Sense proxy?","Creates a session for the user",,,,,,,,,
-"QPS API","What is the Qlik Sense proxy?","So if multiple devices or IFrames connect, they share the same context or session state (selections etc.)",,,,,,,,,
+"QPS API","What is the Qlik Sense proxy?","The ""entry door"" to Qlik Sense (most of the times)",,"","","","","         0","0","Technical - 1 day",
+"QPS API","What is the Qlik Sense proxy?","Handles authentication: login/logout",,"","","","","         0","0","Technical - 1 day",
+"QPS API","What is the Qlik Sense proxy?","Creates a session for the user",,"","","","","         0","0","Deep dive",
+"QPS API","What is the Qlik Sense proxy?","So if multiple devices or IFrames connect, they share the same context or session state (selections etc.)",,"","","","","         0","0","Deep dive",
 "QPS API","When do you use the QPS API?","If you have an external system (like a SaaS platform) and you want to:
 - Login/logout users
 - Create Single Sign On
-- Pass authorizations (group memberships) from external system to Qlik Sense",,"","","","","         0","0","Technical - 2 hours",
+- Pass authorizations (group memberships) from external system to Qlik Sense",,"","","","","         0","0","Technical - 1 day",
 "QPS API","When do you use the QPS API?","Other cases
 - session sharing
-- load balancing",,,,,,,,,
+- load balancing",,"","","","","         0","0","PreSales",
 "QPS API","Remember: You don't store credentials in Qlik Sense","QPS - Qlik does not store users and passwords.png",,,,,,,,,
 "QPS API","When to use which authentication method?","<q>You connect Qlik Sense to the method ""used today"" by the SaaS platform</q>",,"","","","","         0","0","PreSales",
-"QPS API","Qlik Sense supported authentication methods.","# Qlik Sense can get the users identity in a couple of ways",,"","","","","         0","0","PreSales",
 "QPS API","Qlik Sense supported authentication methods.","Windows - Active Directory",,"","","","","         0","0","PreSales",
 "QPS API","Qlik Sense supported authentication methods.","Ticket",,"","","","","         0","0","PreSales",
 "QPS API","Qlik Sense supported authentication methods.","Header",,"","","","","         0","0","PreSales",
@@ -955,10 +953,13 @@ call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certica
 "QPS API","Remember: You don't store credentials in Qlik Sense","QPS - Qlik does not store users and passwords.png",,"","","","","         0","0","PreSales",
 "QPS API","Ticketing - Browser redirects explained","QPS - authentication redirect flow in browser for dummies.png",,"","","","","         0","0","Deep dive",
 "QPS API","Basic ticketing flow","flow - ticketing authentication for dummies.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"QPS API","Video: end to end security integration flow (1M)","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales",
-"QPS API","Ticketing deep dive intro video (21M)","https://youtu.be/0E9i5Pf2Hjg?start=761",,"","","","","         0","0","PreSales",
-"QPS API","Ticketing - create ticket (passport)","In your SaaS platform you authenticate the user. Next you create an object with the user information which you send to Qlik Sense.
--  with the user information (like a passport). ",,"","","","","         0","0","PreSales",
+"QPS API","Video: end to end security integration flow (1M)","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales, Introduction - 30 minutes",
+"QPS API","Ticketing deep dive intro video (21M)","https://youtu.be/0E9i5Pf2Hjg?start=761",,"","","","","         0","0","Technical - 1 day",
+"QPS API","Ticketing - create ticket (passport)","In your SaaS platform you authenticate the user. ",,"","","","","         0","0","PreSales",
+"QPS API","Ticketing - create ticket (passport)","Next you create an object with the user information (like a passport). 
+- You can insert any value you need to use to authorize on.  
+- Your SaaS platform can send this info to Qlik Sense by requesting a ticket at the QPS API.
+- Qlik will return a ""ticket"" (a ""number"") which you have to append in the URL to get access.",,"","","","","         0","0","PreSales",
 "QPS API","Ticketing - create ticket (passport)","The ticket (like a passport) contains
 - the UDC
 - the userID
@@ -1048,28 +1049,28 @@ call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certica
 "QPS API","Exercise 1: Ticketing and connection fails","Go to snapshot 3 and solve the issue","proxy service is not running, we blocked port 4243 on the sense server via the firewall","","","","","         0","0","Exercises",
 "QPS API","Exercise 1: Ticketing and connection fails","Go to your server/selfService to see the issue",,"","","","","         0","0","Exercises",
 "QPS API","Example source code of ticketing integration with Node.Js and Qlikauth","See [this page](http://webofwork.com/authenticate-qlik-sense-in-an-nodejs-express-app-on-an-external-web-host/)",,"","","","","         0","0","Deep dive",
-"Engine API","Introduction to QIX Engine API","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours",
 "Engine API","What can you do with the Engine API?","
-Basically everything you can do when you open an app in the hub.
+Basically all the things you can do yourself when you use an app
 - Get list of streams and apps
 - Open an app
 - Get the layout (sheets and charts)
 - Insert script
 - Reload the app
-- Copy an app",,"","","","","         0","0","Deep dive",
+- Copy an app
+- *user will only see authorized resources*
+- ...",,"","","","","         0","0","Deep dive, Technical - 1 day",
+"Engine API","Introduction to QIX Engine API","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours",
 "Engine API","What can you do? Which end points are available?","Use the engine API explorer of the dev-hub",,"","","","","         0","0","Deep dive",
 "Engine API","What can you do? Which end points are available?","Engine API - example screenshot.png",,"","","","","         0","0","Deep dive",
 "Engine API","Introduction video: Engine API explorer","This tool demonstrates
 - the methods you can call
-- the requests and responses",,"","","","","         0","0","Deep dive",
-"Engine API","Introduction video: Engine API explorer","Check the help for the required parameters, or the schema matching your Sense version.",,,,,,,,,
-"Engine API","Introduction video: Engine API explorer","https://youtu.be/LqcFDe7V-CU?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","Deep dive",
+- the requests and responses",,"","","","","         0","0","PreSales",
+"Engine API","Introduction video: Engine API explorer","https://youtu.be/LqcFDe7V-CU?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","PreSales",
 "Engine API","Demo Dev-hub Engine API explorer","Dev-hub",,"","","","","         0","0","Deep dive",
 "Engine API","Demo Dev-hub Engine API explorer","SaaS demo ",,"","","","","         0","0","Deep dive",
-"Engine API","How to connect","engine API - how to connect.png",,"","","","","         0","0","Deep dive",
-"Engine API","Enigma component architecture","web - enigma integration.png",,"","","","","         0","0","Deep dive",
+"Engine API","How to connect","engine API - how to connect.png",,"","","","","         0","0","PreSales",
+"Engine API","Enigma component architecture","web - enigma integration.png",,"","","","","         0","0","PreSales",
 "Engine API","Example Engine API flow when you create a session object (on the fly) for a chart","API - Engine - get table data.png",,"","","","","         0","0","Deep dive",
-"Engine API","Engine API - architecture","Engine API - architecture.png",,,,,,,,,
 "Engine API","Enigma - Example code","```
 const enigma = require('enigma.js');
 const qixSchema = require('./node_modules/enigma.js/schemas/qix/3.1/schema.json');
@@ -1095,8 +1096,8 @@ enigma.getService('qix', config).then((qix) => {
     });
   });
 });
-```",,"","","","","         0","0","Deep dive",
-"Engine API","Enigma - Example code","[source enigma.js on GitHub](https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/README.md)",,"","","","","         0","0","Deep dive",
+```",,"","","","","         0","0","Deep dive, PreSales",
+"Engine API","Enigma - Example code","[source enigma.js on GitHub](https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/README.md)",,"","","","","         0","0","Deep dive, PreSales",
 "Engine API","Example Engine API call: get list of apps (not enigma)","Client sends to Engine API
 ```
 {
@@ -1333,7 +1334,7 @@ function createCube(app) {
 
         })
 ```",,,,,,,,,
-"Engine API","Exercise 1: get a list of apps via the engine API explorer in the dev-hub","Engine API - example screenshot.png",,"","","","","         0","0","Deep dive, Exercises",
+"Engine API","Exercise 1: get a list of apps via the engine API explorer in the dev-hub","Engine API - example screenshot.png",,"","","","","         0","0","Exercises, PreSales",
 "Engine API","Exercise 2: create a new folder connection to c:\temp","https://youtu.be/HmmZfPjqSMw",,"","","","","         0","0","Deep dive, Exercises",
 "Engine API","Exercise 3: get an existing object","Go to the engine API explorer",,"","","","","         0","0","Deep dive, Exercises",
 "Engine API","Exercise 3: get an existing object","Connect to your app",,"","","","","         0","0","Deep dive, Exercises",
@@ -1393,7 +1394,8 @@ document.addEventListener('click', function(e) {
 "Architecture","Exercise 1: Draw an application architecture for a single server, internal user installation on the whiteboard","Databases",,"","","","","         0","0","Exercises",
 "Architecture","Exercise 1: Draw an application architecture for a single server, internal user installation on the whiteboard","Firewalls",,"","","","","         0","0","Exercises",
 "Architecture","Exercise 1: Draw an application architecture for a single server, internal user installation on the whiteboard","Ports",,"","","","","         0","0","Exercises",
-"Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","End user",,"","","","","         0","0","Exercises",
+"Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","External user",,"","","","","         0","0","Exercises",
+"Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","internal user",,"","","","","         0","0","Exercises",
 "Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Servers",,"","","","","         0","0","Exercises",
 "Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Databases",,"","","","","         0","0","Exercises",
 "Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Firewalls",,"","","","","         0","0","Exercises",
@@ -1401,14 +1403,14 @@ document.addEventListener('click', function(e) {
 "Architecture","Key architecture topics","Infrastructure",,,,,,,,,
 "Architecture","Key architecture topics","Application architecture",,,,,,,,,
 "Architecture","Example architecture scenarios","> Lets look at some common scenarios with both internal as well as external users",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Internal users only",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
-"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
-"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","architecture - windows domain internal user.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
-"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - detailed flow","QlikSense - Architectures single server.png",,"","","","","         0","0","PreSales",
-"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
-"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
-"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
-"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","windows domain with external users.png",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
+"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Internal users only",,"","","","","         0","0","PreSales, OEM bootcamp, Technical - 1 day",
+"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales, OEM bootcamp, Technical - 1 day",
+"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","architecture - windows domain internal user.png",,"","","","","         0","0","PreSales, OEM bootcamp, Technical - 1 day",
+"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - detailed flow","QlikSense - Architectures single server.png",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","windows domain with external users.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
 "Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","Deep dive",
 "Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,"","","","","         0","0","Deep dive",
 "Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","Deep dive",
