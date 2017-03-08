@@ -11,6 +11,8 @@
 "Workshop Introduction","What's so special about this presentation? (3)","> Just to inspire what you can do with our *engine*",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "Workshop Introduction","Its all about Governance and control","> Your platform controls Qlik Sense using APIs",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "Workshop Introduction","Create presentation using the Engine API","Engine API - load raw data mindmap example.png",,"","","","","         0","0","PreSales",
+"Workshop Introduction","Mindmap layout ","mindmap engine api generator.png",,"","","","","         0","0","Technical - 2 hours",
+"Workshop Introduction","Excel input","Excel input engine api generator.png",,"","","","","         0","0","Technical - 2 hours",
 "Workshop Introduction","Goal of the session","Train the trainer",,"","","","","         0","0","Support",
 "Workshop Introduction","Goal of the session","Validate if we have all content to teach",,"","","","","         0","0","Support",
 "Workshop Introduction","Goal of the session","Introduction to SaaS technology",,"","","","","         0","0","Support",
@@ -168,9 +170,9 @@ http://saasdemo.qlik.com:81/anon/qmc/tasks
 "API -  generic introduction","High level - What happens when you open a web page? (2)","web - browsing the web - request response.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Detailed - what happens when you open a web page?","web - browsing the web - request response detailed.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,"","","","","         0","0","PreSales",
-"API -  generic introduction","Example *Get appList* via an API call","Request from client:  do you have a list of apps?",,"","","","","         0","0","PreSales",
+"API -  generic introduction","Example *Get appList* via an API call","Request from client:  do you have a list of apps?",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","Example *Get appList* via an API call","postman request.png",,"","","","","         0","0","PreSales",
-"API -  generic introduction","Example *Get appList* via an API call","Response from Qlik Sense: here you have your list of apps and their information in JSON format",,"","","","","         0","0","PreSales",
+"API -  generic introduction","Example *Get appList* via an API call","Response from Qlik Sense: here you have your list of apps and their information in JSON format",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","Example *Get appList* via an API call","```
 {
  ""jsonrpc"": ""2.0"",
@@ -203,7 +205,7 @@ http://saasdemo.qlik.com:81/anon/qmc/tasks
     ""qTitle"": ""gerdg"",
     ""qThumbnail"": {}
    },
-```",,"","","","","         0","0","PreSales",
+```",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","Generic REST flow explained: How to connect, get or modify something, and give the answer back to the user?","API - Generic REST api flow.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Delete an app via REST call: an HTTP request, with method delete to a specific endpoint","flow - REST delete app.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","async - user orders pizza.png",,"","","","","         0","0","PreSales",
@@ -306,24 +308,24 @@ http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sh
 "Web integration","IFrame - App and Single integration API (2)","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,"","","","","         0","0","PreSales",
 "Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","[See IFrame examples on SaaS demo ](http://saasdemo.qlik.com:8080/)",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
 "Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","saas demo Web integration screenshot.png",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Go to the examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","##Some questions about interacting with Qlik Sense.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Go to the examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","##Some questions about interacting with Qlik Sense.",,"","","","","         0","0","Exercises, Technical - 1 day",
 "Web integration","Exercise IFrame 1: Connect to Qlik Sense","Lets think about possible ways to retreive
 - An app URL
 - the Sheet URL
-- an object ID",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","How can you see the source URL of the IFrame?",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Which proxy does it use?",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","If we want to use windows authentication, what should we change?",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","How can we clear the selections if the IFrame loads?",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 2: Open anonymous Dev-Hub","Goal: Learn to lookup, the server, the ports, and the virtual proxy settings",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 2: Open anonymous Dev-Hub","Try to open the SaaSdemo.qlik.com dev-hub via the a virtual proxy that has been configured for anonymous access.",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 2: Open anonymous Dev-Hub","If you need information, ask your trainer...",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Go to single-configurator",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Select Sales and customers app",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Select object sales by country",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","See the [answer here](http://jsfiddle.net/dlumkeman/hy67kxov/)",,"","","","","         0","0","Exercises",
+- an object ID",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","How can you see the source URL of the IFrame?",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Which proxy does it use?",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","If we want to use windows authentication, what should we change?",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","How can we clear the selections if the IFrame loads?",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 2: Open anonymous Dev-Hub","Goal: Learn to lookup, the server, the ports, and the virtual proxy settings",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 2: Open anonymous Dev-Hub","Try to open the SaaSdemo.qlik.com dev-hub via the a virtual proxy that has been configured for anonymous access.",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 2: Open anonymous Dev-Hub","If you need information, ask your trainer...",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Go to single-configurator",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Select Sales and customers app",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Select object sales by country",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","See the [answer here](http://jsfiddle.net/dlumkeman/hy67kxov/)",,"","","","","         0","0","Exercises, Technical - 1 day",
 "Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Go to single-configurator",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Select Sales and customers app",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Select sheet dashboard",,"","","","","         0","0","Exercises",
@@ -453,6 +455,8 @@ If so, allow access otherwise deny access with a 403 response",,"","","","","   
 "Web integration","Dev-hub Mashup templates","You can create your own templates to be used by your users",,"","","","","         0","0","Deep dive",
 "Web integration","Dev-hub Mashup templates","See [this community link](https://community.qlik.com/blogs/qlikviewdesignblog/2017/02/24/introducing-dar-mashup-template) for a nice starter",,"","","","","         0","0","Deep dive",
 "Web integration","Dev-hub Mashup templates","https://youtu.be/O5uuzKWMS7I",,"","","","","         0","0","Deep dive",
+"Web integration","Exercise 1: Lets look at a existing mashup in the DEV-HUB","We will now analyse the CityBike mashup you see in the [SaaSDemo web integration demo](http://saasdemo.qlik.com:8080/)",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Exercise 1: Lets look at a existing mashup in the DEV-HUB","Now lets look at the [backend in the DEV-HUB](http://saasdemo.qlik.com:81/anon/dev-hub/mashup-editor/#qext{DemoMashup})",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Go to the dev-hub, mashup editor",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Create a new mashup project: exercise <groupName> - 1 ",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Select Sales and customers app",,"","","","","         0","0","Exercises",
@@ -460,13 +464,13 @@ If so, allow access otherwise deny access with a 403 response",,"","","","","   
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Now try to disable interactivity",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Try to set a selection",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Insert a selection bar",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","Now we try to put your new mashup from exercise 1 on an external server.",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/rv3r73rj/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","Now we try to put this mashup from exercise 1 on an external server.",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/rv3r73rj/)",,"","","","","         0","0","Exercises, Technical - 1 day",
 "Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","Paste the relevant parts from the dev-hub into the fiddle
 - copy javascript to the javascript part
-- refer to the new placeholder IDs in your javascript",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","It could be.... that you have to add ```fiddle.jshell.net``` to your virtual proxy whitelist",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","[Solution code](http://jsfiddle.net/dlumkeman/9a69ye4b/)",,"","","","","         0","0","Exercises",
+- refer to the new placeholder IDs in your javascript",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","It could be.... that you have to add ```fiddle.jshell.net``` to your virtual proxy whitelist. *Ensure you understand what we mean here...*",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","[Solution code](http://jsfiddle.net/dlumkeman/9a69ye4b/)",,"","","","","         0","0","Exercises, Technical - 1 day",
 "Web integration","On the fly","<q>Create charts on the fly using the Vizualization API</q>",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","On the fly","web - options to integrate content.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Vizualisation API introduction video","https://youtu.be/_pddhxg5__o",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
@@ -683,6 +687,34 @@ or
 "Security - Concept of SaaSdemo.qlik.com","Security rule: customer specific admin","```
 ((user.environment.group=""Admin"")) and ( resource.HasPrivilege(""read"") or resource.app.HasPrivilege(""read"") )
 ```",,"","","","","         0","0","PreSales",
+"SaaSDemo.qlik.com key API calls","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","architecture - OEM SaaS scenario.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","SSO is enforced using a ticket with userID and his groups",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","Introduction to the automated activities"," <p>In the demo you will see the broker in action. But what are the activities that the SaaS broker automates in the demo? What are the steps or stages?</p>
+                <ul>
+                    <li>First it will create a stream for each customer. </li>
+                    <li>Secondly it will copy the template app. </li>
+                    <li>Next it replaces the script with a customer-specific one, or in most cases you just have to replace the database connection.</li>
+                    <li>Using the new script, the app is reloaded. You can also use this mechanism to query big data sources like MongoDB. This is where we basically make a compressed index of the data and create the associative model.</li>
+                    <li>In the final stage we publish the app in the stream with the name of the customer.</li>
+                </ul>
+            </div>
+            <div class=""column"">
+                <img class=""ui medium centered image"" data-action=""zoom"" src=""images/saas demo concept simple.png"">
+            </div>",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
+"SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","The ""loop"" to execute to ensure each for each *customer* gets each template *app*",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
+"SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","generationLoop.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the 4 automated use cases","- Create a new stream with the customer’s name
+- Copy the template
+- Replace the script and reload
+- publish the app",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
+"SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the 4 automated use cases","generate app for each template.png",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
+"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","Try to generate some apps, or try to swith a user in demo step 4",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
+"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","See the API calls in the [API log page](http://saasdemo.qlik.com/ApiLogsTable)",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
+"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://saasdemo.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","More information about the source code of the demo platform?","Go to [the API tab in the documentation](http://saasdemo.qlik.com/documentation)",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
 "API integration","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
 "API integration","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
 "API integration","Lets look at some Qlik Sense integration scenarios","Authorization: And will only see its own data?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
