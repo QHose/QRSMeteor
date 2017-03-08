@@ -126,7 +126,7 @@
 "API -  generic introduction","What is an API?","A common language (JSON) ensures they can talk with each other",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","Example: SaaS platform needs some information from Qlik Sense","API- both server and user can talk to Sense.png",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","What is the power of APIs?","Embed Qlik Sense in your SaaS platform",,"","","","","         0","0","PreSales, Sales, Technical - 1 day",
-"API -  generic introduction","What is the power of APIs?","Create new things or charts that are not available out of the box (extentions)",,"","","","","         0","0","PreSales, Sales, Technical - 1 day",
+"API -  generic introduction","What is the power of APIs?","Create new things or charts that are not available out of the box (extensions)",,"","","","","         0","0","PreSales, Sales, Technical - 1 day",
 "API -  generic introduction","What is the power of APIs?","Create extra layers around the Qlik Management Console (QMC)",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","What is the power of APIs?","Automate manual steps or processes (to maintain your platform)",,"","","","","         0","0","PreSales, Sales, Technical - 1 day",
 "API -  generic introduction","What is the power of APIs?","Connect systems and share information",,"","","","","         0","0","PreSales, Technical - 1 day",
@@ -310,7 +310,7 @@ http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sh
 "Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","saas demo Web integration screenshot.png",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
 "Web integration","Exercise IFrame 1: Connect to Qlik Sense","Go to the examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,"","","","","         0","0","Exercises, Technical - 1 day",
 "Web integration","Exercise IFrame 1: Connect to Qlik Sense","##Some questions about interacting with Qlik Sense.",,"","","","","         0","0","Exercises, Technical - 1 day",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Lets think about possible ways to retreive
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Lets think about possible ways to retrieve
 - An app URL
 - the Sheet URL
 - an object ID",,"","","","","         0","0","Exercises, Technical - 1 day",
@@ -531,10 +531,10 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
     })
 ```",,"","","","","         0","0","Deep dive, Technical - 2 hours, OEM bootcamp",
 "Web integration","Widgets","https://youtu.be/KJ9r-tMJ9OM?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","Deep dive",
-"Web integration","Extentions",">Extentions",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Extentions -  Create extra functionality inside an app using javascript","extentionsExamples.png",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
-"Web integration","Extentions -  Create extra functionality inside an app using javascript","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-api-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
-"Web integration","Extentions","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","Deep dive",
+"Web integration","extensions",">extensions",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","extensions -  Create extra functionality inside an app using javascript","extensionsExamples.png",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
+"Web integration","extensions -  Create extra functionality inside an app using javascript","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-api-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
+"Web integration","extensions","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","Deep dive",
 "Web integration","Web integration problem solving 1","Issue: DIV tag does not work","Qlik Sense ports are blocked",,,,,,,,
 "Web integration","Web integration problem solving 1","Issue: DIV tag does not work","Section access is active, and username or group is not present",,,,,,,,
 "Web integration","Web integration problem solving 1","Issue: DIV tag does not work","App is not published",,,,,,,,
@@ -687,11 +687,12 @@ or
 "Security - Concept of SaaSdemo.qlik.com","Security rule: customer specific admin","```
 ((user.environment.group=""Admin"")) and ( resource.HasPrivilege(""read"") or resource.app.HasPrivilege(""read"") )
 ```",,"","","","","         0","0","PreSales",
-"SaaSDemo.qlik.com key API calls","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","architecture - OEM SaaS scenario.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
-"SaaSDemo.qlik.com key API calls","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
-"SaaSDemo.qlik.com key API calls","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
-"SaaSDemo.qlik.com key API calls","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","SSO is enforced using a ticket with userID and his groups",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
-"SaaSDemo.qlik.com key API calls","OEM architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"Security - Concept of SaaSdemo.qlik.com","Overview of system (security & license) rules","<iframe src=""http://saasdemo.qlik.com/securityRules"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","architecture - OEM SaaS scenario.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","SSO is enforced using a ticket with userID and his groups",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
 "SaaSDemo.qlik.com key API calls","Introduction to the automated activities"," <p>In the demo you will see the broker in action. But what are the activities that the SaaS broker automates in the demo? What are the steps or stages?</p>
                 <ul>
                     <li>First it will create a stream for each customer. </li>
@@ -740,8 +741,8 @@ or
 "API integration","Font end APIs: Next we demonstrate some examples","Remember: always think where you are, to see which APIs you need to use",,"","","","","         0","0","Deep dive",
 "API integration","Font end APIs: Embed Qlik Sense in other applications","[See SaaSdemo.qlik.com for a example where we embedded the hub](http://saasdemo.qlik.com:8080/)",,"","","","","         0","0","Deep dive, PreSales",
 "API integration","Font end APIs: Embed Qlik Sense in other applications","Saasdemo web integration hub.png",,"","","","","         0","0","Deep dive, PreSales",
-"API integration","Font end APIs Create extra functionality in Qlik Sense using extentions","extentionsExamples.png",,"","","","","         0","0","Deep dive, PreSales",
-"API integration","Font end APIs Create extra functionality in Qlik Sense using extentions","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-api-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales",
+"API integration","Font end APIs Create extra functionality in Qlik Sense using extensions","extensionsExamples.png",,"","","","","         0","0","Deep dive, PreSales",
+"API integration","Font end APIs Create extra functionality in Qlik Sense using extensions","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-api-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales",
 "API integration","Example of an API interaction where we connect via the browser to the QRS API using header authentication","flow - REST get apps.png",,"","","","","         0","0","Deep dive, PreSales",
 "API integration","Example of an API interaction where we connect via the browser to the QRS API using header authentication","postman request.png",,"","","","","         0","0","Deep dive, PreSales",
 "API integration","Example of an API interaction where we connect via the browser to the QRS API using header authentication","postman response.png",,"","","","","         0","0","Deep dive, PreSales",
@@ -803,22 +804,22 @@ or
 "API integration","API tools on the community","[Export and back-up app via JSON export](http://branch.qlik.com/#!/project/56728f52d1e497241ae698c7)",,"","","","","         0","0","Technical - 1 day",
 "API integration","API tools on the community","A nice tool that adds extra features (approve sheets, download security rules) to Qlik Sense is the [EA powertools](http://branch.qlik.com/#!/project/57f67b7c06e8670cd284e852)",,"","","","","         0","0","Technical - 1 day",
 "API integration","API tools on the community","EA powertools.png",,"","","","","         0","0","Technical - 1 day",
-"QRS API","What is the QRS REST API?","> Basically an extra layer around the QMC",,"","","","","         0","0","Deep dive, PreSales",
+"QRS API","What is the QRS REST API?","> Basically an extra layer around the QMC",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "QRS API","What can you do with the QRS REST API?","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
 - copy/delete apps and streams
 - reload apps
-- get (extract) and update settings like tasks, licences, security, users ....",,"","","","","         0","0","Deep dive, PreSales",
-"QRS API","What can you do with the QRS REST API?","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","Deep dive, PreSales",
+- get (extract) and update settings like tasks, licences, security, users ....",,"","","","","         0","0","Deep dive, Technical - 1 day",
+"QRS API","What can you do with the QRS REST API?","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "QRS API","Introduction to REST APIs","Most Qlik Sense APIs are delivered as a REpresentational State Transfer (REST) web service that contains a number of endpoints (also referred to as paths) that are used to execute various functions.",,"","","","","         0","0","Deep dive, PreSales",
 "QRS API","Introduction to REST APIs","To communicate with these endpoints, HTTP calls that contain GET, POST, PUT, or DELETE requests are made.",,"","","","","         0","0","Deep dive, PreSales",
-"QRS API","Video: Generic introduction to REST APIs with examples","https://youtu.be/7YcW25PHnAA",,"","","","","         0","0","Deep dive, PreSales",
+"QRS API","Video: Generic introduction to REST APIs with examples","https://youtu.be/7YcW25PHnAA",,"","","","","         0","0","Technical - 1 day",
 "QRS API","Introduction to REST- open a web page","flow - open webpage.png",,"","","","","         0","0","Deep dive, PreSales",
 "QRS API","Lets look at some Qlik Sense REST calls",">Lets look at some Qlik Sense REST calls",,"","","","","         0","0","Deep dive, PreSales",
 "QRS API","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,"","","","","         0","0","Deep dive, PreSales",
 "QRS API","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,"","","","","         0","0","Deep dive",
 "QRS API","QRS - architecture diagram","QRS - architecture.png",,"","","","","         0","0","Deep dive",
-"QRS API","QRS API Introduction video 1","https://youtu.be/-WLu_q_7Z24",,"","","","","         0","0","Deep dive",
+"QRS API","QRS API Introduction video 1","https://youtu.be/-WLu_q_7Z24",,"","","","","         0","0","Technical - 1 day",
 "QRS API","Key things to look for when you want to have authenticated REST calls","The calls must be authenticated with a user with the required permission.",,"","","","","         0","0","Deep dive",
 "QRS API","Key things to look for when you want to have authenticated REST calls","Make sure you understand which user makes the request
 - Client side?

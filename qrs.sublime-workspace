@@ -529,10 +529,7 @@
 			}
 		},
 		{
-			"contents": "import { senseConfig } from '/imports/api/config.js';\nimport './ppt_integration.html';\nimport lodash from 'lodash';\nimport hljs from 'highlight.js'\n_ = lodash;\n\n// var hljs = require('hljs');\nvar showdown = require('showdown');\nvar converter = new showdown.Converter();\nconst enigma = require('enigma');\nvar appId = Meteor.settings.public.IntegrationPresenatationApp;\nvar IntegrationPresenatationSelectionSheet = 'DYTpxv';\nvar IntegrationPresenatationSortedDataObject = 'pskL';\nvar slideWidth = 2000;\n\n\nTemplate.ppt_integrationMain.onRendered(function() {\n    // Session.set('clickedInSelection', false);\n    this.$('.ui.sidebar')\n        .sidebar('toggle');\n})\nTemplate.ppt_integration.onRendered(function() {\n    Session.set('slideLoading', true);\n    getLevel1to3('integrationTopics');\n    getLevel1And2();\n    appChangeListener();\n\n    $('#impress').on('impress:stepenter', function() {\n        $('.slideContent').css({ \"visibility\": \"visible\" });\n        var step = $(this);\n\n        //ensure we only show the content of the current step via IF condition in the template (only show content if slideNr = currentSlide)\n        var activeStep = $(this).find('.active.step').attr('id');\n        //convert the id value step-2 to 2\n        var activeStepNr = activeStep.substr(activeStep.indexOf(\"-\") + 1);\n        Session.set('activeStepNr', activeStepNr);\n\n    });\n})\n\nTemplate.integrationSlideContent.onRendered(function() {\n\n    //init the youtube videos via semanticUI\n    this.$('.ui.embed').embed();\n\n    this.$('.markdownItem, .videoPlaceholder').transition({\n        animation: 'fade in',\n        duration: '3s',\n    });\n\n    this.$('img').transition({\n        animation: 'fade in',\n        duration: '3s',\n    });\n\n    this.$('blockquote').transition({\n        animation: 'fade in',\n        duration: '5s',\n    });\n\n    //make sure all code gets highlighted using highlight.js\n    this.$('pre code').each(function(i, block) {\n        hljs.highlightBlock(block);\n    });\n\n    //ensure all links open on a new tab\n    this.$('a[href^=\"http://\"], a[href^=\"https://\"]').attr('target', '_blank');\n\n})\n\nTemplate.ppt_integrationMain.helpers({\n    showPresentation() {\n        // console.log('show the IFRAME');\n        return Session.get('showPresentation'); //&& Session.get('clickedInSelection');\n    },\n    IFrameURLChapterSelection() {\n        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&sheet=' + IntegrationPresenatationSelectionSheet + '&opt=currsel';\n    }\n})\n\nTemplate.ppt_integration.helpers({\n    mainTopics() {\n        return Session.get('mainTopics'); //only the level 1 and 2 colums, we need this for the headers of the slide\n    },\n    // topics() {\n    //     return Session.get('integrationTopics'); //all level 1 2 and 3 data, we need level 3 for the bullets/images of the slide\n    // },\n    chapterSlide(currentRow) {\n        if (typeof(currentRow) === 'string') { //we got a chapter slide\n            // console.log('we found a chapter slide', currentRow);\n            return true\n        }\n    },\n    XValue(index) {\n        return setXValue(index);\n    },\n    loading() {\n        return Session.get('slideLoading');\n    },\n    thankYouXvalue() {\n        return Session.get('currentSlideNumber') * slideWidth;\n    }\n});\n\nTemplate.integrationSlide.helpers({\n    level(level, slide) {\n        return textOfLevel(slide, level);\n    },\n    XValue(index) {\n        Session.set('currentSlideNumber', index);\n        return slideWidth * index;\n        // return setXValue(index);\n    },\n    slideActive(slideNr) {\n        //active slide gets set via impress, that fires an event. see ppt_integration.onRendered\n        return Session.get('activeStepNr') >= slideNr + 1;\n    },\n    step() {\n        return Session.get('activeStepNr');\n    }\n})\n\nTemplate.integrationSlideContent.helpers({\n    itemsOfLevel: function(level, slide) { //get all child items of a specific level, normally you will insert level 3 \n        var parents = slide[level - 3].qText + slide[level - 2].qText; //get the names of the parents of the current slide (level 1 and 2)\n        if (parents) {\n            // console.log('Parent is not empty:', parents);\n            return getLocalValuesOfLevel(parents); //using the parent, get all items that have this name as parent\n        }\n    },\n    formatted(text) {\n        if (youtube_parser(text)) { //youtube video url\n            // console.log('found an youtube link so embed with the formatting of semantic ui', text)\n            var videoId = youtube_parser(text);\n            var html = '<div class=\"ui container videoPlaceholder\"><div class=\"ui embed\" data-source=\"youtube\" data-id=\"' + videoId + '\" data-icon=\"video\" data-placeholder=\"images/youtube.jpg\"></div></div>'\n                // console.log('generated video link: ', html);\n            return html;\n        } else if (text.startsWith('<')) { //custom HTML\n            return text;\n        } else if (checkTextIsImage(text)) { //image\n            // console.log('found an image', text)\n            return '<img class=\"ui huge centered integration image\"  src=\"images/' + text + '\">'\n        } else { //text, convert the text (which can include markdown syntax) to valid HTML\n            var result = converter.makeHtml(text);\n            if (result.substring(1, 11) === 'blockquote') {\n                return '<div class=\"ui green very padded segment\">' + result + '</div>';\n            } else {\n                return '<div class=\"markdownItem\">' + result + '</div>';\n            }\n        }\n    }\n})\n\nTemplate.ppt_integrationMain.events({\n    'click .launch': function(event) {\n        // console.log('button clicked');\n        $('.ui.sidebar')\n            .sidebar('toggle');\n    },\n    'click .button': function(event) {\n        console.log('button clicked');\n        $('.ui.sidebar')\n            .sidebar('toggle');\n        Session.set('showPresentation', true);\n    },\n    'mouseover .sidebar.integration': function(event) {\n        Session.set('showPresentation', false);\n    },\n    'mouseout .sidebar.integration': function(event) {\n        Session.set('showPresentation', true);\n    }\n})\n\n\nfunction setXValue(index) {\n    Session.set('currentSlideNumber', index);\n    return slideWidth * index;\n}\n\n\nfunction textOfLevel(row, level) {\n    level -= 1\n    return row[level].qText\n}\n\nfunction getLevel1and2Names(slide) {\n    return slide[0].qText + '-' + slide[1].qText;\n}\n\nfunction checkTextIsImage(text) {\n    return (text.match(/\\.(jpeg|jpg|gif|png)$/) != null);\n}\n\nfunction youtube_parser(url) {\n    var regExp = /^.*((youtu.be\\/)|(v\\/)|(\\/u\\/\\w\\/)|(embed\\/)|(watch\\?))\\??v?=?([^#\\&\\?]*).*/;\n    var match = url.match(regExp);\n    return (match && match[7].length == 11) ? match[7] : false;\n}\n\nvar setCurrentSlideEventHelper = function() {\n    $(document).on('impress:stepenter', function(e) {\n        var currentSlide = $(e.target).attr('id');\n        Session.set('currentSlide', currentSlide);\n    });\n}\n\nvar getLocalValuesOfLevel = function(parentText) {\n    // console.log('get all level 3 for level 2 with text:', parentText);\n    var result = [];\n    var topics = Session.get('integrationTopics'); //the level 1 and 2 values\n    var level3Data = _.filter(topics, function(row) {\n            var parents = row[0].qText + row[1].qText;\n            if (parents === parentText) { //if the current level 1 and 2 combination matches \n                if (row[2].qText) { result.push(row[2].qText) } //add the level 3 value to the new level3Data array\n            }\n        })\n        // console.log('level3Data:', result);\n    return result;\n}\n\nfunction getLevel1And2() {\n\n    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')\n        .then(qixschema => {\n\n            enigma.getService('qix', {\n                    schema: qixschema,\n                    appId: appId,\n                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs\n                        host: senseConfig.host,\n                        prefix: 'anon',\n                        port: senseConfig.port,\n                        unsecure: true\n                    }\n                })\n                .then(qix => {\n                    qix.app.getObject(IntegrationPresenatationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same\n                        .then(model => {\n                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {\n                                // console.log('Result set from Qlik Sense:', data);\n                                var table = data[0].qMatrix;\n                                var tableWithChapters = insertSectionBreakers(table);\n                                console.log('Slides loaded, and we added extra chapter breakers. Object now stored in in session var mainTopics, so slides can be created by impress.js', tableWithChapters);\n                                Session.set('mainTopics', tableWithChapters)\n                                Meteor.setTimeout(function() {\n\n                                    impress().init();\n                                    impress().goto(0);\n                                    $('.slideContent').css({ \"visibility\": \"hidden\" }); //prevent an issue when impress has qlik sense embedded via iframes...\n                                    Session.set('slideLoading', false);\n                                }, 100);\n                            })\n                        })\n\n                })\n\n        })\n\n\n}\n\n\nvar appChangeListener = function appChangeListener() {\n    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')\n        .then(qixschema => {\n            enigma.getService('qix', {\n                    schema: qixschema,\n                    appId: appId,\n                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs\n                        host: senseConfig.host,\n                        prefix: 'anon',\n                        port: senseConfig.port,\n                        unsecure: true\n                    }\n                })\n                .then(qix => {\n                    qix.app.on('changed', () => {\n                        // console.log('QIX instance change event received, so get the new data set out of Qlik Sense');\n                        // getLevel1to3('selectedDataSet');\n                        location.reload();\n                    });\n                })\n        })\n}\n\nfunction getValuesOfLevel(level) {\n    console.log('getLocalValuesOfLevel: ', level);\n    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')\n        .then(qixschema => {\n\n            enigma.getService('qix', {\n                    schema: qixschema,\n                    appId: appId,\n                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs\n                        host: senseConfig.host,\n                        prefix: 'anon',\n                        port: senseConfig.port,\n                        unsecure: true\n                    }\n                })\n                .then(qix => {\n\n                    qix.app.createSessionObject({\n                            qInfo: { qType: 'cube' },\n                            qHyperCubeDef: {\n                                qDimensions: [{\n                                    qDef: { qFieldDefs: [level] }\n                                }]\n                            }\n                        })\n                        .then(model => {\n                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {\n                                // console.log('Result set from Qlik Sense:', data);\n                                var table = data[0].qMatrix;\n                                // console.log('Level ' + level + ' data:', table);\n                                Session.set('level3Data', table)\n                            })\n                        })\n\n                })\n\n        })\n\n\n}\n\nfunction getLevel1to3(sessionName) {\n    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')\n        .then(qixschema => {\n\n            enigma.getService('qix', {\n                    schema: qixschema,\n                    appId: appId,\n                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs\n                        host: senseConfig.host,\n                        prefix: 'anon',\n                        port: senseConfig.port,\n                        unsecure: true\n                    }\n                })\n                .then(qix => {\n\n                    qix.app.createSessionObject({\n                            qInfo: { qType: 'cube' },\n                            qHyperCubeDef: {\n                                qDimensions: [{\n                                    qDef: { qFieldDefs: ['Level 1'] }\n                                }, {\n                                    qDef: { qFieldDefs: ['Level 2'] }\n                                }, {\n                                    qDef: { qFieldDefs: ['Level 3'] }\n                                }]\n                            }\n                        })\n                        .then(model => {\n                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {\n                                // console.log('Result set from Qlik Sense:', data);\n                                var table = data[0].qMatrix;\n                                var tableWithChapters = insertSectionBreakers(table);\n                                // console.log('New data received, chapters added and now stored in in session var ', sessionName);\n                                Session.set(sessionName, tableWithChapters);\n                            })\n                        })\n\n                })\n\n        })\n}\n\nfunction insertSectionBreakers(table) {\n    var currentLevel1, previousLevel1 = '';\n    var newTableWithChapter = [];\n\n    table.forEach(function(currentRow) {\n        var currentLevel1 = textOfLevel(currentRow, 1);\n        if (previousLevel1 !== currentLevel1) {\n            newTableWithChapter.push(currentLevel1)\n            previousLevel1 = currentLevel1;\n        }\n        newTableWithChapter.push(currentRow);\n    });\n    // console.log('table with chapters is', newTableWithChapter);\n    return newTableWithChapter;\n}\n\n\n\n/**\n * Auto-indent overflowing lines\n * @author Rob W http://stackoverflow.com/u/938089\n * @param code_elem HTMLCodeElement (or any element containing *plain text*)\n */\nfunction autoindent(code_elem) {\n    // Grab the lines\n    var textContent = document.textContent === null ? 'textContent' : 'innerText';\n    var lines = code_elem[textContent].split(/\\r?\\n/),\n        fragment = document.createDocumentFragment(),\n        dummy, space_width, i, prefix_len, line_elem;\n\n    // Calculate the width of white space\n    // Assume that inline element inherit styles from parent (<code>)\n    dummy = document.createElement('span');\n    code_elem.appendChild(dummy);\n    // offsetWidth includes padding and border, explicitly override the style:\n    dummy.style.cssText = 'border:0;padding:0;';\n    dummy[textContent] = '          ';\n    space_width = dummy.offsetWidth / 10;\n    // Wipe contents\n    code_elem.innerHTML = '';\n\n    for (i = 0; i < lines.length; i++) {\n        // NOTE: All preceeding white space (including tabs is included)\n        prefix_len = /^\\s*/.exec(lines[i])[0].length;\n        line_elem = fragment.appendChild(document.createElement('div'));\n        line_elem.style.marginLeft = space_width * prefix_len + 'px';\n        line_elem[textContent] = lines[i].substring(prefix_len);\n    }\n    code_elem.appendChild(fragment);\n}\n",
 			"file": "imports/ui/impress/ppt_integration.js",
-			"file_size": 16397,
-			"file_write_time": 131332672862640400,
 			"settings":
 			{
 				"buffer_size": 15978,
@@ -541,19 +538,36 @@
 			}
 		},
 		{
-			"file": "imports/ui/pages/introductionSecurity.html",
+			"contents": "Package Control Messages\n========================\n\nGitGutter\n---------\n\n  1.5.0\n  -----\n  \n    ------------------------------------------------------------------------\n                !!!   WHAT HAPPEND TO GITGUTTER-EDGE   !!!\n  \n    We decided to replace GitGutter-Edge by pre-releases ...\n  \n     1. to avoid issues with functions which depend on the package name.\n     2. because branch based packages are deprecated by Package Control.\n     3. to have more control about when to publish new features for testing.\n  \n    For more details and information how to get access to pre-releases,\n    please have a look into the README on\n  \n           https://packagecontrol.io/packages/GitGutter\n  \n    ------------------------------------------------------------------------\n  \n    Enhancement:\n     - Avoid creation of temporary files, if view does not show a file from a valid git repository.\n     - Optimize number of git and diff calls.\n     - Determine, whether a view's file really exists on disk.\n     - Make \"compare to\" functionality work per git directory (Issue #327)\n     - Optimize some encoding/decoding stuff.\n     - Use jinja2 template engine to render status bar messages if library is available.\n     - Read file from git index only, if the compare target has changed.\n     - Event driven tracking of changed compare target replaces polling.\n     - Update the temporary buffer file only, if the view has changed.\n     - Run git diff only if one of the temporary files changed.\n     - Query git for compare commit hash only if not comparing against commit.\n     - Don't call git for diff popup at all.\n     - Refactoring the EventListener to best fit the current structure.\n     - Add some idle time between git calls to reduce lacks on ST2\n  \n    Feature:\n     - Add support for custom icon packages (Issue #256)\n     - Add 'Compare against file commit' and enable filtering by commit id (Issue #142, #281)\n     - Add Side-By-Side settings support and show in command pallet\n     - Add support to set marker size in minimap (Issue #263)\n     - Show file status (committed/modified/untracked/ignored) on status bar (Issue #226)\n  \n    Fix:\n     - Disable GitGutter, if git binary was not found (Issue #94, #352)\n     - Create only one instance of GitGutterSettings (Issue #334)\n     - error invoking git on Windows systems (Issue #244, #357)\n     - Fix issue with all untracked and ignored files being marked incorrectly (Issue #267, #279, #353).\n     - Show the correct branch or tag name in the 'compare against' status message.\n     - Avoid exception due to missing dependencies. (Issue #366)\n     - Fall back to simple status bar text if jinja2 is not available (Issue #366)\n     - Run all git commands from within working tree (Issue #239, #248, #290)\n     - Follow symlinks correctly to the source file in the working tree (Issue #373).\n     - diff popup doesn't show modifications on first line.\n     - Noticeable flicker/delay in icons when working with files (Issue #340)\n     - Problem with smudge/clean filters (Issue #74)\n     - Use cached git diff result for 'Goto next/prev git difference' command.\n     - Ensure not to start more than one evaluation at a time.\n     - Disable GitGutter for binary files and scratch views. (Issue #189)\n     - GitGutter ignores on_modified() event in ST2, because view visibility check fails. (Issue #349)\n     - Securing git execution. (Issue #348)\n     - Show markers on new, ignored and untracked files only, if show_markers_on_untracked_file is true.\n  \n    README:\n     - Refactoring\n  \n  \n  💛 Git Gutter? Want to support development?\n  \n  I've teamed up with Wes Bos to offer the following discounts:\n  \n  +------------------------------------------------+\n  |                                                |\n  |   Use the coupon code GITGUTTER for $10 off    |\n  |                                                |\n  +------------------------------------------------+\n  \n  🏅 ⭐ ES6 ⭐\n  \n  👉 ES6.io/friend/GITGUTTER\n  \n  🏅 ⭐ Sublime Text Book ⭐\n  \n  👉 SublimeTextBook.com/friend/GITGUTTER\n  \n  🏅 ⭐ React For Beginners ⭐\n  \n  👉 ReactForBeginners.com/friend/GITGUTTER\n  \n  \n  Join 15,000 other developers already learning with Wes Bos.\n  \n  These are fantastic resources - 100% money back guarantee! 🌟\n",
 			"settings":
 			{
-				"buffer_size": 7615,
+				"buffer_size": 4267,
+				"line_ending": "Windows",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "imports/ui/nav.html",
+			"settings":
+			{
+				"buffer_size": 2293,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "#impress {\n    /*font-family: 'PT Sans', sans-serif;*/\n    min-height: 740px;\n    background: rgb(215, 215, 215);\n    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));\n    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));\n    background: -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));\n    background: -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));\n    background: -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));\n    background: radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));\n}\n\n.SSBIIFrame {\n    height: calc(100vh - 150px);\n    width: 100%;\n    border: none;\n}\n\n.frame {\n    display: block;\n    position: absolute;\n    /*top: 45px;*/\n    overflow: hidden;\n    width: 100vw;\n    height: calc(100% - 60px);\n    /*//add height for other browsers too*/\n    margin: 0;\n    padding: 0;\n    border: 0 none;\n    box-sizing: border-box;\n}\n\n/*used to embed qlik sense in the slide*/\n.SenseEmbedFrame {\n    border: 0 none;\n    width: 100%;\n    height: 600px; /*calc(100vh - 50px);*/\n    margin: 0px;\n}\n\n.selector {\n    height: calc(100% - 5px);\n    width: inherit;\n    overflow: hidden;\n}\n\n.impress-enabled .z.step {\n    margin: 0;\n    opacity: 0.3;\n    -webkit-transition: opacity 1s;\n    -moz-transition: opacity 1s;\n    -ms-transition: opacity 1s;\n    -o-transition: opacity 1s;\n    transition: opacity 1s;\n}\n\n.impress-enabled .z.step.active {\n    opacity: 1\n}\n\n.z.step.ui.segment.integrationBreaker {\n    background-image: url(\"/images/Qlik breaker.png\");\n    width: 1100px;\n    height: 800px;\n    padding: 20px;\n    font-size: 50px;\n    text-align: center;\n    top: 20px;\n}\n\n\n/*.slide.one {\n    background-image: url(\"/images/Qlik_Leftcorner_Icon.png\");\n    height: 800px;\n    background-repeat: no-repeat;\n    background-position: left top;\n    border: 1px solid rgba(0, 0, 0, .3);\n    border-radius: 10px;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);\n    color: rgb(102, 102, 102);\n}\n*/\n\n.z.step.ui.segment.integration {\n    font-size: 1.3em;\n    min-height: 600px;\n    max-height: calc(100vh);\n    width: 1000px !important;\n    overflow: auto;\n    padding: 40px;\n    background-image: url(\"/images/Qlik_Leftcorner_Icon.png\");\n    background-repeat: no-repeat;\n    background-position: left top;\n}\n\n\n/*HEADER*/\n\n.integration .content {        \n    margin-left: 100px;\n}\n\n.integration.main.header {\n    margin-top: 10px 0 0 160px;    \n}\n\n\n/*SLIDE CONTENT CONTAINER*/\n\n.slideContent {\n    margin-top: 60px;\n}\n\n\n/*YOUTUBE*/\n\n.integration .videoPlaceholder {\n    width: 70%;\n}\n\n\n/*LEVEL 3 MARKDOWN GENERATED CODE*/\n\n.segment.integration .markdownItem {\n    margin-left: 60px\n}\n\n.step.integration p {\n    font-size: 1.3em;\n}\n\n.step.integration q {\n    margin: auto;\n    width: 100%;\n    text-align: center;\n    display: block;\n    font-size: 50px;\n    line-height: 72px;\n    margin-top: 110px;\n}\n\n.markdownItem {\n    margin-top: 20px;\n}\n\npre {\n    padding: 0 !important;\n}\n.integration pre {\n  background-color: #a6a28c;\n}\n\n/*.integration q strong {\n    white-space: nowrap;\n}*/\n\n.integration em,\n.slide q {\n    color: #5ea819;\n}\n\n.step.integration blockquote p {\n    color: #5EA819;\n    font-size: 2em;\n    text-align: center;\n}\n\n.integration .image {\n    margin-top: 40px;\n    width: 900px;\n}\n\n.pusher .ui.message {\n    /*position: absolute;*/\n    background-color: white;\n    /*font-size: 1.5em;*/\n    /*top: 400px;*/\n    /*left: 600px;*/\n    width: 50%;\n    /*margin: -15% 0 0 -25%;*/\n}\n\n.pusher .message .image {\n    margin: 20px;\n}\n\n.thankYou {\n    overflow: auto;\n    margin: 70px;\n    display: block;\n    width: 900px;\n    min-height: 600px;\n    max-height: 100vh;\n    /*height: 100%;*/\n    padding: 40px 60px;\n}\n\nsection {\n    position: relative;\n    z-index: 1;\n    /* needed for setting pseudo-element z-index */\n    backface-visibility: hidden;\n}\n\n\n/*INTRODUCTION PRESENTATION*/\n\n.step.introduction {\n    width: 1000px;\n    font-size: 2em;\n}\n\n.slide.introduction q {\n    margin: auto;\n    width: 100%;\n    text-align: center;\n    display: block;\n    font-size: 50px;\n    line-height: 72px;\n    /*margin-top: 110px;*/\n}\n\nq {\n    text-align: center;\n    quotes: none;\n}\n\nq:before,\nq:after {\n    content: '';\n    content: none;\n}\n\n\n/*\n    Now let's bring some text styles back ...\n    */\n\nb,\nstrong {\n    font-weight: bold\n}\n\ni,\nem {\n    font-style: italic\n}\n\n#APIUseCases {\n    font-size: 2em;\n}\n\n\n/*hide the fallback message if impress is supported*/\n\n.impress-supported .fallback-message {\n    display: none;\n}\n\n\n/*\n    Now let's style the presentation steps.\n\n    We start with basics to make sure it displays correctly in everywhere ...\n    */\n\n\n/*\n    ... and we enhance the styles for impress.js.\n\n    Basically we remove the margin and make inactive steps a little bit transparent.\n    */\n\n\n/*\n    These 'slide' step styles were heavily inspired by HTML5 Slides:\n    http://html5slides.googlecode.com/svn/trunk/styles.css\n\n    ;)\n\n    They cover everything what you see on first three steps of the demo.\n    */\n\n#title {\n    padding: 0;\n}\n\n#title .try {\n    font-size: 64px;\n    position: absolute;\n    top: -0.5em;\n    left: 1.5em;\n    -webkit-transform: translateZ(20px);\n    -moz-transform: translateZ(20px);\n    -ms-transform: translateZ(20px);\n    -o-transform: translateZ(20px);\n    transform: translateZ(20px);\n}\n\n.title h1 {\n    font-size: 120px;\n    -webkit-transform: translateZ(50px);\n    -moz-transform: translateZ(50px);\n    -ms-transform: translateZ(50px);\n    -o-transform: translateZ(50px);\n    transform: translateZ(50px);\n}\n\n#title .footnote {\n    font-size: 32px;\n}\n\n\n/*\n    Second step is nothing special, just a text with a link, so it doesn't need\n    any special styling.\n\n    Let's move to 'big thoughts' with centered text and custom font sizes.\n    */\n\n.big {\n    width: 600px;\n    text-align: center;\n    font-size: 180px;\n    line-height: 1;\n}\n\n#big b {\n    display: block;\n    font-size: 250px;\n    line-height: 250px;\n}\n\n#big .thoughts {\n    font-size: 90px;\n    line-height: 150px;\n}\n\n\n/*\n    'Tiny ideas' just need some tiny styling.\n    */\n\n#tiny {\n    width: 500px;\n    text-align: center;\n}\n\n.video p {\n    display: block;\n    font-size: 20px;\n    margin-top: 10px;\n}\n\n#demoStep3 {\n    width: 500px\n}\n\n#demoStep4 {\n    width: 500px;\n    font-size: 28px;\n    text-align: center;\n}\n\n\n/*\n    ... so we define display to `inline-block` to enable transforms and\n    transition duration to 0.5s ...\n    */\n\n#demoStep3 b {\n    display: inline-block;\n    -webkit-transition: 0.5s;\n    -moz-transition: 0.5s;\n    -ms-transition: 0.5s;\n    -o-transition: 0.5s;\n    transition: 0.5s;\n}\n\n#APIUseCases {\n    font-size: 22px;\n}\n\n#APIUseCases .title {\n    font-size: 40px;\n}\n\n#APIUseCases li {\n    font-size: 0.8em;\n    line-height: 30px;\n}\n\n#sourceCode .buttons {\n    margin-top: 30px;\n}\n\n\n/*\n    ... and we want 'positioning` word to move up a bit when the step gets\n    `present` class ...\n    */\n\n.present .positioning {\n    -webkit-transform: translateY(-10px);\n    -moz-transform: translateY(-10px);\n    -ms-transform: translateY(-10px);\n    -o-transform: translateY(-10px);\n    transform: translateY(-10px);\n}\n\n\n/*\n    ... 'rotating' to rotate a quarter of a second later ...\n    */\n\n.present .rotating {\n    -webkit-transform: rotate(-10deg);\n    -moz-transform: rotate(-10deg);\n    -ms-transform: rotate(-10deg);\n    -o-transform: rotate(-10deg);\n    transform: rotate(-10deg);\n    -webkit-transition-delay: 0.25s;\n    -moz-transition-delay: 0.25s;\n    -ms-transition-delay: 0.25s;\n    -o-transition-delay: 0.25s;\n    transition-delay: 0.25s;\n}\n\n\n/*\n    ... and 'scaling' to scale down after another quarter of a second.\n    */\n\n.present .scaling {\n    -webkit-transform: scale(0.7);\n    -moz-transform: scale(0.7);\n    -ms-transform: scale(0.7);\n    -o-transform: scale(0.7);\n    transform: scale(0.7);\n    -webkit-transition-delay: 0.5s;\n    -moz-transition-delay: 0.5s;\n    -ms-transition-delay: 0.5s;\n    -o-transition-delay: 0.5s;\n    transition-delay: 0.5s;\n}\n\n\n/*\n    The last step is an overview.\n    There is no content in it, so we make sure it's not visible because we want\n    to be able to click on other steps.\n\n    */\n\n#overview {\n    display: none\n}\n\n\n/*\n    We also make other steps visible and give them a pointer cursor using the\n    `impress-on-` class.\n    */\n\n.impress-on-overview .z.step {\n    opacity: 1;\n    cursor: pointer;\n}\n\n\n/*.future {\n  display: none;\n}\n*/\n\n\n/*\n    Now, when we have all the steps styled let's give users a hint how to navigate\n    around the presentation.\n\n    The best way to do this would be to use JavaScript, show a delayed hint for a\n    first time users, then hide it and store a status in cookie or localStorage...\n\n    But I wanted to have some CSS fun and avoid additional scripting...\n\n    Let me explain it first, so maybe the transition magic will be more readable\n    when you read the code.\n\n    First of all I wanted the hint to appear only when user is idle for a while.\n    You can't detect the 'idle' state in CSS, but I delayed a appearing of the\n    hint by 5s using transition-delay.\n\n    You also can't detect in CSS if the user is a first-time visitor, so I had to\n    make an assumption that I'll only show the hint on the first step. And when\n    the step is changed hide the hint, because I can assume that user already\n    knows how to navigate.\n\n    To summarize it - hint is shown when the user is on the first step for longer\n    than 5 seconds.\n\n    The other problem I had was caused by the fact that I wanted the hint to fade\n    in and out. It can be easily achieved by transitioning the opacity property.\n    But that also meant that the hint was always on the screen, even if totally\n    transparent. It covered part of the screen and you couldn't correctly clicked\n    through it.\n    Unfortunately you cannot transition between display `block` and `none` in pure\n    CSS, so I needed a way to not only fade out the hint but also move it out of\n    the screen.\n\n    I solved this problem by positioning the hint below the bottom of the screen\n    with CSS transform and moving it up to show it. But I also didn't want this move\n    to be visible. I wanted the hint only to fade in and out visually, so I delayed\n    the fade in transition, so it starts when the hint is already in its correct\n    position on the screen.\n\n    I know, it sounds complicated ... maybe it would be easier with the code?\n    */\n\n.hint {\n    /*\n        We hide the hint until presentation is started and from browsers not supporting\n        impress.js, as they will have a linear scrollable view ...\n        */\n    display: none;\n    /*\n        ... and give it some fixed position and nice styles.\n        */\n    position: fixed;\n    left: 0;\n    right: 0;\n    bottom: 100px;\n    background: rgba(0, 0, 0, 0.5);\n    color: #EEE;\n    text-align: center;\n    font-size: 50px;\n    padding: 20px;\n    z-index: 100;\n    /*\n        By default we don't want the hint to be visible, so we make it transparent ...\n        */\n    opacity: 0;\n    /*\n        ... and position it below the bottom of the screen (relative to it's fixed position)\n        */\n    -webkit-transform: translateY(400px);\n    -moz-transform: translateY(400px);\n    -ms-transform: translateY(400px);\n    -o-transform: translateY(400px);\n    transform: translateY(400px);\n    /*\n        Now let's imagine that the hint is visible and we want to fade it out and move out\n        of the screen.\n\n        So we define the transition on the opacity property with 1s duration and another\n        transition on transform property delayed by 1s so it will happen after the fade out\n        on opacity finished.\n\n        This way user will not see the hint moving down.\n        */\n    -webkit-transition: opacity 1s, -webkit-transform 0.5s 1s;\n    -moz-transition: opacity 1s, -moz-transform 0.5s 1s;\n    -ms-transition: opacity 1s, -ms-transform 0.5s 1s;\n    -o-transition: opacity 1s, -o-transform 0.5s 1s;\n    transition: opacity 1s, transform 0.5s 1s;\n}\n\n\n/*\n    Now we 'enable' the hint when presentation is initialized ...\n    */\n\n.impress-enabled .hint {\n    display: block\n}\n\n\n/*\n    ... and we will show it when the first step (with id 'bored') is active.\n    */\n\n\n/*.impress-on-bored .hint {*/\n\n.impress-on-step-1 .hint {\n    /*\n        We remove the transparency and position the hint in its default fixed\n        position.\n        */\n    opacity: 1;\n    -webkit-transform: translateY(0px);\n    -moz-transform: translateY(0px);\n    -ms-transform: translateY(0px);\n    -o-transform: translateY(0px);\n    transform: translateY(0px);\n    /*\n        Now for fade in transition we have the oposite situation from the one\n        above.\n\n        First after 4.5s delay we animate the transform property to move the hint\n        into its correct position and after that we fade it in with opacity\n        transition.\n        */\n    -webkit-transition: opacity 1s 5s, -webkit-transform 0.5s 4.5s;\n    -moz-transition: opacity 1s 5s, -moz-transform 0.5s 4.5s;\n    -ms-transition: opacity 1s 5s, -ms-transform 0.5s 4.5s;\n    -o-transition: opacity 1s 5s, -o-transform 0.5s 4.5s;\n    transition: opacity 1s 5s, transform 0.5s 4.5s;\n}\n\n\n/*PROGRESSBAR*/\n\n.progressbar {\n    position: absolute;\n    right: 118px;\n    bottom: 15px;\n    left: 118px;\n    border-radius: 7px;\n    border: 2px solid rgba(100, 100, 100, 0.2);\n}\n\n.progressbar DIV {\n    width: 0;\n    height: 10px;\n    border-radius: 5px;\n    background: rgba(75, 75, 75, 0.4);\n    -webkit-transition: width 1s linear;\n    -moz-transition: width 1s linear;\n    -ms-transition: width 1s linear;\n    -o-transition: width 1s linear;\n    transition: width 1s linear;\n}\n\n.progress-off {\n    z-index: 2999;\n}\n\n.progress {\n    position: absolute;\n    right: 50px;\n    bottom: 15px;\n    text-align: right;\n}\n\n\n/*\n    And as the last thing there is a workaround for quite strange bug.\n    It happens a lot in Chrome. I don't remember if I've seen it in Firefox.\n\n    Sometimes the element positioned in 3D (especially when it's moved back\n    along Z axis) is not clickable, because it falls 'behind' the <body>\n    element.\n\n    To prevent this, I decided to make <body> non clickable by setting\n    pointer-events property to `none` value.\n    Value if this property is inherited, so to make everything else clickable\n    I bring it back on the #impress element.\n\n    If you want to know more about `pointer-events` here are some docs:\n    https://developer.mozilla.org/en/CSS/pointer-events\n\n    There is one very important thing to notice about this workaround - it makes\n    everything 'unclickable' except what's in #impress element.\n\n    So use it wisely ... or don't use at all.\n    */\n\n\n/*.impress-enabled          { pointer-events: none }\n.impress-enabled #impress { pointer-events: auto }*/\n\n\n/*\n    There is one funny thing I just realized.\n\n    Thanks to this workaround above everything except #impress element is invisible\n    for click events. That means that the hint element is also not clickable.\n    So basically all of this transforms and delayed transitions trickery was probably\n    not needed at all...\n\n    But it was fun to learn about it, wasn't it?\n    */\n\n\n/*\n    That's all I have for you in this file.\n    Thanks for reading. I hope you enjoyed it at least as much as I enjoyed writing it\n    for you.\n    */\n",
+			"file": "imports/ui/pages/architecture.html",
+			"settings":
+			{
+				"buffer_size": 8832,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "imports/ui/impress/impress.css",
-			"file_size": 16073,
-			"file_write_time": 131332699915882872,
 			"settings":
 			{
 				"buffer_size": 15384,
@@ -633,22 +647,21 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/stylesheets",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases"
 	],
 	"file_history":
 	[
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
@@ -774,7 +787,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 64.0
 	},
 	"find_in_files":
 	{
@@ -1155,7 +1168,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1186,7 +1199,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1217,32 +1230,31 @@
 						"translation.y": 1671.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "imports/ui/pages/introductionSecurity.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7615,
+						"buffer_size": 4267,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1099,
-								1099
+								4267,
+								4267
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"auto_indent": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1253,6 +1265,69 @@
 				},
 				{
 					"buffer": 3,
+					"file": "imports/ui/nav.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2293,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1767,
+								1767
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "imports/ui/pages/architecture.html",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 8832,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4057,
+								5099
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1033.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "imports/ui/impress/impress.css",
 					"semi_transient": false,
 					"settings":
@@ -1278,7 +1353,7 @@
 						"translation.y": 205.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1345,13 +1420,13 @@
 	},
 	"select_project":
 	{
-		"height": 885.0,
+		"height": 1000.0,
 		"last_filter": "",
 		"selected_items":
 		[
 			[
 				"",
-				"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\qrs.sublime-project"
+				"C:\\Users\\mbj\\Documents\\GitHub\\senseWebIntegration\\Sense3.sublime-project"
 			]
 		],
 		"width": 760.0
@@ -1373,7 +1448,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 153.0,
+	"side_bar_width": 519.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
