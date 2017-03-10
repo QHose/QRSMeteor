@@ -5,14 +5,14 @@
 "Workshop Introduction","Introduction","What do you expect from this session?",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Workshop Introduction","1 minute SaaS demo intro video","https://youtu.be/eiI-y2OEbv0?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "Workshop Introduction","Video introduction - SaaSDemo project ","https://youtu.be/K-zfD_vAPso?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales, OEM bootcamp",
-"Workshop Introduction","What's so special about this presentation?","> We have used the Qlik APIs to get the data out of the app",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
-"Workshop Introduction","What's so special about this presentation?"," <img class=""ui large centered image"" src=""images/Engine API slide generator easy flow.png"">",,"","","","","         0","0","Introduction - 30 minutes, Sales, OEM bootcamp",
-"Workshop Introduction","Create slides (or whatever your like) out of data using Qlik Sense","Excel input engine api generator.png",,"","","","","         0","0","Technical - 1 hour, Sales",
-"Workshop Introduction","What's so special about this presentation? (2)","> This is a *on the fly* presentation using the *associative* engine",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
-"Workshop Introduction","What's so special about this presentation? (3)","> Just to inspire what you can do with our *engine*",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
-"Workshop Introduction","Its all about Governance and control","> Your platform controls Qlik Sense using APIs",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
-"Workshop Introduction","Mindmap layout ","mindmap engine api generator.png",,"","","","","         0","0","Technical - 1 hour",
-"Workshop Introduction","Create presentation using the Engine API","Engine API - load raw data mindmap example.png",,"","","","","         0","0","PreSales",
+"Workshop Introduction","What's so special about this presentation?","> We have used the Qlik APIs to get the data out of the app",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp, What is this slide generator?",
+"Workshop Introduction","What's so special about this presentation?"," <img class=""ui large centered image"" src=""images/Engine API slide generator easy flow.png"">",,"","","","","         0","0","Introduction - 30 minutes, Sales, OEM bootcamp, What is this slide generator?",
+"Workshop Introduction","Lets put all integration topics in a mindmap","mindmap input for engine api slide generator.png",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
+"Workshop Introduction","Insert the raw data into an app","Excel input engine api generator.png",,"","","","","         0","0","Technical - 1 hour, Sales, What is this slide generator?",
+"Workshop Introduction","Engine API Slide generator flow: Extract the data from the app via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","Technical - 1 hour, Sales, What is this slide generator?",
+"Workshop Introduction","What's so special about this presentation? (2)","> This is a *on the fly* presentation using the *associative* engine",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp, What is this slide generator?",
+"Workshop Introduction","What's so special about this presentation? (3)","> Just to inspire what you can do with our *engine*",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp, What is this slide generator?",
+"Workshop Introduction","Its all about Governance and control","> Your platform controls Qlik Sense using APIs",,"","","","","         0","0","Introduction - 30 minutes, OEM bootcamp",
 "Workshop Introduction","Goal of the session","Train the trainer",,"","","","","         0","0","Support",
 "Workshop Introduction","Goal of the session","Validate if we have all content to teach",,"","","","","         0","0","Support",
 "Workshop Introduction","Goal of the session","Introduction to SaaS technology",,"","","","","         0","0","Support",
@@ -24,7 +24,8 @@
 * SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Sales, OEM bootcamp, Technical - 1 hour",
 "Workshop Introduction","Agenda","What is governed self service with Qlik Sense?",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "Workshop Introduction","Agenda","Introduction to SaaS",,"","","","","         0","0","Sales, OEM bootcamp",
-"Workshop Introduction","Agenda","Explain common integration use cases using SaaSdemo.qlik.com",,"","","","","         0","0","Sales, OEM bootcamp",
+"Workshop Introduction","Agenda","Explain common integration use cases using *SaaSdemo.qlik.com*",,"","","","","         0","0","Sales, OEM bootcamp, What is this slide generator?",
+"Workshop Introduction","Agenda","Explain *Engine API slide generator*",,,,,,,,,
 "Workshop Introduction","Agenda","Practise to do and give the demo yourself
 * Web integration options
 * Governed Self Service
@@ -58,10 +59,10 @@
 "Introduction to SaaS","Common OEM use case for Qlik ","An OEM customizes and integrates the original Qlik product.",,"","","","","         0","0","Sales, OEM bootcamp",
 "Introduction to SaaS","Common OEM use case for Qlik ","See an integrated example from [our partner Axis group](http://sense.axisgroup.com/extensions/MedAirEbolaCrisis/MedAirEbolaCrisis.html)",,"","","","","         0","0","Sales, OEM bootcamp",
 "Introduction to SaaS","Common OEM use case for Qlik ","axisGroup.png",,"","","","","         0","0","Sales, OEM bootcamp",
-"SaaSDemo.qlik.com","History","APIs are our secret sauce so the SaaSDemo.Qlik.com website is specifically designed to illustrate the unique selling points of our Qlik Sense APIs.",,"","","","","         0","0","Technical - 1 hour",
-"SaaSDemo.qlik.com","History"," Our goal is to illustrate *the power of Qlik Sense APIs* in language that can be easily understood by non-technical business users or decision-makers via our *step-by-step walk-through*.",,"","","","","         0","0","Technical - 1 hour",
-"SaaSDemo.qlik.com","History","useCasesOverview.png",,"","","","","         0","0","Technical - 1 hour",
-"SaaSDemo.qlik.com","What is SaaSDemo.qlik.com?","> This demo website simulates your SaaS platform",,"","","","","         0","0","Introduction - 30 minutes",
+"SaaSDemo.qlik.com","History","APIs are our secret sauce so the SaaSDemo.Qlik.com website is specifically designed to illustrate the unique selling points of our Qlik Sense APIs.",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
+"SaaSDemo.qlik.com","History"," Our goal is to illustrate *the power of Qlik Sense APIs* in language that can be easily understood by non-technical business users or decision-makers via our *step-by-step walk-through*.",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
+"SaaSDemo.qlik.com","History","useCasesOverview.png",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
+"SaaSDemo.qlik.com","What is SaaSDemo.qlik.com?","> This demo website simulates your SaaS platform",,"","","","","         0","0","Introduction - 30 minutes, What is this slide generator?",
 "SaaSDemo.qlik.com","Goals further explained","Take the audience on a journey highlighting key aspects of Qlik Sense, the APIs and the value of Qlik.  This journey culminates in an easy to use demonstration website which includes:",,"","","","","         0","0","PreSales, OEM bootcamp",
 "SaaSDemo.qlik.com","Goals further explained","- Multi-tenant API solution for both Qlik Sense Hub and QMC. (*Loop and reduce*)",,"","","","","         0","0","PreSales, OEM bootcamp",
 "SaaSDemo.qlik.com","Goals further explained","- SaaS with Qlik Sense demonstration",,"","","","","         0","0","PreSales, OEM bootcamp",
@@ -69,7 +70,7 @@
 "SaaSDemo.qlik.com","Goals further explained","- Facilitate different levels of self service",,"","","","","         0","0","PreSales, OEM bootcamp",
 "SaaSDemo.qlik.com","Goals further explained","- Flexible security rules",,"","","","","         0","0","PreSales, OEM bootcamp",
 "SaaSDemo.qlik.com","Goals further explained","- Qlik Sense embedding",,"","","","","         0","0","PreSales, OEM bootcamp",
-"SaaSDemo.qlik.com","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Sales, Introduction - 30 minutes",
+"SaaSDemo.qlik.com","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Sales, Introduction - 30 minutes, What is this slide generator?",
 "SaaSDemo.qlik.com","Typical goals of a SaaS platform provider","Your goal is to create within a *multi-tenant* SaaS platform environment  *embedded analytics* within your core application",,"","","","","         0","0","Sales, Introduction - 30 minutes",
 "SaaSDemo.qlik.com","Typical goals of a SaaS platform provider","Provide *self service* apps capabilities",,"","","","","         0","0","PreSales, Introduction - 30 minutes, Sales",
 "SaaSDemo.qlik.com","Typical goals of a SaaS platform provider","Easy maintenance via API based *automation*",,"","","","","         0","0","PreSales, Introduction - 30 minutes, Sales",
@@ -83,8 +84,8 @@
 "SaaSDemo.qlik.com","In the demo you will see a screen divided into two parts:","The left side shows ""the broker"" in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights, and the relevant template apps ",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
 "SaaSDemo.qlik.com","In the demo you will see a screen divided into two parts:","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense.",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
 "SaaSDemo.qlik.com","In the demo you will see a screen divided into two parts:","SaaS logo.png",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
-"SaaSDemo.qlik.com","Demonstration: Create apps for each of your customers and their users.","SaaS logo.png",,"","","","","         0","0","Sales, Introduction - 30 minutes",
-"SaaSDemo.qlik.com","Demonstration: Create apps for each of your customers and their users.","[SaaSDemo.Qlik.com](http://saasdemo.qlik.com)",,"","","","","         0","0","Sales, Introduction - 30 minutes",
+"SaaSDemo.qlik.com","Demonstration: Create apps for each of your customers and their users.","SaaS logo.png",,"","","","","         0","0","Sales, Introduction - 30 minutes, What is this slide generator?",
+"SaaSDemo.qlik.com","Demonstration: Create apps for each of your customers and their users.","[SaaSDemo.Qlik.com](http://saasdemo.qlik.com)",,"","","","","         0","0","Sales, Introduction - 30 minutes, What is this slide generator?",
 "SaaSDemo.qlik.com","Now take 10 minutes to do it yourself. SaaS provisioning demo","useCasesOverview.png",,"","","","","         0","0","Sales",
 "SaaSDemo.qlik.com","Now take 10 minutes to do it yourself. SaaS provisioning demo","[SaaSDemo.Qlik.com](http://saasdemo.qlik.com)",,"","","","","         0","0","Sales",
 "SaaSDemo.qlik.com","SaaS demo architecture introduction","saas demo architecture introduction of components.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
@@ -695,29 +696,164 @@ or
 "SaaSDemo.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
 "SaaSDemo.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","SSO is enforced using a ticket with userID and his groups",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
 "SaaSDemo.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Deep dive, PreSales",
 "SaaSDemo.qlik.com key API calls","Introduction to the automated activities"," <p>In the demo you will see the broker in action. But what are the activities that the SaaS broker automates in the demo? What are the steps or stages?</p>
                 <ul>
                     <li>First it will create a stream for each customer. </li>
                     <li>Secondly it will copy the template app. </li>
                     <li>Next it replaces the script with a customer-specific one, or in most cases you just have to replace the database connection.</li>
-                    <li>Using the new script, the app is reloaded. You can also use this mechanism to query big data sources like MongoDB. This is where we basically make a compressed index of the data and create the associative model.</li>
+                    <li>Using the new script, the app is reloaded</li>
                     <li>In the final stage we publish the app in the stream with the name of the customer.</li>
                 </ul>
             </div>
             <div class=""column"">
                 <img class=""ui medium centered image"" data-action=""zoom"" src=""images/saas demo concept simple.png"">
-            </div>",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
-"SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","The ""loop"" to execute to ensure each for each *customer* gets each template *app*",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
-"SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","generationLoop.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
+            </div>",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour, What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","The ""loop"" to execute to ensure each *customer* gets each template *app*",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour, What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","generationLoop.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day, Technical - 1 hour, What is this slide generator?",
 "SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the 4 automated use cases","- Create a new stream with the customer’s name
 - Copy the template
 - Replace the script and reload
-- publish the app",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
-"SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the 4 automated use cases","generate app for each template.png",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
-"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","Try to generate some apps, or try to swith a user in demo step 4",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
-"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","See the API calls in the [API log page](http://saasdemo.qlik.com/ApiLogsTable)",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
-"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://saasdemo.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Introduction - 30 minutes, OEM bootcamp, Technical - 1 day",
-"SaaSDemo.qlik.com key API calls","More information about the source code of the demo platform?","Go to [the API tab in the documentation](http://saasdemo.qlik.com/documentation)",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
+- publish the app",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour, What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the 4 automated use cases","generate app for each template.png",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour, What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","Try to generate some apps, or try to swith a user in demo step 4",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour, What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","See the API calls in the [API log page](http://saasdemo.qlik.com/ApiLogsTable)",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour, What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://saasdemo.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Introduction - 30 minutes, OEM bootcamp, Technical - 1 day, Technical - 1 hour, What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","More information about the source code of the demo platform?","Go to [the API tab in the documentation](http://saasdemo.qlik.com/documentation)",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour, What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Slide generator","> Lets look at how we get from raw data to slides",,"","","","","         0","0","What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","RECAP Engine API Slide generator flow: Extract the data from the app via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","First load level 1, 2, 3 data from the CSV. Each level also contains the resource for which it is relevant",,"","","","","         0","0","What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
+LOAD 
+ RowNo() as Row,
+    RecNo() as CSVRowNo, //use this as sort otherwise QRS api gets wrong sheets (if sheets occur twice)
+    [Level 1],
+ [Level 2],
+ [Level 3],
+ [Level 4],
+    trim(SubField(Resources, ',')) as [Partial Workshop]
+ FROM [lib://Import demo (qlikdemosaas_qlik)/SaaS presentation input.csv]
+(txt, utf8, embedded labels, delimiter is ',', msq);
+```",,"","","","","         0","0","What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","Create the workshops based on a table that defines the *parent child relationships*",,"","","","","         0","0","What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
+[WorkshopParentChild]:
+load [Partial Workshop] as ChildId, *;
+load * INLINE [
+Parent    , Partial Workshop     
+Technical - 1 hour , Introduction - 30 minutes
+Technical - 2 hours , Technical - 1 hour
+Technical - 1 day , Technical - 2 hours 
+PreSales   , Technical - 1 day
+PreSales   , Sales
+Deep dive   , PreSales 
+Support    , Deep dive
+Support    , Exercises
+                 , Support
+                 , Sales
+                 , OEM bootcamp
+];
+```",,"","","","","         0","0","What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","Create a list of children for each parent, so if you select a node you will get all its children ""partial workshops""",,"","","","","         0","0","What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
+[WorkshopHierarchy]:
+Hierarchy (ChildId,Parent, [Partial Workshop]) load * Resident [WorkshopParentChild];
+
+[WorkShop hierarchy belongs to]:
+HierarchyBelongsTo (ChildId,Parent,[Partial Workshop], 'Part of id', 'Workshop') 
+load * Resident [WorkshopParentChild];
+
+drop fields ChildId,Parent,'Part of id';
+drop table WorkshopParentChild;
+```",,"","","","","         0","0","What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 2: Extract the data from the Engine API using Enigma.js","```
+function getLevel1And2() {
+
+    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
+        .then(qixschema => {
+
+            enigma.getService('qix', {
+                    schema: qixschema,
+                    appId: appId,
+                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+                        host: senseConfig.host,
+                        prefix: 'anon',
+                        port: senseConfig.port,
+                        unsecure: true
+                    }
+                })
+                .then(qix => {
+                    qix.app.getObject(IntegrationPresenatationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same
+                        .then(model => {
+                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {
+                                // console.log('Result set from Qlik Sense:', data);
+                                var table = data[0].qMatrix;
+                                var tableWithChapters = insertSectionBreakers(table);
+                                console.log('Slides loaded, and we added extra chapter breakers. Object now stored in in session var mainTopics, so slides can be created by impress.js', tableWithChapters);
+                                Session.set('mainTopics', tableWithChapters)
+                                Meteor.setTimeout(function() {
+
+                                    impress().init();
+                                    impress().goto(0);
+                                    $('.slideContent').css({ ""visibility"": ""hidden"" }); //prevent an issue when impress has qlik sense embedded via iframes...
+                                    Session.set('slideLoading', false);
+                                }, 100);
+                            })
+                        })
+                })
+        })
+}
+```",,,,,,,,,
+"SaaSDemo.qlik.com key API calls","Step 3: Create the slides via impress.js","Get the [array of slides via Enigma.js](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.js#L221)",,"","","","","         0","0","What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 3: Create the slides via impress.js","[Create DIV](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.html#L41)  with class *slide* for each slide (a level 1, 2 combination)",,"","","","","         0","0","What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 3: Create the slides via impress.js","```
+ <div id=""impress"">
+        {{#each mainTopics }}
+            <!-- for each header: a level 1 and 2 combination -->
+            {{#if chapterSlide this}}
+                <!--         Create a chapter breaker if the level 1 has changed in the current row-->
+                <div class=""z step ui segment integrationBreaker"" data-x=""{{XValue @index}}"" data-z=""2000"">
+                    <h1 class=""ui header"" style=""font-size: 50px;"">
+                            Next: {{this}} <!-- The current level 1 and 2 headers -->
+                    </h1>
+                </div>
+            {{else}}
+                <!-- CREATE A SLIDE, the index is the current slide in the loop, all slide info is contained in this -->
+                {{> integrationSlide slide=this slideNr=@index}}
+            {{/if}}
+        {{/each}}
+        <!--         If all the slides have been generated insert a last thank you slide
+    -->
+        <div class=""z step thankYou"" data-x=""{{thankYouXvalue}}"" data-z=""3000"">
+            <img class=""ui bottom aligned fluid image"" src=""images/presentation thank you.png"">
+        </div>
+    </div>
+</div>
+``` ",,"","","","","         0","0","What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 4: create an event listener so the slides will update when the selection or app state changes","```
+var appChangeListener = function appChangeListener() {
+    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
+        .then(qixschema => {
+            enigma.getService('qix', {
+                    schema: qixschema,
+                    appId: appId,
+                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+                        host: senseConfig.host,
+                        prefix: 'anon',
+                        port: senseConfig.port,
+                        unsecure: true
+                    }
+                })
+                .then(qix => {
+                    qix.app.on('changed', () => {
+                        // console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
+                        // getLevel1to3('selectedDataSet');
+                        location.reload();
+                    });
+                })
+        })
+}
+```",,"","","","","         0","0","What is this slide generator?",
 "API integration","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
 "API integration","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
 "API integration","Lets look at some Qlik Sense integration scenarios","Authorization: And will only see its own data?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
@@ -1071,6 +1207,9 @@ call.response = HTTP.call('POST', call.request, {
 "QPS API","Ticketing - create redirect URL for the user","```
 redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 ```",,"","","","","         0","0","Deep dive",
+"QPS API","Video - ticketing with .NET","https://youtu.be/xlCfly7MyOY",,"","","","","         0","0","Deep dive",
+"QPS API","Video - ticketing with Java","https://youtu.be/_DhG6TfZFac",,"","","","","         0","0","Deep dive",
+"QPS API","Video - ticketing with Node","Ticketing with Qlik Sense and Node.js",,"","","","","         0","0","Deep dive",
 "QPS API","Header","<q>Header authentication</q>",,"","","","","         0","0","Deep dive",
 "QPS API","When to use header authentication?","Normally used within large environments",,,,,,,,,
 "QPS API","When to use header authentication?","In which the already have a system that handles the authentication of the user",,,,,,,,,
@@ -1090,6 +1229,18 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 "QPS API","Proxy architecture scenarios","<q>Proxy architecture scenarios</q>",,"","","","","         0","0","Deep dive",
 "QPS API","QPS architecture diagram","QPS - architecture.png",,"","","","","         0","0","Deep dive",
 "QPS API","Architecture scenarios","qps - reverse proxy architecture.png",,"","","","","         0","0","Deep dive",
+"QPS API","Example code to logout a user via QPS API call","API - logout user.png",,"","","","","         0","0","Deep dive",
+"QPS API","Example code to logout a user via QPS API call","``` 
+call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
+```",,"","","","","         0","0","Deep dive",
+"QPS API","Example code to logout a user via QPS API call","``` 
+call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
+``` ",,"","","","","         0","0","Deep dive",
+"QPS API","Proxy - Cross origin issues","Proxy - settings.png",,"","","","","         0","0","Deep dive",
+"QPS API","Proxy - Cross origin issues","CORS error.png",,"","","","","         0","0","Deep dive",
+"QPS API","Proxy - Cross origin issues","error - XMLhttprequest cannot load - access control allow origin header not present.png",,"","","","","         0","0","Deep dive",
+"QPS API","Exercise 1: Ticketing and connection fails","Go to snapshot 3 and solve the issue","proxy service is not running, we blocked port 4243 on the sense server via the firewall","","","","","         0","0","Exercises",
+"QPS API","Exercise 1: Ticketing and connection fails","Go to your server/selfService to see the issue",,"","","","","         0","0","Exercises",
 "QPS API","Server side - SSO with QlikAuth","Use Rikard Braathens [QlikAuth module](https://github.com/braathen/qlik-auth)",,"","","","","         0","0","Deep dive",
 "QPS API","Server side - SSO with QlikAuth","Example Node.js code",,"","","","","         0","0","Deep dive",
 "QPS API","Server side - SSO with QlikAuth","```
@@ -1103,19 +1254,9 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
       //Make call for ticket request
       qlikauth.requestTicket(req, res, profile);
 ```",,"","","","","         0","0","Deep dive",
-"QPS API","Example code to logout a user via QPS API call","API - logout user.png",,"","","","","         0","0","Deep dive",
-"QPS API","Example code to logout a user via QPS API call","``` 
-call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
-```",,"","","","","         0","0","Deep dive",
-"QPS API","Example code to logout a user via QPS API call","``` 
-call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
-``` ",,"","","","","         0","0","Deep dive",
-"QPS API","Proxy - Cross origin issues","Proxy - settings.png",,"","","","","         0","0","Deep dive",
-"QPS API","Proxy - Cross origin issues","CORS error.png",,"","","","","         0","0","Deep dive",
-"QPS API","Proxy - Cross origin issues","error - XMLhttprequest cannot load - access control allow origin header not present.png",,"","","","","         0","0","Deep dive",
-"QPS API","Exercise 1: Ticketing and connection fails","Go to snapshot 3 and solve the issue","proxy service is not running, we blocked port 4243 on the sense server via the firewall","","","","","         0","0","Exercises",
-"QPS API","Exercise 1: Ticketing and connection fails","Go to your server/selfService to see the issue",,"","","","","         0","0","Exercises",
-"QPS API","Example source code of ticketing integration with Node.Js and Qlikauth","See [this page](http://webofwork.com/authenticate-qlik-sense-in-an-nodejs-express-app-on-an-external-web-host/)",,"","","","","         0","0","Deep dive",
+"QPS API","Server side - SSO with QlikAuth","See [this page](http://webofwork.com/authenticate-qlik-sense-in-an-nodejs-express-app-on-an-external-web-host/)",,"","","","","         0","0","Deep dive",
+"QPS API","Session API using .NET","https://youtu.be/oCUjKCFVAzU",,"","","","","         0","0","Deep dive",
+"QPS API","Using the Qlik Proxy Service Ticketing API with IIS","https://youtu.be/MpC2h5y2NRE",,"","","","","         0","0","Deep dive",
 "Engine API","What can you do with the Engine API?","
 Basically all the things you can do yourself when you use an app
 - Get list of streams and apps
