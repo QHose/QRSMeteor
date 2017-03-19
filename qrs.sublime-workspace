@@ -538,17 +538,6 @@
 			}
 		},
 		{
-			"contents": "Package Control Messages\n========================\n\nGitGutter\n---------\n\n  1.5.0\n  -----\n  \n    ------------------------------------------------------------------------\n                !!!   WHAT HAPPEND TO GITGUTTER-EDGE   !!!\n  \n    We decided to replace GitGutter-Edge by pre-releases ...\n  \n     1. to avoid issues with functions which depend on the package name.\n     2. because branch based packages are deprecated by Package Control.\n     3. to have more control about when to publish new features for testing.\n  \n    For more details and information how to get access to pre-releases,\n    please have a look into the README on\n  \n           https://packagecontrol.io/packages/GitGutter\n  \n    ------------------------------------------------------------------------\n  \n    Enhancement:\n     - Avoid creation of temporary files, if view does not show a file from a valid git repository.\n     - Optimize number of git and diff calls.\n     - Determine, whether a view's file really exists on disk.\n     - Make \"compare to\" functionality work per git directory (Issue #327)\n     - Optimize some encoding/decoding stuff.\n     - Use jinja2 template engine to render status bar messages if library is available.\n     - Read file from git index only, if the compare target has changed.\n     - Event driven tracking of changed compare target replaces polling.\n     - Update the temporary buffer file only, if the view has changed.\n     - Run git diff only if one of the temporary files changed.\n     - Query git for compare commit hash only if not comparing against commit.\n     - Don't call git for diff popup at all.\n     - Refactoring the EventListener to best fit the current structure.\n     - Add some idle time between git calls to reduce lacks on ST2\n  \n    Feature:\n     - Add support for custom icon packages (Issue #256)\n     - Add 'Compare against file commit' and enable filtering by commit id (Issue #142, #281)\n     - Add Side-By-Side settings support and show in command pallet\n     - Add support to set marker size in minimap (Issue #263)\n     - Show file status (committed/modified/untracked/ignored) on status bar (Issue #226)\n  \n    Fix:\n     - Disable GitGutter, if git binary was not found (Issue #94, #352)\n     - Create only one instance of GitGutterSettings (Issue #334)\n     - error invoking git on Windows systems (Issue #244, #357)\n     - Fix issue with all untracked and ignored files being marked incorrectly (Issue #267, #279, #353).\n     - Show the correct branch or tag name in the 'compare against' status message.\n     - Avoid exception due to missing dependencies. (Issue #366)\n     - Fall back to simple status bar text if jinja2 is not available (Issue #366)\n     - Run all git commands from within working tree (Issue #239, #248, #290)\n     - Follow symlinks correctly to the source file in the working tree (Issue #373).\n     - diff popup doesn't show modifications on first line.\n     - Noticeable flicker/delay in icons when working with files (Issue #340)\n     - Problem with smudge/clean filters (Issue #74)\n     - Use cached git diff result for 'Goto next/prev git difference' command.\n     - Ensure not to start more than one evaluation at a time.\n     - Disable GitGutter for binary files and scratch views. (Issue #189)\n     - GitGutter ignores on_modified() event in ST2, because view visibility check fails. (Issue #349)\n     - Securing git execution. (Issue #348)\n     - Show markers on new, ignored and untracked files only, if show_markers_on_untracked_file is true.\n  \n    README:\n     - Refactoring\n  \n  \n  💛 Git Gutter? Want to support development?\n  \n  I've teamed up with Wes Bos to offer the following discounts:\n  \n  +------------------------------------------------+\n  |                                                |\n  |   Use the coupon code GITGUTTER for $10 off    |\n  |                                                |\n  +------------------------------------------------+\n  \n  🏅 ⭐ ES6 ⭐\n  \n  👉 ES6.io/friend/GITGUTTER\n  \n  🏅 ⭐ Sublime Text Book ⭐\n  \n  👉 SublimeTextBook.com/friend/GITGUTTER\n  \n  🏅 ⭐ React For Beginners ⭐\n  \n  👉 ReactForBeginners.com/friend/GITGUTTER\n  \n  \n  Join 15,000 other developers already learning with Wes Bos.\n  \n  These are fantastic resources - 100% money back guarantee! 🌟\n",
-			"settings":
-			{
-				"buffer_size": 4267,
-				"line_ending": "Windows",
-				"name": "Package Control Messages",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
 			"file": "imports/ui/nav.html",
 			"settings":
 			{
@@ -570,16 +559,19 @@
 			"file": "imports/ui/UIHelpers.js",
 			"settings":
 			{
-				"buffer_size": 12755,
+				"buffer_size": 12721,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "<template name=\"documentation\">\n    <div class=\"ui top attached tabular menu\">\n        <a class=\"header item active\" data-tab=\"first\">Architecture</a>        \n        <a class=\"header item\" data-tab=\"second\">Security</a>\n        <a class=\"header item\" data-tab=\"third\">Web</a>\n        <a class=\"header item\" data-tab=\"fourth\">APIs</a>        \n        <a class=\"header item\" data-tab=\"six\">Generic</a>\n        <a class=\"header item\" data-tab=\"seven\">Videos</a>\n    </div>    \n    <div class=\"ui bottom attached tab segment active\" data-tab=\"first\">\n        {{> architecture}}\n    </div>\n    <div class=\"ui bottom attached tab segment\" data-tab=\"second\">\n        {{> introductionSecurity}}\n    </div>\n    <div class=\"ui bottom attached tab segment\" data-tab=\"third\">\n        {{> webIntegration}}\n    </div>\n    <div class=\"ui bottom attached tab segment\" data-tab=\"fourth\">\n        {{> APILogs}}\n    </div>    \n    <div class=\"ui bottom attached tab segment\" data-tab=\"six\">\n        {{> genericDocumentation}}\n    </div>\n    <div class=\"ui bottom attached tab segment\" data-tab=\"seven\">\n        {{> videoOverview}}\n    </div>\n</template>\n<template name=\"genericDocumentation\">\n    <div class=\"ui celled ordered list\">\n        <div class=\"header item\">Demo site\n            <div class=\"list\">\n                {{> GenericDemoSite}}\n            </div>\n        </div>\n        <div class=\"header item\">Videos\n            <div class=\"list\">\n                {{> genericVideos}}\n            </div>\n        </div>\n        <div class=\"header item\">Whitepapers\n            <div class=\"list\">\n                {{> documentation_oneNotes}}\n            </div>\n        </div>\n        <div class=\"header item\">Other content\n            <div class=\"list\">\n                {{> documentation_other_content}}\n            </div>\n        </div>\n        <!-- <div class=\"header item\">Ideas on how to evaluate Qlik Sense\n            <div class=\"list\">\n                {{> genericEvaluation}}\n            </div>\n        </div> -->\n    </div>\n</template>\n<template name=\"documentation_other_content\">\n    <a href=\"https://community.qlik.com/community/qlik-sense/new-to-qlik-sense\" target=\"_blank\" class=\"item\">Community - New to Qlik Sense</a>\n    <a href=\"http://branch.qlik.com\" target=\"_blank\" class=\"item\">Qlik Branch (open source community)</a>\n    <a href=\"http://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm\" target=\"_blank\" class=\"item\">Qlik Sense APIs</a>\n    <a href=\"http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/NetSDKAPI/Content/Introduction/Net-Sdk-Intro.htm\" target=\"_blank\" class=\"item\">.NET SDK</a>\n    <a href=\"http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Plugins/Content/GettingStarted/GettingStarted.htm\" target=\"_blank\" class=\"item\">Visual Studio plugin</a\n    >\n    <a href=\"https://community.qlik.com/docs/DOC-8303\" target=\"_blank\" class=\"item\">Manual to embed Qlik Sense into IIS</a>\n    <!--  <a href=\"http://branch.qlik.com/projects/showthread.php?289-QSocks-Engine-API-wrapper\" target=\"_blank\" class=\"item\">QSocks Javascript Engine API wrapper</a>\n        <a href=\"https://github.com/mindspank/architeqt\" target=\"_blank\" class=\"item\">Architeqt: Generate derived apps based on a JSON template</a> -->\n</template>\n<template name=\"GenericDemoSite\">\n    <a href=\"{{URL_Youtube_concept_behind}}\"  target=\"_blank\" class=\"item\">Concept behind the demo</a>\n    <a href=\"{{URL_Youtube_howToDemo}}\" target=\"_blank\" class=\"item\">\"How to use the SaaS automation demo\" video</a>\n    <a href=\"{{pathFor 'securityRules'}}\" class=\"item\">View Security rules used in SaaSdemo</a> \n    <a href=\"{{doc_sourceCode}}\"  target=\"_blank\" class=\"item\">Source code manual (high level)</a>\n    <a href=\"{{doc_demo_setup_instructions}}\"  target=\"_blank\" class=\"item\">Create your own demo server setup instructions (detailed)</a>\n    <a href=\"http://saasdemo.qlik.com/integration\"  target=\"_blank\" class=\"item\">Engine API slide generator example (prototype)</a>\n    <!-- <a href=\"{{doc_demo_manual}}\" class=\"item\" target=\"_blank\">\"How to\" Manual</a> -->\n    <a href=\"https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk\" target=\"_blank\" class=\"item\">YouTube playlist of all the videos on this site</a>\n</template>\n<template name=\"genericVideos\">\n    <a href=\"https://www.youtube.com/playlist?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG\" class=\"item\" target=\"_blank\">OEM Integration video playlist</a>\n    <a href=\"http://www.youtube.com/playlist?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel\" target=\"_blank\" class=\"item\">Generic Qlik Sense playlist</a>\n    <a href=\"https://www.youtube.com/watch?v=LC89eh8H6Ls\" target=\"_blank\" class=\"item\">Introduction to Qlik Sense APIs</a>\n</template>\n<template name=\"documentation_oneNotes\">\n    <!-- \n    <a class=\"item\" href=\"https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FIntroduction%20to%20Qlik%20Sense%20%28Ext%5C%29%7C65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0%2F%29\n    onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Introduction%20to%20Qlik%20Sense%20(Ext)&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0}&end\" target=\"_blank\">Introduction to Qlik Sense</a> -->\n    <a class=\"item\" href=\"{{doc_integrationOverview}}\" target=\"_blank\">Integration overview</a>    \n    <a class=\"item\" href=\"{{doc_securtityIntegration}}\" target=\"_blank\">Security integration</a>\n    <a class=\"item\" href=\"{{doc_webIntegration}}\" target=\"_blank\">Web integration</a>\n    <a class=\"item\" href=\"/images/QlikSense%20TopologiesV0_18.pdf\" target=\"_blank\">Topology sheet</a>\n    <!--     <a class=\"item\" href=\"{{doc_webIntegration}}\" target=\"_blank\">Web integration</a>\n -->\n    <!-- \n    <a class=\"item\" href=\"https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FProcess%20integration%20and%20automation%20using%20API%27s%7Ca49986de-9191-4321-88f3-c286fdff0b83%2F%29\" target=\"_blank\">API - Process integration</a>\n    <a class=\"item\" href=\"{{doc_dataIntegration}}\" target=\"_blank\">Data integration</a> -->\n</template>\n<template name=\"genericEvaluation\">\n    <!-- <a class=\"item\" href=\"https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F2%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary%7CA89DAA5F-F20A-4A68-AF02-E58549F53D20%2F%29\n    onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#2%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={A89DAA5F-F20A-4A68-AF02-E58549F53D20}&end\" target=\"_blank\">Proof of concept evaluation criteria and app design</a>\n    <a class=\"item\" href=\"https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F3%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20detailed%7C2390CE6E-173A-499D-9574-C0294E62B16D%2F%29\" target=\"_blank\">Detailed steps for a POC</a> -->\n</template>\n",
 			"file": "imports/ui/pages/documentation.html",
+			"file_size": 7523,
+			"file_write_time": 131344022384722429,
 			"settings":
 			{
-				"buffer_size": 7159,
+				"buffer_size": 7438,
 				"line_ending": "Windows"
 			}
 		},
@@ -917,6 +909,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"high",
 			"web",
 			"how",
 			"on",
@@ -1043,8 +1036,7 @@
 			"getLeven1to3",
 			"on",
 			"getTableWithEnigma",
-			"on",
-			"init"
+			"on"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1184,7 +1176,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1232,8 +1224,8 @@
 						"selection":
 						[
 							[
-								9625,
-								10596
+								1979,
+								1890
 							]
 						],
 						"settings":
@@ -1245,46 +1237,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2980.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4267,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4267,
-								4267
-							]
-						],
-						"settings":
-						{
-							"auto_indent": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"tab_width": 2,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "imports/ui/nav.html",
 					"semi_transient": false,
 					"settings":
@@ -1316,7 +1276,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "imports/ui/pages/architecture.html",
 					"semi_transient": false,
 					"settings":
@@ -1348,20 +1308,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "imports/ui/UIHelpers.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12755,
+						"buffer_size": 12721,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3884,
-								3887
+								3880,
+								3898
 							]
 						],
 						"settings":
@@ -1373,31 +1333,32 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": -0.0,
-						"translation.y": 664.0,
+						"translation.y": 496.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "imports/ui/pages/documentation.html",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7159,
+						"buffer_size": 7438,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3255,
+								3255
 							]
 						],
 						"settings":
 						{
+							"auto_complete": false,
 							"git_gutter_enabled": true,
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 4,
@@ -1411,7 +1372,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "imports/ui/impress/impress.css",
 					"semi_transient": false,
 					"settings":
@@ -1437,7 +1398,7 @@
 						"translation.y": 205.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -1532,7 +1493,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 519.0,
+	"side_bar_width": 262.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
