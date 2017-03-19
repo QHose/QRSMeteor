@@ -19,7 +19,7 @@ if (Meteor.isClient) {
     // });
 
     Template.registerHelper('URL_Youtube_howToDemo', function() {
-        return 'https://www.youtube.com/watch?v=T9a3s5cnvPE&index=6&list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';
+        return 'https://www.youtube.com/watch?v=1PjcTFnC4Mo';
     });
     Template.registerHelper('URL_Youtube_quickIntro', function() {
         return '';
@@ -43,7 +43,7 @@ if (Meteor.isClient) {
 
     //QAP
     Template.registerHelper('URL_Youtube_webintegration_extended', function() {
-        return "https://www.youtube.com/embed/iM_tlwGYJoM";
+        return "https://www.youtube.com/embed/yLTqzftDa7s";
     });
 
     Template.registerHelper('URL_Youtube_architecture_introduction', function() {
@@ -91,7 +91,7 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('doc_webIntegration', function() {
-        return 'docs/Web integration embed Sense charts or data inside your own website.pdf';
+        return 'https://community.qlik.com/docs/DOC-17834';
     });
     Template.registerHelper('doc_dataIntegration', function() {
         return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FData%20integration%20Combine%20sources%20into%20one%20associative%20model%7Ce669a0a2-9a83-470e-aae8-ba63ac500038%2F%29';

@@ -251,12 +251,8 @@ function getLevel1And2() {
                                 }, 100);
                             })
                         })
-
                 })
-
         })
-
-
 }
 
 
