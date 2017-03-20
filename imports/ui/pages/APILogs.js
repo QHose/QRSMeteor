@@ -94,7 +94,7 @@ Template.APILogs.events({
     'click .APIIntegrationMindMap' () {
         $('.ui.modal.APIIntegrationMindMap')
             .modal('show')
-            .modal('refresh')
+            // .modal('refresh')
             .modal('refresh');
     }
 })

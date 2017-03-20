@@ -74,7 +74,7 @@ if (Meteor.isClient) {
         return 'https://community.qlik.com/docs/DOC-17599';
     });
     Template.registerHelper('doc_processIntegration', function() {
-        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FProcess%20integration%20and%20automation%20using%20API%27s%7C269d7763-b98f-4b15-aeb1-6d983b91edc0%2F%29';
+        return 'https://community.qlik.com/docs/DOC-17831';
     });
 
 
