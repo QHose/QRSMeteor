@@ -91,17 +91,17 @@ export const dummyCustomers = [{
             "currentlyLoggedIn": false,
             "country": "Italy"
         }]
-    },
-    {
-        "name": "QPMG Accountants",
-        "checked": true,
-        "users": [{
-            "name": "Ron",
-            "group": "Global Auditor",
-            "currentlyLoggedIn": false,
-            "country": "Italy"
-        }]
     }
+    // {
+    //     "name": "QPMG Accountants",
+    //     "checked": true,
+    //     "users": [{
+    //         "name": "Ron",
+    //         "group": "Global Auditor",
+    //         "currentlyLoggedIn": false,
+    //         "country": "Italy"
+    //     }]
+    // }
 
 
 

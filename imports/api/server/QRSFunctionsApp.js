@@ -77,7 +77,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
     engineConfig.appname = appId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
     // console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname);
     var call = {};
-    call.action = 'Connect to engine API (QSocks)';
+    call.action = 'Connect to engine API (EnigmaJS)';
     call.request = 'Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
     REST_Log(call);
 
