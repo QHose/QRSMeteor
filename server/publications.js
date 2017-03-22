@@ -70,7 +70,7 @@ Meteor.publish('apiLogs', function() {
     //     return Posts.find({createdAt : { $gte : now }});
     // }
 
-    const selector = { sort: { createDate: -1 }, limit: 50 }
+    const selector = { sort: { createDate: -1 }, limit: 10 }
 
 
     return APILogs.find({}, selector);

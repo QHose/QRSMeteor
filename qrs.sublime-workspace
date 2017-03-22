@@ -538,6 +538,15 @@
 			}
 		},
 		{
+			"file": "imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
+			"settings":
+			{
+				"buffer_size": 2488,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "imports/ui/nav.html",
 			"settings":
 			{
@@ -559,19 +568,62 @@
 			"file": "imports/ui/UIHelpers.js",
 			"settings":
 			{
-				"buffer_size": 12721,
+				"buffer_size": 12438,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<template name=\"documentation\">\n    <div class=\"ui top attached tabular menu\">\n        <a class=\"header item active\" data-tab=\"first\">Architecture</a>        \n        <a class=\"header item\" data-tab=\"second\">Security</a>\n        <a class=\"header item\" data-tab=\"third\">Web</a>\n        <a class=\"header item\" data-tab=\"fourth\">APIs</a>        \n        <a class=\"header item\" data-tab=\"six\">Generic</a>\n        <a class=\"header item\" data-tab=\"seven\">Videos</a>\n    </div>    \n    <div class=\"ui bottom attached tab segment active\" data-tab=\"first\">\n        {{> architecture}}\n    </div>\n    <div class=\"ui bottom attached tab segment\" data-tab=\"second\">\n        {{> introductionSecurity}}\n    </div>\n    <div class=\"ui bottom attached tab segment\" data-tab=\"third\">\n        {{> webIntegration}}\n    </div>\n    <div class=\"ui bottom attached tab segment\" data-tab=\"fourth\">\n        {{> APILogs}}\n    </div>    \n    <div class=\"ui bottom attached tab segment\" data-tab=\"six\">\n        {{> genericDocumentation}}\n    </div>\n    <div class=\"ui bottom attached tab segment\" data-tab=\"seven\">\n        {{> videoOverview}}\n    </div>\n</template>\n<template name=\"genericDocumentation\">\n    <div class=\"ui celled ordered list\">\n        <div class=\"header item\">Demo site\n            <div class=\"list\">\n                {{> GenericDemoSite}}\n            </div>\n        </div>\n        <div class=\"header item\">Videos\n            <div class=\"list\">\n                {{> genericVideos}}\n            </div>\n        </div>\n        <div class=\"header item\">Whitepapers\n            <div class=\"list\">\n                {{> documentation_oneNotes}}\n            </div>\n        </div>\n        <div class=\"header item\">Other content\n            <div class=\"list\">\n                {{> documentation_other_content}}\n            </div>\n        </div>\n        <!-- <div class=\"header item\">Ideas on how to evaluate Qlik Sense\n            <div class=\"list\">\n                {{> genericEvaluation}}\n            </div>\n        </div> -->\n    </div>\n</template>\n<template name=\"documentation_other_content\">\n    <a href=\"https://community.qlik.com/community/qlik-sense/new-to-qlik-sense\" target=\"_blank\" class=\"item\">Community - New to Qlik Sense</a>\n    <a href=\"http://branch.qlik.com\" target=\"_blank\" class=\"item\">Qlik Branch (open source community)</a>\n    <a href=\"http://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm\" target=\"_blank\" class=\"item\">Qlik Sense APIs</a>\n    <a href=\"http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/NetSDKAPI/Content/Introduction/Net-Sdk-Intro.htm\" target=\"_blank\" class=\"item\">.NET SDK</a>\n    <a href=\"http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Plugins/Content/GettingStarted/GettingStarted.htm\" target=\"_blank\" class=\"item\">Visual Studio plugin</a\n    >\n    <a href=\"https://community.qlik.com/docs/DOC-8303\" target=\"_blank\" class=\"item\">Manual to embed Qlik Sense into IIS</a>\n    <!--  <a href=\"http://branch.qlik.com/projects/showthread.php?289-QSocks-Engine-API-wrapper\" target=\"_blank\" class=\"item\">QSocks Javascript Engine API wrapper</a>\n        <a href=\"https://github.com/mindspank/architeqt\" target=\"_blank\" class=\"item\">Architeqt: Generate derived apps based on a JSON template</a> -->\n</template>\n<template name=\"GenericDemoSite\">\n    <a href=\"{{URL_Youtube_concept_behind}}\"  target=\"_blank\" class=\"item\">Concept behind the demo</a>\n    <a href=\"{{URL_Youtube_howToDemo}}\" target=\"_blank\" class=\"item\">\"How to use the SaaS automation demo\" video</a>\n    <a href=\"{{pathFor 'securityRules'}}\" class=\"item\">View Security rules used in SaaSdemo</a> \n    <a href=\"{{doc_sourceCode}}\"  target=\"_blank\" class=\"item\">Source code manual (high level)</a>\n    <a href=\"{{doc_demo_setup_instructions}}\"  target=\"_blank\" class=\"item\">Create your own demo server setup instructions (detailed)</a>\n    <a href=\"http://saasdemo.qlik.com/integration\"  target=\"_blank\" class=\"item\">Engine API slide generator example (prototype)</a>\n    <!-- <a href=\"{{doc_demo_manual}}\" class=\"item\" target=\"_blank\">\"How to\" Manual</a> -->\n    <a href=\"https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk\" target=\"_blank\" class=\"item\">YouTube playlist of all the videos on this site</a>\n</template>\n<template name=\"genericVideos\">\n    <a href=\"https://www.youtube.com/playlist?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG\" class=\"item\" target=\"_blank\">OEM Integration video playlist</a>\n    <a href=\"http://www.youtube.com/playlist?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel\" target=\"_blank\" class=\"item\">Generic Qlik Sense playlist</a>\n    <a href=\"https://www.youtube.com/watch?v=LC89eh8H6Ls\" target=\"_blank\" class=\"item\">Introduction to Qlik Sense APIs</a>\n</template>\n<template name=\"documentation_oneNotes\">\n    <!-- \n    <a class=\"item\" href=\"https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FIntroduction%20to%20Qlik%20Sense%20%28Ext%5C%29%7C65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0%2F%29\n    onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Introduction%20to%20Qlik%20Sense%20(Ext)&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0}&end\" target=\"_blank\">Introduction to Qlik Sense</a> -->\n    <a class=\"item\" href=\"{{doc_integrationOverview}}\" target=\"_blank\">Integration overview</a>    \n    <a class=\"item\" href=\"{{doc_securtityIntegration}}\" target=\"_blank\">Security integration</a>\n    <a class=\"item\" href=\"{{doc_webIntegration}}\" target=\"_blank\">Web integration</a>\n    <a class=\"item\" href=\"/images/QlikSense%20TopologiesV0_18.pdf\" target=\"_blank\">Topology sheet</a>\n    <!--     <a class=\"item\" href=\"{{doc_webIntegration}}\" target=\"_blank\">Web integration</a>\n -->\n    <!-- \n    <a class=\"item\" href=\"https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FProcess%20integration%20and%20automation%20using%20API%27s%7Ca49986de-9191-4321-88f3-c286fdff0b83%2F%29\" target=\"_blank\">API - Process integration</a>\n    <a class=\"item\" href=\"{{doc_dataIntegration}}\" target=\"_blank\">Data integration</a> -->\n</template>\n<template name=\"genericEvaluation\">\n    <!-- <a class=\"item\" href=\"https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F2%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary%7CA89DAA5F-F20A-4A68-AF02-E58549F53D20%2F%29\n    onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#2%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={A89DAA5F-F20A-4A68-AF02-E58549F53D20}&end\" target=\"_blank\">Proof of concept evaluation criteria and app design</a>\n    <a class=\"item\" href=\"https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F3%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20detailed%7C2390CE6E-173A-499D-9574-C0294E62B16D%2F%29\" target=\"_blank\">Detailed steps for a POC</a> -->\n</template>\n",
 			"file": "imports/ui/pages/documentation.html",
-			"file_size": 7523,
-			"file_write_time": 131344022384722429,
 			"settings":
 			{
-				"buffer_size": 7438,
+				"buffer_size": 7797,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/pages/introductionSecurity.html",
+			"settings":
+			{
+				"buffer_size": 7670,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/pages/APILogs.html",
+			"settings":
+			{
+				"buffer_size": 10309,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/api/customers.js",
+			"settings":
+			{
+				"buffer_size": 9410,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/api/server/QRSFunctionsApp.js",
+			"settings":
+			{
+				"buffer_size": 17440,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/pages/APILogs.js",
+			"settings":
+			{
+				"buffer_size": 3376,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -657,7 +709,6 @@
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases"
@@ -909,6 +960,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"qsocks",
+			"APIIntroduction",
+			"Overview of the key APIs to be used by your SaaS platform",
+			"engine",
 			"high",
 			"web",
 			"how",
@@ -1032,10 +1087,6 @@
 			"init",
 			"test",
 			"getIntegrationTopics",
-			"on",
-			"getLeven1to3",
-			"on",
-			"getTableWithEnigma",
 			"on"
 		],
 		"highlight": true,
@@ -1176,7 +1227,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -1192,8 +1243,104 @@
 						"selection":
 						[
 							[
-								2418,
-								3529
+								3855,
+								4266
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 168.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "imports/ui/impress/ppt_integration.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15974,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								749,
+								749
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 420.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2488,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2488,
+								2488
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "imports/ui/nav.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2293,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1425,
+								1527
 							]
 						],
 						"settings":
@@ -1212,71 +1359,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "imports/ui/impress/ppt_integration.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15974,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1979,
-								1890
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "imports/ui/nav.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2293,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1767,
-								1767
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "imports/ui/pages/architecture.html",
 					"semi_transient": false,
 					"settings":
@@ -1304,24 +1387,24 @@
 						"translation.y": 207.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "imports/ui/UIHelpers.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12721,
+						"buffer_size": 12438,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3880,
-								3898
+								3112,
+								3112
 							]
 						],
 						"settings":
@@ -1332,28 +1415,28 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
+						"translation.x": 56.0,
 						"translation.y": 496.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "imports/ui/pages/documentation.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7438,
+						"buffer_size": 7797,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3255,
-								3255
+								2350,
+								2259
 							]
 						],
 						"settings":
@@ -1365,14 +1448,173 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 126.0,
+						"translation.y": 336.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
+					"file": "imports/ui/pages/introductionSecurity.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7670,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3300,
+								3300
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "imports/ui/pages/APILogs.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10309,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								845,
+								866
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "imports/api/customers.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9410,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2264,
+								2264
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 42.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "imports/api/server/QRSFunctionsApp.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17440,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4286,
+								4286
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 168.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "imports/ui/pages/APILogs.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3376,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3088,
+								3088
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 465.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
 					"file": "imports/ui/impress/impress.css",
 					"semi_transient": false,
 					"settings":
@@ -1398,7 +1640,7 @@
 						"translation.y": 205.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 12,
 					"type": "text"
 				}
 			]
