@@ -36,7 +36,7 @@ export function getStreams() {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }            
         })        
-        REST_Log(call);        
+        // REST_Log(call);        
         return call.response.data;
     } catch (err) {
         console.error(err);
