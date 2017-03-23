@@ -45,8 +45,8 @@
              sAlert.error(error);
              console.error('Meteor SSO page, could not get a redirectUrl from Qlik Sense', error)
          } else {
-             call.action = 'Redirect URL received';
-             call.request = 'The browser received a redirectUrl, so replace the current url in the browser with this new one: ' + redirectUrl;
+             call.action = 'STEP 6: Redirect URL received';
+             call.request = 'The browser received a redirectUrl (where should we forward to user to? Hub, QMC etc.) from the server, so replace the current url in the browser with this new one: ' + redirectUrl;
              REST_Log(call);
              window.location.replace(redirectUrl);
          }
