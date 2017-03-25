@@ -54,6 +54,13 @@ Router.route('/impress', {
     layoutTemplate: 'SSOLayout'
 });
 
+
+Router.route('/presentation', {
+    template: 'ppt_integration_landing',
+    layoutTemplate: 'presentationLayout'
+});
+
+
 Router.route('/integration', {
     template: 'ppt_integrationMain',
     layoutTemplate: 'presentationLayout'
@@ -69,13 +76,13 @@ Router.route('/useCaseSelection', function() {
 });
 
 
+
 Router.route('/selfService', function() {
     this.layout('regionLayout');
     this.render('SSBINav', { to: 'nav' });
     this.render('SSBIUsers', { to: 'aside' });
     this.render('SSBISenseApp');
 });
-
 
 
 Router.route('/signup');
