@@ -26,7 +26,7 @@ Template.steps.onRendered(function() {
     this.$('.step')
         .popup({
             title: 'Demo steps',
-            content: "If you just started, you can insert some fictitious customers and an app. In Step 3, we will give your customers a private copy of this app.  In Step 4, you can test single sing on and web integration options.",
+            content: "If you just started, you can insert some fictitious customers and an app. In Step 3, we will give your customers a private copy of this app.  In Step 4, you can test single sign on and web integration options.",
             delay: {
                 show: 500,
                 hide: 0

@@ -8,6 +8,17 @@ ServiceConfiguration.configurations.upsert({
   }
 });
 
+// first, remove configuration entry in case service is already configured
+ServiceConfiguration.configurations.remove({
+  service: "twitter"
+});
+ServiceConfiguration.configurations.insert({
+  service: "twitter",
+  consumerKey: Meteor.settings.private.twitter.clientId,
+  loginStyle: "popup",
+  secret: Meteor.settings.private.twitter.secret
+});
+
 const numberOfUsers = Meteor.users.find().count();
 console.log('Checking the user accounts, number of users is: '+ numberOfUsers )
 
