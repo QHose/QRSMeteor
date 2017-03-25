@@ -1,12 +1,12 @@
-// ServiceConfiguration.configurations.upsert({
-//   service: "facebook"
-// }, {
-//   $set: {
-//     appId : Meteor.settings.private.facebook.clientId,
-//     loginStyle: "popup",
-//     secret: Meteor.settings.private.facebook.secret
-//   }
-// });
+ServiceConfiguration.configurations.upsert({
+  service: "facebook"
+}, {
+  $set: {
+    appId : Meteor.settings.private.facebook.clientId,
+    loginStyle: "popup",
+    secret: Meteor.settings.private.facebook.secret
+  }
+});
 
 const numberOfUsers = Meteor.users.find().count();
 console.log('Checking the user accounts, number of users is: '+ numberOfUsers )
