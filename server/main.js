@@ -118,13 +118,13 @@ Meteor.methods({
                 //console.log('resetEnvironment for userId', Meteor.userId());generationUserSelection.generationUserId
 
                 //If not selection was given, we want to reset the whole environment, so also delete the streams.
-                if (!generationUserSelection.generationUserId) {
-                    try {
-                        Meteor.call('deleteStream', resource.streamId); //26-9 can't delete stream, because each user creates a stream with the same name...
-                    } catch (err) {
-                        //console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
-                    } //don't bother if generated resources do not exists, just continue
-                }
+                // if (!generationUserSelection.generationUserId) {
+                try {
+                    Meteor.call('deleteStream', resource.streamId); //added random company names, so this should not be an issue //26-9 can't delete stream, because each user creates a stream with the same name...
+                } catch (err) {
+                    //console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
+                } //don't bother if generated resources do not exists, just continue
+                // }
                 //delete apps always
                 try {
                     Meteor.call('deleteApp', resource.appId);
