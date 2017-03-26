@@ -130,6 +130,7 @@ Template.OEMPartner.events({
 
 
 export function insertTemplateAndDummyCustomers() {
+
     _.each(dummyCustomers, function(customer) {
         customer.generationUserId = Meteor.userId();
         Customers.insert(customer);

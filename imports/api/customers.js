@@ -1,6 +1,8 @@
 import { Mongo } from 'meteor/mongo';
+var faker = require('faker');
 
 export const Customers = new Mongo.Collection('customers');
+
 
 Customers.attachSchema(new SimpleSchema({
     name: {
@@ -50,31 +52,31 @@ Customers.attachSchema(new SimpleSchema({
 }));
 
 export const dummyCustomers = [{
-        "name": "Sunny Petrol",
+        "name": faker.company.companyName(),
         "checked": true,
         "users": [{
-            "name": "John",
+            "name": faker.name.findName(),
             "group": "Consumer",
             "currentlyLoggedIn": false,
             "country": "Germany"
         }, {
-            "name": "Linda",
+            "name": faker.name.findName(),
             "group": "Contributor",
             "currentlyLoggedIn": false,
             "country": "United States"
         }, {
-            "name": "Martin",
+            "name": faker.name.findName(),
             "group": "Developer",
             "currentlyLoggedIn": false,
             "country": "Italy"
         }, {
-            "name": "Paul",
+            "name": faker.name.findName(),
             "group": "Admin",
             "currentlyLoggedIn": false,
             "country": "Italy"
         }]
     }, {
-        "name": "Cloudy Petrol ",
+        "name": faker.company.companyName(),
         "checked": true,
         "users": [{
             "name": "Peter",
@@ -83,7 +85,7 @@ export const dummyCustomers = [{
             "country": "Italy"
         }]
     }, {
-        "name": "Spoily Petrol",
+        "name": faker.company.companyName(),
         "checked": true,
         "users": [{
             "name": "Stefan",

@@ -9,6 +9,7 @@
     "crypto": "0.0.3",
     "enigma.js": "^1.0.1",
     "eve": "^0.5.0",
+    "faker": "^4.1.0",
     "highlight.js": "^9.9.0",
     "meteor-node-stubs": "^0.2.3",
     "qsocks": "^3.0.0",
