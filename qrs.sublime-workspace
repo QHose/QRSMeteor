@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"margin",
+				"margin-left"
+			],
+			[
 				"high",
 				"highlighted"
 			],
@@ -77,10 +81,6 @@
 			],
 			[
 				"MAR",
-				"margin-top"
-			],
-			[
-				"margin",
 				"margin-top"
 			],
 			[
@@ -520,22 +520,37 @@
 	"buffers":
 	[
 		{
-			"contents": "<template name=\"ppt_integrationMain\">\n    <div class=\"ui very wide sidebar integration\">\n        <!--  <button class=\"ui postive button\">\n  Start the presentation\n</button> -->\n        <iframe src='{{IFrameURLChapterSelection}}' class=\"selector\"> </iframe>\n    </div>\n    <div class=\"pusher\">\n        <div class=\"ui black launch right attached fixed button\" style=\"background-color: #545454; padding-left:20px\">\n            <i class=\"content icon\"></i>\n            <span class=\"text\"><!-- Engine API Slide generator explaining SaaS with Qlik Sense (<a href=\"{{pathFor 'legal'}}\">PROTOTYPE</a>) --></span>\n        </div>\n        {{#if showPresentation}}\n            <iframe allowfullscreen src=\"{{pathFor 'ppt_integration'}}\" class=\"frame\"></iframe>\n        {{else}}\n            <div class=\"ui container\">\n                <div class=\"ui message\">\n                    <div class=\"content\">\n                        <div class=\"header\">\n                            How to use the Engine API slide generator?\n                        </div>\n                        <!-- <p>THIS IS A PROTOTYPE TO DEMO THE POWER OF THE QAP, AND ALL SLIDES ARE WORK IN PROGRESS.</p>\n                    -->\n                        <p> <b>This is a PROTOTYPE, all slides should be considered \"draft\" and you need to USE CHROME/FIREFOX AS BROWSER. </b></p> \n                        <p>Here we demonstrate that Qlik Sense can be used as centralized data engine for users and systems in your organization. And we can quickly help you to find the answers you need via our associative search.\n                        </p>\n                        <ul class=\"ui list\" style=\"margin-left: 20px\">\n                            <li>First select your workshop, topics or use the search box to look for specific topics (like 'app', 'security', 'authentication', 'flow' or 'architecture'). </li>\n                            <li>Next, click on this side of the screen to start the presentation.</li>\n                            <li>You can always go back to make more selections via the left top menu <i class=\"content icon\"></i></li>\n                            <li>Use the zoom of your browser if slides don't fit (\"control -\" on your keyboard)</li>\n                        </ul>\n                        <img class=\"ui centered image\" src=\"images/Engine API slide generator easy flow.png\">\n                    </div>\n                </div>\n            </div>\n        {{/if}}\n    </div>\n</template>\n<template name=\"ppt_integration\">\n    <div id=\"impress\">\n        {{#each mainTopics }}\n            <!-- for each header: a level 1 and 2 combination -->\n            {{#if chapterSlide this}}\n                <!--         Create a chapter breaker if the level 1 has changed in the current row-->\n                <div class=\"z step ui segment integrationBreaker\" data-x=\"{{XValue @index}}\" data-z=\"2000\">\n                    <h1 class=\"ui header\" style=\"font-size: 50px;\">\n                            Next: {{this}} <!-- The current level 1 and 2 headers -->\n                    </h1>\n                </div>\n            {{else}}\n                <!-- CREATE A SLIDE, the index is the current slide in the loop, all slide info is contained in this -->\n                {{> integrationSlide slide=this slideNr=@index}}\n            {{/if}}\n        {{/each}}\n        <!--         If all the slides have been generated insert a last thank you slide\n    -->\n        <div class=\"z step thankYou\" data-x=\"{{thankYouXvalue}}\" data-z=\"3000\">\n            <img class=\"ui bottom aligned fluid image\" src=\"images/presentation thank you.png\">\n        </div>\n    </div>\n    {{> hintAndProgressBar}}\n    <div class=\"ui {{#if loading}} active {{/if}} dimmer\">\n        <div class=\"ui indeterminate text loader\" style=\"font-size: 1.3em\">\n            <h2>Creating your slides with data from the Engine API.\n            </h2>\n        </div>\n    </div>\n</template>\n<template name=\"integrationSlide\">\n    <div class=\"z step ui ten wide column raised segment integration\" data-x=\"{{XValue slideNr}}\" data-rotate-x=\"30\" data-z=\"-1000\">\n        <h2 class=\"ui center aligned main header\">\n            <div class=\"content\">\n                {{level 1 slide}}\n                <div class=\"sub header\" style=\"font-size: 1.2em;\">\n                    {{level 2 slide}}\n                </div>\n            </div>\n         </h2>\n        <!--  step in session is {{step}}\n         Current step in HTML is {{slideNr}}\n         step is active? {{slideActive slideNr}} -->\n        {{#if slideActive slideNr}}\n            {{> integrationSlideContent slideNr=slideNr slide=slide}}\n        {{/if}}\n    </div>\n</template>\n<template name=\"integrationSlideContent\">\n    <div class=\"slideContent\">\n        {{#each item in itemsOfLevel 3 slide}}\n            {{{formatted item}}}\n        {{/each}}\n    </div>\n</template>\n<template name=\"hintAndProgressBar\">\n    <div class=\"hint\">\n        <p>\n            Click on the screen and\n            <br/> use a spacebar or arrow keys to navigate\n        </p>\n    </div>\n    <div class=\"progressbar\">\n        <div></div>\n    </div>\n    <div class=\"progress\"></div>\n</template>\n<template name=\"pageBreaker\">\n</template>\n<template name=\"errorPresentation\">\n    <!--  <div class=\"ui negative message z step slide\">\n        <i class=\"close icon\"></i>\n        <div class=\"header\">\n            We're sorry we can't create your presentation...\n        </div>\n        <ul class=\"list\">\n            <li>Make new selection</li>\n            <li>Refresh your browser</li>\n            <li>Issue can also occur with a slow internet connection or computer.</li>\n        </ul>\n    </div> -->\n</template>\n<!-- {{> Template.dynamic template=\"dynamicSlide\" data=row}}        -->\n<!-- <tr>\n        {{#each row in topics }}\n            {{#each cell in row}}\n            <td> {{cell.qText}} </td> \n            {{/each}}\n        </tr> \n        {{/each}}-->\n",
 			"file": "imports/ui/impress/ppt_integration.html",
-			"file_size": 6011,
-			"file_write_time": 131346595483124094,
 			"settings":
 			{
-				"buffer_size": 5877,
+				"buffer_size": 6006,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/impress/ppt_integration.js",
+			"file": "server/accounts.js",
 			"settings":
 			{
-				"buffer_size": 15974,
+				"buffer_size": 1860,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/api/customers.js",
+			"settings":
+			{
+				"buffer_size": 9522,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/useCases/SSBI/SSBI.html",
+			"settings":
+			{
+				"buffer_size": 6813,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -545,70 +560,14 @@
 			"settings":
 			{
 				"buffer_size": 2488,
-				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/nav.html",
+			"file": "imports/ui/impress/ppt_integration.js",
 			"settings":
 			{
-				"buffer_size": 2293,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/pages/architecture.html",
-			"settings":
-			{
-				"buffer_size": 8839,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/UIHelpers.js",
-			"settings":
-			{
-				"buffer_size": 12438,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/pages/documentation.html",
-			"settings":
-			{
-				"buffer_size": 7797,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/pages/APILogs.js",
-			"settings":
-			{
-				"buffer_size": 3376,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/publications.js",
-			"settings":
-			{
-				"buffer_size": 2985,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/impress/impress.css",
-			"settings":
-			{
-				"buffer_size": 15384,
-				"encoding": "UTF-8",
+				"buffer_size": 15974,
 				"line_ending": "Windows"
 			}
 		}
@@ -685,29 +644,43 @@
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI"
 	],
 	"file_history":
 	[
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/OEMPartner.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/users.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/customers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/accounts.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users/userOverview.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/users.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor/packages",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/publications.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users/userOverview.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/steps.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.css",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/ppt_integration.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsStream.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impressJSModifiedSource.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.css",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/stylesheets/highLight.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/ppt_integration.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/useCaseSelection.html",
@@ -727,27 +700,20 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/client/stylesheets/highLight.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development - example.json",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/config.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor/packages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationTopicsCircular.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationTopicsCircular.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationTopics.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationTopics.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationTopics.css",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationTopicsCircular.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationTopics.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationTopicsCircular.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI/SSBI.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/OEMPartner.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/steps.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/stylesheets/main.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/users.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/introSlide.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.js",
@@ -761,7 +727,6 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/Impress/impress.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/regionLayout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.js",
@@ -770,11 +735,9 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/users/userOverview.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/securityRules.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/users/userOverview.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/publications.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/securityRules.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users/login.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/startup/accounts-config.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/accounts.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/lib/yogiben.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client.pem",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/Login/login.html",
@@ -782,7 +745,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/steps.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/notFound.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introduction.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/regionLayout.js",
@@ -816,11 +778,7 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/customer.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEM Partner side/OEMPartner.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/custom.semantic.json",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/OEMPartner.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/steps.html"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/lib/custom.semantic.json"
 	],
 	"find":
 	{
@@ -831,6 +789,9 @@
 		"height": 102.0,
 		"where_history":
 		[
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\generation\\OEMPartnerSide",
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor",
@@ -938,6 +899,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"simulates",
+			"insertTemplateAndDummyCustomers",
+			"facebook",
+			"twitter",
+			"facebook",
+			"name=\"users\"",
+			"users",
 			"getApps",
 			"qsocks",
 			"APIIntroduction",
@@ -1058,14 +1026,7 @@
 			"getapps",
 			"logout",
 			"pre",
-			"on",
-			"code",
-			"onrendered",
-			"onre",
-			"find",
-			"init",
-			"test",
-			"getIntegrationTopics"
+			"on"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1205,7 +1166,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1214,79 +1175,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5877,
+						"buffer_size": 6006,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2159,
-								2159
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 168.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "imports/ui/impress/ppt_integration.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15974,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								749,
-								749
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 420.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2488,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2488,
-								2488
+								16,
+								39
 							]
 						],
 						"settings":
@@ -1305,20 +1202,84 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "imports/ui/nav.html",
+					"buffer": 1,
+					"file": "server/accounts.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2293,
+						"buffer_size": 1860,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1425,
-								1527
+								571,
+								226
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "imports/api/customers.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9522,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1744,
+								1744
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1371.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "imports/ui/useCases/SSBI/SSBI.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6813,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								581,
+								581
 							]
 						],
 						"settings":
@@ -1333,120 +1294,55 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "imports/ui/pages/architecture.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8839,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4008,
-								4008
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 207.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "imports/ui/UIHelpers.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12438,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3112,
-								3112
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 56.0,
-						"translation.y": 496.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "imports/ui/pages/documentation.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7797,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2350,
-								2259
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 336.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "imports/ui/pages/APILogs.js",
-					"semi_transient": false,
+					"buffer": 4,
+					"file": "imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 3376,
+						"buffer_size": 2488,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3088,
-								3088
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 107.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "imports/ui/impress/ppt_integration.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15974,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1457,72 +1353,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1479.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "server/publications.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2985,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2607,
-								2607
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 957.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "imports/ui/impress/impress.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15384,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1220,
-								1220
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 205.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1617,7 +1451,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 463.0,
+	"side_bar_width": 561.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
