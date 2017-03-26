@@ -1,5 +1,5 @@
 import { Mongo } from 'meteor/mongo';
-var faker = require('faker');
+// import {faker} from 'practicalmeteor:faker';
 
 export const Customers = new Mongo.Collection('customers');
 
