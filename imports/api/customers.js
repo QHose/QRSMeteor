@@ -55,22 +55,22 @@ export const dummyCustomers = [{
         "name": faker.company.companyName(),
         "checked": true,
         "users": [{
-            "name": faker.name.findName(),
+            "name": 'John',
             "group": "Consumer",
             "currentlyLoggedIn": false,
             "country": "Germany"
         }, {
-            "name": faker.name.findName(),
+            "name": 'Linda',
             "group": "Contributor",
             "currentlyLoggedIn": false,
             "country": "United States"
         }, {
-            "name": faker.name.findName(),
+            "name": 'Martin',
             "group": "Developer",
             "currentlyLoggedIn": false,
             "country": "Italy"
         }, {
-            "name": faker.name.findName(),
+            "name": 'Paul',
             "group": "Admin",
             "currentlyLoggedIn": false,
             "country": "Italy"
@@ -79,7 +79,7 @@ export const dummyCustomers = [{
         "name": faker.company.companyName(),
         "checked": true,
         "users": [{
-            "name": "Peter",
+            "name": faker.name.findName(),
             "group": "Consumer",
             "currentlyLoggedIn": false,
             "country": "Italy"
@@ -88,7 +88,7 @@ export const dummyCustomers = [{
         "name": faker.company.companyName(),
         "checked": true,
         "users": [{
-            "name": "Stefan",
+            "name": faker.name.findName(),
             "group": "Consumer",
             "currentlyLoggedIn": false,
             "country": "Italy"

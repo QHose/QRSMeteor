@@ -8,6 +8,19 @@ ServiceConfiguration.configurations.upsert({
   }
 });
 
+// "AccountsUiConfig": {
+//       "passwordSignupFields": "USERNAME_AND_OPTIONAL_EMAIL",
+//       "requestPermissions": {
+//         "facebook": [
+//           "email",
+//           "user_friends",
+//           "friends_events",
+//           "friends_location",
+//           "friends_about_me",
+//           "friends_status"
+//         ]
+//       }
+
 // first, remove configuration entry in case service is already configured
 ServiceConfiguration.configurations.remove({
   service: "twitter"
