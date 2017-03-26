@@ -9,9 +9,10 @@
         "webIntegrationDemoPort": 3030,
         "SSBIAppSheetString": "40ef70c9-be76-4844-ac6a-d53195146c85/sheet/puEpZK/state/analysis",
         "SSBIApp": "40ef70c9-be76-4844-ac6a-d53195146c85",
-        "IntegrationPresenatationApp": "cfac2150-0291-49d5-b924-3e60c0fa5cab",
+        "IntegrationPresenatationApp": "ce2c6eb5-dc73-44fb-a9f9-11fb2777fdfd",
+        "IntegrationPresenatationSelectionObject": "RZuJ",
         "facebook": {
-            "clientId": "dfdf"
+            "clientId": "1754933311453043"
         }
     },
     "private": {
@@ -32,12 +33,24 @@
         "enginePort": 4747,
         "proxyPort": 4243,
         "google": {
-            "clientId": "-.apps.googleusercontent.com",
-            "secret": "df"
+            "clientId": "527202830644-4j6ht6bn1td081hpnfvmksle1ltft5jc.apps.googleusercontent.com",
+            "secret": ""
         },
         "facebook": {
             "clientId": "1754933311453043",
-            "secret": "d”
+            "secret": ""
+        },
+        "twitter": {
+            "clientId": "9hpf77dh7BhLgwtGeoELT3CLX",
+            "secret": ""
+        },
+        "linkedin": {
+            "clientId": "86rpkry91dn41y",
+            "secret": ""
+        },
+        "github": {
+            "clientId": "535d2ca6386eeca90d65",
+            "secret": ""
         }
     }
 }

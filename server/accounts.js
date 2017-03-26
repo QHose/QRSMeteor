@@ -8,6 +8,16 @@ ServiceConfiguration.configurations.upsert({
     }
 });
 
+ServiceConfiguration.configurations.upsert({
+    service: "github"
+}, {
+    $set: {
+        clientId: Meteor.settings.private.github.clientId,
+        loginStyle: "popup",
+        secret: Meteor.settings.private.github.secret
+    }
+});
+
 // "AccountsUiConfig": {
 //       "passwordSignupFields": "USERNAME_AND_OPTIONAL_EMAIL",
 //       "requestPermissions": {
