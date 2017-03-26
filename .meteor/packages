@@ -14,6 +14,7 @@ accounts-password
 accounts-google
 accounts-facebook
 accounts-twitter
+pauli:accounts-linkedin
 service-configuration@1.0.11
 useraccounts:iron-routing
 useraccounts:semantic-ui

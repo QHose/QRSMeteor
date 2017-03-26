@@ -21,6 +21,16 @@ ServiceConfiguration.configurations.upsert({
 //         ]
 //       }
 
+
+ServiceConfiguration.configurations.remove({
+  service: "linkedin"
+});
+ServiceConfiguration.configurations.insert({
+service: "linkedin",
+clientId: "",
+secret: ""
+});
+
 // first, remove configuration entry in case service is already configured
 ServiceConfiguration.configurations.remove({
   service: "twitter"
