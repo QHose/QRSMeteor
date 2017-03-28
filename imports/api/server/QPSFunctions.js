@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Customers, dummyCustomers } from '/imports/api/customers';
+import { Customers, dummyCustomers, dummyCustomer } from '/imports/api/customers';
 import { REST_Log } from '/imports/api/APILogs';
 
 //import config for Qlik Sense QRS
@@ -24,37 +24,45 @@ Meteor.methods({
         REST_Log(call);
 
         //first find the customers that have a logged in users (mongo returns a complete document)
-        var customer = Customers.findOne({ generationUserId:  Meteor.userId(), 'users.currentlyLoggedIn': true });
+        var customer = Customers.findOne({ generationUserId: Meteor.userId(), 'users.currentlyLoggedIn': true });
         // console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + loggedInUser + ', the customer which contains the user that the user selected with the dropdown: ', customer);
 
         //now we have the document, we can look in the array of users, to find the one that is logged in.
-        if (!customer) {
-            const error = 'You have not selected a user you want to simulate the Single Sign on with. Please select a user on the left side of the screen';
-            throw new Meteor.Error('No user', error);
+        var user;
+        if (!customer) { //if no user is selected, just insert john as a dummy
+            // const error = 'You have not selected a user you want to simulate the Single Sign on with. For demo purposes we now selected John for you. You can also select your own user in step 4 of the SaaS demo';
+            var response = {};
+            console.log('dummyCustomer :', dummyCustomer);
+            response.user = dummyCustomer.user;
+            response.customer = dummyCustomer;
+            // throw new Meteor.Warning('No user', error);
         } else {
             var user = _.find(customer.users, { 'currentlyLoggedIn': true });
             var response = {};
             response.user = user;
             response.customer = customer;
-            return response;
         }
+
+        console.log('the response is: ', response);
+        return response;
+
     },
     getRedirectUrl(proxyRestUri, targetId, loggedInUser) {
         var response = Meteor.call('currentlyLoggedInUser');
-        var customer =response.customer;
+        var customer = response.customer;
         var user = response.user;
 
         // console.log('UserID currently logged in in the demo platform: ' + loggedInUser + '. Meteor server side thinks the meteor.userId is ' + Meteor.userId() + '. We use this as the UDC name');
         //Create a paspoort (ticket) request: user directory, user identity and attributes
         var passport = {
-            'UserDirectory': Meteor.userId(), //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
-            'UserId': user.name, //the current user that we are going to login with
-            'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
-                { 'group': user.country.toUpperCase() },
-                { 'group': user.group.toUpperCase() }
-            ]
-        }
-        // console.log('Request ticket for this user passport": ', passport);
+                'UserDirectory': Meteor.userId(), //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
+                'UserId': user.name, //the current user that we are going to login with
+                'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense
+                    { 'group': user.country.toUpperCase() },
+                    { 'group': user.group.toUpperCase() }
+                ]
+            }
+            // console.log('Request ticket for this user passport": ', passport);
 
         //logging only
         var call = {};

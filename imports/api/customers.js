@@ -51,6 +51,17 @@ Customers.attachSchema(new SimpleSchema({
     }
 }));
 
+export const dummyCustomer = {
+        "name": faker.company.companyName(),
+        "checked": true,
+        "user": {
+            "name": 'John',
+            "group": "Consumer",
+            "currentlyLoggedIn": false,
+            "country": "Germany"
+        }
+    };
+
 export const dummyCustomers = [{
         "name": faker.company.companyName(),
         "checked": true,
