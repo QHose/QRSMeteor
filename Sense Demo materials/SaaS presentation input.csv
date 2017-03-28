@@ -727,23 +727,21 @@ or
             </div>",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour",
 "SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","The ""loop"" to execute to ensure each *customer* gets each template *app*",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour",
 "SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","generationLoop.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day, Technical - 1 hour",
-"SaaSDemo.qlik.com key API calls","The 4 tasks to execute for each app and customer","- Create a new stream with the customer’s name
-- Copy the template
-- Replace the script and reload
-- publish the app",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour",
-"SaaSDemo.qlik.com key API calls","The 4 tasks to execute for each app and customer","generate app for each template.png",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour",
 "SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","Try to generate some apps, or try to swith a user in demo step 4",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour",
 "SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","See the API calls in the [API log page](http://saasdemo.qlik.com/ApiLogsTable)",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour",
 "SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://saasdemo.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Introduction - 30 minutes, OEM bootcamp, Technical - 1 day, Technical - 1 hour",
-"SaaSDemo.qlik.com key API calls","More information about the source code of the demo platform?","  <q>Want to know more?</q>
-            <br>
-            <div class=""ui buttons"">
+"SaaSDemo.qlik.com key API calls","More information about the source code of the demo platform?","<div class=""ui one column stackable center aligned page grid"">
+   <div class=""column twelve wide"">
+<div class=""ui buttons"">
                 <a class=""ui button"" target=""_blank"" href=""{{pathFor 'APILogs'}}"">API & Source code</a>
                 <div class=""or""></div>
                 <a href=""{{pathFor 'documentation'}}"" target=""_blank"" class=""ui button"">Our approach</a>
                 <div class=""or""></div>
                 <a href={{pathFor 'videoOverview'}} class=""ui dropdown youtube button""><i class=""youtube icon""></i>Video overview</a>
-            </div>",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour",
+            </div>
+       </div>
+</div>
+            ",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour",
 "SaaSDemo.qlik.com key API calls","Slide generator","> Lets look at how we get from raw data to slides",,"","","","","         0","0","What is this slide generator?",
 "SaaSDemo.qlik.com key API calls","RECAP Engine API Slide generator flow: Extract the data from the app via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?",
 "SaaSDemo.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","First load level 1, 2, 3 data from the CSV. Each level also contains the resource for which it is relevant",,"","","","","         0","0","What is this slide generator?",
@@ -835,16 +833,16 @@ function getLevel1And2() {
         {{#each mainTopics }}
             <!-- for each header: a level 1 and 2 combination --> 
                 <!-- CREATE A SLIDE-->
-  <div class=""z step ui ten wide column raised segment integration"" data-x=""{{XValue slideNr}}"" data-rotate-x=""30"" data-z=""-1000"">
-        <h2 class=""ui center aligned main header"">
+  <div class=""step"">
+        <h2>
             <div class=""content"">
                 {{level 1 slide}}
-                <div class=""sub header"" style=""font-size: 1.2em;"">
+                <div class=""sub header"">
                     {{level 2 slide}}
                 </div>
             </div>
          </h2>
-            {{/if}}
+      <!-- print all level 3 items/videos/images-->
         {{/each}}     
     </div>
 </div>
@@ -888,7 +886,7 @@ var appChangeListener = function appChangeListener() {
 - Perform back end activities (insert configuration, licenses, security rules, apps)",,"","","","","         0","0","Deep dive",
 "API integration","Lets start simple: Front end focussed API overview","API- overview of what they do.png",,"","","","","         0","0","Deep dive, PreSales",
 "API integration","Lets start simple: Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,"","","","","         0","0","Deep dive, PreSales",
-"API integration","Qlik Sense API summary","APIs - Qlik sense api overview.png",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
+"API integration","Qlik Sense API summary","mindMapAPIIntegration.png",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
 "API integration","Client facing APIs use the Engine API","API - all apis have engine api as the basis.png",,"","","","","         0","0","Deep dive",
 "API integration","Font end APIs: Next we demonstrate some examples","Embedding the Hub",,"","","","","         0","0","Deep dive, PreSales",
 "API integration","Font end APIs: Next we demonstrate some examples","Creating extra functionality in Qlik Sense",,"","","","","         0","0","Deep dive, PreSales",
@@ -926,16 +924,17 @@ var appChangeListener = function appChangeListener() {
 "API integration","Introduction video Visual Studio plugin","https://youtu.be/tbH5pHDwYXg",,"","","","","         0","0","Deep dive",
 "API integration","How to connect to the Javascript, Engine or QRS API?","API flow browser to capabilities engine qrs api.png",,"","","","","         0","0","Deep dive",
 "API integration","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Technical - 2 hours",
-"API integration","QPS API","Login",,"","","","","         0","0","Technical - 1 day",
-"API integration","QPS API","Logout",,"","","","","         0","0","Technical - 1 day",
-"API integration","QPS API","Load balancing",,"","","","","         0","0","Technical - 1 day",
+"API integration","QPS API","What can you do with the QPSAPI?
+- Login
+- Logout
+- Load balancing over the Engines",,"","","","","         0","0","Technical - 1 day",
 "API integration","QRS API","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
 - copy/delete apps and streams
 - reload apps
 - get and update system rules
 - get (extract) and update settings",,"","","","","         0","0","Technical - 1 day",
-"API integration","QRS API","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","Deep dive, PreSales",
+"API integration","QRS API","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","Technical - 1 day",
 "API integration","Engine API","What can you do with the Engine API?
 - Automate all the activities you would normally do 
 ""inside an app""",,"","","","","         0","0","Technical - 1 day",
@@ -1294,9 +1293,23 @@ Basically all the things you can do yourself when you use an app
 "Engine API","Demo Dev-hub Engine API explorer","Dev-hub",,"","","","","         0","0","Deep dive",
 "Engine API","Demo Dev-hub Engine API explorer","SaaS demo ",,"","","","","         0","0","Deep dive",
 "Engine API","How to connect","engine API - how to connect.png",,"","","","","         0","0","PreSales",
+"Engine API","How to connect - using a certificate","[source](https://github.com/mindspank/enigma-table-rows-example/blob/master/config.js#L6)",,"","","","","         0","0","Deep dive",
+"Engine API","How to connect - using a certificate","```
+ // config for request to fetch application list from QRS.
+    request: {
+        url: `https://${hostname}:4242/qrs/app?xrfkey=abcdefghijklmnop`,
+        ca: [certificates.ca],
+        cert: certificates.cert,
+        key: certificates.key,
+        headers: {
+            'X-Qlik-User': `UserDirectory=${USERDIRECTORY};UserId=${USER}`,
+            'X-Qlik-Xrfkey': 'abcdefghijklmnop'
+        }
+    }
+```",,"","","","","         0","0","Deep dive",
 "Engine API","Enigma component architecture","web - enigma integration.png",,"","","","","         0","0","PreSales",
 "Engine API","Example Engine API flow when you create a session object (on the fly) for a chart","API - Engine - get table data.png",,"","","","","         0","0","Deep dive",
-"Engine API","Enigma - Example code","```
+"Engine API","Enigma - Example code get existing object","```
 const enigma = require('enigma.js');
 const qixSchema = require('./node_modules/enigma.js/schemas/qix/3.1/schema.json');
 const config = {
@@ -1322,7 +1335,7 @@ enigma.getService('qix', config).then((qix) => {
   });
 });
 ```",,"","","","","         0","0","Deep dive, PreSales",
-"Engine API","Enigma - Example code","[source enigma.js on GitHub](https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/README.md)",,"","","","","         0","0","Deep dive, PreSales",
+"Engine API","Enigma - Example code get existing object","[source enigma.js on GitHub](https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/README.md)",,"","","","","         0","0","Deep dive, PreSales",
 "Engine API","Example Engine API call: get list of apps (not enigma)","Client sends to Engine API
 ```
 {
@@ -1559,6 +1572,88 @@ function createCube(app) {
 
         })
 ```",,,,,,,,,
+"Engine API","Example code - create some objects","```
+ {
+        qInfo: {
+            qType: 'myobj',
+            qId: 'dataobject'
+        },
+        title: 'Amount of calories burned',
+        qHyperCubeDef: {
+            qDimensions: [{
+                qNullSuppression: true,
+                qDef: {
+                    qFieldDefs: ['StartWeekDay'],
+                    qSortCriterias: [{
+                        qSortByNumeric: 1,
+                        qSortByLoadOrder: 1
+                    }]
+                }
+            }],
+            qMeasures: [{
+                qDef: { qDef: 'Sum(calories)' }
+            }],
+            qInterColumnSortOrder: [0,1],
+            qInitialDataFetch: [{
+                qTop: 0,
+                qLeft: 0,
+                qWidth: 2,
+                qHeight: 5000
+            }]
+        }
+    },
+    {
+        qInfo: {
+            qType: 'mylist',
+            qId: 'listobject'
+        },
+        qListObjectDef: {
+            qDef: {
+                qFieldDefs: ['=Capitalize(StartMonth)'],
+                qSortCriterias: [{
+                    qSortByNumeric: 1
+                }]
+            },
+            qShowAlternatives: true,
+            qInitialDataFetch: [{
+                qHeight: 100,
+                qWidth: 1,
+                qTop: 0,
+                qLeft: 0
+            }]
+        }
+    }
+    
+];
+```",,,,,,,,,
+"Engine API","Example code - create some objects","[source](https://github.com/mindspank/sessionapp/tree/master/server/sensedata)",,,,,,,,,
+"Engine API","Example code: create an app on the fly (e.g. when the user logs in)","```
+// Generate a dummy guid that will be used for engine session.
+        const appId = generateUUID();
+
+        // Copy config and hi-jack users session
+        var config = Object.assign({}, baseconfig);
+        config.appname = appId;
+        config.headers = {
+            'Cookie': COOKIE_NAME + '=' + req.cookies[COOKIE_NAME]
+        };
+
+        // Connect to QIX and create a session app.
+        qsocks.Connect(config).then(global => {
+            return global.createSessionAppFromApp(TEMPLATE_GUID).then(app => {
+                return app.doReload()
+            });
+        })
+        .then(() => {
+            res.send(appId);
+        })
+        .catch(err => console.log)
+
+    } else {
+        res.send('Shit hit the fan :(')
+    };
+```",,,,,,,,,
+"Engine API","Example code: create an app on the fly (e.g. when the user logs in)","[source](https://github.com/mindspank/sessionapp-simple/blob/master/index.js#L48)",,,,,,,,,
 "Engine API","Exercise 1: get a list of apps via the engine API explorer in the dev-hub","Engine API - example screenshot.png",,"","","","","         0","0","Exercises, PreSales",
 "Engine API","Exercise 2: create a new folder connection to c:\temp","https://youtu.be/HmmZfPjqSMw",,"","","","","         0","0","Deep dive, Exercises",
 "Engine API","Exercise 3: get an existing object","Go to the engine API explorer",,"","","","","         0","0","Deep dive, Exercises",

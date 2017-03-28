@@ -32,7 +32,7 @@ Meteor.methods({
         if (!customer) { //if no user is selected, just insert john as a dummy
             // const error = 'You have not selected a user you want to simulate the Single Sign on with. For demo purposes we now selected John for you. You can also select your own user in step 4 of the SaaS demo';
             var response = {};
-            console.log('dummyCustomer :', dummyCustomer);
+            // console.log('dummyCustomer :', dummyCustomer);
             response.user = dummyCustomer.user;
             response.customer = dummyCustomer;
             // throw new Meteor.Warning('No user', error);
@@ -42,8 +42,7 @@ Meteor.methods({
             response.user = user;
             response.customer = customer;
         }
-
-        console.log('the response is: ', response);
+        // console.log('the response is: ', response);
         return response;
 
     },
