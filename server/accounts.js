@@ -18,6 +18,14 @@ ServiceConfiguration.configurations.upsert({
     }
 });
 
+// ServiceConfiguration.configurations.remove({
+//     service: "github"
+// });
+
+// ServiceConfiguration.configurations.remove({
+//     service: "facebook"
+// });
+
 // "AccountsUiConfig": {
 //       "passwordSignupFields": "USERNAME_AND_OPTIONAL_EMAIL",
 //       "requestPermissions": {

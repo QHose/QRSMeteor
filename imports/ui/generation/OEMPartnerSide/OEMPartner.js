@@ -83,7 +83,8 @@ Template.OEMPartner.events({
                 Session.set('loadingIndicator', '');
             } else {
                 Session.set('loadingIndicator', '');
-                sAlert.success("Qlik Sense has been cleaned up. We've removed all streams and apps");
+                Session.set('currentUser',null);
+                sAlert.success("Qlik Sense has been cleaned up: we have removed all previously provisioned streams and apps");
             }
         });
         Session.set('currentStep', 0);
