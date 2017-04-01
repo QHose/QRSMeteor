@@ -113,10 +113,10 @@ Template.users.events({
         insertTemplateAndDummyCustomers();
     },
     'click .insertNewCustomer' () {
-        $('#insertCustomer')
-            .modal({ observeChanges: true })
-            .modal('show');
-        refreshModal();
+        $('#insertCustomer').modal('show');
+        // .modal({ observeChanges: true })
+
+        // refreshModal();
     }
 
 });
@@ -140,12 +140,10 @@ Template.users.onRendered(function() {  
     AutoForm.setDefaultTemplate("semanticUI");
 })
 
-Template.updateUserFormStep1.onRendered(function() {  
-    Meteor.setTimeout(function() {
-        $('.ui.dropdown')
-            .dropdown();
+Template.updateGroupsFormStep1.onRendered(function() {  
+    this.$('.ui.dropdown')
+        .dropdown();
 
-    }, 900)
 })
 
 Template.insertCustomer.onRendered(function() {  

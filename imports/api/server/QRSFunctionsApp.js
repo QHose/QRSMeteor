@@ -95,7 +95,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
                     // console.log('get Script success, ', script);
 
                     var call = {};
-                    call.action = 'Extract current script';
+                    call.action = 'doc.getScript()';
                     call.request = 'We extracted the following script from the app: ' + script;
                     REST_Log(call);
                     // if you want to replace the database connection per customer use the script below.
@@ -104,7 +104,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
                     return doc.setScript(script) //we now just include the old script in this app
                         .then(function(result) {    
                             var call = {};
-                            call.action = 'Replace the data load (ETL) script'
+                            call.action = 'doc.setScript(script)'
                             call.request = 'The script of the app has been replaced with a customer specific one';
                             REST_Log(call);
                             // console.log('Script replaced');
@@ -116,14 +116,14 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
             return doc.doReload()
                 .then(function(result) {
                     var call = {};
-                    call.action = 'Reload app'
+                    call.action = 'doc.doReload()'
                     call.request = 'The app has been reloaded: ' + result;
                     REST_Log(call);
                     // console.log('Reload : ' + result);
                     return doc.doSave()
                         .then(function(result) {
                             var call = {};
-                            call.action = 'Save app'
+                            call.action = 'doc.doSave()'
                             call.request = 'App ' + appId + ' saved success';
                             REST_Log(call);
                             // console.log('Save : ', result);

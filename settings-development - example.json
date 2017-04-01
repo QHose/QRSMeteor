@@ -1,5 +1,5 @@
 {
-    "adminEmails": "mbj@qlik.com",
+    "adminEmails": "dfdf@qlik.com",
     "public": {
         "host": "PRESALES1",
         "port": 81,
@@ -33,7 +33,7 @@
         "enginePort": 4747,
         "proxyPort": 4243,
         "google": {
-            "clientId": "527202830644-4j6ht6bn1td081hpnfvmksle1ltft5jc.apps.googleusercontent.com",
+            "clientId": "527202830644-.apps.googleusercontent.com",
             "secret": ""
         },
         "facebook": {

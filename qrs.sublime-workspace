@@ -532,7 +532,16 @@
 			"file": "imports/ui/generation/OEMPartnerSide/users.js",
 			"settings":
 			{
-				"buffer_size": 5051,
+				"buffer_size": 5057,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "settings-development - example.json",
+			"settings":
+			{
+				"buffer_size": 1816,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,7 +559,16 @@
 			"file": "imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
 			"settings":
 			{
-				"buffer_size": 2428,
+				"buffer_size": 2307,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": ".meteor/packages",
+			"settings":
+			{
+				"buffer_size": 1962,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -560,14 +578,6 @@
 			"settings":
 			{
 				"buffer_size": 1192,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/main.js",
-			"settings":
-			{
-				"buffer_size": 13700,
 				"line_ending": "Windows"
 			}
 		},
@@ -652,11 +662,10 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
@@ -1177,7 +1186,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1206,10 +1215,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2180.0,
+						"translation.y": 2461.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1218,15 +1227,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5051,
+						"buffer_size": 5057,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2945,
-								2950
+								3100,
+								3100
 							]
 						],
 						"settings":
@@ -1238,14 +1247,46 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1726.0,
+						"translation.y": 2388.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "settings-development - example.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1816,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								1816
+							]
+						],
+						"settings":
+						{
+							"auto_complete": true,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "imports/api/customers.js",
 					"semi_transient": false,
 					"settings":
@@ -1273,24 +1314,24 @@
 						"translation.y": 694.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2428,
+						"buffer_size": 2307,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1612,
-								1628
+								791,
+								791
 							]
 						],
 						"settings":
@@ -1305,11 +1346,40 @@
 						"translation.y": 5.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
+					"file": ".meteor/packages",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1962,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1781,
+								1781
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 474.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "imports/ui/generation/OEMPartnerSide/simulateUserLogin.js",
 					"semi_transient": false,
 					"settings":
@@ -1336,42 +1406,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "server/main.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 13700,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4896,
-								4935
-							]
-						],
-						"settings":
-						{
-							"git_gutter_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 2057.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "imports/api/server/QPSFunctions.js",
 					"semi_transient": false,
 					"settings":
@@ -1399,7 +1438,7 @@
 						"translation.y": 1116.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
@@ -1494,7 +1533,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 426.0,
+	"side_bar_width": 707.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
