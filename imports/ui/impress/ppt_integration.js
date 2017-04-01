@@ -1,13 +1,15 @@
 import { senseConfig } from '/imports/api/config.js';
 import './ppt_integration.html';
 import lodash from 'lodash';
-import hljs from 'highlight.js'
+import hljs from 'highlight.js';
 _ = lodash;
 
-// var hljs = require('hljs');
 var showdown = require('showdown');
 var converter = new showdown.Converter();
 const enigma = require('enigma');
+// The QIX schema needed by enigma.js
+const qixschema = require('/node_modules/enigma.js/schemas/qix/3.1/schema.json');
+
 var appId = Meteor.settings.public.IntegrationPresenatationApp;
 var IntegrationPresenatationSelectionSheet = 'DYTpxv';
 var IntegrationPresenatationSortedDataObject = 'pskL';
@@ -18,7 +20,8 @@ Template.ppt_integrationMain.onRendered(function() {
     // Session.set('clickedInSelection', false);
     this.$('.ui.sidebar')
         .sidebar('toggle');
-})
+});
+
 Template.ppt_integration.onRendered(function() {
     Session.set('slideLoading', true);
     getLevel1to3('integrationTopics');
@@ -177,7 +180,6 @@ function setXValue(index) {
     return slideWidth * index;
 }
 
-
 function textOfLevel(row, level) {
     level -= 1
     return row[level].qText
@@ -220,144 +222,127 @@ var getLocalValuesOfLevel = function(parentText) {
 
 function getLevel1And2() {
 
-    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
-        .then(qixschema => {
+    // Set up connection to QIX, see https://github.com/mindspank/enigma-table-rows-example/blob/master/index.js
 
-            enigma.getService('qix', {
-                    schema: qixschema,
-                    appId: appId,
-                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-                        host: senseConfig.host,
-                        prefix: 'anon',
-                        port: senseConfig.port,
-                        unsecure: true
-                    }
-                })
-                .then(qix => {
-                    qix.app.getObject(IntegrationPresenatationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same
-                        .then(model => {
-                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {
-                                // console.log('Result set from Qlik Sense:', data);
-                                var table = data[0].qMatrix;
-                                var tableWithChapters = insertSectionBreakers(table);
-                                console.log('Slides loaded, and we added extra chapter breakers. Object now stored in in session var mainTopics, so slides can be created by impress.js', tableWithChapters);
-                                Session.set('mainTopics', tableWithChapters)
-                                Meteor.setTimeout(function() {
+    enigma.getService('qix', {
+            schema: qixschema,
+            appId: appId,
+            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+                host: senseConfig.host,
+                prefix: 'anon',
+                port: senseConfig.port,
+                unsecure: true
+            }
+        })
+        .then(qix => {
+            qix.app.getObject(IntegrationPresenatationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same
+                .then(model => {
+                    model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {
+                        // console.log('Result set from Qlik Sense:', data);
+                        var table = data[0].qMatrix;
+                        var tableWithChapters = insertSectionBreakers(table);
+                        console.log('Slides loaded, and we added extra chapter breakers. Object now stored in in session var mainTopics, so slides can be created by impress.js', tableWithChapters);
+                        Session.set('mainTopics', tableWithChapters)
+                        Meteor.setTimeout(function() {
 
-                                    impress().init();
-                                    impress().goto(0);
-                                    $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
-                                    Session.set('slideLoading', false);
-                                }, 100);
-                            })
-                        })
+                            impress().init();
+                            impress().goto(0);
+                            $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
+                            Session.set('slideLoading', false);
+                        }, 100);
+                    })
                 })
         })
 }
 
 
 var appChangeListener = function appChangeListener() {
-    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
-        .then(qixschema => {
-            enigma.getService('qix', {
-                    schema: qixschema,
-                    appId: appId,
-                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-                        host: senseConfig.host,
-                        prefix: 'anon',
-                        port: senseConfig.port,
-                        unsecure: true
-                    }
-                })
-                .then(qix => {
-                    qix.app.on('changed', () => {
-                        // console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
-                        // getLevel1to3('selectedDataSet');
-                        location.reload();
-                    });
-                })
+    enigma.getService('qix', {
+            schema: qixschema,
+            appId: appId,
+            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+                host: senseConfig.host,
+                prefix: 'anon',
+                port: senseConfig.port,
+                unsecure: true
+            }
+        })
+        .then(qix => {
+            qix.app.on('changed', () => {
+                // console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
+                // getLevel1to3('selectedDataSet');
+                location.reload();
+            });
         })
 }
 
 function getValuesOfLevel(level) {
     console.log('getLocalValuesOfLevel: ', level);
-    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
-        .then(qixschema => {
 
-            enigma.getService('qix', {
-                    schema: qixschema,
-                    appId: appId,
-                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-                        host: senseConfig.host,
-                        prefix: 'anon',
-                        port: senseConfig.port,
-                        unsecure: true
+    enigma.getService('qix', {
+            schema: qixschema,
+            appId: appId,
+            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+                host: senseConfig.host,
+                prefix: 'anon',
+                port: senseConfig.port,
+                unsecure: true
+            }
+        })
+        .then(qix => {
+
+            qix.app.createSessionObject({
+                    qInfo: { qType: 'cube' },
+                    qHyperCubeDef: {
+                        qDimensions: [{
+                            qDef: { qFieldDefs: [level] }
+                        }]
                     }
                 })
-                .then(qix => {
-
-                    qix.app.createSessionObject({
-                            qInfo: { qType: 'cube' },
-                            qHyperCubeDef: {
-                                qDimensions: [{
-                                    qDef: { qFieldDefs: [level] }
-                                }]
-                            }
-                        })
-                        .then(model => {
-                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
-                                // console.log('Result set from Qlik Sense:', data);
-                                var table = data[0].qMatrix;
-                                // console.log('Level ' + level + ' data:', table);
-                                Session.set('level3Data', table)
-                            })
-                        })
-
+                .then(model => {
+                    model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
+                        // console.log('Result set from Qlik Sense:', data);
+                        var table = data[0].qMatrix;
+                        // console.log('Level ' + level + ' data:', table);
+                        Session.set('level3Data', table)
+                    })
                 })
-
         })
-
-
 }
 
 function getLevel1to3(sessionName) {
-    $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
-        .then(qixschema => {
+    enigma.getService('qix', {
+            schema: qixschema,
+            appId: appId,
+            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+                host: senseConfig.host,
+                prefix: 'anon',
+                port: senseConfig.port,
+                unsecure: true
+            }
+        })
+        .then(qix => {
 
-            enigma.getService('qix', {
-                    schema: qixschema,
-                    appId: appId,
-                    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-                        host: senseConfig.host,
-                        prefix: 'anon',
-                        port: senseConfig.port,
-                        unsecure: true
+            qix.app.createSessionObject({
+                    qInfo: { qType: 'cube' },
+                    qHyperCubeDef: {
+                        qDimensions: [{
+                            qDef: { qFieldDefs: ['Level 1'] }
+                        }, {
+                            qDef: { qFieldDefs: ['Level 2'] }
+                        }, {
+                            qDef: { qFieldDefs: ['Level 3'] }
+                        }]
                     }
                 })
-                .then(qix => {
-
-                    qix.app.createSessionObject({
-                            qInfo: { qType: 'cube' },
-                            qHyperCubeDef: {
-                                qDimensions: [{
-                                    qDef: { qFieldDefs: ['Level 1'] }
-                                }, {
-                                    qDef: { qFieldDefs: ['Level 2'] }
-                                }, {
-                                    qDef: { qFieldDefs: ['Level 3'] }
-                                }]
-                            }
-                        })
-                        .then(model => {
-                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
-                                // console.log('Result set from Qlik Sense:', data);
-                                var table = data[0].qMatrix;
-                                var tableWithChapters = insertSectionBreakers(table);
-                                // console.log('New data received, chapters added and now stored in in session var ', sessionName);
-                                Session.set(sessionName, tableWithChapters);
-                            })
-                        })
-
+                .then(model => {
+                    model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
+                        // console.log('Result set from Qlik Sense:', data);
+                        var table = data[0].qMatrix;
+                        var tableWithChapters = insertSectionBreakers(table);
+                        // console.log('New data received, chapters added and now stored in in session var ', sessionName);
+                        Session.set(sessionName, tableWithChapters);
+                    })
                 })
 
         })
@@ -386,30 +371,30 @@ function insertSectionBreakers(table) {
  * @author Rob W http://stackoverflow.com/u/938089
  * @param code_elem HTMLCodeElement (or any element containing *plain text*)
  */
-function autoindent(code_elem) {
-    // Grab the lines
-    var textContent = document.textContent === null ? 'textContent' : 'innerText';
-    var lines = code_elem[textContent].split(/\r?\n/),
-        fragment = document.createDocumentFragment(),
-        dummy, space_width, i, prefix_len, line_elem;
+// function autoindent(code_elem) {
+//     // Grab the lines
+//     var textContent = document.textContent === null ? 'textContent' : 'innerText';
+//     var lines = code_elem[textContent].split(/\r?\n/),
+//         fragment = document.createDocumentFragment(),
+//         dummy, space_width, i, prefix_len, line_elem;
 
-    // Calculate the width of white space
-    // Assume that inline element inherit styles from parent (<code>)
-    dummy = document.createElement('span');
-    code_elem.appendChild(dummy);
-    // offsetWidth includes padding and border, explicitly override the style:
-    dummy.style.cssText = 'border:0;padding:0;';
-    dummy[textContent] = '          ';
-    space_width = dummy.offsetWidth / 10;
-    // Wipe contents
-    code_elem.innerHTML = '';
+//     // Calculate the width of white space
+//     // Assume that inline element inherit styles from parent (<code>)
+//     dummy = document.createElement('span');
+//     code_elem.appendChild(dummy);
+//     // offsetWidth includes padding and border, explicitly override the style:
+//     dummy.style.cssText = 'border:0;padding:0;';
+//     dummy[textContent] = '          ';
+//     space_width = dummy.offsetWidth / 10;
+//     // Wipe contents
+//     code_elem.innerHTML = '';
 
-    for (i = 0; i < lines.length; i++) {
-        // NOTE: All preceeding white space (including tabs is included)
-        prefix_len = /^\s*/.exec(lines[i])[0].length;
-        line_elem = fragment.appendChild(document.createElement('div'));
-        line_elem.style.marginLeft = space_width * prefix_len + 'px';
-        line_elem[textContent] = lines[i].substring(prefix_len);
-    }
-    code_elem.appendChild(fragment);
-}
+//     for (i = 0; i < lines.length; i++) {
+//         // NOTE: All preceeding white space (including tabs is included)
+//         prefix_len = /^\s*/.exec(lines[i])[0].length;
+//         line_elem = fragment.appendChild(document.createElement('div'));
+//         line_elem.style.marginLeft = space_width * prefix_len + 'px';
+//         line_elem[textContent] = lines[i].substring(prefix_len);
+//     }
+//     code_elem.appendChild(fragment);
+// }

@@ -9,7 +9,7 @@
     {{> stepsRow}}
     <div class="ui two column stackable grid">
         <div id="insertCustomer" class="ui modal">
-            {{> insertCustomer}} 
+            {{> insertCustomer}}
         </div>
         <div class="row">
             <div class="column">
@@ -18,82 +18,124 @@
                 </h4>
                 <!-- <div class="ui segment"> -->
                 {{#if noCustomers}}
-                <div class="ui icon message">
-                    <img class="icon" src="images/customers.png">
-                    <div class="content">
-                        <div class="header">
-                            <h4>No customers</h4>
+                    <div class="ui icon message">
+                        <img class="icon" src="images/customers.png">
+                        <div class="content">
+                            <div class="header">
+                                <h4>No customers</h4>
+                            </div>
+                            <p>Please insert some customers.</p>
                         </div>
-                        <p>Please insert some customers.</p>
                     </div>
-                </div>
-                {{> insertCustomerButtons}} {{else}}
-                <div class="ui icon message">
-                    <img class="icon" src="images/customers.png">
-                    <div class="content">
-                        <div class="header">
-                            Customers in your SaaS platform
+                    {{> insertCustomerButtons}}
+                {{else}}
+                    <div class="ui icon message">
+                        <img class="icon" src="images/customers.png">
+                        <div class="content">
+                            <div class="header">
+                                Customers in your SaaS platform
+                            </div>
+                            <p>Below you will find the customers you have entered in the local MongoDB Database of your SaaS plaform.
+                                <!-- Based on "this table" we can create streams, apps or whatever we like in Qlik Sense via the Qlik Sense repository (QRS) and the Engine API. -->Press a customer name to update.</p>
                         </div>
-                        <p>Below you will find the customers you have entered in the local MongoDB Database of your SaaS plaform.
-                            <!-- Based on "this table" we can create streams, apps or whatever we like in Qlik Sense via the Qlik Sense repository (QRS) and the Engine API. -->Press a customer name to update.</p>
                     </div>
-                </div>
-                <table class="ui simple table">
-                    <thead>
-                        <tr>
-                            <th>Customer</th>
-                            <th>Delete customer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each customers}}
-                        <tr class="customer-row {{active}}">
-                            <td class="{{ribbon}}">
-                                {{name}}
-                            </td>
-                            <td class='delete'><i class="remove circle icon"></i></td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
-                <div class="ui buttons">
-                    <a href="#" class="ui button insertNewCustomer">Insert new customer</a>
-                    <div class="or"></div>
-                    <div class="ui positive button backToGeneration"><i class="play icon "></i> Go to step 2</div>
-                </div>
+                    <table class="ui simple table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Delete customer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each customers}}
+                                <tr class="customer-row {{active}}">
+                                    <td class="{{ribbon}}">
+                                        {{name}}
+                                    </td>
+                                    <td class='delete'><i class="remove circle icon"></i></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    <div class="ui buttons">
+                        <a href="#" class="ui button insertNewCustomer">Insert new customer</a>
+                        <div class="or"></div>
+                        <div class="ui positive button backToGeneration"><i class="play icon "></i> Go to step 2</div>
+                    </div>
                 {{/if}}
                 <!-- </div> -->
             </div>
-            <div class="column">{{#unless disableButtons}}
-                <h4 class="ui dividing header">
-                      <!-- <i class="tag icon"></i> -->
-                      Update
-                  </h4>
-                <!-- <div class="ui"> -->
-                {{#autoForm id="afUpdateDemo" omitFields="users.$.currentlyLoggedIn" type=formType collection=Customers doc=selectedCustomerDoc autosave=autoSaveMode}} {{> afQuickField name='name'}}
-                <fieldset>
-                    {{> afQuickField name='users'}}
-                </fieldset>
-                {{/autoForm}}
-                <!-- </div> -->
-                {{/unless}} </div>
+            <div class="column">
+                {{#unless disableButtons}}
+                    {{> updateUserFormStep1}}
+                {{/unless}}
+            </div>
         </div>
     </div>
+</template>
+<template name="updateUserFormStep1">
+    {{#with selectedCustomerDoc}}
+        <h4 class="ui dividing header">
+          Update the group memberships of the users for customer:  {{name}}
+      </h4>
+        <form class="ui form">
+            <!--             <h4 class="ui dividing header">User Information</h4>
+ -->
+            {{#each users}}
+                <div class="ui green segment">
+                    <div class="ui form">
+                        <div class="three fields">
+                            <div class="field">
+                            {{name}}
+                                <!-- <input type="text" name="name" readonly="" value="{{name}}"> -->
+                            </div>
+                            <div class="field">
+                                <div class="ui dropdown">
+                                    <input type="hidden" name="group" value="{{group}}">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">{{group}}</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="Consumer">Consumer</div>
+                                        <div class="item" data-value="Contributor">Contributor</div>
+                                        <div class="item" data-value="Developer">Developer</div>
+                                        <div class="item" data-value="Admin">{{../name}} admin</div>
+                                        <div class="item" data-value="Global auditor">SaaS platform auditor (global display)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui dropdown">
+                                    <input type="hidden" name="country" value="{{country}}">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">{{country}}</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="Italy">Italy</div>
+                                        <div class="item" data-value="United States">United States</div>
+                                        <div class="item" data-value="Germany">Germany</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </form>
+    {{/with}}
 </template>
 <template name="modalRefresher">
 </template>
 <template name="insertCustomer">
- {{> sAlert}}
-    {{#autoForm collection=Customers id="insertCustomerForm" omitFields="users.$.currentlyLoggedIn" type="insert"}}
-    <fieldset>
-        {{> afQuickField name='name'}} {{> afQuickField name='users'}}
-    </fieldset>
-    <div class="ui right floated buttons">
-        <button type="submit" class="ui positive button saveNewCustomer">
-            <i class="edit icon "></i> Insert customer</button>
-        <div class="or"></div>
-        <button type="submit" class="ui button closeInsertModal">
-            close</button>
-    </div>
+    {{> sAlert}}
+    {{#autoForm collection=Customers id="insertCustomerForm" omitFields="users.$.currentlyLoggedIn" type="insert" }}
+        <fieldset>
+            {{> afQuickField name='name'}} {{> afQuickField name='users'}}
+        </fieldset>
+        <div class="ui right floated buttons">
+            <button type="submit" class="ui positive button saveNewCustomer">
+                <i class="edit icon "></i> Insert customer</button>
+            <div class="or"></div>
+            <button type="submit" class="ui button closeInsertModal">
+                close</button>
+        </div>
     {{/autoForm}}
 </template>

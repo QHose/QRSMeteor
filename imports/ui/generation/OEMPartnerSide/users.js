@@ -16,51 +16,74 @@ AutoForm.addHooks(['insertCustomerForm'], {
         sAlert.success('We inserted the customer into your local MongoDB.');
         //Router.go("/posts");
     },
-    before: {
-        // Replace `formType` with the form `type` attribute to which this hook applies
-        insert: function(customer) {
-            // Potentially alter the doc
-            if (Meteor.userId()) {
-                customer.generationUserId = Meteor.userId();
-                customer.checked = true;
-            }
-            // console.log('insert users add hook', customer);
-            return customer;
-        }
-    },
+    // before: {
+    //     // Replace `formType` with the form `type` attribute to which this hook applies
+    //     insert: function(customer) {
+    //         // Potentially alter the doc
+    //         if (Meteor.userId()) {
+    //             customer.generationUserId = Meteor.userId();
+    //             customer.checked = true;
+    //         }
+    //         console.log('insert users add hook', customer);
+    //         return customer;
+    //     }
+    // },
 });
 
-// SimpleSchema.debug = true;
+SimpleSchema.debug = true;
 
 Template.users.helpers({
     autoSaveMode: function() {
         //return Session.get("autoSaveMode") ? true : false;
         return true;
     },
-    selectedCustomerDoc: function() {
-        return Customers.findOne(Session.get("selectedCustomer"));
-    },
-    isSelectedCustomer: function() {
-        return Session.equals("selectedCustomer", this._id);
+    isselectedCustomer: function() {
+        return Session.equals("selectedCustomerStep1", this._id);
     },
     formType: function() {
-        if (Session.get("selectedCustomer")) {
+        if (Session.get("selectedCustomerStep1")) {
             return "update";
         } else {
             return "disabled";
         }
     },
     disableButtons: function() {
-        return !Session.get("selectedCustomer");
+        return !Session.get("selectedCustomerStep1");
     },
     ribbon: function() {
-        return Session.equals("selectedCustomer", this._id) ? "ui ribbon label" : '';
+        return Session.equals("selectedCustomerStep1", this._id) ? "ui ribbon label" : '';
     },
     active: function() {
         return Session.equals("activeCustomer", this._id) ? "active" : '';
-    },
+    }
 });
 
+Template.updateUserFormStep1.helpers({
+    selectedCustomerDoc: function() {
+        // console.log('selectedCustomerStep1 helper doc ', Customers.findOne(Session.get("selectedCustomerStep1")));
+        return Customers.findOne(Session.get("selectedCustomerStep1"));
+    },
+})
+
+Template.updateUserFormStep1.events({
+    'change' (evt, template) {
+        console.log('something changed resetLoggedInUser', evt, template);
+        try {
+            //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
+            Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
+        } catch (err) {
+            //ignore
+        }
+
+        var updatedUser = {
+            name: template.find("[name='name']").value,
+            group: template.find("[name='group']").value,
+            country: template.find("[name='country']").value,
+        };
+
+        Meteor.call('updateUserForCustomer', updatedUser);
+    }
+});
 
 Template.users.events({
     '.customer-row' (event, template) {
@@ -69,9 +92,13 @@ Template.users.events({
         Session.set("activeCustomer", this._id);
     },
     'click .delete' () {
-        Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
+        try {
+            Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
+        } catch (err) {
+            //ignore
+        }
         Customers.remove(this._id);
-        Session.set("selectedCustomer", '');
+        Session.set("selectedCustomerStep1", '');
     },
     'click .backToGeneration' () {
         console.log('go to step 2 clicked')
@@ -79,12 +106,7 @@ Template.users.events({
         Router.go('generation');
     },
     'click .customer-row': function() {
-        Session.set("selectedCustomer", this._id);
-        console.log('customer click, selectedCustomer', this._id);
-    },
-    'change' () {
-        console.log('something changed resetLoggedInUser');
-        Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
+        Session.set("selectedCustomerStep1", this._id);
     },
     'click .insertDummyCustomers' (event) {
         event.preventDefault();
@@ -94,7 +116,7 @@ Template.users.events({
         $('#insertCustomer')
             .modal({ observeChanges: true })
             .modal('show');
-            refreshModal();
+        refreshModal();
     }
 
 });
@@ -116,6 +138,14 @@ Template.modalRefresher.onRendered(function() {
 
 Template.users.onRendered(function() {  
     AutoForm.setDefaultTemplate("semanticUI");
+})
+
+Template.updateUserFormStep1.onRendered(function() {  
+    Meteor.setTimeout(function() {
+        $('.ui.dropdown')
+            .dropdown();
+
+    }, 900)
 })
 
 Template.insertCustomer.onRendered(function() {  

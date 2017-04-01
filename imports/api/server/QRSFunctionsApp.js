@@ -16,7 +16,7 @@ _ = lodash;
 
 //install NPM modules
 var fs = require('fs');
-var qsocks = require('qsocks');
+var qsocks = require('qsocks'); //pls now use enigmaJS instead
 
 export function generateStreamAndApp(customers, generationUserId) {
     // console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
@@ -160,7 +160,7 @@ function checkTemplateAppExists(generationUserId) {
         if (!templateFound) {
             throw new Meteor.Error('You have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
         } else {
-            console.log('checkTemplateAppExists: True, template guid exist: ', templateApp.id);
+            // console.log('checkTemplateAppExists: True, template guid exist: ', templateApp.id);
         }
     })
     return templateApps;
@@ -168,7 +168,7 @@ function checkTemplateAppExists(generationUserId) {
 
 function createTag(name) {
     check(name, String);
-    console.log('QRS Functions Appp, create a tag: ' + name);
+    // console.log('QRS Functions Appp, create a tag: ' + name);
 
     try {
         const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Tag', {
@@ -311,7 +311,7 @@ function checkStreamStatus(customer) {
         // console.log('Stream already exists: ', stream.id);
         streamId = stream.id;
     } else {
-        console.log('No stream for customer exist, so create one: ' + customer.name);
+        // console.log('No stream for customer exist, so create one: ' + customer.name);
         streamId = QSStream.createStream(customer.name)
             .data.id;
         // console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
@@ -353,7 +353,7 @@ export function getApps() {
 
 
 export function deleteApp(guid) {
-    console.log('QRSApp deleteApp: ', guid);
+    // console.log('QRSApp deleteApp: ', guid);
     try {
         const call = {};
         const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {

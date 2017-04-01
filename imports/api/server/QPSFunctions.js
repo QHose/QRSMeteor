@@ -79,7 +79,9 @@ Meteor.methods({
         Customers.find({ 'generationUserId': Meteor.userId() })
             .forEach(function(customer) {
                 var updatedUsers = _.map(customer.users, function(user) {
-                    user.currentlyLoggedIn = false;
+                    if(user){
+                      user.currentlyLoggedIn = false;  
+                    } 
 
                     //and just logout everybody in the user list                            
                     logoutUser(Meteor.userId(), user.name);

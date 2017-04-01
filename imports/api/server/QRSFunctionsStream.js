@@ -46,7 +46,7 @@ export function getStreams() {
 
 
 export function createStream(name) {
-    console.log('QRS sync Functions Stream, create the stream with name', name);
+    // console.log('QRS sync Functions Stream, create the stream with name', name);
 
     try {     
         const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream', {

@@ -1,0 +1,8 @@
+{
+  "plugins": [
+    "meteor"
+  ],
+  "extends": [
+    "plugin:meteor/recommended"
+  ]
+}

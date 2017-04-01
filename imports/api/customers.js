@@ -1,8 +1,16 @@
 import { Mongo } from 'meteor/mongo';
-// import {faker} from 'practicalmeteor:faker';
-
 export const Customers = new Mongo.Collection('customers');
 
+if (Meteor.isServer) {
+    Meteor.methods({
+        updateUserForCustomer(updatedUser) {
+            Customers.update({
+                'generationUserId': Meteor.userId(),
+                'users.name': updatedUser.name
+            }, { $set: { 'users.$': updatedUser } });
+        },
+    })
+}
 
 Customers.attachSchema(new SimpleSchema({
     name: {
@@ -12,7 +20,8 @@ Customers.attachSchema(new SimpleSchema({
     checked: {
         type: Boolean,
         label: "Selected for the generation?",
-        optional: true
+        optional: true,
+        defaultValue: true
     },
     createdAt: {
         type: Date,
@@ -26,6 +35,9 @@ Customers.attachSchema(new SimpleSchema({
     },
     generationUserId: {
         type: String,
+        autoValue: function() {
+            return this.userId;
+        }
     },
     users: {
         type: [Object],
@@ -39,7 +51,7 @@ Customers.attachSchema(new SimpleSchema({
     },
     "users.$.group": {
         type: String,
-        allowedValues: ['Consumer', 'Contributor', 'Developer', 'Admin', 'Global Auditor']
+        allowedValues: ['Consumer', 'Contributor', 'Developer', 'Admin', 'Global auditor']
     },
     "users.$.currentlyLoggedIn": {
         type: Boolean,
@@ -52,15 +64,15 @@ Customers.attachSchema(new SimpleSchema({
 }));
 
 export const dummyCustomer = {
-        "name": faker.company.companyName(),
-        "checked": true,
-        "user": {
-            "name": 'John',
-            "group": "Consumer",
-            "currentlyLoggedIn": false,
-            "country": "Germany"
-        }
-    };
+    "name": faker.company.companyName(),
+    "checked": true,
+    "user": {
+        "name": 'John',
+        "group": "Consumer",
+        "currentlyLoggedIn": false,
+        "country": "Germany"
+    }
+};
 
 export const dummyCustomers = [{
         "name": faker.company.companyName(),
