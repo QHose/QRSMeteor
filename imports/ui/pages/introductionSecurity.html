@@ -6,10 +6,13 @@
         <img class="ui huge centered image" data-action="zoom" src="images/architecture - OEM SaaS scenario.png">
         <div class="ui divider"></div>
         <h4 class="ui header">Authentication</h4>
-        <img class="ui small left floated image" src="images/id.png"> We re-use your existing way of authenticating users. We insert a small piece of code inside your existing "security module.” In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via an SSL certificate exchange), and send this information about the user (user ID, group membership) in a JSON object to Sense (we call this ticketing).
+        <!-- <img class="ui small left floated image" src="images/id.png">  -->
+        <img class="ui small left floated image" data-action="zoom" src="images/flow - ticketing authentication for dummies.png">
+
+        We re-use your existing way of authenticating users. We insert a small piece of code inside your existing "security module.” In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via an SSL certificate exchange), and send this information about the user (user ID, group membership) in a JSON object to Sense (we call this ticketing).
         <div class="ui divider"></div>
         <h4 class="ui header">Authorization</h4>
-        <img class="ui small right floated image" src="images/securityRules.png">Based on the user ID and group membership streams, apps and sheets (called "resources" in our rule based security model) are either shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer their own stream, we can grant access if the name of the stream (the company name) matches the name of the company we received from the website in the ticket. This can be controlled by adding 1 row of security configuration: User.group = resource.name.
+        <img class="ui small right floated image" data-action="zoom" src="images/securityOverview.png">Based on the user ID and group membership streams, apps and sheets (called "resources" in our rule based security model) are either shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer their own stream, we can grant access if the name of the stream (the company name) matches the name of the company we received from the website in the ticket. This can be controlled by adding 1 row of security configuration: User.group = resource.name.
         <div class="center aligned column">
             <div class="center aligned column">
                 <div class="ui mini buttons">
