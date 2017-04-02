@@ -72,10 +72,8 @@ Template.updateGroupsFormStep1.events({
 
         try {
             //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
-            Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
-        } catch (err) {
-            //ignore
-        }
+            Meteor.call('resetLoggedInUser'); 
+        } catch (err) {}
 
         var updatedUser = {
             name: Template.currentData().name,
@@ -84,6 +82,7 @@ Template.updateGroupsFormStep1.events({
         };
 
         Meteor.call('updateUserForCustomer', updatedUser);
+        sAlert.success('Groups are updated for '+updatedUser.name);
     }
 });
 
