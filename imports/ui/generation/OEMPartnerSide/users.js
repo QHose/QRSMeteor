@@ -65,9 +65,11 @@ Template.updateUserFormStep1.helpers({
     },
 })
 
-Template.updateUserFormStep1.events({
+Template.updateGroupsFormStep1.events({
     'change' (evt, template) {
-        console.log('something changed resetLoggedInUser', evt, template);
+        //will give you your data context also
+        console.log(Template.parentData(0));
+
         try {
             //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
             Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
@@ -76,7 +78,7 @@ Template.updateUserFormStep1.events({
         }
 
         var updatedUser = {
-            name: template.find("[name='name']").value,
+            name: Template.currentData().name,
             group: template.find("[name='group']").value,
             country: template.find("[name='country']").value,
         };

@@ -1,16 +1,18 @@
 import { Mongo } from 'meteor/mongo';
 export const Customers = new Mongo.Collection('customers');
 
-if (Meteor.isServer) {
-    Meteor.methods({
+// if (Meteor.isServer) {
+Meteor.methods({
         updateUserForCustomer(updatedUser) {
-            Customers.update({
+            var selection = {
                 'generationUserId': Meteor.userId(),
                 'users.name': updatedUser.name
-            }, { $set: { 'users.$': updatedUser } });
+            };
+            Customers.update(
+                selection, { $set: { 'users.$': updatedUser } });
         },
     })
-}
+    // }
 
 Customers.attachSchema(new SimpleSchema({
     name: {
