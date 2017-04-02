@@ -114,10 +114,9 @@ Template.users.events({
         insertTemplateAndDummyCustomers();
     },
     'click .insertNewCustomer' () {
-        $('#insertCustomer').modal('show');
-        // .modal({ observeChanges: true })
-
-        // refreshModal();
+        $('#insertCustomer').modal('show')
+        .modal({ observeChanges: true });
+        refreshModal();
     }
 
 });
@@ -153,6 +152,6 @@ Template.insertCustomer.onRendered(function() {  
 
 
 Template.users.onCreated(function() {
-    this.subscribe('customers');
+    // this.subscribe('customers');
     Session.set('currentStep', 1);
 })

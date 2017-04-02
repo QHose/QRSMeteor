@@ -147,7 +147,7 @@ if (Meteor.isClient) {
     });
 
     Template.registerHelper('customers', function() {
-        return Customers.find({}, { sort: { checked: -1 } });
+        return Customers.find({});
     });
 
     //used for Aldeed autoform

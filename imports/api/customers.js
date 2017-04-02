@@ -1,7 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 export const Customers = new Mongo.Collection('customers');
 
-// if (Meteor.isServer) {
 Meteor.methods({
         updateUserForCustomer(updatedUser) {
             var selection = {
@@ -12,7 +11,6 @@ Meteor.methods({
                 selection, { $set: { 'users.$': updatedUser } });
         },
     })
-    // }
 
 Customers.attachSchema(new SimpleSchema({
     name: {
