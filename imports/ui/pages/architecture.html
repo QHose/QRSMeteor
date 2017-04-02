@@ -15,71 +15,75 @@
     <!--     <h4> Qlik Sense architecture and deployment</h4>
 -->
     <p> The integration of two software platforms entails multiple considerations. Each platform has its own nuances. In our approach here, we deconstruct our integration approach into the following categories: dashboard, data, security, web, APIs and architecture.</p>
-        <h4>Integration flow summary</h4>
-        <p>The picture below outlines the key integration aspects.
-            <UL>
-                <li> A user logs in into your multi-tenant SaaS application platform. Your platform contains some Qlik Sense information in an IFrame or DIV tag.</li>
-                <li>The proxy intercepts the request and redirects the user to the authentication module of your SaaS platform. Your platform knows the identity and group membership of the user and It requests an access ticket for this user.</li>
-                <li> We redirect the user’s request back to the proxy, but now with the ticket number appended to the URL. Qlik Sense validates the request and will set a session cookie.</li>
-                <li> Now the authentication is complete and Qlik Sense will evaluate the security rules and will only present the authorized streams and apps to the user.</li>
-            </UL>
-        </p>
-        <img class="ui centered image"  data-action="zoom" src="images/summary_integrated_architecture.png">
-        <div class="ui divider"></div>
-        <h4>Web integration</h4>
-        <p>You can integrate the Qlik Sense hub, apps, sheets or individual objects using an Iframe or DIV tag. All functionality is delivered via a webserver called the proxy (QPS). The QPS also performs the authentication check and does the load balancing over the engines, and redirects the user to your SaaS platform to request the ticket if not yet authenticated via a session cookie.
-        </p>
-        <div class="ui divider"></div>
-        <h4>Data integration</h4>
-        <p>A powerful <a href="http://www.qlik.com/us/products/data-sources">data integration capability</a> for cleansing, transforming, and unifying multiple, disparate data sources for analysis. A robust data integration layer creates a unified view of information from many different sources, without requiring external tools or data repositories.
-        </p>
-        <img class="ui medium centered image" data-action="zoom" src="images/dataIntegrationIntro.png">
-        <p>
-            In the demo we’ve assumed you have a database per customer instance and you also have a master database which contains the customers, the database connections, user rights and possibly customer specific custom tables and fields.
-        </p>
-        <div class="ui divider"></div>
-        <!-- <img class="ui tiny right floated image" src="images/id.png"> -->
-        <h4>Security integration</h4>
-        <p>Actually you don't need to do so much on the security side. You don't create users or groups in Sense. You just supply the userID and group membership in the security ticket. Based on the info in the ticket access is provided. Resources are protected using the <a href="https://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/property-based-access-control.htm">security rules</a>, data filtering inside an app is enforced using <a href="https://help.qlik.com/en-US/sense/3.1/Subsystems/Hub/Content/Scripting/Security/manage-security-with-section-access.htm">"section access"</a>.</p>
-        <div class="ui divider"></div>
-        <h4>API - Process integration</h4>
-        <div class="ui two column grid">
-            <div class="column">
-                <p>In the demo you will see the broker in action. But what are the activities that the SaaS broker automates in the demo? What are the steps or stages?</p>
-                <ul>
-                    <li>First it will create a stream for each customer. </li>
-                    <li>Secondly it will copy the template app. </li>
-                    <li>Next it replaces the script with a customer-specific one, or in most cases you just have to replace the database connection.</li>
-                    <li>Using the new script, the app is reloaded. You can also use this mechanism to query big data sources like MongoDB. This is where we basically make a compressed index of the data and create the associative model.</li>
-                    <li>In the final stage we publish the app in the stream with the name of the customer.</li>
-                </ul>
-            </div>
-            <div class="column">
-                <img class="ui medium centered image" data-action="zoom" src="images/saas demo concept simple.png">
-            </div>
+    <h4>Integration flow summary</h4>
+    <p>The picture below outlines the key integration aspects.
+        <UL>
+            <li> A user logs in into your multi-tenant SaaS application platform. Your platform contains some Qlik Sense information in an IFrame or DIV tag.</li>
+            <li>The proxy intercepts the request and redirects the user to the authentication module of your SaaS platform. Your platform knows the identity and group membership of the user and It requests an access ticket for this user.</li>
+            <li> We redirect the user’s request back to the proxy, but now with the ticket number appended to the URL. Qlik Sense validates the request and will set a session cookie.</li>
+            <li> Now the authentication is complete and Qlik Sense will evaluate the security rules and will only present the authorized streams and apps to the user.</li>
+        </UL>
+    </p>
+    <img class="ui centered image" data-action="zoom" src="images/summary_integrated_architecture.png">
+    <div class="ui divider"></div>
+    <h4>Web integration</h4>
+    <img class="ui small left floated image" data-action="zoom" src="images/web - the qlik advantage css html javascript angular.png">
+    <p>You can integrate the Qlik Sense hub, apps, sheets or individual objects using an Iframe or DIV tag. All functionality is delivered via a webserver called the proxy (QPS). The QPS also performs the authentication check and does the load balancing over the engines, and redirects the user to your SaaS platform to request the ticket if not yet authenticated via a session cookie.
+    </p>
+    <div class="ui divider"></div>
+    <h4>Data integration</h4>
+        <img class="ui small left floated image" data-action="zoom" src="images/dataIntegrationIntro.png">
+
+    <p>A powerful <a href="http://www.qlik.com/us/products/data-sources">data integration capability</a> for cleansing, transforming, and unifying multiple, disparate data sources for analysis. A robust data integration layer creates a unified view of information from many different sources, without requiring external tools or data repositories.
+    </p>
+<!--     <img class="ui medium centered image" data-action="zoom" src="images/dataIntegrationIntro.png">
+ -->    <p>
+        In the demo we’ve assumed you have a database per customer instance and you also have a master database which contains the customers, the database connections, user rights and possibly customer specific custom tables and fields.
+    </p>
+    <div class="ui divider"></div>
+    <!-- <img class="ui tiny right floated image" src="images/id.png"> -->
+    <h4>Security integration</h4>
+    <img class="ui small left floated image" data-action="zoom" src="images/QPS - introduction to security flow.png">
+    <p>Actually you don't need to do so much on the security side. You don't create users or groups in Sense. You just supply the userID and group membership in the security ticket. Based on the info in the ticket access is provided. Resources are protected using the <a href="https://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/property-based-access-control.htm">security rules</a>, data filtering inside an app is enforced using <a href="https://help.qlik.com/en-US/sense/3.1/Subsystems/Hub/Content/Scripting/Security/manage-security-with-section-access.htm">"section access"</a>.</p>
+    <div class="ui divider"></div>
+    <h4>API - Process integration</h4>
+    <div class="ui two column grid">
+        <div class="column">
+            <p>In the demo you will see the broker in action. But what are the activities that the SaaS broker automates in the demo? What are the steps or stages?</p>
+            <ul>
+                <li>First it will create a stream for each customer. </li>
+                <li>Secondly it will copy the template app. </li>
+                <li>Next it replaces the script with a customer-specific one, or in most cases you just have to replace the database connection.</li>
+                <li>Using the new script, the app is reloaded. You can also use this mechanism to query big data sources like MongoDB. This is where we basically make a compressed index of the data and create the associative model.</li>
+                <li>In the final stage we publish the app in the stream with the name of the customer.</li>
+            </ul>
         </div>
-        <div class="ui divider"></div>
-        <h4>Architecture integration</h4>
-        <div class="ui two column grid">
-            <div class="column">
-                <p> In the picture on the right you will find all integration aspects together in 1 overview for a typical SaaS provisioning architecture, in which we have:
-                    <ul>
-                        <li>Your SaaS platform's server</li>
-                        <li>Qlik Sense server</li>
-                        <li>A database per customer</li>
-                        <li>A master configuration database</li>
-                        <li>Your current API "broker"</li>
-                    </ul>
-                    <div class="ui mini buttons">
-                        <a class="ui button" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a>
-                        <DIV class="or"></DIV>
-                        <a class="ui button" href="{{doc_integrationOverview}}" target="_blank">Integration overview paper</a>
-                    </div>
-                </p>
+        <div class="column">
+            <img class="ui medium centered image" data-action="zoom" src="images/saas demo concept simple.png">
+        </div>
     </div>
-    <div class="column">
-        <img class="ui centered medium image" data-action="zoom" src="images/integratedArchitecture.png">
-    </div>
+    <div class="ui divider"></div>
+    <h4>Architecture integration</h4>
+    <div class="ui two column grid">
+        <div class="column">
+            <p> In the picture on the right you will find all integration aspects together in 1 overview for a typical SaaS provisioning architecture, in which we have:
+                <ul>
+                    <li>Your SaaS platform's server</li>
+                    <li>Qlik Sense server</li>
+                    <li>A database per customer</li>
+                    <li>A master configuration database</li>
+                    <li>Your current API "broker"</li>
+                </ul>
+                <div class="ui mini buttons">
+                    <a class="ui button" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a>
+                    <DIV class="or"></DIV>
+                    <a class="ui button" href="{{doc_integrationOverview}}" target="_blank">Integration overview paper</a>
+                </div>
+            </p>
+        </div>
+        <div class="column">
+            <img class="ui centered medium image" data-action="zoom" src="images/integratedArchitecture.png">
+        </div>
     </div>
     <div class="ui divider"></div>
     {{> introVideoArchitecture}}
