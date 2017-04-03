@@ -47,14 +47,19 @@ Template.users.helpers({
             return "disabled";
         }
     },
-    disableButtons: function() {
-        return !Session.get("selectedCustomerStep1");
+    showUpdateScreen: function() {
+        return Session.get("selectedCustomerStep1");
     },
     ribbon: function() {
         return Session.equals("selectedCustomerStep1", this._id) ? "ui ribbon label" : '';
     },
     active: function() {
         return Session.equals("activeCustomer", this._id) ? "active" : '';
+    },
+    isChrome: function(){ //update screen does not work with edge and firefox because of a bug somehwere
+        var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        console.log('user is using Chrome? ',isChrome);
+        return isChrome;
     }
 });
 
@@ -82,11 +87,14 @@ Template.updateGroupsFormStep1.events({
             currentlyLoggedIn: false
         };
 
-        // template.$('.ui.dropdown.country')
-        //     .dropdown('set text', updatedUser.country);
-        // template.$('.ui.dropdown.group')
-        //     .dropdown('set text', updatedUser.group);
-        //     console.log('set group box to', updatedUser.group);
+        // template.find('.ui.dropdown').dropdown('set text', 'bies');
+        // setTimeout(function() {
+        //     template.$('.ui.dropdown.country')
+        //         .dropdown('set text', updatedUser.country);
+        //     template.$('.ui.dropdown.group')
+        //         .dropdown('set text', updatedUser.group);
+        //     // console.log('set group box to', updatedUser.group);
+        // }, 300)
 
         Meteor.call('updateUserForCustomer', updatedUser);
         sAlert.success('Groups are updated for ' + updatedUser.name);
@@ -150,6 +158,14 @@ Template.users.onRendered(function() {  
 Template.updateGroupsFormStep1.onRendered(function() {  
     this.$('.ui.dropdown')
         .dropdown();
+
+    // setTimeout(function() {
+    //     template.$('.ui.dropdown.country')
+    //         .dropdown('set text', this.data.country);
+    //     template.$('.ui.dropdown.group')
+    //         .dropdown('set text', this.data.group);
+    //     // console.log('set group box to', updatedUser.group);
+    // }, 300)
 
 })
 
