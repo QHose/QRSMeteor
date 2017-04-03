@@ -18,25 +18,25 @@
                 </h4>
                 <!-- <div class="ui segment"> -->
                 {{#if noCustomers}}
-                    <div class="ui icon message">
-                        <img class="icon" src="images/customers.png">
-                        <div class="content">
-                            <div class="header">
-                                <h4>No customers</h4>
-                            </div>
-                            <p>Please insert some customers.</p>
+                <div class="ui icon message">
+                    <img class="icon" src="images/customers.png">
+                    <div class="content">
+                        <div class="header">
+                            <h4>No customers</h4>
                         </div>
+                        <p>Please insert some customers.</p>
                     </div>
-                    {{> insertCustomerButtons}}
+                </div>
+                {{> insertCustomerButtons}}
                 {{else}}
-                    <div class="ui icon message">
-                        <img class="icon" src="images/customers.png">
-                        <div class="content">
-                            <div class="header">
-                                Customers in your SaaS platform
-                            </div>
-                            <p>Below you will find the customers you have entered in the local MongoDB database of your SaaS plaform.
-                                <!-- Based on "this table" we can create streams, apps or whatever we like in Qlik Sense via the Qlik Sense repository (QRS) and the Engine API. -->Press a customer name to update.</p>
+                <div class="ui icon message">
+                    <img class="icon" src="images/customers.png">
+                    <div class="content">
+                        <div class="header">
+                            Customers in your SaaS platform
+                        </div>
+                        <p>Below you will find the customers you have entered in the local MongoDB database of your SaaS plaform.
+                            <!-- Based on "this table" we can create streams, apps or whatever we like in Qlik Sense via the Qlik Sense repository (QRS) and the Engine API. -->Press a customer name to update.</p>
                         </div>
                     </div>
                     <table class="ui simple table">
@@ -48,12 +48,12 @@
                         </thead>
                         <tbody>
                             {{#each customers}}
-                                <tr class="customer-row {{active}}">
-                                    <td class="{{ribbon}}">
-                                        {{name}}
-                                    </td>
-                                    <td class='delete'><i class="remove circle icon"></i></td>
-                                </tr>
+                            <tr class="customer-row {{active}}">
+                                <td class="{{ribbon}}">
+                                    {{name}}
+                                </td>
+                                <td class='delete'><i class="remove circle icon"></i></td>
+                            </tr>
                             {{/each}}
                         </tbody>
                     </table>
@@ -62,27 +62,27 @@
                         <div class="or"></div>
                         <div class="ui positive button backToGeneration"><i class="play icon "></i> Go to step 2</div>
                     </div>
-                {{/if}}
-                <!-- </div> -->
-            </div>
-            <div class="column">
-                {{#unless disableButtons}}
+                    {{/if}}
+                    <!-- </div> -->
+                </div>
+                <div class="column">
+                    {{#unless disableButtons}}
                     {{> updateUserFormStep1}}
-                {{/unless}}
+                    {{/unless}}
+                </div>
             </div>
         </div>
-    </div>
-</template>
-<template name="updateUserFormStep1">
-    {{#with selectedCustomerDoc}}
+    </template>
+    <template name="updateUserFormStep1">
+        {{#with selectedCustomerDoc}}
         <h4 class="ui dividing header">
           Update the group memberships for customer:  {{name}}
       </h4>
-        <form class="ui form">
-            {{#each users}}
-                {{> updateGroupsFormStep1}}
-            {{/each}}
-        </form>
+      <form class="ui form">
+        {{#each users}}
+        {{> updateGroupsFormStep1}}
+        {{/each}}
+    </form>
     {{/with}}
 </template>
 <template name="updateGroupsFormStep1">
@@ -91,10 +91,10 @@
             <div class="three fields">
                 <div class="field">
                     {{name}}
-                    <!-- <input type="text" name="name" readonly="" value="{{name}}"> -->
                 </div>
                 <div class="field">
-                    <div class="ui dropdown">
+                <!-- {{group}} -->
+                    <div class="ui dropdown group">
                         <input type="hidden" name="group" value="{{group}}">
                         <i class="dropdown icon"></i>
                         <div class="default text">{{group}}</div>
@@ -108,7 +108,7 @@
                     </div>
                 </div>
                 <div class="field">
-                    <div class="ui dropdown">
+                    <div class="ui dropdown country">
                         <input type="hidden" name="country" value="{{country}}">
                         <i class="dropdown icon"></i>
                         <div class="default text">{{country}}</div>
@@ -128,15 +128,15 @@
 <template name="insertCustomer">
     {{> sAlert}}
     {{#autoForm collection=Customers id="insertCustomerForm" omitFields="users.$.currentlyLoggedIn" type="insert" }}
-        <fieldset>
-            {{> afQuickField name='name'}} {{> afQuickField name='users'}}
-        </fieldset>
-        <div class="ui right floated buttons">
-            <button type="submit" class="ui positive button saveNewCustomer">
-                <i class="edit icon "></i> Insert customer</button>
+    <fieldset>
+        {{> afQuickField name='name'}} {{> afQuickField name='users'}}
+    </fieldset>
+    <div class="ui right floated buttons">
+        <button type="submit" class="ui positive button saveNewCustomer">
+            <i class="edit icon "></i> Insert customer</button>
             <div class="or"></div>
             <button type="submit" class="ui button closeInsertModal">
                 close</button>
-        </div>
-    {{/autoForm}}
-</template>
+            </div>
+            {{/autoForm}}
+        </template>

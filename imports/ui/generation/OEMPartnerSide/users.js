@@ -68,21 +68,28 @@ Template.updateUserFormStep1.helpers({
 Template.updateGroupsFormStep1.events({
     'change' (evt, template) {
         //will give you your data context also
-        console.log(Template.parentData(0));
+        console.log('form changed');
 
         try {
             //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
-            Meteor.call('resetLoggedInUser'); 
+            Meteor.call('resetLoggedInUser');
         } catch (err) {}
 
         var updatedUser = {
             name: Template.currentData().name,
             group: template.find("[name='group']").value,
             country: template.find("[name='country']").value,
+            currentlyLoggedIn: false
         };
 
+        // template.$('.ui.dropdown.country')
+        //     .dropdown('set text', updatedUser.country);
+        // template.$('.ui.dropdown.group')
+        //     .dropdown('set text', updatedUser.group);
+        //     console.log('set group box to', updatedUser.group);
+
         Meteor.call('updateUserForCustomer', updatedUser);
-        sAlert.success('Groups are updated for '+updatedUser.name);
+        sAlert.success('Groups are updated for ' + updatedUser.name);
     }
 });
 
@@ -115,7 +122,7 @@ Template.users.events({
     },
     'click .insertNewCustomer' () {
         $('#insertCustomer').modal('show')
-        .modal({ observeChanges: true });
+            .modal({ observeChanges: true });
         refreshModal();
     }
 
