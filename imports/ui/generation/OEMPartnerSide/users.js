@@ -63,12 +63,20 @@ Template.users.helpers({
     }
 });
 
+Template.displayUsers.helpers({
+    selectedCustomerDoc: function() {
+        // console.log('selectedCustomerStep1 helper doc ', Customers.findOne(Session.get("selectedCustomerStep1")));
+        return Customers.findOne(Session.get("selectedCustomerStep1"));
+    },
+})
+
 Template.updateUserFormStep1.helpers({
     selectedCustomerDoc: function() {
         // console.log('selectedCustomerStep1 helper doc ', Customers.findOne(Session.get("selectedCustomerStep1")));
         return Customers.findOne(Session.get("selectedCustomerStep1"));
     },
 })
+
 
 Template.updateGroupsFormStep1.events({
     'change' (evt, template) {
