@@ -264,3 +264,4 @@ qrs.sublime-workspace*.sublime-workspace
 qrs.sublime-workspace
 *.bat
 QRS.bat
+.vscode/typings/meteor.d.ts
