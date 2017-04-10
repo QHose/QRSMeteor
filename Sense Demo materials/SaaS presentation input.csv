@@ -652,7 +652,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 - Section access for row/column level security
 
 - group from ticket is re-used in both security rules and section access",,"","","","","         0","0","PreSales",
-"Security - Concept of SaaSdemo.qlik.com","SaaS Security Deep Dive","https://youtu.be/0E9i5Pf2Hjg",,"","","","","         0","0","PreSales",
+"Security - Concept of SaaSdemo.qlik.com","SaaS Security Deep Dive","https://youtu.be/0E9i5Pf2Hjg",,"","","","","         0","0","Technical - 1 day",
 "Security - Concept of SaaSdemo.qlik.com","Integrated security flow: authentication and authorization","integratedArchitecture.png",,"","","","","         0","0","PreSales",
 "Security - Concept of SaaSdemo.qlik.com","Ticketing - sequence diagrams","[Click here to see the sequence diagrams for a client side redirect](http://knsv.github.io/mermaid/live_editor/#/view/c2VxdWVuY2VEaWFncmFtCkJyb3dzZXItPj5NZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IFVzZXIgbG9ncyBpbiBpbnRvIE1ldGVvciAKQnJvd3Nlci0-PiBQcm94eTogSUZyYW1lIHRyaWVzIHRvIG9wZW4gU2Vuc2UgY29udGVudCB2aWEgbGluayB0aGF0IGNvbnRhaW5zIC9wcm94eS8KUHJveHktPj5NZXRlb3IgU1NPIGNsaWVudDogUmVkaXJlY3QgcmVxdWVzdCB0byB3ZWJwYWdlIG9uIHRoZSBjbGllbnQgKGNsaWVudCBzaWRlIHJvdXRlKS4KCk5vdGUgcmlnaHQgb2YgUHJveHk6IFByb3h5IGFsc28gaW5jbHVkZXMgdGFyZ2V0SWQgPSA8SUQgZm9yIHRoZSBvcmlnaW5hbCBVUkkgdGhhdCB0aGUgdXNlciB0cmllcyB0byBhY2Nlc3M-LCBhbmQgcHJveHlSZXN0VXJpID0gPHRoZSBVUkkgd2hlcmUgdGhlIGF1dGhlbnRpY2F0aW9uIG1vZHVsZSBjYW4gYWNjZXNzIHRoZSBSRVNUIEFQST4KTWV0ZW9yIFNTTyBjbGllbnQtPk1ldGVvciBzZXJ2ZXI6ICBjbGllbnQgY2FsbHMgKHVzZXIgYXdhcmUpIHNlcnZlciBzaWRlIG1ldGhvZApOb3RlIHJpZ2h0IG9mIE1ldGVvciBzZXJ2ZXI6IFNpbmNlIHRoZSB1c2VyIGlzIGFscmVhZHkgbG9nZ2VkIGluIGluIE1ldGVvciwgd2UgY2FuIHJlcXVlc3QgdGhlIHVzZXJJRCBhbmQgZ3JvdXAgbWVtYmVyc2hpcCBmcm9tIHRoZSBNZXRlb3Igc2Vzc2lvbi4gVHJ1c3QgbWVjaGFuaXNtOiBTZXJ2ZXIgaW1wb3J0ZWQgUWxpayBTZW5zZSBjbGllbnQgY2VydGlmaWNhdGUuCk1ldGVvciBzZXJ2ZXItPj5RUFMgQVBJOiBSZXF1ZXN0IHRpY2tldCBhdCBRUFMgQVBJLCBwcm92aWRlIHRoZSB1c2VySWQgYW5kIGdyb3VwcyBpbiBKU09OLgpOb3RlIHJpZ2h0IG9mIE1ldGVvciBzZXJ2ZXI6IE9wdGlvbmFsbHkgaW5jbHVkZSB0aGUgcmVkaXJlY3QgcGFyYW1ldGVyIHRvIGZvcndhcmQgdGhlIHVzZXIgYmFjayB0byB0aGUgcGFnZSBoZSBpbml0aWFsbHkgdHJpZWQgdG8gYWNjZXNzLgpRUFMgQVBJLS0-Pk1ldGVvciBzZXJ2ZXI6IFFQUyBBUEkgcmV0dXJucyBhIHRpY2tldCBudW1iZXIgKGFuZCBwb3NzaWJseSByZWRpcmVjdCBVUkwpIHdoaWNoIHlvdSBoYXZlIHRvIGFwcGVuZCBpbiB0aGUgVVJMIApNZXRlb3Igc2VydmVyLS0-PiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IENyZWF0ZSBhIHJlZGlyZWN0IFVSTCB3aGljaCB0aGUgY2xpZW50IGNvZGUgY2FuIHB1dCBpbiB0aGUgYnJvd3NlciBVUkwgYmFyLiAKTm90ZSByaWdodCBvZiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IENsaWVudCBzaWRlIGNvZGUsIHJlcGxhY2VzIHRoZSB1cmwgaW4gYnJvd3NlciwgYW5kIGZvcndhcmRzIHRoZSB1c2VyIHRvIFFsaWsgU2Vuc2UuIFVzZXIgbm93IHJlY2VpdmVzIGEgUWxpayBTZW5zZSBzZXNzaW9uIGNvb2tpZSAoc2VlIHZpcnR1YWwgcHJveHkgY29uZmlnKSwgYW5kIGFuZCBzdWNoIHNpbmdsZSBzaWduIG9uIGlzIGNvbmZpZ3VyZWQu)",,"","","","","         0","0","PreSales",
 "Security - Concept of SaaSdemo.qlik.com","Ticketing - sequence diagrams","security - sequence diagram ticketing.png",,"","","","","         0","0","PreSales",
@@ -716,7 +716,7 @@ or
 "SaaSDemo.qlik.com key API calls","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Deep dive, PreSales, SaaS & Power of APIs",
 "SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","The ""loop"" to execute to ensure each *customer* gets each template *app*",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour, SaaS & Power of APIs",
 "SaaSDemo.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","generationLoop.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day, Technical - 1 hour, SaaS & Power of APIs",
-"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","We created a [API overview](http://saasdemo.qlik.com/ApiLogsTable)of all API requests and responses. Try to generate some apps, or try to login with a user in SaaS provisioning demo step 4.",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour, SaaS & Power of APIs",
+"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","We created a [API overview](http://saasdemo.qlik.com/ApiLogsTable) of the key API requests and responses. Try to generate some apps, or try to login with a user in SaaS provisioning demo step 4 and see the resulting calls. ",,"","","","","         0","0","Technical - 1 day, OEM bootcamp, Technical - 1 hour, SaaS & Power of APIs",
 "SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","<div class=""ui one column stackable center aligned page grid"">
    <div class=""column twelve wide"">
 <div class=""ui buttons"">
@@ -777,30 +777,25 @@ drop fields ChildId,Parent,'Part of id';
 drop table WorkshopParentChild;
 ```",,"","","","","         0","0","What is this slide generator?",
 "SaaSDemo.qlik.com key API calls","Step 2: Extract the data from the Engine API using Enigma.js","```
-function getSlideData{
+ enigma.getService('qix', {
+    schema: qixschema,
+    appId: appId,
+    session: { 
+        host:  SenseServer,
+        prefix: 'anon',
+        port: SensePort,
+        unsecure: true //http or https
+    }
+})
+.then(qix => {
+    qix.app.getObject(ChartId) //get an existing object out of an app
+    .then(model => {
+        model.getHyperCubeData('/qHyperCubeDef', [...]).then(data => {                               
+        var table = data[0].qMatrix; //dataset from Qlik
 
-            enigma.getService('qix', {
-                    schema: qixschema,
-                    appId: appId,
-                    session: { 
-                        host:  SenseServer,
-                        prefix: 'anon',
-                        port: SensePort,
-                        unsecure: true //http or https
-                    }
-                })
-                .then(qix => {
-                    qix.app.getObject(ChartId) //get an existing object out of an app
-                        .then(model => {
-                            model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {                               
-                                var table = data[0].qMatrix; //dataset from Qlik
-                            
-                                Session.set('mainTopics',table) //store the table in the session. This ensures Impress.js can generate the slides
-                                impress().init();
-                                   
-                            })
-                        })
-                })
+        //store the table in the session. This ensures Impress.js can generate the slides
+        Session.set('mainTopics',table)         
+        Impress().init();                                      
 ```",,"","","","","         0","0","SaaS & Power of APIs",
 "SaaSDemo.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","Get the [array of slides via Enigma.js](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.js#L221)",,"","","","","         0","0","What is this slide generator?",
 "SaaSDemo.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","[Create DIV](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.html#L41)  with class *slide* for each slide (a level 1, 2 combination)",,"","","","","         0","0","What is this slide generator?",
@@ -1146,7 +1141,7 @@ call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certica
 ```",,"","","","","         0","0","Deep dive",
 "QPS API","Ticketing","<q>Ticketing</q>",,"","","","","         0","0","PreSales",
 "QPS API","Remember: You don't store credentials in Qlik Sense","QPS - Qlik does not store users and passwords.png",,"","","","","         0","0","PreSales",
-"QPS API","Ticketing - Browser redirects explained","QPS - authentication redirect flow in browser for dummies.png",,"","","","","         0","0","Deep dive",
+"QPS API","Ticketing - Browser redirects explained","QPS - authentication redirect flow in browser for dummies.png",,"","","","","         0","0","Technical - 1 day",
 "QPS API","Basic ticketing flow","flow - ticketing authentication for dummies.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "QPS API","Video: end to end security integration flow (1M)","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales, Introduction - 30 minutes",
 "QPS API","Ticketing deep dive intro video (21M)","https://youtu.be/0E9i5Pf2Hjg?start=761",,"","","","","         0","0","Technical - 1 day",
