@@ -20,6 +20,15 @@ import '/imports/startup/accounts-config.js';
 var fs = require('fs');
 var qsocks = require('qsocks');
 
+
+//SETUP PROXY SERVER TO RUN METEOR QRS AND WEB INTEGRATION DEMO BOTH ON PORT 80
+
+var proxy = require('redbird')({ port: 80, ntlm: true });
+// Route to any local ip, for example from docker containers.
+
+proxy.register(Meteor.settings.public.host, "http://localhost:3000"); //need subdomain otherwise meteor root-URL does not work
+proxy.register(Meteor.settings.public.webIntegrationHost, "http://localhost:3030"); //need subdomain otherwise meteor root-URL does not work
+
 Meteor.startup(function() {
     process.env.ROOT_URL = 'http://' + Meteor.settings.public.host;
     console.log('********* Meteor runs on host ROOT_URL: ', process.env.ROOT_URL);

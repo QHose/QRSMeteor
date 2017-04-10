@@ -13,6 +13,7 @@
     "highlight.js": "^9.9.0",
     "meteor-node-stubs": "^0.2.3",
     "qsocks": "^3.0.0",
+    "redbird": "^0.6.15",
     "showdown": "^1.5.5",
     "simpl-schema": "^0.2.3",
     "underscore": "^1.8.3",
