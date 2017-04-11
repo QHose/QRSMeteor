@@ -45,8 +45,8 @@
 "What is an app?","What is governed self service using Qlik Sense apps?","governed self service app.png",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "What is an app?","Contents of an app","contents of an app.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "What is an app?","In the hub apps are grouped per stream","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales, Technical - 2 hours, OEM bootcamp",
-"What is an app?","Example: Embed the hub","<iframe src=""http://saasdemo.qlik.com:81/meteor/hub"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
-"What is an app?","Example: Embed a chart","<iframe src=""http://saasdemo.qlik.com:8080/only1Chart"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
+"What is an app?","Example: Embed the hub","<iframe src=""http://saasdemo.qlik.com:443/meteor/hub"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
+"What is an app?","Example: Embed a chart","<iframe src=""http://saasdemo.qlik.com:80/only1Chart"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "What is an app?","Introduction video to build your first app (1 hour)","https://youtu.be/XL1Ph-RAxAE",,"","","","","         0","0","PreSales",
 "What is an app?","Integrate all your data sources into a single app: data integration overview","dataIntegrationIntro.png",,"","","","","         0","0","PreSales, Sales, Introduction - 30 minutes, Technical - 2 hours, OEM bootcamp",
 "Introduction to SaaS","History","We used to install software, but now you can also access your software online.",,"","","","","         0","0","Sales, OEM bootcamp",
@@ -134,7 +134,7 @@
 - CSS
 - JSON",,"","","","","         0","0","PreSales",
 "API -  generic introduction","URL - what are the components?","``` 
-http://saasdemo.qlik.com:81/anon/qmc/tasks
+http://saasdemo.qlik.com:443/anon/qmc/tasks
 ```
 - protocol (http, https, ws, wss)
 - server/host/DNS
@@ -254,13 +254,13 @@ $(""#btn_1"").click(function() {
 ```",,"","","","","         0","0","PreSales",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Introduction - 30 minutes, OEM bootcamp",
 "Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales, Technical - 1 hour, OEM bootcamp",
-"Web integration","Example: Combine charts and drag and drop","<iframe src=""http://saasdemo.qlik.com:8080/onlyMultipleDivs"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
+"Web integration","Example: Combine charts and drag and drop","<iframe src=""http://saasdemo.qlik.com:80/onlyMultipleDivs"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","OEM bootcamp, Sales",
 "Web integration","Demonstration SaaSDemo.Qlik.com: Web integration","saas demo Web integration screenshot.png",,"","","","","         0","0","Sales",
-"Web integration","Demonstration SaaSDemo.Qlik.com: Web integration","[SaaSDemo.Qlik.com](http://saasdemo.qlik.com:8080)",,"","","","","         0","0","Sales",
+"Web integration","Demonstration SaaSDemo.Qlik.com: Web integration","[SaaSDemo.Qlik.com](http://saasdemo.qlik.com:80)",,"","","","","         0","0","Sales",
 "Web integration","Now take 10 minutes to do it yourself. SaaSDemo.Qlik.com: web integration demo","saas demo Web integration screenshot.png",,"","","","","         0","0","Sales",
 "Web integration","Now take 10 minutes to do it yourself. SaaSDemo.Qlik.com: web integration demo","[SaaSDemo.Qlik.com](http://saasdemo.qlik.com)",,"","","","","         0","0","Sales",
-"Web integration","Embed Qlik Sense in other applications","Lets look at [SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/) where we embedded
+"Web integration","Embed Qlik Sense in other applications","Lets look at [SaaSdemo.qlik.com](http://saasdemo.qlik.com:80/) where we embedded
 - the hub, 
 - apps 
 - single objects 
@@ -292,10 +292,10 @@ http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sh
 http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sheetid}/state/analysis/select/{field}/{value1;value2}
 ```",,"","","","","         0","0","PreSales",
 "Web integration","IFrame - App and Single integration API (2)","[See Qlik help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/AppIntegrationAPI/app-integration-api.htm)",,"","","","","         0","0","PreSales",
-"Web integration","IFrame - App and Single integration API (2)","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,"","","","","         0","0","PreSales",
-"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","[See IFrame examples on SaaS demo ](http://saasdemo.qlik.com:8080/)",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
+"Web integration","IFrame - App and Single integration API (2)","See working examples in our [SaaS demo environment](http://saasdemo.qlik.com:80/hub)",,"","","","","         0","0","PreSales",
+"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","[See IFrame examples on SaaS demo ](http://saasdemo.qlik.com:80/)",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
 "Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","saas demo Web integration screenshot.png",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Go to the examples in our [SaaS demo environment](http://saasdemo.qlik.com:8080/hub)",,"","","","","         0","0","Exercises, Technical - 1 day",
+"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Go to the examples in our [SaaS demo environment](http://saasdemo.qlik.com:80/hub)",,"","","","","         0","0","Exercises, Technical - 1 day",
 "Web integration","Exercise IFrame 1: Connect to Qlik Sense","##Some questions about interacting with Qlik Sense.",,"","","","","         0","0","Exercises, Technical - 1 day",
 "Web integration","Exercise IFrame 1: Connect to Qlik Sense","Lets think about possible ways to retrieve
 - An app URL
@@ -353,7 +353,7 @@ style='border:none; width:100%; height:300px'
 "Web integration","Capabilities API","web - options to integrate content.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Video: integrate mashups using the Dev-hub (15M)","https://youtu.be/mn9GspU-tDI?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG",,"","","","","         0","0","PreSales",
 "Web integration","An overview of HTTP - many things are loaded in the browser if you open a page","web - contents of a webpage.png",,"","","","","         0","0","PreSales",
-"Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","[SaaS demo: div tag integration example](http://saasdemo.qlik.com:8080/multipleDivs)",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
+"Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","[SaaS demo: div tag integration example](http://saasdemo.qlik.com:80/multipleDivs)",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","Dev-hub: demo mashup editor",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
 "Web integration","Capabilties API - make a selection","```
 var config = {
@@ -398,7 +398,7 @@ if ( typeof(qlik) == 'undefined' ){ window.location=config.returnUrl;}
 "Web integration","Make sure the user is authenticated before you show a mashup","Here’s the point of returnUrl.html if the user is unauthenticated:
 · The user is sent to whatever Authentication module you have defined in the QMC – this can be google/salesforce/local authentication module/default windows authentication.
 The user authenticates and is then sent back to whatever mashup page the user came from, this can be a portal, a regular webpage or whatever.",,"","","","","         0","0","Deep dive",
-"Web integration","Make sure the user is authenticated before you show a mashup","Example code from the SaaSDemo platform. This is the check I do when the [mashup page](http://saasdemo.qlik.com:8080/multipleDivs) is ready.
+"Web integration","Make sure the user is authenticated before you show a mashup","Example code from the SaaSDemo platform. This is the check I do when the [mashup page](http://saasdemo.qlik.com:80/multipleDivs) is ready.
 ```
 checkAuthenticatedInQlik = function checkAuthenticatedInQlik(sourceURL){
  require.config({
@@ -437,7 +437,7 @@ app.getObject('DIV1','Ggpaxa');
 })
 ```
 ",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
-"Web integration","Capabilities API - example code to embed chart using a DIV tag","[See demo on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/multipleDivs)",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
+"Web integration","Capabilities API - example code to embed chart using a DIV tag","[See demo on SaaSdemo.qlik.com](http://saasdemo.qlik.com:80/multipleDivs)",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
 "Web integration","Capabilities API - flow chart","flow - capabilities API end to end.png",,"","","","","         0","0","OEM bootcamp, Technical - 1 day",
 "Web integration","Mashup using DIV tags - key component interaction flow","capabilities API - DIV tag Saas platform to proxy.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Cross site scripting explained (XSS)","web - cross site scripting explained.png",,"","","","","         0","0","PreSales",
@@ -458,8 +458,8 @@ If so, allow access otherwise deny access with a 403 response",,"","","","","   
 "Web integration","Dev-hub Mashup templates","You can create your own templates to be used by your users",,"","","","","         0","0","Deep dive",
 "Web integration","Dev-hub Mashup templates","See [this community link](https://community.qlik.com/blogs/qlikviewdesignblog/2017/02/24/introducing-dar-mashup-template) for a nice starter",,"","","","","         0","0","Deep dive",
 "Web integration","Dev-hub Mashup templates","https://youtu.be/O5uuzKWMS7I",,"","","","","         0","0","Deep dive",
-"Web integration","Exercise 1: Lets look at a existing mashup in the DEV-HUB","We will now analyse the CityBike mashup you see in the [SaaSDemo web integration demo](http://saasdemo.qlik.com:8080/)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 1: Lets look at a existing mashup in the DEV-HUB","Now lets look at the [backend in the DEV-HUB](http://saasdemo.qlik.com:81/anon/dev-hub/mashup-editor/#qext{DemoMashup})",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 1: Lets look at a existing mashup in the DEV-HUB","We will now analyse the CityBike mashup you see in the [SaaSDemo web integration demo](http://saasdemo.qlik.com:80/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 1: Lets look at a existing mashup in the DEV-HUB","Now lets look at the [backend in the DEV-HUB](http://saasdemo.qlik.com:443/anon/dev-hub/mashup-editor/#qext{DemoMashup})",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Go to the dev-hub, mashup editor",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Create a new mashup project: exercise <groupName> - 1 ",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Select Sales and customers app",,"","","","","         0","0","Exercises",
@@ -490,7 +490,7 @@ type=""barchart""     cols='[""Case Owner Group"",""=Avg([Case Duration Time])""
 options='{""title"":""On the fly barchart""}'></qlik-visual>
 ```",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Create charts on the fly","[Try it via JS Fiddle](https://jsfiddle.net/mindspank/fs62hwk3/3/)",,"","","","","         0","0","PreSales, OEM bootcamp",
-"Web integration","Create charts on the fly","[See example on SaaS demo](http://saasdemo.qlik.com:8080/onTheFlybarChart)",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
+"Web integration","Create charts on the fly","[See example on SaaS demo](http://saasdemo.qlik.com:80/onTheFlybarChart)",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Create charts on the fly","[See the Qlik Sense help examples](http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Mashups/Content/Howtos/create-visualization-on-the-fly.htm)",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Create charts on the fly","qlik-visuals-result.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Exercise 1: Create a bar chart using the vizualization API","Use [this fiddle](http://jsfiddle.net/dlumkeman/rv3r73rj/) as a starting template",,"","","","","         0","0","Exercises",
@@ -499,14 +499,14 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Exercise 1: Create a bar chart using the vizualization API","[See the answer here](http://jsfiddle.net/dlumkeman/oa6d9qgy/)",,"","","","","         0","0","Exercises",
 "Web integration","Data only","<q>Data only</q>",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "Web integration","Data only","web - options to integrate content.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
-"Web integration","Demo - Only use Qlik Sense data","[SaaS demo: div tag integration example](http://saasdemo.qlik.com:8080/tableUsingWidgets)",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
+"Web integration","Demo - Only use Qlik Sense data","[SaaS demo: div tag integration example](http://saasdemo.qlik.com:80/tableUsingWidgets)",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
 "Web integration","Demo - Only use Qlik Sense data","Dev-hub: demo mashup editor",,"","","","","         0","0","Technical - 2 hours, OEM bootcamp",
 "Web integration","When do you use the data only approach?","Use this if you have your own vizualization libraries (software)",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
 "Web integration","When do you use the data only approach?","You only use the associative model of Qlik",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
 "Web integration","When do you use the data only approach?","The layout is done via non Qlik software",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
 "Web integration","When do you use the data only approach?","SaaS platform and Qlik Sense will be kept in sync via websocket events if something changes in Qlik Sense.",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
 "Web integration","When do you use the data only approach?","No limits, you can programatically make selections and get data out of Qlik Sense and format it as you like.",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
-"Web integration","When do you use the data only approach?","[See an example on SaaSdemo.qlik.com](http://saasdemo.qlik.com:8080/tableUsingWidgets)",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
+"Web integration","When do you use the data only approach?","[See an example on SaaSdemo.qlik.com](http://saasdemo.qlik.com:80/tableUsingWidgets)",,"","","","","         0","0","Technical - 1 day, OEM bootcamp",
 "Web integration","Qlik Sense as high performance data warehouse","You can query Sense from your SaaS Platform, in order to
 * make a selection
 * get selected values, 
@@ -549,7 +549,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Web integration problem solving 3","Issue: App integration IFrame too small",,"","","","","         0","0","Support",
 "Web integration","Web integration problem solving 3","[Go to this link to see the issue and solve it](http://jsfiddle.net/dlumkeman/d8oe54v3/)",,"","","","","         0","0","Support",
 "Web integration","Web integration problem solving 4","Issue: Qlik Sense does not respond to clicks","NoInteraction option is set to true in IFrame url",,,,,,,,
-"Web integration","Web integration problem solving 4","[Go to this link to see the issue and solve it](http://jsfiddle.net/dlumkeman/bxuvqftw/)","<iframe src='http://saasdemo.qlik.com:81/anon/single/?appid=6bd9b09d-15ad-4d3e-8149-dbb32ce1e1b0&sheet=PumJhh&select=Country,Canada&select=City,Vancouver'style='border:none; width:100%; height:800px'></iframe>",,,,,,,,
+"Web integration","Web integration problem solving 4","[Go to this link to see the issue and solve it](http://jsfiddle.net/dlumkeman/bxuvqftw/)","<iframe src='http://saasdemo.qlik.com:443/anon/single/?appid=6bd9b09d-15ad-4d3e-8149-dbb32ce1e1b0&sheet=PumJhh&select=Country,Canada&select=City,Vancouver'style='border:none; width:100%; height:800px'></iframe>",,,,,,,,
 "Web integration","Web integration problem - fiddle 1","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/nk7qyvkj/)","wrong proxy",,,,,,,,
 "Web integration","Web integration problem - fiddle 2","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/est1ccsj/)","https instead of http",,,,,,,,
 "Web integration","Web integration problem - fiddle 3","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/Ljv9r2Lz/)","Wrong port",,,,,,,,
@@ -863,7 +863,7 @@ function appChangeListener() {
 "API integration","Font end APIs: Next we demonstrate some examples","Creating extra functionality in Qlik Sense",,"","","","","         0","0","Deep dive, PreSales",
 "API integration","Font end APIs: Next we demonstrate some examples","Requesting a list of apps from a SaaS platform",,"","","","","         0","0","Deep dive, PreSales",
 "API integration","Font end APIs: Next we demonstrate some examples","Remember: always think where you are, to see which APIs you need to use",,"","","","","         0","0","Deep dive",
-"API integration","Font end APIs: Embed Qlik Sense in other applications","[See SaaSdemo.qlik.com for a example where we embedded the hub](http://saasdemo.qlik.com:8080/)",,"","","","","         0","0","Deep dive, PreSales",
+"API integration","Font end APIs: Embed Qlik Sense in other applications","[See SaaSdemo.qlik.com for a example where we embedded the hub](http://saasdemo.qlik.com:80/)",,"","","","","         0","0","Deep dive, PreSales",
 "API integration","Font end APIs: Embed Qlik Sense in other applications","Saasdemo web integration hub.png",,"","","","","         0","0","Deep dive, PreSales",
 "API integration","Font end APIs Create extra functionality in Qlik Sense using extensions","extensionsExamples.png",,"","","","","         0","0","Deep dive, PreSales",
 "API integration","Font end APIs Create extra functionality in Qlik Sense using extensions","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-api-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales",
