@@ -36,10 +36,10 @@
                                 Customers in your SaaS platform
                             </div>
                             <p>Note that you don't have to create users or groups in Qlik Sense (see security <a href="{{pathFor 'documentation'}}" class="item">
-                documentation</a> for more info).
-                                {{#if isChrome}}
-                                    Press a customer name to update.
-                                {{/if}}
+                            documentation</a> for more info).
+                                <!-- {{#if isChrome}}
+                            Press a customer name to update.
+                            {{/if}} -->
                             </p>
                         </div>
                     </div>
@@ -70,15 +70,15 @@
                 <!-- </div> -->
             </div>
             <div class="column">
-                {{#if isChrome}}
-                    {{#if showUpdateScreen}}
-                        {{> updateUserFormStep1}}
-                    {{/if}}
-                {{else}}
-                    {{#if showUpdateScreen}}
-                        {{> displayUsers}}
-                    {{/if}}
+                <!-- {{#if isChrome}}
+                {{#if showUpdateScreen}}
+                {{> updateUserFormStep1}}
                 {{/if}}
+                {{else}} -->
+                {{#if showUpdateScreen}}
+                    {{> displayUsers}}
+                {{/if}}
+                <!-- {{/if}} -->
             </div>
         </div>
     </div>
@@ -86,8 +86,8 @@
 <template name="displayUsers">
     {{#with selectedCustomerDoc}}
         <h4 class="ui dividing header">
-          An overview of the group memberships for customer:  {{name}}
-      </h4>
+      An overview of the group memberships for customer:  {{name}}
+  </h4>
         <form class="ui form">
             {{#each users}}
                 <div class="ui green segment">
@@ -112,16 +112,14 @@
 <template name="updateUserFormStep1">
     {{#with selectedCustomerDoc}}
         <h4 class="ui dividing header">
-          Update the group memberships for customer:  {{name}}
-      </h4>
+      Update the group memberships for customer:  {{name}}
+  </h4>
         <form class="ui form">
             {{#each users}}
                 {{> updateGroupsFormStep1}}
             {{/each}}
         </form>
     {{/with}}
-</template>
-<template name="displayGroupsFormStep1">
 </template>
 <template name="updateGroupsFormStep1">
     <div class="ui green segment">
@@ -131,17 +129,22 @@
                     {{name}}
                 </div>
                 <div class="field">
-                    <!-- {{group}} -->
-                    <div class="ui dropdown group">
-                        <input type="hidden" name="group" value="{{group}}">
+                    <div class="ui fluid selection dropdown">
+                        <input name="group" type="hidden">
+                        <i class="user icon"></i>{{group}}
+                        <div class="default text"></div>
                         <i class="dropdown icon"></i>
-                        <div class="default text">{{group}}</div>
                         <div class="menu">
-                            <div class="item" data-value="Consumer">Consumer</div>
-                            <div class="item" data-value="Contributor">Contributor</div>
-                            <div class="item" data-value="Developer">Developer</div>
-                            <div class="item" data-value="Admin">{{../name}} admin</div>
-                            <div class="item" data-value="Global auditor">SaaS platform auditor (global display)</div>
+                            <div class="header">Users from step 1</div>
+                            <!-- {{#each groups}}
+                                <div class="item" data-value="{{this}}" data-text="{{this}}">
+                                    {{this}}
+                                </div>
+                                {{/each}} -->
+                            <div class="item" data-value="Contributor" data-text="Contributor"></div>
+                            <div class="item" data-value="Developer" data-text="Developer">Developer</div>
+                            <!-- <div class="item" data-value="Admin" data-text="Admin">{{../name}} admin</div>
+                                <div class="item" data-value="Global auditor" data-text="Global auditor">SaaS platform auditor (global display)</div> -->
                         </div>
                     </div>
                 </div>

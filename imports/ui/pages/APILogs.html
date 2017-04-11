@@ -81,6 +81,7 @@
     </p>
 </template>
 <template name="ApiLogsTable">
+    {{> sAlert}}
     <h3 class="ui header">Real time JSON messages (API)</h3>
     <p>In the table below you will see a real time overview of JSON messages being sent between this SaaS platform and the Qlik Sense QRS and the Engine API. You can search for specific words like app, stream, SSO, ticket, logout etc. to view the request and the response from Qlik Sense.</p>
     <!-- {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}} -->

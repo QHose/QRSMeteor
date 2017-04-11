@@ -61,6 +61,18 @@ ServiceConfiguration.configurations.insert({
     secret: Meteor.settings.private.twitter.secret
 });
 
+
+ServiceConfiguration.configurations.upsert({
+    service: "google"
+}, {
+    $set: {
+        clientId: Meteor.settings.private.google.clientId,
+        loginStyle: "popup",
+        secret: Meteor.settings.private.google.secret
+    }
+});
+
+
 const numberOfUsers = Meteor.users.find().count();
 console.log('Checking the user accounts, number of users is: ' + numberOfUsers)
 
@@ -83,13 +95,3 @@ if (!numberOfUsers) {
     console.log('user created with id: ', id);
     Roles.addUsersToRoles(id, 'admin', Roles.GLOBAL_GROUP);
 }
-
-ServiceConfiguration.configurations.upsert({
-    service: "google"
-}, {
-    $set: {
-        clientId: Meteor.settings.private.google.clientId,
-        loginStyle: "popup",
-        secret: Meteor.settings.private.google.secret
-    }
-});
