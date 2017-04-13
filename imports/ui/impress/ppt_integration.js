@@ -78,8 +78,15 @@ Template.ppt_integrationMain.helpers({
     },
     IFrameURLChapterSelection() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&sheet=' + IntegrationPresenatationSelectionSheet + '&opt=currsel';
+    },browserIsEdge() {
+        return isIEorEDGE()===true ? true:'';
     }
 })
+
+function isIEorEDGE(){
+    console.log('navigator.appName ', navigator.appName);   
+    return navigator.appName == 'Microsoft Internet Explorer' || (navigator.appName == "Netscape" && navigator.appVersion.indexOf('Edge') > -1);
+}
 
 Template.ppt_integration.helpers({
     mainTopics() {
