@@ -258,8 +258,6 @@ $(""#btn_1"").click(function() {
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","OEM bootcamp, Sales",
 "Web integration","Demonstration SaaSDemo.Qlik.com: Web integration","saas demo Web integration screenshot.png",,"","","","","         0","0","Sales",
 "Web integration","Demonstration SaaSDemo.Qlik.com: Web integration","[SaaSDemo.Qlik.com](http://52.50.134.241)",,"","","","","         0","0","Sales",
-"Web integration","Now take 10 minutes to do it yourself. SaaSDemo.Qlik.com: web integration demo","saas demo Web integration screenshot.png",,"","","","","         0","0","Sales",
-"Web integration","Now take 10 minutes to do it yourself. SaaSDemo.Qlik.com: web integration demo","[SaaSDemo.Qlik.com](http://saasdemo.qlik.com)",,"","","","","         0","0","Sales",
 "Web integration","Embed Qlik Sense in other applications","Lets look at [SaaSdemo.qlik.com](http://52.50.134.241/) where we embedded
 - the hub, 
 - apps 
@@ -720,11 +718,11 @@ or
 "SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","<div class=""ui one column stackable center aligned page grid"">
    <div class=""column twelve wide"">
 <div class=""ui buttons"">
-                <a class=""ui button"" target=""_blank"" href=""{{pathFor 'APILogs'}}"">API & Source code</a>
+                <a class=""ui button"" target=""_blank"" href=""http://saasdemo.qlik.com/ApiLogs"">API & Source code</a>
                 <div class=""or""></div>
-                <a href=""{{pathFor 'documentation'}}"" target=""_blank"" class=""ui button"">Our approach</a>
+                <a href=""http://saasdemo.qlik.com/documentation"" target=""_blank"" class=""ui button"">Our approach</a>
                 <div class=""or""></div>
-                <a href={{pathFor 'videoOverview'}} class=""ui dropdown youtube button""><i class=""youtube icon""></i>Video overview</a>
+                <a href=""http://saasdemo.qlik.com/videooverview"" class=""ui dropdown youtube button""><i class=""youtube icon""></i>Video overview</a>
             </div>
        </div>
 </div>
@@ -818,10 +816,11 @@ drop table WorkshopParentChild;
     </div>
 </div>
 ``` ",,"","","","","         0","0","What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 4: create an event listener so the slides will update when the selection or app state changes","Using events you can do something in your platform based on ""events"" or ""things that happen in Qlik Sense"". This could be a selection or the reload of the app for example. Based on this new information you could create alerts or send an email.  ",,,,,,,,,
 "SaaSDemo.qlik.com key API calls","Step 4: create an event listener so the slides will update when the selection or app state changes","```
 function appChangeListener() {
     
-            enigma.getService('qix', {
+            enigma.getService('qix', { //connect to Qlik Sense
                     schema: qixschema,
                     appId: appId,
                     session: { 
@@ -831,15 +830,14 @@ function appChangeListener() {
                         unsecure: true
                     }
                 })
-                .then(qix => {
-                    qix.app.on('changed', () => { 
-                        location.reload(); //I like to refresh here the browser if Qlik ""changed"", in this way impress generates new slides.
+                .then(qix => { 
+                    qix.app.on('changed', () => { //get notification if there is new data
+                        location.reload(); //I like to refresh the browser if Qlik ""changed"", in this way impress generates new slides based on the selection made.
                     });
                 })
         })
 }
 ```",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
-"SaaSDemo.qlik.com key API calls","Step 4: create an event listener so the slides will update when the selection or app state changes","Using events you can do something in your platform based on ""events"" or ""things that happen in Qlik Sense"". This could be a selection or the reload of the app for example. Based on this new information you could create alerts or send an email.  ",,,,,,,,,
 "API integration","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
 "API integration","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
 "API integration","Lets look at some Qlik Sense integration scenarios","Authorization: And will only see its own data?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
@@ -1692,8 +1690,6 @@ document.addEventListener('click', function(e) {
 "Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Databases",,"","","","","         0","0","Exercises",
 "Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Firewalls",,"","","","","         0","0","Exercises",
 "Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Ports",,"","","","","         0","0","Exercises",
-"Architecture","Key architecture topics","Infrastructure",,,,,,,,,
-"Architecture","Key architecture topics","Application architecture",,,,,,,,,
 "Architecture","Example architecture scenarios","> Lets look at some common scenarios with both internal as well as external users",,"","","","","         0","0","PreSales",
 "Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Internal users only",,"","","","","         0","0","PreSales, OEM bootcamp, Technical - 1 day",
 "Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales, OEM bootcamp, Technical - 1 day",

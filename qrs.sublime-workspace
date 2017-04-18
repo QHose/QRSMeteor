@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"fa",
+				"false"
+			],
+			[
 				"set",
 				"setTimeout"
 			],
@@ -510,10 +514,6 @@
 			[
 				"tick",
 				"ticketRequestBody"
-			],
-			[
-				"pa",
-				"passport"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "imports/ui/impress/ppt_integration.html",
 			"settings":
 			{
-				"buffer_size": 6532,
+				"buffer_size": 6698,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -548,8 +548,16 @@
 			"file": "imports/ui/impress/ppt_integration.js",
 			"settings":
 			{
-				"buffer_size": 15151,
+				"buffer_size": 15266,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "settings-development - example.json",
+			"settings":
+			{
+				"buffer_size": 1816,
 				"line_ending": "Windows"
 			}
 		}
@@ -627,7 +635,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
@@ -763,7 +770,7 @@
 	],
 	"find":
 	{
-		"height": 43.0
+		"height": 64.0
 	},
 	"find_in_files":
 	{
@@ -880,6 +887,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"edge",
+			"chrome",
 			"ppt_integrationMain",
 			"dropdown",
 			"reload",
@@ -1005,9 +1014,7 @@
 			"level",
 			"sort",
 			"mainTopics",
-			"render",
-			"on",
-			"getLevel1And2"
+			"render"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1148,7 +1155,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1157,15 +1164,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6532,
+						"buffer_size": 6698,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1448,
-								1450
+								1429,
+								1429
 							]
 						],
 						"settings":
@@ -1177,7 +1184,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 277.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -1209,7 +1216,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1240,13 +1247,13 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1255,15 +1262,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15151,
+						"buffer_size": 15266,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2740,
-								2740
+								2669,
+								2667
 							]
 						],
 						"settings":
@@ -1275,10 +1282,41 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 762.0,
+						"translation.y": 1894.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "settings-development - example.json",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1816,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1088,
+								1123
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1380,7 +1418,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 350.0,
+	"side_bar_width": 303.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

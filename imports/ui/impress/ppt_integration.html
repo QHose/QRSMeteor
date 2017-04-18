@@ -2,15 +2,15 @@
     <iframe src='{{IFrameURLChapterSelection}}' class="selector"> </iframe>
 </template>
 <template name="ppt_integrationMain">
-    {{#if browserIsEdge}}
+    {{#if browserIsEdgeOrMobile}}
         <div class="ui text container">
             <div class="ui icon message">
                 <i class="warning sign icon"></i>
                 <div class="content">
                     <div class="header">
-                        Internet Explorer or Edge are not supported
+                        Mobile devices, Internet Explorer or Edge are not supported
                     </div>
-                    <p>Please use another browser like Chrome, Safari or Firefox... These browers do not support the CSS transitions we use...</p>
+                    <p>Please use your laptop using another browser like Chrome, Safari or Firefox... </p>
                 </div>
             </div>
         </div>

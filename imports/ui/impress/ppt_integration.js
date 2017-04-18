@@ -78,14 +78,19 @@ Template.ppt_integrationMain.helpers({
     },
     IFrameURLChapterSelection() {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&sheet=' + IntegrationPresenatationSelectionSheet + '&opt=currsel';
-    },browserIsEdge() {
-        return isIEorEDGE()===true ? true:'';
+    },
+    browserIsEdgeOrMobile() {
+        return isIEorEDGE() || isMobile() === true ? true : '';
     }
 })
 
-function isIEorEDGE(){
-    console.log('navigator.appName ', navigator.appName);   
+function isIEorEDGE() {
+    console.log('navigator.appName ', navigator.appName);
     return navigator.appName == 'Microsoft Internet Explorer' || (navigator.appName == "Netscape" && navigator.appVersion.indexOf('Edge') > -1);
+}
+
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false;
 }
 
 Template.ppt_integration.helpers({
