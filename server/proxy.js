@@ -5,3 +5,5 @@ var proxy = require('redbird')({ port: 80, ntlm: true, bunyan: false }); //bunya
 
 proxy.register(Meteor.settings.public.host, "http://localhost:3000"); //need subdomain otherwise meteor root-URL does not work
 proxy.register(Meteor.settings.public.webIntegrationHost, "http://localhost:3030"); //need subdomain otherwise meteor root-URL does not work
+proxy.register('slides.qlik.com', "http://localhost:3000/integration"); //need subdomain otherwise meteor root-URL does not work
+proxy.register('presentation.qlik.com', "http://localhost:3000/integration"); //need subdomain otherwise meteor root-URL does not work
