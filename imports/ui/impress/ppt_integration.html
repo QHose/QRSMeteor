@@ -27,6 +27,9 @@
                 <span class="text"><!-- Engine API Slide generator explaining SaaS with Qlik Sense (<a href="{{pathFor 'legal'}}">PROTOTYPE</a>) --></span>
             </div>
             {{#if showPresentation}}
+                <div style="position: absolute; bottom: 0px; right: 0px;">
+                    <a href="{{pathFor 'legal'}}">Terms of usage</a>
+                </div>
                 <iframe allowfullscreen src="{{pathFor 'ppt_integration'}}" class="frame"></iframe>
             {{else}}
                 <div class="ui container">
@@ -62,8 +65,8 @@
                 <!--         Create a chapter breaker if the level 1 has changed in the current row-->
                 <div class="z step ui segment integrationBreaker" data-x="{{XValue @index}}" data-z="2000">
                     <h1 class="ui header" style="font-size: 50px;">
-                        Next: {{this}} <!-- The current level 1 and 2 headers -->
-                    </h1>
+                    Next: {{this}} <!-- The current level 1 and 2 headers -->
+                </h1>
                 </div>
             {{else}}
                 <!-- CREATE A SLIDE, the index is the current slide in the loop, all slide info is contained in this -->

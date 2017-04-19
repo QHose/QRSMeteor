@@ -511,9 +511,11 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 * get a list of values
 * create a query and vizualize with your own library (D3, google charts)
 * register events to get associativity
-* maintain Sense",,"","","","","         0","0","Deep dive",
-"Web integration","Qlik Sense as high performance data warehouse","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","Deep dive",
-"Web integration","Qlik Sense as high performance data warehouse","postman response.png",,"","","","","         0","0","Deep dive",
+* maintain Sense",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Qlik Sense as high performance data warehouse","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Qlik Sense as high performance data warehouse","postman response.png",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Data only example: Qlik Sense bot","https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel&start=189",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Data only example: Slide generator","<iframe src=""http://saasdemo.qlik.com/integration"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "Web integration","Table API","API- table api - get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours, OEM bootcamp",
 "Web integration","Table API","```
  require.config({
@@ -794,30 +796,29 @@ drop table WorkshopParentChild;
         //store the table in the session. This ensures Impress.js can generate the slides
         Session.set('mainTopics',table)         
         Impress().init();                                      
-```",,"","","","","         0","0","SaaS & Power of APIs",
-"SaaSDemo.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","Get the [array of slides via Enigma.js](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.js#L221)",,"","","","","         0","0","What is this slide generator?",
-"SaaSDemo.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","[Create DIV](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.html#L41)  with class *slide* for each slide (a level 1, 2 combination)",,"","","","","         0","0","What is this slide generator?",
+```",,"","","","","         0","0","SaaS & Power of APIs, What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 2: Extract the data from the Engine API using Enigma.js","[Source code on github](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L235)",,"","","","","         0","0","SaaS & Power of APIs, What is this slide generator?",
+"SaaSDemo.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","Get the [array of slides via Enigma.js](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.js#L221)",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
+"SaaSDemo.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","[Create DIV](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.html#L41)  with class *slide* for each slide (a level 1, 2 combination)",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
 "SaaSDemo.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","```
- <div id=""impress"">
-        {{#each mainTopics }}
-            <!-- for each header: a level 1 and 2 combination --> 
-                <!-- CREATE A SLIDE-->
-  <div class=""step"">
-        <h2>
-            <div class=""content"">
-                {{level 1 slide}}
-                <div class=""sub header"">
-                    {{level 2 slide}}
-                </div>
-            </div>
-         </h2>
-      <!-- print all level 3 items/videos/images-->
-        {{/each}}     
-    </div>
-</div>
-``` ",,"","","","","         0","0","What is this slide generator?",
-"SaaSDemo.qlik.com key API calls","Step 4: create an event listener so the slides will update when the selection or app state changes","Using events you can do something in your platform based on ""events"" or ""things that happen in Qlik Sense"". This could be a selection or the reload of the app for example. Based on this new information you could create alerts or send an email.  ",,,,,,,,,
-"SaaSDemo.qlik.com key API calls","Step 4: create an event listener so the slides will update when the selection or app state changes","```
+{{# each slide}}
+    <!-- for each header: a level 1 and 2 combination -->
+    <!-- CREATE A SLIDE USING IMPRESS.JS-->
+        < div class=""slide"">
+            <h2>
+                {{level 1 header }}
+                {{level 2 header }}  
+            </h2>
+            <!-- for each level 3 items like bullets/videos/images.
+                - detect if youtube: create youtube box
+                - if image: make image container
+                - if bullet: format as header 3
+            -->
+        < /div>
+{ { /each}}
+``` ",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
+"SaaSDemo.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","Using events you can do something in your platform based on ""events"" or ""things that happen in Qlik Sense"". This could be a selection or the reload of the app for example. Based on this new information you could create alerts or send an email.  ",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
+"SaaSDemo.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","```
 function appChangeListener() {
     
             enigma.getService('qix', { //connect to Qlik Sense
@@ -838,6 +839,7 @@ function appChangeListener() {
         })
 }
 ```",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
+"SaaSDemo.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","[Source code](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L271)",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
 "API integration","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
 "API integration","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
 "API integration","Lets look at some Qlik Sense integration scenarios","Authorization: And will only see its own data?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, OEM bootcamp",
