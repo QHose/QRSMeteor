@@ -5,6 +5,12 @@ Router.configure({
 });
 
 
+//redirect users from saasdemo.qlik.com to integration.qlik.com
+if(window.location.href.indexOf("saasdemo") > -1){
+       window.location="http://integration.qlik.com";
+    }
+
+
 //make sure certain path are for authenticated users only
 Router.plugin('ensureSignedIn', {
     only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService']
@@ -89,3 +95,4 @@ Router.route('/signup');
 
 // Router.route('/register');
 // Router.route('/login');
+

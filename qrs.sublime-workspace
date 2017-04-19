@@ -523,7 +523,43 @@
 			"file": "imports/ui/impress/ppt_integration.html",
 			"settings":
 			{
-				"buffer_size": 6728,
+				"buffer_size": 6887,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/proxy.js",
+			"settings":
+			{
+				"buffer_size": 922,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/main.html",
+			"settings":
+			{
+				"buffer_size": 560,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/generation/OEMPartnerSide/users.html",
+			"settings":
+			{
+				"buffer_size": 7932,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/generation/OEMPartnerSide/step2.html",
+			"settings":
+			{
+				"buffer_size": 2058,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -537,22 +573,11 @@
 			}
 		},
 		{
-			"contents": "import { senseConfig } from '/imports/api/config.js';\nimport './ppt_integration.html';\nimport lodash from 'lodash';\nimport hljs from 'highlight.js';\n_ = lodash;\n\nvar showdown = require('showdown');\nvar converter = new showdown.Converter();\nconst enigma = require('enigma');\n// The QIX schema needed by enigma.js\nconst qixschema = require('/node_modules/enigma.js/schemas/qix/3.1/schema.json');\n\nvar appId = Meteor.settings.public.IntegrationPresenatationApp;\nvar IntegrationPresenatationSelectionSheet = 'DYTpxv';\nvar IntegrationPresenatationSortedDataObject = 'pskL';\nvar slideWidth = 2000;\n\n\nTemplate.ppt_integrationMain.onRendered(function() {\n    // Session.set('clickedInSelection', false);\n    this.$('.ui.sidebar')\n        .sidebar('toggle');\n});\n\nTemplate.ppt_integration.onRendered(function() {\n    Session.set('slideLoading', true);\n    getLevel1to3('integrationTopics');\n    getLevel1And2();\n    appChangeListener();\n\n    $('#impress').on('impress:stepenter', function() {\n        $('.slideContent').css({ \"visibility\": \"visible\" });\n        var step = $(this);\n\n        //ensure we only show the content of the current step via IF condition in the template (only show content if slideNr = currentSlide)\n        var activeStep = $(this).find('.active.step').attr('id');\n        //convert the id value step-2 to 2\n        var activeStepNr = activeStep.substr(activeStep.indexOf(\"-\") + 1);\n        Session.set('activeStepNr', activeStepNr);\n\n    });\n})\n\nTemplate.integrationSlideContent.onRendered(function() {\n\n    //init the youtube videos via semanticUI\n    this.$('.ui.embed').embed();\n\n    this.$('.markdownItem, .videoPlaceholder').transition({\n        animation: 'fade in',\n        duration: '3s',\n    });\n\n    this.$('img').transition({\n        animation: 'fade in',\n        duration: '3s',\n    });\n\n    this.$('blockquote').transition({\n        animation: 'fade in',\n        duration: '5s',\n    });\n\n    //make sure all code gets highlighted using highlight.js\n    this.$('pre code').each(function(i, block) {\n        hljs.highlightBlock(block);\n    });\n\n    //ensure all links open on a new tab\n    this.$('a[href^=\"http://\"], a[href^=\"https://\"]').attr('target', '_blank');\n\n})\n\nTemplate.ppt_integrationMain.helpers({\n    showPresentation() {\n        // console.log('show the IFRAME');\n        return Session.get('showPresentation'); //&& Session.get('clickedInSelection');\n    },\n    IFrameURLChapterSelection() {\n        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&sheet=' + IntegrationPresenatationSelectionSheet + '&opt=currsel';\n    },\n    browserIsEdgeOrMobile() {\n        return isIEorEDGE() || isMobile() === true ? true : '';\n    }\n})\n\nfunction isIEorEDGE() {\n    console.log('navigator.appName ', navigator.appName);\n    return navigator.appName == 'Microsoft Internet Explorer' || (navigator.appName == \"Netscape\" && navigator.appVersion.indexOf('Edge') > -1);\n}\n\nfunction isMobile() {\n    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false;\n}\n\nTemplate.ppt_integration.helpers({\n    mainTopics() {\n        return Session.get('mainTopics'); //only the level 1 and 2 colums, we need this for the headers of the slide\n    },\n    // topics() {\n    //     return Session.get('integrationTopics'); //all level 1 2 and 3 data, we need level 3 for the bullets/images of the slide\n    // },\n    chapterSlide(currentRow) {\n        if (typeof(currentRow) === 'string') { //we got a chapter slide\n            // console.log('we found a chapter slide', currentRow);\n            return true\n        }\n    },\n    XValue(index) {\n        return setXValue(index);\n    },\n    loading() {\n        return Session.get('slideLoading');\n    },\n    thankYouXvalue() {\n        return Session.get('currentSlideNumber') * slideWidth;\n    }\n});\n\nTemplate.integrationSlide.helpers({\n    level(level, slide) {\n        return textOfLevel(slide, level);\n    },\n    XValue(index) {\n        Session.set('currentSlideNumber', index);\n        return slideWidth * index;\n        // return setXValue(index);\n    },\n    slideActive(slideNr) {\n        //active slide gets set via impress, that fires an event. see ppt_integration.onRendered\n        return Session.get('activeStepNr') >= slideNr + 1;\n    },\n    step() {\n        return Session.get('activeStepNr');\n    }\n})\n\nTemplate.integrationSlideContent.helpers({\n    itemsOfLevel: function(level, slide) { //get all child items of a specific level, normally you will insert level 3 \n        var parents = slide[level - 3].qText + slide[level - 2].qText; //get the names of the parents of the current slide (level 1 and 2)\n        if (parents) {\n            // console.log('Parent is not empty:', parents);\n            return getLocalValuesOfLevel(parents); //using the parent, get all items that have this name as parent\n        }\n    },\n    formatted(text) {\n        if (youtube_parser(text)) { //youtube video url\n            // console.log('found an youtube link so embed with the formatting of semantic ui', text)\n            var videoId = youtube_parser(text);\n            var html = '<div class=\"ui container videoPlaceholder\"><div class=\"ui embed\" data-source=\"youtube\" data-id=\"' + videoId + '\" data-icon=\"video\" data-placeholder=\"images/youtube.jpg\"></div></div>'\n                // console.log('generated video link: ', html);\n            return html;\n        } else if (text.startsWith('<')) { //custom HTML\n            return text;\n        } else if (checkTextIsImage(text)) { //image\n            // console.log('found an image', text)\n            return '<img class=\"ui huge centered integration image\"  src=\"images/' + text + '\">'\n        } else { //text, convert the text (which can include markdown syntax) to valid HTML\n            var result = converter.makeHtml(text);\n            if (result.substring(1, 11) === 'blockquote') {\n                return '<div class=\"ui green very padded segment\">' + result + '</div>';\n            } else {\n                return '<div class=\"markdownItem\">' + result + '</div>';\n            }\n        }\n    }\n})\n\nTemplate.ppt_integrationMain.events({\n    'click .launch': function(event) {\n        // console.log('button clicked');\n        $('.ui.sidebar')\n            .sidebar('toggle');\n    },\n    'click .button': function(event) {\n        console.log('button clicked');\n        $('.ui.sidebar')\n            .sidebar('toggle');\n        Session.set('showPresentation', true);\n    },\n    'mouseover .sidebar.integration': function(event) {\n        Session.set('showPresentation', false);\n    },\n    'mouseout .sidebar.integration': function(event) {\n        Session.set('showPresentation', true);\n    }\n})\n\n\nfunction setXValue(index) {\n    Session.set('currentSlideNumber', index);\n    return slideWidth * index;\n}\n\nfunction textOfLevel(row, level) {\n    level -= 1\n    return row[level].qText\n}\n\nfunction getLevel1and2Names(slide) {\n    return slide[0].qText + '-' + slide[1].qText;\n}\n\nfunction checkTextIsImage(text) {\n    return (text.match(/\\.(jpeg|jpg|gif|png)$/) != null);\n}\n\nfunction youtube_parser(url) {\n    var regExp = /^.*((youtu.be\\/)|(v\\/)|(\\/u\\/\\w\\/)|(embed\\/)|(watch\\?))\\??v?=?([^#\\&\\?]*).*/;\n    var match = url.match(regExp);\n    console.log('de url '+ url + ' is een match met youtube? '+ (match && match[7].length == 11));\n    return (match && match[7].length == 11) ? match[7] : false;\n}\n\nvar setCurrentSlideEventHelper = function() {\n    $(document).on('impress:stepenter', function(e) {\n        var currentSlide = $(e.target).attr('id');\n        Session.set('currentSlide', currentSlide);\n    });\n}\n\nvar getLocalValuesOfLevel = function(parentText) {\n    // console.log('get all level 3 for level 2 with text:', parentText);\n    var result = [];\n    var topics = Session.get('integrationTopics'); //the level 1 and 2 values\n    var level3Data = _.filter(topics, function(row) {\n            var parents = row[0].qText + row[1].qText;\n            if (parents === parentText) { //if the current level 1 and 2 combination matches \n                if (row[2].qText) { result.push(row[2].qText) } //add the level 3 value to the new level3Data array\n            }\n        })\n        // console.log('level3Data:', result);\n    return result;\n}\n\nfunction getLevel1And2() {\n\n    // Set up connection to QIX, see https://github.com/mindspank/enigma-table-rows-example/blob/master/index.js\n\n    enigma.getService('qix', {\n            schema: qixschema,\n            appId: appId,\n            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs\n                host: senseConfig.host,\n                prefix: 'anon',\n                port: senseConfig.port,\n                unsecure: true\n            }\n        })\n        .then(qix => {\n            qix.app.getObject(IntegrationPresenatationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same\n                .then(model => {\n                    model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {\n                        // console.log('Result set from Qlik Sense:', data);\n                        var table = data[0].qMatrix;\n                        var tableWithChapters = insertSectionBreakers(table);\n                        console.log('Slides loaded, and we added extra chapter breakers. Object now stored in in session var mainTopics, so slides can be created by impress.js', tableWithChapters);\n                        Session.set('mainTopics', tableWithChapters)\n                        Meteor.setTimeout(function() {\n\n                            impress().init();\n                            impress().goto(0);\n                            $('.slideContent').css({ \"visibility\": \"hidden\" }); //prevent an issue when impress has qlik sense embedded via iframes...\n                            Session.set('slideLoading', false);\n                        }, 100);\n                    })\n                })\n        })\n}\n\n\nvar appChangeListener = function appChangeListener() {\n    enigma.getService('qix', {\n            schema: qixschema,\n            appId: appId,\n            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs\n                host: senseConfig.host,\n                prefix: 'anon',\n                port: senseConfig.port,\n                unsecure: true\n            }\n        })\n        .then(qix => {\n            qix.app.on('changed', () => {\n                // console.log('QIX instance change event received, so get the new data set out of Qlik Sense');\n                // getLevel1to3('selectedDataSet');\n                location.reload();\n            });\n        })\n}\n\nfunction getValuesOfLevel(level) {\n    console.log('getLocalValuesOfLevel: ', level);\n\n    enigma.getService('qix', {\n            schema: qixschema,\n            appId: appId,\n            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs\n                host: senseConfig.host,\n                prefix: 'anon',\n                port: senseConfig.port,\n                unsecure: true\n            }\n        })\n        .then(qix => {\n\n            qix.app.createSessionObject({\n                    qInfo: { qType: 'cube' },\n                    qHyperCubeDef: {\n                        qDimensions: [{\n                            qDef: { qFieldDefs: [level] }\n                        }]\n                    }\n                })\n                .then(model => {\n                    model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {\n                        // console.log('Result set from Qlik Sense:', data);\n                        var table = data[0].qMatrix;\n                        // console.log('Level ' + level + ' data:', table);\n                        Session.set('level3Data', table)\n                    })\n                })\n        })\n}\n\nfunction getLevel1to3(sessionName) {\n    enigma.getService('qix', {\n            schema: qixschema,\n            appId: appId,\n            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs\n                host: senseConfig.host,\n                prefix: 'anon',\n                port: senseConfig.port,\n                unsecure: true\n            }\n        })\n        .then(qix => {\n\n            qix.app.createSessionObject({\n                    qInfo: { qType: 'cube' },\n                    qHyperCubeDef: {\n                        qDimensions: [{\n                            qDef: { qFieldDefs: ['Level 1'] }\n                        }, {\n                            qDef: { qFieldDefs: ['Level 2'] }\n                        }, {\n                            qDef: { qFieldDefs: ['Level 3'] }\n                        }]\n                    }\n                })\n                .then(model => {\n                    model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {\n                        // console.log('Result set from Qlik Sense:', data);\n                        var table = data[0].qMatrix;\n                        var tableWithChapters = insertSectionBreakers(table);\n                        // console.log('New data received, chapters added and now stored in in session var ', sessionName);\n                        Session.set(sessionName, tableWithChapters);\n                    })\n                })\n\n        })\n}\n\nfunction insertSectionBreakers(table) {\n    var currentLevel1, previousLevel1 = '';\n    var newTableWithChapter = [];\n\n    table.forEach(function(currentRow) {\n        var currentLevel1 = textOfLevel(currentRow, 1);\n        if (previousLevel1 !== currentLevel1) {\n            newTableWithChapter.push(currentLevel1)\n            previousLevel1 = currentLevel1;\n        }\n        newTableWithChapter.push(currentRow);\n    });\n    // console.log('table with chapters is', newTableWithChapter);\n    return newTableWithChapter;\n}\n\n\n\n/**\n * Auto-indent overflowing lines\n * @author Rob W http://stackoverflow.com/u/938089\n * @param code_elem HTMLCodeElement (or any element containing *plain text*)\n */\n// function autoindent(code_elem) {\n//     // Grab the lines\n//     var textContent = document.textContent === null ? 'textContent' : 'innerText';\n//     var lines = code_elem[textContent].split(/\\r?\\n/),\n//         fragment = document.createDocumentFragment(),\n//         dummy, space_width, i, prefix_len, line_elem;\n\n//     // Calculate the width of white space\n//     // Assume that inline element inherit styles from parent (<code>)\n//     dummy = document.createElement('span');\n//     code_elem.appendChild(dummy);\n//     // offsetWidth includes padding and border, explicitly override the style:\n//     dummy.style.cssText = 'border:0;padding:0;';\n//     dummy[textContent] = '          ';\n//     space_width = dummy.offsetWidth / 10;\n//     // Wipe contents\n//     code_elem.innerHTML = '';\n\n//     for (i = 0; i < lines.length; i++) {\n//         // NOTE: All preceeding white space (including tabs is included)\n//         prefix_len = /^\\s*/.exec(lines[i])[0].length;\n//         line_elem = fragment.appendChild(document.createElement('div'));\n//         line_elem.style.marginLeft = space_width * prefix_len + 'px';\n//         line_elem[textContent] = lines[i].substring(prefix_len);\n//     }\n//     code_elem.appendChild(fragment);\n// }\n",
 			"file": "imports/ui/impress/ppt_integration.js",
-			"file_size": 16067,
-			"file_write_time": 131370608702074839,
 			"settings":
 			{
 				"buffer_size": 15537,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "settings-development - example.json",
-			"settings":
-			{
-				"buffer_size": 1816,
 				"line_ending": "Windows"
 			}
 		}
@@ -628,8 +653,13 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/stylesheets",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
@@ -1150,7 +1180,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1159,15 +1189,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6728,
+						"buffer_size": 6887,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								733,
-								733
+								1456,
+								1456
 							]
 						],
 						"settings":
@@ -1182,11 +1212,135 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "server/proxy.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 922,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								862,
+								862
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "client/main.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 560,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								35,
+								35
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "imports/ui/generation/OEMPartnerSide/users.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7932,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1805,
+								1805
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 329.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "imports/ui/generation/OEMPartnerSide/step2.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2058,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								489,
+								489
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 11.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "settings-development.json",
 					"semi_transient": false,
 					"settings":
@@ -1213,11 +1367,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 6,
 					"file": "imports/ui/impress/ppt_integration.js",
 					"semi_transient": false,
 					"settings":
@@ -1245,38 +1399,7 @@
 						"translation.y": 4747.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "settings-development - example.json",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 1816,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1088,
-								1123
-							]
-						],
-						"settings":
-						{
-							"git_gutter_enabled": true,
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1371,7 +1494,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 303.0,
+	"side_bar_width": 519.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
