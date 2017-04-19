@@ -8,3 +8,4 @@ proxy.register(Meteor.settings.public.webIntegrationHost, "http://localhost:3030
 proxy.register('slides.qlik.com', "http://localhost:3000/integration"); //need subdomain otherwise meteor root-URL does not work
 proxy.register('presentation.qlik.com', "http://localhost:3000/integration"); //need subdomain otherwise meteor root-URL does not work
 proxy.register('integration.qlik.com', "http://localhost:3000"); //need subdomain otherwise meteor root-URL does not work
+proxy.register('saasdemo.qlik.com', "http://localhost:3000"); //need subdomain otherwise meteor root-URL does not work
