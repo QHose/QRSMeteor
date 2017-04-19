@@ -90,14 +90,14 @@ Template.generationApps.helpers({
                 //         return new Spacebars.SafeString('<i class="copy icon"></i>')
                 //     }
                 // }, 
-                {
-                    key: 'deleteApp',
-                    label: 'Delete app',
-                    hidden: true,
-                    fn: function() {
-                        return new Spacebars.SafeString('<i class="remove circle icon"></i>')
-                    }
-                }, 
+                // {
+                //     key: 'deleteApp',
+                //     label: 'Delete app',
+                //     hidden: true,
+                //     fn: function() {
+                //         return new Spacebars.SafeString('<i class="remove circle icon"></i>')
+                //     }
+                // }, 
                 // {
                 //     key: 'markAsTemplate',
                 //     label: 'Template app for generation?',
