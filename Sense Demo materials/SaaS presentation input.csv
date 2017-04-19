@@ -1721,6 +1721,7 @@ document.addEventListener('click', function(e) {
 "Architecture","Architecture example 6: use the Qlik Sense server to host your mashup","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","PreSales",
 "Architecture","Architecture example 6: use the Qlik Sense server to host your mashup","First a ""selection page"" is presented. The selected App Id is stored in the HTTP session.",,"","","","","         0","0","PreSales",
 "Architecture","Architecture example 6: use the Qlik Sense server to host your mashup","Based on the selection, a specific mashup is loaded.",,"","","","","         0","0","PreSales",
+"Architecture","Qlik Sense integration using OAUTH","architecture - single sing on using OAUTH.png",,,,,,,,,
 "Data integration","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","data - create qvd.png",,"","","","","         0","0","PreSales",
