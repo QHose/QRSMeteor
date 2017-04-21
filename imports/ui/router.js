@@ -75,6 +75,12 @@ Router.route('/integration', {
     template: 'ppt_integrationMain',
     layoutTemplate: 'presentationLayout'
 });
+Router.route('/slides', {
+    template: 'ppt_integrationMain',
+    layoutTemplate: 'presentationLayout'
+});
+
+
 Router.route('/integrationTopicsCircular', {
     template: 'integrationTopicsCircular',
     layoutTemplate: 'SSOLayout'

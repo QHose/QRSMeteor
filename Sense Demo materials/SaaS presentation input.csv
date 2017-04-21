@@ -253,6 +253,8 @@ $(""#btn_1"").click(function() {
 });
 ```",,"","","","","         0","0","PreSales",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Introduction - 30 minutes, OEM bootcamp",
+"Web integration","Example: What is embedding?","Here we embedded/integrated a YouTube video...",,"","","","","         0","0","Technical - 1 hour",
+"Web integration","Example: What is embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales, Technical - 1 hour, OEM bootcamp",
 "Web integration","Example: Combine charts and drag and drop","<iframe src=""http://web.saasdemo.qlik.com/onlyMultipleDivs"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","OEM bootcamp, Sales",
@@ -414,6 +416,7 @@ checkAuthenticatedInQlik = function checkAuthenticatedInQlik(sourceURL){
         })
 }
 ```",,"","","","","         0","0","Deep dive",
+"Web integration","Make sure the user is authenticated before you show a mashup","PS: Make sure you white-list (both web-socket & cors-header) in the QMC",,"","","","","         0","0","Deep dive",
 "Web integration","Capabilities API - Host whitelist explained ","Capabilities API - DIV tag require.js flow.png",,"","","","","         0","0","PreSales",
 "Web integration","Capabilities API - Host whitelist explained ","<q>Which domains have access to Qlik Sense Proxy web sockets?</q>",,"","","","","         0","0","PreSales",
 "Web integration","Capabilities API - example code to embed chart using a DIV tag","First connect to Qlik Sense using the config
@@ -514,7 +517,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 * maintain Sense",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Qlik Sense as high performance data warehouse","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Qlik Sense as high performance data warehouse","postman response.png",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Data only example: Qlik Sense bot","https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel&start=189",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Data only example: Qlik Sense bot (Start around 3m)","https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Introduction - 30 minutes",
 "Web integration","Data only example: Slide generator","<iframe src=""http://saasdemo.qlik.com/integration"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "Web integration","Table API","API- table api - get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours, OEM bootcamp",
 "Web integration","Table API","```
