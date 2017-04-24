@@ -6,7 +6,7 @@ _ = lodash;
 
 var showdown = require('showdown');
 var converter = new showdown.Converter();
-const enigma = require('enigma');
+const enigma = require('enigma.js');
 // The QIX schema needed by enigma.js
 const qixschema = require('/node_modules/enigma.js/schemas/qix/3.1/schema.json');
 
@@ -119,7 +119,7 @@ Template.ppt_integration.helpers({
 
 Template.integrationSlide.helpers({
     level(level, slide) {
-        return textOfLevel(slide, level);
+        return  textOfLevel(slide, level);
     },
     XValue(index) {
         Session.set('currentSlideNumber', index);
@@ -208,6 +208,7 @@ function checkTextIsImage(text) {
 function youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
+    // console.log('de url '+ url + ' is een match met youtube? '+ (match && match[7].length == 11));
     return (match && match[7].length == 11) ? match[7] : false;
 }
 

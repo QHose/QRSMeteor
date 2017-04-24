@@ -28,7 +28,7 @@
             </div>
             {{#if showPresentation}}
                 <div style="position: absolute; bottom: 0px; right: 0px;">
-                    <a  style="rgba(0, 0, 0, 0.87);" href="{{pathFor 'legal'}}">Terms of usage</a>
+                    <a style="rgba(0, 0, 0, 0.87);" href="{{pathFor 'legal'}}">Terms of usage</a>
                 </div>
                 <iframe allowfullscreen src="{{pathFor 'ppt_integration'}}" class="frame"></iframe>
             {{else}}
@@ -38,16 +38,12 @@
                             <div class="header">
                                 How to use the Engine API slide generator?
                             </div>
-                            <!-- <p>THIS IS A PROTOTYPE TO DEMO THE POWER OF THE QAP, AND ALL SLIDES ARE WORK IN PROGRESS.</p>
-                        -->
-                            <p> <b>This is a PROTOTYPE, all slides should be considered "draft" and you need to USE CHROME/FIREFOX AS BROWSER. </b></p>
                             <p>Here we demonstrate that Qlik Sense can be used as centralized data engine for users and systems in your organization. And we can quickly help you to find the answers you need via our associative search.
                             </p>
                             <ul class="ui list" style="margin-left: 20px">
                                 <li>First select your workshop, topics or use the search box to look for specific topics (like 'app', 'security', 'authentication', 'flow' or 'architecture'). </li>
                                 <li>Next, click on this side of the screen to start the presentation.</li>
                                 <li>You can always go back to make more selections via the left top menu <i class="content icon"></i></li>
-                                <li>Use the zoom of your browser if slides don't fit ("control -" on your keyboard)</li>
                             </ul>
                             <img class="ui centered image" src="images/Engine API slide generator easy flow.png">
                         </div>
@@ -91,15 +87,12 @@
     <div class="z step ui ten wide column raised segment integration" data-x="{{XValue slideNr}}" data-rotate-x="30" data-z="-1000">
         <h2 class="ui center aligned main header">
             <div class="content">
-                {{level 1 slide}}
+                {{{level 1 slide}}}
                 <div class="sub header" style="font-size: 1.2em;">
-                    {{level 2 slide}}
+                    {{{level 2 slide}}}
                 </div>
             </div>
         </h2>
-        <!--  step in session is {{step}}
-         Current step in HTML is {{slideNr}}
-         step is active? {{slideActive slideNr}} -->
         {{#if slideActive slideNr}}
             {{> integrationSlideContent slideNr=slideNr slide=slide}}
         {{/if}}
