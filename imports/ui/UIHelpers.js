@@ -1,4 +1,4 @@
-// import meteor collections
+    // import meteor collections
 import { Apps, TemplateApps } from '/imports/api/apps';
 import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';

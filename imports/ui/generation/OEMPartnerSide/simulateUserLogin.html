@@ -1,22 +1,11 @@
 <template name='simulateUserLogin'>
-    <!-- {{#if noCustomers}}
-    <div class="ui icon message">
-        <img class="icon" src="images/id.png">
-        <div class="content">
-            <div class="header">
-                <h4>No users</h4>
-            </div>
-            <p> Please insert at least one user in a customer so we can simulate the Single Sign on</p>
-        </div>
-    </div>
-    {{else}} -->
     <div class="ui icon message">
         <img class="icon" src="images/id.png">
         <div class="content">
             <div class="header">
                 <h4>Simulate a user login</h4>
             </div>
-            Try different users and notice the difference in visible streams, apps and access to functionality. Notice that each user can only see their own "company space" in Qlik Sene, and users with role
+            Try different users and notice the difference in visible streams, apps and access to functionality. Notice that each user can only see their own "company space" in Qlik Sense, and users with role
             <ul>
                 <li>Consumer can only display</li>
                 <li>Contributor can create sheets</li>
@@ -24,28 +13,24 @@
                 <li>Admin can maintain apps in the QMC</li>
                 <li>Global auditor can display all apps and <a class="item" href="{{senseServerQMC}}" target="_blank">settings</a></li>
             </ul>
-            <!-- <div class="ui grid">
-            <div class="one column"> -->
-                <div class="ui fluid selection dropdown">
-                    <input id="currentUser" type="hidden">
-                    <i class="user icon"></i> {{#if currentUser}} {{currentUser}} {{else}}
+            <div class="ui fluid selection dropdown">
+                <input id="currentUser" type="hidden">
+                <i class="user icon"></i>
+                {{#if currentUser}} {{currentUser}} {{else}}
                     <div class="default text">Select a user</div>
-                    {{/if}}
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <div class="header">Users from step 1</div>
-                        {{#each customers}} {{#each users}}
-                        <div class="item" data-value="{{name}}" data-text="{{name}}">
-                            <i class="male icon"></i> {{name}} ({{group}} - {{../name}})
-                        </div>
-                        {{/each}} {{/each}}
-                    </div>
+                {{/if}}
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="header">Users from step 1</div>
+                    {{#each customers}}
+                        {{#each users}}
+                            <div class="item" data-value="{{name}}" data-text="{{name}}">
+                                <i class="male icon"></i> {{name}} ({{group}} - {{../name}})
+                            </div>
+                        {{/each}}
+                    {{/each}}
                 </div>
-                <!-- </div>
-                <div class="six wide column">
-                </div>
-            </div> -->
+            </div>
         </div>
     </div>
-    <!--  {{/if}} -->
 </template>
