@@ -45,7 +45,8 @@
 "What is an app?","What is governed self service using Qlik Sense apps?","governed self service app.png",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "What is an app?","Contents of an app","contents of an app.png",,"","","","","         0","0","PreSales, Technical - 2 hours, OEM bootcamp",
 "What is an app?","In the hub apps are grouped per stream","web-resources to embed.png",,"","","","","         0","0","PreSales, Sales, Technical - 2 hours, OEM bootcamp",
-"What is an app?","Example: Embed the hub","<iframe src=""http://integration.qlik.com:443/meteor/hub"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
+"What is an app?","Example: What is the hub? (Embedded in the slide)","<iframe src=""http://integration.qlik.com:443/meteor/hub"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
+"What is an app?","Example: What is the hub? (Embedded in the slide)","When Qlik Sense starts up, you arrive at the hub. The hub is where you find all the apps you have access rights to use.",,,,,,,,,
 "What is an app?","Example: Embed a chart","<iframe src=""http://web.saasdemo.qlik.com/only1Chart"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "What is an app?","Example: Combine charts and drag and drop","<iframe src=""http://web.saasdemo.qlik.com/onlyMultipleDivs"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
 "What is an app?","Introduction video to build your first app (1 hour)","https://youtu.be/XL1Ph-RAxAE",,"","","","","         0","0","PreSales",
@@ -514,7 +515,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 * maintain Sense",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Qlik Sense as high performance data warehouse","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Qlik Sense as high performance data warehouse","postman response.png",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Data only example: Qlik Sense bot (Start around 3m)","https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Data only example: Qlik Sense bot (Start around 3m)","https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,,,,,,,,
 "Web integration","Data only example: Slide generator","<iframe src=""http://integration.qlik.com/slides"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes, OEM bootcamp",
 "Web integration","Table API","API- table api - get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours, OEM bootcamp",
 "Web integration","Table API","```
@@ -728,8 +729,8 @@ or
             </div>
        </div>
 </div>
-            ",,"","","","","         0","0","OEM bootcamp, Technical - 1 hour, SaaS & Power of APIs",
-"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://integration.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Introduction - 30 minutes, OEM bootcamp, Technical - 1 day, Technical - 1 hour, SaaS & Power of APIs",
+            ",,"","","","","         0","0","OEM bootcamp, SaaS & Power of APIs, Technical - 1 day",
+"SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://integration.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","OEM bootcamp, Technical - 1 day, SaaS & Power of APIs",
 "SaaSDemo.qlik.com key API calls","Slide generator","> Lets look at a data driven use case: how do we get from raw data to slides?",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
 "SaaSDemo.qlik.com key API calls","Engine API Slide generator flow: Extract the data from the app via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
 "SaaSDemo.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","First load level 1, 2, 3 data from the CSV. Each level also contains the resource for which it is relevant",,"","","","","         0","0","What is this slide generator?",
@@ -1661,6 +1662,7 @@ function createCube(app) {
 "Engine API","Engine API examples/tips","[Examples](https://github.com/qlik-oss/enigma.js/tree/master/examples)",,"","","","","         0","0","Deep dive",
 "Engine API","Engine API examples/tips","[QSocks examples](https://github.com/mindspank/qsocks/tree/master/examples)",,"","","","","         0","0","Deep dive",
 "Engine API","Engine API examples/tips","[Engine API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/introducing-engine-API.htm)",,"","","","","         0","0","Deep dive",
+"Engine API","Engine API examples/tips","[Example code to sort your hypercube](https://jsfiddle.net/mindspank/4hpkqbs9/)",,,,,,,,,
 "Engine API","Engine API examples/tips","PS: the function names are camelCase in enigma.js",,"","","","","         0","0","Deep dive",
 "Engine API","Create hypercube definition tip","If you don't want to write the definitions yourself you could paste this into your console when viewing a app",,"","","","","         0","0","Deep dive",
 "Engine API","Create hypercube definition tip","```
