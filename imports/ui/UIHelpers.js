@@ -133,12 +133,19 @@ if (Meteor.isClient) {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/qmc';
     });
 
-     Template.registerHelper('senseServer', function() {
-        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage ;
+    Template.registerHelper('senseServer', function() {
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage;
     });
 
     Template.registerHelper('webIntegrationDemo', function() {
         return 'http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort;
+    });
+
+    //Integration presentation Iframe selector
+    var appId = Meteor.settings.public.IntegrationPresentationApp;
+    var IntegrationPresentationSelectionSheet = Meteor.settings.public.IntegrationPresentationSelectionSheet; //'DYTpxv'; selection sheet of the slide generator
+    Template.registerHelper('IFrameURLChapterSelection', function() {
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';
     });
 
 
@@ -247,24 +254,22 @@ if (Meteor.isClient) {
         else if (
             // Customers.find().count() && 
             // TemplateApps.find().count() && 
-            Session.get('currentStep') === 3 && 
+            Session.get('currentStep') === 3 &&
             !Session.equals('loadingIndicator', 'loading')) {
             // console.log('loading indicator is ', Session.get('loadingIndicator') )
             return 3
         }
         //step 4
         else if (
-            Session.get('currentStep') === 4 
+            Session.get('currentStep') === 4
             // &&
             // Customers.find().count() &&
             // TemplateApps.find().count()
-            ) {
+        ) {
             return 4;
-        } 
-        else if (Session.equals('loadingIndicator', 'loading')){
+        } else if (Session.equals('loadingIndicator', 'loading')) {
             return;
-        }
-        else {
+        } else {
             Session.set('currentStep', 3);
             return 3;
         }

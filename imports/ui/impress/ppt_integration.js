@@ -1,5 +1,4 @@
 import { senseConfig } from '/imports/api/config.js';
-import './ppt_integration.html';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
 _ = lodash;
@@ -8,18 +7,20 @@ var showdown = require('showdown');
 var converter = new showdown.Converter();
 const enigma = require('enigma.js');
 // The QIX schema needed by enigma.js
-const qixschema = require('/node_modules/enigma.js/schemas/qix/3.1/schema.json');
+const qixschema = senseConfig.QIXSchema;
 
-var appId = Meteor.settings.public.IntegrationPresenatationApp;
-var IntegrationPresenatationSelectionSheet = 'DYTpxv';
-var IntegrationPresenatationSortedDataObject = 'pskL';
+var appId = Meteor.settings.public.IntegrationPresentationApp;
+var IntegrationPresentationSelectionSheet = Meteor.settings.public.IntegrationPresentationSelectionSheet; //'DYTpxv'; selection sheet of the slide generator
+var IntegrationPresentationSortedDataObject = Meteor.settings.public.IntegrationPresentationSortedDataObject; //'pskL';//a table object in the saas presentation qvf, that ensures the slides are in the correct load order. better would be to load this in this order in the API call.
 var slideWidth = 2000;
 
-
-Template.ppt_integrationMain.onRendered(function() {
+Template.ppt_integrationMain.onCreated(function() {
+    if (Session.get('landingPageAlreadySeen') === false) {
+        Router.go('presentation'); //GO TO THE SLIDE landing page first
+    }
     // Session.set('clickedInSelection', false);
-    this.$('.ui.sidebar')
-        .sidebar('toggle');
+    // this.$('.ui.sidebar')
+    //     .sidebar('toggle');
 });
 
 Template.ppt_integration.onRendered(function() {
@@ -37,7 +38,6 @@ Template.ppt_integration.onRendered(function() {
         //convert the id value step-2 to 2
         var activeStepNr = activeStep.substr(activeStep.indexOf("-") + 1);
         Session.set('activeStepNr', activeStepNr);
-
     });
 })
 
@@ -75,9 +75,6 @@ Template.ppt_integrationMain.helpers({
     showPresentation() {
         // console.log('show the IFRAME');
         return Session.get('showPresentation'); //&& Session.get('clickedInSelection');
-    },
-    IFrameURLChapterSelection() {
-        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + 'anon' + '/single/?appid=' + appId + '&sheet=' + IntegrationPresenatationSelectionSheet + '&opt=currsel';
     },
     browserIsEdgeOrMobile() {
         return isIEorEDGE() || isMobile() === true ? true : '';
@@ -119,7 +116,7 @@ Template.ppt_integration.helpers({
 
 Template.integrationSlide.helpers({
     level(level, slide) {
-        return  textOfLevel(slide, level);
+        return textOfLevel(slide, level);
     },
     XValue(index) {
         Session.set('currentSlideNumber', index);
@@ -248,7 +245,7 @@ function getLevel1And2() {
             }
         })
         .then(qix => {
-            qix.app.getObject(IntegrationPresenatationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same
+            qix.app.getObject(IntegrationPresentationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same
                 .then(model => {
                     model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {
                         // console.log('Result set from Qlik Sense:', data);

@@ -9,8 +9,9 @@
         "webIntegrationDemoPort": 3030,
         "SSBIAppSheetString": "40ef70c9-be76-4844-ac6a-d53195146c85/sheet/puEpZK/state/analysis",
         "SSBIApp": "40ef70c9-be76-4844-ac6a-d53195146c85",
-        "IntegrationPresenatationApp": "ce2c6eb5-dc73-44fb-a9f9-11fb2777fdfd",
-        "IntegrationPresenatationSelectionObject": "RZuJ",
+        "IntegrationPresentationApp": "ce2c6eb5-dc73-44fb-a9f9-11fb2777fdfd",
+        "IntegrationPresentationSelectionSheet": "DYTpxv",
+        "IntegrationPresentationSortedDataObject": "pskL",
         "facebook": {
             "clientId": "1754933311453043"
         }

@@ -3,27 +3,27 @@ import { Session } from 'meteor/session';
 import { senseConfig as config } from '/imports/api/config';
 import '/imports/ui/UIHelpers';
 
-// import 'impress';
 import './impress.html';
-import './integrationTopics.html';
-import './integrationTopics.js';
-import './impress.css';
-import './ppt_integration.js';
+import './ppt_integration.html';
+import './ppt_integration';
+
+import './landingPage.html';
+import './landingPage.js';
+
+import './impress.css'; //slides you see when you start the multi tenant demo
 import './impressJSModifiedSource.js'
 
 var api = {};
 
-Template.impress.onCreated(function() {})
-
 Template.impress.onRendered(function() {
     impressInitialized = Session.get('impressInitialized');
     if (!impressInitialized) {
-        console.log('impress was NOT yet initialized');
+        // console.log('impress was NOT yet initialized');
         api = impress();
         api.init();
         Session.set('impressInitialized', true);
     } else {
-        console.log('impress was ALREADY initialized');
+        // console.log('impress was ALREADY initialized');
         location.reload();
     }    
 

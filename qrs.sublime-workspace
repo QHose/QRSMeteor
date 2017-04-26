@@ -541,7 +541,7 @@
 			"file": "imports/ui/useCases/SSBI/SSBI.html",
 			"settings":
 			{
-				"buffer_size": 7722,
+				"buffer_size": 7763,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -665,7 +665,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
@@ -1259,15 +1258,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7722,
+						"buffer_size": 7763,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2994,
-								2994
+								3177,
+								3177
 							]
 						],
 						"settings":
@@ -1279,7 +1278,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 242.0,
+						"translation.y": 535.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

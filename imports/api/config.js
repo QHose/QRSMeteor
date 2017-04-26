@@ -2,6 +2,7 @@ import { Mongo } from 'meteor/mongo';
 import { Random } from 'meteor/random';
 import _ from 'meteor/underscore';
 
+const _QIXSchema = require('/node_modules/enigma.js/schemas/qix/3.1/schema.json');
 
 
 //This is the config that we need to make available on the client (the webpage)
@@ -11,6 +12,7 @@ if (Meteor.isClient) {
         "port": Meteor.settings.public.port,
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
+        "QIXSchema": _QIXSchema
     };
 
 }
@@ -32,6 +34,7 @@ if (Meteor.isServer) {
         "headerKey": Meteor.settings.private.headerKey,
         "headerValue": Meteor.settings.private.headerValue,
         "isSecure": Meteor.settings.private.isSecure,
+        "QIXSchema": _QIXSchema
     };
 
     if (!_senseConfig.host) {
@@ -47,8 +50,8 @@ if (Meteor.isServer) {
     export const _certs = {
         // server_key: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/server_key.pem'),
         // server_cert: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/server.pem'),
-        key: fs.readFileSync(Meteor.settings.private.certificatesDirectory+'/client_key.pem'),
-        cert: fs.readFileSync(Meteor.settings.private.certificatesDirectory+'/client.pem'),
+        key: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client_key.pem'),
+        cert: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client.pem'),
         // ca: fs.readFileSync('C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates/root.pem')
     }
 
@@ -73,8 +76,8 @@ if (Meteor.isServer) {
         'port': 4243,
     }
 
-//used for QSocks, the engine API javascript wrapper
-var _engineConfig = {
+    //used for QSocks, the engine API javascript wrapper
+    var _engineConfig = {
         host: _senseConfig.SenseServerInternalLanIP,
         isSecure: _senseConfig.isSecure,
         port: Meteor.settings.private.enginePort,
@@ -82,7 +85,7 @@ var _engineConfig = {
             'X-Qlik-User': Meteor.settings.private.engineHeaders,
         },
         key: _certs.key,
-        cert: _certs.cert,        
+        cert: _certs.cert,
         passphrase: Meteor.settings.private.passphrase,
         rejectUnauthorized: false, // Don't reject self-signed certs
         appname: null

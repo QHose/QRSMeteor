@@ -1,0 +1,23 @@
+<template name="landingPage">
+    <div class="ui container">
+        <h2 class="ui header">
+			<img src="/images/API tool broker.png">
+			<div class="content">
+				Welcome to the Qlik Sense slide generator
+				<div class="sub header">Please select your integration workshop below.</div>
+			</div>
+		</h2>
+        <div class="ui segment">
+            <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
+        </div>
+        <a id="start" href="{{pathFor 'slides'}}" class="ui right floated positive huge button">Create my slides</a>
+        <div class="ui accordion">
+            <div class=" title">
+                <i class="dropdown icon"></i> Select your slides (optional)
+            </div>
+            <div class="content">
+                <iframe src='{{slideObjectURL}}' style='border:none; height: 800px; width: 500px'></iframe>
+            </div>
+        </div>
+    </div>
+</template>

@@ -66,25 +66,25 @@ Router.route('/impress', {
 
 
 Router.route('/presentation', {
-    template: 'ppt_integration_landing',
+    template: 'landingPage',
     layoutTemplate: 'presentationLayout'
 });
 
-
-Router.route('/integration', {
+Router.route('/slideGenerator', {
     template: 'ppt_integrationMain',
+    layoutTemplate: 'presentationLayout'
+});
+
+//slide deck integration
+Router.route('/integration', {
+    template: 'landingPage',
     layoutTemplate: 'presentationLayout'
 });
 Router.route('/slides', {
-    template: 'ppt_integrationMain',
+    template: 'landingPage',
     layoutTemplate: 'presentationLayout'
 });
 
-
-Router.route('/integrationTopicsCircular', {
-    template: 'integrationTopicsCircular',
-    layoutTemplate: 'SSOLayout'
-});
 
 Router.route('/useCaseSelection', function() {
     this.layout('oneColumnCenteredLayout');
@@ -101,7 +101,7 @@ Router.route('/selfService', function() {
 });
 
 
-Router.route('/signup');
+// Router.route('/signup');
 
 // Router.route('/register');
 // Router.route('/login');
