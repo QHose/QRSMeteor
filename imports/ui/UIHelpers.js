@@ -156,7 +156,6 @@
 
         Template.registerHelper('userSelectedPresentationType', function(someValue) {
         return Session.get('groupForPresentation'); //user selected a presentation type?
-
         });
 
         Template.registerHelper('isSelected', function(someValue) {
