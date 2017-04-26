@@ -5,8 +5,6 @@ Template.landingPage.onCreated(function() {
     //set a var so the sso ticket request page knows he has to login the real user and not some dummy user of step 4
     //after the user is redirected to the sso page, we put this var to false. in that way we can still request dummy users for step 4 of the demo
     Session.setAuth('loginUserForPresentation', true);
-    Session.set('loginUserForPresentation', true);
-
     console.log('landingPage ONCREATED, loginUserForPresentation: ', Session.get('loginUserForPresentation'));
 })
 
@@ -22,10 +20,10 @@ Template.landingPage.onRendered(function() {
             observeChanges: true,
             onDeny: function() {
                 console.log('group has been set to technical, now the iframe can be shown which tries to open the presentation virtual proxy');
-                Session.set('groupForPresentation', 'technical');
+                Session.setAuth('groupForPresentation', 'technical');
             },
             onApprove: function() {
-                Session.set('groupForPresentation', 'general');
+                Session.setAuth('groupForPresentation', 'general');
             }
         });
     refreshModal();
