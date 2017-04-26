@@ -13,6 +13,12 @@ Template.layout.helpers({
     }
 });
 
+Template.presentationLayout.helpers({
+    userSelectionMade() {
+        return Session.get('groupForPresentation'); //if the user selected a presentation type try to login
+    }
+});
+
 Template.layout.events({
     'keydown, click': function(event, template) {
         Template.instance().$('*').popup('remove popup')

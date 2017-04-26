@@ -10,6 +10,22 @@
   //try to execute this script to make sure a session cookie is set. DIV tag integration together with ticketing directly does not work.
   // import {*} from 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/resources/translate/en-US/common.js';
 
+  Template.SSO.onCreated(function() {
+      const senseParams = Router.current().params.query;
+      Session.set('senseParams', senseParams);
+      Session.set('SSOLoading', true);
+      redirectUser();
+  })
+
+  Template.SSO.onRendered(function() {
+      Template.instance()
+          .$('.ui.accordion')
+          .accordion();
+
+      Template.instance().$('.dimmer')
+          .dimmer('show')
+  })
+
   Template.SSO.helpers({
       receivedParamsQlikSense: function() {
           return Session.get('senseParams');
@@ -30,7 +46,7 @@
       // console.log('SSO template, button clicked, now request a ticket server side');
       //logging only
       var message = "Qlik Sense proxy redirected the users browser to the /sso page client side. Here we can check which user is currently logged in, and call the server using this UserID (Meteor knows the userID if a client makes a server method call)";
-      console.log(message);
+      // console.log(message);
       var call = {};
       call.action = 'STEP 1: Client side SSO'
       call.request = message;
@@ -41,34 +57,54 @@
       REST_Log(call);
 
       var senseParams = Session.get('senseParams');
-      console.log('call the server with options reveived from Qlik Sense QPS response: ', senseParams);
+      // console.log('call the server with options reveived from Qlik Sense QPS response: ', senseParams);
+      console.log('request a ticket for the real user? (or dummy?) ', Session.get('loginUserForPresentation'));
 
+      if (Session.get('loginUserForPresentation') === true) {
+          console.log('request a ticket for the user logged in into integration.qlik.com (meteorJS)');
+          redirectPresentationUser(senseParams);
+      } else { //login a dummy user of step 4 or for the ssbi demo
+          Session.setAuth('loginUserForPresentation', false);
+          redirectDummyUser(senseParams);
+      }
+  };
+
+  //step 4 of the demo logs in a dummy user, not the user that has e.g. logged in with facebook
+  function redirectDummyUser(senseParams) {
       Meteor.call('getRedirectUrl', senseParams.proxyRestUri, senseParams.targetId, Meteor.userId(), (error, redirectUrl) => {
-        Session.set('SSOLoading', false);
+          Session.set('SSOLoading', false);
           if (error) {
               sAlert.error(error);
               console.error('Meteor SSO page, could not get a redirectUrl from Qlik Sense', error)
           } else {
+              var call = {};
               call.action = 'STEP 6: Redirect URL received';
               call.request = 'The browser received a redirectUrl (where should we forward to user to? Hub, QMC etc.) from the server, so replace the current url in the browser with this new one: ' + redirectUrl;
               REST_Log(call);
               window.location.replace(redirectUrl);
           }
       });
+  }
+
+  //really login the real user from facebook, or google via a ticket in qlik sense
+  function redirectPresentationUser(senseParams) {
+      console.log('SSO client side, really login the real user from facebook, or google via a ticket in qlik sense');
+
+      const userProperties = {};
+      userProperties.user = Meteor.userId(); //the logged in user
+      userProperties.group = Session.get('groupForPresentation'); //make sure dummy users don;t get access to this app
+      console.log('presentation group is ', userProperties.group);
+
+      Meteor.call('loginUserForPresentation', senseParams.proxyRestUri, senseParams.targetId, userProperties, (error, redirectUrl) => {
+          Session.set('SSOLoading', false);
+          if (error) {
+              sAlert.error(error);
+              console.error('Meteor SSO page, could not get a redirectUrl from Qlik Sense', error)
+          } else {
+              console.log('redirect URL received, now change the URL of the browser back to the slide generator page');
+              Session.setAuth('authenticatedSlideGenerator', true);
+              Session.setAuth('loginUserForPresentation', false);
+              window.location.replace(redirectUrl);
+          }
+      });
   };
-
-  Template.SSO.onCreated(function() {
-      const senseParams = Router.current().params.query;
-      Session.set('senseParams', senseParams);
-      Session.set('SSOLoading', true);
-      redirectUser();
-  })
-
-  Template.SSO.onRendered(function() {
-      Template.instance()
-          .$('.ui.accordion')
-          .accordion();
-
-      Template.instance().$('.dimmer')
-          .dimmer('show')
-  })

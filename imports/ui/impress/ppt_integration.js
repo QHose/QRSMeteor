@@ -239,7 +239,7 @@ function getLevel1And2() {
             appId: appId,
             session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
                 host: senseConfig.host,
-                prefix: 'anon',
+                prefix: Meteor.settings.public.IntegrationPresentationProxy,
                 port: senseConfig.port,
                 unsecure: true
             }
@@ -272,7 +272,7 @@ var appChangeListener = function appChangeListener() {
             appId: appId,
             session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
                 host: senseConfig.host,
-                prefix: 'anon',
+                prefix: Meteor.settings.public.IntegrationPresentationProxy,
                 port: senseConfig.port,
                 unsecure: true
             }
@@ -326,7 +326,7 @@ function getLevel1to3(sessionName) {
             appId: appId,
             session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
                 host: senseConfig.host,
-                prefix: 'anon',
+                prefix: Meteor.settings.public.IntegrationPresentationProxy,
                 port: senseConfig.port,
                 unsecure: true
             }

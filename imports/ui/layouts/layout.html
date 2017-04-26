@@ -1,23 +1,25 @@
 <template name="SSOLayout">
-    {{> sAlert}}
-    {{> yield}}
+    {{> sAlert}} {{> yield}}
 </template>
 <template name="layout">
     <div class="ui relaxed very padded stackable grid">
         <div class="one wide column">
         </div>
         <div class="fourteen wide column">
-            {{> nav}} {{> modals}} {{> sAlert}} {{#if NoSenseConnection}} {{> checkConfig}} {{else}} {{> yield}} {{/if}}
+            {{> nav}} {{> modals}} {{> sAlert}}
+            {{#if NoSenseConnection}} {{> checkConfig}} {{else}}{{> yield}} {{/if}}
         </div>
         <div class="one wide column">
         </div>
     </div>
     {{> footer}}
 </template>
-<template name="presentationLayout">    
-        {{> yield}}
-        <!-- FAKE IFRAME TO KEEP THE CONNECTION TO QLIK SENSE OPEN WHILE WE CONNECT TO ANOTHER PAGE -->
+<template name="presentationLayout">
+    {{> yield}}
+    <!-- FAKE IFRAME TO KEEP THE CONNECTION TO QLIK SENSE OPEN WHILE WE CONNECT TO ANOTHER PAGE -->
+    {{#if userSelectedPresentationType}}
         <iframe src="{{IFrameURLChapterSelection}}" style="width:0;height:0;border:0; border:none;"></iframe>
+    {{/if}}
 </template>
 <template name="footer">
     <div id="footer" class="ui footer page one column grid">

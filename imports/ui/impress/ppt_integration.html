@@ -1,4 +1,3 @@
-
 <template name="ppt_integrationMain">
     {{#if browserIsEdgeOrMobile}}
         <div class="ui text container">
@@ -14,6 +13,7 @@
         </div>
     {{else}}
         <div class="ui very wide sidebar integration">
+            <!-- <a href="{{pathFor 'useCaseSelection'}}" class="ui button">Home</a> -->
             <iframe src='{{IFrameURLChapterSelection}}' class="selector"> </iframe>
         </div>
         <div class="pusher">
@@ -22,12 +22,12 @@
                 <span class="text"><!-- Engine API Slide generator explaining SaaS with Qlik Sense (<a href="{{pathFor 'legal'}}">PROTOTYPE</a>) --></span>
             </div>
             <!-- {{#if showPresentation}} -->
-                <div style="position: absolute; bottom: 0px; right: 0px;">
-                    <a style="rgba(0, 0, 0, 0.87);" href="{{pathFor 'legal'}}">Terms of usage</a>
-                </div>
-                <iframe allowfullscreen src="{{pathFor 'ppt_integration'}}" class="frame"></iframe>
+            <div style="position: absolute; bottom: 0px; right: 0px;">
+                <a style="rgba(0, 0, 0, 0.87);" href="{{pathFor 'legal'}}">Terms of usage</a>
+            </div>
+            <iframe allowfullscreen src="{{pathFor 'ppt_integration'}}" class="frame"></iframe>
             <!-- {{else}} -->
-                <!-- <div class="ui container">
+            <!-- <div class="ui container">
                     <div class="ui message">
                         <div class="content">
                             <div class="header">

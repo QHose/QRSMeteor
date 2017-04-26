@@ -6,19 +6,15 @@ Router.configure({
 
 //redirect users from saasdemo.qlik.com to integration.qlik.com
 
-if (window.location.href.indexOf("saasdemo.qlik.com/integration") > -1) {
-    window.location = "http://integration.qlik.com/integration";
-} else if (window.location.href.indexOf("saasdemo") > -1) {
-    window.location = "http://integration.qlik.com";
+if (window.location.href.indexOf("saasdemo") > -1) {
+    // var newURL = 'http://'+window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
+    window.location = "http://integration.qlik.com" + "/" + window.location.pathname;
 }
 
-
-http: //integration.qlik.com/integration
-
-    //make sure certain path are for authenticated users only
-    Router.plugin('ensureSignedIn', {
-        only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService']
-    });
+//make sure certain path are for authenticated users only
+Router.plugin('ensureSignedIn', {
+    only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService']
+});
 
 
 // //map paths to blaze templates

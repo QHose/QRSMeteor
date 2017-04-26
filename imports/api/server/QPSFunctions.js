@@ -71,17 +71,39 @@ Meteor.methods({
 
         return getRedirectURL(passport, proxyRestUri, targetId);
     },
+    loginUserForPresentation(proxyRestUri, targetId, userProperties) {
+        check(userProperties.user, String);
+        check(userProperties.group, String);
+
+        console.log('loginUserForPresentation: ', userProperties.user);
+        var passport = {
+                'UserDirectory': userProperties.user, //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
+                'UserId': userProperties.user, //the current user that we are going to login with
+                'Attributes': [
+                    { 'group': 'slideGenerator' }, //attributes supply the group membership from the source system to Qlik Sense
+                    { 'group': userProperties.group },
+                    { 'group': 'Italy' } //make sure the row level demo works by passing this
+                ]
+            }
+            //logging only
+        var call = {};
+        call.action = 'Presentation user: Request ticket for the user that requested the slide generator. In this way we can store his bookmarks.';
+        call.request = 'Request ticket for this user passport: ": ' + JSON.stringify(passport);
+        REST_Log(call);
+
+        return getRedirectURL(passport, proxyRestUri, targetId);
+    },
     resetLoggedInUser() {
-        // console.log("***Method resetLoggedInUsers");
+        console.log("***Method resetLoggedInUsers");
         // console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
 
         //reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.
         Customers.find({ 'generationUserId': Meteor.userId() })
             .forEach(function(customer) {
                 var updatedUsers = _.map(customer.users, function(user) {
-                    if(user){
-                      user.currentlyLoggedIn = false;  
-                    } 
+                    if (user) {
+                        user.currentlyLoggedIn = false;
+                    }
 
                     //and just logout everybody in the user list                            
                     logoutUser(Meteor.userId(), user.name);
@@ -93,6 +115,7 @@ Meteor.methods({
                 });
 
             });
+             // logoutUser(Meteor.userId(), Meteor.userId()); //logout the user for the slide generator
     },
     simulateUserLogin(name) {
         check(name, String);
@@ -171,7 +194,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
 
     try {
         var call = {};
-        call.action = 'STEP 5: Request ticket';
+        call.action = 'STEP 5: Request ticket at: ' + call.request;
         call.request = proxyRestUri + 'ticket'; //we use the proxy rest uri which we got from the redirect from the proxy (the first bounce)
         call.response = HTTP.call('POST', call.request, {
             'npmRequestOptions': certicate_communication_options,
@@ -185,7 +208,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
         throw new Meteor.Error('Request ticket failed', err.message);
     }
 
-    // //console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+    // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
     // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
     var ticketResponse = call.response.data;
     call.action = 'STEP 6: Use Ticket response to create redirect url';

@@ -1,22 +1,54 @@
 <template name="landingPage">
     <div class="ui container">
         <h2 class="ui header">
-			<img src="/images/API tool broker.png">
-			<div class="content">
-				Welcome to the Qlik Sense slide generator
-				<div class="sub header">Please select your integration workshop below.</div>
-			</div>
-		</h2>
-        <div class="ui segment">
-            <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
-        </div>
-        <a id="start" href="{{pathFor 'slides'}}" class="ui right floated positive huge button">Create my slides</a>
-        <div class="ui accordion">
-            <div class=" title">
-                <i class="dropdown icon"></i> Select your slides (optional)
-            </div>
+            <img src="/images/API tool broker.png">
             <div class="content">
-                <iframe src='{{slideObjectURL}}' style='border:none; height: 800px; width: 500px'></iframe>
+                Welcome to the Qlik Sense slide generator
+                <div class="sub header">Please select your integration workshop below.</div>
+            </div>
+        </h2>
+        {{#if userSelectedPresentationType}}
+            <div class="ui segment">
+                <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
+            </div>
+            <a id="start" href="{{pathFor 'slides'}}" class="ui right floated positive huge button">Create my slides</a> {{> selectSlide}}
+        {{/if}}
+    </div>
+    {{> userSelectPresentationModal}}
+</template>
+<template name="selectSlide">
+    <div class="ui accordion">
+        <div class=" title">
+            <i class="dropdown icon"></i> Select your slides (optional)
+        </div>
+        <div class="content">
+            <iframe src='{{slideObjectURL}}' style='border:none; height: 800px; width: 500px'></iframe>
+        </div>
+    </div>
+</template>
+<template name="userSelectPresentationModal">
+    <div id="userSelectPresentationModal" class="ui modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Welcome to the slide generator
+        </div>
+        <div class="image content">
+            <div class="ui medium image">
+                <img src="/images/questions.png">
+            </div>
+            <div class="description">
+                <div class="ui header">What level of presentation would you like?</div>
+                <p>Select <b>high level</b> if you are looking to embed Qlik Sense from a management, sales or product manager perspective.</p>
+                <p>Select <b>technical</b> if you like to get slides that cover both high level as well as "deep dive" technical areas.</p>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui negative technical button">
+                Technical
+            </div>
+            <div class="ui positive right labeled icon sales button">
+                High level
+                <i class="checkmark icon"></i>
             </div>
         </div>
     </div>
