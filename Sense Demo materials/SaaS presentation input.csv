@@ -730,7 +730,7 @@ or
 </div>
             ",,"","","","","         0","0","SaaS & Power of APIs, Technical - 1 day",
 "SaaSDemo.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://integration.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Technical - 1 day, SaaS & Power of APIs",
-"SaaSDemo.qlik.com key API calls","Slide generator","> Lets look at a data driven use case: how do we get from raw data to slides?",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
+"SaaSDemo.qlik.com key API calls","Slide generator","> Let's look at a data driven use case: how do we get from raw data to slides?",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
 "SaaSDemo.qlik.com key API calls","Engine API Slide generator flow: Extract the data from the app via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
 "SaaSDemo.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","First load level 1, 2, 3 data from the CSV. Each level also contains the resource for which it is relevant",,"","","","","         0","0","What is this slide generator?",
 "SaaSDemo.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
