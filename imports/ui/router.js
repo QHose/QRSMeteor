@@ -55,6 +55,12 @@ Router.route('/SSO', {
     layoutTemplate: 'SSOLayout'
 });
 
+//users for the slide generator have their own virtual proxy redirect path
+Router.route('/presentationsso', {
+    template: 'SSO',
+    layoutTemplate: 'SSOLayout'
+});
+
 Router.route('/impress', {
     template: 'impress',
     layoutTemplate: 'SSOLayout'

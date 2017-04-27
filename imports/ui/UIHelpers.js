@@ -149,7 +149,7 @@
             return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';
         });
 
-        Template.registerHelper('authenticated', function(someValue) {
+        Template.registerHelper('authenticatedSlideGenerator', function(someValue) {
             return Session.get('authenticatedSlideGenerator');
 
         });

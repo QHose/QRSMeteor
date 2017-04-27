@@ -4,10 +4,10 @@ import { senseConfig } from '/imports/api/config.js';
 Template.landingPage.onCreated(function() {
     //set a var so the sso ticket request page knows he has to login the real user and not some dummy user of step 4
     //after the user is redirected to the sso page, we put this var to false. in that way we can still request dummy users for step 4 of the demo
-    Session.setAuth('loginUserForPresentation', true);
+    // Session.setAuth('loginUserForPresentation', true);
     Session.setAuth('groupForPresentation', null);
-
-    console.log('landingPage ONCREATED, loginUserForPresentation: ', Session.get('loginUserForPresentation'));
+    console.log('first logout the current presentation user, so he can select again what kind of user he is,the level of depth');
+    Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation users
 })
 
 Template.selectSlide.onRendered(function() {

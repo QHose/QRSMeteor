@@ -6,6 +6,10 @@
   import { senseConfig } from '/imports/api/config.js';
   import { HTTP } from 'meteor/http'
 
+//if the user is redirected from the virtual proxy to
+// * /sso login a demo user
+// * /ssopresentation
+
   //<script src=https://<sense-server>/<virtual-proxy-if-any>/resources/translate/en-US/common.js></script>
   //try to execute this script to make sure a session cookie is set. DIV tag integration together with ticketing directly does not work.
   // import {*} from 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/resources/translate/en-US/common.js';
@@ -58,13 +62,12 @@
 
       var senseParams = Session.get('senseParams');
       // console.log('call the server with options reveived from Qlik Sense QPS response: ', senseParams);
-      console.log('request a ticket for the real user? (or dummy?) ', Session.get('loginUserForPresentation'));
-
-      if (Session.get('loginUserForPresentation') === true) {
-          console.log('request a ticket for the user logged in into integration.qlik.com (meteorJS)');
+      var currentPage = Router.current().route.getName();
+      // console.log('router current route ',Router.current().route.getName());
+      if (currentPage === 'presentationsso') {
+          // console.log('PRESENTATION TICKET REQUEST: request a ticket for the user logged in into integration.qlik.com (meteorJS)');
           redirectPresentationUser(senseParams);
       } else { //login a dummy user of step 4 or for the ssbi demo
-          Session.setAuth('loginUserForPresentation', false);
           redirectDummyUser(senseParams);
       }
   };
@@ -101,9 +104,9 @@
               sAlert.error(error);
               console.error('Meteor SSO page, could not get a redirectUrl from Qlik Sense', error)
           } else {
-              console.log('redirect URL received, now change the URL of the browser back to the slide generator page');
+              // console.log('redirect URL received, now change the URL of the browser back to the slide generator page');
               Session.setAuth('authenticatedSlideGenerator', true);
-              Session.setAuth('loginUserForPresentation', false);
+              // Session.setAuth('loginUserForPresentation', false);
               window.location.replace(redirectUrl);
           }
       });

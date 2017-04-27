@@ -115,7 +115,10 @@ Meteor.methods({
                 });
 
             });
-             // logoutUser(Meteor.userId(), Meteor.userId()); //logout the user for the slide generator
+        // logoutUser(Meteor.userId(), Meteor.userId()); //logout the user for the slide generator
+    },
+    logoutPresentationUser(UDC, name) {
+        logoutUser(UDC, name, Meteor.settings.public.IntegrationPresentationProxy);
     },
     simulateUserLogin(name) {
         check(name, String);
@@ -156,8 +159,11 @@ function insertDummyCustomers(generationUserId) {
     })
 }
 
-export function logoutUser(UDC, name) {
-    // //console.log('******** QPS Functions: logout the current: ' + name + ' on proxy: ' + senseConfig.virtualProxyClientUsage);
+export function logoutUser(UDC, name, proxy) {
+    if (!proxy) {
+        proxy = senseConfig.virtualProxyClientUsage
+    }//use use the proxy for the dummy users from step 4
+    // console.log('******** QPS Functions: logout the current: ' + name + ' on proxy: ' + proxy);
 
     if (name) {
         // //console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTPs call: '); //, certicate_communication_options);
@@ -165,7 +171,7 @@ export function logoutUser(UDC, name) {
         try {
             const call = {};
             call.action = 'Logout user: ' + name;
-            call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
+            call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + proxy + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
             call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
 
             REST_Log(call);
@@ -209,7 +215,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
     }
 
     // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-    console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+    // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
     var ticketResponse = call.response.data;
     call.action = 'STEP 6: Use Ticket response to create redirect url';
     call.request = 'Use the redirect url we got back and the ticket string to make a redirect url for the client. Format: ' + ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket + '. JSON received: ' + ticketResponse
