@@ -49,6 +49,7 @@
   function redirectUser() {
       // console.log('SSO template, button clicked, now request a ticket server side');
       //logging only
+      check(Meteor.userId(), String); //check if the user is logged in in meteor before requesting tickets on his behalf. we use the meteor userID as UDC.
       var message = "Qlik Sense proxy redirected the users browser to the /sso page client side. Here we can check which user is currently logged in, and call the server using this UserID (Meteor knows the userID if a client makes a server method call)";
       // console.log(message);
       var call = {};
