@@ -8,7 +8,7 @@ Router.configure({
 
 if (window.location.href.indexOf("saasdemo") > -1) {
     // var newURL = 'http://'+window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
-    window.location = "http://integration.qlik.com" + "/" + window.location.pathname;
+    window.location = "http://integration.qlik.com" + window.location.pathname;
 }
 
 //make sure certain path are for authenticated users only
