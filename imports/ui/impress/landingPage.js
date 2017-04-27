@@ -31,6 +31,7 @@ Template.landingPage.onRendered(function() {
             },
             onApprove: function() {
                 Session.setAuth('groupForPresentation', 'GENERIC');
+                console.log('group has been set to generic. This group is used in the ticket to limit section access (Rows)');
             }
         });
     refreshModal();

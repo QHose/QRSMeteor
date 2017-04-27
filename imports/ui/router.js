@@ -13,7 +13,7 @@ if (window.location.href.indexOf("saasdemo") > -1) {
 
 //make sure certain path are for authenticated users only
 Router.plugin('ensureSignedIn', {
-    only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService']
+    only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
 });
 
 
