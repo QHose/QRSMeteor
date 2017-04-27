@@ -105,9 +105,8 @@
               sAlert.error(error);
               console.error('Meteor SSO page, could not get a redirectUrl from Qlik Sense', error)
           } else {
-              // console.log('redirect URL received, now change the URL of the browser back to the slide generator page');
+              console.log('redirect URL received, now change the URL of the browser back to the slide generator page');
               Session.setAuth('authenticatedSlideGenerator', true);
-              // Session.setAuth('loginUserForPresentation', false);
               window.location.replace(redirectUrl);
           }
       });

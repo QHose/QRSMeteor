@@ -6,7 +6,7 @@ Template.landingPage.onCreated(function() {
     //after the user is redirected to the sso page, we put this var to false. in that way we can still request dummy users for step 4 of the demo
     // Session.setAuth('loginUserForPresentation', true);
     Session.setAuth('groupForPresentation', null);
-    console.log('first logout the current presentation user, so he can select again what kind of user he is,the level of depth');
+    console.log('first logout the current presentation user in Qlik Sense. This enables him to reselect the user type');
     Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation users
 })
 
