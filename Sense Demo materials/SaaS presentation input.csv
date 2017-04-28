@@ -64,9 +64,12 @@
 "Introduction to SaaS","Common OEM use case for Qlik ","An OEM customizes and integrates the original Qlik product.",,"","","","","         0","0","Sales",
 "Introduction to SaaS","Common OEM use case for Qlik ","See an integrated example from [our partner Axis group](http://sense.axisgroup.com/extensions/MedAirEbolaCrisis/MedAirEbolaCrisis.html)",,"","","","","         0","0","Sales",
 "Introduction to SaaS","Common OEM use case for Qlik ","axisGroup.png",,"","","","","         0","0","Sales",
-"What is integration.qlik.com?","History","The integration.qlik.com website is specifically designed to promote and explain the key differentiators of our *Qlik Sense APIs*.",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?, SaaS & Power of APIs",
-"What is integration.qlik.com?","History"," In language that can be easily understood by non-technical business users or decision-makers via our *step-by-step walk-through*.",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?, SaaS & Power of APIs",
-"What is integration.qlik.com?","History","useCasesOverview.png",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?, SaaS & Power of APIs",
+"What is integration.qlik.com?","History","The integration.qlik.com website is specifically designed to promote and explain the key differentiators of our *Qlik Sense APIs* via our step-by-step walk-through...",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?, SaaS & Power of APIs",
+"What is integration.qlik.com?","History","We *demonstrate a sample SaaS platform* with Qlik Sense embedded including:
+- The “look and feel” of an integrated solution
+- “Security”, re-using the security of your SaaS platform in Qlik Sense
+- “SaaS provisioning”, create dashboard for each user whenever you like",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs",
+"What is integration.qlik.com?","History","useCasesOverview.png",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs",
 "What is integration.qlik.com?","What is integration.qlik.com?","> This demo website simulates your SaaS platform. So you will see your adminstration panel which controls Qlik Sense via APIs based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","Goals further explained","Take the audience on a journey highlighting key aspects of Qlik Sense, the APIs and the value of Qlik.  This journey culminates in an easy to use demonstration website which includes:",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Goals further explained","- Multi-tenant API solution for both Qlik Sense Hub and QMC. (*Loop and reduce*)",,"","","","","         0","0","PreSales",

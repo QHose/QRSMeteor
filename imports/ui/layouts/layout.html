@@ -18,7 +18,7 @@
     {{> yield}}
     <!-- FAKE IFRAME TO KEEP THE CONNECTION TO QLIK SENSE OPEN WHILE WE CONNECT TO ANOTHER PAGE -->
     {{#if userSelectedPresentationType}}
-        <iframe src="{{IFrameURLChapterSelection}}" style="width:0;height:0;border:0; border:none;"></iframe>
+        <iframe src="{{IFrameURLChapterSelection}}" style="width:0;height:0;border:0; border:none;visibility:hidden;display:none" seamless="seamless"></iframe>
     {{/if}}
 </template>
 <template name="footer">
