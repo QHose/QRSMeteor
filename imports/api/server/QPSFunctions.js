@@ -82,7 +82,7 @@ Meteor.methods({
                 'Attributes': [
                     { 'group': 'slideGenerator' }, //attributes supply the group membership from the source system to Qlik Sense
                     { 'group': userProperties.group },
-                    { 'group': 'Italy' } //make sure the row level demo works by passing this
+                    { 'group': 'ITALY' } //make sure the row level demo works by passing this
                 ]
             }
             //logging only
@@ -200,7 +200,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId) {
 
     try {
         var call = {};
-        call.action = 'STEP 5: Request ticket at: ' + call.request;
+        call.action = 'STEP 5: Request ticket at end point received from Sense: ' + proxyRestUri;
         call.request = proxyRestUri + 'ticket'; //we use the proxy rest uri which we got from the redirect from the proxy (the first bounce)
         call.response = HTTP.call('POST', call.request, {
             'npmRequestOptions': certicate_communication_options,
