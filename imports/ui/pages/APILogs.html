@@ -1,14 +1,30 @@
 <template name="APIIntroduction">
     <h3 class="ui header">              
-        API – Process integration</h3>
+        Why integration.qlik.com?</h3>
+    <p>Demonstrate how we can embed and control Qlik Sense via an automated process in your SaaS platform.</p>
+    <h3 class="ui header">              
+            Purpose of the demo platform
+        </h3>
+    <p>Demonstrate a sample SaaS platform with Qlik Sense embedded including:
+    </p>
+    <ul class="ui list">
+        <li> The “look and feel” of an integrated solution
+        </li>
+        <li>“Security”, re-using the security of your SaaS platform in Qlik Sense
+        </li>
+        <li>“SaaS provisioning”, create dashboard for each user whenever you like
+        </li>
+    </ul>
+    <h3 class="ui header">              
+            API – Process integration</h3>
     <img class="ui medium right floated image" data-action="zoom" src="images/API components overview.png">
     <p>Integrate Qlik Sense in your SaaS automation or provisioning process using our .NET API and Visual Studio plugin. Or, use our JavaScript, web socket and REST based <a href="https://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm">APIs</a> to automate each manual activity. Using this mechanism, you can create, delete, or reload apps for each of your customers. You can even create complete dashboards or individual charts on the fly.</p>
     <h3 class="ui header">              
-        Mindmap of common use cases</h3>
+                Mindmap of common use cases</h3>
     <img class="ui small right floated image" data-action="zoom" src="images/mindMapAPIIntegration.png">
     <p>In the picture on the right we explain some use cases of the most important APIs.</p>
     <h3 class="ui header">              
-        More information?</h3>
+                    More information?</h3>
     <div class="ui mini buttons">
         <a href="{{doc_processIntegration}}" target="_blank" class="ui button">Community</a>
         <div class="or"></div>
@@ -68,16 +84,14 @@
 <template name="APISourceCode">
     <h3>Use the demo source code</h3>
     <p>This demo platform provides you with a wrapper around the Qlik Sense <a href="https://help.qlik.com/en-US/sense/3.1/Content/Videos/Videos-qmc-intro.htm">QMC</a>, so you can send API calls to Qlik Sense by pressing certain buttons. Using these calls you can, for example, create streams and apps or complete any other activity that you’d be able to do in the QMC or app. Your SaaS platform most likely uses rest APIs already, so just copy the code and start automating. The tasks we have automated are what we refer to as the "generation.” These key steps that should be completed for each new customer are:
-        <div class="row">
-            <!-- <img class="ui small left floated image" src="images/API.png"> -->
-            <br>
-            <ul>
-                <li><a target="_blank" href="{{github_create_stream}}">Create a new stream with the customer’s name</a></li>
-                <li><a target="_blank" href="{{github_copy_app}}">Copy the template app</a> (note: you can also create apps on the fly using <a href="https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/CreatingAppLoadingData/CreateApps/create-app.htm">"session apps"</a>. For example, you can <a href="https://github.com/mindspank/sessionapp-simple/blob/master/index.js#L48">copy the app</a> and populate it with real time data in a couple of seconds when a user logs in.)</li>
-                <li><a target="_blank" href="{{github_replace_and_reload_app}}">Replace the script and reload the app.</a></li>
-                <li><a target="_blank" href="{{github_publish_app}}">Publish the app in the customer stream</a></li>
-            </ul>
-        </div>
+        <!-- <img class="ui small left floated image" src="images/API.png"> -->
+        <br>
+        <ul class="ui list">
+            <li><a target="_blank" href="{{github_create_stream}}">Create a new stream with the customer’s name</a></li>
+            <li><a target="_blank" href="{{github_copy_app}}">Copy the template app</a> (note: you can also create apps on the fly using <a href="https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/CreatingAppLoadingData/CreateApps/create-app.htm">"session apps"</a>. For example, you can <a href="https://github.com/mindspank/sessionapp-simple/blob/master/index.js#L48">copy the app</a> and populate it with real time data in a couple of seconds when a user logs in.)</li>
+            <li><a target="_blank" href="{{github_replace_and_reload_app}}">Replace the script and reload the app.</a></li>
+            <li><a target="_blank" href="{{github_publish_app}}">Publish the app in the customer stream</a></li>
+        </ul>
     </p>
 </template>
 <template name="ApiLogsTable">
