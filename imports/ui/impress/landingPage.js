@@ -26,12 +26,12 @@ Template.landingPage.onRendered(function() {
         .modal({
             observeChanges: true,
             onDeny: function() {
-                console.log('group has been set to technical, now the iframe can be shown which tries to open the presentation virtual proxy');
+                console.log('group has been set to TECHNICAL, now the iframe can be shown which tries to open the presentation virtual proxy');
                 Session.setAuth('groupForPresentation', 'TECHNICAL');
             },
             onApprove: function() {
                 Session.setAuth('groupForPresentation', 'GENERIC');
-                console.log('group has been set to generic. This group is used in the ticket to limit section access (Rows)');
+                console.log('group has been set to GENERIC. This group is used in the ticket to limit section access (Rows)');
             }
         });
     refreshModal();

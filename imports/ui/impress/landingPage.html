@@ -10,7 +10,7 @@
         <!-- {{#if authenticatedSlideGenerator}} -->
             {{#if userSelectedPresentationType}}
                 <div class="ui segment">
-                    <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
+                    <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 80%; height: 500px; border: none;"> </iframe>
                 </div>
                 <a id="start" href="{{pathFor 'slides'}}" class="ui right floated positive huge button">Create my slides</a> {{> selectSlide}}
             {{/if}}
@@ -39,7 +39,7 @@
                 <img src="/images/questions.png">
             </div>
             <div class="description">
-                <div class="ui header">What is the appropriate level of information to meet your knowledge requirements?</div>
+                <div class="ui header">What are your knowledge requirements?</div>
                 <p>If you are a member of an executive, sales or product organization, select the select the <b>'introductory'</b> level. If you are a member of a technical team, select the <b>'advanced'</b> level.</p>
             </div>
         </div>
