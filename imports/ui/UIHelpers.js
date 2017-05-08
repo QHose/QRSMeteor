@@ -25,6 +25,10 @@
             return '';
         });
 
+         Template.registerHelper('URL_Youtube_1mflashyIntro', function() {
+            return 'https://www.youtube.com/embed/W3gDKdv6K8Y';
+        });
+
         Template.registerHelper('URL_Youtube_playlist', function() {
             return 'https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';
         });
@@ -59,7 +63,7 @@
         });
 
         Template.registerHelper('URL_Youtube_concept_behind', function() {
-            return "https://www.youtube.com/embed/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
+            return "https://www.youtube.com/embed/1PjcTFnC4Mo";
         });
 
         Template.registerHelper('doc_demo_manual', function() {

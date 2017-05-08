@@ -1,11 +1,11 @@
 ﻿"Level 1","Level 2","Level 3","Level 4","Priority","Progress","Start","Due","Duration (Days)","Milestone","Resources",
 "Workshop Introduction","Legal disclaimer","legal disclaimer.png",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs",
-"Workshop Introduction","Legal disclaimer","#### See [terms of usage of this site](http://integration.qlik.com/legal)",,,,,,,,,
+"Workshop Introduction","Legal disclaimer","#### [Terms of usage](http://integration.qlik.com/legal)",,,,,,,,,
 "Workshop Introduction","Introduction","Who are you?",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Workshop Introduction","Introduction","Qlik Sense experience level?",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Workshop Introduction","Introduction","Worked with APIs before?",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Workshop Introduction","Introduction","What do you expect from this session?",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"Workshop Introduction","1 minute integration demo video","https://youtu.be/Xr1hENAH908",,"","","","","         0","0","Sales, Introduction - 30 minutes, SaaS & Power of APIs",
+"Workshop Introduction","1 minute integration demo video","https://youtu.be/W3gDKdv6K8Y",,"","","","","         0","0","Sales, Introduction - 30 minutes, SaaS & Power of APIs",
 "Workshop Introduction","Video introduction - integration demo project ","https://youtu.be/K-zfD_vAPso?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales",
 "Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine","> We have used the Qlik APIs to get the data out of the app",,"","","","","         0","0","Sales, Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
 "Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine"," <img class=""ui large centered image"" src=""images/Engine API slide generator easy flow.png"">",,"","","","","         0","0","Introduction - 30 minutes, Sales, What is this slide generator?, SaaS & Power of APIs",
@@ -78,15 +78,15 @@
 "What is integration.qlik.com?","Goals further explained","- Facilitate different levels of self service",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Goals further explained","- Flexible security rules",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Goals further explained","- Qlik Sense embedding",,"","","","","         0","0","PreSales",
-"What is integration.qlik.com?","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Sales, Introduction - 30 minutes, SaaS & Power of APIs",
+"What is integration.qlik.com?","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Sales, Introduction - 30 minutes",
 "What is integration.qlik.com?","Typical goals of a SaaS platform provider","Your goal is to create within a *multi-tenant* SaaS platform environment  *embedded analytics* within your core application",,"","","","","         0","0","Sales, Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","Typical goals of a SaaS platform provider","Provide *self service analytics* to users",,"","","","","         0","0","PreSales, Introduction - 30 minutes, Sales, SaaS & Power of APIs",
 "What is integration.qlik.com?","Typical goals of a SaaS platform provider","Automatic *provisioning* (provide apps to your customers)",,"","","","","         0","0","PreSales, Introduction - 30 minutes, Sales, SaaS & Power of APIs",
 "What is integration.qlik.com?","Typical goals of a SaaS platform provider","concept behind intro.png",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","In the integration demo environment we created a demo for each use case","useCasesOverview.png",,"","","","","         0","0","Sales",
 "What is integration.qlik.com?","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png",,"","","","","         0","0","Technical - 2 hours",
-"What is integration.qlik.com?","integration.qlik.com: Self service demo","governed self service app.png",,"","","","","         0","0","Sales, SaaS & Power of APIs",
-"What is integration.qlik.com?","integration.qlik.com: Self service demo","[Lets go to integration.qlik.com](http://integration.qlik.com)",,"","","","","         0","0","Sales, SaaS & Power of APIs",
+"What is integration.qlik.com?","integration.qlik.com: Self service demo","governed self service app.png",,"","","","","         0","0","Sales",
+"What is integration.qlik.com?","integration.qlik.com: Self service demo","[Lets go to integration.qlik.com](http://integration.qlik.com)",,"","","","","         0","0","Sales",
 "What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours",
@@ -717,9 +717,9 @@ or
 "Integration.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","SSO is enforced using a ticket with userID and his groups",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Deep dive, PreSales, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","The ""loop"" to execute to ensure each *customer* gets each template *app*",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","generationLoop.png",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","We created a [API overview](http://integration.qlik.com/ApiLogsTable) of the key API requests and responses. Try to generate some apps, or try to login with a user in SaaS provisioning demo step 4 and see the resulting calls. ",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour, SaaS & Power of APIs",
+"Integration.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","The ""loop"" to execute to ensure each *customer* gets each template *app*",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
+"Integration.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","generationLoop.png",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
+"Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","We created a [API overview](http://integration.qlik.com/ApiLogsTable) of the key API requests and responses. Try to generate some apps, or try to login with a user in SaaS provisioning demo step 4 and see the resulting calls. ",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
 "Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","<div class=""ui one column stackable center aligned page grid"">
    <div class=""column twelve wide"">
 <div class=""ui buttons"">
@@ -731,10 +731,10 @@ or
             </div>
        </div>
 </div>
-            ",,"","","","","         0","0","SaaS & Power of APIs, Technical - 1 day",
-"Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://integration.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Technical - 1 day, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Slide generator","> Let's look at a data driven use case: how do we get from raw data to slides?",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Engine API Slide generator flow: Extract the data from the app via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
+            ",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://integration.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Slide generator","> Let's look at a data driven use case: how do we get from raw data to slides?",,"","","","","         0","0","What is this slide generator?",
+"Integration.qlik.com key API calls","Engine API Slide generator flow: Extract the data from the app via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","First load level 1, 2, 3 data from the CSV. Each level also contains the resource for which it is relevant",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
 LOAD 
@@ -799,10 +799,10 @@ drop table WorkshopParentChild;
         //store the table in the session. This ensures Impress.js can generate the slides
         Session.set('mainTopics',table)         
         Impress().init();                                      
-```",,"","","","","         0","0","SaaS & Power of APIs, What is this slide generator?",
-"Integration.qlik.com key API calls","Step 2: Extract the data from the Engine API using Enigma.js","[Source code on github](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L235)",,"","","","","         0","0","SaaS & Power of APIs, What is this slide generator?",
-"Integration.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","Get the [array of slides via Enigma.js](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.js#L221)",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","[Create DIV](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.html#L41)  with class *slide* for each slide (a level 1, 2 combination)",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
+```",,"","","","","         0","0","What is this slide generator?",
+"Integration.qlik.com key API calls","Step 2: Extract the data from the Engine API using Enigma.js","[Source code on github](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L235)",,"","","","","         0","0","What is this slide generator?",
+"Integration.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","Get the [array of slides via Enigma.js](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.js#L221)",,"","","","","         0","0","What is this slide generator?",
+"Integration.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","[Create DIV](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.html#L41)  with class *slide* for each slide (a level 1, 2 combination)",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","```
 {{# each slide}}
     <!-- for each header: a level 1 and 2 combination -->
@@ -819,8 +819,8 @@ drop table WorkshopParentChild;
             -->
         < /div>
 { { /each}}
-``` ",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","Using events you can do something in your platform based on ""events"" or ""things that happen in Qlik Sense"". This could be a selection or the reload of the app for example. Based on this new information you could create alerts or send an email.  ",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
+``` ",,"","","","","         0","0","What is this slide generator?",
+"Integration.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","Using events you can do something in your platform based on ""events"" or ""things that happen in Qlik Sense"". This could be a selection or the reload of the app for example. Based on this new information you could create alerts or send an email.  ",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","```
 function appChangeListener() {
     
@@ -841,8 +841,8 @@ function appChangeListener() {
                 })
         })
 }
-```",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","[Source code](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L271)",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
+```",,"","","","","         0","0","What is this slide generator?",
+"Integration.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","[Source code](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L271)",,"","","","","         0","0","What is this slide generator?",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Authorization: And will only see its own data?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
