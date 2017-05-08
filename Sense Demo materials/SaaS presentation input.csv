@@ -5,7 +5,7 @@
 "Workshop Introduction","Introduction","Qlik Sense experience level?",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Workshop Introduction","Introduction","Worked with APIs before?",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Workshop Introduction","Introduction","What do you expect from this session?",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"Workshop Introduction","1 minute integration demo video","https://youtu.be/eiI-y2OEbv0?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales, Introduction - 30 minutes, SaaS & Power of APIs",
+"Workshop Introduction","1 minute integration demo video","https://youtu.be/Xr1hENAH908",,"","","","","         0","0","Sales, Introduction - 30 minutes, SaaS & Power of APIs",
 "Workshop Introduction","Video introduction - integration demo project ","https://youtu.be/K-zfD_vAPso?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales",
 "Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine","> We have used the Qlik APIs to get the data out of the app",,"","","","","         0","0","Sales, Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
 "Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine"," <img class=""ui large centered image"" src=""images/Engine API slide generator easy flow.png"">",,"","","","","         0","0","Introduction - 30 minutes, Sales, What is this slide generator?, SaaS & Power of APIs",
@@ -68,9 +68,9 @@
 "What is integration.qlik.com?","History","We *demonstrate a sample SaaS platform* with Qlik Sense embedded including:
 - The “look and feel” of an integrated solution
 - “Security”, re-using the security of your SaaS platform in Qlik Sense
-- “SaaS provisioning”, create dashboard for each user whenever you like",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs",
-"What is integration.qlik.com?","History","useCasesOverview.png",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs",
-"What is integration.qlik.com?","What is integration.qlik.com?","> This demo website simulates your SaaS platform. So you will see your adminstration panel which controls Qlik Sense via APIs based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
+- “SaaS provisioning”, create dashboard for each user whenever you like",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs, What is this slide generator?",
+"What is integration.qlik.com?","History","useCasesOverview.png",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs, What is this slide generator?",
+"What is integration.qlik.com?","This demo simulates your SaaS platform",">So you will see your adminstration panel which controls Qlik Sense via APIs based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","Goals further explained","Take the audience on a journey highlighting key aspects of Qlik Sense, the APIs and the value of Qlik.  This journey culminates in an easy to use demonstration website which includes:",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Goals further explained","- Multi-tenant API solution for both Qlik Sense Hub and QMC. (*Loop and reduce*)",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Goals further explained","- SaaS with Qlik Sense demonstration",,"","","","","         0","0","PreSales",

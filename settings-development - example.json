@@ -1,20 +1,22 @@
 {
-    "adminEmails": "dfdf@qlik.com",
+    "adminEmails": "mbj@qlik.com",
     "public": {
-        "host": "PRESALES1",
-        "port": 81,
+        "host": "integration.qlik.com",
+        "port": 443,
         "UDC": "OEM_HOST",
         "virtualProxyClientUsage": "meteor",
-        "webIntegrationHost": "nlsch-mbj3",
-        "webIntegrationDemoPort": 3030,
-        "SSBIAppSheetString": "40ef70c9-be76-4844-ac6a-d53195146c85/sheet/puEpZK/state/analysis",
-        "SSBIApp": "40ef70c9-be76-4844-ac6a-d53195146c85",
-        "IntegrationPresentationApp": "ce2c6eb5-dc73-44fb-a9f9-11fb2777fdfd",
+        "webIntegrationHost": "web.saasdemo.qlik.com",
+        "webIntegrationDemoPort": 80,
+        "SSBIAppSheetString": "696b6d9c-d045-4053-9d49-cd57ed7de392/sheet/puEpZK/state/analysis",
+        "SSBIApp": "696b6d9c-d045-4053-9d49-cd57ed7de392",
+        "IntegrationPresentationApp": "4e84d03a-d2d5-4978-b42b-42b04343c149",
         "IntegrationPresentationSelectionSheet": "DYTpxv",
-        "IntegrationPresentationSortedDataObject": "pskL",
+        "IntegrationPresentationSortedDataObject": "pskL", 
+        "IntegrationPresentationSlideObject": "BbbV",
+        "IntegrationPresentationProxy": "presentation",
         "facebook": {
             "clientId": "1754933311453043"
-        }
+        }        
     },
     "private": {
         "host": "PRESALES1",
