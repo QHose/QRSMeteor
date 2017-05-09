@@ -4,13 +4,13 @@
             <img src="/images/API tool broker.png">
             <div class="content">
                 Welcome to the Qlik Sense slide generator
-                <div class="sub header">Want to learn more about the Slide Generator capabilities <br> using the Qlik Engine API?  Start here.</div>
+                <div class="sub header">Want to learn more about the Slide Generator capabilities <br> using the Qlik Engine API?</div>
             </div>
         </h2>
         <!-- {{#if authenticatedSlideGenerator}} -->
             {{#if userSelectedPresentationType}}
                 <div class="ui segment">
-                    <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
+                    <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 70vh; height: 500px; border: none;"> </iframe>
                 </div>
                 <a id="start" href="{{pathFor 'slides'}}" class="ui right floated positive huge button">Create my slides</a> {{> selectSlide}}
             {{/if}}
@@ -20,8 +20,8 @@
 </template>
 <template name="selectSlide">
     <div class="ui accordion">
-        <div class=" title">
-            <i class="dropdown icon"></i> Select your slides...
+        <div class="title">
+            <!-- <i class="dropdown icon"></i> --> <h3> <i class="options icon"></i></h3> <!-- Select your slides... -->
         </div>
         <div class="content">
             <iframe src='{{slideObjectURL}}' style='border:none; height: 800px; width: 500px'></iframe>
@@ -40,7 +40,7 @@
             </div>
             <div class="description">
                 <div class="ui header">What are your knowledge requirements?</div>
-                <p>If you are a member of an executive, sales or product organization, select the select the <b>'introductory'</b> level. If you are a member of a technical team, select the <b>'advanced'</b> level.</p>
+                <p>If you are a member of an executive, sales or product organization, select the 'Introductory' <b>'introductory'</b> level. If you are a member of a technical team, select the <b>'advanced'</b> level.</p>
             </div>
         </div>
         <div class="actions">
