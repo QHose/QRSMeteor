@@ -523,7 +523,7 @@
 			"file": "imports/ui/impress/landingPage.html",
 			"settings":
 			{
-				"buffer_size": 2397,
+				"buffer_size": 2404,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -809,7 +809,7 @@
 	],
 	"find":
 	{
-		"height": 64.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -1208,15 +1208,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2397,
+						"buffer_size": 2404,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								658,
-								658
+								295,
+								295
 							]
 						],
 						"settings":
