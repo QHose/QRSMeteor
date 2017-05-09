@@ -4,13 +4,13 @@
             <img src="/images/API tool broker.png">
             <div class="content">
                 Qlik Sense slide generator
-                <div class="sub header">Please select your workshop below or use our associative search.</div>
+                <div class="sub header">Please select your workshop below or use our associative search to create your slides.</div>
             </div>
         </h2>
         <!-- {{#if authenticatedSlideGenerator}} -->
         {{#if userSelectedPresentationType}}
             <div class="ui segment">
-                <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 50vh; border: none;"> </iframe>
+                <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
             </div>
             <a id="start" href="{{pathFor 'slides'}}" class="ui right floated positive large button">Create my slides</a> {{> selectSlide}}
         {{/if}}
