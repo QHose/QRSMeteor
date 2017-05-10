@@ -7,7 +7,11 @@
         </div>
         <div class="fourteen wide column">
             {{> nav}} {{> modals}} {{> sAlert}}
-            {{#if NoSenseConnection}} {{> checkConfig}} {{else}}{{> yield}} {{/if}}
+            {{#if NoSenseConnection}}
+                {{> checkConfig}}
+            {{else}}
+                {{> yield}}
+            {{/if}}
         </div>
         <div class="one wide column">
         </div>
@@ -15,10 +19,14 @@
     {{> footer}}
 </template>
 <template name="presentationLayout">
-    {{> yield}}
-    <!-- FAKE IFRAME TO KEEP THE CONNECTION TO QLIK SENSE OPEN WHILE WE CONNECT TO ANOTHER PAGE -->
-    {{#if userSelectedPresentationType}}
-        <iframe src="{{IFrameURLChapterSelection}}" style="width:0;height:0;border:0; border:none;visibility:hidden;display:none" seamless="seamless"></iframe>
+    {{#if unsupported}}
+        {{>unsupportedBrowser}}
+    {{else}}
+        {{> yield}}
+        <!-- FAKE IFRAME TO KEEP THE CONNECTION TO QLIK SENSE OPEN WHILE WE CONNECT TO ANOTHER PAGE -->
+        {{#if userSelectedPresentationType}}
+            <iframe src="{{IFrameURLChapterSelection}}" style="width:0;height:0;border:0; border:none;visibility:hidden;display:none" seamless="seamless"></iframe>
+        {{/if}}
     {{/if}}
 </template>
 <template name="footer">
