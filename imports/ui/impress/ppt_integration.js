@@ -75,20 +75,8 @@ Template.ppt_integrationMain.helpers({
     showPresentation() {
         // console.log('show the IFRAME');
         return Session.get('showPresentation'); //&& Session.get('clickedInSelection');
-    },
-    browserIsEdgeOrMobile() {
-        return isIEorEDGE() || isMobile() === true ? true : '';
     }
 })
-
-function isIEorEDGE() {
-    console.log('navigator.appName ', navigator.appName);
-    return navigator.appName == 'Microsoft Internet Explorer' || (navigator.appName == "Netscape" && navigator.appVersion.indexOf('Edge') > -1);
-}
-
-function isMobile() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false;
-}
 
 Template.ppt_integration.helpers({
     mainTopics() {
