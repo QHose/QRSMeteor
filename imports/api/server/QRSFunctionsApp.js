@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { http } from 'meteor/meteor';
 import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
 import * as QSStream from '/imports/api/server/QRSFunctionsStream';
+import { gitHubLinks } from '/imports/ui/UIHelpers';
 
 //import meteor collections
 import { Streams } from '/imports/api/streams';
@@ -12,7 +13,6 @@ import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/conf
 import { APILogs, REST_Log } from '/imports/api/APILogs';
 import lodash from 'lodash';
 _ = lodash;
-
 
 //install NPM modules
 var fs = require('fs');
@@ -34,26 +34,26 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
     // console.log(templateApp);
     // console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
     const call = {};
-    call.action = 'Start of generation of app '+templateApp.name+' for '+customer.name;
+    call.action = 'Start of generation of app ' + templateApp.name + ' for ' + customer.name;
     call.createdBy = generationUserId;
     call.request = 'Start creating app ' + templateApp.name + ' for customer ' + customer.name;
     REST_Log(call, generationUserId);
 
     try {
-        var streamId = checkStreamStatus(customer) //create a stream for the customer if it not already exists    
+        var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists    
         var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
         var result = reloadAppAndReplaceScriptviaEngine(newAppId, '', generationUserId);
         var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
 
         //logging only
         const call = {};
-        call.action = 'Finished generation for '+customer.name;
-        call.request = templateApp.name + ' has been created and reloaded with data from the ' + customer.name+' database';
+        call.action = 'Finished generation for ' + customer.name;
+        call.request = templateApp.name + ' has been created and reloaded with data from the ' + customer.name + ' database';
         REST_Log(call, generationUserId);
         // console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
     } catch (err) {
         console.error(err);
-         throw new Meteor.Error('Generation failed', 'The server has an internal error, please check the server command logs');
+        throw new Meteor.Error('Generation failed', 'The server has an internal error, please check the server command logs');
     }
     GeneratedResources.insert({
         'generationUserId': generationUserId,
@@ -67,7 +67,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
-async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
+async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generationUserId) {
     // console.log('server: QSSOCKS reloadAppviaEngine');
 
     //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
@@ -77,9 +77,10 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
     engineConfig.appname = appId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
     // console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname);
     var call = {};
-    call.action = 'Connect to engine API (EnigmaJS)';
-    call.request = 'Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
-    REST_Log(call);
+    call.action = 'Connect to Qlik Sense Engine API';
+    call.request = 'Connect to Engine (using EnigmaJS) with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
+    call.url = gitHubLinks.replaceAndReloadApp;
+    REST_Log(call, generationUserId);
 
     //use ES7 await function so this code will run in synchronous mode
     return await qsocks.Connect(engineConfig)
@@ -95,18 +96,20 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
                     // console.log('get Script success, ', script);
 
                     var call = {};
-                    call.action = 'doc.getScript()';
+                    call.action = 'Get data load script';
+                    call.url = gitHubLinks.getScript;
                     call.request = 'We extracted the following script from the app: ' + script;
-                    REST_Log(call);
+                    REST_Log(call, generationUserId);
                     // if you want to replace the database connection per customer use the script below.
                     //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
                     //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
                     return doc.setScript(script) //we now just include the old script in this app
-                        .then(function(result) {    
+                        .then(function(result) {
                             var call = {};
-                            call.action = 'doc.setScript(script)'
-                            call.request = 'The script of the app has been replaced with a customer specific one';
-                            REST_Log(call);
+                            call.action = 'Insert customer specific data load script for its database';
+                            call.url = gitHubLinks.setScript;
+                            call.request = 'The script of the app has been replaced with a customer specific one. Normally you would replace the database connection for each customer. Or you can insert a customer specific script to enable customization per customer. ';
+                            REST_Log(call, generationUserId);
                             // console.log('Script replaced');
                             return doc;
                         })
@@ -116,16 +119,18 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace) {
             return doc.doReload()
                 .then(function(result) {
                     var call = {};
-                    call.action = 'doc.doReload()'
-                    call.request = 'The app has been reloaded: ' + result;
-                    REST_Log(call);
+                    call.action = 'Reload the app';
+                    call.url = gitHubLinks.reloadApp;
+                    call.request = 'Has the app been reloaded with customer specific data?: ' + result;
+                    REST_Log(call, generationUserId);
                     // console.log('Reload : ' + result);
                     return doc.doSave()
                         .then(function(result) {
                             var call = {};
-                            call.action = 'doc.doSave()'
-                            call.request = 'App ' + appId + ' saved success';
-                            REST_Log(call);
+                            call.action = 'Save app'
+                            call.url = gitHubLinks.saveApp;
+                            call.request = 'App with GUID ' + appId + ' has been saved to disk';
+                            REST_Log(call, generationUserId);
                             // console.log('Save : ', result);
                             _global.connection.close();
                             return doc;
@@ -166,115 +171,6 @@ function checkTemplateAppExists(generationUserId) {
     return templateApps;
 };
 
-function createTag(name) {
-    check(name, String);
-    // console.log('QRS Functions Appp, create a tag: ' + name);
-
-    try {
-        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Tag', {
-            headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey },
-            data: { "name": name }
-        })
-
-
-        //logging only
-        const call = {};
-        call.action = 'create Tag';
-        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/tag';
-        call.response = result;
-        REST_Log(call);
-
-        return result;
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('Tag: ' + name + ' create failed ', err.message);
-    }
-};
-
-function addTag(type, guid, tagName) {
-    check(type, String);
-    check(guid, String);
-
-    //check if tag with tagName already exists
-
-    var selectionId = createSelection(type, guid);
-    addTagViaSyntheticToType('App', selectionId, tagGuid)
-
-}
-
-function createSelection(type, guid) {
-    check(type, String);
-    check(guid, String);
-    console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);
-
-    try {
-        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection', {
-                headers: authHeaders,
-                params: { 'xrfkey': senseConfig.xrfkey },
-                data: { items: [{ type: type, objectID: guid }] }
-            })
-            console.log('the result of selection for type: ', type + ' ' + guid);
-            console.log(result);
-        return result.id;
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
-    }
-};
-
-function deleteSelection(selectionId) {
-    check(selectionId, String);
-    console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
-
-    try {
-        const result = HTTP.delete('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId, {
-                headers: authHeaders,
-                params: { 'xrfkey': senseConfig.xrfkey }
-            })
-            console.log(result);
-        return result.id;
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('Selection delete failed: ', err.message);
-    }
-};
-
-function buildModDate() {
-    var d = new Date();
-    return d.toISOString();
-}
-
-function addTagViaSyntheticToType(type, selectionId, tagGuid) {
-    check(type, String);
-    check(guid, String);
-    console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
-
-    try {
-        const result = HTTP.put('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
-                headers: authHeaders,
-                params: { 'xrfkey': senseConfig.xrfkey },
-                data: {
-                    "latestModifiedDate": buildModDate(),
-                    "properties": [{
-                        "name": "refList_Tag",
-                        "value": {
-                            "added": [tagGuid]
-                        },
-                        "valueIsModified": true
-                    }],
-                    "type": type
-                }
-            })
-            console.log('the result of selection for type: ', type + ' ' + guid);
-            console.log(result);
-        return result;
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
-    }
-};
-
 
 export function copyApp(guid, name, generationUserId) {
     check(guid, String);
@@ -284,15 +180,15 @@ export function copyApp(guid, name, generationUserId) {
     try {
         const call = {};
         call.action = 'Copy app';
-        call.request = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy?'
-
-        call.result = HTTP.post(call.request, {
+        call.request = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy'
+        call.url = gitHubLinks.copyApp;
+        call.response = HTTP.post(call.request, {
             headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey, 'name': name }, //probably a redundant name here...
+            params: { 'xrfkey': senseConfig.xrfkey }, //probably a redundant name here...
             data: { "name": name }
         })
         REST_Log(call, generationUserId);
-        var newGuid = call.result.data.id;
+        var newGuid = call.response.data.id;
         // console.log('Step 2: the new app id is: ', newGuid);
         //addTag('App', newGuid);
         return newGuid;
@@ -303,7 +199,7 @@ export function copyApp(guid, name, generationUserId) {
 };
 
 
-function checkStreamStatus(customer) {
+function checkStreamStatus(customer, generationUserId) {
     // console.log('checkStreamStatus for: ' + customer.name);
     var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
     var streamId = '';
@@ -312,10 +208,11 @@ function checkStreamStatus(customer) {
         streamId = stream.id;
     } else {
         // console.log('No stream for customer exist, so create one: ' + customer.name);
-        streamId = QSStream.createStream(customer.name)
+        streamId = QSStream.createStream(customer.name, generationUserId)
             .data.id;
         // console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
     }
+
     return streamId;
 }
 
@@ -343,7 +240,7 @@ export function getApps() {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }
         });
-        // REST_Log(call);
+        // REST_Log(call,generationUserId);
         return call.response.data;
     } catch (err) {
         console.error(err);
@@ -352,20 +249,21 @@ export function getApps() {
 };
 
 
-export function deleteApp(guid) {
+export function deleteApp(guid, generationUserId = 'Not defined') {
     // console.log('QRSApp deleteApp: ', guid);
     try {
         const call = {};
         const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
-            headers: authHeaders
-        })
-        // Meteor.call('updateLocalSenseCopy');
+                headers: authHeaders
+            })
+            // Meteor.call('updateLocalSenseCopy');
 
         //logging only
         call.action = 'Delete app';
         call.request = 'HTTP.del(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey;
+        call.url = gitHubLinks.deleteApp;
         call.response = result;
-        REST_Log(call);
+        REST_Log(call, generationUserId);
         return result;
     } catch (err) {
         console.error(err);
@@ -391,10 +289,120 @@ export function publishApp(appGuid, appName, streamId, customerName, generationU
         call.action = 'Publish app';
         call.request = 'HTTP.call(put, http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey + ", {headers: {'hdr-usr': " + senseConfig.headerValue, +'X-Qlik-xrfkey:' + senseConfig.xrfkey + '}';
         call.response = result;
+        call.url = gitHubLinks.publishApp;
         REST_Log(call, generationUserId);
         return result;
     } catch (err) {
         console.error(err);
         throw new Meteor.Error('Publication of app ' + appName + ' for customer ' + customerName + ' failed: ', err.message);
+    }
+};
+
+
+function createTag(name) {
+    check(name, String);
+    // console.log('QRS Functions Appp, create a tag: ' + name);
+
+    try {
+        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Tag', {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey },
+            data: { "name": name }
+        })
+
+        //logging only
+        const call = {};
+        call.action = 'create Tag';
+        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/tag';
+        call.response = result;
+        REST_Log(call, generationUserId);
+
+        return result;
+    } catch (err) {
+        console.error(err);
+        throw new Meteor.Error('Tag: ' + name + ' create failed ', err.message);
+    }
+};
+
+function addTag(type, guid, tagName) {
+    check(type, String);
+    check(guid, String);
+
+    //check if tag with tagName already exists
+
+    var selectionId = createSelection(type, guid);
+    addTagViaSyntheticToType('App', selectionId, tagGuid)
+
+}
+
+function createSelection(type, guid) {
+    check(type, String);
+    check(guid, String);
+    console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);
+
+    try {
+        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection', {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey },
+            data: { items: [{ type: type, objectID: guid }] }
+        })
+        console.log('the result of selection for type: ', type + ' ' + guid);
+        console.log(result);
+        return result.id;
+    } catch (err) {
+        console.error(err);
+        throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
+    }
+};
+
+function deleteSelection(selectionId) {
+    check(selectionId, String);
+    console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
+
+    try {
+        const result = HTTP.delete('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId, {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey }
+        })
+        console.log(result);
+        return result.id;
+    } catch (err) {
+        console.error(err);
+        throw new Meteor.Error('Selection delete failed: ', err.message);
+    }
+};
+
+function buildModDate() {
+    var d = new Date();
+    return d.toISOString();
+}
+
+function addTagViaSyntheticToType(type, selectionId, tagGuid) {
+    check(type, String);
+    check(guid, String);
+    console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
+
+    try {
+        const result = HTTP.put('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey },
+            data: {
+                "latestModifiedDate": buildModDate(),
+                "properties": [{
+                    "name": "refList_Tag",
+                    "value": {
+                        "added": [tagGuid]
+                    },
+                    "valueIsModified": true
+                }],
+                "type": type
+            }
+        })
+        console.log('the result of selection for type: ', type + ' ' + guid);
+        console.log(result);
+        return result;
+    } catch (err) {
+        console.error(err);
+        throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
     }
 };

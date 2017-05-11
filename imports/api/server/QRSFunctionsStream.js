@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { http } from 'meteor/meteor';
 import { Apps, TemplateApps } from '/imports/api/apps.js';
+import { gitHubLinks } from '/imports/ui/UIHelpers';
 
 //import config for Qlik Sense QRS and Engine API
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
@@ -45,7 +46,7 @@ export function getStreams() {
 };
 
 
-export function createStream(name) {
+export function createStream(name, generationUserId) {
     // console.log('QRS sync Functions Stream, create the stream with name', name);
 
     try {     
@@ -58,9 +59,10 @@ export function createStream(name) {
         //logging
         const call = {};
         call.action = 'Create stream'; 
+        call.url = gitHubLinks.createStream;
         call.request = "HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream', { headers: "+authHeaders+ ", params: { 'xrfkey': "+senseConfig.xrfkey +"}, data: { name: " + name +"}})"; 
         call.response = result;
-        REST_Log(call);        
+        REST_Log(call, generationUserId);        
         return call.response;
     } catch (err) {
         console.error(err);

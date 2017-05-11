@@ -1,12 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { Customers, dummyCustomers, dummyCustomer } from '/imports/api/customers';
 import { REST_Log } from '/imports/api/APILogs';
+import { gitHubLinks } from '/imports/ui/UIHelpers';
 
 //import config for Qlik Sense QRS
 import { senseConfig, _certs, authHeadersCertificate, authHeaders, certicate_communication_options } from '/imports/api/config.js';
 import lodash from 'lodash';
 _ = lodash;
-
 
 /*
 When communicating with the QPS APIs, the URL is as follows:
@@ -19,9 +19,9 @@ Meteor.methods({
     currentlyLoggedInUser() {
         // console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
         var call = {};
-        call.action = 'STEP 3: Server getRedirectUrl method'
-        call.request = 'Meteor server side method getRedirectUrl received a incoming method call from the meteor client. Meteor server will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.';
-        REST_Log(call);
+        call.action = 'STEP 3: Server received request to create ticket'
+        call.request = 'Meteor server received a incoming method call from the browser. The meteor server will now look which user is currently logged in, and create a ticket for this ID, and add his group memberships.';
+        REST_Log(call, Meteor.userId());
 
         //first find the customers that have a logged in users (mongo returns a complete document)
         var customer = Customers.findOne({ generationUserId: Meteor.userId(), 'users.currentlyLoggedIn': true });
@@ -65,11 +65,12 @@ Meteor.methods({
 
         //logging only
         var call = {};
-        call.action = 'STEP 4: Request ticket (SSO)';
-        call.request = 'Request ticket for this user passport: ": ' + JSON.stringify(passport);
-        REST_Log(call);
+        call.action = 'STEP 4: User and group information received from customer database, now we can request a ticket';
+        call.url = gitHubLinks.createpassport;
+        call.request = 'Request ticket for this user and his groups (an array of values which you can use in the security rules): ": ' + JSON.stringify(passport);
+        REST_Log(call, Meteor.userId());
 
-        return getRedirectURL(passport, proxyRestUri, targetId);
+        return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());
     },
     loginUserForPresentation(proxyRestUri, targetId, userProperties) {
         check(userProperties.user, String);
@@ -87,11 +88,12 @@ Meteor.methods({
             }
             //logging only
         var call = {};
+        call.url = gitHubLinks.createPasport;
         call.action = 'Presentation user: Request ticket for the user that requested the slide generator. In this way we can store his bookmarks.';
-        call.request = 'Request ticket for this user passport: ": ' + JSON.stringify(passport);
-        REST_Log(call);
+        call.request = 'Request ticket for this user and his groups: ": ' + JSON.stringify(passport) + ' .Note that we give each customer its own User Directory';
+        REST_Log(call, Meteor.userId());
 
-        return getRedirectURL(passport, proxyRestUri, targetId);
+        return getRedirectURL(passport, proxyRestUri, targetId,  Meteor.userId());
     },
     resetLoggedInUser() {
         console.log("***Method resetLoggedInUsers");
@@ -171,10 +173,11 @@ export function logoutUser(UDC, name, proxy) {
         try {
             const call = {};
             call.action = 'Logout user: ' + name;
+            call.url = gitHubLinks.logoutUser;
             call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + proxy + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
             call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
 
-            REST_Log(call);
+            REST_Log(call, UDC); //the UDC is the by definition the userId of meteor in our approach...
             // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
             // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
 
@@ -186,10 +189,11 @@ export function logoutUser(UDC, name, proxy) {
 };
 
 //based on Rikard Braathen's QlikAuth module
-export function getRedirectURL(passport, proxyRestUri, targetId) {
+export function getRedirectURL(passport, proxyRestUri, targetId, generationUserId) {
     check(passport, Object);
     check(proxyRestUri, String);
     check(targetId, String);
+    check(generationUserId, String);
 
     // console.log('entered server side requestTicket module for user and passport', passport, proxyRestUri);
     //see https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm

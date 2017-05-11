@@ -4,7 +4,9 @@
   import { http } from 'meteor/meteor';
   import { Session } from 'meteor/session';
   import { senseConfig } from '/imports/api/config.js';
-  import { HTTP } from 'meteor/http'
+  import { HTTP } from 'meteor/http';
+  import { gitHubLinks } from '/imports/ui/UIHelpers';
+
 
 //if the user is redirected from the virtual proxy to
 // * /sso login a demo user
@@ -53,13 +55,14 @@
       var message = "Qlik Sense proxy redirected the users browser to the /sso page client side. Here we can check which user is currently logged in, and call the server using this UserID (Meteor knows the userID if a client makes a server method call)";
       // console.log(message);
       var call = {};
-      call.action = 'STEP 1: Client side SSO'
+      call.action = 'STEP 1: Proxy redirected the browser your SaaS platforms authentication page';
+      call.url =  '/images/QPS - authentication redirect flow in browser for dummies.png';
       call.request = message;
-      REST_Log(call);
+      REST_Log(call, Meteor.userId());
 
-      call.action = 'STEP 2: Get request QPS parameters'
-      call.request = 'UserId logged in user: ' + Meteor.userId() + '. Qlik Sense proxy provided these parameters:' + JSON.stringify(Router.current().params.query);
-      REST_Log(call);
+      call.action = 'STEP 2: Read parameters which Qlik Sense proxy provided'
+      call.request = 'One parameter is the REST endpoint URL to request a ticket. Parameters:' + JSON.stringify(Router.current().params.query);
+      REST_Log(call, Meteor.userId());
 
       var senseParams = Session.get('senseParams');
       // console.log('call the server with options reveived from Qlik Sense QPS response: ', senseParams);
@@ -83,8 +86,10 @@
           } else {
               var call = {};
               call.action = 'STEP 6: Redirect URL received';
-              call.request = 'The browser received a redirectUrl (where should we forward to user to? Hub, QMC etc.) from the server, so replace the current url in the browser with this new one: ' + redirectUrl;
-              REST_Log(call);
+              call.url = gitHubLinks.redirectURLReceived;
+              call.request = 'The browser received a redirectUrl (where should we forward to user to? Now that he received an access ticket for Qlik Sense? This URL was initially stored in the targetId parameter.) from the server, so replace the current url in the browser with this new one: ';
+              call.response = redirectUrl;
+              REST_Log(call, Meteor.userId());
               window.location.replace(redirectUrl);
           }
       });

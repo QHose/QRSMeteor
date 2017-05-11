@@ -110,7 +110,7 @@ Meteor.methods({
             const call = {};
             call.action = 'Remove generated resources';
             call.request = 'Remove all apps and streams in Qlik Sense for userId: ' + generationUserSelection.generationUserId;
-            REST_Log(call);
+            REST_Log(call, generationUserSelection);
         }
         GeneratedResources.find(generationUserSelection)
             .forEach(function(resource) {

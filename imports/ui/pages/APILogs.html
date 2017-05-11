@@ -110,7 +110,13 @@
         <tbody>
             {{#each restrictedApiLogs}}
                 <tr>
-                    <td>{{action}}</td>
+                    <td>
+                        {{#if url}}
+                            <a href="{{url}}" target="_blank"> {{action}}</a>
+                        {{else}}
+                            {{action}}
+                        {{/if}}
+                    </td>
                     <td>
                         {{request}}
                     </td>

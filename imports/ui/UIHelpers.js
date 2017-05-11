@@ -4,6 +4,22 @@
     import { Customers } from '/imports/api/customers';
     import { senseConfig } from '/imports/api/config';
 
+    export var gitHubLinks = {
+            createStream: 'https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsStream.js#L48',
+            copyApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L278",
+            replaceAndReloadApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L69",
+            publishApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L376",
+            requestTicket: "https://github.com/QHose/QRSMeteor/blob/50bf903dc67d8d1b3757b572e8b2dedbb63202da/imports/api/server/QPSFunctions.js#L205",
+            createPasport: "https://github.com/QHose/QRSMeteor/blob/50bf903dc67d8d1b3757b572e8b2dedbb63202da/imports/api/server/QPSFunctions.js#L56",
+            redirectURLReceived: "https://github.com/QHose/QRSMeteor/blob/master/imports/SSO/client/SSO.js#L88",
+            deleteApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L366",
+            logoutUser: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L174",
+            saveApp:"https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L124",
+            getScript: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L94",
+            setScript: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L105",
+            reloadApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L117",
+        };
+
     if (Meteor.isClient) {
         // console.log('Setup generic helper functions, for functions every template needs');
         Template.registerHelper('formatDate', function(date) {
@@ -25,7 +41,7 @@
             return '';
         });
 
-         Template.registerHelper('URL_Youtube_1mflashyIntro', function() {
+        Template.registerHelper('URL_Youtube_1mflashyIntro', function() {
             return 'https://www.youtube.com/embed/W3gDKdv6K8Y';
         });
 
@@ -106,19 +122,19 @@
         });
 
         Template.registerHelper('github_create_stream', function() {
-            return "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsStream.js#L48";
+            return gitHubLinks.createStream;
         });
 
         Template.registerHelper('github_copy_app', function() {
-            return "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L278";
+            return gitHubLinks.copyApp;
         });
 
         Template.registerHelper('github_replace_and_reload_app', function() {
-            return "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L69";
+            return gitHubLinks.replaceAndReloadApp;
         });
 
         Template.registerHelper('github_publish_app', function() {
-            return "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L376";
+            return gitHubLinks.publishApp;
         });
 
         Template.registerHelper('github_logout_user', function() {
@@ -159,7 +175,7 @@
         });
 
         Template.registerHelper('userSelectedPresentationType', function(someValue) {
-        return Session.get('groupForPresentation'); //user selected a presentation type?
+            return Session.get('groupForPresentation'); //user selected a presentation type?
         });
 
         Template.registerHelper('isSelected', function(someValue) {
