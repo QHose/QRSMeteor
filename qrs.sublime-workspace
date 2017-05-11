@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"presen",
+				"presentationLayout"
+			],
+			[
+				"uns",
+				"unsupported"
+			],
+			[
+				"cons",
+				"console.log('show"
+			],
+			[
+				"is",
+				"isIEorEDGE"
+			],
+			[
 				"u",
 				"ul\tTag"
 			],
@@ -264,10 +280,6 @@
 				"getLocalValuesOfLevel"
 			],
 			[
-				"cons",
-				"console.log('convert"
-			],
-			[
 				"ses",
 				"sessionName〔variable〕"
 			],
@@ -502,18 +514,6 @@
 			[
 				"sett",
 				"settings"
-			],
-			[
-				"is",
-				"isReady"
-			],
-			[
-				"fresh",
-				"freshEnvironment"
-			],
-			[
-				"cos",
-				"console"
 			]
 		]
 	},
@@ -523,25 +523,7 @@
 			"file": "imports/ui/impress/landingPage.html",
 			"settings":
 			{
-				"buffer_size": 2404,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/impress/ppt_integration.js",
-			"settings":
-			{
-				"buffer_size": 15846,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/impress/ppt_integration.html",
-			"settings":
-			{
-				"buffer_size": 6177,
+				"buffer_size": 2418,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -556,46 +538,55 @@
 			}
 		},
 		{
-			"file": "imports/SSO/client/SSO.js",
-			"settings":
-			{
-				"buffer_size": 5277,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/proxy.js",
-			"settings":
-			{
-				"buffer_size": 1041,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/pages/videoOverview.html",
-			"settings":
-			{
-				"buffer_size": 6093,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/UIHelpers.js",
-			"settings":
-			{
-				"buffer_size": 14400,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "imports/ui/layouts/layout.html",
 			"settings":
 			{
-				"buffer_size": 4702,
+				"buffer_size": 5485,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/useCases/useCaseSelection.html",
+			"settings":
+			{
+				"buffer_size": 5482,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/impress/impress.html",
+			"settings":
+			{
+				"buffer_size": 8283,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/layouts/layout.js",
+			"settings":
+			{
+				"buffer_size": 3257,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/impress/ppt_integration.html",
+			"settings":
+			{
+				"buffer_size": 5518,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/impress/ppt_integration.js",
+			"settings":
+			{
+				"buffer_size": 15372,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -674,10 +665,15 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases"
 	],
 	"file_history":
 	[
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/proxy.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development - example.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
@@ -686,9 +682,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/ppt_integration.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/users.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/proxy.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
@@ -772,7 +765,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/regionLayout.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/useCaseSelection.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/users/userOverview.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/securityRules.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/users/userOverview.js",
@@ -809,7 +801,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 64.0
 	},
 	"find_in_files":
 	{
@@ -927,6 +919,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ismobi",
+			"unsupported",
+			"landing",
+			"browserIsEdgeOrMobile",
+			"isIE",
 			"focus",
 			"init",
 			"select",
@@ -1049,12 +1046,7 @@
 			"data-rotate=\"80\"",
 			"rotate",
 			"z step",
-			"160px",
-			"blockquote",
-			"opacity",
-			"li",
-			"message",
-			"160"
+			"160px"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1062,6 +1054,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"unsupported",
 			"prefix: Meteor.settings.public.IntegrationPresentationProxy",
 			"getTicket",
 			"IntegrationPresentationSortedDataObject",
@@ -1199,7 +1192,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1208,215 +1201,21 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2404,
+						"buffer_size": 2418,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								295,
-								295
+								353,
+								353
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
 							"git_gutter_enabled": true,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "imports/ui/impress/ppt_integration.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15846,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10198,
-								10198
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2955.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "imports/ui/impress/ppt_integration.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6177,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								721,
-								721
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 139.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "imports/ui/impress/landingPage.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2583,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1401,
-								1401
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "imports/SSO/client/SSO.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5277,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4490,
-								4490
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 713.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "server/proxy.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1041,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								405,
-								405
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "imports/ui/pages/videoOverview.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6093,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								367,
-								367
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
 							"git_gutter_is_enabled": true,
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 4,
@@ -1430,20 +1229,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "imports/ui/UIHelpers.js",
+					"buffer": 1,
+					"file": "imports/ui/impress/landingPage.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14400,
+						"buffer_size": 2583,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1125,
-								1150
+								82,
+								82
 							]
 						],
 						"settings":
@@ -1455,34 +1254,35 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 1.0,
-						"translation.y": 161.0,
+						"translation.x": -0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 2,
 					"file": "imports/ui/layouts/layout.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4702,
+						"buffer_size": 5485,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								839,
-								688
+								1173,
+								1173
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
 							"git_gutter_enabled": true,
+							"git_gutter_is_enabled": true,
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -1491,7 +1291,169 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "imports/ui/useCases/useCaseSelection.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5482,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3479,
+								4559
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 823.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "imports/ui/impress/impress.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8283,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6742,
+								6742
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1726.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "imports/ui/layouts/layout.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3257,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1368,
+								1378
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 132.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "imports/ui/impress/ppt_integration.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5518,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								43,
+								43
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "imports/ui/impress/ppt_integration.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15372,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2795,
+								2795
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_enabled": true,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1324.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -1586,7 +1548,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 631.0,
+	"side_bar_width": 570.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
