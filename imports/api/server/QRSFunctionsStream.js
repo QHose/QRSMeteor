@@ -8,7 +8,7 @@ import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/conf
 import { REST_Log } from '/imports/api/APILogs';
 
 //STREAM FUNCTIONS
-export function deleteStream(guid) {
+export function deleteStream(guid, generationUserId) {
     console.log('deleteStream: ', guid)
     try {
         const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey, {
@@ -18,7 +18,7 @@ export function deleteStream(guid) {
         call.action = 'Delete stream'; 
         call.request = "HTTP.del('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey";
         call.response = result;
-        REST_Log(call);        
+        REST_Log(call, generationUserId);        
         Meteor.call('updateLocalSenseCopy');
         return result;
     } catch (err) {

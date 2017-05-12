@@ -195,7 +195,7 @@ Meteor.methods({
         call.request = 'Delete stream: ' + guid;
         REST_Log(call);
 
-        const id = QSStream.deleteStream(guid);
+        const id = QSStream.deleteStream(guid, Meteor.userId());
         Meteor.call('updateLocalSenseCopy');
         return id;
     },

@@ -16,7 +16,10 @@ var slideWidth = 2000;
 
 Template.ppt_integrationMain.onCreated(function() {
     if (Session.get('landingPageAlreadySeen') === false) {
+        console.log('user has NOT already seen the landing page');
         Router.go('presentation'); //GO TO THE SLIDE landing page first
+    } else {
+        console.log('user has already seen the landing page');
     }
     // Session.set('clickedInSelection', false);
     // this.$('.ui.sidebar')
