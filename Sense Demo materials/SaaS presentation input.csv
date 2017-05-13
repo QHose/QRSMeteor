@@ -454,6 +454,7 @@ app.getObject('DIV1','Ggpaxa');
 "Web integration","Cross site scripting explained (XSS)","Page something.com loads up the Capabilities API and connects to server qliksense.com
 qliksense.com will then check if something.com  is a allowed origin by matching it against it's whitelist list.
 If so, allow access otherwise deny access with a 403 response",,"","","","","         0","0","Deep dive",
+"Web integration","Cross site scripting explained (XSS)","[What is CORS](https://www.html5rocks.com/en/tutorials/cors/)",,"","","","","         0","0","Deep dive",
 "Web integration","Proxy setting to prevent cross origin issues","Proxy - settings.png",,"","","","","         0","0","Deep dive",
 "Web integration","Proxy setting to prevent cross origin issues","CORS error.png",,"","","","","         0","0","Deep dive",
 "Web integration","Proxy setting to prevent cross origin issues","error - XMLhttprequest cannot load - access control allow origin header not present.png",,"","","","","         0","0","Deep dive",
@@ -710,9 +711,10 @@ or
 "Slide generator - use cases","Goals","Only show information that matches the expertise of the user",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Goals","Only show the bullets, images, videos on the slide for which you are authorized",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","We created a website that uses the data of a Qlik Sense app.",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How did we create the slide generator?","Because people are logged in to the *slide generator* and selected their expertise we only show data on the slides that match their skills. (using the row level security in an app)",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How did we create the slide generator?","Because people are logged in to the *slide generator* and selected their expertise we only show data on the slides that matches their skills. (using the row level security in an app)",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","slide generator - welcome popup screenshot.png",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How does the slide generator create slides?","Based on predefined *workshops* or *ad hoc selections and searches* users can choose the relevant ""rows of data"" and create slides that exactly *fit their needs* (answers their questions) and *match their expertise level*. This prevents the endless scrolling in multiple slide decks, that contain variations like old data/images.",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How does the slide generator create slides?","Based on predefined *workshops* or *ad hoc selections and searches* users can choose the relevant ""rows of data"" and create slides that exactly *fit their needs* (answers their questions) and *match their expertise level*. This prevents ""the endless scrolling"" in multiple slide decks if you want to create a presentatio. Often you will discover variations in the content because of old data/images. ",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How does the slide generator create slides?","With the slide generator you always have the most recent *authorized* version.",,,,,,,,,
 "Slide generator - use cases","How does the slide generator create slides?","The app contains text and references to images and videos",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How does the slide generator create slides?","The slide generator software looks at each row and detects if it needs to create a
 - bullet with text
@@ -721,12 +723,13 @@ or
 - you can also insert raw html (e.g. to embed an IFrame)
 - you can also use [markDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to write your contents",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How does the slide generator create slides?","slide generator - example data.png",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How to insert data?","Since its just a Sense app. 
-- We can assign ""each bullet/video/image"" to a workshop.
+"Slide generator - use cases","How to insert data in the Slide Generator?","The source of the slide generator is just a Qlik Sense app. 
+- We created a table with slide titles and their contents (bullets such as texts, links to images/videos, raw HTML or markDown)
+- We can assign ""each bullet/video/image"" to a workshop or audience.
 - We can re-use content in multiple workshops
 - We can arrange workshops in a hierarchy in such a way that we only have to assign ""a bullet/video/image"" to one child workshop, and his parents automatically get access to. (simplifies maintenance). E.g. all slides that are assigned to the 1 hour workshop also become available in the 2 hour and 1 day workshop. 
 - We can use row level security (section access) to limit what a user can see",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How to insert data?","slide generator - workshop hierarchy.png",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How to insert data in the Slide Generator?","slide generator - workshop hierarchy.png",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","Users are logged in, and therefore we can store selections, and create presentations for each user.",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","Select slides while you are having a conversation, create a ""personal"" presentation and share the link",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","You could track which users view which slides.",,"","","","","         0","0","What is this slide generator?",
@@ -1041,7 +1044,7 @@ User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
 ```",,"","","","","         0","0","Deep dive",
 "QRS API","Example HTTP header for a REST API call using a certificate to authenticate","Note that this header supplies the user to authenticate as via the `X-Qlik-User: UserDirectory=INTERNAL;` parameter",,"","","","","         0","0","Deep dive",
 "QRS API","Methods and IDs","QRS API - methods and IDs.png",,"","","","","         0","0","Deep dive",
-"QRS API","Use the Chrome console to ""record"" Sense calls","QRS - start task chrome console.png",,"","","","","         0","0","Deep dive",
+"QRS API","Simplify programming: Use the browser console to ""record"" Qlik Sense REST api calls","QRS - start task chrome console.png",,"","","","","         0","0","Technical - 2 hours",
 "QRS API","How do you create a REST URL? General purpose endpoints","When communicating directly with the QRS API, the URL is as follows:",,"","","","","         0","0","Deep dive",
 "QRS API","How do you create a REST URL? General purpose endpoints","```
 https://<QRS machine name>:4242/<path>
