@@ -547,7 +547,7 @@
 			"file": "imports/ui/impress/ppt_integration.js",
 			"settings":
 			{
-				"buffer_size": 15515,
+				"buffer_size": 15629,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -1259,15 +1259,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15515,
+						"buffer_size": 15629,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								993,
-								993
+								1396,
+								1396
 							]
 						],
 						"settings":
@@ -1377,7 +1377,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 479.0,
+	"side_bar_width": 327.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

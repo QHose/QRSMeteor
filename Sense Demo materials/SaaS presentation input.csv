@@ -71,6 +71,10 @@
 "Introduction to SaaS","Common OEM use case for Qlik ","An OEM customizes and integrates the original Qlik product.",,"","","","","         0","0","Sales",
 "Introduction to SaaS","Common OEM use case for Qlik ","See an integrated example from [our partner Axis group](http://sense.axisgroup.com/extensions/MedAirEbolaCrisis/MedAirEbolaCrisis.html)",,"","","","","         0","0","Sales",
 "Introduction to SaaS","Common OEM use case for Qlik ","axisGroup.png",,"","","","","         0","0","Sales",
+"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Your goal is to create within a *multi-tenant* SaaS platform environment  *embedded analytics* within your core application",,"","","","","         0","0","Sales, Introduction - 30 minutes, SaaS & Power of APIs",
+"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Provide *self service analytics* to users",,"","","","","         0","0","PreSales, Introduction - 30 minutes, Sales, SaaS & Power of APIs",
+"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Automated *provisioning* (provide dashboards to your customers)",,"","","","","         0","0","PreSales, Introduction - 30 minutes, Sales, SaaS & Power of APIs",
+"What is integration.qlik.com?","Typical goals of a SaaS platform provider","saas demo concept simple.png",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","History","The integration.qlik.com website is specifically designed to promote and explain the key differentiators of our *Qlik Sense APIs* via our step-by-step walk-through...",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?, SaaS & Power of APIs",
 "What is integration.qlik.com?","History","We *demonstrate a sample SaaS platform* with Qlik Sense embedded including:
 - The “look and feel” of an integrated solution
@@ -86,10 +90,6 @@
 "What is integration.qlik.com?","Goals further explained","- Flexible security rules",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Goals further explained","- Qlik Sense embedding",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Sales, Introduction - 30 minutes",
-"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Your goal is to create within a *multi-tenant* SaaS platform environment  *embedded analytics* within your core application",,"","","","","         0","0","Sales, Introduction - 30 minutes, SaaS & Power of APIs",
-"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Provide *self service analytics* to users",,"","","","","         0","0","PreSales, Introduction - 30 minutes, Sales, SaaS & Power of APIs",
-"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Automatic *provisioning* (provide apps to your customers)",,"","","","","         0","0","PreSales, Introduction - 30 minutes, Sales, SaaS & Power of APIs",
-"What is integration.qlik.com?","Typical goals of a SaaS platform provider","concept behind intro.png",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","In the integration demo environment we created a demo for each use case","useCasesOverview.png",,"","","","","         0","0","Sales",
 "What is integration.qlik.com?","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","integration.qlik.com: Self service demo","governed self service app.png",,"","","","","         0","0","Sales",
@@ -705,6 +705,45 @@ or
 ((user.environment.group=""Admin"")) and ( resource.HasPrivilege(""read"") or resource.app.HasPrivilege(""read"") )
 ```",,"","","","","         0","0","PreSales",
 "Security - Concept of integration.qlik.com","Overview of system (security & license) rules","<iframe src=""http://integration.qlik.com/securityRules"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Technical - 1 day",
+"Slide generator","Goals","Inspire what you can do with our engine",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Goals","Prevent multiple versions of the truth, create 1 ""master slide deck""",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Goals","Only show information that matches the expertise of the user",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Goals","Only show the bullets, images, videos on the slide for which you are authorized",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","How did we create the slide generator?","We created a website that uses the data of a Qlik Sense app.",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","How did we create the slide generator?","Because people are logged in to the *slide generator* and selected their expertise we only show data on the slides that match their skills. (using the row level security in an app)",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","How did we create the slide generator?","slide generator - welcome popup screenshot.png",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","How does the slide generator create slides?","Based on predefined *workshops* or *ad hoc selections and searches* users can choose the relevant ""rows of data"" and create slides that exactly *fit their needs* (answers their questions) and *match their expertise level*. This prevents the endless scrolling in multiple slide decks, that contain variations like old data/images.",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","How does the slide generator create slides?","The apps contains text and references to images and videos",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","How does the slide generator create slides?","The slidegenerator software looks at each row at detects if it needs to create a
+- bullet
+- image
+- YouTube player
+- you can also insert raw html (e.g. to embed an IFrame)
+- you can also use [markDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to write your contents",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","How does the slide generator create slides?","slide generator - example data.png",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","How to insert data?","Since its just a Sense app. 
+- We can assign ""each bullet/video/image"" to a workshop.
+- We can re-use content in multiple workshops
+- We can arrange workshops in a hierarchy in such a way that we only have to assign ""a bullet/video/image"" to one child workshop, and his parents automatically get access to. (simplifies maintenance). E.g. all slides that are assigned to the 1 hour workshop also become available in the 2 hour and 1 day workshop. 
+- We can use row level security (section access) to limit what a user can see",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","How to insert data?","slide generator - assign a source workshop per bullet.png",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Possibilities","Users are logged in, and therefore we can store selections, and create presentations for each user.",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Possibilities","Select slides while you are having a conversation, create a ""personal"" presentation and share the link",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Possibilities","You could track which users view which slides.",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Data loading scenarios","In the end its just data... We only store texts and references to images and videos ",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Data loading scenarios","So you just need to load a Qlik Sense app",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Data loading scenarios","So you can have multiple approaches to load data
+- load data from csv or a database
+- drag and drop an excel file in an app
+- create a website so users can create presentations via a governed interface. This site stores the images on disk and stores the data for the slide generator in a database.
+- you can also give each data delivery user/department its own app
+- you can create a Quality app, verifiy contents, and publish overwrite the app into the production app for this deparment
+- the main slide generator app can load the data from each departmental app.",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Version management","Slides are just rows of data",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Version management","I personally used a mindmap to create an export to csv",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Version management","I sync this csv using a version management tool called GitHub",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Version management","On the server we can [track the changes](https://github.com/QHose/QRSMeteor/commit/cd826a178554824780632d7c96afb6295949317e) and load the data into the app after approval",,"","","","","         0","0","What is this slide generator?",
+"Slide generator","Version management","slide generator - github track changes version management.png",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Summary: which activities did we automate?","Setup Qlik Sense
 - Create stream
 - Copy template app
@@ -716,13 +755,13 @@ or
 - logout",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
 "Integration.qlik.com key API calls","Summary: which activities did we automate?","Automated maintenance
 - remove old streams and apps",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Summary: which activities did we automate?","See [API source code](/APILogs) for more information.",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Summary: which activities did we automate?","PS: note you can also do a *silent installation* and configure the QMC via APIs... or whatever you like to do with your keyboard and mouse... (but only faster!)",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","architecture - OEM SaaS scenario.png",,"","","","","         0","0","Technical - 1 day",
-"Integration.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","Technical - 1 day",
-"Integration.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","Technical - 1 day",
-"Integration.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","SSO is enforced using a ticket with userID and his groups",,"","","","","         0","0","Technical - 1 day",
-"Integration.qlik.com key API calls","OEM architecture example : 1 Qlik Sense server, 1 SaaS platform server","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Summary: which activities did we automate?","See [API source code](/APILogs) for more information.",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","Summary: which activities did we automate?","PS: note you can also do a *silent installation* and configure the QMC via APIs... or whatever you like to do with your keyboard and mouse... (but only faster!)",,"","","","","         0","0","PreSales, Technical - 2 hours",
+"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","architecture - OEM SaaS scenario.png",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","Single Sign on is enforced using a ticket with userID and his groups",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Deep dive, PreSales, SaaS & Power of APIs",
 "Integration.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","The ""loop"" to execute to ensure each *customer* gets each template *app*",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
 "Integration.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","generationLoop.png",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
@@ -739,7 +778,7 @@ or
        </div>
 </div>
             ",,"","","","","         0","0","Technical - 1 day",
-"Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://integration.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://integration.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame"" style=""margin-top: 20px""></iframe>",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","Slide generator","> Let's look at a data driven use case: how do we get from raw data to slides?",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Engine API Slide generator flow: Extract the data from the app via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","First load level 1, 2, 3 data from the CSV. Each level also contains the resource for which it is relevant",,"","","","","         0","0","What is this slide generator?",
@@ -877,9 +916,9 @@ function appChangeListener() {
 "Qlik Sense API introduction","Font end APIs: Embed Qlik Sense in other applications","Saasdemo web integration hub.png",,"","","","","         0","0","Deep dive, PreSales",
 "Qlik Sense API introduction","Font end APIs Create extra functionality in Qlik Sense using extensions","extensionsExamples.png",,"","","","","         0","0","Deep dive, PreSales",
 "Qlik Sense API introduction","Font end APIs Create extra functionality in Qlik Sense using extensions","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-api-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales",
-"Qlik Sense API introduction","Example of an API interaction where we connect via the browser to the QRS API using header authentication","flow - REST get apps.png",,"","","","","         0","0","Deep dive, PreSales",
-"Qlik Sense API introduction","Example of an API interaction where we connect via the browser to the QRS API using header authentication","postman request.png",,"","","","","         0","0","Deep dive, PreSales",
-"Qlik Sense API introduction","Example of an API interaction where we connect via the browser to the QRS API using header authentication","postman response.png",,"","","","","         0","0","Deep dive, PreSales",
+"Qlik Sense API introduction","Example of an API interaction where we connect via the browser to the QRS API using header authentication","flow - REST get apps.png",,"","","","","         0","0","Technical - 1 day",
+"Qlik Sense API introduction","Example of an API interaction where we connect via the browser to the QRS API using header authentication","postman request.png",,"","","","","         0","0","Technical - 1 day",
+"Qlik Sense API introduction","Example of an API interaction where we connect via the browser to the QRS API using header authentication","postman response.png",,"","","","","         0","0","Technical - 1 day",
 "Qlik Sense API introduction","Back end focussed API overview","Back-end_API-Overview.png",,"","","","","         0","0","Deep dive, PreSales",
 "Qlik Sense API introduction","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Deep dive, PreSales",
 "Qlik Sense API introduction","Whiteboard exercise","Create a diagram on the whiteboard that reflects your current architecture.  ",,"","","","","         0","0","Exercises",
@@ -988,8 +1027,8 @@ function appChangeListener() {
         'X-Qlik-xrfkey': _senseConfig.xrfkey
     }
 ```",,"","","","","         0","0","Deep dive",
-"QRS API","Example HTTP header for an API call using header authentication","Example API call that returns all server node configurations in the repository database:",,"","","","","         0","0","Deep dive",
-"QRS API","Example HTTP header for an API call using header authentication","```
+"QRS API","Example HTTP header for a REST API call using a certificate to authenticate","Example API call that returns all server node configurations in the repository database:",,"","","","","         0","0","Deep dive",
+"QRS API","Example HTTP header for a REST API call using a certificate to authenticate","```
 https://localhost:4242/qrs/servernodeconfiguration/full?Xrfkey= abcdefghijklmnop HTTP/1.1
 Accept-Encoding: gzip,deflate
 X-Qlik-User: UserDirectory=INTERNAL; UserId=sa_repository
@@ -1000,6 +1039,7 @@ Host: localhost:4242
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
 ```",,"","","","","         0","0","Deep dive",
+"QRS API","Example HTTP header for a REST API call using a certificate to authenticate","Note that this header supplies the user to authenticate as via the `X-Qlik-User: UserDirectory=INTERNAL;` parameter",,"","","","","         0","0","Deep dive",
 "QRS API","Methods and IDs","QRS API - methods and IDs.png",,"","","","","         0","0","Deep dive",
 "QRS API","Use the Chrome console to ""record"" Sense calls","QRS - start task chrome console.png",,"","","","","         0","0","Deep dive",
 "QRS API","How do you create a REST URL? General purpose endpoints","When communicating directly with the QRS API, the URL is as follows:",,"","","","","         0","0","Deep dive",
@@ -1214,13 +1254,13 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 "QPS - Proxy API","When to use header authentication?","ONLY to be used in specific architecture scenarios",,,,,,,,,
 "QPS - Proxy API","Header authentication flow","QPS - header auth flow.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Example architecture with header authentication","architecture - authenticating reverse proxy.png",,,,,,,,,
-"QPS - Proxy API","Example Header authentication setup","QPS - header auth virtual proxy settings 2.png",,"","","","","         0","0","Deep dive",
+"QPS - Proxy API","Example header authentication setup","QPS - header auth virtual proxy settings 2.png",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","Did you see a security risk here?",,,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Headers should be used wisely","<q>Everyone can just insert his own credentials so always use in combination with reverse proxy</q>",,"","","","","         0","0","Deep dive",
-"QPS - Proxy API","Example API request with header authentication","Request from client",,"","","","","         0","0","Deep dive",
-"QPS - Proxy API","Example API request with header authentication","postman request.png",,"","","","","         0","0","Deep dive",
-"QPS - Proxy API","Example API request with header authentication","Response from Qlik Sense",,"","","","","         0","0","Deep dive",
-"QPS - Proxy API","Example API request with header authentication","postman response.png",,"","","","","         0","0","Deep dive",
+"QPS - Proxy API","Example API request with header authentication","Request from client",,"","","","","         0","0","PreSales",
+"QPS - Proxy API","Example API request with header authentication","postman request.png",,"","","","","         0","0","PreSales",
+"QPS - Proxy API","Example API request with header authentication","Response from Qlik Sense",,"","","","","         0","0","PreSales",
+"QPS - Proxy API","Example API request with header authentication","postman response.png",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","Header authentication requirements","Create virtual proxy for header authentication",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Header authentication requirements","QMC - proxy - header authentication setup.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Proxy architecture scenarios","<q>Proxy architecture scenarios</q>",,"","","","","         0","0","Deep dive",
