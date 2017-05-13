@@ -8,9 +8,9 @@
   import { gitHubLinks } from '/imports/ui/UIHelpers';
 
 
-//if the user is redirected from the virtual proxy to
-// * /sso login a demo user
-// * /ssopresentation
+  //if the user is redirected from the virtual proxy to
+  // * /sso login a demo user
+  // * /ssopresentation
 
   //<script src=https://<sense-server>/<virtual-proxy-if-any>/resources/translate/en-US/common.js></script>
   //try to execute this script to make sure a session cookie is set. DIV tag integration together with ticketing directly does not work.
@@ -56,7 +56,7 @@
       // console.log(message);
       var call = {};
       call.action = 'STEP 1: Proxy redirected the browser your SaaS platforms authentication page';
-      call.url =  '/images/QPS - authentication redirect flow in browser for dummies.png';
+      call.url = '/images/QPS - authentication redirect flow in browser for dummies.png';
       call.request = message;
       REST_Log(call, Meteor.userId());
 
@@ -109,6 +109,7 @@
           if (error) {
               sAlert.error(error);
               console.error('Meteor SSO page, could not get a redirectUrl from Qlik Sense', error)
+              // Router.go('presentation'); //GO TO THE SLIDE landing page first
           } else {
               console.log('redirect URL received, now change the URL of the browser back to the slide generator page');
               Session.setAuth('authenticatedSlideGenerator', true);

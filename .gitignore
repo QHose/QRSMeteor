@@ -1,7 +1,6 @@
 #Mr Developer
 settings-development.json
 settings-production.json
-*.bat
 *.cert
 *.pem
 node_modules/

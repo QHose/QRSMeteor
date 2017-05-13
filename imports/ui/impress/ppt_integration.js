@@ -14,19 +14,31 @@ var IntegrationPresentationSelectionSheet = Meteor.settings.public.IntegrationPr
 var IntegrationPresentationSortedDataObject = Meteor.settings.public.IntegrationPresentationSortedDataObject; //'pskL';//a table object in the saas presentation qvf, that ensures the slides are in the correct load order. better would be to load this in this order in the API call.
 var slideWidth = 2000;
 
-Template.ppt_integrationMain.onCreated(function() {
-    if (Session.get('landingPageAlreadySeen') === false) {
-        console.log('user has NOT already seen the landing page');
-        Router.go('presentation'); //GO TO THE SLIDE landing page first
+Template.ppt_integrationMain.onRendered(function() {
+    var landingPageAlreadySeen = Session.get('landingPageAlreadySeen');
+    console.log('ppt_integrationMain onRendered. landingPageAlreadySeen:', Session.get('landingPageAlreadySeen'));
+    if (landingPageAlreadySeen) {
+        console.log('landingPageAlreadySeen:', landingPageAlreadySeen);
     } else {
-        console.log('user has already seen the landing page');
+        console.log('user has NOT already seen the landing page, so route him to this page to select a workshop expertise level.');
+        Router.go('presentation'); //GO TO THE SLIDE landing page first
     }
-    // Session.set('clickedInSelection', false);
-    // this.$('.ui.sidebar')
-    //     .sidebar('toggle');
 });
 
+Template.ppt_integrationMain.onDestroyed(function() {
+    var landingPageAlreadySeen = Session.get('landingPageAlreadySeen');
+    console.log('user left the slide generator, make sure he gets the landing page next time');
+    console.log('ppt_integrationMain onDestroyed. landingPageAlreadySeen:', landingPageAlreadySeen);
+    Session.set('landingPageAlreadySeen', false);
+});
+
+
+
 Template.ppt_integration.onRendered(function() {
+    initializePresentation();
+})
+
+function initializePresentation() {
     Session.set('slideLoading', true);
     getLevel1to3('integrationTopics');
     getLevel1And2();
@@ -42,7 +54,8 @@ Template.ppt_integration.onRendered(function() {
         var activeStepNr = activeStep.substr(activeStep.indexOf("-") + 1);
         Session.set('activeStepNr', activeStepNr);
     });
-})
+
+}
 
 Template.integrationSlideContent.onRendered(function() {
 
@@ -242,7 +255,7 @@ function getLevel1And2() {
                         // console.log('Result set from Qlik Sense:', data);
                         var table = data[0].qMatrix;
                         var tableWithChapters = insertSectionBreakers(table);
-                        console.log('Slides loaded, and we added extra chapter breakers. Object now stored in in session var mainTopics, so slides can be created by impress.js', tableWithChapters);
+                        console.log('Received a table of data via the Engine API, now the slides can be created by impress.js', tableWithChapters);
                         Session.set('mainTopics', tableWithChapters)
                         Meteor.setTimeout(function() {
 

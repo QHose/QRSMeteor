@@ -73,8 +73,12 @@ Meteor.methods({
         return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());
     },
     loginUserForPresentation(proxyRestUri, targetId, userProperties) {
-        check(userProperties.user, String);
-        check(userProperties.group, String);
+        try {
+            check(userProperties.user, String);
+            check(userProperties.group, String);
+        } catch (err) {
+            throw new Meteor.Error('Failed to login into Qlik Sense via a ticket', 'Please go to the landing page and select your group. We could not request a ticket because the userId or groups (technical, generic) are not provided');
+        }
 
         console.log('loginUserForPresentation: ', userProperties.user);
         var passport = {
@@ -93,7 +97,7 @@ Meteor.methods({
         call.request = 'Request ticket for this user and his groups: ": ' + JSON.stringify(passport) + ' .Note that we give each customer its own User Directory';
         REST_Log(call, Meteor.userId());
 
-        return getRedirectURL(passport, proxyRestUri, targetId,  Meteor.userId());
+        return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());
     },
     resetLoggedInUser() {
         console.log("***Method resetLoggedInUsers");
@@ -164,7 +168,7 @@ function insertDummyCustomers(generationUserId) {
 export function logoutUser(UDC, name, proxy) {
     if (!proxy) {
         proxy = senseConfig.virtualProxyClientUsage
-    }//use use the proxy for the dummy users from step 4
+    } //use use the proxy for the dummy users from step 4
     // console.log('******** QPS Functions: logout the current: ' + name + ' on proxy: ' + proxy);
 
     if (name) {
