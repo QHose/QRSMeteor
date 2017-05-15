@@ -80,7 +80,7 @@ Meteor.methods({
             throw new Meteor.Error('Failed to login into Qlik Sense via a ticket', 'Please go to the landing page and select your group. We could not request a ticket because the userId or groups (technical, generic) are not provided');
         }
 
-        console.log('loginUserForPresentation: ', userProperties.user);
+        // console.log('loginUserForPresentation: ', userProperties.user);
         var passport = {
                 'UserDirectory': userProperties.user, //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
                 'UserId': userProperties.user, //the current user that we are going to login with
@@ -100,7 +100,7 @@ Meteor.methods({
         return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());
     },
     resetLoggedInUser() {
-        console.log("***Method resetLoggedInUsers");
+        // console.log("***Method resetLoggedInUsers");
         // console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
 
         //reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.
@@ -158,7 +158,7 @@ Meteor.methods({
 })
 
 function insertDummyCustomers(generationUserId) {
-    console.log('insertDummyCustomers called for generationUserId: ', generationUserId);
+    // console.log('insertDummyCustomers called for generationUserId: ', generationUserId);
     _.each(dummyCustomers, function(customer) {
         customer.generationUserId = generationUserId;
         Customers.insert(customer);
@@ -208,7 +208,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId, generationUserI
 
     try {
         var call = {};
-        call.action = 'STEP 5: Request ticket at end point received from Sense: ' + proxyRestUri;
+        call.action = 'STEP 5: Request ticket at endpoint received from Sense: ' + proxyRestUri;
         call.request = proxyRestUri + 'ticket'; //we use the proxy rest uri which we got from the redirect from the proxy (the first bounce)
         call.response = HTTP.call('POST', call.request, {
             'npmRequestOptions': certicate_communication_options,
@@ -216,7 +216,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId, generationUserI
             params: { 'xrfkey': senseConfig.xrfkey },
             data: passport //the user and group info for which we want to create a ticket
         });
-        REST_Log(call);
+        REST_Log(call, generationUserId);
     } catch (err) {
         console.error('REST call to request a ticket failed', err);
         throw new Meteor.Error('Request ticket failed', err.message);
@@ -225,7 +225,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId, generationUserI
     // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
     // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
     var ticketResponse = call.response.data;
-    call.action = 'STEP 6: Use Ticket response to create redirect url';
+    call.action = 'STEP 6: Use response from our ticket request to create redirect url';
     call.request = 'Use the redirect url we got back and the ticket string to make a redirect url for the client. Format: ' + ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket + '. JSON received: ' + ticketResponse
     REST_Log(call);
 
