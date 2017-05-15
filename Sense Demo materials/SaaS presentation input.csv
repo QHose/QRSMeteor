@@ -708,13 +708,14 @@ or
 "Security - Concept of integration.qlik.com","Overview of system (security & license) rules","<iframe src=""http://integration.qlik.com/securityRules"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Technical - 1 day",
 "Slide generator - use cases","Goals","Inspire what you can do with our engine",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Goals","Prevent multiple versions of the truth, create 1 ""master slide deck""",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","Goals","Only show information that matches the expertise of the user",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","Goals","Only show the bullets, images, videos on the slide for which you are authorized",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","Goals","With the slide generator you always have the
+- last version 
+- authorized information only
+- version of information that matches your skill level.",,,,,,,,,
+"Slide generator - use cases","Goals","Only show the bullets, images, videos on the slide for which you are *allowed to see*",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","We created a website that uses the data of a Qlik Sense app.",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","Because people are logged in to the *slide generator* and selected their expertise we only show data on the slides that matches their skills. (using the row level security in an app)",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","slide generator - welcome popup screenshot.png",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How does the slide generator create slides?","Based on predefined *workshops* or *ad hoc selections and searches* users can choose the relevant ""rows of data"" and create slides that exactly *fit their needs* (answers their questions) and *match their expertise level*. This prevents ""the endless scrolling"" in multiple slide decks if you want to create a presentatio. Often you will discover variations in the content because of old data/images. ",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How does the slide generator create slides?","With the slide generator you always have the most recent *authorized* version.",,,,,,,,,
 "Slide generator - use cases","How does the slide generator create slides?","The app contains text and references to images and videos",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How does the slide generator create slides?","The slide generator software looks at each row and detects if it needs to create a
 - bullet with text
@@ -1118,7 +1119,10 @@ App:
 - Name = <name of the data connection>",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","[source Marcus](https://confluence.qliktech.com/pages/viewpage.action?spaceKey=~msi&title=Query+the+Qlik+Sense+Repository+API+with+the+Qlik+REST+Connector)",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Data - REST API load data from QRS.png",,"","","","","         0","0","Exercises",
-"QRS API","Video: introduction to postman","https://www.youtube.com/watch?v=jBjXVrS8nXs",,"","","","","         0","0","Deep dive",
+"QRS API","How to use Postman using windows authentication","","In Postman click on the interceptor icon and let the extension install itself if needed. This is needed to pass authentication credentials from Chrome to Postman.",,,,,,,,
+"QRS API","How to use Postman using windows authentication","","Open the hub or the QMC in Chrome and authenticate to Qlik Sense.",,,,,,,,
+"QRS API","How to use Postman using windows authentication","","Go to Postman and in the URL section type https://<machine hostname>/qrs/About?Xrfkey=12345678qwertyui",,,,,,,,
+"QRS API","How to use Postman using windows authentication","","Also add the XREF key in the headers",,,,,,,,
 "QRS API","Exercise 2","Next we are going to use Postman (Chrome app) to connect to the QRS API using
 - Header authentication",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,"","","","","         0","0","Exercises",
@@ -1264,6 +1268,11 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 "QPS - Proxy API","Example API request with header authentication","postman request.png",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","Example API request with header authentication","Response from Qlik Sense",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","Example API request with header authentication","postman response.png",,"","","","","         0","0","PreSales",
+"QPS - Proxy API","How to setup and configure header authentication","Header authentication can be used as a back-door into your system. Make sure to only use it under the following circumstances:",,,,,,,,,
+"QPS - Proxy API","How to setup and configure header authentication","Use only between systems that can fully trust each other.",,,,,,,,,
+"QPS - Proxy API","How to setup and configure header authentication","Use only in combination with a firewall, proxy or routing solution.",,,,,,,,,
+"QPS - Proxy API","How to setup and configure header authentication","Use only in a development environment.",,,,,,,,,
+"QPS - Proxy API","How to setup and configure header authentication","See a manual for configuration on [Qlik help](http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/Platform/Content/Examples/config-header-authentication.htm)",,,,,,,,,
 "QPS - Proxy API","Header authentication requirements","Create virtual proxy for header authentication",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Header authentication requirements","QMC - proxy - header authentication setup.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Proxy architecture scenarios","<q>Proxy architecture scenarios</q>",,"","","","","         0","0","Deep dive",
