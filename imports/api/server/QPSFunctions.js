@@ -210,6 +210,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId, generationUserI
         var call = {};
         call.action = 'STEP 5: Request ticket at endpoint received from Sense: ' + proxyRestUri;
         call.request = proxyRestUri + 'ticket'; //we use the proxy rest uri which we got from the redirect from the proxy (the first bounce)
+        call.url = gitHubLinks.requestTicket;
         call.response = HTTP.call('POST', call.request, {
             'npmRequestOptions': certicate_communication_options,
             headers: authHeaders,
