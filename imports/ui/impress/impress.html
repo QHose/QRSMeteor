@@ -22,8 +22,9 @@
         </div>
     </div>
     <div id="impress">
+
         <!-- SLIDE 1 -->
-        <div class="z step introduction slide one" data-x="-0" data-y="-1100">
+        <div class="z step introduction slide one">
             <q>Questions about SaaS and multi-tenancy with Qlik Sense?
             </q>
             <div class="ui horizontal divider">
@@ -33,17 +34,25 @@
                 <a href="{{pathFor 'generation'}}" class="ui positive massive centered button">Go to the demo</a>
             </q>
         </div>
+
         <!-- SLIDE 2 -->
-        <div class="z step introduction slide" data-x="900" data-y="-400" data-z="2000">
+        <!-- <div class="z step introduction slide" data-z="-500" data-y="200" data-rotate-y="90">
             <q>Here we demonstrate the power of the Qlik Sense <b>APIs</b> within a <b>multi-tenant SaaS application</b> environment.</q>
+        </div> -->
+        <div class="z step introduction slide" data-z="-500" data-y="1500" data-rotate-y="90">
+            <h1 class="ui dividing header">Fictious admin panel</h1>
+            <p>You will see an admin panel in "your SaaS platform" which controls Qlik Sense via APIs based on the information stored in your database about your tenants/customers, their users and authorizations.</p>
+            <img class="ui huge centered image" src="images/SaaS logo.png">
         </div>
+
         <!-- SLIDE 3 -->
-        <div class="z step introduction slide video" data-x="5000" data-y="-1500" data-rotate="50" data-z="-1200" style="background-image:none">
-            <h3 class="ui dividing header">Introduction video (4M)
-            </h3>
+        <div class="z step introduction slide video" data-z="-500" data-y="2500" data-rotate-y="90">
+            <h1 class="ui dividing header">Introduction video (7M)</h1>
+            <p>In the video below we explain how this SaaS demo platform uses the Qlik APis to copy an app, which serves as a "template layout", for each of your customers. Next, we will guide you through the 4 steps.</p>
             <div class="ui embed" data-url="{{URL_Youtube_concept_behind}}" data-placeholder="/images/architecture - OEM  SaaS scenario simple.png"> </div>
-            <p>This video explains how your SaaS platform can copy an app which serves as a "template layout" for each of your customers. Next, we will guide you through the 4 steps.</p>
+
         </div>
+
         <!-- DEMO STEP 1 -->
         <div id="demoStep1" class="z step introduction" data-z="-3000" data-x="4000" data-y="600">
             <h1 class="ui dividing header">Demo step 1: customers</h1>
@@ -53,7 +62,7 @@
         </div>
         <!-- DEMO STEP 2 -->
         <div id="demoStep2" class="z step introduction" data-z="-3000" data-x="4000" data-y="900">
-            <h1 class="ui dividing header">Demo step 2: template apps</h1><img class="ui tiny left floated image" src="images/app.png">Which <b class="rotating">apps</b> should your customers get?
+            <h1 class="ui dividing header">Demo step 2: template apps</h1><img class="ui tiny left floated image" src="images/app.png">Which apps should your customers get?
         </div>
         <!-- DEMO STEP 3 -->
         <div id="demoStep3" class="z step introduction" data-z="-3000" data-x="5000" data-y="900" data-rotate-x="90">
@@ -63,15 +72,20 @@
             </p>
             <img class="ui large image" src="images/saas demo concept simple.png">
         </div>
-        <div id="demoStep4" class="z step introduction" data-z="-3000" data-x="9000" data-y="900" data-rotate-y="90">
+
+        <div id="demoStep4" class="z step introduction" data-z="-3000" data-x="5000" data-y="1900" data-rotate-x="90">
             <h3 class="ui dividing header">Demo step 4: Test security and web integration</h3>
             <p>Test the <b>Single Sign On</b>, with your own users and groups, <strong>embedded</strong> in your platform.</p>
             <img class="ui small centered image" src="images/embed.png">
         </div>
-         <div class="z step introduction" data-x="5000" data-y="1350" data-scale="8">
-            <a href="{{pathFor 'generation'}}" class="massive ui positive centered button">Go to the demo</a>
+
+        <div class="z step introduction" data-z="-3000" data-x="5900" data-y="4200" data-rotate-x="90">
+            <q style="margin-top: 20px; margin-bottom:40px">
+                <a href="{{pathFor 'generation'}}" class="ui positive massive centered button">Go to the demo</a>
+            </q>
         </div>
-        <div id="APIUseCases" class="z step introduction" data-z="-1000" data-x="14000" data-y="900" data-rotate-y="90" style="font-size: 2em; margin: auto;">
+
+        <div id="APIUseCases" class="z step introduction" data-z="-3000" data-x="5900" data-y="6200" data-rotate-x="90" style="font-size: 2em; margin: auto;">
             <h1 class="ui icon header">
                <img class="ui tiny image" src="images/API.png">
                <div class="content">
@@ -81,24 +95,28 @@
                </div>
            </h1>
             <ul style="margin-left: 40px;">
-                <li><a target="_blank" href="{{github_create_stream}}">Create a new stream with the customer’s name</a></li>
+                <li><a target="_blank" href="{{github_create_stream}}">Create a stream with the customer’s name</a></li>
                 <li><a target="_blank" href="{{github_copy_app}}">Copy the template app</a></li>
                 <li><a target="_blank" href="{{github_replace_and_reload_app}}">Replace the script and reload the app.</a></li>
                 <li><a target="_blank" href="{{github_publish_app}}">Publish the app in the customer stream</a></li>
             </ul>
         </div>
-        <div id="sourceCode" class="z step introduction" data-x="6300" data-y="2500" data-scale="4">
-            <q>Want to know more?</q>
-            <br>
-            <div class="ui buttons">
-                <a class="ui button" target="_blank" href="{{pathFor 'APILogs'}}">API & Source code</a>
-                <div class="or"></div>
-                <a href="{{pathFor 'documentation'}}" target="_blank" class="ui button">Our approach</a>
-                <div class="or"></div>
-                <a href= {{pathFor 'videoOverview'}} target="_blank" class="ui dropdown youtube button"><i class="youtube icon"></i>Video overview</a>
+
+        <div id="sourceCode" class="z step introduction" data-z="-3000" data-x="5900" data-y="7200" data-rotate-x="180" style="font-size: 2em; margin: auto;">
+            <div class="ui container">
+                <q>Want to know more?</q>
+                <br>
+                <div class="ui buttons">
+                    <a class="ui button" target="_blank" href="{{pathFor 'slides'}}">Slide generator</a>
+                    <div class="or"></div>
+                    <a href="{{pathFor 'documentation'}}" target="_blank" class="ui button">Documentation</a>
+                    <!--   <div class="or"></div>
+                <a href= {{pathFor 'videoOverview'}} target="_blank" class="ui dropdown youtube button"><i class="youtube icon"></i>Video overview</a> -->
+                </div>
             </div>
         </div>
-        <div id="one-more-thing" class="z step introduction" data-x="5000" data-y="1350" data-scale="8">
+
+        <div class="z step introduction" data-x="5000" data-y="1350" data-scale="8">
             <a href="{{pathFor 'generation'}}" class="massive ui positive centered button">Go to the demo</a>
         </div>
         <!--  <div id="overview" class="z step introduction" data-x="3000" data-y="1500" data-scale="10">
