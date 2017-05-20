@@ -252,60 +252,58 @@ Meteor.methods({
         _.each(QSStream.getStreams(), stream => {
             Streams.insert(stream);
         });
-    },
-
+    }
 });
 
 
+            // checkSenseIsReady() {
+            //     //console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');
 
-// checkSenseIsReady() {
-//     //console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');
+            //     // try {
+            //     // qsocks.Connect(engineConfig)
+            //     //     .then(function(global) {
+            //     //         // Connected
+            //     //         //console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');
+            //     //         return true;
+            //     //     }, function(err) {
+            //     //         // Something went wrong
+            //     //         console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
+            //     //         console.error('the settings are: ', engineConfig)
+            //     //         return false
+            //     //         // throw new Meteor.Error('Could not connect to Sense Engine API', err.message);
+            //     //     });
 
-//     // try {
-//     // qsocks.Connect(engineConfig)
-//     //     .then(function(global) {
-//     //         // Connected
-//     //         //console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');
-//     //         return true;
-//     //     }, function(err) {
-//     //         // Something went wrong
-//     //         console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
-//     //         console.error('the settings are: ', engineConfig)
-//     //         return false
-//     //         // throw new Meteor.Error('Could not connect to Sense Engine API', err.message);
-//     //     });
+            //     //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP
+            //     try{
+            //         const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
+            //             headers: authHeaders,
+            //             params: { 'xrfkey': senseConfig.xrfkey }
+            //         })//http get
+            //         //console.log(result);
+            //         if(result.statuscode === 200){
+            //             //console.log('We got a result back from Sense with statuscode 200: Success')
+            //             return true;}
+            //         else{return false}
+            //     } catch (err) {
+            //         return false;
+            //         // throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');
+            //     }
+            // }
 
-//     //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP
-//     try{
-//         const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
-//             headers: authHeaders,
-//             params: { 'xrfkey': senseConfig.xrfkey }
-//         })//http get
-//         //console.log(result);
-//         if(result.statuscode === 200){
-//             //console.log('We got a result back from Sense with statuscode 200: Success')
-//             return true;}
-//         else{return false}
-//     } catch (err) {
-//         return false;
-//         // throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');
-//     }
-// }
+            //GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)
+            // getApps() {
+            //     return QSApp.getApps();
+            //     // appListSync = Meteor.wrapAsync(qsocks.Connect(engineConfig)
+            //     //     .then(function(global) {
+            //     //         global.getDocList()
+            //     //             .then(function(docList) {
+            //     //                 return (docList);
+            //     //             });
+            //     //     })
+            //     //     .catch(err => {
+            //     //         throw new Meteor.Error(err)
+            //     //     }));
+            //     // result = appListSync();
+            //     // return result;
 
-//GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)
-// getApps() {
-//     return QSApp.getApps();
-//     // appListSync = Meteor.wrapAsync(qsocks.Connect(engineConfig)
-//     //     .then(function(global) {
-//     //         global.getDocList()
-//     //             .then(function(docList) {
-//     //                 return (docList);
-//     //             });
-//     //     })
-//     //     .catch(err => {
-//     //         throw new Meteor.Error(err)
-//     //     }));
-//     // result = appListSync();
-//     // return result;
-
-// },
+            // },
