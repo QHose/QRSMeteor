@@ -2,7 +2,7 @@ import { senseConfig } from '/imports/api/config.js';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
 _ = lodash;
-
+var Cookies = require('js-cookie');
 var showdown = require('showdown');
 var converter = new showdown.Converter();
 const enigma = require('enigma.js');
@@ -13,25 +13,6 @@ var appId = Meteor.settings.public.IntegrationPresentationApp;
 var IntegrationPresentationSelectionSheet = Meteor.settings.public.IntegrationPresentationSelectionSheet; //'DYTpxv'; selection sheet of the slide generator
 var IntegrationPresentationSortedDataObject = Meteor.settings.public.IntegrationPresentationSortedDataObject; //'pskL';//a table object in the saas presentation qvf, that ensures the slides are in the correct load order. better would be to load this in this order in the API call.
 var slideWidth = 2000;
-
-Template.ppt_integrationMain.onRendered(function() {
-    var landingPageAlreadySeen = Session.get('landingPageAlreadySeen');
-    console.log('ppt_integrationMain onRendered. landingPageAlreadySeen:', Session.get('landingPageAlreadySeen'));
-    if (landingPageAlreadySeen) {
-        console.log('landingPageAlreadySeen:', landingPageAlreadySeen);
-    } else {
-        console.log('user has NOT already seen the landing page, so route him to this page to select a workshop expertise level.');
-        Router.go('presentation'); //GO TO THE SLIDE landing page first
-    }
-});
-
-Template.ppt_integrationMain.onDestroyed(function() {
-    var landingPageAlreadySeen = Session.get('landingPageAlreadySeen');
-    console.log('user left the slide generator, make sure he gets the landing page next time');
-    console.log('ppt_integrationMain onDestroyed. landingPageAlreadySeen:', landingPageAlreadySeen);
-    Session.set('landingPageAlreadySeen', false);
-});
-
 
 
 Template.ppt_integration.onRendered(function() {
@@ -56,6 +37,9 @@ function initializePresentation() {
     });
 
 }
+Template.ppt_integration.onDestroyed(function() {
+    Cookies.set('showSlideSorter', 'false');
+})
 
 Template.integrationSlideContent.onRendered(function() {
 
@@ -87,12 +71,6 @@ Template.integrationSlideContent.onRendered(function() {
 
 })
 
-Template.ppt_integrationMain.helpers({
-    showPresentation() {
-        // console.log('show the IFRAME');
-        return Session.get('showPresentation'); //&& Session.get('clickedInSelection');
-    }
-})
 
 Template.ppt_integration.helpers({
     mainTopics() {
@@ -128,8 +106,11 @@ Template.integrationSlide.helpers({
         // return setXValue(index);
     },
     slideActive(slideNr) {
-        //active slide gets set via impress, that fires an event. see ppt_integration.onRendered
-        return Session.get('activeStepNr') >= slideNr + 1;
+        //active slide gets set via impress.js, that fires an event. see ppt_integration.onRendered
+        //for performance reasons we only do all our formatting etc when the slide is active.
+        //but for the slide sorter we need all content to be loaded in one go...
+        var showSlideSorter = Cookies.get('showSlideSorter');
+        return (Session.get('activeStepNr') >= slideNr + 1) || Cookies.get('showSlideSorter') === 'true';
     },
     step() {
         return Session.get('activeStepNr');
@@ -164,26 +145,6 @@ Template.integrationSlideContent.helpers({
                 return '<div class="markdownItem">' + result + '</div>';
             }
         }
-    }
-})
-
-Template.ppt_integrationMain.events({
-    'click .launch': function(event) {
-        // console.log('button clicked');
-        $('.ui.sidebar')
-            .sidebar('toggle');
-    },
-    'click .button': function(event) {
-        console.log('button clicked');
-        $('.ui.sidebar')
-            .sidebar('toggle');
-        Session.set('showPresentation', true);
-    },
-    'mouseover .sidebar.integration': function(event) {
-        Session.set('showPresentation', false);
-    },
-    'mouseout .sidebar.integration': function(event) {
-        Session.set('showPresentation', true);
     }
 })
 
@@ -258,9 +219,10 @@ function getLevel1And2() {
                         console.log('Received a table of data via the Engine API, now the slides can be created by impress.js', tableWithChapters);
                         Session.set('mainTopics', tableWithChapters)
                         Meteor.setTimeout(function() {
-
-                            impress().init();
-                            impress().goto(0);
+                            if (Cookies.get('showSlideSorter') !== 'true') { //do not initialize impress so we can use the mobile device layout of impress to get all the slide under each other
+                                impress().init();
+                                impress().goto(0);
+                            }
                             $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
                             Session.set('slideLoading', false);
                         }, 100);
@@ -284,8 +246,7 @@ var appChangeListener = function appChangeListener() {
         .then(qix => {
             qix.app.on('changed', () => {
                 // console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
-                // getLevel1to3('selectedDataSet');
-                location.reload();
+                location.reload(); //reload the browser
             });
         })
 }

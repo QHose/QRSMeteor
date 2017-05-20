@@ -1,24 +1,35 @@
 <template name="landingPage">
     <div class="ui container">
-        <h2 class="ui header">
+
+        {{#if authenticatedSlideGenerator}}
+            <h2 class="ui header">
             <img src="/images/API tool broker.png">
             <div class="content">
                 Qlik Sense slide generator
- <div class="sub header">We prepared one master slidedeck around SaaS integration. <br>
- Select an API integration workshop, topics or use the searchbox to create your personal slidedeck.</div>
+                <div
+                class="sub header">Here we demonstrate that Qlik Sense can be used as an analytics engine for your platform.</div>
             </div>
         </h2>
-        <!-- {{#if authenticatedSlideGenerator}} -->
-        {{#if userSelectedPresentationType}}
+            <!-- {{#if userSelectedPresentationType}} -->
             <div class="ui segment">
                 <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
             </div>
-            <a id="start" href="{{pathFor 'slides'}}" class="ui right floated positive large button">Create my slides</a> {{> selectSlide}}
+            <a href="{{pathFor 'slideGenerator'}}" class="ui right floated positive large button">Create my slides</a> {{> selectSlide}}
+            <!-- {{/if}} -->
+        {{else}}
+        
+            <div class="ui dimmer" style="height: 100%">
+                <div class="content">
+                    <div class="center">
+                        <div class="ui indeterminate text loader">Requesting a ticket for the selected user...</div>
+                    </div>
+                </div>
+            </div>
         {{/if}}
-        <!-- {{/if}} -->
     </div>
     {{> userSelectPresentationModal}}
 </template>
+<!-- SELECT INDIVIDUAL SLIDES  -->
 <template name="selectSlide">
     <div class="ui accordion">
         <div class="title">
@@ -27,6 +38,7 @@
             <!-- Select your slides... -->
         </div>
         <div class="content">
+            <DIV class="ui left floated button" id="slideSorter">Slide sorter</DIV>
             <iframe src='{{slideObjectURL}}' style='border:none; height: 800px; width: 500px'></iframe>
         </div>
     </div>
@@ -43,7 +55,7 @@
             </div>
             <div class="description">
                 <div class="ui header">What are your knowledge requirements?</div>
-                <p>We created multiple workshops around SaaS and API integration with Qlik Sense. If you are a member of an executive, sales or product organization, select the <b>'introductory'</b> level. If you are a member of a technical team, select the <b>'advanced'</b> level.</p>
+                <p>We created multiple workshops about SaaS and API integration with Qlik Sense. If you are a member of an executive, sales or product organization, select the <b>'introductory'</b> level. If you are a member of a technical team, select the <b>'advanced'</b> level.</p>
             </div>
         </div>
         <div class="actions">

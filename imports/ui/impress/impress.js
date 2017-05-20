@@ -6,6 +6,10 @@ import '/imports/ui/UIHelpers';
 import './impress.html';
 import './ppt_integration.html';
 import './ppt_integration';
+import './integrationMain.html';
+import './integrationMain';
+import './slideSorter.html';
+import './slideSorter';
 
 import './landingPage.html';
 import './landingPage.js';

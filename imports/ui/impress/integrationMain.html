@@ -1,0 +1,35 @@
+<template name="ppt_integrationMain">
+    <div class="ui very wide sidebar integration">
+        <iframe id="IFrameURLChapterSelection" src='{{IFrameURLChapterSelection}}' class="selector"> </iframe>
+    </div>
+    <div class="pusher">
+        <div class="ui black launch right attached fixed button" style="background-color: #545454; padding-left:20px">
+            <i class="content icon"></i>
+            <span class="text"><!-- Engine API Slide generator explaining SaaS with Qlik Sense (<a href="{{pathFor 'legal'}}">PROTOTYPE</a>) --></span>
+        </div>
+        <!-- {{#if showPresentation}} -->
+        <div style="position: absolute; bottom: 0px; right: 0px;">
+            <a style="rgba(0, 0, 0, 0.87);" href="{{pathFor 'legal'}}">Terms of usage</a>
+        </div>
+        <iframe allowfullscreen src="{{pathFor 'ppt_integration'}}" class="frame"></iframe>
+        <!-- {{else}} -->
+        <!-- <div class="ui container">
+                    <div class="ui message">
+                        <div class="content">
+                            <div class="header">
+                                How to use the Engine API slide generator?
+                            </div>
+                            <p>Here we demonstrate that Qlik Sense can be used as centralized data engine for users and systems in your organization. And we can quickly help you to find the answers you need via our associative search.
+                            </p>
+                            <ul class="ui list" style="margin-left: 20px">
+                                <li>First select your workshop, topics or use the search box to look for specific topics (like 'app', 'security', 'authentication', 'flow' or 'architecture'). </li>
+                                <li>Next, click on this side of the screen to start the presentation.</li>
+                                <li>You can always go back to make more selections via the left top menu <i class="content icon"></i></li>
+                            </ul>
+                            <img class="ui centered image" src="images/Engine API slide generator easy flow.png">
+                        </div>
+                    </div>
+                </div> -->
+        <!-- {{/if}} -->
+    </div>
+</template>
