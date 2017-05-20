@@ -48,7 +48,7 @@ function isMobile() {
 }
 
 export function unsupportedBrowser() {
-    console.log('unsupported browser?', isIEorEDGE() || isMobile());
+    // console.log('unsupported browser?', isIEorEDGE() || isMobile());
     return isIEorEDGE() || isMobile();
 }
 
