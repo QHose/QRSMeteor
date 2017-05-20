@@ -18,14 +18,6 @@ ServiceConfiguration.configurations.upsert({
     }
 });
 
-// ServiceConfiguration.configurations.remove({
-//     service: "github"
-// });
-
-// ServiceConfiguration.configurations.remove({
-//     service: "facebook"
-// });
-
 // "AccountsUiConfig": {
 //       "passwordSignupFields": "USERNAME_AND_OPTIONAL_EMAIL",
 //       "requestPermissions": {
@@ -40,21 +32,19 @@ ServiceConfiguration.configurations.upsert({
 //       }
 
 
-ServiceConfiguration.configurations.remove({
+ServiceConfiguration.configurations.upsert({
     service: "linkedin"
-});
-ServiceConfiguration.configurations.insert({
+},{
     loginStyle: "popup",
     service: "linkedin",
     clientId: Meteor.settings.private.linkedin.clientId,
     secret: Meteor.settings.private.linkedin.secret,
 });
 
-// first, remove configuration entry in case service is already configured
-ServiceConfiguration.configurations.remove({
-    service: "twitter"
-});
-ServiceConfiguration.configurations.insert({
+
+ServiceConfiguration.configurations.upsert({
+    service: "twitter"  
+},{
     service: "twitter",
     consumerKey: Meteor.settings.private.twitter.clientId,
     loginStyle: "popup",
