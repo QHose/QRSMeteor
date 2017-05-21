@@ -1,6 +1,8 @@
 # Welcome to the SaaS with Qlik Sense demo platfom
 
-Demo site on [saasdemo.qlik.com](http://saasdemo.qlik.com)
+Demo and site on [integration.qlik.com](http://integration.qlik.com)
+
+Also make sure you checkout the [slide generator](http://integration.qlik.com/slides), which explains SaaS integration using the Qlik Sense APIs.
 
 Watch [this video](https://youtu.be/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) to learn the concept of the SaaS automation demo.
 ![alt tag](https://raw.githubusercontent.com/QHose/QRSMeteor/master/public/images/only generation explanation.gif)
