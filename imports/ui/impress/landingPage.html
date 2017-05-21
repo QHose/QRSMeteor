@@ -10,14 +10,13 @@
                 class="sub header">Here we demonstrate that Qlik Sense can be used as an analytics engine for your platform.</div>
             </div>
         </h2>
-            <!-- {{#if userSelectedPresentationType}} -->
             <div class="ui segment">
                 <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
             </div>
-            <a href="{{pathFor 'slideGenerator'}}" class="ui right floated positive large button">Create my slides</a> {{> selectSlide}}
-            <!-- {{/if}} -->
+            <a href="{{pathFor 'slideGenerator'}}" class="ui right floated positive large button">Create my slides</a> 
+            {{> selectSlide}}
         {{else}}
-        
+
             <div class="ui dimmer" style="height: 100%">
                 <div class="content">
                     <div class="center">
