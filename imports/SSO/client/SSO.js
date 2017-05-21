@@ -62,7 +62,9 @@
       REST_Log(call, Meteor.userId());
 
       call.action = 'STEP 2: Read parameters which Qlik Sense proxy provided'
-      call.request = 'One parameter is the REST endpoint URL to request a ticket. Parameters:' + JSON.stringify(Router.current().params.query);
+      call.request = 'One parameter is the REST endpoint URL to request a ticket.';
+      call.response = Router.current().params.query;
+
       REST_Log(call, Meteor.userId());
 
       var senseParams = Session.get('senseParams');

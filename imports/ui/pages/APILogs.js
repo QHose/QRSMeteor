@@ -58,14 +58,14 @@ Template.ApiLogsTable.helpers({
         });
     },
     formattedResponse: function(value) {
-        return formatResponse(value);
+        return formatResponse(value)
     }
 
 })
 
 //convert a js object to a html string with extra classes added. 
 function formatResponse(value) {
-    if (value) {
+    if(value) {
         var objectToString = new Spacebars.SafeString(JSON.stringify(value, undefined, 2));
         var highlighted = hljs.highlightAuto(objectToString.string).value;
         return highlighted;

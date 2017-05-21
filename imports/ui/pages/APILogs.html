@@ -121,7 +121,9 @@
                         {{request}}
                     </td>
                     <td>
-                        <pre><code>{{{formattedResponse response}}}</code></pre>
+                        {{#if response}}
+                            <pre><code>{{{formattedResponse response}}}</code></pre>
+                        {{/if}}
                     </td>
                 </tr>
             {{/each}}

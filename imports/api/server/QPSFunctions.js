@@ -94,7 +94,8 @@ Meteor.methods({
         var call = {};
         call.url = gitHubLinks.createPasport;
         call.action = 'Presentation user: Request ticket for the user that requested the slide generator. In this way we can store his bookmarks.';
-        call.request = 'Request ticket for this user and his groups: ": ' + JSON.stringify(passport) + ' .Note that we give each customer its own User Directory';
+        call.request = 'We created a JSON object with the user and his groups. We now send this "ticket" to Qlik Sense. And we expect to receive a "ticket number" back, which we can append to the URL redirect. Note that we give each customer its own User Directory, so that users of different tenants are really separated';
+        call.response = passport;
         REST_Log(call, Meteor.userId());
 
         return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());

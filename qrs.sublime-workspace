@@ -532,7 +532,7 @@
 			"file": "imports/ui/impress/landingPage.js",
 			"settings":
 			{
-				"buffer_size": 6059,
+				"buffer_size": 5536,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -542,6 +542,15 @@
 			"settings":
 			{
 				"buffer_size": 5209,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/impress/impress.css",
+			"settings":
+			{
+				"buffer_size": 15382,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -646,18 +655,16 @@
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/public",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
 	[
+		"/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.js",
@@ -674,7 +681,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/ppt_integration.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/useCaseSelection.html",
-		"/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI/SSBI.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.css",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/slideSorter.js",
@@ -734,7 +740,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/impress.js/js/impress.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/impressJSModifiedSource.js",
 		"/C/Users/mbj/Documents/Documentatie/Qlikview inlezen/3 Security/Customized Authentication v2 0/Examples/Authenticate_aspx/Authenticate.aspx",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/highlight.js/lib/highlight.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/client/stylesheets/highLight.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationTopicsCircular.html",
@@ -909,6 +914,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"/public/images",
+			"https://raw.githubusercontent.com/QHose/QRSMeteor/master",
+			"saasdemo",
+			"space",
 			"copya",
 			"userSelectedPresentationType",
 			"enigma",
@@ -1032,11 +1041,7 @@
 			"APIIntroduction",
 			"Overview of the key APIs to be used by your SaaS platform",
 			"engine",
-			"high",
-			"web",
-			"how",
-			"on",
-			"youtube"
+			"high"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1044,6 +1049,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"public/images",
+			"",
 			"about",
 			"host",
 			"passport",
@@ -1169,8 +1176,6 @@
 			"true",
 			"updateSenseInfo",
 			"\\\\",
-			"",
-			"category",
 			""
 		],
 		"reverse": false,
@@ -1182,7 +1187,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1214,7 +1219,7 @@
 						"translation.y": 1120.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1223,15 +1228,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6059,
+						"buffer_size": 5536,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1520,
-								1520
+								1626,
+								1626
 							]
 						],
 						"settings":
@@ -1243,10 +1248,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 92.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1278,11 +1283,42 @@
 						"translation.y": 826.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
+					"file": "imports/ui/impress/impress.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15382,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								633,
+								633
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 129.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "imports/api/server/QPSFunctions.js",
 					"semi_transient": false,
 					"settings":
@@ -1310,11 +1346,11 @@
 						"translation.y": 5723.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "imports/ui/generation/OEMPartnerSide/users.html",
 					"semi_transient": false,
 					"settings":
@@ -1342,11 +1378,11 @@
 						"translation.y": 2752.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "imports/SSO/client/SSO.js",
 					"semi_transient": false,
 					"settings":
@@ -1374,7 +1410,7 @@
 						"translation.y": 1026.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1423,7 +1459,7 @@
 	"project": "qrs.sublime-project",
 	"replace":
 	{
-		"height": 88.0
+		"height": 120.0
 	},
 	"save_all_on_build": true,
 	"select_file":
