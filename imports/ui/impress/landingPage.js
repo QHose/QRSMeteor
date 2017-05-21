@@ -16,8 +16,8 @@ Template.landingPage.onCreated(function() {
     Session.setAuth('groupForPresentation', null);
     Cookies.set('showSlideSorter', 'false');
     console.log('first logout the current presentation user in Qlik Sense. After the logout, we try to open the Iframe URL, and request a new ticket with a new group: generic or technical, using section access we restrict the slides...');
-    // Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation users
-    logoutCurrentSenseUserClientSide();
+    Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation users
+    // logoutCurrentSenseUserClientSide();
     intervalId = Meteor.setInterval(userLoggedInSense, 500);
 })
 
@@ -89,11 +89,11 @@ function userLoggedInSense() {
 
 
 export function logoutCurrentSenseUserClientSide() {
-    // Cookies.remove('X-Qlik-Session-presentation',{ path: '' });
+    Cookies.remove('X-Qlik-Session-presentation',{ path: '' });
     // delete_cookie('X-Qlik-Session-presentation','', Meteor.settings.public.host);
     //http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Personal-Delete.htm
-    // try {
-    //     // const call = {};
+    try {
+        const call = {};
         const RESTCALL = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.IntegrationPresentationProxy + '/qps/user';
         $.ajax({
             method: 'DELETE',
@@ -106,23 +106,10 @@ export function logoutCurrentSenseUserClientSide() {
             call.response = res;
             REST_Log(call, Meteor.userId());
         });
-
-    //     $.ajax({
-    //         url: 'http://presales1:81/presentation/qps/user',
-    //         type: 'DELETE',
-    //         contentType: "application/json; charset=utf-8",
-    //         dataType: "json",
-    //         error: function(result) {
-    //             console.error('response from qlik sense', result);
-    //         },
-    //         success: function(result) {
-    //             console.log('response from qlik sense', result); //
-    //         }
-    //     });
-    // } catch (err) {
-    //     console.error(err);
-    //     throw new Meteor.Error('Failed to logout the user via the personal API', err.message);
-    // }
+    } catch(err) {
+        console.error(err);
+        sAlert.Error('Failed to logout the user via the personal API', err.message);
+    }
 }
 
 Template.selectSlide.onRendered(function() {
