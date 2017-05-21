@@ -4,6 +4,7 @@
   import { http } from 'meteor/meteor';
   import { Session } from 'meteor/session';
   import { senseConfig } from '/imports/api/config.js';
+  var Cookies = require('js-cookie');
   import { HTTP } from 'meteor/http';
   import { gitHubLinks } from '/imports/ui/UIHelpers';
 
@@ -112,7 +113,7 @@
               // Router.go('presentation'); //GO TO THE SLIDE landing page first
           } else {
               console.log('redirect URL received, now change the URL of the browser back to the slide generator page');
-              Session.setAuth('authenticatedSlideGenerator', true);
+              Cookies.set('authenticatedSlideGenerator', 'true');
               window.location.replace(redirectUrl);
           }
       });
