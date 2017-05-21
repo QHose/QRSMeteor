@@ -29,7 +29,7 @@ Meteor.methods({
 
         //now we have the document, we can look in the array of users, to find the one that is logged in.
         var user;
-        if (!customer) { //if no user is selected, just insert john as a dummy
+        if(!customer) { //if no user is selected, just insert john as a dummy
             // const error = 'You have not selected a user you want to simulate the Single Sign on with. For demo purposes we now selected John for you. You can also select your own user in step 4 of the SaaS demo';
             var response = {};
             // console.log('dummyCustomer :', dummyCustomer);
@@ -76,7 +76,7 @@ Meteor.methods({
         try {
             check(userProperties.user, String);
             check(userProperties.group, String);
-        } catch (err) {
+        } catch(err) {
             throw new Meteor.Error('Failed to login into Qlik Sense via a ticket', 'Please go to the landing page and select your group. We could not request a ticket because the userId or groups (technical, generic) are not provided');
         }
 
@@ -108,7 +108,7 @@ Meteor.methods({
         Customers.find({ 'generationUserId': Meteor.userId() })
             .forEach(function(customer) {
                 var updatedUsers = _.map(customer.users, function(user) {
-                    if (user) {
+                    if(user) {
                         user.currentlyLoggedIn = false;
                     }
 
@@ -144,7 +144,7 @@ Meteor.methods({
                 'users.$.currentlyLoggedIn': true
             }
         }, {}, function(error, numberAffectedDocuments) {
-            if (numberAffectedDocuments === 0) { //if nothing is updated, insert some dummy customers
+            if(numberAffectedDocuments === 0) { //if nothing is updated, insert some dummy customers
                 // console.log('simulateUserLogin numberAffectedDocuments: ', numberAffectedDocuments);
                 //name does not yet exist in the customers created by the current demo user. So insert our dummy customers.numberAffectedDocuments
                 insertDummyCustomers(Meteor.userId());
@@ -168,18 +168,23 @@ Meteor.methods({
                 profile: { name: { first: String, last: String } },
                 roles: [String],
             });
-        } catch (err) {
-            Meteor.Error('unable to create a user received from Qlik.com', 'Missing fields');
+        } catch(err) {
+            throw new Meteor.Error("Missing Qlik.com user data",
+                "The user misses important information from its Qlik.com account");
         }
         const userExists = Accounts.findUserByEmail(user.email);
-
-        if (!userExists) {
-            const userId = Accounts.createUser(user);
-            Roles.addUsersToRoles(user.email, user.email, 'GLOBAL');
+        console.log('found user: ', userExists);
+        var userId = {};
+        if(!userExists) {
+            //On the client, this function logs in as the newly created user on successful completion. On the server, it returns the newly created user id.
+            //https://docs.meteor.com/api/passwords.html#Accounts-createUser
+            user.password = user.qtsession;
+            userId = Accounts.createUser(user);
+            Roles.addUsersToRoles(userId, user.roles, 'GLOBAL');
         } else {
-            console.log('login the user serverSide');
-            Meteor.loginWithPassword(user.email, user.email);
+            userId = userExists._id;
         }
+        return LoginToken.createTokenForUser(userId);
     }
 })
 
@@ -192,12 +197,12 @@ function insertDummyCustomers(generationUserId) {
 }
 
 export function logoutUser(UDC, name, proxy) {
-    if (!proxy) {
+    if(!proxy) {
         proxy = senseConfig.virtualProxyClientUsage
     } //use use the proxy for the dummy users from step 4
     // console.log('******** QPS Functions: logout the current: ' + name + ' on proxy: ' + proxy);
 
-    if (name) {
+    if(name) {
         // //console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTPs call: '); //, certicate_communication_options);
         // //console.log('Meteor tries to logout the user on this URL: https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + senseConfig.UDC + '/' + name);
         try {
@@ -211,7 +216,7 @@ export function logoutUser(UDC, name, proxy) {
             // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
             // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
 
-        } catch (err) {
+        } catch(err) {
             console.error(err);
             throw new Meteor.Error('Logout user failed', err.message);
         }
@@ -244,7 +249,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId, generationUserI
             data: passport //the user and group info for which we want to create a ticket
         });
         REST_Log(call, generationUserId);
-    } catch (err) {
+    } catch(err) {
         console.error('REST call to request a ticket failed', err);
         throw new Meteor.Error('Request ticket failed', err.message);
     }
@@ -258,13 +263,13 @@ export function getRedirectURL(passport, proxyRestUri, targetId, generationUserI
 
 
     //Build redirect URL for the client including the ticket
-    if (ticketResponse.TargetUri.indexOf("?") > 0) {
+    if(ticketResponse.TargetUri.indexOf("?") > 0) {
         redirectURI = ticketResponse.TargetUri + '&QlikTicket=' + ticketResponse.Ticket;
     } else {
         redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
     }
 
-    if (!redirectURI) { redirectURI = "http://" + senseConfig.host + ":" + senseConfig.port + "/" + senseConfig.virtualProxyClientUsage + "/" + hub; }
+    if(!redirectURI) { redirectURI = "http://" + senseConfig.host + ":" + senseConfig.port + "/" + senseConfig.virtualProxyClientUsage + "/" + hub; }
     // console.log('Meteor server side created this redirect url: ', redirectURI);
     return redirectURI;
 }

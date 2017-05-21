@@ -12,50 +12,60 @@ if(window.location.href.indexOf("saasdemo") > -1) {
     window.location = "http://integration.qlik.com" + window.location.pathname;
 }
 
-//make sure certain path are for authenticated users only
-Router.plugin('ensureSignedIn', {
-    // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
-    except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
-});
-
-// this hook will run on almost all routes
-// Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'useCaseSelection', 'documentation', 'login', 'signup', 'forgotPassword'] });
-Router.onBeforeAction(mustBeSignedIn, { only: ['test'] });
+//Load a authentication check handler, depending on which domain it runs. 
+// if(window.location.href.indexOf("Qlik.com") > -1) {
+    Router.onBeforeAction(mustBeSignedIn, { only: ['test'] });
+// } else {
+//     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
+    Router.plugin('ensureSignedIn', {
+        // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
+        except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
+    });
+// }
 
 function mustBeSignedIn() {
     var routeName = Router.current().route.getName();
-    console.log('mustBeSignedIn called hook for route: ', routeName);
-    var QlikUserProfile = Cookies.get('CSUser');
+    // console.log('mustBeSignedIn called hook for route: ', routeName);
+    var QlikUserProfile = Cookies.get('CSUser'); //only availalbe on Qlik.com domains
+    console.log('QlikUserProfile: ', QlikUserProfile);
     if(!QlikUserProfile) {
         //if user is not logged in, redirect to Qliks login page, after it we can read the cookie.
-        //             // similar behavior as an HTTP redirect
-        console.log('The user tried to open: ' + routeName + ' but first ensure the users logs in at Qlik.com');
-        var uri = "http://localhost:3000/" + routeName;
-        var encodedReturnURI = encodeURIComponent(uri);
-        console.log('encodeURIComponent:', encodedReturnURI);
+        var uri = Meteor.absoluteUrl() + routeName;
+        console.log('The user tried to open: ' + uri + ' but first ensure the users logs in at Qlik.com');
+        var encodedReturnURI = encodeURIComponent(uri);        
         var QlikSSO = "https://login.qlik.com/login.aspx?returnURL=" + encodedReturnURI;
+        console.log(QlikSSO);
         window.location.replace(QlikSSO); //
-    } else {
+    } else if(!Meteor.user()) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
+        console.log('user is not yet logged in into meteor');
         var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, hash] = QlikUserProfile.split('&');
         const user = {
-            email: emailAddress,
+            email: emailAddress.substr(emailAddress.indexOf("=") + 1),
             profile: {
-                name: { first: firstName, last: lastName },
+                name: {
+                    first: firstName,
+                    last: lastName
+                },
             },
-            roles: ulcLevels.substr(ulcLevels.indexOf("=") + 1)
+            roles: ulcLevels.substr(ulcLevels.indexOf("=") + 1),
+            qtsession: qtsession
         };
         console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
-        Meteor.call('createAndLoginUser', user, function(err, res) {
-            if(err) {
-                sAlert.error(err.message);
-            } else {
-                console.log(res);
-            }
-
-        });
+        loginUser(user, routeName);
     }
     this.next();
 };
+
+function loginUser(user, routeName) {
+    console.log('function login user', user, routeName);
+    Meteor.call('createAndLoginUser', function(err, token) {
+        if(err) {
+            SAlert.error('Failed to login via Qlik.com');
+        } else {
+            window.location.replace(Meteor.absoluteUrl() + routeName + '?authToken=' + token);
+        }
+    });
+}
 
 // //map paths to blaze templates
 Router.route('/', function() {

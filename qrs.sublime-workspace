@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"user",
+				"userId"
+			],
+			[
+				"userI",
+				"userID's"
+			],
+			[
+				"integ",
+				"integration.qlik.com"
+			],
+			[
+				"re",
+				"response〔variable〕"
+			],
+			[
 				"enco",
 				"encodedReturnURI"
 			],
@@ -18,10 +34,6 @@
 			[
 				"de",
 				"delete_cookie"
-			],
-			[
-				"user",
-				"userLoggedInSense"
 			],
 			[
 				"Met",
@@ -182,10 +194,6 @@
 			[
 				"set",
 				"setTimeout"
-			],
-			[
-				"re",
-				"refresh"
 			],
 			[
 				"consol",
@@ -506,14 +514,6 @@
 			[
 				"QM",
 				"QMCUrl"
-			],
-			[
-				"url",
-				"URLtoOpen"
-			],
-			[
-				"hu",
-				"hubUrl"
 			]
 		]
 	},
@@ -523,7 +523,16 @@
 			"file": "imports/ui/impress/landingPage.html",
 			"settings":
 			{
-				"buffer_size": 2997,
+				"buffer_size": 2915,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/proxy.js",
+			"settings":
+			{
+				"buffer_size": 894,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -538,48 +547,36 @@
 			}
 		},
 		{
+			"contents": "var Cookies = require('js-cookie');\n\n//Layout Configuration. http://stackoverflow.com/questions/28864942/meteor-use-2-different-layouts-ironrouter\nRouter.configure({\n    layoutTemplate: 'layout',\n    notFoundTemplate: 'notFound',\n});\n\n//redirect users from saasdemo.qlik.com to integration.qlik.com\nif(window.location.href.indexOf(\"saasdemo\") > -1) {\n    // var newURL = 'http://'+window.location.protocol + \"//\" + window.location.host + \"/\" + window.location.pathname;\n    window.location = \"http://integration.qlik.com\" + window.location.pathname;\n}\n\n//make sure certain path are for authenticated users only\nRouter.plugin('ensureSignedIn', {\n    // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']\n    except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']\n});\n\n// this hook will run on almost all routes\n// Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'useCaseSelection', 'documentation', 'login', 'signup', 'forgotPassword'] });\nRouter.onBeforeAction(mustBeSignedIn, { only: ['test'] });\n\nfunction mustBeSignedIn() {\n    var routeName = Router.current().route.getName();\n    console.log('mustBeSignedIn called hook for route: ', routeName);\n    var QlikUserProfile = Cookies.get('CSUser');\n    if(!QlikUserProfile) {\n        //if user is not logged in, redirect to Qliks login page, after it we can read the cookie.\n        //             // similar behavior as an HTTP redirect\n        console.log('The user tried to open: ' + routeName + ' but first ensure the users logs in at Qlik.com');\n        var uri = \"http://localhost:3000/\" + routeName;\n        var encodedReturnURI = encodeURIComponent(uri);\n        console.log('encodeURIComponent:', encodedReturnURI);\n        var QlikSSO = \"https://login.qlik.com/login.aspx?returnURL=\" + encodedReturnURI;\n        window.location.replace(QlikSSO); //\n    } else {\n        var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, hash] = QlikUserProfile.split('&');\n        const user = {\n            email: emailAddress,\n            profile: {\n                name: { first: firstName, last: lastName },\n            },\n            roles: ulcLevels.substr(ulcLevels.indexOf(\"=\") + 1)\n        };\n        try {\n            check(user, {\n                email: String,\n                password: String,\n                profile: { name: { first: String, last: String } },\n                roles: [String],\n            });\n        } catch(err) {\n            Meteor.Error('unable to create a user received from Qlik.com', 'Missing fields');\n        }\n        console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');\n        loginUser(user);\n    }\n    this.next();\n};\n\nfunction loginUser(user) {\n    console.log('login user ', user);\n    const userExists = Accounts.findUserByEmail(user.email);\n    console.log('found user: ', userExists);\n    var userId = {};\n    if(!userExists) {\n        //On the client, this function logs in as the newly created user on successful completion. On the server, it returns the newly created user id.\n        //https://docs.meteor.com/api/passwords.html#Accounts-createUser\n        user.password = user.email;\n        userId = Accounts.createUser(user);\n        Roles.addUsersToRoles(userId, user.roles, 'GLOBAL');\n    } else {\n        userId = userExists._id;\n    }\n}\n\n// //map paths to blaze templates\nRouter.route('/', function() {\n    this.layout('oneColumnCenteredLayout');\n    this.render('useCaseSelection');\n});\n\nRouter.route('/users');\nRouter.route('/userOverview');\nRouter.route('/homeAbout');\nRouter.route('/APILogs');\nRouter.route('/ApiLogsTable');\nRouter.route('/introduction');\nRouter.route('/videoOverview');\nRouter.route('/introductionExtended');\nRouter.route('/introductionSecurity');\nRouter.route('/SecurityDeepDive');\nRouter.route('/generation');\nRouter.route('/securityRules');\nRouter.route('/QMC');\nRouter.route('/webIntegration');\nRouter.route('/architecture');\nRouter.route('/sequenceDiagramOverview');\nRouter.route('/sequenceDiagramGeneration');\nRouter.route('/legal');\nRouter.route('/documentation');\nRouter.route('/templateOverview');\n\nRouter.route('/ppt_integration', {\n    template: 'ppt_integration',\n    layoutTemplate: 'SSOLayout'\n});\n\nRouter.route('/test', {\n    template: 'videoOverview',\n});\n\n// Single sing on integration route, this is the route you configure in Qlik sense proxy\nRouter.route('/SSO', {\n    template: 'SSO',\n    layoutTemplate: 'SSOLayout'\n});\n\n//users for the slide generator have their own virtual proxy redirect path\nRouter.route('/presentationsso', {\n    template: 'SSO',\n    layoutTemplate: 'SSOLayout'\n});\n\nRouter.route('/impress', {\n    template: 'impress',\n    layoutTemplate: 'SSOLayout'\n});\n\nRouter.route('/slideSorter', {\n    template: 'slideSorter',\n    layoutTemplate: 'SSOLayout'\n});\n\n\nRouter.route('/presentation', {\n    template: 'landingPage',\n    layoutTemplate: 'presentationLayout'\n});\n\nRouter.route('/slideGenerator', {\n    template: 'ppt_integrationMain',\n    layoutTemplate: 'presentationLayout'\n});\n\n//slide deck integration\nRouter.route('/integration', {\n    template: 'landingPage',\n    layoutTemplate: 'presentationLayout'\n});\nRouter.route('/slides', {\n    template: 'landingPage',\n    layoutTemplate: 'presentationLayout'\n});\n\n\nRouter.route('/useCaseSelection', function() {\n    this.layout('oneColumnCenteredLayout');\n    this.render('useCaseSelection');\n});\n\n\n\nRouter.route('/selfService', function() {\n    this.layout('regionLayout');\n    this.render('SSBINav', { to: 'nav' });\n    this.render('SSBIUsers', { to: 'aside' });\n    this.render('SSBISenseApp');\n});\n\n\n// Router.route('/signup');\n\n// Router.route('/register');\n// Router.route('/login');\n",
 			"file": "imports/ui/router.js",
+			"file_size": 5514,
+			"file_write_time": 131398611150806047,
 			"settings":
 			{
-				"buffer_size": 5209,
+				"buffer_size": 5873,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/impress/impress.css",
-			"settings":
-			{
-				"buffer_size": 15382,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
+			"contents": "import { Meteor } from 'meteor/meteor';\nimport { Customers, dummyCustomers, dummyCustomer } from '/imports/api/customers';\nimport { REST_Log } from '/imports/api/APILogs';\nimport { gitHubLinks } from '/imports/ui/UIHelpers';\n\n//import config for Qlik Sense QRS\nimport { senseConfig, _certs, authHeadersCertificate, authHeaders, certicate_communication_options } from '/imports/api/config.js';\nimport lodash from 'lodash';\n_ = lodash;\n\n/*\nWhen communicating with the QPS APIs, the URL is as follows:\nhttps://<QPS machine name>:4243/<path>\n\nEach proxy has its own session cookie, so you have to logout the users per proxy used.\n*/\n\nMeteor.methods({\n    currentlyLoggedInUser() {\n        // console.log(\"Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.\");\n        var call = {};\n        call.action = 'STEP 3: Server received request to create ticket'\n        call.request = 'Meteor server received a incoming method call from the browser. The meteor server will now look which user is currently logged in, and create a ticket for this ID, and add his group memberships.';\n        REST_Log(call, Meteor.userId());\n\n        //first find the customers that have a logged in users (mongo returns a complete document)\n        var customer = Customers.findOne({ generationUserId: Meteor.userId(), 'users.currentlyLoggedIn': true });\n        // console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + loggedInUser + ', the customer which contains the user that the user selected with the dropdown: ', customer);\n\n        //now we have the document, we can look in the array of users, to find the one that is logged in.\n        var user;\n        if (!customer) { //if no user is selected, just insert john as a dummy\n            // const error = 'You have not selected a user you want to simulate the Single Sign on with. For demo purposes we now selected John for you. You can also select your own user in step 4 of the SaaS demo';\n            var response = {};\n            // console.log('dummyCustomer :', dummyCustomer);\n            response.user = dummyCustomer.user;\n            response.customer = dummyCustomer;\n            // throw new Meteor.Warning('No user', error);\n        } else {\n            var user = _.find(customer.users, { 'currentlyLoggedIn': true });\n            var response = {};\n            response.user = user;\n            response.customer = customer;\n        }\n        // console.log('the response is: ', response);\n        return response;\n\n    },\n    getRedirectUrl(proxyRestUri, targetId, loggedInUser) {\n        var response = Meteor.call('currentlyLoggedInUser');\n        var customer = response.customer;\n        var user = response.user;\n\n        // console.log('UserID currently logged in in the demo platform: ' + loggedInUser + '. Meteor server side thinks the meteor.userId is ' + Meteor.userId() + '. We use this as the UDC name');\n        //Create a paspoort (ticket) request: user directory, user identity and attributes\n        var passport = {\n                'UserDirectory': Meteor.userId(), //Specify a dummy value to ensure userID's are unique E.g. \"Dummy\", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer\n                'UserId': user.name, //the current user that we are going to login with\n                'Attributes': [{ 'group': customer.name.toUpperCase() }, //attributes supply the group membership from the source system to Qlik Sense\n                    { 'group': user.country.toUpperCase() },\n                    { 'group': user.group.toUpperCase() }\n                ]\n            }\n            // console.log('Request ticket for this user passport\": ', passport);\n\n        //logging only\n        var call = {};\n        call.action = 'STEP 4: User and group information received from customer database, now we can request a ticket';\n        call.url = gitHubLinks.createpassport;\n        call.request = 'Request ticket for this user and his groups (an array of values which you can use in the security rules): \": ' + JSON.stringify(passport);\n        REST_Log(call, Meteor.userId());\n\n        return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());\n    },\n    loginUserForPresentation(proxyRestUri, targetId, userProperties) {\n        try {\n            check(userProperties.user, String);\n            check(userProperties.group, String);\n        } catch (err) {\n            throw new Meteor.Error('Failed to login into Qlik Sense via a ticket', 'Please go to the landing page and select your group. We could not request a ticket because the userId or groups (technical, generic) are not provided');\n        }\n\n        // console.log('loginUserForPresentation: ', userProperties.user);\n        var passport = {\n                'UserDirectory': userProperties.user, //Specify a dummy value to ensure userID's are unique E.g. \"Dummy\", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer\n                'UserId': userProperties.user, //the current user that we are going to login with\n                'Attributes': [\n                    { 'group': 'slideGenerator' }, //attributes supply the group membership from the source system to Qlik Sense\n                    { 'group': userProperties.group },\n                    { 'group': 'ITALY' } //make sure the row level demo works by passing this\n                ]\n            }\n            //logging only\n        var call = {};\n        call.url = gitHubLinks.createPasport;\n        call.action = 'Presentation user: Request ticket for the user that requested the slide generator. In this way we can store his bookmarks.';\n        call.request = 'We created a JSON object with the user and his groups. We now send this \"ticket\" to Qlik Sense. And we expect to receive a \"ticket number\" back, which we can append to the URL redirect. Note that we give each customer its own User Directory, so that users of different tenants are really separated';\n        call.response = passport;\n        REST_Log(call, Meteor.userId());\n\n        return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());\n    },\n    resetLoggedInUser() {\n        // console.log(\"***Method resetLoggedInUsers\");\n        // console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');\n\n        //reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.\n        Customers.find({ 'generationUserId': Meteor.userId() })\n            .forEach(function(customer) {\n                var updatedUsers = _.map(customer.users, function(user) {\n                    if (user) {\n                        user.currentlyLoggedIn = false;\n                    }\n\n                    //and just logout everybody in the user list                            \n                    logoutUser(Meteor.userId(), user.name);\n                    return user;\n                })\n\n                Customers.update(customer._id, {\n                    $set: { users: updatedUsers },\n                });\n\n            });\n        // logoutUser(Meteor.userId(), Meteor.userId()); //logout the user for the slide generator\n    },\n    logoutPresentationUser(UDC, name) {\n        logoutUser(UDC, name, Meteor.settings.public.IntegrationPresentationProxy);\n    },\n    simulateUserLogin(name) {\n        check(name, String);\n        Meteor.call('resetLoggedInUser');\n        // console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: generationUserId: ' + Meteor.userId() + ' & users.name:' + name);\n        var query = [\n            { 'generationUserId': Meteor.userId(), \"users.name\": name }, {\n                $set: {\n                    'users.$.currentlyLoggedIn': true\n                }\n            }\n        ];\n\n        Customers.update({ 'generationUserId': Meteor.userId(), \"users.name\": name }, {\n            $set: {\n                'users.$.currentlyLoggedIn': true\n            }\n        }, {}, function(error, numberAffectedDocuments) {\n            if (numberAffectedDocuments === 0) { //if nothing is updated, insert some dummy customers\n                // console.log('simulateUserLogin numberAffectedDocuments: ', numberAffectedDocuments);\n                //name does not yet exist in the customers created by the current demo user. So insert our dummy customers.numberAffectedDocuments\n                insertDummyCustomers(Meteor.userId());\n                Customers.update({ 'generationUserId': Meteor.userId(), \"users.name\": name }, {\n                    $set: {\n                        'users.$.currentlyLoggedIn': true\n                    }\n                });\n            }\n        })\n    }\n})\n\nMeteor.methods({\n    'createAndLoginUser' (user) {\n        console.log('qps: login user ' + user.profile.name);\n        try {\n            check(user, {\n                email: String,\n                password: String,\n                profile: { name: { first: String, last: String } },\n                roles: [String],\n            });\n        } catch (err) {\n            Meteor.Error('unable to create a user received from Qlik.com', 'Missing fields');\n        }\n        const userExists = Accounts.findUserByEmail(user.email);\n        console.log('found user: ',userExists);\n        var userId = {};\n        if (!userExists) {\n            //On the client, this function logs in as the newly created user on successful completion. On the server, it returns the newly created user id.\n            //https://docs.meteor.com/api/passwords.html#Accounts-createUser\n            user.password = user.email;\n            userId = Accounts.createUser(user);\n            Roles.addUsersToRoles(userId, user.roles, 'GLOBAL');\n        } else {\n            userId = userExists._id;\n        }\n        return LoginToken.createTokenForUser(userId);\n    }\n})\n\nfunction insertDummyCustomers(generationUserId) {\n    // console.log('insertDummyCustomers called for generationUserId: ', generationUserId);\n    _.each(dummyCustomers, function(customer) {\n        customer.generationUserId = generationUserId;\n        Customers.insert(customer);\n    })\n}\n\nexport function logoutUser(UDC, name, proxy) {\n    if (!proxy) {\n        proxy = senseConfig.virtualProxyClientUsage\n    } //use use the proxy for the dummy users from step 4\n    // console.log('******** QPS Functions: logout the current: ' + name + ' on proxy: ' + proxy);\n\n    if (name) {\n        // //console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTPs call: '); //, certicate_communication_options);\n        // //console.log('Meteor tries to logout the user on this URL: https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + senseConfig.UDC + '/' + name);\n        try {\n            const call = {};\n            call.action = 'Logout user: ' + name;\n            call.url = gitHubLinks.logoutUser;\n            call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + proxy + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey\n            call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })\n\n            REST_Log(call, UDC); //the UDC is the by definition the userId of meteor in our approach...\n            // console.log('The HTTP REQUEST to Sense QPS API:', call.request);\n            // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);\n\n        } catch (err) {\n            console.error(err);\n            throw new Meteor.Error('Logout user failed', err.message);\n        }\n    }\n};\n\n//based on Rikard Braathen's QlikAuth module\nexport function getRedirectURL(passport, proxyRestUri, targetId, generationUserId) {\n    check(passport, Object);\n    check(proxyRestUri, String);\n    check(targetId, String);\n    check(generationUserId, String);\n\n    // console.log('entered server side requestTicket module for user and passport', passport, proxyRestUri);\n    //see https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm\n\n    var ticketRequestBody = passport;\n    ticketRequestBody.TargetId = targetId;\n    // console.log('The passport for requesting a ticket: ', passport);\n\n    try {\n        var call = {};\n        call.action = 'STEP 5: Request ticket at endpoint received from Sense: ' + proxyRestUri;\n        call.request = proxyRestUri + 'ticket'; //we use the proxy rest uri which we got from the redirect from the proxy (the first bounce)\n        call.url = gitHubLinks.requestTicket;\n        call.response = HTTP.call('POST', call.request, {\n            'npmRequestOptions': certicate_communication_options,\n            headers: authHeaders,\n            params: { 'xrfkey': senseConfig.xrfkey },\n            data: passport //the user and group info for which we want to create a ticket\n        });\n        REST_Log(call, generationUserId);\n    } catch (err) {\n        console.error('REST call to request a ticket failed', err);\n        throw new Meteor.Error('Request ticket failed', err.message);\n    }\n\n    // console.log('The HTTP REQUEST to Sense QPS API:', call.request);\n    // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);\n    var ticketResponse = call.response.data;\n    call.action = 'STEP 6: Use response from our ticket request to create redirect url';\n    call.request = 'Use the redirect url we got back and the ticket string to make a redirect url for the client. Format: ' + ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket + '. JSON received: ' + ticketResponse\n    REST_Log(call);\n\n\n    //Build redirect URL for the client including the ticket\n    if (ticketResponse.TargetUri.indexOf(\"?\") > 0) {\n        redirectURI = ticketResponse.TargetUri + '&QlikTicket=' + ticketResponse.Ticket;\n    } else {\n        redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;\n    }\n\n    if (!redirectURI) { redirectURI = \"http://\" + senseConfig.host + \":\" + senseConfig.port + \"/\" + senseConfig.virtualProxyClientUsage + \"/\" + hub; }\n    // console.log('Meteor server side created this redirect url: ', redirectURI);\n    return redirectURI;\n}\n",
 			"file": "imports/api/server/QPSFunctions.js",
+			"file_size": 14888,
+			"file_write_time": 131398611911653088,
 			"settings":
 			{
-				"buffer_size": 14145,
+				"buffer_size": 14662,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/generation/OEMPartnerSide/users.html",
+			"file": ".meteor/packages",
 			"settings":
 			{
-				"buffer_size": 7926,
+				"buffer_size": 2004,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/SSO/client/SSO.js",
-			"settings":
-			{
-				"buffer_size": 5837,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -654,19 +651,27 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/public",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
 	[
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/users.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.css",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step2.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-production.json",
@@ -682,7 +687,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/useCaseSelection.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI/SSBI.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.css",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/slideSorter.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impressJSModifiedSource.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/slideSorter.html",
@@ -690,7 +694,6 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationMain.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationMain.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step3.html",
@@ -699,7 +702,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/config.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/publications.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.html",
@@ -707,7 +709,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/proxy.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development - example.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/users.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/landingPage.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/landingPage.js",
@@ -730,7 +731,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users/userOverview.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/steps.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/stylesheets/highLight.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/package.json",
@@ -801,6 +801,7 @@
 		"height": 102.0,
 		"where_history":
 		[
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\impress",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
@@ -914,6 +915,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"selectSlide",
+			"Request ticket for this user and his groups",
+			"One parameter is the REST endpoint URL to request a ticket.",
 			"/public/images",
 			"https://raw.githubusercontent.com/QHose/QRSMeteor/master",
 			"saasdemo",
@@ -1038,10 +1042,7 @@
 			"users",
 			"getApps",
 			"qsocks",
-			"APIIntroduction",
-			"Overview of the key APIs to be used by your SaaS platform",
-			"engine",
-			"high"
+			"APIIntroduction"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1187,7 +1188,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -1196,15 +1197,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2997,
+						"buffer_size": 2915,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1632,
-								1632
+								781,
+								781
 							]
 						],
 						"settings":
@@ -1216,7 +1217,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1120.0,
+						"translation.y": 247.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -1224,6 +1225,36 @@
 				},
 				{
 					"buffer": 1,
+					"file": "server/proxy.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 894,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								894,
+								894
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "imports/ui/impress/landingPage.js",
 					"semi_transient": false,
 					"settings":
@@ -1251,24 +1282,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "imports/ui/router.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5209,
+						"buffer_size": 5873,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1793,
-								1793
+								2528,
+								2528
 							]
 						],
 						"settings":
@@ -1280,41 +1311,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 826.0,
+						"translation.y": 1027.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "imports/ui/impress/impress.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15382,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								633,
-								633
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 129.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1323,15 +1323,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14145,
+						"buffer_size": 14662,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9658,
-								9658
+								9112,
+								10131
 							]
 						],
 						"settings":
@@ -1339,78 +1339,43 @@
 							"auto_complete": false,
 							"git_gutter_is_enabled": true,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 5723.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "imports/ui/generation/OEMPartnerSide/users.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7926,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4026,
-								4026
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2752.0,
+						"translation.y": 4850.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "imports/SSO/client/SSO.js",
+					"buffer": 5,
+					"file": ".meteor/packages",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5837,
+						"buffer_size": 2004,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5757,
-								5757
+								378,
+								378
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
-						"translation.x": -0.0,
-						"translation.y": 1026.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1418,7 +1383,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 46.0
+		"height": 39.0
 	},
 	"input":
 	{
@@ -1459,7 +1424,7 @@
 	"project": "qrs.sublime-project",
 	"replace":
 	{
-		"height": 120.0
+		"height": 74.0
 	},
 	"save_all_on_build": true,
 	"select_file":
