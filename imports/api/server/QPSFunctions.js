@@ -165,6 +165,7 @@ Meteor.methods({
             check(user, {
                 email: String,
                 password: String,
+                uid: String,
                 profile: { name: { first: String, last: String } },
                 roles: [String],
             });
@@ -178,7 +179,7 @@ Meteor.methods({
         if(!userExists) {
             //On the client, this function logs in as the newly created user on successful completion. On the server, it returns the newly created user id.
             //https://docs.meteor.com/api/passwords.html#Accounts-createUser
-            user.password = user.qtsession;
+            user.password = user.uid;
             userId = Accounts.createUser(user);
             Roles.addUsersToRoles(userId, user.roles, 'GLOBAL');
         } else {
