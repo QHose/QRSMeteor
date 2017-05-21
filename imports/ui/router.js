@@ -7,7 +7,7 @@ Router.configure({
 });
 
 //redirect users from saasdemo.qlik.com to integration.qlik.com
-if (window.location.href.indexOf("saasdemo") > -1) {
+if(window.location.href.indexOf("saasdemo") > -1) {
     // var newURL = 'http://'+window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
     window.location = "http://integration.qlik.com" + window.location.pathname;
 }
@@ -26,14 +26,14 @@ function mustBeSignedIn() {
     var routeName = Router.current().route.getName();
     console.log('mustBeSignedIn called hook for route: ', routeName);
     var QlikUserProfile = Cookies.get('CSUser');
-    if (!QlikUserProfile) {
+    if(!QlikUserProfile) {
         //if user is not logged in, redirect to Qliks login page, after it we can read the cookie.
         //             // similar behavior as an HTTP redirect
         console.log('The user tried to open: ' + routeName + ' but first ensure the users logs in at Qlik.com');
-        var uri = "http://localhost:3000/"+routeName;
+        var uri = "http://localhost:3000/" + routeName;
         var encodedReturnURI = encodeURIComponent(uri);
         console.log('encodeURIComponent:', encodedReturnURI);
-        var QlikSSO = "https://login.qlik.com/login.aspx?returnURL="+encodedReturnURI;
+        var QlikSSO = "https://login.qlik.com/login.aspx?returnURL=" + encodedReturnURI;
         window.location.replace(QlikSSO); //
     } else {
         var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, hash] = QlikUserProfile.split('&');
@@ -42,24 +42,17 @@ function mustBeSignedIn() {
             profile: {
                 name: { first: firstName, last: lastName },
             },
-            roles: ulcLevels,
+            roles: ulcLevels.substr(ulcLevels.indexOf("=") + 1)
         };
         console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
+        Meteor.call('createAndLoginUser', user, function(err, res) {
+            if(err) {
+                sAlert.error(err.message);
+            } else {
+                console.log(res);
+            }
 
-
-        // const user = {
-        //     email: 'TEST@MAIL.com',
-        //     profile: {
-        //         name: { first: 'DUMMY', last: 'lastName' },
-        //     },
-        //     roles: ['TESTGROUP'],
-        // };
-        try {
-            Meteor.call('createAndLoginUser', user);
-            this.next();
-        } catch (err) {
-            sAlert.error(err.message)
-        }
+        });
     }
     this.next();
 };
