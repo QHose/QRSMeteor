@@ -157,6 +157,31 @@ Meteor.methods({
     }
 })
 
+Meteor.methods({
+    'createAndLoginUser' (user) {
+        console.log('qps: login user ' + user.profile.name);
+        try {
+            check(user, {
+                email: String,
+                password: String,
+                profile: { name: { first: String, last: String } },
+                roles: [String],
+            });
+        } catch (err) {
+            Meteor.Error('unable to create a user received from Qlik.com', 'Missing fields');
+        }
+        const userExists = Accounts.findUserByEmail(user.email);
+
+        if (!userExists) {
+            const userId = Accounts.createUser(user);
+            Roles.addUsersToRoles(userId, user.roles, 'GLOBAL');
+        } else {
+            console.log('login the user serverSide');
+            Meteor.loginWithPassword(userId, userId);
+        }
+    }
+})
+
 function insertDummyCustomers(generationUserId) {
     // console.log('insertDummyCustomers called for generationUserId: ', generationUserId);
     _.each(dummyCustomers, function(customer) {
