@@ -5,7 +5,7 @@ Demo and site on [integration.qlik.com](http://integration.qlik.com)
 Also make sure you checkout the [slide generator](http://integration.qlik.com/slides), which explains SaaS integration using the Qlik Sense APIs.
 
 Watch [this video](https://youtu.be/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) to learn the concept of the SaaS automation demo.
-![alt tag](https://raw.githubusercontent.com/QHose/QRSMeteor/master/public/images/only generation explanation.gif)
+![alt tag](public/images/only generation explanation.gif)
 
 Watch [this playlist](https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) for a complete overview on Sense integration. The topics include security, web integration (QAP) and architecture.
 
@@ -28,7 +28,7 @@ This demo tries to show you the activities from Sense that you can automate in y
 The principle is very simple. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "free fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.
 
 
-![alt tag](https://raw.githubusercontent.com/QHose/QRSMeteor/master/public/images/simple intro to saas automation.gif)
+![alt tag](public/images/simple intro to saas automation.gif)
 
 You first have to enter some customers
 Select a template
