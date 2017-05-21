@@ -13,15 +13,17 @@ if(window.location.href.indexOf("saasdemo") > -1) {
 }
 
 // Load a authentication check handler, depending on which domain it runs.
-if(window.location.href.indexOf("Qlik.com") > -1) {
-    Router.onBeforeAction(mustBeSignedIn, { only: ['test'] });
-} else {
-    //     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
-    Router.plugin('ensureSignedIn', {
-        // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
-        except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
-    });
-}
+// if(window.location.href.indexOf("qlik.com") > -1) {
+    // Router.onBeforeAction(mustBeSignedIn, { only: ['test'] });
+        Router.onBeforeAction(mustBeSignedIn, { except: ['documentation'] });
+
+// } else {
+//     //     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
+//     Router.plugin('ensureSignedIn', {
+//         // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
+//         except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
+//     });
+// }
 
 function mustBeSignedIn() {
     var routeName = Router.current().route.getName();
