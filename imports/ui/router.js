@@ -15,7 +15,7 @@ if(window.location.href.indexOf("saasdemo") > -1) {
 //make sure certain path are for authenticated users only
 Router.plugin('ensureSignedIn', {
     // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
-    except: [undefined, 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
+    except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
 });
 
 // this hook will run on almost all routes

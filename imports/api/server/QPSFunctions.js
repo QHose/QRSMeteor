@@ -175,10 +175,10 @@ Meteor.methods({
 
         if (!userExists) {
             const userId = Accounts.createUser(user);
-            Roles.addUsersToRoles(userId, user.roles, 'GLOBAL');
+            Roles.addUsersToRoles(user.email, user.email, 'GLOBAL');
         } else {
             console.log('login the user serverSide');
-            Meteor.loginWithPassword(userId, userId);
+            Meteor.loginWithPassword(user.email, user.email);
         }
     }
 })
