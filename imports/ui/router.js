@@ -15,7 +15,7 @@ if(window.location.href.indexOf("saasdemo") > -1) {
 // Load a authentication check handler, depending on which domain it runs.
 // if(window.location.href.indexOf("qlik.com") > -1) {
     // Router.onBeforeAction(mustBeSignedIn, { only: ['test'] });
-        Router.onBeforeAction(mustBeSignedIn, { except: ['documentation'] });
+        Router.onBeforeAction(mustBeSignedIn, { except: [undefined,'documentation'] });
 
 // } else {
 //     //     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
@@ -62,7 +62,7 @@ function loginUser(user, routeName) {
     console.log('function login user', user, routeName);
     Meteor.call('createAndLoginUser', function(err, token) {
         if(err) {
-            SAlert.error('Failed to login via Qlik.com');
+            sAlert.error('Failed to login via Qlik.com');
         } else {
             window.location.replace(Meteor.absoluteUrl() + routeName + '?authToken=' + token);
         }
