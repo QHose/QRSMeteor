@@ -14,15 +14,15 @@ if(window.location.href.indexOf("saasdemo") > -1) {
 
 // Load a authentication check handler, depending on which domain it runs.
 // if(window.location.href.indexOf("qlik.com") > -1) {
-    // Router.onBeforeAction(mustBeSignedIn, { only: ['test'] });
-        Router.onBeforeAction(mustBeSignedIn, { except: [undefined,'documentation'] });
+Router.onBeforeAction(mustBeSignedIn, { only: ['test'] });
+// Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
 
 // } else {
 //     //     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
-//     Router.plugin('ensureSignedIn', {
-//         // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
-//         except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
-//     });
+    Router.plugin('ensureSignedIn', {
+        // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
+        except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
+    });
 // }
 
 function mustBeSignedIn() {
@@ -41,6 +41,7 @@ function mustBeSignedIn() {
     } else if(!Meteor.user()) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
         console.log('user is not yet logged in into meteor');
         var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, hash, uid] = QlikUserProfile.split('&');
+        // var user { "email": "martijn.biesbroek@qlik.com", "profile": { "name": { "first": "firstName=Martijn", "last": "lastName=Biesbroek" } }, "roles": "Base,Employee,CPEFEmployee", "hash": "fXjePiBk8e/a8x5nEoRgAt3QOnY=" };
         const user = {
             email: emailAddress.substr(emailAddress.indexOf("=") + 1),
             profile: {
