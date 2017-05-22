@@ -50,7 +50,7 @@ function mustBeSignedIn() {
                 },
             },
             roles: ulcLevels.substr(ulcLevels.indexOf("=") + 1),
-            accountID: accountID.substr(accountID.indexOf("=") + 1),
+            hash: hash.substr(hash.indexOf("=") + 1),
         };
         console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
         loginUser(user, routeName);
@@ -62,7 +62,8 @@ function loginUser(user, routeName) {
     console.log('function login user', user, routeName);
     Meteor.call('createAndLoginUser', function(err, token) {
         if(err) {
-            console.error('Failed to login via Qlik.com', err.message);
+            sAlert.error('Failed to login via Qlik.com', err);
+            Router.go('notFound');
         } else {
             window.location.replace(Meteor.absoluteUrl() + routeName + '?authToken=' + token);
         }
