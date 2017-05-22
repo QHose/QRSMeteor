@@ -16,14 +16,14 @@ if(window.location.href.indexOf("saasdemo") > -1) {
 // if(window.location.href.indexOf("qlik.com") > -1) {
 // Router.onBeforeAction(mustBeSignedIn, { only: ['test'] });
 
-Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
+// Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
 
 // } else {
 //     //     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
-// Router.plugin('ensureSignedIn', {
-//     // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
-//     except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
-// });
+Router.plugin('ensureSignedIn', {
+    // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
+    except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
+});
 // }
 
 function mustBeSignedIn() {

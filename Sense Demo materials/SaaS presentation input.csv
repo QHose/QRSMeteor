@@ -788,15 +788,11 @@ or
 "Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","First load level 1, 2, 3 data from the CSV. Each level also contains the resource for which it is relevant",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
 LOAD 
- RowNo() as Row,
- RecNo() as CSVRowNo, //use this as sort otherwise QRS API gets wrong sheets (if sheets occur twice)
- [Level 1],
- [Level 2],
- [Level 3],
- [Level 4],
- trim(SubField(Resources, ',')) as [Partial Workshop]
- FROM [lib://Import demo (qlikdemosaas_qlik)/SaaS presentation input.csv]
-(txt, utf8, embedded labels, delimiter is ',', msq);
+ [Level 1], //topic
+ [Level 2], //Slide
+ [Level 3], //bullet, image, video, html
+ [Workshop]
+ FROM [lib://Import demo/input.csv]
 ```
 ",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","Create the workshops based on a table that defines the *parent child relationships*",,"","","","","         0","0","What is this slide generator?",
@@ -1810,6 +1806,7 @@ document.addEventListener('click', function(e) {
 "Architecture","Architecture example 6: use the Qlik Sense server to host your mashup","First a ""selection page"" is presented. The selected App Id is stored in the HTTP session.",,"","","","","         0","0","PreSales",
 "Architecture","Architecture example 6: use the Qlik Sense server to host your mashup","Based on the selection, a specific mashup is loaded.",,"","","","","         0","0","PreSales",
 "Architecture","Qlik Sense integration using OAUTH","architecture - single sing on using OAUTH.png",,,,,,,,,
+"Architecture","Qlik Sense system requirements","[see the Qlik help](https://help.qlik.com/en-US/sense/3.2/Content/Introduction/system-requirements.htm)",,,,,,,,,
 "Data integration","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","data - create qvd.png",,"","","","","         0","0","PreSales",
