@@ -160,6 +160,8 @@ Meteor.methods({
 
 Meteor.methods({
     'createAndLoginUser' (user) {
+        console.log('method createAndLoginUser: login user ' + user);
+
         try {
             check(user, {
                 email: String,
@@ -167,8 +169,7 @@ Meteor.methods({
                 hash: String,
                 profile: { name: { first: String, last: String } },
                 roles: [String],
-            });        
-            console.log('qps: login user ' + user.profile.name.first);
+            });
         } catch(err) {
             throw new Meteor.Error("Missing Qlik.com user data",
                 "The user misses important information from its Qlik.com account");
