@@ -170,8 +170,11 @@ Meteor.methods({
                 roles: [String],
             });
         } catch(err) {
-            throw new Meteor.Error("Missing Qlik.com user data",
+            // throw new Meteor.Error("Missing Qlik.com user data",
+            //     "The user misses important information from its Qlik.com account");
+                        console.log("Missing Qlik.com user data,"+
                 "The user misses important information from its Qlik.com account");
+
         }
         const userExists = Accounts.findUserByEmail(user.email);
         console.log('found user: ', userExists);

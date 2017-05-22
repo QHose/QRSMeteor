@@ -45,8 +45,8 @@ function mustBeSignedIn() {
             email: emailAddress.substr(emailAddress.indexOf("=") + 1),
             profile: {
                 name: {
-                    first: firstName,
-                    last: lastName
+                    first: firstName.substr(firstName.indexOf("=") + 1),
+                    last: lastName.substr(lastName.indexOf("=") + 1),
                 },
             },
             roles: ulcLevels.substr(ulcLevels.indexOf("=") + 1),
