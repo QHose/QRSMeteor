@@ -165,7 +165,6 @@ Meteor.methods({
         try {
             check(user, {
                 email: String,
-                password: String,
                 hash: String,
                 profile: { name: { first: String, last: String } },
                 roles: [String],
