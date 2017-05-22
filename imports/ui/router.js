@@ -62,7 +62,7 @@ function loginUser(user, routeName) {
     console.log('function login user', user, routeName);
     Meteor.call('createAndLoginUser', user, function(err, token) {
         if(err) {
-            sAlert.error('Failed to login via Qlik.com', err);
+            sAlert.error('Failed to login via Qlik.com', err.message);
             console.error(err);
             Router.go('notFound');
         } else {
