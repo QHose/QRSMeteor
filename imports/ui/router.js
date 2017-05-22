@@ -56,7 +56,7 @@ function mustBeSignedIn() {
                     last: lastName.substr(lastName.indexOf("=") + 1),
                 },
             },
-            roles: JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]");,
+            roles: JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]"),
             password: hash.substr(hash.indexOf("=") + 1),
         };
         console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
