@@ -39,7 +39,7 @@ function mustBeSignedIn() {
         var QlikSSO = "https://login.qlik.com/login.aspx?returnURL=" + encodedReturnURI;
         console.log(QlikSSO);
         window.location.replace(QlikSSO); //
-    if(1 == 2) {} else if(!Meteor.user()) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
+    } else if(!Meteor.user()) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
         console.log('user is not yet logged in into meteor');
         var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, hash, uid] = QlikUserProfile.split('&');
         var user = {
@@ -56,19 +56,19 @@ function mustBeSignedIn() {
                     last: lastName.substr(lastName.indexOf("=") + 1),
                 },
             },
-            roles: JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]");,
+            roles: "", //SON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]");,
             hash: hash.substr(hash.indexOf("=") + 1),
         };
         console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
-        Meteor.loginWithPassword(user.email, user.hash, function(err, res){//
-                if(err){
-                    console.error(err);
-                    user.password = user.hash;
-                    Accounts.createUser(user);
-                } else{
-                    console.log(res);
-                }
-            });
+        Meteor.loginWithPassword(user.email, user.hash, function(err, res) { //
+            if(err) {
+                console.error(err);
+                user.password = user.hash;
+                Accounts.createUser(user);
+            } else {
+                console.log(res);
+            }
+        });
         // loginUser(user, routeName);
     }
     this.next();
@@ -83,10 +83,10 @@ function loginUser(user, routeName) {
             Router.go('notFound');
         } else {
             console.log('user created in our local mongoDB');
-            Meteor.loginWithPassword(userId, user.hash, function(err, res){
-                if(err){
+            Meteor.loginWithPassword(userId, user.hash, function(err, res) {
+                if(err) {
                     console.error(err);
-                } else{
+                } else {
                     console.log(res);
                 }
             });
