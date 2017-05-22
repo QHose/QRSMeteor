@@ -27,10 +27,17 @@ Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
 // }
 
 function mustBeSignedIn() {
+     // var user = {
+        //     email: "martijn.biesbroedmkjlkjljkljkfasddffk@qlik.com",
+        //     "profile": { "name": { "first": "firstName=Martijn", "last": "lastName=Biesbroek" } },
+        //     roles: ["test"], // Array.from("Base,Employee,CPEFEmployee"),
+        //     password: "test"
+        // };
+        
     var routeName = Router.current().route.getName();
     console.log('mustBeSignedIn called hook for route: ', routeName);
     var QlikUserProfile = Cookies.get('CSUser'); //only availalbe on Qlik.com domains
-    // console.log('QlikUserProfile: ', QlikUserProfile);
+    console.log('QlikUserProfile: ', QlikUserProfile);
     if(!QlikUserProfile) {
         //if user is not logged in, redirect to Qliks login page, after it we can read the cookie.
         var uri = Meteor.absoluteUrl() + routeName;
@@ -41,13 +48,8 @@ function mustBeSignedIn() {
         window.location.replace(QlikSSO); //
     } else if(!Meteor.user()) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
         console.log('user is not yet logged in into meteor');
-        // var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, hash, uid] = QlikUserProfile.split('&');
-        // var user = {
-        //     email: "martijn.biesbroedmkjlkjljkljkfasddffk@qlik.com",
-        //     "profile": { "name": { "first": "firstName=Martijn", "last": "lastName=Biesbroek" } },
-        //     roles: ["test"], // Array.from("Base,Employee,CPEFEmployee"),
-        //     password: "test"
-        // };
+        var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, hash, uid] = QlikUserProfile.split('&');
+       
         const user = {
             email: emailAddress.substr(emailAddress.indexOf("=") + 1),
             profile: {
