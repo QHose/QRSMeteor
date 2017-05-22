@@ -159,37 +159,24 @@ Meteor.methods({
 })
 
 Meteor.methods({
-    'createAndLoginUser' (user) {
-        console.log('method createAndLoginUser: login user ' + JSON.stringify(user));
-
+    'resetPassword2' (user) {
         try {
-            check(user, {
-                email: String,
-                hash: String,
-                profile: { name: { first: String, last: String } },
-                roles: [String],
-            });
+            console.log('reset the password of the user before logging him in');
+            check(user.email, String);
+            check(user.password, String);
         } catch(err) {
-            // throw new Meteor.Error("Missing Qlik.com user data",
-            //     "The user misses important information from its Qlik.com account");
-                        console.log("Missing Qlik.com user data,"+
+            throw new Meteor.Error("Missing Qlik.com user data",
                 "The user misses important information from its Qlik.com account");
         }
         const userExists = Accounts.findUserByEmail(user.email);
-        var userId = {};
-        if(!userExists) {
-            console.log('users email did not exist in mongo');
-            //On the client, this function logs in as the newly created user on successful completion. On the server, it returns the newly created user id.
-            //https://docs.meteor.com/api/passwords.html#Accounts-createUser
-            userId = Accounts.createUser(user);
-            Accounts.setPassword(userId, user.hash);
-            Roles.addUsersToRoles(userId, user.roles, 'GLOBAL');
-        } else {
+        if(userExists) {
             console.log('########### found user, now reset his password: ', userExists);
-            userId = userExists._id;
-            Accounts.setPassword(userId, user.hash);
+            var userId = userExists._id;
+            Accounts.setPassword(userId, user.password);
+        } else {
+            var userId = Accounts.createUser(user);
+            Roles.addUsersToRoles(userId, user.roles, 'GLOBAL');
         }
-        return userId;
     }
 })
 
