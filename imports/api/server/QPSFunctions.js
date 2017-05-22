@@ -174,21 +174,22 @@ Meteor.methods({
             //     "The user misses important information from its Qlik.com account");
                         console.log("Missing Qlik.com user data,"+
                 "The user misses important information from its Qlik.com account");
-
         }
         const userExists = Accounts.findUserByEmail(user.email);
-        console.log('found user: ', userExists);
         var userId = {};
         if(!userExists) {
+            console.log('users email did not exist in mongo');
             //On the client, this function logs in as the newly created user on successful completion. On the server, it returns the newly created user id.
             //https://docs.meteor.com/api/passwords.html#Accounts-createUser
-            user.password = user.hash;
             userId = Accounts.createUser(user);
+            Accounts.setPassword(userId, user.hash);
             Roles.addUsersToRoles(userId, user.roles, 'GLOBAL');
         } else {
+            console.log('########### found user, now reset his password: ', userExists);
             userId = userExists._id;
+            Accounts.setPassword(userId, user.hash);
         }
-        return LoginToken.createTokenForUser(userId);
+        return userId;
     }
 })
 

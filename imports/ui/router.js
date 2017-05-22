@@ -14,20 +14,21 @@ if(window.location.href.indexOf("saasdemo") > -1) {
 
 // Load a authentication check handler, depending on which domain it runs.
 // if(window.location.href.indexOf("qlik.com") > -1) {
-Router.onBeforeAction(mustBeSignedIn, { only: ['test'] });
-// Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
+// Router.onBeforeAction(mustBeSignedIn, { only: ['test'] });
+
+Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
 
 // } else {
 //     //     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
-    Router.plugin('ensureSignedIn', {
-        // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
-        except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
-    });
+// Router.plugin('ensureSignedIn', {
+//     // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
+//     except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
+// });
 // }
 
 function mustBeSignedIn() {
     var routeName = Router.current().route.getName();
-    // console.log('mustBeSignedIn called hook for route: ', routeName);
+    console.log('mustBeSignedIn called hook for route: ', routeName);
     var QlikUserProfile = Cookies.get('CSUser'); //only availalbe on Qlik.com domains
     console.log('QlikUserProfile: ', QlikUserProfile);
     if(!QlikUserProfile) {
@@ -38,10 +39,15 @@ function mustBeSignedIn() {
         var QlikSSO = "https://login.qlik.com/login.aspx?returnURL=" + encodedReturnURI;
         console.log(QlikSSO);
         window.location.replace(QlikSSO); //
-    } else if(!Meteor.user()) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
+    if(1 == 2) {} else if(!Meteor.user()) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
         console.log('user is not yet logged in into meteor');
         var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, hash, uid] = QlikUserProfile.split('&');
-        // var user { "email": "martijn.biesbroek@qlik.com", "profile": { "name": { "first": "firstName=Martijn", "last": "lastName=Biesbroek" } }, "roles": "Base,Employee,CPEFEmployee", "hash": "fXjePiBk8e/a8x5nEoRgAt3QOnY=" };
+        var user = {
+            email: "martijn.biesbroedmkjlkjljkljkfasddffk@qlik.com",
+            // "profile": { "name": { "first": "firstName=Martijn", "last": "lastName=Biesbroek" } },
+            roles: "test", // Array.from("Base,Employee,CPEFEmployee"),
+            hash: "test"
+        };
         const user = {
             email: emailAddress.substr(emailAddress.indexOf("=") + 1),
             profile: {
@@ -50,25 +56,40 @@ function mustBeSignedIn() {
                     last: lastName.substr(lastName.indexOf("=") + 1),
                 },
             },
-            roles: ulcLevels.substr(ulcLevels.indexOf("=") + 1),
+            roles: JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]");,
             hash: hash.substr(hash.indexOf("=") + 1),
         };
         console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
-        loginUser(user, routeName);
+        Meteor.loginWithPassword(user.email, user.hash, function(err, res){//
+                if(err){
+                    console.error(err);
+                    user.password = user.hash;
+                    Accounts.createUser(user);
+                } else{
+                    console.log(res);
+                }
+            });
+        // loginUser(user, routeName);
     }
     this.next();
 };
 
 function loginUser(user, routeName) {
     console.log('function login user', user, routeName);
-    Meteor.call('createAndLoginUser', user, function(err, token) {
+    Meteor.call('createAndLoginUser', user, function(err, userId) {
         if(err) {
             sAlert.error('Failed to login via Qlik.com', err.message);
             console.error(err);
             Router.go('notFound');
         } else {
-            console.log('received token');
-            window.location.replace(Meteor.absoluteUrl() + routeName + '?authToken=' + token);
+            console.log('user created in our local mongoDB');
+            Meteor.loginWithPassword(userId, user.hash, function(err, res){
+                if(err){
+                    console.error(err);
+                } else{
+                    console.log(res);
+                }
+            });
         }
     });
 }

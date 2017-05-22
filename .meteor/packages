@@ -15,7 +15,6 @@ accounts-google@1.1.2
 accounts-facebook@1.1.1
 accounts-twitter@1.2.1
 accounts-github@1.2.1
-dispatch:login-token
 jonperl:accounts-linkedin
 service-configuration@1.0.11
 useraccounts:iron-routing
