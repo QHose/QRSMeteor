@@ -77,6 +77,7 @@ Router.route('/', function() {
 });
 
 Router.route('/users');
+Router.route('/notFound');
 Router.route('/userOverview');
 Router.route('/homeAbout');
 Router.route('/APILogs');
