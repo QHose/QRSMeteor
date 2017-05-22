@@ -63,8 +63,10 @@ function loginUser(user, routeName) {
     Meteor.call('createAndLoginUser', user, function(err, token) {
         if(err) {
             sAlert.error('Failed to login via Qlik.com', err);
+            console.error(err);
             Router.go('notFound');
         } else {
+            console.log('received token');
             window.location.replace(Meteor.absoluteUrl() + routeName + '?authToken=' + token);
         }
     });
