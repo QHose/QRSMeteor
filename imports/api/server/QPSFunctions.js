@@ -160,7 +160,7 @@ Meteor.methods({
 
 Meteor.methods({
     'createAndLoginUser' (user) {
-        console.log('method createAndLoginUser: login user ' + JSON.stringify(user););
+        console.log('method createAndLoginUser: login user ' + JSON.stringify(user));
 
         try {
             check(user, {
