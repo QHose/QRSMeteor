@@ -78,7 +78,7 @@ function mustBeSignedInQlik() {
     this.next();
 };
 
-function loginQlik() {
+function loginQlik(user) {
     Tracker.autorun(() => { //rerun this function anytime something happens with the login state
         var QlikUserProfile = Cookies.get('CSUser'); //only availalbe on Qlik.com domains
         console.log('QlikUserProfile: ', QlikUserProfile);
