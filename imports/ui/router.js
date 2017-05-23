@@ -67,7 +67,7 @@ function loginDEV(user) {
 function mustBeSignedInQlik() {
     var routeName = Router.current().route.getName();
     console.log('mustBeSignedIn called hook for route: ', routeName);
-    Meteor.setTimeout(loginQlik, 1500); //give the browser some time to log the user in...
+    Meteor.setTimeout(loginQlik, 3000); //give the browser some time to log the user in...
     this.next();
 };
 
@@ -159,7 +159,7 @@ Router.route('/ppt_integration', {
 });
 
 Router.route('/test', {
-    template: 'videoOverview',
+    template: 'generation',
 });
 
 // Single sing on integration route, this is the route you configure in Qlik sense proxy
