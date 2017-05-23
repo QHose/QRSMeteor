@@ -65,20 +65,13 @@ function loginDEV(user) {
 }
 
 function mustBeSignedInQlik() {
-    // var user = {
-    //     email: "martijn.biesbroedmkjlkjljkljkfasddffk@qlik.com",
-    //     "profile": { "name": { "first": "firstName=Martijn", "last": "lastName=Biesbroek" } },
-    //     roles: ["test"], // Array.from("Base,Employee,CPEFEmployee"),
-    //     password: "test"
-    // };
-
     var routeName = Router.current().route.getName();
     console.log('mustBeSignedIn called hook for route: ', routeName);
-    Meteor.setTimeout(loginQlik.bind(null, user), 500); //give the browser some time to log the user in...
+    Meteor.setTimeout(loginQlik, 500); //give the browser some time to log the user in...
     this.next();
 };
 
-function loginQlik(user) {
+function loginQlik() {
     Tracker.autorun(() => { //rerun this function anytime something happens with the login state
         var QlikUserProfile = Cookies.get('CSUser'); //only availalbe on Qlik.com domains
         console.log('QlikUserProfile: ', QlikUserProfile);
