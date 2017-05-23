@@ -161,7 +161,7 @@ Meteor.methods({
 Meteor.methods({
     'resetPassword2' (user) {
         try {
-            console.log('reset the password of the user before logging him in');
+            // console.log('reset the password of the user before logging him in');
             check(user.email, String);
             check(user.password, String);
         } catch(err) {
@@ -171,7 +171,7 @@ Meteor.methods({
         const userExists = Accounts.findUserByEmail(user.email);
         var userId = {};
         if(userExists) {
-            console.log('########### found user, now reset his password: ', userExists);
+            // console.log('########### found user, now reset his password: ', userExists);
             userId = userExists._id;
             Accounts.setPassword(userId, user.password);
         } else {

@@ -82,12 +82,12 @@ function mustBeSignedIn() {
 
         const user = {
             email: emailAddress.substr(emailAddress.indexOf("=") + 1),
-            // profile: {
-            //     name: {
-            //         first: firstName.substr(firstName.indexOf("=") + 1),
-            //         last: lastName.substr(lastName.indexOf("=") + 1),
-            //     },
-            // },
+            profile: {
+                name: {
+                    first: firstName.substr(firstName.indexOf("=") + 1),
+                    last: lastName.substr(lastName.indexOf("=") + 1),
+                },
+            },
             // roles: "", //JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]"),
             password: emailAddress.substr(emailAddress.indexOf("=") + 1),
         };
