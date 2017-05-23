@@ -65,14 +65,14 @@ function loginDEV(user) {
 }
 
 function mustBeSignedInQlik() {
-    var routeName = Router.current().route.getName();
-    console.log('mustBeSignedIn called hook for route: ', routeName);
     Meteor.setTimeout(loginQlik, 3000); //give the browser some time to log the user in...
     this.next();
 };
 
 function loginQlik() {
     Tracker.autorun(() => { //rerun this function anytime something happens with the login state
+        var routeName = Router.current().route.getName();
+        console.log('mustBeSignedIn called hook for route: ', routeName);
         var QlikUserProfile = Cookies.get('CSUser'); //only availalbe on Qlik.com domains
         console.log('QlikUserProfile: ', QlikUserProfile);
 
