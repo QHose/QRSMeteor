@@ -77,7 +77,8 @@ function mustBeSignedIn() {
         window.location.replace(QlikSSO); //
     } else if(!Meteor.user()) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
         console.log('user is not yet logged in into meteor');
-        var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, hash, uid] = QlikUserProfile.split('&');
+// QlikUserProfile:  username=bieshosetest&firstName=test&lastName=test&emailAddress=bieshose@gmail.com&contactID=&accountID=&ulcLevels=Base&country=Angola&hash=xS9zTEOE7vSgTVXycUr99UFLc78=
+        var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels,country, hash] = QlikUserProfile.split('&');
 
         const user = {
             email: emailAddress.substr(emailAddress.indexOf("=") + 1),
