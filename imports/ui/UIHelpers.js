@@ -35,7 +35,7 @@
         // });
 
         Template.registerHelper('URL_Youtube_howToDemo', function() {
-            return 'https://www.youtube.com/watch?v=1PjcTFnC4Mo';
+            return 'https://www.youtube.com/embed/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';
         });
         Template.registerHelper('URL_Youtube_quickIntro', function() {
             return '';
