@@ -20,7 +20,7 @@ Template.loginDimmer.onRendered(function() {
  * detect IE
  * returns version of IE or false, if browser is not Internet Explorer
  */
-function isIEorEDGE() {
+export function isIEorEDGE() {
     var ua = window.navigator.userAgent;
 
     var msie = ua.indexOf('MSIE ');
