@@ -65,60 +65,67 @@ function loginDEV(user) {
 }
 
 function mustBeSignedInQlik() {
-    Meteor.setTimeout(loginQlik, 3000); //give the browser some time to log the user in...
+    // "Logout"-Hook: Manual implementation, wait a bit to prevent multiple page loads, because the database needs to be update
+    Tracker.autorun(function() {
+        if(!Meteor.userId()) {
+            Meteor.setTimeout(loginQlik, 1000); //give the browser some time to log the user in...
+        }
+    });
+
     this.next();
+
+
 };
 
 function loginQlik() {
-    Tracker.autorun(() => { //rerun this function anytime something happens with the login state
-        var routeName = Router.current().route.getName();
-        console.log('mustBeSignedIn called hook for route: ', routeName);
-        var QlikUserProfile = Cookies.get('CSUser'); //only availalbe on Qlik.com domains
-        var loggedInUser = Meteor.userId();
-        console.log('QlikUserProfile: ', QlikUserProfile);
+    //rerun this function anytime something happens with the login state
+    var routeName = Router.current().route.getName();
+    console.log('mustBeSignedIn called hook for route: ', routeName);
+    var QlikUserProfile = Cookies.get('CSUser'); //only availalbe on Qlik.com domains
+    var loggedInUser = Meteor.userId();
+    console.log('QlikUserProfile: ', QlikUserProfile);
 
-        if(!QlikUserProfile) {
-            //if user is not logged in, redirect to Qliks login page, after it we can read the cookie.
-            var uri = Meteor.absoluteUrl() + routeName;
-            console.log('The user tried to open: ' + uri);
-            var encodedReturnURI = encodeURIComponent(uri);
-            var QlikSSO = "https://login.qlik.com/login.aspx?returnURL=" + encodedReturnURI;
-            console.log('User has not Qlik.com cookie, so send him to: ', QlikSSO);
-            window.location.replace(QlikSSO);
-        } else if(!loggedInUser) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
-            console.log('user is not yet logged in into meteor');
-            // QlikUserProfile:  username=bieshosetest&firstName=test&lastName=test&emailAddress=bieshose@gmail.com&contactID=&accountID=&ulcLevels=Base&country=Angola&hash=xS9zTEOE7vSgTVXycUr99UFLc78=
-            var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, country, hash] = QlikUserProfile.split('&');
+    if(!QlikUserProfile) {
+        //if user is not logged in, redirect to Qliks login page, after it we can read the cookie.
+        var uri = Meteor.absoluteUrl() + routeName;
+        console.log('The user tried to open: ' + uri);
+        var encodedReturnURI = encodeURIComponent(uri);
+        var QlikSSO = "https://login.qlik.com/login.aspx?returnURL=" + encodedReturnURI;
+        console.log('User has not Qlik.com cookie, so send him to: ', QlikSSO);
+        window.location.replace(QlikSSO);
+    } else if(!loggedInUser) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
+        console.log('user is not yet logged in into meteor');
+        // QlikUserProfile:  username=bieshosetest&firstName=test&lastName=test&emailAddress=bieshose@gmail.com&contactID=&accountID=&ulcLevels=Base&country=Angola&hash=xS9zTEOE7vSgTVXycUr99UFLc78=
+        var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, country, hash] = QlikUserProfile.split('&');
 
-            const user = {
-                email: emailAddress.substr(emailAddress.indexOf("=") + 1),
-                profile: {
-                    name: {
-                        first: firstName.substr(firstName.indexOf("=") + 1),
-                        last: lastName.substr(lastName.indexOf("=") + 1),
-                        contactID: contactID ? contactID.substr(contactID.indexOf("=") + 1) : '',
-                        accountID: accountID ? accountID.substr(accountID.indexOf("=") + 1) : '',
-                    },
+        const user = {
+            email: emailAddress.substr(emailAddress.indexOf("=") + 1),
+            profile: {
+                name: {
+                    first: firstName.substr(firstName.indexOf("=") + 1),
+                    last: lastName.substr(lastName.indexOf("=") + 1),
+                    contactID: contactID ? contactID.substr(contactID.indexOf("=") + 1) : '',
+                    accountID: accountID ? accountID.substr(accountID.indexOf("=") + 1) : '',
                 },
-                // roles: "", //JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]"),
-                password: emailAddress.substr(emailAddress.indexOf("=") + 1), //no need for a real password mechanism. People just need a login to have their own demo space
-            };
-            console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
-            Meteor.call('resetPasswordOrCreateUser', user, function(err, res) {
-                if(err) {
-                    console.error(err);
-                } else {
-                    Meteor.loginWithPassword(user.email, user.password, function(err, res) { //
-                        if(err) {
-                            console.error(err);
-                        } else {
-                            console.log('user successfully logged in', Meteor.userId());
-                        }
-                    });
-                }
-            })
-        }
-    })
+            },
+            // roles: "", //JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]"),
+            password: emailAddress.substr(emailAddress.indexOf("=") + 1), //no need for a real password mechanism. People just need a login to have their own demo space
+        };
+        console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
+        Meteor.call('resetPasswordOrCreateUser', user, function(err, res) {
+            if(err) {
+                console.error(err);
+            } else {
+                Meteor.loginWithPassword(user.email, user.password, function(err, res) { //
+                    if(err) {
+                        console.error(err);
+                    } else {
+                        console.log('user successfully logged in', Meteor.userId());
+                    }
+                });
+            }
+        })
+    }
 }
 
 // //map paths to blaze templates
