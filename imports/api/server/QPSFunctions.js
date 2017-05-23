@@ -176,7 +176,7 @@ Meteor.methods({
             Accounts.setPassword(userId, user.password);
         } else {
             userId = Accounts.createUser(user);
-            //Roles.addUsersToRoles(userId, user.roles, 'GLOBAL');
+            // Roles.addUsersToRoles(userId, user.roles, 'GLOBAL');
         }
         return userId;
     }

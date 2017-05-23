@@ -30,7 +30,7 @@ function mustBeSignedInDEV() {
     var user = {
         email: "@qlik.com",
         "profile": { "name": { "first": "firstName=Martijn", "last": "lastName=Biesbroek" } },
-        roles: ["test"], // Array.from("Base,Employee,CPEFEmployee"),
+        roles: ["Base"], // Array.from("Base,Employee,CPEFEmployee"),
         password: "test"
     };
 
@@ -82,14 +82,14 @@ function mustBeSignedIn() {
 
         const user = {
             email: emailAddress.substr(emailAddress.indexOf("=") + 1),
-            profile: {
-                name: {
-                    first: firstName.substr(firstName.indexOf("=") + 1),
-                    last: lastName.substr(lastName.indexOf("=") + 1),
-                },
-            },
-            roles: "", //JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]"),
-            password: hash.substr(hash.indexOf("=") + 1),
+            // profile: {
+            //     name: {
+            //         first: firstName.substr(firstName.indexOf("=") + 1),
+            //         last: lastName.substr(lastName.indexOf("=") + 1),
+            //     },
+            // },
+            // roles: "", //JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]"),
+            password: emailAddress.substr(emailAddress.indexOf("=") + 1),
         };
         console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
         Meteor.call('resetPassword2', user, function(err, res) {
