@@ -12,7 +12,7 @@
                 Documentation
             </a> {{#if currentUser}}
             <div class="ui right floated item">
-                <a href="#" class="logout item">Logout</a> {{#if isInRole 'admin' }}
+               {{#if isInRole 'admin' }}
                 <a class="item" href="{{pathFor 'userOverview'}}">User list</a> {{/if}}
             </div>
             {{/if}}

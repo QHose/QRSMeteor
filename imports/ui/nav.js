@@ -11,14 +11,6 @@ Template.nav.helpers({
     },
 });
 
-
-Template.nav.events({
-    'click .logout': function(event) {
-        event.preventDefault();
-        Meteor.logout();
-    }
-});
-
 Template.yourSaasPlatformMenu.onRendered(function() {
     this.$('.ui.dropdown')
         .dropdown()

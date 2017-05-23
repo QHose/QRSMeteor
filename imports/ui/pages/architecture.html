@@ -31,12 +31,13 @@
     </p>
     <div class="ui divider"></div>
     <h4>Data integration</h4>
-        <img class="ui small left floated image" data-action="zoom" src="images/dataIntegrationIntro.png">
+    <img class="ui small left floated image" data-action="zoom" src="images/dataIntegrationIntro.png">
 
     <p>A powerful <a href="http://www.qlik.com/us/products/data-sources">data integration capability</a> for cleansing, transforming, and unifying multiple, disparate data sources for analysis. A robust data integration layer creates a unified view of information from many different sources, without requiring external tools or data repositories.
     </p>
-<!--     <img class="ui medium centered image" data-action="zoom" src="images/dataIntegrationIntro.png">
- -->    <p>
+    <!--     <img class="ui medium centered image" data-action="zoom" src="images/dataIntegrationIntro.png">
+ -->
+    <p>
         In the demo we’ve assumed you have a database per customer instance and you also have a master database which contains the customers, the database connections, user rights and possibly customer specific custom tables and fields.
     </p>
     <div class="ui divider"></div>
@@ -85,7 +86,11 @@
         </div>
     </div>
     <div class="ui divider"></div>
-    {{> introVideoArchitecture}}
+    <div class="ui three column centered grid">
+        <DIV class="column"> {{> introVideoArchitecture}}
+        </DIV>
+        <!-- <DIV class="column">{{> videoWebExtended}}</DIV> -->
+    </DIV>
     <!-- <div class="ui divider"></div>
 <h4>Qlik Sense Topology</h4>
     <p> In the picture below you will find the key components of Qlik Sense.
@@ -96,7 +101,7 @@
     <h4 class="ui header">Integrated architecture (3M)</h4>
     <div class="ui embed" data-url="{{URL_Youtube_architecture_introduction}}" data-placeholder="/images/integratedArchitectureVideo.png"></div>
     <div class="item">
-        <div class="content">
+        <!-- <div class="content">
             <div class="meta">
                 <span></span>
             </div>
@@ -111,7 +116,7 @@
                     <li>Security integration and use of APIs</li>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 <template name="introVideoArchitectureMike">

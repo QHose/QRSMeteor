@@ -239,7 +239,7 @@ Template.generation.onRendered(function() {
         if (error) {
             console.error(error);
             Session.set('NoSenseConnection', true);
-            sAlert.error("We can't connect to Qlik Sense, is your Sense VM running, all services started?, virtual proxy 'hdr' configured? Check the host settings in settings-XYZ.json in the root folder");
+            sAlert.error("We can't connect to Qlik Sense, is your Sense VM running, all services started?, virtual proxy 'hdr' configured? Did you export the certificates and referred to them in the settings-XYZ.json in your project root? Also check the host/port (Qlik Sense) settings. Make sure you check the problem solving chapters in the installation manual (documentation-generic tab).");
         } else {
             var message = "Connected to Qlik Sense via the REST and websocket APIs. We registered a QRS notification event to ensure this MeteorJs platform automatically updates when Qlik Sense changes.";
             console.log(message);

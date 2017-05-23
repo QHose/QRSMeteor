@@ -43,11 +43,22 @@
                 {{> documentation_oneNotes}}
             </div>
         </div>
+        <div class="header item">Official Qlik installation manuals
+            <div class="list">
+                {{> installation}}
+            </div>
+        </div>
+        <div class="header item">Deployment (other)
+            <div class="list">
+                {{> documentation_deployment}}
+            </div>
+        </div>
         <div class="header item">Other content
             <div class="list">
                 {{> documentation_other_content}}
             </div>
         </div>
+
         <!-- <div class="header item">Ideas on how to evaluate Qlik Sense
             <div class="list">
                 {{> genericEvaluation}}
@@ -55,53 +66,63 @@
         </div> -->
     </div>
 </template>
-<template name="GenericDemoSite">
-    <a href="{{URL_Youtube_concept_behind}}" target="_blank" class="item">Concept behind the demo</a>
-    <a href="{{URL_Youtube_howToDemo}}" target="_blank" class="item">"How to use the SaaS automation demo" video</a>
-    <a href="{{pathFor 'securityRules'}}" class="item">View Security rules used in SaaSdemo</a>
-    <a href="{{doc_sourceCode}}" target="_blank" class="item">Source code manual (high level)</a>
-    <a href="{{doc_demo_setup_instructions}}" target="_blank" class="item">Create your own demo server setup instructions (detailed)</a>
-    <!-- <a href="http://saasdemo.qlik.com/integration" target="_blank" class="item">Engine API slide generator example (prototype Qlik Sense SaaS/API training)</a> -->
-    <!-- <a href="{{doc_demo_manual}}" class="item" target="_blank">"How to" Manual</a> -->
-    <a href="https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk" target="_blank" class="item">YouTube playlist of all the videos on this site</a>
-</template>
 
-<template name="documentation_other_content">
-    <a href="https://community.qlik.com/community/qlik-sense/new-to-qlik-sense" target="_blank" class="item">Community - New to Qlik Sense</a>
-    <a href="http://branch.qlik.com" target="_blank" class="item">Qlik Branch (open source community)</a>
-    <a href="http://qlikbranch-slack-invite.herokuapp.com/" target="_blank" class="item">Join Qlik Slack channel (developers helping each other)</a>
-    <a href="http://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm" target="_blank" class="item">Qlik Sense APIs</a>
-    <a href="http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/NetSDKAPI/Content/Introduction/Net-Sdk-Intro.htm" target="_blank" class="item">.NET SDK</a>
-    <a href="https://help.qlik.com/en-US/sense-developer/3.2/Subsystems/APIs/Content/enigmajs/enigmajs-introduction.htm" target="_blank" class="item">EnigmaJS - connect to Engine API with javascript</a>
-    <a href="http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Plugins/Content/GettingStarted/GettingStarted.htm" target="_blank" class="item">Visual Studio plugin</a>
-    <a href="https://community.qlik.com/docs/DOC-8303" target="_blank" class="item">Manual to embed Qlik Sense into IIS</a>
-     <a href="http://help.qlik.com/en-US/sense/3.2/pdf/Plan%20Qlik%20Sense%20deployments.pdf" target="_blank" class="item">Deployment guide</a>
-
-    <!--  <a href="http://branch.qlik.com/projects/showthread.php?289-QSocks-Engine-API-wrapper" target="_blank" class="item">QSocks Javascript Engine API wrapper</a>
-        <a href="https://github.com/mindspank/architeqt" target="_blank" class="item">Architeqt: Generate derived apps based on a JSON template</a> -->
+<template name="installation">
+    <a href="http://help.qlik.com/en-US/sense/3.2/pdf/Plan%20Qlik%20Sense%20deployments.pdf" target="_blank" class="item">Deployment guide</a>
+    <a href="http://help.qlik.com/en-US/sense/3.2/Subsystems/Installation/Content/InstallationLicensing/Server-Deployment-Introduction.htm target=" target="_blank" class="item ">Overview of installation requirements</a>
+    <a href="http://help.qlik.com/en-US/sense/3.2/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Deployment-Ports.htm" target="_blank" class="item ">Port overview</a>
+    <a href="https://help.qlik.com/en-US/sense/3.2/Content/Introduction/system-requirements.htm" target="_blank" class="item">System requirements</a>
 </template>
-
-<template name="genericVideos">
-    <a href="https://www.youtube.com/playlist?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG" class="item" target="_blank">OEM Integration video playlist</a>
-    <a href="http://www.youtube.com/playlist?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel" target="_blank" class="item">Generic Qlik Sense playlist</a>
-    <a href="https://www.youtube.com/watch?v=LC89eh8H6Ls" target="_blank" class="item">Introduction to Qlik Sense APIs</a>
-</template>
-<template name="documentation_oneNotes">
-    <!-- 
-    <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FIntroduction%20to%20Qlik%20Sense%20%28Ext%5C%29%7C65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0%2F%29
-    onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Introduction%20to%20Qlik%20Sense%20(Ext)&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0}&end" target="_blank">Introduction to Qlik Sense</a> -->
-    <a class="item" href="{{doc_integrationOverview}}" target="_blank">Integration overview</a>
-    <a class="item" href="{{doc_securtityIntegration}}" target="_blank">Security integration</a>
-    <a class="item" href="{{doc_webIntegration}}" target="_blank">Web integration</a>
+<template name="documentation_deployment">
     <a class="item" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a>
-    <!--     <a class="item" href="{{doc_webIntegration}}" target="_blank">Web integration</a>
- -->
-    <!-- 
-    <a class="item" href="https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FProcess%20integration%20and%20automation%20using%20API%27s%7Ca49986de-9191-4321-88f3-c286fdff0b83%2F%29" target="_blank">API - Process integration</a>
-    <a class="item" href="{{doc_dataIntegration}}" target="_blank">Data integration</a> -->
+    <a href="https://community.qlik.com/docs/DOC-8303" target="_blank" class="item">Manual to embed Qlik Sense into IIS</a>
 </template>
-<template name="genericEvaluation">
-    <!-- <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F2%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary%7CA89DAA5F-F20A-4A68-AF02-E58549F53D20%2F%29
-    onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#2%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={A89DAA5F-F20A-4A68-AF02-E58549F53D20}&end" target="_blank">Proof of concept evaluation criteria and app design</a>
-    <a class="item" href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F3%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20detailed%7C2390CE6E-173A-499D-9574-C0294E62B16D%2F%29" target="_blank">Detailed steps for a POC</a> -->
+<template name="GenericDemoSite ">
+    <a href="http://saasdemo.qlik.com/integration " target="_blank " class="item ">Slide generator (contains Qlik Sense SaaS/API training)</a>
+    <a href=" {{URL_Youtube_concept_behind}} " target="_blank " class="item ">Concept behind the demo</a>
+    <a href=" {{URL_Youtube_howToDemo}} " target="_blank " class="item ">"How to use the SaaS automation demo " video</a>
+    <a href=" {{pathFor 'securityRules'}} " class="item ">View Security rules used in the demo</a>
+
+    <!-- <a href=" {{doc_demo_manual}} " class="item " target="_blank ">"How to " Manual</a> -->
+    <a href="https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk " target="_blank " class="item ">YouTube playlist of all the videos on this site</a>
+    <a href="{{doc_demo_setup_instructions}}" target="_blank" class="item">Create your own demo server - setup instructions (detailed)</a>
+    <a href="{{doc_sourceCode}}" target="_blank" class="item">Source code manual (high level)</a>
+</template>
+
+<template name="documentation_other_content ">
+    <a href="https://community.qlik.com/community/qlik-sense/new-to-qlik-sense " target="_blank " class="item ">Community - New to Qlik Sense</a>
+    <a href="http://branch.qlik.com " target="_blank " class="item ">Qlik Branch (open source community)</a>
+    <a href="http://qlikbranch-slack-invite.herokuapp.com/ " target="_blank " class="item ">Join Qlik Slack channel (developers helping each other)</a>
+    <a href="http://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm " target="_blank " class="item ">Qlik Sense APIs</a>
+    <a href="http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/NetSDKAPI/Content/Introduction/Net-Sdk-Intro.htm " target="_blank " class="item ">.NET SDK</a>
+    <a href="https://help.qlik.com/en-US/sense-developer/3.2/Subsystems/APIs/Content/enigmajs/enigmajs-introduction.htm " target="_blank " class="item ">EnigmaJS - connect to Engine API with javascript</a>
+    <a href="http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Plugins/Content/GettingStarted/GettingStarted.htm " target="_blank " class="item ">Visual Studio plugin</a>
+
+    <!--  <a href="http://branch.qlik.com/projects/showthread.php?289-QSocks-Engine-API-wrapper " target="_blank " class="item ">QSocks Javascript Engine API wrapper</a>
+    <a href="https://github.com/mindspank/architeqt " target="_blank " class="item ">Architeqt: Generate derived apps based on a JSON template</a> -->
+</template>
+
+<template name="genericVideos ">
+    <a href="https://www.youtube.com/playlist?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG " class="item " target="_blank ">OEM Integration video playlist</a>
+    <a href="http://www.youtube.com/playlist?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel " target="_blank " class="item ">Generic Qlik Sense playlist</a>
+    <a href="https://www.youtube.com/watch?v=LC89eh8H6Ls " target="_blank " class="item ">Introduction to Qlik Sense APIs</a>
+</template>
+<template name="documentation_oneNotes ">
+    <!-- 
+    <a class="item " href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2FIntroduction%20to%20Qlik%20Sense%20%28Ext%5C%29%7C65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0%2F%29 onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#Introduction%20to%20Qlik%20Sense%20(Ext)&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={65EFFC90-BC5A-462E-9CE2-469E8DFC2FC0}&end " target="_blank ">Introduction to Qlik Sense</a> -->
+    <a class="item " href=" {{doc_integrationOverview}} " target="_blank ">Integration overview</a>
+    <a class="item " href=" {{doc_securtityIntegration}} " target="_blank ">Security integration</a>
+    <a class="item " href=" {{doc_webIntegration}} " target="_blank ">Web integration</a>
+    <a class="item " href=" {{doc_processIntegration}} " target="_blank ">API integration</a>
+    <a class="item " href=" {{doc_dataIntegration}} " target="_blank ">Data integration</a>
+
+    <!--     <a class="item " href=" {{doc_webIntegration}} " target="_blank ">Web integration</a>
+-->
+    <!-- 
+    <a class="item " href="https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FProcess%20integration%20and%20automation%20using%20API%27s%7Ca49986de-9191-4321-88f3-c286fdff0b83%2F%29 " target="_blank ">API - Process integration</a>
+    <a class="item " href=" {{doc_dataIntegration}} " target="_blank ">Data integration</a> -->
+</template>
+<template name="genericEvaluation ">
+    <!-- <a class="item " href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F2%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary%7CA89DAA5F-F20A-4A68-AF02-E58549F53D20%2F%29 onenote:https://d.docs.live.net/0805405928a75727/OneNote/Publications/QlikSense/EMBEDDED%20ANALYTICS.one#2%20Desktop%20proof%20of%20concept%20pre-visit%20document%20summary&section-id={BF2972BE-48A0-46FA-AF7A-F6D2F80CF06B}&page-id={A89DAA5F-F20A-4A68-AF02-E58549F53D20}&end " target="_blank ">Proof of concept evaluation criteria and app design</a>
+    <a class="item " href="https://onedrive.live.com/redir?page=view&resid=805405928A75727!1330&authkey=!ANwk5S8KPC__-dw&wd=target%28EMBEDDED%20ANALYTICS.one%7CBF2972BE-48A0-46FA-AF7A-F6D2F80CF06B%2F3%3A%20Desktop%20proof%20of%20concept%20pre-visit%20document%20detailed%7C2390CE6E-173A-499D-9574-C0294E62B16D%2F%29 " target="_blank ">Detailed steps for a POC</a> -->
 </template>
