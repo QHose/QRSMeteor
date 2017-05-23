@@ -74,6 +74,7 @@ function loginQlik() {
         var routeName = Router.current().route.getName();
         console.log('mustBeSignedIn called hook for route: ', routeName);
         var QlikUserProfile = Cookies.get('CSUser'); //only availalbe on Qlik.com domains
+        var loggedInUser = Meteor.userId();
         console.log('QlikUserProfile: ', QlikUserProfile);
 
         if(!QlikUserProfile) {
@@ -84,7 +85,7 @@ function loginQlik() {
             var QlikSSO = "https://login.qlik.com/login.aspx?returnURL=" + encodedReturnURI;
             console.log('User has not Qlik.com cookie, so send him to: ', QlikSSO);
             window.location.replace(QlikSSO);
-        } else if(!Meteor.userId()) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
+        } else if(!loggedInUser) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
             console.log('user is not yet logged in into meteor');
             // QlikUserProfile:  username=bieshosetest&firstName=test&lastName=test&emailAddress=bieshose@gmail.com&contactID=&accountID=&ulcLevels=Base&country=Angola&hash=xS9zTEOE7vSgTVXycUr99UFLc78=
             var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, country, hash] = QlikUserProfile.split('&');
