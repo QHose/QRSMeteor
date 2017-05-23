@@ -19,10 +19,10 @@ if(window.location.href.indexOf("qlik.com") > -1) {
     // Router.onBeforeAction(mustBeSignedInQlik, { only: ['test'] });
     // Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
     //     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
-    Router.plugin('ensureSignedIn', {
-        // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
-        except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
-    });
+    // Router.plugin('ensureSignedIn', {
+    //     // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
+    //     except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
+    // });
 
 } else { //localhost dev environment
     Router.onBeforeAction(mustBeSignedInDEV, { except: [undefined, 'documentation'] });
