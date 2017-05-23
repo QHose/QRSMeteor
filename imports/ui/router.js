@@ -14,7 +14,7 @@ if(window.location.href.indexOf("saasdemo") > -1) {
 
 // Load a authentication check handler, depending on which domain it runs.
 if(window.location.href.indexOf("qlik.com") > -1) {
-    Router.onBeforeAction(mustBeSignedInQlik, { except: ['documentation'] });
+    Router.onBeforeAction(mustBeSignedInQlik, { except: [undefined, 'documentation'] });
 
     // Router.onBeforeAction(mustBeSignedInQlik, { only: ['test'] });
     // Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
