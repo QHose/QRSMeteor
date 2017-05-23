@@ -169,14 +169,16 @@ Meteor.methods({
                 "The user misses important information from its Qlik.com account");
         }
         const userExists = Accounts.findUserByEmail(user.email);
+        var userId = {};
         if(userExists) {
             console.log('########### found user, now reset his password: ', userExists);
-            var userId = userExists._id;
+            userId = userExists._id;
             Accounts.setPassword(userId, user.password);
         } else {
-            var userId = Accounts.createUser(user);
+            userId = Accounts.createUser(user);
             //Roles.addUsersToRoles(userId, user.roles, 'GLOBAL');
         }
+        return userId;
     }
 })
 

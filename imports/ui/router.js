@@ -13,26 +13,55 @@ if(window.location.href.indexOf("saasdemo") > -1) {
 }
 
 // Load a authentication check handler, depending on which domain it runs.
-// if(window.location.href.indexOf("qlik.com") > -1) {
-// Router.onBeforeAction(mustBeSignedIn, { only: ['test'] });
+if(window.location.href.indexOf("qlik.com") > -1) {
+    Router.onBeforeAction(mustBeSignedIn, { only: ['test'] });
+    // Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
+    //     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
+    Router.plugin('ensureSignedIn', {
+        // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
+        except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
+    });
 
-// Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
+} else { //localhost dev environment
+    Router.onBeforeAction(mustBeSignedInDEV, { except: [undefined, 'documentation'] });
+}
 
-// } else {
-//     //     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
-Router.plugin('ensureSignedIn', {
-    // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
-    except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
-});
-// }
+function mustBeSignedInDEV() {
+    var user = {
+        email: "@qlik.com",
+        "profile": { "name": { "first": "firstName=Martijn", "last": "lastName=Biesbroek" } },
+        roles: ["test"], // Array.from("Base,Employee,CPEFEmployee"),
+        password: "test"
+    };
+
+    if(!Meteor.user()) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
+        console.log('user is not yet logged in into meteor');
+
+        Meteor.call('resetPassword2', user, function(err, res) {
+            if(err) {
+                console.error(err);
+            } else {
+                Meteor.loginWithPassword(user.email, user.password, function(err, res) { //
+                    if(err) {
+                        console.error(err);
+                        // Accounts.createUser(user);
+                    } else {
+                        console.log('user successfully logged in', Meteor.userId());
+                    }
+                });
+            }
+        })
+    }
+    this.next();
+};
 
 function mustBeSignedIn() {
-     // var user = {
-        //     email: "martijn.biesbroedmkjlkjljkljkfasddffk@qlik.com",
-        //     "profile": { "name": { "first": "firstName=Martijn", "last": "lastName=Biesbroek" } },
-        //     roles: ["test"], // Array.from("Base,Employee,CPEFEmployee"),
-        //     password: "test"
-        // };
+    // var user = {
+    //     email: "martijn.biesbroedmkjlkjljkljkfasddffk@qlik.com",
+    //     "profile": { "name": { "first": "firstName=Martijn", "last": "lastName=Biesbroek" } },
+    //     roles: ["test"], // Array.from("Base,Employee,CPEFEmployee"),
+    //     password: "test"
+    // };
 
     var routeName = Router.current().route.getName();
     console.log('mustBeSignedIn called hook for route: ', routeName);
@@ -49,7 +78,7 @@ function mustBeSignedIn() {
     } else if(!Meteor.user()) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
         console.log('user is not yet logged in into meteor');
         var [username, firstName, lastName, emailAddress, contactID, accountID, ulcLevels, hash, uid] = QlikUserProfile.split('&');
-       
+
         const user = {
             email: emailAddress.substr(emailAddress.indexOf("=") + 1),
             profile: {
@@ -58,7 +87,7 @@ function mustBeSignedIn() {
                     last: lastName.substr(lastName.indexOf("=") + 1),
                 },
             },
-            roles: "",//JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]"),
+            roles: "", //JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]"),
             password: hash.substr(hash.indexOf("=") + 1),
         };
         console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
