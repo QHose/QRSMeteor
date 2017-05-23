@@ -14,7 +14,7 @@ if(window.location.href.indexOf("saasdemo") > -1) {
 
 // Load a authentication check handler, depending on which domain it runs.
 if(window.location.href.indexOf("qlik.com") > -1) {
-    Router.onBeforeAction(mustBeSignedInQlik, { except: ['documentation'] });
+    Router.onBeforeAction(mustBeSignedInQlik, { only: ['test'] });
     // Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
     //     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
     Router.plugin('ensureSignedIn', {
@@ -67,7 +67,7 @@ function loginDEV(user) {
 function mustBeSignedInQlik() {
     var routeName = Router.current().route.getName();
     console.log('mustBeSignedIn called hook for route: ', routeName);
-    Meteor.setTimeout(loginQlik, 500); //give the browser some time to log the user in...
+    Meteor.setTimeout(loginQlik, 1500); //give the browser some time to log the user in...
     this.next();
 };
 
