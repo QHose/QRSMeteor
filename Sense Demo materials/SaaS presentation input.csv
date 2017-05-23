@@ -11,14 +11,14 @@
 "Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine","> We have used the APIs to get the data out of our engine and used it to create this website...",,"","","","","         0","0","Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
 "Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine"," <img class=""ui large centered image"" src=""images/Engine API slide generator easy flow.png"">",,"","","","","         0","0","Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
 "Workshop Introduction","Flow: Load a csv into an app and use the data in your website (simulated by slide generator) via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
-"Workshop Introduction","We created a mind map to define all integration topics","mindmap input for engine API slide generator.png",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
+"Workshop Introduction","We created a mind map to define all integration topics","mindmap input for engine api slide generator.png",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
 "Workshop Introduction","We created a mind map to define all integration topics","Each topic in the map represents a ""slide"". A slide can contain
 - Text
 - A reference to an image or video",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
 "Workshop Introduction","We created a mind map to define all integration topics","Per slide""bullet"" we can assign 
 - a workshop
 - authorizations (which users can see this bullet/image/video?)",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
-"Workshop Introduction","Export the map and load the data into an app","Excel input engine API generator.png",,"","","","","         0","0","Technical - 1 hour, Sales, What is this slide generator?",
+"Workshop Introduction","Export the map and load the data into an app","Excel input engine api generator.png",,"","","","","         0","0","Technical - 1 hour, Sales, What is this slide generator?",
 "Workshop Introduction","What's so special about this presentation? (1)","> You never know the next question...  or what your audience wants to see or what their technical level is...",,"","","","","         0","0","What is this slide generator?",
 "Workshop Introduction","What's so special about this presentation? (2)","> So you can better put all your data in our *associative engine* and *select and create* the slides based on the questions you ask *now*.",,"","","","","         0","0","What is this slide generator?",
 "Workshop Introduction","With the APIs, the only limit is your imagination","> This presentation is just to inspire what you can do with our *engine*",,"","","","","         0","0","Sales, Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
@@ -529,7 +529,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Qlik Sense as a high performance analytics engine","postman response.png",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Data only example: Qlik Sense bot (Start around 3m)","(Open this video)[https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel]",,"","","","","         0","0","PreSales",
 "Web integration","Data only example: Slide generator","<iframe src=""http://integration.qlik.com/slides"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Sales, Introduction - 30 minutes",
-"Web integration","Table API","API- table API - get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours",
+"Web integration","Table API","API- table api- get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours",
 "Web integration","Table API","```
  require.config({
         baseUrl: ""http://"" + qConfig.host + (qConfig.port ? "":"" + qConfig.port : """") + qConfig.prefix + ""resources""
