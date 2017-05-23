@@ -92,8 +92,8 @@
 "What is integration.qlik.com?","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Sales, Introduction - 30 minutes",
 "What is integration.qlik.com?","In the integration demo environment we created a demo for each use case","useCasesOverview.png",,"","","","","         0","0","Sales",
 "What is integration.qlik.com?","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png",,"","","","","         0","0","Technical - 2 hours",
-"What is integration.qlik.com?","integration.qlik.com: Self service demo","governed self service app.png",,"","","","","         0","0","Sales",
-"What is integration.qlik.com?","integration.qlik.com: Self service demo","[Lets go to integration.qlik.com](http://integration.qlik.com)",,"","","","","         0","0","Sales",
+"What is integration.qlik.com?","integration.qlik.com: Self service demo","governed self service app.png",,"","","","","         0","0","Sales, SaaS & Power of APIs",
+"What is integration.qlik.com?","integration.qlik.com: Self service demo","[Lets go to integration.qlik.com](http://integration.qlik.com)",,"","","","","         0","0","Sales, SaaS & Power of APIs",
 "What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours",
@@ -706,6 +706,10 @@ or
 ((user.environment.group=""Admin"")) and ( resource.HasPrivilege(""read"") or resource.app.HasPrivilege(""read"") )
 ```",,"","","","","         0","0","PreSales",
 "Security - Concept of integration.qlik.com","Overview of system (security & license) rules","<iframe src=""http://integration.qlik.com/securityRules"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Technical - 1 day",
+"Slide generator - use cases","How do you create slides today?","You get your master slide decks",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How do you create slides today?","You select slides based on your audience?",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How do you create slides today?","For each customer you create a new one",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How do you create slides today?","If you get questions you have to search at multiple locations and maybe you have answer it in a follow up meeting...",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Goals","Inspire what you can do with our engine",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Goals","Prevent multiple versions of the truth, create 1 ""master slide deck""",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Goals","With the slide generator you always have the
@@ -734,6 +738,7 @@ or
 "Slide generator - use cases","Possibilities","Users are logged in, and therefore we can store selections, and create presentations for each user.",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","Select slides while you are having a conversation, create a ""personal"" presentation and share the link",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","You could track which users view which slides.",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","Possibilities","Show presenter notes",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Data loading scenarios","In the end its just data... We only store texts and references to images and videos ",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Data loading scenarios","So you just need to load a Qlik Sense app",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Data loading scenarios","So you can have multiple approaches to load data

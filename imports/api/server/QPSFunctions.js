@@ -159,7 +159,7 @@ Meteor.methods({
 })
 
 Meteor.methods({
-    'resetPassword2' (user) {
+    'resetPasswordOrCreateUser' (user) {
         try {
             // console.log('reset the password of the user before logging him in');
             check(user.email, String);

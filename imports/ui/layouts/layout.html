@@ -7,11 +7,34 @@
         </div>
         <div class="fourteen wide column">
             {{> nav}} {{> modals}} {{> sAlert}}
-            {{#if NoSenseConnection}}
-                {{> checkConfig}}
-            {{else}}
+            {{#if currentUser}}
                 {{> yield}}
+            {{else}}
+                {{> loginDimmer}}
             {{/if}}
+        </div>
+        <div class="one wide column">
+        </div>
+    </div>
+    {{> footer}}
+</template>
+<template name="loginDimmer">
+    <div class="ui container" style="height: 500px;">
+        <div class="ui inverted dimmer">
+            <div class="content">
+                <div class="center">
+                    <div class="ui indeterminate text loader">Please wait while we log you in via your Qlik.com account...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<template name="layoutDocumentation">
+    <div class="ui relaxed very padded stackable grid">
+        <div class="one wide column">
+        </div>
+        <div class="fourteen wide column">
+            {{> nav}} {{> modals}} {{> sAlert}} {{> yield}}
         </div>
         <div class="one wide column">
         </div>
