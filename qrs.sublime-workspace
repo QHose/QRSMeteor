@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"im",
+				"imports"
+			],
+			[
 				"dc",
 				"documentation"
 			],
@@ -510,10 +514,6 @@
 			[
 				"margi",
 				"margin-left"
-			],
-			[
-				"imp",
-				"impressInitialized〔variable〕"
 			]
 		]
 	},
@@ -523,37 +523,16 @@
 			"file": "imports/ui/router.js",
 			"settings":
 			{
-				"buffer_size": 8394,
+				"buffer_size": 8506,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<template name=\"SSOLayout\">\n    {{> sAlert}} {{> yield}}\n</template>\n<template name=\"layout\">\n    <div class=\"ui relaxed very padded stackable grid\">\n        <div class=\"one wide column\">\n        </div>\n        <div class=\"fourteen wide column\">\n            {{> nav}} {{> modals}} {{> sAlert}}\n            <!-- {{#if currentUser}} --><!-- also removes option to login via the menu --> \n                {{> yield}}\n           <!--  {{else}}\n                {{> loginDimmer}} -->\n            <!-- {{/if}} -->\n        </div>\n        <div class=\"one wide column\">\n        </div>\n    </div>\n    {{> footer}}\n</template>\n<template name=\"loginDimmer\">\n    <div class=\"ui container\" style=\"height: 500px;\">\n        <div class=\"ui inverted dimmer\">\n            <div class=\"content\">\n                <div class=\"center\">\n                    <div class=\"ui indeterminate text loader\">Please wait while we log you in via your Qlik.com account...</div>\n                </div>\n            </div>\n        </div>\n    </div>\n</template>\n<template name=\"layoutDocumentation\">\n    <div class=\"ui relaxed very padded stackable grid\">\n        <div class=\"one wide column\">\n        </div>\n        <div class=\"fourteen wide column\">\n            {{> nav}} {{> modals}} {{> sAlert}} {{> yield}}\n        </div>\n        <div class=\"one wide column\">\n        </div>\n    </div>\n    {{> footer}}\n</template>\n<template name=\"presentationLayout\">\n    {{#if unsupportedBrowser}}\n        <div class=\"ui text container\">\n            <div class=\"ui icon message\">\n                <i class=\"warning sign icon\"></i>\n                <div class=\"content\">\n                    <div class=\"header\">\n                        Not supported browser or mobile device\n                    </div>\n                    <p>This slide generator can't be used on your mobile or with some browsers. Please use your laptop using a browser like Chrome, Safari or Firefox... </p>\n                    <p><a href=\"{{pathFor 'useCaseSelection'}}\" class=\"ui right floated button\">Take me home</a> </p>\n                </div>\n            </div>\n        </div>\n    {{else}}\n        {{> yield}}\n        <!-- FAKE IFRAME TO KEEP THE CONNECTION TO QLIK SENSE OPEN WHILE WE CONNECT TO ANOTHER PAGE -->\n        {{#if userSelectedPresentationType}}\n            <iframe src=\"{{IFrameURLChapterSelection}}\" style=\"width:0;height:0;border:0; border:none;visibility:hidden;display:none\" seamless=\"seamless\"></iframe>\n        {{/if}}\n    {{/if}}\n</template>\n<template name=\"footer\">\n    <div id=\"footer\" class=\"ui footer page one column grid\">\n        <div class=\"column\">\n            <div class=\"ui divider\"></div>\n            Integration approach, demo site, documentation and videos created by Martijn Biesbroek & Raymond Neves. Review by Catherine Frye, QVF design by Patrick Tehubijuluw. Voice-over Stephen Jasionowski. See the terms of usage of this site <a href=\"{{pathFor 'legal'}}\">here</a>.\n        </div>\n    </div>\n</template>\n<template name=\"modals\">\n    {{> modalSSBI}} {{> modalStepByStep}} {{> modalSaaSautomation}}\n</template>\n<template name=\"modalSSBI\">\n    <div class=\"ui modal SSBI\">\n        <div class=\"ui icon message\">\n            <!--             <img class=\"icon\" src=\"images/securityRules.png\">\n -->\n            <div class=\"content\">\n                <div class=\"header\">\n                    <h4>Example layered approach to the self service functionality</h4>\n                </div>\n                <p>Example process which you can implement by using a mix between the authorizations from your SaaS platform and the Qlik Sense security rules.</p>\n            </div>\n        </div>\n        <img class=\"ui fluid image\" src=\"/images/SelfServiceBI.png\">\n        <div class=\"description\">\n            <p></p>\n        </div>\n        <div class=\"actions\">\n            <!-- <div class=\"ui black deny button\">\n                    Nope\n                </div> -->\n            <div class=\"ui positive right labeled icon button\">\n                I got it...\n                <i class=\"checkmark icon\"></i>\n            </div>\n        </div>\n    </div>\n</template>\n<template name=\"modalStepByStep\">\n    <div class=\"ui modal stepByStep\">\n        <div class=\"ui icon message\">\n            <img class=\"icon\" src=\"images/intro.png\">\n            <div class=\"content\">\n                <div class=\"header\">\n                    <h4>Step by step guide on how to use this demo platform</h4>\n                </div>\n                <!-- <p>This video is just a selection of the extended introduction video. This video shows you \"where to click\". Please watch the extended video for a complete overview. You can also watch a specific video from the \"video menu\" in the top menu.</p> -->\n            </div>\n        </div>\n        <div class=\"ui one column centered grid\">\n            <div class=\"column centered\">\n                <iframe width=\"854\" height=\"480\" src=\"https://www.youtube.com/embed/T9a3s5cnvPE\" frameborder=\"0\" allowfullscreen></iframe>\n            </div>\n        </div>\n        <div class=\"actions\">\n            <div class=\"ui positive right labeled icon button\">\n                I got it...\n                <i class=\"checkmark icon\"></i>\n            </div>\n        </div>\n    </div>\n</template>\n<template name=\"modalSaaSautomation\">\n    <div class=\"ui modal APIAutomation\">\n        <div class=\"ui icon message\">\n            <img class=\"icon\" src=\"images/API.png\">\n            <div class=\"content\">\n                <div class=\"header\">\n                    <h4>What are the key concepts of SaaS provisioning using Qlik Sense?</h4>\n                </div>\n                <p>This video highlights the concepts of SaaS provisioning. In will explain you the concept of template apps, the broker, and that we will create a copy of the template for each of your customers.</p>\n            </div>\n        </div>\n        <div class=\"ui one column centered grid\">\n            <div class=\"column centered\">\n                <iframe width=\"854\" height=\"480\" src=\"{{URL_Youtube_concept_behind}}\" frameborder=\"0\" allowfullscreen></iframe>\n            </div>\n        </div>\n        <div class=\"actions\">\n            <div class=\"ui positive right labeled icon button\">\n                I got it...\n                <i class=\"checkmark icon\"></i>\n            </div>\n        </div>\n    </div>\n</template>\n",
-			"file": "imports/ui/layouts/layout.html",
-			"file_size": 6420,
-			"file_write_time": 131400322789260931,
+			"file": "imports/ui/impress/impress.js",
 			"settings":
 			{
-				"buffer_size": 6320,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/pages/APILogs.html",
-			"settings":
-			{
-				"buffer_size": 11273,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/pages/documentation.html",
-			"settings":
-			{
-				"buffer_size": 7937,
+				"buffer_size": 1375,
 				"line_ending": "Windows"
 			}
 		},
@@ -561,7 +540,7 @@
 			"file": "imports/ui/layouts/layout.js",
 			"settings":
 			{
-				"buffer_size": 3369,
+				"buffer_size": 3376,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -648,32 +627,38 @@
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/public",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
 	[
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor/packages",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/landingPage.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/proxy.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/landingPage.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor/packages",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/proxy.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI/SSBI.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/users.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.css",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
@@ -683,11 +668,9 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-production.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/accounts.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationMain.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/ppt_integration.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/useCaseSelection.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/slideSorter.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impressJSModifiedSource.js",
@@ -695,26 +678,20 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/ppt_integration.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationMain.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationMain.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/generation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step3.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsStream.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/APILogs.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/config.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/publications.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/mainButtons.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development - example.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/landingPage.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/impress/landingPage.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/architecture.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/routes.js",
 		"/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/JSHint Gutter/JSHint.sublime-settings",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/users.js",
@@ -726,11 +703,9 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/OEMPartner.js",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/.eslintrc.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/node_modules/eslint/conf/eslint-all.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/nav.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users/userOverview.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/users/userOverview.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/steps.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/webIntegration.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/stylesheets/highLight.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/package.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor/local/build/programs/server/app/app.js",
@@ -788,8 +763,7 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step3.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step4.js",
-		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step2.html",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.html"
+		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step2.html"
 	],
 	"find":
 	{
@@ -800,6 +774,10 @@
 		"height": 102.0,
 		"where_history":
 		[
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\impress",
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui",
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\pages",
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui",
@@ -915,6 +893,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Router",
+			"supported",
+			"modal",
+			"userLoggedInSense",
+			"installation",
+			"How do you load data?",
+			"concept",
+			"conceot",
+			"In a flashy overview you will see the key components of a Qlik Sense integration.",
+			"view security",
+			"view",
+			"saas",
+			"topo",
+			"toplo",
+			"We can't connect to Qlik Sense, is your Sense VM running, all services",
 			"routeName",
 			"test",
 			"mustBeSignedInQlik",
@@ -1027,22 +1020,7 @@
 			"IntegrationPresenatationSelectionSheet",
 			"IntegrationPresenatationSelectionObject",
 			"ppt_integration_landing",
-			"ppt_integrationMain",
-			"ppt_integration_landing",
-			"authentication",
-			"martin",
-			"sheet",
-			"youtu",
-			"youtube",
-			"edge",
-			"chrome",
-			"ppt_integrationMain",
-			"dropdown",
-			"reload",
-			"modal",
-			"{{> users",
-			"{{> userse",
-			"Customers"
+			"ppt_integrationMain"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1197,148 +1175,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8394,
+						"buffer_size": 8506,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1355,
-								1355
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 110.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "imports/ui/layouts/layout.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6320,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								380,
-								339
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 25.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "imports/ui/pages/APILogs.html",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 11273,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 334.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "imports/ui/pages/documentation.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7937,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4563,
-								4563
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1844.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 4,
-					"file": "imports/ui/layouts/layout.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3369,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								366,
-								366
+								748,
+								748
 							]
 						],
 						"settings":
@@ -1353,11 +1198,80 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 1,
+					"file": "imports/ui/impress/impress.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1375,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "imports/ui/layouts/layout.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3376,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1651,
+								1654
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 566.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "imports/api/server/QPSFunctions.js",
 					"semi_transient": false,
 					"settings":
@@ -1385,7 +1299,7 @@
 						"translation.y": 4295.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1419,7 +1333,7 @@
 		"cols":
 		[
 			0.0,
-			0.53402268592,
+			0.448105945442,
 			1.0
 		],
 		"rows":
@@ -1487,7 +1401,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 371.0,
+	"side_bar_width": 478.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
