@@ -3,7 +3,17 @@
 
         {{#if authenticatedSlideGenerator}}
             {{#if userSelectedGroup}}
-                <h2 class="ui header">
+                {{>slideGeneratorSelectionScreen}}
+            {{/if}}
+        {{else}}
+            {{> presentationDimmer}}
+        {{/if}}
+    </div>
+    {{> userSelectPresentationModal}}
+</template>
+<template name="slideGeneratorSelectionScreen">
+    <div class="screen">
+        <h2 class="ui header">
             <img src="/images/API tool broker.png">
             <div class="content">
                 Qlik Sense slide generator
@@ -11,16 +21,11 @@
                 class="sub header">Here we demonstrate that Qlik Sense can be used as an analytics engine for your platform.</div>
             </div>
                 </h2>
-                <div class="ui segment">
-                    <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
-                </div>
-                <a href="{{pathFor 'slideGenerator'}}" class="ui right floated positive large button">Create my slides</a> {{> selectSlide}}
-            {{/if}}
-        {{else}}
-            {{> presentationDimmer}}
-        {{/if}}
+        <div class="ui segment">
+            <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
+        </div>
+        <a href="{{pathFor 'slideGenerator'}}" class="ui right floated positive large button">Create my slides</a> {{> selectSlide}}
     </div>
-    {{> userSelectPresentationModal}}
 </template>
 <template name="presentationDimmer">
     <div class="ui container" style="height: 400px;">

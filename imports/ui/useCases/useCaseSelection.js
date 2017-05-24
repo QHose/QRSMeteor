@@ -4,19 +4,30 @@ import './SSBI/SSBI.js';
 
 
 Template.useCaseSelection.events({
- 'click .webIntegrationDemo' () {
+    'click .webIntegrationDemo' () {
         login('John');
     },
 })
 
 
 Template.useCaseSelection.onRendered(function() {
-    this.$('.special.cards .image').dimmer({
+  
+    // this.$('.cards')
+    //     .transition('scale in');
+
+this.$('.cards .card').css('visibility', 'hidden');
+
+    this.$('.cards .card')
+        .transition({
+            animation: 'fade in',
+            reverse: 'auto', // default setting
+            interval: 800,
+            duration  : 2000
+        });
+
+      this.$('.special.cards .image').dimmer({
         on: 'hover'
     });
-
-    this.$('.cards')
-        .transition('scale in');
 })
 
 function login(user) {
@@ -24,7 +35,7 @@ function login(user) {
     try {
 
         Meteor.call('simulateUserLogin', user, (error, result) => {
-            if (error) {
+            if(error) {
                 sAlert.error(error);
                 console.log(error);
             } else {
@@ -32,7 +43,7 @@ function login(user) {
                 sAlert.success(user + ' is now logged in into Qlik Sense');
             }
         })
-    } catch (err) {
+    } catch(err) {
         sAlert.error(err.message);
     }
 };
