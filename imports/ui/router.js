@@ -30,8 +30,8 @@ if(window.location.href.indexOf("qlik.com") > -1) {
 
 function mustBeSignedInDEV() {
     var user = {
-        email: "localtest@qlik.com",
-        "profile": { "name": { "first": "firstName=Martijn", "last": "lastName=Biesbroek" } },
+        email: "mbj2@qlik.com",
+        "profile": { "name": { "first": "Martijn", "last": "Biesbroek" } },
         roles: ["Base"], // Array.from("Base,Employee,CPEFEmployee"),
         password: "test"
     };
@@ -52,12 +52,15 @@ function loginDEV(user) {
 
         Meteor.call('resetPasswordOrCreateUser', user, function(err, res) {
             if(err) {
+                sAlert.error(err.message);
                 console.error(err);
             } else {
                 Meteor.loginWithPassword(user.email, user.password, function(err, res) { //
                     if(err) {
+                        sAlert.error(err.message);
                         console.error(err);
                     } else {
+                        sAlert.success('You are now logged in with your Qlik.com account. You now have your "private demo environment". So feel free to create/change/delete anything you would like...');
                         console.log('user successfully logged in', Meteor.userId());
                     }
                 });
@@ -82,7 +85,7 @@ function mustBeSignedInQlik() {
 function loginQlik() {
     //rerun this function anytime something happens with the login state
     var routeName = Router.current().route.getName();
-    console.log('mustBeSignedIn called hook for route: ', routeName);
+    console.log('mustBeSignedIn via Qlik.com for route: ', routeName);
     var QlikUserProfile = Cookies.get('CSUser'); //only availalbe on Qlik.com domains
     var loggedInUser = Meteor.userId();
     console.log('QlikUserProfile: ', QlikUserProfile);
@@ -114,6 +117,7 @@ function loginQlik() {
             password: emailAddress.substr(emailAddress.indexOf("=") + 1), //no need for a real password mechanism. People just need a login to have their own demo space
         };
         console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
+        //unsafe code, only sufficient for our simple demo site
         Meteor.call('resetPasswordOrCreateUser', user, function(err, res) {
             if(err) {
                 console.error(err);
