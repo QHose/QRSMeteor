@@ -55,7 +55,7 @@ Template.landingPage.helpers({
     authenticatedSlideGenerator: function() {
         return Session.get('userLoggedInSense');
     },
-    userSelectedGroup: function(){
+    userSelectedGroup: function() {
         return Session.get('groupForPresentation');
     }
 })
@@ -66,6 +66,13 @@ Template.landingPage.events({
         Session.set('showSlideSorter', true);
         Router.go('slideGenerator'); //GO TO THE SLIDE GENERATOR
     }
+})
+Template.slideGeneratorSelectionScreen.onRendered(function() {
+    this.$('.screen')
+        .transition({
+            animation: 'fade in',
+            duration: '4s',
+        });
 })
 
 function userLoggedInSense() {
