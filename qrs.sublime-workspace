@@ -520,28 +520,35 @@
 	"buffers":
 	[
 		{
+			"file": "imports/ui/impress/landingPage.html",
+			"settings":
+			{
+				"buffer_size": 2906,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/SSO/client/SSO.js",
+			"settings":
+			{
+				"buffer_size": 5831,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "imports/ui/impress/slideSorter.html",
+			"settings":
+			{
+				"buffer_size": 991,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "imports/ui/router.js",
 			"settings":
 			{
-				"buffer_size": 8506,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/layouts/layout.js",
-			"settings":
-			{
-				"buffer_size": 3376,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/api/server/QPSFunctions.js",
-			"settings":
-			{
-				"buffer_size": 14407,
+				"buffer_size": 9124,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -554,7 +561,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 784.0,
+		"height": 392.0,
 		"last_filter": "pack",
 		"selected_items":
 		[
@@ -595,7 +602,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 1056.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -617,18 +624,17 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/public",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
+		"/C/Github/QRSMeteor",
+		"/C/Github/QRSMeteor/imports",
+		"/C/Github/QRSMeteor/imports/SSO",
+		"/C/Github/QRSMeteor/imports/SSO/client",
+		"/C/Github/QRSMeteor/imports/ui",
+		"/C/Github/QRSMeteor/imports/ui/impress"
 	],
 	"file_history":
 	[
+		"/C/Github/QRSMeteor/imports/ui/layouts/layout.js",
+		"/C/Github/QRSMeteor/imports/api/server/QPSFunctions.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/landingPage.html",
@@ -754,13 +760,11 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/layouts/regionLayout.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step2.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step3.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step4.js",
-		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step2.html"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js"
 	],
 	"find":
 	{
-		"height": 64.0
+		"height": 21.0
 	},
 	"find_in_files":
 	{
@@ -1159,39 +1163,97 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "imports/ui/router.js",
+					"file": "imports/ui/impress/landingPage.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8506,
+						"buffer_size": 2906,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								748,
-								748
+								1029,
+								1029
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 25.0,
-						"translation.y": 2601.0,
+						"translation.x": 0.0,
+						"translation.y": 325.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "imports/SSO/client/SSO.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 5831,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3859,
+								3859
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 845.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "imports/ui/impress/slideSorter.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 991,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								990,
+								990
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1201,20 +1263,20 @@
 			"sheets":
 			[
 				{
-					"buffer": 1,
-					"file": "imports/ui/layouts/layout.js",
+					"buffer": 3,
+					"file": "imports/ui/router.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3376,
+						"buffer_size": 9124,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1651,
-								1654
+								8160,
+								8171
 							]
 						],
 						"settings":
@@ -1226,39 +1288,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 566.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "imports/api/server/QPSFunctions.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14407,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9073,
-								9098
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4295.0,
+						"translation.y": 2278.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -1269,7 +1299,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 37.0
+		"height": 21.0
 	},
 	"input":
 	{
@@ -1317,7 +1347,7 @@
 	"project": "qrs.sublime-project",
 	"replace":
 	{
-		"height": 120.0
+		"height": 38.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1363,7 +1393,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 478.0,
+	"side_bar_width": 237.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
