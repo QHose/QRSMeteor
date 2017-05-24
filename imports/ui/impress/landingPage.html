@@ -2,31 +2,36 @@
     <div class="ui container">
 
         {{#if authenticatedSlideGenerator}}
-            <h2 class="ui header">
+            {{#if userSelectedGroup}}
+                <h2 class="ui header">
             <img src="/images/API tool broker.png">
             <div class="content">
                 Qlik Sense slide generator
                 <div
                 class="sub header">Here we demonstrate that Qlik Sense can be used as an analytics engine for your platform.</div>
             </div>
-        </h2>
-            <div class="ui segment">
-                <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
-            </div>
-            <a href="{{pathFor 'slideGenerator'}}" class="ui right floated positive large button">Create my slides</a> 
-            {{> selectSlide}}
-        {{else}}
-
-            <div class="ui dimmer" style="height: 100%">
-                <div class="content">
-                    <div class="center">
-                        <div class="ui indeterminate text loader">Please wait while we prepare your slidedeck...</div>
-                    </div>
+                </h2>
+                <div class="ui segment">
+                    <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
                 </div>
-            </div>
+                <a href="{{pathFor 'slideGenerator'}}" class="ui right floated positive large button">Create my slides</a> {{> selectSlide}}
+            {{/if}}
+        {{else}}
+            {{> presentationDimmer}}
         {{/if}}
     </div>
     {{> userSelectPresentationModal}}
+</template>
+<template name="presentationDimmer">
+    <div class="ui container" style="height: 400px;">
+        <div class="ui inverted dimmer">
+            <div class="content">
+                <div class="center">
+                    <div class="ui indeterminate text loader">Please wait while we prepare your personal slidedeck...</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 <!-- SELECT INDIVIDUAL SLIDES  -->
 <template name="selectSlide">
@@ -37,7 +42,7 @@
             <!-- Select your slides... -->
         </div>
         <div class="content">
-            <!-- <DIV class="ui left floated button" id="slideSorter">Slide sorter</DIV> -->
+            <DIV class="ui left floated button" id="slideSorter">Slide sorter</DIV>
             <iframe src='{{slideObjectURL}}' style='border:none; height: 800px; width: 500px'></iframe>
         </div>
     </div>

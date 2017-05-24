@@ -14,17 +14,19 @@ Template.landingPage.onCreated(function() {
     //after the user is redirected to the sso page, we put this var to false. in that way we can still request dummy users for step 4 of the demo
     // Session.setAuth('loginUserForPresentation', true);
     Session.setAuth('groupForPresentation', null);
+    Session.setAuth('userLoggedInSense', null);
     Cookies.set('showSlideSorter', 'false');
     console.log('first logout the current presentation user in Qlik Sense. After the logout, we try to open the Iframe URL, and request a new ticket with a new group: generic or technical, using section access we restrict the slides...');
     Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation users
     // logoutCurrentSenseUserClientSide();
     intervalId = Meteor.setInterval(userLoggedInSense, 500);
 })
-
-Template.landingPage.onRendered(function() {
+Template.presentationDimmer.onRendered(function() {
     Template.instance().$('.dimmer')
         .dimmer('show')
-        //show a popup so the user can select whether he is technical or not...
+})
+Template.landingPage.onRendered(function() {
+    //show a popup so the user can select whether he is technical or not...
     this.$('#userSelectPresentationModal').modal('show')
         .modal({
             observeChanges: true,
@@ -52,6 +54,9 @@ Template.landingPage.onDestroyed(function() {
 Template.landingPage.helpers({
     authenticatedSlideGenerator: function() {
         return Session.get('userLoggedInSense');
+    },
+    userSelectedGroup: function(){
+        return Session.get('groupForPresentation');
     }
 })
 
@@ -89,7 +94,7 @@ function userLoggedInSense() {
 
 
 export function logoutCurrentSenseUserClientSide() {
-    Cookies.remove('X-Qlik-Session-presentation',{ path: '' });
+    Cookies.remove('X-Qlik-Session-presentation', { path: '' });
     // delete_cookie('X-Qlik-Session-presentation','', Meteor.settings.public.host);
     //http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Personal-Delete.htm
     try {
