@@ -38,9 +38,9 @@ Template.impress.onRendered(function() {
         location.reload();
     }
 
-    Template.instance()
-        .$('.ui.embed')
-        .embed();
+    // Template.instance()
+    //     .$('.ui.embed')
+    //     .embed();
 })
 
 Template.impress.onDestroyed(function() {
