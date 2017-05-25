@@ -38,13 +38,14 @@ Template.landingPage.onRendered(function() {
                 Session.setAuth('groupForPresentation', 'GENERIC');
                 console.log('group has been set to GENERIC. This group is used in the ticket to limit section access (Rows)');
             }
-        });
-    refreshModal();
+        })
+        .modal('refresh')
+         .modal('refresh');
+    // refreshModal();
+     Meteor.defer(function() {
+            this.$('#userSelectPresentationModal').modal('refresh');
+        }, 300);
 
-    function refreshModal() {
-        Meteor.setTimeout(function() { refreshModal() }, 1);
-        this.$('#userSelectPresentationModal').modal('refresh');
-    }
     Session.set('landingPageAlreadySeen', true);
 })
 Template.landingPage.onDestroyed(function() {
@@ -71,7 +72,7 @@ Template.slideGeneratorSelectionScreen.onRendered(function() {
     this.$('.screen')
         .transition({
             animation: 'fade in',
-            duration: '4s',
+            duration: '5s',
         });
 })
 
