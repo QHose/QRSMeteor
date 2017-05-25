@@ -220,6 +220,7 @@ function getLevel1And2() {
                         Session.set('mainTopics', tableWithChapters)
                         Meteor.setTimeout(function() {
                             if (Cookies.get('showSlideSorter') !== 'true') { //do not initialize impress so we can use the mobile device layout of impress to get all the slide under each other
+                                console.log('Show slideSorter selected, do not initialize impress.js');
                                 impress().init();
                                 impress().goto(0);
                             }
