@@ -8,7 +8,7 @@
 "Workshop Introduction","Introduction","What do you expect from this session?",,"","","","","         0","0","Technical - 1 day",
 "Workshop Introduction","Introduction Qlik and the slide generator","> At Qlik, we’re committed to making it easier for people to make discoveries in their data and act on them. We want to enhance everyone’s natural ability to ask questions, analyze data, and make decisions. And that helps make analyzing data a natural part of making decisions and creating value. This slide generator is a perfect example of using data in your own way. Just search, learn and discover",,"","","","","         0","0","Technical - 1 hour",
 "Workshop Introduction","1 minute integration demo video","https://youtu.be/W3gDKdv6K8Y",,"","","","","         0","0","Sales, Introduction - 30 minutes, SaaS & Power of APIs",
-"Workshop Introduction","Introduction video to demo platform which embeds Qlik Sense via our APIs","https://youtu.be/K-zfD_vAPso?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales",
+"Workshop Introduction","Video: Introduction and history of this demo platform","https://youtu.be/K-zfD_vAPso?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Sales",
 "Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine","> We have used the APIs to get the data out of our engine and used it to create this website...",,"","","","","         0","0","Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
 "Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine"," <img class=""ui large centered image"" src=""images/Engine API slide generator easy flow.png"">",,"","","","","         0","0","Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
 "Workshop Introduction","Example flow: We loaded a csv into an app and used the data in our website via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
@@ -270,14 +270,12 @@ $(""#btn_1"").click(function() {
 "Web integration","Example: What is embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","Sales, Technical - 1 hour",
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","Sales",
-"Web integration","Demonstration integration.qlik.com: Web integration","saas demo Web integration screenshot.png",,"","","","","         0","0","Sales",
-"Web integration","Demonstration integration.qlik.com: Web integration","[integration.qlik.com](http://web.saasdemo.qlik.com)",,"","","","","         0","0","Sales",
-"Web integration","Embed Qlik Sense in other applications","Lets look at [integration.qlik.com](http://web.saasdemo.qlik.com/) where we embedded
+"Web integration","Demonstration integration.qlik.com: Web integration","Lets look at [integration.qlik.com](http://web.saasdemo.qlik.com/) where we embedded
 - the hub, 
 - apps 
 - single objects 
-- or we used just the data",,"","","","","         0","0","Technical - 1 hour",
-"Web integration","Embed Qlik Sense in other applications","Saasdemo web integration hub.png",,"","","","","         0","0","Technical - 1 hour",
+- or we used just the data",,"","","","","         0","0","Technical - 1 hour, Sales",
+"Web integration","Demonstration integration.qlik.com: Web integration","Saasdemo web integration hub.png",,"","","","","         0","0","Technical - 1 hour, Sales",
 "Web integration","Introduction video to Qlik Analytics Platform (QAP)","https://youtu.be/iM_tlwGYJoM?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","Front end focussed API overview","API- overview of what they do.png",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Front end focussed API overview","This slide provides an overview of some key APIs (not all...)",,"","","","","         0","0","Technical - 1 day",
