@@ -565,6 +565,17 @@
 			}
 		},
 		{
+			"contents": "{\n    \"adminEmails\": \"mbj@qlik.com\",\n    \"public\": {\n        \"host\": \"PRESALES1\",\n        \"port\": 81,\n        \"UDC\": \"OEM_HOST\",\n        \"virtualProxyClientUsage\": \"meteor\",\n        \"webIntegrationHost\": \"localhost\",\n        \"webIntegrationDemoPort\": 3030,\n        \"SSBIAppSheetString\": \"40ef70c9-be76-4844-ac6a-d53195146c85/sheet/puEpZK/state/analysis\",\n        \"SSBIApp\": \"40ef70c9-be76-4844-ac6a-d53195146c85\",\n        \"IntegrationPresentationApp\": \"ce2c6eb5-dc73-44fb-a9f9-11fb2777fdfd\",\n        \"IntegrationPresentationSelectionSheet\": \"DYTpxv\",\n        \"IntegrationPresentationSortedDataObject\": \"pskL\",\n        \"IntegrationPresentationSlideObject\": \"BbbV\",\n        \"IntegrationPresentationProxy\": \"presentation\",\n        \"facebook\": {\n            \"clientId\": \"1754933311453043\"\n        }\n    },\n    \"private\": {\n        \"host\": \"PRESALES1\",\n        \"port\": 81,\n        \"certificatesDirectory\": \"C:\\\\Users\\\\mbj\\\\Documents\\\\GitHub\\\\QRSMeteor\",\n        \"notificationURL\": \"http://nlsch-mbj3:3000/updateSenseInfo\",\n        \"SenseServerInternalLanIP\": \"PRESALES1\",\n        \"useSSL\": false,\n        \"passphrase\": null,\n        \"authentication\": \"header\",\n        \"virtualProxy\": \"hdr\",\n        \"headerKey\": \"hdr-usr\",\n        \"UDC\": \"OEM_HOST\",\n        \"headerValue\": \"PRESALES1\\\\Qlik\",\n        \"isSecure\": true,\n        \"engineHeaders\": \"UserDirectory=PRESALES1;UserId=Qlik\",\n        \"enginePort\":   ,\n        \"proxyPort\": 4243,\n        \"google\": {\n            \"clientId\": \"527202830644-4j6ht6bn1td081hpnfvmksle1ltft5jc.apps.googleusercontent.com\",\n            \"secret\": \"y02LxMDLyNnEsQc9UGGE5aPQ\"\n        },\n        \"facebook\": {\n            \"clientId\": \"1754933311453043\",\n            \"secret\": \"e05dbcd949f8cdbd0892ac81e5eb5da4\"\n        },\n        \"twitter\": {\n            \"clientId\": \"9hpf77dh7BhLgwtGeoELT3CLX\",\n            \"secret\": \"xJ8AlVL6ofc4TxXyf2IW3GoTXunQa1LpeAT69hJD3NTYpZJhUY\"\n        },\n        \"linkedin\": {\n            \"clientId\": \"86rpkry91dn41y\",\n            \"secret\": \"ltdJn45rdGgUIHqy\"\n        },\n        \"github\": {\n            \"clientId\": \"535d2ca6386eeca90d65\",\n            \"secret\": \"924a9d853fd800d82c30dfa5c517a485c87a1f12\"\n        }\n    }\n}\n",
+			"file": "settings-development.json",
+			"file_size": 2233,
+			"file_write_time": 131397761246935618,
+			"settings":
+			{
+				"buffer_size": 2172,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "imports/ui/impress/landingPage.js",
 			"settings":
 			{
@@ -1224,7 +1235,7 @@
 						"translation.y": 802.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1256,7 +1267,7 @@
 						"translation.y": 4106.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1286,13 +1297,13 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1324,7 +1335,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1356,11 +1367,43 @@
 						"translation.y": 5987.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
+					"file": "settings-development.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2172,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1402,
+								1402
+							]
+						],
+						"settings":
+						{
+							"auto_complete": true,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "imports/ui/impress/landingPage.js",
 					"semi_transient": false,
 					"settings":
@@ -1388,11 +1431,11 @@
 						"translation.y": 943.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "imports/ui/impress/impress.css",
 					"semi_transient": false,
 					"settings":
@@ -1419,7 +1462,7 @@
 						"translation.y": 2301.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
