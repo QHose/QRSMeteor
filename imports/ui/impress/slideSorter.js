@@ -7,13 +7,6 @@ import './impressJSModifiedSource.js'
 
 
 Template.slideSorter.onRendered(function() {
-    Template.instance()
-        .$('.ui.embed')
-        .embed();
-    api = impress();
-    // api.init();
-    // document.body.classList.add("impress-disabled");
-    // document.body.classList.remove("impress-enabled");
 })
 
 Template.slideSorter.onDestroyed(function() {

@@ -1,22 +1,42 @@
 <template name="slideSorter">
-    <div id="impress">
-        <!-- SLIDE 1 -->
-        <div class="ui segment z step introduction slide one" data-x="-0" data-y="-1100">
-            <q>Questions about SaaS and multi-tenancy with Qlik Sense?
-            </q>
-            <div class="ui horizontal divider">
-                Or
+   <!--  <div id="wrap">
+
+        <div class="quarter"> -->
+            <!-- <div id="impress"> -->
+
+                <div class="ui grid">
+                    <div class="four wide column">{{> dummySlide}}</div>
+                    <div class="four wide column">{{> dummySlide}}</div>
+                    <div class="four wide column">{{> dummySlide}}</div>
+                    <div class="four wide column">{{> dummySlide}}</div>
+                    <div class="four wide column">{{> dummySlide}}</div>
+                    <div class="four wide column">{{> dummySlide}}</div>
+                    <div class="four wide column">{{> dummySlide}}</div>
+                    <div class="four wide column">{{> dummySlide}}</div>
+
+                </div>
+
+            <!-- </div> -->
+         <!--    </div>
+        </div> -->
+</template>
+
+<template name="dummySlide">
+    <div class="z step ui raised segment">
+        <h2 class="ui center aligned main header">
+            <div class="content">
+                Workshop Introduction
+                <div class="sub header" style="font-size: 1.2em;">
+                    Introduction Martijn &amp; Raymond
+                </div>
             </div>
-            <q style="margin-top: 20px; margin-bottom:40px">
-                <a href="{{pathFor 'generation'}}" class="ui positive massive centered button">Go to the demo</a>
-            </q>
-            <div style="position: absolute; bottom: 0px; right: 0px;">
-                <i class="icon positive plus"></i>
-            </div>
+        </h2>
+
+        <div class="slideContent" style="visibility: hidden;">
+
+            <img class="ui huge centered integration image transition visible" src="images/speaker introduction martijn raymond.png">
+
         </div>
-        <!-- SLIDE 2 -->
-        <div class="ui segment z step introduction slide" data-x="900" data-y="-400" data-z="2000">
-            <q>Here we demonstrate the power of the Qlik Sense <b>APIs</b> within a <b>multi-tenant SaaS application</b> environment.</q>
-        </div>
+
     </div>
 </template>

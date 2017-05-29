@@ -196,7 +196,7 @@ Router.route('/impress', {
 });
 
 Router.route('/slideSorter', {
-    template: 'slideSorter',
+    template: 'ppt_slideSorter',
     layoutTemplate: 'SSOLayout'
 });
 

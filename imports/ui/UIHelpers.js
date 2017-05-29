@@ -5,22 +5,22 @@
     import { senseConfig } from '/imports/api/config';
 
     export var gitHubLinks = {
-            createStream: 'https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsStream.js#L53',
-            copyApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L175",
-            replaceAndReloadApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L69",
-            publishApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L281",
-            requestTicket: "https://github.com/QHose/QRSMeteor/blob/50bf903dc67d8d1b3757b572e8b2dedbb63202da/imports/api/server/QPSFunctions.js#L213",
-            createPasport: "https://github.com/QHose/QRSMeteor/blob/50bf903dc67d8d1b3757b572e8b2dedbb63202da/imports/api/server/QPSFunctions.js#L56",
-            redirectURLReceived: "https://github.com/QHose/QRSMeteor/blob/master/imports/SSO/client/SSO.js#L88",
-            deleteApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L263",
-            logoutUser: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L174",
-            saveApp:"https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L127",
-            getScript: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L94",
-            setScript: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L106",
-            reloadApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L119",
-        };
+        createStream: 'https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsStream.js#L53',
+        copyApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L175",
+        replaceAndReloadApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L69",
+        publishApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L281",
+        requestTicket: "https://github.com/QHose/QRSMeteor/blob/50bf903dc67d8d1b3757b572e8b2dedbb63202da/imports/api/server/QPSFunctions.js#L213",
+        createPasport: "https://github.com/QHose/QRSMeteor/blob/50bf903dc67d8d1b3757b572e8b2dedbb63202da/imports/api/server/QPSFunctions.js#L56",
+        redirectURLReceived: "https://github.com/QHose/QRSMeteor/blob/master/imports/SSO/client/SSO.js#L88",
+        deleteApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L263",
+        logoutUser: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L174",
+        saveApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L127",
+        getScript: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L94",
+        setScript: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L106",
+        reloadApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L119",
+    };
 
-    if (Meteor.isClient) {
+    if(Meteor.isClient) {
         // console.log('Setup generic helper functions, for functions every template needs');
         Template.registerHelper('formatDate', function(date) {
             return moment(date)
@@ -169,16 +169,19 @@
             return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';
         });
 
-        Template.registerHelper('authenticatedSlideGenerator', function(someValue) {
+        Template.registerHelper('authenticatedSlideGenerator', function() {
             return Session.get('authenticatedSlideGenerator');
-
+        });
+        
+        Template.registerHelper('shrinkForSlideSorter', function() {
+            return Cookies.get('showSlideSorter') === "true" ? "shrink" : "";//
         });
 
-        Template.registerHelper('userSelectedPresentationType', function(someValue) {
+        Template.registerHelper('userSelectedPresentationType', function() {
             return Session.get('groupForPresentation'); //user selected a presentation type?
         });
 
-        Template.registerHelper('isSelected', function(someValue) {
+        Template.registerHelper('isSelected', function() {
             return someValue ? 'selected' : '';
         });
 
@@ -226,7 +229,7 @@
         });
 
         export function freshEnvironment() {
-            if (!Customers.find().count() && !TemplateApps.find().count()) {
+            if(!Customers.find().count() && !TemplateApps.find().count()) {
                 // Session.set('currentStep', 0);
                 return true
             }
@@ -265,22 +268,22 @@
             // console.log('the current step session', Session.get('currentStep'));//
 
             //step 0: fresh/resetted environment
-            if (freshEnvironment()) {
+            if(freshEnvironment()) {
                 return 0
             }
             //step 1 insert customers
-            else if (Session.get('currentStep') === 1) {
+            else if(Session.get('currentStep') === 1) {
                 Router.go('users');
                 return 1
             }
             //step 2 there are customers, but no template
-            else if (
+            else if(
                 // (Customers.find().count() && !TemplateApps.find().count()) &&
                 Session.get('currentStep') === 2) {
                 return 2
             }
             //step 3
-            else if (
+            else if(
                 // Customers.find().count() && 
                 // TemplateApps.find().count() && 
                 Session.get('currentStep') === 3 &&
@@ -289,14 +292,14 @@
                 return 3
             }
             //step 4
-            else if (
+            else if(
                 Session.get('currentStep') === 4
                 // &&
                 // Customers.find().count() &&
                 // TemplateApps.find().count()
             ) {
                 return 4;
-            } else if (Session.equals('loadingIndicator', 'loading')) {
+            } else if(Session.equals('loadingIndicator', 'loading')) {
                 return;
             } else {
                 Session.set('currentStep', 3);
@@ -305,7 +308,7 @@
         }
 
         Template.registerHelper('generationFinished', function() {
-            return (Session.equals('loadingIndicator', 'loading') || Session.get('generated?'));
+            return(Session.equals('loadingIndicator', 'loading') || Session.get('generated?'));
         });
 
         Template.registerHelper('readyToTestSSO', function() {

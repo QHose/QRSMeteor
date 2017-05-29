@@ -12,7 +12,7 @@ import '/imports/ui/pages/introductionSecurity.html';
 import '/imports/ui/pages/introductionSecurity.js';
 import '/imports/ui/pages/QMC.html';
 import '/imports/ui/users/login.js'
-import '/imports/ui/notFound.html'; 
+import '/imports/ui/notFound.html';
 import '/imports/ui/useCases/useCaseSelection.js';
 import '/imports/ui/generation/OEMPartnerSide/users.js';
 import '/imports/ui/impress/impress.js';
@@ -55,8 +55,8 @@ Meteor.startup(function() {
 
         onClose: _.noop //
 
-    });      
-    AutoForm.setDefaultTemplate("semanticUI");  
+    });  
+    AutoForm.setDefaultTemplate("semanticUI");
 });
 
 // //Facebook sync
@@ -77,10 +77,19 @@ Meteor.startup(function() {
 //    }(document, 'script', 'facebook-jssdk'));
 
 //google analytics
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+if(window.location.href.indexOf("qlik.com") > -1) {
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-82055118-1', 'auto');
-  ga('send', 'pageview');
+    ga('create', 'UA-82055118-1', 'auto');
+    ga('send', 'pageview');
+}

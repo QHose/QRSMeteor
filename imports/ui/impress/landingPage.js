@@ -40,11 +40,11 @@ Template.landingPage.onRendered(function() {
             }
         })
         .modal('refresh')
-         .modal('refresh');
-    // refreshModal();
-     Meteor.defer(function() {
-            this.$('#userSelectPresentationModal').modal('refresh');
-        }, 300);
+        .modal('refresh');
+
+    Meteor.defer(function() {
+        this.$('#userSelectPresentationModal').modal('refresh');
+    }, 300);
 
     Session.set('landingPageAlreadySeen', true);
 })
@@ -64,8 +64,8 @@ Template.landingPage.helpers({
 Template.landingPage.events({
     'click #slideSorter': function(event) {
         console.log('slide button click');
-        Session.set('showSlideSorter', true);
-        Router.go('slideGenerator'); //GO TO THE SLIDE GENERATOR
+        Cookies.set('showSlideSorter', 'true');
+        Router.go('slidesorter'); //GO TO THE SLIDE GENERATOR
     }
 })
 Template.slideGeneratorSelectionScreen.onRendered(function() {
