@@ -101,7 +101,6 @@
     -moz-transform: scale(0.2);
     -o-transform: scale(0.2);
     transform: scale(0.2);
-    /*background:red;*/
     width:250px;
     -webkit-transform-origin:left top;
     -webkit-transition:0.5s all;
@@ -132,6 +131,18 @@
     transform: scale(0.9);
     -webkit-transform-origin:left top;
     -moz-transform-origin:left top;
+    /* more transform-origin */
+}
+
+.shrinked .step:hover
+{
+    -webkit-transform: scale(3);
+    -moz-transform: scale(3);
+    -o-transform: scale(3);
+    transform: scale(3);
+    -webkit-transform-origin:left top;
+    -moz-transform-origin:left top;
+    z-index: 100;
     /* more transform-origin */
 }
 

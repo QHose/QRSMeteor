@@ -16,44 +16,21 @@
         {{/each}}
         <!--         If all the slides have been generated insert a last thank you slide
     -->
-    {{#unless loading}}
+    {{#unless loadingSlides}}
         <div class="z step thankYou" data-x="{{thankYouXvalue}}" data-z="3000">
             <img class="ui bottom aligned fluid image" src="images/presentation thank you.png">
         </div>
     {{/unless}}
     </div>
     {{> hintAndProgressBar}}
-    <div class="ui {{#if loading}} active {{/if}} inverted dimmer">
+    <div class="ui {{#if loadingSlides}} active {{/if}} inverted dimmer">
         <div class="ui indeterminate text loader" style="font-size: 1.3em">
             <h2>Creating your slides with data from the Engine API.
         </h2>
         </div>
     </div>
 </template>
-<template name="ppt_slideSorter">
-    <div class="shrinked">
-        {{#each mainTopics }}
-            <div class="four wide column">
-                {{#if chapterSlide this}}
-                    <div class="z step ui segment integrationBreaker">
-                        <h1 class="ui header">
-                    Next: {{this}} <!-- The current level 1 and 2 headers -->
-                </h1>
-                    </div>
-                {{else}}
-                    {{> integrationSlide slide=this slideNr=@index}}
-                {{/if}}
-            </div>
-        {{/each}}
-       
-    </div>
-    <div class="ui {{#if loading}} active {{/if}} inverted dimmer">
-        <div class="ui indeterminate text loader" style="font-size: 1.3em">
-            <h2>Creating your slides with data from the Engine API.
-        </h2>
-        </div>
-    </div>
-</template>
+
 <template name="integrationSlide">
     <div class="z step ui ten wide column raised segment integration" data-x="{{XValue slideNr}}" data-rotate-x="30" data-z="-1000">
         <h2 class="ui center aligned main header">

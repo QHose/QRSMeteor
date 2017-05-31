@@ -1,3 +1,28 @@
+<template name="ppt_slideSorter">
+    <div class="shrinked">
+        {{#each mainTopics }}
+                {{#if chapterSlide this}}
+                    <div class="z step ui segment integrationBreaker">
+                        <h1 class="ui header">
+                    Next: {{this}} <!-- The current level 1 and 2 headers -->
+                </h1>
+                    </div>
+                {{else}}
+                    {{> integrationSlide slide=this slideNr=@index}}
+                {{/if}}
+        {{/each}}
+       
+    </div>
+    <div class="ui {{#if loadingSlides}} active {{/if}} inverted dimmer">
+        <div class="ui indeterminate text loader" style="font-size: 1.3em">
+            <h2>Creating your slides with data from the Engine API.
+        </h2>
+        </div>
+    </div>
+</template>
+
+
+<!-- FOR TESTING ONLY -->
 <template name="slideSorter">
    <!--  <div id="wrap">
 

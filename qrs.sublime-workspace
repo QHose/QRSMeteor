@@ -529,28 +529,10 @@
 			}
 		},
 		{
-			"file": "imports/ui/router.js",
+			"file": "imports/ui/impress/landingPage.html",
 			"settings":
 			{
-				"buffer_size": 9128,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/impress/slideSorter.js",
-			"settings":
-			{
-				"buffer_size": 412,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/impress/slideSorter.html",
-			"settings":
-			{
-				"buffer_size": 1474,
+				"buffer_size": 3221,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -559,19 +541,8 @@
 			"file": "imports/ui/impress/ppt_integration.js",
 			"settings":
 			{
-				"buffer_size": 16257,
+				"buffer_size": 16816,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "{\n    \"adminEmails\": \"mbj@qlik.com\",\n    \"public\": {\n        \"host\": \"PRESALES1\",\n        \"port\": 81,\n        \"UDC\": \"OEM_HOST\",\n        \"virtualProxyClientUsage\": \"meteor\",\n        \"webIntegrationHost\": \"localhost\",\n        \"webIntegrationDemoPort\": 3030,\n        \"SSBIAppSheetString\": \"40ef70c9-be76-4844-ac6a-d53195146c85/sheet/puEpZK/state/analysis\",\n        \"SSBIApp\": \"40ef70c9-be76-4844-ac6a-d53195146c85\",\n        \"IntegrationPresentationApp\": \"ce2c6eb5-dc73-44fb-a9f9-11fb2777fdfd\",\n        \"IntegrationPresentationSelectionSheet\": \"DYTpxv\",\n        \"IntegrationPresentationSortedDataObject\": \"pskL\",\n        \"IntegrationPresentationSlideObject\": \"BbbV\",\n        \"IntegrationPresentationProxy\": \"presentation\",\n        \"facebook\": {\n            \"clientId\": \"1754933311453043\"\n        }\n    },\n    \"private\": {\n        \"host\": \"PRESALES1\",\n        \"port\": 81,\n        \"certificatesDirectory\": \"C:\\\\Users\\\\mbj\\\\Documents\\\\GitHub\\\\QRSMeteor\",\n        \"notificationURL\": \"http://nlsch-mbj3:3000/updateSenseInfo\",\n        \"SenseServerInternalLanIP\": \"PRESALES1\",\n        \"useSSL\": false,\n        \"passphrase\": null,\n        \"authentication\": \"header\",\n        \"virtualProxy\": \"hdr\",\n        \"headerKey\": \"hdr-usr\",\n        \"UDC\": \"OEM_HOST\",\n        \"headerValue\": \"PRESALES1\\\\Qlik\",\n        \"isSecure\": true,\n        \"engineHeaders\": \"UserDirectory=PRESALES1;UserId=Qlik\",\n        \"enginePort\":   ,\n        \"proxyPort\": 4243,\n        \"google\": {\n            \"clientId\": \"527202830644-4j6ht6bn1td081hpnfvmksle1ltft5jc.apps.googleusercontent.com\",\n            \"secret\": \"y02LxMDLyNnEsQc9UGGE5aPQ\"\n        },\n        \"facebook\": {\n            \"clientId\": \"1754933311453043\",\n            \"secret\": \"e05dbcd949f8cdbd0892ac81e5eb5da4\"\n        },\n        \"twitter\": {\n            \"clientId\": \"9hpf77dh7BhLgwtGeoELT3CLX\",\n            \"secret\": \"xJ8AlVL6ofc4TxXyf2IW3GoTXunQa1LpeAT69hJD3NTYpZJhUY\"\n        },\n        \"linkedin\": {\n            \"clientId\": \"86rpkry91dn41y\",\n            \"secret\": \"ltdJn45rdGgUIHqy\"\n        },\n        \"github\": {\n            \"clientId\": \"535d2ca6386eeca90d65\",\n            \"secret\": \"924a9d853fd800d82c30dfa5c517a485c87a1f12\"\n        }\n    }\n}\n",
-			"file": "settings-development.json",
-			"file_size": 2233,
-			"file_write_time": 131397761246935618,
-			"settings":
-			{
-				"buffer_size": 2172,
 				"line_ending": "Windows"
 			}
 		},
@@ -580,15 +551,6 @@
 			"settings":
 			{
 				"buffer_size": 5892,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "imports/ui/impress/impress.css",
-			"settings":
-			{
-				"buffer_size": 16601,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -673,14 +635,18 @@
 	],
 	"file_history":
 	[
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/slideSorter.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/slideSorter.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/ppt_integration.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.css",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/landingPage.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/ppt_integration.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/landingPage.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impressJSModifiedSource.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/useCaseSelection.html",
@@ -688,7 +654,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/useCaseSelection.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
@@ -708,7 +673,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.js",
 		"/C/Users/mbj/Desktop/LiberKey/MyApps/Sublime Text Build 3083/Data/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/README.md",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/simulateUserLogin.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step2.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-production.json",
@@ -798,9 +762,7 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/layouts/regionLayout.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step2.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step3.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step4.js",
-		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/generation/OEMPartnerSide/step2.html"
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layout.js"
 	],
 	"find":
 	{
@@ -930,6 +892,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"integrationSlide",
+			"shrinkForSlideSorter",
+			"click",
 			"init",
 			" id=\"wrap\" ",
 			"0.9",
@@ -1054,10 +1019,7 @@
 			"groupfor",
 			"slideObjectURL",
 			"prefix: 'anon'",
-			"call the server",
-			"call the",
-			"loginUserForPresentation",
-			"getRedirectUrl"
+			"call the server"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1203,7 +1165,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1219,8 +1181,8 @@
 						"selection":
 						[
 							[
-								2432,
-								2432
+								2345,
+								2361
 							]
 						],
 						"settings":
@@ -1232,166 +1194,33 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 802.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "imports/ui/router.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9128,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8206,
-								8206
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 4106.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "imports/ui/impress/slideSorter.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 412,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								393,
-								393
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 2,
-			"sheets":
-			[
-				{
-					"buffer": 3,
-					"file": "imports/ui/impress/slideSorter.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1474,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								188,
-								219
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "imports/ui/impress/ppt_integration.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16257,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10671,
-								10671
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 119.0,
-						"translation.y": 5987.0,
+						"translation.y": 655.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "settings-development.json",
+					"buffer": 1,
+					"file": "imports/ui/impress/landingPage.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2172,
+						"buffer_size": 3221,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1402,
-								1402
+								1836,
+								1927
 							]
 						],
 						"settings":
 						{
-							"auto_complete": true,
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -1403,20 +1232,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "imports/ui/impress/landingPage.js",
+					"buffer": 2,
+					"file": "imports/ui/impress/ppt_integration.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5892,
+						"buffer_size": 16816,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3264,
-								3264
+								5787,
+								5787
 							]
 						],
 						"settings":
@@ -1428,41 +1257,42 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": -0.0,
-						"translation.y": 943.0,
+						"translation.y": 3379.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "imports/ui/impress/impress.css",
+					"buffer": 3,
+					"file": "imports/ui/impress/landingPage.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16601,
+						"buffer_size": 5892,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2533,
-								2533
+								3193,
+								3233
 							]
 						],
 						"settings":
 						{
+							"auto_complete": false,
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 2301.0,
+						"translation.x": -0.0,
+						"translation.y": 847.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1485,18 +1315,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -1556,7 +1379,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -1564,7 +1387,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 436.0,
+	"side_bar_width": 591.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

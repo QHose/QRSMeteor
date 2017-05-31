@@ -65,7 +65,7 @@ Template.landingPage.events({
     'click #slideSorter': function(event) {
         console.log('slide button click');
         Cookies.set('showSlideSorter', 'true');
-        Router.go('slidesorter'); //GO TO THE SLIDE GENERATOR
+        Router.go('slideSorter'); //GO TO THE SLIDE GENERATOR
     }
 })
 Template.slideGeneratorSelectionScreen.onRendered(function() {

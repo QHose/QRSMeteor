@@ -1,6 +1,5 @@
 <template name="landingPage">
     <div class="ui container">
-
         {{#if authenticatedSlideGenerator}}
             {{#if userSelectedGroup}}
                 {{>slideGeneratorSelectionScreen}}
@@ -11,6 +10,7 @@
     </div>
     {{> userSelectPresentationModal}}
 </template>
+
 <template name="slideGeneratorSelectionScreen">
     <div class="screen">
         <h2 class="ui header">
@@ -20,13 +20,19 @@
                 <div
                 class="sub header">Here we demonstrate the usage of Qlik Sense as a data analytics engine for your platform.</div>
             </div>
-                </h2>
+        </h2>
         <div class="ui segment">
             <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: 500px; border: none;"> </iframe>
         </div>
-        <a href="{{pathFor 'slideGenerator'}}" class="ui right floated positive large button">Create my slides</a> {{> selectSlide}}
+        <div class="ui right floated buttons">
+            <DIV class="ui button" id="slideSorter">Slide overview</DIV>
+            <div class="or"></div>
+            <a href="{{pathFor 'slideGenerator'}}" class="ui right floated positive large button">Create my slides</a>
+        </div>
+        {{> selectSlide}}
     </div>
 </template>
+
 <template name="presentationDimmer">
     <div class="ui container" style="height: 400px;">
         <div class="ui inverted dimmer">
@@ -38,6 +44,7 @@
         </div>
     </div>
 </template>
+
 <!-- SELECT INDIVIDUAL SLIDES  -->
 <template name="selectSlide">
     <div class="ui accordion">
@@ -47,8 +54,9 @@
             <!-- Select your slides... -->
         </div>
         <div class="content">
-<!--             <DIV class="ui left floated tiny button" id="slideSorter">Slide overview</DIV>
- -->            <iframe src='{{slideObjectURL}}' style='border:none; height: 800px; width: 500px'></iframe>
+            <!--             <DIV class="ui left floated tiny button" id="slideSorter">Slide overview</DIV>
+        -->
+            <iframe src='{{slideObjectURL}}' style='border:none; height: 800px; width: 500px'></iframe>
         </div>
     </div>
 </template>

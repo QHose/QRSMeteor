@@ -174,9 +174,9 @@ Router.route('/ppt_integration', {
     layoutTemplate: 'SSOLayout'
 });
 
-Router.route('/test', {
-    template: 'generation',
-});
+// Router.route('/test', {
+//     template: 'generation',
+// });
 
 // Single sing on integration route, this is the route you configure in Qlik sense proxy
 Router.route('/SSO', {

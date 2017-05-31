@@ -20,11 +20,8 @@ Template.ppt_integration.onRendered(function() {
 })
 
 
-Template.ppt_slideSorter.onRendered(function() {
-    initializePresentation();
-})
 
-function initializePresentation() {
+export function initializePresentation() {
     Session.set('slideLoading', true);
     getLevel1to3('integrationTopics');
     getLevel1And2();
@@ -76,82 +73,50 @@ Template.integrationSlideContent.onRendered(function() {
 
 })
 
-
-Template.ppt_integration.helpers({
-    mainTopics() {
-        return Session.get('mainTopics'); //only the level 1 and 2 colums, we need this for the headers of the slide
-    },
-    chapterSlide(currentRow) {
-        if(typeof(currentRow) === 'string') { //we got a chapter slide
-            // console.log('we found a chapter slide', currentRow);
-            return true
-        }
-    },
-    XValue(index) {
-        return setXValue(index);
-    },
-    loading() {
-        return Session.get('slideLoading');
-    },
-    thankYouXvalue() {
-        return Session.get('currentSlideNumber') * slideWidth;
-    },
-    slideSorter() {
-        return Cookies.get('showSlideSorter') === "true" ? "shrink" : "";
+//both the slidesorter and pptintegration use the helpers below
+Template.registerHelper('chapterSlide', function(currentRow) {
+    if(typeof(currentRow) === 'string') { //we got a chapter slide
+        // console.log('we found a chapter slide', currentRow);
+        return true
     }
 });
 
-Template.ppt_slideSorter.helpers({
-    mainTopics() {
+Template.registerHelper('mainTopics', function() {
         return Session.get('mainTopics'); //only the level 1 and 2 colums, we need this for the headers of the slide
-    },
-    // topics() {
-    //     return Session.get('integrationTopics'); //all level 1 2 and 3 data, we need level 3 for the bullets/images of the slide
-    // },
-    chapterSlide(currentRow) {
-        if(typeof(currentRow) === 'string') { //we got a chapter slide
-            // console.log('we found a chapter slide', currentRow);
-            return true
-        }
-    },
-    XValue(index) {
-        return setXValue(index);
-    },
-    loading() {
-        return Session.get('slideLoading');
-    },
-    thankYouXvalue() {
-        return Session.get('currentSlideNumber') * slideWidth;
-    },
-    slideSorter() {
-        return Cookies.get('showSlideSorter') === "true" ? "shrink" : "";
-    }
+});
+Template.registerHelper('loadingSlides', function() {
+    return Session.get('slideLoading');
+})
+
+Template.registerHelper('XValue', function(index) {
+    return setXValue(index);
+});
+
+Template.registerHelper('thankYouXvalue', function(currentSlideNumber) {
+    return Session.get('currentSlideNumber') * slideWidth;
+
+});
+
+Template.registerHelper('slideSorter', function() {
+    return Cookies.get('showSlideSorter') === "true" ? "shrink" : "";
 });
 
 Template.integrationSlide.helpers({
     level(level, slide) {
         return textOfLevel(slide, level);
     },
-    XValue(index) {
-        Session.set('currentSlideNumber', index);
-        return slideWidth * index;
-        // return setXValue(index);
-    },
-    slideActive(slideNr) {
-        //active slide gets set via impress.js, that fires an event. see ppt_integration.onRendered
-        //for performance reasons we only do all our formatting etc when the slide is active.
-        //but for the slide sorter we need all content to be loaded in one go...
-        //show the slide if the slide is active, but in case of the slide sorter all slides should be presented at once. This is a performance tweak...
-        var showSlideSorter = Cookies.get('showSlideSorter');
-        return(Session.get('activeStepNr') >= slideNr + 1) || Cookies.get('showSlideSorter') === 'true';
-    },
     step() {
         return Session.get('activeStepNr');
-    },
-    shrinkForSlideSorter() {
-        return Cookies.get('showSlideSorter') === "true" ? "shrink" : "";
     }
 })
+
+//active slide gets set via impress.js, that fires an event. see ppt_integration.onRendered
+//for performance reasons we only do all our formatting etc when the slide is active.
+//but for the slide sorter we need all content to be loaded in one go...
+//show the slide if the slide is active, but in case of the slide sorter all slides should be presented at once. This is a performance tweak...
+Template.registerHelper('slideActive', function(slideNr) {
+    return(Session.get('activeStepNr') >= slideNr + 1) || Cookies.get('showSlideSorter') === 'true';
+});
 
 Template.integrationSlideContent.helpers({
     itemsOfLevel: function(level, slide) { //get all child items of a specific level, normally you will insert level 3 
@@ -183,7 +148,6 @@ Template.integrationSlideContent.helpers({
         }
     }
 })
-
 
 function setXValue(index) {
     Session.set('currentSlideNumber', index);
