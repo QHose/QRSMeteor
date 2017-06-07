@@ -15,22 +15,10 @@ Template.ppt_slideSorter.onRendered(function() {
     Meteor.setTimeout(function() {
         this.$('.step')
             .attr('style', 'margin-top: 40px; max-height: 100%;')
-        this.$('img')
-            .attr('data - action', 'zoom');
         this.$('.slideContent').css({ "visibility": "visible" });
-
     }, 1000);
 })
 
-Template.ppt_slideSorter.events({
-    'mouseover .step': function(event, template) {
-        console.log('mouse over slide, maak groot');
-    },
-    'mouseout .sidebar.integration': function(event, template) {}
-})
-
-
-
-Template.slideSorter.onDestroyed(function() {
-    $('body').attr('style', 'height: 100%;');
-})
+// Template.slideSorter.onDestroyed(function() {
+//     $('body').attr('style', 'height: 100%;');
+// })
