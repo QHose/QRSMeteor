@@ -41,28 +41,7 @@
     </div>
     {{> footer}}
 </template>
-<template name="presentationLayout">
-    {{#if unsupportedBrowser}}
-        <div class="ui text container">
-            <div class="ui icon message">
-                <i class="warning sign icon"></i>
-                <div class="content">
-                    <div class="header">
-                        Not supported browser or mobile device
-                    </div>
-                    <p>This slide generator can't be used on your mobile or with some browsers. Please use your laptop using a browser like Chrome, Safari or Firefox... </p>
-                    <p><a href="{{pathFor 'useCaseSelection'}}" class="ui right floated button">Take me home</a> </p>
-                </div>
-            </div>
-        </div>
-    {{else}}
-        {{> yield}}
-        <!-- FAKE IFRAME TO KEEP THE CONNECTION TO QLIK SENSE OPEN WHILE WE CONNECT TO ANOTHER PAGE -->
-        {{#if userSelectedPresentationType}}
-            <iframe src="{{IFrameURLChapterSelection}}" style="width:0;height:0;border:0; border:none;visibility:hidden;display:none" seamless="seamless"></iframe>
-        {{/if}}
-    {{/if}}
-</template>
+
 <template name="footer">
     <div id="footer" class="ui footer page one column grid">
         <div class="column">

@@ -2,6 +2,8 @@ import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
 
 import './layout.html';
+import './presentation.html';
+import './presentation';
 import '../checkConfig.html';
 import '/imports/ui/nav.html';
 import '/imports/ui/nav.js';
@@ -12,6 +14,7 @@ Template.layout.helpers({
         return Session.get('NoSenseConnection');
     }
 });
+
 Template.loginDimmer.onRendered(function() {
     Template.instance().$('.dimmer')
         .dimmer('show');
