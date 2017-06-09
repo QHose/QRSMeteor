@@ -1,5 +1,5 @@
 <template name="ppt_slideSorter">
-    <div class="shrinked">
+    <div id="shrinked">
         {{#each mainTopics }}
                 {{#if chapterSlide this}}
                     <div class="z step ui segment integrationBreaker">
@@ -10,8 +10,7 @@
                 {{else}}
                     {{> integrationSlide slide=this slideNr=@index}}
                 {{/if}}
-        {{/each}}
-       
+        {{/each}}       
     </div>
     <div class="ui {{#if loadingSlides}} active {{/if}} inverted dimmer">
         <div class="ui indeterminate text loader" style="font-size: 1.3em">

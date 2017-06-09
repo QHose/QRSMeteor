@@ -74,77 +74,42 @@
     top: 20px;
 }
 
+.step.integration .sub.header {
+    font-size: 1.2em;
+}
+
 
 /*SLIDE SIZE WHEN IN SLIDE SORTER*/
-#wrap
-{
-    /*background:yellow;*/
-    height:66px;
-    width:55px;
-    padding:10px;
-    float:left;
-    -webkit-transition:0.5s all;
-    -moz-transition:0.5s all;
-    /* more transition here */
-}
 
-#wrap:hover
-{
-    height:300px;
-    width:260px;
-}
-
-.quarter
-{
-    padding:20px;
-    -webkit-transform: scale(0.2);
-    -moz-transform: scale(0.2);
-    -o-transform: scale(0.2);
-    transform: scale(0.2);
-    width:250px;
-    -webkit-transform-origin:left top;
-    -webkit-transition:0.5s all;
-    -moz-transition:0.5s all;
-    /* more transition here */
-}
-
-.shrinked
-{
+#shrinked {
     margin-top: 30px;
-    padding:20px;
+    padding: 20px;
     -webkit-transform: scale(0.3);
     -moz-transform: scale(0.3);
     -o-transform: scale(0.3);
     transform: scale(0.3);
     /*background:red;*/
-    -webkit-transform-origin:left top;
-    -webkit-transition:0.5s all;
-    -moz-transition:0.5s all;
+    -webkit-transform-origin: left top;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
     /* more transition here */
 }
 
-#wrap:hover .quarter
-{
-    -webkit-transform: scale(0.9);
-    -moz-transform: scale(0.9);
-    -o-transform: scale(0.9);
-    transform: scale(0.9);
-    -webkit-transform-origin:left top;
-    -moz-transform-origin:left top;
-    /* more transform-origin */
+#shrinked .step {
+    transition: transform 2s !important;
 }
 
-.shrinked .step:hover
-{
+#shrinked .step:hover {
     -webkit-transform: scale(3);
     -moz-transform: scale(3);
     -o-transform: scale(3);
     transform: scale(3);
-    -webkit-transform-origin:left top;
-    -moz-transform-origin:left top;
+    -webkit-transform-origin: left top;
+    -moz-transform-origin: left top;
     z-index: 100;
     /* more transform-origin */
 }
+
 
 /*.z.step.ui.segment.integration.shrink {
     -webkit-transform: scale(0.3);
