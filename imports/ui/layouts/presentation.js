@@ -30,8 +30,8 @@ Template.presentationLayout.events({
     },
     'click .button createSlides': function(event) {
         console.log('button createSlides clicked');
-        $('.ui.sidebar')
-            .sidebar('toggle');
+        // $('.ui.sidebar')
+        //     .sidebar('toggle');
         Session.set('showPresentation', true);
     },
     // 'mouseover .sidebar.integration': function(event) {
