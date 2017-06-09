@@ -174,9 +174,9 @@ Router.route('/ppt_integration', {
     layoutTemplate: 'SSOLayout'
 });
 
-// Router.route('/test', {
-//     template: 'generation',
-// });
+Router.route('/test', {
+    template: 'slideSorter',
+});
 
 // Single sing on integration route, this is the route you configure in Qlik sense proxy
 Router.route('/SSO', {
@@ -214,11 +214,11 @@ Router.route('/slideGenerator', {
 //slide deck integration
 Router.route('/integration', {
     template: 'landingPage',
-    layoutTemplate: 'presentationLayout'
+    layoutTemplate: 'SSOLayout'
 });
 Router.route('/slides', {
     template: 'landingPage',
-    layoutTemplate: 'presentationLayout'
+    layoutTemplate: 'SSOLayout'
 });
 
 
