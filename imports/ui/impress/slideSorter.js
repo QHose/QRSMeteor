@@ -23,7 +23,7 @@ Template.slideSorter.onRendered(function() {
 function init() {
     Meteor.setTimeout(function() {
         this.$('.step')
-            .removeClass("integration")
+            // .removeClass("integration")
             .attr('style', 'margin-top: 40px; max-height: 100%;');
         this.$('.slideContent').css({ "visibility": "visible" });
     }, 100);
