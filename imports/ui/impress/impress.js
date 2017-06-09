@@ -38,9 +38,10 @@ Template.impress.onRendered(function() {
         location.reload();
     }
 
-    // Template.instance()
-    //     .$('.ui.embed')
-    //     .embed();
+    //init the intro video in the slides 
+    Template.instance()
+        .$('.ui.embed')
+        .embed();
 })
 
 Template.impress.onDestroyed(function() {
