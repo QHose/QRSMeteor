@@ -219,16 +219,15 @@ function getLevel1And2() {
                         console.log('Received a table of data via the Engine API, now the slides can be created by impress.js', tableWithChapters);
                         Session.set('mainTopics', tableWithChapters)
                         Meteor.setTimeout(function() {
-                            console.log('showSlideSorter?', Cookies.get('showSlideSorter'));
                             if(Cookies.get('showSlideSorter') !== 'true') { //do not initialize impress so we can use the mobile device layout of impress to get all the slide under each other
                                 // console.log('Show slideSorter NOT selected, so initialize impress.js');
                                 impress().init();
                                 impress().goto(0);
                             }
 
-                            $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
+                            // $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
                             Session.set('slideLoading', false);
-                        }, 3000);
+                        }, 1000);
                     })
                 })
         })

@@ -24,6 +24,14 @@ function init() {
         this.$('.step')
             // .removeClass("integration")
             .attr('style', 'margin-top: 40px; max-height: 100%;');
-        this.$('.slideContent').css({ "visibility": "visible" });
-    }, 100);
+        // this.$('.slideContent').css({ "visibility": "visible" });
+    }, 1000);
 }
+
+Template.ppt_slideSorter.events({
+    'click .step' (event, template) {
+        console.log('Data context of the slide (received from Qlik Sense Engine API) ', this);
+        $(event.target).closest(".step")
+            .toggleClass("zoomOut");
+    }
+})
