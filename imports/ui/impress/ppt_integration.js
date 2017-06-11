@@ -221,14 +221,14 @@ function getLevel1And2() {
                         Meteor.setTimeout(function() {
                             console.log('showSlideSorter?', Cookies.get('showSlideSorter'));
                             if(Cookies.get('showSlideSorter') !== 'true') { //do not initialize impress so we can use the mobile device layout of impress to get all the slide under each other
-                                console.log('Show slideSorter NOT selected, so initialize impress.js');
+                                // console.log('Show slideSorter NOT selected, so initialize impress.js');
                                 impress().init();
                                 impress().goto(0);
                             }
 
                             $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
                             Session.set('slideLoading', false);
-                        }, 1000);
+                        }, 3000);
                     })
                 })
         })

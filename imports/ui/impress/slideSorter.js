@@ -10,16 +10,15 @@ import { initializePresentation } from './ppt_integration'
 
 Template.ppt_slideSorter.onRendered(function() {
     initializePresentation();
-    //after the page is loaded, ensure the slides have proper margins, and remove the scrollbar
     init();
 })
 
 Template.slideSorter.onRendered(function() {
     initializePresentation();
-    //after the page is loaded, ensure the slides have proper margins, and remove the scrollbar
     init();
 })
 
+//after the page is loaded, ensure the slides have proper margins, and remove the scrollbar
 function init() {
     Meteor.setTimeout(function() {
         this.$('.step')
@@ -28,6 +27,3 @@ function init() {
         this.$('.slideContent').css({ "visibility": "visible" });
     }, 100);
 }
-// Template.slideSorter.onDestroyed(function() {
-//     $('body').attr('style', 'height: 100%;');
-// })

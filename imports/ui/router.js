@@ -123,7 +123,7 @@ function loginQlik() {
                 console.error(err);
             } else {
                 Meteor.loginWithPassword(user.email, user.password, function(err, res) { //
-                   if(err) {
+                    if(err) {
                         sAlert.error('Error logging you in...', err.message);
                         console.error(err);
                     } else {
@@ -174,13 +174,15 @@ Router.route('/ppt_integration', {
     layoutTemplate: 'SSOLayout'
 });
 
-Router.route('/test', {
-    template: 'slideSorter',
-});
-
 // Single sing on integration route, this is the route you configure in Qlik sense proxy
 Router.route('/SSO', {
     template: 'SSO',
+    layoutTemplate: 'SSOLayout'
+});
+
+//SLIDES FOR THE SAAS AUTOMATION INTRODUCTION (/GENERATION)
+Router.route('/impress', {
+    template: 'impress',
     layoutTemplate: 'SSOLayout'
 });
 
@@ -190,9 +192,25 @@ Router.route('/presentationsso', {
     layoutTemplate: 'SSOLayout'
 });
 
-Router.route('/impress', {
-    template: 'impress',
-    layoutTemplate: 'SSOLayout'
+//SLIDE GENERATOR LANDING PAGES
+Router.route('/presentation', {
+    template: 'landingPage',
+    layoutTemplate: 'presentationLayout'
+});
+
+Router.route('/integration', {
+    template: 'landingPage',
+    layoutTemplate: 'presentationLayout'
+});
+Router.route('/slides', {
+    template: 'landingPage',
+    layoutTemplate: 'presentationLayout'
+});
+
+
+Router.route('/test', {
+    template: 'slideSorter',
+    layoutTemplate: 'presentationLayout'
 });
 
 Router.route('/slideSorter', {
@@ -201,25 +219,12 @@ Router.route('/slideSorter', {
 });
 
 
-Router.route('/presentation', {
-    template: 'landingPage',
-    layoutTemplate: 'presentationLayout'
-});
-
+//START THE SLIDE SHOW
 Router.route('/slideGenerator', {
     template: 'ppt_integrationMain',
     layoutTemplate: 'presentationLayout'
 });
 
-//slide deck integration
-Router.route('/integration', {
-    template: 'landingPage',
-    layoutTemplate: 'SSOLayout'
-});
-Router.route('/slides', {
-    template: 'landingPage',
-    layoutTemplate: 'SSOLayout'
-});
 
 
 Router.route('/useCaseSelection', function() {

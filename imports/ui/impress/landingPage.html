@@ -1,11 +1,11 @@
 <template name="landingPage">
     <div class="ui container">
-        {{#if authenticatedSlideGenerator}}
-            {{#if userSelectedGroup}}
+        {{#if userSelectedGroup}}
+            {{#if authenticatedSlideGenerator}}
                 {{>slideGeneratorSelectionScreen}}
+            {{else}}
+                {{> presentationDimmer}}
             {{/if}}
-        {{else}}
-            {{> presentationDimmer}}
         {{/if}}
     </div>
     {{> userSelectPresentationModal}}

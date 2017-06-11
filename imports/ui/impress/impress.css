@@ -82,7 +82,7 @@
 /*SLIDE SIZE WHEN IN SLIDE SORTER*/
 
 @media print {
-   #shrinked {
+   .step {
         page-break-inside:avoid;
         position:relative;
     }
@@ -134,6 +134,7 @@
     max-height: calc(100vh);
     overflow: auto;
     padding: 40px;
+    margin-top: 20px;
     background-image: url("/images/Qlik_Leftcorner_Icon.png");
     background-repeat: no-repeat;
     background-position: left top;

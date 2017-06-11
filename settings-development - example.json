@@ -1,22 +1,22 @@
 {
     "adminEmails": "mbj@qlik.com",
     "public": {
-        "host": "integration.qlik.com",
-        "port": 443,
+        "host": "PRESALES1",
+        "port": 81,
         "UDC": "OEM_HOST",
         "virtualProxyClientUsage": "meteor",
-        "webIntegrationHost": "web.saasdemo.qlik.com",
-        "webIntegrationDemoPort": 80,
-        "SSBIAppSheetString": "696b6d9c-d045-4053-9d49-cd57ed7de392/sheet/puEpZK/state/analysis",
-        "SSBIApp": "696b6d9c-d045-4053-9d49-cd57ed7de392",
-        "IntegrationPresentationApp": "4e84d03a-d2d5-4978-b42b-42b04343c149",
+        "webIntegrationHost": "localhost",
+        "webIntegrationDemoPort": 3030,
+        "SSBIAppSheetString": "40ef70c9-be76-4844-ac6a-d53195146c85/sheet/puEpZK/state/analysis",
+        "SSBIApp": "40ef70c9-be76-4844-ac6a-d53195146c85",
+        "IntegrationPresentationApp": "ce2c6eb5-dc73-44fb-a9f9-11fb2777fdfd",
         "IntegrationPresentationSelectionSheet": "DYTpxv",
-        "IntegrationPresentationSortedDataObject": "pskL", 
+        "IntegrationPresentationSortedDataObject": "pskL",
         "IntegrationPresentationSlideObject": "BbbV",
         "IntegrationPresentationProxy": "presentation",
         "facebook": {
             "clientId": "1754933311453043"
-        }        
+        }
     },
     "private": {
         "host": "PRESALES1",
@@ -30,30 +30,30 @@
         "virtualProxy": "hdr",
         "headerKey": "hdr-usr",
         "UDC": "OEM_HOST",
-        "headerValue": "PRESALES1\\meteor",
+        "headerValue": "PRESALES1\\Qlik",
         "isSecure": true,
         "engineHeaders": "UserDirectory=PRESALES1;UserId=Qlik",
         "enginePort": 4747,
         "proxyPort": 4243,
         "google": {
             "clientId": "527202830644-.apps.googleusercontent.com",
-            "secret": ""
+            "secret": "y02UGGE5aPQ"
         },
         "facebook": {
-            "clientId": "1754933311453043",
-            "secret": ""
+            "clientId": "175493043",
+            "secret": "e05dbcda4"
         },
         "twitter": {
-            "clientId": "9hpf77dh7BhLgwtGeoELT3CLX",
-            "secret": ""
+            "clientId": "9hpftGeoELT3CLX",
+            "secret": "xJ8AlVL6ofc4TxXJhUY"
         },
         "linkedin": {
             "clientId": "86rpkry91dn41y",
-            "secret": ""
+            "secret": "ltdJn45rdGgUIHqy"
         },
         "github": {
             "clientId": "535d2ca6386eeca90d65",
-            "secret": ""
+            "secret": "924a9d853fd80f12"
         }
     }
 }

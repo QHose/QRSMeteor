@@ -33,11 +33,5 @@ Template.presentationLayout.events({
         // $('.ui.sidebar')
         //     .sidebar('toggle');
         Session.set('showPresentation', true);
-    },
-    // 'mouseover .sidebar.integration': function(event) {
-    //     Session.set('showPresentation', false);
-    // },
-    // 'mouseout .sidebar.integration': function(event) {
-    //     Session.set('showPresentation', true);
-    // }
+    }
 })

@@ -1,4 +1,4 @@
-<template name="presentationLayout">
+<template name="presentationLayoutWRONG">
     {{#if unsupportedBrowser}}
         <div class="ui text container">
             <div class="ui icon message">
@@ -14,22 +14,46 @@
         </div>
     {{else}}
         {{> sAlert}}
-          <div style="position: absolute; bottom: 0px; right: 0px;">
-                <a style="rgba(0, 0, 0, 0.87); font-size: 0.5em" href="{{pathFor 'legal'}}">Terms of usage</a>
-            </div>
+        <div style="position: absolute; bottom: 0px; right: 0px;">
+            <a style="rgba(0, 0, 0, 0.87); font-size: 0.5em" href="{{pathFor 'legal'}}">Terms of usage</a>
+        </div>
         <div class="ui very wide sidebar integration">
             <iframe id="IFrameURLChapterSelection" src='{{IFrameURLChapterSelection}}' class="selector"> </iframe>
         </div>
         <div class="pusher">
             <div class="ui black launch right attached fixed button" style="background-color: #545454; padding-left:20px">
                 <i class="content icon"></i>
-                <span class="text"><!-- Engine API Slide generator explaining SaaS with Qlik Sense (<a href="{{pathFor 'legal'}}">PROTOTYPE</a>) --></span>
-            </div>          
+                <span class="text"></span>
+            </div>
             {{> yield}}
         </div>
-        <!-- FAKE IFRAME TO KEEP THE CONNECTION TO QLIK SENSE OPEN WHILE WE CONNECT TO ANOTHER PAGE -->
-        {{#if userSelectedPresentationType}}
-            <iframe src="{{IFrameURLChapterSelection}}" style="width:0;height:0;border:0; border:none;visibility:hidden;display:none" seamless="seamless"></iframe>
-        {{/if}}
+        {{> keepSenseConnectionOpen}}
+
+    {{/if}}
+</template>
+<template name="presentationLayout">
+    {{#if unsupportedBrowser}}
+        <div class="ui text container">
+            <div class="ui icon message">
+                <i class="warning sign icon"></i>
+                <div class="content">
+                    <div class="header">
+                        Not supported browser or mobile device
+                    </div>
+                    <p>This slide generator can't be used on your mobile or with some browsers. Please use your laptop using a browser like Chrome, Safari or Firefox... </p>
+                    <p><a href="{{pathFor 'useCaseSelection'}}" class="ui right floated button">Take me home</a> </p>
+                </div>
+            </div>
+        </div>
+    {{else}}
+        {{> yield}}
+        {{> keepSenseConnectionOpen}}
+    {{/if}}
+</template>
+
+<template name="keepSenseConnectionOpen">
+    <!-- FAKE IFRAME TO KEEP THE CONNECTION TO QLIK SENSE OPEN WHILE WE CONNECT TO ANOTHER PAGE -->
+    {{#if userSelectedPresentationType}}
+        <iframe src="{{IFrameURLChapterSelection}}" style="width:0;height:0;border:0; border:none;visibility:hidden;display:none" seamless="seamless"></iframe>
     {{/if}}
 </template>
