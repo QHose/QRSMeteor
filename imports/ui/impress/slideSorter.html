@@ -1,16 +1,22 @@
 <template name="ppt_slideSorter">
+    <div class="row">
+        <a href="{{pathFor 'slides'}}" class="ui black launch right attached fixed button" style="background-color: #545454;">
+             <i class="content icon" style="padding-left:20px"></i></a>       
+
+    </div>
+
     <div id="shrinked">
         {{#each mainTopics }}
-                {{#if chapterSlide this}}
-                    <div class="z step ui segment integrationBreaker">
-                        <h1 class="ui header">
+            {{#if chapterSlide this}}
+                <div class="z step ui segment integrationBreaker">
+                    <h1 class="ui header">
                     Next: {{this}} <!-- The current level 1 and 2 headers -->
                 </h1>
-                    </div>
-                {{else}}
-                    {{> integrationSlide slide=this slideNr=@index}}
-                {{/if}}
-        {{/each}}       
+                </div>
+            {{else}}
+                {{> integrationSlide slide=this slideNr=@index}}
+            {{/if}}
+        {{/each}}
     </div>
     <div class="ui {{#if loadingSlides}} active {{/if}} inverted dimmer">
         <div class="ui indeterminate text loader" style="font-size: 1.3em">
@@ -20,28 +26,27 @@
     </div>
 </template>
 
-
 <!-- STUFF BELOW FOR TESTING ONLY -->
 <template name="slideSorter">
-   <!--  <div id="wrap">
+    <!--  <div id="wrap">
 
         <div class="quarter"> -->
-            <!-- <div id="impress"> -->
+    <!-- <div id="impress"> -->
 
-                <div class="ui grid">
-                    <div class="four wide column">{{> dummySlide}}</div>
-                    <div class="four wide column">{{> dummySlide}}</div>
-                    <div class="four wide column">{{> dummySlide}}</div>
-                    <div class="four wide column">{{> dummySlide}}</div>
-                    <div class="four wide column">{{> dummySlide}}</div>
-                    <div class="four wide column">{{> dummySlide}}</div>
-                    <div class="four wide column">{{> dummySlide}}</div>
-                    <div class="four wide column">{{> dummySlide}}</div>
+    <div class="ui grid">
+        <div class="four wide column">{{> dummySlide}}</div>
+        <div class="four wide column">{{> dummySlide}}</div>
+        <div class="four wide column">{{> dummySlide}}</div>
+        <div class="four wide column">{{> dummySlide}}</div>
+        <div class="four wide column">{{> dummySlide}}</div>
+        <div class="four wide column">{{> dummySlide}}</div>
+        <div class="four wide column">{{> dummySlide}}</div>
+        <div class="four wide column">{{> dummySlide}}</div>
 
-                </div>
+    </div>
 
-            <!-- </div> -->
-         <!--    </div>
+    <!-- </div> -->
+    <!--    </div>
         </div> -->
 </template>
 
