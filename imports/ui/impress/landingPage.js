@@ -20,6 +20,7 @@ Template.landingPage.onCreated(function() {
     Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation users
     // logoutCurrentSenseUserClientSide();
     intervalId = Meteor.setInterval(userLoggedInSense, 500);
+    console.log('Qlik Sense presentation session cookie:', Cookies.get('X-Qlik-Session-presentationsso')); 
 })
 Template.presentationDimmer.onRendered(function() {
     Template.instance().$('.dimmer')
@@ -102,7 +103,6 @@ function userLoggedInSense() {
 
 
 export function logoutCurrentSenseUserClientSide() {
-    Cookies.remove('X-Qlik-Session-presentation', { path: '' });
     // delete_cookie('X-Qlik-Session-presentation','', Meteor.settings.public.host);
     //http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Personal-Delete.htm
     try {
