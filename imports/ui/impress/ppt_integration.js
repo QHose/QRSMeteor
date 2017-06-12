@@ -45,31 +45,34 @@ Template.ppt_integration.onDestroyed(function() {
 
 Template.integrationSlideContent.onRendered(function() {
 
-    //init the youtube videos via semanticUI
-    this.$('.ui.embed').embed();
+    Meteor.setTimeout(function() {
+        //init the youtube videos via semanticUI
+        this.$('.ui.embed').embed();
 
-    this.$('.markdownItem, .videoPlaceholder').transition({
-        animation: 'fade in',
-        duration: '3s',
-    });
+        if(!Cookies.get('showSlideSorter') === 'true') { //only do animations for the slide show, not the slide overview
+            this.$('.markdownItem, .videoPlaceholder').transition({
+                animation: 'fade in',
+                duration: '3s',
+            });
 
-    this.$('img').transition({
-        animation: 'fade in',
-        duration: '3s',
-    });
+            this.$('img').transition({
+                animation: 'fade in',
+                duration: '3s',
+            });
 
-    this.$('blockquote').transition({
-        animation: 'fade in',
-        duration: '5s',
-    });
+            this.$('blockquote').transition({
+                animation: 'fade in',
+                duration: '5s',
+            });
+        }
+        //make sure all code gets highlighted using highlight.js
+        this.$('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
 
-    //make sure all code gets highlighted using highlight.js
-    this.$('pre code').each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
-
-    //ensure all links open on a new tab
-    this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
+        //ensure all links open on a new tab
+        this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
+    }, 500);
 
 })
 
@@ -82,7 +85,7 @@ Template.registerHelper('chapterSlide', function(currentRow) {
 });
 
 Template.registerHelper('mainTopics', function() {
-        return Session.get('mainTopics'); //only the level 1 and 2 colums, we need this for the headers of the slide
+    return Session.get('mainTopics'); //only the level 1 and 2 colums, we need this for the headers of the slide
 });
 Template.registerHelper('loadingSlides', function() {
     return Session.get('slideLoading');
