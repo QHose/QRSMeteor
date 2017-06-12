@@ -112,6 +112,10 @@
     width: 1400px; 
 }*/
 
+#shrinked .slideContent {
+    visibility: visible;
+}
+
 #shrinked .step.zoomOut {
     -webkit-transform: scale(4);
     -moz-transform: scale(4);
