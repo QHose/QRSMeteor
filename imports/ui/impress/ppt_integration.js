@@ -54,10 +54,10 @@ Template.ppt_integration.onDestroyed(function() {
 Template.integrationSlideContent.onRendered(function() {
 
     Meteor.setTimeout(function() {
-        //init the youtube videos via semanticUI
-        this.$('.ui.embed').embed();
         // console.log('render slide content without animations?', Cookies.get('showSlideSorter'));
         if(Cookies.get('showSlideSorter') !== 'true') { //only do animations for the slide show, not the slide overview
+            initCodeHighLightAndYouTube(this);
+
             $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
 
             this.$('.markdownItem, .videoPlaceholder').transition({
@@ -77,13 +77,18 @@ Template.integrationSlideContent.onRendered(function() {
             //ensure all links open on a new tab
             this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
         }
-        //make sure all code gets highlighted using highlight.js
-        this.$('pre code').each(function(i, block) {
-            hljs.highlightBlock(block);
-        });
     }, 100);
 
 })
+
+export function initCodeHighLightAndYouTube(selection) {
+    //init the youtube videos via semanticUI
+    selection.$('.ui.embed').embed();
+    //make sure all code gets highlighted using highlight.js
+    selection.$('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+}
 
 //both the slidesorter and pptintegration use the helpers below
 Template.registerHelper('chapterSlide', function(currentRow) {
