@@ -16,6 +16,7 @@ Template.landingPage.onCreated(function() {
     Session.setAuth('groupForPresentation', null);
     Session.setAuth('userLoggedInSense', null);
     Cookies.set('showSlideSorter', 'false');
+    Cookies.set('authenticatedSlideGenerator', 'false');
     console.log('first logout the current presentation user in Qlik Sense. After the logout, we try to open the Iframe URL, and request a new ticket with a new group: generic or technical, using section access we restrict the slides...');
     Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation users
     // logoutCurrentSenseUserClientSide();
@@ -75,7 +76,6 @@ Template.landingPage.helpers({
 
 Template.landingPage.events({
     'click #slideSorter': function(event) {
-        console.log('slide button click');
         Cookies.set('showSlideSorter', 'true');
         Router.go('slideSorter'); //GO TO THE SLIDE GENERATOR
     }

@@ -3,10 +3,15 @@ import { senseConfig as config } from '/imports/api/config';
 
 import './impress.css'; //slides you see when you start the multi tenant demo
 import './impressJSModifiedSource.js'
-import { initializePresentation } from './ppt_integration'
+import { initializePresentation, clearSlideCache } from './ppt_integration'
 
 //for the slide sorter we needed to create a different template since the layout is different. But all logic comes from the ppt_integration part. 
 // There you will also see the Template.registerHelpers
+
+
+Template.ppt_slideSorter.onCreated(function() {
+    clearSlideCache();
+})
 
 Template.ppt_slideSorter.onRendered(function() {
     initializePresentation();

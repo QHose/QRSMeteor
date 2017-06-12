@@ -20,7 +20,15 @@ Template.ppt_integration.onRendered(function() {
 })
 
 
+Template.ppt_integration.onCreated(function() {
+    clearSlideCache()
+})
 
+export function clearSlideCache() {
+    console.log('clear the previously loaded slides from memory, the browser session object');
+    Session.set('mainTopics', null);
+    Session.set('integrationTopics', null);
+}
 export function initializePresentation() {
     Session.set('slideLoading', true);
     getLevel1to3('integrationTopics');
@@ -45,34 +53,37 @@ Template.ppt_integration.onDestroyed(function() {
 
 Template.integrationSlideContent.onRendered(function() {
 
-    Meteor.setTimeout(function() {
-        //init the youtube videos via semanticUI
-        this.$('.ui.embed').embed();
+    // Meteor.setTimeout(function() {
+    //init the youtube videos via semanticUI
+    this.$('.ui.embed').embed();
+    // console.log('render slide content without animations?', Cookies.get('showSlideSorter'));
+    if(Cookies.get('showSlideSorter') !== 'true') { //only do animations for the slide show, not the slide overview
+        $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
 
-        if(!Cookies.get('showSlideSorter') === 'true') { //only do animations for the slide show, not the slide overview
-            this.$('.markdownItem, .videoPlaceholder').transition({
-                animation: 'fade in',
-                duration: '3s',
-            });
-
-            this.$('img').transition({
-                animation: 'fade in',
-                duration: '3s',
-            });
-
-            this.$('blockquote').transition({
-                animation: 'fade in',
-                duration: '5s',
-            });
-        }
-        //make sure all code gets highlighted using highlight.js
-        this.$('pre code').each(function(i, block) {
-            hljs.highlightBlock(block);
+        this.$('.markdownItem, .videoPlaceholder').transition({
+            animation: 'fade in',
+            duration: '3s',
         });
 
+        this.$('img').transition({
+            animation: 'fade in',
+            duration: '3s',
+        });
+
+        this.$('blockquote').transition({
+            animation: 'fade in',
+            duration: '5s',
+        });
         //ensure all links open on a new tab
         this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
-    }, 500);
+    }
+    //make sure all code gets highlighted using highlight.js
+    this.$('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+
+    // }, 100);
 
 })
 
@@ -228,7 +239,6 @@ function getLevel1And2() {
                                 impress().goto(0);
                             }
 
-                            // $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
                             Session.set('slideLoading', false);
                         }, 1000);
                     })

@@ -108,12 +108,15 @@
     cursor: zoom-in; 
 }
 
+#shrinked .z.step.ui.segment.integration.zoomOut {
+    width: 1400px; 
+}
 
 #shrinked .step.zoomOut {
-    -webkit-transform: scale(5);
-    -moz-transform: scale(5);
-    -o-transform: scale(5);
-    transform: scale(5);
+    -webkit-transform: scale(4.5);
+    -moz-transform: scale(4.5);
+    -o-transform: scale(4.5);
+    transform: scale(4.5);
     -webkit-transform-origin: left top;
     -moz-transform-origin: left top;
     z-index: 100;
@@ -131,11 +134,10 @@
     background-image: url("/images/Qlik_Leftcorner_Icon.png");
     background-repeat: no-repeat;
     background-position: left top;
-    width: 1000px !important;
+    width: 1000px;
     transition: transform 2s;
     /* more transition here */
 }
-
 
 /*HEADER*/
 
