@@ -17,6 +17,9 @@ Template.ppt_slideSorter.onCreated(function() {
 Template.ppt_slideSorter.onRendered(function() {
     initializePresentation();
     init();
+    Meteor.setTimeout(function(){
+        $('.ui.embed').embed();
+    },1000)
 })
 
 Template.slideSorter.onRendered(function() {
@@ -37,16 +40,21 @@ function init() {
 Template.ppt_slideSorter.events({
     'click .step' (event, template) {
         console.log('Data context of the slide (received from Qlik Sense Engine API) ', this);
+        console.log('event is', event);
+        console.log('nodeName', event.target.nodeName);
+        
         var $slide = $(event.target).closest(".step");
-        // console.log('closest element: ', element);
+        if(event.target.className !== 'video icon' && event.target.nodeName !=='A') { //do not close the zoomed slide, if users click a video or a link
+            //zoom the slide if the user clicked on it.
+            $slide.toggleClass("zoomOut");
+        }
 
-        //zoom the slide if the user clicked on it.
-        $slide.toggleClass("zoomOut");
-
-        $slide.find('.ui.embed').embed();
         //make sure all code gets highlighted using highlight.js
         $slide.find('pre code').each(function(i, block) {
             hljs.highlightBlock(block);
         });
+
+        //ensure all links open on a new tab
+        $slide.find('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
     }
 })

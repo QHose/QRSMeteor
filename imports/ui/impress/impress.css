@@ -147,6 +147,10 @@
     /* more transition here */
 }
 
+#shrinked .z.step.ui.segment.integration {
+    max-height: inherit;
+}
+
 /*HEADER*/
 
 .integration .content {
