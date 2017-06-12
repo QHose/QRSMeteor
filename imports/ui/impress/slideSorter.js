@@ -17,9 +17,6 @@ Template.ppt_slideSorter.onCreated(function() {
 Template.ppt_slideSorter.onRendered(function() {
     initializePresentation();
     init();
-    Meteor.setTimeout(function(){
-        $('.ui.embed').embed();
-    },1000)
 })
 
 Template.slideSorter.onRendered(function() {
@@ -35,6 +32,9 @@ function init() {
             .attr('style', 'margin-top: 40px; max-height: 100%;');
         // this.$('.slideContent').css({ "visibility": "visible" });
     }, 1000);
+     Meteor.setTimeout(function(){
+        $('.ui.embed').embed();
+    },3000)
 }
 
 Template.ppt_slideSorter.events({
