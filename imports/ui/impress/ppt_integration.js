@@ -53,37 +53,35 @@ Template.ppt_integration.onDestroyed(function() {
 
 Template.integrationSlideContent.onRendered(function() {
 
-    // Meteor.setTimeout(function() {
-    //init the youtube videos via semanticUI
-    this.$('.ui.embed').embed();
-    // console.log('render slide content without animations?', Cookies.get('showSlideSorter'));
-    if(Cookies.get('showSlideSorter') !== 'true') { //only do animations for the slide show, not the slide overview
-        $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
+    Meteor.setTimeout(function() {
+        //init the youtube videos via semanticUI
+        this.$('.ui.embed').embed();
+        // console.log('render slide content without animations?', Cookies.get('showSlideSorter'));
+        if(Cookies.get('showSlideSorter') !== 'true') { //only do animations for the slide show, not the slide overview
+            $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
 
-        this.$('.markdownItem, .videoPlaceholder').transition({
-            animation: 'fade in',
-            duration: '3s',
+            this.$('.markdownItem, .videoPlaceholder').transition({
+                animation: 'fade in',
+                duration: '3s',
+            });
+
+            this.$('img').transition({
+                animation: 'fade in',
+                duration: '3s',
+            });
+
+            this.$('blockquote').transition({
+                animation: 'fade in',
+                duration: '5s',
+            });
+            //ensure all links open on a new tab
+            this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
+        }
+        //make sure all code gets highlighted using highlight.js
+        this.$('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
         });
-
-        this.$('img').transition({
-            animation: 'fade in',
-            duration: '3s',
-        });
-
-        this.$('blockquote').transition({
-            animation: 'fade in',
-            duration: '5s',
-        });
-        //ensure all links open on a new tab
-        this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
-    }
-    //make sure all code gets highlighted using highlight.js
-    this.$('pre code').each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
-
-
-    // }, 100);
+    }, 100);
 
 })
 
