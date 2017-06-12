@@ -108,9 +108,9 @@
     cursor: zoom-in; 
 }
 
-#shrinked .z.step.ui.segment.integration.zoomOut {
+/*#shrinked .z.step.ui.segment.integration.zoomOut {
     width: 1400px; 
-}
+}*/
 
 #shrinked .step.zoomOut {
     -webkit-transform: scale(4);

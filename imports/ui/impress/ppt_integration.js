@@ -36,7 +36,7 @@ export function initializePresentation() {
     appChangeListener();
 
     $('#impress').on('impress:stepenter', function() {
-        $('.slideContent').css({ "visibility": "visible" });
+        // $('.slideContent').css({ "visibility": "visible" });
         var step = $(this);
 
         //ensure we only show the content of the current step via IF condition in the template (only show content if slideNr = currentSlide)
@@ -52,13 +52,14 @@ Template.ppt_integration.onDestroyed(function() {
 })
 
 Template.integrationSlideContent.onRendered(function() {
+    $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
+
 
     Meteor.setTimeout(function() {
         // console.log('render slide content without animations?', Cookies.get('showSlideSorter'));
         if(Cookies.get('showSlideSorter') !== 'true') { //only do animations for the slide show, not the slide overview
             initCodeHighLightAndYouTube(this);
 
-            $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes...
 
             this.$('.markdownItem, .videoPlaceholder').transition({
                 animation: 'fade in',
