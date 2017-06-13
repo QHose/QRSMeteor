@@ -208,7 +208,7 @@ http://integration.qlik.com:443/anon/qmc/tasks
     ""qThumbnail"": {}
    },
 ```",,"","","","","         0","0","PreSales, Technical - 1 day",
-"API -  generic introduction","Generic REST flow explained: How to connect, get or modify something, and give the answer back to the user?","API - Generic REST API flow.png",,"","","","","         0","0","PreSales",
+"API -  generic introduction","Generic REST flow explained: How to connect, get or modify something, and give the answer back to the user?","API - Generic REST api flow.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Delete an app via REST call: an HTTP request, with method delete to a specific endpoint","flow - REST delete app.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","async - user orders pizza.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","beeper.jpg",,"","","","","         0","0","PreSales",
@@ -266,9 +266,9 @@ $(""#btn_1"").click(function() {
 });
 ```",,"","","","","         0","0","PreSales",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Introduction - 30 minutes",
-"Web integration","Example: What is embedding?","Here we embedded/integrated a YouTube video...",,"","","","","         0","0","Technical - 1 hour",
-"Web integration","Example: What is embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 hour",
-"Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","Introduction to embed Qlik Sense, Technical - 1 hour",
+"Web integration","Funny example What do we mean with embedding?","Here we embedded/integrated a YouTube video...",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Funny example What do we mean with embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","Introduction to embed Qlik Sense, Technical - 2 hours",
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Web integration","Demonstration integration.qlik.com: Web integration","Lets look at [integration.qlik.com](http://web.saasdemo.qlik.com/) where we embedded
 - the hub, 
@@ -526,8 +526,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 * maintain Sense",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Qlik Sense as a high performance analytics engine","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Qlik Sense as a high performance analytics engine","postman response.png",,"","","","","         0","0","Technical - 1 hour",
-"Web integration","Data only example: Qlik Sense bot (Start around 3m)","(Open this video)[https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel]",,"","","","","         0","0","PreSales",
-"Web integration","Data only example: Slide generator","<iframe src=""http://integration.qlik.com/slides"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
+"Web integration","Data only example: Qlik Sense bot (Start around 3m)","[Open this video](https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel)",,"","","","","         0","0","PreSales",
 "Web integration","Table API","API- table api- get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours",
 "Web integration","Table API","```
  require.config({
@@ -640,8 +639,36 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Security - technical design","Authorization step 1: QMC security rules","security rules - step 1 allow the user to.png",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","Authorization step 2: section access overview","section access intro data reduction open app.png",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","Authorization step 2: section access overview","[See this row level security demo](http://integration.qlik.com/selfService). Here each user can only see data from the country he belongs too.",,,,,,,,,
-"Security - technical design","Authorization step 2: section access","security - authorization step 2 section access.png",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - technical design","Authorization step 2: section access (row/column level security)","security - authorization step 2 section access.png",,"","","","","         0","0","Technical - 1 day",
+"Security - technical design","Authorization step 2: section access (row/column level security)","Note: you can both hide rows as well as [columns](http://www.qliktips.com/2011/04/blocking-user-access-to-field-using.html)",,"","","","","         0","0","Technical - 1 day",
 "Security - technical design","Authorization step 2: section access data reduction example","section access - data reduction examples.png",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - technical design","Authorization step 2: section access data reduction example","Column level security (hide specific columns for certain groups)",,,,,,,,,
+"Security - technical design","Authorization step 2: section access data reduction example","```
+Section Access;
+LOAD * INLINE [
+    ACCESS, USERID, OMITGROUP
+    ADMIN, admin, 
+    USER, user1, group1
+    USER, user2, group2
+];
+
+LOAD * INLINE [
+    OMITGROUP, OMIT
+    group1, Field1
+    group1, Field2
+    group2, Field2
+    group2, Field3
+];
+
+Section Application;
+Fields:
+LOAD * INLINE [
+    Field1, Field2, Field3, Field4, Field5
+    Value1, Value2, Value3, Value4, Value5
+];
+
+```
+[source Qliktips.com](http://www.qliktips.com/2011/04/blocking-user-access-to-field-using.html)",,,,,,,,,
 "Security - technical design","Row level security using groups in section access","sectionAccess groups.png",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","Some other topics","<q>Some other topics you need to know of</q>",,"","","","","         0","0","PreSales",
 "Security - technical design","User Directory Connector (UDC)","<q>User Directory Connector</q>",,"","","","","         0","0","Deep dive",
@@ -960,15 +987,16 @@ function appChangeListener() {
 - QRS API",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","The location, the use case and programming language matters","Based on javascript, REST, .NET or websockets.",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","The location, the use case and programming language matters","[See all APIs here](https://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm)",,"","","","","         0","0","Deep dive",
-"Qlik Sense API introduction","Building Windows applications","Use the
+"Qlik Sense API introduction","Building Windows/.NET applications","Use the
 -  [.NET SDK](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/NetSDKAPI/Content/QvNetClient_Reference/Net-Sdk-Reference-Redirect.htm) and 
 - [visual studio plugin](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Plugins/Content/Introduction/Plugin-Intro.htm) to integrate Qlik Sense in your own Windows .NET applications.",,"","","","","         0","0","Deep dive",
-"Qlik Sense API introduction","Building Windows applications","When you have installed the plugin you will be able to:
+"Qlik Sense API introduction","Building Windows/.NET applications","When you have installed the plugin you will be able to:
 - Connect to Qlik Sense servers.
 - See all your apps, with related sheets and objects.
 - See a preview of the object.
 - See the properties of the server and charts.
 - Drag-and-drop objects (in different modes) directly into your code.",,"","","","","         0","0","Deep dive",
+"Qlik Sense API introduction","Building Windows/.NET applications","See .NET SDK code [examples](https://github.com/AptkQlik/PublicExamples)",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","Introduction video Visual Studio plugin","https://youtu.be/tbH5pHDwYXg",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","How to connect to the Javascript, Engine or QRS API?","API flow browser to capabilities engine qrs API.png",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Technical - 2 hours",
@@ -1006,6 +1034,7 @@ function appChangeListener() {
 "Qlik Sense API introduction","API tools on the community","[Export and back-up app via JSON export](http://branch.qlik.com/#!/project/56728f52d1e497241ae698c7)",,"","","","","         0","0","Technical - 1 day",
 "Qlik Sense API introduction","API tools on the community","A nice tool that adds extra features (approve sheets, download security rules) to Qlik Sense is the [EA powertools](http://branch.qlik.com/#!/project/57f67b7c06e8670cd284e852)",,"","","","","         0","0","Technical - 1 day",
 "Qlik Sense API introduction","API tools on the community","EA powertools.png",,"","","","","         0","0","Technical - 1 day",
+"Qlik Sense API introduction","Video: Qlik Sense REST loading and connectivity","https://youtu.be/ibCACdF_tPo",,,,,,,,,
 "QRS API","What is the QRS REST API?","> Basically an extra layer around the QMC",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "QRS API","What can you do with the QRS REST API?","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
@@ -1425,7 +1454,7 @@ enigma.getService('qix', config).then((qix) => {
 ```",,"","","","","         0","0","Deep dive",
 "Engine API","Example get table (hypercube)","In this example we will get a ""table"" of data out of Qlik Sense using the Engine API",,"","","","","         0","0","Deep dive",
 "Engine API","Example get table (hypercube)","The Engine API is a websocket based protocol (JSON RPC)",,"","","","","         0","0","Deep dive",
-"Engine API","Example get table (hypercube)","Because our website is written in Javanscript. We use a javascript library Enigma.js to ""talk to the Qlik Sense Eninge API",,"","","","","         0","0","Deep dive",
+"Engine API","Example get table (hypercube)","Because our website is written in Javascript. We use a javascript library Enigma.js to ""talk to/communicate"" with the Qlik Sense Eninge API",,"","","","","         0","0","Deep dive",
 "Engine API","Example get table (hypercube)","[see example code](https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs)",,"","","","","         0","0","Deep dive",
 "Engine API","Process flow of communication between components","flow - enigma.png",,"","","","","         0","0","Deep dive",
 "Engine API","Get schema","```
@@ -1869,6 +1898,7 @@ STORE QV_Table INTO File.QVD;
 "Other","Licensing","qlik sense tokens license.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Other","QAP",,,,,,,,,,
 "Other","Video: Change the host name (certificates)","https://youtu.be/Dvub_4fikv0",,,,,,,,,
+"Other","On demand app generation (ODAG)","https://youtu.be/n_VnOdqQ0CA",,,,,,,,,
 "QAP","Delighting developers","web - QAP delighting developers.png",,,,,,,,,
 "QAP","Lifecycle","web - qap lifecycle.png",,,,,,,,,
 "QAP","Key advantages","web - QAP delighting developers.png",,,,,,,,,
