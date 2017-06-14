@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+var Cookies = require('js-cookie');
 import { senseConfig as config } from '/imports/api/config';
 
 import './impress.css'; //slides you see when you start the multi tenant demo
@@ -19,6 +20,10 @@ Template.ppt_slideSorter.onRendered(function() {
     init();
 })
 
+Template.ppt_slideSorter.onDestroyed(function() {
+    Cookies.set('showSlideSorter', 'false');
+})
+
 Template.slideSorter.onRendered(function() {
     initializePresentation();
     init();
@@ -32,19 +37,22 @@ function init() {
             .attr('style', 'margin-top: 40px; max-height: 100%;');
         // this.$('.slideContent').css({ "visibility": "visible" });
     }, 1000);
-     Meteor.setTimeout(function(){
+    Meteor.setTimeout(function() {
         $('.ui.embed').embed();
-    },3000)
+    }, 3000)
 }
 
 Template.ppt_slideSorter.events({
+    'click .home.button' (event, template) {
+        console.log('try to close the window, so the user sees the navigation screen on other tab');
+        event.preventDefault();
+        window.close();
+    },
     'click .step' (event, template) {
         console.log('Data context of the slide (received from Qlik Sense Engine API) ', this);
-        console.log('event is', event);
-        console.log('nodeName', event.target.nodeName);
-        
+
         var $slide = $(event.target).closest(".step");
-        if(event.target.className !== 'video icon' && event.target.nodeName !=='A') { //do not close the zoomed slide, if users click a video or a link
+        if(event.target.className !== 'video icon' && event.target.nodeName !== 'A') { //do not close the zoomed slide, if users click a video or a link
             //zoom the slide if the user clicked on it.
             $slide.toggleClass("zoomOut");
         }
@@ -58,3 +66,22 @@ Template.ppt_slideSorter.events({
         $slide.find('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
     }
 })
+
+//Make sure the presentation/landingpage is initialized again also when you close the browser...
+
+var hotcodepush = false;
+
+Reload._onMigrate(function() {
+    hotcodepush = true;
+    return [true];
+});
+
+
+//Make sure the presentation/landingpage is initialized again.
+window.addEventListener('beforeunload', function(e) {
+    if(!hotcodepush) {
+        Cookies.set('showSlideSorter', 'false');
+    }
+    if(hotcodepush) console.log("SlideSorter: Hot code reload");
+})
+//END init code

@@ -269,3 +269,53 @@ export function getRedirectURL(passport, proxyRestUri, targetId, generationUserI
     // console.log('Meteor server side created this redirect url: ', redirectURI);
     return redirectURI;
 }
+
+Meteor.methods({
+    getTicket(passport) { //only get a ticket number
+        check(passport, Object);
+        //see https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
+        var proxyGetTicketURI = "https://" + senseConfig.host + ":" + Meteor.settings.private.proxyPort + "/qps/" + senseConfig.virtualProxyClientUsage + "/ticket"; //"proxyRestUri": "https://ip-172-31-22-22.eu-central-1.compute.internal:4243/qps/meteor/",
+        try {
+            var call = {};
+            call.action = 'Presentation SSO: Request ticket number, to be used in the setup of the QIX connection using Enigma.js'
+            call.request = proxyGetTicketURI;
+            call.url = 'https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md';
+            call.response = HTTP.call('POST', call.request, {
+                'npmRequestOptions': certicate_communication_options,
+                headers: authHeaders,
+                params: { 'xrfkey': senseConfig.xrfkey },
+                data: passport //the user and group info for which we want to create a ticket
+            });
+            REST_Log(call, generationUserId);
+        } catch(err) {
+            console.error('REST call to request a ticket failed', err);
+            throw new Meteor.Error('Request ticket failed', err.message);
+        }
+
+        console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+        console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+            // EXAMPLE RESPONSE
+            //{
+            //   "statusCode": 201,
+            //   
+            //   "data": {
+            //     "UserDirectory": "4RCJDRSABMVKY66SZ",
+            //     "UserId": "john",
+            //     "Attributes": [
+            //       {
+            //         "group": "SCHMIDT, KOZEY AND KUPHAL"
+            //       },
+            //       {
+            //         "group": "GERMANY"
+            //       },
+            //       {
+            //         "group": "CONSUMER"
+            //       }
+            //     ],
+            //     "Ticket": "6ZH6juc9JYlkS4SW",
+            //     "TargetUri": "http://integration.qlik.com:443/meteor/hub/"
+            //   }
+            // }
+        return call.response.data.Ticket;
+    }
+})

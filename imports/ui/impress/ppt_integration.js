@@ -1,4 +1,6 @@
 import { senseConfig } from '/imports/api/config.js';
+// import { config } from '/imports/ui/impress/landingPage.js';
+
 import lodash from 'lodash';
 import hljs from 'highlight.js';
 _ = lodash;
@@ -8,12 +10,21 @@ var converter = new showdown.Converter();
 const enigma = require('enigma.js');
 // The QIX schema needed by enigma.js
 const qixschema = senseConfig.QIXSchema;
-
 var appId = Meteor.settings.public.IntegrationPresentationApp;
 var IntegrationPresentationSelectionSheet = Meteor.settings.public.IntegrationPresentationSelectionSheet; //'DYTpxv'; selection sheet of the slide generator
 var IntegrationPresentationSortedDataObject = Meteor.settings.public.IntegrationPresentationSortedDataObject; //'pskL';//a table object in the saas presentation qvf, that ensures the slides are in the correct load order. better would be to load this in this order in the API call.
 var slideWidth = 2000;
 
+const config = {
+    schema: qixschema,
+    appId: appId,
+    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+        host: senseConfig.host,
+        prefix: Meteor.settings.public.IntegrationPresentationProxy,
+        port: senseConfig.port,
+        unsecure: true
+    }
+};
 
 Template.ppt_integration.onRendered(function() {
     initializePresentation();
@@ -219,16 +230,7 @@ function getLevel1And2() {
 
     // Set up connection to QIX, see https://github.com/mindspank/enigma-table-rows-example/blob/master/index.js
 
-    enigma.getService('qix', {
-            schema: qixschema,
-            appId: appId,
-            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-                host: senseConfig.host,
-                prefix: Meteor.settings.public.IntegrationPresentationProxy,
-                port: senseConfig.port,
-                unsecure: true
-            }
-        })
+    enigma.getService('qix', config)
         .then(qix => {
             qix.app.getObject(IntegrationPresentationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same
                 .then(model => {
@@ -244,79 +246,54 @@ function getLevel1And2() {
                                 impress().init();
                                 impress().goto(0);
                             }
-
                             Session.set('slideLoading', false);
-                        }, 1000);
+                        }, 2000);
                     })
                 })
-        })
+        }).catch((error) => {
+            console.error('ERROR getting level 1 and 2 from the app via the enigma.js: ', error);
+            throw new Meteor.Error(error);
+        });
 }
 
 
 var appChangeListener = function appChangeListener() {
-    enigma.getService('qix', {
-            schema: qixschema,
-            appId: appId,
-            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-                host: senseConfig.host,
-                prefix: Meteor.settings.public.IntegrationPresentationProxy,
-                port: senseConfig.port,
-                unsecure: true
-            }
-        })
+    enigma.getService('qix', config)
         .then(qix => {
             qix.app.on('changed', () => {
                 // console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
                 location.reload(); //reload the browser
             });
-        })
+        }).catch((error) => {
+            console.error('ERROR in the appChangeListener via the enigma.js: ', error);
+            throw new Meteor.Error(error);
+        });
 }
 
-function getValuesOfLevel(level) {
-    console.log('getLocalValuesOfLevel: ', level);
-
-    enigma.getService('qix', {
-            schema: qixschema,
-            appId: appId,
-            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-                host: senseConfig.host,
-                prefix: 'anon',
-                port: senseConfig.port,
-                unsecure: true
-            }
-        })
-        .then(qix => {
-
-            qix.app.createSessionObject({
-                    qInfo: { qType: 'cube' },
-                    qHyperCubeDef: {
-                        qDimensions: [{
-                            qDef: { qFieldDefs: [level] }
-                        }]
-                    }
-                })
-                .then(model => {
-                    model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
-                        // console.log('Result set from Qlik Sense:', data);
-                        var table = data[0].qMatrix;
-                        // console.log('Level ' + level + ' data:', table);
-                        Session.set('level3Data', table)
-                    })
-                })
-        })
-}
+// function getValuesOfLevel(level) {
+//     enigma.getService('qix', config)
+//         .then(qix => {
+//             qix.app.createSessionObject({
+//                     qInfo: { qType: 'cube' },
+//                     qHyperCubeDef: {
+//                         qDimensions: [{
+//                             qDef: { qFieldDefs: [level] }
+//                         }]
+//                     }
+//                 })
+//                 .then(model => {
+//                     model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 3333 }]).then(data => {
+//                         // console.log('Result set from Qlik Sense:', data);
+//                         var table = data[0].qMatrix;
+//                         // console.log('Level ' + level + ' data:', table);
+//                         Session.set('level3Data', table)
+//                     })
+//                 })
+//         })
+// }
 
 function getLevel1to3(sessionName) {
-    enigma.getService('qix', {
-            schema: qixschema,
-            appId: appId,
-            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-                host: senseConfig.host,
-                prefix: Meteor.settings.public.IntegrationPresentationProxy,
-                port: senseConfig.port,
-                unsecure: true
-            }
-        })
+    enigma.getService('qix',config)
         .then(qix => {
 
             qix.app.createSessionObject({
@@ -339,7 +316,10 @@ function getLevel1to3(sessionName) {
                         // console.log('New data received, chapters added and now stored in in session var ', sessionName);
                         Session.set(sessionName, tableWithChapters);
                     })
-                })
+                }).catch((error) => {
+                    console.error('ERROR getting level 1 to 3 from the app via the enigma.js: ', error);
+                    throw new Meteor.Error(error);
+                });
 
         })
 }
