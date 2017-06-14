@@ -1,6 +1,6 @@
 ﻿"Level 1","Level 2","Level 3","Level 4","Priority","Progress","Start","Due","Duration (Days)","Milestone","Resources",
-"Workshop Introduction","Legal disclaimer","legal disclaimer.png",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs",
-"Workshop Introduction","Legal disclaimer","#### [Terms of usage](http://integration.qlik.com/legal)",,"","","","","         0","0","Technical - 1 hour",
+"Workshop Introduction","Legal disclaimer","legal disclaimer.png",,"","","","","         0","0","SaaS & Power of APIs, Technical - 1 day",
+"Workshop Introduction","Legal disclaimer","#### [Terms of usage](http://integration.qlik.com/legal)",,"","","","","         0","0","Technical - 1 day",
 "Workshop Introduction","Introduction Martijn & Raymond","speaker introduction martijn raymond.png",,,,,,,,,
 "Workshop Introduction","Introduction","Who are you?",,"","","","","         0","0","Technical - 1 day",
 "Workshop Introduction","Introduction","Qlik Sense experience level?",,"","","","","         0","0","Technical - 1 day",
@@ -11,15 +11,15 @@
 "Workshop Introduction","Video: Introduction and history of this demo platform","https://youtu.be/K-zfD_vAPso?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine","> We have used the APIs to get the data out of our engine and used it to create this website...",,"","","","","         0","0","Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
 "Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine"," <img class=""ui large centered image"" src=""images/Engine API slide generator easy flow.png"">",,"","","","","         0","0","Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
-"Workshop Introduction","Example flow: We loaded a csv into an app and used the data in our website via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
-"Workshop Introduction","We created a mind map to define all integration topics","mindmap input for engine api slide generator.png",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
+"Workshop Introduction","Example flow: We loaded a csv into an app and used the data in our website via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
+"Workshop Introduction","We created a mind map to define all integration topics","mindmap input for engine api slide generator.png",,"","","","","         0","0","What is this slide generator?, Technical - 1 day",
 "Workshop Introduction","We created a mind map to define all integration topics","Each topic in the map represents a ""slide"". A slide can contain
 - Text
-- A reference to an image or video",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
+- A reference to an image or video",,"","","","","         0","0","What is this slide generator?, Technical - 1 day",
 "Workshop Introduction","We created a mind map to define all integration topics","Per slide""bullet"" we can assign 
 - a workshop
-- authorizations (which users can see this bullet/image/video?)",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
-"Workshop Introduction","Export the map and load the data into an app","Excel input engine api generator.png",,"","","","","         0","0","Technical - 1 hour, Introduction to embed Qlik Sense, What is this slide generator?",
+- authorizations (which users can see this bullet/image/video?)",,"","","","","         0","0","What is this slide generator?, Technical - 1 day",
+"Workshop Introduction","Export the map and load the data into an app","Excel input engine api generator.png",,"","","","","         0","0","Introduction to embed Qlik Sense, What is this slide generator?, Technical - 1 day",
 "Workshop Introduction","What's so special about this presentation? (1)","> You never know the next question...  or what your audience wants to see or what their technical level is...",,"","","","","         0","0","What is this slide generator?",
 "Workshop Introduction","What's so special about this presentation? (2)","> So you can better put all your data in our *associative engine* and *select and create* the slides based on the questions you ask *now*.",,"","","","","         0","0","What is this slide generator?",
 "Workshop Introduction","With the APIs, the only limit is your imagination","> This presentation is just to inspire what you can do with our *engine*",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
@@ -32,15 +32,14 @@
 "Workshop Introduction","Goal of the session","Learn Qlik Sense in multi-tenant SaaS scenarios
 * Web integration options
 * Governed Self Service
-* SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Introduction to embed Qlik Sense, Technical - 1 hour",
+* SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Introduction to embed Qlik Sense, Technical - 2 hours",
 "Workshop Introduction","Agenda","What is governed self service with Qlik Sense?",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
 "Workshop Introduction","Agenda","Introduction to SaaS",,"","","","","         0","0","Introduction to embed Qlik Sense",
-"Workshop Introduction","Agenda","Explain common integration use cases using integration.qlik.com",,"","","","","         0","0","Introduction to embed Qlik Sense, What is this slide generator?",
-"Workshop Introduction","Agenda","Explain *Engine API slide generator*",,"","","","","         0","0","What is this slide generator?",
-"Workshop Introduction","Agenda","Practise to do and give the demo yourself
+"Workshop Introduction","Agenda","Explain common integration use cases using integration.qlik.com
 * Web integration options
 * Governed Self Service
-* SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Introduction to embed Qlik Sense",
+* SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Introduction to embed Qlik Sense, What is this slide generator?",
+"Workshop Introduction","Agenda","Explain *Engine API slide generator*",,"","","","","         0","0","What is this slide generator?",
 "Workshop Introduction","Agenda","Demo Qlik Sense integration using integration.qlik.com",,"","","","","         0","0","Introduction - 30 minutes",
 "Workshop Introduction","Agenda","Introduction to APIs",,"","","","","         0","0","PreSales",
 "Workshop Introduction","Agenda","Web integration",,"","","","","         0","0","Technical - 1 hour",
@@ -72,10 +71,9 @@
 "Introduction to SaaS","Common OEM use case for Qlik ","An OEM customizes and integrates the original Qlik product.",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Introduction to SaaS","Common OEM use case for Qlik ","See an integrated example from [our partner Axis group](http://sense.axisgroup.com/extensions/MedAirEbolaCrisis/MedAirEbolaCrisis.html)",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Introduction to SaaS","Common OEM use case for Qlik ","axisGroup.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
-"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Your goal is to create within a *multi-tenant* SaaS platform environment  *embedded analytics* within your core application",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes, SaaS & Power of APIs",
-"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Provide *self service analytics* to users",,"","","","","         0","0","PreSales, Introduction - 30 minutes, Introduction to embed Qlik Sense, SaaS & Power of APIs",
-"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Automated *provisioning* (provide dashboards to your customers)",,"","","","","         0","0","PreSales, Introduction - 30 minutes, Introduction to embed Qlik Sense, SaaS & Power of APIs",
-"What is integration.qlik.com?","Typical goals of a SaaS platform provider","saas demo concept simple.png",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
+"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Your goal is to create within a *multi-tenant* SaaS platform environment  *embedded analytics* within your core application",,"","","","","         0","0","Introduction to embed Qlik Sense, SaaS & Power of APIs, Technical - 2 hours",
+"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Provide *self service analytics* to users",,"","","","","         0","0","PreSales, Introduction to embed Qlik Sense, SaaS & Power of APIs, Technical - 2 hours",
+"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Automated *provisioning* (provide dashboards to your customers)",,"","","","","         0","0","PreSales, Introduction to embed Qlik Sense, SaaS & Power of APIs, Technical - 2 hours",
 "What is integration.qlik.com?","History","The integration.qlik.com website is specifically designed to promote and explain the key differentiators of our *Qlik Sense APIs* via our step-by-step walk-through...",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?, SaaS & Power of APIs",
 "What is integration.qlik.com?","History","We *demonstrate a sample SaaS platform* with Qlik Sense embedded including:
 - The “look and feel” of an integrated solution
@@ -265,9 +263,9 @@ $(""#btn_1"").click(function() {
   alert(""Btn 1 Clicked"");
 });
 ```",,"","","","","         0","0","PreSales",
-"Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Introduction - 30 minutes",
-"Web integration","Funny example What do we mean with embedding?","Here we embedded/integrated a YouTube video...",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Funny example What do we mean with embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 day",
+"Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Video: What do we mean with embedding?","Here we embedded/integrated a YouTube video... ",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Video: What do we mean with embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","Introduction to embed Qlik Sense, Technical - 2 hours",
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Web integration","Demonstration integration.qlik.com: Web integration","Lets look at [integration.qlik.com](http://web.saasdemo.qlik.com/) where we embedded
@@ -506,26 +504,25 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Exercise 1: Create a bar chart using the vizualization API","Copy the config and some other useful scripts from your mashup API dev-hub code",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: Create a bar chart using the vizualization API","[Use the Vizualizations API help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/VisualizationAPI/VisualizationAPI.htm)",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 1: Create a bar chart using the vizualization API","[See the answer here](http://jsfiddle.net/dlumkeman/oa6d9qgy/)",,"","","","","         0","0","Exercises",
-"Web integration","Data only","<q>Data only</q>",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"Web integration","Data only","web - options to integrate content.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
+"Web integration","Data only","<q>Data only</q>",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Data only","web - options to integrate content.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demo - Only use Qlik Sense data","[integration demo: create your own vizualization using](http://web.saasdemo.qlik.com/chartJS)",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demo - Only use Qlik Sense data","PS: don't forget to press F12 in your browser, to view the raw data coming in!",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","When do you use the data only approach?","Use this if you have your own vizualization libraries (software)",,"","","","","         0","0","Technical - 1 day",
-"Web integration","When do you use the data only approach?","You only use the associative model of Qlik",,"","","","","         0","0","Technical - 1 day",
-"Web integration","When do you use the data only approach?","The layout is done via non Qlik software",,"","","","","         0","0","Technical - 1 day",
-"Web integration","When do you use the data only approach?","SaaS platform and Qlik Sense will be kept in sync via websocket events if something changes in Qlik Sense.",,"","","","","         0","0","Technical - 1 day",
-"Web integration","When do you use the data only approach?","No limits, you can programatically make selections and get data out of Qlik Sense and format it as you like.",,"","","","","         0","0","Technical - 1 day",
+"Web integration","When do you use the data only approach?","Use this if you have your own vizualization libraries (software)",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
+"Web integration","When do you use the data only approach?","You only use the associative model of Qlik",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
+"Web integration","When do you use the data only approach?","SaaS platform and Qlik Sense will be kept in sync via websocket events (if something changes in Qlik Sense your platform can react. For example a selection is made).",,"","","","","         0","0","Technical - 1 day",
+"Web integration","When do you use the data only approach?","No limits, you can programmatically make selections and get data out of Qlik Sense and format it as you like.",,"","","","","         0","0","Technical - 1 day",
 "Web integration","When do you use the data only approach?","[See an example on integration.qlik.com](http://web.saasdemo.qlik.com/tableUsingWidgets)",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Qlik Sense as a high performance analytics engine","You can query Sense from your SaaS Platform, in order to
+"Web integration","Examples of using Qlik Sense as a data analytics engine","You can query Qlik Sense from your SaaS Platform, in order to
 * make a selection
 * get selected values, 
 * get a list of values
 * get a result set by combining any field or measure
 * create a query and vizualize with your own library (D3, google charts)
 * register events to get associativity
-* maintain Sense",,"","","","","         0","0","Technical - 1 hour",
-"Web integration","Qlik Sense as a high performance analytics engine","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","Technical - 1 hour",
-"Web integration","Qlik Sense as a high performance analytics engine","postman response.png",,"","","","","         0","0","Technical - 1 hour",
+* maintain Qlik Sense",,"","","","","         0","0","Technical - 1 hour",
+"Web integration","Examples of using Qlik Sense as a data analytics engine","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","Technical - 1 hour",
+"Web integration","Examples of using Qlik Sense as a data analytics engine","postman response.png",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Data only example: Qlik Sense bot (Start around 3m)","[Open this video](https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel)",,"","","","","         0","0","PreSales",
 "Web integration","Table API","API- table api- get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours",
 "Web integration","Table API","```
@@ -567,7 +564,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Web integration problem - fiddle 4","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/zz9ftg5y/)","wrong objectID",,,,,,,,
 "Web integration","Web integration problem - fiddle 5","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/we00bs5h/)","Wrong require.js version",,,,,,,,
 "Web integration","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise.png",,"","","","","         0","0","Technical - 1 day",
-"Web integration","More information","Always checkout Stefan Walters posts. Like this [web integration tutorial](https://github.com/stefanwalther/awesome-qap#building-visualization-extensions)",,,,,,,,,
+"Web integration","More information","Always checkout Stefan Walthers posts. Like this [web integration tutorial](https://github.com/stefanwalther/awesome-qap#building-visualization-extensions)",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Web integration examples","[Marketing 360](http://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Web integration examples","[European datamarket](http://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","Technical - 1 day, PreSales",
 "Web integration","Web integration examples","More demos on [Qlik Web integration demo page](http://webapps.qlik.com/#/)",,"","","","","         0","0","Technical - 1 day",
@@ -624,7 +621,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Security - technical design","Qlik Sense options to authenticate","Certificates (between servers)",,"","","","","         0","0","PreSales",
 "Security - technical design","You create a virtual proxy per authentication method","QPS - virtual proxy per authentication method.png",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "Security - technical design","Authentication & Authorization flows","<q>Authentication & Authorization flows</q>",,"","","","","         0","0","PreSales, Technical - 1 day",
-"Security - technical design","Authorization relevant resources","security - authorization relevant resources.png",,"","","","","         0","0","PreSales, Technical - 1 hour",
+"Security - technical design","Authorization relevant resources","security - authorization relevant resources.png",,"","","","","         0","0","Technical - 2 hours",
 "Security - technical design","Security flow: User opens an app","flow - user opens app.png",,"","","","","         0","0","Technical - 2 hours",
 "Security - technical design","Security flow: User opens an app","PS: make sure you use 'user.name like *' in the QMC license section. In this way you don't have to worry about allocating licenses in integration scenarios in combination with ticketing. Your authentication module decides which users should have access to Qlik Sense. So you only request a ticket for authorized users.",,"","","","","         0","0","Technical - 1 day",
 "Security - technical design","High level authentication and authorization flow","security - high level authentication and authorization flow.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
@@ -682,8 +679,8 @@ LOAD * INLINE [
 "Security - technical design","What a UDC is not","<q>You can NOT authenticate users via a Qlik Sense UDC</q>",,"","","","","         0","0","Deep dive",
 "Security - technical design","Audit the effectiveness using the audit tool","security rules audit.png",,"","","","","         0","0","PreSales",
 "Security - technical design","Typical activities you need in security rules for common tasks","security rules - activities that you need to do common tasks.png",,"","","","","         0","0","Deep dive",
-"Security - Concept of integration.qlik.com","Summary overview","saasdemo security overview.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"Security - Concept of integration.qlik.com","Summary overview","[integration demo documentation and videos](http://integration.qlik.com/introductionSecurity)",,"","","","","         0","0","PreSales, Technical - 2 hours",
+"Security - Concept of integration.qlik.com","Summary overview","saasdemo security overview.png",,"","","","","         0","0","Technical - 1 hour",
+"Security - Concept of integration.qlik.com","Summary overview","[integration demo documentation and videos](http://integration.qlik.com/introductionSecurity)",,"","","","","         0","0","Technical - 1 hour",
 "Security - Concept of integration.qlik.com","Summary of integration.qlik.com security and license setup","Qlik Sense configuration
 - A stream per customer
 - Ticket contains userId and group
@@ -713,7 +710,7 @@ resource.stream.HasPrivilege(""read"") and resource.published =""true"" and reso
 "Security - Concept of integration.qlik.com","Introduction to self service: a contributor","SSBI contributor.png",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - Concept of integration.qlik.com","Sheet promotion example","The sheet below demonstrates the division between own work and community",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - Concept of integration.qlik.com","Sheet promotion example","communitySheets.png",,"","","","","         0","0","PreSales, Technical - 1 day",
-"Security - Concept of integration.qlik.com","Security rule contributor","A user with group contributor is allowed to create sheets in existing apps, but no app creation",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Security - Concept of integration.qlik.com","Security rule contributor","A user with group contributor is allowed to *create sheets* in existing apps, but no app creation",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - Concept of integration.qlik.com","Security rule contributor","```
  user.environment.group=""Contributor"" and resource.published =""false"" and resource.app.HasPrivilege(""read"")
 ```",,"","","","","         0","0","PreSales, Technical - 1 day",
@@ -975,7 +972,7 @@ function appChangeListener() {
 "Qlik Sense API introduction","Example of an API interaction where we connect via the browser to the QRS API using header authentication","postman request.png",,"","","","","         0","0","Technical - 1 day",
 "Qlik Sense API introduction","Example of an API interaction where we connect via the browser to the QRS API using header authentication","postman response.png",,"","","","","         0","0","Technical - 1 day",
 "Qlik Sense API introduction","Back end focussed API overview","Back-end_API-Overview.png",,"","","","","         0","0","Deep dive, PreSales",
-"Qlik Sense API introduction","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Deep dive, PreSales",
+"Qlik Sense API introduction","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Technical - 1 hour",
 "Qlik Sense API introduction","Whiteboard exercise","Create a diagram on the whiteboard that reflects your current architecture.  ",,"","","","","         0","0","Exercises",
 "Qlik Sense API introduction","Whiteboard exercise","Servers",,"","","","","         0","0","Exercises",
 "Qlik Sense API introduction","Whiteboard exercise","Ip adresses",,"","","","","         0","0","Exercises",
@@ -1772,7 +1769,7 @@ function createCube(app) {
 "Engine API","Tips to get started","with the function name, go to Qlik help, to check the mandatory fields",,"","","","","         0","0","Deep dive",
 "Engine API","Tips to get started","Use the websocket browser concole to ""sniff"" the calls if you make some manual actions in the QMC",,"","","","","         0","0","Deep dive",
 "Engine API","Tips to get started","[Use this tool](https://opensrc.axisgroup.com/qix-struct-generator/) to see which structs go where",,"","","","","         0","0","Deep dive",
-"Engine API","Enigma.js community introduction page","[Getting started with Engima.js](https://community.qlik.com/blogs/qlikviewdesignblog/2017/02/17/getting-started-with-enigmajs)",,,,,,,,,
+"Engine API","Enigma.js community introduction page","[Getting started with Engima.js](https://community.qlik.com/blogs/qlikviewdesignblog/2017/02/17/getting-started-with-enigmajs)",,"","","","","         0","0","Deep dive",
 "Engine API","Engine API examples/tips","Connect to Engine API with [Enigma.js](https://github.com/qlik-oss/enigma.js/tree/master/examples)",,"","","","","         0","0","Deep dive",
 "Engine API","Engine API examples/tips","[Examples](https://github.com/qlik-oss/enigma.js/tree/master/examples)",,"","","","","         0","0","Deep dive",
 "Engine API","Engine API examples/tips","[QSocks examples](https://github.com/mindspank/qsocks/tree/master/examples)",,"","","","","         0","0","Deep dive",
@@ -1794,6 +1791,17 @@ document.addEventListener('click', function(e) {
 });
 ```",,"","","","","         0","0","Deep dive",
 "Engine API","Create hypercube definition tip","Then either copy the output in the console or just type `copy(qliksenseobject)` and it will be copied to clipboard",,"","","","","         0","0","Deep dive",
+"Engine API","How to keep the websocket to Qlik Sense open (e.g. to keep the selection)","```
+const connect = () => {
+   return enigma.getService('qix', config)
+}
+
+connect().then(doSomething)
+
+// do something else, like switch view somethign
+connect().then(doSomethingElse)
+```",,,,,,,,,
+"Engine API","How to keep the websocket to Qlik Sense open (e.g. to keep the selection)","Both connections will share the same socket and qix state",,,,,,,,,
 "Architecture","Integration architecture introduction video","https://youtu.be/sv5nKDvmRPI",,"","","","","         0","0","PreSales, Technical - 1 hour",
 "Architecture","Integration architecture overview","SaaSarchitecture.png",,"","","","","         0","0","Technical - 2 hours",
 "Architecture","Qlik Sense Topology ","[Click here for the Qlik Sense topology](http://integration.qlik.com/images/QlikSense%20TopologiesV0_18.pdf)",,"","","","","         0","0","PreSales",
