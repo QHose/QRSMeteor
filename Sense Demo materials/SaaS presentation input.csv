@@ -20,10 +20,10 @@
 - a workshop
 - authorizations (which users can see this bullet/image/video?)",,"","","","","         0","0","What is this slide generator?, Technical - 1 day",
 "Workshop Introduction","Export the map and load the data into an app","Excel input engine api generator.png",,"","","","","         0","0","Introduction to embed Qlik Sense, What is this slide generator?, Technical - 1 day",
-"Workshop Introduction","What's so special about this presentation? (1)","> You never know the next question...  or what your audience wants to see or what their technical level is...",,"","","","","         0","0","What is this slide generator?",
-"Workshop Introduction","What's so special about this presentation? (2)","> So you can better put all your data in our *associative engine* and *select and create* the slides based on the questions you ask *now*.",,"","","","","         0","0","What is this slide generator?",
-"Workshop Introduction","With the APIs, the only limit is your imagination","> This presentation is just to inspire what you can do with our *engine*",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
-"Workshop Introduction","Setting up Software as a Service is all about governance and control...","> Your platform controls everything in Qlik Sense by using the APIs",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
+"Workshop Introduction","What's so special about this presentation? (1)","> You never know the next question...  or what the level of expertise is...",,"","","","","         0","0","What is this slide generator?",
+"Workshop Introduction","What's so special about this presentation? (2)","> So you can better put all your data in our *associative engine* and use our search and select",,"","","","","         0","0","What is this slide generator?",
+"Workshop Introduction","With the APIs, the only limit is your imagination","> This presentation is just to inspire what you can do with our *QIX engine*",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
+"Workshop Introduction","Setting up Software as a Service is all about scalability, automation and control...","> Your platform controls everything in Qlik Sense by using the APIs",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
 "Workshop Introduction","Goal of the session","Train the trainer",,"","","","","         0","0","Support",
 "Workshop Introduction","Goal of the session","Validate if we have all content to teach",,"","","","","         0","0","Support",
 "Workshop Introduction","Goal of the session","Introduction to SaaS technology",,"","","","","         0","0","Support",
@@ -38,8 +38,15 @@
 "Workshop Introduction","Agenda","Explain common integration use cases using integration.qlik.com
 * Web integration options
 * Governed Self Service
-* SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Introduction to embed Qlik Sense, What is this slide generator?",
-"Workshop Introduction","Agenda","Explain *Engine API slide generator*",,"","","","","         0","0","What is this slide generator?",
+* SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Introduction to embed Qlik Sense",
+"Workshop Introduction","Agenda","- Introduce *the slide generator*
+- Integration.qlik.com history
+- Use cases
+- What is the data input?
+- Version management
+- How did we create it?
+- Code and APIs used
+",,"","","","","         0","0","What is this slide generator?",
 "Workshop Introduction","Agenda","Demo Qlik Sense integration using integration.qlik.com",,"","","","","         0","0","Introduction - 30 minutes",
 "Workshop Introduction","Agenda","Introduction to APIs",,"","","","","         0","0","PreSales",
 "Workshop Introduction","Agenda","Web integration",,"","","","","         0","0","Technical - 1 hour",
@@ -58,6 +65,14 @@
 "What is an app?","Example: Combine charts and drag and drop","<iframe src=""http://web.saasdemo.qlik.com/onlyMultipleDivs"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
 "What is an app?","Introduction video to build your first app (1 hour)","https://youtu.be/XL1Ph-RAxAE",,"","","","","         0","0","PreSales",
 "What is an app?","Integrate all your data sources into a single app: data integration overview","dataIntegrationIntro.png",,"","","","","         0","0","PreSales, Introduction to embed Qlik Sense, Introduction - 30 minutes, Technical - 2 hours",
+"What is an app?","Compression & speed are key","Indexes compressed data into memory – up to 90x compression",,"","","","","         0","0","Introduction to embed Qlik Sense",
+"What is an app?","Compression & speed are key","Enables associative search and analysis",,"","","","","         0","0","Introduction to embed Qlik Sense",
+"What is an app?","Compression & speed are key","Supports 100’s millions to billions of rows of data",,"","","","","         0","0","Technical - 2 hours",
+"What is an app?","Compression & speed are key","data - compression.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
+"What is an app?","Example associative data model: All your sources combined","datamarket data model simple.png",,"","","","","         0","0","Technical - 2 hours",
+"What is an app?","Example associative data model: All your sources combined","Unlock the value of internal data by associating multi internal data sets using external data",,,,,,,,,
+"What is an app?","Example associative data model: All your sources combined","Better understand *why* things are happening",,,,,,,,,
+"What is an app?","Example associative data model: All your sources combined","Simple and powerful *data integration * unifies internal and external data sources",,,,,,,,,
 "Introduction to SaaS","History","We used to install software, but now you can also access your software online.",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Introduction to SaaS","History","All users go to the same site and have their *own space*",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Introduction to SaaS","History","qlik sense embedded example.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
@@ -88,7 +103,7 @@
 "What is integration.qlik.com?","Goals further explained","- Facilitate different levels of self service",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Goals further explained","- Flexible security rules",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Goals further explained","- Qlik Sense embedding",,"","","","","         0","0","PreSales",
-"What is integration.qlik.com?","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
+"What is integration.qlik.com?","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Introduction - 30 minutes",
 "What is integration.qlik.com?","In the integration demo environment we created a demo for each use case","useCasesOverview.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "What is integration.qlik.com?","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","integration.qlik.com: Self service demo","governed self service app.png",,"","","","","         0","0","Introduction to embed Qlik Sense, SaaS & Power of APIs",
@@ -626,9 +641,9 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Security - technical design","Security flow: User opens an app","PS: make sure you use 'user.name like *' in the QMC license section. In this way you don't have to worry about allocating licenses in integration scenarios in combination with ticketing. Your authentication module decides which users should have access to Qlik Sense. So you only request a ticket for authorized users.",,"","","","","         0","0","Technical - 1 day",
 "Security - technical design","High level authentication and authorization flow","security - high level authentication and authorization flow.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Security - technical design","Qlik Sense security flow when opening an app","SenseSecurityFlow.png",,"","","","","         0","0","PreSales",
-"Security - technical design","Introduction to ticketing","QPS - introduction to security flow.png",,"","","","","         0","0","PreSales, Technical - 1 day",
-"Security - technical design","Integrated security flow using ticketing","security flow complete.png",,"","","","","         0","0","Technical - 1 day",
-"Security - technical design","Video: end to end security integration flow (1M)","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales",
+"Security - technical design","Introduction to ticketing","QPS - introduction to security flow.png",,"","","","","         0","0","Technical - 1 hour",
+"Security - technical design","Integrated security flow using ticketing","security flow complete.png",,"","","","","         0","0","Technical - 1 hour",
+"Security - technical design","Video: end to end security integration flow (1M)","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Technical - 1 hour",
 "Security - technical design","Qlik Sense security overview","securityOverview.png",,"","","","","         0","0","Technical - 1 hour",
 "Security - technical design","Qlik Sense authorization in 2 steps","Setup security in 2 steps
 - Step 1 *Resource Authorization* (using the Security Rules in the QMC)
@@ -759,7 +774,7 @@ or
 - We can use row level security (section access) to limit what a user can see",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How to insert data in the Slide Generator?","slide generator - workshop hierarchy.png",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","Users are logged in, and therefore we can store selections, and create presentations for each user.",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","Possibilities","Select slides while you are having a conversation, create a ""personal"" presentation and share the link",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","Possibilities","Select slides while you are having a conversation, create a ""personal"" presentation, add annotations and share the link",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","You could track which users view which slides.",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","Show presenter notes",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Data loading scenarios","In the end its just data... We only store texts and references to images and videos ",,"","","","","         0","0","What is this slide generator?",
@@ -1874,21 +1889,17 @@ LOAD PrimaryKey, X, Y FROM File.QVD;
 
 STORE QV_Table INTO File.QVD;
 ```",,"","","","","         0","0","PreSales",
-"Data integration","Compression","Indexes compressed data into memory – up to 90x compression",,"","","","","         0","0","Introduction to embed Qlik Sense",
-"Data integration","Compression","Enables associative search and analysis",,"","","","","         0","0","Introduction to embed Qlik Sense",
-"Data integration","Compression","Supports 100’s millions to billions of rows of data",,"","","","","         0","0","Introduction to embed Qlik Sense",
-"Data integration","Compression","data - compression.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Data integration","Script","ETL functionality.png",,"","","","","         0","0","PreSales",
 "Data integration","REST connector introduction","https://www.youtube.com/watch?v=FqwNU_pnFt4&list=PLkRFvjyuHFvIVnReipVR0QfUcQ4X2shXw",,"","","","","         0","0","PreSales",
 "Data integration","Video: Rest connector - Loading multiple pages","https://youtu.be/QlCT55_712I",,"","","","","         0","0","Deep dive",
-"Data integration","Datamarket introduction","> Qlik DataMarket provides a complete cloud-based data service to a large variety of external syndicated data sources via a subscription model. Access a comprehensive library of external data that is always ready-to-use to augment and cross reference your internal data to add outward context and provide deeper insights.",,"","","","","         0","0","Introduction to embed Qlik Sense",
-"Data integration","Video: Datamarket introduction","https://www.youtube.com/watch?v=0p04AZipJbA&feature=share",,"","","","","         0","0","Introduction to embed Qlik Sense",
-"Data integration","Video: Datamarket introduction","[Datamarket datasheet](http://www.qlik.com/us/-/media/files/resource-library/global-us/direct/datasheets/ds-qlik-datamarket-en.pdf?la=en)",,"","","","","         0","0","Introduction to embed Qlik Sense",
+"Data integration","Datamarket introduction","> Qlik DataMarket provides a complete cloud-based data service to a large variety of external syndicated data sources via a subscription model. Access a comprehensive library of external data that is always ready-to-use to augment and cross reference your internal data to add outward context and provide deeper insights.",,,,,,,,,
+"Data integration","Video: Datamarket introduction","https://www.youtube.com/watch?v=0p04AZipJbA&feature=share",,,,,,,,,
+"Data integration","Video: Datamarket introduction","[Datamarket datasheet](http://www.qlik.com/us/-/media/files/resource-library/global-us/direct/datasheets/ds-qlik-datamarket-en.pdf?la=en)",,,,,,,,,
 "Data integration","Hands-on Video: Datamarket - how to use and model your data using smart load","https://www.youtube.com/watch?v=w37fz88BrZk&feature=share",,"","","","","         0","0","PreSales",
-"Data integration","Hands-on Video: Datamarket - how to use and model your data using smart load","[Public demo apps](http://demos.qlik.com/#/search?q=datamarket)",,"","","","","         0","0","Introduction to embed Qlik Sense",
-"Data integration","Hands-on Video: Datamarket - how to use and model your data using smart load","[Qlik Internal only Datamarket demo](https://solutions.qliktech.com/hub/stream/a09332b7-7bec-4b57-a1b1-ffbf25c3eea5)",,"","","","","         0","0","Introduction to embed Qlik Sense",
-"Data integration","Datamarket - attach extra data to your internal data using a simple data model","datamarket data model simple.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
-"Data integration","Datamarket - attach extra data to your internal data using a simple data model","[view available data sources](http://www.qlik.com/us/products/qlik-data-market)",,"","","","","         0","0","Introduction to embed Qlik Sense",
+"Data integration","Hands-on Video: Datamarket - how to use and model your data using smart load","[Public demo apps](http://demos.qlik.com/#/search?q=datamarket)",,,,,,,,,
+"Data integration","Hands-on Video: Datamarket - how to use and model your data using smart load","[Qlik Internal only Datamarket demo](https://solutions.qliktech.com/hub/stream/a09332b7-7bec-4b57-a1b1-ffbf25c3eea5)",,,,,,,,,
+"Data integration","Datamarket - attach extra data to your internal data using a simple data model","datamarket data model simple.png",,,,,,,,,
+"Data integration","Datamarket - attach extra data to your internal data using a simple data model","[view available data sources](http://www.qlik.com/us/products/qlik-data-market)",,,,,,,,,
 "Data integration","Datamarket - attach extra data to your internal data using a simple data model","Unlock the value of internal data by associating multi internal data sets using external data",,,,,,,,,
 "Data integration","Datamarket - attach extra data to your internal data using a simple data model","Better understand *why* things are happening",,,,,,,,,
 "Data integration","Datamarket - attach extra data to your internal data using a simple data model","Simple and powerful *data integration * unifies internal and external data sources",,,,,,,,,
