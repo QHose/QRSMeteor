@@ -19,7 +19,7 @@
 "Workshop Introduction","We created a mind map to define all integration topics","Per slide""bullet"" we can assign 
 - a workshop
 - authorizations (which users can see this bullet/image/video?)",,"","","","","         0","0","What is this slide generator?, Technical - 1 day",
-"Workshop Introduction","Export the map and load the data into an app","Excel input engine api generator.png",,"","","","","         0","0","Introduction to embed Qlik Sense, What is this slide generator?, Technical - 1 day",
+"Workshop Introduction","Export the map and load the data into an app","Excel input engine api generator.png",,"","","","","         0","0","What is this slide generator?, Technical - 1 day",
 "Workshop Introduction","What's so special about this presentation? (1)","> You never know the next question...  or what the level of expertise is...",,"","","","","         0","0","What is this slide generator?",
 "Workshop Introduction","What's so special about this presentation? (2)","> So you can better put all your data in our *associative engine* and use our search and select",,"","","","","         0","0","What is this slide generator?",
 "Workshop Introduction","With the APIs, the only limit is your imagination","> This presentation is just to inspire what you can do with our *QIX engine*",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
@@ -65,10 +65,10 @@
 "What is an app?","Example: Combine charts and drag and drop","<iframe src=""http://web.saasdemo.qlik.com/onlyMultipleDivs"" class=""SenseEmbedFrame""></iframe>",,,,,,,,,
 "What is an app?","Introduction video to build your first app (1 hour)","https://youtu.be/XL1Ph-RAxAE",,"","","","","         0","0","PreSales",
 "What is an app?","Integrate all your data sources into a single app: data integration overview","dataIntegrationIntro.png",,"","","","","         0","0","PreSales, Introduction to embed Qlik Sense, Introduction - 30 minutes, Technical - 2 hours",
-"What is an app?","Compression & speed are key","Indexes compressed data into memory – up to 90x compression",,"","","","","         0","0","Introduction to embed Qlik Sense",
-"What is an app?","Compression & speed are key","Enables associative search and analysis",,"","","","","         0","0","Introduction to embed Qlik Sense",
+"What is an app?","Compression & speed are key","Indexes compressed data into memory – up to 90x compression",,"","","","","         0","0","Introduction to embed Qlik Sense, Technical - 1 hour",
+"What is an app?","Compression & speed are key","Enables associative search and analysis",,"","","","","         0","0","Introduction to embed Qlik Sense, Technical - 1 hour",
 "What is an app?","Compression & speed are key","Supports 100’s millions to billions of rows of data",,"","","","","         0","0","Technical - 2 hours",
-"What is an app?","Compression & speed are key","data - compression.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
+"What is an app?","Compression & speed are key","data - compression.png",,"","","","","         0","0","Introduction to embed Qlik Sense, Technical - 1 hour",
 "What is an app?","Example associative data model: All your sources combined","datamarket data model simple.png",,"","","","","         0","0","Technical - 2 hours",
 "What is an app?","Example associative data model: All your sources combined","Unlock the value of internal data by associating multi internal data sets using external data",,,,,,,,,
 "What is an app?","Example associative data model: All your sources combined","Better understand *why* things are happening",,,,,,,,,
@@ -278,10 +278,13 @@ $(""#btn_1"").click(function() {
   alert(""Btn 1 Clicked"");
 });
 ```",,"","","","","         0","0","PreSales",
+"Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Video: What do we mean with embedding?","Here we embedded/integrated a YouTube video... ",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Video: What do we mean with embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Which Qlik Sense resources can you embed?","web-resources to embed.png",,"","","","","         0","0","Introduction to embed Qlik Sense, Technical - 2 hours",
+"Web integration","Which Qlik Sense resources can you embed?","web-resources to embed v2.png",,"","","","","         0","0","Introduction to embed Qlik Sense, Technical - 2 hours",
+"Web integration","Choose the level of integration you like...","web - difference QAP and Qlik sense enterprise sheet versus our client.png",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Choose the level of integration you like...","Use our complete client, or embed a sheet, chart or the data... ",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Web integration","Demonstration integration.qlik.com: Web integration","Lets look at [integration.qlik.com](http://web.saasdemo.qlik.com/) where we embedded
 - the hub, 
