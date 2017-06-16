@@ -63,23 +63,18 @@ Template.ppt_integration.onDestroyed(function() {
 })
 
 Template.integrationSlideContent.onRendered(function() {
-    if(Cookies.get('showSlideSorter') !== 'true') { //slide show is active
-        $('.slideContent').css({ "visibility": "hidden" }); //show all slide content in the slideSorter
+    if(Cookies.get('showSlideSorter') !== 'true') { //slide show is active, first hide everything, then fade in.
+        $('.slideContent').css({ "visibility": "hidden" }); 
     }
 
     Meteor.setTimeout(function() {
         // console.log('render slide content without animations?', Cookies.get('showSlideSorter'));
         if(Cookies.get('showSlideSorter') !== 'true') { //only do animations for the slide show, not the slide overview
-            $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes... show all slide content in the slideSorter
+            // $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes... show all slide content in the slideSorter
 
             initCodeHighLightAndYouTube(this);
 
-            this.$('.markdownItem, .videoPlaceholder').transition({
-                animation: 'fade in',
-                duration: '3s',
-            });
-
-            this.$('img').transition({
+            this.$('.markdownItem, .videoPlaceholder, iframe, img').transition({
                 animation: 'fade in',
                 duration: '3s',
             });
