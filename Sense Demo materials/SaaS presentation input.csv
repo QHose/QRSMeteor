@@ -524,7 +524,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Exercise 1: Create a bar chart using the vizualization API","[See the answer here](http://jsfiddle.net/dlumkeman/oa6d9qgy/)",,"","","","","         0","0","Exercises",
 "Web integration","Data only","<q>Data only</q>",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Data only","web - options to integrate content.png",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Demo - Only use Qlik Sense data","[integration demo: create your own vizualization using](http://web.saasdemo.qlik.com/chartJS)",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Demo - Only use Qlik Sense data","Integration demo: create your own vizualization using an external library called  [Chart.js](http://web.saasdemo.qlik.com/chartJS)",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demo - Only use Qlik Sense data","PS: don't forget to press F12 in your browser, to view the raw data coming in!",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","When do you use the data only approach?","Use this if you have your own vizualization libraries (software)",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
 "Web integration","When do you use the data only approach?","You only use the associative model of Qlik",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
