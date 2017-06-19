@@ -16,7 +16,7 @@
         <!-- <img class="ui small left floated image" src="images/embed.png"> -->
         <p>You can integrate the Qlik Sense hub, apps, sheets or individual objects using an Iframe or DIV tag. All functionality is delivered via a webserver called the proxy (QPS). The visual parts of Qlik Sense are based on common web technology including web sockets, Javascript, CSS3, HTML5 and Angular. If you want to use our software to create apps, then you can use the APIs or you will need the Qlik Sense Client which is contained in the hub of Qlik Sense Enterprise. If you just want to display sheets or charts you can use both QAP as well as Qlik Sense Enterprise.</p>
         <img class="ui medium right floated image" data-action="zoom" src="images/capabilities API - DIV tag Saas platform to proxy.png">
-<div class="ui divider"></div>
+        <div class="ui divider"></div>
         <h4 class="ui header">Options to integrate</h4>
         <p>There are multiple ways to integrate Qlik Sense into your website. You can design apps and charts upfront or generate them on the fly. Our <a href="https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/Dev-Hub/Content/Overview/dev-hub-startpage.htm">development hub</a> or <a href="http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Plugins/Content/GettingStarted/GettingStarted.htm">Visual Studio plugin </a> help generate the code for you. See an example flow using DIV/javascript integration on the right).</p>
         <DIV class="center aligned column">
@@ -31,15 +31,16 @@
     </DIV>
 
     <div class="ui container segment">
-         {{>webIntegrationMindMap}}
+        {{>webIntegrationMindMap}}
     </div>
 </template>
 <template name="webVideos">
     <!-- <DIV class="ui segment"> -->
-        <div class="ui three column centered grid">
-            <DIV class="column"> {{> videoWebIntroduction}}</DIV>
-            <DIV class="column">{{> videoWebExtended}}</DIV>
-        </DIV>
+    <div class="ui three column centered grid">
+        <DIV class="column"> {{> videoWebIntroduction}}</DIV>
+        <DIV class="column">{{> videoWebExtended}}</DIV>
+        <DIV class="column">{{> videoWebWorkshop}}</DIV>
+    </DIV>
     <!-- </DIV> -->
 </template>
 <template name="videoWebIntroduction">
@@ -61,15 +62,12 @@
     <h4 class="ui header">Exploring web integration (11M)</h4>
     <DIV class="ui embed" data-url='{{URL_Youtube_webintegration_extended}}' data-placeholder="/images/introVideoQAP.png"></DIV>
     <DIV class="item">
-        <!-- <DIV class="content">
-            
-            <DIV class="meta">
-                <span></span>
-            </DIV>
-            <DIV class="description">This video is about the ease of embedding analytics using Qlik Sense and the Qlik Analytics Platform – what we typically refer to as ‘QAP’</DIV>
-            <DIV class="extra">
-            </DIV>
-        </DIV> -->
+    </DIV>
+</template>
+<template name="videoWebWorkshop">
+    <h4 class="ui header">Workshop web integration (30M)</h4>
+    <DIV class="ui embed" data-url='https://www.youtube.com/embed/FHQRaYOogiU' data-placeholder="/images/slide generator - security workshop screenshot.png"></DIV>
+    <DIV class="item">
     </DIV>
 </template>
 <template name="webIntegrationMindMap">
