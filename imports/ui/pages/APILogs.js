@@ -103,8 +103,10 @@ Template.APILogs.onRendered(function() {
     Template.instance()
         .$('.ui.accordion')
         .accordion({ exclusive: false });
+    Template.instance()
+        .$('.ui.embed')
+        .embed();
 });
-
 
 Template.ApiLogsTable.onCreated(function() {
     const apiLogsHandle = Meteor.subscribe('apiLogs');

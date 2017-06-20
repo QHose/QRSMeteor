@@ -51,6 +51,12 @@ pre {
     margin: 2em -4em 2em 5em;
 }
 
+.text.container .embed {
+    margin: 0em -4em 2em 5em;
+}
+
+
+
 /*.overlay {
     float: left;
     margin: 0em 3em 1em 0em;
