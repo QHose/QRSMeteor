@@ -1792,7 +1792,30 @@ function createCube(app) {
 "Engine API","Tips to get started","with the function name, go to Qlik help, to check the mandatory fields",,"","","","","         0","0","Deep dive",
 "Engine API","Tips to get started","Use the websocket browser concole to ""sniff"" the calls if you make some manual actions in the QMC",,"","","","","         0","0","Deep dive",
 "Engine API","Tips to get started","[Use this tool](https://opensrc.axisgroup.com/qix-struct-generator/) to see which structs go where",,"","","","","         0","0","Deep dive",
-"Engine API","Enigma.js community introduction page","[Getting started with Engima.js](https://community.qlik.com/blogs/qlikviewdesignblog/2017/02/17/getting-started-with-enigmajs)",,"","","","","         0","0","Deep dive",
+"Engine API","Enigma.js community introduction page","With the Engine API (via engimaJS) you can create charts, apps, bookmarks, stories, database connections or whatever else is available in an app...",,"","","","","         0","0","Deep dive, SaaS & Power of APIs",
+"Engine API","Enigma.js community introduction page","BTW, you don't have to create things up front. You can create apps, sheets (...), and load the data on demand using the APIs. For example when the user logs in. ",,"","","","","         0","0","Deep dive, SaaS & Power of APIs",
+"Engine API","Enigma.js community introduction page","[Getting started with Engima.js](https://community.qlik.com/blogs/qlikviewdesignblog/2017/02/17/getting-started-with-enigmajs)",,"","","","","         0","0","Deep dive, SaaS & Power of APIs",
+"Engine API","Enigma.js community introduction page","```
+let caseOwnerList = new qSessionObject({  
+  qInfo: {  
+    qType: ""visualization""  
+  },  
+  qListObjectDef: {  
+    qDef: {  
+      qFieldDefs: [""[Case Owner]""],  
+      qFieldLabels: [""Case Owner""]  
+    },  
+    qAutoSortByState: {  
+      qDisplayNumberOfRows: 1  
+    },  
+    qShowAlternatives: true,  
+    qInitialDataFetch: [{  
+      qWidth: 1,  
+      qHeight: 1000  
+    }]  
+  }  
+});  
+```",,"","","","","         0","0","SaaS & Power of APIs",
 "Engine API","Engine API examples/tips","Connect to Engine API with [Enigma.js](https://github.com/qlik-oss/enigma.js/tree/master/examples)",,"","","","","         0","0","Deep dive",
 "Engine API","Engine API examples/tips","[Examples](https://github.com/qlik-oss/enigma.js/tree/master/examples)",,"","","","","         0","0","Deep dive",
 "Engine API","Engine API examples/tips","[QSocks examples](https://github.com/mindspank/qsocks/tree/master/examples)",,"","","","","         0","0","Deep dive",
