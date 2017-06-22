@@ -462,7 +462,7 @@ checkAuthenticatedInQlik = function checkAuthenticatedInQlik(sourceURL){
 "Web integration","Capabilities API - Host whitelist explained ","Capabilities API - DIV tag require.js flow.png",,"","","","","         0","0","PreSales",
 "Web integration","Capabilities API - Host whitelist explained ","<q>Which domains have access to Qlik Sense Proxy web sockets?</q>",,"","","","","         0","0","PreSales",
 "Web integration","Capabilities API - flow chart","flow - capabilities API end to end.png",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Mashup using DIV tags - key component interaction flow","capabilities API - DIV tag Saas platform to proxy.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
+"Web integration","Mashup using DIV tags - key component interaction flow","capabilities API - DIV tag Saas platform to proxy.png",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Cross site scripting explained (XSS)","web - cross site scripting explained.png",,"","","","","         0","0","PreSales",
 "Web integration","Cross site scripting explained (XSS)","Note: setting the *Access-Control-Allow-Origin* addition header or populating the host whitelist has the same effect",,"","","","","         0","0","Deep dive",
 "Web integration","Cross site scripting explained (XSS)","[see mozilla help](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)",,"","","","","         0","0","Deep dive",
@@ -542,8 +542,8 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Examples of using Qlik Sense as a data analytics engine","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Examples of using Qlik Sense as a data analytics engine","postman response.png",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Data only example: Qlik Sense bot (Start around 3m)","[Open this video](https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel)",,"","","","","         0","0","PreSales",
-"Web integration","Table API","API- table api- get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours",
-"Web integration","Table API","```
+"Web integration","Table API - retrieve any combination of dimensions and measures","API- table api - get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours",
+"Web integration","Table API - retrieve any combination of dimensions and measures","```
  require.config({
         baseUrl: ""http://"" + qConfig.host + (qConfig.port ? "":"" + qConfig.port : """") + qConfig.prefix + ""resources""
     });
@@ -558,7 +558,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
         };
         table.OnData.bind(listener); //bind the listener
     })
-```",,"","","","","         0","0","Deep dive, Technical - 2 hours",
+```",,"","","","","         0","0","Deep dive, Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Widgets","https://youtu.be/KJ9r-tMJ9OM?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","Deep dive",
 "Web integration","extensions",">extensions",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","extensions -  Create extra functionality inside an app using javascript","extentionsExamples.png",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
