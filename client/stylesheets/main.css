@@ -1,4 +1,7 @@
-/*/*/*/*CSS declarations go here */
+/*/*/
+
+*
+/*CSS declarations go here */
 
 .ui.grid {
     margin-top: 0.2em;
@@ -13,8 +16,9 @@
 }
 
 .s-alert-success {
-    background: #5EA819;  /* your background color here */
-    color: #fff  /* your text color here */
+    background: #5EA819;
+    /* your background color here */
+    color: #fff/* your text color here */
 }
 
 .container {
@@ -25,10 +29,13 @@
     margin-top: 0.2em;
 }
 
-
 .ui.segment.SSBI {
-  min-height: 250px;
-  max-width: 250px;
+    min-height: 250px;
+    max-width: 250px;
+}
+
+.ui.fixed.table.apiLogs td {
+    overflow-wrap: break-word;
 }
 
 .deleteStream,
@@ -54,19 +61,3 @@ pre {
 .text.container .embed {
     margin: 0em -4em 2em 5em;
 }
-
-
-
-/*.overlay {
-    float: left;
-    margin: 0em 3em 1em 0em;
-  }
-  .overlay .menu {
-    position: relative;
-    left: 0;
-    transition: left 0.5s ease;
-  }
-
-.overlay.fixed .menu {
-    left: 800px;
-  }*/
