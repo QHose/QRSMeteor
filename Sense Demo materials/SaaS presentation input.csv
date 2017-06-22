@@ -103,11 +103,11 @@
 "What is integration.qlik.com?","Goals further explained","- Flexible security rules",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Goals further explained","- Qlik Sense embedding",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Introduction - 30 minutes",
-"What is integration.qlik.com?","This demo simulates your SaaS platform",">So you will see your adminstration panel which controls Qlik Sense via APIs based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","In the integration demo environment we created a demo for each use case","useCasesOverview.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "What is integration.qlik.com?","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","integration.qlik.com: Self service demo","governed self service app.png",,"","","","","         0","0","Introduction to embed Qlik Sense, SaaS & Power of APIs",
 "What is integration.qlik.com?","integration.qlik.com: Self service demo","[Lets go to integration.qlik.com](http://integration.qlik.com)",,"","","","","         0","0","Introduction to embed Qlik Sense, SaaS & Power of APIs",
+"What is integration.qlik.com?","This demo simulates your SaaS platform",">So you will see your adminstration panel which controls Qlik Sense via APIs based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours",
@@ -1115,7 +1115,7 @@ User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
 ```",,"","","","","         0","0","Deep dive",
 "QRS API","Example HTTP header for a REST API call using a certificate to authenticate","Note that this header supplies the user to authenticate as via the `X-Qlik-User: UserDirectory=INTERNAL;` parameter",,"","","","","         0","0","Deep dive",
 "QRS API","Methods and IDs","QRS API - methods and IDs.png",,"","","","","         0","0","Deep dive",
-"QRS API","Simplify programming: Use the browser console to ""record"" Qlik Sense REST API calls","QRS - start task chrome console.png",,"","","","","         0","0","Technical - 2 hours",
+"QRS API","Simplify programming: Use the browser console to ""record"" Qlik Sense REST API calls","QRS - start task chrome console.png",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
 "QRS API","How do you create a REST URL? General purpose endpoints","When communicating directly with the QRS API, the URL is as follows:",,"","","","","         0","0","Deep dive",
 "QRS API","How do you create a REST URL? General purpose endpoints","```
 https://<QRS machine name>:4242/<path>
@@ -1133,8 +1133,8 @@ https://<QRS machine name>:4242/<path>
 "QRS API","How do you create a REST URL? General purpose endpoints","```
 /qrs/user/count?filter=Name eq 'Joe Smith'
 ```",,"","","","","         0","0","Deep dive",
-"QRS API","Special purpose endpoints","QRS API - special purpose endpoints.png",,"","","","","         0","0","Deep dive",
-"QRS API","Special purpose endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Special-Purpose-Paths.htm)",,"","","","","         0","0","Deep dive",
+"QRS API","Special purpose endpoints","QRS API - special purpose endpoints.png",,"","","","","         0","0","Deep dive, SaaS & Power of APIs",
+"QRS API","Special purpose endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Special-Purpose-Paths.htm)",,"","","","","         0","0","Deep dive, SaaS & Power of APIs",
 "QRS API","App: Make copy","Request",,"","","","","         0","0","Deep dive",
 "QRS API","App: Make copy","```
 /qrs/app/{id}/copy?name={name}
@@ -1389,8 +1389,8 @@ Basically all the things you can do yourself when you use an app
 - Reload the app
 - Copy an app
 - *user will only see authorized resources*
-- ...",,"","","","","         0","0","Deep dive, Technical - 1 day",
-"Engine API","Introduction to QIX Engine API","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours",
+- ...",,"","","","","         0","0","Deep dive, Technical - 1 day, SaaS & Power of APIs",
+"Engine API","Video: Introduction to QIX Engine API","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours",
 "Engine API","What can you do? Which end points are available?","Use the engine API explorer of the dev-hub",,"","","","","         0","0","Deep dive",
 "Engine API","What can you do? Which end points are available?","Engine API - example screenshot.png",,"","","","","         0","0","Deep dive",
 "Engine API","Introduction video: Engine API explorer","This tool demonstrates
@@ -1822,8 +1822,8 @@ let caseOwnerList = new qSessionObject({
 "Engine API","Engine API examples/tips","[Engine API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/introducing-engine-API.htm)",,"","","","","         0","0","Deep dive",
 "Engine API","Engine API examples/tips","[Example code to sort your hypercube](https://jsfiddle.net/mindspank/4hpkqbs9/)",,,,,,,,,
 "Engine API","Engine API examples/tips","PS: the function names are camelCase in enigma.js",,"","","","","         0","0","Deep dive",
-"Engine API","Create hypercube definition tip","If you don't want to write the definitions yourself you could paste this into your console when viewing a app",,"","","","","         0","0","Deep dive",
-"Engine API","Create hypercube definition tip","```
+"Engine API","Tip: use this javascript to generate an object definition for you. ","If you don't want to write the definitions yourself you could paste this into your console when viewing a app. E.g. create your table/chart and run the code. Next you can use the definition in your software to create the same object.",,"","","","","         0","0","Deep dive",
+"Engine API","Tip: use this javascript to generate an object definition for you. ","```
 document.addEventListener('click', function(e) { 
   (function recurse(scope) {
     if(!scope.model) return recurse(scope.$parent);
@@ -1836,7 +1836,7 @@ document.addEventListener('click', function(e) {
   })(angular.element(e.target).scope());
 });
 ```",,"","","","","         0","0","Deep dive",
-"Engine API","Create hypercube definition tip","Then either copy the output in the console or just type `copy(qliksenseobject)` and it will be copied to clipboard",,"","","","","         0","0","Deep dive",
+"Engine API","Tip: use this javascript to generate an object definition for you. ","Then either copy the output in the console or just type `copy(qliksenseobject)` and it will be copied to clipboard",,"","","","","         0","0","Deep dive",
 "Engine API","How to keep the websocket to Qlik Sense open (e.g. to keep the selection)","```
 const connect = () => {
    return enigma.getService('qix', config)
