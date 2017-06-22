@@ -95,7 +95,6 @@
 - “Security”, re-using the security of your SaaS platform in Qlik Sense
 - “SaaS provisioning”, create dashboard for each user whenever you like",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs, What is this slide generator?",
 "What is integration.qlik.com?","History","useCasesOverview.png",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs, What is this slide generator?",
-"What is integration.qlik.com?","This demo simulates your SaaS platform",">So you will see your adminstration panel which controls Qlik Sense via APIs based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","Goals further explained","Take the audience on a journey highlighting key aspects of Qlik Sense, the APIs and the value of Qlik.  This journey culminates in an easy to use demonstration website which includes:",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Goals further explained","- Multi-tenant API solution for both Qlik Sense Hub and QMC. (*Loop and reduce*)",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Goals further explained","- SaaS with Qlik Sense demonstration",,"","","","","         0","0","PreSales",
@@ -104,6 +103,7 @@
 "What is integration.qlik.com?","Goals further explained","- Flexible security rules",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Goals further explained","- Qlik Sense embedding",,"","","","","         0","0","PreSales",
 "What is integration.qlik.com?","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Introduction - 30 minutes",
+"What is integration.qlik.com?","This demo simulates your SaaS platform",">So you will see your adminstration panel which controls Qlik Sense via APIs based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","In the integration demo environment we created a demo for each use case","useCasesOverview.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "What is integration.qlik.com?","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","integration.qlik.com: Self service demo","governed self service app.png",,"","","","","         0","0","Introduction to embed Qlik Sense, SaaS & Power of APIs",
