@@ -121,7 +121,8 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generati
                     var call = {};
                     call.action = 'Reload the app';
                     call.url = gitHubLinks.reloadApp;
-                    call.request = 'Has the app been reloaded with customer specific data?: ' + result;
+                    call.request = 'Has the app been reloaded with customer specific data?: ';
+                    call.response = result;
                     REST_Log(call, generationUserId);
                     // console.log('Reload : ' + result);
                     return doc.doSave()
