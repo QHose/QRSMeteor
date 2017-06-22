@@ -413,7 +413,7 @@ require([""js/qlik""], function(qlik) {
 });
 ```",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","Challenge: if the user is not yet authenticated you well get a websocket error (the red box on previous slide)",,"","","","","         0","0","Deep dive",
-"Web integration","Make sure the user is authenticated before you show a mashup","To make sure the user is always authenticated you can put a small HTML file on the Qlik Sense server. (C:\Program Files\Qlik\Sense\Client\returnUrl.html)",,"","","","","         0","0","Deep dive",
+"Web integration","Make sure the user is authenticated before you show a mashup","To make sure the user is always authenticated you can put a small [HTML file](\public\docs) on the Qlik Sense server. (C:\Program Files\Qlik\Sense\Client\returnUrl.html)",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","```
 <!doctype html>
 <html><head><script>window.location=decodeURIComponent((RegExp('returnUrl=(.+?)(&|$)').exec(location.search)||[,null])[1]);</script></head></html>
@@ -831,6 +831,7 @@ or
 "Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://integration.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame"" style=""margin-top: 20px""></iframe>",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","Slide generator","> Let's look at a data driven use case: how do we get from raw data to slides?",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Engine API Slide generator flow: Extract the data from the app via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?",
+"Integration.qlik.com key API calls","Create a hierarchy of workshop contents","slide generator - workshop hierarchy.png",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","First load level 1, 2, 3 data from the CSV. Each level also contains the resource for which it is relevant",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
 LOAD 
@@ -1065,6 +1066,7 @@ function appChangeListener() {
 "QRS API","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,"","","","","         0","0","Deep dive",
 "QRS API","QRS - architecture diagram","QRS - architecture.png",,"","","","","         0","0","Deep dive",
 "QRS API","QRS API Introduction video 1","https://youtu.be/-WLu_q_7Z24",,"","","","","         0","0","Technical - 1 day",
+"QRS API","QRS API Introduction video 1","With fiddler or Postman you can record each activity, and see the resulting API call.",,"","","","","         0","0","Technical - 1 day",
 "QRS API","Key things to look for when you want to have authenticated REST calls","The calls must be authenticated with a user with the required permission.",,"","","","","         0","0","Deep dive",
 "QRS API","Key things to look for when you want to have authenticated REST calls","Make sure you understand which user makes the request
 - Client side?
@@ -1322,6 +1324,8 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 "QPS - Proxy API","Video - ticketing with .NET","https://youtu.be/xlCfly7MyOY",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Video - ticketing with Java","https://youtu.be/_DhG6TfZFac",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Video - ticketing with Node","Ticketing with Qlik Sense and Node.js",,"","","","","         0","0","Deep dive",
+"QPS - Proxy API","Use ticketing without the extra redirect","Its possible to directly pass on a ticket the first time you make a call to a static asset in Qlik Sense. See the comment from Alex below
+- if you do ticketing how it works is that you get a ticket from your auth module and then you fetch a static resource from behind the proxy such as the require.js file with `qlikTicket=<ticket value>` appended to the url. The proxy will see the ticket, validate it and consume the ticket and if it's a valid ticket it will send the resource back to the browser with a session cookie attached to the response. The browser will then append the session cookie to future requests and the proxy will see the session cookie and let the requests through",,,,,,,,,
 "QPS - Proxy API","Header","<q>Header authentication</q>",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","When to use header authentication?","Normally used within large environments",,,,,,,,,
 "QPS - Proxy API","When to use header authentication?","In which the already have a system that handles the authentication of the user",,,,,,,,,
@@ -1345,7 +1349,8 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 "QPS - Proxy API","Header authentication requirements","Create virtual proxy for header authentication",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Header authentication requirements","QMC - proxy - header authentication setup.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Proxy architecture scenarios","<q>Proxy architecture scenarios</q>",,"","","","","         0","0","Deep dive",
-"QPS - Proxy API","QPS architecture diagram","QPS - architecture.png",,"","","","","         0","0","Deep dive",
+"QPS - Proxy API","QPS (Proxy) architecture diagram","QPS - architecture overview.png",,"","","","","         0","0","Deep dive",
+"QPS - Proxy API","QPS (Proxy) architecture diagram","See [help](http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Architecture.htm)",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Architecture scenarios","qps - reverse proxy architecture.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Example code to logout a user via QPS API call","API - logout user.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Example code to logout a user via QPS API call","``` 
@@ -1868,6 +1873,8 @@ connect().then(doSomethingElse)
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[System requirements](https://help.qlik.com/en-US/sense/3.2/Content/Introduction/system-requirements.htm)",,"","","","","         0","0","PreSales",
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Port overview](http://help.qlik.com/en-US/sense/3.2/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Deployment-Ports.htm)",,"","","","","         0","0","PreSales",
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Plan your deployment](http://help.qlik.com/en-US/sense/3.2/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Planning-Deployments.htm)",,"","","","","         0","0","PreSales",
+"Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Backup and restore Qlik Sense](http://help.qlik.com/en-US/sense/3.1/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Backup-Restore.htm)
+- This section describes how to back up and restore Qlik Sense sites and certificates and how to move a node to a new machine.",,,,,,,,,
 "Data integration","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","data - create qvd.png",,"","","","","         0","0","PreSales",
