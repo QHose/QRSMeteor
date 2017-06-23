@@ -564,29 +564,34 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","extensions -  Create extra functionality inside an app using javascript","extentionsExamples.png",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Web integration","extensions -  Create extra functionality inside an app using javascript","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-API-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Web integration","Video: introduction to extensions","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","Deep dive",
-"Web integration","Web integration problem solving 1","Issue: DIV tag does not work","Qlik Sense ports are blocked",,,,,,,,
-"Web integration","Web integration problem solving 1","Issue: DIV tag does not work","Section access is active, and username or group is not present",,,,,,,,
-"Web integration","Web integration problem solving 1","Issue: DIV tag does not work","App is not published",,,,,,,,
-"Web integration","Web integration problem solving 1","go to VM snapshot 1",,"","","","","         0","0","Support",
-"Web integration","Web integration problem solving 2","Issue: DIV tag does not work","whitelist does not contain server name",,,,,,,,
-"Web integration","Web integration problem solving 2","Issue: DIV tag does not work","Virtual Proxy not linked to proxy",,,,,,,,
-"Web integration","Web integration problem solving 2","Issue: DIV tag does not work","Access allow origin header not present in proxy advanced settings",,,,,,,,
-"Web integration","Web integration problem solving 2","go to VM snapshot 2",,"","","","","         0","0","Support",
-"Web integration","Web integration problem solving 3","Issue: App integration IFrame too small",,"","","","","         0","0","Support",
-"Web integration","Web integration problem solving 3","[Go to this link to see the issue and solve it](http://jsfiddle.net/dlumkeman/d8oe54v3/)",,"","","","","         0","0","Support",
-"Web integration","Web integration problem solving 4","Issue: Qlik Sense does not respond to clicks","NoInteraction option is set to true in IFrame url",,,,,,,,
-"Web integration","Web integration problem solving 4","[Go to this link to see the issue and solve it](http://jsfiddle.net/dlumkeman/bxuvqftw/)","<iframe src='http://saasdemo.qlik.com:443/anon/single/?appid=6bd9b09d-15ad-4d3e-8149-dbb32ce1e1b0&sheet=PumJhh&select=Country,Canada&select=City,Vancouver'style='border:none; width:100%; height:800px'></iframe>",,,,,,,,
-"Web integration","Web integration problem - fiddle 1","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/nk7qyvkj/)","wrong proxy",,,,,,,,
-"Web integration","Web integration problem - fiddle 2","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/est1ccsj/)","https instead of http",,,,,,,,
-"Web integration","Web integration problem - fiddle 3","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/Ljv9r2Lz/)","Wrong port",,,,,,,,
-"Web integration","Web integration problem - fiddle 4","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/zz9ftg5y/)","wrong objectID",,,,,,,,
-"Web integration","Web integration problem - fiddle 5","Try to fix the issue with this [DIV tag integration](http://jsfiddle.net/dlumkeman/we00bs5h/)","Wrong require.js version",,,,,,,,
 "Web integration","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise.png",,"","","","","         0","0","Technical - 1 day",
 "Web integration","More information","Always checkout Stefan Walthers posts. Like this [web integration tutorial](https://github.com/stefanwalther/awesome-qap#building-visualization-extensions)",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Web integration examples","[Marketing 360](http://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Web integration examples","[European datamarket](http://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","Technical - 1 day, PreSales",
 "Web integration","Web integration examples","More demos on [Qlik Web integration demo page](http://webapps.qlik.com/#/)",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Web integration examples","web - marketing 360 screenshot.png",,"","","","","         0","0","Technical - 1 hour",
+"Web integration","Performance tips","9/10 times any performance issues within the Capabilities API is due to the developer not cleaning up after a `getObject` call",,,,,,,,,
+"Web integration","Performance tips","```
+let vis = qlik.app.visualization.get('id')
+
+vis.then(model => {
+  // display chart
+  model.show('someid')
+})
+
+vis.then(model => {
+  // When done with the viz, clean it up from scope.
+  model.close()
+})
+```",,,,,,,,,
+"Web integration","Performance tips","When you call `close` all scopes will be destroyed and if it still has a DOM reference that node will be removed from the page.
+
+So if the function that you shared is called every time they flip between the panels in the end you will have a lot of active visualization models.
+
+Which all will react to every selection you make in the app and start fetching data even though they aren't rendering anything to the screen.
+
+That's usually the main culprit when people experience that the app gets slow over time. (Source: Alexander Karlsson)",,,,,,,,,
+"Web integration","Performance tips","Bundle size: `require.js` is always needed, `single.js` is the entry point for the Single Integration API and `qlik.js` is the entry point for the Capabilities API. You would normally not load both the latter ones at the same time though.",,,,,,,,,
 "Security - functional design","Introduction to application level security","Authentication: Who is the user?",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - functional design","Introduction to application level security","Authorization: What can he do?",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - functional design","Introduction to application level security","<img class=""ui medium centered image"" src=""images/securityRules.png"">",,"","","","","         0","0","PreSales, Technical - 1 day",
@@ -1947,9 +1952,9 @@ STORE QV_Table INTO File.QVD;
 "Other","Advanced topics: Benchmarking and comparative analysis","https://youtu.be/KnKG-5TEzUk",,,,,,,,,
 "Other","Advanced topics: Benchmarking and comparative analysis","[See Qlik community for more info](https://community.qlik.com/blogs/qlikviewdesignblog/2013/02/26/why-comparative-analysis)",,,,,,,,,
 "Other","Advanced topics: Benchmarking and comparative analysis","If you would like to try this functionality, go to [Financial Stocks Analysis -  demo - Comparative Analysis tab](http://demo.qlik.com/detail.aspx?appName=Financial%20Stock%20Analysis.qvw&_ga=1.93193818.654086888.1487078093)",,,,,,,,,
-"Other","Licensing","qlik sense tokens license.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
+"Other","Licensing","qlik sense tokens license.png",,,,,,,,,
 "Other","QAP",,,,,,,,,,
-"Other","Video: Change the host name (certificates)","https://youtu.be/Dvub_4fikv0",,,,,,,,,
+"Other","Video: Change the host name (certificates, pfx, cert)","https://youtu.be/Dvub_4fikv0",,,,,,,,,
 "Other","On demand app generation (ODAG)","https://youtu.be/n_VnOdqQ0CA",,,,,,,,,
 "QAP","Delighting developers","web - QAP delighting developers.png",,,,,,,,,
 "QAP","Lifecycle","web - qap lifecycle.png",,,,,,,,,
