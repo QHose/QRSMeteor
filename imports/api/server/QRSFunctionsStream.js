@@ -60,7 +60,7 @@ export function createStream(name, generationUserId) {
         const call = {};
         call.action = 'Create stream'; 
         call.url = gitHubLinks.createStream;
-        call.request = "HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream', { headers: "+JSON.stringify(authHeaders)+ ", params: { 'xrfkey': "+senseConfig.xrfkey +"}, data: { name: " + name +"}})"; 
+        call.request = "HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream', { headers: "+JSON.stringify(authHeaders)+ ", params: { 'xrfkey': "+senseConfig.xrfkey +"}, data: { name: " + name +"}}) --> USE OF HEADER AUTH ONLY FOR DEMO/REVERSE PROXY PURPOSES"; 
         call.response = result;
         REST_Log(call, generationUserId);        
         return call.response;

@@ -51,9 +51,9 @@ Template.presentationDimmer.onRendered(function() {
 })
 Template.landingPage.onRendered(function() {
     //show a popup so the user can select whether he is technical or not...
-    this.$('#userSelectPresentationModal').modal('show')
+    this.$('#userSelectPresentationModal')
         .modal({
-            observeChanges: true,
+            // observeChanges: true,
             onDeny: function() {
                 console.log('group has been set to TECHNICAL, we use this group to request a ticket in Qlik Sense. Using Section access we limit what a user can see. Now the iframe can be shown which tries to open the presentation virtual proxy');
                 Session.setAuth('groupForPresentation', 'TECHNICAL');
@@ -63,13 +63,13 @@ Template.landingPage.onRendered(function() {
                 console.log('group has been set to GENERIC. This group is used in the ticket to limit section access (Rows)');
             }
         })
-        .modal('refresh')
-        .modal('refresh');
-
-    Meteor.defer(function() {
-        this.$('#userSelectPresentationModal').modal('refresh');
-    }, 300);
-
+        .modal('show')
+        .css({
+            position: "fixed",
+            top: '35%',
+            height: 300
+        });
+    
     Session.set('landingPageAlreadySeen', true);
 })
 Template.landingPage.onDestroyed(function() {
