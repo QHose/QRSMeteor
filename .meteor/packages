@@ -20,7 +20,6 @@ service-configuration@1.0.11
 useraccounts:iron-routing
 useraccounts:semantic-ui
 practicalmeteor:faker
-johnantoni:meteor-transit
 meteorhacks:sikka #firewall
 
 aldeed:autoform

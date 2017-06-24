@@ -70,7 +70,6 @@ iron:location@1.0.11
 iron:middleware-stack@1.1.0
 iron:router@1.1.2
 iron:url@1.1.0
-johnantoni:meteor-transit@0.0.1
 jonperl:accounts-linkedin@1.1.0
 jonperl:linkedin@1.1.0
 jquery@1.11.10
