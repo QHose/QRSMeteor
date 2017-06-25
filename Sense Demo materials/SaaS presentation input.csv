@@ -54,11 +54,15 @@
 "Workshop Introduction","Agenda","Qlik Sense APIs",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Workshop Introduction","Agenda","Questions",,"","","","","         0","0","Introduction - 30 minutes",
 "Workshop Introduction","Video - generic introduction to APIs","https://www.youtube.com/watch?v=s7wmiS2mSXY",,"","","","","         0","0","Introduction to embed Qlik Sense",
-"What is an app?","Video: What is governed self service?","https://youtu.be/pQae9S8S_vQ?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","PreSales, Introduction - 30 minutes",
+"What is an app?","Video: What is governed self service?","https://youtu.be/pQae9S8S_vQ?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours",
+"What is an app?","Video: The Qlik Associative Model","https://youtu.be/gWNoyL6fZxo",,"","","","","         0","0","Introduction - 30 minutes",
 "What is an app?","What is governed self service using Qlik Sense apps?","[Lets view a demo](http://integration.qlik.com/selfService)",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
 "What is an app?","What is governed self service using Qlik Sense apps?","governed self service app.png",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
 "What is an app?","Contents of an app","contents of an app.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "What is an app?","In the hub apps are grouped per stream","web-resources to embed.png",,"","","","","         0","0","PreSales, Introduction to embed Qlik Sense, Technical - 2 hours",
+"What is an app?","Qlik Sense Desktop - Create Your First App and Visualization","https://youtu.be/MARjUr2dZRs",,,,,,,,,
+"What is an app?","Qlik Sense Desktop - Create Your First App and Visualization","[Sample data](https://community.qlik.com/docs/DOC-8833)",,,,,,,,,
+"What is an app?","Qlik Sense Desktop - Create Your First App and Visualization","If you want to learn more go to [Qlik Community](https://community.qlik.com/docs/DOC-6932)",,,,,,,,,
 "What is an app?","Introduction video to build your first app (1 hour)","https://youtu.be/XL1Ph-RAxAE",,"","","","","         0","0","PreSales",
 "What is an app?","Integrate all your data sources into a single app: data integration overview","dataIntegrationIntro.png",,"","","","","         0","0","PreSales, Introduction to embed Qlik Sense, Introduction - 30 minutes, Technical - 2 hours",
 "What is an app?","Compression & speed are key","Indexes compressed data into memory – up to 90x compression",,"","","","","         0","0","Introduction to embed Qlik Sense, Technical - 1 hour",
@@ -416,6 +420,7 @@ require([""js/qlik""], function(qlik) {
 });
 ```",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Capabilties API - example code: make a selection","[help](https://help.qlik.com/en-US/sense-developer/3.2/Subsystems/APIs/Content/MashupAPI/qlik-field-interface.htm)",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
+"Web integration","Capabilties API - example code: make a selection","Also see [this video](https://youtu.be/IApeTl6cCaY)",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Capabilties API - example code : clear selection","```
 var config = {
  host: window.location.hostname,
@@ -561,6 +566,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 ```",,"","","","","         0","0","Deep dive, Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Widgets","https://youtu.be/KJ9r-tMJ9OM?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","Deep dive",
 "Web integration","extensions",">extensions",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Video: extensions in 60 seconds","https://youtu.be/-bxlwEdmaAQ",,"","","","","         0","0","Technical - 1 day",
 "Web integration","extensions -  Create extra functionality inside an app using javascript","extentionsExamples.png",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Web integration","extensions -  Create extra functionality inside an app using javascript","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-API-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Web integration","Video: introduction to extensions","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","Deep dive",
@@ -1903,6 +1909,9 @@ connect().then(doSomethingElse)
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Plan your deployment](http://help.qlik.com/en-US/sense/3.2/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Planning-Deployments.htm)",,"","","","","         0","0","PreSales",
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Backup and restore Qlik Sense](http://help.qlik.com/en-US/sense/3.1/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Backup-Restore.htm)
 - This section describes how to back up and restore Qlik Sense sites and certificates and how to move a node to a new machine.",,,,,,,,,
+"Architecture","Video: understanding Qlik Sense performance (scalability)","https://youtu.be/Vwmx0nBNk0Q",,,,,,,,,
+"Architecture","Video: Deploy Qlik Sense - multi node with shared persistence (centrally hosted database and file storage)","https://youtu.be/TpTKY42cO08",,,,,,,,,
+"Architecture","Video: Activating license and allocating users access","https://youtu.be/uWGS48VaOQE",,,,,,,,,
 "Data integration","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","data - create qvd.png",,"","","","","         0","0","PreSales",

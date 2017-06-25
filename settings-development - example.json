@@ -55,5 +55,11 @@
             "clientId": "535d2ca6386eeca90d65",
             "secret": "924a9d853fd80f12"
         }
+    },
+    "sikka": {
+         "captcha": {
+             "siteKey": "your_new_site_key",
+             "secret":  "your_new_secret_key"
+         }
     }
 }
