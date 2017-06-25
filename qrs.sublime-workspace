@@ -565,10 +565,11 @@
 			}
 		},
 		{
-			"file": "imports/api/server/QPSFunctions.js",
+			"file": "Dockerfile",
 			"settings":
 			{
-				"buffer_size": 17311,
+				"buffer_size": 26,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -1350,30 +1351,28 @@
 				},
 				{
 					"buffer": 5,
-					"file": "imports/api/server/QPSFunctions.js",
-					"semi_transient": true,
+					"file": "Dockerfile",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17311,
+						"buffer_size": 26,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7651,
-								7651
+								26,
+								26
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 6434.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

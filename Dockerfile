@@ -1,0 +1,1 @@
+FROM markoshust/meteor:4.8
