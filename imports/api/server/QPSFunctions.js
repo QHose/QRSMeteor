@@ -80,6 +80,13 @@ Meteor.methods({
             throw new Meteor.Error('Failed to login into Qlik Sense via a ticket', 'Please go to the landing page and select your group. We could not request a ticket because the userId or groups (technical, generic) are not provided');
         }
 
+        function getQlikGroup() {
+            if(Roles.userIsInRole(Meteor.userId(), ['qlik'], 'GLOBAL')) {
+                return 'qlik';
+            } else {
+                return 'external'
+            }
+        }
         // console.log('loginUserForPresentation: ', userProperties.user);
         var passport = {
                 'UserDirectory': userProperties.user, //Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
@@ -87,7 +94,9 @@ Meteor.methods({
                 'Attributes': [
                     { 'group': 'slideGenerator' }, //attributes supply the group membership from the source system to Qlik Sense
                     { 'group': userProperties.group },
-                    { 'group': 'ITALY' } //make sure the row level demo works by passing this
+                    { 'group': 'ITALY' }, //make sure the row level demo works by passing this
+                    { 'group': getQlikGroup() }
+
                 ]
             }
             //logging only
@@ -161,7 +170,7 @@ Meteor.methods({
 Meteor.methods({
     'resetPasswordOrCreateUser' (user) {
         try {
-            // console.log('reset the password of the user before logging him in');
+            console.log('reset the password of the user before logging him in');
             check(user.email, String);
             check(user.password, String);
         } catch(err) {
@@ -173,16 +182,22 @@ Meteor.methods({
         if(user.email === 'mbj@qlik.com') {
             throw new Meteor.Error("Admin account", "Please login as a different user on Qlik.com");
         } else if(userExists) {
-            // console.log('########### found user, now reset his password: ', userExists);
+            console.log('########### found user, now reset his password: ', userExists);
             userId = userExists._id;
             Accounts.setPassword(userId, user.password);
+            console.log('add roles to user');
+            Roles.addUsersToRoles(userId, user.roles, 'GLOBAL'); //https://github.com/alanning/meteor-roles
+
         } else {
             userId = Accounts.createUser(user);
-            Roles.addUsersToRoles(userId, ['untrusted'], 'GLOBAL'); //https://github.com/alanning/meteor-roles
         }
         return userId;
     }
 })
+
+function addRoles(userId, roles) {
+    Roles.addUsersToRoles(userId, ['untrusted'], 'GLOBAL'); //https://github.com/alanning/meteor-roles
+}
 
 function insertDummyCustomers(generationUserId) {
     // console.log('insertDummyCustomers called for generationUserId: ', generationUserId);
@@ -294,28 +309,28 @@ Meteor.methods({
 
         console.log('The HTTP REQUEST to Sense QPS API:', call.request);
         console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
-            // EXAMPLE RESPONSE
-            //{
-            //   "statusCode": 201,
-            //   
-            //   "data": {
-            //     "UserDirectory": "4RCJDRSABMVKY66SZ",
-            //     "UserId": "john",
-            //     "Attributes": [
-            //       {
-            //         "group": "SCHMIDT, KOZEY AND KUPHAL"
-            //       },
-            //       {
-            //         "group": "GERMANY"
-            //       },
-            //       {
-            //         "group": "CONSUMER"
-            //       }
-            //     ],
-            //     "Ticket": "6ZH6juc9JYlkS4SW",
-            //     "TargetUri": "http://integration.qlik.com:443/meteor/hub/"
-            //   }
-            // }
+        // EXAMPLE RESPONSE
+        //{
+        //   "statusCode": 201,
+        //   
+        //   "data": {
+        //     "UserDirectory": "4RCJDRSABMVKY66SZ",
+        //     "UserId": "john",
+        //     "Attributes": [
+        //       {
+        //         "group": "SCHMIDT, KOZEY AND KUPHAL"
+        //       },
+        //       {
+        //         "group": "GERMANY"
+        //       },
+        //       {
+        //         "group": "CONSUMER"
+        //       }
+        //     ],
+        //     "Ticket": "6ZH6juc9JYlkS4SW",
+        //     "TargetUri": "http://integration.qlik.com:443/meteor/hub/"
+        //   }
+        // }
         return call.response.data.Ticket;
     }
 })

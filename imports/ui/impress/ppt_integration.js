@@ -64,7 +64,7 @@ Template.ppt_integration.onDestroyed(function() {
 
 Template.integrationSlideContent.onRendered(function() {
     if(Cookies.get('showSlideSorter') !== 'true') { //slide show is active, first hide everything, then fade in.
-        $('.slideContent').css({ "visibility": "hidden" }); 
+        $('.slideContent').css({ "visibility": "hidden" });
     }
 
     Meteor.setTimeout(function() {
@@ -257,7 +257,9 @@ var appChangeListener = function appChangeListener() {
         .then(qix => {
             qix.app.on('changed', () => {
                 // console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
-                location.reload(); //reload the browser
+                if(Cookies.get('showSlideSorter' !== 'true')) {
+                    location.reload(); //reload the browser
+                }                
             });
         }).catch((error) => {
             console.error('ERROR in the appChangeListener via the enigma.js: ', error);
@@ -288,7 +290,7 @@ var appChangeListener = function appChangeListener() {
 // }
 
 function getLevel1to3(sessionName) {
-    enigma.getService('qix',config)
+    enigma.getService('qix', config)
         .then(qix => {
 
             qix.app.createSessionObject({

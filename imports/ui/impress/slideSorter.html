@@ -1,7 +1,8 @@
 <template name="ppt_slideSorter">
+
     <div class="row">
         <a href="{{pathFor 'slides'}}" class="ui black launch right attached fixed home button" style="background-color: #545454;">
-             <i class="content icon" style="padding-left:20px"></i></a>       
+            <i class="content icon" style="padding-left:20px"></i></a>
     </div>
 
     <div id="shrinked">
@@ -27,26 +28,41 @@
 
 <!-- STUFF BELOW FOR TESTING ONLY -->
 <template name="slideSorter">
-    <!--  <div id="wrap">
 
-        <div class="quarter"> -->
-    <!-- <div id="impress"> -->
+    <div class="triggerElement">
+        Hover me.
 
-    <div class="ui grid">
-        <div class="four wide column">{{> dummySlide}}</div>
-        <div class="four wide column">{{> dummySlide}}</div>
-        <div class="four wide column">{{> dummySlide}}</div>
-        <div class="four wide column">{{> dummySlide}}</div>
-        <div class="four wide column">{{> dummySlide}}</div>
-        <div class="four wide column">{{> dummySlide}}</div>
-        <div class="four wide column">{{> dummySlide}}</div>
-        <div class="four wide column">{{> dummySlide}}</div>
-
+        <div class="posDiv">
+         {{> dummySlide}}
+        </div>
     </div>
 
-    <!-- </div> -->
-    <!--    </div>
-        </div> -->
+   <!--  <div class="triggerElement">
+        Hover me too.
+        <div class="posDiv lower">
+            This is absolutely positioned
+        </div>
+    </div>
+ -->
+    <!-- <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+    <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div> -->
+
 </template>
 
 <template name="dummySlide">
@@ -60,9 +76,9 @@
             </div>
         </h2>
 
-        <div class="slideContent" style="visibility: hidden;">
+        <div class="slideContent">
 
-            <img class="ui huge centered integration image transition visible" src="images/speaker introduction martijn raymond.png">
+            <img class="ui huge centered integration image" src="images/speaker introduction martijn raymond.png">
 
         </div>
 

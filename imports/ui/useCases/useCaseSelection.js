@@ -11,21 +11,17 @@ Template.useCaseSelection.events({
 
 
 Template.useCaseSelection.onRendered(function() {
-  
-    // this.$('.cards')
-    //     .transition('scale in');
-
-this.$('.cards .card').css('visibility', 'hidden');
+    this.$('.cards .card').css('visibility', 'hidden'); //hide cards before we can fade them in
 
     this.$('.cards .card')
         .transition({
             animation: 'fade in',
             reverse: 'auto', // default setting
             interval: 800,
-            duration  : 2000
+            duration: 2000
         });
 
-      this.$('.special.cards .image').dimmer({
+    this.$('.special.cards .image').dimmer({
         on: 'hover'
     });
 })
@@ -40,7 +36,7 @@ function login(user) {
                 console.log(error);
             } else {
                 console.log('All other users logged out, and we inserted the new user ' + user + ' in the local database');
-                sAlert.success(user + ' is now logged in into Qlik Sense');
+                sAlert.success(user + ' is now logged in to Qlik Sense');
             }
         })
     } catch(err) {
