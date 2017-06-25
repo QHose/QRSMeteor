@@ -284,7 +284,7 @@ $(""#btn_1"").click(function() {
 "Web integration","Video: What do we mean with embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Example: What is the hub? (Embedded in the slide)","<iframe src=""http://integration.qlik.com:443/meteor/hub"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
 "Web integration","Example: What is the hub? (Embedded in the slide)","When Qlik Sense starts up, you arrive at the hub. The hub is where you find all the apps you have access rights to use.",,,,,,,,,
-"Web integration","Example code: embed a sheet (fiddle)","<iframe width=""100%"" height=""100vh"" src=""//jsfiddle.net/qhose/0nn9bvg6/embedded/html,css,result/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,,,,,,,,
+"Web integration","Example code: embed a sheet (fiddle)","<iframe width=""100%"" height=""800px"" src=""//jsfiddle.net/qhose/0nn9bvg6/embedded/html,css,result/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,,,,,,,,
 "Web integration","Example: Embed a chart","<iframe src=""http://web.saasdemo.qlik.com/only1Chart"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Demonstration integration.qlik.com: Web integration","Lets look at [integration.qlik.com](http://web.saasdemo.qlik.com/) where we embedded
