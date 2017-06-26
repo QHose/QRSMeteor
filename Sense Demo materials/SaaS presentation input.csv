@@ -73,6 +73,9 @@
 "What is an app?","Example associative data model: All your sources combined","Unlock the value of internal data by associating multi internal data sets using external data",,,,,,,,,
 "What is an app?","Example associative data model: All your sources combined","Better understand *why* things are happening",,,,,,,,,
 "What is an app?","Example associative data model: All your sources combined","Simple and powerful *data integration * unifies internal and external data sources",,,,,,,,,
+"What is an app?","Visual data modeling (ETL) ","https://youtu.be/ZFuMX_hyu2w",,,,,,,,,
+"What is an app?","Visual data modeling (ETL) ","This video is part 1 of a new features demonstration presenting the new ETL and data loading and index capabilities in the June 2017 release of Qlik Sense.",,,,,,,,,
+"What is an app?","Visual data modeling (ETL) ","Sample data available [here](https://community.qlik.com/docs/DOC-18599)",,,,,,,,,
 "Introduction to SaaS","History","We used to install software, but now you can also access your software online.",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Introduction to SaaS","History","All users go to the same site and have their *own space*",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Introduction to SaaS","History","qlik sense embedded example.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
@@ -284,7 +287,7 @@ $(""#btn_1"").click(function() {
 "Web integration","Video: What do we mean with embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Example: What is the hub? (Embedded in the slide)","<iframe src=""http://integration.qlik.com:443/meteor/hub"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
 "Web integration","Example: What is the hub? (Embedded in the slide)","When Qlik Sense starts up, you arrive at the hub. The hub is where you find all the apps you have access rights to use.",,,,,,,,,
-"Web integration","Example code: embed a sheet (fiddle)","<iframe width=""100%"" height=""800px"" src=""//jsfiddle.net/qhose/0nn9bvg6/embedded/html,css,result/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,,,,,,,,
+"Web integration","Example code: embed a sheet (fiddle)","<iframe width=""100%"" height=""800px"" src=""//jsfiddle.net/qhose/0nn9bvg6/embedded/result,html,css/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs",
 "Web integration","Example: Embed a chart","<iframe src=""http://web.saasdemo.qlik.com/only1Chart"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Demonstration integration.qlik.com: Web integration","Lets look at [integration.qlik.com](http://web.saasdemo.qlik.com/) where we embedded
@@ -385,26 +388,8 @@ style='border:none; width:100%; height:300px'
 "Web integration","An overview of HTTP - many things are loaded in the browser if you open a page","web - contents of a webpage.png",,"","","","","         0","0","PreSales",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","[integration demo: div tag integration example](http://web.saasdemo.qlik.com/multipleDivs)",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","Dev-hub: demo mashup editor",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
-"Web integration","Capabilities API - example code to embed chart using a DIV tag","First connect to Qlik Sense using the config
-```
-var config = {
- host: ""integration.qlik.com"",
- prefix: ""/anon/"",
- port: 81,
- isSecure: false;
-}
-```",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
-"Web integration","Capabilities API - example code to embed chart using a DIV tag","Get charts via qlik.js loaded via require.js on the client
-```
-require( [""js/qlik""], function ( qlik ) {
-
-var app = qlik.openApp('6bd9b09d-15ad-4d3e-8149-dbb32ce1e1b0', config);
-
-app.getObject('DIV1','Ggpaxa');
-})
-```
-",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
-"Web integration","Capabilities API - example code to embed chart using a DIV tag","[See demo on integration.qlik.com](http://web.saasdemo.qlik.com/multipleDivs)",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Capabilities API - example code to embed chart using a DIV tag","[See demo on integration.qlik.com](http://web.saasdemo.qlik.com/multipleDivs)",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
+"Web integration","Capabilities API - example code to embed chart using a DIV tag","<iframe width=""100%"" height=""800"" src=""//jsfiddle.net/qhose/uj3abbde/3/embedded/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Capabilties API - example code: make a selection","```
 var config = {
  host: window.location.hostname,
