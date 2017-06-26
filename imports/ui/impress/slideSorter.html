@@ -29,7 +29,7 @@
 <!-- STUFF BELOW FOR TESTING ONLY -->
 <template name="slideSorter">
 
-   <!--  <div class="triggerElement">
+    <!--  <div class="triggerElement">
         Hover me.
 
         <div class="posDiv">
@@ -37,17 +37,23 @@
         </div>
     </div> -->
 
-   <!--  <div class="triggerElement">
+    <!--  <div class="triggerElement">
         Hover me too.
         <div class="posDiv lower">
             This is absolutely positioned
         </div>
     </div>
  -->
-    <div class="miniSlide" tabindex='1'>1{{> dummySlide}}</div>
-    <div class="miniSlide" tabindex='1'>2{{> dummySlide}}</div>
-    <div class="miniSlide" tabindex='1'>3{{> dummySlide}}</div>
-   <!--  <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
+<div class="Grid">
+  <div class="Grid-cell miniSlide">{{> dummySlide}}</div>
+  <div class="Grid-cell miniSlide">{{> dummySlide}}</div>
+</div>
+
+    <!-- <div class="miniSlide" tabindex='1'>1{{> dummySlide}}</div>
+<div class="miniSlide" tabindex='1'>2{{> dummySlide}}</div>
+<div class="miniSlide" tabindex='1'>3{{> dummySlide}}</div>
+ -->
+    <!--  <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
     <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
     <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>
     <div class="miniSlide" tabindex='1'>{{> dummySlide}}</div>

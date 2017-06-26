@@ -25,30 +25,35 @@ Template.ppt_slideSorter.onDestroyed(function() {
 })
 
 Template.slideSorter.onRendered(function() {
-        initializeSorter();
-        // init();
-    })
-    // Template.ppt_slideSorter.events({
-    //     'click .home.button' (e, template) {
-    //         e.preventDefault();
-    //         console.log('click event', e)
-    //         reset();
-    //         cardInFocus = this;
-    //         var $doc = $(document);
-    //         var centerX = $doc.width() / 2;
-    //         var centerY = $doc.height() / 2;
-    //         var $card = $(this);
-    //         var origX = $card.data('orig-x');
-    //         var origY = $card.data('orig-y');
-    //         console.log('original pos:', origX, origY);
-    //         console.log('center is ', centerX, centerY);
-    //         console.log('NEW pos:', centerX - origX, centerY - origY);
+    // initializeSorter();
+    // init();
+})
 
-//         $(this).transition({ x: 100, y: 400 });
+Template.slideSorter.events({
+    'click .miniSlide' (event, template) {
+        event.preventDefault();
+        console.log('click event', event)
+            // reset();
+        var $slide = $(event.target).closest(".step");
+        var $doc = $(document);
+        var centerX = $doc.width() / 2;
+        var centerY = $doc.height() / 2;
+        var origX = $slide.position().left + $slide.width()/2;
+        var origY = $slide.position().top  + $slide.height()/2;
+        var deltaX = centerX - origX; //compare center with center... 
+        var deltaY = centerY - origY; 
 
-//         // $(this).transition({ x: centerX - origX, y: centerY - origY });
-//     },
-// })
+        console.log('original pos:', origX, origY, $slide.position());
+        console.log('center is ', centerX, centerY);
+        console.log('Delta movement:', deltaX, deltaY);
+
+        // testDiv = document.getElementById('testDiv');
+        // $slide.attr('style', CSS.translate3d(-300, 100, 0, 500));
+        $slide.attr('style', CSS.zoomTo(deltaX, deltaY, 2, 2000));  
+
+
+    },
+})
 
 // `computeWindowScale` counts the scale factor between window size and size
 // defined for the presentation in the config.
@@ -68,48 +73,7 @@ Template.slideSorter.onRendered(function() {
 //     return scale;
 // };
 
-function initializeSorter() {
-    // var $cards = $('.miniSlide');
-    // var cardInFocus = null;
 
-
-    // $cards.each(function(index, elem) {
-    //     var $elem = $(elem);
-    //     var pos = $elem.position();
-    //     $(elem).data('orig-x', pos.left);
-    //     $(elem).data('orig-y', pos.top);
-    // });
-
-    // var reset = function() {
-    //     if(cardInFocus) {
-    //         $(cardInFocus).transition({ x: 0, y: 0 });
-    //     };
-    // };
-
-    // $cards.focus(function(e) {
-    //     console.log('focus event', e)
-    //     reset();
-    //     cardInFocus = this;
-    //     var $doc = $(document);
-    //     var centerX = window.innerWidth / 2; //$doc.width() / 2;
-    //     var centerY = window.innerHeight / 2; //$doc.height() / 2;
-    //     var $card = $(this);
-    //     var origX = $card.data('orig-x');
-    //     var origY = $card.data('orig-y');
-    //     console.log('original pos:', origX, origY);
-    //     console.log('center is ', centerX, centerY);
-    //     console.log('move by:', centerX - origX - 250, centerY - origY);
-
-    //     // $(this).transition({ x: 100, y: 400 });
-
-    //     $(this).transition({ x: centerX - origX, y: centerY - origY });
-    // });
-
-    // $cards.blur(function(e) {
-    //     reset();
-    // });
-
-}
 
 //after the page is loaded, ensure the slides have proper margins, and remove the scrollbar
 function init() {
@@ -168,39 +132,74 @@ window.addEventListener('beforeunload', function(e) {
     })
     //END init code
 
-$(function() {
-    var $cards = $('.card');
-    var cardInFocus = null;
+var CSS = {
+    /**
+     * Generates CSS3's translate3d transformation style for Opera, Chrome/Safari, Firefox and IE
+     * 
+     * @method translate3d
+     * @param {Number} x The X axis coordinate
+     * @param {Number} y The Y axis coordinate
+     * @param {Number} z The Z axis coordinate
+     * @param {Number} t The transition time / animation duration, defaults to 0
+     * @return {String} The css style code
+     */
+    translate3d: function(x, y, z, t) {
+        t = (typeof t === "undefined") ? 0 : t; //defaults to 0
+        var tr = '-webkit-transform: translate3d(' + x + 'px, ' + y + 'px, ' + z + 'px); -webkit-transition: ' + t + 'ms;' +
+            '-moz-transform: translate3d(' + x + 'px, ' + y + 'px, ' + z + 'px); -moz-transition: ' + t + 'ms;' +
+            '-ms-transform: translate3d(' + x + 'px, ' + y + 'px, ' + z + 'px); -ms-transition: ' + t + 'ms;' +
+            '-o-transform: translate(' + x + 'px, ' + y + 'px); -o-transition: ' + t + 'ms;' +
+            'transform: translate3d(' + x + 'px, ' + y + 'px, ' + z + 'px); transition: ' + t + 'ms;';
 
+        return tr;
+    },
 
-    $cards.each(function(index, elem) {
-        var $elem = $(elem);
-        var pos = $elem.position();
-        $(elem).data('orig-x', pos.left);
-        $(elem).data('orig-y', pos.top);
-    });
+    /**
+     * Generates CSS3's scale3d transformation style for Opera, Chrome/Safari, Firefox and IE
+     * The scaling is symetric, with the same value for width and height
+     * 
+     * @method scale3d
+     * @param {Number} s The scale
+     * @param {Number} t The transition time / animation duration, defaults to 0
+     * @return {String} The css style code
+     */
+    scale3d: function(s, t) {
+        t = (typeof t === "undefined") ? 0 : t; //defaults to 0
+        var tr = '-webkit-transform: scale3d(' + s + ', ' + s + ', 1); -webkit-transition: ' + t + 'ms;' +
+            '-moz-transform: scale3d(' + s + ', ' + s + ', 1); -moz-transition: ' + t + 'ms;' +
+            '-ms-transform: scale3d(' + s + ', ' + s + ', 1); -ms-transition: ' + t + 'ms;' +
+            '-o-transform: scale(' + s + '); -o-transition: ' + t + 'ms;' +
+            'transform: scale3d(' + s + ', ' + s + ', 1); transition: ' + t + 'ms;';
 
-    var reset = function() {
-        if(cardInFocus) {
-            $(cardInFocus).transition({ x: 0, y: 0 });
-        };
-    };
+        return tr
+    },
 
-    $cards.focus(function(e) {
-        console.log('card in focus', this);
-        reset();
-        cardInFocus = this;
-        var $doc = $(document);
-        var centerX = $doc.width() / 2;
-        var centerY = $doc.height() / 2;
-        var $card = $(this);
-        var origX = $card.data('orig-x');
-        var origY = $card.data('orig-y');
-        $(this).transition({ x: centerX - origX, y: centerY - origY });
-    });
+    /**
+     * Used to move a scaled element using translate, while keeping the scale
+     * Generates the required CSS3 style for Opera, Chrome/Safari, Firefox and IE
+     * 
+     * @method zoomTo
+     * @param {Number} x The X axis coordinate of the transformation
+     * @param {Number} y The Y axis coordinate of the transformation
+     * @param {Number} s The scale of the element (symetric, with the same value for width and height)
+     * @param {Number} t The transition time / animation duration, defaults to 0
+     * @return The css style code
+     */
+    zoomTo: function(x, y, s, t) {
+        s = (typeof s === "undefined") ? 2 : s; //defaults to 2
+        t = (typeof t === "undefined") ? 0 : t; //defaults to 0
 
-    $cards.blur(function(e) {
-        reset();
-    });
+        var tr = '-webkit-transform: translate3d(' + x + 'px, ' + y + 'px, 0px) scale3d(' + s + ', ' + s + ', 1);' +
+            '-moz-transform: translate3d(' + x + 'px, ' + y + 'px, 0px) scale3d(' + s + ', ' + s + ', 1);' +
+            '-ms-transform: translate3d(' + x + 'px, ' + y + 'px, 0px) scale3d(' + s + ', ' + s + ', 1);' +
+            '-o-transform: translate(' + x + 'px, ' + y + 'px) scale(' + s + ');' +
+            'transform: translate3d(' + x + 'px, ' + y + 'px, 0px) scale3d(' + s + ', ' + s + ', 1);' +
+            '-webkit-transition: ' + t + 'ms;' +
+            '-moz-transition: ' + t + 'ms;' +
+            '-ms-transition: ' + t + 'ms;' +
+            '-o-transition: ' + t + 'ms;' +
+            'transition: ' + t + 'ms;';
 
-});
+        return tr;
+    }
+}

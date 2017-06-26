@@ -118,30 +118,45 @@
 }
 
 
+
+
+
+
+
+
+
 /*TEST CASE 24-6*/
 
+.Grid {
+  display: flex;
+}
+
+.Grid-cell {
+  flex: 1;
+}
 .miniSlide {
     height: 400px;
     width: 500px;
     /*font-size: 0.5em;*/
     position: relative;
-    display: inline-block;
-    transition: all 2s;
+    display: table;
+    transition: all 1s;
      margin: 30px;    
 }
 
-.miniSlide:focus {
-   /* width: 500px;
-    height: 500px;*/
+/*.popup {
     position: fixed;
-   /* top: 50%;
-    left: 50%;*/
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}*/
+/*
+.miniSlide:focus {
+    position: fixed;
     z-index: 100;
-  /*  margin-left: -250px;
-    margin-top: -250px;*/
-    transform: translate(50px, 150px) scale(2);
-
-}
+     transform : translate(200px, 50%);
+}*/
 
 
 /*.miniSlide:focus {
@@ -172,6 +187,19 @@
 
 
 /*END TEST*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #shrinked .step.zoomOut {
     -webkit-transform: scale(4);
