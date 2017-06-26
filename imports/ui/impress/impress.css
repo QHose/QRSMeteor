@@ -118,31 +118,19 @@
 }
 
 
-
-
-
-
-
-
-
 /*TEST CASE 24-6*/
 
 .Grid {
-  display: flex;
+    display: flex;
 }
 
-.Grid-cell {
-  flex: 1;
-}
 .miniSlide {
-    height: 400px;
-    width: 500px;
-    /*font-size: 0.5em;*/
-    position: relative;
-    display: table;
+    flex: 1;
+    margin: 20px;
     transition: all 1s;
-     margin: 30px;    
+    z-index: 100;
 }
+
 
 /*.popup {
     position: fixed;
@@ -151,6 +139,8 @@
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }*/
+
+
 /*
 .miniSlide:focus {
     position: fixed;
@@ -187,19 +177,6 @@
 
 
 /*END TEST*/
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #shrinked .step.zoomOut {
     -webkit-transform: scale(4);
