@@ -120,31 +120,45 @@
 
 /*TEST CASE 24-6*/
 
-
-/*.miniSlide {
+.miniSlide {
     height: 400px;
     width: 500px;
-    font-size: 0.5em;
+    /*font-size: 0.5em;*/
     position: relative;
     display: inline-block;
-    margin: 30px;    
-    transition: transform 2s ease;
-
+    transition: all 2s;
+     margin: 30px;    
 }
 
 .miniSlide:focus {
+   /* width: 500px;
+    height: 500px;*/
+    position: fixed;
+   /* top: 50%;
+    left: 50%;*/
+    z-index: 100;
+  /*  margin-left: -250px;
+    margin-top: -250px;*/
+    transform: translate(50px, 150px) scale(2);
+
+}
+
+
+/*.miniSlide:focus {
     z-index: 100;
     transform: scale(2);
 }
 */
 
-.triggerElement {
+
+/*.triggerElement {
     border: 1px solid blue;
     height: 100px;
     width: 100px;
-}
+}*/
 
-.posDiv {
+
+/*.posDiv {
     position: absolute;
     top: 0;
     left: 0;
@@ -154,24 +168,7 @@
     -webkit-transition: all 2s;
     -o-transition: all 2s;
     transition: all 2s;    
-}
-
-.triggerElement:hover .posDiv {
-    top: 50%;
-    left: 50%;
-    margin-left: -450px;
-    margin-top: -250px;
-    -moz-transition: all 2s;
-    -webkit-transition: all 2s;
-    -o-transition: all 2s;
-    transition: all 2s;
-    transform: scale(2);
-}
-
-.lower {
-    top: 100px;
-    left: 200px;
-}
+}*/
 
 
 /*END TEST*/
