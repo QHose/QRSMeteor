@@ -3,6 +3,7 @@
     "public": {
         "host": "PRESALES1",
         "port": 81,
+        "proxyPort": 80,
         "UDC": "OEM_HOST",
         "virtualProxyClientUsage": "meteor",
         "webIntegrationHost": "localhost",
