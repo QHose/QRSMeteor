@@ -9,3 +9,4 @@ node_modules/
 .vscode/typings/meteor.d.ts
 *.sublime-workspace
 public/docs/~$ik Sense SaaS demo tool setup instructions.docx
+*.bak
