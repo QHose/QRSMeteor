@@ -285,9 +285,9 @@ $(""#btn_1"").click(function() {
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Video: What do we mean with embedding?","Here we embedded/integrated a YouTube video... ",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Video: What do we mean with embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Example: What is the hub? (Embedded in the slide)","<iframe class=""SenseEmbedFrame"" src=""//jsfiddle.net/qhose/0nn9bvg6/embedded/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
+"Web integration","Example: What is the hub? (Embedded in the slide)","<iframe class=""SenseEmbedFrame"" src=""//jsfiddle.net/qhose/0nn9bvg6/embedded/result,html,css"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
 "Web integration","Example: What is the hub? (Embedded in the slide)","When Qlik Sense starts up, you arrive at the hub. The hub is where you find all the apps you have access rights to use.",,,,,,,,,
-"Web integration","Example code: embed a sheet (fiddle)","<iframe class=""SenseEmbedFrame"" src=""//jsfiddle.net/qhose/v993fpgy/embedded/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs",
+"Web integration","Example code: embed a sheet (fiddle)","<iframe class=""SenseEmbedFrame"" src=""//jsfiddle.net/qhose/v993fpgy/embedded/result,html,css"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs",
 "Web integration","Example: Embed a chart","<iframe src=""http://web.saasdemo.qlik.com/only1Chart"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Introduction to embed Qlik Sense, Introduction - 30 minutes",
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Demonstration integration.qlik.com: Web integration","Lets look at [integration.qlik.com](http://web.saasdemo.qlik.com/) where we embedded
@@ -798,7 +798,7 @@ or
 "Slide generator - use cases","How to contribute to the slide generator?","github - open in desktop.png",,,,,,,,,
 "Slide generator - use cases","How to contribute to the slide generator?","Now you local github desktop should open, press update",,,,,,,,,
 "Slide generator - use cases","How to contribute to the slide generator?","github - update your local copy from the server.png",,,,,,,,,
-"Slide generator - use cases","How to contribute to the slide generator?","Create a mindmap with the slides",,,,,,,,,
+"Slide generator - use cases","How to contribute to the slide generator?","Create a mindmap with the slides. See the workshop ""what is this slide generator"" if you want to learn more about the file structure etc.",,,,,,,,,
 "Slide generator - use cases","How to contribute to the slide generator?","Put your images in your local github images folder: `C:\Users\mbj\Documents\GitHub\QRSMeteor\public\images`",,,,,,,,,
 "Slide generator - use cases","How to contribute to the slide generator?","When you are done with your presentation export it to this folder `C:\Users\mbj\Documents\GitHub\QRSMeteor\Sense Demo materials` give the csv a name with the convention: ""your trigram""-""presentation name"".csv",,,,,,,,,
 "Slide generator - use cases","How to contribute to the slide generator?","Verify your [changes](https://services.github.com/on-demand/github-desktop/make-changes-github-desktop) in Github desktop",,,,,,,,,
@@ -809,6 +809,7 @@ or
 "Slide generator - use cases","How to contribute to the slide generator?","github - opening a pull request.gif",,,,,,,,,
 "Slide generator - use cases","How to contribute to the slide generator?","Now you have submitted your presentation to the slide generator maintainer. This person can now verify your content and make comments. and [merge](https://services.github.com/on-demand/github-desktop/merge-pull-request-github) it in the master presentation",,,,,,,,,
 "Slide generator - use cases","How to contribute to the slide generator?","github - merge pull request.gif",,,,,,,,,
+"Slide generator - use cases","How to contribute to the slide generator?","For more information, follow the instructions on [GitHub](https://services.github.com/on-demand/github-desktop/push-with-github-desktop)",,,,,,,,,
 "Integration.qlik.com key API calls","Summary: which activities did we automate?","Setup Qlik Sense
 - Create stream
 - Copy template app
