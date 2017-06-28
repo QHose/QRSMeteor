@@ -10,3 +10,4 @@ node_modules/
 *.sublime-workspace
 public/docs/~$ik Sense SaaS demo tool setup instructions.docx
 *.bak
+*.sublime-workspace
