@@ -251,7 +251,7 @@ export function getApps() {
 
 
 export function deleteApp(guid, generationUserId = 'Not defined') {
-    // console.log('QRSApp deleteApp: ', guid);
+    console.log('QRSApp deleteApp: ', guid);
     try {
         const call = {};
         const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
