@@ -185,8 +185,8 @@ export function copyApp(guid, name, generationUserId) {
         call.url = gitHubLinks.copyApp;
         call.response = HTTP.post(call.request, {
             headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey }, //probably a redundant name here...
-            data: { "name": name }
+            params: { 'xrfkey': senseConfig.xrfkey, "name": name }, //probably a redundant name here...
+            data: {}
         })
         REST_Log(call, generationUserId);
         var newGuid = call.response.data.id;
