@@ -760,11 +760,11 @@ or
 "Slide generator - use cases","How do you create slides today?","If you get questions you have to search at multiple locations and maybe you have answer it in a follow up meeting...",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Goals","Inspire what you can do with our engine",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Goals","Prevent multiple versions of the truth, create 1 ""master slide deck""",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","Goals","With the slide generator you always have the
-- last version 
-- authorized information only
-- version of information that matches your skill level.",,,,,,,,,
-"Slide generator - use cases","Goals","Only show the bullets, images, videos on the slide for which you are *allowed to see*",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","Goals","With a centrally hosted ""slide generator"" you always have the
+- *latest version* always available via your browser
+- authorized information only. You will only see the bullets, images, videos on the slide which you are *allowed to see*
+- a version of information that matches your skill level. (e.g. prevent an overload for non technical users)
+- Centrally controlled [version management](http://github.com)",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","We created a website that uses the data of a Qlik Sense app.",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","Because people are logged in to the *slide generator* and selected their expertise we only show data on the slides that matches their skills. (using the row level security in an app)",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","slide generator - welcome popup screenshot.png",,"","","","","         0","0","What is this slide generator?",
@@ -801,6 +801,7 @@ or
 "Slide generator - use cases","Version management","I sync this csv using a version management tool called GitHub",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Version management","On the server we can [track the changes](https://github.com/QHose/QRSMeteor/commit/cd826a178554824780632d7c96afb6295949317e) and load the data into the app after approval",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Version management","slide generator - github track changes version management.png",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How to contribute to the slide generator? ","# High level flow",,,,,,,,,
 "Slide generator - use cases","How to contribute to the slide generator? ","Each user will get its private space",,,,,,,,,
 "Slide generator - use cases","How to contribute to the slide generator? ","Each user will download the master slide deck",,,,,,,,,
 "Slide generator - use cases","How to contribute to the slide generator? ","It will make the changes
@@ -808,14 +809,16 @@ or
 - add/remove images",,,,,,,,,
 "Slide generator - use cases","How to contribute to the slide generator? ","The user verifies and commits the changes in the central version management system (GitHub)",,,,,,,,,
 "Slide generator - use cases","How to contribute to the slide generator? ","slide generator - github track changes version management.png",,,,,,,,,
-"Slide generator - use cases","How to install the software in order to contribute to the slide generator? (detailed work instruction)","Install [Github desktop](https://services.github.com/on-demand/github-desktop/install-github-desktop), and make sure you login or create a new github account.",,,,,,,,,
-"Slide generator - use cases","How to install the software in order to contribute to the slide generator? (detailed work instruction)","Fork [QRSMeteor](https://github.com/QHose/QRSMeteor). And while you are still in the browser",,,,,,,,,
-"Slide generator - use cases","How to install the software in order to contribute to the slide generator? (detailed work instruction)","github - fork QRSMeteor project.png",,,,,,,,,
-"Slide generator - use cases","How to install the software in order to contribute to the slide generator? (detailed work instruction)","Stay in your browser and press the ""clone or download""button. Open your new project in github desktop (select yes, always open with desktop)",,,,,,,,,
-"Slide generator - use cases","How to install the software in order to contribute to the slide generator? (detailed work instruction)","github - open in desktop.png",,,,,,,,,
-"Slide generator - use cases","How to install the software in order to contribute to the slide generator? (detailed work instruction)","Now your local github desktop program should open and the files from the server have been copied to your local c drive. Normally in your github folder in your ""my documents"". ",,,,,,,,,
-"Slide generator - use cases","How to install the software in order to contribute to the slide generator? (detailed work instruction)","github - update your local copy from the server.png",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","# create your presentation",,,,,,,,,
+"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","# How to install the software in order to contribute to the slide generator?",,,,,,,,,
+"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","Install [Github desktop](https://services.github.com/on-demand/github-desktop/install-github-desktop), and make sure you login or create a new github account.",,,,,,,,,
+"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","Fork [QRSMeteor](https://github.com/QHose/QRSMeteor). (Create a local environment where you can safely develop your slides.) ",,,,,,,,,
+"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","And while you are still in the browser",,,,,,,,,
+"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","github - fork QRSMeteor project.png",,,,,,,,,
+"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","Stay in your browser and press the ""clone or download""button. Open your new project in github desktop (select yes, always open with desktop)",,,,,,,,,
+"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","github - open in desktop.png",,,,,,,,,
+"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","Now your local github desktop program should open and the files from the server have been copied to your local c drive. Normally in your github folder in your ""my documents"". ",,,,,,,,,
+"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","github - update your local copy from the server.png",,,,,,,,,
+"Slide generator - use cases","How to create your first presentation (detailed work instruction)","# Create your presentation",,,,,,,,,
 "Slide generator - use cases","How to create your first presentation (detailed work instruction)","Open Mindmanager Mindjet on your pc",,,,,,,,,
 "Slide generator - use cases","How to create your first presentation (detailed work instruction)","Go to your github folder and make a copy of the template presentation (Qlik_Slidegenerator_Template.mmap) in the `GitHub\QRSMeteor\Sense Demo materials\slide generator`",,,,,,,,,
 "Slide generator - use cases","How to create your first presentation (detailed work instruction)","Create your mindmap using MindJet Mindmanager. See the workshop ""what is this slide generator"" if you want to learn more about the file structure etc. In the end we just create a table with 4 columns
@@ -1538,7 +1541,8 @@ $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
                     }
                 })
 ```",,"","","","","         0","0","Deep dive",
-"Engine API","createSessionObject","```
+"Engine API","Create a Session Object","Here we demonstrate how you can create a ""chart object"" on the fly.",,"","","","","         0","0","Deep dive, Technical - 1 day",
+"Engine API","Create a Session Object","```
 qix.app.createSessionObject({
                             qInfo: { qType: 'cube' },
                             qHyperCubeDef: {
@@ -1553,7 +1557,7 @@ qix.app.createSessionObject({
                                 }]
                             }
                         })
-```",,"","","","","         0","0","Deep dive",
+```",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "Engine API","Create a event listener to keep in sync with Qlik Sense","```
 var appChangeListener = function appChangeListener() {
     $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
@@ -1628,9 +1632,8 @@ function createList(app) {
     })
 
 }
-```",,,,,,,,,
+```",,"","","","","         0","0","Technical - 1 day",
 "Engine API","Example code: create a hyperCube","```
-//http://playground.qlik.com/learn/engine/hypercube
 //https://gist.github.com/mindspank/58b3080a342b1cd937e6
 //https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/WorkingWithAppsAndVisualizations/CreateVisualizations/create-hypercube.htm
 function createCube(app) {
@@ -1684,7 +1687,8 @@ function createCube(app) {
         })
     })
 }
-```",,,,,,,,,
+```",,"","","","","         0","0","Deep dive",
+"Engine API","Example code: create a hyperCube","source: [playground](http://playground.qlik.com/learn/engine/hypercube)",,,,,,,,,
 "Engine API","Example code: create session object - hyperCube","```
   $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
         .then(qixschema => {
