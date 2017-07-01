@@ -531,15 +531,17 @@
 			"file": "imports/ui/impress/slideSorter.js",
 			"settings":
 			{
-				"buffer_size": 2906,
+				"buffer_size": 3045,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/impress/ppt_integration.js",
+			"file": "imports/ui/impress/impress.css",
 			"settings":
 			{
-				"buffer_size": 15413,
+				"buffer_size": 16485,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -1238,26 +1240,27 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2906,
+						"buffer_size": 3045,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1818,
-								1818
+								2392,
+								2369
 							]
 						],
 						"settings":
 						{
+							"auto_complete": false,
 							"git_gutter_is_enabled": true,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 378.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1265,30 +1268,30 @@
 				},
 				{
 					"buffer": 2,
-					"file": "imports/ui/impress/ppt_integration.js",
-					"semi_transient": true,
+					"file": "imports/ui/impress/impress.css",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15413,
+						"buffer_size": 16485,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10149,
-								10149
+								4301,
+								4301
 							]
 						],
 						"settings":
 						{
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3582.0,
+						"translation.y": 3456.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
