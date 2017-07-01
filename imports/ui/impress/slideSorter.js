@@ -65,6 +65,8 @@ Template.ppt_slideSorter.events({
             hljs.highlightBlock(block);
         });
 
+        $('.ui.embed').embed();
+
         //ensure all links open on a new tab
         $slide.find('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
     }
@@ -82,9 +84,9 @@ Reload._onMigrate(function() {
 
 //Make sure the presentation/landingpage is initialized again.
 window.addEventListener('beforeunload', function(e) {
-    if(!hotcodepush) {
-        Cookies.set('showSlideSorter', 'false');
-    }
-    if(hotcodepush) console.log("SlideSorter: Hot code reload");
-})
-//END init code
+        if(!hotcodepush) {
+            Cookies.set('showSlideSorter', 'false');
+        }
+        if(hotcodepush) console.log("SlideSorter: Hot code reload");
+    })
+    //END init code
