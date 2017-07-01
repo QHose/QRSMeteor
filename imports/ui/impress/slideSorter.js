@@ -40,6 +40,9 @@ function init() {
     Meteor.setTimeout(function() {
         $('.ui.embed').embed();
     }, 3000)
+    Meteor.setTimeout(function() {
+        $('.ui.embed').embed();
+    }, 10000)
 }
 
 Template.ppt_slideSorter.events({

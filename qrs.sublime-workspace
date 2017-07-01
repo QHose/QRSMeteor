@@ -536,21 +536,47 @@
 			}
 		},
 		{
-			"file": "imports/ui/impress/landingPage.js",
+			"file": "imports/ui/impress/ppt_integration.js",
 			"settings":
 			{
-				"buffer_size": 6250,
+				"buffer_size": 15413,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "Searching 12 files for \"Qlik Sense presentation session\"\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\impress\\landingPage.js:\n   33      // logoutCurrentSenseUserClientSide();\n   34      intervalId = Meteor.setInterval(userLoggedInSense, 2000);\n   35:     console.log('Qlik Sense presentation session cookie:', Cookies.get('X-Qlik-Session-presentationsso'));\n   36      console.log('All cookies available for Javascript:');\n   37      console.log(listCookies());\n\n1 match in 1 file\n",
+			"file": "imports/ui/impress/landingPage.js",
 			"settings":
 			{
-				"buffer_size": 489,
+				"buffer_size": 6308,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/restEndpoints.js",
+			"settings":
+			{
+				"buffer_size": 1853,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 12 files for \"Qlik Sense presentation session\"\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\impress\\landingPage.js:\n   33      // logoutCurrentSenseUserClientSide();\n   34      intervalId = Meteor.setInterval(userLoggedInSense, 2000);\n   35:     console.log('Qlik Sense presentation session cookie:', Cookies.get('X-Qlik-Session-presentationsso'));\n   36      console.log('All cookies available for Javascript:');\n   37      console.log(listCookies());\n\n1 match in 1 file\n\n\nSearching 261 files for \"300\"\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client\\compatibility\\zoom.min.js:\n    6   */\n    7  \n    8: +function(t){\"use strict\";function o(){this._activeZoom=this._initialScrollPosition=this._initialTouchPosition=this._touchMoveListener=null,this._$document=t(document),this._$window=t(window),this._$body=t(document.body),this._boundClick=t.proxy(this._clickHandler,this)}function i(o){this._fullHeight=this._fullWidth=this._overlay=this._targetImageWrap=null,this._targetImage=o,this._$body=t(document.body)}o.prototype.listen=function(){this._$body.on(\"click\",'[data-action=\"zoom\"]',t.proxy(this._zoom,this))},o.prototype._zoom=function(o){var e=o.target;if(e&&\"IMG\"==e.tagName&&!this._$body.hasClass(\"zoom-overlay-open\"))return o.metaKey||o.ctrlKey?window.open(o.target.getAttribute(\"data-original\")||o.target.src,\"_blank\"):void(e.width>=t(window).width()-i.OFFSET||(this._activeZoomClose(!0),this._activeZoom=new i(e),this._activeZoom.zoomImage(),this._$window.on(\"scroll.zoom\",t.proxy(this._scrollHandler,this)),this._$document.on(\"keyup.zoom\",t.proxy(this._keyHandler,this)),this._$document.on(\"touchstart.zoom\",t.proxy(this._touchStart,this)),document.addEventListener?document.addEventListener(\"click\",this._boundClick,!0):document.attachEvent(\"onclick\",this._boundClick,!0),\"bubbles\"in o?o.bubbles&&o.stopPropagation():o.cancelBubble=!0))},o.prototype._activeZoomClose=function(t){this._activeZoom&&(t?this._activeZoom.dispose():this._activeZoom.close(),this._$window.off(\".zoom\"),this._$document.off(\".zoom\"),document.removeEventListener(\"click\",this._boundClick,!0),this._activeZoom=null)},o.prototype._scrollHandler=function(o){null===this._initialScrollPosition&&(this._initialScrollPosition=t(window).scrollTop());var i=this._initialScrollPosition-t(window).scrollTop();Math.abs(i)>=40&&this._activeZoomClose()},o.prototype._keyHandler=function(t){27==t.keyCode&&this._activeZoomClose()},o.prototype._clickHandler=function(t){t.preventDefault?t.preventDefault():event.returnValue=!1,\"bubbles\"in t?t.bubbles&&t.stopPropagation():t.cancelBubble=!0,this._activeZoomClose()},o.prototype._touchStart=function(o){this._initialTouchPosition=o.touches[0].pageY,t(o.target).on(\"touchmove.zoom\",t.proxy(this._touchMove,this))},o.prototype._touchMove=function(o){Math.abs(o.touches[0].pageY-this._initialTouchPosition)>10&&(this._activeZoomClose(),t(o.target).off(\"touchmove.zoom\"))},i.OFFSET=80,i._MAX_WIDTH=2560,i._MAX_HEIGHT=4096,i.prototype.zoomImage=function(){var o=document.createElement(\"img\");o.onload=t.proxy(function(){this._fullHeight=Number(o.height),this._fullWidth=Number(o.width),this._zoomOriginal()},this),o.src=this._targetImage.src},i.prototype._zoomOriginal=function(){this._targetImageWrap=document.createElement(\"div\"),this._targetImageWrap.className=\"zoom-img-wrap\",this._targetImage.parentNode.insertBefore(this._targetImageWrap,this._targetImage),this._targetImageWrap.appendChild(this._targetImage),t(this._targetImage).addClass(\"zoom-img\").attr(\"data-action\",\"zoom-out\"),this._overlay=document.createElement(\"div\"),this._overlay.className=\"zoom-overlay\",document.body.appendChild(this._overlay),this._calculateZoom(),this._triggerAnimation()},i.prototype._calculateZoom=function(){this._targetImage.offsetWidth;var o=this._fullWidth,e=this._fullHeight,a=(t(window).scrollTop(),o/this._targetImage.width),s=t(window).height()-i.OFFSET,r=t(window).width()-i.OFFSET,n=o/e,h=r/s;this._imgScaleFactor=r>o&&s>e?a:h>n?s/e*a:r/o*a},i.prototype._triggerAnimation=function(){this._targetImage.offsetWidth;var o=t(this._targetImage).offset(),i=t(window).scrollTop(),e=i+t(window).height()/2,a=t(window).width()/2,s=o.top+this._targetImage.height/2,r=o.left+this._targetImage.width/2;this._translateY=e-s,this._translateX=a-r;var n=\"scale(\"+this._imgScaleFactor+\")\",h=\"translate(\"+this._translateX+\"px, \"+this._translateY+\"px)\";t.support.transition&&(h+=\" translateZ(0)\"),t(this._targetImage).css({\"-webkit-transform\":n,\"-ms-transform\":n,transform:n}),t(this._targetImageWrap).css({\"-webkit-transform\":h,\"-ms-transform\":h,transform:h}),this._$body.addClass(\"zoom-overlay-open\")},i.prototype.close=function(){return this._$body.removeClass(\"zoom-overlay-open\").addClass(\"zoom-overlay-transitioning\"),t(this._targetImage).css({\"-webkit-transform\":\"\",\"-ms-transform\":\"\",transform:\"\"}),t(this._targetImageWrap).css({\"-webkit-transform\":\"\",\"-ms-transform\":\"\",transform:\"\"}),t.support.transition?void t(this._targetImage).one(t.support.transition.end,t.proxy(this.dispose,this)).emulateTransitionEnd(300):this.dispose()},i.prototype.dispose=function(){this._targetImageWrap&&this._targetImageWrap.parentNode&&(t(this._targetImage).removeClass(\"zoom-img\").attr(\"data-action\",\"zoom\"),this._targetImageWrap.parentNode.replaceChild(this._targetImage,this._targetImageWrap),this._overlay.parentNode.removeChild(this._overlay),this._$body.removeClass(\"zoom-overlay-transitioning\"))},t(function(){(new o).listen()})}(jQuery);\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client\\lib\\definitions\\modules\\dropdown.js:\n 3270    // delay before event\n 3271    delay : {\n 3272:     hide   : 300,\n 3273      show   : 200,\n 3274      search : 20,\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client\\lib\\definitions\\modules\\progress.js:\n  735    },\n  736  \n  737:   duration     : 300,\n  738  \n  739    autoSuccess  : true,\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client\\lib\\definitions\\views\\ad.import.less:\n   60  /* Medium Rectangle */\n   61  .ui[class*=\"medium rectangle\"].ad {\n   62:   width: 300px;\n   63    height: 250px;\n   64  }\n   ..\n   71  /* Half Page */\n   72  .ui[class*=\"half page\"].ad {\n   73:   width: 300px;\n   74    height: 600px;\n   75  }\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client\\lib\\themes\\default\\elements\\flag.overrides.import.less:\n  208  i.flag.cu:before,\n  209  i.flag.cuba:before {\n  210:   background-position: 0px -1300px;\n  211  }\n  212  i.flag.cv:before,\n  ...\n  508  i.flag.li:before,\n  509  i.flag.liechtenstein:before {\n  510:   background-position: -36px -1300px;\n  511  }\n  512  i.flag.lk:before,\n  ...\n  818  i.flag.so:before,\n  819  i.flag.somalia:before {\n  820:   background-position: -72px -1300px;\n  821  }\n  822  i.flag.sr:before,\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client\\lib\\themes\\default\\elements\\image.variables.import.less:\n   42  @tinyWidth: 80px;\n   43  @smallWidth: 150px;\n   44: @mediumWidth: 300px;\n   45  @largeWidth: 450px;\n   46  @bigWidth: 600px;\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client\\lib\\themes\\default\\elements\\rail.variables.import.less:\n   11  --------------------*/\n   12  \n   13: @width: 300px;\n   14  @height: 100%;\n   15  \n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client\\lib\\themes\\default\\modules\\rating.variables.import.less:\n   85  \n   86  @heartSelectedBackground: @selectedBackground;\n   87: @heartSelectedColor: #FF3000;\n   88  @heartSelectedShadowColor: #AA0101;\n   89  @heartSelectedTextShadow:\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client\\lib\\themes\\default\\modules\\transition.variables.import.less:\n    9  @transitionDefaultEasing: @defaultEasing;\n   10  @transitionDefaultFill: both;\n   11: @transitionDefaultDuration: 300ms;\n   12  \n   13  @use3DAcceleration: translateZ(0);\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client\\stylesheets\\highLight.css:\n    1: /*.hljs{display:block;overflow-x:auto;padding:0.5em;background:#F0F0F0}.hljs,.hljs-subst{color:#444}.hljs-comment{color:#888888}.hljs-keyword,.hljs-attribute,.hljs-selector-tag,.hljs-meta-keyword,.hljs-doctag,.hljs-name{font-weight:bold}.hljs-type,.hljs-string,.hljs-number,.hljs-selector-id,.hljs-selector-class,.hljs-quote,.hljs-template-tag,.hljs-deletion{color:#880000}.hljs-title,.hljs-section{color:#880000;font-weight:bold}.hljs-regexp,.hljs-symbol,.hljs-variable,.hljs-template-variable,.hljs-link,.hljs-selector-attr,.hljs-selector-pseudo{color:#BC6060}.hljs-literal{color:#78A960}.hljs-built_in,.hljs-bullet,.hljs-code,.hljs-addition{color:#397300}.hljs-meta{color:#1f7199}.hljs-meta-string{color:#4d99bf}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}*/\n    2  \n    3  /* Base16 Atelier Dune Dark - Theme */\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client\\stylesheets\\zoom.css:\n    8    position: relative;\n    9    z-index: 666;\n   10:   -webkit-transition: all 300ms;\n   11:        -o-transition: all 300ms;\n   12:           transition: all 300ms;\n   13  }\n   14  img.zoom-img {\n   ..\n   28    filter: \"alpha(opacity=0)\";\n   29    opacity: 0;\n   30:   -webkit-transition:      opacity 300ms;\n   31:        -o-transition:      opacity 300ms;\n   32:           transition:      opacity 300ms;\n   33  }\n   34  .zoom-overlay-open .zoom-overlay {\n\n19 matches across 11 files\n\n\nSearching 77 files for \"userSelectPresentationModal\"\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\impress\\landingPage.html:\n    9          {{/if}}\n   10      </div>\n   11:     {{> userSelectPresentationModal}}\n   12  </template>\n   13  \n   ..\n   61      </div>\n   62  </template>\n   63: <template name=\"userSelectPresentationModal\">\n   64:     <div id=\"userSelectPresentationModal\" class=\"ui modal\">\n   65          <i class=\"close icon\"></i>\n   66          <div class=\"header\">\n\nC:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\impress\\landingPage.js:\n   52  Template.landingPage.onRendered(function() {\n   53      //show a popup so the user can select whether he is technical or not...\n   54:     this.$('#userSelectPresentationModal')\n   55          .modal({\n   56              // observeChanges: true,\n\n4 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 10012,
 				"line_ending": "Windows",
 				"name": "Find Results",
 				"scratch": true
+			}
+		},
+		{
+			"file": "imports/ui/impress/landingPage.html",
+			"settings":
+			{
+				"buffer_size": 3445,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -626,8 +652,9 @@
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.Local Certificates",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/stylesheets",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
@@ -768,13 +795,15 @@
 	],
 	"find":
 	{
-		"height": 64.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
 		"height": 102.0,
 		"where_history":
 		[
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui",
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\impress",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\impress",
@@ -896,6 +925,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"embed",
+			"settime",
+			"userSelectPresentationModal",
+			"300",
+			"300\n",
+			"300",
 			"Qlik Sense presentation session",
 			"reset",
 			"markdownItem",
@@ -1017,13 +1052,7 @@
 			"delete",
 			"step 3",
 			"3",
-			"STEP 3",
-			"delete",
-			"deleteapp",
-			"pasport",
-			"REST_Log(call, ",
-			"getRedirectURL",
-			"copyApp"
+			"STEP 3"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1200,7 +1229,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1231,24 +1260,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "imports/ui/impress/landingPage.js",
-					"semi_transient": false,
+					"file": "imports/ui/impress/ppt_integration.js",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 6250,
+						"buffer_size": 15413,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								175,
-								184
+								10149,
+								10149
 							]
 						],
 						"settings":
@@ -1259,7 +1288,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3582.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1267,10 +1296,74 @@
 				},
 				{
 					"buffer": 3,
+					"file": "imports/ui/impress/landingPage.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 489,
+						"buffer_size": 6308,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3521,
+								3521
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 108.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "server/restEndpoints.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1853,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								70,
+								91
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10012,
 						"regions":
 						{
 							"match":
@@ -1281,6 +1374,98 @@
 									[
 										276,
 										307
+									],
+									[
+										5034,
+										5037
+									],
+									[
+										5608,
+										5611
+									],
+									[
+										5791,
+										5794
+									],
+									[
+										6009,
+										6012
+									],
+									[
+										6130,
+										6133
+									],
+									[
+										6363,
+										6366
+									],
+									[
+										6510,
+										6513
+									],
+									[
+										6651,
+										6654
+									],
+									[
+										6870,
+										6873
+									],
+									[
+										7086,
+										7089
+									],
+									[
+										7321,
+										7324
+									],
+									[
+										7633,
+										7636
+									],
+									[
+										8426,
+										8429
+									],
+									[
+										8762,
+										8765
+									],
+									[
+										8802,
+										8805
+									],
+									[
+										8842,
+										8845
+									],
+									[
+										8986,
+										8989
+									],
+									[
+										9035,
+										9038
+									],
+									[
+										9084,
+										9087
+									],
+									[
+										9359,
+										9386
+									],
+									[
+										9482,
+										9509
+									],
+									[
+										9532,
+										9559
+									],
+									[
+										9888,
+										9915
 									]
 								],
 								"scope": ""
@@ -1289,15 +1474,15 @@
 						"selection":
 						[
 							[
-								115,
-								115
+								9492,
+								9492
 							]
 						],
 						"settings":
 						{
 							"detect_indentation": false,
 							"line_numbers": false,
-							"output_tag": 1,
+							"output_tag": 3,
 							"result_base_dir": "",
 							"result_file_regex": "^([^ \t].*):$",
 							"result_line_regex": "^ +([0-9]+):",
@@ -1305,10 +1490,41 @@
 							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2412.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "imports/ui/impress/landingPage.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3445,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2313,
+								2340
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 469.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
