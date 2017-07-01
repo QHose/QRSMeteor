@@ -82,9 +82,9 @@
 /*SLIDE SIZE WHEN IN SLIDE SORTER*/
 
 @media print {
-   .step {
-        page-break-inside:avoid;
-        position:relative;
+    .step {
+        page-break-inside: avoid;
+        position: relative;
     }
 }
 
@@ -105,8 +105,9 @@
 #shrinked .step {
     transition: transform 2s !important;
     width: 1100px;
-    cursor: zoom-in; 
+    cursor: zoom-in;
 }
+
 
 /*#shrinked .z.step.ui.segment.integration.zoomOut {
     width: 1400px; 
@@ -124,7 +125,7 @@
     -webkit-transform-origin: left top;
     -moz-transform-origin: left top;
     z-index: 100;
-    cursor: zoom-out; 
+    cursor: zoom-out;
     /* more transform-origin */
 }
 
@@ -150,6 +151,7 @@
 #shrinked .z.step.ui.segment.integration {
     max-height: inherit;
 }
+
 
 /*HEADER*/
 
@@ -229,12 +231,10 @@ pre {
     width: 900px;
 }
 
-.markdownItem ul li{
-    
-}
 .markdownItem h1,
 .markdownItem h2 {
     margin-top: 2em;
+    margin-bottom: 1em;
 }
 
 .markdownItem h3 {
