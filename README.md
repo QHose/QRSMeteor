@@ -5,7 +5,8 @@ Demo and site on [integration.qlik.com](http://integration.qlik.com)
 Also make sure you checkout the [slide generator](http://integration.qlik.com/slides), which explains SaaS integration using the Qlik Sense APIs.
 
 Watch [this video](https://youtu.be/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) to learn the concept of the SaaS automation demo.
-![alt tag](public/images/only generation explanation.gif)
+
+![alt text](https://github.com/QHose/QRSMeteor/blob/master/public/images/only%20generation%20explanation.gif)
 
 Watch [this playlist](https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) for a complete overview on Sense integration. The topics include security, web integration (QAP) and architecture.
 
@@ -28,24 +29,22 @@ This demo tries to show you the activities from Sense that you can automate in y
 The principle is very simple. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "free fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.
 
 
-![alt tag](public/images/simple intro to saas automation.gif)
+![alt tag](https://github.com/QHose/QRSMeteor/blob/master/public/images/simple%20intro%20to%20saas%20automation.gif)
 
 You first have to enter some customers
 Select a template
 Press generate
 Select a user, and test the single sing on.
 
-# Automation using the REST calls
-The main connection between Meteor and Qlik Sense can be found here https://github.com/QHose/QRSMeteor/tree/master/imports/api/server
-
 # Authentication
 The internal REST calls use both certificate (QPS logout for example) and header authentication only for demo purposes. In production you would normally only use certificates, unless you have a authenticating reverse proxy. The end users connect to Sense via the Meteor virtual proxy (Sense QMC config item). Make sure that you also logout the user on this proxy. (you can login/logout per proxy!)
 
 # Source code 
-
 [see this manual](https://github.com/QHose/QRSMeteor/blob/master/public/docs/Qlik%20Sense%20SaaS%20demo%20tool%20documentation%20of%20source%20code.docx) to learn more about this source code.
+## Automation using the REST calls
+The main connection between Meteor and Qlik Sense can be found [here](https://github.com/QHose/QRSMeteor/tree/master/imports/api/server)
 
-# Setup your own SaaS provisioning system using this code
+## Setup your own SaaS provisioning system using this code
 
 See [this manual](https://github.com/QHose/QRSMeteor/blob/master/public/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.docx)
 
