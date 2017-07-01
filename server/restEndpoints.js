@@ -5,7 +5,7 @@ JsonRoutes.add("get", "/OneCustomerWithUsers", function(req, res, next) {
     var sampleData = customer1
 
     JsonRoutes.sendResult(res, {
-        data: customer1;
+        data: customer1
     });
 });
 
@@ -14,7 +14,7 @@ JsonRoutes.add("get", "/multipleCustomersWithUsers", function(req, res, next) {
     var sampleData = [customer1, customer2]
 
     JsonRoutes.sendResult(res, {
-        data: [customer1, customer2];
+        data: [customer1, customer2]
     });
 });
 
