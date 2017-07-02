@@ -531,7 +531,7 @@
 			"file": "imports/ui/impress/slideSorter.js",
 			"settings":
 			{
-				"buffer_size": 3045,
+				"buffer_size": 3116,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -1200,7 +1200,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1240,15 +1240,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3045,
+						"buffer_size": 3116,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2392,
-								2369
+								2463,
+								2463
 							]
 						],
 						"settings":
@@ -1263,7 +1263,7 @@
 						"translation.y": 378.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1294,7 +1294,7 @@
 						"translation.y": 3456.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{

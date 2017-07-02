@@ -65,7 +65,7 @@ Template.ppt_slideSorter.events({
             hljs.highlightBlock(block);
         });
 
-        // $('.ui.embed').embed();
+        // $('.ui.embed').embed(); //creates the issue that you can't click to start an embedded video
 
         //ensure all links open on a new tab
         $slide.find('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
