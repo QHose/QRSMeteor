@@ -1,0 +1,103 @@
+#!/bin/bash
+## Author: Mark Shust <mark@shust.com>
+## Version: 4.0.0
+## Repo: https://github.com/markoshust/docker-meteor
+## Description: Script for bundling, building & deploying a Meteor app with Docker
+
+TARGET=$1
+VERSION=$2
+BASE_APP_NAME=bar
+APP_DIR=$PWD
+BUILD_DIR=../build
+DOCKER_TAG=foo/$BASE_APP_NAME:$VERSION
+NODE_ENV=production
+PORT=80
+
+PRODUCTION_APP_NAME=$BASE_APP_NAME
+PRODUCTION_GIT_TAG=$VERSION
+PRODUCTION_ROOT_URL=https://bar.com
+PRODUCTION_SSH_CONN=production@bar.com
+PRODUCTION_METEOR_SETTINGS=$(cat ./.config/settings-production.json)
+PRODUCTION_MONGO_URL="mongodb://username:password@localhost:27017/bar"
+PRODUCTION_MONGO_OPLOG_URL="mongodb://username:password@localhost:27017/local?authSource=admin"
+PRODUCTION_CLUSTER_DISCOVERY_URL="mongodb://username:password@localhost:27017/bar"
+
+STAGING_APP_NAME=$BASE_APP_NAME-staging
+STAGING_GIT_TAG=$VERSION-staging
+STAGING_ROOT_URL=https://staging.bar.com
+STAGING_SSH_CONN=staging@bar.com
+STAGING_METEOR_SETTINGS=$(cat ./.config/settings-staging.json)
+STAGING_MONGO_URL=$PRODUCTION_MONGO_URL
+STAGING_MONGO_OPLOG_URL=$PRODUCTION_MONGO_OPLOG_URL
+STAGING_CLUSTER_DISCOVERY_URL=$PRODUCTION_CLUSTER_DISCOVERY_URL
+
+if [ -z "$TARGET" ]; then
+  echo 'Missing deployment target. Possible values: staging, production'
+  exit 0
+elif [ -z "$VERSION" ]; then
+  echo 'Missing version number. Ex. 1.0.0'
+  exit 0
+fi
+
+case "$TARGET" in
+  'staging' | 'production')
+    if [ "$TARGET" = 'staging' ]; then
+      APP_NAME=$STAGING_APP_NAME
+      GIT_TAG=$STAGING_GIT_TAG
+      ROOT_URL=$STAGING_ROOT_URL
+      SSH_CONN=$STAGING_SSH_CONN
+      METEOR_SETTINGS=$STAGING_METEOR_SETTINGS
+      MONGO_URL=$STAGING_MONGO_URL
+      MONGO_OPLOG_URL=$STAGING_MONGO_OPLOG_URL
+      CLUSTER_DISCOVERY_URL=$STAGING_CLUSTER_DISCOVERY_URL
+    elif [ "$TARGET" = 'production' ]; then
+      APP_NAME=$PRODUCTION_APP_NAME
+      GIT_TAG=$PRODUCTION_GIT_TAG
+      ROOT_URL=$PRODUCTION_ROOT_URL
+      SSH_CONN=$PRODUCTION_SSH_CONN
+      METEOR_SETTINGS=$PRODUCTION_METEOR_SETTINGS
+      MONGO_URL=$PRODUCTION_MONGO_URL
+      MONGO_OPLOG_URL=$PRODUCTION_MONGO_OPLOG_URL
+      CLUSTER_DISCOVERY_URL=$PRODUCTION_CLUSTER_DISCOVERY_URL
+    fi
+    echo "Building & deploying $DOCKER_TAG to $TARGET"
+    echo ""
+    ;;
+  *)
+    echo 'Invalid deployment target. Possible values: staging, production'
+    exit 0
+    ;;
+esac
+
+rm -rf $BUILD_DIR
+
+meteor yarn
+
+echo "Building Meteor bundle to $BUILD_DIR"
+meteor build --architecture=os.linux.x86_64 --server=$ROOT_URL --directory $BUILD_DIR
+
+echo "Tagging version..."
+git tag $GIT_TAG
+git push --tags
+
+echo "Building Dockerfile..."
+cp Dockerfile $BUILD_DIR/bundle/
+cd $BUILD_DIR/bundle/
+docker build -t $DOCKER_TAG .
+docker push $DOCKER_TAG
+
+RUN_COMMAND="docker pull $DOCKER_TAG \
+  && docker stop $BASE_APP_NAME \
+  && docker rm $BASE_APP_NAME \
+  && docker run \
+    -e NODE_ENV=$NODE_ENV \
+    -e PORT=$PORT \
+    -e ROOT_URL=$ROOT_URL \
+    -e MONGO_URL=\"${MONGO_URL}\" \
+    -e MONGO_OPLOG_URL=\"${MONGO_OPLOG_URL}\" \ 
+    -e CLUSTER_DISCOVERY_URL=\"${CLUSTER_DISCOVERY_URL}\" \
+    -e METEOR_SETTINGS='${METEOR_SETTINGS}' \
+    --name $BASE_APP_NAME \
+    -d $DOCKER_TAG"
+
+ssh $SSH_CONN $RUN_COMMAND
