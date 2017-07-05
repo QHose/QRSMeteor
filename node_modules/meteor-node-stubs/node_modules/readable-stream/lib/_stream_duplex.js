@@ -21,15 +21,10 @@ module.exports = Duplex;
 var processNextTick = require('process-nextick-args');
 /*</replacement>*/
 
-/*<replacement>*/
-var util = require('core-util-is');
-util.inherits = require('inherits');
-/*</replacement>*/
-
 var Readable = require('./_stream_readable');
 var Writable = require('./_stream_writable');
 
-util.inherits(Duplex, Readable);
+require('util').inherits(Duplex, Readable);
 
 var keys = objectKeys(Writable.prototype);
 for (var v = 0; v < keys.length; v++) {
