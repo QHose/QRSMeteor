@@ -1,3 +1,4 @@
 .meteor/local
 packages/*/.build*
 packages/*/.npm*
+node_modules
