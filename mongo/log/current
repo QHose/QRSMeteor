@@ -1,0 +1,175 @@
+2017-07-06_17:49:45.73739 2017-07-06T17:49:45.737+0000 I CONTROL  [initandlisten] MongoDB starting : pid=7 port=27017 dbpath=/var/lib/mongodb 64-bit host=23a0c9c1b6d7
+2017-07-06_17:49:45.73745 2017-07-06T17:49:45.737+0000 I CONTROL  [initandlisten] db version v3.4.6
+2017-07-06_17:49:45.73747 2017-07-06T17:49:45.737+0000 I CONTROL  [initandlisten] git version: c55eb86ef46ee7aede3b1e2a5d184a7df4bfb5b5
+2017-07-06_17:49:45.73748 2017-07-06T17:49:45.737+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2017-07-06_17:49:45.73749 2017-07-06T17:49:45.737+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-07-06_17:49:45.73750 2017-07-06T17:49:45.737+0000 I CONTROL  [initandlisten] modules: none
+2017-07-06_17:49:45.73751 2017-07-06T17:49:45.737+0000 I CONTROL  [initandlisten] build environment:
+2017-07-06_17:49:45.73753 2017-07-06T17:49:45.737+0000 I CONTROL  [initandlisten]     distmod: ubuntu1604
+2017-07-06_17:49:45.73754 2017-07-06T17:49:45.737+0000 I CONTROL  [initandlisten]     distarch: x86_64
+2017-07-06_17:49:45.73755 2017-07-06T17:49:45.737+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-07-06_17:49:45.73757 2017-07-06T17:49:45.737+0000 I CONTROL  [initandlisten] options: { config: "/var/lib/mongodb/mongodb.conf", net: { bindIp: "0.0.0.0", http: { enabled: false } }, storage: { dbPath: "/var/lib/mongodb", journal: { enabled: true } } }
+2017-07-06_17:49:45.74254 2017-07-06T17:49:45.742+0000 I STORAGE  [initandlisten] 
+2017-07-06_17:49:45.74256 2017-07-06T17:49:45.742+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2017-07-06_17:49:45.74258 2017-07-06T17:49:45.742+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2017-07-06_17:49:45.74263 2017-07-06T17:49:45.742+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=478M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-07-06_17:49:45.95723 2017-07-06T17:49:45.957+0000 I CONTROL  [initandlisten] 
+2017-07-06_17:49:45.95726 2017-07-06T17:49:45.957+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-07-06_17:49:45.95728 2017-07-06T17:49:45.957+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-07-06_17:49:45.95729 2017-07-06T17:49:45.957+0000 I CONTROL  [initandlisten] 
+2017-07-06_17:49:46.01014 2017-07-06T17:49:46.010+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/var/lib/mongodb/diagnostic.data'
+2017-07-06_17:49:46.07771 2017-07-06T17:49:46.077+0000 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: "incompatible_with_version_32", ns: "admin.system.version" }
+2017-07-06_17:49:46.07774 2017-07-06T17:49:46.077+0000 I INDEX    [initandlisten] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+2017-07-06_17:49:46.07885 2017-07-06T17:49:46.078+0000 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+2017-07-06_17:49:46.07912 2017-07-06T17:49:46.079+0000 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+2017-07-06_17:49:46.07935 2017-07-06T17:49:46.079+0000 I NETWORK  [thread1] waiting for connections on port 27017
+2017-07-06_17:55:52.94292 2017-07-06T17:55:52.942+0000 I CONTROL  [initandlisten] MongoDB starting : pid=7 port=27017 dbpath=/var/lib/mongodb 64-bit host=5c88cc2d9afb
+2017-07-06_17:55:52.94345 2017-07-06T17:55:52.942+0000 I CONTROL  [initandlisten] db version v3.4.6
+2017-07-06_17:55:52.94372 2017-07-06T17:55:52.942+0000 I CONTROL  [initandlisten] git version: c55eb86ef46ee7aede3b1e2a5d184a7df4bfb5b5
+2017-07-06_17:55:52.94402 2017-07-06T17:55:52.942+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2017-07-06_17:55:52.94455 2017-07-06T17:55:52.942+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-07-06_17:55:52.94457 2017-07-06T17:55:52.942+0000 I CONTROL  [initandlisten] modules: none
+2017-07-06_17:55:52.94457 2017-07-06T17:55:52.942+0000 I CONTROL  [initandlisten] build environment:
+2017-07-06_17:55:52.94457 2017-07-06T17:55:52.942+0000 I CONTROL  [initandlisten]     distmod: ubuntu1604
+2017-07-06_17:55:52.94457 2017-07-06T17:55:52.942+0000 I CONTROL  [initandlisten]     distarch: x86_64
+2017-07-06_17:55:52.94458 2017-07-06T17:55:52.942+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-07-06_17:55:52.94458 2017-07-06T17:55:52.942+0000 I CONTROL  [initandlisten] options: { config: "/var/lib/mongodb/mongodb.conf", net: { bindIp: "0.0.0.0", http: { enabled: false } }, storage: { dbPath: "/var/lib/mongodb", journal: { enabled: true } } }
+2017-07-06_17:55:52.97446 2017-07-06T17:55:52.973+0000 I STORAGE  [initandlisten] 
+2017-07-06_17:55:52.97448 2017-07-06T17:55:52.973+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2017-07-06_17:55:52.97448 2017-07-06T17:55:52.973+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2017-07-06_17:55:52.97449 2017-07-06T17:55:52.973+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=478M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-07-06_17:55:53.25072 2017-07-06T17:55:53.250+0000 I CONTROL  [initandlisten] 
+2017-07-06_17:55:53.25076 2017-07-06T17:55:53.250+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-07-06_17:55:53.25078 2017-07-06T17:55:53.250+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-07-06_17:55:53.25080 2017-07-06T17:55:53.250+0000 I CONTROL  [initandlisten] 
+2017-07-06_17:55:53.36147 2017-07-06T17:55:53.361+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/var/lib/mongodb/diagnostic.data'
+2017-07-06_17:55:53.45637 2017-07-06T17:55:53.456+0000 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: "incompatible_with_version_32", ns: "admin.system.version" }
+2017-07-06_17:55:53.45638 2017-07-06T17:55:53.456+0000 I INDEX    [initandlisten] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+2017-07-06_17:55:53.46067 2017-07-06T17:55:53.460+0000 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+2017-07-06_17:55:53.46099 2017-07-06T17:55:53.460+0000 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+2017-07-06_17:55:53.46152 2017-07-06T17:55:53.461+0000 I NETWORK  [thread1] waiting for connections on port 27017
+2017-07-06_17:56:16.70744 2017-07-06T17:56:16.707+0000 I CONTROL  [initandlisten] MongoDB starting : pid=11 port=27017 dbpath=/var/lib/mongodb 64-bit host=5c88cc2d9afb
+2017-07-06_17:56:16.70987 2017-07-06T17:56:16.707+0000 I CONTROL  [initandlisten] db version v3.4.6
+2017-07-06_17:56:16.71026 2017-07-06T17:56:16.707+0000 I CONTROL  [initandlisten] git version: c55eb86ef46ee7aede3b1e2a5d184a7df4bfb5b5
+2017-07-06_17:56:16.71084 2017-07-06T17:56:16.707+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2017-07-06_17:56:16.71122 2017-07-06T17:56:16.707+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-07-06_17:56:16.71190 2017-07-06T17:56:16.707+0000 I CONTROL  [initandlisten] modules: none
+2017-07-06_17:56:16.71207 2017-07-06T17:56:16.707+0000 I CONTROL  [initandlisten] build environment:
+2017-07-06_17:56:16.71230 2017-07-06T17:56:16.707+0000 I CONTROL  [initandlisten]     distmod: ubuntu1604
+2017-07-06_17:56:16.71252 2017-07-06T17:56:16.707+0000 I CONTROL  [initandlisten]     distarch: x86_64
+2017-07-06_17:56:16.71264 2017-07-06T17:56:16.707+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-07-06_17:56:16.71264 2017-07-06T17:56:16.707+0000 I CONTROL  [initandlisten] options: { config: "/var/lib/mongodb/mongodb.conf", net: { bindIp: "0.0.0.0", http: { enabled: false } }, storage: { dbPath: "/var/lib/mongodb", journal: { enabled: true } } }
+2017-07-06_17:56:16.71264 2017-07-06T17:56:16.707+0000 W -        [initandlisten] Detected unclean shutdown - /var/lib/mongodb/mongod.lock is not empty.
+2017-07-06_17:56:16.71493 2017-07-06T17:56:16.714+0000 I -        [initandlisten] Detected data files in /var/lib/mongodb created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-07-06_17:56:16.71532 2017-07-06T17:56:16.715+0000 W STORAGE  [initandlisten] Recovering data from the last clean checkpoint.
+2017-07-06_17:56:16.71538 2017-07-06T17:56:16.715+0000 I STORAGE  [initandlisten] 
+2017-07-06_17:56:16.71543 2017-07-06T17:56:16.715+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2017-07-06_17:56:16.71547 2017-07-06T17:56:16.715+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2017-07-06_17:56:16.71550 2017-07-06T17:56:16.715+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=478M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-07-06_17:56:17.27250 2017-07-06T17:56:17.272+0000 I CONTROL  [initandlisten] 
+2017-07-06_17:56:17.27252 2017-07-06T17:56:17.272+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-07-06_17:56:17.27253 2017-07-06T17:56:17.272+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-07-06_17:56:17.27255 2017-07-06T17:56:17.272+0000 I CONTROL  [initandlisten] 
+2017-07-06_17:56:17.27410 2017-07-06T17:56:17.274+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/var/lib/mongodb/diagnostic.data'
+2017-07-06_17:56:17.27427 2017-07-06T17:56:17.274+0000 I NETWORK  [thread1] waiting for connections on port 27017
+2017-07-06_17:56:18.03743 2017-07-06T17:56:18.037+0000 I FTDC     [ftdc] Unclean full-time diagnostic data capture shutdown detected, found interim file, some metrics may have been lost. OK
+2017-07-06_17:58:49.65921 2017-07-06T17:58:49.659+0000 I CONTROL  [initandlisten] MongoDB starting : pid=7 port=27017 dbpath=/var/lib/mongodb 64-bit host=5c88cc2d9afb
+2017-07-06_17:58:49.65965 2017-07-06T17:58:49.659+0000 I CONTROL  [initandlisten] db version v3.4.6
+2017-07-06_17:58:49.65984 2017-07-06T17:58:49.659+0000 I CONTROL  [initandlisten] git version: c55eb86ef46ee7aede3b1e2a5d184a7df4bfb5b5
+2017-07-06_17:58:49.65999 2017-07-06T17:58:49.659+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2017-07-06_17:58:49.66017 2017-07-06T17:58:49.659+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-07-06_17:58:49.66039 2017-07-06T17:58:49.659+0000 I CONTROL  [initandlisten] modules: none
+2017-07-06_17:58:49.66227 2017-07-06T17:58:49.659+0000 I CONTROL  [initandlisten] build environment:
+2017-07-06_17:58:49.66245 2017-07-06T17:58:49.659+0000 I CONTROL  [initandlisten]     distmod: ubuntu1604
+2017-07-06_17:58:49.66418 2017-07-06T17:58:49.659+0000 I CONTROL  [initandlisten]     distarch: x86_64
+2017-07-06_17:58:49.66503 2017-07-06T17:58:49.659+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-07-06_17:58:49.66535 2017-07-06T17:58:49.659+0000 I CONTROL  [initandlisten] options: { config: "/var/lib/mongodb/mongodb.conf", net: { bindIp: "0.0.0.0", http: { enabled: false } }, storage: { dbPath: "/var/lib/mongodb", journal: { enabled: true } } }
+2017-07-06_17:58:49.66559 2017-07-06T17:58:49.659+0000 W -        [initandlisten] Detected unclean shutdown - /var/lib/mongodb/mongod.lock is not empty.
+2017-07-06_17:58:49.68052 2017-07-06T17:58:49.680+0000 I -        [initandlisten] Detected data files in /var/lib/mongodb created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-07-06_17:58:49.68052 2017-07-06T17:58:49.680+0000 W STORAGE  [initandlisten] Recovering data from the last clean checkpoint.
+2017-07-06_17:58:49.68053 2017-07-06T17:58:49.680+0000 I STORAGE  [initandlisten] 
+2017-07-06_17:58:49.68053 2017-07-06T17:58:49.680+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2017-07-06_17:58:49.68053 2017-07-06T17:58:49.680+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2017-07-06_17:58:49.68053 2017-07-06T17:58:49.680+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=478M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-07-06_17:58:50.01233 2017-07-06T17:58:50.012+0000 I CONTROL  [initandlisten] 
+2017-07-06_17:58:50.01234 2017-07-06T17:58:50.012+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-07-06_17:58:50.01235 2017-07-06T17:58:50.012+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-07-06_17:58:50.01235 2017-07-06T17:58:50.012+0000 I CONTROL  [initandlisten] 
+2017-07-06_17:58:50.01423 2017-07-06T17:58:50.014+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/var/lib/mongodb/diagnostic.data'
+2017-07-06_17:58:50.01440 2017-07-06T17:58:50.014+0000 I NETWORK  [thread1] waiting for connections on port 27017
+2017-07-06_17:58:51.00309 2017-07-06T17:58:51.003+0000 I FTDC     [ftdc] Unclean full-time diagnostic data capture shutdown detected, found interim file, some metrics may have been lost. OK
+2017-07-06_18:13:18.29529 2017-07-06T18:13:18.294+0000 I CONTROL  [initandlisten] MongoDB starting : pid=7 port=27017 dbpath=/var/lib/mongodb 64-bit host=5c88cc2d9afb
+2017-07-06_18:13:18.29564 2017-07-06T18:13:18.295+0000 I CONTROL  [initandlisten] db version v3.4.6
+2017-07-06_18:13:18.29576 2017-07-06T18:13:18.295+0000 I CONTROL  [initandlisten] git version: c55eb86ef46ee7aede3b1e2a5d184a7df4bfb5b5
+2017-07-06_18:13:18.29584 2017-07-06T18:13:18.295+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2017-07-06_18:13:18.29592 2017-07-06T18:13:18.295+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-07-06_18:13:18.29599 2017-07-06T18:13:18.295+0000 I CONTROL  [initandlisten] modules: none
+2017-07-06_18:13:18.29605 2017-07-06T18:13:18.295+0000 I CONTROL  [initandlisten] build environment:
+2017-07-06_18:13:18.29611 2017-07-06T18:13:18.295+0000 I CONTROL  [initandlisten]     distmod: ubuntu1604
+2017-07-06_18:13:18.29616 2017-07-06T18:13:18.295+0000 I CONTROL  [initandlisten]     distarch: x86_64
+2017-07-06_18:13:18.29622 2017-07-06T18:13:18.295+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-07-06_18:13:18.29628 2017-07-06T18:13:18.295+0000 I CONTROL  [initandlisten] options: { config: "/var/lib/mongodb/mongodb.conf", net: { bindIp: "0.0.0.0", http: { enabled: false } }, storage: { dbPath: "/var/lib/mongodb", journal: { enabled: true } } }
+2017-07-06_18:13:18.29635 2017-07-06T18:13:18.295+0000 W -        [initandlisten] Detected unclean shutdown - /var/lib/mongodb/mongod.lock is not empty.
+2017-07-06_18:13:18.29955 2017-07-06T18:13:18.299+0000 I -        [initandlisten] Detected data files in /var/lib/mongodb created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-07-06_18:13:18.29969 2017-07-06T18:13:18.299+0000 W STORAGE  [initandlisten] Recovering data from the last clean checkpoint.
+2017-07-06_18:13:18.29977 2017-07-06T18:13:18.299+0000 I STORAGE  [initandlisten] 
+2017-07-06_18:13:18.29977 2017-07-06T18:13:18.299+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2017-07-06_18:13:18.29977 2017-07-06T18:13:18.299+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2017-07-06_18:13:18.29978 2017-07-06T18:13:18.299+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=478M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-07-06_18:13:18.62259 2017-07-06T18:13:18.622+0000 I CONTROL  [initandlisten] 
+2017-07-06_18:13:18.62318 2017-07-06T18:13:18.622+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-07-06_18:13:18.62368 2017-07-06T18:13:18.622+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-07-06_18:13:18.62401 2017-07-06T18:13:18.622+0000 I CONTROL  [initandlisten] 
+2017-07-06_18:13:18.64113 2017-07-06T18:13:18.641+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/var/lib/mongodb/diagnostic.data'
+2017-07-06_18:13:18.64195 2017-07-06T18:13:18.641+0000 I NETWORK  [thread1] waiting for connections on port 27017
+2017-07-06_18:13:19.03411 2017-07-06T18:13:19.033+0000 I FTDC     [ftdc] Unclean full-time diagnostic data capture shutdown detected, found interim file, some metrics may have been lost. OK
+2017-07-06_18:15:56.14236 2017-07-06T18:15:56.142+0000 I CONTROL  [initandlisten] MongoDB starting : pid=7 port=27017 dbpath=/var/lib/mongodb 64-bit host=5c88cc2d9afb
+2017-07-06_18:15:56.14287 2017-07-06T18:15:56.142+0000 I CONTROL  [initandlisten] db version v3.4.6
+2017-07-06_18:15:56.14309 2017-07-06T18:15:56.142+0000 I CONTROL  [initandlisten] git version: c55eb86ef46ee7aede3b1e2a5d184a7df4bfb5b5
+2017-07-06_18:15:56.14323 2017-07-06T18:15:56.142+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2017-07-06_18:15:56.14339 2017-07-06T18:15:56.142+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-07-06_18:15:56.14354 2017-07-06T18:15:56.142+0000 I CONTROL  [initandlisten] modules: none
+2017-07-06_18:15:56.14367 2017-07-06T18:15:56.142+0000 I CONTROL  [initandlisten] build environment:
+2017-07-06_18:15:56.14383 2017-07-06T18:15:56.142+0000 I CONTROL  [initandlisten]     distmod: ubuntu1604
+2017-07-06_18:15:56.14394 2017-07-06T18:15:56.142+0000 I CONTROL  [initandlisten]     distarch: x86_64
+2017-07-06_18:15:56.14406 2017-07-06T18:15:56.142+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-07-06_18:15:56.14419 2017-07-06T18:15:56.142+0000 I CONTROL  [initandlisten] options: { config: "/var/lib/mongodb/mongodb.conf", net: { bindIp: "0.0.0.0", http: { enabled: false } }, storage: { dbPath: "/var/lib/mongodb", journal: { enabled: true } } }
+2017-07-06_18:15:56.14435 2017-07-06T18:15:56.142+0000 W -        [initandlisten] Detected unclean shutdown - /var/lib/mongodb/mongod.lock is not empty.
+2017-07-06_18:15:56.14694 2017-07-06T18:15:56.146+0000 I -        [initandlisten] Detected data files in /var/lib/mongodb created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-07-06_18:15:56.14723 2017-07-06T18:15:56.146+0000 W STORAGE  [initandlisten] Recovering data from the last clean checkpoint.
+2017-07-06_18:15:56.14758 2017-07-06T18:15:56.146+0000 I STORAGE  [initandlisten] 
+2017-07-06_18:15:56.14814 2017-07-06T18:15:56.146+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2017-07-06_18:15:56.14909 2017-07-06T18:15:56.146+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2017-07-06_18:15:56.14926 2017-07-06T18:15:56.146+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=478M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-07-06_18:15:56.61589 2017-07-06T18:15:56.615+0000 I CONTROL  [initandlisten] 
+2017-07-06_18:15:56.61630 2017-07-06T18:15:56.615+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-07-06_18:15:56.61644 2017-07-06T18:15:56.615+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-07-06_18:15:56.61675 2017-07-06T18:15:56.615+0000 I CONTROL  [initandlisten] 
+2017-07-06_18:15:56.62982 2017-07-06T18:15:56.629+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/var/lib/mongodb/diagnostic.data'
+2017-07-06_18:15:56.63041 2017-07-06T18:15:56.630+0000 I NETWORK  [thread1] waiting for connections on port 27017
+2017-07-06_18:15:57.01182 2017-07-06T18:15:57.011+0000 I FTDC     [ftdc] Unclean full-time diagnostic data capture shutdown detected, found interim file, some metrics may have been lost. OK
+2017-07-06_18:16:58.52493 2017-07-06T18:16:58.524+0000 I CONTROL  [initandlisten] MongoDB starting : pid=8 port=27017 dbpath=/var/lib/mongodb 64-bit host=5c88cc2d9afb
+2017-07-06_18:16:58.52557 2017-07-06T18:16:58.525+0000 I CONTROL  [initandlisten] db version v3.4.6
+2017-07-06_18:16:58.52603 2017-07-06T18:16:58.525+0000 I CONTROL  [initandlisten] git version: c55eb86ef46ee7aede3b1e2a5d184a7df4bfb5b5
+2017-07-06_18:16:58.52649 2017-07-06T18:16:58.525+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2017-07-06_18:16:58.52669 2017-07-06T18:16:58.525+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-07-06_18:16:58.52700 2017-07-06T18:16:58.525+0000 I CONTROL  [initandlisten] modules: none
+2017-07-06_18:16:58.52750 2017-07-06T18:16:58.525+0000 I CONTROL  [initandlisten] build environment:
+2017-07-06_18:16:58.52844 2017-07-06T18:16:58.525+0000 I CONTROL  [initandlisten]     distmod: ubuntu1604
+2017-07-06_18:16:58.52944 2017-07-06T18:16:58.525+0000 I CONTROL  [initandlisten]     distarch: x86_64
+2017-07-06_18:16:58.53033 2017-07-06T18:16:58.525+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-07-06_18:16:58.53048 2017-07-06T18:16:58.525+0000 I CONTROL  [initandlisten] options: { config: "/var/lib/mongodb/mongodb.conf", net: { bindIp: "0.0.0.0", http: { enabled: false } }, storage: { dbPath: "/var/lib/mongodb", journal: { enabled: true } } }
+2017-07-06_18:16:58.53093 2017-07-06T18:16:58.525+0000 W -        [initandlisten] Detected unclean shutdown - /var/lib/mongodb/mongod.lock is not empty.
+2017-07-06_18:16:58.53115 2017-07-06T18:16:58.529+0000 I -        [initandlisten] Detected data files in /var/lib/mongodb created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-07-06_18:16:58.53147 2017-07-06T18:16:58.529+0000 W STORAGE  [initandlisten] Recovering data from the last clean checkpoint.
+2017-07-06_18:16:58.53259 2017-07-06T18:16:58.529+0000 I STORAGE  [initandlisten] 
+2017-07-06_18:16:58.53355 2017-07-06T18:16:58.529+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2017-07-06_18:16:58.53429 2017-07-06T18:16:58.529+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2017-07-06_18:16:58.53462 2017-07-06T18:16:58.529+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=478M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-07-06_18:16:58.91892 2017-07-06T18:16:58.917+0000 I CONTROL  [initandlisten] 
+2017-07-06_18:16:58.91927 2017-07-06T18:16:58.918+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-07-06_18:16:58.91927 2017-07-06T18:16:58.918+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-07-06_18:16:58.91927 2017-07-06T18:16:58.918+0000 I CONTROL  [initandlisten] 
+2017-07-06_18:16:58.92746 2017-07-06T18:16:58.927+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/var/lib/mongodb/diagnostic.data'
+2017-07-06_18:16:58.92768 2017-07-06T18:16:58.927+0000 I NETWORK  [thread1] waiting for connections on port 27017
+2017-07-06_18:16:59.03108 2017-07-06T18:16:59.031+0000 I FTDC     [ftdc] Unclean full-time diagnostic data capture shutdown detected, found interim file, some metrics may have been lost. OK

@@ -1,17 +1,16 @@
 version: "3.3"
 services:
   mongodb:
-        image: tozd/meteor-mongodb:2.6
+        image: tozd/mongodb:3.4
         container_name: "mongodb"
-        environment:
-          - MONGO_DATA_DIR=/data/db
-          - MONGO_LOG_DIR=/dev/null
         volumes:
-          - ./mongo/db:/var/lib/mongodb
-          - C:\Users\mbj\Documents\GitHub\qrsbuild\config:/etc/service/mongod
+          - .\mongo\log:/var/log/mongod
+          - .\mongo\data:/var/lib/mongodb" 
+        deploy:
+          restart_policy:
+            condition: on-failure
         ports:
             - 27017:27017
-        command: mongod --smallfiles --logpath=/dev/null # --quiet
         networks:
         - saasdemo
   qrs:
@@ -25,7 +24,7 @@ services:
       restart_policy:
         condition: on-failure
     environment:
-        - MONGO_URL='mongodb://meteor:${MONGODB_CREATE_PWD}@mongodb/meteor' 
+        - MONGO_URL='mongodb://meteor:testpassword@mongodb/meteor' 
         - PORT=3000 
         - ROOT_URL='http://localhost'
     volumes:

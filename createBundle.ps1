@@ -4,7 +4,6 @@ $RUNCONFIG_DIR = "..\qrsbuild\runconfig"
 $BASE_APP_NAME = "qrsmeteor"
 $VERSION = "1.0.0"
 $DOCKER_TAG = "qhose/" + $BASE_APP_NAME + ":" + $VERSION
-$PORT = 80
 
 echo "STEP delete old build files"
 Remove-Item $BUNDLE_DIR* -recurse -Force
