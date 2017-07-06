@@ -1,13 +1,20 @@
 FROM node:4.8.3
 # Set one or more individual labels
 LABEL maintainer="Martijn Biesbroek"
+EXPOSE 3000
 
-ADD . /qrsbundle
-WORKDIR /qrsbundle/programs/server
+# we assume your bundle dir is the current dir on the docker host, lets copy it to the container
+ADD . /meteorQRS
+# cd into the new directory, and go to the server folder
+WORKDIR /meteorQRS/programs/server
+
+# make sure all the NPM modules are downloaded again (via the settings in the package.json file in the server bundle\...\server folder)
 RUN npm install \
   && npm cache clear
-WORKDIR /qrsbundle
-EXPOSE 3000
+
+# cd to the dir where we the meteor settings.json and the startup script is
+WORKDIR /meteorQRS/runconfig
+
 ## the settings.json file has been copied to the directory. Run.sh will execute node including the settings.json
-CMD bash ./run.sh
-# CMD ["node", "main.js"]
+# CMD bash ./run.sh
+CMD ["bash", "run.sh"]

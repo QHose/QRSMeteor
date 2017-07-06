@@ -1,44 +1,45 @@
 version: "3.3"
 services:
+  mongodb:
+        image: tozd/meteor-mongodb:2.6
+        container_name: "mongodb"
+        environment:
+          - MONGO_DATA_DIR=/data/db
+          - MONGO_LOG_DIR=/dev/null
+        volumes:
+          - ./mongo/db:/var/lib/mongodb
+          - C:\Users\mbj\Documents\GitHub\qrsbuild\config:/etc/service/mongod
+        ports:
+            - 27017:27017
+        command: mongod --smallfiles --logpath=/dev/null # --quiet
+        networks:
+        - saasdemo
   qrs:
     image: qrsmeteor:1.0.0
     deploy:
-      replicas: 5
+      replicas: 2
       resources:
         limits:
-          cpus: "0.1"
+          cpus: "0.5"
           memory: 50M
       restart_policy:
         condition: on-failure
     environment:
-        - NODE_ENV=development
-        - FOO=bar
+        - MONGO_URL='mongodb://meteor:${MONGODB_CREATE_PWD}@mongodb/meteor' 
+        - PORT=3000 
+        - ROOT_URL='http://localhost'
     volumes:
-        - .:/var/www:rw
-        - /tmp/.X11-unix:/tmp/.X11-unix:rw
+        - C:\Users\mbj\Documents\GitHub\qrsbuild\config:/meteorQRS/config
     # configs:
     #   - my_config
     #   - my_other_config
     ports:
     -  "80:3000"
     links:
-            - mongodb
+        - mongodb
     depends_on:
         - mongodb
     networks:
-      - saasdemo
-  mongodb:
-      image: mongo:latest
-      container_name: "mongodb"
-      environment:
-        - MONGO_DATA_DIR=/data/db
-        - MONGO_LOG_DIR=/dev/null
-      volumes:
-        - ./data/db:/data/db
-      ports:
-          - 27017:27017
-      command: mongod --smallfiles --logpath=/dev/null # --quiet
-      networks:
       - saasdemo
 networks:
   saasdemo:
