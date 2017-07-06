@@ -4,9 +4,7 @@ settings-production.json
 *.cert
 *.pem
 node_modules/
-
+data/
 *.bat
 .vscode/typings/meteor.d.ts
-*.sublime-workspace
-public/docs/~$ik Sense SaaS demo tool setup instructions.docx
 *.sublime-workspace
