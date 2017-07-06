@@ -8,3 +8,4 @@ data/
 *.bat
 .vscode/typings/meteor.d.ts
 *.sublime-workspace
+mongo/

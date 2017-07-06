@@ -5,28 +5,30 @@ services:
         container_name: "mongodb"
         volumes:
           - .\mongo\log:/var/log/mongod
-          - .\mongo\data:/var/lib/mongodb" 
-        deploy:
-          restart_policy:
-            condition: on-failure
+          - .\mongo\data:/var/lib/mongodb
+        # deploy:
+        #   restart_policy:
+        #     condition: on-failure
         ports:
             - 27017:27017
         networks:
         - saasdemo
   qrs:
     image: qrsmeteor:1.0.0
-    deploy:
-      replicas: 2
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: 50M
-      restart_policy:
-        condition: on-failure
+    # deploy:
+    #   replicas: 2
+    #   resources:
+    #     limits:
+    #       cpus: "0.5"
+    #       memory: 50M
+    #   restart_policy:
+    #     condition: on-failure
     environment:
-        - MONGO_URL='mongodb://meteor:testpassword@mongodb/meteor' 
+        # - MONGO_URL=mongodb://meteor:testpassword@mongodb/meteor
+        - MONGO_URL=mongodb://heroku_r1wrm527:kcedtl5po5bna0qbj2rouo8cau@ds145892.mlab.com:45892/heroku_r1wrm527
+        # mongodb://username:password@127.0.0.1:27017/meteor
         - PORT=3000 
-        - ROOT_URL='http://localhost'
+        - ROOT_URL=http://localhost
     volumes:
         - C:\Users\mbj\Documents\GitHub\qrsbuild\config:/meteorQRS/config
     # configs:
