@@ -5,7 +5,6 @@ settings-production.json
 *.pem
 node_modules/
 data/
-*.bat
 .vscode/typings/meteor.d.ts
 *.sublime-workspace
 mongo/

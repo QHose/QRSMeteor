@@ -1,5 +1,4 @@
 .meteor/local
-packages/*/.build*
-packages/*/.npm*
 node_modules
-data
+Sense Demo materials
+mongo
