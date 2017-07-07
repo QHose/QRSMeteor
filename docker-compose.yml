@@ -9,7 +9,7 @@ services:
         image: qhose/qrsmeteor:1.0.0
         environment:
             - MONGO_URL=mongodb://mongodb:27017/
-            - VIRTUAL_HOST=qrs.qlik.com
+            # - VIRTUAL_HOST=qrs.qlik.com
             - PORT=3000 
             - ROOT_URL=http://localhost
         volumes:
@@ -25,13 +25,14 @@ services:
     web:
         image: qhose/sensewebintegration:1.0.0
         environment:
-            - VIRTUAL_HOST=foo.bar.com
+            # - VIRTUAL_HOST=web.qlik.com
+            - MONGO_URL=mongodb://mongodb:27017/
             - PORT=3030 
             - ROOT_URL=http://localhost
         volumes:
-         - .\config:/meteorQRS/config
+         - .\config:/senseWebIntegration/config
         ports:
-        -  "80:3000"
+        -  "3030:3030"
         links:
         - mongodb
         depends_on:
