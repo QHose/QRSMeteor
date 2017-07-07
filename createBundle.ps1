@@ -1,6 +1,5 @@
 $BUILD_DIR = "..\qrsbuild"
 $BUNDLE_DIR = "..\qrsbuild\bundle"
-$RUNCONFIG_DIR = "..\qrsbuild\runconfig"
 $BASE_APP_NAME = "qrsmeteor"
 $VERSION = "1.0.0"
 $DOCKER_TAG = "qhose/" + $BASE_APP_NAME + ":" + $VERSION
