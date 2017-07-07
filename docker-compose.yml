@@ -1,16 +1,5 @@
 version: "3.3"
 services:
-    # mongodb:
-    #     image: tozd/meteor-mongodb:2.6
-    #     container_name: "mongodb"
-    #     volumes:
-    #     #   - .\mongo\log:/var/log/mongod
-    #     #   - .\mongo\data:/var/lib/mongodb
-    #         - C:\Users\mbj\Documents\GitHub\qrsbuild\config:/etc/service/mongod
-    #     ports:
-    #         - 27017:27017
-    #     networks:
-    #     - integrationLAN
     mongodb:
         image: mongo
         container_name: "mongodb"
@@ -20,9 +9,6 @@ services:
         image: qrsmeteor:1.0.0
         environment:
             - MONGO_URL=mongodb://mongodb:27017/
-            # - MONGO_URL=mongodb://meteor:testpassword@mongodb:27017/meteor
-            # - MONGO_URL=mongodb://heroku_r1wrm527:kcedtl5po5bna0qbj2rouo8cau@ds145892.mlab.com:45892/heroku_r1wrm527
-            # mongodb://username:password@127.0.0.1:27017/meteor
             - VIRTUAL_HOST=foo.bar.com
             - PORT=3000 
             - ROOT_URL=http://localhost
