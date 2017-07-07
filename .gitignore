@@ -8,3 +8,5 @@ data/
 .vscode/typings/meteor.d.ts
 *.sublime-workspace
 mongo/
+config/supervise/lock
+config/settings.json

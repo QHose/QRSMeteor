@@ -4,7 +4,7 @@ LABEL maintainer="Martijn Biesbroek"
 EXPOSE 3000
 
 # we assume your bundle dir is the current dir on the docker host, lets copy it to the container
-ADD . /meteorQRS
+ADD . /meteorQRS  
 # cd into the new directory, and go to the server folder
 WORKDIR /meteorQRS/programs/server
 
@@ -13,8 +13,8 @@ RUN npm install \
   && npm cache clear
 
 # cd to the dir where we the meteor settings.json and the startup script is
-WORKDIR /meteorQRS/bundle
+WORKDIR /meteorQRS
 
 ## the settings.json file has been copied to the directory. Run.sh will execute node including the settings.json
 # CMD bash ./run.sh
-CMD ["bash", "./config/run.sh"]
+CMD ["bash", "./startNode.sh"]
