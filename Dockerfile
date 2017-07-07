@@ -12,9 +12,8 @@ WORKDIR /meteorQRS/programs/server
 RUN npm install \
   && npm cache clear
 
-# cd to the dir where we the meteor settings.json and the startup script is
+# cd to the dir where the startup script is
 WORKDIR /meteorQRS
 
-## the settings.json file has been copied to the directory. Run.sh will execute node including the settings.json
-# CMD bash ./run.sh
+## the settings.json file has been linked (via a volume from windows to linux) to the /meteorQRS/config directory. startNode.sh will execute node including the settings.json
 CMD ["bash", "./startNode.sh"]

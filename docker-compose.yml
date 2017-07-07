@@ -22,21 +22,21 @@ services:
         - mongodb
         networks:
         - integrationLAN
-    # web:
-    #     image: qhose/sensewebintegration:1.0.0
-    #     environment:
-    #         - VIRTUAL_HOST=foo.bar.com
-    #         - PORT=3030 
-    #         - ROOT_URL=http://localhost
-    #     volumes:
-    #      - C:\Users\mbj\Documents\GitHub\qrsbuild\config:/meteorQRS/config
-    #     ports:
-    #     -  "80:3000"
-    #     links:
-    #     - mongodb
-    #     depends_on:
-    #     - mongodb
-    #     networks:
-    #     - integrationLAN
+    web:
+        image: qhose/sensewebintegration:1.0.0
+        environment:
+            - VIRTUAL_HOST=foo.bar.com
+            - PORT=3030 
+            - ROOT_URL=http://localhost
+        volumes:
+         - .\config:/meteorQRS/config
+        ports:
+        -  "80:3000"
+        links:
+        - mongodb
+        depends_on:
+        - mongodb
+        networks:
+        - integrationLAN
 networks:
     integrationLAN:
