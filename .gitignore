@@ -10,3 +10,4 @@ data/
 mongo/
 config/supervise/lock
 config/settings.json
+docker-compose.yml

@@ -4,6 +4,7 @@ services:
         image: dockercloud/haproxy
         links:
         - web
+        - qrs
         volumes:
         - /var/run/docker.sock:/var/run/docker.sock
         restart: always
