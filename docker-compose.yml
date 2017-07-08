@@ -1,10 +1,17 @@
 version: "3.3"
-services:
+services: 
+    lb:
+        image: dockercloud/haproxy
+        links:
+        - web
+        volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        restart: always
+        ports:
+        - 80:80 
     mongodb:
         image: mongo
         container_name: "mongodb"
-        networks:
-        - integrationLAN
     qrs:
         image: qhose/qrsmeteor:1.0.0
         environment:
@@ -15,13 +22,12 @@ services:
         volumes:
          - C:\Users\mbj\Documents\GitHub\QRSMeteor\config:/meteorQRS/config
         ports:
-        -  "80:3000"
+        -  "3000"
+        restart: always
         links:
         - mongodb
         depends_on:
         - mongodb
-        networks:
-        - integrationLAN
     web:
         image: qhose/sensewebintegration:1.0.0
         environment:
@@ -32,12 +38,11 @@ services:
         volumes:
          - .\config:/senseWebIntegration/config
         ports:
-        -  "3030:3030"
+        -  "3030"
+        restart: always
         links:
         - mongodb
         depends_on:
         - mongodb
-        networks:
-        - integrationLAN
 networks:
-    integrationLAN:
+    default:
