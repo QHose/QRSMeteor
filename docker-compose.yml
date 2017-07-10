@@ -36,7 +36,7 @@ services:
         volumes:
          - C:\Users\mbj\Documents\GitHub\QRSMeteor\config:/meteorQRS/config
         ports:
-        -  "3000:3000"
+        -  "3000"
         restart: always
         links:
         - mongodb
@@ -52,7 +52,7 @@ services:
         volumes:
          - C:\Users\mbj\Documents\GitHub\senseWebIntegration\config:/senseWebIntegration/config
         ports:
-        -  "3030:3030"
+        -  "3030"
         restart: always
         links:
         - mongodb
