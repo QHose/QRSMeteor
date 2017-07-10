@@ -1,15 +1,24 @@
 version: "3.3"
 services: 
+    nginx:
+        image: nginx:1.9
+        ports:
+        - "80:80"
+        volumes:
+        - ./nginx.conf:/etc/nginx/nginx.conf:ro
+        restart: always
+        depends_on:
+        - web
+        - app2
     lb:
         image: dockercloud/haproxy
         links:
-        - web
         - qrs
         volumes:
         - /var/run/docker.sock:/var/run/docker.sock
         restart: always
-        ports:
-        - 80:80 
+        depends_on:
+        - qrs
     mongodb:
         image: mongo
         container_name: "mongodb"
@@ -17,9 +26,9 @@ services:
         image: qhose/qrsmeteor:1.0.0
         environment:
             - MONGO_URL=mongodb://mongodb:27017/
-            # - VIRTUAL_HOST=qrs.qlik.com
+            - VIRTUAL_HOST=localqrs
             - PORT=3000 
-            - ROOT_URL=http://localhost
+            - ROOT_URL=http://localweb
         volumes:
          - C:\Users\mbj\Documents\GitHub\QRSMeteor\config:/meteorQRS/config
         ports:
@@ -32,14 +41,14 @@ services:
     web:
         image: qhose/sensewebintegration:1.0.0
         environment:
-            # - VIRTUAL_HOST=web.qlik.com
+            - VIRTUAL_HOST=localweb
             - MONGO_URL=mongodb://mongodb:27017/
             - PORT=3030 
-            - ROOT_URL=http://localhost
+            - ROOT_URL=http://localweb
         volumes:
-         - .\config:/senseWebIntegration/config
+         - C:\Users\mbj\Documents\GitHub\senseWebIntegration\config:/senseWebIntegration/config
         ports:
-        -  "3030"
+        -  "3030:3030"
         restart: always
         links:
         - mongodb
