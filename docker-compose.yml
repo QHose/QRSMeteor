@@ -1,24 +1,28 @@
 version: "3.3"
 services: 
-    nginx:
-        image: nginx:1.9
-        ports:
-        - "80:80"
-        volumes:
-        - ./nginx.conf:/etc/nginx/nginx.conf:ro
-        restart: always
-        depends_on:
-        - web
-        - app2
+    # nginx:
+    #     image: nginx:1.9
+    #     ports:
+    #     - "80:80"
+    #     volumes:
+    #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    #     restart: always
+    #     depends_on:
+    #     - web
+        # - qrs
     lb:
         image: dockercloud/haproxy
         links:
         - qrs
+        - web
         volumes:
         - /var/run/docker.sock:/var/run/docker.sock
         restart: always
+        ports:
+        -  "80:80"
         depends_on:
         - qrs
+        - web
     mongodb:
         image: mongo
         container_name: "mongodb"
@@ -32,7 +36,7 @@ services:
         volumes:
          - C:\Users\mbj\Documents\GitHub\QRSMeteor\config:/meteorQRS/config
         ports:
-        -  "3000"
+        -  "3000:3000"
         restart: always
         links:
         - mongodb
