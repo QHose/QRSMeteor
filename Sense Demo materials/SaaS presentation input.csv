@@ -911,10 +911,11 @@ or
 "Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","Now your local github desktop program should open and the files from the server have been copied to your local c drive. Normally in your github folder in your ""my documents"". ",,,,,,,,,
 "Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","github - update your local copy from the server.png",,,,,,,,,
 "Slide generator - use cases","How to create your first presentation (detailed work instruction)","# Create your presentation",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Open Mindmanager Mindjet on your pc",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Go to your github folder and make a copy of the template presentation (Qlik_Slidegenerator_Template.mmap) in the `GitHub\QRSMeteor\Sense Demo materials\slide generator`",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Create your mindmap using MindJet Mindmanager. See the workshop ""what is this slide generator"" if you want to learn more about the file structure etc. In the end we just create a table with 4 columns
-- workshop
+"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Download the [template presentation](https://github.com/QHose/QRSMeteor/raw/master/Sense%20Demo%20materials/SlideGenerator/Qlik%20Slidegenerator%20Template.mmap) (Qlik_Slidegenerator_Template.mmap) . (Also  presentent in your `GitHub\QRSMeteor\Sense Demo materials\slide generator` folder)",,,,,,,,,
+"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Save the template under a new name. (E.g. `sales presentation.mnap)",,,,,,,,,
+"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Double click the file so it will open Mindmanager Mindjet on your pc",,,,,,,,,
+"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Now you can create your mindmap using MindJet Mindmanager. See the workshop ""what is this slide generator"" if you want to learn more about the file structure etc. Note that in the end we just create a table with 4 columns
+- Workshop
 - Chapter
 - Slide name
 - Bullet text, image name or video link. ",,,,,,,,,
@@ -2076,10 +2077,11 @@ or
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Plan your deployment](http://help.qlik.com/en-US/sense/3.2/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Planning-Deployments.htm)",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Backup and restore Qlik Sense](http://help.qlik.com/en-US/sense/3.1/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Backup-Restore.htm)
 - This section describes how to back up and restore Qlik Sense sites and certificates and how to move a node to a new machine.",,"","","","","         0","0","Technical - 1 day",
-"Architecture","Video: understanding Qlik Sense performance (scalability)","https://youtu.be/Vwmx0nBNk0Q",,"","","","","         0","0","PreSales",
+"Architecture","Video (25M): understanding Qlik Sense performance (scalability)","https://youtu.be/Vwmx0nBNk0Q",,"","","","","         0","0","Support",
 "Architecture","Video: Activating license and allocating users access","https://youtu.be/uWGS48VaOQE",,,,,,,,,
-"Architecture","Video: Installing Qlik Sense in a single node site - Qlik Sense","https://youtu.be/lx2R6LPKKPo?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,,,,,,,,
-"Architecture","Video: Installing Qlik Sense in a multi-node site - Qlik Sense","https://youtu.be/RdaNXjUb1vc?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,,,,,,,,
+"Architecture","Video: Activating license and allocating users access","Tip: for OEM use cases I prefer to use `username like *` since the authorization module in your SaaS platform should decide who can enter Qlik Sense and who not...",,,,,,,,,
+"Architecture","Video: Installing Qlik Sense in a single node site - Qlik Sense","https://youtu.be/lx2R6LPKKPo?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Technical - 1 day",
+"Architecture","Video: Installing Qlik Sense in a multi-node site - Qlik Sense","https://youtu.be/RdaNXjUb1vc?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Technical - 1 day",
 "Data integration","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","data - create qvd.png",,"","","","","         0","0","PreSales",
