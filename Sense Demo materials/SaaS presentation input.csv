@@ -532,9 +532,9 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 * get a result set by combining any field or measure
 * create a query and vizualize with your own library (D3, google charts)
 * register events to get associativity
-* maintain Qlik Sense",,"","","","","         0","0","Technical - 1 hour",
-"Web integration","Examples of using Qlik Sense as a data analytics engine","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","Technical - 1 hour",
-"Web integration","Examples of using Qlik Sense as a data analytics engine","postman response.png",,"","","","","         0","0","Technical - 1 hour",
+* maintain Qlik Sense",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Examples of using Qlik Sense as a data analytics engine","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Examples of using Qlik Sense as a data analytics engine","postman response.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Data only example: Qlik Sense bot (Start around 3m)","[Open this video](https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel)",,"","","","","         0","0","PreSales",
 "Web integration","Table API - retrieve any combination of dimensions and measures","API- table api - get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours",
 "Web integration","Table API - retrieve any combination of dimensions and measures","```
@@ -911,8 +911,8 @@ or
 "Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","Now your local github desktop program should open and the files from the server have been copied to your local c drive. Normally in your github folder in your ""my documents"". ",,,,,,,,,
 "Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","github - update your local copy from the server.png",,,,,,,,,
 "Slide generator - use cases","How to create your first presentation (detailed work instruction)","# Create your presentation",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Download the [template presentation](https://github.com/QHose/QRSMeteor/raw/master/Sense%20Demo%20materials/SlideGenerator/Qlik%20Slidegenerator%20Template.mmap) (Qlik_Slidegenerator_Template.mmap) . (Also  presentent in your `GitHub\QRSMeteor\Sense Demo materials\slide generator` folder)",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Save the template under a new name. (E.g. `sales presentation.mnap)",,,,,,,,,
+"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Download the [template presentation](https://github.com/QHose/QRSMeteor/raw/master/Sense%20Demo%20materials/SlideGenerator/Qlik%20Slidegenerator%20Template.mmap). (Also  present in your `GitHub\QRSMeteor\Sense Demo materials\slide generator` folder)",,,,,,,,,
+"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Save the template under a new name. (E.g. `sales presentation.mnap`)",,,,,,,,,
 "Slide generator - use cases","How to create your first presentation (detailed work instruction)","Double click the file so it will open Mindmanager Mindjet on your pc",,,,,,,,,
 "Slide generator - use cases","How to create your first presentation (detailed work instruction)","Now you can create your mindmap using MindJet Mindmanager. See the workshop ""what is this slide generator"" if you want to learn more about the file structure etc. Note that in the end we just create a table with 4 columns
 - Workshop
@@ -929,8 +929,8 @@ or
 "Slide generator - use cases","How to create your first presentation (detailed work instruction)","# Upload your presentation to the master slide deck",,,,,,,,,
 "Slide generator - use cases","How to create your first presentation (detailed work instruction)","Open a [Pull Request](https://services.github.com/on-demand/github-desktop/pull-request-github-desktop) With GitHub Desktop",,,,,,,,,
 "Slide generator - use cases","How to create your first presentation (detailed work instruction)","github - opening a pull request.gif",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","# Slide Master admin can include your new slides in the master deck",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Now you have submitted your presentation to the slide generator maintainer. This person can now verify your content and make comments. and [merge](https://services.github.com/on-demand/github-desktop/merge-pull-request-github) it in the master presentation",,,,,,,,,
+"Slide generator - use cases","How to create your first presentation (detailed work instruction)","# Validation by `the slide administrator'",,,,,,,,,
+"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Now you have submitted your presentation (via a `pull request` to the central repository on github.com). The slide generator maintainer can now verify your content and make comments. and [merge](https://services.github.com/on-demand/github-desktop/merge-pull-request-github) it in the master presentation",,,,,,,,,
 "Slide generator - use cases","How to create your first presentation (detailed work instruction)","github - merge pull request.gif",,,,,,,,,
 "Slide generator - use cases","How to create your first presentation (detailed work instruction)","For more information, follow the instructions on [GitHub](https://services.github.com/on-demand/github-desktop/push-with-github-desktop)",,,,,,,,,
 "Integration.qlik.com key API calls","Summary: which activities did we automate?","Setup Qlik Sense
@@ -1409,7 +1409,7 @@ call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certica
 "QPS - Proxy API","Remember: You don't store credentials in Qlik Sense","QPS - Qlik does not store users and passwords.png",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","Ticketing - Browser redirects explained","QPS - authentication redirect flow in browser for dummies.png",,"","","","","         0","0","Technical - 1 day",
 "QPS - Proxy API","Basic ticketing flow","flow - ticketing authentication for dummies.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"QPS - Proxy API","Video: end to end security integration flow (1M)","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales, Introduction - 30 minutes",
+"QPS - Proxy API","Video: end to end security integration flow (1M)","https://youtu.be/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","Ticketing deep dive intro video (21M)","https://youtu.be/iamo6RLc5Pg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Technical - 1 day",
 "QPS - Proxy API","Ticketing - create ticket (passport)","In your SaaS platform you authenticate the user. ",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","Ticketing - create ticket (passport)","Next you create an object with the user information (like a passport). 
