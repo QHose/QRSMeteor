@@ -42,13 +42,27 @@
     {{> footer}}
 </template>
 
-<template name="footer">
-    <div id="footer" class="ui footer page one column grid">
+<template name="footer">    
+    <section class="use-case-selection footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul>
+                        <li><a href="/"><img src="./images/qlik_logo.svg" class="logo"></a></li>
+                        <li><a href="/">LOREM IPSUM</a></li>
+                        <li><a href="/">DOLOR SIT AMET</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--<div id="footer" class="ui footer page one column grid">
         <div class="column">
             <div class="ui divider"></div>
             Integration approach, demo site, documentation and videos created by Martijn Biesbroek & Raymond Neves. Review by Catherine Frye, QVF design by Patrick Tehubijuluw. Voice-over Stephen Jasionowski. See the terms of usage of this site <a href="{{pathFor 'legal'}}">here</a>.
         </div>
-    </div>
+    </div>-->
 </template>
 <template name="modals">
     {{> modalSSBI}} {{> modalStepByStep}} {{> modalSaaSautomation}}

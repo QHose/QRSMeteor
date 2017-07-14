@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans:700|Open+Sans|Oswald');
+
+@font-oswald: 'Oswald', sans-serif;
+@font-open: 'Open Sans', sans-serif;
+@font-droid: 'Droid Sans', sans-serif;
+
+@color-green: #62ac1e;
+@color-green-light: #d8edc8;
+@color-tan: #f8f0e5;
+@color-red: #cc0000;
+@color-gray: #606062;
+@color-gray-light: #999999;
+@padding-left: 200px;
+
+body {
+	&::-webkit-scrollbar {
+        width: 0.9em;
+		background-color: @color-tan;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: @color-green;
+		outline: 1px solid @color-gray-light;
+	}
+}
+.use-case-selection {
+    &.header {
+        height: 540px;
+        background-image: url('./images/bg_intro.jpg');
+        background-size: auto 100%;
+        background-position: top center;
+        background-repeat: no-repeat; 
+        text-align: left;
+        color: white;
+        .navbar-default {
+            background-color: rgba(0,0,0,0) !important;
+            border: 0 !important;
+            .navbar-collapse {
+                padding-left: 10px;
+            }
+        }
+        .nav {
+            font-family: @font-oswald;
+            font-size: 14px;
+            padding: 3px;
+            li {
+                display: inline-block;
+                a,
+                a:hover {
+                    color: white;
+                    padding-right: 10px;
+                    padding-bottom: 5px;
+                    background-color: rgba(0,0,0,0)
+                }
+                &.active:hover,
+                &.active {
+                    color: white;
+                    text-align: center;
+                    background-color: @color-green;
+                    padding: 0;
+                    .fa {
+                        font-size: 7px;
+                        display: block;
+                    }
+                }
+            }
+        }
+        .description {
+            width: 700px;
+            padding: 50px @padding-left;
+        }
+    }
+    &.main {
+        padding-top: 50px;
+        padding-bottom: 150px;
+    }
+    &.footer {
+        height: 160px;
+        background-image: url('./images/bg_footer.jpg');
+        background-size: auto 100%;
+        background-position: bottom right;
+        background-repeat: no-repeat;  
+        padding-top: 60px;
+        padding-left: @padding-left;
+        ul {
+            padding-left: 0;
+            li {
+                font-size: 18px;
+                font-family: @font-oswald;
+                display: inline-block;
+                padding-right: 20px;
+                .logo {
+                    width: 110px;
+                }
+                a {
+                    color: @color-gray;
+                }
+            }
+        }
+    }
+}
+.ui.secondary.menu {
+    margin-top: 50px;
+}
+.self-service{
+    &.header {
+        position: absolute;
+        top: 0;
+        background-color: @color-green;
+        margin-left: -10px;
+        width: 100%;
+        ul {
+            font-family: @font-oswald;
+            font-size: 14px;
+            padding: 0;
+            margin: 0;
+            line-height: 5px;
+            display: inline-block;
+            &.navbar-left {                
+                li {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding-top: 3px;
+                    padding-bottom: 15px;
+                    a {
+                        color: white;
+                        padding-right: 13px;
+                        padding-bottom: 5px;
+                        background-color: rgba(0,0,0,0);
+                        &:hover {
+                            color: @color-tan;
+                        }
+                    }
+                    &.active,
+                    &.active:hover {
+                        color: white;
+                        text-align: center;
+                        padding-left: 0;
+                        padding-right: 0;
+                        .fa {
+                            font-size: 7px;
+                            display: block;
+                        }
+                        &:after {
+                            font-family: FontAwesome;
+                            font-size: 7px;
+                            content: "\f111";
+                            display: block;
+                        }
+                    }
+                }
+            }
+            &.navbar-right {
+                li {
+                    display: inline-block;
+                    // vertical-align: top;
+                    padding: 15px;
+                    &.label {
+                        color: white;
+                        padding-top: 20px;
+                        font-size: 14px;
+                        font-weight: normal;
+                    }
+                    .dropdown-toggle {
+                        padding-top: 4px;
+                        padding-bottom: 4px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                    }
+                    .dropdown-menu {
+                        // display: none;
+                        visibility: hidden;
+                    }
+                }
+            }
+        }
+    }
+}

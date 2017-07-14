@@ -1,7 +1,6 @@
 import '/imports/ui/useCases/useCaseSelection.html';
 import './SSBI/SSBI.js';
-
-
+import { Session } from 'meteor/session';
 
 Template.useCaseSelection.events({
     'click .webIntegrationDemo' () {
@@ -9,13 +8,8 @@ Template.useCaseSelection.events({
     },
 })
 
-
 Template.useCaseSelection.onRendered(function() {
-  
-    // this.$('.cards')
-    //     .transition('scale in');
-
-this.$('.cards .card').css('visibility', 'hidden');
+    this.$('.cards .card').css('visibility', 'hidden');
 
     this.$('.cards .card')
         .transition({
@@ -28,7 +22,37 @@ this.$('.cards .card').css('visibility', 'hidden');
       this.$('.special.cards .image').dimmer({
         on: 'hover'
     });
+    
+    this.$('.dropdown-menu a').on('click', function(){
+        role = $(this).attr("data")
+        console.log(role);
+        Session.set('userRole', role);
+        // Set the active class
+        $('.dropdown-menu li').removeClass('active')
+        $(this).parent().addClass('active');
+    });
 })
+
+Template.useCaseSelection.helpers({
+    tasks: [
+        { text: 'This is task 1' },
+        { text: 'This is task 2' },
+        { text: 'This is task 3' },
+    ],
+    userRole() {
+        let role = 'Select a role'
+        if (Session.get('userRole')) {
+            role = Session.get('userRole')
+            $('.dropdown-menu li').find(role).parent().addClass('active')
+        } else {
+            Session.set('userRole', role);
+        }
+        return role;
+    },
+    appURL() {
+        return Session.get('appUrl');
+    },
+});
 
 function login(user) {
     console.log('login ', user, Meteor.userId());

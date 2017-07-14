@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans:700|Open+Sans|Oswald');
+body::-webkit-scrollbar {
+  width: 0.9em;
+  background-color: #f8f0e5;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #62ac1e;
+  outline: 1px solid #999999;
+}
+.use-case-selection.header {
+  height: 540px;
+  background-image: url('images/bg_intro.jpg');
+  background-size: auto 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+  text-align: left;
+  color: white;
+}
+.use-case-selection.header .navbar-default {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border: 0 !important;
+}
+.use-case-selection.header .navbar-default .navbar-collapse {
+  padding-left: 10px;
+}
+.use-case-selection.header .nav {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  padding: 3px;
+}
+.use-case-selection.header .nav li {
+  display: inline-block;
+}
+.use-case-selection.header .nav li a,
+.use-case-selection.header .nav li a:hover {
+  color: white;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  background-color: rgba(0, 0, 0, 0);
+}
+.use-case-selection.header .nav li.active:hover,
+.use-case-selection.header .nav li.active {
+  color: white;
+  text-align: center;
+  background-color: #62ac1e;
+  padding: 0;
+}
+.use-case-selection.header .nav li.active:hover .fa,
+.use-case-selection.header .nav li.active .fa {
+  font-size: 7px;
+  display: block;
+}
+.use-case-selection.header .description {
+  width: 700px;
+  padding: 50px 200px;
+}
+.use-case-selection.main {
+  padding-top: 50px;
+  padding-bottom: 150px;
+}
+.use-case-selection.footer {
+  height: 160px;
+  background-image: url('images/bg_footer.jpg');
+  background-size: auto 100%;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  padding-top: 60px;
+  padding-left: 200px;
+}
+.use-case-selection.footer ul {
+  padding-left: 0;
+}
+.use-case-selection.footer ul li {
+  font-size: 18px;
+  font-family: 'Oswald', sans-serif;
+  display: inline-block;
+  padding-right: 20px;
+}
+.use-case-selection.footer ul li .logo {
+  width: 110px;
+}
+.use-case-selection.footer ul li a {
+  color: #606062;
+}
+.ui.secondary.menu {
+  margin-top: 50px;
+}
+.self-service.header {
+  position: absolute;
+  top: 0;
+  background-color: #62ac1e;
+  margin-left: -10px;
+  width: 100%;
+}
+.self-service.header ul {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  line-height: 5px;
+  display: inline-block;
+}
+.self-service.header ul.navbar-left li {
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 3px;
+  padding-bottom: 15px;
+}
+.self-service.header ul.navbar-left li a {
+  color: white;
+  padding-right: 13px;
+  padding-bottom: 5px;
+  background-color: rgba(0, 0, 0, 0);
+}
+.self-service.header ul.navbar-left li a:hover {
+  color: #f8f0e5;
+}
+.self-service.header ul.navbar-left li.active,
+.self-service.header ul.navbar-left li.active:hover {
+  color: white;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+.self-service.header ul.navbar-left li.active .fa,
+.self-service.header ul.navbar-left li.active:hover .fa {
+  font-size: 7px;
+  display: block;
+}
+.self-service.header ul.navbar-left li.active:after,
+.self-service.header ul.navbar-left li.active:hover:after {
+  font-family: FontAwesome;
+  font-size: 7px;
+  content: "\f111";
+  display: block;
+}
+.self-service.header ul.navbar-right li {
+  display: inline-block;
+  padding: 15px;
+}
+.self-service.header ul.navbar-right li.label {
+  color: white;
+  padding-top: 20px;
+  font-size: 14px;
+  font-weight: normal;
+}
+.self-service.header ul.navbar-right li .dropdown-toggle {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.self-service.header ul.navbar-right li .dropdown-menu {
+  visibility: hidden;
+}
