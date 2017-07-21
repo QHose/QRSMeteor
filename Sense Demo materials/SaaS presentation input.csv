@@ -520,8 +520,10 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Data only","web - options to integrate content.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demo - Only use Qlik Sense data","Integration demo: create your own vizualization using an external library called  [Chart.js](http://web.saasdemo.qlik.com/chartJS)",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demo - Only use Qlik Sense data","PS: don't forget to press F12 in your browser, to view the raw data coming in!",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","When do you use the data only approach?","Use this if you have your own vizualization libraries (software)",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
-"Web integration","When do you use the data only approach?","You only use the associative model of Qlik",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
+"Web integration","When do you use the data only approach?","Use this if you 
+- like to have your own *look and feel*
+- have your own vizualization libraries (software)",,"","","","","         0","0","Technical - 1 day, Technical - 2 hours",
+"Web integration","When do you use the data only approach?","You use the power of the associative model of Qlik",,"","","","","         0","0","Technical - 1 day, Technical - 2 hours",
 "Web integration","When do you use the data only approach?","SaaS platform and Qlik Sense will be kept in sync via websocket events (if something changes in Qlik Sense your platform can react. For example a selection is made).",,"","","","","         0","0","Technical - 1 day",
 "Web integration","When do you use the data only approach?","No limits, you can programmatically make selections and get data out of Qlik Sense and format it as you like.",,"","","","","         0","0","Technical - 1 day",
 "Web integration","When do you use the data only approach?","[See an example on integration.qlik.com](http://web.saasdemo.qlik.com/tableUsingWidgets)",,"","","","","         0","0","Technical - 1 day",
@@ -538,20 +540,14 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Data only example: Qlik Sense bot (Start around 3m)","[Open this video](https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel)",,"","","","","         0","0","PreSales",
 "Web integration","Table API - retrieve any combination of dimensions and measures","API- table api - get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours",
 "Web integration","Table API - retrieve any combination of dimensions and measures","```
- require.config({
-        baseUrl: ""http://"" + qConfig.host + (qConfig.port ? "":"" + qConfig.port : """") + qConfig.prefix + ""resources""
-    });
+var app = qlik.openApp(appGuid, config);
 
-    require([""js/qlik""], function(qlik) {
-        var app = qlik.openApp(Meteor.settings.public.multipleDivAppGuid, qConfig);
+var table = app.createTable([""Country"", ""City""], [""Sum(SalesAmount)""], { rows: 3000 });
 
-        table = app.createTable([""Country"", ""City""], [""Sum(SalesAmount)""], { rows: 3000 });
-
-        var listener = function() {
-           //Data is ready, now populate your HTML
-        };
-        table.OnData.bind(listener); //bind the listener
-    })
+var listener = function() {
+ //Data is ready, now populate your HTML
+     table.OnData.bind(listener); //bind the listener
+ }
 ```",,"","","","","         0","0","Deep dive, Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Video: Getting started creating widgets (3M)","Create custom application components.",,,,,,,,,
 "Web integration","Video: Getting started creating widgets (3M)","https://youtu.be/KJ9r-tMJ9OM?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","Deep dive",
@@ -676,7 +672,9 @@ Which all will react to every selection you make in the app and start fetching d
 
 That's usually the main culprit when people experience that the app gets slow over time. (Source: Alexander Karlsson)",,,,,,,,,
 "Web integration","Performance tips","Bundle size: `require.js` is always needed, `single.js` is the entry point for the Single Integration API and `qlik.js` is the entry point for the Capabilities API. You would normally not load both the latter ones at the same time though.",,,,,,,,,
-"Web integration","Other topics","This version (3.2) of Qlik Sense is currently using AngularJS version 1.5.[Using AngularJS](http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/Extensions/Content/extensions-angular-introduction.htm)",,,,,,,,,
+"Web integration","Other topics","This version (3.2) of Qlik Sense is currently using AngularJS version 1.5.[Using AngularJS](http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/Extensions/Content/extensions-angular-introduction.htm)",,"","","","","         0","0","PreSales",
+"Web integration","Other topics","## Qlik Sense uses WebSockets",,"","","","","         0","0","PreSales",
+"Web integration","Other topics","web - Qlik Sense uses WebSockets.png",,"","","","","         0","0","PreSales",
 "Web integration","Videos on Qlik.help: Getting started with the dev-hub","These [videos](http://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm) are designed to help you get started with and improve your knowledge and understanding of the APIs and tools delivered with Qlik Sense and Qlik Analytics Platform.",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Videos on Qlik.help: Getting started with the dev-hub","# Video overview",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Videos on Qlik.help: Getting started with the dev-hub","Dev Hub overview",,"","","","","         0","0","Technical - 1 day",
@@ -2042,6 +2040,18 @@ or
 "Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Firewalls",,"","","","","         0","0","Exercises",
 "Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Ports",,"","","","","         0","0","Exercises",
 "Architecture","Example architecture scenarios","> Lets look at some common scenarios with both internal as well as external users",,"","","","","         0","0","PreSales",
+"Architecture","Qlik Sense platform overview","architecture - platform overview.png",,,,,,,,,
+"Architecture","Single Server Environment
+","architecture - single server.png",,,,,,,,,
+"Architecture","Two server environment","architecture - two servers.png",,,,,,,,,
+"Architecture","Growth environment","architecture - multiple servers environment.png",,,,,,,,,
+"Architecture","Enterprise or scalable OEM environment","architecture - multiple servers enterprise OEM environment.png",,,,,,,,,
+"Architecture","Extranet Deployment – EMM Gateway","Extranet Deployment – EMM Gateway.png",,,,,,,,,
+"Architecture","Architecting for Recoverability
+- backup and recovery","architecture - Architecting for Recoverability.png",,,,,,,,,
+"Architecture","How does the persistance layer work?","architecture - how does the persistance layer work.png",,,,,,,,,
+"Architecture","Persistance layer - local ","architecture - Persistence Layer - Local",,,,,,,,,
+"Architecture","Persistence Layer via Virtual Machine","architecture - Persistence Layer via Virtual Machine.png",,,,,,,,,
 "Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Internal users only",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","architecture - windows domain internal user.png",,"","","","","         0","0","PreSales, Technical - 1 day",
@@ -2077,6 +2087,7 @@ or
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Plan your deployment](http://help.qlik.com/en-US/sense/3.2/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Planning-Deployments.htm)",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Backup and restore Qlik Sense](http://help.qlik.com/en-US/sense/3.1/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Backup-Restore.htm)
 - This section describes how to back up and restore Qlik Sense sites and certificates and how to move a node to a new machine.",,"","","","","         0","0","Technical - 1 day",
+"Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Server whitelist](/docs/Qlik_Scalability_Center_Recommended Servers.pdf)",,,,,,,,,
 "Architecture","Video (25M): understanding Qlik Sense performance (scalability)","https://youtu.be/Vwmx0nBNk0Q",,"","","","","         0","0","Support",
 "Architecture","Video: Activating license and allocating users access","https://youtu.be/uWGS48VaOQE",,,,,,,,,
 "Architecture","Video: Activating license and allocating users access","Tip: for OEM use cases I prefer to use `username like *` since the authorization module in your SaaS platform should decide who can enter Qlik Sense and who not...",,,,,,,,,
