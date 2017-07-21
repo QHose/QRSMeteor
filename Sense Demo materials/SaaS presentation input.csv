@@ -2050,7 +2050,7 @@ or
 "Architecture","Architecting for Recoverability
 - backup and recovery","architecture - Architecting for Recoverability.png",,,,,,,,,
 "Architecture","How does the persistance layer work?","architecture - how does the persistance layer work.png",,,,,,,,,
-"Architecture","Persistance layer - local ","architecture - Persistence Layer - Local",,,,,,,,,
+"Architecture","Persistance layer - local ","architecture - Persistence Layer - Local.png",,,,,,,,,
 "Architecture","Persistence Layer via Virtual Machine","architecture - Persistence Layer via Virtual Machine.png",,,,,,,,,
 "Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Internal users only",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales, Technical - 1 day",
