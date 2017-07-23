@@ -182,6 +182,12 @@ Router.route('/architecture_embedded', {
     layoutTemplate: 'SSOLayout'
 });
 
+//generic overview
+Router.route('/generic_links_embedded', {
+    template: 'genericDocumentation',
+    layoutTemplate: 'SSOLayout'
+});
+
 Router.route('/sequenceDiagramOverview');
 Router.route('/sequenceDiagramGeneration');
 Router.route('/legal');
