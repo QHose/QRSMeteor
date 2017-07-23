@@ -283,7 +283,7 @@ $(""#btn_1"").click(function() {
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Introduction to web authentication methods (in general)","See this [blog](https://blog.risingstack.com/web-authentication-methods-explained/) if you want to have an overview of the methods people use on the internet to authenticate users between systems. ",,,,,,,,,
 "API -  generic introduction","Introduction to web authentication methods (in general)","Cookies",,,,,,,,,
-"Web integration","Overview","<iframe class=""SenseEmbedFrame"" src=""/webIntegration_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Overview web integration","<iframe class=""SenseEmbedFrame"" src=""/webIntegration_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
 "Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,"","","","","         0","0","Introduction to embed Qlik Sense",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Video: What do we mean with embedding?","Here we embedded/integrated a YouTube video... ",,"","","","","         0","0","Technical - 1 day",
@@ -795,7 +795,7 @@ LOAD * INLINE [
 "Security - technical design","What a UDC is not","<q>You can NOT authenticate users via a Qlik Sense UDC</q>",,"","","","","         0","0","Deep dive",
 "Security - technical design","Audit the effectiveness using the audit tool","security rules audit.png",,"","","","","         0","0","PreSales",
 "Security - technical design","Typical activities you need in security rules for common tasks","security rules - activities that you need to do common tasks.png",,"","","","","         0","0","Deep dive",
-"Security - Concept of integration.qlik.com","Overview","<iframe class=""SenseEmbedFrame"" src=""/security_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 day",
+"Security - Concept of integration.qlik.com","Overview security","<iframe class=""SenseEmbedFrame"" src=""/security_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 day, Integration summary",
 "Security - Concept of integration.qlik.com","Summary overview","saasdemo security overview.png",,"","","","","         0","0","Technical - 1 hour",
 "Security - Concept of integration.qlik.com","Summary overview","[integration demo documentation and videos](http://integration.qlik.com/introductionSecurity)",,"","","","","         0","0","Technical - 1 hour",
 "Security - Concept of integration.qlik.com","Summary of integration.qlik.com security and license setup","Qlik Sense configuration
@@ -868,13 +868,6 @@ or
 - you can also insert raw html (e.g. to embed an IFrame)
 - you can also use [markDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to write your contents",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How does the slide generator create slides?","slide generator - example data.png",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How to insert data in the Slide Generator?","The source of the slide generator is just a Qlik Sense app. 
-- We created a table with slide titles and their contents (bullets such as texts, links to images/videos, raw HTML or markDown)
-- We can assign ""each bullet/video/image"" to a workshop or audience.
-- We can re-use content in multiple workshops
-- We can arrange workshops in a hierarchy in such a way that we only have to assign ""a bullet/video/image"" to one child workshop, and his parents automatically get access to. (simplifies maintenance). E.g. all slides that are assigned to the 1 hour workshop also become available in the 2 hour and 1 day workshop. 
-- We can use row level security (section access) to limit what a user can see",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How to insert data in the Slide Generator?","slide generator - workshop hierarchy.png",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","Users are logged in, and therefore we can store selections, and create presentations for each user.",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","Select slides while you are having a conversation, create a ""personal"" presentation, add annotations and share the link",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","You could track which users view which slides.",,"","","","","         0","0","What is this slide generator?",
@@ -893,46 +886,53 @@ or
 "Slide generator - use cases","Version management","I sync this csv using a version management tool called GitHub",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Version management","On the server we can [track the changes](https://github.com/QHose/QRSMeteor/commit/cd826a178554824780632d7c96afb6295949317e) and load the data into the app after approval",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Version management","slide generator - github track changes version management.png",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How to contribute to the slide generator? ","# High level flow",,,,,,,,,
-"Slide generator - use cases","How to contribute to the slide generator? ","Each user will get its private space",,,,,,,,,
-"Slide generator - use cases","How to contribute to the slide generator? ","Each user will download the master slide deck",,,,,,,,,
-"Slide generator - use cases","How to contribute to the slide generator? ","It will make the changes
+"Slide generator - how to create content in distributed teams?","How to insert data in the Slide Generator?","The source of the slide generator is just a Qlik Sense app. 
+- We created a table with slide titles and their contents (bullets such as texts, links to images/videos, raw HTML or markDown)
+- We can assign ""each bullet/video/image"" to a workshop or audience.
+- We can re-use content in multiple workshops
+- We can arrange workshops in a hierarchy in such a way that we only have to assign ""a bullet/video/image"" to one child workshop, and his parents automatically get access to. (simplifies maintenance). E.g. all slides that are assigned to the 1 hour workshop also become available in the 2 hour and 1 day workshop. 
+- We can use row level security (section access) to limit what a user can see",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - how to create content in distributed teams?","How to insert data in the Slide Generator?","slide generator - workshop hierarchy.png",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - how to create content in distributed teams?","How to contribute to the slide generator? ","# High level flow",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to contribute to the slide generator? ","Each user will get its private space",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to contribute to the slide generator? ","Each user will download the master slide deck",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to contribute to the slide generator? ","It will make the changes
 - create/update slides
 - add/remove images",,,,,,,,,
-"Slide generator - use cases","How to contribute to the slide generator? ","The user verifies and commits the changes in the central version management system (GitHub)",,,,,,,,,
-"Slide generator - use cases","How to contribute to the slide generator? ","slide generator - github track changes version management.png",,,,,,,,,
-"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","# How to install the software in order to contribute to the slide generator?",,,,,,,,,
-"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","Install [Github desktop](https://services.github.com/on-demand/github-desktop/install-github-desktop), and make sure you login or create a new github account.",,,,,,,,,
-"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","Fork [QRSMeteor](https://github.com/QHose/QRSMeteor). (Create a local environment where you can safely develop your slides.) ",,,,,,,,,
-"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","And while you are still in the browser",,,,,,,,,
-"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","github - fork QRSMeteor project.png",,,,,,,,,
-"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","Stay in your browser and press the ""clone or download""button. Open your new project in github desktop (select yes, always open with desktop)",,,,,,,,,
-"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","github - open in desktop.png",,,,,,,,,
-"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","Now your local github desktop program should open and the files from the server have been copied to your local c drive. Normally in your github folder in your ""my documents"". ",,,,,,,,,
-"Slide generator - use cases","Initial setup of all software needed (detailed work instruction)","github - update your local copy from the server.png",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","# Create your presentation",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Download the [template presentation](https://github.com/QHose/QRSMeteor/raw/master/Sense%20Demo%20materials/SlideGenerator/Qlik%20Slidegenerator%20Template.mmap). (Also  present in your `GitHub\QRSMeteor\Sense Demo materials\slide generator` folder)",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Save the template under a new name. (E.g. `sales presentation.mnap`)",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Double click the file so it will open Mindmanager Mindjet on your pc",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Now you can create your mindmap using MindJet Mindmanager. See the workshop ""what is this slide generator"" if you want to learn more about the file structure etc. Note that in the end we just create a table with 4 columns
+"Slide generator - how to create content in distributed teams?","How to contribute to the slide generator? ","The user verifies and commits the changes in the central version management system (GitHub)",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to contribute to the slide generator? ","slide generator - github track changes version management.png",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Initial setup of all software needed (detailed work instruction)","# How to install the software in order to contribute to the slide generator?",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Initial setup of all software needed (detailed work instruction)","Install [Github desktop](https://services.github.com/on-demand/github-desktop/install-github-desktop), and make sure you login or create a new github account.",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Initial setup of all software needed (detailed work instruction)","Fork [QRSMeteor](https://github.com/QHose/QRSMeteor). (Create a local environment where you can safely develop your slides.) ",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Initial setup of all software needed (detailed work instruction)","And while you are still in the browser",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Initial setup of all software needed (detailed work instruction)","github - fork QRSMeteor project.png",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Initial setup of all software needed (detailed work instruction)","Stay in your browser and press the ""clone or download""button. Open your new project in github desktop (select yes, always open with desktop)",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Initial setup of all software needed (detailed work instruction)","github - open in desktop.png",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Initial setup of all software needed (detailed work instruction)","Now your local github desktop program should open and the files from the server have been copied to your local c drive. Normally in your github folder in your ""my documents"". ",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Initial setup of all software needed (detailed work instruction)","github - update your local copy from the server.png",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","# Create your presentation",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Download the [template presentation](https://github.com/QHose/QRSMeteor/raw/master/Sense%20Demo%20materials/SlideGenerator/Qlik%20Slidegenerator%20Template.mmap). (Also  present in your `GitHub\QRSMeteor\Sense Demo materials\slide generator` folder)",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Save the template under a new name. (E.g. `sales presentation.mnap`)",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Double click the file so it will open Mindmanager Mindjet on your pc",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Now you can create your mindmap using MindJet Mindmanager. See the workshop ""what is this slide generator"" if you want to learn more about the file structure etc. Note that in the end we just create a table with 4 columns
 - Workshop
 - Chapter
 - Slide name
 - Bullet text, image name or video link. ",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Put your images in your local github images folder: `C:\Users\<your user id>\Documents\GitHub\QRSMeteor\public\images`",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","# Commit your first results (the slides you created)",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","When you are done with your presentation export it to this folder `C:\Users\mbj\Documents\GitHub\QRSMeteor\Sense Demo materials` give the csv a name with the convention: ""your trigram""-""presentation name"".csv",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Verify your [changes](https://services.github.com/on-demand/github-desktop/make-changes-github-desktop) in Github desktop",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","github - verify your changes.png",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","github - commit changes.gif",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Make a [commit](https://services.github.com/on-demand/github-desktop/add-commits-github-desktop) in github desktop.",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","# Upload your presentation to the master slide deck",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Open a [Pull Request](https://services.github.com/on-demand/github-desktop/pull-request-github-desktop) With GitHub Desktop",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","github - opening a pull request.gif",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","# Validation by `the slide administrator'",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","Now you have submitted your presentation (via a `pull request` to the central repository on github.com). The slide generator maintainer can now verify your content and make comments. and [merge](https://services.github.com/on-demand/github-desktop/merge-pull-request-github) it in the master presentation",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","github - merge pull request.gif",,,,,,,,,
-"Slide generator - use cases","How to create your first presentation (detailed work instruction)","For more information, follow the instructions on [GitHub](https://services.github.com/on-demand/github-desktop/push-with-github-desktop)",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Put your images in your local github images folder: `C:\Users\<your user id>\Documents\GitHub\QRSMeteor\public\images`",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","# Commit your first results (the slides you created)",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","When you are done with your presentation export it to this folder `C:\Users\mbj\Documents\GitHub\QRSMeteor\Sense Demo materials` give the csv a name with the convention: ""your trigram""-""presentation name"".csv",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Verify your [changes](https://services.github.com/on-demand/github-desktop/make-changes-github-desktop) in Github desktop",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","github - verify your changes.png",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","github - commit changes.gif",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Make a [commit](https://services.github.com/on-demand/github-desktop/add-commits-github-desktop) in github desktop.",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","# Upload your presentation to the master slide deck",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Open a [Pull Request](https://services.github.com/on-demand/github-desktop/pull-request-github-desktop) With GitHub Desktop",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","github - opening a pull request.gif",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","# Validation by `the slide administrator'",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Now you have submitted your presentation (via a `pull request` to the central repository on github.com). The slide generator maintainer can now verify your content and make comments. and [merge](https://services.github.com/on-demand/github-desktop/merge-pull-request-github) it in the master presentation",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","github - merge pull request.gif",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","For more information, follow the instructions on [GitHub](https://services.github.com/on-demand/github-desktop/push-with-github-desktop)",,,,,,,,,
 "Integration.qlik.com key API calls","Summary: which activities did we automate?","Setup Qlik Sense
 - Create stream
 - Copy template app
@@ -1099,7 +1099,7 @@ function appChangeListener() {
 }
 ```",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","[Source code](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L271)",,"","","","","         0","0","What is this slide generator?",
-"Qlik Sense API introduction","Overview","<iframe class=""SenseEmbedFrame"" src=""/API_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 day",
+"Qlik Sense API introduction","Overview","<iframe class=""SenseEmbedFrame"" src=""/API_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Integration summary, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Authorization: And will only see its own data?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
@@ -2027,7 +2027,7 @@ or
   }
 }
 ```",,,,,,,,,
-"Architecture","Overview","<iframe class=""SenseEmbedFrame"" src=""/architecture_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 day, Technical - 2 hours",
+"Architecture","Overview architecture","<iframe class=""SenseEmbedFrame"" src=""/architecture_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
 "Architecture","Integration architecture introduction video","https://youtu.be/sv5nKDvmRPI",,"","","","","         0","0","PreSales, Technical - 1 hour",
 "Architecture","Integration architecture overview","SaaSarchitecture.png",,"","","","","         0","0","Technical - 2 hours",
 "Architecture","Qlik Sense Topology ","[Click here for the Qlik Sense topology](http://integration.qlik.com/images/QlikSense%20TopologiesV0_18.pdf)",,"","","","","         0","0","PreSales",
