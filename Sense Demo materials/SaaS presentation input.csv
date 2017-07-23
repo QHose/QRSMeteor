@@ -2152,7 +2152,7 @@ STORE QV_Table INTO File.QVD;
 "Other","QAP",,,,,,,,,,
 "Other","Video: Change the host name (certificates, pfx, cert)","https://youtu.be/Dvub_4fikv0",,,,,,,,,
 "Other","On demand app generation (ODAG)","https://youtu.be/n_VnOdqQ0CA",,,,,,,,,
-"Other","Documentation and video overview","<iframe class=""SenseEmbedFrame"" src=""/webIntegration_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
+"Other","Documentation and video overview","<iframe class=""SenseEmbedFrame"" src=""/generic_links_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
 "QAP","Delighting developers","web - QAP delighting developers.png",,,,,,,,,
 "QAP","Lifecycle","web - qap lifecycle.png",,,,,,,,,
 "QAP","Key advantages","web - QAP delighting developers.png",,,,,,,,,
