@@ -84,6 +84,9 @@ function init() {
     Meteor.setTimeout(function() {
         $('.ui.embed').embed();
     }, 3000)
+    Meteor.setTimeout(function() {
+        $('.ui.embed').embed();
+    }, 10000)
 }
 
 Template.ppt_slideSorter.events({
@@ -108,6 +111,8 @@ Template.ppt_slideSorter.events({
             hljs.highlightBlock(block);
         });
 
+        // $('.ui.embed').embed(); //creates the issue that you can't click to start an embedded video
+
         //ensure all links open on a new tab
         $slide.find('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
     }
@@ -131,6 +136,7 @@ window.addEventListener('beforeunload', function(e) {
         if(hotcodepush) console.log("SlideSorter: Hot code reload");
     })
     //END init code
+<<<<<<< HEAD
 
 var CSS = {
     /**
@@ -203,3 +209,5 @@ var CSS = {
         return tr;
     }
 }
+=======
+>>>>>>> master

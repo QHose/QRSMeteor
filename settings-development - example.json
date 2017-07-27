@@ -3,6 +3,7 @@
     "public": {
         "host": "PRESALES1",
         "port": 81,
+        "proxyPort": 80,
         "UDC": "OEM_HOST",
         "virtualProxyClientUsage": "meteor",
         "webIntegrationHost": "localhost",
@@ -56,10 +57,13 @@
             "secret": "924a9d853fd80f12"
         }
     },
-    "sikka": {
+  "sikka": {
          "captcha": {
-             "siteKey": "your_new_site_key",
-             "secret":  "your_new_secret_key"
-         }
+             "siteKey": "6LcPvyYUAAAAACsFRnEV35K1MXB_51icAHjrlZpd",
+             "secret":  "6LcPvyYUAAAAABiomdYwST9KIyS3IhEDXLAg_iOh",
+         },
+		 "rateLimits":{
+			"perIp": 60,
+		 }
     }
 }

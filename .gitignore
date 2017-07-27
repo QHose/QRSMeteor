@@ -7,7 +7,17 @@ node_modules/
 data/
 .vscode/typings/meteor.d.ts
 *.sublime-workspace
+<<<<<<< HEAD
 mongo/
 config/supervise/lock
 config/settings.json
 docker-compose.yml
+=======
+public/docs/~$ik Sense SaaS demo tool setup instructions.docx
+*.bak
+*.sublime-workspace
+*.sublime-workspace
+>>>>>>> master
+*.sublime-workspace
+imports/ui/impress/slideSorter.js
+.meteor/packages

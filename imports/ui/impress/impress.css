@@ -292,6 +292,16 @@ pre {
     width: 900px;
 }
 
+.markdownItem h1,
+.markdownItem h2 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.markdownItem h3 {
+    margin-top: 1.5em;
+}
+
 .pusher .ui.message {
     /*position: absolute;*/
     background-color: white;

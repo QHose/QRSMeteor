@@ -67,7 +67,7 @@ Template.landingPage.onRendered(function() {
         .css({
             position: "fixed",
             top: '35%',
-            height: 300
+            height: 350 //fix issue with modal being to high. Firefox needed 350.
         });
     
     Session.set('landingPageAlreadySeen', true);
