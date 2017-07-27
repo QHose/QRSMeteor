@@ -9,7 +9,7 @@ if (Meteor.isClient) {
         "port": Meteor.settings.public.port,
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
-        "QIXSchema": Meteor.settings.private.QIXSchema
+        "QIXSchema": Meteor.settings.public.QIXSchema
     };
 
 }

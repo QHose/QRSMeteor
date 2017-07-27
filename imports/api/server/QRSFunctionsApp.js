@@ -41,9 +41,9 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 
     try {
         var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists    
-        var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
-        var result = reloadAppAndReplaceScriptviaEngine(newAppId, '', generationUserId);
-        var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
+            // var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
+            // var result = reloadAppAndReplaceScriptviaEngine(newAppId, '', generationUserId);
+            // var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
 
         //logging only
         const call = {};
@@ -178,16 +178,16 @@ function checkTemplateAppExists(generationUserId) {
 export function copyApp(guid, name, generationUserId) {
     check(guid, String);
     check(name, String);
-    // console.log('QRS Functions Appp, copy the app id' + guid + 'to app with name: ', name);
+    console.log('QRS Functions copy App, copy the app id: ' + guid + ' to app with name: ', name);
 
     try {
         const call = {};
         call.action = 'Copy app';
-        call.request = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy'
+        call.request = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy';
         call.url = gitHubLinks.copyApp;
         call.response = HTTP.post(call.request, {
             headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey, "name": name }, //probably a redundant name here...
+            params: { 'xrfkey': senseConfig.xrfkey, "name": name },
             data: {}
         })
         REST_Log(call, generationUserId);
@@ -197,6 +197,10 @@ export function copyApp(guid, name, generationUserId) {
         return newGuid;
     } catch (err) {
         console.error(err);
+        const call = {};
+        call.action = 'Copy app FAILED';
+        call.response = err.message;
+        REST_Log(call, generationUserId);
         throw new Meteor.Error('Copy app for selected customers failed', err.message);
     }
 };
