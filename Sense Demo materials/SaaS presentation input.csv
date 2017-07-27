@@ -163,9 +163,7 @@
 - Javascript
 - CSS
 - JSON",,"","","","","         0","0","PreSales",
-"API -  generic introduction","URL - what are the components?","``` 
-http://integration.qlik.com:443/anon/qmc/tasks
-```
+"API -  generic introduction","URL - what are the components?","`http://integration.qlik.com:443/anon/qmc/tasks`
 - protocol (http, https, ws, wss)
 - server/host/DNS
 - port
@@ -192,7 +190,7 @@ http://integration.qlik.com:443/anon/qmc/tasks
 "API -  generic introduction","Example *Get appList* via an API call","Request from client:  do you have a list of apps?",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","Example *Get appList* via an API call","postman request.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Example *Get appList* via an API call","Response from Qlik Sense: here you have your list of apps and their information in JSON format",,"","","","","         0","0","PreSales, Technical - 1 day",
-"API -  generic introduction","Example *Get appList* via an API call","```
+"API -  generic introduction","Example *Get appList* via an API call","```JSON
 {
  ""jsonrpc"": ""2.0"",
  ""id"": 4,
@@ -233,7 +231,7 @@ http://integration.qlik.com:443/anon/qmc/tasks
 "API -  generic introduction","Async programming - What are the sequental steps when a computer orders a pizza?","async - computer orders pizza.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","ASync compared","async - pizza combined.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Promise based async example using the vizualization API  to create a barchart","Config object to tell Qlik API where to connect.",,"","","","","         0","0","PreSales",
-"API -  generic introduction","Promise based async example using the vizualization API  to create a barchart","```
+"API -  generic introduction","Promise based async example using the vizualization API  to create a barchart","```javascript
 var config = {
   host: 'integration.qlik.com',
   isSecure: false,
@@ -242,7 +240,7 @@ var config = {
 };
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Promise based async example using the vizualization API  to create a barchart","Create the chart on the fly",,"","","","","         0","0","PreSales",
-"API -  generic introduction","Promise based async example using the vizualization API  to create a barchart","```
+"API -  generic introduction","Promise based async example using the vizualization API  to create a barchart","```javascript
 require.config( {
  baseUrl: ( config.isSecure ? ""https://"" : ""http://"" ) + config.host + (config.port ? "":"" + config.port: """") + config.prefix + ""resources""
 } );
@@ -261,22 +259,22 @@ app.visualization.create('barchart',[""Case owner"",""=avg(Duration)""],
 "API -  generic introduction","Promise based async example using the vizualization API  to create a barchart","qlik-visuals-result.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","JS Fidlle example: bar chart on the fly","<iframe class=""SenseEmbedFrame"" src=""//jsfiddle.net/qhose/9acfgugp/embedded/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Events","Events: create a table object which is initially empty",,"","","","","         0","0","PreSales",
-"API -  generic introduction","But there are more ways to wait: Events","```
+"API -  generic introduction","But there are more ways to wait: Events","```javascript
 table = app.createTable([""Country"", ""Category""], [""Sum(SalesAmount)""], { rows: 1000 });
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Events","Sense will send an event message if the data is ready for use",,"","","","","         0","0","PreSales",
-"API -  generic introduction","But there are more ways to wait: Events"," ``` 
+"API -  generic introduction","But there are more ways to wait: Events"," ```javascript 
 table.OnData.bind(listener);
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Events","If we receveive the event, we wil execute a callback function: listener",,"","","","","         0","0","PreSales",
-"API -  generic introduction","But there are more ways to wait: Events"," ```
+"API -  generic introduction","But there are more ways to wait: Events"," ```javascript
 var listener = function() {          createGoogleMapChart(googleFormattedData);
 };
 
 table.OnData.bind(listener); //bind the listener
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Callback functions","The code in the function is executed when the button is clicked",,"","","","","         0","0","PreSales",
-"API -  generic introduction","But there are more ways to wait: Callback functions","```
+"API -  generic introduction","But there are more ways to wait: Callback functions","```javascript
 $(""#btn_1"").click(function() {
   alert(""Btn 1 Clicked"");
 });
@@ -315,18 +313,18 @@ $(""#btn_1"").click(function() {
 "Web integration","Exercise 0: create your first IFrame","Go to [w3schools.com](http://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe)",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 0: create your first IFrame","Change the url to qlik.com",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 0: create your first IFrame","##Introduction to CSS",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 0: create your first IFrame","How can we make the IFrame bigger?","```
+"Web integration","Exercise 0: create your first IFrame","How can we make the IFrame bigger?","```CSS
 style='border:none; width:100%; height:300px'
 ```",,,,,,,,
 "Web integration","Exercise 0: create your first IFrame","Or remove the border?",,"","","","","         0","0","Exercises",
 "Web integration","IFrame - App and Single integration API","https://youtu.be/LSxV7ysLlGs?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","PreSales",
 "Web integration","IFrame - App and Single integration API (2)","Web - iframe integration.png",,"","","","","         0","0","PreSales, SaaS & Power of APIs",
 "Web integration","IFrame - App and Single integration API (2)","Example IFrame URL
-```
+```HTML
 http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sheetid}/state/analysis
 ```",,"","","","","         0","0","PreSales, SaaS & Power of APIs",
 "Web integration","IFrame - App and Single integration API (2)","Example IFrame URL with selections
-```
+```HTML
 http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sheetid}/state/analysis/select/{field}/{value1;value2}
 ```",,"","","","","         0","0","PreSales, SaaS & Power of APIs",
 "Web integration","IFrame - App and Single integration API (2)","[See Qlik help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/AppIntegrationAPI/app-integration-API.htm)",,"","","","","         0","0","PreSales, SaaS & Power of APIs",
@@ -366,7 +364,7 @@ http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sh
 "Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Select Sales and customers app",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Select 3 objects that you like and paste the IFrame source code in your fiddle",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","If your charts are too small you can use some CSS in the IFrame tag to make the objects bigger",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","```
+"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","```CSS
 style='border:none; width:100%; height:300px'
 ```",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
@@ -411,7 +409,7 @@ require([""js/qlik""], function(qlik) {
 ```",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Capabilties API - example code: make a selection","[help](https://help.qlik.com/en-US/sense-developer/3.2/Subsystems/APIs/Content/MashupAPI/qlik-field-interface.htm)",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Capabilties API - example code: make a selection","Also see [this video](https://youtu.be/IApeTl6cCaY)",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Capabilties API - example code : clear selection","```
+"Web integration","Capabilties API - example code : clear selection","```javascript
 var config = {
  host: window.location.hostname,
  prefix: prefix,
@@ -429,19 +427,19 @@ require([""js/qlik""], function(qlik) {
 ```",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","Challenge: if the user is not yet authenticated you well get a websocket error (the red box on previous slide)",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","To make sure the user is always authenticated you can put a small [HTML file](\public\docs) on the Qlik Sense server. (C:\Program Files\Qlik\Sense\Client\returnUrl.html)",,"","","","","         0","0","Deep dive",
-"Web integration","Make sure the user is authenticated before you show a mashup","```
+"Web integration","Make sure the user is authenticated before you show a mashup","```HTML
 <!doctype html>
 <html><head><script>window.location=decodeURIComponent((RegExp('returnUrl=(.+?)(&|$)').exec(location.search)||[,null])[1]);</script></head></html>
 ```",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","In your HTML you first check if the user has access to the Qlik javascript files.  I perform a check to see if the user is authenticated by checking if they could access the qlik script (which is protected by the Proxy):
-```
+```javascript
 if ( typeof(qlik) == 'undefined' ){ window.location=config.returnUrl;}
 ```",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","Here’s the point of returnUrl.html if the user is unauthenticated:
 · The user is sent to whatever Authentication module you have defined in the QMC – this can be google/salesforce/local authentication module/default windows authentication.
 The user authenticates and is then sent back to whatever mashup page the user came from, this can be a portal, a regular webpage or whatever.",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","Example code from the SaaSDemo platform. This is the check I do when the [mashup page](http://web.saasdemo.qlik.com/multipleDivs) is ready.
-```
+```javascript
 checkAuthenticatedInQlik = function checkAuthenticatedInQlik(sourceURL){
     require([""js/qlik""], function(qlik) {
             if (typeof qlik == 'undefined') {
@@ -491,20 +489,20 @@ If so, allow access otherwise deny access with a 403 response",,"","","","","   
 "Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","Paste the relevant parts from the dev-hub into the fiddle
 - copy javascript to the javascript part
 - refer to the new placeholder IDs in your javascript",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","It could be.... that you have to add ```fiddle.jshell.net``` to your virtual proxy whitelist. *Ensure you understand what we mean here...*",,"","","","","         0","0","Exercises",
+"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","It could be.... that you have to add `fiddle.jshell.net` to your virtual proxy whitelist. *Ensure you understand what we mean here...*",,"","","","","         0","0","Exercises",
 "Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","[Solution code](http://jsfiddle.net/dlumkeman/9a69ye4b/)",,"","","","","         0","0","Exercises",
 "Web integration","On the fly","<q>Create charts on the fly using the Vizualization API</q>",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","On the fly","web - options to integrate content.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","Vizualisation API introduction video","https://youtu.be/_pddhxg5__o",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Create charts on the fly","If you don't want to create charts up front, you can create them on the fly using javascript or visual web components.",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","Create charts on the fly","[Vizualizations API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/VisualizationAPI/VisualizationAPI.htm), use javascript to create charts",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"Web integration","Create charts on the fly","```
+"Web integration","Create charts on the fly","```javascript
 app.visualization.create(
      'barchart', [""Country"", ""=Sum(SalesAmount)""]
 ).then(function(chart) {chart.show(""yourDIV"")}); 
 ```",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","Create charts on the fly","[Visuals web components](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/QlikVisual/qlik-visual.htm). Use Sense HTML Tags in a declarative manner","",,,,,,,,
-"Web integration","Create charts on the fly","```
+"Web integration","Create charts on the fly","```HTML
 <qlik-visual appid=""Helpdesk Management.qvf""     
 type=""barchart""     cols='[""Case Owner Group"",""=Avg([Case Duration Time])""]'     
 options='{""title"":""On the fly barchart""}'></qlik-visual>
@@ -540,7 +538,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Examples of using Qlik Sense as a data analytics engine","postman response.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Data only example: Qlik Sense bot (Start around 3m)","[Open this video](https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel)",,"","","","","         0","0","PreSales",
 "Web integration","Table API - retrieve any combination of dimensions and measures","API- table api - get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours",
-"Web integration","Table API - retrieve any combination of dimensions and measures","```
+"Web integration","Table API - retrieve any combination of dimensions and measures","```javascript
 var app = qlik.openApp(appGuid, config);
 
 var table = app.createTable([""Country"", ""City""], [""Sum(SalesAmount)""], { rows: 3000 });
@@ -564,7 +562,7 @@ var listener = function() {
 "Web integration","Create apps on the fly","# Create a new app from scratch, that only lives in memory",,,,,,,,,
 "Web integration","Create apps on the fly","You can create apps on the fly, that is session apps, using the `qlik.sessionApp` and `qlik.sessionAppFromApp` methods. See [Qlik help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/Mashups/Content/Howtos/create-session-app.htm)",,,,,,,,,
 "Web integration","Create apps on the fly","#Create and configure the session app
-```
+```javascript
 var config = {
   host: ""myhost.com"",
   prefix: ""/"",
@@ -575,7 +573,7 @@ var config = {
 var sessionApp = qlik.sessionApp(config);  
 ```",,,,,,,,,
 "Web integration","Create apps on the fly","#Define and set the load script
-```
+```javascript
 var script = ""Load Chr(RecNo()+Ord('A')-1) as Alpha, RecNo() as Num autogenerate 26;""
 
 sessionApp.setScript(script).then(function(){ 
@@ -583,7 +581,7 @@ sessionApp.setScript(script).then(function(){
 });
 ```",,,,,,,,,
 "Web integration","Create apps on the fly","# Reload data and create a basic bar chart
-```
+```javascript
 sessionApp.setScript(script).then(function(){
  var stop = setInterval(function(){
   sessionApp.global.getProgress(sessionApp.model.handle).then(function(progress){
@@ -604,7 +602,7 @@ sessionApp.setScript(script).then(function(){
 });
 ```",,,,,,,,,
 "Web integration","Create session app based on template app","#Creating a basic session app from an existing app",,,,,,,,,
-"Web integration","Create session app based on template app","```
+"Web integration","Create session app based on template app","```javascript
 
 
 var config = {
@@ -632,14 +630,16 @@ sessionAppFromApp.doReload().then(function(result){
 });
 
 ```",,,,,,,,,
-"Web integration","Embed your custom SVG maps","extensions - SVG map.gif",,,,,,,,,
-"Web integration","Embed your custom SVG maps","An SVG image is basically an XML document which contains data telling the internet browser how to draw an image. The different shapes that the SVG draws can be separated out in the XML and thus manipulated and colored however necessary. This extension takes advantage of this technology by allowing the QVW to target and color the different shapes by identifying the ID of the SVG element.",,,,,,,,,
-"Web integration","Embed your custom SVG maps","extensions - SVG map amarica.gif",,,,,,,,,
-"Web integration","Embed your custom SVG maps","See this [manual](https://github.com/brianwmunz/svgReader-QlikSense)",,,,,,,,,
-"Web integration","Embed your custom SVG maps","You can make a floorplan and link it to your data points. e.g your stores and sales amounts. ",,,,,,,,,
-"Web integration","Embed your custom SVG maps","extensions - example floor plan image.png",,,,,,,,,
-"Web integration","Embed your custom SVG maps","Or load any image you like",,,,,,,,,
-"Web integration","Embed your custom SVG maps","extensions - example snail image.png",,,,,,,,,
+"Web integration","Embed your custom SVG maps","extensions - SVG map.gif",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Embed your custom SVG maps","An SVG image is basically an XML document which contains data telling the internet browser how to draw an image. The different shapes that the SVG draws can be separated out in the XML and thus manipulated and colored however necessary. This extension takes advantage of this technology by allowing the QVW to target and color the different shapes by identifying the ID of the SVG element.",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Embed your custom SVG maps","extensions - SVG map amarica.gif",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Embed your custom SVG maps","See this [manual](https://github.com/brianwmunz/svgReader-QlikSense)",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Embed your custom SVG maps","You can make a floorplan and link it to your data points. e.g your stores and sales amounts. ",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Embed your custom SVG maps","extensions - example floor plan image.png",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Embed your custom SVG maps","Or load any image you like",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Embed your custom SVG maps","extensions - example snail image.png",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Embed your custom SVG maps","You can find example apps [here](https://github.com/brianwmunz/svgReader-QlikSense/tree/master/examples), make sure you loaded the extension first.",,,,,,,,,
+"Web integration","Embed your custom SVG maps","Make sure you upload your SVG via the content library, or put it in your extension zip file before you import it [more info](https://community.qlik.com/thread/232025)",,,,,,,,,
 "Web integration","Embed your custom SVG maps","PS: if you need more geo based analytics we recommend to use of our ""standard product"" (no extension) [GeoAnalytics](https://community.qlik.com/docs/DOC-17993)",,,,,,,,,
 "Web integration","Embed your custom SVG maps","https://youtu.be/VoCLr2PQz5A",,,,,,,,,
 "Web integration","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise.png",,"","","","","         0","0","Technical - 1 day",
@@ -652,7 +652,7 @@ sessionAppFromApp.doReload().then(function(result){
 "Web integration","Web integration examples","web - marketing 360 screenshot.png",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Web integration examples","Create a [custom hub](http://www.axisgroup.com/simple-hub/) using the getApplist API",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Performance tips","9/10 times any performance issues within the Capabilities API is due to the developer not cleaning up after a `getObject` call",,,,,,,,,
-"Web integration","Performance tips","```
+"Web integration","Performance tips","```javascript
 let vis = qlik.app.visualization.get('id')
 
 vis.then(model => {
@@ -786,6 +786,9 @@ LOAD * INLINE [
 "Security - technical design","Some other topics","<q>Some other topics you need to know of</q>",,"","","","","         0","0","PreSales",
 "Security - technical design","User Directory Connector (UDC)","<q>User Directory Connector</q>",,"","","","","         0","0","Deep dive",
 "Security - technical design","What is a UDC","UDC - what is a UDC.png",,"","","","","         0","0","Deep dive",
+"Security - technical design","What is a UDC","The user directory connector ([UDC](http://help.qlik.com/en-US/sense/June2017/Subsystems/ManagementConsole/Content/user-directory-connectors-overview.htm)) connects to a configured directory service to retrieve users. The UDCs supplied with the Qlik Sense installation are Generic LDAP, Microsoft Active Directory, ApacheDS, ODBC, Access (via ODBC), Excel (via ODBC), and SQL (via ODBC).",,"","","","","         0","0","Deep dive",
+"Security - technical design","What is a UDC","The UDC [API](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/UserDirectoryConnectorAPI/Content/UDCAPI/UDCAPI-Introduction.htm) is used to import users and groups in Qlik Sense.",,"","","","","         0","0","Deep dive",
+"Security - technical design","What is a UDC","There can be multiple instances of each UDC in a Qlik Sense deployment.",,"","","","","         0","0","Deep dive",
 "Security - technical design","Recap UDC: users and groups","QPS - Qlik does not store users and passwords.png",,"","","","","         0","0","Deep dive",
 "Security - technical design","Qlik Sense user directory connector (UDC)","Get user attributes from an identity store (e.g. active directory) like",,"","","","","         0","0","Deep dive",
 "Security - technical design","Qlik Sense user directory connector (UDC)","Group membership",,"","","","","         0","0","Deep dive",
@@ -1378,7 +1381,21 @@ var config = {
 }
 ```",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","Example: create a single sign on with a SaaS platform","QPS - introduction to security flow.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"QPS - Proxy API","Example: logout a user via the QPS API","API - logout user.png",,"","","","","         0","0","Deep dive",
+"QPS - Proxy API","Example: logout a user via the QPS API","API - logout user.png",,"","","","","         0","0","Deep dive, Technical - 1 day",
+"QPS - Proxy API","Example: logout a user via the QPS API","# javascript code",,"","","","","         0","0","Technical - 1 day",
+"QPS - Proxy API","Example: logout a user via the QPS API","```javascript
+ var RESTCALL = 'http://integration.qlik.com:443/qps/user';
+     try {
+         $.ajax({
+             method: 'DELETE',
+             url: RESTCALL
+         }).done(function(res) {
+             console.log('the user is now logged out!');
+         })
+     } catch (err) {
+         console.error(err);
+     }
+```",,"","","","","         0","0","Technical - 1 day",
 "QPS - Proxy API","Connecting to the QPS API","##Make sure you check the following",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Connecting to the QPS API","- The request must be authenticated",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Connecting to the QPS API","- An Xrfkey must be passed to prevent cross-site scripting attacks",,"","","","","         0","0","Deep dive",
