@@ -1,66 +1,52 @@
-ServiceConfiguration.configurations.upsert({
-    service: "facebook"
-}, {
-    $set: {
-        appId: Meteor.settings.private.facebook.clientId,
-        loginStyle: "popup",
-        secret: Meteor.settings.private.facebook.secret
-    }
-});
+// ServiceConfiguration.configurations.upsert({
+//     service: "facebook"
+// }, {
+//     $set: {
+//         appId: Meteor.settings.private.facebook.clientId,
+//         loginStyle: "popup",
+//         secret: Meteor.settings.private.facebook.secret
+//     }
+// });
 
-ServiceConfiguration.configurations.upsert({
-    service: "github"
-}, {
-    $set: {
-        clientId: Meteor.settings.private.github.clientId,
-        loginStyle: "popup",
-        secret: Meteor.settings.private.github.secret
-    }
-});
+// ServiceConfiguration.configurations.upsert({
+//     service: "github"
+// }, {
+//     $set: {
+//         clientId: Meteor.settings.private.github.clientId,
+//         loginStyle: "popup",
+//         secret: Meteor.settings.private.github.secret
+//     }
+// });
 
-// "AccountsUiConfig": {
-//       "passwordSignupFields": "USERNAME_AND_OPTIONAL_EMAIL",
-//       "requestPermissions": {
-//         "facebook": [
-//           "email",
-//           "user_friends",
-//           "friends_events",
-//           "friends_location",
-//           "friends_about_me",
-//           "friends_status"
-//         ]
-//       }
+// ServiceConfiguration.configurations.upsert({
+//     service: "linkedin"
+// },{
+//     loginStyle: "popup",
+//     service: "linkedin",
+//     clientId: Meteor.settings.private.linkedin.clientId,
+//     secret: Meteor.settings.private.linkedin.secret,
+// });
 
 
-ServiceConfiguration.configurations.upsert({
-    service: "linkedin"
-},{
-    loginStyle: "popup",
-    service: "linkedin",
-    clientId: Meteor.settings.private.linkedin.clientId,
-    secret: Meteor.settings.private.linkedin.secret,
-});
+// ServiceConfiguration.configurations.upsert({
+//     service: "twitter"  
+// },{
+//     service: "twitter",
+//     consumerKey: Meteor.settings.private.twitter.clientId,
+//     loginStyle: "popup",
+//     secret: Meteor.settings.private.twitter.secret
+// });
 
 
-ServiceConfiguration.configurations.upsert({
-    service: "twitter"  
-},{
-    service: "twitter",
-    consumerKey: Meteor.settings.private.twitter.clientId,
-    loginStyle: "popup",
-    secret: Meteor.settings.private.twitter.secret
-});
-
-
-ServiceConfiguration.configurations.upsert({
-    service: "google"
-}, {
-    $set: {
-        clientId: Meteor.settings.private.google.clientId,
-        loginStyle: "popup",
-        secret: Meteor.settings.private.google.secret
-    }
-});
+// ServiceConfiguration.configurations.upsert({
+//     service: "google"
+// }, {
+//     $set: {
+//         clientId: Meteor.settings.private.google.clientId,
+//         loginStyle: "popup",
+//         secret: Meteor.settings.private.google.secret
+//     }
+// });
 
 
 const numberOfUsers = Meteor.users.find().count();

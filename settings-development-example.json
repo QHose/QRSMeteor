@@ -31,27 +31,7 @@
         "isSecure": true,
         "engineHeaders": "UserDirectory=QLIKDEMOSAAS;UserId=administrator",
         "enginePort": 4747,
-        "proxyPort": 4243,
-        "google": {
-            "clientId": "",
-            "secret": ""
-        },
-        "facebook": {
-            "clientId": "",
-            "secret": ""
-        },
-        "twitter": {
-            "clientId": "",
-            "secret": ""
-        },
-        "linkedin": {
-            "clientId": "",
-            "secret": ""
-        },
-        "github": {
-            "clientId": "",
-            "secret": ""
-        }
+        "proxyPort": 4243
     },
     "sikka": {
         "captcha": {
