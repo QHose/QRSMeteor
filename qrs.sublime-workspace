@@ -520,18 +520,30 @@
 	"buffers":
 	[
 		{
-			"file": "imports/ui/router.js",
+			"file": "imports/ui/impress/slideSorter.html",
 			"settings":
 			{
-				"buffer_size": 9272,
+				"buffer_size": 2357,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "imports/ui/nav.html",
+			"file": "imports/ui/impress/slideSorter.js",
 			"settings":
 			{
-				"buffer_size": 2249,
+				"buffer_size": 3116,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "import { senseConfig, authHeaders } from '/imports/api/config.js';\nimport { REST_Log } from '/imports/api/APILogs';\nvar showdown = require('showdown');\nvar Cookies = require('js-cookie');\nconst enigma = require('enigma.js');\nconst qixschema = senseConfig.QIXSchema;\nvar appId = Meteor.settings.public.IntegrationPresentationApp;\nvar IntegrationPresentationSelectionSheet = Meteor.settings.public.IntegrationPresentationSelectionSheet; //'DYTpxv'; selection sheet of the slide generator\nvar slideObject = Meteor.settings.public.IntegrationPresentationSlideObject;\nvar intervalId = {};\n\nconst config = {\n    schema: qixschema,\n    appId: appId,\n    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs\n        host: senseConfig.host,\n        prefix: Meteor.settings.public.IntegrationPresentationProxy,\n        port: senseConfig.port,\n        unsecure: true\n    }\n};\n\nTemplate.landingPage.onCreated(function() {\n    //set a var so the sso ticket request page knows he has to login the real user and not some dummy user of step 4\n    //after the user is redirected to the sso page, we put this var to false. in that way we can still request dummy users for step 4 of the demo\n    // Session.setAuth('loginUserForPresentation', true);\n    Session.setAuth('groupForPresentation', null);\n    Session.setAuth('userLoggedInSense', null);\n    Cookies.set('showSlideSorter', 'false');\n    Cookies.set('authenticatedSlideGenerator', 'false');\n    console.log('first logout the current presentation user in Qlik Sense. After the logout, we try to open the Iframe URL, and request a new ticket with a new group: generic or technical, using section access we restrict the slides...');\n    Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation users\n    // logoutCurrentSenseUserClientSide();\n    intervalId = Meteor.setInterval(userLoggedInSense, 2000);\n    console.log('Qlik Sense presentation session cookie:', Cookies.get('X-Qlik-Session-presentationsso'));\n    console.log('All cookies available for Javascript:');\n    console.log(listCookies());\n})\n\nfunction listCookies() {\n    var theCookies = document.cookie.split(';');\n    var aString = '';\n    for(var i = 1; i <= theCookies.length; i++) {\n        aString += i + ' ' + theCookies[i - 1] + \"\\n\";\n    }\n    return aString;\n}\nTemplate.presentationDimmer.onRendered(function() {\n    Template.instance().$('.dimmer')\n        .dimmer('show')\n})\nTemplate.landingPage.onRendered(function() {\n    //show a popup so the user can select whether he is technical or not...\n    this.$('#userSelectPresentationModal')\n        .modal({\n            // observeChanges: true,\n            onDeny: function() {\n                console.log('group has been set to TECHNICAL, we use this group to request a ticket in Qlik Sense. Using Section access we limit what a user can see. Now the iframe can be shown which tries to open the presentation virtual proxy');\n                Session.setAuth('groupForPresentation', 'TECHNICAL');\n            },\n            onApprove: function() {\n                Session.setAuth('groupForPresentation', 'GENERIC');\n                console.log('group has been set to GENERIC. This group is used in the ticket to limit section access (Rows)');\n            }\n        })\n        .modal('show')\n        .css({\n            position: \"fixed\",\n            top: '35%',\n            height: 350 //fix issue with modal being to high. Firefox needed 350.\n        });\n    \n    Session.set('landingPageAlreadySeen', true);\n})\nTemplate.landingPage.onDestroyed(function() {\n    Meteor.clearInterval(intervalId);\n})\n\nTemplate.landingPage.helpers({\n    authenticatedSlideGenerator: function() {\n        return Session.get('userLoggedInSense');\n    },\n    userSelectedGroup: function() {\n        return Session.get('groupForPresentation');\n    }\n})\n\nTemplate.landingPage.events({\n    'click #slideSorter': function(event) {\n        Cookies.set('showSlideSorter', 'true');\n        window.open(\"/slideSorter\"); //GO TO THE SLIDE Sorter in a new tab\n        // Router.go('slideSorter'); \n    }\n})\nTemplate.slideGeneratorSelectionScreen.onRendered(function() {\n    this.$('.screen')\n        .transition({\n            animation: 'fade in',\n            duration: '5s',\n        });\n})\n\nfunction userLoggedInSense() {\n    // console.log('checking Qlik Sense access... is the user logged in?');\n    enigma.getService('qix', config)\n        .then(qix => {\n            console.log('user is authenticated in Qlik Sense. QIX object:', qix);\n            Session.set('userLoggedInSense', true);\n            Meteor.clearInterval(intervalId);\n        }).catch((error) => {\n            console.info('info: user not yet able to connect to the app via the enigma.js: ', error);\n        });\n}\n\nexport function logoutCurrentSenseUserClientSide() {\n    // delete_cookie('X-Qlik-Session-presentation','', Meteor.settings.public.host);\n    //http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Personal-Delete.htm\n    try {\n        const call = {};\n        const RESTCALL = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.IntegrationPresentationProxy + '/qps/user';\n        $.ajax({\n            method: 'DELETE',\n            url: RESTCALL\n        }).done(function(res) {\n            //logging only\n            call.action = 'Logout current Qlik Sense user'; //\n            call.request = RESTCALL;\n            call.url = 'http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Personal-Delete.htm';\n            call.response = res;\n            REST_Log(call, Meteor.userId());\n        });\n    } catch(err) {\n        console.error(err);\n        sAlert.Error('Failed to logout the user via the personal API', err.message);\n    }\n}\n\nTemplate.selectSlide.onRendered(function() {\n    this.$('.ui.accordion')\n        .accordion();\n})\nTemplate.selectSlide.helpers({\n    slideObjectURL: function() {\n        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.IntegrationPresentationProxy + '/single/?appid=' + appId + '&obj=' + slideObject;\n    }\n})\n",
+			"file": "imports/ui/impress/landingPage.js",
+			"file_size": 6454,
+			"file_write_time": 131456180848420062,
+			"settings":
+			{
+				"buffer_size": 6308,
 				"line_ending": "Windows"
 			}
 		}
@@ -607,32 +619,32 @@
 	"expanded_folders":
 	[
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/SSBI",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server"
 	],
 	"file_history":
 	[
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.css",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development - example.json",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/landingPage.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/restEndpoints.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/landingPage.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.css",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/routes.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/slideSorter.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/.meteor/packages",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/server/restEndpoints.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/main.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/router.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/server/proxy.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-production.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development - example.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impressJSModifiedSource.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/slideSorter.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/ppt_integration.js",
@@ -644,9 +656,7 @@
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/layouts/presentation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationMain.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/layouts/presentation.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-development.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/client/main.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/UIHelpers.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/SSO/client/SSO.html",
@@ -654,7 +664,6 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/useCases/useCaseSelection.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QPSFunctions.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/documentation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/videoOverview.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/introductionSecurity.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/pages/APILogs.html",
@@ -757,6 +766,7 @@
 		"height": 102.0,
 		"where_history":
 		[
+			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\client",
 			"C:\\Users\\MBJ\\Documents\\GitHub\\QRSMeteor\\imports\\ui\\impress",
@@ -880,6 +890,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"test",
+			"generic",
+			"layoutDocumentation",
+			"web",
 			"regionLayout",
 			"embed",
 			"settime",
@@ -1003,11 +1017,7 @@
 			"delete",
 			"IFrameURLChapterSelection",
 			"presentation group",
-			"could not get a redirectUrl from Qlik Sense ",
-			"landingPageAlreadySeen",
-			"delete",
-			"step 3",
-			"3"
+			"could not get a redirectUrl from Qlik Sense "
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1153,24 +1163,56 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "imports/ui/router.js",
+					"file": "imports/ui/impress/slideSorter.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9272,
+						"buffer_size": 2357,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9041,
-								9053
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 727.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "imports/ui/impress/slideSorter.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3116,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2360,
+								2360
 							]
 						],
 						"settings":
@@ -1180,39 +1222,40 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 7816.0,
+						"translation.x": 0.0,
+						"translation.y": 1200.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "imports/ui/nav.html",
-					"semi_transient": true,
+					"buffer": 2,
+					"file": "imports/ui/impress/landingPage.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2249,
+						"buffer_size": 6308,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2248,
-								1762
+								2362,
+								2362
 							]
 						],
 						"settings":
 						{
+							"auto_complete": false,
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 644.0,
+						"translation.x": -0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1310,7 +1353,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 562.0,
+	"side_bar_width": 595.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
