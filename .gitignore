@@ -1,8 +1,8 @@
-#Mr Developer
 settings-development.json
 settings-production.json
 *.cert
 *.pem
+
 node_modules/
 
 .vscode/typings/meteor.d.ts

@@ -1,36 +1,70 @@
 {
-  "name": "qrsmeteor",
-  "private": true,
-  "scripts": {
-    "start": "meteor run"
-  },
-  "dependencies": {
-    "babel-runtime": "^6.18.0",
-    "bcrypt": "^1.0.2",
-    "crypto": "0.0.3",
-    "enigma.js": "^1.0.1",
-    "eve": "^0.5.0",
-    "faker": "^4.1.0",
-    "fs": "0.0.1-security",
-    "highlight.js": "^9.9.0",
-    "js-cookie": "^2.1.4",
-    "meteor-node-stubs": "^0.2.3",
-    "redbird": "^0.6.15",
-    "showdown": "^1.5.5",
-    "simpl-schema": "^0.2.3",
-    "underscore": "^1.8.3",
-    "url": "^0.11.0",
-    "url-join": "^1.1.0"
-  },
-  "devDependencies": {
-    "babel-eslint": "^7.2.1",
-    "eslint": "^2.13.1",
-    "eslint-config-airbnb": "^9.0.1",
-    "eslint-import-resolver-meteor": "^0.2.4",
-    "eslint-plugin-import": "^1.16.0",
-    "eslint-plugin-jsx-a11y": "^1.5.5",
-    "eslint-plugin-meteor": "^3.6.0",
-    "eslint-plugin-react": "^5.2.2",
-    "mermaid": "^6.0.0"
-  }
+    "name": "qrsmeteor",
+    "private": true,
+    "dependencies": {
+        "babel-runtime": "^6.18.0",
+        "bcrypt": "^1.0.2",
+        "crypto": "0.0.3",
+        "enigma.js": "^1.0.1",
+        "eve": "^0.5.0",
+        "faker": "^4.1.0",
+        "fs": "0.0.1-security",
+        "highlight.js": "^9.9.0",
+        "js-cookie": "^2.1.4",
+        "meteor-node-stubs": "^0.2.3",
+        "redbird": "^0.6.15",
+        "showdown": "^1.5.5",
+        "simpl-schema": "^0.2.3",
+        "underscore": "^1.8.3",
+        "url": "^0.11.0",
+        "url-join": "^1.1.0"
+    },
+    "scripts": {
+        "pretest": "npm run lint --silent",
+        "test": "meteor test --once --driver-package dispatch:mocha-phantomjs",
+        "test-watch": "meteor test --driver-package practicalmeteor:mocha",
+        "test-app-watch": "meteor test --full-app --driver-package practicalmeteor:mocha",
+        "lint": "eslint .",
+        "chimp-watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests"
+    },
+    "devDependencies": {
+        "eslint": "^2.3.0",
+        "eslint-config-airbnb": "^6.1.0",
+        "eslint-plugin-meteor": "^3.0.1",
+        "eslint-plugin-react": "^4.0.0"
+    },
+    "eslintConfig": {
+        "parserOptions": {
+            "ecmaVersion": 7,
+            "sourceType": "module"
+        },
+        "plugins": [
+            "meteor"
+        ],
+        "extends": [
+            "airbnb/base",
+            "plugin:meteor/recommended"
+        ],
+        "rules": {
+            "meteor/eventmap-params": [
+                2,
+                {
+                    "eventParamName": "event",
+                    "templateInstanceParamName": "instance"
+                }
+            ],
+            "meteor/template-names": [
+                0
+            ]
+        }
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {
+                "browsers": [
+                    "last 2 versions"
+                ]
+            }
+        }
+    }
 }

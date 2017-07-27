@@ -12,11 +12,11 @@ import { Customers } from '/imports/api/customers';
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
 import { APILogs, REST_Log } from '/imports/api/APILogs';
 import lodash from 'lodash';
+const enigma = require('enigma.js');
 _ = lodash;
 
 //install NPM modules
 var fs = require('fs');
-var qsocks = require('qsocks'); //pls now use enigmaJS instead
 
 export function generateStreamAndApp(customers, generationUserId) {
     // console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
@@ -67,34 +67,36 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
+//source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
 async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generationUserId) {
-    // console.log('server: QSSOCKS reloadAppviaEngine');
 
-    //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
     var scriptMarker = '§dummyDatabaseString§';
     var _global = {};
 
     engineConfig.appname = appId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
-    // console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname);
+
     var call = {};
     call.action = 'Connect to Qlik Sense Engine API';
     call.request = 'Connect to Engine (using EnigmaJS) with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
     call.url = gitHubLinks.replaceAndReloadApp;
     REST_Log(call, generationUserId);
 
-    //use ES7 await function so this code will run in synchronous mode
-    return await qsocks.Connect(engineConfig)
-        .then(function(global) {
-            // console.log('connected to Qsocks');
-            _global = global;
-            return global.openDoc(appId, '', '', '', true) //global.openDoc(appId), this code opens the app without data, that is faster!
-        })
-        .then(function(doc) {
-            // console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for appId: ', appId);
-            return doc.getScript()
-                .then(function(script) {
-                    // console.log('get Script success, ', script);
+    const config = {
+        schema: qixschema,
+        appId: appId,
+        session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+            host: senseConfig.host,
+            prefix: Meteor.settings.public.IntegrationPresentationProxy,
+            port: senseConfig.port,
+            unsecure: true
+        }
+    };
 
+    //use ES7 await function so this code will run in synchronous mode
+    enigma.getService('qix', config)
+        .then(qix => {
+            qix.app.getScript()
+                .then(function(script) {
                     var call = {};
                     call.action = 'Get data load script';
                     call.url = gitHubLinks.getScript;
