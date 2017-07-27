@@ -13,6 +13,7 @@ import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/conf
 import { APILogs, REST_Log } from '/imports/api/APILogs';
 import lodash from 'lodash';
 const enigma = require('enigma.js');
+const QIXSchema = require(senseConfig.QIXSchema);
 _ = lodash;
 
 //install NPM modules
@@ -79,7 +80,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generati
     REST_Log(call, generationUserId);
     console.log('schema is ', Meteor.settings.public.QIXSchema)
     const config = {
-        schema: Meteor.settings.public.QIXSchema,
+        schema: QIXSchema,
         appId: appId,
         session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
             host: senseConfig.host,
@@ -91,31 +92,57 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generati
     try {
         //use ES7 await function so this code will run in synchronous mode
         var qix = await enigma.getService('qix', config);
-        console.log(qix);
+
+        //get the script
+        var script = await qix.app.getScript();
+        var call = {};
+        call.action = 'Get data load script';
+        call.url = gitHubLinks.getScript;
+        call.request = 'We extracted the following script from the app: ' + script;
+        REST_Log(call, generationUserId);
+
+        //set the new script
+        var ScriptSetResult = qix.app.setScript(replaceScript(script)) //we now just include the old script in this app
+        call.action = 'Insert customer specific data load script for its database';
+        call.url = gitHubLinks.setScript;
+        call.request = 'The script of the app has been replaced with a customer specific one. Normally you would replace the database connection for each customer. Or you can insert a customer specific script to enable customization per customer. ';
+        REST_Log(call, generationUserId);
+
+        //reload the app
+        var resultReload = qix.app.doReload()
+        call.action = 'Reload the app';
+        call.url = gitHubLinks.reloadApp;
+        call.request = 'Has the app been reloaded with customer specific data?';
+        call.response = result;
+        REST_Log(call, generationUserId);
+
+        //save the app
+        var resultSave = qix.app.doSave();
+        call.action = 'Save app'
+        call.url = gitHubLinks.saveApp;
+        call.request = 'App with GUID ' + appId + ' has been saved to disk';
+        REST_Log(call, generationUserId);
+
+        //                         _global.connection.close();
+
+
+
+
+        function replaceScript(script) {
+            //                 // if you want to replace the database connection per customer use the script below.
+            //                 //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
+            //                 //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
+            return script;
+        }
+
     } catch (error) {
         console.error('error in reloadAppAndReplaceScriptviaEngine via Enigma.JS, did you used the correct schema definition in the settings.json file?', error);
     }
 
-    // enigma.getService('qix', config)
-    //     .then(qix => {
-    //         console.log('engima succeeded');
-    //     }).catch((error) => {
-    //         console.error('ERROR getting level 1 and 2 from the app via the enigma.js: ', error);
-    //         throw new Meteor.Error(error);
-    //     });
 
-    // var     
     // .then(qix => {
     //         qix.app.getScript()
     //             .then(function(script) {
-    //                 var call = {};
-    //                 call.action = 'Get data load script';
-    //                 call.url = gitHubLinks.getScript;
-    //                 call.request = 'We extracted the following script from the app: ' + script;
-    //                 REST_Log(call, generationUserId);
-    //                 // if you want to replace the database connection per customer use the script below.
-    //                 //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
-    //                 //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
     //                 return doc.setScript(script) //we now just include the old script in this app
     //                     .then(function(result) {
     //                         var call = {};

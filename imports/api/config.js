@@ -16,8 +16,7 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
     console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.private);
-    import crypto from 'crypto'
-
+    import crypto from 'crypto';
     import fs from 'fs';
 
     var _senseConfig = {
@@ -32,7 +31,7 @@ if (Meteor.isServer) {
         "headerKey": Meteor.settings.private.headerKey,
         "headerValue": Meteor.settings.private.headerValue,
         "isSecure": Meteor.settings.private.isSecure,
-        "QIXSchema": Meteor.settings.private.QIXSchema
+        "QIXSchema": Meteor.settings.public.QIXSchema
     };
 
     if (!_senseConfig.host) {
