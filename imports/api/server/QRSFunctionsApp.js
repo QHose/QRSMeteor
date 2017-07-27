@@ -41,9 +41,9 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 
     try {
         var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists    
-            // var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
-            // var result = reloadAppAndReplaceScriptviaEngine(newAppId, '', generationUserId);
-            // var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
+        var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
+        var result = reloadAppAndReplaceScriptviaEngine(newAppId, '', generationUserId);
+        // var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
 
         //logging only
         const call = {};
@@ -51,17 +51,16 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
         call.request = templateApp.name + ' has been created and reloaded with data from the ' + customer.name + ' database';
         REST_Log(call, generationUserId);
         // console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+        GeneratedResources.insert({
+            'generationUserId': generationUserId,
+            'customer': customer.name,
+            'streamId': streamId,
+            'appId': newAppId
+        });
     } catch (err) {
         console.error(err);
         throw new Meteor.Error('Generation failed', 'The server has an internal error, please check the server command logs');
     }
-    GeneratedResources.insert({
-        'generationUserId': generationUserId,
-        'customer': customer.name,
-        'streamId': streamId,
-        'appId': newAppId
-    });
-    // Meteor.call('updateLocalSenseCopy');
     return;
 };
 
@@ -73,16 +72,14 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generati
     var scriptMarker = '§dummyDatabaseString§';
     var _global = {};
 
-    engineConfig.appname = appId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
-
     var call = {};
     call.action = 'Connect to Qlik Sense Engine API';
     call.request = 'Connect to Engine (using EnigmaJS) with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
     call.url = gitHubLinks.replaceAndReloadApp;
     REST_Log(call, generationUserId);
-
+    console.log('schema is ', Meteor.settings.public.QIXSchema)
     const config = {
-        schema: qixschema,
+        schema: Meteor.settings.public.QIXSchema,
         appId: appId,
         session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
             host: senseConfig.host,
@@ -91,59 +88,73 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generati
             unsecure: true
         }
     };
+    try {
+        //use ES7 await function so this code will run in synchronous mode
+        var qix = await enigma.getService('qix', config);
+        console.log(qix);
+    } catch (error) {
+        console.error('error in reloadAppAndReplaceScriptviaEngine via Enigma.JS, did you used the correct schema definition in the settings.json file?', error);
+    }
 
-    //use ES7 await function so this code will run in synchronous mode
-    enigma.getService('qix', config)
-        .then(qix => {
-            qix.app.getScript()
-                .then(function(script) {
-                    var call = {};
-                    call.action = 'Get data load script';
-                    call.url = gitHubLinks.getScript;
-                    call.request = 'We extracted the following script from the app: ' + script;
-                    REST_Log(call, generationUserId);
-                    // if you want to replace the database connection per customer use the script below.
-                    //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
-                    //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
-                    return doc.setScript(script) //we now just include the old script in this app
-                        .then(function(result) {
-                            var call = {};
-                            call.action = 'Insert customer specific data load script for its database';
-                            call.url = gitHubLinks.setScript;
-                            call.request = 'The script of the app has been replaced with a customer specific one. Normally you would replace the database connection for each customer. Or you can insert a customer specific script to enable customization per customer. ';
-                            REST_Log(call, generationUserId);
-                            // console.log('Script replaced');
-                            return doc;
-                        })
-                });
-        })
-        .then(function(doc) {
-            return doc.doReload()
-                .then(function(result) {
-                    var call = {};
-                    call.action = 'Reload the app';
-                    call.url = gitHubLinks.reloadApp;
-                    call.request = 'Has the app been reloaded with customer specific data?';
-                    call.response = result;
-                    REST_Log(call, generationUserId);
-                    // console.log('Reload : ' + result);
-                    return doc.doSave()
-                        .then(function(result) {
-                            var call = {};
-                            call.action = 'Save app'
-                            call.url = gitHubLinks.saveApp;
-                            call.request = 'App with GUID ' + appId + ' has been saved to disk';
-                            REST_Log(call, generationUserId);
-                            // console.log('Save : ', result);
-                            _global.connection.close();
-                            return doc;
-                        });
-                })
-        })
-        .catch((error) => {
-            console.error('ERROR while reloading the new app: ', error);
-            throw new Meteor.error(error);
-        });
+    // enigma.getService('qix', config)
+    //     .then(qix => {
+    //         console.log('engima succeeded');
+    //     }).catch((error) => {
+    //         console.error('ERROR getting level 1 and 2 from the app via the enigma.js: ', error);
+    //         throw new Meteor.Error(error);
+    //     });
+
+    // var     
+    // .then(qix => {
+    //         qix.app.getScript()
+    //             .then(function(script) {
+    //                 var call = {};
+    //                 call.action = 'Get data load script';
+    //                 call.url = gitHubLinks.getScript;
+    //                 call.request = 'We extracted the following script from the app: ' + script;
+    //                 REST_Log(call, generationUserId);
+    //                 // if you want to replace the database connection per customer use the script below.
+    //                 //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
+    //                 //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
+    //                 return doc.setScript(script) //we now just include the old script in this app
+    //                     .then(function(result) {
+    //                         var call = {};
+    //                         call.action = 'Insert customer specific data load script for its database';
+    //                         call.url = gitHubLinks.setScript;
+    //                         call.request = 'The script of the app has been replaced with a customer specific one. Normally you would replace the database connection for each customer. Or you can insert a customer specific script to enable customization per customer. ';
+    //                         REST_Log(call, generationUserId);
+    //                         console.log('Script replaced');
+    //                         return doc;
+    //                     })
+    //             });
+    //     })
+    //     .then(function(doc) {
+    //         return doc.doReload()
+    //             .then(function(result) {
+    //                 var call = {};
+    //                 call.action = 'Reload the app';
+    //                 call.url = gitHubLinks.reloadApp;
+    //                 call.request = 'Has the app been reloaded with customer specific data?';
+    //                 call.response = result;
+    //                 REST_Log(call, generationUserId);
+    //                 // console.log('Reload : ' + result);
+    //                 return doc.doSave()
+    //                     .then(function(result) {
+    //                         var call = {};
+    //                         call.action = 'Save app'
+    //                         call.url = gitHubLinks.saveApp;
+    //                         call.request = 'App with GUID ' + appId + ' has been saved to disk';
+    //                         REST_Log(call, generationUserId);
+    //                         // console.log('Save : ', result);
+    //                         _global.connection.close();
+    //                         return doc;
+    //                     });
+    //             })
+    //     })
+    //     .catch((error) => {
+    //         console.error('ERROR while reloading the new app: ', error);
+    //         throw new Meteor.error(error);
+    //     });
 }
 
 
@@ -180,10 +191,11 @@ export function copyApp(guid, name, generationUserId) {
     check(name, String);
     console.log('QRS Functions copy App, copy the app id: ' + guid + ' to app with name: ', name);
 
+    const call = {};
+    call.request = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy';
+
     try {
-        const call = {};
         call.action = 'Copy app';
-        call.request = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy';
         call.url = gitHubLinks.copyApp;
         call.response = HTTP.post(call.request, {
             headers: authHeaders,
@@ -197,7 +209,6 @@ export function copyApp(guid, name, generationUserId) {
         return newGuid;
     } catch (err) {
         console.error(err);
-        const call = {};
         call.action = 'Copy app FAILED';
         call.response = err.message;
         REST_Log(call, generationUserId);
