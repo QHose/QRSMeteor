@@ -2,35 +2,32 @@
     "adminEmails": "mbj@qlik.com",
     "public": {
         "host": "integration.qlik.com",
-    "proxyPort": 80,
-        "port": 443, 
-        "UDC": "OEM_HOST", 
-        "virtualProxyClientUsage": "meteor",                      
+        "proxyPort": 80,
+        "port": 443,
+        "virtualProxyClientUsage": "meteor",
         "webIntegrationHost": "web.saasdemo.qlik.com",
         "webIntegrationDemoPort": 80,
-        "facebook":{
+        "facebook": {
             "clientId": ""
         },
         "SSBIApp": "d0fbb7ce-f217-4678-8798-9ab543b888a0",
         "SSBIAppSheetString": "d0fbb7ce-f217-4678-8798-9ab543b888a0/sheet/puEpZK/state/analysis",
         "IntegrationPresentationApp": "9b5091fb-5715-4bfb-a948-6d708d56da72",
         "IntegrationPresentationSelectionSheet": "DYTpxv",
-        "IntegrationPresentationSortedDataObject": "pskL", 
+        "IntegrationPresentationSortedDataObject": "pskL",
         "IntegrationPresentationSlideObject": "BbbV",
-        "IntegrationPresentationProxy": "presentationsso"       
+        "IntegrationPresentationProxy": "presentationsso"
     },
     "private": {
-        "host": "integration.qlik.com",
-        "port": 443, 
         "certificatesDirectory": "C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates",
-        "SenseServerInternalLanIP": "LOCALHOST",        
+        "SenseServerInternalLanIP": "LOCALHOST",
+        "QIXSchema": "//node_modules//enigma.js//schemas//qix//3.1//schema.json",
         "useSSL": false,
         "passphrase": null,
         "authentication": "header",
         "virtualProxy": "hdr",
         "headerKey": "hdr-usr",
-        "UDC": "OEM_HOST",        
-        "headerValue": "QLIKDEMOSAAS\\administrator",        
+        "headerValue": "QLIKDEMOSAAS\\administrator",
         "isSecure": true,
         "engineHeaders": "UserDirectory=QLIKDEMOSAAS;UserId=administrator",
         "enginePort": 4747,
@@ -39,11 +36,11 @@
             "clientId": "",
             "secret": ""
         },
-        "facebook":{
+        "facebook": {
             "clientId": "",
             "secret": ""
         },
-          "twitter": {
+        "twitter": {
             "clientId": "",
             "secret": ""
         },
@@ -57,12 +54,12 @@
         }
     },
     "sikka": {
-         "captcha": {
-             "siteKey": "",
-             "secret":  "6dafdsfasdfasdfadsfdsafh"
-         },
-         "rateLimits":{
+        "captcha": {
+            "siteKey": "",
+            "secret": "6dafdsfasdfasdfadsfdsafh"
+        },
+        "rateLimits": {
             "perIp": 260
-         }
+        }
     }
 }

@@ -1,8 +1,12 @@
 {
-  "plugins": [
-    "meteor"
-  ],
-  "extends": [
-    "plugin:meteor/recommended"
-  ]
+    "parserOptions": {
+        "ecmaVersion": 7,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "meteor"
+    ],
+    "extends": [
+        "plugin:meteor/recommended"
+    ]
 }
