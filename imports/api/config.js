@@ -28,9 +28,8 @@ if (Meteor.isServer) {
         "virtualProxy": Meteor.settings.private.virtualProxy, //used to connect via REST to Sense, we authenticate via a http header. not for production!!!
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "headerKey": Meteor.settings.private.headerKey,
-        "headerValue": Meteor.settings.private.headerValue,
+        "headerValue": process.env.USERDOMAIN + '\\' + process.env.USERNAME, //"QLIK-AB0Q2URN5T\\Qlikexternal",
         "isSecure": Meteor.settings.private.isSecure,
-        "QIXSchema": _QIXSchema
     };
 
     if (!_senseConfig.host) {
@@ -44,6 +43,7 @@ if (Meteor.isServer) {
     }
 
     export const _certs = {
+        ca: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/root.pem'),
         key: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client_key.pem'),
         cert: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client.pem'),
     }
@@ -53,19 +53,12 @@ if (Meteor.isServer) {
         hostname: _senseConfig.SenseServerInternalLanIP,
         headers: {
             'x-qlik-xrfkey': _senseConfig.xrfkey,
-            'X-Qlik-User': Meteor.settings.private.engineHeaders,
+            'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
             'Content-Type': 'application/json'
         },
         key: _certs.key,
         cert: _certs.cert
     };
-
-    export const securityInfo = {
-        'xrfkey': _senseConfig.xrfkey,
-        'key': _certs.key,
-        'cert': _certs.cert,
-        'port': 4243,
-    }
 
     //used for engimaJS, the engine API javascript wrapper
     var _engineConfig = {
@@ -73,13 +66,15 @@ if (Meteor.isServer) {
         isSecure: _senseConfig.isSecure,
         port: Meteor.settings.private.enginePort,
         headers: {
-            'X-Qlik-User': Meteor.settings.private.engineHeaders,
+            'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
         },
+        ca: _certs.ca,
         key: _certs.key,
         cert: _certs.cert,
         passphrase: Meteor.settings.private.passphrase,
         rejectUnauthorized: false, // Don't reject self-signed certs
-        appname: null
+        appname: null,
+        QIXSchema: _QIXSchema
     };
 }
 
