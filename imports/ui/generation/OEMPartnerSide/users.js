@@ -56,9 +56,9 @@ Template.users.helpers({
     active: function() {
         return Session.equals("activeCustomer", this._id) ? "active" : '';
     },
-    isChrome: function(){ //update screen does not work with edge and firefox because of a bug somehwere
+    isChrome: function() { //update screen does not work with edge and firefox because of a bug somehwere
         var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-        console.log('user is using Chrome? ',isChrome);
+        console.log('user is using Chrome? ', isChrome);
         return isChrome;
     }
 });
@@ -94,15 +94,6 @@ Template.updateGroupsFormStep1.events({
             country: template.find("[name='country']").value,
             currentlyLoggedIn: false
         };
-
-        // template.find('.ui.dropdown').dropdown('set text', 'bies');
-        // setTimeout(function() {
-        //     template.$('.ui.dropdown.country')
-        //         .dropdown('set text', updatedUser.country);
-        //     template.$('.ui.dropdown.group')
-        //         .dropdown('set text', updatedUser.group);
-        //     // console.log('set group box to', updatedUser.group);
-        // }, 300)
 
         Meteor.call('updateUserForCustomer', updatedUser);
         sAlert.success('Groups are updated for ' + updatedUser.name);
