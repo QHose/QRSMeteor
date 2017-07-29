@@ -12,13 +12,14 @@ import { Customers } from '/imports/api/customers';
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
 import { APILogs, REST_Log } from '/imports/api/APILogs';
 import lodash from 'lodash';
-const enigma = require('enigma.js');
-const bluebird = require('bluebird');
-const WebSocket = require('ws');
 _ = lodash;
 
 //install NPM modules
-var fs = require('fs');
+const fs = require('fs-extra')
+const enigma = require('enigma.js');
+const bluebird = require('bluebird');
+const WebSocket = require('ws');
+
 
 export function generateStreamAndApp(customers, generationUserId) {
     // console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
@@ -42,9 +43,10 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
     REST_Log(call, generationUserId);
 
     try {
-        var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists    
+        var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists 
+        var customerDataFolder = createDirectory(customer.name); //for data like XLS/qvd specific for a customer
         var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
-        var result = reloadAppAndReplaceScriptviaEngine(newAppId, '', generationUserId);
+        var result = reloadAppAndReplaceScriptviaEngine(newAppId, customer, customerDataFolder, '', generationUserId);
         var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
 
         //logging only
@@ -69,7 +71,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
 //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
-async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generationUserId) {
+async function reloadAppAndReplaceScriptviaEngine(appId, customer, customerDataFolder, scriptReplace, generationUserId) {
     console.log('setting config for Engine');
 
     const config = {
@@ -90,10 +92,10 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generati
                 },
             });
         },
-        handleLog: logRow => console.log(JSON.stringify(logRow)),
+        // handleLog: logRow => console.log(JSON.stringify(logRow)),
     }
 
-    console.log('Connecting to Engine', config);
+    // console.log('Connecting to Engine', config);
 
     try {
         //connect to the engine
@@ -105,6 +107,14 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generati
         call.url = gitHubLinks.replaceAndReloadApp;
         REST_Log(call, generationUserId);
 
+        //create folder connection        
+        var qConnectionId = await qix.app.createConnection({
+            "qName": customer.name,
+            "qType": "folder",
+            "qConnectionString": customerDataFolder
+        })
+        console.log('created folder connection: ', qConnectionId);
+
         //get the script
         console.log('get script');
         var script = await qix.app.getScript();
@@ -115,6 +125,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generati
         REST_Log(call, generationUserId);
 
         //set the new script
+        console.log('set script');
         call.response = await qix.app.setScript(replaceScript(script)) //we now just include the old script in this app
         call.action = 'Insert customer specific data load script for its database';
         call.url = gitHubLinks.setScript;
@@ -156,6 +167,18 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generati
 
 }
 
+async function createDirectory(dirName) {
+
+    const dir = Meteor.settings.private.customerDataDir + dirName;
+
+    try {
+        await fs.ensureDir(dir);
+        console.log('created directory: ', dir);
+        return dir;
+    } catch (error) {
+        console.error('Failed to create a directory for customer', error);
+    }
+}
 
 function checkCustomersAreSelected(customers) {
     if (!customers.length) { // = 0
