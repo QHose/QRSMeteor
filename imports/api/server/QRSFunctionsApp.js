@@ -13,7 +13,8 @@ import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/conf
 import { APILogs, REST_Log } from '/imports/api/APILogs';
 import lodash from 'lodash';
 const enigma = require('enigma.js');
-const QIXSchema = require(senseConfig.QIXSchema);
+const bluebird = require('bluebird');
+const WebSocket = require('ws');
 _ = lodash;
 
 //install NPM modules
@@ -44,7 +45,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
         var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists    
         var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
         var result = reloadAppAndReplaceScriptviaEngine(newAppId, '', generationUserId);
-        // var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
+        var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
 
         //logging only
         const call = {};
@@ -69,119 +70,90 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
 //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
 async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generationUserId) {
+    console.log('setting config for Engine');
 
-    var scriptMarker = '§dummyDatabaseString§';
-    var _global = {};
-
-    var call = {};
-    call.action = 'Connect to Qlik Sense Engine API';
-    call.request = 'Connect to Engine (using EnigmaJS) with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
-    call.url = gitHubLinks.replaceAndReloadApp;
-    REST_Log(call, generationUserId);
-    console.log('schema is ', Meteor.settings.public.QIXSchema)
     const config = {
-        schema: QIXSchema,
+        schema: engineConfig.QIXSchema,
         appId: appId,
-        session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-            host: senseConfig.host,
-            prefix: Meteor.settings.public.IntegrationPresentationProxy,
-            port: senseConfig.port,
-            unsecure: true
-        }
-    };
+        session: {
+            host: engineConfig.host,
+            port: engineConfig.port,
+        },
+        Promise: bluebird,
+        createSocket(url) {
+            return new WebSocket(url, {
+                ca: engineConfig.ca,
+                key: engineConfig.key,
+                cert: engineConfig.cert,
+                headers: {
+                    'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
+                },
+            });
+        },
+        handleLog: logRow => console.log(JSON.stringify(logRow)),
+    }
+
+    console.log('Connecting to Engine', config);
+
     try {
-        //use ES7 await function so this code will run in synchronous mode
+        //connect to the engine
         var qix = await enigma.getService('qix', config);
+        console.log('############### Connected');
+        var call = {};
+        call.action = 'Connect to Qlik Sense Engine API';
+        call.request = 'Connect to Engine (using EnigmaJS) with a new appname parameter when you call global.openDoc: ', engineConfig.appname;
+        call.url = gitHubLinks.replaceAndReloadApp;
+        REST_Log(call, generationUserId);
 
         //get the script
+        console.log('get script');
         var script = await qix.app.getScript();
-        var call = {};
         call.action = 'Get data load script';
         call.url = gitHubLinks.getScript;
-        call.request = 'We extracted the following script from the app: ' + script;
+        call.request = 'We extracted the following load script from the app';
+        call.response = script;
         REST_Log(call, generationUserId);
 
         //set the new script
-        var ScriptSetResult = qix.app.setScript(replaceScript(script)) //we now just include the old script in this app
+        call.response = await qix.app.setScript(replaceScript(script)) //we now just include the old script in this app
         call.action = 'Insert customer specific data load script for its database';
         call.url = gitHubLinks.setScript;
         call.request = 'The script of the app has been replaced with a customer specific one. Normally you would replace the database connection for each customer. Or you can insert a customer specific script to enable customization per customer. ';
         REST_Log(call, generationUserId);
 
         //reload the app
-        var resultReload = qix.app.doReload()
+        call.response = await qix.app.doReload()
         call.action = 'Reload the app';
         call.url = gitHubLinks.reloadApp;
         call.request = 'Has the app been reloaded with customer specific data?';
-        call.response = result;
+
         REST_Log(call, generationUserId);
 
         //save the app
-        var resultSave = qix.app.doSave();
         call.action = 'Save app'
         call.url = gitHubLinks.saveApp;
         call.request = 'App with GUID ' + appId + ' has been saved to disk';
         REST_Log(call, generationUserId);
-
-        //                         _global.connection.close();
-
-
-
-
-        function replaceScript(script) {
-            //                 // if you want to replace the database connection per customer use the script below.
-            //                 //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
-            //                 //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
-            return script;
-        }
-
+        return await qix.app.doSave();
     } catch (error) {
         console.error('error in reloadAppAndReplaceScriptviaEngine via Enigma.JS, did you used the correct schema definition in the settings.json file?', error);
     }
 
 
-    // .then(qix => {
-    //         qix.app.getScript()
-    //             .then(function(script) {
-    //                 return doc.setScript(script) //we now just include the old script in this app
-    //                     .then(function(result) {
-    //                         var call = {};
-    //                         call.action = 'Insert customer specific data load script for its database';
-    //                         call.url = gitHubLinks.setScript;
-    //                         call.request = 'The script of the app has been replaced with a customer specific one. Normally you would replace the database connection for each customer. Or you can insert a customer specific script to enable customization per customer. ';
-    //                         REST_Log(call, generationUserId);
-    //                         console.log('Script replaced');
-    //                         return doc;
-    //                     })
-    //             });
-    //     })
-    //     .then(function(doc) {
-    //         return doc.doReload()
-    //             .then(function(result) {
-    //                 var call = {};
-    //                 call.action = 'Reload the app';
-    //                 call.url = gitHubLinks.reloadApp;
-    //                 call.request = 'Has the app been reloaded with customer specific data?';
-    //                 call.response = result;
-    //                 REST_Log(call, generationUserId);
-    //                 // console.log('Reload : ' + result);
-    //                 return doc.doSave()
-    //                     .then(function(result) {
-    //                         var call = {};
-    //                         call.action = 'Save app'
-    //                         call.url = gitHubLinks.saveApp;
-    //                         call.request = 'App with GUID ' + appId + ' has been saved to disk';
-    //                         REST_Log(call, generationUserId);
-    //                         // console.log('Save : ', result);
-    //                         _global.connection.close();
-    //                         return doc;
-    //                     });
-    //             })
-    //     })
-    //     .catch((error) => {
-    //         console.error('ERROR while reloading the new app: ', error);
-    //         throw new Meteor.error(error);
-    //     });
+
+
+    function replaceScript(script) {
+        //var scriptMarker = '§dummyDatabaseString§';
+        // if you want to replace the database connection per customer use the script below.
+        //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
+        //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
+        return script;
+    }
+
+    // } catch (error) {
+    //     console.error('error in reloadAppAndReplaceScriptviaEngine via Enigma.JS, did you used the correct schema definition in the settings.json file?', error);
+    // }
+
 }
 
 
@@ -216,7 +188,7 @@ function checkTemplateAppExists(generationUserId) {
 export function copyApp(guid, name, generationUserId) {
     check(guid, String);
     check(name, String);
-    console.log('QRS Functions copy App, copy the app id: ' + guid + ' to app with name: ', name);
+    // console.log('QRS Functions copy App, copy the app id: ' + guid + ' to app with name: ', name);
 
     const call = {};
     call.request = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy';
