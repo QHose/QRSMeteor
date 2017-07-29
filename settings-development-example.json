@@ -7,9 +7,6 @@
         "virtualProxyClientUsage": "meteor",
         "webIntegrationHost": "web.saasdemo.qlik.com",
         "webIntegrationDemoPort": 80,
-        "facebook": {
-            "clientId": ""
-        },
         "SSBIApp": "d0fbb7ce-f217-4678-8798-9ab543b888a0",
         "SSBIAppSheetString": "d0fbb7ce-f217-4678-8798-9ab543b888a0/sheet/puEpZK/state/analysis",
         "IntegrationPresentationApp": "9b5091fb-5715-4bfb-a948-6d708d56da72",
@@ -20,15 +17,12 @@
     },
     "private": {
         "certificatesDirectory": "C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates",
-        "SenseServerInternalLanIP": "LOCALHOST",
-        "QIXSchema": "//node_modules//enigma.js//schemas//qix//3.1//schema.json",
+        "SenseServerInternalLanIP": "QLIK-AB0Q2URN5T",
         "useSSL": false,
         "passphrase": null,
         "virtualProxy": "hdr",
         "headerKey": "hdr-usr",
-        "headerValue": "QLIKDEMOSAAS\\administrator",
         "isSecure": true,
-        "engineHeaders": "UserDirectory=QLIKDEMOSAAS;UserId=administrator",
         "enginePort": 4747,
         "proxyPort": 4243
     },
