@@ -24,7 +24,6 @@
         "QIXSchema": "//node_modules//enigma.js//schemas//qix//3.1//schema.json",
         "useSSL": false,
         "passphrase": null,
-        "authentication": "header",
         "virtualProxy": "hdr",
         "headerKey": "hdr-usr",
         "headerValue": "QLIKDEMOSAAS\\administrator",

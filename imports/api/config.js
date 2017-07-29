@@ -1,6 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import { Random } from 'meteor/random';
 import _ from 'meteor/underscore';
+const _QIXSchema = require('/node_modules/enigma.js/schemas/qix/12.20.0/schema.json');
 
 //This is the config that we need to make available on the client (the webpage)
 if (Meteor.isClient) {
@@ -9,9 +10,8 @@ if (Meteor.isClient) {
         "port": Meteor.settings.public.port,
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
-        "QIXSchema": Meteor.settings.public.QIXSchema
+        "QIXSchema": _QIXSchema
     };
-
 }
 
 if (Meteor.isServer) {
@@ -25,13 +25,12 @@ if (Meteor.isServer) {
         "port": Meteor.settings.public.port,
         "useSSL": Meteor.settings.private.useSSL,
         "xrfkey": generateXrfkey(),
-        "authentication": Meteor.settings.private.authentication,
         "virtualProxy": Meteor.settings.private.virtualProxy, //used to connect via REST to Sense, we authenticate via a http header. not for production!!!
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "headerKey": Meteor.settings.private.headerKey,
         "headerValue": Meteor.settings.private.headerValue,
         "isSecure": Meteor.settings.private.isSecure,
-        "QIXSchema": Meteor.settings.public.QIXSchema
+        "QIXSchema": _QIXSchema
     };
 
     if (!_senseConfig.host) {
