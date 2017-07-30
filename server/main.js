@@ -17,7 +17,8 @@ import '/imports/startup/accounts-config.js';
 
 
 //install NPM modules
-var fs = require('fs');
+const fs = require('fs-extra');
+
 
 Meteor.startup(function() {
     process.env.ROOT_URL = 'http://' + Meteor.settings.public.host;
@@ -57,18 +58,19 @@ Meteor.startup(function() {
     APILogs._ensureIndex({ "createdBy": 1 });
     APILogs._ensureIndex({ "createDate": 1 });
 
-    console.log('remove the all generated resources on each server start');
-    Meteor.setTimeout(function() {
-        console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
-        Meteor.call('removeGeneratedResources', {});
-    }, 0); //remove all logs directly at startup
-
-    Meteor.setInterval(function() {
-        console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
-        Meteor.call('removeGeneratedResources', {});
-    }, 1 * 86400000); //remove all logs every 1 day
+    // console.log('remove the all generated resources on each server start');
+    // Meteor.setTimeout(function() {
+    //     console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
+    //     Meteor.call('removeGeneratedResources', {});
+    // }, 0); //remove all logs directly at startup
+    if (Meteor.settings.private.automaticCleanUpGeneratedApps === "Yes") {
+        Meteor.setInterval(function() {
+            console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
+            Meteor.call('removeGeneratedResources', {});
+        }, 1 * 86400000); //remove all logs every 1 day
+    }
+    QSApp.checkTemplateAppExist();
 });
-
 
 
 Meteor.methods({
