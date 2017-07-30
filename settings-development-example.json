@@ -24,7 +24,9 @@
         "headerKey": "hdr-usr",
         "isSecure": true,
         "enginePort": 4747,
-        "proxyPort": 4243
+        "proxyPort": 4243,
+        "customerDataDir": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData\\",
+        "automaticCleanUpGeneratedApps": "Yes"
     },
     "sikka": {
         "captcha": {
