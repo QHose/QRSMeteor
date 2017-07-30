@@ -9,17 +9,29 @@ import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 
 //import config for Qlik Sense QRS and Engine API
-import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
+import { senseConfig, engineConfig, QRSconfig, certs, authHeaders } from '/imports/api/config.js';
 import { APILogs, REST_Log } from '/imports/api/APILogs';
 import lodash from 'lodash';
 _ = lodash;
 
 //install NPM modules
-const fs = require('fs-extra')
+const fs = require('fs-extra');
 const enigma = require('enigma.js');
 const bluebird = require('bluebird');
 const WebSocket = require('ws');
+const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
 
+export async function checkTemplateAppExist() {
+    //get all apps from sense
+    Meteor.call('updateLocalSenseCopy');
+
+    //see if there are any apps published in the templates streams
+    // if (!Apps.find({ "stream.name": "Templates" }).count()) {
+    console.log('no template apps found, so upload from the templates dir.', QRSconfig);
+
+
+    // }
+}
 
 export function generateStreamAndApp(customers, generationUserId) {
     // console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
@@ -46,8 +58,8 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
         var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists 
         var customerDataFolder = createDirectory(customer.name); //for data like XLS/qvd specific for a customer
         var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
-        var result = reloadAppAndReplaceScriptviaEngine(newAppId, customer, customerDataFolder, '', generationUserId);
-        var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
+        var result = reloadAppAndReplaceScriptviaEngine(newAppId, templateApp.name, streamId, customer, customerDataFolder, '', generationUserId);
+        // var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
 
         //logging only
         const call = {};
@@ -71,8 +83,13 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
 //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
-async function reloadAppAndReplaceScriptviaEngine(appId, customer, customerDataFolder, scriptReplace, generationUserId) {
+async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, customer, customerDataFolder, scriptReplace, generationUserId) {
+    var customerDataFolder = "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData\\Cartwright, Boyer and Hahn";
     console.log('setting config for Engine');
+    // check(customer, Object);
+    // check(customerDataFolder, String);
+    // check(generationUserId, String);
+    // check(appId, String);
 
     const config = {
         schema: engineConfig.QIXSchema,
@@ -107,13 +124,31 @@ async function reloadAppAndReplaceScriptviaEngine(appId, customer, customerDataF
         call.url = gitHubLinks.replaceAndReloadApp;
         REST_Log(call, generationUserId);
 
-        //create folder connection        
-        var qConnectionId = await qix.app.createConnection({
-            "qName": customer.name,
-            "qType": "folder",
-            "qConnectionString": customerDataFolder
-        })
-        console.log('created folder connection: ', qConnectionId);
+        //create folder connection
+        // var folder = {
+        //     // qConnection: {
+        //     //     "qName": customer.name,
+        //     //     "qType": "folder",
+        //     //     "qConnectionString": customerDataFolder,
+        //     //     "qLogOn": 0
+        //     // }
+        //     "qConnection": {
+        //         "qId": "",
+        //         "qName": "dfd",
+        //         "qConnectionString": "c:\\",
+        //         "qType": "folder",
+        //         "qUserName": "a",
+        //         "qPassword": "a",
+        //         "qModifiedDate": "23-12-2017",
+        //         "qMeta": {
+        //             "qName": "a"
+        //         },
+        //         "qLogOn": 0
+        //     }
+        // };
+        // console.log('folder is ', folder);
+        // var qConnectionId = await qix.app.createConnection(folder);
+        // console.log('created folder connection: ', qConnectionId);
 
         //get the script
         console.log('get script');
@@ -137,7 +172,6 @@ async function reloadAppAndReplaceScriptviaEngine(appId, customer, customerDataF
         call.action = 'Reload the app';
         call.url = gitHubLinks.reloadApp;
         call.request = 'Has the app been reloaded with customer specific data?';
-
         REST_Log(call, generationUserId);
 
         //save the app
@@ -145,13 +179,18 @@ async function reloadAppAndReplaceScriptviaEngine(appId, customer, customerDataF
         call.url = gitHubLinks.saveApp;
         call.request = 'App with GUID ' + appId + ' has been saved to disk';
         REST_Log(call, generationUserId);
-        return await qix.app.doSave();
+        await qix.app.doSave();
+
+        //publish the app        
+        // console.log('publish app config', publishObj);
+        call.response = await qix.app.publish(streamId, newAppName);
+        call.action = 'Publish app';
+        call.request = 'qix.app.publish({ qAppId: appId, qName: newAppName, qStreamId: streamId })';
+        call.url = gitHubLinks.publishApp;
+        REST_Log(call, generationUserId);
     } catch (error) {
         console.error('error in reloadAppAndReplaceScriptviaEngine via Enigma.JS, did you used the correct schema definition in the settings.json file?', error);
     }
-
-
-
 
     function replaceScript(script) {
         //var scriptMarker = '§dummyDatabaseString§';
@@ -160,24 +199,14 @@ async function reloadAppAndReplaceScriptviaEngine(appId, customer, customerDataF
         //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
         return script;
     }
-
-    // } catch (error) {
-    //     console.error('error in reloadAppAndReplaceScriptviaEngine via Enigma.JS, did you used the correct schema definition in the settings.json file?', error);
-    // }
-
 }
 
-async function createDirectory(dirName) {
-
+function createDirectory(dirName) {
     const dir = Meteor.settings.private.customerDataDir + dirName;
-
-    try {
-        await fs.ensureDir(dir);
-        console.log('created directory: ', dir);
-        return dir;
-    } catch (error) {
-        console.error('Failed to create a directory for customer', error);
-    }
+    fs.ensureDir(dir, err => {
+        console.error(err) // => null
+    });
+    return dir;
 }
 
 function checkCustomersAreSelected(customers) {
@@ -214,7 +243,7 @@ export function copyApp(guid, name, generationUserId) {
     // console.log('QRS Functions copy App, copy the app id: ' + guid + ' to app with name: ', name);
 
     const call = {};
-    call.request = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy';
+    call.request = qlikServer + '/qrs/app/' + guid + '/copy';
 
     try {
         call.action = 'Copy app';
@@ -257,26 +286,26 @@ function checkStreamStatus(customer, generationUserId) {
 }
 
 
-export function getAppsViaEngine() {
-    // console.log('server: QSSOCKS getApps');
-    return qsocks.Connect(engineConfig)
-        .then(function(global) {
-            //We can now interact with the global class, for example fetch the document list.
-            //qsocks mimics the Engine API, refer to the Engine API documentation or the engine api explorer for available methods.
-            global.getDocList()
-                .then(function(docList) {
-                    return docList;
-                });
+// export function getAppsViaEngine() {
+//     // console.log('server: QSSOCKS getApps');
+//     return qsocks.Connect(engineConfig)
+//         .then(function(global) {
+//             //We can now interact with the global class, for example fetch the document list.
+//             //qsocks mimics the Engine API, refer to the Engine API documentation or the engine api explorer for available methods.
+//             global.getDocList()
+//                 .then(function(docList) {
+//                     return docList;
+//                 });
 
-        });
-};
+//         });
+// };
 
 export function getApps() {
     try {
         const call = {};
         call.action = 'Get list of apps';
-        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/full)';
-        call.response = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
+        call.request = qlikServer + '/qrs/app/full)';
+        call.response = HTTP.get(qlikServer + '/qrs/app/full', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }
         });
@@ -293,7 +322,7 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
     console.log('QRSApp deleteApp: ', guid);
     try {
         const call = {};
-        const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
+        const result = HTTP.del(qlikServer + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
                 headers: authHeaders
             })
             // Meteor.call('updateLocalSenseCopy');
@@ -318,10 +347,15 @@ export function publishApp(appGuid, appName, streamId, customerName, generationU
     check(streamId, String);
 
     try {
-        const result = HTTP.call('put', 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
+        const result = HTTP.call('put', qlikServer + '/qrs/app/' + appGuid + '/publish', {
                 headers: {
                     'hdr-usr': senseConfig.headerValue,
                     'X-Qlik-xrfkey': senseConfig.xrfkey
+                },
+                params: {
+                    name: appName,
+                    stream: streamId,
+                    xrfkey: senseConfig.xrfkey
                 }
             })
             //logging into database
@@ -344,7 +378,7 @@ function createTag(name) {
     // console.log('QRS Functions Appp, create a tag: ' + name);
 
     try {
-        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Tag', {
+        const result = HTTP.post(qlikServer + '/qrs/Tag', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: { "name": name }
@@ -381,7 +415,7 @@ function createSelection(type, guid) {
     console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);
 
     try {
-        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection', {
+        const result = HTTP.post(qlikServer + '/qrs/Selection', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: { items: [{ type: type, objectID: guid }] }
@@ -400,7 +434,7 @@ function deleteSelection(selectionId) {
     console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
 
     try {
-        const result = HTTP.delete('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId, {
+        const result = HTTP.delete(qlikServer + '/qrs/Selection/' + selectionId, {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }
         })
@@ -423,7 +457,7 @@ function addTagViaSyntheticToType(type, selectionId, tagGuid) {
     console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
 
     try {
-        const result = HTTP.put('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
+        const result = HTTP.put(qlikServer + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: {
