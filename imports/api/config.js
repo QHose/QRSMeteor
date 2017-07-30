@@ -82,5 +82,18 @@ function generateXrfkey() {
     return Random.hexString(16);
 }
 
+//https://www.npmjs.com/package/qrs
+export const QRSconfig = {
+    authentication: 'certificates',
+    host: _engineConfig.host,
+    useSSL: true,
+    ca: _engineConfig.ca,
+    key: _engineConfig.key,
+    cert: _engineConfig.cert,
+    port: _engineConfig.port,
+    headerKey: 'X-Qlik-User',
+    headerValue: `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`
+};
+
 export const engineConfig = _engineConfig;
 export const senseConfig = _senseConfig;
