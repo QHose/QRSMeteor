@@ -117,7 +117,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
             })
             console.log('created folder connection: ', qConnectionId);
         } catch (error) {
-            console.info('No issue, existing customer so his data folder connection already exists');
+            console.info('No issue, existing customer so his data folder connection already exists', error);
         }
 
         //get the script
@@ -132,6 +132,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
 
         //set the new script
         console.log('set script');
+        var call = {};
         call.response = await qix.app.setScript(replaceScript(script)) //we now just include the old script in this app
         call.action = 'Insert customer specific data load script for its database';
         call.url = gitHubLinks.setScript;
@@ -139,6 +140,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         REST_Log(call, generationUserId);
 
         //reload the app
+        var call = {};
         call.response = await qix.app.doReload()
         call.action = 'Reload the app';
         call.url = gitHubLinks.reloadApp;
@@ -146,13 +148,14 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         REST_Log(call, generationUserId);
 
         //save the app
+        var call = {};
         call.action = 'Save app'
         call.url = gitHubLinks.saveApp;
         call.request = 'App with GUID ' + appId + ' has been saved to disk';
         REST_Log(call, generationUserId);
         await qix.app.doSave();
 
-        // //publish the app        
+        // //publish the app, must be done via QRS API (depreciated)
         // // console.log('publish app config', publishObj);
         // call.response = await qix.app.publish(streamId, newAppName);
         // call.action = 'Publish app';
