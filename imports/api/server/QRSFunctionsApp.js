@@ -86,10 +86,14 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, customer, customerDataFolder, scriptReplace, generationUserId) {
     var customerDataFolder = "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData\\Cartwright, Boyer and Hahn";
     console.log('setting config for Engine');
-    // check(customer, Object);
-    // check(customerDataFolder, String);
-    // check(generationUserId, String);
-    // check(appId, String);
+    try {
+        check(customer, Object);
+        check(customerDataFolder, String);
+        check(generationUserId, String);
+        check(appId, String);
+    } catch (err) {
+        c
+    }
 
     const config = {
         schema: engineConfig.QIXSchema,
@@ -120,27 +124,21 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         console.log('############### Connected');
         var call = {};
         call.action = 'Connect to Qlik Sense Engine API';
-        call.request = 'Connect to Engine (using EnigmaJS) with a new appname parameter when you call global.openDoc: ', engineConfig.appname;
+        call.request = 'Connect to Engine (using EnigmaJS) using an appID: ' + appId;
         call.url = gitHubLinks.replaceAndReloadApp;
         REST_Log(call, generationUserId);
 
-        //create folder connection
-        var folder =
-            // qConnection: {
-            //     "qName": customer.name,
-            //     "qType": "folder",
-            //     "qConnectionString": customerDataFolder,
-            //     "qLogOn": 0
-            // }
-            {
-                "qName": "Connection01",
-                "qMeta": {},
-                "qConnectionString": "C:\\",
-                "qType": "folder"
-            };
-        console.log('folder is ', qix.app);
-        var qConnectionId = await qix.app.createConnection(folder);
-        console.log('created folder connection: ', qConnectionId);
+        try {
+            //create folder connection            
+            var qConnectionId = await qix.app.createConnection({
+                "qName": customer.name,
+                "qType": "folder",
+                "qConnectionString": customerDataFolder
+            })
+            console.log('created folder connection: ', qConnectionId);
+        } catch (error) {
+            console.info('Connection already exists', error);
+        }
 
         //get the script
         console.log('get script');
