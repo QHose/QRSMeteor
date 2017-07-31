@@ -9,7 +9,7 @@ import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 
 //import config for Qlik Sense QRS and Engine API
-import { senseConfig, engineConfig, QRSconfig, certs, authHeaders } from '/imports/api/config.js';
+import { senseConfig, enigmaServerConfig, authHeaders } from '/imports/api/config.js';
 import { APILogs, REST_Log } from '/imports/api/APILogs';
 import lodash from 'lodash';
 _ = lodash;
@@ -17,8 +17,7 @@ _ = lodash;
 //install NPM modules
 const fs = require('fs-extra');
 const enigma = require('enigma.js');
-const bluebird = require('bluebird');
-const WebSocket = require('ws');
+
 const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
 
 export async function checkTemplateAppExist() {
@@ -27,7 +26,10 @@ export async function checkTemplateAppExist() {
 
     //see if there are any apps published in the templates streams
     // if (!Apps.find({ "stream.name": "Templates" }).count()) {
-    console.log('no template apps found, so upload from the templates dir.', QRSconfig);
+    console.log('no template apps found, so upload from the templates dir.');
+    var qix = await enigma.getService('qix', enigmaServerConfig);
+    var streams = await qix.GetStreamList();
+    console.log('streams via enigma are ', streams);
 
 
     // }
@@ -84,38 +86,16 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
 //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
 async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, customer, customerDataFolder, scriptReplace, generationUserId) {
-    var customerDataFolder = "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData\\Cartwright, Boyer and Hahn";
     console.log('setting config for Engine');
-    try {
-        check(customer, Object);
-        check(customerDataFolder, String);
-        check(generationUserId, String);
-        check(appId, String);
-    } catch (err) {
-        c
-    }
 
-    const config = {
-        schema: engineConfig.QIXSchema,
-        appId: appId,
-        session: {
-            host: engineConfig.host,
-            port: engineConfig.port,
-        },
-        Promise: bluebird,
-        createSocket(url) {
-            return new WebSocket(url, {
-                ca: engineConfig.ca,
-                key: engineConfig.key,
-                cert: engineConfig.cert,
-                headers: {
-                    'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
-                },
-            });
-        },
-        handleLog: logRow => console.log(JSON.stringify(logRow)),
-    }
+    check(appId, String);
+    check(customer.name, String);
+    check(customerDataFolder, String);
+    check(generationUserId, String);
 
+    //set the app ID to be used in the enigma connection to the engine API
+    var config = Object.assign({}, enigmaServerConfig);
+    config.appId = appId;
     // console.log('Connecting to Engine', config);
 
     try {
@@ -137,12 +117,13 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
             })
             console.log('created folder connection: ', qConnectionId);
         } catch (error) {
-            console.info('Connection already exists', error);
+            console.info('No issue, existing customer so his data folder connection already exists');
         }
 
         //get the script
         console.log('get script');
         var script = await qix.app.getScript();
+        var call = {};
         call.action = 'Get data load script';
         call.url = gitHubLinks.getScript;
         call.request = 'We extracted the following load script from the app';
@@ -191,8 +172,8 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
     }
 }
 
-function createDirectory(dirName) {
-    const dir = Meteor.settings.private.customerDataDir + dirName;
+function createDirectory(customerName) {
+    const dir = Meteor.settings.private.customerDataDir + customerName;
     fs.ensureDir(dir, err => {
         console.error(err) // => null
     });

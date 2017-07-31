@@ -14,10 +14,14 @@ if (Meteor.isClient) {
     };
 }
 
+
+//SERVER SIDE
 if (Meteor.isServer) {
     console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.private);
     import crypto from 'crypto';
     import fs from 'fs';
+    const bluebird = require('bluebird');
+    const WebSocket = require('ws');
 
     var _senseConfig = {
         "host": Meteor.settings.public.host,
@@ -76,7 +80,34 @@ if (Meteor.isServer) {
         appname: null,
         QIXSchema: _QIXSchema
     };
+
+    export const enigmaServerConfig = {
+        schema: _engineConfig.QIXSchema,
+        // appId: appId,
+        session: {
+            host: _engineConfig.host,
+            port: _engineConfig.port,
+        },
+        Promise: bluebird,
+        createSocket(url) {
+            return new WebSocket(url, {
+                ca: _engineConfig.ca,
+                key: _engineConfig.key,
+                cert: _engineConfig.cert,
+                headers: {
+                    'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
+                },
+            });
+        },
+        // handleLog: logRow => console.log(JSON.stringify(logRow)),
+    }
 }
+
+
+export const engineConfig = _engineConfig;
+export const senseConfig = _senseConfig;
+
+
 
 function generateXrfkey() {
     return Random.hexString(16);
@@ -94,6 +125,3 @@ function generateXrfkey() {
 //     headerKey: 'X-Qlik-User',
 //     headerValue: `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`
 // };
-
-export const engineConfig = _engineConfig;
-export const senseConfig = _senseConfig;
