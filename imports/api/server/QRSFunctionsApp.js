@@ -59,7 +59,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
         var customerDataFolder = createDirectory(customer.name); //for data like XLS/qvd specific for a customer
         var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
         var result = reloadAppAndReplaceScriptviaEngine(newAppId, templateApp.name, streamId, customer, customerDataFolder, '', generationUserId);
-        // var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
+        var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
 
         //logging only
         const call = {};
@@ -109,7 +109,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
                 },
             });
         },
-        // handleLog: logRow => console.log(JSON.stringify(logRow)),
+        handleLog: logRow => console.log(JSON.stringify(logRow)),
     }
 
     // console.log('Connecting to Engine', config);
@@ -125,30 +125,22 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         REST_Log(call, generationUserId);
 
         //create folder connection
-        // var folder = {
-        //     // qConnection: {
-        //     //     "qName": customer.name,
-        //     //     "qType": "folder",
-        //     //     "qConnectionString": customerDataFolder,
-        //     //     "qLogOn": 0
-        //     // }
-        //     "qConnection": {
-        //         "qId": "",
-        //         "qName": "dfd",
-        //         "qConnectionString": "c:\\",
-        //         "qType": "folder",
-        //         "qUserName": "a",
-        //         "qPassword": "a",
-        //         "qModifiedDate": "23-12-2017",
-        //         "qMeta": {
-        //             "qName": "a"
-        //         },
-        //         "qLogOn": 0
-        //     }
-        // };
-        // console.log('folder is ', folder);
-        // var qConnectionId = await qix.app.createConnection(folder);
-        // console.log('created folder connection: ', qConnectionId);
+        var folder =
+            // qConnection: {
+            //     "qName": customer.name,
+            //     "qType": "folder",
+            //     "qConnectionString": customerDataFolder,
+            //     "qLogOn": 0
+            // }
+            {
+                "qName": "Connection01",
+                "qMeta": {},
+                "qConnectionString": "C:\\",
+                "qType": "folder"
+            };
+        console.log('folder is ', qix.app);
+        var qConnectionId = await qix.app.createConnection(folder);
+        console.log('created folder connection: ', qConnectionId);
 
         //get the script
         console.log('get script');
@@ -181,12 +173,12 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         REST_Log(call, generationUserId);
         await qix.app.doSave();
 
-        //publish the app        
-        // console.log('publish app config', publishObj);
-        call.response = await qix.app.publish(streamId, newAppName);
-        call.action = 'Publish app';
-        call.request = 'qix.app.publish({ qAppId: appId, qName: newAppName, qStreamId: streamId })';
-        call.url = gitHubLinks.publishApp;
+        // //publish the app        
+        // // console.log('publish app config', publishObj);
+        // call.response = await qix.app.publish(streamId, newAppName);
+        // call.action = 'Publish app';
+        // call.request = 'qix.app.publish({ qAppId: appId, qName: newAppName, qStreamId: streamId })';
+        // call.url = gitHubLinks.publishApp;
         REST_Log(call, generationUserId);
     } catch (error) {
         console.error('error in reloadAppAndReplaceScriptviaEngine via Enigma.JS, did you used the correct schema definition in the settings.json file?', error);
@@ -347,18 +339,14 @@ export function publishApp(appGuid, appName, streamId, customerName, generationU
     check(streamId, String);
 
     try {
-        const result = HTTP.call('put', qlikServer + '/qrs/app/' + appGuid + '/publish', {
-                headers: {
-                    'hdr-usr': senseConfig.headerValue,
-                    'X-Qlik-xrfkey': senseConfig.xrfkey
-                },
-                params: {
-                    name: appName,
-                    stream: streamId,
-                    xrfkey: senseConfig.xrfkey
-                }
-            })
-            //logging into database
+        const result = HTTP.put(qlikServer + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
+            headers: {
+                'hdr-usr': senseConfig.headerValue,
+                'X-Qlik-xrfkey': senseConfig.xrfkey
+            }
+        });
+
+        //logging into database
         const call = {};
         call.action = 'Publish app';
         call.request = 'HTTP.call(put, http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey + ", {headers: {'hdr-usr': " + senseConfig.headerValue, +'X-Qlik-xrfkey:' + senseConfig.xrfkey + '}';
