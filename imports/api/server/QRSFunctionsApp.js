@@ -93,11 +93,11 @@ async function copyTemplatesToQRSFolder() {
             throw new Meteor.Error("Could not list the directory.", err)
         }
 
-        files.forEach(function(fileName, index) {
+        files.forEach(async function(fileName, index) {
             var appName = fileName.substr(0, fileName.indexOf('.'));
             var filePath = newFolder + '\\' + fileName;
             try {
-                uploadApp(filePath, getFilesizeInBytes(filePath), appName)
+                var appId = await uploadApp(filePath, getFilesizeInBytes(filePath), appName)
             } catch (err) { throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err) }
         })
     }))
@@ -321,53 +321,53 @@ export function importApp(fileName, name, generationUserId = 'no user set') {
 };
 
 //https://www.npmjs.com/package/request#forms
-function uploadApp(filePath, fileSize, appName) {
-    console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
-    var formData = {
-        my_file: fs.createReadStream(filePath)
-    };
-    request.post({
-        url: qlikServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
-        headers: {
-            'Content-Type': 'application/vnd.qlik.sense.app',
-            'hdr-usr': senseConfig.headerValue,
-            'X-Qlik-xrfkey': senseConfig.xrfkey
-        },
-        formData: formData
-    }, function optionalCallback(err, httpResponse, body) {
-        if (err) {
-            return console.error('upload failed:', err);
-        }
-        console.log('Upload successful!  Server responded with:', body);
-    });
-}
 // function uploadApp(filePath, fileSize, appName) {
-
-//     return new Promise(function(resolve, reject) {
-//         console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
-//         var formData = {
-//             my_file: fs.createReadStream(filePath)
-//         };
-
-//         request.post({
-//             url: qlikServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
-//             headers: {
-//                 'Content-Type': 'application/vnd.qlik.sense.app',
-//                 'hdr-usr': senseConfig.headerValue,
-//                 'X-Qlik-xrfkey': senseConfig.xrfkey
-//             },
-//             formData: formData
-//         }, function(error, res, body) {
-//             if (!error && res.statusCode == 200) {
-//                 console.log('Uploaded ' + appName + ' to Qlik Sense and got appID: ' + body.id);
-//                 resolve(body.id);
-//             } else {
-//                 console.error(error);
-//                 reject(error);
-//             }
-//         });
+//     console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
+//     var formData = {
+//         my_file: fs.createReadStream(filePath)
+//     };
+//     request.post({
+//         url: qlikServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
+//         headers: {
+//             'Content-Type': 'application/vnd.qlik.sense.app',
+//             'hdr-usr': senseConfig.headerValue,
+//             'X-Qlik-xrfkey': senseConfig.xrfkey
+//         },
+//         formData: formData
+//     }, function optionalCallback(err, httpResponse, body) {
+//         if (err) {
+//             return console.error('upload failed:', err);
+//         }
+//         console.log('Upload successful!  Server responded with:', body);
 //     });
 // }
+function uploadApp(filePath, fileSize, appName) {
+
+    return new Promise(function(resolve, reject) {
+        console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
+        var formData = {
+            my_file: fs.createReadStream(filePath)
+        };
+
+        request.post({
+            url: qlikServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
+            headers: {
+                'Content-Type': 'application/vnd.qlik.sense.app',
+                'hdr-usr': senseConfig.headerValue,
+                'X-Qlik-xrfkey': senseConfig.xrfkey
+            },
+            formData: formData
+        }, function(error, res, body) {
+            if (!error) {
+                console.log('Uploaded ' + appName + ' to Qlik Sense and got appID: ' + body.id);
+                resolve(body.id);
+            } else {
+                console.error(error);
+                reject(error);
+            }
+        });
+    });
+}
 
 export function copyApp(guid, name, generationUserId) {
     check(guid, String);
