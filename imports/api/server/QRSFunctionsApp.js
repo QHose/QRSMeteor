@@ -359,8 +359,9 @@ function uploadApp(filePath, fileSize, appName) {
             formData: formData
         }, function(error, res, body) {
             if (!error) {
-                console.log('Uploaded ' + appName + ' to Qlik Sense and got appID: ' + body.id);
-                resolve(body.id);
+                var appId = JSON.parse(body).id;
+                console.log('Uploaded "' + appName + '.qvf" to Qlik Sense and got appID: ' + appId);
+                resolve(appId);
             } else {
                 console.error(error);
                 reject(error);
