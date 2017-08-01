@@ -5,6 +5,7 @@
 @font-droid: 'Droid Sans', sans-serif;
 
 @color-green: #62ac1e;
+@color-green-dark: #599b1b;
 @color-green-light: #d8edc8;
 @color-tan: #f8f0e5;
 @color-red: #cc0000;
@@ -18,11 +19,11 @@ body {
 		background-color: @color-tan;
 	}
 	&::-webkit-scrollbar-thumb {
-		background-color: @color-green;
+		background-color: @color-green-dark;
 		outline: 1px solid @color-gray-light;
 	}
 }
-.use-case-selection {
+.home {
     &.header {
         height: 540px;
         background-image: url('./images/bg_intro.jpg');
@@ -47,7 +48,7 @@ body {
                 a,
                 a:hover {
                     color: white;
-                    padding-right: 10px;
+                    padding-right: 15px;
                     padding-bottom: 5px;
                     background-color: rgba(0,0,0,0)
                 }
@@ -70,29 +71,20 @@ body {
         }
     }
     &.main {
-        padding-top: 50px;
-        padding-bottom: 150px;
+        .container {
+            padding-top: 50px;
+            padding-bottom: 150px;
+        }
     }
-    &.footer {
-        height: 160px;
-        background-image: url('./images/bg_footer.jpg');
-        background-size: auto 100%;
-        background-position: bottom right;
-        background-repeat: no-repeat;  
-        padding-top: 60px;
-        padding-left: @padding-left;
-        ul {
-            padding-left: 0;
+    .description {        
+        .dropdown-menu {
             li {
-                font-size: 18px;
-                font-family: @font-oswald;
-                display: inline-block;
-                padding-right: 20px;
-                .logo {
-                    width: 110px;
-                }
-                a {
-                    color: @color-gray;
+                &.active {
+                    background-color: @color-green !important;
+                    a,
+                    a:hover {
+                        background-color: @color-green;
+                    }
                 }
             }
         }
@@ -100,21 +92,34 @@ body {
 }
 .ui.secondary.menu {
     margin-top: 50px;
+    .header.item {
+        padding-left: 40px;
+        padding-top: 40px;
+        padding-bottom: 0;
+    }
 }
-.self-service{
+.ui.attached.tabular.menu {
+    margin-top: 100px;
+}
+.general {
     &.header {
         position: absolute;
         top: 0;
         background-color: @color-green;
-        margin-left: -10px;
+        margin-left: 0;
+        padding-left: 13px;
         width: 100%;
-        ul {
+        z-index: 99999;
+        .navbar-default {
+            background-color: rgba(0,0,0,0) !important;
+            border: 0 !important;
+            .navbar-collapse {
+                padding-left: 10px;
+            }
+        }
+        .nav {
             font-family: @font-oswald;
             font-size: 14px;
-            padding: 0;
-            margin: 0;
-            line-height: 5px;
-            display: inline-block;
             &.navbar-left {                
                 li {
                     display: inline-block;
@@ -123,24 +128,31 @@ body {
                     padding-bottom: 15px;
                     a {
                         color: white;
-                        padding-right: 13px;
+                        padding-right: 15px;
                         padding-bottom: 5px;
                         background-color: rgba(0,0,0,0);
+                        padding-bottom: 0;
                         &:hover {
                             color: @color-tan;
                         }
                     }
-                    &.active,
+                    &.active, 
                     &.active:hover {
                         color: white;
                         text-align: center;
                         padding-left: 0;
                         padding-right: 0;
+                        padding-bottom: 0;
                         .fa {
                             font-size: 7px;
                             display: block;
                         }
                         &:after {
+                            font-family: FontAwesome;
+                            font-size: 7px;
+                            content: "\f111";
+                            display: block;
+                        }&:after {
                             font-family: FontAwesome;
                             font-size: 7px;
                             content: "\f111";
@@ -152,7 +164,6 @@ body {
             &.navbar-right {
                 li {
                     display: inline-block;
-                    // vertical-align: top;
                     padding: 15px;
                     &.label {
                         color: white;
@@ -167,10 +178,68 @@ body {
                         padding-right: 10px;
                     }
                     .dropdown-menu {
-                        // display: none;
-                        visibility: hidden;
+                        display: none;
+                        li {
+                            display: block; 
+                            padding: 0;
+                            &.active {
+                                background-color: @color-green !important;
+                                a,
+                                a:hover {
+                                    background-color: @color-green;
+                                }
+                            }
+                        }
                     }
                 }
+            }
+        }
+    }
+    &.footer {
+        &.sticky {
+            position: absolute;
+            bottom: 0;
+            width: 100%;    
+        }
+        .container-fluid {
+            height: 160px;
+            background-image: url('./images/bg_footer.jpg');
+            background-size: auto 100%;
+            background-position: bottom center;
+            background-repeat: no-repeat;  
+            padding-top: 60px;
+            padding-left: 0;
+            ul {
+                padding-left: 0;
+                li {
+                    font-size: 18px;
+                    font-family: @font-oswald;
+                    display: inline-block;
+                    padding-right: 20px;
+                    text-transform: uppercase;
+                    .logo {
+                        width: 110px;
+                    }
+                    a {
+                        color: @color-gray;
+                    }
+                }
+            }
+        }
+    }
+    &.footer-top {
+        padding-bottom: 50px;
+        font-size: 18px;
+        font-family: @font-oswald;
+        &.sticky {
+            position: absolute;
+            bottom: 160px;
+            width: 100%;    
+        }
+        a {
+            color: @color-gray;
+            &:hover {
+                color: @color-green-dark;
             }
         }
     }

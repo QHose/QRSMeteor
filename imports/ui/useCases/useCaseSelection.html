@@ -2,7 +2,7 @@
     {{> modalSaaSautomation}}
     
     {{> modalSaaSautomation}}
-    <section class="use-case-selection header">
+    <section class="home header">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                  <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,22 +15,18 @@
                 </button>
                 <!--<a class="navbar-brand" href="#">Brand</a>-->
                 </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-left">
                         <li class="active">
                             <a href="/">HOME<span class="sr-only">(current)</span></a>
                             <i class="fa fa-circle" aria-hidden="true"></i>
                         </li>
+                        <li><a href="{{webIntegrationDemo}}">EMBED QLIK SENSE</a></li>
                         <li><a href="{{pathFor 'selfService'}}">SELF SERVICE</a></li>
                         <li><a href="{{pathFor 'impress'}}">SASS PROVISIONING</a></li>
-                        <li><a href="{{webIntegrationDemo}}">EMBED QLIK SENSE</a></li>
                         <li><a href="{{pathFor 'documentation'}}">DEEP DIVE QLIK APIS</a></li>
-                        <li><a href="{{pathFor 'documentation'}}">VIDEO LIBRARY</a></li>
+                        <li><a href="{{pathFor 'documentation'}}?tab=video">VIDEO LIBRARY</a></li>
                     </ul>
-                    <!--<ul name="task" class="">
-                        <li>{{text}}</li>
-                    </ul>-->
                 </div>
             </div>
         </nav>
@@ -39,7 +35,7 @@
             <div class="row">
                 <div class="description">
                     <h1>Saas Demo</h1>
-                    <p>Have embedding questions?  Want to learn more about our embedding approaches, technology and relevant use cases with Qlik?  We have answers – explore further.</p>
+                    <p>Have embedding questions? Want to learn more about our embedding approaches, technology and relevant use cases with Qlik?  We have answers – explore further.</p>
                     <p>Map your road to embedding analytics success here.</p>
                     <p>Select your role to start your journey</p>
                     <p>     
@@ -48,27 +44,28 @@
                                 {{userRole}} <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="#" data="Developer">Developer</a></li>
-                                <li><a href="#" data="Product Owner">Product Owner</a></li>
-                                <li><a href="#" data="Hosting Ops Professional">Hosting Ops Professional</a></li>
-                                <li><a href="#" data="Business Analyst">Business Analyst</a></li>
-                                <li><a href="#" data="C-Level executive, non-technical">C-Level executive, non-technical</a></li>
+                                <li><a href="{{webIntegrationDemo}}?ur=1" data="Developer">Developer</a></li>
+                                <li><a href="{{webIntegrationDemo}}?ur=2" data="Product Owner">Product Owner</a></li>
+                                <li><a href="{{pathFor 'impress'}}" data="Hosting Ops Professional">Hosting Ops Professional</a></li>
+                                <li><a href="{{pathFor 'selfService'}}" data="Business Analyst">Business Analyst</a></li>
+                                <li><a href="{{webIntegrationDemo}}?ur=5" data="CTO">CTO</a></li>
+                                <li><a href="{{pathFor 'selfService'}}" data="C-Level executive, non-technical">C-Level executive, non-technical</a></li>
                             </ul>
                         </div>
                     </p>
                 </div>
             </div>
-        </div>
+        </div> 
     </section>
-    <section class="use-case-selection main">
+    <section class="home main">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-offset-3 col-md-3">
                     <h1>Video Library</h1>
                     <p>For a deeper dive where is my video resource playlist?</p>
                     <p><button type="button" class="btn btn-default">Video Resource Library</button></p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <img src="./images/image_VideoLibrary.jpg">
                 </div>
             </div>
