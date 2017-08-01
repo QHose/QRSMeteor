@@ -1,39 +1,114 @@
-import { Meteor } from 'meteor/meteor';
-import { http } from 'meteor/meteor';
-import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
+import {
+    Meteor
+} from 'meteor/meteor';
+import {
+    http
+} from 'meteor/meteor';
+import {
+    Apps,
+    TemplateApps,
+    GeneratedResources
+} from '/imports/api/apps';
 import * as QSStream from '/imports/api/server/QRSFunctionsStream';
-import { gitHubLinks } from '/imports/ui/UIHelpers';
+import {
+    gitHubLinks
+} from '/imports/ui/UIHelpers';
 
 //import meteor collections
-import { Streams } from '/imports/api/streams';
-import { Customers } from '/imports/api/customers';
+import {
+    Streams
+} from '/imports/api/streams';
+import {
+    Customers
+} from '/imports/api/customers';
 
 //import config for Qlik Sense QRS and Engine API
-import { senseConfig, enigmaServerConfig, authHeaders } from '/imports/api/config.js';
-import { APILogs, REST_Log } from '/imports/api/APILogs';
+import {
+    senseConfig,
+    enigmaServerConfig,
+    authHeaders,
+    QRSconfig
+} from '/imports/api/config.js';
+import {
+    APILogs,
+    REST_Log
+} from '/imports/api/APILogs';
 import lodash from 'lodash';
 _ = lodash;
 
 //install NPM modules
 const fs = require('fs-extra');
 const enigma = require('enigma.js');
+var QRS = require('qrs');
+var promise = require('bluebird');
+var request = require('request');
 
 const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
 
-export async function checkTemplateAppExist() {
-    //get all apps from sense
+export async function checkInitialEnvironment() {
+    console.log('#############################');
+    console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
+
+
     Meteor.call('updateLocalSenseCopy');
+    checkTemplateStreamAndApps();
 
-    //see if there are any apps published in the templates streams
-    // if (!Apps.find({ "stream.name": "Templates" }).count()) {
-    console.log('no template apps found, so upload from the templates dir.');
-    var qix = await enigma.getService('qix', enigmaServerConfig);
-    var streams = await qix.GetStreamList();
-    console.log('streams via enigma are ', streams);
-
-
-    // }
 }
+
+function checkTemplateStreamAndApps() {
+    console.log('Check if the template stream exists?')
+    if (!Streams.find({
+            "name": "Templates"
+        }).count()) {
+        console.warn('ERROR, Template stream does NOT yet exist');
+
+    } else {
+        console.log('OK: Templates stream is already available')
+    }
+
+    //check if template apps have been uploaded and published in the templates stream
+    if (true) { // (!Apps.find({ "stream.name": "Templates" }).count()) {
+        console.log('no template apps found, so upload from the templates dir.');
+        copyTemplatesToQRSFolder();
+    } else {
+        console.log('OK: Templates stream is already available')
+    }
+
+}
+
+//copy template apps from the github folder to the %ProgramData%\Qlik\Sense\Apps\<login domain>\<login user> folder.. (this is required by the API)
+async function copyTemplatesToQRSFolder() {
+    var newFolder = Meteor.settings.private.templateAppsTo + '\\' + process.env.USERDOMAIN + '\\' + process.env.USERNAME;
+    try {
+        await fs.copy(Meteor.settings.private.templateAppsFrom, newFolder, {
+            overwrite: true
+        }); //"QLIK-AB0Q2URN5T\\Qlikexternal",
+    } catch (err) {
+        console.error('error copy Templates from ' + Meteor.settings.private.templateAppsFrom + ' To QRSFolder ' + Meteor.settings.private.templateAppsDir, err);
+    }
+
+    //Read all files in the template apps folder and upload them to Qlik Sense.
+    fs.readdir(newFolder, Meteor.bindEnvironment(function(err, files) {
+        if (err) {
+            throw new Meteor.Error("Could not list the directory.", err)
+        }
+
+        files.forEach(function(fileName, index) {
+            var appName = fileName.substr(0, fileName.indexOf('.'));
+            var filePath = newFolder + '\\' + fileName;
+            try {
+                uploadApp(filePath, getFilesizeInBytes(filePath), appName)
+            } catch (err) { throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err) }
+        })
+    }))
+}
+
+function getFilesizeInBytes(filename) {
+    const stats = fs.statSync(filename)
+    const fileSizeInBytes = stats.size
+    return fileSizeInBytes
+}
+
 
 export function generateStreamAndApp(customers, generationUserId) {
     // console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
@@ -101,10 +176,9 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
     try {
         //connect to the engine
         var qix = await enigma.getService('qix', config);
-        console.log('############### Connected');
         var call = {};
-        call.action = 'Connect to Qlik Sense Engine API';
-        call.request = 'Connect to Engine (using EnigmaJS) using an appID: ' + appId;
+        call.action = 'Connect to Qlik Sense';
+        call.request = 'Connect to Engine API (using Enigma.js) using an appID: ' + appId;
         call.url = gitHubLinks.replaceAndReloadApp;
         REST_Log(call, generationUserId);
 
@@ -191,7 +265,9 @@ function checkCustomersAreSelected(customers) {
 
 function checkTemplateAppExists(generationUserId) {
     //These are the apps that the OEM partner has in his database, but do they still exists on the qliks sense side?
-    var templateApps = TemplateApps.find({ 'generationUserId': Meteor.userId() })
+    var templateApps = TemplateApps.find({
+            'generationUserId': Meteor.userId()
+        })
         .fetch();
     if (templateApps.length === 0) { //user has not specified a template
         throw new Meteor.Error('No Template', 'user has not specified a template for which apps can be generated');
@@ -210,6 +286,88 @@ function checkTemplateAppExists(generationUserId) {
     return templateApps;
 };
 
+// For a system service account, the app must be in the %ProgramData%\Qlik\Sense\Repository\DefaultApps folder.
+// For any other account, the app must be in the %ProgramData%\Qlik\Sense\Apps\<login domain>\<login user> folder.
+//so you have to copy your apps there first. in a fresh sense installation.
+export function importApp(fileName, name, generationUserId = 'no user set') {
+    // check(fileName, String);
+    // check(name, String);
+    // console.log('QRS Functions import App, with name ' + name + ', with fileName: ', fileName);
+
+    // try {
+    //     const call = {};
+    //     call.action = 'Import app';
+    //     call.url = 'http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-App-Import-App.htm'
+    //     call.request = qlikServer + '/qrs/app/import?keepData=true&name=' + name + '&xrfkey=' + senseConfig.xrfkey; //using header auth.
+    //     call.response = HTTP.post(call.request, {
+    //         headers: {
+    //             'hdr-usr': senseConfig.headerValue,
+    //             'X-Qlik-xrfkey': senseConfig.xrfkey
+    //         },
+    //         data: '"Sales.qvf"'
+    //     });
+
+    //     REST_Log(call, generationUserId);
+    //     var newGuid = call.response.data.id;
+    //     return newGuid;
+    // } catch (err) {
+    //     console.error(err);
+    //     const call = {};
+    //     call.action = 'Import app FAILED';
+    //     call.response = err.message;
+    //     REST_Log(call, generationUserId);
+    //     throw new Meteor.Error('Import app failed', err.message);
+    // }
+};
+
+//https://www.npmjs.com/package/request#forms
+function uploadApp(filePath, fileSize, appName) {
+    console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
+    var formData = {
+        my_file: fs.createReadStream(filePath)
+    };
+    request.post({
+        url: qlikServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
+        headers: {
+            'Content-Type': 'application/vnd.qlik.sense.app',
+            'hdr-usr': senseConfig.headerValue,
+            'X-Qlik-xrfkey': senseConfig.xrfkey
+        },
+        formData: formData
+    }, function optionalCallback(err, httpResponse, body) {
+        if (err) {
+            return console.error('upload failed:', err);
+        }
+        console.log('Upload successful!  Server responded with:', body);
+    });
+}
+// function uploadApp(filePath, fileSize, appName) {
+
+//     return new Promise(function(resolve, reject) {
+//         console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
+//         var formData = {
+//             my_file: fs.createReadStream(filePath)
+//         };
+
+//         request.post({
+//             url: qlikServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
+//             headers: {
+//                 'Content-Type': 'application/vnd.qlik.sense.app',
+//                 'hdr-usr': senseConfig.headerValue,
+//                 'X-Qlik-xrfkey': senseConfig.xrfkey
+//             },
+//             formData: formData
+//         }, function(error, res, body) {
+//             if (!error && res.statusCode == 200) {
+//                 console.log('Uploaded ' + appName + ' to Qlik Sense and got appID: ' + body.id);
+//                 resolve(body.id);
+//             } else {
+//                 console.error(error);
+//                 reject(error);
+//             }
+//         });
+//     });
+// }
 
 export function copyApp(guid, name, generationUserId) {
     check(guid, String);
@@ -224,7 +382,10 @@ export function copyApp(guid, name, generationUserId) {
         call.url = gitHubLinks.copyApp;
         call.response = HTTP.post(call.request, {
             headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey, "name": name },
+            params: {
+                'xrfkey': senseConfig.xrfkey,
+                "name": name
+            },
             data: {}
         })
         REST_Log(call, generationUserId);
@@ -244,7 +405,9 @@ export function copyApp(guid, name, generationUserId) {
 
 function checkStreamStatus(customer, generationUserId) {
     // console.log('checkStreamStatus for: ' + customer.name);
-    var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
+    var stream = Streams.findOne({
+        name: customer.name
+    }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
     var streamId = '';
     if (stream) {
         // console.log('Stream already exists: ', stream.id);
@@ -281,7 +444,9 @@ export function getApps() {
         call.request = qlikServer + '/qrs/app/full)';
         call.response = HTTP.get(qlikServer + '/qrs/app/full', {
             headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey }
+            params: {
+                'xrfkey': senseConfig.xrfkey
+            }
         });
         // REST_Log(call,generationUserId);
         return call.response.data;
@@ -350,8 +515,12 @@ function createTag(name) {
     try {
         const result = HTTP.post(qlikServer + '/qrs/Tag', {
             headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey },
-            data: { "name": name }
+            params: {
+                'xrfkey': senseConfig.xrfkey
+            },
+            data: {
+                "name": name
+            }
         })
 
         //logging only
@@ -387,8 +556,15 @@ function createSelection(type, guid) {
     try {
         const result = HTTP.post(qlikServer + '/qrs/Selection', {
             headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey },
-            data: { items: [{ type: type, objectID: guid }] }
+            params: {
+                'xrfkey': senseConfig.xrfkey
+            },
+            data: {
+                items: [{
+                    type: type,
+                    objectID: guid
+                }]
+            }
         })
         console.log('the result of selection for type: ', type + ' ' + guid);
         console.log(result);
@@ -406,7 +582,9 @@ function deleteSelection(selectionId) {
     try {
         const result = HTTP.delete(qlikServer + '/qrs/Selection/' + selectionId, {
             headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey }
+            params: {
+                'xrfkey': senseConfig.xrfkey
+            }
         })
         console.log(result);
         return result.id;
@@ -429,7 +607,9 @@ function addTagViaSyntheticToType(type, selectionId, tagGuid) {
     try {
         const result = HTTP.put(qlikServer + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
             headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey },
+            params: {
+                'xrfkey': senseConfig.xrfkey
+            },
             data: {
                 "latestModifiedDate": buildModDate(),
                 "properties": [{

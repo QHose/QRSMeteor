@@ -107,21 +107,31 @@ if (Meteor.isServer) {
 export const engineConfig = _engineConfig;
 export const senseConfig = _senseConfig;
 
-
-
 function generateXrfkey() {
     return Random.hexString(16);
 }
 
 // //https://www.npmjs.com/package/qrs
+//HEADER AUTHENTICATION
+export const QRSconfig = {
+    authentication: 'header',
+    host: senseConfig.host,
+    port: senseConfig.port,
+    useSSL: false,
+    virtualProxy: _senseConfig.virtualProxy, //header proxy
+    headerKey: _senseConfig.headerKey,
+    headerValue: _senseConfig.headerValue, //'mydomain\\justme'
+};
+
+// //certificates did not work
 // export const QRSconfig = {
 //     authentication: 'certificates',
-//     host: _engineConfig.host,
-//     useSSL: true,
+//     host: senseConfig.host,
+//     useSSL: false,
 //     ca: _engineConfig.ca,
 //     key: _engineConfig.key,
 //     cert: _engineConfig.cert,
-//     port: _engineConfig.port,
+//     port: Meteor.settings.private.qrsPort, //4242
 //     headerKey: 'X-Qlik-User',
 //     headerValue: `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`
 // };

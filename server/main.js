@@ -69,7 +69,7 @@ Meteor.startup(function() {
             Meteor.call('removeGeneratedResources', {});
         }, 1 * 86400000); //remove all logs every 1 day
     }
-    QSApp.checkTemplateAppExist();
+    QSApp.checkInitialEnvironment();
 });
 
 
