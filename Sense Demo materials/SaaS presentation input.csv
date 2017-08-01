@@ -282,6 +282,8 @@ $(""#btn_1"").click(function() {
 "API -  generic introduction","Introduction to web authentication methods (in general)","See this [blog](https://blog.risingstack.com/web-authentication-methods-explained/) if you want to have an overview of the methods people use on the internet to authenticate users between systems. ",,,,,,,,,
 "API -  generic introduction","Introduction to web authentication methods (in general)","Cookies",,,,,,,,,
 "Web integration","Overview web integration","<iframe class=""SenseEmbedFrame"" src=""/webIntegration_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
+"Web integration","Overview web integration","Source: [https://webapps.qlik.com/#/](https://webapps.qlik.com/#/)",,,,,,,,,
+"Web integration","Examples of embedded apps","<iframe class=""SenseEmbedFrame"" src=""https://webapps.qlik.com/#/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Demo with integration.qlik.com",
 "Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,"","","","","         0","0","Demo with integration.qlik.com",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Video: What do we mean with embedding?","Here we embedded/integrated a YouTube video... ",,"","","","","         0","0","Technical - 1 day",
@@ -646,11 +648,11 @@ sessionAppFromApp.doReload().then(function(result){
 "Web integration","Embed Qlik Sense in IIS","https://youtu.be/ybGIYdHenqE",,,,,,,,,
 "Web integration","More information","Always checkout Stefan Walthers posts. Like this [web integration tutorial](https://github.com/stefanwalther/awesome-qap#building-visualization-extensions)",,"","","","","         0","0","Technical - 1 day",
 "Web integration","More information","[branch.qlik.com](http://branch.qlik.com)",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Web integration examples","[Marketing 360](http://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","Technical - 1 hour",
-"Web integration","Web integration examples","[European datamarket](http://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","Technical - 1 day, PreSales",
-"Web integration","Web integration examples","More demos on [Qlik Web integration demo page](http://webapps.qlik.com/#/)",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Web integration examples","web - marketing 360 screenshot.png",,"","","","","         0","0","Technical - 1 hour",
-"Web integration","Web integration examples","Create a [custom hub](http://www.axisgroup.com/simple-hub/) using the getApplist API",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Web integration examples","[Marketing 360](http://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Web integration examples","[European datamarket](http://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","Technical - 1 day, PreSales, Introduction - 30 minutes",
+"Web integration","Web integration examples","More demos on [Qlik Web integration demo page](http://webapps.qlik.com/#/)",,"","","","","         0","0","Technical - 1 day, Introduction - 30 minutes",
+"Web integration","Web integration examples","web - marketing 360 screenshot.png",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Web integration examples","Create a [custom hub](http://www.axisgroup.com/simple-hub/) using the getApplist API",,"","","","","         0","0","Technical - 1 day, Introduction - 30 minutes",
 "Web integration","Performance tips","9/10 times any performance issues within the Capabilities API is due to the developer not cleaning up after a `getObject` call",,,,,,,,,
 "Web integration","Performance tips","```javascript
 let vis = qlik.app.visualization.get('id')
@@ -673,7 +675,7 @@ Which all will react to every selection you make in the app and start fetching d
 
 That's usually the main culprit when people experience that the app gets slow over time. (Source: Alexander Karlsson)",,,,,,,,,
 "Web integration","Performance tips","Bundle size: `require.js` is always needed, `single.js` is the entry point for the Single Integration API and `qlik.js` is the entry point for the Capabilities API. You would normally not load both the latter ones at the same time though.",,,,,,,,,
-"Web integration","Other topics","This version (3.2) of Qlik Sense is currently using AngularJS version 1.5.[Using AngularJS](http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/Extensions/Content/extensions-angular-introduction.htm)",,"","","","","         0","0","PreSales",
+"Web integration","Other topics","This version (3.2) of Qlik Sense is currently using AngularJS version 1.5.[see Qlik help](http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/Extensions/Content/extensions-angular-introduction.htm)",,"","","","","         0","0","PreSales",
 "Web integration","Other topics","## Qlik Sense uses WebSockets",,"","","","","         0","0","PreSales",
 "Web integration","Other topics","web - Qlik Sense uses WebSockets.png",,"","","","","         0","0","PreSales",
 "Web integration","Videos on Qlik.help: Getting started with the dev-hub","These [videos](http://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm) are designed to help you get started with and improve your knowledge and understanding of the APIs and tools delivered with Qlik Sense and Qlik Analytics Platform.",,"","","","","         0","0","Technical - 1 day",
@@ -957,6 +959,82 @@ or
 "Integration.qlik.com key API calls","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Deep dive, PreSales, SaaS & Power of APIs",
 "Integration.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","The ""loop"" to execute to ensure each *customer* gets each template *app*",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","generationLoop.png",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","QRS: Copy the template app","# make a POST REST API call ",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","QRS: Copy the template app","```javascript
+HTTP.post('http://' + senseHost + ':' + senseConfig.port + '/' + virtualProxy + '/qrs/app/' + guid + '/copy', {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey, ""name"": name },
+            data: {}
+        })
+```",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Connect to Qlik Sense using Enigma.js","Import [engima.js](https://github.com/qlik-oss/enigma.js)",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Connect to Qlik Sense using Enigma.js","# Connect to the engine",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Connect to Qlik Sense using Enigma.js","```javascript
+const config = {
+        schema: engineConfig.QIXSchema,
+        appId: appId,
+        session: {
+            host: engineConfig.host,
+            port: engineConfig.port,
+        },
+        Promise: bluebird,
+        createSocket(url) {
+            return new WebSocket(url, {
+                ca: engineConfig.ca,
+                key: engineConfig.key,
+                cert: engineConfig.cert,
+                headers: {
+                    'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
+                },
+            });
+        },
+        // handleLog: logRow => console.log(JSON.stringify(logRow)),
+    }
+```
+",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Connect to Qlik Sense using Enigma.js","```javascript
+var qix = await enigma.getService('qix', config);
+        console.log('############### Connected');
+```",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Engine: Create a file folder","# Create a windows folder so each customer can save and upload its own files [help](http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/EngineAPI/Content/Classes/AppClass/App-class-CreateConnection-method.htm)",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Engine: Create a file folder","```javascript
+  var qConnectionId = await qix.app.createConnection({
+            ""qName"": customer.name,
+            ""qType"": ""folder"",
+            ""qConnectionString"": customerDataFolder
+        })
+        console.log('created folder connection: ', qConnectionId);
+```",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Engine: Replace the script from the template, reload and save the app","# extract the script so you can find/replace the database connection or anything you like",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Engine: Replace the script from the template, reload and save the app","```
+var script = await qix.app.getScript();
+```",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Engine: Replace the script from the template, reload and save the app","# and insert the new script back into the app",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Engine: Replace the script from the template, reload and save the app","```javascript
+await qix.app.setScript(replaceScript(script))
+```",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Engine: Replace the script from the template, reload and save the app","# Reload the app",,,,,,,,,
+"Integration.qlik.com key API calls","Engine: Replace the script from the template, reload and save the app","```javascript
+await qix.app.doReload()
+```",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","Engine: Replace the script from the template, reload and save the app","# Save the app",,,,,,,,,
+"Integration.qlik.com key API calls","Engine: Replace the script from the template, reload and save the app","```javascript
+await qix.app.doSave();
+```",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","QRS: publish the app","# make a PUT REST API call ",,,,,,,,,
+"Integration.qlik.com key API calls","QRS: publish the app","```javascript
+   const result = HTTP.call('put', qlikServer + '/qrs/app/' + appGuid + '/publish', {
+                headers: {
+                    'hdr-usr': senseConfig.headerValue,
+                    'X-Qlik-xrfkey': senseConfig.xrfkey
+                },
+                query: {
+                    name: appName,
+                    stream: streamId,
+                    xrfkey: senseConfig.xrfkey
+                }
+            })
+```",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","We created a [API overview](http://integration.qlik.com/ApiLogsTable) of the key API requests and responses. Try to generate some apps, or try to login with a user in SaaS provisioning demo step 4 and see the resulting calls. ",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","<div class=""ui one column stackable center aligned page grid"">
    <div class=""column twelve wide"">
@@ -1175,10 +1253,11 @@ function appChangeListener() {
 ""inside an app""",,"","","","","         0","0","Technical - 1 day",
 "Qlik Sense API introduction","How to create the source code?","[Visual studio plugin](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Plugins/Content/Introduction/Plugin-Intro.htm)",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","How to create the source code?","[Development hub](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Dev-Hub/Content/Overview/dev-hub-launch-dev-hub.htm)",,"","","","","         0","0","Deep dive",
-"Qlik Sense API introduction","Certificate authentication requirements","All services in the Qlik Sense deployment authenticate their communication using an SSL certificate. ",,"","","","","         0","0","Deep dive",
-"Qlik Sense API introduction","Certificate authentication requirements","The same certificate can also be used to authenticate with the Qlik Sense Repository Service (QRS) and Proxy (QPS) API. When authenticating using this method, the communication is made directly against the QRS/QPS.",,"","","","","         0","0","Deep dive",
-"Qlik Sense API introduction","Certificate authentication requirements","If APIs are to be accessed from a remote server, client certificates need to be exported from the Qlik Management Console (QMC) and installed on the calling server.",,"","","","","         0","0","Deep dive",
-"Qlik Sense API introduction","Certificate authentication requirements","All requests must carry administrator level permissions",,"","","","","         0","0","Deep dive",
+"Qlik Sense API introduction","Certificate authentication requirements","All services in the Qlik Sense deployment authenticate their communication using an SSL certificate. ",,"","","","","         0","0","PreSales",
+"Qlik Sense API introduction","Certificate authentication requirements","The same certificate can also be used to authenticate with the Qlik Sense Repository Service (QRS) and Proxy (QPS) API. When authenticating using this method, the communication is made directly against the QRS/QPS.",,"","","","","         0","0","PreSales",
+"Qlik Sense API introduction","Certificate authentication requirements","If APIs are to be accessed from a remote server, client certificates need to be exported from the Qlik Management Console (QMC) and installed on the calling server.",,"","","","","         0","0","PreSales",
+"Qlik Sense API introduction","Certificate authentication requirements","All requests must carry administrator level permissions",,"","","","","         0","0","PreSales",
+"Qlik Sense API introduction","How to use a certificate?","<iframe class=""SenseEmbedFrame"" src=""https://github.com/stefanwalther/articles/tree/master/authentication-certificates"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","PreSales",
 "Qlik Sense API introduction","How to debug issues?","Make a simple architecture diagram",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","How to debug issues?","Always start to make the solution as simple as possible",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","How to debug issues?","Try to open the app directly (hub)",,"","","","","         0","0","Deep dive",
@@ -1216,10 +1295,24 @@ function appChangeListener() {
 - Server side?",,"","","","","         0","0","Deep dive",
 "QRS API","Key things to look for when you want to have authenticated REST calls","Make sure you implement a flow if the user is not yet authenticated",,"","","","","         0","0","Deep dive",
 "QRS API","Key things to look for when you want to have authenticated REST calls","[See help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Connect-API-Authenticate-Reqs.htm)",,"","","","","         0","0","Deep dive",
-"QRS API","How to authenticate with the server certificate?","To authenticate using this method:
+"QRS API","How to authenticate with the server certificate? Get certificates from Qlik Sense. (step 1)","To authenticate using this method:
 - The location where the authentication request originates must have a copy of the client SSL certificate.
 - If you plan to access the APIs from a remote server, you must export client certificates from the Qlik Management Console (QMC) and install them on the calling server.",,"","","","","         0","0","Deep dive",
-"QRS API","How to authenticate with the server certificate?","[See exporting certificate](http://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/export-certificates.htm)",,"","","","","         0","0","Deep dive",
+"QRS API","How to authenticate with the server certificate? Get certificates from Qlik Sense. (step 1)","[See exporting certificate](http://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/export-certificates.htm)",,"","","","","         0","0","Deep dive",
+"QRS API","How to connect - using a certificate - step 2","[source](https://github.com/mindspank/enigma-table-rows-example/blob/master/config.js#L6)",,"","","","","         0","0","Deep dive",
+"QRS API","How to connect - using a certificate - step 2","```
+ // config for request to fetch application list from QRS.
+    request: {
+        url: `https://${hostname}:4242/qrs/app?xrfkey=abcdefghijklmnop`,
+        ca: [certificates.ca],
+        cert: certificates.cert,
+        key: certificates.key,
+        headers: {
+            'X-Qlik-User': `UserDirectory=${USERDIRECTORY};UserId=${USER}`,
+            'X-Qlik-Xrfkey': 'abcdefghijklmnop'
+        }
+    }
+```",,"","","","","         0","0","Deep dive",
 "QRS API","How to authenticate with a Windows user account","You must send requests via the windows virtual proxy server URL",,"","","","","         0","0","Deep dive",
 "QRS API","Authenticating with an HTTP header","You can use a custom HTTP header to authenticate requests. This header contains the
 -  user name to be presented to the Qlik Sense Repository Service (QRS) API. 
@@ -1554,23 +1647,109 @@ Basically all the things you can do yourself when you use an app
 - the methods you can call
 - the requests and responses",,"","","","","         0","0","PreSales",
 "Engine API","Introduction video: Engine API explorer","https://www.youtube.com/watch?v=LqcFDe7V-CU",,"","","","","         0","0","PreSales",
-"Engine API","Demo Dev-hub Engine API explorer","Dev-hub",,"","","","","         0","0","Deep dive",
-"Engine API","Demo Dev-hub Engine API explorer","integration demo ",,"","","","","         0","0","Deep dive",
+"Engine API","Demo Dev-hub Engine API explorer","<iframe class=""SenseEmbedFrame"" src=""http://integration.qlik.com:443/anon/dev-hub/engine-api-explorer"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours",
+"Engine API","Demo Dev-hub Engine API explorer","Select a macro 'get applist' and press 'execute'",,"","","","","         0","0","Technical - 2 hours",
+"Engine API","Demo Dev-hub Engine API explorer","It should give you the result below
+```javascript
+{
+ ""jsonrpc"": ""2.0"",
+ ""id"": 3,
+ ""result"": {
+  ""qDocList"": [
+   {
+    ""qDocName"": ""Row level security"",
+    ""qConnectedUsers"": 0,
+    ""qFileTime"": 0,
+    ""qFileSize"": 0,
+    ""qDocId"": ""d0fbb7ce-f217-4678-8798-9ab543b888a0"",
+    ""qMeta"": {
+     ""modifiedDate"": ""2017-05-29T20:48:29.310Z"",
+     ""published"": true,
+     ""publishTime"": ""2017-05-29T20:48:29.191Z"",
+     ""privileges"": [
+      ""read""
+     ],
+     ""description"": """",
+     ""qFileSize"": 585638,
+     ""dynamicColor"": """",
+     ""create"": null,
+     ""stream"": {
+      ""id"": ""aaec8d41-5201-43ab-809f-3063750dfafd"",
+      ""name"": ""Everyone""
+     },
+     ""canCreateDataConnections"": false
+    },
+    ""qLastReloadTime"": ""2017-05-29T20:38:59.118Z"",
+    ""qTitle"": ""Row level security"",
+    ""qThumbnail"": {},
+    ""key"": ""d0fbb7ce-f217-4678-8798-9ab543b888a0"",
+    ""$$hashKey"": ""object:105""
+   },
+   {
+    ""qDocName"": ""Sales"",
+    ""qConnectedUsers"": 0,
+    ""qFileTime"": 0,
+    ""qFileSize"": 0,
+    ""qDocId"": ""768ea089-ffee-4fac-a5ef-a52baed20869"",
+    ""qMeta"": {
+     ""modifiedDate"": ""2017-05-29T20:48:29.557Z"",
+     ""published"": true,
+     ""publishTime"": ""2017-05-29T20:48:29.190Z"",
+     ""privileges"": [
+      ""read""
+     ],
+     ""description"": """",
+     ""qFileSize"": 5087837,
+     ""dynamicColor"": """",
+     ""create"": null,
+     ""stream"": {
+      ""id"": ""aaec8d41-5201-43ab-809f-3063750dfafd"",
+      ""name"": ""Everyone""
+     },
+     ""canCreateDataConnections"": false
+    },
+    ""qLastReloadTime"": ""2017-05-29T20:41:10.508Z"",
+    ""qTitle"": ""Sales"",
+    ""qThumbnail"": {},
+    ""key"": ""768ea089-ffee-4fac-a5ef-a52baed20869"",
+    ""$$hashKey"": ""object:106""
+   },
+   {
+    ""qDocName"": ""Security rules help (2.2.4)"",
+    ""qConnectedUsers"": 0,
+    ""qFileTime"": 0,
+    ""qFileSize"": 0,
+    ""qDocId"": ""2ee1e564-1063-4a34-a50f-05b619b9e4ec"",
+    ""qMeta"": {
+     ""modifiedDate"": ""2017-06-21T10:05:27.873Z"",
+     ""published"": true,
+     ""publishTime"": ""2017-06-21T10:05:27.780Z"",
+     ""privileges"": [
+      ""read""
+     ],
+     ""description"": """",
+     ""qFileSize"": 139260,
+     ""dynamicColor"": """",
+     ""create"": null,
+     ""stream"": {
+      ""id"": ""aaec8d41-5201-43ab-809f-3063750dfafd"",
+      ""name"": ""Everyone""
+     },
+     ""canCreateDataConnections"": false
+    },
+    ""qLastReloadTime"": ""2016-05-10T08:45:10.805Z"",
+    ""qTitle"": ""Security rules help (2.2.4)"",
+    ""qThumbnail"": {},
+    ""key"": ""2ee1e564-1063-4a34-a50f-05b619b9e4ec"",
+    ""$$hashKey"": ""object:107""
+   }
+  ]
+ }
+}
+```",,"","","","","         0","0","Technical - 1 day",
+"Engine API","Connecting to Qlik Sense Server with HTML5 and Enigma.js ","A good tutorial on how to connect to Qlik Sense is created by [Guido Diepen](https://www.guidodiepen.nl/2017/06/connecting-to-qlik-sense-server-with-html5-and-enigma-js/),:",,,,,,,,,
+"Engine API","Connecting to Qlik Sense Server with HTML5 and Enigma.js ","<iframe class=""SenseEmbedFrame"" src=""https://www.guidodiepen.nl/2017/06/connecting-to-qlik-sense-server-with-html5-and-enigma-js/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
 "Engine API","How to connect","engine API - how to connect.png",,"","","","","         0","0","PreSales",
-"Engine API","How to connect - using a certificate","[source](https://github.com/mindspank/enigma-table-rows-example/blob/master/config.js#L6)",,"","","","","         0","0","Deep dive",
-"Engine API","How to connect - using a certificate","```
- // config for request to fetch application list from QRS.
-    request: {
-        url: `https://${hostname}:4242/qrs/app?xrfkey=abcdefghijklmnop`,
-        ca: [certificates.ca],
-        cert: certificates.cert,
-        key: certificates.key,
-        headers: {
-            'X-Qlik-User': `UserDirectory=${USERDIRECTORY};UserId=${USER}`,
-            'X-Qlik-Xrfkey': 'abcdefghijklmnop'
-        }
-    }
-```",,"","","","","         0","0","Deep dive",
 "Engine API","Enigma component architecture","web - enigma integration.png",,"","","","","         0","0","PreSales",
 "Engine API","Example Engine API flow when you create a session object (on the fly) for a chart","API - Engine - get table data.png",,"","","","","         0","0","Deep dive",
 "Engine API","Enigma - Example code get existing object","```
@@ -1638,7 +1817,8 @@ enigma.getService('qix', config).then((qix) => {
 $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
         .then(qixschema => {
 ```",,"","","","","         0","0","Deep dive",
-"Engine API","Connect to engine","```
+"Engine API","Examples code: Connect to engine API via client and server ","# In the browser",,,,,,,,,
+"Engine API","Examples code: Connect to engine API via client and server ","```
 $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
         .then(qixschema => {
             enigma.getService('qix', {
@@ -1652,6 +1832,80 @@ $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
                     }
                 })
 ```",,"","","","","         0","0","Deep dive",
+"Engine API","Examples code: Connect to engine API via client and server ","# server side",,,,,,,,,
+"Engine API","Examples code: Connect to engine API via client and server ","```
+const fs = require('fs');
+const path = require('path');
+const WebSocket = require('ws');
+const enigma = require('enigma.js');
+const qixSchema = require('./node_modules/enigma.js/schemas/qix/3.2/schema.json');
+
+const certificateDir = 'C:/ProgramData/Qlik/Sense/Repository/Exported Certificates/.Local Certificates';
+
+const config = {
+  schema: qixSchema,
+  session: {
+    route: 'app/engineData',
+    host: 'localhost',
+    port: 4747,
+  },
+  createSocket(url) {
+    return new WebSocket(url, {
+      ca: [fs.readFileSync(path.resolve(certificateDir, 'root.pem'))],
+      key: fs.readFileSync(path.resolve(certificateDir, 'client_key.pem')),
+      cert: fs.readFileSync(path.resolve(certificateDir, 'client.pem')),
+      headers: {
+        'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
+      },
+    });
+  },
+  handleLog: logRow => console.log(logRow),
+};
+
+console.log('Connecting to Engine');
+enigma.getService('qix', config).then((qix) => {
+  console.log('Connected');
+  return qix.global.getDocList().then((docList) => {
+    const docs = docList.map(doc => `${doc.qDocName} - ${doc.qDocId}`).join('\n');
+    console.log('--- Your server has the following apps ---');
+    console.log(docs);
+  });
+}).catch((err) => {
+  console.log(`Error when connecting to qix service: ${err}`);
+  process.exit(1);
+});
+```
+
+From: https://github.com/qlik-oss/enigma.js/blob/v1.x/examples/list-apps/index.js",,,,,,,,,
+"Engine API","Connect to enigma 1.1 server side using certificates","# make sure you supply your own Promise library in the config object!",,,,,,,,,
+"Engine API","Connect to enigma 1.1 server side using certificates","I used bluebird below, if you don't specify it you might receive an error. `[TypeError:Cannot assign to read only property 'then' of #<Promise>]`",,,,,,,,,
+"Engine API","Connect to enigma 1.1 server side using certificates","```
+const enigma = require('enigma.js');
+const bluebird = require('bluebird');
+const WebSocket = require('ws');
+```",,,,,,,,,
+"Engine API","Connect to enigma 1.1 server side using certificates","```
+const config = {
+        schema: engineConfig.QIXSchema,
+        appId: appId,
+        session: {
+            host: engineConfig.host,
+            port: engineConfig.port,
+        },
+        Promise: bluebird,
+        createSocket(url) {
+            return new WebSocket(url, {
+                ca: engineConfig.ca,
+                key: engineConfig.key,
+                cert: engineConfig.cert,
+                headers: {
+                    'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
+                },
+            });
+        },
+        handleLog: logRow => console.log(JSON.stringify(logRow)),
+    }
+```",,,,,,,,,
 "Engine API","Create a Session Object","Here we demonstrate how you can create a ""chart object"" on the fly.",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "Engine API","Create a Session Object","```
 qix.app.createSessionObject({
@@ -1920,6 +2174,24 @@ function createCube(app) {
     };
 ```",,"","","","","         0","0","SaaS & Power of APIs",
 "Engine API","Example code: create an app on the fly (e.g. when the user logs in)","[source](https://github.com/mindspank/sessionapp-simple/blob/master/index.js#L48)",,"","","","","         0","0","SaaS & Power of APIs",
+"Engine API","Example: export an app to a JSON file - for version and source control ","```
+const serializeapp = require('serializeapp')
+const enigma = require('enigma.js')
+const WebSocket = require('ws')
+
+enigma.getService('qix', {
+    schema: require(`./node_modules/enigma.js/schemas/qix/3.2/schema.json`),
+    session: {
+        host: 'localhost',
+        port: 4848,
+        secure: false
+    },
+    createSocket: (url) => new WebSocket(url)
+})
+.then(qix => qix.global.openDoc('Executive Dashboard.qvf'))
+.then(app => serializeapp(app))
+.then(result => console.log(result))
+```",,,,,,,,,
 "Engine API","Exercise 1: get a list of apps via the engine API explorer in the dev-hub","Engine API - example screenshot.png",,"","","","","         0","0","Exercises",
 "Engine API","Exercise 2: create a new folder connection to c:\temp","https://youtu.be/HmmZfPjqSMw",,"","","","","         0","0","Exercises",
 "Engine API","Exercise 3: get an existing object","Go to the engine API explorer",,"","","","","         0","0","Exercises",
@@ -2114,6 +2386,14 @@ or
 "Architecture","Video: Activating license and allocating users access","Tip: for OEM use cases I prefer to use `username like *` since the authorization module in your SaaS platform should decide who can enter Qlik Sense and who not...",,,,,,,,,
 "Architecture","Video: Installing Qlik Sense in a single node site - Qlik Sense","https://youtu.be/lx2R6LPKKPo?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Technical - 1 day",
 "Architecture","Video: Installing Qlik Sense in a multi-node site - Qlik Sense","https://youtu.be/RdaNXjUb1vc?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Technical - 1 day",
+"Architecture","Version /source control integration using In4BI","Version Control, Deployment and Governance are important topics when using BI tools in general. For Qlik Sense there is a solution: Platform Manager. In short Platform Manager provides (source: [in4BI](https://in4bi.com/platform-manager-qlik-sense/):",,,,,,,,,
+"Architecture","Version /source control integration using In4BI","Integrated Version Control with ability to use the Qlik Sense MyWork stream as your workspace",,,,,,,,,
+"Architecture","Version /source control integration using In4BI","Simple Deployment to all of your Qlik Sense servers",,,,,,,,,
+"Architecture","Version /source control integration using In4BI","Customizable Workflow/Checklist with built-in authorization",,,,,,,,,
+"Architecture","Version /source control integration using In4BI","Difference Analyses reports",,,,,,,,,
+"Architecture","Version /source control integration using In4BI","Ability to change Library connections during Deployment of your Qlik Sense apps",,,,,,,,,
+"Architecture","Version /source control integration using In4BI","Data Lineage visualizes all dependencies of your Qlik Sense apps",,,,,,,,,
+"Architecture","Version /source control integration using In4BI","<iframe class=""SenseEmbedFrame"" src=""https://in4bi.com/platform-manager-qlik-sense/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,,,,,,,,
 "Data integration","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","data - create qvd.png",,"","","","","         0","0","PreSales",
