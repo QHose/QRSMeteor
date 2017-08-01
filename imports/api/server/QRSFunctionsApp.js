@@ -44,60 +44,75 @@ var promise = require('bluebird');
 var request = require('request');
 
 const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
+var templateStreamId = '';
 
 export async function checkInitialEnvironment() {
     console.log('#############################');
     console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
-
-
     Meteor.call('updateLocalSenseCopy');
     checkTemplateStreamAndApps();
-
 }
 
-function checkTemplateStreamAndApps() {
+async function checkTemplateStreamAndApps() {
     console.log('Check if the template stream exists?')
-    if (!Streams.find({
-            "name": "Templates"
-        }).count()) {
-        console.warn('ERROR, Template stream does NOT yet exist');
-
+    templateStreamId = QSStream.getStreamByName('Templates')[0].id;
+    if (!templateStreamId) {
+        console.warn('Template stream does NOT yet exist');
+        templateStreamId = QSStream.createStream('Templates').id;
     } else {
         console.log('OK: Templates stream is already available')
     }
 
     //check if template apps have been uploaded and published in the templates stream
     if (true) { // (!Apps.find({ "stream.name": "Templates" }).count()) {
-        console.log('no template apps found, so upload from the templates dir.');
-        copyTemplatesToQRSFolder();
+        console.warn('no template apps found, so upload from the templates dir.');
+        var folder = await copyTemplatesToQRSFolder();
+        console.log('apps folder', folder);
+        uploadAndPublishApps(folder);
     } else {
         console.log('OK: Templates stream is already available')
     }
 
 }
 
-//copy template apps from the github folder to the %ProgramData%\Qlik\Sense\Apps\<login domain>\<login user> folder.. (this is required by the API)
+//upload and publish all apps found in the folder to the templates stream
 async function copyTemplatesToQRSFolder() {
     var newFolder = Meteor.settings.private.templateAppsTo + '\\' + process.env.USERDOMAIN + '\\' + process.env.USERNAME;
     try {
         await fs.copy(Meteor.settings.private.templateAppsFrom, newFolder, {
             overwrite: true
         }); //"QLIK-AB0Q2URN5T\\Qlikexternal",
+        return newFolder
     } catch (err) {
         console.error('error copy Templates from ' + Meteor.settings.private.templateAppsFrom + ' To QRSFolder ' + Meteor.settings.private.templateAppsDir, err);
     }
+}
 
-    //Read all files in the template apps folder and upload them to Qlik Sense.
+async function uploadAndPublishApps(newFolder) {
+    console.log('Read all files in the template apps folder and upload them to Qlik Sense.');
     fs.readdir(newFolder, Meteor.bindEnvironment(function(err, files) {
         if (err) {
+            console.error(err);
             throw new Meteor.Error("Could not list the directory.", err)
+        }
+
+        //for each template app found
+        //- lookup template streamID
+        //- upload app
+        //- publish in templates stream
+        console.log('templateStreamId is: ', templateStreamId);
+        if (!templateStreamId) {
+            templateStreamId = QSStream.getStreamByName('Templates')[0].id;
         }
 
         files.forEach(async function(fileName, index) {
             var appName = fileName.substr(0, fileName.indexOf('.'));
             var filePath = newFolder + '\\' + fileName;
             try {
+                console.log('try to upload app: ', fileName);
                 var appId = await uploadApp(filePath, getFilesizeInBytes(filePath), appName)
+                console.log('try to publish app ' + appId + ' intro streamID ' + templateStreamId);
+                publishApp(appId, appName, templateStreamId);
             } catch (err) { throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err) }
         })
     }))
@@ -481,7 +496,7 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
 };
 
 export function publishApp(appGuid, appName, streamId, customerName, generationUserId) {
-    // console.log('Publish app: ' + appName + ' to stream: ' + streamId);
+    console.log('Publish app: ' + appName + ' to stream: ' + streamId);
     check(appGuid, String);
     check(appName, String);
     check(streamId, String);
