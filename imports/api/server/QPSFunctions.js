@@ -62,19 +62,11 @@ export function getVirtualProxies() {
                 'xrfkey': senseConfig.xrfkey,
             }
         });
-        console.log('virtual proxy config: ', response);
-        const content = JSON.stringify(response.data);
+        // console.log('virtual proxy config: ', response);
         var file = Meteor.settings.private.virtualProxyFilePath + 'virtualProxyDefinitions.json';
 
-        // With Promises:
-        fs.outputJson(file, content)
-            .then(() => fs.readJson(file))
-            .then(data => {
-                console.log(data);
-            })
-            .catch(err => {
-                console.error(err);
-            })
+        // SAVE PROXY FILE TO DISK
+        fs.outputFile(file, JSON.stringify(response.data, null, 2), 'utf-8');
 
     } catch (err) {
         console.error('create virtual proxy failed', err);

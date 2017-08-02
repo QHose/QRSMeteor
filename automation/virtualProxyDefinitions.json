@@ -1,1 +1,253 @@
-"[{\"id\":\"eafc4a92-901d-4dbf-bc94-f7bfde3da8e0\",\"prefix\":\"hdr\",\"description\":\"header\",\"authenticationModuleRedirectUri\":\"\",\"sessionModuleBaseUri\":\"\",\"loadBalancingModuleBaseUri\":\"\",\"loadBalancingServerNodes\":[{\"id\":\"6c04e46f-6da9-4bb2-8d12-a9a05ba687ee\",\"name\":\"Central\",\"hostName\":\"qlik-ab0q2urn5t\",\"temporaryfilepath\":\"C:\\\\Users\\\\Qlikexternal\\\\AppData\\\\Local\\\\Temp\\\\\",\"roles\":[{\"id\":\"7a9bb9dd-be3d-42c2-9e8f-0011823a15ac\",\"definition\":0,\"privileges\":null},{\"id\":\"81b07bd0-ed5b-4f2e-b04a-a1d48fc5f49c\",\"definition\":1,\"privileges\":null},{\"id\":\"04bca334-626a-4dc7-99bc-39790250f811\",\"definition\":2,\"privileges\":null},{\"id\":\"7c01080a-c616-47ab-bc30-8980c109d925\",\"definition\":3,\"privileges\":null},{\"id\":\"9939a1f2-8763-43d5-8237-ae287f219a2a\",\"definition\":4,\"privileges\":null},{\"id\":\"ceb5c8b8-fb17-47e4-9342-4907bef00748\",\"definition\":5,\"privileges\":null}],\"serviceCluster\":{\"id\":\"9cca29c6-12ae-4417-b6f3-e1dbebae9eae\",\"name\":\"ServiceCluster\",\"privileges\":null},\"privileges\":null}],\"authenticationMethod\":2,\"headerAuthenticationMode\":2,\"headerAuthenticationHeaderName\":\"hdr-usr\",\"headerAuthenticationStaticUserDirectory\":\"\",\"headerAuthenticationDynamicUserDirectory\":\"$ud\\\\\\\\$id\",\"anonymousAccessMode\":0,\"windowsAuthenticationEnabledDevicePattern\":\"Windows\",\"sessionCookieHeaderName\":\"X-Qlik-Session-hdr\",\"sessionCookieDomain\":\"\",\"additionalResponseHeaders\":\"\",\"sessionInactivityTimeout\":30,\"extendedSecurityEnvironment\":false,\"websocketCrossOriginWhiteList\":[],\"defaultVirtualProxy\":false,\"tags\":[],\"samlMetadataIdP\":\"\",\"samlHostUri\":\"\",\"samlEntityId\":\"\",\"samlAttributeUserId\":\"\",\"samlAttributeUserDirectory\":\"\",\"samlAttributeSigningAlgorithm\":0,\"samlAttributeMap\":[],\"jwtAttributeUserId\":\"\",\"jwtAttributeUserDirectory\":\"\",\"jwtPublicKeyCertificate\":\"\",\"jwtAttributeMap\":[],\"magicLinkHostUri\":\"\",\"magicLinkFriendlyName\":\"\",\"privileges\":null},{\"id\":\"0c3259dc-c58f-4941-83ec-ecf62ef652a6\",\"prefix\":\"meteor\",\"description\":\"ticket\",\"authenticationModuleRedirectUri\":\"http://localhost:3000/sso\",\"sessionModuleBaseUri\":\"\",\"loadBalancingModuleBaseUri\":\"\",\"loadBalancingServerNodes\":[{\"id\":\"6c04e46f-6da9-4bb2-8d12-a9a05ba687ee\",\"name\":\"Central\",\"hostName\":\"qlik-ab0q2urn5t\",\"temporaryfilepath\":\"C:\\\\Users\\\\Qlikexternal\\\\AppData\\\\Local\\\\Temp\\\\\",\"roles\":[{\"id\":\"7a9bb9dd-be3d-42c2-9e8f-0011823a15ac\",\"definition\":0,\"privileges\":null},{\"id\":\"81b07bd0-ed5b-4f2e-b04a-a1d48fc5f49c\",\"definition\":1,\"privileges\":null},{\"id\":\"04bca334-626a-4dc7-99bc-39790250f811\",\"definition\":2,\"privileges\":null},{\"id\":\"7c01080a-c616-47ab-bc30-8980c109d925\",\"definition\":3,\"privileges\":null},{\"id\":\"9939a1f2-8763-43d5-8237-ae287f219a2a\",\"definition\":4,\"privileges\":null},{\"id\":\"ceb5c8b8-fb17-47e4-9342-4907bef00748\",\"definition\":5,\"privileges\":null}],\"serviceCluster\":{\"id\":\"9cca29c6-12ae-4417-b6f3-e1dbebae9eae\",\"name\":\"ServiceCluster\",\"privileges\":null},\"privileges\":null}],\"authenticationMethod\":0,\"headerAuthenticationMode\":0,\"headerAuthenticationHeaderName\":\"\",\"headerAuthenticationStaticUserDirectory\":\"\",\"headerAuthenticationDynamicUserDirectory\":\"\",\"anonymousAccessMode\":0,\"windowsAuthenticationEnabledDevicePattern\":\"Windows\",\"sessionCookieHeaderName\":\"X-Qlik-Session-ticket\",\"sessionCookieDomain\":\"\",\"additionalResponseHeaders\":\"Access-Control-Allow-Origin: *\",\"sessionInactivityTimeout\":30,\"extendedSecurityEnvironment\":false,\"websocketCrossOriginWhiteList\":[\"localhost\"],\"defaultVirtualProxy\":false,\"tags\":[],\"samlMetadataIdP\":\"\",\"samlHostUri\":\"\",\"samlEntityId\":\"\",\"samlAttributeUserId\":\"\",\"samlAttributeUserDirectory\":\"\",\"samlAttributeSigningAlgorithm\":0,\"samlAttributeMap\":[],\"jwtAttributeUserId\":\"\",\"jwtAttributeUserDirectory\":\"\",\"jwtPublicKeyCertificate\":\"\",\"jwtAttributeMap\":[],\"magicLinkHostUri\":\"\",\"magicLinkFriendlyName\":\"\",\"privileges\":null},{\"id\":\"8ce2b86f-cb12-45df-951a-33e74335690c\",\"prefix\":\"\",\"description\":\"Central Proxy (Default)\",\"authenticationModuleRedirectUri\":\"\",\"sessionModuleBaseUri\":\"\",\"loadBalancingModuleBaseUri\":\"\",\"loadBalancingServerNodes\":[{\"id\":\"6c04e46f-6da9-4bb2-8d12-a9a05ba687ee\",\"name\":\"Central\",\"hostName\":\"qlik-ab0q2urn5t\",\"temporaryfilepath\":\"C:\\\\Users\\\\Qlikexternal\\\\AppData\\\\Local\\\\Temp\\\\\",\"roles\":[{\"id\":\"7a9bb9dd-be3d-42c2-9e8f-0011823a15ac\",\"definition\":0,\"privileges\":null},{\"id\":\"81b07bd0-ed5b-4f2e-b04a-a1d48fc5f49c\",\"definition\":1,\"privileges\":null},{\"id\":\"04bca334-626a-4dc7-99bc-39790250f811\",\"definition\":2,\"privileges\":null},{\"id\":\"7c01080a-c616-47ab-bc30-8980c109d925\",\"definition\":3,\"privileges\":null},{\"id\":\"9939a1f2-8763-43d5-8237-ae287f219a2a\",\"definition\":4,\"privileges\":null},{\"id\":\"ceb5c8b8-fb17-47e4-9342-4907bef00748\",\"definition\":5,\"privileges\":null}],\"serviceCluster\":{\"id\":\"9cca29c6-12ae-4417-b6f3-e1dbebae9eae\",\"name\":\"ServiceCluster\",\"privileges\":null},\"privileges\":null}],\"authenticationMethod\":0,\"headerAuthenticationMode\":0,\"headerAuthenticationHeaderName\":\"\",\"headerAuthenticationStaticUserDirectory\":\"\",\"headerAuthenticationDynamicUserDirectory\":\"\",\"anonymousAccessMode\":0,\"windowsAuthenticationEnabledDevicePattern\":\"Windows\",\"sessionCookieHeaderName\":\"X-Qlik-Session\",\"sessionCookieDomain\":\"\",\"additionalResponseHeaders\":\"\",\"sessionInactivityTimeout\":30000,\"extendedSecurityEnvironment\":false,\"websocketCrossOriginWhiteList\":[],\"defaultVirtualProxy\":true,\"tags\":[],\"samlMetadataIdP\":\"\",\"samlHostUri\":\"\",\"samlEntityId\":\"\",\"samlAttributeUserId\":\"\",\"samlAttributeUserDirectory\":\"\",\"samlAttributeSigningAlgorithm\":0,\"samlAttributeMap\":[],\"jwtAttributeUserId\":\"\",\"jwtAttributeUserDirectory\":\"\",\"jwtPublicKeyCertificate\":\"\",\"jwtAttributeMap\":[],\"magicLinkHostUri\":\"\",\"magicLinkFriendlyName\":\"\",\"privileges\":null}]"
+[
+  {
+    "id": "eafc4a92-901d-4dbf-bc94-f7bfde3da8e0",
+    "prefix": "hdr",
+    "description": "header",
+    "authenticationModuleRedirectUri": "",
+    "sessionModuleBaseUri": "",
+    "loadBalancingModuleBaseUri": "",
+    "loadBalancingServerNodes": [
+      {
+        "id": "6c04e46f-6da9-4bb2-8d12-a9a05ba687ee",
+        "name": "Central",
+        "hostName": "qlik-ab0q2urn5t",
+        "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
+        "roles": [
+          {
+            "id": "7a9bb9dd-be3d-42c2-9e8f-0011823a15ac",
+            "definition": 0,
+            "privileges": null
+          },
+          {
+            "id": "81b07bd0-ed5b-4f2e-b04a-a1d48fc5f49c",
+            "definition": 1,
+            "privileges": null
+          },
+          {
+            "id": "04bca334-626a-4dc7-99bc-39790250f811",
+            "definition": 2,
+            "privileges": null
+          },
+          {
+            "id": "7c01080a-c616-47ab-bc30-8980c109d925",
+            "definition": 3,
+            "privileges": null
+          },
+          {
+            "id": "9939a1f2-8763-43d5-8237-ae287f219a2a",
+            "definition": 4,
+            "privileges": null
+          },
+          {
+            "id": "ceb5c8b8-fb17-47e4-9342-4907bef00748",
+            "definition": 5,
+            "privileges": null
+          }
+        ],
+        "serviceCluster": {
+          "id": "9cca29c6-12ae-4417-b6f3-e1dbebae9eae",
+          "name": "ServiceCluster",
+          "privileges": null
+        },
+        "privileges": null
+      }
+    ],
+    "authenticationMethod": 2,
+    "headerAuthenticationMode": 2,
+    "headerAuthenticationHeaderName": "hdr-usr",
+    "headerAuthenticationStaticUserDirectory": "",
+    "headerAuthenticationDynamicUserDirectory": "$ud\\\\$id",
+    "anonymousAccessMode": 0,
+    "windowsAuthenticationEnabledDevicePattern": "Windows",
+    "sessionCookieHeaderName": "X-Qlik-Session-hdr",
+    "sessionCookieDomain": "",
+    "additionalResponseHeaders": "",
+    "sessionInactivityTimeout": 30,
+    "extendedSecurityEnvironment": false,
+    "websocketCrossOriginWhiteList": [],
+    "defaultVirtualProxy": false,
+    "tags": [],
+    "samlMetadataIdP": "",
+    "samlHostUri": "",
+    "samlEntityId": "",
+    "samlAttributeUserId": "",
+    "samlAttributeUserDirectory": "",
+    "samlAttributeSigningAlgorithm": 0,
+    "samlAttributeMap": [],
+    "jwtAttributeUserId": "",
+    "jwtAttributeUserDirectory": "",
+    "jwtPublicKeyCertificate": "",
+    "jwtAttributeMap": [],
+    "magicLinkHostUri": "",
+    "magicLinkFriendlyName": "",
+    "privileges": null
+  },
+  {
+    "id": "0c3259dc-c58f-4941-83ec-ecf62ef652a6",
+    "prefix": "meteor",
+    "description": "ticket",
+    "authenticationModuleRedirectUri": "http://localhost:3000/sso",
+    "sessionModuleBaseUri": "",
+    "loadBalancingModuleBaseUri": "",
+    "loadBalancingServerNodes": [
+      {
+        "id": "6c04e46f-6da9-4bb2-8d12-a9a05ba687ee",
+        "name": "Central",
+        "hostName": "qlik-ab0q2urn5t",
+        "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
+        "roles": [
+          {
+            "id": "7a9bb9dd-be3d-42c2-9e8f-0011823a15ac",
+            "definition": 0,
+            "privileges": null
+          },
+          {
+            "id": "81b07bd0-ed5b-4f2e-b04a-a1d48fc5f49c",
+            "definition": 1,
+            "privileges": null
+          },
+          {
+            "id": "04bca334-626a-4dc7-99bc-39790250f811",
+            "definition": 2,
+            "privileges": null
+          },
+          {
+            "id": "7c01080a-c616-47ab-bc30-8980c109d925",
+            "definition": 3,
+            "privileges": null
+          },
+          {
+            "id": "9939a1f2-8763-43d5-8237-ae287f219a2a",
+            "definition": 4,
+            "privileges": null
+          },
+          {
+            "id": "ceb5c8b8-fb17-47e4-9342-4907bef00748",
+            "definition": 5,
+            "privileges": null
+          }
+        ],
+        "serviceCluster": {
+          "id": "9cca29c6-12ae-4417-b6f3-e1dbebae9eae",
+          "name": "ServiceCluster",
+          "privileges": null
+        },
+        "privileges": null
+      }
+    ],
+    "authenticationMethod": 0,
+    "headerAuthenticationMode": 0,
+    "headerAuthenticationHeaderName": "",
+    "headerAuthenticationStaticUserDirectory": "",
+    "headerAuthenticationDynamicUserDirectory": "",
+    "anonymousAccessMode": 0,
+    "windowsAuthenticationEnabledDevicePattern": "Windows",
+    "sessionCookieHeaderName": "X-Qlik-Session-ticket",
+    "sessionCookieDomain": "",
+    "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
+    "sessionInactivityTimeout": 30,
+    "extendedSecurityEnvironment": false,
+    "websocketCrossOriginWhiteList": [
+      "localhost"
+    ],
+    "defaultVirtualProxy": false,
+    "tags": [],
+    "samlMetadataIdP": "",
+    "samlHostUri": "",
+    "samlEntityId": "",
+    "samlAttributeUserId": "",
+    "samlAttributeUserDirectory": "",
+    "samlAttributeSigningAlgorithm": 0,
+    "samlAttributeMap": [],
+    "jwtAttributeUserId": "",
+    "jwtAttributeUserDirectory": "",
+    "jwtPublicKeyCertificate": "",
+    "jwtAttributeMap": [],
+    "magicLinkHostUri": "",
+    "magicLinkFriendlyName": "",
+    "privileges": null
+  },
+  {
+    "id": "8ce2b86f-cb12-45df-951a-33e74335690c",
+    "prefix": "",
+    "description": "Central Proxy (Default)",
+    "authenticationModuleRedirectUri": "",
+    "sessionModuleBaseUri": "",
+    "loadBalancingModuleBaseUri": "",
+    "loadBalancingServerNodes": [
+      {
+        "id": "6c04e46f-6da9-4bb2-8d12-a9a05ba687ee",
+        "name": "Central",
+        "hostName": "qlik-ab0q2urn5t",
+        "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
+        "roles": [
+          {
+            "id": "7a9bb9dd-be3d-42c2-9e8f-0011823a15ac",
+            "definition": 0,
+            "privileges": null
+          },
+          {
+            "id": "81b07bd0-ed5b-4f2e-b04a-a1d48fc5f49c",
+            "definition": 1,
+            "privileges": null
+          },
+          {
+            "id": "04bca334-626a-4dc7-99bc-39790250f811",
+            "definition": 2,
+            "privileges": null
+          },
+          {
+            "id": "7c01080a-c616-47ab-bc30-8980c109d925",
+            "definition": 3,
+            "privileges": null
+          },
+          {
+            "id": "9939a1f2-8763-43d5-8237-ae287f219a2a",
+            "definition": 4,
+            "privileges": null
+          },
+          {
+            "id": "ceb5c8b8-fb17-47e4-9342-4907bef00748",
+            "definition": 5,
+            "privileges": null
+          }
+        ],
+        "serviceCluster": {
+          "id": "9cca29c6-12ae-4417-b6f3-e1dbebae9eae",
+          "name": "ServiceCluster",
+          "privileges": null
+        },
+        "privileges": null
+      }
+    ],
+    "authenticationMethod": 0,
+    "headerAuthenticationMode": 0,
+    "headerAuthenticationHeaderName": "",
+    "headerAuthenticationStaticUserDirectory": "",
+    "headerAuthenticationDynamicUserDirectory": "",
+    "anonymousAccessMode": 0,
+    "windowsAuthenticationEnabledDevicePattern": "Windows",
+    "sessionCookieHeaderName": "X-Qlik-Session",
+    "sessionCookieDomain": "",
+    "additionalResponseHeaders": "",
+    "sessionInactivityTimeout": 30000,
+    "extendedSecurityEnvironment": false,
+    "websocketCrossOriginWhiteList": [],
+    "defaultVirtualProxy": true,
+    "tags": [],
+    "samlMetadataIdP": "",
+    "samlHostUri": "",
+    "samlEntityId": "",
+    "samlAttributeUserId": "",
+    "samlAttributeUserDirectory": "",
+    "samlAttributeSigningAlgorithm": 0,
+    "samlAttributeMap": [],
+    "jwtAttributeUserId": "",
+    "jwtAttributeUserDirectory": "",
+    "jwtPublicKeyCertificate": "",
+    "jwtAttributeMap": [],
+    "magicLinkHostUri": "",
+    "magicLinkFriendlyName": "",
+    "privileges": null
+  }
+]
