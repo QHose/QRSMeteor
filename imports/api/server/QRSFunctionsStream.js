@@ -35,7 +35,7 @@ export function getStreamByName(name) {
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey }
         })
-        return response.data;
+        return response.data[0];
     } catch (err) {
         console.error(err);
         throw new Meteor.Error('get template stream failed', err.message);

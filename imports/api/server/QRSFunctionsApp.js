@@ -44,55 +44,39 @@ var promise = require('bluebird');
 var request = require('request');
 
 const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
-var templateStreamId = '';
 
-export async function checkInitialEnvironment() {
-    console.log('#############################');
+
+// SETUP QLIK SENSE IF FRESH (A NEW INSTALL)
+export function checkInitialEnvironment() {
     console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
     Meteor.call('updateLocalSenseCopy');
-    checkTemplateStreamAndApps();
+
+    var templateStreamId = createTemplatesStream();
+    console.log('!!!! TEMPLATE STREAM ID', templateStreamId);
+    uploadAndPublishTemplateApps(templateStreamId);
 }
 
-async function checkTemplateStreamAndApps() {
+function createTemplatesStream() {
     console.log('Check if the template stream exists?')
-    templateStreamId = QSStream.getStreamByName('Templates')[0].id;
-    if (!templateStreamId) {
+    var stream = QSStream.getStreamByName('Templates');
+
+    if (!stream) {
         console.warn('Template stream does NOT yet exist');
-        templateStreamId = QSStream.createStream('Templates').id;
+        return QSStream.createStream('Templates').id;
     } else {
         console.log('OK: Templates stream is already available')
-    }
-
-    //check if template apps have been uploaded and published in the templates stream
-    if (true) { // (!Apps.find({ "stream.name": "Templates" }).count()) {
-        console.warn('no template apps found, so upload from the templates dir.');
-        var folder = await copyTemplatesToQRSFolder();
-        console.log('apps folder', folder);
-        uploadAndPublishApps(folder);
-    } else {
-        console.log('OK: Templates stream is already available')
-    }
-
-}
-
-//upload and publish all apps found in the folder to the templates stream
-async function copyTemplatesToQRSFolder() {
-    var newFolder = Meteor.settings.private.templateAppsTo + '\\' + process.env.USERDOMAIN + '\\' + process.env.USERNAME;
-    try {
-        await fs.copy(Meteor.settings.private.templateAppsFrom, newFolder, {
-            overwrite: true
-        }); //"QLIK-AB0Q2URN5T\\Qlikexternal",
-        return newFolder
-    } catch (err) {
-        console.error('error copy Templates from ' + Meteor.settings.private.templateAppsFrom + ' To QRSFolder ' + Meteor.settings.private.templateAppsDir, err);
+        return stream.id;
     }
 }
 
-async function uploadAndPublishApps(newFolder) {
-    console.log('Read all files in the template apps folder and upload them to Qlik Sense.');
+// UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM
+async function uploadAndPublishTemplateApps(templateStreamId) {
+    var newFolder = Meteor.settings.private.templateAppsFrom;
+    check(newFolder, String);
+
+    console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder ' + newFolder + ' and upload them to Qlik Sense.');
     fs.readdir(newFolder, Meteor.bindEnvironment(function(err, files) {
         if (err) {
-            console.error(err);
             throw new Meteor.Error("Could not list the directory.", err)
         }
 
@@ -104,10 +88,13 @@ async function uploadAndPublishApps(newFolder) {
             var filePath = newFolder + '\\' + fileName;
             try {
                 console.log('try to upload app: ', fileName);
-                var appId = await uploadApp(filePath, getFilesizeInBytes(filePath), appName)
+                var appId = await uploadApp(filePath, appName);
                 console.log('try to publish app ' + appId + ' intro streamID ' + templateStreamId);
                 publishApp(appId, appName, templateStreamId);
-            } catch (err) { throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err) }
+            } catch (err) {
+                console.error(err);
+                throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
+            }
         })
     }))
 }
@@ -288,64 +275,10 @@ function checkTemplateAppExists(generationUserId) {
     return templateApps;
 };
 
-// For a system service account, the app must be in the %ProgramData%\Qlik\Sense\Repository\DefaultApps folder.
-// For any other account, the app must be in the %ProgramData%\Qlik\Sense\Apps\<login domain>\<login user> folder.
-//so you have to copy your apps there first. in a fresh sense installation.
-export function importApp(fileName, name, generationUserId = 'no user set') {
-    // check(fileName, String);
-    // check(name, String);
-    // console.log('QRS Functions import App, with name ' + name + ', with fileName: ', fileName);
 
-    // try {
-    //     const call = {};
-    //     call.action = 'Import app';
-    //     call.url = 'http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-App-Import-App.htm'
-    //     call.request = qlikServer + '/qrs/app/import?keepData=true&name=' + name + '&xrfkey=' + senseConfig.xrfkey; //using header auth.
-    //     call.response = HTTP.post(call.request, {
-    //         headers: {
-    //             'hdr-usr': senseConfig.headerValue,
-    //             'X-Qlik-xrfkey': senseConfig.xrfkey
-    //         },
-    //         data: '"Sales.qvf"'
-    //     });
-
-    //     REST_Log(call, generationUserId);
-    //     var newGuid = call.response.data.id;
-    //     return newGuid;
-    // } catch (err) {
-    //     console.error(err);
-    //     const call = {};
-    //     call.action = 'Import app FAILED';
-    //     call.response = err.message;
-    //     REST_Log(call, generationUserId);
-    //     throw new Meteor.Error('Import app failed', err.message);
-    // }
-};
-
-//https://www.npmjs.com/package/request#forms
-// function uploadApp(filePath, fileSize, appName) {
-//     console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
-//     var formData = {
-//         my_file: fs.createReadStream(filePath)
-//     };
-//     request.post({
-//         url: qlikServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
-//         headers: {
-//             'Content-Type': 'application/vnd.qlik.sense.app',
-//             'hdr-usr': senseConfig.headerValue,
-//             'X-Qlik-xrfkey': senseConfig.xrfkey
-//         },
-//         formData: formData
-//     }, function optionalCallback(err, httpResponse, body) {
-//         if (err) {
-//             return console.error('upload failed:', err);
-//         }
-//         console.log('Upload successful!  Server responded with:', body);
-//     });
-// }
-function uploadApp(filePath, appName) {
-
-    return new Promise(function(resolve, reject) {
+async function uploadApp(filePath, appName) {
+    console.log('$$$$$$$$$$$$$$$$$$$ sync function uploadApp(filePath, appName) {');
+    return await new Promise(function(resolve, reject) {
         console.log('QRS Functions upload App, with name ' + appName + ' and filePath ' + filePath);
         var formData = {
             my_file: fs.createReadStream(filePath)
@@ -633,3 +566,84 @@ function addTagViaSyntheticToType(type, selectionId, tagGuid) {
         throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
     }
 };
+
+
+// async function uploadPublishTemplateApps() {
+//     //check if template apps have been uploaded and published in the templates stream
+//     // if (true) { // (!Apps.find({ "stream.name": "Templates" }).count()) {
+//     console.warn('no template apps found, so upload from the templates dir.');
+//     var folder = Meteor.settings.private.templateAppsFrom;
+//     // var folder = await copyTemplatesToQRSFolder();
+//     console.log('apps folder', folder);
+//     uploadAndPublishApps(folder);
+//     // } else {}
+// }
+
+// //upload and publish all apps found in the folder to the templates stream
+// async function copyTemplatesToQRSFolder() {
+//     var newFolder = Meteor.settings.private.templateAppsTo + '\\' + process.env.USERDOMAIN + '\\' + process.env.USERNAME;
+//     try {
+//         await fs.copy(Meteor.settings.private.templateAppsFrom, newFolder, {
+//             overwrite: true
+//         }); //"QLIK-AB0Q2URN5T\\Qlikexternal",
+//         return newFolder
+//     } catch (err) {
+//         console.error('error copy Templates from ' + Meteor.settings.private.templateAppsFrom + ' To QRSFolder ' + Meteor.settings.private.templateAppsDir, err);
+//     }
+// }
+
+// For a system service account, the app must be in the %ProgramData%\Qlik\Sense\Repository\DefaultApps folder.
+// For any other account, the app must be in the %ProgramData%\Qlik\Sense\Apps\<login domain>\<login user> folder.
+//so you have to copy your apps there first. in a fresh sense installation.
+export function importApp(fileName, name, generationUserId = 'no user set') {
+    // check(fileName, String);
+    // check(name, String);
+    // console.log('QRS Functions import App, with name ' + name + ', with fileName: ', fileName);
+
+    // try {
+    //     const call = {};
+    //     call.action = 'Import app';
+    //     call.url = 'http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-App-Import-App.htm'
+    //     call.request = qlikServer + '/qrs/app/import?keepData=true&name=' + name + '&xrfkey=' + senseConfig.xrfkey; //using header auth.
+    //     call.response = HTTP.post(call.request, {
+    //         headers: {
+    //             'hdr-usr': senseConfig.headerValue,
+    //             'X-Qlik-xrfkey': senseConfig.xrfkey
+    //         },
+    //         data: '"Sales.qvf"'
+    //     });
+
+    //     REST_Log(call, generationUserId);
+    //     var newGuid = call.response.data.id;
+    //     return newGuid;
+    // } catch (err) {
+    //     console.error(err);
+    //     const call = {};
+    //     call.action = 'Import app FAILED';
+    //     call.response = err.message;
+    //     REST_Log(call, generationUserId);
+    //     throw new Meteor.Error('Import app failed', err.message);
+    // }
+};
+
+//https://www.npmjs.com/package/request#forms
+// function uploadApp(filePath, fileSize, appName) {
+//     console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
+//     var formData = {
+//         my_file: fs.createReadStream(filePath)
+//     };
+//     request.post({
+//         url: qlikServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
+//         headers: {
+//             'Content-Type': 'application/vnd.qlik.sense.app',
+//             'hdr-usr': senseConfig.headerValue,
+//             'X-Qlik-xrfkey': senseConfig.xrfkey
+//         },
+//         formData: formData
+//     }, function optionalCallback(err, httpResponse, body) {
+//         if (err) {
+//             return console.error('upload failed:', err);
+//         }
+//         console.log('Upload successful!  Server responded with:', body);
+//     });
+// }
