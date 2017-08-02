@@ -52,8 +52,9 @@ export function checkInitialEnvironment() {
     Meteor.call('updateLocalSenseCopy');
 
     var templateStreamId = createTemplatesStream();
-    console.log('!!!! TEMPLATE STREAM ID', templateStreamId);
+    console.log('Template stream ID', templateStreamId);
     uploadAndPublishTemplateApps(templateStreamId);
+
 }
 
 function createTemplatesStream() {
@@ -71,32 +72,52 @@ function createTemplatesStream() {
 
 // UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM
 async function uploadAndPublishTemplateApps(templateStreamId) {
+    console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder ' + newFolder + ' and upload them to Qlik Sense.');
     var newFolder = Meteor.settings.private.templateAppsFrom;
     check(newFolder, String);
+    check(templateStreamId, String);
 
-    console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder ' + newFolder + ' and upload them to Qlik Sense.');
-    fs.readdir(newFolder, Meteor.bindEnvironment(function(err, files) {
-        if (err) {
-            throw new Meteor.Error("Could not list the directory.", err)
+    var appsInFolder = await fs.readdir(newFolder);
+
+    for (let QVF of appsInFolder) {
+        var appName = QVF.substr(0, QVF.indexOf('.'));
+        var filePath = newFolder + '\\' + QVF;
+        try {
+            console.log('try to upload app: ', QVF);
+            var appId = await uploadApp(filePath, appName);
+
+            console.log('try to publish app ' + appId + ' intro streamID ' + templateStreamId);
+            publishApp(appId, appName, templateStreamId);
+        } catch (err) {
+            console.error(err);
+            throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
         }
+    }
 
-        //for each template app found        
-        //- upload app
-        //- publish in templates stream
-        files.forEach(async function(fileName, index) {
-            var appName = fileName.substr(0, fileName.indexOf('.'));
-            var filePath = newFolder + '\\' + fileName;
-            try {
-                console.log('try to upload app: ', fileName);
-                var appId = await uploadApp(filePath, appName);
-                console.log('try to publish app ' + appId + ' intro streamID ' + templateStreamId);
-                publishApp(appId, appName, templateStreamId);
-            } catch (err) {
-                console.error(err);
-                throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
-            }
-        })
-    }))
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DO NOT SEE ME'); //
+
+    // fs.readdir(newFolder, Meteor.bindEnvironment(await async function(err, files) {
+    //     if (err) {
+    //         throw new Meteor.Error("Could not list the directory.", err)
+    //     }
+
+    //     //for each template app found        
+    //     //- upload app
+    //     //- publish in templates stream
+    //     files.forEach(await async function(fileName, index) {
+    //         var appName = fileName.substr(0, fileName.indexOf('.'));
+    //         var filePath = newFolder + '\\' + fileName;
+    //         try {
+    //             console.log('try to upload app: ', fileName);
+    //             var appId = await uploadApp(filePath, appName);
+    //             console.log('try to publish app ' + appId + ' intro streamID ' + templateStreamId);
+    //             publishApp(appId, appName, templateStreamId);
+    //         } catch (err) {
+    //             console.error(err);
+    //             throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
+    //         }
+    //     })
+    // }))
 }
 
 export function generateStreamAndApp(customers, generationUserId) {
