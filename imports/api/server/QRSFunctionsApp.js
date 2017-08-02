@@ -88,7 +88,6 @@ async function uploadAndPublishTemplateApps() {
         check(APIAppsStreamID, String);
     } catch (err) {
         console.error('You did not specify the templateAppsFrom, everyone, api apps or template stream name in the settings.json file?');
-        console.log(everyOneStreamId, templateStreamId, APIAppsStreamID);
         throw new Meteor.Error('Missing Settings', 'You did not specify the everone, api apps or template stream name in the settings.json file?');
     }
 
@@ -113,7 +112,8 @@ async function uploadAndPublishTemplateApps() {
                 publishApp(appId, appName, everyOneStreamId);
             } else if (appName === 'Sales') {
                 publishApp(appId, appName, everyOneStreamId);
-                publishApp(appId, appName, templateStreamId);
+                var copiedAppId = copyApp(appId, appName);
+                publishApp(copiedAppId, appName, templateStreamId);
             } else if (appName === 'Slide generator') {
                 _IntegrationPresentationApp = appId
                 publishApp(appId, appName, APIAppsStreamID);
@@ -127,7 +127,7 @@ async function uploadAndPublishTemplateApps() {
         }
     }))
 
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DO NOT SEE ME');
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DO NOT SEE ME TILL THE INIT HAS FINISHED');
 }
 
 export function generateStreamAndApp(customers, generationUserId) {
@@ -467,6 +467,41 @@ export function publishApp(appGuid, appName, streamId, customerName, generationU
         call.request = 'HTTP.call(put, http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey + ", {headers: {'hdr-usr': " + senseConfig.headerValue, +'X-Qlik-xrfkey:' + senseConfig.xrfkey + '}';
         call.response = result;
         call.url = gitHubLinks.publishApp;
+        REST_Log(call, generationUserId);
+        return result;
+    } catch (err) {
+        console.error(err);
+
+        // // IF APP ALREADY EXISTED TRY TO PUBLISH OVERWRITE IT (REPLACE)
+        // if(err.response.statusCode == 400){
+        //     replaceApp()
+        // }
+        // console.error('statusCode:', err.response.statusCode);
+        // console.info('Try to PUBLISH OVERWRITE THE APP, SINCE IT WAS ALREADY PUBLISHED');
+        throw new Meteor.Error('Publication of app ' + appName + ' for customer ' + customerName + ' failed: ', err.message);
+    }
+};
+
+// REPLACE APP 
+export function replaceApp(targetApp, replaceByApp, generationUserId) {
+    console.log('Function: Replace app: ' + targetApp + ' by app ' + targetApp);
+    check(appGuid, String);
+    check(replaceByApp, String);
+
+    try {
+        const result = HTTP.put(qlikServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey, {
+            headers: {
+                'hdr-usr': senseConfig.headerValue,
+                'X-Qlik-xrfkey': senseConfig.xrfkey
+            }
+        });
+
+        //logging into database
+        const call = {};
+        call.action = 'Replace app';
+        call.request = 'HTTP.put(' + qlikServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey;
+        call.response = result;
+        call.url = 'http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-App-Replace.htm';
         REST_Log(call, generationUserId);
         return result;
     } catch (err) {
