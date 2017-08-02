@@ -57,8 +57,8 @@ export function checkInitialEnvironment() {
     Meteor.call('updateLocalSenseCopy');
 
     createVirtualProxies();
-    createQRSMeteorStreams();
-    uploadAndPublishTemplateApps();
+    // createQRSMeteorStreams();
+    // uploadAndPublishTemplateApps();
 
 }
 
