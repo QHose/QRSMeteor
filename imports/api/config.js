@@ -15,7 +15,6 @@ if (Meteor.isClient) {
         "QIXSchema": _QIXSchema,
         "SSBIApp": _SSBIApp,
         "IntegrationPresentationApp": _IntegrationPresentationApp
-
     };
 }
 
@@ -108,9 +107,12 @@ if (Meteor.isServer) {
     }
 }
 
-
+//for enigma.js
 export const engineConfig = _engineConfig;
+//for general (mostly client side) stuff
 export const senseConfig = _senseConfig;
+// Qlik sense QRS endpoint via header authentication
+export const qlikHDRServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
 
 function generateXrfkey() {
     return Random.hexString(16);

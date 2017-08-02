@@ -22,8 +22,14 @@ import {
     Customers
 } from '/imports/api/customers';
 
+import {
+    createVirtualProxies
+} from '/imports/api/server/QPSFunctions';
+
+
 //import config for Qlik Sense QRS and Engine API
 import {
+    qlikHDRServer, // Qlik sense QRS endpoint via header authentication
     senseConfig,
     enigmaServerConfig,
     authHeaders,
@@ -45,14 +51,12 @@ var QRS = require('qrs');
 var promise = require('bluebird');
 var request = require('request');
 
-const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
-
-
 // SETUP QLIK SENSE IF FRESH (A NEW INSTALL)
 export function checkInitialEnvironment() {
     console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
     Meteor.call('updateLocalSenseCopy');
 
+    createVirtualProxies();
     createQRSMeteorStreams();
     uploadAndPublishTemplateApps();
 
@@ -75,6 +79,7 @@ function createQRSMeteorStreams() {
 // UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM
 async function uploadAndPublishTemplateApps() {
     var newFolder = Meteor.settings.private.templateAppsFrom;
+    console.log('--------------------------INIT QLIK SENSE');
     console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder "' + newFolder + '" and upload them to Qlik Sense.');
 
     //GET THE ID OF THE IMPORTANT STREAM (streams that QRSMeteor needs)
@@ -94,7 +99,7 @@ async function uploadAndPublishTemplateApps() {
     // LOAD ALL SENSE APPS IN FOLDER
     var appsInFolder = await fs.readdir(newFolder);
 
-    // FOR EACH APP FOUND    
+    // FOR EACH APP FOUND: PUBLISH IT    
     await Promise.all(appsInFolder.map(async(QVF) => {
         try {
             //GET THE NAME OF THE APP AND CREATE A FILEPATH
@@ -104,13 +109,11 @@ async function uploadAndPublishTemplateApps() {
             //UPLOAD THE APP, GET THE APP ID BACK
             var appId = await uploadApp(filePath, appName);
 
-            //PREPARE FOR PUBLISHING
             //BASED ON THE APP WE WANT TO PUBLISH IT INTO A DIFFERENT STREAM                      
-
             if (appName === 'SSBI') { //should be published in the everyone stream
                 _SSBIApp = appId; // for the client side HTML/IFrames etc.
                 publishApp(appId, appName, everyOneStreamId);
-            } else if (appName === 'Sales') {
+            } else if (appName === 'Sales') { //THIS ONE NEEDS TO BE COPIED AND PUBLISHED INTO 2 STREAMS: AS TEMPLATE AND FOR THE EVERYONE STREAM.
                 publishApp(appId, appName, everyOneStreamId);
                 var copiedAppId = copyApp(appId, appName);
                 publishApp(copiedAppId, appName, templateStreamId);
@@ -143,6 +146,7 @@ export function generateStreamAndApp(customers, generationUserId) {
 };
 
 function generateAppForTemplate(templateApp, customer, generationUserId) {
+    console.log('--------------------------GENERATE APPS FOR TEMPLATE');
     // console.log(templateApp);
     // console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
     const call = {};
@@ -181,8 +185,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
 //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
 async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, customer, customerDataFolder, scriptReplace, generationUserId) {
-    console.log('setting config for Engine');
-
+    console.log('--------------------------REPLACE SCRIPT AND RELOAD APP');
     check(appId, String);
     check(customer.name, String);
     check(customerDataFolder, String);
@@ -191,7 +194,6 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
     //set the app ID to be used in the enigma connection to the engine API
     var config = Object.assign({}, enigmaServerConfig);
     config.appId = appId;
-    // console.log('Connecting to Engine', config);
 
     try {
         //connect to the engine
@@ -309,15 +311,15 @@ function checkTemplateAppExists(generationUserId) {
 
 // UPLOAD APP
 async function uploadApp(filePath, appName) {
+    console.log('--------------------------UPLOAD APP');
     console.log('uploadApp: try to upload app: ' + appName + ' from path: ' + filePath);
     return await new Promise(function(resolve, reject) {
-        console.log('QRS Functions upload App, with name ' + appName + ' and filePath ' + filePath);
         var formData = {
             my_file: fs.createReadStream(filePath)
         };
 
         request.post({
-            url: qlikServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
+            url: qlikHDRServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
             headers: {
                 'Content-Type': 'application/vnd.qlik.sense.app',
                 'hdr-usr': senseConfig.headerValue,
@@ -343,7 +345,7 @@ export function copyApp(guid, name, generationUserId) {
     // console.log('QRS Functions copy App, copy the app id: ' + guid + ' to app with name: ', name);
 
     const call = {};
-    call.request = qlikServer + '/qrs/app/' + guid + '/copy';
+    call.request = qlikHDRServer + '/qrs/app/' + guid + '/copy';
 
     try {
         call.action = 'Copy app';
@@ -409,8 +411,8 @@ export function getApps() {
     try {
         const call = {};
         call.action = 'Get list of apps';
-        call.request = qlikServer + '/qrs/app/full)';
-        call.response = HTTP.get(qlikServer + '/qrs/app/full', {
+        call.request = qlikHDRServer + '/qrs/app/full)';
+        call.response = HTTP.get(qlikHDRServer + '/qrs/app/full', {
             headers: authHeaders,
             params: {
                 'xrfkey': senseConfig.xrfkey
@@ -429,7 +431,7 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
     console.log('QRSApp deleteApp: ', guid);
     try {
         const call = {};
-        const result = HTTP.del(qlikServer + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
+        const result = HTTP.del(qlikHDRServer + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
                 headers: authHeaders
             })
             // Meteor.call('updateLocalSenseCopy');
@@ -448,13 +450,14 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
 };
 
 export function publishApp(appGuid, appName, streamId, customerName, generationUserId) {
+    console.log('--------------------------PUBLISH');
     console.log('Publish app: ' + appName + ' to stream: ' + streamId);
     check(appGuid, String);
     check(appName, String);
     check(streamId, String);
 
     try {
-        const result = HTTP.put(qlikServer + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
+        const result = HTTP.put(qlikHDRServer + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
             headers: {
                 'hdr-usr': senseConfig.headerValue,
                 'X-Qlik-xrfkey': senseConfig.xrfkey
@@ -489,7 +492,7 @@ export function replaceApp(targetApp, replaceByApp, generationUserId) {
     check(replaceByApp, String);
 
     try {
-        const result = HTTP.put(qlikServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey, {
+        const result = HTTP.put(qlikHDRServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey, {
             headers: {
                 'hdr-usr': senseConfig.headerValue,
                 'X-Qlik-xrfkey': senseConfig.xrfkey
@@ -499,7 +502,7 @@ export function replaceApp(targetApp, replaceByApp, generationUserId) {
         //logging into database
         const call = {};
         call.action = 'Replace app';
-        call.request = 'HTTP.put(' + qlikServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey;
+        call.request = 'HTTP.put(' + qlikHDRServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey;
         call.response = result;
         call.url = 'http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-App-Replace.htm';
         REST_Log(call, generationUserId);
@@ -516,7 +519,7 @@ function createTag(name) {
     // console.log('QRS Functions Appp, create a tag: ' + name);
 
     try {
-        const result = HTTP.post(qlikServer + '/qrs/Tag', {
+        const result = HTTP.post(qlikHDRServer + '/qrs/Tag', {
             headers: authHeaders,
             params: {
                 'xrfkey': senseConfig.xrfkey
@@ -557,7 +560,7 @@ function createSelection(type, guid) {
     console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);
 
     try {
-        const result = HTTP.post(qlikServer + '/qrs/Selection', {
+        const result = HTTP.post(qlikHDRServer + '/qrs/Selection', {
             headers: authHeaders,
             params: {
                 'xrfkey': senseConfig.xrfkey
@@ -583,7 +586,7 @@ function deleteSelection(selectionId) {
     console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
 
     try {
-        const result = HTTP.delete(qlikServer + '/qrs/Selection/' + selectionId, {
+        const result = HTTP.delete(qlikHDRServer + '/qrs/Selection/' + selectionId, {
             headers: authHeaders,
             params: {
                 'xrfkey': senseConfig.xrfkey
@@ -608,7 +611,7 @@ function addTagViaSyntheticToType(type, selectionId, tagGuid) {
     console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
 
     try {
-        const result = HTTP.put(qlikServer + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
+        const result = HTTP.put(qlikHDRServer + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
             headers: authHeaders,
             params: {
                 'xrfkey': senseConfig.xrfkey
@@ -671,7 +674,7 @@ export function importApp(fileName, name, generationUserId = 'no user set') {
     //     const call = {};
     //     call.action = 'Import app';
     //     call.url = 'http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-App-Import-App.htm'
-    //     call.request = qlikServer + '/qrs/app/import?keepData=true&name=' + name + '&xrfkey=' + senseConfig.xrfkey; //using header auth.
+    //     call.request = qlikHDRServer + '/qrs/app/import?keepData=true&name=' + name + '&xrfkey=' + senseConfig.xrfkey; //using header auth.
     //     call.response = HTTP.post(call.request, {
     //         headers: {
     //             'hdr-usr': senseConfig.headerValue,
@@ -700,7 +703,7 @@ export function importApp(fileName, name, generationUserId = 'no user set') {
 //         my_file: fs.createReadStream(filePath)
 //     };
 //     request.post({
-//         url: qlikServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
+//         url: qlikHDRServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
 //         headers: {
 //             'Content-Type': 'application/vnd.qlik.sense.app',
 //             'hdr-usr': senseConfig.headerValue,

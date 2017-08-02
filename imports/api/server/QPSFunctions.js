@@ -4,7 +4,15 @@ import { REST_Log } from '/imports/api/APILogs';
 import { gitHubLinks } from '/imports/ui/UIHelpers';
 
 //import config for Qlik Sense QRS
-import { senseConfig, _certs, authHeadersCertificate, authHeaders, certicate_communication_options } from '/imports/api/config.js';
+import {
+    qlikHDRServer, // Qlik sense QRS endpoint via header authentication
+    senseConfig,
+    enigmaServerConfig,
+    authHeaders,
+    QRSconfig,
+    _SSBIApp,
+    _IntegrationPresentationApp
+} from '/imports/api/config.js';
 import lodash from 'lodash';
 _ = lodash;
 
@@ -14,6 +22,34 @@ https://<QPS machine name>:4243/<path>
 
 Each proxy has its own session cookie, so you have to logout the users per proxy used.
 */
+
+// http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Create.htm
+// note: we create a virtual proxy via the QRS API! (not the QPS)
+export function createVirtualProxies() {
+    console.log('--------------------------CREATE VIRTUAL PROXIES');
+
+    var request = qlikHDRServer + '/qrs/virtualproxyconfig/';
+
+    try {
+        var response = HTTP.post(call.request, {
+            headers: authHeaders,
+            params: {
+                'xrfkey': senseConfig.xrfkey,
+                "name": name
+            },
+            data: {
+                "prefix": "hdr",
+                "description": "Test proxy",
+                "sessionCookieHeaderName": "X-Qlik-Session-hdr"
+            }
+        })
+
+    } catch (err) {
+        console.error('create virtual proxy failed', err);
+    }
+};
+
+
 
 Meteor.methods({
     currentlyLoggedInUser() {
