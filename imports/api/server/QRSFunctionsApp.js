@@ -27,7 +27,9 @@ import {
     senseConfig,
     enigmaServerConfig,
     authHeaders,
-    QRSconfig
+    QRSconfig,
+    _SSBIApp,
+    _IntegrationPresentationApp
 } from '/imports/api/config.js';
 import {
     APILogs,
@@ -51,73 +53,81 @@ export function checkInitialEnvironment() {
     console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
     Meteor.call('updateLocalSenseCopy');
 
-    var templateStreamId = createTemplatesStream();
-    console.log('Template stream ID', templateStreamId);
-    uploadAndPublishTemplateApps(templateStreamId);
+    createQRSMeteorStreams();
+    uploadAndPublishTemplateApps();
 
 }
 
-function createTemplatesStream() {
-    console.log('Check if the template stream exists?')
-    var stream = QSStream.getStreamByName('Templates');
+function createQRSMeteorStreams() {
 
-    if (!stream) {
-        console.warn('Template stream does NOT yet exist');
-        return QSStream.createStream('Templates').id;
-    } else {
-        console.log('OK: Templates stream is already available')
-        return stream.id;
+    for (const streamName of Meteor.settings.public.StreamsToCreateAutomatically) {
+        try {
+            console.log('Try to create stream: ' + streamName + ' if it not already exists');
+            if (!QSStream.getStreamByName(streamName)) {
+                QSStream.createStream(streamName)
+            }
+        } catch (err) {
+            console.log(err);
+        }
     }
 }
 
 // UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM
-async function uploadAndPublishTemplateApps(templateStreamId) {
-    console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder ' + newFolder + ' and upload them to Qlik Sense.');
+async function uploadAndPublishTemplateApps() {
     var newFolder = Meteor.settings.private.templateAppsFrom;
-    check(newFolder, String);
-    check(templateStreamId, String);
+    console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder "' + newFolder + '" and upload them to Qlik Sense.');
 
+    //GET THE ID OF THE IMPORTANT STREAM (streams that QRSMeteor needs)
+    var everyOneStreamId = QSStream.getStreamByName(Meteor.settings.public.EveryoneAppStreamName).id;
+    var templateStreamId = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName).id;
+    var APIAppsStreamID = QSStream.getStreamByName(Meteor.settings.public.APIAppStreamName).id;
+    try {
+        check(newFolder, String);
+        check(everyOneStreamId, String);
+        check(templateStreamId, String);
+        check(APIAppsStreamID, String);
+    } catch (err) {
+        console.error('You did not specify the templateAppsFrom, everyone, api apps or template stream name in the settings.json file?');
+        console.log(everyOneStreamId, templateStreamId, APIAppsStreamID);
+        throw new Meteor.Error('Missing Settings', 'You did not specify the everone, api apps or template stream name in the settings.json file?');
+    }
+
+    // LOAD ALL SENSE APPS IN FOLDER
     var appsInFolder = await fs.readdir(newFolder);
 
-    for (let QVF of appsInFolder) {
-        var appName = QVF.substr(0, QVF.indexOf('.'));
-        var filePath = newFolder + '\\' + QVF;
+    // FOR EACH APP FOUND    
+    await Promise.all(appsInFolder.map(async(QVF) => {
         try {
-            console.log('try to upload app: ', QVF);
+            //GET THE NAME OF THE APP AND CREATE A FILEPATH
+            var appName = QVF.substr(0, QVF.indexOf('.'));
+            var filePath = newFolder + '\\' + QVF;
+
+            //UPLOAD THE APP, GET THE APP ID BACK
             var appId = await uploadApp(filePath, appName);
 
-            console.log('try to publish app ' + appId + ' intro streamID ' + templateStreamId);
-            publishApp(appId, appName, templateStreamId);
+            //PREPARE FOR PUBLISHING
+            //BASED ON THE APP WE WANT TO PUBLISH IT INTO A DIFFERENT STREAM                      
+
+            if (appName === 'SSBI') { //should be published in the everyone stream
+                _SSBIApp = appId; // for the client side HTML/IFrames etc.
+                publishApp(appId, appName, everyOneStreamId);
+            } else if (appName === 'Sales') {
+                publishApp(appId, appName, everyOneStreamId);
+                publishApp(appId, appName, templateStreamId);
+            } else if (appName === 'Slide generator') {
+                _IntegrationPresentationApp = appId
+                publishApp(appId, appName, APIAppsStreamID);
+            } else {
+                //Insert into template apps stream
+                publishApp(appId, appName, templateStreamId);
+            }
         } catch (err) {
             console.error(err);
             throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
         }
-    }
+    }))
 
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DO NOT SEE ME'); //
-
-    // fs.readdir(newFolder, Meteor.bindEnvironment(await async function(err, files) {
-    //     if (err) {
-    //         throw new Meteor.Error("Could not list the directory.", err)
-    //     }
-
-    //     //for each template app found        
-    //     //- upload app
-    //     //- publish in templates stream
-    //     files.forEach(await async function(fileName, index) {
-    //         var appName = fileName.substr(0, fileName.indexOf('.'));
-    //         var filePath = newFolder + '\\' + fileName;
-    //         try {
-    //             console.log('try to upload app: ', fileName);
-    //             var appId = await uploadApp(filePath, appName);
-    //             console.log('try to publish app ' + appId + ' intro streamID ' + templateStreamId);
-    //             publishApp(appId, appName, templateStreamId);
-    //         } catch (err) {
-    //             console.error(err);
-    //             throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
-    //         }
-    //     })
-    // }))
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DO NOT SEE ME');
 }
 
 export function generateStreamAndApp(customers, generationUserId) {
@@ -273,8 +283,9 @@ function checkCustomersAreSelected(customers) {
     }
 };
 
+// CHECK IF SELECTED TEMPLATE APP EXISTS IN QLIK SENSE
+//These are the apps that the OEM partner has in his database, but do they still exists on the qliks sense side?
 function checkTemplateAppExists(generationUserId) {
-    //These are the apps that the OEM partner has in his database, but do they still exists on the qliks sense side?
     var templateApps = TemplateApps.find({
             'generationUserId': Meteor.userId()
         })
@@ -296,9 +307,9 @@ function checkTemplateAppExists(generationUserId) {
     return templateApps;
 };
 
-
+// UPLOAD APP
 async function uploadApp(filePath, appName) {
-    console.log('$$$$$$$$$$$$$$$$$$$ sync function uploadApp(filePath, appName) {');
+    console.log('uploadApp: try to upload app: ' + appName + ' from path: ' + filePath);
     return await new Promise(function(resolve, reject) {
         console.log('QRS Functions upload App, with name ' + appName + ' and filePath ' + filePath);
         var formData = {

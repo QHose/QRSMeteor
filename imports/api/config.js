@@ -2,6 +2,8 @@ import { Mongo } from 'meteor/mongo';
 import { Random } from 'meteor/random';
 import _ from 'meteor/underscore';
 const _QIXSchema = require('/node_modules/enigma.js/schemas/qix/12.20.0/schema.json');
+export var _SSBIApp = ''; //will be set automatically after meteor server has uploaded the apps into Sense. 
+export var _IntegrationPresentationApp = '';
 
 //This is the config that we need to make available on the client (the webpage)
 if (Meteor.isClient) {
@@ -10,7 +12,10 @@ if (Meteor.isClient) {
         "port": Meteor.settings.public.port,
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
-        "QIXSchema": _QIXSchema
+        "QIXSchema": _QIXSchema,
+        "SSBIApp": _SSBIApp,
+        "IntegrationPresentationApp": _IntegrationPresentationApp
+
     };
 }
 
