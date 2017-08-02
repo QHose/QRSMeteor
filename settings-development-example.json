@@ -1,13 +1,16 @@
 {
     "adminEmails": "mbj@qlik.com",
     "public": {
-        "host": "integration.qlik.com",
+        "host": "QLIK-AB0Q2URN5T",
         "proxyPort": 80,
-        "port": 443,
+        "port": 81,
         "virtualProxyClientUsage": "meteor",
-        "webIntegrationHost": "web.saasdemo.qlik.com",
-        "webIntegrationDemoPort": 80,
-        "SSBIApp": "d0fbb7ce-f217-4678-8798-9ab543b888a0",
+        "webIntegrationHost": "QLIK-AB0Q2URN5T",
+        "webIntegrationDemoPort": 3030,
+        "StreamsToCreateAutomatically": ["API apps", "Templates", "Everyone", "QA", "TEST"],
+        "APIAppStreamName": "API apps",
+        "TemplateAppStreamName": "Templates",
+        "EveryoneAppStreamName": "Everyone",
         "SSBIAppSheetString": "d0fbb7ce-f217-4678-8798-9ab543b888a0/sheet/puEpZK/state/analysis",
         "IntegrationPresentationApp": "9b5091fb-5715-4bfb-a948-6d708d56da72",
         "IntegrationPresentationSelectionSheet": "DYTpxv",
@@ -24,9 +27,12 @@
         "headerKey": "hdr-usr",
         "isSecure": true,
         "enginePort": 4747,
+        "qrsPort": 4242,
         "proxyPort": 4243,
         "customerDataDir": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData\\",
-        "automaticCleanUpGeneratedApps": "Yes"
+        "automaticCleanUpGeneratedApps": "Yes",
+        "templateAppsFrom": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\automation\\Apps",
+        "virtualProxyFilePath": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\automation\\"
     },
     "sikka": {
         "captcha": {
