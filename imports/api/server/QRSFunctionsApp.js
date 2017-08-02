@@ -96,15 +96,9 @@ async function uploadAndPublishApps(newFolder) {
             throw new Meteor.Error("Could not list the directory.", err)
         }
 
-        //for each template app found
-        //- lookup template streamID
+        //for each template app found        
         //- upload app
         //- publish in templates stream
-        console.log('templateStreamId is: ', templateStreamId);
-        if (!templateStreamId) {
-            templateStreamId = QSStream.getStreamByName('Templates')[0].id;
-        }
-
         files.forEach(async function(fileName, index) {
             var appName = fileName.substr(0, fileName.indexOf('.'));
             var filePath = newFolder + '\\' + fileName;
@@ -117,13 +111,6 @@ async function uploadAndPublishApps(newFolder) {
         })
     }))
 }
-
-function getFilesizeInBytes(filename) {
-    const stats = fs.statSync(filename)
-    const fileSizeInBytes = stats.size
-    return fileSizeInBytes
-}
-
 
 export function generateStreamAndApp(customers, generationUserId) {
     // console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
@@ -356,10 +343,10 @@ export function importApp(fileName, name, generationUserId = 'no user set') {
 //         console.log('Upload successful!  Server responded with:', body);
 //     });
 // }
-function uploadApp(filePath, fileSize, appName) {
+function uploadApp(filePath, appName) {
 
     return new Promise(function(resolve, reject) {
-        console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
+        console.log('QRS Functions upload App, with name ' + appName + ' and filePath ' + filePath);
         var formData = {
             my_file: fs.createReadStream(filePath)
         };
