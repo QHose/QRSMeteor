@@ -49,7 +49,7 @@ Meteor.startup(function() {
     // }
 
 
-    console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
+    // console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
     TemplateApps._ensureIndex({ "generationUserId": 1, "id": 1 });
     GeneratedResources._ensureIndex({ "generationUserId": 1, "id": 1 });
     Apps._ensureIndex({ "id": 1 });

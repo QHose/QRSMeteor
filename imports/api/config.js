@@ -130,6 +130,8 @@ export const QRSconfig = {
     headerValue: _senseConfig.headerValue, //'mydomain\\justme'
 };
 
+// console.log('--- HEADER AUTHENTICATION using config: ', QRSconfig);
+
 // //certificates did not work
 // export const QRSconfig = {
 //     authentication: 'certificates',
