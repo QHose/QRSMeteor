@@ -51,17 +51,6 @@ var QRS = require('qrs');
 var promise = require('bluebird');
 var request = require('request');
 
-// SETUP QLIK SENSE IF FRESH (A NEW INSTALL)
-export function checkInitialEnvironment() {
-    console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
-    Meteor.call('updateLocalSenseCopy');
-
-    createVirtualProxies();
-    // createQRSMeteorStreams();
-    // uploadAndPublishTemplateApps();
-
-}
-
 function createQRSMeteorStreams() {
 
     for (const streamName of Meteor.settings.public.StreamsToCreateAutomatically) {
