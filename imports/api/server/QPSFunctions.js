@@ -25,22 +25,25 @@ Each proxy has its own session cookie, so you have to logout the users per proxy
 */
 
 // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Create.htm
-// note: we create a virtual proxy via the QRS API! (not the QPS)
+// note: we create a virtual proxy via the QRS API! (not the QPS).
 export async function createVirtualProxies() {
     console.log('--------------------------CREATE VIRTUAL PROXIES');
     const request = qlikHDRServer + '/qrs/virtualproxyconfig/';
 
     var file = Meteor.settings.private.virtualProxyFilePath + 'virtualProxySettings.json';
     try {
+        // READ THE PROXY FILE 
         var proxySettings = await fs.readJson(file);
-        // console.log(proxySettings);
+        console.log(proxySettings);
+
+        //FOR EACH PROXY FOUND, CREATE IT
         for (var virtualProxy of proxySettings) {
-            console.log('############## see me?', virtualProxy);
             if (virtualProxy.websocketCrossOriginWhiteList) {
                 virtualProxy.websocketCrossOriginWhiteList.push(Meteor.settings.public.host);
             }
             createVirtualProxy(virtualProxy);
         }
+        getVirtualProxies();
 
     } catch (err) {
         console.error(err)
@@ -49,6 +52,7 @@ export async function createVirtualProxies() {
 
     function createVirtualProxy(virtualProxy) {
         console.log('------CREATE VIRTUAL PROXY: ', virtualProxy.prefix);
+
         try {
             var response = HTTP.post(request, {
                 headers: authHeaders,
@@ -60,14 +64,11 @@ export async function createVirtualProxies() {
         } catch (err) {
             console.error('create virtual proxy failed', err);
         }
-        getVirtualProxies();
-
     }
 }
 
 export function getVirtualProxies() {
     console.log('--------------------------GET VIRTUAL PROXIES');
-
     const request = qlikHDRServer + '/qrs/virtualproxyconfig/';
 
     try {
@@ -77,7 +78,6 @@ export function getVirtualProxies() {
                 'xrfkey': senseConfig.xrfkey,
             },
         });
-        // console.log('virtual proxy config: ', response);
         var file = Meteor.settings.private.virtualProxyFilePath + 'virtualProxyDefinitions.json';
 
         // SAVE PROXY FILE TO DISK
@@ -87,6 +87,26 @@ export function getVirtualProxies() {
     }
 }
 
+export function getProxy() {
+    console.log('--------------------------GET PROXY');
+    const request = qlikHDRServer + '/qrs/proxyserice/';
+
+    try {
+        var response = HTTP.get(request, {
+            headers: authHeaders,
+            params: {
+                'xrfkey': senseConfig.xrfkey,
+            },
+        });
+        var file = Meteor.settings.private.virtualProxyFilePath + 'proxyDefinitions.json';
+
+        // SAVE PROXY FILE TO DISK
+        fs.outputFile(file, JSON.stringify(response.data, null, 2), 'utf-8');
+    } catch (err) {
+        console.error('create virtual proxy failed', err);
+    }
+
+}
 
 Meteor.methods({
     currentlyLoggedInUser() {

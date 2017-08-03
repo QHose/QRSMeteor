@@ -1,16 +1,4 @@
 [{
-        "prefix": "hdr",
-        "description": "hdr",
-        "authenticationMethod": 2,
-        "headerAuthenticationMode": 2,
-        "headerAuthenticationHeaderName": "hdr-usr",
-        "headerAuthenticationStaticUserDirectory": "",
-        "headerAuthenticationDynamicUserDirectory": "$ud\\\\$id",
-        "anonymousAccessMode": 0,
-        "windowsAuthenticationEnabledDevicePattern": "Windows",
-        "sessionCookieHeaderName": "X-Qlik-Session-hdr"
-    },
-    {
         "prefix": "anon",
         "description": "anon",
         "authenticationMethod": 0,
@@ -19,7 +7,7 @@
         "sessionCookieHeaderName": "X-Qlik-Session-anon",
         "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
         "sessionInactivityTimeout": 30,
-        "websocketCrossOriginWhiteList": "[jshell.net]",
+        "websocketCrossOriginWhiteList": ["jshell.net"],
         "defaultVirtualProxy": false
     },
     {
@@ -53,5 +41,10 @@
             "jshell.net"
         ],
         "defaultVirtualProxy": false
+    },
+    {
+        "prefix": "hdr",
+        "description": "hdr",
+        "sessionCookieHeaderName": "X-Qlik-Session-hdr"
     }
 ]
