@@ -281,8 +281,35 @@ $(""#btn_1"").click(function() {
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Introduction to web authentication methods (in general)","See this [blog](https://blog.risingstack.com/web-authentication-methods-explained/) if you want to have an overview of the methods people use on the internet to authenticate users between systems. ",,,,,,,,,
 "API -  generic introduction","Introduction to web authentication methods (in general)","Cookies",,,,,,,,,
+"API -  generic introduction","How to get started if you never programmed before?","# Learn javascript
+- watch videos on [pluralsight.com]
+..- I prefer the [videos](https://www.pluralsight.com/courses/javascript-programming-basics) and books of [Kyle Simpson](https://github.com/getify/You-Dont-Know-JS) or [Scott Allen](https://www.pluralsight.com/courses/learning-programming-javascript)
+..- try to do as much handson via codeschool/codeAcademy
+- read `javascript - the good parts` (most other books are way to complex)
+- focus on the following topics
+..- variables and functions
+..- scope
+..- asynchronous code (callback functions, promises, async/await)
+..- ES6 (modules)
+
+# learn angular 1
+- Qlik Sense uses Angular 1.5
+
+# try to make your first mashups via the dev-hub
+- in the [integation.qlik.com/slides] select `deep dive` and `web` and `exercises`.
+- Study the videos and content
+- first try IFrame integration
+- then create a mashup (see the `web` area in this slide generator. Study the generated HTML, JS and CSS. 
+
+# learn node/Meteor.js
+- Now you need to learn to run your own server. (nodeJS)
+- MeteorJS handles a lot of stuff for you, so a good tool to learn. 
+- Under the hood it will start NodeJS and MongoDb (the database) for you.
+- [install Meteor](https://www.meteor.com/install)
+- Create your first app [here](https://www.meteor.com/tutorials/angular/creating-an-app)","Subtopic",,,,,,,,
 "Web integration","Overview web integration","<iframe class=""SenseEmbedFrame"" src=""/webIntegration_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
 "Web integration","Overview web integration","Source: [https://webapps.qlik.com/#/](https://webapps.qlik.com/#/)",,,,,,,,,
+"Web integration","Examples of embedded apps","# What does a succesful integration look like?",,,,,,,,,
 "Web integration","Examples of embedded apps","<iframe class=""SenseEmbedFrame"" src=""https://webapps.qlik.com/#/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Demo with integration.qlik.com",
 "Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,"","","","","         0","0","Demo with integration.qlik.com",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Technical - 2 hours",
@@ -556,11 +583,12 @@ var listener = function() {
 "Web integration","Video: Getting started creating widgets (7M)","https://youtu.be/nBg3E8CCytE",,,,,,,,,
 "Web integration","Video: Getting started creating widgets (7M)","In this video you will see how quickly you can create your own custom visualizations and user interface components. Be sure to check out the Qlik Help Channel and [Online Help](https://community.qlik.com/docs/DOC-16908) for more information including detailed and structured tutorials on this topic. ",,,,,,,,,
 "Web integration","extensions",">extensions",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Video: extensions in 60 seconds","https://youtu.be/-bxlwEdmaAQ",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Video: extensions in 60 seconds","[Tutorial: How to Build a Qlik Sense Extension with D3](http://blog.axc.net/?p=1617)",,,,,,,,,
-"Web integration","extensions -  Create extra functionality inside an app using javascript","extentionsExamples.png",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
+"Web integration","Video: extensions in 60 seconds","https://youtu.be/-bxlwEdmaAQ",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Video: extensions in 60 seconds","[Tutorial: How to Build a Qlik Sense Extension with D3](http://blog.axc.net/?p=1617)",,"","","","","         0","0","Deep dive",
+"Web integration","extensions -  Create extra functionality inside an app using javascript","extentionsExamples.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","extensions -  Create extra functionality inside an app using javascript","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-API-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
-"Web integration","Video: introduction to extensions","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","Deep dive",
+"Web integration","Video: introduction to extensions (3M)","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Download your extensions from branch.qlik.com","<iframe class=""SenseEmbedFrame"" src=""http://branch.qlik.com/#!/project"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Create apps on the fly","# Create a new app from scratch, that only lives in memory",,,,,,,,,
 "Web integration","Create apps on the fly","You can create apps on the fly, that is session apps, using the `qlik.sessionApp` and `qlik.sessionAppFromApp` methods. See [Qlik help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/Mashups/Content/Howtos/create-session-app.htm)",,,,,,,,,
 "Web integration","Create apps on the fly","#Create and configure the session app
@@ -1035,6 +1063,121 @@ await qix.app.doSave();
                 }
             })
 ```",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","QRS: Upload template apps","# Initialize Qlik Sense",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QRS: Upload template apps","If the environment is empty (after we installed it using a silent script), we want to populate it with our template apps. ",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QRS: Upload template apps","Node.js code",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QRS: Upload template apps","```javascript
+function uploadApp(filePath, fileSize, appName) {
+console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
+    var formData = {
+        my_file: fs.createReadStream(filePath)
+    };
+    request.post({
+        url: qlikServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
+        headers: {
+            'Content-Type': 'application/vnd.qlik.sense.app',
+            'hdr-usr': senseConfig.headerValue,
+            'X-Qlik-xrfkey': senseConfig.xrfkey
+        },
+        formData: formData
+    }, function optionalCallback(err, httpResponse, body) {
+        if (err) {
+            return console.error('upload failed:', err);
+        }
+        console.log('Upload successful!  Server responded with:', body);
+    });
+```",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QPS: create and get virtual proxies","# Get or create a new configuration for virtual proxies",,,,,,,,,
+"Integration.qlik.com key API calls","QPS: create and get virtual proxies","## Create virtual proxy",,,,,,,,,
+"Integration.qlik.com key API calls","QPS: create and get virtual proxies","Automatically create all virtual proxies needed for `QRSMeteor` (the demo site), see [help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Create.htm)",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QPS: create and get virtual proxies","## API call",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QPS: create and get virtual proxies","Make a `POST` to `/qrs/virtualproxyconfig/`",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QPS: create and get virtual proxies","## Body",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QPS: create and get virtual proxies","```javascript
+ try {
+        var response = HTTP.post(request, {
+            headers: authHeaders,
+            params: {
+                'xrfkey': senseConfig.xrfkey,
+            },
+            data: {
+                prefix: 'test',
+                description: 'Test proxy',
+                sessionCookieHeaderName: 'X-Qlik-Session-hdr',
+            },
+        });
+    } catch (err) {
+        console.error('create virtual proxy failed', err);
+    }
+```",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QPS: create and get virtual proxies","##  Return value",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QPS: create and get virtual proxies","```JSON
+{
+   ""id"": ""d4b844ba-66cc-4a38-aa6c-8d0516641bc2"",
+   ""createdDate"": ""2017-02-22T18:09:51.896Z"",
+   ""modifiedDate"": ""2017-02-22T18:09:51.896Z"",
+   ""modifiedByUserName"": ""INTERNAL\\sa_repository"",
+   ""customProperties"": [],
+   ""prefix"": ""hdr"",
+   ""description"": ""Test proxy"",
+   ""authenticationModuleRedirectUri"": """",
+   ""sessionModuleBaseUri"": """",
+   ""loadBalancingModuleBaseUri"": """",
+   ""loadBalancingServerNodes"": [],
+   ""authenticationMethod"": 0,
+   ""headerAuthenticationMode"": 0,
+   ""headerAuthenticationHeaderName"": """",
+   ""headerAuthenticationStaticUserDirectory"": """",
+   ""headerAuthenticationDynamicUserDirectory"": """",
+   ""anonymousAccessMode"": 0,
+   ""windowsAuthenticationEnabledDevicePattern"": ""Windows"",
+   ""sessionCookieHeaderName"": ""X-Qlik-Session-hdr"",
+   ""sessionCookieDomain"": """",
+   ""additionalResponseHeaders"": """",
+   ""sessionInactivityTimeout"": 30,
+   ""extendedSecurityEnvironment"": false,
+   ""websocketCrossOriginWhiteList"": [],
+   ""defaultVirtualProxy"": false,
+   ""tags"": [],
+   ""samlMetadataIdP"": """",
+   ""samlHostUri"": """",
+   ""samlEntityId"": """",
+   ""samlAttributeUserId"": """",
+   ""samlAttributeUserDirectory"": """",
+   ""samlAttributeSigningAlgorithm"": 0,
+   ""samlAttributeMap"": [],
+   ""jwtAttributeUserId"": """",
+   ""jwtAttributeUserDirectory"": """",
+   ""jwtPublicKeyCertificate"": """",
+   ""jwtAttributeMap"": [],
+   ""magicLinkHostUri"": """",
+   ""magicLinkFriendlyName"": """",
+   ""privileges"": null,
+   ""impactSecurityAccess"": false,
+   ""schemaPath"": ""VirtualProxyConfig""
+}
+```
+",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QPS: create and get virtual proxies","# Get the config for all virtual proxies",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QPS: create and get virtual proxies","```javasript
+export function getVirtualProxies() {
+    console.log('--------------------------GET VIRTUAL PROXIES');
+
+    const request = qlikHDRServer + '/qrs/virtualproxyconfig/';
+
+    try {
+        var response = HTTP.get(request, {
+            headers: authHeaders,
+            params: {
+                'xrfkey': senseConfig.xrfkey,
+            }
+        });
+        console.log('virtual proxy config: ', response);
+    } catch (err) {
+        console.error('create virtual proxy failed', err);
+    }
+}
+```",,"","","","","         0","0","PreSales",
 "Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","We created a [API overview](http://integration.qlik.com/ApiLogsTable) of the key API requests and responses. Try to generate some apps, or try to login with a user in SaaS provisioning demo step 4 and see the resulting calls. ",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","<div class=""ui one column stackable center aligned page grid"">
    <div class=""column twelve wide"">
@@ -1425,10 +1568,62 @@ App:
 - Name = <name of the data connection>",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","[source Marcus](https://confluence.qliktech.com/pages/viewpage.action?spaceKey=~msi&title=Query+the+Qlik+Sense+Repository+API+with+the+Qlik+REST+Connector)",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Data - REST API load data from QRS.png",,"","","","","         0","0","Exercises",
-"QRS API","How to use Postman using windows authentication","","In Postman click on the interceptor icon and let the extension install itself if needed. This is needed to pass authentication credentials from Chrome to Postman.",,,,,,,,
-"QRS API","How to use Postman using windows authentication","","Open the hub or the QMC in Chrome and authenticate to Qlik Sense.",,,,,,,,
-"QRS API","How to use Postman using windows authentication","","Go to Postman and in the URL section type https://<machine hostname>/qrs/About?Xrfkey=12345678qwertyui",,,,,,,,
-"QRS API","How to use Postman using windows authentication","","Also add the XREF key in the headers",,,,,,,,
+"QRS API","Exercise: How to use Postman using windows authentication","","In Postman click on the interceptor icon and let the extension install itself if needed. This is needed to pass authentication credentials from Chrome to Postman.","","","","","         0","0","Exercises",
+"QRS API","Exercise: How to use Postman using windows authentication","","Open the hub or the QMC in Chrome and authenticate to Qlik Sense.","","","","","         0","0","Exercises",
+"QRS API","Exercise: How to use Postman using windows authentication","","Go to Postman and in the URL section type https://<machine hostname>/qrs/About?Xrfkey=12345678qwertyui","","","","","         0","0","Exercises",
+"QRS API","Exercise: How to use Postman using windows authentication","","Also add the XREF key in the headers","","","","","         0","0","Exercises",
+"QRS API","Exercise: Connect to QRS API using Postman","- Postman is a Google Chrome App for constructing and sending REST requests. You can use Postman to explore the Qlik Sense Repository Service (QRS) API. (see [help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Example-Connect-Postman.htm)
+
+- This example shows how to connect to the QRS API and retrieve a list of apps in JSON format. Because we are using Windows authentication, we send the request via the QPS URL.
+
+1 Install Postman from http://www.getpostman.com/ and start the tool.
+1 Set the HTTP method to GET.
+1 Enter the URL to the computer where QPS is installed plus the following path in the URL area: `/qrs/app/full`
+1 The full URL should look something like: https://qps.computer.name.com/qrs/app/full.
+1 Select Params and add an entry for the Xrfkey parameter and a 16 character string as the value.
+1 Select Headers and add an entry for the X-Qlik-Xrfkey header using the same 16 character string as in the previous step.
+1 Click Send.
+1 The JSON response from the API is displayed. It should look something like this:
+
+```JSON
+[
+  {
+    ""id"": ""d256f28d-8b8f-4454-82f9-ba5ceb925923"",
+    ""createdDate"": ""2016-05-26T17:01:35.867Z"",
+    ""modifiedDate"": ""2016-06-01T20:07:30.792Z"",
+    ""modifiedByUserName"": ""INTERNAL\\sa_scheduler"",
+    ""customProperties"": [],
+    ""owner"": {
+      ""id"": ""5069e2f9-2845-443c-b8ae-18265f6552de"",
+      ""userId"": ""sa_repository"",
+      ""userDirectory"": ""INTERNAL"",
+      ""name"": ""sa_repository"",
+      ""privileges"": null
+    },
+    ""name"": ""Operations Monitor"",
+    ""appId"": """",
+    ""publishTime"": ""2016-05-26T17:01:49.159Z"",
+    ""published"": true,
+    ""tags"": [],
+    ""description"": ""The Operations Monitor 2.3.0 provides information about the Qlik Sense server environment, including: server memory and CPU usage, active users, task reloads, and errors and warnings."",
+    ""stream"": {
+      ""id"": ""a70ca8a5-1d59-4cc9-b5fa-6e207978dcaf"",
+      ""name"": ""Monitoring apps"",
+      ""privileges"": null
+    },
+    ""fileSize"": 524284,
+    ""lastReloadTime"": ""2016-06-01T20:07:29.815Z"",
+    ""thumbnail"": ""/appcontent/d256f28d-8b8f-4454-82f9-ba5ceb925923/Qlik_Images/Operations_Monitor_Thumbnail.png"",
+    ""savedInProductVersion"": ""2.11.0"",
+    ""migrationHash"": ""f38ec476ce7db3399f32ad2cd70df0db31d06643"",
+    ""dynamicColor"": """",
+    ""availabilityStatus"": 0,
+    ""privileges"": null,
+    ""schemaPath"": ""App""
+  },        
+  }
+]
+```",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 2","Next we are going to use Postman (Chrome app) to connect to the QRS API using
 - Header authentication",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,"","","","","         0","0","Exercises",
@@ -1438,6 +1633,50 @@ App:
 "QRS API","Exercise 2: Get apps via Postman with header authentication","header authentication.png",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 3: get all systemrules via a postman call","Try to get an overview of all the security rules (part of systemrules)",,"","","","","         0","0","Deep dive, Exercises",
 "QRS API","Exercise 3: get all systemrules via a postman call","You can search the QRS help for special purpose endpoints",,"","","","","         0","0","Deep dive, Exercises",
+"QRS API","Example: Get specific server node configuration","This [example](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Get.htm) shows how to get a specific server node configuration.",,"","","","","         0","0","Deep dive",
+"QRS API","Example: Get specific server node configuration","#Request",,,,,,,,,
+"QRS API","Example: Get specific server node configuration","```HTTP
+GET https://SELUN-USER.qlik.com:4242/qrs/servernodeconfiguration/8b6a9fa2-d7cd-47a2-8bec-661f8b53b6bf?Xrfkey=abcdefghijklmnop HTTP/1.1
+Accept-Encoding: gzip,deflate
+X-Qlik-User: UserDirectory=INTERNAL; UserId=sa_repository
+Accept-Charset: utf-8; q=0.9, us-ascii;q=0.1, iso-8859-1
+Accept: text/xml; q=0.1, application/json; q=0.2
+X-Qlik-Xrfkey: abcdefghijklmnop
+Host: SELUN-USER.qlik.com:4242
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
+```",,"","","","","         0","0","Deep dive",
+"QRS API","Example: Get specific server node configuration","# Response",,,,,,,,,
+"QRS API","Example: Get specific server node configuration","```javascript
+{
+   ""customProperties"": [],
+   ""name"": ""MyServerNodeConfiguration"",
+   ""hostName"": ""qlik.com"",
+   ""isCentral"": false,
+   ""engineEnabled"": true,
+   ""proxyEnabled"": false,
+   ""schedulerEnabled"": true,
+   ""tags"": [],
+   ""temporaryfilepath"": """",
+   ""binaryfileRootpath"": """",
+   ""privileges"": null,
+   ""id"": ""8b6a9fa2-d7cd-47a2-8bec-661f8b53b6bf"",
+   ""createdDate"": ""2013-10-25T11:52:08.514Z"",
+   ""modifiedDate"": ""2013-10-25T11:52:08.514Z"",
+   ""modifiedByUserName"": ""INTERNAL\\sa_repository"",
+   ""schemaPath"": ""ServerNodeConfiguration""
+}
+```",,"","","","","         0","0","Deep dive",
+"QRS API","You can also filter your selection","Some parameters in the paths are optional (for example, {filter} and {orderBy}). This section describes how to use the filtering parameters.",,"","","","","         0","0","Deep dive",
+"QRS API","You can also filter your selection","```
+ServiceType eq Engine
+Status eq Failed and FinishedAt gt '2012-05-09 12:00:00'
+Organization eq 'ACME Inc.' or Name eq 'Joe Smith'
+```",,"","","","","         0","0","Deep dive",
+"QRS API","You can also filter your selection","URL example: Get count path",,,,,,,,,
+"QRS API","You can also filter your selection","```HTTP
+https://<QRS machine name>:4242/qrs/app/count?Xrfkey=abcdef123456&filter=Name eq 'MyappName'
+```",,"","","","","         0","0","Deep dive",
 "QRS API","Problem solving 1:  get streams via Postman","QRS API - broken XREF example.png",,"","","","","         0","0","Support",
 "QRS API","Problem solving 1:  get streams via Postman","[Open postman app in chrome](https://www.getpostman.com/collections/3168aed89bc40c99790a)",,"","","","","         0","0","Support",
 "QPS - Proxy API","What is the Qlik Sense proxy?","The ""entry door"" to Qlik Sense (most of the times)",,"","","","","         0","0","Technical - 1 day",
@@ -1457,6 +1696,7 @@ App:
 "QPS - Proxy API","Qlik Sense supported authentication methods.","Ticket",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","Qlik Sense supported authentication methods.","Header",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","Qlik Sense supported authentication methods.","SAML",,"","","","","         0","0","PreSales",
+"QPS - Proxy API","Qlik Sense supported authentication methods.","[JWT](https://github.com/goldbergjeffrey/qs-jwt-examples) (JSON Web tokens)",,,,,,,,,
 "QPS - Proxy API","When to use which authentication method? (2)",">With SaaS that is ticketing or SAML most of the time",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","You create a virtual proxy per authentication method","QPS - virtual proxy per authentication method.png",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","The URL or prefix used triggers a specific virtual proxy","##If you use an URL (e.g. in IFrame)",,"","","","","         0","0","PreSales",
@@ -1747,8 +1987,8 @@ Basically all the things you can do yourself when you use an app
  }
 }
 ```",,"","","","","         0","0","Technical - 1 day",
-"Engine API","Connecting to Qlik Sense Server with HTML5 and Enigma.js ","A good tutorial on how to connect to Qlik Sense is created by [Guido Diepen](https://www.guidodiepen.nl/2017/06/connecting-to-qlik-sense-server-with-html5-and-enigma-js/),:",,,,,,,,,
-"Engine API","Connecting to Qlik Sense Server with HTML5 and Enigma.js ","<iframe class=""SenseEmbedFrame"" src=""https://www.guidodiepen.nl/2017/06/connecting-to-qlik-sense-server-with-html5-and-enigma-js/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
+"Engine API","Connecting to Qlik Sense Server with HTML5 and Enigma.js ","A good tutorial on how to connect to Qlik Sense is created by [Guido Diepen](https://www.guidodiepen.nl/2017/06/connecting-to-qlik-sense-server-with-html5-and-enigma-js/),:",,"","","","","         0","0","Deep dive",
+"Engine API","Connecting to Qlik Sense Server with HTML5 and Enigma.js ","<iframe class=""SenseEmbedFrame"" src=""https://www.guidodiepen.nl/2017/06/connecting-to-qlik-sense-server-with-html5-and-enigma-js/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Deep dive",
 "Engine API","How to connect","engine API - how to connect.png",,"","","","","         0","0","PreSales",
 "Engine API","Enigma component architecture","web - enigma integration.png",,"","","","","         0","0","PreSales",
 "Engine API","Example Engine API flow when you create a session object (on the fly) for a chart","API - Engine - get table data.png",,"","","","","         0","0","Deep dive",
