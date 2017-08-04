@@ -1920,12 +1920,16 @@ Basically all the things you can do yourself when you use an app
 "Engine API","Video: Introduction to QIX Engine API","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours",
 "Engine API","What can you do? Which end points are available?","Use the engine API explorer of the dev-hub",,"","","","","         0","0","Deep dive",
 "Engine API","What can you do? Which end points are available?","Engine API - example screenshot.png",,"","","","","         0","0","Deep dive",
+"Engine API","What can you do? Which end points are available?","next make sure you also use
+- the Qlik sense developer help on the engine API
+- the schema.json file in [engima.js](https://github.com/qlik-oss/enigma.js/tree/master/schemas) (the Qlik javascript library to connect to Qlik Sense via javascript)",,"","","","","         0","0","Deep dive",
 "Engine API","Introduction video: Engine API explorer","This tool demonstrates
 - the methods you can call
 - the requests and responses",,"","","","","         0","0","PreSales",
 "Engine API","Introduction video: Engine API explorer","https://www.youtube.com/watch?v=LqcFDe7V-CU",,"","","","","         0","0","PreSales",
+"Engine API","Demo Dev-hub Engine API explorer","# Try to make your first API call",,"","","","","         0","0","Technical - 2 hours",
+"Engine API","Demo Dev-hub Engine API explorer","In the screen below, Select a macro 'get applist' and press 'execute'",,"","","","","         0","0","Technical - 2 hours",
 "Engine API","Demo Dev-hub Engine API explorer","<iframe class=""SenseEmbedFrame"" src=""http://integration.qlik.com:443/anon/dev-hub/engine-api-explorer"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours",
-"Engine API","Demo Dev-hub Engine API explorer","Select a macro 'get applist' and press 'execute'",,"","","","","         0","0","Technical - 2 hours",
 "Engine API","Demo Dev-hub Engine API explorer","It should give you the result below
 ```javascript
 {
@@ -2027,7 +2031,8 @@ Basically all the things you can do yourself when you use an app
 "Engine API","Connecting to Qlik Sense Server with HTML5 and Enigma.js ","A good tutorial on how to connect to Qlik Sense is created by [Guido Diepen](https://www.guidodiepen.nl/2017/06/connecting-to-qlik-sense-server-with-html5-and-enigma-js/),:",,"","","","","         0","0","Deep dive",
 "Engine API","Connecting to Qlik Sense Server with HTML5 and Enigma.js ","<iframe class=""SenseEmbedFrame"" src=""https://www.guidodiepen.nl/2017/06/connecting-to-qlik-sense-server-with-html5-and-enigma-js/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Deep dive",
 "Engine API","How to connect","engine API - how to connect.png",,"","","","","         0","0","PreSales",
-"Engine API","Enigma component architecture","web - enigma integration.png",,"","","","","         0","0","PreSales",
+"Engine API","Enigma component architecture","![](https://www.lucidchart.com/publicSegments/view/0fbc03df-9d56-4c64-bd2f-511721c4b14b/image.png)",,"","","","","         0","0","PreSales, Technical - 1 day",
+"Engine API","Enigma component architecture","Here you see the interaction between your SaaS platform and Qlik Sense. You connect to the Engine API via Enigma.js",,"","","","","         0","0","Technical - 1 day",
 "Engine API","Example Engine API flow when you create a session object (on the fly) for a chart","API - Engine - get table data.png",,"","","","","         0","0","Deep dive",
 "Engine API","Enigma - Example code get existing object","```
 const enigma = require('enigma.js');
@@ -2056,7 +2061,7 @@ enigma.getService('qix', config).then((qix) => {
 });
 ```",,"","","","","         0","0","Deep dive, PreSales",
 "Engine API","Enigma - Example code get existing object","[source enigma.js on GitHub](https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/README.md)",,"","","","","         0","0","Deep dive, PreSales",
-"Engine API","Example Engine API call: get list of apps (not enigma)","Client sends to Engine API
+"Engine API","Example Engine API call: get list of apps","Client sends to Engine API
 ```
 {
  ""handle"": -1,
@@ -2067,7 +2072,7 @@ enigma.getService('qix', config).then((qix) => {
  ""id"": 3
 }
 ```",,"","","","","         0","0","Deep dive",
-"Engine API","Example Engine API call: get list of apps (not enigma)","Server responds
+"Engine API","Example Engine API call: get list of apps","Server responds
 ``` 
 {
  ""jsonrpc"": ""2.0"",
@@ -2085,11 +2090,12 @@ enigma.getService('qix', config).then((qix) => {
      ""published"": false,
      ""publishTime"": ""1753-01-01T00:00:00.000Z"",
 ```",,"","","","","         0","0","Deep dive",
+"Engine API","Example Engine API call: get list of apps","The code is `JSON-RPC`, Enigma.JS uses almost the same structure. the function names are `camelCase` instead. And you supply the params object in your Enigma function parameter.",,"","","","","         0","0","Deep dive",
 "Engine API","Example get table (hypercube)","In this example we will get a ""table"" of data out of Qlik Sense using the Engine API",,"","","","","         0","0","Deep dive",
 "Engine API","Example get table (hypercube)","The Engine API is a websocket based protocol (JSON RPC)",,"","","","","         0","0","Deep dive",
 "Engine API","Example get table (hypercube)","Because our website is written in Javascript. We use a javascript library Enigma.js to ""talk to/communicate"" with the Qlik Sense Eninge API",,"","","","","         0","0","Deep dive",
 "Engine API","Example get table (hypercube)","[see example code](https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs)",,"","","","","         0","0","Deep dive",
-"Engine API","Process flow of communication between components","flow - enigma.png",,"","","","","         0","0","Deep dive",
+"Engine API","Process flow of communication between components","![](https://www.lucidchart.com/publicSegments/view/7b2fbf74-afc8-4f81-aa90-de61707854aa/image.png)",,"","","","","         0","0","Deep dive",
 "Engine API","Get schema","```
 $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
         .then(qixschema => {
