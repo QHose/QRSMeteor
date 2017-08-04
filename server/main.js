@@ -15,11 +15,6 @@ import * as QSSystem from '/imports/api/server/QRSFunctionsSystemRules';
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config';
 import '/imports/startup/accounts-config.js';
 
-
-//install NPM modules
-const fs = require('fs-extra');
-
-
 Meteor.startup(function() {
     process.env.ROOT_URL = 'http://' + Meteor.settings.public.host;
     console.log('********* We expect Qlik Sense to run on host: ', process.env.ROOT_URL + ':' + Meteor.settings.public.port);

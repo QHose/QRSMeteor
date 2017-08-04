@@ -65,8 +65,25 @@ if (Meteor.isServer) {
             'Content-Type': 'application/json'
         },
         key: _certs.key,
-        cert: _certs.cert
+        cert: _certs.cert,
+        ca: _certs.ca
     };
+
+    var QRSCertConfig = {
+        var options = {
+            hostname: 'rd-flp2.qliktech.com',
+            port: 4242,
+            path: '/qrs/app?xrfkey=abcdefghijklmnop',
+            method: 'GET',
+            headers: {
+                'x-qlik-xrfkey': 'abcdefghijklmnop',
+                'X-Qlik-User': 'UserDirectory= Internal; UserId= sa_repository '
+            },
+            key: fs.readFileSync("C:\\client_key.pem"),
+            cert: fs.readFileSync("C:\\client.pem"),
+            ca: fs.readFileSync("C:\\root.pem")
+        };
+    }
 
     //used for engimaJS, the engine API javascript wrapper
     var _engineConfig = {
