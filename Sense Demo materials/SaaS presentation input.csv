@@ -73,9 +73,10 @@
 "What is an app?","Example associative data model: All your sources combined","Unlock the value of internal data by associating multi internal data sets using external data",,,,,,,,,
 "What is an app?","Example associative data model: All your sources combined","Better understand *why* things are happening",,,,,,,,,
 "What is an app?","Example associative data model: All your sources combined","Simple and powerful *data integration * unifies internal and external data sources",,,,,,,,,
-"What is an app?","Visual data modeling (ETL) ","https://youtu.be/ZFuMX_hyu2w",,,,,,,,,
-"What is an app?","Visual data modeling (ETL) ","This video is part 1 of a new features demonstration presenting the new ETL and data loading and index capabilities in the June 2017 release of Qlik Sense.",,,,,,,,,
-"What is an app?","Visual data modeling (ETL) ","Sample data available [here](https://community.qlik.com/docs/DOC-18599)",,,,,,,,,
+"What is an app?","Video: Visual data modeling (ETL) ","https://youtu.be/ZFuMX_hyu2w",,,,,,,,,
+"What is an app?","Video: Visual data modeling (ETL) ","This video is part 1 of a new features demonstration presenting the new ETL and data loading and index capabilities in the June 2017 release of Qlik Sense.",,,,,,,,,
+"What is an app?","Video: Visual data modeling (ETL) ","Sample data available [here](https://community.qlik.com/docs/DOC-18599)",,,,,,,,,
+"What is an app?","Video: Understanding Geographic Data Profiling (mapping) (6M)","https://youtu.be/2aCkT0LJnm0",,,,,,,,,
 "What is an app?","Other topics","[Set initial selections](http://branch.qlik.com/#!/project/5775290349fc1bfca8047ad2)",,,,,,,,,
 "Introduction to SaaS","History","We used to install software, but now you can also access your software online.",,"","","","","         0","0","Demo with integration.qlik.com",
 "Introduction to SaaS","History","All users go to the same site and have their *own space*",,"","","","","         0","0","Demo with integration.qlik.com",
@@ -283,14 +284,14 @@ $(""#btn_1"").click(function() {
 "API -  generic introduction","Introduction to web authentication methods (in general)","Cookies",,,,,,,,,
 "API -  generic introduction","How to get started if you never programmed before?","# Learn javascript
 - watch videos on [pluralsight.com]
-..- I prefer the [videos](https://www.pluralsight.com/courses/javascript-programming-basics) and books of [Kyle Simpson](https://github.com/getify/You-Dont-Know-JS) or [Scott Allen](https://www.pluralsight.com/courses/learning-programming-javascript)
-..- try to do as much handson via codeschool/codeAcademy
-- read `javascript - the good parts` (most other books are way to complex)
-- focus on the following topics
-..- variables and functions
-..- scope
-..- asynchronous code (callback functions, promises, async/await)
-..- ES6 (modules)
+ - I prefer the [videos](https://www.pluralsight.com/courses/javascript-programming-basics) and books of [Kyle Simpson](https://github.com/getify/You-Dont-Know-JS) or [Scott Allen](https://www.pluralsight.com/courses/learning-programming-javascript)
+ - try to do as much handson via codeschool/codeAcademy
+ - read `javascript - the good parts` (most other books are way to complex)
+ - focus on the following topics
+ - variables and functions
+ - scope
+ - asynchronous code (callback functions, promises, async/await)
+ - ES6 (modules)
 
 # learn angular 1
 - Qlik Sense uses Angular 1.5
@@ -306,7 +307,7 @@ $(""#btn_1"").click(function() {
 - MeteorJS handles a lot of stuff for you, so a good tool to learn. 
 - Under the hood it will start NodeJS and MongoDb (the database) for you.
 - [install Meteor](https://www.meteor.com/install)
-- Create your first app [here](https://www.meteor.com/tutorials/angular/creating-an-app)","Subtopic",,,,,,,,
+- Create your first TODO app with MeteorJS [here](https://www.meteor.com/tutorials/angular/creating-an-app)","Subtopic",,,,,,,,
 "Web integration","Overview web integration","<iframe class=""SenseEmbedFrame"" src=""/webIntegration_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
 "Web integration","Overview web integration","Source: [https://webapps.qlik.com/#/](https://webapps.qlik.com/#/)",,,,,,,,,
 "Web integration","Examples of embedded apps","# What does a succesful integration look like?",,,,,,,,,
@@ -919,13 +920,22 @@ or
 "Slide generator - use cases","Version management","I sync this csv using a version management tool called GitHub",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Version management","On the server we can [track the changes](https://github.com/QHose/QRSMeteor/commit/cd826a178554824780632d7c96afb6295949317e) and load the data into the app after approval",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Version management","slide generator - github track changes version management.png",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - how to create content in distributed teams?","How to insert data in the Slide Generator?","The source of the slide generator is just a Qlik Sense app. 
+"Slide generator - how to create content in distributed teams?","What is the concept of the data to insert?","The source of the slide generator is just a Qlik Sense app. 
 - We created a table with slide titles and their contents (bullets such as texts, links to images/videos, raw HTML or markDown)
 - We can assign ""each bullet/video/image"" to a workshop or audience.
 - We can re-use content in multiple workshops
 - We can arrange workshops in a hierarchy in such a way that we only have to assign ""a bullet/video/image"" to one child workshop, and his parents automatically get access to. (simplifies maintenance). E.g. all slides that are assigned to the 1 hour workshop also become available in the 2 hour and 1 day workshop. 
 - We can use row level security (section access) to limit what a user can see",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - how to create content in distributed teams?","How to insert data in the Slide Generator?","slide generator - workshop hierarchy.png",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - how to create content in distributed teams?","What is the concept of the data to insert?","slide generator - workshop hierarchy.png",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - how to create content in distributed teams?","How to create a presentation?","The slide generator software looks at each row and detects if it needs to create a
+- bullet with text
+- image
+- YouTube player
+- you can also insert raw html (e.g. to embed an IFrame)
+- you can also use [markDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to write your contents",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - how to create content in distributed teams?","How to create a presentation?","# create styling via 'Markdown' syntax",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create a presentation?","Don't be scared, its actually very simple, and works really fast. See the tutorial below",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create a presentation?","<iframe class=""SenseEmbedFrame"" src=""http://www.markdowntutorial.com/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to contribute to the slide generator? ","# High level flow",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to contribute to the slide generator? ","Each user will get its private space",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to contribute to the slide generator? ","Each user will download the master slide deck",,,,,,,,,
@@ -943,18 +953,20 @@ or
 "Slide generator - how to create content in distributed teams?","Initial setup of all software needed (detailed work instruction)","github - open in desktop.png",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","Initial setup of all software needed (detailed work instruction)","Now your local github desktop program should open and the files from the server have been copied to your local c drive. Normally in your github folder in your ""my documents"". ",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","Initial setup of all software needed (detailed work instruction)","github - update your local copy from the server.png",,,,,,,,,
-"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","# Create your presentation",,,,,,,,,
-"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Download the [template presentation](https://github.com/QHose/QRSMeteor/raw/master/Sense%20Demo%20materials/SlideGenerator/Qlik%20Slidegenerator%20Template.mmap). (Also  present in your `GitHub\QRSMeteor\Sense Demo materials\slide generator` folder)",,,,,,,,,
-"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Save the template under a new name. (E.g. `sales presentation.mnap`)",,,,,,,,,
-"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Double click the file so it will open Mindmanager Mindjet on your pc",,,,,,,,,
-"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Now you can create your mindmap using MindJet Mindmanager. See the workshop ""what is this slide generator"" if you want to learn more about the file structure etc. Note that in the end we just create a table with 4 columns
-- Workshop
-- Chapter
+"Slide generator - how to create content in distributed teams?","Create your presentation using Mindjet Mindmanager","# Create your presentation",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Create your presentation using Mindjet Mindmanager","Download the [template presentation](https://github.com/QHose/QRSMeteor/raw/master/Sense%20Demo%20materials/SlideGenerator/Qlik%20Slidegenerator%20Template.mmap). (Also  present in your `GitHub\QRSMeteor\Sense Demo materials\slide generator` folder)",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Create your presentation using Mindjet Mindmanager","Save the template under a new name. (E.g. `sales presentation.mnap`)",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Create your presentation using Mindjet Mindmanager","Double click the file so it will open Mindmanager Mindjet on your pc",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Create your presentation using Mindjet Mindmanager","Now you can create your mindmap using MindJet Mindmanager. See the workshop ""what is this slide generator"" if you want to learn more about the file structure etc. Note that in the end we just create a table with 4 columns, the purpose of each column it to explain the
+- Workshop name
+- Chapter (an topic/chapter breaker in your presentation)
 - Slide name
-- Bullet text, image name or video link. ",,,,,,,,,
-"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Put your images in your local github images folder: `C:\Users\<your user id>\Documents\GitHub\QRSMeteor\public\images`",,,,,,,,,
+- text, image name or YouTube link.",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Create your presentation using Mindjet Mindmanager","> Note: if you prefer excel or csv this is also possible, in the end we just need a table with 4 columns which are **exaclty named** (!): `level1, level2, level3` and `Resources` (the name of the workshops).
+![csv input](/images/slide generator - example input excel csv.png)",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","Create your presentation using Mindjet Mindmanager","Put your images in your local github images folder: `C:\Users\<your user id>\Documents\GitHub\QRSMeteor\public\images`.",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","# Commit your first results (the slides you created)",,,,,,,,,
-"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","When you are done with your presentation export it to this folder `C:\Users\mbj\Documents\GitHub\QRSMeteor\Sense Demo materials` give the csv a name with the convention: ""your trigram""-""presentation name"".csv",,,,,,,,,
+"Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","When you are done with your presentation export it (menu-file-export- to csv) to this folder `C:\Users\mbj\Documents\GitHub\QRSMeteor\Sense Demo materials` give the csv a name with the convention: ""your trigram""-""presentation name"".csv",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Verify your [changes](https://services.github.com/on-demand/github-desktop/make-changes-github-desktop) in Github desktop",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","github - verify your changes.png",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","github - commit changes.gif",,,,,,,,,
@@ -1178,6 +1190,31 @@ export function getVirtualProxies() {
     }
 }
 ```",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","QRS: Create notification listeners","# Want to get an update when the state of Qlik Sense changes?",,,,,,,,,
+"Integration.qlik.com key API calls","QRS: Create notification listeners","```
+function createNotificationListeners(){
+    //Create notification listener in Qlik sense https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Notification-Remove-Change-Subscription.htm
+    try {
+        const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey },
+            data: Meteor.settings.private.notificationURL + '/apps'
+        })
+
+        const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
+                headers: authHeaders,
+                params: { 'xrfkey': senseConfig.xrfkey },
+                data: Meteor.settings.private.notificationURL + '/streams'
+            })
+            //console.log('Register notication success');
+            // //console.log('the result from sense register App notification was: ', resultApp);
+            // //console.log('the result from sense register Stream notification was: ', resultStream);
+    } catch (err) {
+        console.error('Create notification subscription in sense qrs failed', err);
+        // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
+    }
+}
+```",,,,,,,,,
 "Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","We created a [API overview](http://integration.qlik.com/ApiLogsTable) of the key API requests and responses. Try to generate some apps, or try to login with a user in SaaS provisioning demo step 4 and see the resulting calls. ",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","<div class=""ui one column stackable center aligned page grid"">
    <div class=""column twelve wide"">
