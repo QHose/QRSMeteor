@@ -12,10 +12,13 @@ import {
     authHeaders,
     QRSconfig,
     _SSBIApp,
+    QRSCertConfig,
+    certicate_communication_options,
     _IntegrationPresentationApp,
 } from '/imports/api/config.js';
 import lodash from 'lodash';
 _ = lodash;
+const qliksrv = 'https://' + senseConfig.SenseServerInternalLanIP + ':4242';
 
 /*
 When communicating with the QPS APIs, the URL is as follows:
@@ -28,8 +31,6 @@ Each proxy has its own session cookie, so you have to logout the users per proxy
 // note: we create a virtual proxy via the QRS API! (not the QPS).
 export async function createVirtualProxies() {
     console.log('--------------------------CREATE VIRTUAL PROXIES');
-    const request = qlikHDRServer + '/qrs/virtualproxyconfig/';
-
     var file = Meteor.settings.private.virtualProxyFilePath + 'virtualProxySettings.json';
     try {
         // READ THE PROXY FILE 
@@ -41,8 +42,6 @@ export async function createVirtualProxies() {
             if (virtualProxy.websocketCrossOriginWhiteList) {
                 virtualProxy.websocketCrossOriginWhiteList.push(Meteor.settings.public.host);
             }
-
-
             createVirtualProxy(virtualProxy);
         }
     } catch (err) {
@@ -52,6 +51,7 @@ export async function createVirtualProxies() {
 
     function createVirtualProxy(virtualProxy) {
         console.log('------CREATE VIRTUAL PROXY: ', virtualProxy.prefix);
+
         var existingProxies = getVirtualProxies();
 
         // CHECK IF VIRT. PROXY ALREADY EXISTS
@@ -66,15 +66,13 @@ export async function createVirtualProxies() {
             return;
         }
 
-        function create() {
+        async function create() {
             console.log('Create virtual proxy ' + virtualProxy.prefix);
 
             try {
-                var response = HTTP.post(request, {
-                    headers: authHeaders,
-                    params: {
-                        'xrfkey': senseConfig.xrfkey,
-                    },
+                var request = qliksrv + '/qrs/virtualproxyconfig/?xrfkey=' + senseConfig.xrfkey;
+                response = HTTP.call('POST', request, {
+                    'npmRequestOptions': certicate_communication_options,
                     data: virtualProxy
                 });
             } catch (err) {
@@ -89,7 +87,7 @@ function assignToProxy() {
 }
 
 export function getVirtualProxies() {
-    // console.log('--------------------------GET VIRTUAL PROXIES');
+    // console.log('--------------------------GET VIRTUAL PROXIES');//
     const request = qlikHDRServer + '/qrs/virtualproxyconfig/';
 
     try {
@@ -107,6 +105,16 @@ export function getVirtualProxies() {
     } catch (err) {
         console.error('create virtual proxy failed', err);
     }
+}
+
+function getCentralProxy() {
+    console.log('getCentralProxy: GET /qrs/ServerNodeConfiguration?filter=isCentral')
+}
+
+function getServerNodeConfiguration() {
+    console.log('------------------------------------');
+    console.log('getServerNodeConfiguration: GET /qrs/ProxyService/full?filter=servernodeconfiguration.id+eq+6c04e46f-6da9-4bb2-8d12-a9a05ba687ee&orderby=id&xrfkey=Pf4Yihn3as268wuB HTTP/1.1');
+    console.log('------------------------------------');
 }
 
 export function getProxy() {
