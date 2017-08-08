@@ -59,22 +59,27 @@ export async function createVirtualProxies() {
             return existingVP.prefix === virtualProxy.prefix;
         });
         if (!found) {
-            create();
-            assignToProxy();
+            var virtualProxy = create();
+            linkVirtualProxy(virtualProxy);
         } else {
             console.log('Virtual proxy ' + virtualProxy.prefix + ' already existed. No need to create it again.');
             return;
         }
 
-        async function create() {
+        function create() {
             console.log('Create virtual proxy ' + virtualProxy.prefix);
 
+            // get id of local node so we can link the virtual proxy to a load balancing node 
+            var nodeId = getServerNodeConfiguration().id;
+            console.log('NodeId', nodeId)
+            virtualProxy.loadBalancingServerNodes = [{ id: nodeId }];
             try {
                 var request = qliksrv + '/qrs/virtualproxyconfig/?xrfkey=' + senseConfig.xrfkey;
                 response = HTTP.call('POST', request, {
                     'npmRequestOptions': certicate_communication_options,
                     data: virtualProxy
                 });
+                return response.data;
             } catch (err) {
                 console.error('create virtual proxy failed', err);
             }
@@ -82,8 +87,57 @@ export async function createVirtualProxies() {
     }
 }
 
-function assignToProxy() {
+// http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Link.htm
+function linkVirtualProxy(virtualProxy) {
+    console.log('linkVirtualProxy', virtualProxy.id);
 
+    var proxyId = getProxyId();
+    var proxyConfig = getProxyServiceConfiguration(proxyId)
+    proxyConfig.settings.virtualProxies.push(virtualProxy)
+    updateProxy(proxyId, proxyConfig)
+}
+
+function updateProxy(proxyId, proxyConfig) {
+    try {
+        check(proxyId, String);
+        check(proxyConfig, Object);
+        console.log('proxyConfig', proxyConfig.settings.virtualProxies)
+
+        var request = qliksrv + '/qrs/proxyservice/' + proxyId + '?xrfkey=' + senseConfig.xrfkey;
+        response = HTTP.call('PUT', request, {
+            'npmRequestOptions': certicate_communication_options,
+        });
+        console.log('response', response)
+    } catch (err) {
+        console.error('create virtual proxy failed', err);
+    }
+}
+
+function getProxyId() {
+    try {
+        var request = qliksrv + '/qrs/proxyservice/?xrfkey=' + senseConfig.xrfkey;
+        response = HTTP.call('GET', request, {
+            'npmRequestOptions': certicate_communication_options,
+        });
+        return response.data[0].id;
+    } catch (err) {
+        console.error('create virtual proxy failed', err);
+    }
+}
+
+function getProxyServiceConfiguration(proxyId) {
+
+    try {
+        check(proxyId, String);
+
+        var request = qliksrv + '/qrs/proxyservice/' + proxyId + '?xrfkey=' + senseConfig.xrfkey;
+        response = HTTP.call('GET', request, {
+            'npmRequestOptions': certicate_communication_options,
+        });
+        return response.data;
+    } catch (err) {
+        console.error('create virtual proxy failed', err);
+    }
 }
 
 export function getVirtualProxies() {
@@ -107,35 +161,21 @@ export function getVirtualProxies() {
     }
 }
 
-function getCentralProxy() {
-    console.log('getCentralProxy: GET /qrs/ServerNodeConfiguration?filter=isCentral')
-}
+// function getCentralProxy() {
+//     console.log('getCentralProxy: GET /qrs/ServerNodeConfiguration?filter=isCentral')
+// }
+
 
 function getServerNodeConfiguration() {
-    console.log('------------------------------------');
-    console.log('getServerNodeConfiguration: GET /qrs/ProxyService/full?filter=servernodeconfiguration.id+eq+6c04e46f-6da9-4bb2-8d12-a9a05ba687ee&orderby=id&xrfkey=Pf4Yihn3as268wuB HTTP/1.1');
-    console.log('------------------------------------');
-}
-
-export function getProxy() {
-    console.log('--------------------------GET PROXY');
-    const request = qlikHDRServer + '/qrs/proxyserice/';
-
     try {
-        var response = HTTP.get(request, {
-            headers: authHeaders,
-            params: {
-                'xrfkey': senseConfig.xrfkey,
-            },
+        var request = qliksrv + '/qrs/servernodeconfiguration/local?xrfkey=' + senseConfig.xrfkey;
+        response = HTTP.call('GET', request, {
+            'npmRequestOptions': certicate_communication_options,
         });
-        var file = Meteor.settings.private.virtualProxyFilePath + 'proxyDefinitions.json';
-
-        // SAVE PROXY FILE TO DISK
-        fs.outputFile(file, JSON.stringify(response.data, null, 2), 'utf-8');
+        return response.data;
     } catch (err) {
         console.error('create virtual proxy failed', err);
     }
-
 }
 
 Meteor.methods({

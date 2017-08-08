@@ -30,7 +30,6 @@ export function initQlikSense() {
     console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
     Meteor.call('updateLocalSenseCopy');
 
-    QSProxy.getProxy();
     QSProxy.createVirtualProxies();
 
     // createQRSMeteorStreams();
