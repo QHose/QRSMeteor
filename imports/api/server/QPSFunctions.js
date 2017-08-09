@@ -35,7 +35,6 @@ export async function createVirtualProxies() {
     try {
         // READ THE PROXY FILE 
         var proxySettings = await fs.readJson(file);
-        console.log(proxySettings);
 
         //FOR EACH PROXY FOUND, CREATE IT
         for (var virtualProxy of proxySettings) {
@@ -60,7 +59,7 @@ export async function createVirtualProxies() {
         });
         if (!found) {
             var virtualProxy = create();
-            linkVirtualProxy(virtualProxy);
+            linkVirtualProxyToProxy(virtualProxy);
         } else {
             console.log('Virtual proxy ' + virtualProxy.prefix + ' already existed. No need to create it again.');
             return;
@@ -70,9 +69,7 @@ export async function createVirtualProxies() {
             console.log('Create virtual proxy ' + virtualProxy.prefix);
 
             // get id of local node so we can link the virtual proxy to a load balancing node 
-            var nodeId = getServerNodeConfiguration().id;
-            console.log('NodeId', nodeId)
-            virtualProxy.loadBalancingServerNodes = [{ id: nodeId }];
+            virtualProxy.loadBalancingServerNodes = [{ id: getServerNodeConfiguration().id }];
             try {
                 var request = qliksrv + '/qrs/virtualproxyconfig/?xrfkey=' + senseConfig.xrfkey;
                 response = HTTP.call('POST', request, {
@@ -87,9 +84,9 @@ export async function createVirtualProxies() {
     }
 }
 
-// http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Link.htm
-function linkVirtualProxy(virtualProxy) {
-    console.log('linkVirtualProxy', virtualProxy.id);
+// http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Link.htm 
+function linkVirtualProxyToProxy(virtualProxy) {
+    console.log('linkVirtualProxyToProxy', virtualProxy.id);
 
     var proxyId = getProxyId();
     var proxyConfig = getProxyServiceConfiguration(proxyId)
@@ -106,6 +103,7 @@ function updateProxy(proxyId, proxyConfig) {
         var request = qliksrv + '/qrs/proxyservice/' + proxyId + '?xrfkey=' + senseConfig.xrfkey;
         response = HTTP.call('PUT', request, {
             'npmRequestOptions': certicate_communication_options,
+            data: proxyConfig
         });
         console.log('response', response)
     } catch (err) {
