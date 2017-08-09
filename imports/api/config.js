@@ -38,6 +38,7 @@ if (Meteor.isServer) {
         "headerKey": Meteor.settings.private.headerKey,
         "headerValue": process.env.USERDOMAIN + '\\' + process.env.USERNAME, //"QLIK-AB0Q2URN5T\\Qlikexternal",
         "isSecure": Meteor.settings.private.isSecure,
+        "qrsPort": Meteor.settings.private.qrsPort
     };
 
     if (!_senseConfig.host) {
@@ -137,6 +138,8 @@ if (Meteor.isServer) {
     export const senseConfig = _senseConfig;
     // Qlik sense QRS endpoint via header authentication
     export const qlikHDRServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
+    export const qrsSrv = 'https://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.qrsPort;
+
 
     function generateXrfkey() {
         return Random.hexString(16);

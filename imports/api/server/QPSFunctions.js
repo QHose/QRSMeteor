@@ -11,6 +11,7 @@ import {
     enigmaServerConfig,
     authHeaders,
     QRSconfig,
+    qrsSrv as qliksrv,
     _SSBIApp,
     QRSCertConfig,
     certicate_communication_options,
@@ -18,7 +19,6 @@ import {
 } from '/imports/api/config.js';
 import lodash from 'lodash';
 _ = lodash;
-const qliksrv = 'https://' + senseConfig.SenseServerInternalLanIP + ':4242';
 
 /*
 When communicating with the QPS APIs, the URL is as follows:

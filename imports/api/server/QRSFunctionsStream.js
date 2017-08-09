@@ -4,7 +4,7 @@ import { Apps, TemplateApps } from '/imports/api/apps.js';
 import { gitHubLinks } from '/imports/ui/UIHelpers';
 
 // import config for Qlik Sense QRS and Engine API
-import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
+import { senseConfig, authHeaders, qrsSrv, certicate_communication_options } from '/imports/api/config.js';
 import { REST_Log } from '/imports/api/APILogs';
 
 const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
@@ -45,14 +45,21 @@ export function getStreamByName(name) {
 export function getStreams() {
     try {
         const call = {};
+        // call.action = 'Get list of streams';
+        // call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/stream/full';
+        // // console.log('Try to get the stream from Sense at this url: ' , call.request);
+        // call.response = HTTP.get(qlikServer + '/qrs/stream/full', {
+        //         headers: authHeaders,
+        //         params: { 'xrfkey': senseConfig.xrfkey }
+        //     })
+
         call.action = 'Get list of streams';
-        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/stream/full';
-        // console.log('Try to get the stream from Sense at this url: ' , call.request);
-        call.response = HTTP.get(qlikServer + '/qrs/stream/full', {
-                headers: authHeaders,
-                params: { 'xrfkey': senseConfig.xrfkey }
-            })
-            // REST_Log(call);        
+        call.request = qrsSrv + '/qrs/stream/full?xrfkey=' + senseConfig.xrfkey;
+        console.log('call.request', call.request)
+        call.response = HTTP.get(call.request, {
+            'npmRequestOptions': certicate_communication_options,
+        });
+        // REST_Log(call);        
         return call.response.data;
     } catch (err) {
         console.error(err);
