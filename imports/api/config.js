@@ -38,6 +38,7 @@ if (Meteor.isServer) {
         "headerKey": Meteor.settings.private.headerKey,
         "headerValue": process.env.USERDOMAIN + '\\' + process.env.USERNAME, //"QLIK-AB0Q2URN5T\\Qlikexternal",
         "isSecure": Meteor.settings.private.isSecure,
+        "qrsPort": Meteor.settings.private.qrsPort
     };
 
     if (!_senseConfig.host) {
@@ -65,8 +66,33 @@ if (Meteor.isServer) {
             'Content-Type': 'application/json'
         },
         key: _certs.key,
-        cert: _certs.cert
+        cert: _certs.cert,
+        ca: _certs.ca
     };
+
+    //https://nodejs.org/api/http.html#http_http_request_options_callback
+    // export var QRSCertConfig = {
+    //     url: 'https://' + _senseConfig.SenseServerInternalLanIP,
+    //     port: Meteor.settings.private.qrsPort, //4242,
+    //     qrsPath: '/qrs/app',
+    //     path: function() {
+    //         if (qrsPath.includes('?')) {
+    //             return qrsPath + '&xrfkey=abcdefghijklmnop'
+    //         } else {
+    //             return qrsPath + '?xrfkey=abcdefghijklmnop'
+    //         }
+    //     },
+    //     method: 'GET',
+    //     agentOptions: {
+    //         ca: _certs.ca,
+    //         key: _certs.key,
+    //         cert: _certs.cert
+    //     },
+    //     headers: {
+    //         'x-qlik-xrfkey': 'abcdefghijklmnop',
+    //         'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
+    //     }
+    // };
 
     //used for engimaJS, the engine API javascript wrapper
     var _engineConfig = {
@@ -95,9 +121,9 @@ if (Meteor.isServer) {
         Promise: bluebird,
         createSocket(url) {
             return new WebSocket(url, {
-                ca: _engineConfig.ca,
-                key: _engineConfig.key,
-                cert: _engineConfig.cert,
+                ca: _certs.ca,
+                key: _certs.key,
+                cert: _certs.cert,
                 headers: {
                     'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
                 },
@@ -105,30 +131,34 @@ if (Meteor.isServer) {
         },
         // handleLog: logRow => console.log(JSON.stringify(logRow)),
     }
+
+    //for enigma.js
+    export const engineConfig = _engineConfig;
+    //for general (mostly client side) stuff
+    export const senseConfig = _senseConfig;
+    // Qlik sense QRS endpoint via header authentication
+    export const qlikHDRServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
+    export const qrsSrv = 'https://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.qrsPort;
+
+
+    function generateXrfkey() {
+        return Random.hexString(16);
+    }
+
+    // //https://www.npmjs.com/package/qrs
+    //HEADER AUTHENTICATION
+    export const QRSconfig = {
+        authentication: 'header',
+        host: senseConfig.host,
+        port: senseConfig.port,
+        useSSL: false,
+        virtualProxy: _senseConfig.virtualProxy, //header proxy
+        headerKey: _senseConfig.headerKey,
+        headerValue: _senseConfig.headerValue, //'mydomain\\justme'
+    };
+
 }
 
-//for enigma.js
-export const engineConfig = _engineConfig;
-//for general (mostly client side) stuff
-export const senseConfig = _senseConfig;
-// Qlik sense QRS endpoint via header authentication
-export const qlikHDRServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
-
-function generateXrfkey() {
-    return Random.hexString(16);
-}
-
-// //https://www.npmjs.com/package/qrs
-//HEADER AUTHENTICATION
-export const QRSconfig = {
-    authentication: 'header',
-    host: senseConfig.host,
-    port: senseConfig.port,
-    useSSL: false,
-    virtualProxy: _senseConfig.virtualProxy, //header proxy
-    headerKey: _senseConfig.headerKey,
-    headerValue: _senseConfig.headerValue, //'mydomain\\justme'
-};
 
 // console.log('--- HEADER AUTHENTICATION using config: ', QRSconfig);
 

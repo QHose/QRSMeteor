@@ -33,8 +33,10 @@ import {
     senseConfig,
     enigmaServerConfig,
     authHeaders,
+    qrsSrv,
     QRSconfig,
     _SSBIApp,
+    certicate_communication_options,
     _IntegrationPresentationApp
 } from '/imports/api/config.js';
 import {
@@ -50,6 +52,7 @@ const enigma = require('enigma.js');
 var QRS = require('qrs');
 var promise = require('bluebird');
 var request = require('request');
+
 
 function createQRSMeteorStreams() {
 
@@ -286,6 +289,9 @@ function checkTemplateAppExists(generationUserId) {
     }
 
     currentAppsInSense = getApps();
+    if (!currentAppsInSense) {
+        throw new Meteor.Error('No apps have been received from Qlik Sense. Therefore you have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
+    }
     _.each(templateApps, function(templateApp) {
         var templateFound = _.some(currentAppsInSense, ['id', templateApp.id]);
 
@@ -396,16 +402,15 @@ function checkStreamStatus(customer, generationUserId) {
 //         });
 // };
 
+// http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Get-All-As-Full.htm
 export function getApps() {
     try {
         const call = {};
         call.action = 'Get list of apps';
-        call.request = qlikHDRServer + '/qrs/app/full)';
-        call.response = HTTP.get(qlikHDRServer + '/qrs/app/full', {
-            headers: authHeaders,
-            params: {
-                'xrfkey': senseConfig.xrfkey
-            }
+        call.request = qrsSrv + '/qrs/app/full/?xrfkey=' + senseConfig.xrfkey;
+        console.log('call.request', call.request)
+        call.response = HTTP.get(call.request, {
+            'npmRequestOptions': certicate_communication_options
         });
         // REST_Log(call,generationUserId);
         return call.response.data;
