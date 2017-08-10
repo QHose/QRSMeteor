@@ -6,7 +6,6 @@ var fs = require('fs-extra');
 
 // import config for Qlik Sense QRS
 import {
-    qlikHDRServer, // Qlik sense QRS endpoint via header authentication
     senseConfig,
     enigmaServerConfig,
     authHeaders,
@@ -36,12 +35,24 @@ export async function createVirtualProxies() {
         // READ THE PROXY FILE 
         var proxySettings = await fs.readJson(file);
 
-        //FOR EACH PROXY FOUND, CREATE IT
-        for (var virtualProxy of proxySettings) {
-            if (virtualProxy.websocketCrossOriginWhiteList) {
-                virtualProxy.websocketCrossOriginWhiteList.push(Meteor.settings.public.host);
+        //FOR EACH PROXY FOUND IN THE INPUTFILE (vpToCreate), CREATE IT IN SENSE
+        for (var vpToCreate of proxySettings) {
+            if (vpToCreate.websocketCrossOriginWhiteList) {
+                vpToCreate.websocketCrossOriginWhiteList.push(Meteor.settings.public.host);
             }
-            createVirtualProxy(virtualProxy);
+            var existingProxies = getVirtualProxies();
+
+            // CHECK IF VIRT. PROXY ALREADY EXISTS IN SENSE
+            var found = existingProxies.some(function(existingVP) {
+                return existingVP.prefix === vpToCreate.prefix;
+            });
+            if (!found) {
+                var virtualProxy = createVirtualProxy(vpToCreate);
+                // THE VIRTUAL PROXY HAS BEEN CREATED, NOW LINK IT TO THE CENTRAL PROXY
+                linkVirtualProxyToProxy(virtualProxy);
+            } else {
+                console.log('Virtual proxy ' + virtualProxy.prefix + ' already existed. No need to create it again.');
+            }
         }
     } catch (err) {
         console.error(err)
@@ -49,38 +60,24 @@ export async function createVirtualProxies() {
 
 
     function createVirtualProxy(virtualProxy) {
-        console.log('------CREATE VIRTUAL PROXY: ', virtualProxy.prefix);
 
-        var existingProxies = getVirtualProxies();
+        // get id of local node so we can link the virtual proxy to a load balancing node 
+        virtualProxy.loadBalancingServerNodes = [{ id: getServerNodeConfiguration().id }];
+        try {
+            check(virtualProxy, Object);
+            console.log('------CREATE VIRTUAL PROXY: ', virtualProxy.prefix);
 
-        // CHECK IF VIRT. PROXY ALREADY EXISTS
-        var found = existingProxies.some(function(existingVP) {
-            return existingVP.prefix === virtualProxy.prefix;
-        });
-        if (!found) {
-            var virtualProxy = create();
-            linkVirtualProxyToProxy(virtualProxy);
-        } else {
-            console.log('Virtual proxy ' + virtualProxy.prefix + ' already existed. No need to create it again.');
-            return;
+            var request = qliksrv + '/qrs/virtualproxyconfig/';
+            response = HTTP.call('POST', request, {
+                params: { xrfkey: senseConfig.xrfkey },
+                'npmRequestOptions': certicate_communication_options,
+                data: virtualProxy
+            });
+            return response.data;
+        } catch (err) {
+            console.error('create virtual proxy failed', err);
         }
-
-        function create() {
-            console.log('Create virtual proxy ' + virtualProxy.prefix);
-
-            // get id of local node so we can link the virtual proxy to a load balancing node 
-            virtualProxy.loadBalancingServerNodes = [{ id: getServerNodeConfiguration().id }];
-            try {
-                var request = qliksrv + '/qrs/virtualproxyconfig/?xrfkey=' + senseConfig.xrfkey;
-                response = HTTP.call('POST', request, {
-                    'npmRequestOptions': certicate_communication_options,
-                    data: virtualProxy
-                });
-                return response.data;
-            } catch (err) {
-                console.error('create virtual proxy failed', err);
-            }
-        }
+        // }
     }
 }
 
@@ -88,9 +85,13 @@ export async function createVirtualProxies() {
 function linkVirtualProxyToProxy(virtualProxy) {
     console.log('linkVirtualProxyToProxy', virtualProxy.id);
 
+    // GET ID OF PROXY ON THIS HOST
     var proxyId = getProxyId();
+    // GET THE CONFIG OF THE PROXY (WHICH CONTAINS VIRTUAL PROXIES)
     var proxyConfig = getProxyServiceConfiguration(proxyId)
+        // ADD THE NEW VIRTUAL PROXY TO THE EXISTING PROXY LIST
     proxyConfig.settings.virtualProxies.push(virtualProxy)
+        //OVERWRITE THE SETTINGS WITH THE COMPLETE UPDATED OBJECT, IN PRODUCTION MAKE SURE YOU ADD THE CHANGEDATE (SEE HELP)
     updateProxy(proxyId, proxyConfig)
 }
 
@@ -100,8 +101,9 @@ function updateProxy(proxyId, proxyConfig) {
         check(proxyConfig, Object);
         console.log('proxyConfig', proxyConfig.settings.virtualProxies)
 
-        var request = qliksrv + '/qrs/proxyservice/' + proxyId + '?xrfkey=' + senseConfig.xrfkey;
+        var request = qliksrv + '/qrs/proxyservice/' + proxyId;
         response = HTTP.call('PUT', request, {
+            params: { xrfkey: senseConfig.xrfkey },
             'npmRequestOptions': certicate_communication_options,
             data: proxyConfig
         });
@@ -140,15 +142,13 @@ function getProxyServiceConfiguration(proxyId) {
 
 export function getVirtualProxies() {
     // console.log('--------------------------GET VIRTUAL PROXIES');//
-    const request = qlikHDRServer + '/qrs/virtualproxyconfig/';
-
     try {
-        var response = HTTP.get(request, {
-            headers: authHeaders,
-            params: {
-                'xrfkey': senseConfig.xrfkey,
-            },
+        var request = qliksrv + '/qrs/virtualproxyconfig/';
+        response = HTTP.call('GET', request, {
+            params: { xrfkey: senseConfig.xrfkey },
+            npmRequestOptions: certicate_communication_options,
         });
+
         var file = Meteor.settings.private.virtualProxyFilePath + 'ExtractedvirtualProxyDefinitions.json';
 
         // SAVE PROXY FILE TO DISK
