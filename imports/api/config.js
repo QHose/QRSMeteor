@@ -38,8 +38,14 @@ if (Meteor.isServer) {
         "headerKey": Meteor.settings.private.headerKey,
         "headerValue": process.env.USERDOMAIN + '\\' + process.env.USERNAME, //"QLIK-AB0Q2URN5T\\Qlikexternal",
         "isSecure": Meteor.settings.private.isSecure,
-        "qrsPort": Meteor.settings.private.qrsPort
+        "qrsPort": Meteor.settings.private.qrsPort,
+        "enginePort": Meteor.settings.private.enginePort
     };
+
+
+    if (missingParameters(_senseConfig)) {
+        throw 'Missing parameters in _senseConfig, you did not populate the settings.json file in the project root of MeteorQRS, or with docker: did you mount the volume with the config including the settings.json file? (with the correct name)';
+    }
 
     if (!_senseConfig.host) {
         throw new Meteor.Error('You have not started this meteor project with: meteor --settings settings-development.json ? You missed the reference to this settings file, or it is empty?');
@@ -174,3 +180,11 @@ if (Meteor.isServer) {
 //     headerKey: 'X-Qlik-User',
 //     headerValue: `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`
 // };
+
+export function missingParameters(obj) {
+    for (var key in obj) {
+        if (obj[key] !== null && obj[key] != "")
+            return false;
+    }
+    return true;
+}
