@@ -27,7 +27,7 @@ import {
 } from '/imports/api/server/QPSFunctions';
 
 
-//import config for Qlik Sense QRS and Engine API
+//import config for Qlik Sense QRS and Engine API//
 import {
     qlikHDRServer, // Qlik sense QRS endpoint via header authentication
     senseConfig,
@@ -46,30 +46,23 @@ import {
 import lodash from 'lodash';
 _ = lodash;
 
-//install NPM modules
+//
+// ─── INSTALL NPM MODULES ────────────────────────────────────────────────────────
+//
+
 const fs = require('fs-extra');
 const enigma = require('enigma.js');
 var QRS = require('qrs');
 var promise = require('bluebird');
 var request = require('request');
 
+//
+// ─── UPLOAD APPS FOR THE INITIAL SETUP OF QLIK SENSE ─────────────────────────
+//
 
-function createQRSMeteorStreams() {
-
-    for (const streamName of Meteor.settings.public.StreamsToCreateAutomatically) {
-        try {
-            console.log('Try to create stream: ' + streamName + ' if it not already exists');
-            if (!QSStream.getStreamByName(streamName)) {
-                QSStream.createStream(streamName)
-            }
-        } catch (err) {
-            console.log(err);
-        }
-    }
-}
 
 // UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM
-async function uploadAndPublishTemplateApps() {
+export async function uploadAndPublishTemplateApps() {
     var newFolder = Meteor.settings.private.templateAppsFrom;
     console.log('--------------------------INIT QLIK SENSE');
     console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder "' + newFolder + '" and upload them to Qlik Sense.');
@@ -121,8 +114,6 @@ async function uploadAndPublishTemplateApps() {
             throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
         }
     }))
-
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DO NOT SEE ME TILL THE INIT HAS FINISHED');
 }
 
 export function generateStreamAndApp(customers, generationUserId) {

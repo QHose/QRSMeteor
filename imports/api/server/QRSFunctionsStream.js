@@ -9,7 +9,30 @@ import { REST_Log } from '/imports/api/APILogs';
 
 const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
 
-// STREAM FUNCTIONS
+//
+// ─── CREATE STREAMS FOR THE INITIAL SETUP OF QLIK SENSE ─────────────────────────
+//
+
+
+export function initSenseStreams() {
+
+    for (const streamName of Meteor.settings.public.StreamsToCreateAutomatically) {
+        try {
+            console.log('Try to create stream: ' + streamName + ' if it not already exists');
+            if (!QSStream.getStreamByName(streamName)) {
+                QSStream.createStream(streamName)
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
+
+////
+// ─── GENERIC STREAM FUNCTIONS ───────────────────────────────────────────────────
+//
+
+
 export function deleteStream(guid, generationUserId) {
     console.log('deleteStream: ', guid);
     try {

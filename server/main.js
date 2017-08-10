@@ -12,7 +12,7 @@ import * as QSProxy from '/imports/api/server/QPSFunctions';
 import * as QSSystem from '/imports/api/server/QRSFunctionsSystemRules';
 
 //import config for Qlik Sense QRS and Engine API
-import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config';
+import { senseConfig, authHeaders } from '/imports/api/config';
 import '/imports/startup/accounts-config.js';
 
 Meteor.startup(function() {
@@ -25,17 +25,23 @@ Meteor.startup(function() {
 });
 
 
-// SETUP QLIK SENSE IF FRESH (A NEW INSTALL)
-export function initQlikSense() {
+//
+// ─── SETUP QLIK SENSE AFTER A CLEAN INSTALL ─────────────────────────────────────
+//
+
+
+function initQlikSense() {
     console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
     Meteor.call('updateLocalSenseCopy');
 
     QSProxy.createVirtualProxies();
-
-    // createQRSMeteorStreams();
-    // uploadAndPublishTemplateApps();}
-
+    QSStream.initSenseStreams();
+    QSApp.uploadAndPublishTemplateApps();
 }
+
+//
+// ─── REMOVE STREAMS AND APPS CREATED DURING THE SAAS DEMO ───────────────────────
+//
 
 function removeGeneratedResources() {
     // console.log('remove the all generated resources on each server start');
@@ -62,7 +68,11 @@ function optimizeMongoDB() {
     APILogs._ensureIndex({ "createDate": 1 });
 }
 
-//Get an update when Qlik sense has changed...
+//
+// ─── GET AN UPDATE WHEN QLIK SENSE HAS CHANGED ──────────────────────────────────
+//
+
+
 function createNotificationListeners() {
     //Create notification listener in Qlik sense https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Notification-Remove-Change-Subscription.htm
     //console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
@@ -89,6 +99,11 @@ function createNotificationListeners() {
         // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
     }
 }
+
+//
+// ─── METEOR METHODS ─────────────────────────────────────────────────────────────
+//
+
 
 Meteor.methods({
     generateStreamAndApp(customers) {

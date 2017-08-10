@@ -4,7 +4,11 @@ import { REST_Log } from '/imports/api/APILogs';
 import { gitHubLinks } from '/imports/ui/UIHelpers';
 var fs = require('fs-extra');
 
-// import config for Qlik Sense QRS
+//
+// ─── IMPORT CONFIG FOR QLIK SENSE QRS ───────────────────────────────────────────
+//
+
+
 import {
     senseConfig,
     enigmaServerConfig,
@@ -19,15 +23,11 @@ import {
 import lodash from 'lodash';
 _ = lodash;
 
-/*
-When communicating with the QPS APIs, the URL is as follows:
-https://<QPS machine name>:4243/<path>
-
-Each proxy has its own session cookie, so you have to logout the users per proxy used.
-*/
+//
+// ─── CREATE VIRTUAL PROXIES ─────────────────────────────────────────────────────
+//
 
 // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Create.htm
-// note: we create a virtual proxy via the QRS API! (not the QPS).
 export async function createVirtualProxies() {
     console.log('--------------------------CREATE VIRTUAL PROXIES');
     var file = Meteor.settings.private.virtualProxyFilePath + 'virtualProxySettings.json';
@@ -83,7 +83,7 @@ export async function createVirtualProxies() {
 
 // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Link.htm 
 function linkVirtualProxyToProxy(virtualProxy) {
-    console.log('linkVirtualProxyToProxy', virtualProxy.id);
+    // console.log('linkVirtualProxyToProxy', virtualProxy.id);
 
     // GET ID OF PROXY ON THIS HOST
     var proxyId = getProxyId();
@@ -107,7 +107,6 @@ function updateProxy(proxyId, proxyConfig) {
             'npmRequestOptions': certicate_communication_options,
             data: proxyConfig
         });
-        console.log('response', response)
     } catch (err) {
         console.error('create virtual proxy failed', err);
     }
@@ -175,6 +174,11 @@ function getServerNodeConfiguration() {
         console.error('create virtual proxy failed', err);
     }
 }
+
+//
+// ─── METEOR METHODS ─────────────────────────────────────────────────────────────
+//
+
 
 Meteor.methods({
     currentlyLoggedInUser() {
@@ -351,6 +355,7 @@ function insertDummyCustomers(generationUserId) {
     });
 }
 
+//Each proxy has its own session cookie, so you have to logout the users per proxy used.
 export function logoutUser(UDC, name, proxy) {
     if (!proxy) {
         proxy = senseConfig.virtualProxyClientUsage;
@@ -450,8 +455,8 @@ Meteor.methods({
             throw new Meteor.Error('Request ticket failed', err.message);
         }
 
-        console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-        console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+        // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+        // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
         // EXAMPLE RESPONSE
         // {
         //   "statusCode": 201,
