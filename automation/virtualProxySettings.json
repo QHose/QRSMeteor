@@ -44,10 +44,10 @@
     },
     {
         "prefix": "hdr",
-        "description": "Header authentication: for use if you have an authenticating reverse proxy. That one will set a header which Qlik Sense can read.",
+        "description": "Header authentication: for use if you have an authenticating reverse proxy. That reverse proxy will set a header (headerAuthenticationHeaderName) which this virtual proxy can read.",
         "authenticationMethod": 2,
         "sessionCookieHeaderName": "X-Qlik-Session-hdr",
-        "headerAuthenticationDynamicUserDirectory": "$ud\\$id",
+        "headerAuthenticationDynamicUserDirectory": "$ud\\\\$id",
         "headerAuthenticationHeaderName": "hdr-usr"
     }
 ]

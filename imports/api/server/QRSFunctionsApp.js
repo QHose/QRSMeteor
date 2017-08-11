@@ -329,21 +329,17 @@ export function copyApp(guid, name, generationUserId) {
     check(guid, String);
     check(name, String);
     // console.log('QRS Functions copy App, copy the app id: ' + guid + ' to app with name: ', name);
-
     const call = {};
-    call.request = qlikHDRServer + '/qrs/app/' + guid + '/copy';
 
     try {
-        call.action = 'Copy app';
-        call.url = gitHubLinks.copyApp;
+        call.request = qrsSrv + '/qrs/app/' + guid + '/copy';
         call.response = HTTP.post(call.request, {
+            'npmRequestOptions': certicate_communication_options,
             headers: authHeaders,
-            params: {
-                'xrfkey': senseConfig.xrfkey,
-                "name": name
-            },
-            data: {}
-        })
+            params: { 'xrfkey': senseConfig.xrfkey, "name": name }
+        });
+
+
         REST_Log(call, generationUserId);
         var newGuid = call.response.data.id;
         // console.log('Step 2: the new app id is: ', newGuid);
@@ -399,7 +395,6 @@ export function getApps() {
         const call = {};
         call.action = 'Get list of apps';
         call.request = qrsSrv + '/qrs/app/full/?xrfkey=' + senseConfig.xrfkey;
-        console.log('call.request', call.request)
         call.response = HTTP.get(call.request, {
             'npmRequestOptions': certicate_communication_options
         });
@@ -416,18 +411,19 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
     console.log('QRSApp deleteApp: ', guid);
     try {
         const call = {};
-        const result = HTTP.del(qlikHDRServer + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
-                headers: authHeaders
-            })
-            // Meteor.call('updateLocalSenseCopy');
+        call.request = qrsSrv + '/qrs/app/' + guid;
+        call.response = HTTP.del(call.request, {
+            params: { xrfkey: senseConfig.xrfkey },
+            npmRequestOptions: certicate_communication_options,
+        });
 
+        // Meteor.call('updateLocalSenseCopy');
         //logging only
         call.action = 'Delete app';
-        call.request = 'HTTP.del(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey;
         call.url = gitHubLinks.deleteApp;
-        call.response = result;
+        call.response = call.response;
         REST_Log(call, generationUserId);
-        return result;
+        return call.response;
     } catch (err) {
         console.error(err);
         throw new Meteor.Error('App delete failed', err.message);
@@ -442,21 +438,19 @@ export function publishApp(appGuid, appName, streamId, customerName, generationU
     check(streamId, String);
 
     try {
-        const result = HTTP.put(qlikHDRServer + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
-            headers: {
-                'hdr-usr': senseConfig.headerValue,
-                'X-Qlik-xrfkey': senseConfig.xrfkey
-            }
+        const call = {};
+        call.request = qrsSrv + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId;
+        call.response = HTTP.put(call.request, {
+            params: { xrfkey: senseConfig.xrfkey },
+            npmRequestOptions: certicate_communication_options,
         });
 
+
         //logging into database
-        const call = {};
         call.action = 'Publish app';
-        call.request = 'HTTP.call(put, http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey + ", {headers: {'hdr-usr': " + senseConfig.headerValue, +'X-Qlik-xrfkey:' + senseConfig.xrfkey + '}';
-        call.response = result;
         call.url = gitHubLinks.publishApp;
         REST_Log(call, generationUserId);
-        return result;
+        return call.response;
     } catch (err) {
         console.error(err);
 
@@ -471,156 +465,156 @@ export function publishApp(appGuid, appName, streamId, customerName, generationU
 };
 
 // REPLACE APP 
-export function replaceApp(targetApp, replaceByApp, generationUserId) {
-    console.log('Function: Replace app: ' + targetApp + ' by app ' + targetApp);
-    check(appGuid, String);
-    check(replaceByApp, String);
+// export function replaceApp(targetApp, replaceByApp, generationUserId) {
+//     console.log('Function: Replace app: ' + targetApp + ' by app ' + targetApp);
+//     check(appGuid, String);
+//     check(replaceByApp, String);
 
-    try {
-        const result = HTTP.put(qlikHDRServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey, {
-            headers: {
-                'hdr-usr': senseConfig.headerValue,
-                'X-Qlik-xrfkey': senseConfig.xrfkey
-            }
-        });
+//     try {
+//         const result = HTTP.put(qlikHDRServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey, {
+//             headers: {
+//                 'hdr-usr': senseConfig.headerValue,
+//                 'X-Qlik-xrfkey': senseConfig.xrfkey
+//             }
+//         });
 
-        //logging into database
-        const call = {};
-        call.action = 'Replace app';
-        call.request = 'HTTP.put(' + qlikHDRServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey;
-        call.response = result;
-        call.url = 'http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-App-Replace.htm';
-        REST_Log(call, generationUserId);
-        return result;
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('Publication of app ' + appName + ' for customer ' + customerName + ' failed: ', err.message);
-    }
-};
+//         //logging into database
+//         const call = {};
+//         call.action = 'Replace app';
+//         call.request = 'HTTP.put(' + qlikHDRServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey;
+//         call.response = result;
+//         call.url = 'http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-App-Replace.htm';
+//         REST_Log(call, generationUserId);
+//         return result;
+//     } catch (err) {
+//         console.error(err);
+//         throw new Meteor.Error('Publication of app ' + appName + ' for customer ' + customerName + ' failed: ', err.message);
+//     }
+// };
 
 
-function createTag(name) {
-    check(name, String);
-    // console.log('QRS Functions Appp, create a tag: ' + name);
+// function createTag(name) {
+//     check(name, String);
+//     // console.log('QRS Functions Appp, create a tag: ' + name);
 
-    try {
-        const result = HTTP.post(qlikHDRServer + '/qrs/Tag', {
-            headers: authHeaders,
-            params: {
-                'xrfkey': senseConfig.xrfkey
-            },
-            data: {
-                "name": name
-            }
-        })
+//     try {
+//         const result = HTTP.post(qlikHDRServer + '/qrs/Tag', {
+//             headers: authHeaders,
+//             params: {
+//                 'xrfkey': senseConfig.xrfkey
+//             },
+//             data: {
+//                 "name": name
+//             }
+//         })
 
-        //logging only
-        const call = {};
-        call.action = 'create Tag';
-        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/tag';
-        call.response = result;
-        REST_Log(call, generationUserId);
+//         //logging only
+//         const call = {};
+//         call.action = 'create Tag';
+//         call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/tag';
+//         call.response = result;
+//         REST_Log(call, generationUserId);
 
-        return result;
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('Tag: ' + name + ' create failed ', err.message);
-    }
-};
+//         return result;
+//     } catch (err) {
+//         console.error(err);
+//         throw new Meteor.Error('Tag: ' + name + ' create failed ', err.message);
+//     }
+// };
 
-function addTag(type, guid, tagName) {
-    check(type, String);
-    check(guid, String);
+// function addTag(type, guid, tagName) {
+//     check(type, String);
+//     check(guid, String);
 
-    //check if tag with tagName already exists
+//     //check if tag with tagName already exists
 
-    var selectionId = createSelection(type, guid);
-    addTagViaSyntheticToType('App', selectionId, tagGuid)
+//     var selectionId = createSelection(type, guid);
+//     addTagViaSyntheticToType('App', selectionId, tagGuid)
 
-}
+// }
 
-function createSelection(type, guid) {
-    check(type, String);
-    check(guid, String);
-    console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);
+// function createSelection(type, guid) {
+//     check(type, String);
+//     check(guid, String);
+//     console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);
 
-    try {
-        const result = HTTP.post(qlikHDRServer + '/qrs/Selection', {
-            headers: authHeaders,
-            params: {
-                'xrfkey': senseConfig.xrfkey
-            },
-            data: {
-                items: [{
-                    type: type,
-                    objectID: guid
-                }]
-            }
-        })
-        console.log('the result of selection for type: ', type + ' ' + guid);
-        console.log(result);
-        return result.id;
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
-    }
-};
+//     try {
+//         const result = HTTP.post(qlikHDRServer + '/qrs/Selection', {
+//             headers: authHeaders,
+//             params: {
+//                 'xrfkey': senseConfig.xrfkey
+//             },
+//             data: {
+//                 items: [{
+//                     type: type,
+//                     objectID: guid
+//                 }]
+//             }
+//         })
+//         console.log('the result of selection for type: ', type + ' ' + guid);
+//         console.log(result);
+//         return result.id;
+//     } catch (err) {
+//         console.error(err);
+//         throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
+//     }
+// };
 
-function deleteSelection(selectionId) {
-    check(selectionId, String);
-    console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
+// function deleteSelection(selectionId) {
+//     check(selectionId, String);
+//     console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
 
-    try {
-        const result = HTTP.delete(qlikHDRServer + '/qrs/Selection/' + selectionId, {
-            headers: authHeaders,
-            params: {
-                'xrfkey': senseConfig.xrfkey
-            }
-        })
-        console.log(result);
-        return result.id;
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('Selection delete failed: ', err.message);
-    }
-};
+//     try {
+//         const result = HTTP.delete(qlikHDRServer + '/qrs/Selection/' + selectionId, {
+//             headers: authHeaders,
+//             params: {
+//                 'xrfkey': senseConfig.xrfkey
+//             }
+//         })
+//         console.log(result);
+//         return result.id;
+//     } catch (err) {
+//         console.error(err);
+//         throw new Meteor.Error('Selection delete failed: ', err.message);
+//     }
+// };
 
-function buildModDate() {
-    var d = new Date();
-    return d.toISOString();
-}
+// function buildModDate() {
+//     var d = new Date();
+//     return d.toISOString();
+// }
 
-function addTagViaSyntheticToType(type, selectionId, tagGuid) {
-    check(type, String);
-    check(guid, String);
-    console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
+// function addTagViaSyntheticToType(type, selectionId, tagGuid) {
+//     check(type, String);
+//     check(guid, String);
+//     console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
 
-    try {
-        const result = HTTP.put(qlikHDRServer + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
-            headers: authHeaders,
-            params: {
-                'xrfkey': senseConfig.xrfkey
-            },
-            data: {
-                "latestModifiedDate": buildModDate(),
-                "properties": [{
-                    "name": "refList_Tag",
-                    "value": {
-                        "added": [tagGuid]
-                    },
-                    "valueIsModified": true
-                }],
-                "type": type
-            }
-        })
-        console.log('the result of selection for type: ', type + ' ' + guid);
-        console.log(result);
-        return result;
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
-    }
-};
+//     try {
+//         const result = HTTP.put(qlikHDRServer + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
+//             headers: authHeaders,
+//             params: {
+//                 'xrfkey': senseConfig.xrfkey
+//             },
+//             data: {
+//                 "latestModifiedDate": buildModDate(),
+//                 "properties": [{
+//                     "name": "refList_Tag",
+//                     "value": {
+//                         "added": [tagGuid]
+//                     },
+//                     "valueIsModified": true
+//                 }],
+//                 "type": type
+//             }
+//         })
+//         console.log('the result of selection for type: ', type + ' ' + guid);
+//         console.log(result);
+//         return result;
+//     } catch (err) {
+//         console.error(err);
+//         throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
+//     }
+// };
 
 
 // async function uploadPublishTemplateApps() {

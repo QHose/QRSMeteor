@@ -16,11 +16,12 @@ const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + sens
 
 export function initSenseStreams() {
 
+
     for (const streamName of Meteor.settings.public.StreamsToCreateAutomatically) {
         try {
             console.log('Try to create stream: ' + streamName + ' if it not already exists');
-            if (!QSStream.getStreamByName(streamName)) {
-                QSStream.createStream(streamName)
+            if (!getStreamByName(streamName)) {
+                createStream(streamName)
             }
         } catch (err) {
             console.log(err);
@@ -28,7 +29,7 @@ export function initSenseStreams() {
     }
 }
 
-////
+//
 // ─── GENERIC STREAM FUNCTIONS ───────────────────────────────────────────────────
 //
 

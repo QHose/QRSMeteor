@@ -83,7 +83,7 @@
     "privileges": null
   },
   {
-    "id": "2b39e843-fc85-4b4e-8852-6cd5945c6a83",
+    "id": "ba6b9bd6-73fa-483a-affc-748abb0d7af9",
     "prefix": "anon",
     "description": "anon",
     "authenticationModuleRedirectUri": "",
@@ -169,7 +169,7 @@
     "privileges": null
   },
   {
-    "id": "18ad270f-af90-4e8b-9e1c-bffe48c1058f",
+    "id": "e528603c-adb1-4af1-aa1b-aba21f56d3ca",
     "prefix": "presentationsso",
     "description": "used to login users for the slide generator. Based on this users get a technical or a sales profile via a ticket request",
     "authenticationModuleRedirectUri": "http://localhost:3000/presentationsso",
@@ -255,7 +255,7 @@
     "privileges": null
   },
   {
-    "id": "becd5c62-4dd3-47de-b008-b179afe7626a",
+    "id": "8faa5684-925f-4a96-87e9-fe4091879685",
     "prefix": "meteor",
     "description": "Ticket auth. for the SaaS automation demo. In step 4 you will request a ticket via this virtual proxy.",
     "authenticationModuleRedirectUri": "http://localhost:3000/sso",
@@ -325,6 +325,89 @@
       "jshell.net",
       "localhost"
     ],
+    "defaultVirtualProxy": false,
+    "tags": [],
+    "samlMetadataIdP": "",
+    "samlHostUri": "",
+    "samlEntityId": "",
+    "samlAttributeUserId": "",
+    "samlAttributeUserDirectory": "",
+    "samlAttributeSigningAlgorithm": 0,
+    "samlAttributeMap": [],
+    "jwtAttributeUserId": "",
+    "jwtAttributeUserDirectory": "",
+    "jwtPublicKeyCertificate": "",
+    "jwtAttributeMap": [],
+    "magicLinkHostUri": "",
+    "magicLinkFriendlyName": "",
+    "privileges": null
+  },
+  {
+    "id": "314e9bfc-9ebc-4575-82a3-e24102c84b2f",
+    "prefix": "hdr",
+    "description": "Header authentication: for use if you have an authenticating reverse proxy. That reverse proxy will set a header (headerAuthenticationHeaderName) which this virtual proxy can read.",
+    "authenticationModuleRedirectUri": "",
+    "sessionModuleBaseUri": "",
+    "loadBalancingModuleBaseUri": "",
+    "loadBalancingServerNodes": [
+      {
+        "id": "e44efde7-89bf-471a-adc1-3b6e0fae3251",
+        "name": "Central",
+        "hostName": "nlsch-mbj3.qliktech.com",
+        "temporaryfilepath": "C:\\Users\\QService\\AppData\\Local\\Temp\\",
+        "roles": [
+          {
+            "id": "a10ae864-44c9-4468-81d7-2d865cc883c0",
+            "definition": 0,
+            "privileges": null
+          },
+          {
+            "id": "cac15fd8-078a-443f-98aa-1e9d4e005bbe",
+            "definition": 1,
+            "privileges": null
+          },
+          {
+            "id": "e8789825-ed04-47bf-ab18-71e19d45a615",
+            "definition": 2,
+            "privileges": null
+          },
+          {
+            "id": "330aa538-a9b3-48ce-bc68-9b53a7008baa",
+            "definition": 3,
+            "privileges": null
+          },
+          {
+            "id": "94fe30ca-640e-43a7-9a7e-35f27bd21775",
+            "definition": 4,
+            "privileges": null
+          },
+          {
+            "id": "5796f5b7-03a1-4f69-8a4d-83924b07e465",
+            "definition": 5,
+            "privileges": null
+          }
+        ],
+        "serviceCluster": {
+          "id": "534c640d-f08e-4822-894e-00da45027800",
+          "name": "ServiceCluster",
+          "privileges": null
+        },
+        "privileges": null
+      }
+    ],
+    "authenticationMethod": 2,
+    "headerAuthenticationMode": 2,
+    "headerAuthenticationHeaderName": "hdr-usr",
+    "headerAuthenticationStaticUserDirectory": "",
+    "headerAuthenticationDynamicUserDirectory": "$ud\\\\$id",
+    "anonymousAccessMode": 0,
+    "windowsAuthenticationEnabledDevicePattern": "Windows",
+    "sessionCookieHeaderName": "X-Qlik-Session-hdr",
+    "sessionCookieDomain": "",
+    "additionalResponseHeaders": "",
+    "sessionInactivityTimeout": 30,
+    "extendedSecurityEnvironment": false,
+    "websocketCrossOriginWhiteList": [],
     "defaultVirtualProxy": false,
     "tags": [],
     "samlMetadataIdP": "",
