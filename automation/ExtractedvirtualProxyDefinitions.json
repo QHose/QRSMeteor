@@ -1,8 +1,8 @@
 [
   {
-    "id": "756cb30c-8539-41e8-8c55-4ad21c6c6dfa",
+    "id": "7633e448-2fcd-4aee-8637-ef62da429eb9",
     "prefix": "hdr",
-    "description": "hdr",
+    "description": "Header authentication: for use if you have an authenticating reverse proxy. That reverse proxy will set a header (headerAuthenticationHeaderName) which this virtual proxy can read.",
     "authenticationModuleRedirectUri": "",
     "sessionModuleBaseUri": "",
     "loadBalancingModuleBaseUri": "",
@@ -52,11 +52,11 @@
         "privileges": null
       }
     ],
-    "authenticationMethod": 0,
-    "headerAuthenticationMode": 0,
-    "headerAuthenticationHeaderName": "",
+    "authenticationMethod": 2,
+    "headerAuthenticationMode": 2,
+    "headerAuthenticationHeaderName": "hdr-usr",
     "headerAuthenticationStaticUserDirectory": "",
-    "headerAuthenticationDynamicUserDirectory": "",
+    "headerAuthenticationDynamicUserDirectory": "$ud\\\\$id",
     "anonymousAccessMode": 0,
     "windowsAuthenticationEnabledDevicePattern": "Windows",
     "sessionCookieHeaderName": "X-Qlik-Session-hdr",
@@ -83,7 +83,7 @@
     "privileges": null
   },
   {
-    "id": "ef3a57ee-c191-4399-8257-24f124a30abc",
+    "id": "9f2188fb-52f9-4fda-aa4a-28290f5d5198",
     "prefix": "meteor",
     "description": "Ticket auth. for the SaaS automation demo. In step 4 you will request a ticket via this virtual proxy.",
     "authenticationModuleRedirectUri": "http://localhost:3000/sso",
@@ -171,7 +171,7 @@
     "privileges": null
   },
   {
-    "id": "45f94146-03f2-42aa-83df-7aa56d03a558",
+    "id": "990d3961-f224-4dd2-97fe-564ccfcad81e",
     "prefix": "presentationsso",
     "description": "used to login users for the slide generator. Based on this users get a technical or a sales profile via a ticket request",
     "authenticationModuleRedirectUri": "http://localhost:3000/presentationsso",
@@ -257,7 +257,7 @@
     "privileges": null
   },
   {
-    "id": "b9296320-35cf-4609-b993-86841ebd024a",
+    "id": "b38fe6f2-ba18-4f3c-949b-fabd6b072cd6",
     "prefix": "anon",
     "description": "anon",
     "authenticationModuleRedirectUri": "",

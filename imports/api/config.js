@@ -76,6 +76,17 @@ if (Meteor.isServer) {
         ca: _certs.ca
     };
 
+    export function validateJSON(body) {
+        try {
+            var data = JSON.parse(body);
+            // if came to here, then valid
+            return data;
+        } catch (e) {
+            // failed to parse
+            return null;
+        }
+    }
+
     //https://nodejs.org/api/http.html#http_http_request_options_callback
     // export var QRSCertConfig = {
     //     url: 'https://' + _senseConfig.SenseServerInternalLanIP,

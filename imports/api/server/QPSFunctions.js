@@ -19,6 +19,7 @@ import {
     QRSCertConfig,
     certicate_communication_options,
     _IntegrationPresentationApp,
+    validateJSON
 } from '/imports/api/config.js';
 import lodash from 'lodash';
 _ = lodash;
@@ -34,6 +35,11 @@ export async function createVirtualProxies() {
     try {
         // READ THE PROXY FILE 
         var proxySettings = await fs.readJson(file);
+        try {
+            validateJSON(proxySettings)
+        } catch (err) {
+            throw new Error('Cant read the virtual proxy definitions file: virtualProxySettings.json in your automation folder')
+        }
 
         //FOR EACH PROXY FOUND IN THE INPUTFILE (vpToCreate), CREATE IT IN SENSE
         for (var vpToCreate of proxySettings) {
@@ -56,6 +62,7 @@ export async function createVirtualProxies() {
         }
     } catch (err) {
         console.error(err)
+        throw new Error('unable to create virtual proxies', err);
     }
 
 
