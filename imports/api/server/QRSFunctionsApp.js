@@ -295,7 +295,11 @@ function checkTemplateAppExists(generationUserId) {
     return templateApps;
 };
 
-// UPLOAD APP
+//
+// ─── UPLOAD APP ─────────────────────────────────────────────────────────────────
+//
+
+
 async function uploadApp(filePath, appName) {
     console.log('--------------------------UPLOAD APP');
     console.log('uploadApp: try to upload app: ' + appName + ' from path: ' + filePath);
@@ -324,6 +328,10 @@ async function uploadApp(filePath, appName) {
         });
     });
 }
+//
+// ─── COPYAPP ────────────────────────────────────────────────────────────────────
+//
+
 
 export function copyApp(guid, name, generationUserId) {
     check(guid, String);
@@ -335,8 +343,8 @@ export function copyApp(guid, name, generationUserId) {
         call.request = qrsSrv + '/qrs/app/' + guid + '/copy';
         call.response = HTTP.post(call.request, {
             'npmRequestOptions': certicate_communication_options,
-            headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey, "name": name }
+            params: { 'xrfkey': senseConfig.xrfkey, "name": name },
+            data: {}
         });
 
 
@@ -353,6 +361,10 @@ export function copyApp(guid, name, generationUserId) {
         throw new Meteor.Error('Copy app for selected customers failed', err.message);
     }
 };
+
+//
+// ─── CHECKSTREAMSTATUS ──────────────────────────────────────────────────────────
+//
 
 
 function checkStreamStatus(customer, generationUserId) {
@@ -390,6 +402,11 @@ function checkStreamStatus(customer, generationUserId) {
 // };
 
 // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Get-All-As-Full.htm
+
+
+//
+// ─── GETAPPS ────────────────────────────────────────────────────────────────────
+//    
 export function getApps() {
     try {
         const call = {};
@@ -406,6 +423,10 @@ export function getApps() {
     }
 };
 
+//
+// ─── DELETEAPP ──────────────────────────────────────────────────────────────────
+//
+
 
 export function deleteApp(guid, generationUserId = 'Not defined') {
     console.log('QRSApp deleteApp: ', guid);
@@ -415,6 +436,7 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
         call.response = HTTP.del(call.request, {
             params: { xrfkey: senseConfig.xrfkey },
             npmRequestOptions: certicate_communication_options,
+            data: {}
         });
 
         // Meteor.call('updateLocalSenseCopy');
@@ -430,6 +452,12 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
     }
 };
 
+
+//
+// ─── PUBLISHAPP ─────────────────────────────────────────────────────────────────
+//
+
+
 export function publishApp(appGuid, appName, streamId, customerName, generationUserId) {
     console.log('--------------------------PUBLISH');
     console.log('Publish app: ' + appName + ' to stream: ' + streamId);
@@ -443,6 +471,7 @@ export function publishApp(appGuid, appName, streamId, customerName, generationU
         call.response = HTTP.put(call.request, {
             params: { xrfkey: senseConfig.xrfkey },
             npmRequestOptions: certicate_communication_options,
+            data: {}
         });
 
 

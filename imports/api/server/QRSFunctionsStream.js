@@ -37,51 +37,62 @@ export function initSenseStreams() {
 export function deleteStream(guid, generationUserId) {
     console.log('deleteStream: ', guid);
     try {
-        const result = HTTP.del(qlikServer + '/qrs/stream/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
-            headers: authHeaders
-        })
+
+        var request = qrsSrv + '/qrs/stream/' + guid;
+        var response = HTTP.del(request, {
+            'npmRequestOptions': certicate_communication_options,
+        });
+
+        // Logging
         const call = {};
         call.action = 'Delete stream';
         call.request = "HTTP.del(" + qlikServer + '/qrs/stream/' + guid + '?xrfkey=' + senseConfig.xrfkey;
-        call.response = result;
+        call.response = response;
         REST_Log(call, generationUserId);
         Meteor.call('updateLocalSenseCopy');
-        return result;
+        return response;
     } catch (err) {
         // console.error(err);
         // throw new Meteor.Error('Delete stream failed', err.message);
     }
 };
 
+
+//
+// ─── GET STREAM BY NAME ────────────────────────────────────────────────────────────
+//
+
+
 export function getStreamByName(name) {
     try {
-        var response = HTTP.get(qlikServer + "/qrs/stream/full?filter=Name eq '" + name + "'", {
-            headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey }
-        })
+        var request = qrsSrv + "/qrs/stream/full?filter=Name eq '" + name + "'";
+        var response = HTTP.get(request, {
+            params: { xrfkey: senseConfig.xrfkey },
+            npmRequestOptions: certicate_communication_options,
+            data: {}
+        });
+
         return response.data[0];
     } catch (err) {
         console.error(err);
-        throw new Meteor.Error('get template stream failed', err.message);
+        throw Error('get streamByName failed', err.message);
     }
 }
+
+//
+// ─── GET STREAMS ─────────────────────────────────────────────────────────────────
+//
+
 
 export function getStreams() {
     try {
         const call = {};
-        // call.action = 'Get list of streams';
-        // call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/stream/full';
-        // // console.log('Try to get the stream from Sense at this url: ' , call.request);
-        // call.response = HTTP.get(qlikServer + '/qrs/stream/full', {
-        //         headers: authHeaders,
-        //         params: { 'xrfkey': senseConfig.xrfkey }
-        //     })
-
         call.action = 'Get list of streams';
-        call.request = qrsSrv + '/qrs/stream/full?xrfkey=' + senseConfig.xrfkey;
-        console.log('call.request', call.request)
+        call.request = qrsSrv + '/qrs/stream/full';
         call.response = HTTP.get(call.request, {
-            'npmRequestOptions': certicate_communication_options,
+            params: { xrfkey: senseConfig.xrfkey },
+            npmRequestOptions: certicate_communication_options,
+            data: {}
         });
         // REST_Log(call);        
         return call.response.data;
@@ -91,23 +102,32 @@ export function getStreams() {
     }
 };
 
+//
+// ─── CREATE STREAM ──────────────────────────────────────────────────────────────
+//
+
 
 export function createStream(name, generationUserId) {
     console.log('QRS sync Functions Stream, create the stream with name', name);
 
     try {
-        const result = HTTP.post(qlikServer + '/qrs/stream', {
-            headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey },
+        var request = qrsSrv + "/qrs/stream";
+        var response = HTTP.post(request, {
+            params: { xrfkey: senseConfig.xrfkey },
+            npmRequestOptions: certicate_communication_options,
             data: { "name": name }
-        })
+        });
+
+
         Meteor.call('updateLocalSenseCopy');
         //logging
-        const call = {};
-        call.action = 'Create stream';
-        call.url = gitHubLinks.createStream;
-        call.request = "HTTP.post(qlikServer + '/qrs/stream', { headers: " + JSON.stringify(authHeaders) + ", params: { 'xrfkey': " + senseConfig.xrfkey + "}, data: { name: " + name + "}}) --> USE OF HEADER AUTH ONLY FOR DEMO/REVERSE PROXY PURPOSES";
-        call.response = result;
+        const call = {
+            action: 'Create stream',
+            url: gitHubLinks.createStream,
+            request: "HTTP.post(qlikServer + '/qrs/stream', { headers: " + JSON.stringify(authHeaders) + ", params: { 'xrfkey': " + senseConfig.xrfkey + "}, data: { name: " + name + "}}) --> USE OF HEADER AUTH ONLY FOR DEMO/REVERSE PROXY PURPOSES",
+            response: response
+        };
+
         REST_Log(call, generationUserId);
         return call.response;
     } catch (err) {
