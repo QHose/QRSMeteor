@@ -35,8 +35,8 @@ function initQlikSense() {
     Meteor.call('updateLocalSenseCopy');
 
     QSProxy.createVirtualProxies();
-    QSStream.initSenseStreams();
-    QSApp.uploadAndPublishTemplateApps();
+    // QSStream.initSenseStreams();
+    // QSApp.uploadAndPublishTemplateApps();
 }
 
 //
