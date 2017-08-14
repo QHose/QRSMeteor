@@ -217,41 +217,10 @@ Meteor.methods({
     },
     removeAllCustomers: function() {
         return Customers.remove({ 'generationUserId': Meteor.userId() });
-    },
+    }
+})
 
-    //STREAM METHODS
-    deleteStream(guid) {
-        check(guid, String);
-        //logging only
-        const call = {};
-        call.action = 'Delete stream';
-        call.request = 'Delete stream: ' + guid;
-        REST_Log(call);
-
-        const id = QSStream.deleteStream(guid, Meteor.userId());
-        Meteor.call('updateLocalSenseCopy');
-        return id;
-    },
-    createStream(name) {
-        const streamId = QSStream.createStream(name);
-        Meteor.call('updateLocalSenseCopy');
-
-        //store in the database that the user generated something, so we can later on remove it.
-        GeneratedResources.insert({
-            'generationUserId': Meteor.userId(),
-            'customer': null,
-            'streamId': streamId.data.id,
-            'appId': null
-        });
-        return streamId;
-    },
-    getStreams() {
-        return QSStream.getStreams();
-    },
-    getSecurityRules() {
-        return QSSystem.getSecurityRules();
-    },
-
+Meteor.methods({
     updateLocalSenseCopyApps() {
         //delete the local content of the database before updating it
         Apps.remove({});
@@ -270,7 +239,6 @@ Meteor.methods({
             Streams.insert(stream);
         });
     },
-
     updateLocalSenseCopy() {
         // //console.log('Method: update the local mongoDB with fresh data from Qlik Sense: call QRS API getStreams and getApps');
         //delete the local content of the database before updating it
@@ -285,8 +253,13 @@ Meteor.methods({
         _.each(QSStream.getStreams(), stream => {
             Streams.insert(stream);
         });
+    },
+    getSecurityRules() {
+        return QSSystem.getSecurityRules();
     }
 });
+
+
 
 
 // checkSenseIsReady() {

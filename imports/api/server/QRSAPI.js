@@ -21,22 +21,47 @@ import { certicate_communication_options, senseConfig, authHeaders, qrsSrv } fro
 // var promise = require('bluebird');
 // var request = require('request');
 
-var myQRS = function myQRS() {
-    this.get = function(path, params, data) {
-        var newPath = checkPath(path);
+export var myQRS = function myQRSMain() {
+
+    this.get = function(path, params) {
+        var endpoint = checkPath(path);
+        console.log('endpoint', endpoint)
 
         // copy the params to one object
         var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
-
-        var request = qrsSrv + path;
-        var response = http.post(request, {
-            npmRequestOptions: certicate_communication_options,
-            params: newParams,
-            data: {},
-        });
+        console.log('newParams', newParams)
+        try {
+            var response = HTTP.get(endpoint, {
+                npmRequestOptions: certicate_communication_options,
+                params: newParams,
+                data: {},
+            });
+            return response.data;
+        } catch (err) {
+            console.error('HTTP GET FAILED FOR ' + endpoint, err);
+        }
     };
 
-    this.post = function(path) {};
+    this.post = function(path, data, params) {
+        var endpoint = checkPath(path);
+        console.log('endpoint', endpoint)
+        console.log('data', data)
+
+        // copy the params to one object
+        var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
+        console.log('newParams', newParams)
+        try {
+            var response = HTTP.post(endpoint, {
+                npmRequestOptions: certicate_communication_options,
+                params: newParams,
+                data: data,
+            });
+            console.log('response', response)
+            return response.data;
+        } catch (err) {
+            console.error('HTTP POST FAILED FOR ' + endpoint, err);
+        }
+    };
 };
 
 function checkPath(path) {
@@ -46,3 +71,5 @@ function checkPath(path) {
 
     return qrsSrv + path;
 }
+
+// module.exports = myQRS;
