@@ -220,7 +220,7 @@ pre {
     color: #5ea819;
 }
 
-.step.integration blockquote p {
+.markdownItem blockquote p {
     color: #5EA819;
     font-size: 2em;
     width: 50%;
