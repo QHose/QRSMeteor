@@ -16,6 +16,7 @@ var qrs = new myQRS();
 
 export async function uploadExtensions() {
     // LOAD ALL EXTENSIONS IN FOLDER
+    var extensionsFolder = Meteor.settings.private.automationBaseFolder + '\extensions';
     var extensionsInFolder = await fs.readdir(newFolder);
 
 }

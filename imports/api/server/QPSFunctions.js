@@ -3,6 +3,7 @@ import { Customers, dummyCustomers, dummyCustomer } from '/imports/api/customers
 import { REST_Log } from '/imports/api/APILogs';
 import { gitHubLinks } from '/imports/ui/UIHelpers';
 var fs = require('fs-extra');
+const path = require('path');
 
 //
 // ─── IMPORT CONFIG FOR QLIK SENSE QRS ───────────────────────────────────────────
@@ -31,7 +32,7 @@ _ = lodash;
 // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Create.htm
 export async function createVirtualProxies() {
     console.log('--------------------------CREATE VIRTUAL PROXIES');
-    var file = Meteor.settings.private.automationBaseFolder + '\Proxy\import\virtualProxySettings.json';
+    var file = path.join(Meteor.settings.private.automationBaseFolder, 'proxy', 'import', 'virtualProxySettings.json');
     try {
         // READ THE PROXY FILE 
         var proxySettings = await fs.readJson(file);
@@ -57,7 +58,7 @@ export async function createVirtualProxies() {
                 // THE VIRTUAL PROXY HAS BEEN CREATED, NOW LINK IT TO THE CENTRAL PROXY
                 linkVirtualProxyToProxy(virtualProxy);
             } else {
-                console.log('Virtual proxy ' + virtualProxy.prefix + ' already existed. No need to create it again.');
+                console.log('Virtual proxy ' + vpToCreate.prefix + ' already existed. We do not update existing ones.');
             }
         }
     } catch (err) {
@@ -155,7 +156,7 @@ export function getVirtualProxies() {
             npmRequestOptions: certicate_communication_options,
         });
 
-        var file = Meteor.settings.private.automationBaseFolder + '\Proxy\export\ExtractedvirtualProxyDefinitions.json';
+        var file = path.join(Meteor.settings.private.automationBaseFolder, 'proxy', 'export', 'ExtractedvirtualProxyDefinitions.json');
 
         // SAVE PROXY FILE TO DISK
         fs.outputFile(file, JSON.stringify(response.data, null, 2), 'utf-8');

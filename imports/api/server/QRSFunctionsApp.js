@@ -49,7 +49,7 @@ _ = lodash;
 //
 // ─── INSTALL NPM MODULES ────────────────────────────────────────────────────────
 //
-
+const path = require('path');
 const fs = require('fs-extra');
 const enigma = require('enigma.js');
 var QRS = require('qrs');
@@ -63,11 +63,11 @@ var request = require('request');
 
 // UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM
 export async function uploadAndPublishTemplateApps() {
-    var newFolder = Meteor.settings.private.templateAppsFrom + '\apps';
+    var newFolder = path.join(Meteor.settings.private.automationBaseFolder, 'apps');
     console.log('--------------------------INIT QLIK SENSE');
     console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder "' + newFolder + '" and upload them to Qlik Sense.');
 
-    //GET THE ID OF THE IMPORTANT STREAM (streams that QRSMeteor needs)
+    //GET THE ID OF THE IMPORTANT STREAMS (streams that QRSMeteor needs)
     var everyOneStreamId = QSStream.getStreamByName(Meteor.settings.public.EveryoneAppStreamName).id;
     var templateStreamId = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName).id;
     var APIAppsStreamID = QSStream.getStreamByName(Meteor.settings.public.APIAppStreamName).id;
@@ -89,7 +89,7 @@ export async function uploadAndPublishTemplateApps() {
         try {
             //GET THE NAME OF THE APP AND CREATE A FILEPATH
             var appName = QVF.substr(0, QVF.indexOf('.'));
-            var filePath = newFolder + '\\' + QVF;
+            var filePath = path.join(newFolder, QVF);
 
             //UPLOAD THE APP, GET THE APP ID BACK
             var appId = await uploadApp(filePath, appName);
@@ -255,7 +255,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
 }
 
 function createDirectory(customerName) {
-    const dir = Meteor.settings.private.customerDataDir + "\\" + customerName;
+    const dir = path.join(Meteor.settings.private.customerDataDir, customerName);
     fs.ensureDir(dir, err => {
         console.error(err) // => null
     });
