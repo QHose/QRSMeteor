@@ -220,10 +220,15 @@ pre {
     color: #5ea819;
 }
 
-.step.integration blockquote p {
+.markdownItem blockquote p {
     color: #5EA819;
     font-size: 2em;
-    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.markdownItem pre code {
+    color: ghostwhite;
 }
 
 .integration .image {
@@ -233,7 +238,7 @@ pre {
 
 .markdownItem h1,
 .markdownItem h2 {
-    margin-top: 2em;
+    margin-top: 1em;
     margin-bottom: 1em;
 }
 

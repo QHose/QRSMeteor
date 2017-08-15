@@ -1,66 +1,68 @@
 {
     "adminEmails": "mbj@qlik.com",
     "public": {
-        "host": "PRESALES1",
-        "port": 81,
-        "proxyPort": 80,
-        "UDC": "OEM_HOST",
-        "virtualProxyClientUsage": "meteor",
-        "webIntegrationHost": "localhost",
-        "webIntegrationDemoPort": 3030,
-        "SSBIAppSheetString": "40ef70c9-be76-4844-ac6a-d53195146c85/sheet/puEpZK/state/analysis",
-        "SSBIApp": "40ef70c9-be76-4844-ac6a-d53195146c85",
-        "IntegrationPresentationApp": "ce2c6eb5-dc73-44fb-a9f9-11fb2777fdfd",
+        "host": "integration.qlik.com",
+    "proxyPort": 80,
+        "port": 443, 
+        "UDC": "OEM_HOST", 
+        "virtualProxyClientUsage": "meteor",                      
+        "webIntegrationHost": "web.saasdemo.qlik.com",
+        "webIntegrationDemoPort": 80,
+        "facebook":{
+            "clientId": ""
+        },
+        "SSBIApp": "d0fbb7ce-f217-4678-8798-9ab543b888a0",
+        "SSBIAppSheetString": "d0fbb7ce-f217-4678-8798-9ab543b888a0/sheet/puEpZK/state/analysis",
+        "IntegrationPresentationApp": "9b5091fb-5715-4bfb-a948-6d708d56da72",
         "IntegrationPresentationSelectionSheet": "DYTpxv",
-        "IntegrationPresentationSortedDataObject": "pskL",
+        "IntegrationPresentationSortedDataObject": "pskL", 
         "IntegrationPresentationSlideObject": "BbbV",
-        "IntegrationPresentationProxy": "presentation",
-        "facebook": {
-            "clientId": "1754933311453043"
-        }
+        "IntegrationPresentationProxy": "presentationsso"       
     },
     "private": {
-        "host": "PRESALES1",
-        "port": 81,
-        "certificatesDirectory": "C:\\Users\\mbj\\Documents\\GitHub\\QRSMeteor",
-        "notificationURL": "http://nlsch-mbj3:3000/updateSenseInfo",
-        "SenseServerInternalLanIP": "PRESALES1",
+        "host": "integration.qlik.com",
+        "port": 443, 
+        "certificatesDirectory": "C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates",
+        "SenseServerInternalLanIP": "LOCALHOST",        
         "useSSL": false,
         "passphrase": null,
         "authentication": "header",
         "virtualProxy": "hdr",
         "headerKey": "hdr-usr",
-        "UDC": "OEM_HOST",
-        "headerValue": "PRESALES1\\Qlik",
+        "UDC": "OEM_HOST",        
+        "headerValue": "QLIKDEMOSAAS\\administrator",        
         "isSecure": true,
-        "engineHeaders": "UserDirectory=PRESALES1;UserId=Qlik",
+        "engineHeaders": "UserDirectory=QLIKDEMOSAAS;UserId=administrator",
         "enginePort": 4747,
         "proxyPort": 4243,
         "google": {
-            "clientId": "527202830644-.apps.googleusercontent.com",
-            "secret": "y02UGGE5aPQ"
+            "clientId": "",
+            "secret": ""
         },
-        "facebook": {
-            "clientId": "175493043",
-            "secret": "e05dbcda4"
+        "facebook":{
+            "clientId": "",
+            "secret": ""
         },
-        "twitter": {
-            "clientId": "9hpftGeoELT3CLX",
-            "secret": "xJ8AlVL6ofc4TxXJhUY"
+          "twitter": {
+            "clientId": "",
+            "secret": ""
         },
         "linkedin": {
-            "clientId": "86rpkry91dn41y",
-            "secret": "ltdJn45rdGgUIHqy"
+            "clientId": "",
+            "secret": ""
         },
         "github": {
-            "clientId": "535d2ca6386eeca90d65",
-            "secret": "924a9d853fd80f12"
+            "clientId": "",
+            "secret": ""
         }
     },
     "sikka": {
          "captcha": {
-             "siteKey": "your_new_site_key",
-             "secret":  "your_new_secret_key"
+             "siteKey": "",
+             "secret":  "6dafdsfasdfasdfadsfdsafh"
+         },
+         "rateLimits":{
+            "perIp": 260
          }
     }
 }

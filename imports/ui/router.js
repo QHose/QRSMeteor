@@ -146,18 +146,48 @@ Router.route('/users');
 Router.route('/notFound');
 Router.route('/userOverview');
 Router.route('/homeAbout');
-Router.route('/APILogs');
 Router.route('/ApiLogsTable');
 Router.route('/introduction');
 Router.route('/videoOverview');
-Router.route('/introductionExtended');
-Router.route('/introductionSecurity');
 Router.route('/SecurityDeepDive');
 Router.route('/generation');
 Router.route('/securityRules');
 Router.route('/QMC');
+
+//API
+Router.route('/APILogs');
+Router.route('/API_embedded', {
+    template: 'APILogs',
+    layoutTemplate: 'SSOLayout'
+});
+
+//SECURITY
+Router.route('/introductionSecurity');
+Router.route('/security_embedded', {
+    template: 'introductionSecurity',
+    layoutTemplate: 'SSOLayout'
+});
+
+//WEB
 Router.route('/webIntegration');
+Router.route('/webIntegration_embedded', {
+    template: 'webIntegration',
+    layoutTemplate: 'SSOLayout'
+});
+
+//ARCHITECTURE
 Router.route('/architecture');
+Router.route('/architecture_embedded', {
+    template: 'architecture',
+    layoutTemplate: 'SSOLayout'
+});
+
+//generic overview
+Router.route('/generic_links_embedded', {
+    template: 'genericDocumentation',
+    layoutTemplate: 'SSOLayout'
+});
+
 Router.route('/sequenceDiagramOverview');
 Router.route('/sequenceDiagramGeneration');
 Router.route('/legal');
