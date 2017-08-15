@@ -84,6 +84,27 @@ export var myQRS = function myQRSMain() {
         }
     };
 
+    this.put = function(path, data = {}, params = {}) {
+        var endpoint = checkPath(path);
+        console.log('endpoint', endpoint)
+        console.log('data', data)
+
+        // copy the params to one object
+        var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
+        console.log('newParams', newParams)
+        try {
+            var response = HTTP.put(endpoint, {
+                npmRequestOptions: certicate_communication_options,
+                params: newParams,
+                data: data,
+            });
+            console.log('response', response)
+            return response.data;
+        } catch (err) {
+            console.error('HTTP PUT FAILED FOR ' + endpoint, err);
+        }
+    };
+
 };
 
 function checkPath(path) {

@@ -9,14 +9,7 @@ import { myQRS } from '/imports/api/server/QRSAPI';
 
 import {
     qlikHDRServer, // Qlik sense QRS endpoint via header authentication
-    senseConfig,
-    enigmaServerConfig,
-    authHeaders,
-    qrsSrv,
-    QRSconfig,
-    _SSBIApp,
-    certicate_communication_options,
-    _IntegrationPresentationApp
+    senseConfig
 } from '/imports/api/config.js';
 
 //
@@ -44,17 +37,19 @@ export function getLicense() {
 }
 
 export function insertLicense() {
-    var lic = qrs.get('/qrs/license');
+    var existingLicense = qrs.get('/qrs/license');
+    var newLicense = Meteor.settings.private.license;
 
-    if (!lic.id) {
-        var lic = Meteor.settings.private.license;
-        var response = qrs.post('/qrs/license', lic, { control: Meteor.settings.private.LicenseControlNumber });
-    } else {
-        console.error('Stop license insertion, license for ' + lic.organization + ' is already included: ', lic.serial);
+    try {
+        console.log('Update the existing license');
+        newLicense.id = existingLicense.id;
+        var response = qrs.del('/qrs/license/' + existingLicense.id);
+        // var response = qrs.put('/qrs/license/' + newLicense.id, newLicense, { control: Meteor.settings.private.LicenseControlNumber });
+        // console.error('Stop license insertion, license for ' + lic.organization + ' is already included: ', lic.serial);
         // throw Error('You are trying to insert a license while the Qlik Sense is already licensed, please remove the existing one in the QMC');
+    } catch (err) {
+        // lic did not already exist
     }
-}
-
-export function updateLicense() {
+    var response = qrs.post('/qrs/license', newLicense, { control: Meteor.settings.private.LicenseControlNumber });
 
 }
