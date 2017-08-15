@@ -1,5 +1,5 @@
 {
-    "adminEmails": "martijn.biesbroek@qlik.com",
+    "adminEmails": "mbj@qlik.com",
     "public": {
         "host": "QLIK-AB0Q2URN5T",
         "proxyPort": 80,
@@ -29,14 +29,20 @@
         "enginePort": 4747,
         "qrsPort": 4242,
         "proxyPort": 4243,
-        "customerDataDir": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData\\",
+        "customerDataDir": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData",
         "automaticCleanUpGeneratedApps": "Yes",
-        "templateAppsFrom": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\automation\\Apps",
-        "virtualProxyFilePath": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\automation\\"
+        "automationBaseFolder": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\.automation",
+        "license": {
+            "serial": "df",
+            "name": "Martijn Biesbroek",
+            "organization": "Qlik"
+        },
+        "LicenseControlNumber": 299
     },
     "sikka": {
         "captcha": {
             "siteKey": "",
+            "check": "",
             "secret": "6dafdsfasdfasdfadsfdsafh"
         },
         "rateLimits": {
