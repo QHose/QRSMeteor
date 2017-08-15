@@ -152,10 +152,10 @@ if (Meteor.isServer) {
     //for enigma.js
     export const engineConfig = _engineConfig;
     //for general (mostly client side) stuff
-    export const senseConfig = _senseConfig;
+
     // Qlik sense QRS endpoint via header authentication
-    export const qlikHDRServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
-    export const qrsSrv = 'https://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.qrsPort;
+    export const qlikHDRServer = 'http://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.port + '/' + _senseConfig.virtualProxy;
+    export const qrsSrv = 'https://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.qrsPort;
 
 
     function generateXrfkey() {
@@ -166,8 +166,8 @@ if (Meteor.isServer) {
     //HEADER AUTHENTICATION
     export const QRSconfig = {
         authentication: 'header',
-        host: senseConfig.host,
-        port: senseConfig.port,
+        host: _senseConfig.host,
+        port: _senseConfig.port,
         useSSL: false,
         virtualProxy: _senseConfig.virtualProxy, //header proxy
         headerKey: _senseConfig.headerKey,
@@ -176,6 +176,7 @@ if (Meteor.isServer) {
 
 }
 
+export const senseConfig = _senseConfig;
 
 // console.log('--- HEADER AUTHENTICATION using config: ', QRSconfig);
 
