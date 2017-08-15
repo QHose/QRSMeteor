@@ -31,7 +31,7 @@ _ = lodash;
 // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Create.htm
 export async function createVirtualProxies() {
     console.log('--------------------------CREATE VIRTUAL PROXIES');
-    var file = Meteor.settings.private.virtualProxyFilePath + 'virtualProxySettings.json';
+    var file = Meteor.settings.private.virtualProxyFilePath + '\Proxy\import\virtualProxySettings.json';
     try {
         // READ THE PROXY FILE 
         var proxySettings = await fs.readJson(file);
@@ -155,7 +155,7 @@ export function getVirtualProxies() {
             npmRequestOptions: certicate_communication_options,
         });
 
-        var file = Meteor.settings.private.virtualProxyFilePath + 'ExtractedvirtualProxyDefinitions.json';
+        var file = Meteor.settings.private.automationBaseFolder + '\Proxy\export\ExtractedvirtualProxyDefinitions.json';
 
         // SAVE PROXY FILE TO DISK
         fs.outputFile(file, JSON.stringify(response.data, null, 2), 'utf-8');

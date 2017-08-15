@@ -63,7 +63,7 @@ var request = require('request');
 
 // UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM
 export async function uploadAndPublishTemplateApps() {
-    var newFolder = Meteor.settings.private.templateAppsFrom;
+    var newFolder = Meteor.settings.private.templateAppsFrom + '\apps';
     console.log('--------------------------INIT QLIK SENSE');
     console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder "' + newFolder + '" and upload them to Qlik Sense.');
 
@@ -183,7 +183,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         var qix = await enigma.getService('qix', config);
         var call = {};
         call.action = 'Connect to Qlik Sense';
-        call.request = 'Connect to Engine API (using Enigma.js) using an appID: ' + appId;
+        call.request = 'Connect to Engine API (using Enigma.js) using an appId: ' + appId;
         call.url = gitHubLinks.replaceAndReloadApp;
         REST_Log(call, generationUserId);
 
@@ -255,7 +255,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
 }
 
 function createDirectory(customerName) {
-    const dir = Meteor.settings.private.customerDataDir + customerName;
+    const dir = Meteor.settings.private.customerDataDir + "\\" + customerName;
     fs.ensureDir(dir, err => {
         console.error(err) // => null
     });

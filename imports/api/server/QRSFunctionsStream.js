@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { http } from 'meteor/meteor';
 import { GeneratedResources } from '/imports/api/apps.js';
 import { gitHubLinks } from '/imports/ui/UIHelpers';
 
