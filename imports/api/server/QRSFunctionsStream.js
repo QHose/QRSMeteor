@@ -8,12 +8,7 @@ import { myQRS } from '/imports/api/server/QRSAPI';
 import { REST_Log } from '/imports/api/APILogs';
 
 const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
-
 var qrs = new myQRS();
-
-// var res = qrs.get('/qrs/stream/full');
-var res = createStream('biesdd');
-console.log('res', res)
 
 //
 // ─── CREATE STREAMS FOR THE INITIAL SETUP OF QLIK SENSE ─────────────────────────

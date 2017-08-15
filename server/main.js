@@ -10,6 +10,7 @@ import * as QSApp from '/imports/api/server/QRSFunctionsApp';
 import * as QSStream from '/imports/api/server/QRSFunctionsStream';
 import * as QSProxy from '/imports/api/server/QPSFunctions';
 import * as QSSystem from '/imports/api/server/QRSFunctionsSystemRules';
+import * as QSExtensions from '/imports/api/server/QRSFunctionsExtension';
 
 //import config for Qlik Sense QRS and Engine API
 import { senseConfig, authHeaders } from '/imports/api/config';
@@ -33,8 +34,9 @@ Meteor.startup(function() {
 function initQlikSense() {
     console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
     Meteor.call('updateLocalSenseCopy');
+    QSExtensions.uploadExtensions();
 
-    QSProxy.createVirtualProxies();
+    // QSProxy.createVirtualProxies();
     // QSStream.initSenseStreams();
     // QSApp.uploadAndPublishTemplateApps();
 }
