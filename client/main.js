@@ -37,9 +37,9 @@ import { Apps, TemplateApps } from '/imports/api/apps';
 import { Customers } from '/imports/api/customers';
 import { Streams } from '/imports/api/streams'
 import { APILogs } from '/imports/api/APILogs'
+import { Session } from 'meteor/session';
 
 import moment from 'moment';
-
 
 Meteor.startup(function() {
     // console.log('configure sAlert, the popup messaging service');
@@ -55,7 +55,7 @@ Meteor.startup(function() {
 
         onClose: _.noop //
 
-    });  
+    });
     AutoForm.setDefaultTemplate("semanticUI");
 });
 

@@ -1,5 +1,22 @@
 <template name="SSOLayout">
     {{> sAlert}} {{> yield}}
+    {{> footer}}
+</template>
+<template name="ImpressLayout">
+    {{> ImpressNav}} {{> sAlert}} {{> yield}}
+    {{> impressFooter}}
+</template>
+<template name="SSBILayout">
+    {{> yield "nav"}} {{> sAlert}} 
+    <div class="ui relaxed very padded stackable grid">
+        <div class="sixteen wide column">
+            <div class="ui three column stackable grid">
+                <div class="five wide column"> {{> yield "aside"}} </div>
+                <div class="eleven wide column"> {{> yield}}</div>
+            </div>
+        </div>
+    </div>
+    {{> SSBIFooter}}
 </template>
 <template name="layout">
     <div class="ui relaxed very padded stackable grid">
@@ -30,26 +47,127 @@
     </div>
 </template>
 <template name="layoutDocumentation">
+    {{> documentationNav}} {{> modals}} {{> sAlert}} {{> yield}}
     <div class="ui relaxed very padded stackable grid">
         <div class="one wide column">
         </div>
         <div class="fourteen wide column">
-            {{> nav}} {{> modals}} {{> sAlert}} {{> yield}}
         </div>
         <div class="one wide column">
         </div>
     </div>
-    {{> footer}}
+    {{> documentationFooter}}
 </template>
 
-<template name="footer">
-    <div id="footer" class="ui footer page one column grid">
+<template name="footer">    
+    <section class="general footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul>
+                        <li><a href="/"><img src="./images/qlik_logo.svg" class="logo"></a></li>
+                        <li><a href="http://oem.qlik.com" target="_blank">oem.qlik.com</a></li>
+                        <li><a href="/">DOLOR SIT AMET</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--<div id="footer" class="ui footer page one column grid">
         <div class="column">
             <div class="ui divider"></div>
             Integration approach, demo site, documentation and videos created by Martijn Biesbroek & Raymond Neves. Review by Catherine Frye, QVF design by Patrick Tehubijuluw. Voice-over Stephen Jasionowski. See the terms of usage of this site <a href="{{pathFor 'legal'}}">here</a>.
         </div>
-    </div>
+    </div>-->
 </template>
+<template name="impressFooter">
+    {{#if nav}}  
+    <section class="general footer-top sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{nav.previous.link}}">{{nav.previous.text}}</a>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="{{nav.next.link}}">{{nav.next.text}}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{/if}} 
+    <section class="general footer sticky">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul>
+                        <li><a href="/"><img src="./images/qlik_logo.svg" class="logo"></a></li>
+                        <li><a href="http://oem.qlik.com" target="_blank">oem.qlik.com</a></li>
+                        <li><a href="/">DOLOR SIT AMET</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+<template name="SSBIFooter">
+    {{#if nav}}  
+    <section class="general footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{nav.previous.link}}">{{nav.previous.text}}</a>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="{{nav.next.link}}">{{nav.next.text}}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{/if}} 
+    <section class="general footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul>
+                        <li><a href="/"><img src="./images/qlik_logo.svg" class="logo"></a></li>
+                        <li><a href="http://oem.qlik.com" target="_blank">oem.qlik.com</a></li>
+                        <li><a href="/">DOLOR SIT AMET</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+<template name="documentationFooter">
+    {{#if nav}}  
+    <section class="general footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{nav.previous.link}}">{{nav.previous.text}}</a>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="{{nav.next.link}}">{{nav.next.text}}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{/if}} 
+    <section class="general footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul>
+                        <li><a href="/"><img src="./images/qlik_logo.svg" class="logo"></a></li>
+                        <li><a href="http://oem.qlik.com" target="_blank">oem.qlik.com</a></li>
+                        <li><a href="/">DOLOR SIT AMET</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
 <template name="modals">
     {{> modalSSBI}} {{> modalStepByStep}} {{> modalSaaSautomation}}
 </template>
