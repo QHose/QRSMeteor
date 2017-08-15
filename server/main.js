@@ -34,7 +34,8 @@ Meteor.startup(function() {
 function initQlikSense() {
     console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
     Meteor.call('updateLocalSenseCopy');
-    QSExtensions.uploadExtensions();
+    QSExtensions.automaticUploadExtensions();
+    // QSExtensions.uploadExtensions();
 
     // QSProxy.createVirtualProxies();
     // QSStream.initSenseStreams();
