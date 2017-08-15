@@ -23,13 +23,13 @@ import { certicate_communication_options, senseConfig, authHeaders, qrsSrv } fro
 
 export var myQRS = function myQRSMain() {
 
-    this.get = function(path, params) {
+    this.get = function(path, params = {}, data = {}) {
         var endpoint = checkPath(path);
         console.log('endpoint', endpoint)
 
         // copy the params to one object
         var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
-        console.log('newParams', newParams)
+        console.log('nelicwParams', newParams)
         try {
             var response = HTTP.get(endpoint, {
                 npmRequestOptions: certicate_communication_options,
@@ -42,7 +42,7 @@ export var myQRS = function myQRSMain() {
         }
     };
 
-    this.post = function(path, data, params) {
+    this.post = function(path, data = {}, params = {}) {
         var endpoint = checkPath(path);
         console.log('endpoint', endpoint)
         console.log('data', data)
