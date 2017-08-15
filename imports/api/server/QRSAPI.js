@@ -29,7 +29,7 @@ export var myQRS = function myQRSMain() {
 
         // copy the params to one object
         var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
-        console.log('nelicwParams', newParams)
+        console.log('newParams', newParams)
         try {
             var response = HTTP.get(endpoint, {
                 npmRequestOptions: certicate_communication_options,
@@ -62,6 +62,28 @@ export var myQRS = function myQRSMain() {
             console.error('HTTP POST FAILED FOR ' + endpoint, err);
         }
     };
+
+    this.del = function(path, data = {}, params = {}) {
+        var endpoint = checkPath(path);
+        console.log('endpoint', endpoint)
+        console.log('data', data)
+
+        // copy the params to one object
+        var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
+        console.log('newParams', newParams)
+        try {
+            var response = HTTP.del(endpoint, {
+                npmRequestOptions: certicate_communication_options,
+                params: newParams,
+                data: data,
+            });
+            console.log('response', response)
+            return response.data;
+        } catch (err) {
+            console.error('HTTP DEL FAILED FOR ' + endpoint, err);
+        }
+    };
+
 };
 
 function checkPath(path) {

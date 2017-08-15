@@ -34,18 +34,24 @@ var request = require('request');
 
 var qrs = new myQRS();
 insertLicense();
+// getLicense();
 
 export function getLicense() {
-    return qrs.get('/qrs/license');
+    var lic = qrs.get('/qrs/license');
+    console.log('lic', lic)
+    return lic;
 
 }
 
 export function insertLicense() {
-    if (!getLicense()) {
+    var lic = qrs.get('/qrs/license');
+
+    if (!lic.id) {
         var lic = Meteor.settings.private.license;
         var response = qrs.post('/qrs/license', lic, { control: Meteor.settings.private.LicenseControlNumber });
     } else {
-        throw Error('You are trying to insert a license while the Qlik Sense is already licensed, please remove the existing one in the QMC');
+        console.error('Stop license insertion, license for ' + lic.organization + ' is already included: ', lic.serial);
+        // throw Error('You are trying to insert a license while the Qlik Sense is already licensed, please remove the existing one in the QMC');
     }
 }
 
