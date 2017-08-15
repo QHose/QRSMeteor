@@ -33,14 +33,13 @@ var request = require('request');
 
 var qrs = new myQRS();
 
-export async function automaticUploadExtensions() {
-    console.log('Automatically download the extensions from Github and upload to Qlik Sense');
-    var url = 'https://github.com/kai/qlik-sense-timeline.git';
-    var req = request.get(url);
-    console.log('req', req)
+// export async function automaticUploadExtensions() {
+//     console.log('Automatically download the extensions from Github and upload to Qlik Sense');
+//     var url = 'https://github.com/kai/qlik-sense-timeline.git';
+//     var req = request.get(url);
+//     console.log('req', req)
 
-}
-
+// }
 
 export async function uploadExtensions() {
     console.log('--------------------------UPLOAD EXTENSIONS');

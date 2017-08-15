@@ -8,6 +8,7 @@ import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 import * as QSApp from '/imports/api/server/QRSFunctionsApp';
 import * as QSStream from '/imports/api/server/QRSFunctionsStream';
+import * as QSLic from '/imports/api/server/QRSFunctionsLicense';
 import * as QSProxy from '/imports/api/server/QPSFunctions';
 import * as QSSystem from '/imports/api/server/QRSFunctionsSystemRules';
 import * as QSExtensions from '/imports/api/server/QRSFunctionsExtension';
@@ -34,7 +35,7 @@ Meteor.startup(function() {
 function initQlikSense() {
     console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
     Meteor.call('updateLocalSenseCopy');
-    QSExtensions.automaticUploadExtensions();
+    // QSExtensions.automaticUploadExtensions();
     // QSExtensions.uploadExtensions();
 
     // QSProxy.createVirtualProxies();
