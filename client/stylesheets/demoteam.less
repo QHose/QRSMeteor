@@ -26,6 +26,7 @@ body {
 .home {
     &.header {
         height: 540px;
+        background-color: @color-green-dark;
         background-image: url('./images/bg_intro.jpg');
         background-size: auto 100%;
         background-position: top center;
@@ -205,8 +206,9 @@ body {
             height: 160px;
             background-image: url('./images/bg_footer.jpg');
             background-size: auto 100%;
-            background-position: bottom center;
+            background-position: bottom right;
             background-repeat: no-repeat;  
+            background-color: @color-tan;
             padding-top: 60px;
             padding-left: 0;
             ul {
@@ -243,4 +245,38 @@ body {
             }
         }
     }
+}
+
+
+/****************
+ * MEDIA QUERIES 
+*****************/
+@media only screen and (min-width : 1713px) {
+}
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .home {
+        &.header {
+            background-position: top left;
+        }
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
 }
