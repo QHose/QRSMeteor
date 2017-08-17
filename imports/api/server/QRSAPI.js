@@ -24,7 +24,7 @@ import { certicate_communication_options, senseConfig, authHeaders, qrsSrv } fro
 
 export var myQRS = function myQRSMain() {
 
-    this.get = function(path, params = {}, data = {}) {
+    this.get = function get(path, params = {}, data = {}) {
         var endpoint = checkPath(path);
         console.log('QRS module received get request for endpoint', endpoint);
 
@@ -44,7 +44,7 @@ export var myQRS = function myQRSMain() {
         }
     };
 
-    this.post = function(path, data = {}, params = {}) {
+    this.post = function post(path, data = {}, params = {}) {
         var endpoint = checkPath(path);
         console.log('endpoint', endpoint)
         console.log('data', data)
@@ -65,7 +65,7 @@ export var myQRS = function myQRSMain() {
         }
     };
 
-    this.del = function(path, data = {}, params = {}) {
+    this.del = function del(path, data = {}, params = {}) {
         var endpoint = checkPath(path);
         console.log('endpoint', endpoint)
         console.log('data', data)
@@ -86,7 +86,7 @@ export var myQRS = function myQRSMain() {
         }
     };
 
-    this.put = function(path, data = {}, params = {}) {
+    this.put = function put(path, data = {}, params = {}) {
         var endpoint = checkPath(path);
         console.log('endpoint', endpoint)
         console.log('data', data)
@@ -112,7 +112,7 @@ export var myQRS = function myQRSMain() {
 function checkPath(path) {
     try {
         check(path, String);
-    } catch (err) { throw Error("Rootpath for QRS API can't be created, settings.json correct?") }
+    } catch (err) { throw Error("Rootpath: " + path + " for QRS API can't be created, settings.json correct?") }
 
     return qrsSrv + path;
 }

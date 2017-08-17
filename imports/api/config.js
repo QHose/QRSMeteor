@@ -24,6 +24,7 @@ if (Meteor.isServer) {
     console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.private);
     import crypto from 'crypto';
     import fs from 'fs';
+    import { myQRS } from '/imports/api/server/QRSAPI';
     const bluebird = require('bluebird');
     const WebSocket = require('ws');
 
@@ -157,6 +158,7 @@ if (Meteor.isServer) {
     export const qlikHDRServer = 'http://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.port + '/' + _senseConfig.virtualProxy;
     export const qrsSrv = 'https://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.qrsPort;
 
+    export const qrs = new myQRS();
 
     function generateXrfkey() {
         return Random.hexString(16);

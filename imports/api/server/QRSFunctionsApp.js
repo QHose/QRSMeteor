@@ -34,6 +34,7 @@ import {
     enigmaServerConfig,
     authHeaders,
     qrsSrv,
+    qrs,
     QRSconfig,
     _SSBIApp,
     certicate_communication_options,
@@ -52,7 +53,7 @@ _ = lodash;
 const path = require('path');
 const fs = require('fs-extra');
 const enigma = require('enigma.js');
-var QRS = require('qrs');
+// var QRS = require('qrs');
 var promise = require('bluebird');
 var request = require('request');
 
@@ -96,14 +97,17 @@ export async function uploadAndPublishTemplateApps() {
 
             //BASED ON THE APP WE WANT TO PUBLISH IT INTO A DIFFERENT STREAM                      
             if (appName === 'SSBI') { //should be published in the everyone stream
-                _SSBIApp = appId; // for the client side HTML/IFrames etc.
+                _SSBIApp = appId; // for the client side HTML/IFrames etc.                
+                Meteor.settings.public.SSBIApp = appId;
+                Meteor.settings.public.SSBIAppSheetString = appId + "/sheet/" + Meteor.settings.SSBI.sheetId + "/state/analysis";
                 publishApp(appId, appName, everyOneStreamId);
             } else if (appName === 'Sales') { //THIS ONE NEEDS TO BE COPIED AND PUBLISHED INTO 2 STREAMS: AS TEMPLATE AND FOR THE EVERYONE STREAM.
                 publishApp(appId, appName, everyOneStreamId);
                 var copiedAppId = copyApp(appId, appName);
                 publishApp(copiedAppId, appName, templateStreamId);
             } else if (appName === 'Slide generator') {
-                _IntegrationPresentationApp = appId
+                // _IntegrationPresentationApp = appId,
+                Meteor.settings.public.IntegrationPresentationApp = appId;
                 publishApp(appId, appName, APIAppsStreamID);
             } else {
                 //Insert into template apps stream
@@ -407,20 +411,26 @@ function checkStreamStatus(customer, generationUserId) {
 //
 // ─── GETAPPS ────────────────────────────────────────────────────────────────────
 //    
-export function getApps() {
-    try {
-        const call = {};
-        call.action = 'Get list of apps';
-        call.request = qrsSrv + '/qrs/app/full/?xrfkey=' + senseConfig.xrfkey;
-        call.response = HTTP.get(call.request, {
-            'npmRequestOptions': certicate_communication_options
-        });
-        // REST_Log(call,generationUserId);
-        return call.response.data;
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('getApps failed', err.message);
+
+export function getApps(name, stream) {
+    var path = '/qrs/app/full';
+
+    //if a name/stream is provided only search the apps with this name
+    if (name) {
+        path += "?filter=Name eq '" + name + "'"
+        if (stream) {
+            path += " and stream.name eq '" + stream + "'"
+        }
     }
+    console.log('path', path)
+
+    var call = {
+        action: 'Get list of apps',
+        request: path
+    };
+    call.response = qrs.get(call.request);
+    // REST_Log(call,generationUserId);
+    return call.response;
 };
 
 //

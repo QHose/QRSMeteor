@@ -3,9 +3,7 @@ import { GeneratedResources } from '/imports/api/apps.js';
 import { gitHubLinks } from '/imports/ui/UIHelpers';
 
 // import config for Qlik Sense QRS and Engine API
-import { senseConfig, authHeaders, qrsSrv, certicate_communication_options } from '/imports/api/config.js';
-import { myQRS } from '/imports/api/server/QRSAPI';
-var qrs = new myQRS();
+import { senseConfig, authHeaders, qrsSrv, qrs, certicate_communication_options } from '/imports/api/config.js';
 import { REST_Log } from '/imports/api/APILogs';
 
 const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
