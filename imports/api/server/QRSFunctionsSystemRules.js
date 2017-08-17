@@ -10,18 +10,12 @@ import { Customers } from '/imports/api/customers';
 
 //import config for Qlik Sense QRS and Engine API
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
+import { myQRS } from '/imports/api/server/QRSAPI';
+var qrs = new myQRS();
 
 
-export function getSecurityRules() {    
-    try {
-        const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/systemrule', {
-            headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey }            
-        })
-        console.log('getSecurityRules, meteor received the rules from Sense');
-        return result.data;
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('get system rules failed', err.message);
-    }
+getSecurityRules();
+
+export function getSecurityRules() {
+    return qrs.get('/qrs/systemrule').data;
 };

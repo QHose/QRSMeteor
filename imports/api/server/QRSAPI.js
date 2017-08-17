@@ -5,6 +5,7 @@ import {
     http,
 } from 'meteor/meteor';
 
+
 //
 // ─── IMPORT CONFIG FOR QLIK SENSE QRS ───────────────────────────────────────────
 //
@@ -25,11 +26,10 @@ export var myQRS = function myQRSMain() {
 
     this.get = function(path, params = {}, data = {}) {
         var endpoint = checkPath(path);
-        console.log('endpoint', endpoint)
+        console.log('QRS module received get request for endpoint', endpoint);
 
         // copy the params to one object
         var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
-        console.log('newParams', newParams)
         try {
             var response = HTTP.get(endpoint, {
                 npmRequestOptions: certicate_communication_options,
@@ -38,7 +38,9 @@ export var myQRS = function myQRSMain() {
             });
             return response.data;
         } catch (err) {
-            console.error('HTTP GET FAILED FOR ' + endpoint, err);
+            var error = 'HTTP GET FAILED FOR ' + endpoint;
+            console.error(error);
+            throw new Meteor.Error(500, error);
         }
     };
 

@@ -5,10 +5,11 @@ import { gitHubLinks } from '/imports/ui/UIHelpers';
 // import config for Qlik Sense QRS and Engine API
 import { senseConfig, authHeaders, qrsSrv, certicate_communication_options } from '/imports/api/config.js';
 import { myQRS } from '/imports/api/server/QRSAPI';
+var qrs = new myQRS();
 import { REST_Log } from '/imports/api/APILogs';
 
 const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
-var qrs = new myQRS();
+
 
 //
 // ─── CREATE STREAMS FOR THE INITIAL SETUP OF QLIK SENSE ─────────────────────────
