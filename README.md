@@ -5,7 +5,7 @@ Also make sure you checkout the [slide generator](http://integration.qlik.com/sl
 
 # Welcome to the SaaS with Qlik Sense demo platfom
 
-Assumption: you want to know you to use Qlik Sense in a multi-tenant scenario.
+Assumption: you want to know how to use Qlik Sense in a multi-tenant scenario. (and basically get a smart Qlik Sense publisher, based on the customers and their users stored in your database)
 - you have customers
 - you want to create a template apps
 - automatically setup Qlik Sense for each customer.
