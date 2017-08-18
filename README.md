@@ -14,6 +14,7 @@ This platform shows you how to
 - Then use the template apps copy it to each customer/department
 - reloading it by using a 'custom script' (e.g. find replace database connection)
 - We will forward the roles/groups of your SaaS platform to Qlik Sense and using a security rule (something like user.group = stream.name) we can authorize on streams with just one rule (!)
+![](http://integration.qlik.com/images/saas%20demo%20concept%20simple.png)
 
 ## Automatic installation of Qlik Sense (new, almost completed)
 We are lazy... and we hate errors, therefore this tool automatically sets up Qlik Sense. 
@@ -32,7 +33,7 @@ This project will automatically create/set (based on what you define in your set
 
 ## Other resources
 Also make sure you checkout the [slide generator](http://integration.qlik.com/slides), which explains SaaS integration using the Qlik Sense APIs.
-
+![](http://integration.qlik.com/images/architecture%20-%20OEM%20%20SaaS%20scenario%20simple.png)
 ![](https://github.com/QHose/QRSMeteor/blob/master/public/images/only%20generation%20explanation.gif)
 
 
