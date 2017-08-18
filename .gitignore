@@ -21,3 +21,4 @@ public/docs/~$ik Sense SaaS demo tool setup instructions.docx
 *.sublime-workspace
 imports/ui/impress/slideSorter.js
 .meteor/packages
+*.sublime-workspace
