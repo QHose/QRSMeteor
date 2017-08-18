@@ -1,7 +1,7 @@
 # TLDR
 With this project you can create apps for each customer based on a template app. (and much more). (In other words, you get software to get a 'publisher' for Qlik Sense)
 A live running instance of this code is visible at [integration.qlik.com](http://integration.qlik.com)
-Also make sure you checkout the [slide generator](http://integration.qlik.com/slides), which explains SaaS integration using the Qlik Sense APIs.
+Also make sure you checkout the [slide generator](http://integration.qlik.com/slides), which explains SaaS integration using the Qlik Sense APIs. Written documentation [here](http://integration.qlik.com/documentation)
 
 # Welcome to the SaaS with Qlik Sense demo platfom
 
