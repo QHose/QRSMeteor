@@ -71,7 +71,7 @@ See [this manual](https://github.com/QHose/QRSMeteor/blob/master/public/docs/Qli
 ### Summary of the new automatic installation
 - install meteor
 - Clone QRSMeteor in some 'project root' directory
-- update settings.json file. Make sure you the the host, webIntegrationHost, internalLanIP, and port settings. If you install everything (qlik sense and the 2 meteor project on one machine, use  the hostname, not localhost!). Update your Qlik Sense license. Set the customerDataDir, automationBaseFolder
+- make a copy of the settings-development-example.json and update it. Make sure you update at least the host, webIntegrationHost, internalLanIP (hostname of Qlik Sense inside your LAN, this is just your computer name for simple setups), and port settings. If you install everything (qlik sense and the 2 meteor project on one machine, use  the hostname, not localhost!). Update your Qlik Sense license. Set the customerDataDir, automationBaseFolder
 
 ### Docker 
 I also created docker images but they are not yet ready to be used. (they can be used but contain an older version of this project) 

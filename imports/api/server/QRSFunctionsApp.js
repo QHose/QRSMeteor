@@ -139,16 +139,16 @@ export function setAppIDs(params) {
     console.log('GET APP IDs');
     console.log('------------------------------------');
     try {
-        var slideGeneratorApps = getApps(Meteor.settings.slideGenerator.name, Meteor.settings.slideGenerator.stream);
-        var SSBIApps = getApps(Meteor.settings.slideGenerator.name, Meteor.settings.slideGenerator.stream);
+        var slideGeneratorApps = getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream);
+        var SSBIApps = getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream);
         if (slideGeneratorApps.length > 1) {
-            throw new Error('Can not automatically set the app ID for the slide generator. You have one but you have multiple slide generator apps under the name ' + Meteor.settings.slideGenerator.name + ' in the stream ' + Meteor.settings.slideGenerator.stream);
+            throw new Error('Can not automatically set the app ID for the slide generator. You have one but you have multiple slide generator apps under the name ' + Meteor.settings.public.slideGenerator.name + ' in the stream ' + Meteor.settings.public.slideGenerator.stream);
         }
         senseConfig.IntegrationPresentationApp = slideGeneratorApps[0].id;
         console.log('The slide generator app id has been set to ', senseConfig.IntegrationPresentationApp);
     } catch (err) {
         // console.error(err)
-        throw new Error('The slideGenerator app can not be found in Qlik sense under the name ' + Meteor.settings.slideGenerator.name + ' in the stream ' + Meteor.settings.slideGenerator.stream);
+        throw new Error('The slideGenerator app can not be found in Qlik sense under the name ' + Meteor.settings.public.slideGenerator.name + ' in the stream ' + Meteor.settings.public.slideGenerator.stream);
     }
 }
 

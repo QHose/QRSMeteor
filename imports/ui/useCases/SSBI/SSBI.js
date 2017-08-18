@@ -13,7 +13,8 @@ console.log('server', server)
 const QMCUrl = server + '/qmc';
 const hubUrl = server + '/hub';
 const sheetUrl = server + '/sense/app/' + config.SSBIAppId;
-const appUrl = server + '/' + config.SSBIAppId + "/sheet/" + Meteor.settings.SSBI.sheetId + "/state/analysis";
+const appUrl = server + config.SSBIAppId + "/sheet/" + Meteor.settings.public.SSBI.sheetId + "/state/analysis";
+console.log('config.SSBIAppId', config.SSBIAppId)
 
 
 Template.SSBISenseApp.helpers({
