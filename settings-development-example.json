@@ -1,0 +1,59 @@
+{
+    "adminEmails": "mbj@qlik.com",
+    "public": {
+        "host": "QLIK-AB0Q2URN5T",
+        "proxyPort": 80,
+        "port": 81,
+        "virtualProxyClientUsage": "meteor",
+        "webIntegrationHost": "QLIK-AB0Q2URN5T",
+        "webIntegrationDemoPort": 3030,
+        "StreamsToCreateAutomatically": ["API apps", "Templates", "Everyone", "QA", "TEST"],
+        "APIAppStreamName": "API apps",
+        "TemplateAppStreamName": "Templates",
+        "EveryoneAppStreamName": "Everyone"
+    },
+    "SSBI": {
+        "sheetId": "puEpZK"
+    },
+    "slideGenerator": {
+        "name": "Slide generator",
+        "stream": "API apps",
+        "selectionSheet": "DYTpxv",
+        "dataObject": "pskL",
+        "slideObject": "BbbV",
+        "virtualProxy": "presentationsso"
+    },
+    "private": {
+        "certificatesDirectory": "C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates",
+        "SenseServerInternalLanIP": "QLIK-AB0Q2URN5T",
+        "useSSL": false,
+        "passphrase": null,
+        "virtualProxy": "hdr",
+        "headerKey": "hdr-usr",
+        "isSecure": true,
+        "enginePort": 4747,
+        "qrsPort": 4242,
+        "proxyPort": 4243,
+        "license": {
+            "serial": "",
+            "name": "Martijn Biesbroek",
+            "organization": "Qlik"
+        },
+        "LicenseControlNumber": 456
+    },
+    "broker": {
+        "customerDataDir": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData",
+        "automaticCleanUpGeneratedApps": "Yes",
+        "automationBaseFolder": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\.automation"
+    },
+    "sikka": {
+        "captcha": {
+            "siteKey": "",
+            "check": "",
+            "secret": "6dafdsfasdfasdfadsfdsafh"
+        },
+        "rateLimits": {
+            "perIp": 260
+        }
+    }
+}

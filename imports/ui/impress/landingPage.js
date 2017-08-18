@@ -4,7 +4,7 @@ var showdown = require('showdown');
 var Cookies = require('js-cookie');
 const enigma = require('enigma.js');
 const qixschema = senseConfig.QIXSchema;
-var appId = Meteor.settings.public.IntegrationPresentationApp;
+var appId = senseConfig.IntegrationPresentationApp;
 var IntegrationPresentationSelectionSheet = Meteor.settings.public.IntegrationPresentationSelectionSheet; //'DYTpxv'; selection sheet of the slide generator
 var slideObject = Meteor.settings.public.IntegrationPresentationSlideObject;
 var intervalId = {};
@@ -31,7 +31,7 @@ Template.landingPage.onCreated(function() {
     console.log('first logout the current presentation user in Qlik Sense. After the logout, we try to open the Iframe URL, and request a new ticket with a new group: generic or technical, using section access we restrict the slides...');
     Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation users
     // logoutCurrentSenseUserClientSide();
-    intervalId = Meteor.setInterval(userLoggedInSense, 2000);
+    intervalId = Meteor.setInterval(userLoggedInSense, 1000);
     console.log('Qlik Sense presentation session cookie:', Cookies.get('X-Qlik-Session-presentationsso'));
     console.log('All cookies available for Javascript:');
     console.log(listCookies());
@@ -40,7 +40,7 @@ Template.landingPage.onCreated(function() {
 function listCookies() {
     var theCookies = document.cookie.split(';');
     var aString = '';
-    for(var i = 1; i <= theCookies.length; i++) {
+    for (var i = 1; i <= theCookies.length; i++) {
         aString += i + ' ' + theCookies[i - 1] + "\n";
     }
     return aString;
@@ -69,7 +69,7 @@ Template.landingPage.onRendered(function() {
             top: '35%',
             height: 350 //fix issue with modal being to high. Firefox needed 350.
         });
-    
+
     Session.set('landingPageAlreadySeen', true);
 })
 Template.landingPage.onDestroyed(function() {
@@ -129,7 +129,7 @@ export function logoutCurrentSenseUserClientSide() {
             call.response = res;
             REST_Log(call, Meteor.userId());
         });
-    } catch(err) {
+    } catch (err) {
         console.error(err);
         sAlert.Error('Failed to logout the user via the personal API', err.message);
     }
