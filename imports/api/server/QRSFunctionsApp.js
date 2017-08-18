@@ -95,7 +95,7 @@ export async function uploadAndPublishTemplateApps() {
             var filePath = path.join(newFolder, QVF);
 
             //ONLY UPLOAD APPS IF THEY DO NOT ALREADY EXIST
-            if (!getApps(appName)) {
+            if (!getApps(appName).length) {
                 //UPLOAD THE APP, GET THE APP ID BACK
                 var appId = await uploadApp(filePath, appName);
 
@@ -114,7 +114,7 @@ export async function uploadAndPublishTemplateApps() {
                     //Insert into template apps stream
                     publishApp(appId, appName, templateStreamId);
                 }
-            }
+            } else { console.log('App ' + appName + ' already exists in Qlik Sense') };
         } catch (err) {
             console.error(err);
             throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
@@ -447,9 +447,8 @@ export function getApps(name, stream) {
         action: 'Get list of apps',
         request: path
     };
-    call.response = qrs.get(call.request);
     // REST_Log(call,generationUserId);
-    return call.response;
+    return qrs.get(call.request);
 };
 
 //
@@ -488,7 +487,6 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
 
 
 export function publishApp(appGuid, appName, streamId, customerName, generationUserId) {
-    console.log('--------------------------PUBLISH');
     console.log('Publish app: ' + appName + ' to stream: ' + streamId);
     check(appGuid, String);
     check(appName, String);

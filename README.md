@@ -1,12 +1,39 @@
 # Welcome to the SaaS with Qlik Sense demo platfom
 
-Demo and site on [integration.qlik.com](http://integration.qlik.com)
+A live running instance of this code is visible at [integration.qlik.com](http://integration.qlik.com)
 
+Assumption: you want to know you to use Qlik Sense in a multi-tenant scenario.
+- you have customers
+- you want to create a template apps
+- automatically setup Qlik Sense for each customer.
+Watch [this video](https://youtu.be/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) to learn the concept of what we automated here.
+
+## App provisioning
+This platform shows you how to
+- create a template app and publish into the templates stream
+- Then use the template apps copy it to each customer/department
+- reloading it by using a 'custom script' (e.g. find replace database connection)
+
+## Automatic installation of Qlik Sense (new, almost completed)
+We are lazy... and we hate errors, therefore this tool automatically sets up Qlik Sense. 
+
+After you installed Qlik Sense, and you have installed this project [see this manual](https://github.com/QHose/QRSMeteor/blob/master/public/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.docx) (Manual needs to be updated to reflect the automatic installation, it still assumes  you hae to do it by hand)
+
+This project will automatically create/set (based on what you define in your settings.json file in the project root)
+- insert the license
+- create the template streams 
+- upload the template apps from the .automation\apps folder
+- publish the template apps into the stream needed for this demo platform:
+- upload the extensions from the .automation\extensions folder
+- create security rules (to be completed)
+- create and assign a custom property for each app and stream created (to be completed, only to be used for enterprise deployments. For OEM/multi-tenant scenarios we use the groups provided in the ticket to authorize on.)
+
+
+## Other resources
 Also make sure you checkout the [slide generator](http://integration.qlik.com/slides), which explains SaaS integration using the Qlik Sense APIs.
 
-Watch [this video](https://youtu.be/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) to learn the concept of the SaaS automation demo.
+![](https://github.com/QHose/QRSMeteor/blob/master/public/images/only%20generation%20explanation.gif)
 
-![alt text](https://github.com/QHose/QRSMeteor/blob/master/public/images/only%20generation%20explanation.gif)
 
 Watch [this playlist](https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) for a complete overview on Sense integration. The topics include security, web integration (QAP) and architecture.
 
