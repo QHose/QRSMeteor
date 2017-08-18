@@ -9,12 +9,14 @@ Assumption: you want to know you to use Qlik Sense in a multi-tenant scenario.
 Watch [this video](https://youtu.be/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk) to learn the concept of what we automated here.
 
 ## App provisioning
+![](http://integration.qlik.com/images/saas%20demo%20concept%20simple.png)
 This platform shows you how to
 - create a template app and publish into the templates stream
 - Then use the template apps copy it to each customer/department
 - reloading it by using a 'custom script' (e.g. find replace database connection)
 - We will forward the roles/groups of your SaaS platform to Qlik Sense and using a security rule (something like user.group = stream.name) we can authorize on streams with just one rule (!)
-![](http://integration.qlik.com/images/saas%20demo%20concept%20simple.png)
+
+![alt tag](https://github.com/QHose/QRSMeteor/blob/master/public/images/simple%20intro%20to%20saas%20automation.gif)
 
 ## Automatic installation of Qlik Sense (new, almost completed)
 We are lazy... and we hate errors, therefore this tool automatically sets up Qlik Sense. 
@@ -56,9 +58,6 @@ This demo tries to show you the activities from Sense that you can automate in y
 # How to use the demo?
 
 The principle is very simple. This demo shows you how you can copy an app (dashboard) for each of your customers. Next to creating a copy, we will also reload the app with data from the customers database (by replacing the SQL based load script). Because you can insert a custom script you can also specify customer specific data models like "free fields and tables". In the end we make a stream (a way of grouping apps) per customer and publish the app into this stream. The demo consists of 4 steps.
-
-
-![alt tag](https://github.com/QHose/QRSMeteor/blob/master/public/images/simple%20intro%20to%20saas%20automation.gif)
 
 You first have to enter some customers
 Select a template
