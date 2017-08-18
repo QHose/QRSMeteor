@@ -13,6 +13,7 @@ This platform shows you how to
 - create a template app and publish into the templates stream
 - Then use the template apps copy it to each customer/department
 - reloading it by using a 'custom script' (e.g. find replace database connection)
+- We will forward the roles/groups of your SaaS platform to Qlik Sense and using a security rule (something like user.group = stream.name) we can authorize on streams with just one rule (!)
 
 ## Automatic installation of Qlik Sense (new, almost completed)
 We are lazy... and we hate errors, therefore this tool automatically sets up Qlik Sense. 
