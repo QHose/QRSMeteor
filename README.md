@@ -66,6 +66,8 @@ The internal REST calls use both certificate (QPS logout for example) and header
 
 ## Setup your own SaaS provisioning system using this code
 
+!!! this project is currently being migrated from a manual installation to full automatic deployment and a better layout. Therefore the source code won't run at the moment.!!!
+
 See [this manual](https://github.com/QHose/QRSMeteor/blob/master/public/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.docx) 
 
 ### Summary of the new automatic installation
