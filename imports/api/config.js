@@ -2,7 +2,9 @@ import { Mongo } from 'meteor/mongo';
 import { Random } from 'meteor/random';
 import _ from 'meteor/underscore';
 const _QIXSchema = require('/node_modules/enigma.js/schemas/qix/12.20.0/schema.json');
-export var _SSBIApp = ''; //will be set automatically after meteor server has uploaded the apps into Sense. 
+
+//will be set automatically after meteor server has uploaded the apps into Sense via uploadAndPublishTemplateApps() in QRSFunctionsApp. 
+export var _SSBIApp = '';
 export var _IntegrationPresentationApp = '';
 
 //This is the config that we need to make available on the client (the webpage)
@@ -13,7 +15,7 @@ if (Meteor.isClient) {
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
         "QIXSchema": _QIXSchema,
-        "SSBIApp": _SSBIApp,
+        "SSBIAppId": _SSBIApp,
         "IntegrationPresentationApp": _IntegrationPresentationApp
     };
 }
@@ -69,7 +71,7 @@ if (Meteor.isServer) {
         hostname: _senseConfig.SenseServerInternalLanIP,
         headers: {
             'x-qlik-xrfkey': _senseConfig.xrfkey,
-            'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
+            'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`, //`UserDirectory=INTERNAL;UserId=sa_repository` you need to give this user extra roles before this works
             'Content-Type': 'application/json'
         },
         key: _certs.key,

@@ -6,6 +6,7 @@ import { APILogs, REST_Log } from '/imports/api/APILogs';
 //import meteor collections
 import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
+import * as conf from '/imports/api/config';
 import * as QSApp from '/imports/api/server/QRSFunctionsApp';
 import * as QSStream from '/imports/api/server/QRSFunctionsStream';
 import * as QSLic from '/imports/api/server/QRSFunctionsLicense';
@@ -28,38 +29,24 @@ Meteor.startup(function() {
 
 
 //
-// ─── SETUP QLIK SENSE AFTER A CLEAN INSTALL ─────────────────────────────────────
+// ─── SETUP QLIK SENSE AFTER A CLEAN QlIK SENSE INSTALL ─────────────────────────────────────
 //
 
 
-function initQlikSense() {
+async function initQlikSense() {
     console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
     Meteor.call('updateLocalSenseCopy');
-    // QSExtensions.automaticUploadExtensions();
-    // QSExtensions.uploadExtensions();
 
-    // QSProxy.createVirtualProxies();
-    // QSStream.initSenseStreams();
-    // QSApp.uploadAndPublishTemplateApps();
-    setAppIDs();
+    QSProxy.createVirtualProxies();
+    QSStream.initSenseStreams();
+    await QSApp.uploadAndPublishTemplateApps();
+    console.log('------------------------------------');
+    console.log('Dont see me before uploads are finished');
+    console.log('------------------------------------');
+    QSApp.setAppIDs();
+    // QSExtensions.automaticUploadExtensions(); //Does not work yet, maybe not even optimal to download and use untested extensions
+    QSExtensions.uploadExtensions();
 }
-
-function setAppIDs(params) {
-    try {
-        var slideGeneratorApps = QSApp.getApps(Meteor.settings.slideGenerator.name, Meteor.settings.slideGenerator.stream);
-        var SSBIApps = QSApp.getApps(Meteor.settings.slideGenerator.name, Meteor.settings.slideGenerator.stream);
-        if (slideGeneratorApps.length > 1) {
-            throw new Error('You have one but you have multiple slide generator apps under the name ' + Meteor.settings.slideGenerator.name + ' in the stream ' + Meteor.settings.slideGenerator.stream);
-        }
-        Meteor.settings.public.IntegrationPresentationApp = slideGeneratorApps[0].id;
-        console.log('The slide generator app id has been set to ', Meteor.settings.public.IntegrationPresentationApp);
-    } catch (err) {
-        console.error(err)
-        throw new Error('The slideGenerator app can not be found in Qlik sense under the name ' + Meteor.settings.slideGenerator.name + ' in the stream ' + Meteor.settings.slideGenerator.stream);
-
-    }
-}
-
 
 //
 // ─── REMOVE STREAMS AND APPS CREATED DURING THE SAAS DEMO ───────────────────────
@@ -71,7 +58,7 @@ function removeGeneratedResources() {
     //     console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
     //     Meteor.call('removeGeneratedResources', {});
     // }, 0); //remove all logs directly at startup
-    if (Meteor.settings.private.automaticCleanUpGeneratedApps === "Yes") {
+    if (Meteor.settings.broker.automaticCleanUpGeneratedApps === "Yes") {
         Meteor.setInterval(function() {
             console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
             Meteor.call('removeGeneratedResources', {});

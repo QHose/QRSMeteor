@@ -16,10 +16,8 @@ import {
     authHeaders,
     QRSconfig,
     qrsSrv as qliksrv,
-    _SSBIApp,
     QRSCertConfig,
     certicate_communication_options,
-    _IntegrationPresentationApp,
     validateJSON
 } from '/imports/api/config.js';
 import lodash from 'lodash';
@@ -32,7 +30,7 @@ _ = lodash;
 // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Create.htm
 export async function createVirtualProxies() {
     console.log('--------------------------CREATE VIRTUAL PROXIES');
-    var file = path.join(Meteor.settings.private.automationBaseFolder, 'proxy', 'import', 'virtualProxySettings.json');
+    var file = path.join(Meteor.settings.broker.automationBaseFolder, 'proxy', 'import', 'virtualProxySettings.json');
     try {
         // READ THE PROXY FILE 
         var proxySettings = await fs.readJson(file);
@@ -156,7 +154,7 @@ export function getVirtualProxies() {
             npmRequestOptions: certicate_communication_options,
         });
 
-        var file = path.join(Meteor.settings.private.automationBaseFolder, 'proxy', 'export', 'ExtractedvirtualProxyDefinitions.json');
+        var file = path.join(Meteor.settings.broker.automationBaseFolder, 'proxy', 'export', 'ExtractedvirtualProxyDefinitions.json');
 
         // SAVE PROXY FILE TO DISK
         fs.outputFile(file, JSON.stringify(response.data, null, 2), 'utf-8');

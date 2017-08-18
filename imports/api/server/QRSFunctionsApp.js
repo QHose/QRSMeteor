@@ -64,7 +64,7 @@ var request = require('request');
 
 // UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM
 export async function uploadAndPublishTemplateApps() {
-    var newFolder = path.join(Meteor.settings.private.automationBaseFolder, 'apps');
+    var newFolder = path.join(Meteor.settings.broker.automationBaseFolder, 'apps');
     console.log('--------------------------INIT QLIK SENSE');
     console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder "' + newFolder + '" and upload them to Qlik Sense.');
 
@@ -86,7 +86,7 @@ export async function uploadAndPublishTemplateApps() {
     var appsInFolder = await fs.readdir(newFolder);
 
     // FOR EACH APP FOUND: PUBLISH IT    
-    await Promise.all(appsInFolder.map(async(QVF) => {
+    return await Promise.all(appsInFolder.map(async(QVF) => {
         try {
             //GET THE NAME OF THE APP AND CREATE A FILEPATH
             var appName = QVF.substr(0, QVF.indexOf('.'));
@@ -97,18 +97,15 @@ export async function uploadAndPublishTemplateApps() {
 
             //BASED ON THE APP WE WANT TO PUBLISH IT INTO A DIFFERENT STREAM                      
             if (appName === 'SSBI') { //should be published in the everyone stream
-                _SSBIApp = appId; // for the client side HTML/IFrames etc.                
-                Meteor.settings.public.SSBIApp = appId;
-                Meteor.settings.public.SSBIAppSheetString = appId + "/sheet/" + Meteor.settings.SSBI.sheetId + "/state/analysis";
+                _SSBIApp = appId; // for the client side HTML/IFrames etc.                                
                 publishApp(appId, appName, everyOneStreamId);
             } else if (appName === 'Sales') { //THIS ONE NEEDS TO BE COPIED AND PUBLISHED INTO 2 STREAMS: AS TEMPLATE AND FOR THE EVERYONE STREAM.
                 publishApp(appId, appName, everyOneStreamId);
                 var copiedAppId = copyApp(appId, appName);
                 publishApp(copiedAppId, appName, templateStreamId);
             } else if (appName === 'Slide generator') {
-                // _IntegrationPresentationApp = appId,
-                Meteor.settings.public.IntegrationPresentationApp = appId;
-                publishApp(appId, appName, APIAppsStreamID);
+                _IntegrationPresentationApp = appId,
+                    publishApp(appId, appName, APIAppsStreamID);
             } else {
                 //Insert into template apps stream
                 publishApp(appId, appName, templateStreamId);
@@ -131,6 +128,22 @@ export function generateStreamAndApp(customers, generationUserId) {
         }
     };
 };
+
+export function setAppIDs(params) {
+    try {
+        var slideGeneratorApps = getApps(Meteor.settings.slideGenerator.name, Meteor.settings.slideGenerator.stream);
+        var SSBIApps = getApps(Meteor.settings.slideGenerator.name, Meteor.settings.slideGenerator.stream);
+        if (slideGeneratorApps.length > 1) {
+            throw new Error('Can not automatically set the app ID for the slide generator. You have one but you have multiple slide generator apps under the name ' + Meteor.settings.slideGenerator.name + ' in the stream ' + Meteor.settings.slideGenerator.stream);
+        }
+        senseConfig.IntegrationPresentationApp = slideGeneratorApps[0].id;
+        console.log('The slide generator app id has been set to ', senseConfig.IntegrationPresentationApp);
+    } catch (err) {
+        // console.error(err)
+        throw new Error('The slideGenerator app can not be found in Qlik sense under the name ' + Meteor.settings.slideGenerator.name + ' in the stream ' + Meteor.settings.slideGenerator.stream);
+    }
+}
+
 
 function generateAppForTemplate(templateApp, customer, generationUserId) {
     console.log('--------------------------GENERATE APPS FOR TEMPLATE');
@@ -259,7 +272,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
 }
 
 function createDirectory(customerName) {
-    const dir = path.join(Meteor.settings.private.customerDataDir, customerName);
+    const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
     fs.ensureDir(dir, err => {
         console.error(err) // => null
     });

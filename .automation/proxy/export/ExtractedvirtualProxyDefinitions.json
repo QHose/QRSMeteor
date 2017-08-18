@@ -1,6 +1,6 @@
 [
   {
-    "id": "4afdaa22-0053-4698-bd63-e3d61e992944",
+    "id": "2debfb6a-b0cf-4b31-a154-191641e337ec",
     "prefix": "hdr",
     "description": "Header authentication: for use if you have an authenticating reverse proxy. That reverse proxy will set a header (headerAuthenticationHeaderName) which this virtual proxy can read.",
     "authenticationModuleRedirectUri": "",
@@ -83,7 +83,7 @@
     "privileges": null
   },
   {
-    "id": "542dcda9-d669-459e-8e9c-c3bbe67d2756",
+    "id": "3917d1b5-06af-4f80-8fe9-32b643312a4f",
     "prefix": "meteor",
     "description": "Ticket auth. for the SaaS automation demo. In step 4 you will request a ticket via this virtual proxy.",
     "authenticationModuleRedirectUri": "http://localhost:3000/sso",
@@ -171,7 +171,7 @@
     "privileges": null
   },
   {
-    "id": "56f4a931-0927-4e20-8c7f-bf9b2604cefc",
+    "id": "8b9a2891-1518-4d95-8868-5c4f42700c2e",
     "prefix": "presentationsso",
     "description": "used to login users for the slide generator. Based on this users get a technical or a sales profile via a ticket request",
     "authenticationModuleRedirectUri": "http://localhost:3000/presentationsso",
@@ -257,7 +257,7 @@
     "privileges": null
   },
   {
-    "id": "f02e1c31-a2fc-42fa-8371-84489be4e755",
+    "id": "4623bde0-0963-4bd4-811c-41d05e1f8423",
     "prefix": "anon",
     "description": "anon",
     "authenticationModuleRedirectUri": "",
