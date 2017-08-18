@@ -39,11 +39,12 @@ async function initQlikSense() {
     console.log('------------------------------------');
     Meteor.call('updateLocalSenseCopy');
 
+    QSLic.insertLicense();
     await QSProxy.createVirtualProxies();
     QSStream.initSenseStreams();
     await QSApp.uploadAndPublishTemplateApps();
     QSApp.setAppIDs();
-    // QSExtensions.automaticUploadExtensions(); //Does not work yet, maybe not even optimal to download and use untested extensions
+    // QSExtensions.automaticUploadExtensions(); //Does not work yet, maybe not even optimal to download and use untested extensions.
     QSExtensions.uploadExtensions();
 }
 

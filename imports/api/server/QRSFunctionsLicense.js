@@ -8,8 +8,8 @@ import { myQRS } from '/imports/api/server/QRSAPI';
 
 
 import {
-    qlikHDRServer, // Qlik sense QRS endpoint via header authentication
-    senseConfig
+    senseConfig,
+    qrs
 } from '/imports/api/config.js';
 
 //
@@ -25,18 +25,15 @@ var request = require('request');
 
 // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-License-Add.htm
 
-var qrs = new myQRS();
-insertLicense();
-// getLicense();
-
 export function getLicense() {
     var lic = qrs.get('/qrs/license');
-    console.log('lic', lic)
     return lic;
-
 }
 
 export function insertLicense() {
+    console.log('------------------------------------');
+    console.log('INSERT LICENSE');
+    console.log('------------------------------------');
     var existingLicense = qrs.get('/qrs/license');
     var newLicense = Meteor.settings.private.license;
 
@@ -48,7 +45,7 @@ export function insertLicense() {
         // console.error('Stop license insertion, license for ' + lic.organization + ' is already included: ', lic.serial);
         // throw Error('You are trying to insert a license while the Qlik Sense is already licensed, please remove the existing one in the QMC');
     } catch (err) {
-        // lic did not already exist
+        // lic did not already exist.
     }
     var response = qrs.post('/qrs/license', newLicense, { control: Meteor.settings.private.LicenseControlNumber });
 
