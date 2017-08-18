@@ -1,9 +1,9 @@
 <template name="regionLayout">
+    {{> yield "nav"}} {{> sAlert}} 
     <div class="ui relaxed very padded stackable grid">
         <!--  <div class="one wide column">
         </div> -->
         <div class="sixteen wide column">
-            {{> yield "nav"}} {{> sAlert}}
             <div class="ui three column stackable grid">
                 <div class="five wide column"> {{> yield "aside"}} </div>
                 <div class="eleven wide column"> {{> yield}}</div>
@@ -12,7 +12,10 @@
         <!--  <div class="one wide column">
         </div> -->
     </div>
+    {{> footer}}
 </template>
 <template name="oneColumnCenteredLayout">
 {{> yield }}
+{{> footer }}
+
 </template>

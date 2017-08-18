@@ -1,0 +1,53 @@
+[{
+        "prefix": "anon",
+        "description": "anon",
+        "authenticationMethod": 0,
+        "anonymousAccessMode": 1,
+        "windowsAuthenticationEnabledDevicePattern": "Windows",
+        "sessionCookieHeaderName": "X-Qlik-Session-anon",
+        "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
+        "sessionInactivityTimeout": 30,
+        "websocketCrossOriginWhiteList": ["jshell.net"],
+        "defaultVirtualProxy": false
+    },
+    {
+        "prefix": "presentationsso",
+        "description": "used to login users for the slide generator. Based on this users get a technical or a sales profile via a ticket request",
+        "authenticationModuleRedirectUri": "http://localhost:3000/presentationsso",
+        "authenticationMethod": 0,
+        "anonymousAccessMode": 0,
+        "windowsAuthenticationEnabledDevicePattern": "",
+        "sessionCookieHeaderName": "X-Qlik-Session-presentationsso",
+        "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
+        "sessionInactivityTimeout": 999,
+        "websocketCrossOriginWhiteList": [
+            "integration.qlik.com"
+        ],
+        "defaultVirtualProxy": false
+    },
+    {
+        "prefix": "meteor",
+        "description": "Ticket auth. for the SaaS automation demo. In step 4 you will request a ticket via this virtual proxy.",
+        "authenticationModuleRedirectUri": "http://localhost:3000/sso",
+        "sessionModuleBaseUri": "",
+        "authenticationMethod": 0,
+        "windowsAuthenticationEnabledDevicePattern": "",
+        "sessionCookieHeaderName": "X-Qlik-Session-meteor",
+        "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
+        "sessionInactivityTimeout": 30,
+        "websocketCrossOriginWhiteList": [
+            "integration.qlik.com",
+            "web.saasdemo.qlik.com",
+            "jshell.net"
+        ],
+        "defaultVirtualProxy": false
+    },
+    {
+        "prefix": "hdr",
+        "description": "Header authentication: for use if you have an authenticating reverse proxy. That reverse proxy will set a header (headerAuthenticationHeaderName) which this virtual proxy can read.",
+        "authenticationMethod": 2,
+        "sessionCookieHeaderName": "X-Qlik-Session-hdr",
+        "headerAuthenticationDynamicUserDirectory": "$ud\\\\$id",
+        "headerAuthenticationHeaderName": "hdr-usr"
+    }
+]

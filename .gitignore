@@ -1,9 +1,9 @@
 #Mr Developer
+node_modules/
 settings-development.json
 settings-production.json
 *.cert
 *.pem
-node_modules/
 data/
 .vscode/typings/meteor.d.ts
 *.sublime-workspace

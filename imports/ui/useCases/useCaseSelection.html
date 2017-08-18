@@ -1,6 +1,77 @@
 <template name="useCaseSelection">
     {{> modalSaaSautomation}}
-    <div class="ui three column centered grid">
+    
+    <section class="home header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                 <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#">Brand</a>-->
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="active">
+                            <a href="/">HOME<span class="sr-only">(current)</span></a>
+                            <i class="fa fa-circle" aria-hidden="true"></i>
+                        </li>
+                        <li><a href="{{webIntegrationDemo}}">EMBED QLIK SENSE</a></li>
+                        <li><a href="{{pathFor 'selfService'}}">SELF SERVICE</a></li>
+                        <li><a href="{{pathFor 'impress'}}">SAAS PROVISIONING</a></li>
+                        <li><a href="{{pathFor 'documentation'}}">DEEP DIVE QLIK APIS</a></li>
+                        <li><a href="{{pathFor 'documentation'}}?tab=video">VIDEO LIBRARY</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="description">
+                    <h1>Saas Demo</h1>
+                    <p>Have embedding questions? Want to learn more about our embedding approaches, technology and relevant use cases with Qlik?  We have answers – explore further.</p>
+                    <p>Map your road to embedding analytics success here.</p>
+                    <p>Select your role to start your journey</p>
+                    <p>     
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{userRole}} <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{webIntegrationDemo}}?ur=1" data="Developer">Developer</a></li>
+                                <li><a href="{{webIntegrationDemo}}?ur=2" data="Product Owner">Product Owner</a></li>
+                                <li><a href="{{pathFor 'impress'}}" data="Hosting Ops Professional">Hosting Ops Professional</a></li>
+                                <li><a href="{{pathFor 'selfService'}}" data="Business Analyst">Business Analyst</a></li>
+                                <li><a href="{{webIntegrationDemo}}?ur=5" data="CTO">CTO</a></li>
+                                <li><a href="{{pathFor 'selfService'}}" data="C-Level executive, non-technical">C-Level executive, non-technical</a></li>
+                            </ul>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div> 
+    </section>
+    <section class="home main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-3">
+                    <h1>Video Library</h1>
+                    <p>For a deeper dive where is my video resource playlist?</p>
+                    <p><button type="button" class="btn btn-default">Video Resource Library</button></p>
+                </div>
+                <div class="col-md-3">
+                    <img src="./images/image_VideoLibrary.jpg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--<div class="ui three column centered grid">
         <div class="row">
             <h3 class="ui left aligned dividing header">Please select your demo</h3>
         </div>
@@ -37,7 +108,7 @@
                 <div class="content">
                     <a href="{{pathFor 'selfService'}}" class="header">Self Service</a>
                     <div class="meta">
-                        <span class="date">Using a layered approach to functionality, this demo shows how users can create personalized reports and dynamic dashboards to explore vast amounts of data and find meaningful insights</span>
+                        <span class="date">Using a layered approach to functionality, this demo shows how users can create personalized reports and dynamic dashboards to explore vast amounts of data and find meaningful insights.</span>
                     </div>
                 </div>
             </div>
@@ -54,7 +125,7 @@
                 <div class="content">
                     <a href="{{webIntegrationDemo}}" class="header webIntegrationDemo">Embed Qlik Sense</a>
                     <div class="meta">
-                        <span class="date">Here we demonstrate how you can embed the Qlik Sense hub, sheets or individual objects. Also we show the "data only use case", we you just "query" our data model and use your own HTML/JS to vizualize the content. <!-- using an IFrame, DIV or javascript -->.</span>
+                        <span class="date">Here we demonstrate how you can embed the Qlik Sense hub, sheets or individual objects. Also we show the "data only use case", we you just "query" our data model and use your own HTML/JS to vizualize the content.</span>
                     </div>
                 </div>
             </div>
@@ -93,5 +164,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </template>
