@@ -32,17 +32,16 @@ Meteor.startup(function() {
 // ─── SETUP QLIK SENSE AFTER A CLEAN QlIK SENSE INSTALL ─────────────────────────────────────
 //
 
-
+//Check if Qlik Sense has been properly setup for this MeteorQRS tool
 async function initQlikSense() {
-    console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
+    console.log('------------------------------------');
+    console.log('INIT QLIK SENSE');
+    console.log('------------------------------------');
     Meteor.call('updateLocalSenseCopy');
 
-    QSProxy.createVirtualProxies();
+    await QSProxy.createVirtualProxies();
     QSStream.initSenseStreams();
     await QSApp.uploadAndPublishTemplateApps();
-    console.log('------------------------------------');
-    console.log('Dont see me before uploads are finished');
-    console.log('------------------------------------');
     QSApp.setAppIDs();
     // QSExtensions.automaticUploadExtensions(); //Does not work yet, maybe not even optimal to download and use untested extensions
     QSExtensions.uploadExtensions();

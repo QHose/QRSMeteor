@@ -37,7 +37,7 @@ import {
     qrs,
     QRSconfig,
     _SSBIApp,
-    certicate_communication_options,
+    configCerticates,
     _IntegrationPresentationApp
 } from '/imports/api/config.js';
 import {
@@ -64,8 +64,10 @@ var request = require('request');
 
 // UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM
 export async function uploadAndPublishTemplateApps() {
+    console.log('------------------------------------');
+    console.log('uploadAndPublishTemplateApps');
+    console.log('------------------------------------');
     var newFolder = path.join(Meteor.settings.broker.automationBaseFolder, 'apps');
-    console.log('--------------------------INIT QLIK SENSE');
     console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder "' + newFolder + '" and upload them to Qlik Sense.');
 
     //GET THE ID OF THE IMPORTANT STREAMS (streams that QRSMeteor needs)
@@ -92,23 +94,26 @@ export async function uploadAndPublishTemplateApps() {
             var appName = QVF.substr(0, QVF.indexOf('.'));
             var filePath = path.join(newFolder, QVF);
 
-            //UPLOAD THE APP, GET THE APP ID BACK
-            var appId = await uploadApp(filePath, appName);
+            //ONLY UPLOAD APPS IF THEY DO NOT ALREADY EXIST
+            if (!getApps(appName)) {
+                //UPLOAD THE APP, GET THE APP ID BACK
+                var appId = await uploadApp(filePath, appName);
 
-            //BASED ON THE APP WE WANT TO PUBLISH IT INTO A DIFFERENT STREAM                      
-            if (appName === 'SSBI') { //should be published in the everyone stream
-                _SSBIApp = appId; // for the client side HTML/IFrames etc.                                
-                publishApp(appId, appName, everyOneStreamId);
-            } else if (appName === 'Sales') { //THIS ONE NEEDS TO BE COPIED AND PUBLISHED INTO 2 STREAMS: AS TEMPLATE AND FOR THE EVERYONE STREAM.
-                publishApp(appId, appName, everyOneStreamId);
-                var copiedAppId = copyApp(appId, appName);
-                publishApp(copiedAppId, appName, templateStreamId);
-            } else if (appName === 'Slide generator') {
-                _IntegrationPresentationApp = appId,
-                    publishApp(appId, appName, APIAppsStreamID);
-            } else {
-                //Insert into template apps stream
-                publishApp(appId, appName, templateStreamId);
+                //BASED ON THE APP WE WANT TO PUBLISH IT INTO A DIFFERENT STREAM                      
+                if (appName === 'SSBI') { //should be published in the everyone stream
+                    _SSBIApp = appId; // for the client side HTML/IFrames etc.                                
+                    publishApp(appId, appName, everyOneStreamId);
+                } else if (appName === 'Sales') { //THIS ONE NEEDS TO BE COPIED AND PUBLISHED INTO 2 STREAMS: AS TEMPLATE AND FOR THE EVERYONE STREAM.
+                    publishApp(appId, appName, everyOneStreamId);
+                    var copiedAppId = copyApp(appId, appName);
+                    publishApp(copiedAppId, appName, templateStreamId);
+                } else if (appName === 'Slide generator') {
+                    _IntegrationPresentationApp = appId,
+                        publishApp(appId, appName, APIAppsStreamID);
+                } else {
+                    //Insert into template apps stream
+                    publishApp(appId, appName, templateStreamId);
+                }
             }
         } catch (err) {
             console.error(err);
@@ -130,6 +135,9 @@ export function generateStreamAndApp(customers, generationUserId) {
 };
 
 export function setAppIDs(params) {
+    console.log('------------------------------------');
+    console.log('GET APP IDs');
+    console.log('------------------------------------');
     try {
         var slideGeneratorApps = getApps(Meteor.settings.slideGenerator.name, Meteor.settings.slideGenerator.stream);
         var SSBIApps = getApps(Meteor.settings.slideGenerator.name, Meteor.settings.slideGenerator.stream);
@@ -318,8 +326,7 @@ function checkTemplateAppExists(generationUserId) {
 
 
 async function uploadApp(filePath, appName) {
-    console.log('--------------------------UPLOAD APP');
-    console.log('uploadApp: try to upload app: ' + appName + ' from path: ' + filePath);
+    console.log('Upload app: ' + appName + ' from path: ' + filePath);
     return await new Promise(function(resolve, reject) {
         var formData = {
             my_file: fs.createReadStream(filePath)
@@ -359,7 +366,7 @@ export function copyApp(guid, name, generationUserId) {
     try {
         call.request = qrsSrv + '/qrs/app/' + guid + '/copy';
         call.response = HTTP.post(call.request, {
-            'npmRequestOptions': certicate_communication_options,
+            'npmRequestOptions': configCerticates,
             params: { 'xrfkey': senseConfig.xrfkey, "name": name },
             data: {}
         });
@@ -435,7 +442,6 @@ export function getApps(name, stream) {
             path += " and stream.name eq '" + stream + "'"
         }
     }
-    console.log('path', path)
 
     var call = {
         action: 'Get list of apps',
@@ -458,7 +464,7 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
         call.request = qrsSrv + '/qrs/app/' + guid;
         call.response = HTTP.del(call.request, {
             params: { xrfkey: senseConfig.xrfkey },
-            npmRequestOptions: certicate_communication_options,
+            npmRequestOptions: configCerticates,
             data: {}
         });
 
@@ -493,7 +499,7 @@ export function publishApp(appGuid, appName, streamId, customerName, generationU
         call.request = qrsSrv + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId;
         call.response = HTTP.put(call.request, {
             params: { xrfkey: senseConfig.xrfkey },
-            npmRequestOptions: certicate_communication_options,
+            npmRequestOptions: configCerticates,
             data: {}
         });
 

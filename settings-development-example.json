@@ -10,13 +10,18 @@
         "StreamsToCreateAutomatically": ["API apps", "Templates", "Everyone", "QA", "TEST"],
         "APIAppStreamName": "API apps",
         "TemplateAppStreamName": "Templates",
-        "EveryoneAppStreamName": "Everyone",
-        "SSBIAppSheetString": "d0fbb7ce-f217-4678-8798-9ab543b888a0/sheet/puEpZK/state/analysis",
-        "IntegrationPresentationApp": "9b5091fb-5715-4bfb-a948-6d708d56da72",
-        "IntegrationPresentationSelectionSheet": "DYTpxv",
-        "IntegrationPresentationSortedDataObject": "pskL",
-        "IntegrationPresentationSlideObject": "BbbV",
-        "IntegrationPresentationProxy": "presentationsso"
+        "EveryoneAppStreamName": "Everyone"
+    },
+    "SSBI": {
+        "sheetId": "puEpZK"
+    },
+    "slideGenerator": {
+        "name": "Slide generator",
+        "stream": "API apps",
+        "selectionSheet": "DYTpxv",
+        "dataObject": "pskL",
+        "slideObject": "BbbV",
+        "virtualProxy": "presentationsso"
     },
     "private": {
         "certificatesDirectory": "C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates",
@@ -29,15 +34,17 @@
         "enginePort": 4747,
         "qrsPort": 4242,
         "proxyPort": 4243,
-        "customerDataDir": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData",
-        "automaticCleanUpGeneratedApps": "Yes",
-        "automationBaseFolder": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\.automation",
         "license": {
-            "serial": "df",
+            "serial": "",
             "name": "Martijn Biesbroek",
             "organization": "Qlik"
         },
-        "LicenseControlNumber": 299
+        "LicenseControlNumber": 456
+    },
+    "broker": {
+        "customerDataDir": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData",
+        "automaticCleanUpGeneratedApps": "Yes",
+        "automationBaseFolder": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\.automation"
     },
     "sikka": {
         "captcha": {

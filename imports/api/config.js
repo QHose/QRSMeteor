@@ -66,7 +66,7 @@ if (Meteor.isServer) {
         cert: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client.pem'),
     }
 
-    export var certicate_communication_options = {
+    export var configCerticates = {
         rejectUnauthorized: false,
         hostname: _senseConfig.SenseServerInternalLanIP,
         headers: {

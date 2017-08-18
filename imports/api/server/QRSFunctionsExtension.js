@@ -15,7 +15,7 @@ import {
     qrsSrv,
     QRSconfig,
     _SSBIApp,
-    certicate_communication_options,
+    configCerticates,
     _IntegrationPresentationApp
 } from '/imports/api/config.js';
 

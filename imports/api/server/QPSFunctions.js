@@ -17,7 +17,7 @@ import {
     QRSconfig,
     qrsSrv as qliksrv,
     QRSCertConfig,
-    certicate_communication_options,
+    configCerticates,
     validateJSON
 } from '/imports/api/config.js';
 import lodash from 'lodash';
@@ -29,7 +29,9 @@ _ = lodash;
 
 // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Create.htm
 export async function createVirtualProxies() {
-    console.log('--------------------------CREATE VIRTUAL PROXIES');
+    console.log('------------------------------------');
+    console.log('CREATE VIRTUAL PROXIES');
+    console.log('------------------------------------');
     var file = path.join(Meteor.settings.broker.automationBaseFolder, 'proxy', 'import', 'virtualProxySettings.json');
     try {
         // READ THE PROXY FILE 
@@ -40,7 +42,7 @@ export async function createVirtualProxies() {
             throw new Error('Cant read the virtual proxy definitions file: virtualProxySettings.json in your automation folder')
         }
 
-        //FOR EACH PROXY FOUND IN THE INPUTFILE (vpToCreate), CREATE IT IN SENSE
+        //FOR EACH PROXY FOUND IN THE INPUTFILE (vpToCreate), CREATE IT IN SENSE        
         for (var vpToCreate of proxySettings) {
             if (vpToCreate.websocketCrossOriginWhiteList) {
                 vpToCreate.websocketCrossOriginWhiteList.push(Meteor.settings.public.host);
@@ -76,7 +78,7 @@ export async function createVirtualProxies() {
             var request = qliksrv + '/qrs/virtualproxyconfig/';
             response = HTTP.call('POST', request, {
                 params: { xrfkey: senseConfig.xrfkey },
-                'npmRequestOptions': certicate_communication_options,
+                'npmRequestOptions': configCerticates,
                 data: virtualProxy
             });
             return response.data;
@@ -110,7 +112,7 @@ function updateProxy(proxyId, proxyConfig) {
         var request = qliksrv + '/qrs/proxyservice/' + proxyId;
         response = HTTP.call('PUT', request, {
             params: { xrfkey: senseConfig.xrfkey },
-            'npmRequestOptions': certicate_communication_options,
+            'npmRequestOptions': configCerticates,
             data: proxyConfig
         });
     } catch (err) {
@@ -122,7 +124,7 @@ function getProxyId() {
     try {
         var request = qliksrv + '/qrs/proxyservice/?xrfkey=' + senseConfig.xrfkey;
         response = HTTP.call('GET', request, {
-            'npmRequestOptions': certicate_communication_options,
+            'npmRequestOptions': configCerticates,
         });
         return response.data[0].id;
     } catch (err) {
@@ -137,7 +139,7 @@ function getProxyServiceConfiguration(proxyId) {
 
         var request = qliksrv + '/qrs/proxyservice/' + proxyId + '?xrfkey=' + senseConfig.xrfkey;
         response = HTTP.call('GET', request, {
-            'npmRequestOptions': certicate_communication_options,
+            'npmRequestOptions': configCerticates,
         });
         return response.data;
     } catch (err) {
@@ -151,7 +153,7 @@ export function getVirtualProxies() {
         var request = qliksrv + '/qrs/virtualproxyconfig/';
         response = HTTP.call('GET', request, {
             params: { xrfkey: senseConfig.xrfkey },
-            npmRequestOptions: certicate_communication_options,
+            npmRequestOptions: configCerticates,
         });
 
         var file = path.join(Meteor.settings.broker.automationBaseFolder, 'proxy', 'export', 'ExtractedvirtualProxyDefinitions.json');
@@ -173,7 +175,7 @@ function getServerNodeConfiguration() {
     try {
         var request = qliksrv + '/qrs/servernodeconfiguration/local?xrfkey=' + senseConfig.xrfkey;
         response = HTTP.call('GET', request, {
-            'npmRequestOptions': certicate_communication_options,
+            'npmRequestOptions': configCerticates,
         });
         return response.data;
     } catch (err) {
@@ -369,14 +371,14 @@ export function logoutUser(UDC, name, proxy) {
     // console.log('******** QPS Functions: logout the current: ' + name + ' on proxy: ' + proxy);
 
     if (name) {
-        // //console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTPs call: '); //, certicate_communication_options);
+        // //console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTPs call: '); //, configCerticates);
         // //console.log('Meteor tries to logout the user on this URL: https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + senseConfig.UDC + '/' + name);
         try {
             const call = {};
             call.action = 'Logout user: ' + name;
             call.url = gitHubLinks.logoutUser;
             call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + proxy + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey;
-            call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options });
+            call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': configCerticates });
 
             REST_Log(call, UDC); // the UDC is the by definition the userId of meteor in our approach...
             console.log('The HTTP REQUEST to Sense QPS API:', call.request);
@@ -408,7 +410,7 @@ export function getRedirectURL(passport, proxyRestUri, targetId, generationUserI
         call.request = proxyRestUri + 'ticket'; // we use the proxy rest uri which we got from the redirect from the proxy (the first bounce)
         call.url = gitHubLinks.requestTicket;
         call.response = HTTP.call('POST', call.request, {
-            'npmRequestOptions': certicate_communication_options,
+            'npmRequestOptions': configCerticates,
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey },
             data: passport, // the user and group info for which we want to create a ticket
@@ -450,7 +452,7 @@ Meteor.methods({
             call.request = proxyGetTicketURI;
             call.url = 'https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md';
             call.response = HTTP.call('POST', call.request, {
-                'npmRequestOptions': certicate_communication_options,
+                'npmRequestOptions': configCerticates,
                 headers: authHeaders,
                 params: { 'xrfkey': senseConfig.xrfkey },
                 data: passport, // the user and group info for which we want to create a ticket

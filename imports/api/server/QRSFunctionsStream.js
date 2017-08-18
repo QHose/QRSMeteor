@@ -3,7 +3,7 @@ import { GeneratedResources } from '/imports/api/apps.js';
 import { gitHubLinks } from '/imports/ui/UIHelpers';
 
 // import config for Qlik Sense QRS and Engine API
-import { senseConfig, authHeaders, qrsSrv, qrs, certicate_communication_options } from '/imports/api/config.js';
+import { senseConfig, authHeaders, qrsSrv, qrs, configCerticates } from '/imports/api/config.js';
 import { REST_Log } from '/imports/api/APILogs';
 
 const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
@@ -15,7 +15,9 @@ const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + sens
 
 
 export function initSenseStreams() {
-
+    console.log('------------------------------------');
+    console.log('Create initial streams');
+    console.log('------------------------------------');
 
     for (const streamName of Meteor.settings.public.StreamsToCreateAutomatically) {
         try {
@@ -40,7 +42,7 @@ export function deleteStream(guid, generationUserId) {
 
         var request = qrsSrv + '/qrs/stream/' + guid;
         var response = HTTP.del(request, {
-            'npmRequestOptions': certicate_communication_options,
+            'npmRequestOptions': configCerticates,
         });
 
         // Logging
@@ -68,7 +70,7 @@ export function getStreamByName(name) {
         var request = qrsSrv + "/qrs/stream/full?filter=Name eq '" + name + "'";
         var response = HTTP.get(request, {
             params: { xrfkey: senseConfig.xrfkey },
-            npmRequestOptions: certicate_communication_options,
+            npmRequestOptions: configCerticates,
             data: {}
         });
 
@@ -91,7 +93,7 @@ export function getStreams() {
         call.request = qrsSrv + '/qrs/stream/full';
         call.response = HTTP.get(call.request, {
             params: { xrfkey: senseConfig.xrfkey },
-            npmRequestOptions: certicate_communication_options,
+            npmRequestOptions: configCerticates,
             data: {}
         });
         // REST_Log(call);        
