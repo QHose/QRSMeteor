@@ -38,7 +38,6 @@ export function insertLicense() {
     var existingLicense = qrs.get('/qrs/license');
     var newLicense = Meteor.settings.private.license;
 
-<<<<<<< HEAD
     if (newLicense) {
         try {
             console.log('Update the existing license');
@@ -70,8 +69,8 @@ export function insertUserAccessRule() {
         "comment": "Rule to set up automatic user access for each user that has received a ticket via your SaaS platform",
         "disabledActions": ["useaccesstype"]
     }
-
-    if (getSystemRules(demoUserAccessRule)[0] != null) {
+    var ruleExist = getSystemRules(demoUserAccessRule);
+    if (ruleExist != null) {
         var response = qrs.post('/qrs/SystemRule', licenseRule);
     }
 }
@@ -84,17 +83,6 @@ export function getSystemRules(name) {
         rules = qrs.get('/qrs/SystemRule', filter);
     } else {
         rules = qrs.get('/qrs/SystemRule');
-=======
-    try {
-        console.log('Update the existing license');
-        newLicense.id = existingLicense.id;
-        var response = qrs.del('/qrs/license/' + existingLicense.id);
-        // var response = qrs.put('/qrs/license/' + newLicense.id, newLicense, { control: Meteor.settings.private.LicenseControlNumber });
-        // console.error('Stop license insertion, license for ' + lic.organization + ' is already included: ', lic.serial);
-        // throw Error('You are trying to insert a license while the Qlik Sense is already licensed, please remove the existing one in the QMC');
-    } catch (err) {
-        // lic did not already exist.
->>>>>>> bc954c3420b7884ae3159a69419c6b0e983ba005
     }
 
     console.log('rules', rules)
