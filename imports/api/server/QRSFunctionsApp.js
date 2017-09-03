@@ -34,9 +34,10 @@ import {
     enigmaServerConfig,
     authHeaders,
     qrsSrv,
+    qrs,
     QRSconfig,
     _SSBIApp,
-    certicate_communication_options,
+    configCerticates,
     _IntegrationPresentationApp
 } from '/imports/api/config.js';
 import {
@@ -52,7 +53,7 @@ _ = lodash;
 const path = require('path');
 const fs = require('fs-extra');
 const enigma = require('enigma.js');
-var QRS = require('qrs');
+// var QRS = require('qrs');
 var promise = require('bluebird');
 var request = require('request');
 
@@ -63,8 +64,10 @@ var request = require('request');
 
 // UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM
 export async function uploadAndPublishTemplateApps() {
-    var newFolder = path.join(Meteor.settings.private.automationBaseFolder, 'apps');
-    console.log('--------------------------INIT QLIK SENSE');
+    console.log('------------------------------------');
+    console.log('uploadAndPublishTemplateApps');
+    console.log('------------------------------------');
+    var newFolder = path.join(Meteor.settings.broker.automationBaseFolder, 'apps');
     console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder "' + newFolder + '" and upload them to Qlik Sense.');
 
     //GET THE ID OF THE IMPORTANT STREAMS (streams that QRSMeteor needs)
@@ -85,30 +88,33 @@ export async function uploadAndPublishTemplateApps() {
     var appsInFolder = await fs.readdir(newFolder);
 
     // FOR EACH APP FOUND: PUBLISH IT    
-    await Promise.all(appsInFolder.map(async(QVF) => {
+    return await Promise.all(appsInFolder.map(async(QVF) => {
         try {
             //GET THE NAME OF THE APP AND CREATE A FILEPATH
             var appName = QVF.substr(0, QVF.indexOf('.'));
             var filePath = path.join(newFolder, QVF);
 
-            //UPLOAD THE APP, GET THE APP ID BACK
-            var appId = await uploadApp(filePath, appName);
+            //ONLY UPLOAD APPS IF THEY DO NOT ALREADY EXIST
+            if (!getApps(appName).length) {
+                //UPLOAD THE APP, GET THE APP ID BACK
+                var appId = await uploadApp(filePath, appName);
 
-            //BASED ON THE APP WE WANT TO PUBLISH IT INTO A DIFFERENT STREAM                      
-            if (appName === 'SSBI') { //should be published in the everyone stream
-                _SSBIApp = appId; // for the client side HTML/IFrames etc.
-                publishApp(appId, appName, everyOneStreamId);
-            } else if (appName === 'Sales') { //THIS ONE NEEDS TO BE COPIED AND PUBLISHED INTO 2 STREAMS: AS TEMPLATE AND FOR THE EVERYONE STREAM.
-                publishApp(appId, appName, everyOneStreamId);
-                var copiedAppId = copyApp(appId, appName);
-                publishApp(copiedAppId, appName, templateStreamId);
-            } else if (appName === 'Slide generator') {
-                _IntegrationPresentationApp = appId
-                publishApp(appId, appName, APIAppsStreamID);
-            } else {
-                //Insert into template apps stream
-                publishApp(appId, appName, templateStreamId);
-            }
+                //BASED ON THE APP WE WANT TO PUBLISH IT INTO A DIFFERENT STREAM                      
+                if (appName === 'SSBI') { //should be published in the everyone stream
+                    _SSBIApp = appId; // for the client side HTML/IFrames etc.                                
+                    publishApp(appId, appName, everyOneStreamId);
+                } else if (appName === 'Sales') { //THIS ONE NEEDS TO BE COPIED AND PUBLISHED INTO 2 STREAMS: AS TEMPLATE AND FOR THE EVERYONE STREAM.
+                    publishApp(appId, appName, everyOneStreamId);
+                    var copiedAppId = copyApp(appId, appName);
+                    publishApp(copiedAppId, appName, templateStreamId);
+                } else if (appName === 'Slide generator') {
+                    _IntegrationPresentationApp = appId,
+                        publishApp(appId, appName, APIAppsStreamID);
+                } else {
+                    //Insert into template apps stream
+                    publishApp(appId, appName, templateStreamId);
+                }
+            } else { console.log('App ' + appName + ' already exists in Qlik Sense') };
         } catch (err) {
             console.error(err);
             throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
@@ -127,6 +133,25 @@ export function generateStreamAndApp(customers, generationUserId) {
         }
     };
 };
+
+export function setAppIDs(params) {
+    console.log('------------------------------------');
+    console.log('GET APP IDs');
+    console.log('------------------------------------');
+    try {
+        var slideGeneratorApps = getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream);
+        var SSBIApps = getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream);
+        if (slideGeneratorApps.length > 1) {
+            throw new Error('Can not automatically set the app ID for the slide generator. You have one but you have multiple slide generator apps under the name ' + Meteor.settings.public.slideGenerator.name + ' in the stream ' + Meteor.settings.public.slideGenerator.stream);
+        }
+        senseConfig.IntegrationPresentationApp = slideGeneratorApps[0].id;
+        console.log('The slide generator app id has been set to ', senseConfig.IntegrationPresentationApp);
+    } catch (err) {
+        // console.error(err)
+        throw new Error('The slideGenerator app can not be found in Qlik sense under the name ' + Meteor.settings.public.slideGenerator.name + ' in the stream ' + Meteor.settings.public.slideGenerator.stream);
+    }
+}
+
 
 function generateAppForTemplate(templateApp, customer, generationUserId) {
     console.log('--------------------------GENERATE APPS FOR TEMPLATE');
@@ -255,7 +280,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
 }
 
 function createDirectory(customerName) {
-    const dir = path.join(Meteor.settings.private.customerDataDir, customerName);
+    const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
     fs.ensureDir(dir, err => {
         console.error(err) // => null
     });
@@ -301,8 +326,7 @@ function checkTemplateAppExists(generationUserId) {
 
 
 async function uploadApp(filePath, appName) {
-    console.log('--------------------------UPLOAD APP');
-    console.log('uploadApp: try to upload app: ' + appName + ' from path: ' + filePath);
+    console.log('Upload app: ' + appName + ' from path: ' + filePath);
     return await new Promise(function(resolve, reject) {
         var formData = {
             my_file: fs.createReadStream(filePath)
@@ -342,7 +366,7 @@ export function copyApp(guid, name, generationUserId) {
     try {
         call.request = qrsSrv + '/qrs/app/' + guid + '/copy';
         call.response = HTTP.post(call.request, {
-            'npmRequestOptions': certicate_communication_options,
+            'npmRequestOptions': configCerticates,
             params: { 'xrfkey': senseConfig.xrfkey, "name": name },
             data: {}
         });
@@ -407,20 +431,24 @@ function checkStreamStatus(customer, generationUserId) {
 //
 // ─── GETAPPS ────────────────────────────────────────────────────────────────────
 //    
-export function getApps() {
-    try {
-        const call = {};
-        call.action = 'Get list of apps';
-        call.request = qrsSrv + '/qrs/app/full/?xrfkey=' + senseConfig.xrfkey;
-        call.response = HTTP.get(call.request, {
-            'npmRequestOptions': certicate_communication_options
-        });
-        // REST_Log(call,generationUserId);
-        return call.response.data;
-    } catch (err) {
-        console.error(err);
-        throw new Meteor.Error('getApps failed', err.message);
+
+export function getApps(name, stream) {
+    var path = '/qrs/app/full';
+
+    //if a name/stream is provided only search the apps with this name
+    if (name) {
+        path += "?filter=Name eq '" + name + "'"
+        if (stream) {
+            path += " and stream.name eq '" + stream + "'"
+        }
     }
+
+    var call = {
+        action: 'Get list of apps',
+        request: path
+    };
+    // REST_Log(call,generationUserId);
+    return qrs.get(call.request);
 };
 
 //
@@ -435,7 +463,7 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
         call.request = qrsSrv + '/qrs/app/' + guid;
         call.response = HTTP.del(call.request, {
             params: { xrfkey: senseConfig.xrfkey },
-            npmRequestOptions: certicate_communication_options,
+            npmRequestOptions: configCerticates,
             data: {}
         });
 
@@ -459,7 +487,6 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
 
 
 export function publishApp(appGuid, appName, streamId, customerName, generationUserId) {
-    console.log('--------------------------PUBLISH');
     console.log('Publish app: ' + appName + ' to stream: ' + streamId);
     check(appGuid, String);
     check(appName, String);
@@ -470,7 +497,7 @@ export function publishApp(appGuid, appName, streamId, customerName, generationU
         call.request = qrsSrv + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId;
         call.response = HTTP.put(call.request, {
             params: { xrfkey: senseConfig.xrfkey },
-            npmRequestOptions: certicate_communication_options,
+            npmRequestOptions: configCerticates,
             data: {}
         });
 

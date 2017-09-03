@@ -15,7 +15,7 @@ import {
     qrsSrv,
     QRSconfig,
     _SSBIApp,
-    certicate_communication_options,
+    configCerticates,
     _IntegrationPresentationApp
 } from '/imports/api/config.js';
 
@@ -46,7 +46,7 @@ export async function uploadExtensions() {
     // LOAD ALL EXTENSIONS IN FOLDER
     var extensionsFolder = '';
     try {
-        extensionsFolder = path.join(Meteor.settings.private.automationBaseFolder, 'extensions');
+        extensionsFolder = path.join(Meteor.settings.broker.automationBaseFolder, 'extensions');
         console.log('extensionsFolder', extensionsFolder)
         var extensions = await fs.readdir(extensionsFolder);
     } catch (err) {

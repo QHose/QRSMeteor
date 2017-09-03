@@ -6,6 +6,7 @@ import { APILogs, REST_Log } from '/imports/api/APILogs';
 //import meteor collections
 import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
+import * as conf from '/imports/api/config';
 import * as QSApp from '/imports/api/server/QRSFunctionsApp';
 import * as QSStream from '/imports/api/server/QRSFunctionsStream';
 import * as QSLic from '/imports/api/server/QRSFunctionsLicense';
@@ -28,19 +29,23 @@ Meteor.startup(function() {
 
 
 //
-// ─── SETUP QLIK SENSE AFTER A CLEAN INSTALL ─────────────────────────────────────
+// ─── SETUP QLIK SENSE AFTER A CLEAN QlIK SENSE INSTALL ─────────────────────────────────────
 //
 
-
-function initQlikSense() {
-    console.log('check if Qlik Sense has been properly setup for this MeteorQRS tool');
+//Check if Qlik Sense has been properly setup for this MeteorQRS tool
+async function initQlikSense() {
+    console.log('------------------------------------');
+    console.log('INIT QLIK SENSE');
+    console.log('------------------------------------');
     Meteor.call('updateLocalSenseCopy');
-    // QSExtensions.automaticUploadExtensions();
-    // QSExtensions.uploadExtensions();
 
-    // QSProxy.createVirtualProxies();
-    // QSStream.initSenseStreams();
-    // QSApp.uploadAndPublishTemplateApps();
+    QSLic.insertLicense();
+    await QSProxy.createVirtualProxies();
+    QSStream.initSenseStreams();
+    await QSApp.uploadAndPublishTemplateApps();
+    QSApp.setAppIDs();
+    // QSExtensions.automaticUploadExtensions(); //Does not work yet, maybe not even optimal to download and use untested extensions.
+    QSExtensions.uploadExtensions();
 }
 
 //
@@ -53,7 +58,7 @@ function removeGeneratedResources() {
     //     console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
     //     Meteor.call('removeGeneratedResources', {});
     // }, 0); //remove all logs directly at startup
-    if (Meteor.settings.private.automaticCleanUpGeneratedApps === "Yes") {
+    if (Meteor.settings.broker.automaticCleanUpGeneratedApps === "Yes") {
         Meteor.setInterval(function() {
             console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
             Meteor.call('removeGeneratedResources', {});
@@ -77,32 +82,32 @@ function optimizeMongoDB() {
 //
 
 
-function createNotificationListeners() {
-    //Create notification listener in Qlik sense https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Notification-Remove-Change-Subscription.htm
-    //console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
-    //console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
-    //console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');
+// function createNotificationListeners() {
+//     //Create notification listener in Qlik sense https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Notification-Remove-Change-Subscription.htm
+//     //console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
+//     //console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
+//     //console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');
 
-    try {
-        const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
-            headers: authHeaders,
-            params: { 'xrfkey': senseConfig.xrfkey },
-            data: Meteor.settings.private.notificationURL + '/apps'
-        })
+//     try {
+//         const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
+//             headers: authHeaders,
+//             params: { 'xrfkey': senseConfig.xrfkey },
+//             data: Meteor.settings.private.notificationURL + '/apps'
+//         })
 
-        const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
-                headers: authHeaders,
-                params: { 'xrfkey': senseConfig.xrfkey },
-                data: Meteor.settings.private.notificationURL + '/streams'
-            })
-            //console.log('Register notication success');
-            // //console.log('the result from sense register App notification was: ', resultApp);
-            // //console.log('the result from sense register Stream notification was: ', resultStream);
-    } catch (err) {
-        console.error('Create notification subscription in sense qrs failed', err);
-        // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
-    }
-}
+//         const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
+//                 headers: authHeaders,
+//                 params: { 'xrfkey': senseConfig.xrfkey },
+//                 data: Meteor.settings.private.notificationURL + '/streams'
+//             })
+//             //console.log('Register notication success');
+//             // //console.log('the result from sense register App notification was: ', resultApp);
+//             // //console.log('the result from sense register Stream notification was: ', resultStream);
+//     } catch (err) {
+//         console.error('Create notification subscription in sense qrs failed', err);
+//         // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);
+//     }
+// }
 
 //
 // ─── METEOR METHODS ─────────────────────────────────────────────────────────────

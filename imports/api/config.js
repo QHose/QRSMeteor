@@ -2,7 +2,9 @@ import { Mongo } from 'meteor/mongo';
 import { Random } from 'meteor/random';
 import _ from 'meteor/underscore';
 const _QIXSchema = require('/node_modules/enigma.js/schemas/qix/12.20.0/schema.json');
-export var _SSBIApp = ''; //will be set automatically after meteor server has uploaded the apps into Sense. 
+
+//will be set automatically after meteor server has uploaded the apps into Sense via uploadAndPublishTemplateApps() in QRSFunctionsApp. 
+export var _SSBIApp = '';
 export var _IntegrationPresentationApp = '';
 
 //This is the config that we need to make available on the client (the webpage)
@@ -13,7 +15,7 @@ if (Meteor.isClient) {
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
         "QIXSchema": _QIXSchema,
-        "SSBIApp": _SSBIApp,
+        "SSBIAppId": _SSBIApp,
         "IntegrationPresentationApp": _IntegrationPresentationApp
     };
 }
@@ -24,6 +26,7 @@ if (Meteor.isServer) {
     console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.private);
     import crypto from 'crypto';
     import fs from 'fs';
+    import { myQRS } from '/imports/api/server/QRSAPI';
     const bluebird = require('bluebird');
     const WebSocket = require('ws');
 
@@ -63,12 +66,12 @@ if (Meteor.isServer) {
         cert: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client.pem'),
     }
 
-    export var certicate_communication_options = {
+    export var configCerticates = {
         rejectUnauthorized: false,
         hostname: _senseConfig.SenseServerInternalLanIP,
         headers: {
             'x-qlik-xrfkey': _senseConfig.xrfkey,
-            'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
+            'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`, //`UserDirectory=INTERNAL;UserId=sa_repository` you need to give this user extra roles before this works
             'Content-Type': 'application/json'
         },
         key: _certs.key,
@@ -157,6 +160,7 @@ if (Meteor.isServer) {
     export const qlikHDRServer = 'http://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.port + '/' + _senseConfig.virtualProxy;
     export const qrsSrv = 'https://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.qrsPort;
 
+    export const qrs = new myQRS();
 
     function generateXrfkey() {
         return Random.hexString(16);

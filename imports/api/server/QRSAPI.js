@@ -5,12 +5,13 @@ import {
     http,
 } from 'meteor/meteor';
 
+
 //
 // ─── IMPORT CONFIG FOR QLIK SENSE QRS ───────────────────────────────────────────
 //
 
 
-import { certicate_communication_options, senseConfig, authHeaders, qrsSrv } from '/imports/api/config';
+import { configCerticates, senseConfig, authHeaders, qrsSrv } from '/imports/api/config';
 
 //
 // ─── INSTALL NPM MODULES ────────────────────────────────────────────────────────
@@ -23,47 +24,44 @@ import { certicate_communication_options, senseConfig, authHeaders, qrsSrv } fro
 
 export var myQRS = function myQRSMain() {
 
-    this.get = function(path, params = {}, data = {}) {
+    this.get = function get(path, params = {}, data = {}) {
         var endpoint = checkPath(path);
-        console.log('endpoint', endpoint)
+        console.log('QRS module received get request for endpoint', endpoint);
 
         // copy the params to one object
         var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
-        console.log('newParams', newParams)
         try {
             var response = HTTP.get(endpoint, {
-                npmRequestOptions: certicate_communication_options,
+                npmRequestOptions: configCerticates,
                 params: newParams,
                 data: {},
             });
             return response.data;
         } catch (err) {
-            console.error('HTTP GET FAILED FOR ' + endpoint, err);
+            var error = 'HTTP GET FAILED FOR ' + endpoint;
+            console.error(error);
+            throw new Meteor.Error(500, error);
         }
     };
 
-    this.post = function(path, data = {}, params = {}) {
+    this.post = function post(path, data = {}, params = {}) {
         var endpoint = checkPath(path);
-        console.log('endpoint', endpoint)
-        console.log('data', data)
 
         // copy the params to one object
         var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
-        console.log('newParams', newParams)
         try {
             var response = HTTP.post(endpoint, {
-                npmRequestOptions: certicate_communication_options,
+                npmRequestOptions: configCerticates,
                 params: newParams,
                 data: data,
             });
-            console.log('response', response)
             return response.data;
         } catch (err) {
             console.error('HTTP POST FAILED FOR ' + endpoint, err);
         }
     };
 
-    this.del = function(path, data = {}, params = {}) {
+    this.del = function del(path, data = {}, params = {}) {
         var endpoint = checkPath(path);
         console.log('endpoint', endpoint)
         console.log('data', data)
@@ -73,7 +71,7 @@ export var myQRS = function myQRSMain() {
         console.log('newParams', newParams)
         try {
             var response = HTTP.del(endpoint, {
-                npmRequestOptions: certicate_communication_options,
+                npmRequestOptions: configCerticates,
                 params: newParams,
                 data: data,
             });
@@ -84,7 +82,7 @@ export var myQRS = function myQRSMain() {
         }
     };
 
-    this.put = function(path, data = {}, params = {}) {
+    this.put = function put(path, data = {}, params = {}) {
         var endpoint = checkPath(path);
         console.log('endpoint', endpoint)
         console.log('data', data)
@@ -94,7 +92,7 @@ export var myQRS = function myQRSMain() {
         console.log('newParams', newParams)
         try {
             var response = HTTP.put(endpoint, {
-                npmRequestOptions: certicate_communication_options,
+                npmRequestOptions: configCerticates,
                 params: newParams,
                 data: data,
             });
@@ -110,8 +108,9 @@ export var myQRS = function myQRSMain() {
 function checkPath(path) {
     try {
         check(path, String);
-    } catch (err) { throw Error("Rootpath for QRS API can't be created, settings.json correct?") }
-
+    } catch (err) {
+        throw Error("QRS module can use path: " + path + " for the QRS API, settings.json correct?")
+    }
     return qrsSrv + path;
 }
 
