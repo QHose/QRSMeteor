@@ -46,6 +46,9 @@
         "automaticCleanUpGeneratedApps": "Yes",
         "automationBaseFolder": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\.automation"
     },
+    "security": {
+        "rulesToDisable": ["Stream", "CreateAppObjectsPublishedApp", "CreateApp", "ExportAppData", "StreamEveryoneAnonymous"]
+    },
     "sikka": {
         "captcha": {
             "siteKey": "",
