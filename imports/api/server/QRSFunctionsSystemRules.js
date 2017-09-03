@@ -4,13 +4,23 @@ import { Meteor } from 'meteor/meteor';
 import {
     qrs
 } from '/imports/api/config.js';
+import * as QSLic from '/imports/api/server/QRSFunctionsLicense';
 
-export function getSecurityRules() {
-    return qrs.get('/qrs/SystemRule');
-};
+export function getSecurityRules(name) {
+    return QSLic.getSystemRules(name);
+}
 
-createSecurityRules();
+export function disableDefaultSecurityRules() {
+    Meteor.settings.security.rulesToDisable.forEach(function(rule) {
+        console.log('rule', rule)
+
+        QSLic.getSystemRules(rule.name);
+        //var response = qrs.post('/qrs/SystemRule', rule);
+    });
+}
+
 export function createSecurityRules() {
+    console.log('createSecurityRules');
     var securityRules = [{
             "category": "Security",
             "type": "Custom",
@@ -69,17 +79,6 @@ export function createSecurityRules() {
         {
             "category": "Security",
             "type": "Custom",
-            "name": "Z_CONTRIBUTOR",
-            "rule": "user.environment.group=\"Contributor\" and  \nresource.app.HasPrivilege(\"read\")\nand resource.published =\"false\"",
-            "resourceFilter": "App*",
-            "actions": 37,
-            "comment": "Can create own sheets in predefined apps.",
-            "disabled": false,
-            "privileges": null
-        },
-        {
-            "category": "Security",
-            "type": "Custom",
             "name": "Z_AUDITOR",
             "rule": "user.environment.group=\"GLOBAL AUDITOR\"",
             "resourceFilter": "*",
@@ -95,7 +94,18 @@ export function createSecurityRules() {
             "rule": "resource.stream.HasPrivilege(\"read\") or (resource.resourcetype = \"App.Object\" and resource.published =\"true\" and resource.app.HasPrivilege(\"read\"))",
             "resourceFilter": "App*",
             "actions": 2,
-            "comment": "",
+            "comment": "The basis rule on which all others depend. Provide access to an app if you already have access to the stream.",
+            "disabled": false,
+            "privileges": null
+        },
+        {
+            "category": "Security",
+            "type": "Custom",
+            "name": "Z_CONTRIBUTOR",
+            "rule": "user.environment.group=\"Contributor\" and  \nresource.app.HasPrivilege(\"read\")\nand resource.published =\"false\"",
+            "resourceFilter": "App*",
+            "actions": 37,
+            "comment": "Extends the Z_OEM_APP_ACCESS (CONSUMER) rule. This user can also create own sheets in predefined apps. He can't create apps, only a developer can do this.",
             "disabled": false,
             "privileges": null
         },
@@ -106,7 +116,7 @@ export function createSecurityRules() {
             "rule": "user.environment.group = \"Developer\" and\n ((resource.owner = user and resource.stream.Empty()) or (resource.app.HasPrivilege(\"read\") and resource.published =\"false\" ))",
             "resourceFilter": "App*",
             "actions": 317,
-            "comment": "",
+            "comment": "Extends the Z_OEM_APP_ACCESS (CONSUMER) rule. This user can also create own apps and create sheets in apps (like a contributor). He can't publish.",
             "disabled": false,
             "privileges": null
         }

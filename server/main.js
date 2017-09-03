@@ -45,6 +45,8 @@ async function initQlikSense() {
         console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
         // QSLic.insertLicense();
         QSLic.insertUserAccessRule();
+        QSSystem.createSecurityRules();
+        QSSystem.disableDefaultSecurityRules();
         // await QSProxy.createVirtualProxies();
         // QSStream.initSenseStreams();
         // await QSApp.uploadAndPublishTemplateApps();
