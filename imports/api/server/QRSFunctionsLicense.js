@@ -71,8 +71,3 @@ export function getSystemRules(name) {
 
     return rules;
 }
-
-export function insertSecurityRules() {
-
-
-}

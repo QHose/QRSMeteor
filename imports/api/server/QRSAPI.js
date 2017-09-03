@@ -29,7 +29,7 @@ export var myQRS = function myQRSMain() {
         console.log('QRS module received get request for endpoint', endpoint);
 
         // copy the params to one object
-        var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
+        var newParams = Object.assign({ xrfkey: senseConfig.xrfkey }, params);
         try {
             var response = HTTP.get(endpoint, {
                 npmRequestOptions: configCerticates,
@@ -48,7 +48,7 @@ export var myQRS = function myQRSMain() {
         var endpoint = checkPath(path);
 
         // copy the params to one object
-        var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
+        var newParams = Object.assign({ xrfkey: senseConfig.xrfkey }, params);
         try {
             var response = HTTP.post(endpoint, {
                 npmRequestOptions: configCerticates,
@@ -67,7 +67,7 @@ export var myQRS = function myQRSMain() {
         console.log('data', data)
 
         // copy the params to one object
-        var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
+        var newParams = Object.assign({ xrfkey: senseConfig.xrfkey }, params);
         console.log('newParams', newParams)
         try {
             var response = HTTP.del(endpoint, {
@@ -88,7 +88,7 @@ export var myQRS = function myQRSMain() {
         console.log('data', data)
 
         // copy the params to one object
-        var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
+        var newParams = Object.assign({ xrfkey: senseConfig.xrfkey }, params);
         console.log('newParams', newParams)
         try {
             var response = HTTP.put(endpoint, {
