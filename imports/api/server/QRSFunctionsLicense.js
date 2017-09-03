@@ -12,16 +12,6 @@ import {
     qrs
 } from '/imports/api/config.js';
 
-//
-// ─── INSTALL NPM MODULES ────────────────────────────────────────────────────────
-//
-
-const fs = require('fs-extra');
-const path = require('path');
-const enigma = require('enigma.js');
-var QRS = require('qrs');
-var promise = require('bluebird');
-var request = require('request');
 var demoUserAccessRule = "SAAS DEMO - License rule to grant user access";
 
 // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-License-Add.htm
@@ -47,13 +37,12 @@ export function insertLicense() {
             // console.error('Stop license insertion, license for ' + lic.organization + ' is already included: ', lic.serial);
             // throw Error('You are trying to insert a license while the Qlik Sense is already licensed, please remove the existing one in the QMC');
         } catch (err) {
-            // lic did not already exist
+            // lic did not already exist.
         }
         var response = qrs.post('/qrs/license', newLicense, { control: Meteor.settings.private.LicenseControlNumber });
     }
 }
 
-insertUserAccessRule();
 export function insertUserAccessRule() {
     console.log('insert UserAccess Rule for all users');
     var licenseRule = {
@@ -70,20 +59,20 @@ export function insertUserAccessRule() {
         "disabledActions": ["useaccesstype"]
     }
     var ruleExist = getSystemRules(demoUserAccessRule);
-    if (ruleExist != null) {
+    if (typeof ruleExist[0] == 'undefined' || ruleExist.length === 0) {
+        console.log('Create a new user license rule since it did not exist.');
         var response = qrs.post('/qrs/SystemRule', licenseRule);
     }
 }
 
-
 export function getSystemRules(name) {
-    var rules = {};
-    if (name) {
-        var filter = { filter: "Name eq '" + name + "'" };
-        rules = qrs.get('/qrs/SystemRule', filter);
-    } else {
-        rules = qrs.get('/qrs/SystemRule');
-    }
+    var filter = name ? { filter: "Name eq '" + name + "'" } : null;
+    var rules = qrs.get('/qrs/SystemRule', filter);
 
-    console.log('rules', rules)
+    return rules;
+}
+
+export function insertSecurityRules() {
+
+
 }
