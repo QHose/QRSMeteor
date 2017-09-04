@@ -1,16 +1,16 @@
 <template name="nav">
   <div class="ui secondary pointing menu mainNavBar">
-    <a class="active item">
+    <a href="{{webIntegrationDemo}}" class="active item">
       EMBED QLIK SENSE
     </a>
-    <a class="item">
+    <a href="{{pathFor 'selfService'}}" class="item">
       SELF SERVICE
     </a>
-    <a class="item">
+    <a href="{{pathFor 'impress'}}" class="item">
       SAAS PROVISIONING
     </a>
-    <a class="item">
-     DEEP DIVE QLIK APIS
+    <a href="{{pathFor 'documentation'}}" class="item">
+     DOCUMENTATION
    </a>    
     <a  class="item" href="{{pathFor 'documentation'}}?tab=video">VIDEO LIBRARY</a>
    <!-- <div class="right menu">

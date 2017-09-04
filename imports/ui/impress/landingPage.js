@@ -5,8 +5,8 @@ var Cookies = require('js-cookie');
 const enigma = require('enigma.js');
 const qixschema = senseConfig.QIXSchema;
 var appId = senseConfig.IntegrationPresentationApp;
-var IntegrationPresentationSelectionSheet = Meteor.settings.public.IntegrationPresentationSelectionSheet; //'DYTpxv'; selection sheet of the slide generator
-var slideObject = Meteor.settings.public.IntegrationPresentationSlideObject;
+var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
+var slideObject = Meteor.settings.public.slideGenerator.dataObject;
 var intervalId = {};
 
 const config = {
@@ -20,7 +20,7 @@ const config = {
     }
 };
 
-Template.landingPage.onCreated(function() {
+Template.landingPage.onCreated(function () {
     //set a var so the sso ticket request page knows he has to login the real user and not some dummy user of step 4
     //after the user is redirected to the sso page, we put this var to false. in that way we can still request dummy users for step 4 of the demo
     // Session.setAuth('loginUserForPresentation', true);
@@ -45,20 +45,20 @@ function listCookies() {
     }
     return aString;
 }
-Template.presentationDimmer.onRendered(function() {
+Template.presentationDimmer.onRendered(function () {
     Template.instance().$('.dimmer')
         .dimmer('show')
 })
-Template.landingPage.onRendered(function() {
+Template.landingPage.onRendered(function () {
     //show a popup so the user can select whether he is technical or not...
     this.$('#userSelectPresentationModal')
         .modal({
             // observeChanges: true,
-            onDeny: function() {
+            onDeny: function () {
                 console.log('group has been set to TECHNICAL, we use this group to request a ticket in Qlik Sense. Using Section access we limit what a user can see. Now the iframe can be shown which tries to open the presentation virtual proxy');
                 Session.setAuth('groupForPresentation', 'TECHNICAL');
             },
-            onApprove: function() {
+            onApprove: function () {
                 Session.setAuth('groupForPresentation', 'GENERIC');
                 console.log('group has been set to GENERIC. This group is used in the ticket to limit section access (Rows)');
             }
@@ -72,27 +72,27 @@ Template.landingPage.onRendered(function() {
 
     Session.set('landingPageAlreadySeen', true);
 })
-Template.landingPage.onDestroyed(function() {
+Template.landingPage.onDestroyed(function () {
     Meteor.clearInterval(intervalId);
 })
 
 Template.landingPage.helpers({
-    authenticatedSlideGenerator: function() {
+    authenticatedSlideGenerator: function () {
         return Session.get('userLoggedInSense');
     },
-    userSelectedGroup: function() {
+    userSelectedGroup: function () {
         return Session.get('groupForPresentation');
     }
 })
 
 Template.landingPage.events({
-    'click #slideSorter': function(event) {
+    'click #slideSorter': function (event) {
         Cookies.set('showSlideSorter', 'true');
         window.open("/slideSorter"); //GO TO THE SLIDE Sorter in a new tab
         // Router.go('slideSorter'); 
     }
 })
-Template.slideGeneratorSelectionScreen.onRendered(function() {
+Template.slideGeneratorSelectionScreen.onRendered(function () {
     this.$('.screen')
         .transition({
             animation: 'fade in',
@@ -121,7 +121,7 @@ export function logoutCurrentSenseUserClientSide() {
         $.ajax({
             method: 'DELETE',
             url: RESTCALL
-        }).done(function(res) {
+        }).done(function (res) {
             //logging only
             call.action = 'Logout current Qlik Sense user'; //
             call.request = RESTCALL;
@@ -135,12 +135,12 @@ export function logoutCurrentSenseUserClientSide() {
     }
 }
 
-Template.selectSlide.onRendered(function() {
+Template.selectSlide.onRendered(function () {
     this.$('.ui.accordion')
         .accordion();
 })
 Template.selectSlide.helpers({
-    slideObjectURL: function() {
+    slideObjectURL: function () {
         return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.IntegrationPresentationProxy + '/single/?appid=' + appId + '&obj=' + slideObject;
     }
 })
