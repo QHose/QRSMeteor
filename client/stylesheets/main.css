@@ -4,12 +4,12 @@
 /*CSS declarations go here */
 
 .mainLandingImage {
+    /* max-width: 1400px; */
     background-image: url('images/bg_intro.jpg');
-    /* background-size: auto 100%; */
+    background-size: auto 400px;
     background-position: top center;
     background-repeat: no-repeat;
     text-align: left;
-    color: white !important;
 }
 
 .mainNavBar {
@@ -26,8 +26,28 @@
     flex-direction: column;
 }
 
+.landing .row {
+    margin-left: 0px !important;
+}
+
+.landing .row.selectRole {
+    margin-top: 60px;
+    color: white;
+}
+
+.landing .documentation.row {
+    position: absolute;
+    color: black;
+    top: 650px;
+    margin-left: 0px;
+}
+
 .landing>.footer {
     flex: 1;
+}
+
+.footer {
+    margin-top: 30px;
 }
 
 .ui.grid {
