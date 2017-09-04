@@ -8,6 +8,9 @@
         "virtualProxyClientUsage": "meteordev",                      
         "webIntegrationHost": "localhost",
         "webIntegrationDemoPort": 3030,
+        "facebook":{
+            "clientId": ""
+        },
         "SSBIApp": "7c4de83d-51f1-4ed0-a7c1-60414d9e1713",
         "SSBIAppSheetString": "7c4de83d-51f1-4ed0-a7c1-60414d9e1713/sheet/puEpZK/state/analysis",
         "IntegrationPresentationApp": "ee8f8905-f900-4557-9738-94e4e4be88a6",
@@ -32,6 +35,26 @@
         "isSecure": true,
         "engineHeaders": "UserDirectory=QLIKDEMOSAAS;UserId=qlik",
         "enginePort": 4747,
-        "proxyPort": 4243
+        "proxyPort": 4243,
+        "google": {
+            "clientId": "",
+            "secret": ""
+        },
+        "facebook":{
+            "clientId": "",
+            "secret": ""
+        },
+	"twitter": {
+            "clientId": "",
+            "secret": ""
+        },
+        "linkedin": {
+            "clientId": "",
+            "secret": ""
+        },
+        "github": {
+            "clientId": "",
+            "secret": ""
+        }
     }
 }
