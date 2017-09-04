@@ -1,16 +1,10 @@
-<template name="landingPage">
-    <div class="ui container">
+<template name="mainLandingPage">
+    <div class="ui container mainLandingPage">
      {{> nav }} 
-        <div class="ui two column centered grid">
-            <div class="column">
-             
-            </div>
-            <div class="four column centered row">
-                <div class="column"></div>
-                <div class="column"></div>
-            </div>
-        </div>{{> yield }} {{> footer }}
+        {{> yield }} 
+        
       </div>
+      {{> footer }}
 </template>
 
 

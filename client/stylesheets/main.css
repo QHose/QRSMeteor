@@ -3,6 +3,33 @@
 *
 /*CSS declarations go here */
 
+.mainLandingImage {
+    background-image: url('images/bg_intro.jpg');
+    /* background-size: auto 100%; */
+    background-position: top center;
+    background-repeat: no-repeat;
+    text-align: left;
+    color: white !important;
+}
+
+.mainNavBar {
+    margin-top: 0px !important
+}
+
+.mainNavBar a {
+    color: white;
+}
+
+.landing {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.landing>.footer {
+    flex: 1;
+}
+
 .ui.grid {
     margin-top: 0.2em;
 }
@@ -20,6 +47,7 @@
     /* your background color here */
     color: #fff/* your text color here */
 }
+
 
 /*.container {
     margin-top: 4em;

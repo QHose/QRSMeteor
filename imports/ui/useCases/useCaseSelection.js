@@ -10,28 +10,29 @@ Template.useCaseSelection.events({
 })
 
 Template.useCaseSelection.onRendered(function() {
-    this.$('.cards .card').css('visibility', 'hidden');
+    $('body').addClass('mainLandingImage');
+    // this.$('.cards .card').css('visibility', 'hidden');
 
-    this.$('.cards .card')
-        .transition({
-            animation: 'fade in',
-            reverse: 'auto', // default setting
-            interval: 800,
-            duration  : 2000
-        });
+    // this.$('.cards .card')
+    //     .transition({
+    //         animation: 'fade in',
+    //         reverse: 'auto', // default setting
+    //         interval: 800,
+    //         duration  : 2000
+    //     });
 
-      this.$('.special.cards .image').dimmer({
-        on: 'hover'
-    });
-    
+    //   this.$('.special.cards .image').dimmer({
+    //     on: 'hover'
+    // });
+
     if (localStorage.userRole) {
         this.$(`.description .dropdown-menu li a[data="${localStorage.userRole}"]`).parent().addClass('active')
-        // this.$(`.description .dropdown-menu li a[data="Business Analyst"]`).parent().addClass('active')
+            // this.$(`.description .dropdown-menu li a[data="Business Analyst"]`).parent().addClass('active')
     }
 
-    this.$('.dropdown-menu a').on('click', function(){
+    this.$('.dropdown-menu a').on('click', function() {
         role = $(this).attr("data")
-        // Session.set('userRole', role);
+            // Session.set('userRole', role);
         localStorage['userRole'] = role;
         // Set the active class
         $('.dropdown-menu li').removeClass('active')
@@ -65,12 +66,11 @@ Template.useCaseSelection.onRendered(function() {
     });
 })
 
+Template.useCaseSelection.onDestroyed(function() {
+    $('body').removeClass('mainLandingImage');
+});
+
 Template.useCaseSelection.helpers({
-    tasks: [
-        { text: 'This is task 1' },
-        { text: 'This is task 2' },
-        { text: 'This is task 3' },
-    ],
     userRole() {
         let role = setUserRole();
         return role;
@@ -82,12 +82,12 @@ Template.useCaseSelection.helpers({
 
 function setUserRole() {
     let role = 'Select a role'
-    // if (Session.get('userRole')) {
-    //     role = Session.get('userRole')
-    //     $('.dropdown-menu li').find(role).parent().addClass('active')
-    // } else {
-    //     Session.set('userRole', role);
-    // }         
+        // if (Session.get('userRole')) {
+        //     role = Session.get('userRole')
+        //     $('.dropdown-menu li').find(role).parent().addClass('active')
+        // } else {
+        //     Session.set('userRole', role);
+        // }         
     if (localStorage.userRole) {
         role = localStorage.userRole
     } else {
@@ -95,12 +95,13 @@ function setUserRole() {
     }
     return role;
 }
+
 function login(user) {
     console.log('login ', user, Meteor.userId());
     try {
 
         Meteor.call('simulateUserLogin', user, (error, result) => {
-            if(error) {
+            if (error) {
                 sAlert.error(error);
                 console.log(error);
             } else {
@@ -108,7 +109,7 @@ function login(user) {
                 sAlert.success(user + ' is now logged in into Qlik Sense');
             }
         })
-    } catch(err) {
+    } catch (err) {
         sAlert.error(err.message);
     }
 };
