@@ -1,25 +1,5 @@
-<template name="SSOLayout">
-    {{> sAlert}} {{> yield}}
-    {{> footer}}
-</template>
-<template name="ImpressLayout">
-    {{> ImpressNav}} {{> sAlert}} {{> yield}}
-    {{> impressFooter}}
-</template>
-<template name="SSBILayout">
-    {{> yield "nav"}} {{> sAlert}} 
-    <div class="ui relaxed padded stackable grid">
-        <div class="sixteen wide column">
-            <div class="ui three column stackable grid">
-                <div class="five wide column"> {{> yield "aside"}} </div>
-                <div class="eleven wide column"> {{> yield}}</div>
-            </div>
-        </div>
-    </div>
-    {{> SSBIFooter}}
-</template>
 <template name="layout">
-    <div class="ui relaxed very padded stackable grid">
+    <div class="ui relaxed grid container">
         <div class="one wide column">
         </div>
         <div class="fourteen wide column">
@@ -36,6 +16,28 @@
     {{> footer}}
 </template>
 
+
+
+<template name="SSOLayout">
+    {{> sAlert}} {{> yield}}
+    {{> footer}}
+</template>
+<template name="ImpressLayout">
+    {{> ImpressNav}} {{> sAlert}} {{> yield}}
+    <!-- {{> impressFooter}} -->
+</template>
+<template name="SSBILayout">
+    {{> yield "nav"}} {{> sAlert}} 
+    <div class="ui relaxed padded stackable grid">
+        <div class="sixteen wide column">
+            <div class="ui three column stackable grid">
+                <div class="five wide column"> {{> yield "aside"}} </div>
+                <div class="eleven wide column"> {{> yield}}</div>
+            </div>
+        </div>
+    </div>
+    {{> SSBIFooter}}
+</template>
 <template name="layoutDocumentation">
     {{> documentationNav}} {{> modals}} {{> sAlert}} {{> yield}}
     <div class="ui relaxed very padded stackable grid">
