@@ -1,59 +1,37 @@
 {
     "adminEmails": "mbj@qlik.com",
     "public": {
-        "host": "QLIK-AB0Q2URN5T",
+        "host": "integration.qlik.com",
         "proxyPort": 80,
-        "port": 81,
-        "virtualProxyClientUsage": "meteor",
-        "webIntegrationHost": "QLIK-AB0Q2URN5T",
+        "port": 443, 
+        "UDC": "OEM_HOST", 
+        "virtualProxyClientUsage": "meteordev",                      
+        "webIntegrationHost": "localhost",
         "webIntegrationDemoPort": 3030,
-        "StreamsToCreateAutomatically": ["API apps", "Templates", "Everyone", "QA", "TEST"],
-        "APIAppStreamName": "API apps",
-        "TemplateAppStreamName": "Templates",
-        "EveryoneAppStreamName": "Everyone"
-    },
-    "SSBI": {
-        "sheetId": "puEpZK"
-    },
-    "slideGenerator": {
-        "name": "Slide generator",
-        "stream": "API apps",
-        "selectionSheet": "DYTpxv",
-        "dataObject": "pskL",
-        "slideObject": "BbbV",
-        "virtualProxy": "presentationsso"
+        "SSBIApp": "7c4de83d-51f1-4ed0-a7c1-60414d9e1713",
+        "SSBIAppSheetString": "7c4de83d-51f1-4ed0-a7c1-60414d9e1713/sheet/puEpZK/state/analysis",
+        "IntegrationPresentationApp": "ee8f8905-f900-4557-9738-94e4e4be88a6",
+        "IntegrationPresentationSelectionSheet": "DYTpxv",
+        "IntegrationPresentationSortedDataObject": "pskL", 
+        "IntegrationPresentationSlideObject": "BbbV",
+		"IntegrationPresentationProxy": "presdev"		
     },
     "private": {
-        "certificatesDirectory": "C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates",
-        "SenseServerInternalLanIP": "QLIK-AB0Q2URN5T",
+        "host": "integration.qlik.com",
+        "port": 443, 
+        "certificatesDirectory": "C:\\Users\\mbj\\Documents\\GitHub\\QRSMeteor",
+        "notificationURL": "http://QLIKDEMOSAAS:80/updateSenseInfo",
+        "SenseServerInternalLanIP": "integration.qlik.com",        
         "useSSL": false,
         "passphrase": null,
+        "authentication": "header",
         "virtualProxy": "hdr",
         "headerKey": "hdr-usr",
+        "UDC": "OEM_HOST",        
+        "headerValue": "QLIKDEMOSAAS\\qlik",        
         "isSecure": true,
+        "engineHeaders": "UserDirectory=QLIKDEMOSAAS;UserId=qlik",
         "enginePort": 4747,
-        "qrsPort": 4242,
-        "proxyPort": 4243,
-        "license": {
-            "serial": "",
-            "name": "Martijn Biesbroek",
-            "organization": "Qlik"
-        },
-        "LicenseControlNumber": 456
-    },
-    "broker": {
-        "customerDataDir": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData",
-        "automaticCleanUpGeneratedApps": "Yes",
-        "automationBaseFolder": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\.automation"
-    },
-    "sikka": {
-        "captcha": {
-            "siteKey": "",
-            "check": "",
-            "secret": "6dafdsfasdfasdfadsfdsafh"
-        },
-        "rateLimits": {
-            "perIp": 260
-        }
+        "proxyPort": 4243
     }
 }
