@@ -9,11 +9,10 @@ import { insertTemplateAndDummyCustomers } from '/imports/ui/generation/OEMPartn
 import './SSBI.html';
 
 const server = 'http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage;
-console.log('server', server)
 const QMCUrl = server + '/qmc';
 const hubUrl = server + '/hub';
-const sheetUrl = server + '/sense/app/' + config.SSBIAppId;
-const appUrl = server + '/' + config.SSBIAppId + "/sheet/" + Meteor.settings.SSBI.sheetId + "/state/analysis";
+const sheetUrl = server + '/sense/app/' + Meteor.settings.public.SSBIApp;
+const appUrl = server + '/sense/app/' + Meteor.settings.public.SSBIAppSheetString;
 
 
 Template.SSBISenseApp.helpers({
@@ -122,26 +121,27 @@ function login(user) {
 
         var URLtoOpen = Session.get('appUrl');
         console.log('login: the url to open from session is: ', URLtoOpen);
-        Meteor.call('simulateUserLogin', user, (error, result) => {
-            if (error) {
-                sAlert.error(error);
-                console.log(error);
-            } else {
-                console.log('All other users logged out, and we inserted the new user ' + user + ' in the local database');
-                Session.set('loadingIndicator', '');
-                refreshIframe(URLtoOpen);
-                sAlert.success(user + ' is now logged in into Qlik Sense');
-            }
-        })
-    } catch (err) {
-        console.error(err);
-        sAlert.error(err.message);
-    }
-};
+            Meteor.call('simulateUserLogin', user, (error, result) => {
+                if (error) {
+                    sAlert.error(error);
+                    console.log(error);
+                } else {
+                    console.log('All other users logged out, and we inserted the new user ' + user + ' in the local database');
+                    Session.set('loadingIndicator', '');                    
+                    refreshIframe(URLtoOpen);
+                    sAlert.success(user + ' is now logged in into Qlik Sense');
+                }
+            })
+        }
+        catch (err) {
+            console.error(err);
+            sAlert.error(err.message);
+        }
+    };
 
-function refreshIframe(URLtoOpen) {
-    Session.set('appUrl', URLtoOpen);
-    Session.set('loadingIndicator', 'loading');
-    console.log('function refresh Iframe,  url', URLtoOpen);
-    Session.set('loadingIndicator', '');
-};
+    function refreshIframe(URLtoOpen) {
+        Session.set('appUrl', URLtoOpen);
+        Session.set('loadingIndicator', 'loading');
+        console.log('function refresh Iframe,  url', URLtoOpen);
+        Session.set('loadingIndicator', '');
+    };

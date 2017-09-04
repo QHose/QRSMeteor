@@ -83,7 +83,7 @@ Template.OEMPartner.events({
                 Session.set('loadingIndicator', '');
             } else {
                 Session.set('loadingIndicator', '');
-                Session.set('currentUser', null);
+                Session.set('currentUser',null);
                 sAlert.success("Qlik Sense has been cleaned up: we have removed all previously provisioned streams and apps");
             }
         });
@@ -116,7 +116,7 @@ Template.OEMPartner.events({
         event.preventDefault();
         insertTemplateAndDummyCustomers();
         sAlert.success('We have pre-selected some fictitious customers. Which apps will you provide your customers?');
-        // Session.setAuth('currentStep', 2);
+        Session.setAuth('currentStep', 2);
     },
     'click .goToStep3' (event) {
         if (TemplateApps.find().count()) {
@@ -139,7 +139,7 @@ export function insertTemplateAndDummyCustomers() {
 
     // const templateAppId = Meteor.settings.public.templateAppId;
     // console.log('Insert insertTemplateAndDummyCustomers, with templateAppId', templateAppId);
-
+    
 
     // TemplateApps.insert({
     //     name: "My first template",

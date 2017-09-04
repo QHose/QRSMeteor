@@ -20,7 +20,7 @@
         reloadApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L119",
     };
 
-    if (Meteor.isClient) {
+    if(Meteor.isClient) {
         // console.log('Setup generic helper functions, for functions every template needs');
         Template.registerHelper('formatDate', function(date) {
             return moment(date)
@@ -162,7 +162,7 @@
         });
 
         //Integration presentation Iframe selector
-        var appId = senseConfig.IntegrationPresentationApp;
+        var appId = Meteor.settings.public.IntegrationPresentationApp;
         var IntegrationPresentationSelectionSheet = Meteor.settings.public.IntegrationPresentationSelectionSheet; //'DYTpxv'; selection sheet of the slide generator
         var proxy = Meteor.settings.public.IntegrationPresentationProxy;
         Template.registerHelper('IFrameURLChapterSelection', function() {
@@ -172,9 +172,9 @@
         Template.registerHelper('authenticatedSlideGenerator', function() {
             return Session.get('authenticatedSlideGenerator');
         });
-
+        
         Template.registerHelper('shrinkForSlideSorter', function() {
-            return Cookies.get('showSlideSorter') === "true" ? "shrink" : ""; //
+            return Cookies.get('showSlideSorter') === "true" ? "shrink" : "";//
         });
 
         Template.registerHelper('userSelectedPresentationType', function() {
@@ -229,7 +229,7 @@
         });
 
         export function freshEnvironment() {
-            if (!Customers.find().count() && !TemplateApps.find().count()) {
+            if(!Customers.find().count() && !TemplateApps.find().count()) {
                 // Session.set('currentStep', 0);
                 return true
             }
@@ -268,22 +268,22 @@
             // console.log('the current step session', Session.get('currentStep'));//
 
             //step 0: fresh/resetted environment
-            if (freshEnvironment()) {
+            if(freshEnvironment()) {
                 return 0
             }
             //step 1 insert customers
-            else if (Session.get('currentStep') === 1) {
+            else if(Session.get('currentStep') === 1) {
                 Router.go('users');
                 return 1
             }
             //step 2 there are customers, but no template
-            else if (
+            else if(
                 // (Customers.find().count() && !TemplateApps.find().count()) &&
                 Session.get('currentStep') === 2) {
                 return 2
             }
             //step 3
-            else if (
+            else if(
                 // Customers.find().count() && 
                 // TemplateApps.find().count() && 
                 Session.get('currentStep') === 3 &&
@@ -292,14 +292,14 @@
                 return 3
             }
             //step 4
-            else if (
+            else if(
                 Session.get('currentStep') === 4
                 // &&
                 // Customers.find().count() &&
                 // TemplateApps.find().count()
             ) {
                 return 4;
-            } else if (Session.equals('loadingIndicator', 'loading')) {
+            } else if(Session.equals('loadingIndicator', 'loading')) {
                 return;
             } else {
                 Session.set('currentStep', 3);
@@ -308,7 +308,7 @@
         }
 
         Template.registerHelper('generationFinished', function() {
-            return (Session.equals('loadingIndicator', 'loading') || Session.get('generated?'));
+            return(Session.equals('loadingIndicator', 'loading') || Session.get('generated?'));
         });
 
         Template.registerHelper('readyToTestSSO', function() {

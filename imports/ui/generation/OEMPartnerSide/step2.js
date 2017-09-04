@@ -9,14 +9,14 @@ import './step2.html';
 
 Template.step2.helpers({
     appsInTemplateStream() {
-        return Apps.find({ "stream.name": Meteor.settings.public.TemplateAppStreamName });
+        return Apps.find({ "stream.name": "Templates" });
     },
 })
 
 Template.step2.onRendered(function() {
     const templateAppsHandle = Meteor.subscribe('templateApps', { //http://stackoverflow.com/questions/28621132/meteor-subscribe-callback
         onReady: function() {
-
+        	
         },
         onError: function() { console.log("onError", arguments); }
     });

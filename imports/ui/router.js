@@ -212,14 +212,9 @@ Router.route('/SSO', {
 });
 
 //SLIDES FOR THE SAAS AUTOMATION INTRODUCTION (/GENERATION)
-// Router.route('/impress', {
-//     template: 'impress',
-//     layoutTemplate: 'SSOLayout'
-// });
-Router.route('/impress', function() {
-    // this.render('ImpressNav', { to: 'nav' });
-    this.layout('ImpressLayout');
-    this.render('impress');
+Router.route('/impress', {
+    template: 'impress',
+    layoutTemplate: 'SSOLayout'
 });
 
 //users for the slide generator have their own virtual proxy redirect path
@@ -243,6 +238,7 @@ Router.route('/slides', {
     layoutTemplate: 'presentationLayout'
 });
 
+
 Router.route('/test', {
     template: 'slideSorter',
     layoutTemplate: 'presentationLayout'
@@ -253,24 +249,26 @@ Router.route('/slideSorter', {
     layoutTemplate: 'presentationLayout'
 });
 
+
 //START THE SLIDE SHOW
 Router.route('/slideGenerator', {
     template: 'ppt_integrationMain',
     layoutTemplate: 'presentationLayout'
 });
 
+
+
 Router.route('/useCaseSelection', function() {
     this.layout('oneColumnCenteredLayout');
     this.render('useCaseSelection');
 });
 
+
+
 Router.route('/selfService', function() {
-    // this.layout('regionLayout');
-    this.layout('SSBILayout');
+    this.layout('regionLayout');
     this.render('SSBINav', { to: 'nav' });
-    // this.render('GeneralNav', { to: 'nav' });
     this.render('SSBIUsers', { to: 'aside' });
-    // this.render('SSBIFooter', { to: 'footer' });
     this.render('SSBISenseApp');
 });
 

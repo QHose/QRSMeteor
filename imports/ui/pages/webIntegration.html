@@ -18,7 +18,7 @@
         <img class="ui medium right floated image" data-action="zoom" src="images/capabilities API - DIV tag Saas platform to proxy.png">
         <div class="ui divider"></div>
         <h4 class="ui header">Options to integrate</h4>
-        <p>There are multiple <a href="#" class="webIntegrationMindMap">ways</a> to integrate Qlik Sense into your website. You can design apps and charts upfront or generate them on the fly. Our <a href="https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/Dev-Hub/Content/Overview/dev-hub-startpage.htm">development hub</a> or <a href="http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Plugins/Content/GettingStarted/GettingStarted.htm">Visual Studio plugin </a> help generate the code for you. See an example flow using DIV/javascript integration on the right).</p>
+        <p>There are multiple ways to integrate Qlik Sense into your website. You can design apps and charts upfront or generate them on the fly. Our <a href="https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/Dev-Hub/Content/Overview/dev-hub-startpage.htm">development hub</a> or <a href="http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Plugins/Content/GettingStarted/GettingStarted.htm">Visual Studio plugin </a> help generate the code for you. See an example flow using DIV/javascript integration on the right).</p>
         <DIV class="center aligned column">
             <DIV class="ui mini buttons">
                 <!-- <a href="#" class="webIntegrationMindMap ui button">Mindmap</a> -->
@@ -30,14 +30,18 @@
         <h4 class="ui header">Videos</h4> {{>webVideos}}
     </DIV>
 
+    <div class="ui container segment">
         {{>webIntegrationMindMap}}
+    </div>
 </template>
 <template name="webVideos">
+    <!-- <DIV class="ui segment"> -->
     <div class="ui three column centered grid">
         <DIV class="column"> {{> videoWebIntroduction}}</DIV>
         <DIV class="column">{{> videoWebExtended}}</DIV>
         <DIV class="column">{{> videoWebWorkshop}}</DIV>
     </DIV>
+    <!-- </DIV> -->
 </template>
 <template name="videoWebIntroduction">
     <h4 class="ui header">Web integration overview (1M)</h4>
@@ -67,7 +71,7 @@
     </DIV>
 </template>
 <template name="webIntegrationMindMap">
-    <DIV class="ui modal webIntegrationMindMap" style="height: 800px;">
+    <DIV class="ui modal webIntegrationMindMap">
         <DIV class="ui icon message">
             <img class="icon" src="images/API.png">
             <DIV class="content">

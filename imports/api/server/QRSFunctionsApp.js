@@ -1,126 +1,22 @@
-import {
-    Meteor
-} from 'meteor/meteor';
-import {
-    http
-} from 'meteor/meteor';
-import {
-    Apps,
-    TemplateApps,
-    GeneratedResources
-} from '/imports/api/apps';
+import { Meteor } from 'meteor/meteor';
+import { http } from 'meteor/meteor';
+import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
 import * as QSStream from '/imports/api/server/QRSFunctionsStream';
-import {
-    gitHubLinks
-} from '/imports/ui/UIHelpers';
+import { gitHubLinks } from '/imports/ui/UIHelpers';
 
 //import meteor collections
-import {
-    Streams
-} from '/imports/api/streams';
-import {
-    Customers
-} from '/imports/api/customers';
+import { Streams } from '/imports/api/streams';
+import { Customers } from '/imports/api/customers';
 
-import {
-    createVirtualProxies
-} from '/imports/api/server/QPSFunctions';
-
-
-//import config for Qlik Sense QRS and Engine API//
-import {
-    qlikHDRServer, // Qlik sense QRS endpoint via header authentication
-    senseConfig,
-    enigmaServerConfig,
-    authHeaders,
-    qrsSrv,
-    qrs,
-    QRSconfig,
-    _SSBIApp,
-    configCerticates,
-    _IntegrationPresentationApp
-} from '/imports/api/config.js';
-import {
-    APILogs,
-    REST_Log
-} from '/imports/api/APILogs';
+//import config for Qlik Sense QRS and Engine API
+import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
+import { APILogs, REST_Log } from '/imports/api/APILogs';
 import lodash from 'lodash';
 _ = lodash;
 
-//
-// ─── INSTALL NPM MODULES ────────────────────────────────────────────────────────
-//
-const path = require('path');
-const fs = require('fs-extra');
-const enigma = require('enigma.js');
-// var QRS = require('qrs');
-var promise = require('bluebird');
-var request = require('request');
-
-//
-// ─── UPLOAD APPS FOR THE INITIAL SETUP OF QLIK SENSE ─────────────────────────
-//
-
-
-// UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM
-export async function uploadAndPublishTemplateApps() {
-    console.log('------------------------------------');
-    console.log('uploadAndPublishTemplateApps');
-    console.log('------------------------------------');
-    var newFolder = path.join(Meteor.settings.broker.automationBaseFolder, 'apps');
-    console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder "' + newFolder + '" and upload them to Qlik Sense.');
-
-    //GET THE ID OF THE IMPORTANT STREAMS (streams that QRSMeteor needs)
-    var everyOneStreamId = QSStream.getStreamByName(Meteor.settings.public.EveryoneAppStreamName).id;
-    var templateStreamId = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName).id;
-    var APIAppsStreamID = QSStream.getStreamByName(Meteor.settings.public.APIAppStreamName).id;
-    try {
-        check(newFolder, String);
-        check(everyOneStreamId, String);
-        check(templateStreamId, String);
-        check(APIAppsStreamID, String);
-    } catch (err) {
-        console.error('You did not specify the templateAppsFrom, everyone, api apps or template stream name in the settings.json file?');
-        throw new Meteor.Error('Missing Settings', 'You did not specify the everone, api apps or template stream name in the settings.json file?');
-    }
-
-    // LOAD ALL SENSE APPS IN FOLDER
-    var appsInFolder = await fs.readdir(newFolder);
-
-    // FOR EACH APP FOUND: PUBLISH IT    
-    return await Promise.all(appsInFolder.map(async(QVF) => {
-        try {
-            //GET THE NAME OF THE APP AND CREATE A FILEPATH
-            var appName = QVF.substr(0, QVF.indexOf('.'));
-            var filePath = path.join(newFolder, QVF);
-
-            //ONLY UPLOAD APPS IF THEY DO NOT ALREADY EXIST
-            if (!getApps(appName).length) {
-                //UPLOAD THE APP, GET THE APP ID BACK
-                var appId = await uploadApp(filePath, appName);
-
-                //BASED ON THE APP WE WANT TO PUBLISH IT INTO A DIFFERENT STREAM                      
-                if (appName === 'SSBI') { //should be published in the everyone stream
-                    _SSBIApp = appId; // for the client side HTML/IFrames etc.                                
-                    publishApp(appId, appName, everyOneStreamId);
-                } else if (appName === 'Sales') { //THIS ONE NEEDS TO BE COPIED AND PUBLISHED INTO 2 STREAMS: AS TEMPLATE AND FOR THE EVERYONE STREAM.
-                    publishApp(appId, appName, everyOneStreamId);
-                    var copiedAppId = copyApp(appId, appName);
-                    publishApp(copiedAppId, appName, templateStreamId);
-                } else if (appName === 'Slide generator') {
-                    _IntegrationPresentationApp = appId,
-                        publishApp(appId, appName, APIAppsStreamID);
-                } else {
-                    //Insert into template apps stream
-                    publishApp(appId, appName, templateStreamId);
-                }
-            } else { console.log('App ' + appName + ' already exists in Qlik Sense') };
-        } catch (err) {
-            console.error(err);
-            throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
-        }
-    }))
-}
+//install NPM modules
+var fs = require('fs');
+var qsocks = require('qsocks'); //pls now use enigmaJS instead
 
 export function generateStreamAndApp(customers, generationUserId) {
     // console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
@@ -134,27 +30,7 @@ export function generateStreamAndApp(customers, generationUserId) {
     };
 };
 
-export function setAppIDs(params) {
-    console.log('------------------------------------');
-    console.log('GET APP IDs');
-    console.log('------------------------------------');
-    try {
-        var slideGeneratorApps = getApps(Meteor.settings.slideGenerator.name, Meteor.settings.slideGenerator.stream);
-        var SSBIApps = getApps(Meteor.settings.slideGenerator.name, Meteor.settings.slideGenerator.stream);
-        if (slideGeneratorApps.length > 1) {
-            throw new Error('Can not automatically set the app ID for the slide generator. You have one but you have multiple slide generator apps under the name ' + Meteor.settings.slideGenerator.name + ' in the stream ' + Meteor.settings.slideGenerator.stream);
-        }
-        senseConfig.IntegrationPresentationApp = slideGeneratorApps[0].id;
-        console.log('The slide generator app id has been set to ', senseConfig.IntegrationPresentationApp);
-    } catch (err) {
-        // console.error(err)
-        throw new Error('The slideGenerator app can not be found in Qlik sense under the name ' + Meteor.settings.slideGenerator.name + ' in the stream ' + Meteor.settings.slideGenerator.stream);
-    }
-}
-
-
 function generateAppForTemplate(templateApp, customer, generationUserId) {
-    console.log('--------------------------GENERATE APPS FOR TEMPLATE');
     // console.log(templateApp);
     // console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
     const call = {};
@@ -164,10 +40,9 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
     REST_Log(call, generationUserId);
 
     try {
-        var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists 
-        var customerDataFolder = createDirectory(customer.name); //for data like XLS/qvd specific for a customer
+        var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists    
         var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
-        var result = reloadAppAndReplaceScriptviaEngine(newAppId, templateApp.name, streamId, customer, customerDataFolder, '', generationUserId);
+        var result = reloadAppAndReplaceScriptviaEngine(newAppId, '', generationUserId);
         var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
 
         //logging only
@@ -176,116 +51,99 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
         call.request = templateApp.name + ' has been created and reloaded with data from the ' + customer.name + ' database';
         REST_Log(call, generationUserId);
         // console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
-        GeneratedResources.insert({
-            'generationUserId': generationUserId,
-            'customer': customer.name,
-            'streamId': streamId,
-            'appId': newAppId
-        });
     } catch (err) {
         console.error(err);
         throw new Meteor.Error('Generation failed', 'The server has an internal error, please check the server command logs');
     }
+    GeneratedResources.insert({
+        'generationUserId': generationUserId,
+        'customer': customer.name,
+        'streamId': streamId,
+        'appId': newAppId
+    });
+    // Meteor.call('updateLocalSenseCopy');
     return;
 };
 
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
-//source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
-async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, customer, customerDataFolder, scriptReplace, generationUserId) {
-    console.log('--------------------------REPLACE SCRIPT AND RELOAD APP');
-    check(appId, String);
-    check(customer.name, String);
-    check(customerDataFolder, String);
-    check(generationUserId, String);
+async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generationUserId) {
+    // console.log('server: QSSOCKS reloadAppviaEngine');
 
-    //set the app ID to be used in the enigma connection to the engine API
-    var config = Object.assign({}, enigmaServerConfig);
-    config.appId = appId;
+    //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
+    var scriptMarker = '§dummyDatabaseString§';
+    var _global = {};
 
-    try {
-        //connect to the engine
-        var qix = await enigma.getService('qix', config);
-        var call = {};
-        call.action = 'Connect to Qlik Sense';
-        call.request = 'Connect to Engine API (using Enigma.js) using an appId: ' + appId;
-        call.url = gitHubLinks.replaceAndReloadApp;
-        REST_Log(call, generationUserId);
+    engineConfig.appname = appId; //(String) Scoped connection to app. see https://github.com/mindspank/qsocks
+    // console.log('Connect to Engine with a new appname parameter when you call global,openDoc: ', engineConfig.appname);
+    var call = {};
+    call.action = 'Connect to Qlik Sense Engine API';
+    call.request = 'Connect to Engine (using EnigmaJS) with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
+    call.url = gitHubLinks.replaceAndReloadApp;
+    REST_Log(call, generationUserId);
 
-        try {
-            //create folder connection            
-            var qConnectionId = await qix.app.createConnection({
-                "qName": customer.name,
-                "qType": "folder",
-                "qConnectionString": customerDataFolder
-            })
-            console.log('created folder connection: ', qConnectionId);
-        } catch (error) {
-            console.info('No issue, existing customer so his data folder connection already exists', error);
-        }
+    //use ES7 await function so this code will run in synchronous mode
+    return await qsocks.Connect(engineConfig)
+        .then(function(global) {
+            // console.log('connected to Qsocks');
+            _global = global;
+            return global.openDoc(appId, '', '', '', true) //global.openDoc(appId), this code opens the app without data, that is faster!
+        })
+        .then(function(doc) {
+            // console.log('** getAppsViaEngine, QSocks opened and now tries to set the script for appId: ', appId);
+            return doc.getScript()
+                .then(function(script) {
+                    // console.log('get Script success, ', script);
 
-        //get the script
-        console.log('get script');
-        var script = await qix.app.getScript();
-        var call = {};
-        call.action = 'Get data load script';
-        call.url = gitHubLinks.getScript;
-        call.request = 'We extracted the following load script from the app';
-        call.response = script;
-        REST_Log(call, generationUserId);
-
-        //set the new script
-        console.log('set script');
-        var call = {};
-        call.response = await qix.app.setScript(replaceScript(script)) //we now just include the old script in this app
-        call.action = 'Insert customer specific data load script for its database';
-        call.url = gitHubLinks.setScript;
-        call.request = 'The script of the app has been replaced with a customer specific one. Normally you would replace the database connection for each customer. Or you can insert a customer specific script to enable customization per customer. ';
-        REST_Log(call, generationUserId);
-
-        //reload the app
-        var call = {};
-        call.response = await qix.app.doReload()
-        call.action = 'Reload the app';
-        call.url = gitHubLinks.reloadApp;
-        call.request = 'Has the app been reloaded with customer specific data?';
-        REST_Log(call, generationUserId);
-
-        //save the app
-        var call = {};
-        call.action = 'Save app'
-        call.url = gitHubLinks.saveApp;
-        call.request = 'App with GUID ' + appId + ' has been saved to disk';
-        REST_Log(call, generationUserId);
-        await qix.app.doSave();
-
-        // //publish the app, must be done via QRS API (depreciated)
-        // // console.log('publish app config', publishObj);
-        // call.response = await qix.app.publish(streamId, newAppName);
-        // call.action = 'Publish app';
-        // call.request = 'qix.app.publish({ qAppId: appId, qName: newAppName, qStreamId: streamId })';
-        // call.url = gitHubLinks.publishApp;
-        REST_Log(call, generationUserId);
-    } catch (error) {
-        console.error('error in reloadAppAndReplaceScriptviaEngine via Enigma.JS, did you used the correct schema definition in the settings.json file?', error);
-    }
-
-    function replaceScript(script) {
-        //var scriptMarker = '§dummyDatabaseString§';
-        // if you want to replace the database connection per customer use the script below.
-        //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
-        //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
-        return script;
-    }
+                    var call = {};
+                    call.action = 'Get data load script';
+                    call.url = gitHubLinks.getScript;
+                    call.request = 'We extracted the following script from the app: ' + script;
+                    REST_Log(call, generationUserId);
+                    // if you want to replace the database connection per customer use the script below.
+                    //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
+                    //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
+                    return doc.setScript(script) //we now just include the old script in this app
+                        .then(function(result) {
+                            var call = {};
+                            call.action = 'Insert customer specific data load script for its database';
+                            call.url = gitHubLinks.setScript;
+                            call.request = 'The script of the app has been replaced with a customer specific one. Normally you would replace the database connection for each customer. Or you can insert a customer specific script to enable customization per customer. ';
+                            REST_Log(call, generationUserId);
+                            // console.log('Script replaced');
+                            return doc;
+                        })
+                });
+        })
+        .then(function(doc) {
+            return doc.doReload()
+                .then(function(result) {
+                    var call = {};
+                    call.action = 'Reload the app';
+                    call.url = gitHubLinks.reloadApp;
+                    call.request = 'Has the app been reloaded with customer specific data?';
+                    call.response = result;
+                    REST_Log(call, generationUserId);
+                    // console.log('Reload : ' + result);
+                    return doc.doSave()
+                        .then(function(result) {
+                            var call = {};
+                            call.action = 'Save app'
+                            call.url = gitHubLinks.saveApp;
+                            call.request = 'App with GUID ' + appId + ' has been saved to disk';
+                            REST_Log(call, generationUserId);
+                            // console.log('Save : ', result);
+                            _global.connection.close();
+                            return doc;
+                        });
+                })
+        })
+        .catch((error) => {
+            console.error('ERROR while reloading the new app: ', error);
+            throw new Meteor.error(error);
+        });
 }
 
-function createDirectory(customerName) {
-    const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
-    fs.ensureDir(dir, err => {
-        console.error(err) // => null
-    });
-    return dir;
-}
 
 function checkCustomersAreSelected(customers) {
     if (!customers.length) { // = 0
@@ -293,21 +151,15 @@ function checkCustomersAreSelected(customers) {
     }
 };
 
-// CHECK IF SELECTED TEMPLATE APP EXISTS IN QLIK SENSE
-//These are the apps that the OEM partner has in his database, but do they still exists on the qliks sense side?
 function checkTemplateAppExists(generationUserId) {
-    var templateApps = TemplateApps.find({
-            'generationUserId': Meteor.userId()
-        })
+    //These are the apps that the OEM partner has in his database, but do they still exists on the qliks sense side?
+    var templateApps = TemplateApps.find({ 'generationUserId': Meteor.userId() })
         .fetch();
     if (templateApps.length === 0) { //user has not specified a template
         throw new Meteor.Error('No Template', 'user has not specified a template for which apps can be generated');
     }
 
     currentAppsInSense = getApps();
-    if (!currentAppsInSense) {
-        throw new Meteor.Error('No apps have been received from Qlik Sense. Therefore you have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
-    }
     _.each(templateApps, function(templateApp) {
         var templateFound = _.some(currentAppsInSense, ['id', templateApp.id]);
 
@@ -320,58 +172,22 @@ function checkTemplateAppExists(generationUserId) {
     return templateApps;
 };
 
-//
-// ─── UPLOAD APP ─────────────────────────────────────────────────────────────────
-//
-
-
-async function uploadApp(filePath, appName) {
-    console.log('Upload app: ' + appName + ' from path: ' + filePath);
-    return await new Promise(function(resolve, reject) {
-        var formData = {
-            my_file: fs.createReadStream(filePath)
-        };
-
-        request.post({
-            url: qlikHDRServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
-            headers: {
-                'Content-Type': 'application/vnd.qlik.sense.app',
-                'hdr-usr': senseConfig.headerValue,
-                'X-Qlik-xrfkey': senseConfig.xrfkey
-            },
-            formData: formData
-        }, function(error, res, body) {
-            if (!error) {
-                var appId = JSON.parse(body).id;
-                console.log('Uploaded "' + appName + '.qvf" to Qlik Sense and got appID: ' + appId);
-                resolve(appId);
-            } else {
-                console.error(error);
-                reject(error);
-            }
-        });
-    });
-}
-//
-// ─── COPYAPP ────────────────────────────────────────────────────────────────────
-//
-
 
 export function copyApp(guid, name, generationUserId) {
     check(guid, String);
     check(name, String);
-    // console.log('QRS Functions copy App, copy the app id: ' + guid + ' to app with name: ', name);
-    const call = {};
+    // console.log('QRS Functions Appp, copy the app id' + guid + 'to app with name: ', name);
 
     try {
-        call.request = qrsSrv + '/qrs/app/' + guid + '/copy';
+        const call = {};
+        call.action = 'Copy app';
+        call.request = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy'
+        call.url = gitHubLinks.copyApp;
         call.response = HTTP.post(call.request, {
-            'npmRequestOptions': configCerticates,
-            params: { 'xrfkey': senseConfig.xrfkey, "name": name },
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey, "name": name }, //probably a redundant name here...
             data: {}
-        });
-
-
+        })
         REST_Log(call, generationUserId);
         var newGuid = call.response.data.id;
         // console.log('Step 2: the new app id is: ', newGuid);
@@ -379,23 +195,14 @@ export function copyApp(guid, name, generationUserId) {
         return newGuid;
     } catch (err) {
         console.error(err);
-        call.action = 'Copy app FAILED';
-        call.response = err.message;
-        REST_Log(call, generationUserId);
         throw new Meteor.Error('Copy app for selected customers failed', err.message);
     }
 };
 
-//
-// ─── CHECKSTREAMSTATUS ──────────────────────────────────────────────────────────
-//
-
 
 function checkStreamStatus(customer, generationUserId) {
     // console.log('checkStreamStatus for: ' + customer.name);
-    var stream = Streams.findOne({
-        name: customer.name
-    }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
+    var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
     var streamId = '';
     if (stream) {
         // console.log('Stream already exists: ', stream.id);
@@ -411,344 +218,192 @@ function checkStreamStatus(customer, generationUserId) {
 }
 
 
-// export function getAppsViaEngine() {
-//     // console.log('server: QSSOCKS getApps');
-//     return qsocks.Connect(engineConfig)
-//         .then(function(global) {
-//             //We can now interact with the global class, for example fetch the document list.
-//             //qsocks mimics the Engine API, refer to the Engine API documentation or the engine api explorer for available methods.
-//             global.getDocList()
-//                 .then(function(docList) {
-//                     return docList;
-//                 });
+export function getAppsViaEngine() {
+    // console.log('server: QSSOCKS getApps');
+    return qsocks.Connect(engineConfig)
+        .then(function(global) {
+            //We can now interact with the global class, for example fetch the document list.
+            //qsocks mimics the Engine API, refer to the Engine API documentation or the engine api explorer for available methods.
+            global.getDocList()
+                .then(function(docList) {
+                    return docList;
+                });
 
-//         });
-// };
-
-// http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Get-All-As-Full.htm
-
-
-//
-// ─── GETAPPS ────────────────────────────────────────────────────────────────────
-//    
-
-export function getApps(name, stream) {
-    var path = '/qrs/app/full';
-
-    //if a name/stream is provided only search the apps with this name
-    if (name) {
-        path += "?filter=Name eq '" + name + "'"
-        if (stream) {
-            path += " and stream.name eq '" + stream + "'"
-        }
-    }
-
-    var call = {
-        action: 'Get list of apps',
-        request: path
-    };
-    // REST_Log(call,generationUserId);
-    return qrs.get(call.request);
+        });
 };
 
-//
-// ─── DELETEAPP ──────────────────────────────────────────────────────────────────
-//
+export function getApps() {
+    try {
+        const call = {};
+        call.action = 'Get list of apps';
+        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/full)';
+        call.response = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey }
+        });
+        // REST_Log(call,generationUserId);
+        return call.response.data;
+    } catch (err) {
+        console.error(err);
+        throw new Meteor.Error('getApps failed', err.message);
+    }
+};
 
 
 export function deleteApp(guid, generationUserId = 'Not defined') {
     console.log('QRSApp deleteApp: ', guid);
     try {
         const call = {};
-        call.request = qrsSrv + '/qrs/app/' + guid;
-        call.response = HTTP.del(call.request, {
-            params: { xrfkey: senseConfig.xrfkey },
-            npmRequestOptions: configCerticates,
-            data: {}
-        });
+        const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
+                headers: authHeaders
+            })
+            // Meteor.call('updateLocalSenseCopy');
 
-        // Meteor.call('updateLocalSenseCopy');
         //logging only
         call.action = 'Delete app';
+        call.request = 'HTTP.del(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey;
         call.url = gitHubLinks.deleteApp;
-        call.response = call.response;
+        call.response = result;
         REST_Log(call, generationUserId);
-        return call.response;
+        return result;
     } catch (err) {
         console.error(err);
         throw new Meteor.Error('App delete failed', err.message);
     }
 };
 
-
-//
-// ─── PUBLISHAPP ─────────────────────────────────────────────────────────────────
-//
-
-
 export function publishApp(appGuid, appName, streamId, customerName, generationUserId) {
-    console.log('Publish app: ' + appName + ' to stream: ' + streamId);
+    // console.log('Publish app: ' + appName + ' to stream: ' + streamId);
     check(appGuid, String);
     check(appName, String);
     check(streamId, String);
 
     try {
+        const result = HTTP.call('put', 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey, {
+                headers: {
+                    'hdr-usr': senseConfig.headerValue,
+                    'X-Qlik-xrfkey': senseConfig.xrfkey
+                }
+            })
+            //logging into database
         const call = {};
-        call.request = qrsSrv + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId;
-        call.response = HTTP.put(call.request, {
-            params: { xrfkey: senseConfig.xrfkey },
-            npmRequestOptions: configCerticates,
-            data: {}
-        });
-
-
-        //logging into database
         call.action = 'Publish app';
+        call.request = 'HTTP.call(put, http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey + ", {headers: {'hdr-usr': " + senseConfig.headerValue, +'X-Qlik-xrfkey:' + senseConfig.xrfkey + '}';
+        call.response = result;
         call.url = gitHubLinks.publishApp;
         REST_Log(call, generationUserId);
-        return call.response;
+        return result;
     } catch (err) {
         console.error(err);
-
-        // // IF APP ALREADY EXISTED TRY TO PUBLISH OVERWRITE IT (REPLACE)
-        // if(err.response.statusCode == 400){
-        //     replaceApp()
-        // }
-        // console.error('statusCode:', err.response.statusCode);
-        // console.info('Try to PUBLISH OVERWRITE THE APP, SINCE IT WAS ALREADY PUBLISHED');
         throw new Meteor.Error('Publication of app ' + appName + ' for customer ' + customerName + ' failed: ', err.message);
     }
 };
 
-// REPLACE APP 
-// export function replaceApp(targetApp, replaceByApp, generationUserId) {
-//     console.log('Function: Replace app: ' + targetApp + ' by app ' + targetApp);
-//     check(appGuid, String);
-//     check(replaceByApp, String);
 
-//     try {
-//         const result = HTTP.put(qlikHDRServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey, {
-//             headers: {
-//                 'hdr-usr': senseConfig.headerValue,
-//                 'X-Qlik-xrfkey': senseConfig.xrfkey
-//             }
-//         });
+function createTag(name) {
+    check(name, String);
+    // console.log('QRS Functions Appp, create a tag: ' + name);
 
-//         //logging into database
-//         const call = {};
-//         call.action = 'Replace app';
-//         call.request = 'HTTP.put(' + qlikHDRServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey;
-//         call.response = result;
-//         call.url = 'http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-App-Replace.htm';
-//         REST_Log(call, generationUserId);
-//         return result;
-//     } catch (err) {
-//         console.error(err);
-//         throw new Meteor.Error('Publication of app ' + appName + ' for customer ' + customerName + ' failed: ', err.message);
-//     }
-// };
+    try {
+        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Tag', {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey },
+            data: { "name": name }
+        })
 
+        //logging only
+        const call = {};
+        call.action = 'create Tag';
+        call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/tag';
+        call.response = result;
+        REST_Log(call, generationUserId);
 
-// function createTag(name) {
-//     check(name, String);
-//     // console.log('QRS Functions Appp, create a tag: ' + name);
-
-//     try {
-//         const result = HTTP.post(qlikHDRServer + '/qrs/Tag', {
-//             headers: authHeaders,
-//             params: {
-//                 'xrfkey': senseConfig.xrfkey
-//             },
-//             data: {
-//                 "name": name
-//             }
-//         })
-
-//         //logging only
-//         const call = {};
-//         call.action = 'create Tag';
-//         call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/tag';
-//         call.response = result;
-//         REST_Log(call, generationUserId);
-
-//         return result;
-//     } catch (err) {
-//         console.error(err);
-//         throw new Meteor.Error('Tag: ' + name + ' create failed ', err.message);
-//     }
-// };
-
-// function addTag(type, guid, tagName) {
-//     check(type, String);
-//     check(guid, String);
-
-//     //check if tag with tagName already exists
-
-//     var selectionId = createSelection(type, guid);
-//     addTagViaSyntheticToType('App', selectionId, tagGuid)
-
-// }
-
-// function createSelection(type, guid) {
-//     check(type, String);
-//     check(guid, String);
-//     console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);
-
-//     try {
-//         const result = HTTP.post(qlikHDRServer + '/qrs/Selection', {
-//             headers: authHeaders,
-//             params: {
-//                 'xrfkey': senseConfig.xrfkey
-//             },
-//             data: {
-//                 items: [{
-//                     type: type,
-//                     objectID: guid
-//                 }]
-//             }
-//         })
-//         console.log('the result of selection for type: ', type + ' ' + guid);
-//         console.log(result);
-//         return result.id;
-//     } catch (err) {
-//         console.error(err);
-//         throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
-//     }
-// };
-
-// function deleteSelection(selectionId) {
-//     check(selectionId, String);
-//     console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
-
-//     try {
-//         const result = HTTP.delete(qlikHDRServer + '/qrs/Selection/' + selectionId, {
-//             headers: authHeaders,
-//             params: {
-//                 'xrfkey': senseConfig.xrfkey
-//             }
-//         })
-//         console.log(result);
-//         return result.id;
-//     } catch (err) {
-//         console.error(err);
-//         throw new Meteor.Error('Selection delete failed: ', err.message);
-//     }
-// };
-
-// function buildModDate() {
-//     var d = new Date();
-//     return d.toISOString();
-// }
-
-// function addTagViaSyntheticToType(type, selectionId, tagGuid) {
-//     check(type, String);
-//     check(guid, String);
-//     console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
-
-//     try {
-//         const result = HTTP.put(qlikHDRServer + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
-//             headers: authHeaders,
-//             params: {
-//                 'xrfkey': senseConfig.xrfkey
-//             },
-//             data: {
-//                 "latestModifiedDate": buildModDate(),
-//                 "properties": [{
-//                     "name": "refList_Tag",
-//                     "value": {
-//                         "added": [tagGuid]
-//                     },
-//                     "valueIsModified": true
-//                 }],
-//                 "type": type
-//             }
-//         })
-//         console.log('the result of selection for type: ', type + ' ' + guid);
-//         console.log(result);
-//         return result;
-//     } catch (err) {
-//         console.error(err);
-//         throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
-//     }
-// };
-
-
-// async function uploadPublishTemplateApps() {
-//     //check if template apps have been uploaded and published in the templates stream
-//     // if (true) { // (!Apps.find({ "stream.name": "Templates" }).count()) {
-//     console.warn('no template apps found, so upload from the templates dir.');
-//     var folder = Meteor.settings.private.templateAppsFrom;
-//     // var folder = await copyTemplatesToQRSFolder();
-//     console.log('apps folder', folder);
-//     uploadAndPublishApps(folder);
-//     // } else {}
-// }
-
-// //upload and publish all apps found in the folder to the templates stream
-// async function copyTemplatesToQRSFolder() {
-//     var newFolder = Meteor.settings.private.templateAppsTo + '\\' + process.env.USERDOMAIN + '\\' + process.env.USERNAME;
-//     try {
-//         await fs.copy(Meteor.settings.private.templateAppsFrom, newFolder, {
-//             overwrite: true
-//         }); //"QLIK-AB0Q2URN5T\\Qlikexternal",
-//         return newFolder
-//     } catch (err) {
-//         console.error('error copy Templates from ' + Meteor.settings.private.templateAppsFrom + ' To QRSFolder ' + Meteor.settings.private.templateAppsDir, err);
-//     }
-// }
-
-// For a system service account, the app must be in the %ProgramData%\Qlik\Sense\Repository\DefaultApps folder.
-// For any other account, the app must be in the %ProgramData%\Qlik\Sense\Apps\<login domain>\<login user> folder.
-//so you have to copy your apps there first. in a fresh sense installation.
-export function importApp(fileName, name, generationUserId = 'no user set') {
-    // check(fileName, String);
-    // check(name, String);
-    // console.log('QRS Functions import App, with name ' + name + ', with fileName: ', fileName);
-
-    // try {
-    //     const call = {};
-    //     call.action = 'Import app';
-    //     call.url = 'http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-App-Import-App.htm'
-    //     call.request = qlikHDRServer + '/qrs/app/import?keepData=true&name=' + name + '&xrfkey=' + senseConfig.xrfkey; //using header auth.
-    //     call.response = HTTP.post(call.request, {
-    //         headers: {
-    //             'hdr-usr': senseConfig.headerValue,
-    //             'X-Qlik-xrfkey': senseConfig.xrfkey
-    //         },
-    //         data: '"Sales.qvf"'
-    //     });
-
-    //     REST_Log(call, generationUserId);
-    //     var newGuid = call.response.data.id;
-    //     return newGuid;
-    // } catch (err) {
-    //     console.error(err);
-    //     const call = {};
-    //     call.action = 'Import app FAILED';
-    //     call.response = err.message;
-    //     REST_Log(call, generationUserId);
-    //     throw new Meteor.Error('Import app failed', err.message);
-    // }
+        return result;
+    } catch (err) {
+        console.error(err);
+        throw new Meteor.Error('Tag: ' + name + ' create failed ', err.message);
+    }
 };
 
-//https://www.npmjs.com/package/request#forms
-// function uploadApp(filePath, fileSize, appName) {
-//     console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
-//     var formData = {
-//         my_file: fs.createReadStream(filePath)
-//     };
-//     request.post({
-//         url: qlikHDRServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
-//         headers: {
-//             'Content-Type': 'application/vnd.qlik.sense.app',
-//             'hdr-usr': senseConfig.headerValue,
-//             'X-Qlik-xrfkey': senseConfig.xrfkey
-//         },
-//         formData: formData
-//     }, function optionalCallback(err, httpResponse, body) {
-//         if (err) {
-//             return console.error('upload failed:', err);
-//         }
-//         console.log('Upload successful!  Server responded with:', body);
-//     });
-// }
+function addTag(type, guid, tagName) {
+    check(type, String);
+    check(guid, String);
+
+    //check if tag with tagName already exists
+
+    var selectionId = createSelection(type, guid);
+    addTagViaSyntheticToType('App', selectionId, tagGuid)
+
+}
+
+function createSelection(type, guid) {
+    check(type, String);
+    check(guid, String);
+    console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);
+
+    try {
+        const result = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection', {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey },
+            data: { items: [{ type: type, objectID: guid }] }
+        })
+        console.log('the result of selection for type: ', type + ' ' + guid);
+        console.log(result);
+        return result.id;
+    } catch (err) {
+        console.error(err);
+        throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
+    }
+};
+
+function deleteSelection(selectionId) {
+    check(selectionId, String);
+    console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);
+
+    try {
+        const result = HTTP.delete('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId, {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey }
+        })
+        console.log(result);
+        return result.id;
+    } catch (err) {
+        console.error(err);
+        throw new Meteor.Error('Selection delete failed: ', err.message);
+    }
+};
+
+function buildModDate() {
+    var d = new Date();
+    return d.toISOString();
+}
+
+function addTagViaSyntheticToType(type, selectionId, tagGuid) {
+    check(type, String);
+    check(guid, String);
+    console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
+
+    try {
+        const result = HTTP.put('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {
+            headers: authHeaders,
+            params: { 'xrfkey': senseConfig.xrfkey },
+            data: {
+                "latestModifiedDate": buildModDate(),
+                "properties": [{
+                    "name": "refList_Tag",
+                    "value": {
+                        "added": [tagGuid]
+                    },
+                    "valueIsModified": true
+                }],
+                "type": type
+            }
+        })
+        console.log('the result of selection for type: ', type + ' ' + guid);
+        console.log(result);
+        return result;
+    } catch (err) {
+        console.error(err);
+        throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);
+    }
+};

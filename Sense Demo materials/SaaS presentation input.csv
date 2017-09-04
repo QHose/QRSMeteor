@@ -112,11 +112,11 @@
 "What is integration.qlik.com?","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","integration.qlik.com: Self service demo","governed self service app.png",,"","","","","         0","0","Demo with integration.qlik.com, SaaS & Power of APIs",
 "What is integration.qlik.com?","integration.qlik.com: Self service demo","[Lets go to integration.qlik.com](http://integration.qlik.com)",,"","","","","         0","0","Demo with integration.qlik.com, SaaS & Power of APIs",
-"What is integration.qlik.com?","This demo simulates your SaaS platform",">So you will see your adminstration panel which controls Qlik Sense via APIs (a ""broker""), based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
-"What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours",
-"What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours",
-"What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours",
-"What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","SaaS logo.png",,"","","","","         0","0","Technical - 2 hours",
+"What is integration.qlik.com?","This demo simulates your SaaS platform",">So you will see your adminstration panel which controls Qlik Sense via APIs based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
+"What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours",
+"What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours",
+"What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours",
+"What is integration.qlik.com?","In the *SaaS provisioning demo* you will see a screen divided into two parts","SaaS logo.png",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","Demonstration: Qlik Sense SaaS provisioning demo ","SaaS logo.png",,"","","","","         0","0","Demo with integration.qlik.com, Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","Demonstration: Qlik Sense SaaS provisioning demo ","[integration.qlik.com](http://integration.qlik.com)",,"","","","","         0","0","Demo with integration.qlik.com, Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","integration demo architecture introduction","saas demo architecture introduction of components.png",,"","","","","         0","0","Technical - 1 day, SaaS & Power of APIs",
@@ -282,9 +282,7 @@ $(""#btn_1"").click(function() {
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Introduction to web authentication methods (in general)","See this [blog](https://blog.risingstack.com/web-authentication-methods-explained/) if you want to have an overview of the methods people use on the internet to authenticate users between systems. ",,,,,,,,,
 "API -  generic introduction","Introduction to web authentication methods (in general)","Cookies",,,,,,,,,
-"API -  generic introduction","How to get started if you never programmed before?","# get an IDE
-- I like to use [Visual Studio Code](https://code.visualstudio.com/docs/editor/editingevolved) its free and works great. 
-# Learn javascript
+"API -  generic introduction","How to get started if you never programmed before?","# Learn javascript
 - watch videos on [pluralsight.com]
  - I prefer the [videos](https://www.pluralsight.com/courses/javascript-programming-basics) and books of [Kyle Simpson](https://github.com/getify/You-Dont-Know-JS) or [Scott Allen](https://www.pluralsight.com/courses/learning-programming-javascript)
  - try to do as much handson via codeschool/codeAcademy
@@ -309,7 +307,7 @@ $(""#btn_1"").click(function() {
 - MeteorJS handles a lot of stuff for you, so a good tool to learn. 
 - Under the hood it will start NodeJS and MongoDb (the database) for you.
 - [install Meteor](https://www.meteor.com/install)
-- Create your first TODO app with MeteorJS [here](https://www.meteor.com/tutorials/angular/creating-an-app)",,"","","","","         0","0","PreSales",
+- Create your first TODO app with MeteorJS [here](https://www.meteor.com/tutorials/angular/creating-an-app)","Subtopic",,,,,,,,
 "Web integration","Overview web integration","<iframe class=""SenseEmbedFrame"" src=""/webIntegration_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
 "Web integration","Overview web integration","Source: [https://webapps.qlik.com/#/](https://webapps.qlik.com/#/)",,,,,,,,,
 "Web integration","Examples of embedded apps","# What does a succesful integration look like?",,,,,,,,,
@@ -816,9 +814,6 @@ LOAD * INLINE [
 ```
 [source Qliktips.com](http://www.qliktips.com/2011/04/blocking-user-access-to-field-using.html)",,,,,,,,,
 "Security - technical design","Row level security using groups in section access","sectionAccess groups.png",,"","","","","         0","0","PreSales, Technical - 1 day",
-"Security - technical design","Audit your security implementation","Make sure your security rules work according to your security design. ",,,,,,,,,
-"Security - technical design","Audit your security implementation","Use the QMC - Audit for this",,,,,,,,,
-"Security - technical design","Audit your security implementation","> with ticketing or SAML, JWT you need to use the simulate user environment button. ![security rules - simulate user environment to test effect of groups in ticket saml audit.png]",,,,,,,,,
 "Security - technical design","Some other topics","<q>Some other topics you need to know of</q>",,"","","","","         0","0","PreSales",
 "Security - technical design","User Directory Connector (UDC)","<q>User Directory Connector</q>",,"","","","","         0","0","Deep dive",
 "Security - technical design","What is a UDC","UDC - what is a UDC.png",,"","","","","         0","0","Deep dive",
@@ -1458,44 +1453,34 @@ function appChangeListener() {
 "Qlik Sense API introduction","API tools on the community","A nice tool that adds extra features (approve sheets, download security rules) to Qlik Sense is the [EA powertools](http://branch.qlik.com/#!/project/57f67b7c06e8670cd284e852)",,"","","","","         0","0","Technical - 1 day",
 "Qlik Sense API introduction","API tools on the community","EA powertools.png",,"","","","","         0","0","Technical - 1 day",
 "Qlik Sense API introduction","Qlik Sense API change list per version (API stability)","[Here](http://help.qlik.com/en-US/sense-developer/3.2/Content/api-version-history.htm) you find the version history of the Qlik Sense APIs and SDKs.",,,,,,,,,
-"Qlik Sense API introduction","Qlik Sense API changes and version comparisons","Checkout the [API insights](https://api-insights.qlik.com/) app.",,"","","","","         0","0","Technical - 1 day",
-"Qlik Sense API introduction","Qlik Sense API changes and version comparisons","API - api insights changes in api between versions.png",,"","","","","         0","0","Technical - 1 day",
-"QRS (QMC) API","What is the QRS REST API?","> Basically an extra layer around the QMC",,"","","","","         0","0","Deep dive, Technical - 1 day",
-"QRS (QMC) API","What can you do with the QRS REST API?","What can you do with the QRS API?
+"QRS API","What is the QRS REST API?","> Basically an extra layer around the QMC",,"","","","","         0","0","Deep dive, Technical - 1 day",
+"QRS API","What can you do with the QRS REST API?","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
 - copy/delete apps and streams
 - reload apps
 - get (extract) and update settings like tasks, licences, security, users ....",,"","","","","         0","0","Deep dive, Technical - 1 day, SaaS & Power of APIs",
-"QRS (QMC) API","What can you do with the QRS REST API?","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","Deep dive, Technical - 1 day, SaaS & Power of APIs",
-"QRS (QMC) API","Introduction to REST APIs","Most Qlik Sense APIs are delivered as a REpresentational State Transfer (REST) web service that contains a number of endpoints (also referred to as paths) that are used to execute various functions.",,"","","","","         0","0","Deep dive, PreSales",
-"QRS (QMC) API","Introduction to REST APIs","To communicate with these endpoints, HTTP calls that contain GET, POST, PUT, or DELETE requests are made.",,"","","","","         0","0","Deep dive, PreSales",
-"QRS (QMC) API","Introduction to REST- open a web page","flow - open webpage.png",,"","","","","         0","0","Deep dive, PreSales",
-"QRS (QMC) API","Lets look at some Qlik Sense REST calls",">Lets look at some Qlik Sense REST calls",,"","","","","         0","0","Deep dive, PreSales",
-"QRS (QMC) API","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,"","","","","         0","0","PreSales, SaaS & Power of APIs",
-"QRS (QMC) API","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","QRS - architecture diagram","QRS - architecture.png",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","QRS API Introduction video 1","https://youtu.be/-WLu_q_7Z24",,"","","","","         0","0","Technical - 1 day",
-"QRS (QMC) API","QRS API Introduction video 1","With fiddler or Postman you can record each activity, and see the resulting API call.",,"","","","","         0","0","Technical - 1 day",
-"QRS (QMC) API","Key things to look for when you want to have authenticated REST calls","The calls must be authenticated with a user with the required permission.",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Key things to look for when you want to have authenticated REST calls","Make sure you understand which user makes the request
+"QRS API","What can you do with the QRS REST API?","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","Deep dive, Technical - 1 day, SaaS & Power of APIs",
+"QRS API","Introduction to REST APIs","Most Qlik Sense APIs are delivered as a REpresentational State Transfer (REST) web service that contains a number of endpoints (also referred to as paths) that are used to execute various functions.",,"","","","","         0","0","Deep dive, PreSales",
+"QRS API","Introduction to REST APIs","To communicate with these endpoints, HTTP calls that contain GET, POST, PUT, or DELETE requests are made.",,"","","","","         0","0","Deep dive, PreSales",
+"QRS API","Introduction to REST- open a web page","flow - open webpage.png",,"","","","","         0","0","Deep dive, PreSales",
+"QRS API","Lets look at some Qlik Sense REST calls",">Lets look at some Qlik Sense REST calls",,"","","","","         0","0","Deep dive, PreSales",
+"QRS API","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,"","","","","         0","0","PreSales, SaaS & Power of APIs",
+"QRS API","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,"","","","","         0","0","Deep dive",
+"QRS API","QRS - architecture diagram","QRS - architecture.png",,"","","","","         0","0","Deep dive",
+"QRS API","QRS API Introduction video 1","https://youtu.be/-WLu_q_7Z24",,"","","","","         0","0","Technical - 1 day",
+"QRS API","QRS API Introduction video 1","With fiddler or Postman you can record each activity, and see the resulting API call.",,"","","","","         0","0","Technical - 1 day",
+"QRS API","Key things to look for when you want to have authenticated REST calls","The calls must be authenticated with a user with the required permission.",,"","","","","         0","0","Deep dive",
+"QRS API","Key things to look for when you want to have authenticated REST calls","Make sure you understand which user makes the request
 - Client side?
 - Server side?",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Key things to look for when you want to have authenticated REST calls","Make sure you implement a flow if the user is not yet authenticated",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Key things to look for when you want to have authenticated REST calls","[See help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Connect-API-Authenticate-Reqs.htm)",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How to authenticate with the server certificate? Get certificates from Qlik Sense. (step 1)","To authenticate using this method:
+"QRS API","Key things to look for when you want to have authenticated REST calls","Make sure you implement a flow if the user is not yet authenticated",,"","","","","         0","0","Deep dive",
+"QRS API","Key things to look for when you want to have authenticated REST calls","[See help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Connect-API-Authenticate-Reqs.htm)",,"","","","","         0","0","Deep dive",
+"QRS API","How to authenticate with the server certificate? Get certificates from Qlik Sense. (step 1)","To authenticate using this method:
 - The location where the authentication request originates must have a copy of the client SSL certificate.
 - If you plan to access the APIs from a remote server, you must export client certificates from the Qlik Management Console (QMC) and install them on the calling server.",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How to authenticate with the server certificate? Get certificates from Qlik Sense. (step 1)","[See exporting certificate](http://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/export-certificates.htm)",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How to connect - using a certificate - step 2","See [help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Example.htm) for examples on how to connect
-- Issuing POST commands via the proxy
-- Connecting with cURL
-- Connecting with Postman
-- Connecting with Microsoft Powershell
-- Connecting with PHP
-- Connecting with Node.js
-- Connecting using Microsoft .NET Framework",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How to connect - using a certificate - step 2","[source](https://github.com/mindspank/enigma-table-rows-example/blob/master/config.js#L6)",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How to connect - using a certificate - step 2","```
+"QRS API","How to authenticate with the server certificate? Get certificates from Qlik Sense. (step 1)","[See exporting certificate](http://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/export-certificates.htm)",,"","","","","         0","0","Deep dive",
+"QRS API","How to connect - using a certificate - step 2","[source](https://github.com/mindspank/enigma-table-rows-example/blob/master/config.js#L6)",,"","","","","         0","0","Deep dive",
+"QRS API","How to connect - using a certificate - step 2","```
  // config for request to fetch application list from QRS.
     request: {
         url: `https://${hostname}:4242/qrs/app?xrfkey=abcdefghijklmnop`,
@@ -1508,34 +1493,32 @@ function appChangeListener() {
         }
     }
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How to connect - using a certificate - step 2","# Connect using node.js",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How to connect - using a certificate - step 2","<iframe class=""SenseEmbedFrame"" src=""http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Example-Connect-Nodejs.htm"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How to authenticate with a Windows user account","You must send requests via the windows virtual proxy server URL",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Authenticating with an HTTP header","You can use a custom HTTP header to authenticate requests. This header contains the
+"QRS API","How to authenticate with a Windows user account","You must send requests via the windows virtual proxy server URL",,"","","","","         0","0","Deep dive",
+"QRS API","Authenticating with an HTTP header","You can use a custom HTTP header to authenticate requests. This header contains the
 -  user name to be presented to the Qlik Sense Repository Service (QRS) API. 
 - In this case, you must send requests via the proxy server URL.",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Authenticating with an HTTP header","PostManCopyApp.png",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Authenticating with an HTTP header","header authentication.png",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Example API request with header authentication","Request from client",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Example API request with header authentication","postman request.png",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Example API request with header authentication","Response from Qlik Sense",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Example API request with header authentication","postman response.png",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Using Xrfkey headers","A common vulnerability in web clients is [cross-site request forgery](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)), which lets an attacker impersonate a user when accessing a system. To protect against this vulnerability, calls to the Qlik Sense Repository Service (QRS) API must include the following:",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Using Xrfkey headers","To protect you have to use a header and parameter:
+"QRS API","Authenticating with an HTTP header","PostManCopyApp.png",,"","","","","         0","0","Deep dive",
+"QRS API","Authenticating with an HTTP header","header authentication.png",,"","","","","         0","0","Deep dive",
+"QRS API","Example API request with header authentication","Request from client",,"","","","","         0","0","Deep dive",
+"QRS API","Example API request with header authentication","postman request.png",,"","","","","         0","0","Deep dive",
+"QRS API","Example API request with header authentication","Response from Qlik Sense",,"","","","","         0","0","Deep dive",
+"QRS API","Example API request with header authentication","postman response.png",,"","","","","         0","0","Deep dive",
+"QRS API","Using Xrfkey headers","A common vulnerability in web clients is [cross-site request forgery](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)), which lets an attacker impersonate a user when accessing a system. To protect against this vulnerability, calls to the Qlik Sense Repository Service (QRS) API must include the following:",,"","","","","         0","0","Deep dive",
+"QRS API","Using Xrfkey headers","To protect you have to use a header and parameter:
 - Xrfkey parameter: Must equal 16 arbitrary characters. 
 - x-Qlik-Xrfkey: Custom HTTP header. The format is as follows:",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Using Xrfkey headers","```
+"QRS API","Using Xrfkey headers","```
 'http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream/' + guid+'?xrfkey=' + senseConfig.xrfkey, {
             headers: authHeaders
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Using Xrfkey headers","```
+"QRS API","Using Xrfkey headers","```
  export const authHeaders = {
         'hdr-usr': _senseConfig.headerValue,
         'X-Qlik-xrfkey': _senseConfig.xrfkey
     }
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Example HTTP header for a REST API call using a certificate to authenticate","Example API call that returns all server node configurations in the repository database:",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Example HTTP header for a REST API call using a certificate to authenticate","```
+"QRS API","Example HTTP header for a REST API call using a certificate to authenticate","Example API call that returns all server node configurations in the repository database:",,"","","","","         0","0","Deep dive",
+"QRS API","Example HTTP header for a REST API call using a certificate to authenticate","```
 https://localhost:4242/qrs/servernodeconfiguration/full?Xrfkey= abcdefghijklmnop HTTP/1.1
 Accept-Encoding: gzip,deflate
 X-Qlik-User: UserDirectory=INTERNAL; UserId=sa_repository
@@ -1546,34 +1529,34 @@ Host: localhost:4242
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Example HTTP header for a REST API call using a certificate to authenticate","Note that this header supplies the user to authenticate as via the `X-Qlik-User: UserDirectory=INTERNAL;` parameter",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Methods and IDs","QRS API - methods and IDs.png",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Simplify programming: Use the browser console to ""record"" Qlik Sense REST API calls","QRS - start task chrome console.png",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
-"QRS (QMC) API","How do you create a REST URL? General purpose endpoints","When communicating directly with the QRS API, the URL is as follows:",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How do you create a REST URL? General purpose endpoints","```
+"QRS API","Example HTTP header for a REST API call using a certificate to authenticate","Note that this header supplies the user to authenticate as via the `X-Qlik-User: UserDirectory=INTERNAL;` parameter",,"","","","","         0","0","Deep dive",
+"QRS API","Methods and IDs","QRS API - methods and IDs.png",,"","","","","         0","0","Deep dive",
+"QRS API","Simplify programming: Use the browser console to ""record"" Qlik Sense REST API calls","QRS - start task chrome console.png",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
+"QRS API","How do you create a REST URL? General purpose endpoints","When communicating directly with the QRS API, the URL is as follows:",,"","","","","         0","0","Deep dive",
+"QRS API","How do you create a REST URL? General purpose endpoints","```
 https://<QRS machine name>:4242/<path>
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How do you create a REST URL? General purpose endpoints","To call a path, replace <path> with a proper path, such as:",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How do you create a REST URL? General purpose endpoints","```
+"QRS API","How do you create a REST URL? General purpose endpoints","To call a path, replace <path> with a proper path, such as:",,"","","","","         0","0","Deep dive",
+"QRS API","How do you create a REST URL? General purpose endpoints","```
 /qrs/[type]/count?filter={filter}
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How do you create a REST URL? General purpose endpoints","In the path, replace [type] with a proper entity type:",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How do you create a REST URL? General purpose endpoints","```
+"QRS API","How do you create a REST URL? General purpose endpoints","In the path, replace [type] with a proper entity type:",,"","","","","         0","0","Deep dive",
+"QRS API","How do you create a REST URL? General purpose endpoints","```
 /qrs/user/count?filter={filter}
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How do you create a REST URL? General purpose endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-General-Purpose-Paths.htm)",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How do you create a REST URL? General purpose endpoints","Optionally, filter the returned entities:",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","How do you create a REST URL? General purpose endpoints","```
+"QRS API","How do you create a REST URL? General purpose endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-General-Purpose-Paths.htm)",,"","","","","         0","0","Deep dive",
+"QRS API","How do you create a REST URL? General purpose endpoints","Optionally, filter the returned entities:",,"","","","","         0","0","Deep dive",
+"QRS API","How do you create a REST URL? General purpose endpoints","```
 /qrs/user/count?filter=Name eq 'Joe Smith'
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Special purpose endpoints","QRS API - special purpose endpoints.png",,"","","","","         0","0","Deep dive, SaaS & Power of APIs",
-"QRS (QMC) API","Special purpose endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Special-Purpose-Paths.htm)",,"","","","","         0","0","Deep dive, SaaS & Power of APIs",
-"QRS (QMC) API","App: Make copy","Request",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","App: Make copy","```
+"QRS API","Special purpose endpoints","QRS API - special purpose endpoints.png",,"","","","","         0","0","Deep dive, SaaS & Power of APIs",
+"QRS API","Special purpose endpoints","[See Qlik help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Special-Purpose-Paths.htm)",,"","","","","         0","0","Deep dive, SaaS & Power of APIs",
+"QRS API","App: Make copy","Request",,"","","","","         0","0","Deep dive",
+"QRS API","App: Make copy","```
 /qrs/app/{id}/copy?name={name}
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","App: Make copy","Return value",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","App: Make copy","```
+"QRS API","App: Make copy","Return value",,"","","","","         0","0","Deep dive",
+"QRS API","App: Make copy","```
 App:
 {
    ""customProperties"": null,
@@ -1600,33 +1583,33 @@ App:
   ""id"": ""00000000-0000-0000-0000-000000000000""
 }
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Example start a task","QRS - start task.png",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Connect to a REST endpoint using the script of a QVF","Use the REST connector",,,,,,,,,
-"QRS (QMC) API","Connect to a REST endpoint using the script of a QVF","In this way you can also connect to the QRS API",,,,,,,,,
-"QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","Here we will load QRS API data in a QVF",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","We will load the data via a REST Connector ",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","So in this case a REST endpoint can be compared to loading from a database",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","QVF - REST connector: The Qlik REST Connector offers several authentication choices","Windows authentication = true >> Windows Integrated Security (NTLM).",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","QVF - REST connector: The Qlik REST Connector offers several authentication choices","Windows authentication = false and User Name / Password >> Forms / Basic auth",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","QVF - REST connector: The Qlik REST Connector offers several authentication choices","Windows authentication = false and populate Query headers with user id >> HTTP Header Authentication",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","QVF - REST connector: The Qlik REST Connector offers several authentication choices","Windows authentication  = false and Use Certificate = Installed or From File >> Authenticate via SSL Certs.  Note that with this method, you must connect directly to the Repository (port 4242) instead of through the Proxy (443 or 80)",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","Create a new Qlik Sense application.",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","Click 'Add data', and choose the Rest connector:",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","In the 'Create a connection - Rest' dialogue, choose",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","Use Windows authentication = Yes (see below for more)",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","URL > the name of the Rest endpoint.  See API Paths for a full listing of possible paths. E.g. /QRS/USER/FULL)",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","Query parameters xrfkey = - ABCDEFG123456789 (value can be different as long as it matches x-Qlik-xrfkey)",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","Query headers
+"QRS API","Example start a task","QRS - start task.png",,"","","","","         0","0","Deep dive",
+"QRS API","Connect to a REST endpoint using the script of a QVF","Use the REST connector",,,,,,,,,
+"QRS API","Connect to a REST endpoint using the script of a QVF","In this way you can also connect to the QRS API",,,,,,,,,
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Here we will load QRS API data in a QVF",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","We will load the data via a REST Connector ",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","So in this case a REST endpoint can be compared to loading from a database",,"","","","","         0","0","Exercises",
+"QRS API","QVF - REST connector: The Qlik REST Connector offers several authentication choices","Windows authentication = true >> Windows Integrated Security (NTLM).",,"","","","","         0","0","Deep dive",
+"QRS API","QVF - REST connector: The Qlik REST Connector offers several authentication choices","Windows authentication = false and User Name / Password >> Forms / Basic auth",,"","","","","         0","0","Deep dive",
+"QRS API","QVF - REST connector: The Qlik REST Connector offers several authentication choices","Windows authentication = false and populate Query headers with user id >> HTTP Header Authentication",,"","","","","         0","0","Deep dive",
+"QRS API","QVF - REST connector: The Qlik REST Connector offers several authentication choices","Windows authentication  = false and Use Certificate = Installed or From File >> Authenticate via SSL Certs.  Note that with this method, you must connect directly to the Repository (port 4242) instead of through the Proxy (443 or 80)",,"","","","","         0","0","Deep dive",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Create a new Qlik Sense application.",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Click 'Add data', and choose the Rest connector:",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","In the 'Create a connection - Rest' dialogue, choose",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Use Windows authentication = Yes (see below for more)",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","URL > the name of the Rest endpoint.  See API Paths for a full listing of possible paths. E.g. /QRS/USER/FULL)",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Query parameters xrfkey = - ABCDEFG123456789 (value can be different as long as it matches x-Qlik-xrfkey)",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Query headers
 - x-Qlik-xrfkey = ABCDEFG123456789
 - User-Agent = Windows
 - Name = <name of the data connection>",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","[source Marcus](https://confluence.qliktech.com/pages/viewpage.action?spaceKey=~msi&title=Query+the+Qlik+Sense+Repository+API+with+the+Qlik+REST+Connector)",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","Data - REST API load data from QRS.png",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise: How to use Postman using windows authentication","","In Postman click on the interceptor icon and let the extension install itself if needed. This is needed to pass authentication credentials from Chrome to Postman.","","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise: How to use Postman using windows authentication","","Open the hub or the QMC in Chrome and authenticate to Qlik Sense.","","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise: How to use Postman using windows authentication","","Go to Postman and in the URL section type https://<machine hostname>/qrs/About?Xrfkey=12345678qwertyui","","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise: How to use Postman using windows authentication","","Also add the XREF key in the headers","","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise: Connect to QRS API using Postman","- Postman is a Google Chrome App for constructing and sending REST requests. You can use Postman to explore the Qlik Sense Repository Service (QRS) API. (see [help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Example-Connect-Postman.htm)
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","[source Marcus](https://confluence.qliktech.com/pages/viewpage.action?spaceKey=~msi&title=Query+the+Qlik+Sense+Repository+API+with+the+Qlik+REST+Connector)",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 1: get user  via QRS API via Qlik REST connector","Data - REST API load data from QRS.png",,"","","","","         0","0","Exercises",
+"QRS API","Exercise: How to use Postman using windows authentication","","In Postman click on the interceptor icon and let the extension install itself if needed. This is needed to pass authentication credentials from Chrome to Postman.","","","","","         0","0","Exercises",
+"QRS API","Exercise: How to use Postman using windows authentication","","Open the hub or the QMC in Chrome and authenticate to Qlik Sense.","","","","","         0","0","Exercises",
+"QRS API","Exercise: How to use Postman using windows authentication","","Go to Postman and in the URL section type https://<machine hostname>/qrs/About?Xrfkey=12345678qwertyui","","","","","         0","0","Exercises",
+"QRS API","Exercise: How to use Postman using windows authentication","","Also add the XREF key in the headers","","","","","         0","0","Exercises",
+"QRS API","Exercise: Connect to QRS API using Postman","- Postman is a Google Chrome App for constructing and sending REST requests. You can use Postman to explore the Qlik Sense Repository Service (QRS) API. (see [help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Example-Connect-Postman.htm)
 
 - This example shows how to connect to the QRS API and retrieve a list of apps in JSON format. Because we are using Windows authentication, we send the request via the QPS URL.
 
@@ -1678,18 +1661,18 @@ App:
   }
 ]
 ```",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 2","Next we are going to use Postman (Chrome app) to connect to the QRS API using
+"QRS API","Exercise 2","Next we are going to use Postman (Chrome app) to connect to the QRS API using
 - Header authentication",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 2: Get apps via Postman with header authentication","Try to get a list of apps, in the screenshot you see an example for copying an app.",,,,,,,,,
-"QRS (QMC) API","Exercise 2: Get apps via Postman with header authentication","Make sure you include the QREF key (two times)",,,,,,,,,
-"QRS (QMC) API","Exercise 2: Get apps via Postman with header authentication","Specify a correct virtual proxy. ",,,,,,,,,
-"QRS (QMC) API","Exercise 2: Get apps via Postman with header authentication","header authentication.png",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise 3: get all systemrules via a postman call","Try to get an overview of all the security rules (part of systemrules)",,"","","","","         0","0","Deep dive, Exercises",
-"QRS (QMC) API","Exercise 3: get all systemrules via a postman call","You can search the QRS help for special purpose endpoints",,"","","","","         0","0","Deep dive, Exercises",
-"QRS (QMC) API","Example: Get specific server node configuration","This [example](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Get.htm) shows how to get a specific server node configuration.",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Example: Get specific server node configuration","#Request",,,,,,,,,
-"QRS (QMC) API","Example: Get specific server node configuration","```HTTP
+"QRS API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 2: Get apps via Postman with header authentication","Try to get a list of apps, in the screenshot you see an example for copying an app.",,,,,,,,,
+"QRS API","Exercise 2: Get apps via Postman with header authentication","Make sure you include the QREF key (two times)",,,,,,,,,
+"QRS API","Exercise 2: Get apps via Postman with header authentication","Specify a correct virtual proxy. ",,,,,,,,,
+"QRS API","Exercise 2: Get apps via Postman with header authentication","header authentication.png",,"","","","","         0","0","Exercises",
+"QRS API","Exercise 3: get all systemrules via a postman call","Try to get an overview of all the security rules (part of systemrules)",,"","","","","         0","0","Deep dive, Exercises",
+"QRS API","Exercise 3: get all systemrules via a postman call","You can search the QRS help for special purpose endpoints",,"","","","","         0","0","Deep dive, Exercises",
+"QRS API","Example: Get specific server node configuration","This [example](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Get.htm) shows how to get a specific server node configuration.",,"","","","","         0","0","Deep dive",
+"QRS API","Example: Get specific server node configuration","#Request",,,,,,,,,
+"QRS API","Example: Get specific server node configuration","```HTTP
 GET https://SELUN-USER.qlik.com:4242/qrs/servernodeconfiguration/8b6a9fa2-d7cd-47a2-8bec-661f8b53b6bf?Xrfkey=abcdefghijklmnop HTTP/1.1
 Accept-Encoding: gzip,deflate
 X-Qlik-User: UserDirectory=INTERNAL; UserId=sa_repository
@@ -1700,8 +1683,8 @@ Host: SELUN-USER.qlik.com:4242
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Example: Get specific server node configuration","# Response",,,,,,,,,
-"QRS (QMC) API","Example: Get specific server node configuration","```javascript
+"QRS API","Example: Get specific server node configuration","# Response",,,,,,,,,
+"QRS API","Example: Get specific server node configuration","```javascript
 {
    ""customProperties"": [],
    ""name"": ""MyServerNodeConfiguration"",
@@ -1721,18 +1704,18 @@ User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
    ""schemaPath"": ""ServerNodeConfiguration""
 }
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","You can also filter your selection","Some parameters in the paths are optional (for example, {filter} and {orderBy}). This section describes how to use the filtering parameters.",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","You can also filter your selection","```
+"QRS API","You can also filter your selection","Some parameters in the paths are optional (for example, {filter} and {orderBy}). This section describes how to use the filtering parameters.",,"","","","","         0","0","Deep dive",
+"QRS API","You can also filter your selection","```
 ServiceType eq Engine
 Status eq Failed and FinishedAt gt '2012-05-09 12:00:00'
 Organization eq 'ACME Inc.' or Name eq 'Joe Smith'
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","You can also filter your selection","URL example: Get count path",,,,,,,,,
-"QRS (QMC) API","You can also filter your selection","```HTTP
+"QRS API","You can also filter your selection","URL example: Get count path",,,,,,,,,
+"QRS API","You can also filter your selection","```HTTP
 https://<QRS machine name>:4242/qrs/app/count?Xrfkey=abcdef123456&filter=Name eq 'MyappName'
 ```",,"","","","","         0","0","Deep dive",
-"QRS (QMC) API","Problem solving 1:  get streams via Postman","QRS API - broken XREF example.png",,"","","","","         0","0","Support",
-"QRS (QMC) API","Problem solving 1:  get streams via Postman","[Open postman app in chrome](https://www.getpostman.com/collections/3168aed89bc40c99790a)",,"","","","","         0","0","Support",
+"QRS API","Problem solving 1:  get streams via Postman","QRS API - broken XREF example.png",,"","","","","         0","0","Support",
+"QRS API","Problem solving 1:  get streams via Postman","[Open postman app in chrome](https://www.getpostman.com/collections/3168aed89bc40c99790a)",,"","","","","         0","0","Support",
 "QPS - Proxy API","What is the Qlik Sense proxy?","The ""entry door"" to Qlik Sense (most of the times)",,"","","","","         0","0","Technical - 1 day",
 "QPS - Proxy API","What is the Qlik Sense proxy?","Handles authentication: login/logout",,"","","","","         0","0","Technical - 1 day",
 "QPS - Proxy API","What is the Qlik Sense proxy?","Creates a session for the user",,"","","","","         0","0","Deep dive",

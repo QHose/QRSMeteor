@@ -37,9 +37,9 @@ import { Apps, TemplateApps } from '/imports/api/apps';
 import { Customers } from '/imports/api/customers';
 import { Streams } from '/imports/api/streams'
 import { APILogs } from '/imports/api/APILogs'
-import { Session } from 'meteor/session';
 
 import moment from 'moment';
+
 
 Meteor.startup(function() {
     // console.log('configure sAlert, the popup messaging service');
@@ -55,12 +55,29 @@ Meteor.startup(function() {
 
         onClose: _.noop //
 
-    });
+    });  
     AutoForm.setDefaultTemplate("semanticUI");
 });
 
-//google analytics, only if running on qlik.com
-if (window.location.href.indexOf("qlik.com") > -1) {
+// //Facebook sync
+//  window.fbAsyncInit = function() {
+//     FB.init({
+//       appId      : Meteor.settings.public.facebook.clientId,
+//       xfbml      : true,
+//       version    : 'v2.7'
+//     });
+//   };
+
+//   (function(d, s, id){
+//      var js, fjs = d.getElementsByTagName(s)[0];
+//      if (d.getElementById(id)) {return;}
+//      js = d.createElement(s); js.id = id;
+//      js.src = "//connect.facebook.net/en_US/sdk.js";
+//      fjs.parentNode.insertBefore(js, fjs);
+//    }(document, 'script', 'facebook-jssdk'));
+
+//google analytics
+if(window.location.href.indexOf("qlik.com") > -1) {
     (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function() {

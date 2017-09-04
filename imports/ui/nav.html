@@ -1,6 +1,6 @@
 <template name="nav">
     <div class="row">
-        <div class="ui secondary menu navbar 1">
+        <div class="ui secondary menu navbar">
             <a href="{{pathFor 'useCaseSelection'}}" class="header item">
                 <!-- <img class="logo" src="images/sense.png"> -->
                 Home</a>
@@ -34,34 +34,8 @@
     </div>
 </template>
 <template name="SSBINav">
-    <div class="row general header">
-        <div class="col-md-12">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="/">HOME</a></li>
-                <li><a href="{{webIntegrationDemo}}">EMBED QLIK SENSE</a></li>
-                <li class="active"><a href="{{pathFor 'selfService'}}">SELF SERVICE</a></li>
-                <li><a href="{{pathFor 'impress'}}">SASS PROVISIONING</a></li>
-                <li><a href="{{pathFor 'documentation'}}">DEEP DIVE QLIK APIS</a></li>
-                <li><a href="{{pathFor 'documentation'}}?tab=video">VIDEO LIBRARY</a></li>
-            </ul>    
-            <ul class="nav navbar-nav navbar-right">
-                <li class="label">DISPLAY CONTENT FOR:</li>                
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{userRole}} <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{webIntegrationDemo}}" data="Developer">Developer</a></li>
-                        <li><a href="{{webIntegrationDemo}}" data="Product Owner">Product Owner</a></li>
-                        <li><a href="{{pathFor 'impress'}}" data="Hosting Ops Professional">Hosting Ops Professional</a></li>
-                        <li><a href="{{pathFor 'selfService'}}" data="Business Analyst">Business Analyst</a></li>
-                        <li><a href="{{webIntegrationDemo}}" data="CTO">CTO</a></li>
-                        <li><a href="{{pathFor 'selfService'}}" data="C-Level executive, non-technical">C-Level executive, non-technical</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
     <div class="row">
-        <div class="ui secondary menu navbar 2">
+        <div class="ui secondary menu navbar">
             <a href="{{pathFor 'useCaseSelection'}}" class="header item">
                 <!-- <img class="logo" src="images/sense.png"> -->
                 Home</a>
@@ -72,64 +46,4 @@
             {{/if}} -->
         </div>
     </div>
-</template>
-<template name="ImpressNav">
-    <div class="row general header">
-        <div class="col-md-12">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="/">HOME</a></li>
-                <li><a href="{{webIntegrationDemo}}">EMBED QLIK SENSE</a></li>
-                <li><a href="{{pathFor 'selfService'}}">SELF SERVICE</a></li>
-                <li class="active"><a href="{{pathFor 'impress'}}">SASS PROVISIONING</a></li>
-                <li><a href="{{pathFor 'documentation'}}">DEEP DIVE QLIK APIS</a></li>
-                <li><a href="{{pathFor 'documentation'}}?tab=video">VIDEO LIBRARY</a></li>
-            </ul>    
-            <ul class="nav navbar-nav navbar-right">
-                <li class="label">DISPLAY CONTENT FOR:</li>                
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{userRole}} <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{webIntegrationDemo}}" data="Developer">Developer</a></li>
-                        <li><a href="{{webIntegrationDemo}}" data="Product Owner">Product Owner</a></li>
-                        <li><a href="{{pathFor 'impress'}}" data="Hosting Ops Professional">Hosting Ops Professional</a></li>
-                        <li><a href="{{pathFor 'selfService'}}" data="Business Analyst">Business Analyst</a></li>
-                        <li><a href="{{webIntegrationDemo}}" data="CTO">CTO</a></li>
-                        <li><a href="{{pathFor 'selfService'}}" data="C-Level executive, non-technical">C-Level executive, non-technical</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</template>
-<template name="documentationNav">
-    <div class="row general header">
-        <div class="col-md-12">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="/">HOME</a></li>
-                <li><a href="{{webIntegrationDemo}}">EMBED QLIK SENSE</a></li>
-                <li><a href="{{pathFor 'selfService'}}">SELF SERVICE</a></li>
-                <li><a href="{{pathFor 'impress'}}">SASS PROVISIONING</a></li>
-                <li class="active"><a href="{{pathFor 'documentation'}}">DEEP DIVE QLIK APIS</a></li>
-                <li data-tab="video"><a href="{{pathFor 'documentation'}}?tab=video">VIDEO LIBRARY</a></li>
-            </ul>    
-            <ul class="nav navbar-nav navbar-right">
-                <li class="label">DISPLAY CONTENT FOR:</li>                
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{userRole}} <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{webIntegrationDemo}}" data="Developer">Developer</a></li>
-                        <li><a href="{{webIntegrationDemo}}" data="Product Owner">Product Owner</a></li>
-                        <li><a href="{{pathFor 'impress'}}" data="Hosting Ops Professional">Hosting Ops Professional</a></li>
-                        <li><a href="{{pathFor 'selfService'}}" data="Business Analyst">Business Analyst</a></li>
-                        <li><a href="{{webIntegrationDemo}}" data="CTO">CTO</a></li>
-                        <li><a href="{{pathFor 'selfService'}}" data="C-Level executive, non-technical">C-Level executive, non-technical</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</template>
-
-<template name="SsbiFooter">
-    YIANNIS
 </template>
