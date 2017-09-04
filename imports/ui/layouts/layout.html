@@ -35,17 +35,7 @@
     </div>
     {{> footer}}
 </template>
-<template name="loginDimmer">
-    <div class="ui container" style="height: 500px;">
-        <div class="ui inverted dimmer">
-            <div class="content">
-                <div class="center">
-                    <div class="ui indeterminate text loader">Please wait while we log you in via your Qlik.com account...</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
+
 <template name="layoutDocumentation">
     {{> documentationNav}} {{> modals}} {{> sAlert}} {{> yield}}
     <div class="ui relaxed very padded stackable grid">
@@ -66,7 +56,7 @@
                 <div class="col-md-12 text-center">
                     <ul>
                         <li><a href="/"><img src="./images/qlik_logo.svg" class="logo"></a></li>
-                        <li><a href="http://oem.qlik.com" target="_blank">oem.qlik.com</a></li>
+                        <li><a href="http://oem.qlik.com" target="_blank">OEM.QLIK>COM</a></li>
                         <li><a href="http://branch.qlik.com">BRANCH.QLIK.COM</a></li>
                     </ul>
                 </div>
@@ -166,6 +156,19 @@
             </div>
         </div>
     </section>
+</template>
+
+
+<template name="loginDimmer">
+    <div class="ui container" style="height: 500px;">
+        <div class="ui inverted dimmer">
+            <div class="content">
+                <div class="center">
+                    <div class="ui indeterminate text loader">Please wait while we log you in via your Qlik.com account...</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <template name="modals">

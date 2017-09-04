@@ -138,7 +138,7 @@ function loginQlik() {
 
 // //map paths to blaze templates
 Router.route('/', function() {
-    this.layout('oneColumnCenteredLayout');
+    this.layout('landingPage');
     this.render('useCaseSelection');
 });
 
@@ -260,7 +260,7 @@ Router.route('/slideGenerator', {
 });
 
 Router.route('/useCaseSelection', function() {
-    this.layout('oneColumnCenteredLayout');
+    this.layout('landingPage');
     this.render('useCaseSelection');
 });
 
