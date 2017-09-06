@@ -17,6 +17,10 @@
     color: white !important;
 }
 
+.mainNavBar .saasDemo {
+    color: white !important;
+}
+
 .mainNavBar a.active.item {
     border-color: #E36E0F !important;
     /* color: #E36E0F !important; */
@@ -49,11 +53,51 @@
     position: absolute;
     bottom: 0px;
     width: 100%;
+    height: 100px;
+    background-image: url('./images/bg_footer.jpg');
+    background-size: 100%;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-color: @color-tan;
+    padding-top: 60px;
+    padding-left: 0;
 }
 
-.ui.grid {
-    margin-top: 0.2em;
-}
+
+/* 
+.footer {
+    .footer .sticky {
+        position: absolute;
+        bottom: 0;
+        width: 100%;    
+    }
+    .container-fluid {
+        height: 160px;
+        background-image: url('./images/bg_footer.jpg');
+        background-size: auto 100%;
+        background-position: bottom right;
+        background-repeat: no-repeat;  
+        background-color: @color-tan;
+        padding-top: 60px;
+        padding-left: 0;
+        ul {
+            padding-left: 0;
+            li {
+                font-size: 18px;
+                font-family: @font-oswald;
+                display: inline-block;
+                padding-right: 20px;
+                text-transform: uppercase;
+                .logo {
+                    width: 110px;
+                }
+                a {
+                    color: @color-gray;
+                }
+            }
+        }
+    }
+} */
 
 .deleteStream,
 .copyApp,
@@ -67,15 +111,6 @@
     background: #5EA819;
     /* your background color here */
     color: #fff/* your text color here */
-}
-
-
-/*.container {
-    margin-top: 4em;
-}*/
-
-.ui.grid {
-    margin-top: 0.2em;
 }
 
 .ui.segment.SSBI {

@@ -10,6 +10,13 @@
     background: radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));*/
 }
 
+#impress-wrapper {
+    width: 100%;
+    height: calc(100% - 60px);
+    overflow: hidden;
+    position: relative;
+}
+
 .SSBIIFrame {
     height: calc(100vh - 150px);
     width: 100%;
@@ -283,7 +290,7 @@ section {
 
 .step.introduction {
     width: 1000px;
-    font-size: 2em;
+    font-size: 1.3em;
 }
 
 .slide.introduction q {
@@ -424,7 +431,6 @@ em {
 
 .video p {
     display: block;
-    font-size: 20px;
     margin-top: 10px;
 }
 

@@ -1,13 +1,14 @@
 <template name="layout">
-        {{> nav}}
+    {{> nav}}
     <div class="ui relaxed grid container">
         <div class="one wide column">
         </div>
         <div class="fourteen wide column">
-             {{> modals}} {{> sAlert}}
-            <!-- {{#if currentUser}} --><!-- also removes option to login via the menu --> 
-                {{> yield}}
-           <!--  {{else}}
+            {{> modals}} {{> sAlert}}
+            <!-- {{#if currentUser}} -->
+            <!-- also removes option to login via the menu -->
+            {{> yield}}
+            <!--  {{else}}
                 {{> loginDimmer}} -->
             <!-- {{/if}} -->
         </div>
@@ -20,8 +21,7 @@
 
 
 <template name="SSOLayout">
-    {{> sAlert}} {{> yield}}
-    {{> footer}}
+    {{> sAlert}} {{> yield}} {{> footer}}
 </template>
 <template name="ImpressLayout">
     {{> nav}} {{> sAlert}} {{> yield}}
@@ -29,7 +29,7 @@
 
 
 <template name="SSBILayout">
-    {{> yield "nav"}} {{> sAlert}} 
+    {{> yield "nav"}} {{> sAlert}}
     <div class="ui stackable grid">
         <div class="sixteen wide column">
             <div class="ui three column stackable grid">
@@ -43,33 +43,33 @@
 
 
 <template name="containerlayout">
-        {{> nav}}
+    {{> nav}}
     <div class="ui container">
-             {{> sAlert}}
-            {{> modals}}  {{> yield}}
+        {{> sAlert}} {{> modals}} {{> yield}}
     </div>
     {{> footer}}
 </template>
 
-<template name="footer">         
-    <div class="general footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <ul>
-                        <li><a href="/"><img src="./images/qlik_logo.svg" class="logo"></a></li>
-                        <li><a href="http://oem.qlik.com" target="_blank">OEM.QLIK.COM</a></li>
-                        <li><a href="http://branch.qlik.com">BRANCH.QLIK.COM</a></li>
-                    </ul>
+<template name="footer">
+    <div class="footer">
+        <div class="ui container">
+
+            <div class="ui three column grid">
+                <div class="column"> 
+                        <img class="ui fluid image" src="./images/qlik_logo.svg" style="height: 100px;">
+                    <!-- <a href="/"><img src="./images/qlik_logo.svg" class="logo"></a>  -->
                 </div>
+                <!-- <div class="column"><a href="http://oem.qlik.com" target="_blank">OEM.QLIK.COM</a></div>
+                <div class="column"> <a href="http://branch.qlik.com">BRANCH.QLIK.COM</a></div> -->
+
             </div>
         </div>
     </div>
-    
+
 </template>
 
 <template name="impressFooter">
-    {{#if nav}}  
+    {{#if nav}}
     <section class="general footer-top sticky">
         <div class="container">
             <div class="row">
@@ -82,7 +82,7 @@
             </div>
         </div>
     </section>
-    {{/if}} 
+    {{/if}}
     <section class="general footer sticky">
         <div class="container-fluid">
             <div class="row">
@@ -98,7 +98,7 @@
     </section>
 </template>
 <template name="SSBIFooter">
-    {{#if nav}}  
+    {{#if nav}}
     <section class="general footer-top">
         <div class="container">
             <div class="row">
@@ -111,7 +111,7 @@
             </div>
         </div>
     </section>
-    {{/if}} 
+    {{/if}}
     <section class="general footer">
         <div class="container-fluid">
             <div class="row">
@@ -127,7 +127,7 @@
     </section>
 </template>
 <template name="documentationFooter">
-    {{#if nav}}  
+    {{#if nav}}
     <section class="general footer-top">
         <div class="container">
             <div class="row">
@@ -140,7 +140,7 @@
             </div>
         </div>
     </section>
-    {{/if}} 
+    {{/if}}
     <section class="general footer">
         <div class="container-fluid">
             <div class="row">
@@ -181,7 +181,8 @@
                 <div class="header">
                     <h4>Example layered approach to the self service functionality</h4>
                 </div>
-                <p>Example process which you can implement by using a mix between the authorizations from your SaaS platform and the Qlik Sense security rules.</p>
+                <p>Example process which you can implement by using a mix between the authorizations from your SaaS platform
+                    and the Qlik Sense security rules.</p>
             </div>
         </div>
         <img class="ui fluid image" src="/images/SelfServiceBI.png">
@@ -231,7 +232,8 @@
                 <div class="header">
                     <h4>What are the key concepts of SaaS provisioning using Qlik Sense?</h4>
                 </div>
-                <p>This video highlights the concepts of SaaS provisioning. In will explain you the concept of template apps, the broker, and that we will create a copy of the template for each of your customers.</p>
+                <p>This video highlights the concepts of SaaS provisioning. In will explain you the concept of template apps,
+                    the broker, and that we will create a copy of the template for each of your customers.</p>
             </div>
         </div>
         <div class="ui one column centered grid">

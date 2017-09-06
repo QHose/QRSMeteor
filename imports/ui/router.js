@@ -2,7 +2,7 @@ var Cookies = require('js-cookie');
 
 //Layout Configuration. http://stackoverflow.com/questions/28864942/meteor-use-2-different-layouts-ironrouter
 Router.configure({
-    layoutTemplate: 'containerlayout',
+    layoutTemplate: 'layout',
     notFoundTemplate: 'notFound',
 });
 
@@ -219,8 +219,7 @@ Router.route('/SSO', {
 //     template: 'impress',
 //     layoutTemplate: 'SSOLayout'
 // });
-Router.route('/impress', function() {
-    // this.render('ImpressNav', { to: 'nav' });
+Router.route('/SaaSIntroduction', function() {
     this.layout('ImpressLayout');
     this.render('impress');
 });

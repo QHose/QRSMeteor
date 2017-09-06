@@ -9,7 +9,7 @@ const Cookies = require('js-cookie');
 
 Template.nav.helpers({
     isSaaSDemoPage() {
-        return Router.current().route.getName() === 'generation';
+        return Router.current().route.getName() === 'generation' || Router.current().route.getName() === 'SaaSIntroduction';
     },
     isDocumentationPage() {
         return Router.current().route.getName() === 'documentation';
@@ -29,15 +29,19 @@ Template.nav.helpers({
     },
 });
 
-Template.nav.onRendered(function () {
+
+Template.nav.onRendered(function() {
+    this.$('.ui.dropdown')
+        .dropdown()
+
     this.$('.header .dropdown-toggle').dropdown()
-    this.$('.header .dropdown-toggle').on('click', function () {
+    this.$('.header .dropdown-toggle').on('click', function() {
         $('.header .dropdown-menu').toggle()
     });
     if (localStorage.userRole) {
         this.$(`.navbar-right .dropdown-menu li a[data="${localStorage.userRole}"]`).parent().addClass('active')
     }
-    this.$('.header .dropdown-menu a').on('click', function () {
+    this.$('.header .dropdown-menu a').on('click', function() {
         role = $(this).attr("data")
         Session.set('userRole', role);
         $('.dropdown-menu li').removeClass('active')
@@ -47,7 +51,7 @@ Template.nav.onRendered(function () {
 });
 
 
-Template.yourSaasPlatformMenu.onRendered(function () {
+Template.yourSaasPlatformMenu.onRendered(function() {
     this.$('.ui.dropdown')
         .dropdown()
 });

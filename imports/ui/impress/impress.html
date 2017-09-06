@@ -17,110 +17,128 @@
             <div class="header">
                 Not supported browser
             </div>
-            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+            <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified
+                version of this presentation.</p>
             <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
         </div>
     </div>
-    <div id="impress">
+    <div id="impress-wrapper" class="ui container">
+        <div id="impress">
 
-        <!-- SLIDE 1 -->
-        <div class="z step introduction slide one">
-            <q>Questions about SaaS and multi-tenancy with Qlik Sense?
+            <!-- SLIDE 1 -->
+            <div class="z step introduction slide one" style="top: 20px;">
+                <q>Questions about SaaS and multi-tenancy with Qlik Sense?
             </q>
-            <div class="ui horizontal divider">
+                <!-- <div class="ui horizontal divider">
                 Or
             </div>
             <q style="margin-top: 20px; margin-bottom:40px">
                 <a href="{{pathFor 'generation'}}" class="ui positive massive centered button">Go to the demo</a>
-            </q>
-        </div>
+            </q> -->
+            </div>
 
-        <!-- SLIDE 2 -->
-        <!-- <div class="z step introduction slide" data-z="-500" data-y="200" data-rotate-y="90">
+            <!-- SLIDE 2 -->
+            <!-- <div class="z step introduction slide" data-z="-500" data-y="200" data-rotate-y="90">
             <q>Here we demonstrate the power of the Qlik Sense <b>APIs</b> within a <b>multi-tenant SaaS application</b> environment.</q>
         </div> -->
-        <div class="z step introduction slide" data-z="-500" data-y="1500" data-rotate-y="90">
-            <h1 class="ui dividing header">Introduction video (7M)</h1>
-            <p>In the video below we explain how this SaaS demo platform uses the Qlik APIs to copy an app, which serves as a "template layout", for each of your customers. Next, we will guide you through the 4 steps.</p>
-            <div class="ui embed" data-url="{{URL_Youtube_concept_behind}}" data-placeholder="/images/architecture - OEM  SaaS scenario simple.png"> </div>
-           
-        </div>
+            <div class="z step introduction slide" data-z="-500" data-y="1500" data-rotate-y="90">
+                <h1 class="ui dividing header">Introduction video (7M)</h1>
+                <p>In the video below we explain how this SaaS demo platform uses the Qlik APIs to copy an app, which serves
+                    as a "template layout", for each of your customers. Next, we will guide you through the 4 steps.</p>
+                <div class="ui embed" data-url="{{URL_Youtube_concept_behind}}" data-placeholder="/images/architecture - OEM  SaaS scenario simple.png">
+                </div>
 
-        <!-- SLIDE 3 -->
-        <div class="z step introduction slide video" data-z="-500" data-y="2500" data-rotate-y="90">
- <h1 class="ui dividing header">Fictious admin panel (broker)</h1>
-            <p>You will see an admin panel in "your SaaS platform" which controls Qlik Sense via APIs based on the information stored in your database about your tenants/customers, their users and authorizations.</p>
-            <img class="ui huge centered image" src="images/SaaS logo.png">
-        </div>
+            </div>
 
-        <!-- DEMO STEP 1 -->
-        <div id="demoStep1" class="z step introduction" data-z="-3000" data-x="4000" data-y="600">
-            <h1 class="ui dividing header">Demo step 1: customers</h1>
-            <img class="ui tiny left floated image" src="images/customers.png">
-            <p>Which customers need Qlik Sense?
-            </p>
-        </div>
-        <!-- DEMO STEP 2 -->
-        <div id="demoStep2" class="z step introduction" data-z="-3000" data-x="4000" data-y="900">
-            <h1 class="ui dividing header">Demo step 2: template apps</h1><img class="ui tiny left floated image" src="images/app.png">Which apps should your customers get?
-        </div>
-        <!-- DEMO STEP 3 -->
-        <div id="demoStep3" class="z step introduction" data-z="-3000" data-x="5000" data-y="900" data-rotate-x="90">
-            <h1 class="ui dividing header">Demo step 3: provisioning</h1>
-            <p>
-                Automatically create the <b>apps</b> for each <b>customer</b>
-            </p>
-            <img class="ui large image" src="images/saas demo concept simple.png">
-        </div>
+            <!-- SLIDE 3 -->
+            <div class="z step introduction slide video" data-z="-500" data-y="2500" data-rotate-y="90">
+                <h1 class="ui dividing header">Fictious admin panel (broker)</h1>
+                <p>You will see an admin panel in "your SaaS platform" which controls Qlik Sense via APIs based on the information
+                    stored in your database about your tenants/customers, their users and authorizations.</p>
+                <img class="ui huge centered image" src="images/SaaS logo.png">
+            </div>
 
-        <div id="demoStep4" class="z step introduction" data-z="-3000" data-x="5000" data-y="1900" data-rotate-x="90">
-            <h3 class="ui dividing header">Demo step 4: Test security and web integration</h3>
-            <p>Test the <b>Single Sign On</b>, with your own users and groups, <strong>embedded</strong> in your platform.</p>
-            <img class="ui small centered image" src="images/embed.png">
-        </div>
+            <!-- DEMO STEP 1 -->
+            <div id="demoStep1" class="z step introduction" data-z="-3000" data-x="4000" data-y="600">
+                <h1 class="ui dividing header">Demo step 1: customers</h1>
+                <img class="ui tiny left floated image" src="images/customers.png">
+                <p>Which customers need Qlik Sense?
+                </p>
+            </div>
+            <!-- DEMO STEP 2 -->
+            <div id="demoStep2" class="z step introduction" data-z="-3000" data-x="4000" data-y="900">
+                <h1 class="ui dividing header">Demo step 2: template apps</h1><img class="ui tiny left floated image" src="images/app.png">Which apps should
+                your customers get?
+            </div>
+            <!-- DEMO STEP 3 -->
+            <div id="demoStep3" class="z step introduction" data-z="-3000" data-x="5000" data-y="900" data-rotate-x="90">
+                <h1 class="ui dividing header">Demo step 3: provisioning</h1>
+                <p>
+                    Automatically create the <b>apps</b> for each <b>customer</b>
+                </p>
+                <img class="ui large image" src="images/saas demo concept simple.png">
+            </div>
 
-        <div class="z step introduction" data-z="-3000" data-x="5900" data-y="4200" data-rotate-x="90">
-            <q style="margin-top: 20px; margin-bottom:40px">
+            <div id="demoStep4" class="z step introduction" data-z="-3000" data-x="5000" data-y="1900" data-rotate-x="90">
+                <h3 class="ui dividing header">Demo step 4: Test security and web integration</h3>
+                <p>Test the <b>Single Sign On</b>, with your own users and groups, <strong>embedded</strong> in your platform.</p>
+                <img class="ui small centered image" src="images/embed.png">
+            </div>
+
+            <div class="z step introduction" data-z="-3000" data-x="5900" data-y="4200" data-rotate-x="90">
+                <q style="margin-top: 20px; margin-bottom:40px">
                 <a href="{{pathFor 'generation'}}" class="ui positive massive centered button">Go to the demo</a>
             </q>
-        </div>
+            </div>
 
-        <div id="APIUseCases" class="z step introduction" data-z="-3000" data-x="5900" data-y="6200" data-rotate-x="90" style="font-size: 2em; margin: auto;">
-            <h1 class="ui icon header">
-               <img class="ui tiny image" src="images/API.png">
-               <div class="content">
-                   With the <strong><a target="_blank" href="https://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm">APIs</a></strong>,
-                   the only <b>limit</b> is your <b class="imagination">imagination</b>
-                   <div class="sub header"> And you can just re-use the source code for the tasks we automated</div>
-               </div>
-           </h1>
-            <ul style="margin-left: 40px;">
-                <li><a target="_blank" href="{{github_create_stream}}">Create a stream with the customer’s name</a></li>
-                <li><a target="_blank" href="{{github_copy_app}}">Copy the template app</a></li>
-                <li><a target="_blank" href="{{github_replace_and_reload_app}}">Replace the script and reload the app</a></li>
-                <li><a target="_blank" href="{{github_publish_app}}">Publish the app in the customer stream</a></li>
-            </ul>
-        </div>
+            <div id="APIUseCases" class="z step introduction" data-z="-3000" data-x="5900" data-y="6200" data-rotate-x="90" style="font-size: 2em; margin: auto;">
+                <h1 class="ui icon header">
+                    <!-- <img class="ui tiny image" src="images/API.png"> -->
+                    <div class="content">
+                        With the <strong><a target="_blank" href="https://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm">APIs</a></strong>,
+                        the only <b>limit</b> is your <b class="imagination">imagination</b>
+                        <div class="sub header"> And you can just re-use the source code for the tasks we automated</div>
+                    </div>
+                </h1>
+                <ul style="margin-left: 40px;">
+                    <li><a target="_blank" href="{{github_create_stream}}">Create a stream with the customer’s name</a></li>
+                    <li><a target="_blank" href="{{github_copy_app}}">Copy the template app</a></li>
+                    <li><a target="_blank" href="{{github_replace_and_reload_app}}">Replace the script and reload the app</a></li>
+                    <li><a target="_blank" href="{{github_publish_app}}">Publish the app in the customer stream</a></li>
+                </ul>
+                <h2 class="ui header"> System setup </h2>
 
-        <div id="sourceCode" class="z step introduction" data-z="-3000" data-x="5900" data-y="7200" data-rotate-x="180" style="font-size: 2em; margin: auto;">
-            <div class="ui container">
-                <q>Want to know more?</q>
-                <br>
-                <div class="ui buttons">
-                    <a class="ui button" target="_blank" href="{{pathFor 'slides'}}">Slide generator</a>
-                    <div class="or"></div>
-                    <a href="{{pathFor 'documentation'}}" target="_blank" class="ui button">Documentation</a>
-                    <!--   <div class="or"></div>
+                <ul style="margin-left: 40px;">
+                    <li><a target="_blank" href="#"> Install Qlik Sense (silent script) </a></li>
+                    <li><a target="_blank" href="#"> Insert license </a></li>
+                    <li><a target="_blank" href="#"> Upload template apps </a></li>
+                    <li><a target="_blank" href="#"> Upload extensions </a></li>
+                    <li><a target="_blank" href="#"> Setup security rules </a></li>
+                    <li><a target="_blank" href="#"> Create database connections </a></li>
+                    <li> ... or anything you would normally do by hand </li>
+                </ul>
+            </div>
+
+            <div id="sourceCode" class="z step introduction" data-z="-3000" data-x="5900" data-y="7200" data-rotate-x="180" style="font-size: 2em; margin: auto;">
+                <div class="ui container">
+                    <q>Want to know more?</q>
+                    <br>
+                    <div class="ui buttons">
+                        <a class="ui button" target="_blank" href="{{pathFor 'slides'}}">Slide generator</a>
+                        <div class="or"></div>
+                        <a href="{{pathFor 'documentation'}}" target="_blank" class="ui button">Documentation</a>
+                        <!--   <div class="or"></div>
                 <a href= {{pathFor 'videoOverview'}} target="_blank" class="ui dropdown youtube button"><i class="youtube icon"></i>Video overview</a> -->
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="z step introduction" data-x="5000" data-y="1350" data-scale="8">
-            <a href="{{pathFor 'generation'}}" class="massive ui positive centered button">Go to the demo</a>
-        </div>
-        <!--  <div id="overview" class="z step introduction" data-x="3000" data-y="1500" data-scale="10">
+            <div class="z step introduction" data-x="5000" data-y="1350" data-scale="8">
+                <a href="{{pathFor 'generation'}}" class="massive ui positive centered button">Go to the demo</a>
+            </div>
+            <!--  <div id="overview" class="z step introduction" data-x="3000" data-y="1500" data-scale="10">
     </div> -->
+        </div>
     </div>
     <!--
     
