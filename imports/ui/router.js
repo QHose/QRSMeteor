@@ -2,7 +2,7 @@ var Cookies = require('js-cookie');
 
 //Layout Configuration. http://stackoverflow.com/questions/28864942/meteor-use-2-different-layouts-ironrouter
 Router.configure({
-    layoutTemplate: 'layout',
+    layoutTemplate: 'containerlayout',
     notFoundTemplate: 'notFound',
 });
 
@@ -148,7 +148,6 @@ Router.route('/userOverview');
 Router.route('/homeAbout');
 Router.route('/ApiLogsTable');
 Router.route('/introduction');
-Router.route('/videoOverview');
 Router.route('/SecurityDeepDive');
 Router.route('/generation');
 Router.route('/securityRules');
@@ -192,10 +191,14 @@ Router.route('/sequenceDiagramOverview');
 Router.route('/sequenceDiagramGeneration');
 Router.route('/legal');
 
-// Router.route('/documentation');
+Router.route('/videoOverview', {
+    template: 'videoOverview',
+    layoutTemplate: 'containerlayout'
+});
+
 Router.route('/documentation', {
     template: 'documentation',
-    layoutTemplate: 'layoutDocumentation'
+    layoutTemplate: 'containerlayout'
 });
 
 Router.route('/templateOverview');
@@ -260,22 +263,14 @@ Router.route('/slideGenerator', {
 });
 
 Router.route('/useCaseSelection', function() {
-    this.layout('mainLandingPage');
+    this.layout('containerlayout');
     this.render('useCaseSelection');
 });
 
 Router.route('/selfService', function() {
-    // this.layout('regionLayout');
     this.layout('SSBILayout');
-    this.render('SSBINav', { to: 'nav' });
-    // this.render('GeneralNav', { to: 'nav' });
+    this.render('nav', { to: 'nav' });
     this.render('SSBIUsers', { to: 'aside' });
     // this.render('SSBIFooter', { to: 'footer' });
     this.render('SSBISenseApp');
 });
-
-
-// Router.route('/signup');
-
-// Router.route('/register');
-// Router.route('/login');

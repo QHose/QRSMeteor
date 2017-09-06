@@ -1,9 +1,10 @@
 <template name="layout">
+        {{> nav}}
     <div class="ui relaxed grid container">
         <div class="one wide column">
         </div>
         <div class="fourteen wide column">
-            {{> nav}} {{> modals}} {{> sAlert}}
+             {{> modals}} {{> sAlert}}
             <!-- {{#if currentUser}} --><!-- also removes option to login via the menu --> 
                 {{> yield}}
            <!--  {{else}}
@@ -23,12 +24,13 @@
     {{> footer}}
 </template>
 <template name="ImpressLayout">
-    {{> ImpressNav}} {{> sAlert}} {{> yield}}
-    <!-- {{> impressFooter}} -->
+    {{> nav}} {{> sAlert}} {{> yield}}
 </template>
+
+
 <template name="SSBILayout">
     {{> yield "nav"}} {{> sAlert}} 
-    <div class="ui relaxed padded stackable grid">
+    <div class="ui stackable grid">
         <div class="sixteen wide column">
             <div class="ui three column stackable grid">
                 <div class="five wide column"> {{> yield "aside"}} </div>
@@ -36,24 +38,20 @@
             </div>
         </div>
     </div>
-    {{> SSBIFooter}}
-</template>
-<template name="layoutDocumentation">
-    {{> documentationNav}} {{> modals}} {{> sAlert}} {{> yield}}
-    <div class="ui relaxed very padded stackable grid">
-        <div class="one wide column">
-        </div>
-        <div class="fourteen wide column">
-        </div>
-        <div class="one wide column">
-        </div>
-    </div>
-    {{> documentationFooter}}
+    <!-- {{> SSBIFooter}} -->
 </template>
 
-<template name="footer">       
-  
-    
+
+<template name="containerlayout">
+        {{> nav}}
+    <div class="ui container">
+             {{> sAlert}}
+            {{> modals}}  {{> yield}}
+    </div>
+    {{> footer}}
+</template>
+
+<template name="footer">         
     <div class="general footer">
         <div class="container-fluid">
             <div class="row">
@@ -69,6 +67,7 @@
     </div>
     
 </template>
+
 <template name="impressFooter">
     {{#if nav}}  
     <section class="general footer-top sticky">

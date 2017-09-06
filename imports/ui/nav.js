@@ -8,89 +8,46 @@ import { Session } from 'meteor/session';
 const Cookies = require('js-cookie');
 
 Template.nav.helpers({
-    isDemoPage() {
+    isSaaSDemoPage() {
         return Router.current().route.getName() === 'generation';
     },
-});
-
-Template.SSBINav.helpers({
+    isDocumentationPage() {
+        return Router.current().route.getName() === 'documentation';
+    },
+    isSelfServicePage() {
+        return Router.current().route.getName() === 'selfService';
+    },
+    isVideoPage() {
+        return Router.current().route.getName() === 'videoOverview';
+    },
+    isMainLandingPage() {
+        return !Router.current().route.getName() || Router.current().route.getName() === 'useCaseSelection';
+    },
     userRole() {
         let role = setUserRole();
         return role;
     },
 });
-Template.ImpressNav.helpers({
-    userRole() {        
-        let role = setUserRole();
-        return role;
-    },
-});
-Template.documentationNav.helpers({
-    userRole() {
-        let role = setUserRole();
-        return role;
-    },
-});
-Template.SSBINav.onRendered(function() {
+
+Template.nav.onRendered(function () {
     this.$('.header .dropdown-toggle').dropdown()
-    this.$('.header .dropdown-toggle').on('click', function(){
+    this.$('.header .dropdown-toggle').on('click', function () {
         $('.header .dropdown-menu').toggle()
     });
     if (localStorage.userRole) {
         this.$(`.navbar-right .dropdown-menu li a[data="${localStorage.userRole}"]`).parent().addClass('active')
     }
-    this.$('.header .dropdown-menu a').on('click', function(){
+    this.$('.header .dropdown-menu a').on('click', function () {
         role = $(this).attr("data")
         Session.set('userRole', role);
         $('.dropdown-menu li').removeClass('active')
         $(this).parent().addClass('active');
         $('.header .dropdown-menu').toggle()
     });
-});
-Template.ImpressNav.onRendered(function() {
-    this.$('.header .dropdown-toggle').dropdown()
-    this.$('.header .dropdown-toggle').on('click', function(){
-        $('.header .dropdown-menu').toggle()
-    });
-    if (localStorage.userRole) {
-        this.$(`.navbar-right .dropdown-menu li a[data="${localStorage.userRole}"]`).parent().addClass('active')
-    }
-    this.$('.header .dropdown-menu a').on('click', function(){
-        role = $(this).attr("data")
-        Session.set('userRole', role);
-        $('.dropdown-menu li').removeClass('active')
-        $(this).parent().addClass('active');
-        $('.header .dropdown-menu').toggle()
-    });
-});
-Template.documentationNav.onRendered(function() {
-    let tab = getQueryParams('tab');
-    if (tab==='video') {
-        this.$('.navbar-left li').removeClass('active');
-        this.$('.navbar-left li[data-tab="video"]').addClass('active')
-    }
-    if (localStorage.userRole) {
-        this.$(`.navbar-right .dropdown-menu li a[data="${localStorage.userRole}"]`).parent().addClass('active')
-    }
-    this.$('.header .dropdown-toggle').dropdown()
-    this.$('.header .dropdown-toggle').on('click', function(){
-        $('.header .dropdown-menu').toggle()
-    });
-    this.$('.header .dropdown-menu a').on('click', function(){
-        role = $(this).attr("data")
-        Session.set('userRole', role);
-        $('.dropdown-menu li').removeClass('active')
-        $(this).parent().addClass('active');
-        $('.header .dropdown-menu').toggle()
-    });
-});
-Template.SSBINav.events({
-    // 'click .header .dropdown-toggle' () {
-    //     $('.header .dropdown-menu').toggle()
-    // },
 });
 
-Template.yourSaasPlatformMenu.onRendered(function() {
+
+Template.yourSaasPlatformMenu.onRendered(function () {
     this.$('.ui.dropdown')
         .dropdown()
 });

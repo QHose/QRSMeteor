@@ -1,10 +1,6 @@
-/*/*/
-
-*
 /*CSS declarations go here */
 
 .mainLandingImage {
-    /* max-width: 1400px; */
     background-image: url('images/bg_intro.jpg');
     background-size: auto 400px;
     background-position: top center;
@@ -13,14 +9,22 @@
 }
 
 .mainNavBar {
-    margin-top: 0px !important
+    margin-top: 0px !important;
+    background-color: #62ac1e !important;
 }
 
 .mainNavBar a {
-    color: white;
+    color: white !important;
 }
 
-.landing {
+.mainNavBar a.active.item {
+    border-color: #E36E0F !important;
+    /* color: #E36E0F !important; */
+    font-size: 1.2em;
+}
+
+
+/* .landing {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -28,26 +32,22 @@
 
 .landing .row {
     margin-left: 0px !important;
-}
+} */
 
-.landing .row.selectRole {
+.landing .selectRole {
     margin-top: 60px;
     color: white;
+    height: 300px;
 }
 
-.landing .documentation.row {
-    position: absolute;
-    color: black;
-    top: 350px;
-    margin-left: 0px;
-}
 
-.landing>.footer {
+/* .landing>.footer {
     flex: 1;
-}
+} */
 
 .footer {
-    margin-top: 30px;
+    position: absolute;
+    bottom: 0px;
     width: 100%;
 }
 
@@ -85,14 +85,6 @@
 
 .ui.fixed.table.apiLogs td {
     overflow-wrap: break-word;
-}
-
-.deleteStream,
-.copyApp,
-.deleteApp,
-.markAsTemplate,
-.deleteStream {
-    cursor: pointer
 }
 
 pre {
