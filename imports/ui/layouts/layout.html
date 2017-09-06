@@ -1,21 +1,17 @@
 <template name="layout">
-    {{> nav}}
+    {{> containerlayout}}
+    <!-- {{> nav}}
     <div class="ui relaxed grid container">
         <div class="one wide column">
         </div>
         <div class="fourteen wide column">
             {{> modals}} {{> sAlert}}
-            <!-- {{#if currentUser}} -->
-            <!-- also removes option to login via the menu -->
             {{> yield}}
-            <!--  {{else}}
-                {{> loginDimmer}} -->
-            <!-- {{/if}} -->
         </div>
         <div class="one wide column">
         </div>
     </div>
-    {{> footer}}
+    {{> footer}} -->
 </template>
 
 
@@ -23,6 +19,7 @@
 <template name="SSOLayout">
     {{> sAlert}} {{> yield}} {{> footer}}
 </template>
+
 <template name="ImpressLayout">
     {{> nav}} {{> sAlert}} {{> yield}}
 </template>
@@ -43,20 +40,24 @@
 
 
 <template name="containerlayout">
+    <div class="wrap">
     {{> nav}}
-    <div class="ui container">
-        {{> sAlert}} {{> modals}} {{> yield}}
+    
+        <div class="ui container">
+            {{> sAlert}} {{> modals}} {{> yield}}
+        </div>
     </div>
     {{> footer}}
 </template>
 
 <template name="footer">
     <div class="footer">
+
         <div class="ui container">
+                    <img class="ui left floating image image" src="./images/qlik_logo.svg" style="height: 100px; padding-top: 30px;">
 
             <div class="ui three column grid">
-                <div class="column"> 
-                        <img class="ui fluid image" src="./images/qlik_logo.svg" style="height: 100px;">
+                <div class="column">
                     <!-- <a href="/"><img src="./images/qlik_logo.svg" class="logo"></a>  -->
                 </div>
                 <!-- <div class="column"><a href="http://oem.qlik.com" target="_blank">OEM.QLIK.COM</a></div>
@@ -96,6 +97,7 @@
             </div>
         </div>
     </section>
+
 </template>
 <template name="SSBIFooter">
     {{#if nav}}

@@ -21,10 +21,18 @@
     color: white !important;
 }
 
+
+/* .mainNavBar a.item {
+} */
+
 .mainNavBar a.active.item {
     border-color: #E36E0F !important;
     /* color: #E36E0F !important; */
-    font-size: 1.2em;
+    font-size: 1.1em;
+}
+
+.wrap {
+    min-height: calc(100vh - 150px);
 }
 
 
@@ -50,16 +58,16 @@
 } */
 
 .footer {
-    position: absolute;
+    /* position: absolute;
     bottom: 0px;
-    width: 100%;
-    height: 100px;
+    width: 100%; */
+    height: 150px;
     background-image: url('./images/bg_footer.jpg');
     background-size: 100%;
     background-position: bottom right;
     background-repeat: no-repeat;
     background-color: @color-tan;
-    padding-top: 60px;
+    padding-top: 30px;
     padding-left: 0;
 }
 
