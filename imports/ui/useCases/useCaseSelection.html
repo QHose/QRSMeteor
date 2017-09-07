@@ -1,51 +1,53 @@
 <template name="useCaseSelection">
-  
+
     <div class="ui two column grid landing">
-          <div class="column selectRole">            
-                <h1>SaaS with Qlik Sense Integration Demo</h1>
-                <p>Questions about SaaS and multi-tenancy with Qlik Sense? In our demonstration site, we show and reveal how you can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment.</p>
-                <p>Select your role to start your journey</p>
-                <p>     
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="column selectRole">
+            <h1>Multi-tenancy & Qlik Sense Integration</h1>
+            <p>Questions about SaaS and multi-tenancy with Qlik Sense? In our demonstration site, we show and reveal how you
+                can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment.</p>
+            <p>Select your role to start your journey</p>
+            <p>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{userRole}} <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{webIntegrationDemo}}?ur=1" data="Developer">Developer</a></li>
-                            <li><a href="{{webIntegrationDemo}}?ur=2" data="Product Owner">Product Owner</a></li>
-                            <li><a href="{{pathFor 'impress'}}" data="Hosting Ops Professional">Hosting Ops Professional</a></li>
-                            <li><a href="{{pathFor 'selfService'}}" data="Business Analyst">Business Analyst</a></li>
-                            <li><a href="{{webIntegrationDemo}}?ur=5" data="CTO">CTO</a></li>
-                            <li><a href="{{pathFor 'selfService'}}" data="C-Level executive, non-technical">C-Level executive, non-technical</a></li>
-                        </ul>
-                    </div>
-                </p>
-         </div>
-         
-        <div class="column"></div>
-        <div class="column">
-            <h1>Video Library</h1>
-            <p>For a guided explanation about all the topics of integration</p>
-            <a href="{{pathFor 'documentation'}}?tab=video" class="ui green basic button">Video Resource Library </a>            
-          </div>
-          <!-- <div class="column">
+                    <ul class="dropdown-menu">
+                        <li><a href="{{webIntegrationDemo}}?ur=1" data="Developer">Developer</a></li>
+                        <li><a href="{{webIntegrationDemo}}?ur=2" data="Product Owner">Product Owner</a></li>
+                        <li><a href="{{pathFor 'impress'}}" data="Hosting Ops Professional">Hosting Ops Professional</a></li>
+                        <li><a href="{{pathFor 'selfService'}}" data="Business Analyst">Business Analyst</a></li>
+                        <li><a href="{{webIntegrationDemo}}?ur=5" data="CTO">CTO</a></li>
+                        <li><a href="{{pathFor 'selfService'}}" data="C-Level executive, non-technical">C-Level executive, non-technical</a></li>
+                    </ul>
+                </div>
+            </p>
+        </div>
+
+        <div class="row secondRow">
+            <div class="column">
+                <h1>Video Library</h1>
+                <p>For a guided introduction to Qlik Sense integration in your software</p>
+                <a href="{{pathFor 'documentation'}}?tab=video" class="ui green basic button">Video Resource Library </a>
+            </div>
+            <!-- <div class="column">
             <img src="./images/image_VideoLibrary.jpg">
           </div> -->
-          <div class="column">
-            <h1>On Demand Slides</h1>
-            <p>Based on your role, selected skills & requirements we create a presentation on the fly. Topics include web, security and API integration, all powered by the Engine API.</p>
-            <a href="{{pathFor 'slides'}}" class="ui green basic button">Slides </a>            
-          </div>
-          <div class="column"></div>
-          
+            <div class="column">
+                <h1>On Demand Slides</h1>
+                <p>Based on your role, selected skills & requirements we create a presentation on the fly. Topics include web,
+                    security and API integration, all powered by the Engine API.</p>
+                <a href="{{pathFor 'slides'}}" class="ui green basic button">Slides </a>
+            </div>
+        </div>
+
     </div>
-  
-   
-        
-        
-      
-    
-<!--<div class="ui three column centered grid">
+
+
+
+
+
+
+    <!--<div class="ui three column centered grid">
         <div class="row">
             <h3 class="ui left aligned dividing header">Please select your demo</h3>
         </div>

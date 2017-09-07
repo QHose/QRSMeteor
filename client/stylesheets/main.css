@@ -21,10 +21,6 @@
     color: white !important;
 }
 
-
-/* .mainNavBar a.item {
-} */
-
 .mainNavBar a.active.item {
     border-color: #E36E0F !important;
     /* color: #E36E0F !important; */
@@ -35,21 +31,14 @@
     min-height: calc(100vh - 150px);
 }
 
-
-/* .landing {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
-
-.landing .row {
-    margin-left: 0px !important;
-} */
-
 .landing .selectRole {
     margin-top: 60px;
     color: white;
     height: 300px;
+}
+
+.landing .secondRow {
+    margin-top: 40px;
 }
 
 

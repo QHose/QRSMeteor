@@ -26,23 +26,25 @@
 
 
 <template name="SSBILayout">
-    {{> yield "nav"}} {{> sAlert}}
-    <div class="ui stackable grid">
-        <div class="sixteen wide column">
-            <div class="ui three column stackable grid">
-                <div class="five wide column"> {{> yield "aside"}} </div>
-                <div class="eleven wide column"> {{> yield}}</div>
+    <div class="wrap">
+
+        {{> yield "nav"}} {{> sAlert}}
+        <div class="ui stackable grid">
+            <div class="sixteen wide column">
+                <div class="ui three column stackable grid">
+                    <div class="five wide column" style="max-width: 350px; margin-left: 20px;"> {{> yield "aside"}} </div>
+                    <div class="eleven wide column"> {{> yield}}</div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- {{> SSBIFooter}} -->
+    {{> footer}}
 </template>
 
 
 <template name="containerlayout">
     <div class="wrap">
-    {{> nav}}
-    
+        {{> nav}}
         <div class="ui container">
             {{> sAlert}} {{> modals}} {{> yield}}
         </div>
@@ -54,7 +56,7 @@
     <div class="footer">
 
         <div class="ui container">
-                    <img class="ui left floating image image" src="./images/qlik_logo.svg" style="height: 100px; padding-top: 30px;">
+            <img class="ui left floating image image" src="./images/qlik_logo.svg" style="height: 100px; padding-top: 30px;">
 
             <div class="ui three column grid">
                 <div class="column">

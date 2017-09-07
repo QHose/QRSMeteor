@@ -3,11 +3,11 @@ import './SSBI/SSBI.js';
 import { Session } from 'meteor/session';
 const Cookies = require('js-cookie');
 
-Template.useCaseSelection.events({
-    'click .webIntegrationDemo' () {
-        login('John');
-    },
-})
+// Template.useCaseSelection.events({
+//     'click .webIntegrationDemo' () {
+//         login('John');
+//     },
+// })
 
 Template.useCaseSelection.onRendered(function() {
     $('body').addClass('mainLandingImage');
