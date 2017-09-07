@@ -56,6 +56,7 @@
     background-position: bottom right;
     background-repeat: no-repeat;
     background-color: @color-tan;
+    margin-top: 30px;
     padding-top: 30px;
     padding-left: 0;
 }
