@@ -27,6 +27,21 @@
     font-size: 1.1em;
 }
 
+.backGroundImageColor {
+    content: "";
+    background-color: #62ac1e;
+    position: absolute;
+    height: 400px;
+    width: 40%;
+    top: 0px;
+    left: 0px;
+    z-index: -100;
+}
+
+.saasDemo.active.item {
+    border-color: #E36E0F !important;
+}
+
 .wrap {
     min-height: calc(100vh - 150px);
 }
