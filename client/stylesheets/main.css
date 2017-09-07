@@ -2,10 +2,21 @@
 
 .mainLandingImage {
     background-image: url('images/bg_intro.jpg');
-    background-size: auto 400px;
+    background-size: auto 500px;
     background-position: top center;
     background-repeat: no-repeat;
     text-align: left;
+}
+
+.mainLandingImage .backGroundImageColor {
+    content: "";
+    background-color: #62ac1e;
+    position: absolute;
+    height: 500px;
+    width: 40%;
+    top: 0px;
+    left: 0px;
+    z-index: -100;
 }
 
 .mainNavBar {
@@ -27,23 +38,12 @@
     font-size: 1.1em;
 }
 
-.backGroundImageColor {
-    content: "";
-    background-color: #62ac1e;
-    position: absolute;
-    height: 400px;
-    width: 40%;
-    top: 0px;
-    left: 0px;
-    z-index: -100;
-}
-
 .saasDemo.active.item {
     border-color: #E36E0F !important;
 }
 
 .wrap {
-    min-height: calc(100vh - 150px);
+    min-height: calc(100vh - 180px);
 }
 
 .landing .selectRole {
@@ -57,7 +57,7 @@
 }
 
 .landing .secondRow {
-    margin-top: 40px;
+    margin-top: 150px;
 }
 
 .footer {
