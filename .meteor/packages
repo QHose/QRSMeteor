@@ -41,6 +41,7 @@ iron:router
 jquery@1.11.10                  # Helpful client-side library
 juliancwirko:s-alert
 juliancwirko:s-alert-genie
+juliancwirko:s-alert-stackslide
 meteor-base@1.1.0             # Packages every Meteor app needs to have
 meteorhacks:picker
 mobile-experience@1.0.4       # Packages for a great mobile UX

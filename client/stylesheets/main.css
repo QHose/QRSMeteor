@@ -52,6 +52,10 @@
     height: 300px;
 }
 
+.row {
+    padding: 14px !important;
+}
+
 .landing .secondRow {
     margin-top: 40px;
 }

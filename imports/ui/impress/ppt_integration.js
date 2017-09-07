@@ -10,7 +10,7 @@ var converter = new showdown.Converter();
 const enigma = require('enigma.js');
 // The QIX schema needed by enigma.js
 const qixschema = senseConfig.QIXSchema;
-var appId = senseConfig.IntegrationPresentationApp;
+var appId = Session.get('SlideGeneratorAppId');
 var IntegrationPresentationSortedDataObject = Meteor.settings.public.slideGenerator.dataObject; //'pskL';//a table object in the saas presentation qvf, that ensures the slides are in the correct load order. better would be to load this in this order in the API call.
 var slideWidth = 2000;
 
@@ -25,12 +25,12 @@ const config = {
     },
 };
 
-Template.ppt_integration.onRendered(function () {
+Template.ppt_integration.onRendered(function() {
     initializePresentation();
 })
 
 
-Template.ppt_integration.onCreated(function () {
+Template.ppt_integration.onCreated(function() {
     clearSlideCache()
 })
 
@@ -45,7 +45,7 @@ export function initializePresentation() {
     getLevel1And2();
     appChangeListener();
 
-    $('#impress').on('impress:stepenter', function () {
+    $('#impress').on('impress:stepenter', function() {
         // $('.slideContent').css({ "visibility": "visible" });
         var step = $(this);
 
@@ -57,16 +57,16 @@ export function initializePresentation() {
     });
 
 }
-Template.ppt_integration.onDestroyed(function () {
+Template.ppt_integration.onDestroyed(function() {
     Cookies.set('showSlideSorter', 'false');
 })
 
-Template.integrationSlideContent.onRendered(function () {
+Template.integrationSlideContent.onRendered(function() {
     if (Cookies.get('showSlideSorter') !== 'true') { //slide show is active, first hide everything, then fade in.
         $('.slideContent').css({ "visibility": "hidden" });
     }
 
-    Meteor.setTimeout(function () {
+    Meteor.setTimeout(function() {
         // console.log('render slide content without animations?', Cookies.get('showSlideSorter'));
         if (Cookies.get('showSlideSorter') !== 'true') { //only do animations for the slide show, not the slide overview
             // $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes... show all slide content in the slideSorter
@@ -93,36 +93,36 @@ export function initCodeHighLightAndYouTube(selection) {
     //init the youtube videos via semanticUI
     selection.$('.ui.embed').embed();
     //make sure all code gets highlighted using highlight.js
-    selection.$('pre code').each(function (i, block) {
+    selection.$('pre code').each(function(i, block) {
         hljs.highlightBlock(block);
     });
 }
 
 //both the slidesorter and pptintegration use the helpers below
-Template.registerHelper('chapterSlide', function (currentRow) {
-    if (typeof (currentRow) === 'string') { //we got a chapter slide
+Template.registerHelper('chapterSlide', function(currentRow) {
+    if (typeof(currentRow) === 'string') { //we got a chapter slide
         // console.log('we found a chapter slide', currentRow);
         return true
     }
 });
 
-Template.registerHelper('mainTopics', function () {
+Template.registerHelper('mainTopics', function() {
     return Session.get('mainTopics'); //only the level 1 and 2 colums, we need this for the headers of the slide
 });
-Template.registerHelper('loadingSlides', function () {
+Template.registerHelper('loadingSlides', function() {
     return Session.get('slideLoading');
 })
 
-Template.registerHelper('XValue', function (index) {
+Template.registerHelper('XValue', function(index) {
     return setXValue(index);
 });
 
-Template.registerHelper('thankYouXvalue', function (currentSlideNumber) {
+Template.registerHelper('thankYouXvalue', function(currentSlideNumber) {
     return Session.get('currentSlideNumber') * slideWidth;
 
 });
 
-Template.registerHelper('slideSorter', function () {
+Template.registerHelper('slideSorter', function() {
     return Cookies.get('showSlideSorter') === "true" ? "shrink" : "";
 });
 
@@ -139,12 +139,12 @@ Template.integrationSlide.helpers({
 //for performance reasons we only do all our formatting etc when the slide is active.
 //but for the slide sorter we need all content to be loaded in one go...
 //show the slide if the slide is active, but in case of the slide sorter all slides should be presented at once. This is a performance tweak...
-Template.registerHelper('slideActive', function (slideNr) {
+Template.registerHelper('slideActive', function(slideNr) {
     return (Session.get('activeStepNr') >= slideNr + 1) || Cookies.get('showSlideSorter') === 'true';
 });
 
 Template.integrationSlideContent.helpers({
-    itemsOfLevel: function (level, slide) { //get all child items of a specific level, normally you will insert level 3 
+    itemsOfLevel: function(level, slide) { //get all child items of a specific level, normally you will insert level 3 
         var parents = slide[level - 3].qText + slide[level - 2].qText; //get the names of the parents of the current slide (level 1 and 2)
         if (parents) {
             // console.log('Parent is not empty:', parents);
@@ -199,18 +199,18 @@ function youtube_parser(url) {
     return (match && match[7].length == 11) ? match[7] : false;
 }
 
-var setCurrentSlideEventHelper = function () {
-    $(document).on('impress:stepenter', function (e) {
+var setCurrentSlideEventHelper = function() {
+    $(document).on('impress:stepenter', function(e) {
         var currentSlide = $(e.target).attr('id');
         Session.set('currentSlide', currentSlide);
     });
 }
 
-var getLocalValuesOfLevel = function (parentText) {
+var getLocalValuesOfLevel = function(parentText) {
     // console.log('get all level 3 for level 2 with text:', parentText);
     var result = [];
     var topics = Session.get('integrationTopics'); //the level 1 and 2 values
-    var level3Data = _.filter(topics, function (row) {
+    var level3Data = _.filter(topics, function(row) {
             var parents = row[0].qText + row[1].qText;
             if (parents === parentText) { //if the current level 1 and 2 combination matches 
                 if (row[2].qText) { result.push(row[2].qText) } //add the level 3 value to the new level3Data array
@@ -234,7 +234,7 @@ function getLevel1And2() {
                         var tableWithChapters = insertSectionBreakers(table);
                         console.log('Received a table of data via the Engine API, now the slides can be created by impress.js', tableWithChapters);
                         Session.set('mainTopics', tableWithChapters)
-                        Meteor.setTimeout(function () {
+                        Meteor.setTimeout(function() {
                             if (Cookies.get('showSlideSorter') !== 'true') { //do not initialize impress so we can use the mobile device layout of impress to get all the slide under each other
                                 // console.log('Show slideSorter NOT selected, so initialize impress.js');
                                 impress().init();
@@ -322,7 +322,7 @@ function insertSectionBreakers(table) {
     var currentLevel1, previousLevel1 = '';
     var newTableWithChapter = [];
 
-    table.forEach(function (currentRow) {
+    table.forEach(function(currentRow) {
         var currentLevel1 = textOfLevel(currentRow, 1);
         if (previousLevel1 !== currentLevel1) {
             newTableWithChapter.push(currentLevel1)

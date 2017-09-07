@@ -136,19 +136,39 @@ export function generateStreamAndApp(customers, generationUserId) {
 
 export function setAppIDs(params) {
     console.log('------------------------------------');
-    console.log('GET APP IDs');
+    console.log('SET APP IDs');
     console.log('------------------------------------');
     try {
+        check(Meteor.settings.public.slideGenerator, {
+            name: String,
+            stream: String,
+            selectionSheet: String,
+            dataObject: String,
+            slideObject: String,
+            virtualProxy: String
+        });
+        check(Meteor.settings.public.SSBI, {
+            name: String,
+            stream: String,
+            sheetId: String
+        });
+
         var slideGeneratorApps = getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream);
-        var SSBIApps = getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream);
+        var SSBIApps = getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream);
         if (slideGeneratorApps.length > 1) {
-            throw new Error('Can not automatically set the app ID for the slide generator. You have one but you have multiple slide generator apps under the name ' + Meteor.settings.public.slideGenerator.name + ' in the stream ' + Meteor.settings.public.slideGenerator.stream);
+            throw new Error('Can not automatically set the app ID for the slide generator. You have not one but you have multiple slide generator apps under the name ' + Meteor.settings.public.slideGenerator.name + ' in the stream ' + Meteor.settings.public.slideGenerator.stream);
         }
-        senseConfig.IntegrationPresentationApp = slideGeneratorApps[0].id;
-        console.log('The slide generator app id has been set to ', senseConfig.IntegrationPresentationApp);
+        if (SSBIApps.length > 1) {
+            throw new Error('Can not automatically set the app ID for the Self Service BI app. You have not one but you have multiple Self Service apps under the name ' + Meteor.settings.public.SSBI.name + ' in the stream ' + Meteor.settings.public.SSBI.stream);
+        }
+        senseConfig._SSBIApp = SSBIApps[0].id;
+        console.log('The SSBI app id has been set to ', senseConfig._SSBIApp);
+
+        senseConfig._IntegrationPresentationApp = slideGeneratorApps[0].id;
+        console.log('The slide generator app id has been set to ', senseConfig._IntegrationPresentationApp);
     } catch (err) {
-        // console.error(err)
-        throw new Error('The slideGenerator app can not be found in Qlik sense under the name ' + Meteor.settings.public.slideGenerator.name + ' in the stream ' + Meteor.settings.public.slideGenerator.stream);
+        console.error(err)
+        throw Error('The slideGenerator or Self Service BI app can not be found in Qlik sense', err);
     }
 }
 
@@ -346,7 +366,7 @@ async function uploadApp(filePath, appName) {
                 console.log('Uploaded "' + appName + '.qvf" to Qlik Sense and got appID: ' + appId);
                 resolve(appId);
             } else {
-                console.error(error);
+                console.error("Failed to upload app" + appName, error);
                 reject(error);
             }
         });

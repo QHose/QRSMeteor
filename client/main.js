@@ -31,32 +31,63 @@ import '/imports/ui/pages/architecture.js';
 import '/imports/ui/pages/securityRules.html';
 import '/imports/ui/pages/securityRules.js';
 import '/imports/startup/accounts-config.js';
+import { senseConfig as config } from '/imports/api/config';
 
-import { Template } from 'meteor/templating';
-import { Apps, TemplateApps } from '/imports/api/apps';
-import { Customers } from '/imports/api/customers';
-import { Streams } from '/imports/api/streams'
-import { APILogs } from '/imports/api/APILogs'
-import { Session } from 'meteor/session';
+import {
+    Template
+} from 'meteor/templating';
+import {
+    Apps,
+    TemplateApps
+} from '/imports/api/apps';
+import {
+    Customers
+} from '/imports/api/customers';
+import {
+    Streams
+} from '/imports/api/streams'
+import {
+    APILogs
+} from '/imports/api/APILogs'
+import {
+    Session
+} from 'meteor/session';
 
 import moment from 'moment';
 
 Meteor.startup(function() {
     // console.log('configure sAlert, the popup messaging service');
+    //https://atmospherejs.com/juliancwirko/s-alert
     sAlert.config({
-        effect: 'genie',
-        position: 'top',
+        effect: 'stackslide',
+        position: 'top-right',
         timeout: 9000,
         html: false,
         onRouteClose: true,
         stack: true,
-        offset: 0, // in px - will be added to first alert (bottom or top - depends of the position in config)
+        offset: 50, // in px - will be added to first alert (bottom or top - depends of the position in config)
         beep: false,
-
         onClose: _.noop //
 
     });
     AutoForm.setDefaultTemplate("semanticUI");
+
+    Meteor.call('getAppIDs', function(error, IDs) {
+        console.log('IDs', IDs)
+        console.log('------------------------------------');
+        console.log('Requesting the app IDs from Qlik Sense');
+        console.log('------------------------------------');
+        if (error) {
+            alert('Error', error);
+        } else {
+            Session.set('SSBIAppId', IDs.SSBI);
+            Session.set('SlideGeneratorAppId', IDs._IntegrationPresentationApp);
+
+            console.log('------------------------------------');
+            console.log('SSBI APP IS', config.SSBIAppId);
+            console.log('------------------------------------');
+        }
+    });
 });
 
 //google analytics, only if running on qlik.com

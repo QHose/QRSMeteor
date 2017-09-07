@@ -45,7 +45,6 @@ if (Meteor.isServer) {
         "enginePort": Meteor.settings.private.enginePort
     };
 
-
     if (missingParameters(_senseConfig)) {
         throw 'Missing parameters in _senseConfig, you did not populate the settings.json file in the project root of MeteorQRS, or with docker: did you mount the volume with the config including the settings.json file? (with the correct name)';
     }

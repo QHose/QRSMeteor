@@ -14,7 +14,7 @@ import {
 
 var demoUserAccessRule = "SAAS DEMO - License rule to grant user access";
 
-// http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-License-Add.htm
+// http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-License-Add.htm //
 
 export function getLicense() {
     var lic = qrs.get('/qrs/license');
@@ -40,6 +40,8 @@ export function insertLicense() {
             // lic did not already exist.
         }
         var response = qrs.post('/qrs/license', newLicense, { control: Meteor.settings.private.LicenseControlNumber });
+    } else {
+        throw new Error('You did not specify a valid License number in your settings.json file');
     }
 }
 
