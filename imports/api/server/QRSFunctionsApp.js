@@ -161,11 +161,11 @@ export function setAppIDs(params) {
         if (SSBIApps.length > 1) {
             throw new Error('Can not automatically set the app ID for the Self Service BI app. You have not one but you have multiple Self Service apps under the name ' + Meteor.settings.public.SSBI.name + ' in the stream ' + Meteor.settings.public.SSBI.stream);
         }
-        senseConfig._SSBIApp = SSBIApps[0].id;
-        console.log('The SSBI app id has been set to ', senseConfig._SSBIApp);
+        senseConfig.SSBIApp = SSBIApps[0].id;
+        console.log('The SSBI app id has been set to ', senseConfig.SSBIApp);
 
-        senseConfig._IntegrationPresentationApp = slideGeneratorApps[0].id;
-        console.log('The slide generator app id has been set to ', senseConfig._IntegrationPresentationApp);
+        senseConfig.IntegrationPresentationApp = slideGeneratorApps[0].id;
+        console.log('The slide generator app id has been set to ', senseConfig.IntegrationPresentationApp);
     } catch (err) {
         console.error(err)
         throw Error('The slideGenerator or Self Service BI app can not be found in Qlik sense', err);

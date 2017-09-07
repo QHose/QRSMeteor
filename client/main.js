@@ -73,19 +73,17 @@ Meteor.startup(function() {
     AutoForm.setDefaultTemplate("semanticUI");
 
     Meteor.call('getAppIDs', function(error, IDs) {
-        console.log('IDs', IDs)
+
         console.log('------------------------------------');
         console.log('Requesting the app IDs from Qlik Sense');
         console.log('------------------------------------');
+        console.log('IDs', IDs)
         if (error) {
             alert('Error', error);
         } else {
-            Session.set('SSBIAppId', IDs.SSBI);
-            Session.set('SlideGeneratorAppId', IDs._IntegrationPresentationApp);
-
-            console.log('------------------------------------');
+            config.SSBIAppId = IDs.SSBI;
+            config.IntegrationPresentationApp = IDs.slideGenerator;
             console.log('SSBI APP IS', config.SSBIAppId);
-            console.log('------------------------------------');
         }
     });
 });

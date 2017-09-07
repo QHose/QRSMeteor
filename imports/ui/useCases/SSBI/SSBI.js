@@ -12,7 +12,7 @@ const server = 'http://' + config.host + ':' + config.port + '/' + config.virtua
 console.log('server', server)
 const QMCUrl = server + '/qmc';
 const hubUrl = server + '/hub';
-const sheetUrl = server + '/sense/app/' + config.SSBIAppId;
+const sheetUrl = server + '/sense/app/' + Session.get('SSBIAppId');
 console.log('sheetUrl', sheetUrl)
 const appUrl = server + "/sense/app/" + Session.get('SSBIAppId') + "/sheet/" + Meteor.settings.public.SSBI.sheetId + "/state/analysis";
 console.log('SSBIApp URL', appUrl);

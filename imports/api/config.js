@@ -3,10 +3,6 @@ import { Random } from 'meteor/random';
 import _ from 'meteor/underscore';
 const _QIXSchema = require('/node_modules/enigma.js/schemas/qix/12.20.0/schema.json');
 
-//will be set automatically after meteor server has uploaded the apps into Sense via uploadAndPublishTemplateApps() in QRSFunctionsApp. 
-export var _SSBIApp = '';
-export var _IntegrationPresentationApp = '';
-
 //This is the config that we need to make available on the client (the webpage)
 if (Meteor.isClient) {
     var _senseConfig = {
@@ -15,8 +11,7 @@ if (Meteor.isClient) {
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
         "QIXSchema": _QIXSchema,
-        "SSBIAppId": _SSBIApp,
-        "IntegrationPresentationApp": _IntegrationPresentationApp
+        //ssbi and slide generator app id are set automatically on main.js (client side, via a call to the server)
     };
 }
 

@@ -6,7 +6,7 @@ import { APILogs, REST_Log } from '/imports/api/APILogs';
 //import meteor collections
 import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
-import * as conf from '/imports/api/config';
+
 import * as QSApp from '/imports/api/server/QRSFunctionsApp';
 import * as QSStream from '/imports/api/server/QRSFunctionsStream';
 import * as QSLic from '/imports/api/server/QRSFunctionsLicense';
@@ -43,16 +43,18 @@ async function initQlikSense() {
     var QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);
     if (!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup) {
         console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
-        QSLic.insertLicense();
-        QSLic.insertUserAccessRule();
-        QSSystem.createSecurityRules();
-        QSSystem.disableDefaultSecurityRules();
-        await QSProxy.createVirtualProxies();
-        QSStream.initSenseStreams();
-        await QSApp.uploadAndPublishTemplateApps();
+        // QSLic.insertLicense();
+        // QSLic.insertUserAccessRule();
+        // QSSystem.createSecurityRules();
+        // QSSystem.disableDefaultSecurityRules();
+        // await QSProxy.createVirtualProxies();
+        // QSStream.initSenseStreams();
+        // await QSApp.uploadAndPublishTemplateApps();        
+        //// QSExtensions.automaticUploadExtensions(); //Does not work yet, maybe not even optimal to download and use untested extensions.
+        // QSExtensions.uploadExtensions();
+
+        //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.
         QSApp.setAppIDs();
-        // QSExtensions.automaticUploadExtensions(); //Does not work yet, maybe not even optimal to download and use untested extensions.
-        QSExtensions.uploadExtensions();
     }
 
 }
@@ -125,11 +127,11 @@ function optimizeMongoDB() {
 
 Meteor.methods({
     getAppIDs() {
-        console.log('getAppIDs _SSBIApp id: ' + QSApp.getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream)[0].id);
+        console.log('getAppIDs SBIApp id: ' + senseConfig.SSBIApp); // QSApp.getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream)[0].id);
 
         return {
-            SSBI: QSApp.getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream)[0].id,
-            slideGenerator: QSApp.getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream)[0].id
+            SSBI: senseConfig.SSBIApp, // QSApp.getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream)[0].id,
+            slideGenerator: senseConfig.IntegrationPresentationApp //QSApp.getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream)[0].id
         };
     },
     generateStreamAndApp(customers) {
