@@ -127,8 +127,6 @@ function optimizeMongoDB() {
 
 Meteor.methods({
     getAppIDs() {
-        console.log('getAppIDs SBIApp id: ' + senseConfig.SSBIApp); // QSApp.getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream)[0].id);
-
         return {
             SSBI: senseConfig.SSBIApp, // QSApp.getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream)[0].id,
             slideGenerator: senseConfig.IntegrationPresentationApp //QSApp.getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream)[0].id

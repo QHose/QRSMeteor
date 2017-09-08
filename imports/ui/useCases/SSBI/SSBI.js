@@ -8,15 +8,7 @@ import { insertTemplateAndDummyCustomers } from '/imports/ui/generation/OEMPartn
 
 import './SSBI.html';
 
-const server = 'http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage;
-console.log('server', server)
-const QMCUrl = server + '/qmc';
-const hubUrl = server + '/hub';
-const sheetUrl = server + '/sense/app/' + Session.get('SSBIAppId');
-console.log('sheetUrl', sheetUrl)
-const appUrl = server + "/sense/app/" + Session.get('SSBIAppId') + "/sheet/" + Meteor.settings.public.SSBI.sheetId + "/state/analysis";
-console.log('SSBIApp URL', appUrl);
-
+var server, QMCUrl, hubUrl, sheetUrl, appUrl = '';
 
 Template.SSBISenseApp.helpers({
     show() {
@@ -28,6 +20,22 @@ Template.SSBISenseApp.helpers({
 function showIFrame() {
     return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
 }
+
+
+Template.SSBIUsers.onCreated(function() {
+    console.log('------------------------------------');
+    console.log('SSBISenseIFrame created');
+    console.log('------------------------------------');
+    server = 'http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage;
+    console.log('server', server)
+    QMCUrl = server + '/qmc';
+    hubUrl = server + '/hub';
+    sheetUrl = server + '/sense/app/' + config.SSBIAppId;
+    console.log('sheetUrl', sheetUrl)
+    appUrl = server + "/sense/app/" + config.SSBIAppId + "/sheet/" + Meteor.settings.public.SSBI.sheetId + "/state/analysis";
+    console.log('SSBIApp URL', appUrl);
+
+})
 
 Template.SSBISenseIFrame.onRendered(function() {
     this.$('.IFrameSense')
@@ -117,13 +125,12 @@ Template.senseButtons.onRendered(function() {
 // })
 
 function login(user) {
-    // console.log('login ', user, Meteor.userId());
     try {
         Session.set('loadingIndicator', 'loading');
         Session.set('currentUser', user);
 
         var URLtoOpen = Session.get('appUrl');
-        console.log('login: the url to open from session is: ', URLtoOpen);
+        console.log('login: the url to open is: ', URLtoOpen);
         Meteor.call('simulateUserLogin', user, (error, result) => {
             if (error) {
                 sAlert.error(error);
