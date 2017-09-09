@@ -7,7 +7,12 @@
         "sessionCookieHeaderName": "X-Qlik-Session-anon",
         "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
         "sessionInactivityTimeout": 30,
-        "websocketCrossOriginWhiteList": ["jshell.net"],
+        "websocketCrossOriginWhiteList": [
+            "integration.qlik.com",
+            "web.saasdemo.qlik.com",
+            "jshell.net",
+            "localhost"
+        ],
         "defaultVirtualProxy": false
     },
     {
@@ -21,7 +26,8 @@
         "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
         "sessionInactivityTimeout": 999,
         "websocketCrossOriginWhiteList": [
-            "integration.qlik.com"
+            "integration.qlik.com",
+            "localhost"
         ],
         "defaultVirtualProxy": false
     },
@@ -38,7 +44,8 @@
         "websocketCrossOriginWhiteList": [
             "integration.qlik.com",
             "web.saasdemo.qlik.com",
-            "jshell.net"
+            "jshell.net",
+            "localhost"
         ],
         "defaultVirtualProxy": false
     },

@@ -26,7 +26,7 @@ export var myQRS = function myQRSMain() {
 
     this.get = function get(path, params = {}, data = {}) {
         var endpoint = checkPath(path);
-        console.log('QRS module received get request for endpoint', endpoint);
+        console.log('QRS module received GET request for endpoint', endpoint);
 
         // copy the params to one object
         var newParams = Object.assign({ xrfkey: senseConfig.xrfkey }, params);
@@ -66,7 +66,7 @@ export var myQRS = function myQRSMain() {
         console.log('endpoint', endpoint)
         console.log('data', data)
 
-        // copy the params to one object
+        // copy the params to one object.
         var newParams = Object.assign({ xrfkey: senseConfig.xrfkey }, params);
         console.log('newParams', newParams)
         try {

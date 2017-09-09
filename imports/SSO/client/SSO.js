@@ -107,12 +107,12 @@
       userProperties.group = Session.get('groupForPresentation'); //make sure dummy users don;t get access to this app
       console.log('presentation group is ', userProperties.group);
 
-      Meteor.call('loginUserForPresentation', senseParams.proxyRestUri, senseParams.targetId, userProperties, (error, redirectUrl) => {
+      Meteor.call('loginUserForPresentationViaRedirect', senseParams.proxyRestUri, senseParams.targetId, userProperties, (error, redirectUrl) => {
           Session.set('SSOLoading', false);
           if (error) {
               sAlert.error(error);
               console.error('Meteor SSO page, could not get a redirectUrl from Qlik Sense', error)
-              // Router.go('presentation'); //GO TO THE SLIDE landing page first
+                  // Router.go('presentation'); //GO TO THE SLIDE landing page first
           } else {
               console.log('redirect URL received, now change the URL of the browser back to the slide generator page');
               Cookies.set('authenticatedSlideGenerator', 'true');

@@ -39,15 +39,15 @@ async function initQlikSense() {
     console.log('------------------------------------');
     Meteor.call('updateLocalSenseCopy');
 
-    //By checking if a stream exist we try to figure out if this is a fresh or already existing Qlik Sense installation.
+    //By checking if a stream exist we try to figure out if this is a fresh or already existing Qlik Sense installation.//
     var QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);
     if (!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup) {
         console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
         // QSLic.insertLicense();
         // QSLic.insertUserAccessRule();
-        // QSSystem.createSecurityRules();
-        // QSSystem.disableDefaultSecurityRules();
-        // await QSProxy.createVirtualProxies();
+        await QSSystem.createSecurityRules();
+        // QSSystem.disableDefaultSecurityRules(); //DOES NOT WORK YET...
+        await QSProxy.createVirtualProxies();
         // QSStream.initSenseStreams();
         // await QSApp.uploadAndPublishTemplateApps();        
         //// QSExtensions.automaticUploadExtensions(); //Does not work yet, maybe not even optimal to download and use untested extensions.

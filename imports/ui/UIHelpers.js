@@ -1,8 +1,17 @@
     // import meteor collections
-    import { Apps, TemplateApps } from '/imports/api/apps';
-    import { Streams } from '/imports/api/streams';
-    import { Customers } from '/imports/api/customers';
-    import { senseConfig } from '/imports/api/config';
+    import {
+        Apps,
+        TemplateApps
+    } from '/imports/api/apps';
+    import {
+        Streams
+    } from '/imports/api/streams';
+    import {
+        Customers
+    } from '/imports/api/customers';
+    import {
+        senseConfig
+    } from '/imports/api/config';
 
     export var gitHubLinks = {
         createStream: 'https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsStream.js#L53',
@@ -22,7 +31,7 @@
 
     if (Meteor.isClient) {
         // console.log('Setup generic helper functions, for functions every template needs');
-        Template.registerHelper('formatDate', function (date) {
+        Template.registerHelper('formatDate', function(date) {
             return moment(date)
                 .format('DD-MM-YYYY');
         });
@@ -34,196 +43,204 @@
         //         .replace(/,/g, ".");
         // });
 
-        Template.registerHelper('URL_Youtube_howToDemo', function () {
+        Template.registerHelper('URL_Youtube_howToDemo', function() {
             return 'https://www.youtube.com/embed/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';
         });
-        Template.registerHelper('URL_Youtube_quickIntro', function () {
+        Template.registerHelper('URL_Youtube_quickIntro', function() {
             return '';
         });
 
-        Template.registerHelper('URL_Youtube_1mflashyIntro', function () {
+        Template.registerHelper('URL_Youtube_1mflashyIntro', function() {
             return 'https://www.youtube.com/embed/W3gDKdv6K8Y';
         });
 
-        Template.registerHelper('URL_Youtube_playlist', function () {
+        Template.registerHelper('URL_Youtube_playlist', function() {
             return 'https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';
         });
-        Template.registerHelper('URL_Youtube_integrated_flow', function () {
+        Template.registerHelper('URL_Youtube_integrated_flow', function() {
             return "https://www.youtube.com/embed/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
         });
 
-        Template.registerHelper('URL_Youtube_generic_security_intro', function () {
+        Template.registerHelper('URL_Youtube_generic_security_intro', function() {
             return "https://www.youtube.com/embed/sdCVsMzTf64";
         });
 
 
-        Template.registerHelper('URL_Youtube_webintegration_introduction', function () {
+        Template.registerHelper('URL_Youtube_webintegration_introduction', function() {
             return "https://www.youtube.com/embed/zuNvZ_UTmow?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
         });
 
         //QAP
-        Template.registerHelper('URL_Youtube_webintegration_extended', function () {
+        Template.registerHelper('URL_Youtube_webintegration_extended', function() {
             return "https://www.youtube.com/embed/yLTqzftDa7s";
         });
 
-        Template.registerHelper('URL_Youtube_architecture_introduction', function () {
+        Template.registerHelper('URL_Youtube_architecture_introduction', function() {
             return "https://www.youtube.com/embed/sv5nKDvmRPI?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
         });
 
-        Template.registerHelper('URL_Youtube_security_introduction', function () {
+        Template.registerHelper('URL_Youtube_security_introduction', function() {
             return "https://www.youtube.com/embed/XJ9dOHoMiXE?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";
         });
 
-        Template.registerHelper('URL_Youtube_security_deepDive', function () {
+        Template.registerHelper('URL_Youtube_security_deepDive', function() {
             return "https://www.youtube.com/embed/iamo6RLc5Pg";
         });
 
-        Template.registerHelper('URL_Youtube_concept_behind', function () {
+        Template.registerHelper('URL_Youtube_concept_behind', function() {
             return "https://www.youtube.com/embed/1PjcTFnC4Mo";
         });
 
-        Template.registerHelper('doc_demo_manual', function () {
+        Template.registerHelper('doc_demo_manual', function() {
             return '/docs/How to demo the Qlik Sense SaaS demo platform.pdf';
         });
 
-        Template.registerHelper('doc_sec_function_task_matrix', function () {
+        Template.registerHelper('doc_sec_function_task_matrix', function() {
             return '/docs/QlikSense Authorizations - Function and Tasks_Demo.xlsx';
         });
 
-        Template.registerHelper('doc_securtityIntegration', function () {
+        Template.registerHelper('doc_securtityIntegration', function() {
             return 'https://community.qlik.com/docs/DOC-17599';
         });
-        Template.registerHelper('doc_processIntegration', function () {
+        Template.registerHelper('doc_processIntegration', function() {
             return 'https://community.qlik.com/docs/DOC-17831';
         });
 
 
-        Template.registerHelper('doc_integrationOverview', function () {
+        Template.registerHelper('doc_integrationOverview', function() {
             return 'https://community.qlik.com/docs/DOC-9533';
         });
 
-        Template.registerHelper('doc_sourceCode', function () {
+        Template.registerHelper('doc_sourceCode', function() {
             return '/docs/Qlik Sense SaaS demo tool documentation of source code.docx';
         });
 
-        Template.registerHelper('doc_demo_setup_instructions', function () {
+        Template.registerHelper('doc_demo_setup_instructions', function() {
             return '/docs/Qlik Sense SaaS demo tool setup instructions.docx';
         });
 
-        Template.registerHelper('doc_webIntegration', function () {
+        Template.registerHelper('doc_webIntegration', function() {
             return 'https://community.qlik.com/docs/DOC-17834';
         });
-        Template.registerHelper('doc_dataIntegration', function () {
+        Template.registerHelper('doc_dataIntegration', function() {
             return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FData%20integration%20Combine%20sources%20into%20one%20associative%20model%7Ce669a0a2-9a83-470e-aae8-ba63ac500038%2F%29';
         });
 
-        Template.registerHelper('seq_ticketing_flow', function () {
+        Template.registerHelper('seq_ticketing_flow', function() {
             return "http://knsv.github.io/mermaid/live_editor/#/view/c2VxdWVuY2VEaWFncmFtCkJyb3dzZXItPj5NZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IFVzZXIgbG9ncyBpbiBpbnRvIE1ldGVvciAKQnJvd3Nlci0-PiBQcm94eTogSUZyYW1lIHRyaWVzIHRvIG9wZW4gU2Vuc2UgY29udGVudCB2aWEgbGluayB0aGF0IGNvbnRhaW5zIC9wcm94eS8KUHJveHktPj5NZXRlb3IgU1NPIGNsaWVudDogUmVkaXJlY3QgcmVxdWVzdCB0byB3ZWJwYWdlIG9uIHRoZSBjbGllbnQgKGNsaWVudCBzaWRlIHJvdXRlKS4KCk5vdGUgcmlnaHQgb2YgUHJveHk6IFByb3h5IGFsc28gaW5jbHVkZXMgdGFyZ2V0SWQgPSA8SUQgZm9yIHRoZSBvcmlnaW5hbCBVUkkgdGhhdCB0aGUgdXNlciB0cmllcyB0byBhY2Nlc3M-LCBhbmQgcHJveHlSZXN0VXJpID0gPHRoZSBVUkkgd2hlcmUgdGhlIGF1dGhlbnRpY2F0aW9uIG1vZHVsZSBjYW4gYWNjZXNzIHRoZSBSRVNUIEFQST4KTWV0ZW9yIFNTTyBjbGllbnQtPk1ldGVvciBzZXJ2ZXI6ICBjbGllbnQgY2FsbHMgKHVzZXIgYXdhcmUpIHNlcnZlciBzaWRlIG1ldGhvZApOb3RlIHJpZ2h0IG9mIE1ldGVvciBzZXJ2ZXI6IFNpbmNlIHRoZSB1c2VyIGlzIGFscmVhZHkgbG9nZ2VkIGluIGluIE1ldGVvciwgd2UgY2FuIHJlcXVlc3QgdGhlIHVzZXJJRCBhbmQgZ3JvdXAgbWVtYmVyc2hpcCBmcm9tIHRoZSBNZXRlb3Igc2Vzc2lvbi4gVHJ1c3QgbWVjaGFuaXNtOiBTZXJ2ZXIgaW1wb3J0ZWQgUWxpayBTZW5zZSBjbGllbnQgY2VydGlmaWNhdGUuCk1ldGVvciBzZXJ2ZXItPj5RUFMgQVBJOiBSZXF1ZXN0IHRpY2tldCBhdCBRUFMgQVBJLCBwcm92aWRlIHRoZSB1c2VySWQgYW5kIGdyb3VwcyBpbiBKU09OLgpOb3RlIHJpZ2h0IG9mIE1ldGVvciBzZXJ2ZXI6IE9wdGlvbmFsbHkgaW5jbHVkZSB0aGUgcmVkaXJlY3QgcGFyYW1ldGVyIHRvIGZvcndhcmQgdGhlIHVzZXIgYmFjayB0byB0aGUgcGFnZSBoZSBpbml0aWFsbHkgdHJpZWQgdG8gYWNjZXNzLgpRUFMgQVBJLS0-Pk1ldGVvciBzZXJ2ZXI6IFFQUyBBUEkgcmV0dXJucyBhIHRpY2tldCBudW1iZXIgKGFuZCBwb3NzaWJseSByZWRpcmVjdCBVUkwpIHdoaWNoIHlvdSBoYXZlIHRvIGFwcGVuZCBpbiB0aGUgVVJMIApNZXRlb3Igc2VydmVyLS0-PiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IENyZWF0ZSBhIHJlZGlyZWN0IFVSTCB3aGljaCB0aGUgY2xpZW50IGNvZGUgY2FuIHB1dCBpbiB0aGUgYnJvd3NlciBVUkwgYmFyLiAKTm90ZSByaWdodCBvZiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IENsaWVudCBzaWRlIGNvZGUsIHJlcGxhY2VzIHRoZSB1cmwgaW4gYnJvd3NlciwgYW5kIGZvcndhcmRzIHRoZSB1c2VyIHRvIFFsaWsgU2Vuc2UuIFVzZXIgbm93IHJlY2VpdmVzIGEgUWxpayBTZW5zZSBzZXNzaW9uIGNvb2tpZSAoc2VlIHZpcnR1YWwgcHJveHkgY29uZmlnKSwgYW5kIGFuZCBzdWNoIHNpbmdsZSBzaWduIG9uIGlzIGNvbmZpZ3VyZWQu";
         });
 
-        Template.registerHelper('github_create_stream', function () {
+        Template.registerHelper('github_create_stream', function() {
             return gitHubLinks.createStream;
         });
 
-        Template.registerHelper('github_copy_app', function () {
+        Template.registerHelper('github_copy_app', function() {
             return gitHubLinks.copyApp;
         });
 
-        Template.registerHelper('github_replace_and_reload_app', function () {
+        Template.registerHelper('github_replace_and_reload_app', function() {
             return gitHubLinks.replaceAndReloadApp;
         });
 
-        Template.registerHelper('github_publish_app', function () {
+        Template.registerHelper('github_publish_app', function() {
             return gitHubLinks.publishApp;
         });
 
-        Template.registerHelper('github_logout_user', function () {
+        Template.registerHelper('github_logout_user', function() {
             return "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L18";
         });
 
-        Template.registerHelper('senseServerHub', function () {
+        Template.registerHelper('senseServerHub', function() {
             return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/hub';
         });
 
-        Template.registerHelper('senseServerDevHub', function () {
+        Template.registerHelper('senseServerDevHub', function() {
             return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/dev-hub';
         });
 
-        Template.registerHelper('senseServerQMC', function () {
+        Template.registerHelper('senseServerQMC', function() {
             return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/qmc';
         });
 
-        Template.registerHelper('senseServer', function () {
+        Template.registerHelper('senseServer', function() {
             return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage;
         });
 
-        Template.registerHelper('webIntegrationDemo', function () {
+        Template.registerHelper('webIntegrationDemo', function() {
             return 'http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort;
         });
 
         //Integration presentation Iframe selector
-        var appId = senseConfig.IntegrationPresentationApp;
-        var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
-        var proxy = Meteor.settings.public.IntegrationPresentationProxy;
-        Template.registerHelper('IFrameURLChapterSelection', function () {
+        Template.registerHelper('IFrameURLChapterSelection', function() {
+            var appId = senseConfig.IntegrationPresentationApp;
+            var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
+            var proxy = Meteor.settings.public.slideGenerator.virtualProxy;
+
+            console.log('------------------------------------');
+            console.log('calling app ID helper, ', appId);
+            console.log('------------------------------------');
             return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';
         });
 
-        Template.registerHelper('authenticatedSlideGenerator', function () {
+        Template.registerHelper('authenticatedSlideGenerator', function() {
             return Session.get('authenticatedSlideGenerator');
         });
 
-        Template.registerHelper('shrinkForSlideSorter', function () {
+        Template.registerHelper('shrinkForSlideSorter', function() {
             return Cookies.get('showSlideSorter') === "true" ? "shrink" : ""; //
         });
 
-        Template.registerHelper('userSelectedPresentationType', function () {
+        Template.registerHelper('groupSelectedSlideGenerator', function() {
             return Session.get('groupForPresentation'); //user selected a presentation type?
         });
 
-        Template.registerHelper('isSelected', function () {
+        Template.registerHelper('isSelected', function() {
             return someValue ? 'selected' : '';
         });
 
-        Template.registerHelper('customers', function () {
+        Template.registerHelper('customers', function() {
             return Customers.find({});
         });
 
         //used for Aldeed autoform
         Template.registerHelper("Customers", Customers);
 
-        Template.registerHelper('noCustomers', function () {
+        Template.registerHelper('noCustomers', function() {
             return !Customers.find({})
                 .count();
         });
 
-        Template.registerHelper('noTemplateApps', function () {
+        Template.registerHelper('noTemplateApps', function() {
             return !TemplateApps.find({})
                 .count();
         });
 
         //generic helpers to return the collection to the blaze template
-        Template.registerHelper('customersCollection', function () {
-            return Customers.find({}, { sort: { checked: -1 } });
+        Template.registerHelper('customersCollection', function() {
+            return Customers.find({}, {
+                sort: {
+                    checked: -1
+                }
+            });
         });
 
-        Template.registerHelper('templateAppsCollection', function () {
+        Template.registerHelper('templateAppsCollection', function() {
             return TemplateApps.find();
         });
 
-        Template.registerHelper('appsCollection', function () {
+        Template.registerHelper('appsCollection', function() {
             return Apps.find();
         });
 
-        Template.registerHelper('streamsCollection', function () {
+        Template.registerHelper('streamsCollection', function() {
             return Streams.find();
         });
 
-        Template.registerHelper('freshEnvironment', function () {
+        Template.registerHelper('freshEnvironment', function() {
             return freshEnvironment();
         });
 
-        Template.registerHelper('loading', function () {
+        Template.registerHelper('loading', function() {
             // console.log('loading indicator in helper is: ', Session.get('loadingIndicator'));
             return Session.get('loadingIndicator');
         });
@@ -235,31 +252,31 @@
             }
         };
 
-        Template.registerHelper('readyToSelectTemplate', function () {
+        Template.registerHelper('readyToSelectTemplate', function() {
             return currentStep() === 2
         });
 
-        Template.registerHelper('templateButNoCustomer', function () {
+        Template.registerHelper('templateButNoCustomer', function() {
             return !Customers.find()
                 .count() && TemplateApps.find()
                 .count()
         });
 
-        Template.registerHelper('readyToGenerate', function () {
+        Template.registerHelper('readyToGenerate', function() {
             return currentStep() === 3 && !Session.equals('loadingIndicator', 'loading');
         });
 
-        Template.registerHelper('step3', function () {
+        Template.registerHelper('step3', function() {
             return Session.get('currentStep') === 3
         });
 
-        Template.registerHelper('step3or4', function () {
+        Template.registerHelper('step3or4', function() {
             return Session.get('currentStep') === 3 ||
                 Session.get('currentStep') === 4 ||
                 Session.equals('loadingIndicator', 'loading')
         });
 
-        Template.registerHelper('stepEqualTo', function (stepNr) {
+        Template.registerHelper('stepEqualTo', function(stepNr) {
             // console.log('value of currentStep() ', currentStep());
             return currentStep() === stepNr;
         });
@@ -307,11 +324,11 @@
             }
         }
 
-        Template.registerHelper('generationFinished', function () {
+        Template.registerHelper('generationFinished', function() {
             return (Session.equals('loadingIndicator', 'loading') || Session.get('generated?'));
         });
 
-        Template.registerHelper('readyToTestSSO', function () {
+        Template.registerHelper('readyToTestSSO', function() {
             return currentStep() === 4
         });
 

@@ -1,6 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { myQRS } from '/imports/api/server/QRSAPI';
 
+var fs = require('fs-extra');
+const path = require('path');
+
 
 //
 // ─── IMPORT CONFIG FOR QLIK SENSE QRS AND ENGINE API ────────────────────────────
@@ -70,6 +73,11 @@ export function insertUserAccessRule() {
 export function getSystemRules(name) {
     var filter = name ? { filter: "Name eq '" + name + "'" } : null;
     var rules = qrs.get('/qrs/SystemRule', filter);
+
+    var file = path.join(Meteor.settings.broker.automationBaseFolder, 'securityrules', 'export', 'ExtractedSystemRules.json');
+
+    // SAVE FILE TO DISK
+    fs.outputFile(file, JSON.stringify(rules, null, 2), 'utf-8');
 
     return rules;
 }

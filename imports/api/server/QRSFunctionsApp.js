@@ -168,7 +168,7 @@ export function setAppIDs(params) {
         console.log('The slide generator app id has been set to ', senseConfig.IntegrationPresentationApp);
     } catch (err) {
         console.error(err)
-        throw Error('The slideGenerator or Self Service BI app can not be found in Qlik sense', err);
+        throw Error('The slideGenerator or Self Service BI app can not be found in Qlik sense, or you did not have all parameters set as defined in the the settings.json example file.', err);
     }
 }
 

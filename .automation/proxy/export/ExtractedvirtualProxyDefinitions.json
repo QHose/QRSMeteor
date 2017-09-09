@@ -1,6 +1,6 @@
 [
   {
-    "id": "2debfb6a-b0cf-4b31-a154-191641e337ec",
+    "id": "63cc18c2-1eb0-4149-adfd-c3685d507a97",
     "prefix": "hdr",
     "description": "Header authentication: for use if you have an authenticating reverse proxy. That reverse proxy will set a header (headerAuthenticationHeaderName) which this virtual proxy can read.",
     "authenticationModuleRedirectUri": "",
@@ -83,7 +83,7 @@
     "privileges": null
   },
   {
-    "id": "3917d1b5-06af-4f80-8fe9-32b643312a4f",
+    "id": "936288e8-97b7-4f3e-8e91-374e402a6648",
     "prefix": "meteor",
     "description": "Ticket auth. for the SaaS automation demo. In step 4 you will request a ticket via this virtual proxy.",
     "authenticationModuleRedirectUri": "http://localhost:3000/sso",
@@ -151,6 +151,8 @@
       "integration.qlik.com",
       "web.saasdemo.qlik.com",
       "jshell.net",
+      "localhost",
+      "QLIK-AB0Q2URN5T",
       "QLIK-AB0Q2URN5T"
     ],
     "defaultVirtualProxy": false,
@@ -171,7 +173,7 @@
     "privileges": null
   },
   {
-    "id": "8b9a2891-1518-4d95-8868-5c4f42700c2e",
+    "id": "dcc1cf51-9a1a-4ff2-9b06-43980bef8680",
     "prefix": "presentationsso",
     "description": "used to login users for the slide generator. Based on this users get a technical or a sales profile via a ticket request",
     "authenticationModuleRedirectUri": "http://localhost:3000/presentationsso",
@@ -237,6 +239,8 @@
     "extendedSecurityEnvironment": false,
     "websocketCrossOriginWhiteList": [
       "integration.qlik.com",
+      "localhost",
+      "QLIK-AB0Q2URN5T",
       "QLIK-AB0Q2URN5T"
     ],
     "defaultVirtualProxy": false,
@@ -257,7 +261,7 @@
     "privileges": null
   },
   {
-    "id": "4623bde0-0963-4bd4-811c-41d05e1f8423",
+    "id": "1ee10e94-612e-4ce8-b47a-01543c21ce8b",
     "prefix": "anon",
     "description": "anon",
     "authenticationModuleRedirectUri": "",
@@ -322,7 +326,11 @@
     "sessionInactivityTimeout": 30,
     "extendedSecurityEnvironment": false,
     "websocketCrossOriginWhiteList": [
+      "integration.qlik.com",
+      "web.saasdemo.qlik.com",
       "jshell.net",
+      "localhost",
+      "QLIK-AB0Q2URN5T",
       "QLIK-AB0Q2URN5T"
     ],
     "defaultVirtualProxy": false,

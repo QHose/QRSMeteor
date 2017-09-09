@@ -58,6 +58,7 @@ twbs:bootstrap
 # yogiben:admin  				#Admin interface
 zimme:active-route
 alanning:roles  			#authorization roles
+deanius:promise
 
 
 shell-server@0.2.4

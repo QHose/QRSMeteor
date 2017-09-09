@@ -4,6 +4,7 @@ import { REST_Log } from '/imports/api/APILogs';
 import { gitHubLinks } from '/imports/ui/UIHelpers';
 var fs = require('fs-extra');
 const path = require('path');
+var os = require('os');
 
 //
 // ─── IMPORT CONFIG FOR QLIK SENSE QRS ───────────────────────────────────────────
@@ -46,6 +47,7 @@ export async function createVirtualProxies() {
         for (var vpToCreate of proxySettings) {
             if (vpToCreate.websocketCrossOriginWhiteList) {
                 vpToCreate.websocketCrossOriginWhiteList.push(Meteor.settings.public.host);
+                vpToCreate.websocketCrossOriginWhiteList.push(os.hostname());
             }
             var existingProxies = getVirtualProxies();
 
@@ -244,7 +246,44 @@ Meteor.methods({
 
         return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());
     },
-    loginUserForPresentation(proxyRestUri, targetId, userProperties) {
+    getTicketNumber(userProperties) { // only get a ticket number
+        try {
+            // check(userProperties.user, String);
+            check(userProperties.group, String);
+        } catch (err) {
+            throw new Meteor.Error('Failed to login into Qlik Sense via a ticket', 'Please go to the landing page and select your group. We could not request a ticket because the userId or groups (technical, generic) are not provided');
+        }
+        var passport = {
+            'UserDirectory': Meteor.userId(), // Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
+            'UserId': Meteor.userId(), // the current user that we are going to login with
+            'Attributes': [
+                { 'group': 'slideGenerator' }, // attributes supply the group membership from the source system to Qlik Sense
+                { 'group': userProperties.group },
+                { 'group': 'ITALY' }, // make sure the row level demo works by passing this
+            ],
+        };
+
+        //@TODO add extra group memberships based on meteor.groups via allanning roles
+
+        // see https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
+        var proxyGetTicketURI = 'https://' + senseConfig.host + ':' + Meteor.settings.private.proxyPort + '/qps/' + senseConfig.virtualProxyClientUsage + '/ticket'; // "proxyRestUri": "https://ip-172-31-22-22.eu-central-1.compute.internal:4243/qps/meteor/",
+        try {
+            var response = HTTP.call('POST', proxyGetTicketURI, {
+                'npmRequestOptions': configCerticates,
+                headers: authHeaders,
+                params: { 'xrfkey': senseConfig.xrfkey },
+                data: passport, // the user and group info for which we want to create a ticket
+            });
+        } catch (err) {
+            console.error('REST call to request a ticket failed', err);
+            throw new Meteor.Error('Request ticket failed', err.message);
+        }
+
+        // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+        // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+        return response.data.Ticket;
+    },
+    loginUserForPresentationViaRedirect(proxyRestUri, targetId, userProperties) {
         try {
             check(userProperties.user, String);
             check(userProperties.group, String);
@@ -296,7 +335,7 @@ Meteor.methods({
         // logoutUser(Meteor.userId(), Meteor.userId()); //logout the user for the slide generator
     },
     logoutPresentationUser(UDC, name) {
-        logoutUser(UDC, name, Meteor.settings.public.IntegrationPresentationProxy);
+        logoutUser(UDC, name, Meteor.settings.public.slideGenerator.virtualProxy);
     },
     simulateUserLogin(name) {
         check(name, String);
@@ -440,53 +479,3 @@ export function getRedirectURL(passport, proxyRestUri, targetId, generationUserI
     // console.log('Meteor server side created this redirect url: ', redirectURI);
     return redirectURI;
 }
-
-Meteor.methods({
-    getTicket(passport) { // only get a ticket number
-        check(passport, Object);
-        // see https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
-        var proxyGetTicketURI = 'https://' + senseConfig.host + ':' + Meteor.settings.private.proxyPort + '/qps/' + senseConfig.virtualProxyClientUsage + '/ticket'; // "proxyRestUri": "https://ip-172-31-22-22.eu-central-1.compute.internal:4243/qps/meteor/",
-        try {
-            var call = {};
-            call.action = 'Presentation SSO: Request ticket number, to be used in the setup of the QIX connection using Enigma.js';
-            call.request = proxyGetTicketURI;
-            call.url = 'https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md';
-            call.response = HTTP.call('POST', call.request, {
-                'npmRequestOptions': configCerticates,
-                headers: authHeaders,
-                params: { 'xrfkey': senseConfig.xrfkey },
-                data: passport, // the user and group info for which we want to create a ticket
-            });
-            REST_Log(call, generationUserId);
-        } catch (err) {
-            console.error('REST call to request a ticket failed', err);
-            throw new Meteor.Error('Request ticket failed', err.message);
-        }
-
-        // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-        // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
-        // EXAMPLE RESPONSE
-        // {
-        //   "statusCode": 201,
-        //
-        //   "data": {
-        //     "UserDirectory": "4RCJDRSABMVKY66SZ",
-        //     "UserId": "john",
-        //     "Attributes": [
-        //       {
-        //         "group": "SCHMIDT, KOZEY AND KUPHAL"
-        //       },
-        //       {
-        //         "group": "GERMANY"
-        //       },
-        //       {
-        //         "group": "CONSUMER"
-        //       }
-        //     ],
-        //     "Ticket": "6ZH6juc9JYlkS4SW",
-        //     "TargetUri": "http://integration.qlik.com:443/meteor/hub/"
-        //   }
-        // }
-        return call.response.data.Ticket;
-    },
-});

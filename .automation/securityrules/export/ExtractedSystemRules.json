@@ -1,0 +1,14 @@
+[
+  {
+    "id": "bc5bebae-f7dd-4672-91cf-f98ecbee4430",
+    "category": "Security",
+    "type": "Custom",
+    "name": "Z_OEM_DEVELOPER",
+    "rule": "user.environment.group = \"Developer\" and\n ((resource.owner = user and resource.stream.Empty()) or (resource.app.HasPrivilege(\"read\") and resource.published =\"false\" ))",
+    "resourceFilter": "App*",
+    "actions": 317,
+    "comment": "Extends the Z_OEM_APP_ACCESS (CONSUMER) rule. This user can also create own apps and create sheets in apps (like a contributor). He can't publish.",
+    "disabled": false,
+    "privileges": null
+  }
+]
