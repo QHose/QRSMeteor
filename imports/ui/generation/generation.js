@@ -21,7 +21,7 @@ Template.generationApps.helpers({
             .count();
     },
     appSettings: function() {
-        console.log('client generation helper: get app table, the config used to generate the URLs to Sense: ', config);
+        // console.log('client generation helper: get app table, the config used to generate the URLs to Sense: ', config);
         return {
             collection: Apps,
             rowsPerPage: 5,
@@ -145,7 +145,7 @@ Template.generationStreams.helpers({
                         return moment(value)
                             .format('DD-MM-YYYY');
                     }
-                }, 
+                },
                 // {
                 //     key: 'deleteStream',
                 //     label: 'Delete',

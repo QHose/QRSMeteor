@@ -195,7 +195,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
         call.action = 'Finished generation for ' + customer.name;
         call.request = templateApp.name + ' has been created and reloaded with data from the ' + customer.name + ' database';
         REST_Log(call, generationUserId);
-        // console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+        console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
         GeneratedResources.insert({
             'generationUserId': generationUserId,
             'customer': customer.name,
@@ -203,7 +203,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
             'appId': newAppId
         });
     } catch (err) {
-        console.error(err);
+        console.error('Failed to generate...', err);
         throw new Meteor.Error('Generation failed', 'The server has an internal error, please check the server command logs');
     }
     return;
@@ -233,19 +233,24 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         REST_Log(call, generationUserId);
 
         try {
-            //create folder connection            
+            //create folder connection 
+            console.log('create folder connection, if you see a warning below that means the connection already existed.');
             var qConnectionId = await qix.app.createConnection({
                 "qName": customer.name,
                 "qType": "folder",
                 "qConnectionString": customerDataFolder
             })
+            var call = {};
+            call.action = 'Create data/folder connection';
+            call.url = '';
+            call.request = 'Link to a folder on the server where users can put files/QVD, or create a REST/ODBC/OLEDB... database connection.';
+            call.response = 'created folder connection: ' + qConnectionId;
             console.log('created folder connection: ', qConnectionId);
         } catch (error) {
             console.info('No issue, existing customer so his data folder connection already exists', error);
         }
 
         //get the script
-        console.log('get script');
         var script = await qix.app.getScript();
         var call = {};
         call.action = 'Get data load script';
@@ -255,7 +260,6 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         REST_Log(call, generationUserId);
 
         //set the new script
-        console.log('set script');
         var call = {};
         call.response = await qix.app.setScript(replaceScript(script)) //we now just include the old script in this app
         call.action = 'Insert customer specific data load script for its database';
@@ -279,12 +283,6 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         REST_Log(call, generationUserId);
         await qix.app.doSave();
 
-        // //publish the app, must be done via QRS API (depreciated)
-        // // console.log('publish app config', publishObj);
-        // call.response = await qix.app.publish(streamId, newAppName);
-        // call.action = 'Publish app';
-        // call.request = 'qix.app.publish({ qAppId: appId, qName: newAppName, qStreamId: streamId })';
-        // call.url = gitHubLinks.publishApp;
         REST_Log(call, generationUserId);
     } catch (error) {
         console.error('error in reloadAppAndReplaceScriptviaEngine via Enigma.JS, did you used the correct schema definition in the settings.json file?', error);
@@ -299,10 +297,19 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
     }
 }
 
+function deleteDirectoryAndDataConnection(customerName) {
+    console.log('deleteDirectoryAndDataConnection');
+    //@TODO a bit dangerous, so better to do by hand. Make sure you can't delete root folder... 
+    // https://stackoverflow.com/questions/18052762/remove-directory-which-is-not-empty
+})
+
 function createDirectory(customerName) {
     const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
     fs.ensureDir(dir, err => {
-        console.error(err) // => null
+        if (err) {
+            console.error(err) // => null
+            throw new Meteor.Error('Server error', 'Unable to create new directory for customer/department: ' + customerName)
+        }
     });
     return dir;
 }
@@ -422,8 +429,7 @@ function checkStreamStatus(customer, generationUserId) {
         streamId = stream.id;
     } else {
         // console.log('No stream for customer exist, so create one: ' + customer.name);
-        streamId = QSStream.createStream(customer.name, generationUserId)
-            .data.id;
+        streamId = QSStream.createStream(customer.name, generationUserId).id;
         // console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
     }
 

@@ -1,11 +1,26 @@
-import { Meteor } from 'meteor/meteor';
-import { http } from 'meteor/meteor';
-import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
-import { APILogs, REST_Log } from '/imports/api/APILogs';
+import {
+    Meteor
+} from 'meteor/meteor';
+import {
+    http
+} from 'meteor/meteor';
+import {
+    Apps,
+    TemplateApps,
+    GeneratedResources
+} from '/imports/api/apps';
+import {
+    APILogs,
+    REST_Log
+} from '/imports/api/APILogs';
 
 //import meteor collections
-import { Streams } from '/imports/api/streams';
-import { Customers } from '/imports/api/customers';
+import {
+    Streams
+} from '/imports/api/streams';
+import {
+    Customers
+} from '/imports/api/customers';
 
 import * as QSApp from '/imports/api/server/QRSFunctionsApp';
 import * as QSStream from '/imports/api/server/QRSFunctionsStream';
@@ -13,9 +28,14 @@ import * as QSLic from '/imports/api/server/QRSFunctionsLicense';
 import * as QSProxy from '/imports/api/server/QPSFunctions';
 import * as QSSystem from '/imports/api/server/QRSFunctionsSystemRules';
 import * as QSExtensions from '/imports/api/server/QRSFunctionsExtension';
+import * as QSCustomProps from '/imports/api/server/QRSFunctionsCustomProperties';
+
 
 //import config for Qlik Sense QRS and Engine API
-import { senseConfig, authHeaders } from '/imports/api/config';
+import {
+    senseConfig,
+    authHeaders
+} from '/imports/api/config';
 import '/imports/startup/accounts-config.js';
 
 Meteor.startup(function() {
@@ -42,12 +62,13 @@ async function initQlikSense() {
     //By checking if a stream exist we try to figure out if this is a fresh or already existing Qlik Sense installation.//
     var QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);
     if (!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup) {
+
         console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
         // QSLic.insertLicense();
         // QSLic.insertUserAccessRule();
-        await QSSystem.createSecurityRules();
-        // QSSystem.disableDefaultSecurityRules(); //DOES NOT WORK YET...
-        await QSProxy.createVirtualProxies();
+        // await QSSystem.createSecurityRules();
+        //// QSSystem.disableDefaultSecurityRules(); //DOES NOT WORK YET...
+        // await QSProxy.createVirtualProxies();
         // QSStream.initSenseStreams();
         // await QSApp.uploadAndPublishTemplateApps();        
         //// QSExtensions.automaticUploadExtensions(); //Does not work yet, maybe not even optimal to download and use untested extensions.
@@ -79,13 +100,29 @@ function removeGeneratedResources() {
 
 function optimizeMongoDB() {
     // console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
-    TemplateApps._ensureIndex({ "generationUserId": 1, "id": 1 });
-    GeneratedResources._ensureIndex({ "generationUserId": 1, "id": 1 });
-    Apps._ensureIndex({ "id": 1 });
-    Customers._ensureIndex({ "generationUserId": 1 });
-    Streams._ensureIndex({ "id": 1 });
-    APILogs._ensureIndex({ "createdBy": 1 });
-    APILogs._ensureIndex({ "createDate": 1 });
+    TemplateApps._ensureIndex({
+        "generationUserId": 1,
+        "id": 1
+    });
+    GeneratedResources._ensureIndex({
+        "generationUserId": 1,
+        "id": 1
+    });
+    Apps._ensureIndex({
+        "id": 1
+    });
+    Customers._ensureIndex({
+        "generationUserId": 1
+    });
+    Streams._ensureIndex({
+        "id": 1
+    });
+    APILogs._ensureIndex({
+        "createdBy": 1
+    });
+    APILogs._ensureIndex({
+        "createDate": 1
+    });
 }
 
 //
@@ -133,20 +170,36 @@ Meteor.methods({
         };
     },
     generateStreamAndApp(customers) {
-        // //console.log('generateStreamAndApp');
         check(customers, Array);
 
-        Meteor.call('removeGeneratedResources', { 'generationUserId': Meteor.userId() }); //first clean the environment
+        Meteor.call('removeGeneratedResources', {
+            'generationUserId': Meteor.userId()
+        }); //first clean the environment
         QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff
+
+        if (!Meteor.settings.multiTenantScenario) { //on premise installation for a single tenant (e.g. with MS Active Directory)
+            var customerNames = customers.map(function(c) { return c.name; });
+            QSCustomProps.createCustomProperty('customers', customerNames); //for non OEM scenarios (with MS AD), people like to use custom properties for authorization instead of the groups via a ticket.
+        }
         Meteor.call('updateLocalSenseCopy');
-        return;
     },
     resetEnvironment() {
         Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
-        Meteor.call('removeGeneratedResources', { 'generationUserId': Meteor.userId() });
-        TemplateApps.remove({ 'generationUserId': Meteor.userId() });
-        Customers.remove({ 'generationUserId': Meteor.userId() });
-        APILogs.remove({ 'generationUserId': Meteor.userId() });
+        Meteor.call('removeGeneratedResources', {
+            'generationUserId': Meteor.userId()
+        });
+        TemplateApps.remove({
+            'generationUserId': Meteor.userId()
+        });
+        Customers.remove({
+            'generationUserId': Meteor.userId()
+        });
+        APILogs.remove({
+            'generationUserId': Meteor.userId()
+        });
+        if (!Meteor.settings.multiTenantScenario) { //on premise installation for a single tenant (e.g. with MS Active Directory)
+            QSCustomProps.deleteCustomProperty('customers');
+        }
     },
     upsertTemplate(selector, currentApp) {
         console.log('upsert template')
@@ -206,7 +259,10 @@ Meteor.methods({
             throw new Meteor.Error('No App selected to copy')
         };
 
-        customers = Customers.find({ 'generationUserId': Meteor.userId(), checked: true }); //all selected customers
+        customers = Customers.find({
+            'generationUserId': Meteor.userId(),
+            checked: true
+        }); //all selected customers
         if (!customers) {
             throw new Meteor.Error('No customers selected to copy the app for')
         };
@@ -242,7 +298,9 @@ Meteor.methods({
         }
     },
     removeAllCustomers: function() {
-        return Customers.remove({ 'generationUserId': Meteor.userId() });
+        return Customers.remove({
+            'generationUserId': Meteor.userId()
+        });
     }
 })
 

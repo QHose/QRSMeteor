@@ -110,12 +110,12 @@ export function getStreams() {
 
 
 export function createStream(name, generationUserId) {
-    console.log('QRS sync Functions Stream, create the stream with name', name);
+    console.log('QRS Functions Stream, create the stream with name', name);
 
 
     try {
         check(name, String);
-        var response = qrs.post('/qrs/stream', { name: name });
+        var response = qrs.post('/qrs/stream', null, { name: name });
 
         // Meteor.call('updateLocalSenseCopy');
         //logging
@@ -127,6 +127,7 @@ export function createStream(name, generationUserId) {
         };
 
         REST_Log(call, generationUserId);
+        console.log('call.response;', call.response)
         return call.response;
     } catch (err) {
         console.error(err);

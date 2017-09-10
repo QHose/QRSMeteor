@@ -5,22 +5,7 @@ import {
     http,
 } from 'meteor/meteor';
 
-
-//
-// ─── IMPORT CONFIG FOR QLIK SENSE QRS ───────────────────────────────────────────
-//
-
-
 import { configCerticates, senseConfig, authHeaders, qrsSrv } from '/imports/api/config';
-
-//
-// ─── INSTALL NPM MODULES ────────────────────────────────────────────────────────
-//
-
-// const fs = require('fs-extra');
-// var QRS = require('qrs');
-// var promise = require('bluebird');
-// var request = require('request');
 
 export var myQRS = function myQRSMain() {
 
@@ -38,17 +23,17 @@ export var myQRS = function myQRSMain() {
             });
             return response.data;
         } catch (err) {
-            var error = 'HTTP GET FAILED FOR ' + endpoint;
+            var error = 'QRS HTTP GET FAILED FOR ' + endpoint;
             console.error(error);
             throw new Meteor.Error(500, error);
         }
     };
 
-    this.post = function post(path, data = {}, params = {}) {
+    this.post = function post(path, params = {}, data = {}) {
         var endpoint = checkPath(path);
 
         // copy the params to one object
-        var newParams = Object.assign({ xrfkey: senseConfig.xrfkey }, params);
+        var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
         try {
             var response = HTTP.post(endpoint, {
                 npmRequestOptions: configCerticates,
@@ -61,42 +46,37 @@ export var myQRS = function myQRSMain() {
         }
     };
 
-    this.del = function del(path, data = {}, params = {}) {
+    this.del = function del(path, params = {}, data = {}) {
         var endpoint = checkPath(path);
         console.log('endpoint', endpoint)
         console.log('data', data)
 
         // copy the params to one object.
         var newParams = Object.assign({ xrfkey: senseConfig.xrfkey }, params);
-        console.log('newParams', newParams)
         try {
             var response = HTTP.del(endpoint, {
                 npmRequestOptions: configCerticates,
                 params: newParams,
                 data: data,
             });
-            console.log('response', response)
+            // console.log('response', response)
             return response.data;
         } catch (err) {
-            console.error('HTTP DEL FAILED FOR ' + endpoint, err);
+            console.error('QRS HTTP DEL FAILED FOR ' + endpoint, err);
         }
     };
 
-    this.put = function put(path, data = {}, params = {}) {
+    this.put = function put(path, params = {}, data = {}) {
         var endpoint = checkPath(path);
-        console.log('endpoint', endpoint)
-        console.log('data', data)
 
         // copy the params to one object
-        var newParams = Object.assign({ xrfkey: senseConfig.xrfkey }, params);
-        console.log('newParams', newParams)
+        var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
         try {
             var response = HTTP.put(endpoint, {
                 npmRequestOptions: configCerticates,
                 params: newParams,
                 data: data,
             });
-            console.log('response', response)
             return response.data;
         } catch (err) {
             console.error('HTTP PUT FAILED FOR ' + endpoint, err);
@@ -113,5 +93,3 @@ function checkPath(path) {
     }
     return qrsSrv + path;
 }
-
-// module.exports = myQRS;

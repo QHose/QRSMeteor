@@ -42,7 +42,7 @@ export function insertLicense() {
         } catch (err) {
             // lic did not already exist.
         }
-        var response = qrs.post('/qrs/license', newLicense, { control: Meteor.settings.private.LicenseControlNumber });
+        var response = qrs.post('/qrs/license', { control: Meteor.settings.private.LicenseControlNumber }, newLicense);
     } else {
         throw new Error('You did not specify a valid License number in your settings.json file');
     }
@@ -66,7 +66,7 @@ export function insertUserAccessRule() {
     var ruleExist = getSystemRules(demoUserAccessRule);
     if (typeof ruleExist[0] == 'undefined' || ruleExist.length === 0) {
         console.log('Create a new user license rule since it did not exist.');
-        var response = qrs.post('/qrs/SystemRule', licenseRule);
+        var response = qrs.post('/qrs/SystemRule', null, licenseRule);
     }
 }
 

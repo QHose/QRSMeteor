@@ -22,7 +22,7 @@ export function disableDefaultSecurityRules() {
 
         var rule = QSLic.getSystemRules(rule.name);
         rule.disabled = true;
-        var response = qrs.put('/qrs/SystemRule', rule);
+        var response = qrs.put('/qrs/SystemRule', null, rule);
     });
 }
 
@@ -42,14 +42,14 @@ export async function createSecurityRules() {
     }
 
     securityRules.forEach(function(rule) {
-        console.log('QSLic.getSystemRules(rule.name)', QSLic.getSystemRules(rule.name).length)
+        //check if the rule already exists in Sense
         if (!QSLic.getSystemRules(rule.name).length) {
-            var response = qrs.post('/qrs/SystemRule', rule);
+            //if not exist, create it
+            var response = qrs.post('/qrs/SystemRule', null, rule);
         } else {
             console.log('Security rule "' + rule.name + '" already existed');
         }
     });
-
 }
 
 function stringToJSON(myString) {

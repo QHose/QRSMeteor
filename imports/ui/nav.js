@@ -31,8 +31,6 @@ Template.nav.helpers({
 
 
 Template.nav.onRendered(function() {
-    this.$('.ui.dropdown')
-        .dropdown()
 
     this.$('.header .dropdown-toggle').dropdown()
     this.$('.header .dropdown-toggle').on('click', function() {
@@ -52,7 +50,7 @@ Template.nav.onRendered(function() {
 
 
 Template.yourSaasPlatformMenu.onRendered(function() {
-    this.$('.ui.dropdown')
+    this.$('.ui.dropdown.saasDemo')
         .dropdown()
 });
 

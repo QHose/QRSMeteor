@@ -1,4 +1,4 @@
-<template name="presentationLayoutWRONG">
+<!-- <template name="presentationLayoutWRONG">
     {{#if unsupportedBrowser}}
        {{> unsupportedBrowser}}
     {{else}}
@@ -19,7 +19,7 @@
         {{> keepSenseConnectionOpen}}
 
     {{/if}}
-</template>
+</template> -->
 <template name="unsupportedBrowser">
  <div class="ui text container">
             <div class="ui icon message">
@@ -56,7 +56,7 @@
 
 <template name="keepSenseConnectionOpen">
     <!-- FAKE IFRAME TO KEEP THE CONNECTION TO QLIK SENSE OPEN WHILE WE CONNECT TO ANOTHER PAGE -->
-    {{#if userSelectedPresentationType}}
-        <iframe src="{{IFrameURLChapterSelection}}" style="width:0;height:0;border:0; border:none;visibility:hidden;display:none" seamless="seamless"></iframe>
+    {{#if groupSelectedSlideGenerator}}
+        <!-- <iframe src="{{IFrameURLChapterSelection}}" style="width:0;height:0;border:0; border:none;visibility:hidden;display:none" seamless="seamless"></iframe> -->
     {{/if}}
 </template>
