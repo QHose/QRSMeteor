@@ -420,8 +420,8 @@ export function logoutUser(UDC, name, proxy) {
             call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': configCerticates });
 
             REST_Log(call, UDC); // the UDC is the by definition the userId of meteor in our approach...
-            console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-            console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+            // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+            // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
         } catch (err) {
             console.error(err);
             throw new Meteor.Error('Logout user failed', err.message);

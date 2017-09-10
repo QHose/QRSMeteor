@@ -64,16 +64,16 @@ async function initQlikSense() {
     if (!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup) {
 
         console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
-        // QSLic.insertLicense();
-        // QSLic.insertUserAccessRule();
-        // await QSSystem.createSecurityRules();
+        QSLic.insertLicense();
+        QSLic.insertUserAccessRule();
+        await QSSystem.createSecurityRules();
         QSSystem.disableDefaultSecurityRules(); //DOES NOT WORK YET...
-        // await QSProxy.createVirtualProxies();
-        // QSStream.initSenseStreams();
-        // await QSApp.uploadAndPublishTemplateApps();        
-        //// QSExtensions.automaticUploadExtensions(); //Does not work yet, maybe not even optimal to download and use untested extensions.
-        // QSExtensions.uploadExtensions();
-        // QSLic.saveSystemRules();
+        await QSProxy.createVirtualProxies();
+        QSStream.initSenseStreams();
+        await QSApp.uploadAndPublishTemplateApps();
+        // QSExtensions.automaticUploadExtensions(); //Does not work yet, maybe not even optimal to download and use untested extensions.
+        QSExtensions.uploadExtensions();
+        QSLic.saveSystemRules();
 
         //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.
         QSApp.setAppIDs();
