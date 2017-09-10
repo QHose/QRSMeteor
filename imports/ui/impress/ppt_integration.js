@@ -19,7 +19,7 @@ const config = {
     appId: appId,
     session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
         host: senseConfig.host,
-        prefix: Meteor.settings.public.IntegrationPresentationProxy,
+        prefix: Meteor.settings.public.slideGenerator.virtualProxy,
         port: senseConfig.port,
         unsecure: true
     },
