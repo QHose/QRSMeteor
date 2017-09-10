@@ -1,6 +1,8 @@
 import '/imports/ui/useCases/useCaseSelection.html';
 import './SSBI/SSBI.js';
-import { Session } from 'meteor/session';
+import {
+    Session
+} from 'meteor/session';
 const Cookies = require('js-cookie');
 
 // Template.useCaseSelection.events({
@@ -34,6 +36,14 @@ Template.useCaseSelection.onRendered(function() {
         role = $(this).attr("data")
             // Session.set('userRole', role);
         localStorage['userRole'] = role;
+        if (role == 'developer') {
+            Session.setAuth('groupForPresentation', 'TECHNICAL');
+        } else {
+            Session.setAuth('groupForPresentation', 'GENERIC');
+
+        }
+
+
         // Set the active class
         $('.dropdown-menu li').removeClass('active')
         $(this).parent().addClass('active');
@@ -65,6 +75,29 @@ Template.useCaseSelection.onRendered(function() {
         // }
     });
 })
+
+// function Qliklogin(group) {
+//     // console.log('checking Qlik Sense access... is the user logged in?');    
+//     Meteor.call("getTicket", function(error, ticket) {
+//         // identify the error
+//         if (error) {
+//             throw new Meteor.Error('System error', 'Failed to login the user in Qlik Sense.')
+//         }
+
+
+//     });
+
+
+//     enigma.getService('qix', config)
+//         .then(qix => {
+//             console.log('user is authenticated in Qlik Sense. QIX object:', qix);
+//             Session.set('userLoggedInSense', true);
+//             Meteor.clearInterval(intervalId);
+//         }).catch((error) => {
+//             console.info('info: user not yet able to connect to the app via the enigma.js: ', error);
+//         });
+// }
+
 
 Template.useCaseSelection.onDestroyed(function() {
     $('body').removeClass('mainLandingImage');
