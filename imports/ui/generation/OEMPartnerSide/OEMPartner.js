@@ -116,7 +116,7 @@ Template.OEMPartner.events({
         event.preventDefault();
         insertTemplateAndDummyCustomers();
         sAlert.success('We have pre-selected some fictitious customers. Which apps will you provide your customers?');
-        // Session.setAuth('currentStep', 2);
+        Session.setAuth('currentStep', 2);
     },
     'click .goToStep3' (event) {
         if (TemplateApps.find().count()) {

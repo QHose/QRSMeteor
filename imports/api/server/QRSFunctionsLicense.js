@@ -71,8 +71,10 @@ export function insertUserAccessRule() {
 }
 
 export function getSystemRules(name) {
+    console.log('Get system rules with name: ' + name);
+
     var filter = name ? { filter: "Name eq '" + name + "'" } : null;
-    var rules = qrs.get('/qrs/SystemRule', filter);
+    var rules = qrs.get('/qrs/SystemRule/full', filter);
 
     var file = path.join(Meteor.settings.broker.automationBaseFolder, 'securityrules', 'export', 'ExtractedSystemRules.json');
 
@@ -80,4 +82,12 @@ export function getSystemRules(name) {
     fs.outputFile(file, JSON.stringify(rules, null, 2), 'utf-8');
 
     return rules;
+}
+export function saveSystemRules() {
+    var rules = qrs.get('/qrs/SystemRule');
+
+    var file = path.join(Meteor.settings.broker.automationBaseFolder, 'securityrules', 'export', 'ExtractedSystemRules.json');
+
+    // SAVE FILE TO DISK
+    fs.outputFile(file, JSON.stringify(rules, null, 2), 'utf-8');
 }

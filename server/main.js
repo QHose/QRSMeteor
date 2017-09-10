@@ -67,12 +67,13 @@ async function initQlikSense() {
         // QSLic.insertLicense();
         // QSLic.insertUserAccessRule();
         // await QSSystem.createSecurityRules();
-        //// QSSystem.disableDefaultSecurityRules(); //DOES NOT WORK YET...
+        QSSystem.disableDefaultSecurityRules(); //DOES NOT WORK YET...
         // await QSProxy.createVirtualProxies();
         // QSStream.initSenseStreams();
         // await QSApp.uploadAndPublishTemplateApps();        
         //// QSExtensions.automaticUploadExtensions(); //Does not work yet, maybe not even optimal to download and use untested extensions.
         // QSExtensions.uploadExtensions();
+        // QSLic.saveSystemRules();
 
         //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.
         QSApp.setAppIDs();

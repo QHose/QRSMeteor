@@ -30,7 +30,7 @@ AutoForm.addHooks(['insertCustomerForm'], {
     // },
 });
 
-SimpleSchema.debug = true;
+SimpleSchema.debug = false;
 
 Template.users.helpers({
     autoSaveMode: function() {
