@@ -301,7 +301,7 @@ function deleteDirectoryAndDataConnection(customerName) {
     console.log('deleteDirectoryAndDataConnection');
     //@TODO a bit dangerous, so better to do by hand. Make sure you can't delete root folder... 
     // https://stackoverflow.com/questions/18052762/remove-directory-which-is-not-empty
-})
+}
 
 function createDirectory(customerName) {
     const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
