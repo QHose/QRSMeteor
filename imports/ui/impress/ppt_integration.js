@@ -10,32 +10,42 @@ var converter = new showdown.Converter();
 const enigma = require('enigma.js');
 // The QIX schema needed by enigma.js
 const qixschema = senseConfig.QIXSchema;
-var appId = senseConfig.slideGeneratorAppId
 var IntegrationPresentationSortedDataObject = Meteor.settings.public.slideGenerator.dataObject; //'pskL';//a table object in the saas presentation qvf, that ensures the slides are in the correct load order. better would be to load this in this order in the API call.
 var slideWidth = 2000;
+var config = null;
 
-const config = {
-    schema: qixschema,
-    appId: appId,
-    session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-        host: senseConfig.host,
-        prefix: Meteor.settings.public.slideGenerator.virtualProxy,
-        port: senseConfig.port,
-        unsecure: true
-    },
-};
+//////////////////////////////////
+// Slide generator main template//
+//////////////////////////////////
+
+Template.ppt_integration.onCreated(function() {
+    clearSlideCache();
+    console.log('############# Template.ppt_integration.onRendered');
+    console.log('senseConfig', senseConfig);
+    // var test = Object.assign({}, senseConfig)
+    // console.log('test', test)
+
+    console.log('senseConfig.slideGeneratorAppId', senseConfig.slideGeneratorAppId);
+    config = {
+        schema: qixschema,
+        appId: Cookies.get('slideGeneratorAppId'), //senseConfig.slideGeneratorAppId, //,
+        session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+            host: senseConfig.host,
+            prefix: Meteor.settings.public.slideGenerator.virtualProxy,
+            port: senseConfig.port,
+            unsecure: true
+        },
+    };
+})
 
 Template.ppt_integration.onRendered(function() {
     initializePresentation();
 })
 
 
-Template.ppt_integration.onCreated(function() {
-    clearSlideCache()
-})
 
 export function clearSlideCache() {
-    console.log('clear the previously loaded slides from memory, the browser session object');
+    // console.log('clear the previously loaded slides from memory, the browser session object');
     Session.set('mainTopics', null);
     Session.set('integrationTopics', null);
 }
@@ -226,6 +236,10 @@ function getLevel1And2() {
 
     enigma.getService('qix', config)
         .then(qix => {
+            console.log('------------------------------------');
+            console.log('slide generator: connected to the qix engine with config ', config);
+            console.log('Recieved qix object: ', qix)
+            console.log('------------------------------------');
             qix.app.getObject(IntegrationPresentationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same
                 .then(model => {
                     model.getHyperCubeData('/qHyperCubeDef', [{ qTop: 0, qLeft: 0, qWidth: 3, qHeight: 1000 }]).then(data => {

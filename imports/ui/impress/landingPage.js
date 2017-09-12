@@ -19,23 +19,14 @@ var intervalId = {};
 
 
 Template.landingPage.onCreated(function() {
+    console.log('Template.landingPage.onCreated app id ', senseConfig.slideGeneratorAppId)
     appId = senseConfig.slideGeneratorAppId;
     slideObjectURL = server + '/single/?appid=' + appId + '&obj=' + Meteor.settings.public.slideGenerator.slideObject;
-
-    //set a var so the sso ticket request page knows he has to login the real user and not some dummy user of step 4
-    //after the user is redirected to the sso page, we put this var to false. in that way we can still request dummy users for step 4 of the demo
-    // Session.setAuth('loginUserForPresentation', true);
     Session.setAuth('groupForPresentation', null);
     Session.setAuth('userLoggedInSense', null);
     Cookies.set('showSlideSorter', 'false');
-    // Cookies.set('authenticatedSlideGenerator', 'false');
     console.log('first logout the current presentation user in Qlik Sense. After the logout, we try to open the Iframe URL, and request a new ticket with a new group: generic or technical, using section access we restrict the slides...');
-    Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation users
-    // logoutCurrentSenseUserClientSide();
-    // intervalId = Meteor.setInterval(userLoggedInSense, 1000);
-    // console.log('Qlik Sense presentation session cookie:', Cookies.get('X-Qlik-Session-presentationsso'));
-    // console.log('All cookies available for Javascript:');
-    // console.log(listCookies());
+    Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user
 })
 
 function listCookies() {
@@ -118,7 +109,7 @@ async function requestSenseTicket(group) {
         .then(qix => {
             console.log('user is authenticated in Qlik Sense. QIX object:', qix);
             Session.set('userLoggedInSense', true);
-            logoutCurrentSenseUserClientSide();
+            // logoutCurrentSenseUserClientSide(); //gives error 500
 
         }).catch((error) => {
             console.info('info: No QIX connection for user, user not yet able to connect to the app via the enigma.js: ', error);

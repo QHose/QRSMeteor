@@ -13,6 +13,7 @@
         senseConfig
     } from '/imports/api/config';
 
+
     export var gitHubLinks = {
         createStream: 'https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsStream.js#L53',
         copyApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L175",
@@ -30,6 +31,8 @@
     };
 
     if (Meteor.isClient) {
+        var Cookies = require('js-cookie');
+
         // console.log('Setup generic helper functions, for functions every template needs');
         Template.registerHelper('formatDate', function(date) {
             return moment(date)
@@ -172,7 +175,7 @@
 
         //Integration presentation Iframe selector
         Template.registerHelper('IFrameURLChapterSelection', function() {
-            var appId = senseConfig.slideGeneratorAppId;
+            var appId = Cookies.get('slideGeneratorAppId'); //senseConfig.slideGeneratorAppId;
             var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
             var proxy = Meteor.settings.public.slideGenerator.virtualProxy;
             return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';

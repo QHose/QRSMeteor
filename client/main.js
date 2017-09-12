@@ -31,7 +31,8 @@ import '/imports/ui/pages/architecture.js';
 import '/imports/ui/pages/securityRules.html';
 import '/imports/ui/pages/securityRules.js';
 import '/imports/startup/accounts-config.js';
-import { senseConfig as config } from '/imports/api/config';
+import { senseConfig } from '/imports/api/config';
+var Cookies = require('js-cookie');
 
 import {
     Template
@@ -73,16 +74,12 @@ Meteor.startup(function() {
     AutoForm.setDefaultTemplate("semanticUI");
 
     Meteor.call('getAppIDs', function(error, IDs) {
-
-        console.log('------------------------------------');
-        console.log('Requesting the app IDs from Qlik Sense');
-        console.log('------------------------------------');
-        console.log('IDs', IDs)
         if (error) {
             alert('Error', error);
         } else {
-            config.SSBIAppId = IDs.SSBI;
-            config.slideGeneratorAppId = IDs.slideGenerator;
+            senseConfig.SSBIAppId = IDs.SSBI;
+            senseConfig.slideGeneratorAppId = IDs.slideGenerator;
+            Cookies.set('slideGeneratorAppId', IDs.slideGenerator);
         }
     });
 });
