@@ -175,16 +175,12 @@
             var appId = senseConfig.IntegrationPresentationApp;
             var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
             var proxy = Meteor.settings.public.slideGenerator.virtualProxy;
-
-            console.log('------------------------------------');
-            console.log('calling app ID helper, ', appId);
-            console.log('------------------------------------');
             return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';
         });
 
-        Template.registerHelper('authenticatedSlideGenerator', function() {
-            return Session.get('authenticatedSlideGenerator');
-        });
+        // Template.registerHelper('authenticatedSlideGenerator', function() {
+        //     return Session.get('authenticatedSlideGenerator');
+        // });
 
         Template.registerHelper('shrinkForSlideSorter', function() {
             return Cookies.get('showSlideSorter') === "true" ? "shrink" : ""; //

@@ -1,7 +1,7 @@
 <template name="landingPage">
     <div class="ui container">
         {{#if userSelectedGroup}}
-            {{#if authenticatedSlideGenerator}}
+            {{#if userLoggedInSense}}
                 {{>slideGeneratorSelectionScreen}}
             {{else}}
                 {{> presentationDimmer}}

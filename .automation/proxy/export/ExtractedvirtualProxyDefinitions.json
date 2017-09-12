@@ -240,7 +240,6 @@
     "websocketCrossOriginWhiteList": [
       "integration.qlik.com",
       "localhost",
-      "QLIK-AB0Q2URN5T",
       "QLIK-AB0Q2URN5T"
     ],
     "defaultVirtualProxy": false,

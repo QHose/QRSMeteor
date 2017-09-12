@@ -98,25 +98,29 @@
       });
   }
 
-  //really login the real user from facebook, or google via a ticket in qlik sense
-  function redirectPresentationUser(senseParams) {
-      console.log('SSO client side, really login the real user from facebook, or google via a ticket in qlik sense');
+  //   //really login the real user from facebook, or google via a ticket in qlik sense
+  //   function redirectPresentationUser(senseParams) {
+  //       console.log('Client side SSO: redirectPresentationUser')
+  //       console.log('senseParams', senseParams)
+  //       console.log('SSO client side, login a real user (not a dummy from step 4) via a ticket in qlik sense');
 
-      const userProperties = {};
-      userProperties.user = Meteor.userId(); //the logged in user
-      userProperties.group = Session.get('groupForPresentation'); //make sure dummy users don;t get access to this app
-      console.log('presentation group is ', userProperties.group);
+  //       const userProperties = {};
+  //       userProperties.user = Meteor.userId(); //the logged in user
+  //       userProperties.group = Session.get('groupForPresentation'); //make sure dummy users don;t get access to this app
+  //       console.log('userProperties', userProperties)
 
-      Meteor.call('loginUserForPresentationViaRedirect', senseParams.proxyRestUri, senseParams.targetId, userProperties, (error, redirectUrl) => {
-          Session.set('SSOLoading', false);
-          if (error) {
-              sAlert.error(error);
-              console.error('Meteor SSO page, could not get a redirectUrl from Qlik Sense', error)
-                  // Router.go('presentation'); //GO TO THE SLIDE landing page first
-          } else {
-              console.log('redirect URL received, now change the URL of the browser back to the slide generator page');
-              Cookies.set('authenticatedSlideGenerator', 'true');
-              window.location.replace(redirectUrl);
-          }
-      });
-  };
+  //       console.log('The group set as input for the slide generator on the landing page is ', userProperties.group);
+
+  //       Meteor.call('loginUserForPresentationViaRedirect', senseParams.proxyRestUri, senseParams.targetId, userProperties, (error, redirectUrl) => {
+  //           Session.set('SSOLoading', false);
+  //           if (error) {
+  //               sAlert.error(error);
+  //               console.error('Meteor SSO page, could not get a redirectUrl from Qlik Sense', error)
+  //                   // Router.go('presentation'); //GO TO THE SLIDE landing page first
+  //           } else {
+  //               console.log('redirect URL received, now change the URL of the browser back to the slide generator page');
+  //               Cookies.set('authenticatedSlideGenerator', 'true');
+  //               window.location.replace(redirectUrl);
+  //           }
+  //       });
+  //   };

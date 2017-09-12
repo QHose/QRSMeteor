@@ -1,5 +1,9 @@
-import { Mongo } from 'meteor/mongo';
-import { Random } from 'meteor/random';
+import {
+    Mongo
+} from 'meteor/mongo';
+import {
+    Random
+} from 'meteor/random';
 import _ from 'meteor/underscore';
 const _QIXSchema = require('/node_modules/enigma.js/schemas/qix/12.20.0/schema.json');
 
@@ -23,8 +27,12 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
     console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.private);
     import crypto from 'crypto';
-    import fs from 'fs';
-    import { myQRS } from '/imports/api/server/QRSAPI';
+    var fs = require('fs-extra');
+    const path = require('path');
+    // import fs from 'fs';
+    import {
+        myQRS
+    } from '/imports/api/server/QRSAPI';
     const bluebird = require('bluebird');
     const WebSocket = require('ws');
 
@@ -175,7 +183,30 @@ if (Meteor.isServer) {
         headerValue: _senseConfig.headerValue, //'mydomain\\justme'
     };
 
-}
+
+    Meteor.startup(async function() {
+        console.log('------------------------------------');
+        console.log('Validate settings.json parameters');
+        console.log('------------------------------------');
+        Meteor.absolutePath = path.resolve('.').split(path.sep + '.meteor')[0];
+        console.log('Meteor tries to find the settings.json file in Meteor.absolutePath:', Meteor.absolutePath)
+        var file = path.join(Meteor.absolutePath, 'settings-development-example.json');
+
+        // READ THE FILE 
+        var exampleSettingsFile = await fs.readJson(file);
+        try {
+            validateJSON(exampleSettingsFile)
+        } catch (err) {
+            throw new Error('Meteor wants to check your settings.json with the parameters in the example settings.json in the project root. Error: Cant read the example settings definitions file: ' + file);
+        }
+
+        var keysEqual = compareKeys(Meteor.settings, exampleSettingsFile);
+        if (!keysEqual) {
+            throw new Meteor.Error('Settings file incomplete', 'Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor');
+        }
+    })
+
+} //exit server side config
 
 export const senseConfig = _senseConfig;
 
@@ -200,4 +231,10 @@ export function missingParameters(obj) {
             return false;
     }
     return true;
+}
+
+export function compareKeys(a, b) {
+    var aKeys = Object.keys(a).sort();
+    var bKeys = Object.keys(b).sort();
+    return JSON.stringify(aKeys) === JSON.stringify(bKeys);
 }
