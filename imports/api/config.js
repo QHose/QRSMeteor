@@ -18,7 +18,7 @@ if (Meteor.isClient) {
         "QIXSchema": _QIXSchema,
         //ssbi and slide generator app id are set automatically on main.js (client side, via a call to the server)
         // config.SSBIAppId = 
-        // config.IntegrationPresentationApp = 
+        // config.slideGeneratorAppId = 
     };
 }
 

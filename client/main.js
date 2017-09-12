@@ -82,7 +82,7 @@ Meteor.startup(function() {
             alert('Error', error);
         } else {
             config.SSBIAppId = IDs.SSBI;
-            config.IntegrationPresentationApp = IDs.slideGenerator;
+            config.slideGeneratorAppId = IDs.slideGenerator;
         }
     });
 });

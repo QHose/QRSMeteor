@@ -16,7 +16,7 @@ import {
     QRSconfig,
     _SSBIApp,
     configCerticates,
-    _IntegrationPresentationApp
+    _slideGeneratorAppId
 } from '/imports/api/config.js';
 
 //

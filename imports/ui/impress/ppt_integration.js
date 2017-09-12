@@ -10,7 +10,7 @@ var converter = new showdown.Converter();
 const enigma = require('enigma.js');
 // The QIX schema needed by enigma.js
 const qixschema = senseConfig.QIXSchema;
-var appId = Session.get('SlideGeneratorAppId');
+var appId = senseConfig.slideGeneratorAppId
 var IntegrationPresentationSortedDataObject = Meteor.settings.public.slideGenerator.dataObject; //'pskL';//a table object in the saas presentation qvf, that ensures the slides are in the correct load order. better would be to load this in this order in the API call.
 var slideWidth = 2000;
 

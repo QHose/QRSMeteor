@@ -38,7 +38,7 @@ import {
     QRSconfig,
     _SSBIApp,
     configCerticates,
-    _IntegrationPresentationApp
+    _slideGeneratorAppId
 } from '/imports/api/config.js';
 import {
     APILogs,
@@ -108,7 +108,7 @@ export async function uploadAndPublishTemplateApps() {
                     var copiedAppId = copyApp(appId, appName);
                     publishApp(copiedAppId, appName, templateStreamId);
                 } else if (appName === 'Slide generator') {
-                    _IntegrationPresentationApp = appId,
+                    _slideGeneratorAppId = appId,
                         publishApp(appId, appName, APIAppsStreamID);
                 } else {
                     //Insert into template apps stream
@@ -164,8 +164,8 @@ export function setAppIDs(params) {
         senseConfig.SSBIApp = SSBIApps[0].id; //
         console.log('The SSBI app id has been set to ', senseConfig.SSBIApp);
 
-        senseConfig.IntegrationPresentationApp = slideGeneratorApps[0].id;
-        console.log('The slide generator app id has been set to ', senseConfig.IntegrationPresentationApp);
+        senseConfig.slideGeneratorAppId = slideGeneratorApps[0].id;
+        console.log('The slide generator app id has been set to ', senseConfig.slideGeneratorAppId);
     } catch (err) {
         console.error(err)
         throw new Meteor.Error('The slideGenerator or Self Service BI app can not be found in Qlik sense, or you did not have all parameters set as defined in the the settings.json example file.', err);

@@ -19,7 +19,7 @@ var intervalId = {};
 
 
 Template.landingPage.onCreated(function() {
-    appId = senseConfig.IntegrationPresentationApp;
+    appId = senseConfig.slideGeneratorAppId;
     slideObjectURL = server + '/single/?appid=' + appId + '&obj=' + Meteor.settings.public.slideGenerator.slideObject;
 
     //set a var so the sso ticket request page knows he has to login the real user and not some dummy user of step 4

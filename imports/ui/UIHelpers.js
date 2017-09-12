@@ -172,7 +172,7 @@
 
         //Integration presentation Iframe selector
         Template.registerHelper('IFrameURLChapterSelection', function() {
-            var appId = senseConfig.IntegrationPresentationApp;
+            var appId = senseConfig.slideGeneratorAppId;
             var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
             var proxy = Meteor.settings.public.slideGenerator.virtualProxy;
             return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';
