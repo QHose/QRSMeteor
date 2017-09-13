@@ -38,6 +38,10 @@
     font-size: 1.1em;
 }
 
+.mainContainerContent {
+    padding: 30px 0px 30px 0px;
+}
+
 .saasDemo.active.item {
     border-color: #E36E0F !important;
 }
