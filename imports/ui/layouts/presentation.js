@@ -5,6 +5,15 @@ Template.presentationLayout.onDestroyed(function() {
     Session.set('landingPageAlreadySeen', false);
 });
 
+Template.presentationLayout.onRendered(function() {
+
+    // this.$('.context.example .ui.sidebar')
+    //     .sidebar({
+    //         context: $('.context.example .bottom.segment')
+    //     })
+    //     .sidebar('attach events', '.context.example .menu .item');
+})
+
 Template.presentationLayout.helpers({
     showPresentation() {
         // console.log('show the IFRAME');
@@ -23,6 +32,9 @@ Template.presentationLayout.events({
     'click .launch': function(event) {
         console.log('button launch nav clicked');
         $('.ui.sidebar')
+            .sidebar({
+                context: $('.context.example .bottom.segment')
+            })
             .sidebar('toggle');
     },
     'click .button createSlides': function(event) {

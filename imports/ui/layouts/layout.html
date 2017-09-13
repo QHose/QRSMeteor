@@ -15,33 +15,34 @@
 </template>
 
 <template name="presentationLayout">
-    {{> nav}}
+    {{> nav}}  
+    
+    
     {{#if unsupportedBrowser}}        
         {{> unsupportedBrowser}}
     {{else}}
-    <div style="margin-top: 40px;">
+    <div class="presentationContainer" style="margin-top: 40px;">
+        
         {{> yield}}
-        <!-- {{> keepSenseConnectionOpen}} -->
-    </div>
+         <!-- {{> keepSenseConnectionOpen}} -->
+        </div>
     {{/if}}
 </template>
 
 <!-- FAKE IFRAME TO KEEP THE CONNECTION TO QLIK SENSE OPEN WHILE WE CONNECT TO ANOTHER PAGE -->
-<!-- <template name="keepSenseConnectionOpen">
+<template name="keepSenseConnectionOpen">
     {{#if groupSelectedSlideGenerator}}
         <iframe src="{{IFrameURLChapterSelection}}" style="width:0;height:0;border:0; border:none;visibility:hidden;display:none" seamless="seamless"></iframe>
     {{/if}}
-</template> -->
+</template>
 
 
 <template name="SSOLayout">
-    {{> sAlert}} {{> yield}} 
-    {{> footer}}
+    {{> sAlert}} {{> yield}} {{> footer}}
 </template>
 
 <template name="ImpressLayout">
-    {{> nav}} {{> sAlert}} {{> yield}}
-    {{> footer}}
+    {{> nav}} {{> sAlert}} {{> yield}} {{> footer}}
 </template>
 
 
@@ -262,7 +263,7 @@
         </div>
         <div class="ui one column centered grid">
             <div class="column centered">
-                 <div class="ui embed" data-url="{{URL_Youtube_concept_behind}}"></div>
+                <div class="ui embed" data-url="{{URL_Youtube_concept_behind}}"></div>
                 <!--<iframe width="854" height="480" src="{{URL_Youtube_concept_behind}}" frameborder="0" allowfullscreen></iframe>-->
             </div>
         </div>

@@ -73,7 +73,8 @@
       // console.log('router current route ',Router.current().route.getName());
       if (currentPage === 'presentationsso') {
           // console.log('PRESENTATION TICKET REQUEST: request a ticket for the user logged in into integration.qlik.com (meteorJS)');
-          redirectPresentationUser(senseParams);
+          //   redirectPresentationUser(senseParams);
+          throw new Meteor.Error('you should not be redirected to the SSO page since we requested a ticket before we showed the content like an IFrame...');
       } else { //login a dummy user of step 4 or for the ssbi demo
           redirectDummyUser(senseParams);
       }
