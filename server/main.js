@@ -59,10 +59,9 @@ async function initQlikSense() {
     console.log('------------------------------------');
     Meteor.call('updateLocalSenseCopy');
 
-    //By checking if a stream exist we try to figure out if this is a fresh or already existing Qlik Sense installation.//
+    //By checking if a stream exist we try to figure out if this is a fresh or already existing Qlik Sense installation.
     var QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);
     if (!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup) {
-
         console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
         QSLic.insertLicense();
         QSLic.insertUserAccessRule();
@@ -73,11 +72,9 @@ async function initQlikSense() {
         await QSApp.uploadAndPublishTemplateApps();
         QSExtensions.uploadExtensions();
         QSLic.saveSystemRules();
-
-        //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.
-        QSApp.setAppIDs();
     }
-
+    //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.
+    QSApp.setAppIDs();
 }
 
 //
@@ -178,7 +175,9 @@ Meteor.methods({
         QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff
 
         if (!Meteor.settings.multiTenantScenario) { //on premise installation for a single tenant (e.g. with MS Active Directory)
-            var customerNames = customers.map(function(c) { return c.name; });
+            var customerNames = customers.map(function(c) {
+                return c.name;
+            });
             QSCustomProps.createCustomProperty('customers', customerNames); //for non OEM scenarios (with MS AD), people like to use custom properties for authorization instead of the groups via a ticket.
         }
         Meteor.call('updateLocalSenseCopy');

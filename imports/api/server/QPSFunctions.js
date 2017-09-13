@@ -378,6 +378,7 @@ Meteor.methods({
         // logoutUser(Meteor.userId(), Meteor.userId()); //logout the user for the slide generator
     },
     logoutPresentationUser(UDC, name) {
+        console.log('logoutPresentationUser(UDC, name)', UDC, name);
         logoutUser(UDC, name, Meteor.settings.public.slideGenerator.virtualProxy);
     },
     simulateUserLogin(name) {

@@ -7,25 +7,17 @@ import {
 import {
     senseConfig
 } from '/imports/api/config.js';
+const enigma = require('enigma.js');
 const Cookies = require('js-cookie');
-var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
+var possibleRoles = ['Developer', 'TECHNICAL', 'GENERIC', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
 
-// ONRENDERED
-Template.useCaseSelection.onRendered(function() {
+// ONRENDERED.
+Template.useCaseSelection.onRendered(async function() {
     $('body').addClass('mainLandingImage');
 
     console.log('Cookies.get(\'currentMainRole\')', Cookies.get('currentMainRole'))
     $('.ui.dropdown')
-        .dropdown({
-            onChange(value, text, selItem) {
-                Cookies.set('currentMainRole', value);
-                console.log('currentMainRole', value);
-            }
-        })
-    setTimeout(function() {
-        $(".ui.dropdown").dropdown("refresh");
-        $(".ui.dropdown").dropdown("set selected", Cookies.get('currentMainRole'));
-    }, 1000)
+        .dropdown();
 
     $.each(possibleRoles, function(i, item) {
         $('#bodyDropdown').append($('<option>', {
@@ -34,6 +26,23 @@ Template.useCaseSelection.onRendered(function() {
         }));
     });
 
+    setTimeout(function() {
+        $(".ui.dropdown").dropdown("refresh");
+        $(".ui.dropdown").dropdown("set selected", Cookies.get('currentMainRole'));
+    }, 0)
+
+    setTimeout(function() {
+        $('.ui.dropdown')
+            .dropdown({
+                async onChange(value, text, selItem) {
+                    Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
+                    Cookies.set('currentMainRole', value);
+                    // await getQlikSenseSessionForGroup('GENERIC');
+                    await getQlikSenseSessionForGroup(value);
+                    Router.go('slidegeneratorSlides');
+                }
+            })
+    }, 1000)
 })
 
 
@@ -59,7 +68,7 @@ export async function getQlikSenseSessionForGroup(group) {
     console.log('Requested ticket from Qlik Sense server, so client can login without redirects...', ticket)
 
     const enigmaConfig = {
-        schema: qixschema,
+        schema: senseConfig.QIXSchema,
         appId: senseConfig.slideGeneratorAppId,
         session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
             host: senseConfig.host,
@@ -87,7 +96,7 @@ export async function getQlikSenseSessionForGroup(group) {
 
     console.log('We connect to Qlik Sense using enigma config', enigmaConfig)
 
-    enigma.getService('qix', enigmaConfig)
+    return await enigma.getService('qix', enigmaConfig)
         .then(qix => {
             console.log('user is authenticated in Qlik Sense. QIX object:', qix);
             Session.set('userLoggedInSense', true);

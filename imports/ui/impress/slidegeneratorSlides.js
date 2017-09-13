@@ -21,11 +21,7 @@ var config = null;
 Template.slidegeneratorSlides.onCreated(function() {
     clearSlideCache();
     console.log('############# Template.slidegeneratorSlides.onRendered');
-    console.log('senseConfig', senseConfig);
-    // var test = Object.assign({}, senseConfig)
-    // console.log('test', test)
 
-    console.log('senseConfig.slideGeneratorAppId', senseConfig.slideGeneratorAppId);
     config = {
         schema: qixschema,
         appId: Cookies.get('slideGeneratorAppId'), //senseConfig.slideGeneratorAppId, //,
@@ -36,6 +32,7 @@ Template.slidegeneratorSlides.onCreated(function() {
             unsecure: true
         },
     };
+    console.log('Engima config', config)
 })
 
 Template.slidegeneratorSlides.onRendered(function() {
@@ -347,38 +344,3 @@ function insertSectionBreakers(table) {
     // console.log('table with chapters is', newTableWithChapter);
     return newTableWithChapter;
 }
-
-
-
-/**
- * Auto-indent overflowing lines
- * @author Rob W http://stackoverflow.com/u/938089
- * @param code_elem HTMLCodeElement (or any element containing *plain text*)
- */
-// function autoindent(code_elem) {
-//     // Grab the lines
-//     var textContent = document.textContent === null ? 'textContent' : 'innerText';
-//     var lines = code_elem[textContent].split(/\r?\n/),
-//         fragment = document.createDocumentFragment(),
-//         dummy, space_width, i, prefix_len, line_elem;
-
-//     // Calculate the width of white space
-//     // Assume that inline element inherit styles from parent (<code>)
-//     dummy = document.createElement('span');
-//     code_elem.appendChild(dummy);
-//     // offsetWidth includes padding and border, explicitly override the style:
-//     dummy.style.cssText = 'border:0;padding:0;';
-//     dummy[textContent] = '          ';
-//     space_width = dummy.offsetWidth / 10;
-//     // Wipe contents
-//     code_elem.innerHTML = '';
-
-//     for (i = 0; i < lines.length; i++) {
-//         // NOTE: All preceeding white space (including tabs is included)
-//         prefix_len = /^\s*/.exec(lines[i])[0].length;
-//         line_elem = fragment.appendChild(document.createElement('div'));
-//         line_elem.style.marginLeft = space_width * prefix_len + 'px';
-//         line_elem[textContent] = lines[i].substring(prefix_len);
-//     }
-//     code_elem.appendChild(fragment);
-// }

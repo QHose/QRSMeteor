@@ -15,8 +15,6 @@ var appId = 'Not Yet initialized via main.js method call';
 var slideObjectURL = 'Not Yet initialized via main.js method call';
 var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
 var slideObject = Meteor.settings.public.slideGenerator.dataObject;
-var intervalId = {};
-
 
 Template.landingPage.onCreated(function() {
     console.log('Template.landingPage.onCreated app id ', senseConfig.slideGeneratorAppId)
