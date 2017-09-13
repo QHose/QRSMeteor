@@ -124,6 +124,67 @@
     visibility: visible;
 }
 
+
+/*TEST CASE 24-6*/
+
+.Grid {
+    display: flex;
+}
+
+.miniSlide {
+    flex: 1;
+    margin: 20px;
+    transition: all 1s;
+    z-index: 100;
+}
+
+
+/*.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}*/
+
+
+/*
+.miniSlide:focus {
+    position: fixed;
+    z-index: 100;
+     transform : translate(200px, 50%);
+}*/
+
+
+/*.miniSlide:focus {
+    z-index: 100;
+    transform: scale(2);
+}
+*/
+
+
+/*.triggerElement {
+    border: 1px solid blue;
+    height: 100px;
+    width: 100px;
+}*/
+
+
+/*.posDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    border: 1px solid red;
+    -moz-transition: all 2s;
+    -webkit-transition: all 2s;
+    -o-transition: all 2s;
+    transition: all 2s;    
+}*/
+
+
+/*END TEST*/
+
 #shrinked .step.zoomOut {
     -webkit-transform: scale(4);
     -moz-transform: scale(4);

@@ -30,11 +30,14 @@ if (window.location.href.indexOf("qlik.com") > -1) {
 
 function mustBeSignedInDEV() {
     var user = {
+        // email: "mbj2@test.com",
         email: "mbj2@qlik.com",
         "profile": { "name": { "first": "Martijn", "last": "Biesbroek" } },
         roles: ["Base"], // Array.from("Base,Employee,CPEFEmployee"),
         password: "test"
     };
+
+    addRolesBasedonEmail(user);
 
     // "Logout"-Hook: Manual implementation, wait a bit to prevent multiple page loads, because the database needs to be update
     Tracker.autorun(function() {
@@ -82,6 +85,7 @@ function mustBeSignedInQlik() {
 
 };
 
+//THE CODE BELOW IS JUST TO SIMULATE A SSO IF YOU ALREADY LOGGED IN INTO QLIK.COM. THIS CODE IS UNSECURE AND CAN'T BE USED FOR REAL PRODUCTION ENVIRONMENTS.... WE SET THE GROUPS ON THE CLIENT SIDE ETC. THIS IS UNSECURE. BUT FINE FOR THIS DEMO TOOL.
 function loginQlik() {
     //rerun this function anytime something happens with the login state
     var routeName = Router.current().route.getName();
@@ -96,7 +100,7 @@ function loginQlik() {
         console.log('The user tried to open: ' + uri);
         var encodedReturnURI = encodeURIComponent(uri);
         var QlikSSO = "https://login.qlik.com/login.aspx?returnURL=" + encodedReturnURI;
-        console.log('User has not Qlik.com cookie, so send him to: ', QlikSSO);
+        console.log('User has no Qlik.com cookie, so send him to: ', QlikSSO);
         window.location.replace(QlikSSO);
     } else if (!loggedInUser) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
         console.log('user is not yet logged in into meteor');
@@ -113,9 +117,12 @@ function loginQlik() {
                     accountID: accountID ? accountID.substr(accountID.indexOf("=") + 1) : '',
                 },
             },
-            // roles: "", //JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]"),
+            roles: '', //JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]"),
             password: emailAddress.substr(emailAddress.indexOf("=") + 1), //no need for a real password mechanism. People just need a login to have their own demo space
         };
+
+        addRolesBasedonEmail(user);
+
         console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
         //unsafe code, only sufficient for our simple demo site
         Meteor.call('resetPasswordOrCreateUser', user, function(err, res) {
@@ -133,6 +140,15 @@ function loginQlik() {
                 });
             }
         })
+    }
+}
+
+function addRolesBasedonEmail(user) {
+    var email = user.email;
+    var name = email.substring(0, email.lastIndexOf("@"));
+    var domain = email.substring(email.lastIndexOf("@") + 1);
+    if(domain === "qlik.com" || domain === "qliktech.com") {
+        user.roles = ['qlik']; //unsecure off course, this is only for user friendliness reasons to prevent dead links to confluence content.
     }
 }
 
