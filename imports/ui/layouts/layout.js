@@ -54,9 +54,9 @@ Template.impressFooter.helpers({
             }
         }
         if (
-            localStorage.userRole==='Developer' || 
-            localStorage.userRole==='Hosting Ops Professional' || 
-            localStorage.userRole==='CTO'
+            localStorage.userRole === 'Developer' ||
+            localStorage.userRole === 'Hosting Ops Professional' ||
+            localStorage.userRole === 'CTO'
         ) {
             return nav[localStorage.userRole];
         } else {
@@ -120,11 +120,11 @@ Template.SSBIFooter.helpers({
             },
         }
         if (
-            localStorage.userRole==='Developer' || 
-            localStorage.userRole==='Product Owner' || 
-            localStorage.userRole==='Business Analyst' || 
-            localStorage.userRole==='CTO' || 
-            localStorage.userRole==='C-Level executive, non-technical'
+            localStorage.userRole === 'Developer' ||
+            localStorage.userRole === 'Product Owner' ||
+            localStorage.userRole === 'Business Analyst' ||
+            localStorage.userRole === 'CTO' ||
+            localStorage.userRole === 'C-Level executive, non-technical'
         ) {
             return nav[localStorage.userRole];
         } else {
@@ -188,11 +188,11 @@ Template.documentationFooter.helpers({
             }
         }
         if (
-            localStorage.userRole==='Developer' || 
-            localStorage.userRole==='Product Owner' || 
-            localStorage.userRole==='Hosting Ops Professional' || 
-            localStorage.userRole==='Business Analyst' || 
-            localStorage.userRole==='CTO'
+            localStorage.userRole === 'Developer' ||
+            localStorage.userRole === 'Product Owner' ||
+            localStorage.userRole === 'Hosting Ops Professional' ||
+            localStorage.userRole === 'Business Analyst' ||
+            localStorage.userRole === 'CTO'
         ) {
             return nav[localStorage.userRole];
         } else {
@@ -249,15 +249,6 @@ export function unsupportedBrowser() {
     // console.log('unsupported browser?', isIEorEDGE() || isMobile());
     return isIEorEDGE() || isMobile();
 }
-
-Template.presentationLayout.helpers({
-    userSelectionMade() {
-        return Session.get('groupForPresentation'); //if the user selected a presentation type try to login
-    },
-    unsupportedBrowser() {
-        return unsupportedBrowser();
-    }
-});
 
 Template.layout.events({
     'keydown, click': function(event, template) {

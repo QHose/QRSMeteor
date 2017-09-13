@@ -1,7 +1,15 @@
-import { Template } from 'meteor/templating';
-import { Session } from 'meteor/session';
-import { senseConfig as config } from '/imports/api/config';
-import { unsupportedBrowser } from '/imports/ui/layouts/layout';
+import {
+    Template
+} from 'meteor/templating';
+import {
+    Session
+} from 'meteor/session';
+import {
+    senseConfig as config
+} from '/imports/api/config';
+import {
+    unsupportedBrowser
+} from '/imports/ui/layouts/layout';
 import '/imports/ui/UIHelpers';
 
 import './impress.html';

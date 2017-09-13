@@ -9,6 +9,12 @@ Template.presentationLayout.helpers({
     showPresentation() {
         // console.log('show the IFRAME');
         return Session.get('showPresentation'); //&& Session.get('clickedInSelection');
+    },
+    userSelectionMade() {
+        return Session.get('groupForPresentation'); //if the user selected a presentation type try to login
+    },
+    unsupportedBrowser() {
+        return unsupportedBrowser();
     }
 })
 
