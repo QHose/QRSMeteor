@@ -48,7 +48,7 @@
         "customerDataDir": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData",
         "automaticCleanUpGeneratedApps": "Yes",
         "automationBaseFolder": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\.automation",
-        "runInitialQlikSenseSetup": "Yes"
+        "runInitialQlikSenseSetup": true
     },
     "security": {
         "rulesToDisable": ["Stream", "CreateAppObjectsPublishedApp", "CreateApp", "ExportAppData", "StreamEveryoneAnonymous"]

@@ -193,6 +193,11 @@
             return Session.get('groupForPresentation'); //user selected a presentation type?
         });
 
+        //role that defines your role in the whole integration.qlik.com site, based on this we make selections in the slide generator.
+        Template.registerHelper('mainUserRole', function() {
+            return Cookies.get('currentMainRole');
+        });
+
         Template.registerHelper('isSelected', function() {
             return someValue ? 'selected' : '';
         });

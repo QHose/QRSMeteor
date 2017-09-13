@@ -49,11 +49,11 @@ Template.landingPage.onRendered(function() {
             onDeny: function() {
                 console.log('group has been set to TECHNICAL, we use this group to request a ticket in Qlik Sense. Using Section access we limit what a user can see. Now the iframe can be shown which tries to open the presentation virtual proxy');
                 Session.setAuth('groupForPresentation', 'TECHNICAL');
-                requestSenseTicket('TECHNICAL');
+                getQlikSenseSessionForGroup('TECHNICAL');
             },
             onApprove: function() {
                 Session.setAuth('groupForPresentation', 'GENERIC');
-                requestSenseTicket('GENERIC');
+                getQlikSenseSessionForGroup('GENERIC');
                 console.log('group has been set to GENERIC. This group is used in the ticket to limit section access (Rows)');
             }
         })
@@ -67,7 +67,7 @@ Template.landingPage.onRendered(function() {
     Session.set('landingPageAlreadySeen', true);
 })
 
-async function requestSenseTicket(group) {
+export async function getQlikSenseSessionForGroup(group) {
     // console.log('Slide generator landing page: checking Qlik Sense access... is the user logged in using the QPS API OnAuthenticationInformation?');
     var userProperties = {
         group: group
