@@ -11,7 +11,7 @@ import '/imports/ui/pages/webIntegration.js';
 import '/imports/ui/pages/introductionSecurity.html';
 import '/imports/ui/pages/introductionSecurity.js';
 import '/imports/ui/pages/QMC.html';
-import '/imports/ui/users/login.js'
+import '/imports/ui/users/login.js';
 import '/imports/ui/notFound.html';
 import '/imports/ui/useCases/useCaseSelection.js';
 import '/imports/ui/generation/OEMPartnerSide/users.js';
