@@ -2040,18 +2040,6 @@
     "privileges": null
   },
   {
-    "id": "a47bc561-b0a5-4929-a596-e0484eb87b1c",
-    "category": "Security",
-    "type": "Default",
-    "name": "StreamEveryoneAnonymous",
-    "rule": "user.IsAnonymous()",
-    "resourceFilter": "Stream_aaec8d41-5201-43ab-809f-3063750dfafd",
-    "actions": 2,
-    "comment": "The default stream called Everyone should be visible for anonymous users",
-    "disabled": true,
-    "privileges": null
-  },
-  {
     "id": "5ce52e58-3a5d-4e59-b839-ded45573fc4e",
     "category": "Security",
     "type": "Default",
@@ -2072,6 +2060,18 @@
     "resourceFilter": "App.Object_*",
     "actions": 1,
     "comment": "If you have read rights on an published app you should be able to create sheets, stories, bookmarks and snapshots belonging to that app",
+    "disabled": true,
+    "privileges": null
+  },
+  {
+    "id": "a47bc561-b0a5-4929-a596-e0484eb87b1c",
+    "category": "Security",
+    "type": "Default",
+    "name": "StreamEveryoneAnonymous",
+    "rule": "user.IsAnonymous()",
+    "resourceFilter": "Stream_aaec8d41-5201-43ab-809f-3063750dfafd",
+    "actions": 2,
+    "comment": "The default stream called Everyone should be visible for anonymous users",
     "disabled": true,
     "privileges": null
   }

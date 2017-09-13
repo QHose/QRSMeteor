@@ -13,6 +13,8 @@
         "TemplateAppStreamName": "Templates",
         "EveryoneAppStreamName": "Everyone",
         "SSBI": {
+            "name": "SSBI",
+            "stream": "Everyone",
             "sheetId": "puEpZK"
         },
         "slideGenerator": {
@@ -22,7 +24,7 @@
             "dataObject": "pskL",
             "slideObject": "BbbV",
             "virtualProxy": "presentationsso"
-        },
+        }
     },
     "private": {
         "certificatesDirectory": "C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates",
