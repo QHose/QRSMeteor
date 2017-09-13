@@ -18,9 +18,9 @@ var config = null;
 // Slide generator main template//
 //////////////////////////////////
 
-Template.ppt_integration.onCreated(function() {
+Template.slidegeneratorSlides.onCreated(function() {
     clearSlideCache();
-    console.log('############# Template.ppt_integration.onRendered');
+    console.log('############# Template.slidegeneratorSlides.onRendered');
     console.log('senseConfig', senseConfig);
     // var test = Object.assign({}, senseConfig)
     // console.log('test', test)
@@ -38,7 +38,7 @@ Template.ppt_integration.onCreated(function() {
     };
 })
 
-Template.ppt_integration.onRendered(function() {
+Template.slidegeneratorSlides.onRendered(function() {
     initializePresentation();
 })
 
@@ -67,7 +67,7 @@ export function initializePresentation() {
     });
 
 }
-Template.ppt_integration.onDestroyed(function() {
+Template.slidegeneratorSlides.onDestroyed(function() {
     Cookies.set('showSlideSorter', 'false');
 })
 
@@ -145,7 +145,7 @@ Template.integrationSlide.helpers({
     }
 })
 
-//active slide gets set via impress.js, that fires an event. see ppt_integration.onRendered
+//active slide gets set via impress.js, that fires an event. see slidegeneratorSlides.onRendered
 //for performance reasons we only do all our formatting etc when the slide is active.
 //but for the slide sorter we need all content to be loaded in one go...
 //show the slide if the slide is active, but in case of the slide sorter all slides should be presented at once. This is a performance tweak...

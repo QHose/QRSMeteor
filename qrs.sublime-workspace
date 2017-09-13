@@ -205,7 +205,7 @@
 			],
 			[
 				"ppt",
-				"ppt_integrationMain"
+				"slidegeneratorSlidesMain"
 			],
 			[
 				"lan",
@@ -612,12 +612,12 @@
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/settings-production.json",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/api/server/QRSFunctionsApp.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impressJSModifiedSource.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/ppt_integration.js",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/slidegeneratorSlides.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/presentation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationMain.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/presentation.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/impress.js",
-		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/ppt_integration.html",
+		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/slidegeneratorSlides.html",
 		"/C/Users/mbj/Documents/GitHub/QRSMeteor/imports/ui/layouts/presentation.html",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/layouts/layout.js",
 		"/C/Users/MBJ/Documents/GitHub/QRSMeteor/imports/ui/impress/integrationMain.js",

@@ -5,9 +5,9 @@ import { senseConfig as config } from '/imports/api/config';
 import './impress.css'; //slides you see when you start the multi tenant demo
 import './impressJSModifiedSource.js'
 import hljs from 'highlight.js';
-import { initializePresentation, clearSlideCache, initCodeHighLightAndYouTube } from './ppt_integration'
+import { initializePresentation, clearSlideCache, initCodeHighLightAndYouTube } from './slidegeneratorSlides'
 
-//for the slide sorter we needed to create a different template since the layout is different. But all logic comes from the ppt_integration part. 
+//for the slide sorter we needed to create a different template since the layout is different. But all logic comes from the slidegeneratorSlides part. 
 // There you will also see the Template.registerHelpers
 
 
@@ -55,7 +55,7 @@ Template.ppt_slideSorter.events({
         console.log('Data context of the slide (received from Qlik Sense Engine API) ', this);
 
         var $slide = $(event.target).closest(".step");
-        if(event.target.className !== 'video icon' && event.target.nodeName !== 'A') { //do not close the zoomed slide, if users click a video or a link
+        if (event.target.className !== 'video icon' && event.target.nodeName !== 'A') { //do not close the zoomed slide, if users click a video or a link
             //zoom the slide if the user clicked on it.
             $slide.toggleClass("zoomOut");
         }
@@ -84,9 +84,9 @@ Reload._onMigrate(function() {
 
 //Make sure the presentation/landingpage is initialized again.
 window.addEventListener('beforeunload', function(e) {
-        if(!hotcodepush) {
+        if (!hotcodepush) {
             Cookies.set('showSlideSorter', 'false');
         }
-        if(hotcodepush) console.log("SlideSorter: Hot code reload");
+        if (hotcodepush) console.log("SlideSorter: Hot code reload");
     })
     //END init code

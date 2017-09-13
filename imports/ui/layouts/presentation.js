@@ -1,7 +1,7 @@
 Template.presentationLayout.onDestroyed(function() {
     var landingPageAlreadySeen = Session.get('landingPageAlreadySeen');
     // console.log('user left the slide generator, make sure he gets the landing page next time');
-    // console.log('ppt_integrationMain onDestroyed. landingPageAlreadySeen:', landingPageAlreadySeen);
+    // console.log('slidegeneratorSlidesMain onDestroyed. landingPageAlreadySeen:', landingPageAlreadySeen);
     Session.set('landingPageAlreadySeen', false);
 });
 
