@@ -75,6 +75,9 @@ See [this manual](https://github.com/QHose/QRSMeteor/blob/master/public/docs/Qli
 
 ### Docker 
 I also created docker images but they are not yet ready to be used. (they can be used but contain an older version of this project) 
+* docker pull qhose/qrsmeteor
+* docker pull qhose/sensewebintegration
+[See this flow chart](https://www.lucidchart.com/documents/embeddedchart/feaf7d0e-cd67-44f5-ad35-ea849ff6d274/0). If want to know how to build a node image from a windows meteor project. Mind the tabs in the top with build and run. 
 
 # Install your own deployment using the source code 
 [see this manual](https://github.com/QHose/QRSMeteor/blob/master/public/docs/Qlik%20Sense%20SaaS%20demo%20tool%20documentation%20of%20source%20code.docx) to learn more about this source code.
