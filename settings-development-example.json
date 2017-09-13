@@ -11,18 +11,18 @@
         "StreamsToCreateAutomatically": ["API apps", "Templates", "Everyone", "QA", "TEST"],
         "APIAppStreamName": "API apps",
         "TemplateAppStreamName": "Templates",
-        "EveryoneAppStreamName": "Everyone"
-    },
-    "SSBI": {
-        "sheetId": "puEpZK"
-    },
-    "slideGenerator": {
-        "name": "Slide generator",
-        "stream": "API apps",
-        "selectionSheet": "DYTpxv",
-        "dataObject": "pskL",
-        "slideObject": "BbbV",
-        "virtualProxy": "presentationsso"
+        "EveryoneAppStreamName": "Everyone",
+        "SSBI": {
+            "sheetId": "puEpZK"
+        },
+        "slideGenerator": {
+            "name": "Slide generator",
+            "stream": "API apps",
+            "selectionSheet": "DYTpxv",
+            "dataObject": "pskL",
+            "slideObject": "BbbV",
+            "virtualProxy": "presentationsso"
+        },
     },
     "private": {
         "certificatesDirectory": "C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates",

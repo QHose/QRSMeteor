@@ -139,6 +139,7 @@ export function setAppIDs(params) {
     console.log('SET APP IDs');
     console.log('------------------------------------');
     try {
+        console.log('check if all settings.json parameters are set...')
         check(Meteor.settings.public.slideGenerator, {
             name: String,
             stream: String,
@@ -152,7 +153,11 @@ export function setAppIDs(params) {
             stream: String,
             sheetId: String
         });
+    } catch (err) {
+        console.error('Missing parameters in your settings.json file for the SSBI or slidegenerator...', err)
+    }
 
+    try {
         var slideGeneratorApps = getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream);
         var SSBIApps = getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream);
         if (slideGeneratorApps.length > 1) {

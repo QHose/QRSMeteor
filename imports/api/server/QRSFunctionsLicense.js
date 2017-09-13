@@ -31,20 +31,31 @@ export function insertLicense() {
     var existingLicense = qrs.get('/qrs/license');
     var newLicense = Meteor.settings.private.license;
 
-    if (newLicense) {
-        try {
-            console.log('Update the existing license');
-            newLicense.id = existingLicense.id;
-            var response = qrs.del('/qrs/license/' + existingLicense.id);
-            // var response = qrs.put('/qrs/license/' + newLicense.id, newLicense, { control: Meteor.settings.private.LicenseControlNumber });
-            // console.error('Stop license insertion, license for ' + lic.organization + ' is already included: ', lic.serial);
-            // throw Error('You are trying to insert a license while the Qlik Sense is already licensed, please remove the existing one in the QMC');
-        } catch (err) {
-            // lic did not already exist.
-        }
+    try {
+        console.log('check if all settings.json parameters are set...')
+        check(Meteor.settings.private.license, {
+            serial: String,
+            name: String,
+            organization: String
+        });
+        check(Meteor.settings.private.LicenseControlNumber, Number);
+    } catch (err) {
+        console.error('Missing parameters in your settings.json file for your Qlik Sense license', err)
+    }
+
+    if (!existingLicense) {
+        // try {
+        //     console.log('Update the existing license');
+        //     newLicense.id = existingLicense.id;
+        //     var response = qrs.del('/qrs/license/' + existingLicense.id);
+        //     // var response = qrs.put('/qrs/license/' + newLicense.id, newLicense, { control: Meteor.settings.private.LicenseControlNumber });
+        //     // console.error('Stop license insertion, license for ' + lic.organization + ' is already included: ', lic.serial);
+        //     // throw Error('You are trying to insert a license while the Qlik Sense is already licensed, please remove the existing one in the QMC');
+        // } catch (err) {
+        //     // lic did not already exist.
+        // }
         var response = qrs.post('/qrs/license', { control: Meteor.settings.private.LicenseControlNumber }, newLicense);
-    } else {
-        throw new Error('You did not specify a valid License number in your settings.json file');
+        console.log('No existing license present, therefore inserted license into Qlik Sense.')
     }
 }
 

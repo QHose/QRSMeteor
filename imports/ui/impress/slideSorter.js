@@ -38,10 +38,10 @@ Template.slideSorter.events({
         var $doc = $(document);
         var centerX = $doc.width() / 2;
         var centerY = $doc.height() / 2;
-        var origX = $slide.position().left + $slide.width()/2;
-        var origY = $slide.position().top  + $slide.height()/2;
+        var origX = $slide.position().left + $slide.width() / 2;
+        var origY = $slide.position().top + $slide.height() / 2;
         var deltaX = centerX - origX; //compare center with center... 
-        var deltaY = centerY - origY; 
+        var deltaY = centerY - origY;
 
         console.log('original pos:', origX, origY, $slide.position());
         console.log('center is ', centerX, centerY);
@@ -49,7 +49,7 @@ Template.slideSorter.events({
 
         // testDiv = document.getElementById('testDiv');
         // $slide.attr('style', CSS.translate3d(-300, 100, 0, 500));
-        $slide.attr('style', CSS.zoomTo(deltaX, deltaY, 2, 2000));  
+        $slide.attr('style', CSS.zoomTo(deltaX, deltaY, 2, 2000));
 
 
     },
@@ -130,16 +130,11 @@ Reload._onMigrate(function() {
 
 //Make sure the presentation/landingpage is initialized again.
 window.addEventListener('beforeunload', function(e) {
-        if (!hotcodepush) {
-            Cookies.set('showSlideSorter', 'false');
-        }
-        if (hotcodepush) console.log("SlideSorter: Hot code reload");
-    })
-<<<<<<< HEAD
-    //END init code
-=======
-    //END init code
-<<<<<<< HEAD
+    if (!hotcodepush) {
+        Cookies.set('showSlideSorter', 'false');
+    }
+    if (hotcodepush) console.log("SlideSorter: Hot code reload");
+})
 
 var CSS = {
     /**
@@ -212,6 +207,3 @@ var CSS = {
         return tr;
     }
 }
-=======
->>>>>>> master
->>>>>>> docker
