@@ -1,5 +1,5 @@
 <template name="slidesContainerIFrame">
-          <iframe allowfullscreen src="{{pathFor 'slides'}}" class="frame"></iframe>
+  <iframe allowfullscreen src="{{pathFor 'slides'}}" class="frame"></iframe>
 </template>
 
 
@@ -8,6 +8,41 @@
 
   <div class="reveal">
     <div class="slides">
+
+      {{#each slideHeaders }}
+      <!-- for each header: a level 1 and 2 combination -->
+
+      {{#if chapterSlide this}}
+      <!--         Create a chapter breaker if the level 1 has changed in the current row-->
+      <section>
+        Next: {{this}}
+        <!-- The current level 1 and 2 headers -->
+      </section>
+
+
+      {{else}}
+      <!-- {{> integrationSlide slide=this slideNr=@index}}  -->
+      <section>
+        <h2 class="ui center aligned main header">
+          <div class="content">
+            {{{level 1 this}}}
+            <div class="sub header">
+              {{{level 2 this}}}
+            </div>
+          </div>
+        </h2>
+      </section>
+      <div class="slideContent">
+          {{#each item in itemsOfLevel 3 this}}
+              {{{formatted item}}}
+          {{/each}}
+      </div>
+      <!-- {{> integrationSlideContent slideNr=1 slide=this}}  -->
+      <!-- {{#if slideActive slideNr}} {{> integrationSlideContent slideNr=slideNr slide=slide}} {{/if}} -->
+
+
+      {{/if}} {{/each}}
+
       <section>Slide 1</section>
       <section>Slide 2</section>
       <section data-background-iframe="https://slides.com" data-background-interactive>
@@ -15,5 +50,6 @@
       </section>
     </div>
   </div>
-  
+
+
 </template>

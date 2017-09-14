@@ -45,9 +45,8 @@ Template.useCaseSelection.onRendered(async function() {
                 async onChange(group, text, selItem) {
                     Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
                     Cookies.set('currentMainRole', group);
-                    // await getQlikSenseSessionForGroup(value);
                     await setSlideContentInSession(group);
-                    // Router.go('slidegeneratorSlides');
+                    Router.go('slides');
                 }
             })
     }, 1000)
@@ -165,57 +164,6 @@ Template.useCaseSelection.helpers({
     }
 });
 
-export async function getQlikSenseSessionForGroup(group) {
-    // console.log('Slide generator landing page: checking Qlik Sense access... is the user logged in using the QPS API OnAuthenticationInformation?');
-    var userProperties = {
-        group: group
-    };
-
-    var ticket = await Meteor.callPromise('getTicketNumber', userProperties);
-    console.log('Requested ticket from Qlik Sense server, so client can login without redirects...', ticket)
-
-    const enigmaConfig = {
-        schema: senseConfig.QIXSchema,
-        appId: senseConfig.slideGeneratorAppId,
-        session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-            host: senseConfig.host,
-            prefix: Meteor.settings.public.slideGenerator.virtualProxy,
-            port: senseConfig.port,
-            unsecure: true,
-            urlParams: {
-                qlikTicket: ticket
-            }
-        },
-        listeners: {
-            'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + data),
-        },
-        handleLog: (message) => console.log('Engima: ' + message),
-        //http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Msgs-Proxy-Clients-OnAuthenticationInformation.htm
-        // listeners: {
-        //     'notification:OnAuthenticationInformation': (authInfo) => {
-        //         // console.log('authInfo', authInfo)
-        //         if (authInfo.mustAuthenticate) {
-        //             location.href = authInfo.loginUri;
-        //         }
-        //     },
-        // }
-    };
-
-    console.log('We connect to Qlik Sense using enigma config', enigmaConfig)
-
-    return await enigma.getService('qix', enigmaConfig)
-        .then(qix => {
-            console.log('user is authenticated in Qlik Sense. QIX object:', qix);
-            Session.set('userLoggedInSense', true);
-            // logoutCurrentSenseUserClientSide(); //gives error 500
-
-        }).catch((error) => {
-            console.info('info: No QIX connection for user, user not yet able to connect to the app via the enigma.js: ', error);
-        });
-
-}
-
-
 function insertSectionBreakers(table) {
     var currentLevel1, previousLevel1 = '';
     var newTableWithChapter = [];
@@ -236,3 +184,55 @@ function textOfLevel(row, level) {
     level -= 1
     return row[level].qText
 }
+
+
+
+// export async function getQlikSenseSessionForGroup(group) {
+//     // console.log('Slide generator landing page: checking Qlik Sense access... is the user logged in using the QPS API OnAuthenticationInformation?');
+//     var userProperties = {
+//         group: group
+//     };
+
+//     var ticket = await Meteor.callPromise('getTicketNumber', userProperties);
+//     console.log('Requested ticket from Qlik Sense server, so client can login without redirects...', ticket)
+
+//     const enigmaConfig = {
+//         schema: senseConfig.QIXSchema,
+//         appId: senseConfig.slideGeneratorAppId,
+//         session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+//             host: senseConfig.host,
+//             prefix: Meteor.settings.public.slideGenerator.virtualProxy,
+//             port: senseConfig.port,
+//             unsecure: true,
+//             urlParams: {
+//                 qlikTicket: ticket
+//             }
+//         },
+//         listeners: {
+//             'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + data),
+//         },
+//         handleLog: (message) => console.log('Engima: ' + message),
+//         //http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Msgs-Proxy-Clients-OnAuthenticationInformation.htm
+//         // listeners: {
+//         //     'notification:OnAuthenticationInformation': (authInfo) => {
+//         //         // console.log('authInfo', authInfo)
+//         //         if (authInfo.mustAuthenticate) {
+//         //             location.href = authInfo.loginUri;
+//         //         }
+//         //     },
+//         // }
+//     };
+
+//     console.log('We connect to Qlik Sense using enigma config', enigmaConfig)
+
+//     return await enigma.getService('qix', enigmaConfig)
+//         .then(qix => {
+//             console.log('user is authenticated in Qlik Sense. QIX object:', qix);
+//             Session.set('userLoggedInSense', true);
+//             // logoutCurrentSenseUserClientSide(); //gives error 500
+
+//         }).catch((error) => {
+//             console.info('info: No QIX connection for user, user not yet able to connect to the app via the enigma.js: ', error);
+//         });
+
+// }
