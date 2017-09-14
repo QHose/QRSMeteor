@@ -1,4 +1,7 @@
 import '/imports/ui/useCases/useCaseSelection.html';
+import '/imports/ui/slideGenerator/slides.html';
+import '/imports/ui/slideGenerator/slides';
+import '/imports/ui/slideGenerator/slides.css';
 // import { getQlikSenseSessionForGroup } from '/imports/ui/impress/landingPage';
 import './SSBI/SSBI.js';
 import {
@@ -143,15 +146,13 @@ async function setSlideContentInSession(group) {
             qWidth: 3,
             qHeight: 3333
         }]);
-        Session.set('slideDetailsAllSlides', sessionData[0].qMatrix;);
+        Session.set('slideData', sessionData[0].qMatrix);
 
     } catch (error) {
         console.error('ERROR getting level 1 and 2 from the app via the enigma.js: ', error);
         sAlert.error('ERROR getting level 1 and 2 from the app via the enigma.js: ', error);
     };
 }
-
-
 //ONDESTROYED
 Template.useCaseSelection.onDestroyed(function() {
     $('body').removeClass('mainLandingImage');

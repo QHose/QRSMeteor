@@ -6,6 +6,16 @@ Router.configure({
     notFoundTemplate: 'notFound',
 });
 
+//slide generator with reveal.js
+Router.route('/slides', {
+    template: 'slides',
+    layoutTemplate: 'containerlayout'
+});
+
+
+
+
+
 //redirect users from saasdemo.qlik.com to integration.qlik.com
 if (window.location.href.indexOf("saasdemo") > -1) {
     // var newURL = 'http://'+window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
@@ -147,7 +157,7 @@ function addRolesBasedonEmail(user) {
     var email = user.email;
     var name = email.substring(0, email.lastIndexOf("@"));
     var domain = email.substring(email.lastIndexOf("@") + 1);
-    if(domain === "qlik.com" || domain === "qliktech.com") {
+    if (domain === "qlik.com" || domain === "qliktech.com") {
         user.roles = ['qlik']; //unsecure off course, this is only for user friendliness reasons to prevent dead links to confluence content.
     }
 }
@@ -253,10 +263,6 @@ Router.route('/presentation', {
 });
 
 Router.route('/integration', {
-    template: 'landingPage',
-    layoutTemplate: 'presentationLayout'
-});
-Router.route('/slides', {
     template: 'landingPage',
     layoutTemplate: 'presentationLayout'
 });

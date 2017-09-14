@@ -26,7 +26,6 @@ import {
 const fs = require('fs-extra');
 const path = require('path');
 const enigma = require('enigma.js');
-var QRS = require('qrs');
 var promise = require('bluebird');
 var request = require('request');
 
