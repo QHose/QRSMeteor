@@ -18,6 +18,14 @@ Template.slides.onRendered(function name() {
 
 })
 
+Reveal.addEventListener('ready', function(event) {
+    // event.currentSlide, event.indexh, event.indexv
+    Session.set('slideLoading', true);
+    console.log('------------------------------------');
+    console.log('Reveal is ready to be used');
+    console.log('------------------------------------');
+});
+
 Template.slides.helpers({
     create: function() {
 
