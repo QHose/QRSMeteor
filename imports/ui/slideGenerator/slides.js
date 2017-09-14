@@ -4,9 +4,20 @@ import 'reveal/theme/default.css';
 
 // Full list of configuration options available here: 
 // https://github.com/hakimel/reveal.js#configuration 
+Template.slides.onCreated(function name() {
 
+})
 Template.slides.onRendered(function name() {
     console.log('slides rendered');
+
+    Reveal.addEventListener('ready', function(event) {
+        // event.currentSlide, event.indexh, event.indexv
+        Session.set('slideLoading', true);
+        console.log('------------------------------------');
+        console.log('Reveal is ready to be used');
+        console.log('------------------------------------');
+    });
+
     Reveal.initialize({
         controls: true,
         progress: true,
@@ -18,13 +29,6 @@ Template.slides.onRendered(function name() {
 
 })
 
-Reveal.addEventListener('ready', function(event) {
-    // event.currentSlide, event.indexh, event.indexv
-    Session.set('slideLoading', true);
-    console.log('------------------------------------');
-    console.log('Reveal is ready to be used');
-    console.log('------------------------------------');
-});
 
 Template.slides.helpers({
     create: function() {
