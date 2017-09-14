@@ -28,8 +28,6 @@ const path = require('path');
 const enigma = require('enigma.js');
 var promise = require('bluebird');
 var request = require('request');
-
-
 var qrs = new myQRS();
 
 // export async function automaticUploadExtensions() {

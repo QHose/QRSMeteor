@@ -1,17 +1,21 @@
 var Reveal = require('reveal');
+import 'reveal/index.css';
+import 'reveal/theme/default.css';
+
 // Full list of configuration options available here: 
 // https://github.com/hakimel/reveal.js#configuration 
-Reveal.initialize({
-    controls: true,
-    progress: true,
-    history: true,
-    center: true,
-    // default/cube/page/concave/zoom/linear/fade/none 
-    transition: 'none',
-});
 
 Template.slides.onRendered(function name() {
-    console.log('created');
+    console.log('slides rendered');
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        // default/cube/page/concave/zoom/linear/fade/none 
+        transition: 'none',
+    });
+
 })
 
 Template.slides.helpers({
