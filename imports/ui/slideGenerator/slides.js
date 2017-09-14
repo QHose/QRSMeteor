@@ -19,6 +19,7 @@ Template.slides.onRendered(function name() {
     });
 
     Reveal.initialize({
+        embedded: true,
         controls: true,
         progress: true,
         history: true,
@@ -26,6 +27,8 @@ Template.slides.onRendered(function name() {
         // default/cube/page/concave/zoom/linear/fade/none 
         transition: 'none',
     });
+    Reveal.configure({ slideNumber: true });
+
 
 })
 

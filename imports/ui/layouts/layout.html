@@ -38,7 +38,8 @@
 
 
 <template name="SSOLayout">
-    {{> sAlert}} {{> yield}} {{> footer}}
+    {{> sAlert}} {{> yield}} 
+    <!-- {{> footer}} -->
 </template>
 
 <template name="ImpressLayout">
@@ -62,6 +63,20 @@
     {{> footer}}
 </template>
 
+<template name="slidelayout">
+    <div class="wrap" style="position:absolute; top:100px;">
+        {{> nav}}
+        <div class="ui container">
+            {{> sAlert}} {{> modals}} {{> yield}}
+        </div>
+    </div>
+    <!-- {{> footer}} -->
+</template>
+
+<template name="emptyLayout">
+    {{> nav}}
+    {{> yield}}
+</template>
 
 <template name="containerlayout">
     <div class="wrap">

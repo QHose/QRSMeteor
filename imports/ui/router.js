@@ -7,9 +7,14 @@ Router.configure({
 });
 
 //slide generator with reveal.js
-Router.route('/slides', {
+Router.route('/slidesContainerIFrame', {
     template: 'slides',
     layoutTemplate: 'containerlayout'
+});
+
+Router.route('/slides', {
+    template: 'slides',
+    layoutTemplate: 'emptyLayout'
 });
 
 
