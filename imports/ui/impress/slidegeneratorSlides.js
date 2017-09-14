@@ -96,6 +96,7 @@ Template.integrationSlideContent.onRendered(function() {
 
 })
 
+
 export function initCodeHighLightAndYouTube(selection) {
     //init the youtube videos via semanticUI
     selection.$('.ui.embed').embed();
