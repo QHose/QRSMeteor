@@ -1,5 +1,5 @@
 var Reveal = require('reveal');
-import 'reveal/index.css';
+import './reveal.css';
 // import 'reveal/theme/default.css';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
@@ -21,10 +21,14 @@ Template.slides.onRendered(function() {
         console.log('------------------------------------');
     });
 
+    console.log('------------------------------------');
+    console.log(Reveal);
+    console.log('------------------------------------');
+
     Reveal.initialize({
         width: "1400",
-        height: window.innerHeight - 90,
-        // embedded: true,
+        // height: window.innerHeight - 90,
+        embedded: true,
         // controls: true,
         center: false,
         // progress: true,
@@ -54,6 +58,22 @@ Template.slides.events({
 });
 
 //
+// ─── SLIDE ──────────────────────────────────────────────────────────────────────
+//
+
+Template.slide.onRendered(function() {
+    Meteor.setTimeout(function() {
+        this.$('.ui.embed').embed();
+        //make sure all code gets highlighted using highlight.js
+        this.$('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+    }, 1000);
+
+});
+
+
+//
 // ─── HELPERS ────────────────────────────────────────────────────────────────────
 //
 
@@ -64,7 +84,6 @@ Template.slide.helpers({
         return active;
     }
 });
-
 
 
 Template.registerHelper('slideHeaders', function() {

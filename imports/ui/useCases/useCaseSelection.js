@@ -88,68 +88,14 @@ async function setSlideContentInSession(group) {
         };
         var qix = await enigma.getService('qix', config);
         console.log('Recieved qix object: ', qix)
-
-        //
-        // ─── MAIN TOPICS LEVEL 1 AND 2 ─────────────────────────────────────────────────
-        //
-
-
-        var model = await qix.app.getObject(IntegrationPresentationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same
-        var data = await model.getHyperCubeData('/qHyperCubeDef', [{
-            qTop: 0,
-            qLeft: 0,
-            qWidth: 3,
-            qHeight: 1000
-        }]);
-        var table = data[0].qMatrix;
-        var tableWithChapters = insertSectionBreakers(table);
-        console.log('Received a table of data via the Engine API, now the slides can be created by impress.js', tableWithChapters);
-        Session.set('slideHeaders', tableWithChapters)
-        Meteor.setTimeout(function() {
-            if (Cookies.get('showSlideSorter') !== 'true') { //do not initialize impress so we can use the mobile device layout of impress to get all the slide under each other
-                // console.log('Show slideSorter NOT selected, so initialize impress.js');
-                impress().init();
-                impress().goto(0);
-            }
-            Session.set('slideLoading', false);
-        }, 2000);
-
-        //
-        // ─── GET LEVEL 1 TO 3 ────────────────────────────────────────────
-        //
-
-
-        var sessionModel = await qix.app.createSessionObject({
-            qInfo: {
-                qType: 'cube'
-            },
-            qHyperCubeDef: {
-                qDimensions: [{
-                    qDef: {
-                        qFieldDefs: ['Level 1']
-                    }
-                }, {
-                    qDef: {
-                        qFieldDefs: ['Level 2']
-                    }
-                }, {
-                    qDef: {
-                        qFieldDefs: ['Level 3']
-                    }
-                }]
-            }
-        });
-        sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
-            qTop: 0,
-            qLeft: 0,
-            qWidth: 3,
-            qHeight: 3333
-        }]);
-        Session.set('slideData', sessionData[0].qMatrix);
+        getAllSlideHeaders(qix);
+        getAllSlides(qix);
+        setChangeListener(qix);
 
     } catch (error) {
-        console.error('ERROR getting level 1 and 2 from the app via the enigma.js: ', error);
-        sAlert.error('ERROR getting level 1 and 2 from the app via the enigma.js: ', error);
+        var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS';
+        console.error(message, error);
+        sAlert.error(message, error);
     };
 }
 //ONDESTROYED
@@ -163,6 +109,73 @@ Template.useCaseSelection.helpers({
         return Cookies.get('currentMainRole');
     }
 });
+
+
+//
+// ─── MAIN TOPICS LEVEL 1 AND 2 ─────────────────────────────────────────────────
+//
+async function getAllSlideHeaders(qix) {
+    var model = await qix.app.getObject(IntegrationPresentationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same
+    var data = await model.getHyperCubeData('/qHyperCubeDef', [{
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 3,
+        qHeight: 1000
+    }]);
+    var table = data[0].qMatrix;
+    var tableWithChapters = insertSectionBreakers(table);
+    console.log('Received a table of data via the Engine API, now the slides can be created by impress.js', tableWithChapters);
+    Session.set('slideHeaders', tableWithChapters)
+    Meteor.setTimeout(function() {
+        if (Cookies.get('showSlideSorter') !== 'true') { //do not initialize impress so we can use the mobile device layout of impress to get all the slide under each other
+            // console.log('Show slideSorter NOT selected, so initialize impress.js');
+            impress().init();
+            impress().goto(0);
+        }
+        Session.set('slideLoading', false);
+    }, 2000);
+}
+//
+// ─── GET LEVEL 1 TO 3 ────────────────────────────────────────────
+//
+
+async function getAllSlides(qix) {
+    var sessionModel = await qix.app.createSessionObject({
+        qInfo: {
+            qType: 'cube'
+        },
+        qHyperCubeDef: {
+            qDimensions: [{
+                qDef: {
+                    qFieldDefs: ['Level 1']
+                }
+            }, {
+                qDef: {
+                    qFieldDefs: ['Level 2']
+                }
+            }, {
+                qDef: {
+                    qFieldDefs: ['Level 3']
+                }
+            }]
+        }
+    });
+    sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 3,
+        qHeight: 3333
+    }]);
+    Session.set('slideData', sessionData[0].qMatrix);
+}
+
+function setChangeListener(qix) {
+    qix.app.on('changed', () => {
+        console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
+        getAllSlideHeaders(qix);
+        getAllSlides(qix);
+    });
+}
 
 function insertSectionBreakers(table) {
     var currentLevel1, previousLevel1 = '';

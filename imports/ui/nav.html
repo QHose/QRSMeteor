@@ -7,9 +7,10 @@
       <!-- {{/unless}} -->
       <a href="{{pathFor 'selfService'}}" class="{{#if isSelfServicePage}} active {{/if}} item">
       SELF SERVICE
-    </a> {{#if isSaaSDemoPage}} {{> yourSaasPlatformMenu}} 
-    {{else}}
-      <a href="{{pathFor 'SaaSIntroduction'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
+    </a>
+      {{#if isSaaSDemoPage}} {{> yourSaasPlatformMenu}}
+      {{else}}
+        <a href="{{pathFor 'SaaSIntroduction'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
         SAAS PROVISIONING
       </a> {{/if}}
       <a href="{{webIntegrationDemo}}" class="item">
@@ -24,6 +25,8 @@
       Logout
     </a>
   </div> -->
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
     </div>
   </div>
 
@@ -34,10 +37,11 @@
     <i class="dropdown icon"></i>
     <div class="menu">
       <a class="item" href="{{pathFor 'generation'}}">Provisioning admin panel</a>
-      <a class="item" href="{{pathFor 'securityRules'}}">QMC System rules</a>{{#if readyToTestSSO}}
-      <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Your SaaS platform with Qlik Sense embedded</a>
-      <a class="item" href="{{senseServerHub}}" target="_blank">Not embedded, Hub using Single Sign On</a>
-      <a class="item" href="{{senseServerQMC}}" target="_blank">Not embedded, QMC using Single Sign On</a>{{/if}}
+      <a class="item" href="{{pathFor 'securityRules'}}">QMC System rules</a>
+      {{#if readyToTestSSO}}
+        <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Your SaaS platform with Qlik Sense embedded</a>
+        <a class="item" href="{{senseServerHub}}" target="_blank">Not embedded, Hub using Single Sign On</a>
+        <a class="item" href="{{senseServerQMC}}" target="_blank">Not embedded, QMC using Single Sign On</a>{{/if}}
       <a class="item" href="{{pathFor 'users'}}">Customers and users</a>
       <a class="item" href="{{pathFor 'templateOverview'}}">Template apps</a>
       <a class="item" href="{{pathFor 'APILogs'}}">API Logs</a>
