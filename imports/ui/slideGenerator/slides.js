@@ -14,27 +14,27 @@ Template.slides.onRendered(function() {
     console.log('slides rendered');
 
     Reveal.addEventListener('ready', function(event) {
-        Session.set('activeStepNr', 0);
+        // Session.set('activeStepNr', 0);
         console.log('------------------------------------');
         console.log('Reveal is ready to be used');
         console.log('------------------------------------');
     });
 
     Reveal.initialize({
-        width: "80%",
-        height: "80%",
-        embedded: false,
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        autoPlayMedia: true,
-        viewDistance: 3,
-        // default/cube/page/concave/zoom/linear/fade/none 
-        transition: 'Slide', // none/fade/slide/convex/concave/zoom     
-        transitionSpeed: 'default', // default/fast/slow   
-        previewLinks: false,
-        slideNumber: true
+        width: "1400",
+        height: window.innerHeight - 90,
+        embedded: true,
+        // controls: true,
+        center: false,
+        // progress: true,
+        // history: true,        
+        // // autoPlayMedia: true,
+        // // viewDistance: 3,
+        // // default/cube/page/concave/zoom/linear/fade/none 
+        transition: 'slide', // none/fade/slide/convex/concave/zoom     
+        // transitionSpeed: 'default', // default/fast/slow   
+        previewLinks: true,
+        // slideNumber: true
 
     });
 
@@ -105,7 +105,7 @@ Template.registerHelper('formatted', function(text) {
         return text;
     } else if (checkTextIsImage(text)) { //image
         // console.log('found an image', text)
-        return '<img class="ui huge centered integration image"  src="images/' + text + '">'
+        return '<img class="ui huge centered rounded bordered spaced integration image"  src="images/' + text + '">'
     } else { //text, convert the text (which can include markdown syntax) to valid HTML
         var result = converter.makeHtml(text);
         if (result.substring(1, 11) === 'blockquote') {

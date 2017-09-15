@@ -24,19 +24,15 @@
 </template>
 
 <template name="slide">
-  <section class="integration">
-    <!-- <h2 class="ui center aligned main header"> -->
-      <!-- <div class="content"> -->
-        <h1>
-        {{{level 1 slide}}}
-      </h1>
-        <!-- <div class="sub header"> -->
-          <h2>
-          {{{level 2 slide}}}
-        </h2>
-        <!-- </div>
-      </div> -->
+  <section style="text-align: left;">
+    <!-- <h1 class="ui header">
+      {{{level 1 slide}}}
+      <div class="sub header">{{{level 2 slide}}}</div>
+    </h1> -->
+    <h3>  {{{level 1 slide}}}</h3>
+    <h1>{{{level 2 slide}}} <hr></h1>
     
+
     {{#if active slideNr}}
       <div class="slideContent">
         {{#each item in itemsOfLevel 3 slide}}
