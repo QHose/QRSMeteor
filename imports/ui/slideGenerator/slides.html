@@ -13,7 +13,12 @@
       {{#each slideHeaders }}
         {{#if chapterSlide this}}
           <section>
-            Next: {{this}}
+            <!-- Next: {{this}} -->
+            <div class="ui segment integrationBreaker">
+                <h1 class="ui header" style="font-size: 50px;">
+                Next: {{this}} <!-- The current level 1 and 2 headers -->
+            </h1>
+            </div>
           </section>
         {{else}}
           {{> slide slide=this slideNr=@index}}
