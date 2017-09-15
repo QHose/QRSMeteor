@@ -20,6 +20,7 @@ Template.slides.onRendered(function() {
         console.log('Reveal is ready to be used');
         console.log('------------------------------------');
     });
+    window.Reveal = Reveal;
 
     Reveal.initialize({
         width: "1400",
@@ -41,6 +42,17 @@ Template.slides.onRendered(function() {
 
     Reveal.addEventListener('slidechanged', function(evt) {
         Session.set('activeStepNr', evt.indexh);
+    });
+
+    this.autorun(function() {
+        console.log('------------------------------------');
+        console.log('SESSION CHANGED SO RESET/GO TO FIRST SLIDE NUMBER');
+        console.log('------------------------------------');
+        var test = Session.get('slideHeaders');
+        Meteor.setTimeout(function() {
+            Reveal.slide(0);
+        }, 1000);
+
     });
 })
 
