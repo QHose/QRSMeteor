@@ -38,14 +38,19 @@
     <h1>{{{level 2 slide}}} <hr></h1>
     
 
-    {{#if active slideNr}}
-      <div class="slideContent">
-        {{#each item in itemsOfLevel 3 slide}}
-          {{{formatted item}}}
-        {{/each}}
-      </div>
+    {{#if active slideNr}}    
+      {{> slideContent slide=slide}}
     {{/if}}
 
   </section>
 
+</template>
+
+
+<template name="slideContent">
+    <div class="slideContent">
+        {{#each item in itemsOfLevel 3 slide}}
+          {{{formatted item}}}
+        {{/each}}
+      </div>
 </template>

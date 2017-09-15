@@ -1,10 +1,15 @@
-import { Meteor } from 'meteor/meteor';
-import { Template } from 'meteor/templating';
-import { senseConfig as config } from '/imports/api/config.js';
-import { Session } from 'meteor/session';
-// import { Apps, TemplateApps } from '/imports/api/apps.js'
-// import { Customers, dummyCustomers } from '../api/customers.js';
-// import { Streams } from '/imports/api/streams.js'
+import {
+    Meteor
+} from 'meteor/meteor';
+import {
+    Template
+} from 'meteor/templating';
+import {
+    senseConfig as config
+} from '/imports/api/config.js';
+import {
+    Session
+} from 'meteor/session';
 const Cookies = require('js-cookie');
 
 Template.nav.helpers({
@@ -32,20 +37,26 @@ Template.nav.helpers({
 
 Template.nav.onRendered(function() {
 
-    this.$('.header .dropdown-toggle').dropdown()
-    this.$('.header .dropdown-toggle').on('click', function() {
-        $('.header .dropdown-menu').toggle()
-    });
-    if (localStorage.userRole) {
-        this.$(`.navbar-right .dropdown-menu li a[data="${localStorage.userRole}"]`).parent().addClass('active')
-    }
-    this.$('.header .dropdown-menu a').on('click', function() {
-        role = $(this).attr("data")
-        Session.set('userRole', role);
-        $('.dropdown-menu li').removeClass('active')
-        $(this).parent().addClass('active');
-        $('.header .dropdown-menu').toggle()
-    });
+    this.$('.selectSlides')
+        .transition({
+            animation: 'bounce',
+            duration: '5s'
+        });
+
+    //     this.$('.header .dropdown-toggle').dropdown()
+    //     this.$('.header .dropdown-toggle').on('click', function() {
+    //         $('.header .dropdown-menu').toggle()
+    //     });
+    //     if (localStorage.userRole) {
+    //         this.$(`.navbar-right .dropdown-menu li a[data="${localStorage.userRole}"]`).parent().addClass('active')
+    //     }
+    //     this.$('.header .dropdown-menu a').on('click', function() {
+    //         role = $(this).attr("data")
+    //         Session.set('userRole', role);
+    //         $('.dropdown-menu li').removeClass('active')
+    //         $(this).parent().addClass('active');
+    //         $('.header .dropdown-menu').toggle()
+    //     });
 });
 
 
@@ -54,15 +65,15 @@ Template.yourSaasPlatformMenu.onRendered(function() {
         .dropdown()
 });
 
-function setUserRole() {
-    let role = 'Select a role'
-    if (localStorage.userRole) {
-        role = localStorage.userRole
-    } else {
-        localStorage['userRole'] = role;
-    }
-    return role;
-}
+// function setUserRole() {
+//     let role = 'Select a role'
+//     if (localStorage.userRole) {
+//         role = localStorage.userRole
+//     } else {
+//         localStorage['userRole'] = role;
+//     }
+//     return role;
+// }
 
 // Replace with more Meteor approach
 function getQueryParams(name, url) {

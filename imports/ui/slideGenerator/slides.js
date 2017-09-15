@@ -21,10 +21,6 @@ Template.slides.onRendered(function() {
         console.log('------------------------------------');
     });
 
-    console.log('------------------------------------');
-    console.log(Reveal);
-    console.log('------------------------------------');
-
     Reveal.initialize({
         width: "1400",
         // height: window.innerHeight - 90,
@@ -45,7 +41,6 @@ Template.slides.onRendered(function() {
 
     Reveal.addEventListener('slidechanged', function(evt) {
         Session.set('activeStepNr', evt.indexh);
-        $('.ui.embed').embed();
     });
 })
 
@@ -61,14 +56,16 @@ Template.slides.events({
 // ─── SLIDE ──────────────────────────────────────────────────────────────────────
 //
 
-Template.slide.onRendered(function() {
-    Meteor.setTimeout(function() {
-        this.$('.ui.embed').embed();
-        //make sure all code gets highlighted using highlight.js
-        this.$('pre code').each(function(i, block) {
-            hljs.highlightBlock(block);
-        });
-    }, 1000);
+Template.slideContent.onRendered(function() {
+    // Meteor.setTimeout(function() {
+    this.$('.ui.embed').embed();
+    //make sure all code gets highlighted using highlight.js
+    this.$('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+    //ensure all links open on a new tab
+    this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
+    // }, 1000);
 
 });
 

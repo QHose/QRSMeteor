@@ -126,14 +126,6 @@ async function getAllSlideHeaders(qix) {
     var tableWithChapters = insertSectionBreakers(table);
     console.log('Received a table of data via the Engine API, now the slides can be created by impress.js', tableWithChapters);
     Session.set('slideHeaders', tableWithChapters)
-    Meteor.setTimeout(function() {
-        if (Cookies.get('showSlideSorter') !== 'true') { //do not initialize impress so we can use the mobile device layout of impress to get all the slide under each other
-            // console.log('Show slideSorter NOT selected, so initialize impress.js');
-            impress().init();
-            impress().goto(0);
-        }
-        Session.set('slideLoading', false);
-    }, 2000);
 }
 //
 // ─── GET LEVEL 1 TO 3 ────────────────────────────────────────────

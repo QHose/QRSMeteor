@@ -16,7 +16,7 @@
     width: 40%;
     top: 0px;
     left: 0px;
-    z-index: -100;
+    /* z-index: -100; */
 }
 
 .mainNavBar {
@@ -47,7 +47,8 @@
 }
 
 .wrap {
-    min-height: calc(100vh - 180px);
+    min-height: calc(100vh - 250px);
+    margin-top: 70px;
 }
 
 .landing .selectRole {

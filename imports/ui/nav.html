@@ -10,7 +10,7 @@
     </a>
       {{#if isSaaSDemoPage}} {{> yourSaasPlatformMenu}}
       {{else}}
-        <a href="{{pathFor 'SaaSIntroduction'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
+        <a href="{{pathFor 'generation'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
         SAAS PROVISIONING
       </a> {{/if}}
       <a href="{{webIntegrationDemo}}" class="item">
@@ -19,15 +19,16 @@
       <!-- <a href="{{pathFor 'documentation'}}" class="{{#if isDocumentationPage}} active {{/if}} item">
      DOCUMENTATION
    </a> -->
-      <a href="{{pathFor 'videoOverview'}}" class="{{#if isVideoPage}} active {{/if}} item"> VIDEO LIBRARY</a>
-      <!-- <div class="right menu">
+      <a href="/documentation?tab=video" class="{{#if isDocumentationPage}} active {{/if}} item"> VIDEO LIBRARY</a>
+      <!-- 
     <a class="ui item">
       Logout
     </a>
   </div> -->
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-    </div>
+      <div class="right menu">
+          <a class="item selectSlides" href="#" data-toggle="modal" data-target="#myModal"><i class="inverted search link icon"></i> SELECT YOUR ROLE</a>
+      </div>
+    </div>  
   </div>
 
 </template>
