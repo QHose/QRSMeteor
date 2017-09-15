@@ -35,7 +35,7 @@ Template.slides.onRendered(function() {
         transition: 'slide', // none/fade/slide/convex/concave/zoom     
         // transitionSpeed: 'default', // default/fast/slow   
         previewLinks: true,
-        // slideNumber: true
+        slideNumber: true
 
     });
 
@@ -57,15 +57,15 @@ Template.slides.events({
 //
 
 Template.slideContent.onRendered(function() {
-    // Meteor.setTimeout(function() {
-    this.$('.ui.embed').embed();
-    //make sure all code gets highlighted using highlight.js
-    this.$('pre code').each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
-    //ensure all links open on a new tab
-    this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
-    // }, 1000);
+    Meteor.setTimeout(function() {
+        this.$('.ui.embed').embed();
+        //make sure all code gets highlighted using highlight.js
+        this.$('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+        //ensure all links open on a new tab
+        this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
+    }, 1000);
 
 });
 
@@ -84,6 +84,7 @@ Template.slide.helpers({
 
 
 Template.registerHelper('slideHeaders', function() {
+    // Reveal.slide(1, 1);
     return Session.get('slideHeaders'); //only the level 1 and 2 colums, we need this for the headers of the slide
 });
 
@@ -128,7 +129,7 @@ Template.registerHelper('formatted', function(text) {
         if (result.substring(1, 11) === 'blockquote') {
             return '<div class="ui green very padded segment">' + result + '</div>';
         } else {
-            return '<div class="markdownItem">' + result + '</div>';
+            return '<div class="fragment markdownItem">' + result + '</div>';
         }
     }
 })

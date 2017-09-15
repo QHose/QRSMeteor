@@ -110,6 +110,19 @@ Template.useCaseSelection.helpers({
     }
 });
 
+//
+// ─── EVENTS ─────────────────────────────────────────────────────────────────────
+//
+
+Template.useCaseSelection.events({
+    'click .button.slides': async function(e, t) {
+        console.log('clicked slides button 33', t);
+        await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
+        await setSlideContentInSession('TECHNICAL');
+        Cookies.set('currentMainRole', 'TECHNICAL');
+        Router.go('slides');
+    }
+});
 
 //
 // ─── MAIN TOPICS LEVEL 1 AND 2 ─────────────────────────────────────────────────

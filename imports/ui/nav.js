@@ -28,6 +28,9 @@ Template.nav.helpers({
     isMainLandingPage() {
         return !Router.current().route.getName() || Router.current().route.getName() === 'useCaseSelection';
     },
+    isPage(page) {
+        return Router.current().route.getName() === page;
+    },
     userRole() {
         let role = setUserRole();
         return role;
