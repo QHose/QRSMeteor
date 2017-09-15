@@ -24,7 +24,7 @@ Template.slides.onRendered(function() {
     Reveal.initialize({
         width: "1400",
         height: window.innerHeight - 90,
-        embedded: true,
+        // embedded: true,
         // controls: true,
         center: false,
         // progress: true,
