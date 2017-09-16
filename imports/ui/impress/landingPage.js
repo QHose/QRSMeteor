@@ -71,7 +71,7 @@ export async function getQlikSenseSessionForGroup(group) {
         group: group
     };
 
-    var ticket = await Meteor.callPromise('getTicketNumber', userProperties);
+    var ticket = await Meteor.callPromise('getTicketNumber', userProperties, Meteor.settings.public.slideGenerator.virtualProxy);
     console.log('Requested ticket from Qlik Sense server, so client can login without redirects...', ticket)
 
     const enigmaConfig = {
@@ -87,7 +87,7 @@ export async function getQlikSenseSessionForGroup(group) {
             }
         },
         listeners: {
-            'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + data),
+            // 'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + data),
         },
         handleLog: (message) => console.log('Engima: ' + message),
         //http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Msgs-Proxy-Clients-OnAuthenticationInformation.htm
@@ -114,34 +114,6 @@ export async function getQlikSenseSessionForGroup(group) {
         });
 
 }
-
-
-// async function getQlikSession(userProperties) {
-//     checkEnigmaConnection(userProperties);
-//     // try {
-//     //     var ticket = await Meteor.callPromise('getTicketNumber', userProperties);
-
-//     //     const request = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.slideGenerator.virtualProxy + '/resources/favicon.ico?qlikTicket=' + ticket;
-
-//     //     console.log('client received ticket from server, which we append the our first http get request: ', request);
-
-//     //     HTTP.call('GET', request, (error, result) => {
-//     //         if (error) {
-//     //             console.log('error', error)
-//     //             sAlert.error('Failed to GET the user via the personal API (and get a session)', error);
-//     //         }
-//     //         console.log('------------------------------------');
-//     //         console.log('received http get result: ', result);
-//     //         console.log('------------------------------------');
-//     //         sAlert.success('Get session by making an HTTP GET first: ' + request);
-//     //         console.log('------------------------------------');
-//     //         Session.set('userLoggedInSense', true);
-//     //         // checkEnigmaConnection();
-//     //     });
-//     // } catch (err) {
-//     //     console.error(err);
-//     // }
-// }
 
 Template.landingPage.onDestroyed(function() {
     Meteor.clearInterval(intervalId);

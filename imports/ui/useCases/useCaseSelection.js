@@ -53,13 +53,13 @@ Template.useCaseSelection.onRendered(async function() {
 
 async function setSlideContentInSession(group) {
     Cookies.set('currentMainRole', 'TECHNICAL');
-
+    check(group, String);
     try {
         // get a valid ticket
         var userProperties = {
             group: group
         };
-        var ticket = await Meteor.callPromise('getTicketNumber', userProperties);
+        var ticket = await Meteor.callPromise('getTicketNumber', userProperties, Meteor.settings.public.slideGenerator.virtualProxy);
 
         const config = {
             schema: senseConfig.QIXSchema,

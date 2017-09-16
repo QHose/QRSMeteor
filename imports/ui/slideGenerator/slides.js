@@ -9,6 +9,17 @@ var showdown = require('showdown');
 var converter = new showdown.Converter();
 var numberOfActiveSlides = 5;
 
+Template.slides.onCreated(function() {
+    $('body').css({
+        overflow: 'hidden',
+    });
+})
+
+Template.slides.onDestroyed(function() {
+    $('body').css({
+        overflow: 'auto',
+    });
+})
 
 Template.slides.onRendered(function() {
     console.log('slides rendered');
@@ -54,12 +65,12 @@ Template.slides.onRendered(function() {
         console.log('------------------------------------');
         console.log('SESSION CHANGED SO RESET/GO TO FIRST SLIDE NUMBER');
         console.log('------------------------------------');
-        if (Reveal.isReady()) {
-            var test = Session.get('slideHeaders');
-            Meteor.setTimeout(function() {
-                Reveal.slide(0);
-            }, 100);
-        };
+        // if (Reveal.isReady()) {
+        var test = Session.get('slideHeaders');
+        Meteor.setTimeout(function() {
+            Reveal.slide(0);
+        }, 100);
+        // };
     })
 })
 

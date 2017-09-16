@@ -275,7 +275,7 @@ Meteor.methods({
 
         return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());
     },
-    getTicketNumber(userProperties) { // only get a ticket number for a SPECIFIC virtual proxy
+    getTicketNumber(userProperties, virtualProxy) { // only get a ticket number for a SPECIFIC virtual proxy
         try {
             // check(userProperties.user, String);
             check(userProperties.group, String);
@@ -301,7 +301,7 @@ Meteor.methods({
         //@TODO add extra group memberships based on meteor.groups via allanning roles
 
         // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
-        var proxyGetTicketURI = 'https://' + senseConfig.host + ':' + Meteor.settings.private.proxyPort + '/qps/' + Meteor.settings.public.slideGenerator.virtualProxy + '/ticket'; // "proxyRestUri": "https://ip-172-31-22-22.eu-central-1.compute.internal:4243/qps/meteor/",
+        var proxyGetTicketURI = 'https://' + senseConfig.host + ':' + Meteor.settings.private.proxyPort + '/qps/' + virtualProxy + '/ticket'; // "proxyRestUri": "https://ip-172-31-22-22.eu-central-1.compute.internal:4243/qps/meteor/",
         try {
             var response = HTTP.call('POST', proxyGetTicketURI, {
                 'npmRequestOptions': configCerticates,
@@ -320,36 +320,6 @@ Meteor.methods({
         // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
         return response.data.Ticket;
     },
-    // loginUserForPresentationNoRedirect(proxyRestUri, targetId, userProperties) {
-    //     console.log('!!!! loginUserForPresentationViaRedirect');
-    //     console.log('userProperties', userProperties)
-    //     try {
-    //         check(userProperties.user, String);
-    //         check(userProperties.group, String);
-    //     } catch (err) {
-    //         throw new Meteor.Error('Failed to login into Qlik Sense via a ticket', 'Please go to the landing page and select your group. We could not request a ticket because the userId or groups (technical, generic) are not provided');
-    //     }
-
-    //     // console.log('loginUserForPresentation: ', userProperties.user);
-    //     var passport = {
-    //         'UserDirectory': userProperties.user, // Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
-    //         'UserId': userProperties.user, // the current user that we are going to login with
-    //         'Attributes': [
-    //             { 'group': 'slideGenerator' }, // attributes supply the group membership from the source system to Qlik Sense
-    //             { 'group': userProperties.group },
-    //             { 'group': 'ITALY' }, // make sure the row level demo works by passing this
-    //         ],
-    //     };
-    //     // logging only
-    //     var call = {};
-    //     call.url = gitHubLinks.createPasport;
-    //     call.action = 'Presentation user: Request ticket for the user that requested the slide generator. In this way we can store his bookmarks.';
-    //     call.request = 'We created a JSON object with the user and his groups. We now send this "ticket" to Qlik Sense. And we expect to receive a "ticket number" back, which we can append to the URL redirect. Note that we give each customer its own User Directory, so that users of different tenants are really separated';
-    //     call.response = passport;
-    //     REST_Log(call, Meteor.userId());
-
-    //     return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());
-    // },
     resetLoggedInUser() {
         // console.log("***Method resetLoggedInUsers");
         // console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
