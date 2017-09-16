@@ -296,9 +296,12 @@ Meteor.methods({
                 }, // make sure the row level demo works by passing this
             ],
         };
+        //get the ticket number and return it to the client
+        return Meteor.call('requestTicketWithPassport', virtualProxy, passport);
+    },
+    //only for demo purposes! never supply groups from the client...
+    requestTicketWithPassport(virtualProxy, passport) {
         console.log('getTicketNumber passport', passport)
-
-        //@TODO add extra group memberships based on meteor.groups via allanning roles
 
         // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
         var proxyGetTicketURI = 'https://' + senseConfig.host + ':' + Meteor.settings.private.proxyPort + '/qps/' + virtualProxy + '/ticket'; // "proxyRestUri": "https://ip-172-31-22-22.eu-central-1.compute.internal:4243/qps/meteor/",
@@ -315,9 +318,6 @@ Meteor.methods({
             console.error('REST call to request a ticket failed', err);
             throw new Meteor.Error('Request ticket failed', err.message);
         }
-
-        // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-        // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
         return response.data.Ticket;
     },
     resetLoggedInUser() {
@@ -350,6 +350,10 @@ Meteor.methods({
     logoutPresentationUser(UDC, name) {
         console.log('logoutPresentationUser(UDC, name)', UDC, name);
         logoutUser(UDC, name, Meteor.settings.public.slideGenerator.virtualProxy);
+    },
+    logoutVirtualProxyClientUsageUser(UDC, name) {
+        console.log('logout virtual proxy client usuage User(UDC, name)', UDC, name);
+        logoutUser(UDC, name, Meteor.settings.public.virtualProxyClientUsage);
     },
     simulateUserLogin(name) {
         check(name, String);
