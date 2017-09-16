@@ -89,9 +89,13 @@ async function setSlideContentInSession(group) {
         };
         var qix = await enigma.getService('qix', config);
         console.log('Recieved qix object: ', qix)
-        await getAllSlideHeaders(qix);
-        await getAllSlides(qix);
-        await setChangeListener(qix);
+
+        //get the slide content and register an event handler, so we know when Qlik Sense changed and can update the screen... with new content.
+        await Promise.all([
+            getAllSlideHeaders(qix);
+            getAllSlides(qix);
+            setChangeListener(qix);
+        ]);
 
     } catch (error) {
         var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS';
