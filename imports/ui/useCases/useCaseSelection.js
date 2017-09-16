@@ -90,11 +90,11 @@ async function setSlideContentInSession(group) {
         var qix = await enigma.getService('qix', config);
         console.log('Recieved qix object: ', qix)
 
-        //get the slide content and register an event handler, so we know when Qlik Sense changed and can update the screen... with new content.
+        //get the slide content and register an event handler, so we know when Qlik Sense changed and can update the screen... with new content. Its fine if it runs in parallel
         await Promise.all([
-            getAllSlideHeaders(qix);
-            getAllSlides(qix);
-            setChangeListener(qix);
+            getAllSlideHeaders(qix),
+            getAllSlides(qix),
+            setChangeListener(qix),
         ]);
 
     } catch (error) {
