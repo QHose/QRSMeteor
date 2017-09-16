@@ -12,7 +12,10 @@ var numberOfActiveSlides = 5;
 
 Template.slides.onRendered(function() {
     console.log('slides rendered');
-    if (!Session.get('slideData')) Router.go('useCaseSelection');
+    if (!Session.get('slideData')) {
+        Router.go('useCaseSelection');
+        return;
+    }
 
     Reveal.addEventListener('ready', function(event) {
         // Session.set('activeStepNr', 0);
@@ -21,7 +24,8 @@ Template.slides.onRendered(function() {
         console.log('------------------------------------');
     });
     window.Reveal = Reveal;
-
+    // setTimeout(function() {
+    // Tracker.afterFlush(function() {
     Reveal.initialize({
         width: "1400",
         // height: window.innerHeight - 90,
@@ -37,8 +41,10 @@ Template.slides.onRendered(function() {
         // transitionSpeed: 'default', // default/fast/slow   
         previewLinks: true,
         slideNumber: true
-
     });
+    // })
+    // }, 3000);
+
 
     Reveal.addEventListener('slidechanged', function(evt) {
         Session.set('activeStepNr', evt.indexh);
@@ -48,12 +54,13 @@ Template.slides.onRendered(function() {
         console.log('------------------------------------');
         console.log('SESSION CHANGED SO RESET/GO TO FIRST SLIDE NUMBER');
         console.log('------------------------------------');
-        var test = Session.get('slideHeaders');
-        Meteor.setTimeout(function() {
-            Reveal.slide(0);
-        }, 1000);
-
-    });
+        if (Reveal.isReady()) {
+            var test = Session.get('slideHeaders');
+            Meteor.setTimeout(function() {
+                Reveal.slide(0);
+            }, 100);
+        };
+    })
 })
 
 Template.slides.events({
@@ -135,7 +142,7 @@ Template.registerHelper('formatted', function(text) {
         return text;
     } else if (checkTextIsImage(text)) { //image
         // console.log('found an image', text)
-        return '<img class="ui rounded image"  src="images/' + text + '">'
+        return '<img class="ui rounded image fragment"  src="images/' + text + '">'
     } else { //text, convert the text (which can include markdown syntax) to valid HTML
         var result = converter.makeHtml(text);
         if (result.substring(1, 11) === 'blockquote') {

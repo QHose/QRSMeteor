@@ -23,10 +23,7 @@ var possibleRoles = ['Developer', 'TECHNICAL', 'GENERIC', 'Product Owner', 'Host
 Template.useCaseSelection.onRendered(async function() {
     $('body').addClass('mainLandingImage');
 
-    console.log('Cookies.get(\'currentMainRole\')', Cookies.get('currentMainRole'))
-    $('.ui.dropdown')
-        .dropdown();
-
+    //fill the dropdown using a array of values
     $.each(possibleRoles, function(i, item) {
         $('#bodyDropdown').append($('<option>', {
             value: item,
@@ -36,7 +33,9 @@ Template.useCaseSelection.onRendered(async function() {
 
     setTimeout(function() {
         $(".ui.dropdown").dropdown("refresh");
-        $(".ui.dropdown").dropdown("set selected", Cookies.get('currentMainRole'));
+        var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
+        console.log('textToShow', textToShow)
+        $(".ui.dropdown").dropdown("set selected", textToShow);
     }, 0)
 
     setTimeout(function() {
@@ -53,6 +52,8 @@ Template.useCaseSelection.onRendered(async function() {
 })
 
 async function setSlideContentInSession(group) {
+    Cookies.set('currentMainRole', 'TECHNICAL');
+
     try {
         // get a valid ticket
         var userProperties = {
@@ -73,7 +74,7 @@ async function setSlideContentInSession(group) {
                 }
             },
             listeners: {
-                'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + data),
+                // 'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + data),
             },
             handleLog: (message) => console.log('Engima: ' + message),
             //http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Msgs-Proxy-Clients-OnAuthenticationInformation.htm
@@ -88,9 +89,9 @@ async function setSlideContentInSession(group) {
         };
         var qix = await enigma.getService('qix', config);
         console.log('Recieved qix object: ', qix)
-        getAllSlideHeaders(qix);
-        getAllSlides(qix);
-        setChangeListener(qix);
+        await getAllSlideHeaders(qix);
+        await getAllSlides(qix);
+        await setChangeListener(qix);
 
     } catch (error) {
         var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS';
@@ -116,10 +117,12 @@ Template.useCaseSelection.helpers({
 
 Template.useCaseSelection.events({
     'click .button.slides': async function(e, t) {
-        console.log('clicked slides button 33', t);
+        console.log('clicked slides button');
+        console.log('logoutPresentationUser');
         await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
+        console.log('setSlideContentInSession')
         await setSlideContentInSession('TECHNICAL');
-        Cookies.set('currentMainRole', 'TECHNICAL');
+        console.log('router go to slides');
         Router.go('slides');
     }
 });

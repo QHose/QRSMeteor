@@ -17,6 +17,7 @@
     "qrs": "^2.0.2",
     "redbird": "^0.6.15",
     "request": "^2.81.0",
+    "reveal": "0.0.4",
     "showdown": "^1.5.5",
     "simpl-schema": "^0.2.3",
     "underscore": "^1.8.3",
