@@ -47,23 +47,6 @@
     {{> nav}} {{> sAlert}} {{> yield}} {{> footer}}
 </template>
 
-
-<template name="SSBILayout">
-    <div class="wrap">
-
-        {{> yield "nav"}} {{> sAlert}}
-        <div class="ui stackable grid">
-            <div class="sixteen wide column">
-                <div class="ui three column stackable grid">
-                    <div class="five wide column" style="max-width: 350px; margin-left:20px; "> {{> yield "aside"}} </div>
-                    <div class="eleven wide column"> {{> yield}}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{> footer}}
-</template>
-
 <template name="slidelayout">
     <div class="wrap" style="position:absolute; top:100px;">
         {{> nav}}
