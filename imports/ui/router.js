@@ -7,10 +7,10 @@ Router.configure({
 });
 
 //slide generator with reveal.js
-Router.route('/slidesContainerIFrame', {
-    template: 'slides',
-    layoutTemplate: 'containerlayout'
-});
+// Router.route('/slidesContainerIFrame', {
+//     template: 'slides',
+//     layoutTemplate: 'containerlayout'
+// });
 
 Router.route('/slides', {
     template: 'slides',
@@ -18,6 +18,11 @@ Router.route('/slides', {
 });
 
 
+
+// //map paths to blaze templates
+Router.route('/', function() {
+    Router.go('useCaseSelection');
+});
 
 
 
@@ -166,12 +171,6 @@ function addRolesBasedonEmail(user) {
         user.roles = ['qlik']; //unsecure off course, this is only for user friendliness reasons to prevent dead links to confluence content.
     }
 }
-
-// //map paths to blaze templates
-Router.route('/', function() {
-    this.layout('mainLandingPage');
-    this.render('useCaseSelection');
-});
 
 Router.route('/users');
 Router.route('/notFound');

@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": "2b09bfb6-bc6c-4cf8-a8db-0812a01e248b",
+    "createdDate": "2017-09-15T12:10:13.905Z",
+    "modifiedDate": "2017-09-15T12:10:13.905Z",
+    "modifiedByUserName": "QLIK-AB0Q2URN5T\\qlikexternal",
+    "name": "customers",
+    "valueType": "Text",
+    "choiceValues": [
+      "Heaney, Leffler and Howell",
+      "Ortiz - Mayert",
+      "Beatty - Nolan"
+    ],
+    "objectTypes": [
+      "App",
+      "ContentLibrary",
+      "DataConnection",
+      "ReloadTask",
+      "Stream",
+      "User"
+    ],
+    "privileges": null,
+    "impactSecurityAccess": false,
+    "schemaPath": "CustomPropertyDefinition"
+  }
+]
