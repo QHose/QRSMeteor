@@ -1,5 +1,7 @@
 # TLDR
-With this project you can create apps for each customer based on a template app. (and much more). (In other words, you get software to get a 'publisher' for Qlik Sense)
+Install meteor.com then run this application and you will get the full integration.qlik.com environment including the SaaS app provisioning demo, documentation etc on your local server. 
+
+With this project you can create apps for each customer based on a template app. (and much more). (In other words,you get software to get an 'app publisher' for Qlik Sense)
 A live running instance of this code is visible at [integration.qlik.com](http://integration.qlik.com)
 Also make sure you checkout the [slide generator](http://integration.qlik.com/slides), which explains SaaS integration using the Qlik Sense APIs.
 

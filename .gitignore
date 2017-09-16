@@ -13,3 +13,5 @@ automation/ExtractedvirtualProxyDefinitions.json
 automation/ExtractedvirtualProxyDefinitions.json
 automation/ExtractedvirtualProxyDefinitions.json
 .automation/proxy/export/ExtractedvirtualProxyDefinitions.json
+.automation/securityrules/export/ExtractedSystemRules.json
+.automation/proxy/export/ExtractedvirtualProxyDefinitions.json
