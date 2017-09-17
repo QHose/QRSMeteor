@@ -48,7 +48,7 @@
 
 .wrap {
     min-height: calc(100vh - 250px);
-    margin-top: 70px;
+    margin-top: 35px;
 }
 
 .landing .selectRole {
@@ -71,7 +71,7 @@
     background-size: 100%;
     background-position: bottom right;
     background-repeat: no-repeat;
-    background-color: @color-tan;
+    background-color: #F8F0E5;
     margin-top: 30px;
     padding-top: 30px;
     padding-left: 0;

@@ -1,0 +1,4832 @@
+var require = meteorInstall({"lib":{"yogiben.js":function(){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// lib/yogiben.js                                                                                                      //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+// import { Customers } from '/imports/api/customers';                                                                 // 1
+// AdminConfig = {                                                                                                     // 4
+//     collections: {                                                                                                  // 5
+//         Customers: {                                                                                                // 6
+//             collectionObject: Customers,                                                                            // 7
+//         }                                                                                                           // 8
+//     },                                                                                                              // 9
+//     userSchema: new SimpleSchema({                                                                                  // 10
+//         'profile.gender': {                                                                                         // 11
+//             type: String,                                                                                           // 12
+//             allowedValues: ['male', 'female']                                                                       // 13
+//         }                                                                                                           // 14
+//     })                                                                                                              // 15
+// };                                                                                                                  // 16
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}},"imports":{"api":{"server":{"QPSFunctions.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/server/QPSFunctions.js                                                                                  //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var _regenerator = require("babel-runtime/regenerator");                                                               //
+                                                                                                                       //
+var _regenerator2 = _interopRequireDefault(_regenerator);                                                              //
+                                                                                                                       //
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }                      //
+                                                                                                                       //
+var module1 = module;                                                                                                  // 1
+module1.export({                                                                                                       // 1
+    createVirtualProxies: function () {                                                                                // 1
+        return createVirtualProxies;                                                                                   // 1
+    },                                                                                                                 // 1
+    getVirtualProxies: function () {                                                                                   // 1
+        return getVirtualProxies;                                                                                      // 1
+    },                                                                                                                 // 1
+    logoutUser: function () {                                                                                          // 1
+        return logoutUser;                                                                                             // 1
+    },                                                                                                                 // 1
+    getRedirectURL: function () {                                                                                      // 1
+        return getRedirectURL;                                                                                         // 1
+    }                                                                                                                  // 1
+});                                                                                                                    // 1
+var Meteor = void 0;                                                                                                   // 1
+module1.watch(require("meteor/meteor"), {                                                                              // 1
+    Meteor: function (v) {                                                                                             // 1
+        Meteor = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var Customers = void 0,                                                                                                // 1
+    dummyCustomers = void 0,                                                                                           // 1
+    dummyCustomer = void 0;                                                                                            // 1
+module1.watch(require("/imports/api/customers"), {                                                                     // 1
+    Customers: function (v) {                                                                                          // 1
+        Customers = v;                                                                                                 // 1
+    },                                                                                                                 // 1
+    dummyCustomers: function (v) {                                                                                     // 1
+        dummyCustomers = v;                                                                                            // 1
+    },                                                                                                                 // 1
+    dummyCustomer: function (v) {                                                                                      // 1
+        dummyCustomer = v;                                                                                             // 1
+    }                                                                                                                  // 1
+}, 1);                                                                                                                 // 1
+var REST_Log = void 0;                                                                                                 // 1
+module1.watch(require("/imports/api/APILogs"), {                                                                       // 1
+    REST_Log: function (v) {                                                                                           // 1
+        REST_Log = v;                                                                                                  // 1
+    }                                                                                                                  // 1
+}, 2);                                                                                                                 // 1
+var gitHubLinks = void 0;                                                                                              // 1
+module1.watch(require("/imports/ui/UIHelpers"), {                                                                      // 1
+    gitHubLinks: function (v) {                                                                                        // 1
+        gitHubLinks = v;                                                                                               // 1
+    }                                                                                                                  // 1
+}, 3);                                                                                                                 // 1
+var senseConfig = void 0,                                                                                              // 1
+    enigmaServerConfig = void 0,                                                                                       // 1
+    authHeaders = void 0,                                                                                              // 1
+    QRSconfig = void 0,                                                                                                // 1
+    qliksrv = void 0,                                                                                                  // 1
+    QRSCertConfig = void 0,                                                                                            // 1
+    configCerticates = void 0,                                                                                         // 1
+    validateJSON = void 0;                                                                                             // 1
+module1.watch(require("/imports/api/config.js"), {                                                                     // 1
+    senseConfig: function (v) {                                                                                        // 1
+        senseConfig = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    enigmaServerConfig: function (v) {                                                                                 // 1
+        enigmaServerConfig = v;                                                                                        // 1
+    },                                                                                                                 // 1
+    authHeaders: function (v) {                                                                                        // 1
+        authHeaders = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    QRSconfig: function (v) {                                                                                          // 1
+        QRSconfig = v;                                                                                                 // 1
+    },                                                                                                                 // 1
+    qrsSrv: function (v) {                                                                                             // 1
+        qliksrv = v;                                                                                                   // 1
+    },                                                                                                                 // 1
+    QRSCertConfig: function (v) {                                                                                      // 1
+        QRSCertConfig = v;                                                                                             // 1
+    },                                                                                                                 // 1
+    configCerticates: function (v) {                                                                                   // 1
+        configCerticates = v;                                                                                          // 1
+    },                                                                                                                 // 1
+    validateJSON: function (v) {                                                                                       // 1
+        validateJSON = v;                                                                                              // 1
+    }                                                                                                                  // 1
+}, 4);                                                                                                                 // 1
+var lodash = void 0;                                                                                                   // 1
+module1.watch(require("lodash"), {                                                                                     // 1
+    "default": function (v) {                                                                                          // 1
+        lodash = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 5);                                                                                                                 // 1
+                                                                                                                       //
+var fs = require('fs-extra');                                                                                          // 15
+                                                                                                                       //
+var path = require('path');                                                                                            // 16
+                                                                                                                       //
+var os = require('os'); //                                                                                             // 17
+// ─── IMPORT CONFIG FOR QLIK SENSE QRS ───────────────────────────────────────────                                    // 20
+//                                                                                                                     // 21
+                                                                                                                       //
+                                                                                                                       //
+_ = lodash; //                                                                                                         // 35
+// ─── CREATE VIRTUAL PROXIES ─────────────────────────────────────────────────────                                    // 38
+//                                                                                                                     // 39
+// http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Create.htm
+                                                                                                                       //
+function createVirtualProxies() {                                                                                      // 42
+    var file, proxySettings, _iterator, _isArray, _i, _ref, vpToCreate, existingProxies, found, virtualProxy, createVirtualProxy;
+                                                                                                                       //
+    return _regenerator2.default.async(function () {                                                                   // 42
+        function createVirtualProxies$(_context) {                                                                     // 42
+            while (1) {                                                                                                // 42
+                switch (_context.prev = _context.next) {                                                               // 42
+                    case 0:                                                                                            // 42
+                        createVirtualProxy = function () {                                                             // 82
+                            function createVirtualProxy(virtualProxy) {                                                // 42
+                                // get id of local node so we can link the virtual proxy to a load balancing node      // 84
+                                virtualProxy.loadBalancingServerNodes = [{                                             // 85
+                                    id: getServerNodeConfiguration().id                                                // 86
+                                }];                                                                                    // 85
+                                                                                                                       //
+                                try {                                                                                  // 88
+                                    check(virtualProxy, Object);                                                       // 89
+                                    console.log('------CREATE VIRTUAL PROXY: ', virtualProxy.prefix);                  // 90
+                                    var request = qliksrv + '/qrs/virtualproxyconfig/';                                // 92
+                                    response = HTTP.call('POST', request, {                                            // 93
+                                        params: {                                                                      // 94
+                                            xrfkey: senseConfig.xrfkey                                                 // 95
+                                        },                                                                             // 94
+                                        'npmRequestOptions': configCerticates,                                         // 97
+                                        data: virtualProxy                                                             // 98
+                                    });                                                                                // 93
+                                    return response.data;                                                              // 100
+                                } catch (err) {                                                                        // 101
+                                    console.error('create virtual proxy failed', err);                                 // 102
+                                } // }                                                                                 // 103
+                                                                                                                       //
+                            }                                                                                          // 105
+                                                                                                                       //
+                            return createVirtualProxy;                                                                 // 42
+                        }();                                                                                           // 42
+                                                                                                                       //
+                        console.log('------------------------------------');                                           // 43
+                        console.log('CREATE VIRTUAL PROXIES');                                                         // 44
+                        console.log('------------------------------------');                                           // 45
+                        file = path.join(Meteor.settings.broker.automationBaseFolder, 'proxy', 'import', 'virtualProxySettings.json');
+                        _context.prev = 5;                                                                             // 42
+                        _context.next = 8;                                                                             // 42
+                        return _regenerator2.default.awrap(fs.readJson(file));                                         // 42
+                                                                                                                       //
+                    case 8:                                                                                            // 42
+                        proxySettings = _context.sent;                                                                 // 49
+                        _context.prev = 9;                                                                             // 42
+                        validateJSON(proxySettings);                                                                   // 51
+                        _context.next = 16;                                                                            // 42
+                        break;                                                                                         // 42
+                                                                                                                       //
+                    case 13:                                                                                           // 42
+                        _context.prev = 13;                                                                            // 42
+                        _context.t0 = _context["catch"](9);                                                            // 42
+                        throw new Error('Cant read the virtual proxy definitions file: virtualProxySettings.json in your automation folder');
+                                                                                                                       //
+                    case 16:                                                                                           // 42
+                        _iterator = proxySettings, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();
+                                                                                                                       //
+                    case 17:                                                                                           // 42
+                        if (!_isArray) {                                                                               // 42
+                            _context.next = 23;                                                                        // 42
+                            break;                                                                                     // 42
+                        }                                                                                              // 42
+                                                                                                                       //
+                        if (!(_i >= _iterator.length)) {                                                               // 42
+                            _context.next = 20;                                                                        // 42
+                            break;                                                                                     // 42
+                        }                                                                                              // 42
+                                                                                                                       //
+                        return _context.abrupt("break", 34);                                                           // 42
+                                                                                                                       //
+                    case 20:                                                                                           // 42
+                        _ref = _iterator[_i++];                                                                        // 42
+                        _context.next = 27;                                                                            // 42
+                        break;                                                                                         // 42
+                                                                                                                       //
+                    case 23:                                                                                           // 42
+                        _i = _iterator.next();                                                                         // 42
+                                                                                                                       //
+                        if (!_i.done) {                                                                                // 42
+                            _context.next = 26;                                                                        // 42
+                            break;                                                                                     // 42
+                        }                                                                                              // 42
+                                                                                                                       //
+                        return _context.abrupt("break", 34);                                                           // 42
+                                                                                                                       //
+                    case 26:                                                                                           // 42
+                        _ref = _i.value;                                                                               // 42
+                                                                                                                       //
+                    case 27:                                                                                           // 42
+                        vpToCreate = _ref;                                                                             // 57
+                                                                                                                       //
+                        if (vpToCreate.websocketCrossOriginWhiteList) {                                                // 58
+                            vpToCreate.websocketCrossOriginWhiteList.push(Meteor.settings.public.host);                // 59
+                            vpToCreate.websocketCrossOriginWhiteList.push(os.hostname());                              // 60
+                        }                                                                                              // 61
+                                                                                                                       //
+                        existingProxies = getVirtualProxies(); // CHECK IF VIRT. PROXY ALREADY EXISTS IN SENSE         // 62
+                                                                                                                       //
+                        found = existingProxies.some(function (existingVP) {                                           // 65
+                            return existingVP.prefix === vpToCreate.prefix;                                            // 66
+                        });                                                                                            // 67
+                                                                                                                       //
+                        if (!found) {                                                                                  // 68
+                            virtualProxy = createVirtualProxy(vpToCreate); // THE VIRTUAL PROXY HAS BEEN CREATED, NOW LINK IT TO THE CENTRAL PROXY
+                                                                                                                       //
+                            linkVirtualProxyToProxy(virtualProxy);                                                     // 71
+                        } else {                                                                                       // 72
+                            console.log('Virtual proxy ' + vpToCreate.prefix + ' already existed. We do not update existing ones.');
+                        }                                                                                              // 74
+                                                                                                                       //
+                    case 32:                                                                                           // 42
+                        _context.next = 17;                                                                            // 42
+                        break;                                                                                         // 42
+                                                                                                                       //
+                    case 34:                                                                                           // 42
+                        _context.next = 40;                                                                            // 42
+                        break;                                                                                         // 42
+                                                                                                                       //
+                    case 36:                                                                                           // 42
+                        _context.prev = 36;                                                                            // 42
+                        _context.t1 = _context["catch"](5);                                                            // 42
+                        console.error(_context.t1);                                                                    // 77
+                        throw new Error('unable to create virtual proxies', _context.t1);                              // 42
+                                                                                                                       //
+                    case 40:                                                                                           // 42
+                    case "end":                                                                                        // 42
+                        return _context.stop();                                                                        // 42
+                }                                                                                                      // 42
+            }                                                                                                          // 42
+        }                                                                                                              // 42
+                                                                                                                       //
+        return createVirtualProxies$;                                                                                  // 42
+    }(), null, this, [[5, 36], [9, 13]]);                                                                              // 42
+}                                                                                                                      // 42
+                                                                                                                       //
+// http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Link.htm 
+function linkVirtualProxyToProxy(virtualProxy) {                                                                       // 109
+    // console.log('linkVirtualProxyToProxy', virtualProxy.id);                                                        // 110
+    // GET ID OF PROXY ON THIS HOST                                                                                    // 112
+    var proxyId = getProxyId(); // GET THE CONFIG OF THE PROXY (WHICH CONTAINS VIRTUAL PROXIES)                        // 113
+                                                                                                                       //
+    var proxyConfig = getProxyServiceConfiguration(proxyId); // ADD THE NEW VIRTUAL PROXY TO THE EXISTING PROXY LIST   // 115
+                                                                                                                       //
+    proxyConfig.settings.virtualProxies.push(virtualProxy); //OVERWRITE THE SETTINGS WITH THE COMPLETE UPDATED OBJECT, IN PRODUCTION MAKE SURE YOU ADD THE CHANGEDATE (SEE HELP)
+                                                                                                                       //
+    updateProxy(proxyId, proxyConfig);                                                                                 // 119
+}                                                                                                                      // 120
+                                                                                                                       //
+function updateProxy(proxyId, proxyConfig) {                                                                           // 122
+    try {                                                                                                              // 123
+        check(proxyId, String);                                                                                        // 124
+        check(proxyConfig, Object); // console.log('proxyConfig', proxyConfig.settings.virtualProxies)                 // 125
+                                                                                                                       //
+        var request = qliksrv + '/qrs/proxyservice/' + proxyId;                                                        // 128
+        response = HTTP.call('PUT', request, {                                                                         // 129
+            params: {                                                                                                  // 130
+                xrfkey: senseConfig.xrfkey                                                                             // 131
+            },                                                                                                         // 130
+            'npmRequestOptions': configCerticates,                                                                     // 133
+            data: proxyConfig                                                                                          // 134
+        });                                                                                                            // 129
+    } catch (err) {                                                                                                    // 136
+        console.error('create virtual proxy failed', err);                                                             // 137
+    }                                                                                                                  // 138
+}                                                                                                                      // 139
+                                                                                                                       //
+function getProxyId() {                                                                                                // 141
+    try {                                                                                                              // 142
+        var request = qliksrv + '/qrs/proxyservice/?xrfkey=' + senseConfig.xrfkey;                                     // 143
+        response = HTTP.call('GET', request, {                                                                         // 144
+            'npmRequestOptions': configCerticates                                                                      // 145
+        });                                                                                                            // 144
+        return response.data[0].id;                                                                                    // 147
+    } catch (err) {                                                                                                    // 148
+        console.error('create virtual proxy failed', err);                                                             // 149
+    }                                                                                                                  // 150
+}                                                                                                                      // 151
+                                                                                                                       //
+function getProxyServiceConfiguration(proxyId) {                                                                       // 153
+    try {                                                                                                              // 155
+        check(proxyId, String);                                                                                        // 156
+        var request = qliksrv + '/qrs/proxyservice/' + proxyId + '?xrfkey=' + senseConfig.xrfkey;                      // 158
+        response = HTTP.call('GET', request, {                                                                         // 159
+            'npmRequestOptions': configCerticates                                                                      // 160
+        });                                                                                                            // 159
+        return response.data;                                                                                          // 162
+    } catch (err) {                                                                                                    // 163
+        console.error('create virtual proxy failed', err);                                                             // 164
+    }                                                                                                                  // 165
+}                                                                                                                      // 166
+                                                                                                                       //
+function getVirtualProxies() {                                                                                         // 168
+    // console.log('--------------------------GET VIRTUAL PROXIES');//                                                 // 169
+    try {                                                                                                              // 170
+        var request = qliksrv + '/qrs/virtualproxyconfig/';                                                            // 171
+        response = HTTP.call('GET', request, {                                                                         // 172
+            params: {                                                                                                  // 173
+                xrfkey: senseConfig.xrfkey                                                                             // 174
+            },                                                                                                         // 173
+            npmRequestOptions: configCerticates                                                                        // 176
+        });                                                                                                            // 172
+        var file = path.join(Meteor.settings.broker.automationBaseFolder, 'proxy', 'export', 'ExtractedvirtualProxyDefinitions.json'); // SAVE PROXY FILE TO DISK
+                                                                                                                       //
+        fs.outputFile(file, JSON.stringify(response.data, null, 2), 'utf-8');                                          // 182
+        return response.data;                                                                                          // 183
+    } catch (err) {                                                                                                    // 184
+        console.error('create virtual proxy failed', err);                                                             // 185
+    }                                                                                                                  // 186
+}                                                                                                                      // 187
+                                                                                                                       //
+// function getCentralProxy() {                                                                                        // 189
+//     console.log('getCentralProxy: GET /qrs/ServerNodeConfiguration?filter=isCentral')                               // 190
+// }                                                                                                                   // 191
+function getServerNodeConfiguration() {                                                                                // 194
+    try {                                                                                                              // 195
+        var request = qliksrv + '/qrs/servernodeconfiguration/local?xrfkey=' + senseConfig.xrfkey;                     // 196
+        response = HTTP.call('GET', request, {                                                                         // 197
+            'npmRequestOptions': configCerticates                                                                      // 198
+        });                                                                                                            // 197
+        return response.data;                                                                                          // 200
+    } catch (err) {                                                                                                    // 201
+        console.error('create virtual proxy failed', err);                                                             // 202
+    }                                                                                                                  // 203
+} //                                                                                                                   // 204
+// ─── METEOR METHODS ─────────────────────────────────────────────────────────────                                    // 207
+//                                                                                                                     // 208
+                                                                                                                       //
+                                                                                                                       //
+Meteor.methods({                                                                                                       // 211
+    currentlyLoggedInUser: function () {                                                                               // 212
+        // console.log("Meteor will now look which user is currently logged in, and request a ticket for this ID, and add his group memberships.");
+        var call = {};                                                                                                 // 214
+        call.action = 'STEP 3: Server received request to create ticket';                                              // 215
+        call.request = 'Meteor server received a incoming method call from the browser. The meteor server will now look which user is currently logged in, and create a ticket for this ID, and add his group memberships.';
+        REST_Log(call, Meteor.userId()); // first find the customers that have a logged in users (mongo returns a complete document)
+                                                                                                                       //
+        var customer = Customers.findOne({                                                                             // 220
+            generationUserId: Meteor.userId(),                                                                         // 221
+            'users.currentlyLoggedIn': true                                                                            // 222
+        }); // console.log('In our local database we can find the customer with the currentlyLoggedIn set to true for user: ' + loggedInUser + ', the customer which contains the user that the user selected with the dropdown: ', customer);
+        // now we have the document, we can look in the array of users, to find the one that is logged in.             // 226
+                                                                                                                       //
+        var user;                                                                                                      // 227
+                                                                                                                       //
+        if (!customer) {                                                                                               // 228
+            // if no user is selected, just insert john as a dummy                                                     // 228
+            // const error = 'You have not selected a user you want to simulate the Single Sign on with. For demo purposes we now selected John for you. You can also select your own user in step 4 of the SaaS demo';
+            var response = {}; // console.log('dummyCustomer :', dummyCustomer);                                       // 230
+                                                                                                                       //
+            response.user = dummyCustomer.user;                                                                        // 232
+            response.customer = dummyCustomer; // throw new Meteor.Warning('No user', error);                          // 233
+        } else {                                                                                                       // 235
+            var user = _.find(customer.users, {                                                                        // 236
+                'currentlyLoggedIn': true                                                                              // 237
+            });                                                                                                        // 236
+                                                                                                                       //
+            var response = {};                                                                                         // 239
+            response.user = user;                                                                                      // 240
+            response.customer = customer;                                                                              // 241
+        } // console.log('the response is: ', response);                                                               // 242
+                                                                                                                       //
+                                                                                                                       //
+        return response;                                                                                               // 244
+    },                                                                                                                 // 245
+    getRedirectUrl: function (proxyRestUri, targetId, loggedInUser) {                                                  // 246
+        var response = Meteor.call('currentlyLoggedInUser');                                                           // 247
+        var customer = response.customer;                                                                              // 248
+        var user = response.user; // console.log('UserID currently logged in in the demo platform: ' + loggedInUser + '. Meteor server side thinks the meteor.userId is ' + Meteor.userId() + '. We use this as the UDC name');
+        // Create a paspoort (ticket) request: user directory, user identity and attributes                            // 252
+                                                                                                                       //
+        var passport = {                                                                                               // 253
+            'UserDirectory': Meteor.userId(),                                                                          // 254
+            // Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
+            'UserId': user.name,                                                                                       // 255
+            // the current user that we are going to login with                                                        // 255
+            'Attributes': [{                                                                                           // 256
+                'group': customer.name.toUpperCase()                                                                   // 257
+            }, // attributes supply the group membership from the source system to Qlik Sense                          // 256
+            {                                                                                                          // 259
+                'group': user.country.toUpperCase()                                                                    // 260
+            }, {                                                                                                       // 259
+                'group': user.group.toUpperCase()                                                                      // 263
+            }]                                                                                                         // 262
+        }; // console.log('Request ticket for this user passport": ', passport);                                       // 253
+        // logging only                                                                                                // 269
+                                                                                                                       //
+        var call = {};                                                                                                 // 270
+        call.action = 'STEP 4: User and group information received from customer database, now we can request a ticket';
+        call.url = gitHubLinks.createpassport;                                                                         // 272
+        call.request = 'Request ticket for this user and his groups (an array of values which you can use in the security rules): ": ' + JSON.stringify(passport);
+        REST_Log(call, Meteor.userId());                                                                               // 274
+        return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());                                      // 276
+    },                                                                                                                 // 277
+    getTicketNumber: function (userProperties, virtualProxy) {                                                         // 278
+        // only get a ticket number for a SPECIFIC virtual proxy                                                       // 278
+        try {                                                                                                          // 279
+            // check(userProperties.user, String);                                                                     // 280
+            check(userProperties.group, String);                                                                       // 281
+        } catch (err) {                                                                                                // 282
+            throw new Meteor.Error('Failed to login into Qlik Sense via a ticket', 'Please go to the landing page and select your group. We could not request a ticket because the userId or groups (technical, generic) are not provided');
+        }                                                                                                              // 284
+                                                                                                                       //
+        var passport = {                                                                                               // 285
+            'UserDirectory': Meteor.userId(),                                                                          // 286
+            // Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
+            'UserId': Meteor.userId(),                                                                                 // 287
+            // the current user that we are going to login with                                                        // 287
+            'Attributes': [{                                                                                           // 288
+                'group': 'slideGenerator'                                                                              // 289
+            }, // attributes supply the group membership from the source system to Qlik Sense                          // 288
+            {                                                                                                          // 291
+                'group': userProperties.group                                                                          // 292
+            }, {                                                                                                       // 291
+                'group': 'ITALY'                                                                                       // 295
+            }]                                                                                                         // 294
+        }; //get the ticket number and return it to the client                                                         // 285
+                                                                                                                       //
+        return Meteor.call('requestTicketWithPassport', virtualProxy, passport);                                       // 300
+    },                                                                                                                 // 301
+    //only for demo purposes! never supply groups from the client...                                                   // 302
+    requestTicketWithPassport: function (virtualProxy, passport) {                                                     // 303
+        console.log('getTicketNumber passport', passport); // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
+                                                                                                                       //
+        var proxyGetTicketURI = 'https://' + senseConfig.host + ':' + Meteor.settings.private.proxyPort + '/qps/' + virtualProxy + '/ticket'; // "proxyRestUri": "https://ip-172-31-22-22.eu-central-1.compute.internal:4243/qps/meteor/",
+                                                                                                                       //
+        try {                                                                                                          // 308
+            var response = HTTP.call('POST', proxyGetTicketURI, {                                                      // 309
+                'npmRequestOptions': configCerticates,                                                                 // 310
+                headers: authHeaders,                                                                                  // 311
+                params: {                                                                                              // 312
+                    'xrfkey': senseConfig.xrfkey                                                                       // 313
+                },                                                                                                     // 312
+                data: passport // the user and group info for which we want to create a ticket                         // 315
+                                                                                                                       //
+            });                                                                                                        // 309
+        } catch (err) {                                                                                                // 317
+            console.error('REST call to request a ticket failed', err);                                                // 318
+            throw new Meteor.Error('Request ticket failed', err.message);                                              // 319
+        }                                                                                                              // 320
+                                                                                                                       //
+        return response.data.Ticket;                                                                                   // 321
+    },                                                                                                                 // 322
+    resetLoggedInUser: function () {                                                                                   // 323
+        // console.log("***Method resetLoggedInUsers");                                                                // 324
+        // console.log('call the QPS logout api, to invalidate the session cookie for each user in our local database');
+        // reset the local database. set all users to not logged in. We need this code because we do a simulation of the login and not a real end user login.
+        Customers.find({                                                                                               // 328
+            'generationUserId': Meteor.userId()                                                                        // 329
+        }).forEach(function (customer) {                                                                               // 328
+            var updatedUsers = _.map(customer.users, function (user) {                                                 // 332
+                if (user) {                                                                                            // 333
+                    user.currentlyLoggedIn = false;                                                                    // 334
+                } // and just logout everybody in the user list                                                        // 335
+                                                                                                                       //
+                                                                                                                       //
+                logoutUser(Meteor.userId(), user.name);                                                                // 338
+                return user;                                                                                           // 339
+            });                                                                                                        // 340
+                                                                                                                       //
+            Customers.update(customer._id, {                                                                           // 342
+                $set: {                                                                                                // 343
+                    users: updatedUsers                                                                                // 344
+                }                                                                                                      // 343
+            });                                                                                                        // 342
+        }); // logoutUser(Meteor.userId(), Meteor.userId()); //logout the user for the slide generator                 // 347
+    },                                                                                                                 // 349
+    logoutPresentationUser: function (UDC, name) {                                                                     // 350
+        console.log('logoutPresentationUser(UDC, name)', UDC, name);                                                   // 351
+        logoutUser(UDC, name, Meteor.settings.public.slideGenerator.virtualProxy);                                     // 352
+    },                                                                                                                 // 353
+    logoutVirtualProxyClientUsageUser: function (UDC, name) {                                                          // 354
+        console.log('logout virtual proxy client usuage User(UDC, name)', UDC, name);                                  // 355
+        logoutUser(UDC, name, Meteor.settings.public.virtualProxyClientUsage);                                         // 356
+    },                                                                                                                 // 357
+    simulateUserLogin: function (name) {                                                                               // 358
+        check(name, String);                                                                                           // 359
+        Meteor.call('resetLoggedInUser'); // console.log('*** Reset all logged in user done, now write in our local database the name for the current simulated user: generationUserId: ' + Meteor.userId() + ' & users.name:' + name);
+                                                                                                                       //
+        var query = [{                                                                                                 // 362
+            'generationUserId': Meteor.userId(),                                                                       // 363
+            'users.name': name                                                                                         // 364
+        }, {                                                                                                           // 362
+            $set: {                                                                                                    // 366
+                'users.$.currentlyLoggedIn': true                                                                      // 367
+            }                                                                                                          // 366
+        }];                                                                                                            // 365
+        Customers.update({                                                                                             // 371
+            'generationUserId': Meteor.userId(),                                                                       // 372
+            'users.name': name                                                                                         // 373
+        }, {                                                                                                           // 371
+            $set: {                                                                                                    // 375
+                'users.$.currentlyLoggedIn': true                                                                      // 376
+            }                                                                                                          // 375
+        }, {}, function (error, numberAffectedDocuments) {                                                             // 374
+            if (numberAffectedDocuments === 0) {                                                                       // 379
+                // if nothing is updated, insert some dummy customers                                                  // 379
+                // console.log('simulateUserLogin numberAffectedDocuments: ', numberAffectedDocuments);                // 380
+                // name does not yet exist in the customers created by the current demo user. So insert our dummy customers.numberAffectedDocuments
+                insertDummyCustomers(Meteor.userId());                                                                 // 382
+                Customers.update({                                                                                     // 383
+                    'generationUserId': Meteor.userId(),                                                               // 384
+                    'users.name': name                                                                                 // 385
+                }, {                                                                                                   // 383
+                    $set: {                                                                                            // 387
+                        'users.$.currentlyLoggedIn': true                                                              // 388
+                    }                                                                                                  // 387
+                });                                                                                                    // 386
+            }                                                                                                          // 391
+        });                                                                                                            // 392
+    }                                                                                                                  // 393
+});                                                                                                                    // 211
+Meteor.methods({                                                                                                       // 396
+    'resetPasswordOrCreateUser': function (user) {                                                                     // 397
+        try {                                                                                                          // 398
+            // console.log('reset the password of the user before logging him in');                                    // 399
+            check(user.email, String);                                                                                 // 400
+            check(user.password, String);                                                                              // 401
+        } catch (err) {                                                                                                // 402
+            throw new Meteor.Error('Missing Qlik.com user data', 'The user misses important information from its Qlik.com account');
+        }                                                                                                              // 405
+                                                                                                                       //
+        var userExists = Accounts.findUserByEmail(user.email);                                                         // 406
+        var userId = {};                                                                                               // 407
+                                                                                                                       //
+        if (user.email === 'mbj@qlik.com') {                                                                           // 408
+            throw new Meteor.Error('Admin account', 'Please login as a different user on Qlik.com');                   // 409
+        } else if (userExists) {                                                                                       // 410
+            // console.log('########### found user, now reset his password: ', userExists);                            // 411
+            userId = userExists._id;                                                                                   // 412
+            Accounts.setPassword(userId, user.password);                                                               // 413
+        } else {                                                                                                       // 414
+            userId = Accounts.createUser(user);                                                                        // 415
+            Roles.addUsersToRoles(userId, ['untrusted'], 'GLOBAL'); // https://github.com/alanning/meteor-roles        // 416
+        }                                                                                                              // 417
+                                                                                                                       //
+        return userId;                                                                                                 // 418
+    }                                                                                                                  // 419
+});                                                                                                                    // 396
+                                                                                                                       //
+function insertDummyCustomers(generationUserId) {                                                                      // 422
+    // console.log('insertDummyCustomers called for generationUserId: ', generationUserId);                            // 423
+    _.each(dummyCustomers, function (customer) {                                                                       // 424
+        customer.generationUserId = generationUserId;                                                                  // 425
+        Customers.insert(customer);                                                                                    // 426
+    });                                                                                                                // 427
+} //Each proxy has its own session cookie, so you have to logout the users per proxy used.                             // 428
+                                                                                                                       //
+                                                                                                                       //
+function logoutUser(UDC, name, proxy) {                                                                                // 431
+    if (!proxy) {                                                                                                      // 432
+        proxy = senseConfig.virtualProxyClientUsage;                                                                   // 433
+    } // use use the proxy for the dummy users from step 4                                                             // 434
+    // console.log('******** QPS Functions: logout the current: ' + name + ' on proxy: ' + proxy);                     // 435
+                                                                                                                       //
+                                                                                                                       //
+    if (name) {                                                                                                        // 437
+        // //console.log('Make QPS-logout call, We authenticate to Sense using the options (including a certificate) object in the HTTPs call: '); //, configCerticates);
+        // //console.log('Meteor tries to logout the user on this URL: https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + senseConfig.UDC + '/' + name);
+        try {                                                                                                          // 440
+            var call = {};                                                                                             // 441
+            call.action = 'Logout user: ' + name;                                                                      // 442
+            call.url = gitHubLinks.logoutUser;                                                                         // 443
+            call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + proxy + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey;
+            call.response = HTTP.call('DELETE', call.request, {                                                        // 445
+                'npmRequestOptions': configCerticates                                                                  // 446
+            });                                                                                                        // 445
+            REST_Log(call, UDC); // the UDC is the by definition the userId of meteor in our approach...               // 449
+            // console.log('The HTTP REQUEST to Sense QPS API:', call.request);                                        // 450
+            // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);                                   // 451
+        } catch (err) {                                                                                                // 452
+            console.error(err);                                                                                        // 453
+            throw new Meteor.Error('Logout user failed', err.message);                                                 // 454
+        }                                                                                                              // 455
+    }                                                                                                                  // 456
+}                                                                                                                      // 457
+                                                                                                                       //
+function getRedirectURL(passport, proxyRestUri, targetId, generationUserId) {                                          // 460
+    check(passport, Object);                                                                                           // 461
+    check(proxyRestUri, String);                                                                                       // 462
+    check(targetId, String);                                                                                           // 463
+    check(generationUserId, String); // console.log('entered server side requestTicket module for user and passport', passport, proxyRestUri);
+    // see https://help.qlik.com/en-US/sense-developer/3.0/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
+                                                                                                                       //
+    var ticketRequestBody = passport;                                                                                  // 469
+    ticketRequestBody.TargetId = targetId; // console.log('The passport for requesting a ticket: ', passport);         // 470
+                                                                                                                       //
+    try {                                                                                                              // 473
+        var call = {};                                                                                                 // 474
+        call.action = 'STEP 5: Request ticket at endpoint received from Sense: ' + proxyRestUri;                       // 475
+        call.request = proxyRestUri + 'ticket'; // we use the proxy rest uri which we got from the redirect from the proxy (the first bounce)
+                                                                                                                       //
+        call.url = gitHubLinks.requestTicket;                                                                          // 477
+        call.response = HTTP.call('POST', call.request, {                                                              // 478
+            'npmRequestOptions': configCerticates,                                                                     // 479
+            headers: authHeaders,                                                                                      // 480
+            params: {                                                                                                  // 481
+                'xrfkey': senseConfig.xrfkey                                                                           // 482
+            },                                                                                                         // 481
+            data: passport // the user and group info for which we want to create a ticket                             // 484
+                                                                                                                       //
+        });                                                                                                            // 478
+        REST_Log(call, generationUserId);                                                                              // 486
+    } catch (err) {                                                                                                    // 487
+        console.error('REST call to request a ticket failed', err);                                                    // 488
+        throw new Meteor.Error('Request ticket failed', err.message);                                                  // 489
+    } // console.log('The HTTP REQUEST to Sense QPS API:', call.request);                                              // 490
+    // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);                                           // 493
+                                                                                                                       //
+                                                                                                                       //
+    var ticketResponse = call.response.data;                                                                           // 494
+    call.action = 'STEP 6: Use response from our ticket request to create redirect url';                               // 495
+    call.request = 'Use the redirect url we got back and the ticket string to make a redirect url for the client. Format: ' + ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket + '. JSON received: ' + ticketResponse;
+    REST_Log(call); // Build redirect URL for the client including the ticket                                          // 497
+                                                                                                                       //
+    if (ticketResponse.TargetUri.indexOf('?') > 0) {                                                                   // 501
+        redirectURI = ticketResponse.TargetUri + '&QlikTicket=' + ticketResponse.Ticket;                               // 502
+    } else {                                                                                                           // 503
+        redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;                               // 504
+    }                                                                                                                  // 505
+                                                                                                                       //
+    if (!redirectURI) {                                                                                                // 507
+        redirectURI = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/' + hub;
+    } // console.log('Meteor server side created this redirect url: ', redirectURI);                                   // 509
+                                                                                                                       //
+                                                                                                                       //
+    return redirectURI;                                                                                                // 511
+}                                                                                                                      // 512
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"QRSAPI.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/server/QRSAPI.js                                                                                        //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var module1 = module;                                                                                                  // 1
+module1.export({                                                                                                       // 1
+    myQRS: function () {                                                                                               // 1
+        return myQRS;                                                                                                  // 1
+    }                                                                                                                  // 1
+});                                                                                                                    // 1
+var Meteor = void 0;                                                                                                   // 1
+module1.watch(require("meteor/meteor"), {                                                                              // 1
+    Meteor: function (v) {                                                                                             // 1
+        Meteor = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var http = void 0;                                                                                                     // 1
+module1.watch(require("meteor/meteor"), {                                                                              // 1
+    http: function (v) {                                                                                               // 1
+        http = v;                                                                                                      // 1
+    }                                                                                                                  // 1
+}, 1);                                                                                                                 // 1
+var configCerticates = void 0,                                                                                         // 1
+    senseConfig = void 0,                                                                                              // 1
+    authHeaders = void 0,                                                                                              // 1
+    qrsSrv = void 0;                                                                                                   // 1
+module1.watch(require("/imports/api/config"), {                                                                        // 1
+    configCerticates: function (v) {                                                                                   // 1
+        configCerticates = v;                                                                                          // 1
+    },                                                                                                                 // 1
+    senseConfig: function (v) {                                                                                        // 1
+        senseConfig = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    authHeaders: function (v) {                                                                                        // 1
+        authHeaders = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    qrsSrv: function (v) {                                                                                             // 1
+        qrsSrv = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 2);                                                                                                                 // 1
+                                                                                                                       //
+var myQRS = function () {                                                                                              // 10
+    function myQRSMain() {                                                                                             // 10
+        this.get = function () {                                                                                       // 12
+            function get(path) {                                                                                       // 12
+                var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};                   // 12
+                var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};                     // 12
+                var endpoint = checkPath(path);                                                                        // 13
+                console.log('QRS module received GET request for endpoint', endpoint); // copy the params to one object
+                                                                                                                       //
+                var newParams = Object.assign({                                                                        // 17
+                    xrfkey: senseConfig.xrfkey                                                                         // 17
+                }, params);                                                                                            // 17
+                                                                                                                       //
+                try {                                                                                                  // 18
+                    var response = HTTP.get(endpoint, {                                                                // 19
+                        npmRequestOptions: configCerticates,                                                           // 20
+                        params: newParams,                                                                             // 21
+                        data: {}                                                                                       // 22
+                    });                                                                                                // 19
+                    return response.data;                                                                              // 24
+                } catch (err) {                                                                                        // 25
+                    var error = 'QRS HTTP GET FAILED FOR ' + endpoint;                                                 // 26
+                    console.error(error);                                                                              // 27
+                    throw new Meteor.Error(500, error);                                                                // 28
+                }                                                                                                      // 29
+            }                                                                                                          // 30
+                                                                                                                       //
+            return get;                                                                                                // 12
+        }();                                                                                                           // 12
+                                                                                                                       //
+        this.post = function () {                                                                                      // 32
+            function post(path) {                                                                                      // 32
+                var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};                   // 32
+                var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};                     // 32
+                var endpoint = checkPath(path); // copy the params to one object                                       // 33
+                                                                                                                       //
+                var newParams = Object.assign({                                                                        // 36
+                    'xrfkey': senseConfig.xrfkey                                                                       // 36
+                }, params);                                                                                            // 36
+                                                                                                                       //
+                try {                                                                                                  // 37
+                    var response = HTTP.post(endpoint, {                                                               // 38
+                        npmRequestOptions: configCerticates,                                                           // 39
+                        params: newParams,                                                                             // 40
+                        data: data                                                                                     // 41
+                    });                                                                                                // 38
+                    return response.data;                                                                              // 43
+                } catch (err) {                                                                                        // 44
+                    console.error('HTTP POST FAILED FOR ' + endpoint, err);                                            // 45
+                }                                                                                                      // 46
+            }                                                                                                          // 47
+                                                                                                                       //
+            return post;                                                                                               // 32
+        }();                                                                                                           // 32
+                                                                                                                       //
+        this.del = function () {                                                                                       // 49
+            function del(path) {                                                                                       // 49
+                var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};                   // 49
+                var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};                     // 49
+                var endpoint = checkPath(path);                                                                        // 50
+                console.log('endpoint', endpoint);                                                                     // 51
+                console.log('data', data); // copy the params to one object.                                           // 52
+                                                                                                                       //
+                var newParams = Object.assign({                                                                        // 55
+                    xrfkey: senseConfig.xrfkey                                                                         // 55
+                }, params);                                                                                            // 55
+                                                                                                                       //
+                try {                                                                                                  // 56
+                    var response = HTTP.del(endpoint, {                                                                // 57
+                        npmRequestOptions: configCerticates,                                                           // 58
+                        params: newParams,                                                                             // 59
+                        data: data                                                                                     // 60
+                    }); // console.log('response', response)                                                           // 57
+                                                                                                                       //
+                    return response.data;                                                                              // 63
+                } catch (err) {                                                                                        // 64
+                    console.error('QRS HTTP DEL FAILED FOR ' + endpoint, err);                                         // 65
+                }                                                                                                      // 66
+            }                                                                                                          // 67
+                                                                                                                       //
+            return del;                                                                                                // 49
+        }();                                                                                                           // 49
+                                                                                                                       //
+        this.put = function () {                                                                                       // 69
+            function put(path) {                                                                                       // 69
+                var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};                   // 69
+                var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};                     // 69
+                var endpoint = checkPath(path); // copy the params to one object                                       // 70
+                                                                                                                       //
+                var newParams = Object.assign({                                                                        // 73
+                    'xrfkey': senseConfig.xrfkey                                                                       // 73
+                }, params);                                                                                            // 73
+                                                                                                                       //
+                try {                                                                                                  // 74
+                    var response = HTTP.put(endpoint, {                                                                // 75
+                        npmRequestOptions: configCerticates,                                                           // 76
+                        params: newParams,                                                                             // 77
+                        data: data                                                                                     // 78
+                    });                                                                                                // 75
+                    return response.data;                                                                              // 80
+                } catch (err) {                                                                                        // 81
+                    console.error('HTTP PUT FAILED FOR ' + endpoint, err);                                             // 82
+                }                                                                                                      // 83
+            }                                                                                                          // 84
+                                                                                                                       //
+            return put;                                                                                                // 69
+        }();                                                                                                           // 69
+    }                                                                                                                  // 86
+                                                                                                                       //
+    return myQRSMain;                                                                                                  // 10
+}();                                                                                                                   // 10
+                                                                                                                       //
+function checkPath(path) {                                                                                             // 88
+    try {                                                                                                              // 89
+        check(path, String);                                                                                           // 90
+    } catch (err) {                                                                                                    // 91
+        throw Error("QRS module can use path: " + path + " for the QRS API, settings.json correct?");                  // 92
+    }                                                                                                                  // 93
+                                                                                                                       //
+    return qrsSrv + path;                                                                                              // 94
+}                                                                                                                      // 95
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"QRSFunctionsApp.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/server/QRSFunctionsApp.js                                                                               //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var _regenerator = require("babel-runtime/regenerator");                                                               //
+                                                                                                                       //
+var _regenerator2 = _interopRequireDefault(_regenerator);                                                              //
+                                                                                                                       //
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }                      //
+                                                                                                                       //
+module.export({                                                                                                        // 1
+    uploadAndPublishTemplateApps: function () {                                                                        // 1
+        return uploadAndPublishTemplateApps;                                                                           // 1
+    },                                                                                                                 // 1
+    generateStreamAndApp: function () {                                                                                // 1
+        return generateStreamAndApp;                                                                                   // 1
+    },                                                                                                                 // 1
+    setAppIDs: function () {                                                                                           // 1
+        return setAppIDs;                                                                                              // 1
+    },                                                                                                                 // 1
+    copyApp: function () {                                                                                             // 1
+        return copyApp;                                                                                                // 1
+    },                                                                                                                 // 1
+    getApps: function () {                                                                                             // 1
+        return getApps;                                                                                                // 1
+    },                                                                                                                 // 1
+    deleteApp: function () {                                                                                           // 1
+        return deleteApp;                                                                                              // 1
+    },                                                                                                                 // 1
+    publishApp: function () {                                                                                          // 1
+        return publishApp;                                                                                             // 1
+    },                                                                                                                 // 1
+    importApp: function () {                                                                                           // 1
+        return importApp;                                                                                              // 1
+    }                                                                                                                  // 1
+});                                                                                                                    // 1
+var Meteor = void 0;                                                                                                   // 1
+module.watch(require("meteor/meteor"), {                                                                               // 1
+    Meteor: function (v) {                                                                                             // 1
+        Meteor = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var http = void 0;                                                                                                     // 1
+module.watch(require("meteor/meteor"), {                                                                               // 1
+    http: function (v) {                                                                                               // 1
+        http = v;                                                                                                      // 1
+    }                                                                                                                  // 1
+}, 1);                                                                                                                 // 1
+var Apps = void 0,                                                                                                     // 1
+    TemplateApps = void 0,                                                                                             // 1
+    GeneratedResources = void 0;                                                                                       // 1
+module.watch(require("/imports/api/apps"), {                                                                           // 1
+    Apps: function (v) {                                                                                               // 1
+        Apps = v;                                                                                                      // 1
+    },                                                                                                                 // 1
+    TemplateApps: function (v) {                                                                                       // 1
+        TemplateApps = v;                                                                                              // 1
+    },                                                                                                                 // 1
+    GeneratedResources: function (v) {                                                                                 // 1
+        GeneratedResources = v;                                                                                        // 1
+    }                                                                                                                  // 1
+}, 2);                                                                                                                 // 1
+var QSStream = void 0;                                                                                                 // 1
+module.watch(require("/imports/api/server/QRSFunctionsStream"), {                                                      // 1
+    "*": function (v) {                                                                                                // 1
+        QSStream = v;                                                                                                  // 1
+    }                                                                                                                  // 1
+}, 3);                                                                                                                 // 1
+var gitHubLinks = void 0;                                                                                              // 1
+module.watch(require("/imports/ui/UIHelpers"), {                                                                       // 1
+    gitHubLinks: function (v) {                                                                                        // 1
+        gitHubLinks = v;                                                                                               // 1
+    }                                                                                                                  // 1
+}, 4);                                                                                                                 // 1
+var Streams = void 0;                                                                                                  // 1
+module.watch(require("/imports/api/streams"), {                                                                        // 1
+    Streams: function (v) {                                                                                            // 1
+        Streams = v;                                                                                                   // 1
+    }                                                                                                                  // 1
+}, 5);                                                                                                                 // 1
+var Customers = void 0;                                                                                                // 1
+module.watch(require("/imports/api/customers"), {                                                                      // 1
+    Customers: function (v) {                                                                                          // 1
+        Customers = v;                                                                                                 // 1
+    }                                                                                                                  // 1
+}, 6);                                                                                                                 // 1
+var createVirtualProxies = void 0;                                                                                     // 1
+module.watch(require("/imports/api/server/QPSFunctions"), {                                                            // 1
+    createVirtualProxies: function (v) {                                                                               // 1
+        createVirtualProxies = v;                                                                                      // 1
+    }                                                                                                                  // 1
+}, 7);                                                                                                                 // 1
+                                                                                                                       //
+var qlikHDRServer = void 0,                                                                                            // 1
+    senseConfig = void 0,                                                                                              // 1
+    enigmaServerConfig = void 0,                                                                                       // 1
+    authHeaders = void 0,                                                                                              // 1
+    qrsSrv = void 0,                                                                                                   // 1
+    qrs = void 0,                                                                                                      // 1
+    QRSconfig = void 0,                                                                                                // 1
+    _SSBIApp = void 0,                                                                                                 // 1
+    configCerticates = void 0,                                                                                         // 1
+    _slideGeneratorAppId = void 0;                                                                                     // 1
+                                                                                                                       //
+module.watch(require("/imports/api/config.js"), {                                                                      // 1
+    qlikHDRServer: function (v) {                                                                                      // 1
+        qlikHDRServer = v;                                                                                             // 1
+    },                                                                                                                 // 1
+    senseConfig: function (v) {                                                                                        // 1
+        senseConfig = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    enigmaServerConfig: function (v) {                                                                                 // 1
+        enigmaServerConfig = v;                                                                                        // 1
+    },                                                                                                                 // 1
+    authHeaders: function (v) {                                                                                        // 1
+        authHeaders = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    qrsSrv: function (v) {                                                                                             // 1
+        qrsSrv = v;                                                                                                    // 1
+    },                                                                                                                 // 1
+    qrs: function (v) {                                                                                                // 1
+        qrs = v;                                                                                                       // 1
+    },                                                                                                                 // 1
+    QRSconfig: function (v) {                                                                                          // 1
+        QRSconfig = v;                                                                                                 // 1
+    },                                                                                                                 // 1
+    _SSBIApp: function (v) {                                                                                           // 1
+        _SSBIApp = v;                                                                                                  // 1
+    },                                                                                                                 // 1
+    configCerticates: function (v) {                                                                                   // 1
+        configCerticates = v;                                                                                          // 1
+    },                                                                                                                 // 1
+    _slideGeneratorAppId: function (v) {                                                                               // 1
+        _slideGeneratorAppId = v;                                                                                      // 1
+    }                                                                                                                  // 1
+}, 8);                                                                                                                 // 1
+var APILogs = void 0,                                                                                                  // 1
+    REST_Log = void 0;                                                                                                 // 1
+module.watch(require("/imports/api/APILogs"), {                                                                        // 1
+    APILogs: function (v) {                                                                                            // 1
+        APILogs = v;                                                                                                   // 1
+    },                                                                                                                 // 1
+    REST_Log: function (v) {                                                                                           // 1
+        REST_Log = v;                                                                                                  // 1
+    }                                                                                                                  // 1
+}, 9);                                                                                                                 // 1
+var lodash = void 0;                                                                                                   // 1
+module.watch(require("lodash"), {                                                                                      // 1
+    "default": function (v) {                                                                                          // 1
+        lodash = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 10);                                                                                                                // 1
+_ = lodash; //                                                                                                         // 48
+// ─── INSTALL NPM MODULES ────────────────────────────────────────────────────────                                    // 51
+//                                                                                                                     // 52
+                                                                                                                       //
+var path = require('path');                                                                                            // 53
+                                                                                                                       //
+var fs = require('fs-extra');                                                                                          // 54
+                                                                                                                       //
+var enigma = require('enigma.js'); // var QRS = require('qrs');                                                        // 55
+                                                                                                                       //
+                                                                                                                       //
+var promise = require('bluebird');                                                                                     // 57
+                                                                                                                       //
+var request = require('request'); //                                                                                   // 58
+// ─── UPLOAD APPS FOR THE INITIAL SETUP OF QLIK SENSE ─────────────────────────                                       // 61
+//                                                                                                                     // 62
+// UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM                                            // 65
+                                                                                                                       //
+                                                                                                                       //
+function uploadAndPublishTemplateApps() {                                                                              // 66
+    var _this = this;                                                                                                  // 66
+                                                                                                                       //
+    var newFolder, everyOneStreamId, templateStreamId, APIAppsStreamID, appsInFolder;                                  // 66
+    return _regenerator2.default.async(function () {                                                                   // 66
+        function uploadAndPublishTemplateApps$(_context2) {                                                            // 66
+            while (1) {                                                                                                // 66
+                switch (_context2.prev = _context2.next) {                                                             // 66
+                    case 0:                                                                                            // 66
+                        console.log('------------------------------------');                                           // 67
+                        console.log('uploadAndPublishTemplateApps');                                                   // 68
+                        console.log('------------------------------------');                                           // 69
+                        newFolder = path.join(Meteor.settings.broker.automationBaseFolder, 'apps');                    // 70
+                        console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder "' + newFolder + '" and upload them to Qlik Sense.'); //GET THE ID OF THE IMPORTANT STREAMS (streams that QRSMeteor needs)
+                                                                                                                       //
+                        everyOneStreamId = QSStream.getStreamByName(Meteor.settings.public.EveryoneAppStreamName).id;  // 74
+                        templateStreamId = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName).id;  // 75
+                        APIAppsStreamID = QSStream.getStreamByName(Meteor.settings.public.APIAppStreamName).id;        // 76
+                        _context2.prev = 8;                                                                            // 66
+                        check(newFolder, String);                                                                      // 78
+                        check(everyOneStreamId, String);                                                               // 79
+                        check(templateStreamId, String);                                                               // 80
+                        check(APIAppsStreamID, String);                                                                // 81
+                        _context2.next = 19;                                                                           // 66
+                        break;                                                                                         // 66
+                                                                                                                       //
+                    case 15:                                                                                           // 66
+                        _context2.prev = 15;                                                                           // 66
+                        _context2.t0 = _context2["catch"](8);                                                          // 66
+                        console.error('You did not specify the templateAppsFrom, everyone, api apps or template stream name in the settings.json file?');
+                        throw new Meteor.Error('Missing Settings', 'You did not specify the everone, api apps or template stream name in the settings.json file?');
+                                                                                                                       //
+                    case 19:                                                                                           // 66
+                        _context2.next = 21;                                                                           // 66
+                        return _regenerator2.default.awrap(fs.readdir(newFolder));                                     // 66
+                                                                                                                       //
+                    case 21:                                                                                           // 66
+                        appsInFolder = _context2.sent;                                                                 // 88
+                        _context2.next = 24;                                                                           // 66
+                        return _regenerator2.default.awrap(Promise.all(appsInFolder.map(function () {                  // 66
+                            function _callee(QVF) {                                                                    // 91
+                                var appName, filePath, appId, copiedAppId;                                             // 91
+                                return _regenerator2.default.async(function () {                                       // 91
+                                    function _callee$(_context) {                                                      // 91
+                                        while (1) {                                                                    // 91
+                                            switch (_context.prev = _context.next) {                                   // 91
+                                                case 0:                                                                // 91
+                                                    _context.prev = 0;                                                 // 91
+                                                    //GET THE NAME OF THE APP AND CREATE A FILEPATH                    // 93
+                                                    appName = QVF.substr(0, QVF.indexOf('.'));                         // 94
+                                                    filePath = path.join(newFolder, QVF); //ONLY UPLOAD APPS IF THEY DO NOT ALREADY EXIST
+                                                                                                                       //
+                                                    if (getApps(appName).length) {                                     // 91
+                                                        _context.next = 10;                                            // 91
+                                                        break;                                                         // 91
+                                                    }                                                                  // 91
+                                                                                                                       //
+                                                    _context.next = 6;                                                 // 91
+                                                    return _regenerator2.default.awrap(uploadApp(filePath, appName));  // 91
+                                                                                                                       //
+                                                case 6:                                                                // 91
+                                                    appId = _context.sent;                                             // 100
+                                                                                                                       //
+                                                    //BASED ON THE APP WE WANT TO PUBLISH IT INTO A DIFFERENT STREAM                      
+                                                    if (appName === 'SSBI') {                                          // 103
+                                                        //should be published in the everyone stream                   // 103
+                                                        _SSBIApp = appId; // for the client side HTML/IFrames etc.                                
+                                                                                                                       //
+                                                        publishApp(appId, appName, everyOneStreamId);                  // 105
+                                                    } else if (appName === 'Sales') {                                  // 106
+                                                        //THIS ONE NEEDS TO BE COPIED AND PUBLISHED INTO 2 STREAMS: AS TEMPLATE AND FOR THE EVERYONE STREAM.
+                                                        publishApp(appId, appName, everyOneStreamId);                  // 107
+                                                        copiedAppId = copyApp(appId, appName);                         // 108
+                                                        publishApp(copiedAppId, appName, templateStreamId);            // 109
+                                                    } else if (appName === 'Slide generator') {                        // 110
+                                                        _slideGeneratorAppId = appId, publishApp(appId, appName, APIAppsStreamID);
+                                                    } else {                                                           // 113
+                                                        //Insert into template apps stream                             // 114
+                                                        publishApp(appId, appName, templateStreamId);                  // 115
+                                                    }                                                                  // 116
+                                                                                                                       //
+                                                    _context.next = 11;                                                // 91
+                                                    break;                                                             // 91
+                                                                                                                       //
+                                                case 10:                                                               // 91
+                                                    console.log('App ' + appName + ' already exists in Qlik Sense');   // 117
+                                                                                                                       //
+                                                case 11:                                                               // 91
+                                                    ;                                                                  // 117
+                                                    _context.next = 18;                                                // 91
+                                                    break;                                                             // 91
+                                                                                                                       //
+                                                case 14:                                                               // 91
+                                                    _context.prev = 14;                                                // 91
+                                                    _context.t0 = _context["catch"](0);                                // 91
+                                                    console.error(_context.t0);                                        // 119
+                                                    throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', _context.t0);
+                                                                                                                       //
+                                                case 18:                                                               // 91
+                                                case "end":                                                            // 91
+                                                    return _context.stop();                                            // 91
+                                            }                                                                          // 91
+                                        }                                                                              // 91
+                                    }                                                                                  // 91
+                                                                                                                       //
+                                    return _callee$;                                                                   // 91
+                                }(), null, _this, [[0, 14]]);                                                          // 91
+                            }                                                                                          // 91
+                                                                                                                       //
+                            return _callee;                                                                            // 91
+                        }())));                                                                                        // 91
+                                                                                                                       //
+                    case 24:                                                                                           // 66
+                        return _context2.abrupt("return", _context2.sent);                                             // 66
+                                                                                                                       //
+                    case 25:                                                                                           // 66
+                    case "end":                                                                                        // 66
+                        return _context2.stop();                                                                       // 66
+                }                                                                                                      // 66
+            }                                                                                                          // 66
+        }                                                                                                              // 66
+                                                                                                                       //
+        return uploadAndPublishTemplateApps$;                                                                          // 66
+    }(), null, this, [[8, 15]]);                                                                                       // 66
+}                                                                                                                      // 66
+                                                                                                                       //
+function generateStreamAndApp(customers, generationUserId) {                                                           // 125
+    // console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
+    var templateApps = checkTemplateAppExists(generationUserId); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
+                                                                                                                       //
+    checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?                     // 129
+                                                                                                                       //
+    for (var _iterator = customers, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+        var _ref;                                                                                                      // 130
+                                                                                                                       //
+        if (_isArray) {                                                                                                // 130
+            if (_i >= _iterator.length) break;                                                                         // 130
+            _ref = _iterator[_i++];                                                                                    // 130
+        } else {                                                                                                       // 130
+            _i = _iterator.next();                                                                                     // 130
+            if (_i.done) break;                                                                                        // 130
+            _ref = _i.value;                                                                                           // 130
+        }                                                                                                              // 130
+                                                                                                                       //
+        var customer = _ref;                                                                                           // 130
+                                                                                                                       //
+        for (var _iterator2 = templateApps, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+            var _ref2;                                                                                                 // 131
+                                                                                                                       //
+            if (_isArray2) {                                                                                           // 131
+                if (_i2 >= _iterator2.length) break;                                                                   // 131
+                _ref2 = _iterator2[_i2++];                                                                             // 131
+            } else {                                                                                                   // 131
+                _i2 = _iterator2.next();                                                                               // 131
+                if (_i2.done) break;                                                                                   // 131
+                _ref2 = _i2.value;                                                                                     // 131
+            }                                                                                                          // 131
+                                                                                                                       //
+            var _templateApp = _ref2;                                                                                  // 131
+            generateAppForTemplate(_templateApp, customer, generationUserId);                                          // 132
+        }                                                                                                              // 133
+    }                                                                                                                  // 134
+                                                                                                                       //
+    ;                                                                                                                  // 134
+}                                                                                                                      // 135
+                                                                                                                       //
+;                                                                                                                      // 135
+                                                                                                                       //
+function setAppIDs(params) {                                                                                           // 137
+    console.log('------------------------------------');                                                               // 138
+    console.log('SET APP IDs');                                                                                        // 139
+    console.log('------------------------------------');                                                               // 140
+                                                                                                                       //
+    try {                                                                                                              // 141
+        console.log('check if all settings.json parameters are set...');                                               // 142
+        check(Meteor.settings.public.slideGenerator, {                                                                 // 143
+            name: String,                                                                                              // 144
+            stream: String,                                                                                            // 145
+            selectionSheet: String,                                                                                    // 146
+            dataObject: String,                                                                                        // 147
+            slideObject: String,                                                                                       // 148
+            virtualProxy: String                                                                                       // 149
+        });                                                                                                            // 143
+        check(Meteor.settings.public.SSBI, {                                                                           // 151
+            name: String,                                                                                              // 152
+            stream: String,                                                                                            // 153
+            sheetId: String                                                                                            // 154
+        });                                                                                                            // 151
+    } catch (err) {                                                                                                    // 156
+        console.error('Missing parameters in your settings.json file for the SSBI or slidegenerator...', err);         // 157
+    }                                                                                                                  // 158
+                                                                                                                       //
+    try {                                                                                                              // 160
+        var slideGeneratorApps = getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream);
+        var SSBIApps = getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream);                  // 162
+                                                                                                                       //
+        if (slideGeneratorApps.length > 1) {                                                                           // 163
+            throw new Error('Can not automatically set the app ID for the slide generator. You have not one but you have multiple slide generator apps under the name ' + Meteor.settings.public.slideGenerator.name + ' in the stream ' + Meteor.settings.public.slideGenerator.stream);
+        }                                                                                                              // 165
+                                                                                                                       //
+        if (SSBIApps.length > 1) {                                                                                     // 166
+            throw new Error('Can not automatically set the app ID for the Self Service BI app. You have not one but you have multiple Self Service apps under the name ' + Meteor.settings.public.SSBI.name + ' in the stream ' + Meteor.settings.public.SSBI.stream);
+        }                                                                                                              // 168
+                                                                                                                       //
+        senseConfig.SSBIApp = SSBIApps[0].id; //                                                                       // 169
+                                                                                                                       //
+        console.log('The SSBI app id has been set to ', senseConfig.SSBIApp);                                          // 170
+        senseConfig.slideGeneratorAppId = slideGeneratorApps[0].id;                                                    // 172
+        console.log('The slide generator app id has been set to ', senseConfig.slideGeneratorAppId);                   // 173
+    } catch (err) {                                                                                                    // 174
+        console.error(err);                                                                                            // 175
+        throw new Meteor.Error('The slideGenerator or Self Service BI app can not be found in Qlik sense, or you did not have all parameters set as defined in the the settings.json example file.', err);
+    }                                                                                                                  // 177
+}                                                                                                                      // 178
+                                                                                                                       //
+function generateAppForTemplate(templateApp, customer, generationUserId) {                                             // 181
+    console.log('--------------------------GENERATE APPS FOR TEMPLATE'); // console.log(templateApp);                  // 182
+    // console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
+                                                                                                                       //
+    var call = {};                                                                                                     // 185
+    call.action = 'Start of generation of app ' + templateApp.name + ' for ' + customer.name;                          // 186
+    call.createdBy = generationUserId;                                                                                 // 187
+    call.request = 'Start creating app ' + templateApp.name + ' for customer ' + customer.name;                        // 188
+    REST_Log(call, generationUserId);                                                                                  // 189
+                                                                                                                       //
+    try {                                                                                                              // 191
+        var streamId = checkStreamStatus(customer, generationUserId); //create a stream for the customer if it not already exists 
+                                                                                                                       //
+        var customerDataFolder = createDirectory(customer.name); //for data like XLS/qvd specific for a customer       // 193
+                                                                                                                       //
+        var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);                                    // 194
+        var result = reloadAppAndReplaceScriptviaEngine(newAppId, templateApp.name, streamId, customer, customerDataFolder, '', generationUserId);
+        var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId); //logging only
+                                                                                                                       //
+        var _call = {};                                                                                                // 199
+        _call.action = 'Finished generation for ' + customer.name;                                                     // 200
+        _call.request = templateApp.name + ' has been created and reloaded with data from the ' + customer.name + ' database';
+        REST_Log(_call, generationUserId);                                                                             // 202
+        console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+        GeneratedResources.insert({                                                                                    // 204
+            'generationUserId': generationUserId,                                                                      // 205
+            'customer': customer.name,                                                                                 // 206
+            'streamId': streamId,                                                                                      // 207
+            'appId': newAppId                                                                                          // 208
+        });                                                                                                            // 204
+    } catch (err) {                                                                                                    // 210
+        console.error('Failed to generate...', err);                                                                   // 211
+        throw new Meteor.Error('Generation failed', 'The server has an internal error, please check the server command logs');
+    }                                                                                                                  // 213
+                                                                                                                       //
+    return;                                                                                                            // 214
+}                                                                                                                      // 215
+                                                                                                                       //
+; //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.    // 215
+//source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js                                 // 219
+                                                                                                                       //
+function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, customer, customerDataFolder, scriptReplace, generationUserId) {
+    var config, qix, call, qConnectionId, script, replaceScript;                                                       // 220
+    return _regenerator2.default.async(function () {                                                                   // 220
+        function reloadAppAndReplaceScriptviaEngine$(_context3) {                                                      // 220
+            while (1) {                                                                                                // 220
+                switch (_context3.prev = _context3.next) {                                                             // 220
+                    case 0:                                                                                            // 220
+                        replaceScript = function () {                                                                  // 296
+                            function replaceScript(script) {                                                           // 220
+                                //var scriptMarker = '§dummyDatabaseString§';                                          // 297
+                                // if you want to replace the database connection per customer use the script below.   // 298
+                                //return doc.setScript(script.replace(scriptMarker, scriptReplace)).then(function (result) {
+                                //you can also change the sense database connection: https://github.com/mindspank/qsocks/blob/master/examples/App/create-dataconnection.js
+                                return script;                                                                         // 301
+                            }                                                                                          // 302
+                                                                                                                       //
+                            return replaceScript;                                                                      // 220
+                        }();                                                                                           // 220
+                                                                                                                       //
+                        console.log('--------------------------REPLACE SCRIPT AND RELOAD APP');                        // 221
+                        check(appId, String);                                                                          // 222
+                        check(customer.name, String);                                                                  // 223
+                        check(customerDataFolder, String);                                                             // 224
+                        check(generationUserId, String); //set the app ID to be used in the enigma connection to the engine API
+                                                                                                                       //
+                        config = Object.assign({}, enigmaServerConfig);                                                // 228
+                        config.appId = appId;                                                                          // 229
+                        _context3.prev = 8;                                                                            // 220
+                        _context3.next = 11;                                                                           // 220
+                        return _regenerator2.default.awrap(enigma.getService('qix', config));                          // 220
+                                                                                                                       //
+                    case 11:                                                                                           // 220
+                        qix = _context3.sent;                                                                          // 233
+                        call = {};                                                                                     // 234
+                        call.action = 'Connect to Qlik Sense';                                                         // 235
+                        call.request = 'Connect to Engine API (using Enigma.js) using an appId: ' + appId;             // 236
+                        call.url = gitHubLinks.replaceAndReloadApp;                                                    // 237
+                        REST_Log(call, generationUserId);                                                              // 238
+                        _context3.prev = 17;                                                                           // 220
+                        //create folder connection                                                                     // 241
+                        console.log('create folder connection, if you see a warning below that means the connection already existed.');
+                        _context3.next = 21;                                                                           // 220
+                        return _regenerator2.default.awrap(qix.app.createConnection({                                  // 220
+                            "qName": customer.name,                                                                    // 244
+                            "qType": "folder",                                                                         // 245
+                            "qConnectionString": customerDataFolder                                                    // 246
+                        }));                                                                                           // 243
+                                                                                                                       //
+                    case 21:                                                                                           // 220
+                        qConnectionId = _context3.sent;                                                                // 243
+                        call = {};                                                                                     // 248
+                        call.action = 'Create data/folder connection';                                                 // 249
+                        call.url = '';                                                                                 // 250
+                        call.request = 'Link to a folder on the server where users can put files/QVD, or create a REST/ODBC/OLEDB... database connection.';
+                        call.response = 'created folder connection: ' + qConnectionId;                                 // 252
+                        console.log('created folder connection: ', qConnectionId);                                     // 253
+                        _context3.next = 33;                                                                           // 220
+                        break;                                                                                         // 220
+                                                                                                                       //
+                    case 30:                                                                                           // 220
+                        _context3.prev = 30;                                                                           // 220
+                        _context3.t0 = _context3["catch"](17);                                                         // 220
+                        console.info('No issue, existing customer so his data folder connection already exists', _context3.t0);
+                                                                                                                       //
+                    case 33:                                                                                           // 220
+                        _context3.next = 35;                                                                           // 220
+                        return _regenerator2.default.awrap(qix.app.getScript());                                       // 220
+                                                                                                                       //
+                    case 35:                                                                                           // 220
+                        script = _context3.sent;                                                                       // 259
+                        call = {};                                                                                     // 260
+                        call.action = 'Get data load script';                                                          // 261
+                        call.url = gitHubLinks.getScript;                                                              // 262
+                        call.request = 'We extracted the following load script from the app';                          // 263
+                        call.response = script;                                                                        // 264
+                        REST_Log(call, generationUserId); //set the new script                                         // 265
+                                                                                                                       //
+                        call = {};                                                                                     // 268
+                        _context3.next = 45;                                                                           // 220
+                        return _regenerator2.default.awrap(qix.app.setScript(replaceScript(script)));                  // 220
+                                                                                                                       //
+                    case 45:                                                                                           // 220
+                        call.response = _context3.sent;                                                                // 269
+                        //we now just include the old script in this app                                               // 269
+                        call.action = 'Insert customer specific data load script for its database';                    // 270
+                        call.url = gitHubLinks.setScript;                                                              // 271
+                        call.request = 'The script of the app has been replaced with a customer specific one. Normally you would replace the database connection for each customer. Or you can insert a customer specific script to enable customization per customer. ';
+                        REST_Log(call, generationUserId); //reload the app                                             // 273
+                                                                                                                       //
+                        call = {};                                                                                     // 276
+                        _context3.next = 53;                                                                           // 220
+                        return _regenerator2.default.awrap(qix.app.doReload());                                        // 220
+                                                                                                                       //
+                    case 53:                                                                                           // 220
+                        call.response = _context3.sent;                                                                // 277
+                        call.action = 'Reload the app';                                                                // 278
+                        call.url = gitHubLinks.reloadApp;                                                              // 279
+                        call.request = 'Has the app been reloaded with customer specific data?';                       // 280
+                        REST_Log(call, generationUserId); //save the app                                               // 281
+                                                                                                                       //
+                        call = {};                                                                                     // 284
+                        call.action = 'Save app';                                                                      // 285
+                        call.url = gitHubLinks.saveApp;                                                                // 286
+                        call.request = 'App with GUID ' + appId + ' has been saved to disk';                           // 287
+                        REST_Log(call, generationUserId);                                                              // 288
+                        _context3.next = 65;                                                                           // 220
+                        return _regenerator2.default.awrap(qix.app.doSave());                                          // 220
+                                                                                                                       //
+                    case 65:                                                                                           // 220
+                        REST_Log(call, generationUserId);                                                              // 291
+                        _context3.next = 71;                                                                           // 220
+                        break;                                                                                         // 220
+                                                                                                                       //
+                    case 68:                                                                                           // 220
+                        _context3.prev = 68;                                                                           // 220
+                        _context3.t1 = _context3["catch"](8);                                                          // 220
+                        console.error('error in reloadAppAndReplaceScriptviaEngine via Enigma.JS, did you used the correct schema definition in the settings.json file?', _context3.t1);
+                                                                                                                       //
+                    case 71:                                                                                           // 220
+                    case "end":                                                                                        // 220
+                        return _context3.stop();                                                                       // 220
+                }                                                                                                      // 220
+            }                                                                                                          // 220
+        }                                                                                                              // 220
+                                                                                                                       //
+        return reloadAppAndReplaceScriptviaEngine$;                                                                    // 220
+    }(), null, this, [[8, 68], [17, 30]]);                                                                             // 220
+}                                                                                                                      // 220
+                                                                                                                       //
+function deleteDirectoryAndDataConnection(customerName) {                                                              // 305
+    console.log('deleteDirectoryAndDataConnection'); //@TODO a bit dangerous, so better to do by hand. Make sure you can't delete root folder... 
+    // https://stackoverflow.com/questions/18052762/remove-directory-which-is-not-empty                                // 308
+}                                                                                                                      // 309
+                                                                                                                       //
+function createDirectory(customerName) {                                                                               // 311
+    var dir = path.join(Meteor.settings.broker.customerDataDir, customerName);                                         // 312
+    fs.ensureDir(dir, function (err) {                                                                                 // 313
+        if (err) {                                                                                                     // 314
+            console.error(err); // => null                                                                             // 315
+                                                                                                                       //
+            throw new Meteor.Error('Server error', 'Unable to create new directory for customer/department: ' + customerName);
+        }                                                                                                              // 317
+    });                                                                                                                // 318
+    return dir;                                                                                                        // 319
+}                                                                                                                      // 320
+                                                                                                                       //
+function checkCustomersAreSelected(customers) {                                                                        // 322
+    if (!customers.length) {                                                                                           // 323
+        // = 0                                                                                                         // 323
+        throw new Meteor.Error('No customers', 'user has not specified at least one customer for which an app can be generated');
+    }                                                                                                                  // 325
+}                                                                                                                      // 326
+                                                                                                                       //
+; // CHECK IF SELECTED TEMPLATE APP EXISTS IN QLIK SENSE                                                               // 326
+//These are the apps that the OEM partner has in his database, but do they still exists on the qliks sense side?       // 329
+                                                                                                                       //
+function checkTemplateAppExists(generationUserId) {                                                                    // 330
+    var templateApps = TemplateApps.find({                                                                             // 331
+        'generationUserId': Meteor.userId()                                                                            // 332
+    }).fetch();                                                                                                        // 331
+                                                                                                                       //
+    if (templateApps.length === 0) {                                                                                   // 335
+        //user has not specified a template                                                                            // 335
+        throw new Meteor.Error('No Template', 'user has not specified a template for which apps can be generated');    // 336
+    }                                                                                                                  // 337
+                                                                                                                       //
+    currentAppsInSense = getApps();                                                                                    // 339
+                                                                                                                       //
+    if (!currentAppsInSense) {                                                                                         // 340
+        throw new Meteor.Error('No apps have been received from Qlik Sense. Therefore you have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
+    }                                                                                                                  // 342
+                                                                                                                       //
+    _.each(templateApps, function (templateApp) {                                                                      // 343
+        var templateFound = _.some(currentAppsInSense, ['id', templateApp.id]);                                        // 344
+                                                                                                                       //
+        if (!templateFound) {                                                                                          // 346
+            throw new Meteor.Error('You have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
+        } else {// console.log('checkTemplateAppExists: True, template guid exist: ', templateApp.id);                 // 348
+        }                                                                                                              // 350
+    });                                                                                                                // 351
+                                                                                                                       //
+    return templateApps;                                                                                               // 352
+}                                                                                                                      // 353
+                                                                                                                       //
+; //                                                                                                                   // 353
+// ─── UPLOAD APP ─────────────────────────────────────────────────────────────────                                    // 356
+//                                                                                                                     // 357
+                                                                                                                       //
+function uploadApp(filePath, appName) {                                                                                // 360
+    return _regenerator2.default.async(function () {                                                                   // 360
+        function uploadApp$(_context4) {                                                                               // 360
+            while (1) {                                                                                                // 360
+                switch (_context4.prev = _context4.next) {                                                             // 360
+                    case 0:                                                                                            // 360
+                        console.log('Upload app: ' + appName + ' from path: ' + filePath);                             // 361
+                        _context4.next = 3;                                                                            // 360
+                        return _regenerator2.default.awrap(new Promise(function (resolve, reject) {                    // 360
+                            var formData = {                                                                           // 363
+                                my_file: fs.createReadStream(filePath)                                                 // 364
+                            };                                                                                         // 363
+                            request.post({                                                                             // 367
+                                url: qlikHDRServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
+                                headers: {                                                                             // 369
+                                    'Content-Type': 'application/vnd.qlik.sense.app',                                  // 370
+                                    'hdr-usr': senseConfig.headerValue,                                                // 371
+                                    'X-Qlik-xrfkey': senseConfig.xrfkey                                                // 372
+                                },                                                                                     // 369
+                                formData: formData                                                                     // 374
+                            }, function (error, res, body) {                                                           // 367
+                                if (!error) {                                                                          // 376
+                                    var appId = JSON.parse(body).id;                                                   // 377
+                                    console.log('Uploaded "' + appName + '.qvf" to Qlik Sense and got appID: ' + appId);
+                                    resolve(appId);                                                                    // 379
+                                } else {                                                                               // 380
+                                    console.error("Failed to upload app" + appName, error);                            // 381
+                                    reject(error);                                                                     // 382
+                                }                                                                                      // 383
+                            });                                                                                        // 384
+                        }));                                                                                           // 385
+                                                                                                                       //
+                    case 3:                                                                                            // 360
+                        return _context4.abrupt("return", _context4.sent);                                             // 360
+                                                                                                                       //
+                    case 4:                                                                                            // 360
+                    case "end":                                                                                        // 360
+                        return _context4.stop();                                                                       // 360
+                }                                                                                                      // 360
+            }                                                                                                          // 360
+        }                                                                                                              // 360
+                                                                                                                       //
+        return uploadApp$;                                                                                             // 360
+    }(), null, this);                                                                                                  // 360
+} //                                                                                                                   // 360
+// ─── COPYAPP ────────────────────────────────────────────────────────────────────                                    // 388
+//                                                                                                                     // 389
+                                                                                                                       //
+                                                                                                                       //
+function copyApp(guid, name, generationUserId) {                                                                       // 392
+    check(guid, String);                                                                                               // 393
+    check(name, String); // console.log('QRS Functions copy App, copy the app id: ' + guid + ' to app with name: ', name);
+                                                                                                                       //
+    var call = {};                                                                                                     // 396
+                                                                                                                       //
+    try {                                                                                                              // 398
+        call.request = qrsSrv + '/qrs/app/' + guid + '/copy';                                                          // 399
+        call.response = HTTP.post(call.request, {                                                                      // 400
+            'npmRequestOptions': configCerticates,                                                                     // 401
+            params: {                                                                                                  // 402
+                'xrfkey': senseConfig.xrfkey,                                                                          // 402
+                "name": name                                                                                           // 402
+            },                                                                                                         // 402
+            data: {}                                                                                                   // 403
+        });                                                                                                            // 400
+        REST_Log(call, generationUserId);                                                                              // 407
+        var newGuid = call.response.data.id; // console.log('Step 2: the new app id is: ', newGuid);                   // 408
+        //addTag('App', newGuid);                                                                                      // 410
+                                                                                                                       //
+        return newGuid;                                                                                                // 411
+    } catch (err) {                                                                                                    // 412
+        console.error(err);                                                                                            // 413
+        call.action = 'Copy app FAILED';                                                                               // 414
+        call.response = err.message;                                                                                   // 415
+        REST_Log(call, generationUserId);                                                                              // 416
+        throw new Meteor.Error('Copy app for selected customers failed', err.message);                                 // 417
+    }                                                                                                                  // 418
+}                                                                                                                      // 419
+                                                                                                                       //
+; //                                                                                                                   // 419
+// ─── CHECKSTREAMSTATUS ──────────────────────────────────────────────────────────                                    // 422
+//                                                                                                                     // 423
+                                                                                                                       //
+function checkStreamStatus(customer, generationUserId) {                                                               // 426
+    // console.log('checkStreamStatus for: ' + customer.name);                                                         // 427
+    var stream = Streams.findOne({                                                                                     // 428
+        name: customer.name                                                                                            // 429
+    }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object               // 428
+                                                                                                                       //
+    var streamId = '';                                                                                                 // 431
+                                                                                                                       //
+    if (stream) {                                                                                                      // 432
+        // console.log('Stream already exists: ', stream.id);                                                          // 433
+        streamId = stream.id;                                                                                          // 434
+    } else {                                                                                                           // 435
+        // console.log('No stream for customer exist, so create one: ' + customer.name);                               // 436
+        streamId = QSStream.createStream(customer.name, generationUserId).id; // console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
+    }                                                                                                                  // 439
+                                                                                                                       //
+    return streamId;                                                                                                   // 441
+} // export function getAppsViaEngine() {                                                                              // 442
+//     // console.log('server: QSSOCKS getApps');                                                                      // 446
+//     return qsocks.Connect(engineConfig)                                                                             // 447
+//         .then(function(global) {                                                                                    // 448
+//             //We can now interact with the global class, for example fetch the document list.                       // 449
+//             //qsocks mimics the Engine API, refer to the Engine API documentation or the engine api explorer for available methods.
+//             global.getDocList()                                                                                     // 451
+//                 .then(function(docList) {                                                                           // 452
+//                     return docList;                                                                                 // 453
+//                 });                                                                                                 // 454
+//         });                                                                                                         // 456
+// };                                                                                                                  // 457
+// http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Get-All-As-Full.htm
+//                                                                                                                     // 462
+// ─── GETAPPS ────────────────────────────────────────────────────────────────────                                    // 463
+//                                                                                                                     // 464
+                                                                                                                       //
+                                                                                                                       //
+function getApps(name, stream) {                                                                                       // 466
+    var path = '/qrs/app/full'; //if a name/stream is provided only search the apps with this name                     // 467
+                                                                                                                       //
+    if (name) {                                                                                                        // 470
+        path += "?filter=Name eq '" + name + "'";                                                                      // 471
+                                                                                                                       //
+        if (stream) {                                                                                                  // 472
+            path += " and stream.name eq '" + stream + "'";                                                            // 473
+        }                                                                                                              // 474
+    }                                                                                                                  // 475
+                                                                                                                       //
+    var call = {                                                                                                       // 477
+        action: 'Get list of apps',                                                                                    // 478
+        request: path                                                                                                  // 479
+    }; // REST_Log(call,generationUserId);                                                                             // 477
+                                                                                                                       //
+    return qrs.get(call.request);                                                                                      // 482
+}                                                                                                                      // 483
+                                                                                                                       //
+; //                                                                                                                   // 483
+// ─── DELETEAPP ──────────────────────────────────────────────────────────────────                                    // 486
+//                                                                                                                     // 487
+                                                                                                                       //
+function deleteApp(guid) {                                                                                             // 490
+    var generationUserId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Not defined';          // 490
+    console.log('QRSApp deleteApp: ', guid);                                                                           // 491
+                                                                                                                       //
+    try {                                                                                                              // 492
+        var call = {};                                                                                                 // 493
+        call.request = qrsSrv + '/qrs/app/' + guid;                                                                    // 494
+        call.response = HTTP.del(call.request, {                                                                       // 495
+            params: {                                                                                                  // 496
+                xrfkey: senseConfig.xrfkey                                                                             // 496
+            },                                                                                                         // 496
+            npmRequestOptions: configCerticates,                                                                       // 497
+            data: {}                                                                                                   // 498
+        }); // Meteor.call('updateLocalSenseCopy');                                                                    // 495
+        //logging only                                                                                                 // 502
+                                                                                                                       //
+        call.action = 'Delete app';                                                                                    // 503
+        call.url = gitHubLinks.deleteApp;                                                                              // 504
+        call.response = call.response;                                                                                 // 505
+        REST_Log(call, generationUserId);                                                                              // 506
+        return call.response;                                                                                          // 507
+    } catch (err) {                                                                                                    // 508
+        console.error(err);                                                                                            // 509
+        throw new Meteor.Error('App delete failed', err.message);                                                      // 510
+    }                                                                                                                  // 511
+}                                                                                                                      // 512
+                                                                                                                       //
+; //                                                                                                                   // 512
+// ─── PUBLISHAPP ─────────────────────────────────────────────────────────────────                                    // 516
+//                                                                                                                     // 517
+                                                                                                                       //
+function publishApp(appGuid, appName, streamId, customerName, generationUserId) {                                      // 520
+    console.log('Publish app: ' + appName + ' to stream: ' + streamId);                                                // 521
+    check(appGuid, String);                                                                                            // 522
+    check(appName, String);                                                                                            // 523
+    check(streamId, String);                                                                                           // 524
+                                                                                                                       //
+    try {                                                                                                              // 526
+        var call = {};                                                                                                 // 527
+        call.request = qrsSrv + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId;            // 528
+        call.response = HTTP.put(call.request, {                                                                       // 529
+            params: {                                                                                                  // 530
+                xrfkey: senseConfig.xrfkey                                                                             // 530
+            },                                                                                                         // 530
+            npmRequestOptions: configCerticates,                                                                       // 531
+            data: {}                                                                                                   // 532
+        }); //logging into database                                                                                    // 529
+                                                                                                                       //
+        call.action = 'Publish app';                                                                                   // 537
+        call.url = gitHubLinks.publishApp;                                                                             // 538
+        REST_Log(call, generationUserId);                                                                              // 539
+        return call.response;                                                                                          // 540
+    } catch (err) {                                                                                                    // 541
+        console.error(err); // // IF APP ALREADY EXISTED TRY TO PUBLISH OVERWRITE IT (REPLACE)                         // 542
+        // if(err.response.statusCode == 400){                                                                         // 545
+        //     replaceApp()                                                                                            // 546
+        // }                                                                                                           // 547
+        // console.error('statusCode:', err.response.statusCode);                                                      // 548
+        // console.info('Try to PUBLISH OVERWRITE THE APP, SINCE IT WAS ALREADY PUBLISHED');                           // 549
+                                                                                                                       //
+        throw new Meteor.Error('Publication of app ' + appName + ' for customer ' + customerName + ' failed: ', err.message);
+    }                                                                                                                  // 551
+}                                                                                                                      // 552
+                                                                                                                       //
+; // REPLACE APP                                                                                                       // 552
+// export function replaceApp(targetApp, replaceByApp, generationUserId) {                                             // 555
+//     console.log('Function: Replace app: ' + targetApp + ' by app ' + targetApp);                                    // 556
+//     check(appGuid, String);                                                                                         // 557
+//     check(replaceByApp, String);                                                                                    // 558
+//     try {                                                                                                           // 560
+//         const result = HTTP.put(qlikHDRServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey, {
+//             headers: {                                                                                              // 562
+//                 'hdr-usr': senseConfig.headerValue,                                                                 // 563
+//                 'X-Qlik-xrfkey': senseConfig.xrfkey                                                                 // 564
+//             }                                                                                                       // 565
+//         });                                                                                                         // 566
+//         //logging into database                                                                                     // 568
+//         const call = {};                                                                                            // 569
+//         call.action = 'Replace app';                                                                                // 570
+//         call.request = 'HTTP.put(' + qlikHDRServer + '/qrs/app/' + replaceByApp + '/replace?app=' + targetApp + '&xrfkey=' + senseConfig.xrfkey;
+//         call.response = result;                                                                                     // 572
+//         call.url = 'http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-App-Replace.htm';
+//         REST_Log(call, generationUserId);                                                                           // 574
+//         return result;                                                                                              // 575
+//     } catch (err) {                                                                                                 // 576
+//         console.error(err);                                                                                         // 577
+//         throw new Meteor.Error('Publication of app ' + appName + ' for customer ' + customerName + ' failed: ', err.message);
+//     }                                                                                                               // 579
+// };                                                                                                                  // 580
+// function createTag(name) {                                                                                          // 583
+//     check(name, String);                                                                                            // 584
+//     // console.log('QRS Functions Appp, create a tag: ' + name);                                                    // 585
+//     try {                                                                                                           // 587
+//         const result = HTTP.post(qlikHDRServer + '/qrs/Tag', {                                                      // 588
+//             headers: authHeaders,                                                                                   // 589
+//             params: {                                                                                               // 590
+//                 'xrfkey': senseConfig.xrfkey                                                                        // 591
+//             },                                                                                                      // 592
+//             data: {                                                                                                 // 593
+//                 "name": name                                                                                        // 594
+//             }                                                                                                       // 595
+//         })                                                                                                          // 596
+//         //logging only                                                                                              // 598
+//         const call = {};                                                                                            // 599
+//         call.action = 'create Tag';                                                                                 // 600
+//         call.request = 'HTTP.get(http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/tag';
+//         call.response = result;                                                                                     // 602
+//         REST_Log(call, generationUserId);                                                                           // 603
+//         return result;                                                                                              // 605
+//     } catch (err) {                                                                                                 // 606
+//         console.error(err);                                                                                         // 607
+//         throw new Meteor.Error('Tag: ' + name + ' create failed ', err.message);                                    // 608
+//     }                                                                                                               // 609
+// };                                                                                                                  // 610
+// function addTag(type, guid, tagName) {                                                                              // 612
+//     check(type, String);                                                                                            // 613
+//     check(guid, String);                                                                                            // 614
+//     //check if tag with tagName already exists                                                                      // 616
+//     var selectionId = createSelection(type, guid);                                                                  // 618
+//     addTagViaSyntheticToType('App', selectionId, tagGuid)                                                           // 619
+// }                                                                                                                   // 621
+// function createSelection(type, guid) {                                                                              // 623
+//     check(type, String);                                                                                            // 624
+//     check(guid, String);                                                                                            // 625
+//     console.log('QRS Functions APP, create selection for type: ', type + ' ' + guid);                               // 626
+//     try {                                                                                                           // 628
+//         const result = HTTP.post(qlikHDRServer + '/qrs/Selection', {                                                // 629
+//             headers: authHeaders,                                                                                   // 630
+//             params: {                                                                                               // 631
+//                 'xrfkey': senseConfig.xrfkey                                                                        // 632
+//             },                                                                                                      // 633
+//             data: {                                                                                                 // 634
+//                 items: [{                                                                                           // 635
+//                     type: type,                                                                                     // 636
+//                     objectID: guid                                                                                  // 637
+//                 }]                                                                                                  // 638
+//             }                                                                                                       // 639
+//         })                                                                                                          // 640
+//         console.log('the result of selection for type: ', type + ' ' + guid);                                       // 641
+//         console.log(result);                                                                                        // 642
+//         return result.id;                                                                                           // 643
+//     } catch (err) {                                                                                                 // 644
+//         console.error(err);                                                                                         // 645
+//         throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);                     // 646
+//     }                                                                                                               // 647
+// };                                                                                                                  // 648
+// function deleteSelection(selectionId) {                                                                             // 650
+//     check(selectionId, String);                                                                                     // 651
+//     console.log('QRS Functions APP, deleteSelection selection for selectionId: ', selectionId);                     // 652
+//     try {                                                                                                           // 654
+//         const result = HTTP.delete(qlikHDRServer + '/qrs/Selection/' + selectionId, {                               // 655
+//             headers: authHeaders,                                                                                   // 656
+//             params: {                                                                                               // 657
+//                 'xrfkey': senseConfig.xrfkey                                                                        // 658
+//             }                                                                                                       // 659
+//         })                                                                                                          // 660
+//         console.log(result);                                                                                        // 661
+//         return result.id;                                                                                           // 662
+//     } catch (err) {                                                                                                 // 663
+//         console.error(err);                                                                                         // 664
+//         throw new Meteor.Error('Selection delete failed: ', err.message);                                           // 665
+//     }                                                                                                               // 666
+// };                                                                                                                  // 667
+// function buildModDate() {                                                                                           // 669
+//     var d = new Date();                                                                                             // 670
+//     return d.toISOString();                                                                                         // 671
+// }                                                                                                                   // 672
+// function addTagViaSyntheticToType(type, selectionId, tagGuid) {                                                     // 674
+//     check(type, String);                                                                                            // 675
+//     check(guid, String);                                                                                            // 676
+//     console.log('QRS Functions Appp, Update all entities of a specific type: ' + type + ' in the selection set identified by {id} ' + selectionId + ' based on an existing synthetic object. : ');
+//     try {                                                                                                           // 679
+//         const result = HTTP.put(qlikHDRServer + '/qrs/Selection/' + selectionId + '/' + type + '/synthetic', {      // 680
+//             headers: authHeaders,                                                                                   // 681
+//             params: {                                                                                               // 682
+//                 'xrfkey': senseConfig.xrfkey                                                                        // 683
+//             },                                                                                                      // 684
+//             data: {                                                                                                 // 685
+//                 "latestModifiedDate": buildModDate(),                                                               // 686
+//                 "properties": [{                                                                                    // 687
+//                     "name": "refList_Tag",                                                                          // 688
+//                     "value": {                                                                                      // 689
+//                         "added": [tagGuid]                                                                          // 690
+//                     },                                                                                              // 691
+//                     "valueIsModified": true                                                                         // 692
+//                 }],                                                                                                 // 693
+//                 "type": type                                                                                        // 694
+//             }                                                                                                       // 695
+//         })                                                                                                          // 696
+//         console.log('the result of selection for type: ', type + ' ' + guid);                                       // 697
+//         console.log(result);                                                                                        // 698
+//         return result;                                                                                              // 699
+//     } catch (err) {                                                                                                 // 700
+//         console.error(err);                                                                                         // 701
+//         throw new Meteor.Error('Selection: ' + type + ' failed for guid ' + guid, err.message);                     // 702
+//     }                                                                                                               // 703
+// };                                                                                                                  // 704
+// async function uploadPublishTemplateApps() {                                                                        // 707
+//     //check if template apps have been uploaded and published in the templates stream                               // 708
+//     // if (true) { // (!Apps.find({ "stream.name": "Templates" }).count()) {                                        // 709
+//     console.warn('no template apps found, so upload from the templates dir.');                                      // 710
+//     var folder = Meteor.settings.private.templateAppsFrom;                                                          // 711
+//     // var folder = await copyTemplatesToQRSFolder();                                                               // 712
+//     console.log('apps folder', folder);                                                                             // 713
+//     uploadAndPublishApps(folder);                                                                                   // 714
+//     // } else {}                                                                                                    // 715
+// }                                                                                                                   // 716
+// //upload and publish all apps found in the folder to the templates stream                                           // 718
+// async function copyTemplatesToQRSFolder() {                                                                         // 719
+//     var newFolder = Meteor.settings.private.templateAppsTo + '\\' + process.env.USERDOMAIN + '\\' + process.env.USERNAME;
+//     try {                                                                                                           // 721
+//         await fs.copy(Meteor.settings.private.templateAppsFrom, newFolder, {                                        // 722
+//             overwrite: true                                                                                         // 723
+//         }); //"QLIK-AB0Q2URN5T\\Qlikexternal",                                                                      // 724
+//         return newFolder                                                                                            // 725
+//     } catch (err) {                                                                                                 // 726
+//         console.error('error copy Templates from ' + Meteor.settings.private.templateAppsFrom + ' To QRSFolder ' + Meteor.settings.private.templateAppsDir, err);
+//     }                                                                                                               // 728
+// }                                                                                                                   // 729
+// For a system service account, the app must be in the %ProgramData%\Qlik\Sense\Repository\DefaultApps folder.        // 731
+// For any other account, the app must be in the %ProgramData%\Qlik\Sense\Apps\<login domain>\<login user> folder.     // 732
+//so you have to copy your apps there first. in a fresh sense installation.                                            // 733
+                                                                                                                       //
+function importApp(fileName, name) {// check(fileName, String);                                                        // 734
+    // check(name, String);                                                                                            // 736
+    // console.log('QRS Functions import App, with name ' + name + ', with fileName: ', fileName);                     // 737
+    // try {                                                                                                           // 739
+    //     const call = {};                                                                                            // 740
+    //     call.action = 'Import app';                                                                                 // 741
+    //     call.url = 'http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-App-Import-App.htm'
+    //     call.request = qlikHDRServer + '/qrs/app/import?keepData=true&name=' + name + '&xrfkey=' + senseConfig.xrfkey; //using header auth.
+    //     call.response = HTTP.post(call.request, {                                                                   // 744
+    //         headers: {                                                                                              // 745
+    //             'hdr-usr': senseConfig.headerValue,                                                                 // 746
+    //             'X-Qlik-xrfkey': senseConfig.xrfkey                                                                 // 747
+    //         },                                                                                                      // 748
+    //         data: '"Sales.qvf"'                                                                                     // 749
+    //     });                                                                                                         // 750
+    //     REST_Log(call, generationUserId);                                                                           // 752
+    //     var newGuid = call.response.data.id;                                                                        // 753
+    //     return newGuid;                                                                                             // 754
+    // } catch (err) {                                                                                                 // 755
+    //     console.error(err);                                                                                         // 756
+    //     const call = {};                                                                                            // 757
+    //     call.action = 'Import app FAILED';                                                                          // 758
+    //     call.response = err.message;                                                                                // 759
+    //     REST_Log(call, generationUserId);                                                                           // 760
+    //     throw new Meteor.Error('Import app failed', err.message);                                                   // 761
+    // }                                                                                                               // 762
+                                                                                                                       //
+    var generationUserId = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'no user set';          // 734
+}                                                                                                                      // 763
+                                                                                                                       //
+; //https://www.npmjs.com/package/request#forms                                                                        // 763
+// function uploadApp(filePath, fileSize, appName) {                                                                   // 766
+//     console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
+//     var formData = {                                                                                                // 768
+//         my_file: fs.createReadStream(filePath)                                                                      // 769
+//     };                                                                                                              // 770
+//     request.post({                                                                                                  // 771
+//         url: qlikHDRServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,                   // 772
+//         headers: {                                                                                                  // 773
+//             'Content-Type': 'application/vnd.qlik.sense.app',                                                       // 774
+//             'hdr-usr': senseConfig.headerValue,                                                                     // 775
+//             'X-Qlik-xrfkey': senseConfig.xrfkey                                                                     // 776
+//         },                                                                                                          // 777
+//         formData: formData                                                                                          // 778
+//     }, function optionalCallback(err, httpResponse, body) {                                                         // 779
+//         if (err) {                                                                                                  // 780
+//             return console.error('upload failed:', err);                                                            // 781
+//         }                                                                                                           // 782
+//         console.log('Upload successful!  Server responded with:', body);                                            // 783
+//     });                                                                                                             // 784
+// }                                                                                                                   // 785
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"QRSFunctionsCustomProperties.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/server/QRSFunctionsCustomProperties.js                                                                  //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({                                                                                                        // 1
+    createCustomProperty: function () {                                                                                // 1
+        return createCustomProperty;                                                                                   // 1
+    },                                                                                                                 // 1
+    updateCustomPropertyByName: function () {                                                                          // 1
+        return updateCustomPropertyByName;                                                                             // 1
+    },                                                                                                                 // 1
+    deleteCustomProperty: function () {                                                                                // 1
+        return deleteCustomProperty;                                                                                   // 1
+    },                                                                                                                 // 1
+    getCustomProperties: function () {                                                                                 // 1
+        return getCustomProperties;                                                                                    // 1
+    }                                                                                                                  // 1
+});                                                                                                                    // 1
+var Meteor = void 0;                                                                                                   // 1
+module.watch(require("meteor/meteor"), {                                                                               // 1
+    Meteor: function (v) {                                                                                             // 1
+        Meteor = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var myQRS = void 0;                                                                                                    // 1
+module.watch(require("/imports/api/server/QRSAPI"), {                                                                  // 1
+    myQRS: function (v) {                                                                                              // 1
+        myQRS = v;                                                                                                     // 1
+    }                                                                                                                  // 1
+}, 1);                                                                                                                 // 1
+var senseConfig = void 0,                                                                                              // 1
+    qrs = void 0;                                                                                                      // 1
+module.watch(require("/imports/api/config.js"), {                                                                      // 1
+    senseConfig: function (v) {                                                                                        // 1
+        senseConfig = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    qrs: function (v) {                                                                                                // 1
+        qrs = v;                                                                                                       // 1
+    }                                                                                                                  // 1
+}, 2);                                                                                                                 // 1
+                                                                                                                       //
+var fs = require('fs-extra');                                                                                          // 4
+                                                                                                                       //
+var path = require('path');                                                                                            // 5
+                                                                                                                       //
+function createCustomProperty(name, choiceValues) {                                                                    // 13
+    console.log('------------------------------------');                                                               // 14
+    console.log('createCustomProperty', name + ' ' + choiceValues.toString());                                         // 15
+    console.log('------------------------------------');                                                               // 16
+                                                                                                                       //
+    try {                                                                                                              // 18
+        check(name, String);                                                                                           // 19
+        check(choiceValues, Array);                                                                                    // 20
+    } catch (err) {                                                                                                    // 21
+        throw new Meteor.Error('Missing values', 'You did not specify a name or choice values for the custom property');
+    }                                                                                                                  // 23
+                                                                                                                       //
+    var customProperty = {                                                                                             // 25
+        "name": name,                                                                                                  // 26
+        "valueType": "Text",                                                                                           // 27
+        "objectTypes": ["App", "ContentLibrary", "DataConnection", "ReloadTask", "Stream", "User"],                    // 28
+        "choiceValues": choiceValues                                                                                   // 29
+    };                                                                                                                 // 25
+    console.log('customProperty', customProperty);                                                                     // 31
+    var result = qrs.post('/qrs/CustomPropertyDefinition', null, customProperty);                                      // 32
+    console.log('result of create custom property: ', result);                                                         // 33
+}                                                                                                                      // 34
+                                                                                                                       //
+function updateCustomPropertyByName(name, newProperty) {                                                               // 37
+    console.log('%%%%%%%%%%%%%%%%%%%% updateCustomPropertyByName(name, newProperty)', updateCustomPropertyByName(name, newProperty));
+                                                                                                                       //
+    try {                                                                                                              // 40
+        check(newName, String);                                                                                        // 41
+        check(newProperty, Object);                                                                                    // 42
+    } catch (err) {                                                                                                    // 43
+        throw new Meteor.Error('Missing values', 'You did not specify a name or update object for the custom property');
+    }                                                                                                                  // 45
+                                                                                                                       //
+    var customProperty = getCustomProperties(name)[0];                                                                 // 47
+    newProperty.modifiedDate = customProperty.modifiedDate; //you can only update when you supply the original modified date, otherwise you get a 409 error. 
+                                                                                                                       //
+    var result = qrs.put('/qrs/CustomPropertyDefinition/' + customProperty.id, null, result);                          // 49
+    console.log('result after update', result);                                                                        // 50
+}                                                                                                                      // 52
+                                                                                                                       //
+function deleteCustomProperty(name) {                                                                                  // 54
+    console.log('deleteCustomProperty(name)', name);                                                                   // 55
+    var customProperty = getCustomProperties(name)[0];                                                                 // 57
+                                                                                                                       //
+    if (customProperty) {                                                                                              // 58
+        var result = qrs.del('/qrs/CustomPropertyDefinition/' + customProperty.id);                                    // 59
+        console.log('result after delete', result);                                                                    // 60
+    }                                                                                                                  // 61
+}                                                                                                                      // 63
+                                                                                                                       //
+function getCustomProperties(name) {                                                                                   // 65
+    var filter = name ? {                                                                                              // 66
+        filter: "Name eq '" + name + "'"                                                                               // 66
+    } : null;                                                                                                          // 66
+    var customProperties = qrs.get('/qrs/CustomPropertyDefinition/full', filter);                                      // 67
+    var file = path.join(Meteor.settings.broker.automationBaseFolder, 'customProperties', 'export', 'ExtractedCustomProperties.json'); // SAVE FILE TO DISK
+                                                                                                                       //
+    fs.outputFile(file, JSON.stringify(customProperties, null, 2), 'utf-8');                                           // 72
+    return customProperties;                                                                                           // 74
+}                                                                                                                      // 75
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"QRSFunctionsExtension.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/server/QRSFunctionsExtension.js                                                                         //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var _regenerator = require("babel-runtime/regenerator");                                                               //
+                                                                                                                       //
+var _regenerator2 = _interopRequireDefault(_regenerator);                                                              //
+                                                                                                                       //
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }                      //
+                                                                                                                       //
+module.export({                                                                                                        // 1
+    uploadExtensions: function () {                                                                                    // 1
+        return uploadExtensions;                                                                                       // 1
+    }                                                                                                                  // 1
+});                                                                                                                    // 1
+var Meteor = void 0;                                                                                                   // 1
+module.watch(require("meteor/meteor"), {                                                                               // 1
+    Meteor: function (v) {                                                                                             // 1
+        Meteor = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var myQRS = void 0;                                                                                                    // 1
+module.watch(require("/imports/api/server/QRSAPI"), {                                                                  // 1
+    myQRS: function (v) {                                                                                              // 1
+        myQRS = v;                                                                                                     // 1
+    }                                                                                                                  // 1
+}, 1);                                                                                                                 // 1
+                                                                                                                       //
+var qlikHDRServer = void 0,                                                                                            // 1
+    senseConfig = void 0,                                                                                              // 1
+    enigmaServerConfig = void 0,                                                                                       // 1
+    authHeaders = void 0,                                                                                              // 1
+    qrsSrv = void 0,                                                                                                   // 1
+    QRSconfig = void 0,                                                                                                // 1
+    _SSBIApp = void 0,                                                                                                 // 1
+    configCerticates = void 0,                                                                                         // 1
+    _slideGeneratorAppId = void 0;                                                                                     // 1
+                                                                                                                       //
+module.watch(require("/imports/api/config.js"), {                                                                      // 1
+    qlikHDRServer: function (v) {                                                                                      // 1
+        qlikHDRServer = v;                                                                                             // 1
+    },                                                                                                                 // 1
+    senseConfig: function (v) {                                                                                        // 1
+        senseConfig = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    enigmaServerConfig: function (v) {                                                                                 // 1
+        enigmaServerConfig = v;                                                                                        // 1
+    },                                                                                                                 // 1
+    authHeaders: function (v) {                                                                                        // 1
+        authHeaders = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    qrsSrv: function (v) {                                                                                             // 1
+        qrsSrv = v;                                                                                                    // 1
+    },                                                                                                                 // 1
+    QRSconfig: function (v) {                                                                                          // 1
+        QRSconfig = v;                                                                                                 // 1
+    },                                                                                                                 // 1
+    _SSBIApp: function (v) {                                                                                           // 1
+        _SSBIApp = v;                                                                                                  // 1
+    },                                                                                                                 // 1
+    configCerticates: function (v) {                                                                                   // 1
+        configCerticates = v;                                                                                          // 1
+    },                                                                                                                 // 1
+    _slideGeneratorAppId: function (v) {                                                                               // 1
+        _slideGeneratorAppId = v;                                                                                      // 1
+    }                                                                                                                  // 1
+}, 2);                                                                                                                 // 1
+                                                                                                                       //
+//                                                                                                                     // 22
+// ─── INSTALL NPM MODULES ────────────────────────────────────────────────────────                                    // 23
+//                                                                                                                     // 24
+var fs = require('fs-extra');                                                                                          // 26
+                                                                                                                       //
+var path = require('path');                                                                                            // 27
+                                                                                                                       //
+var enigma = require('enigma.js');                                                                                     // 28
+                                                                                                                       //
+var promise = require('bluebird');                                                                                     // 29
+                                                                                                                       //
+var request = require('request');                                                                                      // 30
+                                                                                                                       //
+var qrs = new myQRS(); // export async function automaticUploadExtensions() {                                          // 31
+//     console.log('Automatically download the extensions from Github and upload to Qlik Sense');                      // 34
+//     var url = 'https://github.com/kai/qlik-sense-timeline.git';                                                     // 35
+//     var req = request.get(url);                                                                                     // 36
+//     console.log('req', req)                                                                                         // 37
+// }                                                                                                                   // 39
+                                                                                                                       //
+function uploadExtensions() {                                                                                          // 41
+    var _this = this;                                                                                                  // 41
+                                                                                                                       //
+    var extensionsFolder, extensions;                                                                                  // 41
+    return _regenerator2.default.async(function () {                                                                   // 41
+        function uploadExtensions$(_context2) {                                                                        // 41
+            while (1) {                                                                                                // 41
+                switch (_context2.prev = _context2.next) {                                                             // 41
+                    case 0:                                                                                            // 41
+                        console.log('--------------------------UPLOAD EXTENSIONS'); // LOAD ALL EXTENSIONS IN FOLDER   // 42
+                                                                                                                       //
+                        extensionsFolder = '';                                                                         // 44
+                        _context2.prev = 2;                                                                            // 41
+                        extensionsFolder = path.join(Meteor.settings.broker.automationBaseFolder, 'extensions');       // 46
+                        console.log('extensionsFolder', extensionsFolder);                                             // 47
+                        _context2.next = 7;                                                                            // 41
+                        return _regenerator2.default.awrap(fs.readdir(extensionsFolder));                              // 41
+                                                                                                                       //
+                    case 7:                                                                                            // 41
+                        extensions = _context2.sent;                                                                   // 48
+                        _context2.next = 13;                                                                           // 41
+                        break;                                                                                         // 41
+                                                                                                                       //
+                    case 10:                                                                                           // 41
+                        _context2.prev = 10;                                                                           // 41
+                        _context2.t0 = _context2["catch"](2);                                                          // 41
+                        throw error('error loading all extensions in folder.', _context2.t0);                          // 41
+                                                                                                                       //
+                    case 13:                                                                                           // 41
+                        _context2.next = 15;                                                                           // 41
+                        return _regenerator2.default.awrap(Promise.all(extensions.map(function () {                    // 41
+                            function _callee(extension) {                                                              // 54
+                                var filePath, result;                                                                  // 54
+                                return _regenerator2.default.async(function () {                                       // 54
+                                    function _callee$(_context) {                                                      // 54
+                                        while (1) {                                                                    // 54
+                                            switch (_context.prev = _context.next) {                                   // 54
+                                                case 0:                                                                // 54
+                                                    console.log('Current extension', extension);                       // 55
+                                                    _context.prev = 1;                                                 // 54
+                                                    //CREATE A FILEPATH                                                // 57
+                                                    filePath = path.join(extensionsFolder, extension); //UPLOAD THE APP, GET THE APP ID BACK
+                                                                                                                       //
+                                                    _context.next = 5;                                                 // 54
+                                                    return _regenerator2.default.awrap(uploadExtension('', filePath));
+                                                                                                                       //
+                                                case 5:                                                                // 54
+                                                    result = _context.sent;                                            // 61
+                                                    _context.next = 12;                                                // 54
+                                                    break;                                                             // 54
+                                                                                                                       //
+                                                case 8:                                                                // 54
+                                                    _context.prev = 8;                                                 // 54
+                                                    _context.t0 = _context["catch"](1);                                // 54
+                                                    console.error(_context.t0);                                        // 63
+                                                    throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', _context.t0);
+                                                                                                                       //
+                                                case 12:                                                               // 54
+                                                case "end":                                                            // 54
+                                                    return _context.stop();                                            // 54
+                                            }                                                                          // 54
+                                        }                                                                              // 54
+                                    }                                                                                  // 54
+                                                                                                                       //
+                                    return _callee$;                                                                   // 54
+                                }(), null, _this, [[1, 8]]);                                                           // 54
+                            }                                                                                          // 54
+                                                                                                                       //
+                            return _callee;                                                                            // 54
+                        }())));                                                                                        // 54
+                                                                                                                       //
+                    case 15:                                                                                           // 41
+                    case "end":                                                                                        // 41
+                        return _context2.stop();                                                                       // 41
+                }                                                                                                      // 41
+            }                                                                                                          // 41
+        }                                                                                                              // 41
+                                                                                                                       //
+        return uploadExtensions$;                                                                                      // 41
+    }(), null, this, [[2, 10]]);                                                                                       // 41
+}                                                                                                                      // 41
+                                                                                                                       //
+function uploadExtension(password, filePath) {                                                                         // 71
+    var formData;                                                                                                      // 71
+    return _regenerator2.default.async(function () {                                                                   // 71
+        function uploadExtension$(_context3) {                                                                         // 71
+            while (1) {                                                                                                // 71
+                switch (_context3.prev = _context3.next) {                                                             // 71
+                    case 0:                                                                                            // 71
+                        console.log('uploadApp: try to upload extension from path: ' + filePath);                      // 73
+                        formData = {                                                                                   // 74
+                            my_file: fs.createReadStream(filePath)                                                     // 75
+                        }; // qrs.post('/qrs/extension/upload?pwd=' + password, data)                                  // 74
+                                                                                                                       //
+                        _context3.next = 4;                                                                            // 71
+                        return _regenerator2.default.awrap(new Promise(function (resolve, reject) {                    // 71
+                            request.post({                                                                             // 81
+                                url: qlikHDRServer + '/qrs/extension/upload?&xrfkey=' + senseConfig.xrfkey,            // 82
+                                //removed password parameter, assume blank                                             // 82
+                                headers: {                                                                             // 83
+                                    'hdr-usr': senseConfig.headerValue,                                                // 84
+                                    'X-Qlik-xrfkey': senseConfig.xrfkey                                                // 85
+                                },                                                                                     // 83
+                                formData: formData                                                                     // 87
+                            }, function (error, res, body) {                                                           // 81
+                                if (!error) {                                                                          // 89
+                                    try {                                                                              // 90
+                                        var id = JSON.parse(body).id;                                                  // 91
+                                        console.log('Uploaded "' + path.basename(filePath) + ' to Qlik Sense and got id: ' + id); //
+                                    } catch (err) {                                                                    // 93
+                                        console.log('Qlik Sense reported: ', body);                                    // 94
+                                    }                                                                                  // 95
+                                                                                                                       //
+                                    resolve();                                                                         // 96
+                                } else {                                                                               // 97
+                                    reject(error);                                                                     // 98
+                                }                                                                                      // 99
+                            });                                                                                        // 100
+                        }));                                                                                           // 101
+                                                                                                                       //
+                    case 4:                                                                                            // 71
+                        return _context3.abrupt("return", _context3.sent);                                             // 71
+                                                                                                                       //
+                    case 5:                                                                                            // 71
+                    case "end":                                                                                        // 71
+                        return _context3.stop();                                                                       // 71
+                }                                                                                                      // 71
+            }                                                                                                          // 71
+        }                                                                                                              // 71
+                                                                                                                       //
+        return uploadExtension$;                                                                                       // 71
+    }(), null, this);                                                                                                  // 71
+}                                                                                                                      // 71
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"QRSFunctionsLicense.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/server/QRSFunctionsLicense.js                                                                           //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({                                                                                                        // 1
+    getLicense: function () {                                                                                          // 1
+        return getLicense;                                                                                             // 1
+    },                                                                                                                 // 1
+    insertLicense: function () {                                                                                       // 1
+        return insertLicense;                                                                                          // 1
+    },                                                                                                                 // 1
+    insertUserAccessRule: function () {                                                                                // 1
+        return insertUserAccessRule;                                                                                   // 1
+    },                                                                                                                 // 1
+    getSystemRules: function () {                                                                                      // 1
+        return getSystemRules;                                                                                         // 1
+    },                                                                                                                 // 1
+    saveSystemRules: function () {                                                                                     // 1
+        return saveSystemRules;                                                                                        // 1
+    }                                                                                                                  // 1
+});                                                                                                                    // 1
+var Meteor = void 0;                                                                                                   // 1
+module.watch(require("meteor/meteor"), {                                                                               // 1
+    Meteor: function (v) {                                                                                             // 1
+        Meteor = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var myQRS = void 0;                                                                                                    // 1
+module.watch(require("/imports/api/server/QRSAPI"), {                                                                  // 1
+    myQRS: function (v) {                                                                                              // 1
+        myQRS = v;                                                                                                     // 1
+    }                                                                                                                  // 1
+}, 1);                                                                                                                 // 1
+var senseConfig = void 0,                                                                                              // 1
+    qrs = void 0;                                                                                                      // 1
+module.watch(require("/imports/api/config.js"), {                                                                      // 1
+    senseConfig: function (v) {                                                                                        // 1
+        senseConfig = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    qrs: function (v) {                                                                                                // 1
+        qrs = v;                                                                                                       // 1
+    }                                                                                                                  // 1
+}, 2);                                                                                                                 // 1
+                                                                                                                       //
+var fs = require('fs-extra');                                                                                          // 4
+                                                                                                                       //
+var path = require('path'); //                                                                                         // 5
+// ─── IMPORT CONFIG FOR QLIK SENSE QRS AND ENGINE API ────────────────────────────                                    // 9
+//                                                                                                                     // 10
+                                                                                                                       //
+                                                                                                                       //
+var demoUserAccessRule = "SAAS DEMO - License rule to grant user access"; // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-License-Add.htm //
+                                                                                                                       //
+function getLicense() {                                                                                                // 22
+    var lic = qrs.get('/qrs/license');                                                                                 // 23
+    return lic;                                                                                                        // 24
+}                                                                                                                      // 25
+                                                                                                                       //
+function insertLicense() {                                                                                             // 27
+    console.log('------------------------------------');                                                               // 28
+    console.log('INSERT LICENSE');                                                                                     // 29
+    console.log('------------------------------------');                                                               // 30
+    var existingLicense = qrs.get('/qrs/license');                                                                     // 31
+    var newLicense = Meteor.settings.private.license;                                                                  // 32
+                                                                                                                       //
+    try {                                                                                                              // 34
+        console.log('check if all settings.json parameters are set...');                                               // 35
+        check(Meteor.settings.private.license, {                                                                       // 36
+            serial: String,                                                                                            // 37
+            name: String,                                                                                              // 38
+            organization: String                                                                                       // 39
+        });                                                                                                            // 36
+        check(Meteor.settings.private.LicenseControlNumber, Number);                                                   // 41
+    } catch (err) {                                                                                                    // 42
+        console.error('Missing parameters in your settings.json file for your Qlik Sense license', err);               // 43
+    }                                                                                                                  // 44
+                                                                                                                       //
+    if (!existingLicense) {                                                                                            // 46
+        // try {                                                                                                       // 47
+        //     console.log('Update the existing license');                                                             // 48
+        //     newLicense.id = existingLicense.id;                                                                     // 49
+        //     var response = qrs.del('/qrs/license/' + existingLicense.id);                                           // 50
+        //     // var response = qrs.put('/qrs/license/' + newLicense.id, newLicense, { control: Meteor.settings.private.LicenseControlNumber });
+        //     // console.error('Stop license insertion, license for ' + lic.organization + ' is already included: ', lic.serial);
+        //     // throw Error('You are trying to insert a license while the Qlik Sense is already licensed, please remove the existing one in the QMC');
+        // } catch (err) {                                                                                             // 54
+        //     // lic did not already exist.                                                                           // 55
+        // }                                                                                                           // 56
+        var response = qrs.post('/qrs/license', {                                                                      // 57
+            control: Meteor.settings.private.LicenseControlNumber                                                      // 57
+        }, newLicense);                                                                                                // 57
+        console.log('No existing license present, therefore inserted license into Qlik Sense.');                       // 58
+    }                                                                                                                  // 59
+}                                                                                                                      // 60
+                                                                                                                       //
+function insertUserAccessRule() {                                                                                      // 62
+    console.log('insert UserAccess Rule for all users');                                                               // 63
+    var licenseRule = {                                                                                                // 64
+        "name": demoUserAccessRule,                                                                                    // 65
+        "category": "License",                                                                                         // 66
+        "rule": "((user.name like \"*\"))",                                                                            // 67
+        "type": "Custom",                                                                                              // 68
+        "privileges": ["create", "read", "update"],                                                                    // 69
+        "resourceFilter": "License.UserAccessGroup_507c9aa5-8812-44d9-ade8-32809785eecf",                              // 70
+        "actions": 1,                                                                                                  // 71
+        "ruleContext": "QlikSenseOnly",                                                                                // 72
+        "disabled": false,                                                                                             // 73
+        "comment": "Rule to set up automatic user access for each user that has received a ticket via your SaaS platform",
+        "disabledActions": ["useaccesstype"]                                                                           // 75
+    };                                                                                                                 // 64
+    var ruleExist = getSystemRules(demoUserAccessRule);                                                                // 77
+                                                                                                                       //
+    if (typeof ruleExist[0] == 'undefined' || ruleExist.length === 0) {                                                // 78
+        console.log('Create a new user license rule since it did not exist.');                                         // 79
+        var response = qrs.post('/qrs/SystemRule', null, licenseRule);                                                 // 80
+    }                                                                                                                  // 81
+}                                                                                                                      // 82
+                                                                                                                       //
+function getSystemRules(name) {                                                                                        // 84
+    console.log('Get system rules with name: ' + name);                                                                // 85
+    var filter = name ? {                                                                                              // 87
+        filter: "Name eq '" + name + "'"                                                                               // 87
+    } : null;                                                                                                          // 87
+    var rules = qrs.get('/qrs/SystemRule/full', filter);                                                               // 88
+    var file = path.join(Meteor.settings.broker.automationBaseFolder, 'securityrules', 'export', 'ExtractedSystemRules.json'); // SAVE FILE TO DISK
+                                                                                                                       //
+    fs.outputFile(file, JSON.stringify(rules, null, 2), 'utf-8');                                                      // 93
+    return rules;                                                                                                      // 95
+}                                                                                                                      // 96
+                                                                                                                       //
+function saveSystemRules() {                                                                                           // 97
+    var rules = qrs.get('/qrs/SystemRule');                                                                            // 98
+    var file = path.join(Meteor.settings.broker.automationBaseFolder, 'securityrules', 'export', 'ExtractedSystemRules.json'); // SAVE FILE TO DISK
+                                                                                                                       //
+    fs.outputFile(file, JSON.stringify(rules, null, 2), 'utf-8');                                                      // 103
+}                                                                                                                      // 104
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"QRSFunctionsStream.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/server/QRSFunctionsStream.js                                                                            //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({                                                                                                        // 1
+    initSenseStreams: function () {                                                                                    // 1
+        return initSenseStreams;                                                                                       // 1
+    },                                                                                                                 // 1
+    deleteStream: function () {                                                                                        // 1
+        return deleteStream;                                                                                           // 1
+    },                                                                                                                 // 1
+    getStreamByName: function () {                                                                                     // 1
+        return getStreamByName;                                                                                        // 1
+    },                                                                                                                 // 1
+    getStreams: function () {                                                                                          // 1
+        return getStreams;                                                                                             // 1
+    },                                                                                                                 // 1
+    createStream: function () {                                                                                        // 1
+        return createStream;                                                                                           // 1
+    }                                                                                                                  // 1
+});                                                                                                                    // 1
+var Meteor = void 0;                                                                                                   // 1
+module.watch(require("meteor/meteor"), {                                                                               // 1
+    Meteor: function (v) {                                                                                             // 1
+        Meteor = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var GeneratedResources = void 0;                                                                                       // 1
+module.watch(require("/imports/api/apps.js"), {                                                                        // 1
+    GeneratedResources: function (v) {                                                                                 // 1
+        GeneratedResources = v;                                                                                        // 1
+    }                                                                                                                  // 1
+}, 1);                                                                                                                 // 1
+var gitHubLinks = void 0;                                                                                              // 1
+module.watch(require("/imports/ui/UIHelpers"), {                                                                       // 1
+    gitHubLinks: function (v) {                                                                                        // 1
+        gitHubLinks = v;                                                                                               // 1
+    }                                                                                                                  // 1
+}, 2);                                                                                                                 // 1
+var senseConfig = void 0,                                                                                              // 1
+    authHeaders = void 0,                                                                                              // 1
+    qrsSrv = void 0,                                                                                                   // 1
+    qrs = void 0,                                                                                                      // 1
+    configCerticates = void 0;                                                                                         // 1
+module.watch(require("/imports/api/config.js"), {                                                                      // 1
+    senseConfig: function (v) {                                                                                        // 1
+        senseConfig = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    authHeaders: function (v) {                                                                                        // 1
+        authHeaders = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    qrsSrv: function (v) {                                                                                             // 1
+        qrsSrv = v;                                                                                                    // 1
+    },                                                                                                                 // 1
+    qrs: function (v) {                                                                                                // 1
+        qrs = v;                                                                                                       // 1
+    },                                                                                                                 // 1
+    configCerticates: function (v) {                                                                                   // 1
+        configCerticates = v;                                                                                          // 1
+    }                                                                                                                  // 1
+}, 3);                                                                                                                 // 1
+var REST_Log = void 0;                                                                                                 // 1
+module.watch(require("/imports/api/APILogs"), {                                                                        // 1
+    REST_Log: function (v) {                                                                                           // 1
+        REST_Log = v;                                                                                                  // 1
+    }                                                                                                                  // 1
+}, 4);                                                                                                                 // 1
+var qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy; //
+// ─── CREATE STREAMS FOR THE INITIAL SETUP OF QLIK SENSE ─────────────────────────                                    // 13
+//                                                                                                                     // 14
+                                                                                                                       //
+function initSenseStreams() {                                                                                          // 17
+    console.log('------------------------------------');                                                               // 18
+    console.log('Create initial streams');                                                                             // 19
+    console.log('------------------------------------');                                                               // 20
+                                                                                                                       //
+    for (var _iterator = Meteor.settings.public.StreamsToCreateAutomatically, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+        var _ref;                                                                                                      // 22
+                                                                                                                       //
+        if (_isArray) {                                                                                                // 22
+            if (_i >= _iterator.length) break;                                                                         // 22
+            _ref = _iterator[_i++];                                                                                    // 22
+        } else {                                                                                                       // 22
+            _i = _iterator.next();                                                                                     // 22
+            if (_i.done) break;                                                                                        // 22
+            _ref = _i.value;                                                                                           // 22
+        }                                                                                                              // 22
+                                                                                                                       //
+        var streamName = _ref;                                                                                         // 22
+                                                                                                                       //
+        try {                                                                                                          // 23
+            console.log('Try to create stream: ' + streamName + ' if it not already exists');                          // 24
+                                                                                                                       //
+            if (!getStreamByName(streamName)) {                                                                        // 25
+                createStream(streamName);                                                                              // 26
+            }                                                                                                          // 27
+        } catch (err) {                                                                                                // 28
+            console.log(err);                                                                                          // 29
+        }                                                                                                              // 30
+    }                                                                                                                  // 31
+}                                                                                                                      // 32
+                                                                                                                       //
+function deleteStream(guid, generationUserId) {                                                                        // 39
+    console.log('deleteStream: ', guid);                                                                               // 40
+                                                                                                                       //
+    try {                                                                                                              // 41
+        var request = qrsSrv + '/qrs/stream/' + guid;                                                                  // 43
+        var response = HTTP.del(request, {                                                                             // 44
+            'npmRequestOptions': configCerticates                                                                      // 45
+        }); // Logging                                                                                                 // 44
+                                                                                                                       //
+        var call = {};                                                                                                 // 49
+        call.action = 'Delete stream';                                                                                 // 50
+        call.request = "HTTP.del(" + qlikServer + '/qrs/stream/' + guid + '?xrfkey=' + senseConfig.xrfkey;             // 51
+        call.response = response;                                                                                      // 52
+        REST_Log(call, generationUserId);                                                                              // 53
+        Meteor.call('updateLocalSenseCopy');                                                                           // 54
+        return response;                                                                                               // 55
+    } catch (err) {// console.error(err);                                                                              // 56
+        // throw new Meteor.Error('Delete stream failed', err.message);                                                // 58
+    }                                                                                                                  // 59
+}                                                                                                                      // 60
+                                                                                                                       //
+; //                                                                                                                   // 60
+// ─── GET STREAM BY NAME ────────────────────────────────────────────────────────────                                 // 64
+//                                                                                                                     // 65
+                                                                                                                       //
+function getStreamByName(name) {                                                                                       // 68
+    try {                                                                                                              // 69
+        var request = qrsSrv + "/qrs/stream/full?filter=Name eq '" + name + "'";                                       // 70
+        var response = HTTP.get(request, {                                                                             // 71
+            params: {                                                                                                  // 72
+                xrfkey: senseConfig.xrfkey                                                                             // 72
+            },                                                                                                         // 72
+            npmRequestOptions: configCerticates,                                                                       // 73
+            data: {}                                                                                                   // 74
+        });                                                                                                            // 71
+        return response.data[0];                                                                                       // 77
+    } catch (err) {                                                                                                    // 78
+        console.error(err);                                                                                            // 79
+        throw Error('get streamByName failed', err.message);                                                           // 80
+    }                                                                                                                  // 81
+}                                                                                                                      // 82
+                                                                                                                       //
+function getStreams() {                                                                                                // 89
+    try {                                                                                                              // 90
+        var call = {};                                                                                                 // 91
+        call.action = 'Get list of streams';                                                                           // 92
+        call.request = qrsSrv + '/qrs/stream/full';                                                                    // 93
+        call.response = HTTP.get(call.request, {                                                                       // 94
+            params: {                                                                                                  // 95
+                xrfkey: senseConfig.xrfkey                                                                             // 95
+            },                                                                                                         // 95
+            npmRequestOptions: configCerticates,                                                                       // 96
+            data: {}                                                                                                   // 97
+        }); // REST_Log(call);                                                                                         // 94
+                                                                                                                       //
+        return call.response.data;                                                                                     // 100
+    } catch (err) {                                                                                                    // 101
+        console.error(err);                                                                                            // 102
+        throw new Meteor.Error('getStreams failed', err.message);                                                      // 103
+    }                                                                                                                  // 104
+}                                                                                                                      // 105
+                                                                                                                       //
+; //                                                                                                                   // 105
+// ─── CREATE STREAM ──────────────────────────────────────────────────────────────                                    // 108
+//                                                                                                                     // 109
+                                                                                                                       //
+function createStream(name, generationUserId) {                                                                        // 112
+    console.log('QRS Functions Stream, create the stream with name', name);                                            // 113
+                                                                                                                       //
+    try {                                                                                                              // 116
+        check(name, String);                                                                                           // 117
+        var response = qrs.post('/qrs/stream', null, {                                                                 // 118
+            name: name                                                                                                 // 118
+        }); // Meteor.call('updateLocalSenseCopy');                                                                    // 118
+        //logging                                                                                                      // 121
+                                                                                                                       //
+        var call = {                                                                                                   // 122
+            action: 'Create stream',                                                                                   // 123
+            url: gitHubLinks.createStream,                                                                             // 124
+            request: "HTTP.post(qlikServer + '/qrs/stream', { headers: " + JSON.stringify(authHeaders) + ", params: { 'xrfkey': " + senseConfig.xrfkey + "}, data: { name: " + name + "}}) --> USE OF HEADER AUTH ONLY FOR DEMO/REVERSE PROXY PURPOSES",
+            response: response                                                                                         // 126
+        };                                                                                                             // 122
+        REST_Log(call, generationUserId);                                                                              // 129
+        console.log('call.response;', call.response);                                                                  // 130
+        return call.response;                                                                                          // 131
+    } catch (err) {                                                                                                    // 132
+        console.error(err);                                                                                            // 133
+        throw new Meteor.Error('Create stream failed ', err.message);                                                  // 134
+    }                                                                                                                  // 135
+}                                                                                                                      // 136
+                                                                                                                       //
+;                                                                                                                      // 136
+Meteor.methods({                                                                                                       // 139
+    deleteStream: function (guid) {                                                                                    // 140
+        check(guid, String); //logging only                                                                            // 141
+                                                                                                                       //
+        var call = {};                                                                                                 // 143
+        call.action = 'Delete stream';                                                                                 // 144
+        call.request = 'Delete stream: ' + guid;                                                                       // 145
+        REST_Log(call);                                                                                                // 146
+        var id = deleteStream(guid, Meteor.userId());                                                                  // 148
+        Meteor.call('updateLocalSenseCopy');                                                                           // 149
+        return id;                                                                                                     // 150
+    },                                                                                                                 // 151
+    createStream: function (name) {                                                                                    // 152
+        var streamId = createStream(name);                                                                             // 153
+        Meteor.call('updateLocalSenseCopy'); //store in the database that the user generated something, so we can later on remove it.
+                                                                                                                       //
+        GeneratedResources.insert({                                                                                    // 157
+            'generationUserId': Meteor.userId(),                                                                       // 158
+            'customer': null,                                                                                          // 159
+            'streamId': streamId.data.id,                                                                              // 160
+            'appId': null                                                                                              // 161
+        });                                                                                                            // 157
+        return streamId;                                                                                               // 163
+    },                                                                                                                 // 164
+    getStreams: function () {                                                                                          // 165
+        return getStreams();                                                                                           // 166
+    }                                                                                                                  // 167
+});                                                                                                                    // 139
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"QRSFunctionsSystemRules.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/server/QRSFunctionsSystemRules.js                                                                       //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var _regenerator = require("babel-runtime/regenerator");                                                               //
+                                                                                                                       //
+var _regenerator2 = _interopRequireDefault(_regenerator);                                                              //
+                                                                                                                       //
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }                      //
+                                                                                                                       //
+module.export({                                                                                                        // 1
+    getSecurityRules: function () {                                                                                    // 1
+        return getSecurityRules;                                                                                       // 1
+    },                                                                                                                 // 1
+    disableDefaultSecurityRules: function () {                                                                         // 1
+        return disableDefaultSecurityRules;                                                                            // 1
+    },                                                                                                                 // 1
+    createSecurityRules: function () {                                                                                 // 1
+        return createSecurityRules;                                                                                    // 1
+    }                                                                                                                  // 1
+});                                                                                                                    // 1
+var Meteor = void 0;                                                                                                   // 1
+module.watch(require("meteor/meteor"), {                                                                               // 1
+    Meteor: function (v) {                                                                                             // 1
+        Meteor = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var qrs = void 0,                                                                                                      // 1
+    validateJSON = void 0;                                                                                             // 1
+module.watch(require("/imports/api/config.js"), {                                                                      // 1
+    qrs: function (v) {                                                                                                // 1
+        qrs = v;                                                                                                       // 1
+    },                                                                                                                 // 1
+    validateJSON: function (v) {                                                                                       // 1
+        validateJSON = v;                                                                                              // 1
+    }                                                                                                                  // 1
+}, 1);                                                                                                                 // 1
+var QSLic = void 0;                                                                                                    // 1
+module.watch(require("/imports/api/server/QRSFunctionsLicense"), {                                                     // 1
+    "*": function (v) {                                                                                                // 1
+        QSLic = v;                                                                                                     // 1
+    }                                                                                                                  // 1
+}, 2);                                                                                                                 // 1
+                                                                                                                       //
+// import { APILogs } from '/imports/api/APILogs';                                                                     // 4
+var fs = require('fs-extra');                                                                                          // 5
+                                                                                                                       //
+var path = require('path');                                                                                            // 6
+                                                                                                                       //
+function getSecurityRules(name) {                                                                                      // 14
+    return QSLic.getSystemRules(name);                                                                                 // 15
+}                                                                                                                      // 16
+                                                                                                                       //
+function disableDefaultSecurityRules() {                                                                               // 18
+    console.log('------------------------------------');                                                               // 19
+    console.log('disable Default SecurityRules');                                                                      // 20
+    console.log('------------------------------------');                                                               // 21
+    Meteor.settings.security.rulesToDisable.forEach(function (ruleName) {                                              // 22
+        console.log('From Meteor.settings.security.rulesToDisable, Disable security rule: ', ruleName);                // 23
+        var ruleDefinition = QSLic.getSystemRules(ruleName)[0];                                                        // 25
+                                                                                                                       //
+        if (ruleDefinition) {                                                                                          // 26
+            ruleDefinition.disabled = true;                                                                            // 27
+            var response = qrs.put('/qrs/SystemRule/' + ruleDefinition.id, null, ruleDefinition);                      // 28
+        } else {                                                                                                       // 29
+            console.warn('The system rule does not exist in Sense: ' + ruleName);                                      // 30
+        }                                                                                                              // 31
+    });                                                                                                                // 32
+}                                                                                                                      // 33
+                                                                                                                       //
+function createSecurityRules() {                                                                                       // 35
+    var file, securityRules;                                                                                           // 35
+    return _regenerator2.default.async(function () {                                                                   // 35
+        function createSecurityRules$(_context) {                                                                      // 35
+            while (1) {                                                                                                // 35
+                switch (_context.prev = _context.next) {                                                               // 35
+                    case 0:                                                                                            // 35
+                        console.log('------------------------------------');                                           // 36
+                        console.log('create security rules in Qlik Sense based on import file');                       // 37
+                        console.log('------------------------------------');                                           // 38
+                        file = path.join(Meteor.settings.broker.automationBaseFolder, 'securityrules', 'import', 'securityRuleSettings.json'); // READ THE FILE 
+                                                                                                                       //
+                        _context.next = 6;                                                                             // 35
+                        return _regenerator2.default.awrap(fs.readJson(file));                                         // 35
+                                                                                                                       //
+                    case 6:                                                                                            // 35
+                        securityRules = _context.sent;                                                                 // 43
+                        _context.prev = 7;                                                                             // 35
+                        validateJSON(securityRules);                                                                   // 45
+                        _context.next = 14;                                                                            // 35
+                        break;                                                                                         // 35
+                                                                                                                       //
+                    case 11:                                                                                           // 35
+                        _context.prev = 11;                                                                            // 35
+                        _context.t0 = _context["catch"](7);                                                            // 35
+                        throw new Error('Cant read the security rule definitions file: ' + file);                      // 35
+                                                                                                                       //
+                    case 14:                                                                                           // 35
+                        securityRules.forEach(function (rule) {                                                        // 50
+                            //check if the rule already exists in Sense                                                // 51
+                            if (!QSLic.getSystemRules(rule.name).length) {                                             // 52
+                                //if not exist, create it                                                              // 53
+                                var response = qrs.post('/qrs/SystemRule', null, rule);                                // 54
+                            } else {                                                                                   // 55
+                                console.log('Security rule "' + rule.name + '" already existed');                      // 56
+                            }                                                                                          // 57
+                        });                                                                                            // 58
+                                                                                                                       //
+                    case 15:                                                                                           // 35
+                    case "end":                                                                                        // 35
+                        return _context.stop();                                                                        // 35
+                }                                                                                                      // 35
+            }                                                                                                          // 35
+        }                                                                                                              // 35
+                                                                                                                       //
+        return createSecurityRules$;                                                                                   // 35
+    }(), null, this, [[7, 11]]);                                                                                       // 35
+}                                                                                                                      // 35
+                                                                                                                       //
+function stringToJSON(myString) {                                                                                      // 61
+    var myJSONString = JSON.stringify(myString);                                                                       // 62
+    var myEscapedJSONString = myJSONString.replace(/\\n/g, "\\n").replace(/\\'/g, "\\'").replace(/\\"/g, '\\"').replace(/\\&/g, "\\&").replace(/\\r/g, "\\r").replace(/\\t/g, "\\t").replace(/\\b/g, "\\b").replace(/\\f/g, "\\f");
+    console.log('myEscapedJSONString', myEscapedJSONString);                                                           // 72
+}                                                                                                                      // 73
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}},"APILogs.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/APILogs.js                                                                                              //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({                                                                                                        // 1
+    APILogs: function () {                                                                                             // 1
+        return APILogs;                                                                                                // 1
+    },                                                                                                                 // 1
+    REST_Log: function () {                                                                                            // 1
+        return REST_Log;                                                                                               // 1
+    }                                                                                                                  // 1
+});                                                                                                                    // 1
+var Mongo = void 0;                                                                                                    // 1
+module.watch(require("meteor/mongo"), {                                                                                // 1
+    Mongo: function (v) {                                                                                              // 1
+        Mongo = v;                                                                                                     // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var APILogs = new Mongo.Collection('apiLogs');                                                                         // 3
+                                                                                                                       //
+function REST_Log(call) {                                                                                              // 5
+    var userId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Not defined';                    // 5
+    call.createDate = new Date();                                                                                      // 6
+    call.generationUserId = userId;                                                                                    // 7
+                                                                                                                       //
+    if (Meteor.isServer) {                                                                                             // 8
+        APILogs.rawCollection().insert(call);                                                                          // 9
+    } else {                                                                                                           // 10
+        APILogs.insert(call);                                                                                          // 11
+    }                                                                                                                  // 12
+                                                                                                                       //
+    return;                                                                                                            // 13
+}                                                                                                                      // 15
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"apps.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/apps.js                                                                                                 //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({                                                                                                        // 1
+  Apps: function () {                                                                                                  // 1
+    return Apps;                                                                                                       // 1
+  },                                                                                                                   // 1
+  TemplateApps: function () {                                                                                          // 1
+    return TemplateApps;                                                                                               // 1
+  },                                                                                                                   // 1
+  GeneratedResources: function () {                                                                                    // 1
+    return GeneratedResources;                                                                                         // 1
+  }                                                                                                                    // 1
+});                                                                                                                    // 1
+var Mongo = void 0;                                                                                                    // 1
+module.watch(require("meteor/mongo"), {                                                                                // 1
+  Mongo: function (v) {                                                                                                // 1
+    Mongo = v;                                                                                                         // 1
+  }                                                                                                                    // 1
+}, 0);                                                                                                                 // 1
+var Apps = new Mongo.Collection('apps');                                                                               // 3
+var TemplateApps = new Mongo.Collection('templateApps');                                                               // 4
+var GeneratedResources = new Mongo.Collection('generatedResources');                                                   // 5
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"config.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/config.js                                                                                               //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var _regenerator = require("babel-runtime/regenerator");                                                               //
+                                                                                                                       //
+var _regenerator2 = _interopRequireDefault(_regenerator);                                                              //
+                                                                                                                       //
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }                      //
+                                                                                                                       //
+module.export({                                                                                                        // 1
+    senseConfig: function () {                                                                                         // 1
+        return senseConfig;                                                                                            // 1
+    },                                                                                                                 // 1
+    missingParameters: function () {                                                                                   // 1
+        return missingParameters;                                                                                      // 1
+    },                                                                                                                 // 1
+    compareKeys: function () {                                                                                         // 1
+        return compareKeys;                                                                                            // 1
+    }                                                                                                                  // 1
+});                                                                                                                    // 1
+var Mongo = void 0;                                                                                                    // 1
+module.watch(require("meteor/mongo"), {                                                                                // 1
+    Mongo: function (v) {                                                                                              // 1
+        Mongo = v;                                                                                                     // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var Random = void 0;                                                                                                   // 1
+module.watch(require("meteor/random"), {                                                                               // 1
+    Random: function (v) {                                                                                             // 1
+        Random = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 1);                                                                                                                 // 1
+                                                                                                                       //
+var _ = void 0;                                                                                                        // 1
+                                                                                                                       //
+module.watch(require("meteor/underscore"), {                                                                           // 1
+    "default": function (v) {                                                                                          // 1
+        _ = v;                                                                                                         // 1
+    }                                                                                                                  // 1
+}, 2);                                                                                                                 // 1
+                                                                                                                       //
+var _QIXSchema = require('/node_modules/enigma.js/schemas/qix/12.20.0/schema.json'); //This is the config that we need to make available on the client (the webpage)
+                                                                                                                       //
+                                                                                                                       //
+if (Meteor.isClient) {                                                                                                 // 11
+    var _senseConfig = {                                                                                               // 12
+        "host": Meteor.settings.public.host,                                                                           // 13
+        "port": Meteor.settings.public.port,                                                                           // 14
+        "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,                                     // 15
+        "virtualProxySlideGenerator": Meteor.settings.public.slideGenerator.virtualProxy,                              // 16
+        "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,                                       // 17
+        "QIXSchema": _QIXSchema //ssbi and slide generator app id are set automatically on main.js (client side, via a call to the server)
+        // config.SSBIAppId =                                                                                          // 20
+        // config.slideGeneratorAppId =                                                                                // 21
+                                                                                                                       //
+    };                                                                                                                 // 12
+} //SERVER SIDE                                                                                                        // 23
+                                                                                                                       //
+                                                                                                                       //
+if (Meteor.isServer) {                                                                                                 // 27
+    var validateJSON = function (body) {                                                                               // 27
+        try {                                                                                                          // 88
+            var data = JSON.parse(body); // if came to here, then valid                                                // 89
+                                                                                                                       //
+            return data;                                                                                               // 91
+        } catch (e) {                                                                                                  // 92
+            // failed to parse                                                                                         // 93
+            return null;                                                                                               // 94
+        }                                                                                                              // 95
+    };                                                                                                                 // 96
+                                                                                                                       //
+    var generateXrfkey = function () {                                                                                 // 27
+        return Random.hexString(16);                                                                                   // 171
+    }; // //https://www.npmjs.com/package/qrs                                                                          // 172
+    //HEADER AUTHENTICATION                                                                                            // 175
+                                                                                                                       //
+                                                                                                                       //
+    module.export({                                                                                                    // 1
+        authHeaders: function () {                                                                                     // 1
+            return authHeaders;                                                                                        // 1
+        },                                                                                                             // 1
+        _certs: function () {                                                                                          // 1
+            return _certs;                                                                                             // 1
+        },                                                                                                             // 1
+        configCerticates: function () {                                                                                // 1
+            return configCerticates;                                                                                   // 1
+        },                                                                                                             // 1
+        validateJSON: function () {                                                                                    // 1
+            return validateJSON;                                                                                       // 1
+        },                                                                                                             // 1
+        enigmaServerConfig: function () {                                                                              // 1
+            return enigmaServerConfig;                                                                                 // 1
+        },                                                                                                             // 1
+        engineConfig: function () {                                                                                    // 1
+            return engineConfig;                                                                                       // 1
+        },                                                                                                             // 1
+        qlikHDRServer: function () {                                                                                   // 1
+            return qlikHDRServer;                                                                                      // 1
+        },                                                                                                             // 1
+        qrsSrv: function () {                                                                                          // 1
+            return qrsSrv;                                                                                             // 1
+        },                                                                                                             // 1
+        qrs: function () {                                                                                             // 1
+            return qrs;                                                                                                // 1
+        },                                                                                                             // 1
+        QRSconfig: function () {                                                                                       // 1
+            return QRSconfig;                                                                                          // 1
+        }                                                                                                              // 1
+    });                                                                                                                // 1
+    var crypto = void 0;                                                                                               // 1
+    module.watch(require("crypto"), {                                                                                  // 1
+        "default": function (v) {                                                                                      // 1
+            crypto = v;                                                                                                // 1
+        }                                                                                                              // 1
+    }, 3);                                                                                                             // 1
+    var myQRS = void 0;                                                                                                // 1
+    module.watch(require("/imports/api/server/QRSAPI"), {                                                              // 1
+        myQRS: function (v) {                                                                                          // 1
+            myQRS = v;                                                                                                 // 1
+        }                                                                                                              // 1
+    }, 4);                                                                                                             // 1
+    console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.private);
+                                                                                                                       //
+    var fs = require('fs-extra');                                                                                      // 30
+                                                                                                                       //
+    var path = require('path'); // import fs from 'fs';                                                                // 31
+                                                                                                                       //
+                                                                                                                       //
+    var bluebird = require('bluebird');                                                                                // 36
+                                                                                                                       //
+    var WebSocket = require('ws');                                                                                     // 37
+                                                                                                                       //
+    var _senseConfig = {                                                                                               // 39
+        "host": Meteor.settings.public.host,                                                                           // 40
+        "SenseServerInternalLanIP": Meteor.settings.private.SenseServerInternalLanIP,                                  // 41
+        "port": Meteor.settings.public.port,                                                                           // 42
+        "useSSL": Meteor.settings.private.useSSL,                                                                      // 43
+        "xrfkey": generateXrfkey(),                                                                                    // 44
+        "virtualProxy": Meteor.settings.private.virtualProxy,                                                          // 45
+        //used to connect via REST to Sense, we authenticate via a http header. not for production!!!                  // 45
+        "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,                                     // 46
+        "headerKey": Meteor.settings.private.headerKey,                                                                // 47
+        "headerValue": process.env.USERDOMAIN + '\\' + process.env.USERNAME,                                           // 48
+        //"QLIK-AB0Q2URN5T\\Qlikexternal",                                                                             // 48
+        "isSecure": Meteor.settings.private.isSecure,                                                                  // 49
+        "qrsPort": Meteor.settings.private.qrsPort,                                                                    // 50
+        "enginePort": Meteor.settings.private.enginePort                                                               // 51
+    };                                                                                                                 // 39
+                                                                                                                       //
+    if (missingParameters(_senseConfig)) {                                                                             // 54
+        throw 'Missing parameters in _senseConfig, you did not populate the settings.json file in the project root of MeteorQRS, or with docker: did you mount the volume with the config including the settings.json file? (with the correct name)';
+    }                                                                                                                  // 56
+                                                                                                                       //
+    if (!_senseConfig.host) {                                                                                          // 58
+        throw new Meteor.Error('You have not started this meteor project with: meteor --settings settings-development.json ? You missed the reference to this settings file, or it is empty?');
+    } //CONFIG FOR HTTP MODULE WITH HEADER AUTH (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)                           // 60
+                                                                                                                       //
+                                                                                                                       //
+    var authHeaders = {                                                                                                // 63
+        'hdr-usr': _senseConfig.headerValue,                                                                           // 64
+        'X-Qlik-xrfkey': _senseConfig.xrfkey                                                                           // 65
+    };                                                                                                                 // 63
+    var _certs = {                                                                                                     // 68
+        ca: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/root.pem'),                              // 69
+        key: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client_key.pem'),                       // 70
+        cert: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client.pem')                           // 71
+    };                                                                                                                 // 68
+    var configCerticates = {                                                                                           // 74
+        rejectUnauthorized: false,                                                                                     // 75
+        hostname: _senseConfig.SenseServerInternalLanIP,                                                               // 76
+        headers: {                                                                                                     // 77
+            'x-qlik-xrfkey': _senseConfig.xrfkey,                                                                      // 78
+            'X-Qlik-User': "UserDirectory=" + process.env.USERDOMAIN + ";UserId=" + process.env.USERNAME,              // 79
+            //`UserDirectory=INTERNAL;UserId=sa_repository` you need to give this user extra roles before this works   // 79
+            'Content-Type': 'application/json'                                                                         // 80
+        },                                                                                                             // 77
+        key: _certs.key,                                                                                               // 82
+        cert: _certs.cert,                                                                                             // 83
+        ca: _certs.ca                                                                                                  // 84
+    };                                                                                                                 // 74
+    //https://nodejs.org/api/http.html#http_http_request_options_callback                                              // 98
+    // export var QRSCertConfig = {                                                                                    // 99
+    //     url: 'https://' + _senseConfig.SenseServerInternalLanIP,                                                    // 100
+    //     port: Meteor.settings.private.qrsPort, //4242,                                                              // 101
+    //     qrsPath: '/qrs/app',                                                                                        // 102
+    //     path: function() {                                                                                          // 103
+    //         if (qrsPath.includes('?')) {                                                                            // 104
+    //             return qrsPath + '&xrfkey=abcdefghijklmnop'                                                         // 105
+    //         } else {                                                                                                // 106
+    //             return qrsPath + '?xrfkey=abcdefghijklmnop'                                                         // 107
+    //         }                                                                                                       // 108
+    //     },                                                                                                          // 109
+    //     method: 'GET',                                                                                              // 110
+    //     agentOptions: {                                                                                             // 111
+    //         ca: _certs.ca,                                                                                          // 112
+    //         key: _certs.key,                                                                                        // 113
+    //         cert: _certs.cert                                                                                       // 114
+    //     },                                                                                                          // 115
+    //     headers: {                                                                                                  // 116
+    //         'x-qlik-xrfkey': 'abcdefghijklmnop',                                                                    // 117
+    //         'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,                // 118
+    //     }                                                                                                           // 119
+    // };                                                                                                              // 120
+    //used for engimaJS, the engine API javascript wrapper                                                             // 122
+    var _engineConfig = {                                                                                              // 123
+        host: _senseConfig.SenseServerInternalLanIP,                                                                   // 124
+        isSecure: _senseConfig.isSecure,                                                                               // 125
+        port: Meteor.settings.private.enginePort,                                                                      // 126
+        headers: {                                                                                                     // 127
+            'X-Qlik-User': "UserDirectory=" + process.env.USERDOMAIN + ";UserId=" + process.env.USERNAME               // 128
+        },                                                                                                             // 127
+        ca: _certs.ca,                                                                                                 // 130
+        key: _certs.key,                                                                                               // 131
+        cert: _certs.cert,                                                                                             // 132
+        passphrase: Meteor.settings.private.passphrase,                                                                // 133
+        rejectUnauthorized: false,                                                                                     // 134
+        // Don't reject self-signed certs                                                                              // 134
+        appname: null,                                                                                                 // 135
+        QIXSchema: _QIXSchema                                                                                          // 136
+    };                                                                                                                 // 123
+    var enigmaServerConfig = {                                                                                         // 139
+        schema: _engineConfig.QIXSchema,                                                                               // 140
+        // appId: appId,                                                                                               // 141
+        session: {                                                                                                     // 142
+            host: _engineConfig.host,                                                                                  // 143
+            port: _engineConfig.port                                                                                   // 144
+        },                                                                                                             // 142
+        Promise: bluebird,                                                                                             // 146
+        createSocket: function (url) {                                                                                 // 147
+            return new WebSocket(url, {                                                                                // 148
+                ca: _certs.ca,                                                                                         // 149
+                key: _certs.key,                                                                                       // 150
+                cert: _certs.cert,                                                                                     // 151
+                headers: {                                                                                             // 152
+                    'X-Qlik-User': "UserDirectory=" + process.env.USERDOMAIN + ";UserId=" + process.env.USERNAME       // 153
+                }                                                                                                      // 152
+            });                                                                                                        // 148
+        }                                                                                                              // 156
+    };                                                                                                                 // 139
+    var engineConfig = _engineConfig;                                                                                  // 161
+    var qlikHDRServer = 'http://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.port + '/' + _senseConfig.virtualProxy;
+    var qrsSrv = 'https://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.qrsPort;                      // 166
+    var qrs = new myQRS();                                                                                             // 168
+    var QRSconfig = {                                                                                                  // 176
+        authentication: 'header',                                                                                      // 177
+        host: _senseConfig.host,                                                                                       // 178
+        port: _senseConfig.port,                                                                                       // 179
+        useSSL: false,                                                                                                 // 180
+        virtualProxy: _senseConfig.virtualProxy,                                                                       // 181
+        //header proxy                                                                                                 // 181
+        headerKey: _senseConfig.headerKey,                                                                             // 182
+        headerValue: _senseConfig.headerValue //'mydomain\\justme'                                                     // 183
+                                                                                                                       //
+    };                                                                                                                 // 176
+    Meteor.startup(function () {                                                                                       // 187
+        function _callee() {                                                                                           // 187
+            var file, exampleSettingsFile, keysEqual;                                                                  // 187
+            return _regenerator2.default.async(function () {                                                           // 187
+                function _callee$(_context) {                                                                          // 187
+                    while (1) {                                                                                        // 187
+                        switch (_context.prev = _context.next) {                                                       // 187
+                            case 0:                                                                                    // 187
+                                console.log('------------------------------------');                                   // 188
+                                console.log('Validate settings.json parameters');                                      // 189
+                                console.log('------------------------------------');                                   // 190
+                                Meteor.absolutePath = path.resolve('.').split(path.sep + '.meteor')[0];                // 191
+                                console.log('Meteor tries to find the settings.json file in Meteor.absolutePath:', Meteor.absolutePath);
+                                file = path.join(Meteor.absolutePath, 'settings-development-example.json'); // READ THE FILE 
+                                                                                                                       //
+                                _context.next = 8;                                                                     // 187
+                                return _regenerator2.default.awrap(fs.readJson(file));                                 // 187
+                                                                                                                       //
+                            case 8:                                                                                    // 187
+                                exampleSettingsFile = _context.sent;                                                   // 196
+                                _context.prev = 9;                                                                     // 187
+                                validateJSON(exampleSettingsFile);                                                     // 198
+                                _context.next = 16;                                                                    // 187
+                                break;                                                                                 // 187
+                                                                                                                       //
+                            case 13:                                                                                   // 187
+                                _context.prev = 13;                                                                    // 187
+                                _context.t0 = _context["catch"](9);                                                    // 187
+                                throw new Error('Meteor wants to check your settings.json with the parameters in the example settings.json in the project root. Error: Cant read the example settings definitions file: ' + file);
+                                                                                                                       //
+                            case 16:                                                                                   // 187
+                                keysEqual = compareKeys(Meteor.settings, exampleSettingsFile);                         // 203
+                                                                                                                       //
+                                if (keysEqual) {                                                                       // 187
+                                    _context.next = 19;                                                                // 187
+                                    break;                                                                             // 187
+                                }                                                                                      // 187
+                                                                                                                       //
+                                throw new Meteor.Error('Settings file incomplete', "Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:UsersQlikexternalDocumentsGitHubQRSMeteor");
+                                                                                                                       //
+                            case 19:                                                                                   // 187
+                            case "end":                                                                                // 187
+                                return _context.stop();                                                                // 187
+                        }                                                                                              // 187
+                    }                                                                                                  // 187
+                }                                                                                                      // 187
+                                                                                                                       //
+                return _callee$;                                                                                       // 187
+            }(), null, this, [[9, 13]]);                                                                               // 187
+        }                                                                                                              // 187
+                                                                                                                       //
+        return _callee;                                                                                                // 187
+    }());                                                                                                              // 187
+} //exit server side config                                                                                            // 209
+                                                                                                                       //
+                                                                                                                       //
+var senseConfig = _senseConfig;                                                                                        // 211
+                                                                                                                       //
+function missingParameters(obj) {                                                                                      // 228
+    for (var key in meteorBabelHelpers.sanitizeForInObject(obj)) {                                                     // 229
+        if (obj[key] !== null && obj[key] != "") return false;                                                         // 230
+    }                                                                                                                  // 232
+                                                                                                                       //
+    return true;                                                                                                       // 233
+}                                                                                                                      // 234
+                                                                                                                       //
+function compareKeys(a, b) {                                                                                           // 236
+    var aKeys = Object.keys(a).sort();                                                                                 // 237
+    var bKeys = Object.keys(b).sort();                                                                                 // 238
+    return JSON.stringify(aKeys) === JSON.stringify(bKeys);                                                            // 239
+}                                                                                                                      // 240
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"customers.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/customers.js                                                                                            //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({                                                                                                        // 1
+    Customers: function () {                                                                                           // 1
+        return Customers;                                                                                              // 1
+    },                                                                                                                 // 1
+    dummyCustomer: function () {                                                                                       // 1
+        return dummyCustomer;                                                                                          // 1
+    },                                                                                                                 // 1
+    dummyCustomers: function () {                                                                                      // 1
+        return dummyCustomers;                                                                                         // 1
+    }                                                                                                                  // 1
+});                                                                                                                    // 1
+var Mongo = void 0;                                                                                                    // 1
+module.watch(require("meteor/mongo"), {                                                                                // 1
+    Mongo: function (v) {                                                                                              // 1
+        Mongo = v;                                                                                                     // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var Customers = new Mongo.Collection('customers');                                                                     // 2
+Meteor.methods({                                                                                                       // 4
+    updateUserForCustomer: function (updatedUser) {                                                                    // 5
+        var selection = {                                                                                              // 6
+            'generationUserId': Meteor.userId(),                                                                       // 7
+            'users.name': updatedUser.name                                                                             // 8
+        };                                                                                                             // 6
+        Customers.update(selection, {                                                                                  // 10
+            $set: {                                                                                                    // 11
+                'users.$': updatedUser                                                                                 // 11
+            }                                                                                                          // 11
+        });                                                                                                            // 11
+    }                                                                                                                  // 12
+});                                                                                                                    // 4
+Customers.attachSchema(new SimpleSchema({                                                                              // 15
+    name: {                                                                                                            // 16
+        type: String,                                                                                                  // 17
+        label: "Customer name"                                                                                         // 18
+    },                                                                                                                 // 16
+    checked: {                                                                                                         // 20
+        type: Boolean,                                                                                                 // 21
+        label: "Selected for the generation?",                                                                         // 22
+        optional: true,                                                                                                // 23
+        defaultValue: true                                                                                             // 24
+    },                                                                                                                 // 20
+    createdAt: {                                                                                                       // 26
+        type: Date,                                                                                                    // 27
+        label: "Date created",                                                                                         // 28
+        optional: true                                                                                                 // 29
+    },                                                                                                                 // 26
+    createdBy: {                                                                                                       // 31
+        type: Object,                                                                                                  // 32
+        label: "Date created",                                                                                         // 33
+        optional: true                                                                                                 // 34
+    },                                                                                                                 // 31
+    generationUserId: {                                                                                                // 36
+        type: String,                                                                                                  // 37
+        autoValue: function () {                                                                                       // 38
+            return this.userId;                                                                                        // 39
+        }                                                                                                              // 40
+    },                                                                                                                 // 36
+    users: {                                                                                                           // 42
+        type: [Object],                                                                                                // 43
+        optional: true                                                                                                 // 44
+    },                                                                                                                 // 42
+    "users.$": {                                                                                                       // 46
+        type: Object                                                                                                   // 47
+    },                                                                                                                 // 46
+    "users.$.name": {                                                                                                  // 49
+        type: String                                                                                                   // 50
+    },                                                                                                                 // 49
+    "users.$.group": {                                                                                                 // 52
+        type: String,                                                                                                  // 53
+        allowedValues: ['Consumer', 'Contributor', 'Developer', 'Admin', 'Global auditor']                             // 54
+    },                                                                                                                 // 52
+    "users.$.currentlyLoggedIn": {                                                                                     // 56
+        type: Boolean,                                                                                                 // 57
+        optional: true                                                                                                 // 58
+    },                                                                                                                 // 56
+    "users.$.country": {                                                                                               // 60
+        type: String,                                                                                                  // 61
+        allowedValues: ['Germany', 'United States', 'Italy']                                                           // 62
+    }                                                                                                                  // 60
+}));                                                                                                                   // 15
+var dummyCustomer = {                                                                                                  // 66
+    "name": faker.company.companyName(),                                                                               // 67
+    "checked": true,                                                                                                   // 68
+    "user": {                                                                                                          // 69
+        "name": 'John',                                                                                                // 70
+        "group": "Consumer",                                                                                           // 71
+        "currentlyLoggedIn": false,                                                                                    // 72
+        "country": "Germany"                                                                                           // 73
+    }                                                                                                                  // 69
+};                                                                                                                     // 66
+var dummyCustomers = [{                                                                                                // 77
+    "name": faker.company.companyName(),                                                                               // 78
+    "checked": true,                                                                                                   // 79
+    "users": [{                                                                                                        // 80
+        "name": 'John',                                                                                                // 81
+        "group": "Consumer",                                                                                           // 82
+        "currentlyLoggedIn": false,                                                                                    // 83
+        "country": "Germany"                                                                                           // 84
+    }, {                                                                                                               // 80
+        "name": 'Linda',                                                                                               // 86
+        "group": "Contributor",                                                                                        // 87
+        "currentlyLoggedIn": false,                                                                                    // 88
+        "country": "United States"                                                                                     // 89
+    }, {                                                                                                               // 85
+        "name": 'Martin',                                                                                              // 91
+        "group": "Developer",                                                                                          // 92
+        "currentlyLoggedIn": false,                                                                                    // 93
+        "country": "Italy"                                                                                             // 94
+    }, {                                                                                                               // 90
+        "name": 'Paul',                                                                                                // 96
+        "group": "Admin",                                                                                              // 97
+        "currentlyLoggedIn": false,                                                                                    // 98
+        "country": "Italy"                                                                                             // 99
+    }]                                                                                                                 // 95
+}, {                                                                                                                   // 77
+    "name": faker.company.companyName(),                                                                               // 102
+    "checked": true,                                                                                                   // 103
+    "users": [{                                                                                                        // 104
+        "name": faker.name.findName(),                                                                                 // 105
+        "group": "Consumer",                                                                                           // 106
+        "currentlyLoggedIn": false,                                                                                    // 107
+        "country": "Italy"                                                                                             // 108
+    }]                                                                                                                 // 104
+}, {                                                                                                                   // 101
+    "name": faker.company.companyName(),                                                                               // 111
+    "checked": true,                                                                                                   // 112
+    "users": [{                                                                                                        // 113
+        "name": faker.name.findName(),                                                                                 // 114
+        "group": "Consumer",                                                                                           // 115
+        "currentlyLoggedIn": false,                                                                                    // 116
+        "country": "Italy"                                                                                             // 117
+    }] // {                                                                                                            // 113
+    //     "name": "QPMG Accountants",                                                                                 // 121
+    //     "checked": true,                                                                                            // 122
+    //     "users": [{                                                                                                 // 123
+    //         "name": "Ron",                                                                                          // 124
+    //         "group": "Global Auditor",                                                                              // 125
+    //         "currentlyLoggedIn": false,                                                                             // 126
+    //         "country": "Italy"                                                                                      // 127
+    //     }]                                                                                                          // 128
+    // }                                                                                                               // 129
+    // { "name": "A&R Partners", "checked": true },                                                                    // 134
+    //     { "name": "A2Z Solutions", "checked": true },                                                               // 135
+    //     { "name": "Aaron D. Meyer & Associates", "checked": true },                                                 // 136
+    //     { "name": "Aaron Products", "checked": true },                                                              // 137
+    // { "name": "Active Data", "checked": true },                                                                     // 138
+    // { "name": "Ben and Jerry’s", "checked": true },                                                                 // 139
+    // { "name": "Benedict", "checked": true },                                                                        // 140
+    // { "name": "Bizmarts", "checked": true },                                                                        // 141
+    // { "name": "C & C  Design", "checked": true },                                                                   // 142
+    // { "name": "C & J Engineering", "checked": true },                                                               // 143
+    // { "name": "CAF Systemhaus", "checked": true },                                                                  // 144
+    // { "name": "CAM Group", "checked": true },                                                                       // 145
+    // { "name": "Caribian Specialties", "checked": true },                                                            // 146
+    // { "name": "City Fresh Foods", "checked": true },                                                                // 147
+    // { "name": "Clearout", "checked": true },                                                                        // 148
+    // { "name": "David Spencer Ltd.", "checked": true },                                                              // 149
+    // { "name": "Dayton Malleable Inc.", "checked": true },                                                           // 150
+    // { "name": "DCP Research", "checked": true },                                                                    // 151
+    // { "name": "DCS International", "checked": true },                                                               // 152
+    // { "name": "DCS Laboratory", "checked": true },                                                                  // 153
+    // { "name": "Deak-Perera Group.", "checked": true },                                                              // 154
+    // { "name": "Earth", "checked": true },                                                                           // 155
+    // { "name": "eDistrict", "checked": true },                                                                       // 156
+    // { "name": "EDP", "checked": true },                                                                             // 157
+    // { "name": "Ethyl Corporation", "checked": true },                                                               // 158
+    // { "name": "Federal Focus", "checked": true },                                                                   // 159
+    // { "name": "Fill It", "checked": true },                                                                         // 160
+    // { "name": "Filmotype", "checked": true },                                                                       // 161
+    // { "name": "Fins", "checked": true },                                                                            // 162
+    // { "name": "Gate", "checked": true },                                                                            // 163
+    // { "name": "Gulf and Western Industries", "checked": true },                                                     // 164
+    // { "name": "Harte-Hanks (formerly Locator)", "checked": true },                                                  // 165
+    // { "name": "Harvard Trust Company", "checked": true },                                                           // 166
+    // { "name": "HCHS", "checked": true },                                                                            // 167
+    // { "name": "Healtheon", "checked": true },                                                                       // 168
+    // { "name": "Hetrick Systems", "checked": true },                                                                 // 169
+    // { "name": "Home Team", "checked": true },                                                                       // 170
+    // { "name": "Homebound", "checked": true },                                                                       // 171
+    // { "name": "IBVA", "checked": true },                                                                            // 172
+    // { "name": "Icon", "checked": true },                                                                            // 173
+    // { "name": "Icon Site Builders", "checked": true },                                                              // 174
+    // { "name": "Idyllwild", "checked": true },                                                                       // 175
+    // { "name": "J. S. Lee Associates", "checked": true },                                                            // 176
+    // { "name": "K International", "checked": true },                                                                 // 177
+    // { "name": "K.C. Irving", "checked": true },                                                                     // 178
+    // { "name": "Kari & Associates", "checked": true },                                                               // 179
+    // { "name": "Karsing", "checked": true },                                                                         // 180
+    // { "name": "Kazinformcom", "checked": true },                                                                    // 181
+    // { "name": "KentISP", "checked": true },                                                                         // 182
+    // { "name": "Kool-Seal", "checked": true },                                                                       // 183
+    // { "name": "Laker Airways", "checked": true },                                                                   // 184
+    // { "name": "Livermore  Laboratories (LSLI)", "checked": true },                                                  // 185
+    // { "name": "LiveWire BBS and   Favourite Links", "checked": true },                                              // 186
+    // { "name": "MATRIX", "checked": true },                                                                          // 187
+    // { "name": "Miles Laboratories, Inc.", "checked": true },                                                        // 188
+    // { "name": "NACSCORP", "checked": true },                                                                        // 189
+    // { "name": "Onestar", "checked": true },                                                                         // 190
+    // { "name": "Pace", "checked": true },                                                                            // 191
+    // { "name": "Pacific Group", "checked": true },                                                                   // 192
+    // { "name": "Pacific Matics", "checked": true },                                                                  // 193
+    // { "name": "Pacific Sierra Research", "checked": true },                                                         // 194
+    // { "name": "Pacific Voice", "checked": true },                                                                   // 195
+    // { "name": "Pacific West Enterprises", "checked": true },                                                        // 196
+    // { "name": "PacificServ", "checked": true },                                                                     // 197
+    // { "name": "Panngea", "checked": true },                                                                         // 198
+    // { "name": "PAP (Maintenance)", "checked": true },                                                               // 199
+    // { "name": "Paracel", "checked": true },                                                                         // 200
+    // { "name": "Patient", "checked": true },                                                                         // 201
+    // { "name": "Pinnacle Micro", "checked": true },                                                                  // 202
+    // { "name": "QualServe", "checked": true },                                                                       // 203
+    // { "name": "Quantum 4Xyte  Architects", "checked": true },                                                       // 204
+    // { "name": "Qwest", "checked": true },                                                                           // 205
+    // { "name": "R&R Group", "checked": true },                                                                       // 206
+    // { "name": "R.J. Matter & Associates", "checked": true },                                                        // 207
+    // { "name": "Ra Co Amo", "checked": true },                                                                       // 208
+    // { "name": "RC", "checked": true },                                                                              // 209
+    // { "name": "Ready-to-Run", "checked": true },                                                                    // 210
+    // { "name": "Remedy", "checked": true },                                                                          // 211
+    // { "name": "Renegade info Crew", "checked": true },                                                              // 212
+    // { "name": "Reuters Usability Group", "checked": true },                                                         // 213
+    // { "name": "ReviewBooth", "checked": true },                                                                     // 214
+    // { "name": "RFI Corporation", "checked": true },                                                                 // 215
+    // { "name": "Road Warrior International", "checked": true },                                                      // 216
+    // { "name": "Robust Code", "checked": true },                                                                     // 217
+    // { "name": "Sage", "checked": true },                                                                            // 218
+    // { "name": "Sagent", "checked": true },                                                                          // 219
+    // { "name": "Salamander Junction", "checked": true },                                                             // 220
+    // { "name": "Satronix", "checked": true },                                                                        // 221
+    // { "name": "Satyam", "checked": true },                                                                          // 222
+    // { "name": "Scientific Atlanta", "checked": true },                                                              // 223
+    // { "name": "ScotGold Products", "checked": true },                                                               // 224
+    // { "name": "Screen Saver.com", "checked": true },                                                                // 225
+    // { "name": "Sifton Properties Limited", "checked": true },                                                       // 226
+    // { "name": "Sigma", "checked": true },                                                                           // 227
+    // { "name": "Signature", "checked": true },                                                                       // 228
+    // { "name": "SignatureFactory", "checked": true },                                                                // 229
+    // { "name": "Soloman Brothers", "checked": true },                                                                // 230
+    // { "name": "Southern Company", "checked": true },                                                                // 231
+    // { "name": "Stone Consolidated Corporation", "checked": true },                                                  // 232
+    // { "name": "Talou", "checked": true },                                                                           // 233
+    // { "name": "Tampere", "checked": true },                                                                         // 234
+    // { "name": "Tandy Corporation", "checked": true },                                                               // 235
+    // { "name": "Tangent", "checked": true },                                                                         // 236
+    // { "name": "Tao Group", "checked": true },                                                                       // 237
+    // { "name": "Target Marketing", "checked": true },                                                                // 238
+    // { "name": "Team ASA", "checked": true },                                                                        // 239
+    // { "name": "Team Financial Management Systems", "checked": true },                                               // 240
+    // { "name": "Teca-Print", "checked": true },                                                                      // 241
+    // { "name": "Time Warner", "checked": true },                                                                     // 242
+    // { "name": "Towmotor Corporation", "checked": true },                                                            // 243
+    // { "name": "Tredegar Company", "checked": true },                                                                // 244
+    // { "name": "Trend Line Corporation", "checked": true },                                                          // 245
+    // { "name": "U. S. Exchange", "checked": true },                                                                  // 246
+    // { "name": "Unison Management Concepts", "checked": true },                                                      // 247
+    // { "name": "United States  (USIT)", "checked": true },                                                           // 248
+    // { "name": "UUmail", "checked": true },                                                                          // 249
+    // { "name": "ValiCert", "checked": true },                                                                        // 250
+    // { "name": "Valley  Solutions", "checked": true },                                                               // 251
+    // { "name": "Valpatken", "checked": true },                                                                       // 252
+    // { "name": "Vanstar", "checked": true },                                                                         // 253
+    // { "name": "Venable", "checked": true },                                                                         // 254
+    // { "name": "Venred", "checked": true },                                                                          // 255
+    // { "name": "Watcom International", "checked": true },                                                            // 256
+    // { "name": "Xentec", "checked": true },                                                                          // 257
+    // { "name": "Xilinx", "checked": true },                                                                          // 258
+    // { "name": "XVT", "checked": true },                                                                             // 259
+    // { "name": "Zero Assumption Recovery", "checked": true },                                                        // 260
+    // { "name": "Zilog", "checked": true },                                                                           // 261
+    // { "name": "Zitel", "checked": true },                                                                           // 262
+                                                                                                                       //
+}];                                                                                                                    // 110
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"streams.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/api/streams.js                                                                                              //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({                                                                                                        // 1
+  Streams: function () {                                                                                               // 1
+    return Streams;                                                                                                    // 1
+  }                                                                                                                    // 1
+});                                                                                                                    // 1
+var Mongo = void 0;                                                                                                    // 1
+module.watch(require("meteor/mongo"), {                                                                                // 1
+  Mongo: function (v) {                                                                                                // 1
+    Mongo = v;                                                                                                         // 1
+  }                                                                                                                    // 1
+}, 0);                                                                                                                 // 1
+var Streams = new Mongo.Collection('streams');                                                                         // 3
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}},"startup":{"accounts-config.js":function(){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/startup/accounts-config.js                                                                                  //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+AccountsTemplates.configure({                                                                                          // 2
+    // Behavior                                                                                                        // 3
+    confirmPassword: false,                                                                                            // 4
+    enablePasswordChange: true,                                                                                        // 5
+    forbidClientAccountCreation: false,                                                                                // 6
+    overrideLoginErrors: true,                                                                                         // 7
+    sendVerificationEmail: false,                                                                                      // 8
+    lowercaseUsername: false,                                                                                          // 9
+    focusFirstInput: true,                                                                                             // 10
+    // Appearance                                                                                                      // 12
+    showAddRemoveServices: false,                                                                                      // 13
+    showForgotPasswordLink: false,                                                                                     // 14
+    showLabels: true,                                                                                                  // 15
+    showPlaceholders: true,                                                                                            // 16
+    showResendVerificationEmailLink: false,                                                                            // 17
+    // Client-side Validation                                                                                          // 19
+    continuousValidation: false,                                                                                       // 20
+    negativeFeedback: false,                                                                                           // 21
+    negativeValidation: true,                                                                                          // 22
+    positiveValidation: true,                                                                                          // 23
+    positiveFeedback: true,                                                                                            // 24
+    showValidating: true,                                                                                              // 25
+    // // Privacy Policy and Terms of Use                                                                              // 27
+    // privacyUrl: 'privacy',                                                                                          // 28
+    // termsUrl: 'terms-of-use',                                                                                       // 29
+    // Redirects                                                                                                       // 31
+    homeRoutePath: '/',                                                                                                // 32
+    redirectTimeout: 4000,                                                                                             // 33
+    // // Hooks                                                                                                        // 35
+    // onLogoutHook: myLogoutFunc,                                                                                     // 36
+    // onSubmitHook: mySubmitFunc,                                                                                     // 37
+    // preSignUpHook: myPreSubmitFunc,                                                                                 // 38
+    // postSignUpHook: myPostSubmitFunc,                                                                               // 39
+    // Texts                                                                                                           // 41
+    texts: {                                                                                                           // 42
+        button: {                                                                                                      // 43
+            signUp: "Register now to start using the Qlik Sense SaaS demo"                                             // 44
+        },                                                                                                             // 43
+        socialSignUp: "Register",                                                                                      // 46
+        socialIcons: {                                                                                                 // 47
+            "meteor-developer": "fa fa-rocket"                                                                         // 48
+        },                                                                                                             // 47
+        title: {                                                                                                       // 50
+            forgotPwd: "Recover Your Password"                                                                         // 51
+        }                                                                                                              // 50
+    }                                                                                                                  // 42
+});                                                                                                                    // 2
+AccountsTemplates.configureRoute('signIn');                                                                            // 56
+AccountsTemplates.configureRoute('changePwd'); // AccountsTemplates.configureRoute('enrollAccount');                   // 57
+// AccountsTemplates.configureRoute('forgotPwd');                                                                      // 59
+// AccountsTemplates.configureRoute('resetPwd');                                                                       // 60
+                                                                                                                       //
+AccountsTemplates.configureRoute('signUp');                                                                            // 61
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}},"ui":{"UIHelpers.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/ui/UIHelpers.js                                                                                             //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({                                                                                                        // 1
+    gitHubLinks: function () {                                                                                         // 1
+        return gitHubLinks;                                                                                            // 1
+    }                                                                                                                  // 1
+});                                                                                                                    // 1
+var Apps = void 0,                                                                                                     // 1
+    TemplateApps = void 0;                                                                                             // 1
+module.watch(require("/imports/api/apps"), {                                                                           // 1
+    Apps: function (v) {                                                                                               // 1
+        Apps = v;                                                                                                      // 1
+    },                                                                                                                 // 1
+    TemplateApps: function (v) {                                                                                       // 1
+        TemplateApps = v;                                                                                              // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var Streams = void 0;                                                                                                  // 1
+module.watch(require("/imports/api/streams"), {                                                                        // 1
+    Streams: function (v) {                                                                                            // 1
+        Streams = v;                                                                                                   // 1
+    }                                                                                                                  // 1
+}, 1);                                                                                                                 // 1
+var Customers = void 0;                                                                                                // 1
+module.watch(require("/imports/api/customers"), {                                                                      // 1
+    Customers: function (v) {                                                                                          // 1
+        Customers = v;                                                                                                 // 1
+    }                                                                                                                  // 1
+}, 2);                                                                                                                 // 1
+var senseConfig = void 0;                                                                                              // 1
+module.watch(require("/imports/api/config"), {                                                                         // 1
+    senseConfig: function (v) {                                                                                        // 1
+        senseConfig = v;                                                                                               // 1
+    }                                                                                                                  // 1
+}, 3);                                                                                                                 // 1
+var gitHubLinks = {                                                                                                    // 17
+    createStream: 'https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsStream.js#L53',       // 18
+    copyApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L175",              // 19
+    replaceAndReloadApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L69",   // 20
+    publishApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L281",           // 21
+    requestTicket: "https://github.com/QHose/QRSMeteor/blob/50bf903dc67d8d1b3757b572e8b2dedbb63202da/imports/api/server/QPSFunctions.js#L213",
+    createPasport: "https://github.com/QHose/QRSMeteor/blob/50bf903dc67d8d1b3757b572e8b2dedbb63202da/imports/api/server/QPSFunctions.js#L56",
+    redirectURLReceived: "https://github.com/QHose/QRSMeteor/blob/master/imports/SSO/client/SSO.js#L88",               // 24
+    deleteApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L263",            // 25
+    logoutUser: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L174",              // 26
+    saveApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L127",              // 27
+    getScript: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L94",             // 28
+    setScript: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L106",            // 29
+    reloadApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L119"             // 30
+};                                                                                                                     // 17
+                                                                                                                       //
+if (Meteor.isClient) {                                                                                                 // 33
+    var freshEnvironment = function () {                                                                               // 33
+        if (!Customers.find().count() && !TemplateApps.find().count()) {                                               // 253
+            // Session.set('currentStep', 0);                                                                          // 254
+            return true;                                                                                               // 255
+        }                                                                                                              // 256
+    };                                                                                                                 // 257
+                                                                                                                       //
+    var currentStep = function () {                                                                                    // 33
+        // console.log('the current step session', Session.get('currentStep'));//                                      // 289
+        //step 0: fresh/resetted environment                                                                           // 291
+        if (freshEnvironment()) {                                                                                      // 292
+            return 0;                                                                                                  // 293
+        } //step 1 insert customers                                                                                    // 294
+        else if (Session.get('currentStep') === 1) {                                                                   // 292
+                Router.go('users');                                                                                    // 297
+                return 1;                                                                                              // 298
+            } //step 2 there are customers, but no template                                                            // 299
+            else if ( // (Customers.find().count() && !TemplateApps.find().count()) &&                                 // 296
+                Session.get('currentStep') === 2) {                                                                    // 303
+                    return 2;                                                                                          // 304
+                } //step 3                                                                                             // 305
+                else if ( // Customers.find().count() &&                                                               // 301
+                    // TemplateApps.find().count() &&                                                                  // 309
+                    Session.get('currentStep') === 3 && !Session.equals('loadingIndicator', 'loading')) {              // 310
+                        // console.log('loading indicator is ', Session.get('loadingIndicator') )                      // 312
+                        return 3;                                                                                      // 313
+                    } //step 4                                                                                         // 314
+                    else if (Session.get('currentStep') === 4 // &&                                                    // 307
+                        // Customers.find().count() &&                                                                 // 319
+                        // TemplateApps.find().count()                                                                 // 320
+                        ) {                                                                                            // 316
+                                return 4;                                                                              // 322
+                            } else if (Session.equals('loadingIndicator', 'loading')) {                                // 323
+                            return;                                                                                    // 324
+                        } else {                                                                                       // 325
+                            Session.set('currentStep', 3);                                                             // 326
+                            return 3;                                                                                  // 327
+                        }                                                                                              // 328
+    };                                                                                                                 // 329
+                                                                                                                       //
+    module.export({                                                                                                    // 1
+        freshEnvironment: function () {                                                                                // 1
+            return freshEnvironment;                                                                                   // 1
+        },                                                                                                             // 1
+        currentStep: function () {                                                                                     // 1
+            return currentStep;                                                                                        // 1
+        }                                                                                                              // 1
+    });                                                                                                                // 1
+                                                                                                                       //
+    var Cookies = require('js-cookie'); // console.log('Setup generic helper functions, for functions every template needs');
+                                                                                                                       //
+                                                                                                                       //
+    Template.registerHelper('formatDate', function (date) {                                                            // 37
+        return moment(date).format('DD-MM-YYYY');                                                                      // 38
+    }); // // Template.registerHelper('formatNumber', function(myNumber) {                                             // 40
+    //     var commaFormat = d3.format(",");                                                                           // 43
+    //     // The expression /,/g is a regular expression that matches all commas.                                     // 44
+    //     return commaFormat(myNumber)                                                                                // 45
+    //         .replace(/,/g, ".");                                                                                    // 46
+    // });                                                                                                             // 47
+                                                                                                                       //
+    Template.registerHelper('URL_Youtube_howToDemo', function () {                                                     // 49
+        return 'https://www.youtube.com/embed/OulQS-1fH-A?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';                    // 50
+    });                                                                                                                // 51
+    Template.registerHelper('URL_Youtube_quickIntro', function () {                                                    // 52
+        return '';                                                                                                     // 53
+    });                                                                                                                // 54
+    Template.registerHelper('URL_Youtube_1mflashyIntro', function () {                                                 // 56
+        return 'https://www.youtube.com/embed/W3gDKdv6K8Y';                                                            // 57
+    });                                                                                                                // 58
+    Template.registerHelper('URL_Youtube_playlist', function () {                                                      // 60
+        return 'https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk';                             // 61
+    });                                                                                                                // 62
+    Template.registerHelper('URL_Youtube_integrated_flow', function () {                                               // 63
+        return "https://www.youtube.com/embed/M49nv6on5Eg?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";                    // 64
+    });                                                                                                                // 65
+    Template.registerHelper('URL_Youtube_generic_security_intro', function () {                                        // 67
+        return "https://www.youtube.com/embed/sdCVsMzTf64";                                                            // 68
+    });                                                                                                                // 69
+    Template.registerHelper('URL_Youtube_webintegration_introduction', function () {                                   // 72
+        return "https://www.youtube.com/embed/zuNvZ_UTmow?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";                    // 73
+    }); //QAP                                                                                                          // 74
+                                                                                                                       //
+    Template.registerHelper('URL_Youtube_webintegration_extended', function () {                                       // 77
+        return "https://www.youtube.com/embed/yLTqzftDa7s";                                                            // 78
+    });                                                                                                                // 79
+    Template.registerHelper('URL_Youtube_architecture_introduction', function () {                                     // 81
+        return "https://www.youtube.com/embed/sv5nKDvmRPI?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";                    // 82
+    });                                                                                                                // 83
+    Template.registerHelper('URL_Youtube_security_introduction', function () {                                         // 85
+        return "https://www.youtube.com/embed/XJ9dOHoMiXE?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk";                    // 86
+    });                                                                                                                // 87
+    Template.registerHelper('URL_Youtube_security_deepDive', function () {                                             // 89
+        return "https://www.youtube.com/embed/iamo6RLc5Pg";                                                            // 90
+    });                                                                                                                // 91
+    Template.registerHelper('URL_Youtube_concept_behind', function () {                                                // 93
+        return "https://www.youtube.com/embed/1PjcTFnC4Mo";                                                            // 94
+    });                                                                                                                // 95
+    Template.registerHelper('doc_demo_manual', function () {                                                           // 97
+        return '/docs/How to demo the Qlik Sense SaaS demo platform.pdf';                                              // 98
+    });                                                                                                                // 99
+    Template.registerHelper('doc_sec_function_task_matrix', function () {                                              // 101
+        return '/docs/QlikSense Authorizations - Function and Tasks_Demo.xlsx';                                        // 102
+    });                                                                                                                // 103
+    Template.registerHelper('doc_securtityIntegration', function () {                                                  // 105
+        return 'https://community.qlik.com/docs/DOC-17599';                                                            // 106
+    });                                                                                                                // 107
+    Template.registerHelper('doc_processIntegration', function () {                                                    // 108
+        return 'https://community.qlik.com/docs/DOC-17831';                                                            // 109
+    });                                                                                                                // 110
+    Template.registerHelper('doc_integrationOverview', function () {                                                   // 113
+        return 'https://community.qlik.com/docs/DOC-9533';                                                             // 114
+    });                                                                                                                // 115
+    Template.registerHelper('doc_sourceCode', function () {                                                            // 117
+        return '/docs/Qlik Sense SaaS demo tool documentation of source code.docx';                                    // 118
+    });                                                                                                                // 119
+    Template.registerHelper('doc_demo_setup_instructions', function () {                                               // 121
+        return '/docs/Qlik Sense SaaS demo tool setup instructions.docx';                                              // 122
+    });                                                                                                                // 123
+    Template.registerHelper('doc_webIntegration', function () {                                                        // 125
+        return 'https://community.qlik.com/docs/DOC-17834';                                                            // 126
+    });                                                                                                                // 127
+    Template.registerHelper('doc_dataIntegration', function () {                                                       // 128
+        return 'https://onedrive.live.com/view.aspx?cid=0805405928a75727&id=documents&resid=805405928A75727%211330&app=OneNote&authkey=!ANwk5S8KPC__-dw&&wd=target%28%2F%2FEMBEDDED%20ANALYTICS.one%7Cbf2972be-48a0-46fa-af7a-f6d2f80cf06b%2FData%20integration%20Combine%20sources%20into%20one%20associative%20model%7Ce669a0a2-9a83-470e-aae8-ba63ac500038%2F%29';
+    });                                                                                                                // 130
+    Template.registerHelper('seq_ticketing_flow', function () {                                                        // 132
+        return "http://knsv.github.io/mermaid/live_editor/#/view/c2VxdWVuY2VEaWFncmFtCkJyb3dzZXItPj5NZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IFVzZXIgbG9ncyBpbiBpbnRvIE1ldGVvciAKQnJvd3Nlci0-PiBQcm94eTogSUZyYW1lIHRyaWVzIHRvIG9wZW4gU2Vuc2UgY29udGVudCB2aWEgbGluayB0aGF0IGNvbnRhaW5zIC9wcm94eS8KUHJveHktPj5NZXRlb3IgU1NPIGNsaWVudDogUmVkaXJlY3QgcmVxdWVzdCB0byB3ZWJwYWdlIG9uIHRoZSBjbGllbnQgKGNsaWVudCBzaWRlIHJvdXRlKS4KCk5vdGUgcmlnaHQgb2YgUHJveHk6IFByb3h5IGFsc28gaW5jbHVkZXMgdGFyZ2V0SWQgPSA8SUQgZm9yIHRoZSBvcmlnaW5hbCBVUkkgdGhhdCB0aGUgdXNlciB0cmllcyB0byBhY2Nlc3M-LCBhbmQgcHJveHlSZXN0VXJpID0gPHRoZSBVUkkgd2hlcmUgdGhlIGF1dGhlbnRpY2F0aW9uIG1vZHVsZSBjYW4gYWNjZXNzIHRoZSBSRVNUIEFQST4KTWV0ZW9yIFNTTyBjbGllbnQtPk1ldGVvciBzZXJ2ZXI6ICBjbGllbnQgY2FsbHMgKHVzZXIgYXdhcmUpIHNlcnZlciBzaWRlIG1ldGhvZApOb3RlIHJpZ2h0IG9mIE1ldGVvciBzZXJ2ZXI6IFNpbmNlIHRoZSB1c2VyIGlzIGFscmVhZHkgbG9nZ2VkIGluIGluIE1ldGVvciwgd2UgY2FuIHJlcXVlc3QgdGhlIHVzZXJJRCBhbmQgZ3JvdXAgbWVtYmVyc2hpcCBmcm9tIHRoZSBNZXRlb3Igc2Vzc2lvbi4gVHJ1c3QgbWVjaGFuaXNtOiBTZXJ2ZXIgaW1wb3J0ZWQgUWxpayBTZW5zZSBjbGllbnQgY2VydGlmaWNhdGUuCk1ldGVvciBzZXJ2ZXItPj5RUFMgQVBJOiBSZXF1ZXN0IHRpY2tldCBhdCBRUFMgQVBJLCBwcm92aWRlIHRoZSB1c2VySWQgYW5kIGdyb3VwcyBpbiBKU09OLgpOb3RlIHJpZ2h0IG9mIE1ldGVvciBzZXJ2ZXI6IE9wdGlvbmFsbHkgaW5jbHVkZSB0aGUgcmVkaXJlY3QgcGFyYW1ldGVyIHRvIGZvcndhcmQgdGhlIHVzZXIgYmFjayB0byB0aGUgcGFnZSBoZSBpbml0aWFsbHkgdHJpZWQgdG8gYWNjZXNzLgpRUFMgQVBJLS0-Pk1ldGVvciBzZXJ2ZXI6IFFQUyBBUEkgcmV0dXJucyBhIHRpY2tldCBudW1iZXIgKGFuZCBwb3NzaWJseSByZWRpcmVjdCBVUkwpIHdoaWNoIHlvdSBoYXZlIHRvIGFwcGVuZCBpbiB0aGUgVVJMIApNZXRlb3Igc2VydmVyLS0-PiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IENyZWF0ZSBhIHJlZGlyZWN0IFVSTCB3aGljaCB0aGUgY2xpZW50IGNvZGUgY2FuIHB1dCBpbiB0aGUgYnJvd3NlciBVUkwgYmFyLiAKTm90ZSByaWdodCBvZiBNZXRlb3Igd2ViIGludGVncmF0aW9uIGRlbW86IENsaWVudCBzaWRlIGNvZGUsIHJlcGxhY2VzIHRoZSB1cmwgaW4gYnJvd3NlciwgYW5kIGZvcndhcmRzIHRoZSB1c2VyIHRvIFFsaWsgU2Vuc2UuIFVzZXIgbm93IHJlY2VpdmVzIGEgUWxpayBTZW5zZSBzZXNzaW9uIGNvb2tpZSAoc2VlIHZpcnR1YWwgcHJveHkgY29uZmlnKSwgYW5kIGFuZCBzdWNoIHNpbmdsZSBzaWduIG9uIGlzIGNvbmZpZ3VyZWQu";
+    });                                                                                                                // 134
+    Template.registerHelper('github_create_stream', function () {                                                      // 136
+        return gitHubLinks.createStream;                                                                               // 137
+    });                                                                                                                // 138
+    Template.registerHelper('github_copy_app', function () {                                                           // 140
+        return gitHubLinks.copyApp;                                                                                    // 141
+    });                                                                                                                // 142
+    Template.registerHelper('github_replace_and_reload_app', function () {                                             // 144
+        return gitHubLinks.replaceAndReloadApp;                                                                        // 145
+    });                                                                                                                // 146
+    Template.registerHelper('github_publish_app', function () {                                                        // 148
+        return gitHubLinks.publishApp;                                                                                 // 149
+    });                                                                                                                // 150
+    Template.registerHelper('github_logout_user', function () {                                                        // 152
+        return "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L18";                // 153
+    });                                                                                                                // 154
+    Template.registerHelper('senseServerHub', function () {                                                            // 156
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/hub';
+    });                                                                                                                // 158
+    Template.registerHelper('senseServerDevHub', function () {                                                         // 160
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/dev-hub';
+    });                                                                                                                // 162
+    Template.registerHelper('senseServerQMC', function () {                                                            // 164
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/qmc';
+    });                                                                                                                // 166
+    Template.registerHelper('senseServer', function () {                                                               // 168
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage;      // 169
+    });                                                                                                                // 170
+    Template.registerHelper('webIntegrationDemo', function () {                                                        // 172
+        return 'http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort;
+    }); //Integration presentation Iframe selector                                                                     // 174
+                                                                                                                       //
+    Template.registerHelper('IFrameURLChapterSelection', function () {                                                 // 177
+        var appId = Cookies.get('slideGeneratorAppId'); //senseConfig.slideGeneratorAppId;                             // 178
+                                                                                                                       //
+        var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
+                                                                                                                       //
+        var proxy = Meteor.settings.public.slideGenerator.virtualProxy;                                                // 180
+        return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';
+    }); // Template.registerHelper('authenticatedSlideGenerator', function() {                                         // 182
+    //     return Session.get('authenticatedSlideGenerator');                                                          // 185
+    // });                                                                                                             // 186
+                                                                                                                       //
+    Template.registerHelper('shrinkForSlideSorter', function () {                                                      // 188
+        return Cookies.get('showSlideSorter') === "true" ? "shrink" : ""; //                                           // 189
+    });                                                                                                                // 190
+    Template.registerHelper('groupSelectedSlideGenerator', function () {                                               // 192
+        return Session.get('groupForPresentation'); //user selected a presentation type?                               // 193
+    }); //role that defines your role in the whole integration.qlik.com site, based on this we make selections in the slide generator.
+                                                                                                                       //
+    Template.registerHelper('mainUserRole', function () {                                                              // 197
+        return Cookies.get('currentMainRole');                                                                         // 198
+    });                                                                                                                // 199
+    Template.registerHelper('isSelected', function () {                                                                // 201
+        return someValue ? 'selected' : '';                                                                            // 202
+    });                                                                                                                // 203
+    Template.registerHelper('customers', function () {                                                                 // 205
+        return Customers.find({});                                                                                     // 206
+    }); //used for Aldeed autoform                                                                                     // 207
+                                                                                                                       //
+    Template.registerHelper("Customers", Customers);                                                                   // 210
+    Template.registerHelper('noCustomers', function () {                                                               // 212
+        return !Customers.find({}).count();                                                                            // 213
+    });                                                                                                                // 215
+    Template.registerHelper('noTemplateApps', function () {                                                            // 217
+        return !TemplateApps.find({}).count();                                                                         // 218
+    }); //generic helpers to return the collection to the blaze template                                               // 220
+                                                                                                                       //
+    Template.registerHelper('customersCollection', function () {                                                       // 223
+        return Customers.find({}, {                                                                                    // 224
+            sort: {                                                                                                    // 225
+                checked: -1                                                                                            // 226
+            }                                                                                                          // 225
+        });                                                                                                            // 224
+    });                                                                                                                // 229
+    Template.registerHelper('templateAppsCollection', function () {                                                    // 231
+        return TemplateApps.find();                                                                                    // 232
+    });                                                                                                                // 233
+    Template.registerHelper('appsCollection', function () {                                                            // 235
+        return Apps.find();                                                                                            // 236
+    });                                                                                                                // 237
+    Template.registerHelper('streamsCollection', function () {                                                         // 239
+        return Streams.find();                                                                                         // 240
+    });                                                                                                                // 241
+    Template.registerHelper('freshEnvironment', function () {                                                          // 243
+        return freshEnvironment();                                                                                     // 244
+    });                                                                                                                // 245
+    Template.registerHelper('loading', function () {                                                                   // 247
+        // console.log('loading indicator in helper is: ', Session.get('loadingIndicator'));                           // 248
+        return Session.get('loadingIndicator');                                                                        // 249
+    });                                                                                                                // 250
+    ;                                                                                                                  // 257
+    Template.registerHelper('readyToSelectTemplate', function () {                                                     // 259
+        return currentStep() === 2;                                                                                    // 260
+    });                                                                                                                // 261
+    Template.registerHelper('templateButNoCustomer', function () {                                                     // 263
+        return !Customers.find().count() && TemplateApps.find().count();                                               // 264
+    });                                                                                                                // 267
+    Template.registerHelper('readyToGenerate', function () {                                                           // 269
+        return currentStep() === 3 && !Session.equals('loadingIndicator', 'loading');                                  // 270
+    });                                                                                                                // 271
+    Template.registerHelper('step3', function () {                                                                     // 273
+        return Session.get('currentStep') === 3;                                                                       // 274
+    });                                                                                                                // 275
+    Template.registerHelper('step3or4', function () {                                                                  // 277
+        return Session.get('currentStep') === 3 || Session.get('currentStep') === 4 || Session.equals('loadingIndicator', 'loading');
+    });                                                                                                                // 281
+    Template.registerHelper('stepEqualTo', function (stepNr) {                                                         // 283
+        // console.log('value of currentStep() ', currentStep());                                                      // 284
+        return currentStep() === stepNr;                                                                               // 285
+    });                                                                                                                // 286
+    Template.registerHelper('generationFinished', function () {                                                        // 331
+        return Session.equals('loadingIndicator', 'loading') || Session.get('generated?');                             // 332
+    });                                                                                                                // 333
+    Template.registerHelper('readyToTestSSO', function () {                                                            // 335
+        return currentStep() === 4;                                                                                    // 336
+    });                                                                                                                // 337
+    Template.registerHelper('and', function (a, b) {                                                                   // 339
+        return a && b;                                                                                                 // 340
+    });                                                                                                                // 341
+    Template.registerHelper('or', function (a, b) {                                                                    // 342
+        return a || b;                                                                                                 // 343
+    });                                                                                                                // 344
+}                                                                                                                      // 346
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}}},"server":{"accounts.js":function(){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// server/accounts.js                                                                                                  //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+// ServiceConfiguration.configurations.upsert({                                                                        // 1
+//     service: "facebook"                                                                                             // 2
+// }, {                                                                                                                // 3
+//     $set: {                                                                                                         // 4
+//         appId: Meteor.settings.private.facebook.clientId,                                                           // 5
+//         loginStyle: "popup",                                                                                        // 6
+//         secret: Meteor.settings.private.facebook.secret                                                             // 7
+//     }                                                                                                               // 8
+// });                                                                                                                 // 9
+// ServiceConfiguration.configurations.upsert({                                                                        // 11
+//     service: "github"                                                                                               // 12
+// }, {                                                                                                                // 13
+//     $set: {                                                                                                         // 14
+//         clientId: Meteor.settings.private.github.clientId,                                                          // 15
+//         loginStyle: "popup",                                                                                        // 16
+//         secret: Meteor.settings.private.github.secret                                                               // 17
+//     }                                                                                                               // 18
+// });                                                                                                                 // 19
+// ServiceConfiguration.configurations.upsert({                                                                        // 21
+//     service: "linkedin"                                                                                             // 22
+// },{                                                                                                                 // 23
+//     loginStyle: "popup",                                                                                            // 24
+//     service: "linkedin",                                                                                            // 25
+//     clientId: Meteor.settings.private.linkedin.clientId,                                                            // 26
+//     secret: Meteor.settings.private.linkedin.secret,                                                                // 27
+// });                                                                                                                 // 28
+// ServiceConfiguration.configurations.upsert({                                                                        // 31
+//     service: "twitter"                                                                                              // 32
+// },{                                                                                                                 // 33
+//     service: "twitter",                                                                                             // 34
+//     consumerKey: Meteor.settings.private.twitter.clientId,                                                          // 35
+//     loginStyle: "popup",                                                                                            // 36
+//     secret: Meteor.settings.private.twitter.secret                                                                  // 37
+// });                                                                                                                 // 38
+// ServiceConfiguration.configurations.upsert({                                                                        // 41
+//     service: "google"                                                                                               // 42
+// }, {                                                                                                                // 43
+//     $set: {                                                                                                         // 44
+//         clientId: Meteor.settings.private.google.clientId,                                                          // 45
+//         loginStyle: "popup",                                                                                        // 46
+//         secret: Meteor.settings.private.google.secret                                                               // 47
+//     }                                                                                                               // 48
+// });                                                                                                                 // 49
+var numberOfUsers = Meteor.users.find().count();                                                                       // 52
+console.log('Checking the user accounts, number of users is: ' + numberOfUsers);                                       // 53
+                                                                                                                       //
+if (!numberOfUsers) {                                                                                                  // 55
+    var id = Accounts.createUser({                                                                                     // 56
+        username: 'demo',                                                                                              // 57
+        email: 'demo@qlik.com',                                                                                        // 58
+        password: 'schiphol',                                                                                          // 59
+        profile: {                                                                                                     // 60
+            name: 'Qlik test user'                                                                                     // 60
+        }                                                                                                              // 60
+    });                                                                                                                // 56
+    console.log('user created with id: ', id);                                                                         // 62
+    Roles.addUsersToRoles(id, 'test', Roles.GLOBAL_GROUP);                                                             // 63
+    id = Accounts.createUser({                                                                                         // 65
+        username: 'admin',                                                                                             // 66
+        email: 'mbj@qlik.com',                                                                                         // 67
+        password: 'Qlik456464',                                                                                        // 68
+        profile: {                                                                                                     // 69
+            name: 'Qlik admin user'                                                                                    // 69
+        }                                                                                                              // 69
+    });                                                                                                                // 65
+    console.log('user created with id: ', id);                                                                         // 71
+    Roles.addUsersToRoles(id, 'admin', Roles.GLOBAL_GROUP);                                                            // 72
+}                                                                                                                      // 73
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"proxy.js":function(require){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// server/proxy.js                                                                                                     //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+//SETUP PROXY SERVER TO RUN METEOR QRS AND WEB INTEGRATION DEMO BOTH ON PORT 80                                        // 1
+var proxy = require('redbird')({                                                                                       // 3
+  port: Meteor.settings.public.proxyPort,                                                                              // 3
+  ntlm: true,                                                                                                          // 3
+  bunyan: false                                                                                                        // 3
+}); //bunyan:true for logging output in the console                                                                    // 3
+// Route to any local ip, for example from docker containers.                                                          // 4
+                                                                                                                       //
+                                                                                                                       //
+proxy.register(Meteor.settings.public.host, "http://localhost:3000"); //need subdomain otherwise meteor root-URL does not work
+                                                                                                                       //
+proxy.register(Meteor.settings.public.webIntegrationHost, "http://localhost:3030"); //need subdomain otherwise meteor root-URL does not work
+                                                                                                                       //
+proxy.register('slides.qlik.com', "http://localhost:3060"); //need subdomain otherwise meteor root-URL does not work   // 8
+                                                                                                                       //
+proxy.register('integration.qlik.com', "http://localhost:3000"); //need subdomain otherwise meteor root-URL does not work
+                                                                                                                       //
+proxy.register('saasdemo.qlik.com', "http://localhost:3000"); //need subdomain otherwise meteor root-URL does not work
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"publications.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// server/publications.js                                                                                              //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var Apps = void 0,                                                                                                     // 1
+    TemplateApps = void 0,                                                                                             // 1
+    GeneratedResources = void 0;                                                                                       // 1
+module.watch(require("/imports/api/apps"), {                                                                           // 1
+    Apps: function (v) {                                                                                               // 1
+        Apps = v;                                                                                                      // 1
+    },                                                                                                                 // 1
+    TemplateApps: function (v) {                                                                                       // 1
+        TemplateApps = v;                                                                                              // 1
+    },                                                                                                                 // 1
+    GeneratedResources: function (v) {                                                                                 // 1
+        GeneratedResources = v;                                                                                        // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var Streams = void 0;                                                                                                  // 1
+module.watch(require("/imports/api/streams"), {                                                                        // 1
+    Streams: function (v) {                                                                                            // 1
+        Streams = v;                                                                                                   // 1
+    }                                                                                                                  // 1
+}, 1);                                                                                                                 // 1
+var Customers = void 0;                                                                                                // 1
+module.watch(require("/imports/api/customers"), {                                                                      // 1
+    Customers: function (v) {                                                                                          // 1
+        Customers = v;                                                                                                 // 1
+    }                                                                                                                  // 1
+}, 2);                                                                                                                 // 1
+var APILogs = void 0;                                                                                                  // 1
+module.watch(require("/imports/api/APILogs"), {                                                                        // 1
+    APILogs: function (v) {                                                                                            // 1
+        APILogs = v;                                                                                                   // 1
+    }                                                                                                                  // 1
+}, 3);                                                                                                                 // 1
+var moment = void 0;                                                                                                   // 1
+module.watch(require("moment"), {                                                                                      // 1
+    "default": function (v) {                                                                                          // 1
+        moment = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 4);                                                                                                                 // 1
+//only fill the local mongoDB that runs in the browser with data that belongs to the user...                           // 8
+//https://www.meteor.com/tutorials/blaze/publish-and-subscribe                                                         // 9
+Meteor.publish('apps', function (generatedAppsFromUser) {                                                              // 10
+    if (Roles.userIsInRole(this.userId, ['admin'], Roles.GLOBAL_GROUP)) {                                              // 11
+        return Apps.find();                                                                                            // 12
+    } else {                                                                                                           // 14
+        //console.log('Client subscribed to collection, with these generated app ids: ', generatedAppsFromUser);       // 15
+        if (!generatedAppsFromUser) {                                                                                  // 16
+            generatedAppsFromUser = []; // console.log('##### No generated resources exists yet, so only show the template apps')
+        } else {// console.log('### publication recevied these generated app ids for the user: ', generatedAppsFromUser);
+            }                                                                                                          // 21
+                                                                                                                       //
+        return Apps.find({                                                                                             // 22
+            $or: [{                                                                                                    // 23
+                "id": {                                                                                                // 23
+                    "$in": generatedAppsFromUser                                                                       // 23
+                }                                                                                                      // 23
+            }, {                                                                                                       // 23
+                "stream.name": "Templates" //, { "stream.name": "Everyone" }                                           // 23
+                                                                                                                       //
+            }]                                                                                                         // 23
+        });                                                                                                            // 22
+    }                                                                                                                  // 26
+                                                                                                                       //
+    this.ready();                                                                                                      // 27
+});                                                                                                                    // 28
+Meteor.publish('streams', function (generatedStreamsFromUser) {                                                        // 30
+    if (Roles.userIsInRole(this.userId, ['admin'], Roles.GLOBAL_GROUP)) {                                              // 31
+        return Streams.find();                                                                                         // 32
+    } else {                                                                                                           // 34
+        if (!generatedStreamsFromUser) {                                                                               // 35
+            generatedStreamsFromUser = [];                                                                             // 36
+        }                                                                                                              // 37
+                                                                                                                       //
+        return Streams.find({                                                                                          // 38
+            $or: [{                                                                                                    // 39
+                "id": {                                                                                                // 39
+                    "$in": generatedStreamsFromUser                                                                    // 39
+                }                                                                                                      // 39
+            }, {                                                                                                       // 39
+                "name": "Templates" //, { "name": "Everyone" }                                                         // 39
+                                                                                                                       //
+            }]                                                                                                         // 39
+        });                                                                                                            // 38
+    }                                                                                                                  // 43
+                                                                                                                       //
+    this.ready();                                                                                                      // 44
+});                                                                                                                    // 45
+Meteor.publish('templateApps', function () {                                                                           // 46
+    return TemplateApps.find({                                                                                         // 47
+        'generationUserId': this.userId                                                                                // 47
+    });                                                                                                                // 47
+    this.ready();                                                                                                      // 48
+});                                                                                                                    // 49
+Meteor.publish('generatedResources', function () {                                                                     // 51
+    return GeneratedResources.find({                                                                                   // 52
+        'generationUserId': this.userId                                                                                // 52
+    });                                                                                                                // 52
+    this.ready();                                                                                                      // 53
+});                                                                                                                    // 54
+Meteor.publish('customers', function () {                                                                              // 56
+    return Customers.find({                                                                                            // 57
+        'generationUserId': this.userId                                                                                // 57
+    });                                                                                                                // 57
+    this.ready();                                                                                                      // 58
+});                                                                                                                    // 59
+Meteor.publish('apiLogs', function () {                                                                                // 61
+    // const selector = {                                                                                              // 62
+    //     "createDate": {                                                                                             // 63
+    //         $lt: new Date(),                                                                                        // 64
+    //         $gte: new Date(new Date().setDate(new Date().getDate() - 0.05))  //show only the last hour  of api logs
+    //     }                                                                                                           // 66
+    //};                                                                                                               // 67
+    //     today: function() {                                                                                         // 68
+    //     var now = moment().toDate();                                                                                // 69
+    //     return Posts.find({createdAt : { $gte : now }});                                                            // 70
+    // }                                                                                                               // 71
+    var selector = {                                                                                                   // 73
+        sort: {                                                                                                        // 74
+            createDate: -1                                                                                             // 74
+        },                                                                                                             // 74
+        limit: 30                                                                                                      // 75
+    };                                                                                                                 // 73
+    return APILogs.find({                                                                                              // 78
+        'generationUserId': this.userId                                                                                // 78
+    }, selector);                                                                                                      // 78
+    this.ready();                                                                                                      // 79
+});                                                                                                                    // 80
+Meteor.publish('users', function () {                                                                                  // 82
+    //See https://github.com/alanning/meteor-roles                                                                     // 83
+    if (Roles.userIsInRole(this.userId, ['admin'], Roles.GLOBAL_GROUP)) {                                              // 84
+        return Meteor.users.find();                                                                                    // 85
+    } else {                                                                                                           // 86
+        // user not authorized. do not publish secrets                                                                 // 87
+        this.stop();                                                                                                   // 88
+        return;                                                                                                        // 89
+    }                                                                                                                  // 90
+});                                                                                                                    // 91
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"restEndpoints.js":function(){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// server/restEndpoints.js                                                                                             //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+//https://atmospherejs.com/simple/json-routes                                                                          // 1
+JsonRoutes.add("get", "/OneCustomerWithUsers", function (req, res, next) {                                             // 3
+    // var id = req.params.id;                                                                                         // 4
+    var sampleData = customer1;                                                                                        // 5
+    JsonRoutes.sendResult(res, {                                                                                       // 7
+        data: customer1                                                                                                // 8
+    });                                                                                                                // 7
+});                                                                                                                    // 10
+JsonRoutes.add("get", "/multipleCustomersWithUsers", function (req, res, next) {                                       // 12
+    // var id = req.params.id;                                                                                         // 13
+    var sampleData = [customer1, customer2];                                                                           // 14
+    JsonRoutes.sendResult(res, {                                                                                       // 16
+        data: [customer1, customer2]                                                                                   // 17
+    });                                                                                                                // 16
+});                                                                                                                    // 19
+var customer1 = {                                                                                                      // 21
+    "_id": "EXpapRzZXc52B3joK",                                                                                        // 22
+    "name": "Ullrich - Barrows",                                                                                       // 23
+    "checked": true,                                                                                                   // 24
+    "users": [{                                                                                                        // 25
+        "name": "John",                                                                                                // 26
+        "group": "Consumer",                                                                                           // 27
+        "currentlyLoggedIn": false,                                                                                    // 28
+        "country": "Germany"                                                                                           // 29
+    }, {                                                                                                               // 25
+        "name": "Linda",                                                                                               // 31
+        "group": "Contributor",                                                                                        // 32
+        "currentlyLoggedIn": false,                                                                                    // 33
+        "country": "United States"                                                                                     // 34
+    }, {                                                                                                               // 30
+        "name": "Martin",                                                                                              // 36
+        "group": "Developer",                                                                                          // 37
+        "currentlyLoggedIn": false,                                                                                    // 38
+        "country": "Italy"                                                                                             // 39
+    }, {                                                                                                               // 35
+        "name": "Paul",                                                                                                // 41
+        "group": "Admin",                                                                                              // 42
+        "currentlyLoggedIn": false,                                                                                    // 43
+        "country": "Italy"                                                                                             // 44
+    }],                                                                                                                // 40
+    "generationUserId": "rZPZYbaWM33ZHNr6Z"                                                                            // 46
+};                                                                                                                     // 21
+var customer2 = {                                                                                                      // 49
+    "_id": "EXpapRzZXc52B3joK",                                                                                        // 50
+    "name": "Ullrich - Barrows",                                                                                       // 51
+    "checked": true,                                                                                                   // 52
+    "users": [{                                                                                                        // 53
+        "name": "John",                                                                                                // 54
+        "group": "Consumer",                                                                                           // 55
+        "currentlyLoggedIn": false,                                                                                    // 56
+        "country": "Germany"                                                                                           // 57
+    }, {                                                                                                               // 53
+        "name": "Linda",                                                                                               // 59
+        "group": "Contributor",                                                                                        // 60
+        "currentlyLoggedIn": false,                                                                                    // 61
+        "country": "United States"                                                                                     // 62
+    }, {                                                                                                               // 58
+        "name": "Martin",                                                                                              // 64
+        "group": "Developer",                                                                                          // 65
+        "currentlyLoggedIn": false,                                                                                    // 66
+        "country": "Italy"                                                                                             // 67
+    }, {                                                                                                               // 63
+        "name": "Paul",                                                                                                // 69
+        "group": "Admin",                                                                                              // 70
+        "currentlyLoggedIn": false,                                                                                    // 71
+        "country": "Italy"                                                                                             // 72
+    }],                                                                                                                // 68
+    "generationUserId": "rZPZYbaWM33ZHNr6Z"                                                                            // 74
+};                                                                                                                     // 49
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"routes.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// server/routes.js                                                                                                    //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var REST_Log = void 0;                                                                                                 // 1
+module.watch(require("/imports/api/APILogs"), {                                                                        // 1
+    REST_Log: function (v) {                                                                                           // 1
+        REST_Log = v;                                                                                                  // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+Router.route('/updateSenseInfo/apps', function (request, response, next) {                                             // 3
+    // console.log('++++++++++++We got an incoming REST Call from the Sense Notification handler for APPS, this means the Sense Repository has changed');
+    //logging only                                                                                                     // 5
+    // var call = {};                                                                                                  // 6
+    // call.action = 'Notification apps'                                                                               // 7
+    // call.request = 'We got an incoming REST Call from the Sense Notification handler for APPS, this means the Sense Repository has changed';
+    // REST_Log(call);                                                                                                 // 9
+    Meteor.call('updateLocalSenseCopyApps');                                                                           // 10
+}, {                                                                                                                   // 11
+    where: 'server'                                                                                                    // 11
+});                                                                                                                    // 11
+Router.route('/updateSenseInfo/streams', function (request, response, next) {                                          // 13
+    // console.log('++++++++++++We got an incoming REST Call from the Sense Notification handler for STREAMS, this means the Sense Repository has changed');
+    //logging only                                                                                                     // 15
+    // var call = {};                                                                                                  // 16
+    // call.action = 'Notification streams'                                                                            // 17
+    // call.request = 'We got an incoming REST Call from the Sense Notification handler for APPS, this means the Sense Repository has changed';
+    // REST_Log(call);                                                                                                 // 19
+    Meteor.call('updateLocalSenseCopyStreams');                                                                        // 20
+}, {                                                                                                                   // 21
+    where: 'server'                                                                                                    // 21
+});                                                                                                                    // 21
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"seeds.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// server/seeds.js                                                                                                     //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var Customers = void 0;                                                                                                // 1
+module.watch(require("../imports/api/customers.js"), {                                                                 // 1
+  Customers: function (v) {                                                                                            // 1
+    Customers = v;                                                                                                     // 1
+  }                                                                                                                    // 1
+}, 0);                                                                                                                 // 1
+var customers = // [{"name":"A&R Partners","checked":true},                                                            // 3
+// {"name":"A2Z Solutions","checked":true},                                                                            // 5
+// {"name":"Aaron D. Meyer & Associates","checked":true},                                                              // 6
+// {"name":"Aaron Products","checked":true},                                                                           // 7
+// {"name":"Active Data","checked":true},                                                                              // 8
+// {"name":"Ben and Jerry’s","checked":true},                                                                          // 9
+// {"name":"Benedict","checked":true},                                                                                 // 10
+// {"name":"Bizmarts","checked":true},                                                                                 // 11
+// {"name":"C & C  Design","checked":true},                                                                            // 12
+// {"name":"C & J Engineering","checked":true},                                                                        // 13
+// {"name":"CAF Systemhaus","checked":true},                                                                           // 14
+// {"name":"CAM Group","checked":true},                                                                                // 15
+// {"name":"Caribian Specialties","checked":true},                                                                     // 16
+// {"name":"City Fresh Foods","checked":true},                                                                         // 17
+// {"name":"Clearout","checked":true},                                                                                 // 18
+// {"name":"David Spencer Ltd.","checked":true},                                                                       // 19
+// {"name":"Dayton Malleable Inc.","checked":true},                                                                    // 20
+// {"name":"DCP Research","checked":true},                                                                             // 21
+// {"name":"DCS International","checked":true},                                                                        // 22
+// {"name":"DCS Laboratory","checked":true},                                                                           // 23
+// {"name":"Deak-Perera Group.","checked":true},                                                                       // 24
+// {"name":"Earth","checked":true},                                                                                    // 25
+// {"name":"eDistrict","checked":true},                                                                                // 26
+// {"name":"EDP","checked":true},                                                                                      // 27
+// {"name":"Ethyl Corporation","checked":true},                                                                        // 28
+// {"name":"Federal Focus","checked":true},                                                                            // 29
+// {"name":"Fill It","checked":true},                                                                                  // 30
+// {"name":"Filmotype","checked":true},                                                                                // 31
+// {"name":"Fins","checked":true},                                                                                     // 32
+// {"name":"Gate","checked":true},                                                                                     // 33
+// {"name":"Gulf and Western Industries","checked":true},                                                              // 34
+// {"name":"Harte-Hanks (formerly Locator)","checked":true},                                                           // 35
+// {"name":"Harvard Trust Company","checked":true},                                                                    // 36
+// {"name":"HCHS","checked":true},                                                                                     // 37
+// {"name":"Healtheon","checked":true},                                                                                // 38
+// {"name":"Hetrick Systems","checked":true},                                                                          // 39
+// {"name":"Home Team","checked":true},                                                                                // 40
+// {"name":"Homebound","checked":true},                                                                                // 41
+// {"name":"IBVA","checked":true},                                                                                     // 42
+// {"name":"Icon","checked":true},                                                                                     // 43
+// {"name":"Icon Site Builders","checked":true},                                                                       // 44
+// {"name":"Idyllwild","checked":true},                                                                                // 45
+// {"name":"J. S. Lee Associates","checked":true},                                                                     // 46
+// {"name":"K International","checked":true},                                                                          // 47
+// {"name":"K.C. Irving","checked":true},                                                                              // 48
+// {"name":"Kari & Associates","checked":true},                                                                        // 49
+// {"name":"Karsing","checked":true},                                                                                  // 50
+// {"name":"Kazinformcom","checked":true},                                                                             // 51
+// {"name":"KentISP","checked":true},                                                                                  // 52
+// {"name":"Kool-Seal","checked":true},                                                                                // 53
+// {"name":"Laker Airways","checked":true},                                                                            // 54
+// {"name":"Livermore  Laboratories (LSLI)","checked":true},                                                           // 55
+// {"name":"LiveWire BBS and   Favourite Links","checked":true},                                                       // 56
+// {"name":"MATRIX","checked":true},                                                                                   // 57
+// {"name":"Miles Laboratories, Inc.","checked":true},                                                                 // 58
+// {"name":"NACSCORP","checked":true},                                                                                 // 59
+// {"name":"Onestar","checked":true},                                                                                  // 60
+// {"name":"Pace","checked":true},                                                                                     // 61
+// {"name":"Pacific Group","checked":true},                                                                            // 62
+// {"name":"Pacific Matics","checked":true},                                                                           // 63
+// {"name":"Pacific Sierra Research","checked":true},                                                                  // 64
+// {"name":"Pacific Voice","checked":true},                                                                            // 65
+// {"name":"Pacific West Enterprises","checked":true},                                                                 // 66
+// {"name":"PacificServ","checked":true},                                                                              // 67
+// {"name":"Panngea","checked":true},                                                                                  // 68
+// {"name":"PAP (Maintenance)","checked":true},                                                                        // 69
+// {"name":"Paracel","checked":true},                                                                                  // 70
+// {"name":"Patient","checked":true},                                                                                  // 71
+// {"name":"Pinnacle Micro","checked":true},                                                                           // 72
+// {"name":"QualServe","checked":true},                                                                                // 73
+// {"name":"Quantum 4Xyte  Architects","checked":true},                                                                // 74
+// {"name":"Qwest","checked":true},                                                                                    // 75
+// {"name":"R&R Group","checked":true},                                                                                // 76
+// {"name":"R.J. Matter & Associates","checked":true},                                                                 // 77
+// {"name":"Ra Co Amo","checked":true},                                                                                // 78
+// {"name":"RC","checked":true},                                                                                       // 79
+// {"name":"Ready-to-Run","checked":true},                                                                             // 80
+// {"name":"Remedy","checked":true},                                                                                   // 81
+// {"name":"Renegade info Crew","checked":true},                                                                       // 82
+// {"name":"Reuters Usability Group","checked":true},                                                                  // 83
+// {"name":"ReviewBooth","checked":true},                                                                              // 84
+// {"name":"RFI Corporation","checked":true},                                                                          // 85
+// {"name":"Road Warrior International","checked":true},                                                               // 86
+// {"name":"Robust Code","checked":true},                                                                              // 87
+// {"name":"Sage","checked":true},                                                                                     // 88
+// {"name":"Sagent","checked":true},                                                                                   // 89
+// {"name":"Salamander Junction","checked":true},                                                                      // 90
+// {"name":"Satronix","checked":true},                                                                                 // 91
+// {"name":"Satyam","checked":true},                                                                                   // 92
+// {"name":"Scientific Atlanta","checked":true},                                                                       // 93
+// {"name":"ScotGold Products","checked":true},                                                                        // 94
+// {"name":"Screen Saver.com","checked":true},                                                                         // 95
+// {"name":"Sifton Properties Limited","checked":true},                                                                // 96
+// {"name":"Sigma","checked":true},                                                                                    // 97
+// {"name":"Signature","checked":true},                                                                                // 98
+// {"name":"SignatureFactory","checked":true},                                                                         // 99
+// {"name":"Soloman Brothers","checked":true},                                                                         // 100
+// {"name":"Southern Company","checked":true},                                                                         // 101
+// {"name":"Stone Consolidated Corporation","checked":true},                                                           // 102
+// {"name":"Talou","checked":true},                                                                                    // 103
+// {"name":"Tampere","checked":true},                                                                                  // 104
+// {"name":"Tandy Corporation","checked":true},                                                                        // 105
+// {"name":"Tangent","checked":true},                                                                                  // 106
+// {"name":"Tao Group","checked":true},                                                                                // 107
+// {"name":"Target Marketing","checked":true},                                                                         // 108
+// {"name":"Team ASA","checked":true},                                                                                 // 109
+// {"name":"Team Financial Management Systems","checked":true},                                                        // 110
+// {"name":"Teca-Print","checked":true},                                                                               // 111
+// {"name":"Time Warner","checked":true},                                                                              // 112
+// {"name":"Towmotor Corporation","checked":true},                                                                     // 113
+// {"name":"Tredegar Company","checked":true},                                                                         // 114
+// {"name":"Trend Line Corporation","checked":true},                                                                   // 115
+// {"name":"U. S. Exchange","checked":true},                                                                           // 116
+// {"name":"Unison Management Concepts","checked":true},                                                               // 117
+// {"name":"United States  (USIT)","checked":true},                                                                    // 118
+// {"name":"UUmail","checked":true},                                                                                   // 119
+// {"name":"ValiCert","checked":true},                                                                                 // 120
+// {"name":"Valley  Solutions","checked":true},                                                                        // 121
+// {"name":"Valpatken","checked":true},                                                                                // 122
+// {"name":"Vanstar","checked":true},                                                                                  // 123
+// {"name":"Venable","checked":true},                                                                                  // 124
+// {"name":"Venred","checked":true},                                                                                   // 125
+// {"name":"Watcom International","checked":true},                                                                     // 126
+// {"name":"Xentec","checked":true},                                                                                   // 127
+// {"name":"Xilinx","checked":true},                                                                                   // 128
+// {"name":"XVT","checked":true},                                                                                      // 129
+// {"name":"Zero Assumption Recovery","checked":true},                                                                 // 130
+// {"name":"Zilog","checked":true},                                                                                    // 131
+// {"name":"Zitel","checked":true},                                                                                    // 132
+// {"name":"Zocalo","checked":true}]                                                                                   // 133
+[{                                                                                                                     // 134
+  "name": "Shell",                                                                                                     // 134
+  "collection": "Shell"                                                                                                // 134
+}, {                                                                                                                   // 134
+  "name": "Esso",                                                                                                      // 135
+  "collection": "Esso"                                                                                                 // 135
+}, {                                                                                                                   // 135
+  "name": "BP",                                                                                                        // 136
+  "collection": "BP"                                                                                                   // 136
+}]; //if (Customers.find().count() === 0){                                                                             // 136
+// _.each(customers, function(customer){                                                                               // 139
+//  Customers.insert(customer);                                                                                        // 140
+//    console.log("Inserted "+ customer.name);                                                                         // 141
+// })                                                                                                                  // 142
+//}                                                                                                                    // 143
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"main.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// server/main.js                                                                                                      //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var _regenerator = require("babel-runtime/regenerator");                                                               //
+                                                                                                                       //
+var _regenerator2 = _interopRequireDefault(_regenerator);                                                              //
+                                                                                                                       //
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }                      //
+                                                                                                                       //
+var Meteor = void 0;                                                                                                   // 1
+module.watch(require("meteor/meteor"), {                                                                               // 1
+    Meteor: function (v) {                                                                                             // 1
+        Meteor = v;                                                                                                    // 1
+    }                                                                                                                  // 1
+}, 0);                                                                                                                 // 1
+var http = void 0;                                                                                                     // 1
+module.watch(require("meteor/meteor"), {                                                                               // 1
+    http: function (v) {                                                                                               // 1
+        http = v;                                                                                                      // 1
+    }                                                                                                                  // 1
+}, 1);                                                                                                                 // 1
+var Apps = void 0,                                                                                                     // 1
+    TemplateApps = void 0,                                                                                             // 1
+    GeneratedResources = void 0;                                                                                       // 1
+module.watch(require("/imports/api/apps"), {                                                                           // 1
+    Apps: function (v) {                                                                                               // 1
+        Apps = v;                                                                                                      // 1
+    },                                                                                                                 // 1
+    TemplateApps: function (v) {                                                                                       // 1
+        TemplateApps = v;                                                                                              // 1
+    },                                                                                                                 // 1
+    GeneratedResources: function (v) {                                                                                 // 1
+        GeneratedResources = v;                                                                                        // 1
+    }                                                                                                                  // 1
+}, 2);                                                                                                                 // 1
+var APILogs = void 0,                                                                                                  // 1
+    REST_Log = void 0;                                                                                                 // 1
+module.watch(require("/imports/api/APILogs"), {                                                                        // 1
+    APILogs: function (v) {                                                                                            // 1
+        APILogs = v;                                                                                                   // 1
+    },                                                                                                                 // 1
+    REST_Log: function (v) {                                                                                           // 1
+        REST_Log = v;                                                                                                  // 1
+    }                                                                                                                  // 1
+}, 3);                                                                                                                 // 1
+var Streams = void 0;                                                                                                  // 1
+module.watch(require("/imports/api/streams"), {                                                                        // 1
+    Streams: function (v) {                                                                                            // 1
+        Streams = v;                                                                                                   // 1
+    }                                                                                                                  // 1
+}, 4);                                                                                                                 // 1
+var Customers = void 0;                                                                                                // 1
+module.watch(require("/imports/api/customers"), {                                                                      // 1
+    Customers: function (v) {                                                                                          // 1
+        Customers = v;                                                                                                 // 1
+    }                                                                                                                  // 1
+}, 5);                                                                                                                 // 1
+var QSApp = void 0;                                                                                                    // 1
+module.watch(require("/imports/api/server/QRSFunctionsApp"), {                                                         // 1
+    "*": function (v) {                                                                                                // 1
+        QSApp = v;                                                                                                     // 1
+    }                                                                                                                  // 1
+}, 6);                                                                                                                 // 1
+var QSStream = void 0;                                                                                                 // 1
+module.watch(require("/imports/api/server/QRSFunctionsStream"), {                                                      // 1
+    "*": function (v) {                                                                                                // 1
+        QSStream = v;                                                                                                  // 1
+    }                                                                                                                  // 1
+}, 7);                                                                                                                 // 1
+var QSLic = void 0;                                                                                                    // 1
+module.watch(require("/imports/api/server/QRSFunctionsLicense"), {                                                     // 1
+    "*": function (v) {                                                                                                // 1
+        QSLic = v;                                                                                                     // 1
+    }                                                                                                                  // 1
+}, 8);                                                                                                                 // 1
+var QSProxy = void 0;                                                                                                  // 1
+module.watch(require("/imports/api/server/QPSFunctions"), {                                                            // 1
+    "*": function (v) {                                                                                                // 1
+        QSProxy = v;                                                                                                   // 1
+    }                                                                                                                  // 1
+}, 9);                                                                                                                 // 1
+var QSSystem = void 0;                                                                                                 // 1
+module.watch(require("/imports/api/server/QRSFunctionsSystemRules"), {                                                 // 1
+    "*": function (v) {                                                                                                // 1
+        QSSystem = v;                                                                                                  // 1
+    }                                                                                                                  // 1
+}, 10);                                                                                                                // 1
+var QSExtensions = void 0;                                                                                             // 1
+module.watch(require("/imports/api/server/QRSFunctionsExtension"), {                                                   // 1
+    "*": function (v) {                                                                                                // 1
+        QSExtensions = v;                                                                                              // 1
+    }                                                                                                                  // 1
+}, 11);                                                                                                                // 1
+var QSCustomProps = void 0;                                                                                            // 1
+module.watch(require("/imports/api/server/QRSFunctionsCustomProperties"), {                                            // 1
+    "*": function (v) {                                                                                                // 1
+        QSCustomProps = v;                                                                                             // 1
+    }                                                                                                                  // 1
+}, 12);                                                                                                                // 1
+var senseConfig = void 0,                                                                                              // 1
+    authHeaders = void 0;                                                                                              // 1
+module.watch(require("/imports/api/config"), {                                                                         // 1
+    senseConfig: function (v) {                                                                                        // 1
+        senseConfig = v;                                                                                               // 1
+    },                                                                                                                 // 1
+    authHeaders: function (v) {                                                                                        // 1
+        authHeaders = v;                                                                                               // 1
+    }                                                                                                                  // 1
+}, 13);                                                                                                                // 1
+module.watch(require("/imports/startup/accounts-config.js"));                                                          // 1
+Meteor.startup(function () {                                                                                           // 41
+    process.env.ROOT_URL = 'http://' + Meteor.settings.public.host;                                                    // 42
+    console.log('********* We expect Qlik Sense to run on host: ', process.env.ROOT_URL + ':' + Meteor.settings.public.port);
+    initQlikSense();                                                                                                   // 45
+    removeGeneratedResources();                                                                                        // 46
+    optimizeMongoDB();                                                                                                 // 47
+}); //                                                                                                                 // 48
+// ─── SETUP QLIK SENSE AFTER A CLEAN QlIK SENSE INSTALL ─────────────────────────────────────                         // 52
+//                                                                                                                     // 53
+//Check if Qlik Sense has been properly setup for this MeteorQRS tool                                                  // 55
+                                                                                                                       //
+function initQlikSense() {                                                                                             // 56
+    var QlikConfigured;                                                                                                // 56
+    return _regenerator2.default.async(function () {                                                                   // 56
+        function initQlikSense$(_context) {                                                                            // 56
+            while (1) {                                                                                                // 56
+                switch (_context.prev = _context.next) {                                                               // 56
+                    case 0:                                                                                            // 56
+                        console.log('------------------------------------');                                           // 57
+                        console.log('INIT QLIK SENSE');                                                                // 58
+                        console.log('------------------------------------');                                           // 59
+                        Meteor.call('updateLocalSenseCopy'); //By checking if a stream exist we try to figure out if this is a fresh or already existing Qlik Sense installation.
+                                                                                                                       //
+                        QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);       // 63
+                                                                                                                       //
+                        if (!(!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup)) {                   // 56
+                            _context.next = 19;                                                                        // 56
+                            break;                                                                                     // 56
+                        }                                                                                              // 56
+                                                                                                                       //
+                        console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
+                        QSLic.insertLicense();                                                                         // 66
+                        QSLic.insertUserAccessRule();                                                                  // 67
+                        _context.next = 11;                                                                            // 56
+                        return _regenerator2.default.awrap(QSSystem.createSecurityRules());                            // 56
+                                                                                                                       //
+                    case 11:                                                                                           // 56
+                        QSSystem.disableDefaultSecurityRules();                                                        // 69
+                        _context.next = 14;                                                                            // 56
+                        return _regenerator2.default.awrap(QSProxy.createVirtualProxies());                            // 56
+                                                                                                                       //
+                    case 14:                                                                                           // 56
+                        QSStream.initSenseStreams();                                                                   // 71
+                        _context.next = 17;                                                                            // 56
+                        return _regenerator2.default.awrap(QSApp.uploadAndPublishTemplateApps());                      // 56
+                                                                                                                       //
+                    case 17:                                                                                           // 56
+                        QSExtensions.uploadExtensions();                                                               // 73
+                        QSLic.saveSystemRules();                                                                       // 74
+                                                                                                                       //
+                    case 19:                                                                                           // 56
+                        //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.
+                        QSApp.setAppIDs();                                                                             // 77
+                                                                                                                       //
+                    case 20:                                                                                           // 56
+                    case "end":                                                                                        // 56
+                        return _context.stop();                                                                        // 56
+                }                                                                                                      // 56
+            }                                                                                                          // 56
+        }                                                                                                              // 56
+                                                                                                                       //
+        return initQlikSense$;                                                                                         // 56
+    }(), null, this);                                                                                                  // 56
+} //                                                                                                                   // 56
+// ─── REMOVE STREAMS AND APPS CREATED DURING THE SAAS DEMO ───────────────────────                                    // 81
+//                                                                                                                     // 82
+                                                                                                                       //
+                                                                                                                       //
+function removeGeneratedResources() {                                                                                  // 84
+    // console.log('remove the all generated resources on each server start');                                         // 85
+    // Meteor.setTimeout(function() {                                                                                  // 86
+    //     console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
+    //     Meteor.call('removeGeneratedResources', {});                                                                // 88
+    // }, 0); //remove all logs directly at startup                                                                    // 89
+    if (Meteor.settings.broker.automaticCleanUpGeneratedApps === "Yes") {                                              // 90
+        Meteor.setInterval(function () {                                                                               // 91
+            console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
+            Meteor.call('removeGeneratedResources', {});                                                               // 93
+        }, 1 * 86400000); //remove all logs every 1 day                                                                // 94
+    }                                                                                                                  // 95
+}                                                                                                                      // 96
+                                                                                                                       //
+function optimizeMongoDB() {                                                                                           // 98
+    // console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
+    TemplateApps._ensureIndex({                                                                                        // 100
+        "generationUserId": 1,                                                                                         // 101
+        "id": 1                                                                                                        // 102
+    });                                                                                                                // 100
+                                                                                                                       //
+    GeneratedResources._ensureIndex({                                                                                  // 104
+        "generationUserId": 1,                                                                                         // 105
+        "id": 1                                                                                                        // 106
+    });                                                                                                                // 104
+                                                                                                                       //
+    Apps._ensureIndex({                                                                                                // 108
+        "id": 1                                                                                                        // 109
+    });                                                                                                                // 108
+                                                                                                                       //
+    Customers._ensureIndex({                                                                                           // 111
+        "generationUserId": 1                                                                                          // 112
+    });                                                                                                                // 111
+                                                                                                                       //
+    Streams._ensureIndex({                                                                                             // 114
+        "id": 1                                                                                                        // 115
+    });                                                                                                                // 114
+                                                                                                                       //
+    APILogs._ensureIndex({                                                                                             // 117
+        "createdBy": 1                                                                                                 // 118
+    });                                                                                                                // 117
+                                                                                                                       //
+    APILogs._ensureIndex({                                                                                             // 120
+        "createDate": 1                                                                                                // 121
+    });                                                                                                                // 120
+} //                                                                                                                   // 123
+// ─── GET AN UPDATE WHEN QLIK SENSE HAS CHANGED ──────────────────────────────────                                    // 126
+//                                                                                                                     // 127
+// function createNotificationListeners() {                                                                            // 130
+//     //Create notification listener in Qlik sense https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Notification-Remove-Change-Subscription.htm
+//     //console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
+//     //console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
+//     //console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');
+//     try {                                                                                                           // 136
+//         const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
+//             headers: authHeaders,                                                                                   // 138
+//             params: { 'xrfkey': senseConfig.xrfkey },                                                               // 139
+//             data: Meteor.settings.private.notificationURL + '/apps'                                                 // 140
+//         })                                                                                                          // 141
+//         const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
+//                 headers: authHeaders,                                                                               // 144
+//                 params: { 'xrfkey': senseConfig.xrfkey },                                                           // 145
+//                 data: Meteor.settings.private.notificationURL + '/streams'                                          // 146
+//             })                                                                                                      // 147
+//             //console.log('Register notication success');                                                           // 148
+//             // //console.log('the result from sense register App notification was: ', resultApp);                   // 149
+//             // //console.log('the result from sense register Stream notification was: ', resultStream);             // 150
+//     } catch (err) {                                                                                                 // 151
+//         console.error('Create notification subscription in sense qrs failed', err);                                 // 152
+//         // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);                     // 153
+//     }                                                                                                               // 154
+// }                                                                                                                   // 155
+//                                                                                                                     // 157
+// ─── METEOR METHODS ─────────────────────────────────────────────────────────────                                    // 158
+//                                                                                                                     // 159
+                                                                                                                       //
+                                                                                                                       //
+Meteor.methods({                                                                                                       // 162
+    getAppIDs: function () {                                                                                           // 163
+        return {                                                                                                       // 164
+            SSBI: senseConfig.SSBIApp,                                                                                 // 165
+            // QSApp.getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream)[0].id,              // 165
+            slideGenerator: senseConfig.slideGeneratorAppId //QSApp.getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream)[0].id
+                                                                                                                       //
+        };                                                                                                             // 164
+    },                                                                                                                 // 168
+    generateStreamAndApp: function (customers) {                                                                       // 169
+        check(customers, Array);                                                                                       // 170
+        Meteor.call('removeGeneratedResources', {                                                                      // 172
+            'generationUserId': Meteor.userId()                                                                        // 173
+        }); //first clean the environment                                                                              // 172
+                                                                                                                       //
+        QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff                               // 175
+                                                                                                                       //
+        if (!Meteor.settings.multiTenantScenario) {                                                                    // 177
+            //on premise installation for a single tenant (e.g. with MS Active Directory)                              // 177
+            var customerNames = customers.map(function (c) {                                                           // 178
+                return c.name;                                                                                         // 179
+            });                                                                                                        // 180
+            QSCustomProps.createCustomProperty('customers', customerNames); //for non OEM scenarios (with MS AD), people like to use custom properties for authorization instead of the groups via a ticket.
+        }                                                                                                              // 182
+                                                                                                                       //
+        Meteor.call('updateLocalSenseCopy');                                                                           // 183
+    },                                                                                                                 // 184
+    resetEnvironment: function () {                                                                                    // 185
+        Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
+                                                                                                                       //
+        Meteor.call('removeGeneratedResources', {                                                                      // 187
+            'generationUserId': Meteor.userId()                                                                        // 188
+        });                                                                                                            // 187
+        TemplateApps.remove({                                                                                          // 190
+            'generationUserId': Meteor.userId()                                                                        // 191
+        });                                                                                                            // 190
+        Customers.remove({                                                                                             // 193
+            'generationUserId': Meteor.userId()                                                                        // 194
+        });                                                                                                            // 193
+        APILogs.remove({                                                                                               // 196
+            'generationUserId': Meteor.userId()                                                                        // 197
+        });                                                                                                            // 196
+                                                                                                                       //
+        if (!Meteor.settings.multiTenantScenario) {                                                                    // 199
+            //on premise installation for a single tenant (e.g. with MS Active Directory)                              // 199
+            QSCustomProps.deleteCustomProperty('customers');                                                           // 200
+        }                                                                                                              // 201
+    },                                                                                                                 // 202
+    upsertTemplate: function (selector, currentApp) {                                                                  // 203
+        console.log('upsert template');                                                                                // 204
+        TemplateApps.upsert(selector, {                                                                                // 205
+            $set: {                                                                                                    // 206
+                name: currentApp.name,                                                                                 // 207
+                id: currentApp.id,                                                                                     // 208
+                generationUserId: Meteor.userId()                                                                      // 209
+            }                                                                                                          // 206
+        });                                                                                                            // 205
+    },                                                                                                                 // 212
+    removeTemplate: function (selector, currentApp) {                                                                  // 213
+        console.log('remove template');                                                                                // 214
+        TemplateApps.remove(selector);                                                                                 // 215
+    },                                                                                                                 // 216
+    removeGeneratedResources: function (generationUserSelection) {                                                     // 217
+        //console.log('remove GeneratedResources method, before we make new ones');                                    // 218
+        //logging only                                                                                                 // 219
+        if (generationUserSelection) {                                                                                 // 220
+            var call = {};                                                                                             // 221
+            call.action = 'Remove generated resources';                                                                // 222
+            call.request = 'Remove all apps and streams in Qlik Sense for userId: ' + generationUserSelection.generationUserId;
+            REST_Log(call, generationUserSelection);                                                                   // 224
+        }                                                                                                              // 225
+                                                                                                                       //
+        GeneratedResources.find(generationUserSelection).forEach(function (resource) {                                 // 226
+            // this.unblock()                                                                                          // 228
+            //console.log('resetEnvironment for userId', Meteor.userId());generationUserSelection.generationUserId     // 229
+            //If not selection was given, we want to reset the whole environment, so also delete the streams.          // 231
+            // if (!generationUserSelection.generationUserId) {                                                        // 232
+            try {                                                                                                      // 233
+                Meteor.call('deleteStream', resource.streamId); //added random company names, so this should not be an issue //26-9 can't delete stream, because each user creates a stream with the same name...
+            } catch (err) {} //console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
+            //don't bother if generated resources do not exists, just continue                                         // 237
+            // }                                                                                                       // 238
+            //delete apps always                                                                                       // 239
+                                                                                                                       //
+                                                                                                                       //
+            try {                                                                                                      // 240
+                Meteor.call('deleteApp', resource.appId);                                                              // 241
+            } catch (err) {//console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
+            }                                                                                                          // 244
+        });                                                                                                            // 245
+        GeneratedResources.remove(generationUserSelection);                                                            // 246
+        APILogs.remove(generationUserSelection);                                                                       // 247
+    },                                                                                                                 // 248
+    copyApp: function (guid, name) {                                                                                   // 249
+        check(guid, String);                                                                                           // 250
+        check(name, String);                                                                                           // 251
+        var id = QSApp.copyApp(guid, name);                                                                            // 252
+        Meteor.call('updateLocalSenseCopy');                                                                           // 253
+        return id;                                                                                                     // 254
+    },                                                                                                                 // 255
+    copyAppSelectedCustomers: function (currentApp) {                                                                  // 256
+        //the app the user clicked on                                                                                  // 256
+        if (!currentApp) {                                                                                             // 257
+            throw new Meteor.Error('No App selected to copy');                                                         // 258
+        }                                                                                                              // 259
+                                                                                                                       //
+        ;                                                                                                              // 259
+        customers = Customers.find({                                                                                   // 261
+            'generationUserId': Meteor.userId(),                                                                       // 262
+            checked: true                                                                                              // 263
+        }); //all selected customers                                                                                   // 261
+                                                                                                                       //
+        if (!customers) {                                                                                              // 265
+            throw new Meteor.Error('No customers selected to copy the app for');                                       // 266
+        }                                                                                                              // 267
+                                                                                                                       //
+        ;                                                                                                              // 267
+        customers.forEach(function (customer) {                                                                        // 269
+            var newAppId = Meteor.call('copyApp', currentApp.id, customer.name + '-' + currentApp.name);               // 271
+            Meteor.call('updateLocalSenseCopy'); //store in the database that the user generated something, so we can later on remove it.
+                                                                                                                       //
+            GeneratedResources.insert({                                                                                // 275
+                'generationUserId': Meteor.userId(),                                                                   // 276
+                'customer': null,                                                                                      // 277
+                'streamId': null,                                                                                      // 278
+                'appId': newAppId                                                                                      // 279
+            });                                                                                                        // 275
+        });                                                                                                            // 281
+    },                                                                                                                 // 282
+    deleteApp: function (guid) {                                                                                       // 283
+        check(guid, String);                                                                                           // 284
+                                                                                                                       //
+        if (guid !== Meteor.settings.public.templateAppId) {                                                           // 285
+            //logging only                                                                                             // 286
+            var call = {};                                                                                             // 287
+            call.action = 'Delete app';                                                                                // 288
+            call.request = 'Delete app: ' + guid;                                                                      // 289
+            REST_Log(call);                                                                                            // 290
+            var id = QSApp.deleteApp(guid);                                                                            // 292
+            Meteor.call('updateLocalSenseCopy');                                                                       // 293
+            return id;                                                                                                 // 294
+        } else {                                                                                                       // 295
+            throw new Meteor.Error("you can't delete the template app with guid: ", guid);                             // 296
+        }                                                                                                              // 297
+    },                                                                                                                 // 298
+    removeAllCustomers: function () {                                                                                  // 299
+        return Customers.remove({                                                                                      // 300
+            'generationUserId': Meteor.userId()                                                                        // 301
+        });                                                                                                            // 300
+    }                                                                                                                  // 303
+});                                                                                                                    // 162
+Meteor.methods({                                                                                                       // 306
+    updateLocalSenseCopyApps: function () {                                                                            // 307
+        //delete the local content of the database before updating it                                                  // 308
+        Apps.remove({}); //Update the Apps with fresh info from Sense                                                  // 309
+                                                                                                                       //
+        _.each(QSApp.getApps(), function (app) {                                                                       // 312
+            Apps.insert(app);                                                                                          // 313
+        });                                                                                                            // 314
+    },                                                                                                                 // 315
+    updateLocalSenseCopyStreams: function () {                                                                         // 316
+        //delete the local content of the database before updating it                                                  // 317
+        Streams.remove({}); //Update the Streams with fresh info from Sense                                            // 318
+                                                                                                                       //
+        _.each(QSStream.getStreams(), function (stream) {                                                              // 321
+            Streams.insert(stream);                                                                                    // 322
+        });                                                                                                            // 323
+    },                                                                                                                 // 324
+    updateLocalSenseCopy: function () {                                                                                // 325
+        // //console.log('Method: update the local mongoDB with fresh data from Qlik Sense: call QRS API getStreams and getApps');
+        //delete the local content of the database before updating it                                                  // 327
+        Apps.remove({});                                                                                               // 328
+        Streams.remove({}); //Update the Apps and Streams with fresh info from Sense                                   // 329
+                                                                                                                       //
+        _.each(QSApp.getApps(), function (app) {                                                                       // 332
+            Apps.insert(app);                                                                                          // 333
+        });                                                                                                            // 334
+                                                                                                                       //
+        _.each(QSStream.getStreams(), function (stream) {                                                              // 336
+            Streams.insert(stream);                                                                                    // 337
+        });                                                                                                            // 338
+    },                                                                                                                 // 339
+    getSecurityRules: function () {                                                                                    // 340
+        return QSSystem.getSecurityRules();                                                                            // 341
+    }                                                                                                                  // 342
+}); // checkSenseIsReady() {                                                                                           // 306
+//     //console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');       // 349
+//     // try {                                                                                                        // 351
+//     // qsocks.Connect(engineConfig)                                                                                 // 352
+//     //     .then(function(global) {                                                                                 // 353
+//     //         // Connected                                                                                         // 354
+//     //         //console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');
+//     //         return true;                                                                                         // 356
+//     //     }, function(err) {                                                                                       // 357
+//     //         // Something went wrong                                                                              // 358
+//     //         console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
+//     //         console.error('the settings are: ', engineConfig)                                                    // 360
+//     //         return false                                                                                         // 361
+//     //         // throw new Meteor.Error('Could not connect to Sense Engine API', err.message);                     // 362
+//     //     });                                                                                                      // 363
+//     //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP                                                                // 365
+//     try{                                                                                                            // 366
+//         const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
+//             headers: authHeaders,                                                                                   // 368
+//             params: { 'xrfkey': senseConfig.xrfkey }                                                                // 369
+//         })//http get                                                                                                // 370
+//         //console.log(result);                                                                                      // 371
+//         if(result.statuscode === 200){                                                                              // 372
+//             //console.log('We got a result back from Sense with statuscode 200: Success')                           // 373
+//             return true;}                                                                                           // 374
+//         else{return false}                                                                                          // 375
+//     } catch (err) {                                                                                                 // 376
+//         return false;                                                                                               // 377
+//         // throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');
+//     }                                                                                                               // 379
+// }                                                                                                                   // 380
+//GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)                                         // 382
+// getApps() {                                                                                                         // 383
+//     return QSApp.getApps();                                                                                         // 384
+//     // appListSync = Meteor.wrapAsync(qsocks.Connect(engineConfig)                                                  // 385
+//     //     .then(function(global) {                                                                                 // 386
+//     //         global.getDocList()                                                                                  // 387
+//     //             .then(function(docList) {                                                                        // 388
+//     //                 return (docList);                                                                            // 389
+//     //             });                                                                                              // 390
+//     //     })                                                                                                       // 391
+//     //     .catch(err => {                                                                                          // 392
+//     //         throw new Meteor.Error(err)                                                                          // 393
+//     //     }));                                                                                                     // 394
+//     // result = appListSync();                                                                                      // 395
+//     // return result;                                                                                               // 396
+// },                                                                                                                  // 398
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}}},{
+  "extensions": [
+    ".js",
+    ".json"
+  ]
+});
+require("./lib/yogiben.js");
+require("./server/accounts.js");
+require("./server/proxy.js");
+require("./server/publications.js");
+require("./server/restEndpoints.js");
+require("./server/routes.js");
+require("./server/seeds.js");
+require("./server/main.js");
+//# sourceMappingURL=app.js.map

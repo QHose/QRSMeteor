@@ -1,7 +1,9 @@
+    $PROJECT_ROOT = (Get-Item -Path ".\" -Verbose).FullName
+    echo "Build tool project root directory: "$PROJECT_ROOT
     $BASE_APP_NAME = "qrsmeteor"
-    $BUILD_DIR = "..\qrsbuild"
-    $BUNDLE_DIR = "..\qrsbuild\bundle"
-    $VERSION = "1.0.0"
+    $BUILD_DIR = ".\.build"
+    $BUNDLE_DIR = $BUILD_DIR+"\bundle"
+    $VERSION = "2.0.0"
     $DOCKER_TAG = "qhose/" + $BASE_APP_NAME + ":" + $VERSION
 
     echo "STEP delete old build files"
@@ -21,8 +23,8 @@
     echo "STEP Building Dockerfile via command: docker build -t $DOCKER_TAG"
     docker build "-t" "$DOCKER_TAG" "."
 
-    echo "docker push qhose/qrsmeteor:1.0.0"
+    echo "docker push $DOCKER_TAG"
     docker push "$DOCKER_TAG" 
 
     #at the end, go back to the folder where we started
-    cd "C:\Users\mbj\Documents\GitHub\QRSMeteor"
+    cd $PROJECT_ROOT

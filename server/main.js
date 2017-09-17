@@ -37,6 +37,8 @@ import {
     authHeaders
 } from '/imports/api/config';
 import '/imports/startup/accounts-config.js';
+const path = require('path');
+
 
 Meteor.startup(function() {
     process.env.ROOT_URL = 'http://' + Meteor.settings.public.host;
@@ -56,25 +58,40 @@ Meteor.startup(function() {
 async function initQlikSense() {
     console.log('------------------------------------');
     console.log('INIT QLIK SENSE');
+    console.log('Project root folder: ', Meteor.absolutePath)
+    var senseDemoMaterials = path.join(Meteor.absolutePath, 'Sense Demo materials');
+    console.log('senseDemoMaterials', senseDemoMaterials)
+    if (!Meteor.settings.broker.automationBaseFolder) {
+        Meteor.settings.broker.automationBaseFolder = path.join(Meteor.absolutePath, '.automation');
+        console.log('Meteor.settings.broker.automationBaseFolder', Meteor.settings.broker.automationBaseFolder)
+    }
+    if (!Meteor.settings.broker.customerDataDir) {
+        Meteor.settings.broker.customerDataDir = path.join(Meteor.absolutePath, 'customerData');
+        console.log('Meteor.settings.broker.customerDataDir', Meteor.settings.broker.customerDataDir)
+    }
     console.log('------------------------------------');
     Meteor.call('updateLocalSenseCopy');
+
 
     //By checking if a stream exist we try to figure out if this is a fresh or already existing Qlik Sense installation.
     var QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);
     if (!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup) {
         console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
-        QSLic.insertLicense();
-        QSLic.insertUserAccessRule();
-        await QSSystem.createSecurityRules();
-        QSSystem.disableDefaultSecurityRules();
-        await QSProxy.createVirtualProxies();
-        QSStream.initSenseStreams();
-        await QSApp.uploadAndPublishTemplateApps();
-        QSExtensions.uploadExtensions();
-        QSLic.saveSystemRules();
+        // QSLic.insertLicense();
+        // QSLic.insertUserAccessRule();
+        // await QSSystem.createSecurityRules();
+        // QSSystem.disableDefaultSecurityRules();
+        // await QSProxy.createVirtualProxies();
+        // QSStream.initSenseStreams();
+        // await QSApp.uploadAndPublishTemplateApps();      /
+        ////set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.
+        QSApp.setAppIDs();
+
+        await QSApp.createAppConnection('folder', 'Import demo', senseDemoMaterials);
+        // QSExtensions.uploadExtensions();
+        // QSLic.saveSystemRules();
     }
-    //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.
-    QSApp.setAppIDs();
+
 }
 
 //

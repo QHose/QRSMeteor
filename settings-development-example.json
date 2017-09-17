@@ -45,9 +45,9 @@
         "LicenseControlNumber": 456
     },
     "broker": {
-        "customerDataDir": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\customerData",
+        "customerDataDir": "",
         "automaticCleanUpGeneratedApps": "Yes",
-        "automationBaseFolder": "C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor\\.automation",
+        "automationBaseFolder": "",
         "runInitialQlikSenseSetup": true
     },
     "security": {

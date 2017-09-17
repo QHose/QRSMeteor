@@ -280,8 +280,7 @@ $(""#btn_1"").click(function() {
   alert(""Btn 1 Clicked"");
 });
 ```",,"","","","","         0","0","PreSales",
-"API -  generic introduction","Introduction to web authentication methods (in general)","See this [blog](https://blog.risingstack.com/web-authentication-methods-explained/) if you want to have an overview of the methods people use on the internet to authenticate users between systems. ",,,,,,,,,
-"API -  generic introduction","Introduction to web authentication methods (in general)","Cookies",,,,,,,,,
+"API -  generic introduction","Introduction to web authentication methods (in general)","See this [blog](https://blog.risingstack.com/web-authentication-methods-explained/) if you want to have an overview of the methods people use on the internet to authenticate users between systems (federated identity). ",,"","","","","         0","0","PreSales",
 "API -  generic introduction","How to get started if you never programmed before?","# get an IDE
 - I like to use [Visual Studio Code](https://code.visualstudio.com/docs/editor/editingevolved) its free and works great. 
 # Learn javascript
@@ -1365,6 +1364,35 @@ function appChangeListener() {
 }
 ```",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","[Source code](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L271)",,"","","","","         0","0","What is this slide generator?",
+"Integration.qlik.com docker environment","Architecture introduction","We try to simulate a real production environment for a SaaS provider",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture introduction","We use multiple servers for different purposes",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture introduction","summary_integrated_architecture.png",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture introduction","Key components so far
+- end users who want embedded analytics
+- your platform: a web server
+- a Qlik Sense server",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: key components and goals","saas demo architecture introduction of components.png",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: key components and goals","You have multiple customers, each customer can have users with authorizations (groups)",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: key components and goals","A user (with access rights maintained in the SaaS platform) wants to open the webpage with Qlik Sense embedded",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: key components and goals","The user credentials are stored in a MongoDB in your SaaS platform
+- userID
+- group memberships for functionality and row level security (data value restrictions: e.g. only specific countries)",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: key components and goals","The dashboard should only show content beloning to the company of the user.",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: key components and goals","Performance & security: 
+- we want to have (physical) different environments for each customer. 
+- split between front end (users) and back end (databases, API tools)",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: app provisioning","architecture - OEM  SaaS scenario simple.png",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: app provisioning","Automation: we want to work with (starting) templates and distribute this to all customers and their users.",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: app provisioning","## Goals of the API Broker",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: app provisioning","### app provisioning",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: app provisioning","Creates apps with customer specific data for each customer based on a template",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: app provisioning","### deployment",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: app provisioning","Using the APIs we can install Qlik Sense on a server, and uload apps, set security, license etc. ",,,,,,,,,
+"Integration.qlik.com docker environment","Demo architecture setup","integrated Architecture saasdemo setup.png",,,,,,,,,
+"Integration.qlik.com docker environment","Demo architecture setup","# we created 3 servers",,,,,,,,,
+"Integration.qlik.com docker environment","Demo architecture setup","- [QRSMeteor]https://github.com/QHose/QRSMeteor): app provisioning and automatic installation of Qlik Sense (docker image)",,,,,,,,,
+"Integration.qlik.com docker environment","Demo architecture setup","- [senseWebIntegration](https://github.com/QHose/senseWebIntegration) simulates the SaaS platform to which an end user connects (the website) and which embeds Qlik Sense charts. (docker image)",,,,,,,,,
+"Integration.qlik.com docker environment","Demo architecture setup","- Qlik Sense",,,,,,,,,
 "Qlik Sense API introduction","Overview","<iframe class=""SenseEmbedFrame"" src=""/API_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Integration summary, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
@@ -1601,6 +1629,81 @@ App:
 }
 ```",,"","","","","         0","0","Deep dive",
 "QRS (QMC) API","Example start a task","QRS - start task.png",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","PUT: How to update a resource?","1 you first GET the resource
+2 Modify the specific properties that you want to change
+3 Perform an update, including the entire entity in the body of the request.",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","PUT: How to update a resource?","> You must always include the entity ID and modifiedDate when performing an update. The entity ID of the body and of the URL must match. (otherwise you get a 409 error).
+
+Many JSON structs in the Qlik Sense Repository Service (QRS) API include the modifiedDate property, which is used to avoid conflicts in the repository database. For example, when updating an entity, leave the modifiedDate property unchanged. If the modifiedDate property for the updated entity differs from the modifiedDate property for the entity in the QRS, there is a conflict (that is, the entity in the QRS has already been updated by someone else).",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","PUT: How to update a resource?","Not all endpoints are documented, but in general an update has the form `server/qrs/CustomPropertyDefinition/{id}`, see [help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Custom-Property-Update.htm)",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","PUT: How to update a resource?","# Body
+```
+{
+   ""id"": ""4ddfbcb0-a41b-4906-9f6d-bb81297502e3"",
+   ""createdDate"": ""2017-01-06T15:42:53.575Z"",
+   ""modifiedDate"": ""2017-01-06T15:42:53.575Z"",
+   ""modifiedByUserName"": ""INTERNAL\\sa_repository"",
+   ""name"": ""Country"",
+   ""valueType"": ""Text"",
+   ""choiceValues"": 
+   [
+      ""Denmark"",
+      ""Iceland"",
+      ""Switzerland"",
+      ""France""
+   ],
+   ""objectTypes"": [],
+   ""privileges"": null,
+   ""impactSecurityAccess"": false,
+   ""schemaPath"": ""CustomPropertyDefinition""
+   }
+```",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","PUT: How to update a resource?","# Return value
+```
+{
+   ""id"": ""4ddfbcb0-a41b-4906-9f6d-bb81297502e3""
+   ""createdDate"": ""2017-01-06T15:42:53.575Z"",
+   ""modifiedDate"": ""2017-01-06T16:54:21.040Z"",
+   ""modifiedByUserName"": ""INTERNAL\\sa_repository"",
+   ""name"": ""Country"",
+   ""valueType"": ""Text"",
+   ""choiceValues"": 
+   [
+      ""Denmark"",
+      ""Iceland"",
+      ""Switzerland"",
+      ""France""
+   ],
+   ""objectTypes"": [],
+   ""privileges"": null,
+   ""impactSecurityAccess"": false,
+   ""schemaPath"": ""CustomPropertyDefinition""
+}
+```",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","PUT: How to update a resource?","# Javascript example
+
+```
+ 
+createCustomProperty('testBies', [1, 2]);
+ 
+export function createCustomProperty(name, choiceValues = ['no values initialized']) {
+ 
+   var customProperty = {
+   ""name"": name,
+   ""valueType"": ""Text"",
+   ""objectTypes"": [""App"", ""ContentLibrary"", ""DataConnection"", ""ReloadTask"", ""Stream"", ""User""],
+   ""choiceValues"": choiceValues
+  }
+   var result = qrs.post('/qrs/CustomPropertyDefinition', null, customProperty)
+   console.log('result of create custom property: ', result)
+
+   result.name = 'UpdatedName';
+   var result = qrs.put('/qrs/CustomPropertyDefinition/' + result.id, null, result)
+   console.log('result after update', result)
+ 
+}
+```
+",,"","","","","         0","0","Deep dive",
 "QRS (QMC) API","Connect to a REST endpoint using the script of a QVF","Use the REST connector",,,,,,,,,
 "QRS (QMC) API","Connect to a REST endpoint using the script of a QVF","In this way you can also connect to the QRS API",,,,,,,,,
 "QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","Here we will load QRS API data in a QVF",,"","","","","         0","0","Exercises",
@@ -1903,6 +2006,7 @@ call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' 
 "QPS - Proxy API","Example code to logout a user via QPS API call","``` 
 call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
 ``` ",,"","","","","         0","0","Deep dive",
+"QPS - Proxy API","Get the properties of the current user","QPS - get current logged in user session.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Proxy - Cross origin issues","Proxy - settings.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Proxy - Cross origin issues","CORS error.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Proxy - Cross origin issues","error - XMLhttprequest cannot load - access control allow origin header not present.png",,"","","","","         0","0","Deep dive",
@@ -2639,7 +2743,7 @@ or
 "Architecture","Two server environment","architecture - two servers.png",,,,,,,,,
 "Architecture","Growth environment","architecture - multiple servers environment.png",,,,,,,,,
 "Architecture","Enterprise or scalable OEM environment","architecture - multiple servers enterprise OEM environment.png",,,,,,,,,
-"Architecture","Extranet Deployment – EMM Gateway","Extranet Deployment – EMM Gateway.png",,,,,,,,,
+"Architecture","Extranet Deployment – EMM Gateway","Extranet Deployment EMM Gateway.png",,,,,,,,,
 "Architecture","Architecting for Recoverability
 - backup and recovery","architecture - Architecting for Recoverability.png",,,,,,,,,
 "Architecture","How does the persistance layer work?","architecture - how does the persistance layer work.png",,,,,,,,,

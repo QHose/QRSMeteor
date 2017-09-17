@@ -114,7 +114,9 @@ export async function uploadAndPublishTemplateApps() {
                     //Insert into template apps stream
                     publishApp(appId, appName, templateStreamId);
                 }
-            } else { console.log('App ' + appName + ' already exists in Qlik Sense') };
+            } else {
+                console.log('App ' + appName + ' already exists in Qlik Sense')
+            };
         } catch (err) {
             console.error(err);
             throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
@@ -302,6 +304,39 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
     }
 }
 
+export async function createAppConnection(type, name, path) {
+
+    //set the app ID to be used in the enigma connection to the engine API
+    var config = Object.assign({}, enigmaServerConfig);
+    config.appId = getApps('sales', 'Everyone')[0].id;
+    console.log('createAppConnection: ' + type + ' ' + name + ' ' + path + ' using the slide generator app to create the connection: ' + config.appId);
+
+    try {
+        check(type, String);
+        check(path, String);
+        check(name, String);
+        check(senseConfig.slideGeneratorAppId, String);
+    } catch (error) {
+        console.error('Missing parameters to create a data connection', error);
+    }
+
+    try {
+        //connect to the engine
+        var qix = await enigma.getService('qix', config);
+
+        //create folder connection 
+        console.log('create folder connection, if you see a warning below that means the connection already existed.');
+        var qConnectionId = await qix.app.createConnection({
+            "qName": name,
+            "qType": type,
+            "qConnectionString": path
+        })
+        console.log('created folder connection: ', qConnectionId);
+    } catch (error) {
+        console.error('Failed to create folder connection', error);
+    }
+}
+
 function deleteDirectoryAndDataConnection(customerName) {
     console.log('deleteDirectoryAndDataConnection');
     //@TODO a bit dangerous, so better to do by hand. Make sure you can't delete root folder... 
@@ -399,7 +434,10 @@ export function copyApp(guid, name, generationUserId) {
         call.request = qrsSrv + '/qrs/app/' + guid + '/copy';
         call.response = HTTP.post(call.request, {
             'npmRequestOptions': configCerticates,
-            params: { 'xrfkey': senseConfig.xrfkey, "name": name },
+            params: {
+                'xrfkey': senseConfig.xrfkey,
+                "name": name
+            },
             data: {}
         });
 
@@ -493,7 +531,9 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
         const call = {};
         call.request = qrsSrv + '/qrs/app/' + guid;
         call.response = HTTP.del(call.request, {
-            params: { xrfkey: senseConfig.xrfkey },
+            params: {
+                xrfkey: senseConfig.xrfkey
+            },
             npmRequestOptions: configCerticates,
             data: {}
         });
@@ -527,7 +567,9 @@ export function publishApp(appGuid, appName, streamId, customerName, generationU
         const call = {};
         call.request = qrsSrv + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId;
         call.response = HTTP.put(call.request, {
-            params: { xrfkey: senseConfig.xrfkey },
+            params: {
+                xrfkey: senseConfig.xrfkey
+            },
             npmRequestOptions: configCerticates,
             data: {}
         });

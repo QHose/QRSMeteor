@@ -1,160 +1,70 @@
 [
   {
-    "id": "0c899b99-b75b-4637-8b91-d35a817fd678",
-    "prefix": "",
-    "description": "Central Proxy (Default)",
+    "id": "63cc18c2-1eb0-4149-adfd-c3685d507a97",
+    "prefix": "hdr",
+    "description": "Header authentication: for use if you have an authenticating reverse proxy. That reverse proxy will set a header (headerAuthenticationHeaderName) which this virtual proxy can read.",
     "authenticationModuleRedirectUri": "",
     "sessionModuleBaseUri": "",
     "loadBalancingModuleBaseUri": "",
     "loadBalancingServerNodes": [
       {
-        "id": "e44efde7-89bf-471a-adc1-3b6e0fae3251",
+        "id": "6c04e46f-6da9-4bb2-8d12-a9a05ba687ee",
         "name": "Central",
-        "hostName": "nlsch-mbj3.qliktech.com",
-        "temporaryfilepath": "C:\\Users\\QService\\AppData\\Local\\Temp\\",
+        "hostName": "qlik-ab0q2urn5t",
+        "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
         "roles": [
           {
-            "id": "a10ae864-44c9-4468-81d7-2d865cc883c0",
+            "id": "7a9bb9dd-be3d-42c2-9e8f-0011823a15ac",
             "definition": 0,
             "privileges": null
           },
           {
-            "id": "cac15fd8-078a-443f-98aa-1e9d4e005bbe",
+            "id": "81b07bd0-ed5b-4f2e-b04a-a1d48fc5f49c",
             "definition": 1,
             "privileges": null
           },
           {
-            "id": "e8789825-ed04-47bf-ab18-71e19d45a615",
+            "id": "04bca334-626a-4dc7-99bc-39790250f811",
             "definition": 2,
             "privileges": null
           },
           {
-            "id": "330aa538-a9b3-48ce-bc68-9b53a7008baa",
+            "id": "7c01080a-c616-47ab-bc30-8980c109d925",
             "definition": 3,
             "privileges": null
           },
           {
-            "id": "94fe30ca-640e-43a7-9a7e-35f27bd21775",
+            "id": "9939a1f2-8763-43d5-8237-ae287f219a2a",
             "definition": 4,
             "privileges": null
           },
           {
-            "id": "5796f5b7-03a1-4f69-8a4d-83924b07e465",
+            "id": "ceb5c8b8-fb17-47e4-9342-4907bef00748",
             "definition": 5,
             "privileges": null
           }
         ],
         "serviceCluster": {
-          "id": "534c640d-f08e-4822-894e-00da45027800",
+          "id": "9cca29c6-12ae-4417-b6f3-e1dbebae9eae",
           "name": "ServiceCluster",
           "privileges": null
         },
         "privileges": null
       }
     ],
-    "authenticationMethod": 0,
-    "headerAuthenticationMode": 0,
-    "headerAuthenticationHeaderName": "",
+    "authenticationMethod": 2,
+    "headerAuthenticationMode": 2,
+    "headerAuthenticationHeaderName": "hdr-usr",
     "headerAuthenticationStaticUserDirectory": "",
-    "headerAuthenticationDynamicUserDirectory": "",
+    "headerAuthenticationDynamicUserDirectory": "$ud\\\\$id",
     "anonymousAccessMode": 0,
     "windowsAuthenticationEnabledDevicePattern": "Windows",
-    "sessionCookieHeaderName": "X-Qlik-Session",
+    "sessionCookieHeaderName": "X-Qlik-Session-hdr",
     "sessionCookieDomain": "",
     "additionalResponseHeaders": "",
     "sessionInactivityTimeout": 30,
     "extendedSecurityEnvironment": false,
     "websocketCrossOriginWhiteList": [],
-    "defaultVirtualProxy": true,
-    "tags": [],
-    "samlMetadataIdP": "",
-    "samlHostUri": "",
-    "samlEntityId": "",
-    "samlAttributeUserId": "",
-    "samlAttributeUserDirectory": "",
-    "samlAttributeSigningAlgorithm": 0,
-    "samlAttributeMap": [],
-    "jwtAttributeUserId": "",
-    "jwtAttributeUserDirectory": "",
-    "jwtPublicKeyCertificate": "",
-    "jwtAttributeMap": [],
-    "magicLinkHostUri": "",
-    "magicLinkFriendlyName": "",
-    "privileges": null
-  },
-  {
-    "id": "614f9e10-dff7-4a79-9065-5d49065a7040",
-    "prefix": "anon",
-    "description": "anon",
-    "authenticationModuleRedirectUri": "",
-    "sessionModuleBaseUri": "",
-    "loadBalancingModuleBaseUri": "",
-    "loadBalancingServerNodes": [
-      {
-        "id": "e44efde7-89bf-471a-adc1-3b6e0fae3251",
-        "name": "Central",
-        "hostName": "nlsch-mbj3.qliktech.com",
-        "temporaryfilepath": "C:\\Users\\QService\\AppData\\Local\\Temp\\",
-        "roles": [
-          {
-            "id": "a10ae864-44c9-4468-81d7-2d865cc883c0",
-            "definition": 0,
-            "privileges": null
-          },
-          {
-            "id": "cac15fd8-078a-443f-98aa-1e9d4e005bbe",
-            "definition": 1,
-            "privileges": null
-          },
-          {
-            "id": "e8789825-ed04-47bf-ab18-71e19d45a615",
-            "definition": 2,
-            "privileges": null
-          },
-          {
-            "id": "330aa538-a9b3-48ce-bc68-9b53a7008baa",
-            "definition": 3,
-            "privileges": null
-          },
-          {
-            "id": "94fe30ca-640e-43a7-9a7e-35f27bd21775",
-            "definition": 4,
-            "privileges": null
-          },
-          {
-            "id": "5796f5b7-03a1-4f69-8a4d-83924b07e465",
-            "definition": 5,
-            "privileges": null
-          }
-        ],
-        "serviceCluster": {
-          "id": "534c640d-f08e-4822-894e-00da45027800",
-          "name": "ServiceCluster",
-          "privileges": null
-        },
-        "privileges": null
-      }
-    ],
-    "authenticationMethod": 0,
-    "headerAuthenticationMode": 0,
-    "headerAuthenticationHeaderName": "",
-    "headerAuthenticationStaticUserDirectory": "",
-    "headerAuthenticationDynamicUserDirectory": "",
-    "anonymousAccessMode": 1,
-    "windowsAuthenticationEnabledDevicePattern": "Windows",
-    "sessionCookieHeaderName": "X-Qlik-Session-anon",
-    "sessionCookieDomain": "",
-    "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
-    "sessionInactivityTimeout": 30,
-    "extendedSecurityEnvironment": false,
-    "websocketCrossOriginWhiteList": [
-      "integration.qlik.com",
-      "web.saasdemo.qlik.com",
-      "jshell.net",
-      "localhost",
-      "localhost",
-      "NLSCH-MBJ3"
-    ],
     "defaultVirtualProxy": false,
     "tags": [],
     "samlMetadataIdP": "",
@@ -173,95 +83,7 @@
     "privileges": null
   },
   {
-    "id": "4e963cfe-fdab-4e00-b416-64d5324d4f22",
-    "prefix": "presentationsso",
-    "description": "used to login users for the slide generator. Based on this users get a technical or a sales profile via a ticket request",
-    "authenticationModuleRedirectUri": "http://localhost:3000/presentationsso",
-    "sessionModuleBaseUri": "",
-    "loadBalancingModuleBaseUri": "",
-    "loadBalancingServerNodes": [
-      {
-        "id": "e44efde7-89bf-471a-adc1-3b6e0fae3251",
-        "name": "Central",
-        "hostName": "nlsch-mbj3.qliktech.com",
-        "temporaryfilepath": "C:\\Users\\QService\\AppData\\Local\\Temp\\",
-        "roles": [
-          {
-            "id": "a10ae864-44c9-4468-81d7-2d865cc883c0",
-            "definition": 0,
-            "privileges": null
-          },
-          {
-            "id": "cac15fd8-078a-443f-98aa-1e9d4e005bbe",
-            "definition": 1,
-            "privileges": null
-          },
-          {
-            "id": "e8789825-ed04-47bf-ab18-71e19d45a615",
-            "definition": 2,
-            "privileges": null
-          },
-          {
-            "id": "330aa538-a9b3-48ce-bc68-9b53a7008baa",
-            "definition": 3,
-            "privileges": null
-          },
-          {
-            "id": "94fe30ca-640e-43a7-9a7e-35f27bd21775",
-            "definition": 4,
-            "privileges": null
-          },
-          {
-            "id": "5796f5b7-03a1-4f69-8a4d-83924b07e465",
-            "definition": 5,
-            "privileges": null
-          }
-        ],
-        "serviceCluster": {
-          "id": "534c640d-f08e-4822-894e-00da45027800",
-          "name": "ServiceCluster",
-          "privileges": null
-        },
-        "privileges": null
-      }
-    ],
-    "authenticationMethod": 0,
-    "headerAuthenticationMode": 0,
-    "headerAuthenticationHeaderName": "",
-    "headerAuthenticationStaticUserDirectory": "",
-    "headerAuthenticationDynamicUserDirectory": "",
-    "anonymousAccessMode": 0,
-    "windowsAuthenticationEnabledDevicePattern": "",
-    "sessionCookieHeaderName": "X-Qlik-Session-presentationsso",
-    "sessionCookieDomain": "",
-    "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
-    "sessionInactivityTimeout": 999,
-    "extendedSecurityEnvironment": false,
-    "websocketCrossOriginWhiteList": [
-      "integration.qlik.com",
-      "localhost",
-      "localhost",
-      "NLSCH-MBJ3"
-    ],
-    "defaultVirtualProxy": false,
-    "tags": [],
-    "samlMetadataIdP": "",
-    "samlHostUri": "",
-    "samlEntityId": "",
-    "samlAttributeUserId": "",
-    "samlAttributeUserDirectory": "",
-    "samlAttributeSigningAlgorithm": 0,
-    "samlAttributeMap": [],
-    "jwtAttributeUserId": "",
-    "jwtAttributeUserDirectory": "",
-    "jwtPublicKeyCertificate": "",
-    "jwtAttributeMap": [],
-    "magicLinkHostUri": "",
-    "magicLinkFriendlyName": "",
-    "privileges": null
-  },
-  {
-    "id": "8f44264e-707a-410f-a6bd-a94244eb636b",
+    "id": "936288e8-97b7-4f3e-8e91-374e402a6648",
     "prefix": "meteor",
     "description": "Ticket auth. for the SaaS automation demo. In step 4 you will request a ticket via this virtual proxy.",
     "authenticationModuleRedirectUri": "http://localhost:3000/sso",
@@ -269,44 +91,44 @@
     "loadBalancingModuleBaseUri": "",
     "loadBalancingServerNodes": [
       {
-        "id": "e44efde7-89bf-471a-adc1-3b6e0fae3251",
+        "id": "6c04e46f-6da9-4bb2-8d12-a9a05ba687ee",
         "name": "Central",
-        "hostName": "nlsch-mbj3.qliktech.com",
-        "temporaryfilepath": "C:\\Users\\QService\\AppData\\Local\\Temp\\",
+        "hostName": "qlik-ab0q2urn5t",
+        "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
         "roles": [
           {
-            "id": "a10ae864-44c9-4468-81d7-2d865cc883c0",
+            "id": "7a9bb9dd-be3d-42c2-9e8f-0011823a15ac",
             "definition": 0,
             "privileges": null
           },
           {
-            "id": "cac15fd8-078a-443f-98aa-1e9d4e005bbe",
+            "id": "81b07bd0-ed5b-4f2e-b04a-a1d48fc5f49c",
             "definition": 1,
             "privileges": null
           },
           {
-            "id": "e8789825-ed04-47bf-ab18-71e19d45a615",
+            "id": "04bca334-626a-4dc7-99bc-39790250f811",
             "definition": 2,
             "privileges": null
           },
           {
-            "id": "330aa538-a9b3-48ce-bc68-9b53a7008baa",
+            "id": "7c01080a-c616-47ab-bc30-8980c109d925",
             "definition": 3,
             "privileges": null
           },
           {
-            "id": "94fe30ca-640e-43a7-9a7e-35f27bd21775",
+            "id": "9939a1f2-8763-43d5-8237-ae287f219a2a",
             "definition": 4,
             "privileges": null
           },
           {
-            "id": "5796f5b7-03a1-4f69-8a4d-83924b07e465",
+            "id": "ceb5c8b8-fb17-47e4-9342-4907bef00748",
             "definition": 5,
             "privileges": null
           }
         ],
         "serviceCluster": {
-          "id": "534c640d-f08e-4822-894e-00da45027800",
+          "id": "9cca29c6-12ae-4417-b6f3-e1dbebae9eae",
           "name": "ServiceCluster",
           "privileges": null
         },
@@ -330,8 +152,8 @@
       "web.saasdemo.qlik.com",
       "jshell.net",
       "localhost",
-      "localhost",
-      "NLSCH-MBJ3"
+      "QLIK-AB0Q2URN5T",
+      "QLIK-AB0Q2URN5T"
     ],
     "defaultVirtualProxy": false,
     "tags": [],
@@ -351,72 +173,249 @@
     "privileges": null
   },
   {
-    "id": "8a6ea67e-5ea1-4c7a-9603-99e4499131d5",
-    "prefix": "hdr",
-    "description": "Header authentication: for use if you have an authenticating reverse proxy. That reverse proxy will set a header (headerAuthenticationHeaderName) which this virtual proxy can read.",
-    "authenticationModuleRedirectUri": "",
+    "id": "dcc1cf51-9a1a-4ff2-9b06-43980bef8680",
+    "prefix": "presentationsso",
+    "description": "used to login users for the slide generator. Based on this users get a technical or a sales profile via a ticket request",
+    "authenticationModuleRedirectUri": "http://localhost:3000/presentationsso",
     "sessionModuleBaseUri": "",
     "loadBalancingModuleBaseUri": "",
     "loadBalancingServerNodes": [
       {
-        "id": "e44efde7-89bf-471a-adc1-3b6e0fae3251",
+        "id": "6c04e46f-6da9-4bb2-8d12-a9a05ba687ee",
         "name": "Central",
-        "hostName": "nlsch-mbj3.qliktech.com",
-        "temporaryfilepath": "C:\\Users\\QService\\AppData\\Local\\Temp\\",
+        "hostName": "qlik-ab0q2urn5t",
+        "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
         "roles": [
           {
-            "id": "a10ae864-44c9-4468-81d7-2d865cc883c0",
+            "id": "7a9bb9dd-be3d-42c2-9e8f-0011823a15ac",
             "definition": 0,
             "privileges": null
           },
           {
-            "id": "cac15fd8-078a-443f-98aa-1e9d4e005bbe",
+            "id": "81b07bd0-ed5b-4f2e-b04a-a1d48fc5f49c",
             "definition": 1,
             "privileges": null
           },
           {
-            "id": "e8789825-ed04-47bf-ab18-71e19d45a615",
+            "id": "04bca334-626a-4dc7-99bc-39790250f811",
             "definition": 2,
             "privileges": null
           },
           {
-            "id": "330aa538-a9b3-48ce-bc68-9b53a7008baa",
+            "id": "7c01080a-c616-47ab-bc30-8980c109d925",
             "definition": 3,
             "privileges": null
           },
           {
-            "id": "94fe30ca-640e-43a7-9a7e-35f27bd21775",
+            "id": "9939a1f2-8763-43d5-8237-ae287f219a2a",
             "definition": 4,
             "privileges": null
           },
           {
-            "id": "5796f5b7-03a1-4f69-8a4d-83924b07e465",
+            "id": "ceb5c8b8-fb17-47e4-9342-4907bef00748",
             "definition": 5,
             "privileges": null
           }
         ],
         "serviceCluster": {
-          "id": "534c640d-f08e-4822-894e-00da45027800",
+          "id": "9cca29c6-12ae-4417-b6f3-e1dbebae9eae",
           "name": "ServiceCluster",
           "privileges": null
         },
         "privileges": null
       }
     ],
-    "authenticationMethod": 2,
-    "headerAuthenticationMode": 2,
-    "headerAuthenticationHeaderName": "hdr-usr",
+    "authenticationMethod": 0,
+    "headerAuthenticationMode": 0,
+    "headerAuthenticationHeaderName": "",
     "headerAuthenticationStaticUserDirectory": "",
-    "headerAuthenticationDynamicUserDirectory": "$ud\\\\$id",
+    "headerAuthenticationDynamicUserDirectory": "",
     "anonymousAccessMode": 0,
-    "windowsAuthenticationEnabledDevicePattern": "Windows",
-    "sessionCookieHeaderName": "X-Qlik-Session-hdr",
+    "windowsAuthenticationEnabledDevicePattern": "",
+    "sessionCookieHeaderName": "X-Qlik-Session-presentationsso",
     "sessionCookieDomain": "",
-    "additionalResponseHeaders": "",
+    "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
+    "sessionInactivityTimeout": 999,
+    "extendedSecurityEnvironment": false,
+    "websocketCrossOriginWhiteList": [
+      "integration.qlik.com",
+      "localhost",
+      "QLIK-AB0Q2URN5T"
+    ],
+    "defaultVirtualProxy": false,
+    "tags": [],
+    "samlMetadataIdP": "",
+    "samlHostUri": "",
+    "samlEntityId": "",
+    "samlAttributeUserId": "",
+    "samlAttributeUserDirectory": "",
+    "samlAttributeSigningAlgorithm": 0,
+    "samlAttributeMap": [],
+    "jwtAttributeUserId": "",
+    "jwtAttributeUserDirectory": "",
+    "jwtPublicKeyCertificate": "",
+    "jwtAttributeMap": [],
+    "magicLinkHostUri": "",
+    "magicLinkFriendlyName": "",
+    "privileges": null
+  },
+  {
+    "id": "1ee10e94-612e-4ce8-b47a-01543c21ce8b",
+    "prefix": "anon",
+    "description": "anon",
+    "authenticationModuleRedirectUri": "",
+    "sessionModuleBaseUri": "",
+    "loadBalancingModuleBaseUri": "",
+    "loadBalancingServerNodes": [
+      {
+        "id": "6c04e46f-6da9-4bb2-8d12-a9a05ba687ee",
+        "name": "Central",
+        "hostName": "qlik-ab0q2urn5t",
+        "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
+        "roles": [
+          {
+            "id": "7a9bb9dd-be3d-42c2-9e8f-0011823a15ac",
+            "definition": 0,
+            "privileges": null
+          },
+          {
+            "id": "81b07bd0-ed5b-4f2e-b04a-a1d48fc5f49c",
+            "definition": 1,
+            "privileges": null
+          },
+          {
+            "id": "04bca334-626a-4dc7-99bc-39790250f811",
+            "definition": 2,
+            "privileges": null
+          },
+          {
+            "id": "7c01080a-c616-47ab-bc30-8980c109d925",
+            "definition": 3,
+            "privileges": null
+          },
+          {
+            "id": "9939a1f2-8763-43d5-8237-ae287f219a2a",
+            "definition": 4,
+            "privileges": null
+          },
+          {
+            "id": "ceb5c8b8-fb17-47e4-9342-4907bef00748",
+            "definition": 5,
+            "privileges": null
+          }
+        ],
+        "serviceCluster": {
+          "id": "9cca29c6-12ae-4417-b6f3-e1dbebae9eae",
+          "name": "ServiceCluster",
+          "privileges": null
+        },
+        "privileges": null
+      }
+    ],
+    "authenticationMethod": 0,
+    "headerAuthenticationMode": 0,
+    "headerAuthenticationHeaderName": "",
+    "headerAuthenticationStaticUserDirectory": "",
+    "headerAuthenticationDynamicUserDirectory": "",
+    "anonymousAccessMode": 1,
+    "windowsAuthenticationEnabledDevicePattern": "Windows",
+    "sessionCookieHeaderName": "X-Qlik-Session-anon",
+    "sessionCookieDomain": "",
+    "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
     "sessionInactivityTimeout": 30,
     "extendedSecurityEnvironment": false,
-    "websocketCrossOriginWhiteList": [],
+    "websocketCrossOriginWhiteList": [
+      "integration.qlik.com",
+      "web.saasdemo.qlik.com",
+      "jshell.net",
+      "localhost",
+      "QLIK-AB0Q2URN5T",
+      "QLIK-AB0Q2URN5T"
+    ],
     "defaultVirtualProxy": false,
+    "tags": [],
+    "samlMetadataIdP": "",
+    "samlHostUri": "",
+    "samlEntityId": "",
+    "samlAttributeUserId": "",
+    "samlAttributeUserDirectory": "",
+    "samlAttributeSigningAlgorithm": 0,
+    "samlAttributeMap": [],
+    "jwtAttributeUserId": "",
+    "jwtAttributeUserDirectory": "",
+    "jwtPublicKeyCertificate": "",
+    "jwtAttributeMap": [],
+    "magicLinkHostUri": "",
+    "magicLinkFriendlyName": "",
+    "privileges": null
+  },
+  {
+    "id": "8ce2b86f-cb12-45df-951a-33e74335690c",
+    "prefix": "",
+    "description": "Central Proxy (Default)",
+    "authenticationModuleRedirectUri": "",
+    "sessionModuleBaseUri": "",
+    "loadBalancingModuleBaseUri": "",
+    "loadBalancingServerNodes": [
+      {
+        "id": "6c04e46f-6da9-4bb2-8d12-a9a05ba687ee",
+        "name": "Central",
+        "hostName": "qlik-ab0q2urn5t",
+        "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
+        "roles": [
+          {
+            "id": "7a9bb9dd-be3d-42c2-9e8f-0011823a15ac",
+            "definition": 0,
+            "privileges": null
+          },
+          {
+            "id": "81b07bd0-ed5b-4f2e-b04a-a1d48fc5f49c",
+            "definition": 1,
+            "privileges": null
+          },
+          {
+            "id": "04bca334-626a-4dc7-99bc-39790250f811",
+            "definition": 2,
+            "privileges": null
+          },
+          {
+            "id": "7c01080a-c616-47ab-bc30-8980c109d925",
+            "definition": 3,
+            "privileges": null
+          },
+          {
+            "id": "9939a1f2-8763-43d5-8237-ae287f219a2a",
+            "definition": 4,
+            "privileges": null
+          },
+          {
+            "id": "ceb5c8b8-fb17-47e4-9342-4907bef00748",
+            "definition": 5,
+            "privileges": null
+          }
+        ],
+        "serviceCluster": {
+          "id": "9cca29c6-12ae-4417-b6f3-e1dbebae9eae",
+          "name": "ServiceCluster",
+          "privileges": null
+        },
+        "privileges": null
+      }
+    ],
+    "authenticationMethod": 0,
+    "headerAuthenticationMode": 0,
+    "headerAuthenticationHeaderName": "",
+    "headerAuthenticationStaticUserDirectory": "",
+    "headerAuthenticationDynamicUserDirectory": "",
+    "anonymousAccessMode": 0,
+    "windowsAuthenticationEnabledDevicePattern": "Windows",
+    "sessionCookieHeaderName": "X-Qlik-Session",
+    "sessionCookieDomain": "",
+    "additionalResponseHeaders": "",
+    "sessionInactivityTimeout": 30000,
+    "extendedSecurityEnvironment": false,
+    "websocketCrossOriginWhiteList": [],
+    "defaultVirtualProxy": true,
     "tags": [],
     "samlMetadataIdP": "",
     "samlHostUri": "",
