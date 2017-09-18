@@ -7,7 +7,8 @@
     $DOCKER_TAG = "qhose/" + $BASE_APP_NAME + ":" + $VERSION
 
     echo "STEP delete old build files"
-    Remove-Item $BUNDLE_DIR* -recurse -Force
+    Remove-PathToLongDirectory $BUILD_DIR
+    # Remove-Item $BUNDLE_DIR* -recurse -Force
 
     echo "STEP build new meteor bundle"
     meteor build --architecture=os.linux.x86_64 --allow-superuser --directory $BUILD_DIR
@@ -28,3 +29,20 @@
 
     #at the end, go back to the folder where we started
     cd $PROJECT_ROOT
+
+
+    function Remove-PathToLongDirectory 
+    {
+        Param(
+            [string]$directory
+        )
+    
+        # create a temporary (empty) directory
+        $parent = [System.IO.Path]::GetTempPath()
+        [string] $name = [System.Guid]::NewGuid()
+        $tempDirectory = New-Item -ItemType Directory -Path (Join-Path $parent $name)
+    
+        robocopy /MIR $tempDirectory.FullName $directory | out-null
+        Remove-Item $directory -Force | out-null
+        Remove-Item $tempDirectory -Force | out-null
+    }

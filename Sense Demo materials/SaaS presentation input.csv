@@ -1390,9 +1390,75 @@ function appChangeListener() {
 "Integration.qlik.com docker environment","Architecture detailed: app provisioning","Using the APIs we can install Qlik Sense on a server, and uload apps, set security, license etc. ",,,,,,,,,
 "Integration.qlik.com docker environment","Demo architecture setup","integrated Architecture saasdemo setup.png",,,,,,,,,
 "Integration.qlik.com docker environment","Demo architecture setup","# we created 3 servers",,,,,,,,,
-"Integration.qlik.com docker environment","Demo architecture setup","- [QRSMeteor]https://github.com/QHose/QRSMeteor): app provisioning and automatic installation of Qlik Sense (docker image)",,,,,,,,,
+"Integration.qlik.com docker environment","Demo architecture setup","- [QRSMeteor](https://github.com/QHose/QRSMeteor): app provisioning and automatic installation of Qlik Sense (docker image)",,,,,,,,,
 "Integration.qlik.com docker environment","Demo architecture setup","- [senseWebIntegration](https://github.com/QHose/senseWebIntegration) simulates the SaaS platform to which an end user connects (the website) and which embeds Qlik Sense charts. (docker image)",,,,,,,,,
 "Integration.qlik.com docker environment","Demo architecture setup","- Qlik Sense",,,,,,,,,
+"Integration.qlik.com docker environment","Build a docker image from a Meteor project","<div style=""width: 960px; height: 720px; margin: 10px; position: relative;""><iframe allowfullscreen frameborder=""0"" style=""width:960px; height:720px"" src=""https://www.lucidchart.com/documents/embeddedchart/feaf7d0e-cd67-44f5-ad35-ea849ff6d274"" id=""ZyhxQWbU77-i""></iframe></div>",,,,,,,,,
+"Integration.qlik.com docker environment","How to run the demo with docker?","install docker for windows",,,,,,,,,
+"Integration.qlik.com docker environment","Run docker-compose","```Dockerfile
+version: ""3.3""
+services: 
+    # nginx:
+    #     image: nginx:1.9
+    #     ports:
+    #     - ""80:80""
+    #     volumes:
+    #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    #     restart: always
+    #     depends_on:
+    #     - web
+        # - qrs
+    lb:
+        image: dockercloud/haproxy
+        links:
+        - qrs
+        - web
+        volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        restart: always
+        ports:
+        -  ""80:80""
+        depends_on:
+        - qrs
+        - web
+    mongodb:
+        image: mongo
+        container_name: ""mongodb""
+    qrs:
+        image: qhose/qrsmeteor:1.0.0
+        environment:
+            - MONGO_URL=mongodb://mongodb:27017/
+            - VIRTUAL_HOST=localqrs
+            - PORT=3000 
+            - ROOT_URL=http://localweb
+        volumes:
+         - C:\Users\mbj\Documents\GitHub\QRSMeteor\config:/meteorQRS/config
+        ports:
+        -  ""3000""
+        restart: always
+        links:
+        - mongodb
+        depends_on:
+        - mongodb
+    web:
+        image: qhose/sensewebintegration:1.0.0
+        environment:
+            - VIRTUAL_HOST=localweb
+            - MONGO_URL=mongodb://mongodb:27017/
+            - PORT=3030 
+            - ROOT_URL=http://localweb
+        volumes:
+         - C:\Users\mbj\Documents\GitHub\senseWebIntegration\config:/senseWebIntegration/config
+        ports:
+        -  ""3030""
+        restart: always
+        links:
+        - mongodb
+        depends_on:
+        - mongodb
+networks:
+    default:
+```",,,,,,,,,
 "Qlik Sense API introduction","Overview","<iframe class=""SenseEmbedFrame"" src=""/API_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Integration summary, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",

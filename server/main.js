@@ -63,11 +63,15 @@ async function initQlikSense() {
     console.log('senseDemoMaterials', senseDemoMaterials)
     if (!Meteor.settings.broker.automationBaseFolder) {
         Meteor.settings.broker.automationBaseFolder = path.join(Meteor.absolutePath, '.automation');
-        console.log('Meteor.settings.broker.automationBaseFolder', Meteor.settings.broker.automationBaseFolder)
+        console.log('Meteor.settings.broker.automationBaseFolder was empty, setting it to default: ', Meteor.settings.broker.automationBaseFolder)
     }
     if (!Meteor.settings.broker.customerDataDir) {
         Meteor.settings.broker.customerDataDir = path.join(Meteor.absolutePath, 'customerData');
-        console.log('Meteor.settings.broker.customerDataDir', Meteor.settings.broker.customerDataDir)
+        console.log('Meteor.settings.broker.customerDataDir was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
+    }
+    if (!Meteor.settings.broker.certificatesDirectory) {
+        Meteor.settings.broker.certificatesDirectory = 'C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates';
+        console.log('Meteor.settings.private.certificatesDirectory was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
     }
     console.log('------------------------------------');
     Meteor.call('updateLocalSenseCopy');

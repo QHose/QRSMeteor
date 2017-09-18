@@ -27,7 +27,7 @@
         }
     },
     "private": {
-        "certificatesDirectory": "C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates",
+        "certificatesDirectory": "",
         "SenseServerInternalLanIP": "QLIK-AB0Q2URN5T",
         "useSSL": false,
         "passphrase": null,

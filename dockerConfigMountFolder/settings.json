@@ -1,0 +1,66 @@
+{
+    "adminEmails": "mbj@qlik.com",
+    "multiTenantScenario": false,
+    "public": {
+        "host": "QLIK-AB0Q2URN5T",
+        "proxyPort": 80,
+        "port": 81,
+        "virtualProxyClientUsage": "meteor",
+        "webIntegrationHost": "QLIK-AB0Q2URN5T",
+        "webIntegrationDemoPort": 3030,
+        "StreamsToCreateAutomatically": ["API apps", "Templates", "Everyone", "QA", "TEST"],
+        "APIAppStreamName": "API apps",
+        "TemplateAppStreamName": "Templates",
+        "EveryoneAppStreamName": "Everyone",
+        "SSBI": {
+            "name": "SSBI",
+            "stream": "Everyone",
+            "sheetId": "puEpZK"
+        },
+        "slideGenerator": {
+            "name": "Slide generator",
+            "stream": "API apps",
+            "selectionSheet": "DYTpxv",
+            "dataObject": "pskL",
+            "slideObject": "BbbV",
+            "virtualProxy": "presentationsso"
+        }
+    },
+    "private": {
+        "certificatesDirectory": "C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates",
+        "SenseServerInternalLanIP": "QLIK-AB0Q2URN5T",
+        "useSSL": false,
+        "passphrase": null,
+        "virtualProxy": "hdr",
+        "headerKey": "hdr-usr",
+        "isSecure": true,
+        "enginePort": 4747,
+        "qrsPort": 4242,
+        "proxyPort": 4243,
+        "license": {
+            "serial": "9999000000001068",
+            "name": "Martijn Biesbroek",
+            "organization": "Qlik"
+        },
+        "LicenseControlNumber": 22399
+    },
+    "broker": {
+        "customerDataDir": "",
+        "automaticCleanUpGeneratedApps": "Yes",
+        "automationBaseFolder": "",
+        "runInitialQlikSenseSetup": true
+    },
+    "security": {
+        "rulesToDisable": ["Stream", "CreateAppObjectsPublishedApp", "CreateApp", "ExportAppData", "StreamEveryoneAnonymous"]
+    },
+    "sikka": {
+        "captcha": {
+            "siteKey": "",
+            "check": "",
+            "secret": "6dafdsfasdfasdfadsfdsafh"
+        },
+        "rateLimits": {
+            "perIp": 260
+        }
+    }
+}

@@ -305,14 +305,14 @@ pre {
     width: 900px;
 }
 
-.markdownItem h1,
-.markdownItem h2 {
+.integration .markdownItem h1,
+.integration .markdownItem h2 {
     margin-top: 1em;
     margin-bottom: 1em;
     font-size: 1em;
 }
 
-.markdownItem h3 {
+.integration .markdownItem h3 {
     margin-top: 1.5em;
 }
 
