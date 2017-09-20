@@ -2,8 +2,8 @@
     "adminEmails": "mbj@qlik.com",
     "multiTenantScenario": false,
     "public": {
-        "host": "QLIK-AB0Q2URN5T",
-        "proxyPort": 80,
+        "host": "172.18.0.1",
+        "proxyPort": 90,
         "port": 81,
         "virtualProxyClientUsage": "meteor",
         "webIntegrationHost": "QLIK-AB0Q2URN5T",
@@ -27,8 +27,8 @@
         }
     },
     "private": {
-        "certificatesDirectory": "C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates",
-        "SenseServerInternalLanIP": "QLIK-AB0Q2URN5T",
+        "certificatesDirectory": "/meteorQRS/config",
+        "SenseServerInternalLanIP": "172.18.0.1",
         "useSSL": false,
         "passphrase": null,
         "virtualProxy": "hdr",

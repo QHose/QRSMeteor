@@ -6,6 +6,23 @@
     $VERSION = "2.0.0"
     $DOCKER_TAG = "qhose/" + $BASE_APP_NAME + ":" + $VERSION
 
+    
+    function Remove-PathToLongDirectory 
+    {
+        Param(
+            [string]$directory
+        )
+    
+        # create a temporary (empty) directory
+        $parent = [System.IO.Path]::GetTempPath()
+        [string] $name = [System.Guid]::NewGuid()
+        $tempDirectory = New-Item -ItemType Directory -Path (Join-Path $parent $name)
+    
+        robocopy /MIR $tempDirectory.FullName $directory | out-null
+        Remove-Item $directory -Force | out-null
+        Remove-Item $tempDirectory -Force | out-null
+    }
+    
     echo "STEP delete old build files"
     Remove-PathToLongDirectory $BUILD_DIR
     # Remove-Item $BUNDLE_DIR* -recurse -Force
@@ -30,19 +47,3 @@
     #at the end, go back to the folder where we started
     cd $PROJECT_ROOT
 
-
-    function Remove-PathToLongDirectory 
-    {
-        Param(
-            [string]$directory
-        )
-    
-        # create a temporary (empty) directory
-        $parent = [System.IO.Path]::GetTempPath()
-        [string] $name = [System.Guid]::NewGuid()
-        $tempDirectory = New-Item -ItemType Directory -Path (Join-Path $parent $name)
-    
-        robocopy /MIR $tempDirectory.FullName $directory | out-null
-        Remove-Item $directory -Force | out-null
-        Remove-Item $tempDirectory -Force | out-null
-    }

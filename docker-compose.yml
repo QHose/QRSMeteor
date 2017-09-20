@@ -14,7 +14,7 @@ services:
         image: dockercloud/haproxy
         links:
         - qrs
-        # - web
+        - web
         volumes:
         - /var/run/docker.sock:/var/run/docker.sock
         restart: always
@@ -22,7 +22,7 @@ services:
         -  "80:80"
         depends_on:
         - qrs
-        # - web
+        - web
     mongodb:
         image: mongo
         container_name: "mongodb"
@@ -32,7 +32,7 @@ services:
             - MONGO_URL=mongodb://mongodb:27017/
             - VIRTUAL_HOST=localqrs
             - PORT=3000 
-            - ROOT_URL=http://localhost
+            - ROOT_URL=http://localqrs
         volumes:
          - C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\dockerConfigMountFolder:/meteorQRS/config
         ports:
@@ -42,21 +42,21 @@ services:
         - mongodb
         depends_on:
         - mongodb
-    # web:
-    #     image: qhose/sensewebintegration:1.0.0
-    #     environment:
-    #         - VIRTUAL_HOST=localweb
-    #         - MONGO_URL=mongodb://mongodb:27017/
-    #         - PORT=3030 
-    #         - ROOT_URL=http://localweb
-    #     volumes:
-    #      - C:\Users\Qlikexternal\Documents\GitHub\senseWebIntegration:/senseWebIntegration/config
-    #     ports:
-    #     -  "3030"
-    #     restart: always
-    #     links:
-    #     - mongodb
-    #     depends_on:
-    #     - mongodb
+    web:
+        image: qhose/sensewebintegration:1.0.0
+        environment:
+            - VIRTUAL_HOST=localweb
+            - MONGO_URL=mongodb://mongodb:27017/
+            - PORT=3030 
+            - ROOT_URL=http://localweb
+        volumes:
+         - C:\Users\Qlikexternal\Documents\GitHub\senseWebIntegration:/senseWebIntegration/config
+        ports:
+        -  "3030"
+        restart: always
+        links:
+        - mongodb
+        depends_on:
+        - mongodb
 networks:
     default:

@@ -48,7 +48,18 @@
         "customerDataDir": "",
         "automaticCleanUpGeneratedApps": "Yes",
         "automationBaseFolder": "",
-        "runInitialQlikSenseSetup": true
+        "runInitialQlikSenseSetup": true,
+        "dataConnections": [{
+                "name": "data import test",
+                "type": "folder",
+                "connectionString": "C:\\"
+            },
+            {
+                "name": "test",
+                "type": "folder",
+                "connectionString": "C:\\"
+            }
+        ]
     },
     "security": {
         "rulesToDisable": ["Stream", "CreateAppObjectsPublishedApp", "CreateApp", "ExportAppData", "StreamEveryoneAnonymous"]

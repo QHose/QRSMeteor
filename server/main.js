@@ -54,7 +54,7 @@ Meteor.startup(function() {
 // ─── SETUP QLIK SENSE AFTER A CLEAN QlIK SENSE INSTALL ─────────────────────────────────────
 //
 
-//Check if Qlik Sense has been properly setup for this MeteorQRS tool
+//Check if Qlik Sense has been properly setup for this MeteorQRS tool.
 async function initQlikSense() {
     console.log('------------------------------------');
     console.log('INIT QLIK SENSE');
@@ -69,10 +69,6 @@ async function initQlikSense() {
         Meteor.settings.broker.customerDataDir = path.join(Meteor.absolutePath, 'customerData');
         console.log('Meteor.settings.broker.customerDataDir was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
     }
-    if (!Meteor.settings.broker.certificatesDirectory) {
-        Meteor.settings.broker.certificatesDirectory = 'C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates';
-        console.log('Meteor.settings.private.certificatesDirectory was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
-    }
     console.log('------------------------------------');
     Meteor.call('updateLocalSenseCopy');
 
@@ -82,18 +78,19 @@ async function initQlikSense() {
     if (!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup) {
         console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
         // QSLic.insertLicense();
-        // QSLic.insertUserAccessRule();
-        // await QSSystem.createSecurityRules();
-        // QSSystem.disableDefaultSecurityRules();
-        // await QSProxy.createVirtualProxies();
-        // QSStream.initSenseStreams();
-        // await QSApp.uploadAndPublishTemplateApps();      /
-        ////set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.
+        QSLic.insertUserAccessRule();
+        await QSSystem.createSecurityRules();
+        QSSystem.disableDefaultSecurityRules();
+        await QSProxy.createVirtualProxies();
+        QSStream.initSenseStreams();
+        await QSApp.uploadAndPublishTemplateApps();
+
+        //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.
         QSApp.setAppIDs();
 
         await QSApp.createAppConnection('folder', 'Import demo', senseDemoMaterials);
-        // QSExtensions.uploadExtensions();
-        // QSLic.saveSystemRules();
+        QSExtensions.uploadExtensions();
+        QSLic.saveSystemRules();
     }
 
 }

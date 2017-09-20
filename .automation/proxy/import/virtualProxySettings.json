@@ -8,7 +8,7 @@
         "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
         "sessionInactivityTimeout": 30,
         "websocketCrossOriginWhiteList": [
-            "integration.qlik.com",
+            "integration.qlik.com", "192.168.0.108",
             "web.saasdemo.qlik.com",
             "jshell.net",
             "localhost"
@@ -26,7 +26,7 @@
         "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
         "sessionInactivityTimeout": 999,
         "websocketCrossOriginWhiteList": [
-            "integration.qlik.com",
+            "integration.qlik.com", "192.168.0.108",
             "localhost"
         ],
         "defaultVirtualProxy": false
@@ -42,7 +42,7 @@
         "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
         "sessionInactivityTimeout": 30,
         "websocketCrossOriginWhiteList": [
-            "integration.qlik.com",
+            "integration.qlik.com", "192.168.0.108",
             "web.saasdemo.qlik.com",
             "jshell.net",
             "localhost"

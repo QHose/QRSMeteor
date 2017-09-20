@@ -96,6 +96,18 @@
     "privileges": null
   },
   {
+    "id": "63554c3e-09d2-4fe8-8b3b-7f4285d4d04d",
+    "category": "Security",
+    "type": "Default",
+    "name": "CreateApp",
+    "rule": "!user.IsAnonymous()",
+    "resourceFilter": "App_*",
+    "actions": 1,
+    "comment": "Everyone is allowed to create apps except anonymous users",
+    "disabled": true,
+    "privileges": null
+  },
+  {
     "id": "e606803d-393d-43de-b86c-388f8bfa84ff",
     "category": "Security",
     "type": "ReadOnly",
@@ -249,18 +261,6 @@
     "actions": 15,
     "comment": "Allows everyone that can update an extension to manage its corresponding files",
     "disabled": false,
-    "privileges": null
-  },
-  {
-    "id": "63554c3e-09d2-4fe8-8b3b-7f4285d4d04d",
-    "category": "Security",
-    "type": "Default",
-    "name": "CreateApp",
-    "rule": "!user.IsAnonymous()",
-    "resourceFilter": "App_*",
-    "actions": 1,
-    "comment": "Everyone is allowed to create apps except anonymous users",
-    "disabled": true,
     "privileges": null
   },
   {
@@ -816,18 +816,6 @@
     "privileges": null
   },
   {
-    "id": "4598eec2-69da-4494-9f41-6ed657365815",
-    "category": "Security",
-    "type": "Default",
-    "name": "CreateAppObjectsPublishedApp",
-    "rule": "!resource.App.stream.Empty() and resource.App.HasPrivilege(\"read\") and (resource.objectType = \"userstate\" or resource.objectType = \"sheet\" or resource.objectType = \"story\" or resource.objectType = \"bookmark\" or resource.objectType = \"snapshot\" or resource.objectType = \"embeddedsnapshot\" or resource.objectType = \"hiddenbookmark\") and !user.IsAnonymous()",
-    "resourceFilter": "App.Object_*",
-    "actions": 1,
-    "comment": "If you have read rights on an published app you should be able to create sheets, stories, bookmarks and snapshots belonging to that app",
-    "disabled": true,
-    "privileges": null
-  },
-  {
     "id": "5255b251-06d4-425c-8c3e-f899f06ee9ca",
     "category": "Security",
     "type": "Default",
@@ -836,6 +824,18 @@
     "resourceFilter": "App*",
     "actions": 2,
     "comment": "The user should see the resource if he/she has read access to the stream it is published to",
+    "disabled": true,
+    "privileges": null
+  },
+  {
+    "id": "4598eec2-69da-4494-9f41-6ed657365815",
+    "category": "Security",
+    "type": "Default",
+    "name": "CreateAppObjectsPublishedApp",
+    "rule": "!resource.App.stream.Empty() and resource.App.HasPrivilege(\"read\") and (resource.objectType = \"userstate\" or resource.objectType = \"sheet\" or resource.objectType = \"story\" or resource.objectType = \"bookmark\" or resource.objectType = \"snapshot\" or resource.objectType = \"embeddedsnapshot\" or resource.objectType = \"hiddenbookmark\") and !user.IsAnonymous()",
+    "resourceFilter": "App.Object_*",
+    "actions": 1,
+    "comment": "If you have read rights on an published app you should be able to create sheets, stories, bookmarks and snapshots belonging to that app",
     "disabled": true,
     "privileges": null
   }

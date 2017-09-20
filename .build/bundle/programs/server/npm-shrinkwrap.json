@@ -1,0 +1,177 @@
+{
+  "name": "meteor-dev-bundle",
+  "version": "0.0.0",
+  "dependencies": {
+    "amdefine": {
+      "version": "1.0.1",
+      "from": "amdefine@>=0.0.4",
+      "resolved": "https://registry.npmjs.org/amdefine/-/amdefine-1.0.1.tgz"
+    },
+    "ansi-regex": {
+      "version": "0.2.1",
+      "from": "ansi-regex@>=0.2.0 <0.3.0",
+      "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-0.2.1.tgz",
+      "dev": true
+    },
+    "ansi-styles": {
+      "version": "1.1.0",
+      "from": "ansi-styles@>=1.1.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-1.1.0.tgz",
+      "dev": true
+    },
+    "asap": {
+      "version": "2.0.6",
+      "from": "asap@>=2.0.3 <2.1.0",
+      "resolved": "https://registry.npmjs.org/asap/-/asap-2.0.6.tgz"
+    },
+    "chalk": {
+      "version": "0.5.1",
+      "from": "chalk@0.5.1",
+      "resolved": "https://registry.npmjs.org/chalk/-/chalk-0.5.1.tgz",
+      "dev": true
+    },
+    "core-util-is": {
+      "version": "1.0.2",
+      "from": "core-util-is@>=1.0.0 <1.1.0",
+      "resolved": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz",
+      "dev": true
+    },
+    "duplexer2": {
+      "version": "0.1.4",
+      "from": "duplexer2@>=0.1.2 <0.2.0",
+      "resolved": "https://registry.npmjs.org/duplexer2/-/duplexer2-0.1.4.tgz",
+      "dev": true
+    },
+    "escape-string-regexp": {
+      "version": "1.0.5",
+      "from": "escape-string-regexp@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz",
+      "dev": true
+    },
+    "fibers": {
+      "version": "1.0.15",
+      "from": "fibers@1.0.15",
+      "resolved": "https://registry.npmjs.org/fibers/-/fibers-1.0.15.tgz"
+    },
+    "has-ansi": {
+      "version": "0.1.0",
+      "from": "has-ansi@>=0.1.0 <0.2.0",
+      "resolved": "https://registry.npmjs.org/has-ansi/-/has-ansi-0.1.0.tgz",
+      "dev": true
+    },
+    "inherits": {
+      "version": "2.0.3",
+      "from": "inherits@>=2.0.3 <2.1.0",
+      "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz",
+      "dev": true
+    },
+    "isarray": {
+      "version": "1.0.0",
+      "from": "isarray@>=1.0.0 <1.1.0",
+      "resolved": "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz",
+      "dev": true
+    },
+    "meteor-promise": {
+      "version": "0.8.5",
+      "from": "meteor-promise@0.8.5",
+      "resolved": "https://registry.npmjs.org/meteor-promise/-/meteor-promise-0.8.5.tgz"
+    },
+    "multipipe": {
+      "version": "1.0.2",
+      "from": "multipipe@1.0.2",
+      "resolved": "https://registry.npmjs.org/multipipe/-/multipipe-1.0.2.tgz",
+      "dev": true
+    },
+    "object-assign": {
+      "version": "4.1.1",
+      "from": "object-assign@>=4.1.0 <5.0.0",
+      "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz",
+      "dev": true
+    },
+    "process-nextick-args": {
+      "version": "1.0.7",
+      "from": "process-nextick-args@>=1.0.6 <1.1.0",
+      "resolved": "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-1.0.7.tgz",
+      "dev": true
+    },
+    "promise": {
+      "version": "8.0.1",
+      "from": "promise@8.0.1",
+      "resolved": "https://registry.npmjs.org/promise/-/promise-8.0.1.tgz"
+    },
+    "readable-stream": {
+      "version": "2.3.3",
+      "from": "readable-stream@>=2.0.2 <3.0.0",
+      "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.3.tgz",
+      "dev": true
+    },
+    "safe-buffer": {
+      "version": "5.1.1",
+      "from": "safe-buffer@>=5.1.1 <5.2.0",
+      "resolved": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.1.tgz",
+      "dev": true
+    },
+    "semver": {
+      "version": "5.3.0",
+      "from": "semver@5.3.0",
+      "resolved": "https://registry.npmjs.org/semver/-/semver-5.3.0.tgz"
+    },
+    "source-map": {
+      "version": "0.1.32",
+      "from": "source-map@0.1.32",
+      "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.1.32.tgz"
+    },
+    "source-map-support": {
+      "version": "0.3.2",
+      "from": "https://github.com/meteor/node-source-map-support/tarball/1912478769d76e5df4c365e147f25896aee6375e",
+      "resolved": "https://github.com/meteor/node-source-map-support/tarball/1912478769d76e5df4c365e147f25896aee6375e"
+    },
+    "split2": {
+      "version": "2.1.1",
+      "from": "split2@2.1.1",
+      "resolved": "https://registry.npmjs.org/split2/-/split2-2.1.1.tgz",
+      "dev": true
+    },
+    "string_decoder": {
+      "version": "1.0.3",
+      "from": "string_decoder@>=1.0.3 <1.1.0",
+      "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-1.0.3.tgz",
+      "dev": true
+    },
+    "strip-ansi": {
+      "version": "0.3.0",
+      "from": "strip-ansi@>=0.3.0 <0.4.0",
+      "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-0.3.0.tgz",
+      "dev": true
+    },
+    "supports-color": {
+      "version": "0.2.0",
+      "from": "supports-color@>=0.2.0 <0.3.0",
+      "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-0.2.0.tgz",
+      "dev": true
+    },
+    "through2": {
+      "version": "2.0.3",
+      "from": "through2@>=2.0.2 <3.0.0",
+      "resolved": "https://registry.npmjs.org/through2/-/through2-2.0.3.tgz",
+      "dev": true
+    },
+    "underscore": {
+      "version": "1.5.2",
+      "from": "underscore@1.5.2",
+      "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.5.2.tgz"
+    },
+    "util-deprecate": {
+      "version": "1.0.2",
+      "from": "util-deprecate@>=1.0.1 <1.1.0",
+      "resolved": "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz",
+      "dev": true
+    },
+    "xtend": {
+      "version": "4.0.1",
+      "from": "xtend@>=4.0.1 <4.1.0",
+      "resolved": "https://registry.npmjs.org/xtend/-/xtend-4.0.1.tgz",
+      "dev": true
+    }
+  }
+}

@@ -61,10 +61,13 @@ if (Meteor.isServer) {
 
     //CONFIG FOR HTTP MODULE WITH HEADER AUTH (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)
     export const authHeaders = {
-        'hdr-usr': _senseConfig.headerValue,
-        'X-Qlik-xrfkey': _senseConfig.xrfkey
+            'hdr-usr': _senseConfig.headerValue,
+            'X-Qlik-xrfkey': _senseConfig.xrfkey
+        } //
+    if (!Meteor.settings.private.certificatesDirectory) {
+        Meteor.settings.private.certificatesDirectory = 'C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates';
+        console.log('Meteor.settings.private.certificatesDirectory was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
     }
-
     export const _certs = {
         ca: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/root.pem'),
         key: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client_key.pem'),
