@@ -74,18 +74,32 @@ if (Meteor.isServer) {
         cert: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client.pem'),
     }
 
+    //if you use windows and this tool runs on the same machine, you can keep the parameters empty
+    // and we use the user the node service runs under... 
+    var qlikUserDomain = '';
+    var qlikUser = '';
+
+    if (!Meteor.settings.broker.ConnectToSenseAsUserDirectory) {
+        qlikUserDomain = $(process.env.USERDOMAIN);
+        qlikUser = $(process.env.USERDOMAIN);
+    } else {
+        qlikUserDomain = Meteor.settings.broker.ConnectToSenseAsUserDirectory;
+        qlikUser = Meteor.settings.broker.ConnectToSenseAsUser
+    }
+
     export var configCerticates = {
         rejectUnauthorized: false,
         hostname: _senseConfig.SenseServerInternalLanIP,
         headers: {
             'x-qlik-xrfkey': _senseConfig.xrfkey,
-            'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`, //`UserDirectory=INTERNAL;UserId=sa_repository` you need to give this user extra roles before this works
+            'X-Qlik-User': `UserDirectory=${qlikUserDomain};UserId=${qlikUser}`, //`UserDirectory=INTERNAL;UserId=sa_repository` you need to give this user extra roles before this works
             'Content-Type': 'application/json'
         },
         key: _certs.key,
         cert: _certs.cert,
         ca: _certs.ca
     };
+    console.log('configCerticates: we connect to Qlik Sense using these credentials: ', configCerticates);
 
     export function validateJSON(body) {
         try {

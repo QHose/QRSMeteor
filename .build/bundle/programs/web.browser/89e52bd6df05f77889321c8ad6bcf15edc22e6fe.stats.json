@@ -3,8 +3,8 @@
     "name": "abernix:standard-minifier-js",
     "version": "2.1.0"
   },
-  "totalMinifiedBytes": 4105411,
-  "totalMinifiedGzipBytes": 1144361,
+  "totalMinifiedBytes": 4105904,
+  "totalMinifiedGzipBytes": 1144534,
   "minifiedBytesByPackage": {
     "packages/meteor.js": 8650,
     "packages/underscore.js": 14436,
@@ -1427,7 +1427,7 @@
     "packages/autoupdate.js": 1998,
     "packages/global-imports.js": 2108,
     "app/app.js": [
-      718422,
+      718915,
       {
         "imports": {
           "ui": {
@@ -1576,7 +1576,7 @@
           "api": {
             "APILogs.js": 376,
             "apps.js": 302,
-            "config.js": 5747,
+            "config.js": 6025,
             "customers.js": 1806,
             "streams.js": 158
           },
@@ -1618,7 +1618,7 @@
               }
             }
           },
-          "main.js": 3033
+          "main.js": 3248
         },
         "lib": {
           "yogiben.js": 12

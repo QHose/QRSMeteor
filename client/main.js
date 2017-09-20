@@ -80,6 +80,14 @@ Meteor.startup(function() {
             senseConfig.SSBIAppId = IDs.SSBI;
             senseConfig.slideGeneratorAppId = IDs.slideGenerator;
             Cookies.set('slideGeneratorAppId', IDs.slideGenerator);
+            try {
+                check(senseConfig.SSBIAppId, String);
+                check(senseConfig.slideGeneratorAppId, String);
+            } catch (error) {
+                var m = 'We could not retreive the app ids for the slide generator or the SSBI app';
+                sAlert.error('Apps not found', m);;
+                console.error(m);
+            }
         }
     });
 });

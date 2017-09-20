@@ -49,6 +49,8 @@
         "automaticCleanUpGeneratedApps": "Yes",
         "automationBaseFolder": "",
         "runInitialQlikSenseSetup": true,
+        "ConnectToSenseAsUserDirectory": "",
+        "ConnectToSenseAsUser": "",
         "dataConnections": [{
                 "name": "data import test",
                 "type": "folder",

@@ -96,18 +96,6 @@
     "privileges": null
   },
   {
-    "id": "63554c3e-09d2-4fe8-8b3b-7f4285d4d04d",
-    "category": "Security",
-    "type": "Default",
-    "name": "CreateApp",
-    "rule": "!user.IsAnonymous()",
-    "resourceFilter": "App_*",
-    "actions": 1,
-    "comment": "Everyone is allowed to create apps except anonymous users",
-    "disabled": true,
-    "privileges": null
-  },
-  {
     "id": "e606803d-393d-43de-b86c-388f8bfa84ff",
     "category": "Security",
     "type": "ReadOnly",
@@ -261,6 +249,18 @@
     "actions": 15,
     "comment": "Allows everyone that can update an extension to manage its corresponding files",
     "disabled": false,
+    "privileges": null
+  },
+  {
+    "id": "63554c3e-09d2-4fe8-8b3b-7f4285d4d04d",
+    "category": "Security",
+    "type": "Default",
+    "name": "CreateApp",
+    "rule": "!user.IsAnonymous()",
+    "resourceFilter": "App_*",
+    "actions": 1,
+    "comment": "Everyone is allowed to create apps except anonymous users",
+    "disabled": true,
     "privileges": null
   },
   {
