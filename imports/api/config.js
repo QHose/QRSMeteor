@@ -101,17 +101,6 @@ if (Meteor.isServer) {
     };
     console.log('configCerticates: we connect to Qlik Sense using these credentials: ', configCerticates);
 
-    export function validateJSON(body) {
-        try {
-            var data = JSON.parse(body);
-            // if came to here, then valid
-            return data;
-        } catch (e) {
-            // failed to parse
-            return null;
-        }
-    }
-
     //used for engimaJS, the engine API javascript wrapper
     var _engineConfig = {
         host: _senseConfig.SenseServerInternalLanIP,
@@ -143,11 +132,23 @@ if (Meteor.isServer) {
                 key: _certs.key,
                 cert: _certs.cert,
                 headers: {
-                    'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
+                    'X-Qlik-User': `UserDirectory=${qlikUserDomain};UserId=${qlikUser}`,
                 },
             });
         },
         // handleLog: logRow => console.log(JSON.stringify(logRow)),
+    }
+
+
+    export function validateJSON(body) {
+        try {
+            var data = JSON.parse(body);
+            // if came to here, then valid
+            return data;
+        } catch (e) {
+            // failed to parse
+            return null;
+        }
     }
 
     //for enigma.js

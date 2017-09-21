@@ -24,7 +24,7 @@ export var myQRS = function myQRSMain() {
             return response.data;
         } catch (err) {
             var error = 'QRS HTTP GET FAILED FOR ' + endpoint;
-            console.error(error);
+            console.error(err);
             throw new Meteor.Error(500, error);
         }
     };
