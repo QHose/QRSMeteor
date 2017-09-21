@@ -28,7 +28,7 @@
     },
     "private": {
         "certificatesDirectory": "/meteorQRS/config",
-        "SenseServerInternalLanIP": "10.0.75.1",
+        "SenseServerInternalLanIP": "QLIK-AB0Q2URN5T",
         "useSSL": false,
         "passphrase": null,
         "virtualProxy": "hdr",

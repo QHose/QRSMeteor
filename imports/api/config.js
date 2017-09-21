@@ -112,37 +112,13 @@ if (Meteor.isServer) {
         }
     }
 
-    //https://nodejs.org/api/http.html#http_http_request_options_callback
-    // export var QRSCertConfig = {
-    //     url: 'https://' + _senseConfig.SenseServerInternalLanIP,
-    //     port: Meteor.settings.private.qrsPort, //4242,
-    //     qrsPath: '/qrs/app',
-    //     path: function() {
-    //         if (qrsPath.includes('?')) {
-    //             return qrsPath + '&xrfkey=abcdefghijklmnop'
-    //         } else {
-    //             return qrsPath + '?xrfkey=abcdefghijklmnop'
-    //         }
-    //     },
-    //     method: 'GET',
-    //     agentOptions: {
-    //         ca: _certs.ca,
-    //         key: _certs.key,
-    //         cert: _certs.cert
-    //     },
-    //     headers: {
-    //         'x-qlik-xrfkey': 'abcdefghijklmnop',
-    //         'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
-    //     }
-    // };
-
     //used for engimaJS, the engine API javascript wrapper
     var _engineConfig = {
         host: _senseConfig.SenseServerInternalLanIP,
         isSecure: _senseConfig.isSecure,
         port: Meteor.settings.private.enginePort,
         headers: {
-            'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,
+            'X-Qlik-User': `UserDirectory=${qlikUserDomain};UserId=${qlikUser}`,
         },
         ca: _certs.ca,
         key: _certs.key,

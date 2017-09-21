@@ -2918,9 +2918,9 @@ if (Meteor.isServer) {                                                          
     };                                                                                                                 // 113
                                                                                                                        //
     var generateXrfkey = function () {                                                                                 // 27
-        return Random.hexString(16);                                                                                   // 188
-    }; // //https://www.npmjs.com/package/qrs                                                                          // 189
-    //HEADER AUTHENTICATION                                                                                            // 192
+        return Random.hexString(16);                                                                                   // 164
+    }; // //https://www.npmjs.com/package/qrs                                                                          // 165
+    //HEADER AUTHENTICATION                                                                                            // 168
                                                                                                                        //
                                                                                                                        //
     module.export({                                                                                                    // 1
@@ -3047,151 +3047,128 @@ if (Meteor.isServer) {                                                          
         ca: _certs.ca                                                                                                  // 100
     };                                                                                                                 // 90
     console.log('configCerticates: we connect to Qlik Sense using these credentials: ', configCerticates);             // 102
-    //https://nodejs.org/api/http.html#http_http_request_options_callback                                              // 115
-    // export var QRSCertConfig = {                                                                                    // 116
-    //     url: 'https://' + _senseConfig.SenseServerInternalLanIP,                                                    // 117
-    //     port: Meteor.settings.private.qrsPort, //4242,                                                              // 118
-    //     qrsPath: '/qrs/app',                                                                                        // 119
-    //     path: function() {                                                                                          // 120
-    //         if (qrsPath.includes('?')) {                                                                            // 121
-    //             return qrsPath + '&xrfkey=abcdefghijklmnop'                                                         // 122
-    //         } else {                                                                                                // 123
-    //             return qrsPath + '?xrfkey=abcdefghijklmnop'                                                         // 124
-    //         }                                                                                                       // 125
-    //     },                                                                                                          // 126
-    //     method: 'GET',                                                                                              // 127
-    //     agentOptions: {                                                                                             // 128
-    //         ca: _certs.ca,                                                                                          // 129
-    //         key: _certs.key,                                                                                        // 130
-    //         cert: _certs.cert                                                                                       // 131
-    //     },                                                                                                          // 132
-    //     headers: {                                                                                                  // 133
-    //         'x-qlik-xrfkey': 'abcdefghijklmnop',                                                                    // 134
-    //         'X-Qlik-User': `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`,                // 135
-    //     }                                                                                                           // 136
-    // };                                                                                                              // 137
-    //used for engimaJS, the engine API javascript wrapper                                                             // 139
-    var _engineConfig = {                                                                                              // 140
-        host: _senseConfig.SenseServerInternalLanIP,                                                                   // 141
-        isSecure: _senseConfig.isSecure,                                                                               // 142
-        port: Meteor.settings.private.enginePort,                                                                      // 143
-        headers: {                                                                                                     // 144
-            'X-Qlik-User': "UserDirectory=" + process.env.USERDOMAIN + ";UserId=" + process.env.USERNAME               // 145
-        },                                                                                                             // 144
-        ca: _certs.ca,                                                                                                 // 147
-        key: _certs.key,                                                                                               // 148
-        cert: _certs.cert,                                                                                             // 149
-        passphrase: Meteor.settings.private.passphrase,                                                                // 150
-        rejectUnauthorized: false,                                                                                     // 151
-        // Don't reject self-signed certs                                                                              // 151
-        appname: null,                                                                                                 // 152
-        QIXSchema: _QIXSchema                                                                                          // 153
-    };                                                                                                                 // 140
-    var enigmaServerConfig = {                                                                                         // 156
-        schema: _engineConfig.QIXSchema,                                                                               // 157
-        // appId: appId,                                                                                               // 158
-        session: {                                                                                                     // 159
-            host: _engineConfig.host,                                                                                  // 160
-            port: _engineConfig.port                                                                                   // 161
-        },                                                                                                             // 159
-        Promise: bluebird,                                                                                             // 163
-        createSocket: function (url) {                                                                                 // 164
-            return new WebSocket(url, {                                                                                // 165
-                ca: _certs.ca,                                                                                         // 166
-                key: _certs.key,                                                                                       // 167
-                cert: _certs.cert,                                                                                     // 168
-                headers: {                                                                                             // 169
-                    'X-Qlik-User': "UserDirectory=" + process.env.USERDOMAIN + ";UserId=" + process.env.USERNAME       // 170
-                }                                                                                                      // 169
-            });                                                                                                        // 165
-        }                                                                                                              // 173
-    };                                                                                                                 // 156
-    var engineConfig = _engineConfig;                                                                                  // 178
+    //used for engimaJS, the engine API javascript wrapper                                                             // 115
+    var _engineConfig = {                                                                                              // 116
+        host: _senseConfig.SenseServerInternalLanIP,                                                                   // 117
+        isSecure: _senseConfig.isSecure,                                                                               // 118
+        port: Meteor.settings.private.enginePort,                                                                      // 119
+        headers: {                                                                                                     // 120
+            'X-Qlik-User': "UserDirectory=" + qlikUserDomain + ";UserId=" + qlikUser                                   // 121
+        },                                                                                                             // 120
+        ca: _certs.ca,                                                                                                 // 123
+        key: _certs.key,                                                                                               // 124
+        cert: _certs.cert,                                                                                             // 125
+        passphrase: Meteor.settings.private.passphrase,                                                                // 126
+        rejectUnauthorized: false,                                                                                     // 127
+        // Don't reject self-signed certs                                                                              // 127
+        appname: null,                                                                                                 // 128
+        QIXSchema: _QIXSchema                                                                                          // 129
+    };                                                                                                                 // 116
+    var enigmaServerConfig = {                                                                                         // 132
+        schema: _engineConfig.QIXSchema,                                                                               // 133
+        // appId: appId,                                                                                               // 134
+        session: {                                                                                                     // 135
+            host: _engineConfig.host,                                                                                  // 136
+            port: _engineConfig.port                                                                                   // 137
+        },                                                                                                             // 135
+        Promise: bluebird,                                                                                             // 139
+        createSocket: function (url) {                                                                                 // 140
+            return new WebSocket(url, {                                                                                // 141
+                ca: _certs.ca,                                                                                         // 142
+                key: _certs.key,                                                                                       // 143
+                cert: _certs.cert,                                                                                     // 144
+                headers: {                                                                                             // 145
+                    'X-Qlik-User': "UserDirectory=" + process.env.USERDOMAIN + ";UserId=" + process.env.USERNAME       // 146
+                }                                                                                                      // 145
+            });                                                                                                        // 141
+        }                                                                                                              // 149
+    };                                                                                                                 // 132
+    var engineConfig = _engineConfig;                                                                                  // 154
     var qlikHDRServer = 'http://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.port + '/' + _senseConfig.virtualProxy;
-    var qrsSrv = 'https://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.qrsPort;                      // 183
-    var qrs = new myQRS();                                                                                             // 185
-    var QRSconfig = {                                                                                                  // 193
-        authentication: 'header',                                                                                      // 194
-        host: _senseConfig.host,                                                                                       // 195
-        port: _senseConfig.port,                                                                                       // 196
-        useSSL: false,                                                                                                 // 197
-        virtualProxy: _senseConfig.virtualProxy,                                                                       // 198
-        //header proxy                                                                                                 // 198
-        headerKey: _senseConfig.headerKey,                                                                             // 199
-        headerValue: _senseConfig.headerValue //'mydomain\\justme'                                                     // 200
+    var qrsSrv = 'https://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.qrsPort;                      // 159
+    var qrs = new myQRS();                                                                                             // 161
+    var QRSconfig = {                                                                                                  // 169
+        authentication: 'header',                                                                                      // 170
+        host: _senseConfig.host,                                                                                       // 171
+        port: _senseConfig.port,                                                                                       // 172
+        useSSL: false,                                                                                                 // 173
+        virtualProxy: _senseConfig.virtualProxy,                                                                       // 174
+        //header proxy                                                                                                 // 174
+        headerKey: _senseConfig.headerKey,                                                                             // 175
+        headerValue: _senseConfig.headerValue //'mydomain\\justme'                                                     // 176
                                                                                                                        //
-    };                                                                                                                 // 193
-    Meteor.startup(function () {                                                                                       // 204
-        function _callee() {                                                                                           // 204
-            var file, exampleSettingsFile, keysEqual;                                                                  // 204
-            return _regenerator2.default.async(function () {                                                           // 204
-                function _callee$(_context) {                                                                          // 204
-                    while (1) {                                                                                        // 204
-                        switch (_context.prev = _context.next) {                                                       // 204
-                            case 0:                                                                                    // 204
-                                console.log('------------------------------------');                                   // 205
-                                console.log('Validate settings.json parameters');                                      // 206
-                                console.log('------------------------------------');                                   // 207
-                                Meteor.absolutePath = path.resolve('.').split(path.sep + '.meteor')[0];                // 208
+    };                                                                                                                 // 169
+    Meteor.startup(function () {                                                                                       // 180
+        function _callee() {                                                                                           // 180
+            var file, exampleSettingsFile, keysEqual;                                                                  // 180
+            return _regenerator2.default.async(function () {                                                           // 180
+                function _callee$(_context) {                                                                          // 180
+                    while (1) {                                                                                        // 180
+                        switch (_context.prev = _context.next) {                                                       // 180
+                            case 0:                                                                                    // 180
+                                console.log('------------------------------------');                                   // 181
+                                console.log('Validate settings.json parameters');                                      // 182
+                                console.log('------------------------------------');                                   // 183
+                                Meteor.absolutePath = path.resolve('.').split(path.sep + '.meteor')[0];                // 184
                                 console.log('Meteor tries to find the settings.json file in Meteor.absolutePath:', Meteor.absolutePath);
                                 file = path.join(Meteor.absolutePath, 'settings-development-example.json'); // READ THE FILE 
                                                                                                                        //
-                                _context.next = 8;                                                                     // 204
-                                return _regenerator2.default.awrap(fs.readJson(file));                                 // 204
+                                _context.next = 8;                                                                     // 180
+                                return _regenerator2.default.awrap(fs.readJson(file));                                 // 180
                                                                                                                        //
-                            case 8:                                                                                    // 204
-                                exampleSettingsFile = _context.sent;                                                   // 213
-                                _context.prev = 9;                                                                     // 204
-                                validateJSON(exampleSettingsFile);                                                     // 215
-                                _context.next = 16;                                                                    // 204
-                                break;                                                                                 // 204
+                            case 8:                                                                                    // 180
+                                exampleSettingsFile = _context.sent;                                                   // 189
+                                _context.prev = 9;                                                                     // 180
+                                validateJSON(exampleSettingsFile);                                                     // 191
+                                _context.next = 16;                                                                    // 180
+                                break;                                                                                 // 180
                                                                                                                        //
-                            case 13:                                                                                   // 204
-                                _context.prev = 13;                                                                    // 204
-                                _context.t0 = _context["catch"](9);                                                    // 204
+                            case 13:                                                                                   // 180
+                                _context.prev = 13;                                                                    // 180
+                                _context.t0 = _context["catch"](9);                                                    // 180
                                 throw new Error('Meteor wants to check your settings.json with the parameters in the example settings.json in the project root. Error: Cant read the example settings definitions file: ' + file);
                                                                                                                        //
-                            case 16:                                                                                   // 204
-                                keysEqual = compareKeys(Meteor.settings, exampleSettingsFile);                         // 220
+                            case 16:                                                                                   // 180
+                                keysEqual = compareKeys(Meteor.settings, exampleSettingsFile);                         // 196
                                                                                                                        //
-                                if (keysEqual) {                                                                       // 204
-                                    _context.next = 19;                                                                // 204
-                                    break;                                                                             // 204
-                                }                                                                                      // 204
+                                if (keysEqual) {                                                                       // 180
+                                    _context.next = 19;                                                                // 180
+                                    break;                                                                             // 180
+                                }                                                                                      // 180
                                                                                                                        //
                                 throw new Meteor.Error('Settings file incomplete', "Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:UsersQlikexternalDocumentsGitHubQRSMeteor");
                                                                                                                        //
-                            case 19:                                                                                   // 204
-                            case "end":                                                                                // 204
-                                return _context.stop();                                                                // 204
-                        }                                                                                              // 204
-                    }                                                                                                  // 204
-                }                                                                                                      // 204
+                            case 19:                                                                                   // 180
+                            case "end":                                                                                // 180
+                                return _context.stop();                                                                // 180
+                        }                                                                                              // 180
+                    }                                                                                                  // 180
+                }                                                                                                      // 180
                                                                                                                        //
-                return _callee$;                                                                                       // 204
-            }(), null, this, [[9, 13]]);                                                                               // 204
-        }                                                                                                              // 204
+                return _callee$;                                                                                       // 180
+            }(), null, this, [[9, 13]]);                                                                               // 180
+        }                                                                                                              // 180
                                                                                                                        //
-        return _callee;                                                                                                // 204
-    }());                                                                                                              // 204
-} //exit server side config                                                                                            // 226
+        return _callee;                                                                                                // 180
+    }());                                                                                                              // 180
+} //exit server side config                                                                                            // 202
                                                                                                                        //
                                                                                                                        //
-var senseConfig = _senseConfig;                                                                                        // 228
+var senseConfig = _senseConfig;                                                                                        // 204
                                                                                                                        //
-function missingParameters(obj) {                                                                                      // 245
-    for (var key in meteorBabelHelpers.sanitizeForInObject(obj)) {                                                     // 246
-        if (obj[key] !== null && obj[key] != "") return false;                                                         // 247
-    }                                                                                                                  // 249
+function missingParameters(obj) {                                                                                      // 221
+    for (var key in meteorBabelHelpers.sanitizeForInObject(obj)) {                                                     // 222
+        if (obj[key] !== null && obj[key] != "") return false;                                                         // 223
+    }                                                                                                                  // 225
                                                                                                                        //
-    return true;                                                                                                       // 250
-}                                                                                                                      // 251
+    return true;                                                                                                       // 226
+}                                                                                                                      // 227
                                                                                                                        //
-function compareKeys(a, b) {                                                                                           // 253
-    var aKeys = Object.keys(a).sort();                                                                                 // 254
-    var bKeys = Object.keys(b).sort();                                                                                 // 255
-    return JSON.stringify(aKeys) === JSON.stringify(bKeys);                                                            // 256
-}                                                                                                                      // 257
+function compareKeys(a, b) {                                                                                           // 229
+    var aKeys = Object.keys(a).sort();                                                                                 // 230
+    var bKeys = Object.keys(b).sort();                                                                                 // 231
+    return JSON.stringify(aKeys) === JSON.stringify(bKeys);                                                            // 232
+}                                                                                                                      // 233
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"customers.js":function(require,exports,module){
@@ -4523,7 +4500,8 @@ var path = require('path');                                                     
                                                                                                                        //
 Meteor.startup(function () {                                                                                           // 43
     process.env.ROOT_URL = 'http://' + Meteor.settings.public.host;                                                    // 44
-    console.log('********* We expect Qlik Sense to run on host: ', process.env.ROOT_URL + ':' + Meteor.settings.public.port);
+    console.log('********* For END USERS we expect Meteor to run on host: ', process.env.ROOT_URL + ':' + Meteor.settings.public.port); // console.log('********* For END USERS we expect Sense to run on host: ', Meteor.settings.public.host + ':' + Meteor.settings.public.port);
+                                                                                                                       //
     initQlikSense();                                                                                                   // 47
     removeGeneratedResources();                                                                                        // 48
     optimizeMongoDB();                                                                                                 // 49
