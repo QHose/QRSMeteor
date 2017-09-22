@@ -3,8 +3,8 @@
     "name": "abernix:standard-minifier-js",
     "version": "2.1.0"
   },
-  "totalMinifiedBytes": 4105824,
-  "totalMinifiedGzipBytes": 1144526,
+  "totalMinifiedBytes": 4106234,
+  "totalMinifiedGzipBytes": 1144615,
   "minifiedBytesByPackage": {
     "packages/meteor.js": 8650,
     "packages/underscore.js": 14436,
@@ -1427,7 +1427,7 @@
     "packages/autoupdate.js": 1998,
     "packages/global-imports.js": 2108,
     "app/app.js": [
-      718835,
+      719245,
       {
         "imports": {
           "ui": {
@@ -1546,7 +1546,7 @@
               "template.slides.js": 2971,
               "reveal.css": 58598,
               "slides.css": 8991,
-              "slides.js": 3031
+              "slides.js": 3211
             },
             "users": {
               "login.html": 51,
@@ -1564,7 +1564,7 @@
             "template.notFound.js": 1288,
             "UIHelpers.js": 10952,
             "nav.js": 1360,
-            "router.js": 5344
+            "router.js": 5574
           },
           "SSO": {
             "client": {

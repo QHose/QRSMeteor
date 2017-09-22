@@ -17,11 +17,153 @@ Router.route('/slides', {
     layoutTemplate: 'emptyLayout'
 });
 
-
-
 // //map paths to blaze templates
 Router.route('/', function() {
     Router.go('useCaseSelection');
+});
+
+//GENERATION
+Router.route('/generation');
+Router.route('/generation_embedded', {
+    template: 'generation',
+    layoutTemplate: 'SSOLayout'
+});
+
+//SELF SERVICE
+Router.route('/selfService', function() {
+    this.layout('SSBILayout');
+    this.render('nav', { to: 'nav' });
+    this.render('SSBIUsers', { to: 'aside' });
+    // this.render('SSBIFooter', { to: 'footer' });
+    this.render('SSBISenseApp');
+});
+
+Router.route('/selfService_embedded', function() {
+    this.layout('SSBILayout');
+    this.render('SSBIUsers', { to: 'aside' });
+    this.render('SSBISenseApp');
+});
+
+
+//API
+Router.route('/APILogs');
+Router.route('/API_embedded', {
+    template: 'APILogs',
+    layoutTemplate: 'SSOLayout'
+});
+
+//SECURITY
+Router.route('/introductionSecurity');
+Router.route('/security_embedded', {
+    template: 'introductionSecurity',
+    layoutTemplate: 'SSOLayout'
+});
+
+//WEB
+Router.route('/webIntegration');
+Router.route('/webIntegration_embedded', {
+    template: 'webIntegration',
+    layoutTemplate: 'SSOLayout'
+});
+
+//ARCHITECTURE
+Router.route('/architecture');
+Router.route('/architecture_embedded', {
+    template: 'architecture',
+    layoutTemplate: 'SSOLayout'
+});
+
+//generic overview
+Router.route('/generic_links_embedded', {
+    template: 'genericDocumentation',
+    layoutTemplate: 'SSOLayout'
+});
+
+Router.route('/sequenceDiagramOverview');
+Router.route('/sequenceDiagramGeneration');
+Router.route('/legal');
+
+Router.route('/users');
+Router.route('/notFound');
+Router.route('/userOverview');
+Router.route('/homeAbout');
+Router.route('/ApiLogsTable');
+Router.route('/introduction');
+Router.route('/SecurityDeepDive');
+
+Router.route('/videoOverview', {
+    template: 'videoOverview',
+    layoutTemplate: 'containerlayout'
+});
+
+Router.route('/documentation', {
+    template: 'documentation',
+    layoutTemplate: 'containerlayout'
+});
+
+Router.route('/templateOverview');
+
+Router.route('/slidegeneratorSlides', {
+    template: 'slidegeneratorSlides',
+    layoutTemplate: 'ImpressLayout'
+});
+
+Router.route('/securityRules');
+Router.route('/QMC');
+
+
+// Single sing on integration route, this is the route you configure in Qlik sense proxy
+Router.route('/SSO', {
+    template: 'SSO',
+    layoutTemplate: 'SSOLayout'
+});
+
+//SLIDES FOR THE SAAS AUTOMATION INTRODUCTION (/GENERATION)
+// Router.route('/impress', {
+//     template: 'impress',
+//     layoutTemplate: 'SSOLayout'
+// });
+Router.route('/SaaSIntroduction', function() {
+    this.layout('SlideGenerator');
+    this.render('impress');
+});
+
+//users for the slide generator have their own virtual proxy redirect path
+Router.route('/presentationsso', {
+    template: 'SSO',
+    layoutTemplate: 'SSOLayout'
+});
+
+//SLIDE GENERATOR LANDING PAGES
+Router.route('/presentation', {
+    template: 'landingPage',
+    layoutTemplate: 'presentationLayout'
+});
+
+Router.route('/integration', {
+    template: 'landingPage',
+    layoutTemplate: 'presentationLayout'
+});
+
+Router.route('/test', {
+    template: 'slideSorter',
+    layoutTemplate: 'presentationLayout'
+});
+
+Router.route('/slideSorter', {
+    template: 'ppt_slideSorter',
+    layoutTemplate: 'presentationLayout'
+});
+
+//START THE SLIDE SHOW
+Router.route('/slideGenerator', {
+    template: 'slidegeneratorSlidesMain',
+    layoutTemplate: 'presentationLayout'
+});
+
+Router.route('/useCaseSelection', function() {
+    this.layout('containerlayout');
+    this.render('useCaseSelection');
 });
 
 
@@ -171,131 +313,3 @@ function addRolesBasedonEmail(user) {
         user.roles = ['qlik']; //unsecure off course, this is only for user friendliness reasons to prevent dead links to confluence content.
     }
 }
-
-Router.route('/users');
-Router.route('/notFound');
-Router.route('/userOverview');
-Router.route('/homeAbout');
-Router.route('/ApiLogsTable');
-Router.route('/introduction');
-Router.route('/SecurityDeepDive');
-Router.route('/generation');
-Router.route('/securityRules');
-Router.route('/QMC');
-
-//API
-Router.route('/APILogs');
-Router.route('/API_embedded', {
-    template: 'APILogs',
-    layoutTemplate: 'SSOLayout'
-});
-
-//SECURITY
-Router.route('/introductionSecurity');
-Router.route('/security_embedded', {
-    template: 'introductionSecurity',
-    layoutTemplate: 'SSOLayout'
-});
-
-//WEB
-Router.route('/webIntegration');
-Router.route('/webIntegration_embedded', {
-    template: 'webIntegration',
-    layoutTemplate: 'SSOLayout'
-});
-
-//ARCHITECTURE
-Router.route('/architecture');
-Router.route('/architecture_embedded', {
-    template: 'architecture',
-    layoutTemplate: 'SSOLayout'
-});
-
-//generic overview
-Router.route('/generic_links_embedded', {
-    template: 'genericDocumentation',
-    layoutTemplate: 'SSOLayout'
-});
-
-Router.route('/sequenceDiagramOverview');
-Router.route('/sequenceDiagramGeneration');
-Router.route('/legal');
-
-Router.route('/videoOverview', {
-    template: 'videoOverview',
-    layoutTemplate: 'containerlayout'
-});
-
-Router.route('/documentation', {
-    template: 'documentation',
-    layoutTemplate: 'containerlayout'
-});
-
-Router.route('/templateOverview');
-
-Router.route('/slidegeneratorSlides', {
-    template: 'slidegeneratorSlides',
-    layoutTemplate: 'ImpressLayout'
-});
-
-// Single sing on integration route, this is the route you configure in Qlik sense proxy
-Router.route('/SSO', {
-    template: 'SSO',
-    layoutTemplate: 'SSOLayout'
-});
-
-//SLIDES FOR THE SAAS AUTOMATION INTRODUCTION (/GENERATION)
-// Router.route('/impress', {
-//     template: 'impress',
-//     layoutTemplate: 'SSOLayout'
-// });
-Router.route('/SaaSIntroduction', function() {
-    this.layout('SlideGenerator');
-    this.render('impress');
-});
-
-//users for the slide generator have their own virtual proxy redirect path
-Router.route('/presentationsso', {
-    template: 'SSO',
-    layoutTemplate: 'SSOLayout'
-});
-
-//SLIDE GENERATOR LANDING PAGES
-Router.route('/presentation', {
-    template: 'landingPage',
-    layoutTemplate: 'presentationLayout'
-});
-
-Router.route('/integration', {
-    template: 'landingPage',
-    layoutTemplate: 'presentationLayout'
-});
-
-Router.route('/test', {
-    template: 'slideSorter',
-    layoutTemplate: 'presentationLayout'
-});
-
-Router.route('/slideSorter', {
-    template: 'ppt_slideSorter',
-    layoutTemplate: 'presentationLayout'
-});
-
-//START THE SLIDE SHOW
-Router.route('/slideGenerator', {
-    template: 'slidegeneratorSlidesMain',
-    layoutTemplate: 'presentationLayout'
-});
-
-Router.route('/useCaseSelection', function() {
-    this.layout('containerlayout');
-    this.render('useCaseSelection');
-});
-
-Router.route('/selfService', function() {
-    this.layout('SSBILayout');
-    this.render('nav', { to: 'nav' });
-    this.render('SSBIUsers', { to: 'aside' });
-    // this.render('SSBIFooter', { to: 'footer' });
-    this.render('SSBISenseApp');
-});

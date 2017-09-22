@@ -149,6 +149,9 @@ Template.registerHelper('formatted', function(text) {
         //     console.log('------------------------------------');
         //     console.log('------------------------------------');
         //     return text.replace("src=", "data-src=");
+    } else if (text.startsWith('iframe ')) { //if a text starts with IFRAME: we convert it into an IFRAME with a class that sets the width and height etc...
+        var sourceURL = text.substr(text.indexOf(' ') + 1);
+        return '<iframe class="SenseEmbedFrame" src="$(sourceURL)" allowfullscreen="allowfullscreen" frameborder="0"></iframe>';
     } else if (text.startsWith('<')) { //custom HTML
         return text;
     } else if (checkTextIsImage(text)) { //image
