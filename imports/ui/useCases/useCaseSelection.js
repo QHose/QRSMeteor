@@ -31,25 +31,50 @@ Template.useCaseSelection.onRendered(async function() {
         }));
     });
 
-    setTimeout(function() {
-        $(".ui.dropdown").dropdown("refresh");
-        var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
-        console.log('textToShow', textToShow)
-        $(".ui.dropdown").dropdown("set selected", textToShow);
-    }, 0)
+    // setTimeout(function() {
+    $(".ui.dropdown").dropdown("refresh");
+    var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
+    console.log('textToShow', textToShow)
+    $(".ui.dropdown").dropdown("set selected", textToShow);
+    // }, 0)
 
-    setTimeout(function() {
-        $('.ui.dropdown')
-            .dropdown({
-                async onChange(group, text, selItem) {
-                    Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
-                    Cookies.set('currentMainRole', group);
-                    await setSlideContentInSession(group);
-                    Router.go('slides');
-                }
-            })
-    }, 1000)
+    // setTimeout(function() {
+    $('.ui.dropdown')
+        .dropdown({
+            async onChange(group, text, selItem) {
+                Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
+                Cookies.set('currentMainRole', group);
+                var app = await setSlideContentInSession(group);
+                await setSelectionInSense(app, 'Resources', group)
+                Router.go('slides');
+            }
+        })
+        // }, 100)
 })
+
+async function setSelectionInSense(app, field, value) {
+    console.log('setSelectionInSense $(field) and  $(value)')
+    console.log('app', app)
+    try {
+        // var layout = await app.getAppLayout();
+        // console.log('layout', layout)
+        var field = await app.getField({
+            "qFieldName": "Resources"
+        })
+        console.log('resourceField', field);
+        // var result = await field.select({
+        //     "qMatch": "Resources"
+        // })
+
+
+    } catch (error) {
+        console.log('------------------------------------');
+        console.error(error);
+        console.log('------------------------------------');
+    }
+
+
+}
 
 async function setSlideContentInSession(group) {
     Cookies.set('currentMainRole', 'TECHNICAL');
@@ -77,15 +102,6 @@ async function setSlideContentInSession(group) {
                 // 'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + data),
             },
             handleLog: (message) => console.log('Engima: ' + message),
-            //http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Msgs-Proxy-Clients-OnAuthenticationInformation.htm
-            // listeners: {
-            //     'notification:OnAuthenticationInformation': (authInfo) => {
-            //         // console.log('authInfo', authInfo)
-            //         if (authInfo.mustAuthenticate) {
-            //             location.href = authInfo.loginUri;
-            //         }
-            //     },
-            // }
         };
         var qix = await enigma.getService('qix', config);
         console.log('Recieved qix object: ', qix)
@@ -97,6 +113,7 @@ async function setSlideContentInSession(group) {
             setChangeListener(qix),
         ]);
 
+        return qix.app;
     } catch (error) {
         var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS';
         console.error(message, error);

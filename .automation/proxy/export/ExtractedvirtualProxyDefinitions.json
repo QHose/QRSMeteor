@@ -355,7 +355,7 @@
     "id": "401ae95f-afe5-491a-a467-caa3b2e58bd9",
     "prefix": "meteor",
     "description": "Ticket auth. for the SaaS automation demo. In step 4 you will request a ticket via this virtual proxy.",
-    "authenticationModuleRedirectUri": "http://localhost:3000/sso",
+    "authenticationModuleRedirectUri": "http://localqrs/sso",
     "sessionModuleBaseUri": "",
     "loadBalancingModuleBaseUri": "",
     "loadBalancingServerNodes": [

@@ -64,7 +64,7 @@ Meteor.startup(function() {
         position: 'top-right',
         timeout: 9000,
         html: false,
-        onRouteClose: true,
+        onRouteClose: false,
         stack: true,
         offset: 50, // in px - will be added to first alert (bottom or top - depends of the position in config)
         beep: false,
@@ -85,7 +85,7 @@ Meteor.startup(function() {
                 check(senseConfig.slideGeneratorAppId, String);
             } catch (error) {
                 var m = 'We could not retreive the app ids for the slide generator or the SSBI app';
-                sAlert.error('Apps not found', m);;
+                sAlert.error('Apps not found: $(m)');
                 console.error(m);
             }
         }
