@@ -31,49 +31,41 @@ Template.useCaseSelection.onRendered(async function() {
         }));
     });
 
-    // setTimeout(function() {
     $(".ui.dropdown").dropdown("refresh");
     var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
     console.log('textToShow', textToShow)
     $(".ui.dropdown").dropdown("set selected", textToShow);
-    // }, 0)
 
-    // setTimeout(function() {
     $('.ui.dropdown')
         .dropdown({
             async onChange(group, text, selItem) {
                 Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
                 Cookies.set('currentMainRole', group);
                 var app = await setSlideContentInSession(group);
-                await setSelectionInSense(app, 'Resources', group)
+                await setSelectionInSense(app, 'Partial Workshop', group)
                 Router.go('slides');
             }
         })
-        // }, 100)
 })
 
 async function setSelectionInSense(app, field, value) {
-    console.log('setSelectionInSense $(field) and  $(value)')
+    console.log('setSelectionInSense field:' + field + ' value:' + value);
     console.log('app', app)
     try {
         // var layout = await app.getAppLayout();
-        // console.log('layout', layout)
-        var field = await app.getField({
-            "qFieldName": "Resources"
-        })
-        console.log('resourceField', field);
-        // var result = await field.select({
-        //     "qMatch": "Resources"
-        // })
+        var myField = await app.getField(field);
+        console.log('resources Field', myField);
+        var result = await myField.selectValues(
+            [{
+                "qText": value
+            }]
+        )
+        console.log('result', result)
 
 
     } catch (error) {
-        console.log('------------------------------------');
         console.error(error);
-        console.log('------------------------------------');
     }
-
-
 }
 
 async function setSlideContentInSession(group) {
@@ -101,7 +93,7 @@ async function setSlideContentInSession(group) {
             listeners: {
                 // 'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + data),
             },
-            handleLog: (message) => console.log('Engima: ' + message),
+            // handleLog: (message) => console.log('Engima: ' + message),
         };
         var qix = await enigma.getService('qix', config);
         console.log('Recieved qix object: ', qix)
@@ -138,12 +130,8 @@ Template.useCaseSelection.helpers({
 
 Template.useCaseSelection.events({
     'click .button.slides': async function(e, t) {
-        console.log('clicked slides button');
-        console.log('logoutPresentationUser');
         await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
-        console.log('setSlideContentInSession')
         await setSlideContentInSession('TECHNICAL');
-        console.log('router go to slides');
         Router.go('slides');
     }
 });
@@ -161,7 +149,6 @@ async function getAllSlideHeaders(qix) {
     }]);
     var table = data[0].qMatrix;
     var tableWithChapters = insertSectionBreakers(table);
-    console.log('Received a table of data via the Engine API, now the slides can be created by impress.js', tableWithChapters);
     Session.set('slideHeaders', tableWithChapters)
 }
 //
