@@ -11,7 +11,7 @@ const _QIXSchema = require('/node_modules/enigma.js/schemas/qix/12.20.0/schema.j
 if (Meteor.isClient) {
     var _senseConfig = {
         "host": Meteor.settings.public.qlikSenseHost,
-        "port": meteor.settings.public.qlikSensePort,
+        "port": Meteor.settings.public.qlikSensePort,
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "virtualProxySlideGenerator": Meteor.settings.public.slideGenerator.virtualProxy,
         "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
@@ -39,7 +39,7 @@ if (Meteor.isServer) {
     var _senseConfig = {
         "host": Meteor.settings.public.qlikSenseHost,
         "SenseServerInternalLanIP": Meteor.settings.private.SenseServerInternalLanIP,
-        "port": meteor.settings.public.qlikSensePort,
+        "port": Meteor.settings.public.qlikSensePort,
         "useSSL": Meteor.settings.private.useSSL,
         "xrfkey": generateXrfkey(),
         "virtualProxy": Meteor.settings.private.virtualProxy, //used to connect via REST to Sense, we authenticate via a http header. not for production!!!
@@ -79,12 +79,12 @@ if (Meteor.isServer) {
     var qlikUserDomain = '';
     var qlikUser = '';
 
-    if (!Meteor.settings.broker.ConnectToSenseAsUserDirectory) {
+    if (!Meteor.settings.broker.connectToSenseAsUserDirectory) {
         qlikUserDomain = $(process.env.USERDOMAIN);
         qlikUser = $(process.env.USERDOMAIN);
     } else {
-        qlikUserDomain = Meteor.settings.broker.ConnectToSenseAsUserDirectory;
-        qlikUser = Meteor.settings.broker.ConnectToSenseAsUser
+        qlikUserDomain = Meteor.settings.broker.connectToSenseAsUserDirectory;
+        qlikUser = Meteor.settings.broker.connectToSenseAsUser
     }
 
     export var configCerticates = {

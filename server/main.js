@@ -42,8 +42,8 @@ const path = require('path');
 
 Meteor.startup(function() {
     process.env.ROOT_URL = 'http://' + Meteor.settings.public.qlikSenseHost;
-    console.log('********* For END USERS we expect Meteor to run on host: ', process.env.ROOT_URL + ':' + meteor.settings.public.qlikSensePort);
-    // console.log('********* For END USERS we expect Sense to run on host: ', Meteor.settings.public.qlikSenseHost + ':' + meteor.settings.public.qlikSensePort);
+    console.log('********* We expect Qlik Sense to run on host: ', process.env.ROOT_URL + ':' + Meteor.settings.public.qlikSensePort);
+    // console.log('********* For END USERS we expect Sense to run on host: ', Meteor.settings.public.qlikSenseHost + ':' + Meteor.settings.public.qlikSensePort);
     initQlikSense();
     removeGeneratedResources();
     optimizeMongoDB();
@@ -79,9 +79,10 @@ async function initQlikSense() {
             console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
             // QSLic.insertLicense();
             QSLic.insertUserAccessRule();
-            await QSSystem.createSecurityRules();
             QSSystem.disableDefaultSecurityRules();
             await QSProxy.createVirtualProxies();
+            await timeout(4000); //wait till the proxy has restarted...
+            await QSSystem.createSecurityRules();
             QSStream.initSenseStreams();
             await QSApp.uploadAndPublishTemplateApps();
 
@@ -99,6 +100,15 @@ async function initQlikSense() {
     console.log('------------------------------------');
     QSApp.setAppIDs();
 
+}
+
+//helper functions to await a set timeout
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function sleep(fn, ...args) {
+    await timeout(3000);
+    return fn(...args);
 }
 
 //

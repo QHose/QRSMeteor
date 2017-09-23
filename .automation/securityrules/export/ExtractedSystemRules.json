@@ -1,17 +1,5 @@
 [
   {
-    "id": "e9788332-9e11-4cd2-974c-d7520835a5ca",
-    "category": "Security",
-    "type": "Custom",
-    "name": "Z_SLIDE_GENERATOR",
-    "rule": "resource.name=\"API apps\" and ( user.environment.group=\"TECHNICAL\" or user.environment.group=\"GENERIC\" )",
-    "resourceFilter": "Stream_*",
-    "actions": 2,
-    "comment": "",
-    "disabled": false,
-    "privileges": null
-  },
-  {
     "id": "ea0cd39d-b684-4502-8efd-11a944e1888b",
     "category": "Security",
     "type": "ReadOnly",
@@ -72,6 +60,18 @@
     "privileges": null
   },
   {
+    "id": "63554c3e-09d2-4fe8-8b3b-7f4285d4d04d",
+    "category": "Security",
+    "type": "Default",
+    "name": "CreateApp",
+    "rule": "!user.IsAnonymous()",
+    "resourceFilter": "App_*",
+    "actions": 1,
+    "comment": "Everyone is allowed to create apps except anonymous users",
+    "disabled": true,
+    "privileges": null
+  },
+  {
     "id": "16e3e42c-5254-486c-8423-2dda9baae17c",
     "category": "Security",
     "type": "Default",
@@ -93,18 +93,6 @@
     "actions": 1,
     "comment": "If you have read rights on an unpublished app you should be able to create app objects belonging to that app",
     "disabled": false,
-    "privileges": null
-  },
-  {
-    "id": "63554c3e-09d2-4fe8-8b3b-7f4285d4d04d",
-    "category": "Security",
-    "type": "Default",
-    "name": "CreateApp",
-    "rule": "!user.IsAnonymous()",
-    "resourceFilter": "App_*",
-    "actions": 1,
-    "comment": "Everyone is allowed to create apps except anonymous users",
-    "disabled": true,
     "privileges": null
   },
   {
@@ -260,6 +248,18 @@
     "resourceFilter": "StaticContentReference_*",
     "actions": 15,
     "comment": "Allows everyone that can update an extension to manage its corresponding files",
+    "disabled": false,
+    "privileges": null
+  },
+  {
+    "id": "e9788332-9e11-4cd2-974c-d7520835a5ca",
+    "category": "Security",
+    "type": "Custom",
+    "name": "Z_SLIDE_GENERATOR",
+    "rule": "((resource.name=\"API apps\" and user.environment.group=\"slideGenerator\"))",
+    "resourceFilter": "Stream_*",
+    "actions": 2,
+    "comment": "",
     "disabled": false,
     "privileges": null
   },

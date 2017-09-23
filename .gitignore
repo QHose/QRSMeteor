@@ -9,9 +9,9 @@ customerData/
 public/docs/~$ik Sense SaaS demo tool setup instructions.docx
 *.bak
 
-automation/ExtractedvirtualProxyDefinitions.json
-automation/ExtractedvirtualProxyDefinitions.json
-automation/ExtractedvirtualProxyDefinitions.json
-.automation/proxy/export/ExtractedvirtualProxyDefinitions.json
+automation/virtualProxyServiceConfiguration.json
+automation/virtualProxyServiceConfiguration.json
+automation/virtualProxyServiceConfiguration.json
+.automation/proxy/export/virtualProxyServiceConfiguration.json
 .automation/securityrules/export/ExtractedSystemRules.json
-.automation/proxy/export/ExtractedvirtualProxyDefinitions.json
+.automation/proxy/export/virtualProxyServiceConfiguration.json

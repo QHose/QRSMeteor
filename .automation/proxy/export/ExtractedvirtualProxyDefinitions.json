@@ -85,7 +85,7 @@
     "privileges": null
   },
   {
-    "id": "ca008077-9f15-44ed-9760-34960dda3e05",
+    "id": "00c81fdc-a050-4801-b1e4-fc4d2c0b53ab",
     "prefix": "anon",
     "description": "anon",
     "authenticationModuleRedirectUri": "",
@@ -158,6 +158,7 @@
       "localqrs",
       "localweb",
       "QLIK-AB0Q2URN5T",
+      "10.0.75.1",
       "QLIK-AB0Q2URN5T"
     ],
     "defaultVirtualProxy": false,
@@ -178,7 +179,7 @@
     "privileges": null
   },
   {
-    "id": "3b7b75a3-862a-4fa7-8a45-acb28b82b027",
+    "id": "6286cde7-56f8-4d57-bea0-0d63cc698b19",
     "prefix": "hdr",
     "description": "Header authentication: for use if you have an authenticating reverse proxy. That reverse proxy will set a header (headerAuthenticationHeaderName) which this virtual proxy can read.",
     "authenticationModuleRedirectUri": "",
@@ -261,7 +262,7 @@
     "privileges": null
   },
   {
-    "id": "2817aa99-9ef0-4d45-941d-02eeb5950dc9",
+    "id": "44edb0a2-172c-4032-84b8-e04fbab05309",
     "prefix": "presentationsso",
     "description": "used to login users for the slide generator. Based on this users get a technical or a sales profile via a ticket request",
     "authenticationModuleRedirectUri": "http://localhost:3000/presentationsso",
@@ -332,6 +333,7 @@
       "localqrs",
       "localweb",
       "QLIK-AB0Q2URN5T",
+      "10.0.75.1",
       "QLIK-AB0Q2URN5T"
     ],
     "defaultVirtualProxy": false,
@@ -352,10 +354,10 @@
     "privileges": null
   },
   {
-    "id": "401ae95f-afe5-491a-a467-caa3b2e58bd9",
+    "id": "80fac640-962e-4b3a-8de4-2424153259a0",
     "prefix": "meteor",
     "description": "Ticket auth. for the SaaS automation demo. In step 4 you will request a ticket via this virtual proxy.",
-    "authenticationModuleRedirectUri": "http://localqrs/sso",
+    "authenticationModuleRedirectUri": "http://localhost:3000/sso",
     "sessionModuleBaseUri": "",
     "loadBalancingModuleBaseUri": "",
     "loadBalancingServerNodes": [
@@ -425,6 +427,7 @@
       "localqrs",
       "localweb",
       "QLIK-AB0Q2URN5T",
+      "10.0.75.1",
       "QLIK-AB0Q2URN5T"
     ],
     "defaultVirtualProxy": false,

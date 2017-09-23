@@ -115,9 +115,16 @@ function linkVirtualProxyToProxy(virtualProxy) {
     var proxyId = getProxyId();
     // GET THE CONFIG OF THE PROXY (WHICH CONTAINS VIRTUAL PROXIES)
     var proxyConfig = getProxyServiceConfiguration(proxyId)
+    console.log('proxyConfig', proxyConfig)
         // ADD THE NEW VIRTUAL PROXY TO THE EXISTING PROXY LIST
     proxyConfig.settings.virtualProxies.push(virtualProxy)
-        //OVERWRITE THE SETTINGS WITH THE COMPLETE UPDATED OBJECT.
+
+    //UPDATE SOME PROXY SETTINGS
+    proxyConfig.settings.unencryptedListenPort = Meteor.settings.public.qlikSensePort; //HTTP    
+    proxyConfig.settings.listenPort = Meteor.settings.public.qlikSensePortSecure; //HTTPS
+    proxyConfig.settings.allowHttp = Meteor.settings.public.qlikSenseAllowHTTP;
+
+    //OVERWRITE THE SETTINGS WITH THE COMPLETE UPDATED OBJECT.
     updateProxy(proxyId, proxyConfig)
 }
 
@@ -125,7 +132,7 @@ function updateProxy(proxyId, proxyConfig) {
     try {
         check(proxyId, String);
         check(proxyConfig, Object);
-        // console.log('proxyConfig', proxyConfig.settings.virtualProxies)
+        console.log('proxyConfig', proxyConfig.settings.virtualProxies)
 
         var request = qliksrv + '/qrs/proxyservice/' + proxyId;
         response = HTTP.call('PUT', request, {
@@ -183,7 +190,7 @@ export function getVirtualProxies() {
             npmRequestOptions: configCerticates,
         });
 
-        var file = path.join(Meteor.settings.broker.automationBaseFolder, 'proxy', 'export', 'ExtractedvirtualProxyDefinitions.json');
+        var file = path.join(Meteor.settings.broker.automationBaseFolder, 'proxy', 'export', 'virtualProxyServiceConfiguration.json');
 
         // SAVE PROXY FILE TO DISK
         fs.outputFile(file, JSON.stringify(response.data, null, 2), 'utf-8');
