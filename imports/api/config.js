@@ -10,8 +10,8 @@ const _QIXSchema = require('/node_modules/enigma.js/schemas/qix/12.20.0/schema.j
 //This is the config that we need to make available on the client (the webpage)
 if (Meteor.isClient) {
     var _senseConfig = {
-        "host": Meteor.settings.public.host,
-        "port": Meteor.settings.public.port,
+        "host": Meteor.settings.public.qlikSenseHost,
+        "port": meteor.settings.public.qlikSensePort,
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "virtualProxySlideGenerator": Meteor.settings.public.slideGenerator.virtualProxy,
         "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
@@ -37,9 +37,9 @@ if (Meteor.isServer) {
     const WebSocket = require('ws');
 
     var _senseConfig = {
-        "host": Meteor.settings.public.host,
+        "host": Meteor.settings.public.qlikSenseHost,
         "SenseServerInternalLanIP": Meteor.settings.private.SenseServerInternalLanIP,
-        "port": Meteor.settings.public.port,
+        "port": meteor.settings.public.qlikSensePort,
         "useSSL": Meteor.settings.private.useSSL,
         "xrfkey": generateXrfkey(),
         "virtualProxy": Meteor.settings.private.virtualProxy, //used to connect via REST to Sense, we authenticate via a http header. not for production!!!

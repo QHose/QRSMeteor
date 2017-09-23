@@ -41,9 +41,9 @@ const path = require('path');
 
 
 Meteor.startup(function() {
-    process.env.ROOT_URL = 'http://' + Meteor.settings.public.host;
-    console.log('********* For END USERS we expect Meteor to run on host: ', process.env.ROOT_URL + ':' + Meteor.settings.public.port);
-    // console.log('********* For END USERS we expect Sense to run on host: ', Meteor.settings.public.host + ':' + Meteor.settings.public.port);
+    process.env.ROOT_URL = 'http://' + Meteor.settings.public.qlikSenseHost;
+    console.log('********* For END USERS we expect Meteor to run on host: ', process.env.ROOT_URL + ':' + meteor.settings.public.qlikSensePort);
+    // console.log('********* For END USERS we expect Sense to run on host: ', Meteor.settings.public.qlikSenseHost + ':' + meteor.settings.public.qlikSensePort);
     initQlikSense();
     removeGeneratedResources();
     optimizeMongoDB();

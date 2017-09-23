@@ -2,9 +2,9 @@
     "adminEmails": "mbj@qlik.com",
     "multiTenantScenario": false,
     "public": {
-        "host": "QLIK-AB0Q2URN5T",
+        "qlikSenseHost": "QLIK-AB0Q2URN5T",
+        "qlikSensePort": 81,
         "proxyPort": 80,
-        "port": 81,
         "virtualProxyClientUsage": "meteor",
         "webIntegrationHost": "QLIK-AB0Q2URN5T",
         "webIntegrationDemoPort": 3030,
@@ -38,19 +38,19 @@
         "qrsPort": 4242,
         "proxyPort": 4243,
         "license": {
-            "serial": "",
+            "serial": "9999000000001068",
             "name": "Martijn Biesbroek",
             "organization": "Qlik"
         },
-        "LicenseControlNumber": 456
+        "LicenseControlNumber": 22399
     },
     "broker": {
         "customerDataDir": "",
         "automaticCleanUpGeneratedApps": "Yes",
         "automationBaseFolder": "",
-        "runInitialQlikSenseSetup": true,
-        "ConnectToSenseAsUserDirectory": "",
-        "ConnectToSenseAsUser": "",
+        "runInitialQlikSenseSetup": false,
+        "ConnectToSenseAsUserDirectory": "qlik-ab0q2urn5t",
+        "ConnectToSenseAsUser": "qlikexternal",
         "dataConnections": [{
                 "name": "data import test",
                 "type": "folder",

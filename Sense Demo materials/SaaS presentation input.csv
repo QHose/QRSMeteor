@@ -116,7 +116,7 @@
 "What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","SaaS logo.png",,"","","","","         0","0","Technical - 2 hours",
-"What is integration.qlik.com?","Demonstration: Qlik Sense SaaS provisioning demo ","iframe generaration_embedded",,"","","","","         0","0","Technical - 2 hours, Integration summary, Hosting Ops, CTO",
+"What is integration.qlik.com?","Demonstration: Qlik Sense SaaS provisioning demo ","iframe generation_embedded",,"","","","","         0","0","Technical - 2 hours, Integration summary, Hosting Ops, CTO",
 "What is integration.qlik.com?","integration demo architecture introduction","saas demo architecture introduction of components.png",,"","","","","         0","0","Technical - 1 day, SaaS & Power of APIs",
 "What is integration.qlik.com?","integration demo architecture introduction 2","architecture - OEM SaaS scenario.png",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs",
 "What is integration.qlik.com?","integration demo architecture introduction 2","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","Technical - 1 hour, SaaS & Power of APIs",
@@ -2218,6 +2218,7 @@ Basically all the things you can do yourself when you use an app
  }
 }
 ```",,"","","","","         0","0","Technical - 1 day",
+"Engine API","Engine API explorer documentation","iframe http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/Dev-Hub/Content/EngineApiExplorer/engine-api-explorer.htm",,"","","","","         0","0","Deep dive",
 "Engine API","Connecting to Qlik Sense Server with HTML5 and Enigma.js ","A good tutorial on how to connect to Qlik Sense is created by [Guido Diepen](https://www.guidodiepen.nl/2017/06/connecting-to-qlik-sense-server-with-html5-and-enigma-js/),:",,"","","","","         0","0","Deep dive",
 "Engine API","Connecting to Qlik Sense Server with HTML5 and Enigma.js ","<iframe class=""SenseEmbedFrame"" src=""https://www.guidodiepen.nl/2017/06/connecting-to-qlik-sense-server-with-html5-and-enigma-js/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Deep dive",
 "Engine API","How to connect","engine API - how to connect.png",,"","","","","         0","0","PreSales",
@@ -2665,6 +2666,46 @@ enigma.getService('qix', {
 .then(app => serializeapp(app))
 .then(result => console.log(result))
 ```",,,,,,,,,
+"Engine API","Example code: create a master dimension","```javascript
+ enigma.getService('qix', cfg).then(function(qix) {
+     console.log(""Connect to QIX"");
+     qix.app.createDimension({
+          ""qInfo"": {
+            ""qId"": ""Dimension02"",
+            ""qType"": ""dimension""
+          },
+          ""qDim"": {
+            ""title"": ""testDim"",
+            ""qGrouping"": ""N"",
+            ""qFieldDefs"": [
+              ""Candidate""
+            ],
+            ""qFieldLabels"": [
+              ""Candidate label""
+            ]
+          },
+          ""qMetaDef"": {
+            ""title"": ""testDim""
+          }
+        })
+        .then(qix.app.createSessionObject({
+         ""qInfo"": {
+          ""qId"": ""mySessionObject"",
+          ""qType"": ""DimensionList""
+         },
+         ""qDimensionListDef"": {
+             ""qType"": ""Dimension"",
+             ""qData"": {
+        ""title"": ""/title"",
+        ""tags"": ""/tags"",
+        ""grouping"": ""/qDim/qGrouping"",
+        ""info"": ""/qDimInfos""
+             }
+         }
+        }))
+        .then(session => session.getLayout())
+        .then(layout => console.log(JSON.stringify(layout, null, '  ')))
+```",,,,,,,,,
 "Engine API","Exercise 1: get a list of apps via the engine API explorer in the dev-hub","Engine API - example screenshot.png",,"","","","","         0","0","Exercises",
 "Engine API","Exercise 2: create a new folder connection to c:\temp","https://youtu.be/HmmZfPjqSMw",,"","","","","         0","0","Exercises",
 "Engine API","Exercise 3: get an existing object","Go to the engine API explorer",,"","","","","         0","0","Exercises",
@@ -2853,7 +2894,7 @@ or
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Plan your deployment](http://help.qlik.com/en-US/sense/3.2/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Planning-Deployments.htm)",,"","","","","         0","0","PreSales, Technical - 1 day, Hosting Ops",
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Backup and restore Qlik Sense](http://help.qlik.com/en-US/sense/3.1/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Backup-Restore.htm)
 - This section describes how to back up and restore Qlik Sense sites and certificates and how to move a node to a new machine.",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
-"Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Server whitelist](/docs/Qlik_Scalability_Center_Recommended Servers.pdf)",,"","","","","         0","0","Hosting Ops",
+"Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Server whitelist](http://integration.qlik.com/docs/Qlik_Scalability_Center_Recommended Servers.pdf)",,"","","","","         0","0","Hosting Ops",
 "Architecture","Video (25M): understanding Qlik Sense performance (scalability)","https://youtu.be/Vwmx0nBNk0Q",,"","","","","         0","0","Support",
 "Architecture","Video: Activating license and allocating users access","https://youtu.be/uWGS48VaOQE",,,,,,,,,
 "Architecture","Video: Activating license and allocating users access","Tip: for OEM use cases I prefer to use `username like *` since the authorization module in your SaaS platform should decide who can enter Qlik Sense and who not...",,,,,,,,,

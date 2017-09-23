@@ -145,7 +145,7 @@ Template.slideGeneratorSelectionScreen.onRendered(function() {
 
 
 export function logoutCurrentSenseUserClientSide() {
-    // delete_cookie('X-Qlik-Session-presentation','', Meteor.settings.public.host);
+    // delete_cookie('X-Qlik-Session-presentation','', Meteor.settings.public.qlikSenseHost);
     //http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Personal-Delete.htm
 
     try {

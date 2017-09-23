@@ -15,6 +15,7 @@ import {
 var fs = require('fs-extra');
 const path = require('path');
 var os = require('os');
+var ip = require('ip');
 
 //
 // ─── IMPORT CONFIG FOR QLIK SENSE QRS ───────────────────────────────────────────
@@ -53,10 +54,11 @@ export async function createVirtualProxies() {
             throw new Error('Cant read the virtual proxy definitions file: virtualProxySettings.json in your automation folder')
         }
 
-        //FOR EACH PROXY FOUND IN THE INPUTFILE (vpToCreate), CREATE IT IN SENSE        
+        //FOR EACH PROXY FOUND IN THE INPUTFILE (vpToCreate), CREATE IT IN SENSE. We also put the current ip/host in the list of sense since in most cases this tool runs on the same machine as sense.     
         for (var vpToCreate of proxySettings) {
             if (vpToCreate.websocketCrossOriginWhiteList) {
-                vpToCreate.websocketCrossOriginWhiteList.push(Meteor.settings.public.host);
+                vpToCreate.websocketCrossOriginWhiteList.push(Meteor.settings.public.qlikSenseHost);
+                vpToCreate.websocketCrossOriginWhiteList.push(ip.address());
                 vpToCreate.websocketCrossOriginWhiteList.push(os.hostname());
             }
             var existingProxies = getVirtualProxies();
@@ -115,7 +117,7 @@ function linkVirtualProxyToProxy(virtualProxy) {
     var proxyConfig = getProxyServiceConfiguration(proxyId)
         // ADD THE NEW VIRTUAL PROXY TO THE EXISTING PROXY LIST
     proxyConfig.settings.virtualProxies.push(virtualProxy)
-        //OVERWRITE THE SETTINGS WITH THE COMPLETE UPDATED OBJECT, IN PRODUCTION MAKE SURE YOU ADD THE CHANGEDATE (SEE HELP)
+        //OVERWRITE THE SETTINGS WITH THE COMPLETE UPDATED OBJECT.
     updateProxy(proxyId, proxyConfig)
 }
 
@@ -159,6 +161,11 @@ function getProxyServiceConfiguration(proxyId) {
         response = HTTP.call('GET', request, {
             'npmRequestOptions': configCerticates,
         });
+
+        //SAVE RPOXY CONFIG TO THE EXPORT FOLDER
+        var file = path.join(Meteor.settings.broker.automationBaseFolder, 'proxy', 'export', 'proxyServiceConfiguration.json');
+        fs.outputFile(file, JSON.stringify(response.data, null, 2), 'utf-8');
+
         return response.data;
     } catch (err) {
         console.error('create virtual proxy failed', err);
