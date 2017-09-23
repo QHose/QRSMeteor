@@ -115,7 +115,6 @@ function linkVirtualProxyToProxy(virtualProxy) {
     var proxyId = getProxyId();
     // GET THE CONFIG OF THE PROXY (WHICH CONTAINS VIRTUAL PROXIES)
     var proxyConfig = getProxyServiceConfiguration(proxyId)
-    console.log('proxyConfig', proxyConfig)
         // ADD THE NEW VIRTUAL PROXY TO THE EXISTING PROXY LIST
     proxyConfig.settings.virtualProxies.push(virtualProxy)
 
