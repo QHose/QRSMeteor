@@ -2,24 +2,24 @@
   <div class="ui top fixed secondary pointing menu mainNavBar">
     <div class="ui container">
       <!-- {{#unless isMainLandingPage}} -->
-      <a href="{{pathFor 'useCaseSelection'}}" class="{{#if isMainLandingPage}} active {{/if}} item">
+      <a id="home" href="{{pathFor 'useCaseSelection'}}" class="{{#if isMainLandingPage}} active {{/if}} item">
           HOME</a>
       <!-- {{/unless}} -->
-      <a href="{{pathFor 'selfService'}}" class="{{#if isSelfServicePage}} active {{/if}} item">
+      <a id="SSBI" href="{{pathFor 'selfService'}}" class="{{#if isSelfServicePage}} active {{/if}} item">
       SELF SERVICE
     </a>
       {{#if isSaaSDemoPage}} {{> yourSaasPlatformMenu}}
       {{else}}
-        <a href="{{pathFor 'generation'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
+        <a id="generation" href="{{pathFor 'generation'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
         SAAS PROVISIONING
       </a> {{/if}}
-      <a href="{{webIntegrationDemo}}" class="item">
+      <a id="embedding" href="{{webIntegrationDemo}}" class="item">
           EMBED QLIK SENSE
         </a>
       <!-- <a href="{{pathFor 'documentation'}}" class="{{#if isDocumentationPage}} active {{/if}} item">
      DOCUMENTATION
    </a> -->
-      <a href="/documentation?tab=video" class="{{#if isDocumentationPage}} active {{/if}} item"> VIDEO LIBRARY</a>
+      <a id="video" href="/documentation?tab=video" class="{{#if isDocumentationPage}} active {{/if}} item"> VIDEO LIBRARY</a>
       <!-- 
     <a class="ui item">
       Logout

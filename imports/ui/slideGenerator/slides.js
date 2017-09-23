@@ -88,7 +88,8 @@ Template.slides.events({
 
 Template.slideContent.onRendered(function() {
     Meteor.setTimeout(function() {
-        this.$('.ui.embed').embed();
+        //embed youtube containers in a nice box without loading all content
+        this.$('.ui.embed').embed({ autoplay: true });
         //make sure all code gets highlighted using highlight.js
         this.$('pre code').each(function(i, block) {
             hljs.highlightBlock(block);

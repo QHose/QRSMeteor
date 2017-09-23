@@ -1,15 +1,15 @@
 [
   {
-    "id": "429c1753-aff7-4bfe-9a41-270d23836169",
-    "createdDate": "2017-09-20T13:27:06.789Z",
-    "modifiedDate": "2017-09-20T13:27:06.789Z",
+    "id": "a82a2fa7-7221-4a62-ad81-ddac8df7373f",
+    "createdDate": "2017-09-21T10:38:10.376Z",
+    "modifiedDate": "2017-09-21T10:38:10.376Z",
     "modifiedByUserName": "QLIK-AB0Q2URN5T\\qlikexternal",
     "name": "customers",
     "valueType": "Text",
     "choiceValues": [
-      "Gerhold Inc",
-      "Dietrich Group",
-      "Volkman and Sons"
+      "Hoppe, Reichert and Steuber",
+      "Osinski Inc",
+      "Huels, Marvin and Olson"
     ],
     "objectTypes": [
       "App",

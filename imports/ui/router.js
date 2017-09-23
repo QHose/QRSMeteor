@@ -91,9 +91,14 @@ Router.route('/ApiLogsTable');
 Router.route('/introduction');
 Router.route('/SecurityDeepDive');
 
+//VIDEO OVERVIEW
 Router.route('/videoOverview', {
     template: 'videoOverview',
     layoutTemplate: 'containerlayout'
+});
+Router.route('/videoOverview_embedded', {
+    template: 'videoOverview',
+    layoutTemplate: 'SSOLayout'
 });
 
 Router.route('/documentation', {

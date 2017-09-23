@@ -5,11 +5,14 @@ import {
     Template
 } from 'meteor/templating';
 import {
-    senseConfig as config
+    senseConfig
 } from '/imports/api/config.js';
+const enigma = require('enigma.js');
+
 import {
     Session
 } from 'meteor/session';
+import { getAllSlides } from '/imports/ui/useCases/useCaseSelection';
 const Cookies = require('js-cookie');
 
 Template.nav.helpers({
@@ -29,7 +32,8 @@ Template.nav.helpers({
         return !Router.current().route.getName() || Router.current().route.getName() === 'useCaseSelection';
     },
     isPage(page) {
-        return Router.current().route.getName() === page;
+        if (Router.current().route)
+            return Router.current().route.getName() === page;
     },
     userRole() {
         let role = setUserRole();
@@ -39,27 +43,38 @@ Template.nav.helpers({
 
 
 Template.nav.onRendered(function() {
-
     this.$('.selectSlides')
         .transition({
             animation: 'bounce',
-            duration: '5s'
+            duration: '9s'
         });
+});
 
-    //     this.$('.header .dropdown-toggle').dropdown()
-    //     this.$('.header .dropdown-toggle').on('click', function() {
-    //         $('.header .dropdown-menu').toggle()
-    //     });
-    //     if (localStorage.userRole) {
-    //         this.$(`.navbar-right .dropdown-menu li a[data="${localStorage.userRole}"]`).parent().addClass('active')
-    //     }
-    //     this.$('.header .dropdown-menu a').on('click', function() {
-    //         role = $(this).attr("data")
-    //         Session.set('userRole', role);
-    //         $('.dropdown-menu li').removeClass('active')
-    //         $(this).parent().addClass('active');
-    //         $('.header .dropdown-menu').toggle()
-    //     });
+Template.nav.events({
+    'click a': function(event, template) {
+        event.preventDefault();
+        console.log('menu link clicked');
+        var menuItem = event.currentTarget.id;
+        console.log('menuItem', menuItem)
+        switch (menuItem) {
+            case 'home':
+                Router.go('useCaseSelection');
+                break;
+            case 'SSBI':
+                selectMenuItemInSense('What is governed self service using Qlik Sense apps?')
+                break;
+            case 'generation':
+                selectMenuItemInSense('Qlik Sense SaaS provisioning demo');
+                break;
+            case 'embedding':
+                selectMenuItemInSense('Qlik Sense SaaS provisioning demo');
+                window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
+                break;
+            case 'video':
+                selectMenuItemInSense('Video overview');
+                break;
+        }
+    }
 });
 
 
@@ -68,15 +83,47 @@ Template.yourSaasPlatformMenu.onRendered(function() {
         .dropdown()
 });
 
-// function setUserRole() {
-//     let role = 'Select a role'
-//     if (localStorage.userRole) {
-//         role = localStorage.userRole
-//     } else {
-//         localStorage['userRole'] = role;
-//     }
-//     return role;
-// }
+async function selectMenuItemInSense(slide) {
+    console.log('selectMenuItemInSense - slide', slide)
+    Cookies.set('currentMainRole', 'TECHNICAL');
+    try {
+        // get a valid ticket, if you select a menu item you want to navigate as an expert user...
+        var userProperties = {
+            group: 'Technical'
+        };
+        var ticket = await Meteor.callPromise('getTicketNumber', userProperties, Meteor.settings.public.slideGenerator.virtualProxy);
+
+        const config = {
+            schema: senseConfig.QIXSchema,
+            appId: senseConfig.slideGeneratorAppId,
+            session: {
+                host: senseConfig.host,
+                prefix: Meteor.settings.public.slideGenerator.virtualProxy,
+                port: senseConfig.port,
+                unsecure: true,
+                urlParams: {
+                    qlikTicket: ticket
+                }
+            }
+        };
+        var qix = await enigma.getService('qix', config);
+        var myField = await qix.app.getField('Level 2');
+        var result = await myField.selectValues(
+            [{
+                "qText": slide
+            }]
+        )
+        await getAllSlides(qix);
+        Router.go('slides');
+    } catch (error) {
+        var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS';
+        console.error(message, error);
+        sAlert.error(message, error);
+    };
+}
+
+
+
 
 // Replace with more Meteor approach
 function getQueryParams(name, url) {

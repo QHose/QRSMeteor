@@ -15,6 +15,7 @@ const Cookies = require('js-cookie');
 var IntegrationPresentationSortedDataObject = Meteor.settings.public.slideGenerator.dataObject; //'pskL';//a table object in the saas presentation qvf, that ensures the slides are in the correct load order. better would be to load this in this order in the API call.
 var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
 var slideObject = Meteor.settings.public.slideGenerator.dataObject;
+var app = null;
 
 
 var possibleRoles = ['Developer', 'TECHNICAL', 'GENERIC', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
@@ -100,7 +101,6 @@ async function setSlideContentInSession(group) {
 
         //get the slide content and register an event handler, so we know when Qlik Sense changed and can update the screen... with new content. Its fine if it runs in parallel
         await Promise.all([
-            getAllSlideHeaders(qix),
             getAllSlides(qix),
             setChangeListener(qix),
         ]);
@@ -155,7 +155,8 @@ async function getAllSlideHeaders(qix) {
 // ─── GET LEVEL 1 TO 3 ────────────────────────────────────────────
 //
 
-async function getAllSlides(qix) {
+export async function getAllSlides(qix) {
+    await getAllSlideHeaders(qix);
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {
             qType: 'cube'

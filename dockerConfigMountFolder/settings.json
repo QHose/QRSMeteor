@@ -2,9 +2,11 @@
     "adminEmails": "mbj@qlik.com",
     "multiTenantScenario": false,
     "public": {
-        "qlikSenseHost": "localhost",
-        "proxyPort": 90,
+        "qlikSenseHost": "QLIK-AB0Q2URN5T",
         "qlikSensePort": 81,
+        "qlikSensePortSecure": 600,
+        "qlikSenseAllowHTTP": true,
+        "proxyPort": 80,
         "virtualProxyClientUsage": "meteor",
         "webIntegrationHost": "localweb",
         "webIntegrationDemoPort": 80,
@@ -50,7 +52,18 @@
         "automationBaseFolder": "",
         "runInitialQlikSenseSetup": false,
         "connectToSenseAsUserDirectory": "qlik-ab0q2urn5t",
-        "connectToSenseAsUser": "qlikexternal"
+        "connectToSenseAsUser": "qlikexternal",
+        "dataConnections": [{
+                "name": "data import test",
+                "type": "folder",
+                "connectionString": "C:\\"
+            },
+            {
+                "name": "test",
+                "type": "folder",
+                "connectionString": "C:\\"
+            }
+        ]
     },
     "security": {
         "rulesToDisable": ["Stream", "CreateAppObjectsPublishedApp", "CreateApp", "ExportAppData", "StreamEveryoneAnonymous"]
