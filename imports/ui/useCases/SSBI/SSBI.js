@@ -43,9 +43,10 @@ Template.SSBIUsers.onCreated(function() {
     console.log('server', server)
     QMCUrl = server + '/qmc';
     hubUrl = server + '/hub';
-    sheetUrl = server + '/sense/app/' + senseConfig.SSBIAppId;
+    sheetUrl = server + '/sense/app/' + Session.get('SSBIAppId');
+    //senseConfig.SSBIAppId;
     console.log('sheetUrl', sheetUrl)
-    appUrl = server + "/sense/app/" + senseConfig.SSBIAppId + "/sheet/" + Meteor.settings.public.SSBI.sheetId + "/state/analysis";
+    appUrl = server + "/sense/app/" + Session.get('SSBIAppId') + "/sheet/" + Meteor.settings.public.SSBI.sheetId + "/state/analysis";
     console.log('SSBIApp URL', appUrl);
 
 })

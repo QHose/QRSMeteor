@@ -79,6 +79,7 @@ Meteor.startup(function() {
         } else {
             senseConfig.SSBIAppId = IDs.SSBI;
             senseConfig.slideGeneratorAppId = IDs.slideGenerator;
+            Session.setPersistent('SSBIAppId', IDs.SSBI);
             Cookies.set('slideGeneratorAppId', IDs.slideGenerator);
             try {
                 check(senseConfig.SSBIAppId, String);

@@ -225,15 +225,18 @@ function loginDEV(user) {
                 sAlert.error(err.message);
                 console.error(err);
             } else {
-                Meteor.loginWithPassword(user.email, user.password, function(err, res) { //
-                    if (err) {
-                        sAlert.error(err.message);
-                        console.error(err);
-                    } else {
-                        sAlert.success('You are now logged in with your Qlik.com account. You now have your "private demo environment". So feel free to create/change/delete anything you would like...');
-                        console.log('user successfully logged in', Meteor.userId());
-                    }
-                });
+                console.log('------------------------------------');
+                console.log('password reset..');
+                console.log('------------------------------------');
+                // Meteor.loginWithPassword(user.email, user.password, function(err, res) { //
+                //     if (err) {
+                //         sAlert.error(err.message);
+                //         console.error(err);
+                //     } else {
+                //         sAlert.success('You are now logged in with your Qlik.com account. You now have your "private demo environment". So feel free to create/change/delete anything you would like...');
+                //         console.log('user successfully logged in', Meteor.userId());
+                //     }
+                // });
             }
         })
     }
