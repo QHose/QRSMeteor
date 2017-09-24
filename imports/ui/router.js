@@ -208,8 +208,11 @@ function mustBeSignedInDEV() {
 
     // "Logout"-Hook: Manual implementation, wait a bit to prevent multiple page loads, because the database needs to be update
     Tracker.autorun(function() {
+        console.log('------------------------------------');
+        console.log('tracker: login status changed...');
+        console.log('------------------------------------');
         if (!Meteor.userId()) {
-            Meteor.setTimeout(loginDEV.bind(null, user), 500);
+            Meteor.setTimeout(loginDEV.bind(null, user), 3000);
         }
     });
 
@@ -228,15 +231,15 @@ function loginDEV(user) {
                 console.log('------------------------------------');
                 console.log('password reset..');
                 console.log('------------------------------------');
-                // Meteor.loginWithPassword(user.email, user.password, function(err, res) { //
-                //     if (err) {
-                //         sAlert.error(err.message);
-                //         console.error(err);
-                //     } else {
-                //         sAlert.success('You are now logged in with your Qlik.com account. You now have your "private demo environment". So feel free to create/change/delete anything you would like...');
-                //         console.log('user successfully logged in', Meteor.userId());
-                //     }
-                // });
+                Meteor.loginWithPassword(user.email, user.password, function(err, res) { //
+                    if (err) {
+                        sAlert.error(err.message);
+                        console.error(err);
+                    } else {
+                        sAlert.success('You are now logged in with your Qlik.com account. You now have your "private demo environment". So feel free to create/change/delete anything you would like...');
+                        console.log('user successfully logged in', Meteor.userId());
+                    }
+                });
             }
         })
     }
