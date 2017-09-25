@@ -46,11 +46,12 @@ Template.slides.onRendered(function() {
         // progress: true,
         // history: true,        
         autoPlayMedia: true,
-        viewDistance: 3,
+        autoSlide: 500,
+        // viewDistance: 3,
         // // default/cube/page/concave/zoom/linear/fade/none 
         transition: 'slide', // none/fade/slide/convex/concave/zoom     
         // transitionSpeed: 'default', // default/fast/slow   
-        previewLinks: true,
+        previewLinks: false,
         slideNumber: true
     });
     // })

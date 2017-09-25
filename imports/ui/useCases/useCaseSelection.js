@@ -80,7 +80,6 @@ async function setSlideContentInSession(group) {
         var ticket = await Meteor.callPromise('getTicketNumber', userProperties, Meteor.settings.public.slideGenerator.virtualProxy);
 
         var qix = await getQix(ticket);
-        console.log('Recieved qix object: ', qix)
 
         //get the slide content and register an event handler, so we know when Qlik Sense changed and can update the screen... with new content. Its fine if it runs in parallel
         await Promise.all([
@@ -145,15 +144,31 @@ Template.useCaseSelection.events({
 // ─── MAIN TOPICS LEVEL 1 AND 2 ─────────────────────────────────────────────────
 //
 async function getAllSlideHeaders(qix) {
-    var model = await qix.app.getObject(IntegrationPresentationSortedDataObject) //get an existing object out of an app, if you import an app this stays the same
-    var data = await model.getHyperCubeData('/qHyperCubeDef', [{
+    //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.
+    var sessionModel = await qix.app.createSessionObject({
+        qInfo: {
+            qType: 'cube'
+        },
+        qHyperCubeDef: {
+            qDimensions: [{
+                qDef: {
+                    qFieldDefs: ['Level 1']
+                }
+            }, {
+                qDef: {
+                    qFieldDefs: ['Level 2']
+                }
+            }]
+        }
+    });
+    sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
         qTop: 0,
         qLeft: 0,
         qWidth: 3,
-        qHeight: 1000
+        qHeight: 3333
     }]);
-    var table = data[0].qMatrix;
-    var tableWithChapters = insertSectionBreakers(table);
+    var tableWithChapters = insertSectionBreakers(sessionData[0].qMatrix);
+    console.log('tableWithChapters', tableWithChapters)
     Session.set('slideHeaders', tableWithChapters)
 }
 //
@@ -189,12 +204,12 @@ export async function getAllSlides(qix) {
         qHeight: 3333
     }]);
     Session.set('slideData', sessionData[0].qMatrix);
+    console.log('slide data', Session.get('slideData'));
 }
 
 export async function setChangeListener(qix) {
     qix.app.on('changed', async() => {
         console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
-        await getAllSlideHeaders(qix);
         await getAllSlides(qix);
     });
 }

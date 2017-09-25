@@ -495,7 +495,7 @@ body {
     height: 110px;
     z-index: 30;
     right: 10px;
-    bottom: 10px;
+    top: 50%;
 }
 
 .reveal .controls div {

@@ -86,6 +86,6 @@ Template.slideSelectionSheet.onRendered(function() {
         console.log('slide selection modal closed');
         var ticket = 'dummy, user should already be authenticated at this point...'
         var qix = await getQix(ticket);
-
+        qix.app.abortModal(true);
     })
 })

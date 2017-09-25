@@ -134,7 +134,7 @@ Template.users.events({
     'click .backToGeneration' () {
         console.log('go to step 2 clicked')
         Session.set('currentStep', 2);
-        Router.go('generation');
+        Router.go('generation_embedded');
     },
     'click .customer-row': function() {
         Session.set("selectedCustomerStep1", this._id);

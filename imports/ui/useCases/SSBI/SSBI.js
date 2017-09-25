@@ -175,9 +175,9 @@ Template.senseButtons.onRendered(function() {
 async function login(passport) {
     try {
         //logout the current user in the browser via a server side call
-        var currentUser = getCurrentUserLoggedInSense()
-        console.log('currentUser', currentUser)
-        Meteor.call('logoutPresentationUser', currentUser.userDirectory, currentUser.userId);
+        // var currentUser = getCurrentUserLoggedInSense()
+        // console.log('currentUser', currentUser)
+        Meteor.call('logoutPresentationUser', Meteor.userId(), Session.get('currentUser'));
 
         Session.set('currentUser', passport.UserId);
         //update the user collection for the saas provisioning demo, to keep in sync... 
