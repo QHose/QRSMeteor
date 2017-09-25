@@ -29,7 +29,11 @@ Template.modalSaaSautomation.onRendered(function() {
     this.$('.ui.embed').embed();
 });
 
-
+Template.emptyContainerLayout.events({
+    'keydown, click': function(event, template) {
+        Template.instance().$('*').popup('remove popup')
+    }
+})
 
 Template.layout.events({
     'keydown, click': function(event, template) {
