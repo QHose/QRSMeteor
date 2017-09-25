@@ -127,7 +127,7 @@ export function createStream(name, generationUserId) {
         };
 
         REST_Log(call, generationUserId);
-        console.log('call.response;', call.response)
+        console.log('Create stream call.response;', call.response)
         return call.response;
     } catch (err) {
         console.error(err);

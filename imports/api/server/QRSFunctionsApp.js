@@ -221,16 +221,16 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 //source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
 async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, customer, customerDataFolder, scriptReplace, generationUserId) {
     console.log('--------------------------REPLACE SCRIPT AND RELOAD APP');
-    check(appId, String);
-    check(customer.name, String);
-    check(customerDataFolder, String);
-    check(generationUserId, String);
 
     //set the app ID to be used in the enigma connection to the engine API
     var config = Object.assign({}, enigmaServerConfig);
     config.appId = appId;
 
     try {
+        check(appId, String);
+        check(customer.name, String);
+        check(customerDataFolder, String);
+        check(generationUserId, String);
         //connect to the engine
         var qix = await enigma.getService('qix', config);
         var call = {};
@@ -344,14 +344,22 @@ function deleteDirectoryAndDataConnection(customerName) {
 }
 
 function createDirectory(customerName) {
-    const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
-    fs.ensureDir(dir, err => {
-        if (err) {
-            console.error(err) // => null
-            throw new Meteor.Error('Server error', 'Unable to create new directory for customer/department: ' + customerName)
-        }
-    });
-    return dir;
+    console.log('createDirectory TURNED OFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', customerName)
+        // try {
+        //     check(customerName, String);
+        //     const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
+    console.log('Meteor.settings.broker.customerDataDir', Meteor.settings.broker.customerDataDir)
+        //     fs.ensureDir(dir, err => {
+        //         if (err) {
+        //             console.error(err) // => null
+        //             throw new Meteor.Error('Server error', 'Unable to create new directory for customer/department: ' + customerName)
+        //         }
+        //     });
+        //     return dir;
+        // } catch (error) {
+        //     throw new Meteor.Error('Failed to create directory for ', customerName);
+        // }
+
 }
 
 function checkCustomersAreSelected(customers) {

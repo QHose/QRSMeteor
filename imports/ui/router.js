@@ -28,6 +28,10 @@ Router.route('/generation_embedded', {
     template: 'generation',
     layoutTemplate: 'emptyContainerLayout'
 });
+Router.route('/users', {
+    template: 'users',
+    layoutTemplate: 'emptyContainerLayout'
+});
 
 //SELF SERVICE
 Router.route('/selfService', function() {
@@ -83,7 +87,6 @@ Router.route('/sequenceDiagramOverview');
 Router.route('/sequenceDiagramGeneration');
 Router.route('/legal');
 
-Router.route('/users');
 Router.route('/notFound');
 Router.route('/userOverview');
 Router.route('/homeAbout');
