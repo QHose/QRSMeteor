@@ -12,7 +12,7 @@ const enigma = require('enigma.js');
 import {
     Session
 } from 'meteor/session';
-import { getAllSlides } from '/imports/ui/useCases/useCaseSelection';
+import { getAllSlides, setChangeListener, getQix } from '/imports/ui/useCases/useCaseSelection';
 const Cookies = require('js-cookie');
 
 Template.nav.helpers({
@@ -53,9 +53,7 @@ Template.nav.onRendered(function() {
 Template.nav.events({
     'click a': function(event, template) {
         event.preventDefault();
-        console.log('menu link clicked');
         var menuItem = event.currentTarget.id;
-        console.log('menuItem', menuItem)
         switch (menuItem) {
             case 'home':
                 Router.go('useCaseSelection');
@@ -92,21 +90,7 @@ async function selectMenuItemInSense(slide) {
             group: 'Technical'
         };
         var ticket = await Meteor.callPromise('getTicketNumber', userProperties, Meteor.settings.public.slideGenerator.virtualProxy);
-
-        const config = {
-            schema: senseConfig.QIXSchema,
-            appId: senseConfig.slideGeneratorAppId,
-            session: {
-                host: senseConfig.host,
-                prefix: Meteor.settings.public.slideGenerator.virtualProxy,
-                port: senseConfig.port,
-                unsecure: true,
-                urlParams: {
-                    qlikTicket: ticket
-                }
-            }
-        };
-        var qix = await enigma.getService('qix', config);
+        var qix = await getQix(ticket);
         var myField = await qix.app.getField('Level 2');
         var result = await myField.selectValues(
             [{
@@ -114,6 +98,7 @@ async function selectMenuItemInSense(slide) {
             }]
         )
         await getAllSlides(qix);
+        await setChangeListener(qix)
         Router.go('slides');
     } catch (error) {
         var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS';

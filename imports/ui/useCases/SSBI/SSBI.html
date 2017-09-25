@@ -2,13 +2,13 @@
 <template name="SSBILayout">
     <div class="wrap">
         {{> yield "nav"}}
-        <div class="ui padded grid">
+        <div class="ui grid">
                 {{> sAlert}}
             <div class="four wide column">{{> yield "aside"}}</div>
             <div class="twelve wide column">{{> yield}}</div>
         </div>
     </div>
-    {{> footer}}
+    <!-- {{> footer}} -->
 </template>
 
 <template name="SSBISenseApp">
@@ -16,12 +16,12 @@
 </template>
 <template name="SSBISenseIFrame">
     <div class="IFrameSense">
-        <h3 class="ui dividing header">Qlik Sense</h3>
+        <!-- <h3 class="ui dividing header">Qlik Sense</h3> -->
         <iframe class="SSBIIFrame" src="{{appURL}}"></iframe>
     </div>
 </template>
 <template name="SSBIUsers">
-    <h3 class="ui dividing header">Governed self service demo</h3>
+    <!-- <h3 class="ui dividing header">Governed self service demo</h3> -->
     <div class="ui message">
         <i class="unlock alternate icon"></i>Here we demonstrate the effect of applying different access rights (derived
         from your platform) for some fictitious users. Qlik on a user to automatically login into Qlik Sense "as this user".

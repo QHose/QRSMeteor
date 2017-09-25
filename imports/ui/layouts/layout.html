@@ -1,17 +1,5 @@
 <template name="layout">
-    {{> containerlayout}}
-    <!-- {{> nav}}
-    <div class="ui relaxed grid container">
-        <div class="one wide column">
-        </div>
-        <div class="fourteen wide column">
-            {{> modals}} {{> sAlert}}
-            {{> yield}}
-        </div>
-        <div class="one wide column">
-        </div>
-    </div>
-    {{> footer}} -->
+    {{> containerlayout}}    
 </template>
 
 <template name="presentationLayout">
@@ -61,6 +49,10 @@
     {{> nav}} {{> slideSelectionSheet}} {{> sAlert}} {{> yield}}
 </template>
 
+<template name="emptyContainerLayout">
+    <div class="ui container"> {{ sAlert}} {{> yield}} </div>
+</template>
+
 <template name="slideSelectionSheet">
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog" style="width: 90%;">
@@ -72,7 +64,8 @@
                     <h4 class="modal-title">Select the content to be presented</h4>
                 </div>
                 <div class="modal-body">
-                    <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: calc(100vh - 250px); border: none;"> </iframe>
+                    <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: calc(100vh - 250px); border: none;">
+                    </iframe>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -110,96 +103,6 @@
     </div>
 
 </template>
-
-<template name="impressFooter">
-    {{#if nav}}
-        <section class="general footer-top sticky">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <a href="{{nav.previous.link}}">{{nav.previous.text}}</a>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <a href="{{nav.next.link}}">{{nav.next.text}}</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    {{/if}}
-    <section class="general footer sticky">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <ul>
-                        <li><a href="/"><img src="./images/qlik_logo.svg" class="logo"></a></li>
-                        <li><a href="http://oem.qlik.com" target="_blank">oem.qlik.com</a></li>
-                        <li><a href="http://branch.qlik.com">BRANCH.QLIK.COM</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</template>
-<template name="SSBIFooter">
-    {{#if nav}}
-        <section class="general footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <a href="{{nav.previous.link}}">{{nav.previous.text}}</a>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <a href="{{nav.next.link}}">{{nav.next.text}}</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    {{/if}}
-    <section class="general footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <ul>
-                        <li><a href="/"><img src="./images/qlik_logo.svg" class="logo"></a></li>
-                        <li><a href="http://oem.qlik.com" target="_blank">oem.qlik.com</a></li>
-                        <li><a href="http://branch.qlik.com">BRANCH.QLIK.COM</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-</template>
-<template name="documentationFooter">
-    {{#if nav}}
-        <section class="general footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <a href="{{nav.previous.link}}">{{nav.previous.text}}</a>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <a href="{{nav.next.link}}">{{nav.next.text}}</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    {{/if}}
-    <section class="general footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <ul>
-                        <li><a href="/"><img src="./images/qlik_logo.svg" class="logo"></a></li>
-                        <li><a href="http://oem.qlik.com" target="_blank">oem.qlik.com</a></li>
-                        <li><a href="http://branch.qlik.com">BRANCH.QLIK.COM</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-</template>
-
 
 <template name="loginDimmer">
     <div class="ui container" style="height: 500px;">

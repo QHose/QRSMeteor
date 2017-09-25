@@ -38,15 +38,15 @@ Template.slides.onRendered(function() {
     // setTimeout(function() {
     // Tracker.afterFlush(function() {
     Reveal.initialize({
-        width: "1400",
+        width: window.innerWidth - 80,
         // height: window.innerHeight - 90,
         embedded: true,
         // controls: true,
         center: false,
         // progress: true,
         // history: true,        
-        // // autoPlayMedia: true,
-        // // viewDistance: 3,
+        autoPlayMedia: true,
+        viewDistance: 3,
         // // default/cube/page/concave/zoom/linear/fade/none 
         transition: 'slide', // none/fade/slide/convex/concave/zoom     
         // transitionSpeed: 'default', // default/fast/slow   

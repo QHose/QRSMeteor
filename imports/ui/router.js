@@ -26,7 +26,7 @@ Router.route('/', function() {
 Router.route('/generation');
 Router.route('/generation_embedded', {
     template: 'generation',
-    layoutTemplate: 'SSOLayout'
+    layoutTemplate: 'emptyContainerLayout'
 });
 
 //SELF SERVICE
@@ -209,7 +209,7 @@ function mustBeSignedInDEV() {
     // "Logout"-Hook: Manual implementation, wait a bit to prevent multiple page loads, because the database needs to be update
     Tracker.autorun(function() {
         console.log('------------------------------------');
-        console.log('tracker: login status changed...');
+        console.log('tracker: login status changed...', Meteor.userId());
         console.log('------------------------------------');
         if (!Meteor.userId()) {
             Meteor.setTimeout(loginDEV.bind(null, user), 3000);

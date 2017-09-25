@@ -329,10 +329,14 @@ body {
 /* Ensure certain elements are never larger than the slide itself */
 
 .reveal img,
-.reveal video,
-.reveal iframe {
+.reveal video {
     max-width: 95%;
     max-height: 95%;
+}
+
+.reveal iframe {
+    max-width: 100%;
+    max-height: calc(100vh - 180px);
 }
 
 

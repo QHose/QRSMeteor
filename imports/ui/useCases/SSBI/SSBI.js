@@ -39,12 +39,11 @@ Template.SSBIUsers.onCreated(function() {
     console.log('------------------------------------');
     console.log('SSBISenseIFrame created');
     console.log('------------------------------------');
-    server = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage;
+    server = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.slideGenerator.virtualProxy;
     console.log('server', server)
     QMCUrl = server + '/qmc';
     hubUrl = server + '/hub';
     sheetUrl = server + '/sense/app/' + Session.get('SSBIAppId');
-    //senseConfig.SSBIAppId;
     console.log('sheetUrl', sheetUrl)
     appUrl = server + "/sense/app/" + Session.get('SSBIAppId') + "/sheet/" + Meteor.settings.public.SSBI.sheetId + "/state/analysis";
     console.log('SSBIApp URL', appUrl);
@@ -138,16 +137,16 @@ Template.SSBIUsers.events({
 
     },
     'click .button.hub ' () {
-        refreshIframe(hubUrl);
+        Session.set('appUrl', hubUrl);
     },
     'click .button.sheet ' () {
-        refreshIframe(sheetUrl);
+        Session.set('appUrl', sheetUrl);
     },
     'click .button.app ' () {
-        refreshIframe(appUrl);
+        Session.set('appUrl', appUrl);
     },
     'click .button.QMC ' () {
-        refreshIframe(QMCUrl);
+        Session.set('appUrl', QMCUrl);
     }
 });
 
@@ -177,13 +176,14 @@ async function login(passport) {
     try {
         //logout the current user in the browser via a server side call
         var currentUser = getCurrentUserLoggedInSense()
-        Meteor.call('logoutVirtualProxyClientUsageUser', currentUser.userDirectory, currentUser.userId);
+        console.log('currentUser', currentUser)
+        Meteor.call('logoutPresentationUser', currentUser.userDirectory, currentUser.userId);
 
         Session.set('currentUser', passport.UserId);
         //update the user collection for the saas provisioning demo, to keep in sync... 
-        Meteor.callPromise('simulateUserLogin', passport.UserId);
+        // Meteor.callPromise('simulateUserLogin', passport.UserId);
         var URLtoOpen = Session.get('appUrl');
-        var ticket = await Meteor.callPromise('requestTicketWithPassport', Meteor.settings.public.virtualProxyClientUsage, passport);
+        var ticket = await Meteor.callPromise('requestTicketWithPassport', Meteor.settings.public.slideGenerator.virtualProxy, passport);
         URLtoOpen += '?QlikTicket=' + ticket;
         console.log('login: the url to open is: ', URLtoOpen);
 
@@ -196,14 +196,11 @@ async function login(passport) {
     }
 };
 
-function refreshIframe(URLtoOpen) {
-    Session.set('appUrl', URLtoOpen);
-};
 
 async function getCurrentUserLoggedInSense() {
     try {
-        const RESTCALL = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.virtualProxyClientUsage + '/qps/user';
-        console.log('RESTCALL', RESTCALL)
+        const RESTCALL = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.slideGenerator.virtualProxy + '/qps/user';
+        console.log('REST call to logout the user: ', RESTCALL)
         var result = await HTTP.getPromise(RESTCALL)
         console.log('current user in Sense', result);
     } catch (err) {

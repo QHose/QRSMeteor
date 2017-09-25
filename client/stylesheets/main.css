@@ -47,8 +47,8 @@
 }
 
 .wrap {
-    min-height: calc(100vh - 217px);
-    margin-top: 35px;
+    min-height: calc(100vh - 192px);
+    margin-top: 10px;
 }
 
 .landing .selectRole {

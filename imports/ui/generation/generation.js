@@ -257,8 +257,19 @@ Template.QlikSense.onRendered(function() {
 
 
 Template.generation.onCreated(function() {
-    // this.subscribe('streams');
-    // this.subscribe('customers');
+    //see https://guide.meteor.com/data-loading.html
+    this.subscribe('streams');
+    this.subscribe('customers');
+
+    const templateAppsHandle = Meteor.subscribe('templateApps');
+    const apiLogsHandle = Meteor.subscribe('apiLogs');
+    const customersHandle = Meteor.subscribe('customers', { //http://stackoverflow.com/questions/28621132/meteor-subscribe-callback
+        onReady: function() {},
+        onError: function() {
+            console.log("onError", arguments);
+        }
+    });
+
 
     var self = this;
     self.autorun(function() {

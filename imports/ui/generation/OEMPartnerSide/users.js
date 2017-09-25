@@ -1,11 +1,27 @@
-import { Template } from 'meteor/templating';
-import { senseConfig as config } from '/imports/api/config.js';
-import { ironRouter } from 'meteor/iron:router';
-import { Apps, TemplateApps } from '/imports/api/apps.js'
-import { Customers, dummyCustomers } from '/imports/api/customers.js';
-import { Streams } from '/imports/api/streams.js'
+import {
+    Template
+} from 'meteor/templating';
+import {
+    senseConfig as config
+} from '/imports/api/config.js';
+import {
+    ironRouter
+} from 'meteor/iron:router';
+import {
+    Apps,
+    TemplateApps
+} from '/imports/api/apps.js'
+import {
+    Customers,
+    dummyCustomers
+} from '/imports/api/customers.js';
+import {
+    Streams
+} from '/imports/api/streams.js'
 import '/imports/ui/UIHelpers';
-import { insertTemplateAndDummyCustomers } from '/imports/ui/generation/OEMPartnerSide/OEMPartner';
+import {
+    insertTemplateAndDummyCustomers
+} from '/imports/ui/generation/OEMPartnerSide/OEMPartner';
 
 import './users.html';
 
@@ -129,7 +145,9 @@ Template.users.events({
     },
     'click .insertNewCustomer' () {
         $('#insertCustomer').modal('show')
-            .modal({ observeChanges: true });
+            .modal({
+                observeChanges: true
+            });
         refreshModal();
     }
 
@@ -137,7 +155,9 @@ Template.users.events({
 
 
 function refreshModal() {
-    Meteor.setTimeout(function() { refreshModal() }, 1);
+    Meteor.setTimeout(function() {
+        refreshModal()
+    }, 1);
     return $('#insertCustomer').modal('refresh');
 }
 Template.insertCustomer.events({
@@ -176,4 +196,13 @@ Template.insertCustomer.onRendered(function() {  
 Template.users.onCreated(function() {
     // this.subscribe('customers');
     Session.set('currentStep', 1);
+
+    //see https://guide.meteor.com/data-loading.html     
+    const customersHandle = Meteor.subscribe('customers', { //http://stackoverflow.com/questions/28621132/meteor-subscribe-callback
+        onReady: function() {},
+        onError: function() {
+            console.log("onError", arguments);
+        }
+    });
+
 })

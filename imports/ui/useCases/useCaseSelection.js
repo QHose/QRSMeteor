@@ -79,24 +79,7 @@ async function setSlideContentInSession(group) {
         };
         var ticket = await Meteor.callPromise('getTicketNumber', userProperties, Meteor.settings.public.slideGenerator.virtualProxy);
 
-        const config = {
-            schema: senseConfig.QIXSchema,
-            appId: senseConfig.slideGeneratorAppId,
-            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-                host: senseConfig.host,
-                prefix: Meteor.settings.public.slideGenerator.virtualProxy,
-                port: senseConfig.port,
-                unsecure: true,
-                urlParams: {
-                    qlikTicket: ticket
-                }
-            },
-            listeners: {
-                // 'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + data),
-            },
-            // handleLog: (message) => console.log('Engima: ' + message),
-        };
-        var qix = await enigma.getService('qix', config);
+        var qix = await getQix(ticket);
         console.log('Recieved qix object: ', qix)
 
         //get the slide content and register an event handler, so we know when Qlik Sense changed and can update the screen... with new content. Its fine if it runs in parallel
@@ -112,6 +95,28 @@ async function setSlideContentInSession(group) {
         sAlert.error(message, error);
     };
 }
+
+export async function getQix(ticket) {
+    const config = {
+        schema: senseConfig.QIXSchema,
+        appId: senseConfig.slideGeneratorAppId,
+        session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+            host: senseConfig.host,
+            prefix: Meteor.settings.public.slideGenerator.virtualProxy,
+            port: senseConfig.port,
+            unsecure: true,
+            urlParams: {
+                qlikTicket: ticket
+            }
+        },
+        listeners: {
+            // 'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + data),
+        },
+        // handleLog: (message) => console.log('Engima: ' + message),
+    };
+    return await enigma.getService('qix', config);
+}
+
 //ONDESTROYED
 Template.useCaseSelection.onDestroyed(function() {
     $('body').removeClass('mainLandingImage');
@@ -186,11 +191,11 @@ export async function getAllSlides(qix) {
     Session.set('slideData', sessionData[0].qMatrix);
 }
 
-function setChangeListener(qix) {
-    qix.app.on('changed', () => {
+export async function setChangeListener(qix) {
+    qix.app.on('changed', async() => {
         console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
-        getAllSlideHeaders(qix);
-        getAllSlides(qix);
+        await getAllSlideHeaders(qix);
+        await getAllSlides(qix);
     });
 }
 
