@@ -62,6 +62,7 @@ html {
     background-repeat: no-repeat;
     margin: auto;
     width: 50%;
+    min-width: 1000px;
     height: 800px;
     padding: 20px;
     font-size: 50px;

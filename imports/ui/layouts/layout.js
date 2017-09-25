@@ -81,7 +81,7 @@ Template.layout.onCreated(function() {
 });
 
 
-Template.slideSelectionSheet.onCreated(function() {
+Template.slideSelectionSheet.onRendered(function() {
     $('#myModal').on('hidden.bs.modal', async function() {
         console.log('slide selection modal closed');
         var ticket = 'dummy, user should already be authenticated at this point...'
