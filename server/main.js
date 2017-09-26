@@ -204,11 +204,11 @@ Meteor.methods({
         }
 
 
-        // first clean the environment
-        Meteor.call('removeGeneratedResources', {
-            'generationUserId': Meteor.userId()
-        });
-        await QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff
+        // // first clean the environment
+        // Meteor.call('removeGeneratedResources', {
+        //     'generationUserId': Meteor.userId()
+        // });
+        // await QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff
 
         console.log('################## Meteor.settings.multiTenantScenario', Meteor.settings.multiTenantScenario);
         try {
@@ -218,7 +218,7 @@ Meteor.methods({
                 });
 
                 console.log('customerNames', customerNames)
-                QSCustomProps.createCustomProperty('customers', customerNames); //for non OEM scenarios (with MS AD), people like to use custom properties for authorization instead of the groups via a ticket.
+                QSCustomProps.upsertCustomPropertyByName('customers', customerNames); //for non OEM scenarios (with MS AD), people like to use custom properties for authorization instead of the groups via a ticket.
             }
         } catch (error) {
             console.log('error to create custom properties', error);
