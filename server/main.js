@@ -94,10 +94,7 @@ async function initQlikSense() {
         console.error(error);
     }
 
-    //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.
-    console.log('------------------------------------');
-    console.log('SET APP IDs');
-    console.log('------------------------------------');
+    //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.    
     QSApp.setAppIDs();
 
 }
@@ -200,20 +197,34 @@ Meteor.methods({
             slideGenerator: senseConfig.slideGeneratorAppId //QSApp.getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream)[0].id
         };
     },
-    generateStreamAndApp(customers) {
-        check(customers, Array);
+    async generateStreamAndApp(customers) {
+        try {
+            check(customers, Array);
+        } catch (error) {
+            throw new Meteor.Error('Missing field', 'No customers supplied for the generation of apps.');
+        }
 
+
+        // first clean the environment
         Meteor.call('removeGeneratedResources', {
             'generationUserId': Meteor.userId()
-        }); //first clean the environment
-        QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff
+        });
+        await QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff
 
-        if (!Meteor.settings.multiTenantScenario) { //on premise installation for a single tenant (e.g. with MS Active Directory)
-            var customerNames = customers.map(function(c) {
-                return c.name;
-            });
-            QSCustomProps.createCustomProperty('customers', customerNames); //for non OEM scenarios (with MS AD), people like to use custom properties for authorization instead of the groups via a ticket.
+        console.log('################## Meteor.settings.multiTenantScenario', Meteor.settings.multiTenantScenario);
+        try {
+            if (!Meteor.settings.multiTenantScenario) { //on premise installation for a single tenant (e.g. with MS Active Directory)
+                var customerNames = customers.map(function(c) {
+                    return c.name;
+                });
+
+                console.log('customerNames', customerNames)
+                QSCustomProps.createCustomProperty('customers', customerNames); //for non OEM scenarios (with MS AD), people like to use custom properties for authorization instead of the groups via a ticket.
+            }
+        } catch (error) {
+            console.log('error to create custom properties', error);
         }
+
         Meteor.call('updateLocalSenseCopy');
     },
     resetEnvironment() {
