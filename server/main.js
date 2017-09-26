@@ -39,7 +39,6 @@ import {
 import '/imports/startup/accounts-config.js';
 const path = require('path');
 
-
 Meteor.startup(function() {
     process.env.ROOT_URL = 'http://' + Meteor.settings.public.qlikSenseHost;
     console.log('********* We expect Qlik Sense to run on host: ', process.env.ROOT_URL + ':' + Meteor.settings.public.qlikSensePort);
@@ -85,7 +84,7 @@ async function initQlikSense() {
             await QSSystem.createSecurityRules();
             QSStream.initSenseStreams();
             await QSApp.uploadAndPublishTemplateApps();
-
+            QSApp.setAppIDs();
             await QSApp.createAppConnection('folder', 'Import demo', senseDemoMaterials);
             QSExtensions.uploadExtensions();
             QSLic.saveSystemRules();

@@ -53,9 +53,10 @@ _ = lodash;
 const path = require('path');
 const fs = require('fs-extra');
 const enigma = require('enigma.js');
-// var QRS = require('qrs');
 var promise = require('bluebird');
 var request = require('request');
+var sanitize = require("sanitize-filename");
+
 
 //
 // ─── UPLOAD APPS FOR THE INITIAL SETUP OF QLIK SENSE ─────────────────────────
@@ -303,19 +304,23 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         return script;
     }
 }
+export async function createAppConnections() {
+    for (let c of Meteor.settings.broker.dataConnections) {
+        await createAppConnection(c.type, c.name, c.connectionString);
+    }
+}
 
 export async function createAppConnection(type, name, path) {
 
     //set the app ID to be used in the enigma connection to the engine API
     var config = Object.assign({}, enigmaServerConfig);
     config.appId = getApps('sales', 'Everyone')[0].id;
-    console.log('createAppConnection: ' + type + ' ' + name + ' ' + path + ' using the slide generator app to create the connection: ' + config.appId);
-
+    console.log('createAppConnection: ' + type + ' ' + name + ' ' + path + ' using the sales app in the everyone stream to create the connection: ' + config.appId);
     try {
         check(type, String);
         check(path, String);
         check(name, String);
-        check(senseConfig.slideGeneratorAppId, String);
+        check(config.appId, String);
     } catch (error) {
         console.error('Missing parameters to create a data connection', error);
     }
@@ -345,20 +350,21 @@ function deleteDirectoryAndDataConnection(customerName) {
 
 function createDirectory(customerName) {
     console.log('createDirectory TURNED OFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', customerName)
-        // try {
-        //     check(customerName, String);
-        //     const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
-    console.log('Meteor.settings.broker.customerDataDir', Meteor.settings.broker.customerDataDir)
-        //     fs.ensureDir(dir, err => {
-        //         if (err) {
-        //             console.error(err) // => null
-        //             throw new Meteor.Error('Server error', 'Unable to create new directory for customer/department: ' + customerName)
-        //         }
-        //     });
-        //     return dir;
-        // } catch (error) {
-        //     throw new Meteor.Error('Failed to create directory for ', customerName);
-        // }
+    try {
+        check(customerName, String);
+        var filename = sanitize(customerName);
+        const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
+        console.log('Meteor.settings.broker.customerDataDir', dir)
+            // fs.ensureDir(dir, err => {
+            //     if (err) {
+            //         console.error(err) // => null
+            //         throw new Meteor.Error('Server error', 'Unable to create new directory for customer/department: ' + customerName)
+            //     }
+            // });
+        return dir;
+    } catch (error) {
+        throw new Meteor.Error('Failed to create directory for ', customerName);
+    }
 
 }
 

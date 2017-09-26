@@ -19,7 +19,8 @@ export function disableDefaultSecurityRules() {
     console.log('------------------------------------');
     console.log('disable Default SecurityRules')
     console.log('------------------------------------');
-    Meteor.settings.security.rulesToDisable.forEach(function(ruleName) {
+
+    for (let ruleName of Meteor.settings.security.rulesToDisable) {
         console.log('From Meteor.settings.security.rulesToDisable, Disable security rule: ', ruleName)
 
         var ruleDefinition = QSLic.getSystemRules(ruleName)[0];
@@ -29,7 +30,7 @@ export function disableDefaultSecurityRules() {
         } else {
             console.warn('The system rule does not exist in Sense: ' + ruleName);
         }
-    });
+    };
 }
 
 export async function createSecurityRules() {
