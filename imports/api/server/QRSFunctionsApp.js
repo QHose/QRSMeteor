@@ -125,14 +125,14 @@ export async function uploadAndPublishTemplateApps() {
     }))
 }
 
-export function generateStreamAndApp(customers, generationUserId) {
+export async function generateStreamAndApp(customers, generationUserId) {
     // console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
 
     var templateApps = checkTemplateAppExists(generationUserId); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
     checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?
     for (const customer of customers) {
         for (const templateApp of templateApps) {
-            generateAppForTemplate(templateApp, customer, generationUserId);
+            await generateAppForTemplate(templateApp, customer, generationUserId);
         }
     };
 };
@@ -181,7 +181,7 @@ export function setAppIDs(params) {
 }
 
 
-function generateAppForTemplate(templateApp, customer, generationUserId) {
+async function generateAppForTemplate(templateApp, customer, generationUserId) {
     console.log('--------------------------GENERATE APPS FOR TEMPLATE');
     // console.log(templateApp);
     // console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
@@ -193,7 +193,8 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 
     try {
         var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists 
-        var customerDataFolder = createDirectory(customer.name); //for data like XLS/qvd specific for a customer
+        var customerDataFolder = await createDirectory(customer.name); //for data like XLS/qvd specific for a customer
+        await createAppConnection('folder', customer.name, customerDataFolder);
         var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
         var result = reloadAppAndReplaceScriptviaEngine(newAppId, templateApp.name, streamId, customer, customerDataFolder, '', generationUserId);
         var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
@@ -305,6 +306,13 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
     }
 }
 export async function createAppConnections() {
+    console.log('------------------------------------');
+    console.log('create app connections');
+    console.log('------------------------------------');
+    //create the default demo import folder where all the csv and qvf files are...
+    var senseDemoMaterials = path.join(Meteor.absolutePath, 'Sense Demo materials');
+    console.log('senseDemoMaterials', senseDemoMaterials)
+    await createAppConnection('folder', 'Import demo', senseDemoMaterials);
     for (let c of Meteor.settings.broker.dataConnections) {
         await createAppConnection(c.type, c.name, c.connectionString);
     }
@@ -348,19 +356,14 @@ function deleteDirectoryAndDataConnection(customerName) {
     // https://stackoverflow.com/questions/18052762/remove-directory-which-is-not-empty
 }
 
-function createDirectory(customerName) {
+async function createDirectory(customerName) {
     console.log('createDirectory TURNED OFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', customerName)
     try {
         check(customerName, String);
         var filename = sanitize(customerName);
         const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
         console.log('Meteor.settings.broker.customerDataDir', dir)
-            // fs.ensureDir(dir, err => {
-            //     if (err) {
-            //         console.error(err) // => null
-            //         throw new Meteor.Error('Server error', 'Unable to create new directory for customer/department: ' + customerName)
-            //     }
-            // });
+        await fs.ensureDir(dir)
         return dir;
     } catch (error) {
         throw new Meteor.Error('Failed to create directory for ', customerName);

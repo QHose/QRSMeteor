@@ -28,50 +28,54 @@ Template.slides.onRendered(function() {
         return;
     }
 
-    Reveal.addEventListener('ready', function(event) {
-        // Session.set('activeStepNr', 0);
-        console.log('------------------------------------');
-        console.log('Reveal is ready to be used');
-        console.log('------------------------------------');
-    });
     window.Reveal = Reveal;
-    // setTimeout(function() {
-    // Tracker.afterFlush(function() {
-    Reveal.initialize({
-        width: window.innerWidth - 80,
-        // height: window.innerHeight - 90,
-        embedded: true,
-        // controls: true,
-        center: false,
-        // progress: true,
-        // history: true,        
-        autoPlayMedia: true,
-        autoSlide: 500,
-        // viewDistance: 3,
-        // // default/cube/page/concave/zoom/linear/fade/none 
-        transition: 'slide', // none/fade/slide/convex/concave/zoom     
-        // transitionSpeed: 'default', // default/fast/slow   
-        previewLinks: false,
-        slideNumber: true
-    });
-    // })
-    // }, 3000);
+
+    Tracker.afterFlush(function() {
+        Reveal.initialize({
+            width: window.innerWidth - 80,
+            // height: window.innerHeight - 90,
+            embedded: true,
+            // controls: true,
+            center: false,
+            // progress: true,
+            // history: true,        
+            autoPlayMedia: false,
+            autoSlide: 500,
+            // viewDistance: 3,
+            // // default/cube/page/concave/zoom/linear/fade/none 
+            transition: 'slide', // none/fade/slide/convex/concave/zoom     
+            // transitionSpeed: 'default', // default/fast/slow   
+            previewLinks: false,
+            slideNumber: true
+        });
+        Reveal.addEventListener('ready', function(event) {
+            // Session.set('activeStepNr', 0);
+            console.log('------------------------------------');
+            console.log('Reveal is ready to be used');
+            console.log('------------------------------------');
+            // Reveal.addEventListener('slidechanged', function(evt) {
+            //     Session.set('activeStepNr', evt.indexh);
+            //     console.log('active slides: evt.indexh', evt.indexh);
+            // });
+        });
+    })
 
 
-    Reveal.addEventListener('slidechanged', function(evt) {
-        Session.set('activeStepNr', evt.indexh);
-    });
 
     this.autorun(function() {
         console.log('------------------------------------');
         console.log('SESSION CHANGED SO RESET/GO TO FIRST SLIDE NUMBER');
         console.log('------------------------------------');
-        // if (Reveal.isReady()) {
+
         var test = Session.get('slideHeaders');
         Meteor.setTimeout(function() {
             Reveal.slide(0);
+            Reveal.addEventListener('slidechanged', function(evt) {
+                Session.set('activeStepNr', evt.indexh);
+                console.log('active slides: evt.indexh', evt.indexh);
+            });
         }, 100);
-        // };
+
     })
 })
 
@@ -84,7 +88,7 @@ Template.slides.events({
 });
 
 //
-// ─── SLIDE ──────────────────────────────────────────────────────────────────────
+// ─── SLIDE CONTENT ──────────────────────────────────────────────────────────────────────
 //
 
 Template.slideContent.onRendered(function() {
@@ -98,7 +102,6 @@ Template.slideContent.onRendered(function() {
         //ensure all links open on a new tab
         this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
     }, 1000);
-
 });
 
 

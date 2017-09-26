@@ -48,6 +48,19 @@ Template.useCaseSelection.onRendered(async function() {
         })
 })
 
+//
+// ─── SLIDE GENERATOR BUTTON CLICK ─────────────────────────────────────────────────────────────────────
+//
+
+Template.useCaseSelection.events({
+    'click .button.slides': async function(e, t) {
+        await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
+        await setSlideContentInSession('TECHNICAL');
+        Router.go('slides');
+    }
+});
+
+
 async function setSelectionInSense(app, field, value) {
     console.log('setSelectionInSense field:' + field + ' value:' + value);
     console.log('app', app)
@@ -127,17 +140,6 @@ Template.useCaseSelection.helpers({
     }
 });
 
-//
-// ─── EVENTS ─────────────────────────────────────────────────────────────────────
-//
-
-Template.useCaseSelection.events({
-    'click .button.slides': async function(e, t) {
-        await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
-        await setSlideContentInSession('TECHNICAL');
-        Router.go('slides');
-    }
-});
 
 //
 // ─── MAIN TOPICS LEVEL 1 AND 2 ─────────────────────────────────────────────────

@@ -23,9 +23,9 @@
     {
         "category": "Security",
         "type": "Custom",
-        "name": "Z_OEM_STREAM_ACCESS",
-        "rule": "((resource.name=user.environment.group or (resource.name=\"Everyone\") ))",
-        "resourceFilter": "Stream_*",
+        "name": "Z_OEM_STREAM_AND_DATA_ACCESS",
+        "rule": "((resource.name=user.environment.group or resource.name=user.@customers or (resource.name=\"Everyone\") ))",
+        "resourceFilter": "Stream_*, DataConnection_*",
         "actions": 2,
         "comment": "",
         "disabled": false,
@@ -67,7 +67,7 @@
     {
         "category": "Security",
         "type": "Custom",
-        "name": "Z_OEM_APP_ACCESS (CONSUMER)",
+        "name": "Z_CONSUMER (app access)",
         "rule": "resource.stream.HasPrivilege(\"read\") or (resource.resourcetype = \"App.Object\" and resource.published =\"true\" and resource.app.HasPrivilege(\"read\"))",
         "resourceFilter": "App*",
         "actions": 2,
@@ -82,7 +82,7 @@
         "rule": "user.environment.group=\"Contributor\" and  \nresource.app.HasPrivilege(\"read\")\nand resource.published =\"false\"",
         "resourceFilter": "App*",
         "actions": 37,
-        "comment": "Extends the Z_OEM_APP_ACCESS (CONSUMER) rule. This user can also create own sheets in predefined apps. He can't create apps, only a developer can do this.",
+        "comment": "Extends the Z_CONSUMER rule. This user can also create own sheets in predefined apps. He can't create apps, only a developer can do this.",
         "disabled": false,
         "privileges": null
     },
@@ -93,7 +93,7 @@
         "rule": "user.environment.group = \"Developer\" and\n ((resource.owner = user and resource.stream.Empty()) or (resource.app.HasPrivilege(\"read\") and resource.published =\"false\" ))",
         "resourceFilter": "App*",
         "actions": 317,
-        "comment": "Extends the Z_OEM_APP_ACCESS (CONSUMER) rule. This user can also create own apps and create sheets in apps (like a contributor). He can't publish.",
+        "comment": "Extends the Z_CONSUMER rule. This user can also create own apps and create sheets in apps (like a contributor). He can't publish.",
         "disabled": false,
         "privileges": null
     }

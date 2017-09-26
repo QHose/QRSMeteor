@@ -32,7 +32,7 @@ export function createCustomProperty(name, newProperty) {
 
 upsertCustomPropertyByName('UpdatedName', ['bies', 'bies2']);
 export function upsertCustomPropertyByName(name, choiceValues) {
-    console.log('%%%%%%%%%%%%%%%%%%%% updateCustomPropertyByName(name, newProperty)' + name + ' & values: ' + choiceValues.toString());
+    console.log('updateCustomPropertyByName: name' + name + ' & values: ' + choiceValues.toString());
 
     try {
         check(name, String);
@@ -40,6 +40,7 @@ export function upsertCustomPropertyByName(name, choiceValues) {
     } catch (err) {
         throw new Meteor.Error('upsertCustomPropertyByName: Missing values', 'You did not specify a name or update object for the custom property');
     }
+
     try {
         var newProperty = {
             "name": name,
@@ -49,11 +50,10 @@ export function upsertCustomPropertyByName(name, choiceValues) {
         }
 
         var existingProperty = getCustomProperties(name)[0];
-        console.log('existingProperty', existingProperty)
         if (existingProperty) { //update it
             var updatedProperty = Object.assign(existingProperty, newProperty);
             var result = qrs.put('/qrs/CustomPropertyDefinition/' + updatedProperty.id, null, updatedProperty); //you can only update when you supply the original modified date, otherwise you get a 409 error. 
-            console.log('Result after updating custom property', result)
+            console.log('Custom property update: ', result);
         } else { //create a new one
             createCustomProperty(name, newProperty);
         }

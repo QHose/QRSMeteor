@@ -58,8 +58,6 @@ async function initQlikSense() {
     console.log('------------------------------------');
     console.log('INIT QLIK SENSE');
     console.log('Project root folder: ', Meteor.absolutePath)
-    var senseDemoMaterials = path.join(Meteor.absolutePath, 'Sense Demo materials');
-    console.log('senseDemoMaterials', senseDemoMaterials)
     if (!Meteor.settings.broker.automationBaseFolder) {
         Meteor.settings.broker.automationBaseFolder = path.join(Meteor.absolutePath, '.automation');
         console.log('Meteor.settings.broker.automationBaseFolder was empty, setting it to default: ', Meteor.settings.broker.automationBaseFolder)
@@ -85,17 +83,17 @@ async function initQlikSense() {
             QSStream.initSenseStreams();
             await QSApp.uploadAndPublishTemplateApps();
             QSApp.setAppIDs();
-            await QSApp.createAppConnection('folder', 'Import demo', senseDemoMaterials);
+            await QSApp.createAppConnections(); //import extra connections 
             QSExtensions.uploadExtensions();
             QSLic.saveSystemRules();
+        } else {
+            //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.    
+            QSApp.setAppIDs();
         }
+
     } catch (error) {
-        console.error(error);
+        console.error('Main.js, initQlikSense: Failed to run the initialization of Qlik Sense', error);
     }
-
-    //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.    
-    QSApp.setAppIDs();
-
 }
 
 //helper functions to await a set timeout
@@ -202,13 +200,11 @@ Meteor.methods({
         } catch (error) {
             throw new Meteor.Error('Missing field', 'No customers supplied for the generation of apps.');
         }
-
-
-        // // first clean the environment
-        // Meteor.call('removeGeneratedResources', {
-        //     'generationUserId': Meteor.userId()
-        // });
-        // await QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff
+        // first clean the environment
+        Meteor.call('removeGeneratedResources', {
+            'generationUserId': Meteor.userId()
+        });
+        await QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff
 
         console.log('################## Meteor.settings.multiTenantScenario', Meteor.settings.multiTenantScenario);
         try {
@@ -218,7 +214,7 @@ Meteor.methods({
                 });
 
                 console.log('customerNames', customerNames)
-                QSCustomProps.upsertCustomPropertyByName('customers', customerNames); //for non OEM scenarios (with MS AD), people like to use custom properties for authorization instead of the groups via a ticket.
+                QSCustomProps.upsertCustomPropertyByName('customer', customerNames); //for non OEM scenarios (with MS AD), people like to use custom properties for authorization instead of the groups via a ticket.
             }
         } catch (error) {
             console.log('error to create custom properties', error);
