@@ -57,6 +57,10 @@ Template.useCaseSelection.events({
         await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
         await setSlideContentInSession('TECHNICAL');
         Router.go('slides');
+        setTimeout(function() {
+            $("#myModal").modal("toggle");
+        }, 1000);
+
     }
 });
 
