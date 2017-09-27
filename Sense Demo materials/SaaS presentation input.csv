@@ -981,11 +981,23 @@ or
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Now you have submitted your presentation (via a `pull request` to the central repository on github.com). The slide generator maintainer can now verify your content and make comments. and [merge](https://services.github.com/on-demand/github-desktop/merge-pull-request-github) it in the master presentation",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","github - merge pull request.gif",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","For more information, follow the instructions on [GitHub](https://services.github.com/on-demand/github-desktop/push-with-github-desktop)",,,,,,,,,
-"Integration.qlik.com key API calls","Summary: which activities did we automate?","Setup Qlik Sense
+"Integration.qlik.com key API calls","Summary: which activities did we automate?","Deployment
+- install Qlik Sense using a silent script
+- Setup proxy (ports, https)
+- Create virtual proxies (ways to authenticate and load balance over engines)
+- insert license
+- upload template apps and extensions
+- create default streams
+- set security rules
+- get app IDs for automatic/dynamic embedding (in IFrame/DIV) without hard coded items. ",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
+"Integration.qlik.com key API calls","Summary: which activities did we automate?","App provisioning, for each customer
 - Create stream
 - Copy template app
 - Replace script and reload app
-- Publish app",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
+- Publish app
+- create custom property
+- create folder on server (for data files)
+- create database connection",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
 "Integration.qlik.com key API calls","Summary: which activities did we automate?","Security integration
 - Users get a Single Sign On via a ticket exchange
 - The ticket contains the userId and groups from your Saas platform
@@ -1774,6 +1786,101 @@ export function createCustomProperty(name, choiceValues = ['no values initialize
 }
 ```
 ",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","How to get / delete / update a custom property by name?","# GET",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","How to get / delete / update a custom property by name?","```javascript
+export function getCustomProperties(name) {
+    var filter = name ? {
+        filter: ""Name eq '"" + name + ""'""
+    } : null;
+    var customProperties = qrs.get('/qrs/CustomPropertyDefinition/full', filter);
+}
+```
+",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","How to get / delete / update a custom property by name?","# DELETE",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","How to get / delete / update a custom property by name?","```
+export function deleteCustomProperty(name) {
+    console.log('deleteCustomProperty(name)', name);
+
+    var customProperty = getCustomProperties(name)[0];
+    if (customProperty) {
+        var result = qrs.del('/qrs/CustomPropertyDefinition/' + customProperty.id);
+        console.log('result after delete', result);
+    }
+
+}
+```",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","How to get / delete / update a custom property by name?","# UPDATE",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","How to get / delete / update a custom property by name?","```javascript
+upsertCustomPropertyByName('UpdatedName', ['bies', 'bies2']);
+export function upsertCustomPropertyByName(name, choiceValues) {
+    console.log('updateCustomPropertyByName: name' + name + ' & values: ' + choiceValues.toString());
+
+    try {
+        check(name, String);
+        check(choiceValues, Array);
+    } catch (err) {
+        throw new Meteor.Error('upsertCustomPropertyByName: Missing values', 'You did not specify a name or update object for the custom property');
+    }
+
+    try {
+        var newProperty = {
+            ""name"": name,
+            ""valueType"": ""Text"",
+            ""objectTypes"": [""App"", ""ContentLibrary"", ""DataConnection"", ""ReloadTask"", ""Stream"", ""User""],
+            ""choiceValues"": choiceValues
+        }
+
+        var existingProperty = getCustomProperties(name)[0];
+        if (existingProperty) { //update it
+            var updatedProperty = Object.assign(existingProperty, newProperty);
+            var result = qrs.put('/qrs/CustomPropertyDefinition/' + updatedProperty.id, null, updatedProperty); //you can only update when you supply the original modified date, otherwise you get a 409 error. 
+            console.log('Custom property update: ', result);
+        } else { //create a new one
+            createCustomProperty(name, newProperty);
+        }
+    } catch (error) {
+        console.log('error upserting custom property', error);
+    }
+}
+```",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","How to assign a custom property to a resource?","Here we want to assign a recently created custom property (via a POST to the QRS API) to an app",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","How to assign a custom property to a resource?","First we get the current `app definition`",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","How to assign a custom property to a resource?","```JSON
+{
+    ""id"": ""00000000-0000-0000-0000-000000000000"",
+    ""createdDate"": ""1753-01-01T00:00:00.000Z"",
+    ""modifiedDate"": ""1753-01-01T00:00:00.000Z"",
+    ""modifiedByUserName"": """",
+    ""customProperties"": [
+        {
+            ""id"": ""00000000-0000-0000-0000-000000000000"",
+            ""createdDate"": ""1753-01-01T00:00:00.000Z"",
+            ""modifiedDate"": ""1753-01-01T00:00:00.000Z"",
+            ""modifiedByUserName"": """",
+            ""value"": """",
+            ""definition"": {
+                ""id"": ""00000000-0000-0000-0000-000000000000"",
+                ""name"": """",
+                ""valueType"": ""Text"",
+                ""choiceValues"": [],
+                ""privileges"": null
+            },
+            ""impactSecurityAccess"": false,
+            ""schemaPath"": ""CustomPropertyValue""
+        }
+    ]
+}
+```",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","How to assign a custom property to a resource?","The only thing we need to do is add an extra object to the array of custom properties",,"","","","","         0","0","Deep dive",
+"QRS (QMC) API","How to assign a custom property to a resource?","```JSON
+""customProperties"": [
+   {
+      ""value"": ""chosenValue""
+       ""defininition"": {
+         ""id"": ""<ID to definition you have>""
+      }
+]
+```",,"","","","","         0","0","Deep dive",
 "QRS (QMC) API","Connect to a REST endpoint using the script of a QVF","Use the REST connector",,,,,,,,,
 "QRS (QMC) API","Connect to a REST endpoint using the script of a QVF","In this way you can also connect to the QRS API",,,,,,,,,
 "QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","Here we will load QRS API data in a QVF",,"","","","","         0","0","Exercises",
@@ -1795,62 +1902,11 @@ export function createCustomProperty(name, choiceValues = ['no values initialize
 - Name = <name of the data connection>",,"","","","","         0","0","Exercises",
 "QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","[source Marcus](https://confluence.qliktech.com/pages/viewpage.action?spaceKey=~msi&title=Query+the+Qlik+Sense+Repository+API+with+the+Qlik+REST+Connector)",,"","","","","         0","0","Exercises",
 "QRS (QMC) API","Exercise 1: get user  via QRS API via Qlik REST connector","Data - REST API load data from QRS.png",,"","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise: How to use Postman using windows authentication","","In Postman click on the interceptor icon and let the extension install itself if needed. This is needed to pass authentication credentials from Chrome to Postman.","","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise: How to use Postman using windows authentication","","Open the hub or the QMC in Chrome and authenticate to Qlik Sense.","","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise: How to use Postman using windows authentication","","Go to Postman and in the URL section type https://<machine hostname>/qrs/About?Xrfkey=12345678qwertyui","","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise: How to use Postman using windows authentication","","Also add the XREF key in the headers","","","","","         0","0","Exercises",
-"QRS (QMC) API","Exercise: Connect to QRS API using Postman","- Postman is a Google Chrome App for constructing and sending REST requests. You can use Postman to explore the Qlik Sense Repository Service (QRS) API. (see [help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Example-Connect-Postman.htm)
-
-- This example shows how to connect to the QRS API and retrieve a list of apps in JSON format. Because we are using Windows authentication, we send the request via the QPS URL.
-
-1 Install Postman from http://www.getpostman.com/ and start the tool.
-1 Set the HTTP method to GET.
-1 Enter the URL to the computer where QPS is installed plus the following path in the URL area: `/qrs/app/full`
-1 The full URL should look something like: https://qps.computer.name.com/qrs/app/full.
-1 Select Params and add an entry for the Xrfkey parameter and a 16 character string as the value.
-1 Select Headers and add an entry for the X-Qlik-Xrfkey header using the same 16 character string as in the previous step.
-1 Click Send.
-1 The JSON response from the API is displayed. It should look something like this:
-
-```JSON
-[
-  {
-    ""id"": ""d256f28d-8b8f-4454-82f9-ba5ceb925923"",
-    ""createdDate"": ""2016-05-26T17:01:35.867Z"",
-    ""modifiedDate"": ""2016-06-01T20:07:30.792Z"",
-    ""modifiedByUserName"": ""INTERNAL\\sa_scheduler"",
-    ""customProperties"": [],
-    ""owner"": {
-      ""id"": ""5069e2f9-2845-443c-b8ae-18265f6552de"",
-      ""userId"": ""sa_repository"",
-      ""userDirectory"": ""INTERNAL"",
-      ""name"": ""sa_repository"",
-      ""privileges"": null
-    },
-    ""name"": ""Operations Monitor"",
-    ""appId"": """",
-    ""publishTime"": ""2016-05-26T17:01:49.159Z"",
-    ""published"": true,
-    ""tags"": [],
-    ""description"": ""The Operations Monitor 2.3.0 provides information about the Qlik Sense server environment, including: server memory and CPU usage, active users, task reloads, and errors and warnings."",
-    ""stream"": {
-      ""id"": ""a70ca8a5-1d59-4cc9-b5fa-6e207978dcaf"",
-      ""name"": ""Monitoring apps"",
-      ""privileges"": null
-    },
-    ""fileSize"": 524284,
-    ""lastReloadTime"": ""2016-06-01T20:07:29.815Z"",
-    ""thumbnail"": ""/appcontent/d256f28d-8b8f-4454-82f9-ba5ceb925923/Qlik_Images/Operations_Monitor_Thumbnail.png"",
-    ""savedInProductVersion"": ""2.11.0"",
-    ""migrationHash"": ""f38ec476ce7db3399f32ad2cd70df0db31d06643"",
-    ""dynamicColor"": """",
-    ""availabilityStatus"": 0,
-    ""privileges"": null,
-    ""schemaPath"": ""App""
-  },        
-  }
-]
-```",,"","","","","         0","0","Exercises",
+"QRS (QMC) API","Exercise: How to use Postman using windows authentication","In Postman click on the interceptor icon and let the extension install itself if needed. This is needed to pass authentication credentials from Chrome to Postman.",,"","","","","         0","0","Exercises",
+"QRS (QMC) API","Exercise: How to use Postman using windows authentication","Open the hub or the QMC in Chrome and authenticate to Qlik Sense.",,"","","","","         0","0","Exercises",
+"QRS (QMC) API","Exercise: How to use Postman using windows authentication","Go to Postman and in the URL section type https://<machine hostname>/qrs/About?Xrfkey=12345678qwertyui",,"","","","","         0","0","Exercises",
+"QRS (QMC) API","Exercise: How to use Postman using windows authentication","Also add the XREF key in the headers",,"","","","","         0","0","Exercises",
+"QRS (QMC) API","Exercise: Connect to QRS API using Postman","iframe http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Example-Connect-Postman.htm",,"","","","","         0","0","Exercises",
 "QRS (QMC) API","Exercise 2","Next we are going to use Postman (Chrome app) to connect to the QRS API using
 - Header authentication",,"","","","","         0","0","Exercises",
 "QRS (QMC) API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,"","","","","         0","0","Exercises",
@@ -3042,6 +3098,7 @@ async function setSelectionInSense(app, field, value) {
 ```
 ",,"","","","","         0","0","Deep dive",
 "Engine API","Example code - make a selection","https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/select-values-in-field.htm",,"","","","","         0","0","Deep dive",
+"Engine API","Example code - make a selection","iframe http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/select-all-values-field.htm",,,,,,,,,
 "Engine API","Example code: create a hyperCube","```
 //https://gist.github.com/mindspank/58b3080a342b1cd937e6
 //https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/WorkingWithAppsAndVisualizations/CreateVisualizations/create-hypercube.htm
