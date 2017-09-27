@@ -40,23 +40,18 @@ Template.slides.onRendered(function() {
             // progress: true,
             // history: true,        
             autoPlayMedia: false,
-            autoSlide: 500,
+            // autoSlide: 500,
             // viewDistance: 3,
             // // default/cube/page/concave/zoom/linear/fade/none 
-            transition: 'slide', // none/fade/slide/convex/concave/zoom     
+            transition: 'default', // none/fade/slide/convex/concave/zoom     
             // transitionSpeed: 'default', // default/fast/slow   
             previewLinks: false,
             slideNumber: true
         });
         Reveal.addEventListener('ready', function(event) {
-            // Session.set('activeStepNr', 0);
             console.log('------------------------------------');
             console.log('Reveal is ready to be used');
             console.log('------------------------------------');
-            // Reveal.addEventListener('slidechanged', function(evt) {
-            //     Session.set('activeStepNr', evt.indexh);
-            //     console.log('active slides: evt.indexh', evt.indexh);
-            // });
         });
     })
 

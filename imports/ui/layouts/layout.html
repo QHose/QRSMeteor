@@ -46,7 +46,8 @@
 </template>
 
 <template name="emptyLayout">
-    {{> nav}} {{> slideSelectionSheet}} {{> sAlert}} {{> yield}}
+        {{> slideSelectionSheet}}
+    {{> nav}} {{> sAlert}} {{> yield}}
 </template>
 
 <template name="emptyContainerLayout">
@@ -54,7 +55,7 @@
 </template>
 
 <template name="slideSelectionSheet">
-    <div id="myModal" class="modal fade" role="dialog">
+    <div id="myModal" class="modal" role="dialog">
         <div class="modal-dialog" style="width: 90%;">
 
             <!-- Modal content-->
