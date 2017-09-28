@@ -191,7 +191,7 @@ if (Meteor.isServer) {
         try {
             validateJSON(exampleSettingsFile)
         } catch (err) {
-            throw new Error('Meteor wants to check your settings.json with the parameters in the example settings.json in the project root. Error: Cant read the example settings definitions file: ' + file);
+            throw new Error('Meteor wants to check your settings.json with the parameters in the example settings.json in the project root. Error: Cant read the example settings definitions file (not valid JSON): ' + file);
         }
 
         var keysEqual = compareKeys(Meteor.settings, exampleSettingsFile);
