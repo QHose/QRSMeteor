@@ -50,6 +50,11 @@ Template.nav.onRendered(function() {
         });
 });
 
+//
+// ─── CLICK EVENTS ON MENU ITEMS ─────────────────────────────────────────────────
+//
+
+
 Template.nav.events({
     'click a': function(event, template) {
         event.preventDefault();
@@ -71,10 +76,22 @@ Template.nav.events({
             case 'video':
                 selectMenuItemInSense('Video overview');
                 break;
+            case 'sheetSelector':
+                showSlideSelector()
+                break;
         }
     }
 });
 
+export function showSlideSelector() {
+    $('.ui.modal.sheetSelector')
+        .modal('show')
+        .css({
+            position: "fixed",
+            top: '30%',
+            height: window.innerHeight * 0.85
+        });
+}
 
 Template.yourSaasPlatformMenu.onRendered(function() {
     this.$('.ui.dropdown.saasDemo')

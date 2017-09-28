@@ -2,7 +2,7 @@ import '/imports/ui/useCases/useCaseSelection.html';
 import '/imports/ui/slideGenerator/slides.html';
 import '/imports/ui/slideGenerator/slides';
 import '/imports/ui/slideGenerator/slides.css';
-// import { getQlikSenseSessionForGroup } from '/imports/ui/impress/landingPage';
+import { showSlideSelector } from '/imports/ui/nav';
 import './SSBI/SSBI.js';
 import {
     Session
@@ -58,8 +58,8 @@ Template.useCaseSelection.events({
         await setSlideContentInSession('TECHNICAL');
         Router.go('slides');
         setTimeout(function() {
-            $("#myModal").modal("toggle");
-        }, 1000);
+            showSlideSelector();
+        }, 200);
 
     }
 });

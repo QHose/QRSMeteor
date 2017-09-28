@@ -35,7 +35,7 @@ Template.slides.onRendered(function() {
             width: window.innerWidth - 80,
             // height: window.innerHeight - 90,
             embedded: true,
-            // controls: true,
+            controls: true,
             center: false,
             // progress: true,
             // history: true,        
@@ -145,10 +145,6 @@ Template.registerHelper('formatted', function(text) {
         var html = '<div class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div></div>'
             // console.log('generated video link: ', html);
         return html;
-        // } else if (text.startsWith('<iframe')) { //replace src by data-src to ensure lazy loading
-        //     console.log('------------------------------------');
-        //     console.log('------------------------------------');
-        //     return text.replace("src=", "data-src=");
     } else if (text.startsWith('iframe ')) { //if a text starts with IFRAME: we convert it into an IFRAME with a class that sets the width and height etc...
         var sourceURL = text.substr(text.indexOf(' ') + 1);
         return '<iframe class="SenseEmbedFrame" src="' + sourceURL + '" allowfullscreen="allowfullscreen" frameborder="0"></iframe>';
@@ -156,7 +152,7 @@ Template.registerHelper('formatted', function(text) {
         return text;
     } else if (checkTextIsImage(text)) { //image
         // console.log('found an image', text)
-        return '<img class="ui rounded image fragment"  src="images/' + text + '">'
+        return '<img class="ui massive rounded bordered image fragment"  src="images/' + text + '">'
     } else { //text, convert the text (which can include markdown syntax) to valid HTML
         var result = converter.makeHtml(text);
         if (result.substring(1, 11) === 'blockquote') {

@@ -346,7 +346,7 @@ export async function createAppConnection(type, name, path) {
         })
         console.log('created folder connection: ', qConnectionId);
     } catch (error) {
-        console.error('Failed to create folder connection', error);
+        console.error('Failed to create data connection', error);
     }
 }
 

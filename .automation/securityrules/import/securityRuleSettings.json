@@ -2,7 +2,7 @@
         "category": "Security",
         "type": "Custom",
         "name": "Z_SLIDE_GENERATOR",
-        "rule": "resource.name=\"API apps\" and user.environment.group=\"SLIDEGENERATOR\"",
+        "rule": "resource.name=\"API apps\"",
         "resourceFilter": "Stream_*",
         "actions": 2,
         "comment": "",
