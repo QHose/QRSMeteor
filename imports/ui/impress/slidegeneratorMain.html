@@ -7,11 +7,15 @@
             <i class="content icon"></i>
             <span class="text"></span>
         </div> -->
-        <div style="position: fixed; bottom: 0px; right: 0px;">
-            <a style="rgba(0, 0, 0, 0.87);" href="{{pathFor 'legal'}}">Terms of usage</a>
-        </div>
+        {{> termsOfUsage}}
         <!-- <iframe allowfullscreen src="{{pathFor 'slidegeneratorSlides'}}" class="frame"></iframe> -->
         {{> slidegeneratorSlides}}
 
     <!-- </div> -->
+</template>
+<template name="termsOfUsage">
+    <div style="position: fixed; bottom: 0px; right: 0px;">
+        <a style="rgba(0, 0, 0, 0.87);" href="{{pathFor 'legal'}}">Terms of usage</a>
+    </div>
+
 </template>

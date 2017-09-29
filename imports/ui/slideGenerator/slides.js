@@ -43,7 +43,7 @@ Template.slides.onRendered(function() {
             // autoSlide: 500,
             // viewDistance: 3,
             // // default/cube/page/concave/zoom/linear/fade/none 
-            transition: 'default', // none/fade/slide/convex/concave/zoom     
+            transition: 'slide', // none/fade/slide/convex/concave/zoom     
             // transitionSpeed: 'default', // default/fast/slow   
             previewLinks: false,
             slideNumber: true

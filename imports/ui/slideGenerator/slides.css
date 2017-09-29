@@ -93,15 +93,15 @@ html {
 }
 
 .reveal h1 {
-    font-size: 1.5em;
-}
-
-.reveal h2 {
     font-size: 1.4em;
 }
 
-.reveal h3 {
+.reveal h2 {
     font-size: 1.3em;
+}
+
+.reveal h3 {
+    font-size: 1.2em;
 }
 
 .reveal h4 {

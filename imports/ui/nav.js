@@ -12,25 +12,27 @@ const enigma = require('enigma.js');
 import {
     Session
 } from 'meteor/session';
-import { getAllSlides, setChangeListener, getQix } from '/imports/ui/useCases/useCaseSelection';
+import * as slideApp from '/imports/ui/useCases/useCaseSelection';
+
 const Cookies = require('js-cookie');
+export var VIDEO_OVERVIEW = 'Video overview';
 
 Template.nav.helpers({
-    isSaaSDemoPage() {
-        return Router.current().route.getName() === 'generation' || Router.current().route.getName() === 'SaaSIntroduction';
-    },
-    isDocumentationPage() {
-        return Router.current().route.getName() === 'documentation';
-    },
-    isSelfServicePage() {
-        return Router.current().route.getName() === 'selfService';
-    },
-    isVideoPage() {
-        return Router.current().route.getName() === 'videoOverview';
-    },
-    isMainLandingPage() {
-        return !Router.current().route.getName() || Router.current().route.getName() === 'useCaseSelection';
-    },
+    // isSaaSDemoPage() {
+    //     return Router.current().route.getName() === 'generation' || Router.current().route.getName() === 'SaaSIntroduction';
+    // },
+    // isDocumentationPage() {
+    //     return Router.current().route.getName() === 'documentation';
+    // },
+    // isSelfServicePage() {
+    //     return Router.current().route.getName() === 'selfService';
+    // },
+    // isVideoPage() {
+    //     return Router.current().route.getName() === VIDEO_OVERVIEW;
+    // },
+    // isMainLandingPage() {
+    //     return !Router.current().route.getName() || Router.current().route.getName() === 'useCaseSelection';
+    // },
     isPage(page) {
         if (Router.current().route)
             return Router.current().route.getName() === page;
@@ -64,7 +66,7 @@ Template.nav.events({
                 Router.go('useCaseSelection');
                 break;
             case 'SSBI':
-                selectMenuItemInSense('What is governed self service using Qlik Sense apps?')
+                selectMenuItemInSense('LET’S DO A GOVERNED SELF SERVICE DEMO?')
                 break;
             case 'generation':
                 selectMenuItemInSense('Qlik Sense SaaS provisioning demo');
@@ -74,7 +76,7 @@ Template.nav.events({
                 window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
                 break;
             case 'video':
-                selectMenuItemInSense('Video overview');
+                selectMenuItemInSense(VIDEO_OVERVIEW);
                 break;
             case 'sheetSelector':
                 showSlideSelector()
@@ -90,7 +92,20 @@ export function showSlideSelector() {
             position: "fixed",
             top: '30%',
             height: window.innerHeight * 0.85
-        });
+        })
+        .modal({
+            onVisible: function() {
+                $(".ui.modal.sheetSelector").modal("refresh");
+            }
+        })
+
+    // $(".ui.modal.sheetSelector")
+    //     .modal({
+    //         onVisible: function() {
+    //             $(".ui.modal.sheetSelector").modal("refresh");
+    //         }
+    //     })
+    //     .modal("show");
 }
 
 Template.yourSaasPlatformMenu.onRendered(function() {
@@ -98,7 +113,7 @@ Template.yourSaasPlatformMenu.onRendered(function() {
         .dropdown()
 });
 
-async function selectMenuItemInSense(slide) {
+export async function selectMenuItemInSense(slide) {
     console.log('selectMenuItemInSense - slide', slide)
     Cookies.set('currentMainRole', 'TECHNICAL');
     try {
@@ -107,15 +122,15 @@ async function selectMenuItemInSense(slide) {
             group: 'Technical'
         };
         var ticket = await Meteor.callPromise('getTicketNumber', userProperties, Meteor.settings.public.slideGenerator.virtualProxy);
-        var qix = await getQix(ticket);
+        var qix = await slideApp.getQix(ticket);
         var myField = await qix.app.getField('Level 2');
         var result = await myField.selectValues(
             [{
                 "qText": slide
             }]
         )
-        await getAllSlides(qix);
-        await setChangeListener(qix)
+        await slideApp.getAllSlides(qix, false);
+        // await slideApp.setChangeListener(qix)
         Router.go('slides');
     } catch (error) {
         var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS';

@@ -13,7 +13,7 @@
     <div class="slides">
       {{#each slideHeaders }}
         {{#if chapterSlide this}}
-          <section>
+          <section data-autoslide="2000">
             <div class="ui segment integrationBreaker">
               <h1 class="ui header" style="font-size: 50px;">
                 Next: {{this}}
@@ -28,6 +28,7 @@
       <div class="controls">
         <i class="navigate-right angle right icon"></i>
       </div>
+      {{> termsOfUsage}}      
 
     </div>
   </div>
@@ -35,10 +36,6 @@
 
 <template name="slide">
   <section style="text-align: left;">
-    <!-- <h1 class="ui header">
-      {{{level 1 slide}}}
-      <div class="sub header">{{{level 2 slide}}}</div>
-    </h1> -->
     <h3> {{{level 1 slide}}}</h3>
     <h1>{{{level 2 slide}}}
       <hr>

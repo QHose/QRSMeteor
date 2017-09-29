@@ -2,7 +2,7 @@ import '/imports/ui/useCases/useCaseSelection.html';
 import '/imports/ui/slideGenerator/slides.html';
 import '/imports/ui/slideGenerator/slides';
 import '/imports/ui/slideGenerator/slides.css';
-import { showSlideSelector } from '/imports/ui/nav';
+import * as nav from '/imports/ui/nav';
 import './SSBI/SSBI.js';
 import {
     Session
@@ -58,9 +58,12 @@ Template.useCaseSelection.events({
         await setSlideContentInSession('TECHNICAL');
         Router.go('slides');
         setTimeout(function() {
-            showSlideSelector();
+            nav.showSlideSelector();
         }, 200);
-
+    },
+    'click #videoButton': async function(e, t) {
+        nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
+        console.log('nav.VIDEO_OVERVIEW', nav.VIDEO_OVERVIEW)
     }
 });
 
@@ -94,12 +97,10 @@ async function setSlideContentInSession(group) {
             group: group
         };
         var ticket = await Meteor.callPromise('getTicketNumber', userProperties, Meteor.settings.public.slideGenerator.virtualProxy);
-
         var qix = await getQix(ticket);
-
         //get the slide content and register an event handler, so we know when Qlik Sense changed and can update the screen... with new content. Its fine if it runs in parallel
         await Promise.all([
-            getAllSlides(qix),
+            getAllSlides(qix, true),
             setChangeListener(qix),
         ]);
 
@@ -148,7 +149,17 @@ Template.useCaseSelection.helpers({
 //
 // ─── MAIN TOPICS LEVEL 1 AND 2 ─────────────────────────────────────────────────
 //
-async function getAllSlideHeaders(qix) {
+export async function getAllSlideHeaders(qix) {
+    //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.    
+    // return insertSectionBreakers(await getAllSlideHeadersPlain(qix));
+    var headers = await getAllSlideHeadersPlain(qix);
+    console.log('headers', headers)
+    var headersWithBreakers = insertSectionBreakers(headers);
+    console.log('headersWithBreakers', headersWithBreakers)
+    return headersWithBreakers;
+}
+
+export async function getAllSlideHeadersPlain(qix) {
     //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {
@@ -172,16 +183,20 @@ async function getAllSlideHeaders(qix) {
         qWidth: 3,
         qHeight: 3333
     }]);
-    var tableWithChapters = insertSectionBreakers(sessionData[0].qMatrix);
-    console.log('tableWithChapters', tableWithChapters)
-    Session.set('slideHeaders', tableWithChapters)
+    return sessionData[0].qMatrix;
 }
 //
 // ─── GET LEVEL 1 TO 3 ────────────────────────────────────────────
 //
 
-export async function getAllSlides(qix) {
-    await getAllSlideHeaders(qix);
+var sectionBreakerConfig = true;
+export async function getAllSlides(qix, insertSectionBreakers = sectionBreakerConfig) {
+    console.log('getAllSlides: insertSectionBreakers', insertSectionBreakers)
+        //insert breakers before a change of topic? YES/NO... breakers are annoying when you make a menu selection or want to link to a sheet
+    sectionBreakerConfig = insertSectionBreakers;
+    var table = insertSectionBreakers ? await getAllSlideHeaders(qix) : await getAllSlideHeadersPlain(qix);
+    Session.set('slideHeaders', table);
+
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {
             qType: 'cube'

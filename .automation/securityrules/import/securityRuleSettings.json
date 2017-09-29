@@ -27,7 +27,7 @@
         "rule": "((resource.name=user.environment.group or resource.name=user.@customers or (resource.name=\"Everyone\") ))",
         "resourceFilter": "Stream_*, DataConnection_*",
         "actions": 2,
-        "comment": "",
+        "comment": "Basis rule: provide access to a resource (stream, dataconnection) if the name = resource group (from ticket) or custom property (customer)",
         "disabled": false,
         "privileges": null
     },
