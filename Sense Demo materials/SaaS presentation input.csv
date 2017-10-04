@@ -378,13 +378,12 @@ http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sh
 - From the Sheets and object list, select the object: Sales by country.
 - Create an IFrame for that object in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/).","Subtopic",,,,,,,,
 "Web integration","Exercise IFrame: embed a single chart","For the solution, click [here](http://jsfiddle.net/qhose/x1owu7yu/).",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame: embed a sheet","**Goal:** Create your first Qlik Sense IFrame object integration.
-Please follow the steps:",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame: embed a sheet","- Open the Single configurator in the Qlik Sense Dev-hub.
+"Web integration","Exercise IFrame: embed a sheet","**Goal:** Create your first Qlik Sense IFrame object integration.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: embed a sheet","Please follow the steps:
+- Open the Single configurator in the Qlik Sense Dev-hub.
 - Select the Sales app.
 - From the Sheets and object list, select the sheet: Dashboard.
-- Create an IFrame for that sheet in this empty JSFiddle.
-",,"","","","","         0","0","Exercises",
+- Create an IFrame for that sheet in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/).",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: embed a sheet","For the solution, click [here](https://jsfiddle.net/qhose/vabpzaL9/).",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: embed a sheet with predefined selection","**Goal:** You want to embed a sheet, which has a selected already set.",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: embed a sheet with predefined selection"," - Open the Single configurator in the Qlik Sense Dev-hub.
