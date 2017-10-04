@@ -1,7 +1,15 @@
-import { Template } from 'meteor/templating';
-import { Meteor } from 'meteor/meteor';
-import { Session } from 'meteor/session';
-import { senseConfig as config } from '/imports/api/config';
+import {
+    Template
+} from 'meteor/templating';
+import {
+    Meteor
+} from 'meteor/meteor';
+import {
+    Session
+} from 'meteor/session';
+import {
+    senseConfig as config
+} from '/imports/api/config';
 
 import './layout.html';
 import './presentation.html';
@@ -9,7 +17,9 @@ import './presentation';
 import '../checkConfig.html';
 import '/imports/ui/nav.html';
 import '/imports/ui/nav.js';
-import { getQix } from '/imports/ui/useCases/useCaseSelection';
+import {
+    getQix
+} from '/imports/ui/useCases/useCaseSelection';
 
 
 const webIntegrationDemo = 'http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort;
@@ -80,16 +90,30 @@ Template.layout.onCreated(function() {
             //     Session.setAuth('currentStep', 3);
             // };
         },
-        onError: function() { console.log("onError", arguments); }
+        onError: function() {
+            console.log("onError", arguments);
+        }
     });
 });
 
 
-Template.slideSelectionSheet.onRendered(function() {
-    $('#myModal').on('hidden.bs.modal', async function() {
-        console.log('slide selection modal closed');
-        var ticket = 'dummy, user should already be authenticated at this point...'
-        var qix = await getQix(ticket);
-        qix.app.abortModal(true);
-    })
-})
+// Template.slideSelectionSheet.onRendered(function() {
+//     $('#sheetSelector').modal({
+//         // onHide: async function() {
+//         //     await abortQlikModalState();
+//         // },
+//         onHidden: async function() {
+//             console.log('------------------------------------');
+//             console.log('on hidden clicked');
+//             console.log('------------------------------------');
+//             await abortQlikModalState();
+//         },
+//         onHide: function() {
+//             console.log('hidden');
+
+//         },
+//         onShow: function() {
+//             console.log('shown');
+//         },
+//     })
+// })

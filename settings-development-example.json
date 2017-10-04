@@ -38,11 +38,11 @@
         "qrsPort": 4242,
         "proxyPort": 4243,
         "license": {
-            "serial": "9999000000001068",
+            "serial": "232323",
             "name": "Martijn Biesbroek",
             "organization": "Qlik"
         },
-        "LicenseControlNumber": 22399
+        "LicenseControlNumber": 23334499
     },
     "broker": {
         "customerDataDir": "",

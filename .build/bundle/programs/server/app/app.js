@@ -1629,7 +1629,7 @@ function createAppConnection(type, name, path) {                                
                     case 15:                                                                                           // 321
                         _context7.prev = 15;                                                                           // 321
                         _context7.t0 = _context7["catch"](4);                                                          // 321
-                        console.error('Failed to create folder connection', _context7.t0);                             // 349
+                        console.error('Failed to create data connection', _context7.t0);                               // 349
                                                                                                                        //
                     case 18:                                                                                           // 321
                     case "end":                                                                                        // 321
@@ -3360,7 +3360,7 @@ if (Meteor.isServer) {                                                          
                             case 13:                                                                                   // 181
                                 _context.prev = 13;                                                                    // 181
                                 _context.t0 = _context["catch"](9);                                                    // 181
-                                throw new Error('Meteor wants to check your settings.json with the parameters in the example settings.json in the project root. Error: Cant read the example settings definitions file: ' + file);
+                                throw new Error('Meteor wants to check your settings.json with the parameters in the example settings.json in the project root. Error: Cant read the example settings definitions file (not valid JSON): ' + file);
                                                                                                                        //
                             case 16:                                                                                   // 181
                                 keysEqual = compareKeys(Meteor.settings, exampleSettingsFile);                         // 197
