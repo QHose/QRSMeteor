@@ -17,7 +17,7 @@ var slideObject = Meteor.settings.public.slideGenerator.dataObject;
 var app = null;
 
 
-var possibleRoles = ['Developer', 'TECHNICAL', 'GENERIC', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
+var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
 
 // ONRENDERED.
 Template.useCaseSelection.onRendered(async function() {

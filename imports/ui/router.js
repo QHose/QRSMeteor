@@ -1,4 +1,5 @@
 var Cookies = require('js-cookie');
+import * as nav from '/imports/ui/nav';
 
 //Layout Configuration. http://stackoverflow.com/questions/28864942/meteor-use-2-different-layouts-ironrouter
 Router.configure({
@@ -16,6 +17,11 @@ Router.route('/slides', {
     template: 'slides',
     layoutTemplate: 'emptyLayout'
 });
+// given the url: "/slides/5?q=s#hashFrag"
+// Router.route('/slides', function() {
+//     var selection = this.params.hash; // "hashFrag"
+//     nav.selectMenuItemInSense(selection); 
+// });
 
 // //map paths to blaze templates
 Router.route('/', function() {
