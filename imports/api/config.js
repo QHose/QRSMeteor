@@ -80,8 +80,8 @@ if (Meteor.isServer) {
     var qlikUser = '';
 
     if (!Meteor.settings.broker.connectToSenseAsUserDirectory) {
-        qlikUserDomain = $(process.env.USERDOMAIN);
-        qlikUser = $(process.env.USERDOMAIN);
+        qlikUserDomain = process.env.USERDOMAIN;
+        qlikUser = process.env.USERNAME;
     } else {
         qlikUserDomain = Meteor.settings.broker.connectToSenseAsUserDirectory;
         qlikUser = Meteor.settings.broker.connectToSenseAsUser

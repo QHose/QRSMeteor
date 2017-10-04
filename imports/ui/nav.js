@@ -8,6 +8,9 @@ import {
     senseConfig
 } from '/imports/api/config.js';
 const enigma = require('enigma.js');
+import {
+    getQix
+} from '/imports/ui/useCases/useCaseSelection';
 
 import {
     Session
@@ -96,7 +99,14 @@ export function showSlideSelector() {
         .modal({
             onVisible: function() {
                 $(".ui.modal.sheetSelector").modal("refresh");
-            }
+            },
+            onHide: function() {
+                console.log('hidden');
+                abortQlikModalState();
+            },
+            // onShow: function() {
+            //     console.log('shown');
+            // },
         })
 
     // $(".ui.modal.sheetSelector")
@@ -106,6 +116,12 @@ export function showSlideSelector() {
     //         }
     //     })
     //     .modal("show");
+}
+async function abortQlikModalState() {
+    console.log('slide selection modal closed');
+    var ticket = 'dummy, user should already be authenticated at this point...'
+    var qix = await getQix(ticket);
+    qix.app.abortModal(true);
 }
 
 Template.yourSaasPlatformMenu.onRendered(function() {

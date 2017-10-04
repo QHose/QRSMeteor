@@ -30,10 +30,7 @@ export function createCustomProperty(name, newProperty) {
     console.log('result of create custom property: ', result);
 }
 
-upsertCustomPropertyByName('UpdatedName', ['bies', 'bies2']);
 export function upsertCustomPropertyByName(name, choiceValues) {
-    console.log('updateCustomPropertyByName: name' + name + ' & values: ' + choiceValues.toString());
-
     try {
         check(name, String);
         check(choiceValues, Array);

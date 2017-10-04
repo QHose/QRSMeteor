@@ -257,7 +257,7 @@ app.visualization.create('barchart',[""Case owner"",""=avg(Duration)""],
 });
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Promise based async example using the vizualization API  to create a barchart","qlik-visuals-result.png",,"","","","","         0","0","PreSales",
-"API -  generic introduction","JS Fidlle example: bar chart on the fly","<iframe class=""SenseEmbedFrame"" src=""//jsfiddle.net/qhose/9acfgugp/embedded/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","PreSales",
+"API -  generic introduction","JS Fidlle example: bar chart on the fly","iframe http://jsfiddle.net/qhose/9acfgugp/embedded/",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Events","Events: create a table object which is initially empty",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Events","```javascript
 table = app.createTable([""Country"", ""Category""], [""Sum(SalesAmount)""], { rows: 1000 });
@@ -310,18 +310,18 @@ $(""#btn_1"").click(function() {
 - Create your first TODO app with MeteorJS [here](https://www.meteor.com/tutorials/angular/creating-an-app)",,"","","","","         0","0","PreSales",
 "Web integration","Overview web integration","<iframe class=""SenseEmbedFrame"" src=""/webIntegration_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
 "Web integration","Overview web integration","Source: [https://webapps.qlik.com/#/](https://webapps.qlik.com/#/)",,,,,,,,,
-"Web integration","Examples of embedded apps","# What does a succesful integration look like?",,,,,,,,,
+"Web integration","Examples of embedded apps","# What does a successful integration look like?",,,,,,,,,
 "Web integration","Examples of embedded apps","<iframe class=""SenseEmbedFrame"" src=""https://webapps.qlik.com/#/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Demo with integration.qlik.com",
 "Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,"","","","","         0","0","Demo with integration.qlik.com",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Video: What do we mean with embedding?","Here we embedded/integrated a YouTube video... ",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Video: What do we mean with embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Example: What is the hub? (Embedded in the slide)","iframe jsfiddle.net/qhose/0nn9bvg6/embedded/result,html,css",,"","","","","         0","0","SaaS & Power of APIs; Demo with integration.qlik.com; Introduction - 30 minutes; CTO; C-Level - non-technical; Business Analyst",
-"Web integration","Example: What is the hub? (Embedded in the slide)","When Qlik Sense starts up, you arrive at the hub. The hub is where you find all the apps you have access rights to use.",,"","","","","         0","0","SaaS & Power of APIs; Demo with integration.qlik.com; Introduction - 30 minutes; CTO; C-Level - non-technical; Business Analyst",
-"Web integration","Example: embed a sheet ","iframe jsfiddle.net/qhose/v993fpgy/embedded/result,html,css",,"","","","","         0","0","SaaS & Power of APIs; Demo with integration.qlik.com; Introduction - 30 minutes; CTO; C-Level - non-technical; Business Analyst",
-"Web integration","Example: Embed a chart","<iframe src=""http://web.saasdemo.qlik.com/only1Chart"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","SaaS & Power of APIs; Demo with integration.qlik.com; Introduction - 30 minutes; CTO; C-Level - non-technical; Business Analyst",
+"Web integration","Example: What is the hub? (Embedded)","iframe http://jsfiddle.net/qhose/0nn9bvg6/embedded/result,html,css",,"","","","","         0","0","SaaS & Power of APIs; Demo with integration.qlik.com; Introduction - 30 minutes; CTO; Business Analyst",
+"Web integration","Example: What is the hub? (Embedded)","When Qlik Sense starts up, you arrive at the hub. The hub is where you find all the apps you have access rights to use.",,"","","","","         0","0","SaaS & Power of APIs; Demo with integration.qlik.com; Introduction - 30 minutes; CTO; Business Analyst",
+"Web integration","Example: embed a sheet ","iframe http://jsfiddle.net/qhose/v993fpgy/embedded/result,html,css",,"","","","","         0","0","SaaS & Power of APIs; Demo with integration.qlik.com; Introduction - 30 minutes; CTO; Business Analyst",
+"Web integration","Example: Embed a chart","iframe http://jsfiddle.net/qhose/x1owu7yu/embedded/result,js,html,css/",,"","","","","         0","0","SaaS & Power of APIs; Demo with integration.qlik.com; Introduction - 30 minutes; CTO; Business Analyst",
 "Web integration","Example: Create a chart on the fly using javascript. ","## Select any combination of dimensions and measures from any data source indexed in an app.",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
-"Web integration","Example: Create a chart on the fly using javascript. ","<iframe class=""SenseEmbedFrame""  src=""//jsfiddle.net/qhose/9acfgugp/embedded/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","PreSales, Technical - 1 day, Technical - 1 hour",
+"Web integration","Example: Create a chart on the fly using javascript. ","iframe http://jsfiddle.net/qhose/9acfgugp/embedded/result,js,html,css/",,"","","","","         0","0","PreSales, Technical - 1 day, Technical - 1 hour",
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Demonstration integration.qlik.com: Web integration","Lets look at [integration.qlik.com](http://web.saasdemo.qlik.com/) where we embedded
 - the hub, 
@@ -339,14 +339,13 @@ $(""#btn_1"").click(function() {
 "Web integration","How to get started: The Qlik Sense Dev-hub (12M) - Inspiration of things you can do...","This tool helps to create the source code for you. (also see the Visual Studio plugin)",,"","","","","         0","0","PreSales",
 "Web integration","IFrame integration","<q> IFrame integration</q>",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","IFrame integration","web - options to integrate content.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"Web integration","Exercise 0: create your first IFrame","With an IFrame you can embed an complete web site. Lets create our first IFrame.",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 0: create your first IFrame","Go to [w3schools.com](http://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 0: create your first IFrame","Change the url to qlik.com",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 0: create your first IFrame","##Introduction to CSS",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 0: create your first IFrame","How can we make the IFrame bigger?","```CSS
-style='border:none; width:100%; height:300px'
-```",,,,,,,,
-"Web integration","Exercise 0: create your first IFrame","Or remove the border?",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: create your first IFrame","With an IFrame you can embed a complete website, so let's create out first IFrame.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: create your first IFrame","- Go to [w3schools.com](http://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe)
+- Change the current IFrame so that it shows the Qlik website (www.qlik.com).",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: create your first IFrame","Optional:
+- You notice that the current IFrame is quite small. So how can you resize it and make it bigger?
+- How can you remove the IFrame border?
+",,"","","","","         0","0","Exercises",
 "Web integration","IFrame - App and Single integration API","https://youtu.be/LSxV7ysLlGs?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","PreSales",
 "Web integration","IFrame - App and Single integration API (2)","Web - iframe integration.png",,"","","","","         0","0","PreSales, SaaS & Power of APIs",
 "Web integration","IFrame - App and Single integration API (2)","Example IFrame URL
@@ -361,44 +360,58 @@ http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sh
 "Web integration","IFrame - App and Single integration API (2)","See working examples in our [integration demo environment](http://web.saasdemo.qlik.com/hub)",,"","","","","         0","0","PreSales, SaaS & Power of APIs",
 "Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","[See IFrame examples on integration demo ](http://web.saasdemo.qlik.com/)",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","saas demo Web integration screenshot.png",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Go to the examples in our [integration demo environment](http://web.saasdemo.qlik.com/hub)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","##Some questions about interacting with Qlik Sense.",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Lets think about possible ways to retrieve
-- An app URL
-- the Sheet URL
-- an object ID",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","How can you see the source URL of the IFrame?",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","Which proxy does it use?",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","If we want to use windows authentication, what should we change?",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 1: Connect to Qlik Sense","How can we clear the selections if the IFrame loads?",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 2: Open anonymous Dev-Hub","Goal: Learn to lookup, the server, the ports, and the virtual proxy settings",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 2: Open anonymous Dev-Hub","Try to open the integration.qlik.com dev-hub via the a virtual proxy that has been configured for anonymous access.",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 2: Open anonymous Dev-Hub","If you need information, ask your trainer...",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Go to single-configurator",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Select Sales and customers app",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Select object sales by country",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.1: Create  your first IFrame object integration","See the [answer here](http://jsfiddle.net/dlumkeman/hy67kxov/)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Go to single-configurator",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Select Sales and customers app",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Select sheet dashboard",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 3.2: Create  your first IFrame sheet integration","See the [answer here](http://jsfiddle.net/dlumkeman/3qac38cd/)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Go to single-configurator",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Select Sales and customers app",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Select sheet dashboard",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Ensure the IFrame loads with a selection... ",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 4: Create your first sheet object integration that sets a selection","Now create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 4: Create your first sheet object integration that sets a selection","[See the answer](http://jsfiddle.net/dlumkeman/d8oe54v3/)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Go to single-configurator",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Select Sales and customers app",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Select 3 objects that you like and paste the IFrame source code in your fiddle",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","If your charts are too small you can use some CSS in the IFrame tag to make the objects bigger",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","```CSS
-style='border:none; width:100%; height:300px'
-```",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame 5: Create a page with 3 charts (individual IFrames) that select country germany when they start up","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 6: how can we enable HTTP or HTTPS for Qlik Sense?","You can't mix http with https, so where can we change this setting in Qlik Sense?",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: Connect to Qlik Sense","**Goal:**  Become aware with some key objects relevant for embedding Qlik Sense.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: Connect to Qlik Sense","Which things can we embed?",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: Connect to Qlik Sense","- the hub
+- sheets
+- charts
+- data",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: Connect to Qlik Sense","But how can you get the code to embed these objects?",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: the Dev-Hub","**Goal:**  Learn how you can generate the code used to embed.Qlik Sense",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: the Dev-Hub","For this the Development hub of Qlik Sense can be used..",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: the Dev-Hub","Go to the [dev-hub](http://integration.qlik.com:443/anon/dev-hub/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: embed a single chart","**Goal:** You want to embed a single chart in your website.
+",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: embed a single chart","Please follow the steps:
+- Open the Single configurator in the Qlik Sense Dev-hub.
+- Select the Sales app.
+- From the Sheets and object list, select the object: Sales by country.
+- Create an IFrame for that object in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/).","Subtopic",,,,,,,,
+"Web integration","Exercise IFrame: embed a single chart","For the solution, click [here](http://jsfiddle.net/qhose/x1owu7yu/).",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: embed a sheet","**Goal:** Create your first Qlik Sense IFrame object integration.
+Please follow the steps:",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: embed a sheet","- Open the Single configurator in the Qlik Sense Dev-hub.
+- Select the Sales app.
+- From the Sheets and object list, select the sheet: Dashboard.
+- Create an IFrame for that sheet in this empty JSFiddle.
+",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: embed a sheet","For the solution, click [here](https://jsfiddle.net/qhose/vabpzaL9/).",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: embed a sheet with predefined selection","**Goal:** You want to embed a sheet, which has a selected already set.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: embed a sheet with predefined selection"," - Open the Single configurator in the Qlik Sense Dev-hub.
+ - Select the Sales app
+ - From the Sheets and object list, select the sheet: Dashboard
+ - Create an IFrame for that sheet in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/). But make sure only the data from the United States is shown.
+",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: embed a sheet with predefined selection","For the solution, click [here](http://jsfiddle.net/qhose/hgveg58w/).",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: Create a page with 3 charts embedded using a predefined selection","**Goal:** You want to embed multiple charts which have a selected already set.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: Create a page with 3 charts embedded using a predefined selection","Please follow the steps:
+- Open de Single configurator in the Qlik Sense Dev-hub.
+- Select the Sales app
+- Select 3 objects 
+- Create an IFrame for each object in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/hv8wxb8o/). But make sure only the data from the Germany is shown.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: Create a page with 3 charts embedded using a predefined selection","If your charts are too small you can use some CSS in the IFrame tag to make the objects bigger.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: Create a page with 3 charts embedded using a predefined selection","For the solution, click [here](http://jsfiddle.net/qhose/4j0o24r7/).",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: some trouble shooting tips","**Goal:**  Become aware with some key technical aspects which help you solve issues.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: some trouble shooting tips","Go to [this page](http://web.saasdemo.qlik.com/app) where we embedded Qlik Sense.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: some trouble shooting tips","How can you see the source URL of the IFrame?",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: some trouble shooting tips","Which proxy does it use?",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: some trouble shooting tips","If we want to use windows authentication, what should we change?",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: some trouble shooting tips","How can we clear the selections if the IFrame loads?",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: how can we enable HTTP or HTTPS for Qlik Sense?","**Goal:** Where can the security settings for HTTP/HTTPS in Qlik Sense be changed.
+Please follow the steps:",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: how can we enable HTTP or HTTPS for Qlik Sense?","- Open the Qlik Sense management console.
+- In the menu go to Proxies.
+- Select the Central Proxy.",,"","","","","         0","0","Exercises",
 "Web integration","IFrame pro and con","# Pro",,,,,,,,,
 "Web integration","IFrame pro and con","Easy way to embed content in a page",,,,,,,,,
 "Web integration","IFrame pro and con"," Simple and reliable way to separate content onto several pages",,,,,,,,,
@@ -422,7 +435,7 @@ style='border:none; width:100%; height:300px'
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","[integration demo: div tag integration example](http://web.saasdemo.qlik.com/multipleDivs)",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","Dev-hub: demo mashup editor",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Capabilities API - example code to embed chart using a DIV tag","[See demo on integration.qlik.com](http://web.saasdemo.qlik.com/multipleDivs)",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
-"Web integration","Capabilities API - example code to embed chart using a DIV tag","<iframe width=""100%"" height=""800"" src=""//jsfiddle.net/qhose/uj3abbde/embedded/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
+"Web integration","Capabilities API - example code to embed chart using a DIV tag","iframe http://jsfiddle.net/qhose/uj3abbde/embedded/result,html,js,css/",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Capabilties API - example code: make a selection","```
 var config = {
  host: window.location.hostname,
@@ -505,22 +518,31 @@ If so, allow access otherwise deny access with a 403 response",,"","","","","   
 "Web integration","Dev-hub Mashup templates","You can create your own templates to be used by your users",,"","","","","         0","0","Deep dive",
 "Web integration","Dev-hub Mashup templates","See [this community link](https://community.qlik.com/blogs/qlikviewdesignblog/2017/02/24/introducing-dar-mashup-template) for a nice starter",,"","","","","         0","0","Deep dive",
 "Web integration","Dev-hub Mashup templates","https://youtu.be/O5uuzKWMS7I",,"","","","","         0","0","Deep dive",
-"Web integration","Exercise 1: Lets look at a existing mashup in the DEV-HUB","We will now analyse the CityBike mashup you see in the [SaaSDemo web integration demo](http://web.saasdemo.qlik.com/)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 1: Lets look at a existing mashup in the DEV-HUB","Now lets look at the [backend in the DEV-HUB](http://integration.qlik.com:443/anon/dev-hub/mashup-editor/#qext{DemoMashup})",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Go to the dev-hub, mashup editor",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Create a new mashup project: exercise <groupName> - 1 ",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Select Sales and customers app",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Drag and drop some objects and select preview",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Now try to disable interactivity",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Try to set a selection",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 1: create a mashup in Qlik the Qlik Sense dev-hub","Insert a selection bar",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","Now we try to put this mashup from exercise 1 on an external server.",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","Create your exercise in this empty [JSFiddle](http://jsfiddle.net/dlumkeman/rv3r73rj/)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","Paste the relevant parts from the dev-hub into the fiddle
-- copy javascript to the javascript part
-- refer to the new placeholder IDs in your javascript",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","It could be.... that you have to add `fiddle.jshell.net` to your virtual proxy whitelist. *Ensure you understand what we mean here...*",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 2: create a mashup in an external webserver (JSFiddle)","[Solution code](http://jsfiddle.net/dlumkeman/9a69ye4b/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Lets look at a existing mashup in the DEV-HUB","**Goal:** Know what are the needed components to create a mashup.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Lets look at a existing mashup in the DEV-HUB","Please follow the steps:
+- Let's analyze the CityBike [mashup](http://integration.qlik.com:443/meteor/extensions/DemoMashup/home.html).
+- What is a mashup and why is CityBike one?
+- What components are needed to create a Mashup?
+Let's analyze the [CityBike mashup](http://integration.qlik.com:443/anon/dev-hub/mashup-editor/#qext{DemoMashup}) in the DEV-HUB. (Called DemoMashup).",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Create a mashup in Qlik the Qlik Sense dev-hub","**Goal:** Create a mashup trough the Qlik Sense dev-hub.
+Please follow the steps:",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Create a mashup in Qlik the Qlik Sense dev-hub","- Open de Mashup editor in the Qlik Sense Dev-hub.
+- Create a new project with the name MyFirstMashup.
+- Select the Sales app.
+- Drag and drop some object of the Sales into the template.
+- Show the result.
+",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Create a mashup in Qlik the Qlik Sense dev-hub","Optional:
+- Disable the interactivity.
+- Set a selection.
+- Insert the selection bar.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Create a mashup in an external webserver (JSFiddle)","**Goal:** Create a Qlik Sense mashup on another web server then the Qlik Sense server. Please follow the steps:",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Create a mashup in an external webserver (JSFiddle)","- Create the mashup that was created in the previous exercise in this empty. [JSFiddle](http://jsfiddle.net/qhose/bu6hjkaz/).
+- Copy/paste the relevant parts from the dev-hub in the fiddle.
+- Refer to the new placeholder IDs in your JavaScript.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Create a mashup in an external webserver (JSFiddle)","It could be that `fiddle.jshell.net` needs to be added to the Virtual Proxy whitelist. Why is this needed?
+",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Create a mashup in an external webserver (JSFiddle)","For the solution, click [here](http://jsfiddle.net/qhose/mv9Lyusu/).",,"","","","","         0","0","Exercises",
 "Web integration","On the fly","<q>Create charts on the fly using the Vizualization API</q>",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","On the fly","web - options to integrate content.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","Vizualisation API introduction video","https://youtu.be/_pddhxg5__o",,"","","","","         0","0","Technical - 1 day",
@@ -541,10 +563,15 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Create charts on the fly","[See example on integration demo](http://web.saasdemo.qlik.com/onTheFlybarChart)",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","Create charts on the fly","[See the Qlik Sense help examples](http://help.qlik.com/en-US/sense-developer/2.2/Subsystems/Mashups/Content/Howtos/create-visualization-on-the-fly.htm)",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","Create charts on the fly","qlik-visuals-result.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"Web integration","Exercise 1: Create a bar chart using the vizualization API","Use [this fiddle](http://jsfiddle.net/dlumkeman/rv3r73rj/) as a starting template",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 1: Create a bar chart using the vizualization API","Copy the config and some other useful scripts from your mashup API dev-hub code",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 1: Create a bar chart using the vizualization API","[Use the Vizualizations API help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/VisualizationAPI/VisualizationAPI.htm)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise 1: Create a bar chart using the vizualization API","[See the answer here](http://jsfiddle.net/dlumkeman/oa6d9qgy/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Create a bar chart on the fly (with javascript) using the vizualization API","**Goal:**  Create a Qlik Sense object on the fly in JavaScript without it being created beforehand in an app.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Create a bar chart on the fly (with javascript) using the vizualization API","Please follow the steps:
+- Use this [Fiddle](http://jsfiddle.net/qhose/mv9Lyusu/) as a starting template. This is the solution of a previous exercise.
+- To generate the object on the fly, the Qlik Sense Visualisations API is needed. Click [here](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/VisualizationAPI/VisualizationAPI.htm) to see the help.
+- With this information create a bar chart with following parameters:
+  * Dimension: Country
+  * Measure: Amount of customers
+  * Title: 'On the fly barchart'",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Create a bar chart on the fly (with javascript) using the vizualization API","For the solution, click [here](http://jsfiddle.net/qhose/9acfgugp/).",,"","","","","         0","0","Exercises",
 "Web integration","Data only","<q>Data only</q>",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Data only","web - options to integrate content.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demo - Only use Qlik Sense data","Integration demo: create your own vizualization using an external library called  [Chart.js](http://web.saasdemo.qlik.com/chartJS)",,"","","","","         0","0","Technical - 2 hours",
@@ -981,23 +1008,11 @@ or
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Now you have submitted your presentation (via a `pull request` to the central repository on github.com). The slide generator maintainer can now verify your content and make comments. and [merge](https://services.github.com/on-demand/github-desktop/merge-pull-request-github) it in the master presentation",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","github - merge pull request.gif",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","For more information, follow the instructions on [GitHub](https://services.github.com/on-demand/github-desktop/push-with-github-desktop)",,,,,,,,,
-"Integration.qlik.com key API calls","Summary: which activities did we automate?","Deployment
-- install Qlik Sense using a silent script
-- Setup proxy (ports, https)
-- Create virtual proxies (ways to authenticate and load balance over engines)
-- insert license
-- upload template apps and extensions
-- create default streams
-- set security rules
-- get app IDs for automatic/dynamic embedding (in IFrame/DIV) without hard coded items. ",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Summary: which activities did we automate?","App provisioning, for each customer
+"Integration.qlik.com key API calls","Summary: which activities did we automate?","Setup Qlik Sense
 - Create stream
 - Copy template app
 - Replace script and reload app
-- Publish app
-- create custom property
-- create folder on server (for data files)
-- create database connection",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
+- Publish app",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
 "Integration.qlik.com key API calls","Summary: which activities did we automate?","Security integration
 - Users get a Single Sign On via a ticket exchange
 - The ticket contains the userId and groups from your Saas platform
@@ -1405,20 +1420,23 @@ function appChangeListener() {
 "Integration.qlik.com docker environment","Demo architecture setup","- [senseWebIntegration](https://github.com/QHose/senseWebIntegration) simulates the SaaS platform to which an end user connects (the website) and which embeds Qlik Sense charts. (docker image)",,,,,,,,,
 "Integration.qlik.com docker environment","Demo architecture setup","- Qlik Sense",,,,,,,,,
 "Integration.qlik.com docker environment","Build a docker image from a Meteor project","<div style=""width: 960px; height: 720px; margin: 10px; position: relative;""><iframe allowfullscreen frameborder=""0"" style=""width:960px; height:720px"" src=""https://www.lucidchart.com/documents/embeddedchart/feaf7d0e-cd67-44f5-ad35-ea849ff6d274"" id=""ZyhxQWbU77-i""></iframe></div>",,,,,,,,,
+"Integration.qlik.com docker environment","How to run the demo with docker?","# installation of software",,,,,,,,,
 "Integration.qlik.com docker environment","How to run the demo with docker?","install docker for windows",,,,,,,,,
-"Integration.qlik.com docker environment","Run docker-compose","```Dockerfile
+"Integration.qlik.com docker environment","How to run the demo with docker?","install a machine with Qlik Sense server",,,,,,,,,
+"Integration.qlik.com docker environment","How to run the demo with docker?","MeteorQRS will automatically setup Qlik Sense... ",,,,,,,,,
+"Integration.qlik.com docker environment","How to run the demo with docker?","# Set some configuration between Sense and MeteorQRS",,,,,,,,,
+"Integration.qlik.com docker environment","How to run the demo with docker?","Export the Sense certificates (QMC- export certificates), supply the DNS/computer name of the Qlik Sense server. Go to the exported certificates folder and copy them to your `dockerConfigMountFolder` in my case `C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\dockerConfigMountFolder`",,,,,,,,,
+"Integration.qlik.com docker environment","How to run the demo with docker?","Also in this folder adjust the settings.json file
+- update the qlikSenseHost and SenseServerInternalLanIP (how can the QRSMeteor node server reach Qlik Sense?)
+- Supply the folder where the certificates are contained. This should be `""certificatesDirectory"": ""/meteorQRS/config"",` ",,,,,,,,,
+"Integration.qlik.com docker environment","How to run the demo with docker?","# Prepare runtime settings for docker",,,,,,,,,
+"Integration.qlik.com docker environment","How to run the demo with docker?","All servers will be started via one text file a `Docker Compose file`. ",,,,,,,,,
+"Integration.qlik.com docker environment","How to run the demo with docker?","Update the following
+- VIRTUAL_HOST (2 times: for QRS and Web)
+- the volume mappings.",,,,,,,,,
+"Integration.qlik.com docker environment","How to run the demo with docker?","```Dockerfile
 version: ""3.3""
 services: 
-    # nginx:
-    #     image: nginx:1.9
-    #     ports:
-    #     - ""80:80""
-    #     volumes:
-    #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
-    #     restart: always
-    #     depends_on:
-    #     - web
-        # - qrs
     lb:
         image: dockercloud/haproxy
         links:
@@ -1470,6 +1488,7 @@ services:
 networks:
     default:
 ```",,,,,,,,,
+"Integration.qlik.com docker environment","Run docker-compose",,,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","Ater playing around with Docker your drive may get full, run the commands below...",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","docker ps -a",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","$ docker images -a",,,,,,,,,
