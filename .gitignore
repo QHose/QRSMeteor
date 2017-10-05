@@ -1,6 +1,7 @@
 settings-development.json
 settings-production.json
 .build/
+.build\
 *.cert
 *.pem
 node_modules/

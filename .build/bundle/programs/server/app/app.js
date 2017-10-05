@@ -2206,62 +2206,58 @@ function createCustomProperty(name, newProperty) {                              
     console.log('result of create custom property: ', result);                                                         // 30
 }                                                                                                                      // 31
                                                                                                                        //
-upsertCustomPropertyByName('UpdatedName', ['bies', 'bies2']);                                                          // 33
-                                                                                                                       //
-function upsertCustomPropertyByName(name, choiceValues) {                                                              // 34
-    console.log('updateCustomPropertyByName: name' + name + ' & values: ' + choiceValues.toString());                  // 35
-                                                                                                                       //
-    try {                                                                                                              // 37
-        check(name, String);                                                                                           // 38
-        check(choiceValues, Array);                                                                                    // 39
-    } catch (err) {                                                                                                    // 40
+function upsertCustomPropertyByName(name, choiceValues) {                                                              // 33
+    try {                                                                                                              // 34
+        check(name, String);                                                                                           // 35
+        check(choiceValues, Array);                                                                                    // 36
+    } catch (err) {                                                                                                    // 37
         throw new Meteor.Error('upsertCustomPropertyByName: Missing values', 'You did not specify a name or update object for the custom property');
-    }                                                                                                                  // 42
+    }                                                                                                                  // 39
                                                                                                                        //
-    try {                                                                                                              // 44
-        var newProperty = {                                                                                            // 45
-            "name": name,                                                                                              // 46
-            "valueType": "Text",                                                                                       // 47
-            "objectTypes": ["App", "ContentLibrary", "DataConnection", "ReloadTask", "Stream", "User"],                // 48
-            "choiceValues": choiceValues                                                                               // 49
-        };                                                                                                             // 45
-        var existingProperty = getCustomProperties(name)[0];                                                           // 52
+    try {                                                                                                              // 41
+        var newProperty = {                                                                                            // 42
+            "name": name,                                                                                              // 43
+            "valueType": "Text",                                                                                       // 44
+            "objectTypes": ["App", "ContentLibrary", "DataConnection", "ReloadTask", "Stream", "User"],                // 45
+            "choiceValues": choiceValues                                                                               // 46
+        };                                                                                                             // 42
+        var existingProperty = getCustomProperties(name)[0];                                                           // 49
                                                                                                                        //
-        if (existingProperty) {                                                                                        // 53
-            //update it                                                                                                // 53
-            var updatedProperty = Object.assign(existingProperty, newProperty);                                        // 54
+        if (existingProperty) {                                                                                        // 50
+            //update it                                                                                                // 50
+            var updatedProperty = Object.assign(existingProperty, newProperty);                                        // 51
             var result = qrs.put('/qrs/CustomPropertyDefinition/' + updatedProperty.id, null, updatedProperty); //you can only update when you supply the original modified date, otherwise you get a 409 error. 
                                                                                                                        //
-            console.log('Custom property update: ', result);                                                           // 56
-        } else {                                                                                                       // 57
-            //create a new one                                                                                         // 57
-            createCustomProperty(name, newProperty);                                                                   // 58
-        }                                                                                                              // 59
-    } catch (error) {                                                                                                  // 60
-        console.log('error upserting custom property', error);                                                         // 61
-    }                                                                                                                  // 62
-}                                                                                                                      // 63
+            console.log('Custom property update: ', result);                                                           // 53
+        } else {                                                                                                       // 54
+            //create a new one                                                                                         // 54
+            createCustomProperty(name, newProperty);                                                                   // 55
+        }                                                                                                              // 56
+    } catch (error) {                                                                                                  // 57
+        console.log('error upserting custom property', error);                                                         // 58
+    }                                                                                                                  // 59
+}                                                                                                                      // 60
                                                                                                                        //
-function deleteCustomProperty(name) {                                                                                  // 65
-    console.log('deleteCustomProperty(name)', name);                                                                   // 66
-    var customProperty = getCustomProperties(name)[0];                                                                 // 68
+function deleteCustomProperty(name) {                                                                                  // 62
+    console.log('deleteCustomProperty(name)', name);                                                                   // 63
+    var customProperty = getCustomProperties(name)[0];                                                                 // 65
                                                                                                                        //
-    if (customProperty) {                                                                                              // 69
-        var result = qrs.del('/qrs/CustomPropertyDefinition/' + customProperty.id);                                    // 70
-        console.log('result after delete', result);                                                                    // 71
-    }                                                                                                                  // 72
-}                                                                                                                      // 74
+    if (customProperty) {                                                                                              // 66
+        var result = qrs.del('/qrs/CustomPropertyDefinition/' + customProperty.id);                                    // 67
+        console.log('result after delete', result);                                                                    // 68
+    }                                                                                                                  // 69
+}                                                                                                                      // 71
                                                                                                                        //
-function getCustomProperties(name) {                                                                                   // 76
-    var filter = name ? {                                                                                              // 77
-        filter: "Name eq '" + name + "'"                                                                               // 78
-    } : null;                                                                                                          // 77
-    var customProperties = qrs.get('/qrs/CustomPropertyDefinition/full', filter);                                      // 80
+function getCustomProperties(name) {                                                                                   // 73
+    var filter = name ? {                                                                                              // 74
+        filter: "Name eq '" + name + "'"                                                                               // 75
+    } : null;                                                                                                          // 74
+    var customProperties = qrs.get('/qrs/CustomPropertyDefinition/full', filter);                                      // 77
     var file = path.join(Meteor.settings.broker.automationBaseFolder, 'customProperties', 'export', 'ExtractedCustomProperties.json'); // SAVE FILE TO DISK
                                                                                                                        //
-    fs.outputFile(file, JSON.stringify(customProperties, null, 2), 'utf-8');                                           // 85
-    return customProperties;                                                                                           // 87
-}                                                                                                                      // 88
+    fs.outputFile(file, JSON.stringify(customProperties, null, 2), 'utf-8');                                           // 82
+    return customProperties;                                                                                           // 84
+}                                                                                                                      // 85
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"QRSFunctionsExtension.js":function(require,exports,module){
@@ -3260,8 +3256,8 @@ if (Meteor.isServer) {                                                          
     var qlikUser = '';                                                                                                 // 80
                                                                                                                        //
     if (!Meteor.settings.broker.connectToSenseAsUserDirectory) {                                                       // 82
-        qlikUserDomain = $(process.env.USERDOMAIN);                                                                    // 83
-        qlikUser = $(process.env.USERDOMAIN);                                                                          // 84
+        qlikUserDomain = process.env.USERDOMAIN;                                                                       // 83
+        qlikUser = process.env.USERNAME;                                                                               // 84
     } else {                                                                                                           // 85
         qlikUserDomain = Meteor.settings.broker.connectToSenseAsUserDirectory;                                         // 86
         qlikUser = Meteor.settings.broker.connectToSenseAsUser;                                                        // 87

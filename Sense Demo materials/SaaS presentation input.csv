@@ -367,11 +367,10 @@ http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sh
 - charts
 - data",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: Connect to Qlik Sense","But how can you get the code to embed these objects?",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame: the Dev-Hub","**Goal:**  Learn how you can generate the code used to embed.Qlik Sense",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame: the Dev-Hub","For this the Development hub of Qlik Sense can be used..",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: the Dev-Hub","**Goal:**  Learn how you can generate the code used to embed Qlik Sense",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: the Dev-Hub","For this the Development hub of Qlik Sense can be used.",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: the Dev-Hub","Go to the [dev-hub](http://integration.qlik.com:443/anon/dev-hub/)",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame: embed a single chart","**Goal:** You want to embed a single chart in your website.
-",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: embed a single chart","**Goal:** You want to embed a single chart in your website.",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: embed a single chart","Please follow the steps:
 - Open the Single configurator in the Qlik Sense Dev-hub.
 - Select the Sales app.
@@ -535,8 +534,9 @@ Please follow the steps:",,"","","","","         0","0","Exercises",
 - Disable the interactivity.
 - Set a selection.
 - Insert the selection bar.",,"","","","","         0","0","Exercises",
-"Web integration","Exercise: Create a mashup in an external webserver (JSFiddle)","**Goal:** Create a Qlik Sense mashup on another web server then the Qlik Sense server. Please follow the steps:",,"","","","","         0","0","Exercises",
-"Web integration","Exercise: Create a mashup in an external webserver (JSFiddle)","- Create the mashup that was created in the previous exercise in this empty. [JSFiddle](http://jsfiddle.net/qhose/bu6hjkaz/).
+"Web integration","Exercise: Create a mashup in an external webserver (JSFiddle)","**Goal:** Create a Qlik Sense mashup on another web server then the Qlik Sense server.",,"","","","","         0","0","Exercises",
+"Web integration","Exercise: Create a mashup in an external webserver (JSFiddle)","Please follow the steps:
+- Create the mashup that was created in the previous exercise in this empty. [JSFiddle](http://jsfiddle.net/qhose/bu6hjkaz/).
 - Copy/paste the relevant parts from the dev-hub in the fiddle.
 - Refer to the new placeholder IDs in your JavaScript.",,"","","","","         0","0","Exercises",
 "Web integration","Exercise: Create a mashup in an external webserver (JSFiddle)","It could be that `fiddle.jshell.net` needs to be added to the Virtual Proxy whitelist. Why is this needed?
