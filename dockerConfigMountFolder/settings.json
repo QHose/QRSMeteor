@@ -2,7 +2,7 @@
     "adminEmails": "mbj@qlik.com",
     "multiTenantScenario": true,
     "public": {
-        "qlikSenseHost": "QLIK-AB0Q2URN5T",
+        "qlikSenseHost": "NLSCH-MBJ3",
         "qlikSensePort": 81,
         "qlikSensePortSecure": 600,
         "qlikSenseAllowHTTP": true,
@@ -30,7 +30,7 @@
     },
     "private": {
         "certificatesDirectory": "/meteorQRS/config",
-        "SenseServerInternalLanIP": "QLIK-AB0Q2URN5T",
+        "SenseServerInternalLanIP": "NLSCH-MBJ3",
         "useSSL": false,
         "passphrase": null,
         "virtualProxy": "hdr",
@@ -50,9 +50,9 @@
         "customerDataDir": "",
         "automaticCleanUpGeneratedApps": "Yes",
         "automationBaseFolder": "",
-        "runInitialQlikSenseSetup": false,
-        "connectToSenseAsUserDirectory": "qlik-ab0q2urn5t",
-        "connectToSenseAsUser": "qlikexternal",
+        "runInitialQlikSenseSetup": true,
+        "connectToSenseAsUserDirectory": "QTSEL",
+        "connectToSenseAsUser": "mbj",
         "dataConnections": [{
                 "name": "data import test",
                 "type": "folder",
