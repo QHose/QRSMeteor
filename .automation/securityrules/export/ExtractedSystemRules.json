@@ -204,18 +204,6 @@
     "privileges": null
   },
   {
-    "id": "2780547f-f03d-481b-af03-bb6f0cb1676a",
-    "category": "Security",
-    "type": "Default",
-    "name": "Extension",
-    "rule": "true",
-    "resourceFilter": "Extension_*",
-    "actions": 2,
-    "comment": "Everyone can view extensions",
-    "disabled": false,
-    "privileges": null
-  },
-  {
     "id": "493b6fba-bf98-4c37-926e-17f1381f59a6",
     "category": "Security",
     "type": "ReadOnly",
@@ -261,6 +249,18 @@
     "actions": 256,
     "comment": "Everyone is allowed to export the app data they are allowed to see except anonymous users",
     "disabled": true,
+    "privileges": null
+  },
+  {
+    "id": "2780547f-f03d-481b-af03-bb6f0cb1676a",
+    "category": "Security",
+    "type": "Custom",
+    "name": "Extension",
+    "rule": "true",
+    "resourceFilter": "*",
+    "actions": 1023,
+    "comment": "Everyone can view extensions",
+    "disabled": false,
     "privileges": null
   },
   {

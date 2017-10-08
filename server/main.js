@@ -74,10 +74,11 @@ async function initQlikSense() {
         var QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);
         if (!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup) {
             console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
-            installQlikSense();
-            await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...            
-            QSLic.insertLicense();
-            // QSLic.insertLicense();
+            if (Meteor.settings.installQlikSense) {
+                installQlikSense();
+                await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                            
+                QSLic.insertLicense();
+            }
             QSLic.insertUserAccessRule();
             QSSystem.disableDefaultSecurityRules();
             await QSProxy.createVirtualProxies();
@@ -119,8 +120,11 @@ var installQlikSense = function() {
     var executable = 'startSilentInstall.ps1';
     var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
     exec(installer, function(err, data) {
-        console.log(err)
-        console.log('Reponse from the Qlik Sense installer: ' + data.toString());
+        if (err) {
+            console.error('Installation of Qlik Sense failed, make sure you check the log file in GitHub\QRSMeteor\.automation\InstallationSoftware\log.txt', err)
+        } else {
+            console.log('installation of Qlik Sense success, reponse from the Qlik Sense installer: ' + data.toString());
+        }
     });
 }
 

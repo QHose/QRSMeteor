@@ -68,8 +68,7 @@ Meteor.startup(function() {
         stack: true,
         offset: 50, // in px - will be added to first alert (bottom or top - depends of the position in config)
         beep: false,
-        onClose: _.noop //
-
+        onClose: _.noop
     });
     AutoForm.setDefaultTemplate("semanticUI");
 

@@ -1,5 +1,6 @@
 {
     "adminEmails": "mbj@qlik.com",
+    "installQlikSense": true,
     "multiTenantScenario": false,
     "public": {
         "qlikSenseHost": "QLIK-AB0Q2URN5T",
