@@ -8,6 +8,34 @@
 /* @import url(../../lib/font/fira-sans/fira.css); */
 
 
+<<<<<<< HEAD
+/* QLIK SENSE CIRCLES */
+
+
+/* @media screen and (min-width: 768px)
+.left-qlik-background {
+    width: 189px;
+    height: 346px;
+    background-size: auto 346px;
+    background-position: -110px 50%;
+    top: 200px;
+}
+@media screen and (min-width: 768px)
+.left-qlik-background {
+    display: block;
+    z-index: 1;
+}
+logout?targetUr…host:81/qmc:91
+.background {
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP4AAAEsCAYAAADjFw7BAABHi0lEQ…gmw2ulPt3zGQD770yGOIikeftplSIxfSRIcscOwmfqrq3/BzsBvWfTnIYYAAAAAElFTkSuQmCC);
+    position: absolute;
+    z-index: 1;
+} */
+
+
+=======
+>>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
 /*********************************************
   * POP UP SELECTOR
   *********************************************/
@@ -93,6 +121,17 @@ html {
 }
 
 .reveal h1 {
+<<<<<<< HEAD
+    font-size: 1.2em;
+}
+
+.reveal h2 {
+    font-size: 1.1em;
+}
+
+.reveal h3 {
+    font-size: 1.05em;
+=======
     font-size: 1.4em;
 }
 
@@ -102,6 +141,7 @@ html {
 
 .reveal h3 {
     font-size: 1.2em;
+>>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
 }
 
 .reveal h4 {

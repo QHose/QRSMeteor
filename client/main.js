@@ -77,16 +77,16 @@ Meteor.startup(function() {
         if (error) {
             alert('Error', error);
         } else {
-            senseConfig.SSBIAppId = IDs.SSBI;
-            senseConfig.slideGeneratorAppId = IDs.slideGenerator;
-            Session.setPersistent('SSBIAppId', IDs.SSBI);
-            Cookies.set('slideGeneratorAppId', IDs.slideGenerator);
             try {
+                senseConfig.SSBIAppId = IDs.SSBI;
+                senseConfig.slideGeneratorAppId = IDs.slideGenerator;
+                Session.setPersistent('SSBIAppId', IDs.SSBI);
+                Cookies.set('slideGeneratorAppId', IDs.slideGenerator);
                 check(senseConfig.SSBIAppId, String);
                 check(senseConfig.slideGeneratorAppId, String);
             } catch (error) {
-                var m = 'We could not retreive the app ids for the slide generator or the SSBI app';
-                sAlert.error('Apps not found: $(m)');
+                var m = 'We could not retreive the app ids for the slide generator or the SSBI app. Did you ran "initializeQlikSense:true" in the settings.json? Check the server logs, most problems arise from the wrong hostnames, or no certificates.';
+                sAlert.error('Apps not found: ', m);
                 console.error(m);
             }
         }

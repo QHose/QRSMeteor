@@ -177,31 +177,34 @@ if (Meteor.isServer) {
         headerValue: _senseConfig.headerValue, //'mydomain\\justme'
     };
 
+    try {
+        Meteor.startup(async function() {
+            console.log('------------------------------------');
+            console.log('Validate settings.json parameters');
+            console.log('------------------------------------');
+            Meteor.absolutePath = path.resolve('.').split(path.sep + '.meteor')[0];
+            console.log('Meteor tries to find the settings.json file in Meteor.absolutePath:', Meteor.absolutePath)
+            var file = path.join(Meteor.absolutePath, 'settings-development-example.json');
 
-    Meteor.startup(async function() {
-        console.log('------------------------------------');
-        console.log('Validate settings.json parameters');
-        console.log('------------------------------------');
-        Meteor.absolutePath = path.resolve('.').split(path.sep + '.meteor')[0];
-        console.log('Meteor tries to find the settings.json file in Meteor.absolutePath:', Meteor.absolutePath)
-        var file = path.join(Meteor.absolutePath, 'settings-development-example.json');
+            // READ THE FILE 
+            var exampleSettingsFile = await fs.readJson(file);
+            try {
+                validateJSON(exampleSettingsFile)
+            } catch (err) {
+                throw new Error('Meteor wants to check your settings.json with the parameters in the example settings.json in the project root. Error: Cant read the example settings definitions file (not valid JSON): ' + file);
+            }
 
-        // READ THE FILE 
-        var exampleSettingsFile = await fs.readJson(file);
-        try {
-            validateJSON(exampleSettingsFile)
-        } catch (err) {
-            throw new Error('Meteor wants to check your settings.json with the parameters in the example settings.json in the project root. Error: Cant read the example settings definitions file (not valid JSON): ' + file);
-        }
+            var keysEqual = compareKeys(Meteor.settings, exampleSettingsFile);
+            console.log('Settings file has all the keys as specified in the example json file?', keysEqual)
+            if (!keysEqual) {
+                console.error('Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor');
+                throw new Error('Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor');
+            }
+        })
 
-        var keysEqual = compareKeys(Meteor.settings, exampleSettingsFile);
-        console.log('Settings file has all the keys as specified in the example json file?', keysEqual)
-        if (!keysEqual) {
-            console.error('Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor');
-            throw new Error('Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor');
-        }
-    })
-
+    } catch (error) {
+        throw new Error(error);
+    }
 } //exit server side config
 
 export const senseConfig = _senseConfig;
