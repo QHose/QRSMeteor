@@ -30,14 +30,17 @@ import * as QSSystem from '/imports/api/server/QRSFunctionsSystemRules';
 import * as QSExtensions from '/imports/api/server/QRSFunctionsExtension';
 import * as QSCustomProps from '/imports/api/server/QRSFunctionsCustomProperties';
 
+//stop on unhandled errors
+process.on('unhandledRejection', up => { throw up })
 
-//import config for Qlik Sense QRS and Engine API
+//import config for Qlik Sense QRS and Engine API.
 import {
     senseConfig,
     authHeaders
 } from '/imports/api/config';
 import '/imports/startup/accounts-config.js';
 const path = require('path');
+import shell from 'node-powershell'
 
 Meteor.startup(function() {
     process.env.ROOT_URL = 'http://' + Meteor.settings.public.qlikSenseHost;
@@ -74,7 +77,7 @@ async function initQlikSense() {
         var QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);
         if (!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup) {
             console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
-            if (Meteor.settings.installQlikSense) {
+            if (Meteor.settings.qlikSense.installQlikSense) {
                 installQlikSense();
                 await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                            
                 QSLic.insertLicense();
@@ -117,15 +120,35 @@ async function sleep(fn, ...args) {
 var exec = require('child_process').execFile;
 var installQlikSense = function() {
     console.log("Start installation of Qlik Sense via a silent script... please wait 15 minutes to complete... (we use this is a safe assumption that is has finished before we move on). Be aware of screens popping up which request extra info...");
-    var executable = 'startSilentInstall.ps1';
-    var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
-    exec(installer, function(err, data) {
-        if (err) {
-            console.error('Installation of Qlik Sense failed, make sure you check the log file in GitHub\QRSMeteor\.automation\InstallationSoftware\log.txt', err)
-        } else {
-            console.log('installation of Qlik Sense success, reponse from the Qlik Sense installer: ' + data.toString());
-        }
+
+    let ps = new shell({
+        executionPolicy: 'Bypass',
+        noProfile: true
     });
+    var folder = Meteor.settings.qlikSense.sharedPersistanceFolder;
+    var name = Meteor.settings.qlikSense.sharedPersistanceFolderName;
+
+    ps.addCommand('Write-Host Creating a shared folder on: ' + folder);
+    ps.addCommand('New-Item ' + folder + ' –type directory');
+    // ps.addCommand('New-SmbShare –Name ' + name + ' –Path ' + folder + ' –FullAccess Everyone  ')
+
+    ps.invoke()
+        .then(output => {
+            console.log(output);
+        })
+        .catch(err => {
+            console.error('Installation of Qlik Sense failed, make sure you check the log file in GitHub\QRSMeteor\.automation\InstallationSoftware\log.txt', err)
+            ps.dispose();
+        });
+
+    // var executable = 'startSilentInstall.ps1';
+    // var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
+    // exec(installer, function(err, data) {
+    //     if (err) {
+    //     } else {
+    //         console.log('installation of Qlik Sense success, reponse from the Qlik Sense installer: ' + data.toString());
+    //     }
+    // });
 }
 
 
@@ -143,7 +166,7 @@ function removeGeneratedResources() {
         Meteor.setInterval(function() {
             console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
             Meteor.call('removeGeneratedResources', {});
-        }, 1 * 86400000); //remove all logs every 1 day
+        }, 1 * 86400000); //remove all logs/apps/streams every 1 day
     }
 }
 

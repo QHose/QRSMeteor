@@ -1,6 +1,10 @@
 {
     "adminEmails": "mbj@qlik.com",
-    "installQlikSense": true,
+    "qlikSense": {
+        "installQlikSense": true,
+        "sharedPersistanceFolder": "C:\\QlikSenseShare",
+        "sharedPersistanceFolderName": "QlikSenseShare"
+    },
     "multiTenantScenario": false,
     "public": {
         "qlikSenseHost": "QLIK-AB0Q2URN5T",
