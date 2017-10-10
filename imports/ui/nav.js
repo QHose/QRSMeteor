@@ -69,7 +69,7 @@ Template.nav.events({
                 Router.go('useCaseSelection');
                 break;
             case 'SSBI':
-                selectMenuItemInSense('LET’S DO A GOVERNED SELF SERVICE DEMO?')
+                selectMenuItemInSense('What is governed self service?')
                 break;
             case 'generation':
                 selectMenuItemInSense('Qlik Sense SaaS provisioning demo');

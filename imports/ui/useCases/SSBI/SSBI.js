@@ -24,13 +24,10 @@ var server, QMCUrl, hubUrl, sheetUrl, appUrl = '';
 Template.SSBISenseApp.helpers({
     show() {
         // console.log('SSBISenseApp helper, show iframe?: ', showIFrame());
-        return showIFrame();
+        return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
     }
 });
 
-function showIFrame() {
-    return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
-}
 
 
 Template.SSBIUsers.onCreated(function() {
@@ -58,7 +55,7 @@ Template.SSBISenseIFrame.onRendered(function() {
 Template.SSBISenseIFrame.helpers({
     appURL() {
         // console.log('SSBISenseIFrame helper: de app url is: ', Session.get('appUrl'));
-        return Session.get('appUrl');
+        return Session.get('IFrameUrl');
     },
 });
 
@@ -187,9 +184,10 @@ async function login(passport) {
         URLtoOpen += '?QlikTicket=' + ticket;
         console.log('login: the url to open is: ', URLtoOpen);
 
-        getCurrentUserLoggedInSense();
+        // getCurrentUserLoggedInSense();
         sAlert.success(passport.UserId + ' is now logged in into Qlik Sense');
-        $('.SSBI .image.' + passport.UserId).css('background', '#62AC1E');
+        Session.set('IFrameUrl', URLtoOpen);
+        // $('.SSBI .image.' + passport.UserId).css('background', '#62AC1E');
     } catch (err) {
         console.error(err);
         sAlert.error('Login error', err.message);

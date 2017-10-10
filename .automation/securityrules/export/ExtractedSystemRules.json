@@ -840,18 +840,6 @@
     "privileges": null
   },
   {
-    "id": "f72faaeb-a9f9-41b0-8a45-8ae6939b4543",
-    "category": "Security",
-    "type": "Default",
-    "name": "Stream",
-    "rule": "(resource.resourcetype = \"App\" and resource.stream.HasPrivilege(\"read\")) or ((resource.resourcetype = \"App.Object\" and resource.published =\"true\" and resource.objectType != \"app_appscript\" and resource.objectType != \"loadmodel\") and resource.app.stream.HasPrivilege(\"read\"))",
-    "resourceFilter": "App*",
-    "actions": 2,
-    "comment": "The user should see the resource if he/she has read access to the stream it is published to",
-    "disabled": true,
-    "privileges": null
-  },
-  {
     "id": "77b15caf-444c-4b00-86be-cefb5358472e",
     "category": "Security",
     "type": "Default",
@@ -860,6 +848,18 @@
     "resourceFilter": "App.Object_*",
     "actions": 1,
     "comment": "If you have read rights on an published app you should be able to create sheets, stories, bookmarks and snapshots belonging to that app",
+    "disabled": true,
+    "privileges": null
+  },
+  {
+    "id": "f72faaeb-a9f9-41b0-8a45-8ae6939b4543",
+    "category": "Security",
+    "type": "Default",
+    "name": "Stream",
+    "rule": "(resource.resourcetype = \"App\" and resource.stream.HasPrivilege(\"read\")) or ((resource.resourcetype = \"App.Object\" and resource.published =\"true\" and resource.objectType != \"app_appscript\" and resource.objectType != \"loadmodel\") and resource.app.stream.HasPrivilege(\"read\"))",
+    "resourceFilter": "App*",
+    "actions": 2,
+    "comment": "The user should see the resource if he/she has read access to the stream it is published to",
     "disabled": true,
     "privileges": null
   }

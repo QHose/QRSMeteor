@@ -56,7 +56,7 @@
 "Workshop Introduction","Video - generic introduction to APIs","https://www.youtube.com/watch?v=s7wmiS2mSXY",,"","","","","         0","0","Demo with integration.qlik.com",
 "What is an app?","Video: What is governed self service?","https://youtu.be/pQae9S8S_vQ?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours; Product Owner; Business Analyst; C-Level - non-technical",
 "What is an app?","Video: The Qlik Associative Model","https://youtu.be/gWNoyL6fZxo",,"","","","","         0","0","Introduction - 30 minutes, Business Analyst, CTO, Product Owner",
-"What is an app?","What is governed self service using Qlik Sense apps?","iframe selfService_embedded",,"","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner, Demo with integration.qlik.com",
+"What is an app?","What is governed self service?","iframe selfService_embedded",,"","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner, Demo with integration.qlik.com",
 "What is an app?","Contents of an app","contents of an app.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "What is an app?","In the hub apps are grouped per stream","web-resources to embed.png",,"","","","","         0","0","PreSales, Demo with integration.qlik.com, Technical - 2 hours",
 "What is an app?","Qlik Sense Desktop - Create Your First App and Visualization (8M)","https://youtu.be/MARjUr2dZRs",,,,,,,,,
@@ -90,9 +90,10 @@
 "Introduction to SaaS","Common OEM use case for Qlik ","An OEM customizes and integrates the original Qlik product.",,"","","","","         0","0","Demo with integration.qlik.com",
 "Introduction to SaaS","Common OEM use case for Qlik ","See an integrated example from [our partner Axis group](http://sense.axisgroup.com/extensions/MedAirEbolaCrisis/MedAirEbolaCrisis.html)",,"","","","","         0","0","Demo with integration.qlik.com",
 "Introduction to SaaS","Common OEM use case for Qlik ","axisGroup.png",,"","","","","         0","0","Demo with integration.qlik.com",
-"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Your goal is to create within a *multi-tenant* SaaS platform environment  *embedded analytics* within your core application",,"","","","","         0","0","Demo with integration.qlik.com, SaaS & Power of APIs, Technical - 2 hours",
+"What is integration.qlik.com?","Typical goals of a SaaS platform provider","*Embed analytics* within your core application",,"","","","","         0","0","Demo with integration.qlik.com, SaaS & Power of APIs, Technical - 2 hours",
 "What is integration.qlik.com?","Typical goals of a SaaS platform provider","Provide *self service analytics* to users",,"","","","","         0","0","PreSales, Demo with integration.qlik.com, SaaS & Power of APIs, Technical - 2 hours",
-"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Automated *provisioning* (provide dashboards to your customers)",,"","","","","         0","0","PreSales, Demo with integration.qlik.com, SaaS & Power of APIs, Technical - 2 hours",
+"What is integration.qlik.com?","Typical goals of a SaaS platform provider","Automated dashboard *provisioning* based on templates
+- possibly allow content creation (self service) by users.",,"","","","","         0","0","PreSales, Demo with integration.qlik.com, SaaS & Power of APIs, Technical - 2 hours",
 "What is integration.qlik.com?","History","The integration.qlik.com website is specifically designed to promote and explain the key differentiators of our *Qlik Sense APIs* via our step-by-step walk-through...",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?, SaaS & Power of APIs",
 "What is integration.qlik.com?","History","We *demonstrate a sample SaaS platform* with Qlik Sense embedded including:
 - The “look and feel” of an integrated solution
@@ -109,8 +110,7 @@
 "What is integration.qlik.com?","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Introduction - 30 minutes",
 "What is integration.qlik.com?","In the integration demo environment we created a demo for each use case","useCasesOverview.png",,"","","","","         0","0","Demo with integration.qlik.com",
 "What is integration.qlik.com?","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png",,"","","","","         0","0","Technical - 2 hours",
-"What is integration.qlik.com?","integration.qlik.com: Self service demo","governed self service app.png",,"","","","","         0","0","Demo with integration.qlik.com, SaaS & Power of APIs",
-"What is integration.qlik.com?","integration.qlik.com: Self service demo","[Lets go to integration.qlik.com](http://integration.qlik.com)",,"","","","","         0","0","Demo with integration.qlik.com, SaaS & Power of APIs",
+"What is integration.qlik.com?","integration.qlik.com: Self service demo","iframe selfService_embedded",,"","","","","         0","0","Demo with integration.qlik.com, SaaS & Power of APIs",
 "What is integration.qlik.com?","This demo simulates your SaaS platform",">So you will see your adminstration panel which controls Qlik Sense via APIs (a ""broker""), based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours",
