@@ -159,10 +159,12 @@ body {
 
 .reveal h1 {
     font-size: 1em;
+    margin-top: 20px;
 }
 
 .reveal h2 {
     font-size: 1em;
+    margin-top: 15px;
 }
 
 .reveal h3 {

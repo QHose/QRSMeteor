@@ -1493,6 +1493,40 @@ networks:
 "Integration.qlik.com docker environment","Clean old images and containers","$ docker images -a",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","$ docker container prune",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","$ docker image prune",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Setup your blank virtual machine","Make sure you open ports
+- 80
+- 81
+- 443",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Setup your blank virtual machine","Next we will install the following software
+- Github desktop (this will the latest version of our demo project)
+- Qlik Sense Server (automatically)",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Setup your blank virtual machine","For example get a blank windows 2012/2016 server on Amazon or Azure.",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Setup your blank virtual machine","Make sure you give the machine a `static IP`. Otherwise if you reboot you get a new IP and Qlik Sense won't work anymore. (Because a TLS certificate is bound to a domain name)",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Initial setup of all software","# Install Github Desktop",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Initial setup of all software","Install [Github desktop](https://services.github.com/on-demand/github-desktop/install-github-desktop), and make sure you login or create a new github account.",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Initial setup of all software","Go to  [QRSMeteor](https://github.com/QHose/QRSMeteor) and press the ""clone or download""button. Open your new project in github desktop (select yes, always open with desktop)",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Initial setup of all software","github - open in desktop.png",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Initial setup of all software","Now your local github desktop program should open and the files from the server have been copied to your local c drive. Normally in your github folder in your ""my documents"".  In my case `C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor`. We will call this the `project root`.",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Initial setup of all software","github - update your local copy from the server.png",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Configure our Meteor demo server","Download your Qlik Sense Server and put it in `C:\Qlik Sense Server.exe`. Use this exact file name!",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Configure our Meteor demo server","Go to your `project root` and copy the file `settings-development-example.json` to `settings.json`",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Configure our Meteor demo server","# Insert Qlik Sense license",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Configure our Meteor demo server","Edit your new `settings.json` file, make sure you update your
+- license details",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Configure our Meteor demo server","qrsmeteor - settings json file examples 2.png",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Configure our Meteor demo server","# Automatic (silent) installation of Qlik Sense",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Configure our Meteor demo server","Ensure Sense will automatically installed by setting `runInitialQlikSenseSetup"": true`",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Configure our Meteor demo server","qrsmeteor - how do you automatically setup qlik sense.png",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Configure our Meteor demo server","# Only if you use an existing Qlik Sense server",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Configure our Meteor demo server","Update the host references, and make sure you use a hostname for which you use a certificate. In other words, you need to export a certificate in the `QMC`, for the hostname under which Qlik Sense will be reachable for Meteor.
+- Most of the time QRSMeteor and Sense will run on the same machine. All internal communication from QRSMeteor to Sense uses the `SenseServerInternalLanIP` parameter.",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Configure our Meteor demo server","qrsmeteor - settings json file examples.png",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Configure our Meteor demo server","You don't have to update the firewall `sikka` settings, if you don't need a firewall.",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Load all modules for Meteor (Node) project","Open the `project root` in your explorer. 
+- In my case `C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor`",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Load all modules for Meteor (Node) project","Click on `install modules.bat`",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Load all modules for Meteor (Node) project","qrsmeteor - install node npm modules.png",,,,,,,,,
+"Install integration.qlik.com on a blank single windows server","Load all modules for Meteor (Node) project","This will install all software that QRSMeteor needs (our demo server which is based on Meteor which runs on NodeJS)",,,,,,,,,
 "Qlik Sense API introduction","Overview","<iframe class=""SenseEmbedFrame"" src=""/API_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Integration summary, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
