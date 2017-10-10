@@ -131,19 +131,18 @@ Template.SSBIUsers.events({
             .modal('show')
             .modal('refresh')
             .modal('refresh');
-
     },
     'click .button.hub ' () {
-        Session.set('appUrl', hubUrl);
+        Session.set('IFrameUrl', hubUrl);
     },
     'click .button.sheet ' () {
-        Session.set('appUrl', sheetUrl);
+        Session.set('IFrameUrl', sheetUrl);
     },
     'click .button.app ' () {
-        Session.set('appUrl', appUrl);
+        Session.set('IFrameUrl', appUrl);
     },
     'click .button.QMC ' () {
-        Session.set('appUrl', QMCUrl);
+        Session.set('IFrameUrl', QMCUrl);
     }
 });
 
