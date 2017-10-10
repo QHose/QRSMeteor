@@ -22,14 +22,14 @@ Template.slides.onDestroyed(function() {
 })
 
 Template.slides.onRendered(function() {
-    console.log('slides rendered');
+    console.log('slides template rendered');
     if (!Session.get('slideData')) {
         Router.go('useCaseSelection');
         return;
     }
 
     window.Reveal = Reveal;
-
+    Session.set('activeStepNr', 0);
     Tracker.afterFlush(function() {
         Reveal.initialize({
             width: window.innerWidth - 80,
@@ -48,29 +48,32 @@ Template.slides.onRendered(function() {
             previewLinks: false,
             slideNumber: true
         });
+        Reveal.addEventListener('slidechanged', function(evt) {
+            Session.set('activeStepNr', evt.indexh);
+            console.log('slidechanged active slides: evt.indexh', evt.indexh);
+        });
         Reveal.addEventListener('ready', function(event) {
             console.log('------------------------------------');
             console.log('Reveal is ready to be used');
             console.log('------------------------------------');
         });
-    })
 
 
+        Tracker.autorun(function() {
+            console.log('------------------------------------');
+            console.log('SESSION CHANGED SO RESET/GO TO FIRST SLIDE NUMBER');
+            console.log('------------------------------------');
 
-    this.autorun(function() {
-        console.log('------------------------------------');
-        console.log('SESSION CHANGED SO RESET/GO TO FIRST SLIDE NUMBER');
-        console.log('------------------------------------');
+            var test = Session.get('slideHeaders');
+            Meteor.setTimeout(function() {
+                Reveal.slide(0);
+                Reveal.addEventListener('slidechanged', function(evt) {
+                    Session.set('activeStepNr', evt.indexh);
+                    console.log('active slides: evt.indexh', evt.indexh);
+                });
+            }, 500);
 
-        var test = Session.get('slideHeaders');
-        Meteor.setTimeout(function() {
-            Reveal.slide(0);
-            Reveal.addEventListener('slidechanged', function(evt) {
-                Session.set('activeStepNr', evt.indexh);
-                console.log('active slides: evt.indexh', evt.indexh);
-            });
-        }, 100);
-
+        })
     })
 })
 

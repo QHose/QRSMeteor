@@ -145,8 +145,8 @@ export async function selectMenuItemInSense(slide) {
                 "qText": slide
             }]
         )
+        await slideApp.setChangeListener(qix)
         await slideApp.getAllSlides(qix, false);
-        // await slideApp.setChangeListener(qix)
         Router.go('slides');
     } catch (error) {
         var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS';

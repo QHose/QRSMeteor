@@ -101,7 +101,7 @@ async function setSlideContentInSession(group) {
         //get the slide content and register an event handler, so we know when Qlik Sense changed and can update the screen... with new content. Its fine if it runs in parallel
         await Promise.all([
             getAllSlides(qix, true),
-            setChangeListener(qix),
+            // setChangeListener(qix),
         ]);
 
         return qix.app;
@@ -225,6 +225,7 @@ export async function getAllSlides(qix, insertSectionBreakers = sectionBreakerCo
     }]);
     Session.set('slideData', sessionData[0].qMatrix);
     console.log('slide data', Session.get('slideData'));
+    setChangeListener(qix)
 }
 
 export async function setChangeListener(qix) {
