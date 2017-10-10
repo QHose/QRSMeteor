@@ -2,22 +2,22 @@
   "format": "web-program-pre1",
   "manifest": [
     {
-      "path": "7b7b0a9b1623d802b6338e1f13b7fe1ef96d1d02.js",
+      "path": "d0cfcb6b83b24ee5445c271dc60e86c6905c718a.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/7b7b0a9b1623d802b6338e1f13b7fe1ef96d1d02.js?meteor_js_resource=true",
-      "size": 4105828,
-      "hash": "7b7b0a9b1623d802b6338e1f13b7fe1ef96d1d02"
+      "url": "/d0cfcb6b83b24ee5445c271dc60e86c6905c718a.js?meteor_js_resource=true",
+      "size": 4094131,
+      "hash": "d0cfcb6b83b24ee5445c271dc60e86c6905c718a"
     },
     {
-      "path": "7b7b0a9b1623d802b6338e1f13b7fe1ef96d1d02.stats.json",
+      "path": "d0cfcb6b83b24ee5445c271dc60e86c6905c718a.stats.json",
       "where": "client",
       "type": "json",
       "cacheable": true,
-      "url": "/7b7b0a9b1623d802b6338e1f13b7fe1ef96d1d02.stats.json?meteor_js_resource=true",
-      "size": 51951,
-      "hash": "eca5fd31a509f28667807026d2f8eb33c25860a1"
+      "url": "/d0cfcb6b83b24ee5445c271dc60e86c6905c718a.stats.json?meteor_js_resource=true",
+      "size": 51427,
+      "hash": "9d730a40550409a9d7abd30edee5e2abd25c5538"
     },
     {
       "path": "0df66ee8702b25a49c47d9381b5e606975a83260.css",
@@ -389,11 +389,11 @@
       "hash": "71088a8b1097a929fb0e28314444cbbd6d20c884"
     },
     {
-      "path": "app/images/API flow browser to capabilities engine qrs API.png",
+      "path": "app/images/API flow browser to capabilities engine qrs api.png",
       "where": "client",
       "type": "asset",
       "cacheable": false,
-      "url": "/images/API flow browser to capabilities engine qrs API.png",
+      "url": "/images/API flow browser to capabilities engine qrs api.png",
       "size": 27009,
       "hash": "f07060f70a08f96f4c044fb02c926fe324f3d3f7"
     },
@@ -1784,6 +1784,33 @@
       "hash": "cc20ea58b7254d733beb0fb518021d1dd5b86e37"
     },
     {
+      "path": "app/images/docker - docker compose things to change.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/docker - docker compose things to change.png",
+      "size": 119976,
+      "hash": "4244c04ac400ff239c2ec50263fd39897da395d4"
+    },
+    {
+      "path": "app/images/docker - senseweb docker compose things to change.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/docker - senseweb docker compose things to change.png",
+      "size": 112885,
+      "hash": "be983594d5687ef89c2ad9373fdc8921a1ec693b"
+    },
+    {
+      "path": "app/images/docker - share your c drive.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/docker - share your c drive.png",
+      "size": 35747,
+      "hash": "33e3fc3cfcd9436dbc0dfccd1d41b5558803f03a"
+    },
+    {
       "path": "app/images/embed.png",
       "where": "client",
       "type": "asset",
@@ -2477,6 +2504,15 @@
       "hash": "857067cab7a351771e849ad6f6362d3d93aad57f"
     },
     {
+      "path": "app/images/qlik background circles.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/qlik background circles.png",
+      "size": 18372,
+      "hash": "48e9229743cc23cd659183e39fd92a201412821f"
+    },
+    {
       "path": "app/images/qlik sense embedded example.png",
       "where": "client",
       "type": "asset",
@@ -2556,6 +2592,51 @@
       "url": "/images/qps - reverse proxy architecture.png",
       "size": 300811,
       "hash": "e7ba2058fa95a01163bb208fd68797025c57780a"
+    },
+    {
+      "path": "app/images/qrsmeteor - certificate not found pem file.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/qrsmeteor - certificate not found pem file.png",
+      "size": 49537,
+      "hash": "9419d0ae5072c9fce93c4c178d0f40887f14a0bc"
+    },
+    {
+      "path": "app/images/qrsmeteor - how do you automatically setup qlik sense.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/qrsmeteor - how do you automatically setup qlik sense.png",
+      "size": 39897,
+      "hash": "04599e7dfd554304474696b8ccec4561dad091de"
+    },
+    {
+      "path": "app/images/qrsmeteor - make sure you see the app ids after startup.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/qrsmeteor - make sure you see the app ids after startup.png",
+      "size": 48484,
+      "hash": "4005ebee66cef46294160a47506a9a23b1531ed2"
+    },
+    {
+      "path": "app/images/qrsmeteor - settings json file examples 2.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/qrsmeteor - settings json file examples 2.png",
+      "size": 190733,
+      "hash": "df9b86917678f9b5a7e010a383dbba2b507efada"
+    },
+    {
+      "path": "app/images/qrsmeteor - settings json file examples.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/qrsmeteor - settings json file examples.png",
+      "size": 174881,
+      "hash": "cfe331016f63dbc6ad6b739883bfe30bcf33c464"
     },
     {
       "path": "app/images/questions.png",

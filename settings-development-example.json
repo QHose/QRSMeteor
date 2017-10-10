@@ -2,6 +2,7 @@
     "adminEmails": "mbj@qlik.com",
     "qlikSense": {
         "installQlikSense": true,
+        "installationFilePath": "C:\\Qlik Sense Server.exe",
         "sharedPersistanceFolder": "C:\\QlikSenseShare",
         "sharedPersistanceFolderName": "QlikSenseShare"
     },

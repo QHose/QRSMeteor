@@ -107,835 +107,942 @@ module1.watch(require("send"), {                                                
     send = v;                                                                                                         // 1
   }                                                                                                                   // 1
 }, 9);                                                                                                                // 1
-var SHORT_SOCKET_TIMEOUT = 5 * 1000;                                                                                  // 15
-var LONG_SOCKET_TIMEOUT = 120 * 1000;                                                                                 // 16
-var WebApp = {};                                                                                                      // 18
-var WebAppInternals = {};                                                                                             // 19
-WebAppInternals.NpmModules = {                                                                                        // 21
-  connect: {                                                                                                          // 22
-    version: Npm.require('connect/package.json').version,                                                             // 23
-    module: connect                                                                                                   // 24
-  }                                                                                                                   // 22
-};                                                                                                                    // 21
-WebApp.defaultArch = 'web.browser'; // XXX maps archs to manifests                                                    // 28
+var removeExistingSocketFile = void 0,                                                                                // 1
+    registerSocketFileCleanup = void 0;                                                                               // 1
+module1.watch(require("./socket_file.js"), {                                                                          // 1
+  removeExistingSocketFile: function (v) {                                                                            // 1
+    removeExistingSocketFile = v;                                                                                     // 1
+  },                                                                                                                  // 1
+  registerSocketFileCleanup: function (v) {                                                                           // 1
+    registerSocketFileCleanup = v;                                                                                    // 1
+  }                                                                                                                   // 1
+}, 10);                                                                                                               // 1
+var SHORT_SOCKET_TIMEOUT = 5 * 1000;                                                                                  // 19
+var LONG_SOCKET_TIMEOUT = 120 * 1000;                                                                                 // 20
+var WebApp = {};                                                                                                      // 22
+var WebAppInternals = {};                                                                                             // 23
+WebAppInternals.NpmModules = {                                                                                        // 25
+  connect: {                                                                                                          // 26
+    version: Npm.require('connect/package.json').version,                                                             // 27
+    module: connect                                                                                                   // 28
+  }                                                                                                                   // 26
+};                                                                                                                    // 25
+WebApp.defaultArch = 'web.browser'; // XXX maps archs to manifests                                                    // 32
                                                                                                                       //
-WebApp.clientPrograms = {}; // XXX maps archs to program path on filesystem                                           // 31
+WebApp.clientPrograms = {}; // XXX maps archs to program path on filesystem                                           // 35
                                                                                                                       //
-var archPath = {};                                                                                                    // 34
+var archPath = {};                                                                                                    // 38
                                                                                                                       //
-var bundledJsCssUrlRewriteHook = function (url) {                                                                     // 36
-  var bundledPrefix = __meteor_runtime_config__.ROOT_URL_PATH_PREFIX || '';                                           // 37
-  return bundledPrefix + url;                                                                                         // 39
-};                                                                                                                    // 40
+var bundledJsCssUrlRewriteHook = function (url) {                                                                     // 40
+  var bundledPrefix = __meteor_runtime_config__.ROOT_URL_PATH_PREFIX || '';                                           // 41
+  return bundledPrefix + url;                                                                                         // 43
+};                                                                                                                    // 44
                                                                                                                       //
-var sha1 = function (contents) {                                                                                      // 42
-  var hash = createHash('sha1');                                                                                      // 43
-  hash.update(contents);                                                                                              // 44
-  return hash.digest('hex');                                                                                          // 45
-};                                                                                                                    // 46
+var sha1 = function (contents) {                                                                                      // 46
+  var hash = createHash('sha1');                                                                                      // 47
+  hash.update(contents);                                                                                              // 48
+  return hash.digest('hex');                                                                                          // 49
+};                                                                                                                    // 50
                                                                                                                       //
-var readUtf8FileSync = function (filename) {                                                                          // 48
-  return Meteor.wrapAsync(readFile)(filename, 'utf8');                                                                // 49
-}; // #BrowserIdentification                                                                                          // 50
-//                                                                                                                    // 53
-// We have multiple places that want to identify the browser: the                                                     // 54
-// unsupported browser page, the appcache package, and, eventually                                                    // 55
-// delivering browser polyfills only as needed.                                                                       // 56
+var readUtf8FileSync = function (filename) {                                                                          // 52
+  return Meteor.wrapAsync(readFile)(filename, 'utf8');                                                                // 53
+}; // #BrowserIdentification                                                                                          // 54
 //                                                                                                                    // 57
-// To avoid detecting the browser in multiple places ad-hoc, we create a                                              // 58
-// Meteor "browser" object. It uses but does not expose the npm                                                       // 59
-// useragent module (we could choose a different mechanism to identify                                                // 60
-// the browser in the future if we wanted to).  The browser object                                                    // 61
-// contains                                                                                                           // 62
-//                                                                                                                    // 63
-// * `name`: the name of the browser in camel case                                                                    // 64
-// * `major`, `minor`, `patch`: integers describing the browser version                                               // 65
-//                                                                                                                    // 66
-// Also here is an early version of a Meteor `request` object, intended                                               // 67
-// to be a high-level description of the request without exposing                                                     // 68
-// details of connect's low-level `req`.  Currently it contains:                                                      // 69
+// We have multiple places that want to identify the browser: the                                                     // 58
+// unsupported browser page, the appcache package, and, eventually                                                    // 59
+// delivering browser polyfills only as needed.                                                                       // 60
+//                                                                                                                    // 61
+// To avoid detecting the browser in multiple places ad-hoc, we create a                                              // 62
+// Meteor "browser" object. It uses but does not expose the npm                                                       // 63
+// useragent module (we could choose a different mechanism to identify                                                // 64
+// the browser in the future if we wanted to).  The browser object                                                    // 65
+// contains                                                                                                           // 66
+//                                                                                                                    // 67
+// * `name`: the name of the browser in camel case                                                                    // 68
+// * `major`, `minor`, `patch`: integers describing the browser version                                               // 69
 //                                                                                                                    // 70
-// * `browser`: browser identification object described above                                                         // 71
-// * `url`: parsed url, including parsed query params                                                                 // 72
-//                                                                                                                    // 73
-// As a temporary hack there is a `categorizeRequest` function on WebApp which                                        // 74
-// converts a connect `req` to a Meteor `request`. This can go away once smart                                        // 75
-// packages such as appcache are being passed a `request` object directly when                                        // 76
-// they serve content.                                                                                                // 77
-//                                                                                                                    // 78
-// This allows `request` to be used uniformly: it is passed to the html                                               // 79
-// attributes hook, and the appcache package can use it when deciding                                                 // 80
-// whether to generate a 404 for the manifest.                                                                        // 81
+// Also here is an early version of a Meteor `request` object, intended                                               // 71
+// to be a high-level description of the request without exposing                                                     // 72
+// details of connect's low-level `req`.  Currently it contains:                                                      // 73
+//                                                                                                                    // 74
+// * `browser`: browser identification object described above                                                         // 75
+// * `url`: parsed url, including parsed query params                                                                 // 76
+//                                                                                                                    // 77
+// As a temporary hack there is a `categorizeRequest` function on WebApp which                                        // 78
+// converts a connect `req` to a Meteor `request`. This can go away once smart                                        // 79
+// packages such as appcache are being passed a `request` object directly when                                        // 80
+// they serve content.                                                                                                // 81
 //                                                                                                                    // 82
-// Real routing / server side rendering will probably refactor this                                                   // 83
-// heavily.                                                                                                           // 84
-// e.g. "Mobile Safari" => "mobileSafari"                                                                             // 87
+// This allows `request` to be used uniformly: it is passed to the html                                               // 83
+// attributes hook, and the appcache package can use it when deciding                                                 // 84
+// whether to generate a 404 for the manifest.                                                                        // 85
+//                                                                                                                    // 86
+// Real routing / server side rendering will probably refactor this                                                   // 87
+// heavily.                                                                                                           // 88
+// e.g. "Mobile Safari" => "mobileSafari"                                                                             // 91
                                                                                                                       //
                                                                                                                       //
-var camelCase = function (name) {                                                                                     // 88
-  var parts = name.split(' ');                                                                                        // 89
-  parts[0] = parts[0].toLowerCase();                                                                                  // 90
+var camelCase = function (name) {                                                                                     // 92
+  var parts = name.split(' ');                                                                                        // 93
+  parts[0] = parts[0].toLowerCase();                                                                                  // 94
                                                                                                                       //
-  for (var i = 1; i < parts.length; ++i) {                                                                            // 91
-    parts[i] = parts[i].charAt(0).toUpperCase() + parts[i].substr(1);                                                 // 92
-  }                                                                                                                   // 93
+  for (var i = 1; i < parts.length; ++i) {                                                                            // 95
+    parts[i] = parts[i].charAt(0).toUpperCase() + parts[i].substr(1);                                                 // 96
+  }                                                                                                                   // 97
                                                                                                                       //
-  return parts.join('');                                                                                              // 94
-};                                                                                                                    // 95
+  return parts.join('');                                                                                              // 98
+};                                                                                                                    // 99
                                                                                                                       //
-var identifyBrowser = function (userAgentString) {                                                                    // 97
-  var userAgent = lookupUserAgent(userAgentString);                                                                   // 98
-  return {                                                                                                            // 99
-    name: camelCase(userAgent.family),                                                                                // 100
-    major: +userAgent.major,                                                                                          // 101
-    minor: +userAgent.minor,                                                                                          // 102
-    patch: +userAgent.patch                                                                                           // 103
-  };                                                                                                                  // 99
-}; // XXX Refactor as part of implementing real routing.                                                              // 105
-                                                                                                                      //
-                                                                                                                      //
-WebAppInternals.identifyBrowser = identifyBrowser;                                                                    // 108
-                                                                                                                      //
-WebApp.categorizeRequest = function (req) {                                                                           // 110
-  return _.extend({                                                                                                   // 111
-    browser: identifyBrowser(req.headers['user-agent']),                                                              // 112
-    url: parseUrl(req.url, true)                                                                                      // 113
-  }, _.pick(req, 'dynamicHead', 'dynamicBody'));                                                                      // 111
-}; // HTML attribute hooks: functions to be called to determine any attributes to                                     // 115
-// be added to the '<html>' tag. Each function is passed a 'request' object (see                                      // 118
-// #BrowserIdentification) and should return null or object.                                                          // 119
+var identifyBrowser = function (userAgentString) {                                                                    // 101
+  var userAgent = lookupUserAgent(userAgentString);                                                                   // 102
+  return {                                                                                                            // 103
+    name: camelCase(userAgent.family),                                                                                // 104
+    major: +userAgent.major,                                                                                          // 105
+    minor: +userAgent.minor,                                                                                          // 106
+    patch: +userAgent.patch                                                                                           // 107
+  };                                                                                                                  // 103
+}; // XXX Refactor as part of implementing real routing.                                                              // 109
                                                                                                                       //
                                                                                                                       //
-var htmlAttributeHooks = [];                                                                                          // 120
+WebAppInternals.identifyBrowser = identifyBrowser;                                                                    // 112
                                                                                                                       //
-var getHtmlAttributes = function (request) {                                                                          // 121
-  var combinedAttributes = {};                                                                                        // 122
+WebApp.categorizeRequest = function (req) {                                                                           // 114
+  return _.extend({                                                                                                   // 115
+    browser: identifyBrowser(req.headers['user-agent']),                                                              // 116
+    url: parseUrl(req.url, true)                                                                                      // 117
+  }, _.pick(req, 'dynamicHead', 'dynamicBody'));                                                                      // 115
+}; // HTML attribute hooks: functions to be called to determine any attributes to                                     // 119
+// be added to the '<html>' tag. Each function is passed a 'request' object (see                                      // 122
+// #BrowserIdentification) and should return null or object.                                                          // 123
                                                                                                                       //
-  _.each(htmlAttributeHooks || [], function (hook) {                                                                  // 123
-    var attributes = hook(request);                                                                                   // 124
-    if (attributes === null) return;                                                                                  // 125
+                                                                                                                      //
+var htmlAttributeHooks = [];                                                                                          // 124
+                                                                                                                      //
+var getHtmlAttributes = function (request) {                                                                          // 125
+  var combinedAttributes = {};                                                                                        // 126
+                                                                                                                      //
+  _.each(htmlAttributeHooks || [], function (hook) {                                                                  // 127
+    var attributes = hook(request);                                                                                   // 128
+    if (attributes === null) return;                                                                                  // 129
     if ((typeof attributes === "undefined" ? "undefined" : (0, _typeof3.default)(attributes)) !== 'object') throw Error("HTML attribute hook must return null or object");
                                                                                                                       //
-    _.extend(combinedAttributes, attributes);                                                                         // 129
-  });                                                                                                                 // 130
+    _.extend(combinedAttributes, attributes);                                                                         // 133
+  });                                                                                                                 // 134
                                                                                                                       //
-  return combinedAttributes;                                                                                          // 131
-};                                                                                                                    // 132
+  return combinedAttributes;                                                                                          // 135
+};                                                                                                                    // 136
                                                                                                                       //
-WebApp.addHtmlAttributeHook = function (hook) {                                                                       // 133
-  htmlAttributeHooks.push(hook);                                                                                      // 134
-}; // Serve app HTML for this URL?                                                                                    // 135
+WebApp.addHtmlAttributeHook = function (hook) {                                                                       // 137
+  htmlAttributeHooks.push(hook);                                                                                      // 138
+}; // Serve app HTML for this URL?                                                                                    // 139
                                                                                                                       //
                                                                                                                       //
-var appUrl = function (url) {                                                                                         // 138
+var appUrl = function (url) {                                                                                         // 142
   if (url === '/favicon.ico' || url === '/robots.txt') return false; // NOTE: app.manifest is not a web standard like favicon.ico and
-  // robots.txt. It is a file name we have chosen to use for HTML5                                                    // 143
-  // appcache URLs. It is included here to prevent using an appcache                                                  // 144
-  // then removing it from poisoning an app permanently. Eventually,                                                  // 145
-  // once we have server side routing, this won't be needed as                                                        // 146
-  // unknown URLs with return a 404 automatically.                                                                    // 147
+  // robots.txt. It is a file name we have chosen to use for HTML5                                                    // 147
+  // appcache URLs. It is included here to prevent using an appcache                                                  // 148
+  // then removing it from poisoning an app permanently. Eventually,                                                  // 149
+  // once we have server side routing, this won't be needed as                                                        // 150
+  // unknown URLs with return a 404 automatically.                                                                    // 151
                                                                                                                       //
-  if (url === '/app.manifest') return false; // Avoid serving app HTML for declared routes such as /sockjs/.          // 148
+  if (url === '/app.manifest') return false; // Avoid serving app HTML for declared routes such as /sockjs/.          // 152
                                                                                                                       //
-  if (RoutePolicy.classify(url)) return false; // we currently return app HTML on all URLs by default                 // 152
+  if (RoutePolicy.classify(url)) return false; // we currently return app HTML on all URLs by default                 // 156
                                                                                                                       //
-  return true;                                                                                                        // 156
-}; // We need to calculate the client hash after all packages have loaded                                             // 157
-// to give them a chance to populate __meteor_runtime_config__.                                                       // 161
-//                                                                                                                    // 162
-// Calculating the hash during startup means that packages can only                                                   // 163
-// populate __meteor_runtime_config__ during load, not during startup.                                                // 164
-//                                                                                                                    // 165
-// Calculating instead it at the beginning of main after all startup                                                  // 166
-// hooks had run would allow packages to also populate                                                                // 167
-// __meteor_runtime_config__ during startup, but that's too late for                                                  // 168
-// autoupdate because it needs to have the client hash at startup to                                                  // 169
-// insert the auto update version itself into                                                                         // 170
-// __meteor_runtime_config__ to get it to the client.                                                                 // 171
-//                                                                                                                    // 172
-// An alternative would be to give autoupdate a "post-start,                                                          // 173
-// pre-listen" hook to allow it to insert the auto update version at                                                  // 174
-// the right moment.                                                                                                  // 175
+  return true;                                                                                                        // 160
+}; // We need to calculate the client hash after all packages have loaded                                             // 161
+// to give them a chance to populate __meteor_runtime_config__.                                                       // 165
+//                                                                                                                    // 166
+// Calculating the hash during startup means that packages can only                                                   // 167
+// populate __meteor_runtime_config__ during load, not during startup.                                                // 168
+//                                                                                                                    // 169
+// Calculating instead it at the beginning of main after all startup                                                  // 170
+// hooks had run would allow packages to also populate                                                                // 171
+// __meteor_runtime_config__ during startup, but that's too late for                                                  // 172
+// autoupdate because it needs to have the client hash at startup to                                                  // 173
+// insert the auto update version itself into                                                                         // 174
+// __meteor_runtime_config__ to get it to the client.                                                                 // 175
+//                                                                                                                    // 176
+// An alternative would be to give autoupdate a "post-start,                                                          // 177
+// pre-listen" hook to allow it to insert the auto update version at                                                  // 178
+// the right moment.                                                                                                  // 179
                                                                                                                       //
                                                                                                                       //
-Meteor.startup(function () {                                                                                          // 177
-  var calculateClientHash = WebAppHashing.calculateClientHash;                                                        // 178
+Meteor.startup(function () {                                                                                          // 181
+  var calculateClientHash = WebAppHashing.calculateClientHash;                                                        // 182
                                                                                                                       //
-  WebApp.clientHash = function (archName) {                                                                           // 179
-    archName = archName || WebApp.defaultArch;                                                                        // 180
-    return calculateClientHash(WebApp.clientPrograms[archName].manifest);                                             // 181
-  };                                                                                                                  // 182
+  WebApp.clientHash = function (archName) {                                                                           // 183
+    archName = archName || WebApp.defaultArch;                                                                        // 184
+    return calculateClientHash(WebApp.clientPrograms[archName].manifest);                                             // 185
+  };                                                                                                                  // 186
                                                                                                                       //
-  WebApp.calculateClientHashRefreshable = function (archName) {                                                       // 184
-    archName = archName || WebApp.defaultArch;                                                                        // 185
-    return calculateClientHash(WebApp.clientPrograms[archName].manifest, function (name) {                            // 186
-      return name === "css";                                                                                          // 188
-    });                                                                                                               // 189
-  };                                                                                                                  // 190
+  WebApp.calculateClientHashRefreshable = function (archName) {                                                       // 188
+    archName = archName || WebApp.defaultArch;                                                                        // 189
+    return calculateClientHash(WebApp.clientPrograms[archName].manifest, function (name) {                            // 190
+      return name === "css";                                                                                          // 192
+    });                                                                                                               // 193
+  };                                                                                                                  // 194
                                                                                                                       //
-  WebApp.calculateClientHashNonRefreshable = function (archName) {                                                    // 191
-    archName = archName || WebApp.defaultArch;                                                                        // 192
-    return calculateClientHash(WebApp.clientPrograms[archName].manifest, function (name) {                            // 193
-      return name !== "css";                                                                                          // 195
-    });                                                                                                               // 196
-  };                                                                                                                  // 197
+  WebApp.calculateClientHashNonRefreshable = function (archName) {                                                    // 195
+    archName = archName || WebApp.defaultArch;                                                                        // 196
+    return calculateClientHash(WebApp.clientPrograms[archName].manifest, function (name) {                            // 197
+      return name !== "css";                                                                                          // 199
+    });                                                                                                               // 200
+  };                                                                                                                  // 201
                                                                                                                       //
-  WebApp.calculateClientHashCordova = function () {                                                                   // 198
-    var archName = 'web.cordova';                                                                                     // 199
-    if (!WebApp.clientPrograms[archName]) return 'none';                                                              // 200
+  WebApp.calculateClientHashCordova = function () {                                                                   // 202
+    var archName = 'web.cordova';                                                                                     // 203
+    if (!WebApp.clientPrograms[archName]) return 'none';                                                              // 204
     return calculateClientHash(WebApp.clientPrograms[archName].manifest, null, _.pick(__meteor_runtime_config__, 'PUBLIC_SETTINGS'));
-  };                                                                                                                  // 206
-}); // When we have a request pending, we want the socket timeout to be long, to                                      // 207
-// give ourselves a while to serve it, and to allow sockjs long polls to                                              // 212
-// complete.  On the other hand, we want to close idle sockets relatively                                             // 213
-// quickly, so that we can shut down relatively promptly but cleanly, without                                         // 214
-// cutting off anyone's response.                                                                                     // 215
+  };                                                                                                                  // 210
+}); // When we have a request pending, we want the socket timeout to be long, to                                      // 211
+// give ourselves a while to serve it, and to allow sockjs long polls to                                              // 216
+// complete.  On the other hand, we want to close idle sockets relatively                                             // 217
+// quickly, so that we can shut down relatively promptly but cleanly, without                                         // 218
+// cutting off anyone's response.                                                                                     // 219
                                                                                                                       //
-WebApp._timeoutAdjustmentRequestCallback = function (req, res) {                                                      // 216
-  // this is really just req.socket.setTimeout(LONG_SOCKET_TIMEOUT);                                                  // 217
+WebApp._timeoutAdjustmentRequestCallback = function (req, res) {                                                      // 220
+  // this is really just req.socket.setTimeout(LONG_SOCKET_TIMEOUT);                                                  // 221
   req.setTimeout(LONG_SOCKET_TIMEOUT); // Insert our new finish listener to run BEFORE the existing one which removes
-  // the response from the socket.                                                                                    // 220
+  // the response from the socket.                                                                                    // 224
                                                                                                                       //
-  var finishListeners = res.listeners('finish'); // XXX Apparently in Node 0.12 this event was called 'prefinish'.    // 221
-  // https://github.com/joyent/node/commit/7c9b6070                                                                   // 223
-  // But it has switched back to 'finish' in Node v4:                                                                 // 224
-  // https://github.com/nodejs/node/pull/1411                                                                         // 225
+  var finishListeners = res.listeners('finish'); // XXX Apparently in Node 0.12 this event was called 'prefinish'.    // 225
+  // https://github.com/joyent/node/commit/7c9b6070                                                                   // 227
+  // But it has switched back to 'finish' in Node v4:                                                                 // 228
+  // https://github.com/nodejs/node/pull/1411                                                                         // 229
                                                                                                                       //
-  res.removeAllListeners('finish');                                                                                   // 226
-  res.on('finish', function () {                                                                                      // 227
-    res.setTimeout(SHORT_SOCKET_TIMEOUT);                                                                             // 228
-  });                                                                                                                 // 229
+  res.removeAllListeners('finish');                                                                                   // 230
+  res.on('finish', function () {                                                                                      // 231
+    res.setTimeout(SHORT_SOCKET_TIMEOUT);                                                                             // 232
+  });                                                                                                                 // 233
                                                                                                                       //
-  _.each(finishListeners, function (l) {                                                                              // 230
-    res.on('finish', l);                                                                                              // 230
-  });                                                                                                                 // 230
-}; // Will be updated by main before we listen.                                                                       // 231
-// Map from client arch to boilerplate object.                                                                        // 235
-// Boilerplate object has:                                                                                            // 236
-//   - func: XXX                                                                                                      // 237
-//   - baseData: XXX                                                                                                  // 238
-                                                                                                                      //
-                                                                                                                      //
-var boilerplateByArch = {}; // Register a callback function that can selectively modify boilerplate                   // 239
-// data given arguments (request, data, arch). The key should be a unique                                             // 242
-// identifier, to prevent accumulating duplicate callbacks from the same                                              // 243
-// call site over time. Callbacks will be called in the order they were                                               // 244
-// registered. A callback should return false if it did not make any                                                  // 245
-// changes affecting the boilerplate. Passing null deletes the callback.                                              // 246
-// Any previous callback registered for this key will be returned.                                                    // 247
-                                                                                                                      //
-var boilerplateDataCallbacks = Object.create(null);                                                                   // 248
-                                                                                                                      //
-WebAppInternals.registerBoilerplateDataCallback = function (key, callback) {                                          // 249
-  var previousCallback = boilerplateDataCallbacks[key];                                                               // 250
-                                                                                                                      //
-  if (typeof callback === "function") {                                                                               // 252
-    boilerplateDataCallbacks[key] = callback;                                                                         // 253
-  } else {                                                                                                            // 254
-    assert.strictEqual(callback, null);                                                                               // 255
-    delete boilerplateDataCallbacks[key];                                                                             // 256
-  } // Return the previous callback in case the new callback needs to call                                            // 257
-  // it; for example, when the new callback is a wrapper for the old.                                                 // 260
+  _.each(finishListeners, function (l) {                                                                              // 234
+    res.on('finish', l);                                                                                              // 234
+  });                                                                                                                 // 234
+}; // Will be updated by main before we listen.                                                                       // 235
+// Map from client arch to boilerplate object.                                                                        // 239
+// Boilerplate object has:                                                                                            // 240
+//   - func: XXX                                                                                                      // 241
+//   - baseData: XXX                                                                                                  // 242
                                                                                                                       //
                                                                                                                       //
-  return previousCallback || null;                                                                                    // 261
-}; // Given a request (as returned from `categorizeRequest`), return the                                              // 262
-// boilerplate HTML to serve for that request.                                                                        // 265
-//                                                                                                                    // 266
-// If a previous connect middleware has rendered content for the head or body,                                        // 267
-// returns the boilerplate with that content patched in otherwise                                                     // 268
-// memoizes on HTML attributes (used by, eg, appcache) and whether inline                                             // 269
-// scripts are currently allowed.                                                                                     // 270
-// XXX so far this function is always called with arch === 'web.browser'                                              // 271
+var boilerplateByArch = {}; // Register a callback function that can selectively modify boilerplate                   // 243
+// data given arguments (request, data, arch). The key should be a unique                                             // 246
+// identifier, to prevent accumulating duplicate callbacks from the same                                              // 247
+// call site over time. Callbacks will be called in the order they were                                               // 248
+// registered. A callback should return false if it did not make any                                                  // 249
+// changes affecting the boilerplate. Passing null deletes the callback.                                              // 250
+// Any previous callback registered for this key will be returned.                                                    // 251
+                                                                                                                      //
+var boilerplateDataCallbacks = Object.create(null);                                                                   // 252
+                                                                                                                      //
+WebAppInternals.registerBoilerplateDataCallback = function (key, callback) {                                          // 253
+  var previousCallback = boilerplateDataCallbacks[key];                                                               // 254
+                                                                                                                      //
+  if (typeof callback === "function") {                                                                               // 256
+    boilerplateDataCallbacks[key] = callback;                                                                         // 257
+  } else {                                                                                                            // 258
+    assert.strictEqual(callback, null);                                                                               // 259
+    delete boilerplateDataCallbacks[key];                                                                             // 260
+  } // Return the previous callback in case the new callback needs to call                                            // 261
+  // it; for example, when the new callback is a wrapper for the old.                                                 // 264
                                                                                                                       //
                                                                                                                       //
-var memoizedBoilerplate = {};                                                                                         // 272
-                                                                                                                      //
-function getBoilerplate(request, arch) {                                                                              // 274
-  return getBoilerplateAsync(request, arch).await();                                                                  // 275
-}                                                                                                                     // 276
-                                                                                                                      //
-function getBoilerplateAsync(request, arch) {                                                                         // 278
-  var boilerplate = boilerplateByArch[arch];                                                                          // 279
-  var data = Object.assign({}, boilerplate.baseData, {                                                                // 280
-    htmlAttributes: getHtmlAttributes(request)                                                                        // 281
-  }, _.pick(request, "dynamicHead", "dynamicBody"));                                                                  // 280
-  var madeChanges = false;                                                                                            // 284
-  var promise = Promise.resolve();                                                                                    // 285
-  Object.keys(boilerplateDataCallbacks).forEach(function (key) {                                                      // 287
-    promise = promise.then(function () {                                                                              // 288
-      var callback = boilerplateDataCallbacks[key];                                                                   // 289
-      return callback(request, data, arch);                                                                           // 290
-    }).then(function (result) {                                                                                       // 291
-      // Callbacks should return false if they did not make any changes.                                              // 292
-      if (result !== false) {                                                                                         // 293
-        madeChanges = true;                                                                                           // 294
-      }                                                                                                               // 295
-    });                                                                                                               // 296
-  });                                                                                                                 // 297
-  return promise.then(function () {                                                                                   // 299
-    var useMemoized = !(data.dynamicHead || data.dynamicBody || madeChanges);                                         // 300
-                                                                                                                      //
-    if (!useMemoized) {                                                                                               // 306
-      return boilerplate.toHTML(data);                                                                                // 307
-    } // The only thing that changes from request to request (unless extra                                            // 308
-    // content is added to the head or body, or boilerplateDataCallbacks                                              // 311
-    // modified the data) are the HTML attributes (used by, eg, appcache)                                             // 312
-    // and whether inline scripts are allowed, so memoize based on that.                                              // 313
+  return previousCallback || null;                                                                                    // 265
+}; // Given a request (as returned from `categorizeRequest`), return the                                              // 266
+// boilerplate HTML to serve for that request.                                                                        // 269
+//                                                                                                                    // 270
+// If a previous connect middleware has rendered content for the head or body,                                        // 271
+// returns the boilerplate with that content patched in otherwise                                                     // 272
+// memoizes on HTML attributes (used by, eg, appcache) and whether inline                                             // 273
+// scripts are currently allowed.                                                                                     // 274
+// XXX so far this function is always called with arch === 'web.browser'                                              // 275
                                                                                                                       //
                                                                                                                       //
-    var memHash = JSON.stringify({                                                                                    // 314
-      inlineScriptsAllowed: inlineScriptsAllowed,                                                                     // 315
-      htmlAttributes: data.htmlAttributes,                                                                            // 316
-      arch: arch                                                                                                      // 317
-    });                                                                                                               // 314
+var memoizedBoilerplate = {};                                                                                         // 276
                                                                                                                       //
-    if (!memoizedBoilerplate[memHash]) {                                                                              // 320
-      memoizedBoilerplate[memHash] = boilerplateByArch[arch].toHTML(data);                                            // 321
-    }                                                                                                                 // 323
+function getBoilerplate(request, arch) {                                                                              // 278
+  return getBoilerplateAsync(request, arch).await();                                                                  // 279
+}                                                                                                                     // 280
                                                                                                                       //
-    return memoizedBoilerplate[memHash];                                                                              // 325
-  });                                                                                                                 // 326
-}                                                                                                                     // 327
+function getBoilerplateAsync(request, arch) {                                                                         // 282
+  var boilerplate = boilerplateByArch[arch];                                                                          // 283
+  var data = Object.assign({}, boilerplate.baseData, {                                                                // 284
+    htmlAttributes: getHtmlAttributes(request)                                                                        // 285
+  }, _.pick(request, "dynamicHead", "dynamicBody"));                                                                  // 284
+  var madeChanges = false;                                                                                            // 288
+  var promise = Promise.resolve();                                                                                    // 289
+  Object.keys(boilerplateDataCallbacks).forEach(function (key) {                                                      // 291
+    promise = promise.then(function () {                                                                              // 292
+      var callback = boilerplateDataCallbacks[key];                                                                   // 293
+      return callback(request, data, arch);                                                                           // 294
+    }).then(function (result) {                                                                                       // 295
+      // Callbacks should return false if they did not make any changes.                                              // 296
+      if (result !== false) {                                                                                         // 297
+        madeChanges = true;                                                                                           // 298
+      }                                                                                                               // 299
+    });                                                                                                               // 300
+  });                                                                                                                 // 301
+  return promise.then(function () {                                                                                   // 303
+    var useMemoized = !(data.dynamicHead || data.dynamicBody || madeChanges);                                         // 304
                                                                                                                       //
-WebAppInternals.generateBoilerplateInstance = function (arch, manifest, additionalOptions) {                          // 329
-  additionalOptions = additionalOptions || {};                                                                        // 332
-                                                                                                                      //
-  var runtimeConfig = _.extend(_.clone(__meteor_runtime_config__), additionalOptions.runtimeConfigOverrides || {});   // 334
-                                                                                                                      //
-  return new Boilerplate(arch, manifest, _.extend({                                                                   // 338
-    pathMapper: function (itemPath) {                                                                                 // 340
-      return pathJoin(archPath[arch], itemPath);                                                                      // 341
-    },                                                                                                                // 341
-    baseDataExtension: {                                                                                              // 342
-      additionalStaticJs: _.map(additionalStaticJs || [], function (contents, pathname) {                             // 343
-        return {                                                                                                      // 346
-          pathname: pathname,                                                                                         // 347
-          contents: contents                                                                                          // 348
-        };                                                                                                            // 346
-      }),                                                                                                             // 350
-      // Convert to a JSON string, then get rid of most weird characters, then                                        // 352
-      // wrap in double quotes. (The outermost JSON.stringify really ought to                                         // 353
-      // just be "wrap in double quotes" but we use it to be safe.) This might                                        // 354
-      // end up inside a <script> tag so we need to be careful to not include                                         // 355
-      // "</script>", but normal {{spacebars}} escaping escapes too much! See                                         // 356
-      // https://github.com/meteor/meteor/issues/3730                                                                 // 357
-      meteorRuntimeConfig: JSON.stringify(encodeURIComponent(JSON.stringify(runtimeConfig))),                         // 358
-      rootUrlPathPrefix: __meteor_runtime_config__.ROOT_URL_PATH_PREFIX || '',                                        // 360
-      bundledJsCssUrlRewriteHook: bundledJsCssUrlRewriteHook,                                                         // 361
-      inlineScriptsAllowed: WebAppInternals.inlineScriptsAllowed(),                                                   // 362
-      inline: additionalOptions.inline                                                                                // 363
-    }                                                                                                                 // 342
-  }, additionalOptions));                                                                                             // 339
-}; // A mapping from url path to "info". Where "info" has the following fields:                                       // 367
-// - type: the type of file to be served                                                                              // 370
-// - cacheable: optionally, whether the file should be cached or not                                                  // 371
-// - sourceMapUrl: optionally, the url of the source map                                                              // 372
-//                                                                                                                    // 373
-// Info also contains one of the following:                                                                           // 374
-// - content: the stringified content that should be served at this path                                              // 375
-// - absolutePath: the absolute path on disk to the file                                                              // 376
+    if (!useMemoized) {                                                                                               // 310
+      return boilerplate.toHTML(data);                                                                                // 311
+    } // The only thing that changes from request to request (unless extra                                            // 312
+    // content is added to the head or body, or boilerplateDataCallbacks                                              // 315
+    // modified the data) are the HTML attributes (used by, eg, appcache)                                             // 316
+    // and whether inline scripts are allowed, so memoize based on that.                                              // 317
                                                                                                                       //
                                                                                                                       //
-var staticFiles; // Serve static files from the manifest or added with                                                // 378
-// `addStaticJs`. Exported for tests.                                                                                 // 381
+    var memHash = JSON.stringify({                                                                                    // 318
+      inlineScriptsAllowed: inlineScriptsAllowed,                                                                     // 319
+      htmlAttributes: data.htmlAttributes,                                                                            // 320
+      arch: arch                                                                                                      // 321
+    });                                                                                                               // 318
                                                                                                                       //
-WebAppInternals.staticFilesMiddleware = function (staticFiles, req, res, next) {                                      // 382
-  if ('GET' != req.method && 'HEAD' != req.method && 'OPTIONS' != req.method) {                                       // 383
-    next();                                                                                                           // 384
-    return;                                                                                                           // 385
-  }                                                                                                                   // 386
+    if (!memoizedBoilerplate[memHash]) {                                                                              // 324
+      memoizedBoilerplate[memHash] = boilerplateByArch[arch].toHTML(data);                                            // 325
+    }                                                                                                                 // 327
                                                                                                                       //
-  var pathname = parseRequest(req).pathname;                                                                          // 387
+    return memoizedBoilerplate[memHash];                                                                              // 329
+  });                                                                                                                 // 330
+}                                                                                                                     // 331
                                                                                                                       //
-  try {                                                                                                               // 388
-    pathname = decodeURIComponent(pathname);                                                                          // 389
-  } catch (e) {                                                                                                       // 390
-    next();                                                                                                           // 391
-    return;                                                                                                           // 392
-  }                                                                                                                   // 393
+WebAppInternals.generateBoilerplateInstance = function (arch, manifest, additionalOptions) {                          // 333
+  additionalOptions = additionalOptions || {};                                                                        // 336
                                                                                                                       //
-  var serveStaticJs = function (s) {                                                                                  // 395
-    res.writeHead(200, {                                                                                              // 396
-      'Content-type': 'application/javascript; charset=UTF-8'                                                         // 397
-    });                                                                                                               // 396
-    res.write(s);                                                                                                     // 399
-    res.end();                                                                                                        // 400
-  };                                                                                                                  // 401
+  var runtimeConfig = _.extend(_.clone(__meteor_runtime_config__), additionalOptions.runtimeConfigOverrides || {});   // 338
                                                                                                                       //
-  if (pathname === "/meteor_runtime_config.js" && !WebAppInternals.inlineScriptsAllowed()) {                          // 403
-    serveStaticJs("__meteor_runtime_config__ = " + JSON.stringify(__meteor_runtime_config__) + ";");                  // 405
-    return;                                                                                                           // 407
-  } else if (_.has(additionalStaticJs, pathname) && !WebAppInternals.inlineScriptsAllowed()) {                        // 408
-    serveStaticJs(additionalStaticJs[pathname]);                                                                      // 410
+  return new Boilerplate(arch, manifest, _.extend({                                                                   // 342
+    pathMapper: function (itemPath) {                                                                                 // 344
+      return pathJoin(archPath[arch], itemPath);                                                                      // 345
+    },                                                                                                                // 345
+    baseDataExtension: {                                                                                              // 346
+      additionalStaticJs: _.map(additionalStaticJs || [], function (contents, pathname) {                             // 347
+        return {                                                                                                      // 350
+          pathname: pathname,                                                                                         // 351
+          contents: contents                                                                                          // 352
+        };                                                                                                            // 350
+      }),                                                                                                             // 354
+      // Convert to a JSON string, then get rid of most weird characters, then                                        // 356
+      // wrap in double quotes. (The outermost JSON.stringify really ought to                                         // 357
+      // just be "wrap in double quotes" but we use it to be safe.) This might                                        // 358
+      // end up inside a <script> tag so we need to be careful to not include                                         // 359
+      // "</script>", but normal {{spacebars}} escaping escapes too much! See                                         // 360
+      // https://github.com/meteor/meteor/issues/3730                                                                 // 361
+      meteorRuntimeConfig: JSON.stringify(encodeURIComponent(JSON.stringify(runtimeConfig))),                         // 362
+      rootUrlPathPrefix: __meteor_runtime_config__.ROOT_URL_PATH_PREFIX || '',                                        // 364
+      bundledJsCssUrlRewriteHook: bundledJsCssUrlRewriteHook,                                                         // 365
+      inlineScriptsAllowed: WebAppInternals.inlineScriptsAllowed(),                                                   // 366
+      inline: additionalOptions.inline                                                                                // 367
+    }                                                                                                                 // 346
+  }, additionalOptions));                                                                                             // 343
+}; // A mapping from url path to "info". Where "info" has the following fields:                                       // 371
+// - type: the type of file to be served                                                                              // 374
+// - cacheable: optionally, whether the file should be cached or not                                                  // 375
+// - sourceMapUrl: optionally, the url of the source map                                                              // 376
+//                                                                                                                    // 377
+// Info also contains one of the following:                                                                           // 378
+// - content: the stringified content that should be served at this path                                              // 379
+// - absolutePath: the absolute path on disk to the file                                                              // 380
+                                                                                                                      //
+                                                                                                                      //
+var staticFiles; // Serve static files from the manifest or added with                                                // 382
+// `addStaticJs`. Exported for tests.                                                                                 // 385
+                                                                                                                      //
+WebAppInternals.staticFilesMiddleware = function (staticFiles, req, res, next) {                                      // 386
+  if ('GET' != req.method && 'HEAD' != req.method && 'OPTIONS' != req.method) {                                       // 387
+    next();                                                                                                           // 388
+    return;                                                                                                           // 389
+  }                                                                                                                   // 390
+                                                                                                                      //
+  var pathname = parseRequest(req).pathname;                                                                          // 391
+                                                                                                                      //
+  try {                                                                                                               // 392
+    pathname = decodeURIComponent(pathname);                                                                          // 393
+  } catch (e) {                                                                                                       // 394
+    next();                                                                                                           // 395
+    return;                                                                                                           // 396
+  }                                                                                                                   // 397
+                                                                                                                      //
+  var serveStaticJs = function (s) {                                                                                  // 399
+    res.writeHead(200, {                                                                                              // 400
+      'Content-type': 'application/javascript; charset=UTF-8'                                                         // 401
+    });                                                                                                               // 400
+    res.write(s);                                                                                                     // 403
+    res.end();                                                                                                        // 404
+  };                                                                                                                  // 405
+                                                                                                                      //
+  if (pathname === "/meteor_runtime_config.js" && !WebAppInternals.inlineScriptsAllowed()) {                          // 407
+    serveStaticJs("__meteor_runtime_config__ = " + JSON.stringify(__meteor_runtime_config__) + ";");                  // 409
     return;                                                                                                           // 411
-  }                                                                                                                   // 412
+  } else if (_.has(additionalStaticJs, pathname) && !WebAppInternals.inlineScriptsAllowed()) {                        // 412
+    serveStaticJs(additionalStaticJs[pathname]);                                                                      // 414
+    return;                                                                                                           // 415
+  }                                                                                                                   // 416
                                                                                                                       //
-  if (!_.has(staticFiles, pathname)) {                                                                                // 414
-    next();                                                                                                           // 415
-    return;                                                                                                           // 416
-  } // We don't need to call pause because, unlike 'static', once we call into                                        // 417
-  // 'send' and yield to the event loop, we never call another handler with                                           // 420
-  // 'next'.                                                                                                          // 421
+  if (!_.has(staticFiles, pathname)) {                                                                                // 418
+    next();                                                                                                           // 419
+    return;                                                                                                           // 420
+  } // We don't need to call pause because, unlike 'static', once we call into                                        // 421
+  // 'send' and yield to the event loop, we never call another handler with                                           // 424
+  // 'next'.                                                                                                          // 425
                                                                                                                       //
                                                                                                                       //
-  var info = staticFiles[pathname]; // Cacheable files are files that should never change. Typically                  // 423
-  // named by their hash (eg meteor bundled js and css files).                                                        // 426
-  // We cache them ~forever (1yr).                                                                                    // 427
+  var info = staticFiles[pathname]; // Cacheable files are files that should never change. Typically                  // 427
+  // named by their hash (eg meteor bundled js and css files).                                                        // 430
+  // We cache them ~forever (1yr).                                                                                    // 431
                                                                                                                       //
   var maxAge = info.cacheable ? 1000 * 60 * 60 * 24 * 365 : 0; // Set the X-SourceMap header, which current Chrome, FireFox, and Safari
-  // understand.  (The SourceMap header is slightly more spec-correct but FF                                          // 433
-  // doesn't understand it.)                                                                                          // 434
-  //                                                                                                                  // 435
-  // You may also need to enable source maps in Chrome: open dev tools, click                                         // 436
-  // the gear in the bottom right corner, and select "enable source maps".                                            // 437
+  // understand.  (The SourceMap header is slightly more spec-correct but FF                                          // 437
+  // doesn't understand it.)                                                                                          // 438
+  //                                                                                                                  // 439
+  // You may also need to enable source maps in Chrome: open dev tools, click                                         // 440
+  // the gear in the bottom right corner, and select "enable source maps".                                            // 441
                                                                                                                       //
-  if (info.sourceMapUrl) {                                                                                            // 438
-    res.setHeader('X-SourceMap', __meteor_runtime_config__.ROOT_URL_PATH_PREFIX + info.sourceMapUrl);                 // 439
-  }                                                                                                                   // 442
+  if (info.sourceMapUrl) {                                                                                            // 442
+    res.setHeader('X-SourceMap', __meteor_runtime_config__.ROOT_URL_PATH_PREFIX + info.sourceMapUrl);                 // 443
+  }                                                                                                                   // 446
                                                                                                                       //
-  if (info.type === "js" || info.type === "dynamic js") {                                                             // 444
-    res.setHeader("Content-Type", "application/javascript; charset=UTF-8");                                           // 446
-  } else if (info.type === "css") {                                                                                   // 447
-    res.setHeader("Content-Type", "text/css; charset=UTF-8");                                                         // 448
-  } else if (info.type === "json") {                                                                                  // 449
-    res.setHeader("Content-Type", "application/json; charset=UTF-8");                                                 // 450
-  }                                                                                                                   // 451
-                                                                                                                      //
-  if (info.hash) {                                                                                                    // 453
-    res.setHeader('ETag', '"' + info.hash + '"');                                                                     // 454
+  if (info.type === "js" || info.type === "dynamic js") {                                                             // 448
+    res.setHeader("Content-Type", "application/javascript; charset=UTF-8");                                           // 450
+  } else if (info.type === "css") {                                                                                   // 451
+    res.setHeader("Content-Type", "text/css; charset=UTF-8");                                                         // 452
+  } else if (info.type === "json") {                                                                                  // 453
+    res.setHeader("Content-Type", "application/json; charset=UTF-8");                                                 // 454
   }                                                                                                                   // 455
                                                                                                                       //
-  if (info.content) {                                                                                                 // 457
-    res.write(info.content);                                                                                          // 458
-    res.end();                                                                                                        // 459
-  } else {                                                                                                            // 460
-    send(req, info.absolutePath, {                                                                                    // 461
-      maxage: maxAge,                                                                                                 // 462
-      dotfiles: 'allow',                                                                                              // 463
-      // if we specified a dotfile in the manifest, serve it                                                          // 463
-      lastModified: false // don't set last-modified based on the file date                                           // 464
+  if (info.hash) {                                                                                                    // 457
+    res.setHeader('ETag', '"' + info.hash + '"');                                                                     // 458
+  }                                                                                                                   // 459
                                                                                                                       //
-    }).on('error', function (err) {                                                                                   // 461
-      Log.error("Error serving static file " + err);                                                                  // 466
-      res.writeHead(500);                                                                                             // 467
-      res.end();                                                                                                      // 468
-    }).on('directory', function () {                                                                                  // 469
-      Log.error("Unexpected directory " + info.absolutePath);                                                         // 471
-      res.writeHead(500);                                                                                             // 472
-      res.end();                                                                                                      // 473
-    }).pipe(res);                                                                                                     // 474
-  }                                                                                                                   // 476
-};                                                                                                                    // 477
+  if (info.content) {                                                                                                 // 461
+    res.write(info.content);                                                                                          // 462
+    res.end();                                                                                                        // 463
+  } else {                                                                                                            // 464
+    send(req, info.absolutePath, {                                                                                    // 465
+      maxage: maxAge,                                                                                                 // 466
+      dotfiles: 'allow',                                                                                              // 467
+      // if we specified a dotfile in the manifest, serve it                                                          // 467
+      lastModified: false // don't set last-modified based on the file date                                           // 468
                                                                                                                       //
-var getUrlPrefixForArch = function (arch) {                                                                           // 479
-  // XXX we rely on the fact that arch names don't contain slashes                                                    // 480
-  // in that case we would need to uri escape it                                                                      // 481
-  // We add '__' to the beginning of non-standard archs to "scope" the url                                            // 483
-  // to Meteor internals.                                                                                             // 484
-  return arch === WebApp.defaultArch ? '' : '/' + '__' + arch.replace(/^web\./, '');                                  // 485
-}; // parse port to see if its a Windows Server style named pipe. If so, return as-is (String), otherwise return as Int
+    }).on('error', function (err) {                                                                                   // 465
+      Log.error("Error serving static file " + err);                                                                  // 470
+      res.writeHead(500);                                                                                             // 471
+      res.end();                                                                                                      // 472
+    }).on('directory', function () {                                                                                  // 473
+      Log.error("Unexpected directory " + info.absolutePath);                                                         // 475
+      res.writeHead(500);                                                                                             // 476
+      res.end();                                                                                                      // 477
+    }).pipe(res);                                                                                                     // 478
+  }                                                                                                                   // 480
+};                                                                                                                    // 481
+                                                                                                                      //
+var getUrlPrefixForArch = function (arch) {                                                                           // 483
+  // XXX we rely on the fact that arch names don't contain slashes                                                    // 484
+  // in that case we would need to uri escape it                                                                      // 485
+  // We add '__' to the beginning of non-standard archs to "scope" the url                                            // 487
+  // to Meteor internals.                                                                                             // 488
+  return arch === WebApp.defaultArch ? '' : '/' + '__' + arch.replace(/^web\./, '');                                  // 489
+}; // Parse the passed in port value. Return the port as-is if it's a String                                          // 491
+// (e.g. a Windows Server style named pipe), otherwise return the port as an                                          // 494
+// integer.                                                                                                           // 495
+//                                                                                                                    // 496
+// DEPRECATED: Direct use of this function is not recommended; it is no                                               // 497
+// longer used internally, and will be removed in a future release.                                                   // 498
                                                                                                                       //
                                                                                                                       //
-WebAppInternals.parsePort = function (port) {                                                                         // 490
-  if (/\\\\?.+\\pipe\\?.+/.test(port)) {                                                                              // 491
-    return port;                                                                                                      // 492
-  }                                                                                                                   // 493
+WebAppInternals.parsePort = function (port) {                                                                         // 499
+  var parsedPort = parseInt(port);                                                                                    // 500
                                                                                                                       //
-  return parseInt(port);                                                                                              // 495
-};                                                                                                                    // 496
+  if (Number.isNaN(parsedPort)) {                                                                                     // 501
+    parsedPort = port;                                                                                                // 502
+  }                                                                                                                   // 503
                                                                                                                       //
-function runWebAppServer() {                                                                                          // 498
-  var shuttingDown = false;                                                                                           // 499
-  var syncQueue = new Meteor._SynchronousQueue();                                                                     // 500
+  return parsedPort;                                                                                                  // 504
+};                                                                                                                    // 505
                                                                                                                       //
-  var getItemPathname = function (itemUrl) {                                                                          // 502
-    return decodeURIComponent(parseUrl(itemUrl).pathname);                                                            // 503
-  };                                                                                                                  // 504
+function runWebAppServer() {                                                                                          // 507
+  var shuttingDown = false;                                                                                           // 508
+  var syncQueue = new Meteor._SynchronousQueue();                                                                     // 509
                                                                                                                       //
-  WebAppInternals.reloadClientPrograms = function () {                                                                // 506
-    syncQueue.runTask(function () {                                                                                   // 507
-      staticFiles = {};                                                                                               // 508
+  var getItemPathname = function (itemUrl) {                                                                          // 511
+    return decodeURIComponent(parseUrl(itemUrl).pathname);                                                            // 512
+  };                                                                                                                  // 513
                                                                                                                       //
-      var generateClientProgram = function (clientPath, arch) {                                                       // 509
-        // read the control for the client we'll be serving up                                                        // 510
-        var clientJsonPath = pathJoin(__meteor_bootstrap__.serverDir, clientPath);                                    // 511
-        var clientDir = pathDirname(clientJsonPath);                                                                  // 513
-        var clientJson = JSON.parse(readUtf8FileSync(clientJsonPath));                                                // 514
+  WebAppInternals.reloadClientPrograms = function () {                                                                // 515
+    syncQueue.runTask(function () {                                                                                   // 516
+      staticFiles = {};                                                                                               // 517
+                                                                                                                      //
+      var generateClientProgram = function (clientPath, arch) {                                                       // 518
+        // read the control for the client we'll be serving up                                                        // 519
+        var clientJsonPath = pathJoin(__meteor_bootstrap__.serverDir, clientPath);                                    // 520
+        var clientDir = pathDirname(clientJsonPath);                                                                  // 522
+        var clientJson = JSON.parse(readUtf8FileSync(clientJsonPath));                                                // 523
         if (clientJson.format !== "web-program-pre1") throw new Error("Unsupported format for client assets: " + JSON.stringify(clientJson.format));
-        if (!clientJsonPath || !clientDir || !clientJson) throw new Error("Client config file not parsed.");          // 519
-        var urlPrefix = getUrlPrefixForArch(arch);                                                                    // 522
-        var manifest = clientJson.manifest;                                                                           // 524
+        if (!clientJsonPath || !clientDir || !clientJson) throw new Error("Client config file not parsed.");          // 528
+        var urlPrefix = getUrlPrefixForArch(arch);                                                                    // 531
+        var manifest = clientJson.manifest;                                                                           // 533
                                                                                                                       //
-        _.each(manifest, function (item) {                                                                            // 525
-          if (item.url && item.where === "client") {                                                                  // 526
-            staticFiles[urlPrefix + getItemPathname(item.url)] = {                                                    // 527
-              absolutePath: pathJoin(clientDir, item.path),                                                           // 528
-              cacheable: item.cacheable,                                                                              // 529
-              hash: item.hash,                                                                                        // 530
-              // Link from source to its map                                                                          // 531
-              sourceMapUrl: item.sourceMapUrl,                                                                        // 532
-              type: item.type                                                                                         // 533
-            };                                                                                                        // 527
+        _.each(manifest, function (item) {                                                                            // 534
+          if (item.url && item.where === "client") {                                                                  // 535
+            staticFiles[urlPrefix + getItemPathname(item.url)] = {                                                    // 536
+              absolutePath: pathJoin(clientDir, item.path),                                                           // 537
+              cacheable: item.cacheable,                                                                              // 538
+              hash: item.hash,                                                                                        // 539
+              // Link from source to its map                                                                          // 540
+              sourceMapUrl: item.sourceMapUrl,                                                                        // 541
+              type: item.type                                                                                         // 542
+            };                                                                                                        // 536
                                                                                                                       //
-            if (item.sourceMap) {                                                                                     // 536
-              // Serve the source map too, under the specified URL. We assume all                                     // 537
-              // source maps are cacheable.                                                                           // 538
-              staticFiles[urlPrefix + getItemPathname(item.sourceMapUrl)] = {                                         // 539
-                absolutePath: pathJoin(clientDir, item.sourceMap),                                                    // 540
-                cacheable: true                                                                                       // 541
-              };                                                                                                      // 539
-            }                                                                                                         // 543
-          }                                                                                                           // 544
-        });                                                                                                           // 545
+            if (item.sourceMap) {                                                                                     // 545
+              // Serve the source map too, under the specified URL. We assume all                                     // 546
+              // source maps are cacheable.                                                                           // 547
+              staticFiles[urlPrefix + getItemPathname(item.sourceMapUrl)] = {                                         // 548
+                absolutePath: pathJoin(clientDir, item.sourceMap),                                                    // 549
+                cacheable: true                                                                                       // 550
+              };                                                                                                      // 548
+            }                                                                                                         // 552
+          }                                                                                                           // 553
+        });                                                                                                           // 554
                                                                                                                       //
-        var program = {                                                                                               // 547
-          format: "web-program-pre1",                                                                                 // 548
-          manifest: manifest,                                                                                         // 549
+        var program = {                                                                                               // 556
+          format: "web-program-pre1",                                                                                 // 557
+          manifest: manifest,                                                                                         // 558
           version: process.env.AUTOUPDATE_VERSION || WebAppHashing.calculateClientHash(manifest, null, _.pick(__meteor_runtime_config__, "PUBLIC_SETTINGS")),
-          cordovaCompatibilityVersions: clientJson.cordovaCompatibilityVersions,                                      // 556
-          PUBLIC_SETTINGS: __meteor_runtime_config__.PUBLIC_SETTINGS                                                  // 557
-        };                                                                                                            // 547
-        WebApp.clientPrograms[arch] = program; // Serve the program as a string at /foo/<arch>/manifest.json          // 560
-        // XXX change manifest.json -> program.json                                                                   // 563
+          cordovaCompatibilityVersions: clientJson.cordovaCompatibilityVersions,                                      // 565
+          PUBLIC_SETTINGS: __meteor_runtime_config__.PUBLIC_SETTINGS                                                  // 566
+        };                                                                                                            // 556
+        WebApp.clientPrograms[arch] = program; // Serve the program as a string at /foo/<arch>/manifest.json          // 569
+        // XXX change manifest.json -> program.json                                                                   // 572
                                                                                                                       //
-        staticFiles[urlPrefix + getItemPathname('/manifest.json')] = {                                                // 564
-          content: JSON.stringify(program),                                                                           // 565
-          cacheable: false,                                                                                           // 566
-          hash: program.version,                                                                                      // 567
-          type: "json"                                                                                                // 568
-        };                                                                                                            // 564
-      };                                                                                                              // 570
+        staticFiles[urlPrefix + getItemPathname('/manifest.json')] = {                                                // 573
+          content: JSON.stringify(program),                                                                           // 574
+          cacheable: false,                                                                                           // 575
+          hash: program.version,                                                                                      // 576
+          type: "json"                                                                                                // 577
+        };                                                                                                            // 573
+      };                                                                                                              // 579
                                                                                                                       //
-      try {                                                                                                           // 572
-        var clientPaths = __meteor_bootstrap__.configJson.clientPaths;                                                // 573
+      try {                                                                                                           // 581
+        var clientPaths = __meteor_bootstrap__.configJson.clientPaths;                                                // 582
                                                                                                                       //
-        _.each(clientPaths, function (clientPath, arch) {                                                             // 574
-          archPath[arch] = pathDirname(clientPath);                                                                   // 575
-          generateClientProgram(clientPath, arch);                                                                    // 576
-        }); // Exported for tests.                                                                                    // 577
+        _.each(clientPaths, function (clientPath, arch) {                                                             // 583
+          archPath[arch] = pathDirname(clientPath);                                                                   // 584
+          generateClientProgram(clientPath, arch);                                                                    // 585
+        }); // Exported for tests.                                                                                    // 586
                                                                                                                       //
                                                                                                                       //
-        WebAppInternals.staticFiles = staticFiles;                                                                    // 580
-      } catch (e) {                                                                                                   // 581
-        Log.error("Error reloading the client program: " + e.stack);                                                  // 582
-        process.exit(1);                                                                                              // 583
-      }                                                                                                               // 584
-    });                                                                                                               // 585
-  };                                                                                                                  // 586
+        WebAppInternals.staticFiles = staticFiles;                                                                    // 589
+      } catch (e) {                                                                                                   // 590
+        Log.error("Error reloading the client program: " + e.stack);                                                  // 591
+        process.exit(1);                                                                                              // 592
+      }                                                                                                               // 593
+    });                                                                                                               // 594
+  };                                                                                                                  // 595
                                                                                                                       //
-  WebAppInternals.generateBoilerplate = function () {                                                                 // 588
-    // This boilerplate will be served to the mobile devices when used with                                           // 589
-    // Meteor/Cordova for the Hot-Code Push and since the file will be served by                                      // 590
-    // the device's server, it is important to set the DDP url to the actual                                          // 591
-    // Meteor server accepting DDP connections and not the device's file server.                                      // 592
-    var defaultOptionsForArch = {                                                                                     // 593
-      'web.cordova': {                                                                                                // 594
-        runtimeConfigOverrides: {                                                                                     // 595
-          // XXX We use absoluteUrl() here so that we serve https://                                                  // 596
-          // URLs to cordova clients if force-ssl is in use. If we were                                               // 597
-          // to use __meteor_runtime_config__.ROOT_URL instead of                                                     // 598
-          // absoluteUrl(), then Cordova clients would immediately get a                                              // 599
-          // HCP setting their DDP_DEFAULT_CONNECTION_URL to                                                          // 600
-          // http://example.meteor.com. This breaks the app, because                                                  // 601
-          // force-ssl doesn't serve CORS headers on 302                                                              // 602
-          // redirects. (Plus it's undesirable to have clients                                                        // 603
-          // connecting to http://example.meteor.com when force-ssl is                                                // 604
-          // in use.)                                                                                                 // 605
-          DDP_DEFAULT_CONNECTION_URL: process.env.MOBILE_DDP_URL || Meteor.absoluteUrl(),                             // 606
-          ROOT_URL: process.env.MOBILE_ROOT_URL || Meteor.absoluteUrl()                                               // 608
-        }                                                                                                             // 595
-      }                                                                                                               // 594
-    };                                                                                                                // 593
-    syncQueue.runTask(function () {                                                                                   // 614
-      _.each(WebApp.clientPrograms, function (program, archName) {                                                    // 615
+  WebAppInternals.generateBoilerplate = function () {                                                                 // 597
+    // This boilerplate will be served to the mobile devices when used with                                           // 598
+    // Meteor/Cordova for the Hot-Code Push and since the file will be served by                                      // 599
+    // the device's server, it is important to set the DDP url to the actual                                          // 600
+    // Meteor server accepting DDP connections and not the device's file server.                                      // 601
+    var defaultOptionsForArch = {                                                                                     // 602
+      'web.cordova': {                                                                                                // 603
+        runtimeConfigOverrides: {                                                                                     // 604
+          // XXX We use absoluteUrl() here so that we serve https://                                                  // 605
+          // URLs to cordova clients if force-ssl is in use. If we were                                               // 606
+          // to use __meteor_runtime_config__.ROOT_URL instead of                                                     // 607
+          // absoluteUrl(), then Cordova clients would immediately get a                                              // 608
+          // HCP setting their DDP_DEFAULT_CONNECTION_URL to                                                          // 609
+          // http://example.meteor.com. This breaks the app, because                                                  // 610
+          // force-ssl doesn't serve CORS headers on 302                                                              // 611
+          // redirects. (Plus it's undesirable to have clients                                                        // 612
+          // connecting to http://example.meteor.com when force-ssl is                                                // 613
+          // in use.)                                                                                                 // 614
+          DDP_DEFAULT_CONNECTION_URL: process.env.MOBILE_DDP_URL || Meteor.absoluteUrl(),                             // 615
+          ROOT_URL: process.env.MOBILE_ROOT_URL || Meteor.absoluteUrl()                                               // 617
+        }                                                                                                             // 604
+      }                                                                                                               // 603
+    };                                                                                                                // 602
+    syncQueue.runTask(function () {                                                                                   // 623
+      _.each(WebApp.clientPrograms, function (program, archName) {                                                    // 624
         boilerplateByArch[archName] = WebAppInternals.generateBoilerplateInstance(archName, program.manifest, defaultOptionsForArch[archName]);
-      }); // Clear the memoized boilerplate cache.                                                                    // 620
+      }); // Clear the memoized boilerplate cache.                                                                    // 629
                                                                                                                       //
                                                                                                                       //
-      memoizedBoilerplate = {}; // Configure CSS injection for the default arch                                       // 623
-      // XXX implement the CSS injection for all archs?                                                               // 626
+      memoizedBoilerplate = {}; // Configure CSS injection for the default arch                                       // 632
+      // XXX implement the CSS injection for all archs?                                                               // 635
                                                                                                                       //
       var cssFiles = boilerplateByArch[WebApp.defaultArch].baseData.css; // Rewrite all CSS files (which are written directly to <style> tags)
-      // by autoupdate_client to use the CDN prefix/etc                                                               // 629
+      // by autoupdate_client to use the CDN prefix/etc                                                               // 638
                                                                                                                       //
-      var allCss = _.map(cssFiles, function (cssFile) {                                                               // 630
-        return {                                                                                                      // 631
-          url: bundledJsCssUrlRewriteHook(cssFile.url)                                                                // 631
-        };                                                                                                            // 631
-      });                                                                                                             // 632
+      var allCss = _.map(cssFiles, function (cssFile) {                                                               // 639
+        return {                                                                                                      // 640
+          url: bundledJsCssUrlRewriteHook(cssFile.url)                                                                // 640
+        };                                                                                                            // 640
+      });                                                                                                             // 641
                                                                                                                       //
-      WebAppInternals.refreshableAssets = {                                                                           // 633
-        allCss: allCss                                                                                                // 633
-      };                                                                                                              // 633
-    });                                                                                                               // 634
-  };                                                                                                                  // 635
+      WebAppInternals.refreshableAssets = {                                                                           // 642
+        allCss: allCss                                                                                                // 642
+      };                                                                                                              // 642
+    });                                                                                                               // 643
+  };                                                                                                                  // 644
                                                                                                                       //
-  WebAppInternals.reloadClientPrograms(); // webserver                                                                // 637
+  WebAppInternals.reloadClientPrograms(); // webserver                                                                // 646
                                                                                                                       //
-  var app = connect(); // Packages and apps can add handlers that run before any other Meteor                         // 640
-  // handlers via WebApp.rawConnectHandlers.                                                                          // 643
+  var app = connect(); // Packages and apps can add handlers that run before any other Meteor                         // 649
+  // handlers via WebApp.rawConnectHandlers.                                                                          // 652
                                                                                                                       //
-  var rawConnectHandlers = connect();                                                                                 // 644
-  app.use(rawConnectHandlers); // Auto-compress any json, javascript, or text.                                        // 645
+  var rawConnectHandlers = connect();                                                                                 // 653
+  app.use(rawConnectHandlers); // Auto-compress any json, javascript, or text.                                        // 654
                                                                                                                       //
-  app.use(connect.compress()); // We're not a proxy; reject (without crashing) attempts to treat us like              // 648
-  // one. (See #1212.)                                                                                                // 651
+  app.use(connect.compress()); // We're not a proxy; reject (without crashing) attempts to treat us like              // 657
+  // one. (See #1212.)                                                                                                // 660
                                                                                                                       //
-  app.use(function (req, res, next) {                                                                                 // 652
-    if (RoutePolicy.isValidUrl(req.url)) {                                                                            // 653
-      next();                                                                                                         // 654
-      return;                                                                                                         // 655
-    }                                                                                                                 // 656
+  app.use(function (req, res, next) {                                                                                 // 661
+    if (RoutePolicy.isValidUrl(req.url)) {                                                                            // 662
+      next();                                                                                                         // 663
+      return;                                                                                                         // 664
+    }                                                                                                                 // 665
                                                                                                                       //
-    res.writeHead(400);                                                                                               // 657
-    res.write("Not a proxy");                                                                                         // 658
-    res.end();                                                                                                        // 659
-  }); // Strip off the path prefix, if it exists.                                                                     // 660
+    res.writeHead(400);                                                                                               // 666
+    res.write("Not a proxy");                                                                                         // 667
+    res.end();                                                                                                        // 668
+  }); // Strip off the path prefix, if it exists.                                                                     // 669
                                                                                                                       //
-  app.use(function (request, response, next) {                                                                        // 663
-    var pathPrefix = __meteor_runtime_config__.ROOT_URL_PATH_PREFIX;                                                  // 664
+  app.use(function (request, response, next) {                                                                        // 672
+    var pathPrefix = __meteor_runtime_config__.ROOT_URL_PATH_PREFIX;                                                  // 673
                                                                                                                       //
-    var url = Npm.require('url').parse(request.url);                                                                  // 665
+    var url = Npm.require('url').parse(request.url);                                                                  // 674
                                                                                                                       //
-    var pathname = url.pathname; // check if the path in the url starts with the path prefix (and the part            // 666
-    // after the path prefix must start with a / if it exists.)                                                       // 668
+    var pathname = url.pathname; // check if the path in the url starts with the path prefix (and the part            // 675
+    // after the path prefix must start with a / if it exists.)                                                       // 677
                                                                                                                       //
     if (pathPrefix && pathname.substring(0, pathPrefix.length) === pathPrefix && (pathname.length == pathPrefix.length || pathname.substring(pathPrefix.length, pathPrefix.length + 1) === "/")) {
-      request.url = request.url.substring(pathPrefix.length);                                                         // 672
-      next();                                                                                                         // 673
-    } else if (pathname === "/favicon.ico" || pathname === "/robots.txt") {                                           // 674
-      next();                                                                                                         // 675
-    } else if (pathPrefix) {                                                                                          // 676
-      response.writeHead(404);                                                                                        // 677
-      response.write("Unknown path");                                                                                 // 678
-      response.end();                                                                                                 // 679
-    } else {                                                                                                          // 680
-      next();                                                                                                         // 681
-    }                                                                                                                 // 682
-  }); // Parse the query string into res.query. Used by oauth_server, but it's                                        // 683
-  // generally pretty handy..                                                                                         // 686
+      request.url = request.url.substring(pathPrefix.length);                                                         // 681
+      next();                                                                                                         // 682
+    } else if (pathname === "/favicon.ico" || pathname === "/robots.txt") {                                           // 683
+      next();                                                                                                         // 684
+    } else if (pathPrefix) {                                                                                          // 685
+      response.writeHead(404);                                                                                        // 686
+      response.write("Unknown path");                                                                                 // 687
+      response.end();                                                                                                 // 688
+    } else {                                                                                                          // 689
+      next();                                                                                                         // 690
+    }                                                                                                                 // 691
+  }); // Parse the query string into res.query. Used by oauth_server, but it's                                        // 692
+  // generally pretty handy..                                                                                         // 695
                                                                                                                       //
-  app.use(connect.query()); // Serve static files from the manifest.                                                  // 687
-  // This is inspired by the 'static' middleware.                                                                     // 690
+  app.use(connect.query()); // Serve static files from the manifest.                                                  // 696
+  // This is inspired by the 'static' middleware.                                                                     // 699
                                                                                                                       //
-  app.use(function (req, res, next) {                                                                                 // 691
-    Promise.resolve().then(function () {                                                                              // 692
-      WebAppInternals.staticFilesMiddleware(staticFiles, req, res, next);                                             // 693
-    });                                                                                                               // 694
-  }); // Packages and apps can add handlers to this via WebApp.connectHandlers.                                       // 695
-  // They are inserted before our default handler.                                                                    // 698
+  app.use(function (req, res, next) {                                                                                 // 700
+    Promise.resolve().then(function () {                                                                              // 701
+      WebAppInternals.staticFilesMiddleware(staticFiles, req, res, next);                                             // 702
+    });                                                                                                               // 703
+  }); // Packages and apps can add handlers to this via WebApp.connectHandlers.                                       // 704
+  // They are inserted before our default handler.                                                                    // 707
                                                                                                                       //
-  var packageAndAppHandlers = connect();                                                                              // 699
-  app.use(packageAndAppHandlers);                                                                                     // 700
-  var suppressConnectErrors = false; // connect knows it is an error handler because it has 4 arguments instead of    // 702
-  // 3. go figure.  (It is not smart enough to find such a thing if it's hidden                                       // 704
-  // inside packageAndAppHandlers.)                                                                                   // 705
+  var packageAndAppHandlers = connect();                                                                              // 708
+  app.use(packageAndAppHandlers);                                                                                     // 709
+  var suppressConnectErrors = false; // connect knows it is an error handler because it has 4 arguments instead of    // 711
+  // 3. go figure.  (It is not smart enough to find such a thing if it's hidden                                       // 713
+  // inside packageAndAppHandlers.)                                                                                   // 714
                                                                                                                       //
-  app.use(function (err, req, res, next) {                                                                            // 706
-    if (!err || !suppressConnectErrors || !req.headers['x-suppress-error']) {                                         // 707
-      next(err);                                                                                                      // 708
-      return;                                                                                                         // 709
-    }                                                                                                                 // 710
+  app.use(function (err, req, res, next) {                                                                            // 715
+    if (!err || !suppressConnectErrors || !req.headers['x-suppress-error']) {                                         // 716
+      next(err);                                                                                                      // 717
+      return;                                                                                                         // 718
+    }                                                                                                                 // 719
                                                                                                                       //
-    res.writeHead(err.status, {                                                                                       // 711
-      'Content-Type': 'text/plain'                                                                                    // 711
-    });                                                                                                               // 711
-    res.end("An error message");                                                                                      // 712
-  });                                                                                                                 // 713
-  app.use(function (req, res, next) {                                                                                 // 715
-    Promise.resolve().then(function () {                                                                              // 716
-      if (!appUrl(req.url)) {                                                                                         // 717
-        return next();                                                                                                // 718
-      }                                                                                                               // 719
+    res.writeHead(err.status, {                                                                                       // 720
+      'Content-Type': 'text/plain'                                                                                    // 720
+    });                                                                                                               // 720
+    res.end("An error message");                                                                                      // 721
+  });                                                                                                                 // 722
+  app.use(function (req, res, next) {                                                                                 // 724
+    Promise.resolve().then(function () {                                                                              // 725
+      if (!appUrl(req.url)) {                                                                                         // 726
+        return next();                                                                                                // 727
+      }                                                                                                               // 728
                                                                                                                       //
-      var headers = {                                                                                                 // 721
-        'Content-Type': 'text/html; charset=utf-8'                                                                    // 722
-      };                                                                                                              // 721
+      var headers = {                                                                                                 // 730
+        'Content-Type': 'text/html; charset=utf-8'                                                                    // 731
+      };                                                                                                              // 730
                                                                                                                       //
-      if (shuttingDown) {                                                                                             // 725
-        headers['Connection'] = 'Close';                                                                              // 726
-      }                                                                                                               // 727
+      if (shuttingDown) {                                                                                             // 734
+        headers['Connection'] = 'Close';                                                                              // 735
+      }                                                                                                               // 736
                                                                                                                       //
-      var request = WebApp.categorizeRequest(req);                                                                    // 729
+      var request = WebApp.categorizeRequest(req);                                                                    // 738
                                                                                                                       //
-      if (request.url.query && request.url.query['meteor_css_resource']) {                                            // 731
-        // In this case, we're requesting a CSS resource in the meteor-specific                                       // 732
-        // way, but we don't have it.  Serve a static css file that indicates that                                    // 733
-        // we didn't have it, so we can detect that and refresh.  Make sure                                           // 734
-        // that any proxies or CDNs don't cache this error!  (Normally proxies                                        // 735
-        // or CDNs are smart enough not to cache error pages, but in order to                                         // 736
-        // make this hack work, we need to return the CSS file as a 200, which                                        // 737
-        // would otherwise be cached.)                                                                                // 738
-        headers['Content-Type'] = 'text/css; charset=utf-8';                                                          // 739
-        headers['Cache-Control'] = 'no-cache';                                                                        // 740
-        res.writeHead(200, headers);                                                                                  // 741
-        res.write(".meteor-css-not-found-error { width: 0px;}");                                                      // 742
-        res.end();                                                                                                    // 743
-        return;                                                                                                       // 744
-      }                                                                                                               // 745
+      if (request.url.query && request.url.query['meteor_css_resource']) {                                            // 740
+        // In this case, we're requesting a CSS resource in the meteor-specific                                       // 741
+        // way, but we don't have it.  Serve a static css file that indicates that                                    // 742
+        // we didn't have it, so we can detect that and refresh.  Make sure                                           // 743
+        // that any proxies or CDNs don't cache this error!  (Normally proxies                                        // 744
+        // or CDNs are smart enough not to cache error pages, but in order to                                         // 745
+        // make this hack work, we need to return the CSS file as a 200, which                                        // 746
+        // would otherwise be cached.)                                                                                // 747
+        headers['Content-Type'] = 'text/css; charset=utf-8';                                                          // 748
+        headers['Cache-Control'] = 'no-cache';                                                                        // 749
+        res.writeHead(200, headers);                                                                                  // 750
+        res.write(".meteor-css-not-found-error { width: 0px;}");                                                      // 751
+        res.end();                                                                                                    // 752
+        return;                                                                                                       // 753
+      }                                                                                                               // 754
                                                                                                                       //
-      if (request.url.query && request.url.query['meteor_js_resource']) {                                             // 747
-        // Similarly, we're requesting a JS resource that we don't have.                                              // 748
-        // Serve an uncached 404. (We can't use the same hack we use for CSS,                                         // 749
-        // because actually acting on that hack requires us to have the JS                                            // 750
-        // already!)                                                                                                  // 751
-        headers['Cache-Control'] = 'no-cache';                                                                        // 752
-        res.writeHead(404, headers);                                                                                  // 753
-        res.end("404 Not Found");                                                                                     // 754
-        return;                                                                                                       // 755
-      }                                                                                                               // 756
+      if (request.url.query && request.url.query['meteor_js_resource']) {                                             // 756
+        // Similarly, we're requesting a JS resource that we don't have.                                              // 757
+        // Serve an uncached 404. (We can't use the same hack we use for CSS,                                         // 758
+        // because actually acting on that hack requires us to have the JS                                            // 759
+        // already!)                                                                                                  // 760
+        headers['Cache-Control'] = 'no-cache';                                                                        // 761
+        res.writeHead(404, headers);                                                                                  // 762
+        res.end("404 Not Found");                                                                                     // 763
+        return;                                                                                                       // 764
+      }                                                                                                               // 765
                                                                                                                       //
-      if (request.url.query && request.url.query['meteor_dont_serve_index']) {                                        // 758
-        // When downloading files during a Cordova hot code push, we need                                             // 759
-        // to detect if a file is not available instead of inadvertently                                              // 760
-        // downloading the default index page.                                                                        // 761
-        // So similar to the situation above, we serve an uncached 404.                                               // 762
-        headers['Cache-Control'] = 'no-cache';                                                                        // 763
-        res.writeHead(404, headers);                                                                                  // 764
-        res.end("404 Not Found");                                                                                     // 765
-        return;                                                                                                       // 766
-      } // /packages/asdfsad ... /__cordova/dafsdf.js                                                                 // 767
+      if (request.url.query && request.url.query['meteor_dont_serve_index']) {                                        // 767
+        // When downloading files during a Cordova hot code push, we need                                             // 768
+        // to detect if a file is not available instead of inadvertently                                              // 769
+        // downloading the default index page.                                                                        // 770
+        // So similar to the situation above, we serve an uncached 404.                                               // 771
+        headers['Cache-Control'] = 'no-cache';                                                                        // 772
+        res.writeHead(404, headers);                                                                                  // 773
+        res.end("404 Not Found");                                                                                     // 774
+        return;                                                                                                       // 775
+      } // /packages/asdfsad ... /__cordova/dafsdf.js                                                                 // 776
                                                                                                                       //
                                                                                                                       //
-      var pathname = parseRequest(req).pathname;                                                                      // 770
-      var archKey = pathname.split('/')[1];                                                                           // 771
-      var archKeyCleaned = 'web.' + archKey.replace(/^__/, '');                                                       // 772
+      var pathname = parseRequest(req).pathname;                                                                      // 779
+      var archKey = pathname.split('/')[1];                                                                           // 780
+      var archKeyCleaned = 'web.' + archKey.replace(/^__/, '');                                                       // 781
                                                                                                                       //
-      if (!/^__/.test(archKey) || !_.has(archPath, archKeyCleaned)) {                                                 // 774
-        archKey = WebApp.defaultArch;                                                                                 // 775
-      } else {                                                                                                        // 776
-        archKey = archKeyCleaned;                                                                                     // 777
-      }                                                                                                               // 778
+      if (!/^__/.test(archKey) || !_.has(archPath, archKeyCleaned)) {                                                 // 783
+        archKey = WebApp.defaultArch;                                                                                 // 784
+      } else {                                                                                                        // 785
+        archKey = archKeyCleaned;                                                                                     // 786
+      }                                                                                                               // 787
                                                                                                                       //
-      return getBoilerplateAsync(request, archKey).then(function (boilerplate) {                                      // 780
-        var statusCode = res.statusCode ? res.statusCode : 200;                                                       // 784
-        res.writeHead(statusCode, headers);                                                                           // 785
-        res.write(boilerplate);                                                                                       // 786
-        res.end();                                                                                                    // 787
-      }, function (error) {                                                                                           // 788
-        Log.error("Error running template: " + error.stack);                                                          // 789
-        res.writeHead(500, headers);                                                                                  // 790
-        res.end();                                                                                                    // 791
-      });                                                                                                             // 792
-    });                                                                                                               // 793
-  }); // Return 404 by default, if no other handlers serve this URL.                                                  // 794
+      return getBoilerplateAsync(request, archKey).then(function (boilerplate) {                                      // 789
+        var statusCode = res.statusCode ? res.statusCode : 200;                                                       // 793
+        res.writeHead(statusCode, headers);                                                                           // 794
+        res.write(boilerplate);                                                                                       // 795
+        res.end();                                                                                                    // 796
+      }, function (error) {                                                                                           // 797
+        Log.error("Error running template: " + error.stack);                                                          // 798
+        res.writeHead(500, headers);                                                                                  // 799
+        res.end();                                                                                                    // 800
+      });                                                                                                             // 801
+    });                                                                                                               // 802
+  }); // Return 404 by default, if no other handlers serve this URL.                                                  // 803
                                                                                                                       //
-  app.use(function (req, res) {                                                                                       // 797
-    res.writeHead(404);                                                                                               // 798
-    res.end();                                                                                                        // 799
-  });                                                                                                                 // 800
-  var httpServer = createServer(app);                                                                                 // 803
-  var onListeningCallbacks = []; // After 5 seconds w/o data on a socket, kill it.  On the other hand, if             // 804
-  // there's an outstanding request, give it a higher timeout instead (to avoid                                       // 807
-  // killing long-polling requests)                                                                                   // 808
+  app.use(function (req, res) {                                                                                       // 806
+    res.writeHead(404);                                                                                               // 807
+    res.end();                                                                                                        // 808
+  });                                                                                                                 // 809
+  var httpServer = createServer(app);                                                                                 // 812
+  var onListeningCallbacks = []; // After 5 seconds w/o data on a socket, kill it.  On the other hand, if             // 813
+  // there's an outstanding request, give it a higher timeout instead (to avoid                                       // 816
+  // killing long-polling requests)                                                                                   // 817
                                                                                                                       //
-  httpServer.setTimeout(SHORT_SOCKET_TIMEOUT); // Do this here, and then also in livedata/stream_server.js, because   // 809
-  // stream_server.js kills all the current request handlers when installing its                                      // 812
-  // own.                                                                                                             // 813
+  httpServer.setTimeout(SHORT_SOCKET_TIMEOUT); // Do this here, and then also in livedata/stream_server.js, because   // 818
+  // stream_server.js kills all the current request handlers when installing its                                      // 821
+  // own.                                                                                                             // 822
                                                                                                                       //
   httpServer.on('request', WebApp._timeoutAdjustmentRequestCallback); // If the client gave us a bad request, tell it instead of just closing the
-  // socket. This lets load balancers in front of us differentiate between "a                                         // 817
-  // server is randomly closing sockets for no reason" and "client sent a bad                                         // 818
-  // request".                                                                                                        // 819
-  //                                                                                                                  // 820
-  // This will only work on Node 6; Node 4 destroys the socket before calling                                         // 821
-  // this event. See https://github.com/nodejs/node/pull/4557/ for details.                                           // 822
+  // socket. This lets load balancers in front of us differentiate between "a                                         // 826
+  // server is randomly closing sockets for no reason" and "client sent a bad                                         // 827
+  // request".                                                                                                        // 828
+  //                                                                                                                  // 829
+  // This will only work on Node 6; Node 4 destroys the socket before calling                                         // 830
+  // this event. See https://github.com/nodejs/node/pull/4557/ for details.                                           // 831
                                                                                                                       //
-  httpServer.on('clientError', function (err, socket) {                                                               // 823
-    // Pre-Node-6, do nothing.                                                                                        // 824
-    if (socket.destroyed) {                                                                                           // 825
-      return;                                                                                                         // 826
-    }                                                                                                                 // 827
+  httpServer.on('clientError', function (err, socket) {                                                               // 832
+    // Pre-Node-6, do nothing.                                                                                        // 833
+    if (socket.destroyed) {                                                                                           // 834
+      return;                                                                                                         // 835
+    }                                                                                                                 // 836
                                                                                                                       //
-    if (err.message === 'Parse Error') {                                                                              // 829
-      socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');                                                                 // 830
-    } else {                                                                                                          // 831
-      // For other errors, use the default behavior as if we had no clientError                                       // 832
-      // handler.                                                                                                     // 833
-      socket.destroy(err);                                                                                            // 834
-    }                                                                                                                 // 835
-  }); // start up app                                                                                                 // 836
+    if (err.message === 'Parse Error') {                                                                              // 838
+      socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');                                                                 // 839
+    } else {                                                                                                          // 840
+      // For other errors, use the default behavior as if we had no clientError                                       // 841
+      // handler.                                                                                                     // 842
+      socket.destroy(err);                                                                                            // 843
+    }                                                                                                                 // 844
+  }); // start up app                                                                                                 // 845
                                                                                                                       //
-  _.extend(WebApp, {                                                                                                  // 839
-    connectHandlers: packageAndAppHandlers,                                                                           // 840
-    rawConnectHandlers: rawConnectHandlers,                                                                           // 841
-    httpServer: httpServer,                                                                                           // 842
-    connectApp: app,                                                                                                  // 843
-    // For testing.                                                                                                   // 844
-    suppressConnectErrors: function () {                                                                              // 845
-      suppressConnectErrors = true;                                                                                   // 846
-    },                                                                                                                // 847
-    onListening: function (f) {                                                                                       // 848
-      if (onListeningCallbacks) onListeningCallbacks.push(f);else f();                                                // 849
-    }                                                                                                                 // 853
-  }); // Let the rest of the packages (and Meteor.startup hooks) insert connect                                       // 839
-  // middlewares and update __meteor_runtime_config__, then keep going to set up                                      // 857
-  // actually serving HTML.                                                                                           // 858
-                                                                                                                      //
-                                                                                                                      //
-  exports.main = function (argv) {                                                                                    // 859
-    WebAppInternals.generateBoilerplate(); // only start listening after all the startup code has run.                // 860
-                                                                                                                      //
-    var localPort = WebAppInternals.parsePort(process.env.PORT) || 0;                                                 // 863
-    var host = process.env.BIND_IP;                                                                                   // 864
-    var localIp = host || '0.0.0.0';                                                                                  // 865
-    httpServer.listen(localPort, localIp, Meteor.bindEnvironment(function () {                                        // 866
-      if (process.env.METEOR_PRINT_ON_LISTEN) {                                                                       // 867
-        console.log("LISTENING"); // must match run-app.js                                                            // 868
-      }                                                                                                               // 869
-                                                                                                                      //
-      var callbacks = onListeningCallbacks;                                                                           // 871
-      onListeningCallbacks = null;                                                                                    // 872
-                                                                                                                      //
-      _.each(callbacks, function (x) {                                                                                // 873
-        x();                                                                                                          // 873
-      });                                                                                                             // 873
-    }, function (e) {                                                                                                 // 875
-      console.error("Error listening:", e);                                                                           // 876
-      console.error(e && e.stack);                                                                                    // 877
-    }));                                                                                                              // 878
-    return 'DAEMON';                                                                                                  // 880
-  };                                                                                                                  // 881
-}                                                                                                                     // 882
-                                                                                                                      //
-runWebAppServer();                                                                                                    // 885
-var inlineScriptsAllowed = true;                                                                                      // 888
-                                                                                                                      //
-WebAppInternals.inlineScriptsAllowed = function () {                                                                  // 890
-  return inlineScriptsAllowed;                                                                                        // 891
-};                                                                                                                    // 892
-                                                                                                                      //
-WebAppInternals.setInlineScriptsAllowed = function (value) {                                                          // 894
-  inlineScriptsAllowed = value;                                                                                       // 895
-  WebAppInternals.generateBoilerplate();                                                                              // 896
-};                                                                                                                    // 897
-                                                                                                                      //
-WebAppInternals.setBundledJsCssUrlRewriteHook = function (hookFn) {                                                   // 900
-  bundledJsCssUrlRewriteHook = hookFn;                                                                                // 901
-  WebAppInternals.generateBoilerplate();                                                                              // 902
-};                                                                                                                    // 903
-                                                                                                                      //
-WebAppInternals.setBundledJsCssPrefix = function (prefix) {                                                           // 905
-  var self = this;                                                                                                    // 906
-  self.setBundledJsCssUrlRewriteHook(function (url) {                                                                 // 907
-    return prefix + url;                                                                                              // 909
-  });                                                                                                                 // 910
-}; // Packages can call `WebAppInternals.addStaticJs` to specify static                                               // 911
-// JavaScript to be included in the app. This static JS will be inlined,                                              // 914
-// unless inline scripts have been disabled, in which case it will be                                                 // 915
-// served under `/<sha1 of contents>`.                                                                                // 916
+  _.extend(WebApp, {                                                                                                  // 848
+    connectHandlers: packageAndAppHandlers,                                                                           // 849
+    rawConnectHandlers: rawConnectHandlers,                                                                           // 850
+    httpServer: httpServer,                                                                                           // 851
+    connectApp: app,                                                                                                  // 852
+    // For testing.                                                                                                   // 853
+    suppressConnectErrors: function () {                                                                              // 854
+      suppressConnectErrors = true;                                                                                   // 855
+    },                                                                                                                // 856
+    onListening: function (f) {                                                                                       // 857
+      if (onListeningCallbacks) onListeningCallbacks.push(f);else f();                                                // 858
+    }                                                                                                                 // 862
+  }); // Let the rest of the packages (and Meteor.startup hooks) insert connect                                       // 848
+  // middlewares and update __meteor_runtime_config__, then keep going to set up                                      // 866
+  // actually serving HTML.                                                                                           // 867
                                                                                                                       //
                                                                                                                       //
-var additionalStaticJs = {};                                                                                          // 917
+  exports.main = function (argv) {                                                                                    // 868
+    WebAppInternals.generateBoilerplate();                                                                            // 869
                                                                                                                       //
-WebAppInternals.addStaticJs = function (contents) {                                                                   // 918
-  additionalStaticJs["/" + sha1(contents) + ".js"] = contents;                                                        // 919
-}; // Exported for tests                                                                                              // 920
+    var startHttpServer = function (listenOptions) {                                                                  // 871
+      httpServer.listen(listenOptions, Meteor.bindEnvironment(function () {                                           // 872
+        if (process.env.METEOR_PRINT_ON_LISTEN) {                                                                     // 873
+          console.log("LISTENING");                                                                                   // 874
+        }                                                                                                             // 875
+                                                                                                                      //
+        var callbacks = onListeningCallbacks;                                                                         // 876
+        onListeningCallbacks = null;                                                                                  // 877
+        callbacks.forEach(function (callback) {                                                                       // 878
+          callback();                                                                                                 // 878
+        });                                                                                                           // 878
+      }, function (e) {                                                                                               // 879
+        console.error("Error listening:", e);                                                                         // 880
+        console.error(e && e.stack);                                                                                  // 881
+      }));                                                                                                            // 882
+    };                                                                                                                // 883
+                                                                                                                      //
+    var localPort = process.env.PORT || 0;                                                                            // 885
+    var unixSocketPath = process.env.UNIX_SOCKET_PATH;                                                                // 886
+                                                                                                                      //
+    if (unixSocketPath) {                                                                                             // 888
+      // Start the HTTP server using a socket file.                                                                   // 889
+      removeExistingSocketFile(unixSocketPath);                                                                       // 890
+      startHttpServer({                                                                                               // 891
+        path: unixSocketPath                                                                                          // 891
+      });                                                                                                             // 891
+      registerSocketFileCleanup(unixSocketPath);                                                                      // 892
+    } else {                                                                                                          // 893
+      localPort = isNaN(Number(localPort)) ? localPort : Number(localPort);                                           // 894
+                                                                                                                      //
+      if (/\\\\?.+\\pipe\\?.+/.test(localPort)) {                                                                     // 895
+        // Start the HTTP server using Windows Server style named pipe.                                               // 896
+        startHttpServer({                                                                                             // 897
+          path: localPort                                                                                             // 897
+        });                                                                                                           // 897
+      } else if (typeof localPort === "number") {                                                                     // 898
+        // Start the HTTP server using TCP.                                                                           // 899
+        startHttpServer({                                                                                             // 900
+          port: localPort,                                                                                            // 901
+          host: process.env.BIND_IP || "0.0.0.0"                                                                      // 902
+        });                                                                                                           // 900
+      } else {                                                                                                        // 904
+        throw new Error("Invalid PORT specified");                                                                    // 905
+      }                                                                                                               // 906
+    }                                                                                                                 // 907
+                                                                                                                      //
+    return "DAEMON";                                                                                                  // 909
+  };                                                                                                                  // 910
+}                                                                                                                     // 911
+                                                                                                                      //
+runWebAppServer();                                                                                                    // 914
+var inlineScriptsAllowed = true;                                                                                      // 917
+                                                                                                                      //
+WebAppInternals.inlineScriptsAllowed = function () {                                                                  // 919
+  return inlineScriptsAllowed;                                                                                        // 920
+};                                                                                                                    // 921
+                                                                                                                      //
+WebAppInternals.setInlineScriptsAllowed = function (value) {                                                          // 923
+  inlineScriptsAllowed = value;                                                                                       // 924
+  WebAppInternals.generateBoilerplate();                                                                              // 925
+};                                                                                                                    // 926
+                                                                                                                      //
+WebAppInternals.setBundledJsCssUrlRewriteHook = function (hookFn) {                                                   // 929
+  bundledJsCssUrlRewriteHook = hookFn;                                                                                // 930
+  WebAppInternals.generateBoilerplate();                                                                              // 931
+};                                                                                                                    // 932
+                                                                                                                      //
+WebAppInternals.setBundledJsCssPrefix = function (prefix) {                                                           // 934
+  var self = this;                                                                                                    // 935
+  self.setBundledJsCssUrlRewriteHook(function (url) {                                                                 // 936
+    return prefix + url;                                                                                              // 938
+  });                                                                                                                 // 939
+}; // Packages can call `WebAppInternals.addStaticJs` to specify static                                               // 940
+// JavaScript to be included in the app. This static JS will be inlined,                                              // 943
+// unless inline scripts have been disabled, in which case it will be                                                 // 944
+// served under `/<sha1 of contents>`.                                                                                // 945
                                                                                                                       //
                                                                                                                       //
-WebAppInternals.getBoilerplate = getBoilerplate;                                                                      // 923
-WebAppInternals.additionalStaticJs = additionalStaticJs;                                                              // 924
+var additionalStaticJs = {};                                                                                          // 946
+                                                                                                                      //
+WebAppInternals.addStaticJs = function (contents) {                                                                   // 947
+  additionalStaticJs["/" + sha1(contents) + ".js"] = contents;                                                        // 948
+}; // Exported for tests                                                                                              // 949
+                                                                                                                      //
+                                                                                                                      //
+WebAppInternals.getBoilerplate = getBoilerplate;                                                                      // 952
+WebAppInternals.additionalStaticJs = additionalStaticJs;                                                              // 953
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"socket_file.js":function(require,exports,module){
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// packages/webapp/socket_file.js                                                                                     //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
+module.export({                                                                                                       // 1
+  removeExistingSocketFile: function () {                                                                             // 1
+    return removeExistingSocketFile;                                                                                  // 1
+  },                                                                                                                  // 1
+  registerSocketFileCleanup: function () {                                                                            // 1
+    return registerSocketFileCleanup;                                                                                 // 1
+  }                                                                                                                   // 1
+});                                                                                                                   // 1
+var statSync = void 0,                                                                                                // 1
+    unlinkSync = void 0,                                                                                              // 1
+    existsSync = void 0;                                                                                              // 1
+module.watch(require("fs"), {                                                                                         // 1
+  statSync: function (v) {                                                                                            // 1
+    statSync = v;                                                                                                     // 1
+  },                                                                                                                  // 1
+  unlinkSync: function (v) {                                                                                          // 1
+    unlinkSync = v;                                                                                                   // 1
+  },                                                                                                                  // 1
+  existsSync: function (v) {                                                                                          // 1
+    existsSync = v;                                                                                                   // 1
+  }                                                                                                                   // 1
+}, 0);                                                                                                                // 1
+                                                                                                                      //
+var removeExistingSocketFile = function (socketPath) {                                                                // 26
+  try {                                                                                                               // 27
+    if (statSync(socketPath).isSocket()) {                                                                            // 28
+      // Since a new socket file will be created, remove the existing                                                 // 29
+      // file.                                                                                                        // 30
+      unlinkSync(socketPath);                                                                                         // 31
+    } else {                                                                                                          // 32
+      throw new Error("An existing file was found at \"" + socketPath + "\" and it is not " + 'a socket file. Please confirm PORT is pointing to valid and ' + 'un-used socket file path.');
+    }                                                                                                                 // 38
+  } catch (error) {                                                                                                   // 39
+    // If there is no existing socket file to cleanup, great, we'll                                                   // 40
+    // continue normally. If the caught exception represents any other                                                // 41
+    // issue, re-throw.                                                                                               // 42
+    if (error.code !== 'ENOENT') {                                                                                    // 43
+      throw error;                                                                                                    // 44
+    }                                                                                                                 // 45
+  }                                                                                                                   // 46
+};                                                                                                                    // 47
+                                                                                                                      //
+var registerSocketFileCleanup = function (socketPath) {                                                               // 52
+  var eventEmitter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : process;                     // 53
+  ['exit', 'SIGINT', 'SIGHUP', 'SIGTERM'].forEach(function (signal) {                                                 // 54
+    eventEmitter.on(signal, Meteor.bindEnvironment(function () {                                                      // 55
+      if (existsSync(socketPath)) {                                                                                   // 56
+        unlinkSync(socketPath);                                                                                       // 57
+      }                                                                                                               // 58
+    }));                                                                                                              // 59
+  });                                                                                                                 // 60
+};                                                                                                                    // 61
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"node_modules":{"connect":{"index.js":function(require,exports,module){

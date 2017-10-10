@@ -42584,8 +42584,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
 exports.name = "fs-extra";
-exports.version = "4.0.1";
-exports.main = "./lib/index";
+exports.version = "4.0.2";
+exports.main = "./lib/index.js";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -42631,16 +42631,16 @@ module.exports = fs
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
 exports.name = "bluebird";
-exports.version = "3.5.0";
-exports.main = "./js/release/bluebird.js";
+exports.version = "2.11.0";
+exports.main = "./js/main/bluebird.js";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-},"js":{"release":{"bluebird.js":function(require,exports,module){
+},"js":{"main":{"bluebird.js":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// node_modules/bluebird/js/release/bluebird.js                                                                        //
+// node_modules/bluebird/js/main/bluebird.js                                                                           //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
@@ -42652,7 +42652,7 @@ function noConflict() {
     catch (e) {}
     return bluebird;
 }
-var bluebird = require("./promise")();
+var bluebird = require("./promise.js")();
 bluebird.noConflict = noConflict;
 module.exports = bluebird;
 
@@ -42667,7 +42667,7 @@ module.exports = bluebird;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
 exports.name = "ws";
-exports.version = "3.1.0";
+exports.version = "3.2.0";
 exports.main = "index.js";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60447,7 +60447,7 @@ ip.fromLong = function(ipl) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
 exports.name = "request";
-exports.version = "2.81.0";
+exports.version = "2.83.0";
 exports.main = "index.js";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60476,15 +60476,14 @@ exports.main = "index.js";
 
 'use strict'
 
-var extend                = require('extend')
-  , cookies               = require('./lib/cookies')
-  , helpers               = require('./lib/helpers')
+var extend = require('extend')
+var cookies = require('./lib/cookies')
+var helpers = require('./lib/helpers')
 
 var paramsHaveRequestBody = helpers.paramsHaveRequestBody
 
-
 // organize params for patch, post, put, head, del
-function initParams(uri, options, callback) {
+function initParams (uri, options, callback) {
   if (typeof options === 'function') {
     callback = options
   }
@@ -60528,6 +60527,7 @@ function verbFunc (verb) {
 // define like this to please codeintel/intellisense IDEs
 request.get = verbFunc('get')
 request.head = verbFunc('head')
+request.options = verbFunc('options')
 request.post = verbFunc('post')
 request.put = verbFunc('put')
 request.patch = verbFunc('patch')
@@ -60543,7 +60543,6 @@ request.cookie = function (str) {
 }
 
 function wrapRequestMethod (method, options, requester, verb) {
-
   return function (uri, opts, callback) {
     var params = initParams(uri, opts, callback)
 
@@ -60574,15 +60573,15 @@ request.defaults = function (options, requester) {
     options = {}
   }
 
-  var defaults      = wrapRequestMethod(self, options, requester)
+  var defaults = wrapRequestMethod(self, options, requester)
 
   var verbs = ['get', 'head', 'post', 'put', 'patch', 'del', 'delete']
-  verbs.forEach(function(verb) {
-    defaults[verb]  = wrapRequestMethod(self[verb], options, requester, verb)
+  verbs.forEach(function (verb) {
+    defaults[verb] = wrapRequestMethod(self[verb], options, requester, verb)
   })
 
-  defaults.cookie   = wrapRequestMethod(self.cookie, options, requester)
-  defaults.jar      = self.jar
+  defaults.cookie = wrapRequestMethod(self.cookie, options, requester)
+  defaults.jar = self.jar
   defaults.defaults = self.defaults
   return defaults
 }
@@ -60608,11 +60607,11 @@ request.initParams = initParams
 
 // Backwards compatibility for request.debug
 Object.defineProperty(request, 'debug', {
-  enumerable : true,
-  get : function() {
+  enumerable: true,
+  get: function () {
     return request.Request.debug
   },
-  set : function(debug) {
+  set: function (debug) {
     request.Request.debug = debug
   }
 })
@@ -60700,7 +60699,54 @@ module.exports = function (input, options) {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}},"bcrypt":{"package.json":function(require,exports){
+}},"node-powershell":{"package.json":function(require,exports){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// node_modules/node-powershell/package.json                                                                           //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+exports.name = "node-powershell";
+exports.version = "3.1.1";
+exports.main = "./dist/index.js";
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"dist":{"index.js":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// node_modules/node-powershell/dist/index.js                                                                          //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+/*********************************************************
+ * node-powershell - Certainly the easiest way to run PowerShell from your NodeJS app
+ * @version v3.1.0
+ * @link http://rannn505.github.io/node-powershell/
+ * @copyright Copyright (c) 2017 Ran Cohen <rannn505@outlook.com>
+ * @license MIT (http://www.opensource.org/licenses/mit-license.php)
+ * @Compiled At: 2017-03-02
+  *********************************************************/
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Shell = require('./Shell');
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _Shell.Shell;
+  }
+});
+module.exports = exports['default'];
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}}},"bcrypt":{"package.json":function(require,exports){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
@@ -60709,7 +60755,7 @@ module.exports = function (input, options) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
 exports.name = "bcrypt";
-exports.version = "1.0.2";
+exports.version = "1.0.3";
 exports.main = "./bcrypt";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

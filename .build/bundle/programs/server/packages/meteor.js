@@ -668,9 +668,8 @@ Meteor.Error.prototype.clone = function () {
 //                                                                                                                 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                    //
-var path = Npm.require('path');
 var Fiber = Npm.require('fibers');
-var Future = Npm.require(path.join('fibers', 'future'));
+var Future = Npm.require('fibers/future');
 
 Meteor._noYieldsAllowed = function (f) {
   var savedYield = Fiber.yield;

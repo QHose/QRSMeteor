@@ -3328,79 +3328,84 @@ if (Meteor.isServer) {                                                          
         headerValue: _senseConfig.headerValue //'mydomain\\justme'                                                     // 177
                                                                                                                        //
     };                                                                                                                 // 170
-    Meteor.startup(function () {                                                                                       // 181
-        function _callee() {                                                                                           // 181
-            var file, exampleSettingsFile, keysEqual;                                                                  // 181
-            return _regenerator2.default.async(function () {                                                           // 181
-                function _callee$(_context) {                                                                          // 181
-                    while (1) {                                                                                        // 181
-                        switch (_context.prev = _context.next) {                                                       // 181
-                            case 0:                                                                                    // 181
-                                console.log('------------------------------------');                                   // 182
-                                console.log('Validate settings.json parameters');                                      // 183
-                                console.log('------------------------------------');                                   // 184
-                                Meteor.absolutePath = path.resolve('.').split(path.sep + '.meteor')[0];                // 185
-                                console.log('Meteor tries to find the settings.json file in Meteor.absolutePath:', Meteor.absolutePath);
-                                file = path.join(Meteor.absolutePath, 'settings-development-example.json'); // READ THE FILE 
                                                                                                                        //
-                                _context.next = 8;                                                                     // 181
-                                return _regenerator2.default.awrap(fs.readJson(file));                                 // 181
+    try {                                                                                                              // 180
+        Meteor.startup(function () {                                                                                   // 181
+            function _callee() {                                                                                       // 181
+                var file, exampleSettingsFile, keysEqual;                                                              // 181
+                return _regenerator2.default.async(function () {                                                       // 181
+                    function _callee$(_context) {                                                                      // 181
+                        while (1) {                                                                                    // 181
+                            switch (_context.prev = _context.next) {                                                   // 181
+                                case 0:                                                                                // 181
+                                    console.log('------------------------------------');                               // 182
+                                    console.log('Validate settings.json parameters');                                  // 183
+                                    console.log('------------------------------------');                               // 184
+                                    Meteor.absolutePath = path.resolve('.').split(path.sep + '.meteor')[0];            // 185
+                                    console.log('Meteor tries to find the settings.json file in Meteor.absolutePath:', Meteor.absolutePath);
+                                    file = path.join(Meteor.absolutePath, 'settings-development-example.json'); // READ THE FILE 
                                                                                                                        //
-                            case 8:                                                                                    // 181
-                                exampleSettingsFile = _context.sent;                                                   // 190
-                                _context.prev = 9;                                                                     // 181
-                                validateJSON(exampleSettingsFile);                                                     // 192
-                                _context.next = 16;                                                                    // 181
-                                break;                                                                                 // 181
+                                    _context.next = 8;                                                                 // 181
+                                    return _regenerator2.default.awrap(fs.readJson(file));                             // 181
                                                                                                                        //
-                            case 13:                                                                                   // 181
-                                _context.prev = 13;                                                                    // 181
-                                _context.t0 = _context["catch"](9);                                                    // 181
-                                throw new Error('Meteor wants to check your settings.json with the parameters in the example settings.json in the project root. Error: Cant read the example settings definitions file (not valid JSON): ' + file);
-                                                                                                                       //
-                            case 16:                                                                                   // 181
-                                keysEqual = compareKeys(Meteor.settings, exampleSettingsFile);                         // 197
-                                console.log('Settings file has all the keys as specified in the example json file?', keysEqual);
-                                                                                                                       //
-                                if (keysEqual) {                                                                       // 181
-                                    _context.next = 21;                                                                // 181
+                                case 8:                                                                                // 181
+                                    exampleSettingsFile = _context.sent;                                               // 190
+                                    _context.prev = 9;                                                                 // 181
+                                    validateJSON(exampleSettingsFile);                                                 // 192
+                                    _context.next = 16;                                                                // 181
                                     break;                                                                             // 181
-                                }                                                                                      // 181
                                                                                                                        //
-                                console.error("Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:UsersQlikexternalDocumentsGitHubQRSMeteor");
-                                throw new Error("Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:UsersQlikexternalDocumentsGitHubQRSMeteor");
+                                case 13:                                                                               // 181
+                                    _context.prev = 13;                                                                // 181
+                                    _context.t0 = _context["catch"](9);                                                // 181
+                                    throw new Error('Meteor wants to check your settings.json with the parameters in the example settings.json in the project root. Error: Cant read the example settings definitions file (not valid JSON): ' + file);
                                                                                                                        //
-                            case 21:                                                                                   // 181
-                            case "end":                                                                                // 181
-                                return _context.stop();                                                                // 181
+                                case 16:                                                                               // 181
+                                    keysEqual = compareKeys(Meteor.settings, exampleSettingsFile);                     // 197
+                                    console.log('Settings file has all the keys as specified in the example json file?', keysEqual);
+                                                                                                                       //
+                                    if (keysEqual) {                                                                   // 181
+                                        _context.next = 21;                                                            // 181
+                                        break;                                                                         // 181
+                                    }                                                                                  // 181
+                                                                                                                       //
+                                    console.error("Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:UsersQlikexternalDocumentsGitHubQRSMeteor");
+                                    throw new Error("Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:UsersQlikexternalDocumentsGitHubQRSMeteor");
+                                                                                                                       //
+                                case 21:                                                                               // 181
+                                case "end":                                                                            // 181
+                                    return _context.stop();                                                            // 181
+                            }                                                                                          // 181
                         }                                                                                              // 181
                     }                                                                                                  // 181
-                }                                                                                                      // 181
                                                                                                                        //
-                return _callee$;                                                                                       // 181
-            }(), null, this, [[9, 13]]);                                                                               // 181
-        }                                                                                                              // 181
+                    return _callee$;                                                                                   // 181
+                }(), null, this, [[9, 13]]);                                                                           // 181
+            }                                                                                                          // 181
                                                                                                                        //
-        return _callee;                                                                                                // 181
-    }());                                                                                                              // 181
-} //exit server side config                                                                                            // 205
+            return _callee;                                                                                            // 181
+        }());                                                                                                          // 181
+    } catch (error) {                                                                                                  // 205
+        throw new Error(error);                                                                                        // 206
+    }                                                                                                                  // 207
+} //exit server side config                                                                                            // 208
                                                                                                                        //
                                                                                                                        //
-var senseConfig = _senseConfig;                                                                                        // 207
+var senseConfig = _senseConfig;                                                                                        // 210
                                                                                                                        //
-function missingParameters(obj) {                                                                                      // 224
-    for (var key in meteorBabelHelpers.sanitizeForInObject(obj)) {                                                     // 225
-        if (obj[key] !== null && obj[key] != "") return false;                                                         // 226
-    }                                                                                                                  // 228
+function missingParameters(obj) {                                                                                      // 227
+    for (var key in meteorBabelHelpers.sanitizeForInObject(obj)) {                                                     // 228
+        if (obj[key] !== null && obj[key] != "") return false;                                                         // 229
+    }                                                                                                                  // 231
                                                                                                                        //
-    return true;                                                                                                       // 229
-}                                                                                                                      // 230
+    return true;                                                                                                       // 232
+}                                                                                                                      // 233
                                                                                                                        //
-function compareKeys(a, b) {                                                                                           // 232
-    var aKeys = Object.keys(a).sort();                                                                                 // 233
-    var bKeys = Object.keys(b).sort();                                                                                 // 234
-    return JSON.stringify(aKeys) === JSON.stringify(bKeys);                                                            // 235
-}                                                                                                                      // 236
+function compareKeys(a, b) {                                                                                           // 235
+    var aKeys = Object.keys(a).sort();                                                                                 // 236
+    var bKeys = Object.keys(b).sort();                                                                                 // 237
+    return JSON.stringify(aKeys) === JSON.stringify(bKeys);                                                            // 238
+}                                                                                                                      // 239
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"customers.js":function(require,exports,module){
@@ -4727,495 +4732,552 @@ module.watch(require("/imports/api/config"), {                                  
     }                                                                                                                  // 1
 }, 13);                                                                                                                // 1
 module.watch(require("/imports/startup/accounts-config.js"));                                                          // 1
+var shell = void 0;                                                                                                    // 1
+module.watch(require("node-powershell"), {                                                                             // 1
+    "default": function (v) {                                                                                          // 1
+        shell = v;                                                                                                     // 1
+    }                                                                                                                  // 1
+}, 14);                                                                                                                // 1
+//stop on unhandled errors                                                                                             // 33
+process.on('unhandledRejection', function (up) {                                                                       // 34
+    throw up;                                                                                                          // 34
+}); //import config for Qlik Sense QRS and Engine API.                                                                 // 34
                                                                                                                        //
-var path = require('path');                                                                                            // 40
+var path = require('path');                                                                                            // 42
                                                                                                                        //
-Meteor.startup(function () {                                                                                           // 42
-    process.env.ROOT_URL = 'http://' + Meteor.settings.public.qlikSenseHost;                                           // 43
+Meteor.startup(function () {                                                                                           // 45
+    process.env.ROOT_URL = 'http://' + Meteor.settings.public.qlikSenseHost;                                           // 46
     console.log('********* We expect Qlik Sense to run on host: ', process.env.ROOT_URL + ':' + Meteor.settings.public.qlikSensePort); // console.log('********* For END USERS we expect Sense to run on host: ', Meteor.settings.public.qlikSenseHost + ':' + Meteor.settings.public.qlikSensePort);
                                                                                                                        //
-    initQlikSense();                                                                                                   // 46
-    removeGeneratedResources();                                                                                        // 47
-    optimizeMongoDB();                                                                                                 // 48
-}); //                                                                                                                 // 49
-// ─── SETUP QLIK SENSE AFTER A CLEAN QlIK SENSE INSTALL ─────────────────────────────────────                         // 53
-//                                                                                                                     // 54
-//Check if Qlik Sense has been properly setup for this MeteorQRS tool.                                                 // 56
+    initQlikSense();                                                                                                   // 49
+    removeGeneratedResources();                                                                                        // 50
+    optimizeMongoDB();                                                                                                 // 51
+}); //                                                                                                                 // 52
+// ─── SETUP QLIK SENSE AFTER A CLEAN QlIK SENSE INSTALL ─────────────────────────────────────                         // 56
+//                                                                                                                     // 57
+//Check if Qlik Sense has been properly setup for this MeteorQRS tool.                                                 // 59
                                                                                                                        //
-function initQlikSense() {                                                                                             // 57
-    var QlikConfigured;                                                                                                // 57
-    return _regenerator2.default.async(function () {                                                                   // 57
-        function initQlikSense$(_context) {                                                                            // 57
-            while (1) {                                                                                                // 57
-                switch (_context.prev = _context.next) {                                                               // 57
-                    case 0:                                                                                            // 57
-                        console.log('------------------------------------');                                           // 58
-                        console.log('INIT QLIK SENSE');                                                                // 59
-                        console.log('Project root folder: ', Meteor.absolutePath);                                     // 60
+function initQlikSense() {                                                                                             // 60
+    var QlikConfigured;                                                                                                // 60
+    return _regenerator2.default.async(function () {                                                                   // 60
+        function initQlikSense$(_context) {                                                                            // 60
+            while (1) {                                                                                                // 60
+                switch (_context.prev = _context.next) {                                                               // 60
+                    case 0:                                                                                            // 60
+                        console.log('------------------------------------');                                           // 61
+                        console.log('INIT QLIK SENSE');                                                                // 62
+                        console.log('Project root folder: ', Meteor.absolutePath);                                     // 63
                                                                                                                        //
-                        if (!Meteor.settings.broker.automationBaseFolder) {                                            // 61
+                        if (!Meteor.settings.broker.automationBaseFolder) {                                            // 64
                             Meteor.settings.broker.automationBaseFolder = path.join(Meteor.absolutePath, '.automation');
                             console.log('Meteor.settings.broker.automationBaseFolder was empty, setting it to default: ', Meteor.settings.broker.automationBaseFolder);
-                        }                                                                                              // 64
+                        }                                                                                              // 67
                                                                                                                        //
-                        if (!Meteor.settings.broker.customerDataDir) {                                                 // 65
-                            Meteor.settings.broker.customerDataDir = path.join(Meteor.absolutePath, 'customerData');   // 66
+                        if (!Meteor.settings.broker.customerDataDir) {                                                 // 68
+                            Meteor.settings.broker.customerDataDir = path.join(Meteor.absolutePath, 'customerData');   // 69
                             console.log('Meteor.settings.broker.customerDataDir was empty, setting it to default: ', Meteor.settings.broker.customerDataDir);
-                        }                                                                                              // 68
+                        }                                                                                              // 71
                                                                                                                        //
-                        console.log('------------------------------------');                                           // 69
-                        Meteor.call('updateLocalSenseCopy');                                                           // 70
-                        _context.prev = 7;                                                                             // 57
+                        console.log('------------------------------------');                                           // 72
+                        Meteor.call('updateLocalSenseCopy');                                                           // 73
+                        _context.prev = 7;                                                                             // 60
                         //By checking if a stream exist we try to figure out if this is a fresh or already existing Qlik Sense installation.
-                        QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);       // 74
+                        QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);       // 77
                                                                                                                        //
-                        if (!(!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup)) {                   // 57
-                            _context.next = 29;                                                                        // 57
-                            break;                                                                                     // 57
-                        }                                                                                              // 57
+                        if (!(!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup)) {                   // 60
+                            _context.next = 34;                                                                        // 60
+                            break;                                                                                     // 60
+                        }                                                                                              // 60
                                                                                                                        //
-                        console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.'); // QSLic.insertLicense();
+                        console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
                                                                                                                        //
-                        QSLic.insertUserAccessRule();                                                                  // 78
-                        QSSystem.disableDefaultSecurityRules();                                                        // 79
-                        _context.next = 15;                                                                            // 57
-                        return _regenerator2.default.awrap(QSProxy.createVirtualProxies());                            // 57
+                        if (!Meteor.settings.qlikSense.installQlikSense) {                                             // 60
+                            _context.next = 16;                                                                        // 60
+                            break;                                                                                     // 60
+                        }                                                                                              // 60
                                                                                                                        //
-                    case 15:                                                                                           // 57
-                        _context.next = 17;                                                                            // 57
-                        return _regenerator2.default.awrap(timeout(4000));                                             // 57
+                        installQlikSense();                                                                            // 81
+                        _context.next = 15;                                                                            // 60
+                        return _regenerator2.default.awrap(timeout(1000 * 60 * 20));                                   // 60
                                                                                                                        //
-                    case 17:                                                                                           // 57
-                        _context.next = 19;                                                                            // 57
-                        return _regenerator2.default.awrap(QSSystem.createSecurityRules());                            // 57
+                    case 15:                                                                                           // 60
+                        //wait 20 minutes till the Qlik Sense installation has completed...                            
+                        QSLic.insertLicense();                                                                         // 83
                                                                                                                        //
-                    case 19:                                                                                           // 57
-                        QSStream.initSenseStreams();                                                                   // 83
-                        _context.next = 22;                                                                            // 57
-                        return _regenerator2.default.awrap(QSApp.uploadAndPublishTemplateApps());                      // 57
+                    case 16:                                                                                           // 60
+                        QSLic.insertUserAccessRule();                                                                  // 85
+                        QSSystem.disableDefaultSecurityRules();                                                        // 86
+                        _context.next = 20;                                                                            // 60
+                        return _regenerator2.default.awrap(QSProxy.createVirtualProxies());                            // 60
                                                                                                                        //
-                    case 22:                                                                                           // 57
-                        QSApp.setAppIDs();                                                                             // 85
-                        _context.next = 25;                                                                            // 57
-                        return _regenerator2.default.awrap(QSApp.createAppConnections());                              // 57
+                    case 20:                                                                                           // 60
+                        _context.next = 22;                                                                            // 60
+                        return _regenerator2.default.awrap(timeout(4000));                                             // 60
                                                                                                                        //
-                    case 25:                                                                                           // 57
-                        //import extra connections                                                                     // 86
-                        QSExtensions.uploadExtensions();                                                               // 87
-                        QSLic.saveSystemRules();                                                                       // 88
-                        _context.next = 30;                                                                            // 57
-                        break;                                                                                         // 57
+                    case 22:                                                                                           // 60
+                        _context.next = 24;                                                                            // 60
+                        return _regenerator2.default.awrap(QSSystem.createSecurityRules());                            // 60
                                                                                                                        //
-                    case 29:                                                                                           // 57
+                    case 24:                                                                                           // 60
+                        QSStream.initSenseStreams();                                                                   // 90
+                        _context.next = 27;                                                                            // 60
+                        return _regenerator2.default.awrap(QSApp.uploadAndPublishTemplateApps());                      // 60
+                                                                                                                       //
+                    case 27:                                                                                           // 60
+                        QSApp.setAppIDs();                                                                             // 92
+                        _context.next = 30;                                                                            // 60
+                        return _regenerator2.default.awrap(QSApp.createAppConnections());                              // 60
+                                                                                                                       //
+                    case 30:                                                                                           // 60
+                        //import extra connections                                                                     // 93
+                        QSExtensions.uploadExtensions();                                                               // 94
+                        QSLic.saveSystemRules();                                                                       // 95
+                        _context.next = 35;                                                                            // 60
+                        break;                                                                                         // 60
+                                                                                                                       //
+                    case 34:                                                                                           // 60
                         //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.    
-                        QSApp.setAppIDs();                                                                             // 91
+                        QSApp.setAppIDs();                                                                             // 98
                                                                                                                        //
-                    case 30:                                                                                           // 57
-                        _context.next = 35;                                                                            // 57
-                        break;                                                                                         // 57
+                    case 35:                                                                                           // 60
+                        _context.next = 40;                                                                            // 60
+                        break;                                                                                         // 60
                                                                                                                        //
-                    case 32:                                                                                           // 57
-                        _context.prev = 32;                                                                            // 57
-                        _context.t0 = _context["catch"](7);                                                            // 57
+                    case 37:                                                                                           // 60
+                        _context.prev = 37;                                                                            // 60
+                        _context.t0 = _context["catch"](7);                                                            // 60
                         console.error('Main.js, initQlikSense: Failed to run the initialization of Qlik Sense', _context.t0);
                                                                                                                        //
-                    case 35:                                                                                           // 57
-                    case "end":                                                                                        // 57
-                        return _context.stop();                                                                        // 57
-                }                                                                                                      // 57
-            }                                                                                                          // 57
-        }                                                                                                              // 57
+                    case 40:                                                                                           // 60
+                    case "end":                                                                                        // 60
+                        return _context.stop();                                                                        // 60
+                }                                                                                                      // 60
+            }                                                                                                          // 60
+        }                                                                                                              // 60
                                                                                                                        //
-        return initQlikSense$;                                                                                         // 57
-    }(), null, this, [[7, 32]]);                                                                                       // 57
-} //helper functions to await a set timeout                                                                            // 57
-                                                                                                                       //
-                                                                                                                       //
-function timeout(ms) {                                                                                                 // 100
-    return new Promise(function (resolve) {                                                                            // 101
-        return setTimeout(resolve, ms);                                                                                // 101
-    });                                                                                                                // 101
-}                                                                                                                      // 102
-                                                                                                                       //
-function sleep(fn) {                                                                                                   // 103
-    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {          // 103
-        args[_key - 1] = arguments[_key];                                                                              // 103
-    }                                                                                                                  // 103
-                                                                                                                       //
-    return _regenerator2.default.async(function () {                                                                   // 103
-        function sleep$(_context2) {                                                                                   // 103
-            while (1) {                                                                                                // 103
-                switch (_context2.prev = _context2.next) {                                                             // 103
-                    case 0:                                                                                            // 103
-                        _context2.next = 2;                                                                            // 103
-                        return _regenerator2.default.awrap(timeout(3000));                                             // 103
-                                                                                                                       //
-                    case 2:                                                                                            // 103
-                        return _context2.abrupt("return", fn.apply(undefined, args));                                  // 103
-                                                                                                                       //
-                    case 3:                                                                                            // 103
-                    case "end":                                                                                        // 103
-                        return _context2.stop();                                                                       // 103
-                }                                                                                                      // 103
-            }                                                                                                          // 103
-        }                                                                                                              // 103
-                                                                                                                       //
-        return sleep$;                                                                                                 // 103
-    }(), null, this);                                                                                                  // 103
-} //                                                                                                                   // 103
-// ─── REMOVE STREAMS AND APPS CREATED DURING THE SAAS DEMO ───────────────────────                                    // 109
-//                                                                                                                     // 110
+        return initQlikSense$;                                                                                         // 60
+    }(), null, this, [[7, 37]]);                                                                                       // 60
+} //helper functions to await a set timeout                                                                            // 60
                                                                                                                        //
                                                                                                                        //
-function removeGeneratedResources() {                                                                                  // 112
-    // console.log('remove the all generated resources on each server start');                                         // 113
-    // Meteor.setTimeout(function() {                                                                                  // 114
+function timeout(ms) {                                                                                                 // 107
+    return new Promise(function (resolve) {                                                                            // 108
+        return setTimeout(resolve, ms);                                                                                // 108
+    });                                                                                                                // 108
+}                                                                                                                      // 109
+                                                                                                                       //
+function sleep(fn) {                                                                                                   // 110
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {          // 110
+        args[_key - 1] = arguments[_key];                                                                              // 110
+    }                                                                                                                  // 110
+                                                                                                                       //
+    return _regenerator2.default.async(function () {                                                                   // 110
+        function sleep$(_context2) {                                                                                   // 110
+            while (1) {                                                                                                // 110
+                switch (_context2.prev = _context2.next) {                                                             // 110
+                    case 0:                                                                                            // 110
+                        _context2.next = 2;                                                                            // 110
+                        return _regenerator2.default.awrap(timeout(3000));                                             // 110
+                                                                                                                       //
+                    case 2:                                                                                            // 110
+                        return _context2.abrupt("return", fn.apply(undefined, args));                                  // 110
+                                                                                                                       //
+                    case 3:                                                                                            // 110
+                    case "end":                                                                                        // 110
+                        return _context2.stop();                                                                       // 110
+                }                                                                                                      // 110
+            }                                                                                                          // 110
+        }                                                                                                              // 110
+                                                                                                                       //
+        return sleep$;                                                                                                 // 110
+    }(), null, this);                                                                                                  // 110
+} //                                                                                                                   // 110
+// ─── INSTALL QLIK SENSE ───────────────────────────────────────────────────────────                                  // 116
+//                                                                                                                     // 117
+                                                                                                                       //
+                                                                                                                       //
+var exec = require('child_process').execFile;                                                                          // 120
+                                                                                                                       //
+var installQlikSense = function () {                                                                                   // 121
+    console.log("Start installation of Qlik Sense via a silent script... please wait 15 minutes to complete... (we use this is a safe assumption that is has finished before we move on). Be aware of screens popping up which request extra info..."); // let ps = new shell({
+    //     executionPolicy: 'Bypass',                                                                                  // 125
+    //     noProfile: true                                                                                             // 126
+    // });                                                                                                             // 127
+    // var folder = Meteor.settings.qlikSense.sharedPersistanceFolder;                                                 // 128
+    // var name = Meteor.settings.qlikSense.sharedPersistanceFolderName;                                               // 129
+    // // ps.addCommand('Write-Host Creating a shared folder on: ' + folder);                                          // 131
+    // ps.addCommand('New-Item "C:\\test" –type directory');                                                           // 132
+    // // ps.addCommand('New-SmbShare –Name ' + name + ' –Path ' + folder + ' –FullAccess Everyone  ')                 // 133
+    // ps.invoke()                                                                                                     // 135
+    //     .then(output => {                                                                                           // 136
+    //         console.log(output);                                                                                    // 137
+    //     })                                                                                                          // 138
+    //     .catch(err => {                                                                                             // 139
+    //         console.error('Installation of Qlik Sense failed, make sure you check the log file in GitHub\QRSMeteor\.automation\InstallationSoftware\log.txt', err)
+    //         ps.dispose();                                                                                           // 141
+    //     });                                                                                                         // 142
+                                                                                                                       //
+    var executable = 'startSilentInstall.ps1';                                                                         // 144
+    var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);        // 145
+    exec(installer, function (err, data) {                                                                             // 146
+        if (err) {} else {                                                                                             // 147
+            console.log('installation of Qlik Sense success, reponse from the Qlik Sense installer: ' + data.toString());
+        }                                                                                                              // 149
+    });                                                                                                                // 150
+}; //                                                                                                                  // 151
+// ─── REMOVE STREAMS AND APPS CREATED DURING THE SAAS DEMO ───────────────────────                                    // 155
+//                                                                                                                     // 156
+                                                                                                                       //
+                                                                                                                       //
+function removeGeneratedResources() {                                                                                  // 158
+    // console.log('remove the all generated resources on each server start');                                         // 159
+    // Meteor.setTimeout(function() {                                                                                  // 160
     //     console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
-    //     Meteor.call('removeGeneratedResources', {});                                                                // 116
-    // }, 0); //remove all logs directly at startup                                                                    // 117
-    if (Meteor.settings.broker.automaticCleanUpGeneratedApps === "Yes") {                                              // 118
-        Meteor.setInterval(function () {                                                                               // 119
+    //     Meteor.call('removeGeneratedResources', {});                                                                // 162
+    // }, 0); //remove all logs directly at startup                                                                    // 163
+    if (Meteor.settings.broker.automaticCleanUpGeneratedApps === "Yes") {                                              // 164
+        Meteor.setInterval(function () {                                                                               // 165
             console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
-            Meteor.call('removeGeneratedResources', {});                                                               // 121
-        }, 1 * 86400000); //remove all logs every 1 day                                                                // 122
-    }                                                                                                                  // 123
-}                                                                                                                      // 124
+            Meteor.call('removeGeneratedResources', {});                                                               // 167
+        }, 1 * 86400000); //remove all logs/apps/streams every 1 day                                                   // 168
+    }                                                                                                                  // 169
+}                                                                                                                      // 170
                                                                                                                        //
-function optimizeMongoDB() {                                                                                           // 126
+function optimizeMongoDB() {                                                                                           // 172
     // console.log('## setting up mongo indexes on generationUserId in the generated resources, customers and other collections, to increase mongo performance');
-    TemplateApps._ensureIndex({                                                                                        // 128
-        "generationUserId": 1,                                                                                         // 129
-        "id": 1                                                                                                        // 130
-    });                                                                                                                // 128
+    TemplateApps._ensureIndex({                                                                                        // 174
+        "generationUserId": 1,                                                                                         // 175
+        "id": 1                                                                                                        // 176
+    });                                                                                                                // 174
                                                                                                                        //
-    GeneratedResources._ensureIndex({                                                                                  // 132
-        "generationUserId": 1,                                                                                         // 133
-        "id": 1                                                                                                        // 134
-    });                                                                                                                // 132
+    GeneratedResources._ensureIndex({                                                                                  // 178
+        "generationUserId": 1,                                                                                         // 179
+        "id": 1                                                                                                        // 180
+    });                                                                                                                // 178
                                                                                                                        //
-    Apps._ensureIndex({                                                                                                // 136
-        "id": 1                                                                                                        // 137
-    });                                                                                                                // 136
+    Apps._ensureIndex({                                                                                                // 182
+        "id": 1                                                                                                        // 183
+    });                                                                                                                // 182
                                                                                                                        //
-    Customers._ensureIndex({                                                                                           // 139
-        "generationUserId": 1                                                                                          // 140
-    });                                                                                                                // 139
+    Customers._ensureIndex({                                                                                           // 185
+        "generationUserId": 1                                                                                          // 186
+    });                                                                                                                // 185
                                                                                                                        //
-    Streams._ensureIndex({                                                                                             // 142
-        "id": 1                                                                                                        // 143
-    });                                                                                                                // 142
+    Streams._ensureIndex({                                                                                             // 188
+        "id": 1                                                                                                        // 189
+    });                                                                                                                // 188
                                                                                                                        //
-    APILogs._ensureIndex({                                                                                             // 145
-        "createdBy": 1                                                                                                 // 146
-    });                                                                                                                // 145
+    APILogs._ensureIndex({                                                                                             // 191
+        "createdBy": 1                                                                                                 // 192
+    });                                                                                                                // 191
                                                                                                                        //
-    APILogs._ensureIndex({                                                                                             // 148
-        "createDate": 1                                                                                                // 149
-    });                                                                                                                // 148
-} //                                                                                                                   // 151
-// ─── GET AN UPDATE WHEN QLIK SENSE HAS CHANGED ──────────────────────────────────                                    // 154
-//                                                                                                                     // 155
-// function createNotificationListeners() {                                                                            // 158
+    APILogs._ensureIndex({                                                                                             // 194
+        "createDate": 1                                                                                                // 195
+    });                                                                                                                // 194
+} //                                                                                                                   // 197
+// ─── GET AN UPDATE WHEN QLIK SENSE HAS CHANGED ──────────────────────────────────                                    // 200
+//                                                                                                                     // 201
+// function createNotificationListeners() {                                                                            // 204
 //     //Create notification listener in Qlik sense https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Notification-Remove-Change-Subscription.htm
 //     //console.log('********* On meteor startup, Meteor tool registers itself at Qlik Sense to get notifications from Sense on changes to apps and streams.');
 //     //console.log('********* we try to register a notification on this URL: HTTP post to http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app');
 //     //console.log('********* The notification URL for Streams is: ' + Meteor.settings.private.notificationURL + '/streams');
-//     try {                                                                                                           // 164
+//     try {                                                                                                           // 210
 //         const resultApp = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=app', {
-//             headers: authHeaders,                                                                                   // 166
-//             params: { 'xrfkey': senseConfig.xrfkey },                                                               // 167
-//             data: Meteor.settings.private.notificationURL + '/apps'                                                 // 168
-//         })                                                                                                          // 169
+//             headers: authHeaders,                                                                                   // 212
+//             params: { 'xrfkey': senseConfig.xrfkey },                                                               // 213
+//             data: Meteor.settings.private.notificationURL + '/apps'                                                 // 214
+//         })                                                                                                          // 215
 //         const resultStream = HTTP.post('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/notification?name=stream', {
-//                 headers: authHeaders,                                                                               // 172
-//                 params: { 'xrfkey': senseConfig.xrfkey },                                                           // 173
-//                 data: Meteor.settings.private.notificationURL + '/streams'                                          // 174
-//             })                                                                                                      // 175
-//             //console.log('Register notication success');                                                           // 176
-//             // //console.log('the result from sense register App notification was: ', resultApp);                   // 177
-//             // //console.log('the result from sense register Stream notification was: ', resultStream);             // 178
-//     } catch (err) {                                                                                                 // 179
-//         console.error('Create notification subscription in sense qrs failed', err);                                 // 180
-//         // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);                     // 181
-//     }                                                                                                               // 182
-// }                                                                                                                   // 183
-//                                                                                                                     // 185
-// ─── METEOR METHODS ─────────────────────────────────────────────────────────────                                    // 186
-//                                                                                                                     // 187
+//                 headers: authHeaders,                                                                               // 218
+//                 params: { 'xrfkey': senseConfig.xrfkey },                                                           // 219
+//                 data: Meteor.settings.private.notificationURL + '/streams'                                          // 220
+//             })                                                                                                      // 221
+//             //console.log('Register notication success');                                                           // 222
+//             // //console.log('the result from sense register App notification was: ', resultApp);                   // 223
+//             // //console.log('the result from sense register Stream notification was: ', resultStream);             // 224
+//     } catch (err) {                                                                                                 // 225
+//         console.error('Create notification subscription in sense qrs failed', err);                                 // 226
+//         // throw new Meteor.Error('Create notification subscription in sense qrs failed', err);                     // 227
+//     }                                                                                                               // 228
+// }                                                                                                                   // 229
+//                                                                                                                     // 231
+// ─── METEOR METHODS ─────────────────────────────────────────────────────────────                                    // 232
+//                                                                                                                     // 233
                                                                                                                        //
                                                                                                                        //
-Meteor.methods({                                                                                                       // 190
-    getAppIDs: function () {                                                                                           // 191
-        return {                                                                                                       // 192
-            SSBI: senseConfig.SSBIApp,                                                                                 // 193
-            // QSApp.getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream)[0].id,              // 193
+Meteor.methods({                                                                                                       // 236
+    getAppIDs: function () {                                                                                           // 237
+        return {                                                                                                       // 238
+            SSBI: senseConfig.SSBIApp,                                                                                 // 239
+            // QSApp.getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream)[0].id,              // 239
             slideGenerator: senseConfig.slideGeneratorAppId //QSApp.getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream)[0].id
                                                                                                                        //
-        };                                                                                                             // 192
-    },                                                                                                                 // 196
-    generateStreamAndApp: function () {                                                                                // 197
-        function _callee(customers) {                                                                                  // 190
-            var customerNames;                                                                                         // 190
-            return _regenerator2.default.async(function () {                                                           // 190
-                function _callee$(_context3) {                                                                         // 190
-                    while (1) {                                                                                        // 190
-                        switch (_context3.prev = _context3.next) {                                                     // 190
-                            case 0:                                                                                    // 190
-                                _context3.prev = 0;                                                                    // 190
-                                check(customers, Array);                                                               // 199
-                                _context3.next = 7;                                                                    // 190
-                                break;                                                                                 // 190
+        };                                                                                                             // 238
+    },                                                                                                                 // 242
+    generateStreamAndApp: function () {                                                                                // 243
+        function _callee(customers) {                                                                                  // 236
+            var customerNames;                                                                                         // 236
+            return _regenerator2.default.async(function () {                                                           // 236
+                function _callee$(_context3) {                                                                         // 236
+                    while (1) {                                                                                        // 236
+                        switch (_context3.prev = _context3.next) {                                                     // 236
+                            case 0:                                                                                    // 236
+                                _context3.prev = 0;                                                                    // 236
+                                check(customers, Array);                                                               // 245
+                                _context3.next = 7;                                                                    // 236
+                                break;                                                                                 // 236
                                                                                                                        //
-                            case 4:                                                                                    // 190
-                                _context3.prev = 4;                                                                    // 190
-                                _context3.t0 = _context3["catch"](0);                                                  // 190
+                            case 4:                                                                                    // 236
+                                _context3.prev = 4;                                                                    // 236
+                                _context3.t0 = _context3["catch"](0);                                                  // 236
                                 throw new Meteor.Error('Missing field', 'No customers supplied for the generation of apps.');
                                                                                                                        //
-                            case 7:                                                                                    // 190
-                                // first clean the environment                                                         // 203
-                                Meteor.call('removeGeneratedResources', {                                              // 204
-                                    'generationUserId': Meteor.userId()                                                // 205
-                                });                                                                                    // 204
-                                _context3.next = 10;                                                                   // 190
+                            case 7:                                                                                    // 236
+                                // first clean the environment                                                         // 249
+                                Meteor.call('removeGeneratedResources', {                                              // 250
+                                    'generationUserId': Meteor.userId()                                                // 251
+                                });                                                                                    // 250
+                                _context3.next = 10;                                                                   // 236
                                 return _regenerator2.default.awrap(QSApp.generateStreamAndApp(customers, this.userId));
                                                                                                                        //
-                            case 10:                                                                                   // 190
-                                //then, create the new stuff                                                           // 207
+                            case 10:                                                                                   // 236
+                                //then, create the new stuff                                                           // 253
                                 console.log('################## Meteor.settings.multiTenantScenario', Meteor.settings.multiTenantScenario);
                                                                                                                        //
-                                try {                                                                                  // 210
-                                    if (!Meteor.settings.multiTenantScenario) {                                        // 211
-                                        //on premise installation for a single tenant (e.g. with MS Active Directory)  // 211
-                                        customerNames = customers.map(function (c) {                                   // 212
-                                            return c.name;                                                             // 213
-                                        });                                                                            // 214
-                                        console.log('customerNames', customerNames);                                   // 216
+                                try {                                                                                  // 256
+                                    if (!Meteor.settings.multiTenantScenario) {                                        // 257
+                                        //on premise installation for a single tenant (e.g. with MS Active Directory)  // 257
+                                        customerNames = customers.map(function (c) {                                   // 258
+                                            return c.name;                                                             // 259
+                                        });                                                                            // 260
+                                        console.log('customerNames', customerNames);                                   // 262
                                         QSCustomProps.upsertCustomPropertyByName('customer', customerNames); //for non OEM scenarios (with MS AD), people like to use custom properties for authorization instead of the groups via a ticket.
-                                    }                                                                                  // 218
-                                } catch (error) {                                                                      // 219
-                                    console.log('error to create custom properties', error);                           // 220
-                                }                                                                                      // 221
+                                    }                                                                                  // 264
+                                } catch (error) {                                                                      // 265
+                                    console.log('error to create custom properties', error);                           // 266
+                                }                                                                                      // 267
                                                                                                                        //
-                                Meteor.call('updateLocalSenseCopy');                                                   // 223
+                                Meteor.call('updateLocalSenseCopy');                                                   // 269
                                                                                                                        //
-                            case 13:                                                                                   // 190
-                            case "end":                                                                                // 190
-                                return _context3.stop();                                                               // 190
-                        }                                                                                              // 190
-                    }                                                                                                  // 190
-                }                                                                                                      // 190
+                            case 13:                                                                                   // 236
+                            case "end":                                                                                // 236
+                                return _context3.stop();                                                               // 236
+                        }                                                                                              // 236
+                    }                                                                                                  // 236
+                }                                                                                                      // 236
                                                                                                                        //
-                return _callee$;                                                                                       // 190
-            }(), null, this, [[0, 4]]);                                                                                // 190
-        }                                                                                                              // 190
+                return _callee$;                                                                                       // 236
+            }(), null, this, [[0, 4]]);                                                                                // 236
+        }                                                                                                              // 236
                                                                                                                        //
-        return _callee;                                                                                                // 190
-    }(),                                                                                                               // 190
-    resetEnvironment: function () {                                                                                    // 225
+        return _callee;                                                                                                // 236
+    }(),                                                                                                               // 236
+    resetEnvironment: function () {                                                                                    // 271
         Meteor.call('resetLoggedInUser'); //logout all users before removing all the current customers. This to prevent the screen stays logged in at an old user.
                                                                                                                        //
-        Meteor.call('removeGeneratedResources', {                                                                      // 227
-            'generationUserId': Meteor.userId()                                                                        // 228
-        });                                                                                                            // 227
-        TemplateApps.remove({                                                                                          // 230
-            'generationUserId': Meteor.userId()                                                                        // 231
-        });                                                                                                            // 230
-        Customers.remove({                                                                                             // 233
-            'generationUserId': Meteor.userId()                                                                        // 234
-        });                                                                                                            // 233
-        APILogs.remove({                                                                                               // 236
-            'generationUserId': Meteor.userId()                                                                        // 237
-        });                                                                                                            // 236
+        Meteor.call('removeGeneratedResources', {                                                                      // 273
+            'generationUserId': Meteor.userId()                                                                        // 274
+        });                                                                                                            // 273
+        TemplateApps.remove({                                                                                          // 276
+            'generationUserId': Meteor.userId()                                                                        // 277
+        });                                                                                                            // 276
+        Customers.remove({                                                                                             // 279
+            'generationUserId': Meteor.userId()                                                                        // 280
+        });                                                                                                            // 279
+        APILogs.remove({                                                                                               // 282
+            'generationUserId': Meteor.userId()                                                                        // 283
+        });                                                                                                            // 282
                                                                                                                        //
-        if (!Meteor.settings.multiTenantScenario) {                                                                    // 239
-            //on premise installation for a single tenant (e.g. with MS Active Directory)                              // 239
-            QSCustomProps.deleteCustomProperty('customers');                                                           // 240
-        }                                                                                                              // 241
-    },                                                                                                                 // 242
-    upsertTemplate: function (selector, currentApp) {                                                                  // 243
-        console.log('upsert template');                                                                                // 244
-        TemplateApps.upsert(selector, {                                                                                // 245
-            $set: {                                                                                                    // 246
-                name: currentApp.name,                                                                                 // 247
-                id: currentApp.id,                                                                                     // 248
-                generationUserId: Meteor.userId()                                                                      // 249
-            }                                                                                                          // 246
-        });                                                                                                            // 245
-    },                                                                                                                 // 252
-    removeTemplate: function (selector, currentApp) {                                                                  // 253
-        console.log('remove template');                                                                                // 254
-        TemplateApps.remove(selector);                                                                                 // 255
-    },                                                                                                                 // 256
-    removeGeneratedResources: function (generationUserSelection) {                                                     // 257
-        //console.log('remove GeneratedResources method, before we make new ones');                                    // 258
-        //logging only                                                                                                 // 259
-        if (generationUserSelection) {                                                                                 // 260
-            var call = {};                                                                                             // 261
-            call.action = 'Remove generated resources';                                                                // 262
+        if (!Meteor.settings.multiTenantScenario) {                                                                    // 285
+            //on premise installation for a single tenant (e.g. with MS Active Directory)                              // 285
+            QSCustomProps.deleteCustomProperty('customers');                                                           // 286
+        }                                                                                                              // 287
+    },                                                                                                                 // 288
+    upsertTemplate: function (selector, currentApp) {                                                                  // 289
+        console.log('upsert template');                                                                                // 290
+        TemplateApps.upsert(selector, {                                                                                // 291
+            $set: {                                                                                                    // 292
+                name: currentApp.name,                                                                                 // 293
+                id: currentApp.id,                                                                                     // 294
+                generationUserId: Meteor.userId()                                                                      // 295
+            }                                                                                                          // 292
+        });                                                                                                            // 291
+    },                                                                                                                 // 298
+    removeTemplate: function (selector, currentApp) {                                                                  // 299
+        console.log('remove template');                                                                                // 300
+        TemplateApps.remove(selector);                                                                                 // 301
+    },                                                                                                                 // 302
+    removeGeneratedResources: function (generationUserSelection) {                                                     // 303
+        //console.log('remove GeneratedResources method, before we make new ones');                                    // 304
+        //logging only                                                                                                 // 305
+        if (generationUserSelection) {                                                                                 // 306
+            var call = {};                                                                                             // 307
+            call.action = 'Remove generated resources';                                                                // 308
             call.request = 'Remove all apps and streams in Qlik Sense for userId: ' + generationUserSelection.generationUserId;
-            REST_Log(call, generationUserSelection);                                                                   // 264
-        }                                                                                                              // 265
+            REST_Log(call, generationUserSelection);                                                                   // 310
+        }                                                                                                              // 311
                                                                                                                        //
-        GeneratedResources.find(generationUserSelection).forEach(function (resource) {                                 // 266
-            // this.unblock()                                                                                          // 268
-            //console.log('resetEnvironment for userId', Meteor.userId());generationUserSelection.generationUserId     // 269
-            //If not selection was given, we want to reset the whole environment, so also delete the streams.          // 271
-            // if (!generationUserSelection.generationUserId) {                                                        // 272
-            try {                                                                                                      // 273
+        GeneratedResources.find(generationUserSelection).forEach(function (resource) {                                 // 312
+            // this.unblock()                                                                                          // 314
+            //console.log('resetEnvironment for userId', Meteor.userId());generationUserSelection.generationUserId     // 315
+            //If not selection was given, we want to reset the whole environment, so also delete the streams.          // 317
+            // if (!generationUserSelection.generationUserId) {                                                        // 318
+            try {                                                                                                      // 319
                 Meteor.call('deleteStream', resource.streamId); //added random company names, so this should not be an issue //26-9 can't delete stream, because each user creates a stream with the same name...
             } catch (err) {} //console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
-            //don't bother if generated resources do not exists, just continue                                         // 277
-            // }                                                                                                       // 278
-            //delete apps always                                                                                       // 279
+            //don't bother if generated resources do not exists, just continue                                         // 323
+            // }                                                                                                       // 324
+            //delete apps always                                                                                       // 325
                                                                                                                        //
                                                                                                                        //
-            try {                                                                                                      // 280
-                Meteor.call('deleteApp', resource.appId);                                                              // 281
+            try {                                                                                                      // 326
+                Meteor.call('deleteApp', resource.appId);                                                              // 327
             } catch (err) {//console.error('No issue, but you can manually remove this id from the generated database. We got one resource in the generated list, that has already been removed manually', resource);
-            }                                                                                                          // 284
-        });                                                                                                            // 285
-        GeneratedResources.remove(generationUserSelection);                                                            // 286
-        APILogs.remove(generationUserSelection);                                                                       // 287
-    },                                                                                                                 // 288
-    copyApp: function (guid, name) {                                                                                   // 289
-        check(guid, String);                                                                                           // 290
-        check(name, String);                                                                                           // 291
-        var id = QSApp.copyApp(guid, name);                                                                            // 292
-        Meteor.call('updateLocalSenseCopy');                                                                           // 293
-        return id;                                                                                                     // 294
-    },                                                                                                                 // 295
-    copyAppSelectedCustomers: function (currentApp) {                                                                  // 296
-        //the app the user clicked on                                                                                  // 296
-        if (!currentApp) {                                                                                             // 297
-            throw new Meteor.Error('No App selected to copy');                                                         // 298
-        }                                                                                                              // 299
+            }                                                                                                          // 330
+        });                                                                                                            // 331
+        GeneratedResources.remove(generationUserSelection);                                                            // 332
+        APILogs.remove(generationUserSelection);                                                                       // 333
+    },                                                                                                                 // 334
+    copyApp: function (guid, name) {                                                                                   // 335
+        check(guid, String);                                                                                           // 336
+        check(name, String);                                                                                           // 337
+        var id = QSApp.copyApp(guid, name);                                                                            // 338
+        Meteor.call('updateLocalSenseCopy');                                                                           // 339
+        return id;                                                                                                     // 340
+    },                                                                                                                 // 341
+    copyAppSelectedCustomers: function (currentApp) {                                                                  // 342
+        //the app the user clicked on                                                                                  // 342
+        if (!currentApp) {                                                                                             // 343
+            throw new Meteor.Error('No App selected to copy');                                                         // 344
+        }                                                                                                              // 345
                                                                                                                        //
-        ;                                                                                                              // 299
-        customers = Customers.find({                                                                                   // 301
-            'generationUserId': Meteor.userId(),                                                                       // 302
-            checked: true                                                                                              // 303
-        }); //all selected customers                                                                                   // 301
+        ;                                                                                                              // 345
+        customers = Customers.find({                                                                                   // 347
+            'generationUserId': Meteor.userId(),                                                                       // 348
+            checked: true                                                                                              // 349
+        }); //all selected customers                                                                                   // 347
                                                                                                                        //
-        if (!customers) {                                                                                              // 305
-            throw new Meteor.Error('No customers selected to copy the app for');                                       // 306
-        }                                                                                                              // 307
+        if (!customers) {                                                                                              // 351
+            throw new Meteor.Error('No customers selected to copy the app for');                                       // 352
+        }                                                                                                              // 353
                                                                                                                        //
-        ;                                                                                                              // 307
-        customers.forEach(function (customer) {                                                                        // 309
-            var newAppId = Meteor.call('copyApp', currentApp.id, customer.name + '-' + currentApp.name);               // 311
+        ;                                                                                                              // 353
+        customers.forEach(function (customer) {                                                                        // 355
+            var newAppId = Meteor.call('copyApp', currentApp.id, customer.name + '-' + currentApp.name);               // 357
             Meteor.call('updateLocalSenseCopy'); //store in the database that the user generated something, so we can later on remove it.
                                                                                                                        //
-            GeneratedResources.insert({                                                                                // 315
-                'generationUserId': Meteor.userId(),                                                                   // 316
-                'customer': null,                                                                                      // 317
-                'streamId': null,                                                                                      // 318
-                'appId': newAppId                                                                                      // 319
-            });                                                                                                        // 315
-        });                                                                                                            // 321
-    },                                                                                                                 // 322
-    deleteApp: function (guid) {                                                                                       // 323
-        check(guid, String);                                                                                           // 324
+            GeneratedResources.insert({                                                                                // 361
+                'generationUserId': Meteor.userId(),                                                                   // 362
+                'customer': null,                                                                                      // 363
+                'streamId': null,                                                                                      // 364
+                'appId': newAppId                                                                                      // 365
+            });                                                                                                        // 361
+        });                                                                                                            // 367
+    },                                                                                                                 // 368
+    deleteApp: function (guid) {                                                                                       // 369
+        check(guid, String);                                                                                           // 370
                                                                                                                        //
-        if (guid !== Meteor.settings.public.templateAppId) {                                                           // 325
-            //logging only                                                                                             // 326
-            var call = {};                                                                                             // 327
-            call.action = 'Delete app';                                                                                // 328
-            call.request = 'Delete app: ' + guid;                                                                      // 329
-            REST_Log(call);                                                                                            // 330
-            var id = QSApp.deleteApp(guid);                                                                            // 332
-            Meteor.call('updateLocalSenseCopy');                                                                       // 333
-            return id;                                                                                                 // 334
-        } else {                                                                                                       // 335
-            throw new Meteor.Error("you can't delete the template app with guid: ", guid);                             // 336
-        }                                                                                                              // 337
-    },                                                                                                                 // 338
-    removeAllCustomers: function () {                                                                                  // 339
-        return Customers.remove({                                                                                      // 340
-            'generationUserId': Meteor.userId()                                                                        // 341
-        });                                                                                                            // 340
-    }                                                                                                                  // 343
-});                                                                                                                    // 190
-Meteor.methods({                                                                                                       // 346
-    updateLocalSenseCopyApps: function () {                                                                            // 347
-        //delete the local content of the database before updating it                                                  // 348
-        Apps.remove({}); //Update the Apps with fresh info from Sense                                                  // 349
+        if (guid !== Meteor.settings.public.templateAppId) {                                                           // 371
+            //logging only                                                                                             // 372
+            var call = {};                                                                                             // 373
+            call.action = 'Delete app';                                                                                // 374
+            call.request = 'Delete app: ' + guid;                                                                      // 375
+            REST_Log(call);                                                                                            // 376
+            var id = QSApp.deleteApp(guid);                                                                            // 378
+            Meteor.call('updateLocalSenseCopy');                                                                       // 379
+            return id;                                                                                                 // 380
+        } else {                                                                                                       // 381
+            throw new Meteor.Error("you can't delete the template app with guid: ", guid);                             // 382
+        }                                                                                                              // 383
+    },                                                                                                                 // 384
+    removeAllCustomers: function () {                                                                                  // 385
+        return Customers.remove({                                                                                      // 386
+            'generationUserId': Meteor.userId()                                                                        // 387
+        });                                                                                                            // 386
+    }                                                                                                                  // 389
+});                                                                                                                    // 236
+Meteor.methods({                                                                                                       // 392
+    updateLocalSenseCopyApps: function () {                                                                            // 393
+        //delete the local content of the database before updating it                                                  // 394
+        Apps.remove({}); //Update the Apps with fresh info from Sense                                                  // 395
                                                                                                                        //
-        _.each(QSApp.getApps(), function (app) {                                                                       // 352
-            Apps.insert(app);                                                                                          // 353
-        });                                                                                                            // 354
-    },                                                                                                                 // 355
-    updateLocalSenseCopyStreams: function () {                                                                         // 356
-        //delete the local content of the database before updating it                                                  // 357
-        Streams.remove({}); //Update the Streams with fresh info from Sense                                            // 358
+        _.each(QSApp.getApps(), function (app) {                                                                       // 398
+            Apps.insert(app);                                                                                          // 399
+        });                                                                                                            // 400
+    },                                                                                                                 // 401
+    updateLocalSenseCopyStreams: function () {                                                                         // 402
+        //delete the local content of the database before updating it                                                  // 403
+        Streams.remove({}); //Update the Streams with fresh info from Sense                                            // 404
                                                                                                                        //
-        _.each(QSStream.getStreams(), function (stream) {                                                              // 361
-            Streams.insert(stream);                                                                                    // 362
-        });                                                                                                            // 363
-    },                                                                                                                 // 364
-    updateLocalSenseCopy: function () {                                                                                // 365
+        _.each(QSStream.getStreams(), function (stream) {                                                              // 407
+            Streams.insert(stream);                                                                                    // 408
+        });                                                                                                            // 409
+    },                                                                                                                 // 410
+    updateLocalSenseCopy: function () {                                                                                // 411
         // //console.log('Method: update the local mongoDB with fresh data from Qlik Sense: call QRS API getStreams and getApps');
-        //delete the local content of the database before updating it                                                  // 367
-        Apps.remove({});                                                                                               // 368
-        Streams.remove({}); //Update the Apps and Streams with fresh info from Sense                                   // 369
+        //delete the local content of the database before updating it                                                  // 413
+        Apps.remove({});                                                                                               // 414
+        Streams.remove({}); //Update the Apps and Streams with fresh info from Sense                                   // 415
                                                                                                                        //
-        _.each(QSApp.getApps(), function (app) {                                                                       // 372
-            Apps.insert(app);                                                                                          // 373
-        });                                                                                                            // 374
+        _.each(QSApp.getApps(), function (app) {                                                                       // 418
+            Apps.insert(app);                                                                                          // 419
+        });                                                                                                            // 420
                                                                                                                        //
-        _.each(QSStream.getStreams(), function (stream) {                                                              // 376
-            Streams.insert(stream);                                                                                    // 377
-        });                                                                                                            // 378
-    },                                                                                                                 // 379
-    getSecurityRules: function () {                                                                                    // 380
-        return QSSystem.getSecurityRules();                                                                            // 381
-    }                                                                                                                  // 382
-}); // checkSenseIsReady() {                                                                                           // 346
-//     //console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');       // 389
-//     // try {                                                                                                        // 391
-//     // qsocks.Connect(engineConfig)                                                                                 // 392
-//     //     .then(function(global) {                                                                                 // 393
-//     //         // Connected                                                                                         // 394
+        _.each(QSStream.getStreams(), function (stream) {                                                              // 422
+            Streams.insert(stream);                                                                                    // 423
+        });                                                                                                            // 424
+    },                                                                                                                 // 425
+    getSecurityRules: function () {                                                                                    // 426
+        return QSSystem.getSecurityRules();                                                                            // 427
+    }                                                                                                                  // 428
+}); // checkSenseIsReady() {                                                                                           // 392
+//     //console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');       // 435
+//     // try {                                                                                                        // 437
+//     // qsocks.Connect(engineConfig)                                                                                 // 438
+//     //     .then(function(global) {                                                                                 // 439
+//     //         // Connected                                                                                         // 440
 //     //         //console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');
-//     //         return true;                                                                                         // 396
-//     //     }, function(err) {                                                                                       // 397
-//     //         // Something went wrong                                                                              // 398
+//     //         return true;                                                                                         // 442
+//     //     }, function(err) {                                                                                       // 443
+//     //         // Something went wrong                                                                              // 444
 //     //         console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
-//     //         console.error('the settings are: ', engineConfig)                                                    // 400
-//     //         return false                                                                                         // 401
-//     //         // throw new Meteor.Error('Could not connect to Sense Engine API', err.message);                     // 402
-//     //     });                                                                                                      // 403
-//     //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP                                                                // 405
-//     try{                                                                                                            // 406
+//     //         console.error('the settings are: ', engineConfig)                                                    // 446
+//     //         return false                                                                                         // 447
+//     //         // throw new Meteor.Error('Could not connect to Sense Engine API', err.message);                     // 448
+//     //     });                                                                                                      // 449
+//     //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP                                                                // 451
+//     try{                                                                                                            // 452
 //         const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
-//             headers: authHeaders,                                                                                   // 408
-//             params: { 'xrfkey': senseConfig.xrfkey }                                                                // 409
-//         })//http get                                                                                                // 410
-//         //console.log(result);                                                                                      // 411
-//         if(result.statuscode === 200){                                                                              // 412
-//             //console.log('We got a result back from Sense with statuscode 200: Success')                           // 413
-//             return true;}                                                                                           // 414
-//         else{return false}                                                                                          // 415
-//     } catch (err) {                                                                                                 // 416
-//         return false;                                                                                               // 417
+//             headers: authHeaders,                                                                                   // 454
+//             params: { 'xrfkey': senseConfig.xrfkey }                                                                // 455
+//         })//http get                                                                                                // 456
+//         //console.log(result);                                                                                      // 457
+//         if(result.statuscode === 200){                                                                              // 458
+//             //console.log('We got a result back from Sense with statuscode 200: Success')                           // 459
+//             return true;}                                                                                           // 460
+//         else{return false}                                                                                          // 461
+//     } catch (err) {                                                                                                 // 462
+//         return false;                                                                                               // 463
 //         // throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');
-//     }                                                                                                               // 419
-// }                                                                                                                   // 420
-//GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)                                         // 422
-// getApps() {                                                                                                         // 423
-//     return QSApp.getApps();                                                                                         // 424
-//     // appListSync = Meteor.wrapAsync(qsocks.Connect(engineConfig)                                                  // 425
-//     //     .then(function(global) {                                                                                 // 426
-//     //         global.getDocList()                                                                                  // 427
-//     //             .then(function(docList) {                                                                        // 428
-//     //                 return (docList);                                                                            // 429
-//     //             });                                                                                              // 430
-//     //     })                                                                                                       // 431
-//     //     .catch(err => {                                                                                          // 432
-//     //         throw new Meteor.Error(err)                                                                          // 433
-//     //     }));                                                                                                     // 434
-//     // result = appListSync();                                                                                      // 435
-//     // return result;                                                                                               // 436
-// },                                                                                                                  // 438
+//     }                                                                                                               // 465
+// }                                                                                                                   // 466
+//GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)                                         // 468
+// getApps() {                                                                                                         // 469
+//     return QSApp.getApps();                                                                                         // 470
+//     // appListSync = Meteor.wrapAsync(qsocks.Connect(engineConfig)                                                  // 471
+//     //     .then(function(global) {                                                                                 // 472
+//     //         global.getDocList()                                                                                  // 473
+//     //             .then(function(docList) {                                                                        // 474
+//     //                 return (docList);                                                                            // 475
+//     //             });                                                                                              // 476
+//     //     })                                                                                                       // 477
+//     //     .catch(err => {                                                                                          // 478
+//     //         throw new Meteor.Error(err)                                                                          // 479
+//     //     }));                                                                                                     // 480
+//     // result = appListSync();                                                                                      // 481
+//     // return result;                                                                                               // 482
+// },                                                                                                                  // 484
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }}},{

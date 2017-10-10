@@ -1866,128 +1866,126 @@ var maybeAuditArgumentChecks = function (f, context, args, description) {       
 //                                                                                                                    //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                       //
-var path = Npm.require('path');                                                                                       // 1
-                                                                                                                      //
-var Future = Npm.require(path.join('fibers', 'future')); // A write fence collects a group of writes, and provides a callback
-// when all of the writes are fully committed and propagated (all                                                     // 5
-// observers have been notified of the write and acknowledged it.)                                                    // 6
-//                                                                                                                    // 7
+var Future = Npm.require('fibers/future'); // A write fence collects a group of writes, and provides a callback       // 1
+// when all of the writes are fully committed and propagated (all                                                     // 4
+// observers have been notified of the write and acknowledged it.)                                                    // 5
+//                                                                                                                    // 6
                                                                                                                       //
                                                                                                                       //
-DDPServer._WriteFence = function () {                                                                                 // 8
-  var self = this;                                                                                                    // 9
-  self.armed = false;                                                                                                 // 11
-  self.fired = false;                                                                                                 // 12
-  self.retired = false;                                                                                               // 13
-  self.outstanding_writes = 0;                                                                                        // 14
-  self.before_fire_callbacks = [];                                                                                    // 15
-  self.completion_callbacks = [];                                                                                     // 16
-}; // The current write fence. When there is a current write fence, code                                              // 17
-// that writes to databases should register their writes with it using                                                // 20
-// beginWrite().                                                                                                      // 21
-//                                                                                                                    // 22
+DDPServer._WriteFence = function () {                                                                                 // 7
+  var self = this;                                                                                                    // 8
+  self.armed = false;                                                                                                 // 10
+  self.fired = false;                                                                                                 // 11
+  self.retired = false;                                                                                               // 12
+  self.outstanding_writes = 0;                                                                                        // 13
+  self.before_fire_callbacks = [];                                                                                    // 14
+  self.completion_callbacks = [];                                                                                     // 15
+}; // The current write fence. When there is a current write fence, code                                              // 16
+// that writes to databases should register their writes with it using                                                // 19
+// beginWrite().                                                                                                      // 20
+//                                                                                                                    // 21
                                                                                                                       //
                                                                                                                       //
-DDPServer._CurrentWriteFence = new Meteor.EnvironmentVariable();                                                      // 23
+DDPServer._CurrentWriteFence = new Meteor.EnvironmentVariable();                                                      // 22
                                                                                                                       //
-_.extend(DDPServer._WriteFence.prototype, {                                                                           // 25
-  // Start tracking a write, and return an object to represent it. The                                                // 26
-  // object has a single method, committed(). This method should be                                                   // 27
-  // called when the write is fully committed and propagated. You can                                                 // 28
-  // continue to add writes to the WriteFence up until it is triggered                                                // 29
-  // (calls its callbacks because all writes have committed.)                                                         // 30
-  beginWrite: function () {                                                                                           // 31
-    var self = this;                                                                                                  // 32
-    if (self.retired) return {                                                                                        // 34
-      committed: function () {}                                                                                       // 35
-    };                                                                                                                // 35
-    if (self.fired) throw new Error("fence has already activated -- too late to add writes");                         // 37
-    self.outstanding_writes++;                                                                                        // 40
-    var committed = false;                                                                                            // 41
-    return {                                                                                                          // 42
-      committed: function () {                                                                                        // 43
-        if (committed) throw new Error("committed called twice on the same write");                                   // 44
-        committed = true;                                                                                             // 46
-        self.outstanding_writes--;                                                                                    // 47
+_.extend(DDPServer._WriteFence.prototype, {                                                                           // 24
+  // Start tracking a write, and return an object to represent it. The                                                // 25
+  // object has a single method, committed(). This method should be                                                   // 26
+  // called when the write is fully committed and propagated. You can                                                 // 27
+  // continue to add writes to the WriteFence up until it is triggered                                                // 28
+  // (calls its callbacks because all writes have committed.)                                                         // 29
+  beginWrite: function () {                                                                                           // 30
+    var self = this;                                                                                                  // 31
+    if (self.retired) return {                                                                                        // 33
+      committed: function () {}                                                                                       // 34
+    };                                                                                                                // 34
+    if (self.fired) throw new Error("fence has already activated -- too late to add writes");                         // 36
+    self.outstanding_writes++;                                                                                        // 39
+    var committed = false;                                                                                            // 40
+    return {                                                                                                          // 41
+      committed: function () {                                                                                        // 42
+        if (committed) throw new Error("committed called twice on the same write");                                   // 43
+        committed = true;                                                                                             // 45
+        self.outstanding_writes--;                                                                                    // 46
                                                                                                                       //
-        self._maybeFire();                                                                                            // 48
-      }                                                                                                               // 49
-    };                                                                                                                // 42
-  },                                                                                                                  // 51
-  // Arm the fence. Once the fence is armed, and there are no more                                                    // 53
-  // uncommitted writes, it will activate.                                                                            // 54
-  arm: function () {                                                                                                  // 55
-    var self = this;                                                                                                  // 56
-    if (self === DDPServer._CurrentWriteFence.get()) throw Error("Can't arm the current fence");                      // 57
-    self.armed = true;                                                                                                // 59
+        self._maybeFire();                                                                                            // 47
+      }                                                                                                               // 48
+    };                                                                                                                // 41
+  },                                                                                                                  // 50
+  // Arm the fence. Once the fence is armed, and there are no more                                                    // 52
+  // uncommitted writes, it will activate.                                                                            // 53
+  arm: function () {                                                                                                  // 54
+    var self = this;                                                                                                  // 55
+    if (self === DDPServer._CurrentWriteFence.get()) throw Error("Can't arm the current fence");                      // 56
+    self.armed = true;                                                                                                // 58
                                                                                                                       //
-    self._maybeFire();                                                                                                // 60
-  },                                                                                                                  // 61
-  // Register a function to be called once before firing the fence.                                                   // 63
-  // Callback function can add new writes to the fence, in which case                                                 // 64
-  // it won't fire until those writes are done as well.                                                               // 65
-  onBeforeFire: function (func) {                                                                                     // 66
-    var self = this;                                                                                                  // 67
-    if (self.fired) throw new Error("fence has already activated -- too late to " + "add a callback");                // 68
-    self.before_fire_callbacks.push(func);                                                                            // 71
-  },                                                                                                                  // 72
-  // Register a function to be called when the fence fires.                                                           // 74
-  onAllCommitted: function (func) {                                                                                   // 75
-    var self = this;                                                                                                  // 76
-    if (self.fired) throw new Error("fence has already activated -- too late to " + "add a callback");                // 77
-    self.completion_callbacks.push(func);                                                                             // 80
-  },                                                                                                                  // 81
-  // Convenience function. Arms the fence, then blocks until it fires.                                                // 83
-  armAndWait: function () {                                                                                           // 84
-    var self = this;                                                                                                  // 85
-    var future = new Future();                                                                                        // 86
-    self.onAllCommitted(function () {                                                                                 // 87
-      future['return']();                                                                                             // 88
-    });                                                                                                               // 89
-    self.arm();                                                                                                       // 90
-    future.wait();                                                                                                    // 91
-  },                                                                                                                  // 92
-  _maybeFire: function () {                                                                                           // 94
-    var self = this;                                                                                                  // 95
-    if (self.fired) throw new Error("write fence already activated?");                                                // 96
+    self._maybeFire();                                                                                                // 59
+  },                                                                                                                  // 60
+  // Register a function to be called once before firing the fence.                                                   // 62
+  // Callback function can add new writes to the fence, in which case                                                 // 63
+  // it won't fire until those writes are done as well.                                                               // 64
+  onBeforeFire: function (func) {                                                                                     // 65
+    var self = this;                                                                                                  // 66
+    if (self.fired) throw new Error("fence has already activated -- too late to " + "add a callback");                // 67
+    self.before_fire_callbacks.push(func);                                                                            // 70
+  },                                                                                                                  // 71
+  // Register a function to be called when the fence fires.                                                           // 73
+  onAllCommitted: function (func) {                                                                                   // 74
+    var self = this;                                                                                                  // 75
+    if (self.fired) throw new Error("fence has already activated -- too late to " + "add a callback");                // 76
+    self.completion_callbacks.push(func);                                                                             // 79
+  },                                                                                                                  // 80
+  // Convenience function. Arms the fence, then blocks until it fires.                                                // 82
+  armAndWait: function () {                                                                                           // 83
+    var self = this;                                                                                                  // 84
+    var future = new Future();                                                                                        // 85
+    self.onAllCommitted(function () {                                                                                 // 86
+      future['return']();                                                                                             // 87
+    });                                                                                                               // 88
+    self.arm();                                                                                                       // 89
+    future.wait();                                                                                                    // 90
+  },                                                                                                                  // 91
+  _maybeFire: function () {                                                                                           // 93
+    var self = this;                                                                                                  // 94
+    if (self.fired) throw new Error("write fence already activated?");                                                // 95
                                                                                                                       //
-    if (self.armed && !self.outstanding_writes) {                                                                     // 98
-      var invokeCallback = function (func) {                                                                          // 98
-        try {                                                                                                         // 100
-          func(self);                                                                                                 // 101
-        } catch (err) {                                                                                               // 102
-          Meteor._debug("exception in write fence callback:", err);                                                   // 103
-        }                                                                                                             // 104
-      };                                                                                                              // 105
+    if (self.armed && !self.outstanding_writes) {                                                                     // 97
+      var invokeCallback = function (func) {                                                                          // 97
+        try {                                                                                                         // 99
+          func(self);                                                                                                 // 100
+        } catch (err) {                                                                                               // 101
+          Meteor._debug("exception in write fence callback:", err);                                                   // 102
+        }                                                                                                             // 103
+      };                                                                                                              // 104
                                                                                                                       //
-      self.outstanding_writes++;                                                                                      // 107
+      self.outstanding_writes++;                                                                                      // 106
                                                                                                                       //
-      while (self.before_fire_callbacks.length > 0) {                                                                 // 108
-        var callbacks = self.before_fire_callbacks;                                                                   // 109
-        self.before_fire_callbacks = [];                                                                              // 110
+      while (self.before_fire_callbacks.length > 0) {                                                                 // 107
+        var callbacks = self.before_fire_callbacks;                                                                   // 108
+        self.before_fire_callbacks = [];                                                                              // 109
                                                                                                                       //
-        _.each(callbacks, invokeCallback);                                                                            // 111
-      }                                                                                                               // 112
+        _.each(callbacks, invokeCallback);                                                                            // 110
+      }                                                                                                               // 111
                                                                                                                       //
-      self.outstanding_writes--;                                                                                      // 113
+      self.outstanding_writes--;                                                                                      // 112
                                                                                                                       //
-      if (!self.outstanding_writes) {                                                                                 // 115
-        self.fired = true;                                                                                            // 116
-        var callbacks = self.completion_callbacks;                                                                    // 117
-        self.completion_callbacks = [];                                                                               // 118
+      if (!self.outstanding_writes) {                                                                                 // 114
+        self.fired = true;                                                                                            // 115
+        var callbacks = self.completion_callbacks;                                                                    // 116
+        self.completion_callbacks = [];                                                                               // 117
                                                                                                                       //
-        _.each(callbacks, invokeCallback);                                                                            // 119
-      }                                                                                                               // 120
-    }                                                                                                                 // 121
-  },                                                                                                                  // 122
-  // Deactivate this fence so that adding more writes has no effect.                                                  // 124
-  // The fence must have already fired.                                                                               // 125
-  retire: function () {                                                                                               // 126
-    var self = this;                                                                                                  // 127
-    if (!self.fired) throw new Error("Can't retire a fence that hasn't fired.");                                      // 128
-    self.retired = true;                                                                                              // 130
-  }                                                                                                                   // 131
-});                                                                                                                   // 25
+        _.each(callbacks, invokeCallback);                                                                            // 118
+      }                                                                                                               // 119
+    }                                                                                                                 // 120
+  },                                                                                                                  // 121
+  // Deactivate this fence so that adding more writes has no effect.                                                  // 123
+  // The fence must have already fired.                                                                               // 124
+  retire: function () {                                                                                               // 125
+    var self = this;                                                                                                  // 126
+    if (!self.fired) throw new Error("Can't retire a fence that hasn't fired.");                                      // 127
+    self.retired = true;                                                                                              // 129
+  }                                                                                                                   // 130
+});                                                                                                                   // 24
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"crossbar.js":function(){

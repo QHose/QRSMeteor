@@ -241,7 +241,7 @@ exports.checkMany = function (versions) {                                       
         var version = versions[id];                                                                             // 116
                                                                                                                 //
         if (version) {                                                                                          // 117
-          var sourceRequest = sourcesByVersion.get(versions[id]);                                               // 118
+          var sourceRequest = sourcesByVersion.get(version);                                                    // 118
           sourceRequest.onerror = makeOnError(reject, "sourcesByVersion.get");                                  // 119
                                                                                                                 //
           sourceRequest.onsuccess = function (event) {                                                          // 120
@@ -345,7 +345,7 @@ meteorInstall.fetch = function (ids) {                                          
                                                                                                                 //
   var missing;                                                                                                  // 21
   Object.keys(ids).forEach(function (id) {                                                                      // 23
-    var version = getFromTree(dynamicVersions, id);                                                             // 24
+    var version = dynamicVersions.get(id);                                                                      // 24
                                                                                                                 //
     if (version) {                                                                                              // 25
       versions[id] = version;                                                                                   // 26
@@ -371,7 +371,7 @@ meteorInstall.fetch = function (ids) {                                          
         var source = flatResults[id];                                                                           // 48
         var info = ids[id];                                                                                     // 49
         addToTree(tree, id, makeModuleFunction(id, source, info.options));                                      // 51
-        var version = getFromTree(dynamicVersions, id);                                                         // 53
+        var version = dynamicVersions.get(id);                                                                  // 53
                                                                                                                 //
         if (version) {                                                                                          // 54
           versionsAndSourcesById[id] = {                                                                        // 55
@@ -432,41 +432,34 @@ function fetchMissing(missingTree) {                                            
   });                                                                                                           // 119
 }                                                                                                               // 120
                                                                                                                 //
-function getFromTree(tree, id) {                                                                                // 122
-  id.split("/").every(function (part) {                                                                         // 123
-    return !part || (tree = tree[part]);                                                                        // 124
-  });                                                                                                           // 125
-  return tree;                                                                                                  // 127
-}                                                                                                               // 128
+function addToTree(tree, id, value) {                                                                           // 122
+  var parts = id.split("/");                                                                                    // 123
+  var lastIndex = parts.length - 1;                                                                             // 124
+  parts.forEach(function (part, i) {                                                                            // 125
+    if (part) {                                                                                                 // 126
+      tree = tree[part] = tree[part] || (i < lastIndex ? Object.create(null) : value);                          // 127
+    }                                                                                                           // 129
+  });                                                                                                           // 130
+}                                                                                                               // 131
                                                                                                                 //
-function addToTree(tree, id, value) {                                                                           // 130
-  var parts = id.split("/");                                                                                    // 131
-  var lastIndex = parts.length - 1;                                                                             // 132
-  parts.forEach(function (part, i) {                                                                            // 133
-    if (part) {                                                                                                 // 134
-      tree = tree[part] = tree[part] || (i < lastIndex ? Object.create(null) : value);                          // 135
-    }                                                                                                           // 137
-  });                                                                                                           // 138
-}                                                                                                               // 139
+function getNamespace(module, id) {                                                                             // 133
+  var namespace;                                                                                                // 134
+  module.watch(module.require(id), {                                                                            // 136
+    "*": function (ns) {                                                                                        // 137
+      namespace = ns;                                                                                           // 138
+    }                                                                                                           // 139
+  }); // This helps with Babel interop, since we're not just returning the                                      // 136
+  // module.exports object.                                                                                     // 143
                                                                                                                 //
-function getNamespace(module, id) {                                                                             // 141
-  var namespace;                                                                                                // 142
-  module.watch(module.require(id), {                                                                            // 144
-    "*": function (ns) {                                                                                        // 145
-      namespace = ns;                                                                                           // 146
-    }                                                                                                           // 147
-  }); // This helps with Babel interop, since we're not just returning the                                      // 144
-  // module.exports object.                                                                                     // 151
-                                                                                                                //
-  Object.defineProperty(namespace, "__esModule", {                                                              // 152
-    value: true,                                                                                                // 153
-    enumerable: false                                                                                           // 154
-  });                                                                                                           // 152
-  return namespace;                                                                                             // 157
-}                                                                                                               // 158
+  Object.defineProperty(namespace, "__esModule", {                                                              // 144
+    value: true,                                                                                                // 145
+    enumerable: false                                                                                           // 146
+  });                                                                                                           // 144
+  return namespace;                                                                                             // 149
+}                                                                                                               // 150
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-},"dynamic-versions.js":function(require,exports,module){
+},"dynamic-versions.js":function(require,exports){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                              //
@@ -477,7 +470,33 @@ function getNamespace(module, id) {                                             
 // This magic double-underscored identifier gets replaced in                                                    // 1
 // tools/isobuild/bundler.js with a tree of hashes of all dynamic                                               // 2
 // modules, for use in client.js and cache.js.                                                                  // 3
-module.exports = {};                                                                          // 4
+var versions = {};                                                                            // 4
+                                                                                                                //
+exports.get = function (id) {                                                                                   // 6
+  var tree = versions;                                                                                          // 7
+  var version = null;                                                                                           // 8
+  id.split("/").some(function (part) {                                                                          // 10
+    if (part) {                                                                                                 // 11
+      // If the tree contains identifiers for Meteor packages with colons                                       // 12
+      // in their names, the colons should not have been replaced by                                            // 13
+      // underscores, but there's a bug that results in that behavior, so                                       // 14
+      // for now it seems safest to be tolerant of underscores here.                                            // 15
+      // https://github.com/meteor/meteor/pull/9103                                                             // 16
+      tree = tree[part] || tree[part.replace(":", "_")];                                                        // 17
+    }                                                                                                           // 18
+                                                                                                                //
+    if (!tree) {                                                                                                // 20
+      // Terminate the search without reassigning version.                                                      // 21
+      return true;                                                                                              // 22
+    }                                                                                                           // 23
+                                                                                                                //
+    if (typeof tree === "string") {                                                                             // 25
+      version = tree;                                                                                           // 26
+      return true;                                                                                              // 27
+    }                                                                                                           // 28
+  });                                                                                                           // 29
+  return version;                                                                                               // 31
+};                                                                                                              // 32
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"security.js":function(require,exports,module){

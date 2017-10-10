@@ -25,11 +25,6 @@
           {{> slide slide=this slideNr=@index}}
         {{/if}}
       {{/each}}
-      <div class="controls">
-        <i class="navigate-right angle right icon"></i>
-      </div>
-      {{> termsOfUsage}}      
-
     </div>
   </div>
 </template>
@@ -40,11 +35,14 @@
     <h1>{{{level 2 slide}}}
       <hr>
     </h1>
-
-
     {{#if active slideNr}}
       {{> slideContent slide=slide}}
     {{/if}}
+    <!-- <div class="controls">
+      <i class="navigate-right angle right icon"></i>
+    </div>
+    {{> termsOfUsage}}      
+ -->
 
   </section>
 

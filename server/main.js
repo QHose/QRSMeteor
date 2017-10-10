@@ -121,34 +121,33 @@ var exec = require('child_process').execFile;
 var installQlikSense = function() {
     console.log("Start installation of Qlik Sense via a silent script... please wait 15 minutes to complete... (we use this is a safe assumption that is has finished before we move on). Be aware of screens popping up which request extra info...");
 
-    let ps = new shell({
-        executionPolicy: 'Bypass',
-        noProfile: true
-    });
-    var folder = Meteor.settings.qlikSense.sharedPersistanceFolder;
-    var name = Meteor.settings.qlikSense.sharedPersistanceFolderName;
-
-    ps.addCommand('Write-Host Creating a shared folder on: ' + folder);
-    ps.addCommand('New-Item ' + folder + ' –type directory');
-    // ps.addCommand('New-SmbShare –Name ' + name + ' –Path ' + folder + ' –FullAccess Everyone  ')
-
-    ps.invoke()
-        .then(output => {
-            console.log(output);
-        })
-        .catch(err => {
-            console.error('Installation of Qlik Sense failed, make sure you check the log file in GitHub\QRSMeteor\.automation\InstallationSoftware\log.txt', err)
-            ps.dispose();
-        });
-
-    // var executable = 'startSilentInstall.ps1';
-    // var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
-    // exec(installer, function(err, data) {
-    //     if (err) {
-    //     } else {
-    //         console.log('installation of Qlik Sense success, reponse from the Qlik Sense installer: ' + data.toString());
-    //     }
+    // let ps = new shell({
+    //     executionPolicy: 'Bypass',
+    //     noProfile: true
     // });
+    // var folder = Meteor.settings.qlikSense.sharedPersistanceFolder;
+    // var name = Meteor.settings.qlikSense.sharedPersistanceFolderName;
+
+    // // ps.addCommand('Write-Host Creating a shared folder on: ' + folder);
+    // ps.addCommand('New-Item "C:\\test" –type directory');
+    // // ps.addCommand('New-SmbShare –Name ' + name + ' –Path ' + folder + ' –FullAccess Everyone  ')
+
+    // ps.invoke()
+    //     .then(output => {
+    //         console.log(output);
+    //     })
+    //     .catch(err => {
+    //         console.error('Installation of Qlik Sense failed, make sure you check the log file in GitHub\QRSMeteor\.automation\InstallationSoftware\log.txt', err)
+    //         ps.dispose();
+    //     });
+
+    var executable = 'startSilentInstall.ps1';
+    var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
+    exec(installer, function(err, data) {
+        if (err) {} else {
+            console.log('installation of Qlik Sense success, reponse from the Qlik Sense installer: ' + data.toString());
+        }
+    });
 }
 
 
