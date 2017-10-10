@@ -1,15 +1,15 @@
 [
   {
-    "id": "111c3a98-661c-4644-86b0-932c193bd1fb",
-    "createdDate": "2017-09-26T13:29:15.534Z",
-    "modifiedDate": "2017-09-26T13:38:22.178Z",
+    "id": "ff5125bd-afa5-4164-8192-98ebd2dd726a",
+    "createdDate": "2017-10-10T18:46:48.234Z",
+    "modifiedDate": "2017-10-10T18:46:48.234Z",
     "modifiedByUserName": "QLIK-AB0Q2URN5T\\qlikexternal",
     "name": "customer",
     "valueType": "Text",
     "choiceValues": [
-      "Orn LLC",
-      "Abbott Group",
-      "Spinka Group"
+      "Renner Group",
+      "Veum, Harber and O'Reilly",
+      "Kertzmann - Lebsack"
     ],
     "objectTypes": [
       "App",
@@ -20,7 +20,6 @@
       "User"
     ],
     "privileges": null,
-    "impactSecurityAccess": false,
     "schemaPath": "CustomPropertyDefinition"
   }
 ]

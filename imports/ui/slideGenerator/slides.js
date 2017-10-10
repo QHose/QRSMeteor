@@ -40,6 +40,7 @@ Template.slides.onRendered(function() {
             // progress: true,
             // history: true,        
             autoPlayMedia: false,
+            // fragments: false,
             // autoSlide: 500,
             // viewDistance: 3,
             // // default/cube/page/concave/zoom/linear/fade/none 
@@ -48,10 +49,7 @@ Template.slides.onRendered(function() {
             previewLinks: false,
             slideNumber: true
         });
-        Reveal.addEventListener('slidechanged', function(evt) {
-            Session.set('activeStepNr', evt.indexh);
-            console.log('slidechanged active slides: evt.indexh', evt.indexh);
-        });
+
         Reveal.addEventListener('ready', function(event) {
             console.log('------------------------------------');
             console.log('Reveal is ready to be used');

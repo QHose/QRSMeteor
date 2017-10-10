@@ -357,17 +357,17 @@ function deleteDirectoryAndDataConnection(customerName) {
 }
 
 async function createDirectory(customerName) {
-    console.log('createDirectory TURNED OFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', customerName)
-    try {
-        check(customerName, String);
-        var filename = sanitize(customerName);
-        const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
-        console.log('Meteor.settings.broker.customerDataDir', dir)
-        await fs.ensureDir(dir)
-        return dir;
-    } catch (error) {
-        throw new Meteor.Error('Failed to create directory for ', customerName);
-    }
+    console.error('createDirectory TURNED OFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', customerName)
+        // try {
+        //     check(customerName, String);
+        //     var filename = sanitize(customerName);
+        //     const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
+        //     console.log('Meteor.settings.broker.customerDataDir', dir)
+        //     await fs.ensureDir(dir)
+        //     return dir;
+        // } catch (error) {
+        //     throw new Meteor.Error('Failed to create directory for ', customerName);
+        // }
 
 }
 
