@@ -1,3 +1,3 @@
-cd C:\Github\QRSMeteor
+REM cd C:\Github\QRSMeteor
 set ROOT_URL = http://localhost;
-meteor run --settings settings-production.json --port 3000
+meteor run --settings settings.json --port 3000
