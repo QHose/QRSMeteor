@@ -3871,11 +3871,10 @@ STORE QV_Table INTO File.QVD;
 * Responsive and smart
 * 1 app for  mobile, desktop and web integration
 * No fat clients",,,,,,,,,
-"Qlik Race Game","Intro","Do you join us?",,,,,,,,,
-"Qlik Race Game","Intro","Qlik race game cars.png",,,,,,,,,
-"Qlik Race Game","Sensors communicate with Qlik Sense","Qlik race game sensors.png",,,,,,,,,
-"Qlik Race Game","Sensors communicate with Qlik Sense","In the Qlik Race Game we have put IoT devices between the 'Power Pack' and the 'Handheld Speed Controllers' that communicate with our server to be able to control the maximum speed of cars through software (Qlik, Quiz components, etc.).",,,,,,,,,
-"Qlik Race Game","Sensors communicate with Qlik Sense","Underneath the 'Powered Strips' we have placed sensors to track the movements of a car. These sensors are in turn connected to IoT devices that communicate with our server.",,,,,,,,,
-"Qlik Race Game","Real time analytics","iframe 192.168.0.124:3000/rta",,,,,,,,,
-"Qlik Race Game","Post game analytics","iframe http://localhost:81/single/?appid=34074bfe-977d-4eff-a47a-e6adf6b2ad85&sheet=b4c947dc-bde2-4c77-b193-7469b78e57f1&opt=nointeraction&select=clearall",,,,,,,,,
+"Qlik Race Game","Will you beat the competition?","Qlik race game cars.png",,,,,,,,,
+"Qlik Race Game","The IOT sensors will do all the work... (almost!)","Qlik race game sensors.png",,,,,,,,,
+"Qlik Race Game","The IOT sensors will do all the work... (almost!)","In the Qlik Race Game we have put IoT devices between the 'Power Pack' and the 'Handheld Speed Controllers' that communicate with our server to be able to control the maximum speed of cars through software (Qlik, Quiz components, etc.).",,,,,,,,,
+"Qlik Race Game","The IOT sensors will do all the work... (almost!)","Underneath the 'Powered Strips' we have placed sensors to track the movements of a car. These sensors are in turn connected to IoT devices that communicate with our server.",,,,,,,,,
+"Qlik Race Game","Real time race analytics","iframe 192.168.0.124:3000/rta",,,,,,,,,
+"Qlik Race Game","How is the competition doing today?","iframe http://localhost:81/single/?appid=34074bfe-977d-4eff-a47a-e6adf6b2ad85&sheet=b4c947dc-bde2-4c77-b193-7469b78e57f1&opt=nointeraction&select=clearall",,,,,,,,,
 "Qlik Race Game","Race analytics","iframe http://localhost:81/single/?appid=34074bfe-977d-4eff-a47a-e6adf6b2ad85&sheet=20975126-8493-4c6d-9a47-d9d50d5b4c3a&opt=nointeraction&select=clearall",,,,,,,,,
