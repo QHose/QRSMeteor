@@ -336,11 +336,6 @@ body {
     max-height: 95%;
 }
 
-.reveal iframe {
-    max-width: 100%;
-    /* max-height: calc(100vh - 180px); */
-}
-
 
 /** Prevents layering issues in certain browser/transition combinations */
 

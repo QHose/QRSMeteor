@@ -2,22 +2,22 @@
   "format": "web-program-pre1",
   "manifest": [
     {
-      "path": "30455e7d31765ec7aa856d7d4f6b86239a4573c4.js",
+      "path": "4cfa08df0a578b6c7ad39f141334dab538041c69.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/30455e7d31765ec7aa856d7d4f6b86239a4573c4.js?meteor_js_resource=true",
-      "size": 4094196,
-      "hash": "30455e7d31765ec7aa856d7d4f6b86239a4573c4"
+      "url": "/4cfa08df0a578b6c7ad39f141334dab538041c69.js?meteor_js_resource=true",
+      "size": 4094231,
+      "hash": "4cfa08df0a578b6c7ad39f141334dab538041c69"
     },
     {
-      "path": "30455e7d31765ec7aa856d7d4f6b86239a4573c4.stats.json",
+      "path": "4cfa08df0a578b6c7ad39f141334dab538041c69.stats.json",
       "where": "client",
       "type": "json",
       "cacheable": true,
-      "url": "/30455e7d31765ec7aa856d7d4f6b86239a4573c4.stats.json?meteor_js_resource=true",
+      "url": "/4cfa08df0a578b6c7ad39f141334dab538041c69.stats.json?meteor_js_resource=true",
       "size": 51427,
-      "hash": "0bc450441d2422d5720f77fec1d83fd3d33b6a5b"
+      "hash": "16cfe9f7a3144f0c117e0daf4270ac2111609092"
     },
     {
       "path": "0df66ee8702b25a49c47d9381b5e606975a83260.css",
@@ -3332,6 +3332,15 @@
       "hash": "bba79387f450dbc3ff03f1bc5db7dbbbeec8b272"
     },
     {
+      "path": "app/images/web - Why Embedded Analytics is successful.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/web - Why Embedded Analytics is successful.png",
+      "size": 44872,
+      "hash": "f8d6b3e994218f7df2c575c89bf9ceeceba0bc89"
+    },
+    {
       "path": "app/images/web - browsing the web - request response detailed.png",
       "where": "client",
       "type": "asset",
@@ -3384,6 +3393,15 @@
       "url": "/images/web - difference QAP and Qlik sense enterprise.png",
       "size": 197621,
       "hash": "6f8959b9e7b603a41e64e6371e8ede61c76d5f08"
+    },
+    {
+      "path": "app/images/web - embedded analytics gaining tracktion.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/web - embedded analytics gaining tracktion.png",
+      "size": 44653,
+      "hash": "111f35756b61820188869e1326f7fd8259e178c1"
     },
     {
       "path": "app/images/web - enigma integration.png",

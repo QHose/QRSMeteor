@@ -56,7 +56,7 @@
 "Workshop Introduction","Video - generic introduction to APIs","https://www.youtube.com/watch?v=s7wmiS2mSXY",,"","","","","         0","0","Demo with integration.qlik.com",
 "What is an app?","Video: What is governed self service?","https://youtu.be/pQae9S8S_vQ?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours; Product Owner; Business Analyst; C-Level - non-technical",
 "What is an app?","Video: The Qlik Associative Model","https://youtu.be/gWNoyL6fZxo",,"","","","","         0","0","Introduction - 30 minutes, Business Analyst, CTO, Product Owner",
-"What is an app?","What is governed self service?","iframe selfService_embedded",,"","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner, Demo with integration.qlik.com",
+"What is an app?","What is governed self service?","iframe selfService_embedded",,"","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner, Demo with integration.qlik.com, SaaS & Power of APIs",
 "What is an app?","Contents of an app","contents of an app.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "What is an app?","In the hub apps are grouped per stream","web-resources to embed.png",,"","","","","         0","0","PreSales, Demo with integration.qlik.com, Technical - 2 hours",
 "What is an app?","Qlik Sense Desktop - Create Your First App and Visualization (8M)","https://youtu.be/MARjUr2dZRs",,,,,,,,,
@@ -110,8 +110,8 @@
 "What is integration.qlik.com?","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Introduction - 30 minutes",
 "What is integration.qlik.com?","In the integration demo environment we created a demo for each use case","useCasesOverview.png",,"","","","","         0","0","Demo with integration.qlik.com",
 "What is integration.qlik.com?","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png",,"","","","","         0","0","Technical - 2 hours",
-"What is integration.qlik.com?","integration.qlik.com: Self service demo","iframe selfService_embedded",,"","","","","         0","0","Demo with integration.qlik.com, SaaS & Power of APIs",
-"What is integration.qlik.com?","This demo simulates your SaaS platform",">So you will see your adminstration panel which controls Qlik Sense via APIs (a ""broker""), based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
+"What is integration.qlik.com?","integration.qlik.com: Self service demo","iframe selfService_embedded",,"","","","","         0","0","Demo with integration.qlik.com",
+"What is integration.qlik.com?","This demo simulates your SaaS platform",">Next, you will see your admin panel which controls Qlik Sense via APIs (a ""broker""), based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
 "What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours",
@@ -310,14 +310,35 @@ $(""#btn_1"").click(function() {
 - Create your first TODO app with MeteorJS [here](https://www.meteor.com/tutorials/angular/creating-an-app)",,"","","","","         0","0","PreSales",
 "Web integration","Overview web integration","<iframe class=""SenseEmbedFrame"" src=""/webIntegration_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
 "Web integration","Examples of embedded apps","# What does a successful integration look like?",,,,,,,,,
-"Web integration","Examples of embedded apps","<iframe class=""SenseEmbedFrame"" src=""https://webapps.qlik.com/#/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Demo with integration.qlik.com",
+"Web integration","Examples of embedded apps","<iframe class=""SenseEmbedFrame"" src=""https://webapps.qlik.com/#/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Demo with integration.qlik.com, SaaS & Power of APIs",
 "Web integration","Examples of embedded apps","!comment
 This slide gives a real life example of embedding. It shows you a collection of example websites where Qlik Sense has been embedded.The URL is: [https://webapps.qlik.com](https://webapps.qlik.com).
 ",,,,,,,,,
-"Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,"","","","","         0","0","Demo with integration.qlik.com, Technical - 2 hours",
+"Web integration","Embedding is hot","web - embedded analytics gaining tracktion.png",,"","","","","         0","0","SaaS & Power of APIs",
+"Web integration","Embedding is hot","!comment
+Questions to the audience:
+Internal embedding interest or external/commercial embedding interest? 
+
+At Qlik, we have tracked the growth of embedded analytics over the past several years as it is a firmly entrenched buying agenda in its own right fueled in a large part by the need for most rank and file information workers to employ and use analytics right within their workspace.  
+
+Embedded analytics is definitely not a new technology trend, organizations have been doing it in some shape or form over the years but we have seen an uptake in interest in the last few years.  In this recent January survey from Aberdeen, we note again the prevalence of software providers to rank the primary driver for embedding analytics addressing their need to gain competitive advantage through a differentiated solution at the top of the charts, followed somewhat behind the need to gain new market share through adjacent markets with analytics.  Again analytics as the core driver and noted as a must have.
+
+This same group of survey respondents have also seen nearly a 20% year over year increase in organic revenue, a 15% year over year growth in total customers – as well as a 12% increase in year over year cross-sell/up-sell revenue. So a hardy, quantified validation of the pay-off of embedded analytics.
+",,,,,,,,,
+"Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,"","","","","         0","0","Demo with integration.qlik.com, Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Who’s the audience for embedded apps? ","!comment
 Most of the time the following scenario is used:
-The employees will use Qlik Sense internally with full self service capabilities.They will also create the dashboards for other users.External users like customer and suppliers might need to see some data from Qlik Sense. They will login in a web portal and they will see only their relevant data. In that case Qlik Sense is embedded in the web environment. They will often have less or no self-service capabilities.",,,,,,,,,
+The employees will use Qlik Sense internally with full self service capabilities.They will also create the dashboards for other users. External users like customer and suppliers might need to see some data from Qlik Sense. They will login in a web portal and they will see only their relevant data. In that case Qlik Sense is embedded in the web environment. They will often have less or no self-service capabilities.
+
+# In more detail
+We can deliver embedded analytics to different user groups and audiences 
+ 
+They can be residing in your back office covering all the internal processes in your organization - production, logistics, warehousing, sales, accounting, human resources management, etc.  They can reside in any of your customer facing team – any team member visible to including marketing, support or after-sales service teams.  
+It’s also become even more important that we share data and information with the partners we work with. For example by sharing customer feedback on supplier products, this in-turn helps our suppliers understand better about their end customer - and heightens their awareness of the need for better innovations and improvements across the overall supply chain",,,,,,,,,
+"Web integration","Why Embedded Analytics is successful","web - Why Embedded Analytics is successful.png",,"","","","","         0","0","SaaS & Power of APIs",
+"Web integration","Why Embedded Analytics is successful","!comment
+Embedded analytics has emerged as an analytical delivery strategy.  The approach is designed to combat the disconnection and provided the necessary context to the line of business decision maker.  As noted earlier, it also brings insight to the point of decision, not just embedded within the technology, but also embedded within the every day flow of how and where people work.  This typically results in higher user satisfaction and engagement as we can see from this chart taken from an April Aberdeen study.
+",,,,,,,,,
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","!comment
 One of the biggest advantages of Qlik Sense is the fact that an app can be used for all devices. Qlik Sense uses and supports a range of modern technologies:- HTML5, CSS3 and JavaScript: These technologies are used to embed Qlik Sense in a web environment. The HTML will define the frame of the webpage, CSS will style the page while JavaScript will take care of the behavior.
@@ -3871,10 +3892,10 @@ STORE QV_Table INTO File.QVD;
 * Responsive and smart
 * 1 app for  mobile, desktop and web integration
 * No fat clients",,,,,,,,,
+"Qlik Race Game","Introduction","01.jpg",,,,,,,,,
+"Qlik Race Game","Test your race skills today","03.jpg",,,,,,,,,
 "Qlik Race Game","Will you beat the competition?","Qlik race game cars.png",,,,,,,,,
-"Qlik Race Game","The IOT sensors will do all the work... (almost!)","Qlik race game sensors.png",,,,,,,,,
-"Qlik Race Game","The IOT sensors will do all the work... (almost!)","In the Qlik Race Game we have put IoT devices between the 'Power Pack' and the 'Handheld Speed Controllers' that communicate with our server to be able to control the maximum speed of cars through software (Qlik, Quiz components, etc.).",,,,,,,,,
-"Qlik Race Game","The IOT sensors will do all the work... (almost!)","Underneath the 'Powered Strips' we have placed sensors to track the movements of a car. These sensors are in turn connected to IoT devices that communicate with our server.",,,,,,,,,
-"Qlik Race Game","Real time race analytics","iframe 192.168.0.124:3000/rta",,,,,,,,,
+"Qlik Race Game","The IoT sensors will do all the work... (almost!)","04.jpg",,,,,,,,,
 "Qlik Race Game","How is the competition doing today?","iframe http://localhost:81/single/?appid=34074bfe-977d-4eff-a47a-e6adf6b2ad85&sheet=b4c947dc-bde2-4c77-b193-7469b78e57f1&opt=nointeraction&select=clearall",,,,,,,,,
+"Qlik Race Game","Real time race analytics","iframe http://192.168.0.124:3000/rta",,,,,,,,,
 "Qlik Race Game","Race analytics","iframe http://localhost:81/single/?appid=34074bfe-977d-4eff-a47a-e6adf6b2ad85&sheet=20975126-8493-4c6d-9a47-d9d50d5b4c3a&opt=nointeraction&select=clearall",,,,,,,,,
