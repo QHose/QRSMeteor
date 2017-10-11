@@ -42,6 +42,7 @@ Template.slides.onRendered(function() {
             autoPlayMedia: false,
             // fragments: false,
             autoSlide: 3000,
+            loop: true,
             // viewDistance: 3,
             // // default/cube/page/concave/zoom/linear/fade/none 
             transition: 'slide', // none/fade/slide/convex/concave/zoom     

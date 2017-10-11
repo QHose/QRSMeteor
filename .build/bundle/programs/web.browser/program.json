@@ -2,22 +2,22 @@
   "format": "web-program-pre1",
   "manifest": [
     {
-      "path": "d0cfcb6b83b24ee5445c271dc60e86c6905c718a.js",
+      "path": "30455e7d31765ec7aa856d7d4f6b86239a4573c4.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/d0cfcb6b83b24ee5445c271dc60e86c6905c718a.js?meteor_js_resource=true",
-      "size": 4094131,
-      "hash": "d0cfcb6b83b24ee5445c271dc60e86c6905c718a"
+      "url": "/30455e7d31765ec7aa856d7d4f6b86239a4573c4.js?meteor_js_resource=true",
+      "size": 4094196,
+      "hash": "30455e7d31765ec7aa856d7d4f6b86239a4573c4"
     },
     {
-      "path": "d0cfcb6b83b24ee5445c271dc60e86c6905c718a.stats.json",
+      "path": "30455e7d31765ec7aa856d7d4f6b86239a4573c4.stats.json",
       "where": "client",
       "type": "json",
       "cacheable": true,
-      "url": "/d0cfcb6b83b24ee5445c271dc60e86c6905c718a.stats.json?meteor_js_resource=true",
+      "url": "/30455e7d31765ec7aa856d7d4f6b86239a4573c4.stats.json?meteor_js_resource=true",
       "size": 51427,
-      "hash": "9d730a40550409a9d7abd30edee5e2abd25c5538"
+      "hash": "0bc450441d2422d5720f77fec1d83fd3d33b6a5b"
     },
     {
       "path": "0df66ee8702b25a49c47d9381b5e606975a83260.css",
@@ -900,6 +900,24 @@
       "url": "/images/Qlik breaker.png.jpg",
       "size": 123770,
       "hash": "6a889219869554b29c79df0411ad5e36596ac544"
+    },
+    {
+      "path": "app/images/Qlik race game cars.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/Qlik race game cars.png",
+      "size": 2508769,
+      "hash": "82f970b156cf8e89174ca78aeaf1ca0aa8ddbeb4"
+    },
+    {
+      "path": "app/images/Qlik race game sensors.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/Qlik race game sensors.png",
+      "size": 303186,
+      "hash": "2296e975b0ab3e7d5722322af8bec43768f9df04"
     },
     {
       "path": "app/images/QlikAdmin.png",
@@ -2608,8 +2626,17 @@
       "type": "asset",
       "cacheable": false,
       "url": "/images/qrsmeteor - how do you automatically setup qlik sense.png",
-      "size": 39897,
-      "hash": "04599e7dfd554304474696b8ccec4561dad091de"
+      "size": 45480,
+      "hash": "2f162c5e69aa28520de3899aa73f35e1be00fc11"
+    },
+    {
+      "path": "app/images/qrsmeteor - install node npm modules.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/qrsmeteor - install node npm modules.png",
+      "size": 4348,
+      "hash": "0b36268f39ca4d63b6e3019f6c740e969cec27e0"
     },
     {
       "path": "app/images/qrsmeteor - make sure you see the app ids after startup.png",
@@ -2619,6 +2646,15 @@
       "url": "/images/qrsmeteor - make sure you see the app ids after startup.png",
       "size": 48484,
       "hash": "4005ebee66cef46294160a47506a9a23b1531ed2"
+    },
+    {
+      "path": "app/images/qrsmeteor - open command window.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/qrsmeteor - open command window.png",
+      "size": 13382,
+      "hash": "de2cf890a8d2834ca88d6197c026511cef853b06"
     },
     {
       "path": "app/images/qrsmeteor - settings json file examples 2.png",

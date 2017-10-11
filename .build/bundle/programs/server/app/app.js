@@ -1648,30 +1648,23 @@ function deleteDirectoryAndDataConnection(customerName) {                       
 }                                                                                                                      // 357
                                                                                                                        //
 function createDirectory(customerName) {                                                                               // 359
-    var filename, dir;                                                                                                 // 359
     return _regenerator2.default.async(function () {                                                                   // 359
         function createDirectory$(_context8) {                                                                         // 359
             while (1) {                                                                                                // 359
                 switch (_context8.prev = _context8.next) {                                                             // 359
                     case 0:                                                                                            // 359
-                        console.log('createDirectory TURNED OFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', customerName);   // 360
-                        _context8.prev = 1;                                                                            // 359
-                        check(customerName, String);                                                                   // 362
-                        filename = sanitize(customerName);                                                             // 363
-                        dir = path.join(Meteor.settings.broker.customerDataDir, customerName);                         // 364
-                        console.log('Meteor.settings.broker.customerDataDir', dir);                                    // 365
-                        _context8.next = 8;                                                                            // 359
-                        return _regenerator2.default.awrap(fs.ensureDir(dir));                                         // 359
+                        console.error('createDirectory TURNED OFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', customerName); // try {
+                        //     check(customerName, String);                                                            // 362
+                        //     var filename = sanitize(customerName);                                                  // 363
+                        //     const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);            // 364
+                        //     console.log('Meteor.settings.broker.customerDataDir', dir)                              // 365
+                        //     await fs.ensureDir(dir)                                                                 // 366
+                        //     return dir;                                                                             // 367
+                        // } catch (error) {                                                                           // 368
+                        //     throw new Meteor.Error('Failed to create directory for ', customerName);                // 369
+                        // }                                                                                           // 370
                                                                                                                        //
-                    case 8:                                                                                            // 359
-                        return _context8.abrupt("return", dir);                                                        // 359
-                                                                                                                       //
-                    case 11:                                                                                           // 359
-                        _context8.prev = 11;                                                                           // 359
-                        _context8.t0 = _context8["catch"](1);                                                          // 359
-                        throw new Meteor.Error('Failed to create directory for ', customerName);                       // 359
-                                                                                                                       //
-                    case 14:                                                                                           // 359
+                    case 1:                                                                                            // 359
                     case "end":                                                                                        // 359
                         return _context8.stop();                                                                       // 359
                 }                                                                                                      // 359
@@ -1679,7 +1672,7 @@ function createDirectory(customerName) {                                        
         }                                                                                                              // 359
                                                                                                                        //
         return createDirectory$;                                                                                       // 359
-    }(), null, this, [[1, 11]]);                                                                                       // 359
+    }(), null, this);                                                                                                  // 359
 }                                                                                                                      // 359
                                                                                                                        //
 function checkCustomersAreSelected(customers) {                                                                        // 374
