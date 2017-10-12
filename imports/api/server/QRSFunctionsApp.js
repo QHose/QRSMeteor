@@ -313,6 +313,7 @@ export async function createAppConnections() {
     var senseDemoMaterials = path.join(Meteor.absolutePath, 'Sense Demo materials');
     console.log('senseDemoMaterials', senseDemoMaterials)
     await createAppConnection('folder', 'Import demo', senseDemoMaterials);
+
     for (let c of Meteor.settings.broker.dataConnections) {
         await createAppConnection(c.type, c.name, c.connectionString);
     }

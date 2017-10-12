@@ -1,6 +1,12 @@
 {
     "adminEmails": "mbj@qlik.com",
-    "multiTenantScenario": true,
+    "multiTenantScenario": false,
+    "qlikSense": {
+        "installQlikSense": false,
+        "installationFilePath": "C:\\Qlik Sense Server.exe",
+        "sharedPersistanceFolder": "C:\\QlikSenseShare",
+        "sharedPersistanceFolderName": "QlikSenseShare"
+    },
     "public": {
         "qlikSenseHost": "NLSCH-MBJ3",
         "qlikSensePort": 81,
@@ -50,7 +56,7 @@
         "customerDataDir": "",
         "automaticCleanUpGeneratedApps": "Yes",
         "automationBaseFolder": "",
-        "runInitialQlikSenseSetup": true,
+        "runInitialQlikSenseSetup": false,
         "connectToSenseAsUserDirectory": "QTSEL",
         "connectToSenseAsUser": "mbj",
         "dataConnections": [{

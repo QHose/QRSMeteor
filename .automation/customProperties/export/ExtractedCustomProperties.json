@@ -2,14 +2,14 @@
   {
     "id": "ff5125bd-afa5-4164-8192-98ebd2dd726a",
     "createdDate": "2017-10-10T18:46:48.234Z",
-    "modifiedDate": "2017-10-10T18:46:48.234Z",
+    "modifiedDate": "2017-10-10T18:47:44.738Z",
     "modifiedByUserName": "QLIK-AB0Q2URN5T\\qlikexternal",
     "name": "customer",
     "valueType": "Text",
     "choiceValues": [
-      "Renner Group",
-      "Veum, Harber and O'Reilly",
-      "Kertzmann - Lebsack"
+      "Schamberger - Gottlieb",
+      "O'Conner, Kohler and Brown",
+      "Spencer - Hayes"
     ],
     "objectTypes": [
       "App",

@@ -58,14 +58,14 @@
         "connectToSenseAsUserDirectory": "",
         "connectToSenseAsUser": "",
         "dataConnections": [{
-                "name": "data import test",
+                "name": "Another folder connection",
                 "type": "folder",
                 "connectionString": "C:\\"
             },
             {
-                "name": "test",
-                "type": "folder",
-                "connectionString": "C:\\"
+                "name": "qrs-sessions",
+                "connectionstring": "http://localhost:5555/data?connectorID=MongoDBConnector&table=Collection&server=192.168.0.124&port=27017&database=game&collection=session&appID=",
+                "type": "internet"
             }
         ]
     },

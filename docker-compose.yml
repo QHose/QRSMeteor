@@ -24,7 +24,7 @@ services:
             - PORT=3000 
             - ROOT_URL=http://localqrs
         volumes:
-         - C:\Users\mbj\Documents\GitHub\QRSMeteor\dockerConfigMountFolder:/meteorQRS/config
+        - C:\Users\mbj\Documents\GitHub\QRSMeteor\dockerConfigMountFolder:/meteorQRS/config
         ports:
         -  "3000"
         # restart: always

@@ -33,7 +33,7 @@ Template.slides.onRendered(function() {
     Tracker.afterFlush(function() {
         Reveal.initialize({
             width: window.innerWidth - 80,
-            // height: window.innerHeight - 90,
+            // height: window.innerHeight - 450,
             embedded: true,
             controls: true,
             center: false,
@@ -41,7 +41,8 @@ Template.slides.onRendered(function() {
             // history: true,        
             autoPlayMedia: false,
             // fragments: false,
-            autoSlide: 3000,
+            autoSlide: 4000,
+            // fragments: false, //werkt niet...
             loop: true,
             // viewDistance: 3,
             // // default/cube/page/concave/zoom/linear/fade/none 
@@ -51,11 +52,11 @@ Template.slides.onRendered(function() {
             slideNumber: true
         });
 
-        Reveal.addEventListener('ready', function(event) {
-            console.log('------------------------------------');
-            console.log('Reveal is ready to be used');
-            console.log('------------------------------------');
-        });
+        // Reveal.addEventListener('ready', function(event) {
+        //     console.log('------------------------------------');
+        //     console.log('Reveal is ready to be used');
+        //     console.log('------------------------------------');
+        // });
 
 
         Tracker.autorun(function() {
@@ -70,7 +71,7 @@ Template.slides.onRendered(function() {
                     Session.set('activeStepNr', evt.indexh);
                     console.log('active slides: evt.indexh', evt.indexh);
                 });
-            }, 500);
+            }, 100);
 
         })
     })
