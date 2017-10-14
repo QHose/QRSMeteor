@@ -29,12 +29,20 @@ if (Meteor.isServer) {
     import crypto from 'crypto';
     var fs = require('fs-extra');
     const path = require('path');
+    var os = require('os');
     // import fs from 'fs';
     import {
         myQRS
     } from '/imports/api/server/QRSAPI';
     const bluebird = require('bluebird');
     const WebSocket = require('ws');
+
+    if (!Meteor.settings.public.qlikSenseHost) {
+        Meteor.settings.public.qlikSenseHost = os.hostname();
+    }
+    if (!Meteor.settings.private.SenseServerInternalLanIP) {
+        Meteor.settings.private.SenseServerInternalLanIP = os.hostname();
+    }
 
     var _senseConfig = {
         "host": Meteor.settings.public.qlikSenseHost,
@@ -52,7 +60,7 @@ if (Meteor.isServer) {
     };
 
     if (missingParameters(_senseConfig)) {
-        throw 'Missing parameters in _senseConfig, you did not populate the settings.json file in the project root of MeteorQRS, or with docker: did you mount the volume with the config including the settings.json file? (with the correct name)';
+        throw new Meteor.Error('Missing parameters in _senseConfig, you did not populate the settings.json file in the project root of MeteorQRS, or with docker: did you mount the volume with the config including the settings.json file? (with the correct name)');
     }
 
     if (!_senseConfig.host) {
@@ -197,8 +205,8 @@ if (Meteor.isServer) {
             var keysEqual = compareKeys(Meteor.settings, exampleSettingsFile);
             console.log('Settings file has all the keys as specified in the example json file?', keysEqual)
             if (!keysEqual) {
-                console.error('Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor');
-                throw new Error('Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor');
+                // console.error('Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor');
+                throw new Error('Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor');
             }
         })
 
@@ -232,8 +240,14 @@ export function missingParameters(obj) {
     return true;
 }
 
-export function compareKeys(a, b) {
-    var aKeys = Object.keys(a).sort();
-    var bKeys = Object.keys(b).sort();
-    return JSON.stringify(aKeys) === JSON.stringify(bKeys);
+function hasSameProps(obj1, obj2) {
+    return Object.keys(obj1).every(function(prop) {
+        return obj2.hasOwnProperty(prop);
+    });
+}
+
+function compareKeys(...objects) {
+    const allKeys = objects.reduce((keys, object) => keys.concat(Object.keys(object)), []);
+    const union = new Set(allKeys);
+    return objects.every(object => union.size === Object.keys(object).length);
 }

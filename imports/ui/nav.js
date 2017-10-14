@@ -133,20 +133,14 @@ export async function selectMenuItemInSense(slide) {
     console.log('selectMenuItemInSense - slide', slide)
     Cookies.set('currentMainRole', 'TECHNICAL');
     try {
-        // get a valid ticket, if you select a menu item you want to navigate as an expert user...
-        var userProperties = {
-            group: 'Technical'
-        };
-        var ticket = await Meteor.callPromise('getTicketNumber', userProperties, Meteor.settings.public.slideGenerator.virtualProxy);
-        var qix = await slideApp.getQix(ticket);
+        var qix = await slideApp.getQix();
         var myField = await qix.app.getField('Level 2');
         var result = await myField.selectValues(
                 [{
                     "qText": slide
                 }]
             )
-            // await slideApp.setChangeListener(qix)
-        await slideApp.getAllSlides(qix, false);
+            // await slideApp.getAllSlides(qix, false);
         Router.go('slides');
     } catch (error) {
         var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS';

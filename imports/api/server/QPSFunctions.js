@@ -289,11 +289,14 @@ Meteor.methods({
         return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());
     },
     getTicketNumber(userProperties, virtualProxy) { // only get a ticket number for a SPECIFIC virtual proxy
+        console.log('getTicketNumber using properties:')
+        console.log('virtualProxy', virtualProxy)
+        console.log('userProperties', userProperties)
         try {
-            // check(userProperties.user, String);
             check(userProperties.group, String);
+            check(virtualProxy, String);
         } catch (err) {
-            throw new Meteor.Error('Failed to login into Qlik Sense via a ticket', 'Please go to the landing page and select your group. We could not request a ticket because the userId or groups (technical, generic) are not provided');
+            throw new Meteor.Error('Failed to login into Qlik Sense via a ticket', 'Please go to the landing page and select your group. We could not request a ticket because the userId or groups (technical, generic) or virtual proxy are not provided');
         }
         var passport = {
             'UserDirectory': Meteor.userId(), // Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer

@@ -174,6 +174,9 @@ export function setAppIDs(params) {
 
         senseConfig.slideGeneratorAppId = slideGeneratorApps[0].id;
         console.log('The slide generator app id has been set to ', senseConfig.slideGeneratorAppId);
+        console.log('------------------------------------');
+        console.log('YOU HAVE SUCCESFULLY STARTED QRSMETEOR, WE ARE CONNECTED TO QLIK SENSE');
+        console.log('------------------------------------');
     } catch (err) {
         console.error(err)
         throw new Meteor.Error('The slideGenerator or Self Service BI app can not be found in Qlik sense, or you did not have all parameters set as defined in the the settings.json example file.', err);

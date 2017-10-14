@@ -41,9 +41,9 @@ Template.slides.onRendered(function() {
             // history: true,        
             autoPlayMedia: false,
             // fragments: false,
-            autoSlide: 4000,
+            autoSlide: 500,
             // fragments: false, //werkt niet...
-            loop: true,
+            loop: false,
             // viewDistance: 3,
             // // default/cube/page/concave/zoom/linear/fade/none 
             transition: 'slide', // none/fade/slide/convex/concave/zoom     
@@ -69,6 +69,7 @@ Template.slides.onRendered(function() {
                 Reveal.slide(0);
                 Reveal.addEventListener('slidechanged', function(evt) {
                     Session.set('activeStepNr', evt.indexh);
+                    $('.ui.embed').embed();
                     console.log('active slides: evt.indexh', evt.indexh);
                 });
             }, 100);

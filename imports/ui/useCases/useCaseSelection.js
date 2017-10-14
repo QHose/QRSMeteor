@@ -15,9 +15,16 @@ const Cookies = require('js-cookie');
 var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
 var slideObject = Meteor.settings.public.slideGenerator.dataObject;
 var app = null;
+var qix = null;
 
 
 var possibleRoles = ['Developer', 'TECHNICAL', 'GENERIC', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
+
+// ONCREATED
+Template.useCaseSelection.onCreated(async function() {
+    qix = await makeSureSenseIsConnected();
+    await setChangeListener(qix);
+})
 
 // ONRENDERED.
 Template.useCaseSelection.onRendered(async function() {
@@ -39,10 +46,11 @@ Template.useCaseSelection.onRendered(async function() {
     $('.ui.dropdown')
         .dropdown({
             async onChange(group, text, selItem) {
-                Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
+                // Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
                 Cookies.set('currentMainRole', group);
-                var app = await setSlideContentInSession(group);
+                console.log('qix', qix)
                 await setSelectionInSense(app, 'Partial Workshop', group)
+                var app = await setSlideContentInSession(group);
                 Router.go('slides');
             }
         })
@@ -54,12 +62,12 @@ Template.useCaseSelection.onRendered(async function() {
 
 Template.useCaseSelection.events({
     'click .button.slides': async function(e, t) {
-        await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
+        // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
         await setSlideContentInSession('TECHNICAL');
         Router.go('slides');
         setTimeout(function() {
             nav.showSlideSelector();
-        }, 200);
+        }, 100);
     },
     'click #videoButton': async function(e, t) {
         nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
@@ -70,7 +78,7 @@ Template.useCaseSelection.events({
 
 async function setSelectionInSense(app, field, value) {
     console.log('setSelectionInSense field:' + field + ' value:' + value);
-    console.log('app', app)
+    // console.log('app', app)
     try {
         // var layout = await app.getAppLayout();
         var myField = await app.getField(field);
@@ -80,43 +88,34 @@ async function setSelectionInSense(app, field, value) {
                 "qText": value
             }]
         )
-        console.log('result', result)
-
-
+        console.log('result of setting a selection in Sense', result)
     } catch (error) {
         console.error(error);
     }
 }
 
 async function makeSureSenseIsConnected() {
-
+    var ticket = await Meteor.callPromise('getTicketNumber', { group: 'notProvided' }, Meteor.settings.public.slideGenerator.virtualProxy);
+    return await getQix(ticket);
 }
 
 async function setSlideContentInSession(group) {
-    Cookies.set('currentMainRole', 'TECHNICAL');
-    check(group, String);
+    console.log('Try getting the slide data for group', group)
     try {
-        // get a valid ticket
-        var userProperties = {
-            group: group
-        };
-        var ticket = await Meteor.callPromise('getTicketNumber', userProperties, Meteor.settings.public.slideGenerator.virtualProxy);
-        var qix = await getQix(ticket);
-        //get the slide content and register an event handler, so we know when Qlik Sense changed and can update the screen... with new content. Its fine if it runs in parallel
-        await Promise.all([
-            getAllSlides(qix, true),
-            setChangeListener(qix),
-        ]);
-
+        check(group, String);
+        Cookies.set('currentMainRole', group);
+        var qix = await getQix();
+        getAllSlides(qix, true);
         return qix.app;
     } catch (error) {
-        var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS';
+        var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS, or group is not provided';
         console.error(message, error);
         sAlert.error(message, error);
     };
 }
 
 export async function getQix(ticket) {
+    console.log('getQix with ticket:', ticket)
     const config = {
         schema: senseConfig.QIXSchema,
         appId: senseConfig.slideGeneratorAppId,
@@ -130,9 +129,9 @@ export async function getQix(ticket) {
             }
         },
         listeners: {
-            // 'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + data),
+            // 'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + JSON.stringify(data)),
         },
-        // handleLog: (message) => console.log('Engima: ' + message),
+        // handleLog: (message) => console.log('Engima: ' + JSON.stringify(message)),
     };
     return await enigma.getService('qix', config);
 }
