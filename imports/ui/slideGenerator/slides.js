@@ -92,7 +92,9 @@ Template.slides.events({
 Template.slideContent.onRendered(function() {
     Meteor.setTimeout(function() {
         //embed youtube containers in a nice box without loading all content
-        this.$('.ui.embed').embed({ autoplay: true });
+        this.$('.ui.embed').embed({
+            autoplay: true
+        });
         //make sure all code gets highlighted using highlight.js
         this.$('pre code').each(function(i, block) {
             hljs.highlightBlock(block);
@@ -153,9 +155,22 @@ Template.registerHelper('formatted', function(text) {
         return '<iframe class="SenseEmbedFrame" src="' + sourceURL + '" allowfullscreen="allowfullscreen" frameborder="0"></iframe>';
     } else if (text.startsWith('<')) { //custom HTML
         return text;
+    } else if (text.startsWith('!comment ')) { //vertical slide with comments
+        var messagebox = `
+        <section>
+            <div class="ui icon message">
+            <i class="help icon"></i>
+            <div class="content">
+            <div class="header">
+                Let's explain what we mean here...
+            </div>
+                 ` + converter.makeHtml(text) + `
+            </div>
+        </div>
+        </section>`;
+        return messagebox;
     } else if (checkTextIsImage(text)) { //image
-        // console.log('found an image', text)
-        return '<img class="ui massive rounded bordered image fragment"  src="images/' + text + '">'
+        return '<img class="ui massive rounded bordered image fragment"  src="images/' + text + '">';
     } else { //text, convert the text (which can include markdown syntax) to valid HTML
         var result = converter.makeHtml(text);
         if (result.substring(1, 11) === 'blockquote') {

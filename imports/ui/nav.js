@@ -141,11 +141,11 @@ export async function selectMenuItemInSense(slide) {
         var qix = await slideApp.getQix(ticket);
         var myField = await qix.app.getField('Level 2');
         var result = await myField.selectValues(
-            [{
-                "qText": slide
-            }]
-        )
-        await slideApp.setChangeListener(qix)
+                [{
+                    "qText": slide
+                }]
+            )
+            // await slideApp.setChangeListener(qix)
         await slideApp.getAllSlides(qix, false);
         Router.go('slides');
     } catch (error) {

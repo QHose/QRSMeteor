@@ -88,6 +88,10 @@ async function setSelectionInSense(app, field, value) {
     }
 }
 
+async function makeSureSenseIsConnected() {
+
+}
+
 async function setSlideContentInSession(group) {
     Cookies.set('currentMainRole', 'TECHNICAL');
     check(group, String);
