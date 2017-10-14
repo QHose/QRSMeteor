@@ -257,7 +257,7 @@ app.visualization.create('barchart',[""Case owner"",""=avg(Duration)""],
 });
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Promise based async example using the vizualization API  to create a barchart","qlik-visuals-result.png",,"","","","","         0","0","PreSales",
-"API -  generic introduction","JS Fidlle example: bar chart on the fly","<iframe class=""SenseEmbedFrame"" src=""//jsfiddle.net/qhose/9acfgugp/embedded/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","PreSales",
+"API -  generic introduction","JS Fidlle example: bar chart on the fly","iframe http://jsfiddle.net/qhose/9acfgugp/embedded/",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Events","Events: create a table object which is initially empty",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Events","```javascript
 table = app.createTable([""Country"", ""Category""], [""Sum(SalesAmount)""], { rows: 1000 });
@@ -308,9 +308,9 @@ $(""#btn_1"").click(function() {
 - Under the hood it will start NodeJS and MongoDb (the database) for you.
 - [install Meteor](https://www.meteor.com/install)
 - Create your first TODO app with MeteorJS [here](https://www.meteor.com/tutorials/angular/creating-an-app)",,"","","","","         0","0","PreSales",
-"Web integration","Overview web integration","<iframe class=""SenseEmbedFrame"" src=""/webIntegration_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
+"Web integration","Overview web integration","iframe /webIntegration_embedded",,"","","","","         0","0","Technical - 2 hours, Integration summary",
 "Web integration","Examples of embedded apps","# What does a successful integration look like?",,,,,,,,,
-"Web integration","Examples of embedded apps","<iframe class=""SenseEmbedFrame"" src=""https://webapps.qlik.com/#/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Demo with integration.qlik.com, SaaS & Power of APIs",
+"Web integration","Examples of embedded apps","iframe https://webapps.qlik.com/#/",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Demo with integration.qlik.com, SaaS & Power of APIs",
 "Web integration","Examples of embedded apps","!comment
 This slide gives a real life example of embedding. It shows you a collection of example websites where Qlik Sense has been embedded.The URL is: [https://webapps.qlik.com](https://webapps.qlik.com).
 ",,,,,,,,,
@@ -1152,24 +1152,24 @@ or
 "Slide generator - use cases","How do you create slides today?","You select slides based on your audience?",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How do you create slides today?","For each customer you create a new one",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How do you create slides today?","If you get questions you have to search at multiple locations and maybe you have answer it in a follow up meeting...",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","Goals","Inspire what you can do with our engine",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","Goals","Prevent multiple versions of the truth, create 1 ""master slide deck""",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","Goals","Inspire what you can do with our engine",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
+"Slide generator - use cases","Goals","Prevent multiple versions of the truth, create 1 ""master slide deck""",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
 "Slide generator - use cases","Goals","With a centrally hosted ""slide generator"" you always have the
 - *latest version* always available via your browser
 - authorized information only. You will only see the bullets, images, videos on the slide which you are *allowed to see*
 - a version of information that matches your skill level. (e.g. prevent an overload for non technical users)
-- Centrally controlled [version management](http://github.com)",,"","","","","         0","0","What is this slide generator?",
+- Centrally controlled [version management](http://github.com)",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
 "Slide generator - use cases","How did we create the slide generator?","We created a website that uses the data of a Qlik Sense app.",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","Because people are logged in to the *slide generator* and selected their expertise we only show data on the slides that matches their skills. (using the row level security in an app)",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","slide generator - welcome popup screenshot.png",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How does the slide generator create slides?","The app contains text and references to images and videos",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How does the slide generator create slides?","The app contains text and references to images and videos",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
 "Slide generator - use cases","How does the slide generator create slides?","The slide generator software looks at each row and detects if it needs to create a
 - bullet with text
 - image
 - YouTube player
 - you can also insert raw html (e.g. to embed an IFrame)
 - you can also use [markDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to write your contents",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How does the slide generator create slides?","slide generator - example data.png",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How does the slide generator create slides?","slide generator - example data.png",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
 "Slide generator - use cases","Possibilities","Users are logged in, and therefore we can store selections, and create presentations for each user.",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","Select slides while you are having a conversation, create a ""personal"" presentation, add annotations and share the link",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","Possibilities","You could track which users view which slides.",,"","","","","         0","0","What is this slide generator?",
@@ -1183,11 +1183,11 @@ or
 - you can also give each data delivery user/department its own app
 - you can create a Quality app, verifiy contents, and publish overwrite the app into the production app for this deparment
 - the main slide generator app can load the data from each departmental app.",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","Version management","Slides are just rows of data",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","Version management","Slides are just rows of data",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
 "Slide generator - use cases","Version management","I personally used a mindmap to create an export to csv",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","Version management","I sync this csv using a version management tool called GitHub",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","Version management","On the server we can [track the changes](https://github.com/QHose/QRSMeteor/commit/cd826a178554824780632d7c96afb6295949317e) and load the data into the app after approval",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","Version management","slide generator - github track changes version management.png",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","Version management","I sync this csv using a version management tool called GitHub",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
+"Slide generator - use cases","Version management","On the server we can [track the changes](https://github.com/QHose/QRSMeteor/commit/cd826a178554824780632d7c96afb6295949317e) and load the data into the app after approval",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
+"Slide generator - use cases","Version management","slide generator - github track changes version management.png",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
 "Slide generator - how to create content in distributed teams?","What is the concept of the data to insert?","The source of the slide generator is just a Qlik Sense app. 
 - We created a table with slide titles and their contents (bullets such as texts, links to images/videos, raw HTML or markDown)
 - We can assign ""each bullet/video/image"" to a workshop or audience.
@@ -1769,7 +1769,7 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Load all modules for Meteor (Node) project","Click on `install modules.bat`",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Load all modules for Meteor (Node) project","qrsmeteor - install node npm modules.png",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Load all modules for Meteor (Node) project","This will install all software that QRSMeteor needs (our demo server which is based on Meteor which runs on NodeJS)",,,,,,,,,
-"Qlik Sense API introduction","Overview","<iframe class=""SenseEmbedFrame"" src=""/API_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Integration summary, Technical - 2 hours",
+"Qlik Sense API introduction","Overview","iframe /API_embedded",,"","","","","         0","0","Integration summary, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Authorization: And will only see its own data?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
@@ -3751,7 +3751,7 @@ or
   }
 }
 ```",,,,,,,,,
-"Architecture","Overview architecture","<iframe class=""SenseEmbedFrame"" src=""/architecture_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours; Integration summary; Hosting Ops; CTO",
+"Architecture","Overview architecture","iframe /architecture_embedded",,"","","","","         0","0","Technical - 2 hours; Integration summary; Hosting Ops; CTO",
 "Architecture","Integration architecture introduction video","https://youtu.be/sv5nKDvmRPI",,"","","","","         0","0","PreSales, Technical - 1 hour, CTO, Hosting Ops",
 "Architecture","Integration architecture overview","SaaSarchitecture.png",,"","","","","         0","0","Technical - 2 hours",
 "Architecture","Qlik Sense Topology ","[Click here for the Qlik Sense topology](http://integration.qlik.com/images/QlikSense%20TopologiesV0_18.pdf)",,"","","","","         0","0","PreSales",
@@ -3884,7 +3884,7 @@ STORE QV_Table INTO File.QVD;
 "Other","QAP",,,,,,,,,,
 "Other","Video: Change the host name (certificates, pfx, cert)","https://youtu.be/Dvub_4fikv0",,,,,,,,,
 "Other","On demand app generation (ODAG)","https://youtu.be/n_VnOdqQ0CA",,,,,,,,,
-"Other","Documentation and video overview","<iframe class=""SenseEmbedFrame"" src=""/generic_links_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Integration summary",
+"Other","Documentation and video overview","iframe /generic_links_embedded",,"","","","","         0","0","Technical - 2 hours, Integration summary",
 "QAP","Delighting developers","web - QAP delighting developers.png",,,,,,,,,
 "QAP","Lifecycle","web - qap lifecycle.png",,,,,,,,,
 "QAP","Key advantages","web - QAP delighting developers.png",,,,,,,,,

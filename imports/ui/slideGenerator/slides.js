@@ -153,7 +153,7 @@ Template.registerHelper('formatted', function(text) {
         return html;
     } else if (text.startsWith('iframe ')) { //if a text starts with IFRAME: we convert it into an IFRAME with a class that sets the width and height etc...
         var sourceURL = text.substr(text.indexOf(' ') + 1);
-        return '<iframe class="SenseEmbedFrame" src="' + sourceURL + '" allowfullscreen="allowfullscreen" frameborder="0"></iframe>';
+        return '<iframe src="' + sourceURL + '" allowfullscreen="allowfullscreen" frameborder="0"></iframe>';
     } else if (text.startsWith('<')) { //custom HTML
         return text;
     } else if (text.startsWith('!comment ')) { //vertical slide with comments

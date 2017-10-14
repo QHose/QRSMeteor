@@ -49,8 +49,9 @@ Template.useCaseSelection.onRendered(async function() {
                 // Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
                 Cookies.set('currentMainRole', group);
                 console.log('qix', qix)
-                await setSelectionInSense(app, 'Partial Workshop', group)
+                await setSelectionInSense('Partial Workshop', group)
                 var app = await setSlideContentInSession(group);
+                console.log('Content has been received, now show the slides')
                 Router.go('slides');
             }
         })
@@ -76,12 +77,12 @@ Template.useCaseSelection.events({
 });
 
 
-async function setSelectionInSense(app, field, value) {
+async function setSelectionInSense(field, value) {
     console.log('setSelectionInSense field:' + field + ' value:' + value);
-    // console.log('app', app)
     try {
-        // var layout = await app.getAppLayout();
-        var myField = await app.getField(field);
+        var qix = await getQix();
+        console.log('qix', qix)
+        var myField = await qix.app.getField(field);
         console.log('resources Field', myField);
         var result = await myField.selectValues(
             [{
@@ -90,7 +91,7 @@ async function setSelectionInSense(app, field, value) {
         )
         console.log('result of setting a selection in Sense', result)
     } catch (error) {
-        console.error(error);
+        console.error('Error making selection in Sense ', error);
     }
 }
 
@@ -106,7 +107,6 @@ async function setSlideContentInSession(group) {
         Cookies.set('currentMainRole', group);
         var qix = await getQix();
         getAllSlides(qix, true);
-        return qix.app;
     } catch (error) {
         var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS, or group is not provided';
         console.error(message, error);

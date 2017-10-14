@@ -21,29 +21,10 @@ const Cookies = require('js-cookie');
 export var VIDEO_OVERVIEW = 'Video overview';
 
 Template.nav.helpers({
-    // isSaaSDemoPage() {
-    //     return Router.current().route.getName() === 'generation' || Router.current().route.getName() === 'SaaSIntroduction';
-    // },
-    // isDocumentationPage() {
-    //     return Router.current().route.getName() === 'documentation';
-    // },
-    // isSelfServicePage() {
-    //     return Router.current().route.getName() === 'selfService';
-    // },
-    // isVideoPage() {
-    //     return Router.current().route.getName() === VIDEO_OVERVIEW;
-    // },
-    // isMainLandingPage() {
-    //     return !Router.current().route.getName() || Router.current().route.getName() === 'useCaseSelection';
-    // },
     isPage(page) {
         if (Router.current().route)
             return Router.current().route.getName() === page;
-    },
-    userRole() {
-        let role = setUserRole();
-        return role;
-    },
+    }
 });
 
 
@@ -109,13 +90,6 @@ export function showSlideSelector() {
             // },
         })
 
-    // $(".ui.modal.sheetSelector")
-    //     .modal({
-    //         onVisible: function() {
-    //             $(".ui.modal.sheetSelector").modal("refresh");
-    //         }
-    //     })
-    //     .modal("show");
 }
 async function abortQlikModalState() {
     console.log('slide selection modal closed');
@@ -136,11 +110,10 @@ export async function selectMenuItemInSense(slide) {
         var qix = await slideApp.getQix();
         var myField = await qix.app.getField('Level 2');
         var result = await myField.selectValues(
-                [{
-                    "qText": slide
-                }]
-            )
-            // await slideApp.getAllSlides(qix, false);
+            [{
+                "qText": slide
+            }]
+        )
         Router.go('slides');
     } catch (error) {
         var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS';
