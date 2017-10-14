@@ -64,14 +64,16 @@ Template.slides.onRendered(function() {
             console.log('SESSION CHANGED SO RESET/GO TO FIRST SLIDE NUMBER');
             console.log('------------------------------------');
 
-            var test = Session.get('slideHeaders');
             Meteor.setTimeout(function() {
                 Reveal.slide(0);
-                Reveal.addEventListener('slidechanged', function(evt) {
-                    Session.set('activeStepNr', evt.indexh);
-                    $('.ui.embed').embed();
-                    console.log('active slides: evt.indexh', evt.indexh);
-                });
+                if (!Session.get('revealEventListenerHasBeenSet')) {
+                    Reveal.addEventListener('slidechanged', function(evt) {
+                        Session.set('activeStepNr', evt.indexh);
+                        $('.ui.embed').embed();
+                        console.log('active slides: evt.indexh', evt.indexh);
+                    });
+                    Session.set('revealEventListenerHasBeenSet', true);
+                }
             }, 100);
 
         })

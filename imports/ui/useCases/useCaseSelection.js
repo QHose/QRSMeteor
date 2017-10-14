@@ -50,7 +50,7 @@ Template.useCaseSelection.onRendered(async function() {
                 Cookies.set('currentMainRole', group);
                 console.log('qix', qix)
                 await setSelectionInSense('Partial Workshop', group)
-                var app = await setSlideContentInSession(group);
+                    // await setSlideContentInSession(group);
                 console.log('Content has been received, now show the slides')
                 Router.go('slides');
             }
