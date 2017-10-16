@@ -36,6 +36,7 @@
     },
     "private": {
         "certificatesDirectory": "/meteorQRS/config",
+        "dockerBaseDirectory": "/meteorQRS/config",
         "SenseServerInternalLanIP": "NLSCH-MBJ3",
         "useSSL": false,
         "passphrase": null,

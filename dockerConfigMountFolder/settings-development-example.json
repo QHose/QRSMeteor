@@ -34,7 +34,6 @@
     },
     "private": {
         "certificatesDirectory": "",
-        "dockerBaseDirectory": "",
         "SenseServerInternalLanIP": "QLIK-AB0Q2URN5T",
         "useSSL": false,
         "passphrase": null,
