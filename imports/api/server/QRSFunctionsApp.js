@@ -72,9 +72,9 @@ export async function uploadAndPublishTemplateApps() {
     console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder "' + newFolder + '" and upload them to Qlik Sense.');
 
     //GET THE ID OF THE IMPORTANT STREAMS (streams that QRSMeteor needs)
-    var everyOneStreamId = QSStream.getStreamByName(Meteor.settings.public.EveryoneAppStreamName).id;
+    var everyOneStreamId = QSStream.getStreamByName(Meteor.settings.broker.qlikSense.EveryoneAppStreamName).id;
     var templateStreamId = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName).id;
-    var APIAppsStreamID = QSStream.getStreamByName(Meteor.settings.public.APIAppStreamName).id;
+    var APIAppsStreamID = QSStream.getStreamByName(Meteor.settings.broker.qlikSense.StreamsToCreateAutomatically).id;
     try {
         check(newFolder, String);
         check(everyOneStreamId, String);

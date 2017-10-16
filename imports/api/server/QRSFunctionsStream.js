@@ -19,7 +19,7 @@ export function initSenseStreams() {
     console.log('Create initial streams');
     console.log('------------------------------------');
 
-    for (const streamName of Meteor.settings.public.StreamsToCreateAutomatically) {
+    for (const streamName of Meteor.settings.broker.qlikSense.StreamsToCreateAutomatically) {
         try {
             console.log('Try to create stream: ' + streamName + ' if it not already exists');
             if (!getStreamByName(streamName)) {

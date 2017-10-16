@@ -77,7 +77,7 @@ async function initQlikSense() {
         var QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);
         if (!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup) {
             console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
-            if (Meteor.settings.qlikSense.installQlikSense) {
+            if (Meteor.settings.broker.qlikSense.installQlikSense) {
                 installQlikSense();
                 await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                            
                 QSLic.insertLicense();
@@ -125,8 +125,8 @@ var installQlikSense = function() {
     //     executionPolicy: 'Bypass',
     //     noProfile: true
     // });
-    // var folder = Meteor.settings.qlikSense.sharedPersistanceFolder;
-    // var name = Meteor.settings.qlikSense.sharedPersistanceFolderName;
+    // var folder = Meteor.settings.broker.qlikSense.sharedPersistanceFolder;
+    // var name = Meteor.settings.broker.qlikSense.sharedPersistanceFolderName;
 
     // // ps.addCommand('Write-Host Creating a shared folder on: ' + folder);
     // ps.addCommand('New-Item "C:\\test" –type directory');

@@ -40,13 +40,13 @@ if (Meteor.isServer) {
     if (!Meteor.settings.public.qlikSenseHost) {
         Meteor.settings.public.qlikSenseHost = os.hostname();
     }
-    if (!Meteor.settings.private.SenseServerInternalLanIP) {
-        Meteor.settings.private.SenseServerInternalLanIP = os.hostname();
+    if (!Meteor.settings.public.SenseServerInternalLanIP) {
+        Meteor.settings.public.SenseServerInternalLanIP = os.hostname();
     }
 
     var _senseConfig = {
         "host": Meteor.settings.public.qlikSenseHost,
-        "SenseServerInternalLanIP": Meteor.settings.private.SenseServerInternalLanIP,
+        "SenseServerInternalLanIP": Meteor.settings.public.SenseServerInternalLanIP,
         "port": Meteor.settings.public.qlikSensePort,
         "useSSL": Meteor.settings.private.useSSL,
         "xrfkey": generateXrfkey(),
@@ -87,11 +87,11 @@ if (Meteor.isServer) {
     var qlikUserDomain = '';
     var qlikUser = '';
 
-    if (!Meteor.settings.broker.connectToSenseAsUserDirectory) {
+    if (!Meteor.settings.broker.qlikSense.connectToSenseAsUserDirectory) {
         qlikUserDomain = process.env.USERDOMAIN;
         qlikUser = process.env.USERNAME;
     } else {
-        qlikUserDomain = Meteor.settings.broker.connectToSenseAsUserDirectory;
+        qlikUserDomain = Meteor.settings.broker.qlikSense.connectToSenseAsUserDirectory;
         qlikUser = Meteor.settings.broker.connectToSenseAsUser
     }
 
