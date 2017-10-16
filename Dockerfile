@@ -6,7 +6,10 @@ EXPOSE 3000
 # we assume your bundle dir is the current dir on the docker host, lets copy it to the container
 # so in my case . refers to C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.build\bundle
 # in the container we will create a new directory meteorQRS and copy the contents of C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.build\bundle to it. 
-ADD . /meteorQRS  
+ADD . /meteorQRS
+
+# add a settings-example file to the container, the source code uses this file to validate if the user specified all keys in his settings file.
+ADD settings-development-example.json /meteorQRS/programs/server/
 
 # cd into the new directory, and go to the server folder
 WORKDIR /meteorQRS/programs/server
