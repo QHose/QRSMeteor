@@ -32,6 +32,7 @@
     echo "STEP copy dockerfile to bundle folder, so docker can build the image"
     Copy-Item Dockerfile $BUNDLE_DIR
     Copy-Item startNode.sh $BUNDLE_DIR
+    Copy-Item settings-development-example.json $BUNDLE_DIR    
 
     echo  "STEP go to bundle dir" 
     cd "$BUNDLE_DIR"

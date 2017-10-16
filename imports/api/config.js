@@ -25,7 +25,7 @@ if (Meteor.isClient) {
 
 //SERVER SIDE
 if (Meteor.isServer) {
-    console.log('This Sense SaaS demo tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings.private);
+    console.log('This tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings);
     import crypto from 'crypto';
     var fs = require('fs-extra');
     const path = require('path');
@@ -92,7 +92,7 @@ if (Meteor.isServer) {
         qlikUser = process.env.USERNAME;
     } else {
         qlikUserDomain = Meteor.settings.broker.qlikSense.connectToSenseAsUserDirectory;
-        qlikUser = Meteor.settings.broker.connectToSenseAsUser
+        qlikUser = Meteor.settings.broker.qlikSense.connectToSenseAsUser
     }
 
     export var configCerticates = {

@@ -9,7 +9,7 @@ EXPOSE 3000
 ADD . /meteorQRS
 
 # add a settings-example file to the container, the source code uses this file to validate if the user specified all keys in his settings file.
-ADD settings-development-example.json /meteorQRS/programs/server/
+ADD ./settings-development-example.json /meteorQRS/programs/server/
 
 # cd into the new directory, and go to the server folder
 WORKDIR /meteorQRS/programs/server

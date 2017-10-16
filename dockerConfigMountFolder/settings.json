@@ -4,11 +4,12 @@
     "public": {
         "qlikSenseHost": "integration.qlik.com",
         "SenseServerInternalLanIP": "integration.qlik.com",
-        "webIntegrationHost": "integration.qlik.com",
-        "qlikSensePort": 81,
+        "webIntegrationHost": "web.integration.qlik.com",
+        "qlikSensePort": 443,
         "proxyPort": 80,
         "virtualProxyClientUsage": "meteor",
-        "webIntegrationDemoPort": 3030,
+        "webIntegrationDemoPort": 80,
+        "TemplateAppStreamName": "Templates",
         "SSBI": {
             "name": "SSBI",
             "stream": "Everyone",
@@ -24,7 +25,7 @@
         }
     },
     "private": {
-        "certificatesDirectory": "/meteorQRS/config",
+        "certificatesDirectory": "/home/ubuntu/dockerConfigMountFolder",
         "useSSL": false,
         "passphrase": null,
         "virtualProxy": "hdr",

@@ -1,13 +1,16 @@
 {
     "adminEmails": "mbj@qlik.com",
+    "multiTenantScenario": false,
     "public": {
-        "qlikSenseHost": "NLSCH-MBJ3",
-        "SenseServerInternalLanIP": "NLSCH-MBJ3",
-        "webIntegrationHost": "NLSCH-MBJ3",
+        "qlikSenseHost": "QLIK-AB0Q2URN5T",
+        "SenseServerInternalLanIP": "QLIK-AB0Q2URN5T",
+        "webIntegrationHost": "QLIK-AB0Q2URN5T",
+        "TemplateAppStreamName": "Templates",
         "qlikSensePort": 81,
         "proxyPort": 80,
         "virtualProxyClientUsage": "meteor",
         "webIntegrationDemoPort": 3030,
+        "TemplateAppStreamName": "Templates",
         "SSBI": {
             "name": "SSBI",
             "stream": "Everyone",
@@ -40,11 +43,10 @@
         "LicenseControlNumber": 23334499
     },
     "broker": {
-        "multiTenantScenario": false,
         "customerDataDir": "",
-        "automaticCleanUpGeneratedApps": "No",
+        "automaticCleanUpGeneratedApps": "Yes",
         "automationBaseFolder": "",
-        "runInitialQlikSenseSetup": true,
+        "runInitialQlikSenseSetup": false,
         "qlikSense": {
             "installQlikSense": true,
             "connectToSenseAsUserDirectory": "",
@@ -54,7 +56,6 @@
             "sharedPersistanceFolderName": "QlikSenseShare",
             "StreamsToCreateAutomatically": ["API apps", "Templates", "Everyone", "QA", "TEST"],
             "APIAppStreamName": "API apps",
-            "TemplateAppStreamName": "Templates",
             "EveryoneAppStreamName": "Everyone"
         },
         "dataConnections": [{
