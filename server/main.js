@@ -252,9 +252,9 @@ Meteor.methods({
         });
         await QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff
 
-        console.log('################## Meteor.settings.multiTenantScenario', Meteor.settings.multiTenantScenario);
+        console.log('################## Meteor.settings.broker.qlikSense.multiTenantScenario', Meteor.settings.broker.qlikSense.multiTenantScenario);
         try {
-            if (!Meteor.settings.multiTenantScenario) { //on premise installation for a single tenant (e.g. with MS Active Directory)
+            if (!Meteor.settings.broker.qlikSense.multiTenantScenario) { //on premise installation for a single tenant (e.g. with MS Active Directory)
                 var customerNames = customers.map(function(c) {
                     return c.name;
                 });
@@ -282,7 +282,7 @@ Meteor.methods({
         APILogs.remove({
             'generationUserId': Meteor.userId()
         });
-        if (!Meteor.settings.multiTenantScenario) { //on premise installation for a single tenant (e.g. with MS Active Directory)
+        if (!Meteor.settings.broker.qlikSense.multiTenantScenario) { //on premise installation for a single tenant (e.g. with MS Active Directory)
             QSCustomProps.deleteCustomProperty('customers');
         }
     },
