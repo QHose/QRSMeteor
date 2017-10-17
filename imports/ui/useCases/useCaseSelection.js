@@ -157,11 +157,11 @@ export async function getQix() {
                     call.action = 'Engine API reponse';
                     call.url = '';
                     call.request = 'Engima.js event: ' + event;
-                    call.response = JSON.stringify(data);
+                    call.response = data;
                     REST_Log(call, Meteor.userId());
                 }
             },
-            handleLog: (message) => console.log('Engima: ' + JSON.stringify(message)),
+            handleLog: (message) => console.log('Engima: ' + message),
         };
         return await enigma.getService('qix', config);
     } catch (error) {
@@ -265,12 +265,17 @@ export async function getAllSlides(qix, insertSectionBreakers = sectionBreakerCo
 }
 
 export async function setChangeListener(qix) {
-    qix.app.on('changed', async() => {
-        console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
-        await getAllSlides(qix);
-        Reveal.slide(0);
+    try {
+        qix.app.on('changed', async() => {
+            console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
+            await getAllSlides(qix);
+            Reveal.slide(0);
 
-    });
+        });
+
+    } catch (error) {
+        console.error('failed to set change listener: ', error);
+    }
 }
 
 function insertSectionBreakers(table) {
