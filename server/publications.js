@@ -72,7 +72,7 @@ Meteor.publish('apiLogs', function() {
 
     const selector = {
         sort: { createDate: -1 },
-        limit: 30
+        limit: 60
     }
 
     return APILogs.find({ 'generationUserId': this.userId }, selector);

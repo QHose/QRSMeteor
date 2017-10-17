@@ -3,6 +3,7 @@ import './reveal.css';
 // import 'reveal/theme/default.css';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
+
 _ = lodash;
 var Cookies = require('js-cookie');
 var showdown = require('showdown');
@@ -27,59 +28,36 @@ Template.slides.onRendered(function() {
         Router.go('useCaseSelection');
         return;
     }
+    initializeReveal();
+});
 
+function initializeReveal() {
     window.Reveal = Reveal;
-    Session.set('activeStepNr', 0);
-    Tracker.afterFlush(function() {
+    console.log('initializeReveal', Reveal);
+    try {
         Reveal.initialize({
             width: window.innerWidth - 80,
-            // height: window.innerHeight - 450,
             embedded: true,
             controls: true,
             center: false,
-            // progress: true,
-            // history: true,        
             autoPlayMedia: false,
-            // fragments: false,
             autoSlide: 2000,
-            // fragments: false, //werkt niet...
             loop: false,
-            // viewDistance: 3,
-            // // default/cube/page/concave/zoom/linear/fade/none 
             transition: 'slide', // none/fade/slide/convex/concave/zoom     
-            // transitionSpeed: 'default', // default/fast/slow   
             previewLinks: false,
             slideNumber: true
         });
 
-        // Reveal.addEventListener('ready', function(event) {
-        //     console.log('------------------------------------');
-        //     console.log('Reveal is ready to be used');
-        //     console.log('------------------------------------');
-        // });
-
-
-        Tracker.autorun(function() {
-            console.log('------------------------------------');
-            console.log('SESSION CHANGED SO RESET/GO TO FIRST SLIDE NUMBER');
-            console.log('------------------------------------');
-
-            Meteor.setTimeout(function() {
-                Reveal.slide(0);
-                if (!Session.get('revealEventListenerHasBeenSet')) {
-                    Reveal.addEventListener('slidechanged', function(evt) {
-                        Session.set('activeStepNr', evt.indexh);
-                        $('.ui.embed').embed();
-                        console.log('active slides: evt.indexh', evt.indexh);
-                    });
-                    Session.set('revealEventListenerHasBeenSet', true);
-                }
-            }, 100);
-
-        })
-    })
-})
-
+    } catch (error) {
+        //ignore dom not ready error... 
+    }
+    Session.set('activeStepNr', 0);
+    Reveal.addEventListener('slidechanged', function(evt) {
+        console.log('!!!!!!!!!!! Slide changed: active slide: ', evt.indexh);
+        Session.set('activeStepNr', evt.indexh);
+        $('.ui.embed').embed();
+    });
+}
 Template.slides.events({
     'contextmenu *': function(e, t) {
         e.stopPropagation();

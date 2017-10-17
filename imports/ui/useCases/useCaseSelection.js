@@ -10,22 +10,38 @@ import {
 import {
     senseConfig
 } from '/imports/api/config.js';
+import {
+    APILogs,
+    REST_Log
+} from '/imports/api/APILogs';
 const enigma = require('enigma.js');
 const Cookies = require('js-cookie');
+var Reveal = require('reveal');
 var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
 var slideObject = Meteor.settings.public.slideGenerator.dataObject;
 var app = null;
 var qix = null;
 
 
-var possibleRoles = ['Developer', 'TECHNICAL', 'GENERIC', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
+var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
 
 // ONCREATED
 Template.useCaseSelection.onCreated(async function() {
+    const apiLogsHandle = Meteor.subscribe('apiLogs');
     qix = await makeSureSenseIsConnected();
     await setChangeListener(qix);
 })
 
+//make sure you go to the first slide when we have new slide data
+Tracker.autorun(() => {
+    console.log('------------------------------------');
+    console.log('We got new slide data, so go to the first slide');
+    console.log('------------------------------------');
+    Session.get('slideHeaders');
+    Meteor.setTimeout(function() {
+        Reveal.slide(0);
+    }, 500);
+});
 // ONRENDERED.
 Template.useCaseSelection.onRendered(async function() {
     $('body').addClass('mainLandingImage');
@@ -66,6 +82,7 @@ Template.useCaseSelection.events({
         // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
         await setSlideContentInSession('TECHNICAL');
         Router.go('slides');
+
         setTimeout(function() {
             nav.showSlideSelector();
         }, 100);
@@ -95,9 +112,12 @@ async function setSelectionInSense(field, value) {
     }
 }
 
+async function getTicket() {
+    return await Meteor.callPromise('getTicketNumber', { group: 'notProvided' }, Meteor.settings.public.slideGenerator.virtualProxy);
+}
+
 async function makeSureSenseIsConnected() {
-    var ticket = await Meteor.callPromise('getTicketNumber', { group: 'notProvided' }, Meteor.settings.public.slideGenerator.virtualProxy);
-    return await getQix(ticket);
+    return await getQix();
 }
 
 async function setSlideContentInSession(group) {
@@ -106,7 +126,7 @@ async function setSlideContentInSession(group) {
         check(group, String);
         Cookies.set('currentMainRole', group);
         var qix = await getQix();
-        getAllSlides(qix, true);
+        await getAllSlides(qix, true);
     } catch (error) {
         var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS, or group is not provided';
         console.error(message, error);
@@ -114,26 +134,40 @@ async function setSlideContentInSession(group) {
     };
 }
 
-export async function getQix(ticket) {
+export async function getQix() {
+    var ticket = await getTicket();
     console.log('getQix with ticket:', ticket)
-    const config = {
-        schema: senseConfig.QIXSchema,
-        appId: senseConfig.slideGeneratorAppId,
-        session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-            host: senseConfig.host,
-            prefix: Meteor.settings.public.slideGenerator.virtualProxy,
-            port: senseConfig.port,
-            unsecure: true,
-            urlParams: {
-                qlikTicket: ticket
-            }
-        },
-        listeners: {
-            // 'notification:*': (event, data) => console.log('Engima: event ' + event, 'Engima: data ' + JSON.stringify(data)),
-        },
-        // handleLog: (message) => console.log('Engima: ' + JSON.stringify(message)),
-    };
-    return await enigma.getService('qix', config);
+    try {
+        const config = {
+            schema: senseConfig.QIXSchema,
+            appId: senseConfig.slideGeneratorAppId,
+            session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+                host: senseConfig.host,
+                prefix: Meteor.settings.public.slideGenerator.virtualProxy,
+                port: senseConfig.port,
+                unsecure: true,
+                urlParams: {
+                    qlikTicket: ticket
+                }
+            },
+            listeners: {
+                'notification:*': (event, data) => {
+                    console.log('Engima: event ' + event, 'Engima: data ' + JSON.stringify(data))
+                    var call = {};
+                    call.action = 'Engine API reponse';
+                    call.url = '';
+                    call.request = 'Engima.js event: ' + event;
+                    call.response = JSON.stringify(data);
+                    REST_Log(call, Meteor.userId());
+                }
+            },
+            handleLog: (message) => console.log('Engima: ' + JSON.stringify(message)),
+        };
+        return await enigma.getService('qix', config);
+    } catch (error) {
+        console.error('failed to get Qix ', error);
+    }
+
 }
 
 //ONDESTROYED
@@ -234,6 +268,8 @@ export async function setChangeListener(qix) {
     qix.app.on('changed', async() => {
         console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
         await getAllSlides(qix);
+        Reveal.slide(0);
+
     });
 }
 
