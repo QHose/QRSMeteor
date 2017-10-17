@@ -391,13 +391,13 @@ On the top of the slide you can choose between the 5 possible views.",,,,,,,,,
 There are 3 main options for embedding:
  - IFrame: A very easy method of embedding the Hub, App, Sheet or an object. Basically with an IFrame you embed another document in the current HTML document.- Div Tag: An HTML page can have reserved spaces ( or placeholders). These are defined with Div tags. With our Capability API's it is possible to put Qlik Sense objects in these Div tags.
  On the fly: Instead of already creating an object in a Qlik Sense app and then using it in a HTML page, it is possible to create the object on the fly in the JavaScript of the webpage. Through our visualization API we give you the possibility to generate charts or other objects on the fly. This gives you the possibility to only generate the charts whenever a user logs in, giving you lots of flexibility.",,,,,,,,,
-"Web integration","Demonstration integration.qlik.com: Web integration","Lets look at [integration.qlik.com](http://web.saasdemo.qlik.com/) where we embedded
+"Web integration","Options to embed Qlik Sense: from simple to advanced use cases","iframe http://web.integration.qlik.com",,"","","","","         0","0","Technical - 1 hour, Demo with integration.qlik.com",
+"Web integration","Options to embed Qlik Sense: from simple to advanced use cases","Lets look at [integration.qlik.com](http://web.integration.qlik.com/) where we embedded
 - the hub, 
 - sheets
 - single objects 
 - or we used just the data",,"","","","","         0","0","Technical - 1 hour, Demo with integration.qlik.com",
-"Web integration","Demonstration integration.qlik.com: Web integration","Saasdemo web integration hub.png",,"","","","","         0","0","Technical - 1 hour, Demo with integration.qlik.com",
-"Web integration","Demonstration integration.qlik.com: Web integration","!comment
+"Web integration","Options to embed Qlik Sense: from simple to advanced use cases","!comment
 Through our  'Embedding Qlik Sense' demo on integration.qlik.com you will notice we have embedded  different parts of Qlik Sense.
 On the left side of the screen you can choose which example you want to see. On the right side you will see the result.
 Basically there are 3 main ways of emdedding Qlik Sense:
@@ -1726,12 +1726,38 @@ services:
 networks:
     default:
 ```",,,,,,,,,
-"Integration.qlik.com docker environment","Run docker-compose",,,,,,,,,,
+"Integration.qlik.com docker environment","Key docker-compose elements","# HAProxy",,,,,,,,,
+"Integration.qlik.com docker environment","Key docker-compose elements","We run multiple applications on different ports, but we would like to make our app available on `port 80`. Therefore we make use of a loadbalancer `HAPROXY`.",,,,,,,,,
+"Integration.qlik.com docker environment","Key docker-compose elements","The key is the `VIRTUAL_HOST`, in our case we use `localqrs` for QRSMeteor, and `localweb` for sensewebintegration (the other nodeJS project)",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","# Settings.json",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","Make sure you update at least the settings below:",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","""certificatesDirectory"": ""/meteorQRS/config"",",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","""connectToSenseAsUserDirectory"": """",",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","""connectToSenseAsUser"": """",",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","> make sure you understand that the node server is running on the docker container. So the settings also point to directories running inside the container. (Which in the end may point to a docker volume, which maps to a folder on your host).",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","# docker compose file",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","Make sure the left part (before the : ) points to your folder where you put the settings and the Qlik Sense certificates.
+```
+volumes:
+         - .:/meteorQRS/config
+```",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","> Via the `.` we specify the current directory on our docker deamon host (the machine on which you run your `docker compose` commands.",,,,,,,,,
+"Integration.qlik.com docker environment","Connect to Qlik Sense as an authorized and authenticated user","# settings.json",,,,,,,,,
+"Integration.qlik.com docker environment","Connect to Qlik Sense as an authorized and authenticated user","Your node app connects to Qlik Sense via the  following parameters
+- `""qlikSense"": {
+            ""installQlikSense"": false,
+            ""connectToSenseAsUserDirectory"": ""QLIKDEMOSAAS"",
+            ""connectToSenseAsUser"": ""Qlik"",`",,,,,,,,,
+"Integration.qlik.com docker environment","Connect to Qlik Sense as an authorized and authenticated user","Make sure this user 
+- exists and 
+- has the `rootadmin` role in Qlik Sense.",,,,,,,,,
+"Integration.qlik.com docker environment","Run docker-compose","run `docker-compose up` in your project directory, in my case `C:\Users\mbj\Documents\GitHub\QRSMeteor`, because in that directory my `docker-compose` file is located which contains all instructions for the services to run. ",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","Ater playing around with Docker your drive may get full, run the commands below...",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","docker ps -a",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","$ docker images -a",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","$ docker container prune",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","$ docker image prune",,,,,,,,,
+"Integration.qlik.com docker environment","SaaS software design patterns","[https://12factor.net/](https://12factor.net/)",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Setup your blank virtual machine","For example get a blank windows 2012/2016 server on Amazon or Azure.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Setup your blank virtual machine","Make sure you login as an admin user, member of  group `Administrators`.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Setup your blank virtual machine","Make sure you open ports on your firewall

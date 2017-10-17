@@ -19,6 +19,7 @@ import * as slideApp from '/imports/ui/useCases/useCaseSelection';
 
 const Cookies = require('js-cookie');
 export var VIDEO_OVERVIEW = 'Video overview';
+export var WEB_INTEGRATION = 'Options to embed Qlik Sense: from simple to advanced use cases';
 
 Template.nav.helpers({
     isPage(page) {
@@ -56,8 +57,8 @@ Template.nav.events({
                 selectMenuItemInSense('Qlik Sense SaaS provisioning demo');
                 break;
             case 'embedding':
-                selectMenuItemInSense('Qlik Sense SaaS provisioning demo');
-                window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
+                selectMenuItemInSense(WEB_INTEGRATION);
+                // window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
                 break;
             case 'video':
                 selectMenuItemInSense(VIDEO_OVERVIEW);

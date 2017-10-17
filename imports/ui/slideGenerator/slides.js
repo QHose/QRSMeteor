@@ -41,7 +41,7 @@ Template.slides.onRendered(function() {
             // history: true,        
             autoPlayMedia: false,
             // fragments: false,
-            autoSlide: 500,
+            autoSlide: 2000,
             // fragments: false, //werkt niet...
             loop: false,
             // viewDistance: 3,
