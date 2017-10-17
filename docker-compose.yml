@@ -32,21 +32,21 @@ services:
         - mongodb
         depends_on:
         - mongodb
-    # web:
-    #     image: qhose/sensewebintegration:2.0.0
-    #     environment:
-    #         - VIRTUAL_HOST=localweb
-    #         - MONGO_URL=mongodb://mongodb:27017/
-    #         - PORT=3030 
-    #         - ROOT_URL=http://localweb
-    #     volumes:
-    #      - C:\Users\Qlikexternal\Documents\GitHub\senseWebIntegration\dockerConfigMountFolder:/sensewebintegration/config
-    #     ports:
-    #     -  "3030"
-    #     # restart: always
-    #     links:
-    #     - mongodb
-    #     depends_on:
-    #     - mongodb
+    web:
+        image: qhose/sensewebintegration:20171017-2247
+        environment:
+            - VIRTUAL_HOST=localweb
+            - MONGO_URL=mongodb://mongodb:27017/
+            - PORT=3030 
+            - ROOT_URL=http://localweb
+        volumes:
+         - C:\Users\Qlikexternal\Documents\GitHub\senseWebIntegration\dockerConfigMountFolder:/sensewebintegration/config
+        ports:
+        -  "3030"
+        # restart: always
+        links:
+        - mongodb
+        depends_on:
+        - mongodb
 networks:
     default:
