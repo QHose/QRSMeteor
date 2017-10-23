@@ -1,7 +1,6 @@
 ﻿"Level 1","Level 2","Level 3","Level 4","Priority","Progress","Start","Due","Duration (Days)","Milestone","Resources",
 "Workshop Introduction","Legal disclaimer","legal disclaimer.png",,"","","","","         0","0","SaaS & Power of APIs, Technical - 1 day",
 "Workshop Introduction","Legal disclaimer","#### [Terms of usage](http://integration.qlik.com/legal)",,"","","","","         0","0","Technical - 1 day",
-"Workshop Introduction","Introduction Martijn & Raymond","speaker introduction martijn raymond.png",,,,,,,,,
 "Workshop Introduction","Introduction","Who are you?",,"","","","","         0","0","Technical - 1 day",
 "Workshop Introduction","Introduction","Qlik Sense experience level?",,"","","","","         0","0","Technical - 1 day",
 "Workshop Introduction","Introduction","Worked with APIs before?",,"","","","","         0","0","Technical - 1 day",
@@ -112,6 +111,7 @@
 "What is integration.qlik.com?","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","integration.qlik.com: Self service demo","iframe selfService_embedded",,"","","","","         0","0","Demo with integration.qlik.com",
 "What is integration.qlik.com?","This demo simulates your SaaS platform",">Next, you will see your admin panel which controls Qlik Sense via APIs (a ""broker""), based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs",
+"What is integration.qlik.com?","What is a ""broker"": Introduction to multi-tenant app provisioning","https://youtu.be/OulQS-1fH-A",,"","","","","         0","0","Technical - 1 hour",
 "What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours",
 "What is integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours",
@@ -1729,28 +1729,59 @@ networks:
 "Integration.qlik.com docker environment","Key docker-compose elements","# HAProxy",,,,,,,,,
 "Integration.qlik.com docker environment","Key docker-compose elements","We run multiple applications on different ports, but we would like to make our app available on `port 80`. Therefore we make use of a loadbalancer `HAPROXY`.",,,,,,,,,
 "Integration.qlik.com docker environment","Key docker-compose elements","The key is the `VIRTUAL_HOST`, in our case we use `localqrs` for QRSMeteor, and `localweb` for sensewebintegration (the other nodeJS project)",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","# Settings.json",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","Make sure you update at least the settings below:",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","""certificatesDirectory"": ""/meteorQRS/config"",",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","""connectToSenseAsUserDirectory"": """",",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","""connectToSenseAsUser"": """",",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","> make sure you understand that the node server is running on the docker container. So the settings also point to directories running inside the container. (Which in the end may point to a docker volume, which maps to a folder on your host).",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","# docker compose file",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","Make sure the left part (before the : ) points to your folder where you put the settings and the Qlik Sense certificates.
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","# settings.json",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","## hostnames",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","Make sure you update the hostnames of
+- the senseWebIntegration server (normally the same host and port as QRSMeteor)
+- the Qlik Sense server and port",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","qrsmeteor - settings json file examples.png",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","## Qlik Sense user account",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","Your node app connects to Qlik Sense as a certain user via the  following parameters
+```JSON
+- `""qlikSense"": {
+            ""installQlikSense"": false,
+            ""connectToSenseAsUserDirectory"": ""QLIKDEMOSAAS"",
+            ""connectToSenseAsUser"": ""Qlik"",`
+```",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","Make sure this user 
+- exists and 
+- has the `rootadmin` role in Qlik Sense.",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","## Qlik Sense certificates",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","After you [exported the certificates](http://help.qlik.com/en-US/sense/September2017/Subsystems/ManagementConsole/Content/export-certificates.htm) for the correct hostname under which Qlik Sense is reachable. You need to put them in the folder you mount into the container. in my case `C:\Users\mbj\Documents\GitHub\QRSMeteor\dockerConfigMountFolder` which in the docker-compose file is mapped into the container: ",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","qrsmeteor - volume mount example.png",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","""certificatesDirectory"": ""/meteorQRS/config"",",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","> make sure you understand that the node server is running on the docker container. So the settings also point to directories running inside the container. (Which in the end may point to a docker volume, which maps to a folder on your host).",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor: Specific settings for running on docker","# docker compose file",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor: Specific settings for running on docker","Make sure the left part (before the : ) points to your folder where you put the settings and the Qlik Sense certificates.
 ```
 volumes:
          - .:/meteorQRS/config
 ```",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running QRSMeteor on docker","> Via the `.` we specify the current directory on our docker deamon host (the machine on which you run your `docker compose` commands.",,,,,,,,,
-"Integration.qlik.com docker environment","Connect to Qlik Sense as an authorized and authenticated user","# settings.json",,,,,,,,,
-"Integration.qlik.com docker environment","Connect to Qlik Sense as an authorized and authenticated user","Your node app connects to Qlik Sense via the  following parameters
-- `""qlikSense"": {
-            ""installQlikSense"": false,
-            ""connectToSenseAsUserDirectory"": ""QLIKDEMOSAAS"",
-            ""connectToSenseAsUser"": ""Qlik"",`",,,,,,,,,
-"Integration.qlik.com docker environment","Connect to Qlik Sense as an authorized and authenticated user","Make sure this user 
-- exists and 
-- has the `rootadmin` role in Qlik Sense.",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor: Specific settings for running on docker","> Via the `.` we specify the current directory on our docker deamon host (the machine on which you run your `docker compose` commands.",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","# Settings.json",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","Make sure you update at least the settings below:
+```
+{
+    ""public"": {
+        ""virtualProxyClientUsage"": ""meteor"",
+        ""QRSHost"":""localqrs"", 
+        ""host"": ""localhost"",
+        ""portMeteorQRS"": 80,
+        ""port"": 81,
+        ""isSecure"": false,
+        ""multipleDivAppGuid"": ""9f847611-167c-4fa1-9b13-6efa5bec90a3""
+    }
+}
+```",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","# docker compose file (inside QRSMeteor project root)",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","in `service: web`Make sure the left part (before the : ) points to your folder where you put the settings.json file for `senseWebIntegration`
+```dockerfile
+volumes:
+         - /opt/docker/web:/sensewebintegration/config
+```",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","web integration - docker-compose.png",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","Next you need to tell the container on which `domain name` it is reachable for the users",,,,,,,,,
+"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","web integration docker compose domain names.png",,,,,,,,,
 "Integration.qlik.com docker environment","Run docker-compose","run `docker-compose up` in your project directory, in my case `C:\Users\mbj\Documents\GitHub\QRSMeteor`, because in that directory my `docker-compose` file is located which contains all instructions for the services to run. ",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","Ater playing around with Docker your drive may get full, run the commands below...",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","docker ps -a",,,,,,,,,
@@ -2472,6 +2503,8 @@ call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certica
       qlikauth.requestTicket(req, res, profile);
 ```",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Server side - SSO with QlikAuth","See [this page](http://webofwork.com/authenticate-qlik-sense-in-an-nodejs-express-app-on-an-external-web-host/)",,"","","","","         0","0","Deep dive",
+"QPS - Proxy API","Single sign on using the session API","With the session API you can basically `reuse the authentication cookie` your SaaS platform already uses today. You forward the cookie name to Qlik Sense via an API call and in this way the user gets automatically authenticated. ",,,,,,,,,
+"QPS - Proxy API","Single sign on using the session API","See more info on the [qlik help](http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-Session-Module-API.htm)",,,,,,,,,
 "QPS - Proxy API","Video: using the Session API (using .NET)","https://youtu.be/oCUjKCFVAzU",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Using the Qlik Proxy Service Ticketing API with IIS","https://youtu.be/MpC2h5y2NRE",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Example export in JSON of the proxy configuration","```JSON
@@ -3918,18 +3951,16 @@ STORE QV_Table INTO File.QVD;
 * Responsive and smart
 * 1 app for  mobile, desktop and web integration
 * No fat clients",,,,,,,,,
+"Qlik Race Game powered by the slide generator at  integration.qlik.com","Integrate and embed anything you like","> **INTEGRATION.QLIK.COM**",,,,,,,,,
 "Qlik Race Game powered by the slide generator at  integration.qlik.com","Real time race analytics","iframe http://192.168.0.124:3000/rta",,,,,,,,,
 "Qlik Race Game powered by the slide generator at  integration.qlik.com","Introduction","01.jpg",,,,,,,,,
 "Qlik Race Game powered by the slide generator at  integration.qlik.com","Test your race skills today","03.jpg",,,,,,,,,
 "Qlik Race Game powered by the slide generator at  integration.qlik.com","Will you beat the competition?","Qlik race game cars.png",,,,,,,,,
 "Qlik Race Game powered by the slide generator at  integration.qlik.com","The IoT sensors will do all the work... (almost!)","04.jpg",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","How is the competition doing today?","iframe http://qlik-ab0q2urn5t:81/anon/single/?appid=e3b1073a-4e37-45ed-b1cb-b3f80f209e3c&sheet=b4c947dc-bde2-4c77-b193-7469b78e57f1&select=clearall",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Race analytics","iframe http://qlik-ab0q2urn5t:81/anon/single/?appid=e3b1073a-4e37-45ed-b1cb-b3f80f209e3c&sheet=20975126-8493-4c6d-9a47-d9d50d5b4c3a&select=clearall",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Fastest laps","iframe http://qlik-ab0q2urn5t:81/anon/single/?appid=e3b1073a-4e37-45ed-b1cb-b3f80f209e3c&obj=sjhFPWz&select=clearall",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Integrate and embed anything you like","> **INTEGRATION.QLIK.COM**",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Laptimes by player","iframe http://qlik-ab0q2urn5t:81/anon/single/?appid=e3b1073a-4e37-45ed-b1cb-b3f80f209e3c&obj=LPEGfjP&select=clearall",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Amount of laps finished per second","iframe http://qlik-ab0q2urn5t:81/anon/single/?appid=e3b1073a-4e37-45ed-b1cb-b3f80f209e3c&obj=PdvLVw&select=clearall",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Winner of today","iframe http://qlik-ab0q2urn5t:81/anon/single/?appid=e3b1073a-4e37-45ed-b1cb-b3f80f209e3c&obj=rpTcSA&select=clearall",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Integrate and embed anything you like","> **INTEGRATION.QLIK.COM**",,,,,,,,,
+"Qlik Race Game powered by the slide generator at  integration.qlik.com","Race analytics","iframe https://qlik-db3heeeb33/single/?appid=536f92fa-b323-4d3a-8ff3-b90126c61b08&sheet=20975126-8493-4c6d-9a47-d9d50d5b4c3a&select=clearall
+",,,,,,,,,
+"Qlik Race Game powered by the slide generator at  integration.qlik.com","Race comparison","iframe https://qlik-db3heeeb33/single/?appid=536f92fa-b323-4d3a-8ff3-b90126c61b08&sheet=537e1f20-3e90-4f31-86a0-71fbfb2a3515&select=clearall",,,,,,,,,
+"Qlik Race Game powered by the slide generator at  integration.qlik.com","Winner of today","iframe 
+https://qlik-db3heeeb33/single/?appid=536f92fa-b323-4d3a-8ff3-b90126c61b08&sheet=4bed9741-6475-486b-8364-52ae255ddbee&select=clearall",,,,,,,,,
 "Qlik Race Game powered by the slide generator at  integration.qlik.com","Integration.qlik.com","> Do you also want to have a site powered the by the Qlik associative engine? Then visit the slide generator at  **integration.qlik.com**",,,,,,,,,
 "Qlik Race Game powered by the slide generator at  integration.qlik.com","Example flow: We connect to MongoDB and used the data in our website via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,,,,,,,,
