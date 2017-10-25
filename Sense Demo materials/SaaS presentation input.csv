@@ -1246,25 +1246,197 @@ or
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","Now you have submitted your presentation (via a `pull request` to the central repository on github.com). The slide generator maintainer can now verify your content and make comments. and [merge](https://services.github.com/on-demand/github-desktop/merge-pull-request-github) it in the master presentation",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","github - merge pull request.gif",,,,,,,,,
 "Slide generator - how to create content in distributed teams?","How to create your first presentation (detailed work instruction)","For more information, follow the instructions on [GitHub](https://services.github.com/on-demand/github-desktop/push-with-github-desktop)",,,,,,,,,
-"Integration.qlik.com key API calls","Summary: which activities did we automate?","Setup Qlik Sense
+"Integration.qlik.com key API calls","Summary: which activities did we automate?","For SaaS use cases automation is key",,,,,,,,,
+"Integration.qlik.com key API calls","Summary: which activities did we automate?","We automated the
+- installation of Qlik Sense
+- setup of Qlik Sense
+- single Sign on (with access rights of user)
+- clean up of the environment (swipe)",,,,,,,,,
+"Integration.qlik.com key API calls","Summary: which activities did we automate?","See [API source code](/APILogs) for more information.",,"","","","","         0","0","PreSales",
+"Integration.qlik.com key API calls","Deployment overview","The open source demo tool [QRSMeteor](https://github.com/QHose/QRSMeteor) tool simulates a real SaaS platform. By using it (for demo purposes) you will get....",,,,,,,,,
+"Integration.qlik.com key API calls","Deployment overview","# Deployment
+- Install Qlik Sense using a silent script
+- Insert license
+- Setup user access rules
+- Setup proxy (ports, https)
+- Create virtual proxies (ways to authenticate and load balance over engines)
+- Upload template apps and extensions
+- Create default streams
+- Setup security rules
+- Save Sense configuration as JSON and track changes with GitHub
+- Get app IDs for automatic/dynamic embedding (in IFrame/DIV) without hard coded items. ",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
+"Integration.qlik.com key API calls","Deployment overview","## Code example
+```
+ QSLic.insertUserAccessRule();
+            QSSystem.disableDefaultSecurityRules();
+            await QSProxy.createVirtualProxies();
+            await timeout(4000); //wait till the proxy has restarted...
+            await QSSystem.createSecurityRules();
+            QSStream.initSenseStreams();
+            await QSApp.uploadAndPublishTemplateApps();
+            QSApp.setAppIDs();
+            await QSApp.createAppConnections();
+            QSExtensions.uploadExtensions();
+            QSLic.saveSystemRules();
+```",,,,,,,,,
+"Integration.qlik.com key API calls","Deployment overview","# Automated maintenance
+- Remove old streams and apps
+- Create back-ups of important setings, apps and track changes
+- track who used what, maybe enhance your template based on these statistics",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
+"Integration.qlik.com key API calls","Security overview","# Security integration
+- Users get a Single Sign On via a ticket (or JWT) exchange
+- The ticket contains the userId and groups from your Saas platform
+- logout",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
+"Integration.qlik.com key API calls","App provisioning overview","# App provisioning (per customer)
 - Create stream
 - Copy template app
 - Replace script and reload app
-- Publish app",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Summary: which activities did we automate?","Security integration
-- Users get a Single Sign On via a ticket exchange
-- The ticket contains the userId and groups from your Saas platform
-- logout",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Summary: which activities did we automate?","Automated maintenance
-- remove old streams and apps",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
-"Integration.qlik.com key API calls","Summary: which activities did we automate?","See [API source code](/APILogs) for more information.",,"","","","","         0","0","PreSales",
-"Integration.qlik.com key API calls","Summary: which activities did we automate?","PS: note you can also do a *silent installation* and configure the Qlik Management Console (QMC) via APIs... ",,"","","","","         0","0","PreSales, Technical - 2 hours",
+- Publish app
+- Create custom property
+- Create folder on server (for data files)
+- Create database connection",,"","","","","         0","0","PreSales, Technical - 2 hours, SaaS & Power of APIs",
 "Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","architecture - OEM SaaS scenario.png",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","Single Sign on is enforced using a ticket with userID and his groups",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","API architecture interaction matrix","API components overview.png",,"","","","","         0","0","Deep dive, PreSales, SaaS & Power of APIs",
+"Integration.qlik.com key API calls","Deployment","> How do we automatically install and configure Qlik Sense for our customers?",,,,,,,,,
+"Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","Using powershell we download and install using a `silent script`",,"","","","","         0","0","Hosting Ops, Deep dive",
+"Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","Once the certificates are in a specific folder, we can use them to communicate to the Qlik Sense APIs",,"","","","","         0","0","Hosting Ops, Deep dive",
+"Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","# Powershell script",,"","","","","         0","0","Hosting Ops, Deep dive",
+"Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","- Create shared folder
+- Assign access rights
+- download my QRSMeteor tool (This is a demo, here you would normally install your software, which will become 1 integrated solution for the user)
+- install Qlik Sense ",,"","","","","         0","0","Hosting Ops, Deep dive",
+"Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","```powershell
+$SHARED_NAME = ""QlikSenseShare""
+$SHARED_FOLDER = ""C:\""+$SHARED_NAME
+Write-Host 'Creating a shared folder on' $SHARED_FOLDER
+New-Item $SHARED_FOLDER –type directory
+New-SmbShare –Name $SHARED_NAME –Path $SHARED_FOLDER –FullAccess Everyone  
+
+Write-Host 'Start Meteor installer...'
+Invoke-Expression; '.\InstallMeteor.exe'
+
+Write-Host 'Download and start Qlik Sense installer...'
+. { iwr -useb 'http://localhost:4000/Qlik_Sense_setup.exe' } | iex; ""c:\Qlik_Sense_setup.exe -s -l '.\log.txt' spc='.\spc.cfg' userwithdomain='$env:ComputerName\$env:UserName' userpassword='changeMeLater'""
+```",,"","","","","         0","0","Hosting Ops, Deep dive",
+"Integration.qlik.com key API calls","Insert license","We included the license in our settings.json file which contains all parameters needed for the installation.",,,,,,,,,
+"Integration.qlik.com key API calls","Insert license","qrsmeteor - settings json file examples 2.png",,,,,,,,,
+"Integration.qlik.com key API calls","Insert license","# code",,,,,,,,,
+"Integration.qlik.com key API calls","Insert license","## get the license",,,,,,,,,
+"Integration.qlik.com key API calls","Insert license","```
+    var lic = qrs.get('/qrs/license');
+```",,,,,,,,,
+"Integration.qlik.com key API calls","Insert license","## post the license",,,,,,,,,
+"Integration.qlik.com key API calls","Insert license","```
+        var response = qrs.post('/qrs/license', { control: Meteor.settings.private.LicenseControlNumber }, newLicense);
+```",,,,,,,,,
+"Integration.qlik.com key API calls","Insert user access rules","Each user should only get access to Qlik Sense if you SaaS platform decided to give the user an access ticket. ",,,,,,,,,
+"Integration.qlik.com key API calls","Insert user access rules","So all users should get a Qlik Token when they are authenticated",,,,,,,,,
+"Integration.qlik.com key API calls","Insert user access rules","```
+export function insertUserAccessRule() {
+    console.log('insert UserAccess Rule for all users');
+    var licenseRule = {
+        ""name"": demoUserAccessRule,
+        ""category"": ""License"",
+        ""rule"": ""((user.name like \""*\""))"",
+        ""type"": ""Custom"",
+        ""privileges"": [""create"", ""read"", ""update""],
+        ""resourceFilter"": ""License.UserAccessGroup_507c9aa5-8812-44d9-ade8-32809785eecf"",
+        ""actions"": 1,
+        ""ruleContext"": ""QlikSenseOnly"",
+        ""disabled"": false,
+        ""comment"": ""Rule to set up automatic user access for each user that has received a ticket via your SaaS platform"",
+        ""disabledActions"": [""useaccesstype""]
+    }
+    var ruleExist = getSystemRules(demoUserAccessRule);
+    if (typeof ruleExist[0] == 'undefined' || ruleExist.length === 0) {
+        console.log('Create a new user license rule since it did not exist.');
+        var response = qrs.post('/qrs/SystemRule', null, licenseRule);
+    }
+}
+```",,,,,,,,,
+"Integration.qlik.com key API calls","Setup Qlik Sense Proxy (QPS)","You first get the proxy ID
+```
+function getProxyId() {
+    try {
+        var request = qliksrv + '/qrs/proxyservice/?xrfkey=' + senseConfig.xrfkey;
+        response = HTTP.call('GET', request, {
+            'npmRequestOptions': configCerticates,
+        });
+        return response.data[0].id;
+    } catch (err) {
+        console.error('get proxyId failed', err);
+    }
+}
+```",,,,,,,,,
+"Integration.qlik.com key API calls","Setup Qlik Sense Proxy (QPS)","Then you GET all settings for this ID
+```
+var proxyConfig = getProxyServiceConfiguration(proxyId)
+
+  var request = qliksrv + '/qrs/proxyservice/' + proxyId + '?xrfkey=' + senseConfig.xrfkey;
+        response = HTTP.call('GET', request, {
+            'npmRequestOptions': configCerticates,
+        });
+```",,,,,,,,,
+"Integration.qlik.com key API calls","Setup Qlik Sense Proxy (QPS)","You update the values that you want to change, for example a new virtual proxy
+```    proxyConfig.settings.virtualProxies.push(virtualProxy)
+```",,,,,,,,,
+"Integration.qlik.com key API calls","Setup Qlik Sense Proxy (QPS)","You `PUT` the new config file back.
+```
+function updateProxy(proxyId, proxyConfig) {
+    try {
+        check(proxyId, String);
+        check(proxyConfig, Object);
+        console.log('proxyConfig', proxyConfig.settings.virtualProxies)
+
+        var request = qliksrv + '/qrs/proxyservice/' + proxyId;
+        response = HTTP.call('PUT', request, {
+            params: {
+                xrfkey: senseConfig.xrfkey
+            },
+            'npmRequestOptions': configCerticates,
+            data: proxyConfig
+        });
+    } catch (err) {
+        console.error('update proxy failed', err);
+    }
+}
+```",,,,,,,,,
+"Integration.qlik.com key API calls","Upload template apps","We stored all template apps in a folder (or web location)",,,,,,,,,
+"Integration.qlik.com key API calls","Upload template apps","We check if the app exists in Sense, if not upload it, and publish into correct stream",,,,,,,,,
+"Integration.qlik.com key API calls","Upload template apps","```
+    // LOAD ALL SENSE APPS IN FOLDER
+    var appsInFolder = await fs.readdir(newFolder);
+
+    // FOR EACH APP FOUND: PUBLISH IT    
+    return await Promise.all(appsInFolder.map(async(QVF) => {
+        try {
+            //GET THE NAME OF THE APP AND CREATE A FILEPATH
+            var appName = QVF.substr(0, QVF.indexOf('.'));
+            var filePath = path.join(newFolder, QVF);
+
+            //ONLY UPLOAD APPS IF THEY DO NOT ALREADY EXIST
+            if (!getApps(appName).length) {
+                //UPLOAD THE APP, GET THE APP ID BACK
+                var appId = await uploadApp(filePath, appName);
+
+                //Insert into template apps stream
+                    publishApp(appId, appName, templateStreamId);
+               }
+            } else {
+                console.log('App ' + appName + ' already exists in Qlik Sense')
+            };
+        } catch (err) {
+            console.error(err);
+            throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
+        }
+    }))
+}
+```",,,,,,,,,
+"Integration.qlik.com key API calls","App provisioning","> Create an app for each customer which only contains their specific data (model)",,,,,,,,,
 "Integration.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","The ""loop"" to execute to ensure each *customer* gets each template *app*",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","generationLoop.png",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","QRS: Copy the template app","# make a POST REST API call ",,"","","","","         0","0","Technical - 1 day",
@@ -1635,13 +1807,14 @@ function appChangeListener() {
 - end users who want embedded analytics
 - your platform: a web server
 - a Qlik Sense server",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture introduction","We created a container per *service* (except for Qlik Sense which runs on a windows VM)",,,,,,,,,
 "Integration.qlik.com docker environment","Architecture detailed: key components and goals","saas demo architecture introduction of components.png",,,,,,,,,
 "Integration.qlik.com docker environment","Architecture detailed: key components and goals","You have multiple customers, each customer can have users with authorizations (groups)",,,,,,,,,
 "Integration.qlik.com docker environment","Architecture detailed: key components and goals","A user (with access rights maintained in the SaaS platform) wants to open the webpage with Qlik Sense embedded",,,,,,,,,
 "Integration.qlik.com docker environment","Architecture detailed: key components and goals","The user credentials are stored in a MongoDB in your SaaS platform
 - userID
 - group memberships for functionality and row level security (data value restrictions: e.g. only specific countries)",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture detailed: key components and goals","The dashboard should only show content beloning to the company of the user.",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: key components and goals","The dashboard should only show content belonging to the company of the user.",,,,,,,,,
 "Integration.qlik.com docker environment","Architecture detailed: key components and goals","Performance & security: 
 - we want to have (physical) different environments for each customer. 
 - split between front end (users) and back end (databases, API tools)",,,,,,,,,

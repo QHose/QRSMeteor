@@ -67,7 +67,7 @@ if (Meteor.isServer) {
         throw new Meteor.Error('You have not started this meteor project with: meteor --settings settings-development.json ? You missed the reference to this settings file, or it is empty?');
     }
 
-    //CONFIG FOR HTTP MODULE WITH HEADER AUTH (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS)
+    //CONFIG FOR HTTP MODULE WITH HEADER AUTH (TO MAKE REST CALLS TO SENSE VIA HTTP CALLS).
     export const authHeaders = {
             'hdr-usr': _senseConfig.headerValue,
             'X-Qlik-xrfkey': _senseConfig.xrfkey
@@ -83,7 +83,7 @@ if (Meteor.isServer) {
     }
 
     //if you use windows and this tool runs on the same machine, you can keep the parameters empty
-    // and we use the user the node service runs under... 
+    // and we use the user the node service runs under... .
     var qlikUserDomain = '';
     var qlikUser = '';
 
