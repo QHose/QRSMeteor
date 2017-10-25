@@ -74,7 +74,7 @@ export async function uploadAndPublishTemplateApps() {
     //GET THE ID OF THE IMPORTANT STREAMS (streams that QRSMeteor needs)
     var everyOneStreamId = QSStream.getStreamByName(Meteor.settings.broker.qlikSense.EveryoneAppStreamName).id;
     var templateStreamId = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName).id;
-    var APIAppsStreamID = QSStream.getStreamByName(Meteor.settings.broker.qlikSense.StreamsToCreateAutomatically).id;
+    var APIAppsStreamID = QSStream.getStreamByName(Meteor.settings.broker.qlikSense.APIAppStreamName).id;
     try {
         check(newFolder, String);
         check(everyOneStreamId, String);

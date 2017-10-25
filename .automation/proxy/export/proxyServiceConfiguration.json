@@ -1,29 +1,15 @@
 {
-<<<<<<< HEAD
   "id": "b844e6df-7827-4ec3-8e2c-95b82e48b96f",
   "createdDate": "2017-10-07T12:38:35.595Z",
-  "modifiedDate": "2017-10-07T13:03:21.109Z",
+  "modifiedDate": "2017-10-25T13:15:58.709Z",
   "modifiedByUserName": "QLIK-AB0Q2URN5T\\qlikexternal",
   "customProperties": [],
   "settings": {
     "id": "b844e6df-7827-4ec3-8e2c-95b82e48b96f",
     "createdDate": "2017-10-07T12:38:35.595Z",
-    "modifiedDate": "2017-10-07T13:03:21.109Z",
+    "modifiedDate": "2017-10-25T13:15:58.709Z",
     "modifiedByUserName": "QLIK-AB0Q2URN5T\\qlikexternal",
     "listenPort": 600,
-=======
-  "id": "aed51af2-13e9-48c9-ae1a-ebbba0643b1a",
-  "createdDate": "2017-07-28T09:59:30.717Z",
-  "modifiedDate": "2017-10-05T13:02:12.561Z",
-  "modifiedByUserName": "QTSEL\\mbj",
-  "customProperties": [],
-  "settings": {
-    "id": "aed51af2-13e9-48c9-ae1a-ebbba0643b1a",
-    "createdDate": "2017-07-28T09:59:30.717Z",
-    "modifiedDate": "2017-10-05T13:02:12.561Z",
-    "modifiedByUserName": "QTSEL\\mbj",
-    "listenPort": 443,
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
     "allowHttp": true,
     "unencryptedListenPort": 81,
     "authenticationListenPort": 4244,
@@ -34,17 +20,10 @@
     "maxHeaderSizeBytes": 16384,
     "maxHeaderLines": 100,
     "logVerbosity": {
-<<<<<<< HEAD
       "id": "b844e6df-7827-4ec3-8e2c-95b82e48b96f",
       "createdDate": "2017-10-07T12:38:35.595Z",
-      "modifiedDate": "2017-10-07T13:03:21.109Z",
+      "modifiedDate": "2017-10-25T13:15:58.709Z",
       "modifiedByUserName": "QLIK-AB0Q2URN5T\\qlikexternal",
-=======
-      "id": "aed51af2-13e9-48c9-ae1a-ebbba0643b1a",
-      "createdDate": "2017-07-28T09:59:30.717Z",
-      "modifiedDate": "2017-10-05T13:02:12.561Z",
-      "modifiedByUserName": "QTSEL\\mbj",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
       "logVerbosityAuditActivity": 4,
       "logVerbosityAuditSecurity": 4,
       "logVerbosityService": 4,
@@ -52,10 +31,6 @@
       "logVerbosityPerformance": 4,
       "logVerbositySecurity": 4,
       "logVerbositySystem": 4,
-<<<<<<< HEAD
-=======
-      "impactSecurityAccess": false,
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
       "schemaPath": "ProxyService.Settings.LogVerbosity"
     },
     "useWsTrace": false,
@@ -63,11 +38,7 @@
     "restListenPort": 4243,
     "virtualProxies": [
       {
-<<<<<<< HEAD
         "id": "fbed698b-c94d-4294-897b-bbb6c41cacd0",
-=======
-        "id": "0c899b99-b75b-4637-8b91-d35a817fd678",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
         "prefix": "",
         "description": "Central Proxy (Default)",
         "authenticationModuleRedirectUri": "",
@@ -75,76 +46,44 @@
         "loadBalancingModuleBaseUri": "",
         "loadBalancingServerNodes": [
           {
-<<<<<<< HEAD
             "id": "24e1c655-06bf-45de-89fe-7fa9e56565a1",
-=======
-            "id": "e44efde7-89bf-471a-adc1-3b6e0fae3251",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
             "name": "Central",
-            "hostName": "nlsch-mbj3.qliktech.com",
-            "temporaryfilepath": "C:\\Users\\QService\\AppData\\Local\\Temp\\",
+            "hostName": "qlik-ab0q2urn5t",
+            "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
             "roles": [
               {
-<<<<<<< HEAD
                 "id": "5c6b38df-583a-42d8-b433-69f82fee738a",
-=======
-                "id": "a10ae864-44c9-4468-81d7-2d865cc883c0",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 0,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "9ddad6bf-97fc-4b27-9c49-87fbeb7e2f77",
-=======
-                "id": "cac15fd8-078a-443f-98aa-1e9d4e005bbe",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 1,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "f6d146d6-6dc3-4dbf-bdc1-13459eb86175",
-=======
-                "id": "e8789825-ed04-47bf-ab18-71e19d45a615",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 2,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "4c464fff-079e-4b6e-b14b-249217e5a4e7",
-=======
-                "id": "330aa538-a9b3-48ce-bc68-9b53a7008baa",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 3,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "6809e00b-4d67-47c5-a5ae-b27bcc862567",
-=======
-                "id": "94fe30ca-640e-43a7-9a7e-35f27bd21775",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 4,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "49e97735-a1d6-4728-b97b-b6b3f28ab784",
-=======
-                "id": "5796f5b7-03a1-4f69-8a4d-83924b07e465",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 5,
                 "privileges": null
               }
             ],
             "serviceCluster": {
-<<<<<<< HEAD
               "id": "1cf1f34c-cdbf-439a-9ede-f5f15a0786ac",
-=======
-              "id": "534c640d-f08e-4822-894e-00da45027800",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
               "name": "ServiceCluster",
               "privileges": null
             },
@@ -160,10 +99,14 @@
         "windowsAuthenticationEnabledDevicePattern": "Windows",
         "sessionCookieHeaderName": "X-Qlik-Session",
         "sessionCookieDomain": "",
-        "additionalResponseHeaders": "",
-        "sessionInactivityTimeout": 30,
+        "additionalResponseHeaders": "Access-Control-Allow-Origin: *",
+        "sessionInactivityTimeout": 9999,
         "extendedSecurityEnvironment": false,
-        "websocketCrossOriginWhiteList": [],
+        "websocketCrossOriginWhiteList": [
+          "QLIK-AB0Q2URN5T",
+          "192.168.0.124",
+          "qlik-ab0q2urn5t"
+        ],
         "defaultVirtualProxy": true,
         "tags": [],
         "samlMetadataIdP": "",
@@ -183,11 +126,7 @@
         "privileges": null
       },
       {
-<<<<<<< HEAD
-        "id": "6a2a08de-f4ff-4338-9b2d-991b158328e6",
-=======
-        "id": "e03c4881-3fee-478b-8385-6904de16f105",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
+        "id": "3ed7115e-ebe7-4fde-84ed-932068decb36",
         "prefix": "anon",
         "description": "anon",
         "authenticationModuleRedirectUri": "",
@@ -195,76 +134,44 @@
         "loadBalancingModuleBaseUri": "",
         "loadBalancingServerNodes": [
           {
-<<<<<<< HEAD
             "id": "24e1c655-06bf-45de-89fe-7fa9e56565a1",
-=======
-            "id": "e44efde7-89bf-471a-adc1-3b6e0fae3251",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
             "name": "Central",
-            "hostName": "nlsch-mbj3.qliktech.com",
-            "temporaryfilepath": "C:\\Users\\QService\\AppData\\Local\\Temp\\",
+            "hostName": "qlik-ab0q2urn5t",
+            "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
             "roles": [
               {
-<<<<<<< HEAD
                 "id": "5c6b38df-583a-42d8-b433-69f82fee738a",
-=======
-                "id": "a10ae864-44c9-4468-81d7-2d865cc883c0",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 0,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "9ddad6bf-97fc-4b27-9c49-87fbeb7e2f77",
-=======
-                "id": "cac15fd8-078a-443f-98aa-1e9d4e005bbe",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 1,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "f6d146d6-6dc3-4dbf-bdc1-13459eb86175",
-=======
-                "id": "e8789825-ed04-47bf-ab18-71e19d45a615",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 2,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "4c464fff-079e-4b6e-b14b-249217e5a4e7",
-=======
-                "id": "330aa538-a9b3-48ce-bc68-9b53a7008baa",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 3,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "6809e00b-4d67-47c5-a5ae-b27bcc862567",
-=======
-                "id": "94fe30ca-640e-43a7-9a7e-35f27bd21775",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 4,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "49e97735-a1d6-4728-b97b-b6b3f28ab784",
-=======
-                "id": "5796f5b7-03a1-4f69-8a4d-83924b07e465",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 5,
                 "privileges": null
               }
             ],
             "serviceCluster": {
-<<<<<<< HEAD
               "id": "1cf1f34c-cdbf-439a-9ede-f5f15a0786ac",
-=======
-              "id": "534c640d-f08e-4822-894e-00da45027800",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
               "name": "ServiceCluster",
               "privileges": null
             },
@@ -291,15 +198,9 @@
           "localhost",
           "localqrs",
           "localweb",
-<<<<<<< HEAD
-          "31.201.253.46",
-          "192.168.1.21",
-          "QLIK-AB0Q2URN5T"
-=======
-          "localhost",
+          "QLIK-AB0Q2URN5T",
           "10.0.75.1",
-          "NLSCH-MBJ3"
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
+          "QLIK-AB0Q2URN5T"
         ],
         "defaultVirtualProxy": false,
         "tags": [],
@@ -320,11 +221,7 @@
         "privileges": null
       },
       {
-<<<<<<< HEAD
-        "id": "b0f4baba-d980-498d-8df2-c4617820c0b3",
-=======
-        "id": "5737eeb2-f67f-4553-8d9e-916fee97f8be",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
+        "id": "0a5688d6-040a-4575-a92d-5e1660ed9ab5",
         "prefix": "presentationsso",
         "description": "used to login users for the slide generator. Based on this users get a technical or a sales profile via a ticket request",
         "authenticationModuleRedirectUri": "http://localhost:3000/presentationsso",
@@ -332,76 +229,44 @@
         "loadBalancingModuleBaseUri": "",
         "loadBalancingServerNodes": [
           {
-<<<<<<< HEAD
             "id": "24e1c655-06bf-45de-89fe-7fa9e56565a1",
-=======
-            "id": "e44efde7-89bf-471a-adc1-3b6e0fae3251",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
             "name": "Central",
-            "hostName": "nlsch-mbj3.qliktech.com",
-            "temporaryfilepath": "C:\\Users\\QService\\AppData\\Local\\Temp\\",
+            "hostName": "qlik-ab0q2urn5t",
+            "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
             "roles": [
               {
-<<<<<<< HEAD
                 "id": "5c6b38df-583a-42d8-b433-69f82fee738a",
-=======
-                "id": "a10ae864-44c9-4468-81d7-2d865cc883c0",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 0,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "9ddad6bf-97fc-4b27-9c49-87fbeb7e2f77",
-=======
-                "id": "cac15fd8-078a-443f-98aa-1e9d4e005bbe",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 1,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "f6d146d6-6dc3-4dbf-bdc1-13459eb86175",
-=======
-                "id": "e8789825-ed04-47bf-ab18-71e19d45a615",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 2,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "4c464fff-079e-4b6e-b14b-249217e5a4e7",
-=======
-                "id": "330aa538-a9b3-48ce-bc68-9b53a7008baa",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 3,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "6809e00b-4d67-47c5-a5ae-b27bcc862567",
-=======
-                "id": "94fe30ca-640e-43a7-9a7e-35f27bd21775",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 4,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "49e97735-a1d6-4728-b97b-b6b3f28ab784",
-=======
-                "id": "5796f5b7-03a1-4f69-8a4d-83924b07e465",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 5,
                 "privileges": null
               }
             ],
             "serviceCluster": {
-<<<<<<< HEAD
               "id": "1cf1f34c-cdbf-439a-9ede-f5f15a0786ac",
-=======
-              "id": "534c640d-f08e-4822-894e-00da45027800",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
               "name": "ServiceCluster",
               "privileges": null
             },
@@ -426,15 +291,9 @@
           "localhost",
           "localqrs",
           "localweb",
-<<<<<<< HEAD
-          "31.201.253.46",
-          "192.168.1.21",
-          "QLIK-AB0Q2URN5T"
-=======
-          "localhost",
+          "QLIK-AB0Q2URN5T",
           "10.0.75.1",
-          "NLSCH-MBJ3"
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
+          "QLIK-AB0Q2URN5T"
         ],
         "defaultVirtualProxy": false,
         "tags": [],
@@ -455,11 +314,7 @@
         "privileges": null
       },
       {
-<<<<<<< HEAD
-        "id": "ee8bf6f4-868e-4760-b67f-02515dd8c4cd",
-=======
-        "id": "044a655d-5deb-40b9-b537-ad6ad340f382",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
+        "id": "6c342917-b099-4c6c-b905-b37e513519cb",
         "prefix": "meteor",
         "description": "Ticket auth. for the SaaS automation demo. In step 4 you will request a ticket via this virtual proxy.",
         "authenticationModuleRedirectUri": "http://localhost:3000/sso",
@@ -467,76 +322,44 @@
         "loadBalancingModuleBaseUri": "",
         "loadBalancingServerNodes": [
           {
-<<<<<<< HEAD
             "id": "24e1c655-06bf-45de-89fe-7fa9e56565a1",
-=======
-            "id": "e44efde7-89bf-471a-adc1-3b6e0fae3251",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
             "name": "Central",
-            "hostName": "nlsch-mbj3.qliktech.com",
-            "temporaryfilepath": "C:\\Users\\QService\\AppData\\Local\\Temp\\",
+            "hostName": "qlik-ab0q2urn5t",
+            "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
             "roles": [
               {
-<<<<<<< HEAD
                 "id": "5c6b38df-583a-42d8-b433-69f82fee738a",
-=======
-                "id": "a10ae864-44c9-4468-81d7-2d865cc883c0",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 0,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "9ddad6bf-97fc-4b27-9c49-87fbeb7e2f77",
-=======
-                "id": "cac15fd8-078a-443f-98aa-1e9d4e005bbe",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 1,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "f6d146d6-6dc3-4dbf-bdc1-13459eb86175",
-=======
-                "id": "e8789825-ed04-47bf-ab18-71e19d45a615",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 2,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "4c464fff-079e-4b6e-b14b-249217e5a4e7",
-=======
-                "id": "330aa538-a9b3-48ce-bc68-9b53a7008baa",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 3,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "6809e00b-4d67-47c5-a5ae-b27bcc862567",
-=======
-                "id": "94fe30ca-640e-43a7-9a7e-35f27bd21775",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 4,
                 "privileges": null
               },
               {
-<<<<<<< HEAD
                 "id": "49e97735-a1d6-4728-b97b-b6b3f28ab784",
-=======
-                "id": "5796f5b7-03a1-4f69-8a4d-83924b07e465",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
                 "definition": 5,
                 "privileges": null
               }
             ],
             "serviceCluster": {
-<<<<<<< HEAD
               "id": "1cf1f34c-cdbf-439a-9ede-f5f15a0786ac",
-=======
-              "id": "534c640d-f08e-4822-894e-00da45027800",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
               "name": "ServiceCluster",
               "privileges": null
             },
@@ -563,15 +386,9 @@
           "localhost",
           "localqrs",
           "localweb",
-<<<<<<< HEAD
-          "31.201.253.46",
-          "192.168.1.21",
-          "QLIK-AB0Q2URN5T"
-=======
-          "localhost",
+          "QLIK-AB0Q2URN5T",
           "10.0.75.1",
-          "NLSCH-MBJ3"
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
+          "QLIK-AB0Q2URN5T"
         ],
         "defaultVirtualProxy": false,
         "tags": [],
@@ -598,76 +415,44 @@
     "schemaPath": "ProxyService.Settings"
   },
   "serverNodeConfiguration": {
-<<<<<<< HEAD
     "id": "24e1c655-06bf-45de-89fe-7fa9e56565a1",
-=======
-    "id": "e44efde7-89bf-471a-adc1-3b6e0fae3251",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
     "name": "Central",
-    "hostName": "nlsch-mbj3.qliktech.com",
-    "temporaryfilepath": "C:\\Users\\QService\\AppData\\Local\\Temp\\",
+    "hostName": "qlik-ab0q2urn5t",
+    "temporaryfilepath": "C:\\Users\\Qlikexternal\\AppData\\Local\\Temp\\",
     "roles": [
       {
-<<<<<<< HEAD
         "id": "5c6b38df-583a-42d8-b433-69f82fee738a",
-=======
-        "id": "a10ae864-44c9-4468-81d7-2d865cc883c0",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
         "definition": 0,
         "privileges": null
       },
       {
-<<<<<<< HEAD
         "id": "9ddad6bf-97fc-4b27-9c49-87fbeb7e2f77",
-=======
-        "id": "cac15fd8-078a-443f-98aa-1e9d4e005bbe",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
         "definition": 1,
         "privileges": null
       },
       {
-<<<<<<< HEAD
         "id": "f6d146d6-6dc3-4dbf-bdc1-13459eb86175",
-=======
-        "id": "e8789825-ed04-47bf-ab18-71e19d45a615",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
         "definition": 2,
         "privileges": null
       },
       {
-<<<<<<< HEAD
         "id": "4c464fff-079e-4b6e-b14b-249217e5a4e7",
-=======
-        "id": "330aa538-a9b3-48ce-bc68-9b53a7008baa",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
         "definition": 3,
         "privileges": null
       },
       {
-<<<<<<< HEAD
         "id": "6809e00b-4d67-47c5-a5ae-b27bcc862567",
-=======
-        "id": "94fe30ca-640e-43a7-9a7e-35f27bd21775",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
         "definition": 4,
         "privileges": null
       },
       {
-<<<<<<< HEAD
         "id": "49e97735-a1d6-4728-b97b-b6b3f28ab784",
-=======
-        "id": "5796f5b7-03a1-4f69-8a4d-83924b07e465",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
         "definition": 5,
         "privileges": null
       }
     ],
     "serviceCluster": {
-<<<<<<< HEAD
       "id": "1cf1f34c-cdbf-439a-9ede-f5f15a0786ac",
-=======
-      "id": "534c640d-f08e-4822-894e-00da45027800",
->>>>>>> 23dcc5da16d2eaf1e901f71e797315259d8cd6b0
       "name": "ServiceCluster",
       "privileges": null
     },

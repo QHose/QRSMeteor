@@ -142,7 +142,7 @@ function updateProxy(proxyId, proxyConfig) {
             data: proxyConfig
         });
     } catch (err) {
-        console.error('create virtual proxy failed', err);
+        console.error('update proxy failed', err);
     }
 }
 
@@ -154,7 +154,7 @@ function getProxyId() {
         });
         return response.data[0].id;
     } catch (err) {
-        console.error('create virtual proxy failed', err);
+        console.error('get proxyId failed', err);
     }
 }
 
