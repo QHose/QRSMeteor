@@ -125,18 +125,37 @@ Template.registerHelper('itemsOfLevel', function(level, slide) {
 })
 
 Template.registerHelper('formatted', function(text) {
+    console.log('formatted helper text start with !comment?: ' + text, text.startsWith('!comment'))
+        //
+        // ─── YOUTUBE ────────────────────────────────────────────────────────────────────
+        //
     if (youtube_parser(text)) { //youtube video url
         // console.log('found an youtube link so embed with the formatting of semantic ui', text)
         var videoId = youtube_parser(text);
         var html = '<div class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div></div>'
             // console.log('generated video link: ', html);
         return html;
-    } else if (text.startsWith('iframe ')) { //if a text starts with IFRAME: we convert it into an IFRAME with a class that sets the width and height etc...
+    }
+
+    //
+    // ─── IFRAME ─────────────────────────────────────────────────────────────────────
+    //
+    else if (text.startsWith('iframe ')) { //if a text starts with IFRAME: we convert it into an IFRAME with a class that sets the width and height etc...
         var sourceURL = text.substr(text.indexOf(' ') + 1);
         return '<iframe src="' + sourceURL + '" allowfullscreen="allowfullscreen" frameborder="0"></iframe>';
-    } else if (text.startsWith('<')) { //custom HTML
+    }
+
+    //
+    // ─── CUSTOM HTML ────────────────────────────────────────────────────────────────
+    //
+    else if (text.startsWith('<')) { //custom HTML
         return text;
-    } else if (text.startsWith('!comment ')) { //vertical slide with comments
+    }
+
+    //
+    // ─── COMMENT ────────────────────────────────────────────────────────────────────
+    //
+    else if (text.startsWith('!comment ')) { //vertical slide with comments
         var messagebox = `
         <section>
             <div class="ui icon message">
@@ -149,10 +168,23 @@ Template.registerHelper('formatted', function(text) {
             </div>
         </div>
         </section>`;
+        console.log('------------------------------------');
+        console.log('comment found!!! ', messagebox);
+        console.log('------------------------------------');
         return messagebox;
-    } else if (checkTextIsImage(text)) { //image
+    }
+
+    //
+    // ─── IMAGE ──────────────────────────────────────────────────────────────────────
+    //        
+    else if (checkTextIsImage(text)) {
         return '<img class="ui massive rounded bordered image fragment"  src="images/' + text + '">';
-    } else { //text, convert the text (which can include markdown syntax) to valid HTML
+    }
+
+    //
+    // ─── TEXT TO BE CONVERTED TO VIA MARKDOWN ───────────────────────────────────────
+    //        
+    else { //text, convert the text (which can include markdown syntax) to valid HTML
         var result = converter.makeHtml(text);
         if (result.substring(1, 11) === 'blockquote') {
             return '<div class="ui green very padded segment">' + result + '</div>';
