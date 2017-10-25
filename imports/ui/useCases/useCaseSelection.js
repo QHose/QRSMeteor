@@ -68,7 +68,10 @@ Template.useCaseSelection.onRendered(async function() {
                 await setSelectionInSense('Partial Workshop', group)
                     // await setSlideContentInSession(group);
                 console.log('Content has been received, now show the slides')
-                Router.go('slides');
+                Meteor.setTimeout(function() {
+                    console.log('Router: Go to slides ');
+                    Router.go('slides');
+                }, 200)
             }
         })
 })
