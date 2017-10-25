@@ -25,6 +25,9 @@ Template.slides.onDestroyed(function() {
 Template.slides.onRendered(function() {
     console.log('slides template rendered');
     if (!Session.get('slideData')) {
+        console.log('------------------------------------');
+        console.log('No slide data present in session, reroute the use back to the useCaseSelection screen.');
+        console.log('------------------------------------');
         Router.go('useCaseSelection');
         return;
     }
