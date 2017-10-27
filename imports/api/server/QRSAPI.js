@@ -25,7 +25,7 @@ export var myQRS = function myQRSMain() {
         } catch (err) {
             var error = 'QRS HTTP GET FAILED FOR ' + endpoint;
             console.error(err);
-            throw new Meteor.Error(500, error);
+            throw new Meteor.Error(500, 'This node server can not connect to Qlik Sense. Sometimes you have to wait 10 minutes after restarting... ' + error);
         }
     };
 

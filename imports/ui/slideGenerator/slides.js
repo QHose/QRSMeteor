@@ -59,6 +59,7 @@ function initializeReveal() {
         console.log('!!!!!!!!!!! Slide changed: active slide: ', evt.indexh);
         Session.set('activeStepNr', evt.indexh);
         $('.ui.embed').embed();
+        // $(window).scrollTop(0); //does not work
     });
 }
 Template.slides.events({
