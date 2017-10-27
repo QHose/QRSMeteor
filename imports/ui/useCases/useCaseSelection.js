@@ -28,8 +28,12 @@ var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Anal
 // ONCREATED
 Template.useCaseSelection.onCreated(async function() {
     const apiLogsHandle = Meteor.subscribe('apiLogs');
-    qix = await makeSureSenseIsConnected();
-    await setChangeListener(qix);
+    //wait a bit, so Meteor can login, before requesting a ticket...
+    Meteor.setTimeout(async function() {
+        qix = await makeSureSenseIsConnected();
+        await setChangeListener(qix);
+    }, 1000);
+
 })
 
 //make sure you go to the first slide when we have new slide data
