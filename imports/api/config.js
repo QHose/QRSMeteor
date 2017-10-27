@@ -43,6 +43,9 @@ if (Meteor.isServer) {
     if (!Meteor.settings.public.SenseServerInternalLanIP) {
         Meteor.settings.public.SenseServerInternalLanIP = os.hostname();
     }
+    if (!Meteor.settings.public.webIntegrationHost) {
+        Meteor.settings.public.webIntegrationHost = os.hostname();
+    }
 
     var _senseConfig = {
         "host": Meteor.settings.public.qlikSenseHost,

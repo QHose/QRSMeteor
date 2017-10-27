@@ -17,3 +17,5 @@ automation/virtualProxyServiceConfiguration.json
 .automation/proxy/export/virtualProxyServiceConfiguration.json
 .automation/securityrules/export/ExtractedSystemRules.json
 .automation/proxy/export/virtualProxyServiceConfiguration.json
+.automation/InstallationSoftware/Qlik_Sense_setup.exe
+QRS start.bat

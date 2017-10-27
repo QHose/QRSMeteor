@@ -2,8 +2,8 @@
     "adminEmails": "mbj@qlik.com",
     "multiTenantScenario": false,
     "public": {
-        "qlikSenseHost": "QLIK-AB0Q2URN5T",
-        "SenseServerInternalLanIP": "QLIK-AB0Q2URN5T",
+        "qlikSenseHost": "",
+        "SenseServerInternalLanIP": "",
         "webIntegrationHost": "QLIK-AB0Q2URN5T",
         "TemplateAppStreamName": "Templates",
         "qlikSensePort": 81,

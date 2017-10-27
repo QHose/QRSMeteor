@@ -1,390 +1,381 @@
-[100C8:4B5C][2017-10-08T14:01:44]i001: Burn v3.10.0.2103, Windows v10.0 (Build 14393: Service Pack 0), path: C:\Qlik Sense Server.exe
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'ADDLOCAL' to value 'ALL'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'SKIPSTARTSERVICES' to value '0'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'CONFIGSERVICES' to value '1'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'MODIFY' to value '0'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'OriginalFileName' to value 'Qlik_Sense_setup'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'INSTALLDIR' to value '[ProgramFiles64Folder]\Qlik\Sense'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'BundleUpgradeCode' to value '724c6cf5-e8cf-4778-afee-f14298e19d0e'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'DBDATAFOLDER' to value '[CommonAppDataFolder]\Qlik\Sense\Repository\PostgreSQL'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'SERVICEUSER' to value ''
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'CENTRALREPOSITORY' to value '1'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'RANDOMPASSWORD'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'SKIPDBCONFIG' to value '0'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'SKIPDBVALIDATION' to value '0'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'IsPatch' to value 'false'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'STARTDEPENDENTSERVICES' to value 'false'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'DBLIMITEDUSERNAME' to value 'qliksenserepository'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'SKIPINSTALLDBSERVICE' to value '0'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'QLOGSWRITERPASSWORD'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'QLOGSREADERPASSWORD'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'USERPASSWORD'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'UserPassword'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'Userpassword'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'userpassword'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'PASSWORD'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'Password'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'password'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'P'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'p'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'DBPASSWORD'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'DBPassword'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'DbPassword'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'dbpassword'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'DBP'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'Dbp'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'dbp'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'D'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'd'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'DATABASEPASSWORD'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'DatabasePassword'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'Databasepassword'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing hidden variable 'databasepassword'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Initializing string variable 'CS' to value 'false'
-[100C8:4B5C][2017-10-08T14:01:44]i009: Command Line: '-s -repair -l .\log.txt spc=.\spc.cfg userwithdomain=QLIK-AB0Q2URN5T\Qlikexternal userpassword=*****'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Setting string variable 'WixBundleLog' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log.txt'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Setting string variable 'WixBundleOriginalSource' to value 'C:\Qlik Sense Server.exe'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Setting string variable 'WixBundleOriginalSourceFolder' to value 'C:\'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Setting string variable 'WixBundleManufacturer' to value 'QlikTech International AB'
-[100C8:4B5C][2017-10-08T14:01:44]i000: Loading managed bootstrapper application.
-[100C8:4B5C][2017-10-08T14:01:45]i000: Common Qlik bootstrapper application started.
-[100C8:4B5C][2017-10-08T14:01:45]i000: OperatingSystem version: 10.0.14393.0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting string variable 'UNIQUEAPPGUID' to value 'D188A6E3-B88B-47A7-9E3B-465E3775BDAE'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting string variable 'BUNDLETEMPDIRECTORY' to value 'C:\Users\Qlikexternal\AppData\Local\Temp\{b2ec088c-af03-4525-8206-a24abaf8b24d}\.ba3'
-[100C8:4B5C][2017-10-08T14:01:45]i000: About to collect the feature sets and set their states to the default values.
-[100C8:4B5C][2017-10-08T14:01:45]i000: The RequestState of Repository was updated. New state: Present
-[100C8:4B5C][2017-10-08T14:01:45]i000: The RequestState of Engine was updated. New state: Present
-[100C8:4B5C][2017-10-08T14:01:45]i000: The RequestState of Proxy was updated. New state: Present
-[100C8:4B5C][2017-10-08T14:01:45]i000: The RequestState of Client was updated. New state: Present
-[100C8:4B5C][2017-10-08T14:01:45]i000: The RequestState of Scheduler was updated. New state: Present
-[100C8:4B5C][2017-10-08T14:01:45]i000: The RequestState of Repository Database was updated. New state: Present
-[100C8:4B5C][2017-10-08T14:01:45]i000: The RequestState of Service Dispatcher was updated. New state: Present
-[100C8:4B5C][2017-10-08T14:01:45]i000: The RequestState of Printing Service was updated. New state: Present
-[100C8:4B5C][2017-10-08T14:01:45]i000: The RequestState of DataMarket was updated. New state: Present
-[100C8:4B5C][2017-10-08T14:01:45]i000: Qlik Sense November 2017 Internal started. ProductVersion: 11.24.1
-[100C8:4B5C][2017-10-08T14:01:45]i000: Creating BA thread to run asynchronously.
-[100C8:4B5C][2017-10-08T14:01:45]i100: Detect begin, 16 packages
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting string variable 'NETFRAMEWORK45' to value '460805'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{F319934C-1C5E-4B89-9A8E-DDF1C54A040E}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewDesktop10X64SrcToSr5' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{997FF31A-80C9-4B92-8F80-10953D2AE9A3}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewDesktop10X86SrcToSr5' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{A8EA2D08-EDBC-48F3-80D7-1EEE1A8E0913}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewDesktop8X64' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{D2CF9A7C-1CD9-4C62-B9FE-942893F84889}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewDesktop8X86' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{2A7C0763-D448-40A5-B602-39086F255088}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewDesktop9X64' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{343ACA46-AF91-495F-A64F-81F9736638FB}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewDesktop9X86' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{65E859BA-5BD7-4936-938B-4B151FED1263}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewOcx10X86SrcToSr5' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B030B7BD-CD13-45AA-8376-167E2E138C54}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewPublisher8X64' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{CCACAAE2-CA00-4D9A-88BE-947AE4EE38E0}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewPublisher8X86' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B030B7BD-CD13-45AA-8376-167E2E138C54}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewPublisher9X64' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{CCACAAE2-CA00-4D9A-88BE-947AE4EE38E0}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewPublisher9X86' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{31572C57-0591-4F94-B5EC-34806D0290DB}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewServer10X64SrcToSr5' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{354F6EFD-CCB5-482B-AB80-5FC082F2B051}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewServer10X86SrcToSr5' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{1068C914-E626-4547-9115-3A5EF7BE2162}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewServer8X64' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{22FF271C-5039-4243-A5E5-59283724126B}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewServer8X86' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{1068C914-E626-4547-9115-3A5EF7BE2162}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewServer9X64' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{22FF271C-5039-4243-A5E5-59283724126B}'
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewServer9X86' to value 0
-[100C8:4B5C][2017-10-08T14:01:45]i000: Product or related product not found: {BAEED71A-B323-4F93-A2B3-4D74C88382B4}
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewServer1120_x64' to value 2
-[100C8:4B5C][2017-10-08T14:01:45]i000: Trying per-machine extended info for property 'State' for product: {0BD26E4A-562A-47CD-8F1E-C55519B94863}
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewDesktop1120_x64' to value 5
-[100C8:4B5C][2017-10-08T14:01:45]i000: Product or related product not found: {C8242EA7-DE44-4472-B739-62B4A9080F88}
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewServer1120_x86' to value 2
-[100C8:4B5C][2017-10-08T14:01:45]i000: Product or related product not found: {5A693A39-8628-41DA-A1F0-95AB26735A84}
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewDesktop1120_x86' to value 2
-[100C8:4B5C][2017-10-08T14:01:45]i000: Product or related product not found: {CCECD2EB-5E4E-43E0-BDB7-D33690D205EF}
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewPlugin1120_x86' to value 2
-[100C8:4B5C][2017-10-08T14:01:45]i000: Product or related product not found: {65C96F8A-E1CC-4658-9717-7F9FEC55CA5D}
-[100C8:4B5C][2017-10-08T14:01:45]i000: Setting numeric variable 'QlikViewServer1120_2012' to value 2
-[100C8:FD84][2017-10-08T14:01:45]i000: Running...
-[100C8:FD84][2017-10-08T14:01:45]i000: LaunchAction Repair
-[100C8:FD84][2017-10-08T14:01:45]i000: ResumeType Arp
-[100C8:FD84][2017-10-08T14:01:45]i000: Display None
-[100C8:4B5C][2017-10-08T14:01:45]i052: Condition 'NETFRAMEWORK45 >= 379893' evaluates to true.
-[100C8:4B5C][2017-10-08T14:01:45]i000: Existing Service User: QLIK-AB0Q2URN5T\Qlikexternal detected for Services.
-[100C8:4B5C][2017-10-08T14:01:45]i000: Installdir of upgrade code {92AC83A7-D2D6-47CF-B1D3-4CA5ADE81C0F}: C:\Program Files\Qlik\Sense\
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: NetFx452Full, state: Present, cached: None
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: PostgreSQL, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: Repository, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: Proxy, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: Engine, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: Scheduler, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: Client, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: ServiceDispatcher, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: DataMarket, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: Essbase, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: Logging, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: ODBC, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: Printing, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: REST, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: Salesforce, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i101: Detected package: WebStorage, state: Present, cached: Complete
-[100C8:4B5C][2017-10-08T14:01:45]i199: Detect complete, result: 0x0
-[100C8:4B5C][2017-10-08T14:01:45]i200: Plan begin, 16 packages, action: Install
-[100C8:4B5C][2017-10-08T14:01:45]w321: Skipping dependency registration on package with no dependency providers: NetFx452Full
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: NetFx452Full, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: PostgreSQL, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: Repository, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: Proxy, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: Engine, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: Scheduler, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: Client, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: ServiceDispatcher, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: DataMarket, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: Essbase, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: Logging, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: ODBC, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: Printing, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: REST, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: Salesforce, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
-[100C8:4B5C][2017-10-08T14:01:45]i201: Planned package: WebStorage, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
-[100C8:4B5C][2017-10-08T14:01:45]i299: Plan complete, result: 0x0
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting string variable 'DESKTOPSHORTCUT' to value '1'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting string variable 'SERVICEUSER' to value 'QLIK-AB0Q2URN5T\Qlikexternal'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting string variable 'SKIPSTARTSERVICES' to value '0'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting string variable 'SKIPDBCONFIG' to value '0'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting string variable 'TESTMODE' to value '0'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting string variable 'SKIPRESTCONNECTOR' to value '0'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting string variable 'SKIPESSBASECONNECTOR' to value '0'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting string variable 'SKIPLOGGINGSERVICE' to value '0'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting string variable 'SKIPWEBSTORAGECONNECTOR' to value '0'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting string variable 'SKIPSFDCCONNECTOR' to value '0'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting string variable 'SKIPODBCCONNECTOR' to value '0'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting hidden variable 'USERPASSWORD'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting hidden variable 'USERPASSWORD'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting hidden variable 'DBPASSWORD'
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting hidden variable 'DBPASSWORD'
-[100C8:FD84][2017-10-08T14:01:45]i000: Installdir of upgrade code {800C8F7D-AEFE-4066-A5C5-5FA0FA64FC59}: C:\Program Files\Qlik\Sense\
-[100C8:FD84][2017-10-08T14:01:45]i000: Existing INSTALLDIR detected. It will be used as the default value.
-[100C8:FD84][2017-10-08T14:01:45]i000: Setting string variable 'INSTALLDIR' to value 'C:\Program Files\Qlik\Sense\'
-[100C8:FD84][2017-10-08T14:01:45]i000: Installdir of upgrade code {800C8F7D-AEFE-4066-A5C5-5FA0FA64FC59}: C:\Program Files\Qlik\Sense\
-[100C8:FD84][2017-10-08T14:01:45]i000: LaunchAction Repair detected.
-[100C8:F250][2017-10-08T14:01:47]i000: Silent sense root workflow: started
-[100C8:F250][2017-10-08T14:01:47]i000: Init Workflow: Started
-[100C8:F250][2017-10-08T14:01:47]i000: GetStringPropertyActivity retrieved the value C:\Program Files\Qlik\Sense\ from property INSTALLDIR
-[100C8:F250][2017-10-08T14:01:47]i000: InitServer workflow: Started
-[100C8:F250][2017-10-08T14:01:47]i000: Service 'QlikSenseRepositoryService' with state 'Running' was detected
-[100C8:F250][2017-10-08T14:01:47]i000: InitServerWF: Repository service is running
-[100C8:F250][2017-10-08T14:01:47]i000: Init StartServices: Done
-[100C8:F250][2017-10-08T14:01:47]i000: InitServer repair wf: started
-[100C8:F250][2017-10-08T14:01:47]i000: IsExistingCentralRepository True
-[100C8:F250][2017-10-08T14:01:47]i000: InitServer repair wf: done
-[100C8:F250][2017-10-08T14:01:47]i000: InitServer workflow: Done
-[100C8:F250][2017-10-08T14:01:47]i000: Init Workflow: Done
-[100C8:F250][2017-10-08T14:01:47]i000: RootRunWF: Is called
-[100C8:F250][2017-10-08T14:01:47]i000: RunRepairWF: Started
-[100C8:F250][2017-10-08T14:01:47]i000: About to evaluate feature states for launchaction Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of Repository was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - Repository. Old state: Present, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of Engine was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - Engine. Old state: Present, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of Proxy was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - Proxy. Old state: Present, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of Client was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - Client. Old state: Present, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of Scheduler was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - Scheduler. Old state: Present, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of Repository Database was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - PostgreSQL. Old state: Present, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of Service Dispatcher was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - ServiceDispatcher. Old state: Present, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of Printing Service was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - Printing. Old state: Present, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of Logging was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - Logging. Old state: None, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of DataMarket was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - DataMarket. Old state: Present, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of  was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - REST. Old state: None, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of  was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - ODBC. Old state: None, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of  was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - Salesforce. Old state: None, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of  was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - Essbase. Old state: None, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: The RequestState of  was updated. New state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - WebStorage. Old state: None, new state: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: SetupRequest updated - NetFx452Full. Old state: None, new state: None
-[100C8:F250][2017-10-08T14:01:47]i000: Setting string variable 'HOSTNAME' to value ''
-[100C8:F250][2017-10-08T14:01:47]i000: Setting string variable 'DESKTOPSHORTCUT' to value '1'
-[100C8:F250][2017-10-08T14:01:47]i000: Setting string variable 'CENTRALREPOSITORY' to value '1'
-[100C8:F250][2017-10-08T14:01:47]i000: Setting string variable 'SKIPSTARTSERVICES' to value '0'
-[100C8:F250][2017-10-08T14:01:47]i000: Setting string variable 'INSTALLDIR' to value 'C:\Program Files\Qlik\Sense\'
-[100C8:F250][2017-10-08T14:01:47]i000: Setting string variable 'SKIPINSTALLDBSERVICE' to value '1'
-[100C8:F250][2017-10-08T14:01:47]i000: Setting string variable 'CONFIGSERVICES' to value '0'
-[100C8:F250][2017-10-08T14:01:47]i000: LaunchAction Repair about to be applied.
-[100C8:F250][2017-10-08T14:01:47]i000: PackageCount: 16
-[100C8:F250][2017-10-08T14:01:47]i000: Repair about to be applied.
-[100C8:F250][2017-10-08T14:01:47]i000: PackageCount: 16
-[100C8:4B5C][2017-10-08T14:01:47]i200: Plan begin, 16 packages, action: Repair
-[100C8:F250][2017-10-08T14:01:47]i000: RunRepairWF: Done
-[100C8:F250][2017-10-08T14:01:47]i000: Setting string variable 'LASTSERVICE' to value 'QlikSensePrintingService'
-[100C8:F250][2017-10-08T14:01:47]i000: RootRunWF: Done
-[100C8:F250][2017-10-08T14:01:47]i000: ExitActivity: Exiting workflows.
-[100C8:4B5C][2017-10-08T14:01:47]w321: Skipping dependency registration on package with no dependency providers: NetFx452Full
-[100C8:FD84][2017-10-08T14:01:47]i000: About to quit this session (with exit code 0).
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_PostgreSQL' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_000_PostgreSQL.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_Repository' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_001_Repository.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_Proxy' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_002_Proxy.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_Engine' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_003_Engine.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_Scheduler' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_004_Scheduler.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_Client' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_005_Client.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_ServiceDispatcher' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_006_ServiceDispatcher.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_DataMarket' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_007_DataMarket.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_Essbase' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_008_Essbase.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_Logging' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_009_Logging.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_ODBC' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_010_ODBC.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_Printing' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_011_Printing.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_REST' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_012_REST.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_Salesforce' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_013_Salesforce.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i000: Setting string variable 'WixBundleLog_WebStorage' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_014_WebStorage.txt'
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: NetFx452Full, state: Present, default requested: Repair, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: PostgreSQL, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: Repository, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: Proxy, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: Engine, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: Scheduler, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: Client, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: ServiceDispatcher, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: DataMarket, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: Essbase, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: Logging, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: ODBC, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: Printing, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: REST, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: Salesforce, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i201: Planned package: WebStorage, state: Present, default requested: Repair, ba requested: Repair, execute: Repair, rollback: None, cache: No, uncache: No, dependency: Register
-[100C8:4B5C][2017-10-08T14:01:47]i299: Plan complete, result: 0x0
-[100C8:4B5C][2017-10-08T14:01:47]i300: Apply begin
-[100C8:4B5C][2017-10-08T14:01:47]i000: Initializing the ApplyComplete reset event...
-[100C8:4B5C][2017-10-08T14:01:47]i010: Launching elevated engine process.
-[100C8:4B5C][2017-10-08T14:01:50]e000: Error 0x800704c7: Failed to launch elevated child process: C:\Users\QLIKEX~1\AppData\Local\Temp\{b2ec088c-af03-4525-8206-a24abaf8b24d}\.be\Qlik_Sense_setup.exe
-[100C8:4B5C][2017-10-08T14:01:50]i000: Elevation error 1602 User cancelled installation. 
-[100C8:4B5C][2017-10-08T14:01:50]i000: Elevation failure.
-[100C8:4B5C][2017-10-08T14:01:50]e000: Error 0x80070642: Failed to elevate.
-[100C8:4B5C][2017-10-08T14:01:50]e000: Error 0x80070642: Failed to actually elevate.
-[100C8:4B5C][2017-10-08T14:01:50]e000: Error 0x80070642: Failed to elevate.
-[100C8:4B5C][2017-10-08T14:01:50]i000: About to quit this session (with exit code -2147023294).
-[100C8:4B5C][2017-10-08T14:01:50]i399: Apply complete, result: 0x80070642, restart: None, ba requested restart:  No
-[100C8:4B5C][2017-10-08T14:01:50]i500: Shutting down, exit code: 0x0
-[100C8:4B5C][2017-10-08T14:01:50]i500: Shutting down, exit code: 0x80070642
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: ADDLOCAL = ALL
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: BUNDLETEMPDIRECTORY = C:\Users\Qlikexternal\AppData\Local\Temp\{b2ec088c-af03-4525-8206-a24abaf8b24d}\.ba3
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: BundleUpgradeCode = 724c6cf5-e8cf-4778-afee-f14298e19d0e
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: CENTRALREPOSITORY = 1
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: CONFIGSERVICES = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: CS = false
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: d = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: D = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: databasepassword = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: Databasepassword = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: DatabasePassword = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: DATABASEPASSWORD = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: DBDATAFOLDER = C:\ProgramData\\Qlik\Sense\Repository\PostgreSQL
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: DBLIMITEDUSERNAME = qliksenserepository
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: dbp = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: Dbp = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: DBP = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: dbpassword = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: DbPassword = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: DBPassword = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: DBPASSWORD = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: DESKTOPSHORTCUT = 1
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: HOSTNAME = 
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: INSTALLDIR = C:\Program Files\Qlik\Sense\
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: IsPatch = false
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: LASTSERVICE = QlikSensePrintingService
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: MODIFY = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: NETFRAMEWORK45 = 460805
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: OriginalFileName = Qlik_Sense_setup
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: p = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: P = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: password = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: Password = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: PASSWORD = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewDesktop10X64SrcToSr5 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewDesktop10X86SrcToSr5 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewDesktop1120_x64 = 5
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewDesktop1120_x86 = 2
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewDesktop8X64 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewDesktop8X86 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewDesktop9X64 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewDesktop9X86 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewOcx10X86SrcToSr5 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewPlugin1120_x86 = 2
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewPublisher8X64 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewPublisher8X86 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewPublisher9X64 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewPublisher9X86 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewServer10X64SrcToSr5 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewServer10X86SrcToSr5 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewServer1120_2012 = 2
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewServer1120_x64 = 2
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewServer1120_x86 = 2
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewServer8X64 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewServer8X86 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewServer9X64 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QlikViewServer9X86 = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QLOGSREADERPASSWORD = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: QLOGSWRITERPASSWORD = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: RANDOMPASSWORD = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: SERVICEUSER = QLIK-AB0Q2URN5T\Qlikexternal
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: SKIPDBCONFIG = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: SKIPDBVALIDATION = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: SKIPESSBASECONNECTOR = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: SKIPINSTALLDBSERVICE = 1
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: SKIPLOGGINGSERVICE = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: SKIPODBCCONNECTOR = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: SKIPRESTCONNECTOR = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: SKIPSFDCCONNECTOR = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: SKIPSTARTSERVICES = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: SKIPWEBSTORAGECONNECTOR = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: STARTDEPENDENTSERVICES = false
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: TESTMODE = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: UNIQUEAPPGUID = D188A6E3-B88B-47A7-9E3B-465E3775BDAE
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: userpassword = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: Userpassword = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: UserPassword = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: USERPASSWORD = *****
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleAction = 7
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleElevated = 0
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleInstalled = 1
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_Client = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_005_Client.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_DataMarket = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_007_DataMarket.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_Engine = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_003_Engine.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_Essbase = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_008_Essbase.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_Logging = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_009_Logging.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_ODBC = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_010_ODBC.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_PostgreSQL = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_000_PostgreSQL.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_Printing = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_011_Printing.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_Proxy = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_002_Proxy.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_Repository = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_001_Repository.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_REST = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_012_REST.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_Salesforce = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_013_Salesforce.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_Scheduler = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_004_Scheduler.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_ServiceDispatcher = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_006_ServiceDispatcher.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleLog_WebStorage = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log_014_WebStorage.txt
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleManufacturer = QlikTech International AB
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleName = Qlik Sense November 2017 Internal
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleOriginalSource = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\Qlik Sense Server.exe
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleOriginalSourceFolder = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleProviderKey = {b2ec088c-af03-4525-8206-a24abaf8b24d}
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleTag = 
-[100C8:4B5C][2017-10-08T14:01:50]i410: Variable: WixBundleVersion = 11.24.1.0
-[100C8:4B5C][2017-10-08T14:01:50]i007: Exit code: 0x80070642, restarting: No
+[3D24:3D5C][2017-10-26T18:18:06]i001: Burn v3.10.0.2103, Windows v10.0 (Build 14393: Service Pack 0), path: C:\Qlik Sense Server.exe
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'ADDLOCAL' to value 'ALL'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'SKIPSTARTSERVICES' to value '0'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'CONFIGSERVICES' to value '1'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'MODIFY' to value '0'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'OriginalFileName' to value 'Qlik_Sense_setup'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'INSTALLDIR' to value '[ProgramFiles64Folder]\Qlik\Sense'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'BundleUpgradeCode' to value '724c6cf5-e8cf-4778-afee-f14298e19d0e'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'DBDATAFOLDER' to value '[CommonAppDataFolder]\Qlik\Sense\Repository\PostgreSQL'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'SERVICEUSER' to value ''
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'CENTRALREPOSITORY' to value '1'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'RANDOMPASSWORD'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'SKIPDBCONFIG' to value '0'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'SKIPDBVALIDATION' to value '0'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'IsPatch' to value 'false'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'STARTDEPENDENTSERVICES' to value 'false'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'DBLIMITEDUSERNAME' to value 'qliksenserepository'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'SKIPINSTALLDBSERVICE' to value '0'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'QLOGSWRITERPASSWORD'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'QLOGSREADERPASSWORD'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'USERPASSWORD'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'UserPassword'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'Userpassword'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'userpassword'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'PASSWORD'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'Password'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'password'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'P'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'p'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'DBPASSWORD'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'DBPassword'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'DbPassword'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'dbpassword'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'DBP'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'Dbp'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'dbp'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'D'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'd'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'DATABASEPASSWORD'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'DatabasePassword'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'Databasepassword'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing hidden variable 'databasepassword'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Initializing string variable 'CS' to value 'false'
+[3D24:3D5C][2017-10-26T18:18:06]i009: Command Line: '-s -l .\log.txt spc=.\spc.cfg userwithdomain=QLIK-AB0Q2URN5T\Qlikexternal userpassword=*****'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Setting string variable 'WixBundleLog' to value 'C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log.txt'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Setting string variable 'WixBundleOriginalSource' to value 'C:\Qlik Sense Server.exe'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Setting string variable 'WixBundleOriginalSourceFolder' to value 'C:\'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Setting string variable 'WixBundleManufacturer' to value 'QlikTech International AB'
+[3D24:3D5C][2017-10-26T18:18:06]i000: Loading managed bootstrapper application.
+[3D24:3D5C][2017-10-26T18:18:07]i000: Common Qlik bootstrapper application started.
+[3D24:3D5C][2017-10-26T18:18:07]i000: OperatingSystem version: 10.0.14393.0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting string variable 'UNIQUEAPPGUID' to value 'D188A6E3-B88B-47A7-9E3B-465E3775BDAE'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting string variable 'BUNDLETEMPDIRECTORY' to value 'C:\Users\Qlikexternal\AppData\Local\Temp\{b2ec088c-af03-4525-8206-a24abaf8b24d}\.ba3'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Bad cached source file version, 11.14.3. Will try set original source.
+[3D24:3D5C][2017-10-26T18:18:07]i000: Trying to resolve source of version 11.24.1 using WixBundleOriginalSource... 
+[3D24:3D5C][2017-10-26T18:18:07]i000: Failure resolving source using WixBundleOriginalSource. File does not exist: C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\Qlik Sense Server.exe.
+[3D24:3D5C][2017-10-26T18:18:07]i000: About to collect the feature sets and set their states to the default values.
+[3D24:3D5C][2017-10-26T18:18:07]i000: The RequestState of Repository was updated. New state: Present
+[3D24:3D5C][2017-10-26T18:18:07]i000: The RequestState of Engine was updated. New state: Present
+[3D24:3D5C][2017-10-26T18:18:07]i000: The RequestState of Proxy was updated. New state: Present
+[3D24:3D5C][2017-10-26T18:18:07]i000: The RequestState of Client was updated. New state: Present
+[3D24:3D5C][2017-10-26T18:18:07]i000: The RequestState of Scheduler was updated. New state: Present
+[3D24:3D5C][2017-10-26T18:18:07]i000: The RequestState of Repository Database was updated. New state: Present
+[3D24:3D5C][2017-10-26T18:18:07]i000: The RequestState of Service Dispatcher was updated. New state: Present
+[3D24:3D5C][2017-10-26T18:18:07]i000: The RequestState of Printing Service was updated. New state: Present
+[3D24:3D5C][2017-10-26T18:18:07]i000: The RequestState of DataMarket was updated. New state: Present
+[3D24:3D5C][2017-10-26T18:18:07]i000: Qlik Sense November 2017 Internal started. ProductVersion: 11.24.1
+[3D24:3D5C][2017-10-26T18:18:07]i000: Creating BA thread to run asynchronously.
+[3D24:3D5C][2017-10-26T18:18:07]i100: Detect begin, 16 packages
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting string variable 'NETFRAMEWORK45' to value '460805'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{F319934C-1C5E-4B89-9A8E-DDF1C54A040E}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewDesktop10X64SrcToSr5' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{997FF31A-80C9-4B92-8F80-10953D2AE9A3}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewDesktop10X86SrcToSr5' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{A8EA2D08-EDBC-48F3-80D7-1EEE1A8E0913}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewDesktop8X64' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{D2CF9A7C-1CD9-4C62-B9FE-942893F84889}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewDesktop8X86' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{2A7C0763-D448-40A5-B602-39086F255088}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewDesktop9X64' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{343ACA46-AF91-495F-A64F-81F9736638FB}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewDesktop9X86' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{65E859BA-5BD7-4936-938B-4B151FED1263}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewOcx10X86SrcToSr5' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B030B7BD-CD13-45AA-8376-167E2E138C54}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewPublisher8X64' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{CCACAAE2-CA00-4D9A-88BE-947AE4EE38E0}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewPublisher8X86' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{B030B7BD-CD13-45AA-8376-167E2E138C54}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewPublisher9X64' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{CCACAAE2-CA00-4D9A-88BE-947AE4EE38E0}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewPublisher9X86' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{31572C57-0591-4F94-B5EC-34806D0290DB}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewServer10X64SrcToSr5' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{354F6EFD-CCB5-482B-AB80-5FC082F2B051}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewServer10X86SrcToSr5' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{1068C914-E626-4547-9115-3A5EF7BE2162}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewServer8X64' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{22FF271C-5039-4243-A5E5-59283724126B}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewServer8X86' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{1068C914-E626-4547-9115-3A5EF7BE2162}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewServer9X64' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Registry key not found. Key = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{22FF271C-5039-4243-A5E5-59283724126B}'
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewServer9X86' to value 0
+[3D24:3D5C][2017-10-26T18:18:07]i000: Product or related product not found: {BAEED71A-B323-4F93-A2B3-4D74C88382B4}
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewServer1120_x64' to value 2
+[3D24:3D5C][2017-10-26T18:18:07]i000: Trying per-machine extended info for property 'State' for product: {0BD26E4A-562A-47CD-8F1E-C55519B94863}
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewDesktop1120_x64' to value 5
+[3D24:3D5C][2017-10-26T18:18:07]i000: Product or related product not found: {C8242EA7-DE44-4472-B739-62B4A9080F88}
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewServer1120_x86' to value 2
+[3D24:3D5C][2017-10-26T18:18:07]i000: Product or related product not found: {5A693A39-8628-41DA-A1F0-95AB26735A84}
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewDesktop1120_x86' to value 2
+[3D24:3D5C][2017-10-26T18:18:07]i000: Product or related product not found: {CCECD2EB-5E4E-43E0-BDB7-D33690D205EF}
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewPlugin1120_x86' to value 2
+[3D24:3D5C][2017-10-26T18:18:07]i000: Product or related product not found: {65C96F8A-E1CC-4658-9717-7F9FEC55CA5D}
+[3D24:3D5C][2017-10-26T18:18:07]i000: Setting numeric variable 'QlikViewServer1120_2012' to value 2
+[3D24:312C][2017-10-26T18:18:07]i000: Running...
+[3D24:312C][2017-10-26T18:18:07]i000: LaunchAction Install
+[3D24:312C][2017-10-26T18:18:07]i000: ResumeType Arp
+[3D24:312C][2017-10-26T18:18:07]i000: Display None
+[3D24:3D5C][2017-10-26T18:18:07]i052: Condition 'NETFRAMEWORK45 >= 379893' evaluates to true.
+[3D24:3D5C][2017-10-26T18:18:07]i000: Existing Service User: QLIK-AB0Q2URN5T\Qlikexternal detected for Services.
+[3D24:3D5C][2017-10-26T18:18:07]i000: Installdir of upgrade code {92AC83A7-D2D6-47CF-B1D3-4CA5ADE81C0F}: C:\Program Files\Qlik\Sense\
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: NetFx452Full, state: Present, cached: None
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: PostgreSQL, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: Repository, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: Proxy, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: Engine, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: Scheduler, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: Client, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: ServiceDispatcher, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: DataMarket, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: Essbase, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: Logging, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: ODBC, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: Printing, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: REST, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: Salesforce, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i101: Detected package: WebStorage, state: Present, cached: Complete
+[3D24:3D5C][2017-10-26T18:18:07]i199: Detect complete, result: 0x0
+[3D24:3D5C][2017-10-26T18:18:07]i200: Plan begin, 16 packages, action: Install
+[3D24:3D5C][2017-10-26T18:18:07]w321: Skipping dependency registration on package with no dependency providers: NetFx452Full
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: NetFx452Full, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: PostgreSQL, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: Repository, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: Proxy, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: Engine, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: Scheduler, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: Client, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: ServiceDispatcher, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: DataMarket, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: Essbase, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: Logging, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: ODBC, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: Printing, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: REST, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: Salesforce, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[3D24:3D5C][2017-10-26T18:18:07]i201: Planned package: WebStorage, state: Present, default requested: Present, ba requested: None, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[3D24:3D5C][2017-10-26T18:18:07]i299: Plan complete, result: 0x0
+[3D24:312C][2017-10-26T18:18:07]i000: Setting string variable 'DESKTOPSHORTCUT' to value '1'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting string variable 'SERVICEUSER' to value 'QLIK-AB0Q2URN5T\Qlikexternal'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting string variable 'SKIPSTARTSERVICES' to value '0'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting string variable 'SKIPDBCONFIG' to value '0'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting string variable 'TESTMODE' to value '0'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting string variable 'SKIPRESTCONNECTOR' to value '0'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting string variable 'SKIPESSBASECONNECTOR' to value '0'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting string variable 'SKIPLOGGINGSERVICE' to value '0'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting string variable 'SKIPWEBSTORAGECONNECTOR' to value '0'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting string variable 'SKIPSFDCCONNECTOR' to value '0'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting string variable 'SKIPODBCCONNECTOR' to value '0'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting hidden variable 'USERPASSWORD'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting hidden variable 'USERPASSWORD'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting hidden variable 'DBPASSWORD'
+[3D24:312C][2017-10-26T18:18:07]i000: Setting hidden variable 'DBPASSWORD'
+[3D24:312C][2017-10-26T18:18:07]i000: Installdir of upgrade code {800C8F7D-AEFE-4066-A5C5-5FA0FA64FC59}: C:\Program Files\Qlik\Sense\
+[3D24:312C][2017-10-26T18:18:07]i000: Existing INSTALLDIR detected. It will be used as the default value.
+[3D24:312C][2017-10-26T18:18:07]i000: Setting string variable 'INSTALLDIR' to value 'C:\Program Files\Qlik\Sense\'
+[3D24:312C][2017-10-26T18:18:16]i000: PREREQUISITE CHECK: The following process has been detected: Task Manager. Please close it before proceeding further.
+[3D24:312C][2017-10-26T18:18:16]i000: PREREQUISITE CHECK: Service user validation succeeded.
+[3D24:312C][2017-10-26T18:18:16]i000: LaunchAction Install detected.
+[3D24:312C][2017-10-26T18:18:16]i000: The RequestState of Logging was updated. New state: Present
+[3D24:312C][2017-10-26T18:18:16]i000: The RequestState of  was updated. New state: Present
+[3D24:312C][2017-10-26T18:18:16]i000: The RequestState of  was updated. New state: Present
+[3D24:312C][2017-10-26T18:18:16]i000: The RequestState of  was updated. New state: Present
+[3D24:312C][2017-10-26T18:18:16]i000: The RequestState of  was updated. New state: Present
+[3D24:312C][2017-10-26T18:18:16]i000: The RequestState of  was updated. New state: Present
+[3D24:312C][2017-10-26T18:18:16]i000: The RequestState of Microsoft .NET Framework 4.5.2 was updated. New state: Present
+[3D24:00D8][2017-10-26T18:18:18]i000: Silent sense root workflow: started
+[3D24:00D8][2017-10-26T18:18:18]i000: Init Workflow: Started
+[3D24:00D8][2017-10-26T18:18:18]i000: GetStringPropertyActivity retrieved the value C:\Program Files\Qlik\Sense\ from property INSTALLDIR
+[3D24:00D8][2017-10-26T18:18:18]i000: InitServer workflow: Started
+[3D24:00D8][2017-10-26T18:18:18]i000: Service 'QlikSenseRepositoryService' with state 'Running' was detected
+[3D24:00D8][2017-10-26T18:18:18]i000: InitServerWF: Repository service is running
+[3D24:00D8][2017-10-26T18:18:18]i000: Init StartServices: Done
+[3D24:00D8][2017-10-26T18:18:24]i000: HostUris detected: QLIK-AB0Q2URN5T
+[3D24:00D8][2017-10-26T18:18:24]i000: HostViewWorkflow: Done
+[3D24:00D8][2017-10-26T18:18:24]i000: InitServerInstallSilent workflow: Done
+[3D24:00D8][2017-10-26T18:18:24]i000: InitServer workflow: Done
+[3D24:00D8][2017-10-26T18:18:24]i000: Init Workflow: Done
+[3D24:00D8][2017-10-26T18:18:24]i000: Existing Repository database detected.
+[3D24:00D8][2017-10-26T18:18:24]i000: CreateInstallServerSetupConfigWorkflow: Done
+[3D24:00D8][2017-10-26T18:18:24]i000: RootRunWF: Is called
+[3D24:00D8][2017-10-26T18:18:24]i000: Existing Repository database detected.
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'DBLIMITEDUSERNAME' to value 'username'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting hidden variable 'RANDOMPASSWORD'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting hidden variable 'RANDOMPASSWORD'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'USINGPOSTGRESQL' to value '1'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'INSTALLDB' to value '1'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'REMOVEDUMP' to value '0'
+[3D24:00D8][2017-10-26T18:18:24]i000: RunDatabaseWF: Done
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'SHAREDPERSISTENCE' to value '1'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'CREATESERVICECLUSTER' to value '1'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'SHAREDROOTFOLDER' to value '\\QLIK-AB0Q2URN5T\QlikSenseShared'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'STATICCONTENTROOT' to value '\\QLIK-AB0Q2URN5T\QlikSenseShared\StaticContent'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'CUSTOMDATAROOT' to value '\\QLIK-AB0Q2URN5T\QlikSenseShared\CustomData'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'ARCHIVEDLOGSROOT' to value '\\QLIK-AB0Q2URN5T\QlikSenseShared\ArchivedLogs'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'APPSROOT' to value '\\QLIK-AB0Q2URN5T\QlikSenseShared\Apps'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'USINGPOSTGRESQL' to value '0'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'DBHOSTNAME' to value 'QLIK-AB0Q2URN5T'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'DBPORT' to value '4432'
+[3D24:00D8][2017-10-26T18:18:24]i000: RunSharedPersistenceWF: Done
+[3D24:00D8][2017-10-26T18:18:24]i000: SetFeatureSetActivity: About to set Engine to state Present
+[3D24:00D8][2017-10-26T18:18:24]i000: SetupRequest updated - Engine. Old state: Present, new state: Present
+[3D24:00D8][2017-10-26T18:18:24]i000: SetFeatureSetActivity: About to set Proxy to state Present
+[3D24:00D8][2017-10-26T18:18:24]i000: SetupRequest updated - Proxy. Old state: Present, new state: Present
+[3D24:00D8][2017-10-26T18:18:24]i000: SetFeatureSetActivity: About to set Scheduler to state Present
+[3D24:00D8][2017-10-26T18:18:24]i000: SetupRequest updated - Scheduler. Old state: Present, new state: Present
+[3D24:00D8][2017-10-26T18:18:24]i000: About to evaluate feature states for launchaction Install
+[3D24:00D8][2017-10-26T18:18:24]i000: RunSetupFeaturesWorkflow: Done
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'HOSTNAME' to value 'QLIK-AB0Q2URN5T'
+[3D24:00D8][2017-10-26T18:18:24]i000: RunHostViewWF: Done
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'DESKTOPSHORTCUT' to value '1'
+[3D24:00D8][2017-10-26T18:18:24]i000: Setting string variable 'CENTRALREPOSITORY' to value '1'
+[3D24:00D8][2017-10-26T18:18:28]i000: Setting string variable 'SKIPSTARTSERVICES' to value '0'
+[3D24:00D8][2017-10-26T18:18:28]i000: Setting string variable 'SERVICEUSER' to value 'QLIK-AB0Q2URN5T\Qlikexternal'
+[3D24:00D8][2017-10-26T18:18:28]i000: Setting hidden variable 'USERPASSWORD'
+[3D24:00D8][2017-10-26T18:18:28]i000: Setting hidden variable 'USERPASSWORD'
+[3D24:00D8][2017-10-26T18:18:28]i000: Setting string variable 'INSTALLDIR' to value 'C:\Program Files\Qlik\Sense\'
+[3D24:00D8][2017-10-26T18:18:28]i000: RunCommonServerCSWF: Done
+[3D24:00D8][2017-10-26T18:18:28]i000: LaunchAction Install about to be applied.
+[3D24:00D8][2017-10-26T18:18:28]i000: PackageCount: 16
+[3D24:00D8][2017-10-26T18:18:28]i000: Install about to be applied.
+[3D24:00D8][2017-10-26T18:18:28]i000: PackageCount: 16
+[3D24:3D5C][2017-10-26T18:18:28]i200: Plan begin, 16 packages, action: Install
+[3D24:00D8][2017-10-26T18:18:28]i000: RunSetup InstallServer workflow: Done
+[3D24:3D5C][2017-10-26T18:18:28]w321: Skipping dependency registration on package with no dependency providers: NetFx452Full
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: NetFx452Full, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: PostgreSQL, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: Repository, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: Proxy, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: Engine, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: Scheduler, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: Client, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: ServiceDispatcher, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: DataMarket, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: Essbase, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: Logging, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: ODBC, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: Printing, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: REST, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: Salesforce, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i201: Planned package: WebStorage, state: Present, default requested: Present, ba requested: Present, execute: None, rollback: None, cache: No, uncache: No, dependency: Register
+[3D24:3D5C][2017-10-26T18:18:28]i299: Plan complete, result: 0x0
+[3D24:3D5C][2017-10-26T18:18:28]i300: Apply begin
+[3D24:3D5C][2017-10-26T18:18:28]i000: Initializing the ApplyComplete reset event...
+[3D24:00D8][2017-10-26T18:18:28]i000: Setting string variable 'LASTSERVICE' to value 'QlikSensePrintingService'
+[3D24:00D8][2017-10-26T18:18:28]i000: RootRunWF: Done
+[3D24:00D8][2017-10-26T18:18:28]i000: ExitActivity: Exiting workflows.
+[3D24:312C][2017-10-26T18:18:28]i000: About to quit this session (with exit code 0).
+[3D24:3D5C][2017-10-26T18:18:28]i010: Launching elevated engine process.
+[3D24:3D5C][2017-10-26T18:18:37]e000: Error 0x800704c7: Failed to launch elevated child process: C:\Users\QLIKEX~1\AppData\Local\Temp\{b2ec088c-af03-4525-8206-a24abaf8b24d}\.be\Qlik_Sense_setup.exe
+[3D24:3D5C][2017-10-26T18:18:37]i000: Elevation error 1602 User cancelled installation. 
+[3D24:3D5C][2017-10-26T18:18:37]i000: Elevation failure.
+[3D24:3D5C][2017-10-26T18:18:37]e000: Error 0x80070642: Failed to elevate.
+[3D24:3D5C][2017-10-26T18:18:37]e000: Error 0x80070642: Failed to actually elevate.
+[3D24:3D5C][2017-10-26T18:18:37]e000: Error 0x80070642: Failed to elevate.
+[3D24:3D5C][2017-10-26T18:18:37]i000: About to quit this session (with exit code -2147023294).
+[3D24:3D5C][2017-10-26T18:18:37]i399: Apply complete, result: 0x80070642, restart: None, ba requested restart:  No
+[3D24:3D5C][2017-10-26T18:18:37]i500: Shutting down, exit code: 0x80070642
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: ADDLOCAL = ALL
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: APPSROOT = \\QLIK-AB0Q2URN5T\QlikSenseShared\Apps
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: ARCHIVEDLOGSROOT = \\QLIK-AB0Q2URN5T\QlikSenseShared\ArchivedLogs
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: BUNDLETEMPDIRECTORY = C:\Users\Qlikexternal\AppData\Local\Temp\{b2ec088c-af03-4525-8206-a24abaf8b24d}\.ba3
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: BundleUpgradeCode = 724c6cf5-e8cf-4778-afee-f14298e19d0e
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: CENTRALREPOSITORY = 1
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: CONFIGSERVICES = 1
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: CREATESERVICECLUSTER = 1
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: CS = false
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: CUSTOMDATAROOT = \\QLIK-AB0Q2URN5T\QlikSenseShared\CustomData
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: d = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: D = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: databasepassword = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: Databasepassword = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: DatabasePassword = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: DATABASEPASSWORD = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: DBDATAFOLDER = C:\ProgramData\\Qlik\Sense\Repository\PostgreSQL
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: DBHOSTNAME = QLIK-AB0Q2URN5T
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: DBLIMITEDUSERNAME = username
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: dbp = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: Dbp = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: DBP = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: dbpassword = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: DbPassword = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: DBPassword = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: DBPASSWORD = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: DBPORT = 4432
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: DESKTOPSHORTCUT = 1
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: HOSTNAME = QLIK-AB0Q2URN5T
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: INSTALLDB = 1
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: INSTALLDIR = C:\Program Files\Qlik\Sense\
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: IsPatch = false
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: LASTSERVICE = QlikSensePrintingService
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: MODIFY = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: NETFRAMEWORK45 = 460805
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: OriginalFileName = Qlik_Sense_setup
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: p = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: P = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: password = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: Password = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: PASSWORD = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewDesktop10X64SrcToSr5 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewDesktop10X86SrcToSr5 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewDesktop1120_x64 = 5
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewDesktop1120_x86 = 2
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewDesktop8X64 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewDesktop8X86 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewDesktop9X64 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewDesktop9X86 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewOcx10X86SrcToSr5 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewPlugin1120_x86 = 2
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewPublisher8X64 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewPublisher8X86 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewPublisher9X64 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewPublisher9X86 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewServer10X64SrcToSr5 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewServer10X86SrcToSr5 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewServer1120_2012 = 2
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewServer1120_x64 = 2
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewServer1120_x86 = 2
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewServer8X64 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewServer8X86 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewServer9X64 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QlikViewServer9X86 = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QLOGSREADERPASSWORD = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: QLOGSWRITERPASSWORD = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: RANDOMPASSWORD = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: REMOVEDUMP = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SERVICEUSER = QLIK-AB0Q2URN5T\Qlikexternal
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SHAREDPERSISTENCE = 1
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SHAREDROOTFOLDER = \\QLIK-AB0Q2URN5T\QlikSenseShared
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SKIPDBCONFIG = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SKIPDBVALIDATION = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SKIPESSBASECONNECTOR = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SKIPINSTALLDBSERVICE = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SKIPLOGGINGSERVICE = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SKIPODBCCONNECTOR = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SKIPRESTCONNECTOR = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SKIPSFDCCONNECTOR = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SKIPSTARTSERVICES = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: SKIPWEBSTORAGECONNECTOR = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: STARTDEPENDENTSERVICES = false
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: STATICCONTENTROOT = \\QLIK-AB0Q2URN5T\QlikSenseShared\StaticContent
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: TESTMODE = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: UNIQUEAPPGUID = D188A6E3-B88B-47A7-9E3B-465E3775BDAE
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: userpassword = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: Userpassword = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: UserPassword = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: USERPASSWORD = *****
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: USINGPOSTGRESQL = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: WixBundleAction = 5
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: WixBundleElevated = 0
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: WixBundleInstalled = 1
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: WixBundleLog = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\.\log.txt
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: WixBundleManufacturer = QlikTech International AB
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: WixBundleName = Qlik Sense November 2017 Internal
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: WixBundleOriginalSource = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\Qlik Sense Server.exe
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: WixBundleOriginalSourceFolder = C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware\
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: WixBundleProviderKey = {b2ec088c-af03-4525-8206-a24abaf8b24d}
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: WixBundleTag = 
+[3D24:3D5C][2017-10-26T18:18:37]i410: Variable: WixBundleVersion = 11.24.1.0
+[3D24:3D5C][2017-10-26T18:18:37]i007: Exit code: 0x80070642, restarting: No
