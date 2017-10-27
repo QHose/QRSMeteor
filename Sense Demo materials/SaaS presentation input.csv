@@ -316,7 +316,6 @@ This slide gives a real life example of embedding. It shows you a collection of 
 ",,,,,,,,,
 "Web integration","Embedding is hot","web - embedded analytics gaining tracktion.png",,"","","","","         0","0","SaaS & Power of APIs",
 "Web integration","Embedding is hot","!comment
-Questions to the audience:
 Internal embedding interest or external/commercial embedding interest? 
 
 At Qlik, we have tracked the growth of embedded analytics over the past several years as it is a firmly entrenched buying agenda in its own right fueled in a large part by the need for most rank and file information workers to employ and use analytics right within their workspace.  
@@ -386,12 +385,11 @@ On top the different parts of the embedding can be shown: JavaScript, HTML, CSS,
 After that the bar chart is shown in a specific placeholder in de webpage. The placeholder is defined in the HTML code.
 On the top of the slide you can choose between the 5 possible views.",,,,,,,,,
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","Technical - 1 hour",
-"Web integration","Which options do you have to embed the resources?","
-!comment
+"Web integration","Which options do you have to embed the resources?","!comment
 There are 3 main options for embedding:
  - IFrame: A very easy method of embedding the Hub, App, Sheet or an object. Basically with an IFrame you embed another document in the current HTML document.- Div Tag: An HTML page can have reserved spaces ( or placeholders). These are defined with Div tags. With our Capability API's it is possible to put Qlik Sense objects in these Div tags.
  On the fly: Instead of already creating an object in a Qlik Sense app and then using it in a HTML page, it is possible to create the object on the fly in the JavaScript of the webpage. Through our visualization API we give you the possibility to generate charts or other objects on the fly. This gives you the possibility to only generate the charts whenever a user logs in, giving you lots of flexibility.",,,,,,,,,
-"Web integration","Options to embed Qlik Sense: from simple to advanced use cases","iframe http://web.integration.qlik.com",,"","","","","         0","0","Technical - 1 hour, Demo with integration.qlik.com",
+"Web integration","Options to embed Qlik Sense: from simple to advanced use cases","iframe http://web.integration.qlik.com",,"","","","","         0","0","Technical - 1 hour, Demo with integration.qlik.com, Product Owner",
 "Web integration","Options to embed Qlik Sense: from simple to advanced use cases","Lets look at [integration.qlik.com](http://web.integration.qlik.com/) where we embedded
 - the hub, 
 - sheets
@@ -410,12 +408,10 @@ Finally you can use Qlik Sense APIs to provide the data. In the JavaScript chart
 "Web integration","Choose the level of integration you like...","!comment
 As said on the previous slide: With Qlik Sense you have the possibility to embed our hub, sheet, chart or just the data.",,,,,,,,,
 "Web integration","Summary: Which Qlik Sense resources can you embed with the QAP and Qlik Sense enterprise?","web-resources to embed v2.png",,"","","","","         0","0","Demo with integration.qlik.com, Technical - 2 hours, SaaS & Power of APIs",
-"Web integration","Summary: Which Qlik Sense resources can you embed with the QAP and Qlik Sense enterprise?","
-!comment
+"Web integration","Summary: Which Qlik Sense resources can you embed with the QAP and Qlik Sense enterprise?","!comment
 With Qlik Sense Enterprise you have all the possible options to embed.The Enterprise edition also contains the hub and it's corresponding menus, toolbars and buttons. This makes it possible to also use these in your embedding.When choosing the Qlik Analytics Platform (QAP) you have all the same possibilities, except the whole visual layer. This means there is no hub, app overview, menu, toolbars,.. So with the QAP you can only embed a sheet (without menu), an object and data on the fly.",,,,,,,,,
 "Web integration","Introduction video to Qlik Analytics Platform (QAP)","https://youtu.be/yLTqzftDa7s?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"Web integration","Introduction video to Qlik Analytics Platform (QAP)","
-!comment
+"Web integration","Introduction video to Qlik Analytics Platform (QAP)","!comment
 This video gives you an introduction of our QAP.",,,,,,,,,
 "Web integration","Front end focused API overview","API- overview of what they do.png",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Front end focused API overview","This slide provides an overview of some key APIs (not all...)",,"","","","","         0","0","Technical - 1 day",

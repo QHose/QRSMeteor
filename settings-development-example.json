@@ -7,7 +7,7 @@
         "webIntegrationHost": "QLIK-AB0Q2URN5T",
         "TemplateAppStreamName": "Templates",
         "qlikSensePort": 81,
-        "proxyPort": 80,
+        "proxyPort": 90,
         "virtualProxyClientUsage": "meteor",
         "webIntegrationDemoPort": 3030,
         "SSBI": {
