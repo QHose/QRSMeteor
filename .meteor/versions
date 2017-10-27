@@ -1,11 +1,11 @@
 abernix:minifier-js@2.1.0
 abernix:standard-minifier-js@2.1.0
-accounts-base@1.3.4
+accounts-base@1.3.6
 accounts-facebook@1.2.1
 accounts-github@1.3.0
 accounts-google@1.2.0
 accounts-oauth@1.1.15
-accounts-password@1.4.0
+accounts-password@1.4.2
 accounts-twitter@1.3.0
 alanning:roles@1.2.16
 aldeed:autoform@5.8.1
@@ -32,8 +32,8 @@ caching-html-compiler@1.1.2
 callback-hook@1.0.10
 check@1.2.5
 chuangbo:cookie@1.1.0
-coffeescript@1.12.7_1
-coffeescript-compiler@1.12.7_1
+coffeescript@1.12.7_3
+coffeescript-compiler@1.12.7_3
 cosmos:browserify@0.8.4
 dburles:collection-helpers@1.1.0
 ddp@1.3.1
@@ -83,7 +83,7 @@ juliancwirko:s-alert-stackslide@3.1.3
 launch-screen@1.1.1
 livedata@1.0.18
 localstorage@1.1.1
-logging@1.1.17
+logging@1.1.19
 mdg:validation-error@0.5.1
 meteor@1.7.2
 meteor-base@1.1.0
@@ -92,7 +92,7 @@ meteorhacks:picker@1.0.3
 meteorhacks:sikka@1.0.1
 meteortoys:toykit@3.0.4
 minifier-css@1.2.16
-minimongo@1.3.2
+minimongo@1.3.3
 mobile-experience@1.0.5
 mobile-status-bar@1.0.14
 modules@0.10.0
@@ -104,7 +104,7 @@ mongo-id@1.0.6
 mongo-livedata@1.0.12
 msavin:mongol@2.0.1
 npm-bcrypt@0.9.3
-npm-mongo@2.2.30
+npm-mongo@2.2.33
 oauth@1.1.13
 oauth1@1.1.11
 oauth2@1.1.11
