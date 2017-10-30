@@ -98,15 +98,16 @@ Template.slideContent.onRendered(function() {
 Template.slide.helpers({
     active(slideNr) {
         var activeSlide = Session.get('activeStepNr');
+        console.log('activeSlide', activeSlide)
         var active = slideNr < activeSlide + numberOfActiveSlides && slideNr > activeSlide - numberOfActiveSlides;
-        // return active;
-        return true;
+        console.log('active', active)
+        return active;
+        // return true;
     }
 });
 
 
 Template.registerHelper('slideHeaders', function() {
-    // Reveal.slide(1, 1);
     return Session.get('slideHeaders'); //only the level 1 and 2 colums, we need this for the headers of the slide
 });
 
@@ -183,7 +184,7 @@ Template.registerHelper('formatted', function(text) {
     // ─── IMAGE ──────────────────────────────────────────────────────────────────────
     //        
     else if (checkTextIsImage(text)) {
-        return '<img class="ui massive rounded bordered image fragment"  src="images/' + text + '">';
+        return '<img class="ui massive rounded bordered image"  src="images/' + text + '">';
     }
 
     //
@@ -194,7 +195,7 @@ Template.registerHelper('formatted', function(text) {
         if (result.substring(1, 11) === 'blockquote') {
             return '<div class="ui green very padded segment">' + result + '</div>';
         } else {
-            return '<div class="fragment markdownItem">' + result + '</div>';
+            return '<div class="markdownItem">' + result + '</div>';
         }
     }
 })
