@@ -2001,7 +2001,7 @@ volumes:
 "Install integration.qlik.com on a blank windows server","Setup your blank virtual machine","# Static Ip
 Make sure you give the machine a `static IP`. Otherwise if you reboot you get a new IP and Qlik Sense won't work anymore. (Because a TLS certificate is bound to a domain name)",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","# Install Github Desktop",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","The installer will start the installer of [Github desktop](https://services.github.com/on-demand/github-desktop/install-github-desktop), you can skip the sign up.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","Install [Github desktop](https://services.github.com/on-demand/github-desktop/install-github-desktop), you can skip the sign up.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","Go to  [QRSMeteor](https://github.com/QHose/QRSMeteor) and press the ""clone or download""button. Open your new project in github desktop (select yes, always open with desktop)",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","github - open in desktop.png",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","Now your local github desktop program should open and the files from the server have been copied to your local c drive. Normally in your github folder in your ""my documents"".  In my case `C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor`. We will call this the `project root`.",,,,,,,,,
