@@ -177,9 +177,11 @@ async function login(passport) {
 
         Session.set('currentUser', passport.UserId);
         //update the user collection for the saas provisioning demo, to keep in sync... 
-        // Meteor.callPromise('simulateUserLogin', passport.UserId);
         var URLtoOpen = Session.get('appUrl');
         var ticket = await Meteor.callPromise('requestTicketWithPassport', Meteor.settings.public.slideGenerator.virtualProxy, passport);
+        console.log('------------------------------------');
+        console.log('requesting requestTicketWithPassport at virtual proxy: ' + Meteor.settings.public.slideGenerator.virtualProxy + ' with passport: ' + passport);
+        console.log('------------------------------------');
         URLtoOpen += '?QlikTicket=' + ticket;
         console.log('login: the url to open is: ', URLtoOpen);
 
