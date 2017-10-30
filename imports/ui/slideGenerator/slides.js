@@ -44,7 +44,8 @@ function initializeReveal() {
             controls: true,
             center: false,
             autoPlayMedia: false,
-            autoSlide: 2000,
+            fragments: false,
+            // autoSlide: 1000,
             loop: false,
             transition: 'slide', // none/fade/slide/convex/concave/zoom     
             previewLinks: false,
@@ -98,7 +99,8 @@ Template.slide.helpers({
     active(slideNr) {
         var activeSlide = Session.get('activeStepNr');
         var active = slideNr < activeSlide + numberOfActiveSlides && slideNr > activeSlide - numberOfActiveSlides;
-        return active;
+        // return active;
+        return true;
     }
 });
 
@@ -129,13 +131,11 @@ Template.registerHelper('itemsOfLevel', function(level, slide) {
 })
 
 Template.registerHelper('formatted', function(text) {
-    // console.log(text, text.startsWith('!comment'));
-    var commentMarker = '!comment';
     //
     // ─── YOUTUBE ────────────────────────────────────────────────────────────────────
     //
     if (youtube_parser(text)) { //youtube video url
-        console.log('found an youtube link so embed with the formatting of semantic ui', text)
+        // console.log('found an youtube link so embed with the formatting of semantic ui', text)
         var videoId = youtube_parser(text);
         var html = '<div class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div></div>'
             // console.log('generated video link: ', html);
@@ -151,13 +151,16 @@ Template.registerHelper('formatted', function(text) {
     }
 
     //
+    // ─── CUSTOM HTML ────────────────────────────────────────────────────────────────
+    //
+    else if (text.startsWith('<')) { //custom HTML
+        return text;
+    }
+
+    //
     // ─── COMMENT ────────────────────────────────────────────────────────────────────
     //
-    else if (text.startsWith(commentMarker)) { //vertical slide with comments
-        console.log('------------------------------------');
-        console.log('comment found!!! ', text);
-        console.log('------------------------------------');
-        var textAfterCommentMarker = text.split(commentMarker).pop();
+    else if (text.startsWith('!comment ')) { //vertical slide with comments
         var messagebox = `
         <section>
             <div class="ui icon message">
@@ -166,11 +169,13 @@ Template.registerHelper('formatted', function(text) {
             <div class="header">
                 Let's explain what we mean here...
             </div>
-                 ` + converter.makeHtml(textAfterCommentMarker) + `
+                 ` + converter.makeHtml(text) + `
             </div>
         </div>
-        </section>`; //select all text after the !comment... and print it in a nice text box
-
+        </section>`;
+        console.log('------------------------------------');
+        console.log('comment found!!! ', messagebox);
+        console.log('------------------------------------');
         return messagebox;
     }
 
@@ -178,15 +183,7 @@ Template.registerHelper('formatted', function(text) {
     // ─── IMAGE ──────────────────────────────────────────────────────────────────────
     //        
     else if (checkTextIsImage(text)) {
-        return '<img class="ui massive rounded bordered image"  src="images/' + text + '">';
-    }
-
-    //
-    // ─── CUSTOM HTML ────────────────────────────────────────────────────────────────
-    //
-    else if (text.startsWith('<')) { //custom HTML
-        console.log('custom HTML found!!! ');
-        return text;
+        return '<img class="ui massive rounded bordered image fragment"  src="images/' + text + '">';
     }
 
     //
@@ -197,7 +194,7 @@ Template.registerHelper('formatted', function(text) {
         if (result.substring(1, 11) === 'blockquote') {
             return '<div class="ui green very padded segment">' + result + '</div>';
         } else {
-            return '<div class="markdownItem">' + result + '</div>';
+            return '<div class="fragment markdownItem">' + result + '</div>';
         }
     }
 })
