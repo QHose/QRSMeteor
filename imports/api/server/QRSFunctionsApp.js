@@ -524,6 +524,7 @@ function checkStreamStatus(customer, generationUserId) {
 
 export function getApps(name, stream) {
     var path = '/qrs/app/full';
+    console.log('getApps(name, stream ' + name + ' ' + stream + ' via API path: ' + path);
 
     //if a name/stream is provided only search the apps with this name
     if (name) {
@@ -541,7 +542,7 @@ export function getApps(name, stream) {
     try {
         return qrs.get(call.request);
     } catch (error) {
-        console.error('We can not connect to Qlik Sense', errror);
+        console.error('We can not connect to Qlik Sense', error);
     }
 };
 
