@@ -69,12 +69,8 @@ async function initQlikSense() {
         Meteor.settings.broker.customerDataDir = path.join(Meteor.absolutePath, 'customerData');
         console.log('Meteor.settings.broker.customerDataDir was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
     }
-    console.log('------------------------------------');
 
     try {
-        //By checking if a stream exist we try to figure out if this is a fresh or already existing Qlik Sense installation.
-        console.log('see if Qlik sense is configured, by checking if the template stream exists at: ', Meteor.settings.public.TemplateAppStreamName);
-
         if (Meteor.settings.broker.runInitialQlikSenseSetup) {
             console.log('The runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
             if (Meteor.settings.broker.qlikSense.installQlikSense) {
@@ -121,8 +117,8 @@ async function sleep(fn, ...args) {
 
 
 var exec = require('child_process').execFile;
+console.log("Start installation of Qlik Sense via a silent script... please wait 15 minutes to complete... (we use this is a safe assumption that is has finished before we move on). Be aware of screens popping up which request extra info...");
 var installQlikSense = async function() {
-    console.log("Start installation of Qlik Sense via a silent script... please wait 15 minutes to complete... (we use this is a safe assumption that is has finished before we move on). Be aware of screens popping up which request extra info...");
 
     // let ps = new shell({
     //     executionPolicy: 'Bypass',
