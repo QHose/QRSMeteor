@@ -182,21 +182,22 @@ if (window.location.href.indexOf("saasdemo") > -1) {
     window.location = "http://integration.qlik.com" + window.location.pathname;
 }
 
-// Load a authentication check handler, depending on which domain it runs.
-if (window.location.href.indexOf("qlik.com") > -1) {
-    Router.onBeforeAction(mustBeSignedInQlik, { except: [undefined, 'documentation'] });
+//disabled to ensure we only use anonymous users via https://github.com/artwells/meteor-accounts-guest/
+// // Load a authentication check handler, depending on which domain it runs.
+// if (window.location.href.indexOf("qlik.com") > -1) {
+//     Router.onBeforeAction(mustBeSignedInQlik, { except: [undefined, 'documentation'] });
 
-    // Router.onBeforeAction(mustBeSignedInQlik, { only: ['test'] });
-    // Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
-    //     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
-    // Router.plugin('ensureSignedIn', {
-    //     // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
-    //     except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
-    // });
+//     // Router.onBeforeAction(mustBeSignedInQlik, { only: ['test'] });
+//     // Router.onBeforeAction(mustBeSignedIn, { except: [undefined, 'documentation'] });
+//     //     //make sure certain path are for authenticated users only if the demo runs outside of Qlik.com
+//     // Router.plugin('ensureSignedIn', {
+//     //     // only: ['generation', 'users', 'SSO', 'useCaseSelection', 'integration', 'selfService', 'slides', 'presentation']
+//     //     except: [undefined, 'test', 'useCaseSelection', 'documentation', 'atSignIn', 'atSignUp', 'atForgotPassword']
+//     // });
 
-} else { //localhost dev environment
-    Router.onBeforeAction(mustBeSignedInDEV, { except: [undefined, 'documentation'] });
-}
+// } else { //localhost dev environment
+//     Router.onBeforeAction(mustBeSignedInDEV, { except: [undefined, 'documentation'] });
+// }
 
 function mustBeSignedInDEV() {
     var user = {

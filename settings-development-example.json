@@ -71,15 +71,5 @@
     },
     "security": {
         "rulesToDisable": ["Stream", "CreateAppObjectsPublishedApp", "CreateApp", "ExportAppData", "StreamEveryoneAnonymous"]
-    },
-    "sikka": {
-        "captcha": {
-            "siteKey": "",
-            "check": "",
-            "secret": "6dafdsfasdfasdfadsfdsafh"
-        },
-        "rateLimits": {
-            "perIp": 260
-        }
     }
 }
