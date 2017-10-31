@@ -538,7 +538,11 @@ export function getApps(name, stream) {
         request: path
     };
     // REST_Log(call,generationUserId);
-    return qrs.get(call.request);
+    try {
+        return qrs.get(call.request);
+    } catch (error) {
+        console.error('We can not connect to Qlik Sense', errror);
+    }
 };
 
 //
