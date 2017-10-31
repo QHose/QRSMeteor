@@ -160,6 +160,9 @@ export async function getQix() {
             listeners: {
                 'notification:*': (event, data) => {
                     console.log('Engima: event ' + event, 'Engima: data ' + JSON.stringify(data))
+                        // if (authInfo.mustAuthenticate) { //if the user is not authenticated anymore request a new ticket and get a new connection
+                        //     getQix();
+                        // }
                     var call = {};
                     call.action = 'Engine API reponse';
                     call.url = '';
@@ -168,7 +171,15 @@ export async function getQix() {
                     REST_Log(call, Meteor.userId());
                 }
             },
-            handleLog: (message) => console.log('Engima: ' + message),
+            handleLog: (message) => {
+                console.log('Engima handleLog: ' + message);
+                var call = {};
+                call.action = 'Engine API handleLog';
+                call.url = '';
+                call.request = 'Engima.js log: ';
+                call.response = message;
+                REST_Log(call, Meteor.userId());
+            }
         };
         return await enigma.getService('qix', config);
     } catch (error) {

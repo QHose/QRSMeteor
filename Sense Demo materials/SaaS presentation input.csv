@@ -1144,17 +1144,33 @@ or
 ((user.environment.group=""Admin"")) and ( resource.HasPrivilege(""read"") or resource.app.HasPrivilege(""read"") )
 ```",,"","","","","         0","0","PreSales",
 "Security - Concept of integration.qlik.com","Overview of system (security & license) rules","<iframe src=""http://integration.qlik.com/securityRules"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Technical - 1 day",
-"Slide generator - use cases","How do you create slides today?","You get your master slide decks",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How do you create slides today?","You select slides based on your audience?",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How do you create slides today?","You get your slide decks",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How do you create slides today?","You select slides based on your audience",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How do you create slides today?","For each customer you create a new one",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How do you create slides today?","If you get questions you have to search at multiple locations and maybe you have answer it in a follow up meeting...",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","Goals","Inspire what you can do with our engine",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
-"Slide generator - use cases","Goals","Prevent multiple versions of the truth, create 1 ""master slide deck""",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
+"Slide generator - use cases","What do we offer?","Create a presentation on demand",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","Based on your role & skills",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","Your experience (with our products)",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","We present an *associative experience*",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","We guide the user in steps through content
+- static content
+- dynamic content",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","# Dynamic content demonstrates our real power",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","- embed Qlik Sense sheets in a presentations
+- embed other websites",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","# Inspire your creativity",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","- ""so we can create a dynamic newsletter? with real time information from Sense embedded?""",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","- based on the user, his rights, we present a dynamically created content.",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","Goals","Inspire what you can do with our *associative engine*",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
+"Slide generator - use cases","Goals","In the end you want to explain a topic, but...
+- different users have different needs
+- information can be authorized only for certain (internal) users",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","Goals","Provide information that matches your skill level (e.g. prevent an overload for non technical users)",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
 "Slide generator - use cases","Goals","With a centrally hosted ""slide generator"" you always have the
 - *latest version* always available via your browser
 - authorized information only. You will only see the bullets, images, videos on the slide which you are *allowed to see*
-- a version of information that matches your skill level. (e.g. prevent an overload for non technical users)
 - Centrally controlled [version management](http://github.com)",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
+"Slide generator - use cases","Goals","Prevent multiple versions of the truth (with offline old copies)",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
 "Slide generator - use cases","How did we create the slide generator?","We created a website that uses the data of a Qlik Sense app.",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","Because people are logged in to the *slide generator* and selected their expertise we only show data on the slides that matches their skills. (using the row level security in an app)",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","slide generator - welcome popup screenshot.png",,"","","","","         0","0","What is this slide generator?",
@@ -2002,6 +2018,9 @@ volumes:
 - Qlik Sense Server (automatically)",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Setup your blank virtual machine","# Static Ip
 Make sure you give the machine a `static IP`. Otherwise if you reboot you get a new IP and Qlik Sense won't work anymore. (Because a TLS certificate is bound to a domain name)",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Install Meteor","Go to your `project root` and go to the sub folder: `QRSMeteor\.automation\InstallationSoftware`
+- in my case `C:\Users\mbj\Documents\GitHub\QRSMeteor\.automation\InstallationSoftware` ",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install Meteor","Run `InstallMeteor.exe`",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","# Install Github Desktop",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","Install [Github desktop](https://services.github.com/on-demand/github-desktop/install-github-desktop), you can skip the sign up.",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","Go to  [QRSMeteor](https://github.com/QHose/QRSMeteor) and press the ""clone or download""button. Open your new project in github desktop (select yes, always open with desktop)",,"","","","","         0","0","Deep dive",
@@ -2014,16 +2033,21 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 - update your license details
 - make a note of (or change) the port number under which you can reach Qlik Sense via HTTP. Default is `""qlikSensePort"": 81`.",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","# Insert Qlik Sense license",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","qrsmeteor - settings json file examples 2.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","qrsmeteor - license in settings.json.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","# Automatic (silent) installation of Qlik Sense",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","Ensure Qlik Sense and Meteor will be automatically installed by setting `""installQlikSense"": true`",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","qrsmeteor - how do you automatically setup qlik sense.png",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","# Only if you use an existing Qlik Sense server",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","Update the host references, and make sure you use a hostname for which you use a certificate. In other words, you need to export a certificate in the `QMC`, for the hostname under which Qlik Sense will be reachable for Meteor.
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","# This slide is only relevant if you already have an existing Qlik Sense server",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","> Please note that QRSMeteor will set some settings in Qlik based on your `settings.json` file.
+- ports will be changed
+- apps and streams will be created",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Update the host references, and make sure you use a hostname for which you use a certificate. In other words, you need to export a certificate in the `QMC`, for the hostname under which Qlik Sense will be reachable for Meteor.
 - Most of the time QRSMeteor and Sense will run on the same machine. All internal communication from QRSMeteor to Sense uses the `SenseServerInternalLanIP` parameter.",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","qrsMeteor - minimum settings to update when you install on same machine.png",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","You don't have to [update](https://github.com/meteorhacks/sikka) the firewall `sikka` settings, if you don't need a firewall.",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Ensure Qlik Sense and Meteor will be automatically installed by setting `""installQlikSense"": false`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Provide a domain and user for a `root admin` in Qlik Sense in the ` connectToSenseAsUserDirectory` and             `connectToSenseAsUser`  parameters",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","qrsMeteor - minimum settings to update when you install on same machine.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","If you set `""installQlikSense"": true` in your settings file, you need to download Qlik Sense first before we can install it.",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","Download the latest version of [Qlik Sense server](http://eu-b.demo.qlik.com/download/)",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","Save and rename the file to `C:\Qlik_Sense_setup.exe`",,,,,,,,,
