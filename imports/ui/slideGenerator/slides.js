@@ -195,7 +195,7 @@ Template.registerHelper('formatted', function(text) {
         if (result.substring(1, 11) === 'blockquote') {
             return '<div class="ui green very padded segment">' + result + '</div>';
         } else {
-            return '<div class="markdownItem">' + result + '</div>';
+            return result;
         }
     }
 })
