@@ -70,7 +70,6 @@ async function initQlikSense() {
         console.log('Meteor.settings.broker.customerDataDir was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
     }
     console.log('------------------------------------');
-    Meteor.call('updateLocalSenseCopy');
 
     try {
         //By checking if a stream exist we try to figure out if this is a fresh or already existing Qlik Sense installation.
@@ -98,6 +97,9 @@ async function initQlikSense() {
             //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.    
             QSApp.setAppIDs();
         }
+
+        //now qlik sense has been installed, we can try to connect, and load the streams and apps into our mongoDB
+        Meteor.call('updateLocalSenseCopy');
 
     } catch (error) {
         console.error('Main.js, initQlikSense: Failed to run the initialization of Qlik Sense', error);
