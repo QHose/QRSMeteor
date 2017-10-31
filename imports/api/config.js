@@ -79,10 +79,14 @@ if (Meteor.isServer) {
         Meteor.settings.private.certificatesDirectory = 'C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates';
         console.log('Meteor.settings.private.certificatesDirectory was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
     }
-    export const _certs = {
-        ca: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/root.pem'),
-        key: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client_key.pem'),
-        cert: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client.pem'),
+    try {
+        export const _certs = {
+            ca: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/root.pem'),
+            key: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client_key.pem'),
+            cert: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client.pem'),
+        }
+    } catch (error) {
+        console.warn('We can not find the Sense certificates yet in the ' + Meteor.settings.private.certificatesDirectory + '. This can happen if Sense has not yet been installed....');
     }
 
     //if you use windows and this tool runs on the same machine, you can keep the parameters empty
