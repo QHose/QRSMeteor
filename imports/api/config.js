@@ -79,7 +79,7 @@ if (Meteor.isServer) {
         Meteor.settings.private.certificatesDirectory = 'C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates';
         console.log('Meteor.settings.private.certificatesDirectory was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
     }
-    export const _certs = null;
+    export var _certs = null;
     try {
         _certs = {
             ca: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/root.pem'),
