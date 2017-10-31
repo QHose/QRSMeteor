@@ -79,82 +79,95 @@ if (Meteor.isServer) {
         Meteor.settings.private.certificatesDirectory = 'C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates';
         console.log('Meteor.settings.private.certificatesDirectory was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
     }
-    export var _certs = null;
+
     try {
-        _certs = {
+        export const _certs = {
             ca: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/root.pem'),
             key: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client_key.pem'),
             cert: fs.readFileSync(Meteor.settings.private.certificatesDirectory + '/client.pem'),
         }
+
+        //if you use windows and this tool runs on the same machine, you can keep the parameters empty
+        // and we use the user the node service runs under... .
+        var qlikUserDomain = '';
+        var qlikUser = '';
+
+        if (!Meteor.settings.broker.qlikSense.connectToSenseAsUserDirectory) {
+            qlikUserDomain = process.env.USERDOMAIN;
+            qlikUser = process.env.USERNAME;
+        } else {
+            qlikUserDomain = Meteor.settings.broker.qlikSense.connectToSenseAsUserDirectory;
+            qlikUser = Meteor.settings.broker.qlikSense.connectToSenseAsUser
+        }
+
+        export var configCerticates = {
+            rejectUnauthorized: false,
+            hostname: _senseConfig.SenseServerInternalLanIP,
+            headers: {
+                'x-qlik-xrfkey': _senseConfig.xrfkey,
+                'X-Qlik-User': `UserDirectory=${qlikUserDomain};UserId=${qlikUser}`, //`UserDirectory=INTERNAL;UserId=sa_repository` you need to give this user extra roles before this works
+                'Content-Type': 'application/json'
+            },
+            key: _certs.key,
+            cert: _certs.cert,
+            ca: _certs.ca
+        };
+        console.log('configCerticates: we connect to Qlik Sense using these credentials: ', configCerticates);
+
+        //used for engimaJS, the engine API javascript wrapper
+        var _engineConfig = {
+            host: _senseConfig.SenseServerInternalLanIP,
+            isSecure: _senseConfig.isSecure,
+            port: Meteor.settings.private.enginePort,
+            headers: {
+                'X-Qlik-User': `UserDirectory=${qlikUserDomain};UserId=${qlikUser}`,
+            },
+            ca: _certs.ca,
+            key: _certs.key,
+            cert: _certs.cert,
+            passphrase: Meteor.settings.private.passphrase,
+            rejectUnauthorized: false, // Don't reject self-signed certs
+            appname: null,
+            QIXSchema: _QIXSchema
+        };
+
+        export const enigmaServerConfig = {
+            schema: _engineConfig.QIXSchema,
+            // appId: appId,
+            session: {
+                host: _engineConfig.host,
+                port: _engineConfig.port,
+            },
+            Promise: bluebird,
+            createSocket(url) {
+                return new WebSocket(url, {
+                    ca: _certs.ca,
+                    key: _certs.key,
+                    cert: _certs.cert,
+                    headers: {
+                        'X-Qlik-User': `UserDirectory=${qlikUserDomain};UserId=${qlikUser}`,
+                    },
+                });
+            },
+            // handleLog: logRow => console.log(JSON.stringify(logRow)),
+        }
+
+        //for enigma.js
+        export const engineConfig = _engineConfig;
+        //for general (mostly client side) stuff
+
+        // Qlik sense QRS endpoint via header authentication
+        export const qlikHDRServer = 'http://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.port + '/' + _senseConfig.virtualProxy;
+        export const qrsSrv = 'https://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.qrsPort;
+
+        export const qrs = new myQRS();
     } catch (error) {
         console.warn('We can not find the Sense certificates yet in the ' + Meteor.settings.private.certificatesDirectory + '. This can happen if Sense has not yet been installed....');
+    } //END CODE THAT NEEDS CERTIFICATES
+
+    function generateXrfkey() {
+        return Random.hexString(16);
     }
-
-    //if you use windows and this tool runs on the same machine, you can keep the parameters empty
-    // and we use the user the node service runs under... .
-    var qlikUserDomain = '';
-    var qlikUser = '';
-
-    if (!Meteor.settings.broker.qlikSense.connectToSenseAsUserDirectory) {
-        qlikUserDomain = process.env.USERDOMAIN;
-        qlikUser = process.env.USERNAME;
-    } else {
-        qlikUserDomain = Meteor.settings.broker.qlikSense.connectToSenseAsUserDirectory;
-        qlikUser = Meteor.settings.broker.qlikSense.connectToSenseAsUser
-    }
-
-    export var configCerticates = {
-        rejectUnauthorized: false,
-        hostname: _senseConfig.SenseServerInternalLanIP,
-        headers: {
-            'x-qlik-xrfkey': _senseConfig.xrfkey,
-            'X-Qlik-User': `UserDirectory=${qlikUserDomain};UserId=${qlikUser}`, //`UserDirectory=INTERNAL;UserId=sa_repository` you need to give this user extra roles before this works
-            'Content-Type': 'application/json'
-        },
-        key: _certs.key,
-        cert: _certs.cert,
-        ca: _certs.ca
-    };
-    console.log('configCerticates: we connect to Qlik Sense using these credentials: ', configCerticates);
-
-    //used for engimaJS, the engine API javascript wrapper
-    var _engineConfig = {
-        host: _senseConfig.SenseServerInternalLanIP,
-        isSecure: _senseConfig.isSecure,
-        port: Meteor.settings.private.enginePort,
-        headers: {
-            'X-Qlik-User': `UserDirectory=${qlikUserDomain};UserId=${qlikUser}`,
-        },
-        ca: _certs.ca,
-        key: _certs.key,
-        cert: _certs.cert,
-        passphrase: Meteor.settings.private.passphrase,
-        rejectUnauthorized: false, // Don't reject self-signed certs
-        appname: null,
-        QIXSchema: _QIXSchema
-    };
-
-    export const enigmaServerConfig = {
-        schema: _engineConfig.QIXSchema,
-        // appId: appId,
-        session: {
-            host: _engineConfig.host,
-            port: _engineConfig.port,
-        },
-        Promise: bluebird,
-        createSocket(url) {
-            return new WebSocket(url, {
-                ca: _certs.ca,
-                key: _certs.key,
-                cert: _certs.cert,
-                headers: {
-                    'X-Qlik-User': `UserDirectory=${qlikUserDomain};UserId=${qlikUser}`,
-                },
-            });
-        },
-        // handleLog: logRow => console.log(JSON.stringify(logRow)),
-    }
-
 
     export function validateJSON(body) {
         try {
@@ -165,20 +178,6 @@ if (Meteor.isServer) {
             // failed to parse
             return null;
         }
-    }
-
-    //for enigma.js
-    export const engineConfig = _engineConfig;
-    //for general (mostly client side) stuff
-
-    // Qlik sense QRS endpoint via header authentication
-    export const qlikHDRServer = 'http://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.port + '/' + _senseConfig.virtualProxy;
-    export const qrsSrv = 'https://' + _senseConfig.SenseServerInternalLanIP + ':' + _senseConfig.qrsPort;
-
-    export const qrs = new myQRS();
-
-    function generateXrfkey() {
-        return Random.hexString(16);
     }
 
     // //https://www.npmjs.com/package/qrs
