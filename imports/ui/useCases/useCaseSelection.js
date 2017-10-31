@@ -172,7 +172,7 @@ export async function getQix() {
                 }
             },
             handleLog: (message) => {
-                console.log('Engima handleLog: ' + message);
+                console.log('Engima handleLog: ', message);
                 var call = {};
                 call.action = 'Engine API handleLog';
                 call.url = '';
