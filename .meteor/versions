@@ -17,6 +17,7 @@ aldeed:simple-schema@1.5.3
 allow-deny@1.0.9
 amplify@1.0.0
 anti:i18n@0.4.3
+artwells:accounts-guest@0.1.13
 aslagle:reactive-table@0.8.42
 autoupdate@1.3.12
 babel-compiler@6.20.0
@@ -27,11 +28,12 @@ blaze@2.3.2
 blaze-html-templates@1.1.2
 blaze-tools@1.0.10
 boilerplate-generator@1.2.0
+brettle:accounts-login-state@0.0.4
+brettle:accounts-patch-ui@0.1.3
 caching-compiler@1.1.9
 caching-html-compiler@1.1.2
 callback-hook@1.0.10
 check@1.2.5
-chuangbo:cookie@1.1.0
 coffeescript@1.12.7_3
 coffeescript-compiler@1.12.7_3
 cosmos:browserify@0.8.4
@@ -87,9 +89,6 @@ logging@1.1.19
 mdg:validation-error@0.5.1
 meteor@1.7.2
 meteor-base@1.1.0
-meteorhacks:meteorx@1.3.1
-meteorhacks:picker@1.0.3
-meteorhacks:sikka@1.0.1
 meteortoys:toykit@3.0.4
 minifier-css@1.2.16
 minimongo@1.3.3
@@ -101,7 +100,6 @@ momentjs:moment@2.18.1
 mongo@1.2.2
 mongo-dev-server@1.0.1
 mongo-id@1.0.6
-mongo-livedata@1.0.12
 msavin:mongol@2.0.1
 npm-bcrypt@0.9.3
 npm-mongo@2.2.33
