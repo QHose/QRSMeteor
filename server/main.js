@@ -74,9 +74,9 @@ async function initQlikSense() {
     try {
         //By checking if a stream exist we try to figure out if this is a fresh or already existing Qlik Sense installation.
         console.log('see if Qlik sense is configured, by checking if the template stream exists at: ', Meteor.settings.public.TemplateAppStreamName);
-        var QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);
-        if (!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup) {
-            console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
+
+        if (Meteor.settings.broker.runInitialQlikSenseSetup) {
+            console.log('The runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
             if (Meteor.settings.broker.qlikSense.installQlikSense) {
                 installQlikSense();
                 await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                            
