@@ -98,11 +98,10 @@ Template.slideContent.onRendered(function() {
 Template.slide.helpers({
     active(slideNr) {
         var activeSlide = Session.get('activeStepNr');
-        console.log('activeSlide', activeSlide)
+        // console.log('activeSlide', activeSlide)
         var active = slideNr < activeSlide + numberOfActiveSlides && slideNr > activeSlide - numberOfActiveSlides;
-        console.log('active', active)
+        // console.log('active', active)
         return active;
-        // return true;
     }
 });
 
