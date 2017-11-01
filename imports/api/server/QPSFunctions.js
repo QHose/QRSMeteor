@@ -131,7 +131,7 @@ function updateProxy(proxyId, proxyConfig) {
     try {
         check(proxyId, String);
         check(proxyConfig, Object);
-        console.log('proxyConfig', proxyConfig.settings.virtualProxies)
+        // console.log('proxyConfig', proxyConfig.settings.virtualProxies)
 
         var request = qliksrv + '/qrs/proxyservice/' + proxyId;
         response = HTTP.call('PUT', request, {

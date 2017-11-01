@@ -98,11 +98,10 @@ Template.slideContent.onRendered(function() {
 Template.slide.helpers({
     active(slideNr) {
         var activeSlide = Session.get('activeStepNr');
-        console.log('activeSlide', activeSlide)
+        // console.log('activeSlide', activeSlide)
         var active = slideNr < activeSlide + numberOfActiveSlides && slideNr > activeSlide - numberOfActiveSlides;
-        console.log('active', active)
+        // console.log('active', active)
         return active;
-        // return true;
     }
 });
 
@@ -131,12 +130,15 @@ Template.registerHelper('itemsOfLevel', function(level, slide) {
     }
 })
 
+
 Template.registerHelper('formatted', function(text) {
+    // console.log(text, text.startsWith('!comment'));
+    var commentMarker = '!comment';
     //
     // ─── YOUTUBE ────────────────────────────────────────────────────────────────────
     //
     if (youtube_parser(text)) { //youtube video url
-        // console.log('found an youtube link so embed with the formatting of semantic ui', text)
+        console.log('found an youtube link so embed with the formatting of semantic ui', text)
         var videoId = youtube_parser(text);
         var html = '<div class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div></div>'
             // console.log('generated video link: ', html);
@@ -152,16 +154,13 @@ Template.registerHelper('formatted', function(text) {
     }
 
     //
-    // ─── CUSTOM HTML ────────────────────────────────────────────────────────────────
-    //
-    else if (text.startsWith('<')) { //custom HTML
-        return text;
-    }
-
-    //
     // ─── COMMENT ────────────────────────────────────────────────────────────────────
     //
-    else if (text.startsWith('!comment ')) { //vertical slide with comments
+    else if (text.startsWith(commentMarker)) { //vertical slide with comments
+        console.log('------------------------------------');
+        console.log('comment found!!! ', text);
+        console.log('------------------------------------');
+        var textAfterCommentMarker = text.split(commentMarker).pop();
         var messagebox = `
         <section>
             <div class="ui icon message">
@@ -170,13 +169,11 @@ Template.registerHelper('formatted', function(text) {
             <div class="header">
                 Let's explain what we mean here...
             </div>
-                 ` + converter.makeHtml(text) + `
+                 ` + converter.makeHtml(textAfterCommentMarker) + `
             </div>
         </div>
-        </section>`;
-        console.log('------------------------------------');
-        console.log('comment found!!! ', messagebox);
-        console.log('------------------------------------');
+        </section>`; //select all text after the !comment... and print it in a nice text box
+
         return messagebox;
     }
 
@@ -188,6 +185,14 @@ Template.registerHelper('formatted', function(text) {
     }
 
     //
+    // ─── CUSTOM HTML ────────────────────────────────────────────────────────────────
+    //
+    else if (text.startsWith('<')) { //custom HTML
+        console.log('custom HTML found!!! ');
+        return text;
+    }
+
+    //
     // ─── TEXT TO BE CONVERTED TO VIA MARKDOWN ───────────────────────────────────────
     //        
     else { //text, convert the text (which can include markdown syntax) to valid HTML
@@ -195,11 +200,10 @@ Template.registerHelper('formatted', function(text) {
         if (result.substring(1, 11) === 'blockquote') {
             return '<div class="ui green very padded segment">' + result + '</div>';
         } else {
-            return '<div class="markdownItem">' + result + '</div>';
+            return result;
         }
     }
 })
-
 
 
 

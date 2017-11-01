@@ -1144,17 +1144,33 @@ or
 ((user.environment.group=""Admin"")) and ( resource.HasPrivilege(""read"") or resource.app.HasPrivilege(""read"") )
 ```",,"","","","","         0","0","PreSales",
 "Security - Concept of integration.qlik.com","Overview of system (security & license) rules","<iframe src=""http://integration.qlik.com/securityRules"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Technical - 1 day",
-"Slide generator - use cases","How do you create slides today?","You get your master slide decks",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","How do you create slides today?","You select slides based on your audience?",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How do you create slides today?","You get your slide decks",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","How do you create slides today?","You select slides based on your audience",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How do you create slides today?","For each customer you create a new one",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How do you create slides today?","If you get questions you have to search at multiple locations and maybe you have answer it in a follow up meeting...",,"","","","","         0","0","What is this slide generator?",
-"Slide generator - use cases","Goals","Inspire what you can do with our engine",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
-"Slide generator - use cases","Goals","Prevent multiple versions of the truth, create 1 ""master slide deck""",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
+"Slide generator - use cases","What do we offer?","Create a presentation on demand",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","Based on your role & skills",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","Your experience (with our products)",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","We present an *associative experience*",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","We guide the user in steps through content
+- static content
+- dynamic content",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","# Dynamic content demonstrates our real power",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","- embed Qlik Sense sheets in a presentations
+- embed other websites",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","# Inspire your creativity",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","- ""so we can create a dynamic newsletter? with real time information from Sense embedded?""",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","What do we offer?","- based on the user, his rights, we present a dynamically created content.",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","Goals","Inspire what you can do with our *associative engine*",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
+"Slide generator - use cases","Goals","In the end you want to explain a topic, but...
+- different users have different needs
+- information can be authorized only for certain (internal) users",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - use cases","Goals","Provide information that matches your skill level (e.g. prevent an overload for non technical users)",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
 "Slide generator - use cases","Goals","With a centrally hosted ""slide generator"" you always have the
 - *latest version* always available via your browser
 - authorized information only. You will only see the bullets, images, videos on the slide which you are *allowed to see*
-- a version of information that matches your skill level. (e.g. prevent an overload for non technical users)
 - Centrally controlled [version management](http://github.com)",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
+"Slide generator - use cases","Goals","Prevent multiple versions of the truth (with offline old copies)",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
 "Slide generator - use cases","How did we create the slide generator?","We created a website that uses the data of a Qlik Sense app.",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","Because people are logged in to the *slide generator* and selected their expertise we only show data on the slides that matches their skills. (using the row level security in an app)",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - use cases","How did we create the slide generator?","slide generator - welcome popup screenshot.png",,"","","","","         0","0","What is this slide generator?",
@@ -1191,6 +1207,8 @@ or
 - We can arrange workshops in a hierarchy in such a way that we only have to assign ""a bullet/video/image"" to one child workshop, and his parents automatically get access to. (simplifies maintenance). E.g. all slides that are assigned to the 1 hour workshop also become available in the 2 hour and 1 day workshop. 
 - We can use row level security (section access) to limit what a user can see",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - how to create content in distributed teams?","What is the concept of the data to insert?","slide generator - workshop hierarchy.png",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - how to create content in distributed teams?","What is the concept of the data to insert?","## Example of hierarchy load in Qlik Sense",,"","","","","         0","0","What is this slide generator?",
+"Slide generator - how to create content in distributed teams?","What is the concept of the data to insert?","slide generator - workshop hierarchy 2.png",,"","","","","         0","0","What is this slide generator?",
 "Slide generator - how to create content in distributed teams?","How to create a presentation?","The slide generator software looks at each row and detects if it needs to create a
 - bullet with text
 - image
@@ -1820,56 +1838,56 @@ function appChangeListener() {
 }
 ```",,"","","","","         0","0","What is this slide generator?",
 "Integration.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","[Source code](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L271)",,"","","","","         0","0","What is this slide generator?",
-"Integration.qlik.com docker environment","Architecture introduction","We try to simulate a real production environment for a SaaS provider",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture introduction","We use multiple servers for different purposes",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture introduction","summary_integrated_architecture.png",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture introduction","We try to simulate a real production environment for a SaaS provider",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Architecture introduction","We use multiple servers for different purposes",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Architecture introduction","summary_integrated_architecture.png",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","Architecture introduction","Key components so far
 - end users who want embedded analytics
 - your platform: a web server
-- a Qlik Sense server",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture introduction","We created a container per *service* (except for Qlik Sense which runs on a windows VM)",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture detailed: key components and goals","saas demo architecture introduction of components.png",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture detailed: key components and goals","You have multiple customers, each customer can have users with authorizations (groups)",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture detailed: key components and goals","A user (with access rights maintained in the SaaS platform) wants to open the webpage with Qlik Sense embedded",,,,,,,,,
+- a Qlik Sense server",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Architecture introduction","We created a container per *service* (except for Qlik Sense which runs on a windows VM)",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Architecture detailed: key components and goals","saas demo architecture introduction of components.png",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Architecture detailed: key components and goals","You have multiple customers, each customer can have users with authorizations (groups)",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Architecture detailed: key components and goals","A user (with access rights maintained in the SaaS platform) wants to open the webpage with Qlik Sense embedded",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","Architecture detailed: key components and goals","The user credentials are stored in a MongoDB in your SaaS platform
 - userID
-- group memberships for functionality and row level security (data value restrictions: e.g. only specific countries)",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture detailed: key components and goals","The dashboard should only show content belonging to the company of the user.",,,,,,,,,
+- group memberships for functionality and row level security (data value restrictions: e.g. only specific countries)",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Architecture detailed: key components and goals","The dashboard should only show content belonging to the company of the user.",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","Architecture detailed: key components and goals","Performance & security: 
 - we want to have (physical) different environments for each customer. 
-- split between front end (users) and back end (databases, API tools)",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture detailed: app provisioning","architecture - OEM  SaaS scenario simple.png",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture detailed: app provisioning","Automation: we want to work with (starting) templates and distribute this to all customers and their users.",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture detailed: app provisioning","## Goals of the API Broker ([QRSMeteor project](https://hub.docker.com/r/qhose/qrsmeteor/))",,,,,,,,,
+- split between front end (users) and back end (databases, API tools)",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Architecture detailed: app provisioning","architecture - OEM  SaaS scenario simple.png",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Architecture detailed: app provisioning","Automation: we want to work with (starting) templates and distribute this to all customers and their users.",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Architecture detailed: app provisioning","## Goals of the API Broker ([QRSMeteor project](https://hub.docker.com/r/qhose/qrsmeteor/))",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","Architecture detailed: app provisioning","### app provisioning",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture detailed: app provisioning","Creates apps with customer specific data for each customer based on a template",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: app provisioning","Creates apps with customer specific data for each customer based on a template",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","Architecture detailed: app provisioning","### deployment",,,,,,,,,
-"Integration.qlik.com docker environment","Architecture detailed: app provisioning","Using the APIs we can install Qlik Sense on a server, and uload apps, set security, license etc. ",,,,,,,,,
-"Integration.qlik.com docker environment","Demo architecture setup","integrated Architecture saasdemo setup.png",,,,,,,,,
+"Integration.qlik.com docker environment","Architecture detailed: app provisioning","Using the APIs we can install Qlik Sense on a server, and uload apps, set security, license etc. ",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Demo architecture setup","integrated Architecture saasdemo setup.png",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","Demo architecture setup","# we created 3 servers",,,,,,,,,
-"Integration.qlik.com docker environment","Demo architecture setup","- [QRSMeteor](https://github.com/QHose/QRSMeteor): app provisioning and automatic installation of Qlik Sense (docker image)",,,,,,,,,
-"Integration.qlik.com docker environment","Demo architecture setup","- [senseWebIntegration](https://github.com/QHose/senseWebIntegration) simulates the SaaS platform to which an end user connects (the website) and which embeds Qlik Sense charts. (docker image)",,,,,,,,,
+"Integration.qlik.com docker environment","Demo architecture setup","- [QRSMeteor](https://github.com/QHose/QRSMeteor): app provisioning and automatic installation of Qlik Sense (docker image)",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Demo architecture setup","- [senseWebIntegration](https://github.com/QHose/senseWebIntegration) simulates the SaaS platform to which an end user connects (the website) and which embeds Qlik Sense charts. (docker image)",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","Demo architecture setup","- Qlik Sense",,,,,,,,,
-"Integration.qlik.com docker environment","Build a docker image from a Meteor project","<div style=""width: 960px; height: 720px; margin: 10px; position: relative;""><iframe allowfullscreen frameborder=""0"" style=""width:960px; height:720px"" src=""https://www.lucidchart.com/documents/embeddedchart/feaf7d0e-cd67-44f5-ad35-ea849ff6d274"" id=""ZyhxQWbU77-i""></iframe></div>",,,,,,,,,
+"Integration.qlik.com docker environment","Build a docker image from a Meteor project","<div style=""width: 960px; height: 720px; margin: 10px; position: relative;""><iframe allowfullscreen frameborder=""0"" style=""width:960px; height:720px"" src=""https://www.lucidchart.com/documents/embeddedchart/feaf7d0e-cd67-44f5-ad35-ea849ff6d274"" id=""ZyhxQWbU77-i""></iframe></div>",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","How to run the demo with docker?","# installation of software",,,,,,,,,
-"Integration.qlik.com docker environment","How to run the demo with docker?","install docker for windows",,,,,,,,,
-"Integration.qlik.com docker environment","How to run the demo with docker?","install a machine with Qlik Sense server",,,,,,,,,
-"Integration.qlik.com docker environment","How to run the demo with docker?","MeteorQRS will automatically setup Qlik Sense. if you make sure you set `""runInitialQlikSenseSetup"": true` in your settings.json file in your `dockerConfigMountFolder` ",,,,,,,,,
-"Integration.qlik.com docker environment","How to run the demo with docker?","qrsmeteor - configure qlik sense setting.png",,,,,,,,,
-"Integration.qlik.com docker environment","How to run the demo with docker?","# Set some configuration between Sense and MeteorQRS",,,,,,,,,
-"Integration.qlik.com docker environment","How to run the demo with docker?","Export the Sense certificates (QMC- export certificates), supply the DNS/computer name of the Qlik Sense server. Go to the exported certificates folder and copy them to your `dockerConfigMountFolder` in my case `C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\dockerConfigMountFolder`",,,,,,,,,
+"Integration.qlik.com docker environment","How to run the demo with docker?","install docker for windows",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","How to run the demo with docker?","install a machine with Qlik Sense server",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","How to run the demo with docker?","MeteorQRS will automatically setup Qlik Sense. if you make sure you set `""runInitialQlikSenseSetup"": true` in your settings.json file in your `dockerConfigMountFolder` ",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","How to run the demo with docker?","qrsmeteor - configure qlik sense setting.png",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","How to run the demo with docker?","# Set some configuration between Sense and MeteorQRS",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","How to run the demo with docker?","Export the Sense certificates (QMC- export certificates), supply the DNS/computer name of the Qlik Sense server. Go to the exported certificates folder and copy them to your `dockerConfigMountFolder` in my case `C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor\dockerConfigMountFolder`",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","How to run the demo with docker?","Also in this folder adjust the settings.json file
 - update the qlikSenseHost and SenseServerInternalLanIP (how can the QRSMeteor node server reach Qlik Sense?)
-- Supply the folder where the certificates are contained. This should be `""certificatesDirectory"": ""/meteorQRS/config"",` ",,,,,,,,,
-"Integration.qlik.com docker environment","How to run the demo with docker?","# Prepare runtime settings for docker",,,,,,,,,
-"Integration.qlik.com docker environment","How to run the demo with docker?","All servers will be started via one text file a `Docker Compose file`. ",,,,,,,,,
+- Supply the folder where the certificates are contained. This should be `""certificatesDirectory"": ""/meteorQRS/config"",` ",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","How to run the demo with docker?","# Prepare runtime settings for docker",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","How to run the demo with docker?","All servers will be started via one text file a `Docker Compose file`. ",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","How to run the demo with docker?","Update the following
 - VIRTUAL_HOST (2 times: for QRS and Web)
 - the volume mappings.
-- Make sure you use the tag for the latest versions of the docker images for [QRSMeteor](https://hub.docker.com/r/qhose/qrsmeteor/tags/)  and [senseWebintegration](https://hub.docker.com/r/qhose/sensewebintegration/tags/).",,,,,,,,,
-"Integration.qlik.com docker environment","How to run the demo with docker?","docker - get the latest tag.png",,,,,,,,,
-"Integration.qlik.com docker environment","How to run the demo with docker?","Now update your `docker-compose.yml` file with the latest tags",,,,,,,,,
-"Integration.qlik.com docker environment","How to run the demo with docker?","docker - compose tag version.png",,,,,,,,,
+- Make sure you use the tag for the latest versions of the docker images for [QRSMeteor](https://hub.docker.com/r/qhose/qrsmeteor/tags/)  and [senseWebintegration](https://hub.docker.com/r/qhose/sensewebintegration/tags/).",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","How to run the demo with docker?","docker - get the latest tag.png",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","How to run the demo with docker?","Now update your `docker-compose.yml` file with the latest tags",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","How to run the demo with docker?","docker - compose tag version.png",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","How to run the demo with docker?","```Dockerfile
 version: ""2""
 services: 
@@ -1924,16 +1942,16 @@ services:
         #command: sleep 9000
 networks:
     default:
-```",,,,,,,,,
+```",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","Key docker-compose elements","# HAProxy",,,,,,,,,
-"Integration.qlik.com docker environment","Key docker-compose elements","We run multiple applications on different ports, but we would like to make our app available on `port 80`. Therefore we make use of a loadbalancer `HAPROXY`.",,,,,,,,,
-"Integration.qlik.com docker environment","Key docker-compose elements","The key is the `VIRTUAL_HOST`, in our case we use `localqrs` for QRSMeteor, and `localweb` for sensewebintegration (the other nodeJS project)",,,,,,,,,
+"Integration.qlik.com docker environment","Key docker-compose elements","We run multiple applications on different ports, but we would like to make our app available on `port 80`. Therefore we make use of a loadbalancer `HAPROXY`.",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Key docker-compose elements","The key is the `VIRTUAL_HOST`, in our case we use `localqrs` for QRSMeteor, and `localweb` for sensewebintegration (the other nodeJS project)",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","QRSMeteor settings.json file","# settings.json",,,,,,,,,
 "Integration.qlik.com docker environment","QRSMeteor settings.json file","## hostnames",,,,,,,,,
 "Integration.qlik.com docker environment","QRSMeteor settings.json file","Make sure you update the hostnames of
 - the senseWebIntegration server (normally the same host and port as QRSMeteor)
-- the Qlik Sense server and port",,,,,,,,,
-"Integration.qlik.com docker environment","QRSMeteor settings.json file","qrsmeteor - settings json file examples.png",,,,,,,,,
+- the Qlik Sense server and port",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","qrsmeteor - settings json file examples.png",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","QRSMeteor settings.json file","## Qlik Sense user account",,,,,,,,,
 "Integration.qlik.com docker environment","QRSMeteor settings.json file","Your node app connects to Qlik Sense as a certain user via the  following parameters
 ```JSON
@@ -1941,22 +1959,22 @@ networks:
             ""installQlikSense"": false,
             ""connectToSenseAsUserDirectory"": ""QLIKDEMOSAAS"",
             ""connectToSenseAsUser"": ""Qlik"",`
-```",,,,,,,,,
+```",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","QRSMeteor settings.json file","Make sure this user 
 - exists and 
-- has the `rootadmin` role in Qlik Sense.",,,,,,,,,
+- has the `rootadmin` role in Qlik Sense.",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","QRSMeteor settings.json file","## Qlik Sense certificates",,,,,,,,,
-"Integration.qlik.com docker environment","QRSMeteor settings.json file","After you [exported the certificates](http://help.qlik.com/en-US/sense/September2017/Subsystems/ManagementConsole/Content/export-certificates.htm) for the correct hostname under which Qlik Sense is reachable. You need to put them in the folder you mount into the container. in my case `C:\Users\mbj\Documents\GitHub\QRSMeteor\dockerConfigMountFolder` which in the docker-compose file is mapped into the container: ",,,,,,,,,
-"Integration.qlik.com docker environment","QRSMeteor settings.json file","qrsmeteor - volume mount example.png",,,,,,,,,
-"Integration.qlik.com docker environment","QRSMeteor settings.json file","""certificatesDirectory"": ""/meteorQRS/config"",",,,,,,,,,
-"Integration.qlik.com docker environment","QRSMeteor settings.json file","> make sure you understand that the node server is running on the docker container. So the settings also point to directories running inside the container. (Which in the end may point to a docker volume, which maps to a folder on your host).",,,,,,,,,
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","After you [exported the certificates](http://help.qlik.com/en-US/sense/September2017/Subsystems/ManagementConsole/Content/export-certificates.htm) for the correct hostname under which Qlik Sense is reachable. You need to put them in the folder you mount into the container. in my case `C:\Users\mbj\Documents\GitHub\QRSMeteor\dockerConfigMountFolder` which in the docker-compose file is mapped into the container: ",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","qrsmeteor - volume mount example.png",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","""certificatesDirectory"": ""/meteorQRS/config"",",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","QRSMeteor settings.json file","> make sure you understand that the node server is running on the docker container. So the settings also point to directories running inside the container. (Which in the end may point to a docker volume, which maps to a folder on your host).",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","QRSMeteor: Specific settings for running on docker","# docker compose file",,,,,,,,,
 "Integration.qlik.com docker environment","QRSMeteor: Specific settings for running on docker","Make sure the left part (before the : ) points to your folder where you put the settings and the Qlik Sense certificates.
 ```
 volumes:
          - .:/meteorQRS/config
-```",,,,,,,,,
-"Integration.qlik.com docker environment","QRSMeteor: Specific settings for running on docker","> Via the `.` we specify the current directory on our docker deamon host (the machine on which you run your `docker compose` commands.",,,,,,,,,
+```",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","QRSMeteor: Specific settings for running on docker","> Via the `.` we specify the current directory on our docker deamon host (the machine on which you run your `docker compose` commands.",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","# Settings.json",,,,,,,,,
 "Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","Make sure you update at least the settings below:
 ```
@@ -1971,66 +1989,94 @@ volumes:
         ""multipleDivAppGuid"": ""9f847611-167c-4fa1-9b13-6efa5bec90a3""
     }
 }
-```",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","# docker compose file (inside QRSMeteor project root)",,,,,,,,,
+```",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","# docker compose file (inside QRSMeteor project root)",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","in `service: web`Make sure the left part (before the : ) points to your folder where you put the settings.json file for `senseWebIntegration`
 ```dockerfile
 volumes:
          - /opt/docker/web:/sensewebintegration/config
-```",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","web integration - docker-compose.png",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","Next you need to tell the container on which `domain name` it is reachable for the users",,,,,,,,,
-"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","web integration docker compose domain names.png",,,,,,,,,
-"Integration.qlik.com docker environment","Run docker-compose","run `docker-compose up` in your project directory, in my case `C:\Users\mbj\Documents\GitHub\QRSMeteor`, because in that directory my `docker-compose` file is located which contains all instructions for the services to run. ",,,,,,,,,
-"Integration.qlik.com docker environment","Clean old images and containers","Ater playing around with Docker your drive may get full, run the commands below...",,,,,,,,,
+```",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","web integration - docker-compose.png",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","Next you need to tell the container on which `domain name` it is reachable for the users",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Specific settings for running SenseWebintegration on docker","web integration docker compose domain names.png",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Run docker-compose","run `docker-compose up` in your project directory, in my case `C:\Users\mbj\Documents\GitHub\QRSMeteor`, because in that directory my `docker-compose` file is located which contains all instructions for the services to run. ",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com docker environment","Clean old images and containers","Ater playing around with Docker your drive may get full, run the commands below...",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com docker environment","Clean old images and containers","docker ps -a",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","$ docker images -a",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","$ docker container prune",,,,,,,,,
 "Integration.qlik.com docker environment","Clean old images and containers","$ docker image prune",,,,,,,,,
-"Integration.qlik.com docker environment","SaaS software design patterns","[https://12factor.net/](https://12factor.net/)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Setup your blank virtual machine","For example get a blank windows 2012/2016 server on Amazon or Azure.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Setup your blank virtual machine","Make sure you login as an admin user, member of  group `Administrators`.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Setup your blank virtual machine","Make sure you open ports on your firewall
+"Integration.qlik.com docker environment","SaaS software design patterns","[https://12factor.net/](https://12factor.net/)",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Setup your virtual machine","Make sure you really have a blank machine, without any other services running.",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Setup your virtual machine","For example get a blank windows 2012/2016 server on Amazon or Azure.",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Setup your virtual machine","Make sure you login as an admin user, member of  group `Administrators`.
+- make a note of the administrator domain and password. You will need this for the silent script to install Sense and as the user which MeteorQRS uses to connect to Sense. (this user will become the rootAdmin)
+- you can also check the username by typing in `whoami` in a command window. ",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Setup your virtual machine","Make sure you open ports on your firewall
 - 80 (MeteorQRS)
 - 81 (Qlik Sense HTTP)
-- 443 (Qlik Sense HTTPS)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Setup your blank virtual machine","Next we will install the following software
+- 443 (Qlik Sense HTTPS)",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Setup your virtual machine","Next we will install the following software
 - Meteor (contains NodeJS and MongoDB)
-- Github desktop (this will the latest version of our demo project)
-- Qlik Sense Server (automatically)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Setup your blank virtual machine","# Static Ip
-Make sure you give the machine a `static IP`. Otherwise if you reboot you get a new IP and Qlik Sense won't work anymore. (Because a TLS certificate is bound to a domain name)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","# Install Github Desktop",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","The installer will start the installer of [Github desktop](https://services.github.com/on-demand/github-desktop/install-github-desktop), you can skip the sign up.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","Go to  [QRSMeteor](https://github.com/QHose/QRSMeteor) and press the ""clone or download""button. Open your new project in github desktop (select yes, always open with desktop)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","github - open in desktop.png",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","Now your local github desktop program should open and the files from the server have been copied to your local c drive. Normally in your github folder in your ""my documents"".  In my case `C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor`. We will call this the `project root`.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Install github, sync, and get QRSMeteor","github - update your local copy from the server.png",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","Go to your `project root` and make a copy of the file `settings-development-example.json` to `settings.json`. (my root is: C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","Edit your new `settings.json` file, make sure you
+- Github desktop (this will the latest version of our integration.qlik.com demo projects)
+- Qlik Sense Server (automatically)",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Setup your virtual machine","# Static Ip
+Make sure you give the machine a `static IP`. Otherwise if you reboot you get a new IP and Qlik Sense won't work anymore. (Because a TLS certificate is bound to a domain name. In amazon you can do this via an `elastic ip`.)",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Install software","Download [step 1](http://qrs.integration.qlik.com/public/docs/install software step 1.bat), next execute the file (double click)",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install software","Wait till finished (screen disappears)....",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install software","Download [step 2](http://qrs.integration.qlik.com/public/docs/install software step 2 - clone projects.bat), next execute the file (double click)",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","Go to your `project root` and make a copy of the file `settings-development-example.json` to `settings-development.json`. 
+- (my root is: `C:\GitHub\QRSMeteor`)",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","Edit your new `settings-development.json` file, make sure you
 - update your license details
-- make a note of (or change) the port number under which you can reach Qlik Sense via HTTP. Default is `""qlikSensePort"": 81`.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","# Insert Qlik Sense license",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","qrsmeteor - settings json file examples 2.png",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","# Automatic (silent) installation of Qlik Sense",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","Ensure Qlik Sense and Meteor will be automatically installed by setting `""installQlikSense"": true`",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","qrsmeteor - how do you automatically setup qlik sense.png",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","# Only if you use an existing Qlik Sense server",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","Update the host references, and make sure you use a hostname for which you use a certificate. In other words, you need to export a certificate in the `QMC`, for the hostname under which Qlik Sense will be reachable for Meteor.
-- Most of the time QRSMeteor and Sense will run on the same machine. All internal communication from QRSMeteor to Sense uses the `SenseServerInternalLanIP` parameter.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","qrsMeteor - minimum settings to update when you install on same machine.png",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server","You don't have to [update](https://github.com/meteorhacks/sikka) the firewall `sikka` settings, if you don't need a firewall.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","If you set `""installQlikSense"": true` in your settings file, you need to download Qlik Sense first before we can install it.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","Download the latest version of [Qlik Sense server](http://eu-b.demo.qlik.com/download/)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","Save and rename the file to `C:\Qlik_Sense_setup.exe`",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Load all modules for Meteor (Node) project","Open the `project root` in your explorer. 
-- In my case `C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor`",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Load all modules for Meteor (Node) project","Click on `install modules.bat`",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Load all modules for Meteor (Node) project","qrsmeteor - install node npm modules.png",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Load all modules for Meteor (Node) project","This will install all software that QRSMeteor needs (our demo server which is based on Meteor which runs on NodeJS)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Try to startup your server","Run `QRS start.bat` in your `project root` as `administrator`",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - example of startup bat.png",,,,,,,,,
+- make a note of (or change) the port number under which you can reach Qlik Sense via HTTP. Default is `""qlikSensePort"": 81`.",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","# Insert Qlik Sense license",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","qrsmeteor - license in settings.json.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","# Automatic (silent) installation of Qlik Sense",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","Ensure the Qlik Sense license will be set by setting `""installQlikSense"": true`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","qrsmeteor - how do you automatically setup qlik sense.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","If you set `""installQlikSense"": true` in your settings file, you need to download Qlik Sense first before we can install it.",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","## download Qlik Sense",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","Download the latest version of [Qlik Sense server](http://eu-b.demo.qlik.com/download/)",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","Save and rename the file to `C:\Qlik_Sense_setup.exe`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","## update silent installation powershell",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","Make a copy of and rename the following files
+- spc-example.cfg to spc.cfg
+- startSilentInstall-example.ps1 to startSilentInstall.ps1",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","Update the username and password used in the `startSilentInstall.ps1` script. On a amazon VM I just use the administrator account for a simple demo. `c:\GitHub\QRSMeteor\.automation\InstallationSoftware\startSilentInstall.ps1`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","qrsmeteor - update the silent script.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","## change the silent installation config file",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","- update the hostnames",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","qrsmeteor - automatic installation and setup of qlik sense spc.cfg.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","# This slide is only relevant if you already have an existing Qlik Sense server",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","> Please note that QRSMeteor will set some settings in Qlik based on your `settings-development.json` file.
+- ports will be changed
+- apps and streams will be created",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Update the host references, and make sure you use a hostname for which you use a certificate. In other words, you need to export a certificate in the `QMC`, for the hostname under which Qlik Sense will be reachable for Meteor.
+- Most of the time QRSMeteor and Sense will run on the same machine. All internal communication from QRSMeteor to Sense uses the `SenseServerInternalLanIP` parameter.",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Ensure Qlik Sense and Meteor will be automatically installed by setting `""installQlikSense"": false`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Provide a domain and user for a `root admin` in Qlik Sense in the ` connectToSenseAsUserDirectory` and             `connectToSenseAsUser`  parameters",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","qrsMeteor - minimum settings to update when you install on same machine.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Try to startup your server","Run `QRS start.bat` in your `project root` as `administrator`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - example of startup bat.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Try to startup your server","The first time, QRSMeteor will configure Qlik Sense:
+- Insert license
+- Setup user access rules
+- Setup proxy
+- Create virtual proxies
+- Upload template apps and extensions
+- Create default streams
+- Setup security rules",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - running in progress initial setup of qlik sense.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","If everything went succesful you will see this message",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - make sure you see the app ids after startup.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Try to startup your server","now you can start your browser and go to `localhost:3000`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Try to startup your server","Note: make sure you check error messages in the logs (on the screen). For example, if you QRSMeteor can't connect to Sense you will get a timeout on the last API call: `GET /APPS/FULL`
+- wrong certificates
+- Sense is down, firewall blocks access
+- wrong hostnames",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","You can also check the manual SaaSdemo installation [manual](http://integration.qlik.com/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.docx)",,,,,,,,,
 "Qlik Sense API introduction","Overview","iframe /API_embedded",,"","","","","         0","0","Integration summary, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Authentication: How can you ensure that the user will be automatically logged in?",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",

@@ -69,18 +69,13 @@ async function initQlikSense() {
         Meteor.settings.broker.customerDataDir = path.join(Meteor.absolutePath, 'customerData');
         console.log('Meteor.settings.broker.customerDataDir was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
     }
-    console.log('------------------------------------');
-    Meteor.call('updateLocalSenseCopy');
 
     try {
-        //By checking if a stream exist we try to figure out if this is a fresh or already existing Qlik Sense installation.
-        console.log('see if Qlik sense is configured, by checking if the template stream exists at: ', Meteor.settings.public.TemplateAppStreamName);
-        var QlikConfigured = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName);
-        if (!QlikConfigured || Meteor.settings.broker.runInitialQlikSenseSetup) {
-            console.log('Template stream does not yet exist or the runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
+        if (Meteor.settings.broker.runInitialQlikSenseSetup) {
+            console.log('The runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
             if (Meteor.settings.broker.qlikSense.installQlikSense) {
-                installQlikSense();
-                await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                            
+                // await installQlikSense();
+                // await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                            
                 QSLic.insertLicense();
             }
             QSLic.insertUserAccessRule();
@@ -98,6 +93,9 @@ async function initQlikSense() {
             //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.    
             QSApp.setAppIDs();
         }
+
+        //now qlik sense has been installed, we can try to connect, and load the streams and apps into our mongoDB
+        Meteor.call('updateLocalSenseCopy');
 
     } catch (error) {
         console.error('Main.js, initQlikSense: Failed to run the initialization of Qlik Sense', error);
@@ -119,8 +117,8 @@ async function sleep(fn, ...args) {
 
 
 var exec = require('child_process').execFile;
-var installQlikSense = function() {
-    console.log("Start installation of Qlik Sense via a silent script... please wait 15 minutes to complete... (we use this is a safe assumption that is has finished before we move on). Be aware of screens popping up which request extra info...");
+console.log("Start installation of Qlik Sense via a silent script... please wait 15 minutes to complete... (we use this is a safe assumption that is has finished before we move on). Be aware of screens popping up which request extra info...");
+var installQlikSense = async function() {
 
     // let ps = new shell({
     //     executionPolicy: 'Bypass',
@@ -144,12 +142,17 @@ var installQlikSense = function() {
 
     var executable = 'startSilentInstall.ps1';
     var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
-    exec(installer, function(err, data) {
-        if (err) {} else {
+    await new Promise(function(resolve, reject) {
+        exec(installer, function(err, data) {
+            if (err) {
+                return reject(err);
+            }
             console.log('installation of Qlik Sense success, reponse from the Qlik Sense installer: ' + data.toString());
-        }
+            resolve(data);
+        });
     });
 }
+
 
 
 //

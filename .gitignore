@@ -1,7 +1,6 @@
 settings-development.json
 settings-production.json
 .build/
-.build\
 *.cert
 *.pem
 node_modules/
@@ -11,11 +10,11 @@ customerData/
 public/docs/~$ik Sense SaaS demo tool setup instructions.docx
 *.bak
 
-automation/virtualProxyServiceConfiguration.json
-automation/virtualProxyServiceConfiguration.json
-automation/virtualProxyServiceConfiguration.json
+.automation/virtualProxyServiceConfiguration.json
 .automation/proxy/export/virtualProxyServiceConfiguration.json
 .automation/securityrules/export/ExtractedSystemRules.json
 .automation/proxy/export/virtualProxyServiceConfiguration.json
 .automation/InstallationSoftware/Qlik_Sense_setup.exe
 QRS start.bat
+.automation/InstallationSoftware/spc.cfg
+.automation/InstallationSoftware/startSilentInstall.ps1

@@ -68,6 +68,7 @@ export function deleteStream(guid, generationUserId) {
 export function getStreamByName(name) {
     try {
         var request = qrsSrv + "/qrs/stream/full?filter=Name eq '" + name + "'";
+        console.log('getStreamByName request', request)
         var response = HTTP.get(request, {
             params: { xrfkey: senseConfig.xrfkey },
             npmRequestOptions: configCerticates,

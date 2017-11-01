@@ -414,30 +414,35 @@ function checkTemplateAppExists(generationUserId) {
 
 
 async function uploadApp(filePath, appName) {
-    console.log('Upload app: ' + appName + ' from path: ' + filePath);
+    console.log('Upload app: ' + appName + ' from path: ' + filePath + ' via header authentication server: ' + qlikHDRServer);
     return await new Promise(function(resolve, reject) {
         var formData = {
             my_file: fs.createReadStream(filePath)
         };
 
-        request.post({
-            url: qlikHDRServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
-            headers: {
-                'Content-Type': 'application/vnd.qlik.sense.app',
-                'hdr-usr': senseConfig.headerValue,
-                'X-Qlik-xrfkey': senseConfig.xrfkey
-            },
-            formData: formData
-        }, function(error, res, body) {
-            if (!error) {
-                var appId = JSON.parse(body).id;
-                console.log('Uploaded "' + appName + '.qvf" to Qlik Sense and got appID: ' + appId);
-                resolve(appId);
-            } else {
-                console.error("Failed to upload app" + appName, error);
-                reject(error);
-            }
-        });
+        try {
+            request.post({
+                url: qlikHDRServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
+                headers: {
+                    'Content-Type': 'application/vnd.qlik.sense.app',
+                    'hdr-usr': senseConfig.headerValue,
+                    'X-Qlik-xrfkey': senseConfig.xrfkey
+                },
+                formData: formData
+            }, function(error, res, body) {
+                if (!error) {
+                    var appId = JSON.parse(body).id;
+                    console.log('Uploaded "' + appName + '.qvf" to Qlik Sense and got appID: ' + appId);
+                    resolve(appId);
+                } else {
+                    console.error("Failed to upload app" + appName, error);
+                    reject(error);
+                }
+            });
+        } catch (error) {
+            console.error('failed to upload app', error);
+        }
+
     });
 }
 //
@@ -532,13 +537,18 @@ export function getApps(name, stream) {
             path += " and stream.name eq '" + stream + "'"
         }
     }
+    console.log('getApps(name: ' + name + ' and stream ' + stream + 'via API path: ' + path);
 
     var call = {
         action: 'Get list of apps',
         request: path
     };
     // REST_Log(call,generationUserId);
-    return qrs.get(call.request);
+    try {
+        return qrs.get(call.request);
+    } catch (error) {
+        console.error('We can not connect to Qlik Sense', error);
+    }
 };
 
 //
