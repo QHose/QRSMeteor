@@ -1,1 +1,0 @@
-meteor npm install --save
