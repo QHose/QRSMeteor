@@ -82,5 +82,9 @@
         "rateLimits": {
             "perIp": 260
         }
+    },
+    "PrerenderIO": {
+        "serviceUrl": "http://service.prerender.io/",
+        "token": "yourtoken"
     }
 }
