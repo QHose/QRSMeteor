@@ -55,7 +55,8 @@
             "sharedPersistanceFolderName": "QlikSenseShare",
             "StreamsToCreateAutomatically": ["API apps", "Templates", "Everyone", "QA", "TEST"],
             "APIAppStreamName": "API apps",
-            "EveryoneAppStreamName": "Everyone"
+            "EveryoneAppStreamName": "Everyone",
+            "proxyAllowHTTP": true
         },
         "dataConnections": [{
                 "name": "Another folder connection",

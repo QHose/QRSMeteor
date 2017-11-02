@@ -212,8 +212,7 @@ if (Meteor.isServer) {
             var keysEqual = compareKeys(Meteor.settings, exampleSettingsFile);
             console.log('Settings file has all the keys as specified in the example json file?', keysEqual)
             if (!keysEqual) {
-                // console.error('Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\Users\Qlikexternal\Documents\GitHub\QRSMeteor');
-                throw new Error('Settings file incomplete, Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor');
+                throw new Error('Settings.json file does not have all keys as defined in the settings-development-example.json (in your project root), Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor');
             }
         })
 
