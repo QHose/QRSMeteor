@@ -23,6 +23,7 @@ practicalmeteor:faker
 # meteorhacks:sikka #firewall
 simple:json-routes
 artwells:accounts-guest
+dferber:prerender
 
 aldeed:autoform
 aldeed:collection2
