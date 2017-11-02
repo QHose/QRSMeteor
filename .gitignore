@@ -19,3 +19,5 @@ public/docs/~$ik Sense SaaS demo tool setup instructions.docx
 QRS start.bat
 .automation/InstallationSoftware/spc.cfg
 .automation/InstallationSoftware/startSilentInstall.ps1
+.automation/securityrules/export/ExtractedSystemRules.json
+.automation/proxy/export/proxyServiceConfiguration.json
