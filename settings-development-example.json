@@ -45,7 +45,7 @@
         "customerDataDir": "",
         "automaticCleanUpGeneratedApps": "Yes",
         "automationBaseFolder": "",
-        "runInitialQlikSenseSetup": false,
+        "runInitialQlikSenseSetup": true,
         "qlikSense": {
             "installQlikSense": true,
             "connectToSenseAsUserDirectory": "",

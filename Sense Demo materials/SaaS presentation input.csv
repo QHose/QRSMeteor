@@ -2035,10 +2035,6 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","Ensure the Qlik Sense license will be set by setting `""installQlikSense"": true`",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","qrsmeteor - how do you automatically setup qlik sense.png",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","If you set `""installQlikSense"": true` in your settings file, you need to download Qlik Sense first before we can install it.",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","## download Qlik Sense",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","Download the latest version of [Qlik Sense server](http://eu-b.demo.qlik.com/download/)",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","Save and rename the file to `C:\Qlik_Sense_setup.exe`",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","## update silent installation powershell",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","Make a copy of and rename the following files
 - spc-example.cfg to spc.cfg
@@ -2048,6 +2044,11 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","## change the silent installation config file",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","- update the hostnames",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","qrsmeteor - automatic installation and setup of qlik sense spc.cfg.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","## install Qlik Sense",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","Run `startSilentInstall.ps1`
+- right mouse click 'run with powershell`
+- or, open powershell, cd to `C:\GitHub\QRSMeteor\.automation\InstallationSoftware`
+- copy`startSilentInstall.ps1`, press enter",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","# This slide is only relevant if you already have an existing Qlik Sense server",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","> Please note that QRSMeteor will set some settings in Qlik based on your `settings-development.json` file.
 - ports will be changed
@@ -2058,7 +2059,8 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Provide a domain and user for a `root admin` in Qlik Sense in the ` connectToSenseAsUserDirectory` and             `connectToSenseAsUser`  parameters",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","qrsMeteor - minimum settings to update when you install on same machine.png",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Try to startup your server","Run `QRS start.bat` in your `project root` as `administrator`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Try to startup your server","Run `QRS start.bat` in your `project root` as `administrator`
+- Tip: if you want to see the error (if any), its easier to first open a command window, and start the bat from there. ",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - example of startup bat.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","The first time, QRSMeteor will configure Qlik Sense:
 - Insert license

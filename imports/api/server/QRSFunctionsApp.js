@@ -442,7 +442,6 @@ async function uploadApp(filePath, appName) {
         } catch (error) {
             console.error('failed to upload app', error);
         }
-
     });
 }
 //
@@ -537,7 +536,7 @@ export function getApps(name, stream) {
             path += " and stream.name eq '" + stream + "'"
         }
     }
-    console.log('getApps(name: ' + name + ' and stream ' + stream + 'via API path: ' + path);
+    console.log('getApps(name: ' + name + ' and stream ' + stream + ' via API path: ' + path);
 
     var call = {
         action: 'Get list of apps',
