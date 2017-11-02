@@ -119,9 +119,12 @@ function linkVirtualProxyToProxy(virtualProxy) {
     proxyConfig.settings.virtualProxies.push(virtualProxy)
 
     //UPDATE SOME PROXY SETTINGS
+    console.log('UPDATE SOME PROXY SETTINGS...')
     proxyConfig.settings.unencryptedListenPort = Meteor.settings.public.qlikSensePort; //HTTP    
+    console.log('proxyConfig.settings.unencryptedListenPort', proxyConfig.settings.unencryptedListenPort)
     proxyConfig.settings.listenPort = Meteor.settings.public.qlikSensePortSecure; //HTTPS
     proxyConfig.settings.allowHttp = Meteor.settings.broker.qlikSense.proxyAllowHTTP;
+    console.log('proxyConfig.settings.allowHttp', proxyConfig.settings.allowHttp)
 
     //OVERWRITE THE SETTINGS WITH THE COMPLETE UPDATED OBJECT.
     updateProxy(proxyId, proxyConfig)

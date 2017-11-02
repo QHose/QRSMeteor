@@ -360,14 +360,14 @@ On the top of the slide you can choose between 3 possible views:
 CSS: Shows the underlying CSS code for this page.",,,,,,,,,
 "Web integration","Example: embed a sheet ","iframe http://jsfiddle.net/qhose/v993fpgy/embedded/result,html,css",,"","","","","         0","0","SaaS & Power of APIs; Demo with integration.qlik.com; Introduction - 30 minutes; CTO; Business Analyst; Product Owner",
 "Web integration","Example: embed a sheet ","!comment
-In this example you see an embedded sheet from an Qlik Sense app trough an IFrame. Notice that only the sheet is visible. There is no selection bar or Qlik Sense menu buttons available.
+In this example you see an embedded sheet from an Qlik Sense app through an IFrame. Notice that only the sheet is visible. There is no selection bar or Qlik Sense menu buttons available.
 On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded sheet.
  - HTML: Shows the HTML code for embedding the hub. It makes use of an IFrame. The URL is the source where the IFrame refers to.
 CSS: Shows the underlying CSS code for this page.",,,,,,,,,
 "Web integration","Example: Embed a chart","iframe http://jsfiddle.net/qhose/x1owu7yu/embedded/result,js,html,css/",,"","","","","         0","0","SaaS & Power of APIs; Demo with integration.qlik.com; Introduction - 30 minutes; CTO; Business Analyst; Product Owner",
 "Web integration","Example: Embed a chart","!comment
-In this example you see an embedded chart from an Qlik Sense app trough an IFrame. On the top of the slide you can choose between 3 possible views:
+In this example you see an embedded chart from an Qlik Sense app through an IFrame. On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded chart.
  - HTML: Shows the HTML code for embedding the hub. It makes use of an IFrame. The URL is the source where the IFrame refers to.
 CSS: Shows the underlying CSS code for this page.",,,,,,,,,
@@ -376,7 +376,7 @@ CSS: Shows the underlying CSS code for this page.",,,,,,,,,
 "Web integration","Example: Create a chart on the fly using javascript. ","!comment
 # This slide shown an example of generating a bar chart on the fly with our visualization API.
 On top the different parts of the embedding can be shown: JavaScript, HTML, CSS, Resources and Result.
- -  The first part shows the config object. This is needed to know where the API needs to connect to get the data. The host is the hostname of the Qlik Sense Server. Is Secure is the parameter that decides that SSL (Secure Sockets Layer)should be used or not. The prefix tells to which Qlik Sense Virtual Proxy should be connected and trough which port.
+ -  The first part shows the config object. This is needed to know where the API needs to connect to get the data. The host is the hostname of the Qlik Sense Server. Is Secure is the parameter that decides that SSL (Secure Sockets Layer)should be used or not. The prefix tells to which Qlik Sense Virtual Proxy should be connected and through which port.
  - The second part will create the bar chart with Qlik Sense Data.
   ○ Require(['js/qlik'], function(qlik):
   This will always appear at the beginning of you JavaScript code. This is necessary to use the Qlik API's.
@@ -398,8 +398,8 @@ There are 3 main options for embedding:
 "Web integration","Options to embed Qlik Sense: from simple to advanced use cases","!comment
 Through our  'Embedding Qlik Sense' demo on integration.qlik.com you will notice we have embedded  different parts of Qlik Sense.
 On the left side of the screen you can choose which example you want to see. On the right side you will see the result.
-Basically there are 3 main ways of emdedding Qlik Sense:
- - Trough an IFrame: This method allows to embed the full hub, a complete app, complete sheets or a collection of multiple apps.
+Basically there are 3 main ways of embedding Qlik Sense:
+ - through an IFrame: This method allows to embed the full hub, a complete app, complete sheets or a collection of multiple apps.
  It allows Qlik Sense to be embedded is a fast and easy way. When using IFrame you are using the layout and objects define in Qlik Sense.
  - With Div tags you have the possibility to embed individual objects in a web page.  A Div tag is nothing more than a reserved place on a webpage. This allows you to make a customized webpage, that used Qlik Sense object.
 Finally you can use Qlik Sense APIs to provide the data. In the JavaScript charts can be built on the fly through our API or  external visualizations (Eg. D3 charts)",,,,,,,,,
@@ -448,7 +448,7 @@ http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sh
 "Web integration","IFrame - App and Single integration API (2)","[See Qlik help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/AppIntegrationAPI/app-integration-API.htm)",,"","","","","         0","0","PreSales, SaaS & Power of APIs",
 "Web integration","IFrame - App and Single integration API (2)","See working examples in our [integration demo environment](http://web.saasdemo.qlik.com/hub)",,"","","","","         0","0","PreSales, SaaS & Power of APIs",
 "Web integration","IFrame - App and Single integration API (2)","!comment
-This slide shows you an overview of all the components that are used for embedding trough an IFrame. 
+This slide shows you an overview of all the components that are used for embedding through an IFrame. 
  - On the SaaS platform you have the webpage, consisting out of HTML, CSS and JavaScript. In the HTML, the IFrame refers to a component of Qlik Sense.
  - At the point that the HTML page is loaded, connection to the Qlik Sense server is needed. To get access to the server, the Virtual proxy must be passed first (authenticating).
 On the bottom of the screen there are 2 examples of IFrame URL. The first one shows a sheet in an analysis state. The second one shows a sheet where a certain selection has been made.",,,,,,,,,
@@ -565,7 +565,7 @@ Integration example: Marketing 360",,,,,,,,,
 "Web integration","Capabilities API - example code to embed chart using a DIV tag","[See demo on integration.qlik.com](http://web.saasdemo.qlik.com/multipleDivs)",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Capabilities API - example code to embed chart using a DIV tag","iframe http://jsfiddle.net/qhose/uj3abbde/embedded/result,html,js,css/",,"","","","","         0","0","Technical - 2 hours, SaaS & Power of APIs",
 "Web integration","Capabilities API - example code to embed chart using a DIV tag","!comment
-This slide shows the JavaScript example of using our capability APIs for integrating Qlik Sense objects into a webpage trough Div tags.
+This slide shows the JavaScript example of using our capability APIs for integrating Qlik Sense objects into a webpage through Div tags.
 First the Qlik Sense app needs to be opened to get to the content and objects that need to be embedded. This happens on the line of code that starts with 'var app':
 The API qlik.openApp is used to create an object that gets access to the desired app.
 The long number is the internal GUID of the app that is used in our Qlik Sense environment. The config object is used to make sure the right connection is made with the Qlik Sense Server.
@@ -696,7 +696,7 @@ This modified version of Qlik is not the same as the default require.js. In orde
 - What is a mashup and why is CityBike one?
 - What components are needed to create a Mashup?
 Let's analyze the [CityBike mashup](http://integration.qlik.com:443/anon/dev-hub/mashup-editor/#qext{DemoMashup}) in the DEV-HUB. (Called DemoMashup).",,"","","","","         0","0","Exercises",
-"Web integration","Exercise: Create a mashup in Qlik the Qlik Sense dev-hub","**Goal:** Create a mashup trough the Qlik Sense dev-hub.
+"Web integration","Exercise: Create a mashup in Qlik the Qlik Sense dev-hub","**Goal:** Create a mashup through the Qlik Sense dev-hub.
 Please follow the steps:",,"","","","","         0","0","Exercises",
 "Web integration","Exercise: Create a mashup in Qlik the Qlik Sense dev-hub","- Open de Mashup editor in the Qlik Sense Dev-hub.
 - Create a new project with the name MyFirstMashup.
@@ -718,7 +718,7 @@ Please follow the steps:",,"","","","","         0","0","Exercises",
 "Web integration","On the fly","<q>Create charts on the fly using the Vizualization API</q>",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","On the fly","web - options to integrate content.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","On the fly","!comment
-Another way of embedding Qlik Sense is creating a chart on the fly.Rather than using Qlik Sense objects in an already created app, only the data of the app is used. The chart is created in the JavaScript of the webpage trough the Qlik Sense visualization APIs.
+Another way of embedding Qlik Sense is creating a chart on the fly.Rather than using Qlik Sense objects in an already created app, only the data of the app is used. The chart is created in the JavaScript of the webpage through the Qlik Sense visualization APIs.
 ",,,,,,,,,
 "Web integration","Visualization API introduction video","https://youtu.be/_pddhxg5__o",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Visualization API introduction video","!comment
@@ -743,7 +743,7 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Create charts on the fly","!comment
 This code shows 2 ways of creating Qlik Sense visualizations on the fly:
  - Through our APIs - app.visualization.create: This API will make a Qlik Sense visualization. The first parameter defines it is going to be a bar chart. The second parameters contains the Dimension(s) ( in this case 'Country)' and Measure(s) ( in this case '=sum(LineSalesAmount)'for the bar chart. After the creation the bar chart is shown in the designated div placeholder.
- - Trough visuals web components: This way there is no need for JavaScript. First the correct app is opened.
+ - through visuals web components: This way there is no need for JavaScript. First the correct app is opened.
  After that the type of the chart is chosen (here a barchart)
  After that the columns are defined: '[Case Owner Group]' as dimension and '=Avg([Case Duration Time])' as measure.
 The chart gets the title: 'on the fly barchart'.",,,,,,,,,
@@ -774,7 +774,7 @@ The chart has been created in JavaScript using an external library called Chart.
 "Web integration","When do you use the data only approach?","[See an example on integration.qlik.com](http://web.saasdemo.qlik.com/tableUsingWidgets)",,"","","","","         0","0","Technical - 1 day",
 "Web integration","When do you use the data only approach?","!comment
 This method is used whenever a user or company wants to maintain their own look and feel - house style (colors, fonts, specific customized visualizations,…) or the user has already a full library of its own visualizations and wants to use those.
-As said on the previous slide, it gives the users the possibility to create their own visual layer while maintaining the associative power of Qlik Sense. This means that ALL the data will be completely visual at ALL times.Through the communication of the SaaS platform and Qlik Sense trough WebSockets, your data keeps in sync. Selections can be made as in a native Qlik Sense visualization. As the data is connected, all the other visualizations or object will react to the selections.
+As said on the previous slide, it gives the users the possibility to create their own visual layer while maintaining the associative power of Qlik Sense. This means that ALL the data will be completely visual at ALL times.Through the communication of the SaaS platform and Qlik Sense through WebSockets, your data keeps in sync. Selections can be made as in a native Qlik Sense visualization. As the data is connected, all the other visualizations or object will react to the selections.
 Really the sky is the limit here: The possibility to create a completely customized visual layer on the associative Qlik Sense model.
 Click on the link to see an example.",,,,,,,,,
 "Web integration","Examples of using Qlik Sense as a data analytics engine","You can query Qlik Sense from your SaaS Platform, in order to
@@ -792,7 +792,7 @@ This slide gives an overview of the possible Qlik Sense queries you can use with
 ",,,,,,,,,
 "Web integration","Data only example: Qlik Sense bot (Start around 3m)","[Open this video](https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel)",,"","","","","         0","0","PreSales",
 "Web integration","Data only example: Qlik Sense bot (Start around 3m)","!comment
-This video shows the power or our APIs trough out Qlik Sense Bot.
+This video shows the power or our APIs through out Qlik Sense Bot.
 Click on the link.",,,,,,,,,
 "Web integration","Table API - retrieve any combination of dimensions and measures","API- table api - get table.png",,"","","","","         0","0","Deep dive, Technical - 2 hours",
 "Web integration","Table API - retrieve any combination of dimensions and measures","```javascript
@@ -2024,25 +2024,22 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Install software","Download [step 1](http://qrs.integration.qlik.com/public/docs/install software step 1.bat), next execute the file (double click)",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Install software","Wait till finished (screen disappears)....",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Install software","Download [step 2](http://qrs.integration.qlik.com/public/docs/install software step 2 - clone projects.bat), next execute the file (double click)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","Go to your `project root` and make a copy of the file `settings-development-example.json` to `settings-development.json`. 
-- (my root is: `C:\GitHub\QRSMeteor`)",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","Edit your new `settings-development.json` file, make sure you
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","Go to your project root `C:\GitHub\QRSMeteor` and make a copy of the file `settings-development-example.json` to `settings-development.json`. ",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","Edit your new `settings-development.json` file, make sure you
 - update your license details
 - make a note of (or change) the port number under which you can reach Qlik Sense via HTTP. Default is `""qlikSensePort"": 81`.",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","# Insert Qlik Sense license",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","qrsmeteor - license in settings.json.png",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","# Automatic (silent) installation of Qlik Sense",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","Ensure the Qlik Sense license will be set by setting `""installQlikSense"": true`",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings.json","qrsmeteor - how do you automatically setup qlik sense.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","# Insert Qlik Sense license",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","qrsmeteor - license in settings.json.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","# Automatic (silent) installation of Qlik Sense",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","Ensure the Qlik Sense license will be set by setting `""installQlikSense"": true`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","qrsmeteor - how do you automatically setup qlik sense.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","## update silent installation powershell",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","Make a copy of and rename the following files
 - spc-example.cfg to spc.cfg
 - startSilentInstall-example.ps1 to startSilentInstall.ps1",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","Update the username and password used in the `startSilentInstall.ps1` script. On a amazon VM I just use the administrator account for a simple demo. `c:\GitHub\QRSMeteor\.automation\InstallationSoftware\startSilentInstall.ps1`",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","qrsmeteor - update the silent script.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","## change the silent installation config file",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","- update the hostnames",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Download Qlik Sense","- update the hostnames (you can do a find/replace), check your computer`s hostname via powershell/cmd command `hostname` ",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","qrsmeteor - automatic installation and setup of qlik sense spc.cfg.png",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","## install Qlik Sense",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Download Qlik Sense","Run `startSilentInstall.ps1`
