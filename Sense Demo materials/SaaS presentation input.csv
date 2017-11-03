@@ -2021,31 +2021,65 @@ volumes:
 - Qlik Sense Server (automatically)",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Setup your virtual machine","# Static Ip
 Make sure you give the machine a `static IP`. Otherwise if you reboot you get a new IP and Qlik Sense won't work anymore. (Because a TLS certificate is bound to a domain name. In amazon you can do this via an `elastic ip`.)",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Install software","Download [step 1](http://qrs.integration.qlik.com/public/docs/install software step 1.bat), next execute the file (double click)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Install software","Wait till finished (screen disappears)....",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Install software","Download [step 2](http://qrs.integration.qlik.com/public/docs/install software step 2 - clone projects.bat), next execute the file (double click)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","Go to your project root `C:\GitHub\QRSMeteor` and make a copy of the file `settings-development-example.json` to `settings-development.json`. ",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","Edit your new `settings-development.json` file, make sure you
+"Install integration.qlik.com on a blank windows server","Install software","run this [bat file](http://qrs.integration.qlik.com/docs/install%20software%20step%201.bat) or open a `command` window as administrator and paste in the text below and press enter",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install software","```
+Echo install choco
+@""%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command ""iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"" && SET ""PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin""
+
+Echo install software
+choco install 7zip.install firefox googlechrome visualstudiocode adobereader qdir logfusion meteor dotnet4.5.2 lastpass microsoft-build-tools -y
+
+choco install nodejs --version 8.8.1 -y
+choco install github-desktop git -params '""/GitAndUnixToolsOnPath""' -y
+```",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install software","## step 2",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install software","Run this [bat file](http://qrs.integration.qlik.com/docs/install%20software%20step%202%20-%20clone%20projects.bat) or open a *NEW* `command` window as administrator and paste in the text below and press enter",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install software","```
+echo clone GitHub projects
+git clone https://GitHub.com/QHose/QRSMeteor.git --branch simplify-settings-file c:\GitHub\QRSMeteor
+git clone https://GitHub.com/QHose/senseWebIntegration.git c:\GitHub\SenseWebIntegration
+
+echo install module to read json files via node (to be able to set env. vars.)
+npm install -g json
+
+echo install windows build tools
+npm install --global windows-build-tools
+
+echo install qrsmeteor npm modules
+cd c:\GitHub\QRSMeteor
+meteor npm install --save
+
+
+echo install sensewebintegration npm modules
+cd c:\GitHub\SenseWebIntegration
+meteor npm install --save
+
+```",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","Go to your project root `C:\GitHub\QRSMeteor` and make a copy of the file `settings-development-example.json` to `settings-development.json`. ",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","Edit your new `settings-development.json` file, make sure you
 - update your license details
 - make a note of (or change) the port number under which you can reach Qlik Sense via HTTP. Default is `""qlikSensePort"": 81`.",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","# Insert Qlik Sense license",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","qrsmeteor - license in settings.json.png",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","# Automatic (silent) installation of Qlik Sense",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","Ensure the Qlik Sense license will be set by setting `""installQlikSense"": true`",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-dvelopment.json","qrsmeteor - how do you automatically setup qlik sense.png",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","## update silent installation powershell",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","Make a copy of and rename the following files
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","# Insert Qlik Sense license",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","qrsmeteor - license in settings.json.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","# Automatic (silent) installation of Qlik Sense",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","Ensure the Qlik Sense license will be set by setting `""installQlikSense"": true`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","qrsmeteor - how do you automatically setup qlik sense.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","## Amazon",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","Amazon only: make sure you put the internal DNS name in the `internalLanIp` like  `ip-172-31-21-216.eu-central-1.compute.internal`. In your other host files you normally would put your external (elasticIp) address.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","amazon - internal DNS name.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install Qlik Sense","## update silent installation powershell",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install Qlik Sense","Go to your `C:\GitHub\QRSMeteor\.automation\InstallationSoftware` directory",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install Qlik Sense","Make a copy of and rename the following files
 - spc-example.cfg to spc.cfg
 - startSilentInstall-example.ps1 to startSilentInstall.ps1",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","## change the silent installation config file",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","- update the hostnames (you can do a find/replace), check your computer`s hostname via powershell/cmd command `hostname` ",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","qrsmeteor - automatic installation and setup of qlik sense spc.cfg.png",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","## install Qlik Sense",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Download Qlik Sense","Run `startSilentInstall.ps1`
+"Install integration.qlik.com on a blank windows server","Install Qlik Sense","## change the silent installation config file",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install Qlik Sense","- update the hostnames (you can do a find/replace), check your computer hostname via powershell/cmd command `hostname` ",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install Qlik Sense","qrsmeteor - automatic installation and setup of qlik sense spc.cfg.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install Qlik Sense","## install Qlik Sense",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Install Qlik Sense","Run `startSilentInstall.ps1`
 - right mouse click 'run with powershell`
-- or, open powershell, cd to `C:\GitHub\QRSMeteor\.automation\InstallationSoftware`
-- copy`startSilentInstall.ps1`, press enter",,,,,,,,,
+- or, open powershell, cd to `C:\GitHub\QRSMeteor\.automation\InstallationSoftware`, copy`startSilentInstall.ps1`, press enter",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","# This slide is only relevant if you already have an existing Qlik Sense server",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","> Please note that QRSMeteor will set some settings in Qlik based on your `settings-development.json` file.
 - ports will be changed
@@ -2071,10 +2105,14 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Try to startup your server","If everything went succesful you will see this message",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - make sure you see the app ids after startup.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","now you can start your browser and go to `localhost:3000`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Try to startup your server","## Errors?",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Note: make sure you check error messages in the logs (on the screen). For example, if you QRSMeteor can't connect to Sense you will get a timeout on the last API call: `GET /APPS/FULL`
 - wrong certificates
 - Sense is down, firewall blocks access
-- wrong hostnames",,,,,,,,,
+- wrong hostnames
+- Amazon only: make sure you put the internal DNS name in the `internalLanIp` like  `ip-172-31-21-216.eu-central-1.compute.internal`. In your other host files you normally would put your external (elasticIp) address.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","If you get an error with the app upload: 
+- go to the qmc, and check that `allow http` is enabled on port 81.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","You can also check the manual SaaSdemo installation [manual](http://integration.qlik.com/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.docx)",,,,,,,,,
 "Qlik Sense API introduction","Overview","iframe /API_embedded",,"","","","","         0","0","Integration summary, Technical - 2 hours",
 "Qlik Sense API introduction","Lets look at some Qlik Sense integration scenarios","Qlik Sense *charts* or *data* are embedded",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",

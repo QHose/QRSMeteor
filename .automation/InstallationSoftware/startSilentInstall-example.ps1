@@ -30,6 +30,6 @@ Write-Host "Ensuring password for $Username never expires."
 & WMIC USERACCOUNT WHERE "Name='$Username'" SET PasswordExpires=FALSE
 
 Write-Host 'Download and start Qlik Sense installer...'
-# . { iwr -useb 'https://qliktechnologies365-my.sharepoint.com/personal/mbj_qlik_com/_layouts/15/guestaccess.aspx?docid=07856511345d94c879526d0704de32982&authkey=AeXFme3frDQT9_63NE_-XOY' -OutFile 'C:\Qlik_Sense_setup.exe' } | 
+. { iwr -useb 'https://qliktechnologies365-my.sharepoint.com/personal/mbj_qlik_com/_layouts/15/guestaccess.aspx?docid=07856511345d94c879526d0704de32982&authkey=AeXFme3frDQT9_63NE_-XOY' -OutFile 'C:\Qlik_Sense_setup.exe' } | 
 
 & 'c:\Qlik_Sense_setup.exe' -s -l ".\log.txt" spc='.\spc.cfg' userwithdomain="$env:COMPUTERNAME\$Username" userpassword=$Password
