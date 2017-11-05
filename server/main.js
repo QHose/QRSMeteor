@@ -40,6 +40,7 @@ import {
 } from '/imports/api/config';
 import '/imports/startup/accounts-config.js';
 const path = require('path');
+var fs = require('fs-extra');
 import shell from 'node-powershell'
 
 Meteor.startup(function() {
@@ -74,7 +75,7 @@ async function initQlikSense() {
         if (Meteor.settings.broker.runInitialQlikSenseSetup) {
             console.log('The runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
             if (Meteor.settings.broker.qlikSense.installQlikSense) {
-                // await installQlikSense();
+                await installQlikSense();
                 // await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                            
                 QSLic.insertLicense();
             }
@@ -117,8 +118,8 @@ async function sleep(fn, ...args) {
 
 
 var exec = require('child_process').execFile;
-console.log("Start installation of Qlik Sense via a silent script... please wait 15 minutes to complete... (we use this is a safe assumption that is has finished before we move on). Be aware of screens popping up which request extra info...");
 var installQlikSense = async function() {
+    console.log("Start installation of Qlik Sense via a silent script... please wait 15 minutes to complete... (we use this is a safe assumption that is has finished before we move on). Be aware of screens popping up which request extra info...");
 
     // let ps = new shell({
     //     executionPolicy: 'Bypass',
@@ -140,16 +141,46 @@ var installQlikSense = async function() {
     //         ps.dispose();
     //     });
 
+    //we dynamically populate the Qlik sense silent installation config file, the hostname is the variable... Because we create a folder share with this name
+    var configFile =
+        `
+    <?xml version="1.0"?>
+    <SharedPersistenceConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <DbUserName>username</DbUserName>
+    <DbUserPassword>password</DbUserPassword>
+    <DbHost>` + Meteor.settings.public.qlikSenseHost + `</DbHost>
+    <DbPort>4432</DbPort>
+    <RootDir>\\` + Meteor.settings.public.qlikSenseHost + `\QlikSenseShare</RootDir>
+    <StaticContentRootDir>\\` + Meteor.settings.public.qlikSenseHost + `\QlikSenseShare\StaticContent</StaticContentRootDir>
+    <CustomDataRootDir>\\` + Meteor.settings.public.qlikSenseHost + `\QlikSenseShare\CustomData</CustomDataRootDir>
+    <ArchivedLogsDir>\\` + Meteor.settings.public.qlikSenseHost + `\QlikSenseShare\ArchivedLogs</ArchivedLogsDir>
+    <AppsDir>\\` + Meteor.settings.public.qlikSenseHost + `\QlikSenseShare\Apps</AppsDir>
+    <CreateCluster>true</CreateCluster>
+    <InstallLocalDb>true</InstallLocalDb>
+    <ConfigureDbListener>false</ConfigureDbListener>
+    <ListenAddresses>*</ListenAddresses>
+    <IpRange>0.0.0.0/0</IpRange>
+    </SharedPersistenceConfiguration>
+    `;
+    //SAVE Silent install CONFIG TO THE EXPORT FOLDER
+    var file = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', 'spc.cfg');
+    fs.outputFile(file, JSON.stringify(configFile, null, 2), 'utf-8');
+
+
     var executable = 'startSilentInstall.ps1';
     var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
     await new Promise(function(resolve, reject) {
-        exec(installer, function(err, data) {
-            if (err) {
-                return reject(err);
-            }
-            console.log('installation of Qlik Sense success, reponse from the Qlik Sense installer: ' + data.toString());
-            resolve(data);
-        });
+        try {
+            exec(installer, function(err, data) {
+                if (err) {
+                    return reject(err);
+                }
+                console.log('installation of Qlik Sense success, reponse from the Qlik Sense installer: ' + data.toString());
+                resolve(data);
+            });
+        } catch (error) {
+            console.error('error in calling the start of silent install of qlik sense, ', error);
+        }
     });
 }
 
