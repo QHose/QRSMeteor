@@ -7,6 +7,4 @@ choco install meteor 7zip.install firefox googlechrome visualstudiocode adoberea
 
 choco install nodejs --version 8.8.1 -y
 
-
-start CALL "install software step 2 - clone projects.bat"
-
+c:\windows\syswow64\WindowsPowerShell\v1.0\powershell.exe -command set-executionpolicy remotesigned

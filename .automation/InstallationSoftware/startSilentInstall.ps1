@@ -38,5 +38,5 @@ Invoke-WebRequest -Uri $url -OutFile $QlikSenseInstaller
 Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
 
 
-& $QlikSenseInstaller -s -l ".\log.txt" spc='.\spc.cfg' userwithdomain="$env:COMPUTERNAME\$Username" userpassword=$Password
+# & $QlikSenseInstaller -s -l ".\log.txt" spc='.\spc.cfg' userwithdomain="$env:COMPUTERNAME\$Username" userpassword=$Password
 Write-Output "Qlik Sense has been installed"

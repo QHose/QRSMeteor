@@ -504,24 +504,6 @@ function checkStreamStatus(customer, generationUserId) {
     return streamId;
 }
 
-
-// export function getAppsViaEngine() {
-//     // console.log('server: QSSOCKS getApps');
-//     return qsocks.Connect(engineConfig)
-//         .then(function(global) {
-//             //We can now interact with the global class, for example fetch the document list.
-//             //qsocks mimics the Engine API, refer to the Engine API documentation or the engine api explorer for available methods.
-//             global.getDocList()
-//                 .then(function(docList) {
-//                     return docList;
-//                 });
-
-//         });
-// };
-
-// http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Get-All-As-Full.htm
-
-
 //
 // ─── GETAPPS ────────────────────────────────────────────────────────────────────
 //    
@@ -534,9 +516,11 @@ export function getApps(name, stream) {
         path += "?filter=Name eq '" + name + "'"
         if (stream) {
             path += " and stream.name eq '" + stream + "'"
+            console.log('getApps(name: ' + name + ' and stream ' + stream + ' via API path: ' + path);
         }
+    } else {
+        console.log('getApps via API path: ' + path);
     }
-    console.log('getApps(name: ' + name + ' and stream ' + stream + ' via API path: ' + path);
 
     var call = {
         action: 'Get list of apps',

@@ -43,11 +43,11 @@ const path = require('path');
 var fs = require('fs-extra');
 import shell from 'node-powershell'
 
-Meteor.startup(function() {
+Meteor.startup(async function() {
     process.env.ROOT_URL = 'http://' + Meteor.settings.public.qlikSenseHost;
     console.log('********* We expect Qlik Sense to run on host: ', process.env.ROOT_URL + ':' + Meteor.settings.public.qlikSensePort);
     // console.log('********* For END USERS we expect Sense to run on host: ', Meteor.settings.public.qlikSenseHost + ':' + Meteor.settings.public.qlikSensePort);
-    initQlikSense();
+    await initQlikSense();
     removeGeneratedResources();
     optimizeMongoDB();
 });
@@ -57,7 +57,7 @@ Meteor.startup(function() {
 // ─── SETUP QLIK SENSE AFTER A CLEAN QlIK SENSE INSTALL ─────────────────────────────────────
 //
 
-//Check if Qlik Sense has been properly setup for this MeteorQRS tool.
+//Check if Qlik Sense has been properly setup for this MeteorQRS tool..
 async function initQlikSense() {
     console.log('------------------------------------');
     console.log('INIT QLIK SENSE');
@@ -117,29 +117,8 @@ async function sleep(fn, ...args) {
 //
 
 
-var exec = require('child_process').execFile;
 var installQlikSense = async function() {
     console.log("Start installation of Qlik Sense via a silent script... please wait 15 minutes to complete... (we use this is a safe assumption that is has finished before we move on). Be aware of screens popping up which request extra info...");
-
-    // let ps = new shell({
-    //     executionPolicy: 'Bypass',
-    //     noProfile: true
-    // });
-    // var folder = Meteor.settings.broker.qlikSense.sharedPersistanceFolder;
-    // var name = Meteor.settings.broker.qlikSense.sharedPersistanceFolderName;
-
-    // // ps.addCommand('Write-Host Creating a shared folder on: ' + folder);
-    // ps.addCommand('New-Item "C:\\test" –type directory');
-    // // ps.addCommand('New-SmbShare –Name ' + name + ' –Path ' + folder + ' –FullAccess Everyone  ')
-
-    // ps.invoke()
-    //     .then(output => {
-    //         console.log(output);
-    //     })
-    //     .catch(err => {
-    //         console.error('Installation of Qlik Sense failed, make sure you check the log file in GitHub\QRSMeteor\.automation\InstallationSoftware\log.txt', err)
-    //         ps.dispose();
-    //     });
 
     //we dynamically populate the Qlik sense silent installation config file, the hostname is the variable... Because we create a folder share with this name
     var configFile =
@@ -169,21 +148,50 @@ var installQlikSense = async function() {
 
     var executable = 'startSilentInstall.ps1';
     var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
+    console.log('installer', installer)
     await new Promise(function(resolve, reject) {
         try {
-            exec(installer, function(err, data) {
-                if (err) {
-                    return reject(err);
-                }
-                console.log('installation of Qlik Sense success, reponse from the Qlik Sense installer: ' + data.toString());
-                resolve(data);
+            var spawn = require("child_process").spawn,
+                child;
+            child = spawn("powershell.exe", [installer]);
+            child.stdout.on("data", function(data) {
+                console.log("Powershell Data: " + data);
             });
+            child.stderr.on("data", function(data) {
+                console.error("Powershell Errors: " + data);
+                return reject('Error in running the silent installation script of qlik sense...');
+            });
+            child.on("exit", function() {
+                console.log("Powershell Script finished");
+                return resolve();
+            });
+            child.stdin.end(); //end input.
         } catch (error) {
             console.error('error in calling the start of silent install of qlik sense, ', error);
         }
     });
 }
 
+
+// let ps = new shell({
+//     executionPolicy: 'Bypass',
+//     noProfile: true
+// });
+// var folder = Meteor.settings.broker.qlikSense.sharedPersistanceFolder;
+// var name = Meteor.settings.broker.qlikSense.sharedPersistanceFolderName;
+
+// // ps.addCommand('Write-Host Creating a shared folder on: ' + folder);
+// ps.addCommand('New-Item "C:\\test" –type directory');
+// // ps.addCommand('New-SmbShare –Name ' + name + ' –Path ' + folder + ' –FullAccess Everyone  ')
+
+// ps.invoke()
+//     .then(output => {
+//         console.log(output);
+//     })
+//     .catch(err => {
+//         console.error('Installation of Qlik Sense failed, make sure you check the log file in GitHub\QRSMeteor\.automation\InstallationSoftware\log.txt', err)
+//         ps.dispose();
+//     });
 
 
 //
@@ -462,58 +470,3 @@ Meteor.methods({
         return QSSystem.getSecurityRules();
     }
 });
-
-
-
-
-// checkSenseIsReady() {
-//     //console.log('Method: checkSenseIsReady, TRY TO SEE IF WE CAN CONNECT TO QLIK SENSE ENGINE VIA QSOCKS');
-
-//     // try {
-//     // qsocks.Connect(engineConfig)
-//     //     .then(function(global) {
-//     //         // Connected
-//     //         //console.log('Meteor is connected via Qsocks to Sense Engine API using certificate authentication');
-//     //         return true;
-//     //     }, function(err) {
-//     //         // Something went wrong
-//     //         console.error('Meteor could not connect to Sense with the config settings specified. The error is: ', err.message);
-//     //         console.error('the settings are: ', engineConfig)
-//     //         return false
-//     //         // throw new Meteor.Error('Could not connect to Sense Engine API', err.message);
-//     //     });
-
-//     //TRY TO SEE IF WE CAN CONNECT TO SENSE VIA HTTP
-//     try{
-//         const result = HTTP.get('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/app/full', { //?xrfkey=' + senseConfig.xrfkey, {
-//             headers: authHeaders,
-//             params: { 'xrfkey': senseConfig.xrfkey }
-//         })//http get
-//         //console.log(result);
-//         if(result.statuscode === 200){
-//             //console.log('We got a result back from Sense with statuscode 200: Success')
-//             return true;}
-//         else{return false}
-//     } catch (err) {
-//         return false;
-//         // throw new Meteor.Error('Could not connect via HTTP to Qlik Sense: Is Sense running? Are the firewalls open? Have you exported the certificate for this host? virtualProxy setup?');
-//     }
-// }
-
-//GET APPS USING QSOCKS (FOR DEMO PURPOSE ONLY, CAN ALSO BE DONE WITH QRS API)
-// getApps() {
-//     return QSApp.getApps();
-//     // appListSync = Meteor.wrapAsync(qsocks.Connect(engineConfig)
-//     //     .then(function(global) {
-//     //         global.getDocList()
-//     //             .then(function(docList) {
-//     //                 return (docList);
-//     //             });
-//     //     })
-//     //     .catch(err => {
-//     //         throw new Meteor.Error(err)
-//     //     }));
-//     // result = appListSync();
-//     // return result;
-
-// },
