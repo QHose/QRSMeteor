@@ -129,11 +129,11 @@ var installQlikSense = async function() {
     <DbUserPassword>password</DbUserPassword>
     <DbHost>` + Meteor.settings.public.qlikSenseHost + `</DbHost>
     <DbPort>4432</DbPort>
-    <RootDir>\\` + Meteor.settings.public.qlikSenseHost + `\QlikSenseShare</RootDir>
-    <StaticContentRootDir>\\` + Meteor.settings.public.qlikSenseHost + `\QlikSenseShare\StaticContent</StaticContentRootDir>
-    <CustomDataRootDir>\\` + Meteor.settings.public.qlikSenseHost + `\QlikSenseShare\CustomData</CustomDataRootDir>
-    <ArchivedLogsDir>\\` + Meteor.settings.public.qlikSenseHost + `\QlikSenseShare\ArchivedLogs</ArchivedLogsDir>
-    <AppsDir>\\` + Meteor.settings.public.qlikSenseHost + `\QlikSenseShare\Apps</AppsDir>
+    <RootDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare</RootDir>
+    <StaticContentRootDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\StaticContent</StaticContentRootDir>
+    <CustomDataRootDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\CustomData</CustomDataRootDir>
+    <ArchivedLogsDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\ArchivedLogs</ArchivedLogsDir>
+    <AppsDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\Apps</AppsDir>
     <CreateCluster>true</CreateCluster>
     <InstallLocalDb>true</InstallLocalDb>
     <ConfigureDbListener>false</ConfigureDbListener>
@@ -144,7 +144,6 @@ var installQlikSense = async function() {
     //SAVE Silent install CONFIG TO THE EXPORT FOLDER
     var file = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', 'spc.cfg');
     fs.outputFile(file, configFile, 'utf-8');
-
 
     var executable = 'startSilentInstall.ps1';
     var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
