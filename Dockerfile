@@ -15,8 +15,7 @@ ADD ./settings-development-example.json /meteorQRS/programs/server/
 WORKDIR /meteorQRS/programs/server
 
 # make sure all the NPM modules are downloaded again (via the settings in the package.json file in the server bundle\...\server folder)
-RUN npm install \
-  && npm cache clear
+RUN npm install
 
 # cd to the dir where the startup script is
 WORKDIR /meteorQRS
