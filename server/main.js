@@ -143,7 +143,7 @@ var installQlikSense = async function() {
     `;
     //SAVE Silent install CONFIG TO THE EXPORT FOLDER
     var file = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', 'spc.cfg');
-    fs.outputFile(file, JSON.stringify(configFile, null, 2), 'utf-8');
+    fs.outputFile(file, configFile, 'utf-8');
 
 
     var executable = 'startSilentInstall.ps1';
