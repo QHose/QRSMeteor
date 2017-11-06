@@ -72,9 +72,5 @@
     },
     "security": {
         "rulesToDisable": ["Stream", "CreateAppObjectsPublishedApp", "CreateApp", "ExportAppData", "StreamEveryoneAnonymous"]
-    },
-    "PrerenderIO": {
-        "serviceUrl": "http://service.prerender.io/",
-        "token": "yourtoken"
     }
 }

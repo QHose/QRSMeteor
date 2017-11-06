@@ -36,9 +36,7 @@ process.on('unhandledRejection', up => { throw up })
 //import config for Qlik Sense QRS and Engine API.
 import {
     senseConfig,
-    authHeaders,
-    initSenseConfiguration,
-    initSenseServerConfiguration
+    authHeaders
 } from '/imports/api/config';
 import '/imports/startup/accounts-config.js';
 const path = require('path');
@@ -48,6 +46,7 @@ import shell from 'node-powershell'
 Meteor.startup(function() {
     process.env.ROOT_URL = 'http://' + Meteor.settings.public.qlikSenseHost;
     console.log('********* We expect Qlik Sense to run on host: ', process.env.ROOT_URL + ':' + Meteor.settings.public.qlikSensePort);
+    // console.log('********* For END USERS we expect Sense to run on host: ', Meteor.settings.public.qlikSenseHost + ':' + Meteor.settings.public.qlikSensePort);
     initQlikSense();
     removeGeneratedResources();
     optimizeMongoDB();
@@ -62,8 +61,15 @@ Meteor.startup(function() {
 async function initQlikSense() {
     console.log('------------------------------------');
     console.log('INIT QLIK SENSE');
-
-    initSenseConfiguration();
+    console.log('Project root folder: ', Meteor.absolutePath)
+    if (!Meteor.settings.broker.automationBaseFolder) {
+        Meteor.settings.broker.automationBaseFolder = path.join(Meteor.absolutePath, '.automation');
+        console.log('Meteor.settings.broker.automationBaseFolder was empty, setting it to default: ', Meteor.settings.broker.automationBaseFolder)
+    }
+    if (!Meteor.settings.broker.customerDataDir) {
+        Meteor.settings.broker.customerDataDir = path.join(Meteor.absolutePath, 'customerData');
+        console.log('Meteor.settings.broker.customerDataDir was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
+    }
 
     try {
         if (Meteor.settings.broker.runInitialQlikSenseSetup) {
@@ -73,7 +79,6 @@ async function initQlikSense() {
                 // await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                            
                 QSLic.insertLicense();
             }
-            await initSenseServerConfiguration();
             QSLic.insertUserAccessRule();
             QSSystem.disableDefaultSecurityRules();
             await QSProxy.createVirtualProxies();
@@ -92,6 +97,7 @@ async function initQlikSense() {
 
         //now qlik sense has been installed, we can try to connect, and load the streams and apps into our mongoDB
         Meteor.call('updateLocalSenseCopy');
+
     } catch (error) {
         console.error('Main.js, initQlikSense: Failed to run the initialization of Qlik Sense', error);
     }
@@ -163,7 +169,6 @@ var installQlikSense = async function() {
 
     var executable = 'startSilentInstall.ps1';
     var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
-    console.log('installer location: ', installer)
     await new Promise(function(resolve, reject) {
         try {
             exec(installer, function(err, data) {
