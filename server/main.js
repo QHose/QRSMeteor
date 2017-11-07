@@ -76,7 +76,7 @@ async function initQlikSense() {
             console.log('The runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
             if (Meteor.settings.broker.qlikSense.installQlikSense) {
                 await installQlikSense();
-                // await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                            
+                await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                            
                 QSLic.insertLicense();
             }
             QSLic.insertUserAccessRule();
