@@ -128,11 +128,11 @@ var installQlikSense = async function() {
     <DbUserPassword>password</DbUserPassword>
     <DbHost>` + Meteor.settings.public.qlikSenseHost + `</DbHost>
     <DbPort>4432</DbPort>
-    <RootDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare</RootDir>
-    <StaticContentRootDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\StaticContent</StaticContentRootDir>
-    <CustomDataRootDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\CustomData</CustomDataRootDir>
-    <ArchivedLogsDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\ArchivedLogs</ArchivedLogsDir>
-    <AppsDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\Apps</AppsDir>
+    <RootDir>\\\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare</RootDir>
+    <StaticContentRootDir>\\\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\StaticContent</StaticContentRootDir>
+    <CustomDataRootDir>\\\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\CustomData</CustomDataRootDir>
+    <ArchivedLogsDir>\\\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\ArchivedLogs</ArchivedLogsDir>
+    <AppsDir>\\\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\Apps</AppsDir>
     <CreateCluster>true</CreateCluster>
     <InstallLocalDb>true</InstallLocalDb>
     <ConfigureDbListener>false</ConfigureDbListener>
