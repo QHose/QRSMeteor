@@ -122,8 +122,7 @@ var installQlikSense = async function() {
 
     //we dynamically populate the Qlik sense silent installation config file, the hostname is the variable... Because we create a folder share with this name
     var configFile =
-        `
-    <?xml version="1.0"?>
+        `<?xml version="1.0"?>
     <SharedPersistenceConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <DbUserName>username</DbUserName>
     <DbUserPassword>password</DbUserPassword>
@@ -139,8 +138,7 @@ var installQlikSense = async function() {
     <ConfigureDbListener>false</ConfigureDbListener>
     <ListenAddresses>*</ListenAddresses>
     <IpRange>0.0.0.0/0</IpRange>
-    </SharedPersistenceConfiguration>
-    `;
+    </SharedPersistenceConfiguration>`;
     //SAVE Silent install CONFIG TO THE EXPORT FOLDER
     var file = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', 'spc.cfg');
     fs.outputFile(file, configFile, 'utf-8');
@@ -162,7 +160,7 @@ var installQlikSense = async function() {
             });
             child.on("exit", function() {
                 console.log("Powershell Script finished");
-                return resolve();
+                return resolve("Powershell Script finished");
             });
             child.stdin.end(); //end input.
         } catch (error) {
