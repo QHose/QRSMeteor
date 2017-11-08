@@ -2035,8 +2035,6 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Install software","## step 1",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Install software","Run this [bat file](http://qrs.integration.qlik.com/docs/install%20software%20step%201.bat) ",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Install software","This will install Meteor (Node & MongoDB) and other software onto your server.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Install software","## step 2",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Install software","Run this [bat file](http://qrs.integration.qlik.com/docs/install%20software%20step%202%20-%20clone%20projects.bat) ",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Install software","This will download the project files from Github into your `C:\GitHub\` folder. QRSMeteor will be located in `C:\GitHub\QRSMeteor` we call this your `project root`",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","Go to your project root `C:\GitHub\QRSMeteor` and make a copy of the file `settings-development-example.json` to `settings-development.json`. ",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","Edit your new `settings-development.json` file, make sure you
@@ -2067,12 +2065,14 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Go to your project root",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","You need to run `QRS start.bat` 2 times and adjust the settings-development.json in between:
 - the first time it will install Qlik Sense
-- after you get the message that Qlik Sense has been installated, wait 20 minutes, to ensure the silent intallation of Qlik Sense has completed. (check that you can open the QMC, but do no do anything)
+- after you get the message that Qlik Sense has been installed, wait 20 minutes, to ensure the silent installation of Qlik Sense has completed. (check that you can open the QMC, but do no do anything)
 - next, run `QRS start.bat` again, now it will configure Qlik Sense",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# First run of QRS Start.bat",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Run `QRS start.bat` as `administrator`
 - Tip: if you want to see the error (if any), its easier to first open a command window, and start the bat from there. If you don't run as admin you won't be able to read the Qlik Sense certificates... (EPERM error)",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - example of startup bat.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Try to startup your server","# install Qlik Sense",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","Run `startSilentInstall.ps1` as administrator in your `C:\GitHub\QRSMeteor\.automation\InstallationSoftware` folder and wait 30 minutes (till Sense installation is finished)",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# Adjust settings",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Now open your `settings-development.json` and set `""installQlikSense"": false`",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# Second run of QRS Start.bat",,,,,,,,,

@@ -118,7 +118,7 @@ async function sleep(fn, ...args) {
 
 
 var installQlikSense = async function() {
-    console.log("Start installation of Qlik Sense via a silent script... please wait 15 minutes to complete... (we use this is a safe assumption that is has finished before we move on). Be aware of screens popping up which request extra info...");
+    console.log("Start creating the config file for the Sense silent script...");
 
     //we dynamically populate the Qlik sense silent installation config file, the hostname is the variable... Because we create a folder share with this name
     var configFile =
@@ -143,6 +143,11 @@ var installQlikSense = async function() {
     var file = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', 'spc.cfg');
     fs.outputFile(file, configFile, 'utf-8');
 
+    console.log('------------------------------------');
+    console.log('config file created! you can now run the "startSilentInstall.ps1" script as administrator');
+    console.error('We now create an error to ensure QRSMeteor stops further setup, please run "QRSSTART.bat" again after qlik sense is running and asking for you license. But do not do anything like inserting the license. QRSMeteor will do this for you.')
+    console.log('------------------------------------');
+    throw new Error('Dummy error to make sure QRSMeteor stops running, please install Qlik Sense first...');
     //removed auto install of sense, to prevent an issue with the rights...
 
     // var executable = 'startSilentInstall.ps1';
