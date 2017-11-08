@@ -40,4 +40,4 @@ Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
 
 
 & $QlikSenseInstaller -s -l ".\log.txt" spc='.\spc.cfg' userwithdomain="$env:COMPUTERNAME\$Username" userpassword=$Password
-Write-Output "Qlik Sense has been installed"
+Write-Output "Qlik Sense is installer is now running in the background, please wait 20 minutes... If ready you will see the shortcuts on your desktop. Try to open the QMC, but don't do anything... Next you can start QRSSTART.BAT for the second time. Make sure you adjust the settings-...Json file. set installQlikSense to false."
