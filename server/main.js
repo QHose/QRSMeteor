@@ -76,7 +76,7 @@ async function initQlikSense() {
             console.log('The runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
             if (Meteor.settings.broker.qlikSense.installQlikSense) {
                 await installQlikSense();
-                await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                                            
+                // await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                                            
             }
             QSLic.insertLicense();
             QSLic.insertUserAccessRule();
@@ -143,30 +143,32 @@ var installQlikSense = async function() {
     var file = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', 'spc.cfg');
     fs.outputFile(file, configFile, 'utf-8');
 
-    var executable = 'startSilentInstall.ps1';
-    var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
-    console.log('installer', installer)
-    await new Promise(function(resolve, reject) {
-        try {
-            var spawn = require("child_process").spawn,
-                child;
-            child = spawn("powershell.exe", [installer]);
-            child.stdout.on("data", function(data) {
-                console.log("Powershell Data: " + data);
-            });
-            child.stderr.on("data", function(data) {
-                console.error("Powershell Errors: " + data);
-                return reject('Error in running the silent installation script of qlik sense...');
-            });
-            child.on("exit", function() {
-                console.log("Powershell Script finished");
-                return resolve("Powershell Script finished");
-            });
-            child.stdin.end(); //end input.
-        } catch (error) {
-            console.error('error in calling the start of silent install of qlik sense, ', error);
-        }
-    });
+    //removed auto install of sense, to prevent an issue with the rights...
+
+    // var executable = 'startSilentInstall.ps1';
+    // var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
+    // console.log('installer', installer)
+    // await new Promise(function(resolve, reject) {
+    //     try {
+    //         var spawn = require("child_process").spawn,
+    //             child;
+    //         child = spawn("powershell.exe", [installer]);
+    //         child.stdout.on("data", function(data) {
+    //             console.log("Powershell Data: " + data);
+    //         });
+    //         child.stderr.on("data", function(data) {
+    //             console.error("Powershell Errors: " + data);
+    //             return reject('Error in running the silent installation script of qlik sense...');
+    //         });
+    //         child.on("exit", function() {
+    //             console.log("Powershell Script finished");
+    //             return resolve("Powershell Script finished");
+    //         });
+    //         child.stdin.end(); //end input.
+    //     } catch (error) {
+    //         console.error('error in calling the start of silent install of qlik sense, ', error);
+    //     }
+    // });
 }
 
 

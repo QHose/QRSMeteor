@@ -9,21 +9,8 @@ choco install nodejs --version 8.8.1 -y
 
 c:\windows\syswow64\WindowsPowerShell\v1.0\powershell.exe -command set-executionpolicy remotesigned
 
-@echo off
-echo.
-echo Refreshing PATH from registry
-
-:: Get System PATH
-for /f "tokens=3*" %%A in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v Path') do set syspath=%%A%%B
-
-:: Get User Path
-for /f "tokens=3*" %%A in ('reg query "HKCU\Environment" /v Path') do set userpath=%%A%%B
-
-:: Set Refreshed Path
-set PATH=%userpath%;%syspath%
-
-echo Refreshed PATH
-echo %PATH%
+echo refresh environment variables and paths
+refreshenv
 
 echo clone GitHub projects
 git clone https://GitHub.com/QHose/QRSMeteor.git --branch simplify-settings-file c:\GitHub\QRSMeteor

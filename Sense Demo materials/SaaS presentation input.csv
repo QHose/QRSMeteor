@@ -2088,10 +2088,11 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Try to startup your server","If everything went succesful you will see this message",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - make sure you see the app ids after startup.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","now you can start your browser and go to `localhost:3000`",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Errors?","## Errors?",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors?","# Missing packages",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Errors?","Missing packages?
 - run `meteor npm install --save` in your project root via `command`
 - npm install errors? Delete your node_modules directory, and package-lock file in your project root, and run `meteor npm install` again.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors?","# Cannot connect to Sense",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Errors?","Note: make sure you check error messages in the logs (on the screen). For example, if you QRSMeteor can't connect to Sense you will get a timeout on the last API call: `GET /APPS/FULL`
 - wrong certificates
 - Sense is down, firewall blocks access
@@ -2100,6 +2101,10 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Errors?","If you get an error with the app upload: 
 - go to the qmc, and check that `allow http` is enabled on port 81.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Errors?","You can also check the manual SaaSdemo installation [manual](http://integration.qlik.com/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.docx)",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors?","# Forbidden",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors?","if you get `403 forbidden` the most likely case is that your license has not been inserted yet. 
+- insert your license manually in the QMC
+- then start `qrs start.bat` again.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Link overview","# if you only ran Qlik Sense silent install",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Link overview","[Qlik Sense hub](https://localhost)",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Link overview","[Qlik Sense qmc](https://localhost/qmc)",,,,,,,,,
