@@ -1144,22 +1144,27 @@ or
 ((user.environment.group=""Admin"")) and ( resource.HasPrivilege(""read"") or resource.app.HasPrivilege(""read"") )
 ```",,"","","","","         0","0","PreSales",
 "Security - Concept of integration.qlik.com","Overview of system (security & license) rules","<iframe src=""http://integration.qlik.com/securityRules"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Technical - 1 day",
-"Slide generator","Why?","A person 
-- wants to address his *information need*
-- can be a sales, pre-sales, consultants and developers (the *role*)",,,,,,,,,
-"Slide generator","Why?","He wants an answer to his next question",,,,,,,,,
-"Slide generator","Why?","Information should be recent, authorized, and always accessible",,,,,,,,,
-"Slide generator","When?","if you need information really fast 
-- about a topic that fits your role and skill level.
-- Content that exactly fits your needs: not too simple or too difficult. 
-- all content in *1 location*, using the *associative search*
-- without having to *scroll though 1000 slides*,
-- the most *recent* version",,,,,,,,,
-"Slide generator","When?","People can use the answer to 
-- create your own materials or 
+"Slide generator","Why?","A user has questions
+- he can be a sales, pre-sales, consultants or developer (a *role*)
+- and wants to *find answers* ",,,,,,,,,
+"Slide generator","Why?","So information should be 
+- fit to purpose and his skill level
+- recent
+- authorized via your role
+- always accessible
+- have an associative search",,,,,,,,,
+"Slide generator","Why?","> Demonstrates the power of the *Associative difference* ",,,,,,,,,
+"Slide generator","When?","If you want quick access to information
+- about a topic that fits your role and skill level: not too simple or too difficult. 
+- content can be: an interactive embedded web site, videos, images or text
+- without having to *scroll though 1000 slides*",,,,,,,,,
+"Slide generator","When?","People can use the tool to quickly
+- re-use content for your own materials
 - give a presentation/demo
-- allows the person to play with or show the content later on to his colleagues",,,,,,,,,
+- allows authorized users to play with the content whenever they like",,,,,,,,,
 "Slide generator","How?","Engine API - load mindmap data into csv into app and use enigma example.png",,,,,,,,,
+"Slide generator","What are we going to demonstrate?","Predefined steps to explain something based on *your role*",,,,,,,,,
+"Slide generator","What are we going to demonstrate?","Ad hoc analysis: grab what you want",,,,,,,,,
 "Slide generator","Demonstration","iframe http://qrs.integration.qlik.com/useCaseSelection",,,,,,,,,
 "Slide generator","What do we offer?","It answers your next questions",,"","","","","         0","0","What is this slide generator?",
 "Slide generator","What do we offer?","Based on your role & skills",,"","","","","         0","0","What is this slide generator?",
@@ -2077,8 +2082,7 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Provide a domain and user for a `root admin` in Qlik Sense in the ` connectToSenseAsUserDirectory` and             `connectToSenseAsUser`  parameters",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","qrsMeteor - minimum settings to update when you install on same machine.png",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Try to startup your server","run `install modules.bat` ",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Try to startup your server","Go to your project root",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","Go to your project root `C:\GitHub\QRSMeteor`",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","You need to run `QRS start.bat` 2 times (3 times because of a bug) and adjust the settings-development.json in between:
 - the first time it will install Qlik Sense
 - after you get the message that Qlik Sense has been installed, wait 20 minutes, to ensure the silent installation of Qlik Sense has completed. (check that you can open the QMC, but do no do anything)
@@ -2090,6 +2094,13 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - example of startup bat.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# install Qlik Sense",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Run `startSilentInstall.ps1` as administrator in your `C:\GitHub\QRSMeteor\.automation\InstallationSoftware` folder and wait 30 minutes (till Sense installation is finished)",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","press `Y` if asked (Do you want to change the execution policy?)",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","## Sense not installed?",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","If Sense icons do not appear on the desktop, check your `log` in `C:\GitHub\QRSMeteor\.automation\InstallationSoftware`",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","The silent install won't run if it recognized Sense has already been installed once. ",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","Note that even though the log file says `About to quit this session (with exit code 0).
+` things are still being installed in the background...",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","silent installation - key components to monitor.png",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# Adjust settings",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Now open your `settings-development.json` and set `""installQlikSense"": false`",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# Second run of QRS Start.bat",,,,,,,,,
@@ -2114,7 +2125,7 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 - wrong certificates
 - Sense is down, firewall blocks access
 - wrong hostnames
-- Amazon only: make sure you put the internal DNS name in the `internalLanIp` like  `ip-172-31-21-216.eu-central-1.compute.internal`. In your other host files you normally would put your external (elasticIp) address.",,,,,,,,,
+- Amazon only: make sure you put the internal DNS name (find with `nslookup`) in the `internalLanIp` like  `ip-172-31-21-216.eu-central-1.compute.internal`. In your other host files you normally would put your external (elastic Ip) address.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Errors?","If you get an error with the app upload: 
 - go to the qmc, and check that `allow http` is enabled on port 81.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Errors?","You can also check the manual SaaSdemo installation [manual](http://integration.qlik.com/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.docx)",,,,,,,,,
