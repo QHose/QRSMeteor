@@ -1157,15 +1157,16 @@ or
 "Slide generator","When?","If you want quick access to information
 - about a topic that fits your role and skill level: not too simple or too difficult. 
 - content can be: an interactive embedded web site, videos, images or text
-- without having to *scroll though 1000 slides*",,,,,,,,,
+- without having to *scroll through 1000 slides*",,,,,,,,,
 "Slide generator","When?","People can use the tool to quickly
 - re-use content for your own materials
 - give a presentation/demo
-- allows authorized users to play with the content whenever they like",,,,,,,,,
+- only allows *authorized users* to play with the content whenever they like",,,,,,,,,
 "Slide generator","How?","Engine API - load mindmap data into csv into app and use enigma example.png",,,,,,,,,
+"Slide generator","What are we going to demonstrate?","# 2 ways to consume content",,,,,,,,,
 "Slide generator","What are we going to demonstrate?","Predefined steps to explain something based on *your role*",,,,,,,,,
 "Slide generator","What are we going to demonstrate?","Ad hoc analysis: grab what you want",,,,,,,,,
-"Slide generator","Demonstration","iframe http://qrs.integration.qlik.com/useCaseSelection",,,,,,,,,
+"Slide generator","Demonstration","> Lets do a demonstration!",,,,,,,,,
 "Slide generator","What do we offer?","It answers your next questions",,"","","","","         0","0","What is this slide generator?",
 "Slide generator","What do we offer?","Based on your role & skills",,"","","","","         0","0","What is this slide generator?",
 "Slide generator","What do we offer?","Your experience (with our products)",,"","","","","         0","0","What is this slide generator?",

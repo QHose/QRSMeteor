@@ -21,3 +21,4 @@ QRS start.bat
 .automation/InstallationSoftware/spc.cfg
 .automation/securityrules/export/ExtractedSystemRules.json
 .automation/proxy/export/proxyServiceConfiguration.json
+package-lock.json
