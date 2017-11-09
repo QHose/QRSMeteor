@@ -76,9 +76,9 @@ async function initQlikSense() {
             console.log('The runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc.');
             if (Meteor.settings.broker.qlikSense.installQlikSense) {
                 await installQlikSense();
-                // await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                            
-                QSLic.insertLicense();
+                // await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...                                            
             }
+            QSLic.insertLicense();
             QSLic.insertUserAccessRule();
             QSSystem.disableDefaultSecurityRules();
             await QSProxy.createVirtualProxies();
@@ -118,7 +118,7 @@ async function sleep(fn, ...args) {
 
 
 var installQlikSense = async function() {
-    console.log("Start installation of Qlik Sense via a silent script... please wait 15 minutes to complete... (we use this is a safe assumption that is has finished before we move on). Be aware of screens popping up which request extra info...");
+    console.log("Start creating the config file for the Sense silent script...");
 
     //we dynamically populate the Qlik sense silent installation config file, the hostname is the variable... Because we create a folder share with this name
     var configFile =
@@ -128,11 +128,11 @@ var installQlikSense = async function() {
     <DbUserPassword>password</DbUserPassword>
     <DbHost>` + Meteor.settings.public.qlikSenseHost + `</DbHost>
     <DbPort>4432</DbPort>
-    <RootDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare</RootDir>
-    <StaticContentRootDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\StaticContent</StaticContentRootDir>
-    <CustomDataRootDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\CustomData</CustomDataRootDir>
-    <ArchivedLogsDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\ArchivedLogs</ArchivedLogsDir>
-    <AppsDir>\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\Apps</AppsDir>
+    <RootDir>\\\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare</RootDir>
+    <StaticContentRootDir>\\\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\StaticContent</StaticContentRootDir>
+    <CustomDataRootDir>\\\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\CustomData</CustomDataRootDir>
+    <ArchivedLogsDir>\\\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\ArchivedLogs</ArchivedLogsDir>
+    <AppsDir>\\\\` + Meteor.settings.public.qlikSenseHost + `\\QlikSenseShare\\Apps</AppsDir>
     <CreateCluster>true</CreateCluster>
     <InstallLocalDb>true</InstallLocalDb>
     <ConfigureDbListener>false</ConfigureDbListener>
@@ -143,30 +143,37 @@ var installQlikSense = async function() {
     var file = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', 'spc.cfg');
     fs.outputFile(file, configFile, 'utf-8');
 
-    var executable = 'startSilentInstall.ps1';
-    var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
-    console.log('installer', installer)
-    await new Promise(function(resolve, reject) {
-        try {
-            var spawn = require("child_process").spawn,
-                child;
-            child = spawn("powershell.exe", [installer]);
-            child.stdout.on("data", function(data) {
-                console.log("Powershell Data: " + data);
-            });
-            child.stderr.on("data", function(data) {
-                console.error("Powershell Errors: " + data);
-                return reject('Error in running the silent installation script of qlik sense...');
-            });
-            child.on("exit", function() {
-                console.log("Powershell Script finished");
-                return resolve("Powershell Script finished");
-            });
-            child.stdin.end(); //end input.
-        } catch (error) {
-            console.error('error in calling the start of silent install of qlik sense, ', error);
-        }
-    });
+    console.log('------------------------------------');
+    console.log('config file created! you can now run the "startSilentInstall.ps1" script as administrator');
+    console.error('We now create an error to ensure QRSMeteor stops further setup, please run "QRSSTART.bat" again after qlik sense is running and asking for you license. But do not do anything like inserting the license. QRSMeteor will do this for you.')
+    console.log('------------------------------------');
+    throw new Error('Dummy error to make sure QRSMeteor stops running, please install Qlik Sense first...');
+    //removed auto install of sense, to prevent an issue with the rights...
+
+    // var executable = 'startSilentInstall.ps1';
+    // var installer = path.join(Meteor.settings.broker.automationBaseFolder, 'InstallationSoftware', executable);
+    // console.log('installer', installer)
+    // await new Promise(function(resolve, reject) {
+    //     try {
+    //         var spawn = require("child_process").spawn,
+    //             child;
+    //         child = spawn("powershell.exe", [installer]);
+    //         child.stdout.on("data", function(data) {
+    //             console.log("Powershell Data: " + data);
+    //         });
+    //         child.stderr.on("data", function(data) {
+    //             console.error("Powershell Errors: " + data);
+    //             return reject('Error in running the silent installation script of qlik sense...');
+    //         });
+    //         child.on("exit", function() {
+    //             console.log("Powershell Script finished");
+    //             return resolve("Powershell Script finished");
+    //         });
+    //         child.stdin.end(); //end input.
+    //     } catch (error) {
+    //         console.error('error in calling the start of silent install of qlik sense, ', error);
+    //     }
+    // });
 }
 
 
