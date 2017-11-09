@@ -174,7 +174,7 @@ Template.integrationSlideContent.helpers({
         } else { //text, convert the text (which can include markdown syntax) to valid HTML
             var result = converter.makeHtml(text);
             if (result.substring(1, 11) === 'blockquote') {
-                return '<div class="ui green very padded segment">' + result + '</div>';
+                return '<div class="ui green segment">' + result + '</div>';
             } else {
                 return '<div class="markdownItem">' + result + '</div>';
             }
