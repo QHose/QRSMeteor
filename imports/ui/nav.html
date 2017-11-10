@@ -1,5 +1,5 @@
 <template name="nav">
-  <div class="ui top fixed secondary pointing menu mainNavBar">
+  <div class="ui top fixed secondary menu mainNavBar">
     <div class="ui container">
       <!-- {{#unless isMainLandingPage}} -->
       <a id="home" href="{{pathFor 'useCaseSelection'}}" class="{{#if isMainLandingPage}} active {{/if}} item">
@@ -36,38 +36,23 @@
 </template>
 
 <template name="yourSaasPlatformMenu">
-  <div class="ui dropdown saasDemo active item">SAAS PROVISIONING
+   <div class="ui top fixed menu">
+    <div class="ui container">
+  <div class="ui dropdown item">SAAS PROVISIONING
     <i class="dropdown icon"></i>
     <div class="menu">
       <a class="item" href="{{pathFor 'generation'}}">Provisioning admin panel</a>
-      <a class="item" href="{{pathFor 'securityRules'}}">QMC System rules</a>
+      <a class="item" href="{{pathFor 'securityRules'}}">Security and license rules</a>
       {{#if readyToTestSSO}}
         <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Your SaaS platform with Qlik Sense embedded</a>
         <a class="item" href="{{senseServerHub}}" target="_blank">Not embedded, Hub using Single Sign On</a>
         <a class="item" href="{{senseServerQMC}}" target="_blank">Not embedded, QMC using Single Sign On</a>{{/if}}
       <a class="item" href="{{pathFor 'users'}}">Customers and users</a>
       <a class="item" href="{{pathFor 'templateOverview'}}">Template apps</a>
-      <a class="item" href="{{pathFor 'APILogs'}}">API Logs</a>
+      <a class="item" href="{{pathFor 'ApiLogsTable'}}" target="_blank">API Logs</a>
     </div>
   </div>
+    </div>
+  </div>
+
 </template>
-
-
-<!--  <div class="row">
-        <div class="ui secondary menu navbar">
-            <a href="{{pathFor 'useCaseSelection'}}" class="header item">
-                Home</a>
-                {{#unless isSaaSDemoPage}}
-                <a href="{{pathFor 'generation'}}" class="header item">
-                 Demo       
-             </a> {{/unless}} 
-             <a href="{{pathFor 'documentation'}}" class="item">
-                Documentation
-            </a> {{#if currentUser}}
-            <div class="ui right floated item">
-               {{#if isInRole 'admin' }}
-                <a class="item" href="{{pathFor 'userOverview'}}">User list</a> {{/if}}
-            </div>
-            {{/if}}
-        </div>
-      </div> -->

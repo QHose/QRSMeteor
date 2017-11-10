@@ -2,7 +2,7 @@ var Cookies = require('js-cookie');
 
 //Layout Configuration. http://stackoverflow.com/questions/28864942/meteor-use-2-different-layouts-ironrouter
 Router.configure({
-    layoutTemplate: 'layout',
+    layoutTemplate: 'containerlayout',
     notFoundTemplate: 'notFound',
 });
 
@@ -56,6 +56,11 @@ Router.route('/API_embedded', {
     layoutTemplate: 'SSOLayout'
 });
 
+Router.route('/ApiLogsTable');
+Router.route('/ApiLogsTable_embedded', {
+    template: 'ApiLogsTable',
+    layoutTemplate: 'SSOLayout'
+});
 //SECURITY
 Router.route('/introductionSecurity');
 Router.route('/security_embedded', {
@@ -90,7 +95,6 @@ Router.route('/legal');
 Router.route('/notFound');
 Router.route('/userOverview');
 Router.route('/homeAbout');
-Router.route('/ApiLogsTable');
 Router.route('/introduction');
 Router.route('/SecurityDeepDive');
 
@@ -109,16 +113,26 @@ Router.route('/documentation', {
     layoutTemplate: 'containerlayout'
 });
 
-Router.route('/templateOverview');
+Router.route('/templateOverview', {
+    template: 'templateOverview',
+    layoutTemplate: 'SSOLayout'
+});
 
 Router.route('/slidegeneratorSlides', {
     template: 'slidegeneratorSlides',
     layoutTemplate: 'ImpressLayout'
 });
 
-Router.route('/securityRules');
-Router.route('/QMC');
+Router.route('/securityRules', {
+    template: 'securityRules',
+    layoutTemplate: 'SSOLayout'
+});
 
+
+Router.route('/QMC', {
+    template: 'QMC',
+    layoutTemplate: 'SSOLayout'
+});
 
 // Single sing on integration route, this is the route you configure in Qlik sense proxy
 Router.route('/SSO', {

@@ -32,7 +32,7 @@ Template.useCaseSelection.onCreated(async function() {
     Meteor.setTimeout(async function() {
         qix = await makeSureSenseIsConnected();
         await setChangeListener(qix);
-    }, 1000);
+    }, 0);
 
 })
 

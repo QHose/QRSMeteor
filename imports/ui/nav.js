@@ -100,7 +100,7 @@ async function abortQlikModalState() {
 }
 
 Template.yourSaasPlatformMenu.onRendered(function() {
-    this.$('.ui.dropdown.saasDemo')
+    this.$('.ui.dropdown')
         .dropdown()
 });
 

@@ -3,7 +3,15 @@ import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
 import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 import { APILogs } from '/imports/api/APILogs';
+import { Tracker } from '/imports/api/tracker';
 import moment from 'moment';
+
+
+
+Meteor.publish('tracker', function() {
+    return Tracker.find({ 'generationUserId': this.userId });
+    this.ready();
+});
 
 //only fill the local mongoDB that runs in the browser with data that belongs to the user...
 //https://www.meteor.com/tutorials/blaze/publish-and-subscribe

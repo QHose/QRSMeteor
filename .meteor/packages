@@ -22,7 +22,7 @@ service-configuration@1.0.11
 practicalmeteor:faker
 # meteorhacks:sikka #firewall
 simple:json-routes
-artwells:accounts-guest
+artwells:accounts-guest # https://github.com/artwells/meteor-accounts-guest
 dferber:prerender
 
 aldeed:autoform

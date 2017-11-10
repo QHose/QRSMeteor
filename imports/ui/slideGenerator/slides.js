@@ -3,6 +3,7 @@ import './reveal.css';
 // import 'reveal/theme/default.css';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
+import { Tracker } from '/imports/api/tracker';
 
 _ = lodash;
 var Cookies = require('js-cookie');
@@ -76,6 +77,15 @@ Template.slides.events({
 //
 
 Template.slideContent.onRendered(function() {
+    console.log('------------------------------------');
+    console.log('insert view into tracker');
+    console.log('------------------------------------');
+    Tracker.insert({
+        userId: Meteor.userId,
+        counter: 1,
+        viewDate: new Date(), // current time
+    });
+
     Meteor.setTimeout(function() {
         //embed youtube containers in a nice box without loading all content
         this.$('.ui.embed').embed({
@@ -90,6 +100,13 @@ Template.slideContent.onRendered(function() {
     }, 1000);
 });
 
+Template.slideContent.events({
+    'click ': function(e, t) {
+        e.stopPropagation();
+        console.log('template instance:\n', t);
+        console.log('data context:\n', Blaze.getData(e.currentTarget));
+    }
+});
 
 //
 // ─── HELPERS ────────────────────────────────────────────────────────────────────
@@ -242,5 +259,5 @@ function youtube_parser(url) {
 }
 
 function checkTextIsImage(text) {
-    return (text.match(/\.(jpeg|jpg|gif|png)$/) != null);
+    return (text.toLowerCase().match(/\.(jpeg|jpg|gif|png)$/) != null);
 }

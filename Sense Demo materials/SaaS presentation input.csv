@@ -1145,10 +1145,10 @@ or
 ```",,"","","","","         0","0","PreSales",
 "Security - Concept of integration.qlik.com","Overview of system (security & license) rules","<iframe src=""http://integration.qlik.com/securityRules"" class=""SenseEmbedFrame""></iframe>",,"","","","","         0","0","Technical - 1 day",
 "Slide generator","Why?","A user has questions
-- he can be a sales, pre-sales, consultants or developer (a *role*)
-- and wants to *find answers* ",,,,,,,,,
-"Slide generator","Why?","So information should be 
-- fit to purpose and his skill level
+- he can be a sales, pre-sales, consultant or developer (a *role*)
+- and wants to *find answers* or give a presentation",,,,,,,,,
+"Slide generator","Why?","So information should
+- fit the purpose and his skill level
 - recent
 - authorized via your role
 - always accessible
@@ -1163,6 +1163,9 @@ or
 - give a presentation/demo
 - only allows *authorized users* to play with the content whenever they like",,,,,,,,,
 "Slide generator","How?","Engine API - load mindmap data into csv into app and use enigma example.png",,,,,,,,,
+"Slide generator","How are we using it today? (added value)","V1 already running on [integration.qlik.com](integration.qlik.com) (*open source*)",,,,,,,,,
+"Slide generator","How are we using it today? (added value)","OEM sales, presales, partners use it all over the world to learn and teach more about integrating Qlik Sense.",,,,,,,,,
+"Slide generator","How are we using it today? (added value)","Will be rolled out via the *onePresales* project to all partners next Qonnections.",,,,,,,,,
 "Slide generator","What are we going to demonstrate?","# 2 ways to consume content",,,,,,,,,
 "Slide generator","What are we going to demonstrate?","Predefined steps to explain something based on *your role*",,,,,,,,,
 "Slide generator","What are we going to demonstrate?","Ad hoc analysis: grab what you want",,,,,,,,,
