@@ -162,7 +162,9 @@ if (Meteor.isServer) {
 
         export const qrs = new myQRS();
     } catch (error) {
-        console.warn('We can not connect to Sense yet: Because we can not find the Sense certificates yet in the ' + Meteor.settings.private.certificatesDirectory + '. This can happen if Sense has not yet been installed....');
+        console.warn('Sense is not installed, or certificate directory wrong in the settings.json file.');
+        throw new Meteor.Error(500, 'We can not connect to Sense yet: Because we can not find the Sense certificates yet in the ' + Meteor.settings.private.certificatesDirectory + '. This can happen if Sense has not yet been installed....');
+
     } //END CODE THAT NEEDS CERTIFICATES
 
     function generateXrfkey() {
