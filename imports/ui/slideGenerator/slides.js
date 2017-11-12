@@ -77,12 +77,15 @@ Template.slides.events({
 //
 
 Template.slideContent.onRendered(function() {
+    this.subscribe('tracker');
     console.log('------------------------------------');
-    console.log('insert view into tracker');
+    console.log('insert view into tracker', this);
     console.log('------------------------------------');
     Tracker.insert({
         userId: Meteor.userId,
         counter: 1,
+        topic: this.data.slide[0].qText,
+        slide: this.data.slide[1].qText,
         viewDate: new Date(), // current time
     });
 
@@ -259,5 +262,5 @@ function youtube_parser(url) {
 }
 
 function checkTextIsImage(text) {
-    return (text.toLowerCase().match(/\.(jpeg|jpg|gif|png)$/) != null);
+    return (text.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }

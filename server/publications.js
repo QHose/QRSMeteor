@@ -9,7 +9,7 @@ import moment from 'moment';
 
 
 Meteor.publish('tracker', function() {
-    return Tracker.find({ 'generationUserId': this.userId });
+    return Tracker.find();
     this.ready();
 });
 
