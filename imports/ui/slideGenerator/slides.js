@@ -64,26 +64,25 @@ function initializeReveal() {
         // $(window).scrollTop(0); //does not work
     });
 }
-Template.slides.events({
-    'contextmenu *': function(e, t) {
-        e.stopPropagation();
-        console.log('template instance:\n', t);
-        console.log('data context:\n', Blaze.getData(e.currentTarget));
-    }
-});
+
+// Template.slides.events({
+//     'contextmenu *': function(e, t) {
+//         e.stopPropagation();
+//         console.log('template instance:\n', t);
+//         console.log('data context:\n', Blaze.getData(e.currentTarget));
+//     }
+// });
 
 //
 // ─── SLIDE CONTENT ──────────────────────────────────────────────────────────────────────
 //
 
 Template.slideContent.onRendered(function() {
-    this.subscribe('tracker');
-    console.log('------------------------------------');
-    console.log('insert view into tracker', this);
-    console.log('------------------------------------');
+    // this.subscribe('tracker');
     Tracker.insert({
         userId: Meteor.userId,
         counter: 1,
+        eventType: 'slideRendered',
         topic: this.data.slide[0].qText,
         slide: this.data.slide[1].qText,
         viewDate: new Date(), // current time
@@ -104,10 +103,17 @@ Template.slideContent.onRendered(function() {
 });
 
 Template.slideContent.events({
-    'click ': function(e, t) {
+    'click a': function(e, t) {
         e.stopPropagation();
-        console.log('template instance:\n', t);
-        console.log('data context:\n', Blaze.getData(e.currentTarget));
+        Tracker.insert({
+            userId: Meteor.userId,
+            counter: 1,
+            eventType: 'linkClick',
+            topic: this.data.slide[0].qText,
+            slide: this.data.slide[1].qText,
+            linkName: e.currentTarget.innerText,
+            viewDate: new Date(), // current time
+        });
     }
 });
 
