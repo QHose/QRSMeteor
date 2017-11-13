@@ -99,7 +99,7 @@ async function initQlikSense() {
         Meteor.call('updateLocalSenseCopy');
 
     } catch (error) {
-        console.error('Main.js, initQlikSense: Failed to run the initialization of Qlik Sense', error);
+        console.error('Main.js, initQlikSense: Failed to run the initialization of Qlik Sense. Most likely reason is that Qlik Sense has not been installed, wrong hostnames, wrong cert directory...', error);
     }
 }
 
