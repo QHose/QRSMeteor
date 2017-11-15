@@ -389,6 +389,8 @@ body {
     line-height: 1.2em;
 }
 
+
+/* 
 .reveal q,
 .reveal blockquote {
     quotes: none;
@@ -408,7 +410,7 @@ body {
 .reveal blockquote p:first-child,
 .reveal blockquote p:last-child {
     display: inline-block;
-}
+} */
 
 .reveal q {
     font-style: italic;

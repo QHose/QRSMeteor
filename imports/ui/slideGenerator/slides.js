@@ -81,6 +81,7 @@ Template.slideContent.onRendered(function() {
     // this.subscribe('tracker');
     Tracker.insert({
         userId: Meteor.userId,
+        userName: Meteor.user().profile.name,
         counter: 1,
         eventType: 'slideRendered',
         topic: this.data.slide[0].qText,
@@ -107,6 +108,7 @@ Template.slideContent.events({
         e.stopPropagation();
         Tracker.insert({
             userId: Meteor.userId,
+            userName: Meteor.user().profile.name,
             counter: 1,
             eventType: 'linkClick',
             topic: this.data.slide[0].qText,
@@ -158,8 +160,9 @@ Template.registerHelper('itemsOfLevel', function(level, slide) {
 
 
 Template.registerHelper('formatted', function(text) {
-    // console.log(text, text.startsWith('!comment'));
     var commentMarker = '!comment';
+    var embeddedImageMarker = `!embeddedImage`
+
     //
     // ─── YOUTUBE ────────────────────────────────────────────────────────────────────
     //
@@ -183,9 +186,6 @@ Template.registerHelper('formatted', function(text) {
     // ─── COMMENT ────────────────────────────────────────────────────────────────────
     //
     else if (text.startsWith(commentMarker)) { //vertical slide with comments
-        console.log('------------------------------------');
-        console.log('comment found!!! ', text);
-        console.log('------------------------------------');
         var textAfterCommentMarker = text.split(commentMarker).pop();
         var messagebox = `
         <section>
@@ -207,14 +207,16 @@ Template.registerHelper('formatted', function(text) {
     // ─── IMAGE ──────────────────────────────────────────────────────────────────────
     //        
     else if (checkTextIsImage(text)) {
-        return '<img class="ui massive rounded bordered image"  src="images/' + text + '">';
+        return '<img class="ui massive rounded bordered image"  src="images/' + text + '"/>';
+    } else if (text.startsWith(embeddedImageMarker)) { //embedded image in text
+        var textMarker = text.split(embeddedImageMarker).pop();
+        return '<img class="ui massive rounded bordered image"  alt="Embedded Image" src="data:image/png;base64,' + textMarker + '"/>';
     }
 
     //
     // ─── CUSTOM HTML ────────────────────────────────────────────────────────────────
     //
     else if (text.startsWith('<')) { //custom HTML
-        console.log('custom HTML found!!! ');
         return text;
     }
 

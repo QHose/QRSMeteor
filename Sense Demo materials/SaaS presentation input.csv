@@ -2039,8 +2039,7 @@ volumes:
 - you can also check the username by typing in `whoami` in a command window. ",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Setup your virtual machine","Make sure you open ports on your firewall
 - 80 (MeteorQRS)
-- 81 (Qlik Sense HTTP)
-- 443 (Qlik Sense HTTPS)",,"","","","","         0","0","Deep dive",
+- 81 (Qlik Sense HTTP)",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Setup your virtual machine","Next we will install the following software
 - Meteor (contains NodeJS and MongoDB)
 - Github desktop (this will the latest version of our integration.qlik.com demo projects)
@@ -2072,10 +2071,32 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","Ensure the Qlik Sense will be installed and the license will be set by setting `""installQlikSense"": true`",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","Ensure Qlik Sense will be configured with our apps, streams and other settings by setting: `""runInitialQlikSenseSetup"": true`",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","qrsmeteor - how do you automatically setup qlik sense.png",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","# Additional settings",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","All settings below are optional.... and not needed if you want to do a quick installation.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","## Amazon",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","Amazon only: make sure you put the internal DNS name in the `SenseServerInternalLanIP` like  `ip-172-31-21-216.eu-central-1.compute.internal`. In your other host values you normally would put your external (elasticIp) address on which an end user would connect to us.
-- use `cmd` type `ipconfig /all`",,,,,,,,,
+- keep the `qlikSenseHost` empty.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","amazon - internal DNS name.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","## Disable multi-tenancy",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","If you only have 1 tenant, but for example with multiple departments, you can also use QRSMeteor to create an app per department",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","set `""multiTenantScenario"": true`, if you do this we will create a custom property for each department",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","In the setting `customerDataDir` you can configure where you want to put your files relevant for each department. (a department = a customer in step 1 of the SaaS provsioning demo)",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","`""automaticCleanUpGeneratedApps"": ""Yes"",` will delete the generated apps every x days.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","# Additional settings",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","`automationBaseFolder` defines the root folder where QRSmeteor will find your
+- apps (any apps you put here will automatically be uploaded)
+- extensions to upload and install automatically
+- `export` folders will export the settings for example of the security rules or the customProperties, proxies, which you can then monitor with your version management software.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","## Automatically create virtual proxies via an import file",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","If you put a JSON file in `.automation\proxy\import\virtualProxySettings.json` QRSMeteor will automatically create the virtual proxies specified.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","## Automatically create security and license rules via an import file",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","If you put a JSON file in `.automation\securityrules\import\securityRuleSettings.json` QRSMeteor will automatically create or disable the rules specified.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","# obsolete settings",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Configure our Meteor demo server: settings-development.json","`
+""installationFilePath"": ""C:\\Qlik Sense Server.exe"",
+            ""sharedPersistanceFolder"": ""C:\\QlikSenseShare"",
+            ""sharedPersistanceFolderName"": ""QlikSenseShare"",
+`",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","# This slide is only relevant if you already have an existing Qlik Sense server",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","> Please note that QRSMeteor will set some settings in Qlik based on your `settings-development.json` file.
 - ports will be changed
@@ -2087,21 +2108,21 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Provide a domain and user for a `root admin` in Qlik Sense in the ` connectToSenseAsUserDirectory` and             `connectToSenseAsUser`  parameters",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","qrsMeteor - minimum settings to update when you install on same machine.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Go to your project root `C:\GitHub\QRSMeteor`",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Try to startup your server","You need to run `QRS start.bat` 2 times (3 times because of a bug) and adjust the settings-development.json in between:
+"Install integration.qlik.com on a blank windows server","Try to startup your server","You need to run `QRS start.bat` 2 times and adjust the settings-development.json in between:
 - the first time it will install Qlik Sense
-- after you get the message that Qlik Sense has been installed, wait 20 minutes, to ensure the silent installation of Qlik Sense has completed. (check that you can open the QMC, but do no do anything)
+- after you get the message that Qlik Sense has been installed, wait 20 minutes, to ensure the silent installation of Qlik Sense has completed. (check that you can open the QMC, but do not do anything)
 - next, run `QRS start.bat` again, now it will configure Qlik Sense",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# First run of QRS Start.bat",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","This will create the `spc.cfg` file which contains all settings for Qlik Sense silent installation. ",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Run `QRS start.bat` as `administrator`
 - Tip: if you want to see the error (if any), its easier to first open a command window, and start the bat from there. If you don't run as admin you won't be able to read the Qlik Sense certificates... (EPERM error)",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Try to startup your server","The screen will freeze (This is a bug in meteor), stop it (exit screen), and `Run `QRS start.bat` as again as `administrator`",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - example of startup bat.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# install Qlik Sense",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Run `startSilentInstall.ps1` as administrator in your `C:\GitHub\QRSMeteor\.automation\InstallationSoftware` folder and wait 30 minutes (till Sense installation is finished)",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","press `Y` if asked (Do you want to change the execution policy?)",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","## Sense not installed?",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","If Sense icons do not appear on the desktop, check your `log` in `C:\GitHub\QRSMeteor\.automation\InstallationSoftware`",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Try to startup your server","The silent install won't run if it recognized Sense has already been installed once. ",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","The silent install won't run if it recognized Sense has already been installed once.  Remove Sense via add/remove programs, make sure you also delete the qlik folder in `c:\programdata\qlik`  if it failed half way...",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Note that even though the log file says `About to quit this session (with exit code 0).
 ` things are still being installed in the background...",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","silent installation - key components to monitor.png",,,,,,,,,
@@ -2130,6 +2151,7 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 - Sense is down, firewall blocks access
 - wrong hostnames
 - Amazon only: make sure you put the internal DNS name (find with `nslookup`) in the `internalLanIp` like  `ip-172-31-21-216.eu-central-1.compute.internal`. In your other host files you normally would put your external (elastic Ip) address.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors?","amazon - ECONNREFUSED error.png",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Errors?","If you get an error with the app upload: 
 - go to the qmc, and check that `allow http` is enabled on port 81.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Errors?","You can also check the manual SaaSdemo installation [manual](http://integration.qlik.com/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.docx)",,,,,,,,,
