@@ -402,7 +402,7 @@ Basically there are 3 main ways of embedding Qlik Sense:
  - through an IFrame: This method allows to embed the full hub, a complete app, complete sheets or a collection of multiple apps.
  It allows Qlik Sense to be embedded is a fast and easy way. When using IFrame you are using the layout and objects define in Qlik Sense.
  - With Div tags you have the possibility to embed individual objects in a web page.  A Div tag is nothing more than a reserved place on a webpage. This allows you to make a customized webpage, that used Qlik Sense object.
-Finally you can use Qlik Sense APIs to provide the data. In the JavaScript charts can be built on the fly through our API or  external visualizations (Eg. D3 charts)",,,,,,,,,
+- Finally you can use Qlik Sense APIs to provide the data. In the JavaScript charts can be built on the fly through our API or  external visualizations (Eg. D3 charts)",,,,,,,,,
 "Web integration","Choose the level of integration you like...","web - difference QAP and Qlik sense enterprise sheet versus our client.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Choose the level of integration you like...","Use our complete client, or embed a sheet, chart or the data... ",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Choose the level of integration you like...","!comment
@@ -2116,9 +2116,10 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Try to startup your server","This will create the `spc.cfg` file which contains all settings for Qlik Sense silent installation. ",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Run `QRS start.bat` as `administrator`
 - Tip: if you want to see the error (if any), its easier to first open a command window, and start the bat from there. If you don't run as admin you won't be able to read the Qlik Sense certificates... (EPERM error)",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Try to startup your server","if it hangs at `processing files...`, stop, and restart qrs start.bat",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - example of startup bat.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# install Qlik Sense",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Try to startup your server","Run `startSilentInstall.ps1` as administrator in your `C:\GitHub\QRSMeteor\.automation\InstallationSoftware` folder and wait 30 minutes (till Sense installation is finished)",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","Run `startSilentInstall.ps1` as administrator in your `C:\GitHub\QRSMeteor\.automation\InstallationSoftware` folder and wait 30 minutes (till Sense installation is finished). Its best to open powershell as administrator, go to the dir and run it.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","press `Y` if asked (Do you want to change the execution policy?)",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","## Sense not installed?",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","If Sense icons do not appear on the desktop, check your `log` in `C:\GitHub\QRSMeteor\.automation\InstallationSoftware`",,,,,,,,,
@@ -2127,8 +2128,9 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 ` things are still being installed in the background...",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","silent installation - key components to monitor.png",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# Adjust settings",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Try to startup your server","Now open your `settings-development.json` and set `""installQlikSense"": false`",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","Now open your `settings-development.json` and set `""installQlikSense"": false` and save it.",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# Second run of QRS Start.bat",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","QRSMeteor will detect the change in settings file and will try to reload itself...",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","The second time, QRSMeteor will configure Qlik Sense:
 - Insert license
 - Setup user access rules
@@ -2141,24 +2143,59 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Try to startup your server","If everything went succesful you will see this message",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - make sure you see the app ids after startup.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","now you can start your browser and go to `localhost:3000`",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Errors?","# Missing packages",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Errors?","Missing packages?
+"Install integration.qlik.com on a blank windows server","Also using SenseWebIntegration?","This demo shows the web integration options with
+- IFrame
+- DIV
+- Data only",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Also using SenseWebIntegration?","# authentication redirect",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Also using SenseWebIntegration?","Normally we get the authenticated user via a
+- authentication redirect, so make sure this redirect is properly configured in the virtual proxy `meteor`.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Also using SenseWebIntegration?","sensewebintegration - authentication redirect does not work.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Also using SenseWebIntegration?","# Update settings",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Also using SenseWebIntegration?","Update the `settings-development.json`, specify the Sales app ID in the everyonen stream.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Also using SenseWebIntegration?","sensewebintegration - update the settings file.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Also using SenseWebIntegration?","# insert returnUrl in the Qlik Sense server",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Also using SenseWebIntegration?","To make sure the user is always authenticated you can put a small [HTML file](\public\docs) on the Qlik Sense server. (C:\Program Files\Qlik\Sense\Client\returnUrl.html)",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Also using SenseWebIntegration?","```HTML
+<!doctype html>
+<html><head><script>window.location=decodeURIComponent((RegExp('returnUrl=(.+?)(&|$)').exec(location.search)||[,null])[1]);</script></head></html>
+```",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Also using SenseWebIntegration?","sensewebintegration - return url.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","# Missing packages",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","Missing packages?
 - run `meteor npm install --save` in your project root via `command`
 - npm install errors? Delete your node_modules directory, and package-lock file in your project root, and run `meteor npm install` again.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Errors?","# Cannot connect to Sense",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Errors?","Note: make sure you check error messages in the logs (on the screen). For example, if you QRSMeteor can't connect to Sense you will get a timeout on the last API call: `GET /APPS/FULL`
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","# Cannot connect to Sense",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","Note: make sure you check error messages in the logs (on the screen). For example, if you QRSMeteor can't connect to Sense you will get a timeout on the last API call: `GET /APPS/FULL`
 - wrong certificates
 - Sense is down, firewall blocks access
 - wrong hostnames
-- Amazon only: make sure you put the internal DNS name (find with `nslookup`) in the `internalLanIp` like  `ip-172-31-21-216.eu-central-1.compute.internal`. In your other host files you normally would put your external (elastic Ip) address.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Errors?","amazon - ECONNREFUSED error.png",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Errors?","If you get an error with the app upload: 
+- Amazon only: make sure you put the internal DNS name (find with `nslookup`) in the `internalLanIp` like  `ip-172-31-21-216.eu-central-1.compute.internal`. In your other host files you normally would put your external (elastic Ip) address.
+- Amazon: make sure you manually insert the `external DNS` in the virtual proxy `whitelist`` of EACH virtual proxy.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","qrsmeteor - insert amazon external dns in whitelist.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","amazon - ECONNREFUSED error.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","If you get an error with the app upload: 
 - go to the qmc, and check that `allow http` is enabled on port 81.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Errors?","You can also check the manual SaaSdemo installation [manual](http://integration.qlik.com/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.docx)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Errors?","# Forbidden",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Errors?","if you get `403 forbidden` the most likely case is that your license has not been inserted yet. 
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","You can also check the manual SaaSdemo installation [manual](http://integration.qlik.com/docs/Qlik%20Sense%20SaaS%20demo%20tool%20setup%20instructions.docx)",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","# Forbidden",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","if you get `403 forbidden` the most likely case is that your license has not been inserted yet. 
 - insert your license manually in the QMC
 - then start `qrs start.bat` again.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","# SSBI or slide generator app not found",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","- It could be the `internallanIP` is wrong, we use header authentication to get the apps
+- or you use the wrong/empty websocket whitelist
+- see if you can get the apps via `Postman`",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","qrsmeteor - get app via header authentication.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","qrsmeteor - make sure you use the correct app and streannames for the slide generator and ssbi app.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","# Connect to Qlik Sense from a remote server?",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","Make sure the amazon security groups as well as the windows firewall are open",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","Make sure you connect with the correct `domain\username` in `connectToSenseAsUserDirectory` and `connectToSenseAsUser` in the `settings-development.json` file. On a single computer (no AD), your domain is the `hostname`.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors SenseWebIntegration","qrsmeteor - connection refused.png",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors SenseWebIntegration","Make sure your the following settings are correct:
+- redirect url in `meteor` and CORS header (*) in virtual proxy,
+- hostnames
+- ports
+- whitelist entries",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Link overview","# if you only ran Qlik Sense silent install",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Link overview","[Qlik Sense hub](https://localhost)",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Link overview","[Qlik Sense qmc](https://localhost/qmc)",,,,,,,,,
@@ -4176,7 +4213,7 @@ or
 "Architecture","Two server environment","architecture - two servers.png",,,,,,,,,
 "Architecture","Growth environment","architecture - multiple servers environment.png",,,,,,,,,
 "Architecture","Enterprise or scalable OEM environment","architecture - multiple servers enterprise OEM environment.png",,,,,,,,,
-"Architecture","Extranet Deployment – EMM Gateway","Extranet Deployment EMM Gateway.png",,,,,,,,,
+"Architecture","Extranet Deployment – EMM Gateway","Extranet Deployment – EMM Gateway.png",,,,,,,,,
 "Architecture","Architecting for Recoverability
 - backup and recovery","architecture - Architecting for Recoverability.png",,,,,,,,,
 "Architecture","How does the persistance layer work?","architecture - how does the persistance layer work.png",,,,,,,,,
@@ -4294,16 +4331,3 @@ STORE QV_Table INTO File.QVD;
 * Responsive and smart
 * 1 app for  mobile, desktop and web integration
 * No fat clients",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Integrate and embed anything you like","> **INTEGRATION.QLIK.COM**",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Real time race analytics","iframe http://192.168.0.124:3000/rta",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Introduction","01.jpg",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Test your race skills today","03.jpg",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Will you beat the competition?","Qlik race game cars.png",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","The IoT sensors will do all the work... (almost!)","04.jpg",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Race analytics","iframe https://qlik-db3heeeb33/single/?appid=536f92fa-b323-4d3a-8ff3-b90126c61b08&sheet=20975126-8493-4c6d-9a47-d9d50d5b4c3a&select=clearall
-",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Race comparison","iframe https://qlik-db3heeeb33/single/?appid=536f92fa-b323-4d3a-8ff3-b90126c61b08&sheet=537e1f20-3e90-4f31-86a0-71fbfb2a3515&select=clearall",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Winner of today","iframe 
-https://qlik-db3heeeb33/single/?appid=536f92fa-b323-4d3a-8ff3-b90126c61b08&sheet=4bed9741-6475-486b-8364-52ae255ddbee&select=clearall",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Integration.qlik.com","> Do you also want to have a site powered the by the Qlik associative engine? Then visit the slide generator at  **integration.qlik.com**",,,,,,,,,
-"Qlik Race Game powered by the slide generator at  integration.qlik.com","Example flow: We connect to MongoDB and used the data in our website via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,,,,,,,,
