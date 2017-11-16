@@ -83,8 +83,10 @@
   //step 4 of the demo logs in a dummy user, not the user that has e.g. logged in with facebook
   function redirectDummyUser(senseParams) {
       console.log('SSO page, redirect dummy user step 4 meteor proxy, Meteor.userId()', Meteor.userId())
-
-      Meteor.call('getRedirectUrl', senseParams.proxyRestUri, senseParams.targetId, Meteor.userId(), (error, redirectUrl) => {
+      console.log('------------------------------------');
+      console.log('we try to request a ticket at this URL, make sure this is the correct hostname, externally accessible...', senseParams);
+      console.log('------------------------------------');
+      Meteor.call('getRedirectUrl', 'https://' + Meteor.settings.public.qlikSenseHost + ':4243/qps/meteor/', senseParams.targetId, Meteor.userId(), (error, redirectUrl) => {
           Session.set('SSOLoading', false);
           if (error) {
               sAlert.error(error);
