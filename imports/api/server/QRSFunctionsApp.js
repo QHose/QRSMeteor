@@ -388,6 +388,9 @@ function checkTemplateAppExists(generationUserId) {
             'generationUserId': Meteor.userId()
         })
         .fetch();
+
+    console.log('templateApps', templateApps)
+
     if (templateApps.length === 0) { //user has not specified a template
         throw new Meteor.Error('No Template', 'user has not specified a template for which apps can be generated');
     }
@@ -530,7 +533,7 @@ export function getApps(name, stream) {
     try {
         return qrs.get(call.request);
     } catch (error) {
-        console.error('We can not connect to Qlik Sense', error);
+        console.error('Error in getting the apps: we can not connect to Qlik Sense', error);
     }
 };
 

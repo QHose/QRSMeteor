@@ -21,6 +21,8 @@ export var myQRS = function myQRSMain() {
                 params: newParams,
                 data: {},
             });
+
+            console.log('QRS GET result: response.data', response.data);
             return response.data;
         } catch (err) {
             var error = 'QRS HTTP GET FAILED FOR ' + endpoint;
@@ -86,10 +88,14 @@ export var myQRS = function myQRSMain() {
 };
 
 function checkPath(path) {
+    console.log('checkPath: path', path);
+    console.log('checkPath: qrsSrv', qrsSrv);
+
     try {
         check(path, String);
+        check(qrsSrv, String);
     } catch (err) {
-        throw Error("QRS module can use path: " + path + " for the QRS API, settings.json correct?")
+        throw Error("QRS module can not use an empty server: " + qrsSrv + " or path: " + path + " for the QRS API, settings.json correct?")
     }
     return qrsSrv + path;
 }
