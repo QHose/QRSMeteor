@@ -71,22 +71,24 @@
       // console.log('call the server with options reveived from Qlik Sense QPS response: ', senseParams);
       var currentPage = Router.current().route.getName();
       // console.log('router current route ',Router.current().route.getName());
-      if (currentPage === 'presentationsso') {
+      if (currentPage === 'presentationsso') { // V2 of QRSmeteor requests a ticket up front, so we prevent extra delays for a redirect.
           // console.log('PRESENTATION TICKET REQUEST: request a ticket for the user logged in into integration.qlik.com (meteorJS)');
           //   redirectPresentationUser(senseParams);
-          throw new Meteor.Error('you should not be redirected to the SSO page since we requested a ticket before we showed the content like an IFrame...');
+          sAlert.error('you should not be redirected to the SSO page since we requested a ticket before we showed the content like an IFrame...');
       } else { //login a dummy user of step 4 or for the ssbi demo
           redirectDummyUser(senseParams);
       }
   };
 
   //step 4 of the demo logs in a dummy user, not the user that has e.g. logged in with facebook
+  //if no customers and users are created in step 1, we will create a dummy user called john.
   function redirectDummyUser(senseParams) {
       console.log('SSO page, redirect dummy user step 4 meteor proxy, Meteor.userId()', Meteor.userId())
       console.log('------------------------------------');
-      console.log('we try to request a ticket at this URL, make sure this is the correct hostname, externally accessible...', senseParams);
+      var hardcodedProxyUrl = 'https://' + Meteor.settings.public.qlikSenseHost + ':4243/qps/meteor/';
+      console.log('We try to request a ticket at this URL, make sure this is the correct hostname, externally accessible...', hardcodedProxyUrl);
       console.log('------------------------------------');
-      Meteor.call('getRedirectUrl', 'https://' + Meteor.settings.public.qlikSenseHost + ':4243/qps/meteor/', senseParams.targetId, Meteor.userId(), (error, redirectUrl) => {
+      Meteor.call('getRedirectUrl', hardcodedProxyUrl, senseParams.targetId, Meteor.userId(), (error, redirectUrl) => {
           Session.set('SSOLoading', false);
           if (error) {
               sAlert.error(error);

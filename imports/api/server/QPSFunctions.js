@@ -509,11 +509,11 @@ export function getRedirectURL(passport, proxyRestUri, targetId, generationUserI
         REST_Log(call, generationUserId);
     } catch (err) {
         console.error('REST call to request a ticket failed', err);
-        throw new Meteor.Error('Request ticket failed', err.message);
+        throw new Meteor.Error('Request ticket failed via getRedirectURL', err.message);
     }
 
-    // console.log('The HTTP REQUEST to Sense QPS API:', call.request);
-    // console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
+    console.log('The HTTP REQUEST to Sense QPS API:', call.request);
+    console.log('The HTTP RESPONSE from Sense QPS API: ', call.response);
     var ticketResponse = call.response.data;
     call.action = 'STEP 6: Use response from our ticket request to create redirect url';
     call.request = 'Use the redirect url we got back and the ticket string to make a redirect url for the client. Format: ' + ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket + '. JSON received: ' + ticketResponse;
@@ -530,6 +530,6 @@ export function getRedirectURL(passport, proxyRestUri, targetId, generationUserI
     if (!redirectURI) {
         redirectURI = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/' + hub;
     }
-    // console.log('Meteor server side created this redirect url: ', redirectURI);
+    console.log('Meteor server side created this redirect url: ', redirectURI);
     return redirectURI;
 }
