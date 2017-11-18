@@ -41,3 +41,11 @@ Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
 
 & $QlikSenseInstaller -s -l ".\log.txt" spc='.\spc.cfg' userwithdomain="$env:COMPUTERNAME\$Username" userpassword=$Password
 Write-Output "Qlik Sense is installer is now running in the background, please wait 20 minutes... If ready you will see the shortcuts on your desktop. Try to open the QMC, but don't do anything... Next you can start QRSSTART.BAT for the second time. Make sure you adjust the settings-...Json file. set installQlikSense to false."
+
+# If running in the console, wait for input before closing.
+if ($Host.Name -eq "ConsoleHost")
+{ 
+    Write-Host "Press any key to continue..."
+    $Host.UI.RawUI.FlushInputBuffer()   # Make sure buffered input doesn't "press a key" and skip the ReadKey().
+    $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp") > $null
+}

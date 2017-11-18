@@ -4,7 +4,7 @@
     "public": {
         "qlikSenseHost": "",
         "SenseServerInternalLanIP": "",
-        "webIntegrationHost": "QLIK-AB0Q2URN5T",
+        "webIntegrationHost": "",
         "TemplateAppStreamName": "Templates",
         "qlikSensePort": 81,
         "proxyPort": 90,
@@ -59,16 +59,10 @@
             "proxyAllowHTTP": true
         },
         "dataConnections": [{
-                "name": "Another folder connection",
-                "type": "folder",
-                "connectionString": "C:\\"
-            },
-            {
-                "name": "qrs-sessions",
-                "connectionstring": "http://localhost:5555/data?connectorID=MongoDBConnector&table=Collection&server=192.168.0.124&port=27017&database=game&collection=session&appID=",
-                "type": "internet"
-            }
-        ]
+            "name": "Another folder connection",
+            "type": "folder",
+            "connectionString": "C:\\"
+        }]
     },
     "security": {
         "rulesToDisable": ["Stream", "CreateAppObjectsPublishedApp", "CreateApp", "ExportAppData", "StreamEveryoneAnonymous"]
