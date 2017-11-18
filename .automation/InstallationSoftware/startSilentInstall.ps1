@@ -5,7 +5,7 @@ New-Item $SHARED_FOLDER –type directory
 New-SmbShare –Name $SHARED_NAME –Path $SHARED_FOLDER –FullAccess Everyone  
 
 $Username = "qService"
-$Password = "Qlik123"
+$Password = "Qlik123!@#$%"
 
 $group = "Administrators"
 
