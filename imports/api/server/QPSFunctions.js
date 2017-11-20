@@ -118,6 +118,15 @@ function linkVirtualProxyToProxy(virtualProxy) {
         // ADD THE NEW VIRTUAL PROXY TO THE EXISTING PROXY LIST
     proxyConfig.settings.virtualProxies.push(virtualProxy)
 
+    try {
+        check(Meteor.settings.broker.qlikSense.proxyAllowHTTP, String);
+        check(Meteor.settings.broker.qlikSense.proxyAllowHTTP, String);
+        check(Meteor.settings.broker.qlikSense.proxyAllowHTTP, String);
+
+    } catch (error) {
+
+    }
+
     //UPDATE SOME PROXY SETTINGS
     console.log('UPDATE SOME PROXY SETTINGS...')
     proxyConfig.settings.unencryptedListenPort = Meteor.settings.public.qlikSensePort; //HTTP    
