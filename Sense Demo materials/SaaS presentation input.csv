@@ -2108,10 +2108,11 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","Provide a domain and user for a `root admin` in Qlik Sense in the ` connectToSenseAsUserDirectory` and             `connectToSenseAsUser`  parameters",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Optional: if you want to use an existing Sense server","qrsMeteor - minimum settings to update when you install on same machine.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Go to your project root `C:\GitHub\QRSMeteor`",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Try to startup your server","You need to run `QRS start.bat` 2 times and adjust the settings-development.json in between:
-- the first time it will install Qlik Sense
-- after you get the message that Qlik Sense has been installed, wait 20 minutes, to ensure the silent installation of Qlik Sense has completed. (check that you can open the QMC, but do not do anything)
-- next, run `QRS start.bat` again, now it will configure Qlik Sense",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","You need to run `QRS start.bat` 2 times, run a powershell script and adjust the settings-development.json in between:
+- the first time it will create a *configuration file*  (with the hostnames, and shared folder locations) for the Sense Silent installation.
+- run a script to install Sense
+- adjust settings file. (via this adjustment we let the QRSMeteor know Sense is ready...)
+- The second time you run `QRS start.bat` it will configure Qlik Sense (Create security rules, streams, apps etc). ",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# First run of QRS Start.bat",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","This will create the `spc.cfg` file which contains all settings for Qlik Sense silent installation. ",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Run `QRS start.bat` as `administrator`
@@ -2119,10 +2120,13 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Try to startup your server","if it hangs at `processing files...`, stop, and restart qrs start.bat",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - example of startup bat.png",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","# install Qlik Sense",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Try to startup your server","Run `startSilentInstall.ps1` as administrator in your `C:\GitHub\QRSMeteor\.automation\InstallationSoftware` folder and wait 30 minutes (till Sense installation is finished). Its best to open powershell as administrator, go to the dir and run it.",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Try to startup your server","press `Y` if asked (Do you want to change the execution policy?)",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Try to startup your server","## Sense not installed?",,,,,,,,,
-"Install integration.qlik.com on a blank windows server","Try to startup your server","If Sense icons do not appear on the desktop, check your `log` in `C:\GitHub\QRSMeteor\.automation\InstallationSoftware`",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","Double click `start.bat` in your `C:\GitHub\QRSMeteor\.automation\InstallationSoftware` folder and wait 30 minutes (till Sense installation is finished).",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","## Issues? Sense not installed?",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","Make sure the `qService` user is created, if not, do it manually. Check the password in the `startSilentInstall.ps1` file.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","- Open `C:\Windows\system32\cmd.exe`
+Run the command `powershell Set-ExecutionPolicy RemoteSigned`
+- if it still does not work, install it by hand, and follow further instructions on the previous slide.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Try to startup your server","If Sense icons do not appear on the desktop, check your `log.txt` in `C:\GitHub\QRSMeteor\.automation\InstallationSoftware`. Sometimes the password does not meet policy requirements. Or you share is not created because of insufficient rights...",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","The silent install won't run if it recognized Sense has already been installed once.  Remove Sense via add/remove programs, make sure you also delete the qlik folder in `c:\programdata\qlik`  if it failed half way...",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","Note that even though the log file says `About to quit this session (with exit code 0).
 ` things are still being installed in the background...",,,,,,,,,
@@ -2142,7 +2146,7 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - running in progress initial setup of qlik sense.png",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Try to startup your server","If everything went succesful you will see this message",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Try to startup your server","qrsmeteor - make sure you see the app ids after startup.png",,"","","","","         0","0","Deep dive",
-"Install integration.qlik.com on a blank windows server","Try to startup your server","now you can start your browser and go to `localhost:3000`",,"","","","","         0","0","Deep dive",
+"Install integration.qlik.com on a blank windows server","Try to startup your server","Now you can start your browser and go to `localhost:3000`, Sense is running on port `81`.",,"","","","","         0","0","Deep dive",
 "Install integration.qlik.com on a blank windows server","Also using SenseWebIntegration?","This demo shows the web integration options with
 - IFrame
 - DIV
@@ -2190,6 +2194,13 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","# Connect to Qlik Sense from a remote server?",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","Make sure the amazon security groups as well as the windows firewall are open",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","Make sure you connect with the correct `domain\username` in `connectToSenseAsUserDirectory` and `connectToSenseAsUser` in the `settings-development.json` file. On a single computer (no AD), your domain is the `hostname`.",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","# request ticket fails: target unkown",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","- you use an incorrect hostname or virtual proxy name
+- this can also happen if you mix internal dns with external hostnames",,,,,,,,,
+"Install integration.qlik.com on a blank windows server","Errors QRSMeteor?","`
+ { statusCode: 400,
+     content: 'Specified targetId eb6f72e1-dce4-407f-b559-87395bbe6de8 was unkno                                                                                        wn'
+`",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Errors SenseWebIntegration","qrsmeteor - connection refused.png",,,,,,,,,
 "Install integration.qlik.com on a blank windows server","Errors SenseWebIntegration","Make sure your the following settings are correct:
 - redirect url in `meteor` and CORS header (*) in virtual proxy,
