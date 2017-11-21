@@ -52,7 +52,6 @@ Template.ApiLogsTable.helpers({
         return APILogs.find({}, {
             fields: {
                 'response.content': 0,
-                // 'response.headers.set-cookie': 0 
             },
             sort: { createDate: -1 }
         });
@@ -65,10 +64,11 @@ Template.ApiLogsTable.helpers({
 
 //convert a js object to a html string with extra classes added. 
 function formatResponse(value) {
-    if(value) {
+    if (value) {
         var objectToString = new Spacebars.SafeString(JSON.stringify(value, undefined, 2));
-        var highlighted = hljs.highlightAuto(objectToString.string).value;
-        return highlighted;
+        return objectToString;
+        // var highlighted = hljs.highlightAuto(objectToString.string).value;
+        // return highlighted;
     }
 }
 
