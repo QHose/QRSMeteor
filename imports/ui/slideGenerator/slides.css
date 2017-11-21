@@ -118,36 +118,40 @@ html {
 }
 
 
-/* 
+/*********************************************
+ * HEADERS
+ *********************************************/
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+blockquote .reveal h5,
+.reveal h6 {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
+    line-height: 1;
+}
+
 .reveal h1 {
     font-size: 1.2em;
+    margin-top: 20px;
 }
 
 .reveal h2 {
-    font-size: 1.1em;
+    font-size: 1em;
+    margin-top: 15px;
 }
 
 .reveal h3 {
-    font-size: 1.05em;
-    =======font-size: 1.4em;
-}
-
-.reveal h2 {
-    font-size: 1.3em;
-}
-
-.reveal h3 {
-    font-size: 1.2em;
-    >>>>>>>23dcc5da16d2eaf1e901f71e797315259d8cd6b0
+    font-size: 1em;
+    color: #959595;
 }
 
 .reveal h4 {
     font-size: 1em;
 }
-
-.reveal h1 {
-    text-shadow: none;
-} */
 
 
 /*********************************************
@@ -239,7 +243,7 @@ html {
 .reveal q,
 .reveal blockquote {
     quotes: none;
-    /* font-size: 2em; */
+    font-size: 1.3em;
 }
 
 .reveal blockquote {

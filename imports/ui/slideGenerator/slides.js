@@ -207,7 +207,7 @@ Template.registerHelper('formatted', function(text) {
     // ─── IMAGE ──────────────────────────────────────────────────────────────────────
     //        
     else if (checkTextIsImage(text)) {
-        return '<img class="ui massive rounded bordered image"  src="images/' + text + '"/>';
+        return '<div class="ui container"> <img class="ui massive rounded bordered image"  style="width: 100%;" src="images/' + text + '"/></div>';
     } else if (text.startsWith(embeddedImageMarker)) { //embedded image in text
         var textMarker = text.split(embeddedImageMarker).pop();
         return '<img class="ui massive rounded bordered image"  alt="Embedded Image" src="data:image/png;base64,' + textMarker + '"/>';
