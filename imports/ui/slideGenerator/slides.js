@@ -78,7 +78,7 @@ function initializeReveal() {
 //
 
 Template.slideContent.onRendered(function() {
-    // this.subscribe('tracker');
+    this.subscribe('tracker');
     Tracker.insert({
         userId: Meteor.userId,
         userName: Meteor.user().profile.name,

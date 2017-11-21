@@ -250,11 +250,12 @@ blockquote .reveal h5,
     display: block;
     position: relative;
     /* width: 70%; */
-    margin: 20px auto;
-    padding: 5px;
+    /* margin: 20px auto; */
+    /* padding: 5px; */
     font-style: italic;
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+    border: none;
+    /* background: rgba(255, 255, 255, 0.05); */
+    /* box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); */
 }
 
 .reveal blockquote p:first-child,
