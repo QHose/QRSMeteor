@@ -24,7 +24,7 @@ Template.slides.onDestroyed(function() {
 })
 
 Template.slides.onRendered(function() {
-    console.log('slides template rendered');
+    // console.log('slides template rendered');
     if (!Session.get('slideData')) {
         console.log('------------------------------------');
         console.log('No slide data present in session, reroute the use back to the useCaseSelection screen.');
@@ -37,7 +37,7 @@ Template.slides.onRendered(function() {
 
 function initializeReveal() {
     window.Reveal = Reveal;
-    console.log('initializeReveal', Reveal);
+    // console.log('initializeReveal', Reveal);
     try {
         Reveal.initialize({
             width: window.innerWidth - 80,
@@ -167,7 +167,7 @@ Template.registerHelper('formatted', function(text) {
     // ─── YOUTUBE ────────────────────────────────────────────────────────────────────
     //
     if (youtube_parser(text)) { //youtube video url
-        console.log('found an youtube link so embed with the formatting of semantic ui', text)
+        // console.log('found an youtube link so embed with the formatting of semantic ui', text)
         var videoId = youtube_parser(text);
         var html = '<div class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div></div>'
             // console.log('generated video link: ', html);

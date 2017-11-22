@@ -183,7 +183,7 @@ blockquote .reveal h5,
 
 .reveal iframe {
     width: 100vw;
-    height: calc(100vh - 250px);
+    height: calc(100vh);
     margin: 0px 20px 20px 20px;
     max-width: 100%;
     /* max-height: calc(100vh - 180px); */

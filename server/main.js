@@ -334,7 +334,7 @@ Meteor.methods({
         }
     },
     upsertTemplate(selector, currentApp) {
-        console.log('upsert template')
+        console.log('user ' + Meteor.userId() + ' selected a template app: ' + currentApp.name)
         TemplateApps.upsert(selector, {
             $set: {
                 name: currentApp.name,

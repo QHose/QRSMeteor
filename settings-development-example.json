@@ -1,6 +1,5 @@
 {
     "adminEmails": "mbj@qlik.com",
-    "multiTenantScenario": false,
     "public": {
         "qlikSenseHost": "",
         "SenseServerInternalLanIP": "",
@@ -48,13 +47,13 @@
         "runInitialQlikSenseSetup": true,
         "qlikSense": {
             "installQlikSense": true,
+            "multiTenantScenario": false,
             "connectToSenseAsUserDirectory": "",
             "connectToSenseAsUser": "",
             "proxyAllowHTTP": true,
             "StreamsToCreateAutomatically": ["API apps", "Templates", "Everyone", "QA", "TEST"],
             "APIAppStreamName": "API apps",
-            "EveryoneAppStreamName": "Everyone",
-            "proxyAllowHTTP": true
+            "EveryoneAppStreamName": "Everyone"
         },
         "dataConnections": [{
             "name": "Another folder connection",

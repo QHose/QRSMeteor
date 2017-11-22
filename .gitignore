@@ -21,3 +21,4 @@ public/docs/~$ik Sense SaaS demo tool setup instructions.docx
 .automation/securityrules/export/ExtractedSystemRules.json
 .automation/proxy/export/proxyServiceConfiguration.json
 package-lock.json
+.automation/customProperties/export/ExtractedCustomProperties.json

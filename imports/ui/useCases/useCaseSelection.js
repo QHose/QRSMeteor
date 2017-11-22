@@ -159,10 +159,10 @@ export async function getQix() {
             },
             listeners: {
                 'notification:*': (event, data) => {
-                    console.log('Engima: event ' + event, 'Engima: data ' + JSON.stringify(data))
-                        // if (authInfo.mustAuthenticate) { //if the user is not authenticated anymore request a new ticket and get a new connection
-                        //     getQix();
-                        // }
+                    // console.log('Engima: event ' + event, 'Engima: data ' + JSON.stringify(data))
+                    // if (authInfo.mustAuthenticate) { //if the user is not authenticated anymore request a new ticket and get a new connection
+                    //     getQix();
+                    // }
                     var call = {};
                     call.action = 'Engine API reponse';
                     call.url = '';
@@ -172,7 +172,7 @@ export async function getQix() {
                 }
             },
             handleLog: (message) => {
-                console.log('Engima handleLog: ', message);
+                // console.log('Engima handleLog: ', message);
                 var call = {};
                 call.action = 'Engine API handleLog';
                 call.url = '';

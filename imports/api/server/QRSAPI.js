@@ -22,7 +22,7 @@ export var myQRS = function myQRSMain() {
                 data: {},
             });
 
-            console.log('QRS GET result: response.data', response.data);
+            console.log('QRS GET result: response.data length: ', response.data.length);
             return response.data;
         } catch (err) {
             var error = 'QRS HTTP GET FAILED FOR ' + endpoint;

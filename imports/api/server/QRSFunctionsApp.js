@@ -126,15 +126,24 @@ export async function uploadAndPublishTemplateApps() {
 }
 
 export async function generateStreamAndApp(customers, generationUserId) {
-    // console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
+    console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
 
-    var templateApps = checkTemplateAppExists(generationUserId); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
-    checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?
-    for (const customer of customers) {
-        for (const templateApp of templateApps) {
-            await generateAppForTemplate(templateApp, customer, generationUserId);
-        }
-    };
+    try {
+        var templateApps = checkTemplateAppExists(generationUserId); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
+        checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?
+
+        console.log('------------------------------------');
+        console.log('start generation for ', customers);
+        console.log('------------------------------------');
+        for (const customer of customers) {
+            for (const templateApp of templateApps) {
+                await generateAppForTemplate(templateApp, customer, generationUserId);
+            }
+        };
+    } catch (error) {
+        console.error(error);
+    }
+
 };
 
 export function setAppIDs(params) {
@@ -236,6 +245,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         check(customer.name, String);
         check(customerDataFolder, String);
         check(generationUserId, String);
+
         //connect to the engine
         var qix = await enigma.getService('qix', config);
         var call = {};
@@ -361,17 +371,17 @@ function deleteDirectoryAndDataConnection(customerName) {
 }
 
 async function createDirectory(customerName) {
-    console.error('createDirectory TURNED OFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', customerName)
-        // try {
-        //     check(customerName, String);
-        //     var filename = sanitize(customerName);
-        //     const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
-        //     console.log('Meteor.settings.broker.customerDataDir', dir)
-        //     await fs.ensureDir(dir)
-        //     return dir;
-        // } catch (error) {
-        //     throw new Meteor.Error('Failed to create directory for ', customerName);
-        // }
+    console.log('createDirectory ', customerName)
+    try {
+        check(customerName, String);
+        var filename = sanitize(customerName);
+        const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
+        console.log('Meteor.settings.broker.customerDataDir', dir)
+        await fs.ensureDir(dir)
+        return dir;
+    } catch (error) {
+        throw new Meteor.Error('Failed to create directory for ', customerName);
+    }
 
 }
 
@@ -384,31 +394,41 @@ function checkCustomersAreSelected(customers) {
 // CHECK IF SELECTED TEMPLATE APP EXISTS IN QLIK SENSE
 //These are the apps that the OEM partner has in his database, but do they still exists on the qliks sense side?
 function checkTemplateAppExists(generationUserId) {
+    console.log('------------------------------------');
+    console.log('checkTemplateAppExists for userID ', generationUserId)
+    console.log('------------------------------------');
+
     var templateApps = TemplateApps.find({
             'generationUserId': Meteor.userId()
         })
         .fetch();
-
-    console.log('templateApps', templateApps)
-
-    if (templateApps.length === 0) { //user has not specified a template
-        throw new Meteor.Error('No Template', 'user has not specified a template for which apps can be generated');
-    }
-
-    currentAppsInSense = getApps();
-    if (!currentAppsInSense) {
-        throw new Meteor.Error('No apps have been received from Qlik Sense. Therefore you have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
-    }
-    _.each(templateApps, function(templateApp) {
-        var templateFound = _.some(currentAppsInSense, ['id', templateApp.id]);
-
-        if (!templateFound) {
-            throw new Meteor.Error('You have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
-        } else {
-            // console.log('checkTemplateAppExists: True, template guid exist: ', templateApp.id);
-        }
-    })
     return templateApps;
+
+    // console.log('templateApps found: ', templateApps)
+
+    // if (templateApps.length === 0) { //user has not specified a template
+    //     throw new Meteor.Error('No Template', 'user has not specified a template for which apps can be generated');
+    // }
+
+    // currentAppsInSense = getApps();
+    // if (!currentAppsInSense) {
+    //     throw new Meteor.Error('No apps have been received from Qlik Sense. Therefore you have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
+    // }
+
+    // _.each(templateApps, function(templateApp) {
+    //     console.log('templateApp in MongoDB: ', templateApp)
+    //     var templateFound = _.some(currentAppsInSense, ['id', templateApp.id]);
+
+    //     if (!templateFound) {
+    //         console.log('------------------------------------');
+    //         console.log('!! template app exists in mongoDB but not in Qlik Sense');
+    //         console.log('------------------------------------');
+    //         throw new Meteor.Error('You have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
+    //     } else {
+    //         console.log('checkTemplateAppExists: True, template guid exist: ', templateApp.id);
+    //     }
+    // })
+    // return templateApps;
 };
 
 //
@@ -490,18 +510,18 @@ export function copyApp(guid, name, generationUserId) {
 
 
 function checkStreamStatus(customer, generationUserId) {
-    // console.log('checkStreamStatus for: ' + customer.name);
+    console.log('checkStreamStatus for: ' + customer.name);
     var stream = Streams.findOne({
         name: customer.name
     }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
     var streamId = '';
     if (stream) {
-        // console.log('Stream already exists: ', stream.id);
+        console.log('Stream already exists: ', stream.id);
         streamId = stream.id;
     } else {
-        // console.log('No stream for customer exist, so create one: ' + customer.name);
+        console.log('No stream for customer exist, so create one: ' + customer.name);
         streamId = QSStream.createStream(customer.name, generationUserId).id;
-        // console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
+        console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
     }
 
     return streamId;
@@ -512,6 +532,7 @@ function checkStreamStatus(customer, generationUserId) {
 //    
 
 export function getApps(name, stream) {
+    console.log('getApps ' + name + ' with stream: ' + stream);
     var path = '/qrs/app/full';
 
     //if a name/stream is provided only search the apps with this name
