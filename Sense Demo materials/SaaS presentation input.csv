@@ -1712,7 +1712,7 @@ function createNotificationListeners(){
     }
 }
 ```",,"","","","","         0","0","Deep dive",
-"Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","We created a [API overview](http://integration.qlik.com/ApiLogsTable) of the key API requests and responses. Try to generate some apps, or try to login with a user in SaaS provisioning demo step 4 and see the resulting calls. ",,"","","","","         0","0","Technical - 1 day, Deep dive",
+"Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","We created a [API overview](/apilogstable_embedded) of the key API requests and responses. Try to generate some apps, or try to login with a user in SaaS provisioning demo step 4 and see the resulting calls. ",,"","","","","         0","0","Technical - 1 day, Deep dive",
 "Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","<div class=""ui one column stackable center aligned page grid"">
    <div class=""column twelve wide"">
 <div class=""ui buttons"">
@@ -1725,7 +1725,7 @@ function createNotificationListeners(){
        </div>
 </div>
             ",,"","","","","         0","0","Technical - 1 day, Deep dive",
-"Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","<iframe src=""http://integration.qlik.com/ApiLogsTable"" class=""SenseEmbedFrame"" style=""margin-top: 20px""></iframe>",,"","","","","         0","0","Technical - 1 day, Deep dive",
+"Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","iframe /apilogstable_embedded",,"","","","","         0","0","Technical - 1 day, Deep dive",
 "Integration.qlik.com key API calls","Slide generator","> Let's look at a data driven use case: how do we get from raw data to slides?",,"","","","","         0","0","What is this slide generator?, Deep dive",
 "Integration.qlik.com key API calls","Engine API Slide generator flow: Extract the data from the app via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?, Deep dive",
 "Integration.qlik.com key API calls","Create a hierarchy of workshop contents","slide generator - workshop hierarchy.png",,"","","","","         0","0","What is this slide generator?, Deep dive",
