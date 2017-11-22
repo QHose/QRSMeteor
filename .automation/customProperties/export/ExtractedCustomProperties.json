@@ -2,14 +2,14 @@
   {
     "id": "c00660f2-3e78-4034-ae4a-312c4c5a6e37",
     "createdDate": "2017-11-22T16:39:11.290Z",
-    "modifiedDate": "2017-11-22T17:03:29.156Z",
+    "modifiedDate": "2017-11-22T18:02:12.214Z",
     "modifiedByUserName": "QLIK-AB0Q2URN5T\\qlikexternal",
     "name": "customer",
     "valueType": "Text",
     "choiceValues": [
-      "Gerlach LLC",
-      "Windler LLC",
-      "Johnson - Jaskolski"
+      "Vandervort and Sons",
+      "Bogisich, Fisher and Stehr",
+      "Wuckert - Mertz"
     ],
     "objectTypes": [
       "App",

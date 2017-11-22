@@ -241,6 +241,8 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
     config.appId = appId;
 
     try {
+        process.on('unhandledRejection', up => { //ignore 
+        })
         check(appId, String);
         check(customer.name, String);
         check(customerDataFolder, String);
@@ -306,6 +308,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         await qix.app.doSave();
 
         REST_Log(call, generationUserId);
+        process.on('unhandledRejection', up => { throw up })
     } catch (error) {
         console.error('error in reloadAppAndReplaceScriptviaEngine via Enigma.JS, did you used the correct schema definition in the settings.json file?', error);
     }
@@ -353,6 +356,7 @@ export async function createAppConnection(type, name, path) {
 
         //create folder connection 
         console.log('create folder connection, if you see a warning below that means the connection already existed.');
+
         var qConnectionId = await qix.app.createConnection({
             "qName": name,
             "qType": type,
