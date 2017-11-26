@@ -60,6 +60,8 @@ html {
     font-weight: normal;
     color: #484848;
     overflow: auto;
+    overflow-x: hidden;
+    /* overflow: hidden !important; */
 }
 
  ::selection {
@@ -183,8 +185,8 @@ blockquote .reveal h5,
 
 .reveal iframe {
     width: 100vw;
-    height: calc(100vh);
-    margin: 0px 20px 20px 20px;
+    height: calc(100vh - 195px);
+    margin: 0px 0px 20px 0px;
     max-width: 100%;
     /* max-height: calc(100vh - 180px); */
     /* max-width: 100%;
