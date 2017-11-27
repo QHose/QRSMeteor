@@ -269,6 +269,10 @@ export async function getAllSlides(qix, insertSectionBreakers = sectionBreakerCo
                 qDef: {
                     qFieldDefs: ['Level 3']
                 }
+            }, {
+                qDef: {
+                    qFieldDefs: ['Comment']
+                }
             }]
         }
     });

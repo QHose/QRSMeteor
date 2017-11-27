@@ -1,7 +1,6 @@
 settings-development.json
 settings-production.json
 .build/
-node_modules/
 settings.json
 *.txt
 *.cert
@@ -20,5 +19,4 @@ public/docs/~$ik Sense SaaS demo tool setup instructions.docx
 .automation/InstallationSoftware/spc.cfg
 .automation/securityrules/export/ExtractedSystemRules.json
 .automation/proxy/export/proxyServiceConfiguration.json
-package-lock.json
 .automation/customProperties/export/ExtractedCustomProperties.json

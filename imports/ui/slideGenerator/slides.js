@@ -38,24 +38,20 @@ Template.slides.onRendered(function() {
 function initializeReveal() {
     window.Reveal = Reveal;
     // console.log('initializeReveal', Reveal);
-    try {
-        Reveal.initialize({
-            width: window.innerWidth - 80,
-            embedded: true,
-            controls: true,
-            center: false,
-            autoPlayMedia: false,
-            fragments: false,
-            // autoSlide: 1000,
-            loop: false,
-            transition: 'slide', // none/fade/slide/convex/concave/zoom     
-            previewLinks: false,
-            slideNumber: true
-        });
+    Reveal.initialize({
+        width: window.innerWidth - 80,
+        embedded: true,
+        controls: true,
+        center: false,
+        autoPlayMedia: false,
+        fragments: false,
+        // autoSlide: 1000,
+        loop: false,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom     
+        previewLinks: false,
+        slideNumber: true
+    });
 
-    } catch (error) {
-        //ignore dom not ready error... 
-    }
     Session.set('activeStepNr', 0);
     Reveal.addEventListener('slidechanged', function(evt) {
         console.log('!!!!!!!!!!! Slide changed: active slide: ', evt.indexh);

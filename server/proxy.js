@@ -1,6 +1,6 @@
 //SETUP PROXY SERVER TO RUN METEOR QRS AND WEB INTEGRATION DEMO BOTH ON PORT 80
 
-var proxy = require('redbird')({ port: Meteor.settings.public.proxyPort, ntlm: true, bunyan: false }); //bunyan:true for logging output in the console    
+// var proxy = require('redbird')({ port: Meteor.settings.public.proxyPort, ntlm: true, bunyan: false }); //bunyan:true for logging output in the console    
 // Route to any local ip, for example from docker containers.
 
 // Meteor.startup(() => {

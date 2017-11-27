@@ -34,6 +34,10 @@ prebuild-install [options]
   --version                     (print prebuild-install version and exit)
  ```
 
+When `prebuild-install` is run via an `npm` script, options
+`--build-from-source`, `--debug` and `--download`, may be passed through via
+arguments given to the `npm` command.
+
 ## License
 
 MIT
