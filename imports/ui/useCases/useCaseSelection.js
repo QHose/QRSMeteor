@@ -269,7 +269,28 @@ export async function getAllSlides(qix, insertSectionBreakers = sectionBreakerCo
                 qDef: {
                     qFieldDefs: ['Level 3']
                 }
-            }, {
+            }]
+        }
+    });
+    sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 3,
+        qHeight: 3333
+    }]);
+    Session.set('slideData', sessionData[0].qMatrix);
+    console.log('slide data', Session.get('slideData'));
+}
+
+export async function getComment(qix) {
+    console.log('getComment');
+
+    var sessionModel = await qix.app.createSessionObject({
+        qInfo: {
+            qType: 'cube'
+        },
+        qHyperCubeDef: {
+            qDimensions: [{
                 qDef: {
                     qFieldDefs: ['Comment']
                 }
@@ -282,8 +303,8 @@ export async function getAllSlides(qix, insertSectionBreakers = sectionBreakerCo
         qWidth: 3,
         qHeight: 3333
     }]);
-    Session.set('slideData', sessionData[0].qMatrix);
-    console.log('slide data', Session.get('slideData'));
+    Session.set('slideComment', sessionData[0].qMatrix);
+    console.log('slide Comment', Session.get('slideComment'));
 }
 
 export async function setChangeListener(qix) {

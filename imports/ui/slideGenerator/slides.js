@@ -235,7 +235,6 @@ Template.registerHelper('formatted', function(text) {
 // ─── FUNCTIONS TO GET LEVEL AND CONTENT OF A SLIDE ───────────────────────────────────────────
 //
 
-
 var getLocalValuesOfLevel = function(parentText) {
     // console.log('get all level 3 for level 2 with text:', parentText);
     var result = [];
