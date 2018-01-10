@@ -184,7 +184,7 @@ Template.registerHelper('formatted', function(text) {
     else if (text.startsWith(commentMarker)) { //vertical slide with comments
         var textAfterCommentMarker = text.split(commentMarker).pop();
         var messagebox = `
-        <section>
+        <section class="commentBox">
             <div class="ui icon message">
             <i class="help icon"></i>
             <div class="content">
