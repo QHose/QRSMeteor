@@ -97,6 +97,11 @@ html {
     top: 20px;
 }
 
+.reveal .commentBox {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 
 /*********************************************
   * HEADERS
