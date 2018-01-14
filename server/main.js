@@ -31,7 +31,9 @@ import * as QSExtensions from '/imports/api/server/QRSFunctionsExtension';
 import * as QSCustomProps from '/imports/api/server/QRSFunctionsCustomProperties';
 
 //stop on unhandled errors
-process.on('unhandledRejection', up => { throw up })
+process.on('unhandledRejection', up => {
+    throw up
+})
 
 //import config for Qlik Sense QRS and Engine API.
 import {
@@ -43,7 +45,7 @@ const path = require('path');
 var fs = require('fs-extra');
 import shell from 'node-powershell'
 
-Meteor.startup(async function() {
+Meteor.startup(async function () {
     process.env.ROOT_URL = 'http://' + Meteor.settings.public.qlikSenseHost;
     console.log('********* We expect Qlik Sense to run on host: ', process.env.ROOT_URL + ':' + Meteor.settings.public.qlikSensePort);
     // console.log('********* For END USERS we expect Sense to run on host: ', Meteor.settings.public.qlikSenseHost + ':' + Meteor.settings.public.qlikSensePort);
@@ -117,8 +119,8 @@ async function sleep(fn, ...args) {
 //
 
 
-var installQlikSense = async function() {
-    console.log("Start creating the config file for the Sense silent script...");
+var installQlikSense = async function () {
+    console.log("installQlikSense is true in the settings file so start creating the config file for the Sense silent script...");
 
     //we dynamically populate the Qlik sense silent installation config file, the hostname is the variable... Because we create a folder share with this name
     var configFile =
@@ -145,9 +147,9 @@ var installQlikSense = async function() {
 
     console.log('------------------------------------');
     console.log('config file created! you can now run the "startSilentInstall.ps1" script as administrator');
-    console.error('We now create an error to ensure QRSMeteor stops further setup, please run "QRSSTART.bat" again after qlik sense is running and asking for you license. But do not do anything like inserting the license. QRSMeteor will do this for you.')
+    console.error('We now create an error to ensure QRSMeteor stops further setup.  To test the Sense installation, you can open the QMC (also check the hostname). The QMC will ask for you license. But do not do anything like inserting the license. QRSMeteor will do this for you.')
     console.log('------------------------------------');
-    throw new Error('Dummy error to make sure QRSMeteor stops running, please install Qlik Sense first...');
+    throw new Error('Dummy error to make sure QRSMeteor stops running...');
     //removed auto install of sense, to prevent an issue with the rights...
 
     // var executable = 'startSilentInstall.ps1';
@@ -209,7 +211,7 @@ function removeGeneratedResources() {
     //     Meteor.call('removeGeneratedResources', {});
     // }, 0); //remove all logs directly at startup
     if (Meteor.settings.broker.automaticCleanUpGeneratedApps === "Yes") {
-        Meteor.setInterval(function() {
+        Meteor.setInterval(function () {
             console.log('remove all generated resources in mongo and qlik sense periodically by making use of a server side timer');
             Meteor.call('removeGeneratedResources', {});
         }, 1 * 86400000); //remove all logs/apps/streams every 1 day
@@ -302,7 +304,7 @@ Meteor.methods({
         console.log('################## Meteor.settings.broker.qlikSense.multiTenantScenario', Meteor.settings.broker.qlikSense.multiTenantScenario);
         try {
             if (!Meteor.settings.broker.qlikSense.multiTenantScenario) { //on premise installation for a single tenant (e.g. with MS Active Directory)
-                var customerNames = customers.map(function(c) {
+                var customerNames = customers.map(function (c) {
                     return c.name;
                 });
 
@@ -357,7 +359,7 @@ Meteor.methods({
             REST_Log(call, generationUserSelection);
         }
         GeneratedResources.find(generationUserSelection)
-            .forEach(function(resource) {
+            .forEach(function (resource) {
                 // this.unblock()
                 //console.log('resetEnvironment for userId', Meteor.userId());generationUserSelection.generationUserId
 
@@ -429,7 +431,7 @@ Meteor.methods({
             throw new Meteor.Error("you can't delete the template app with guid: ", guid);
         }
     },
-    removeAllCustomers: function() {
+    removeAllCustomers: function () {
         return Customers.remove({
             'generationUserId': Meteor.userId()
         });

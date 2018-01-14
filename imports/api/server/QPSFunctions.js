@@ -123,7 +123,7 @@ function linkVirtualProxyToProxy(virtualProxy) {
         check(Meteor.settings.public.qlikSensePortSecure, String);
         check(Meteor.settings.broker.qlikSense.proxyAllowHTTP, String);
     } catch (error) {
-        console.error('settings file incomplete, your are missing the qliksenseport, un')
+        console.error('settings file incomplete, your are missing the qliksenseport, qlikSensePortSecure or proxyAllowHTTP')
     }
 
     //UPDATE SOME PROXY SETTINGS

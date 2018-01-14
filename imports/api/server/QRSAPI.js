@@ -5,7 +5,12 @@ import {
     http,
 } from 'meteor/meteor';
 
-import { configCerticates, senseConfig, authHeaders, qrsSrv } from '/imports/api/config';
+import {
+    configCerticates,
+    senseConfig,
+    authHeaders,
+    qrsSrv
+} from '/imports/api/config';
 
 export var myQRS = function myQRSMain() {
 
@@ -14,7 +19,9 @@ export var myQRS = function myQRSMain() {
         console.log('QRS module received GET request for endpoint', endpoint);
 
         // copy the params to one object
-        var newParams = Object.assign({ xrfkey: senseConfig.xrfkey }, params);
+        var newParams = Object.assign({
+            xrfkey: senseConfig.xrfkey
+        }, params);
         try {
             var response = HTTP.get(endpoint, {
                 npmRequestOptions: configCerticates,
@@ -22,8 +29,14 @@ export var myQRS = function myQRSMain() {
                 data: {},
             });
 
-            console.log('QRS GET result: response.data length: ', response.data.length);
-            return response.data;
+            try {
+                console.log('QRS GET result: response.data length: ', response.data.length);
+                 return response.data;
+            } catch (error) {
+                console.log('------------------------------------');
+                console.error('We did not get any data back from Qlik Sense (empty array). If you do not expect this, make sure you check the udc, username in the settings file.');
+                console.log('------------------------------------');
+            }           
         } catch (err) {
             var error = 'QRS HTTP GET FAILED FOR ' + endpoint;
             console.error(err);
@@ -35,7 +48,9 @@ export var myQRS = function myQRSMain() {
         var endpoint = checkPath(path);
 
         // copy the params to one object
-        var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
+        var newParams = Object.assign({
+            'xrfkey': senseConfig.xrfkey
+        }, params);
         try {
             var response = HTTP.post(endpoint, {
                 npmRequestOptions: configCerticates,
@@ -54,7 +69,9 @@ export var myQRS = function myQRSMain() {
         console.log('data', data)
 
         // copy the params to one object.
-        var newParams = Object.assign({ xrfkey: senseConfig.xrfkey }, params);
+        var newParams = Object.assign({
+            xrfkey: senseConfig.xrfkey
+        }, params);
         try {
             var response = HTTP.del(endpoint, {
                 npmRequestOptions: configCerticates,
@@ -72,7 +89,9 @@ export var myQRS = function myQRSMain() {
         var endpoint = checkPath(path);
 
         // copy the params to one object
-        var newParams = Object.assign({ 'xrfkey': senseConfig.xrfkey }, params);
+        var newParams = Object.assign({
+            'xrfkey': senseConfig.xrfkey
+        }, params);
         try {
             var response = HTTP.put(endpoint, {
                 npmRequestOptions: configCerticates,
