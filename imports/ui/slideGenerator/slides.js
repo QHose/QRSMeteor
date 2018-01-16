@@ -3,7 +3,7 @@ import './reveal.css';
 // import 'reveal/theme/default.css';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
-import { Tracker } from '/imports/api/tracker';
+import { Logger } from '/imports/api/Logger';
 
 _ = lodash;
 var Cookies = require('js-cookie');
@@ -74,8 +74,8 @@ function initializeReveal() {
 //
 
 Template.slideContent.onRendered(function() {
-    this.subscribe('tracker');
-    Tracker.insert({
+    this.subscribe('Logger');
+    Logger.insert({
         userId: Meteor.userId,
         userName: Meteor.user().profile.name,
         counter: 1,
@@ -102,7 +102,7 @@ Template.slideContent.onRendered(function() {
 Template.slideContent.events({
     'click a': function(e, t) {
         e.stopPropagation();
-        Tracker.insert({
+        Logger.insert({
             userId: Meteor.userId,
             userName: Meteor.user().profile.name,
             counter: 1,

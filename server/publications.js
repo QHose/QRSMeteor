@@ -3,13 +3,13 @@ import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
 import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 import { APILogs } from '/imports/api/APILogs';
-import { Tracker } from '/imports/api/tracker';
+import { Logger } from '/imports/api/Logger';
 import moment from 'moment';
 
 
 
-Meteor.publish('tracker', function() {
-    return Tracker.find();
+Meteor.publish('Logger', function() {
+    return Logger.find();
     this.ready();
 });
 

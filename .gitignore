@@ -21,3 +21,4 @@ public/docs/~$ik Sense SaaS demo tool setup instructions.docx
 .automation/proxy/export/proxyServiceConfiguration.json
 .automation/customProperties/export/ExtractedCustomProperties.json
 *.QVX
+package-lock.json

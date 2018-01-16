@@ -37,7 +37,7 @@ Template.useCaseSelection.onCreated(async function() {
 })
 
 //make sure you go to the first slide when we have new slide data
-Tracker.autorun(() => {
+Logger.autorun(() => {
     console.log('------------------------------------');
     console.log('We got new slide data, so go to the first slide');
     console.log('------------------------------------');
@@ -313,7 +313,7 @@ export async function setChangeListener(qix) {
             console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
             await getAllSlides(qix);
             Reveal.slide(0);
-
+            getCurrentSelections();
         });
 
     } catch (error) {
@@ -340,4 +340,37 @@ function insertSectionBreakers(table) {
 function textOfLevel(row, level) {
     level -= 1
     return row[level].qText
+}
+
+//http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm
+async function getCurrentSelections() {
+     console.log('function: getCurrentSelections');
+     try {
+        var qix = await getQix();
+        var genericObject = await qix.app.createSessionObject({
+            qInfo: {
+                qType: 'SessionLists'
+            },
+            "qSelectionObjectDef": {}
+        });
+        console.log("sessionObject", genericObject);
+
+        var layout = await genericObject.getLayout();
+        console.log('genericObject layout', layout)
+        var currentSelections = layout.qSelectionObject.qSelections;
+         Logger.insert({
+           userId: Meteor.userId,
+           userName: Meteor.user().profile.name,
+           counter: 1,
+           eventType: "slideRendered",
+           topic: this.data.slide[0].qText,
+           slide: this.data.slide[1].qText,
+           viewDate: new Date() // current time
+         });
+        return currentSelections;               
+    } catch (error) {
+        var message = 'getCurrentSelections: Can not connect to the Qlik Sense Engine API via enigmaJS';
+        console.error(message, error);
+        sAlert.error(message, error);
+    };
 }

@@ -265,7 +265,7 @@ function loginDEV(user) {
 
 function mustBeSignedInQlik() {
     // "Logout"-Hook: Manual implementation, wait a bit to prevent multiple page loads, because the database needs to be update
-    Tracker.autorun(function() {
+    Logger.autorun(function() {
         if (!Meteor.userId()) {
             Meteor.setTimeout(loginQlik, 0); //give the browser some time to log the user in...
         }
