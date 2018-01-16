@@ -2,6 +2,7 @@ import '/imports/ui/useCases/useCaseSelection.html';
 import '/imports/ui/slideGenerator/slides.html';
 import '/imports/ui/slideGenerator/slides';
 import '/imports/ui/slideGenerator/slides.css';
+import { SenseSelections } from '/imports/api/logger';
 import * as nav from '/imports/ui/nav';
 import './SSBI/SSBI.js';
 import {
@@ -28,7 +29,8 @@ var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Anal
 // ONCREATED
 Template.useCaseSelection.onCreated(async function() {
     const apiLogsHandle = Meteor.subscribe('apiLogs');
-    //wait a bit, so Meteor can login, before requesting a ticket...
+    Session.set('selectionMade')
+        //wait a bit, so Meteor can login, before requesting a ticket...
     Meteor.setTimeout(async function() {
         qix = await makeSureSenseIsConnected();
         await setChangeListener(qix);
@@ -37,7 +39,7 @@ Template.useCaseSelection.onCreated(async function() {
 })
 
 //make sure you go to the first slide when we have new slide data
-Logger.autorun(() => {
+Tracker.autorun(() => {
     console.log('------------------------------------');
     console.log('We got new slide data, so go to the first slide');
     console.log('------------------------------------');
@@ -344,8 +346,8 @@ function textOfLevel(row, level) {
 
 //http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm
 async function getCurrentSelections() {
-     console.log('function: getCurrentSelections');
-     try {
+    console.log('function: getCurrentSelections');
+    try {
         var qix = await getQix();
         var genericObject = await qix.app.createSessionObject({
             qInfo: {
@@ -358,16 +360,15 @@ async function getCurrentSelections() {
         var layout = await genericObject.getLayout();
         console.log('genericObject layout', layout)
         var currentSelections = layout.qSelectionObject.qSelections;
-         Logger.insert({
-           userId: Meteor.userId,
-           userName: Meteor.user().profile.name,
-           counter: 1,
-           eventType: "slideRendered",
-           topic: this.data.slide[0].qText,
-           slide: this.data.slide[1].qText,
-           viewDate: new Date() // current time
-         });
-        return currentSelections;               
+        var currentSelectionId = SenseSelections.insert({
+            userId: Meteor.userId,
+            userName: Meteor.user().profile.name,
+            eventType: "selectionChanged",
+            selection: currentSelections,
+            selectionDate: new Date() // current time
+        });
+        Session.set('currentSelectionId', currentSelectionId);
+        return currentSelections;
     } catch (error) {
         var message = 'getCurrentSelections: Can not connect to the Qlik Sense Engine API via enigmaJS';
         console.error(message, error);

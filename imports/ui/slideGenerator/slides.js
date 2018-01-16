@@ -3,7 +3,8 @@ import './reveal.css';
 // import 'reveal/theme/default.css';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
-import { Logger } from '/imports/api/Logger';
+import { Logger } from '/imports/api/logger';
+import * as nav from '/imports/ui/nav.js';
 
 _ = lodash;
 var Cookies = require('js-cookie');
@@ -11,10 +12,16 @@ var showdown = require('showdown');
 var converter = new showdown.Converter();
 var numberOfActiveSlides = 5;
 
-Template.slides.onCreated(function() {
+Template.slides.onCreated(async function() {
     $('body').css({
         overflow: 'hidden',
     });
+
+    var value = getQueryParams('selection');
+    if (value) {
+        console.log('Slides oncreated: Query string found: ', value);
+        await nav.selectViaQueryId(value)
+    }
 })
 
 Template.slides.onDestroyed(function() {
@@ -75,6 +82,7 @@ function initializeReveal() {
 
 Template.slideContent.onRendered(function() {
     this.subscribe('Logger');
+    this.subscribe('SenseSelections');
     Logger.insert({
         userId: Meteor.userId,
         userName: Meteor.user().profile.name,
@@ -266,4 +274,15 @@ function youtube_parser(url) {
 
 function checkTextIsImage(text) {
     return (text.match(/\.(jpeg|jpg|gif|png)$/) != null);
+}
+
+// Replace with more Meteor approach
+function getQueryParams(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }

@@ -3,13 +3,18 @@ import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
 import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 import { APILogs } from '/imports/api/APILogs';
-import { Logger } from '/imports/api/Logger';
+import { Logger, SenseSelections } from '/imports/api/logger';
 import moment from 'moment';
 
 
 
 Meteor.publish('Logger', function() {
     return Logger.find();
+    this.ready();
+});
+
+Meteor.publish('SenseSelections', function() {
+    return SenseSelections.find();
     this.ready();
 });
 

@@ -45,6 +45,14 @@ Template.emptyContainerLayout.events({
     }
 })
 
+Template.footer.events({
+    'click .permaLinkSelection': function(event, template) {
+        //Go to the server method, get the selection object for the ID that is the current selection
+        Session.get('currentSelectionId', currentSelectionId);
+
+    }
+})
+
 Template.layout.events({
     'keydown, click': function(event, template) {
         Template.instance().$('*').popup('remove popup')
@@ -82,6 +90,7 @@ Template.layout.onCreated(function() {
 
     const templateAppsHandle = Meteor.subscribe('templateApps');
     const apiLogsHandle = Meteor.subscribe('apiLogs');
+    const senseSelectionsHandle = Meteor.subscribe('SenseSelections');
     const customersHandle = Meteor.subscribe('customers', { //http://stackoverflow.com/questions/28621132/meteor-subscribe-callback
         onReady: function() {
             // if (freshEnvironment()) {
