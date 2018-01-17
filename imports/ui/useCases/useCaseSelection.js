@@ -68,9 +68,6 @@ function getQueryParams(name, url) {
 
 //make sure you go to the first slide when we have new slide data
 Tracker.autorun(() => {
-    console.log('------------------------------------');
-    console.log('We got new slide data, so go to the first slide');
-    console.log('------------------------------------');
     Session.get('slideHeaders');
     Meteor.setTimeout(function() {
         Reveal.slide(0);
@@ -189,10 +186,10 @@ export async function getQix() {
             },
             listeners: {
                 'notification:*': (event, data) => {
-                    // console.log('Engima: event ' + event, 'Engima: data ' + JSON.stringify(data))
-                    // if (authInfo.mustAuthenticate) { //if the user is not authenticated anymore request a new ticket and get a new connection
-                    //     getQix();
-                    // }
+                    console.log('Engima notification received, event: ' + event + '& data: ', data)
+                    if (data.mustAuthenticate) { //if the user is not authenticated anymore request a new ticket and get a new connection
+                        getQix();
+                    }
                     var call = {};
                     call.action = 'Engine API reponse';
                     call.url = '';
