@@ -27,6 +27,7 @@
       {{/each}}
     </div>
   </div>
+   {{> footer}}
 </template>
 
 <template name="slide">
@@ -37,14 +38,9 @@
     </h1>
     {{#if active slideNr}}
       {{> slideContent slide=slide}}
-    {{/if}}
-    <!-- <div class="controls">
-      <i class="navigate-right angle right icon"></i>
-    </div>
-    {{> termsOfUsage}}      
- -->
-
+    {{/if}}    
   </section>
+         
 
 </template>
 

@@ -1,14 +1,11 @@
 <!-- LAYOUT TEMPLATE -->
 <template name="SSBILayout">
-    <div class="wrap">
         {{> yield "nav"}}
         <div class="ui grid">
                 {{> sAlert}}
             <div class="four wide column">{{> yield "aside"}}</div>
             <div class="twelve wide column">{{> yield}}</div>
         </div>
-    </div>
-    <!-- {{> footer}} -->
 </template>
 
 <template name="SSBISenseApp">
@@ -33,6 +30,8 @@
         {{/if}}
     </div>
     {{> modalSSBI}}
+        <h4 class="ui dividing header">What are we trying to demonstrate here?</h4>
+
     <div class="ui message">
         <i class="unlock alternate icon"></i>Here we demonstrate the effect of applying different access rights (derived from your platform) for some fictitious
         users. Qlik on a user to automatically login into Qlik Sense "as this user".
