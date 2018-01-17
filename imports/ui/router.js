@@ -6,12 +6,6 @@ Router.configure({
     notFoundTemplate: 'notFound',
 });
 
-//slide generator with reveal.js
-// Router.route('/slidesContainerIFrame', {
-//     template: 'slides',
-//     layoutTemplate: 'containerlayout'
-// });
-
 Router.route('/slides', {
     template: 'slides',
     layoutTemplate: 'emptyLayout'
