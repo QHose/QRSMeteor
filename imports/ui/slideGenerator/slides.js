@@ -4,7 +4,7 @@ import './reveal.css';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
 import { Logger } from '/imports/api/logger';
-import * as nav from '/imports/ui/nav.js';
+import { getQix } from '/imports/ui/useCases/useCaseSelection';
 
 _ = lodash;
 var Cookies = require('js-cookie');
@@ -16,12 +16,6 @@ Template.slides.onCreated(async function() {
     $('body').css({
         overflow: 'hidden',
     });
-
-    var value = getQueryParams('selection');
-    if (value) {
-        console.log('Slides oncreated: Query string found: ', value);
-        await nav.selectViaQueryId(value)
-    }
 })
 
 Template.slides.onDestroyed(function() {
@@ -31,16 +25,19 @@ Template.slides.onDestroyed(function() {
 })
 
 Template.slides.onRendered(function() {
-    // console.log('slides template rendered');
-    if (!Session.get('slideData')) {
-        console.log('------------------------------------');
-        console.log('No slide data present in session, reroute the use back to the useCaseSelection screen.');
-        console.log('------------------------------------');
-        Router.go('useCaseSelection');
-        return;
-    }
+    slideDataLoaded();
     initializeReveal();
 });
+
+function slideDataLoaded() {
+    if (!Session.get("slideHeaders")) {
+        console.log("------------------------------------");
+        console.log("No slide data present in session, reroute the user back to the useCaseSelection screen.");
+        console.log("------------------------------------");
+        Router.go("useCaseSelection");
+        return;
+    }
+}
 
 function initializeReveal() {
     window.Reveal = Reveal;
@@ -50,42 +47,54 @@ function initializeReveal() {
         embedded: true,
         controls: true,
         center: false,
-        autoPlayMedia: false,
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: true,
+        autoPlayMedia: true,
         fragments: false,
         // autoSlide: 1000,
         loop: false,
-        transition: 'slide', // none/fade/slide/convex/concave/zoom     
+        transition: "slide", // none/fade/slide/convex/concave/zoom
         previewLinks: false,
         slideNumber: true
     });
 
     Session.set('activeStepNr', 0);
     Reveal.addEventListener('slidechanged', function(evt) {
-        console.log('!!!!!!!!!!! Slide changed: active slide: ', evt.indexh);
         Session.set('activeStepNr', evt.indexh);
         $('.ui.embed').embed();
-        // $(window).scrollTop(0); //does not work
     });
 }
 
-// Template.slides.events({
-//     'contextmenu *': function(e, t) {
-//         e.stopPropagation();
-//         console.log('template instance:\n', t);
-//         console.log('data context:\n', Blaze.getData(e.currentTarget));
-//     }
-// });
+Template.slideContent.events({
+    'contextmenu *': function(e, t) {
+        e.stopPropagation();
+        console.log('template instance:\n', t);
+        console.log('data context:\n', Blaze.getData(e.currentTarget));
+    }
+});
 
 //
 // ─── SLIDE CONTENT ──────────────────────────────────────────────────────────────────────
 //
 
-Template.slideContent.onRendered(function() {
-    this.subscribe('Logger');
-    this.subscribe('SenseSelections');
+Template.slideContent.onRendered(async function() {
+    var level1 = this.data.slide[0].qText;
+    var level2 = this.data.slide[1].qText;
+    var template = this;
+    console.log('template', template)
+    if (level1 && level2) {
+        var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent.
+        bullets.forEach(function(bullet) {
+            template.$('.slideContent').append(convertToHTML(bullet));
+        })
+
+    }
+
+    // this.subscribe('Logger');
+    // this.subscribe('SenseSelections');
     Logger.insert({
         userId: Meteor.userId,
-        userName: Meteor.user().profile.name,
+        // userName: Meteor.user().profile.name,
         counter: 1,
         eventType: 'slideRendered',
         topic: this.data.slide[0].qText,
@@ -112,7 +121,7 @@ Template.slideContent.events({
         e.stopPropagation();
         Logger.insert({
             userId: Meteor.userId,
-            userName: Meteor.user().profile.name,
+            // userName: Meteor.user().profile.name,
             counter: 1,
             eventType: 'linkClick',
             topic: this.data.slide[0].qText,
@@ -126,44 +135,71 @@ Template.slideContent.events({
 //
 // ─── HELPERS ────────────────────────────────────────────────────────────────────
 //
-
+Template.slides.helpers({
+    slideHeaders() {
+        return Session.get('slideHeaders'); //only the level 1 and 2 colums, we need this for the headers of the slide
+    }
+});
 Template.slide.helpers({
     active(slideNr) {
         var activeSlide = Session.get('activeStepNr');
-        // console.log('activeSlide', activeSlide)
         var active = slideNr < activeSlide + numberOfActiveSlides && slideNr > activeSlide - numberOfActiveSlides;
-        // console.log('active', active)
         return active;
     }
 });
 
 
-Template.registerHelper('slideHeaders', function() {
-    return Session.get('slideHeaders'); //only the level 1 and 2 colums, we need this for the headers of the slide
-});
-
-Template.registerHelper('slideData', function() {
-    return Session.get('slideData'); //all the level 1, 2, 3 data
-});
 
 Template.registerHelper('level', function(level, slide) {
-    return textOfLevel(slide, level);
+    level -= 1
+    return slide[level].qText
 });
+
 Template.registerHelper('step', function() {
     return Session.get('activeStepNr');
 });
 
-//will be used in a slideContent block like {{#each item in itemsOfLevel 3 slide}}
-Template.registerHelper('itemsOfLevel', function(level, slide) {
-    //get all child items of a specific level, normally you will insert level 3 
-    var parents = slide[level - 3].qText + slide[level - 2].qText; //get the names of the parents of the current slide (level 1 and 2)
-    if (parents) {
-        return getLocalValuesOfLevel(parents); //using the parent, get all items that have this name as parent
-    }
-})
+async function getLevel3(level1, level2) {
+    //   console.log("getLevel3: "+level1+' -'+level2);
+    var qix = await getQix();
+    var sessionModel = await qix.app.createSessionObject({
+        qInfo: {
+            qType: "cube"
+        },
+        qHyperCubeDef: {
+            qDimensions: [{
+                qDef: {
+                    qFieldDefs: ["Level 3"]
+                }
+            }],
+            qMeasures: [{
+                qDef: {
+                    qDef: 'sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)'
+                }
+            }]
+        }
+    });
+    sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 2,
+        qHeight: 1000
+    }]);
 
+    var level3Temp = sessionData[0].qMatrix;
+    return normalizeData(level3Temp);
+}
 
-Template.registerHelper('formatted', function(text) {
+function normalizeData(senseArray) {
+    var result = [];
+    senseArray.forEach(element => {
+        result.push(element[0].qText)
+    });
+    return result;
+}
+
+function convertToHTML(text) {
+    console.log('convertToHTML text', text)
     var commentMarker = '!comment';
     var embeddedImageMarker = `!embeddedImage`
 
@@ -230,12 +266,12 @@ Template.registerHelper('formatted', function(text) {
     else { //text, convert the text (which can include markdown syntax) to valid HTML
         var result = converter.makeHtml(text);
         if (result.substring(1, 11) === 'blockquote') {
-            return '<div class="ui green very padded segment">' + result + '</div>';
+            return '<div class="ui green segment">' + result + '</div>';
         } else {
             return result;
         }
     }
-})
+}
 
 
 
@@ -243,27 +279,22 @@ Template.registerHelper('formatted', function(text) {
 // ─── FUNCTIONS TO GET LEVEL AND CONTENT OF A SLIDE ───────────────────────────────────────────
 //
 
-var getLocalValuesOfLevel = function(parentText) {
-    // console.log('get all level 3 for level 2 with text:', parentText);
-    var result = [];
-    var topics = Session.get('slideData');
-    var level3Data = _.filter(topics, function(row) {
-            var parents = row[0].qText + row[1].qText;
-            if (parents === parentText) { //if the current level 1 and 2 combination matches 
-                if (row[2].qText) {
-                    result.push(row[2].qText)
-                } //add the level 3 value to the new level3Data array
-            }
-        })
-        // console.log('level3Data:', result);
-    return result;
-}
+// var getLocalValuesOfLevel = function(parentText) {
+//     // console.log('get all level 3 for level 2 with text:', parentText);
+//     var result = [];
+//     var topics = Session.get('slideData');
+//     var level3Data = _.filter(topics, function(row) {
+//             var parents = row[0].qText + row[1].qText;
+//             if (parents === parentText) { //if the current level 1 and 2 combination matches 
+//                 if (row[2].qText) {
+//                     result.push(row[2].qText)
+//                 } //add the level 3 value to the new level3Data array
+//             }
+//         })
+//         // console.log('level3Data:', result);
+//     return result;
+// }
 
-
-function textOfLevel(row, level) {
-    level -= 1
-    return row[level].qText
-}
 
 function youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
@@ -274,15 +305,4 @@ function youtube_parser(url) {
 
 function checkTextIsImage(text) {
     return (text.match(/\.(jpeg|jpg|gif|png)$/) != null);
-}
-
-// Replace with more Meteor approach
-function getQueryParams(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }

@@ -112,9 +112,7 @@ export async function selectViaQueryId(mongoId) {
     if (qSelection) {
         await makeSelectionInFields(qSelection.selection);
     } else {
-        console.log('------------------------------------');
-        console.log('No selection found in the database for this id');
-        console.log('------------------------------------');
+        sAlert.warning('We could not retreive a stored selection for this id...')
     }
 }
 
@@ -127,9 +125,6 @@ export async function selectMenuItemInSense(slide) {
     }]
     await makeSelectionInField("Level 2", selection);
     Meteor.setTimeout(function() {
-        console.log('------------------------------------');
-        console.log('Router: Go to slides ');
-        console.log('------------------------------------');
         Router.go('slides');
     }, 200)
 }

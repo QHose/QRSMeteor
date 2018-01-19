@@ -2,8 +2,8 @@ import '/imports/ui/useCases/useCaseSelection.html';
 import '/imports/ui/slideGenerator/slides.html';
 import '/imports/ui/slideGenerator/slides';
 import '/imports/ui/slideGenerator/slides.css';
+import * as nav from "/imports/ui/nav.js";
 import { SenseSelections } from '/imports/api/logger';
-import * as nav from '/imports/ui/nav';
 import './SSBI/SSBI.js';
 import {
     Session
@@ -29,20 +29,45 @@ var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Anal
 // ONCREATED
 Template.useCaseSelection.onCreated(async function() {
     const apiLogsHandle = Meteor.subscribe('apiLogs');
-    Session.set('selectionMade')
+    // Session.set('selectionMade', false);
+
         //wait a bit, so Meteor can login, before requesting a ticket...
     Meteor.setTimeout(async function() {
+        //connect to qlik sense 
         qix = await makeSureSenseIsConnected();
+        // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
         await setChangeListener(qix);
+
+        //see if the user started up this screen, with a selection parameter
+         var value = getQueryParams('selection');
+         //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
+    if (value) {
+        console.log('Slides oncreated: Query string found: ', value);
+        await nav.selectViaQueryId(value)
+        // get the data and go to the slides
+        await getAllSlides();
+        // after we got all data in an array from sense, change the router/browser to the slides page
+        Router.go("slides");
+    }else{
+        console.log('no query selection parameter found');
+    }
     }, 0);
 
 })
 
+// Replace with more Meteor approach
+function getQueryParams(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 //make sure you go to the first slide when we have new slide data
 Tracker.autorun(() => {
-    console.log('------------------------------------');
-    console.log('We got new slide data, so go to the first slide');
-    console.log('------------------------------------');
     Session.get('slideHeaders');
     Meteor.setTimeout(function() {
         Reveal.slide(0);
@@ -98,7 +123,6 @@ Template.useCaseSelection.events({
     },
     'click #videoButton': async function(e, t) {
         nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
-        console.log('nav.VIDEO_OVERVIEW', nav.VIDEO_OVERVIEW)
     }
 });
 
@@ -135,7 +159,7 @@ async function setSlideContentInSession(group) {
         check(group, String);
         Cookies.set('currentMainRole', group);
         var qix = await getQix();
-        await getAllSlides(qix, true);
+        await getAllSlides(true);
     } catch (error) {
         var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS, or group is not provided';
         console.error(message, error);
@@ -145,7 +169,7 @@ async function setSlideContentInSession(group) {
 
 export async function getQix() {
     var ticket = await getTicket();
-    console.log('getQix with ticket:', ticket)
+    // console.log('getQix with ticket:', ticket)
     try {
         const config = {
             schema: senseConfig.QIXSchema,
@@ -161,12 +185,12 @@ export async function getQix() {
             },
             listeners: {
                 'notification:*': (event, data) => {
-                    // console.log('Engima: event ' + event, 'Engima: data ' + JSON.stringify(data))
-                    // if (authInfo.mustAuthenticate) { //if the user is not authenticated anymore request a new ticket and get a new connection
-                    //     getQix();
-                    // }
+                    // console.log('Engima notification received, event: ' + event + ' & data: ', data)
+                    if (data.mustAuthenticate) { //if the user is not authenticated anymore request a new ticket and get a new connection
+                        getQix();
+                    }
                     var call = {};
-                    call.action = 'Engine API reponse';
+                    call.action = "Engine API listener";
                     call.url = '';
                     call.request = 'Engima.js event: ' + event;
                     call.response = data;
@@ -246,43 +270,46 @@ export async function getAllSlideHeadersPlain(qix) {
 // ─── GET LEVEL 1 TO 3 ────────────────────────────────────────────
 //
 
+//by default add extra slides (extra items in the data array), so you will get nice dynamic chapter breakers
 var sectionBreakerConfig = true;
-export async function getAllSlides(qix, insertSectionBreakers = sectionBreakerConfig) {
+export async function getAllSlides(insertSectionBreakers = sectionBreakerConfig) {
     console.log('getAllSlides: insertSectionBreakers', insertSectionBreakers)
-        //insert breakers before a change of topic? YES/NO... breakers are annoying when you make a menu selection or want to link to a sheet
+    var qix = await getQix();    
+    //insert breakers before a change of topic? YES/NO... breakers are annoying when you make a menu selection or want to link to a sheet
     sectionBreakerConfig = insertSectionBreakers;
     var table = insertSectionBreakers ? await getAllSlideHeaders(qix) : await getAllSlideHeadersPlain(qix);
     Session.set('slideHeaders', table);
 
-    var sessionModel = await qix.app.createSessionObject({
-        qInfo: {
-            qType: 'cube'
-        },
-        qHyperCubeDef: {
-            qDimensions: [{
-                qDef: {
-                    qFieldDefs: ['Level 1']
-                }
-            }, {
-                qDef: {
-                    qFieldDefs: ['Level 2']
-                }
-            }, {
-                qDef: {
-                    qFieldDefs: ['Level 3']
-                }
-            }]
-        }
-    });
-    sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
-        qTop: 0,
-        qLeft: 0,
-        qWidth: 3,
-        qHeight: 3333
-    }]);
-    Session.set('slideData', sessionData[0].qMatrix);
-    console.log('slide data', Session.get('slideData'));
+    // var sessionModel = await qix.app.createSessionObject({
+    //     qInfo: {
+    //         qType: 'cube'
+    //     },
+    //     qHyperCubeDef: {
+    //         qDimensions: [{
+    //             qDef: {
+    //                 qFieldDefs: ['Level 1']
+    //             }
+    //         }, {
+    //             qDef: {
+    //                 qFieldDefs: ['Level 2']
+    //             }
+    //         }, {
+    //             qDef: {
+    //                 qFieldDefs: ['Level 3']
+    //             }
+    //         }]
+    //     }
+    // });
+    // sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
+    //     qTop: 0,
+    //     qLeft: 0,
+    //     qWidth: 3,
+    //     qHeight: 3333
+    // }]);
+    // Session.set('slideData', sessionData[0].qMatrix);
+    // console.log('slide data', Session.get('slideData'));
 }
+
 
 export async function getComment(qix) {
     console.log('getComment');
@@ -312,8 +339,8 @@ export async function getComment(qix) {
 export async function setChangeListener(qix) {
     try {
         qix.app.on('changed', async() => {
-            console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
-            await getAllSlides(qix);
+            // console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
+            await getAllSlides();
             Reveal.slide(0);
             getCurrentSelections();
         });
