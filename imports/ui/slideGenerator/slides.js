@@ -223,27 +223,6 @@ function convertToHTML(text) {
     }
 
     //
-    // ─── COMMENT ────────────────────────────────────────────────────────────────────
-    //
-    else if (text.startsWith(commentMarker)) { //vertical slide with comments
-        var textAfterCommentMarker = text.split(commentMarker).pop();
-        var messagebox = `
-        <section class="commentBox">
-            <div class="ui icon message">
-            <i class="help icon"></i>
-            <div class="content">
-            <div class="header">
-                Let's explain what we mean here...
-            </div>
-                 ` + converter.makeHtml(textAfterCommentMarker) + `
-            </div>
-        </div>
-        </section>`; //select all text after the !comment... and print it in a nice text box
-
-        return messagebox;
-    }
-
-    //
     // ─── IMAGE ──────────────────────────────────────────────────────────────────────
     //        
     else if (checkTextIsImage(text)) {
@@ -272,28 +251,6 @@ function convertToHTML(text) {
         }
     }
 }
-
-
-
-//
-// ─── FUNCTIONS TO GET LEVEL AND CONTENT OF A SLIDE ───────────────────────────────────────────
-//
-
-// var getLocalValuesOfLevel = function(parentText) {
-//     // console.log('get all level 3 for level 2 with text:', parentText);
-//     var result = [];
-//     var topics = Session.get('slideData');
-//     var level3Data = _.filter(topics, function(row) {
-//             var parents = row[0].qText + row[1].qText;
-//             if (parents === parentText) { //if the current level 1 and 2 combination matches 
-//                 if (row[2].qText) {
-//                     result.push(row[2].qText)
-//                 } //add the level 3 value to the new level3Data array
-//             }
-//         })
-//         // console.log('level3Data:', result);
-//     return result;
-// }
 
 
 function youtube_parser(url) {
