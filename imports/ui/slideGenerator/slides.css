@@ -77,6 +77,11 @@ logout?targetUr…host:81/qmc:91
     font-weight: inherit;
 }
 
+.reveal .slide {
+    text-align: left;
+    /* margin-top: 10px */
+}
+
 
 /* chapter breaker */
 
