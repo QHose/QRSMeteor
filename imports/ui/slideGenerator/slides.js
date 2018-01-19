@@ -89,6 +89,14 @@ Template.slideContent.onRendered(async function() {
         })
 
     }
+    //
+    // ─── GET COMMENT AND CREATE A NICE HTML BOX AROUND THE TEXT ─────────────────────
+    //
+
+
+    var comment = await getComment(slideKey);
+    console.log('comment retrieved in slideContent onrendered', comment)
+    template.$('.slideContent').append(createCommentBox(comment));
 
     // this.subscribe('Logger');
     // this.subscribe('SenseSelections');
@@ -189,6 +197,56 @@ async function getLevel3(level1, level2) {
     var level3Temp = sessionData[0].qMatrix;
     return normalizeData(level3Temp);
 }
+
+function createCommentBox(text) {
+    console.log('createCommentBox for text', text)
+    var textAfterCommentMarker = text.split('!comment').pop();
+    var messagebox = `
+        <section class="commentBox">
+            <div class="ui icon message">
+            <i class="help icon"></i>
+            <div class="content">
+            <div class="header">
+                Let's explain what we mean here...
+            </div>
+                 ` + converter.makeHtml(textAfterCommentMarker) + `
+            </div>
+        </div>
+        </section>`; //select all text after the !comment... and print it in a nice text box
+
+    return messagebox;
+}
+async function getComment(slideKey) {
+    var qix = await getQix();
+    var sessionModel = await qix.app.createSessionObject({
+        qInfo: {
+            qType: "cube"
+        },
+        qHyperCubeDef: {
+            qDimensions: [{
+                qDef: {
+                    qFieldDefs: ["Comment"]
+                }
+            }],
+            qMeasures: [{
+                qDef: {
+                    qDef: 'sum({< "Slide_Key"={"' + slideKey + '"} >}1)'
+                }
+            }]
+        }
+    });
+    sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 2,
+        qHeight: 1000
+    }]);
+
+    var comment = sessionData[0].qMatrix[0];
+    // console.log('functie getComment heeft comment', comment)
+    return normalizeData(comment);
+}
+
 
 function normalizeData(senseArray) {
     var result = [];
