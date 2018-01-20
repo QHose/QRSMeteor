@@ -103,6 +103,14 @@ logout?targetUr…host:81/qmc:91
     margin-bottom: 30px;
 }
 
+.reveal .commentBox h1,
+.reveal .commentBox h2,
+.reveal .commentBox h3 {
+    color: black;
+    font-size: 0.9em;
+    text-transform: none;
+}
+
 
 /*********************************************
   * HEADERS
