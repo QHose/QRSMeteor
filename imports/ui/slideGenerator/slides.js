@@ -81,7 +81,6 @@ Template.slideContent.onRendered(async function() {
     var level1 = this.data.slide[0].qText;
     var level2 = this.data.slide[1].qText;
     var template = this;
-    console.log('template', template)
     if (level1 && level2) {
         var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent.
         bullets.forEach(function(bullet) {
@@ -94,9 +93,10 @@ Template.slideContent.onRendered(async function() {
     //
 
 
-    var comment = await getComment(slideKey);
+    var comment = await getComment(level1, level2);
     console.log('comment retrieved in slideContent onrendered', comment)
-    template.$('.slideContent').append(createCommentBox(comment));
+    if (comment.length > 3)
+        template.$('.slideContent').append(createCommentBox(comment));
 
     // this.subscribe('Logger');
     // this.subscribe('SenseSelections');
@@ -148,6 +148,7 @@ Template.slides.helpers({
         return Session.get('slideHeaders'); //only the level 1 and 2 colums, we need this for the headers of the slide
     }
 });
+
 Template.slide.helpers({
     active(slideNr) {
         var activeSlide = Session.get('activeStepNr');
@@ -155,8 +156,6 @@ Template.slide.helpers({
         return active;
     }
 });
-
-
 
 Template.registerHelper('level', function(level, slide) {
     level -= 1
@@ -216,7 +215,7 @@ function createCommentBox(text) {
 
     return messagebox;
 }
-async function getComment(slideKey) {
+async function getComment(level1, level2) {
     var qix = await getQix();
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {
@@ -230,7 +229,7 @@ async function getComment(slideKey) {
             }],
             qMeasures: [{
                 qDef: {
-                    qDef: 'sum({< "Slide_Key"={"' + slideKey + '"} >}1)'
+                    qDef: 'sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)'
                 }
             }]
         }
@@ -242,9 +241,9 @@ async function getComment(slideKey) {
         qHeight: 1000
     }]);
 
-    var comment = sessionData[0].qMatrix[0];
-    // console.log('functie getComment heeft comment', comment)
-    return normalizeData(comment);
+    var comment = sessionData[0].qMatrix[0][0].qText;
+    console.log('functie getComment heeft comment', comment)
+    return comment;
 }
 
 
@@ -257,7 +256,7 @@ function normalizeData(senseArray) {
 }
 
 function convertToHTML(text) {
-    console.log('convertToHTML text', text)
+    // console.log('convertToHTML text', text)
     var commentMarker = '!comment';
     var embeddedImageMarker = `!embeddedImage`
 
@@ -287,7 +286,13 @@ function convertToHTML(text) {
         return '<div class="ui container"> <img class="ui massive rounded bordered image"  style="width: 100%;" src="images/' + text + '"/></div>';
     } else if (text.startsWith(embeddedImageMarker)) { //embedded image in text
         var textMarker = text.split(embeddedImageMarker).pop();
-        return '<img class="ui massive rounded bordered image"  alt="Embedded Image" src="data:image/png;base64,' + textMarker + '"/>';
+        return '<div class="ui container"><img class="ui massive rounded bordered image"   style="width: 100%;"  alt="Embedded Image" src="data:image/png;base64,' + textMarker + '"/> </div>';
+    }
+    //
+    // ─── COMMENT ────────────────────────────────────────────────────────────────────
+    //
+    else if (text.startsWith(commentMarker)) { //vertical slide with comments
+        //ignore, comments are added on another place
     }
 
     //
