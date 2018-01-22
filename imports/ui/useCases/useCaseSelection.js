@@ -31,7 +31,7 @@ Template.useCaseSelection.onCreated(async function() {
     const apiLogsHandle = Meteor.subscribe('apiLogs');
     // Session.set('selectionMade', false);
 
-        //wait a bit, so Meteor can login, before requesting a ticket...
+    //wait a bit, so Meteor can login, before requesting a ticket...
     Meteor.setTimeout(async function() {
         //connect to qlik sense 
         qix = await makeSureSenseIsConnected();
@@ -39,18 +39,18 @@ Template.useCaseSelection.onCreated(async function() {
         await setChangeListener(qix);
 
         //see if the user started up this screen, with a selection parameter
-         var value = getQueryParams('selection');
-         //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
-    if (value) {
-        console.log('Slides oncreated: Query string found: ', value);
-        await nav.selectViaQueryId(value)
-        // get the data and go to the slides
-        await getAllSlides();
-        // after we got all data in an array from sense, change the router/browser to the slides page
-        Router.go("slides");
-    }else{
-        console.log('no query selection parameter found');
-    }
+        var value = getQueryParams('selection');
+        //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
+        if (value) {
+            console.log('Slides oncreated: Query string found: ', value);
+            await nav.selectViaQueryId(value)
+                // get the data and go to the slides
+            await getAllSlides();
+            // after we got all data in an array from sense, change the router/browser to the slides page
+            Router.go("slides");
+        } else {
+            console.log('no query selection parameter found');
+        }
     }, 0);
 
 })
@@ -274,7 +274,7 @@ export async function getAllSlideHeadersPlain(qix) {
 var sectionBreakerConfig = true;
 export async function getAllSlides(insertSectionBreakers = sectionBreakerConfig) {
     console.log('getAllSlides: insertSectionBreakers', insertSectionBreakers)
-    var qix = await getQix();    
+    var qix = await getQix();
     //insert breakers before a change of topic? YES/NO... breakers are annoying when you make a menu selection or want to link to a sheet
     sectionBreakerConfig = insertSectionBreakers;
     var table = insertSectionBreakers ? await getAllSlideHeaders(qix) : await getAllSlideHeadersPlain(qix);
