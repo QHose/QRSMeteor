@@ -162,7 +162,7 @@ if (Meteor.isServer) {
 
         export const qrs = new myQRS();
     } catch (error) {
-        console.warn('Please note that Qlik Sense is not installed, or certificate directory wrong in the settings.json file.');
+        console.warn('Make sure you run the "QRS START.BAT" as administrator? Please note that Qlik Sense is not installed, or certificate directory wrong in the settings.json file.');
         // throw new Meteor.Error(500, 'We can not connect to Sense yet: Because we can not find the Sense certificates yet in the ' + Meteor.settings.private.certificatesDirectory + '. This can happen if Sense has not yet been installed....');
 
     } //END CODE THAT NEEDS CERTIFICATES

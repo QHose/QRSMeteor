@@ -1,5 +1,6 @@
 settings-development.json
 settings-production.json
+*.QVX
 .build/
 settings.json
 *.txt
@@ -20,6 +21,4 @@ public/docs/~$ik Sense SaaS demo tool setup instructions.docx
 .automation/securityrules/export/ExtractedSystemRules.json
 .automation/proxy/export/proxyServiceConfiguration.json
 .automation/customProperties/export/ExtractedCustomProperties.json
-*.QVX
 package-lock.json
-*.QVX
