@@ -4,7 +4,10 @@ import './reveal.css';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
 import { Logger } from '/imports/api/logger';
+<<<<<<< HEAD
 import { getQix } from '/imports/ui/useCases/useCaseSelection';
+=======
+>>>>>>> 210ee333b8740f7d90b37c8718ec68ce380dc725
 
 _ = lodash;
 var Cookies = require('js-cookie');
@@ -325,4 +328,8 @@ function youtube_parser(url) {
 
 function checkTextIsImage(text) {
     return (text.match(/\.(jpeg|jpg|gif|png)$/) != null);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 210ee333b8740f7d90b37c8718ec68ce380dc725

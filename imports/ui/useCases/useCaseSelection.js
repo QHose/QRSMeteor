@@ -31,7 +31,11 @@ Template.useCaseSelection.onCreated(async function() {
     const apiLogsHandle = Meteor.subscribe('apiLogs');
     // Session.set('selectionMade', false);
 
+<<<<<<< HEAD
     //wait a bit, so Meteor can login, before requesting a ticket...
+=======
+        //wait a bit, so Meteor can login, before requesting a ticket...
+>>>>>>> 210ee333b8740f7d90b37c8718ec68ce380dc725
     Meteor.setTimeout(async function() {
         //connect to qlik sense 
         qix = await makeSureSenseIsConnected();
@@ -39,6 +43,7 @@ Template.useCaseSelection.onCreated(async function() {
         await setChangeListener(qix);
 
         //see if the user started up this screen, with a selection parameter
+<<<<<<< HEAD
         var value = getQueryParams('selection');
         //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
         if (value) {
@@ -51,6 +56,20 @@ Template.useCaseSelection.onCreated(async function() {
         } else {
             console.log('no query selection parameter found');
         }
+=======
+         var value = getQueryParams('selection');
+         //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
+    if (value) {
+        console.log('Slides oncreated: Query string found: ', value);
+        await nav.selectViaQueryId(value)
+        // get the data and go to the slides
+        await getAllSlides();
+        // after we got all data in an array from sense, change the router/browser to the slides page
+        Router.go("slides");
+    }else{
+        console.log('no query selection parameter found');
+    }
+>>>>>>> 210ee333b8740f7d90b37c8718ec68ce380dc725
     }, 0);
 
 })
@@ -185,7 +204,11 @@ export async function getQix() {
             },
             listeners: {
                 'notification:*': (event, data) => {
+<<<<<<< HEAD
                     // console.log('Engima notification received, event: ' + event + ' & data: ', data)
+=======
+                    console.log('Engima notification received, event: ' + event + '& data: ', data)
+>>>>>>> 210ee333b8740f7d90b37c8718ec68ce380dc725
                     if (data.mustAuthenticate) { //if the user is not authenticated anymore request a new ticket and get a new connection
                         getQix();
                     }
@@ -274,7 +297,11 @@ export async function getAllSlideHeadersPlain(qix) {
 var sectionBreakerConfig = true;
 export async function getAllSlides(insertSectionBreakers = sectionBreakerConfig) {
     console.log('getAllSlides: insertSectionBreakers', insertSectionBreakers)
+<<<<<<< HEAD
     var qix = await getQix();
+=======
+    var qix = await getQix();    
+>>>>>>> 210ee333b8740f7d90b37c8718ec68ce380dc725
     //insert breakers before a change of topic? YES/NO... breakers are annoying when you make a menu selection or want to link to a sheet
     sectionBreakerConfig = insertSectionBreakers;
     var table = insertSectionBreakers ? await getAllSlideHeaders(qix) : await getAllSlideHeadersPlain(qix);
@@ -339,7 +366,11 @@ export async function getComment(qix) {
 export async function setChangeListener(qix) {
     try {
         qix.app.on('changed', async() => {
+<<<<<<< HEAD
             // console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
+=======
+            console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
+>>>>>>> 210ee333b8740f7d90b37c8718ec68ce380dc725
             await getAllSlides();
             Reveal.slide(0);
             getCurrentSelections();
