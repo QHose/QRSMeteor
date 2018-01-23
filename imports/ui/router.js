@@ -161,11 +161,6 @@ Router.route('/integration', {
     layoutTemplate: 'presentationLayout'
 });
 
-Router.route('/test', {
-    template: 'slideSorter',
-    layoutTemplate: 'presentationLayout'
-});
-
 Router.route('/slideSorter', {
     template: 'ppt_slideSorter',
     layoutTemplate: 'presentationLayout'

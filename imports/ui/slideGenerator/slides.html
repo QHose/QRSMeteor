@@ -27,18 +27,21 @@
       {{/each}}
     </div>
   </div>
-   {{> footer}}
 </template>
 
 <template name="slide">
   <section class="slide">
+     <div class="wrap" style="margin-top: 50px">
     <h3> {{{level 1 slide}}}</h3>
     <h1>{{{level 2 slide}}}
       <hr>
     </h1>
     {{#if active slideNr}}
       {{> slideContent slide=slide}}
-    {{/if}}    
+    {{/if}} 
+    </div>
+       {{> footer}}
+   
   </section>
          
 

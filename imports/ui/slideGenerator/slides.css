@@ -50,6 +50,10 @@ logout?targetUr…host:81/qmc:91
   * GLOBAL STYLES
   *********************************************/
 
+.footer {
+    margin-top: 30px;
+}
+
 .reveal {
     /* background-image: linear-gradient(to bottom, #D7D3C8, #F6F4EC 60%); */
     font-size: 1.3em;

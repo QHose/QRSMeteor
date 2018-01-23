@@ -27,8 +27,18 @@ const webIntegrationDemo = 'http://' + Meteor.settings.public.webIntegrationHost
 Template.layout.helpers({
     NoSenseConnection() {
         return Session.get('NoSenseConnection');
+    },
+    slideShowActive() {
+        console.log('Router.current().route.getName()', Router.current().route.getName())
+        return Router.current().route.getName() === 'slides';
     }
 });
+
+Template.emptyLayout.onRendered(function() {
+    Template.instance().$('.dimmer')
+        .dimmer('show');
+});
+
 
 Template.loginDimmer.onRendered(function() {
     Template.instance().$('.dimmer')
