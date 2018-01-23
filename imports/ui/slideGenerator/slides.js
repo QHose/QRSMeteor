@@ -60,6 +60,7 @@ function initializeReveal() {
 
     Session.set('activeStepNr', 0);
     Reveal.addEventListener('slidechanged', function(evt) {
+        console.log('slidechanged', evt.indexh)
         Session.set('activeStepNr', evt.indexh);
         $('.ui.embed').embed();
     });
@@ -78,6 +79,7 @@ Template.slideContent.events({
 //
 
 Template.slideContent.onRendered(async function() {
+    console.log('slideContent.onRendered', this)
     var level1 = this.data.slide[0].qText;
     var level2 = this.data.slide[1].qText;
     var template = this;
@@ -94,7 +96,7 @@ Template.slideContent.onRendered(async function() {
 
 
     var comment = await getComment(level1, level2);
-    console.log('comment retrieved in slideContent onrendered', comment)
+    // console.log('comment retrieved in slideContent onrendered', comment)
     if (comment.length > 3)
         template.$('.slideContent').append(createCommentBox(comment));
 
@@ -167,7 +169,7 @@ Template.registerHelper('step', function() {
 });
 
 async function getLevel3(level1, level2) {
-    //   console.log("getLevel3: "+level1+' -'+level2);
+    console.log("getLevel3: " + level1 + ' -' + level2);
     var qix = await getQix();
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {
@@ -186,6 +188,9 @@ async function getLevel3(level1, level2) {
             }]
         }
     });
+    console.log('------------------------------------');
+    console.log('QDEF IS sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)');
+    console.log('------------------------------------');
     sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
         qTop: 0,
         qLeft: 0,
@@ -194,11 +199,12 @@ async function getLevel3(level1, level2) {
     }]);
 
     var level3Temp = sessionData[0].qMatrix;
+    console.log('', )
     return normalizeData(level3Temp);
 }
 
 function createCommentBox(text) {
-    console.log('createCommentBox for text', text)
+    // console.log('createCommentBox for text', text)
     var textAfterCommentMarker = text.split('!comment').pop();
     var messagebox = `
         <section class="commentBox">
@@ -242,7 +248,7 @@ async function getComment(level1, level2) {
     }]);
 
     var comment = sessionData[0].qMatrix[0][0].qText;
-    console.log('functie getComment heeft comment', comment)
+    // console.log('functie getComment heeft comment', comment)
     return comment;
 }
 

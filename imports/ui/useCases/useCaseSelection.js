@@ -339,7 +339,8 @@ export async function getComment(qix) {
 export async function setChangeListener(qix) {
     try {
         qix.app.on('changed', async() => {
-            // console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
+            console.log('QIX instance change event received, so get the new data set out of Qlik Sense');
+            Session.set("slideHeaders", null)
             await getAllSlides();
             Reveal.slide(0);
             getCurrentSelections();
