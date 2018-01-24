@@ -79,7 +79,6 @@ Template.slideContent.events({
 //
 
 Template.slideContent.onRendered(async function() {
-    console.log('slideContent.onRendered', this)
     var level1 = this.data.slide[0].qText;
     var level2 = this.data.slide[1].qText;
     var template = this;
@@ -101,7 +100,7 @@ Template.slideContent.onRendered(async function() {
         template.$('.slideContent').append(createCommentBox(comment));
 
     // this.subscribe('Logger');
-    // this.subscribe('SenseSelections');
+    this.subscribe('SenseSelections');
     Logger.insert({
         userId: Meteor.userId,
         // userName: Meteor.user().profile.name,
@@ -172,7 +171,7 @@ Template.registerHelper('step', function() {
 // ─── FOR EACH SLIDE GET THE LEVEL 3 ITEMS USING SET ANALYSIS ────────────────────
 //
 async function getLevel3(level1, level2) {
-    console.log("getLevel3: " + level1 + ' -' + level2);
+    // console.log("getLevel3: " + level1 + ' -' + level2);
     var qix = await getQix();
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {
@@ -191,9 +190,9 @@ async function getLevel3(level1, level2) {
             }]
         }
     });
-    console.log('------------------------------------');
-    console.log('QDEF IS sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)');
-    console.log('------------------------------------');
+    // console.log('------------------------------------');
+    // console.log('QDEF IS sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)');
+    // console.log('------------------------------------');
     sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
         qTop: 0,
         qLeft: 0,
@@ -202,7 +201,6 @@ async function getLevel3(level1, level2) {
     }]);
 
     var level3Temp = sessionData[0].qMatrix;
-    console.log('', )
     return normalizeData(level3Temp);
 }
 
@@ -257,8 +255,7 @@ async function getComment(level1, level2) {
     }]);
 
     var comment = sessionData[0].qMatrix[0][0].qText;
-    // console.log('functie getComment heeft comment', comment)
-    return comment;
+    return comment != 'null' ? comment : '';
 }
 
 

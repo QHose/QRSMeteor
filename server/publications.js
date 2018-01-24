@@ -13,10 +13,10 @@ Meteor.publish('Logger', function() {
     this.ready();
 });
 
-Meteor.publish('SenseSelections', function() {
-    return SenseSelections.find({ 'userId': this.userId });
-    this.ready();
-});
+// Meteor.publish('SenseSelections', function() {
+//     return SenseSelections.find({ 'userId': this.userId });
+//     this.ready();
+// });
 
 //only fill the local mongoDB that runs in the browser with data that belongs to the user...
 //https://www.meteor.com/tutorials/blaze/publish-and-subscribe

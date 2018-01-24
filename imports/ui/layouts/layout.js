@@ -55,13 +55,14 @@ Template.emptyContainerLayout.events({
     }
 })
 
-Template.footer.events({
-    'click .permaLinkSelection': function(event, template) {
-        //Go to the server method, get the selection object for the ID that is the current selection
-        Session.get('currentSelectionId', currentSelectionId);
-
+Template.footer.helpers({
+    permaLinkSelectionId() {
+        return Session.get('currentSelectionId');
+    },
+    slideShowActive() {
+        return Router.current().route.getName() === 'slides';
     }
-})
+});
 
 Template.layout.events({
     'keydown, click': function(event, template) {

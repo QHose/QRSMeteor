@@ -138,6 +138,7 @@ export async function makeSelectionInField(fieldName, value) {
     } catch (error) {
         var message = 'makeSelectionInField: Can not connect to the Qlik Sense Engine API via enigmaJS';
         console.error(message + ' Sense reported the following error: ', error);
+        location.reload(); //reload the page
         sAlert.error(message, error);
     };
 
