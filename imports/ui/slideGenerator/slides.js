@@ -168,6 +168,9 @@ Template.registerHelper('step', function() {
     return Session.get('activeStepNr');
 });
 
+//
+// ─── FOR EACH SLIDE GET THE LEVEL 3 ITEMS USING SET ANALYSIS ────────────────────
+//
 async function getLevel3(level1, level2) {
     console.log("getLevel3: " + level1 + ' -' + level2);
     var qix = await getQix();
@@ -221,6 +224,12 @@ function createCommentBox(text) {
 
     return messagebox;
 }
+
+//
+// ─── FOR EACH SLIDE GET THE COMMENT TEXT USING SET ANALYSIS ─────────────────────
+//
+
+
 async function getComment(level1, level2) {
     var qix = await getQix();
     var sessionModel = await qix.app.createSessionObject({

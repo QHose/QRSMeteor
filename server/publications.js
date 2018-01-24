@@ -14,7 +14,7 @@ Meteor.publish('Logger', function() {
 });
 
 Meteor.publish('SenseSelections', function() {
-    return SenseSelections.find();
+    return SenseSelections.find({ 'userId': this.userId });
     this.ready();
 });
 
