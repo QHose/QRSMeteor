@@ -17,17 +17,18 @@ accounts-password@1.5.0
  accounts-github@1.4.0
  jonperl:accounts-linkedin
 service-configuration@1.0.11
- useraccounts:iron-routing
- useraccounts:semantic-ui
+ # useraccounts:iron-routing
+ kadira:flow-router
+ # useraccounts:semantic-ui
 practicalmeteor:faker
 # meteorhacks:sikka #firewall
-simple:json-routes
+# simple:json-routes
 artwells:accounts-guest # https://github.com/artwells/meteor-accounts-guest
 dferber:prerender
 
-aldeed:autoform
-aldeed:collection2
-aslagle:reactive-table
+#aldeed:autoform
+# aldeed:collection2
+# aslagle:reactive-table
 blaze-html-templates   # Compile .html files into Meteor Blaze views
 check@1.2.5
 dburles:collection-helpers
@@ -58,11 +59,11 @@ tracker@1.1.3                 # Meteor's client-side reactive programming librar
 twbs:bootstrap
 # yogiben:admin  				#Admin interface
 zimme:active-route
-alanning:roles  			#authorization roles
+# alanning:roles  			#authorization roles
 deanius:promise
 
 
 shell-server@0.3.0
 u2622:persistent-session
-google-config-ui@1.0.0
+# google-config-ui@1.0.0
 dynamic-import@0.2.0
