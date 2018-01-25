@@ -24,7 +24,7 @@ Template.mainButtons.events({
     },
     'click .backToStep1' () {
         Session.setAuth('currentStep', 1);
-        Router.go('users');
+        FlowRouter.go('users');
     },
     'click .oneStepBack' () {
         Session.setAuth('currentStep', Session.get('currentStep') - 1);

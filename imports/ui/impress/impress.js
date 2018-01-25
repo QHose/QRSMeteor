@@ -30,7 +30,7 @@ var api = {};
 Template.impress.onCreated(function() {
     if (unsupportedBrowser()) {
         console.log('this browser is not supported, so skip the slides');
-        Router.go('generation');
+        FlowRouter.go('generation');
     }
 })
 

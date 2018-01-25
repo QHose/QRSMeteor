@@ -294,7 +294,7 @@
             }
             //step 1 insert customers
             else if (Session.get('currentStep') === 1) {
-                Router.go('users');
+                FlowRouter.go('users');
                 return 1
             }
             //step 2 there are customers, but no template

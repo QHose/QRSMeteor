@@ -1,0 +1,22 @@
+<template name="App_body">
+  ...
+  {{> Template.dynamic template=main}}
+  ...
+</template>
+
+<template name="layout1">
+  {{> Template.dynamic template=top}}
+  {{> Template.dynamic template=main}}
+</template>
+
+<template name="header">
+  <h1>This is the header</h1>
+</template>
+
+<template name="postList">
+  <h2>This is the postList area.</h2>
+</template>
+
+<template name="singlePost">
+  <h2>This is the singlePost area.</h2>
+</template>

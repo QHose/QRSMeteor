@@ -17,10 +17,10 @@
 //             if (error) {
 //                 console.log(error.reason); // Output error if registration fails
 //             } else {
-//                 Router.go("home"); // Redirect user if registration succeeds
+//                 FlowRouter.go("home"); // Redirect user if registration succeeds
 //             }
 //         });
-//         Router.go('generation');
+//         FlowRouter.go('generation');
 //     }
 // });
 
@@ -36,7 +36,7 @@
 //             if (error) {
 //                 console.log(error.reason);
 //             } else {
-//                 Router.go("home");
+//                 FlowRouter.go("home");
 //             }
 //         });
 //     }

@@ -16,7 +16,7 @@ import {
     Session
 } from 'meteor/session';
 import * as slideApp from '/imports/ui/useCases/useCaseSelection';
-
+import './nav.html';
 const Cookies = require('js-cookie');
 export var VIDEO_OVERVIEW = 'Video overview';
 export var WEB_INTEGRATION = 'Options to embed Qlik Sense: from simple to advanced use cases';
@@ -48,7 +48,7 @@ Template.nav.events({
         var menuItem = event.currentTarget.id;
         switch (menuItem) {
             case 'home':
-                Router.go('useCaseSelection');
+                FlowRouter.go('useCaseSelection');
                 break;
             case 'SSBI':
                 selectMenuItemInSense('What is governed self service?')
@@ -99,11 +99,6 @@ async function abortQlikModalState() {
     qix.app.abortModal(true);
 }
 
-Template.yourSaasPlatformMenu.onRendered(function() {
-    this.$('.ui.dropdown')
-        .dropdown()
-});
-
 export async function selectViaQueryId(mongoId) {
     console.log('selectViaQueryId(mongoId)', mongoId);
     var qSelection = await Meteor.callPromise('getSenseSelectionObject', mongoId)
@@ -124,7 +119,7 @@ export async function selectMenuItemInSense(slide) {
     }]
     await makeSelectionInField("Level 2", selection);
     Meteor.setTimeout(function() {
-        Router.go('slides');
+        FlowRouter.go('slides');
     }, 200)
 }
 

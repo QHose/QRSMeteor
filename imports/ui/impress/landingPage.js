@@ -132,7 +132,7 @@ Template.landingPage.events({
     'click #slideSorter': function(event) {
         Cookies.set('showSlideSorter', 'true');
         window.open("/slideSorter"); //GO TO THE SLIDE Sorter in a new tab
-        // Router.go('slideSorter'); 
+        // FlowRouter.go('slideSorter'); 
     }
 })
 Template.slideGeneratorSelectionScreen.onRendered(function() {

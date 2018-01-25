@@ -34,7 +34,7 @@ function slideDataLoaded() {
         console.log("------------------------------------");
         console.log("No slide data present in session, reroute the user back to the useCaseSelection screen.");
         console.log("------------------------------------");
-        Router.go("useCaseSelection");
+        FlowFlowRouter.go("useCaseSelection");
         return;
     }
 }

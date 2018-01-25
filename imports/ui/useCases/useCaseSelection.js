@@ -48,7 +48,7 @@ Template.useCaseSelection.onCreated(async function() {
                 // get the data and go to the slides
             await getAllSlides();
             // after we got all data in an array from sense, change the router/browser to the slides page
-            Router.go("slides");
+            FlowRouter.go("slides");
         } else {
             // console.log('no query selection parameter found');
         }
@@ -102,7 +102,7 @@ Template.useCaseSelection.onRendered(async function() {
                     // console.log('Content has been received, now show the slides')
                 Meteor.setTimeout(function() {
                     // console.log('Router: Go to slides ');
-                    Router.go('slides');
+                    FlowRouter.go('slides');
                 }, 200)
             }
         })
@@ -116,7 +116,7 @@ Template.useCaseSelection.events({
     'click .button.slides': async function(e, t) {
         // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
         await setSlideContentInSession('TECHNICAL');
-        Router.go('slides');
+        FlowRouter.go('slides');
 
         setTimeout(function() {
             nav.showSlideSelector();

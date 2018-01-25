@@ -30,7 +30,7 @@ import './users.html';
 AutoForm.addHooks(['insertCustomerForm'], {
     onSuccess: function(operation, result, template) {
         sAlert.success('We inserted the customer into your local MongoDB.');
-        //Router.go("/posts");
+        //FlowRouter.go("/posts");
     },
     // before: {
     //     // Replace `formType` with the form `type` attribute to which this hook applies
@@ -134,7 +134,7 @@ Template.users.events({
     'click .backToGeneration' () {
         console.log('go to step 2 clicked')
         Session.set('currentStep', 2);
-        Router.go('generation_embedded');
+        FlowRouter.go('generation_embedded');
     },
     'click .customer-row': function() {
         Session.set("selectedCustomerStep1", this._id);
