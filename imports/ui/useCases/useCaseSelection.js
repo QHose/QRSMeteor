@@ -48,7 +48,7 @@ Template.useCaseSelection.onCreated(async function() {
             FlowRouter.go("slides");
         } else {
             console.log('no query selection parameter found, show the sense selection screen');
-            await setSlideContentInSession('TECHNICAL');
+            // await setSlideContentInSession('TECHNICAL');
             FlowRouter.go('slides');
             setTimeout(function() {
                 nav.showSlideSelector();

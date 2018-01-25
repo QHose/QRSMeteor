@@ -12,20 +12,20 @@ var showdown = require('showdown');
 var converter = new showdown.Converter();
 var numberOfActiveSlides = 5;
 
-Template.slides.onCreated(async function() {
-    $('body').css({
-        overflow: 'hidden',
-    });
-})
+// Template.slides.onCreated(async function() {
+//     $('body').css({
+//         overflow: 'hidden',
+//     });
+// })
 
-Template.slides.onDestroyed(function() {
-    $('body').css({
-        overflow: 'auto',
-    });
-})
+// Template.slides.onDestroyed(function() {
+//     $('body').css({
+//         overflow: 'auto',
+//     });
+// })
 
 Template.slides.onRendered(function() {
-    slideDataLoaded();
+    // slideDataLoaded();
     initializeReveal();
 });
 
