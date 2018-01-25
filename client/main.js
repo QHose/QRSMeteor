@@ -1,9 +1,13 @@
 import '/imports/ui/router.js';
 import '/imports/ui/slideGenerator/main.js';
+import '/imports/ui/impress/slidegeneratorSlides.js';
+
+import '/imports/ui/useCases/useCaseSelection.js';
+import '/imports/ui/nav.js';
 // import '/imports/ui/generation/generation.js';
 // import '/imports/ui/UIHelpers';
 // import '/imports/ui/generation/customer.js';
-// import '/imports/ui/layouts/layout.js';
+import '/imports/ui/layouts/layout.js';
 // import '/imports/ui/layouts/regionLayout.js';
 // import '/imports/ui/pages/introduction.html';
 // import '/imports/ui/pages/introduction.js';
@@ -14,8 +18,6 @@ import '/imports/ui/slideGenerator/main.js';
 // import '/imports/ui/pages/QMC.html';
 // import '/imports/ui/users/login.js';
 // import '/imports/ui/notFound.html';
-import '/imports/ui/useCases/useCaseSelection.js';
-import '/imports/ui/nav.js';
 // import '/imports/ui/generation/OEMPartnerSide/users.js';
 // import '/imports/ui/impress/impress.js';
 // import '/imports/SSO/client/SSO.html';

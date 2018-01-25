@@ -50,7 +50,9 @@ Template.useCaseSelection.onCreated(async function() {
             // after we got all data in an array from sense, change the router/browser to the slides page
             FlowRouter.go("slides");
         } else {
-            // console.log('no query selection parameter found');
+            console.log('no query selection parameter found, show the sense selection screen');
+            await setSlideContentInSession('TECHNICAL');
+            FlowRouter.go('slides');
         }
     }, 0);
 

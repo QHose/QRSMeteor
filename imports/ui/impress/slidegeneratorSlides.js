@@ -18,26 +18,26 @@ var config = null;
 // Slide generator main template//
 //////////////////////////////////
 
-Template.slidegeneratorSlides.onCreated(function() {
-    clearSlideCache();
-    console.log('############# Template.slidegeneratorSlides.onRendered');
+// Template.slidegeneratorSlides.onCreated(function() {
+//     clearSlideCache();
+//     console.log('############# Template.slidegeneratorSlides.onRendered');
 
-    config = {
-        schema: qixschema,
-        appId: Cookies.get('slideGeneratorAppId'), //senseConfig.slideGeneratorAppId, //,
-        session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
-            host: senseConfig.host,
-            prefix: Meteor.settings.public.slideGenerator.virtualProxy,
-            port: senseConfig.port,
-            unsecure: true
-        },
-    };
-    console.log('Engima config', config)
-})
+//     config = {
+//         schema: qixschema,
+//         appId: Cookies.get('slideGeneratorAppId'), //senseConfig.slideGeneratorAppId, //,
+//         session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+//             host: senseConfig.host,
+//             prefix: Meteor.settings.public.slideGenerator.virtualProxy,
+//             port: senseConfig.port,
+//             unsecure: true
+//         },
+//     };
+//     console.log('Engima config', config)
+// })
 
-Template.slidegeneratorSlides.onRendered(function() {
-    initializePresentation();
-})
+// Template.slidegeneratorSlides.onRendered(function() {
+//     initializePresentation();
+// })
 
 
 
@@ -64,37 +64,37 @@ export function initializePresentation() {
     });
 
 }
-Template.slidegeneratorSlides.onDestroyed(function() {
-    Cookies.set('showSlideSorter', 'false');
-})
+// Template.slidegeneratorSlides.onDestroyed(function() {
+//     Cookies.set('showSlideSorter', 'false');
+// })
 
-Template.integrationSlideContent.onRendered(function() {
-    if (Cookies.get('showSlideSorter') !== 'true') { //slide show is active, first hide everything, then fade in.
-        $('.slideContent').css({ "visibility": "hidden" });
-    }
+// Template.integrationSlideContent.onRendered(function() {
+//     if (Cookies.get('showSlideSorter') !== 'true') { //slide show is active, first hide everything, then fade in.
+//         $('.slideContent').css({ "visibility": "hidden" });
+//     }
 
-    Meteor.setTimeout(function() {
-        // console.log('render slide content without animations?', Cookies.get('showSlideSorter'));
-        if (Cookies.get('showSlideSorter') !== 'true') { //only do animations for the slide show, not the slide overview
-            // $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes... show all slide content in the slideSorter
+//     Meteor.setTimeout(function() {
+//         // console.log('render slide content without animations?', Cookies.get('showSlideSorter'));
+//         if (Cookies.get('showSlideSorter') !== 'true') { //only do animations for the slide show, not the slide overview
+//             // $('.slideContent').css({ "visibility": "hidden" }); //prevent an issue when impress has qlik sense embedded via iframes... show all slide content in the slideSorter
 
-            initCodeHighLightAndYouTube(this);
+//             initCodeHighLightAndYouTube(this);
 
-            this.$('.markdownItem, .videoPlaceholder, iframe, img').transition({
-                animation: 'fade in',
-                duration: '3s',
-            });
+//             this.$('.markdownItem, .videoPlaceholder, iframe, img').transition({
+//                 animation: 'fade in',
+//                 duration: '3s',
+//             });
 
-            this.$('blockquote').transition({
-                animation: 'fade in',
-                duration: '5s',
-            });
-            //ensure all links open on a new tab
-            this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
-        }
-    }, 100);
+//             this.$('blockquote').transition({
+//                 animation: 'fade in',
+//                 duration: '5s',
+//             });
+//             //ensure all links open on a new tab
+//             this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
+//         }
+//     }, 100);
 
-})
+// })
 
 
 export function initCodeHighLightAndYouTube(selection) {
@@ -134,85 +134,85 @@ Template.registerHelper('slideSorter', function() {
     return Cookies.get('showSlideSorter') === "true" ? "shrink" : "";
 });
 
-Template.integrationSlide.helpers({
-    level(level, slide) {
-        return textOfLevel(slide, level);
-    },
-    step() {
-        return Session.get('activeStepNr');
-    }
-})
+// Template.integrationSlide.helpers({
+//     level(level, slide) {
+//         return textOfLevel(slide, level);
+//     },
+//     step() {
+//         return Session.get('activeStepNr');
+//     }
+// })
 
 //active slide gets set via impress.js, that fires an event. see slidegeneratorSlides.onRendered
 //for performance reasons we only do all our formatting etc when the slide is active.
 //but for the slide sorter we need all content to be loaded in one go...
 //show the slide if the slide is active, but in case of the slide sorter all slides should be presented at once. This is a performance tweak...
-Template.registerHelper('slideActive', function(slideNr) {
-    return (Session.get('activeStepNr') >= slideNr + 1) || Cookies.get('showSlideSorter') === 'true';
-});
+// Template.registerHelper('slideActive', function(slideNr) {
+//     return (Session.get('activeStepNr') >= slideNr + 1) || Cookies.get('showSlideSorter') === 'true';
+// });
 
-Template.integrationSlideContent.helpers({
-    itemsOfLevel: function(level, slide) { //get all child items of a specific level, normally you will insert level 3 
-        var parents = slide[level - 3].qText + slide[level - 2].qText; //get the names of the parents of the current slide (level 1 and 2)
-        if (parents) {
-            // console.log('Parent is not empty:', parents);
-            return getLocalValuesOfLevel(parents); //using the parent, get all items that have this name as parent
-        }
-    },
-    formatted(text) {
-        if (youtube_parser(text)) { //youtube video url
-            // console.log('found an youtube link so embed with the formatting of semantic ui', text)
-            var videoId = youtube_parser(text);
-            var html = '<div class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div></div>'
-                // console.log('generated video link: ', html);
-            return html;
-        } else if (text.startsWith('<')) { //custom HTML
-            return text;
-        } else if (checkTextIsImage(text)) { //image
-            // console.log('found an image', text)
-            return '<img class="ui huge centered integration image"  src="images/' + text + '">'
-        } else { //text, convert the text (which can include markdown syntax) to valid HTML
-            var result = converter.makeHtml(text);
-            if (result.substring(1, 11) === 'blockquote') {
-                return '<div class="ui green segment">' + result + '</div>';
-            } else {
-                return '<div class="markdownItem">' + result + '</div>';
-            }
-        }
-    }
-})
+// Template.integrationSlideContent.helpers({
+//     itemsOfLevel: function(level, slide) { //get all child items of a specific level, normally you will insert level 3 
+//         var parents = slide[level - 3].qText + slide[level - 2].qText; //get the names of the parents of the current slide (level 1 and 2)
+//         if (parents) {
+//             // console.log('Parent is not empty:', parents);
+//             return getLocalValuesOfLevel(parents); //using the parent, get all items that have this name as parent
+//         }
+//     },
+//     formatted(text) {
+//         if (youtube_parser(text)) { //youtube video url
+//             // console.log('found an youtube link so embed with the formatting of semantic ui', text)
+//             var videoId = youtube_parser(text);
+//             var html = '<div class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div></div>'
+//                 // console.log('generated video link: ', html);
+//             return html;
+//         } else if (text.startsWith('<')) { //custom HTML
+//             return text;
+//         } else if (checkTextIsImage(text)) { //image
+//             // console.log('found an image', text)
+//             return '<img class="ui huge centered integration image"  src="images/' + text + '">'
+//         } else { //text, convert the text (which can include markdown syntax) to valid HTML
+//             var result = converter.makeHtml(text);
+//             if (result.substring(1, 11) === 'blockquote') {
+//                 return '<div class="ui green segment">' + result + '</div>';
+//             } else {
+//                 return '<div class="markdownItem">' + result + '</div>';
+//             }
+//         }
+//     }
+// })
 
-function setXValue(index) {
-    Session.set('currentSlideNumber', index);
-    return slideWidth * index;
-}
+// function setXValue(index) {
+//     Session.set('currentSlideNumber', index);
+//     return slideWidth * index;
+// }
 
-function textOfLevel(row, level) {
-    level -= 1
-    return row[level].qText
-}
+// function textOfLevel(row, level) {
+//     level -= 1
+//     return row[level].qText
+// }
 
-function getLevel1and2Names(slide) {
-    return slide[0].qText + '-' + slide[1].qText;
-}
+// function getLevel1and2Names(slide) {
+//     return slide[0].qText + '-' + slide[1].qText;
+// }
 
-function checkTextIsImage(text) {
-    return (text.match(/\.(jpeg|jpg|gif|png)$/) != null);
-}
+// function checkTextIsImage(text) {
+//     return (text.match(/\.(jpeg|jpg|gif|png)$/) != null);
+// }
 
-function youtube_parser(url) {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    // console.log('de url '+ url + ' is een match met youtube? '+ (match && match[7].length == 11));
-    return (match && match[7].length == 11) ? match[7] : false;
-}
+// function youtube_parser(url) {
+//     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+//     var match = url.match(regExp);
+//     // console.log('de url '+ url + ' is een match met youtube? '+ (match && match[7].length == 11));
+//     return (match && match[7].length == 11) ? match[7] : false;
+// }
 
-var setCurrentSlideEventHelper = function() {
-    $(document).on('impress:stepenter', function(e) {
-        var currentSlide = $(e.target).attr('id');
-        Session.set('currentSlide', currentSlide);
-    });
-}
+// var setCurrentSlideEventHelper = function() {
+//     $(document).on('impress:stepenter', function(e) {
+//         var currentSlide = $(e.target).attr('id');
+//         Session.set('currentSlide', currentSlide);
+//     });
+// }
 
 var getLocalValuesOfLevel = function(parentText) {
     // console.log('get all level 3 for level 2 with text:', parentText);
