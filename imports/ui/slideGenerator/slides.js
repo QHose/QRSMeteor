@@ -96,11 +96,9 @@ Template.slideContent.onRendered(async function() {
 
     var comment = await getComment(level1, level2);
     // console.log('comment retrieved in slideContent onrendered', comment)
-    if (comment.length > 3)
+    if (comment.length > 10)
         template.$('.slideContent').append(createCommentBox(comment));
 
-    // this.subscribe('Logger');
-    this.subscribe('SenseSelections');
     Logger.insert({
         userId: Meteor.userId,
         // userName: Meteor.user().profile.name,

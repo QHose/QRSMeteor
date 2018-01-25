@@ -64,6 +64,10 @@ logout?targetUr…host:81/qmc:91
     /* overflow: hidden !important; */
 }
 
+.reveal .wrap {
+    min-height: calc(100vh - 37px);
+}
+
  ::selection {
     color: #fff;
     background: #00c99d;

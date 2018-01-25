@@ -28,7 +28,7 @@ var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Anal
 
 // ONCREATED
 Template.useCaseSelection.onCreated(async function() {
-    const apiLogsHandle = Meteor.subscribe('apiLogs');
+    // const apiLogsHandle = Meteor.subscribe('apiLogs');
     // Session.set('selectionMade', false);
 
     //wait a bit, so Meteor can login, before requesting a ticket...
@@ -40,8 +40,8 @@ Template.useCaseSelection.onCreated(async function() {
 
         //see if the user started up this screen, with a selection parameter
         var value = getQueryParams('selection');
-        console.log('getQueryParams return value', value)
-            //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
+        // console.log('getQueryParams return value', value)
+        //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
         if (value) {
             console.log('%%%%%%%%%%  Slides oncreated: Query string found: ', value);
             await nav.selectViaQueryId(value)
@@ -50,7 +50,7 @@ Template.useCaseSelection.onCreated(async function() {
             // after we got all data in an array from sense, change the router/browser to the slides page
             Router.go("slides");
         } else {
-            console.log('no query selection parameter found');
+            // console.log('no query selection parameter found');
         }
     }, 0);
 
@@ -58,7 +58,7 @@ Template.useCaseSelection.onCreated(async function() {
 
 // Replace with more Meteor approach
 function getQueryParams(name, url) {
-    console.log('getQueryParams(name, url)', name + ' ' + url);
+    // console.log('getQueryParams(name, url)', name + ' ' + url);
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
@@ -341,10 +341,10 @@ export async function setChangeListener(qix) {
     try {
         qix.app.on('changed', async() => {
             console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
+            await getCurrentSelections();
             Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
             await getAllSlides();
             Reveal.slide(0); //go to the first slide after a data refresh.
-            await getCurrentSelections();
         });
 
     } catch (error) {
@@ -397,7 +397,7 @@ async function getCurrentSelections() {
             selectionDate: new Date() // current time
         }, function(err, currentSelectionId) {
             if (err) { console.error('Failed to store the selection in mongoDb') }
-            console.log('New selection has been stored in monog with currentSelectionId', currentSelectionId)
+            console.log('New selection has been stored in MongoDB with currentSelectionId', currentSelectionId)
             Session.set('currentSelectionId', currentSelectionId);
             return currentSelections;
         });
