@@ -1,11 +1,4 @@
-<template name="slidesContainerIFrame">
-  <iframe allowfullscreen src="{{pathFor 'slides'}}" class="frame"></iframe>
-</template>
-
-
-
 <template name="slides">
-  <!-- for each header: a level 1 and 2 combination -->
   <!--         Create a chapter breaker if the level 1 has changed in the current row-->
   <!-- The current level 1 and 2 headers -->
 
@@ -50,5 +43,6 @@
 
 <template name="slideContent">
   <div class="slideContent">
+    <!-- slide content will be added via javascript in the onRendered of slideContent -->
   </div>
 </template>

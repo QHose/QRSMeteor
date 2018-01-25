@@ -1,7 +1,7 @@
 import '/imports/ui/useCases/useCaseSelection.html';
 import '/imports/ui/slideGenerator/slides.html';
 import '/imports/ui/slideGenerator/slides';
-import '/imports/ui/slideGenerator/slides.css';
+// import '/imports/ui/slideGenerator/slides.css';
 import * as nav from "/imports/ui/nav.js";
 import { SenseSelections } from '/imports/api/logger';
 import './SSBI/SSBI.js';

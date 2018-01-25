@@ -1,5 +1,5 @@
 var Reveal = require('reveal');
-import './reveal.css';
+// import './reveal.css';
 // import 'reveal/theme/default.css';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
@@ -41,21 +41,27 @@ function slideDataLoaded() {
 
 function initializeReveal() {
     window.Reveal = Reveal;
-    // console.log('initializeReveal', Reveal);
+    console.log('initializeReveal', Reveal);
     Reveal.initialize({
-        width: window.innerWidth - 80,
+        // width: window.innerWidth - 80,
+        controlsTutorial: true,
         embedded: true,
         controls: true,
-        center: false,
+        center: true,
         // Flags if speaker notes should be visible to all viewers
         showNotes: true,
         autoPlayMedia: true,
         fragments: false,
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: true,
         // autoSlide: 1000,
         loop: false,
         transition: "slide", // none/fade/slide/convex/concave/zoom
         previewLinks: false,
-        slideNumber: true
+        slideNumber: true,
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 1,
+        maxScale: 1.5
     });
 
     Session.set('activeStepNr', 0);
@@ -79,6 +85,11 @@ Template.slideContent.events({
 //
 
 Template.slideContent.onRendered(async function() {
+    //
+    // ─── GET SLIDE CONTENT LEVEL 3 ──────────────────────────────────────────────────
+    //
+
+    console.log('slideContent.onRendered')
     var level1 = this.data.slide[0].qText;
     var level2 = this.data.slide[1].qText;
     var template = this;
@@ -89,6 +100,7 @@ Template.slideContent.onRendered(async function() {
         })
 
     }
+
     //
     // ─── GET COMMENT AND CREATE A NICE HTML BOX AROUND THE TEXT ─────────────────────
     //
