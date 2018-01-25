@@ -23,9 +23,6 @@ var slideObject = Meteor.settings.public.slideGenerator.dataObject;
 var app = null;
 var qix = null;
 
-
-var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
-
 // ONCREATED
 Template.useCaseSelection.onCreated(async function() {
     // const apiLogsHandle = Meteor.subscribe('apiLogs');
@@ -53,6 +50,9 @@ Template.useCaseSelection.onCreated(async function() {
             console.log('no query selection parameter found, show the sense selection screen');
             await setSlideContentInSession('TECHNICAL');
             FlowRouter.go('slides');
+            setTimeout(function() {
+                nav.showSlideSelector();
+            }, 100);
         }
     }, 0);
 
@@ -80,54 +80,7 @@ Tracker.autorun(() => {
 // ONRENDERED.
 Template.useCaseSelection.onRendered(async function() {
     $('body').addClass('mainLandingImage');
-
-    //fill the dropdown using a array of values
-    $.each(possibleRoles, function(i, item) {
-        $('#bodyDropdown').append($('<option>', {
-            value: item,
-            text: item
-        }));
-    });
-
-    $(".ui.dropdown").dropdown("refresh");
-    var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
-        // console.log('textToShow', textToShow)
-    $(".ui.dropdown").dropdown("set selected", textToShow);
-
-    $('.ui.dropdown')
-        .dropdown({
-            async onChange(group, text, selItem) {
-                // Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
-                Cookies.set('currentMainRole', group);
-                await setSelectionInSense('Partial Workshop', group)
-                    // await setSlideContentInSession(group);
-                    // console.log('Content has been received, now show the slides')
-                Meteor.setTimeout(function() {
-                    // console.log('Router: Go to slides ');
-                    FlowRouter.go('slides');
-                }, 200)
-            }
-        })
 })
-
-//
-// ─── SLIDE GENERATOR BUTTON CLICK ─────────────────────────────────────────────────────────────────────
-//
-
-Template.useCaseSelection.events({
-    'click .button.slides': async function(e, t) {
-        // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
-        await setSlideContentInSession('TECHNICAL');
-        FlowRouter.go('slides');
-
-        setTimeout(function() {
-            nav.showSlideSelector();
-        }, 100);
-    },
-    'click #videoButton': async function(e, t) {
-        nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
-    }
-});
 
 
 async function setSelectionInSense(field, value) {
