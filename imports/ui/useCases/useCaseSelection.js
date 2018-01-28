@@ -72,7 +72,12 @@ function getQueryParams(name, url) {
 Tracker.autorun(() => {
     Session.get('slideHeaders');
     Meteor.setTimeout(function() {
-        Reveal.slide(0);
+        try {
+
+            Reveal.slide(0);
+        } catch (error) {
+
+        }
     }, 500);
 });
 // ONRENDERED.

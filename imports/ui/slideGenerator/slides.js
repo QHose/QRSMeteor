@@ -1,4 +1,8 @@
-var Reveal = require('reveal');
+try {
+    var Reveal = require('reveal');
+} catch (error) {
+
+}
 import './reveal.css';
 // import 'reveal/theme/default.css';
 import lodash from 'lodash';
@@ -25,9 +29,9 @@ Template.slides.onDestroyed(function() {
 })
 
 Template.slides.onRendered(function() {
-        setTimeout(() => {
-            slideDataLoaded();            
-        }, 1000);
+    setTimeout(() => {
+        slideDataLoaded();
+    }, 1000);
     initializeReveal();
 });
 
