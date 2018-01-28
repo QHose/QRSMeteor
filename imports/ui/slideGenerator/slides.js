@@ -25,7 +25,9 @@ Template.slides.onDestroyed(function() {
 })
 
 Template.slides.onRendered(function() {
-    slideDataLoaded();
+        setTimeout(() => {
+            slideDataLoaded();            
+        }, 1000);
     initializeReveal();
 });
 
