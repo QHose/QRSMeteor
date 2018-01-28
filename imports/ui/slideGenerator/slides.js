@@ -40,30 +40,35 @@ function slideDataLoaded() {
 }
 
 function initializeReveal() {
-    window.Reveal = Reveal;
-    // console.log('initializeReveal', Reveal);
-    Reveal.initialize({
-        width: window.innerWidth - 80,
-        embedded: true,
-        controls: true,
-        center: false,
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: true,
-        autoPlayMedia: true,
-        fragments: false,
-        // autoSlide: 1000,
-        loop: false,
-        transition: "slide", // none/fade/slide/convex/concave/zoom
-        previewLinks: false,
-        slideNumber: true
-    });
+    try {
+        window.Reveal = Reveal;
+        // console.log('initializeReveal', Reveal);
+        Reveal.initialize({
+            width: window.innerWidth - 80,
+            embedded: true,
+            controls: true,
+            center: false,
+            // Flags if speaker notes should be visible to all viewers
+            showNotes: true,
+            autoPlayMedia: true,
+            fragments: false,
+            // autoSlide: 1000,
+            loop: false,
+            transition: "slide", // none/fade/slide/convex/concave/zoom
+            previewLinks: false,
+            slideNumber: true
+        });
 
-    Session.set('activeStepNr', 0);
-    Reveal.addEventListener('slidechanged', function(evt) {
-        console.log('slidechanged', evt.indexh)
-        Session.set('activeStepNr', evt.indexh);
-        $('.ui.embed').embed();
-    });
+        Session.set('activeStepNr', 0);
+        Reveal.addEventListener('slidechanged', function(evt) {
+            console.log('slidechanged', evt.indexh)
+            Session.set('activeStepNr', evt.indexh);
+            $('.ui.embed').embed();
+        });
+
+    } catch (error) {
+
+    }
 }
 
 Template.slideContent.events({
