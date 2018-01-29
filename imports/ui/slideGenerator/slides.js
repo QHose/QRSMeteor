@@ -303,7 +303,7 @@ function convertToHTML(text) {
 
     //
     // ─── IMAGE ──────────────────────────────────────────────────────────────────────
-    //        
+    //
     else if (checkTextIsImage(text)) {
         return '<div class="ui container"> <img class="ui massive rounded bordered image"  style="width: 100%;" src="images/' + text + '"/></div>';
     } else if (text.startsWith(embeddedImageMarker)) { //embedded image in text
@@ -326,7 +326,7 @@ function convertToHTML(text) {
 
     //
     // ─── TEXT TO BE CONVERTED TO VIA MARKDOWN ───────────────────────────────────────
-    //        
+    //
     else { //text, convert the text (which can include markdown syntax) to valid HTML
         var result = converter.makeHtml(text);
         if (result.substring(1, 11) === 'blockquote') {

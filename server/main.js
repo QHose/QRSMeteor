@@ -14,6 +14,7 @@ import * as QSProxy from "/imports/api/server/QPSFunctions";
 import * as QSSystem from "/imports/api/server/QRSFunctionsSystemRules";
 import * as QSExtensions from "/imports/api/server/QRSFunctionsExtension";
 import * as QSCustomProps from "/imports/api/server/QRSFunctionsCustomProperties";
+import * as Auth from "./auth";
 
 //stop on unhandled errors
 process.on("unhandledRejection", up => {
@@ -37,6 +38,8 @@ Meteor.startup(async function() {
     await initQlikSense();
     removeGeneratedResources();
     optimizeMongoDB();
+
+    Auth.setupApi();
 });
 
 //
