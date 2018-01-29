@@ -17,8 +17,8 @@ if (Meteor.isClient) {
         "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
         "QIXSchema": _QIXSchema,
         //ssbi and slide generator app id are set automatically on main.js (client side, via a call to the server)
-        // config.SSBIAppId = 
-        // config.slideGeneratorAppId = 
+        // config.SSBIAppId =
+        // config.slideGeneratorAppId =
     };
 }
 
@@ -203,7 +203,7 @@ if (Meteor.isServer) {
             console.log('Meteor tries to find the settings.json file in Meteor.absolutePath:', Meteor.absolutePath)
             var file = path.join(Meteor.absolutePath, 'settings-development-example.json');
 
-            // READ THE FILE 
+            // READ THE FILE
             var exampleSettingsFile = await fs.readJson(file);
             try {
                 validateJSON(exampleSettingsFile)
