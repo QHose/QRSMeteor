@@ -73,11 +73,8 @@ Tracker.autorun(() => {
     Session.get('slideHeaders');
     Meteor.setTimeout(function() {
         try {
-
             Reveal.slide(0);
-        } catch (error) {
-
-        }
+        } catch (error) {}
     }, 500);
 });
 // ONRENDERED.

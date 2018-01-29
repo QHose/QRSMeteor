@@ -109,10 +109,10 @@ Template.slideContent.onRendered(async function() {
     // console.log('comment retrieved in slideContent onrendered', comment)
     if (comment.length > 10)
         template.$('.slideContent').append(createCommentBox(comment));
-
     Logger.insert({
         userId: Meteor.userId,
         // userName: Meteor.user().profile.name,
+        website: location.href,
         counter: 1,
         eventType: 'slideRendered',
         topic: this.data.slide[0].qText,
