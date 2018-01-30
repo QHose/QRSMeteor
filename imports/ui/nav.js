@@ -33,7 +33,7 @@ Template.nav.onRendered(function() {
     this.$('.selectSlides')
         .transition({
             animation: 'bounce',
-            duration: '16s'
+            duration: '9s'
         });
 });
 
@@ -42,41 +42,41 @@ Template.nav.onRendered(function() {
 //
 
 
-Template.nav.events({
-    'click a': function(event, template) {
-        event.preventDefault();
-        var menuItem = event.currentTarget.id;
-        switch (menuItem) {
-            case 'home':
-                Router.go('useCaseSelection');
-                break;
-            case 'SSBI':
-                selectMenuItemInSense('What is governed self service?')
-                break;
-            case 'generation':
-                selectMenuItemInSense('Qlik Sense SaaS provisioning demo');
-                break;
-            case 'embedding':
-                selectMenuItemInSense(WEB_INTEGRATION);
-                // window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
-                break;
-            case 'video':
-                selectMenuItemInSense(VIDEO_OVERVIEW);
-                break;
-            case 'sheetSelector':
-                showSlideSelector()
-                break;
-        }
-    }
-});
+// Template.nav.events({
+//     'click a': function(event, template) {
+//         event.preventDefault();
+//         var menuItem = event.currentTarget.id;
+//         switch (menuItem) {
+//             case 'home':
+//                 Router.go('useCaseSelection');
+//                 break;
+//             case 'SSBI':
+//                 selectMenuItemInSense('What is governed self service?')
+//                 break;
+//             case 'generation':
+//                 selectMenuItemInSense('Qlik Sense SaaS provisioning demo');
+//                 break;
+//             case 'embedding':
+//                 selectMenuItemInSense(WEB_INTEGRATION);
+//                 // window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
+//                 break;
+//             case 'video':
+//                 selectMenuItemInSense(VIDEO_OVERVIEW);
+//                 break;
+//             case 'sheetSelector':
+//                 showSlideSelector()
+//                 break;
+//         }
+//     }
+// });
 
 export function showSlideSelector() {
     $('.ui.modal.sheetSelector')
         .modal('show')
         .css({
             position: "fixed",
-            top: '260px',
-            'min-height': '500px'
+            top: '30%',
+            height: window.innerHeight * 0.85
         })
         .modal({
             onVisible: function() {
@@ -99,68 +99,40 @@ async function abortQlikModalState() {
     qix.app.abortModal(true);
 }
 
-Template.yourSaasPlatformMenu.onRendered(function() {
-    this.$('.ui.dropdown')
-        .dropdown()
-});
-
-export async function selectViaQueryId(mongoId) {
-    console.log('selectViaQueryId(mongoId)', mongoId);
-    var qSelection = await Meteor.callPromise('getSenseSelectionObject', mongoId)
-    console.log('qSelection result from mongoDB', qSelection)
-    if (qSelection) {
-        await makeSelectionInFields(qSelection.selection);
-    } else {
-        sAlert.warning('We could not retreive a stored selection for this id...')
-    }
-}
-
-// if people click on a menu item, you want a specific slide to be selected, so the slide is the value to search for...
 export async function selectMenuItemInSense(slide) {
     console.log('selectMenuItemInSense - slide', slide)
     Cookies.set('currentMainRole', 'TECHNICAL');
-    var selection = [{
-        "qText": slide
-    }]
-    await makeSelectionInField("Level 2", selection);
-    Meteor.setTimeout(function() {
-        Router.go('slides');
-    }, 200)
-}
-
-
-export async function makeSelectionInField(fieldName, value) {
-    console.log('makeSelectionInField', fieldName + ' : ' + value.toString());
     try {
         var qix = await slideApp.getQix();
-        var myField = await qix.app.getField(fieldName);
-        var result = await myField.selectValues(value);
+        var myField = await qix.app.getField('Level 2');
+        var result = await myField.selectValues(
+            [{
+                "qText": slide
+            }]
+        )
+        Meteor.setTimeout(function() {
+            console.log('------------------------------------');
+            console.log('Router: Go to slides ');
+            console.log('------------------------------------');
+            Router.go('slides');
+        }, 200)
     } catch (error) {
-        var message = 'makeSelectionInField: Can not connect to the Qlik Sense Engine API via enigmaJS';
-        console.error(message + ' Sense reported the following error: ', error);
-        location.reload(); //reload the page
+        var message = 'selectMenuItemInSense: Can not connect to the Qlik Sense Engine API via enigmaJS';
+        console.error(message, error);
         sAlert.error(message, error);
     };
-
 }
 
-//array of qSelections
-export async function makeSelectionInFields(selections) {
-    console.log('makeSelectionInFields(selections)', selections);
-    //for each qField
-    selections.forEach(function(selectionField) {
-        console.log('selectionField', selectionField)
-            //for each selected value (qSelectedFieldSelectionInfo) (e.g. country can have germany and france selected)
-        var selectValues = [];
-        selectionField.qSelectedFieldSelectionInfo.forEach(function(fieldValue) {
-            console.log('fieldValue', fieldValue)
-            selectValues.push({
-                "qText": fieldValue.qName,
-                "qIsNumeric": false,
-                "qNumber": 0
-            })
-            console.log('selectValues', selectValues)
-        })
-        makeSelectionInField(selectionField.qField, selectValues);
-    });
+
+
+
+// Replace with more Meteor approach
+function getQueryParams(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }

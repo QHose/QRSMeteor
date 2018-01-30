@@ -1,58 +1,20 @@
 <template name="nav">
   <div class="ui top fixed secondary menu mainNavBar">
-    <div class="ui container">
-      <!-- {{#unless isMainLandingPage}} -->
+    <div class="ui container">      
       <a id="home" href="{{pathFor 'useCaseSelection'}}" class="{{#if isMainLandingPage}} active {{/if}} item">
           HOME</a>
-      <!-- {{/unless}} -->
-      <a id="SSBI" href="{{pathFor 'selfService'}}" class="{{#if isSelfServicePage}} active {{/if}} item">
-      SELF SERVICE
-    </a>
-      {{#if isSaaSDemoPage}} {{> yourSaasPlatformMenu}}
-      {{else}}
-        <a id="generation" href="{{pathFor 'generation'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
-        SAAS PROVISIONING
-      </a> {{/if}}
-      <a id="embedding" href="{{webIntegrationDemo}}" class="item">
-          EMBED QLIK SENSE
-        </a>
-      <!-- <a href="{{pathFor 'documentation'}}" class="{{#if isDocumentationPage}} active {{/if}} item">
-     DOCUMENTATION
-   </a> -->
-      <a id="video" href="/documentation?tab=video" class="{{#if isDocumentationPage}} active {{/if}} item"> VIDEO LIBRARY</a>
-      <!-- 
-    <a class="ui item">
-      Logout
-    </a>
-  </div> -->
-      {{#if isPage 'slides'}}
+<a href="http://INTEGRATION.QLIK.COM" class="item" target="_blank">
+            INTEGRATION.QLIK.COM
+          </a>
+<a href="https://www.youtube.com/channel/UCmPMsqh1UvXhQTcAhPMEjpA/videos" class="item" target="_blank">
+            VIDEOS
+          </a>
+      
+      <!-- {{#if isPage 'slides'}}
         <div class="right orange menu">
           <a id="sheetSelector" class="item selectSlides" href="#" data-toggle="modal" data-target="#myModal"><i class="inverted search link icon"></i> CHANGE PRESENTATION</a>
         </div>
-      {{/if}}
+      {{/if}} -->
     </div>
   </div>
-
-</template>
-
-<template name="yourSaasPlatformMenu">
-   <div class="ui top fixed menu">
-    <div class="ui container">
-  <div class="ui dropdown item">SAAS PROVISIONING
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <a class="item" href="{{pathFor 'generation'}}">Provisioning admin panel</a>
-      <a class="item" href="{{pathFor 'securityRules'}}">Security and license rules</a>
-      {{#if readyToTestSSO}}
-        <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Your SaaS platform with Qlik Sense embedded</a>
-        <a class="item" href="{{senseServerHub}}" target="_blank">Not embedded, Hub using Single Sign On</a>
-        <a class="item" href="{{senseServerQMC}}" target="_blank">Not embedded, QMC using Single Sign On</a>{{/if}}
-      <a class="item" href="{{pathFor 'users'}}">Customers and users</a>
-      <a class="item" href="{{pathFor 'templateOverview'}}">Template apps</a>
-      <a class="item" href="{{pathFor 'ApiLogsTable'}}" target="_blank">API Logs</a>
-    </div>
-  </div>
-    </div>
-  </div>
-
 </template>
