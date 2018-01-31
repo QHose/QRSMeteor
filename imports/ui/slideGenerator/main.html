@@ -1,6 +1,10 @@
 <template name="App_body">
+  <!-- Header injected here -->
+  <div id="headerContainer"></div>
   {{> slideSelectionSheet}}
   {{> Template.dynamic template=main}}
+  <!-- Footer injected here -->
+  <div id="footerContainer"></div>
 </template>
 
 <template name="slideSelectionSheet">

@@ -1,0 +1,1217 @@
+/* ==========================================================================
+   DELETE WHEN DEPLOYED TO LIVE
+   ==========================================================================
+
+@media (max-width: 767px) {
+    body:before {
+        content: "Mobile Device (None (Auto))"; background:#e5e5e5; color:#999999; text-align:center; padding:.5em; display:block; width:100%; }
+}
+
+@media (min-width: 768px) {
+    body:before {
+        content: "Tablet Device (min-width: 768px)"; background:#e5e5e5; color:#999999; text-align:center; padding:.5em; display:block; width:100%;
+    }
+}
+
+@media (min-width: 992px) {
+
+    body:before {
+        content: "Medium Device Desktop (min-width: 992px)"; background:#e5e5e5; color:#999999; text-align:center; padding:.5em; display:block; width:100%;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    body:before {
+        content: "Large Device Desktops (min-width: 1200px)"; background:#e5e5e5; color:#999999; text-align:center; padding:.5em; display:block; width:100%;
+    }
+
+}
+
+#width { background:#e5e5e5; text-align:center; margin:0; padding:0;  }
+
+/* ï¿½Relayware. All Rights Reserved 2014 */
+
+
+/* ==========================================================================
+   INDEX
+=============================================================================
+* GLOBAL CLASSES
+* BOOTSTRAP RESETS
+* RESPONSIVE TABLES
+* RESPONSIVE FORMS
+* PARTNER LOCATOR
+* MEDIA QUERIES
+
+=============================================================================
+  GLOBAL CLASSES
+============================================================================= */
+
+body {
+    position: relative;
+}
+
+p {
+    clear: both;
+}
+
+table td,
+table th {
+    word-wrap: break-word;
+    vertical-align: top !important;
+}
+
+
+/* Sugar 448651
+textarea {
+    resize: none !important; border:1px solid #ff0000;
+}*/
+
+.container {
+    margin: 0 auto;
+}
+
+#contentContainer {
+    padding-bottom: 190px;
+}
+
+#footerContainer ol,
+#footerContainer ul,
+#activityStreamContainer ol,
+#activityStreamContainer ul {
+    list-style: none;
+}
+
+
+
+
+.moreMenu {
+    float: right;
+}
+
+.dropdown-menu>li>a {
+    text-decoration: none;
+}
+
+
+/* ----------------------------------------------
+    A Sarabi Main Nav Submenus
+    PROD2016-2579
+---------------------------------------------- */
+
+
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    display: none;
+    top:0;
+    left:100%;
+    margin: 0 !important;
+    -webkit-border-radius:0 !important;
+    -moz-border-radius:0 !important;
+    border-radius:0 !important;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display:block;
+}
+
+.dropdown-submenu i.fa {
+  position: absolute;
+  display: inline-block;
+  color: #ccc;
+  right: 10px;
+  top: 14px;
+}
+.dropdown-submenu:hover i.fa-caret-down,
+.dropdown-submenu:hover i.fa {
+    color:#ffffff;
+}
+
+.dropdown-submenu.pull-left {
+    float:none;
+}
+
+
+#wrapper {
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+#mainHeader a.logo img {
+    height: 100%;
+}
+
+.box-shadow {
+    margin-bottom: 1em;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+
+/*.radio-inline,
+.checkbox-inline {
+    margin-left:0 !important;
+    margin-right:10px !important;
+}*/
+
+
+/* ==========================================================================
+   SCROLL TO TOP
+============================================================================= */
+
+#scrollToTop {
+    position: fixed;
+    z-index: 1000;
+}
+
+
+/* Sandra requested this be removed as it shouldn't be here (it was swapping button order)
+button {
+  float: right !important;
+}
+*/
+
+
+/* Fixed button, bottom right */
+
+.btn-fixed-bottom {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    display: none;
+}
+
+
+/* Toggles navbar classes */
+
+.btn-hide-show {
+    margin-right: 10px;
+}
+
+
+/* Light theme */
+
+.btn-light {
+    color: #555;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.btn-light:hover {
+    color: #111;
+    background-color: rgba(0, 0, 0, .25);
+}
+
+
+/* Dark theme */
+
+.btn-dark {
+    color: #fff;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.btn-dark:hover {
+    color: #fff;
+    background-color: rgba(0, 0, 0, .9);
+}
+
+
+/* Buttons displayed throughout the content */
+
+.btn-showup {
+    position: relative;
+    color: #fff;
+    font-weight: normal;
+    background-color: #463265;
+    border-color: #3F2961;
+}
+
+.btn:focus,
+.btn-showup:hover,
+.btn-showup:focus {
+    color: #fff;
+    outline: none;
+    background-color: #39235A;
+    border-color: #39235A;
+}
+
+
+/* ==========================================================================
+   BOOTSTRAPS RESETS
+============================================================================= */
+
+label {
+    color: #000 !important;
+}
+
+.ui-loader {
+    display: none;
+    z-index: 9999999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    border: 0px none;
+}
+
+
+/* suppress mobile.js stuff on select boxes */
+
+.ui-select span.form-control,
+span.ui-li-count {
+    display: none !important;
+}
+
+#mainNavigation .visible-sm,
+#mainNavigation .visible-md,
+#mainNavigation .visible-lg {
+    display: inline-block !important;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    margin-top: 2px !important;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE TABLES
+============================================================================= */
+
+form#printPdfCertificates {
+    width: 100%;
+}
+
+table#printPdfCertificates tr td {
+    position: relative;
+    min-height: 35px;
+}
+
+table#printPdfCertificates {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table#printPdfCertificates th {
+    background: #030303;
+    color: white;
+    font-weight: bold;
+}
+
+table#printPdfCertificates td,
+table#printPdfCertificates th {
+    line-height: 35px;
+    vertical-align: middle;
+    border: 1px solid #000;
+    text-align: left;
+}
+
+#frmLocationID option {
+    word-wrap: break-word;
+    background: #fff;
+}
+
+#tfqo_aReport td {
+    text-align: left !important;
+}
+
+.table>thead>tr>th {
+    vertical-align: top;
+}
+
+
+/* ==========================================================================
+  HEADER
+============================================================================= */
+
+
+/** Welcome message **/
+
+#logout {
+    font-size: 11px;
+    margin-top: .5em;
+}
+
+#logout span {
+    font-weight: bold;
+}
+
+
+/* ==========================================================================
+   FORMS
+============================================================================= */
+
+#frmRecordPagingForm_aReport .form-horizontal .control-label {
+    text-align: left;
+}
+
+.form-horizontal .control-label.mailboxLabel {
+    text-align: left;
+}
+
+.ui-checkbox {
+    position: relative;
+}
+
+body.manageLocations .form-group font {
+    margin-left: 28%;
+}
+
+#loginForm .checkbox {
+    padding-top: 0 !important;
+}
+
+
+/*SB 03/03/16 - Hacks until we sort out the layout of the forms in the portal */
+
+
+/*form[name=details] label.required,
+#details label.required,
+#editorForm label.required,
+#opportunityForm label.required,
+#fundRequestActivityForm label.required,
+#FormY label.required,
+#mainForm label.required {
+    background: url("../borders/images/backRequiredGray.gif") no-repeat;
+    padding-left:15px !important;
+}*/
+
+.radio-inline+.radio-inline,
+.radio-inline,
+.checkbox-inline+.checkbox-inline,
+.checkbox-inline,
+.radio-inline+.radio-inline,
+.checkbox-inline+.checkbox-inline {
+    margin-left: 0 !important;
+    margin-right: 10px !important;
+}
+
+
+/* ==========================================================================
+  PARTNER LOCATOR
+============================================================================= */
+
+.ui-widget-header select {
+    color: #222222;
+}
+
+
+/* spacing underneath tabs */
+
+#partnerLocatorTabs {
+    margin-bottom: 10px;
+}
+
+
+/* ==========================================================================
+  CATELOGUE ASSETS
+============================================================================= */
+
+div:hover#categorySelectorClick {
+    background: #ccc;
+}
+
+
+/* ==========================================================================
+  RELAY_RELATEDFILES
+============================================================================= */
+
+.hideIOS,
+#relatedFileShowMsgIOS {
+    display: none;
+}
+
+a.relatedFilelinkIOS,
+a:hover.relatedFilelinkIOS {
+    text-decoration: none;
+    color: #333;
+}
+
+
+/* ==========================================================================
+  RELAY_FILE_LIST
+============================================================================= */
+
+.fileList img {
+    width: 100%;
+}
+
+
+/* ==========================================================================
+  EDIT LINKS
+============================================================================= */
+
+#editLinks {
+    overflow: hidden;
+}
+
+#editLinks a {
+    text-decoration: none;
+}
+
+
+/* ==========================================================================
+   SUPPORT CASES
+============================================================================= */
+
+#SupportCases .ui-select span {
+    display: none;
+}
+
+#supportCasesDiv {
+    border-top: 1px solid #eee;
+    padding-top: 1em;
+}
+
+
+/* ==========================================================================
+   COBRANDING
+============================================================================= */
+
+#cobrandingImageGallery .imagethumb {
+    max-width: 150px;
+    max-height: 100px;
+}
+
+#cobrandingImageGallery .ad-thumb-list li {
+    list-style-type: none;
+}
+
+#cobrandingImageGallery .ad-gallery {
+    width: 90%;
+    padding: 0px 20px;
+}
+
+#cobrandingImageGallery .ad-gallery .ad-image-wrapper {
+    height: 400px;
+}
+
+#cobrandingImageGallery .chooseImage {
+    padding: 10px 0px;
+    text-align: center;
+}
+
+#cobrandingImageGallery .ad-gallery .btn {
+    padding: 6px 12px;
+}
+
+#pageNumber-button {
+    width: 100% !important;
+}
+
+.ui-slider-handle {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cccccc+0,999999+100 */
+    background: #cccccc !important;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #cccccc 0%, #999999 100%) !important;
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #cccccc 0%, #999999 100%) !important;
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #cccccc 0%, #999999 100%) !important;
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', endColorstr='#999999', GradientType=0) !important;
+    /* IE6-9 */
+    width: 1.2em !important;
+    height: 1.5em !important;
+}
+
+
+/* ==========================================================================
+  DATE PICKER
+============================================================================= */
+
+.datepicker,
+.inlineDisplay {
+    width: 96%;
+    float: left;
+}
+
+
+/* ==========================================================================
+  MY PROFILE
+============================================================================= */
+
+#profilePicture img {
+    width: 100%;
+}
+
+
+/* ==========================================================================
+  LEADS
+============================================================================= */
+
+#listAndEditorContainer {
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.email span {
+    word-wrap: break-word;
+}
+
+
+/* ==========================================================================
+  PictureURL
+============================================================================= */
+
+#pictureURL {
+    float: left;
+    width: 80px;
+    margin-right: 15px;
+}
+
+
+/* ==========================================================================
+  Training Path
+============================================================================= */
+
+
+/*.ui-state-default {
+    background: white !important;
+    width: 100% !important;
+    margin-bottom: 1em !important;
+    display: block !important;
+    height: 34px !important;
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+    line-height: 1.42857143 !important;
+    color: #555 !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075) !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075) !important;
+}*/
+
+.ui-state-default span {
+    font-weight: normal !important;
+    font-family: Verdana, Arial, sans-serif !important;
+}
+
+.ui-multiselect-checkboxes label {
+    float: right;
+    text-align: left;
+    width: 95%;
+    border: 0 !important;
+    font-weight: normal !important;
+}
+
+.ui-multiselect-checkboxes input {
+    float: left;
+    margin-left: 5px;
+    width: 5%;
+    text-align: left;
+}
+
+.ui-multiselect-checkboxes .ui-state-hover {
+    background: none !important;
+    border: 0 !important;
+    font-weight: bold !important;
+}
+
+.ui-widget-header {
+    background: #0277b7 !important;
+    border: 1px solid #0277b7 !important;
+}
+
+
+/* ==========================================================================
+  MULTISELECT
+============================================================================= */
+
+.ms-parent input[type=checkbox] {
+    margin: 0 5px 0 0;
+}
+
+
+/* ==========================================================================
+  Filters for leads and opportunities
+============================================================================= */
+
+#showHideFilters {
+    margin-bottom: 15px;
+}
+
+#filterDiv {
+    width: 100%;
+}
+
+
+/* ==========================================================================
+  OPPORTUNITIES ADVANCED SEARCH FILTERS
+============================================================================= */
+
+#showHideFilters {
+    margin-bottom: 15px;
+    float: right;
+}
+
+#filterTable_aReport,
+#filterDiv {
+    width: 100%;
+    overflow: hidden;
+}
+
+#filterTable_aReport .smallLink {
+    display: none;
+}
+
+#filterTable_aReport td {
+    border-right: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    padding: 15px;
+}
+
+#filterTable_aReport td:last-child {
+    border-right: none;
+}
+
+#filterTable_aReport #frmFromDatenull,
+#filterTable_aReport #frmToDatenull {
+    display: none;
+}
+
+#tfqoFromDate,
+#tfqoToDate .ui-input-text {
+    overflow: hidden;
+}
+
+#tfqoToDate .tfqoDateFromToLabel {
+    margin-top: 6px;
+}
+
+.tfqoDateFromToLabel {
+    font-size: 11px;
+    margin-bottom: 3px;
+}
+
+.tfqoFilterSelectBy {
+    font-size: 11px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+#resetTFQOFilterDiv {
+    float: left;
+    margin-right: 15px;
+}
+
+#filterControlButtonsTD {
+    background: #f9f9f9;
+}
+
+
+/* ==========================================================================
+  VERSION NUMBER
+============================================================================= */
+
+.copyright ul {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.copyright ul li {
+    display: inline;
+}
+
+#versionNumber {
+    border-left: 1px solid #ccc;
+    padding-left: 5px;
+}
+
+#copyWrite {
+    padding-right: 5px;
+}
+
+
+/* ==========================================================================
+ WAB 2016-02-03 Styles for validation error as used by rwFormValidation
+============================================================================= */
+
+.validationError {
+    margin: 2px 2px 2px 2px;
+    border: 2px solid #CC0000;
+    padding: 2px 2px 2px 2px;
+}
+
+.validation-group {
+    border: 0 !important;
+}
+
+.validationErrorMessage {
+    padding: 2px 0 2px 2px;
+    color: #CC0000;
+}
+
+
+/* ==========================================================================
+ SB Profile
+============================================================================= */
+
+
+/*.showScreenTable1 label.required {
+    background: url("../borders/images/backRequiredGray.gif") no-repeat left;
+    padding-left: 17px !important;
+} */
+
+
+/* ==========================================================================
+ SB 15/02/16 - Watermark
+============================================================================= */
+
+.watermark {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 0;
+    height: 95%;
+    z-index: 1100;
+    opacity: 0.4;
+    text-align: center;
+    margin-right: 3%;
+    word-wrap: break-word;
+    color: #ccc;
+    font-size: 3em;
+}
+
+
+/* NJH/RT - move label classes into global from brand.css so that all customers get the upgrade */
+
+
+/*label.required {
+    background: url("/code/borders/images/backRequiredGray.gif") no-repeat;
+    padding-left:15px !important;
+}*/
+
+label.required:after {
+    content: "*";
+    color: #c60000;
+    margin-left: .5em;
+}
+
+
+/*.form-horizontal label.required {
+    background: url("/code/borders/images/backRequiredGray.gif") no-repeat right;
+    padding-right: 17px !important;
+    position:relative;
+    display: block;
+}*/
+
+
+/** editorForm **/
+
+#editorForm #firstname_lineItemDiv {
+    margin-bottom: 15px;
+}
+
+
+/* ==========================================================================
+ SB 03/03/16 - Business Plan
+============================================================================= */
+
+.saveBtnBusinessPlan,
+.btnNext,
+.btnPrevious,
+#addActivity {
+    margin-left: 15px;
+}
+
+#BusinessPlan .saveBtnBusinessPlan,
+#BusinessPlan .btnNext,
+#BusinessPlan .btnPrevious,
+#BusinessPlan #addActivity {
+    margin-left: 0;
+}
+
+.addNewButton {
+    margin-bottom: 15px;
+}
+
+
+/* ==========================================================================
+ SB 03/03/16 - Business Plan
+============================================================================= */
+
+#InviteFriend {
+    margin-left: 15px;
+}
+
+
+/* ==========================================================================
+ SB 03/03/16 - Document Uploads
+============================================================================= */
+
+.equalHeight h3 {
+    margin-top: 15px;
+}
+
+
+/* ==========================================================================
+-   TWR PROD2016-1382 15/09/2016 - Rotating Banner Styling
+-============================================================================= */
+
+.carousel {
+    margin-bottom: 20px;
+    height: 300px;
+}
+
+.banner .carousel-caption {
+    text-align: left;
+}
+
+.carousel-inner>.item {
+    -webkit-transition: .1s ease-in-out left;
+    transition: .2s ease-in-out left;
+}
+
+.banner .btn-primary {
+    border: 1px solid #00b1f4 !important;
+    background: #00b1f4 !important;
+    border-radius: 0 !important;
+    /*    padding: .75em 1.25em !important; */
+    color: #fff !important;
+    padding: 10px 30px 10px !important;
+}
+
+.banner .btn-primary:hover {
+    background: #00a3e1 !important;
+    border: 1px solid #00a3e1 !important;
+}
+
+.banner .btn-primary:active {
+    background: #068dca !important;
+    border: 1px solid #068dca !important;
+    box-shadow: none;
+}
+
+.banner .carousel-caption {
+    left: 8%;
+    right: 5%;
+    top: 34%;
+}
+
+.carousel-control {
+    opacity: 1;
+}
+
+.carousel-control:hover {
+    opacity: 1 !important;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+    background-image: none;
+}
+
+.carousel-caption {
+    text-shadow: none;
+}
+
+.carousel-caption p {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+/* ============================================================================
+  A Sarabi 24/10/2016 [#1988]
+============================================================================= */
+.socialImage{
+    display: block;
+}
+#imageContainer .checkbox {
+    padding-left: 0 !important;
+    float: left;
+}
+#imageContainer input[type=checkbox]{
+    margin: 0 5px 0 0;
+}
+
+#imageContainer .help-block {
+  text-align: left;
+}
+
+@media screen and (max-width: 515px) {
+  #imageContainer .col-xs-10 {
+    width: 100%;
+    display: block;
+    margin: 15px 0;
+  }
+}
+
+
+/* ============================== MEDIA QUERIES START - DO NOT ADD ANY CSS AFTER THIS UNLESS ITS FOR THESE SCREEN SIZES. ============================================
+ .----------------.  .----------------.  .----------------.  .----------------.
+| .--------------. || .--------------. || .--------------. || .--------------. |
+| |    _______   | || |  _________   | || |     ____     | || |   ______     | |
+| |   /  ___  |  | || | |  _   _  |  | || |   .'    `.   | || |  |_   __ \   | |
+| |  |  (__ \_|  | || | |_/ | | \_|  | || |  /  .--.  \  | || |    | |__) |  | |
+| |   '.___`-.   | || |     | |      | || |  | |    | |  | || |    |  ___/   | |
+| |  |`\____) |  | || |    _| |_     | || |  \  `--'  /  | || |   _| |_      | |
+| |  |_______.'  | || |   |_____|    | || |   `.____.'   | || |  |_____|     | |
+| |              | || |              | || |              | || |              | |
+| '--------------' || '--------------' || '--------------' || '--------------' |
+ '----------------'  '----------------'  '----------------'  '----------------'
+================================================================================
+  MEDIA QUERIES
+============================================================================= */
+
+@media (max-width: 991px) {
+    thead {
+        display: none;
+    }
+    td {
+        display: block;
+        padding-left: 50%;
+        position: relative;
+    }
+    td:before {
+        width: 45%;
+        padding-right: 10px;
+        left: 0;
+        white-space: nowrap;
+        content: attr(data-title);
+        display: block;
+        float: left;
+    }
+    b.ui-table-cell-label {
+        display: block;
+        width: 50%;
+        float: left;
+        text-align: right;
+        padding-right: 2.1em;
+    }
+    table td {
+        clear: both;
+        overflow: hidden;
+    }
+    table.responsiveTable button {
+        border: 0;
+        background: none;
+    }
+    /* *****************************
+           2015/06/22   YMA Fix to jQuery UI date picker to prevent it appearing as a long list in mobile and tablet view.
+        ********************************/
+    table.ui-datepicker-calendar td {
+        display: table-cell
+    }
+    /* *****************************
+           LOCATOR
+        ********************************/
+    #locatorResultsContainer td {
+        display: table-cell;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    /* *****************************
+           RESPONSIVE FORMS
+        ********************************/
+    .form-group .dateSelect {
+        width: 32%;
+        display: inline;
+    }
+    .form-group .flagAttributeLabel {
+        font-weight: normal;
+        padding-top: 7px;
+    }
+    table .smallButton {
+        margin: 5px;
+    }
+    .datepicker.form-control[disabled],
+    .datepicker.form-control[readonly] {
+        background-color: inherit;
+        cursor: auto;
+    }
+    /* *****************************
+           ACTIVITY STREAM
+        ********************************/
+    #actStreamData td {
+        padding-left: 0px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    /* *****************************
+           RESPONSIVE FORMS
+        ********************************/
+    .control-label {
+        text-align: right;
+    }
+    .form-group .dateSelect {
+        width: 32%;
+        display: inline;
+    }
+    .form-group .flagAttributeLabel {
+        font-weight: normal;
+        padding-top: 7px;
+    }
+    table .smallButton {
+        margin: 5px;
+    }
+    .datepicker.form-control[disabled],
+    .datepicker.form-control[readonly] {
+        background-color: inherit;
+        cursor: auto;
+    }
+    /* *****************************
+           FOOTER
+        ********************************/
+    #navigation ul li {
+        float: right;
+    }
+}
+
+@media (min-width: 992px) {
+    .dropdown-menu li:hover .sub-menu {
+        visibility: visible;
+    }
+    .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+    /* *****************************
+           RESPONSIVE TABLE
+        ********************************/
+    /* Show the table header rows */
+    .responsiveTable td,
+    .responsiveTable th,
+    .responsiveTable tbody th,
+    .responsiveTable tbody td,
+    .responsiveTable thead td,
+    .responsiveTable thead th {
+        display: table-cell;
+        margin: 0;
+    }
+    /* Hide the labels in each cell */
+    table td .ui-table-cell-label,
+    table th .ui-table-cell-label {
+        display: none;
+    }
+    /* ****************************************************
+               RESPONSIVE POINTS CLAIMS
+               CONVERT TABLE TO DIV ELEMENT
+        *******************************************************/
+    div.div-responsive .row {
+        line-height: 1.5em;
+        padding: 5px 0px;
+        margin: auto;
+    }
+    div.remove-padding {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    div.div-header {
+        background-color: #0277b7 !important;
+        color: white;
+    }
+    div.div-responsive .row input[type="text"],
+    div.div-responsive .row select {
+        width: 100%;
+    }
+    /* this into the Partner Cloud Changes - Sandra */
+    form#details p b.required {
+        display: none;
+    }
+    .requestLeftAlign {
+        color: #000;
+    }
+    #termsAndConditions {
+        display: none;
+    }
+    #personDetails.selected,
+    #companyDetails.selected {
+        -moz-border-bottom-colors: none !important;
+        -moz-border-left-colors: none !important;
+        -moz-border-right-colors: none !important;
+        -moz-border-top-colors: none !important;
+        background: none repeat scroll 0 0 #fff !important;
+        border-color: #fff #fff #9cc038 !important;
+        border-image: none !important;
+        border-radius: 0 !important;
+        border-style: solid !important;
+        border-width: 0 0 2px !important;
+        color: #000;
+        padding: .25em !important;
+    }
+    #personDetails,
+    #companyDetails {
+        -moz-border-bottom-colors: none !important;
+        -moz-border-left-colors: none !important;
+        -moz-border-right-colors: none !important;
+        -moz-border-top-colors: none !important;
+        background: none repeat scroll 0 0 #fff !important;
+        border-color: #fff #fff #ccc !important;
+        border-image: none !important;
+        border-radius: 0 !important;
+        border-style: solid !important;
+        border-width: 0 0 2px !important;
+        color: #ccc;
+        padding: .25em !important;
+        cursor: context-menu !important;
+    }
+    .buttonLocator {
+        margin: 15px 0;
+    }
+    #captchadiv {
+        /*padding-left:26%;*/
+        margin: 15px 0;
+    }
+    #captchadiv .col-sm-offset-3 {
+        margin-left: 0 !important;
+    }
+    #captchadiv .col-sm-9 {
+        width: 100% !important;
+    }
+    ul#footerContactUs {
+        margin: 0 0 15px 0;
+        padding: 0;
+    }
+    .textSmall {
+        font-size: 11px;
+        margin-bottom: 1.5em;
+        margin-top: -13px;
+    }
+    #locatorIntro {
+        margin-bottom: 1em;
+    }
+    input[type=file] {
+        display: inline;
+    }
+    #actionContainer,
+    #oppButtonDiv {
+        float: left !important;
+        /*margin-left:26%;*/
+    }
+    .ui-datepicker-trigger {
+        cursor: pointer;
+    }
+    /* ****************************************************
+               CASH BACK CLAIMS
+        *******************************************************/
+    /*#discountPrice,*/
+    #totalValue {
+        display: block;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+}

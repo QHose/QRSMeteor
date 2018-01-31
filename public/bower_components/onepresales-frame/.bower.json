@@ -1,0 +1,26 @@
+{
+  "name": "onepresales-frame",
+  "authors": [
+    "Manuel Romero <manuel.romero@qlik.com>"
+  ],
+  "description": "",
+  "main": "frame-setup",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "6b7925aeec",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "6b7925aeec8c851078175f56c1743c65518f6ecf"
+  },
+  "_source": "git@gitlab.com:onepresales/onepresales-frame.git",
+  "_target": "master",
+  "_originalSource": "git@gitlab.com:onepresales/onepresales-frame.git"
+}
