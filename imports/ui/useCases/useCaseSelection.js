@@ -17,7 +17,7 @@ import {
 } from '/imports/api/APILogs';
 const enigma = require('enigma.js');
 const Cookies = require('js-cookie');
-var Reveal = require('reveal');
+var Reveal = require('reveal.js');
 var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
 var slideObject = Meteor.settings.public.slideGenerator.dataObject;
 var app = null;
@@ -25,12 +25,13 @@ var qix = null;
 
 // ONCREATED
 Template.useCaseSelection.onCreated(async function() {
+    console.log("useCaseSelection onCreated");
     // const apiLogsHandle = Meteor.subscribe('apiLogs');
     // Session.set('selectionMade', false);
 
     //wait a bit, so Meteor can login, before requesting a ticket...
     Meteor.setTimeout(async function() {
-        //connect to qlik sense 
+        //connect to qlik sense
         qix = await makeSureSenseIsConnected();
         // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
         await setChangeListener(qix);
@@ -187,7 +188,7 @@ Template.useCaseSelection.helpers({
 // ─── MAIN TOPICS LEVEL 1 AND 2 ─────────────────────────────────────────────────
 //
 export async function getAllSlideHeaders(qix) {
-    //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.    
+    //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.
     // return insertSectionBreakers(await getAllSlideHeadersPlain(qix));
     var headers = await getAllSlideHeadersPlain(qix);
     console.log('headers', headers)
