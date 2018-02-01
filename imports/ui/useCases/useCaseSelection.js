@@ -23,8 +23,8 @@ var slideObject = Meteor.settings.public.slideGenerator.dataObject;
 var app = null;
 var qix = null;
 
-// ONCREATED
-Template.useCaseSelection.onCreated(async function() {
+
+export async function initQix() {
     console.log("useCaseSelection onCreated");
     // const apiLogsHandle = Meteor.subscribe('apiLogs');
     // Session.set('selectionMade', false);
@@ -50,14 +50,21 @@ Template.useCaseSelection.onCreated(async function() {
         } else {
             console.log('no query selection parameter found, show the sense selection screen');
             // await setSlideContentInSession('TECHNICAL');
+
+            /*
+            // Manuel commented out
             FlowRouter.go('slides');
             setTimeout(function() {
                 nav.showSlideSelector();
             }, 100);
+            */
         }
     }, 0);
 
-})
+}
+
+// ONCREATED
+Template.useCaseSelection.onCreated(initQix);
 
 // Replace with more Meteor approach
 function getQueryParams(name, url) {

@@ -3,10 +3,12 @@
 FlowRouter.route('/', {
     name: 'root',
     action() {
-        BlazeLayout.render('App_body', { main: 'useCaseSelection' });
+        BlazeLayout.render('App_body', { main: 'slides' });
     }
 });
 
+/*
+// Manuel commented out
 FlowRouter.route('/useCaseSelection', {
     name: 'useCaseSelection',
     action() {
@@ -19,7 +21,8 @@ FlowRouter.route('/slides', {
     action() {
         BlazeLayout.render('App_body', { main: 'slides' });
     }
-});
+});*/
+
 
 // Layout Configuration. http://stackoverflow.com/questions/28864942/meteor-use-2-different-layouts-ironrouter
 // Router.configure({

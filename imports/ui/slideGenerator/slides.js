@@ -4,7 +4,7 @@ var Reveal = require('reveal.js');
 import lodash from 'lodash';
 import hljs from 'highlight.js';
 import { Logger } from '/imports/api/logger';
-import { getQix } from '/imports/ui/useCases/useCaseSelection';
+import { getQix, initQix } from '/imports/ui/useCases/useCaseSelection';
 
 _ = lodash;
 var Cookies = require('js-cookie');
@@ -27,6 +27,7 @@ var numberOfActiveSlides = 5;
 Template.slides.onRendered(function() {
     // slideDataLoaded();
     initializeReveal();
+    initQix();
 });
 
 Template.slides.events({
