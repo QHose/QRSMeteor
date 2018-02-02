@@ -42,7 +42,7 @@ window.initOnePresales = function initOnePresales( website ) {
     var sites = {
         "answers": "Golden Answers",
         "sizing": "Hardware Configurator",
-        "slides": "Slides Generator",
+        "slidesgen": "Slides Generator",
         "qmi": "QMI"
     };
 

@@ -6,7 +6,7 @@ import onepresalesServerAuth from 'onepresales-server-auth';
 export function setupApi() {
 
   const app = express();
-  onepresalesServerAuth(app, { relayState: '/slides' } );
+  onepresalesServerAuth(app, { relayState: '/slidesgen' } );
 
   WebApp.connectHandlers.use(app);
 }
