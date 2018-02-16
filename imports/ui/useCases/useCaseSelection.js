@@ -15,6 +15,8 @@ import {
     APILogs,
     REST_Log
 } from '/imports/api/APILogs';
+import { renderIframe } from '/imports/ui/slideGenerator/slideSelectionSheet';
+
 const enigma = require('enigma.js');
 const Cookies = require('js-cookie');
 var Reveal = require('reveal.js');
@@ -59,6 +61,8 @@ export async function initQix() {
             }, 100);
             */
         }
+
+        renderIframe();
     }, 0);
 
 }
