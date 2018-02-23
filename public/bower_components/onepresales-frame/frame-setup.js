@@ -95,6 +95,7 @@ window.initOnePresales = function initOnePresales( website ) {
 }
 
 document.addEventListener("onepresales-frame-footer", function(event) {
+
     document.getElementById('feedback-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
@@ -128,6 +129,9 @@ document.addEventListener("onepresales-frame-footer", function(event) {
           })
       }
     });
+
+
+    addGtagScript();
 });
 
 function openFeedback(){
@@ -139,11 +143,28 @@ function hideFeedback(){
     document.getElementById("onepresales-feedback").style.display = 'none';
 }
 
+function addGtagAsync() {
+    var imported = document.createElement('script');
+    imported.src = 'https://www.googletagmanager.com/gtag/js?id=UA-114136363-1';
+    imported.setAttribute("type", "text/javascript");
+    imported.async = true;
+    document.head.appendChild(imported);
+}
+
+function addGtagScript(){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-114136363-1');
+}
+
 // Create the event
 if ( CustomEvent && document.dispatchEvent ) {
     var event = new CustomEvent("onepresales-frame-loaded", { "msg": "OnePresales is loaded" });
     document.dispatchEvent(event);
     console.log("OnePresales-Frame loaded!");
+    addGtagAsync();
 }
 
 
