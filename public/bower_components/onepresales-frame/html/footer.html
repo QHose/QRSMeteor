@@ -4,7 +4,8 @@
             <!-- ROW -->
             <div class="footerContainerTop row">
                 <div class="contactDiv col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                    <h3>Need assistance? <a href="https://qlikid.qlik.com/portal/support" class="ui-link">Contact Support</a></h3>
+                    <!--<h3>Need assistance? <a href="https://qlikid.qlik.com/portal/support" class="ui-link">Contact Support</a></h3>-->
+                    <h3>Need assistance? <a href="javascript:openFeedback();" class="ui-link">Send feedback</a></h3>
                 </div>
                 <div class="socialDiv col-md-5 col-md-5 col-sm-5 col-xs-12">
                     <ul id="socialDivUl">
@@ -66,13 +67,45 @@
             </div>
             <!-- END ROW -->
         </div>
+        <div id="onepresales-feedback" style="display: none; text-align:center; position: fixed; top: 0; left: 0px; width: 100%; height: 100%; margin: 0 auto;background: rgba(0,0,0,0.5);" >
+
+            <div style="width: 80%; max-width: 600px; margin: 30px auto;background-color: #fff;">
+                <h1 class="well">Submit Feedback <span onclick="hideFeedback()" style="float: right;cursor:pointer;">X</span></h1>
+
+                <div style="padding: 30px;">
+                    <div class="form-area" >
+                        <form id="feedback-form" role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Name"  required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Message" maxlength="140" rows="7" style="resize: none;"></textarea>
+                            </div>
+                            <div style="text-align: right;">
+                                <button type="submit" id="submit" name="submit" class="btn btn-primary">Send <span class="fa fa-send"></span></button>
+                            </div>
+                            <div id="cb-message" style="display: none">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114136363-1"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-        
+
           gtag('config', 'UA-114136363-1');
         </script>
     </footer>
