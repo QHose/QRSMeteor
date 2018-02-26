@@ -327,7 +327,12 @@ Meteor.methods({
     },
     //only for demo purposes! never supply groups from the client...
     requestTicketWithPassport(virtualProxy, passport) {
-        console.log('getTicketNumber passport', passport)
+        console.log('getTicketNumber passport', passport);
+        var rootCas = require('ssl-root-cas/latest').create();
+
+        // default for all https requests
+        // (whether using https directly, request, or another module)
+        require('https').globalAgent.options.ca = rootCas;
 
         // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
         var proxyGetTicketURI = 'https://' + senseConfig.host + ':' + Meteor.settings.private.proxyPort + '/qps/' + virtualProxy + '/ticket'; // "proxyRestUri": "https://ip-172-31-22-22.eu-central-1.compute.internal:4243/qps/meteor/",
