@@ -116,7 +116,7 @@ if (Meteor.isServer) {
             cert: _certs.cert,
             ca: _certs.ca
         };
-        console.log('configCerticates: we connect to Qlik Sense using these credentials: ', configCerticates);
+        console.log('configCerticates: we connect to Qlik Sense via certificates using these credentials: ', configCerticates);
 
         //used for engimaJS, the engine API javascript wrapper
         var _engineConfig = {

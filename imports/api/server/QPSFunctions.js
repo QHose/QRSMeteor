@@ -336,6 +336,7 @@ Meteor.methods({
 
         // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
         var proxyGetTicketURI = 'https://' + senseConfig.host + ':' + Meteor.settings.private.proxyPort + '/qps/' + virtualProxy + '/ticket'; // "proxyRestUri": "https://ip-172-31-22-22.eu-central-1.compute.internal:4243/qps/meteor/",
+        console.log('proxyGetTicketURI', proxyGetTicketURI)
         try {
             var response = HTTP.call('POST', proxyGetTicketURI, {
                 'npmRequestOptions': configCerticates,
