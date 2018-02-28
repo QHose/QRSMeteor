@@ -97,7 +97,9 @@ Template.useCaseSelection.onRendered(async function() {
     $('.ui.dropdown')
         .dropdown({
             async onChange(group, text, selItem) {
-                // Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
+                if (group == 'Show me everything') {
+                    group = 'SOE'
+                };
                 Cookies.set('currentMainRole', group);
                 await setSelectionInSense('Partial Workshop', group)
                     // await setSlideContentInSession(group);
