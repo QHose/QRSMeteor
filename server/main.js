@@ -14,6 +14,7 @@ import * as QSProxy from "/imports/api/server/QPSFunctions";
 import * as QSSystem from "/imports/api/server/QRSFunctionsSystemRules";
 import * as QSExtensions from "/imports/api/server/QRSFunctionsExtension";
 import * as QSCustomProps from "/imports/api/server/QRSFunctionsCustomProperties";
+require('os');
 
 //stop on unhandled errors
 process.on("unhandledRejection", up => {
@@ -141,23 +142,23 @@ var installQlikSense = async function() {
     <DbUserName>username</DbUserName>
     <DbUserPassword>password</DbUserPassword>
     <DbHost>` +
-        Meteor.settings.public.qlikSenseHost +
+        os.hostname() +
         `</DbHost>
     <DbPort>4432</DbPort>
     <RootDir>\\\\` +
-        Meteor.settings.public.qlikSenseHost +
+        os.hostname() +
         `\\QlikSenseShare</RootDir>
     <StaticContentRootDir>\\\\` +
-        Meteor.settings.public.qlikSenseHost +
+        os.hostname() +
         `\\QlikSenseShare\\StaticContent</StaticContentRootDir>
     <CustomDataRootDir>\\\\` +
-        Meteor.settings.public.qlikSenseHost +
+        os.hostname() +
         `\\QlikSenseShare\\CustomData</CustomDataRootDir>
     <ArchivedLogsDir>\\\\` +
-        Meteor.settings.public.qlikSenseHost +
+        os.hostname() +
         `\\QlikSenseShare\\ArchivedLogs</ArchivedLogsDir>
     <AppsDir>\\\\` +
-        Meteor.settings.public.qlikSenseHost +
+        os.hostname() +
         `\\QlikSenseShare\\Apps</AppsDir>
     <CreateCluster>true</CreateCluster>
     <InstallLocalDb>true</InstallLocalDb>

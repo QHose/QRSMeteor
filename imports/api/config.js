@@ -25,6 +25,10 @@ if (Meteor.isClient) {
 
 //SERVER SIDE
 if (Meteor.isServer) {
+    process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+    import sslRootCas from 'ssl-root-cas/latest';
+    sslRootCas.inject();
+    
     console.log('This tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings);
     import crypto from 'crypto';
     var fs = require('fs-extra');
@@ -112,7 +116,7 @@ if (Meteor.isServer) {
             cert: _certs.cert,
             ca: _certs.ca
         };
-        console.log('configCerticates: we connect to Qlik Sense using these credentials: ', configCerticates);
+        console.log('configCerticates: we connect to Qlik Sense via certificates using these credentials: ', configCerticates);
 
         //used for engimaJS, the engine API javascript wrapper
         var _engineConfig = {
