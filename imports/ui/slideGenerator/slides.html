@@ -1,46 +1,36 @@
 <template name="slides">
-  <!--         Create a chapter breaker if the level 1 has changed in the current row-->
-  <!-- The current level 1 and 2 headers -->
-
-  <div class="reveal">
-    <div class="slides">
-      {{#each slideHeaders }}
-        {{#if chapterSlide this}}
-          <section data-autoslide="1500">
-            <div class="ui segment integrationBreaker">
-              <h1 class="ui header" style="font-size: 50px;">
+    <!--         Create a chapter breaker if the level 1 has changed in the current row-->
+    <!-- The current level 1 and 2 headers -->
+    <div class="reveal" style="height: 100%; position: fixed; top: -100%; background: #ffffff; z-index: 10;">
+        <div class="closeSlides" style="font-size: 30px; position:absolute; top: 10px; right:10px; cursor: pointer; z-index: 10;">X</div>
+        <div class="slides">
+            {{#each slideHeaders }} {{#if chapterSlide this}}
+            <section>
+                <div class="ui segment integrationBreaker">
+                    <h1 class="ui header" style="font-size: 50px;">
                 Next: {{this}}
                 <!-- The current level 1 and 2 headers -->
               </h1>
-            </div>
-          </section>
-        {{else}}
-          {{> slide slide=this slideNr=@index}}
-        {{/if}}
-      {{/each}}
+                </div>
+            </section>
+            {{else}} {{> slide slide=this slideNr=@index}} {{/if}} {{/each}}
+        </div>
     </div>
-  </div>
 </template>
 
 <template name="slide">
-  <section class="slide">
-     <div class="wrap" style="margin-top: 50px">
-    <h3> {{{level 1 slide}}}</h3>
-    <h1>{{{level 2 slide}}}
-      <hr>
-    </h1>
-    {{#if active slideNr}}
-      {{> slideContent slide=slide}}
-    {{/if}} 
-    </div>   
-  </section>
-         
-
+    <section class="slide" style="height: 100%; overflow: auto;">
+        <div class="wrap">
+            <h3>{{{level 1 slide}}}</h3>
+            <h1>{{{level 2 slide}}}</h1>
+            <hr>
+            {{#if active slideNr}} {{> slideContent slide=slide}} {{/if}}
+        </div>
+    </section>
 </template>
 
-
 <template name="slideContent">
-  <div class="slideContent">
-    <!-- slide content will be added via javascript in the onRendered of slideContent -->
-  </div>
+    <div class="slideContent">
+        <!-- slide content will be added via javascript in the onRendered of slideContent -->
+    </div>
 </template>

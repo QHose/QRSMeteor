@@ -1,0 +1,17 @@
+{
+  "name": "onepresales-frame",
+  "authors": [
+    "Manuel Romero <manuel.romero@qlik.com>"
+  ],
+  "description": "",
+  "main": "frame-setup",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -15,22 +15,25 @@ import {
     APILogs,
     REST_Log
 } from '/imports/api/APILogs';
+import { renderIframe } from '/imports/ui/slideGenerator/slideSelectionSheet';
+
 const enigma = require('enigma.js');
 const Cookies = require('js-cookie');
-var Reveal = require('reveal');
+var Reveal = require('reveal.js');
 var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
 var slideObject = Meteor.settings.public.slideGenerator.dataObject;
 var app = null;
 var qix = null;
 
-// ONCREATED
-Template.useCaseSelection.onCreated(async function() {
+
+export async function initQix() {
+    console.log("useCaseSelection onCreated");
     // const apiLogsHandle = Meteor.subscribe('apiLogs');
     // Session.set('selectionMade', false);
 
     //wait a bit, so Meteor can login, before requesting a ticket...
     Meteor.setTimeout(async function() {
-        //connect to qlik sense 
+        //connect to qlik sense
         qix = await makeSureSenseIsConnected();
         // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
         await setChangeListener(qix);
@@ -49,14 +52,23 @@ Template.useCaseSelection.onCreated(async function() {
         } else {
             console.log('no query selection parameter found, show the sense selection screen');
             // await setSlideContentInSession('TECHNICAL');
+
+            /*
+            // Manuel commented out
             FlowRouter.go('slides');
             setTimeout(function() {
                 nav.showSlideSelector();
             }, 100);
+            */
         }
+
+        renderIframe();
     }, 0);
 
-})
+}
+
+// ONCREATED
+Template.useCaseSelection.onCreated(initQix);
 
 // Replace with more Meteor approach
 function getQueryParams(name, url) {
@@ -134,7 +146,8 @@ export async function getQix() {
                 host: senseConfig.host,
                 prefix: Meteor.settings.public.slideGenerator.virtualProxy,
                 port: senseConfig.port,
-                unsecure: true,
+                //Manuel: it needs to be secure
+                unsecure: false,
                 urlParams: {
                     qlikTicket: ticket
                 }
@@ -187,7 +200,7 @@ Template.useCaseSelection.helpers({
 // ─── MAIN TOPICS LEVEL 1 AND 2 ─────────────────────────────────────────────────
 //
 export async function getAllSlideHeaders(qix) {
-    //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.    
+    //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.
     // return insertSectionBreakers(await getAllSlideHeadersPlain(qix));
     var headers = await getAllSlideHeadersPlain(qix);
     console.log('headers', headers)

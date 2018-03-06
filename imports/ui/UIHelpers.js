@@ -178,7 +178,7 @@
             var appId = Cookies.get('slideGeneratorAppId'); //senseConfig.slideGeneratorAppId;
             var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
             var proxy = Meteor.settings.public.slideGenerator.virtualProxy;
-            return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';
+            return 'https://' + senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';
         });
 
         // Template.registerHelper('authenticatedSlideGenerator', function() {
@@ -305,8 +305,8 @@
             }
             //step 3
             else if (
-                // Customers.find().count() && 
-                // TemplateApps.find().count() && 
+                // Customers.find().count() &&
+                // TemplateApps.find().count() &&
                 Session.get('currentStep') === 3 &&
                 !Session.equals('loadingIndicator', 'loading')) {
                 // console.log('loading indicator is ', Session.get('loadingIndicator') )

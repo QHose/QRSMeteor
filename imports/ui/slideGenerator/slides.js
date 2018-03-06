@@ -1,10 +1,10 @@
-var Reveal = require('reveal');
+var Reveal = require('reveal.js');
 // import './reveal.css';
 // import 'reveal/theme/default.css';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
 import { Logger } from '/imports/api/logger';
-import { getQix } from '/imports/ui/useCases/useCaseSelection';
+import { getQix, initQix } from '/imports/ui/useCases/useCaseSelection';
 
 _ = lodash;
 var Cookies = require('js-cookie');
@@ -27,6 +27,24 @@ var numberOfActiveSlides = 5;
 Template.slides.onRendered(function() {
     // slideDataLoaded();
     initializeReveal();
+    initQix();
+});
+
+Template.slides.events({
+    'click .closeSlides': function(event, template) {
+        event.preventDefault();
+        console.log("click");
+        $('.reveal').css({
+            top: '-100%'
+        });
+
+        $('html').css({
+            overflow: 'auto'
+        });
+        $('body').css({
+            overflow: 'auto'
+        });
+    }
 });
 
 function slideDataLoaded() {
@@ -44,6 +62,12 @@ function initializeReveal() {
     console.log('initializeReveal', Reveal);
     Reveal.initialize({
         // width: window.innerWidth - 80,
+        width: "100%",
+        height: "95%",
+        margin: 0.1,
+        minScale: 0.5,
+        maxScale: 1.5,
+
         controlsTutorial: true,
         embedded: true,
         controls: true,
@@ -56,12 +80,10 @@ function initializeReveal() {
         showNotes: true,
         // autoSlide: 1000,
         loop: false,
-        transition: "slide", // none/fade/slide/convex/concave/zoom
+        transition: "none", // none/fade/slide/convex/concave/zoom
         previewLinks: false,
-        slideNumber: true,
-        // Bounds for smallest/largest possible scale to apply to content
-        minScale: 1,
-        maxScale: 1.5
+        slideNumber: 'c/t',
+        display: "block"
     });
 
     Session.set('activeStepNr', 0);

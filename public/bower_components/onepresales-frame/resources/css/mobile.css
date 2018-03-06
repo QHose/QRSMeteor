@@ -1,0 +1,557 @@
+/*** MOBILE CSS
+***************/
+
+
+@media (max-width: 767px) {
+    /********Global */
+    #contentContainer {
+        padding-bottom: 2em;
+    }
+    /********Cookies */
+    #cookiesContainer button {
+        float: left !important;
+        margin: 1em 0;
+        width: 100%;
+    }
+    /********Locator */
+    .locatorFilter {
+        margin: 1.5em;
+    }
+    .toggleImg {
+        width: 16px;
+    }
+    #locatorResultsData {
+        width: 100%;
+    }
+    .locatorFilter {
+        margin: 0 0 1em 1.25em;
+        width: 99% !important;
+    }
+    /*************Homepage */
+    #intro,
+    .video,
+    .sales,
+    .touch,
+    .rewards {
+        margin-bottom: 1.5em;
+    }
+    /********Table */
+    .table-bordered>tbody>tr>td {
+        border: 0;
+    }
+    .table-bordered>tbody>tr {
+        border-bottom: 1px solid #ddd;
+    }
+    table tr td span,
+    table tr td a {
+        display: block;
+    }
+    /*************Main Navigation */
+    .bold.logout {
+        font-weight: normal;
+    }
+    #headNavbarContainerWrapper {
+        border-bottom: 5px solid #6cb33f;
+        /*Primary Color*/
+    }
+    #navbarCollapse .navbar-nav {
+        margin: 0 !important;
+        background: #6cb33f;
+        /*Primary Color*/
+        height: 100%;
+        float: none;
+    }
+    #navbarCollapse .navbar-nav li a {
+        color: #fff;
+        padding: 10px 15px;
+    }
+    /******PARENT REPEAT*/
+    #navbarCollapse .navbar-nav>li>ul>li:first-child>a {
+        background: rgba(244, 244, 244, 0.1);
+        padding-left: 15px;
+    }
+    /******LEVEL 1*/
+    #navbarCollapse .navbar-nav>li>ul>li>a {
+        background: rgba(244, 244, 244, 0.2);
+        padding-left: 30px;
+    }
+    /******LEVEL 2*/
+    #navbarCollapse .navbar-nav>li>ul>li>ul>li>a {
+        background: rgba(244, 244, 244, 0.3);
+        padding-left: 50px;
+    }
+    /******LEVEL 3*/
+    #navbarCollapse .navbar-nav>li>ul>li>ul>li>ul>li>a {
+        background: rgba(244, 244, 244, 0.4);
+        padding-left: 70px;
+    }
+    /******LEVEL 4*/
+    #navbarCollapse .navbar-nav>li>ul>li>ul>li>ul>li>ul>li>a {
+        background: rgba(244, 244, 244, 0.5);
+        padding-left: 90px;
+    }
+    .navbar-header {
+        background: #fff !important;
+    }
+    .navbar-default .navbar-toggle {
+        background: #6cb33f !important;
+        /*Primary Color*/
+        border: 0;
+        color: #fff;
+        border-radius: 0;
+        margin-top: 12px;
+        font-size: 28px;
+    }
+    .navbar-default .navbar-toggle:hover,
+    .navbar-default .navbar-toggle:focus,
+    .navbar-default .navbar-toggle:active {
+        background: #4c8c2b !important;
+        /*Secondary Color*/
+    }
+    .nav .open>a,
+    .nav .open>a:hover,
+    .nav .open>a:focus {
+        background: #5ea819;
+        /*Secondary Color*/
+        border: 1px solid #5ea819;
+        /*Secondary Color*/
+    }
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #fff;
+    }
+    .navbar-default .navbar-toggle.collapsed:hover,
+    .navbar-toggle.collapsed:focus {
+        background-color: #0277B7 !important;
+    }
+    .dropdown-menu {
+        padding: 0 !important;
+        font-weight: normal;
+    }
+    .dropdown-submenu>.dropdown-menu {
+        margin-left: 0 !important;
+        margin-right: 0!important;
+    }
+    .dropdown-menu>li>a {
+        white-space: normal;
+        font-weight: normal;
+    }
+    /*Child Menu */
+    #mainNavigation li a:hover,
+    #mainNavigation li a:focus,
+    #mainNavigation li a:active {
+        background: #4c8c2b !important;
+        /*Secondary Color*/
+    }
+    /********Tables */
+    table.responsiveTable td {
+        overflow: hidden;
+    }
+    /*************Forms */
+    label.required {
+        left: 0px;
+        position: inherit;
+    }
+    .form-signin label.checkbox {
+        width: 90%;
+        float: right;
+    }
+    body.manageLocations .form-group font {
+        margin-left: 3%;
+    }
+    body.manageLocations .form-group label {
+        width: 100%;
+    }
+    body.managemycolleagues .button {
+        margin-top: .5em;
+    }
+    /*************Discussions */
+    label.required {
+        left: 0px;
+        position: inherit;
+    }
+    #discussions div.message {
+        float: left;
+        width: 100% !important;
+    }
+    #discussions div.message div.lessWidth {
+        width: 85%
+    }
+    #discussions div.message div.arrow {
+        display: block;
+        float: right;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        text-align: right;
+        top: 33%;
+        width: 15%;
+    }
+    #discussions div.message div.arrow .glyphicon {
+        font-size: 2em;
+        color: #ccc;
+    }
+    #discussions .openSearchBox,
+    #discussions .addCommentMessage {
+        display: inline !important;
+        padding-left: 0.5em;
+    }
+    #discussions .links ul {
+        margin: 0 0 0 11px;
+        padding: 0;
+    }
+    #discussions .likes,
+    #discussions .comments {
+        padding-left: 10px !important;
+    }
+    /*************Catalogue Assets */
+    #fileList .col-xs-12 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    #categorySelector input {
+        margin: 1em 0;
+    }
+    /*************Footer */
+    nav#navigation,
+    p.copyright,
+    #pictureURL {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+    #footerContainer:before {
+        height: 80px;
+    }
+    .contactDiv {
+        text-align: center;
+    }
+    .socialDiv {
+        padding-top: 1em;
+        text-align: center;
+        padding-right: 0;
+        padding: 1em 0 0;
+    }
+    .socialDiv ul#socialDivUl {
+        float: none;
+        display: inline-block;
+        overflow: auto;
+    }
+    ul#footerContactUs {
+        float: none;
+    }
+    .footerContainerBottom {
+        text-align: center;
+    }
+    /*************Product Picker */
+    div#categorySelectorClick h3 {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    div#categorySelectorClick.selected h3,
+    div:hover#categorySelectorClick h3 {
+        color: #fff;
+        text-shadow: 1px 1px #333;
+    }
+    div#categorySelector div.productGroup div#productGroupSubDiv {
+        padding: 0 !important;
+    }
+    div#productGroupHeader h3 {
+        word-wrap: break-word;
+        margin-top: 25px !important;
+        margin-bottom: 25px !important;
+    }
+    button.productsViewAllBtn {
+        padding: 0 !important;
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+    }
+    button.productsViewAllBtnSub {
+        padding: 0 !important;
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+    }
+    .TierMore {
+        text-align: left !important;
+        padding: .5em 0;
+    }
+    /*************Request A login */
+    #addContactCountryButton {
+        margin-left: 5%;
+    }
+    /*************homepage banner rotator */
+    #bannerRotator {
+        display: none;
+    }
+    #secondRow {
+        margin-top: 2em;
+    }
+    .printPDFLink {
+        margin-left: 25%;
+    }
+    .requestLeftAlign,
+    #captchadiv {
+        padding-left: 0;
+    }
+    /*.buttonContainer #save { margin-left:1em; }*/
+    /** Partner Locator */
+    .imageProfileRow {
+        float: left;
+        width: 15%
+    }
+    .companyInfoTD {
+        width: 80%;
+        float: right;
+    }
+    .partnerLocatorContactReseller,
+    .viewProfileTD {
+        width: 50%;
+    }
+    #partnerLocatorContactReseller,
+    #viewProfileTD,
+    #partnerLocatorMap {
+        margin: 1em 1em 0 0 !important;
+    }
+    /** Related Files */
+    .relatedFileDimensions {
+        margin-left: 50%;
+    }
+    /* ****************************************************
+       CASH BACK CLAIMS
+    *******************************************************/
+    #discountPrice,
+    #totalValue {
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+        color: #555;
+        display: block;
+        font-size: 14px;
+        height: 34px;
+        line-height: 1.42857;
+        padding: 6px 12px;
+        transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        width: 100%;
+    }
+    form[name="oppProductForm"] #discountPrice {
+        background-color: #fff;
+        background-image: none;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        display: block;
+        padding: 6px 12px;
+        width: 50%;
+    }
+    /* ****************************************************
+       Selectors for linkedInProfile.cfm
+    *******************************************************/
+    .linkedInDifferenceRow .linkedInTrue {
+        width: 94%;
+    }
+    .linkedInDifferenceRow input[type=radio] {
+        margin-top: 10px;
+        margin-right: 1.8%;
+    }
+    /* ****************************************************
+       Events details
+    *******************************************************/
+    div.EventDetailsDetails {
+        margin: .5em 0;
+    }
+    /* ****************************************************
+       Slide out menu on mobile
+    *******************************************************/
+    .mobile-wrapper {
+        width: 100%;
+        z-index: 5;
+        margin-left: 0px;
+    }
+    /* Mobile Menu */
+    .mobile-wrapper-sidebar {
+        min-height: 100%;
+        background: #e7e7e7;
+        float: left;
+        position: absolute;
+        display: inline;
+        margin-left: -70%;
+        top: 0;
+        width: 70%;
+        z-index: 4;
+    }
+    .mobile-wrapper-sidebar ul a {
+        border-bottom: 1px solid rgba(244, 244, 244, 0.2);
+    }
+    /* Mobile Menu Button */
+    .navbar-toggle {
+        float: left !important;
+        margin-right: 0 !important;
+        margin-left: .5em !important;
+    }
+    .overlay-active {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0.75);
+        cursor: pointer;
+        height: 100%;
+        position: fixed;
+        width: 100%;
+        z-index: 999999;
+    }
+    #offCanvassCloseBtn {
+        position: absolute;
+        top: .25em;
+        right: .25em;
+        z-index: 9999;
+    }
+    .navbar-brand {
+        float: right;
+        height: auto;
+        max-height: 75px;
+        padding: 10px;
+        text-align: right;
+    }
+    button.offCanvasClose {
+        text-align: center;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        border: 0;
+        background: #fff;
+        width: 20px;
+        height: 20px;
+        color: #0277b7
+    }
+    button:hover.offCanvasClose {
+        color: #5ea819;
+    }
+    #navbar {
+        position: relative;
+    }
+    #footerContainer {
+        position: relative;
+        /*background-image: none, url('../borders/images/rings-bottom-vector.svg');*/
+        padding: 30px 2% 230px;
+    }
+    .moreMenu:before {
+        content: "+";
+    }
+    li.dropdown.open .moreMenu:before {
+        content: "-";
+    }
+    #mainNavigation .visible-sm,
+    #mainNavigation .visible-md,
+    #mainNavigation .visible-lg {
+        display: none !important;
+    }
+    /* ****************************************************
+       Tabs on mobile
+    *******************************************************/
+    .nav-tabs li {
+        width: 100%;
+    }
+    .nav-tabs li,
+    .nav-tabs>li>a,
+    .nav-tabs>li>a:focus,
+    .nav-tabs>li>a:hover {
+        border: none;
+        border-radius: 0px;
+        margin: 0;
+    }
+    .nav-tabs li.active,
+    .nav-tabs>li.active>a,
+    .nav-tabs>li.active>a:focus,
+    .nav-tabs>li.active>a:hover {
+        border: none;
+        border-radius: 0px;
+    }
+    /********Activity Stream */
+    #innerContentContainer ul.filterLinks li a {
+        text-align: center;
+    }
+    /* ****************************************************
+       Opportunities advanced filter
+    *******************************************************/
+    #filterTable_aReport td {
+        border-right: none;
+        border-bottom: none;
+    }
+    /* ****************************************************
+       Carousel
+    *******************************************************/
+    .carousel-caption h1 {
+        font-size: 24px;
+    }
+    .carousel-caption P {
+        font-size: 14px;
+    }
+    .carousel-control .fa-angle-right {
+        left: 15px;
+    }
+    .carousel-control .fa-angle-left {
+        left: -15px;
+    }
+
+    .carousel-caption {
+        left: 10%;
+    }
+}
+
+
+/******* Small screen size ****/
+
+@media (max-width: 400px) {
+    /*************Catalogue Assets */
+    .product {
+        padding-right: 0px !important;
+    }
+    div#productGroupHeader h3 {
+        word-wrap: break-word;
+        margin: 0 !important;
+    }
+    div#productTitleHeader {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+    }
+    #categorySelectorImage {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+    }
+    button.productsViewAllBtn {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    button.productsViewAllBtnSub {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    /* ****************************************************
+       Selectors for linkedInProfile.cfm
+    *******************************************************/
+    .linkedInDifferenceRow .linkedInTrue {
+        width: 94%;
+    }
+    .linkedInDifferenceRow input[type=radio] {
+        margin-top: 10px;
+        margin-right: 0.4%;
+    }
+    /* ****************************************************
+       Footer
+    *******************************************************/
+    #footerContainer {
+        /*position: relative;*/
+        /*background-image: none, url('../borders/images/rings-bottom-vector.svg');*/
+        padding: 30px 2% 230px;
+    }
+    /* ****************************************************
+       Carousel
+    *******************************************************/
+    .carousel-caption h1 {
+        font-size: 24px;
+    }
+    .carousel-caption P {
+        font-size: 14px;
+    }
+    .carousel-control span {
+        display: none;
+    }
+}

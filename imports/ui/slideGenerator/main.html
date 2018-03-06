@@ -1,9 +1,12 @@
 <template name="App_body">
-  {{> slideSelectionSheet}}
-  {{> Template.dynamic template=main}}
+    <!-- Header injected here -->
+    <div id="headerContainer"></div>
+    {{> slideSelectionSheet}}
+    {{> Template.dynamic template=main}}
+    <!-- Footer injected here -->
+    <div id="footerContainer"></div>
 </template>
-
-<template name="slideSelectionSheet">
+<!--<template name="slideSelectionSheet">
     <div id="sheetSelector" class="ui fullscreen modal sheetSelector">
         <i class="close icon"></i>
         <div class="header">
@@ -18,3 +21,5 @@
         </div>
     </div>
 </template>
+
+-->
