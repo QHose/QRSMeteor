@@ -240,7 +240,7 @@ function createCommentBox(text) {
     // console.log('createCommentBox for text', text)
     var textAfterCommentMarker = text.split('!comment').pop();
     var messagebox = `
-        <section class="commentBox">
+        <section class="container ui commentBox">
             <div class="ui icon message">
             <i class="help icon"></i>
             <div class="content">

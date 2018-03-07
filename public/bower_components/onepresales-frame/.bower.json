@@ -14,11 +14,11 @@
     "test",
     "tests"
   ],
-  "_release": "473f81c7ab",
+  "_release": "3d68039a0d",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "473f81c7abc0c3a5656cb931db258d830ad406f8"
+    "commit": "3d68039a0d63be23fad015690bf03303b7230e8a"
   },
   "_source": "git@gitlab.com:onepresales/onepresales-frame.git",
   "_target": "master",
