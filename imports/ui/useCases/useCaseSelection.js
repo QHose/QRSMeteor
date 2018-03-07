@@ -342,7 +342,7 @@ function textOfLevel(row, level) {
 }
 
 export function s3Logger( currentSelections, currentSelectionId ) {
-    var user = JSON.parse(Cookies.get('user'));
+    var user = Cookies.get('user')? JSON.parse(Cookies.get('user')) : {};
     var logData = {
         selections: "",
         currentSelectionId: currentSelectionId,

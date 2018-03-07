@@ -28,7 +28,7 @@ Template.slideSelectionSheet.events({
             overflow: 'hidden'
         });
 
-        var user = JSON.parse(Cookies.get('user'));
+        var user = Cookies.get('user')? JSON.parse(Cookies.get('user')) : {};
         var logData = {
             currentSelectionId: Session.get('currentSelectionId'),
             qlikID: user.qlikID,
