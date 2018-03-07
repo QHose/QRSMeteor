@@ -341,6 +341,21 @@ function textOfLevel(row, level) {
     return row[level].qText
 }
 
+export function s3Logger( currentSelections, currentSelectionId ) {
+    var user = JSON.parse(Cookies.get('user'));
+    var logData = {
+        selections: "",
+        currentSelectionId: currentSelectionId,
+        qlikID: user.qlikID,
+        accountid: user.accountid,
+        email: user.email
+    };
+    currentSelections.forEach(s=>{
+        logData.selections += s.qField+"="+s.qSelected+";";
+    });
+    Meteor.call('s3Logger', "userselection", logData);
+}
+
 //http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm
 async function getCurrentSelections() {
     console.log('function: getCurrentSelections');
@@ -357,6 +372,7 @@ async function getCurrentSelections() {
         var layout = await genericObject.getLayout();
         // console.log('genericObject layout', layout)
         var currentSelections = layout.qSelectionObject.qSelections;
+
         SenseSelections.insert({
             userId: Meteor.userId,
             userName: Meteor.user().profile.name,
@@ -367,7 +383,10 @@ async function getCurrentSelections() {
             if (err) { console.error('Failed to store the selection in mongoDb') }
             console.log('New selection has been stored in MongoDB with currentSelectionId', currentSelectionId)
             Session.set('currentSelectionId', currentSelectionId);
+            //AWS s3 logger
+            s3Logger(currentSelections, currentSelectionId);
             return currentSelections;
+
         });
     } catch (error) {
         var message = 'getCurrentSelections: Can not connect to the Qlik Sense Engine API via enigmaJS';
