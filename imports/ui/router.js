@@ -254,7 +254,7 @@ function loginDEV(user) {
 
 function mustBeSignedInQlik() {
     // "Logout"-Hook: Manual implementation, wait a bit to prevent multiple page loads, because the database needs to be update
-    Logger.autorun(function() {
+    Tracker.autorun(function() {
         if (!Meteor.userId()) {
             Meteor.setTimeout(loginQlik, 0); //give the browser some time to log the user in...
         }
@@ -314,7 +314,7 @@ function loginQlik() {
                         sAlert.error('Error logging you in...', err.message);
                         console.error(err);
                     } else {
-                        sAlert.success('You are now logged in with your Qlik.com account. You now have your "private demo environment". So feel free to create/change/delete anything you would like...');
+                        sAlert.success('You are now logged in with your Qlik.com account.');
                         console.log('user successfully logged in', Meteor.userId());
                     }
                 });

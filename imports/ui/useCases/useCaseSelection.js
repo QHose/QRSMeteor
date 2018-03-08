@@ -28,8 +28,7 @@ var possibleRoles = ['Show me everything', 'Product Manager', 'Business Manager'
 
 // ONCREATED
 Template.useCaseSelection.onCreated(async function() {
-    // const apiLogsHandle = Meteor.subscribe('apiLogs');
-    // Session.set('selectionMade', false);
+    Cookies.set('currentMainRole', null);
 
     //wait a bit, so Meteor can login, before requesting a ticket...
     Meteor.setTimeout(async function() {
@@ -98,14 +97,13 @@ Template.useCaseSelection.onRendered(async function() {
         .dropdown({
             async onChange(group, text, selItem) {
                 if (group == 'Show me everything') {
-                    group = 'SOE'
-                };
-                Cookies.set('currentMainRole', group);
-                await setSelectionInSense('Partial Workshop', group)
-                    // await setSlideContentInSession(group);
-                    // console.log('Content has been received, now show the slides')
+                    var qix = await getQix();
+                    var myField = await qix.app.clearAll()
+                } else {
+                    // Cookies.set('currentMainRole', group);
+                    await setSelectionInSense('Partial Workshop', group)
+                }
                 Meteor.setTimeout(function() {
-                    // console.log('Router: Go to slides ');
                     Router.go('slides');
                 }, 200)
             }
