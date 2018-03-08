@@ -24,7 +24,7 @@ var app = null;
 var qix = null;
 
 
-var possibleRoles = ['Show me everything', 'Product Manager', 'Business Manager', 'Developer'];
+var possibleRoles = ['Product Manager', 'Business Manager', 'Developer'];
 
 // ONCREATED
 Template.useCaseSelection.onCreated(async function() {
@@ -90,19 +90,12 @@ Template.useCaseSelection.onRendered(async function() {
 
     $(".ui.dropdown").dropdown("refresh");
     var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
-        // console.log('textToShow', textToShow)
     $(".ui.dropdown").dropdown("set selected", textToShow);
 
     $('.ui.dropdown')
         .dropdown({
             async onChange(group, text, selItem) {
-                if (group == 'Show me everything') {
-                    var qix = await getQix();
-                    var myField = await qix.app.clearAll()
-                } else {
-                    // Cookies.set('currentMainRole', group);
-                    await setSelectionInSense('Partial Workshop', group)
-                }
+                await setSelectionInSense('Partial Workshop', group)
                 Meteor.setTimeout(function() {
                     Router.go('slides');
                 }, 200)
