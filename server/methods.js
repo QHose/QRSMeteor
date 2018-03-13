@@ -32,7 +32,7 @@ import * as QSSystem from '/imports/api/server/QRSFunctionsSystemRules';
 import * as QSExtensions from '/imports/api/server/QRSFunctionsExtension';
 import * as QSCustomProps from '/imports/api/server/QRSFunctionsCustomProperties';
 
-var logger = require("onepresales-s3-logger")("SlideExplorer");
+var logger = require("onepresales-es-logger")("SlideExplorer");
 
 //stop on unhandled errors
 process.on('unhandledRejection', up => {
