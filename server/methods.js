@@ -32,6 +32,8 @@ import * as QSSystem from '/imports/api/server/QRSFunctionsSystemRules';
 import * as QSExtensions from '/imports/api/server/QRSFunctionsExtension';
 import * as QSCustomProps from '/imports/api/server/QRSFunctionsCustomProperties';
 
+var logger = require("onepresales-es-logger")("SlideExplorer");
+
 //stop on unhandled errors
 process.on('unhandledRejection', up => {
     throw up
@@ -168,7 +170,7 @@ Meteor.methods({
         Meteor.call('updateLocalSenseCopy');
         return id;
     },
-    copyAppSelectedCustomers(currentApp) { //the app the user clicked on        
+    copyAppSelectedCustomers(currentApp) { //the app the user clicked on
         if (!currentApp) {
             throw new Meteor.Error('No App selected to copy')
         };
@@ -215,6 +217,9 @@ Meteor.methods({
         return Customers.remove({
             'generationUserId': Meteor.userId()
         });
+    },
+    s3Logger(message, data) {
+        logger.info(message, data);
     }
 })
 
@@ -223,16 +228,16 @@ Meteor.methods({
         //delete the local content of the database before updating it
         Apps.remove({});
 
-        //Update the Apps with fresh info from Sense        
+        //Update the Apps with fresh info from Sense
         _.each(QSApp.getApps(), app => {
             Apps.insert(app);
         });
     },
     updateLocalSenseCopyStreams() {
-        //delete the local content of the database before updating it        
+        //delete the local content of the database before updating it
         Streams.remove({});
 
-        //Update the Streams with fresh info from Sense        
+        //Update the Streams with fresh info from Sense
         _.each(QSStream.getStreams(), stream => {
             Streams.insert(stream);
         });
@@ -243,7 +248,7 @@ Meteor.methods({
         Apps.remove({});
         Streams.remove({});
 
-        //Update the Apps and Streams with fresh info from Sense        
+        //Update the Apps and Streams with fresh info from Sense
         _.each(QSApp.getApps(), app => {
             Apps.insert(app);
         });

@@ -178,7 +178,7 @@
             var appId = Cookies.get('slideGeneratorAppId'); //senseConfig.slideGeneratorAppId;
             var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
             var proxy = Meteor.settings.public.slideGenerator.virtualProxy;
-            return 'https://' + senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';
+            return 'https://' + senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&select=clearall&opt=currsel&';
         });
 
         // Template.registerHelper('authenticatedSlideGenerator', function() {
