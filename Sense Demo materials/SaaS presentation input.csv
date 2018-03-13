@@ -52,11 +52,10 @@ Any open questions or want to discuss next steps please work with your Qlik OEM 
 "Integrate ","Explore Security Options","Learn about - [Qlik Sense Platform Security] (https://help.qlik.com/en-US/sense/November2017/Subsystems/PlanningQlikSenseDeployments/Content/Deployment/Server-Security.htm) - 2 hours","","","","","         0","0","SOE, Developer",
 "Integrate ","Explore Security Options","Learn about - [Qlik Sense Authentication Methods] (https://help.qlik.com/en-US/sense/November2017/Subsystems/ManagementConsole/Content/authentication.htm) - 2 hours","","","","","         0","0","SOE, Developer",
 "Integrate ","Explore Security Options","Learn about - [Data Security] (https://help.qlik.com/en-US/sense/Subsystems/Hub/Content/Scripting/Security/manage-security-with-section-access.htm) - 1 hour","","","","","         0","0","SOE, Developer",
-"Integrate ","Explore Embedded Analytics","#  Explore example analytic solutions/demos:
-  - Embedded Analytics [Marketing360](http://webapps.qlik.com/marketing360/index.html)
- - Info Graphic [Sneakers](http://sense-demo.qlik.com/demos/sneakers/index.html) 
- - Custom Application [Federal Survey](http://viz.axisgroup.com/servicecharges)  
- - Review Qlik’s OEM - Calero’s PINNACLE InSight Analytics: [Video Demo](https://www.calero.com/knowledge-center/document/caleros-pinnacle-insight-analytics/)
+"Integrate ","Explore Embedded Analytics","Explore example analytic solutions/demos:
+- Info Graphic [Sneakers](http://sense-demo.qlik.com/demos/sneakers/index.html)
+- Custom Application [Federal Survey](http://viz.axisgroup.com/servicecharges)
+- Review Qlik’s OEM - Calero’s PINNACLE InSight Analytics: [Video Demo](https://www.calero.com/knowledge-center/document/caleros-pinnacle-insight-analytics/)
 ","","","","","         0","0","SOE, Product Manager, Developer",
 "Integrate ","Integration Checkpoint","- Review developed application. 
 - Discuss Questions/Next Steps","","","","","         0","0","SOE, Developer, Product Manager, Business Manager",

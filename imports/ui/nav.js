@@ -42,33 +42,33 @@ Template.nav.onRendered(function() {
 //
 
 
-// Template.nav.events({
-//     'click a': function(event, template) {
-//         event.preventDefault();
-//         var menuItem = event.currentTarget.id;
-//         switch (menuItem) {
-//             case 'home':
-//                 Router.go('useCaseSelection');
-//                 break;
-//             case 'SSBI':
-//                 selectMenuItemInSense('What is governed self service?')
-//                 break;
-//             case 'generation':
-//                 selectMenuItemInSense('Qlik Sense SaaS provisioning demo');
-//                 break;
-//             case 'embedding':
-//                 selectMenuItemInSense(WEB_INTEGRATION);
-//                 // window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
-//                 break;
-//             case 'video':
-//                 selectMenuItemInSense(VIDEO_OVERVIEW);
-//                 break;
-//             case 'sheetSelector':
-//                 showSlideSelector()
-//                 break;
-//         }
-//     }
-// });
+Template.nav.events({
+    'click a': function(event, template) {
+        // event.preventDefault();
+        var menuItem = event.currentTarget.id;
+        switch (menuItem) {
+            // case 'home':
+            //     Router.go('useCaseSelection');
+            //     break;
+            // case 'SSBI':
+            //     selectMenuItemInSense('What is governed self service?')
+            //     break;
+            // case 'generation':
+            //     selectMenuItemInSense('Qlik Sense SaaS provisioning demo');
+            //     break;
+            // case 'embedding':
+            //     selectMenuItemInSense(WEB_INTEGRATION);
+            //     // window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
+            //     break;
+            // case 'video':
+            //     selectMenuItemInSense(VIDEO_OVERVIEW);
+            //     break;
+            case 'sheetSelector':
+                showSlideSelector()
+                break;
+        }
+    }
+});
 
 export function showSlideSelector() {
     $('.ui.modal.sheetSelector')
