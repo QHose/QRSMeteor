@@ -1,10 +1,11 @@
 var SITES = {
-    "answers": "Questions & Answers",
-    "sizing": "Sizing Calculator",
-    "slidesgen": "Slide Explorer",
+    "answers": "Technical Insights",
+    "sizing": "Sizing Advisor",
+    "slidesgen": "Presentation Explorer",
     "qmi": "QMI"
 };
 var cbMessageTimeout;
+var thisTool = "general";
 
 function sendRequest(url, method, body, successFn, errorFn) {
     var xhr = new XMLHttpRequest();
@@ -63,17 +64,19 @@ function getCookie(cname) {
 
 
 window.initOnePresales = function initOnePresales(website) {
-
+    
     loadHTML('bower_components/onepresales-frame/html/header.html', 'headerContainer');
     loadHTML('bower_components/onepresales-frame/html/footer.html', 'footerContainer');
 
     var html1 = "",
         html2 = "";
     if (!website) {
+        thisTool = "general";
         for (let s in SITES) {
             html1 += '<li><a href="/' + s + '">' + SITES[s] + '</a></li>';
         }
     } else {
+        thisTool = website;
         html1 = '<li><a href="/' + website + '">' + SITES[website] + '</a></li>';
         html2 = '<li><a href="/">More tools...</a></li>'
     }
@@ -98,7 +101,12 @@ document.addEventListener("onepresales-frame-footer", function(event) {
 
     document.getElementById('feedback-form').addEventListener('submit', (e) => {
         e.preventDefault();
+        var about = document.getElementById("selectTool").value;
+        if ( about !== 'general') {
+            about = SITES[about];
+        }
         var body = {
+            about: about,
             name: document.getElementById("feedbackName").value,
             subject: document.getElementById("feedbackSubject").value,
             email: document.getElementById("feedbackEmail").value,
@@ -148,8 +156,10 @@ document.addEventListener("onepresales-frame-footer", function(event) {
     
 });
 
-function openFeedback() {
+function openFeedback(about) {
+    about = about || thisTool;
     document.getElementById("feedback-form").reset();
+    document.getElementById('selectTool').value = about.toLowerCase();
     document.getElementById("onepresales-feedback").style.display = 'block';
 }
 
