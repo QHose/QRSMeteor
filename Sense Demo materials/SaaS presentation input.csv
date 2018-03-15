@@ -78,6 +78,7 @@ This video gives an introduction to our APIs",,,,,,,,,
 "What is an app?","Video: What is governed self service?","!comment
 With Qlik Sense you have to possibility to go for complete self-service. To make sure you can keep your environment under control, we need to govern that Self-Service.  This video explains how you can dynamically maintain this with Qlik Sense.
 ",,,,,,,,,
+"What is an app?","Why Qlik is different? The associative experience...","iframe https://www.qlik.com/us/products/why-qlik-is-different",,"","","","","         0","0","Technical - 2 hours",
 "What is an app?","Video: The Qlik Associative Model","https://youtu.be/gWNoyL6fZxo",,"","","","","         0","0","Introduction - 30 minutes, Business Analyst, CTO, Product Owner",
 "What is an app?","Video: The Qlik Associative Model","!comment
 This video explains the core differentiator of Qlik. This is our way of visualizing ALL your data. Our QIX engine makes sure that all your data is connected and by this available for complete analysis. We do not use Query based calculations on the data. With queries you always will lose part of your data. With our QIX technology, you will never have that problem.",,,,,,,,,
@@ -303,13 +304,6 @@ It also interacts with the Sense web integration. The user needs to see its embe
 "Why integration.qlik.com?","integration demo architecture deep dive","integratedArchitecture.png",,"","","","","         0","0","Deep dive",
 "Why integration.qlik.com?","integration demo architecture deep dive","!comment
 This slide gives a more in depth overview of the all the different aspects of embedding Qlik Sense in integration.qlik.com.",,,,,,,,,
-"Why integration.qlik.com?","Qlik Sense architecture -  Topology overview","[Click here for the Qlik Sense topology](http://integration.qlik.com/images/QlikSense%20TopologiesV0_18.pdf)",,"","","","","         0","0","PreSales",
-"Why integration.qlik.com?","Qlik Sense architecture -  Topology overview","architecture - topology.png",,"","","","","         0","0","PreSales",
-"Why integration.qlik.com?","Qlik Sense architecture -  Topology overview","!comment
-This slide gives a complete overview of the Qlik Sense Topologies. It handles 3 main topics:
- - Topology design principles: The basic principles of Qlik Sense. What is an app, what is our engine, streams, libraries,…These are the basics of the Qlik Sense environment that are essential in a successful integration.
- - Enterprise class architecture: What are the different services in our Qlik Sense environment, how does handle Qlik Sense security, how can you cluster with Qlik Sense,..
-Qlik Sense government: Roles, governed self-service, data reduction, authentication and authorization within Qlik Sense and Integration overview.",,,,,,,,,
 "Why integration.qlik.com?","OEM good practice summary","Create a template Qlik Sense app per business process/area
  - you can use Qlik apps created via the Qlik hub or
 - create an app via the API (though a JSON structure)",,"","","","","         0","0","PreSales",
@@ -4666,34 +4660,80 @@ or
 }
 ```",,,,,,,,,
 "Architecture","Overview architecture","iframe /architecture_embedded",,"","","","","         0","0","Technical - 2 hours; Integration summary; Hosting Ops; CTO",
+"Architecture","Introduction to Qlik Sense platform","Qlik sense platform v2.png",,,,,,,,,
 "Architecture","Integration architecture introduction video","https://youtu.be/sv5nKDvmRPI",,"","","","","         0","0","PreSales, Technical - 1 hour, CTO, Hosting Ops",
 "Architecture","Integration architecture overview","SaaSarchitecture.png",,"","","","","         0","0","Technical - 2 hours",
-"Architecture","Qlik Sense Topology ","[Click here for the Qlik Sense topology](http://integration.qlik.com/images/QlikSense%20TopologiesV0_18.pdf)",,"","","","","         0","0","PreSales",
-"Architecture","Qlik Sense Topology ","architecture - topology.png",,"","","","","         0","0","PreSales",
-"Architecture","Exercise 1: Draw an application architecture for a single server, internal user installation on the whiteboard","End user",,"","","","","         0","0","Exercises",
-"Architecture","Exercise 1: Draw an application architecture for a single server, internal user installation on the whiteboard","Servers",,"","","","","         0","0","Exercises",
-"Architecture","Exercise 1: Draw an application architecture for a single server, internal user installation on the whiteboard","Databases",,"","","","","         0","0","Exercises",
-"Architecture","Exercise 1: Draw an application architecture for a single server, internal user installation on the whiteboard","Firewalls",,"","","","","         0","0","Exercises",
-"Architecture","Exercise 1: Draw an application architecture for a single server, internal user installation on the whiteboard","Ports",,"","","","","         0","0","Exercises",
-"Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","External user",,"","","","","         0","0","Exercises",
-"Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","internal user",,"","","","","         0","0","Exercises",
-"Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Servers",,"","","","","         0","0","Exercises",
-"Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Databases",,"","","","","         0","0","Exercises",
-"Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Firewalls",,"","","","","         0","0","Exercises",
-"Architecture","Exercise 2: Draw an application architecture for an OEM scenario: web server. Sense server,  external and internal users on the whiteboard","Ports",,"","","","","         0","0","Exercises",
-"Architecture","Example architecture scenarios","> Lets look at some common scenarios with both internal as well as external users",,"","","","","         0","0","PreSales",
-"Architecture","Qlik Sense platform overview","architecture - platform overview.png",,,,,,,,,
+"Architecture","Example Qlik Sense architecture scenarios","> Lets look at the Qlik Sense architecture in more detail.",,"","","","","         0","0","PreSales",
+"Architecture","Example Qlik Sense architecture scenarios","!comment
+The following Qlik Sense slides are created by Marcus Spitsmiller",,,,,,,,,
+"Architecture","Qlik Sense platform overview","architecture - platform overview.png",,"","","","","         0","0","Technical - 2 hours",
+"Architecture","Qlik Sense platform overview","!comment
+The figure above explain the key services of Qlik Sense.",,,,,,,,,
+"Architecture","Single Server Environment
+","# Introduction to the concept",,,,,,,,,
+"Architecture","Single Server Environment
+","architecture - single node example.png",,,,,,,,,
+"Architecture","Single Server Environment
+","# Detailed explanation",,,,,,,,,
 "Architecture","Single Server Environment
 ","architecture - single server.png",,,,,,,,,
-"Architecture","Two server environment","architecture - two servers.png",,,,,,,,,
-"Architecture","Growth environment","architecture - multiple servers environment.png",,,,,,,,,
-"Architecture","Enterprise or scalable OEM environment","architecture - multiple servers enterprise OEM environment.png",,,,,,,,,
+"Architecture","Single Server - integrated security and architecture overview","Single Server - integrated security and architecture overview.png",,,,,,,,,
+"Architecture","Single Server - integrated security and architecture overview","!comment
+# Data Access Layer
+The associative model combines data from all data sources. You are not limited to any join type or number of data sources and can potentially return very large datasets.
+
+# Applications Layer
+Qlik Engine holds the application into memory for end user consumptions
+
+# Web Layer
+Qlik Sense Enterprise (QSE) Platform  provide access through Qlik Hub. Show the different applications and streams available to the user.
+Qlik Management Console (QMC) Administer the Qlik Sense Site based on Qlik Governance approach. A Content admin may only access the parts withn the QMC that is valid from him/her. Everything else is gray-out and not accessible.
+3.   Embedded visualization into a portal. Every graph is an object usable in portal.
+
+# Summary
+Users of all types can easily create and analyze in Qlik Sense using a unified HTML5 web based client, with no necessity for browser plugins, apps or fat desktop clients.
+IT can utilize a simple and powerful, web based management console (QMC) for administration developed with the same technologies as the front-end client.
+Developers can integrate data and build analytics using the web client, and can extend and customize Qlik Sense through standard and open API’s
+
+Qlik support a variaty of Authentication providers such as LDAP, Microsoft Active Directory and others
+Qlik provide Client and REST APIs to automate or interact with external processes 
+
+",,,,,,,,,
+"Architecture","Two server - scaling","# Introduction to vertical scaling with 2 servers",,,,,,,,,
+"Architecture","Two server - scaling","https://www.lucidchart.com/publicSegments/view/5aec8e0a-13bb-41a9-8bb4-d87870a250a1/image.png",,,,,,,,,
+"Architecture","Two server - scaling","# Detailed explanation",,,,,,,,,
+"Architecture","Two server - scaling","architecture - two servers.png",,,,,,,,,
+"Architecture","Two server - scaling","!comment
+Based on your requirements you can choose on how you would like to prioritize your setup. A big server in the front end and a smaller one in the back? Or do you prefer two servers serving end users? In the last case one server will also do back end activities like reloading the data. ",,,,,,,,,
+"Architecture","Three server - scaling","# Introduction to vertical and horizontal scaling with 3 servers",,,,,,,,,
+"Architecture","Three server - scaling","https://www.lucidchart.com/publicSegments/view/5aec8e0a-13bb-41a9-8bb4-d87870a250a1/image.png",,,,,,,,,
+"Architecture","Three server - scaling","# Detailed explanation",,,,,,,,,
+"Architecture","Three server - scaling","architecture - three server environment.png",,,,,,,,,
+"Architecture","Four servers - scaling","https://www.lucidchart.com/publicSegments/view/06f41cbe-f77d-4a24-805f-e1e49f01901b/image.png",,,,,,,,,
+"Architecture","Summary: Qlik Sense server architectures examples","# Which components can you multiply?",,,,,,,,,
+"Architecture","Summary: Qlik Sense server architectures examples","architecture - multiple servers enterprise OEM environment.png",,,,,,,,,
+"Architecture","Summary: Qlik Sense server architectures examples","# Example architectures",,,,,,,,,
+"Architecture","Summary: Qlik Sense server architectures examples","Qlik Sense Multi Node Examples overview.png",,,,,,,,,
+"Architecture","Summary: Qlik Sense server architectures examples","!comment
+- [Picture 1] All components on one server
+- [Picture 2] Back-end and Front-end separated. Use Case: dedicated engine/Virtual Proxy
+- [Picture 3] Dedicated scheduler with a clustered front-end 
+- [Picture 4] Central Node + scheduler tasks with a dedicated Qlik engine node and dedicated Proxy Server
+- [Picture 5] same as Nr.4 with a dedicated Scheduler server and clustered Qlik engine server
+- [Picture 6] All components on dedicated servers
+- [Picture 7] Setup using a third party “Reverse proxy” scenario
+- [Picture 8] Back-end site with Central Node and Front-end central node. Back-end prepares the .qvf or .qvd. The front-end central node will import the applications for end user consumption. Scenario is usefull in case a customer security prohibits direct data sources connectivity. ",,,,,,,,,
 "Architecture","Extranet Deployment – EMM Gateway","Extranet Deployment – EMM Gateway.png",,,,,,,,,
+"Architecture","Extranet Deployment – EMM Gateway","!comment
+Another way an on-premise solution is often exposed to the internet is to make Qlik Sense accessible through an 3rd party Enterprise Mobility Management – or EMM – solution.  In this case, Qlik Sense is made accessible via a browser like Safari, Chrome, or the EMM vendor’s secure browser and also leverages a device level or per app VPN.  Specific EMM vendors will be covered in subsequent modules, but in all cases, the EMM solution’s browser – if it is being used – and the EMM solution’s infrastructure must support websocket traffic. 
+ 
+",,,,,,,,,
 "Architecture","Architecting for Recoverability
 - backup and recovery","architecture - Architecting for Recoverability.png",,,,,,,,,
 "Architecture","How does the persistance layer work?","architecture - how does the persistance layer work.png",,,,,,,,,
 "Architecture","Persistance layer - local ","architecture - Persistence Layer - Local.png",,,,,,,,,
 "Architecture","Persistence Layer via Virtual Machine","architecture - Persistence Layer via Virtual Machine.png",,,,,,,,,
+"Architecture","Integrated architecture and security examples","> Qlik Sense will never stand on its own, there will always be users that have rights to specific resources. So next we will cover more examples on how authentication, authorization and architecture fit together.",,,,,,,,,
 "Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Internal users only",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","architecture - windows domain internal user.png",,"","","","","         0","0","PreSales, Technical - 1 day",
@@ -4724,17 +4764,18 @@ or
 "Architecture","Architecture example 6: use the Qlik Sense server to host your mashup","Based on the selection, a specific mashup is loaded.",,"","","","","         0","0","PreSales",
 "Architecture","Qlik Sense integration using OAUTH","architecture - single sing on using OAUTH.png",,,,,,,,,
 "Architecture","Qlik Sense integration using OAUTH","Please note that you can use the same mechanism for any authentication method you might have like ",,,,,,,,,
+"Architecture","Next: other  examples for scaling and high availability","> Example scenarios on how you can scale...",,,,,,,,,
+"Architecture","4 multi node - clustered","architecture - 4 multi node example clustered front end.png",,,,,,,,,
+"Architecture","5 multi node - separate proxy","architecture - 5 multi node example frond and back separated.png",,,,,,,,,
+"Architecture","Scale out - creating separate sites (OEM)","architecture - multi site OEM scalable approach.png",,,,,,,,,
+"Architecture","Background materials","> the next slides will guide you through some background reading materials.",,,,,,,,,
+"Architecture","Video (25M): understanding Qlik Sense performance (scalability)","https://youtu.be/Vwmx0nBNk0Q",,,,,,,,,
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[System requirements](https://help.qlik.com/en-US/sense/3.2/Content/Introduction/system-requirements.htm)",,"","","","","         0","0","PreSales, Technical - 1 day, Hosting Ops",
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Port overview](http://help.qlik.com/en-US/sense/3.2/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Deployment-Ports.htm)",,"","","","","         0","0","PreSales, Technical - 1 day, Hosting Ops",
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Plan your deployment](http://help.qlik.com/en-US/sense/3.2/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Planning-Deployments.htm)",,"","","","","         0","0","PreSales, Technical - 1 day, Hosting Ops",
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Backup and restore Qlik Sense](http://help.qlik.com/en-US/sense/3.1/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Backup-Restore.htm)
 - This section describes how to back up and restore Qlik Sense sites and certificates and how to move a node to a new machine.",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Server whitelist](http://integration.qlik.com/docs/Qlik_Scalability_Center_Recommended Servers.pdf)",,"","","","","         0","0","Hosting Ops",
-"Architecture","Video (25M): understanding Qlik Sense performance (scalability)","https://youtu.be/Vwmx0nBNk0Q",,,,,,,,,
-"Architecture","Video: Activating license and allocating users access","https://youtu.be/uWGS48VaOQE",,,,,,,,,
-"Architecture","Video: Activating license and allocating users access","Tip: for OEM use cases I prefer to use `username like *` since the authorization module in your SaaS platform should decide who can enter Qlik Sense and who not...",,,,,,,,,
-"Architecture","Video: Installing Qlik Sense in a single node site - Qlik Sense","https://youtu.be/lx2R6LPKKPo?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
-"Architecture","Video: Installing Qlik Sense in a multi-node site - Qlik Sense","https://youtu.be/RdaNXjUb1vc?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
 "Architecture","Version /source control integration using In4BI","Version Control, Deployment and Governance are important topics when using BI tools in general. For Qlik Sense there is a solution: Platform Manager. In short Platform Manager provides (source: [in4BI](https://in4bi.com/platform-manager-qlik-sense/):",,,,,,,,,
 "Architecture","Version /source control integration using In4BI","Integrated Version Control with ability to use the Qlik Sense MyWork stream as your workspace",,,,,,,,,
 "Architecture","Version /source control integration using In4BI","Simple Deployment to all of your Qlik Sense servers",,,,,,,,,
@@ -4743,16 +4784,83 @@ or
 "Architecture","Version /source control integration using In4BI","Ability to change Library connections during Deployment of your Qlik Sense apps",,,,,,,,,
 "Architecture","Version /source control integration using In4BI","Data Lineage visualizes all dependencies of your Qlik Sense apps",,,,,,,,,
 "Architecture","Version /source control integration using In4BI","<iframe class=""SenseEmbedFrame"" src=""https://in4bi.com/platform-manager-qlik-sense/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,,,,,,,,
-"Architecture","How to: Change hostname","https://youtu.be/Dvub_4fikv0",,,,,,,,,
-"Architecture","How to: Change hostname","A short video documenting how to change the hostname of the Qlik Sense server.  This video was made on a Single Node full install of Qlik Sense server.  Changing the hostname on a rim node proxy may follow a different process.",,,,,,,,,
+"Deployment - HOW TO...","Video: Installing Qlik Sense in a single node site - Qlik Sense","https://youtu.be/lx2R6LPKKPo?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
+"Deployment - HOW TO...","Video: Installing Qlik Sense in a multi-node site - Qlik Sense","https://youtu.be/RdaNXjUb1vc?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
+"Deployment - HOW TO...","install Qlik Sense","iframe https://help.qlik.com/en-US/sense/September2017/Subsystems/PlanningQlikSenseDeployments/Content/Deployment/Qlik-Sense-installation.htm",,,,,,,,,
+"Deployment - HOW TO...","How to: Change hostname","https://youtu.be/Dvub_4fikv0",,,,,,,,,
+"Deployment - HOW TO...","How to: Change hostname","A short video documenting how to change the hostname of the Qlik Sense server.  This video was made on a Single Node full install of Qlik Sense server.  Changing the hostname on a rim node proxy may follow a different process.",,,,,,,,,
+"Deployment - HOW TO...","Migrating Qlik Sense September 2017 / November 2017 / February 2018 to a new server","https://youtu.be/TLgJmT7RDsw",,,,,,,,,
+"Deployment - HOW TO...","Migrating Qlik Sense September 2017 / November 2017 / February 2018 to a new server","# On original server
+In QMC, go to Certificates section and export new certificates using the FQDN of the new server.
+Be sure to include the Private key
+We need the certificates to be in the Windows format
+Record the UNC root path specified in the Service Cluster section in the QMC
+Stop all services except for the Qlik Sense Repository Database
+Create a new folder for the backup, e.g. C:\backup
+Open MMC and Export the Trusted Root Certificate used by Qlik Sense from the Local Computer / Computer Account snap-in. And place it into the backup folder
+Be sure to include the Private key
+Take a backup of the database (relevant help link)
+Sample command: ""C:\Program Files\Qlik\Sense\Repository\PostgreSQL\9.6\bin\pg_dump.exe"" -h localhost -p 4432 -U postgres -b -F t -f ""c:\backup\QSR_backup.tar"" QSR
+Copy all subfolders in the UNC root specified in the Service Cluster Section in the QMC to the backup folder
+Copy the Server certificate from the Exported Certificates folder to the backup folder (default: C:\ProgramData\Qlik\Sense\Repository\Exported Certificates)
+Optional:
+Zip the Backup folder for ease of transfer
+
+# New Server
+Install all Windows Updates
+Update to the latest .NET Framework version
+Verify that the C++ Redistributable is installed and patched
+Visit help.qlik.com, click on your Sense software version, and verify that all pre-req's are met
+Once all is complete, now you can install Qlik Sense on the new server (it has to be of the exact same version)
+During the installation process uncheck the check box to start services after installation. We will want to do extra configuration before Qlik Sense initializes
+Transfer the backup from the old server to local disk on the new server
+While the installer is working:
+Import the Trusted Root and Server certificate into the Local Computer / Computer Account snap-in section in their appropriate areas:
+Server > Personal
+Trusted Root > Trusted Root Certification Authorities
+Note:​ Ensure that you mark the certificates as exportable
+Note: If there are certificates which have already been generated (e.g. issued to newserver.company.com issued by newserver.company.com), then delete those
+Once the installation has finished, start the Qlik Sense Repository Database
+Restore the backed up copy of the database
+Sample command: ""C:\Program Files\Qlik\Sense\Repository\PostgreSQL\9.6\bin\pg_restore.exe"" -h localhost -p 4432 -U postgres -d QSR ""c:\backup\QSR_backup.tar""
+If using a different share path for the Qlik Sense content
+Copy all subfolders from the UNC root specified in the Service Cluster Section in the QMC on the old server into a newly configured UNC path for the new server
+Open QlikSenseUtil
+Default path C:\Program Files\Qlik\Sense\Repository\Util\QlikSenseUtil\QlikSenseUtil.exe
+Click Connect to database
+Enter superuser credentials
+Click OK
+Go to the Service cluster section
+Click OK to get the current values
+Make the appropriate edits
+Click Save
+To validate that the changes have been recorded:
+Click Clear
+Click OK
+To launch Qlik Sense with the new hostname:
+Open cmd.exe with administrative rights
+Change the directory to the Repository install path
+Default path C:\""Program Files""\Qlik\Sense\Repository
+Execute the following command: Repository.exe  -bootstrap -standalone -restorehostname
+Allow the Repository.exe to run for a while
+Key log elements in C:\ProgramData\Qlik\Sense\Log\Repository\Trace\ > System_Repository
+Since no other services are running, a successful result from this restore command is the Repository to fully initialize but be unable to connect to the other services
+End the Repository.exe process in Task Manager
+Start all Qlik Sense services
+Access the QMC and/or Hub to confirm that all previous working functionality is present",,,,,,,,,
+"Deployment - HOW TO...","Backup a Qlik Sense site","iframe https://help.qlik.com/en-US/sense/September2017/Subsystems/PlanningQlikSenseDeployments/Content/Deployment/Backing-up-a-site.htm",,,,,,,,,
+"Deployment - HOW TO...","Video: Activating license and allocating users access","https://youtu.be/uWGS48VaOQE",,,,,,,,,
+"Deployment - HOW TO...","Video: Activating license and allocating users access","Tip: for OEM use cases I prefer to use `username like *` since the authorization module in your SaaS platform should decide who can enter Qlik Sense and who not...",,,,,,,,,
 "Data integration","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
+"Data integration","Qlik Connectors: To which data sources can Qlik Sense connect?","[Qlik Connectors](https://www.qlik.com/us/products/qlik-connectors), which now include QVSource, gather and combine data from databases, applications, spreadsheets, websites, Big Data lakes and custom sources. Gain extensive insight into your divergent data and enable holistic, data-driven decisions.",,,,,,,,,
+"Data integration","Qlik Connectors: To which data sources can Qlik Sense connect?","data - data which database can we connect.png",,,,,,,,,
+"Data integration","Qlik Connectors: To which data sources can Qlik Sense connect?","[Connectors on Qlik help](https://help.qlik.com/en-US/connectors/Content/QlikSense.htm)",,"","","","","         0","0","PreSales",
+"Data integration","Qlik Connectors: To which data sources can Qlik Sense connect?","[Connector videos](https://help.qlik.com/en-US/connectors/Content/Videos/Videos.htm)",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","If you load a table you can also store it on disk. This is called a QVD file.",,"","","","","         0","0","PreSales",
 "Data integration","How to create a QVD? ","data - create qvd.png",,"","","","","         0","0","PreSales",
 "Data integration","Use QVDs to re-use entities in multiple apps and enrich them","data - bus matrix dimensions to business process.png",,"","","","","         0","0","PreSales",
 "Data integration","Use QVDs to re-use entities in multiple apps and enrich them","In this scenario we would like to create 1 business intelligence environment for the whole company. In order to do this, you first have to divide your company into processes, and define which entities are relevant per process:",,"","","","","         0","0","PreSales",
 "Data integration","Use QVDs to create an ETL application architecture","data - data flow layers.png",,"","","","","         0","0","PreSales",
-"Data integration","Connectors","[Connectors on Qlik help](https://help.qlik.com/en-US/connectors/Content/QlikSense.htm)",,"","","","","         0","0","PreSales",
-"Data integration","Connectors","[Connector videos](https://help.qlik.com/en-US/connectors/Content/Videos/Videos.htm)",,"","","","","         0","0","PreSales",
 "Data integration","Data governance","data governance flow ETL.png",,"","","","","         0","0","PreSales",
 "Data integration","Incremental load script","You can also combine your actuals with historic data from a QVD.",,"","","","","         0","0","PreSales",
 "Data integration","Incremental load script","```
