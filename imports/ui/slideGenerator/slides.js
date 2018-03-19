@@ -303,7 +303,9 @@ function convertToHTML(text) {
     //
     // ─── IMAGE ──────────────────────────────────────────────────────────────────────
     //        
-    else if (checkTextIsImage(text)) {
+    else if (checkTextIsImage(text) && text.includes('https://')) {
+        return '<div class="ui container"> <img class="ui massive rounded bordered image"  style="width: 100%;" src="' + text + '"/></div>';
+    } else if (checkTextIsImage(text)) {
         return '<div class="ui container"> <img class="ui massive rounded bordered image"  style="width: 100%;" src="images/' + text + '"/></div>';
     } else if (text.startsWith(embeddedImageMarker)) { //embedded image in text
         var textMarker = text.split(embeddedImageMarker).pop();
