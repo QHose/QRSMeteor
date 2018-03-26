@@ -31,7 +31,7 @@ Template.slides.onDestroyed(function() {
 Template.slides.onRendered(function() {
     setTimeout(() => {
         slideDataLoaded();
-    }, 1000);
+    }, 1500);
     initializeReveal();
 });
 
@@ -111,7 +111,8 @@ Template.slideContent.onRendered(async function() {
         template.$('.slideContent').append(createCommentBox(comment));
     Logger.insert({
         userId: Meteor.userId,
-        // userName: Meteor.user().profile.name,
+        role: Cookies.get('currentMainRole'),
+        userName: Meteor.user().profile.name,
         website: location.href,
         counter: 1,
         eventType: 'slideRendered',
@@ -139,11 +140,12 @@ Template.slideContent.events({
         e.stopPropagation();
         Logger.insert({
             userId: Meteor.userId,
-            // userName: Meteor.user().profile.name,
+            userName: Meteor.user().profile.name,
+            role: Cookies.get('currentMainRole'),
             counter: 1,
             eventType: 'linkClick',
-            topic: this.data.slide[0].qText,
-            slide: this.data.slide[1].qText,
+            // topic: this.data.slide[0].qText,
+            // slide: this.data.slide[1].qText,
             linkName: e.currentTarget.innerText,
             viewDate: new Date(), // current time
         });
