@@ -31,7 +31,7 @@ Template.slides.onDestroyed(function() {
 Template.slides.onRendered(function() {
     setTimeout(() => {
         slideDataLoaded();
-    }, 1500);
+    }, 2500);
     initializeReveal();
 });
 
@@ -137,6 +137,13 @@ Template.slideContent.onRendered(async function() {
 
 Template.slideContent.events({
     'click a': function(e, t) {
+        console.log('------------------------------------');
+        console.log(this);
+        console.log('------------------------------------');
+
+        console.log('------------------------------------');
+        console.log('parent data', Template.parentData(1));
+        console.log('------------------------------------');
         e.stopPropagation();
         Logger.insert({
             userId: Meteor.userId,
