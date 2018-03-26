@@ -95,7 +95,7 @@ Template.useCaseSelection.onRendered(async function() {
     $('.ui.dropdown')
         .dropdown({
             async onChange(group, text, selItem) {
-                await setSelectionInSense('Partial Workshop', group)
+                await setSelectionInSense('Partial Workshop', group);
                 Meteor.setTimeout(function() {
                     Router.go('slides');
                 }, 200)
@@ -219,6 +219,9 @@ Template.useCaseSelection.onDestroyed(function() {
 Template.useCaseSelection.helpers({
     userRole() {
         return Cookies.get('currentMainRole');
+    },
+    authenticated() {
+        return Meteor.userId();
     }
 });
 
