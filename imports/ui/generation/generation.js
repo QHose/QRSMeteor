@@ -21,7 +21,7 @@ Template.generationApps.helpers({
             .count();
     },
     appSettings: function() {
-        console.log('client generation helper: get app table, the config used to generate the URLs to Sense: ', config);
+        // console.log('client generation helper: get app table, the config used to generate the URLs to Sense: ', config);
         return {
             collection: Apps,
             rowsPerPage: 5,
@@ -145,7 +145,7 @@ Template.generationStreams.helpers({
                         return moment(value)
                             .format('DD-MM-YYYY');
                     }
-                }, 
+                },
                 // {
                 //     key: 'deleteStream',
                 //     label: 'Delete',
@@ -242,7 +242,7 @@ Template.generation.onRendered(function() {
             sAlert.error("We can't connect to Qlik Sense, is your Sense VM running, all services started?, virtual proxy 'hdr' configured? Did you export the certificates and referred to them in the settings-XYZ.json in your project root? Also check the host/port (Qlik Sense) settings. Make sure you check the problem solving chapters in the installation manual (documentation-generic tab).");
         } else {
             var message = "Connected to Qlik Sense via the REST and websocket APIs. We registered a QRS notification event to ensure this MeteorJs platform automatically updates when Qlik Sense changes.";
-            console.log(message);
+            // console.log(message);
             // sAlert.success(message);
             Session.set('NoSenseConnection', false);
         }
@@ -257,8 +257,19 @@ Template.QlikSense.onRendered(function() {
 
 
 Template.generation.onCreated(function() {
-    // this.subscribe('streams');
-    // this.subscribe('customers');
+    //see https://guide.meteor.com/data-loading.html
+    this.subscribe('streams');
+    this.subscribe('customers');
+
+    const templateAppsHandle = Meteor.subscribe('templateApps');
+    const apiLogsHandle = Meteor.subscribe('apiLogs');
+    const customersHandle = Meteor.subscribe('customers', { //http://stackoverflow.com/questions/28621132/meteor-subscribe-callback
+        onReady: function() {},
+        onError: function() {
+            console.log("onError", arguments);
+        }
+    });
+
 
     var self = this;
     self.autorun(function() {

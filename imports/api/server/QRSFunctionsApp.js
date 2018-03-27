@@ -5,6 +5,7 @@ import * as QSStream from '/imports/api/server/QRSFunctionsStream';
 import { gitHubLinks } from '/imports/ui/UIHelpers';
 
 //import meteor collections
+<<<<<<< HEAD
 import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 
@@ -17,20 +18,192 @@ _ = lodash;
 //install NPM modules
 var fs = require('fs');
 var qsocks = require('qsocks'); //pls now use enigmaJS instead
+=======
+import {
+    Streams
+} from '/imports/api/streams';
+import {
+    Customers
+} from '/imports/api/customers';
 
-export function generateStreamAndApp(customers, generationUserId) {
-    // console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
+import {
+    createVirtualProxies
+} from '/imports/api/server/QPSFunctions';
 
-    var templateApps = checkTemplateAppExists(generationUserId); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
-    checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?
-    for (const customer of customers) {
-        for (const templateApp of templateApps) {
-            generateAppForTemplate(templateApp, customer, generationUserId);
+
+//import config for Qlik Sense QRS and Engine API//
+import {
+    qlikHDRServer, // Qlik sense QRS endpoint via header authentication
+    senseConfig,
+    enigmaServerConfig,
+    authHeaders,
+    qrsSrv,
+    qrs,
+    QRSconfig,
+    _SSBIApp,
+    configCerticates,
+    _slideGeneratorAppId
+} from '/imports/api/config.js';
+import {
+    APILogs,
+    REST_Log
+} from '/imports/api/APILogs';
+import lodash from 'lodash';
+_ = lodash;
+
+//
+// ─── INSTALL NPM MODULES ────────────────────────────────────────────────────────
+//
+const path = require('path');
+const fs = require('fs-extra');
+const enigma = require('enigma.js');
+var promise = require('bluebird');
+var request = require('request');
+var sanitize = require("sanitize-filename");
+
+
+//
+// ─── UPLOAD APPS FOR THE INITIAL SETUP OF QLIK SENSE ─────────────────────────
+//
+
+
+// UPLOAD TEMPLATES APPS FROM FOLDER, AND PUBLISH INTO THE TEMPLATES STREAM
+export async function uploadAndPublishTemplateApps() {
+    console.log('------------------------------------');
+    console.log('uploadAndPublishTemplateApps');
+    console.log('------------------------------------');
+    var newFolder = path.join(Meteor.settings.broker.automationBaseFolder, 'apps');
+    console.log('uploadAndPublishTemplateApps: Read all files in the template apps folder "' + newFolder + '" and upload them to Qlik Sense.');
+
+    //GET THE ID OF THE IMPORTANT STREAMS (streams that QRSMeteor needs)
+    var everyOneStreamId = QSStream.getStreamByName(Meteor.settings.broker.qlikSense.EveryoneAppStreamName).id;
+    var templateStreamId = QSStream.getStreamByName(Meteor.settings.public.TemplateAppStreamName).id;
+    var APIAppsStreamID = QSStream.getStreamByName(Meteor.settings.broker.qlikSense.APIAppStreamName).id;
+    try {
+        check(newFolder, String);
+        check(everyOneStreamId, String);
+        check(templateStreamId, String);
+        check(APIAppsStreamID, String);
+    } catch (err) {
+        console.error('You did not specify the templateAppsFrom, everyone, api apps or template stream name in the settings.json file?');
+        throw new Meteor.Error('Missing Settings', 'You did not specify the everone, api apps or template stream name in the settings.json file?');
+    }
+
+    // LOAD ALL SENSE APPS IN FOLDER
+    var appsInFolder = await fs.readdir(newFolder);
+
+    // FOR EACH APP FOUND: PUBLISH IT    
+    return await Promise.all(appsInFolder.map(async(QVF) => {
+        try {
+            //GET THE NAME OF THE APP AND CREATE A FILEPATH
+            var appName = QVF.substr(0, QVF.indexOf('.'));
+            var filePath = path.join(newFolder, QVF);
+
+            //ONLY UPLOAD APPS IF THEY DO NOT ALREADY EXIST
+            if (!getApps(appName).length) {
+                //UPLOAD THE APP, GET THE APP ID BACK
+                var appId = await uploadApp(filePath, appName);
+
+                //BASED ON THE APP WE WANT TO PUBLISH IT INTO A DIFFERENT STREAM                      
+                if (appName === 'SSBI') { //should be published in the everyone stream
+                    _SSBIApp = appId; // for the client side HTML/IFrames etc.                                
+                    publishApp(appId, appName, everyOneStreamId);
+                } else if (appName === 'Sales') { //THIS ONE NEEDS TO BE COPIED AND PUBLISHED INTO 2 STREAMS: AS TEMPLATE AND FOR THE EVERYONE STREAM.
+                    publishApp(appId, appName, everyOneStreamId);
+                    var copiedAppId = copyApp(appId, appName);
+                    publishApp(copiedAppId, appName, templateStreamId);
+                } else if (appName === 'Slide generator') {
+                    _slideGeneratorAppId = appId,
+                        publishApp(appId, appName, APIAppsStreamID);
+                } else {
+                    //Insert into template apps stream
+                    publishApp(appId, appName, templateStreamId);
+                }
+            } else {
+                console.log('App ' + appName + ' already exists in Qlik Sense')
+            };
+        } catch (err) {
+            console.error(err);
+            throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
         }
-    };
+    }))
+}
+>>>>>>> simplify-settings-file
+
+export async function generateStreamAndApp(customers, generationUserId) {
+    console.log('METHOD called: generateStreamAndApp for the template apps as stored in the database of the fictive OEM');
+
+    try {
+        var templateApps = checkTemplateAppExists(generationUserId); //is a template app selected, and does the guid still exist in Sense? if yes, return the valid templates
+        checkCustomersAreSelected(customers); //have we selected a  customer to do the generation for?
+
+        console.log('------------------------------------');
+        console.log('start generation for ', customers);
+        console.log('------------------------------------');
+        for (const customer of customers) {
+            for (const templateApp of templateApps) {
+                await generateAppForTemplate(templateApp, customer, generationUserId);
+            }
+        };
+    } catch (error) {
+        console.error(error);
+    }
+
 };
 
+<<<<<<< HEAD
 function generateAppForTemplate(templateApp, customer, generationUserId) {
+=======
+export function setAppIDs(params) {
+    console.log('------------------------------------');
+    console.log('SET APP IDs');
+    console.log('------------------------------------');
+    try {
+        console.log('check if all settings.json parameters are set...')
+        check(Meteor.settings.public.slideGenerator, {
+            name: String,
+            stream: String,
+            selectionSheet: String,
+            dataObject: String,
+            slideObject: String,
+            virtualProxy: String
+        });
+        check(Meteor.settings.public.SSBI, {
+            name: String,
+            stream: String,
+            sheetId: String
+        });
+    } catch (err) {
+        console.error('Missing parameters in your settings.json file for the SSBI or slidegenerator...', err)
+    }
+
+    try {
+        var slideGeneratorApps = getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream);
+        var SSBIApps = getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream);
+        if (slideGeneratorApps.length > 1) {
+            throw new Error('Can not automatically set the app ID for the slide generator. You have not one but you have multiple slide generator apps under the name ' + Meteor.settings.public.slideGenerator.name + ' in the stream ' + Meteor.settings.public.slideGenerator.stream);
+        }
+        if (SSBIApps.length > 1) {
+            throw new Error('Can not automatically set the app ID for the Self Service BI app. You have not one but you have multiple Self Service apps under the name ' + Meteor.settings.public.SSBI.name + ' in the stream ' + Meteor.settings.public.SSBI.stream);
+        }
+        senseConfig.SSBIApp = SSBIApps[0].id; //
+        console.log('The SSBI app id has been set to ', senseConfig.SSBIApp);
+
+        senseConfig.slideGeneratorAppId = slideGeneratorApps[0].id;
+        console.log('The slide generator app id has been set to ', senseConfig.slideGeneratorAppId);
+        console.log('------------------------------------');
+        console.log('YOU HAVE SUCCESFULLY STARTED QRSMETEOR, WE ARE CONNECTED TO QLIK SENSE');
+        console.log('------------------------------------');
+    } catch (err) {
+        console.error(err)
+        throw new Meteor.Error('The slideGenerator or Self Service BI app can not be found in Qlik sense, or you did not have all parameters set as defined in the the settings.json example file.', err);
+    }
+}
+
+
+async function generateAppForTemplate(templateApp, customer, generationUserId) {
+    console.log('--------------------------GENERATE APPS FOR TEMPLATE');
+>>>>>>> simplify-settings-file
     // console.log(templateApp);
     // console.log('############## START CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name + ' FOR generationUserId: ' + generationUserId);
     const call = {};
@@ -40,7 +213,13 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
     REST_Log(call, generationUserId);
 
     try {
+<<<<<<< HEAD
         var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists    
+=======
+        var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists 
+        var customerDataFolder = await createDirectory(customer.name); //for data like XLS/qvd specific for a customer
+        await createAppConnection('folder', customer.name, customerDataFolder);
+>>>>>>> simplify-settings-file
         var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
         var result = reloadAppAndReplaceScriptviaEngine(newAppId, '', generationUserId);
         var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
@@ -50,9 +229,19 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
         call.action = 'Finished generation for ' + customer.name;
         call.request = templateApp.name + ' has been created and reloaded with data from the ' + customer.name + ' database';
         REST_Log(call, generationUserId);
+<<<<<<< HEAD
         // console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+=======
+        console.log('############## FINISHED CREATING THE TEMPLATE ' + templateApp.name + ' FOR THIS CUSTOMER: ' + customer.name);
+        GeneratedResources.insert({
+            'generationUserId': generationUserId,
+            'customer': customer.name,
+            'streamId': streamId,
+            'appId': newAppId
+        });
+>>>>>>> simplify-settings-file
     } catch (err) {
-        console.error(err);
+        console.error('Failed to generate...', err);
         throw new Meteor.Error('Generation failed', 'The server has an internal error, please check the server command logs');
     }
     GeneratedResources.insert({
@@ -67,6 +256,7 @@ function generateAppForTemplate(templateApp, customer, generationUserId) {
 
 
 //Example to demo that you can also use the Engine API to get all the apps, or reload an app, set the script etc.
+<<<<<<< HEAD
 async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generationUserId) {
     // console.log('server: QSSOCKS reloadAppviaEngine');
 
@@ -81,6 +271,88 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generati
     call.request = 'Connect to Engine (using EnigmaJS) with a new appname parameter when you call global,openDoc: ', engineConfig.appname;
     call.url = gitHubLinks.replaceAndReloadApp;
     REST_Log(call, generationUserId);
+=======
+//source based on loic's work: https://github.com/pouc/qlik-elastic/blob/master/app.js
+async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, customer, customerDataFolder, scriptReplace, generationUserId) {
+    console.log('--------------------------REPLACE SCRIPT AND RELOAD APP');
+
+    //set the app ID to be used in the enigma connection to the engine API
+    var config = Object.assign({}, enigmaServerConfig);
+    config.appId = appId;
+
+    try {
+        process.on('unhandledRejection', up => { //ignore 
+        })
+        check(appId, String);
+        check(customer.name, String);
+        check(customerDataFolder, String);
+        check(generationUserId, String);
+
+        //connect to the engine
+        var qix = await enigma.getService('qix', config);
+        var call = {};
+        call.action = 'Connect to Qlik Sense';
+        call.request = 'Connect to Engine API (using Enigma.js) using an appId: ' + appId;
+        call.url = gitHubLinks.replaceAndReloadApp;
+        REST_Log(call, generationUserId);
+
+        try {
+            //create folder connection 
+            console.log('create folder connection, if you see a warning below that means the connection already existed.');
+            var qConnectionId = await qix.app.createConnection({
+                "qName": customer.name,
+                "qType": "folder",
+                "qConnectionString": customerDataFolder
+            })
+            var call = {};
+            call.action = 'Create data/folder connection';
+            call.url = '';
+            call.request = 'Link to a folder on the server where users can put files/QVD, or create a REST/ODBC/OLEDB... database connection.';
+            call.response = 'created folder connection: ' + qConnectionId;
+            console.log('created folder connection: ', qConnectionId);
+        } catch (error) {
+            console.info('No issue, existing customer so his data folder connection already exists', error);
+        }
+
+        //get the script
+        var script = await qix.app.getScript();
+        var call = {};
+        call.action = 'Get data load script';
+        call.url = gitHubLinks.getScript;
+        call.request = 'We extracted the following load script from the app';
+        call.response = script;
+        REST_Log(call, generationUserId);
+
+        //set the new script
+        var call = {};
+        call.response = await qix.app.setScript(replaceScript(script)) //we now just include the old script in this app
+        call.action = 'Insert customer specific data load script for its database';
+        call.url = gitHubLinks.setScript;
+        call.request = 'The script of the app has been replaced with a customer specific one. Normally you would replace the database connection for each customer. Or you can insert a customer specific script to enable customization per customer. ';
+        REST_Log(call, generationUserId);
+
+        //reload the app
+        var call = {};
+        call.response = await qix.app.doReload()
+        call.action = 'Reload the app';
+        call.url = gitHubLinks.reloadApp;
+        call.request = 'Has the app been reloaded with customer specific data?';
+        REST_Log(call, generationUserId);
+
+        //save the app
+        var call = {};
+        call.action = 'Save app'
+        call.url = gitHubLinks.saveApp;
+        call.request = 'App with GUID ' + appId + ' has been saved to disk';
+        REST_Log(call, generationUserId);
+        await qix.app.doSave();
+
+        REST_Log(call, generationUserId);
+        process.on('unhandledRejection', up => { throw up })
+    } catch (error) {
+        console.error('error in reloadAppAndReplaceScriptviaEngine via Enigma.JS, did you used the correct schema definition in the settings.json file?', error);
+    }
+>>>>>>> simplify-settings-file
 
     //use ES7 await function so this code will run in synchronous mode
     return await qsocks.Connect(engineConfig)
@@ -143,7 +415,76 @@ async function reloadAppAndReplaceScriptviaEngine(appId, scriptReplace, generati
             throw new Meteor.error(error);
         });
 }
+export async function createAppConnections() {
+    console.log('------------------------------------');
+    console.log('create app connections');
+    console.log('------------------------------------');
+    //create the default demo import folder where all the csv and qvf files are...
+    var senseDemoMaterials = path.join(Meteor.absolutePath, 'Sense Demo materials');
+    console.log('senseDemoMaterials', senseDemoMaterials)
+    await createAppConnection('folder', 'Import demo', senseDemoMaterials);
 
+    for (let c of Meteor.settings.broker.dataConnections) {
+        await createAppConnection(c.type, c.name, c.connectionString);
+    }
+}
+
+export async function createAppConnection(type, name, path) {
+
+    //set the app ID to be used in the enigma connection to the engine API
+    var config = Object.assign({}, enigmaServerConfig);
+    config.appId = getApps('sales', 'Everyone')[0].id;
+    console.log('createAppConnection: ' + type + ' ' + name + ' ' + path + ' using the sales app in the everyone stream to create the connection: ' + config.appId);
+    try {
+        check(type, String);
+        check(path, String);
+        check(name, String);
+        check(config.appId, String);
+    } catch (error) {
+        console.error('Missing parameters to create a data connection', error);
+    }
+
+    try {
+        //connect to the engine
+        var qix = await enigma.getService('qix', config);
+
+        //create folder connection 
+        console.log('create folder connection, if you see a warning below that means the connection already existed.');
+
+        var qConnectionId = await qix.app.createConnection({
+            "qName": name,
+            "qType": type,
+            "qConnectionString": path
+        })
+        console.log('created folder connection: ', qConnectionId);
+    } catch (error) {
+        console.error('Failed to create data connection', error);
+    }
+}
+
+function deleteDirectoryAndDataConnection(customerName) {
+    console.log('deleteDirectoryAndDataConnection');
+    //@TODO a bit dangerous, so better to do by hand. Make sure you can't delete root folder... 
+    // https://stackoverflow.com/questions/18052762/remove-directory-which-is-not-empty
+}
+
+async function createDirectory(customerName) {
+    console.log('createDirectory ', customerName)
+    try {
+        check(customerName, String);
+        var filename = sanitize(customerName);
+        const dir = path.join(Meteor.settings.broker.customerDataDir, customerName);
+        console.log('Meteor.settings.broker.customerDataDir', dir)
+        await fs.ensureDir(dir)
+        return dir;
+    } catch (error) {
+        throw new Meteor.Error('Failed to create directory for ', customerName);
+    }
+
+<<<<<<< HEAD
+=======
+}
+>>>>>>> simplify-settings-file
 
 function checkCustomersAreSelected(customers) {
     if (!customers.length) { // = 0
@@ -152,26 +493,97 @@ function checkCustomersAreSelected(customers) {
 };
 
 function checkTemplateAppExists(generationUserId) {
+<<<<<<< HEAD
     //These are the apps that the OEM partner has in his database, but do they still exists on the qliks sense side?
     var templateApps = TemplateApps.find({ 'generationUserId': Meteor.userId() })
-        .fetch();
-    if (templateApps.length === 0) { //user has not specified a template
-        throw new Meteor.Error('No Template', 'user has not specified a template for which apps can be generated');
-    }
+=======
+    console.log('------------------------------------');
+    console.log('checkTemplateAppExists for userID ', generationUserId)
+    console.log('------------------------------------');
 
+    var templateApps = TemplateApps.find({
+            'generationUserId': Meteor.userId()
+        })
+>>>>>>> simplify-settings-file
+        .fetch();
+    return templateApps;
+
+<<<<<<< HEAD
     currentAppsInSense = getApps();
     _.each(templateApps, function(templateApp) {
         var templateFound = _.some(currentAppsInSense, ['id', templateApp.id]);
+=======
+    // console.log('templateApps found: ', templateApps)
+>>>>>>> simplify-settings-file
 
-        if (!templateFound) {
-            throw new Meteor.Error('You have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
-        } else {
-            // console.log('checkTemplateAppExists: True, template guid exist: ', templateApp.id);
-        }
-    })
-    return templateApps;
+    // if (templateApps.length === 0) { //user has not specified a template
+    //     throw new Meteor.Error('No Template', 'user has not specified a template for which apps can be generated');
+    // }
+
+    // currentAppsInSense = getApps();
+    // if (!currentAppsInSense) {
+    //     throw new Meteor.Error('No apps have been received from Qlik Sense. Therefore you have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
+    // }
+
+    // _.each(templateApps, function(templateApp) {
+    //     console.log('templateApp in MongoDB: ', templateApp)
+    //     var templateFound = _.some(currentAppsInSense, ['id', templateApp.id]);
+
+    //     if (!templateFound) {
+    //         console.log('------------------------------------');
+    //         console.log('!! template app exists in mongoDB but not in Qlik Sense');
+    //         console.log('------------------------------------');
+    //         throw new Meteor.Error('You have selected a Qlik Sense App: ' + templateApp.name + ' with guid: ' + templateApp.id + ' which does not exist in Sense anymore. Have you deleted the template in Sense?');
+    //     } else {
+    //         console.log('checkTemplateAppExists: True, template guid exist: ', templateApp.id);
+    //     }
+    // })
+    // return templateApps;
 };
 
+<<<<<<< HEAD
+=======
+//
+// ─── UPLOAD APP ─────────────────────────────────────────────────────────────────
+//
+
+
+async function uploadApp(filePath, appName) {
+    console.log('Upload app: ' + appName + ' from path: ' + filePath + ' via header authentication server: ' + qlikHDRServer);
+    return await new Promise(function(resolve, reject) {
+        var formData = {
+            my_file: fs.createReadStream(filePath)
+        };
+
+        try {
+            request.post({
+                url: qlikHDRServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
+                headers: {
+                    'Content-Type': 'application/vnd.qlik.sense.app',
+                    'hdr-usr': senseConfig.headerValue,
+                    'X-Qlik-xrfkey': senseConfig.xrfkey
+                },
+                formData: formData
+            }, function(error, res, body) {
+                if (!error) {
+                    var appId = JSON.parse(body).id;
+                    console.log('Uploaded "' + appName + '.qvf" to Qlik Sense and got appID: ' + appId);
+                    resolve(appId);
+                } else {
+                    console.error("Failed to upload app" + appName, error);
+                    reject(error);
+                }
+            });
+        } catch (error) {
+            console.error('failed to upload app', error);
+        }
+    });
+}
+//
+// ─── COPYAPP ────────────────────────────────────────────────────────────────────
+//
+
+>>>>>>> simplify-settings-file
 
 export function copyApp(guid, name, generationUserId) {
     check(guid, String);
@@ -184,8 +596,16 @@ export function copyApp(guid, name, generationUserId) {
         call.request = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '/copy'
         call.url = gitHubLinks.copyApp;
         call.response = HTTP.post(call.request, {
+<<<<<<< HEAD
             headers: authHeaders,
             params: { 'xrfkey': senseConfig.xrfkey, "name": name }, //probably a redundant name here...
+=======
+            'npmRequestOptions': configCerticates,
+            params: {
+                'xrfkey': senseConfig.xrfkey,
+                "name": name
+            },
+>>>>>>> simplify-settings-file
             data: {}
         })
         REST_Log(call, generationUserId);
@@ -201,22 +621,29 @@ export function copyApp(guid, name, generationUserId) {
 
 
 function checkStreamStatus(customer, generationUserId) {
+<<<<<<< HEAD
     // console.log('checkStreamStatus for: ' + customer.name);
     var stream = Streams.findOne({ name: customer.name }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
+=======
+    console.log('checkStreamStatus for: ' + customer.name);
+    var stream = Streams.findOne({
+        name: customer.name
+    }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
+>>>>>>> simplify-settings-file
     var streamId = '';
     if (stream) {
-        // console.log('Stream already exists: ', stream.id);
+        console.log('Stream already exists: ', stream.id);
         streamId = stream.id;
     } else {
-        // console.log('No stream for customer exist, so create one: ' + customer.name);
-        streamId = QSStream.createStream(customer.name, generationUserId)
-            .data.id;
-        // console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
+        console.log('No stream for customer exist, so create one: ' + customer.name);
+        streamId = QSStream.createStream(customer.name, generationUserId).id;
+        console.log('Step 1: the (new) stream ID for ' + customer.name + ' is: ', streamId);
     }
 
     return streamId;
 }
 
+<<<<<<< HEAD
 
 export function getAppsViaEngine() {
     // console.log('server: QSSOCKS getApps');
@@ -247,6 +674,37 @@ export function getApps() {
         console.error(err);
         throw new Meteor.Error('getApps failed', err.message);
     }
+=======
+//
+// ─── GETAPPS ────────────────────────────────────────────────────────────────────
+//    
+
+export function getApps(name, stream) {
+    console.log('getApps ' + name + ' with stream: ' + stream);
+    var path = '/qrs/app/full';
+
+    //if a name/stream is provided only search the apps with this name
+    if (name) {
+        path += "?filter=Name eq '" + name + "'"
+        if (stream) {
+            path += " and stream.name eq '" + stream + "'"
+            console.log('getApps(name: ' + name + ' and stream ' + stream + ' via API path: ' + path);
+        }
+    } else {
+        console.log('getApps via API path: ' + path);
+    }
+
+    var call = {
+        action: 'Get list of apps',
+        request: path
+    };
+    // REST_Log(call,generationUserId);
+    try {
+        return qrs.get(call.request);
+    } catch (error) {
+        console.error('Error in getting the apps: we can not connect to Qlik Sense', error);
+    }
+>>>>>>> simplify-settings-file
 };
 
 
@@ -254,10 +712,21 @@ export function deleteApp(guid, generationUserId = 'Not defined') {
     console.log('QRSApp deleteApp: ', guid);
     try {
         const call = {};
+<<<<<<< HEAD
         const result = HTTP.del('http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + guid + '?xrfkey=' + senseConfig.xrfkey, {
                 headers: authHeaders
             })
             // Meteor.call('updateLocalSenseCopy');
+=======
+        call.request = qrsSrv + '/qrs/app/' + guid;
+        call.response = HTTP.del(call.request, {
+            params: {
+                xrfkey: senseConfig.xrfkey
+            },
+            npmRequestOptions: configCerticates,
+            data: {}
+        });
+>>>>>>> simplify-settings-file
 
         //logging only
         call.action = 'Delete app';
@@ -287,6 +756,20 @@ export function publishApp(appGuid, appName, streamId, customerName, generationU
             })
             //logging into database
         const call = {};
+<<<<<<< HEAD
+=======
+        call.request = qrsSrv + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId;
+        call.response = HTTP.put(call.request, {
+            params: {
+                xrfkey: senseConfig.xrfkey
+            },
+            npmRequestOptions: configCerticates,
+            data: {}
+        });
+
+
+        //logging into database
+>>>>>>> simplify-settings-file
         call.action = 'Publish app';
         call.request = 'HTTP.call(put, http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy + '/qrs/app/' + appGuid + '/publish?name=' + appName + '&stream=' + streamId + '&xrfkey=' + senseConfig.xrfkey + ", {headers: {'hdr-usr': " + senseConfig.headerValue, +'X-Qlik-xrfkey:' + senseConfig.xrfkey + '}';
         call.response = result;

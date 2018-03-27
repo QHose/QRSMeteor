@@ -1,14 +1,22 @@
-import { Template } from 'meteor/templating';
-import { Session } from 'meteor/session';
-import { senseConfig as config } from '/imports/api/config';
-import { unsupportedBrowser } from '/imports/ui/layouts/layout';
+import {
+    Template
+} from 'meteor/templating';
+import {
+    Session
+} from 'meteor/session';
+import {
+    senseConfig as config
+} from '/imports/api/config';
+import {
+    unsupportedBrowser
+} from '/imports/ui/layouts/layout';
 import '/imports/ui/UIHelpers';
 
 import './impress.html';
-import './ppt_integration.html';
-import './ppt_integration';
-import './integrationMain.html';
-import './integrationMain';
+import './slidegeneratorSlides.html';
+import './slidegeneratorSlides';
+import './slidegeneratorMain.html';
+import './slidegeneratorMain';
 import './slideSorter.html';
 import './slideSorter';
 
@@ -20,7 +28,7 @@ import './impressJSModifiedSource.js'
 
 var api = {};
 Template.impress.onCreated(function() {
-    if(unsupportedBrowser()) {
+    if (unsupportedBrowser()) {
         console.log('this browser is not supported, so skip the slides');
         Router.go('generation');
     }
@@ -28,7 +36,7 @@ Template.impress.onCreated(function() {
 
 Template.impress.onRendered(function() {
     impressInitialized = Session.get('impressInitialized');
-    if(!impressInitialized) {
+    if (!impressInitialized) {
         // console.log('impress was NOT yet initialized');
         api = impress();
         api.init();

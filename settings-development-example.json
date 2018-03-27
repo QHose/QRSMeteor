@@ -1,6 +1,7 @@
 {
     "adminEmails": "mbj@qlik.com",
     "public": {
+<<<<<<< HEAD
         "host": "integration.qlik.com",
         "proxyPort": 80,
         "port": 443, 
@@ -25,6 +26,32 @@
         "certificatesDirectory": "C:\\Users\\mbj\\Documents\\GitHub\\QRSMeteor",
         "notificationURL": "http://QLIKDEMOSAAS:80/updateSenseInfo",
         "SenseServerInternalLanIP": "integration.qlik.com",        
+=======
+        "qlikSenseHost": "",
+        "SenseServerInternalLanIP": "",
+        "webIntegrationHost": "",
+        "TemplateAppStreamName": "Templates",
+        "qlikSensePort": 81,
+        "proxyPort": 90,
+        "virtualProxyClientUsage": "meteor",
+        "webIntegrationDemoPort": 3030,
+        "SSBI": {
+            "name": "SSBI",
+            "stream": "Everyone",
+            "sheetId": "puEpZK"
+        },
+        "slideGenerator": {
+            "name": "Slide generator",
+            "stream": "API apps",
+            "selectionSheet": "DYTpxv",
+            "dataObject": "pskL",
+            "slideObject": "BbbV",
+            "virtualProxy": "presentationsso"
+        }
+    },
+    "private": {
+        "certificatesDirectory": "",
+>>>>>>> simplify-settings-file
         "useSSL": false,
         "passphrase": null,
         "authentication": "header",
@@ -36,6 +63,7 @@
         "engineHeaders": "UserDirectory=QLIKDEMOSAAS;UserId=qlik",
         "enginePort": 4747,
         "proxyPort": 4243,
+<<<<<<< HEAD
         "google": {
             "clientId": "",
             "secret": ""
@@ -56,5 +84,41 @@
             "clientId": "",
             "secret": ""
         }
+=======
+        "license": {
+            "serial": "232323",
+            "name": "Martijn Biesbroek",
+            "organization": "Qlik"
+        },
+        "LicenseControlNumber": 23334499
+    },
+    "broker": {
+        "customerDataDir": "",
+        "automaticCleanUpGeneratedApps": "Yes",
+        "automationBaseFolder": "",
+        "runInitialQlikSenseSetup": true,
+        "qlikSense": {
+            "installQlikSense": true,
+            "multiTenantScenario": false,
+            "connectToSenseAsUserDirectory": "",
+            "connectToSenseAsUser": "",
+            "proxyAllowHTTP": true,
+            "StreamsToCreateAutomatically": ["API apps", "Templates", "Everyone", "QA", "TEST"],
+            "APIAppStreamName": "API apps",
+            "EveryoneAppStreamName": "Everyone"
+        },
+        "dataConnections": [{
+            "name": "Another folder connection",
+            "type": "folder",
+            "connectionString": "C:\\"
+        }]
+    },
+    "security": {
+        "rulesToDisable": ["Stream", "CreateAppObjectsPublishedApp", "CreateApp", "ExportAppData", "StreamEveryoneAnonymous"]
+    },
+    "PrerenderIO": {
+        "serviceUrl": "http://service.prerender.io/",
+        "token": "yourtoken"
+>>>>>>> simplify-settings-file
     }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <template name="regionLayout">
     <div class="ui relaxed very padded stackable grid">
         <!--  <div class="one wide column">
@@ -16,3 +17,23 @@
 <template name="oneColumnCenteredLayout">
 {{> yield }}
 </template>
+=======
+<template name="mainLandingPage">
+    <div class="ui container ">
+        {{> nav }} {{> sAlert}} {{> yield }}
+
+    </div>
+    {{> footer }}
+</template>
+
+
+<template name="regionLayout">{{>yield "nav"}} {{> sAlert}}
+    <div class="ui relaxed very padded stackable grid">
+
+
+        <div class="five wide column">{{> yield "aside"}}</div>
+        <div class="eleven wide column">{{> yield}}</div>
+
+
+    </div>{{>footer}}</template>
+>>>>>>> simplify-settings-file

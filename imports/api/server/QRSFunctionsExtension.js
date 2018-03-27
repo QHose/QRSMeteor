@@ -16,7 +16,7 @@ import {
     QRSconfig,
     _SSBIApp,
     configCerticates,
-    _IntegrationPresentationApp
+    _slideGeneratorAppId
 } from '/imports/api/config.js';
 
 //
@@ -26,11 +26,8 @@ import {
 const fs = require('fs-extra');
 const path = require('path');
 const enigma = require('enigma.js');
-var QRS = require('qrs');
 var promise = require('bluebird');
 var request = require('request');
-
-
 var qrs = new myQRS();
 
 // export async function automaticUploadExtensions() {

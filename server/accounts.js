@@ -85,3 +85,7 @@ if (!numberOfUsers) {
     console.log('user created with id: ', id);
     Roles.addUsersToRoles(id, 'admin', Roles.GLOBAL_GROUP);
 }
+
+//enable anon access: https://atmospherejs.com/artwells/accounts-guest
+AccountsGuest.enabled = true;
+AccountsGuest.anonymous = true;

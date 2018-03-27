@@ -1,30 +1,60 @@
-import { Template } from 'meteor/templating';
-import { Customers, dummyCustomers } from '/imports/api/customers';
-import { Session } from 'meteor/session';
-import { senseConfig as config } from '/imports/api/config';
+import {
+    Template
+} from 'meteor/templating';
+import {
+    Customers,
+    dummyCustomers
+} from '/imports/api/customers';
+import {
+    Session
+} from 'meteor/session';
+import {
+    senseConfig
+} from '/imports/api/config';
 import '/imports/ui/UIHelpers';
 import _ from 'meteor/underscore';
-import { insertTemplateAndDummyCustomers } from '/imports/ui/generation/OEMPartnerSide/OEMPartner';
+import {
+    insertTemplateAndDummyCustomers
+} from '/imports/ui/generation/OEMPartnerSide/OEMPartner';
 
 import './SSBI.html';
 
+<<<<<<< HEAD
 const server = 'http://' + config.host + ':' + config.port + '/' + config.virtualProxyClientUsage;
 const QMCUrl = server + '/qmc';
 const hubUrl = server + '/hub';
 const sheetUrl = server + '/sense/app/' + Meteor.settings.public.SSBIApp;
 const appUrl = server + '/sense/app/' + Meteor.settings.public.SSBIAppSheetString;
 
+=======
+var server, QMCUrl, hubUrl, sheetUrl, appUrl = '';
+>>>>>>> simplify-settings-file
 
 Template.SSBISenseApp.helpers({
     show() {
         // console.log('SSBISenseApp helper, show iframe?: ', showIFrame());
-        return showIFrame();
+        return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
     }
 });
 
-function showIFrame() {
-    return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
-}
+
+
+Template.SSBIUsers.onCreated(function() {
+    Session.set('loadingIndicator', '');
+    Session.set('currentUser', null);
+    console.log('------------------------------------');
+    console.log('SSBISenseIFrame created');
+    console.log('------------------------------------');
+    server = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.slideGenerator.virtualProxy;
+    console.log('server', server)
+    QMCUrl = server + '/qmc';
+    hubUrl = server + '/hub';
+    sheetUrl = server + '/sense/app/' + Session.get('SSBIAppId');
+    console.log('sheetUrl', sheetUrl)
+    appUrl = server + "/sense/app/" + Session.get('SSBIAppId') + "/sheet/" + Meteor.settings.public.SSBI.sheetId + "/state/analysis";
+    console.log('SSBIApp URL', appUrl);
+
+})
 
 Template.SSBISenseIFrame.onRendered(function() {
     this.$('.IFrameSense')
@@ -34,7 +64,7 @@ Template.SSBISenseIFrame.onRendered(function() {
 Template.SSBISenseIFrame.helpers({
     appURL() {
         // console.log('SSBISenseIFrame helper: de app url is: ', Session.get('appUrl'));
-        return Session.get('appUrl');
+        return Session.get('IFrameUrl');
     },
 });
 
@@ -54,35 +84,74 @@ Template.SSBIUsers.helpers({
 
 Template.SSBIUsers.events({
     'click .consumer' () {
-        login('John');
+        var passport = {
+            'UserDirectory': Meteor.userId(),
+            'UserId': 'John',
+            'Attributes': [{
+                    'group': 'CONSUMER'
+                },
+                {
+                    'group': 'GERMANY'
+                },
+            ],
+        };
+        login(passport);
     },
     'click .contributor' () {
-        login('Linda');
+        var passport = {
+            'UserDirectory': Meteor.userId(),
+            'UserId': 'Linda',
+            'Attributes': [{
+                    'group': 'CONTRIBUTOR'
+                },
+                {
+                    'group': 'UNITED STATES'
+                },
+            ],
+        };
+        login(passport)
     },
     'click .developer' () {
-        login('Martin');
+        var passport = {
+            'UserDirectory': Meteor.userId(),
+            'UserId': 'Martin',
+            'Attributes': [{
+                'group': 'DEVELOPER'
+            }],
+        };
+        login(passport);
     },
-    'click .admin' () {
-        login('Paul');
+    'click .admin' (e, t) {
+        var passport = {
+            'UserDirectory': Meteor.userId(),
+            'UserId': 'Paul',
+            'Attributes': [{
+                    'group': 'ADMIN'
+                },
+                {
+                    'group': 'ITALY'
+                },
+            ],
+        };
+        login(passport);
     },
     'click .selfservice ' () {
         $('.ui.modal.SSBI')
             .modal('show')
             .modal('refresh')
             .modal('refresh');
-
     },
     'click .button.hub ' () {
-        refreshIframe(hubUrl);
+        Session.set('IFrameUrl', hubUrl);
     },
     'click .button.sheet ' () {
-        refreshIframe(sheetUrl);
+        Session.set('IFrameUrl', sheetUrl);
     },
     'click .button.app ' () {
-        refreshIframe(appUrl);
+        Session.set('IFrameUrl', appUrl);
     },
     'click .button.QMC ' () {
-        refreshIframe(QMCUrl);
+        Session.set('IFrameUrl', QMCUrl);
     }
 });
 
@@ -108,18 +177,17 @@ Template.senseButtons.onRendered(function() {
         .transition('swing up');
 })
 
-// Template.senseButtons.onRendered(function() {
-//     this.$('.SenseIframe')
-//         .transition('scale in');
-// })
-
-function login(user) {
-    // console.log('login ', user, Meteor.userId());
+async function login(passport) {
     try {
-        Session.set('loadingIndicator', 'loading');
-        Session.set('currentUser', user);
+        //logout the current user in the browser via a server side call
+        // var currentUser = getCurrentUserLoggedInSense()
+        // console.log('currentUser', currentUser)
+        Meteor.call('logoutPresentationUser', Meteor.userId(), Session.get('currentUser'));
 
+        Session.set('currentUser', passport.UserId);
+        //update the user collection for the saas provisioning demo, to keep in sync... 
         var URLtoOpen = Session.get('appUrl');
+<<<<<<< HEAD
         console.log('login: the url to open from session is: ', URLtoOpen);
             Meteor.call('simulateUserLogin', user, (error, result) => {
                 if (error) {
@@ -145,3 +213,34 @@ function login(user) {
         console.log('function refresh Iframe,  url', URLtoOpen);
         Session.set('loadingIndicator', '');
     };
+=======
+        var ticket = await Meteor.callPromise('requestTicketWithPassport', Meteor.settings.public.slideGenerator.virtualProxy, passport);
+        console.log('------------------------------------');
+        console.log('requesting requestTicketWithPassport at virtual proxy: ' + Meteor.settings.public.slideGenerator.virtualProxy + ' with passport: ' + passport);
+        console.log('------------------------------------');
+        URLtoOpen += '?QlikTicket=' + ticket;
+        console.log('login: the url to open is: ', URLtoOpen);
+
+        // getCurrentUserLoggedInSense();
+        sAlert.success(passport.UserId + ' is now logged in into Qlik Sense');
+        Session.set('IFrameUrl', URLtoOpen);
+        // $('.SSBI .image.' + passport.UserId).css('background', '#62AC1E');
+    } catch (err) {
+        console.error(err);
+        sAlert.error('Login error', err.message);
+    }
+};
+
+
+async function getCurrentUserLoggedInSense() {
+    try {
+        const RESTCALL = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.slideGenerator.virtualProxy + '/qps/user';
+        console.log('REST call to logout the user: ', RESTCALL)
+        var result = await HTTP.getPromise(RESTCALL)
+        console.log('current user in Sense', result);
+    } catch (err) {
+        console.error(err);
+        sAlert.Error('Failed to get the user via the personal API', err.message);
+    }
+}
+>>>>>>> simplify-settings-file

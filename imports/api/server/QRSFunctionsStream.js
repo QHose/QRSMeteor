@@ -7,7 +7,40 @@ import { gitHubLinks } from '/imports/ui/UIHelpers';
 import { senseConfig, engineConfig, certs, authHeaders } from '/imports/api/config.js';
 import { REST_Log } from '/imports/api/APILogs';
 
+<<<<<<< HEAD
 //STREAM FUNCTIONS
+=======
+const qlikServer = 'http://' + senseConfig.SenseServerInternalLanIP + ':' + senseConfig.port + '/' + senseConfig.virtualProxy;
+
+
+//
+// ─── CREATE STREAMS FOR THE INITIAL SETUP OF QLIK SENSE ─────────────────────────
+//
+
+
+export function initSenseStreams() {
+    console.log('------------------------------------');
+    console.log('Create initial streams');
+    console.log('------------------------------------');
+
+    for (const streamName of Meteor.settings.broker.qlikSense.StreamsToCreateAutomatically) {
+        try {
+            console.log('Try to create stream: ' + streamName + ' if it not already exists');
+            if (!getStreamByName(streamName)) {
+                createStream(streamName)
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
+
+//
+// ─── GENERIC STREAM FUNCTIONS ───────────────────────────────────────────────────
+//
+
+
+>>>>>>> simplify-settings-file
 export function deleteStream(guid, generationUserId) {
     console.log('deleteStream: ', guid)
     try {
@@ -27,7 +60,39 @@ export function deleteStream(guid, generationUserId) {
     }
 };
 
+<<<<<<< HEAD
 export function getStreams() {    
+=======
+
+//
+// ─── GET STREAM BY NAME ────────────────────────────────────────────────────────────
+//
+
+
+export function getStreamByName(name) {
+    try {
+        var request = qrsSrv + "/qrs/stream/full?filter=Name eq '" + name + "'";
+        console.log('getStreamByName request', request)
+        var response = HTTP.get(request, {
+            params: { xrfkey: senseConfig.xrfkey },
+            npmRequestOptions: configCerticates,
+            data: {}
+        });
+
+        return response.data[0];
+    } catch (err) {
+        console.error(err);
+        throw Error('get streamByName failed', err.message);
+    }
+}
+
+//
+// ─── GET STREAMS ─────────────────────────────────────────────────────────────────
+//
+
+
+export function getStreams() {
+>>>>>>> simplify-settings-file
     try {
         const call = {};
         call.action = 'Get list of streams'; 
@@ -47,6 +112,7 @@ export function getStreams() {
 
 
 export function createStream(name, generationUserId) {
+<<<<<<< HEAD
     // console.log('QRS sync Functions Stream, create the stream with name', name);
 
     try {     
@@ -63,6 +129,26 @@ export function createStream(name, generationUserId) {
         call.request = "HTTP.post('http://' + senseConfig.SenseServerInternalLanIP +':' + senseConfig.port + '/'+ senseConfig.virtualProxy + '/qrs/stream', { headers: "+JSON.stringify(authHeaders)+ ", params: { 'xrfkey': "+senseConfig.xrfkey +"}, data: { name: " + name +"}}) --> USE OF HEADER AUTH ONLY FOR DEMO/REVERSE PROXY PURPOSES"; 
         call.response = result;
         REST_Log(call, generationUserId);        
+=======
+    console.log('QRS Functions Stream, create the stream with name', name);
+
+
+    try {
+        check(name, String);
+        var response = qrs.post('/qrs/stream', null, { name: name });
+
+        // Meteor.call('updateLocalSenseCopy');
+        //logging
+        const call = {
+            action: 'Create stream',
+            url: gitHubLinks.createStream,
+            request: "HTTP.post(qlikServer + '/qrs/stream', { headers: " + JSON.stringify(authHeaders) + ", params: { 'xrfkey': " + senseConfig.xrfkey + "}, data: { name: " + name + "}}) --> USE OF HEADER AUTH ONLY FOR DEMO/REVERSE PROXY PURPOSES",
+            response: response
+        };
+
+        REST_Log(call, generationUserId);
+        console.log('Create stream call.response;', call.response)
+>>>>>>> simplify-settings-file
         return call.response;
     } catch (err) {
         console.error(err);

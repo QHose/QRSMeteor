@@ -3,7 +3,20 @@ import { Apps, TemplateApps, GeneratedResources } from '/imports/api/apps';
 import { Streams } from '/imports/api/streams';
 import { Customers } from '/imports/api/customers';
 import { APILogs } from '/imports/api/APILogs';
+import { Logger, SenseSelections } from '/imports/api/logger';
 import moment from 'moment';
+
+
+
+Meteor.publish('Logger', function() {
+    return Logger.find();
+    this.ready();
+});
+
+// Meteor.publish('SenseSelections', function() {
+//     return SenseSelections.find({ 'userId': this.userId });
+//     this.ready();
+// });
 
 //only fill the local mongoDB that runs in the browser with data that belongs to the user...
 //https://www.meteor.com/tutorials/blaze/publish-and-subscribe
@@ -72,7 +85,7 @@ Meteor.publish('apiLogs', function() {
 
     const selector = {
         sort: { createDate: -1 },
-        limit: 30
+        limit: 15
     }
 
     return APILogs.find({ 'generationUserId': this.userId }, selector);

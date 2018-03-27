@@ -1,7 +1,7 @@
 <template name="landingPage">
     <div class="ui container">
         {{#if userSelectedGroup}}
-            {{#if authenticatedSlideGenerator}}
+            {{#if userLoggedInSense}}
                 {{>slideGeneratorSelectionScreen}}
             {{else}}
                 {{> presentationDimmer}}
@@ -12,7 +12,7 @@
 </template>
 
 <template name="slideGeneratorSelectionScreen">
-    <div class="screen">
+    <div class="screen mainContainerContent"  >
         <h2 class="ui header">
             <img src="/images/API tool broker.png">
             <div class="content">

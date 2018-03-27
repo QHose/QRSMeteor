@@ -1,0 +1,52 @@
+version: "2"
+services: 
+    lb:
+        image: dockercloud/haproxy
+        links:
+        - qrs
+        - web
+        volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        restart: always
+        ports:
+        -  "80:80"
+        depends_on:
+        - qrs
+        - web
+    mongodb:
+        image: mongo
+        container_name: "mongodb"
+    qrs:
+        image: qhose/qrsmeteor:20171017-2246
+        environment:
+            - MONGO_URL=mongodb://mongodb:27017/
+            - VIRTUAL_HOST=qrs.integration.qlik.com
+            - PORT=3000 
+            - ROOT_URL=http://qrs.integration.qlik.com
+        volumes:
+         - .:/meteorQRS/config
+        ports:
+        -  "3000"
+        # restart: no
+        links:
+        - mongodb
+        depends_on:
+        - mongodb
+    web:
+        image: qhose/sensewebintegration:20171017-2348
+        environment:
+            - VIRTUAL_HOST=web.integration.qlik.com
+            - MONGO_URL=mongodb://mongodb:27017/
+            - PORT=3030 
+            - ROOT_URL=http://web.integration.qlik.com
+        volumes:
+         - /home/ubuntu/senseWeb:/senseWebIntegration/config
+        ports:
+        -  "3030"
+        restart: always
+        links:
+        - mongodb
+        depends_on:
+        - mongodb
+networks:
+    default:

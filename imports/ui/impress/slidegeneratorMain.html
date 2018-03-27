@@ -1,0 +1,21 @@
+<template name="slidegeneratorSlidesMain">
+    <!-- <div class="ui very wide sidebar integration">
+        <iframe id="IFrameURLChapterSelection" src='{{IFrameURLChapterSelection}}' class="selector"> </iframe>
+    </div>
+    <div class="pusher">
+        <div class="ui black launch right attached fixed button" style="background-color: #545454; padding-left:20px">
+            <i class="content icon"></i>
+            <span class="text"></span>
+        </div> -->
+        {{> termsOfUsage}}
+        <!-- <iframe allowfullscreen src="{{pathFor 'slidegeneratorSlides'}}" class="frame"></iframe> -->
+        {{> slidegeneratorSlides}}
+
+    <!-- </div> -->
+</template>
+<template name="termsOfUsage">
+    <div style="position: absolute; bottom: 0px; right: 0px;">
+        <a style="rgba(0, 0, 0, 0.87);" href="{{pathFor 'legal'}}">Terms of usage</a>
+    </div>
+
+</template>

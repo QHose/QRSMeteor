@@ -32,14 +32,14 @@ Template.securityRules.helpers({
 Template.securityRules.events({
     'click .selfservice ' () {
         $('.ui.modal.SSBI')
-        .modal('show');
+            .modal('show');
     }
 })
 
 Template.securityRules.onRendered(function() {
     console.log('Get the system rules from Sense');
     this.$('.dimmer')
-    .dimmer('show');
+        .dimmer('show');
 
     Meteor.call('getSecurityRules', (error, result) => {
         if (error) {
@@ -47,9 +47,10 @@ Template.securityRules.onRendered(function() {
             Session.set('loadingIndicator', '');
         } else {
             Session.set('securityRules', result);
+            console.log('result', result)
         }
         $('.dimmer')
-        .dimmer('hide');
+            .dimmer('hide');
     });
     var inputBox = this.$('.reactive-table-input.form-control');
     inputBox.val('Z_');

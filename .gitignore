@@ -1,15 +1,29 @@
 settings-development.json
 settings-production.json
+<<<<<<< HEAD
 .build
+=======
+*.QVX
+.build/
+settings.json
+*.txt
+>>>>>>> simplify-settings-file
 *.cert
 *.pem
-node_modules/
 customerData/
 .vscode/typings/meteor.d.ts
 *.sublime-workspace
 public/docs/~$ik Sense SaaS demo tool setup instructions.docx
 *.bak
 
-automation/ExtractedvirtualProxyDefinitions.json
-automation/ExtractedvirtualProxyDefinitions.json
-automation/ExtractedvirtualProxyDefinitions.json
+.automation/virtualProxyServiceConfiguration.json
+.automation/proxy/export/virtualProxyServiceConfiguration.json
+.automation/securityrules/export/ExtractedSystemRules.json
+.automation/proxy/export/virtualProxyServiceConfiguration.json
+.automation/InstallationSoftware/Qlik_Sense_setup.exe
+.automation/InstallationSoftware/spc.cfg
+.automation/securityrules/export/ExtractedSystemRules.json
+.automation/proxy/export/proxyServiceConfiguration.json
+.automation/customProperties/export/ExtractedCustomProperties.json
+package-lock.json
+Sense Demo materials/SlideGenerator/~$presentation master data.xlsx

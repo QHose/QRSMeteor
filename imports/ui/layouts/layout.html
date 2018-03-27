@@ -1,32 +1,75 @@
+<template name="layout">
+    {{> containerlayout}}
+</template>
+
+<template name="presentationLayout">
+    {{> nav}} {{#if unsupportedBrowser}} {{> unsupportedBrowser}} {{else}}
+    <div class="presentationContainer" style="margin-top: 40px;">
+
+        {{> yield}}
+        <!-- {{> keepSenseConnectionOpen}} -->
+    </div>
+    {{/if}}
+</template>
+
+<!-- FAKE IFRAME TO KEEP THE CONNECTION TO QLIK SENSE OPEN WHILE WE CONNECT TO ANOTHER PAGE -->
+<template name="keepSenseConnectionOpen">
+    {{#if groupSelectedSlideGenerator}}
+    <iframe src="{{IFrameURLChapterSelection}}" style="width:0;height:0;border:0; border:none;visibility:hidden;display:none"
+        seamless="seamless"></iframe>
+    {{/if}}
+</template>
+
+
 <template name="SSOLayout">
     {{> sAlert}} {{> yield}}
+<<<<<<< HEAD
+=======
+    <!-- {{> footer}} -->
 </template>
-<template name="layout">
-    <div class="ui relaxed very padded stackable grid">
-        <div class="one wide column">
-        </div>
-        <div class="fourteen wide column">
-            {{> nav}} {{> modals}} {{> sAlert}}
-            <!-- {{#if currentUser}} --><!-- also removes option to login via the menu --> 
-                {{> yield}}
-           <!--  {{else}}
-                {{> loginDimmer}} -->
-            <!-- {{/if}} -->
-        </div>
-        <div class="one wide column">
+
+<template name="ImpressLayout">
+    {{> nav}} {{> sAlert}} {{> yield}} {{> footer}}
+</template>
+
+<template name="slidelayout">
+    <div class="wrap" style="position:absolute; top:100px;">
+        {{> nav}}
+        <div class="ui container">
+            {{> sAlert}} {{> modals}} {{> yield}}
         </div>
     </div>
-    {{> footer}}
+    <!-- {{> footer}} -->
+>>>>>>> simplify-settings-file
 </template>
-<template name="loginDimmer">
-    <div class="ui container" style="height: 500px;">
-        <div class="ui inverted dimmer">
-            <div class="content">
-                <div class="center">
-                    <div class="ui indeterminate text loader">Please wait while we log you in via your Qlik.com account...</div>
+
+<template name="emptyLayout">
+    {{> slideSelectionSheet}} {{> nav}} {{> sAlert}} {{> yield}}
+</template>
+
+<template name="emptyContainerLayout">
+    <div class="ui container"> {{ sAlert}} {{> yield}} </div>
+</template>
+
+<template name="slideSelectionSheet">
+    <!-- <div id="myModal" class="modal" role="dialog">
+        <div class="modal-dialog" style="width: 90%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Select the content to be presented</h4>
+                </div>
+                <div class="modal-body">
+                    <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: calc(100vh - 250px); border: none;">
+                    </iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
+
         </div>
+<<<<<<< HEAD
     </div>
 </template>
 <template name="layoutDocumentation">
@@ -35,10 +78,23 @@
         </div>
         <div class="fourteen wide column">
             {{> nav}} {{> modals}} {{> sAlert}} {{> yield}}
+=======
+    </div> -->
+    <div id="sheetSelector" class="ui fullscreen modal sheetSelector">
+        <i class="close icon"></i>
+        <div class="header">
+            Where would you like to learn more about?
         </div>
-        <div class="one wide column">
+        <div class="image content">
+            <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; min-height: 400px ;height: calc(100vh - 350px); border: none;">
+            </iframe>
+>>>>>>> simplify-settings-file
+        </div>
+        <div class="actions">
+            <div class="ui positive button">Start presentation</div>
         </div>
     </div>
+<<<<<<< HEAD
     {{> footer}}
 </template>
 
@@ -47,6 +103,68 @@
         <div class="column">
             <div class="ui divider"></div>
             Integration approach, demo site, documentation and videos created by Martijn Biesbroek & Raymond Neves. Review by Catherine Frye, QVF design by Patrick Tehubijuluw. Voice-over Stephen Jasionowski. See the terms of usage of this site <a href="{{pathFor 'legal'}}">here</a>.
+=======
+</template>
+<template name="containerlayout">
+    <div class="wrap" style="margin-top: 50px">
+        {{> nav}}
+        <div class="ui container">
+            {{> sAlert}} {{> modals}} {{> yield}}
+        </div>
+    </div>
+    {{> footer}}
+</template>
+
+<template name="footer">
+    <div class="footer">
+        <div class="ui center aligned container">
+            <div class="ui grid">
+                <div class="three wide column">
+                    <img class="ui left floating image image" src="./images/qlik_logo.svg" style="height: 100px; padding-top: 30px;">
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui  header">Technical</h4>
+                    <div class="ui  link list">
+                        <a class="item" href="/apilogstable" target="_blank">API calls</a>
+                        {{#if slideShowActive}}
+                        <a href="/useCaseSelection?selection={{permaLinkSelectionId}}" class="item permaLinkSelection">Link to selection</a>
+                        <!-- <a class="item permaLinkSlide">Link to slide</a> -->
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui  header">How to...</h4>
+                    <div class="ui  link list">
+                        <a href="https://www.youtube.com/channel/UCmPMsqh1UvXhQTcAhPMEjpA/videos" target="_blank" class="item">How to videos</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui header">More Qlik</h4>
+                    <div class="ui link list">
+                        <a class="item" href="http://oem.qlik.com" target="_blank">OEM</a>
+                        <a class="item" href="http://branch.qlik.com" target="_blank">Branch</a>
+                        <a class="item" href="legal" target="_blank">Terms of use</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <!-- <h4 class="ui inverted header">Footer Header</h4>
+                <p>Extra space for a call to action inside the footer that could help re-engage users.</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
+
+<template name="loginDimmer">
+    <div class="ui container" style="height: 500px;">
+        <div class="ui inverted dimmer">
+            <div class="content">
+                <div class="center">
+                    <div class="ui indeterminate text loader">Please wait while we log you in via your Qlik.com account...</div>
+                </div>
+            </div>
+>>>>>>> simplify-settings-file
         </div>
     </div>
 </template>
@@ -62,7 +180,8 @@
                 <div class="header">
                     <h4>Example layered approach to the self service functionality</h4>
                 </div>
-                <p>Example process which you can implement by using a mix between the authorizations from your SaaS platform and the Qlik Sense security rules.</p>
+                <p>Example process which you can implement by using a mix between the authorizations from your SaaS platform
+                    and the Qlik Sense security rules.</p>
             </div>
         </div>
         <img class="ui fluid image" src="/images/SelfServiceBI.png">
@@ -112,12 +231,14 @@
                 <div class="header">
                     <h4>What are the key concepts of SaaS provisioning using Qlik Sense?</h4>
                 </div>
-                <p>This video highlights the concepts of SaaS provisioning. In will explain you the concept of template apps, the broker, and that we will create a copy of the template for each of your customers.</p>
+                <p>This video highlights the concepts of SaaS provisioning. In will explain you the concept of template apps,
+                    the broker, and that we will create a copy of the template for each of your customers.</p>
             </div>
         </div>
         <div class="ui one column centered grid">
             <div class="column centered">
-                <iframe width="854" height="480" src="{{URL_Youtube_concept_behind}}" frameborder="0" allowfullscreen></iframe>
+                <div class="ui embed" data-url="{{URL_Youtube_concept_behind}}"></div>
+                <!--<iframe width="854" height="480" src="{{URL_Youtube_concept_behind}}" frameborder="0" allowfullscreen></iframe>-->
             </div>
         </div>
         <div class="actions">

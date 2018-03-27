@@ -1,8 +1,18 @@
     // import meteor collections
-    import { Apps, TemplateApps } from '/imports/api/apps';
-    import { Streams } from '/imports/api/streams';
-    import { Customers } from '/imports/api/customers';
-    import { senseConfig } from '/imports/api/config';
+    import {
+        Apps,
+        TemplateApps
+    } from '/imports/api/apps';
+    import {
+        Streams
+    } from '/imports/api/streams';
+    import {
+        Customers
+    } from '/imports/api/customers';
+    import {
+        senseConfig
+    } from '/imports/api/config';
+
 
     export var gitHubLinks = {
         createStream: 'https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsStream.js#L53',
@@ -20,7 +30,13 @@
         reloadApp: "https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L119",
     };
 
+<<<<<<< HEAD
     if(Meteor.isClient) {
+=======
+    if (Meteor.isClient) {
+        var Cookies = require('js-cookie');
+
+>>>>>>> simplify-settings-file
         // console.log('Setup generic helper functions, for functions every template needs');
         Template.registerHelper('formatDate', function(date) {
             return moment(date)
@@ -162,23 +178,41 @@
         });
 
         //Integration presentation Iframe selector
+<<<<<<< HEAD
         var appId = Meteor.settings.public.IntegrationPresentationApp;
         var IntegrationPresentationSelectionSheet = Meteor.settings.public.IntegrationPresentationSelectionSheet; //'DYTpxv'; selection sheet of the slide generator
         var proxy = Meteor.settings.public.IntegrationPresentationProxy;
+=======
+>>>>>>> simplify-settings-file
         Template.registerHelper('IFrameURLChapterSelection', function() {
+            var appId = Cookies.get('slideGeneratorAppId'); //senseConfig.slideGeneratorAppId;
+            var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
+            var proxy = Meteor.settings.public.slideGenerator.virtualProxy;
             return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';
         });
 
+<<<<<<< HEAD
         Template.registerHelper('authenticatedSlideGenerator', function() {
             return Session.get('authenticatedSlideGenerator');
         });
         
+=======
+        // Template.registerHelper('authenticatedSlideGenerator', function() {
+        //     return Session.get('authenticatedSlideGenerator');
+        // });
+
+>>>>>>> simplify-settings-file
         Template.registerHelper('shrinkForSlideSorter', function() {
             return Cookies.get('showSlideSorter') === "true" ? "shrink" : "";//
         });
 
-        Template.registerHelper('userSelectedPresentationType', function() {
+        Template.registerHelper('groupSelectedSlideGenerator', function() {
             return Session.get('groupForPresentation'); //user selected a presentation type?
+        });
+
+        //role that defines your role in the whole integration.qlik.com site, based on this we make selections in the slide generator.
+        Template.registerHelper('mainUserRole', function() {
+            return Cookies.get('currentMainRole');
         });
 
         Template.registerHelper('isSelected', function() {
@@ -204,7 +238,11 @@
 
         //generic helpers to return the collection to the blaze template
         Template.registerHelper('customersCollection', function() {
-            return Customers.find({}, { sort: { checked: -1 } });
+            return Customers.find({}, {
+                sort: {
+                    checked: -1
+                }
+            });
         });
 
         Template.registerHelper('templateAppsCollection', function() {
