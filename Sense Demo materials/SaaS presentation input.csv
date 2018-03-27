@@ -1,22 +1,26 @@
 ﻿"Level 1","Level 2","Level 3","Level 4","Priority","Progress","Start","Due","Duration (Days)","Milestone","Resources",
-"Workshop Introduction","Legal disclaimer","legal disclaimer.png",,"","","","","         0","0","Technical - 1 day",
+"Workshop Introduction","Legal disclaimer","legal disclaimer.png",,"","","","","         0","0","SaaS & Power of APIs, Technical - 1 day",
 "Workshop Introduction","Legal disclaimer","#### [Terms of usage](http://integration.qlik.com/legal)",,"","","","","         0","0","Technical - 1 day",
+"Workshop Introduction","Introduction Martijn & Raymond","speaker introduction martijn raymond.png",,,,,,,,,
+"Workshop Introduction","Introduction Martijn & Raymond","!comment
+This workshop has been created by Raymond Neves and Martijn Biesbroek.
+",,,,,,,,,
 "Workshop Introduction","Introduction","Who are you?",,"","","","","         0","0","Technical - 1 day",
 "Workshop Introduction","Introduction","Qlik Sense experience level?",,"","","","","         0","0","Technical - 1 day",
 "Workshop Introduction","Introduction","Worked with APIs before?",,"","","","","         0","0","Technical - 1 day",
 "Workshop Introduction","Introduction","What do you expect from this session?",,"","","","","         0","0","Technical - 1 day",
 "Workshop Introduction","Introduction Qlik and the slide generator","> At Qlik, we’re committed to making it easier for people to make discoveries in their data and act on them. We want to enhance everyone’s natural ability to ask questions, analyze data, and make decisions. And that helps make analyzing data a natural part of making decisions and creating value. This slide generator is a perfect example of using data in your own way. Just search, learn and discover",,"","","","","         0","0","Technical - 1 hour",
-"Workshop Introduction","1 minute integration demo video","https://youtu.be/W3gDKdv6K8Y",,"","","","","         0","0","Introduction - 30 minutes, CTO",
-"Workshop Introduction","Video: Introduction and history of this demo platform","https://youtu.be/K-zfD_vAPso?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,,,,,,,,
-"Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine","> We have used the APIs to get the data out of our engine and used it to create this website...",,"","","","","         0","0","Introduction - 30 minutes, What is this slide generator?",
-"Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine"," <img class=""ui large centered image"" src=""images/Engine API slide generator easy flow.png"">",,"","","","","         0","0","What is this slide generator?",
+"Workshop Introduction","1 minute integration demo video","https://youtu.be/W3gDKdv6K8Y",,"","","","","         0","0","Demo with integration.qlik.com, Introduction - 30 minutes, SaaS & Power of APIs, CTO",
+"Workshop Introduction","Video: Introduction and history of this demo platform","https://youtu.be/K-zfD_vAPso?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Demo with integration.qlik.com",
+"Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine","> We have used the APIs to get the data out of our engine and used it to create this website...",,"","","","","         0","0","Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs",
+"Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine"," <img class=""ui large centered image"" src=""images/Engine API slide generator easy flow.png"">",,"","","","","         0","0","What is this slide generator?, SaaS & Power of APIs",
 "Workshop Introduction","This is a presentation based on data from the Qlik Sense Engine","!comment
-Now Imagine this:You need to give a presentation to a group of people. You have prepared your deck, but at the presentation you notice that some slides are too technical for some people. Also some topics were not relevant, so these slides are not shown either and maybe you forgot to have slides over a certain topic.With Qlik Sense and this slide generator we have shown the power of Qlik .
-When you start the slide generator , you select what level you are. After that you use the power of Qlik Sense associative model to choose your topics. After you have chosen what you want to see, we make a request to Qlik Sense. Qlik Sense dynamically gives us the requested data and the slides are generated on the fly, with the right content.
+Now imagine this: You need to give a presentation to a group of people. You have prepared your deck, but at the presentation you notice that some slides are too technical for some people. Also some topics were not relevant, so these slides are not shown either and maybe you forgot to have slides over a certain topic. With Qlik Sense and this slide generator we have shown the power of Qlik .
+When you start the slide generator, you select what level you are. After that you use the power of Qlik Sense associative model to choose your topics.  After you have chosen what you want to see, we make a request to Qlik Sense.  Qlik Sense dynamically gives us the requested data and the slides are generated on the fly, with the right content.
 ",,,,,,,,,
 "Workshop Introduction","Example flow: We loaded a csv into an app and used the data in our website via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?, Introduction - 30 minutes",
 "Workshop Introduction","Example flow: We loaded a csv into an app and used the data in our website via the Engine API","!comment
-Martijn and Raymond have created a MindMap with all the subjects, content, URL's,… for the slides. This has been exported in CSV format and loaded in a Qlik Sense app on the Sense Server.The website where everything is shown is based on HTML, JavaScript and CSS. The JavaScript will request the correct data based on the initial selections through our APIs. The Slides are generated in a node.js generated website.
+Martijn and Raymond have created a MindMap with all the subjects, content, URL's,… for the slides. This has been exported in CSV format and loaded in a Qlik Sense app on the Sense Server. The website where everything is shown is based on HTML, JavaScript and CSS. The JavaScript will request the correct data based on the initial selections through our APIs. The slides are generated in a node.js generated website.
 ",,,,,,,,,
 "Workshop Introduction","We created a mind map to define all integration topics","mindmap input for engine api slide generator.png",,"","","","","         0","0","What is this slide generator?, Technical - 1 day",
 "Workshop Introduction","We created a mind map to define all integration topics","Each topic in the map represents a ""slide"". A slide can contain
@@ -33,31 +37,32 @@ Mindmap is an easy tool that allows you to create content in a very easy to use 
 This is an export from de Mindmap into an Excel in CSV format.",,,,,,,,,
 "Workshop Introduction","What's so special about this presentation? (1)","> You never know the next question...  or what the level of expertise is...",,"","","","","         0","0","What is this slide generator?",
 "Workshop Introduction","What's so special about this presentation? (2)","> So you can better put all your data in our *associative engine* and use our search and select",,"","","","","         0","0","What is this slide generator?",
-"Workshop Introduction","With the APIs, the only limit is your imagination","> This presentation is just to inspire what you can do with our *QIX engine*",,"","","","","         0","0","Introduction - 30 minutes, What is this slide generator?, CTO",
-"Workshop Introduction","Setting up Software as a Service is all about scalability, automation and control...","> Your platform controls everything in Qlik Sense by using the APIs",,"","","","","         0","0","Introduction - 30 minutes, CTO",
+"Workshop Introduction","With the APIs, the only limit is your imagination","> This presentation is just to inspire what you can do with our *QIX engine*",,"","","","","         0","0","Demo with integration.qlik.com, Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs, CTO",
+"Workshop Introduction","Setting up Software as a Service is all about scalability, automation and control...","> Your platform controls everything in Qlik Sense by using the APIs",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs, CTO",
 "Workshop Introduction","Setting up Software as a Service is all about scalability, automation and control...","!comment
-What makes Qlik Sense so flexible is the fact that it is completely controlled by your platform. Users, roles, groups,… are all controlled by your platform. Through the API's this information is passed to Qlik Sense. This means you only need to maintain 1 list of users or configurations.",,,,,,,,,
-"Workshop Introduction","Goal of the session","Train the trainer",,,,,,,,,
-"Workshop Introduction","Goal of the session","Validate if we have all content to teach",,,,,,,,,
-"Workshop Introduction","Goal of the session","Introduction to SaaS technology",,,,,,,,,
-"Workshop Introduction","Goal of the session","Be able to support SaaS use cases",,,,,,,,,
-"Workshop Introduction","Goal of the session","Learn Qlik Sense SaaS problem solving",,,,,,,,,
+What makes Qlik Sense so flexible is the fact that it is completely controlled by your platform. Users, roles, groups,… are all controlled by your platform. Through the APIs this information is passed to Qlik Sense. This means you only need to maintain 1 list of users and configurations.",,,,,,,,,
+"Workshop Introduction","Goal of the session","Train the trainer",,"","","","","         0","0","Support",
+"Workshop Introduction","Goal of the session","Validate if we have all content to teach",,"","","","","         0","0","Support",
+"Workshop Introduction","Goal of the session","Introduction to SaaS technology",,"","","","","         0","0","Support",
+"Workshop Introduction","Goal of the session","Be able to support SaaS use cases",,"","","","","         0","0","Support",
+"Workshop Introduction","Goal of the session","Learn Qlik Sense SaaS problem solving",,"","","","","         0","0","Support",
 "Workshop Introduction","Goal of the session","Learn Qlik Sense in multi-tenant SaaS scenarios
 * Web integration options
 * Governed Self Service
-* SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Technical - 2 hours",
+* SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Demo with integration.qlik.com, Technical - 2 hours",
 "Workshop Introduction","Goal of the session","!comment
-This website has been built for several reasons and goals: - Train the Trainer: Whenever someone needs to learn Qlik Sense in an OEM environment, this slide deck and demos gives you a complete overview of all the possibilities for technical and less technical people.
- - This site gives you an introduction to SaaS technology through this slide generator and our demo. But it gives more than just an introduction. You can look at the used APIs and the slide generator really goes in depth with the used API's and other topics. This site can be perfectly used to support and demo different SaaS use cases. - Further on the web integration possibilities and governed self-service power of Qlik Sense are handled in the slide generator and also through our demos on our website.
+This website has been built for several reasons and goals: 
+ - Train the Trainer: Whenever someone needs to learn Qlik Sense in an OEM environment, this slide deck and demos gives you a complete overview of all the possibilities for technical and less technical people.
+ - This site gives you an introduction to SaaS technology through this slide generator and our demo. But it gives more than just an introduction. You can look at the used APIs and the slide generator really goes in depth with the used APIs and other topics. This site can be perfectly used to support and demo different SaaS use cases. 
+ - The web integration possibilities and governed self-service power of Qlik Sense are handled in the slide generator and also through our demos on our website.
 ",,,,,,,,,
-"Workshop Introduction","Agenda","What is governed self service with Qlik Sense?",,"","","","","         0","0","Introduction - 30 minutes",
-"Workshop Introduction","Agenda","Introduction to SaaS",,,,,,,,,
+"Workshop Introduction","Agenda","What is governed self service with Qlik Sense?",,"","","","","         0","0","Demo with integration.qlik.com, Introduction - 30 minutes",
+"Workshop Introduction","Agenda","Introduction to SaaS",,"","","","","         0","0","Demo with integration.qlik.com",
 "Workshop Introduction","Agenda","Explain common integration use cases using integration.qlik.com
 * Web integration options
 * Governed Self Service
-* SaaS provisioning (provide apps to customers)",,,,,,,,,
-"Workshop Introduction","Agenda","Slide generator
-- Introduce *the slide generator*
+* SaaS provisioning (provide apps to customers)",,"","","","","         0","0","Demo with integration.qlik.com",
+"Workshop Introduction","Agenda","- Introduce *the slide generator*
 - Integration.qlik.com history
 - Use cases
 - What is the data input?
@@ -71,51 +76,55 @@ This website has been built for several reasons and goals: - Train the Trainer: 
 "Workshop Introduction","Agenda","Security integration",,"","","","","         0","0","Technical - 1 hour",
 "Workshop Introduction","Agenda","Qlik Sense APIs",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Workshop Introduction","Agenda","Questions",,"","","","","         0","0","Introduction - 30 minutes",
-"Workshop Introduction","Video - generic introduction to APIs","https://www.youtube.com/watch?v=s7wmiS2mSXY",,,,,,,,,
-"Workshop Introduction","Video - generic introduction to APIs","!comment
-This video gives an introduction to our APIs",,,,,,,,,
+"Workshop Introduction","Video - generic introduction to APIs","https://www.youtube.com/watch?v=s7wmiS2mSXY",,"","","","","         0","0","Demo with integration.qlik.com",
 "What is an app?","Video: What is governed self service?","https://youtu.be/pQae9S8S_vQ?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours; Product Owner; Business Analyst; C-Level - non-technical",
 "What is an app?","Video: What is governed self service?","!comment
-With Qlik Sense you have to possibility to go for complete self-service. To make sure you can keep your environment under control, we need to govern that Self-Service.  This video explains how you can dynamically maintain this with Qlik Sense.
+With Qlik Sense you have to possibility to go for complete self-service. To make sure you can keep your environment under control, we need to govern that self-service.  The video explains how this can be maintained with Qlik Sense.
 ",,,,,,,,,
-"What is an app?","Why Qlik is different? The associative experience...","iframe https://www.qlik.com/us/products/why-qlik-is-different",,"","","","","         0","0","Technical - 2 hours",
 "What is an app?","Video: The Qlik Associative Model","https://youtu.be/gWNoyL6fZxo",,"","","","","         0","0","Introduction - 30 minutes, Business Analyst, CTO, Product Owner",
 "What is an app?","Video: The Qlik Associative Model","!comment
-This video explains the core differentiator of Qlik. This is our way of visualizing ALL your data. Our QIX engine makes sure that all your data is connected and by this available for complete analysis. We do not use Query based calculations on the data. With queries you always will lose part of your data. With our QIX technology, you will never have that problem.",,,,,,,,,
+This video explains the core differentiator of Qlik. This is our way of visualizing ALL your data. Our QIX engine makes sure that all your data is connected and available for complete analysis. We do not use Query based calculations on the data. With queries you always lose part of your data. With our QIX technology, you will never have that problem.",,,,,,,,,
 "What is an app?","What is governed self service?","iframe selfService_embedded",,"","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner",
 "What is an app?","What is governed self service?","!comment
-Click on the link to see our self-service demo.With our governed self-service you have the possibility to define to implement guided self-service. By creating roles or groups we have created different levels of self service on Qlik Sense.
+Click on the link to see our self-service demo. With our governed self-service you have the possibility to define how to implement guided self-service. By creating roles or groups we have created different levels of self service on Qlik Sense.
  - A consumer can only analyze data.
  - A contributor can create own private sheets.
  - A developer has the possibility to create its own sheets and apps.
  - An admin can maintain the content of its department through the Qlik Management Console (QMC).
 
 By using row level security each user can only see the data it has access to.
-In the example here, John can only see data from Germany and Linda can only see data from the USA.",,,,,,,,,
+In the example here, John can only see data from Germany and Linda can only see data from the USA while Martin can see all the data.",,,,,,,,,
 "What is an app?","Contents of an app","contents of an app.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "What is an app?","Contents of an app","!comment
-You can see a Qlik Sense app as a container with 2 main layers:**First you have the foundation of the app. This contains:**- The Data Model: The app contains all the data and the associations between the data. Together this makes the data model. This means whenever you work in the app, no direct connection is needed to analyze the data. When the app is opened, the whole data model is loaded in the memory which makes for very fast, complete analysis.- The script: Data can be loaded in the app through the Data Manager or the Script Editor. To make sure your data is loaded in, in the background a script is automatically created ( through the data manager) or for more options you can create the script manually ( through the script editor). The script contains connections to your data, the load statements, modifications in order to create a good model (ETL- Extract - Transform-Load), variables,… . To resume, the script is needed to extract, transform and load your data in a Qlik Sense app, in order to create your data model.- Measures and Dimensions: In order to show the data in Qlik Sense it is needed to have some well defines Measures and Dimensions. 
-Well defined Measures and Dimensions makes the end user experience a lot easier.
-But what are they?  - Measures: WHAT do you want to see ? This is always a calculation that will show numbers. ( Example: I want to see my Sales. ) These calculations will return 1 number. We call those aggregation calculations. The most commonly known ones are SUM,COUNT,MIN,MAX,AVG. SO to calculate my Sales, the formula could be : SUM(Sales).  - Dimensions: HOW do you want to see it. (Example: I want to see my Sales by Country). In this case the field that contains the list of countries is used as a Dimensions. For each country, the Sales will be shown.
+You can see a Qlik Sense app as a container with 2 main layers:
+**First you have the foundation of the app. This contains:**
+ -The Data Model: The app contains all the data and the associations between the data. These components makes the associative data model. This means whenever you work in the app, no direct connection is needed to analyze the data. When the app is opened, the whole data model is loaded in the memory which makes for very fast and complete analysis.
+ -The script: Data can be loaded in the app through the Data Manager or the Data Load Editor. With the data manager  you load and connect the data in a visual way. The script will be automatically generated. You can also create the script manually through the data load editor. This option gives you more freedom to manipulate your data and script. The script contains connections to your data, the load statements, modifications in order to create a good model (ETL- Extract - Transform-Load), variables,… . 
+To resume, the script is needed to extract, transform and load your data in a Qlik Sense app, in order to create your data model.
+ - Measures and Dimensions: In order to show the data in Qlik Sense it is needed to have some well defined measures and dimensions. 
+This makes the end user experience a lot easier.
+But what are they?  
+  - Measures: WHAT do you want to see ? This is always a calculation that will show numbers. (Example: I want to see my Sales. ) These calculations will return 1 number. We call those aggregation calculations. The most commonly known ones are SUM,COUNT,MIN,MAX,AVG. So to calculate my Sales, the formula could be : SUM(Sales).  
+  - Dimensions: HOW do you want to see it? (Example: I want to see my Sales by Country). In this case the field that contains the list of countries is used as a dimension. For each country, the Sales will be shown.
 
 **Second you have the visual interface of the app. This contains:**
  - Sheet with visualizations: Here you can add new visualizations on sheets, modify your sheets and analyze your data .
  - Bookmarks: A bookmark is a saved state of selection. You can make new ones or apply existing bookmarks.
- - Stories: Stories give you the possibility to tell a story about your data. You can make snapshots of your sheet objects and use them in your story. You can add additional text, images and effects to your story to make it clear. You can also add full sheets into your story. At any given time you have to possibility to go back to your source data on your sheets, make selections and go back to your story.
+ - Stories: Stories give you the possibility to tell a story about your data. You can make snapshots of your sheet objects and use them in your story. You can add additional text, images and effects to your story to make it more clear. You can also add full sheets into your story. At any given time you have the possibility to go back to your source data on your sheets, make selections and go back to your story.
 ",,,,,,,,,
 "What is an app?","In the hub apps are grouped per stream","web-resources to embed.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "What is an app?","In the hub apps are grouped per stream","!comment
-When you open Qlik Sense, you will arrive on a screen where you can open your apps. This is called the Qlik Sense hub.You will notice that on the left side, there are different streams. When you click on a stream, you'll see the apps from the selected stream on the main screen.
-You can compare a stream to a folder. In order to present apps to end users, the apps must be put in a certain stream, otherwise the app will not be visible for end users. We call that publishing an app into a stream. IN this way apps get grouped into a stream.Later on it becomes very easy to put security rules on stream level. So when a user logs on, he will only see the streams  with its corresponding apps where he has access to.",,,,,,,,,
+When you open Qlik Sense, you will arrive on a screen where you can open your apps. This is called the Qlik Sense hub. You will notice that on the left side, there are different streams. When you click on a stream, you'll see the apps from the selected stream on the main screen.
+You can compare a stream to a folder. In order to present apps to end users, the apps must be put in a certain stream, otherwise the app will not be visible for end users. We call that publishing an app into a stream. This method makes sure that apps get grouped into a stream. Later on it becomes very easy to put security rules on stream level. So when a user logs on, he/she will only see the streams with its corresponding apps where he/she has access to.",,,,,,,,,
 "What is an app?","Qlik Sense Desktop - Create Your First App and Visualization (8M)","https://youtu.be/MARjUr2dZRs",,,,,,,,,
 "What is an app?","Qlik Sense Desktop - Create Your First App and Visualization (8M)","[Sample data](https://community.qlik.com/docs/DOC-8833)",,,,,,,,,
 "What is an app?","Qlik Sense Desktop - Create Your First App and Visualization (8M)","If you want to learn more go to [Qlik Community](https://community.qlik.com/docs/DOC-6932)",,,,,,,,,
 "What is an app?","Qlik Sense Desktop - Create Your First App and Visualization (8M)","!comment
-This short video shows all the elemental basics of building a Qlik Sense app with our free version of Qlik Sense:
+This short video shows all the elements of building a basic Qlik Sense app with our free version of Qlik Sense:
  - Creating a new app: How do you create a new app?
- - Adding content: How can you add your own images, clips and style to an app.
- - Loading in the data and creating the associative model: How is data loaded and how are associations made ?
-Creating visualizations: How can you make new sheets and visualizations in an app?",,,,,,,,,
+ - Adding content: How can you add your own images, clips and style to an app?
+ - Loading the data and creating the associative model: How is data loaded and how are associations made?
+ - Creating visualizations: How can you make new sheets and visualizations in an app?",,,,,,,,,
 "What is an app?","Introduction video to build your first app (1 hour)","https://youtu.be/XL1Ph-RAxAE",,"","","","","         0","0","PreSales",
 "What is an app?","Introduction video to build your first app (1 hour)","!comment
 This  video shows a more in depth use case of building a Qlik Sense app.",,,,,,,,,
@@ -127,7 +136,7 @@ With Qlik Sense you can use different data sources and use them all in 1 app. Wi
 "What is an app?","Compression & speed are key","Supports 100’s millions to billions of rows of data",,"","","","","         0","0","Technical - 2 hours",
 "What is an app?","Compression & speed are key","data - compression.png",,"","","","","         0","0","Technical - 1 hour",
 "What is an app?","Compression & speed are key","!comment
-One of the big powers of Qlik Sense is our QIX engine. It's power allows you to make fast analysis over large sets of data from different data sources. In order to improve this process we use different methods:
+One of the big powers of Qlik Sense is our QIX engine. Its power allows you to make fast analysis over large sets of data from different data sources. In order to improve this process we use different methods:
  - The data stored in an app is always indexed. This gives a huge boost in compression of the data in the memory (Up to 90x times).
  - Through the creation of the associative model, our Engine can apply associative search and analysis on the data set. Every piece of data is available for selection and analysis.
 Through our compression and indexing techniques our Engine can handle huge data sets in the memory.",,,,,,,,,
@@ -139,18 +148,18 @@ Through our compression and indexing techniques our Engine can handle huge data 
 By combining data from different data sources, Qlik Sense makes it possible to see the 'Why' in your data. 
 In this example the Sales can be interpreted: Why did a certain product have bad sales? Maybe there was a problem with the inventory? By combining the weather data from another data source, the reason why the product wasn't delivered was due to extreme bad weather….
 
-By combining all the data in our associative model new insights can be discovered.",,,,,,,,,
+By combining all the data in our associative model, new insights can be discovered.",,,,,,,,,
 "What is an app?","Video: Visual data modeling (ETL) ","https://youtu.be/ZFuMX_hyu2w",,,,,,,,,
 "What is an app?","Video: Visual data modeling (ETL) ","This video is part 1 of a new features demonstration presenting the new ETL and data loading and index capabilities in the June 2017 release of Qlik Sense.",,,,,,,,,
 "What is an app?","Video: Visual data modeling (ETL) ","Sample data available [here](https://community.qlik.com/docs/DOC-18599)",,,,,,,,,
 "What is an app?","Video: Visual data modeling (ETL) ","!comment
-This video shows our visual data modeling in the June 2017 release:
+This video shows our visual data modeling in the June 2017 release:  
 Preparing data has never been so easy to do. Some of the new improved features are :
- - More connectors are available to connect to data sources
- - When choosing a dimension a chart is automatically created where the distribution of that dimension can be seen.
+ - More connectors are available to connect to data sources.
+ - When choosing a dimension, a chart is automatically created where the distribution of that dimension can be seen.
  - When choosing a measure, there is now a possibility to create 'buckets' or intervals in that measure.
  - Values in a field can now be easily transformed.  Values can be replaced, set to null, sorted or split .
- - Scripted tables can now be 'synchronized'. This means that tables that were created in the script can be uses in the visual data manager by synchronizing them. 
+ - Scripted tables can now be 'synchronized'. This means that tables that were created in the data load editor can be used in the visual data manager by synchronizing them. 
  - Tables can be concatenated without using the script. The fields can be visually mapped to make sure the right fields of one table are concatenated correctly with fields of the other table.
 
 Click on the link to get the sample data from the video.",,,,,,,,,
@@ -159,15 +168,15 @@ Click on the link to get the sample data from the video.",,,,,,,,,
 "What is an app?","Other topics","!comment
 The link provides a path to an extension posted on our Qlik Branch website. This extension provides multiple possibilities in selecting data:
  -  Standard horizontal selections on fields. 
- - Selections on variable. Used for 'always one selected value'.
+ - Selections on variables. Used for 'always one selected value'.
  - Selections on flags.
  - Initial selections when opening an app.
-A date range picker.",,,,,,,,,
+ - A date range picker.",,,,,,,,,
 "Introduction to SaaS","History","We used to install software, but now you can also access your software online.",,,,,,,,,
 "Introduction to SaaS","History","All users go to the same site and have their *own space*",,,,,,,,,
 "Introduction to SaaS","History","qlik sense embedded example.png",,,,,,,,,
 "Introduction to SaaS","History","!comment
-Previously software was installed locally. People or users had their own workspace on their computer. 
+Previously software was installed locally. Users had their own workspace on their computer. 
 But in current times this model has shifted to an online platform: Software can now be accessed online. Although every user uses the same site to login, they all have their different workspace or site.
 
 Qlik Sense is the leader of embedding itself in an existing online software and provide each users with its personalized workspace.",,,,,,,,,
@@ -177,7 +186,7 @@ Qlik Sense is the leader of embedding itself in an existing online software and 
 - No local software installed",,,,,,,,,
 "Introduction to SaaS","What is SaaS?","gmail.jpg",,,,,,,,,
 "Introduction to SaaS","What is SaaS?","!comment
-SaaS stands for Software As A Service.It is a method of software delivery that allows data to be accessed from any device with an Internet connection and web browser. 
+SaaS stands for Software As A Service. It is a method of software delivery that allows data to be accessed from any device with an Internet connection and web browser. 
 In this web-based model, software vendors host and maintain the servers, databases and code that constitute an application. 
 In addition to allowing remote access via the web to the software applications and data, SaaS also differs from on-premise software in its pricing model:
 It allows buyers to pay an annual or monthly subscription fee, which typically includes the software license, support and most other fees.
@@ -190,7 +199,7 @@ An example of this is Gmail : All users logon on the same website (gmail.com) bu
 "Introduction to SaaS","Common OEM use case for Qlik ","See an integrated example from [our partner Axis group](http://sense.axisgroup.com/extensions/MedAirEbolaCrisis/MedAirEbolaCrisis.html)",,,,,,,,,
 "Introduction to SaaS","Common OEM use case for Qlik ","axisGroup.png",,,,,,,,,
 "Introduction to SaaS","Common OEM use case for Qlik ","!comment
-OEMs ( Original Equipment Manufacturer) are manufacturers who resell another company's software as a part of their solution under their name and branding.Often an OEM provides a software solution where an original Qlik product has been customized and embedded. 
+OEMs (Original Equipment Manufacturer) are manufacturers who resell another company's software as a part of their solution under their name and branding. Often an OEM provides a software solution where an original Qlik product has been customized and embedded. 
 
 The link provided takes you to the website of our partner Axis group where it shows the website of MedAir: an organization that battles Ebola in Africa. It’s a nice example how Qlik Sense can be embedded.",,,,,,,,,
 "Why integration.qlik.com?","Typical goals of a SaaS platform provider","*Embed analytics* within your core application",,"","","","","         0","0","Technical - 2 hours",
@@ -199,7 +208,7 @@ The link provided takes you to the website of our partner Axis group where it sh
  The typical wishes of a SaaS platform provider can be summarized in 3 main goals:
  - Create within a multi-tenant SaaS platform environment embedded analytics within the core application.
  - A certain level of self-service analytics should be provided to the users. Some users can have full self-service while other can be limited.
-Provide dashboards in a fully automated way to the customers and users with the correct levels of security in place.",,,,,,,,,
+ - Provide dashboards in a fully automated way to the customers and users with the correct levels of security in place.",,,,,,,,,
 "Why integration.qlik.com?","History","The integration.qlik.com website is specifically designed to promote and explain the key differentiators of our *Qlik Sense APIs* via our step-by-step walk-through...",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
 "Why integration.qlik.com?","History","We *demonstrate a sample SaaS platform* with Qlik Sense embedded including:
 - The “look and feel” of an integrated solution
@@ -207,13 +216,13 @@ Provide dashboards in a fully automated way to the customers and users with the 
 - “SaaS provisioning”, create dashboard for each user whenever you like",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
 "Why integration.qlik.com?","History","useCasesOverview.png",,"","","","","         0","0","Technical - 1 hour, What is this slide generator?",
 "Why integration.qlik.com?","History","!comment
-This website is completely focused in showing the key differentiators of our Qlik Sense API's. What makes us truly unique ?
+This website is completely focused in showing the key differentiators of our Qlik Sense APIs. What makes us truly unique?  
 The website demonstrates a sample SaaS platform with Qlik Sense embedded. If focuses on the following topics through demos and demonstrations:
  - SaaS Provisioning: How can you embed the power of Qlik Sense  within a multi-tenant SaaS application environment. The demo shows you how you can automatically copy and distribute a Template application to each of your customers with their own data.
  - Self Service: This demo shows you the flexible possibilities of creating a personalized dashboard and report through different levels of self service.
- - Embed Qlik Sense: Qlik Sense is a software built form the ground up with the most recent web technologies. In this demo we show the different possibilities to embed Qlik Sense in your web platform.
- - Slide Generator: A collection of presentations and workshops about web, security and API integration with Qlik Sense. The slides are dynamically generated by out Engine API
-Integration Questions? : Here you can find further in depth documentation and videos about integrating Qlik Sense in your platform.",,,,,,,,,
+ - Embed Qlik Sense: Qlik Sense is a software built from the ground up with the most recent web technologies. In this demo we show the different possibilities to embed Qlik Sense in your web platform.
+ - Slide Generator: A collection of presentations and workshops about web, security and API integration with Qlik Sense. The slides are dynamically generated by out Engine API.  
+ - Integration Questions? : Here you can find further in depth documentation and videos about integrating Qlik Sense in your platform.",,,,,,,,,
 "Why integration.qlik.com?","Goals further explained","Take the audience on a journey highlighting key aspects of Qlik Sense, the APIs and the value of Qlik.  This journey culminates in an easy to use demonstration website which includes:",,"","","","","         0","0","PreSales",
 "Why integration.qlik.com?","Goals further explained","- Multi-tenant API solution for both Qlik Sense Hub and QMC. (*Loop and reduce*)",,"","","","","         0","0","PreSales",
 "Why integration.qlik.com?","Goals further explained","- SaaS with Qlik Sense demonstration",,"","","","","         0","0","PreSales",
@@ -222,35 +231,37 @@ Integration Questions? : Here you can find further in depth documentation and vi
 "Why integration.qlik.com?","Goals further explained","- Flexible security rules",,"","","","","         0","0","PreSales",
 "Why integration.qlik.com?","Goals further explained","- Qlik Sense embedding",,"","","","","         0","0","PreSales",
 "Why integration.qlik.com?","Goals further explained","!comment
-The ultimate goals of this website are taking the audience on a journey where the unique capabilities of Qlik Sense are demonstrated in a clear and guided way. These capabilities are:
- - A multi-tenant API solution for both Qlik Sense HUB and QMC. For this the loop and reduce principle is used: Template applications are copied and published for each customer (loop) but with reduced data. Each customer will see only see its own data. (reduce)
+The ultimate goal of this website is taking the audience on a journey where the unique capabilities of Qlik Sense are demonstrated in a clear and guided way. These capabilities are:
+ - A multi-tenant API solution for both Qlik Sense hub and QMC. This uses  the loop and reduce principle is used: Template applications are copied and published for each customer (loop) but with reduced data. Each customer will see only see its own data. (reduce)
  - SaaS with Qlik Sense demonstration.
- - Throughout the demo the different API and interactions will be seen. It is also possible so take a look to the underlying API source code for each of the actions.
- - Different levels of self-service will be explained and show throughout the demo.
- - The setup this demonstration website a few important security rules needed to be set in place. These are available on the website and show how flexible they are to use.
-The different embedding possibilities of Qlik Sense ae showcased. From IFrame and DIV tags to using Qlik Sense as your data provider so that customized visualizations can be used. With our API's,  the sky is the limit.",,,,,,,,,
+ - Throughout the demo the different APIs and interactions will be seen. It is also possible so take a look to the underlying API source code for each of the actions.
+ - Different levels of self-service will be explained and shown throughout the demo.
+ - The setup of this demonstration website needs a few important security rules to be set in place. These are available on the website and show how flexible they are to use.
+ - The different embedding possibilities of Qlik Sense are showcased. From IFrame and DIV tags to using Qlik Sense as your data provider so that customized visualizations can be used. With our API's,  the sky is the limit.",,,,,,,,,
 "Why integration.qlik.com?","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png",,"","","","","         0","0","Introduction - 30 minutes",
 "Why integration.qlik.com?","Introduction to a SaaS multi-tenant scenario","!comment
-n the end you want to provide an integrated page of Qlik Sense in your software. The customer should be able to access only his correct data in a seamless way. The customer should not authenticate again. Whenever he is authenticated in your software, the Qlik Sense content should be shown seamlessly. You also want to make sure that the right Qlik Sense content is shown in an automated way with a minimum of manual creation.",,,,,,,,,
+In the end you want to provide an integrated page of Qlik Sense in your software. The user should be able to access only his correct data in a seamless way. The customer should not authenticate again. Whenever he is authenticated in your software, the Qlik Sense content should be shown seamlessly. You also want to make sure that the right Qlik Sense content is shown in an automated way with a minimum of manual creation.",,,,,,,,,
 "Why integration.qlik.com?","In the integration demo environment we created a demo for each use case","useCasesOverview.png",,,,,,,,,
 "Why integration.qlik.com?","In the integration demo environment we created a demo for each use case","!comment
-On this website we have created different demos for each use case: - SaaS provisioning: This demo shows how you can easily and automatically provision a list of customers and their users with their own specific Qlik Sense apps and content.
+On this website we have created different demos for each use case: 
+ - SaaS provisioning: This demo shows how you can easily and automatically provision a list of customers and their users with their own specific Qlik Sense apps and content.
  - Self Service: This demo shows the range of Self-Service possibilities with Qlik Sense.  By playing with users with different roles, you can see the effect of Self Service in this demo.
  - Embed Qlik Sense: This demo showcases the different possibilities of embedding Qlik Sense. From IFrame and DIV tags to using Qlik Sense as a data provider.",,,,,,,,,
 "Why integration.qlik.com?","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png",,"","","","","         0","0","Technical - 2 hours",
 "Why integration.qlik.com?","Given the goals, what are typical integration topics you have to deal with?","!comment
 When embedding Qlik Sense in your platform, there are several integration topics to handle:
- - Data: Load your data in a Qlik Sense app. The data can be a combination of different data sources. Qlik Sense has a range of connectors that allow you to analyze ALL your data in a Qlik Sense App. While loading the data, you have the possibility to create an optimized associative data model. That model is then loaded in the memory when the app opens.With direct discovery you can also your real time SQL queries. Also incremental or delta loads are possible in order to reduce the reload time. - Security: When Qlik Sense is embedded, normally Single Sign-On must be provided for authentication. After that authorization must be applied (What can a user see and what rights does he have?). Qlik Sense offers a flexible and robust security rule system to setup authorization. The good thing is that users, roles, groups,…. that are already defined in your SaaS platform, can be re-used in Qlik Sense .
+ - Data: Load your data in a Qlik Sense app. The data can be a combination of different data sources. Qlik Sense has a range of connectors that allow you to analyze ALL your data in a Qlik Sense App. While loading the data, you have the possibility to create an optimized associative data model. That model is then loaded in the memory when the app opens. With direct discovery you can also your real time SQL queries. Also incremental or delta loads are possible in order to reduce the reload time.
+ - Security: When Qlik Sense is embedded, normally Single Sign-On must be provided for authentication. After that, authorization must be applied (What can a user see and what rights does he have?). Qlik Sense offers a flexible and robust security rule system to setup authorization. The good thing is that users, roles, groups,…. that are already defined in your SaaS platform, can be re-used in Qlik Sense.
  - Web: Qlik Sense is built on the newest web technologies (HTML5, JavaScript, CSS). This allows you to create 1 app that can be easily integrated in your SaaS platform. This can be with IFrame, and using our APIs for DIV tag embedding or using Qlik Sense for the data. Qlik Sense is also completely responsive. So there is no need to create mobile content. 1 App can be used on all platforms.
  - SaaS provisioning: Our APIs allow the automatic creation of customer content. Creation of Apps and streams, replacing the script with user specific script, copying apps, … can all be done automatically.
  - Architecture : Our server system allows clustering, scaling and high availability.
  - Dashboard: Qlik Sense offers a wide array of beautiful visualizations in order to show your data as you want it. With the open standard of Qlik Sense it is very easy to download or create additional visualizations. With our drag and drop and scalability possibilities it is very easy to create a beautiful and powerful dashboard.",,,,,,,,,
 "Why integration.qlik.com?","integration.qlik.com: Self service demo","iframe selfService_embedded",,,,,,,,,
 "Why integration.qlik.com?","integration.qlik.com: Self service demo","!comment
-With this demo you have the possibility to define to experience Qlik Sense self service possibilities. 
+With this demo you have the possibility to define to experience Qlik Sense's self service possibilities. 
 You can login with 4 users by clicking on their name. On the right side you see Qlik Sense for that specific user. They all have a specific role when they login.
- - John will be able to see and analyze dashboards. Because John is a consumer, he will have no rights to modify sheets and apps. Through the role level security, he will see only data of Germany.
- - Linda has all the same rights as John. But she is a contributor. That means she can create and publish her on private sheets based on an existing app. You can notice the difference by the available Edit button Linda has in the sheet overview. She can only see data from the USA trough row level security.
+ - John will be able to see and analyze dashboards. Because John is a consumer, he will have no rights to modify sheets and apps. The Edit button will not be shown. Through the role level security, he will see only data of Germany.
+ - Linda has all the same rights as John. But she is a contributor. That means she can create and publish her own private sheets based on an existing app. You can notice the difference by the available Edit button Linda has in the sheet overview. She can only see data from the USA trough row level security.
  - Martin logs in as a developer: he can create apps trough the hub. He has access to the data of all the countries.
  - Paul is in the group of admins: he can maintain apps, app object and streams of his own department. He can do this through our Qlik management console. (QMC)
 
@@ -258,17 +269,18 @@ On the bottom left of the screen there is the possibility to select different pa
  - Hub: The overview of all the available streams and apps. This is mostly the start page for end users.
  - Sheet: look only at specific sheets of an app.
  - App: The app overview will show all the base, private and community sheets of and app.
-QMC: Through the Qlik Management Console users can maintain and modify content and change the settings of the Qlik Sense environment.",,,,,,,,,
+ - QMC: Through the Qlik Management Console users can maintain and modify content and change the settings of the Qlik Sense environment.",,,,,,,,,
 "Why integration.qlik.com?","This demo simulates your SaaS platform",">Next, you will see your admin panel which controls Qlik Sense via APIs (a ""broker""), based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes",
 "Why integration.qlik.com?","This demo simulates your SaaS platform","!comment
-This demo simulates and admin panel which controls Qlik Sense Trough our API's. Here are the users and their roles stored in a Mongo Database.This admin panel is simulation the existing broker software: A piece of software that is already in place that controls your current SaaS platform.in real situations this is all fully automated. For demo purposes here, we created a demo with 4 steps where you manually need to select users, apps and press buttons to provision.
+This demo simulates an admin panel which controls Qlik Sense Trough our API's. The users and their roles are stored in a Mongo Database.  
+This admin panel is simulating the existing broker software: A piece of software that is already in place that controls your current SaaS platform. In real situations this is all fully automated. For demo purposes here, we created a demo with 4 steps where you manually need to select users, apps and press buttons to provision.
 ",,,,,,,,,
 "Why integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours",
 "Why integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours",
 "Why integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours",
 "Why integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","SaaS logo.png",,"","","","","         0","0","Technical - 2 hours",
 "Why integration.qlik.com?","In the SaaS provisioning demo you will see a screen divided into two parts","!comment
-The left side of the screen will show the 'broker'. This is a software capability that is already in place and manages the current SaaS platform. This piece of software will maintain the control of the SaaS platform and will communicate with our Sense platform through our API's. This means that the control stays completely in the existing platform.
+The left side of the screen will show the 'roker'. This is a software capability that is already in place and manages the current SaaS platform. This piece of software will maintain the control of the SaaS platform and will communicate with our Sense platform through our APIs. This means that the control stays completely in the existing platform.
 
 In this demo, the broker will define following parameters:
  - Which customers need access to the applications?
@@ -277,11 +289,11 @@ In this demo, the broker will define following parameters:
 
 On the right side of the screen, the result of the activities of the broker will be shown:
  - Which streams were created.
-Which apps were copied and published .",,,,,,,,,
+Which apps were copied and published.",,,,,,,,,
 "Why integration.qlik.com?","Qlik Sense SaaS provisioning demo","iframe generation_embedded",,"","","","","         0","0","Integration summary, Hosting Ops, CTO, Introduction - 30 minutes",
 "Why integration.qlik.com?","integration demo architecture introduction","saas demo architecture introduction of components.png",,"","","","","         0","0","Technical - 1 day",
 "Why integration.qlik.com?","integration demo architecture introduction","!comment
-A user can be a computer or a human. What defines a user is the fact that it has a userID, it belongs to a certain customer, it has a certain or multiple group(s). When that user logs on to the SaaS platform, it is authenticated.  At the point it needs to see Qlik Sense content, that user needs to be authenticated with Qlik Sense. At this point this information is passed through by means of a ticket. (there are other methods, but here we use ticketing). This ticket contains the userID and additional attributes ( like groups, specific script content,….). On this website there are stored in a Mongo Database. Through APIs these can be fetched and passed to Qlik Sense. Based on the userID and group(s) the correct content will be shown and the user will have the correct rights based on the group membership.",,,,,,,,,
+A user can be a computer or a human. What defines a user is the fact that it has a userID, that it belongs to a certain customer and that it has one or multiple groups. When that user logs on to the SaaS platform, he is authenticated.  At the point he needs to see Qlik Sense content, that user needs to be authenticated with Qlik Sense. At this point this information is passed through by means of a ticket. (There are other methods, but here we use ticketing). This ticket contains the userID and additional attributes ( like groups, specific script content,….). On this website thery are stored in a Mongo Database. Through APIs these can be fetched and passed to Qlik Sense. Based on the userID and group(s) the correct content will be shown and the user will have the correct rights based on the group membership.",,,,,,,,,
 "Why integration.qlik.com?","integration demo architecture introduction 2","architecture - OEM SaaS scenario.png",,"","","","","         0","0","Technical - 1 hour",
 "Why integration.qlik.com?","integration demo architecture introduction 2","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","Technical - 1 hour",
 "Why integration.qlik.com?","integration demo architecture introduction 2","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","Technical - 1 hour",
@@ -292,18 +304,25 @@ This slide shows the process of an app generation when a user logs in to the Saa
  - A user logs in on the SaaS platform.
  - In the SaaS platform a user is automatically connected to the Qlik Sense Hub, embedded in the SaaS platform via an IFrame or a DIV tag integration.
  - Through Single Sign On, the user will be automatically connected to the Qlik Sense platform . This is done through ticketing. The ticket contains the userID and the group(s) of the user. 
-Based on this information and through API's, the correct apps and streams will be created in Qlik Sense and be provisioned to the user. ",,,,,,,,,
+Based on this information and through APIs, the correct apps and streams will be created in Qlik Sense and be provisioned to the user. ",,,,,,,,,
 "Why integration.qlik.com?","integration demo architecture introduction 3","integrated Architecture saasdemo setup.png",,"","","","","         0","0","Deep dive",
 "Why integration.qlik.com?","integration demo architecture introduction 3","Note: both humans and systems can interact with other humans and systems",,"","","","","         0","0","Deep dive",
 "Why integration.qlik.com?","integration demo architecture introduction 3","!comment
 Integration.qlik.com has 3 servers running:
  - QRSMeteor server: This server runs on port 3000. This server hosts the admin panel that acts as the broker. Through this server the administration of the SaaS platform is being managed. (Adding customers and users, which apps should be provisioned,…)
  - Sense web integration: This server runs on port 3030. This is a webserver in where we are embedding our Qlik Sense environment.
- - Qlik Sense server: This server runs on port 443. This server contains all the Qlik Sense content that needs to be provisioned. (Apps, app objects, streams). This server interacts with the 2 other servers.It interacts  with the QRS meteor server trough API calls. The QRS meteor server will send these calls in order to copy, reload and publish apps, create streams,…
+ - Qlik Sense server: This server runs on port 443. This server contains all the Qlik Sense content that needs to be provisioned. (apps, app objects, streams). This server interacts with the 2 other servers. It interacts  with the QRS meteor server trough API calls. The QRS meteor server will send these calls in order to copy, reload and publish apps, create streams,…
 It also interacts with the Sense web integration. The user needs to see its embedded content in the SaaS environment, through IFrame or DIV tag integration. Through Single Sign On the correct content will be shown.",,,,,,,,,
 "Why integration.qlik.com?","integration demo architecture deep dive","integratedArchitecture.png",,"","","","","         0","0","Deep dive",
 "Why integration.qlik.com?","integration demo architecture deep dive","!comment
 This slide gives a more in depth overview of the all the different aspects of embedding Qlik Sense in integration.qlik.com.",,,,,,,,,
+"Why integration.qlik.com?","Qlik Sense architecture -  Topology overview","[Click here for the Qlik Sense topology](http://integration.qlik.com/images/QlikSense%20TopologiesV0_18.pdf)",,"","","","","         0","0","PreSales",
+"Why integration.qlik.com?","Qlik Sense architecture -  Topology overview","architecture - topology.png",,"","","","","         0","0","PreSales",
+"Why integration.qlik.com?","Qlik Sense architecture -  Topology overview","!comment
+This slide gives a complete overview of the Qlik Sense Topologies. It handles 3 main topics:
+ - Topology design principles: The basic principles of Qlik Sense. What is an app, what is our engine, streams, libraries,…These are the basics of the Qlik Sense environment that are essential in a successful integration.
+ - Enterprise class architecture: What are the different services in our Qlik Sense environment, how does handle Qlik Sense security, how can you cluster with Qlik Sense,..
+Qlik Sense government: Roles, governed self-service, data reduction, authentication and authorization within Qlik Sense and Integration overview.",,,,,,,,,
 "Why integration.qlik.com?","OEM good practice summary","Create a template Qlik Sense app per business process/area
  - you can use Qlik apps created via the Qlik hub or
 - create an app via the API (though a JSON structure)",,"","","","","         0","0","PreSales",
@@ -315,19 +334,20 @@ This slide gives a more in depth overview of the all the different aspects of em
 "Why integration.qlik.com?","OEM good practice summary","!comment
 #Some basic principles in setting up SaaS provisioning with Qlik Sense:
  - Create 1 or multiple template apps per business or process area. This way the different apps are easy maintainable and grouped. Also administrator(s) per area can maintain their specific content. A template app contains about 80% of all layout, sheets and charts.
- - Apps can be manually created through the Qlik Sense Hub or through an API call. Our API's work all with a JSON structure).
+ - Apps can be manually created through the Qlik Sense Hub or through an API call. (Our APIs work all with a JSON structure).
  - When the template app will be copied to make the customer specific one, the customer specific data must be loaded in the app. A modification must be made to the script to made it customer specific. Most of the time only the database connection must be changed  as most of the customers will have the same structure in tables and fields. All this customer specific data is already stored in a database.
- - The modification of the script can be done through API's. 
+ - The modification of the script can be done through APIs. 
 There is also a possibility of using and INCLUDE file: This is an external file that contains customer specific script.",,,,,,,,,
 "Why integration.qlik.com?","Recap: The concept behind SaaS automation","concept behind intro.png",,,,,,,,,
 "Why integration.qlik.com?","Recap: The concept behind SaaS automation","!comment
-n the end you want to make sure that your customers will get an app with their data. In order to do this the customer will get a personal stream. In that stream the customer app will be published.
+In the end you want to make sure that your customers will get an app with their data. In order to do this the customer will get a personal stream. In that stream the customer app will be published.
 ",,,,,,,,,
 "Why integration.qlik.com?","The concept behind in more detail","deepDiveGeneration.png",,"","","","","         0","0","Technical - 2 hours, PreSales",
 "Why integration.qlik.com?","The concept behind in more detail","!comment
-So to summarize:
+So to summarize:  
 In the end you want that all your customers will get their own app with their own data.
-For this we use a piece of software that regulates your SaaS platform, or a broker. On the Qlik Sense server we have already out template apps. These are apps that have already a script, data model and layout ready.Whenever we need to provision an app the following steps happen: - A stream is created with the name of the customer.
+For this we use a piece of software that regulates your SaaS platform, or a broker. On the Qlik Sense server we have already our template apps. These are apps that already have a script, data model and layout ready. Whenever we need to provision an app the following steps happen: 
+ - A stream is created with the name of the customer.
  - A copy of the template app will be made with the name of the customer.
  - Some script is inserted or modified to make sure the correct data is loaded.
  - The app is reloaded,
@@ -344,7 +364,8 @@ A common language JSON ( JavaScript Object Notation) is being used for communica
 This video gives an introduction to REST APIs.",,,,,,,,,
 "API -  generic introduction","Example: SaaS platform needs some information from Qlik Sense","API- both server and user can talk to Sense.png",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","Example: SaaS platform needs some information from Qlik Sense","!comment
-So, what are the steps of requesting data through a SaaS platform?In the SaaS platform, we want to see the sum of sales by country. This request will be done from the SaaS platform where Qlik Sense is embedded in. At the point we want to see our Qlik Sense data (this can be a Qlik Sense object or just the raw data) an API call is done to the Qlik Sense system. For example: if there is already a bar chart that shows the sum of the sales by country, an API request is done to Qlik Sense to open the correct app and another request to get the correct object that must be shown in the SaaS platform. Before that, Qlik Sense needs to know who did the request, so authentication of the user must also be executed. For this we use another API that communicates with or Proxy.
+So, what are the steps of requesting data through a SaaS platform? In the SaaS platform, we want to see the sum of sales by country. This request will be done from the SaaS platform where Qlik Sense is embedded. At the point we want to see our Qlik Sense data (this can be a Qlik Sense object or just the raw data) an API call is done to the Qlik Sense system.  
+ For example: if there is already a bar chart that shows the sum of the sales by country, an API request is done to Qlik Sense to open the correct app and another request to get the correct object that must be shown in the SaaS platform. Before that, Qlik Sense needs to know who did the request, so authentication of the user must also be executed. For this we use another API that communicates with our Proxy.
 ",,,,,,,,,
 "API -  generic introduction","What is the power of APIs?","Embed Qlik Sense in your SaaS platform",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","What is the power of APIs?","Create new things or charts that are not available out of the box (extensions)",,"","","","","         0","0","PreSales, Technical - 1 day",
@@ -355,13 +376,13 @@ So, what are the steps of requesting data through a SaaS platform?In the SaaS pl
 "API -  generic introduction","What is the power of APIs?","Re-use authorizations of the SaaS platform in Qlik Sense",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","What is the power of APIs?","!comment
 # What is the power of the APIs with Qlik Sense.
- - With the APIs you can embed Qlik Sense in an existing web platforms.
+ - With the APIs you can embed Qlik Sense in an existing web platform.
  - The possibility to create new objects or functionalities that are now available out of the box.
  - Creation of extra layers around the QMC.
  - Trough the APIs all the manual actions through the QMC can be automated.
  - Different systems can be connected and information shared.
  - Our Qlik Sense Proxy can be approached with APIs to ensure Single Sign-On between systems.
-Authorization from the SaaS platform can be re-used  and communicated with the Qlik Sense platform.",,,,,,,,,
+ - Authorization from the SaaS platform can be re-used  and communicated with the Qlik Sense platform.",,,,,,,,,
 "API -  generic introduction","Video: Embedding Qlik Sense in applications","https://youtu.be/EF2pakVYu3s",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","Video: Embedding Qlik Sense in applications","!comment
 This video shows the different embedding possibilities of Qlik Sense.",,,,,,,,,
@@ -379,8 +400,8 @@ This video shows the different embedding possibilities of Qlik Sense.",,,,,,,,,
 "API -  generic introduction","Key components to get started?","!comment
 # To get started with APIs there are some key components that must be known:
  - First of all, APIs will be used to let 2 systems communicate with each other. The Qlik Sense APIs are used in an existing SaaS platform that runs on a webserver. So those 2 platforms must be able to pass information.
- - In order to use Single Sign On the user needs to logon to the SaaS environment. At this point the login data of that user must be passed to the Qlik Sense system to guarantee the correct data will be available. That means that both systems must use an authentication method that can be used by both systems. Qlik Sense supports different types of authentication: Windows authentication, ticketing, header authentication, JSON Web Token and SAML authentication.
- - In order to program the APIs you'll need a IDE (Integrated Development Environment). You are free to use which one you want. Qlik Sense Desktop and Enterprise comes with an IDE to get you started. This is our Development Hub and is accessible through the Qlik Sense Hub. This IDE is mainly used for testing purposes.
+ - In order to use Single Sign On, the user needs to logon to the SaaS environment. At this point the login data of that user must be passed to the Qlik Sense system to guarantee the correct data will be available. That means that both systems must use an authentication method that can be used by both systems. Qlik Sense supports different types of authentication: Windows authentication, ticketing, header authentication, JSON Web Token and SAML authentication.
+ - In order to program the APIs you'll need an IDE (Integrated Development Environment). You are free to use which one you want. Qlik Sense Desktop and Enterprise comes with an IDE to get you started. This is our Development Hub and is accessible through the Qlik Sense Hub. This IDE is mainly used for testing purposes.
  - To maintain your code and versions, it is strongly advisable to use a source version control system. GITHUB is one of the most well know systems. Click on the link to be redirected to GITHUB.
 In order to program the APIs, knowledge of HTML, CSS, Javascript and JSON is required.",,,,,,,,,
 "API -  generic introduction","URL - what are the components?","`https://integration.qlik.com:443/anon/qmc/tasks`
@@ -411,29 +432,32 @@ domain names and translate them to
  - FQDN (Fully Qualified Domain Name): 
  This is the complete domain name for a specific computer (or host) on the Internet. It consists out of 2 parts: the hostname and the domain name.
  - Internal server address: This is the address your server gets in the internal environment or domain.
-External server address: This is the address your server has outside of the domain. Eg. If someone wants to login from Internet into a secure environment, it needs the address for the server.",,,,,,,,,
+ - External server address: This is the address your server has outside of the domain. Eg. If someone wants to login from Internet into a secure environment, it needs the address of the server.",,,,,,,,,
 "API -  generic introduction","Question -  How do you browse the internet today?","<q>You need to know which <b>sites</b> are available, right?</q>",,"","","","","         0","0","PreSales",
 "API -  generic introduction","How to get started with a REST API?","<q>You need to know with <b>endpoints</b> are available</q>",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","How to get started with a REST API (2)?","<q><b>Endpoints</b> are URLs that you can call to get or modify something</q>",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","Example QRS API endpoints","iframe http://help.qlik.com/en-US/sense-developer/November2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-QRS-API-Endpoints.htm",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","Example QRS API endpoints","!comment
-This slide shows some examples of special purpose endpoints from the Qlik Sense help for developers. These API are in the category of the Qlik Sense Repository APIs. These APIs make it possible to communicate with the Qlik Sense Repository which has all the settings content, security rules, user information,… from the Qlik Sense environment. Click on the link to go to the corresponding help page.
+This slide shows some examples of special purpose endpoints from the Qlik Sense help for developers. These APIs are in the category of the Qlik Sense Repository APIs. These APIs make it possible to communicate with the Qlik Sense Repository which has all the settings content, security rules, user information,… from the Qlik Sense environment. Click on the link to go to the corresponding help page.
 ",,,,,,,,,
 "API -  generic introduction","Basic API call example without the need to login (authentication)","API - basic example without login.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Basic API call example without the need to login (authentication)","!comment
-This slide gives an overview of the steps of an API call form a SaaS platform to Qlik Sense. In this example there is no need for authentication.At the point when some Qlik Sense data must be shown (here list of countries) in the SaaS platform (When a user arrives at a HTML page where Qlik Sense is embedded), the JavaScript fires an API request to the Qlik Sense server. The server will respond by giving the requested data.
+This slide gives an overview of the steps of an API call form a SaaS platform to Qlik Sense. In this example there is no need for authentication. At the point when some Qlik Sense data must be shown (here list of countries) in the SaaS platform (When a user arrives at a HTML page where Qlik Sense is embedded), the JavaScript fires an API request to the Qlik Sense server. The server will respond by giving the requested data.
 ",,,,,,,,,
 "API -  generic introduction","Basic API call example with the need to login (authentication)","API - basic example with authentication login.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Basic API call example with the need to login (authentication)","!comment
-This slides shows the same steps as the previous slide, but here there is a need for authentication. This means, before we can get the Qlik Sense data, the Qlik Sense server needs to know what user made the request. This process is called authentication. 
-Normally, the user has already been authenticated by the SaaS platform. So trough APIs, it is really easy to pass the identification and parameters of that user from the SaaS platform to Qlik Sense. So there is no need for an additional login screen to get to Qlik Sense. This is called SSO (Single sign on). The Qlik Sense proxy is the service that will handle the process of authentication.
+This slide shows the same steps as the previous slide, but here there is a need for authentication. This means, before we can get the Qlik Sense data, the Qlik Sense server needs to know what user made the request. This process is called authentication. 
+Normally, the user has already been authenticated by the SaaS platform. So through APIs, it is really easy to pass the identification and parameters of that user from the SaaS platform to Qlik Sense. So there is no need for an additional login screen to get to Qlik Sense. This is called SSO (Single sign on). The Qlik Sense proxy is the service that will handle the process of authentication.
 ",,,,,,,,,
 "API -  generic introduction","Make sure you as developer ensure the user is authenticated before you make an API call","API - make sure the user is authenticated before you make an API call.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Make sure you as developer ensure the user is authenticated before you make an API call","!comment
 As shown in the previous slide, the user always must be authenticated before an API call can be executed. If the request is done and there was no authentication, your page will show a 403 error.",,,,,,,,,
 "API -  generic introduction","High level - What happens when you open a web page? (1)","flow - open webpage.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","High level - What happens when you open a web page? (1)","!comment
-In this example you see the different steps of a HTTP request to open a webpage.A user will open his browser and put in an address of a website (in the example Qlik.com). Through the HTTP protocol, a request will be done to the webserver to show the website. In order to request the data, a GET request is used.In the case of Qlik.com, the user does a request though the HTTP protocol that says: GET Qlik.com. The webserver will respond to the browser and will show the requested website.
+In this example you see the different steps of a HTTP request to open a webpage.
+ - A user will open his browser and put in an address of a website (in the example Qlik.com).
+ - Through the HTTP protocol, a request will be done to the webserver to show the website. In order to request the data, a GET request is used.In the case of Qlik.com, the user does a request though the HTTP protocol that says: GET Qlik.com. 
+ - The webserver will respond to the browser and will show the requested website.
 ",,,,,,,,,
 "API -  generic introduction","High level - What happens when you open a web page? (2)","web - browsing the web - request response.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","High level - What happens when you open a web page? (2)","!comment
@@ -457,7 +481,8 @@ These 2 steps are server side processes: Creating the response and sending it ba
 - As a last step, the client will interpret the response: It will show the correct content (HTML, CSS, JavaScript), and also the data in the webpage. The data is delivered in a JSON (JavaScript Object Notation) format. JSON is a lightweight data-interface format. It is easy for humans to read and write and very easy for machines to parse and write. Responses of APIs are often always in JSON format.",,,,,,,,,
 "API -  generic introduction","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Get a list of apps via an HTTP GET REST Call","!comment
-A user wants to see a lost op apps through his browser. Through our API , a HTTP GET REST call can be used against our Qlik Sense system.
+A user wants to see a list of apps through his browser.  
+Through our API , a HTTP GET REST call can be used against our Qlik Sense system.
 REST stands for  Representational State Transfer. It provides a way of using 'verbs ' between 2 systems. The GET statement means to fetch a resource or data. In the end this should be shown. It's like when you enter a website through a URL. When the website is loading, multiple GET requests will make sure the page is displayed with all its content.
 In the same way a request can be fired to Qlik Sense and request data: in this case a full list of applications through our Repository API.
 Our system will send a HTTP response back in JSON format with a list of all the apps.",,,,,,,,,
@@ -502,29 +527,35 @@ This slide shows on top the request of the client for a list of the apps trough 
 On the bottom the response from Qlik Sense that will return the requested information in JSON format.",,,,,,,,,
 "API -  generic introduction","Generic REST flow explained: How to connect, get or modify something, and give the answer back to the user?","API - Generic REST api flow.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Generic REST flow explained: How to connect, get or modify something, and give the answer back to the user?","!comment
-#This flow gives more information of what methods are used with REST APIs. - The user wants to go to a certain webpage. Whenever the search starts on a certain URL the JavaScript of the browser will activate to create a request. This is done through REST (Representational State Transfer). It is a way of communicating between a client -server system. It uses a list of HTTP methods:
+#This flow gives more information of what methods are used with REST APIs.
+ - The user wants to go to a certain webpage. Whenever the search starts on a certain URL the JavaScript of the browser will activate to create a request. This is done through REST (Representational State Transfer). It is a way of communicating between a client -server system. It uses a list of HTTP methods:
   - GET: Is a request to retrieve information.
   - POST: Is a request that the resource at the URI does something with the provided entity. POST is often used to create a new entity, but it can also be used to update an entity. 
-  - PUT: Is a request that stores an entity at A URI. PUT can create a new entity or update an existing one. There is a difference between PUT and POST: PUT is idempotent. Idempotent means that I can repeat the same PUT request, and it will always give the same result. POST is NOT idempotent. 
+  - PUT: Is a request that stores an entity at a URI. PUT can create a new entity or update an existing one. There is a difference between PUT and POST: PUT is idempotent. Idempotent means that the same PUT request can be repeated, and it will always give the same result. POST is NOT idempotent. 
   - DELETE: Is a request that a resource be removed.  
 - The webserver will interpret the URL of the website.
 - A response will be created that will consist of different parts:  
-- JSON response for the data.  
-- HTML and CSS for the framework and style. These will be displayed in the browser  - JavaScript: In order to make the website 'work' and interactive.
+ - JSON response for the data.  
+ - HTML and CSS for the framework and style. These will be displayed in the browser 
+- JavaScript: In order to make the website 'work' and interactive.
 ",,,,,,,,,
 "API -  generic introduction","Delete an app via REST call: an HTTP request, with method delete to a specific endpoint","flow - REST delete app.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Delete an app via REST call: an HTTP request, with method delete to a specific endpoint","!comment
-This slide gives an overview of the steps whenever a user wants to delete a list of apps trough the APIs.Through the browser a REST HTTP protocol is used with the DEL method.The GUID of the apps are stored in the Qlik Sense Repository Database that  is maintained by the Qlik Sense Repository Services (QRS). Each app will get a unique GUID. So in order to delete the apps, the HTTP request is:DEL /qrs/app/' GUID of the apps.After the Qlik Sense server has executed the request it will send a HTTP response with the response 200 (this means the request was executed successfully) to the client browser.
+This slide gives an overview of the steps whenever a user wants to delete a list of apps trough the APIs.
+ - Through the browser a REST HTTP protocol is used with the DEL method. The GUID of the apps are stored in the Qlik Sense Repository Database that  is maintained by the Qlik Sense Repository Services (QRS). Each app will get a unique GUID. So in order to delete the apps, the HTTP request is:DEL /qrs/app/' GUID of the apps.
+ - After the Qlik Sense server has executed the request it will send a HTTP response with the response 200 (this means the request was executed successfully) to the client browser.
 ",,,,,,,,,
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","async - user orders pizza.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","beeper.jpg",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","[source](https://sc01.alicdn.com/kf/HTB11B8LHVXXXXbEXpXXq6xXFXXXs/221385864/HTB11B8LHVXXXXbEXpXXq6xXFXXXs.jpg)",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Async programming - What are the sequental steps when you order a pizza?","!comment
-Programming with JavaScript means you will be programming asynchronous. Now what does that mean ?Well let's say you order a pizza in a restaurant.You first order a beer, and then order your pizza. Now your pizza must first be prepared, so you get a beeper that notify you when it has been prepared.In the meanwhile you will do other things: drink your beer, have a chat with your companions, wash your hands,…In this example there are 2 possible scenarios that flow out of this scenario.The point here is that after your request, there is a wait. Unlike sequential programming where you do a request, you get the answer immediately after. JavaScript works differently. You will always need to wait after your request, like you must wait when your pizza is being prepared.
+Programming with JavaScript means you will be programming asynchronous. Now what does that mean ?Well let's say you order a pizza in a restaurant. You first order a beer, and then order your pizza. Now your pizza must first be prepared, so you get a beeper that will notify you when it has been prepared. In the meanwhile you will do other things: drink your beer, have a chat with your companions, wash your hands,…In this example there are 2 possible branches that flow out of this scenario. The point here is that after your request, there is a wait. Unlike sequential programming where you do a request, you get the answer immediately after. JavaScript works differently. You will always need to wait after your request, like you must wait when your pizza is being prepared.
 ",,,,,,,,,
 "API -  generic introduction","Async programming - What are the sequental steps when a computer orders a pizza?","async - computer orders pizza.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Async programming - What are the sequental steps when a computer orders a pizza?","!comment
-Now let's take a look how the computer will order a pizza.The beginning of ordering is mainly the same as how a user orders a pizza.Now at the point that the pizza has been ordered, you will get a 'promise ' object. You can see that object as your 'beeper'. So whenever a request is handled in JavaScript, a promise object will be created. In the meanwhile JavaScript will execute other parts of the code. It will not stop. When the request has been handled, a response will be given. So at that point the callback function or promise will be resolved. So this piece of code will be triggered whenever you have the answer on the request (ready or failed). In that piece of code you will put the code for the next steps.So in this example, whenever the beer has been resolved, you will drink your beer and when the pizza is ready, you will drink your beer again.Now what is the difference between callback and promises? - A callback function is the function that will be used after a request has been resolved. But you can have multiple actions that need to be executed after your request. With callbacks, all these actions need to be nested while maintaining a very tight syntax with a collection of brackets. This can become very complex to write and maintain. Online you can find multiple examples of 'callback hell'. - A promise is like the new generation of callbacks. In the end it will do the same as a callback, but whenever nested callbacks become very complex to write, you can write it through promises. It gives you a cleaner and easier way to write your callbacks.",,,,,,,,,
+Now let's take a look how the computer will order a pizza. The beginning of ordering is mainly the same as how a user orders a pizza. Now at the point that the pizza has been ordered, you will get a 'promise' object. You can see that object as your 'beeper'. So whenever a request is handled in JavaScript, a promise object will be created. In the meanwhile JavaScript will execute other parts of the code. It will not stop. When the request has been handled, a response will be given. So at that point the callback function or promise will be resolved. So this piece of code will be triggered whenever you have the answer on the request (ready or failed). In that piece of code you will put the code for the next steps. So in this example, whenever the beer has been resolved, you will drink your beer and when the pizza is ready, you will drink your beer again. Now what is the difference between callback and promises? 
+ - A callback function is the function that will be used after a request has been resolved. But you can have multiple actions that need to be executed after your request. With callbacks, all these actions need to be nested while maintaining a very tight syntax with a collection of brackets. This can become very complex to write and maintain. Online you can find multiple examples of 'callback hell'. 
+ - A promise is like the new generation of callbacks. In the end it will do the same as a callback, but whenever nested callbacks become very complex to write, you can write it through promises. It gives you a cleaner and easier way to write your callbacks.",,,,,,,,,
 "API -  generic introduction","ASync compared","async - pizza combined.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","ASync compared","!comment
 This slide compare the ASync steps between a user an a computer.",,,,,,,,,
@@ -556,17 +587,17 @@ app.visualization.create('barchart',[""Case owner"",""=avg(Duration)""],
 ```",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Promise based async example using the vizualization API  to create a barchart","qlik-visuals-result.png",,"","","","","         0","0","PreSales",
 "API -  generic introduction","Promise based async example using the vizualization API  to create a barchart","!comment
-# This slide shown an example of generating a bar chart on  fly with our visualization API.
- - The first part shows the config object. This is needed to know where the API needs to connect to get the data. The host is the hostname of the Qlik Sense Server. Is Secure is the parameter that decides that SSL (Secure Sockets Layer)should be used or not. The prefix tells to which Qlik Sense Virtual Proxy should be connected and trough which port.
- - The second part will create the bar chart with Qlik Sense Data.
-  - Require(['js/qlik'], function(qlik):
+# This slide shows an example of generating a bar chart on  fly with our visualization API.
+- The first part shows the config object. This is needed to know where the API needs to connect to get the data. The host is the hostname of the Qlik Sense Server. Is Secure is the parameter that decides that SSL (Secure Sockets Layer) should be used or not. The prefix tells to which Qlik Sense virtual proxy should be connected and through which port.
+- The second part will create the bar chart with Qlik Sense Data.
+  - **_Require(['js/qlik'], function(qlik_**):
   This will always appear at the beginning of you JavaScript code. This is necessary to use the Qlik API's.
-  - Qlik.openApp: Here an API is used to open a Qlik Sense app. The first parameter is the GUID of the app. The second parameter refers to the config object.
-  - App.visualization.create: This API will make a Qlik Sense visualization. The first parameter defines it is going to be a bar chart. The second parameters contains the Dimension(s) and Measure(s) for the bar chart. A lot of parameters can be defined here. In this example the bar chart will get the title: ""on the fly barchart"".
+  - **_Qlik.openApp_**: Here an API is used to open a Qlik Sense app. The first parameter is the GUID of the app. The second parameter refers to the config object.
+  - **_App.visualization.create_**: This API will make a Qlik Sense visualization. The first parameter defines it is going to be a bar chart. The second parameters contains the Dimension(s) and Measure(s) for the bar chart. A lot of parameters can be defined here. In this example the bar chart will get the title: ""on the fly barchart"".
   - After that the bar chart is shown in a specific placeholder in de webpage.",,,,,,,,,
 "API -  generic introduction","JS Fidlle example: bar chart on the fly","iframe http://jsfiddle.net/qhose/9acfgugp/embedded/",,"","","","","         0","0","PreSales",
 "API -  generic introduction","JS Fidlle example: bar chart on the fly","!comment
-The slide shows a real life example of a Qlik Sense bar chart that has been created on the fly through the Qlik Sense APIs.Click on the links on top to see the JavaScript and the used APIs, the HTML, CSS and resources that have been used. The last link will show the result of the code in JSFiddle.
+The slide shows a real life example of a Qlik Sense bar chart that has been created on the fly through the Qlik Sense APIs. Click on the links on top to see the JavaScript, APIs, the HTML, CSS and resources that have been used. The last link will show the result of the code in JSFiddle.
 ",,,,,,,,,
 "API -  generic introduction","But there are more ways to wait: Events","Events: create a table object which is initially empty",,"","","","","         0","0","PreSales",
 "API -  generic introduction","But there are more ways to wait: Events","```javascript
@@ -651,12 +682,13 @@ Embedded analytics has emerged as an analytical delivery strategy.  The approach
 ",,,,,,,,,
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","!comment
-One of the biggest advantages of Qlik Sense is the fact that an app can be used for all devices. Qlik Sense uses and supports a range of modern technologies:- HTML5, CSS3 and JavaScript: These technologies are used to embed Qlik Sense in a web environment. The HTML will define the frame of the webpage, CSS will style the page while JavaScript will take care of the behavior.
+One of the biggest advantages of Qlik Sense is the fact that an app can be used for all devices. Qlik Sense uses and supports a range of modern technologies:
+- HTML5, CSS3 and JavaScript: These technologies are used to embed Qlik Sense in a web environment. The HTML will define the frame of the webpage, CSS will style the page while JavaScript will take care of the behavior.
 - RequireJS, AngularJS: These frameworks are being used by Qlik Sense and can be easily reused in the web environment.
 - JSON is the language being used to communicate with our engine and other services.
 - The way Qlik Sense communicates with its own and other services is done through the WebSocket protocol.
 - CANVAS is being used to create visualizations.
-- REST is being used to make sure the API's are working correctly.",,,,,,,,,
+- REST is being used to make sure the APIs are working correctly.",,,,,,,,,
 "Web integration","Video: What do we mean with embedding?","Here we embedded/integrated a YouTube video... ",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Video: What do we mean with embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Example: What is the hub? (Embedded)","iframe http://jsfiddle.net/qhose/0nn9bvg6/embedded/result,html,css",,"","","","","         0","0","Introduction - 30 minutes; CTO; Business Analyst; Product Owner",
@@ -668,7 +700,7 @@ The Qlik Sense Hub can be seen as the starting page of a Qlik Sense environment 
 On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded hub.
  - HTML: Shows the HTML code for embedding the hub. It makes use of an IFrame. The URL is the source where the IFrame refers to.
-CSS: Shows the underlying CSS code for this page.",,,,,,,,,
+ - CSS: Shows the underlying CSS code for this page.",,,,,,,,,
 "Web integration","Example: embed a sheet ","iframe http://jsfiddle.net/qhose/v993fpgy/embedded/result,html,css",,"","","","","         0","0","Introduction - 30 minutes; CTO; Business Analyst; Product Owner",
 "Web integration","Example: embed a sheet ","!comment
 In this example you see an embedded sheet from an Qlik Sense app through an IFrame. Notice that only the sheet is visible. There is no selection bar or Qlik Sense menu buttons available.
@@ -681,41 +713,63 @@ CSS: Shows the underlying CSS code for this page.",,,,,,,,,
 In this example you see an embedded chart from an Qlik Sense app through an IFrame. On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded chart.
  - HTML: Shows the HTML code for embedding the hub. It makes use of an IFrame. The URL is the source where the IFrame refers to.
-CSS: Shows the underlying CSS code for this page.",,,,,,,,,
+ - CSS: Shows the underlying CSS code for this page.",,,,,,,,,
 "Web integration","Example: Create a chart on the fly using javascript. ","## Select any combination of dimensions and measures from any data source indexed in an app.",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour",
 "Web integration","Example: Create a chart on the fly using javascript. ","iframe http://jsfiddle.net/qhose/9acfgugp/embedded/result,js,html,css/",,"","","","","         0","0","PreSales, Technical - 1 day, Technical - 1 hour",
 "Web integration","Example: Create a chart on the fly using javascript. ","!comment
 # This slide shown an example of generating a bar chart on the fly with our visualization API.
 On top the different parts of the embedding can be shown: JavaScript, HTML, CSS, Resources and Result.
- -  The first part shows the config object. This is needed to know where the API needs to connect to get the data. The host is the hostname of the Qlik Sense Server. Is Secure is the parameter that decides that SSL (Secure Sockets Layer)should be used or not. The prefix tells to which Qlik Sense Virtual Proxy should be connected and through which port.
+ -  The first part shows the config object. This is needed to know where the API needs to connect to get the data. The host is the hostname of the Qlik Sense Server. Is Secure is the parameter that decides that SSL (Secure Sockets Layer) should be used or not. The prefix tells to which Qlik Sense Virtual Proxy should be connected and through which port.
  - The second part will create the bar chart with Qlik Sense Data.
-  ○ Require(['js/qlik'], function(qlik):
+  - **_Require(['js/qlik'], function(qlik)_**:
   This will always appear at the beginning of you JavaScript code. This is necessary to use the Qlik API's.
-  ○ Qlik.openApp: Here an API is used to open a Qlik Sense app. The first parameter is the GUID of the app. The second parameter refers to the config object.
-  ○ App.visualization.create: This API will make a Qlik Sense visualization. The first parameter defines it is going to be a bar chart. The second parameters contains the Dimension(s) ( in this case 'Country)' and Measure(s) ( in this case '=count(Customer))'for the bar chart. A lot of parameters can be defined here. In this example the bar chart will get the title: ""on the fly barchart"".
+  - **_Qlik.openApp_**: Here an API is used to open a Qlik Sense app. The first parameter is the GUID of the app. The second parameter refers to the config object.
+  - **_App.visualization.create_**: This API will make a Qlik Sense visualization. The first parameter defines it is going to be a bar chart. The second parameters contains the Dimension(s) ( in this case _Country_)'and Measure(s) ( in this case _=count(Customer)_) for the bar chart. A lot of parameters can be defined here. In this example the bar chart will get the title: ""on the fly barchart"".
 After that the bar chart is shown in a specific placeholder in de webpage. The placeholder is defined in the HTML code.
 On the top of the slide you can choose between the 5 possible views.",,,,,,,,,
 "Web integration","Which options do you have to embed the resources?","web - options to integrate content.png",,"","","","","         0","0","Technical - 1 hour",
 "Web integration","Which options do you have to embed the resources?","!comment
-There are 3 main options for embedding:
- - IFrame: A very easy method of embedding the Hub, App, Sheet or an object. Basically with an IFrame you embed another document in the current HTML document.- Div Tag: An HTML page can have reserved spaces ( or placeholders). These are defined with Div tags. With our Capability API's it is possible to put Qlik Sense objects in these Div tags.
- On the fly: Instead of already creating an object in a Qlik Sense app and then using it in a HTML page, it is possible to create the object on the fly in the JavaScript of the webpage. Through our visualization API we give you the possibility to generate charts or other objects on the fly. This gives you the possibility to only generate the charts whenever a user logs in, giving you lots of flexibility.",,,,,,,,,
+There are a couple of options for embedding. It depends on your requirements which one is the best option for you. Do you want to re-use what Qlik created for you or do you want to have full control over the look and feel? If you re-use our client you can be sure you will have a quick implementation but you have less customization flexibility. If you only use our charts you will have to create the website and buttons and other navigation aspects yourself and you will loose capabilities which are only available in the Qlik Sense client (out of the box) like the self service client, bookmarks and story telling. Note that you can build most features also yourself if you use our [APIs](https://help.qlik.com/en-US/sense-developer/September2017/Content/APIs-and-SDKs.htm). 
+ 
+# IFrame
+A very easy method of embedding the Hub, App, Sheet or an object. Basically with an IFrame you embed another document in the current HTML document. You can embed a maximum of 3 iframes in your DOM.
+## When to use?
+- Speed of deployment is key. 
+- The look and feel of Qlik Sense suits your needs. Note that you can always change most layout aspects using Qlik Sense [theming API](https://help.qlik.com/en-US/sense-developer/February2018/Subsystems/APIs/Content/CapabilityAPIs/ThemeAPI/ThemeAPI.htm). 
+- In this way you can embed our complete (self service) client. 
+- If you require more customization you can better look at the options below. Please prevent that you start modifying our standard client files, you will face the risk of support and upgrade challenges. 
+
+# Div Tag:
+An HTML page can have reserved spaces (or placeholders). These are defined with Div tags. With our Capability API's it is possible to put Qlik Sense objects (individual charts) in these Div tags.
+## When to use?
+- You have a read only scenario (no self service) and you want to embed Qlik Sense in an existing web page. You will have to create the buttons and all other aspects yourself using the client side APIs.
+
+# On the fly
+Instead of already creating an object in a Qlik Sense app and then using it in a HTML page, it is possible to create the object on the fly in the JavaScript of the web page. Through our visualization API we give you the possibility to generate charts or other objects on the fly. This gives you the possibility to only generate the charts or complete apps whenever a user logs in, giving you lots of flexibility.
+## When to use?
+- You don't want to create or load data up front in an app. Based on selections in your host applications you want to create a chart or app on the fly.
+
+# Data only
+You can also just take the data out of Qlik Sense and build your own front-end. You can use the Capabilities API or the Engine API directly to get an array of data and vizualize it using your own charting library, Qlik Sense [picasso.js](https://picassojs.com/examples.html) or any other. Note that the [integration.qlik.com](integration.qlik.com) site is build in this way...
+## When to use?
+- You want to use your own vizualizations and have full control over the HTML, javascript (enigmaJS) and CSS. Or you like to use Qlik Sense data but you don't have javascript. Since the Engine API is JSON RPC you can connect to it using any language. 
+- You have a read only scenario and don't need to use the self service client. Or you are willing to create this functionality using the APIs.",,,,,,,,,
 "Web integration","Options to embed Qlik Sense: from simple to advanced use cases","iframe http://web.integration.qlik.com",,"","","","","         0","0","Technical - 1 hour, Product Owner",
 "Web integration","Options to embed Qlik Sense: from simple to advanced use cases","!comment
-Through our  'Embedding Qlik Sense' demo on integration.qlik.com you will notice we have embedded  different parts of Qlik Sense.
+Through our  'Embedding Qlik Sense' demo on integration.qlik.com, you will notice we have embedded  different parts of Qlik Sense.
 On the left side of the screen you can choose which example you want to see. On the right side you will see the result.
 Basically there are 3 main ways of embedding Qlik Sense:
- - through an IFrame: This method allows to embed the full hub, a complete app, complete sheets or a collection of multiple apps.
+ - Through an IFrame: This method allows to embed the full hub, a complete app, a complete sheets or a collection of multiple objects.
  It allows Qlik Sense to be embedded is a fast and easy way. When using IFrame you are using the layout and objects define in Qlik Sense.
  - With Div tags you have the possibility to embed individual objects in a web page.  A Div tag is nothing more than a reserved place on a webpage. This allows you to make a customized webpage, that used Qlik Sense object.
 - Finally you can use Qlik Sense APIs to provide the data. In the JavaScript charts can be built on the fly through our API or  external visualizations (Eg. D3 charts)",,,,,,,,,
 "Web integration","Choose the level of integration you like...","web - difference QAP and Qlik sense enterprise sheet versus our client.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Choose the level of integration you like...","Use our complete client, or embed a sheet, chart or the data... ",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Choose the level of integration you like...","!comment
-As said on the previous slide: With Qlik Sense you have the possibility to embed our hub, sheet, chart or just the data.",,,,,,,,,
+As said on the previous slide: With Qlik Sense you have the possibility to embed our hub, sheet, charts or use just the data.",,,,,,,,,
 "Web integration","Summary: Which Qlik Sense resources can you embed with the QAP and Qlik Sense enterprise?","web-resources to embed v2.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Summary: Which Qlik Sense resources can you embed with the QAP and Qlik Sense enterprise?","!comment
-With Qlik Sense Enterprise you have all the possible options to embed.The Enterprise edition also contains the hub and it's corresponding menus, toolbars and buttons. This makes it possible to also use these in your embedding.When choosing the Qlik Analytics Platform (QAP) you have all the same possibilities, except the whole visual layer. This means there is no hub, app overview, menu, toolbars,.. So with the QAP you can only embed a sheet (without menu), an object and data on the fly.",,,,,,,,,
+With Qlik Sense Enterprise you have all the possible options to embed. The Enterprise edition also contains the hub and its corresponding menus, toolbars and buttons. This makes it possible to also use these in your embedding. When choosing the Qlik Analytics Platform (QAP) you have all the same possibilities, except the whole visual layer. This means there is no hub, app overview, menu, toolbars,.. So with the QAP you can only embed sheets (without menu), objects and data on the fly.",,,,,,,,,
 "Web integration","Introduction video to Qlik Analytics Platform (QAP)","https://youtu.be/yLTqzftDa7s?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","Introduction video to Qlik Analytics Platform (QAP)","!comment
 This video gives you an introduction of our QAP.",,,,,,,,,
@@ -724,9 +778,9 @@ This video gives you an introduction of our QAP.",,,,,,,,,
 "Web integration","Front end focused API overview","!comment
 # An overview of the key APIs
  - Re-use: If you want to reuse Qlik Sense components in your website. This can be the hub, an app, a sheet or objects. For this DIV tags or IFrame are used.
- - On the fly: This means that App, data or objects are only created or provisioned whenever a customer logs in. This can be from creating an App on demand, only load in customer specific data in an App to creating a chart on the fly using HTML or JavaScript code
- - Extend: With our collection of APIs you can make chart types that were not out of the box available, but act as native Qlik Sense objects. You can also add widgets to improve the look and feel of you Qlik Sense application.On branch.qlik.com you can find a collection of third party extensions, free for download or you can add your own extensions there.
-Data only: Instead of using Qlik Sense with its visual layer, only the  fast in-memory data warehouse of Qlik is used. Through API calls in JSON format you can create your own visual layer by using Qlik Sense as your backbone for data delivery and data associations.",,,,,,,,,
+ - On the fly: This means that apps, data or objects are only created or provisioned whenever a customer logs in. This can be from creating an app on demand, only load in customer specific data, to creating a chart on the fly using HTML or JavaScript code.
+ - Extend: With our collection of APIs you can make chart types that were not out of the box available, but act as native Qlik Sense objects. You can also add widgets to improve the look and feel of you Qlik Sense application. On [branch.qlik.com]\(qlik.branch.com) you can find a collection of third party extensions, free for download or you can add your own extensions there.
+ - Data only: Instead of using Qlik Sense with its visual layer, only the  fast in-memory data warehouse of Qlik is used. Through API calls in JSON format you can create your own visual layer by using Qlik Sense as your backbone for data delivery and data associations.",,,,,,,,,
 "Web integration","How to get started: The Qlik Sense Dev-hub (12M) - Inspiration of things you can do...","https://www.youtube.com/watch?v=hjFlpj7uLl4&feature=share",,"","","","","         0","0","PreSales",
 "Web integration","How to get started: The Qlik Sense Dev-hub (12M) - Inspiration of things you can do...","This tool helps to create the source code for you. (also see the Visual Studio plugin)",,"","","","","         0","0","PreSales",
 "Web integration","IFrame integration","<q> IFrame integration</q>",,"","","","","         0","0","PreSales, Technical - 2 hours",
@@ -755,9 +809,9 @@ http[s]://<machinename | servername>/{virtual proxy}/sense/app/{appid}/sheet/{sh
 "Web integration","IFrame - App and Single integration API (2)","See working examples in our [integration demo environment](http://web.saasdemo.qlik.com/hub)",,"","","","","         0","0","PreSales",
 "Web integration","IFrame - App and Single integration API (2)","!comment
 This slide shows you an overview of all the components that are used for embedding through an IFrame. 
- - On the SaaS platform you have the webpage, consisting out of HTML, CSS and JavaScript. In the HTML, the IFrame refers to a component of Qlik Sense.
- - At the point that the HTML page is loaded, connection to the Qlik Sense server is needed. To get access to the server, the Virtual proxy must be passed first (authenticating).
-On the bottom of the screen there are 2 examples of IFrame URL. The first one shows a sheet in an analysis state. The second one shows a sheet where a certain selection has been made.",,,,,,,,,
+ - On the SaaS platform you have the webpage, consisting out of HTML, CSS and JavaScript. In the HTML, the IFrame refers to a URL of Qlik Sense.
+ - At the point that the HTML page is loaded, connection to the Qlik Sense server is needed. To get access to the server, the virtual proxy must be passed first (authenticating).
+On the bottom of the screen there are 2 examples of IFrame URLs. The first one shows a sheet in an analysis state. The second one shows a sheet where a certain selection has been made.",,,,,,,,,
 "Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","[See IFrame examples on integration demo ](http://web.saasdemo.qlik.com/)",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","saas demo Web integration screenshot.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","!comment
@@ -855,16 +909,16 @@ A short video that shows you how to make mashups with our dev hub.
 ",,,,,,,,,
 "Web integration","An overview of HTTP - many things are loaded in the browser if you open a page","web - contents of a webpage.png",,"","","","","         0","0","PreSales",
 "Web integration","An overview of HTTP - many things are loaded in the browser if you open a page","!comment
-Whenever you open a HTML page, a lot of things are being loaded in the background.In this overview you see that a user logs in to a SaaS platform. It contains several HTML pages which have to 'show' something.This can consist out of:
+Whenever you open a HTML page, a lot of things are being loaded in the background.In this overview you see that a user logs in to a SaaS platform. It contains several HTML pages which have to 'show' something. These can consist out of:
  - CSS: CSS is used to style the HTML page ( color, borders, sizing,…)
  - JavaScript: Is used for the behaviors of the page. For example: If you click on a button, the current selections must be cleared. That action is being executed in the JavaScript.
- - Images can be loaded in.
-Different fonts can be used and must be loaded in also.",,,,,,,,,
+ - Images can be loaded.
+Different fonts can be used and must be loaded also.",,,,,,,,,
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","[integration demo: div tag integration example](http://web.saasdemo.qlik.com/multipleDivs)",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","Dev-hub: demo mashup editor",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","!comment
 Click on the link to go to the integration demo. The second part on the left side shows different examples using div tags.
-The difference with an IFrame is that instead of embedding a full site, app or sheet, individual objects are embedded. Each object is placed in a placeholder. In the HTML code we used the Div tags as placeholders.In the demo there are different examples which can be viewed.
+The difference with an IFrame is that instead of embedding a full site, app or sheet, individual objects are embedded. Each object is placed in a placeholder. In the HTML code we used the Div tags as placeholders. In the demo there are different examples which can be viewed.
  - Multiple charts
  - Integration example: Citybike
 Integration example: Marketing 360",,,,,,,,,
@@ -872,6 +926,7 @@ Integration example: Marketing 360",,,,,,,,,
 "Web integration","Capabilities API - example code to embed chart using a DIV tag","iframe http://jsfiddle.net/qhose/uj3abbde/embedded/result,html,js,css/",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Capabilities API - example code to embed chart using a DIV tag","!comment
 This slide shows the JavaScript example of using our capability APIs for integrating Qlik Sense objects into a webpage through Div tags.
+
 First the Qlik Sense app needs to be opened to get to the content and objects that need to be embedded. This happens on the line of code that starts with 'var app':
 The API qlik.openApp is used to create an object that gets access to the desired app.
 The long number is the internal GUID of the app that is used in our Qlik Sense environment. The config object is used to make sure the right connection is made with the Qlik Sense Server.
@@ -898,10 +953,10 @@ require([""js/qlik""], function(qlik) {
 "Web integration","Capabilties API - example code: make a selection","[help](https://help.qlik.com/en-US/sense-developer/3.2/Subsystems/APIs/Content/MashupAPI/qlik-field-interface.htm)",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Capabilties API - example code: make a selection","Also see [this video](https://youtu.be/IApeTl6cCaY)",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Capabilties API - example code: make a selection","!comment
-This code gives an example by using and API to make a selection in a certain field.In this case 'app.field(fieldname).selectvalues([values])'
-Is used.The field 'LastName'is used here and the value 'Jones' will be selected from it.
+This code gives an example by using an API to make a selection in a certain field.In this case _app.field(fieldname).selectvalues([values])_
+Is used. The field 'LastName' is used here and the value 'Jones' will be selected from it.
  - The first true parameter: is a boolean. If it's put on true it toggles the selected state.
- - The second true parameter: is a boolean. If it's put on true, locked selections can be overwritten.
+ - The second true parameter: is a boolean. If it's put on true, locked selections can be overwritten.  
 Click on the help or video link for more info or a demonstration of using the API.",,,,,,,,,
 "Web integration","Capabilties API - example code : clear selection","```javascript
 var config = {
@@ -920,7 +975,9 @@ require([""js/qlik""], function(qlik) {
 });
 ```",,"","","","","         0","0","Deep dive",
 "Web integration","Capabilties API - example code : clear selection","!comment
-This code gives an example by using and API to clear selection in a certain field.In this case ' var lastNameField = app.field('LastName')' is used.the object 'lastNameField' is created  where the field 'LastName' is stored.Based on that we can use : 'lastnameField.clear()'. This will take the field and clear it.",,,,,,,,,
+This code gives an example by using and API to clear selection in a certain field.  
+In this case _var lastNameField = app.field('LastName')_ is used. The object 'lastNameField' is created  where the field 'LastName' is stored. 
+Based on that we can use: _lastnameField.clear()_. This will take the field and clear it.",,,,,,,,,
 "Web integration","Make sure the user is authenticated before you show a mashup","Challenge: if the user is not yet authenticated you well get a websocket error (the red box on previous slide)",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","To make sure the user is always authenticated you can put a small [HTML file](\public\docs) on the Qlik Sense server. (C:\Program Files\Qlik\Sense\Client\returnUrl.html)",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","```HTML
@@ -948,29 +1005,32 @@ checkAuthenticatedInQlik = function checkAuthenticatedInQlik(sourceURL){
 }
 ```",,"","","","","         0","0","Deep dive",
 "Web integration","Make sure the user is authenticated before you show a mashup","PS: Make sure you white-list (both web-socket & cors-header) in the QMC",,"","","","","         0","0","Deep dive",
-"Web integration","Make sure the user is authenticated before you show a mashup","!comment
-This slide shows more information of authenticating the user.
-",,,,,,,,,
 "Web integration","Capabilities API - Host whitelist explained ","Capabilities API - DIV tag require.js flow.png",,"","","","","         0","0","PreSales",
 "Web integration","Capabilities API - Host whitelist explained ","<q>Which domains have access to Qlik Sense Proxy web sockets?</q>",,"","","","","         0","0","PreSales",
 "Web integration","Capabilities API - Host whitelist explained ","!comment
-The Host white list is a property on the Qlik Sense virtual proxies.  In there the hostnames, IP addresses or subdomains can be filled in.
-Now in an integration example:
+The Host white list is a property on the Qlik Sense virtual proxies. In there the hostnames, IP addresses or subdomainsof the servers where Qlik Sense needs to connect to, can be entered.
+Now in an integration example:  
 First you have the webpages of the SaaS platform which contain HTML, CSS and JavaScript. The HTTP origin header comes from the SaaS platform web server. Whenever Qlik Sense is embedded though IFrame or Div tags , it also uses web content which again uses HTML, CSS and JavaScript. But here the HTTP origin header comes from Qlik Sense.
-Whenever the page on the SaaS platform is loaded, it will need the embedded content from Qlik Sense. To get to the content you always need to pass the Qlik Sense virtual proxy. If the virtual proxy does not know the address, hostname,… of the server then there will no WebSocket connection allowed. The page will not load in the Qlik Sense content. 
+Whenever the page on the SaaS platform is loaded, it will need the embedded content from Qlik Sense. To get to the content you always need to pass the Qlik Sense virtual proxy. If the virtual proxy does not know the address, hostname,… of the server then there will no WebSocket connection allowed. The page will not load in the Qlik Sense content.  
 When an additional header is supplied, the address needs not to be added to the whitelist : Access-Control-Allow-Origin *. Instead of using *, use your protocol, server, port combination.
 ",,,,,,,,,
 "Web integration","Capabilities API - flow chart","flow - capabilities API end to end.png",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Capabilities API - flow chart","!comment
-#This slide gives an overview which steps are executed to use our Capabilities API.The user is authenticated in the SaaS platform and arrives on a web page with embedded Qlik Sense objects through our Capabilities API in the JavaScript and Div tags in the HTML.In order to show the Qlik Sense content, the user must be authenticated in the Qlik Sense system. So first of all there has to be an authentication check through a Qlik Sense virtual proxy. (Most of the time this is done through ticketing or HTTP header). If the user fails the authentication check, a WebSocket error will occur.If the authentication was successful, the Require.JS starts. This is a module loader that loads in all the required components in the right order to make sure the Qlik Sense objects can be loaded. These components are Qlik.js, the client-CSS and fonts.When these are loaded in, it is important the right objects are shown. First authorizing happens. This is done by our security rules. If a certain user does not have access to a certain app or object the Qlik Sense content will not be shown in the embedded HTML page.
+#This slide gives an overview which steps are executed to use our Capabilities API.  
+1. The user is authenticated in the SaaS platform and arrives on a web page with embedded Qlik Sense objects through our Capabilities API in the JavaScript. 
+2. In order to show the Qlik Sense content, the user must be authenticated in the Qlik Sense system. So first of all there has to be an authentication check through a Qlik Sense virtual proxy. (Most of the time this is done through ticketing or HTTP header). If the user fails the authentication check, a WebSocket error will occur. 
+3. If the authentication was successful, the Require.JS starts. This is a module loader that loads in all the required components in the right order to make sure the Qlik Sense objects can be loaded. These components are Qlik.js, the client-CSS and fonts. 
+4. When these are loaded, it is important that the right objects are shown. First authorizing happens. This is done by our security rules. If a certain user does not have access to a certain app or object the Qlik Sense content will not be shown in the embedded HTML page.
 Finally Section Access is used to make sure row level security is executed.",,,,,,,,,
 "Web integration","Mashup using DIV tags - key component interaction flow","capabilities API - DIV tag Saas platform to proxy.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","Mashup using DIV tags - key component interaction flow","!comment
 #This slide gives an overview which steps are executed when a page with mashups is shown:
-In the existing SaaS platform there are webpages. They consist out of:- HTML with Div tags where Qlik Sense objects are embedded. 
+In the existing SaaS platform there are webpages. They consist out of:
+ - HTML with Div tags where Qlik Sense objects are embedded. 
  - CSS for the styling.
- - JavaScript to use our APIs to embed the Qlik Sense objects in the Div tags.
-When the page is shown, the user must be authenticated first. So a authentication check is done through our virtual proxy . (Most of the time this is done through ticketing or HTTP header). If the user fails the authentication check, a WebSocket error will occur.After the user is authenticated the Qlik Sense engine will provide the corresponding objects. Authorization through our security rules will determine if the user has access to the correct stream(s) and app(s).At that point there can be a choice to use an existing chart, to create a new one on the fly by our Visualizations API or simply get the data from the app. (that data can be used in a third party visualization). In order to show only the correct data, Section Access is applied.",,,,,,,,,
+ - JavaScript to use our APIs to embed the Qlik Sense objects in the Div tags.  
+When the page is shown, the user must be authenticated first. So a authentication check is done through our virtual proxy . (Most of the time this is done through ticketing or HTTP header). If the user fails the authentication check, a WebSocket error will occur.  
+After the user is authenticated the Qlik Sense engine will provide the corresponding objects. Authorization through our security rules will determine if the user has access to the correct stream(s) and app(s). At that point there can be a choice to use an existing chart, to create a new one on the fly using our Visualizations API or to simply get the data from the app. (That data can be used in a third party visualization). In order to show only the correct data, Section Access is applied.",,,,,,,,,
 "Web integration","Cross site scripting explained (XSS)","web - cross site scripting explained.png",,"","","","","         0","0","PreSales",
 "Web integration","Cross site scripting explained (XSS)","Note: setting the *Access-Control-Allow-Origin* addition header or populating the host whitelist has the same effect",,"","","","","         0","0","Deep dive",
 "Web integration","Cross site scripting explained (XSS)","[see mozilla help](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)",,"","","","","         0","0","Deep dive",
@@ -989,8 +1049,8 @@ If so, allow access otherwise deny access with a 403 response",,"","","","","   
 "Web integration","Things you need to know about require.js","You really need to use the version that ships with your Sense version",,"","","","","         0","0","Deep dive",
 "Web integration","Things you need to know about require.js","!comment
 JavaScript is a vast collection of different libraries and frameworks, each with their own set of requirements.
-Require.js is a framework that loads in the required pieces of software (called packages or modules) and also in the correct order as certain frameworks are dependent of others.Qlik Sense uses a modified version Require.js. Certain pieces of code have been added to make sure all out APIs work properly.
-(at the beginning of the JavaScript code of a mashup, you always the following line: 'require( [""js/qlik""], function ( qlik )'. This is the call for the Qlik require framework.)
+Require.js is a framework that loads in the required pieces of software (called packages or modules) in the correct order as certain frameworks are dependent of others. Qlik Sense uses a modified version Require.js. Certain pieces of code have been added to make sure all our APIs work properly.
+(At the beginning of the JavaScript code of a mashup, you will always see the following line: _require( [""js/qlik""], function ( qlik )_. This is the call for the Qlik required framework).   
 This modified version of Qlik is not the same as the default require.js. In order to make sure Qlik Sense works properly, your web platform MUST use the same version of require.js as the version that ships with Qlik Sense. If not the mashup will fail to work.
 ",,,,,,,,,
 "Web integration","Dev-hub Mashup templates","You can create your own templates to be used by your users",,"","","","","         0","0","Deep dive",
@@ -1024,7 +1084,7 @@ Please follow the steps:",,"","","","","         0","0","Exercises",
 "Web integration","On the fly","<q>Create charts on the fly using the Vizualization API</q>",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","On the fly","web - options to integrate content.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","On the fly","!comment
-Another way of embedding Qlik Sense is creating a chart on the fly.Rather than using Qlik Sense objects in an already created app, only the data of the app is used. The chart is created in the JavaScript of the webpage through the Qlik Sense visualization APIs.
+Another way of embedding Qlik Sense is creating a chart on the fly. Rather than using Qlik Sense objects in an already created app, only the data of the app is used. The chart is created in the JavaScript of the webpage through the Qlik Sense visualization APIs.
 ",,,,,,,,,
 "Web integration","Visualization API introduction video","https://youtu.be/_pddhxg5__o",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Visualization API introduction video","!comment
@@ -1048,10 +1108,9 @@ options='{""title"":""On the fly barchart""}'></qlik-visual>
 "Web integration","Create charts on the fly","qlik-visuals-result.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Web integration","Create charts on the fly","!comment
 This code shows 2 ways of creating Qlik Sense visualizations on the fly:
- - Through our APIs - app.visualization.create: This API will make a Qlik Sense visualization. The first parameter defines it is going to be a bar chart. The second parameters contains the Dimension(s) ( in this case 'Country)' and Measure(s) ( in this case '=sum(LineSalesAmount)'for the bar chart. After the creation the bar chart is shown in the designated div placeholder.
- - through visuals web components: This way there is no need for JavaScript. First the correct app is opened.
- After that the type of the chart is chosen (here a barchart)
- After that the columns are defined: '[Case Owner Group]' as dimension and '=Avg([Case Duration Time])' as measure.
+ - Through our APIs _app.visualization.create_:   This API will make a Qlik Sense visualization. The first parameter defines it is going to be a bar chart. The second parameters contains the Dimension(s) ( in this case 'Country)' and Measure(s) ( in this case '=sum(LineSalesAmount)'for the bar chart.   After the creation, the bar chart is shown in the designated Div placeholder.
+ - Through visuals web components: This way there is no need for JavaScript. First the correct app is opened.  After that the type of the chart is chosen (here a barchart).
+Finally the columns are defined: '[Case Owner Group]' as dimension and '=Avg([Case Duration Time])' as measure.  
 The chart gets the title: 'on the fly barchart'.",,,,,,,,,
 "Web integration","Exercise: Create a bar chart on the fly (with javascript) using the vizualization API","**Goal:**  Create a Qlik Sense object on the fly in JavaScript without it being created beforehand in an app.",,"","","","","         0","0","Exercises",
 "Web integration","Exercise: Create a bar chart on the fly (with javascript) using the vizualization API","Please follow the steps:
@@ -1069,7 +1128,7 @@ Instead of using Qlik Sense with its visual layer, only the fast in-memory data 
 "Web integration","Demo - Only use Qlik Sense data","Integration demo: create your own vizualization using an external library called  [Chart.js](http://web.saasdemo.qlik.com/chartJS)",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demo - Only use Qlik Sense data","PS: don't forget to press F12 in your browser, to view the raw data coming in!",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demo - Only use Qlik Sense data","!comment
-By clicking on the link you will go to the demo site where you can test this. A custom barchart is created on da dataset delivered by Qlik Sense.
+By clicking on the link you will go to the demo site where you can test this. A custom barchart is created on the dataset delivered by Qlik Sense.  
 The chart has been created in JavaScript using an external library called Chart.js. This gives the users the possibility to create their own visual layer while maintaining the associative power of Qlik Sense.",,,,,,,,,
 "Web integration","When do you use the data only approach?","Use this if you 
 - like to have your own *look and feel*
@@ -1079,9 +1138,9 @@ The chart has been created in JavaScript using an external library called Chart.
 "Web integration","When do you use the data only approach?","No limits, you can programmatically make selections and get data out of Qlik Sense and format it as you like.",,"","","","","         0","0","Technical - 1 day",
 "Web integration","When do you use the data only approach?","[See an example on integration.qlik.com](http://web.saasdemo.qlik.com/tableUsingWidgets)",,"","","","","         0","0","Technical - 1 day",
 "Web integration","When do you use the data only approach?","!comment
-This method is used whenever a user or company wants to maintain their own look and feel - house style (colors, fonts, specific customized visualizations,…) or the user has already a full library of its own visualizations and wants to use those.
-As said on the previous slide, it gives the users the possibility to create their own visual layer while maintaining the associative power of Qlik Sense. This means that ALL the data will be completely visual at ALL times.Through the communication of the SaaS platform and Qlik Sense through WebSockets, your data keeps in sync. Selections can be made as in a native Qlik Sense visualization. As the data is connected, all the other visualizations or object will react to the selections.
-Really the sky is the limit here: The possibility to create a completely customized visual layer on the associative Qlik Sense model.
+This method is used whenever a user or company wants to maintain their own look and feel/house style (colors, fonts, specific customized visualizations,…) or the user has already a full library of its own visualizations and wants to use those.  
+As said on the previous slide, it gives the users the possibility to create their own visual layer while maintaining the associative power of Qlik Sense. This means that ALL the data will be completely visual at ALL times. Through the communication of the SaaS platform and Qlik Sense through WebSockets, your data keeps in sync. Selections can be made as in a native Qlik Sense visualization. As the data is connected, all the other visualizations or object will react to the selections.
+Really the sky is the limit here: The possibility to create a completely customized visual layer on the associative Qlik Sense model.  
 Click on the link to see an example.",,,,,,,,,
 "Web integration","Examples of using Qlik Sense as a data analytics engine","You can query Qlik Sense from your SaaS Platform, in order to
 * make a selection
@@ -1094,7 +1153,7 @@ Click on the link to see an example.",,,,,,,,,
 "Web integration","Examples of using Qlik Sense as a data analytics engine","In the example below we requested a list op apps in JSON format",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Examples of using Qlik Sense as a data analytics engine","postman response.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Examples of using Qlik Sense as a data analytics engine","!comment
-This slide gives an overview of the possible Qlik Sense queries you can use with our APIs. Going from selection queries to get a list of apps, dimensions, mesaures,… For a complete list, please go to help.qlik.com and go to the help for developers to get a complete list.The code example is a response from the Qlik Sense server. We requested a list of apps, and the Server responded in a Json format.Notices that more than just the app ID shown: There is also information if the app was published, when it was published and to what stream.
+This slide gives an overview of the possible Qlik Sense queries you can use with our APIs.  Going from selection queries to get a list of apps, dimensions, mesaures,… For a complete list, please go to [help.qlik.com](help.qlik.com) and go to the help for developers to get a complete list. The code example is a response from the Qlik Sense server. We requested a list of apps, and the Server responded in a Json format. Notice that more than just the app ID is shown: There is also information if the app was published, when it was published and to what stream.
 ",,,,,,,,,
 "Web integration","Data only example: Qlik Sense bot (Start around 3m)","[Open this video](https://youtu.be/vkuukgOKQZY?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel)",,"","","","","         0","0","PreSales",
 "Web integration","Data only example: Qlik Sense bot (Start around 3m)","!comment
@@ -1112,7 +1171,7 @@ var listener = function() {
  }
 ```",,"","","","","         0","0","Deep dive, Technical - 2 hours",
 "Web integration","Table API - retrieve any combination of dimensions and measures","!comment
-With the Table API it is possible to retrieve any combination of dimensions and measures.In the code, first the correct app is opened to have access to the dataset.After that the 'app.createTable' API is used to create the data table on the fly. In this example the tale has 2 dimensions: 'Country' and 'City' and 1 measure : 'Sum(LineSalesAmount)'. The rows parameter defines the maximum rows of the table.
+With the Table API it is possible to retrieve any combination of dimensions and measures. In the code, first the correct app is opened to have access to the dataset. After that the _app.createTable_ API is used to create the data table on the fly. In this example the table has 2 dimensions: 'Country' and 'City' and 1 measure : 'Sum(LineSalesAmount)'. The rows parameter defines the maximum rows of the table.  
 At the end the result will be shown with an onData event.",,,,,,,,,
 "Web integration","Video: Getting started creating widgets (3M)","Create custom application components.",,,,,,,,,
 "Web integration","Video: Getting started creating widgets (3M)","https://youtu.be/KJ9r-tMJ9OM?list=PLkRFvjyuHFvIoZOp11L0WUISOk1te0cLt",,"","","","","         0","0","Deep dive",
@@ -1133,13 +1192,13 @@ A short video that shows the power of visualization extensions. The big differen
 "Web integration","extensions -  Create extra functionality inside an app using javascript","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-API-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours",
 "Web integration","extensions -  Create extra functionality inside an app using javascript","!comment
 This slide shows some examples of visualizations extensions that can enrich Qlik Sense. 
-The website branch.qlik.com is our open source community for extensions. It has a collection of third party extensions created for QlikView or Qlik Sense. They are on all on GitHub and freely downloadable. As everything is open it is possible to take ownership and/or make modifications.",,,,,,,,,
+The website [branch.qlik.com](branch.qlik.com)  is our open source community for extensions. It has a collection of third party extensions created for QlikView or Qlik Sense. They are all available on GitHub and freely downloadable. As everything is open it is possible to take ownership and/or make modifications.",,,,,,,,,
 "Web integration","Video: introduction to extensions (3M)","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Video: introduction to extensions (3M)","!comment
 This short video gives you an introduction in extensions.",,,,,,,,,
 "Web integration","Download your extensions from branch.qlik.com","<iframe class=""SenseEmbedFrame"" src=""http://branch.qlik.com/#!/project"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Download your extensions from branch.qlik.com","!comment
-Branch.qlik.com is the website where you can download extensions that have been made by the community. You can also contribute your own made extensions.",,,,,,,,,
+[Branch.qlik.com](branch.qlik.com) is the website where you can download extensions that have been made by the community. You can also contribute your own made extensions.",,,,,,,,,
 "Web integration","Create apps on the fly","# Create a new app from scratch, that only lives in memory",,,,,,,,,
 "Web integration","Create apps on the fly","You can create apps on the fly, that is session apps, using the `qlik.sessionApp` and `qlik.sessionAppFromApp` methods. See [Qlik help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/Mashups/Content/Howtos/create-session-app.htm)",,,,,,,,,
 "Web integration","Create apps on the fly","#Create and configure the session app
@@ -1224,11 +1283,11 @@ sessionAppFromApp.doReload().then(function(result){
 "Web integration","Embed your custom SVG maps","PS: if you need more geo based analytics we recommend to use of our ""standard product"" (no extension) [GeoAnalytics](https://community.qlik.com/docs/DOC-17993)",,,,,,,,,
 "Web integration","Embed your custom SVG maps","https://youtu.be/VoCLr2PQz5A",,,,,,,,,
 "Web integration","Embed your custom SVG maps","!comment
-An example of a powerful extension is the SVG reader, created by Brian Muntz and freely downloadable on Qlik branch.It allows you to import your own customized maps in Qlik Sense.
+An example of a powerful extension is the SVG reader, created by Brian Muntz and freely downloadable on Qlik branch. It allows you to import your own customized maps in Qlik Sense.
 ",,,,,,,,,
 "Web integration","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise.png",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Difference between QAP and Qlik Sense enterprise","!comment
-This slide explain the difference between the Qlik Analytics Platform and Qlik Sense Enterprise. Basically the QAP is Qlik Sense Enterprise without the hub. This means that with the QAP you cannot create apps, edit, see an app overview,… through the hub.All these actions are available through our APIs.
+This slide explain the difference between the Qlik Analytics Platform and Qlik Sense Enterprise. Basically the QAP is Qlik Sense Enterprise without the hub. This means that with the QAP you cannot create and edit apps, see an app overview,… through the hub. All these actions are available through our APIs.
 ",,,,,,,,,
 "Web integration","Embed Qlik Sense in IIS","https://youtu.be/ybGIYdHenqE",,,,,,,,,
 "Web integration","Embed Qlik Sense in IIS","!comment
@@ -1287,8 +1346,8 @@ This slide gives some performance tips when using our APIs.
 "Security - functional design","Introduction to application level security","Authorization: What can he do?",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - functional design","Introduction to application level security","<img class=""ui medium centered image"" src=""images/securityRules.png"">",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - functional design","Introduction to application level security","!comment
-First of all it is really important to understand the difference between authentication and authorization.Let's use the following example: You arrive at work and you start up your computer. Before you can use it, you need to give in a username and password. That process is called authenticating. By entering your unique user and password the computer knows who you are, and lets you enter. Authenticating is used constantly: unlocking your smartphone, logging on to your amazon account,…. Authentication is like asking: 'Who are you?' and is often the first step in a security model.
-Let's go back to the example of logging on to your work computer. After you are logged in you need certain files of your department to work in. You go to the place where they are stored and get the required files. You notice that you can only see and modify the files of YOUR department, not of the other departments. This is called authorizing.
+First of all it is really important to understand the difference between authentication and authorization. Let's use the following example:   You arrive at work and you start up your computer. Before you can use it, you need to give in a username and password. That process is called authenticating. By entering your unique user and password the computer knows who you are, and lets you enter. Authenticating is used constantly: unlocking your smartphone, logging on to your amazon account,…. Authentication is like asking: 'Who are you?' and is often the first step in a security model.  
+Let's go back to the example of logging on to your work computer. After you are logged in you need certain files of your department to work in. You go to the place where they are stored and get the required files. You notice that you can only see and modify the files of YOUR department, not of the other departments. This is called authorizing.  
 Authorization is asking: 'I know who you are, now what can you do?'.",,,,,,,,,
 "Security - functional design","Introduction video","https://youtu.be/sdCVsMzTf64?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - functional design","Introduction video","!comment
@@ -1309,13 +1368,14 @@ Qlik Sense is built from the ground up to be flexible. This means that Qlik Sens
     security rules  and 
     section access",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - functional design","Qlik Sense security as part of a governance framework","!comment
-With Qlik Sense, the control is fully kept.Typical problems like unreliable and slow reporting, different versions of the truth, performance issues ,… are handled with Qlik Sense:
-Qlik Sense security is so flexible it can completely plugin in the existing security framework. In addition with our Security rules and row level security (Section Access) we can give the right content to the right users and developers. Every user will have its correct rights. That means that end users will only be able to analyse, but developers can maintain their apps real-time, so that modifications can be done very fast. So it's always necessary to make sure there is a authorization concept design made.
+With Qlik Sense, the control is fully kept. Typical problems like unreliable and slow reporting, different versions of the truth, performance issues ,… are handled with Qlik Sense:  
+Qlik Sense security is so flexible it can completely plugin in the existing security framework. In addition with our Security rules and row level security (Section Access) we can give the right content to the right users and developers. Every user will have its correct rights. That means that end users will only be able to analyse, but developers can maintain their apps real-time, so that modifications can be done very fast. So it's always necessary to make sure there is an authorization concept design made.
 ",,,,,,,,,
 "Security - functional design","Example Qlik Sense authorization concept design","Function and Tasks_Demo.png",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - functional design","Example Qlik Sense authorization concept design","Download the Excel [here](http://integration.qlik.com/docs/QlikSense%20Authorizations%20-%20Function%20and%20Tasks_Demo.xlsx)",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - functional design","Example Qlik Sense authorization concept design","!comment
-This slide gives an example of an authorization concept. It's a combination of certain rules a certain user or group can execute. A Qlik Sense is completely free and flexible to create security rules, so an initial design is strongly advised in order to build up a robust and easy security authorization system.By clicking on the link, the excel of the design can be downloaded.
+This slide gives an example of an authorization concept. It's a combination of certain rules a certain user or group can execute. Qlik Sense is completely free and flexible to create security rules, so an initial design is strongly advised in order to build up a robust and easy security authorization system.  
+By clicking on the link, the excel of the design can be downloaded.
 ",,,,,,,,,
 "Security - technical design","From functional to Qlik Sense authorization design","Now you have your *functional design*  ready you can start creating your Qlik Sense *technical authorization design*",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","From functional to Qlik Sense authorization design","Key questions to ask in order to segregate duties between users:
@@ -1323,10 +1383,10 @@ This slide gives an example of an authorization concept. It's a combination of c
 - can you re-use exsting (AD) groups outside of Qlik?
 - or do you need some option to create and assign groups/roles to users in Qlik Sense?",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","From functional to Qlik Sense authorization design","!comment
-The next step after the functional design of the authorization, is the technical design.As Qlik Sense needs to plugin into an existing system, there are some key questions:
+The next step after the functional design of the authorization, is the technical design. As Qlik Sense needs to plugin into an existing system, there are some key questions:
  - Where are the users stored? As we use the users that are already present in the current system.
  - Can existing groups be re-used outside of Qlik? These groups will be used in security rules to define what the self-service rights, roles,… can be. 
- - If the groups cannot be re-used is it possible to create and assign groups or roles in Qlik Sense.",,,,,,,,,
+ - If the groups cannot be re-used, is it possible to create and assign groups or roles in Qlik Sense.",,,,,,,,,
 "Security - technical design","Typical questions to ask to get started...","Where can you get the group membership from? (for authorization purposes)",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","Typical questions to ask to get started...","User - how does he login?",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","Typical questions to ask to get started...","Which device/methods does he use to consume information? (IPad, pdf, embedded)",,"","","","","         0","0","PreSales, Technical - 1 day",
@@ -1343,7 +1403,8 @@ An overview of typical questions to start.",,,,,,,,,
 "Security - technical design","Authentication - who are the users?","Sense service accounts",,"","","","","         0","0","PreSales",
 "Security - technical design","Authentication - who are the users?","Repository service account",,"","","","","         0","0","PreSales",
 "Security - technical design","Authentication - who are the users?","!comment
-Authentication or WHO are you?This process is identifying who the user is that logs on. These can be:
+Authentication (WHO are you?)  
+This process is identifying who the user is that logs on. These can be:
  - Internal (domain) end users. For example the employees of a company.
  - External users (not in domain). For example some customers of the company.
  - External service (API) users (not in domain).
@@ -1357,7 +1418,7 @@ Authentication or WHO are you?This process is identifying who the user is that l
 "Security - technical design","Where are the user's identity stored?","Excel / File",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","Where are the user's identity stored?","HR system",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","Where are the user's identity stored?","!comment
-The user's identity can be stored in a different set of systems. Traditionally users are stored in Active Directory or LDAP. (Qlik Sense supports Active directory out of the box)But users can also be store in other software's like Facebook, Salesforce, HR systems,…It is also possible to store the data of the users in a traditional database or filetype ( like Excel).For SaaS - OEM scenarios the option to store the users in a database is preferred. It makes it very easy to inject that data into a ticket that can be passed on to our Qlik Sense system.
+The user's identity can be stored in a different set of systems. Traditionally users are stored in Active Directory or LDAP. (Qlik Sense supports Active directory out of the box). Users can also be store in other software systems like Facebook, Salesforce, HR systems,… It is also possible to store the data of the users in a traditional database or filetype (like Excel). For SaaS - OEM scenarios, the option to store the users in a database is preferred. It makes it very easy to inject that data into a ticket that can be passed on to our Qlik Sense system.
 ",,,,,,,,,
 "Security - technical design","Authentication: a userId is not the same as getting its groups....","<q>Make sure you understand what you can get from these indentity stores....</q>",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","Qlik Sense options to authenticate","Microsoft: Local account or  Active Directory",,"","","","","         0","0","PreSales",
@@ -1366,13 +1427,13 @@ The user's identity can be stored in a different set of systems. Traditionally u
 "Security - technical design","Qlik Sense options to authenticate","Headers",,"","","","","         0","0","PreSales",
 "Security - technical design","Qlik Sense options to authenticate","Certificates (between servers)",,"","","","","         0","0","PreSales",
 "Security - technical design","Qlik Sense options to authenticate","!comment
-Qlik Sense has different options for authentication. You can create as many Virtual Proxies as you want, each with their own specific method of authenticating. The following authentication methods are supported:
+Qlik Sense has different options for authentication. You can create as many virtual proxies as you want, each with their own specific method of authenticating. The following authentication methods are supported:
  - Microsoft authentication (Local Windows directory or Active directory). This is one of the most common methods to authenticate. For Qlik Sense it is also the easiest: When a Qlik Sense Enterprise is installed, it authenticates by default against AD.
  - Ticketing. This method is used a lot in integration and SSO (Single Sign On) scenarios. A user is already authenticated in another software, but needs to see embedded Qlik Sense content. A ticket is passed to the virtual proxy of Qlik Sense. The ticket contains all the necessary information of the user ( ID, name, group,…)
  - SAML (Security Assertion Markup Language). Also used for SSO. It is an open standard for exchanging authentication and authorization data between parties, in particular, between an identity provider and a service provider.
  - Headers. This method is used for SSO and integration scenarios. The ID and additional information of the user is parsed in the HTTP(S) header.
- - JWT (JSON Web Token) is an open standard for secure transmission of information between two parties as a JavaScript Object Notation(JSON) object. JWT is used for authentication and authorization. Because JWT enables single sign-on (SSO), it minimizes the number of times a user has to log on to cloud applications and websites.
-Certificates. Used for communication between different servers so that it is completely secured.",,,,,,,,,
+ - JWT (JSON Web Token) is an open standard for secure transmission of information between two parties as a JavaScript Object Notation or JSON object. JWT is used for authentication and authorization. Because JWT enables single sign-on (SSO), it minimizes the number of times a user has to log on to cloud applications and websites.  
+Certificates are used for communication between different servers so that it is completely secured.",,,,,,,,,
 "Security - technical design","You create a virtual proxy per authentication method","QPS - virtual proxy per authentication method.png",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "Security - technical design","You create a virtual proxy per authentication method","!comment
 With Qlik Sense you do not need different machines with different proxies with authentication methods. In Qlik Sense, virtual proxies are created that all can run on the same machine. Each virtual proxy has its own authentication method and is linked to a proxy. 
@@ -1381,35 +1442,38 @@ Whenever a user needs data form Qlik Sense in an embedded environment, our API i
 "Security - technical design","Authorization relevant resources","security - authorization relevant resources.png",,"","","","","         0","0","Technical - 2 hours",
 "Security - technical design","Authorization relevant resources","!comment
 Authorization in Qlik Sense is mainly handled by the security rules. These security rules are very customizable and flexible. In order to make a robust security rule set, it is important to know some relevant resources. 
-- Context: A rule can be made in a certain context. There are 3 contexts available: Hub, QMC or Both. Context is way to split the rules between the QMC (Management Console) or The Qlik Sense Hub. Some resources can exist in the 2 resources (For example Apps, Streams, App Objects). Then you use the 'Both' option on the resource.
-- Stream: A stream can be compared as a folder. A stream will contain 1 or multiple apps. In order to present Qlik Sense apps to end users, the apps must be 'put' in a stream. That process is call publishing an app. If an app is not published, it will appear in the 'My Work' stream of the owner and it will only be available to the owner.
- - App: An app consists out of multiple app objects : sheets, stories bookmarks, dimensions, measures. On the sheets multiple objects can be placed (Charts, tables, KPI objects,…) to show the data.",,,,,,,,,
+- Context: A rule can be made in a certain context. There are 3 contexts available: Hub, QMC or Both. Context is a way to split the rules between the QMC (Management Console) or The Qlik Sense Hub. Some resources can exist in the 2 resources (For example Apps, Streams, App Objects). Then you use the 'Both' option on the resource.
+- Stream: A stream can be compared to a folder. A stream will contain 1 or multiple apps. In order to present Qlik Sense apps to end users, the apps must be put in a stream. That process is called publishing an app. If an app is not published, it will appear in the 'My Work' stream of the owner and it will only be available to the owner.
+ - App: An app consists out of multiple app objects : sheets, stories, bookmarks, dimensions, measures. On the sheets multiple objects can be placed (Charts, tables, KPI objects,…) to show the data.",,,,,,,,,
 "Security - technical design","Security flow: User opens an app","flow - user opens app.png",,"","","","","         0","0","Technical - 2 hours",
 "Security - technical design","Security flow: User opens an app","PS: make sure you use 'user.name like *' in the QMC license section. In this way you don't have to worry about allocating licenses in integration scenarios in combination with ticketing. Your authentication module decides which users should have access to Qlik Sense. So you only request a ticket for authorized users.",,"","","","","         0","0","Technical - 1 day",
 "Security - technical design","Security flow: User opens an app","!comment
-When a user wants to display an app embedded in its web environment, a whole process is started to make sure the user sees the correct content.
-The first step is the authentication part:
-A connection to a virtual proxy of Qlik Sense is made. There are different methods of authentication (Windows, Ticket, header, SAML, JWT).
-When the user is authenticated the second step starts: authorization.
-This is handled mainly by the security rules of Qlik Sense. The levels that are being checked are: Does the user have stream access? If yes, does he have access to the app in the stream? If yes does he have app object access? (stream, story, bookmark).If these requirements are met, the last part of authorization comes into play.The row level security or section access is defined in the data load editor of the app. When the app is opened the section access will activate and show only the right data subset in the app.
+When a user wants to display an embedded app in his web environment, a whole process is started to make sure the user sees the correct content.  
+The first step is the authentication part:  
+A connection to a virtual proxy of Qlik Sense is made. There are different methods of authentication (Windows, Ticket, header, SAML, JWT).  
+
+When the user is authenticated the second step starts: authorization.  
+This is handled mainly by the security rules of Qlik Sense. The levels that are being checked are:  
+Does the user have stream access? If yes, does he have access to the app in the stream? If yes does he have app object access? (stream, story, bookmark). 
+If these requirements are met, the last part of authorization comes into play. The row level security or section access is defined in the data load editor of the app. When the app is opened the section access will activate and show only the right data subset in the app.
 ",,,,,,,,,
 "Security - technical design","High level authentication and authorization flow","security - high level authentication and authorization flow.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "Security - technical design","High level authentication and authorization flow","!comment
-The user logs in and goes to our server or the Qlik Sense hub. First of all the user must be known, so authentication must be done. The is done by our Qlik Sense Proxy (QPS). Or the user gets authenticated or if there is no cookie present and the proxy redirects the request to an authentication module. It will request a ticket for the user and group membership. In order to get the required data, there is a UDC (User Directory Connector) used. A UDC creates a link to the database of the identity provider to be able to get the required user data. When this is done, the user is redirected to the hub, with a ticket appended in the URL of the request. The proxy will grant access. After that the correct content will be shown through our security rules. And finally , to see the correct data in an app, section access is executed. 
+The user logs in and goes to our server or the Qlik Sense hub. First of all the user must be known, so authentication must be done. This is done by our Qlik Sense Proxy (QPS). Then the user gets authenticated. If there is no cookie present yet, the proxy redirects the request to an authentication module. It will request a ticket for the user and group membership. In order to get the required data, there is a UDC (User Directory Connector) used. A UDC creates a link to the database of the identity provider to be able to get the required user data. When this is done, the user is redirected to the hub, with a ticket appended in the URL of the request. The proxy will grant access. After that the correct content will be shown through our security rules. And finally , to see the correct data in an app, section access is executed. 
 ",,,,,,,,,
 "Security - technical design","Qlik Sense security flow when opening an app","SenseSecurityFlow.png",,"","","","","         0","0","PreSales",
 "Security - technical design","Qlik Sense security flow when opening an app","!comment
 This slide gives an overview of all the security processes when opening an app.
 - The user starts from the browser and needs to see Qlik Sense content.
 - First of all the Qlik Proxy Services (QPS) will need the user credentials to grant access. A connection to the Identity Provider will be made to verify this. By default Qlik Sense will authenticate against Active Directory, but other authentication methods are possible. When the user credentials are correct, the proxy will create a session. This whole process is the authentication part of Qlik Sense. 
-- After that, the right content must be shown. This is handled by the security rules in Qlik Sense. To make sure that Qlik Sense knows the ID's and attributes of the users, UDC(s) (User Directory Connector) were created to make sure that that information is known in Qlik Sense. The security rules, UDC's and user data are stored in the Repository Database of Qlik Sense. That database is maintained by the Qlik Repository Services (QRS). This is the first step of authorization. 
-- After that the correct content is available for the user. To make sure that the app shows the correct sub data set, Dynamic data reduction or Section Access is used. This is a specific script that is made in the app itself. It is executed when the app is opened. The Qlik Engine Service (QES) is the service that hosts the apps so it also executes the Section Access. This is the second part of authorization.",,,,,,,,,
+- After that, the right content must be shown. This is handled by the security rules in Qlik Sense. To make sure that Qlik Sense knows the IDs and attributes of the users, UDC(s) (User Directory Connector) are created to make sure that this information is known in Qlik Sense. The security rules, UDC's and user data are stored in the Repository Database of Qlik Sense. That database is maintained by the Qlik Repository Services (QRS). This is the first step of authorization. 
+- Now the correct content is available for the user. To make sure that the app shows the correct sub data set, Dynamic data reduction or Section Access is used. This is a specific script that is made in the app itself. It is executed when the app is opened. The Qlik Engine Service (QES) is the service that hosts the apps so it also executes the Section Access. This is the second part of authorization.",,,,,,,,,
 "Security - technical design","Introduction to ticketing","QPS - introduction to security flow.png",,"","","","","         0","0","Technical - 1 hour",
 "Security - technical design","Introduction to ticketing","!comment
 To pass through the user information from the SaaS platform to Qlik Sense, often ticketing is used.
 - A user logs in to the SaaS platform. At this point the user is authenticated in the SaaS platform. It is important to know that Qlik Sense will not store the list of users again. All the users and authorizations are stored in the security module of your SaaS platform.
 - At a point, the user will arrive on a web page in the SaaS platform that has Qlik Sense content that must be shown.
-- The user is redirected to the Qlik Sense Proxy that has a Virtual Proxy that will authenticate against a ticket. The user credentials have been verified when the user logged in on the SaaS platform so the authentication module will request a ticket form the Qlik Sense Proxy. - The proxy will send a ticket to the authentication module. 
+- The user is redirected to the Qlik Sense Proxy that has a Virtual Proxy that will authenticate against a ticket. The user credentials have been verified when the user logged in on the SaaS platform so the authentication module will request a ticket form the Qlik Sense Proxy.  - The proxy will send a ticket to the authentication module. 
 - The authentication module will redirect the user back to the Qlik Sense Proxy with a ticket. The proxy checks if the ticket is valid and has not timed out.
 -  If the ticket is still valid, the proxy will create a session for the user and the user is authenticated.
 - The Qlik Sense content is available.",,,,,,,,,
@@ -1418,7 +1482,8 @@ To pass through the user information from the SaaS platform to Qlik Sense, often
 This slide gives the same overview as the previous slide:
 - A user logs in to the SaaS platform. At this point the user is authenticated in the SaaS platform. It is important to know that Qlik Sense will not store the list of users again. All the users and authorizations are stored in the security module of your SaaS platform. 
 - At a point, the user will arrive on a web page in the SaaS platform that has Qlik Sense content that must be shown.
-- The user is redirected to the Qlik Sense Proxy that has a Virtual Proxy that will authenticate against a ticket. The user credentials have been verified when the user logged in on the SaaS platform so the authentication module will request a ticket form the Qlik Sense Proxy. - The proxy will send a ticket to the authentication module. 
+- The user is redirected to the Qlik Sense Proxy that has a Virtual Proxy that will authenticate against a ticket. The user credentials have been verified when the user logged in on the SaaS platform so the authentication module will request a ticket form the Qlik Sense Proxy.  
+- The proxy will send a ticket to the authentication module. 
 - The authentication module will redirect the user back to the Qlik Sense Proxy with a ticket. The proxy checks if the ticket is valid and has not timed out.
 -  If the ticket is still valid, the proxy will create a session for the user and the user is authenticated.
 - The Qlik Sense content is available.",,,,,,,,,
@@ -1428,21 +1493,22 @@ This short video shows all the steps in the security flow of an integrated Qlik 
 "Security - technical design","Qlik Sense security overview","securityOverview.png",,"","","","","         0","0","Technical - 1 hour",
 "Security - technical design","Qlik Sense security overview","!comment
 There are some basic concepts that Qlik Sense uses in its security:
-- Streams, Apps, Sheets: A Stream is like a folder where apps are stored. In order to provision an app to users, it must always be published in a stream. 
- Normally security is implemented on stream level. It is very easy to give each customer its own stream and apps. But it is also possible to implement security on app or sheet level.
-- Security rules: The security rules use ABAC (Attribute Base Access control). A rule always uses this concept:
+- Streams, Apps, Sheets: A Stream is like a folder where apps are stored. In order to provision an app to users, it must always be published in a stream. The app is a container with the Data(model), sheets with visualisations, Dimensions, Measures, Bookmarks and Stories. Normally security is implemented on stream level. It is very easy to give each customer its own stream and apps. But it is also possible to implement security on app or sheet level.
+- Security rules: The security rules use ABAC (Attribute Base Access control).  A rule always uses this concept: 
  Allow the USER to do ACTION on the RESOURCE in ENVIRONMENT provided CONDITION . 
-- Roles and groups: These need not to be created in Qlik Sense. In order to use them in the security rules, they can be re-used from the existing SaaS platform. Whenever a user needs Qlik Sense content, he needs to be authenticated. Often a ticket is used in order to authenticate. In that ticket the userid and group are added, so that these can be used in the evaluation of the security roles and section access in Qlik Sense.
+- Roles and groups: These need not to be created in Qlik Sense. In order to use them in the security rules, they can be re-used from the existing SaaS platform. Whenever a user needs Qlik Sense content, he needs to be authenticated. Often a ticket is used in order to authenticate. In that ticket the userid and group(s)are added, so that these can be used in the evaluation of the security rules and section access in Qlik Sense.
 - Section Access: This part of security is in the script of the app. It offers row and column based security in the app. Whenever a user opens an app, its userid is checked. The user will only see his subset of the data, defined in the Section Access part.",,,,,,,,,
 "Security - technical design","Qlik Sense authorization in 2 steps","Setup security in 2 steps
 - Step 1 *Resource Authorization* (using the Security Rules in the QMC)
 - Step 2 Data filter (using *section access* in the script of an app)",,"","","","","         0","0","Technical - 1 day",
 "Security - technical design","Qlik Sense authorization in 2 steps","!comment
-As said before, the authorization of Qlik Sense has 2 steps:- Resource authorization: This is the first step of authorization. First of all, the user must see the correct content and resources: What Streams, apps, app objects, … does he have access to? This is all define with the security roles in Qlik Sense.
-- Section Access: This second step will put a data filter on an app, so that the correct data is shown.  For example, when the Sales manager of Europe accesses the app, he/she will only see the data from the Europe region. When the Sales manager from America opens the same app, he/she will only see the data form the Americas). This is called row level security.",,,,,,,,,
+As said before, the authorization of Qlik Sense has 2 steps: 
+ - Resource authorization: This is the first step of authorization. First of all, the user must see the correct content and resources: What Streams, apps, app objects, … does he have access to? This is all defined with the security rules in Qlik Sense.
+ - Section Access: This second step will put a data filter on an app, so that the correct data is shown.  For example, when the Sales manager of Europe accesses the app, he/she will only see the data from the Europe region. When the Sales manager from America opens the same app, he/she will only see the data form the Americas. This is called row level security.",,,,,,,,,
 "Security - technical design","Authorization step 1: QMC security rules","security rules - step 1 allow the user to.png",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","Authorization step 1: QMC security rules","!comment
-Let's take a look at the concept of security rules:Allow the USER to do ACTION on the RESOURCE in ENVIRONMENT provided CONDITION .
+Let's take a look at the concept of security rules: 
+Allow the USER to do ACTION on the RESOURCE in ENVIRONMENT provided CONDITION .
 
 - Action/Conditions: These are the actions that can be used in creating a rule. Some of the actions are only available for administrators (Change owner, change role). Some actions can only be used against a certain resource (Publish can only be used with the resource stream, as you cannot publish an app in another resource).
 
@@ -1450,20 +1516,21 @@ Let's take a look at the concept of security rules:Allow the USER to do ACTION o
 "Security - technical design","Authorization step 2: section access overview","section access intro data reduction open app.png",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","Authorization step 2: section access overview","[See this row level security demo](http://integration.qlik.com/selfService). Here each user can only see data from the country he belongs too.",,,,,,,,,
 "Security - technical design","Authorization step 2: section access overview","!comment
-When the app is opened, the script in the Section Access part will be used in order to see what user has access to what dataset.There are 2 levels of access in Section Access:
+When the app is opened, the script in the Section Access part will be used in order to see what user has access to what dataset. There are 2 levels of access in Section Access:
  - ADMIN: Users in this access level will see all the data
  - USER: Users in this access level will only see a reduced subset of the data. Each user that will login can have a completely different subset to work with.
 Click on the link in the bottom to go to the row level security demo.",,,,,,,,,
 "Security - technical design","Authorization step 2: section access (row/column level security)","security - authorization step 2 section access.png",,"","","","","         0","0","Technical - 1 day",
 "Security - technical design","Authorization step 2: section access (row/column level security)","Note: you can both hide rows as well as [columns](http://www.qliktips.com/2011/04/blocking-user-access-to-field-using.html)",,"","","","","         0","0","Technical - 1 day",
 "Security - technical design","Authorization step 2: section access (row/column level security)","!comment
-Section access will restrict the data in an app.A table is loaded or created in the script in a part that is identified by Section Access. This table has some fields that are necessary to make the data reduction work:
+Section access will restrict the data in an app. A table is loaded or created in the script in a part that is identified by Section Access. This table has some fields that are necessary to make the data reduction work:
  - ACCESS: This field can have 2 values. ADMIN access gives full access to all the data. USER will used for users with restricted subsets.
- - USERID: This contains the userid of the user that needs to use the data from the app. In an embedded scenario this is most of the times passed by a ticket.
- - GROUP: The name of the group or role a certain user is member of. This is used to create the row level security on group level. This parameter can also be included in a ticket.  - OMIT: This field contains names of fields that needs to be omitted for a certain user. So instead of reducing rows, it is also possible to reduce columns.
+ - USERID: This contains the userid of the user that needs to use the data of the app. In an embedded scenario this is most of the times passed by a ticket.
+ - GROUP: The name of the group or role a certain user is member of. This is used to create the row level security on group level. This parameter can also be included in a ticket.
+ - OMIT: This field contains names of fields that need to be omitted from a certain user. So instead of reducing rows, it is also possible to reduce columns.  
 This table in the section access part will not appear in the data model of the app. This table only will make sure a user can open the app or not.
 
-By adding another table that links a field from the section access table to a certain field from the data model, a link is created between the section access table and the data model. Whenever the app opens this tables will act as a 'filter' and show only the associated data.
+By adding another table that links a field from the section access table to a certain field from the data model, a link is created between the section access table and the data model. Whenever the app opens these tables will act as a 'filter' and only the associated data is  shown. 
 The example on the slide shows that certain users can see specific orders and their associated data. The field AUTH_EMP_ID field is used for this.",,,,,,,,,
 "Security - technical design","Authorization step 2: section access data reduction example","section access - data reduction examples.png",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","Authorization step 2: section access data reduction example","Column level security (hide specific columns for certain groups)",,,,,,,,,
@@ -1494,18 +1561,18 @@ LOAD * INLINE [
 ```
 [source Qliktips.com](http://www.qliktips.com/2011/04/blocking-user-access-to-field-using.html)",,,,,,,,,
 "Security - technical design","Authorization step 2: section access data reduction example","!comment
-This slide shows an example:
-The first example shows a Section Access Table:
-The field TERRITORYCODE is being used to link certain users to a certain territory from the data model. This will act like a filter and will only show the corresponding territory and its associated data to a user. 
-The OMIT field has been filled in with the value 'population' for all the Access type users. This means that they never will see the population data for ANY territory.
+This slide shows an example: 
+The first example shows a Section Access Table: 
+The field TERRITORYCODE is being used to link certain users to a certain territory from the data model. This will act as a filter and will only show the corresponding territory and its associated data to a user. 
+The OMIT field has been filled with the value 'population' for all the Access type users. This means that they will never see the population data for ANY territory.
 
 The code shows 3 tables:
  - The first table in the Section Access part allows user1 and user2 to open the app. They have their designated group1 and 2. There is also an admin user.
- - The second table in the section access part is used to hide several fields from group1 and 2. 
+ - The second table in the section access part is used to hide several fields from group 1 and 2.  
 The last table is in the Section Application part of the app. This table links a field from the Section Access part to a value from the data model form the app.",,,,,,,,,
 "Security - technical design","Row level security using groups in section access","sectionAccess groups.png",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - technical design","Row level security using groups in section access","!comment
-Instead of using the USERID to make row level security, it might be easier to create the code based on groups. These groups are attributes of the user that can be passed through a ticket.This code shows that the first 3 users will have their designated groups. (in this case countries). So it is very easy to link the GROUP field of the section access table to the country field in the dataset to apply the row level security.The last 3 users are administrators and they can see all the groups.
+Instead of using the USERID to make row level security, it might be easier to create the code based on groups. These groups are attributes of the user that can be passed through a ticket. This code shows that the first 3 users will have their designated groups (in this case countries). So it is very easy to link the GROUP field of the section access table to the country field in the dataset to apply the row level security. The last 3 users are administrators and they can see all the groups.
 ",,,,,,,,,
 "Security - technical design","Audit your security implementation","Make sure your security rules work according to your security design. ",,,,,,,,,
 "Security - technical design","Audit your security implementation","Use the QMC - Audit for this",,,,,,,,,
@@ -1513,7 +1580,7 @@ Instead of using the USERID to make row level security, it might be easier to cr
 "Security - technical design","Some other topics","<q>Some other topics you need to know of</q>",,"","","","","         0","0","PreSales",
 "Security - technical design","User Directory Connector (UDC)","<q>User Directory Connector</q>",,"","","","","         0","0","Deep dive",
 "Security - technical design","User Directory Connector (UDC)","!comment
-UDC stands for User Directory Connector.It connects to a an already configured directory service to retrieve users and import them in Qlik Sense. With a UDC there is also the possibility to import additional attributes like groups, email,…
+UDC stands for User Directory Connector. It connects to a an already configured directory service to retrieve users and import them in Qlik Sense. With a UDC there is also the possibility to import additional attributes like groups, emails,…  
 These can be used in the Qlik Sense security rules.
 Qlik Sense already comes with predefined UDC's :
  - Generic LDAP
@@ -1522,9 +1589,9 @@ Qlik Sense already comes with predefined UDC's :
  - ODBC
  - Access(ODBC)
  - Excel(ODBC)
- - SQL(ODBC)
+ - SQL(ODBC)  
 The UDC API is used to import users and groups in Qlik Sense. Click on the link to find more information.
-There can be multiple instanced of each UDC in a Qlik Sense deployment.",,,,,,,,,
+There can be multiple instances of each UDC in a Qlik Sense deployment.",,,,,,,,,
 "Security - technical design","What is a UDC","UDC - what is a UDC.png",,"","","","","         0","0","Deep dive",
 "Security - technical design","What is a UDC","The user directory connector ([UDC](http://help.qlik.com/en-US/sense/June2017/Subsystems/ManagementConsole/Content/user-directory-connectors-overview.htm)) connects to a configured directory service to retrieve users. The UDCs supplied with the Qlik Sense installation are Generic LDAP, Microsoft Active Directory, ApacheDS, ODBC, Access (via ODBC), Excel (via ODBC), and SQL (via ODBC).",,"","","","","         0","0","Deep dive",
 "Security - technical design","What is a UDC","The UDC [API](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/UserDirectoryConnectorAPI/Content/UDCAPI/UDCAPI-Introduction.htm) is used to import users and groups in Qlik Sense.",,"","","","","         0","0","Deep dive",
@@ -1536,7 +1603,7 @@ There can be multiple instanced of each UDC in a Qlik Sense deployment.",,,,,,,,
 "Security - technical design","Qlik Sense user directory connector (UDC)","These attributes can be used in Qlik Sense (security) rules.",,"","","","","         0","0","Deep dive",
 "Security - technical design","Qlik Sense user directory connector (UDC)","Typical use: re-use groups from AD in your security rules.",,"","","","","         0","0","Deep dive",
 "Security - technical design","Qlik Sense user directory connector (UDC)","!comment
-UDC stands for User Directory Connector.It connects to a an already configured directory service to retrieve users and import them in Qlik Sense. With a UDC there is also the possibility to import additional attributes like groups, email,…
+UDC stands for User Directory Connector. It connects to a an already configured directory service to retrieve users and import them in Qlik Sense. With a UDC there is also the possibility to import additional attributes like groups, emails,…
 These can be used in the Qlik Sense security rules.
 So with UDC's you don't need to recreate groups in Qlik Sense but they can be re-used.",,,,,,,,,
 "Security - technical design","What a UDC is not","<q>You can NOT authenticate users via a Qlik Sense UDC</q>",,"","","","","         0","0","Deep dive",
@@ -1903,6 +1970,40 @@ function updateProxy(proxyId, proxyConfig) {
             throw new Meteor.Error('Unable to upload the app to Qlik Sense. ', err)
         }
     }))
+}
+```",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com key API calls","Upload template apps","Upload the app...",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com key API calls","Upload template apps","```javascript
+async function uploadApp(filePath, appName) {
+    console.log('Upload app: ' + appName + ' from path: ' + filePath + ' via header authentication server: ' + qlikHDRServer);
+    return await new Promise(function(resolve, reject) {
+        var formData = {
+            my_file: fs.createReadStream(filePath)
+        };
+
+        try {
+            request.post({
+                url: qlikHDRServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
+                headers: {
+                    'Content-Type': 'application/vnd.qlik.sense.app',
+                    'hdr-usr': senseConfig.headerValue,
+                    'X-Qlik-xrfkey': senseConfig.xrfkey
+                },
+                formData: formData
+            }, function(error, res, body) {
+                if (!error) {
+                    var appId = JSON.parse(body).id;
+                    console.log('Uploaded ""' + appName + '.qvf"" to Qlik Sense and got appID: ' + appId);
+                    resolve(appId);
+                } else {
+                    console.error(""Failed to upload app"" + appName, error);
+                    reject(error);
+                }
+            });
+        } catch (error) {
+            console.error('failed to upload app', error);
+        }
+    });
 }
 ```",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","App provisioning","> Create an app for each customer which only contains their specific data (model)",,"","","","","         0","0","Deep dive",
@@ -2604,6 +2705,13 @@ Run the command `powershell Set-ExecutionPolicy RemoteSigned`
 - your platform: a web server
 - a Qlik Sense server",,"","","","","         0","0","Deep dive",
 "Installation of demo platform using docker","Architecture introduction","We created a container per *service* (except for Qlik Sense which runs on a windows VM)",,"","","","","         0","0","Deep dive",
+"Installation of demo platform using docker","Architecture using docker","We used linux to host our docker containers, we used windows to host Qlik Sense",,,,,,,,,
+"Installation of demo platform using docker","Architecture using docker","# Docker containers
+- 1 HA proxy, to ensure users can connect to all containers via port 80
+- 1 MongoDB container for the database
+- 1 NodeJS Container for the QRSMeteor broker (the automation tool of ""your SaaS platform"")
+- 1 NodeJS Container for SenseWebIntegration, which simulates the front-end of your SaaS Platform.)",,,,,,,,,
+"Installation of demo platform using docker","Architecture using docker","https://www.lucidchart.com/publicSegments/view/25365087-dc30-4a94-9f18-a5efd1247aff/image.png",,,,,,,,,
 "Installation of demo platform using docker","Architecture detailed: key components and goals","saas demo architecture introduction of components.png",,"","","","","         0","0","Deep dive",
 "Installation of demo platform using docker","Architecture detailed: key components and goals","You have multiple customers, each customer can have users with authorizations (groups)",,"","","","","         0","0","Deep dive",
 "Installation of demo platform using docker","Architecture detailed: key components and goals","A user (with access rights maintained in the SaaS platform) wants to open the webpage with Qlik Sense embedded",,"","","","","         0","0","Deep dive",
