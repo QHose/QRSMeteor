@@ -1,4 +1,39 @@
+.reveal.slidesReveal {
+	height: 100%; 
+	width: 100%;
+	position: fixed; 
+	top: -100%; 
+	background: #ffffff; 
+	z-index: 10;
+}
+
+.reveal .closeSlides {
+	font-size: 30px; 
+	position:absolute; 
+	top: 10px; 
+	right: 24px; 
+	cursor: pointer; 
+	z-index: 10;
+}
+
+.reveal .slide {
+	height: 100%; 
+	overflow: auto;
+}
+
+.reveal .slide-number {
+	position: absolute;
+}
+
+.reveal .controls {
+	bottom: 24px;
+}
+
 .reveal .slides .commentBox{
 	margin-top: 40px;
 	text-align: left;
+}
+
+.reveal .slides .itemPPTLink{
+	margin-top: 40px;
 }
