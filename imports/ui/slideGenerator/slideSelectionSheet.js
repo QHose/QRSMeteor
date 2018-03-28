@@ -17,6 +17,7 @@ Template.slideSelectionSheet.helpers({
 Template.slideSelectionSheet.events({
     'click .ui.positive.button': function(event, template) {
         event.preventDefault();
+        
         $('.reveal').css({
             top: '0px'
         });

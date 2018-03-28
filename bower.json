@@ -2,7 +2,7 @@
   "name": "qrsmeteor",
   "version": "0.0.1",
   "dependencies": {
-    "onepresales-frame": "git@gitlab.com:onepresales/onepresales-frame.git#1.0.0"
+    "onepresales-frame": "git@gitlab.com:onepresales/onepresales-frame.git#1.0.4"
   },
   "private": true
 }

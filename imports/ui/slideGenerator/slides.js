@@ -34,6 +34,7 @@ Template.slides.events({
     'click .closeSlides': function(event, template) {
         event.preventDefault();
         console.log("click");
+        
         $('.reveal').css({
             top: '-100%'
         });
@@ -64,7 +65,7 @@ function initializeReveal() {
         // width: window.innerWidth - 80,
         width: "100%",
         height: "95%",
-        margin: 0.1,
+        margin: 0,
         minScale: 0.5,
         maxScale: 1.5,
 
@@ -127,11 +128,18 @@ Template.slideContent.onRendered(async function() {
     // ─── GET COMMENT AND CREATE A NICE HTML BOX AROUND THE TEXT ─────────────────────
     //
 
-
     var comment = await getComment(level1, level2);
     // console.log('comment retrieved in slideContent onrendered', comment)
     if (comment.length > 10)
         template.$('.slideContent').append(createCommentBox(comment));
+
+    //
+    // ─── GET Partner Portal Eid and create a link ─────────────────────
+    //
+    var ppItems = await getPartnerPortalItem(level1, level2);
+    if ( ppItems ) 
+        template.$('.slideContent').append(createPartnerPortalItemLink(ppItems));
+
 
     Logger.insert({
         userId: Meteor.userId,
@@ -255,6 +263,13 @@ function createCommentBox(text) {
     return messagebox;
 }
 
+function createPartnerPortalItemLink(Eid){
+    var linkBox = `
+        <section class="container ui itemPPTLink">
+            <a href="https://partners.qlik.com/filemanagement/fileget.cfm?fileid=`+Eid+`">Get the source PPT file where this slide displays in</a>
+        </section>`;
+    return linkBox;
+}
 //
 // ─── FOR EACH SLIDE GET THE COMMENT TEXT USING SET ANALYSIS ─────────────────────
 //
@@ -288,6 +303,36 @@ async function getComment(level1, level2) {
 
     var comment = sessionData[0].qMatrix[0][0].qText;
     return comment != 'null' ? comment : '';
+}
+
+async function getPartnerPortalItem(level1, level2) {
+    var qix = await getQix();
+    var sessionModel = await qix.app.createSessionObject({
+        qInfo: {
+            qType: "cube"
+        },
+        qHyperCubeDef: {
+            qDimensions: [{
+                qDef: {
+                    qFieldDefs: ["Eid"]
+                }
+            }],
+            qMeasures: [{
+                qDef: {
+                    qDef: 'sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)'
+                }
+            }]
+        }
+    });
+    sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 2,
+        qHeight: 1000
+    }]);
+
+    var items = sessionData[0].qMatrix[0][0].qText;
+    return items != 'null' ? items : '';
 }
 
 

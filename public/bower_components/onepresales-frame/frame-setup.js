@@ -1,10 +1,11 @@
 var SITES = {
-    "answers": "Questions & Answers",
-    "sizing": "Sizing Calculator",
-    "slidesgen": "Slide Explorer",
+    "answers": "Technical Insights",
+    "sizing": "Sizing Advisor",
+    "slidesgen": "Presentation Explorer",
     "qmi": "QMI"
 };
 var cbMessageTimeout;
+var thisTool = "general";
 
 function sendRequest(url, method, body, successFn, errorFn) {
     var xhr = new XMLHttpRequest();
@@ -63,17 +64,19 @@ function getCookie(cname) {
 
 
 window.initOnePresales = function initOnePresales(website) {
-
+    
     loadHTML('bower_components/onepresales-frame/html/header.html', 'headerContainer');
     loadHTML('bower_components/onepresales-frame/html/footer.html', 'footerContainer');
 
     var html1 = "",
         html2 = "";
     if (!website) {
+        thisTool = "general";
         for (let s in SITES) {
             html1 += '<li><a href="/' + s + '">' + SITES[s] + '</a></li>';
         }
     } else {
+        thisTool = website;
         html1 = '<li><a href="/' + website + '">' + SITES[website] + '</a></li>';
         html2 = '<li><a href="/">More tools...</a></li>'
     }
@@ -98,7 +101,12 @@ document.addEventListener("onepresales-frame-footer", function(event) {
 
     document.getElementById('feedback-form').addEventListener('submit', (e) => {
         e.preventDefault();
+        var about = document.getElementById("selectTool").value;
+        if ( about !== 'general') {
+            about = SITES[about];
+        }
         var body = {
+            about: about,
             name: document.getElementById("feedbackName").value,
             subject: document.getElementById("feedbackSubject").value,
             email: document.getElementById("feedbackEmail").value,
@@ -143,12 +151,15 @@ document.addEventListener("onepresales-frame-footer", function(event) {
         }
     });
 
-
+    
     addGtagScript();
+    
 });
 
-function openFeedback() {
+function openFeedback(about) {
+    about = about || thisTool;
     document.getElementById("feedback-form").reset();
+    document.getElementById('selectTool').value = about.toLowerCase();
     document.getElementById("onepresales-feedback").style.display = 'block';
 }
 
@@ -157,20 +168,36 @@ function hideFeedback() {
 }
 
 function addGtagAsync() {
-    var imported = document.createElement('script');
-    imported.src = 'https://www.googletagmanager.com/gtag/js?id=UA-114136363-1';
-    imported.setAttribute("type", "text/javascript");
-    imported.async = true;
-    document.head.appendChild(imported);
+    if ( window.location.href.indexOf("localhost") === -1 ) {
+        var imported = document.createElement('script');
+        imported.src = 'https://www.googletagmanager.com/gtag/js?id=UA-114136363-1';
+        imported.setAttribute("type", "text/javascript");
+        imported.async = true;
+        document.head.appendChild(imported);
+    }
 }
 
 function addGtagScript() {
-    window.dataLayer = window.dataLayer || [];
+    if ( window.location.href.indexOf("localhost") === -1 ) {
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-114136363-1');
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        var gtagCode = "UA-114136363-1";
+        if (window.location.href.indexOf("one.qlik.com") > -1) {
+            gtagCode = "UA-114136363-2";
+        }
+        console.log("gtagCode", gtagCode);
+        var cookieUser = getCookie("user");
+        if (cookieUser) {
+            var user = JSON.parse(cookieUser);
+            gtag('config', gtagCode, {
+                'user_id': user.qlikID
+            });
+        } else {
+            gtag('config', gtagCode, );
+        }
+    }
 }
 
 function detectBrowser() {
