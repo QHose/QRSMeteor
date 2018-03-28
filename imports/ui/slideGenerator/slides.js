@@ -107,8 +107,11 @@ Template.slideContent.onRendered(async function() {
 
     var comment = await getComment(level1, level2);
     // console.log('comment retrieved in slideContent onrendered', comment)
-    if (comment.length > 10)
-        template.$('.slideContent').append(createCommentBox(comment));
+    if (comment.length > 10){
+        template.$(".slideContent").append(createCommentBox(comment));
+    }
+
+    //if the slide is shown, log it into the database
     Logger.insert({
         userId: Meteor.userId,
         role: Cookies.get('currentMainRole'),
@@ -124,7 +127,7 @@ Template.slideContent.onRendered(async function() {
     Meteor.setTimeout(function() {
         //embed youtube containers in a nice box without loading all content
         this.$('.ui.embed').embed({
-            autoplay: true
+            // autoplay: true
         });
         //make sure all code gets highlighted using highlight.js
         this.$('pre code').each(function(i, block) {
@@ -138,7 +141,7 @@ Template.slideContent.onRendered(async function() {
 Template.slideContent.events({
     'click a': function(e, t) {
         console.log('------------------------------------');
-        console.log(this);
+        console.log(event);
         console.log('------------------------------------');
 
         console.log('------------------------------------');
@@ -146,15 +149,16 @@ Template.slideContent.events({
         console.log('------------------------------------');
         e.stopPropagation();
         Logger.insert({
-            userId: Meteor.userId,
-            userName: Meteor.user().profile.name,
-            role: Cookies.get('currentMainRole'),
-            counter: 1,
-            eventType: 'linkClick',
-            // topic: this.data.slide[0].qText,
-            // slide: this.data.slide[1].qText,
-            linkName: e.currentTarget.innerText,
-            viewDate: new Date(), // current time
+          userId: Meteor.userId,
+          userName: Meteor.user().profile.name,
+          role: Cookies.get("currentMainRole"),
+          counter: 1,
+          eventType: "linkClick",
+          topic: Template.parentData(1).slide[0].qText,
+          slide: Template.parentData(1).slide[1].qText,
+          linkName: e.currentTarget.innerText,
+          linkSource: e.target.baseURI,
+          viewDate: new Date() // current time
         });
     }
 });
