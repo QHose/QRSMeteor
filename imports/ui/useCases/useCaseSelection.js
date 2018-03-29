@@ -96,6 +96,7 @@ Template.useCaseSelection.onRendered(async function() {
         .dropdown({
             async onChange(group, text, selItem) {
                 await setSelectionInSense('Partial Workshop', group);
+                Cookies.set("currentMainRole", group);
                 Meteor.setTimeout(function() {
                     Router.go('slides');
                 }, 200)

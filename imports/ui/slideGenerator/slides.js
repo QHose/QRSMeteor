@@ -1,8 +1,5 @@
-try {
-    var Reveal = require('reveal');
-} catch (error) {
 
-}
+var Reveal = require('reveal');
 import './reveal.css';
 // import 'reveal/theme/default.css';
 import lodash from 'lodash';
@@ -14,7 +11,7 @@ _ = lodash;
 var Cookies = require('js-cookie');
 var showdown = require('showdown');
 var converter = new showdown.Converter();
-var numberOfActiveSlides = 5;
+var numberOfActiveSlides = 1;
 
 Template.slides.onCreated(async function() {
     $('body').css({
@@ -69,6 +66,8 @@ function initializeReveal() {
         Reveal.addEventListener('slidechanged', function(evt) {
             console.log('slidechanged', evt.indexh)
             Session.set('activeStepNr', evt.indexh);
+            console.log('Reveal.getSlides()', Reveal.getSlides());
+            console.log('Reveal.getProgress(); ', Reveal.getProgress());
             $('.ui.embed').embed();
         });
 
@@ -98,8 +97,21 @@ Template.slideContent.onRendered(async function() {
         bullets.forEach(function(bullet) {
             template.$('.slideContent').append(convertToHTML(bullet));
         })
-
     }
+
+    //if the slide is shown, log it into the database
+    Logger.insert({
+      userId: Meteor.userId,
+      role: Cookies.get("currentMainRole"),
+      userProfile: Meteor.user(),
+      website: location.href,
+      counter: 1,
+      eventType: "slideRendered",
+      topic: this.data.slide[0].qText,
+      slide: this.data.slide[1].qText,
+      viewDate: new Date() // current time
+    });
+
     //
     // ─── GET COMMENT AND CREATE A NICE HTML BOX AROUND THE TEXT ─────────────────────
     //
@@ -111,18 +123,6 @@ Template.slideContent.onRendered(async function() {
         template.$(".slideContent").append(createCommentBox(comment));
     }
 
-    //if the slide is shown, log it into the database
-    Logger.insert({
-        userId: Meteor.userId,
-        role: Cookies.get('currentMainRole'),
-        userName: Meteor.user().profile.name,
-        website: location.href,
-        counter: 1,
-        eventType: 'slideRendered',
-        topic: this.data.slide[0].qText,
-        slide: this.data.slide[1].qText,
-        viewDate: new Date(), // current time
-    });
 
     Meteor.setTimeout(function() {
         //embed youtube containers in a nice box without loading all content
@@ -140,17 +140,10 @@ Template.slideContent.onRendered(async function() {
 
 Template.slideContent.events({
     'click a': function(e, t) {
-        console.log('------------------------------------');
-        console.log(event);
-        console.log('------------------------------------');
-
-        console.log('------------------------------------');
-        console.log('parent data', Template.parentData(1));
-        console.log('------------------------------------');
         e.stopPropagation();
         Logger.insert({
           userId: Meteor.userId,
-          userName: Meteor.user().profile.name,
+          userProfile: Meteor.user(),
           role: Cookies.get("currentMainRole"),
           counter: 1,
           eventType: "linkClick",
