@@ -66,8 +66,6 @@ function initializeReveal() {
         Reveal.addEventListener('slidechanged', function(evt) {
             console.log('slidechanged', evt.indexh)
             Session.set('activeStepNr', evt.indexh);
-            console.log('Reveal.getSlides()', Reveal.getSlides());
-            console.log('Reveal.getProgress(); ', Reveal.getProgress());
             $('.ui.embed').embed();
         });
 
@@ -109,6 +107,8 @@ Template.slideContent.onRendered(async function() {
       eventType: "slideRendered",
       topic: this.data.slide[0].qText,
       slide: this.data.slide[1].qText,
+      currentSlideNr: Reveal.getIndices().h,
+      slidesContainedInSelection: $( ".slide" ).length,
       viewDate: new Date() // current time
     });
 

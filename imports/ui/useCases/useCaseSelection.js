@@ -23,9 +23,6 @@ var slideObject = Meteor.settings.public.slideGenerator.dataObject;
 var app = null;
 var qix = null;
 
-
-var possibleRoles = ['Product Manager', 'Business Manager', 'Developer'];
-
 // ONCREATED
 Template.useCaseSelection.onCreated(async function() {
     Cookies.set('currentMainRole', null);
@@ -81,6 +78,7 @@ Template.useCaseSelection.onRendered(async function() {
     $('body').addClass('mainLandingImage');
 
     //fill the dropdown using a array of values
+    var possibleRoles = ["Product Manager", "Business Manager", "Developer"];
     $.each(possibleRoles, function(i, item) {
         $('#bodyDropdown').append($('<option>', {
             value: item,
@@ -88,7 +86,6 @@ Template.useCaseSelection.onRendered(async function() {
         }));
     });
 
-    $(".ui.dropdown").dropdown("refresh");
     var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
     $(".ui.dropdown").dropdown("set selected", textToShow);
 
@@ -102,7 +99,8 @@ Template.useCaseSelection.onRendered(async function() {
                 }, 200)
             }
         })
-})
+    // Meteor.setTimeout(function(){$(".ui.dropdown").dropdown("refresh")}, 3000);
+    })        
 
 //
 // ─── SLIDE GENERATOR BUTTON CLICK ─────────────────────────────────────────────────────────────────────
