@@ -69,12 +69,13 @@ window.initOnePresales = function initOnePresales(website) {
     loadHTML('bower_components/onepresales-frame/html/footer.html', 'footerContainer');
 
     var html1 = "",
-        html2 = "";
+        html2 = "",
+        classActive = website? 'class="active"': '';
 
     thisTool = website || "general";
     //if (!website) {
         for (let s in SITES) {
-            html1 += '<li><a href="/' + s + '">' + SITES[s] + '</a></li>';
+            html1 += '<li '+classActive+'><a href="/' + s + '">' + SITES[s] + '</a></li>';
         }
     //} else {
     //    html1 = '<li><a href="/' + website + '">' + SITES[website] + '</a></li>';
