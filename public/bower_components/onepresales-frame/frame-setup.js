@@ -1,8 +1,8 @@
 var SITES = {
     "answers": "Technical Insights",
     "sizing": "Sizing Advisor",
-    "slidesgen": "Presentation Explorer",
-    "qmi": "QMI"
+    "qmi": "QMI",
+    "slidesgen": "Presentation Explorer"
 };
 var cbMessageTimeout;
 var thisTool = "general";
@@ -69,17 +69,22 @@ window.initOnePresales = function initOnePresales(website) {
     loadHTML('bower_components/onepresales-frame/html/footer.html', 'footerContainer');
 
     var html1 = "",
-        html2 = "";
-    if (!website) {
-        thisTool = "general";
+        html2 = "",
+        classActive = '';
+
+    thisTool = website || "general";
+    //if (!website) {
         for (let s in SITES) {
-            html1 += '<li><a href="/' + s + '">' + SITES[s] + '</a></li>';
+            classActive = '';
+            if ( website === s ) {
+                classActive = 'class="active"';
+            }
+            html1 += '<li '+classActive+'><a href="/' + s + '">' + SITES[s] + '</a></li>';
         }
-    } else {
-        thisTool = website;
-        html1 = '<li><a href="/' + website + '">' + SITES[website] + '</a></li>';
-        html2 = '<li><a href="/">More tools...</a></li>'
-    }
+    //} else {
+    //    html1 = '<li><a href="/' + website + '">' + SITES[website] + '</a></li>';
+    //    html2 = '<li><a href="/">More tools...</a></li>'
+    //}
 
     document.addEventListener("onepresales-frame-header", function() {
         document.getElementById("navbar-onepresales-left").innerHTML = html1;

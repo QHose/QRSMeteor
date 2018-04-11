@@ -203,9 +203,9 @@ export async function getAllSlideHeaders(qix) {
     //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.
     // return insertSectionBreakers(await getAllSlideHeadersPlain(qix));
     var headers = await getAllSlideHeadersPlain(qix);
-    console.log('headers', headers)
+    //console.log('headers', headers)
     var headersWithBreakers = insertSectionBreakers(headers);
-    console.log('headersWithBreakers', headersWithBreakers)
+    //console.log('headersWithBreakers', headersWithBreakers)
     return headersWithBreakers;
 }
 

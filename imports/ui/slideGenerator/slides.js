@@ -83,13 +83,14 @@ function initializeReveal() {
         loop: false,
         transition: "none", // none/fade/slide/convex/concave/zoom
         previewLinks: false,
-        slideNumber: 'c/t',
+        //slideNumber: 'c/t',
+        slideNumber: 'h/v',
         display: "block"
     });
 
     Session.set('activeStepNr', 0);
     Reveal.addEventListener('slidechanged', function(evt) {
-        console.log('slidechanged', evt.indexh)
+        //console.log('slidechanged', evt.indexh)
         Session.set('activeStepNr', evt.indexh);
         $('.ui.embed').embed();
     });
@@ -112,7 +113,7 @@ Template.slideContent.onRendered(async function() {
     // ─── GET SLIDE CONTENT LEVEL 3 ──────────────────────────────────────────────────
     //
 
-    console.log('slideContent.onRendered')
+    //console.log('slideContent.onRendered')
     var level1 = this.data.slide[0].qText;
     var level2 = this.data.slide[1].qText;
     var template = this;

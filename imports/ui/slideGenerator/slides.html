@@ -13,9 +13,24 @@
               </h1>
                 </div>
             </section>
+            {{> slideDisclaimer}}
             {{else}} {{> slide slide=this slideNr=@index}} {{/if}} {{/each}}
         </div>
     </div>
+</template>
+
+<template name="slideDisclaimer">
+    <section class="slide">
+        <div class="wrap">
+            <h3>Legal Disclaimer</h3>
+            <hr>
+            <div class="slideContent">
+                <div class="ui container">
+                    <img class="ui massive rounded bordered image" style="width: 100%;" src="images/LegalDisclaimerSlide.png"> 
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <template name="slide">
