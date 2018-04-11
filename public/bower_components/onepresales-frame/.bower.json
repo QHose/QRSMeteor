@@ -19,7 +19,7 @@
   "_resolution": {
     "type": "version",
     "tag": "1.0.6",
-    "commit": "1cb4d63482daa154d14a80e6fd85644554226ac5"
+    "commit": "952c4a597e4b5629e02484b4f46dc4821df2fa51"
   },
   "_source": "git@gitlab.com:onepresales/onepresales-frame.git",
   "_target": "1.0.6",

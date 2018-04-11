@@ -70,11 +70,15 @@ window.initOnePresales = function initOnePresales(website) {
 
     var html1 = "",
         html2 = "",
-        classActive = website? 'class="active"': '';
+        classActive = '';
 
     thisTool = website || "general";
     //if (!website) {
         for (let s in SITES) {
+            classActive = '';
+            if ( website === s ) {
+                classActive = 'class="active"';
+            }
             html1 += '<li '+classActive+'><a href="/' + s + '">' + SITES[s] + '</a></li>';
         }
     //} else {
