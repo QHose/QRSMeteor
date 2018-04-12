@@ -135,19 +135,21 @@ Template.slideContent.onRendered(async function() {
 });
 
 Template.slideContent.events({
-    'click a': function(e, t) {
-        e.stopPropagation();
-        Logger.insert({
-            userId: Meteor.userId,
-            // userName: Meteor.user().profile.name,
-            counter: 1,
-            eventType: 'linkClick',
-            topic: this.data.slide[0].qText,
-            slide: this.data.slide[1].qText,
-            linkName: e.currentTarget.innerText,
-            viewDate: new Date(), // current time
-        });
-    }
+  "click a": function(e, t) {
+    e.stopPropagation();
+    Logger.insert({
+      userId: Meteor.userId,
+      userProfile: Meteor.user(),
+      role: Cookies.get("currentMainRole"),
+      counter: 1,
+      eventType: "linkClick",
+      topic: Template.parentData(1).slide[0].qText,
+      slide: Template.parentData(1).slide[1].qText,
+      linkName: e.currentTarget.innerText,
+      linkSource: e.target.baseURI,
+      viewDate: new Date() // current time
+    });
+  }
 });
 
 //
