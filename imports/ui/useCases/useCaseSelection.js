@@ -170,9 +170,8 @@ async function setSlideContentInSession(group) {
     };
 }
 
-export async function getQix() {
-    var ticket = await getTicket();
-    // console.log('getQix with ticket:', ticket)
+export async function getQix(ticket=null) {
+    console.log('getQix with ticket:', ticket)
     try {
         const config = {
             schema: senseConfig.QIXSchema,
@@ -187,10 +186,11 @@ export async function getQix() {
                 }
             },
             listeners: {
-                'notification:*': (event, data) => {
+                'notification:*': async (event, data) => {
                     // console.log('Engima notification received, event: ' + event + ' & data: ', data)
                     if (data.mustAuthenticate) { //if the user is not authenticated anymore request a new ticket and get a new connection
-                        getQix();
+                        var ticket = await getTicket();
+                        getQix(ticket);
                     }
                     var call = {};
                     call.action = "Engine API listener";
