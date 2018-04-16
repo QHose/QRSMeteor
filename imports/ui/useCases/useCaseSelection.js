@@ -171,7 +171,7 @@ async function setSlideContentInSession(group) {
 }
 
 export async function getQix(ticket=null) {
-    console.log('getQix with ticket:', ticket)
+    // console.log('getQix with ticket:', ticket)
     try {
         const config = {
             schema: senseConfig.QIXSchema,
@@ -188,17 +188,18 @@ export async function getQix(ticket=null) {
             listeners: {
                 'notification:*': async (event, data) => {
                     // console.log('Engima notification received, event: ' + event + ' & data: ', data)
-                    if (data.mustAuthenticate) { //if the user is not authenticated anymore request a new ticket and get a new connection
+                    if (data.mustAuthenticate || event==='OnSessionTimedOut') { //if the user is not authenticated anymore request a new ticket and get a new connection
                         var ticket = await getTicket();
                         getQix(ticket);
                     }
+                    else 
                     var call = {};
                     call.action = "Engine API listener";
                     call.url = '';
                     call.request = 'Engima.js event: ' + event;
                     call.response = data;
                     REST_Log(call, Meteor.userId());
-                }
+                },
             },
             handleLog: (message) => {
                 // console.log('Engima handleLog: ', message);
@@ -212,7 +213,9 @@ export async function getQix(ticket=null) {
         };
         return await enigma.getService('qix', config);
     } catch (error) {
-        console.error('failed to get Qix ', error);
+        console.error('Qlik Sense Qix error ', error);
+        sAlert.error(error.message)
+        location.reload();        
     }
 
 }
@@ -237,7 +240,7 @@ export async function getAllSlideHeaders(qix) {
     //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.    
     // return insertSectionBreakers(await getAllSlideHeadersPlain(qix));
     var headers = await getAllSlideHeadersPlain(qix);
-    console.log('headers', headers)
+    // console.log('headers', headers)
     var headersWithBreakers = insertSectionBreakers(headers);
     console.log('headersWithBreakers', headersWithBreakers)
     return headersWithBreakers;
@@ -256,7 +259,21 @@ export async function getAllSlideHeadersPlain(qix) {
                 }
             }, {
                 qDef: {
-                    qFieldDefs: ['Level 2']
+                    qFieldDefs: ['Level 2'],
+                    "qSortCriterias": [
+                        {
+                            "qSortByState": 0,
+                            "qSortByFrequency": 0,
+                            "qSortByNumeric": 0,
+                            "qSortByAscii": 0,
+                            "qSortByLoadOrder": 1,
+                            "qSortByExpression": 1,
+                            "qExpression": {
+                                "qv": "max(CSVRowNo)"
+                            },
+                            "qSortByGreyness": 0
+                        }
+                    ],
                 }
             }]
         }
@@ -267,6 +284,7 @@ export async function getAllSlideHeadersPlain(qix) {
         qWidth: 3,
         qHeight: 3333
     }]);
+    // sessionModel.close();
     return sessionData[0].qMatrix;
 }
 //
@@ -282,35 +300,6 @@ export async function getAllSlides(insertSectionBreakers = sectionBreakerConfig)
     sectionBreakerConfig = insertSectionBreakers;
     var table = insertSectionBreakers ? await getAllSlideHeaders(qix) : await getAllSlideHeadersPlain(qix);
     Session.set('slideHeaders', table);
-
-    // var sessionModel = await qix.app.createSessionObject({
-    //     qInfo: {
-    //         qType: 'cube'
-    //     },
-    //     qHyperCubeDef: {
-    //         qDimensions: [{
-    //             qDef: {
-    //                 qFieldDefs: ['Level 1']
-    //             }
-    //         }, {
-    //             qDef: {
-    //                 qFieldDefs: ['Level 2']
-    //             }
-    //         }, {
-    //             qDef: {
-    //                 qFieldDefs: ['Level 3']
-    //             }
-    //         }]
-    //     }
-    // });
-    // sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
-    //     qTop: 0,
-    //     qLeft: 0,
-    //     qWidth: 3,
-    //     qHeight: 3333
-    // }]);
-    // Session.set('slideData', sessionData[0].qMatrix);
-    // console.log('slide data', Session.get('slideData'));
 }
 
 
@@ -336,6 +325,7 @@ export async function getComment(qix) {
         qHeight: 3333
     }]);
     Session.set('slideComment', sessionData[0].qMatrix);
+    console.log('sessionModel', sessionModel)
     console.log('slide Comment', Session.get('slideComment'));
 }
 
