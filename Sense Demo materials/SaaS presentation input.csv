@@ -35,8 +35,6 @@ Mindmap is an easy tool that allows you to create content in a very easy to use 
 "Workshop Introduction","Export the map and load the data into an app","Excel input engine api generator.png",,"","","","","         0","0","What is this slide generator?, Technical - 1 day",
 "Workshop Introduction","Export the map and load the data into an app","!comment
 This is an export from de Mindmap into an Excel in CSV format.",,,,,,,,,
-"Workshop Introduction","What's so special about this presentation? (1)","> You never know the next question...  or what the level of expertise is...",,"","","","","         0","0","What is this slide generator?",
-"Workshop Introduction","What's so special about this presentation? (2)","> So you can better put all your data in our *associative engine* and use our search and select",,"","","","","         0","0","What is this slide generator?",
 "Workshop Introduction","With the APIs, the only limit is your imagination","> This presentation is just to inspire what you can do with our *QIX engine*",,"","","","","         0","0","Demo with integration.qlik.com, Introduction - 30 minutes, What is this slide generator?, SaaS & Power of APIs, CTO",
 "Workshop Introduction","Setting up Software as a Service is all about scalability, automation and control...","> Your platform controls everything in Qlik Sense by using the APIs",,"","","","","         0","0","Introduction - 30 minutes, SaaS & Power of APIs, CTO",
 "Workshop Introduction","Setting up Software as a Service is all about scalability, automation and control...","!comment
@@ -676,10 +674,6 @@ We can deliver embedded analytics to different user groups and audiences
  
 They can be residing in your back office covering all the internal processes in your organization - production, logistics, warehousing, sales, accounting, human resources management, etc.  They can reside in any of your customer facing team – any team member visible to including marketing, support or after-sales service teams.  
 It’s also become even more important that we share data and information with the partners we work with. For example by sharing customer feedback on supplier products, this in-turn helps our suppliers understand better about their end customer - and heightens their awareness of the need for better innovations and improvements across the overall supply chain",,,,,,,,,
-"Web integration","Why Embedded Analytics is successful","web - Why Embedded Analytics is successful.png",,,,,,,,,
-"Web integration","Why Embedded Analytics is successful","!comment
-Embedded analytics has emerged as an analytical delivery strategy.  The approach is designed to combat the disconnection and provided the necessary context to the line of business decision maker.  As noted earlier, it also brings insight to the point of decision, not just embedded within the technology, but also embedded within the every day flow of how and where people work.  This typically results in higher user satisfaction and engagement as we can see from this chart taken from an April Aberdeen study.
-",,,,,,,,,
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","web - the qlik advantage css html javascript angular.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","The Qlik advantage: 1 app for all devices, no fat clients needed","!comment
 One of the biggest advantages of Qlik Sense is the fact that an app can be used for all devices. Qlik Sense uses and supports a range of modern technologies:
@@ -750,7 +744,7 @@ Instead of already creating an object in a Qlik Sense app and then using it in a
 - You don't want to create or load data up front in an app. Based on selections in your host applications you want to create a chart or app on the fly.
 
 # Data only
-You can also just take the data out of Qlik Sense and build your own front-end. You can use the Capabilities API or the Engine API directly to get an array of data and vizualize it using your own charting library, Qlik Sense [picasso.js](https://picassojs.com/examples.html) or any other. Note that the [integration.qlik.com](integration.qlik.com) site is build in this way...
+You can also just take the data out of Qlik Sense and build your own front-end. You can use the Capabilities API or the Engine API directly to get an array of data and vizualize it using your own charting library, Qlik Sense [picasso.js](https://picassojs.com/examples.html) or any other. Note that the [http://integration.qlik.com](integration.qlik.com) site is build in this way...
 ## When to use?
 - You want to use your own vizualizations and have full control over the HTML, javascript (enigmaJS) and CSS. Or you like to use Qlik Sense data but you don't have javascript. Since the Engine API is JSON RPC you can connect to it using any language. 
 - You have a read only scenario and don't need to use the self service client. Or you are willing to create this functionality using the APIs.",,,,,,,,,
@@ -2239,137 +2233,6 @@ function createNotificationListeners(){
 </div>
             ",,"","","","","         0","0","Technical - 1 day, Deep dive",
 "Integration.qlik.com key API calls","More information about the API calls being made in the demo platform?","iframe /apilogstable_embedded",,"","","","","         0","0","Technical - 1 day, Deep dive",
-"Integration.qlik.com key API calls","Slide generator","> Let's look at a data driven use case: how do we get from raw data to slides?",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Engine API Slide generator flow: Extract the data from the app via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Create a hierarchy of workshop contents","slide generator - workshop hierarchy.png",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","First load level 1, 2, 3 data from the CSV. Each level also contains the resource for which it is relevant",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
-LOAD 
- [Level 1], //topic
- [Level 2], //Slide
- [Level 3], //bullet, image, video, html
- [Workshop]
- FROM [lib://Import demo/input.csv]
-```
-",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","Create the workshops based on a table that defines the *parent child relationships*",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
-[WorkshopParentChild]:
-load [Partial Workshop] as ChildId, *;
-load * INLINE [
-Parent    , Partial Workshop     
-Technical - 1 hour , Introduction - 30 minutes
-Technical - 2 hours , Technical - 1 hour
-Technical - 1 day , Technical - 2 hours 
-PreSales   , Technical - 1 day
-PreSales   , Sales
-Deep dive   , PreSales 
-Support    , Deep dive
-Support    , Exercises
-                 , Support
-                 , Sales
-                 , OEM bootcamp
-];
-```",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","Create a list of children for each parent, so if you select a node you will get all its children ""partial workshops""",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
-[WorkshopHierarchy]:
-Hierarchy (ChildId,Parent, [Partial Workshop]) load * Resident [WorkshopParentChild];
-
-[WorkShop hierarchy belongs to]:
-HierarchyBelongsTo (ChildId,Parent,[Partial Workshop], 'Part of id', 'Workshop') 
-load * Resident [WorkshopParentChild];
-
-drop fields ChildId,Parent,'Part of id';
-drop table WorkshopParentChild;
-```",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 2: Extract the data from the Engine API using Enigma.js","```
- enigma.getService('qix', {
-    schema: qixschema,
-    appId: appId,
-    session: { 
-        host:  SenseServer,
-        prefix: 'anon',
-        port: SensePort,
-        unsecure: true //http or https
-    }
-})
-.then(qix => {
-    qix.app.getObject(ChartId) //get an existing object out of an app
-    .then(model => {
-        model.getHyperCubeData('/qHyperCubeDef', [...]).then(data => {                               
-        var table = data[0].qMatrix; //dataset from Qlik
-
-        //store the table in the session. This ensures Impress.js can generate the slides
-        Session.set('mainTopics',table)         
-        Impress().init();                                      
-```",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 2: Extract the data from the Engine API using Enigma.js","[Source code on github](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L235)",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","Get the [array of slides via Enigma.js](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.js#L221)",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","[Create DIV](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.html#L41)  with class *slide* for each slide (a level 1, 2 combination)",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 3: Create slides in HTML via impress.js","```
-{{# each slide}}
-    <!-- for each header: a level 1 and 2 combination -->
-    <!-- CREATE A SLIDE USING IMPRESS.JS-->
-        < div class=""slide"">
-            <h2>
-                {{level 1 header }}
-                {{level 2 header }}  
-            </h2>
-            <!-- for each level 3 items like bullets/videos/images.
-                - detect if youtube: create youtube box
-                - if image: make image container
-                - if bullet: format as header 3
-            -->
-        < /div>
-{ { /each}}
-``` ",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 3 continued: detect the content of the slide (text, image, video...)","```
- formatted(text) {
-        if (youtube_parser(text)) { //youtube video url
-            // console.log('found an youtube link so embed with the formatting of semantic ui', text)
-            var videoId = youtube_parser(text);
-            var html = '<div class=""ui container videoPlaceholder""><div class=""ui embed"" data-source=""youtube"" data-id=""' + videoId + '"" data-icon=""video"" data-placeholder=""images/youtube.jpg""></div></div>'
-                // console.log('generated video link: ', html);
-            return html;
-        } else if (text.startsWith('<')) { //custom HTML
-            return text;
-        } else if (checkTextIsImage(text)) { //image
-            // console.log('found an image', text)
-            return '<img class=""ui huge centered integration image""  src=""images/' + text + '"">'
-        } else { //text, convert the text (which can include markdown syntax) to valid HTML
-            var result = converter.makeHtml(text);
-            if (result.substring(1, 11) === 'blockquote') {
-                return '<div class=""ui green very padded segment"">' + result + '</div>';
-            } else {
-                return '<div class=""markdownItem"">' + result + '</div>';
-            }
-        }
-    }
-```",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","Using events you can do something in your platform based on ""events"" or ""things that happen in Qlik Sense"". This could be a selection or the reload of the app for example. Based on this new information you could create alerts or send an email.  ",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","```
-function appChangeListener() {
-    
-            enigma.getService('qix', { //connect to Qlik Sense
-                    schema: qixschema,
-                    appId: appId,
-                    session: { 
-                        host: senseConfig.host,
-                        prefix: 'anon',
-                        port: senseConfig.port,
-                        unsecure: true
-                    }
-                })
-                .then(qix => { 
-                    qix.app.on('changed', () => { //get notification if there is new data
-                        location.reload(); //I like to refresh the browser if Qlik ""changed"", in this way impress generates new slides based on the selection made.
-                    });
-                })
-        })
-}
-```",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Integration.qlik.com key API calls","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","[Source code](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L271)",,"","","","","         0","0","What is this slide generator?, Deep dive",
 "Slide generator","Why?","A user has questions
 - he can be a sales, pre-sales, consultant or developer (a *role*)
 - and wants to *find answers* or give a presentation",,,,,,,,,
@@ -2513,6 +2376,137 @@ function appChangeListener() {
 "Slide generator","How to create your first presentation (detailed work instruction)","Now you have submitted your presentation (via a `pull request` to the central repository on github.com). The slide generator maintainer can now verify your content and make comments. and [merge](https://services.github.com/on-demand/github-desktop/merge-pull-request-github) it in the master presentation",,,,,,,,,
 "Slide generator","How to create your first presentation (detailed work instruction)","github - merge pull request.gif",,,,,,,,,
 "Slide generator","How to create your first presentation (detailed work instruction)","For more information, follow the instructions on [GitHub](https://services.github.com/on-demand/github-desktop/push-with-github-desktop)",,,,,,,,,
+"Slide generator","Slide generator- the technical side and API calls","> Let's look at a data driven use case: how do we get from raw data to slides?",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Engine API Slide generator flow: Extract the data from the app via the Engine API","Engine API - load mindmap data into csv into app and use enigma example.png",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Create a hierarchy of workshop contents","slide generator - workshop hierarchy.png",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","First load level 1, 2, 3 data from the CSV. Each level also contains the resource for which it is relevant",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
+LOAD 
+ [Level 1], //topic
+ [Level 2], //Slide
+ [Level 3], //bullet, image, video, html
+ [Workshop]
+ FROM [lib://Import demo/input.csv]
+```
+",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","Create the workshops based on a table that defines the *parent child relationships*",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
+[WorkshopParentChild]:
+load [Partial Workshop] as ChildId, *;
+load * INLINE [
+Parent    , Partial Workshop     
+Technical - 1 hour , Introduction - 30 minutes
+Technical - 2 hours , Technical - 1 hour
+Technical - 1 day , Technical - 2 hours 
+PreSales   , Technical - 1 day
+PreSales   , Sales
+Deep dive   , PreSales 
+Support    , Deep dive
+Support    , Exercises
+                 , Support
+                 , Sales
+                 , OEM bootcamp
+];
+```",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","Create a list of children for each parent, so if you select a node you will get all its children ""partial workshops""",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 1: Export mindmap to csv and load into the app. Below you will see the load script","```
+[WorkshopHierarchy]:
+Hierarchy (ChildId,Parent, [Partial Workshop]) load * Resident [WorkshopParentChild];
+
+[WorkShop hierarchy belongs to]:
+HierarchyBelongsTo (ChildId,Parent,[Partial Workshop], 'Part of id', 'Workshop') 
+load * Resident [WorkshopParentChild];
+
+drop fields ChildId,Parent,'Part of id';
+drop table WorkshopParentChild;
+```",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 2: Extract the data from the Engine API using Enigma.js","```
+ enigma.getService('qix', {
+    schema: qixschema,
+    appId: appId,
+    session: { 
+        host:  SenseServer,
+        prefix: 'anon',
+        port: SensePort,
+        unsecure: true //http or https
+    }
+})
+.then(qix => {
+    qix.app.getObject(ChartId) //get an existing object out of an app
+    .then(model => {
+        model.getHyperCubeData('/qHyperCubeDef', [...]).then(data => {                               
+        var table = data[0].qMatrix; //dataset from Qlik
+
+        //store the table in the session. This ensures Impress.js can generate the slides
+        Session.set('mainTopics',table)         
+        Impress().init();                                      
+```",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 2: Extract the data from the Engine API using Enigma.js","[Source code on github](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L235)",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 3: Create slides in HTML via impress.js","Get the [array of slides via Enigma.js](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.js#L221)",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 3: Create slides in HTML via impress.js","[Create DIV](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.html#L41)  with class *slide* for each slide (a level 1, 2 combination)",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 3: Create slides in HTML via impress.js","```
+{{# each slide}}
+    <!-- for each header: a level 1 and 2 combination -->
+    <!-- CREATE A SLIDE USING IMPRESS.JS-->
+        < div class=""slide"">
+            <h2>
+                {{level 1 header }}
+                {{level 2 header }}  
+            </h2>
+            <!-- for each level 3 items like bullets/videos/images.
+                - detect if youtube: create youtube box
+                - if image: make image container
+                - if bullet: format as header 3
+            -->
+        < /div>
+{ { /each}}
+``` ",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 3 continued: detect the content of the slide (text, image, video...)","```
+ formatted(text) {
+        if (youtube_parser(text)) { //youtube video url
+            // console.log('found an youtube link so embed with the formatting of semantic ui', text)
+            var videoId = youtube_parser(text);
+            var html = '<div class=""ui container videoPlaceholder""><div class=""ui embed"" data-source=""youtube"" data-id=""' + videoId + '"" data-icon=""video"" data-placeholder=""images/youtube.jpg""></div></div>'
+                // console.log('generated video link: ', html);
+            return html;
+        } else if (text.startsWith('<')) { //custom HTML
+            return text;
+        } else if (checkTextIsImage(text)) { //image
+            // console.log('found an image', text)
+            return '<img class=""ui huge centered integration image""  src=""images/' + text + '"">'
+        } else { //text, convert the text (which can include markdown syntax) to valid HTML
+            var result = converter.makeHtml(text);
+            if (result.substring(1, 11) === 'blockquote') {
+                return '<div class=""ui green very padded segment"">' + result + '</div>';
+            } else {
+                return '<div class=""markdownItem"">' + result + '</div>';
+            }
+        }
+    }
+```",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","Using events you can do something in your platform based on ""events"" or ""things that happen in Qlik Sense"". This could be a selection or the reload of the app for example. Based on this new information you could create alerts or send an email.  ",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","```
+function appChangeListener() {
+    
+            enigma.getService('qix', { //connect to Qlik Sense
+                    schema: qixschema,
+                    appId: appId,
+                    session: { 
+                        host: senseConfig.host,
+                        prefix: 'anon',
+                        port: senseConfig.port,
+                        unsecure: true
+                    }
+                })
+                .then(qix => { 
+                    qix.app.on('changed', () => { //get notification if there is new data
+                        location.reload(); //I like to refresh the browser if Qlik ""changed"", in this way impress generates new slides based on the selection made.
+                    });
+                })
+        })
+}
+```",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","[Source code](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L271)",,"","","","","         0","0","What is this slide generator?, Deep dive",
 "Installation of demo platform","Setup your virtual machine","Make sure you really have a blank machine, without any other services running.",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Setup your virtual machine","For example get a blank windows 2012/2016 server on Amazon or Azure.",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Setup your virtual machine","Make sure you login as an admin user, member of  group `Administrators`.
@@ -3421,6 +3415,7 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 "QPS - Proxy API","How to setup and configure header authentication","Use only in combination with a firewall, proxy or routing solution.",,,,,,,,,
 "QPS - Proxy API","How to setup and configure header authentication","Use only in a development environment.",,,,,,,,,
 "QPS - Proxy API","How to setup and configure header authentication","See a manual for configuration on [Qlik help](http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/Platform/Content/Examples/config-header-authentication.htm)",,,,,,,,,
+"QPS - Proxy API","How to setup and configure header authentication","Use Qlik Sense with [siteMinder](https://qliktechnologies365-my.sharepoint.com/:b:/g/personal/mbj_qlik_com/EWRF8BDRNr1Jpp5mT4ocEAwBRDWTlaDIP7s9gxzPpkerdw?e=J6zYis)",,,,,,,,,
 "QPS - Proxy API","Header authentication requirements","Create virtual proxy for header authentication",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Header authentication requirements","QMC - proxy - header authentication setup.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Proxy architecture scenarios","<q>Proxy architecture scenarios</q>",,"","","","","         0","0","Deep dive",
@@ -4833,6 +4828,10 @@ Based on your requirements you can choose on how you would like to prioritize yo
 - [Picture 6] All components on dedicated servers
 - [Picture 7] Setup using a third party “Reverse proxy” scenario
 - [Picture 8] Back-end site with Central Node and Front-end central node. Back-end prepares the .qvf or .qvd. The front-end central node will import the applications for end user consumption. Scenario is usefull in case a customer security prohibits direct data sources connectivity. ",,,,,,,,,
+"Architecture","Qlik Sense Scalability tool","iframe https://community.qlik.com/docs/DOC-8878",,,,,,,,,
+"Architecture","Qlik Sense Scalability tool","https://www.youtube.com/watch?v=8H0JJYyUft8",,,,,,,,,
+"Architecture","Qlik Sense Scalability tool","https://www.youtube.com/watch?v=GiSF1yV9D9g",,,,,,,,,
+"Architecture","Qlik Sense Scalability tool","https://www.youtube.com/watch?v=3uPuCi7jzN0",,,,,,,,,
 "Architecture","Extranet Deployment – EMM Gateway","Extranet Deployment – EMM Gateway.png",,,,,,,,,
 "Architecture","Extranet Deployment – EMM Gateway","!comment
 Another way an on-premise solution is often exposed to the internet is to make Qlik Sense accessible through an 3rd party Enterprise Mobility Management – or EMM – solution.  In this case, Qlik Sense is made accessible via a browser like Safari, Chrome, or the EMM vendor’s secure browser and also leverages a device level or per app VPN.  Specific EMM vendors will be covered in subsequent modules, but in all cases, the EMM solution’s browser – if it is being used – and the EMM solution’s infrastructure must support websocket traffic. 
@@ -4840,8 +4839,8 @@ Another way an on-premise solution is often exposed to the internet is to make
 ",,,,,,,,,
 "Architecture","Architecting for Recoverability
 - backup and recovery","architecture - Architecting for Recoverability.png",,,,,,,,,
-"Architecture","How does the persistance layer work?","architecture - how does the persistance layer work.png",,,,,,,,,
-"Architecture","Persistance layer - local ","architecture - Persistence Layer - Local.png",,,,,,,,,
+"Architecture","How does the persistence layer work?","architecture - how does the persistance layer work.png",,,,,,,,,
+"Architecture","Persistence layer - local ","architecture - Persistence Layer - Local.png",,,,,,,,,
 "Architecture","Persistence Layer via Virtual Machine","architecture - Persistence Layer via Virtual Machine.png",,,,,,,,,
 "Architecture","Integrated architecture and security examples","> Qlik Sense will never stand on its own, there will always be users that have rights to specific resources. So next we will cover more examples on how authentication, authorization and architecture fit together.",,,,,,,,,
 "Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Internal users only",,"","","","","         0","0","PreSales, Technical - 1 day",
@@ -4893,14 +4892,6 @@ You will manage the whole configuration using the APIs. See the API chapters on 
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Backup and restore Qlik Sense](http://help.qlik.com/en-US/sense/3.1/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Backup-Restore.htm)
 . This section describes how to back up and restore Qlik Sense sites and certificates and how to move a node to a new machine.",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
 "Architecture","Qlik Sense system, port, firewall requirements and configuration/installation","[Server whitelist](http://integration.qlik.com/docs/Qlik_Scalability_Center_Recommended Servers.pdf)",,"","","","","         0","0","Hosting Ops",
-"Architecture","Version /source control integration using In4BI","Version Control, Deployment and Governance are important topics when using BI tools in general. For Qlik Sense there is a solution: Platform Manager. In short Platform Manager provides (source: [in4BI](https://in4bi.com/platform-manager-qlik-sense/):",,,,,,,,,
-"Architecture","Version /source control integration using In4BI","Integrated Version Control with ability to use the Qlik Sense MyWork stream as your workspace",,,,,,,,,
-"Architecture","Version /source control integration using In4BI","Simple Deployment to all of your Qlik Sense servers",,,,,,,,,
-"Architecture","Version /source control integration using In4BI","Customizable Workflow/Checklist with built-in authorization",,,,,,,,,
-"Architecture","Version /source control integration using In4BI","Difference Analyses reports",,,,,,,,,
-"Architecture","Version /source control integration using In4BI","Ability to change Library connections during Deployment of your Qlik Sense apps",,,,,,,,,
-"Architecture","Version /source control integration using In4BI","Data Lineage visualizes all dependencies of your Qlik Sense apps",,,,,,,,,
-"Architecture","Version /source control integration using In4BI","<iframe class=""SenseEmbedFrame"" src=""https://in4bi.com/platform-manager-qlik-sense/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,,,,,,,,
 "Deployment - how to...","Video: Installing Qlik Sense in a single node site - Qlik Sense","https://youtu.be/lx2R6LPKKPo?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
 "Deployment - how to...","Video: Installing Qlik Sense in a multi-node site - Qlik Sense","https://youtu.be/RdaNXjUb1vc?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
 "Deployment - how to...","install Qlik Sense","iframe https://help.qlik.com/en-US/sense/September2017/Subsystems/PlanningQlikSenseDeployments/Content/Deployment/Qlik-Sense-installation.htm",,,,,,,,,
@@ -4968,6 +4959,7 @@ Access the QMC and/or Hub to confirm that all previous working functionality is 
 "Deployment - how to...","Backup a Qlik Sense site","iframe https://help.qlik.com/en-US/sense/September2017/Subsystems/PlanningQlikSenseDeployments/Content/Deployment/Backing-up-a-site.htm",,,,,,,,,
 "Deployment - how to...","Video: Activating license and allocating users access","https://youtu.be/uWGS48VaOQE",,,,,,,,,
 "Deployment - how to...","Video: Activating license and allocating users access","Tip: for OEM use cases I prefer to use `username like *` since the authorization module in your SaaS platform should decide who can enter Qlik Sense and who not...",,,,,,,,,
+"Deployment - how to...","Video: Change the host name (certificates, pfx, cert)","https://youtu.be/Dvub_4fikv0",,,,,,,,,
 "Data integration","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
 "Data integration","Qlik Connectors: To which data sources can Qlik Sense connect?","[Qlik Connectors](https://www.qlik.com/us/products/qlik-connectors), which now include QVSource, gather and combine data from databases, applications, spreadsheets, websites, Big Data lakes and custom sources. Gain extensive insight into your divergent data and enable holistic, data-driven decisions.",,,,,,,,,
 "Data integration","Qlik Connectors: To which data sources can Qlik Sense connect?","data - data which database can we connect.png",,,,,,,,,
@@ -5023,9 +5015,25 @@ STORE QV_Table INTO File.QVD;
 "Other","Advanced topics: Benchmarking and comparative analysis","If you would like to try this functionality, go to [Financial Stocks Analysis -  demo - Comparative Analysis tab](http://demo.qlik.com/detail.aspx?appName=Financial%20Stock%20Analysis.qvw&_ga=1.93193818.654086888.1487078093)",,,,,,,,,
 "Other","Licensing","qlik sense tokens license.png",,,,,,,,,
 "Other","QAP",,,,,,,,,,
-"Other","Video: Change the host name (certificates, pfx, cert)","https://youtu.be/Dvub_4fikv0",,,,,,,,,
 "Other","On demand app generation (ODAG)","https://youtu.be/n_VnOdqQ0CA",,,,,,,,,
 "Other","Documentation and video overview","iframe /generic_links_embedded",,"","","","","         0","0","Technical - 2 hours, Integration summary",
+"Other","#Introduction to NPrinting","iframe https://help.qlik.com/en-US/nprinting/February2018/Content/Introduction/Introduction.htm",,,,,,,,,
+"Other","Introduction to NPrinting APIs","# Nprinting Feb 2018",,,,,,,,,
+"Other","Introduction to NPrinting APIs","iframe https://help.qlik.com/en-US/nprinting/February2018/APIs/NP+API/index.html",,,,,,,,,
+"Other","Introduction to NPrinting APIs","# Nprinting 17.2",,,,,,,,,
+"Other","Introduction to NPrinting APIs","iframe https://help.qlik.com/en-US/nprinting/17.2/APIs/NP+API/index.html",,,,,,,,,
+"Other","Introduction to NPrinting APIs","#Nprinting 16",,,,,,,,,
+"Other","Introduction to NPrinting APIs","Iframe https://community.qlik.com/docs/DOC-8439",,,,,,,,,
+"Other","Introduction to NPrinting APIs","# Nprinting April 2018",,,,,,,,,
+"Other","Introduction to NPrinting APIs","Iframe http://betahelp.qlik.com/en-US/nprinting/April2018/Content/Introduction/Introduction.htm",,,,,,,,,
+"Other","Version /source control integration using In4BI","Version Control, Deployment and Governance are important topics when using BI tools in general. For Qlik Sense there is a solution: Platform Manager. In short Platform Manager provides (source: [in4BI](https://in4bi.com/platform-manager-qlik-sense/):",,,,,,,,,
+"Other","Version /source control integration using In4BI","Integrated Version Control with ability to use the Qlik Sense MyWork stream as your workspace",,,,,,,,,
+"Other","Version /source control integration using In4BI","Simple Deployment to all of your Qlik Sense servers",,,,,,,,,
+"Other","Version /source control integration using In4BI","Customizable Workflow/Checklist with built-in authorization",,,,,,,,,
+"Other","Version /source control integration using In4BI","Difference Analyses reports",,,,,,,,,
+"Other","Version /source control integration using In4BI","Ability to change Library connections during Deployment of your Qlik Sense apps",,,,,,,,,
+"Other","Version /source control integration using In4BI","Data Lineage visualizes all dependencies of your Qlik Sense apps",,,,,,,,,
+"Other","Version /source control integration using In4BI","<iframe class=""SenseEmbedFrame"" src=""https://in4bi.com/platform-manager-qlik-sense/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,,,,,,,,
 "QAP","Delighting developers","web - QAP delighting developers.png",,,,,,,,,
 "QAP","Lifecycle","web - qap lifecycle.png",,,,,,,,,
 "QAP","Key advantages","web - QAP delighting developers.png",,,,,,,,,
