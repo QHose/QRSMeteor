@@ -165,6 +165,7 @@ Template.slide.helpers({
     active(slideNr) {
         var activeSlide = Session.get('activeStepNr');
         var active = slideNr < activeSlide + numberOfActiveSlides && slideNr > activeSlide - numberOfActiveSlides;
+        // console.log('slide '+activeSlide +'is active? '+ active)
         return active;
     }
 });
@@ -332,10 +333,11 @@ function convertToHTML(text) {
     //        
     else { //text, convert the text (which can include markdown syntax) to valid HTML
         var result = converter.makeHtml(text);
+        // console.log('Markdown result', result)
         if (result.substring(1, 11) === 'blockquote') {
             return '<div class="ui green segment">' + result + '</div>';
         } else {
-            return result;
+            return '<div class="">' + result + "<br> </div>";
         }
     }
 }
