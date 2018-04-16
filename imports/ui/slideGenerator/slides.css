@@ -65,7 +65,7 @@ logout?targetUr…host:81/qmc:91
 }
 
 .reveal .wrap {
-    min-height: calc(100vh - 37px);
+    min-height: calc(100vh - 34px);
 }
 
  ::selection {

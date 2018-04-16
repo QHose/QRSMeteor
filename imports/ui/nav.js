@@ -76,7 +76,7 @@ export function showSlideSelector() {
         .css({
             position: "fixed",
             top: '260px',
-            'min-height': '500px'
+            'height': '700px'
         })
         .modal({
             onVisible: function() {
