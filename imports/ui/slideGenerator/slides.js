@@ -30,6 +30,8 @@ Template.slides.onRendered(function() {
     initQix();
 });
 
+var menuOptions = [];
+
 Template.slides.events({
     'click .closeSlides': function(event, template) {
         event.preventDefault();
@@ -45,6 +47,36 @@ Template.slides.events({
         $('body').css({
             overflow: 'auto'
         });
+    },
+
+    'click .dropdown-menu a': function(event, template) {
+        
+        var $target = $( event.currentTarget ),
+                val = $target.attr( 'data-value' ),
+                $inp = $target.find( 'input' ),
+                idx;
+
+            if ( ( idx = menuOptions.indexOf( val ) ) > -1 ) {
+                menuOptions.splice( idx, 1 );
+                setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
+            } else {
+                menuOptions.push( val );
+                setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
+            }
+
+            $( event.target ).blur();
+                
+            $('.commentBox').css({
+                display: (menuOptions.indexOf("hidecomments") > -1)? 'none' : 'block'
+            });
+            return false;
+    },
+
+    'click a.op-help': function() {
+        Reveal.toggleHelp();
+    },
+    'click a.op-overview': function() {
+        Reveal.toggleOverview();
     }
 });
 
@@ -74,18 +106,17 @@ function initializeReveal() {
         controls: true,
         center: true,
         // Flags if speaker notes should be visible to all viewers
-        showNotes: true,
+        showNotes: false,
         autoPlayMedia: true,
         fragments: false,
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: true,
         // autoSlide: 1000,
         loop: false,
-        transition: "none", // none/fade/slide/convex/concave/zoom
+        transition: "slide", // none/fade/slide/convex/concave/zoom
         previewLinks: false,
         //slideNumber: 'c/t',
         slideNumber: 'h/v',
-        display: "block"
+        display: "block",
+        help: true
     });
 
     Session.set('activeStepNr', 0);
@@ -93,6 +124,10 @@ function initializeReveal() {
         //console.log('slidechanged', evt.indexh)
         Session.set('activeStepNr', evt.indexh);
         $('.ui.embed').embed();
+
+        $('.commentBox').css({
+            display: (menuOptions.indexOf("hidecomments") > -1)? 'none' : 'block'
+        });
     });
 }
 

@@ -309,10 +309,13 @@ export async function setChangeListener(qix) {
     try {
         qix.app.on('changed', async() => {
             console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
-            await getCurrentSelections();
+            var cSelections = await getCurrentSelections();
             Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
-            await getAllSlides();
-            Reveal.slide(0); //go to the first slide after a data refresh.
+           
+            if ( cSelections && cSelections.length ) {
+                await getAllSlides();    
+                Reveal.slide(0); //go to the first slide after a data refresh.      
+            }
         });
 
     } catch (error) {
@@ -373,24 +376,33 @@ async function getCurrentSelections() {
         // console.log('genericObject layout', layout)
         var currentSelections = layout.qSelectionObject.qSelections;
 
-        SenseSelections.insert({
-            userId: Meteor.userId,
-            userName: Meteor.user().profile.name,
-            eventType: "selectionChanged",
-            selection: currentSelections,
-            selectionDate: new Date() // current time
-        }, function(err, currentSelectionId) {
-            if (err) { console.error('Failed to store the selection in mongoDb') }
-            console.log('New selection has been stored in MongoDB with currentSelectionId', currentSelectionId)
-            Session.set('currentSelectionId', currentSelectionId);
-            //AWS s3 logger
-            s3Logger(currentSelections, currentSelectionId);
-            return currentSelections;
+        console.log("currentSelections", currentSelections);
 
-        });
+        if ( currentSelections && currentSelections.length ) {
+            SenseSelections.insert({
+                userId: Meteor.userId,
+                userName: Meteor.user().profile.name,
+                eventType: "selectionChanged",
+                selection: currentSelections,
+                selectionDate: new Date() // current time
+            }, function(err, currentSelectionId) {
+                if (err) { console.error('Failed to store the selection in mongoDb') }
+                console.log('New selection has been stored in MongoDB with currentSelectionId', currentSelectionId)
+                Session.set('currentSelectionId', currentSelectionId);
+                //AWS s3 logger
+                s3Logger(currentSelections, currentSelectionId);
+                return currentSelections;
+
+            });
+        }
+
+        return currentSelections;
+
     } catch (error) {
         var message = 'getCurrentSelections: Can not connect to the Qlik Sense Engine API via enigmaJS';
         console.error(message, error);
         sAlert.error(message, error);
+
+        return null;
     };
 }
