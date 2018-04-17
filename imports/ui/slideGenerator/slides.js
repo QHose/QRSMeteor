@@ -36,7 +36,8 @@ Template.slides.onRendered(function() {
 });
 
 function slideDataLoaded() {
-    if (!Session.get("slideHeaders")) {
+    if (!Session.get("slideHeaders") && Session.get('sheetSelectorSeen') === true)
+ {
         console.log("------------------------------------");
         console.log("No slide data present in session, reroute the user back to the useCaseSelection screen.");
         console.log("------------------------------------");
@@ -92,8 +93,12 @@ Template.slideContent.events({
 Template.slideContent.onRendered(async function() {
     var level1 = this.data.slide[0].qText;
     var level2 = this.data.slide[1].qText;
+    console.log('Slide onRendered level2', level2)
     var template = this;
     if (level1 && level2) {
+        console.log('------------------------------------');
+        console.log("await getLevel3");
+        console.log('------------------------------------');
         var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent.
         bullets.forEach(function(bullet) {
             template.$('.slideContent').append(convertToHTML(bullet));
@@ -203,7 +208,7 @@ async function getLevel3(level1, level2) {
         }
     });
     // console.log('------------------------------------');
-    // console.log('QDEF IS sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)');
+    console.log('QDEF IS sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)');
     // console.log('------------------------------------');
     sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
         qTop: 0,
@@ -213,6 +218,7 @@ async function getLevel3(level1, level2) {
     }]);
 
     var level3Temp = sessionData[0].qMatrix;
+    console.log("Qlik return the following data for the sheet: ", normalizeData(level3Temp));
     return normalizeData(level3Temp);
 }
 
@@ -337,7 +343,7 @@ function convertToHTML(text) {
         if (result.substring(1, 11) === 'blockquote') {
             return '<div class="ui green segment">' + result + '</div>';
         } else {
-            return '<div class="">' + result + "<br> </div>";
+            return '<div class="zBullet">' + result + "<br> </div>";
         }
     }
 }

@@ -162,14 +162,6 @@ Preparing data has never been so easy to do. Some of the new improved features a
 
 Click on the link to get the sample data from the video.",,,,,,,,,
 "What is an app?","Video: Understanding Geographic Data Profiling (mapping) (6M)","https://youtu.be/2aCkT0LJnm0",,,,,,,,,
-"What is an app?","Other topics","[Set initial selections](http://branch.qlik.com/#!/project/5775290349fc1bfca8047ad2)",,,,,,,,,
-"What is an app?","Other topics","!comment
-The link provides a path to an extension posted on our Qlik Branch website. This extension provides multiple possibilities in selecting data:
- -  Standard horizontal selections on fields. 
- - Selections on variables. Used for 'always one selected value'.
- - Selections on flags.
- - Initial selections when opening an app.
- - A date range picker.",,,,,,,,,
 "Introduction to SaaS","History","We used to install software, but now you can also access your software online.",,,,,,,,,
 "Introduction to SaaS","History","All users go to the same site and have their *own space*",,,,,,,,,
 "Introduction to SaaS","History","qlik sense embedded example.png",,,,,,,,,
@@ -653,16 +645,6 @@ $(""#btn_1"").click(function() {
 "Web integration","Examples of embedded apps","iframe https://webapps.qlik.com/#/",,"","","","","         0","0","Integration summary, Introduction - 30 minutes",
 "Web integration","Examples of embedded apps","!comment
 This slide gives a real life example of embedding. It shows you a collection of example websites where Qlik Sense has been embedded.The URL is: [https://webapps.qlik.com](https://webapps.qlik.com).
-",,,,,,,,,
-"Web integration","Embedding is hot","web - embedded analytics gaining tracktion.png",,,,,,,,,
-"Web integration","Embedding is hot","!comment
-Internal embedding interest or external/commercial embedding interest? 
-
-At Qlik, we have tracked the growth of embedded analytics over the past several years as it is a firmly entrenched buying agenda in its own right fueled in a large part by the need for most rank and file information workers to employ and use analytics right within their workspace.  
-
-Embedded analytics is definitely not a new technology trend, organizations have been doing it in some shape or form over the years but we have seen an uptake in interest in the last few years.  In this recent January survey from Aberdeen, we note again the prevalence of software providers to rank the primary driver for embedding analytics addressing their need to gain competitive advantage through a differentiated solution at the top of the charts, followed somewhat behind the need to gain new market share through adjacent markets with analytics.  Again analytics as the core driver and noted as a must have.
-
-This same group of survey respondents have also seen nearly a 20% year over year increase in organic revenue, a 15% year over year growth in total customers – as well as a 12% increase in year over year cross-sell/up-sell revenue. So a hardy, quantified validation of the pay-off of embedded analytics.
 ",,,,,,,,,
 "Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Who’s the audience for embedded apps? ","!comment
@@ -1336,6 +1318,17 @@ This slide gives some performance tips when using our APIs.
 "Web integration","Videos on Qlik.help: Getting started with the dev-hub","Working with the Single configurator",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Videos on Qlik.help: Getting started with the dev-hub","Using the Engine API explorer",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Videos on Qlik.help: Getting started with the dev-hub","QlikView converter",,"","","","","         0","0","Technical - 1 day",
+"Web integration","How to set initial selections","You can set selections in mulitple ways
+- use a (invisible, single object) Iframe url with selections encoded in the URL
+- use the selection API (see the ""embed"" menu option, technical info menu for DIV and data only)
+- use an [extension](http://branch.qlik.com/#!/project/5775290349fc1bfca8047ad2) (a component inside an app)",,"","","","","         0","0","Technical - 1 day",
+"Web integration","How to set initial selections","!comment
+The link provides a path to an extension posted on our Qlik Branch website. This extension provides multiple possibilities in selecting data:
+ -  Standard horizontal selections on fields. 
+ - Selections on variables. Used for 'always one selected value'.
+ - Selections on flags.
+ - Initial selections when opening an app.
+ - A date range picker.",,"","","","","         0","0","Technical - 1 day",
 "Security - functional design","Introduction to application level security","Authentication: Who is the user?",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - functional design","Introduction to application level security","Authorization: What can he do?",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Security - functional design","Introduction to application level security","<img class=""ui medium centered image"" src=""images/securityRules.png"">",,"","","","","         0","0","PreSales, Technical - 1 day",
@@ -1744,7 +1737,7 @@ or
 "Qlik Sense API introduction","Javascript or CSS won't load","Check the source location of the files the HTML tries to load. ",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","Javascript or CSS won't load","Try to open the link in your browser and see the result",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","Javascript or CSS won't load","Do you see the source code? (ok)",,"","","","","         0","0","Deep dive",
-"Qlik Sense API introduction","API tools on the community","Always check [Branch.qlik.com](for the latest tools)",,"","","","","         0","0","Technical - 1 day",
+"Qlik Sense API introduction","API tools on the community","Always check [http://branch.qlik.com](http://branch.qlik.com) for the latest tools.",,"","","","","         0","0","Technical - 1 day",
 "Qlik Sense API introduction","API tools on the community","[Export and back-up app via JSON export](http://branch.qlik.com/#!/project/56728f52d1e497241ae698c7)",,"","","","","         0","0","Technical - 1 day",
 "Qlik Sense API introduction","API tools on the community","A nice tool that adds extra features (approve sheets, download security rules) to Qlik Sense is the [EA powertools](http://branch.qlik.com/#!/project/57f67b7c06e8670cd284e852)",,"","","","","         0","0","Technical - 1 day",
 "Qlik Sense API introduction","API tools on the community","EA powertools.png",,"","","","","         0","0","Technical - 1 day",
@@ -1761,23 +1754,27 @@ or
 - clean up of the environment (swipe)",,"","","","","         0","0","Hosting Ops, Technical - 2 hours",
 "Integration.qlik.com key API calls","Summary: which activities did we automate in the demo environment?","The open source demo tool [QRSMeteor](https://github.com/QHose/QRSMeteor) tool simulates a real SaaS platform. By using it (for demo purposes) you can run your own demo on premise. ",,"","","","","         0","0","Hosting Ops, Technical - 2 hours",
 "Integration.qlik.com key API calls","Summary: which activities did we automate in the demo environment?","See [API source code](/APILogs) for more information.",,"","","","","         0","0","PreSales, Technical - 2 hours",
-"Integration.qlik.com key API calls","Deployment overview","# Deployment",,"","","","","         0","0","PreSales, Technical - 2 hours, Hosting Ops",
-"Integration.qlik.com key API calls","Deployment overview","Install Qlik Sense using a silent script",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
-"Integration.qlik.com key API calls","Deployment overview","Insert license",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
-"Integration.qlik.com key API calls","Deployment overview","Setup user access rules",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
-"Integration.qlik.com key API calls","Deployment overview","Setup proxy",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
-"Integration.qlik.com key API calls","Deployment overview","Create virtual proxies",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
-"Integration.qlik.com key API calls","Deployment overview","Upload template apps and extensions",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
+"Integration.qlik.com key API calls","Deployment overview","# Automatied deployment of",,"","","","","         0","0","PreSales, Technical - 2 hours, Hosting Ops",
+"Integration.qlik.com key API calls","Deployment overview","Download and silent installation of Qlik Sense",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
+"Integration.qlik.com key API calls","Deployment overview","[Insert license](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js#L27)",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
+"Integration.qlik.com key API calls","Deployment overview","Setup [user access rules](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js#L62)",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
+"Integration.qlik.com key API calls","Deployment overview","Setup [proxy](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L43) via config file definition",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
+"Integration.qlik.com key API calls","Deployment overview","[Create](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L94) virtual proxies",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
+"Integration.qlik.com key API calls","Deployment overview","Upload [template apps](https://github.com/QHose/QRSMeteor/blob/8f829ef687feaf1cd3802c873b383b04726a4337/imports/api/server/QRSFunctionsApp.js#L67)",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
+"Integration.qlik.com key API calls","Deployment overview","Upload [extensions](https://github.com/QHose/QRSMeteor/blob/8f829ef687feaf1cd3802c873b383b04726a4337/imports/api/server/QRSFunctionsExtension.js#L81)",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
 "Integration.qlik.com key API calls","Deployment overview","Create default streams",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
-"Integration.qlik.com key API calls","Deployment overview","Setup security rules",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
-"Integration.qlik.com key API calls","Deployment overview","Save Qlik Sense configuration as JSON and track changes with GitHub",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
+"Integration.qlik.com key API calls","Deployment overview","Setup [security rules](https://github.com/QHose/QRSMeteor/blob/8f829ef687feaf1cd3802c873b383b04726a4337/imports/api/server/QRSFunctionsSystemRules.js#L55)",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
+"Integration.qlik.com key API calls","Deployment overview","Upload and export Qlik Sense configuration as JSON (and track changes with a version management system like Git)",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
 "Integration.qlik.com key API calls","Deployment overview","Get app IDs for automatic/dynamic embedding (in IFrame/DIV) without hard coded items.",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
+"Integration.qlik.com key API calls","Deployment overview","# Automated maintenance
+- Remove old streams and apps
+- Create back-ups of important setings, apps and track changes
+- track who used what, maybe enhance your template based on these statistics",,"","","","","         0","0","PreSales, Technical - 2 hours, Hosting Ops",
 "Integration.qlik.com key API calls","Deployment overview","## Code example
 ```javascript
             QSLic.insertUserAccessRule();
             QSSystem.disableDefaultSecurityRules();
-            await QSProxy.createVirtualProxies();
-            await timeout(4000); //wait till the proxy has restarted...
+            await QSProxy.createVirtualProxies();.
             await QSSystem.createSecurityRules();
             QSStream.initSenseStreams();
             await QSApp.uploadAndPublishTemplateApps();
@@ -1786,10 +1783,16 @@ or
             QSExtensions.uploadExtensions();
             QSLic.saveSystemRules();
 ```",,"","","","","         0","0","PreSales",
-"Integration.qlik.com key API calls","Deployment overview","# Automated maintenance
-- Remove old streams and apps
-- Create back-ups of important setings, apps and track changes
-- track who used what, maybe enhance your template based on these statistics",,"","","","","         0","0","PreSales, Technical - 2 hours, Hosting Ops",
+"Integration.qlik.com key API calls","Deployment overview","# Code references
+- All server side API calls [modules](https://github.com/QHose/QRSMeteor/tree/master/imports/api/server)
+
+## modules
+- [License](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js)
+- [Streams](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsStream.js)
+- [Apps](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js)
+- [Extensions](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsExtension.js)
+- [System rules](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsSystemRules.js)
+- [Custom properties](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsCustomProperties.js)",,,,,,,,,
 "Integration.qlik.com key API calls","Security overview","# Security integration
 - Users get a Single Sign On via a ticket exchange  (or SAML, JWT, AD) 
 - The ticket contains the userId and groups from your Saas platform
@@ -3275,7 +3278,7 @@ https://<QRS machine name>:4242/qrs/app/count?Xrfkey=abcdef123456&filter=Name eq
 "QPS - Proxy API","Qlik Sense supported authentication methods.","Ticket",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","Qlik Sense supported authentication methods.","Header",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","Qlik Sense supported authentication methods.","SAML",,"","","","","         0","0","PreSales",
-"QPS - Proxy API","Qlik Sense supported authentication methods.","[JWT](https://github.com/goldbergjeffrey/qs-jwt-examples) (JSON Web tokens)",,,,,,,,,
+"QPS - Proxy API","Qlik Sense supported authentication methods.","[JWT](https://github.com/goldbergjeffrey/qs-jwt-examples) (JSON Web tokens)",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","When to use which authentication method? (2)",">With SaaS that is ticketing or SAML most of the time",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","You create a virtual proxy per authentication method","QPS - virtual proxy per authentication method.png",,"","","","","         0","0","PreSales",
 "QPS - Proxy API","The URL or prefix used triggers a specific virtual proxy","##If you use an URL (e.g. in IFrame)",,"","","","","         0","0","PreSales",
@@ -5041,3 +5044,4 @@ STORE QV_Table INTO File.QVD;
 * Responsive and smart
 * 1 app for  mobile, desktop and web integration
 * No fat clients",,,,,,,,,
+"Main Topic",,,,,,,,,,,

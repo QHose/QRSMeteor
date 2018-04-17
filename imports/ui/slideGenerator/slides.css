@@ -181,9 +181,8 @@ blockquote .reveal h5,
 /*********************************************
   * OTHER
   *********************************************/
-
 .reveal p {
-    margin: 20px 0;
+    margin: 10px 0;
     line-height: 1.3;
     text-align: left;
 }

@@ -117,7 +117,7 @@ Template.useCaseSelection.onRendered(async function() {
 Template.useCaseSelection.events({
     'click .button.slides': async function(e, t) {
         // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
-        await setSlideContentInSession('TECHNICAL');
+        // await setSlideContentInSession('TECHNICAL');
         Router.go('slides');
 
         setTimeout(function() {
@@ -153,7 +153,7 @@ async function getTicket() {
 }
 
 async function makeSureSenseIsConnected() {
-    return await getQix();
+    return await getQix(await getTicket());
 }
 
 async function setSlideContentInSession(group) {
@@ -330,6 +330,7 @@ export async function getComment(qix) {
 }
 
 export async function setChangeListener(qix) {
+    console.log('setChangeListener', qix)
     try {
         qix.app.on('changed', async() => {
             console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');

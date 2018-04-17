@@ -75,7 +75,7 @@ export function showSlideSelector() {
         .modal('show')
         .css({
             position: "fixed",
-            top: '260px',
+            top: '360px',
             'height': '700px'
         })
         .modal({
@@ -83,7 +83,8 @@ export function showSlideSelector() {
                 $(".ui.modal.sheetSelector").modal("refresh");
             },
             onHide: function() {
-                console.log('hidden');
+                // console.log('hidden');
+                Session.set('sheetSelectorSeen', true);
                 abortQlikModalState();
             },
             // onShow: function() {
@@ -93,9 +94,8 @@ export function showSlideSelector() {
 
 }
 async function abortQlikModalState() {
-    console.log('slide selection modal closed');
-    var ticket = 'dummy, user should already be authenticated at this point...'
-    var qix = await getQix(ticket);
+    // console.log('slide selection modal closed');
+    var qix = await getQix();
     qix.app.abortModal(true);
 }
 
