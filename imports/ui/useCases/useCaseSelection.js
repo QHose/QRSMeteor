@@ -28,33 +28,45 @@ var possibleRoles = ['Developer', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-L
 
 // ONCREATED
 Template.useCaseSelection.onCreated(async function() {
-    // const apiLogsHandle = Meteor.subscribe('apiLogs');
-    // Session.set('selectionMade', false);
-
-    //wait a bit, so Meteor can login, before requesting a ticket...
-    Meteor.setTimeout(async function() {
-        //connect to qlik sense 
-        qix = await makeSureSenseIsConnected();
-        // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
-        await setChangeListener(qix);
-
-        //see if the user started up this screen, with a selection parameter
-        var value = getQueryParams('selection');
-        // console.log('getQueryParams return value', value)
-        //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
-        if (value) {
-            console.log('%%%%%%%%%%  Slides oncreated: Query string found: ', value);
-            await nav.selectViaQueryId(value)
-                // get the data and go to the slides
-            await getAllSlides();
-            // after we got all data in an array from sense, change the router/browser to the slides page
-            Router.go("slides");
-        } else {
-            // console.log('no query selection parameter found');
-        }
-    }, 0);
-
+    await initQlikSense();
 })
+
+export async function initQlikSense(){
+                          //wait a bit, so Meteor can login, before requesting a ticket...
+                          Meteor.setTimeout(
+                            async function() {
+                              //connect to qlik sense
+                              qix = await makeSureSenseIsConnected();
+                              // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
+                              await setChangeListener(
+                                qix
+                              );
+
+                              //see if the user started up this screen, with a selection parameter
+                              var value = getQueryParams(
+                                "selection"
+                              );
+                              // console.log('getQueryParams return value', value)
+                              //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
+                              if (value) {
+                                console.log(
+                                  "%%%%%%%%%%  Slides oncreated: Query string found: ",
+                                  value
+                                );
+                                await nav.selectViaQueryId(
+                                  value
+                                );
+                                // get the data and go to the slides
+                                await getAllSlides();
+                                // after we got all data in an array from sense, change the router/browser to the slides page
+                                Router.go("slides");
+                              } else {
+                                // console.log('no query selection parameter found');
+                              }
+                            },
+                            0
+                          );
+                        }
 
 // Replace with more Meteor approach
 function getQueryParams(name, url) {
@@ -118,6 +130,7 @@ Template.useCaseSelection.events({
     'click .button.slides': async function(e, t) {
         // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
         // await setSlideContentInSession('TECHNICAL');
+        Session.set("sheetSelectorSeen", false);
         Router.go('slides');
 
         setTimeout(function() {

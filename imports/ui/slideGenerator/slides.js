@@ -8,7 +8,8 @@ import './reveal.css';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
 import { Logger } from '/imports/api/logger';
-import { getQix } from '/imports/ui/useCases/useCaseSelection';
+import { getQix, initQlikSense } from '/imports/ui/useCases/useCaseSelection';
+import * as nav from "/imports/ui/nav.js";
 
 _ = lodash;
 var Cookies = require('js-cookie');
@@ -28,20 +29,22 @@ Template.slides.onDestroyed(function() {
     });
 })
 
-Template.slides.onRendered(function() {
-    setTimeout(() => {
-        slideDataLoaded();
+Template.slides.onRendered(async function() {
+    setTimeout(async () => {
+        await slideDataLoaded();
+        initializeReveal();
     }, 1000);
-    initializeReveal();
 });
 
-function slideDataLoaded() {
-    if (!Session.get("slideHeaders") && Session.get('sheetSelectorSeen') === true)
+async function slideDataLoaded() {
+    if (!Session.get("slideHeaders"))
  {
         console.log("------------------------------------");
         console.log("No slide data present in session, reroute the user back to the useCaseSelection screen.");
         console.log("------------------------------------");
-        Router.go("useCaseSelection");
+        await initQlikSense();
+        nav.showSlideSelector();
+        // Router.go("useCaseSelection");
         return;
     }
 }
@@ -189,7 +192,8 @@ Template.registerHelper('step', function() {
 //
 async function getLevel3(level1, level2) {
     // console.log("getLevel3: " + level1 + ' -' + level2);
-    var qix = await getQix();
+    try {
+            var qix = await getQix();
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {
             qType: "cube"
@@ -220,6 +224,12 @@ async function getLevel3(level1, level2) {
     var level3Temp = sessionData[0].qMatrix;
     console.log("Qlik return the following data for the sheet: ", normalizeData(level3Temp));
     return normalizeData(level3Temp);
+
+    } catch (error) {
+        console.log('error getting level 3 data (the bullets) for the slide', error);
+        location.reload();        
+    }
+
 }
 
 function createCommentBox(text) {
