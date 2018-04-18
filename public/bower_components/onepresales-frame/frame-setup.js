@@ -197,11 +197,25 @@ function addGtagScript() {
         if (cookieUser) {
             var user = JSON.parse(cookieUser);
             gtag('config', gtagCode, {
-                'user_id': user.qlikID
+                'user_id': user.qlikID,
+                'custom_map': {
+                    'dimension1': 'qlikID-s',
+                    'dimension2': 'qlikID-u',
+                    'dimension3': 'qlikID-h'
+                }
             });
+  
+            gtag('event', 'qlikID-s_dimension', {'qlikID-s': user.qlikID});
+            gtag('event', 'qlikID-u_dimension', {'qlikID-u': user.qlikID});
+            gtag('event', 'qlikID-h_dimension', {'qlikID-h': user.qlikID});
+
+            console.log("Track QlikID to GA", user.qlikID);
+
         } else {
             gtag('config', gtagCode, );
         }
+
+        
     }
 }
 
