@@ -339,7 +339,7 @@ export async function getComment(qix) {
     }]);
     Session.set('slideComment', sessionData[0].qMatrix);
     console.log('sessionModel', sessionModel)
-    console.log('slide Comment', Session.get('slideComment'));
+    // console.log('slide Comment', Session.get('slideComment'));
 }
 
 export async function setChangeListener(qix) {
