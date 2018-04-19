@@ -118,7 +118,7 @@ export async function selectViaQueryId(mongoId) {
 // if people click on a menu item, you want a specific slide to be selected, so the slide is the value to search for...
 export async function selectMenuItemInSense(slide) {
     console.log('selectMenuItemInSense - slide', slide)
-    Cookies.set('currentMainRole', 'TECHNICAL');
+    // Cookies.set('currentMainRole', 'TECHNICAL');
     var selection = [{
         "qText": slide
     }]

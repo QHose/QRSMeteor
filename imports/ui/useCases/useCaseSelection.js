@@ -126,9 +126,11 @@ Template.useCaseSelection.events({
     nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
   },
   "blur .ui.dropdown.selection .menu": async function(e, t) {
-    var selectedRole = t.$(".ui.dropdown").dropdown()["0"].outerText;
+    var selectedRole = t.$(".ui.dropdown").find(":selected").val();
+    
+    console.log('$(\".ui.dropdown\").dropdown()', $(".ui.dropdown").dropdown())
     console.log('------------------------------------');
-    console.log('dropdown closed: ', t.selectedRole);
+    console.log('dropdown closed: ', selectedRole);
     console.log('------------------------------------');
     Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
@@ -294,7 +296,6 @@ export async function getAllSlideHeadersPlain(qix) {
         qWidth: 3,
         qHeight: 3333
     }]);
-    // sessionModel.close();
     return sessionData[0].qMatrix;
 }
 //
@@ -349,7 +350,7 @@ export async function setChangeListener(qix) {
             Meteor.setTimeout(async function wait() {
                 await getAllSlides();
                 Reveal.slide(0); //go to the first slide after a data refresh.           
-            },1000)
+            },100)
         });
     } catch (error) {
         console.error('failed to set change listener: ', error);
