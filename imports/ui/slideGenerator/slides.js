@@ -92,27 +92,50 @@ Template.slideContent.events({
 //
 // ─── SLIDE CONTENT ──────────────────────────────────────────────────────────────────────
 //
+Template.slideContent.onCreated(async function() {
+    var instance = this;
+    instance.bullets = new ReactiveVar([]); //https://stackoverflow.com/questions/35047101/how-do-i-access-the-data-context-and-the-template-instance-in-each-case-event
+
+    //the header and sub header for which we want to load the slide data/bullets
+    var level1 = Template.currentData().slide[0].qText;
+    var level2 = Template.currentData().slide[1].qText;
+     // and now let's get the slide content: 
+    var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent with a set analysis query
+    instance.bullets.set(bullets);    
+    console.log("onCreated get instance.bullets", instance.bullets.get());    
+})
+
+Template.slideContent.helpers({
+  bullets: function() {
+    var res = Template.instance().bullets.get();
+    if (res)
+        var newArray = [];
+        res.forEach(function(item) {
+            newArray.push(convertToHTML(item))
+        })
+        console.log('newArray', newArray)
+        return newArray;
+  }
+    });
+
 
 Template.slideContent.onRendered(async function() {
-    var level1 = this.data.slide[0].qText;
-    var level2 = this.data.slide[1].qText;
-    console.log('Slide onRendered level2', level2)
-    var template = this;
-    if (level1 && level2) {
-        console.log('------------------------------------');
-        console.log("await getLevel3");
-        console.log('------------------------------------');
-        var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent.
-        bullets.forEach(function(bullet) {
+    var template = this;    
+    var level1 = Template.currentData().slide[0].qText;
+        var level2 = Template.currentData().slide[1].qText;
+    var bullets = new ReactiveVar();
+    //get level 3 data
+    bullets.set(await getLevel3(level1, level2)); //using the parent, get all items that have this name as parent with a set analysis query
+      console.log('bullets in onrendered', bullets.get())
+
+  /*   Tracker.autorun(function() {
+        bullets.get().forEach(function(bullet) {
             template.$('.slideContent').append(convertToHTML(bullet));
         })
-
-    }
+    }) */
     //
     // ─── GET COMMENT AND CREATE A NICE HTML BOX AROUND THE TEXT ─────────────────────
     //
-
-
     var comment = await getComment(level1, level2);
     // console.log('comment retrieved in slideContent onrendered', comment)
     if (comment.length > 10)
@@ -211,8 +234,9 @@ async function getLevel3(level1, level2) {
             }]
         }
     });
+    console.log('sessionModel', sessionModel)
     // console.log('------------------------------------');
-    console.log('QDEF IS sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)');
+    // console.log('QDEF IS sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)');
     // console.log('------------------------------------');
     sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
         qTop: 0,
@@ -222,7 +246,7 @@ async function getLevel3(level1, level2) {
     }]);
 
     var level3Temp = sessionData[0].qMatrix;
-    console.log("Qlik return the following data for the sheet: ", normalizeData(level3Temp));
+    console.log("Qlik returned the following data for the sheet: ", normalizeData(level3Temp));
     return normalizeData(level3Temp);
 
     } catch (error) {
