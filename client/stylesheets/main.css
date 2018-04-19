@@ -37,3 +37,15 @@
 .reveal .slides .itemPPTLink{
 	margin-top: 40px;
 }
+
+#peicon:after {
+    content: url(images/linkImage-1476-thumb.png);
+    vertical-align: middle;
+}
+
+.page-title__headline {
+    font-size: 40px;
+    font-size: 2.5rem;
+    color: #7e8083;
+    line-height: 1em;
+}
