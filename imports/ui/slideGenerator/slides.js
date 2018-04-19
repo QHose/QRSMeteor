@@ -15,7 +15,7 @@ _ = lodash;
 var Cookies = require('js-cookie');
 var showdown = require('showdown');
 var converter = new showdown.Converter();
-var numberOfActiveSlides = 5;
+var numberOfActiveSlides = 10;
 
 Template.slides.onCreated(async function() {
     $('body').css({
@@ -40,7 +40,7 @@ async function slideDataLoaded() {
     if (!Session.get("slideHeaders"))
  {
         console.log("------------------------------------");
-        console.log("No slide data present in session, reroute the user back to the useCaseSelection screen.");
+        console.log("No slide data present in session, reroute the user back to the Selection screen.");
         console.log("------------------------------------");
         await initQlikSense();
         nav.showSlideSelector();
@@ -81,13 +81,13 @@ function initializeReveal() {
     }
 }
 
-Template.slideContent.events({
-    'contextmenu *': function(e, t) {
-        e.stopPropagation();
-        console.log('template instance:\n', t);
-        console.log('data context:\n', Blaze.getData(e.currentTarget));
-    }
-});
+// Template.slideContent.events({
+//     'contextmenu *': function(e, t) {
+//         e.stopPropagation();
+//         console.log('template instance:\n', t);
+//         console.log('data context:\n', Blaze.getData(e.currentTarget));
+//     }
+// });
 
 //
 // ─── SLIDE CONTENT ──────────────────────────────────────────────────────────────────────
@@ -103,20 +103,22 @@ Template.slideContent.onCreated(async function() {
      // and now let's get the slide content: 
     var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent with a set analysis query
     instance.bullets.set(bullets);    
-    console.log("onCreated get instance.bullets", instance.bullets.get());    
 })
 
 Template.slideContent.helpers({
   bullets: function() {
+      var makeSureTemplateRerenders = Session.get("activeStepNr");
+    // console.log('------------------------------------');
+    // console.log('Bullet helper, active slide nr '+ this.slide[1].qText +' for active step:',Session.get('activeStepNr') );
+    // console.log('------------------------------------');  
+    // console.log()
     var res = Template.instance().bullets.get();
     if (res)
         var newArray = [];
         res.forEach(function(item) {
             newArray.push(convertToHTML(item))
         })
-        console.log('newArray', newArray)
-        return newArray;
-  }
+        return newArray;  }
     });
 
 
@@ -127,7 +129,6 @@ Template.slideContent.onRendered(async function() {
     var bullets = new ReactiveVar();
     //get level 3 data
     bullets.set(await getLevel3(level1, level2)); //using the parent, get all items that have this name as parent with a set analysis query
-      console.log('bullets in onrendered', bullets.get())
 
   /*   Tracker.autorun(function() {
         bullets.get().forEach(function(bullet) {
@@ -155,7 +156,7 @@ Template.slideContent.onRendered(async function() {
     Meteor.setTimeout(function() {
         //embed youtube containers in a nice box without loading all content
         this.$('.ui.embed').embed({
-            autoplay: true
+            autoplay: false
         });
         //make sure all code gets highlighted using highlight.js
         this.$('pre code').each(function(i, block) {
@@ -197,7 +198,6 @@ Template.slide.helpers({
     active(slideNr) {
         var activeSlide = Session.get('activeStepNr');
         var active = slideNr < activeSlide + numberOfActiveSlides && slideNr > activeSlide - numberOfActiveSlides;
-        // console.log('slide '+activeSlide +'is active? '+ active)
         return active;
     }
 });
@@ -235,7 +235,7 @@ async function getLevel3(level1, level2) {
             }]
         }
     });
-    console.log('sessionModel', sessionModel)
+    // console.log('sessionModel', sessionModel)
     // console.log('------------------------------------');
     // console.log('QDEF IS sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)');
     // console.log('------------------------------------');
@@ -247,11 +247,12 @@ async function getLevel3(level1, level2) {
     }]);
 
     var level3Temp = sessionData[0].qMatrix;
-    console.log("Qlik returned the following data for the sheet: ", normalizeData(level3Temp));
+    console.log("Qlik returned the following data for the sheet: "+level2, normalizeData(level3Temp));
+    sessionModel.removeAllListeners();
     return normalizeData(level3Temp);
 
     } catch (error) {
-        console.log('error getting level 3 data (the bullets) for the slide', error);
+        console.error('error getting level 3 data (the bullets) for the slide', error);
         location.reload();        
     }
 

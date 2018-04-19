@@ -103,23 +103,8 @@ Template.useCaseSelection.onRendered(async function() {
 
     $(".ui.dropdown").dropdown("refresh");
     var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
-        // console.log('textToShow', textToShow)
     $(".ui.dropdown").dropdown("set selected", textToShow);
-
-    $('.ui.dropdown')
-        .dropdown({
-            async onChange(group, text, selItem) {
-                // Meteor.call('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
-                Cookies.set('currentMainRole', group);
-                await setSelectionInSense('Partial Workshop', group)
-                    // await setSlideContentInSession(group);
-                    // console.log('Content has been received, now show the slides')
-                Meteor.setTimeout(function() {
-                    // console.log('Router: Go to slides ');
-                    Router.go('slides');
-                }, 200)
-            }
-        })
+    
 })
 
 //
@@ -127,19 +112,31 @@ Template.useCaseSelection.onRendered(async function() {
 //
 
 Template.useCaseSelection.events({
-    'click .button.slides': async function(e, t) {
-        // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
-        // await setSlideContentInSession('TECHNICAL');
-        Session.set("sheetSelectorSeen", false);
-        Router.go('slides');
+  "click .button.slides": async function(e, t) {
+    // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user
+    // await setSlideContentInSession('TECHNICAL');
+    Session.set("sheetSelectorSeen", false);
+    Router.go("slides");
 
-        setTimeout(function() {
-            nav.showSlideSelector();
-        }, 100);
-    },
-    'click #videoButton': async function(e, t) {
-        nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
-    }
+    setTimeout(function() {
+      nav.showSlideSelector();
+    }, 100);
+  },
+  "click #videoButton": async function(e, t) {
+    nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
+  },
+  "blur .ui.dropdown.selection .menu": async function(e, t) {
+    var selectedRole = t.$(".ui.dropdown").dropdown()["0"].outerText;
+    console.log('------------------------------------');
+    console.log('dropdown closed: ', t.selectedRole);
+    console.log('------------------------------------');
+    Cookies.set("currentMainRole", selectedRole);
+        await setSelectionInSense("Partial Workshop", selectedRole);
+        Meteor.setTimeout(function() {
+          Router.go("slides");
+        }, 200);
+    
+}
 });
 
 
@@ -338,7 +335,7 @@ export async function getComment(qix) {
         qHeight: 3333
     }]);
     Session.set('slideComment', sessionData[0].qMatrix);
-    console.log('sessionModel', sessionModel)
+    // console.log('sessionModel', sessionModel)
     // console.log('slide Comment', Session.get('slideComment'));
 }
 
@@ -346,17 +343,12 @@ export async function setChangeListener(qix) {
     console.log('setChangeListener', qix)
     try {
         qix.app.on('changed', async() => {
-            BlazeLayout.reset("slides");
-            console.log('BlazeLayout', BlazeLayout)
-            BlazeLayout.render("slides", {
-            });
-            console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
+            // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
             await getCurrentSelections();
             Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
             await getAllSlides();
-            Reveal.slide(0); //go to the first slide after a data refresh.
+                Reveal.slide(0); //go to the first slide after a data refresh.                
         });
-
     } catch (error) {
         console.error('failed to set change listener: ', error);
     }
@@ -407,7 +399,6 @@ async function getCurrentSelections() {
             selectionDate: new Date() // current time
         }, function(err, currentSelectionId) {
             if (err) { console.error('Failed to store the selection in mongoDb') }
-            console.log('New selection has been stored in MongoDB with currentSelectionId', currentSelectionId)
             Session.set('currentSelectionId', currentSelectionId);
             return currentSelections;
         });
