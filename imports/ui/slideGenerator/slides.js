@@ -95,10 +95,11 @@ Template.slideContent.events({
 Template.slideContent.onCreated(async function() {
     var instance = this;
     instance.bullets = new ReactiveVar([]); //https://stackoverflow.com/questions/35047101/how-do-i-access-the-data-context-and-the-template-instance-in-each-case-event
-
+    
     //the header and sub header for which we want to load the slide data/bullets
     var level1 = Template.currentData().slide[0].qText;
     var level2 = Template.currentData().slide[1].qText;
+    console.log('slideContent.onCreated level 2',level2)
      // and now let's get the slide content: 
     var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent with a set analysis query
     instance.bullets.set(bullets);    

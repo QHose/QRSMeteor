@@ -346,6 +346,10 @@ export async function setChangeListener(qix) {
     console.log('setChangeListener', qix)
     try {
         qix.app.on('changed', async() => {
+            BlazeLayout.reset("slides");
+            console.log('BlazeLayout', BlazeLayout)
+            BlazeLayout.render("slides", {
+            });
             console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
             await getCurrentSelections();
             Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.

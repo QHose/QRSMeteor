@@ -24,6 +24,7 @@ practicalmeteor:faker
 simple:json-routes
 artwells:accounts-guest # https://github.com/artwells/meteor-accounts-guest
 dferber:prerender
+kadira:blaze-layout
 
 aldeed:autoform
 aldeed:collection2
