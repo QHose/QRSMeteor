@@ -346,8 +346,10 @@ export async function setChangeListener(qix) {
             // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
             await getCurrentSelections();
             Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
-            await getAllSlides();
-                Reveal.slide(0); //go to the first slide after a data refresh.                
+            Meteor.setTimeout(async function wait() {
+                await getAllSlides();
+                Reveal.slide(0); //go to the first slide after a data refresh.           
+            },1000)
         });
     } catch (error) {
         console.error('failed to set change listener: ', error);
