@@ -128,10 +128,6 @@ Template.useCaseSelection.events({
   "blur .ui.dropdown.selection .menu": async function(e, t) {
     var selectedRole = t.$(".ui.dropdown").find(":selected").val();
     
-    console.log('$(\".ui.dropdown\").dropdown()', $(".ui.dropdown").dropdown())
-    console.log('------------------------------------');
-    console.log('dropdown closed: ', selectedRole);
-    console.log('------------------------------------');
     Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
         Meteor.setTimeout(function() {
