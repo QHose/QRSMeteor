@@ -34,13 +34,13 @@ Template.nav.events({
         Router.go("useCaseSelection");
         break;
       case "SSBI":
-        selectMenuItemInSense("What is governed self service?");
+        selectMenuItemInSense("*What is governed self service with Qlik Sense*");
         break;
       case "generation":
-        selectMenuItemInSense("*Qlik Sense SaaS provisioning*");
+        selectMenuItemInSense("*multi-tenant SaaS platform with Qlik Sense*");
         break;
       case "embedding":
-        selectMenuItemInSense("Options to embed Qlik Sense: from simple to advanced use cases");
+        selectMenuItemInSense("*embed Qlik Sense*");
         // window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
         break;
       case "video":

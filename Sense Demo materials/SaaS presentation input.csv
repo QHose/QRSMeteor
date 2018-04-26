@@ -75,15 +75,15 @@ This website has been built for several reasons and goals:
 "Workshop Introduction","Agenda","Qlik Sense APIs",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Workshop Introduction","Agenda","Questions",,"","","","","         0","0","Introduction - 30 minutes",
 "Workshop Introduction","Video - generic introduction to APIs","https://www.youtube.com/watch?v=s7wmiS2mSXY",,"","","","","         0","0","Demo with integration.qlik.com",
-"What is an app?","Video: What is governed self service?","https://youtu.be/pQae9S8S_vQ?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours; Product Owner; Business Analyst; C-Level - non-technical",
-"What is an app?","Video: What is governed self service?","!comment
+"What is an app?","Video: What is governed self service with Qlik Sense?","https://youtu.be/pQae9S8S_vQ?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours; Product Owner; Business Analyst; C-Level - non-technical",
+"What is an app?","Video: What is governed self service with Qlik Sense?","!comment
 With Qlik Sense you have to possibility to go for complete self-service. To make sure you can keep your environment under control, we need to govern that self-service.  The video explains how this can be maintained with Qlik Sense.
 ",,,,,,,,,
 "What is an app?","Video: The Qlik Associative Model","https://youtu.be/gWNoyL6fZxo",,"","","","","         0","0","Introduction - 30 minutes, Business Analyst, CTO, Product Owner, Developer",
 "What is an app?","Video: The Qlik Associative Model","!comment
 This video explains the core differentiator of Qlik. This is our way of visualizing ALL your data. Our QIX engine makes sure that all your data is connected and available for complete analysis. We do not use Query based calculations on the data. With queries you always lose part of your data. With our QIX technology, you will never have that problem.",,,,,,,,,
-"What is an app?","What is governed self service?","iframe selfService_embedded",,"","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner",
-"What is an app?","What is governed self service?","!comment
+"What is an app?","What is governed self service with Qlik Sense?","iframe selfService_embedded",,"","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner",
+"What is an app?","What is governed self service with Qlik Sense?","!comment
 Click on the link to see our self-service demo. With our governed self-service you have the possibility to define how to implement guided self-service. By creating roles or groups we have created different levels of self service on Qlik Sense.
  - A consumer can only analyze data.
  - A contributor can create own private sheets.
@@ -261,34 +261,16 @@ When embedding Qlik Sense in your platform, there are several integration topics
  - SaaS provisioning: Our APIs allow the automatic creation of customer content. Creation of Apps and streams, replacing the script with user specific script, copying apps, … can all be done automatically.
  - Architecture : Our server system allows clustering, scaling and high availability.
  - Dashboard: Qlik Sense offers a wide array of beautiful visualizations in order to show your data as you want it. With the open standard of Qlik Sense it is very easy to download or create additional visualizations. With our drag and drop and scalability possibilities it is very easy to create a beautiful and powerful dashboard.",,,,,,,,,
-"Integration.qlik.com demo platform","Video: What is governed self service?","https://youtu.be/pQae9S8S_vQ?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,,,,,,,,
-"Integration.qlik.com demo platform","Video: What is governed self service?","!comment
-With Qlik Sense you have to possibility to go for complete self-service. To make sure you can keep your environment under control, we need to govern that self-service.  The video explains how this can be maintained with Qlik Sense.
-",,,,,,,,,
-"Integration.qlik.com demo platform","Demo - What is governed self service?","iframe selfService_embedded",,,,,,,,,
-"Integration.qlik.com demo platform","Demo - What is governed self service?","!comment
-With this demo you have the possibility to define to experience Qlik Sense's self service possibilities. 
-You can login with 4 users by clicking on their name. On the right side you see Qlik Sense for that specific user. They all have a specific role when they login.
- - John will be able to see and analyze dashboards. Because John is a consumer, he will have no rights to modify sheets and apps. The Edit button will not be shown. Through the role level security, he will see only data of Germany.
- - Linda has all the same rights as John. But she is a contributor. That means she can create and publish her own private sheets based on an existing app. You can notice the difference by the available Edit button Linda has in the sheet overview. She can only see data from the USA trough row level security.
- - Martin logs in as a developer: he can create apps trough the hub. He has access to the data of all the countries.
- - Paul is in the group of admins: he can maintain apps, app object and streams of his own department. He can do this through our Qlik management console. (QMC)
-
-On the bottom left of the screen there is the possibility to select different parts of the Qlik Sense Environment. These can be activated or changed for each user. The 4 pages are:
- - Hub: The overview of all the available streams and apps. This is mostly the start page for end users.
- - Sheet: look only at specific sheets of an app.
- - App: The app overview will show all the base, private and community sheets of and app.
- - QMC: Through the Qlik Management Console users can maintain and modify content and change the settings of the Qlik Sense environment.",,,,,,,,,
 "Integration.qlik.com demo platform","Qlik Sense SaaS provisioning demo: This demo simulates your SaaS platform",">Next, you will see your admin panel which controls Qlik Sense via APIs (a ""broker""), based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, Hosting Ops, CTO",
 "Integration.qlik.com demo platform","Qlik Sense SaaS provisioning demo: This demo simulates your SaaS platform","!comment
 This demo simulates an admin panel which controls Qlik Sense Trough our API's. The users and their roles are stored in a Mongo Database.  
 This admin panel is simulating the existing broker software: A piece of software that is already in place that controls your current SaaS platform. In real situations this is all fully automated. For demo purposes here, we created a demo with 4 steps where you manually need to select users, apps and press buttons to provision.
 ",,"","","","","         0","0","Hosting Ops",
-"Integration.qlik.com demo platform","In the Qlik Sense SaaS provisioning you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours, CTO",
-"Integration.qlik.com demo platform","In the Qlik Sense SaaS provisioning you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours, CTO",
-"Integration.qlik.com demo platform","In the Qlik Sense SaaS provisioning you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours, CTO",
-"Integration.qlik.com demo platform","In the Qlik Sense SaaS provisioning you will see a screen divided into two parts","SaaS logo.png",,"","","","","         0","0","Technical - 2 hours, CTO",
-"Integration.qlik.com demo platform","In the Qlik Sense SaaS provisioning you will see a screen divided into two parts","!comment
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours, CTO",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours, CTO",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours, CTO",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense you will see a screen divided into two parts","SaaS logo.png",,"","","","","         0","0","Technical - 2 hours, CTO",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense you will see a screen divided into two parts","!comment
 The left side of the screen will show the 'broker'. This is a software capability that is already in place and manages the current SaaS platform. This piece of software will maintain the control of the SaaS platform and will communicate with our Sense platform through our APIs. This means that the control stays completely in the existing platform.
 
 In this demo, the broker will define following parameters:
@@ -299,7 +281,7 @@ In this demo, the broker will define following parameters:
 On the right side of the screen, the result of the activities of the broker will be shown:
  - Which streams were created.
 Which apps were copied and published.",,,,,,,,,
-"Integration.qlik.com demo platform","Qlik Sense SaaS provisioning demo","iframe generation_embedded",,"","","","","         0","0","Integration summary, Hosting Ops, CTO, Introduction - 30 minutes",
+"Integration.qlik.com demo platform","Now try it yourself in the ""multi-tenant SaaS platform with Qlik Sense"" demo below","iframe generation_embedded",,"","","","","         0","0","Integration summary, Hosting Ops, CTO, Introduction - 30 minutes",
 "Integration.qlik.com demo platform","integration demo architecture introduction","saas demo architecture introduction of components.png",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com demo platform","integration demo architecture introduction","!comment
 A user can be a computer or a human. What defines a user is the fact that it has a userID, that it belongs to a certain customer and that it has one or multiple groups. When that user logs on to the SaaS platform, he is authenticated.  At the point he needs to see Qlik Sense content, that user needs to be authenticated with Qlik Sense. At this point this information is passed through by means of a ticket. (There are other methods, but here we use ticketing). This ticket contains the userID and additional attributes ( like groups, specific script content,….). On this website thery are stored in a Mongo Database. Through APIs these can be fetched and passed to Qlik Sense. Based on the userID and group(s) the correct content will be shown and the user will have the correct rights based on the group membership.",,,,,,,,,
