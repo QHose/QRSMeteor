@@ -108,7 +108,6 @@ Template.slideContent.onCreated(async function() {
   //the header and sub header for which we want to load the slide data/bullets
   var level1 = Template.currentData().slide[0].qText;
   var level2 = Template.currentData().slide[1].qText;
-  // console.log("slideContent.onCreated level 2", level2);
   // and now let's get the slide content:
   var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent with a set analysis query
   instance.bullets.set(bullets);
@@ -117,10 +116,6 @@ Template.slideContent.onCreated(async function() {
 Template.slideContent.helpers({
   bullets: function() {
     var makeSureTemplateRerenders = Session.get("activeStepNr");
-    // console.log('------------------------------------');
-    // console.log('Bullet helper, active slide nr '+ this.slide[1].qText +' for active step:',Session.get('activeStepNr') );
-    // console.log('------------------------------------');
-    // console.log()
     var res = Template.instance().bullets.get();
     if (res) var newArray = [];
     res.forEach(function(item) {

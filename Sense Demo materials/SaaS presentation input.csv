@@ -81,7 +81,7 @@ With Qlik Sense you have to possibility to go for complete self-service. To make
 ",,,,,,,,,
 "What is an app?","Video: The Qlik Associative Model","https://youtu.be/gWNoyL6fZxo",,"","","","","         0","0","Introduction - 30 minutes, Business Analyst, CTO, Product Owner, Developer",
 "What is an app?","Video: The Qlik Associative Model","!comment
-This video explains the core differentia tor of Qlik. This is our way of visualizing ALL your data. Our QIX engine makes sure that all your data is connected and available for complete analysis. We do not use Query based calculations on the data. With queries you always lose part of your data. With our QIX technology, you will never have that problem.",,,,,,,,,
+This video explains the core differentia tor of Qlik. This is our way of visualizing ALL your data. Our QIX engine makes sure that all your data is connected and available for complete analysis. We do not use Query based calculations on the data. With queries you will lose a part of your data, your performance will suffer or you need to add additional performance enhancement tools in between. Which will impact complexity of your system landscape. With our QIX technology, you will never have those problem and you will keep your environment simple with just 1 platform: Qlik Sense. ",,,,,,,,,
 "What is an app?","What is governed self service with Qlik Sense?","iframe selfService_embedded",,"","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner",
 "What is an app?","What is governed self service with Qlik Sense?","!comment
 Click on the link to see our self-service demo. With our governed self-service you have the possibility to define how to implement guided self-service. By creating roles or groups we have created different levels of self service on Qlik Sense.
@@ -709,8 +709,8 @@ In this example you see an embedded chart from an Qlik Sense app through an IFra
 "Web integration","Example: Create a chart on the fly using javascript. ","## Select any combination of dimensions and measures from any data source indexed in an app.",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour, Developer",
 "Web integration","Example: Create a chart on the fly using javascript. ","iframe http://jsfiddle.net/qhose/9acfgugp/embedded/result,js,html,css/",,"","","","","         0","0","PreSales, Technical - 1 day, Technical - 1 hour, Developer",
 "Web integration","Example: Create a chart on the fly using javascript. ","!comment
-# This slide shown an example of generating a bar chart on the fly with our visualization API.
-On top the different parts of the embedding can be shown: JavaScript, HTML, CSS, Resources and Result.
+# This slide shows an example of generating a bar chart on the fly with our visualization API.
+On top, the different parts of the embedding can be shown: JavaScript, HTML, CSS, Resources and Result.
  -  The first part shows the config object. This is needed to know where the API needs to connect to get the data. The host is the hostname of the Qlik Sense Server. Is Secure is the parameter that decides that SSL (Secure Sockets Layer) should be used or not. The prefix tells to which Qlik Sense Virtual Proxy should be connected and through which port.
  - The second part will create the bar chart with Qlik Sense Data.
   - **_Require(['js/qlik'], function(qlik)_**:
@@ -1184,24 +1184,24 @@ This video shown a bit more in depth how you can start using and creating widget
 "Web integration","extensions -  Create extra functionality inside an app using Javascript","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-API-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, Developer, CTO",
 "Web integration","extensions -  Create extra functionality inside an app using Javascript","# Video: extensions in 60 seconds",,,,,,,,,
 "Web integration","extensions -  Create extra functionality inside an app using Javascript","https://youtu.be/-bxlwEdmaAQ",,"","","","","         0","0","Technical - 2 hours, CTO",
-"Web integration","extensions -  Create extra functionality inside an app using Javascript","Video: introduction to extensions (3M)",,"","","","","         0","0","PreSales, Deep dive",
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","# Video: introduction to extensions (3M)",,"","","","","         0","0","PreSales, Deep dive",
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","A short video that shows the power of visualization extensions. The big difference between widgets and extensions is that widgets do not use JavaScript. They only use HTML and CSS. This means that they are not interactive. Extensions are customized visualizations that use JavaScript in order to be interactive and clickable. In the end they will act like a native Qlik Sense visualization.",,"","","","","         0","0","Developer, Technical - 1 day",
 "Web integration","extensions -  Create extra functionality inside an app using Javascript","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","Technical - 1 day, Developer",
-"Web integration","extensions -  Create extra functionality inside an app using Javascript","!comment
-A short video that shows the power of visualization extensions. The big difference between widgets and extensions is that widgets do not use JavaScript. They only use HTML and CSS. This means that they are not interactive. Extensions are customized visualizations that use JavaScript in order to be interactive and clickable. In the end they will act like a native Qlik Sense visualization.",,,,,,,,,
 "Web integration","extensions -  Create extra functionality inside an app using Javascript","# Building an extension",,,,,,,,,
 "Web integration","extensions -  Create extra functionality inside an app using Javascript","A live walk-through of coding a Qlik Sense Extension by Speros Kokenes.",,"","","","","         0","0","Deep dive",
 "Web integration","extensions -  Create extra functionality inside an app using Javascript","https://youtu.be/0X4hXzfLftg",,"","","","","         0","0","Deep dive",
 "Web integration","extensions -  Create extra functionality inside an app using Javascript","[Tutorial: How to Build a Qlik Sense Extension with D3](http://blog.axc.net/?p=1617)",,"","","","","         0","0","Deep dive",
-"Web integration","extensions -  Create extra functionality inside an app using Javascript","!comment
-This slide shows some examples of visualizations extensions that can enrich Qlik Sense. 
-The website [branch.qlik.com](branch.qlik.com)  is our open source community for extensions. It has a collection of third party extensions created for QlikView or Qlik Sense. They are all available on GitHub and freely downloadable. As everything is open it is possible to take ownership and/or make modifications.",,"","","","","         0","0","Developer",
 "Web integration","extensions -  Create extra functionality inside an app using Javascript","# Download your extensions from branch.qlik.com",,,,,,,,,
 "Web integration","extensions -  Create extra functionality inside an app using Javascript","<iframe class=""SenseEmbedFrame"" src=""http://branch.qlik.com/#!/project"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 day, Developer",
 "Web integration","extensions -  Create extra functionality inside an app using Javascript","!comment
+This slide shows some examples of visualizations extensions that can enrich Qlik Sense. 
+The website [branch.qlik.com](branch.qlik.com)  is our open source community for extensions. It has a collection of third party extensions created for QlikView or Qlik Sense. They are all available on GitHub and freely downloadable. As everything is open it is possible to take ownership and/or make modifications.
+
+# Qlik Branch
 [Branch.qlik.com](branch.qlik.com) is the website where you can download extensions that have been made by the community. You can also contribute your own made extensions.",,,,,,,,,
-"Web integration","Create apps on the fly","# Create a new app from scratch, that only lives in memory",,,,,,,,,
-"Web integration","Create apps on the fly","You can create apps on the fly, that is session apps, using the `qlik.sessionApp` and `qlik.sessionAppFromApp` methods. See [Qlik help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/Mashups/Content/Howtos/create-session-app.htm)",,,,,,,,,
-"Web integration","Create apps on the fly","#Create and configure the session app
+"Web integration","Example code Session apps: Create apps on the fly","# Create a new app from scratch, that only lives in memory",,"","","","","         0","0","Deep dive",
+"Web integration","Example code Session apps: Create apps on the fly","You can create apps on the fly, that is session apps, using the `qlik.sessionApp` and `qlik.sessionAppFromApp` methods. See [Qlik help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/Mashups/Content/Howtos/create-session-app.htm)",,"","","","","         0","0","Deep dive",
+"Web integration","Example code Session apps: Create apps on the fly","#Create and configure the session app
 ```javascript
 var config = {
   host: ""myhost.com"",
@@ -1211,16 +1211,16 @@ var config = {
 };
 
 var sessionApp = qlik.sessionApp(config);  
-```",,,,,,,,,
-"Web integration","Create apps on the fly","#Define and set the load script
+```",,"","","","","         0","0","Deep dive",
+"Web integration","Example code Session apps: Create apps on the fly","#Define and set the load script
 ```javascript
 var script = ""Load Chr(RecNo()+Ord('A')-1) as Alpha, RecNo() as Num autogenerate 26;""
 
 sessionApp.setScript(script).then(function(){ 
 
 });
-```",,,,,,,,,
-"Web integration","Create apps on the fly","# Reload data and create a basic bar chart
+```",,"","","","","         0","0","Deep dive",
+"Web integration","Example code Session apps: Create apps on the fly","# Reload data and create a basic bar chart
 ```javascript
 sessionApp.setScript(script).then(function(){
  var stop = setInterval(function(){
@@ -1240,9 +1240,9 @@ sessionApp.setScript(script).then(function(){
   clearInterval(stop); 
  });
 });
-```",,,,,,,,,
-"Web integration","Create session app based on template app","#Creating a basic session app from an existing app",,,,,,,,,
-"Web integration","Create session app based on template app","```javascript
+```",,"","","","","         0","0","Deep dive",
+"Web integration","Example code Session apps: Create apps on the fly","# Create session app based on template app",,"","","","","         0","0","Deep dive",
+"Web integration","Example code Session apps: Create apps on the fly","```javascript
 
 
 var config = {
@@ -1269,19 +1269,19 @@ sessionAppFromApp.doReload().then(function(result){
  clearInterval(stop);
 });
 
-```",,,,,,,,,
-"Web integration","Embed your custom SVG maps","extensions - SVG map.gif",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Embed your custom SVG maps","An SVG image is basically an XML document which contains data telling the internet browser how to draw an image. The different shapes that the SVG draws can be separated out in the XML and thus manipulated and colored however necessary. This extension takes advantage of this technology by allowing the QVW to target and color the different shapes by identifying the ID of the SVG element.",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Embed your custom SVG maps","extensions - SVG map amarica.gif",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Embed your custom SVG maps","See this [manual](https://github.com/brianwmunz/svgReader-QlikSense)",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Embed your custom SVG maps","You can make a floorplan and link it to your data points. e.g your stores and sales amounts. ",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Embed your custom SVG maps","extensions - example floor plan image.png",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Embed your custom SVG maps","Or load any image you like",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Embed your custom SVG maps","extensions - example snail image.png",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Embed your custom SVG maps","You can find example apps [here](https://github.com/brianwmunz/svgReader-QlikSense/tree/master/examples), make sure you loaded the extension first.",,,,,,,,,
-"Web integration","Embed your custom SVG maps","Make sure you upload your SVG via the content library, or put it in your extension zip file before you import it [more info](https://community.qlik.com/thread/232025)",,,,,,,,,
-"Web integration","Embed your custom SVG maps","PS: if you need more geo based analytics we recommend to use of our ""standard product"" (no extension) [GeoAnalytics](https://community.qlik.com/docs/DOC-17993)",,,,,,,,,
-"Web integration","Embed your custom SVG maps","https://youtu.be/VoCLr2PQz5A",,,,,,,,,
+```",,"","","","","         0","0","Deep dive",
+"Web integration","Embed your custom SVG maps","extensions - SVG map.gif",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Embed your custom SVG maps","An SVG image is basically an XML document which contains data telling the internet browser how to draw an image. The different shapes that the SVG draws can be separated out in the XML and thus manipulated and colored however necessary. This extension takes advantage of this technology by allowing the QVW to target and color the different shapes by identifying the ID of the SVG element.",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Embed your custom SVG maps","extensions - SVG map amarica.gif",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Embed your custom SVG maps","See this [manual](https://github.com/brianwmunz/svgReader-QlikSense)",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Embed your custom SVG maps","You can make a floorplan and link it to your data points. e.g your stores and sales amounts. ",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Embed your custom SVG maps","extensions - example floor plan image.png",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Embed your custom SVG maps","Or load any image you like",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Embed your custom SVG maps","extensions - example snail image.png",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Embed your custom SVG maps","You can find example apps [here](https://github.com/brianwmunz/svgReader-QlikSense/tree/master/examples), make sure you loaded the extension first.",,"","","","","         0","0","Developer",
+"Web integration","Embed your custom SVG maps","Make sure you upload your SVG via the content library, or put it in your extension zip file before you import it [more info](https://community.qlik.com/thread/232025)",,"","","","","         0","0","Developer",
+"Web integration","Embed your custom SVG maps","PS: if you need more geo based analytics we recommend to use of our ""standard product"" (no extension) [GeoAnalytics](https://community.qlik.com/docs/DOC-17993)",,"","","","","         0","0","Developer",
+"Web integration","Embed your custom SVG maps","https://youtu.be/VoCLr2PQz5A",,"","","","","         0","0","Developer",
 "Web integration","Embed your custom SVG maps","!comment
 An example of a powerful extension is the SVG reader, created by Brian Muntz and freely downloadable on Qlik branch. It allows you to import your own customized maps in Qlik Sense.
 ",,,,,,,,,
@@ -1289,9 +1289,6 @@ An example of a powerful extension is the SVG reader, created by Brian Muntz and
 "Web integration","Difference between QAP and Qlik Sense enterprise","!comment
 This slide explain the difference between the Qlik Analytics Platform and Qlik Sense Enterprise. Basically the QAP is Qlik Sense Enterprise without the hub. This means that with the QAP you cannot create and edit apps, see an app overview,… through the hub. All these actions are available through our APIs.
 ",,,,,,,,,
-"Web integration","Video: Qlik Sense with IIS","https://youtu.be/ybGIYdHenqE",,,,,,,,,
-"Web integration","Video: Qlik Sense with IIS","!comment
-This video shows you how to embed Qlik Sense in a Microsoft IIS webserver.",,,,,,,,,
 "Web integration","More information","Always checkout Stefan Walthers posts. Like this [web integration tutorial](https://github.com/stefanwalther/awesome-qap#building-visualization-extensions)",,"","","","","         0","0","Technical - 1 day",
 "Web integration","More information","[branch.qlik.com](http://branch.qlik.com)",,"","","","","         0","0","Technical - 1 day",
 "Web integration","More information","!comment
@@ -1760,17 +1757,71 @@ Automate things on behalf of an end user
 "Qlik Sense API introduction","QPS API","What can you do with the QPS API?
 - Login
 - Logout
-- Load balancing over the Engines",,"","","","","         0","0","Technical - 1 day, Developer",
+- Load balancing over the Engines",,"","","","","         0","0","Technical - 1 day, Developer, Technical - 2 hours",
 "Qlik Sense API introduction","QRS API","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
 - copy/delete apps and streams
 - reload apps
 - get and update system rules
-- get (extract) and update settings",,"","","","","         0","0","Technical - 1 day, Developer",
-"Qlik Sense API introduction","QRS API","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","Technical - 1 day, Developer",
-"Qlik Sense API introduction","Engine API","What can you do with the Engine API?
-- Automate all the activities you would normally do 
-""inside an app""",,"","","","","         0","0","Technical - 1 day, Developer",
+- get (extract) and update settings",,"","","","","         0","0","Technical - 1 day, Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","[QRS API help](http://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","Technical - 1 day, Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","Key use cases and their API source code",,"","","","","         0","0","Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","Below you will find the key use cases we automated and you can click on the link to view the source on GitHub. ",,"","","","","         0","0","PreSales, Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","Download and silent installation of Qlik Sense",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","[Insert license](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js#L27)",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","Setup [user access rules](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js#L62)",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","Setup [proxy](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L43) via config file definition",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","[Create](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L94) virtual proxies",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","Upload [template apps](https://github.com/QHose/QRSMeteor/blob/8f829ef687feaf1cd3802c873b383b04726a4337/imports/api/server/QRSFunctionsApp.js#L67)",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","Upload [extensions](https://github.com/QHose/QRSMeteor/blob/8f829ef687feaf1cd3802c873b383b04726a4337/imports/api/server/QRSFunctionsExtension.js#L81)",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","Create default streams",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","Setup [security rules](https://github.com/QHose/QRSMeteor/blob/8f829ef687feaf1cd3802c873b383b04726a4337/imports/api/server/QRSFunctionsSystemRules.js#L55)",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","Upload and export Qlik Sense configuration as JSON (and track changes with a version management system like Git)",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","Get app IDs for automatic/dynamic embedding (in IFrame/DIV) without hard coded items.",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","# Automated maintenance
+- Remove old streams and apps
+- Create back-ups of important setings, apps and track changes
+- track who used what, maybe enhance your template based on these statistics",,"","","","","         0","0","PreSales, Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","## Code example
+```javascript
+            QSLic.insertUserAccessRule();
+            QSSystem.disableDefaultSecurityRules();
+            await QSProxy.createVirtualProxies();.
+            await QSSystem.createSecurityRules();
+            QSStream.initSenseStreams();
+            await QSApp.uploadAndPublishTemplateApps();
+            QSApp.setAppIDs();
+            await QSApp.createAppConnections();
+            QSExtensions.uploadExtensions();
+            QSLic.saveSystemRules();
+```",,"","","","","         0","0","PreSales, Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","# Code references
+- All server side API calls [modules](https://github.com/QHose/QRSMeteor/tree/master/imports/api/server)
+
+## modules
+- [License](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js)
+- [Streams](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsStream.js)
+- [Apps](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js)
+- [Extensions](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsExtension.js)
+- [System rules](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsSystemRules.js)
+- [Custom properties](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsCustomProperties.js)",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","# Real time API logs",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","We created a [API overview](/apilogstable_embedded`) of the key API requests and responses. Try to generate some apps, or try to login with a user in SaaS provisioning demo step 4 and see the resulting calls. You will also see all calls being made to render these slides. ",,"","","","","         0","0","Technical - 1 day, Deep dive, Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","iframe /apilogstable_embedded",,"","","","","         0","0","Technical - 1 day, Deep dive, Developer, Technical - 2 hours",
+"Qlik Sense API introduction","Engine API","
+Basically all the things you can do yourself when you use an app
+- Get list of streams and apps
+- Open an app
+- Get the layout (sheets and charts)
+- Insert script
+- Reload the app
+- Copy an app
+- *user will only see authorized resources*
+- ...",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","Engine API","# Video: Introduction to QIX Engine API",,"","","","","         0","0","Technical - 2 hours, Developer",
+"Qlik Sense API introduction","Engine API","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours, Developer",
+"Qlik Sense API introduction","Engine API","iframe https://help.qlik.com/en-US/sense-developer/April2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","How to create the source code?","The tools below can help you for your development, or help you to get an idea of the functions possible.",,,,,,,,,
 "Qlik Sense API introduction","How to create the source code?","[Visual studio plug in](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Plugins/Content/Introduction/Plugin-Intro.htm)",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","How to create the source code?","[Development hub](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Dev-Hub/Content/Overview/dev-hub-launch-dev-hub.htm)",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","Certificate authentication requirements","All services in the Qlik Sense deployment authenticate their communication using an TLS certificate. ",,"","","","","         0","0","PreSales",
@@ -4121,7 +4172,7 @@ function getServerNodeConfiguration() {
 }
 
 ```",,"","","","","         0","0","Deep dive",
-"Engine API","What can you do with the Engine API?","
+"Engine API","Introduction: What can you do with the Engine API?","
 Basically all the things you can do yourself when you use an app
 - Get list of streams and apps
 - Open an app
@@ -4131,21 +4182,26 @@ Basically all the things you can do yourself when you use an app
 - Copy an app
 - *user will only see authorized resources*
 - ...",,"","","","","         0","0","Deep dive, Technical - 1 day, Developer",
-"Engine API","What can you do with the Engine API?","iframe https://help.qlik.com/en-US/sense-developer/April2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm",,"","","","","         0","0","Deep dive, Developer",
-"Engine API","Video: Introduction to QIX Engine API","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours, Developer",
-"Engine API","What can you do? Which end points are available?","Use the engine API explorer of the dev-hub",,"","","","","         0","0","Deep dive",
-"Engine API","What can you do? Which end points are available?","Engine API - example screenshot.png",,"","","","","         0","0","Deep dive",
+"Engine API","Introduction: What can you do with the Engine API?","# Video: Introduction to QIX Engine API",,"","","","","         0","0","Deep dive",
+"Engine API","Introduction: What can you do with the Engine API?","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours, Developer",
+"Engine API","Introduction: What can you do with the Engine API?","iframe https://help.qlik.com/en-US/sense-developer/April2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm",,"","","","","         0","0","Deep dive, Developer",
+"Engine API","What can you do? Which end points are available?","Use the engine API explorer of the dev-hub",,"","","","","         0","0","Deep dive, Developer",
+"Engine API","What can you do? Which end points are available?","Engine API - example screenshot.png",,"","","","","         0","0","Deep dive, Developer",
 "Engine API","What can you do? Which end points are available?","next make sure you also use
 - the Qlik sense developer help on the engine API
-- the schema.json file in [engima.js](https://github.com/qlik-oss/enigma.js/tree/master/schemas) (the Qlik javascript library to connect to Qlik Sense via javascript)",,"","","","","         0","0","Deep dive",
-"Engine API","Introduction video: Engine API explorer","This tool demonstrates
+- the schema.json file in [engima.js](https://github.com/qlik-oss/enigma.js/tree/master/schemas) (the Qlik javascript library to connect to Qlik Sense via javascript)",,"","","","","         0","0","Deep dive, Developer",
+"Engine API","What can you do? Which end points are available?","engine api - lookup endpoints via schema.json.png",,"","","","","         0","0","Developer",
+"Engine API","What can you do? Which end points are available?","# Introduction video: Engine API explorer",,"","","","","         0","0","Deep dive, Developer",
+"Engine API","What can you do? Which end points are available?","This tool demonstrates
 - the methods you can call
-- the requests and responses",,"","","","","         0","0","PreSales",
-"Engine API","Introduction video: Engine API explorer","https://www.youtube.com/watch?v=LqcFDe7V-CU",,"","","","","         0","0","PreSales",
-"Engine API","Demo Dev-hub Engine API explorer","# Try to make your first API call",,"","","","","         0","0","Technical - 2 hours",
-"Engine API","Demo Dev-hub Engine API explorer","In the screen below, Select a macro 'get applist' and press 'execute'",,"","","","","         0","0","Technical - 2 hours",
-"Engine API","Demo Dev-hub Engine API explorer","<iframe class=""SenseEmbedFrame"" src=""http://integration.qlik.com:443/anon/dev-hub/engine-api-explorer"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours",
-"Engine API","Demo Dev-hub Engine API explorer","It should give you the result below
+- the requests and responses",,"","","","","         0","0","PreSales, Developer",
+"Engine API","What can you do? Which end points are available?","https://www.youtube.com/watch?v=LqcFDe7V-CU",,"","","","","         0","0","PreSales, Developer",
+"Engine API","What can you do? Which end points are available?","# Engine API explorer documentation",,"","","","","         0","0","Developer",
+"Engine API","What can you do? Which end points are available?","iframe http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/Dev-Hub/Content/EngineApiExplorer/engine-api-explorer.htm",,"","","","","         0","0","Deep dive, Developer",
+"Engine API","Exercise Dev-hub Engine API explorer - My first API call","# Try to make your first API call",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
+"Engine API","Exercise Dev-hub Engine API explorer - My first API call","In the screen below, Select a macro 'get applist' and press 'execute'",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
+"Engine API","Exercise Dev-hub Engine API explorer - My first API call","<iframe class=""SenseEmbedFrame"" src=""http://integration.qlik.com:443/anon/dev-hub/engine-api-explorer"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
+"Engine API","Exercise Dev-hub Engine API explorer - My first API call","It should give you the result below
 ```javascript
 {
  ""jsonrpc"": ""2.0"",
@@ -4242,8 +4298,7 @@ Basically all the things you can do yourself when you use an app
   ]
  }
 }
-```",,"","","","","         0","0","Technical - 1 day",
-"Engine API","Engine API explorer documentation","iframe http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/Dev-Hub/Content/EngineApiExplorer/engine-api-explorer.htm",,"","","","","         0","0","Deep dive",
+```",,"","","","","         0","0","Technical - 1 day, Developer, Exercises",
 "Engine API","Connecting to Qlik Sense Server with HTML5 and Enigma.js ","A good tutorial on how to connect to Qlik Sense is created by [Guido Diepen](https://www.guidodiepen.nl/2017/06/connecting-to-qlik-sense-server-with-html5-and-enigma-js/),:",,"","","","","         0","0","Deep dive",
 "Engine API","Connecting to Qlik Sense Server with HTML5 and Enigma.js ","<iframe class=""SenseEmbedFrame"" src=""https://www.guidodiepen.nl/2017/06/connecting-to-qlik-sense-server-with-html5-and-enigma-js/"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Deep dive",
 "Engine API","How to connect","engine API - how to connect.png",,"","","","","         0","0","PreSales",
@@ -5092,6 +5147,9 @@ Access the QMC and/or Hub to confirm that all previous working functionality is 
 "Deployment - how to...","Video: Activating license and allocating users access","https://youtu.be/uWGS48VaOQE",,,,,,,,,
 "Deployment - how to...","Video: Activating license and allocating users access","Tip: for OEM use cases I prefer to use `username like *` since the authorization module in your SaaS platform should decide who can enter Qlik Sense and who not...",,,,,,,,,
 "Deployment - how to...","Video: Change the host name (certificates, pfx, cert)","https://youtu.be/Dvub_4fikv0",,,,,,,,,
+"Deployment - how to...","Video: How to use Qlik Sense with IIS","https://youtu.be/ybGIYdHenqE",,,,,,,,,
+"Deployment - how to...","Video: How to use Qlik Sense with IIS","!comment
+This video shows you how to embed Qlik Sense in a Microsoft IIS webserver.",,,,,,,,,
 "Data integration","How do you get your data in an app?","data - app load data.png",,"","","","","         0","0","PreSales",
 "Data integration","Qlik Connectors: To which data sources can Qlik Sense connect?","[Qlik Connectors](https://www.qlik.com/us/products/qlik-connectors), which now include QVSource, gather and combine data from databases, applications, spreadsheets, websites, Big Data lakes and custom sources. Gain extensive insight into your divergent data and enable holistic, data-driven decisions.",,,,,,,,,
 "Data integration","Qlik Connectors: To which data sources can Qlik Sense connect?","data - data which database can we connect.png",,,,,,,,,
