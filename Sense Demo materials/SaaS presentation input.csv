@@ -110,7 +110,7 @@ But what are they?
  - Bookmarks: A bookmark is a saved state of selection. You can make new ones or apply existing bookmarks.
  - Stories: Stories give you the possibility to tell a story about your data. You can make snapshots of your sheet objects and use them in your story. You can add additional text, images and effects to your story to make it more clear. You can also add full sheets into your story. At any given time you have the possibility to go back to your source data on your sheets, make selections and go back to your story.
 ",,,,,,,,,
-"What is an app?","Self service data preparation","https://youtu.be/OZKVA6OZWOA",,"","","","","         0","0","Developer, Business Analyst, Technical - 1 hour",
+"What is an app?","Self service data preparation","https://youtu.be/OZKVA6OZWOA",,"","","","","         0","0","Developer, Business Analyst, Technical - 1 hour, C-Level - non-technical",
 "What is an app?","Self service data preparation","!comment Self-service data preparation includes a number of visual and smart capabilities for integrating multiple data sources, transforming data, and loading it for analysis, without the need for scripting.
 
 Using a graphical interface with tables represented as ‘bubbles’, users can drag-and-drop to connect data sets together from multiple sources.  Qlik Sense intelligently profiles the data sets and automatically suggests the most relevant associations between them, allowing users to bring together disparate sources without having to be data experts.
@@ -121,7 +121,7 @@ Qlik Sense includes a dedicated data manager space, new menus for easily selecti
 
 Going forward, we will be making our data prep capabilities smarter and more powerful.  We will be adding more graphical and automated data transformation capabilities, and further enhancing our data profiling capabilities to identify and automatically process more data types. We will get even smarter about recommending associations and relationships in data, and generating key insights for further analysis. And data augmentation suggestions will be provided to users, based on a global library of internal and external sources.
 ",,"","","","","         0","0","Technical - 2 hours, Developer, Business Analyst",
-"What is an app?","Qlik Sense - What's New April 2018","https://youtu.be/eDMl1iAPek0",,,,,,,,,
+"What is an app?","Qlik Sense - What's New April 2018","https://youtu.be/eDMl1iAPek0",,"","","","","         0","0","C-Level - non-technical",
 "What is an app?","Qlik Sense - What's New April 2018","See [community](https://www.youtube.com/redirect?q=https%3A%2F%2Fcommunity.qlik.com%2Fblogs%2Fqlikviewdesignblog%2F2018%2F04%2F19%2Fwhats-new-in-qlik-sense-april-2018&v=eDMl1iAPek0&redir_token=E3gxL6P6O0ScNZUAjVGbprLhZz98MTUyNDMxNTM4N0AxNTI0MjI4OTg3&event=video_description) for more info.",,,,,,,,,
 "What is an app?","Qlik Sense - What's New April 2018","iframe https://help.qlik.com/en-US/sense/April2018/Content/WhatsNew/What-is-new-Apr2018.htm",,,,,,,,,
 "What is an app?","In the hub apps are grouped per stream","web-resources to embed.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
@@ -299,6 +299,7 @@ Which apps were copied and published.",,,,,,,,,
                         In order to finish the demo, you must complete the following steps:
                         <ol>
                             <li><b>Select your customers</b>. In your SaaS platform you have the ability to store which customers should receive which apps. We simulate this feature by letting you select the customers. By pressing the button, you also select an ""app"" to be used as a template for the layout.</li>
+         <li><b>Select your apps</b> Which apps do your customers need to receive?</li>
                             <li><b>Press generate</b>, This will make a copy of the template app for each of your customers. It replaces the generic script with a customer specific one and reloads the app. Because you are able to insert a custom script, you can also specify specific data models like custom fields and tables or create them them on the fly in order to connect to big data sources. In the end we make a unique stream for each customer and publish the app into this stream.</li>
                             <li><b>Select a user and press the green button.</b> This allows you to test the single sign on and make sure that each customer can only see their own data (streams and apps). You can also test row level security by opening the ""row level security"" app in the ""everyone stream"". This demonstrates that each user only sees the values pertaining to the country of their group membership.</li>
                         </ol> </p>",,,,,,,,,
@@ -655,12 +656,12 @@ $(""#btn_1"").click(function() {
 - [install Meteor](https://www.meteor.com/install)
 - Create your first TODO app with MeteorJS [here](https://www.meteor.com/tutorials/angular/creating-an-app)",,"","","","","         0","0","PreSales",
 "Web integration","Overview web integration","iframe /webIntegration_embedded",,"","","","","         0","0","Technical - 2 hours, Integration summary, CTO, Developer",
-"Web integration","Embed Qlik Sense: Examples of embedded apps","# What does a successful integration look like?",,"","","","","         0","0","Developer, CTO",
-"Web integration","Embed Qlik Sense: Examples of embedded apps","iframe https://webapps.qlik.com/#/",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Developer, CTO",
-"Web integration","Embed Qlik Sense: Examples of embedded apps","!comment
-This slide gives a real life example of embedding. It shows you a collection of example websites where Qlik Sense has been embedded.The URL is: [https://webapps.qlik.com](https://webapps.qlik.com).
+"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense in order to have information at the point of decision","# What does a successful integration look like?",,"","","","","         0","0","Developer, CTO, Product Owner, C-Level - non-technical",
+"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense in order to have information at the point of decision","iframe https://webapps.qlik.com/#/",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Developer, CTO, Product Owner, C-Level - non-technical",
+"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense in order to have information at the point of decision","!comment
+This slide gives a real life example of embedding. It shows you a collection of example web sites where Qlik Sense has been embedded.The URL is: [https://webapps.qlik.com](https://webapps.qlik.com).
 ",,"","","","","         0","0","Developer",
-"Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,"","","","","         0","0","Technical - 2 hours, C-Level - non-technical",
 "Web integration","Who’s the audience for embedded apps? ","!comment
 Most of the time the following scenario is used:
 The employees will use Qlik Sense internally with full self service capabilities.They will also create the dashboards for other users. External users like customer and suppliers might need to see some data from Qlik Sense. They will login in a web portal and they will see only their relevant data. In that case Qlik Sense is embedded in the web environment. They will often have less or no self-service capabilities.
@@ -1680,13 +1681,13 @@ or
 "Qlik Sense API introduction","Video: APIs have business value","https://youtu.be/43GwNbJ_YBY?start=180",,"","","","","         0","0","Deep dive, PreSales, CTO",
 "Qlik Sense API introduction","APIs - both the browser and servers can talk to Qlik Sense","API- both server and user can talk to Sense.png",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","What can you do with the APIs? Client - Server","# Which use cases belong where?",,"","","","","         0","0","Deep dive, Developer",
-"Qlik Sense API introduction","What can you do with the APIs? Client - Server","Front end focused
+"Qlik Sense API introduction","What can you do with the APIs? Client - Server","## Front end focused
 - Automate things on behalf of an end user
-- Open app
-- Make selection
-- Get chart or data
+- Open/reload/delete an app
+- Make or get a selection
+- Get a chart to be directly embedded in a DIV - or get a plain array of data based on the selections made.
 - Create an app/chart on the fly",,"","","","","         0","0","Deep dive, Developer",
-"Qlik Sense API introduction","What can you do with the APIs? Client - Server","Server side focused
+"Qlik Sense API introduction","What can you do with the APIs? Client - Server","## Server side focused
 - Authentication - login user (provide Single Sign On via a ticket request)
 - Admin QMC like activities, (insert  or modify configuration, licenses, security rules, apps)",,"","","","","         0","0","Deep dive, Developer",
 "Qlik Sense API introduction","What can you do with the APIs? Client - Server","mindMapAPIIntegration.png",,"","","","","         0","0","Technical - 1 hour, Developer",
@@ -1709,13 +1710,15 @@ or
 "Qlik Sense API introduction","Whiteboard exercise","Servers",,"","","","","         0","0","Exercises",
 "Qlik Sense API introduction","Whiteboard exercise","IP addresses",,"","","","","         0","0","Exercises",
 "Qlik Sense API introduction","Whiteboard exercise","Ports",,"","","","","         0","0","Exercises",
-"Qlik Sense API introduction","The location, the use case and programming language matters","All activities inside an app
-- Capabilities API
-- Engine API",,"","","","","         0","0","Deep dive",
-"Qlik Sense API introduction","The location, the use case and programming language matters","All activities that you would normally do in the QMC:
-- QRS API",,"","","","","         0","0","Deep dive",
-"Qlik Sense API introduction","The location, the use case and programming language matters","Based on Javascript, REST, .NET or web sockets.",,"","","","","         0","0","Deep dive",
-"Qlik Sense API introduction","The location, the use case and programming language matters","[See all APIs here](https://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm)",,"","","","","         0","0","Deep dive",
+"Qlik Sense API introduction","There are APIs for everything you like to do....","The location (client or server side), the use case and programming language matters. If you want to do something in the browser of the user you would normally get a javascript API like EnigmaJs or the capabilities API from Qlik Sense. If you are working server side you would normally use the QRS, QPS and Engine API and authenticate using certificates (or JWT, SAML, Header). Next to this you want to make sure you use an API that fits your programming environment. ",,"","","","","         0","0","Deep dive, Developer",
+"Qlik Sense API introduction","There are APIs for everything you like to do....","All activities inside an app
+- Capabilities API (javascript)
+- Extension API (javascript with AngularJS)
+- Engine API (EnigmaJS, .NET SDK, JSON RPC)",,"","","","","         0","0","Deep dive, Developer",
+"Qlik Sense API introduction","There are APIs for everything you like to do....","All activities that you would normally do in the QMC:
+- QRS API (REST API)",,"","","","","         0","0","Deep dive, Developer",
+"Qlik Sense API introduction","There are APIs for everything you like to do....","Activities related to load balancing and authorization: Proxy API (QPS), (REST API)",,"","","","","         0","0","Deep dive, Developer",
+"Qlik Sense API introduction","There are APIs for everything you like to do....","[See all APIs here](https://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm)",,"","","","","         0","0","Deep dive, Developer",
 "Qlik Sense API introduction","Building Windows/.NET applications","Use the
 -  [.NET SDK](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/NetSDKAPI/Content/QvNetClient_Reference/Net-Sdk-Reference-Redirect.htm) and 
 - [visual studio plug in](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Plugins/Content/Introduction/Plugin-Intro.htm) to integrate Qlik Sense in your own Windows .NET applications.",,"","","","","         0","0","Deep dive, Developer",
