@@ -5,13 +5,14 @@ import './reveal.css';
 import lodash from 'lodash';
 import hljs from 'highlight.js';
 import { Logger } from '/imports/api/logger';
-import { getQix } from '/imports/ui/useCases/useCaseSelection';
+import { getQix, initQlikSense } from '/imports/ui/useCases/useCaseSelection';
+import * as nav from "/imports/ui/nav.js";
 
 _ = lodash;
 var Cookies = require('js-cookie');
 var showdown = require('showdown');
 var converter = new showdown.Converter();
-var numberOfActiveSlides = 1;
+var numberOfActiveSlides = 10;
 
 Template.slides.onCreated(async function() {
     $('body').css({
@@ -25,19 +26,22 @@ Template.slides.onDestroyed(function() {
     });
 })
 
-Template.slides.onRendered(function() {
-    setTimeout(() => {
-        slideDataLoaded();
-    }, 2500);
-    initializeReveal();
+Template.slides.onRendered(async function() {
+    setTimeout(async () => {
+        await slideDataLoaded();
+        initializeReveal();
+    }, 1000);
 });
 
-function slideDataLoaded() {
-    if (!Session.get("slideHeaders")) {
+async function slideDataLoaded() {
+    if (!Session.get("slideHeaders"))
+ {
         console.log("------------------------------------");
-        console.log("No slide data present in session, reroute the user back to the useCaseSelection screen.");
+        console.log("No slide data present in session, reroute the user back to the Selection screen.");
         console.log("------------------------------------");
-        Router.go("useCaseSelection");
+        await initQlikSense();
+        nav.showSlideSelector();
+        // Router.go("useCaseSelection");
         return;
     }
 }
@@ -74,28 +78,54 @@ function initializeReveal() {
     }
 }
 
-Template.slideContent.events({
-    'contextmenu *': function(e, t) {
-        e.stopPropagation();
-        console.log('template instance:\n', t);
-        console.log('data context:\n', Blaze.getData(e.currentTarget));
-    }
-});
+// Template.slideContent.events({
+//     'contextmenu *': function(e, t) {
+//         e.stopPropagation();
+//         console.log('template instance:\n', t);
+//         console.log('data context:\n', Blaze.getData(e.currentTarget));
+//     }
+// });
 
 //
 // ─── SLIDE CONTENT ──────────────────────────────────────────────────────────────────────
 //
+Template.slideContent.onCreated(async function() {
+    var instance = this;
+    instance.bullets = new ReactiveVar([]); //https://stackoverflow.com/questions/35047101/how-do-i-access-the-data-context-and-the-template-instance-in-each-case-event
+    
+    //the header and sub header for which we want to load the slide data/bullets
+    var level1 = Template.currentData().slide[0].qText;
+    var level2 = Template.currentData().slide[1].qText;
+    console.log('slideContent.onCreated level 2',level2)
+     // and now let's get the slide content: 
+    var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent with a set analysis query
+    instance.bullets.set(bullets);    
+})
+
+Template.slideContent.helpers({
+  bullets: function() {
+      var makeSureTemplateRerenders = Session.get("activeStepNr");
+    // console.log('------------------------------------');
+    // console.log('Bullet helper, active slide nr '+ this.slide[1].qText +' for active step:',Session.get('activeStepNr') );
+    // console.log('------------------------------------');  
+    // console.log()
+    var res = Template.instance().bullets.get();
+    if (res)
+        var newArray = [];
+        res.forEach(function(item) {
+            newArray.push(convertToHTML(item))
+        })
+        return newArray;  }
+    });
+
 
 Template.slideContent.onRendered(async function() {
-    var level1 = this.data.slide[0].qText;
-    var level2 = this.data.slide[1].qText;
-    var template = this;
-    if (level1 && level2) {
-        var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent.
-        bullets.forEach(function(bullet) {
-            template.$('.slideContent').append(convertToHTML(bullet));
-        })
-    }
+    var template = this;    
+    var level1 = Template.currentData().slide[0].qText;
+        var level2 = Template.currentData().slide[1].qText;
+    var bullets = new ReactiveVar();
+    //get level 3 data
+    bullets.set(await getLevel3(level1, level2)); //using the parent, get all items that have this name as parent with a set analysis query
 
     //if the slide is shown, log it into the database
     Logger.insert({
@@ -115,8 +145,6 @@ Template.slideContent.onRendered(async function() {
     //
     // ─── GET COMMENT AND CREATE A NICE HTML BOX AROUND THE TEXT ─────────────────────
     //
-
-
     var comment = await getComment(level1, level2);
     // console.log('comment retrieved in slideContent onrendered', comment)
     if (comment.length > 10){
@@ -127,7 +155,7 @@ Template.slideContent.onRendered(async function() {
     Meteor.setTimeout(function() {
         //embed youtube containers in a nice box without loading all content
         this.$('.ui.embed').embed({
-            // autoplay: true
+            autoplay: false
         });
         //make sure all code gets highlighted using highlight.js
         this.$('pre code').each(function(i, block) {
@@ -187,7 +215,8 @@ Template.registerHelper('step', function() {
 //
 async function getLevel3(level1, level2) {
     // console.log("getLevel3: " + level1 + ' -' + level2);
-    var qix = await getQix();
+    try {
+            var qix = await getQix();
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {
             qType: "cube"
@@ -205,6 +234,7 @@ async function getLevel3(level1, level2) {
             }]
         }
     });
+    // console.log('sessionModel', sessionModel)
     // console.log('------------------------------------');
     // console.log('QDEF IS sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)');
     // console.log('------------------------------------');
@@ -216,7 +246,15 @@ async function getLevel3(level1, level2) {
     }]);
 
     var level3Temp = sessionData[0].qMatrix;
+    console.log("Qlik returned the following data for the sheet: "+level2, normalizeData(level3Temp));
+    sessionModel.removeAllListeners();
     return normalizeData(level3Temp);
+
+    } catch (error) {
+        console.error('error getting level 3 data (the bullets) for the slide', error);
+        location.reload();        
+    }
+
 }
 
 function createCommentBox(text) {
@@ -309,7 +347,9 @@ function convertToHTML(text) {
     //
     // ─── IMAGE ──────────────────────────────────────────────────────────────────────
     //        
-    else if (checkTextIsImage(text)) {
+    else if (checkTextIsImage(text) && text.includes('https://')) {
+        return '<div class="ui container"> <img class="ui massive rounded bordered image"  style="width: 100%;" src="' + text + '"/></div>';
+    } else if (checkTextIsImage(text)) {
         return '<div class="ui container"> <img class="ui massive rounded bordered image"  style="width: 100%;" src="images/' + text + '"/></div>';
     } else if (text.startsWith(embeddedImageMarker)) { //embedded image in text
         var textMarker = text.split(embeddedImageMarker).pop();
@@ -334,10 +374,11 @@ function convertToHTML(text) {
     //        
     else { //text, convert the text (which can include markdown syntax) to valid HTML
         var result = converter.makeHtml(text);
+        // console.log('Markdown result', result)
         if (result.substring(1, 11) === 'blockquote') {
             return '<div class="ui green segment">' + result + '</div>';
         } else {
-            return result;
+            return '<div class="zBullet">' + result + "<br> </div>";
         }
     }
 }
