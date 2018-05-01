@@ -149,9 +149,8 @@ async function setSelectionInSense(field, value) {
     try {
         var qix = await getQix();
         console.log('qix', qix)
+        await qix.app.clearAll();
         var myField = await qix.app.getField(field);
-        console.log('qix.app', qix.app)
-        console.log('resources Field', myField);
         var result = await myField.selectValues(
             [{
                 "qText": value

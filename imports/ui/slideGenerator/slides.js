@@ -83,7 +83,7 @@ function initializeReveal() {
 
     Session.set("activeStepNr", 0);
     Reveal.addEventListener("slidechanged", function(evt) {
-      console.log("slidechanged", evt.indexh);
+      // console.log("slidechanged", evt.indexh);
       Session.set("activeStepNr", evt.indexh);
       $(".ui.embed").embed();
     });
@@ -108,7 +108,7 @@ Template.slideContent.onCreated(async function() {
   //the header and sub header for which we want to load the slide data/bullets
   var level1 = Template.currentData().slide[0].qText;
   var level2 = Template.currentData().slide[1].qText;
-  console.log("slideContent.onCreated level 2", level2);
+  // console.log("slideContent.onCreated level 2", level2);
   // and now let's get the slide content:
   var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent with a set analysis query
   instance.bullets.set(bullets);
@@ -263,10 +263,10 @@ async function getLevel3(level1, level2) {
     ]);
 
     var level3Temp = sessionData[0].qMatrix;
-    console.log(
+    /* console.log(
       "Qlik returned the following data for the sheet: " + level2,
       normalizeData(level3Temp)
-    );
+    ); */
     sessionModel.removeAllListeners();
     return normalizeData(level3Temp);
   } catch (error) {

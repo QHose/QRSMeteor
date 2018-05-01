@@ -1180,22 +1180,24 @@ This video shown how you can start using and creating widgets in Qlik Sense thro
 !comment
 This video shown a bit more in depth how you can start using and creating widgets in Qlik Sense through our Dev Hub.",,,,,,,,,
 "Web integration","extensions",">extensions",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","extensions -  Create extra functionality inside an app using javascript","extensions Examples.png",,"","","","","         0","0","Technical - 2 hours, Developer, CTO",
-"Web integration","extensions -  Create extra functionality inside an app using javascript","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-API-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, Developer, CTO",
-"Web integration","extensions -  Create extra functionality inside an app using javascript","!comment
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","extensions Examples.png",,"","","","","         0","0","Technical - 2 hours, Developer, CTO",
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-API-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales, Technical - 2 hours, Developer, CTO",
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","# Video: extensions in 60 seconds",,,,,,,,,
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","https://youtu.be/-bxlwEdmaAQ",,"","","","","         0","0","Technical - 2 hours, CTO",
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","Video: introduction to extensions (3M)",,"","","","","         0","0","PreSales, Deep dive",
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","!comment
+A short video that shows the power of visualization extensions. The big difference between widgets and extensions is that widgets do not use JavaScript. They only use HTML and CSS. This means that they are not interactive. Extensions are customized visualizations that use JavaScript in order to be interactive and clickable. In the end they will act like a native Qlik Sense visualization.",,,,,,,,,
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","# Building an extension",,,,,,,,,
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","A live walk-through of coding a Qlik Sense Extension by Speros Kokenes.",,"","","","","         0","0","Deep dive",
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","https://youtu.be/0X4hXzfLftg",,"","","","","         0","0","Deep dive",
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","[Tutorial: How to Build a Qlik Sense Extension with D3](http://blog.axc.net/?p=1617)",,"","","","","         0","0","Deep dive",
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","!comment
 This slide shows some examples of visualizations extensions that can enrich Qlik Sense. 
 The website [branch.qlik.com](branch.qlik.com)  is our open source community for extensions. It has a collection of third party extensions created for QlikView or Qlik Sense. They are all available on GitHub and freely downloadable. As everything is open it is possible to take ownership and/or make modifications.",,"","","","","         0","0","Developer",
-"Web integration","Video: extensions in 60 seconds","https://youtu.be/-bxlwEdmaAQ",,"","","","","         0","0","Technical - 2 hours, CTO",
-"Web integration","Video: extensions in 60 seconds","[Tutorial: How to Build a Qlik Sense Extension with D3](http://blog.axc.net/?p=1617)",,"","","","","         0","0","Deep dive",
-"Web integration","Video: extensions in 60 seconds","!comment
-A short video that shows the power of visualization extensions. The big difference between widgets and extensions is that widgets do not use JavaScript. They only use HTML and CSS. This means that they are not interactive. Extensions are customized visualizations that use JavaScript in order to be interactive and clickable. In the end they will act like a native Qlik Sense visualization.",,,,,,,,,
-"Web integration","Video: introduction to extensions (3M)","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","Technical - 1 day, Developer",
-"Web integration","Video: introduction to extensions (3M)","!comment
-This short video gives you an introduction in extensions.",,"","","","","         0","0","Developer",
-"Web integration","Video: building an extension (1h)","A live walk-through of coding a Qlik Sense Extension by Speros Kokenes.",,"","","","","         0","0","Deep dive",
-"Web integration","Video: building an extension (1h)","https://youtu.be/0X4hXzfLftg",,"","","","","         0","0","Deep dive",
-"Web integration","Download your extensions from branch.qlik.com","<iframe class=""SenseEmbedFrame"" src=""http://branch.qlik.com/#!/project"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 day, Developer",
-"Web integration","Download your extensions from branch.qlik.com","!comment
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","# Download your extensions from branch.qlik.com",,,,,,,,,
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","<iframe class=""SenseEmbedFrame"" src=""http://branch.qlik.com/#!/project"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","extensions -  Create extra functionality inside an app using Javascript","!comment
 [Branch.qlik.com](branch.qlik.com) is the website where you can download extensions that have been made by the community. You can also contribute your own made extensions.",,,,,,,,,
 "Web integration","Create apps on the fly","# Create a new app from scratch, that only lives in memory",,,,,,,,,
 "Web integration","Create apps on the fly","You can create apps on the fly, that is session apps, using the `qlik.sessionApp` and `qlik.sessionAppFromApp` methods. See [Qlik help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/Mashups/Content/Howtos/create-session-app.htm)",,,,,,,,,
