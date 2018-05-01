@@ -1,46 +1,29 @@
-import {
-    Meteor
-} from 'meteor/meteor';
-import {
-    Template
-} from 'meteor/templating';
-import {
-    senseConfig
-} from '/imports/api/config.js';
-const enigma = require('enigma.js');
-import {
-    getQix
-} from '/imports/ui/useCases/useCaseSelection';
+import { Meteor } from "meteor/meteor";
+import { Template } from "meteor/templating";
+import { senseConfig } from "/imports/api/config.js";
+const enigma = require("enigma.js");
+import { getQix } from "/imports/ui/useCases/useCaseSelection";
 
-import {
-    Session
-} from 'meteor/session';
-import * as slideApp from '/imports/ui/useCases/useCaseSelection';
+import { Session } from "meteor/session";
+import * as slideApp from "/imports/ui/useCases/useCaseSelection";
 
-const Cookies = require('js-cookie');
-export var VIDEO_OVERVIEW = 'Video overview';
-export var WEB_INTEGRATION = 'Options to embed Qlik Sense: from simple to advanced use cases';
+const Cookies = require("js-cookie");
 
 Template.nav.helpers({
-    isPage(page) {
-        if (Router.current().route)
-            return Router.current().route.getName() === page;
-    }
+  isPage(page) {
+  }
 });
 
-
 Template.nav.onRendered(function() {
-    this.$('.selectSlides')
-        .transition({
-            animation: 'bounce',
-            duration: '9s'
-        });
+  this.$(".selectSlides").transition({
+    animation: "bounce",
+    duration: "16s"
+  });
 });
 
 //
 // ─── CLICK EVENTS ON MENU ITEMS ─────────────────────────────────────────────────
 //
-
 
 Template.nav.events({
     'click a': function(event, template) {
@@ -71,68 +54,117 @@ Template.nav.events({
 });
 
 export function showSlideSelector() {
-    $('.ui.modal.sheetSelector')
-        .modal('show')
-        .css({
-            position: "fixed",
-            top: '30%',
-            height: 700 // window.innerHeight * 0.85
-        })
-        .modal({
-            onVisible: function() {
-                $(".ui.modal.sheetSelector").modal("refresh");
-            },
-            onHide: function() {
-                console.log('hidden');
-                abortQlikModalState();
-            },
-            // onShow: function() {
-            //     console.log('shown');
-            // },
-        })
-
+  $(".ui.modal.sheetSelector")
+    .modal("show")
+    .css({
+      position: "fixed",
+      top: "30%",
+      height: "700px"
+    })
+    .modal({
+      onVisible: function() {
+        $(".ui.modal.sheetSelector").modal("refresh");
+      },
+      onHide: function() {
+        // console.log('hidden');
+        Session.set("sheetSelectorSeen", true);
+        abortQlikModalState();
+      }
+      // onShow: function() {
+      //     console.log('shown');
+      // },
+    });
 }
 async function abortQlikModalState() {
-    console.log('slide selection modal closed');
-    var ticket = 'dummy, user should already be authenticated at this point...'
-    var qix = await getQix(ticket);
-    qix.app.abortModal(true);
+  // console.log('slide selection modal closed');
+  var qix = await getQix();
+  qix.app.abortModal(true);
 }
 
+Template.yourSaasPlatformMenu.onRendered(function() {
+  this.$(".ui.dropdown").dropdown();
+});
+
+export async function selectViaQueryId(mongoId) {
+  console.log("selectViaQueryId(mongoId)", mongoId);
+  var qSelection = await Meteor.callPromise("getSenseSelectionObject", mongoId);
+  console.log("qSelection result from mongoDB", qSelection);
+  if (qSelection) {
+    await makeSelectionInFields(qSelection.selection);
+  } else {
+    sAlert.warning("We could not retreive a stored selection for this id...");
+  }
+}
+
+// if people click on a menu item, you want a specific slide to be selected, so the slide is the value to search for...
 export async function selectMenuItemInSense(slide) {
-    console.log('selectMenuItemInSense - slide', slide)
-    Cookies.set('currentMainRole', 'TECHNICAL');
-    try {
-        var qix = await slideApp.getQix();
-        var myField = await qix.app.getField('Level 2');
-        var result = await myField.selectValues(
-            [{
-                "qText": slide
-            }]
-        )
-        Meteor.setTimeout(function() {
-            console.log('------------------------------------');
-            console.log('Router: Go to slides ');
-            console.log('------------------------------------');
-            Router.go('slides');
-        }, 200)
-    } catch (error) {
-        var message = 'selectMenuItemInSense: Can not connect to the Qlik Sense Engine API via enigmaJS';
-        console.error(message, error);
-        sAlert.error(message, error);
-    };
+  console.log("selectMenuItemInSense - slide", slide);
+  // Cookies.set('currentMainRole', 'TECHNICAL');
+ /*  var selection = [
+    {
+      qText: slide
+    }
+  ]; */
+  await makeSearchSelectionInField("Level 2", slide);
+  Meteor.setTimeout(function() {
+    Router.go("slides");
+  }, 200);
 }
 
+export async function makeSelectionInField(fieldName, value) {
+  console.log("makeSelectionInField", fieldName + " : " + value.toString());
+  try {
+    var qix = await slideApp.getQix();
+    await slideApp.setChangeListener(qix);
+    var myField = await qix.app.getField(fieldName);
+    var result = await myField.selectValues(value);
+  } catch (error) {
+    var message =
+      "makeSelectionInField: Can not connect to the Qlik Sense Engine API via enigmaJS";
+    console.error(message + " Sense reported the following error: ", error);
+    // location.reload(); //reload the page
+    sAlert.error(message, error);
+  }
+}
 
+//https://qlikcore.com/docs/services/qix-engine/apis/qix/field/#select
+export async function makeSearchSelectionInField(fieldName, value) {
+  console.log(
+    "make search SelectionInField",
+    fieldName + " : " + value.toString()
+  );
+  try {
+    var qix = await slideApp.getQix();
+    await slideApp.setChangeListener(qix);
+    var myField = await qix.app.getField(fieldName);
+    var result = await myField.select(value);
+  } catch (error) {
+    var message =
+      "make search SelectionInField: Can not connect to the Qlik Sense Engine API via enigmaJS";
+    console.error(message + " Sense reported the following error: ", error);
+    location.reload(); //reload the page
+    sAlert.error(message, error);
+  }
+}
 
+//
 
-// Replace with more Meteor approach
-function getQueryParams(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
+export async function makeSelectionInFields(selections) {
+  console.log("makeSelectionInFields(selections)", selections);
+  //for each qField
+  selections.forEach(function(selectionField) {
+    console.log("selectionField", selectionField);
+    //for each selected value (qSelectedFieldSelectionInfo) (e.g. country can have germany and france selected)
+    var selectValues = [];
+    selectionField.qSelectedFieldSelectionInfo.forEach(function(fieldValue) {
+      console.log("fieldValue", fieldValue);
+      selectValues.push({
+        qText: fieldValue.qName,
+        qIsNumeric: false,
+        qNumber: 0
+      });
+      console.log("selectValues", selectValues);
+    });
+    makeSelectionInField(selectionField.qField, selectValues);
+  });
 }

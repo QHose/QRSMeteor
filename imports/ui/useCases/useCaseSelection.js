@@ -3,7 +3,9 @@ import '/imports/ui/slideGenerator/slides.html';
 import '/imports/ui/slideGenerator/slides';
 import '/imports/ui/slideGenerator/slides.css';
 import * as nav from "/imports/ui/nav.js";
-import { SenseSelections } from '/imports/api/logger';
+import {
+    SenseSelections
+} from '/imports/api/logger';
 import './SSBI/SSBI.js';
 import {
     Session
@@ -23,34 +25,50 @@ var slideObject = Meteor.settings.public.slideGenerator.dataObject;
 var app = null;
 var qix = null;
 
+//var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
+var possibleRoles = ['Developer', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
+
 // ONCREATED
-Template.useCaseSelection.onCreated(async function() {
-    Cookies.set('currentMainRole', null);
-
-    //wait a bit, so Meteor can login, before requesting a ticket...
-    Meteor.setTimeout(async function() {
-        //connect to qlik sense 
-        qix = await makeSureSenseIsConnected();
-        // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
-        await setChangeListener(qix);
-
-        //see if the user started up this screen, with a selection parameter
-        var value = getQueryParams('selection');
-        // console.log('getQueryParams return value', value)
-        //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
-        if (value) {
-            console.log('%%%%%%%%%%  Slides oncreated: Query string found: ', value);
-            await nav.selectViaQueryId(value)
-                // get the data and go to the slides
-            await getAllSlides();
-            // after we got all data in an array from sense, change the router/browser to the slides page
-            Router.go("slides");
-        } else {
-            // console.log('no query selection parameter found');
-        }
-    }, 0);
-
+Template.useCaseSelection.onCreated(async function () {
+    await initQlikSense();
 })
+
+export async function initQlikSense() {
+    //wait a bit, so Meteor can login, before requesting a ticket...
+    Meteor.setTimeout(
+        async function () {
+            //connect to qlik sense
+            qix = await makeSureSenseIsConnected();
+            // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
+            await setChangeListener(
+                qix
+            );
+
+            //see if the user started up this screen, with a selection parameter
+            var value = getQueryParams(
+                "selection"
+            );
+            // console.log('getQueryParams return value', value)
+            //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
+            if (value) {
+                console.log(
+                    "%%%%%%%%%%  Slides oncreated: Query string found: ",
+                    value
+                );
+                await nav.selectViaQueryId(
+                    value
+                );
+                // get the data and go to the slides
+                await getAllSlides();
+                // after we got all data in an array from sense, change the router/browser to the slides page
+                Router.go("slides");
+            } else {
+                // console.log('no query selection parameter found');
+            }
+        },
+        0
+    );
+}
 
 // Replace with more Meteor approach
 function getQueryParams(name, url) {
@@ -67,19 +85,19 @@ function getQueryParams(name, url) {
 //make sure you go to the first slide when we have new slide data
 Tracker.autorun(() => {
     Session.get('slideHeaders');
-    Meteor.setTimeout(function() {
+    Meteor.setTimeout(function () {
         try {
             Reveal.slide(0);
         } catch (error) {}
     }, 500);
 });
 // ONRENDERED.
-Template.useCaseSelection.onRendered(async function() {
+Template.useCaseSelection.onRendered(async function () {
     $('body').addClass('mainLandingImage');
 
     //fill the dropdown using a array of values
     var possibleRoles = ["Product Manager", "Business Manager", "Developer"];
-    $.each(possibleRoles, function(i, item) {
+    $.each(possibleRoles, function (i, item) {
         $('#bodyDropdown').append($('<option>', {
             value: item,
             text: item
@@ -89,35 +107,35 @@ Template.useCaseSelection.onRendered(async function() {
     var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
     $(".ui.dropdown").dropdown("set selected", textToShow);
 
-    $('.ui.dropdown')
-        .dropdown({
-            async onChange(group, text, selItem) {
-                await setSelectionInSense('Partial Workshop', group);
-                Cookies.set("currentMainRole", group);
-                Meteor.setTimeout(function() {
-                    Router.go('slides');
-                }, 200)
-            }
-        })
-    // Meteor.setTimeout(function(){$(".ui.dropdown").dropdown("refresh")}, 3000);
-    })        
+})
 
 //
 // ─── SLIDE GENERATOR BUTTON CLICK ─────────────────────────────────────────────────────────────────────
 //
 
 Template.useCaseSelection.events({
-    'click .button.slides': async function(e, t) {
-        // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user                    
-        await setSlideContentInSession('TECHNICAL');
-        Router.go('slides');
+    "click .button.slides": async function (e, t) {
+        // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user
+        // await setSlideContentInSession('TECHNICAL');
+        Session.set("sheetSelectorSeen", false);
+        Router.go("slides");
 
-        setTimeout(function() {
+        setTimeout(function () {
             nav.showSlideSelector();
         }, 100);
     },
-    'click #videoButton': async function(e, t) {
+    "click #videoButton": async function (e, t) {
         nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
+    },
+    "blur .ui.dropdown.selection .menu": async function (e, t) {
+        var selectedRole = t.$(".ui.dropdown").find(":selected").val();
+
+        Cookies.set("currentMainRole", selectedRole);
+        await setSelectionInSense("Partial Workshop", selectedRole);
+        Meteor.setTimeout(function () {
+            Router.go("slides");
+        }, 200);
+
     }
 });
 
@@ -141,11 +159,13 @@ async function setSelectionInSense(field, value) {
 }
 
 async function getTicket() {
-    return await Meteor.callPromise('getTicketNumber', { group: 'notProvided' }, Meteor.settings.public.slideGenerator.virtualProxy);
+    return await Meteor.callPromise('getTicketNumber', {
+        group: 'notProvided'
+    }, Meteor.settings.public.slideGenerator.virtualProxy);
 }
 
 async function makeSureSenseIsConnected() {
-    return await getQix();
+    return await getQix(await getTicket());
 }
 
 async function setSlideContentInSession(group) {
@@ -162,8 +182,7 @@ async function setSlideContentInSession(group) {
     };
 }
 
-export async function getQix() {
-    var ticket = await getTicket();
+export async function getQix(ticket = null) {
     // console.log('getQix with ticket:', ticket)
     try {
         const config = {
@@ -179,18 +198,19 @@ export async function getQix() {
                 }
             },
             listeners: {
-                'notification:*': (event, data) => {
+                'notification:*': async (event, data) => {
                     // console.log('Engima notification received, event: ' + event + ' & data: ', data)
-                    if (data.mustAuthenticate) { //if the user is not authenticated anymore request a new ticket and get a new connection
-                        getQix();
-                    }
-                    var call = {};
+                    if (data.mustAuthenticate || event === 'OnSessionTimedOut') { //if the user is not authenticated anymore request a new ticket and get a new connection
+                        var ticket = await getTicket();
+                        getQix(ticket);
+                    } else
+                        var call = {};
                     call.action = "Engine API listener";
                     call.url = '';
                     call.request = 'Engima.js event: ' + event;
                     call.response = data;
                     REST_Log(call, Meteor.userId());
-                }
+                },
             },
             handleLog: (message) => {
                 // console.log('Engima handleLog: ', message);
@@ -204,13 +224,15 @@ export async function getQix() {
         };
         return await enigma.getService('qix', config);
     } catch (error) {
-        console.error('failed to get Qix ', error);
+        console.error('Qlik Sense Qix error ', error);
+        sAlert.error(error.message)
+        location.reload();
     }
 
 }
 
 //ONDESTROYED
-Template.useCaseSelection.onDestroyed(function() {
+Template.useCaseSelection.onDestroyed(function () {
     $('body').removeClass('mainLandingImage');
 });
 
@@ -232,7 +254,7 @@ export async function getAllSlideHeaders(qix) {
     //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.    
     // return insertSectionBreakers(await getAllSlideHeadersPlain(qix));
     var headers = await getAllSlideHeadersPlain(qix);
-    console.log('headers', headers)
+    // console.log('headers', headers)
     var headersWithBreakers = insertSectionBreakers(headers);
     console.log('headersWithBreakers', headersWithBreakers)
     return headersWithBreakers;
@@ -251,7 +273,19 @@ export async function getAllSlideHeadersPlain(qix) {
                 }
             }, {
                 qDef: {
-                    qFieldDefs: ['Level 2']
+                    qFieldDefs: ['Level 2'],
+                    "qSortCriterias": [{
+                        "qSortByState": 0,
+                        "qSortByFrequency": 0,
+                        "qSortByNumeric": 0,
+                        "qSortByAscii": 0,
+                        "qSortByLoadOrder": 1,
+                        "qSortByExpression": 1,
+                        "qExpression": {
+                            "qv": "max(CSVRowNo)"
+                        },
+                        "qSortByGreyness": 0
+                    }],
                 }
             }]
         }
@@ -277,35 +311,6 @@ export async function getAllSlides(insertSectionBreakers = sectionBreakerConfig)
     sectionBreakerConfig = insertSectionBreakers;
     var table = insertSectionBreakers ? await getAllSlideHeaders(qix) : await getAllSlideHeadersPlain(qix);
     Session.set('slideHeaders', table);
-
-    // var sessionModel = await qix.app.createSessionObject({
-    //     qInfo: {
-    //         qType: 'cube'
-    //     },
-    //     qHyperCubeDef: {
-    //         qDimensions: [{
-    //             qDef: {
-    //                 qFieldDefs: ['Level 1']
-    //             }
-    //         }, {
-    //             qDef: {
-    //                 qFieldDefs: ['Level 2']
-    //             }
-    //         }, {
-    //             qDef: {
-    //                 qFieldDefs: ['Level 3']
-    //             }
-    //         }]
-    //     }
-    // });
-    // sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
-    //     qTop: 0,
-    //     qLeft: 0,
-    //     qWidth: 3,
-    //     qHeight: 3333
-    // }]);
-    // Session.set('slideData', sessionData[0].qMatrix);
-    // console.log('slide data', Session.get('slideData'));
 }
 
 
@@ -331,19 +336,22 @@ export async function getComment(qix) {
         qHeight: 3333
     }]);
     Session.set('slideComment', sessionData[0].qMatrix);
-    console.log('slide Comment', Session.get('slideComment'));
+    // console.log('sessionModel', sessionModel)
+    // console.log('slide Comment', Session.get('slideComment'));
 }
 
 export async function setChangeListener(qix) {
+    console.log('setChangeListener', qix)
     try {
-        qix.app.on('changed', async() => {
-            console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
+        qix.app.on('changed', async () => {
+            // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
             await getCurrentSelections();
             Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
-            await getAllSlides();
-            Reveal.slide(0); //go to the first slide after a data refresh.
+            Meteor.setTimeout(async function wait() {
+                await getAllSlides();
+                Reveal.slide(0); //go to the first slide after a data refresh.           
+            }, 100)
         });
-
     } catch (error) {
         console.error('failed to set change listener: ', error);
     }
@@ -353,7 +361,7 @@ function insertSectionBreakers(table) {
     var currentLevel1, previousLevel1 = '';
     var newTableWithChapter = [];
 
-    table.forEach(function(currentRow) {
+    table.forEach(function (currentRow) {
         var currentLevel1 = textOfLevel(currentRow, 1);
         if (previousLevel1 !== currentLevel1) {
             newTableWithChapter.push(currentLevel1)
@@ -392,9 +400,10 @@ async function getCurrentSelections() {
             eventType: "selectionChanged",
             selection: currentSelections,
             selectionDate: new Date() // current time
-        }, function(err, currentSelectionId) {
-            if (err) { console.error('Failed to store the selection in mongoDb') }
-            console.log('New selection has been stored in MongoDB with currentSelectionId', currentSelectionId)
+        }, function (err, currentSelectionId) {
+            if (err) {
+                console.error('Failed to store the selection in mongoDb')
+            }
             Session.set('currentSelectionId', currentSelectionId);
             return currentSelections;
         });

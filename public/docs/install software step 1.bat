@@ -13,7 +13,8 @@ echo refresh environment variables and paths
 call refreshenv
 
 echo clone GitHub projects
-git clone https://GitHub.com/QHose/QRSMeteor.git --branch simplify-settings-file c:\GitHub\QRSMeteor
+REM git clone https://GitHub.com/QHose/QRSMeteor.git --branch simplify-settings-file c:\GitHub\QRSMeteor
+git clone https://GitHub.com/QHose/QRSMeteor.git --branch master c:\GitHub\QRSMeteor
 git clone https://GitHub.com/QHose/senseWebIntegration.git c:\GitHub\SenseWebIntegration
 
 echo install qrsmeteor npm modules
