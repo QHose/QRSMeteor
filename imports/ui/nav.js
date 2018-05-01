@@ -11,6 +11,8 @@ const Cookies = require("js-cookie");
 
 Template.nav.helpers({
   isPage(page) {
+    if (Router.current().route)
+      return Router.current().route.getName() === page;
   }
 });
 
@@ -44,7 +46,7 @@ Template.nav.events({
         // window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
         break;
       case "video":
-        selectMenuItemInSense("*Video overview*");
+        selectMenuItemInSense("*Video overview:*");
         break;
       case "sheetSelector":
         showSlideSelector();

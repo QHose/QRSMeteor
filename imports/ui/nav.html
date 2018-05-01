@@ -1,10 +1,8 @@
 <template name="nav">
   <div class="ui top fixed secondary menu mainNavBar">
     <div class="ui container">
-      <!-- {{#unless isMainLandingPage}} -->
       <a id="home" href="{{pathFor 'useCaseSelection'}}" class="{{#if isMainLandingPage}} active {{/if}} item">
           HOME</a>
-      <!-- {{/unless}} -->
       <a id="SSBI" href="{{pathFor 'selfService'}}" class="{{#if isSelfServicePage}} active {{/if}} item">
       SELF SERVICE
     </a>
@@ -14,17 +12,9 @@
         SAAS PROVISIONING
       </a> {{/if}}
       <a id="embedding" href="{{webIntegrationDemo}}" class="item">
-          EMBED QLIK SENSE
+          EMBED QLIK SENSE (MASH-UPS)
         </a>
-      <!-- <a href="{{pathFor 'documentation'}}" class="{{#if isDocumentationPage}} active {{/if}} item">
-     DOCUMENTATION
-   </a> -->
       <a id="video" href="/documentation?tab=video" class="{{#if isDocumentationPage}} active {{/if}} item"> VIDEO LIBRARY</a>
-      <!-- 
-    <a class="ui item">
-      Logout
-    </a>
-  </div> -->
       {{#if isPage 'slides'}}
         <div class="right orange menu">
           <a id="sheetSelector" class="item selectSlides" href="#" data-toggle="modal" data-target="#myModal"><i class="inverted search link icon"></i> CHANGE PRESENTATION</a>

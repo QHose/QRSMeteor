@@ -261,16 +261,16 @@ When embedding Qlik Sense in your platform, there are several integration topics
  - SaaS provisioning: Our APIs allow the automatic creation of customer content. Creation of Apps and streams, replacing the script with user specific script, copying apps, … can all be done automatically.
  - Architecture : Our server system allows clustering, scaling and high availability.
  - Dashboard: Qlik Sense offers a wide array of beautiful visualizations in order to show your data as you want it. With the open standard of Qlik Sense it is very easy to download or create additional visualizations. With our drag and drop and scalability possibilities it is very easy to create a beautiful and powerful dashboard.",,,,,,,,,
-"Integration.qlik.com demo platform","Qlik Sense SaaS provisioning demo: This demo simulates your SaaS platform",">Next, you will see your admin panel which controls Qlik Sense via APIs (a ""broker""), based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, Hosting Ops, CTO",
-"Integration.qlik.com demo platform","Qlik Sense SaaS provisioning demo: This demo simulates your SaaS platform","!comment
+"Integration.qlik.com demo platform","Multi-tenant SaaS platform with Qlik Sense demo: This demo simulates your SaaS platform",">Next, you will see your admin panel which controls Qlik Sense via APIs (a ""broker""), based on the information stored in your database about your tenants, users and authorizations.",,"","","","","         0","0","Introduction - 30 minutes, Hosting Ops, CTO",
+"Integration.qlik.com demo platform","Multi-tenant SaaS platform with Qlik Sense demo: This demo simulates your SaaS platform","!comment
 This demo simulates an admin panel which controls Qlik Sense Trough our API's. The users and their roles are stored in a Mongo Database.  
 This admin panel is simulating the existing broker software: A piece of software that is already in place that controls your current SaaS platform. In real situations this is all fully automated. For demo purposes here, we created a demo with 4 steps where you manually need to select users, apps and press buttons to provision.
 ",,"","","","","         0","0","Hosting Ops",
-"Integration.qlik.com demo platform","In the ""multi-tenant SaaS platform with Qlik Sense"" demo you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours, CTO",
-"Integration.qlik.com demo platform","In the ""multi-tenant SaaS platform with Qlik Sense"" demo you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours, CTO",
-"Integration.qlik.com demo platform","In the ""multi-tenant SaaS platform with Qlik Sense"" demo you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours, CTO",
-"Integration.qlik.com demo platform","In the ""multi-tenant SaaS platform with Qlik Sense"" demo you will see a screen divided into two parts","SaaS logo.png",,"","","","","         0","0","Technical - 2 hours, CTO",
-"Integration.qlik.com demo platform","In the ""multi-tenant SaaS platform with Qlik Sense"" demo you will see a screen divided into two parts","!comment
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense demo you will see a screen divided into two parts","The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.",,"","","","","         0","0","Technical - 2 hours, CTO",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense demo you will see a screen divided into two parts","This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ",,"","","","","         0","0","Technical - 2 hours, CTO",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense demo you will see a screen divided into two parts","The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.",,"","","","","         0","0","Technical - 2 hours, CTO",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense demo you will see a screen divided into two parts","SaaS logo.png",,"","","","","         0","0","Technical - 2 hours, CTO",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense demo you will see a screen divided into two parts","!comment
 The left side of the screen will show the 'broker'. This is a software capability that is already in place and manages the current SaaS platform. This piece of software will maintain the control of the SaaS platform and will communicate with our Sense platform through our APIs. This means that the control stays completely in the existing platform.
 
 In this demo, the broker will define following parameters:
@@ -281,7 +281,7 @@ In this demo, the broker will define following parameters:
 On the right side of the screen, the result of the activities of the broker will be shown:
  - Which streams were created.
 Which apps were copied and published.",,,,,,,,,
-"Integration.qlik.com demo platform","Now try it yourself in the ""multi-tenant SaaS platform with Qlik Sense"" demo below","iframe generation_embedded",,"","","","","         0","0","Integration summary, Hosting Ops, CTO, Introduction - 30 minutes",
+"Integration.qlik.com demo platform","Now try it yourself in the multi-tenant SaaS platform with Qlik Sense demo below...","iframe generation_embedded",,"","","","","         0","0","Integration summary, Hosting Ops, CTO, Introduction - 30 minutes",
 "Integration.qlik.com demo platform","integration demo architecture introduction","saas demo architecture introduction of components.png",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com demo platform","integration demo architecture introduction","!comment
 A user can be a computer or a human. What defines a user is the fact that it has a userID, that it belongs to a certain customer and that it has one or multiple groups. When that user logs on to the SaaS platform, he is authenticated.  At the point he needs to see Qlik Sense content, that user needs to be authenticated with Qlik Sense. At this point this information is passed through by means of a ticket. (There are other methods, but here we use ticketing). This ticket contains the userID and additional attributes ( like groups, specific script content,….). On this website thery are stored in a Mongo Database. Through APIs these can be fetched and passed to Qlik Sense. Based on the userID and group(s) the correct content will be shown and the user will have the correct rights based on the group membership.",,,,,,,,,
@@ -335,9 +335,7 @@ For this we use a piece of software that regulates your SaaS platform, or a brok
  - Some script is inserted or modified to make sure the correct data is loaded.
  - The app is reloaded,
  - The app gets published in the correct stream.",,"","","","","         0","0","PreSales",
-"Integration.qlik.com demo platform","Video overview: Here we explain the concepts used in integration.qlik.com to setup a multi-tenant environment","# Videos which outline the concepts used in integration.qlik.com to get you started...",,,,,,,,,
-"Integration.qlik.com demo platform","Video overview: Here we explain the concepts used in integration.qlik.com to setup a multi-tenant environment","iframe videoOverview_embedded",,"","","","","         0","0","Product Owner, Integration summary, Technical - 2 hours, CTO, Developer",
-"Integration.qlik.com demo platform","Video overview: How to (hands on)","# How to videos",,"","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","Video overview: Technologies used on integration.qlik.com to setup a multi-tenant environment","iframe videoOverview_embedded",,"","","","","         0","0","Product Owner, Integration summary, Technical - 2 hours, CTO, Developer",
 "Integration.qlik.com demo platform","Video overview: How to (hands on)","iframe https://www.youtube.com/channel/UCmPMsqh1UvXhQTcAhPMEjpA/videos",,"","","","","         0","0","Technical - 2 hours",
 "API -  generic introduction","What is an API?","Used in computer programming",,,,,,,,,
 "API -  generic introduction","What is an API?","A set of communication methods between software applications",,,,,,,,,
@@ -1268,8 +1266,8 @@ An example of a powerful extension is the SVG reader, created by Brian Muntz and
 "Web integration","Difference between QAP and Qlik Sense enterprise","!comment
 This slide explain the difference between the Qlik Analytics Platform and Qlik Sense Enterprise. Basically the QAP is Qlik Sense Enterprise without the hub. This means that with the QAP you cannot create and edit apps, see an app overview,… through the hub. All these actions are available through our APIs.
 ",,,,,,,,,
-"Web integration","Embed Qlik Sense in IIS","https://youtu.be/ybGIYdHenqE",,,,,,,,,
-"Web integration","Embed Qlik Sense in IIS","!comment
+"Web integration","Video: Qlik Sense with IIS","https://youtu.be/ybGIYdHenqE",,,,,,,,,
+"Web integration","Video: Qlik Sense with IIS","!comment
 This video shows you how to embed Qlik Sense in a Microsoft IIS webserver.",,,,,,,,,
 "Web integration","More information","Always checkout Stefan Walthers posts. Like this [web integration tutorial](https://github.com/stefanwalther/awesome-qap#building-visualization-extensions)",,"","","","","         0","0","Technical - 1 day",
 "Web integration","More information","[branch.qlik.com](http://branch.qlik.com)",,"","","","","         0","0","Technical - 1 day",
@@ -1314,15 +1312,16 @@ This slide gives some performance tips when using our APIs.
 "Web integration","Other topics","web - Qlik Sense uses WebSockets.png",,,,,,,,,
 "Web integration","Theming","If you embed Qlik Sense can always change most layout aspects using Qlik Sense [theming API](https://help.qlik.com/en-US/sense-developer/February2018/Subsystems/APIs/Content/CapabilityAPIs/ThemeAPI/ThemeAPI.htm).",,"","","","","         0","0","Deep dive",
 "Web integration","Theming","iframe https://community.qlik.com/blogs/qlikviewdesignblog/2018/02/23/how-to-create-a-custom-theme-in-qlik-sense",,"","","","","         0","0","Deep dive",
-"Web integration","Videos on Qlik.help: Getting started with the dev-hub","These [videos](http://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm) are designed to help you get started with and improve your knowledge and understanding of the APIs and tools delivered with Qlik Sense and Qlik Analytics Platform.",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Videos on Qlik.help: Getting started with the dev-hub","# Video overview",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Videos on Qlik.help: Getting started with the dev-hub","Dev Hub overview",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Videos on Qlik.help: Getting started with the dev-hub","Get started building extensions - Dev Hub",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Videos on Qlik.help: Getting started with the dev-hub","Get started building mashups - Dev Hub",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Videos on Qlik.help: Getting started with the dev-hub","Creating mashup templates - Dev Hub",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Videos on Qlik.help: Getting started with the dev-hub","Working with the Single configurator",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Videos on Qlik.help: Getting started with the dev-hub","Using the Engine API explorer",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Videos on Qlik.help: Getting started with the dev-hub","QlikView converter",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","These [videos](http://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm) are designed to help you get started with and improve your knowledge and understanding of the APIs and tools delivered with Qlik Sense and Qlik Analytics Platform.",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","# Video overview",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","Dev Hub overview",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","Get started building extensions - Dev Hub",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","Get started building mashups - Dev Hub",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","Creating mashup templates - Dev Hub",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","Working with the Single configurator",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","Using the Engine API explorer",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","QlikView converter",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","iframe http://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm",,"","","","","         0","0","Developer",
 "Web integration","How to set initial selections","You can set selections in multiple ways
 - use a (invisible, single object) Iframe url with selections encoded in the URL
 - use the selection API (see the ""embed"" menu option, technical info menu for DIV and data only)
@@ -1602,6 +1601,7 @@ So with UDC's you don't need to recreate groups in Qlik Sense but they can be re
 "Security - technical design","Audit the effectiveness using the audit tool","security rules audit.png",,"","","","","         0","0","PreSales",
 "Security - technical design","Typical activities you need in security rules for common tasks","security rules - activities that you need to do common tasks.png",,"","","","","         0","0","Deep dive",
 "Security - Concept of integration.qlik.com","Overview security","<iframe class=""SenseEmbedFrame"" src=""/security_embedded"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 1 day, Integration summary",
+"Security - Concept of integration.qlik.com","How to setup authentication and authorization in integrated environments","iframe https://community.qlik.com/docs/DOC-17599",,"","","","","         0","0","Technical - 2 hours, Integration summary",
 "Security - Concept of integration.qlik.com","Summary overview","saasdemo security overview.png",,"","","","","         0","0","Technical - 1 hour",
 "Security - Concept of integration.qlik.com","Summary overview","[integration demo documentation and videos](http://integration.qlik.com/introductionSecurity)",,"","","","","         0","0","Technical - 1 hour",
 "Security - Concept of integration.qlik.com","Summary of integration.qlik.com security and license setup","Qlik Sense configuration
@@ -1676,7 +1676,7 @@ or
 "Qlik Sense API introduction","Front end APIs: Next we demonstrate some examples","Creating extra functionality in Qlik Sense",,"","","","","         0","0","Deep dive, PreSales, Developer",
 "Qlik Sense API introduction","Front end APIs: Next we demonstrate some examples","Requesting a list of apps from a SaaS platform",,"","","","","         0","0","Deep dive, PreSales, Developer",
 "Qlik Sense API introduction","Front end APIs: Next we demonstrate some examples","Remember: always think where you are, to see which APIs you need to use",,"","","","","         0","0","Deep dive, Developer",
-"Qlik Sense API introduction","Front end APIs: Examples on how you can embed Qlik Sense in other applications","iframe /webIntegration_embedded",,"","","","","         0","0","Deep dive, PreSales, Developer",
+"Qlik Sense API introduction","An example approach on how you can embed Qlik Sense in other applications","iframe /webIntegration_embedded",,"","","","","         0","0","Deep dive, PreSales, Developer",
 "Qlik Sense API introduction","Front end APIs Create extra functionality in Qlik Sense using extensions","extensions Examples.png",,"","","","","         0","0","Deep dive, PreSales, Developer",
 "Qlik Sense API introduction","Front end APIs Create extra functionality in Qlik Sense using extensions","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-API-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Deep dive, PreSales, Developer",
 "Qlik Sense API introduction","Example of an API interaction where we connect via the browser to the QRS API using header authentication","flow - REST get apps.png",,"","","","","         0","0","Technical - 1 day",
@@ -3023,7 +3023,8 @@ User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
 ```",,"","","","","         0","0","Deep dive",
 "QRS API","Example HTTP header for a REST API call using a certificate to authenticate","Note that this header supplies the user to authenticate as via the `X-Qlik-User: UserDirectory=INTERNAL;` parameter",,"","","","","         0","0","Deep dive",
 "QRS API","Methods and IDs","QRS API - methods and IDs.png",,"","","","","         0","0","Deep dive",
-"QRS API","Use the browser console to ""record"" Qlik Sense REST API calls","QRS - start task chrome console.png",,"","","","","         0","0","Technical - 2 hours, Developer",
+"QRS API","Use the browser console to record Qlik Sense REST API calls","QRS - start task chrome console.png",,"","","","","         0","0","Technical - 2 hours, Developer",
+"QRS API","Use the browser console to record Qlik Sense REST API calls","You can use the same trick for websocket communication. ",,,,,,,,,
 "QRS API","How do you create a REST URL? General purpose endpoints","When communicating directly with the QRS API, the URL is as follows:",,"","","","","         0","0","Deep dive, Developer",
 "QRS API","How do you create a REST URL? General purpose endpoints","```
 https://<QRS machine name>:4242/<path>
@@ -5115,6 +5116,7 @@ This approach allows users to easily define a relevant, usable view of Big Data 
 "Other","Big data - On demand app generation ( ODAG )","https://youtu.be/ekADq3MEPVU?list=PLkRFvjyuHFvKkV3AbLeLeRly9aT0hi9wO",,"","","","","         0","0","Deep dive",
 "Other","Big data - On demand app generation ( ODAG )","Below you will find a quick demo of Qlik Sense On Demand App Generation and how to leverage it to address big data use cases.",,"","","","","         0","0","Deep dive",
 "Other","Big data - On demand app generation ( ODAG )","https://youtu.be/n_VnOdqQ0CA",,"","","","","         0","0","Deep dive",
+"Other","Big data - On demand app generation ( ODAG )","You can also watch [this webinar](https://event.on24.com/eventRegistration/EventLobbyServlet?target=reg20.jsp&referrer=https%3A%2F%2Fcommunity.qlik.com%2Fgroups%2Fus-healthcare-user-group%2Fblog%2F2016%2F06%2F02%2Fupcoming-qlik-healthcare-events&eventid=1596996&sessionid=1&key=B6CEC7948893B148B0CE0F9913C32F2A&regTag=&sourcepage=register)",,"","","","","         0","0","Deep dive",
 "Other","Big data - On demand app generation ( ODAG )","!comment This video is a brief overview of On Demand App Generation,  just one of several methodologies that can be used by Qlik to manage Big Data sets. On Demand App Generation is a methodology that can be used in any situation where each user wants to explore their own slice of the data and is built in from the June 2017 release of Qlik Sense.
 
 Big data analytics can now be approached through a shopping cart like process where dimensional data can be filtered at an aggregated high level and data slices automatically generated on-demand for further detailed analytics by users, all in a secure and governed manner.",,"","","","","         0","0","Deep dive",
