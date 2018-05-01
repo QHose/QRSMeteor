@@ -125,7 +125,7 @@ Template.useCaseSelection.events({
   "click #videoButton": async function(e, t) {
     nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
   },
-  "blur .ui.dropdown.selection .menu": async function(e, t) {
+  "blur .ui.dropdown.selection .menu": async function(e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
     var selectedRole = t.$(".ui.dropdown").find(":selected").val();
     
     Cookies.set("currentMainRole", selectedRole);
@@ -144,6 +144,7 @@ async function setSelectionInSense(field, value) {
         var qix = await getQix();
         console.log('qix', qix)
         var myField = await qix.app.getField(field);
+        console.log('qix.app', qix.app)
         console.log('resources Field', myField);
         var result = await myField.selectValues(
             [{

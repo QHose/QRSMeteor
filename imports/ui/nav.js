@@ -16,11 +16,62 @@ Template.nav.helpers({
   }
 });
 
-Template.nav.onRendered(function() {
-  this.$(".selectSlides").transition({
-    animation: "bounce",
-    duration: "16s"
+Template.sheetSelector.onRendered(function () {
+   //
+  // ─── CREATE POPUP ───────────────────────────────────────────────────────────────
+  //
+  this.$("#sheetSelector").popup({
+    title: "Select your content",
+    content:
+      "You are navigation in a 'presentation'. In this screen you can select the content. If you can done, start your personal presentation! You can press escape to get an overview, or use your keyboard arrows to go to the next and previous slides.",
+    delay: {
+      show: 500,
+      hide: 0
+    }
   });
+
+    this.$(".selectSlides").transition({
+      animation: "bounce",
+      duration: "16s"
+    });
+});
+
+Template.nav.onRendered(function() {
+  //
+  // ─── BOUNCE THE NAV BAR ITEM FOR SHEET SELECTION ────────────────────────────────
+  //
+
+  /*  this.$("#SSBI").popup({
+     title: "What is self service?",
+     content:
+       "Next we first introduce you to the concepts of self service using a video and we continue with a live demo so you can see and test the effects of different access rights on access to functionality and row level security",
+     delay: {
+       show: 500,
+       hide: 0
+     }
+   });
+
+     this.$("#generation").popup({
+       title: "Multi-tenant app provisioning demo",
+       content:
+         "Questions about SaaS and multi-tenancy with Qlik Sense? In our demonstration site, we show and reveal how you can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment.",
+       delay: {
+         show: 500,
+         hide: 0
+       }
+     });
+
+      this.$("#generation").popup({
+        title: "Embed Qlik Sense in your platform",
+        content:
+          `Qlik allows integration options. You can choose your desired level of web integration according to your business requirements. On the client side, you can use either the Qlik client or create your own client.
+
+If you choose to use the Qlik Sense Client, you have the following integration options: integrate the hub, an app, a sheet or individual charts. In most cases you have the ability to control whether you see our menu, see a selection bar or whether or not you provide initial selections to make charts static.`,
+        delay: {
+          show: 500,
+          hide: 0
+        }
+      }); */
 });
 
 //
