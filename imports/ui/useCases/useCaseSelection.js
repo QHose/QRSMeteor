@@ -133,7 +133,7 @@ Template.useCaseSelection.events({
   },
   "blur .ui.dropdown.selection .menu": async function(e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
     var selectedRole = t.$(".ui.dropdown").find(":selected").val();
-    
+    Session.set("sheetSelectorSeen", true);    
     Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
         Meteor.setTimeout(function() {

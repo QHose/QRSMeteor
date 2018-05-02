@@ -48,17 +48,19 @@ Template.slides.onRendered(async function() {
 });
 
 async function slideDataLoaded() {
-  if (!Session.get("slideHeaders")) {
-    console.log("------------------------------------");
-    console.log(
-      "No slide data present in session, reroute the user back to the Selection screen."
-    );
-    console.log("------------------------------------");
-    await initQlikSense();
-    nav.showSlideSelector();
-    // Router.go("useCaseSelection");
-    return;
-  }
+  Meteor.setTimeout(function () {
+    if (!Session.get("slideHeaders")) {
+      console.log("------------------------------------");
+      console.log(
+        "No slide data present in session, reroute the user back to the Selection screen."
+      );
+      console.log("------------------------------------");
+      await initQlikSense();
+      nav.showSlideSelector();
+      // Router.go("useCaseSelection");
+      return;
+    }    
+  },2000)
 }
 
 function initializeReveal() {
