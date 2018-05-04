@@ -19,26 +19,24 @@ var numberOfActiveSlides = 10;
 // ─── SLIDES ─────────────────────────────────────────────────────────────────────
 //
 
-    
-Template.slides.onCreated(async function() {
+Template.slides.onCreated(async function () {
   $("body").css({
     overflow: "hidden"
   });
 });
 
-Template.slides.onDestroyed(function() {
+Template.slides.onDestroyed(function () {
   $("body").css({
     overflow: "auto"
   });
 });
 
-Template.slides.onRendered(async function() {
+Template.slides.onRendered(async function () {
   await slideDataLoaded();
   initializeReveal();
   this.$("aside").popup({
     title: "Slides",
-    content:
-      "You are navigation in a 'presentation', you can press escape to get an overview, or use your keyboard arrows to go to the next and previous slides.",
+    content: "You are navigating in a 'presentation', you can press escape to get an overview, or use your keyboard arrows to go to the next and previous slides.",
     delay: {
       show: 500,
       hide: 0
@@ -47,8 +45,37 @@ Template.slides.onRendered(async function() {
 
 });
 
+Template.slides.helpers({
+  slideHeaders() {
+    return Session.get("slideHeaders"); //only the level 1 and 2 colums, we need this for the headers of the slide
+  }
+});
+
+//
+// ─── SLIDE ──────────────────────────────────────────────────────────────────────
+//
+
+Template.slide.helpers({
+  active(slideNr) {
+    var activeSlide = Session.get("activeStepNr");
+    var active =
+      slideNr < activeSlide + numberOfActiveSlides &&
+      slideNr > activeSlide - numberOfActiveSlides;
+    return active;
+  }
+});
+
+Template.registerHelper("level", function (level, slide) {
+  level -= 1;
+  return slide[level].qText;
+});
+
+Template.registerHelper("step", function () {
+  return Session.get("activeStepNr");
+});
+
 async function slideDataLoaded() {
-  Meteor.setTimeout(function () {
+  Meteor.setTimeout(async function () {
     if (!Session.get("slideHeaders")) {
       console.log("------------------------------------");
       console.log(
@@ -85,9 +112,8 @@ function initializeReveal() {
 
     Session.set("activeStepNr", 0);
     Reveal.addEventListener("slidechanged", function(evt) {
-      // console.log("slidechanged", evt.indexh);
+      console.log("slidechanged", evt.indexh);
       Session.set("activeStepNr", evt.indexh);
-      $(".ui.embed").embed();
     });
   } catch (error) {}
 }
@@ -103,7 +129,8 @@ function initializeReveal() {
 //
 // ─── SLIDE CONTENT ──────────────────────────────────────────────────────────────────────
 //
-Template.slideContent.onCreated(async function() {
+//
+Template.slideContent.onCreated(async function () {
   var instance = this;
   instance.bullets = new ReactiveVar([]); //https://stackoverflow.com/questions/35047101/how-do-i-access-the-data-context-and-the-template-instance-in-each-case-event
 
@@ -112,59 +139,61 @@ Template.slideContent.onCreated(async function() {
   var level2 = Template.currentData().slide[1].qText;
   // and now let's get the slide content:
   var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent with a set analysis query
+  console.log('bullets level 2'+level2, bullets)
   instance.bullets.set(bullets);
 });
 
-Template.slideContent.helpers({
-  bullets: function() {
-    var makeSureTemplateRerenders = Session.get("activeStepNr");
-    var res = Template.instance().bullets.get();
-    if (res) var newArray = [];
-    res.forEach(function(item) {
-      newArray.push(convertToHTML(item));
-    });
-    return newArray;
-  }
-});
-
-Template.slideContent.onRendered(async function() {
-  var template = this;
-  var level1 = Template.currentData().slide[0].qText;
-  var level2 = Template.currentData().slide[1].qText;
-  var bullets = new ReactiveVar();
-  //get level 3 data
-  bullets.set(await getLevel3(level1, level2)); //using the parent, get all items that have this name as parent with a set analysis query
+Template.slideContent.onRendered(async function () {
+    //the header and sub header for which we want to load the slide data/bullets/comments
+    var level1 = Template.currentData().slide[0].qText;
+    var level2 = Template.currentData().slide[1].qText;
+    console.log('slideContent.onRendered', level2);
 
   //
   // ─── GET COMMENT AND CREATE A NICE HTML BOX AROUND THE TEXT ─────────────────────
   //
   var comment = await getComment(level1, level2);
-  // console.log('comment retrieved in slideContent onrendered', comment)
-  if (comment.length > 10)
-    template.$(".slideContent").append(createCommentBox(comment));
+  console.log('comment retrieved in slideContent onrendered', comment)
+  if (comment.length > 10){
+    this.$(".slideContent").append(createCommentBox(comment));
+  }
+
+  //insert info in a database to track user activity on each slide change
   Logger.insert({
     userId: Meteor.userId,
-    // userName: Meteor.user().profile.name,
-    website: location.href,
+    userProfile: Meteor.user(),
+    role: Cookies.get("currentMainRole"),
     counter: 1,
     eventType: "slideRendered",
-    topic: this.data.slide[0].qText,
-    slide: this.data.slide[1].qText,
+    topic: Template.parentData(1).slide[0].qText,
+    slide: Template.parentData(1).slide[1].qText,
     viewDate: new Date() // current time
   });
 
-  Meteor.setTimeout(function() {
+  //do some screen optimization work after the slide is presented
+  Meteor.setTimeout(function () {
     //embed youtube containers in a nice box without loading all content
     this.$(".ui.embed").embed({
       autoplay: false
     });
     //make sure all code gets highlighted using highlight.js
-    this.$("pre code").each(function(i, block) {
+    this.$("pre code").each(function (i, block) {
       hljs.highlightBlock(block);
     });
     //ensure all links open on a new tab
     this.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
-  }, 1000);
+  }, 2000);
+});
+
+Template.slideContent.helpers({
+  bullets: function() {
+    var res = Template.instance().bullets.get();
+    var newArray = [];
+    res.forEach(function(item) {
+      newArray.push(convertToHTML(item));
+    });
+    return newArray;
+  }
 });
 
 Template.slideContent.events({
@@ -185,39 +214,12 @@ Template.slideContent.events({
   }
 });
 
-//
-// ─── HELPERS ────────────────────────────────────────────────────────────────────
-//
-Template.slides.helpers({
-  slideHeaders() {
-    return Session.get("slideHeaders"); //only the level 1 and 2 colums, we need this for the headers of the slide
-  }
-});
-
-Template.slide.helpers({
-  active(slideNr) {
-    var activeSlide = Session.get("activeStepNr");
-    var active =
-      slideNr < activeSlide + numberOfActiveSlides &&
-      slideNr > activeSlide - numberOfActiveSlides;
-    return active;
-  }
-});
-
-Template.registerHelper("level", function(level, slide) {
-  level -= 1;
-  return slide[level].qText;
-});
-
-Template.registerHelper("step", function() {
-  return Session.get("activeStepNr");
-});
 
 //
 // ─── FOR EACH SLIDE GET THE LEVEL 3 ITEMS USING SET ANALYSIS ────────────────────
 //
 async function getLevel3(level1, level2) {
-  // console.log("getLevel3: " + level1 + ' -' + level2);
+  console.log("getLevel3: " + level1 + ' -' + level2);
   try {
     var qix = await getQix();
     var sessionModel = await qix.app.createSessionObject({

@@ -23,7 +23,7 @@ Template.sheetSelector.onRendered(function () {
   this.$("#sheetSelector").popup({
     title: "Select your content",
     content:
-      "You are navigation in a 'presentation'. In this screen you can select the content. If you can done, start your personal presentation! You can press escape to get an overview, or use your keyboard arrows to go to the next and previous slides.",
+      "You are navigating in a 'presentation'. In this screen you can select the content. If you can done, start your personal presentation! You can press escape to get an overview, or use your keyboard arrows to go to the next and previous slides.",
     delay: {
       show: 500,
       hide: 0
