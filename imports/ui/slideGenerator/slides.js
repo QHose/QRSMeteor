@@ -38,7 +38,7 @@ Template.slides.onRendered(async function() {
   this.$("aside").popup({
     title: "Slides",
     content:
-      "You are navigation in a 'presentation', you can press escape to get an overview, or use your keyboard arrows to go to the next and previous slides.",
+      "You are navigating in a 'presentation', you can press escape to get an overview, or use your keyboard arrows to go to the next and previous slides.",
     delay: {
       show: 500,
       hide: 0
@@ -48,7 +48,7 @@ Template.slides.onRendered(async function() {
 });
 
 async function slideDataLoaded() {
-  Meteor.setTimeout(function () {
+  Meteor.setTimeout(async function () {
     if (!Session.get("slideHeaders")) {
       console.log("------------------------------------");
       console.log(
@@ -60,7 +60,7 @@ async function slideDataLoaded() {
       // Router.go("useCaseSelection");
       return;
     }    
-  },2000)
+  },3000)
 }
 
 function initializeReveal() {
@@ -91,14 +91,6 @@ function initializeReveal() {
     });
   } catch (error) {}
 }
-
-// Template.slideContent.events({
-//     'contextmenu *': function(e, t) {
-//         e.stopPropagation();
-//         console.log('template instance:\n', t);
-//         console.log('data context:\n', Blaze.getData(e.currentTarget));
-//     }
-// });
 
 //
 // ─── SLIDE CONTENT ──────────────────────────────────────────────────────────────────────
