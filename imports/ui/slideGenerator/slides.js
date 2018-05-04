@@ -98,43 +98,38 @@ function initializeReveal() {
 Template.slideContent.onCreated(async function() {
   var instance = this;
   instance.bullets = new ReactiveVar([]); //https://stackoverflow.com/questions/35047101/how-do-i-access-the-data-context-and-the-template-instance-in-each-case-event
+  instance.comment = new ReactiveVar([]);
 
   //the header and sub header for which we want to load the slide data/bullets
   var level1 = Template.currentData().slide[0].qText;
   var level2 = Template.currentData().slide[1].qText;
+  // console.log('bullets level 2'+level2, bullets)
   // and now let's get the slide content:
-  var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent with a set analysis query
-  instance.bullets.set(bullets);
+  instance.bullets.set(await getLevel3(level1, level2));
+  //get the comment of the page
+  instance.comment.set(await getComment(level1, level2));
 });
 
 Template.slideContent.helpers({
   bullets: function() {
-    var makeSureTemplateRerenders = Session.get("activeStepNr");
     var res = Template.instance().bullets.get();
     if (res) var newArray = [];
     res.forEach(function(item) {
       newArray.push(convertToHTML(item));
     });
     return newArray;
-  }
+  },
+    comment: function() {
+      var comment = Template.instance().comment.get();
+      if (comment.length > 10) 
+        return createCommentBox(comment);
+    }
 });
 
 Template.slideContent.onRendered(async function() {
   var template = this;
-  var level1 = Template.currentData().slide[0].qText;
-  var level2 = Template.currentData().slide[1].qText;
-  var bullets = new ReactiveVar();
-  //get level 3 data
-  bullets.set(await getLevel3(level1, level2)); //using the parent, get all items that have this name as parent with a set analysis query
-
-  //
-  // ─── GET COMMENT AND CREATE A NICE HTML BOX AROUND THE TEXT ─────────────────────
-  //
-  var comment = await getComment(level1, level2);
-  // console.log('comment retrieved in slideContent onrendered', comment)
-  if (comment.length > 10)
-    template.$(".slideContent").append(createCommentBox(comment));
-  Logger.insert({
+ 
+    Logger.insert({
     userId: Meteor.userId,
     // userName: Meteor.user().profile.name,
     website: location.href,
