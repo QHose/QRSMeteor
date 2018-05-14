@@ -151,7 +151,7 @@ Template.slideContent.onRendered(async function() {
     });
     //ensure all links open on a new tab
     this.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
-  }, 1000);
+  }, 3000);
 });
 
 Template.slideContent.events({
