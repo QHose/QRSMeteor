@@ -26,7 +26,13 @@ var app = null;
 var qix = null;
 
 //var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
-var possibleRoles = ['Developer', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
+var possibleRoles = [
+  "Developer",
+  "Hosting Ops",
+  "Business Analyst",
+  "CTO",
+  "C-Level - non-technical"
+];
 
 // ONCREATED
 Template.useCaseSelection.onCreated(async function () {
@@ -114,23 +120,23 @@ Template.useCaseSelection.onRendered(async function () {
 //
 
 Template.useCaseSelection.events({
-    "click .button.slides": async function (e, t) {
-        // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user
-        // await setSlideContentInSession('TECHNICAL');
-        Session.set("sheetSelectorSeen", false);
-        Router.go("slides");
+  "click .button.slides": async function(e, t) {
+    // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user
+    // await setSlideContentInSession('TECHNICAL');
+    Session.set("sheetSelectorSeen", false);
+    Router.go("slides");
 
-        setTimeout(function () {
-            nav.showSlideSelector();
-        }, 100);
-    },
-    "click #videoButton": async function (e, t) {
-        nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
-    },
-    "blur .ui.dropdown.selection .menu": async function (e, t) {
-        var selectedRole = t.$(".ui.dropdown").find(":selected").val();
-
-        Cookies.set("currentMainRole", selectedRole);
+    setTimeout(function() {
+      nav.showSlideSelector();
+    }, 100);
+  },
+  "click #videoButton": async function(e, t) {
+    nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
+  },
+  "blur .ui.dropdown.selection .menu": async function(e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
+    var selectedRole = t.$(".ui.dropdown").find(":selected").val();
+    Session.set("sheetSelectorSeen", true);    
+    Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
         Meteor.setTimeout(function () {
             Router.go("slides");
@@ -145,8 +151,8 @@ async function setSelectionInSense(field, value) {
     try {
         var qix = await getQix();
         console.log('qix', qix)
+        await qix.app.clearAll();
         var myField = await qix.app.getField(field);
-        console.log('resources Field', myField);
         var result = await myField.selectValues(
             [{
                 "qText": value
