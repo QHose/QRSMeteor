@@ -19,7 +19,6 @@ var numberOfActiveSlides = 10;
 // ─── SLIDES ─────────────────────────────────────────────────────────────────────
 //
 
-    
 Template.slides.onCreated(async function() {
   $("body").css({
     overflow: "hidden"
@@ -44,11 +43,10 @@ Template.slides.onRendered(async function() {
       hide: 0
     }
   });
-
 });
 
 async function slideDataLoaded() {
-  Meteor.setTimeout(async function () {
+  Meteor.setTimeout(async function() {
     if (!Session.get("slideHeaders")) {
       console.log("------------------------------------");
       console.log(
@@ -59,8 +57,8 @@ async function slideDataLoaded() {
       nav.showSlideSelector();
       // Router.go("useCaseSelection");
       return;
-    }    
-  },3000)
+    }
+  }, 3000);
 }
 
 function initializeReveal() {
@@ -119,24 +117,27 @@ Template.slideContent.helpers({
     });
     return newArray;
   },
-    comment: function() {
-      var comment = Template.instance().comment.get();
-      if (comment.length > 10) 
-        return createCommentBox(comment);
-    }
+  comment: function() {
+    var comment = Template.instance().comment.get();
+    if (comment.length > 10) return createCommentBox(comment);
+  }
 });
 
 Template.slideContent.onRendered(async function() {
   var template = this;
- 
-    Logger.insert({
+
+  //if the slide is shown, log it into the database
+  Logger.insert({
     userId: Meteor.userId,
-    // userName: Meteor.user().profile.name,
+    role: Cookies.get("currentMainRole"),
+    userProfile: Meteor.user(),
     website: location.href,
     counter: 1,
     eventType: "slideRendered",
     topic: this.data.slide[0].qText,
     slide: this.data.slide[1].qText,
+    currentSlideNr: Reveal.getIndices().h,
+    slidesContainedInSelection: $(".slide").length,
     viewDate: new Date() // current time
   });
 
