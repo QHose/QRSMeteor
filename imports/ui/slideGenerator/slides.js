@@ -130,15 +130,16 @@ Template.slideContent.onRendered(async function() {
   var template = this;
  
     Logger.insert({
-    userId: Meteor.userId,
-    // userName: Meteor.user().profile.name,
-    website: location.href,
-    counter: 1,
-    eventType: "slideRendered",
-    topic: this.data.slide[0].qText,
-    slide: this.data.slide[1].qText,
-    viewDate: new Date() // current time
-  });
+      userId: Meteor.userId,
+      userProfile: Meteor.user(),
+      // userName: Meteor.user().profile.name,
+      website: location.href,
+      counter: 1,
+      eventType: "slideRendered",
+      topic: this.data.slide[0].qText,
+      slide: this.data.slide[1].qText,
+      viewDate: new Date() // current time
+    });
 
   Meteor.setTimeout(function() {
     //embed youtube containers in a nice box without loading all content
