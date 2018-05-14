@@ -36,7 +36,7 @@ var possibleRoles = [
 
 // ONCREATED
 Template.useCaseSelection.onCreated(async function () {
-    await initQlikSense();
+    // await initQlikSense();
 })
 
 export async function initQlikSense() {
@@ -99,6 +99,11 @@ Tracker.autorun(() => {
 });
 // ONRENDERED.
 Template.useCaseSelection.onRendered(async function () {
+    //after the user has been logged in into Qlik.com, create a Sense ticket with this new info from the cookie.
+    Meteor.setTimeout(async function () {
+    await initQlikSense();
+    },3000)
+
     $('body').addClass('mainLandingImage');
 
     //fill the dropdown using a array of values
@@ -170,7 +175,7 @@ async function getTicket() {
     }, Meteor.settings.public.slideGenerator.virtualProxy);
 }
 
-async function makeSureSenseIsConnected() {
+export async function makeSureSenseIsConnected() {
     return await getQix(await getTicket());
 }
 
@@ -416,6 +421,6 @@ async function getCurrentSelections() {
     } catch (error) {
         var message = 'getCurrentSelections: Can not connect to the Qlik Sense Engine API via enigmaJS';
         console.error(message, error);
-        sAlert.error(message, error);
+        // sAlert.error(message, error);
     };
 }

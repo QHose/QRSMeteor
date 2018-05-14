@@ -81,9 +81,9 @@ async function abortQlikModalState() {
   qix.app.abortModal(true);
 }
 
-Template.yourSaasPlatformMenu.onRendered(function() {
-  this.$(".ui.dropdown").dropdown();
-});
+// Template.yourSaasPlatformMenu.onRendered(function() {
+//   this.$(".ui.dropdown").dropdown();
+// });
 
 export async function selectViaQueryId(mongoId) {
   console.log("selectViaQueryId(mongoId)", mongoId);

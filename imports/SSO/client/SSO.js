@@ -73,7 +73,7 @@
       // console.log('router current route ',Router.current().route.getName());
       if (currentPage === 'presentationsso') { // V2 of QRSmeteor requests a ticket up front, so we prevent extra delays for a redirect.
           console.log('PRESENTATION TICKET REQUEST: request a ticket for the user logged in into integration.qlik.com (meteorJS)', senseParams);
-            redirectPresentationUser(senseParams);
+            // redirectPresentationUser(senseParams);
         //   sAlert.error('you should not be redirected to the SSO page since we requested a ticket before we showed the content like an IFrame...');
       } else { //login a dummy user of step 4 or for the ssbi demo
           redirectDummyUser(senseParams);
