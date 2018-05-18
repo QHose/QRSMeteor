@@ -2,7 +2,8 @@ var Cookies = require("js-cookie");
 
 // Load a authentication check handler, depending on which domain it runs.
 if (window.location.href.indexOf("qlik.com") > -1) {
-  Router.onBeforeAction(mustBeSignedInQlik);
+  //turned off, moved to useCaseSelection, onStarted server
+  // Router.onBeforeAction(mustBeSignedInQlik);
 } else {
   //localhost dev environment
   Router.onBeforeAction(mustBeSignedInDEV, {
@@ -200,7 +201,7 @@ function mustBeSignedInDEV() {
     password: "test"
   };
 
-  addRolesBasedonEmail(user);
+  // addRolesBasedonEmail(user);
 
   // "Logout"-Hook: Manual implementation, wait a bit to prevent multiple page loads, because the database needs to be update
   Tracker.autorun(function() {
@@ -256,90 +257,3 @@ function mustBeSignedInQlik() {
   this.next();
 }
 
-//THE CODE BELOW IS JUST TO SIMULATE A SSO IF YOU ALREADY LOGGED IN INTO QLIK.COM. THIS CODE IS UNSECURE AND CAN'T BE USED FOR REAL PRODUCTION ENVIRONMENTS.... WE SET THE GROUPS ON THE CLIENT SIDE ETC. THIS IS UNSECURE. BUT FINE FOR THIS DEMO TOOL.
-function loginQlik() {
-  //rerun this function anytime something happens with the login state
-  var routeName = Router.current().route.getName();
-  console.log("mustBeSignedIn via Qlik.com for route: ", routeName);
-  var QlikUserProfile = Cookies.get("CSUser"); //only availalbe on Qlik.com domains
-  var loggedInUser = Meteor.userId();
-  console.log("QlikUserProfile: ", QlikUserProfile);
-
-  if (!QlikUserProfile) {
-    //if user is not logged in, redirect to Qliks login page, after it we can read the cookie.
-    var uri = Meteor.absoluteUrl() + routeName;
-    console.log("The user tried to open: " + uri);
-    var encodedReturnURI = encodeURIComponent(uri);
-    var QlikSSO =
-      "https://login.qlik.com/login.aspx?returnURL=" + encodedReturnURI;
-    console.log("User has no Qlik.com cookie, so send him to: ", QlikSSO);
-    window.location.replace(QlikSSO);
-  } else if (!loggedInUser) {
-    //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
-    console.log("user has Qlik cookie, but is not yet logged in into meteor, lets do that now...");
-    // QlikUserProfile:  username=bieshosetest&firstName=test&lastName=test&emailAddress=bieshose@gmail.com&contactID=&accountID=&ulcLevels=Base&country=Angola&hash=xS9zTEOE7vSgTVXycUr99UFLc78=
-    var [
-      username,
-      firstName,
-      lastName,
-      emailAddress,
-      contactID,
-      accountID,
-      ulcLevels,
-      country,
-      hash
-    ] = QlikUserProfile.split("&");
-
-    const user = {
-      email: emailAddress.substr(emailAddress.indexOf("=") + 1),
-      profile: {
-        name: {
-          first: firstName.substr(firstName.indexOf("=") + 1),
-          last: lastName.substr(lastName.indexOf("=") + 1),
-          contactID: contactID
-            ? contactID.substr(contactID.indexOf("=") + 1)
-            : "",
-          accountID: accountID
-            ? accountID.substr(accountID.indexOf("=") + 1)
-            : ""
-        }
-      },
-      roles: "", //JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]"),
-      password: emailAddress.substr(emailAddress.indexOf("=") + 1) //no need for a real password mechanism. People just need a login to have their own demo space
-    };
-
-    addRolesBasedonEmail(user);
-
-   /*  console.log(
-      "the user has got a QLIK PROFILE",
-      user,
-      "Now try to create the user in our local MONGODB or just log him in with a server only stored password"
-    ); */
-    //unsafe code, only sufficient for our simple demo site
-    Meteor.call("resetPasswordOrCreateUser", user, function(err, res) {
-      if (err) {
-        console.error(err);
-      } else {
-        Meteor.loginWithPassword(user.email, user.password, function(err, res) {
-          //
-          if (err) {
-            sAlert.error("Error logging you in...", err.message);
-            console.error(err);
-          } else {
-            // sAlert.success("You are now logged in with your Qlik.com account.");
-            console.log("user successfully logged in", Meteor.userId());
-          }
-        });
-      }
-    });
-  }
-}
-
-function addRolesBasedonEmail(user) {
-  var email = user.email;
-  var name = email.substring(0, email.lastIndexOf("@"));
-  var domain = email.substring(email.lastIndexOf("@") + 1);
-  if (domain === "qlik.com" || domain === "qliktech.com") {
-    user.roles = ["qlik"]; //unsecure off course, this is only for user friendliness reasons to prevent dead links to confluence content.
-  }
-}

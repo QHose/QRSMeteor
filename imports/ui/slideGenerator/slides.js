@@ -54,11 +54,11 @@ async function slideDataLoaded() {
       );
       console.log("------------------------------------");
       await initQlikSense();
-      nav.showSlideSelector();
-      // Router.go("useCaseSelection");
+      // nav.showSlideSelector();
+      Router.go("useCaseSelection");
       return;
     }
-  }, 3000);
+  }, 4000);
 }
 
 function initializeReveal() {
