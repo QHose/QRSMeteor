@@ -174,8 +174,9 @@ function hideFeedback() {
 
 function addGtagAsync() {
     if ( window.location.href.indexOf("localhost") === -1 ) {
+        var gtagCode = (window.location.href.indexOf("one.qlik.com") > -1)? "UA-114136363-2": "UA-114136363-1";
         var imported = document.createElement('script');
-        imported.src = 'https://www.googletagmanager.com/gtag/js?id=UA-114136363-1';
+        imported.src = 'https://www.googletagmanager.com/gtag/js?id='+gtagCode;
         imported.setAttribute("type", "text/javascript");
         imported.async = true;
         document.head.appendChild(imported);
@@ -188,20 +189,31 @@ function addGtagScript() {
 
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        var gtagCode = "UA-114136363-1";
-        if (window.location.href.indexOf("one.qlik.com") > -1) {
-            gtagCode = "UA-114136363-2";
-        }
+        var gtagCode = (window.location.href.indexOf("one.qlik.com") > -1)? "UA-114136363-2": "UA-114136363-1";
         console.log("gtagCode", gtagCode);
         var cookieUser = getCookie("user");
         if (cookieUser) {
             var user = JSON.parse(cookieUser);
             gtag('config', gtagCode, {
-                'user_id': user.qlikID
+                'user_id': user.qlikID,
+                'custom_map': {
+                    'dimension1': 'qlikID-s',
+                    'dimension2': 'qlikID-u',
+                    'dimension3': 'qlikID-h'
+                }
             });
+  
+            gtag('event', 'qlikID-s_dimension', {'qlikID-s': user.qlikID});
+            gtag('event', 'qlikID-u_dimension', {'qlikID-u': user.qlikID});
+            gtag('event', 'qlikID-h_dimension', {'qlikID-h': user.qlikID});
+
+            console.log("Track QlikID to GA", user.qlikID);
+
         } else {
             gtag('config', gtagCode, );
         }
+
+        
     }
 }
 

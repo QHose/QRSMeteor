@@ -2,19 +2,36 @@
     <!--         Create a chapter breaker if the level 1 has changed in the current row-->
     <!-- The current level 1 and 2 headers -->
     <div class="reveal slidesReveal">
+
+        <div class="button-group" style="z-index: 10; position: absolute; top: 10px; left: 10px;">
+            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="dropdown-menu" style="border: 1px solid #ccc">
+                <li>
+                    <a href="#" class="op-comments small" data-value="hidecomments" tabIndex="-1">
+                        <input type="checkbox" />&nbsp;Hide comments</a>
+                </li>
+                <li>
+                    <a href="#" class="op-overview small" data-value="overview" tabIndex="-1">Toggle Overview</a>
+                </li>
+                <li>
+                    <a href="#" class="op-help small" data-value="help" tabIndex="-1">Keyboard Shortcuts</a>
+                </li>
+            </ul>
+        </div>
         <div class="closeSlides">X</div>
         <div class="slides ui container">
             {{#each slideHeaders }} {{#if chapterSlide this}}
             <section>
                 <div class="ui segment integrationBreaker">
                     <h1 class="ui header" style="font-size: 50px;">
-                Next: {{this}}
-                <!-- The current level 1 and 2 headers -->
-              </h1>
+                        Next: {{this}}
+                        <!-- The current level 1 and 2 headers -->
+                    </h1>
                 </div>
             </section>
-            {{> slideDisclaimer}}
-            {{else}} {{> slide slide=this slideNr=@index}} {{/if}} {{/each}}
+            {{> slideDisclaimer}} {{else}} {{> slide slide=this slideNr=@index}} {{/if}} {{/each}}
         </div>
     </div>
 </template>
@@ -26,7 +43,7 @@
             <hr>
             <div class="slideContent">
                 <div class="ui container">
-                    <img class="ui massive rounded bordered image" style="width: 100%;" src="images/LegalDisclaimerSlide.png"> 
+                    <img class="ui massive rounded bordered image" style="width: 100%;" src="images/LegalDisclaimerSlide.png">
                 </div>
             </div>
         </div>
@@ -38,8 +55,7 @@
         <div class="wrap">
             <h3>{{{level 1 slide}}}</h3>
             <h1>{{{level 2 slide}}}</h1>
-            <hr>
-            {{#if active slideNr}} {{> slideContent slide=slide}} {{/if}}
+            <hr> {{#if active slideNr}} {{> slideContent slide=slide}} {{/if}}
         </div>
     </section>
 </template>

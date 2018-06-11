@@ -5,7 +5,6 @@ const Cookies = require('js-cookie');
 
 Template.slideSelectionSheet.onRendered(function() {
     Session.set('iframeTemplate', 'slideFrameWait');
-    console.log("onRendered slideSelectionSheet");
 });
 
 Template.slideSelectionSheet.helpers({
