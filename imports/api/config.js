@@ -201,7 +201,7 @@ if (Meteor.isServer) {
             console.log('------------------------------------');
             Meteor.absolutePath = path.resolve('.').split(path.sep + '.meteor')[0];
             console.log('Meteor tries to find the settings.json file in Meteor.absolutePath:', Meteor.absolutePath)
-            var file = path.join(Meteor.absolutePath, 'settings-development-example.json');
+            /*var file = path.join(Meteor.absolutePath, 'settings-development-example.json');
 
             // READ THE FILE
             var exampleSettingsFile = await fs.readJson(file);
@@ -215,7 +215,7 @@ if (Meteor.isServer) {
             console.log('Settings file has all the keys as specified in the example json file?', keysEqual)
             if (!keysEqual) {
                 throw new Error('Settings.json file does not have all keys as defined in the settings-development-example.json (in your project root), Please verify if you have all the keys as specified in the settings-development-example.json in the project root folder. In my dev environment: C:\\Users\\Qlikexternal\\Documents\\GitHub\\QRSMeteor');
-            }
+            }*/
         })
 
     } catch (error) {
