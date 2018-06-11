@@ -1,0 +1,25 @@
+{
+  "appName": "Presentation_Explorer",
+  "appLocation": {
+    "local": "./"
+  },
+  "meteorSettingsLocation": "/Users/aor/Devel/gear/onepresales/settings.json",
+  "meteorSettingsInRepo": false,
+  "prebuildScript": "",
+  "meteorBuildFlags": "--architecture os.linux.x86_64",
+  "env": {
+    "ROOT_URL": "http://localhost:10001/slidesgen/",
+    "PORT": "10001",
+    "MONGO_URL": "mongodb://localhost:27017/"
+  },
+  "server": {
+    "host": "one-staging.qlik.com",
+    "username": "ubuntu",
+    "deploymentDir": "/var/www/projects/meteor-apps",
+    "loadProfile": "",
+    "interpreter": "",
+    "exec_mode": "cluster_mode",
+    "instances": "1",
+    "pem": "~/.ssh/gear-vagrant.pem"
+  }
+}
