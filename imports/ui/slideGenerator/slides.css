@@ -51,7 +51,7 @@ logout?targetUr…host:81/qmc:91
     background-size: 100%;
     background-position: bottom right;
     background-repeat: no-repeat;
-    background-color: #F8F0E5;
+    background-color: #EFEFEF;
     margin-top: 30px;
     /* padding-top: 30px; */
     padding-left: 0;
@@ -61,7 +61,7 @@ logout?targetUr…host:81/qmc:91
     /* background-image: linear-gradient(to bottom, #D7D3C8, #F6F4EC 60%); */
     font-size: 1.3em;
     font-weight: normal;
-    color: #484848;
+    color: #5F6062;
     overflow: auto;
     overflow-x: hidden;
     /* overflow: hidden !important; */
@@ -132,7 +132,7 @@ logout?targetUr…host:81/qmc:91
 .reveal h5,
 .reveal h6 {
     margin: 20px 0 20px 0;
-    color: #62ac1e;
+    color: #6CB33F;
     font-family: "Fira Sans", Helvetica, sans-serif;
     font-weight: 600;
     line-height: 1.2;
@@ -170,7 +170,7 @@ blockquote .reveal h5,
 
 .reveal h3 {
     font-size: 1em;
-    color: #959595;
+    color: #5F6062;
 }
 
 .reveal h4 {

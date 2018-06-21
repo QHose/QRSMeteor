@@ -3,6 +3,7 @@
 html {
     background-color: #fff !important;
     min-height: 100%;
+    color: #5F6062
 }
 
 .mainLandingImage {
@@ -15,7 +16,7 @@ html {
 
 .mainLandingImage .backGroundImageColor {
     content: "";
-    background-color: #62ac1e;
+    background-color: #6CB33F;
     position: absolute;
     height: 500px;
     width: 40%;
@@ -26,7 +27,7 @@ html {
 
 .mainNavBar {
     margin-top: 0px !important;
-    background-color: #62ac1e !important;
+    background-color: #6CB33F !important;
 }
 
 .mainNavBar a {
@@ -69,43 +70,6 @@ html {
 .landing .secondRow {
     margin-top: 150px;
 }
-
-
-
-/* 
-.footer {
-    .footer .sticky {
-        position: absolute;
-        bottom: 0;
-        width: 100%;    
-    }
-    .container-fluid {
-        height: 160px;
-        background-image: url('./images/bg_footer.jpg');
-        background-size: auto 100%;
-        background-position: bottom right;
-        background-repeat: no-repeat;  
-        background-color: @color-tan;
-        padding-top: 60px;
-        padding-left: 0;
-        ul {
-            padding-left: 0;
-            li {
-                font-size: 18px;
-                font-family: @font-oswald;
-                display: inline-block;
-                padding-right: 20px;
-                text-transform: uppercase;
-                .logo {
-                    width: 110px;
-                }
-                a {
-                    color: @color-gray;
-                }
-            }
-        }
-    }
-} */
 
 .deleteStream,
 .customer-row,
