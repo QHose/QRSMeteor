@@ -67,3 +67,4 @@ shell-server@0.3.1
 u2622:persistent-session
 google-config-ui@1.0.0
 dynamic-import@0.3.0
+underscore@1.0.10
