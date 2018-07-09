@@ -194,7 +194,7 @@ export async function getQix(ticket=null) {
                 host: senseConfig.host,
                 prefix: Meteor.settings.public.slideGenerator.virtualProxy,
                 port: senseConfig.port,
-                unsecure: false, //Meteor.settings.private.useSSL,
+                secure: Meteor.settings.public.useSSL,
                 urlParams: {
                     qlikTicket: ticket
                 }
