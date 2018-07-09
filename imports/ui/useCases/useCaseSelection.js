@@ -51,20 +51,20 @@ loginQlik();
 //THE CODE BELOW IS JUST TO SIMULATE A SSO IF YOU ALREADY LOGGED IN INTO QLIK.COM. THIS CODE IS UNSECURE AND CAN'T BE USED FOR REAL PRODUCTION ENVIRONMENTS.... WE SET THE GROUPS ON THE CLIENT SIDE ETC. THIS IS UNSECURE. BUT FINE FOR THIS DEMO TOOL.
 export function loginQlik() {
   //rerun this function anytime something happens with the login state
-//   var routeName = Router.current().route.getName();
 //   console.log("mustBeSignedIn via Qlik.com for route: ", routeName);
   var QlikUserProfile = Cookies.get("CSUser"); //only availalbe on Qlik.com domains
   var loggedInUser = Meteor.userId();
+  console.log('Meteor userId:', loggedInUser)
   console.log("QlikUserProfile: ", QlikUserProfile);
 
   if (!QlikUserProfile) {
     //if user is not logged in, redirect to Qliks login page, after it we can read the cookie.
     var uri = Meteor.absoluteUrl() // always redirect to landingpage
-    console.log("The user tried to open: " + uri);
+    console.log("The user has no qlikUserProfile and tried to open: " + uri);
     var encodedReturnURI = encodeURIComponent(uri);
     var QlikSSO =
       "https://login.qlik.com/login.aspx?returnURL=" + encodedReturnURI;
-    console.log("User has no Qlik.com cookie, so send him to: ", QlikSSO);
+      console.log("User has no Qlik.com cookie, so send via a window.location.replace to: ", QlikSSO);
     window.location.replace(QlikSSO);
   } else if (!loggedInUser) {
     //if not yet logged in into Meteor, create a new meteor account, or log him via a token.

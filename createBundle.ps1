@@ -1,3 +1,6 @@
+   
+    Set-Location -Path C:\GitHub\QRSMeteor
+
     $PROJECT_ROOT = (Get-Item -Path ".\" -Verbose).FullName
     echo "Build tool project root directory: "$PROJECT_ROOT
     $BASE_APP_NAME = "soe"
