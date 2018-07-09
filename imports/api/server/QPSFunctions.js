@@ -24,11 +24,8 @@ var ip = require('ip');
 
 import {
     senseConfig,
-    enigmaServerConfig,
     authHeaders,
-    QRSconfig,
     qrsSrv as qliksrv,
-    QRSCertConfig,
     configCerticates,
     validateJSON
 } from '/imports/api/config.js';

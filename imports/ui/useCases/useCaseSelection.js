@@ -297,17 +297,17 @@ async function setSlideContentInSession(group) {
     };
 }
 
-export async function getQix(ticket = null) {
-    // console.log('getQix with ticket:', ticket)
+export async function getQix(ticket=null) {
+    console.log('getQix with ticket:', ticket)
     try {
-        const config = {
+        const config = { //https://github.com/qlik-oss/enigma.js/blob/v1.x/docs/qix/configuration.md
             schema: senseConfig.QIXSchema,
             appId: senseConfig.slideGeneratorAppId,
             session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
                 host: senseConfig.host,
                 prefix: Meteor.settings.public.slideGenerator.virtualProxy,
                 port: senseConfig.port,
-                unsecure: Meteor.settings.private.useSSL,
+                secure: Meteor.settings.public.useSSL,
                 urlParams: {
                     qlikTicket: ticket
                 }
