@@ -10,13 +10,6 @@ import { myQRS } from '/imports/api/server/QRSAPI';
 import {
     qlikHDRServer, // Qlik sense QRS endpoint via header authentication
     senseConfig,
-    enigmaServerConfig,
-    authHeaders,
-    qrsSrv,
-    QRSconfig,
-    _SSBIApp,
-    configCerticates,
-    _slideGeneratorAppId
 } from '/imports/api/config.js';
 
 //

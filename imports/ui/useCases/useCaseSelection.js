@@ -185,7 +185,7 @@ async function setSlideContentInSession(group) {
 }
 
 export async function getQix(ticket=null) {
-    // console.log('getQix with ticket:', ticket)
+    console.log('getQix with ticket:', ticket)
     try {
         const config = {
             schema: senseConfig.QIXSchema,
@@ -194,7 +194,7 @@ export async function getQix(ticket=null) {
                 host: senseConfig.host,
                 prefix: Meteor.settings.public.slideGenerator.virtualProxy,
                 port: senseConfig.port,
-                unsecure: Meteor.settings.private.useSSL,
+                unsecure: false, //Meteor.settings.private.useSSL,
                 urlParams: {
                     qlikTicket: ticket
                 }
