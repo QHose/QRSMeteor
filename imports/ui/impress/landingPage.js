@@ -81,7 +81,7 @@ export async function getQlikSenseSessionForGroup(group) {
             host: senseConfig.host,
             prefix: Meteor.settings.public.slideGenerator.virtualProxy,
             port: senseConfig.port,
-            unsecure: true,
+            unsecure: Meteor.settings.private.useSSL,
             urlParams: {
                 qlikTicket: ticket
             }

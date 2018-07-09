@@ -29,7 +29,7 @@ Template.slidegeneratorSlides.onCreated(function() {
             host: senseConfig.host,
             prefix: Meteor.settings.public.slideGenerator.virtualProxy,
             port: senseConfig.port,
-            unsecure: true
+            unsecure: Meteor.settings.private.useSSL
         },
     };
     console.log('Engima config', config)
