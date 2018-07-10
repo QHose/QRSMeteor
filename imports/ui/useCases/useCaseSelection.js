@@ -38,41 +38,41 @@ Template.useCaseSelection.onCreated(async function() {
 })
 
 export async function initQlikSense(){
-                          //wait a bit, so Meteor can login, before requesting a ticket...
-                          Meteor.setTimeout(
-                            async function() {
-                              //connect to qlik sense
-                              qix = await makeSureSenseIsConnected();
-                              // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
-                              await setChangeListener(
-                                qix
-                              );
+//wait a bit, so Meteor can login, before requesting a ticket...
+Meteor.setTimeout(
+async function() {
+    //connect to qlik sense
+    qix = await makeSureSenseIsConnected();
+    // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
+    await setChangeListener(
+    qix
+    );
 
-                              //see if the user started up this screen, with a selection parameter
-                              var value = getQueryParams(
-                                "selection"
-                              );
-                              // console.log('getQueryParams return value', value)
-                              //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
-                              if (value) {
-                                console.log(
-                                  "%%%%%%%%%%  Slides oncreated: Query string found: ",
-                                  value
-                                );
-                                await nav.selectViaQueryId(
-                                  value
-                                );
-                                // get the data and go to the slides
-                                await getAllSlides();
-                                // after we got all data in an array from sense, change the router/browser to the slides page
-                                Router.go("slides");
-                              } else {
-                                // console.log('no query selection parameter found');
-                              }
-                            },
-                            0
-                          );
-                        }
+    //see if the user started up this screen, with a selection parameter
+    var value = getQueryParams(
+    "selection"
+    );
+    // console.log('getQueryParams return value', value)
+    //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
+    if (value) {
+    console.log(
+        "%%%%%%%%%%  Slides oncreated: Query string found: ",
+        value
+    );
+    await nav.selectViaQueryId(
+        value
+    );
+    // get the data and go to the slides
+    await getAllSlides();
+    // after we got all data in an array from sense, change the router/browser to the slides page
+    Router.go("slides");
+    } else {
+    // console.log('no query selection parameter found');
+    }
+},
+0
+);
+}
 
 // Replace with more Meteor approach
 function getQueryParams(name, url) {
@@ -185,7 +185,8 @@ async function setSlideContentInSession(group) {
 }
 
 export async function getQix(ticket=null) {
-    console.log('getQix with ticket:', ticket)
+    // console.log('getQix with ticket:', ticket)
+    addSlideChangedListener();
     try {
         const config = {
             schema: senseConfig.QIXSchema,
@@ -225,6 +226,7 @@ export async function getQix(ticket=null) {
                 REST_Log(call, Meteor.userId());
             }
         };
+        // console.log('config to connect from the browser to Qlik Sense engine:', config)
         return await enigma.getService('qix', config);
     } catch (error) {
         console.error('Qlik Sense Qix error ', error);
@@ -232,6 +234,15 @@ export async function getQix(ticket=null) {
         location.reload();        
     }
 
+}
+
+function addSlideChangedListener() {
+    console.log('!!!!!!!!!!!!! addSlideChangedListener')
+    Reveal.addEventListener("slidechanged", function (evt) {
+        console.log("slidechanged", evt.indexh);
+        Session.set("activeStepNr", evt.indexh);
+        $(".ui.embed").embed();
+    });
 }
 
 //ONDESTROYED

@@ -120,6 +120,7 @@ retry@1.1.0
 routepolicy@1.0.13
 semantic:ui@2.3.1
 semantic:ui-data@2.3.1
+semantic:ui-icon@2.1.4
 server-render@0.3.1
 service-configuration@1.0.11
 session@1.1.7

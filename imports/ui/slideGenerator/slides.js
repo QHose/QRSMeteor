@@ -32,8 +32,8 @@ Template.slides.onDestroyed(function() {
 });
 
 Template.slides.onRendered(async function() {
-  await slideDataLoaded();
   initializeReveal();
+  await slideDataLoaded();
   this.$("aside").popup({
     title: "Slides",
     content:
@@ -82,12 +82,17 @@ function initializeReveal() {
     });
 
     Session.set("activeStepNr", 0);
-    Reveal.addEventListener("slidechanged", function(evt) {
-      // console.log("slidechanged", evt.indexh);
-      Session.set("activeStepNr", evt.indexh);
-      $(".ui.embed").embed();
-    });
+   addSlideChangedListener();
   } catch (error) {}
+}
+
+function addSlideChangedListener() {
+   console.log('!!!!!!!!!!!!! addSlideChangedListener')
+   Reveal.addEventListener("slidechanged", function (evt) {
+     console.log("slidechanged", evt.indexh);
+     Session.set("activeStepNr", evt.indexh);
+     $(".ui.embed").embed();
+   });
 }
 
 //

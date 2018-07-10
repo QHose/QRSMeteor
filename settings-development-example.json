@@ -52,6 +52,7 @@
             "connectToSenseAsUser": "",
             "proxyAllowHTTP": true,
             "StreamsToCreateAutomatically": ["API apps", "Templates", "Everyone", "QA", "TEST"],
+            "createDataConnectionPerCustomer": false,
             "APIAppStreamName": "API apps",
             "EveryoneAppStreamName": "Everyone"
         },

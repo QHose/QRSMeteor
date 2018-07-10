@@ -50,6 +50,7 @@ mongo@1.4.2                   # The database Meteor supports right now
 msavin:mongol 			# lets you see the mongoDB in the client interface
 reactive-var@1.0.11            # Reactive variable for tracker
 semantic:ui
+semantic:ui-icon
 
 session@1.1.7
 standard-minifier-css@1.4.0   # CSS minifier run for production mode

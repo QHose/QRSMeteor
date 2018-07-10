@@ -203,7 +203,8 @@ async function generateAppForTemplate(templateApp, customer, generationUserId) {
     try {
         var streamId = checkStreamStatus(customer, generationUserId) //create a stream for the customer if it not already exists 
         var customerDataFolder = await createDirectory(customer.name); //for data like XLS/qvd specific for a customer
-        await createAppConnection('folder', customer.name, customerDataFolder);
+        if (Meteor.settings.broker.createDataConnectionPerCustomer)
+         {await createAppConnection('folder', customer.name, customerDataFolder);}
         var newAppId = copyApp(templateApp.id, templateApp.name, generationUserId);
         var result = reloadAppAndReplaceScriptviaEngine(newAppId, templateApp.name, streamId, customer, customerDataFolder, '', generationUserId);
         var publishedAppId = publishApp(newAppId, templateApp.name, streamId, customer.name, generationUserId);
@@ -253,7 +254,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         call.url = gitHubLinks.replaceAndReloadApp;
         REST_Log(call, generationUserId);
 
-        try {
+        /* try {
             //create folder connection 
             console.log('create folder connection, if you see a warning below that means the connection already existed.');
             var qConnectionId = await qix.app.createConnection({
@@ -269,7 +270,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
             console.log('created folder connection: ', qConnectionId);
         } catch (error) {
             console.info('No issue, existing customer so his data folder connection already exists', error);
-        }
+        } */
 
         //get the script
         var script = await qix.app.getScript();
@@ -512,6 +513,9 @@ export function copyApp(guid, name, generationUserId) {
 
 function checkStreamStatus(customer, generationUserId) {
     console.log('checkStreamStatus for: ' + customer.name);
+    //first update the list of streams we have from Sense. (we keep a private copy, which should reflect the state of Sense)
+    Meteor.call('updateLocalSenseCopyStreams');
+
     var stream = Streams.findOne({
         name: customer.name
     }); //Find the stream for the name of the customer in Mongo, and get his Id from the returned object
