@@ -660,7 +660,7 @@ $(""#btn_1"").click(function() {
 "Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense in order to have information at the point of decision","!comment
 This slide gives a real life example of embedding. It shows you a collection of example web sites where Qlik Sense has been embedded.The URL is: [https://webapps.qlik.com](https://webapps.qlik.com).
 ",,"","","","","         0","0","Developer",
-"Web integration","Qlik embedded demo: Barcelona Marathon ","http://webapps.qlik.com/barnamarato/index.html#/?lang=en",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Qlik embedded demo: Barcelona Marathon ","iframe http://webapps.qlik.com/barnamarato/index.html#/?lang=en",,"","","","","         0","0","Introduction - 30 minutes",
 "Web integration","Qlik embedded demo: Best City for You","iframe https://webapps.qlik.com/euronews/city/index.html#/?lang=en",,"","","","","         0","0","Introduction - 30 minutes",
 "Web integration","Qlik embedded demo: neighborhood insight","iframe https://webapps.qlik.com/qlarion-community-center/production/index.html#/neighborhood-insight/home",,"","","","","         0","0","Introduction - 30 minutes",
 "Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,"","","","","         0","0","Technical - 2 hours, C-Level - non-technical",
@@ -758,7 +758,7 @@ You can also just take the data out of Qlik Sense and build your own front-end. 
 ## When to use?
 - You want to use your own vizualizations and have full control over the HTML, javascript (enigmaJS) and CSS. Or you like to use Qlik Sense data but you don't have javascript. Since the Engine API is JSON RPC you can connect to it using any language. 
 - You have a read only scenario and don't need to use the self service client. Or you are willing to create this functionality using the APIs.",,,,,,,,,
-"Web integration","Options to embed Qlik Sense: from simple to advanced use cases","iframe http://web.integration.qlik.com",,"","","","","         0","0","Product Owner, Introduction - 30 minutes, CTO, Developer",
+"Web integration","Options to embed Qlik Sense: from simple to advanced use cases","iframe http://web.saasdemo.qlik.com",,"","","","","         0","0","Product Owner, Introduction - 30 minutes, CTO, Developer",
 "Web integration","Options to embed Qlik Sense: from simple to advanced use cases","!comment
 Through our  'Embedding Qlik Sense' demo on integration.qlik.com, you will notice we have embedded  different parts of Qlik Sense.
 On the left side of the screen you can choose which example you want to see. On the right side you will see the result.
@@ -920,7 +920,7 @@ Whenever you open a HTML page, a lot of things are being loaded in the backgroun
  - Images can be loaded.
 Different fonts can be used and must be loaded also.",,,,,,,,,
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","Dev-hub: [demo](http://integration.qlik.com:443/anon/dev-hub/) mashup editor",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","iframe http://web.integration.qlik.com",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","iframe http://web.saasdemo.qlik.com",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","!comment
 Click on the link to go to the integration demo. The second part on the left side shows different examples using div tags.
 The difference with an IFrame is that instead of embedding a full site, app or sheet, individual objects are embedded. Each object is placed in a placeholder. In the HTML code we used the Div tags as placeholders. In the demo there are different examples which can be viewed.
@@ -2948,10 +2948,10 @@ services:
     web:
         image: qhose/sensewebintegration:20171019-1700
         environment:
-            - VIRTUAL_HOST=web.integration.qlik.com
+            - VIRTUAL_HOST=web.saasdemo.qlik.com
             - MONGO_URL=mongodb://mongodb:27017/
             - PORT=3030 
-            - ROOT_URL=http://web.integration.qlik.com
+            - ROOT_URL=http://web.saasdemo.qlik.com
         volumes:
          - /opt/docker/web:/sensewebintegration/config
         ports:
