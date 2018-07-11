@@ -186,7 +186,6 @@ async function setSlideContentInSession(group) {
 
 export async function getQix(ticket=null) {
     // console.log('getQix with ticket:', ticket)
-    addSlideChangedListener();
     try {
         const config = {
             schema: senseConfig.QIXSchema,
@@ -234,15 +233,6 @@ export async function getQix(ticket=null) {
         location.reload();        
     }
 
-}
-
-function addSlideChangedListener() {
-    console.log('!!!!!!!!!!!!! addSlideChangedListener')
-    Reveal.addEventListener("slidechanged", function (evt) {
-        console.log("slidechanged", evt.indexh);
-        Session.set("activeStepNr", evt.indexh);
-        $(".ui.embed").embed();
-    });
 }
 
 //ONDESTROYED

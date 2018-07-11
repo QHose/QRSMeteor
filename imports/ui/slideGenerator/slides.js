@@ -61,10 +61,15 @@ async function slideDataLoaded() {
   }, 3000);
 }
 
+Meteor.startup(async function () {
+await initQlikSense();
+// initializeReveal() //does not work...
+})
+
 function initializeReveal() {
   try {
     window.Reveal = Reveal;
-    // console.log('initializeReveal', Reveal);
+    console.log('initializeReveal', Reveal);
     Reveal.initialize({
       width: window.innerWidth - 80,
       embedded: true,
@@ -87,6 +92,7 @@ function initializeReveal() {
 }
 
 function addSlideChangedListener() {
+  // initializeReveal();
    console.log('!!!!!!!!!!!!! addSlideChangedListener')
    Reveal.addEventListener("slidechanged", function (evt) {
      console.log("slidechanged", evt.indexh);
