@@ -53,17 +53,14 @@ async function slideDataLoaded() {
         "No slide data present in session, reroute the user back to the Selection screen."
       );
       console.log("------------------------------------");
-      await initQlikSense();
       nav.showSlideSelector();
-      // Router.go("useCaseSelection");
       return;
     }
   }, 3000);
 }
 
 Meteor.startup(async function () {
-await initQlikSense();
-// initializeReveal() //does not work...
+  await initQlikSense();
 })
 
 function initializeReveal() {
@@ -92,7 +89,6 @@ function initializeReveal() {
 }
 
 function addSlideChangedListener() {
-  // initializeReveal();
    console.log('!!!!!!!!!!!!! addSlideChangedListener')
    Reveal.addEventListener("slidechanged", function (evt) {
      console.log("slidechanged", evt.indexh);
@@ -112,7 +108,6 @@ Template.slideContent.onCreated(async function() {
   //the header and sub header for which we want to load the slide data/bullets
   var level1 = Template.currentData().slide[0].qText;
   var level2 = Template.currentData().slide[1].qText;
-  // console.log('bullets level 2'+level2, bullets)
   // and now let's get the slide content:
   instance.bullets.set(await getLevel3(level1, level2));
   //get the comment of the page
@@ -163,7 +158,17 @@ Template.slideContent.onRendered(async function() {
     });
     //ensure all links open on a new tab
     this.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
-  }, 3000);
+
+    //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
+    var slideContent = Template.instance().bullets.get();
+    if(slideContent.length===0){
+      console.log('------------------------------------');
+      console.log('No slide data retrieved from Qlik Sense, re-adding the slide changed event listener...');
+      console.log('------------------------------------');
+      addSlideChangedListener();
+      //location.reload(); //@todo to evaluate if this helps
+    }
+  }, 2000);
 });
 
 Template.slideContent.events({
@@ -270,7 +275,7 @@ async function getLevel3(level1, level2) {
       "error getting level 3 data (the bullets) for the slide",
       error
     );
-    location.reload();
+    window.location.href = window.location.origin;
   }
 }
 

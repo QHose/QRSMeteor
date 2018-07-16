@@ -32,10 +32,10 @@ var possibleRoles = [
   "C-Level - non-technical"
 ];
 
-// ONCREATED
-Template.useCaseSelection.onCreated(async function() {
-    await initQlikSense();
-})
+// // ONCREATED
+// Template.useCaseSelection.onCreated(async function() {
+//     await initQlikSense();
+// })
 
 export async function initQlikSense(){
 //wait a bit, so Meteor can login, before requesting a ticket...
@@ -119,8 +119,6 @@ Template.useCaseSelection.onRendered(async function() {
 
 Template.useCaseSelection.events({
   "click .button.slides": async function(e, t) {
-    // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user
-    // await setSlideContentInSession('TECHNICAL');
     Session.set("sheetSelectorSeen", false);
     Router.go("slides");
 
@@ -230,7 +228,7 @@ export async function getQix(ticket=null) {
     } catch (error) {
         console.error('Qlik Sense Qix error ', error);
         sAlert.error(error.message)
-        location.reload();        
+        window.location.href = window.location.origin;
     }
 
 }

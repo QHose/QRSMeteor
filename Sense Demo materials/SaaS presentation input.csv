@@ -250,7 +250,7 @@ In the end you want to provide an integrated page of Qlik Sense in your software
 "Integration.qlik.com demo platform","Video: How to create a multi-tenant SaaS platform with Qlik Sense embedded?","!comment 
 APIs are our secret sauce so this website is specifically designed to illustrate the unique selling points of our Qlik Sense APIs. Our goal is to illustrate the power of Qlik Sense APIs in language that can be easily understood by non-technical business users or decision-makers via our step-by-step walk-through. This learning environment was developed using our experiences with AFAS, as well as other key customer accounts. We are eager to explain, excite and reassure senior executives and management about the Qlik platform by modeling its ease of use and full automation capabilities.
 
-Our presentation to the right precedes our full demonstration environment experience, aiming to bridge any knowledge gaps for our non-technical prospects while providing a clear and simple pathway towards understanding how to embed Qlik Sense in a multi-tenant SaaS application platform. A key outcome for using this demonstration asset is to mitigate potential risk early in the sales cycle, build enthusiasm/interest for Qlik Sense and its capabilities, and showcase our readiness to support the customer or partner’s vision for embedding analytics within their application suite.
+Our presentation precedes our full demonstration environment experience, aiming to bridge any knowledge gaps for our non-technical prospects while providing a clear and simple pathway towards understanding how to embed Qlik Sense in a multi-tenant SaaS application platform. A key outcome for using this demonstration asset is to mitigate potential risk early in the sales cycle, build enthusiasm/interest for Qlik Sense and its capabilities, and showcase our readiness to support the customer or partner’s vision for embedding analytics within their application suite.
 
 This prospect experience is supported by several linked assets. We have a demo website which simulates the SaaS platform of an OEM partner, including videos and documentation illustrating each integration topic and a presentation taking the audience through a journey which highlights key aspects of Qlik Sense, its APIs and the overall value of Qlik.",,,,,,,,,
 "Integration.qlik.com demo platform","In the integration demo environment we created a demo for each use case","useCasesOverview.png",,,,,,,,,
@@ -284,6 +284,7 @@ On the right side of the screen, the result of the activities of the broker will
  - Which streams were created.
 Which apps were copied and published.",,,,,,,,,
 "Integration.qlik.com demo platform","Now try it yourself in the multi-tenant SaaS platform with Qlik Sense demo below...","iframe generation_embedded",,"","","","","         0","0","Integration summary, Hosting Ops, CTO, Introduction - 30 minutes",
+"Integration.qlik.com demo platform","Now try it yourself in the multi-tenant SaaS platform with Qlik Sense demo below...","Open demo in [new tab](/generation)",,"","","","","         0","0","Integration summary, Hosting Ops, CTO, Introduction - 30 minutes",
 "Integration.qlik.com demo platform","Now try it yourself in the multi-tenant SaaS platform with Qlik Sense demo below...","!comment 
 <p> This demo shows you how to copy an app (dashboard) which serves as a ""template layout"" for each of your customers. Besides creating a copy, we will also reload the app with data from the customer database.
 
@@ -353,7 +354,7 @@ For this we use a piece of software that regulates your SaaS platform, or a brok
  - The app is reloaded,
  - The app gets published in the correct stream.",,"","","","","         0","0","PreSales",
 "Integration.qlik.com demo platform","Video overview: Technologies used on integration.qlik.com to setup a multi-tenant environment","iframe videoOverview_embedded",,"","","","","         0","0","Product Owner, Integration summary, Technical - 2 hours, CTO, Developer",
-"Integration.qlik.com demo platform","Video overview: How to (hands on)","iframe https://www.youtube.com/channel/UCmPMsqh1UvXhQTcAhPMEjpA/videos",,"","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","Video overview: How to (hands on)","<iframe width=""100%"" height=""815"" src=""https://www.youtube.com/embed/videoseries?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>",,"","","","","         0","0","Technical - 2 hours",
 "API -  generic introduction","What is an API?","Used in computer programming",,,,,,,,,
 "API -  generic introduction","What is an API?","A set of communication methods between software applications",,,,,,,,,
 "API -  generic introduction","What is an API?","A common language (JSON) ensures they can talk with each other",,,,,,,,,
@@ -405,7 +406,7 @@ This video shows the different embedding possibilities of Qlik Sense.",,,,,,,,,
  - In order to program the APIs you'll need an IDE (Integrated Development Environment). You are free to use which one you want. Qlik Sense Desktop and Enterprise comes with an IDE to get you started. This is our Development Hub and is accessible through the Qlik Sense Hub. This IDE is mainly used for testing purposes.
  - To maintain your code and versions, it is strongly advisable to use a source version control system. GITHUB is one of the most well know systems. Click on the link to be redirected to GITHUB.
 In order to program the APIs, knowledge of HTML, CSS, Javascript and JSON is required.",,,,,,,,,
-"API -  generic introduction","URL - what are the components?","`https://integration.qlik.com:443/anon/qmc/tasks`
+"API -  generic introduction","URL - what are the components?","`https://integration.qlik.com/anon/qmc/tasks`
 - protocol (http, https, ws, wss)
 - server/host/DNS
 - port
@@ -652,18 +653,21 @@ $(""#btn_1"").click(function() {
 - [install Meteor](https://www.meteor.com/install)
 - Create your first TODO app with MeteorJS [here](https://www.meteor.com/tutorials/angular/creating-an-app)",,"","","","","         0","0","PreSales",
 "Web integration","Overview web integration","iframe /webIntegration_embedded",,"","","","","         0","0","Technical - 2 hours, Integration summary, CTO, Developer",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense in order to have information at the point of decision","# What does a successful integration look like?",,"","","","","         0","0","Developer, CTO, Product Owner, C-Level - non-technical",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense in order to have information at the point of decision","iframe https://webapps.qlik.com/#/",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Developer, CTO, Product Owner, C-Level - non-technical",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense in order to have information at the point of decision","[Marketing 360](http://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","Introduction - 30 minutes",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense in order to have information at the point of decision","[European datamarket](http://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","Technical - 1 day, PreSales, Introduction - 30 minutes",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense in order to have information at the point of decision","Create a [custom hub](http://www.axisgroup.com/simple-hub/) using the getApplist API",,"","","","","         0","0","Technical - 1 day, Introduction - 30 minutes",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense in order to have information at the point of decision","!comment
+"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","# What does a successful integration look like?",,"","","","","         0","0","Developer, CTO, Product Owner, C-Level - non-technical",
+"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","iframe https://webapps.qlik.com/#/",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Developer, CTO, Product Owner, C-Level - non-technical",
+"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","[Marketing 360](http://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","[European datamarket](http://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","Technical - 1 day, PreSales, Introduction - 30 minutes",
+"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","Create a [custom hub](http://www.axisgroup.com/simple-hub/) using the getApplist API",,"","","","","         0","0","Technical - 1 day, Introduction - 30 minutes",
+"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","!comment
 This slide gives a real life example of embedding. It shows you a collection of example web sites where Qlik Sense has been embedded.The URL is: [https://webapps.qlik.com](https://webapps.qlik.com).
 ",,"","","","","         0","0","Developer",
-"Web integration","Qlik embedded demo: Barcelona Marathon ","iframe http://webapps.qlik.com/barnamarato/index.html#/?lang=en",,"","","","","         0","0","Introduction - 30 minutes",
-"Web integration","Qlik embedded demo: Best City for You","iframe https://webapps.qlik.com/euronews/city/index.html#/?lang=en",,"","","","","         0","0","Introduction - 30 minutes",
-"Web integration","Qlik embedded demo: neighborhood insight","iframe https://webapps.qlik.com/qlarion-community-center/production/index.html#/neighborhood-insight/home",,"","","","","         0","0","Introduction - 30 minutes",
-"Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,"","","","","         0","0","Technical - 2 hours, C-Level - non-technical",
+"Web integration","Qlik embedded demos","# Barcelona Marathon",,,,,,,,,
+"Web integration","Qlik embedded demos","iframe http://webapps.qlik.com/barnamarato/index.html#/?lang=en",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Qlik embedded demos","# Best city for you?",,,,,,,,,
+"Web integration","Qlik embedded demos","iframe https://webapps.qlik.com/euronews/city/index.html#/?lang=en",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Qlik embedded demos","# Best neighbourhoud?",,,,,,,,,
+"Web integration","Qlik embedded demos","iframe https://webapps.qlik.com/qlarion-community-center/production/index.html#/neighborhood-insight/home",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Who’s the audience for embedded apps? ","web - who is the audience for qlik sense embed.png",,,,,,,,,
 "Web integration","Who’s the audience for embedded apps? ","!comment
 Most of the time the following scenario is used:
 The employees will use Qlik Sense internally with full self service capabilities.They will also create the dashboards for other users. External users like customer and suppliers might need to see some data from Qlik Sense. They will login in a web portal and they will see only their relevant data. In that case Qlik Sense is embedded in the web environment. They will often have less or no self-service capabilities.
@@ -699,19 +703,6 @@ In this example you see an embedded chart from an Qlik Sense app through an IFra
  - Result: shows the result of the embedded chart.
  - HTML: Shows the HTML code for embedding the hub. It makes use of an IFrame. The URL is the source where the IFrame refers to.
  - CSS: Shows the underlying CSS code for this page.",,"","","","","         0","0","Developer",
-"Web integration","Example: Create a chart on the fly using Javascript. ","## Select any combination of dimensions and measures from any data source indexed in an app.",,"","","","","         0","0","Technical - 1 day, Technical - 1 hour, Developer",
-"Web integration","Example: Create a chart on the fly using Javascript. ","iframe http://jsfiddle.net/qhose/9acfgugp/embedded/result,js,html,css/",,"","","","","         0","0","PreSales, Technical - 1 day, Technical - 1 hour, Developer",
-"Web integration","Example: Create a chart on the fly using Javascript. ","!comment
-# This slide shows an example of generating a bar chart on the fly with our visualization API.
-On top, the different parts of the embedding can be shown: JavaScript, HTML, CSS, Resources and Result.
- -  The first part shows the config object. This is needed to know where the API needs to connect to get the data. The host is the hostname of the Qlik Sense Server. Is Secure is the parameter that decides that SSL (Secure Sockets Layer) should be used or not. The prefix tells to which Qlik Sense Virtual Proxy should be connected and through which port.
- - The second part will create the bar chart with Qlik Sense Data.
-  - **_Require(['js/qlik'], function(qlik)_**:
-  This will always appear at the beginning of you JavaScript code. This is necessary to use the Qlik API's.
-  - **_Qlik.openApp_**: Here an API is used to open a Qlik Sense app. The first parameter is the GUID of the app. The second parameter refers to the config object.
-  - **_App.visualization.create_**: This API will make a Qlik Sense visualization. The first parameter defines it is going to be a bar chart. The second parameters contains the Dimension(s) ( in this case _Country_)'and Measure(s) ( in this case _=count(Customer)_) for the bar chart. A lot of parameters can be defined here. In this example the bar chart will get the title: ""on the fly barchart"".
-After that the bar chart is shown in a specific placeholder in de webpage. The placeholder is defined in the HTML code.
-On the top of the slide you can choose between the 5 possible views.",,,,,,,,,
 "Web integration","Choose the level of integration you like...","# The Qlik advantage: 1 app for all devices, no fat clients needed",,"","","","","         0","0","Developer, CTO, Technical - 2 hours",
 "Web integration","Choose the level of integration you like...","- you only have to create 1 app
 - without any additional work the app is accessible on any mobile device, or ready to be embedded in your platform.",,"","","","","         0","0","Developer, CTO, Technical - 2 hours",
@@ -812,13 +803,13 @@ This slide shows you an overview of all the components that are used for embeddi
  - On the SaaS platform you have the webpage, consisting out of HTML, CSS and JavaScript. In the HTML, the IFrame refers to a URL of Qlik Sense.
  - At the point that the HTML page is loaded, connection to the Qlik Sense server is needed. To get access to the server, the virtual proxy must be passed first (authenticating).
 On the bottom of the screen there are 2 examples of IFrame URLs. The first one shows a sheet in an analysis state. The second one shows a sheet where a certain selection has been made.",,,,,,,,,
-"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","You can make your first integration using our [dev-hub](http://integration.qlik.com:443/anon/dev-hub/). This tool will highlight the key IFrame integration options:
+"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","You can make your first integration using our [dev-hub](http://integration.qlik.com/anon/dev-hub/). This tool will highlight the key IFrame integration options:
 - forward selections
 - make images static (disable selections)
 - embed the hub, a sheet or just a chart.
 
 Now try it yourself below...",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","iframe http://integration.qlik.com:443/anon/dev-hub/",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","iframe http://integration.qlik.com/anon/dev-hub/",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","!comment
 Demonstrate the different possibilities with IFrame. Click on the link to go to the integration demo.
 ",,,,,,,,,
@@ -831,7 +822,7 @@ Demonstrate the different possibilities with IFrame. Click on the link to go to 
 "Web integration","Exercise IFrame: Connect to Qlik Sense","But how can you get the code to embed these objects?",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: the Dev-Hub","**Goal:**  Learn how you can generate the code used to embed.Qlik Sense",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: the Dev-Hub","For this the Development hub of Qlik Sense can be used..",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame: the Dev-Hub","Go to the [dev-hub](http://integration.qlik.com:443/anon/dev-hub/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: the Dev-Hub","Go to the [dev-hub](http://integration.qlik.com/anon/dev-hub/)",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: embed a single chart","**Goal:** You want to embed a single chart in your website.
 ",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: embed a single chart","Please follow the steps:
@@ -919,7 +910,7 @@ Whenever you open a HTML page, a lot of things are being loaded in the backgroun
  - JavaScript: Is used for the behaviors of the page. For example: If you click on a button, the current selections must be cleared. That action is being executed in the JavaScript.
  - Images can be loaded.
 Different fonts can be used and must be loaded also.",,,,,,,,,
-"Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","Dev-hub: [demo](http://integration.qlik.com:443/anon/dev-hub/) mashup editor",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","Dev-hub: [demo](http://integration.qlik.com/anon/dev-hub/) mashup editor",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","iframe http://web.saasdemo.qlik.com",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","!comment
 Click on the link to go to the integration demo. The second part on the left side shows different examples using div tags.
@@ -1063,10 +1054,10 @@ This modified version of Qlik is not the same as the default require.js. In orde
 "Web integration","Dev-hub Mashup templates","https://youtu.be/O5uuzKWMS7I",,"","","","","         0","0","Deep dive",
 "Web integration","Exercise: Lets look at a existing mashup in the DEV-HUB","**Goal:** Know what are the needed components to create a mashup.",,"","","","","         0","0","Exercises",
 "Web integration","Exercise: Lets look at a existing mashup in the DEV-HUB","Please follow the steps:
-- Let's analyze the CityBike [mashup](http://integration.qlik.com:443/meteor/extensions/DemoMashup/home.html).
+- Let's analyze the CityBike [mashup](http://integration.qlik.com/meteor/extensions/DemoMashup/home.html).
 - What is a mashup and why is CityBike one?
 - What components are needed to create a Mashup?
-Let's analyze the [CityBike mashup](http://integration.qlik.com:443/anon/dev-hub/mashup-editor/#qext{DemoMashup}) in the DEV-HUB. (Called DemoMashup).",,"","","","","         0","0","Exercises",
+Let's analyze the [CityBike mashup](http://integration.qlik.com/anon/dev-hub/mashup-editor/#qext{DemoMashup}) in the DEV-HUB. (Called DemoMashup).",,"","","","","         0","0","Exercises",
 "Web integration","Exercise: Create a mashup in Qlik the Qlik Sense dev-hub","**Goal:** Create a mashup through the Qlik Sense dev-hub.
 Please follow the steps:",,"","","","","         0","0","Exercises",
 "Web integration","Exercise: Create a mashup in Qlik the Qlik Sense dev-hub","- Open de Mashup editor in the Qlik Sense Dev-hub.
@@ -2169,8 +2160,8 @@ const config = {
 var qix = await enigma.getService('qix', config);
         console.log('############### Connected');
 ```",,"","","","","         0","0","Technical - 1 day, Deep dive",
-"Integration.qlik.com key API calls","Engine: Create a file folder","# Create a windows folder so each customer can save and upload its own files [help](http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/EngineAPI/Content/Classes/AppClass/App-class-CreateConnection-method.htm)",,"","","","","         0","0","Technical - 1 day, Deep dive",
-"Integration.qlik.com key API calls","Engine: Create a file folder","```javascript
+"Integration.qlik.com key API calls","Engine: Create a folder data connection","# Create a windows folder so each customer can save and upload its own files [help](http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/EngineAPI/Content/Classes/AppClass/App-class-CreateConnection-method.htm)",,"","","","","         0","0","Technical - 1 day, Deep dive",
+"Integration.qlik.com key API calls","Engine: Create a folder data connection","```javascript
   var qConnectionId = await qix.app.createConnection({
             ""qName"": customer.name,
             ""qType"": ""folder"",
@@ -2654,22 +2645,6 @@ function appChangeListener() {
 "Slide generator","Step 4: Events, create an event listener so the slides will update when a selection is made or ""the app state"" changes","[Source code](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L271)",,"","","","","         0","0","What is this slide generator?, Deep dive",
 "Installation of demo platform","Setup your virtual machine (1)","Make sure you really have a blank machine, without any other services running.",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Setup your virtual machine (1)","See the slide at the end for more instructions...",,"","","","","         0","0","Deep dive",
-"Installation of demo platform","Setup your virtual machine (1)","For example get a blank windows 2012/2016 server on Amazon or Azure.",,"","","","","         0","0","Deep dive",
-"Installation of demo platform","Setup your virtual machine (1)","Make sure you login as an admin user, member of  group `Administrators`.
-- make a note of the administrator domain and password. You will need this for the silent script to install Sense and as the user which MeteorQRS uses to connect to Sense. (this user will become the rootAdmin)
-- you can also check the username by typing in `whoami` in a command window. ",,"","","","","         0","0","Deep dive",
-"Installation of demo platform","Setup your virtual machine (1)","Make sure you open ports on your firewall
-- 80 (MeteorQRS)
-- 81 (Qlik Sense HTTP)",,"","","","","         0","0","Deep dive",
-"Installation of demo platform","Setup your virtual machine (1)","Next we will install the following software
-- Meteor (contains NodeJS and MongoDB)
-- Github desktop (this will the latest version of our integration.qlik.com demo projects)
-- Qlik Sense Server (automatically)",,"","","","","         0","0","Deep dive",
-"Installation of demo platform","Setup your virtual machine (1)","# Amazon",,,,,,,,,
-"Installation of demo platform","Setup your virtual machine (1)","## Static Ip
-Make sure you give the machine a `static IP`. Otherwise if you reboot you get a new IP and Qlik Sense won't work anymore. (Because a TLS certificate is bound to a domain name. In amazon you can do this via an `elastic ip`.)",,"","","","","         0","0","Deep dive",
-"Installation of demo platform","Setup your virtual machine (1)","## disable enhanced security config",,"","","","","         0","0","Deep dive",
-"Installation of demo platform","Setup your virtual machine (1)","amazon - disable internet explorer enhanced security configuration.png",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Architecture introduction: What are we going to create?","integrated Architecture saasdemo setup.png",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Architecture introduction: What are we going to create?","We try to simulate a real production environment for a SaaS provider",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Architecture introduction: What are we going to create?","We use multiple servers for different purposes",,"","","","","         0","0","Deep dive",
@@ -2728,7 +2703,7 @@ Make sure you give the machine a `static IP`. Otherwise if you reboot you get a 
 "Installation of demo platform","Optional: if you want to use an existing Sense server","qrsMeteor - minimum settings to update when you install on same machine.png",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","Go to your project root `C:\GitHub\QRSMeteor`",,,,,,,,,
 "Installation of demo platform","Try to startup your server","# Part 1: First run of QRS Start.bat - prepare silent installation config file",,"","","","","         0","0","Deep dive",
-"Installation of demo platform","Try to startup your server","The output of this step is an `spc.cfg` file which contains all settings (host names, shared folders, user accounts) for Qlik Sense silent installation. ",,"","","","","         0","0","Deep dive",
+"Installation of demo platform","Try to startup your server","The output of this step is an `spc.cfg` file (in your 'QRSMeteor\.automation\InstallationSoftware' folder) which contains all settings (host names, shared folders, user accounts) for Qlik Sense silent installation.  If the screen does not update after 15 minutes, close and restart.",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","Run `QRS start.bat` as `administrator`",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","QRSMeteor step 1 - install meteor.png",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","After meteor has been installed (which contains our nodeJs and Mongo server) it will try to start",,"","","","","         0","0","Deep dive",
@@ -2836,13 +2811,13 @@ Run the command `powershell Set-ExecutionPolicy RemoteSigned`
 "Installation of demo platform","Link overview","[Qlik Sense qmc](http://localhost:81/qmc)",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Link overview","[QRSMeteor](http://localhost:3000)",,,,,,,,,
 "Installation of demo platform","Setup your virtual machine (2)","# Detailed instructions to setup your machine",,"","","","","         0","0","Deep dive",
-"Installation of demo platform","Setup your virtual machine (2)","For example get a blank windows 2012/2016 server on Amazon or Azure.",,"","","","","         0","0","Deep dive",
+"Installation of demo platform","Setup your virtual machine (2)","For example, get a blank windows 2012/2016 server on Amazon or Azure.",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Setup your virtual machine (2)","Make sure you login as an admin user, member of  group `Administrators`.
 - make a note of the administrator domain and password. You will need this for the silent script to install Sense and as the user which MeteorQRS uses to connect to Sense. (this user will become the rootAdmin)
 - you can also check the username by typing in `whoami` in a command window. ",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Setup your virtual machine (2)","Make sure you open ports on your firewall
 - 80 (MeteorQRS)
-- 81 (Qlik Sense HTTP)",,"","","","","         0","0","Deep dive",
+- 81, or any port you run Sense on (Qlik Sense HTTP)",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Setup your virtual machine (2)","Next we will install the following software
 - Meteor (contains NodeJS and MongoDB)
 - Github desktop (this will the latest version of our integration.qlik.com demo projects)
@@ -3462,7 +3437,7 @@ var config = {
 "QPS - Proxy API","Example: logout a user via the QPS API","API - logout user.png",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "QPS - Proxy API","Example: logout a user via the QPS API","# javascript code",,"","","","","         0","0","Technical - 1 day",
 "QPS - Proxy API","Example: logout a user via the QPS API","```javascript
- var RESTCALL = 'http://integration.qlik.com:443/qps/user';
+ var RESTCALL = 'http://integration.qlik.com/qps/user';
      try {
          $.ajax({
              method: 'DELETE',
@@ -4195,7 +4170,7 @@ Basically all the things you can do yourself when you use an app
 "Engine API","What can you do? Which end points are available?","iframe http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/Dev-Hub/Content/EngineApiExplorer/engine-api-explorer.htm",,"","","","","         0","0","Deep dive, Developer",
 "Engine API","Exercise Dev-hub Engine API explorer - My first API call","# Try to make your first API call",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
 "Engine API","Exercise Dev-hub Engine API explorer - My first API call","In the screen below, Select a macro 'get applist' and press 'execute'",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
-"Engine API","Exercise Dev-hub Engine API explorer - My first API call","<iframe class=""SenseEmbedFrame"" src=""http://integration.qlik.com:443/anon/dev-hub/engine-api-explorer"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
+"Engine API","Exercise Dev-hub Engine API explorer - My first API call","<iframe class=""SenseEmbedFrame"" src=""http://integration.qlik.com/anon/dev-hub/engine-api-explorer"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
 "Engine API","Exercise Dev-hub Engine API explorer - My first API call","It should give you the result below
 ```javascript
 {
