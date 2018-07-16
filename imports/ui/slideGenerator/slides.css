@@ -212,6 +212,10 @@ blockquote .reveal h5,
     max-height: 100%; */
 }
 
+.reveal .ui.embed {
+    margin: 20px;
+}
+
 .reveal strong,
 .reveal b {
     font-weight: bold;

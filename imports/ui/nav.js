@@ -162,7 +162,7 @@ export async function makeSelectionInField(fieldName, value) {
   console.log("makeSelectionInField", fieldName + " : " + value.toString());
   try {
     var qix = await slideApp.getQix();
-    await slideApp.setChangeListener(qix);
+    // await slideApp.setChangeListener(qix);
     var myField = await qix.app.getField(fieldName);
     var result = await myField.selectValues(value);
   } catch (error) {
@@ -182,14 +182,14 @@ export async function makeSearchSelectionInField(fieldName, value) {
   );
   try {
     var qix = await slideApp.getQix();
-    await slideApp.setChangeListener(qix);
+    // await slideApp.setChangeListener(qix);
     var myField = await qix.app.getField(fieldName);
     var result = await myField.select(value);
   } catch (error) {
     var message =
       "make search SelectionInField: Can not connect to the Qlik Sense Engine API via enigmaJS";
     console.error(message + " Sense reported the following error: ", error);
-    location.reload(); //reload the page
+    // location.reload(); //reload the page
     sAlert.error(message, error);
   }
 }
