@@ -161,7 +161,13 @@ async function setSelectionInSense(field, value) {
 }
 
 async function getTicket() {
-    return await Meteor.callPromise('getTicketNumber', { group: 'notProvided' }, Meteor.settings.public.slideGenerator.virtualProxy);
+    try {
+        return await Meteor.callPromise('getTicketNumber', { group: 'notProvided' }, Meteor.settings.public.slideGenerator.virtualProxy);        
+    } catch (error) {
+                var message = 'We could not setup single sing on with Qlik Sense. See your console window for more information';
+                console.error(message, error);
+                sAlert.error(message, error);        
+    }
 }
 
 async function makeSureSenseIsConnected() {

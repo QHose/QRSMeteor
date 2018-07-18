@@ -2,8 +2,7 @@
   "name": "qrsmeteor",
   "private": true,
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.52",
-    "babel-runtime": "^6.18.0",
+    "@babel/runtime": "^7.0.0-beta.54",
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.1",
     "bufferutil": "^3.0.2",
