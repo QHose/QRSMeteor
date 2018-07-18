@@ -343,6 +343,7 @@ export async function getComment(qix) {
 
 export async function setChangeListener(qix) {
     console.log('setChangeListener', qix)
+    setChangeListener 
     try {
         qix.app.on('changed', async() => {
             // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');

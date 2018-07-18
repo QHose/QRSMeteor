@@ -180,7 +180,7 @@ async function login(passport) {
         var URLtoOpen = Session.get('appUrl');
         var ticket = await Meteor.callPromise('requestTicketWithPassport', Meteor.settings.public.slideGenerator.virtualProxy, passport);
         console.log('------------------------------------');
-        console.log('requesting requestTicketWithPassport at virtual proxy: ' + Meteor.settings.public.slideGenerator.virtualProxy + ' with passport: ' + passport);
+        console.log('requesting requestTicketWithPassport at virtual proxy: ' + Meteor.settings.public.slideGenerator.virtualProxy + ' with passport: ' + JSON.stringify(passport));
         console.log('------------------------------------');
         URLtoOpen += '?QlikTicket=' + ticket;
         console.log('login: the url to open is: ', URLtoOpen);

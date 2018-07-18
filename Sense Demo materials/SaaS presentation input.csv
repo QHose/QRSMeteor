@@ -75,6 +75,8 @@ This website has been built for several reasons and goals:
 "Workshop Introduction","Agenda","Qlik Sense APIs",,"","","","","         0","0","PreSales, Technical - 1 day",
 "Workshop Introduction","Agenda","Questions",,"","","","","         0","0","Introduction - 30 minutes",
 "Workshop Introduction","Video - generic introduction to APIs","https://www.youtube.com/watch?v=s7wmiS2mSXY",,"","","","","         0","0","Demo with integration.qlik.com",
+"What is an app?","New to Qlik Sense?","https://www.youtube.com/watch?v=sYZ-7UG6UC8&feature=share",,"","","","","         0","0","Business Analyst, CTO, Developer",
+"What is an app?","New to Qlik Sense?","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)",,"","","","","         0","0","Business Analyst, CTO, Developer",
 "What is an app?","Video: What is governed self service with Qlik Sense?","https://youtu.be/pQae9S8S_vQ?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours; Product Owner; Business Analyst; C-Level - non-technical",
 "What is an app?","Video: What is governed self service with Qlik Sense?","!comment
 With Qlik Sense you have to possibility to go for complete self-service. To make sure you can keep your environment under control, we need to govern that self-service.  The video explains how this can be maintained with Qlik Sense.
@@ -354,7 +356,7 @@ For this we use a piece of software that regulates your SaaS platform, or a brok
  - The app is reloaded,
  - The app gets published in the correct stream.",,"","","","","         0","0","PreSales",
 "Integration.qlik.com demo platform","Video overview: Technologies used on integration.qlik.com to setup a multi-tenant environment","iframe videoOverview_embedded",,"","","","","         0","0","Product Owner, Integration summary, Technical - 2 hours, CTO, Developer",
-"Integration.qlik.com demo platform","Video overview: How to (hands on)","<iframe width=""100%"" height=""815"" src=""https://www.youtube.com/embed/videoseries?list=PLLRH3RWXD_Q6oFzpZaJcx4YXNR2am8xiG"" frameborder=""0"" allow=""autoplay; encrypted-media"" allowfullscreen></iframe>",,"","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","Video overview: How to (hands on)","Click the [link](https://www.youtube.com/channel/UCmPMsqh1UvXhQTcAhPMEjpA/videos)  for all kinds of hands on integration videos",,"","","","","         0","0","Technical - 2 hours",
 "API -  generic introduction","What is an API?","Used in computer programming",,,,,,,,,
 "API -  generic introduction","What is an API?","A set of communication methods between software applications",,,,,,,,,
 "API -  generic introduction","What is an API?","A common language (JSON) ensures they can talk with each other",,,,,,,,,
@@ -5184,7 +5186,6 @@ Advanced analytics integration will support a number of advanced analytics use c
 "Data integration","Datamarket - attach extra data to your internal data using a simple data model","Simple and powerful *data integration * unifies internal and external data sources",,,,,,,,,
 "Data integration","Datamarket - visual data preparation","datamarket visual data preparation easy.png",,,,,,,,,
 "Data integration","Datamarket - architecture of the data loading flow","datamarket flow overview architecture.png",,"","","","","         0","0","PreSales",
-"Other","New to Qlik Sense","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)",,,,,,,,,
 "Other","Advanced topics: Benchmarking and comparative analysis 1","comparative analysis 1.png",,,,,,,,,
 "Other","Advanced topics: Benchmarking and comparative analysis 1","Comparative Analysis is a way to analyze data based on multiple groups.  It is all about you, the user, *creating customized groups on demand*.",,,,,,,,,
 "Other","Advanced topics: Benchmarking and comparative analysis 1","It is not a comparison between two items such as Company A vs Company B.",,,,,,,,,
