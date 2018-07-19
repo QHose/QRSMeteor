@@ -6,6 +6,7 @@
         "webIntegrationHost": "",
         "TemplateAppStreamName": "Templates",
         "qlikSensePort": 81,
+        "qlikSensePortSecure": 443,
         "useSSL": true,
         "virtualProxyClientUsage": "meteor",
         "webIntegrationDemoPort": 3030,

@@ -66,7 +66,7 @@ Meteor.startup(function() {
         html: false,
         onRouteClose: false,
         stack: true,
-        offset: 300, // in px - will be added to first alert (bottom or top - depends of the position in config)
+        offset: 100, // in px - will be added to first alert (bottom or top - depends of the position in config)
         beep: false,
         onClose: _.noop
     });

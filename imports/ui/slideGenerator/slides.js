@@ -32,8 +32,8 @@ Template.slides.onDestroyed(function() {
 });
 
 Template.slides.onRendered(async function() {
-  initializeReveal();
   await slideDataLoaded();
+  initializeReveal();
   this.$("aside").popup({
     title: "Slides",
     content:
@@ -100,7 +100,7 @@ function addSlideChangedListener() {
 //
 // ─── SLIDE CONTENT ──────────────────────────────────────────────────────────────────────
 //
-Template.slideContent.onCreated(async function() {
+Template.slideContent.onCreated(async function() {  
   var instance = this;
   instance.bullets = new ReactiveVar([]); //https://stackoverflow.com/questions/35047101/how-do-i-access-the-data-context-and-the-template-instance-in-each-case-event
   instance.comment = new ReactiveVar([]);
@@ -112,6 +112,8 @@ Template.slideContent.onCreated(async function() {
   instance.bullets.set(await getLevel3(level1, level2));
   //get the comment of the page
   instance.comment.set(await getComment(level1, level2));
+
+  console.log('slideContent.onCreated', level2)
 });
 
 Template.slideContent.helpers({
@@ -149,18 +151,19 @@ Template.slideContent.onRendered(async function() {
 
   Meteor.setTimeout(function() {
     //embed youtube containers in a nice box without loading all content
-    this.$(".ui.embed").embed({
+    template.$(".ui.embed").embed({
       autoplay: false
     });
     //make sure all code gets highlighted using highlight.js
-    this.$("pre code").each(function(i, block) {
+    template.$("pre code").each(function (i, block) {
       hljs.highlightBlock(block);
     });
     //ensure all links open on a new tab
-    this.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
+    template.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
 
     //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
-    var slideContent = Template.instance().bullets.get();
+    var slideContent = template.bullets.get();
+    console.log("slideContent.onRendered array of bullets: ", slideContent);
     if(slideContent.length===0){
       console.log('------------------------------------');
       console.log('No slide data retrieved from Qlik Sense, re-adding the slide changed event listener...');
@@ -200,7 +203,7 @@ Template.slides.helpers({
 
 Template.slide.helpers({
   active(slideNr) {
-    var activeSlide = Session.get("activeStepNr");
+    var activeSlide = Session.get("activeStepNr") ? Session.get("activeStepNr") : $(".slide-number").text();
     var active =
       slideNr < activeSlide + numberOfActiveSlides &&
       slideNr > activeSlide - numberOfActiveSlides;

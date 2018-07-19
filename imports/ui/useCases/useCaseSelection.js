@@ -348,8 +348,7 @@ export async function getComment(qix) {
 }
 
 export async function setChangeListener(qix) {
-    console.log('setChangeListener', qix)
-    setChangeListener 
+    console.log('We are connected to Qlik Sense via the APIs, now setChangeListener', qix)
     try {
         qix.app.on('changed', async() => {
             // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
