@@ -36,7 +36,13 @@ Template.SSBIUsers.onCreated(function() {
     console.log('------------------------------------');
     console.log('SSBISenseIFrame created');
     console.log('------------------------------------');
-    server = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.slideGenerator.virtualProxy;
+    server = senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.slideGenerator.virtualProxy;
+
+    if (Meteor.settings.public.useSSL){
+    server = 'https://' + server;
+    }else{
+    server = 'http://' + server;
+    }
     console.log('server', server)
     QMCUrl = server + '/qmc';
     hubUrl = server + '/hub';
