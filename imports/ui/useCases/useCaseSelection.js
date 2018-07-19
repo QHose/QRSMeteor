@@ -34,7 +34,6 @@ var possibleRoles = [
   "C-Level - non-technical"
 ];
 
-<<<<<<< HEAD
 // ONCREATED
 Template.useCaseSelection.onCreated(async function () {
     // await initQlikSense();
@@ -179,48 +178,6 @@ export async function initQlikSense() {
         },
         0
     );
-=======
-// // ONCREATED
-// Template.useCaseSelection.onCreated(async function() {
-//     await initQlikSense();
-// })
-
-export async function initQlikSense(){
-//wait a bit, so Meteor can login, before requesting a ticket...
-Meteor.setTimeout(
-async function() {
-    //connect to qlik sense
-    qix = await makeSureSenseIsConnected();
-    // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
-    await setChangeListener(
-    qix
-    );
-
-    //see if the user started up this screen, with a selection parameter
-    var value = getQueryParams(
-    "selection"
-    );
-    // console.log('getQueryParams return value', value)
-    //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
-    if (value) {
-    console.log(
-        "%%%%%%%%%%  Slides oncreated: Query string found: ",
-        value
-    );
-    await nav.selectViaQueryId(
-        value
-    );
-    // get the data and go to the slides
-    await getAllSlides();
-    // after we got all data in an array from sense, change the router/browser to the slides page
-    Router.go("slides");
-    } else {
-    // console.log('no query selection parameter found');
-    }
-},
-0
-);
->>>>>>> master
 }
 
 // Replace with more Meteor approach
@@ -387,11 +344,7 @@ export async function getQix(ticket=null) {
     } catch (error) {
         console.error('Qlik Sense Qix error ', error);
         sAlert.error(error.message)
-<<<<<<< HEAD
-        location.reload();
-=======
         window.location.href = window.location.origin;
->>>>>>> master
     }
 
 }

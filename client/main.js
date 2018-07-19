@@ -81,10 +81,10 @@ Meteor.startup(function() {
                 senseConfig.slideGeneratorAppId = IDs.slideGenerator;
                 Session.setPersistent('SSBIAppId', IDs.SSBI);
                 Cookies.set('slideGeneratorAppId', IDs.slideGenerator);
-                check(senseConfig.SSBIAppId, String);
+                // check(senseConfig.SSBIAppId, String);
                 check(senseConfig.slideGeneratorAppId, String);
             } catch (error) {
-                var m = 'We could not retreive the app ids for the slide generator or the SSBI app. Did you forget to use the correct name for the SSBI or slidegenerator app in the settings.json file, are your apps in the correct stream? Did you forget to run once with "initializeQlikSense:true" in the settings.json? Check the server logs, most problems arise from the wrong hostnames, or no certificates.';
+                var m = 'We could not retreive the app ids for the slide generator. Did you forget to use the correct name for the slidegenerator app in the settings.json file, are your apps in the correct stream? Did you forget to run once with "initializeQlikSense:true" in the settings.json? Check the server logs, most problems arise from the wrong hostnames, or no certificates.';
                 sAlert.error('Apps not found: ', error);
                 console.error(m + ' with error ' + error);
             }

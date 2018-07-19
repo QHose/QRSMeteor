@@ -3,7 +3,6 @@
 html {
     background-color: #fff !important;
     min-height: 100%;
-    color: #5F6062
 }
 
 .mainLandingImage {
@@ -16,7 +15,7 @@ html {
 
 .mainLandingImage .backGroundImageColor {
     content: "";
-    background-color: #6CB33F;
+    background-color: #62ac1e;
     position: absolute;
     height: 500px;
     width: 40%;
@@ -27,7 +26,7 @@ html {
 
 .mainNavBar {
     margin-top: 0px !important;
-    background-color: #6CB33F !important;
+    background-color: #62ac1e !important;
 }
 
 .mainNavBar a {
@@ -69,6 +68,10 @@ html {
 
 .landing .secondRow {
     margin-top: 150px;
+}
+
+.qlikFont{
+    color: #5F6062 !important
 }
 
 .deleteStream,

@@ -136,7 +136,7 @@ logout?targetUr…host:81/qmc:91
 .reveal h5,
 .reveal h6 {
     margin: 20px 0 20px 0;
-    color: #6CB33F;
+    color: #5F6062 !important;
     font-family: "Fira Sans", Helvetica, sans-serif;
     font-weight: 600;
     line-height: 1.2;
