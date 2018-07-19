@@ -36,7 +36,13 @@ Template.SSBIUsers.onCreated(function() {
     console.log('------------------------------------');
     console.log('SSBISenseIFrame created');
     console.log('------------------------------------');
-    server = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.slideGenerator.virtualProxy;
+    server = senseConfig.host + ':' + senseConfig.port + '/' + Meteor.settings.public.slideGenerator.virtualProxy;
+
+    if (Meteor.settings.public.useSSL){
+    server = 'https://' + server;
+    }else{
+    server = 'http://' + server;
+    }
     console.log('server', server)
     QMCUrl = server + '/qmc';
     hubUrl = server + '/hub';
@@ -180,7 +186,7 @@ async function login(passport) {
         var URLtoOpen = Session.get('appUrl');
         var ticket = await Meteor.callPromise('requestTicketWithPassport', Meteor.settings.public.slideGenerator.virtualProxy, passport);
         console.log('------------------------------------');
-        console.log('requesting requestTicketWithPassport at virtual proxy: ' + Meteor.settings.public.slideGenerator.virtualProxy + ' with passport: ' + passport);
+        console.log('requesting requestTicketWithPassport at virtual proxy: ' + Meteor.settings.public.slideGenerator.virtualProxy + ' with passport: ' + JSON.stringify(passport));
         console.log('------------------------------------');
         URLtoOpen += '?QlikTicket=' + ticket;
         console.log('login: the url to open is: ', URLtoOpen);

@@ -99,12 +99,6 @@ export async function selectViaQueryId(mongoId) {
 // if people click on a menu item, you want a specific slide to be selected, so the slide is the value to search for...
 export async function selectMenuItemInSense(slide) {
   console.log("selectMenuItemInSense - slide", slide);
-  // Cookies.set('currentMainRole', 'TECHNICAL');
- /*  var selection = [
-    {
-      qText: slide
-    }
-  ]; */
   await makeSearchSelectionInField("Level 2", slide);
   Meteor.setTimeout(function() {
     Router.go("slides");
@@ -115,7 +109,7 @@ export async function makeSelectionInField(fieldName, value) {
   console.log("makeSelectionInField", fieldName + " : " + value.toString());
   try {
     var qix = await slideApp.getQix();
-    await slideApp.setChangeListener(qix);
+    // await slideApp.setChangeListener(qix);
     var myField = await qix.app.getField(fieldName);
     var result = await myField.selectValues(value);
   } catch (error) {
@@ -135,14 +129,14 @@ export async function makeSearchSelectionInField(fieldName, value) {
   );
   try {
     var qix = await slideApp.getQix();
-    await slideApp.setChangeListener(qix);
+    // await slideApp.setChangeListener(qix);
     var myField = await qix.app.getField(fieldName);
     var result = await myField.select(value);
   } catch (error) {
     var message =
       "make search SelectionInField: Can not connect to the Qlik Sense Engine API via enigmaJS";
     console.error(message + " Sense reported the following error: ", error);
-    location.reload(); //reload the page
+    // location.reload(); //reload the page
     sAlert.error(message, error);
   }
 }

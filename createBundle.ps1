@@ -27,7 +27,7 @@
     }
     
     echo "STEP delete old build files"
-    Remove-PathToLongDirectory $BUILD_DIR
+    Remove-PathToLongDirectory $BUILD_DIR -recurse
 
     echo "STEP build new meteor bundle"
     meteor build --architecture=os.linux.x86_64 --allow-superuser --directory $BUILD_DIR

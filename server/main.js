@@ -14,7 +14,7 @@ import * as QSProxy from "/imports/api/server/QPSFunctions";
 import * as QSSystem from "/imports/api/server/QRSFunctionsSystemRules";
 import * as QSExtensions from "/imports/api/server/QRSFunctionsExtension";
 import * as QSCustomProps from "/imports/api/server/QRSFunctionsCustomProperties";
-require('os');
+var os = require('os')
 
 //stop on unhandled errors
 process.on("unhandledRejection", up => {

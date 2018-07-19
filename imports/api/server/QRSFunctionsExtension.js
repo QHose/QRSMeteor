@@ -63,7 +63,7 @@ export async function uploadExtensions() {
 
 async function uploadExtension(password, filePath) {
 
-    console.log('uploadApp: try to upload extension from path: ' + filePath);
+    console.log('uploadExtension: try to upload extension from path: ' + filePath);
     var formData = {
         my_file: fs.createReadStream(filePath)
     };
@@ -82,7 +82,7 @@ async function uploadExtension(password, filePath) {
             if (!error) {
                 try {
                     var id = JSON.parse(body).id;
-                    console.log('Uploaded "' + path.basename(filePath) + ' to Qlik Sense and got id: ' + id); //
+                    console.log('Uploaded "' + path.basename(filePath) + ' to Qlik Sense.'); //
                 } catch (err) {
                     console.log('Qlik Sense reported: ', body)
                 }

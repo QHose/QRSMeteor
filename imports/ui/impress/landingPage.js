@@ -19,7 +19,7 @@ var slideObject = Meteor.settings.public.slideGenerator.dataObject;
 Template.landingPage.onCreated(function() {
     console.log('Template.landingPage.onCreated app id ', senseConfig.slideGeneratorAppId)
     appId = senseConfig.slideGeneratorAppId;
-    slideObjectURL = server + '/single/?appid=' + appId + '&obj=' + Meteor.settings.public.slideGenerator.slideObject;
+    // slideObjectURL = server + '/single/?appid=' + appId + '&obj=' + Meteor.settings.public.slideGenerator.slideObject; //update if you need
     Session.setAuth('groupForPresentation', null);
     Session.setAuth('userLoggedInSense', null);
     Cookies.set('showSlideSorter', 'false');

@@ -93,6 +93,10 @@ logout?targetUr…host:81/qmc:91
     /* margin-top: 10px */
 }
 
+.reveal .slide .wrap{
+    margin-top: 20px
+}
+
 /* chapter breaker */
 
 .reveal .integrationBreaker {
@@ -210,6 +214,10 @@ blockquote .reveal h5,
     /* max-height: calc(100vh - 180px); */
     /* max-width: 100%;
     max-height: 100%; */
+}
+
+.reveal .ui.embed {
+    margin: 20px;
 }
 
 .reveal strong,

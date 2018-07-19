@@ -34,6 +34,7 @@ var possibleRoles = [
   "C-Level - non-technical"
 ];
 
+<<<<<<< HEAD
 // ONCREATED
 Template.useCaseSelection.onCreated(async function () {
     // await initQlikSense();
@@ -178,6 +179,48 @@ export async function initQlikSense() {
         },
         0
     );
+=======
+// // ONCREATED
+// Template.useCaseSelection.onCreated(async function() {
+//     await initQlikSense();
+// })
+
+export async function initQlikSense(){
+//wait a bit, so Meteor can login, before requesting a ticket...
+Meteor.setTimeout(
+async function() {
+    //connect to qlik sense
+    qix = await makeSureSenseIsConnected();
+    // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
+    await setChangeListener(
+    qix
+    );
+
+    //see if the user started up this screen, with a selection parameter
+    var value = getQueryParams(
+    "selection"
+    );
+    // console.log('getQueryParams return value', value)
+    //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
+    if (value) {
+    console.log(
+        "%%%%%%%%%%  Slides oncreated: Query string found: ",
+        value
+    );
+    await nav.selectViaQueryId(
+        value
+    );
+    // get the data and go to the slides
+    await getAllSlides();
+    // after we got all data in an array from sense, change the router/browser to the slides page
+    Router.go("slides");
+    } else {
+    // console.log('no query selection parameter found');
+    }
+},
+0
+);
+>>>>>>> master
 }
 
 // Replace with more Meteor approach
@@ -230,8 +273,6 @@ Template.useCaseSelection.onRendered(async function () {
 
 Template.useCaseSelection.events({
   "click .button.slides": async function(e, t) {
-    // await Meteor.callPromise('logoutPresentationUser', Meteor.userId(), Meteor.userId()); //udc and user are the same for presentation user
-    // await setSlideContentInSession('TECHNICAL');
     Session.set("sheetSelectorSeen", false);
     Router.go("slides");
 
@@ -274,9 +315,13 @@ async function setSelectionInSense(field, value) {
 }
 
 async function getTicket() {
-    return await Meteor.callPromise('getTicketNumber', {
-        group: 'notProvided'
-    }, Meteor.settings.public.slideGenerator.virtualProxy);
+    try {
+        return await Meteor.callPromise('getTicketNumber', { group: 'notProvided' }, Meteor.settings.public.slideGenerator.virtualProxy);        
+    } catch (error) {
+                var message = 'We could not setup single sing on with Qlik Sense. See your console window for more information';
+                console.error(message, error);
+                sAlert.error(message, error);        
+    }
 }
 
 export async function makeSureSenseIsConnected() {
@@ -298,7 +343,7 @@ async function setSlideContentInSession(group) {
 }
 
 export async function getQix(ticket=null) {
-    console.log('getQix with ticket:', ticket)
+    // console.log('getQix with ticket:', ticket)
     try {
         const config = { //https://github.com/qlik-oss/enigma.js/blob/v1.x/docs/qix/configuration.md
             schema: senseConfig.QIXSchema,
@@ -337,11 +382,16 @@ export async function getQix(ticket=null) {
                 REST_Log(call, Meteor.userId());
             }
         };
+        // console.log('config to connect from the browser to Qlik Sense engine:', config)
         return await enigma.getService('qix', config);
     } catch (error) {
         console.error('Qlik Sense Qix error ', error);
         sAlert.error(error.message)
+<<<<<<< HEAD
         location.reload();
+=======
+        window.location.href = window.location.origin;
+>>>>>>> master
     }
 
 }
@@ -456,7 +506,7 @@ export async function getComment(qix) {
 }
 
 export async function setChangeListener(qix) {
-    console.log('setChangeListener', qix)
+    console.log('We are connected to Qlik Sense via the APIs, now setChangeListener', qix)
     try {
         qix.app.on('changed', async () => {
             // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');

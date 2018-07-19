@@ -53,18 +53,20 @@ async function slideDataLoaded() {
         "No slide data present in session, reroute the user back to the Selection screen."
       );
       console.log("------------------------------------");
-      await initQlikSense();
-      // nav.showSlideSelector();
-      Router.go("useCaseSelection");
+      nav.showSlideSelector();
       return;
     }
   }, 4000);
 }
 
+Meteor.startup(async function () {
+  await initQlikSense();
+})
+
 function initializeReveal() {
   try {
     window.Reveal = Reveal;
-    // console.log('initializeReveal', Reveal);
+    console.log('initializeReveal', Reveal);
     Reveal.initialize({
       width: window.innerWidth - 80,
       embedded: true,
@@ -82,18 +84,23 @@ function initializeReveal() {
     });
 
     Session.set("activeStepNr", 0);
-    Reveal.addEventListener("slidechanged", function(evt) {
-      // console.log("slidechanged", evt.indexh);
-      Session.set("activeStepNr", evt.indexh);
-      $(".ui.embed").embed();
-    });
+   addSlideChangedListener();
   } catch (error) {}
+}
+
+function addSlideChangedListener() {
+   console.log('!!!!!!!!!!!!! addSlideChangedListener')
+   Reveal.addEventListener("slidechanged", function (evt) {
+     console.log("slidechanged", evt.indexh);
+     Session.set("activeStepNr", evt.indexh);
+     $(".ui.embed").embed();
+   });
 }
 
 //
 // ─── SLIDE CONTENT ──────────────────────────────────────────────────────────────────────
 //
-Template.slideContent.onCreated(async function() {
+Template.slideContent.onCreated(async function() {  
   var instance = this;
   instance.bullets = new ReactiveVar([]); //https://stackoverflow.com/questions/35047101/how-do-i-access-the-data-context-and-the-template-instance-in-each-case-event
   instance.comment = new ReactiveVar([]);
@@ -101,11 +108,12 @@ Template.slideContent.onCreated(async function() {
   //the header and sub header for which we want to load the slide data/bullets
   var level1 = Template.currentData().slide[0].qText;
   var level2 = Template.currentData().slide[1].qText;
-  // console.log('bullets level 2'+level2, bullets)
   // and now let's get the slide content:
   instance.bullets.set(await getLevel3(level1, level2));
   //get the comment of the page
   instance.comment.set(await getComment(level1, level2));
+
+  console.log('slideContent.onCreated', level2)
 });
 
 Template.slideContent.helpers({
@@ -143,16 +151,27 @@ Template.slideContent.onRendered(async function() {
 
   Meteor.setTimeout(function() {
     //embed youtube containers in a nice box without loading all content
-    this.$(".ui.embed").embed({
+    template.$(".ui.embed").embed({
       autoplay: false
     });
     //make sure all code gets highlighted using highlight.js
-    this.$("pre code").each(function(i, block) {
+    template.$("pre code").each(function (i, block) {
       hljs.highlightBlock(block);
     });
     //ensure all links open on a new tab
-    this.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
-  }, 3000);
+    template.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
+
+    //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
+    var slideContent = template.bullets.get();
+    console.log("slideContent.onRendered array of bullets: ", slideContent);
+    if(slideContent.length===0){
+      console.log('------------------------------------');
+      console.log('No slide data retrieved from Qlik Sense, re-adding the slide changed event listener...');
+      console.log('------------------------------------');
+      addSlideChangedListener();
+      //location.reload(); //@todo to evaluate if this helps
+    }
+  }, 2000);
 });
 
 Template.slideContent.events({
@@ -184,7 +203,7 @@ Template.slides.helpers({
 
 Template.slide.helpers({
   active(slideNr) {
-    var activeSlide = Session.get("activeStepNr");
+    var activeSlide = Session.get("activeStepNr") ? Session.get("activeStepNr") : $(".slide-number").text();
     var active =
       slideNr < activeSlide + numberOfActiveSlides &&
       slideNr > activeSlide - numberOfActiveSlides;
@@ -259,7 +278,7 @@ async function getLevel3(level1, level2) {
       "error getting level 3 data (the bullets) for the slide",
       error
     );
-    location.reload();
+    window.location.href = window.location.origin;
   }
 }
 
