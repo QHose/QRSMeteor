@@ -19,8 +19,8 @@
         $tempDirectory = New-Item -ItemType Directory -Path (Join-Path $parent $name)
     
         robocopy /MIR $tempDirectory.FullName $directory | out-null
-        Remove-Item $directory -Force | out-null
-        Remove-Item $tempDirectory -Force | out-null
+        Remove-Item $directory -Force -Recurse | out-null
+        Remove-Item $tempDirectory -Force -Recurse | out-null
     }
     
     echo "STEP delete old build files"
