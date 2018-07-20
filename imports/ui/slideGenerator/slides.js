@@ -53,8 +53,8 @@ async function slideDataLoaded() {
         "No slide data present in session, reroute the user back to the Selection screen."
       );
       console.log("------------------------------------");
-      nav.showSlideSelector();
-      return;
+      //go back, since SOE does not show the slide selector
+      Router.go('/useCaseSelection')
     }
   }, 4000);
 }
