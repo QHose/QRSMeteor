@@ -538,8 +538,13 @@ export function getRedirectURL(passport, proxyRestUri, targetId, generationUserI
         redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
     }
 
-    if (!redirectURI) {
-        redirectURI = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/' + hub;
+    if (!redirectURI) {        
+        if (Meteor.settings.public.useSSL){
+            redirectURI = 'https://' + senseConfig.host + ':' + senseConfig.qlikSensePortSecure + '/' + senseConfig.virtualProxyClientUsage + '/' + hub;
+        } else {
+            redirectURI = 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/' + hub;
+
+        }
     }
     console.log('Meteor server side created this redirect url: ', redirectURI);
     return redirectURI;

@@ -72,6 +72,9 @@ Meteor.startup(function() {
     });
     AutoForm.setDefaultTemplate("semanticUI");
 
+    console.log('------------------------------------');
+    console.log('If the browser loads the appplication, we make an api call to get the appId to be used for the slide generator and the self service BI app.');
+    console.log('------------------------------------');
     Meteor.call('getAppIDs', function(error, IDs) {
         if (error) {
             alert('Error', error);
