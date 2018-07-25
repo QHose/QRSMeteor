@@ -14,14 +14,14 @@
     "test",
     "tests"
   ],
-  "version": "1.0.8",
-  "_release": "1.0.8",
+  "version": "1.0.9",
+  "_release": "1.0.9",
   "_resolution": {
     "type": "version",
-    "tag": "1.0.8",
-    "commit": "94a79a4bbbea19fdf281ba0ca2962eb97bdfa358"
+    "tag": "1.0.9",
+    "commit": "0d93c71c48ad06946e9bf4644bc9956cbfd8b3a2"
   },
   "_source": "git@gitlab.com:onepresales/onepresales-frame.git",
-  "_target": "1.0.8",
+  "_target": "1.0.9",
   "_originalSource": "git@gitlab.com:onepresales/onepresales-frame.git"
 }
