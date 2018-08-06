@@ -13,7 +13,7 @@ _ = lodash;
 var Cookies = require("js-cookie");
 var showdown = require("showdown");
 var converter = new showdown.Converter();
-var numberOfActiveSlides = 10;
+var numberOfActiveSlides = 1;
 
 //
 // ─── SLIDES ─────────────────────────────────────────────────────────────────────
