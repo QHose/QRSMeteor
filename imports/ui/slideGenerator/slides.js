@@ -163,7 +163,7 @@ Template.slideContent.onRendered(async function() {
 
     //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
     var slideContent = template.bullets.get();
-    console.log("slideContent.onRendered array of bullets: ", slideContent);
+    // console.log("slideContent.onRendered array of bullets: ", slideContent);
     if(slideContent.length===0){
       console.log('------------------------------------');
       console.log('No slide data retrieved from Qlik Sense, re-adding the slide changed event listener...');

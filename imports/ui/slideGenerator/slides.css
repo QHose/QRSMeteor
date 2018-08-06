@@ -47,6 +47,7 @@ logout?targetUr…host:81/qmc:91
 
 .footer {
     height: 150px;
+    font-size: .8em;
     background-image: url('./images/bg_footer.jpg');
     background-size: 100%;
     background-position: bottom right;

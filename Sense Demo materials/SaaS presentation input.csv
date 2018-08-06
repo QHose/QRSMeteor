@@ -1873,7 +1873,14 @@ Basically all the things you can do yourself when you use an app
  The typical wishes of a SaaS platform provider can be summarized in 3 main goals:
  - Create within a multi-tenant SaaS platform environment embedded analytics within the core application.
  - A certain level of self-service analytics should be provided to the users. Some users can have full self-service while other can be limited.
- - Provide dashboards in a fully automated way to the customers and users with the correct levels of security in place.",,"","","","","         0","0","CTO, Hosting Ops",
+ - Provide dashboards in a fully automated way to the customers and users with the correct levels of security in place.",,,,,,,,,
+"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","architecture - OEM SaaS scenario.png",,"","","","","         0","0","Technical - 1 day, Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","Technical - 1 day, Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","Technical - 1 day, Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","Single Sign on is enforced using a ticket with userID and his groups",,"","","","","         0","0","Technical - 1 day, Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","Technical - 1 day, Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","# Video: the concept of an integrated Sense architecture explained",,"","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","https://youtu.be/sv5nKDvmRPI",,"","","","","         0","0","Technical - 2 hours",
 "Integration.qlik.com key API calls","Key use cases and their API source code","Below you will find the key use cases we automated and you can click on the link to view the source on GitHub. ",,"","","","","         0","0","PreSales, Technical - 2 hours, Hosting Ops, Developer",
 "Integration.qlik.com key API calls","Key use cases and their API source code","Download and silent installation of Qlik Sense",,"","","","","         0","0","Technical - 2 hours, Hosting Ops, Developer",
 "Integration.qlik.com key API calls","Key use cases and their API source code","[Insert license](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js#L27)",,"","","","","         0","0","Technical - 2 hours, Hosting Ops, Developer",
@@ -1912,33 +1919,26 @@ Basically all the things you can do yourself when you use an app
 - [Apps](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js)
 - [Extensions](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsExtension.js)
 - [System rules](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsSystemRules.js)
-- [Custom properties](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsCustomProperties.js)",,"","","","","         0","0","Developer",
+- [Custom properties](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsCustomProperties.js)",,"","","","","         0","0","Developer, Technical - 2 hours",
 "Integration.qlik.com key API calls","Key use cases and their API source code","# Real time API logs",,,,,,,,,
 "Integration.qlik.com key API calls","Key use cases and their API source code","We created a [API overview](/apilogstable_embedded`) of the key API requests and responses. Try to generate some apps, or try to login with a user in SaaS provisioning demo step 4 and see the resulting calls. You will also see all calls being made to render these slides. ",,"","","","","         0","0","Technical - 1 day, Deep dive, Developer",
 "Integration.qlik.com key API calls","Key use cases and their API source code","iframe /apilogstable_embedded",,"","","","","         0","0","Technical - 1 day, Deep dive, Developer",
-"Integration.qlik.com key API calls","Security overview","# Security integration
-- Users get a Single Sign On via a ticket exchange  (or SAML, JWT, AD) 
-- The ticket contains the userId and groups from your Saas platform
-- logout",,"","","","","         0","0","PreSales, Technical - 2 hours, Hosting Ops, Deep dive",
-"Integration.qlik.com key API calls","Security overview","QPS - introduction to security flow.png",,"","","","","         0","0","Hosting Ops, Technical - 2 hours",
-"Integration.qlik.com key API calls","App provisioning overview","# App provisioning (per customer)",,"","","","","         0","0","Deep dive",
-"Integration.qlik.com key API calls","App provisioning overview"," Create stream",,"","","","","         0","0","Deep dive",
-"Integration.qlik.com key API calls","App provisioning overview"," Copy template app",,"","","","","         0","0","Deep dive",
-"Integration.qlik.com key API calls","App provisioning overview"," Replace script and reload app",,"","","","","         0","0","Deep dive",
-"Integration.qlik.com key API calls","App provisioning overview"," Publish app",,"","","","","         0","0","Deep dive",
-"Integration.qlik.com key API calls","App provisioning overview"," Create custom property",,"","","","","         0","0","Deep dive",
-"Integration.qlik.com key API calls","App provisioning overview"," Create folder on server (for data files)",,"","","","","         0","0","Deep dive",
-"Integration.qlik.com key API calls","App provisioning overview"," Create database connection",,"","","","","         0","0","Deep dive",
-"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","architecture - OEM SaaS scenario.png",,"","","","","         0","0","Technical - 1 day, Deep dive",
-"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","Technical - 1 day, Deep dive",
-"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","Technical - 1 day, Deep dive",
-"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","Single Sign on is enforced using a ticket with userID and his groups",,"","","","","         0","0","Technical - 1 day, Deep dive",
-"Integration.qlik.com key API calls","Architecture and API interaction of integration.qlik.com","An API tool creates the apps in Qlik Sense",,"","","","","         0","0","Technical - 1 day, Deep dive",
+"Integration.qlik.com key API calls","App provisioning overview","Let's have a closer look at how we can give each tenant a private app that only contains his data",,"","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com key API calls","App provisioning overview","# App provisioning (per customer)",,"","","","","         0","0","Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","App provisioning overview"," Create stream",,"","","","","         0","0","Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","App provisioning overview"," Copy template app",,"","","","","         0","0","Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","App provisioning overview"," Replace script and reload app",,"","","","","         0","0","Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","App provisioning overview"," Publish app",,"","","","","         0","0","Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","App provisioning overview"," Create custom property",,"","","","","         0","0","Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","App provisioning overview"," Create folder on server (for data files)",,"","","","","         0","0","Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","App provisioning overview"," Create database connection",,"","","","","         0","0","Deep dive, Technical - 2 hours",
+"Integration.qlik.com key API calls","App provisioning overview","# Video: the concept of SaaS automation explained",,,,,,,,,
+"Integration.qlik.com key API calls","App provisioning overview","https://youtu.be/OulQS-1fH-A",,"","","","","         0","0","Deep dive, Technical - 2 hours",
 "Integration.qlik.com key API calls","API architecture interaction matrix: which APIs are available for us?","API components overview.png",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","Qlik Sense API overview in a mind map","mindMapAPIIntegration.png",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","Deployment","> How do we automatically install and configure Qlik Sense for our customers?",,,,,,,,,
-"Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","Using powershell we download and install using a `silent script`",,"","","","","         0","0","Deep dive",
-"Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","Once the certificates are in a specific folder, we can use them to communicate to the Qlik Sense APIs",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","Using powershell we [download and install](https://github.com/QHose/QRSMeteor/tree/master/.automation/InstallationSoftware) Qlik Sense using a `silent script`",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","Once the client certificate is in a specific folder, we can use them to communicate to the Qlik Sense APIs. Make sure your API tool user has access to this folder!",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","# Powershell script",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","- Create shared folder
 - Assign access rights
@@ -1947,16 +1947,56 @@ Basically all the things you can do yourself when you use an app
 - See the most recent version of this script in your `C:\GitHub\QRSMeteor\.automation\InstallationSoftware` folder.",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","```powershell
 $SHARED_NAME = ""QlikSenseShare""
-$SHARED_FOLDER = ""C:\""+$SHARED_NAME
+$SHARED_FOLDER = ""C:\"" + $SHARED_NAME
 Write-Host 'Creating a shared folder on' $SHARED_FOLDER
 New-Item $SHARED_FOLDER –type directory
 New-SmbShare –Name $SHARED_NAME –Path $SHARED_FOLDER –FullAccess Everyone  
 
-Write-Host 'Start Meteor installer...'
-Invoke-Expression; '.\InstallMeteor.exe'
+$Username = ""qService""
+$Password = ""Qlik123!@#$%""
+
+$group = ""Administrators""
+
+$adsi = [ADSI]""WinNT://$env:COMPUTERNAME""
+$existing = $adsi.Children | where {$_.SchemaClassName -eq 'user' -and $_.Name -eq $Username }
+
+if ($existing -eq $null) {
+
+    Write-Host ""Creating new local user $Username.""
+    & NET USER $Username $Password /add /y /expires:never
+    
+    Write-Host ""Adding local user $Username to $group.""
+    & NET LOCALGROUP $group $Username /add
+
+}
+else {
+    Write-Host ""Setting password for existing local user $Username.""
+    $existing.SetPassword($Password)
+}
+
+Write-Host ""Ensuring password for $Username never expires.""
+& WMIC USERACCOUNT WHERE ""Name='$Username'"" SET PasswordExpires=FALSE
+
+$url = ""https://qliktechnologies365-my.sharepoint.com/personal/mbj_qlik_com/_layouts/15/guestaccess.aspx?docid=07856511345d94c879526d0704de32982&authkey=AeXFme3frDQT9_63NE_-XOY""
+$QlikSenseInstaller = ""$SHARED_FOLDER\Qlik_Sense_setup.exe""
+$start_time = Get-Date
 
 Write-Host 'Download and start Qlik Sense installer...'
-. { iwr -useb 'http://localhost:4000/Qlik_Sense_setup.exe' } | iex; ""c:\Qlik_Sense_setup.exe -s -l '.\log.txt' spc='.\spc.cfg' userwithdomain='$env:ComputerName\$env:UserName' userpassword='changeMeLater'""
+$ProgressPreference = 'SilentlyContinue'
+Invoke-WebRequest -Uri $url -OutFile $QlikSenseInstaller
+Write-Output ""Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)""
+
+
+& $QlikSenseInstaller -s -l "".\log.txt"" spc='.\spc.cfg' userwithdomain=""$env:COMPUTERNAME\$Username"" userpassword=$Password
+Write-Output ""Qlik Sense is installer is now running in the background, please wait 20 minutes... If ready you will see the shortcuts on your desktop. Try to open the QMC, but don't do anything... Next you can start QRSSTART.BAT for the second time. Make sure you adjust the settings-...Json file. set installQlikSense to false.""
+
+# If running in the console, wait for input before closing.
+if ($Host.Name -eq ""ConsoleHost"")
+{ 
+    Write-Host ""Press any key to continue...""
+    $Host.UI.RawUI.FlushInputBuffer()   # Make sure buffered input doesn't ""press a key"" and skip the ReadKey().
+    $Host.UI.RawUI.ReadKey(""NoEcho,IncludeKeyUp"") > $null
+}
 ```",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","## Qlik Sense config file",,,,,,,,,
 "Integration.qlik.com key API calls","Automatic installation of your software (including Qlik Sense)","```XML
@@ -1990,6 +2030,7 @@ Write-Host 'Download and start Qlik Sense installer...'
 "Integration.qlik.com key API calls","Insert license","```
         var response = qrs.post('/qrs/license', { control: Meteor.settings.private.LicenseControlNumber }, newLicense);
 ```",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com key API calls","Insert license","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js)",,,,,,,,,
 "Integration.qlik.com key API calls","Insert user access rules","Each user should only get access to Qlik Sense via your SaaS platform. So ONLY if your SaaS platform decided allow the user, the user should get access.",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","Insert user access rules","So all users should get a Qlik Token when they are authenticated",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","Insert user access rules","```
@@ -2015,6 +2056,7 @@ export function insertUserAccessRule() {
     }
 }
 ```",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com key API calls","Insert user access rules","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js#L62)",,,,,,,,,
 "Integration.qlik.com key API calls","Setup Qlik Sense Proxy (QPS)","You first get the proxy ID
 ```
 function getProxyId() {
@@ -2062,6 +2104,7 @@ function updateProxy(proxyId, proxyConfig) {
     }
 }
 ```",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com key API calls","Setup Qlik Sense Proxy (QPS)","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js)",,,,,,,,,
 "Integration.qlik.com key API calls","Upload template apps","We stored all template apps in a folder (or web location)",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","Upload template apps","We check if the app exists in Sense, if not upload it, and publish into correct stream",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","Upload template apps","```
@@ -2127,10 +2170,9 @@ async function uploadApp(filePath, appName) {
     });
 }
 ```",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com key API calls","Upload template apps","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L63)",,,,,,,,,
 "Integration.qlik.com key API calls","App provisioning","> Create an app for each customer which only contains their specific data (model)",,"","","","","         0","0","Deep dive",
-"Integration.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","The ""loop"" to execute to ensure each *customer* gets each template *app*",,"","","","","         0","0","Technical - 1 day, Deep dive",
-"Integration.qlik.com key API calls","Example automation code to put in your SaaS platform: the loop","generationLoop.png",,"","","","","         0","0","Technical - 1 day, Deep dive",
-"Integration.qlik.com key API calls","QRS: Copy the template app","# make a POST REST API call ",,"","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com key API calls","QRS: Copy the template app","# To copy an app you will make a POST REST API call to the QRS API",,"","","","","         0","0","Technical - 1 day",
 "Integration.qlik.com key API calls","QRS: Copy the template app","```javascript
 HTTP.post('http://' + senseHost + ':' + senseConfig.port + '/' + virtualProxy + '/qrs/app/' + guid + '/copy', {
             headers: authHeaders,
@@ -2167,6 +2209,7 @@ const config = {
 var qix = await enigma.getService('qix', config);
         console.log('############### Connected');
 ```",,"","","","","         0","0","Technical - 1 day, Deep dive",
+"Integration.qlik.com key API calls","Connect to Qlik Sense using Enigma.js","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L250)",,,,,,,,,
 "Integration.qlik.com key API calls","Engine: Create a folder data connection","# Create a windows folder so each customer can save and upload its own files [help](http://help.qlik.com/en-US/sense-developer/3.2/Subsystems/EngineAPI/Content/Classes/AppClass/App-class-CreateConnection-method.htm)",,"","","","","         0","0","Technical - 1 day, Deep dive",
 "Integration.qlik.com key API calls","Engine: Create a folder data connection","```javascript
   var qConnectionId = await qix.app.createConnection({
@@ -2176,6 +2219,7 @@ var qix = await enigma.getService('qix', config);
         })
         console.log('created folder connection: ', qConnectionId);
 ```",,"","","","","         0","0","Technical - 1 day, Deep dive",
+"Integration.qlik.com key API calls","Engine: Create a folder data connection","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L250)",,,,,,,,,
 "Integration.qlik.com key API calls","Engine API:  Example code to replace the script from the template, reload and save the app","# extract the script so you can find/replace the database connection or anything you like",,"","","","","         0","0","Technical - 1 day, Deep dive, Developer",
 "Integration.qlik.com key API calls","Engine API:  Example code to replace the script from the template, reload and save the app","```
 var script = await qix.app.getScript();
@@ -2192,6 +2236,7 @@ await qix.app.doReload()
 "Integration.qlik.com key API calls","Engine API:  Example code to replace the script from the template, reload and save the app","```javascript
 await qix.app.doSave();
 ```",,"","","","","         0","0","Technical - 1 day, Deep dive, Developer",
+"Integration.qlik.com key API calls","Engine API:  Example code to replace the script from the template, reload and save the app","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L276)",,,,,,,,,
 "Integration.qlik.com key API calls","QRS: publish the app","Publishing apps in something you would normally do in the Qlik Management Console (QMC), therefore we use the QRS API to make the API call below. ",,,,,,,,,
 "Integration.qlik.com key API calls","QRS: publish the app","# make a `PUT` REST API call to `/qrs/app/.../publish`",,"","","","","         0","0","Developer",
 "Integration.qlik.com key API calls","QRS: publish the app","```javascript
@@ -2207,30 +2252,7 @@ await qix.app.doSave();
                 }
             })
 ```",,"","","","","         0","0","Technical - 1 day, Deep dive, Developer",
-"Integration.qlik.com key API calls","QRS: Upload template apps","# Initialize Qlik Sense",,"","","","","         0","0","PreSales",
-"Integration.qlik.com key API calls","QRS: Upload template apps","If the environment is empty (after we installed it using a silent script), we want to populate it with our template apps. ",,"","","","","         0","0","PreSales, Deep dive",
-"Integration.qlik.com key API calls","QRS: Upload template apps","Node.js code",,"","","","","         0","0","PreSales",
-"Integration.qlik.com key API calls","QRS: Upload template apps","```javascript
-function uploadApp(filePath, fileSize, appName) {
-console.log('QRS Functions upload App, with name ' + appName + ', with fileSize: ', fileSize + ' and filePath ' + filePath);
-    var formData = {
-        my_file: fs.createReadStream(filePath)
-    };
-    request.post({
-        url: qlikServer + '/qrs/app/upload?name=' + appName + '&xrfkey=' + senseConfig.xrfkey,
-        headers: {
-            'Content-Type': 'application/vnd.qlik.sense.app',
-            'hdr-usr': senseConfig.headerValue,
-            'X-Qlik-xrfkey': senseConfig.xrfkey
-        },
-        formData: formData
-    }, function optionalCallback(err, httpResponse, body) {
-        if (err) {
-            return console.error('upload failed:', err);
-        }
-        console.log('Upload successful!  Server responded with:', body);
-    });
-```",,"","","","","         0","0","PreSales, Deep dive",
+"Integration.qlik.com key API calls","QRS: publish the app","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L603)",,,,,,,,,
 "Integration.qlik.com key API calls","QPS: create and get virtual proxies","# Get or create a new configuration for virtual proxies",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","QPS: create and get virtual proxies","## Create virtual proxy",,,,,,,,,
 "Integration.qlik.com key API calls","QPS: create and get virtual proxies","Automatically create all virtual proxies needed for `QRSMeteor` (the demo site), see [help](http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Virtual-Proxy-Create.htm)",,"","","","","         0","0","PreSales, Deep dive",
@@ -2393,6 +2415,11 @@ export async function makeSelectionInFields(selections) {
 }
 ```",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","Web: set selections via API","iframe https://help.qlik.com/en-US/sense/April2018/APIs/EngineAPI/services-Field-SelectValues.html",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com key API calls","Security overview","# Security integration
+- Users get a Single Sign On via a ticket exchange  (or SAML, JWT, AD) 
+- The ticket contains the userId and groups from your Saas platform
+- logout",,"","","","","         0","0","PreSales, Technical - 2 hours, Hosting Ops, Deep dive",
+"Integration.qlik.com key API calls","Security overview","QPS - introduction to security flow.png",,"","","","","         0","0","Hosting Ops, Technical - 2 hours",
 "Slide generator","Goals","Inspire what you can do with our *associative engine*",,"","","","","         0","0","What is this slide generator?, Technical - 2 hours",
 "Slide generator","Goals","In the end you want to explain a topic, but...
 - different users have different needs
