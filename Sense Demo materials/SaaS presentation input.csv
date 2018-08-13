@@ -443,7 +443,7 @@ domain names and translate them to
 "API -  generic introduction","Question -  How do you browse the internet today?","<q>You need to know which <b>sites</b> are available, right?</q>",,"","","","","         0","0","PreSales",
 "API -  generic introduction","How to get started with a REST API?","<q>You need to know with <b>endpoints</b> are available</q>",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","How to get started with a REST API (2)?","<q><b>Endpoints</b> are URLs that you can call to get or modify something</q>",,"","","","","         0","0","PreSales, Technical - 1 day",
-"API -  generic introduction","Example QRS API endpoints","iframe http://help.qlik.com/en-US/sense-developer/November2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-QRS-API-Endpoints.htm",,"","","","","         0","0","PreSales, Technical - 1 day",
+"API -  generic introduction","Example QRS API endpoints","iframe https://help.qlik.com/en-US/sense-developer/November2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-QRS-API-Endpoints.htm",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","Example QRS API endpoints","!comment
 This slide shows some examples of special purpose endpoints from the Qlik Sense help for developers. These APIs are in the category of the Qlik Sense Repository APIs. These APIs make it possible to communicate with the Qlik Sense Repository which has all the settings content, security rules, user information,… from the Qlik Sense environment. Click on the link to go to the corresponding help page.
 ",,,,,,,,,
@@ -662,12 +662,12 @@ $(""#btn_1"").click(function() {
 "Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","iframe https://webapps.qlik.com/#/",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Developer, CTO, Product Owner, C-Level - non-technical",
 "Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","[Marketing 360](http://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","Introduction - 30 minutes",
 "Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","[European datamarket](http://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","Technical - 1 day, PreSales, Introduction - 30 minutes",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","Create a [custom hub](http://www.axisgroup.com/simple-hub/) using the getApplist API",,"","","","","         0","0","Technical - 1 day, Introduction - 30 minutes",
+"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","Create a custom hub using the [getApplist API](https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/APIs/Content/CapabilityAPIs/qlik-global-interface.htm)",,"","","","","         0","0","Technical - 1 day, Introduction - 30 minutes",
 "Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","!comment
 This slide gives a real life example of embedding. It shows you a collection of example web sites where Qlik Sense has been embedded.The URL is: [https://webapps.qlik.com](https://webapps.qlik.com).
 ",,"","","","","         0","0","Developer",
 "Web integration","Qlik embedded demos","# Barcelona Marathon",,,,,,,,,
-"Web integration","Qlik embedded demos","iframe http://webapps.qlik.com/barnamarato/index.html#/?lang=en",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Qlik embedded demos","iframe https://webapps.qlik.com/barnamarato/index.html#/?lang=en",,"","","","","         0","0","Introduction - 30 minutes",
 "Web integration","Qlik embedded demos","# Best city for you?",,,,,,,,,
 "Web integration","Qlik embedded demos","iframe https://webapps.qlik.com/euronews/city/index.html#/?lang=en",,"","","","","         0","0","Introduction - 30 minutes",
 "Web integration","Qlik embedded demos","# Best neighbourhoud?",,,,,,,,,
@@ -814,7 +814,7 @@ On the bottom of the screen there are 2 examples of IFrame URLs. The first one s
 - embed the hub, a sheet or just a chart.
 
 Now try it yourself below...",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","iframe http://integration.qlik.com/anon/dev-hub/",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","iframe https://integration.qlik.com/anon/dev-hub/",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","!comment
 Demonstrate the different possibilities with IFrame. Click on the link to go to the integration demo.
 ",,,,,,,,,
@@ -1338,7 +1338,7 @@ This slide gives some performance tips when using our APIs.
 "Web integration","Theming","https://www.youtube.com/watch?v=OL83rP9vgHU",,,,,,,,,
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","These [videos](http://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm) are designed to help you get started with and improve your knowledge and understanding of the APIs and tools delivered with Qlik Sense and Qlik Analytics Platform.",,"","","","","         0","0","Technical - 1 day, Developer",
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","# Video overview",,"","","","","         0","0","Technical - 1 day, Developer",
-"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","iframe http://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm",,"","","","","         0","0","Developer, Technical - 1 day",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","iframe https://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm",,"","","","","         0","0","Developer, Technical - 1 day",
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","Also see [Qlik help](https://help.qlik.com/en-US/videos)",,"","","","","         0","0","Developer, Technical - 1 day",
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","!comment
 These videos will help you getting started:
@@ -3375,7 +3375,7 @@ export function upsertCustomPropertyByName(name, choiceValues) {
 "QRS API","Exercise: How to use Postman using windows authentication","Open the hub or the QMC in Chrome and authenticate to Qlik Sense.",,"","","","","         0","0","Exercises",
 "QRS API","Exercise: How to use Postman using windows authentication","Go to Postman and in the URL section type https://<machine hostname>/qrs/About?Xrfkey=12345678qwertyui",,"","","","","         0","0","Exercises",
 "QRS API","Exercise: How to use Postman using windows authentication","Also add the XREF key in the headers",,"","","","","         0","0","Exercises",
-"QRS API","Exercise: Connect to QRS API using Postman","iframe http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Example-Connect-Postman.htm",,"","","","","         0","0","Exercises",
+"QRS API","Exercise: Connect to QRS API using Postman","iframe https://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Example-Connect-Postman.htm",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 2","Next we are going to use Postman (Chrome app) to connect to the QRS API using
 - Header authentication",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,"","","","","         0","0","Exercises",
@@ -4201,7 +4201,7 @@ Basically all the things you can do yourself when you use an app
 - the requests and responses",,"","","","","         0","0","PreSales, Developer",
 "Engine API","What can you do? Which end points are available?","https://www.youtube.com/watch?v=LqcFDe7V-CU",,"","","","","         0","0","PreSales, Developer",
 "Engine API","What can you do? Which end points are available?","# Engine API explorer documentation",,"","","","","         0","0","Developer",
-"Engine API","What can you do? Which end points are available?","iframe http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/Dev-Hub/Content/EngineApiExplorer/engine-api-explorer.htm",,"","","","","         0","0","Deep dive, Developer",
+"Engine API","What can you do? Which end points are available?","iframe https://help.qlik.com/en-US/sense-developer/September2017/Subsystems/Dev-Hub/Content/EngineApiExplorer/engine-api-explorer.htm",,"","","","","         0","0","Deep dive, Developer",
 "Engine API","Exercise Dev-hub Engine API explorer - My first API call","# Try to make your first API call",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
 "Engine API","Exercise Dev-hub Engine API explorer - My first API call","In the screen below, Select a macro 'get applist' and press 'execute'",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
 "Engine API","Exercise Dev-hub Engine API explorer - My first API call","<iframe class=""SenseEmbedFrame"" src=""http://integration.qlik.com/anon/dev-hub/engine-api-explorer"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
@@ -4580,8 +4580,8 @@ async function setSelectionInSense(app, field, value) {
 ```
 ",,"","","","","         0","0","Deep dive",
 "Engine API","Example code - make a selection","https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/select-values-in-field.htm",,"","","","","         0","0","Deep dive",
-"Engine API","Example code - make a selection","iframe http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/select-all-values-field.htm",,,,,,,,,
-"Engine API","Get selected values","iframe http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm",,,,,,,,,
+"Engine API","Example code - make a selection","iframe https://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/select-all-values-field.htm",,,,,,,,,
+"Engine API","Get selected values","iframe https://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm",,,,,,,,,
 "Engine API","Example code: create a hyperCube","```
 //https://gist.github.com/mindspank/58b3080a342b1cd937e6
 //https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/WorkingWithAppsAndVisualizations/CreateVisualizations/create-hypercube.htm
@@ -5281,7 +5281,7 @@ Big data analytics can now be approached through a shopping cart like process wh
 "Other","Introduction to NPrinting APIs","#Nprinting 16",,,,,,,,,
 "Other","Introduction to NPrinting APIs","Iframe https://community.qlik.com/docs/DOC-8439",,,,,,,,,
 "Other","Introduction to NPrinting APIs","# Nprinting April 2018",,,,,,,,,
-"Other","Introduction to NPrinting APIs","Iframe http://betahelp.qlik.com/en-US/nprinting/April2018/Content/Introduction/Introduction.htm",,,,,,,,,
+"Other","Introduction to NPrinting APIs","iframe https://betahelp.qlik.com/en-US/nprinting/April2018/Content/Introduction/Introduction.htm",,,,,,,,,
 "Other","Version /source control integration using In4BI","Version Control, Deployment and Governance are important topics when using BI tools in general. For Qlik Sense there is a solution: Platform Manager. In short Platform Manager provides (source: [in4BI](https://in4bi.com/platform-manager-qlik-sense/):",,,,,,,,,
 "Other","Version /source control integration using In4BI","Integrated Version Control with ability to use the Qlik Sense MyWork stream as your workspace",,,,,,,,,
 "Other","Version /source control integration using In4BI","Simple Deployment to all of your Qlik Sense servers",,,,,,,,,
