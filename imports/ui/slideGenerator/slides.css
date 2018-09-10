@@ -54,8 +54,11 @@ logout?targetUr…host:81/qmc:91
     background-repeat: no-repeat;
     background-color: #F8F0E5;
     margin-top: 30px;
-    /* padding-top: 30px; */
     padding-left: 0;
+}
+
+.footer .ui.grid {
+    padding: 0;
 }
 
 .reveal {

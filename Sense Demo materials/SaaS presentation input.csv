@@ -88,8 +88,8 @@ With Qlik Sense you have to possibility to go for complete self-service. To make
 "What is an app?","Video: The Qlik Associative Model","iframe https://community.qlik.com/blogs/qlikviewdesignblog/2017/10/31/my-pleasant-surprises-qliks-associative-difference",,,,,,,,,
 "What is an app?","Video: The Qlik Associative Model","!comment
 This video explains the core differentia tor of Qlik. This is our way of visualizing ALL your data. Our QIX engine makes sure that all your data is connected and available for complete analysis. We do not use Query based calculations on the data. With queries you will lose a part of your data, your performance will suffer or you need to add additional performance enhancement tools in between. Which will impact complexity of your system landscape. With our QIX technology, you will never have those problem and you will keep your environment simple with just 1 platform: Qlik Sense. ",,,,,,,,,
-"What is an app?","What is governed self service with Qlik Sense?","iframe selfService_embedded",,"","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner",
-"What is an app?","What is governed self service with Qlik Sense?","!comment
+"What is an app?","Try the demo below: What is governed self service with Qlik Sense?","iframe selfService_embedded",,"","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner",
+"What is an app?","Try the demo below: What is governed self service with Qlik Sense?","!comment
 Click on the link to see our self-service demo. With our governed self-service you have the possibility to define how to implement guided self-service. By creating roles or groups we have created different levels of self service on Qlik Sense.
  - A consumer can only analyze data.
  - A contributor can create own private sheets.
@@ -3599,11 +3599,12 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 "QPS - Proxy API","Architecture scenarios","qps - reverse proxy architecture.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Example code to logout a user via QPS API call","API - logout user.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Example code to logout a user via QPS API call","``` 
-call.request = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
+The REST API end point = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
 ```",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Example code to logout a user via QPS API call","``` 
-call.response = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
+The result of the call via an HTTPS request = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
 ``` ",,"","","","","         0","0","Deep dive",
+"QPS - Proxy API","Example code to logout a user via QPS API call","View [source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L474) on GitHub.",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Get the properties of the current user","QPS - get current logged in user session.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Proxy - Cross origin issues","Proxy - settings.png",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Proxy - Cross origin issues","CORS error.png",,"","","","","         0","0","Deep dive",
@@ -5102,8 +5103,6 @@ You will manage the whole configuration using the APIs. See the API chapters on 
 "Deployment - how to...","Video: Installing Qlik Sense in a single node site - Qlik Sense","https://youtu.be/lx2R6LPKKPo?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
 "Deployment - how to...","Video: Installing Qlik Sense in a multi-node site - Qlik Sense","https://youtu.be/RdaNXjUb1vc?list=PLqJfqgR62cVCnEMwaaraNbWp3U5s_bwel",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
 "Deployment - how to...","install Qlik Sense","iframe https://help.qlik.com/en-US/sense/September2017/Subsystems/PlanningQlikSenseDeployments/Content/Deployment/Qlik-Sense-installation.htm",,,,,,,,,
-"Deployment - how to...","How to: Change hostname","https://youtu.be/Dvub_4fikv0",,,,,,,,,
-"Deployment - how to...","How to: Change hostname","A short video documenting how to change the hostname of the Qlik Sense server.  This video was made on a Single Node full install of Qlik Sense server.  Changing the hostname on a rim node proxy may follow a different process.",,,,,,,,,
 "Deployment - how to...","Migrating Qlik Sense September 2017 / November 2017 / February 2018 to a new server","https://youtu.be/TLgJmT7RDsw",,,,,,,,,
 "Deployment - how to...","Migrating Qlik Sense September 2017 / November 2017 / February 2018 to a new server","# On original server
 In QMC, go to Certificates section and export new certificates using the FQDN of the new server.
@@ -5168,9 +5167,10 @@ Access the QMC and/or Hub to confirm that all previous working functionality is 
 "Deployment - how to...","Video: Activating license and allocating users access","Tip: for OEM use cases I prefer to use `username like *` since the authorization module in your SaaS platform should decide who can enter Qlik Sense and who not...",,,,,,,,,
 "Deployment - how to...","Change the host name of Qlik Sense (certificates, pfx, cert)","Use this [document](/docs/GTEA-Changehostnameandcertificatesafteraninstallation-180718-1309-54.pdf)",,,,,,,,,
 "Deployment - how to...","Change the host name of Qlik Sense (certificates, pfx, cert)","You can change the hostname via [https://www.base64encode.org/]",,,,,,,,,
-"Deployment - how to...","Change the host name of Qlik Sense (certificates, pfx, cert)","Be aware that you need to insert the hostname to which your end users also connect. You can't have 2 certificates at the same time (For internal and external purposes for example). So both users as well as the Sense services will use your new hostname and certificates.",,,,,,,,,
-"Deployment - how to...","Change the host name of Qlik Sense (certificates, pfx, cert)","If  you get a 403 error, make sure you export your certificates again and copy them to your external software. So you can make your API calls again.",,,,,,,,,
+"Deployment - how to...","Change the host name of Qlik Sense (certificates, pfx, cert)","If  you get a 403 error, make sure you export your certificates again and copy them to your external software. So you can make your API calls again. Als omake",,,,,,,,,
 "Deployment - how to...","Change the host name of Qlik Sense (certificates, pfx, cert)","If it does not work, make sure you can login via localhost, your new DNS on the Sense machine itself before you try to connect in your SaaS platform.",,,,,,,,,
+"Deployment - how to...","Change the host name of Qlik Sense (certificates, pfx, cert)","https://youtu.be/Dvub_4fikv0",,,,,,,,,
+"Deployment - how to...","Change the host name of Qlik Sense (certificates, pfx, cert)","A short video documenting how to change the hostname of the Qlik Sense server.  This video was made on a Single Node full install of Qlik Sense server.  Changing the hostname on a rim node proxy may follow a different process.",,,,,,,,,
 "Deployment - how to...","Change the host name of Qlik Sense (certificates, pfx, cert)","If you get 'waiting for a new session' restart the 'QlikSense Service Dispatcher' or your server.",,,,,,,,,
 "Deployment - how to...","Change the host name of Qlik Sense (certificates, pfx, cert)","As of Qlik Sense June 2017 you also need to run the Repository bootstrap process as [follows](https://community.qlik.com/thread/153300):
 
@@ -5178,7 +5178,7 @@ Open cmd.exe with administrative rights
 Change the directory to the Repository install path
 Default path C:\""Program Files""\Qlik\Sense\Repository
 Execute the following command: 'Repository.exe -bootstrap -iscentral -restorehostname'",,,,,,,,,
-"Deployment - how to...","Change the host name of Qlik Sense (certificates, pfx, cert)","Subtopic",,,,,,,,,
+"Deployment - how to...","Change the host name of Qlik Sense (certificates, pfx, cert)","> Note that the certificates you will use for end users to get 'https' have nothing to do with the certificates used by the Qlik Sense services. So in your MMC you will see both. ",,,,,,,,,
 "Deployment - how to...","Video: How to use Qlik Sense with IIS","https://youtu.be/ybGIYdHenqE",,,,,,,,,
 "Deployment - how to...","Video: How to use Qlik Sense with IIS","!comment
 This video shows you how to embed Qlik Sense in a Microsoft IIS webserver.",,,,,,,,,

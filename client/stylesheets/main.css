@@ -70,43 +70,6 @@ html {
     margin-top: 150px;
 }
 
-
-
-/* 
-.footer {
-    .footer .sticky {
-        position: absolute;
-        bottom: 0;
-        width: 100%;    
-    }
-    .container-fluid {
-        height: 160px;
-        background-image: url('./images/bg_footer.jpg');
-        background-size: auto 100%;
-        background-position: bottom right;
-        background-repeat: no-repeat;  
-        background-color: @color-tan;
-        padding-top: 60px;
-        padding-left: 0;
-        ul {
-            padding-left: 0;
-            li {
-                font-size: 18px;
-                font-family: @font-oswald;
-                display: inline-block;
-                padding-right: 20px;
-                text-transform: uppercase;
-                .logo {
-                    width: 110px;
-                }
-                a {
-                    color: @color-gray;
-                }
-            }
-        }
-    }
-} */
-
 .deleteStream,
 .customer-row,
 .copyApp,

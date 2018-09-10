@@ -127,7 +127,7 @@ Template.useCaseSelection.events({
     }, 100);
   },
   "click #videoButton": async function(e, t) {
-    nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
+    nav.selectMenuItemInSense("*Video overview:*");
   },
   "blur .ui.dropdown.selection .menu": async function(e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
     var selectedRole = t.$(".ui.dropdown").find(":selected").val();
