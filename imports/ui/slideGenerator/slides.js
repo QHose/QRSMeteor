@@ -453,5 +453,5 @@ function youtube_parser(url) {
 }
 
 function checkTextIsImage(text) {
-  return text.match(/\.(jpeg|jpg|gif|png)$/) != null;
+  return text.match(/\.(jpeg|jpg|gif|png|svg)$/) != null;
 }
