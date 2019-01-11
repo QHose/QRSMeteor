@@ -29,7 +29,7 @@ else {
 Write-Host "Ensuring password for $Username never expires."
 & WMIC USERACCOUNT WHERE "Name='$Username'" SET PasswordExpires=FALSE
 
-$url = "https://qliktechnologies365-my.sharepoint.com/personal/mbj_qlik_com/_layouts/15/guestaccess.aspx?docid=07856511345d94c879526d0704de32982&authkey=AeXFme3frDQT9_63NE_-XOY"
+$url = "http://gofile.me/6mp1l/ZpfXou7TT"
 $QlikSenseInstaller = "$SHARED_FOLDER\Qlik_Sense_setup.exe"
 $start_time = Get-Date
 
