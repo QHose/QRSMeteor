@@ -154,23 +154,23 @@
         });
 
         Template.registerHelper('senseServerHub', function() {
-            return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/hub';
+            return 'https://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/hub';
         });
 
         Template.registerHelper('senseServerDevHub', function() {
-            return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/dev-hub';
+            return 'https://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/dev-hub';
         });
 
         Template.registerHelper('senseServerQMC', function() {
-            return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/qmc';
+            return 'https://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage + '/qmc';
         });
 
         Template.registerHelper('senseServer', function() {
-            return 'http://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage;
+            return 'https://' + senseConfig.host + ':' + senseConfig.port + '/' + senseConfig.virtualProxyClientUsage;
         });
 
         Template.registerHelper('webIntegrationDemo', function() {
-            return 'http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort;
+            return 'https://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort;
         });
 
         //Integration presentation Iframe selector
@@ -181,7 +181,7 @@
             var url = senseConfig.host + ':' + senseConfig.port + '/' + proxy + '/single/?appid=' + appId + '&sheet=' + IntegrationPresentationSelectionSheet + '&opt=currsel';
             if (Meteor.settings.public.useSSL) {
                 return 'https://' + url;
-            }else{
+            } else {
                 return 'http://' + url;
             }
         });
