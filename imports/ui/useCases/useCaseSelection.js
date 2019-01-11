@@ -25,11 +25,11 @@ var qix = null;
 
 //var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
 var possibleRoles = [
-  "Developer",
-  "Hosting Ops",
-  "Business Analyst",
-  "CTO",
-  "C-Level - non-technical"
+    "Developer",
+    "Hosting Ops",
+    "Business Analyst",
+    "CTO",
+    "C-Level - non-technical"
 ];
 
 // // ONCREATED
@@ -37,41 +37,41 @@ var possibleRoles = [
 //     await initQlikSense();
 // })
 
-export async function initQlikSense(){
-//wait a bit, so Meteor can login, before requesting a ticket...
-Meteor.setTimeout(
-async function() {
-    //connect to qlik sense
-    qix = await makeSureSenseIsConnected();
-    // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
-    await setChangeListener(
-    qix
-    );
+export async function initQlikSense() {
+    //wait a bit, so Meteor can login, before requesting a ticket...
+    Meteor.setTimeout(
+        async function() {
+            //connect to qlik sense
+            qix = await makeSureSenseIsConnected();
+            // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
+            await setChangeListener(
+                qix
+            );
 
-    //see if the user started up this screen, with a selection parameter
-    var value = getQueryParams(
-    "selection"
+            //see if the user started up this screen, with a selection parameter
+            var value = getQueryParams(
+                "selection"
+            );
+            // console.log('getQueryParams return value', value)
+            //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
+            if (value) {
+                console.log(
+                    "%%%%%%%%%%  Slides oncreated: Query string found: ",
+                    value
+                );
+                await nav.selectViaQueryId(
+                    value
+                );
+                // get the data and go to the slides
+                await getAllSlides();
+                // after we got all data in an array from sense, change the router/browser to the slides page
+                Router.go("slides");
+            } else {
+                // console.log('no query selection parameter found');
+            }
+        },
+        0
     );
-    // console.log('getQueryParams return value', value)
-    //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
-    if (value) {
-    console.log(
-        "%%%%%%%%%%  Slides oncreated: Query string found: ",
-        value
-    );
-    await nav.selectViaQueryId(
-        value
-    );
-    // get the data and go to the slides
-    await getAllSlides();
-    // after we got all data in an array from sense, change the router/browser to the slides page
-    Router.go("slides");
-    } else {
-    // console.log('no query selection parameter found');
-    }
-},
-0
-);
 }
 
 // Replace with more Meteor approach
@@ -110,7 +110,7 @@ Template.useCaseSelection.onRendered(async function() {
     $(".ui.dropdown").dropdown("refresh");
     var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
     $(".ui.dropdown").dropdown("set selected", textToShow);
-    
+
 })
 
 //
@@ -118,27 +118,27 @@ Template.useCaseSelection.onRendered(async function() {
 //
 
 Template.useCaseSelection.events({
-  "click .button.slides": async function(e, t) {
-    Session.set("sheetSelectorSeen", false);
-    Router.go("slides");
+    "click .button.slides": async function(e, t) {
+        Session.set("sheetSelectorSeen", false);
+        Router.go("slides");
 
-    setTimeout(function() {
-      nav.showSlideSelector();
-    }, 100);
-  },
-  "click #videoButton": async function(e, t) {
-    nav.selectMenuItemInSense("*Video overview:*");
-  },
-  "blur .ui.dropdown.selection .menu": async function(e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
-    var selectedRole = t.$(".ui.dropdown").find(":selected").val();
-    Session.set("sheetSelectorSeen", true);    
-    Cookies.set("currentMainRole", selectedRole);
+        setTimeout(function() {
+            nav.showSlideSelector();
+        }, 100);
+    },
+    "click #videoButton": async function(e, t) {
+        nav.selectMenuItemInSense("*Video overview:*");
+    },
+    "blur .ui.dropdown.selection .menu": async function(e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
+        var selectedRole = t.$(".ui.dropdown").find(":selected").val();
+        Session.set("sheetSelectorSeen", true);
+        Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
         Meteor.setTimeout(function() {
-          Router.go("slides");
+            Router.go("slides");
         }, 200);
-    
-}
+
+    }
 });
 
 
@@ -162,11 +162,11 @@ async function setSelectionInSense(field, value) {
 
 async function getTicket() {
     try {
-        return await Meteor.callPromise('getTicketNumber', { group: 'notProvided' }, Meteor.settings.public.slideGenerator.virtualProxy);        
+        return await Meteor.callPromise('getTicketNumber', { group: 'notProvided' }, Meteor.settings.public.slideGenerator.virtualProxy);
     } catch (error) {
-                var message = 'We could not setup single sing on with Qlik Sense. See your console window for more information';
-                console.error(message, error);
-                sAlert.error(message, error);        
+        var message = 'We could not setup single sing on with Qlik Sense. See your console window for more information';
+        console.error(message, error);
+        sAlert.error(message, error);
     }
 }
 
@@ -188,7 +188,7 @@ async function setSlideContentInSession(group) {
     };
 }
 
-export async function getQix(ticket=null) {
+export async function getQix(ticket = null) {
     // console.log('getQix with ticket:', ticket)
     try {
         const config = {
@@ -204,19 +204,19 @@ export async function getQix(ticket=null) {
                 }
             },
             listeners: {
-                'notification:*': async (event, data) => {
+                'notification:*': async(event, data) => {
                     // console.log('Engima notification received, event: ' + event + ' & data: ', data)
-                    if (data.mustAuthenticate || event==='OnSessionTimedOut') { //if the user is not authenticated anymore request a new ticket and get a new connection
+                    if (data.mustAuthenticate || event === 'OnSessionTimedOut') { //if the user is not authenticated anymore request a new ticket and get a new connection
                         var ticket = await getTicket();
                         getQix(ticket);
+                    } else {
+                        // var call = {};
+                        // call.action = "Engine API listener";
+                        // call.url = '';
+                        // call.request = 'Engima.js event: ' + event;
+                        // call.response = data;
+                        // REST_Log(call, Meteor.userId());
                     }
-                    else 
-                    var call = {};
-                    call.action = "Engine API listener";
-                    call.url = '';
-                    call.request = 'Engima.js event: ' + event;
-                    call.response = data;
-                    REST_Log(call, Meteor.userId());
                 },
             },
             handleLog: (message) => {
@@ -279,20 +279,18 @@ export async function getAllSlideHeadersPlain(qix) {
             }, {
                 qDef: {
                     qFieldDefs: ['Level 2'],
-                    "qSortCriterias": [
-                        {
-                            "qSortByState": 0,
-                            "qSortByFrequency": 0,
-                            "qSortByNumeric": 0,
-                            "qSortByAscii": 0,
-                            "qSortByLoadOrder": 1,
-                            "qSortByExpression": 1,
-                            "qExpression": {
-                                "qv": "max(CSVRowNo)"
-                            },
-                            "qSortByGreyness": 0
-                        }
-                    ],
+                    "qSortCriterias": [{
+                        "qSortByState": 0,
+                        "qSortByFrequency": 0,
+                        "qSortByNumeric": 0,
+                        "qSortByAscii": 0,
+                        "qSortByLoadOrder": 1,
+                        "qSortByExpression": 1,
+                        "qExpression": {
+                            "qv": "max(CSVRowNo)"
+                        },
+                        "qSortByGreyness": 0
+                    }],
                 }
             }]
         }
@@ -357,7 +355,7 @@ export async function setChangeListener(qix) {
             Meteor.setTimeout(async function wait() {
                 await getAllSlides();
                 Reveal.slide(0); //go to the first slide after a data refresh.           
-            },100)
+            }, 100)
         });
     } catch (error) {
         console.error('failed to set change listener: ', error);
