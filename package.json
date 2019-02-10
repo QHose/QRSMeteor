@@ -2,7 +2,7 @@
   "name": "qrsmeteor",
   "private": true,
   "dependencies": {
-    "@babel/runtime": "^7.2.0",
+    "@babel/runtime": "*",
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.1",
     "bufferutil": "^3.0.2",
@@ -26,6 +26,7 @@
     "showdown": "^1.5.5",
     "simpl-schema": "^0.2.3",
     "ssl-root-cas": "^1.2.5",
+    "stream-http": "^3.0.0",
     "underscore": "^1.8.3",
     "url": "^0.11.0",
     "url-join": "^1.1.0",

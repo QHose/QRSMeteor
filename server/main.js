@@ -176,7 +176,7 @@ var installQlikSense = async function() {
 
     console.log("------------------------------------");
     console.log(
-        'config file created! you can now run the "start.bat" in the "C:\GitHub\QRSMeteor\.automation\InstallationSoftware" folder as administrator'
+        'config file created! you can now run the "start.bat" in the "C:\\GitHub\QRSMeteor\\.automation\\InstallationSoftware" folder as administrator'
     );
     console.error(
         "We now create an error to ensure QRSMeteor stops further setup.  To test the Sense installation, you can open the QMC (also check the hostname). The QMC will ask for you license. But do not do anything like inserting the license. QRSMeteor will do this for you."
