@@ -110,9 +110,7 @@ Template.slideContent.onCreated(async function() {
     // and now let's get the slide content:
     instance.bullets.set(await getLevel3(level1, level2));
     //get the comment of the page
-    instance.comment.set(await getComment(level1, level2));
-
-    console.log('slideContent.onCreated', level2)
+    instance.comment.set(await getComment(level1, level2));    
 });
 
 Template.slideContent.helpers({
