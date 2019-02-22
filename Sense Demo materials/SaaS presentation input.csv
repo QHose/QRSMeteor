@@ -385,7 +385,7 @@ So, what are the steps of requesting data through a SaaS platform? In the SaaS p
  - Different systems can be connected and information shared.
  - Our Qlik Sense Proxy can be approached with APIs to ensure Single Sign-On between systems.
  - Authorization from the SaaS platform can be re-used  and communicated with the Qlik Sense platform.",,,,,,,,,
-"API -  generic introduction","Video: Embedding Qlik Sense in applications","https://youtu.be/EF2pakVYu3s",,"","","","","         0","0","PreSales, Technical - 1 day",
+"API -  generic introduction","Video: Embedding Qlik Sense in applications","https://youtu.be/zuNvZ_UTmow",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","Video: Embedding Qlik Sense in applications","!comment
 This video shows the different embedding possibilities of Qlik Sense.",,,,,,,,,
 "API -  generic introduction","Key components to get started?","It all starts with 2 systems that want to talk or do something together
@@ -406,7 +406,7 @@ This video shows the different embedding possibilities of Qlik Sense.",,,,,,,,,
  - In order to program the APIs you'll need an IDE (Integrated Development Environment). You are free to use which one you want. Qlik Sense Desktop and Enterprise comes with an IDE to get you started. This is our Development Hub and is accessible through the Qlik Sense Hub. This IDE is mainly used for testing purposes.
  - To maintain your code and versions, it is strongly advisable to use a source version control system. GITHUB is one of the most well know systems. Click on the link to be redirected to GITHUB.
 In order to program the APIs, knowledge of HTML, CSS, Javascript and JSON is required.",,,,,,,,,
-"API -  generic introduction","URL - what are the components?","`https://integration.qlik.com/anon/qmc/tasks`
+"API -  generic introduction","URL - what are the components?","`https://senseintegration.qlik.com/anon/qmc/tasks`
 - protocol (http, https, ws, wss)
 - server/host/DNS
 - port
@@ -802,13 +802,13 @@ This slide shows you an overview of all the components that are used for embeddi
  - On the SaaS platform you have the webpage, consisting out of HTML, CSS and JavaScript. In the HTML, the IFrame refers to a URL of Qlik Sense.
  - At the point that the HTML page is loaded, connection to the Qlik Sense server is needed. To get access to the server, the virtual proxy must be passed first (authenticating).
 On the bottom of the screen there are 2 examples of IFrame URLs. The first one shows a sheet in an analysis state. The second one shows a sheet where a certain selection has been made.",,,,,,,,,
-"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","You can make your first integration using our [dev-hub](https://integration.qlik.com/anon/dev-hub/). This tool will highlight the key IFrame integration options:
+"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","You can make your first integration using our [dev-hub](https://senseintegration.qlik.com/anon/dev-hub/). This tool will highlight the key IFrame integration options:
 - forward selections
 - make images static (disable selections)
 - embed the hub, a sheet or just a chart.
 
 Now try it yourself below...",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","iframe https://integration.qlik.com/anon/dev-hub/",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","iframe https://senseintegration.qlik.com/anon/dev-hub/",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Demonstration of the Dev-hub: Single object integration (IFrame)","!comment
 Demonstrate the different possibilities with IFrame. Click on the link to go to the integration demo.
 ",,,,,,,,,
@@ -821,7 +821,7 @@ Demonstrate the different possibilities with IFrame. Click on the link to go to 
 "Web integration","Exercise IFrame: Connect to Qlik Sense","But how can you get the code to embed these objects?",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: the Dev-Hub","**Goal:**  Learn how you can generate the code used to embed.Qlik Sense",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: the Dev-Hub","For this the Development hub of Qlik Sense can be used..",,"","","","","         0","0","Exercises",
-"Web integration","Exercise IFrame: the Dev-Hub","Go to the [dev-hub](https://integration.qlik.com/anon/dev-hub/)",,"","","","","         0","0","Exercises",
+"Web integration","Exercise IFrame: the Dev-Hub","Go to the [dev-hub](https://senseintegration.qlik.com/anon/dev-hub/)",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: embed a single chart","**Goal:** You want to embed a single chart in your website.
 ",,"","","","","         0","0","Exercises",
 "Web integration","Exercise IFrame: embed a single chart","Please follow the steps:
@@ -909,7 +909,7 @@ Whenever you open a HTML page, a lot of things are being loaded in the backgroun
  - JavaScript: Is used for the behaviors of the page. For example: If you click on a button, the current selections must be cleared. That action is being executed in the JavaScript.
  - Images can be loaded.
 Different fonts can be used and must be loaded also.",,,,,,,,,
-"Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","Dev-hub: [demo](https://integration.qlik.com/anon/dev-hub/) mashup editor",,"","","","","         0","0","Technical - 1 day",
+"Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","Dev-hub: [demo](https://senseintegration.qlik.com/anon/dev-hub/) mashup editor",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","iframe https://saasdemo.qlik.com",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Demo DIV tag integration and the Mashup editor in the DEV-HUB","!comment
 Click on the link to go to the integration demo. The second part on the left side shows different examples using div tags.
@@ -918,7 +918,7 @@ The difference with an IFrame is that instead of embedding a full site, app or s
  - Integration example: Citybike
 Integration example: Marketing 360",,,,,,,,,
 "Web integration","Capabilities API - example code to embed chart using a DIV tag","[See demo on integration.qlik.com](https://saasdemo.qlik.com/multipleDivs)",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Capabilities API - example code to embed chart using a DIV tag","iframe jsfiddle.net/qhose/mv9Lyusu/12/embedded/",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Capabilities API - example code to embed chart using a DIV tag","iframe https://jsfiddle.net/qhose/mv9Lyusu/12/embedded/",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Capabilities API - example code to embed chart using a DIV tag","!comment
 This slide shows the JavaScript example of using our capability APIs for integrating Qlik Sense objects into a webpage through Div tags.
 
@@ -1056,7 +1056,7 @@ This modified version of Qlik is not the same as the default require.js. In orde
 - Let's analyze the CityBike [mashup](https://integration.qlik.com/meteor/extensions/DemoMashup/home.html).
 - What is a mashup and why is CityBike one?
 - What components are needed to create a Mashup?
-Let's analyze the [CityBike mashup](https://integration.qlik.com/anon/dev-hub/mashup-editor/#qext{DemoMashup}) in the DEV-HUB. (Called DemoMashup).",,"","","","","         0","0","Exercises",
+Let's analyze the [CityBike mashup](https://senseintegration.qlik.com/anon/dev-hub/mashup-editor/#qext{DemoMashup}) in the DEV-HUB. (Called DemoMashup).",,"","","","","         0","0","Exercises",
 "Web integration","Exercise: Create a mashup in Qlik the Qlik Sense dev-hub","**Goal:** Create a mashup through the [Qlik Sense Dev-hub](https://senseintegration.qlik.com/anon/dev-hub).
 Please follow the steps:",,"","","","","         0","0","Exercises",
 "Web integration","Exercise: Create a mashup in Qlik the Qlik Sense dev-hub","- Open the Mashup editor in the Qlik Sense Dev-hub.
@@ -3044,7 +3044,7 @@ volumes:
 "QRS API","Lets look at some Qlik Sense REST calls",">Lets look at some Qlik Sense REST calls",,"","","","","         0","0","Deep dive, PreSales, Developer",
 "QRS API","Get a list of apps via an HTTP GET REST Call","flow - REST get apps.png",,"","","","","         0","0","PreSales, Developer",
 "QRS API","Delete an app via an HTTP DEL REST Call","flow - REST delete app.png",,"","","","","         0","0","Deep dive, Developer",
-"QRS API","QRS API Introduction video and a tip to view the calls made by our client","https://youtu.be/-WLu_q_7Z24",,"","","","","         0","0","Technical - 1 day, Developer",
+"QRS API","QRS API Introduction video and a tip to view the calls made by our client","https://youtu.be/M7EqXI7cZtg",,"","","","","         0","0","Technical - 1 day, Developer",
 "QRS API","QRS API Introduction video and a tip to view the calls made by our client","With fiddler or Postman you can record each activity, and see the resulting API call.",,"","","","","         0","0","Technical - 1 day",
 "QRS API","QRS API Introduction video and a tip to view the calls made by our client","# Use the browser console to record Qlik Sense REST API calls",,"","","","","         0","0","Deep dive",
 "QRS API","QRS API Introduction video and a tip to view the calls made by our client","QRS - start task chrome console.png",,"","","","","         0","0","Technical - 2 hours, Developer",
@@ -4199,7 +4199,7 @@ Basically all the things you can do yourself when you use an app
 "Engine API","What can you do? Which end points are available?","iframe https://help.qlik.com/en-US/sense-developer/September2017/Subsystems/Dev-Hub/Content/EngineApiExplorer/engine-api-explorer.htm",,"","","","","         0","0","Deep dive, Developer",
 "Engine API","Exercise Dev-hub Engine API explorer - My first API call","# Try to make your first API call",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
 "Engine API","Exercise Dev-hub Engine API explorer - My first API call","In the screen below, Select a macro 'get applist' and press 'execute'",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
-"Engine API","Exercise Dev-hub Engine API explorer - My first API call","<iframe class=""SenseEmbedFrame"" src=""https://integration.qlik.com/anon/dev-hub/engine-api-explorer"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
+"Engine API","Exercise Dev-hub Engine API explorer - My first API call","<iframe class=""SenseEmbedFrame"" src=""https://senseintegration.qlik.com/anon/dev-hub/engine-api-explorer"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
 "Engine API","Exercise Dev-hub Engine API explorer - My first API call","It should give you the result below
 ```javascript
 {
