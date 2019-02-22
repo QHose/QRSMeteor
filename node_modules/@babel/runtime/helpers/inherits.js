@@ -1,3 +1,5 @@
+var _Object$create = require("../core-js/object/create");
+
 var setPrototypeOf = require("./setPrototypeOf");
 
 function _inherits(subClass, superClass) {
@@ -5,7 +7,7 @@ function _inherits(subClass, superClass) {
     throw new TypeError("Super expression must either be null or a function");
   }
 
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
+  subClass.prototype = _Object$create(superClass && superClass.prototype, {
     constructor: {
       value: subClass,
       writable: true,
