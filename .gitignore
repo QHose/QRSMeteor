@@ -1,7 +1,9 @@
 settings-development.json
 settings-production.json
+node_modules/
 *.QVX
 .build/
+node_modules/
 settings.json
 *.txt
 *.cert

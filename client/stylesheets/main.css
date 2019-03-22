@@ -1,10 +1,27 @@
-.reveal.slidesReveal {
-	height: 100%; 
-	width: 100%;
-	position: fixed; 
-	top: -100%; 
-	background: #ffffff; 
-	z-index: 10;
+/*CSS declarations go here */
+
+html {
+    background-color: #fff !important;
+    min-height: 100%;
+}
+
+.mainLandingImage {
+    background-image: url('images/bg_intro.jpg');
+    background-size: auto 500px;
+    background-position: top center;
+    background-repeat: no-repeat;
+    text-align: left;
+}
+
+.mainLandingImage .backGroundImageColor {
+    content: "";
+    background-color: #62ac1e;
+    position: absolute;
+    height: 500px;
+    width: 40%;
+    top: 0px;
+    left: 0px;
+    /* z-index: -100; */
 }
 
 .reveal .closeSlides {
@@ -48,4 +65,52 @@
     font-size: 2.5rem;
     color: #7e8083;
     line-height: 1em;
+}
+
+.row {
+    padding: 14px !important;
+}
+
+.landing .secondRow {
+    margin-top: 150px;
+}
+
+.qlikFont{
+    color: #5F6062 !important
+}
+
+.deleteStream,
+.customer-row,
+.copyApp,
+.deleteApp,
+.markAsTemplate,
+.deleteStream {
+    cursor: pointer
+}
+
+.s-alert-success {
+    background: #5EA819;
+    /* your background color here */
+    color: #fff/* your text color here */
+}
+
+.ui.segment.SSBI {
+    min-height: 250px;
+    max-width: 250px;
+}
+
+.ui.fixed.table.apiLogs td {
+    overflow-wrap: break-word;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+.text.container .left.floated.image {
+    margin: 2em 2em 2em -5em;
+}
+
+.text.container .right.floated.image {
+    margin: 2em -4em 2em 5em;
 }

@@ -18,9 +18,22 @@ var config = null;
 // Slide generator main template//
 //////////////////////////////////
 
-// Template.slidegeneratorSlides.onCreated(function() {
-//     clearSlideCache();
-//     console.log('############# Template.slidegeneratorSlides.onRendered');
+Template.slidegeneratorSlides.onCreated(function() {
+    clearSlideCache();
+    console.log('############# Template.slidegeneratorSlides.onRendered');
+
+    config = {
+        schema: qixschema,
+        appId: Cookies.get('slideGeneratorAppId'), //senseConfig.slideGeneratorAppId, //,
+        session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
+            host: senseConfig.host,
+            prefix: Meteor.settings.public.slideGenerator.virtualProxy,
+            port: senseConfig.port,
+            unsecure: Meteor.settings.public.useSSL
+        },
+    };
+    console.log('Engima config', config)
+})
 
 //     config = {
 //         schema: qixschema,

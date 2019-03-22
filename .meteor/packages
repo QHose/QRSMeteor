@@ -26,6 +26,7 @@ practicalmeteor:faker
 # simple:json-routes
 artwells:accounts-guest # https://github.com/artwells/meteor-accounts-guest
 dferber:prerender
+kadira:blaze-layout
 
 aldeed:autoform
 aldeed:collection2
@@ -33,7 +34,7 @@ aslagle:reactive-table
 blaze-html-templates   # Compile .html files into Meteor Blaze views
 check@1.3.0
 dburles:collection-helpers
-ecmascript@0.10.0              # Enable ECMAScript2015+ syntax in app code
+ecmascript@0.10.6              # Enable ECMAScript2015+ syntax in app code
 es5-shim@4.7.0                # ECMAScript 5 compatibility for older browsers.
 fabienb4:autoform-semantic-ui
 flemay:less-autoprefixer
@@ -51,11 +52,12 @@ mongo@1.4.2                   # The database Meteor supports right now
 msavin:mongol 			# lets you see the mongoDB in the client interface
 reactive-var@1.0.11            # Reactive variable for tracker
 semantic:ui
+semantic:ui-icon
 
 session@1.1.7
 standard-minifier-css@1.4.0   # CSS minifier run for production mode
-# standard-minifier-js@2.1.1    # JS minifier run for production mode
-abernix:standard-minifier-js
+standard-minifier-js@2.3.1    # JS minifier run for production mode
+# abernix:standard-minifier-js
 tracker@1.1.3                 # Meteor's client-side reactive programming library
 twbs:bootstrap
 # yogiben:admin  				#Admin interface
@@ -66,5 +68,5 @@ deanius:promise
 
 shell-server@0.3.1
 u2622:persistent-session
-# google-config-ui@1.0.0
+google-config-ui@1.0.0
 dynamic-import@0.3.0

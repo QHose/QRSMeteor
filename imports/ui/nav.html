@@ -1,8 +1,15 @@
 <template name="nav">
   <div class="ui top fixed secondary menu mainNavBar">
-    <div class="ui container">
+    <div class="ui container">      
       <a id="home" href="{{pathFor 'useCaseSelection'}}" class="{{#if isMainLandingPage}} active {{/if}} item">
           HOME</a>
+<a href="http://INTEGRATION.QLIK.COM" class="item" target="_blank">
+            INTEGRATION.QLIK.COM
+          </a>
+<a href="https://www.youtube.com/channel/UCmPMsqh1UvXhQTcAhPMEjpA/videos" class="item" target="_blank">
+            VIDEOS
+          </a>
+      
       {{#if isPage 'slides'}}
         <div class="right orange menu">
           <a id="sheetSelector" class="item selectSlides" href="#" data-toggle="modal" data-target="#myModal"><i class="inverted search link icon"></i> CHANGE PRESENTATION</a>
@@ -10,5 +17,4 @@
       {{/if}}
     </div>
   </div>
-
 </template>

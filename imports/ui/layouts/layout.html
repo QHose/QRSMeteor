@@ -49,6 +49,22 @@
 </template>
 
 
+        </div>
+    </div> -->
+<div id="sheetSelector" class="ui fullscreen modal sheetSelector">
+    <i class="close icon"></i>
+    <div class="header">
+        Where would you like to learn more about?
+    </div>
+    <div class="image content">
+        <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; min-height: 500px; border: none;">
+        </iframe>
+    </div>
+    <div class="actions">
+        <div class="ui positive button">Start presentation</div>
+    </div>
+</div>
+</template>
 <template name="containerlayout">
     <div class="wrap" style="margin-top: 50px">
         {{> nav}}
@@ -60,9 +76,9 @@
 </template>
 
 <template name="footer">
-    <div class="footer">
+<div class="footer qlikFont" style=" color: #5F6062">
         <div class="ui center aligned container">
-            <div class="ui stackable  divided grid">
+            <div class="ui grid">
                 <div class="three wide column">
                     <img class="ui left floating image image" src="./images/qlik_logo.svg" style="height: 100px; padding-top: 30px;">
                 </div>
@@ -70,9 +86,11 @@
                     <!-- <h4 class="ui  header">Technical</h4>
                     <div class="ui  link list">
                         <a class="item" href="/apilogstable" target="_blank">API calls</a>
+<a class="item" href="https://help.qlik.com/en-US/sense-developer/June2018/Content/APIs-and-SDKs.htm" target="_blank">API help</a>
+
                         {{#if slideShowActive}}
                         <a href="/useCaseSelection?selection={{permaLinkSelectionId}}" class="item permaLinkSelection">Link to selection</a>
-                        <a class="item permaLinkSlide">Link to slide</a>
+                        <!-- <a class="item permaLinkSlide">Link to slide</a> -->
                         {{/if}}
                     </div> -->
                 </div>
@@ -87,8 +105,8 @@
                     <div class="ui link list">
                         <a class="item" href="http://oem.qlik.com" target="_blank">OEM</a>
                         <a class="item" href="http://branch.qlik.com" target="_blank">Branch</a>
-                        <a class="item" href="legal" target="_blank">Terms of use</a>
-                    </div> -->
+                        <a class="item" href="https://www.qlik.com/us/legal/terms-of-use" target="_blank">Terms of use</a>
+                    </div>
                 </div>
                 <div class="three wide column">
                     <!-- <h4 class="ui inverted header">Footer Header</h4>
@@ -113,7 +131,7 @@
 </template>
 
 <template name="modals">
-    {{> modalSSBI}} {{> modalStepByStep}} {{> modalSaaSautomation}}
+    
 </template>
 <template name="modalSSBI">
     <div class="ui modal SSBI">
