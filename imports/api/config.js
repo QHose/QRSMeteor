@@ -12,6 +12,7 @@ if (Meteor.isClient) {
     var _senseConfig = {
         "host": Meteor.settings.public.qlikSenseHost,
         "port": Meteor.settings.public.qlikSensePort,
+        "useSSL": Meteor.settings.public.useSSL,
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "virtualProxySlideGenerator": Meteor.settings.public.slideGenerator.virtualProxy,
         "webIntegrationDemoPort": Meteor.settings.public.webIntegrationDemoPort,
@@ -25,6 +26,10 @@ if (Meteor.isClient) {
 
 //SERVER SIDE
 if (Meteor.isServer) {
+    process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+    import sslRootCas from 'ssl-root-cas/latest';
+    sslRootCas.inject();
+    
     console.log('This tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings);
     import crypto from 'crypto';
     var fs = require('fs-extra');
@@ -51,7 +56,7 @@ if (Meteor.isServer) {
         "host": Meteor.settings.public.qlikSenseHost,
         "SenseServerInternalLanIP": Meteor.settings.public.SenseServerInternalLanIP,
         "port": Meteor.settings.public.qlikSensePort,
-        "useSSL": Meteor.settings.private.useSSL,
+        "useSSL": Meteor.settings.public.useSSL,
         "xrfkey": generateXrfkey(),
         "virtualProxy": Meteor.settings.private.virtualProxy, //used to connect via REST to Sense, we authenticate via a http header. not for production!!!
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
@@ -112,7 +117,7 @@ if (Meteor.isServer) {
             cert: _certs.cert,
             ca: _certs.ca
         };
-        console.log('configCerticates: we connect to Qlik Sense using these credentials: ', configCerticates);
+        console.log('configCerticates: we connect to Qlik Sense via certificates using these credentials: ', configCerticates);
 
         //used for engimaJS, the engine API javascript wrapper
         var _engineConfig = {
@@ -224,21 +229,6 @@ if (Meteor.isServer) {
 } //exit server side config
 
 export const senseConfig = _senseConfig;
-
-// console.log('--- HEADER AUTHENTICATION using config: ', QRSconfig);
-
-// //certificates did not work
-// export const QRSconfig = {
-//     authentication: 'certificates',
-//     host: senseConfig.host,
-//     useSSL: false,
-//     ca: _engineConfig.ca,
-//     key: _engineConfig.key,
-//     cert: _engineConfig.cert,
-//     port: Meteor.settings.private.qrsPort, //4242
-//     headerKey: 'X-Qlik-User',
-//     headerValue: `UserDirectory=${process.env.USERDOMAIN};UserId=${process.env.USERNAME}`
-// };
 
 export function missingParameters(obj) {
     for (var key in obj) {
