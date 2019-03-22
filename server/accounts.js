@@ -73,5 +73,5 @@ if (!numberOfUsers) {
 }
 
 //enable anon access: https://atmospherejs.com/artwells/accounts-guest
-AccountsGuest.enabled = true;
-AccountsGuest.anonymous = true;
+// AccountsGuest.enabled = true;
+// AccountsGuest.anonymous = true;

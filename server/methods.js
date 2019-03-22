@@ -83,14 +83,11 @@ Meteor.methods({
         });
         await QSApp.generateStreamAndApp(customers, this.userId); //then, create the new stuff
 
-        console.log('################## Meteor.settings.broker.qlikSense.multiTenantScenario', Meteor.settings.broker.qlikSense.multiTenantScenario);
         try {
             if (!Meteor.settings.broker.qlikSense.multiTenantScenario) { //on premise installation for a single tenant (e.g. with MS Active Directory)
                 var customerNames = customers.map(function(c) {
                     return c.name;
                 });
-
-                console.log('customerNames', customerNames)
                 QSCustomProps.upsertCustomPropertyByName('customer', customerNames); //for non OEM scenarios (with MS AD), people like to use custom properties for authorization instead of the groups via a ticket.
             }
         } catch (error) {

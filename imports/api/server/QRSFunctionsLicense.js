@@ -95,10 +95,16 @@ export function getSystemRules(name) {
     return rules;
 }
 export function saveSystemRules() {
+    var file = path.join(Meteor.settings.broker.automationBaseFolder, 'securityrules', 'export', 'ExtractedSystemRules.json');
+    console.log('------------------------------------');
+    console.log('Save all system rules in '+file);
+    console.log('------------------------------------');
     var rules = qrs.get('/qrs/SystemRule');
 
-    var file = path.join(Meteor.settings.broker.automationBaseFolder, 'securityrules', 'export', 'ExtractedSystemRules.json');
-
-    // SAVE FILE TO DISK
-    fs.outputFile(file, JSON.stringify(rules, null, 2), 'utf-8');
+    try {
+        // SAVE FILE TO DISK
+        fs.outputFile(file, JSON.stringify(rules, null, 2), 'utf-8');        
+    } catch (error) {
+        console.error('unable to save systemrules, does the directory exist? Check your automationBaseFolder in your settings.json file, ', error);
+    }
 }

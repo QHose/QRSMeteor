@@ -24,11 +24,8 @@ var ip = require('ip');
 
 import {
     senseConfig,
-    enigmaServerConfig,
     authHeaders,
-    QRSconfig,
     qrsSrv as qliksrv,
-    QRSCertConfig,
     configCerticates,
     validateJSON
 } from '/imports/api/config.js';
@@ -305,8 +302,9 @@ Meteor.methods({
         try {
             check(userProperties.group, String);
             check(virtualProxy, String);
+            check(Meteor.userId(), String)
         } catch (err) {
-            throw new Meteor.Error('Failed to login into Qlik Sense via a ticket', 'Please go to the landing page and select your group. We could not request a ticket because the userId or groups (technical, generic) or virtual proxy are not provided');
+            throw new Meteor.Error('Failed to login into Qlik Sense via a ticket', 'We could not request a ticket because the userId or groups (technical, generic) or virtual proxy, or UDC (your Meteor userId, are you not yet logged into Meteor?) are not provided');
         }
         var passport = {
             'UserDirectory': Meteor.userId(), // Specify a dummy value to ensure userID's are unique E.g. "Dummy", or in my case, I use the logged in user, so each user who uses the demo can logout only his users, or the name of the customer domain if you need a Virtual proxy per customer
@@ -327,10 +325,16 @@ Meteor.methods({
     },
     //only for demo purposes! never supply groups from the client...
     requestTicketWithPassport(virtualProxy, passport) {
-        console.log('getTicketNumber passport', passport)
+        console.log('getTicketNumber passport', passport);
+        var rootCas = require('ssl-root-cas/latest').create();
+
+        // default for all https requests
+        // (whether using https directly, request, or another module)
+        require('https').globalAgent.options.ca = rootCas;
 
         // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
-        var proxyGetTicketURI = 'https://' + senseConfig.host + ':' + Meteor.settings.private.proxyPort + '/qps/' + virtualProxy + '/ticket'; // "proxyRestUri": "https://ip-172-31-22-22.eu-central-1.compute.internal:4243/qps/meteor/",
+        var proxyGetTicketURI = 'https://' + senseConfig.SenseServerInternalLanIP + ':' + Meteor.settings.private.proxyPort + '/qps/' + virtualProxy + '/ticket'; // "proxyRestUri": "https://ip-172-31-22-22.eu-central-1.compute.internal:4243/qps/meteor/",
+        console.log('proxyGetTicketURI', proxyGetTicketURI)
         try {
             var response = HTTP.call('POST', proxyGetTicketURI, {
                 'npmRequestOptions': configCerticates,
