@@ -221,12 +221,12 @@ export async function getQix(ticket = null) {
             },
             handleLog: (message) => {
                 // console.log('Engima handleLog: ', message);
-                var call = {};
-                call.action = 'Engine API handleLog';
-                call.url = '';
-                call.request = 'Engima.js log: ';
-                call.response = message;
-                REST_Log(call, Meteor.userId());
+                // var call = {};
+                // call.action = 'Engine API handleLog';
+                // call.url = '';
+                // call.request = 'Engima.js log: ';
+                // call.response = message;
+                // REST_Log(call, Meteor.userId());
             }
         };
         // console.log('config to connect from the browser to Qlik Sense engine:', config)
