@@ -15,6 +15,7 @@ import * as QSSystem from "/imports/api/server/QRSFunctionsSystemRules";
 import * as QSExtensions from "/imports/api/server/QRSFunctionsExtension";
 import * as QSCustomProps from "/imports/api/server/QRSFunctionsCustomProperties";
 import * as Auth from "./auth";
+var os = require('os')
 
 //stop on unhandled errors
 process.on("unhandledRejection", up => {
@@ -27,6 +28,17 @@ import "/imports/startup/accounts-config.js";
 const path = require("path");
 var fs = require("fs-extra");
 import shell from "node-powershell";
+
+var connectHandler = WebApp.connectHandlers; // get meteor-core's connect-implementation
+
+// attach connect-style middleware for response header injection
+Meteor.startup(function() {
+    connectHandler.use(function(req, res, next) {
+        res.setHeader('access-control-allow-origin', '*');
+        return next();
+    })
+})
+
 
 Meteor.startup(async function() {
     process.env.ROOT_URL = "http://" + Meteor.settings.public.qlikSenseHost;
@@ -133,23 +145,23 @@ var installQlikSense = async function() {
     <DbUserName>username</DbUserName>
     <DbUserPassword>password</DbUserPassword>
     <DbHost>` +
-        Meteor.settings.public.qlikSenseHost +
+        os.hostname() +
         `</DbHost>
     <DbPort>4432</DbPort>
     <RootDir>\\\\` +
-        Meteor.settings.public.qlikSenseHost +
+        os.hostname() +
         `\\QlikSenseShare</RootDir>
     <StaticContentRootDir>\\\\` +
-        Meteor.settings.public.qlikSenseHost +
+        os.hostname() +
         `\\QlikSenseShare\\StaticContent</StaticContentRootDir>
     <CustomDataRootDir>\\\\` +
-        Meteor.settings.public.qlikSenseHost +
+        os.hostname() +
         `\\QlikSenseShare\\CustomData</CustomDataRootDir>
     <ArchivedLogsDir>\\\\` +
-        Meteor.settings.public.qlikSenseHost +
+        os.hostname() +
         `\\QlikSenseShare\\ArchivedLogs</ArchivedLogsDir>
     <AppsDir>\\\\` +
-        Meteor.settings.public.qlikSenseHost +
+        os.hostname() +
         `\\QlikSenseShare\\Apps</AppsDir>
     <CreateCluster>true</CreateCluster>
     <InstallLocalDb>true</InstallLocalDb>
