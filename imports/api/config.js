@@ -82,7 +82,7 @@ if (Meteor.isServer) {
         } //
     if (!Meteor.settings.private.certificatesDirectory) {
         Meteor.settings.private.certificatesDirectory = 'C:\\ProgramData\\Qlik\\Sense\\Repository\\Exported Certificates\\.Local Certificates';
-        console.log('Meteor.settings.private.certificatesDirectory was empty, setting it to default: ', Meteor.settings.broker.customerDataDir)
+        console.log('Meteor.settings.private.certificatesDirectory was empty, setting it to default: ', Meteor.settings.private.certificatesDirectory)
     }
 
     try {
