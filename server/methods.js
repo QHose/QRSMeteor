@@ -32,7 +32,7 @@ import * as QSSystem from '/imports/api/server/QRSFunctionsSystemRules';
 import * as QSExtensions from '/imports/api/server/QRSFunctionsExtension';
 import * as QSCustomProps from '/imports/api/server/QRSFunctionsCustomProperties';
 
-var logger = require("onepresales-es-logger")("SlideExplorer");
+// var logger = require("onepresales-es-logger")("SlideExplorer");
 
 //stop on unhandled errors
 process.on('unhandledRejection', up => {
@@ -219,7 +219,7 @@ Meteor.methods({
         });
     },
     s3Logger(message, data) {
-        logger.info(message, data);
+        // logger.info(message, data);
     }
 })
 
