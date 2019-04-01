@@ -3,12 +3,14 @@
 	    <div id="sheetSelector" class="panel sheetSelector">
 	        <div class="panel-heading">
 				<div class="page-title__content  lg--suffix-5of12">
-					<h2 class="page-title__headline"><i id="peicon"></i> Presentation Explorer</h2>
+					<h2 class="page-title__headline"><i id="peicon"></i> Evaluation guide</h2>
 				</div>
-	            <p style="font-size: 1.2em; padding-top: 10px;">Please choose the subjects below to generate the presentation</p>
+	            <p style="font-size: 1.2em; padding-top: 10px;">At Qlik® we encourage our partners and prospects to leverage our self service technical and business content
+						to support their evaluation and provide you with the materials you need to successfully evaluate the use
+						of Qlik® Sense as part of your Solution(s). </p>
 	        </div>
 	        <div class="panel-body image content">
-	            {{> Template.dynamic template=active data=this}}
+					{{> useCaseSelection}} 	            
 	        </div>
 	    </div>
 	</div>
