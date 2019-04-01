@@ -1,10 +1,92 @@
 <template name="App_body">
     <!-- Header injected here -->
-    <div id="headerContainer"></div>
+    <div id="headerContainer">
+            <div id="headerContainerInner" style="margin-bottom: 20px;">
+                    <style>
+                    </style>
+                    <div class="topHeader" style="background: #efefef; min-height: 40px;">
+                      <div class="container hidden-xs">
+                        <ul class="header-profile">
+                          <li style="float:left;"><a href="#" id="user-container" class="my-profile-link ui-link"></a></li>                          
+                          
+                          <li class="dropdown dropdown-toggle js-activated ui-link" style="float:left;">
+                            <a data-toggle="dropdown" class="dropdown-toggle js-activated ui-link" href="#">Qlik Websites
+                              <b class="moreMenu visible-xs hidden-sm hidden-md hidden-lg"></b>
+                              <b class="caret hidden-xs  visible-sm visible-md visible-lg" style="display: block !important; float:right; margin-top:5px !important;"></b>
+                            </a>
+                            <ul role="menu" class="dropdown-menu" style="margin-top:0px;">
+                              <li class="hidden-md hidden-lg"><a href="/" class="ui-link">Qlik Websites</a></li>
+                              <li class="" style="float:left; margin-left:-20px; width:100%; text-align:left;">
+                                    <a href="http://integration.qlik.com"
+                                      target="_blank" class="ui-link">Integration.Qlik.com</a>
+                                  </li>
+                              <li class="" style="float:left; margin-left:-20px; width:100%; text-align:left;">
+                                <a href="http://www.qlik.com?utm_source=RWPPortal&amp;utm_medium=promo1&amp;utm_campaign=QlikWebsite"
+                                  target="_blank" class="ui-link">Qlik.com</a>
+                              </li>
+                              <li class="" style="float:left; margin-left:-20px; width:100%; text-align:left;">
+                                <a href="http://community.qlik.com?utm_source=RWPPortal&amp;utm_medium=promo1&amp;utm_campaign=QlikCommunity"
+                                  target="_blank" class="ui-link">Qlik Community</a>
+                              </li>
+                              <li class="" style="float:left; margin-left:-20px; width:100%; text-align:left;">
+                                <a href="http://demo.qlik.com?utm_source=RWPPortal&amp;utm_medium=promo1&amp;utm_campaign=QlikDemos"
+                                  target="_blank" class="ui-link">Demo.Qlik.com</a>
+                              </li>
+                              <li class="" style="float:left; margin-left:-20px; width:100%; text-align:left;">
+                                <a href="https://partners.qlik.com/?eid=QlikBranch" target="_blank" class="ui-link">Qlik Branch</a>
+                              </li>
+                              <li class="" style="float:left; margin-left:-20px; width:100%; text-align:left;">
+                                <a href="http://global.qlik.com/blog?utm_source=RWPPortal&amp;utm_medium=promo1&amp;utm_campaign=QlikBlog"
+                                  target="_blank" class="ui-link">Qlik Blog</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li class="header-profile-user"></li>
+                          <li><a href="/api/logout" class="logout-link ui-link">Logout</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div id="headMainHeaderContainerWrapper">
+                      <div id="mainHeaderContainer" class="container">
+                        <header id="mainHeader" class="headerTop hidden-xs row">
+                          <div class="col-xs-6 col-sm-5">
+                            <a href="https://partners.qlik.com/" class="logo ui-link" style="height: auto;">
+                              <img src="bower_components/onepresales-frame/resources/img/logo-horizontal.svg">
+                            </a>
+                          </div>
+                          <div class="col-xs-6 col-sm-7">
+                            <h1 style="margin: 30px 0px;text-align: right;color: #6cb33f;"><a href="/">Qlik Technical Sales
+                              Tools</a></h1>
+                          </div>
+                        </header>
+                      </div>
+                    </div>
+                    <div id="headNavbarContainerWrapper">
+                      <div id="navbarContainer" class="container">
+                        <nav role="navigation" id="navbar" class="navbar-default row">
+                          <div class="navbar-header">
+                            <button type="button" data-target=".navbar-collapse" data-toggle="mobile-wrapper" class="navbar-toggle fa fa-bars ui-btn ui-shadow ui-corner-all"></button>
+                            <a href="https://partners.qlik.com/" class="navbar-brand logo-small visible-xs col-xs-4 ui-link">
+                              <img src="bower_components/onepresales-frame/resources/img/logo-vertical.svg">
+                            </a>
+                          </div>
+                          <div id="navbarCollapse" class="hidden-xs col-sm-12">
+                            <ul class="mainNavigation nav navbar-nav" id="mainNavigation">
+                        
+                              <li class="bold logout visible-xs"><a href="/api/logout" id="mobileLogout" class="ui-link">Logout</a></li>
+                            </ul>
+                          </div>
+                        </nav>
+                      </div>
+                    </div>
+                  </div>
+                  
+                
+    </div>
     {{> slideSelectionSheet}}
     {{> Template.dynamic template=main}}
     <!-- Footer injected here -->
-    <div id="footerContainer"></div>
+    <div style="background-color: #4B4B4B;" id="footerContainer"></div>
 </template>
 <!--<template name="slideSelectionSheet">
     <div id="sheetSelector" class="ui fullscreen modal sheetSelector">

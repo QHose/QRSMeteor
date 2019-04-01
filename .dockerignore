@@ -1,3 +1,4 @@
 .meteor/local
+node_modules/onepresales-server-auth/config.js
 node_modules
 mongo
