@@ -21,7 +21,7 @@
     "lodash": "^4.17.11",
     "meteor-node-stubs": "^0.2.3",
     "moment": "^2.19.2",
-    "node-powershell": "^3.1.1",    
+    "node-powershell": "^3.1.1",
     "onepresales-server-auth": "git+ssh://git@gitlab.com/onepresales/onepresales-server-auth.git#1.0.8",
     "qrs": "^2.0.2",
     "request": "^2.81.0",
