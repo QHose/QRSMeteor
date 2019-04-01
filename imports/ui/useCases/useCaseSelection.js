@@ -3,7 +3,9 @@ import '/imports/ui/slideGenerator/slides.html';
 import '/imports/ui/slideGenerator/slides';
 // import '/imports/ui/slideGenerator/slides.css';
 import * as nav from "/imports/ui/nav.js";
-import { SenseSelections } from '/imports/api/logger';
+import {
+    SenseSelections
+} from '/imports/api/logger';
 import './SSBI/SSBI.js';
 import {
     Session
@@ -15,8 +17,6 @@ import {
     APILogs,
     REST_Log
 } from '/imports/api/APILogs';
-import { renderIframe } from '/imports/ui/slideGenerator/slideSelectionSheet';
-
 const enigma = require('enigma.js');
 const Cookies = require('js-cookie');
 var Reveal = require('reveal.js');
@@ -25,50 +25,159 @@ var slideObject = Meteor.settings.public.slideGenerator.dataObject;
 var app = null;
 var qix = null;
 
-
-export async function initQix() {
-    console.log("useCaseSelection onCreated");
-    // const apiLogsHandle = Meteor.subscribe('apiLogs');
-    // Session.set('selectionMade', false);
-
-    //wait a bit, so Meteor can login, before requesting a ticket...
-    Meteor.setTimeout(async function() {
-        //connect to qlik sense
-        qix = await makeSureSenseIsConnected();
-        // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
-        await setChangeListener(qix);
-
-        //see if the user started up this screen, with a selection parameter
-        var value = getQueryParams('selection');
-        // console.log('getQueryParams return value', value)
-        //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
-        if (value) {
-            console.log('%%%%%%%%%%  Slides oncreated: Query string found: ', value);
-            await nav.selectViaQueryId(value)
-                // get the data and go to the slides
-            await getAllSlides();
-            // after we got all data in an array from sense, change the router/browser to the slides page
-            FlowRouter.go("slides");
-        } else {
-            console.log('no query selection parameter found, show the sense selection screen');
-            // await setSlideContentInSession('TECHNICAL');
-
-            /*
-            // Manuel commented out
-            FlowRouter.go('slides');
-            setTimeout(function() {
-                nav.showSlideSelector();
-            }, 100);
-            */
-        }
-
-        renderIframe();
-    }, 0);
-
-}
+//var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
+var possibleRoles = [
+  "Developer",
+  "Hosting Ops",
+  "Business Analyst",
+  "CTO",
+  "C-Level - non-technical"
+];
 
 // ONCREATED
-Template.useCaseSelection.onCreated(initQix);
+Template.useCaseSelection.onCreated(async function () {
+    // await initQlikSense();
+})
+
+Meteor.startup(function () {
+console.log('------------------------------------');
+console.log('Ensure SSO, first login into Meteor, then request a ticket for Qlik Sense');
+console.log('------------------------------------');
+
+loginQlik();
+
+})
+
+//THE CODE BELOW IS JUST TO SIMULATE A SSO IF YOU ALREADY LOGGED IN INTO QLIK.COM. THIS CODE IS UNSECURE AND CAN'T BE USED FOR REAL PRODUCTION ENVIRONMENTS.... WE SET THE GROUPS ON THE CLIENT SIDE ETC. THIS IS UNSECURE. BUT FINE FOR THIS DEMO TOOL.
+export function loginQlik() {
+  //rerun this function anytime something happens with the login state
+//   console.log("mustBeSignedIn via Qlik.com for route: ", routeName);
+var QlikUserProfile = Cookies.get("CSUser")?Cookies.get("CSUser"):'username=bieshosetest&firstName=test&lastName=test&emailAddress=bieshose@gmail.com&contactID=&accountID=&ulcLevels=Base&country=Angola&hash=xS9zTEOE7vSgTVXycUr99UFLc78='; //only availalbe on Qlik.com domains
+  var loggedInUser = Meteor.userId();
+  console.log('Meteor userId:', loggedInUser)
+  console.log("QlikUserProfile: ", QlikUserProfile);
+
+  if (!QlikUserProfile) {
+    //if user is not logged in, redirect to Qliks login page, after it we can read the cookie.
+    var uri = Meteor.absoluteUrl() // always redirect to landingpage
+    console.log("The user has no qlikUserProfile and tried to open: " + uri);
+    var encodedReturnURI = encodeURIComponent(uri);
+    var QlikSSO =
+      "https://login.qlik.com/login.aspx?returnURL=" + encodedReturnURI;
+      console.log("User has no Qlik.com cookie, so send via a window.location.replace to: ", QlikSSO);
+    window.location.replace(QlikSSO);
+  } else if (!loggedInUser) {
+    //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
+    console.log("user has Qlik cookie, but is not yet logged in into meteor, lets do that now...");
+    var [
+      username,
+      firstName,
+      lastName,
+      emailAddress,
+      contactID,
+      accountID,
+      ulcLevels,
+      country,
+      hash
+    ] = QlikUserProfile.split("&");
+
+    const user = {
+      email: emailAddress.substr(emailAddress.indexOf("=") + 1),
+      profile: {
+        name: {
+          first: firstName.substr(firstName.indexOf("=") + 1),
+          last: lastName.substr(lastName.indexOf("=") + 1),
+          contactID: contactID
+            ? contactID.substr(contactID.indexOf("=") + 1)
+            : "",
+          accountID: accountID
+            ? accountID.substr(accountID.indexOf("=") + 1)
+            : ""
+        }
+      },
+      roles: "", //JSON.parse("[" + ulcLevels.substr(ulcLevels.indexOf("=") + 1) + "]"),
+      password: emailAddress.substr(emailAddress.indexOf("=") + 1) //no need for a real password mechanism. People just need a login to have their own demo space
+    };
+
+    addRolesBasedonEmail(user);
+
+   /*  console.log(
+      "the user has got a QLIK PROFILE",
+      user,
+      "Now try to create the user in our local MONGODB or just log him in with a server only stored password"
+    ); */
+    //unsafe code, only sufficient for our simple demo site
+    Meteor.call("resetPasswordOrCreateUser", user, function(err, res) {
+      if (err) {
+        console.error(err);
+      } else {
+        Meteor.loginWithPassword(user.email, user.password, function(err, res) {
+          //
+          if (err) {
+            sAlert.error("Error logging you in...", err.message);
+            console.error(err);
+          } else {
+            // sAlert.success("You are now logged in with your Qlik.com account.");
+            console.log("user successfully logged in", Meteor.userId());
+            
+console.log('------------------------------------');
+console.log('Now request ticket');
+console.log('------------------------------------');
+initQlikSense(); //returns promise, but does not care here...
+          }
+        });
+      }
+    });
+  } else{ //user has cookie, and is logged in into meteor
+      initQlikSense();
+  }
+}
+
+function addRolesBasedonEmail(user) {
+  var email = user.email;
+  var name = email.substring(0, email.lastIndexOf("@"));
+  var domain = email.substring(email.lastIndexOf("@") + 1);
+  if (domain === "qlik.com" || domain === "qliktech.com") {
+    user.roles = ["qlik"]; //unsecure off course, this is only for user friendliness reasons to prevent dead links to confluence content.
+  }
+}
+
+export async function initQlikSense() {
+    //wait a bit, so Meteor can login, before requesting a ticket...
+    Meteor.setTimeout(
+        async function () {
+            //connect to qlik sense
+            qix = await makeSureSenseIsConnected();
+            // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
+            await setChangeListener(
+                qix
+            );
+
+            //see if the user started up this screen, with a selection parameter
+            var value = getQueryParams(
+                "selection"
+            );
+            // console.log('getQueryParams return value', value)
+            //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
+            if (value) {
+                console.log(
+                    "%%%%%%%%%%  Slides oncreated: Query string found: ",
+                    value
+                );
+                await nav.selectViaQueryId(
+                    value
+                );
+                // get the data and go to the slides
+                await getAllSlides();
+                // after we got all data in an array from sense, change the router/browser to the slides page
+                // Router.go("slides");
+            } else {
+                // console.log('no query selection parameter found');
+            }
+        },
+        0
+    );
+}
 
 // Replace with more Meteor approach
 function getQueryParams(name, url) {
@@ -85,14 +194,73 @@ function getQueryParams(name, url) {
 //make sure you go to the first slide when we have new slide data
 Tracker.autorun(() => {
     Session.get('slideHeaders');
-    Meteor.setTimeout(function() {
-        Reveal.slide(0);
+    Meteor.setTimeout(function () {
+        try {
+            Reveal.slide(0);
+        } catch (error) {}
     }, 500);
 });
 // ONRENDERED.
-Template.useCaseSelection.onRendered(async function() {
+Template.useCaseSelection.onRendered(async function () {
+    //after the user has been logged in into Qlik.com, create a Sense ticket with this new info from the cookie.
+    // Meteor.setTimeout(async function () {
+    // await initQlikSense();
+    // },3000)
+
     $('body').addClass('mainLandingImage');
+
+    //fill the dropdown using a array of values
+    var possibleRoles = ["Product Manager", "Business Manager", "Developer"];
+    $.each(possibleRoles, function (i, item) {
+        $('#bodyDropdown').append($('<option>', {
+            value: item,
+            text: item
+        }));
+    });
+
+    var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
+    $(".ui.dropdown").dropdown("set selected", textToShow);
+
 })
+
+//
+// ─── SLIDE GENERATOR BUTTON CLICK ─────────────────────────────────────────────────────────────────────
+//
+
+Template.useCaseSelection.events({
+  "click .button.slides": async function(e, t) {
+    Session.set("sheetSelectorSeen", false);
+    FlowRouter.go("slides");
+
+    setTimeout(function() {
+      nav.showSlideSelector();
+    }, 100);
+  },
+  "click #videoButton": async function(e, t) {
+    nav.selectMenuItemInSense(nav.VIDEO_OVERVIEW);
+  },
+  "blur .ui.dropdown.selection .menu": async function(e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
+    event.preventDefault();
+    var selectedRole = t.$(".ui.dropdown").find(":selected").val();
+    Session.set("sheetSelectorSeen", true);    
+    Cookies.set("currentMainRole", selectedRole);
+        await setSelectionInSense("Partial Workshop", selectedRole);
+        
+        
+        $('.reveal').css({
+            top: '0px'
+        });
+
+        $('html').css({
+            overflow: 'hidden'
+        });
+        $('body').css({
+            overflow: 'hidden'
+        });
+
+
+    }
+});
 
 
 async function setSelectionInSense(field, value) {
@@ -100,8 +268,8 @@ async function setSelectionInSense(field, value) {
     try {
         var qix = await getQix();
         console.log('qix', qix)
+        await qix.app.clearAll();
         var myField = await qix.app.getField(field);
-        console.log('resources Field', myField);
         var result = await myField.selectValues(
             [{
                 "qText": value
@@ -114,11 +282,17 @@ async function setSelectionInSense(field, value) {
 }
 
 async function getTicket() {
-    return await Meteor.callPromise('getTicketNumber', { group: 'notProvided' }, Meteor.settings.public.slideGenerator.virtualProxy);
+    try {
+        return await Meteor.callPromise('getTicketNumber', { group: 'notProvided' }, Meteor.settings.public.slideGenerator.virtualProxy);        
+    } catch (error) {
+                var message = 'We could not setup single sing on with Qlik Sense. See your console window for more information';
+                console.error(message, error);
+                sAlert.error(message, error);        
+    }
 }
 
-async function makeSureSenseIsConnected() {
-    return await getQix();
+export async function makeSureSenseIsConnected() {
+    return await getQix(await getTicket());
 }
 
 async function setSlideContentInSession(group) {
@@ -135,36 +309,35 @@ async function setSlideContentInSession(group) {
     };
 }
 
-export async function getQix() {
-    var ticket = await getTicket();
+export async function getQix(ticket=null) {
     // console.log('getQix with ticket:', ticket)
     try {
-        const config = {
+        const config = { //https://github.com/qlik-oss/enigma.js/blob/v1.x/docs/qix/configuration.md
             schema: senseConfig.QIXSchema,
             appId: senseConfig.slideGeneratorAppId,
             session: { //https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs
                 host: senseConfig.host,
                 prefix: Meteor.settings.public.slideGenerator.virtualProxy,
                 port: senseConfig.port,
-                //Manuel: it needs to be secure
-                unsecure: false,
+                secure: Meteor.settings.public.useSSL,
                 urlParams: {
                     qlikTicket: ticket
                 }
             },
             listeners: {
-                'notification:*': (event, data) => {
+                'notification:*': async (event, data) => {
                     // console.log('Engima notification received, event: ' + event + ' & data: ', data)
-                    if (data.mustAuthenticate) { //if the user is not authenticated anymore request a new ticket and get a new connection
-                        getQix();
-                    }
-                    var call = {};
+                    if (data.mustAuthenticate || event === 'OnSessionTimedOut') { //if the user is not authenticated anymore request a new ticket and get a new connection
+                        var ticket = await getTicket();
+                        getQix(ticket);
+                    } else
+                        var call = {};
                     call.action = "Engine API listener";
                     call.url = '';
                     call.request = 'Engima.js event: ' + event;
                     call.response = data;
                     REST_Log(call, Meteor.userId());
-                }
+                },
             },
             handleLog: (message) => {
                 // console.log('Engima handleLog: ', message);
@@ -176,15 +349,18 @@ export async function getQix() {
                 REST_Log(call, Meteor.userId());
             }
         };
+        // console.log('config to connect from the browser to Qlik Sense engine:', config)
         return await enigma.getService('qix', config);
     } catch (error) {
-        console.error('failed to get Qix ', error);
+        console.error('Qlik Sense Qix error ', error);
+        sAlert.error(error.message)
+        window.location.href = window.location.origin;
     }
 
 }
 
 //ONDESTROYED
-Template.useCaseSelection.onDestroyed(function() {
+Template.useCaseSelection.onDestroyed(function () {
     $('body').removeClass('mainLandingImage');
 });
 
@@ -192,6 +368,9 @@ Template.useCaseSelection.onDestroyed(function() {
 Template.useCaseSelection.helpers({
     userRole() {
         return Cookies.get('currentMainRole');
+    },
+    authenticated() {
+        return Meteor.userId();
     }
 });
 
@@ -200,12 +379,12 @@ Template.useCaseSelection.helpers({
 // ─── MAIN TOPICS LEVEL 1 AND 2 ─────────────────────────────────────────────────
 //
 export async function getAllSlideHeaders(qix) {
-    //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.
+    //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.    
     // return insertSectionBreakers(await getAllSlideHeadersPlain(qix));
     var headers = await getAllSlideHeadersPlain(qix);
-    //console.log('headers', headers)
+    // console.log('headers', headers)
     var headersWithBreakers = insertSectionBreakers(headers);
-    //console.log('headersWithBreakers', headersWithBreakers)
+    console.log('headersWithBreakers', headersWithBreakers)
     return headersWithBreakers;
 }
 
@@ -222,7 +401,19 @@ export async function getAllSlideHeadersPlain(qix) {
                 }
             }, {
                 qDef: {
-                    qFieldDefs: ['Level 2']
+                    qFieldDefs: ['Level 2'],
+                    "qSortCriterias": [{
+                        "qSortByState": 0,
+                        "qSortByFrequency": 0,
+                        "qSortByNumeric": 0,
+                        "qSortByAscii": 0,
+                        "qSortByLoadOrder": 1,
+                        "qSortByExpression": 1,
+                        "qExpression": {
+                            "qv": "max(CSVRowNo)"
+                        },
+                        "qSortByGreyness": 0
+                    }],
                 }
             }]
         }
@@ -248,35 +439,6 @@ export async function getAllSlides(insertSectionBreakers = sectionBreakerConfig)
     sectionBreakerConfig = insertSectionBreakers;
     var table = insertSectionBreakers ? await getAllSlideHeaders(qix) : await getAllSlideHeadersPlain(qix);
     Session.set('slideHeaders', table);
-
-    // var sessionModel = await qix.app.createSessionObject({
-    //     qInfo: {
-    //         qType: 'cube'
-    //     },
-    //     qHyperCubeDef: {
-    //         qDimensions: [{
-    //             qDef: {
-    //                 qFieldDefs: ['Level 1']
-    //             }
-    //         }, {
-    //             qDef: {
-    //                 qFieldDefs: ['Level 2']
-    //             }
-    //         }, {
-    //             qDef: {
-    //                 qFieldDefs: ['Level 3']
-    //             }
-    //         }]
-    //     }
-    // });
-    // sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
-    //     qTop: 0,
-    //     qLeft: 0,
-    //     qWidth: 3,
-    //     qHeight: 3333
-    // }]);
-    // Session.set('slideData', sessionData[0].qMatrix);
-    // console.log('slide data', Session.get('slideData'));
 }
 
 
@@ -302,22 +464,22 @@ export async function getComment(qix) {
         qHeight: 3333
     }]);
     Session.set('slideComment', sessionData[0].qMatrix);
-    console.log('slide Comment', Session.get('slideComment'));
+    // console.log('sessionModel', sessionModel)
+    // console.log('slide Comment', Session.get('slideComment'));
 }
 
 export async function setChangeListener(qix) {
+    console.log('We are connected to Qlik Sense via the APIs, now setChangeListener', qix)
     try {
-        qix.app.on('changed', async() => {
-            console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
-            var cSelections = await getCurrentSelections();
+        qix.app.on('changed', async () => {
+            // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
+            await getCurrentSelections();
             Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
-           
-            if ( cSelections && cSelections.length ) {
-                await getAllSlides();    
-                Reveal.slide(0); //go to the first slide after a data refresh.      
-            }
+            Meteor.setTimeout(async function wait() {
+                await getAllSlides();
+                Reveal.slide(0); //go to the first slide after a data refresh.           
+            }, 100)
         });
-
     } catch (error) {
         console.error('failed to set change listener: ', error);
     }
@@ -327,7 +489,7 @@ function insertSectionBreakers(table) {
     var currentLevel1, previousLevel1 = '';
     var newTableWithChapter = [];
 
-    table.forEach(function(currentRow) {
+    table.forEach(function (currentRow) {
         var currentLevel1 = textOfLevel(currentRow, 1);
         if (previousLevel1 !== currentLevel1) {
             newTableWithChapter.push(currentLevel1)
@@ -342,21 +504,6 @@ function insertSectionBreakers(table) {
 function textOfLevel(row, level) {
     level -= 1
     return row[level].qText
-}
-
-export function s3Logger( currentSelections, currentSelectionId ) {
-    var user = Cookies.get('user')? JSON.parse(Cookies.get('user')) : {};
-    var logData = {
-        selections: "",
-        currentSelectionId: currentSelectionId,
-        qlikID: user.qlikID,
-        accountid: user.accountid,
-        email: user.email
-    };
-    currentSelections.forEach(s=>{
-        logData.selections += s.qField+"="+s.qSelected+";";
-    });
-    Meteor.call('s3Logger', "userselection", logData);
 }
 
 //http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm
@@ -375,34 +522,22 @@ async function getCurrentSelections() {
         var layout = await genericObject.getLayout();
         // console.log('genericObject layout', layout)
         var currentSelections = layout.qSelectionObject.qSelections;
-
-        console.log("currentSelections", currentSelections);
-
-        if ( currentSelections && currentSelections.length ) {
-            SenseSelections.insert({
-                userId: Meteor.userId,
-                userName: Meteor.user().profile.name,
-                eventType: "selectionChanged",
-                selection: currentSelections,
-                selectionDate: new Date() // current time
-            }, function(err, currentSelectionId) {
-                if (err) { console.error('Failed to store the selection in mongoDb') }
-                console.log('New selection has been stored in MongoDB with currentSelectionId', currentSelectionId)
-                Session.set('currentSelectionId', currentSelectionId);
-                //AWS s3 logger
-                s3Logger(currentSelections, currentSelectionId);
-                return currentSelections;
-
-            });
-        }
-
-        return currentSelections;
-
+        SenseSelections.insert({
+            userId: Meteor.userId,
+            userName: Meteor.user().profile.name,
+            eventType: "selectionChanged",
+            selection: currentSelections,
+            selectionDate: new Date() // current time
+        }, function (err, currentSelectionId) {
+            if (err) {
+                console.error('Failed to store the selection in mongoDb')
+            }
+            Session.set('currentSelectionId', currentSelectionId);
+            return currentSelections;
+        });
     } catch (error) {
         var message = 'getCurrentSelections: Can not connect to the Qlik Sense Engine API via enigmaJS';
         console.error(message, error);
-        sAlert.error(message, error);
-
-        return null;
+        // sAlert.error(message, error);
     };
 }

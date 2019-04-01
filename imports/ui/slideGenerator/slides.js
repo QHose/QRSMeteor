@@ -4,7 +4,7 @@ var Reveal = require('reveal.js');
 import lodash from 'lodash';
 import hljs from 'highlight.js';
 import { Logger } from '/imports/api/logger';
-import { getQix, initQix } from '/imports/ui/useCases/useCaseSelection';
+import { getQix, initQlikSense } from "/imports/ui/useCases/useCaseSelection";
 
 _ = lodash;
 var Cookies = require('js-cookie');
@@ -12,24 +12,38 @@ var showdown = require('showdown');
 var converter = new showdown.Converter();
 var numberOfActiveSlides = 5;
 
-// Template.slides.onCreated(async function() {
-//     $('body').css({
-//         overflow: 'hidden',
-//     });
-// })
+Meteor.startup(async function () {
+    await initQlikSense();
+  })
 
-// Template.slides.onDestroyed(function() {
-//     $('body').css({
-//         overflow: 'auto',
-//     });
-// })
-
-Template.slides.onRendered(function() {
-    // slideDataLoaded();
+  Template.slides.onRendered(async function() {
+    await slideDataLoaded();
     initializeReveal();
-    initQix();
-});
-
+    this.$("aside").popup({
+      title: "Slides",
+      content:
+        "You are navigating in a 'presentation', you can press escape to get an overview, or use your keyboard arrows to go to the next and previous slides.",
+      delay: {
+        show: 500,
+        hide: 0
+      }
+    });
+  });
+  
+  async function slideDataLoaded() {
+    Meteor.setTimeout(async function() {
+      if (!Session.get("slideHeaders")) {
+        console.log("------------------------------------");
+        console.log(
+          "No slide data present in session, reroute the user back to the Selection screen."
+        );
+        console.log("------------------------------------");
+        //go back, since SOE does not show the slide selector
+        FlowRouter.go('/')
+      }
+    }, 4000);
+  }
+  
 var menuOptions = [];
 
 Template.slides.events({
