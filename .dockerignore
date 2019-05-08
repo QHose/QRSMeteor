@@ -1,4 +1,4 @@
 .meteor/local
-node_modules/onepresales-server-auth/config.js
+.build/bundle/programs/server/npm/node_modules/onepresales-server-auth/config.js
 node_modules
-mongo
+mongoa
