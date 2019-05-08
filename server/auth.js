@@ -5,8 +5,8 @@ import onepresalesServerAuth from 'onepresales-server-auth';
 
 export function setupApi() {
 
-  const app = express();
-  onepresalesServerAuth(app, { relayState: '/' } );
+  // const app = express();
+  // onepresalesServerAuth(app);
 
-  WebApp.connectHandlers.use(app);
+  // WebApp.connectHandlers.use(app);
 }
