@@ -52,7 +52,7 @@ loginQlik();
 export function loginQlik() {
   //rerun this function anytime something happens with the login state
 //   console.log("mustBeSignedIn via Qlik.com for route: ", routeName);
-var QlikUserProfile = Cookies.get("CSUser")?Cookies.get("CSUser"):'username=bieshosetest&firstName=test&lastName=test&emailAddress=bieshose@gmail.com&contactID=&accountID=&ulcLevels=Base&country=Angola&hash=xS9zTEOE7vSgTVXycUr99UFLc78='; //only availalbe on Qlik.com domains
+var QlikUserProfile = Cookies.get("CSUser")||'username=bieshosetest&firstName=test&lastName=test&emailAddress=bieshose@gmail.com&contactID=&accountID=&ulcLevels=Base&country=Angola&hash=xS9zTEOE7vSgTVXycUr99UFLc78='; //only availalbe on Qlik.com domains
   var loggedInUser = Meteor.userId();
   console.log('Meteor userId:', loggedInUser)
   console.log("QlikUserProfile: ", QlikUserProfile);
@@ -60,12 +60,7 @@ var QlikUserProfile = Cookies.get("CSUser")?Cookies.get("CSUser"):'username=bies
   if (!QlikUserProfile) {
     //if user is not logged in, redirect to Qliks login page, after it we can read the cookie.
     var uri = Meteor.absoluteUrl() // always redirect to landingpage
-    console.log("The user has no qlikUserProfile and tried to open: " + uri);
-    var encodedReturnURI = encodeURIComponent(uri);
-    var QlikSSO =
-      "https://login.qlik.com/login.aspx?returnURL=" + encodedReturnURI;
-      console.log("User has no Qlik.com cookie, so send via a window.location.replace to: ", QlikSSO);
-    window.location.replace(QlikSSO);
+    console.log("The user has no qlikUserProfile and tried to open: " + uri);  
   } else if (!loggedInUser) {
     //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
     console.log("user has Qlik cookie, but is not yet logged in into meteor, lets do that now...");

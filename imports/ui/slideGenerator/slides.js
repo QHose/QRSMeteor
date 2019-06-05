@@ -314,10 +314,10 @@ function createCommentBox(text) {
 }
 
 function createPartnerPortalItemLink(Eid){
-    var linkBox = `
-        <section class="container ui itemPPTLink">
-            <a href="https://partners.qlik.com/filemanagement/fileget.cfm?fileid=`+Eid+`">Get the source PPT file where this slide displays in</a>
-        </section>`;
+    // var linkBox = `
+    //     <section class="container ui itemPPTLink">
+    //         <a href="https://partners.qlik.com/filemanagement/fileget.cfm?fileid=`+Eid+`">Get the source PPT file where this slide displays in</a>
+    //     </section>`;
     return linkBox;
 }
 //
