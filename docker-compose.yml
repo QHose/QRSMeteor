@@ -12,19 +12,19 @@ services:
         -  "80:80"
         depends_on:
         - qrs
-        # - web
+        - web
     mongodb:
         image: mongo
         container_name: "mongodb"
     qrs:
-        image: qrsmeteor:1.0.0
+        image: qhose/qrsmeteor:20190225-1323
         environment:
             - MONGO_URL=mongodb://mongodb:27017/
             - VIRTUAL_HOST=localqrs
             - PORT=3000 
             - ROOT_URL=http://localqrs
         volumes:
-        - C:\Users\mbj\Documents\GitHub\QRSMeteor\dockerConfigMountFolder:/meteorQRS/config
+        - C:\GitHub\QRSMeteor\dockerConfigMountFolder:/meteorQRS/config
         ports:
         -  "3000"
         # restart: always
@@ -33,14 +33,14 @@ services:
         depends_on:
         - mongodb
     web:
-        image: qhose/sensewebintegration:20171017-2247
+        image: qhose/sensewebintegration:20190711-1341
         environment:
             - VIRTUAL_HOST=localweb
             - MONGO_URL=mongodb://mongodb:27017/
             - PORT=3030 
             - ROOT_URL=http://localweb
         volumes:
-         - C:\Users\mbj\Documents\GitHub\senseWebIntegration\dockerConfigMountFolder:/sensewebintegration/config
+         - C:\GitHub\senseWebIntegration\dockerConfigMountFolder:/sensewebintegration/config
         ports:
         -  "3030"
         # restart: always
