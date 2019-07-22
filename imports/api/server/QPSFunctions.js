@@ -116,9 +116,9 @@ function linkVirtualProxyToProxy(virtualProxy) {
     proxyConfig.settings.virtualProxies.push(virtualProxy)
 
     try {
-        check(Meteor.settings.public.qlikSensePort, String);
-        check(Meteor.settings.public.qlikSensePortSecure, String);
-        check(Meteor.settings.broker.qlikSense.proxyAllowHTTP, String);
+        check(Meteor.settings.public.qlikSensePort, Number);
+        check(Meteor.settings.public.qlikSensePortSecure, Number);
+        check(Meteor.settings.broker.qlikSense.proxyAllowHTTP, Boolean
     } catch (error) {
         console.error('settings file incomplete, your are missing the qliksenseport, qlikSensePortSecure or proxyAllowHTTP')
     }
