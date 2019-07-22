@@ -47,7 +47,7 @@ var qrs = function qrs ( qrsConfig ) {
 		virtualProxy: ''
 	};
 	if ( qrsConfig && !_.isEmpty( qrsConfig ) ) {
-		this.config = extend( this.defaultConfig, qrsConfig );
+		this.config = extend( that.defaultConfig, qrsConfig );
 	}
 
 	/**
@@ -196,6 +196,7 @@ var qrs = function qrs ( qrsConfig ) {
 	 * @api public
 	 */
 	this.postFile = function ( endpoint, urlParams, filePath ) {
+
 		var fileBuffer = fs.readFileSync( filePath );
 		var additionalHeaders = {};
 		additionalHeaders['Content-Type'] = 'application/octet-stream';
