@@ -1,11 +1,10 @@
 var _typeof = require("../helpers/typeof");
 
-function _toPropertyKey(key) {
-  if (_typeof(key) === "symbol") {
-    return key;
-  } else {
-    return String(key);
-  }
+var toPrimitive = require("./toPrimitive");
+
+function _toPropertyKey(arg) {
+  var key = toPrimitive(arg, "string");
+  return _typeof(key) === "symbol" ? key : String(key);
 }
 
 module.exports = _toPropertyKey;
