@@ -559,7 +559,8 @@ export function getApps(name, stream) {
     try {
         return qrs.get(call.request);
     } catch (error) {
-        console.error('Error in getting the apps: we can not connect to Qlik Sense', error);
+        console.error('Error while getting the apps via the QRS API: we can not connect to Qlik Sense');
+        console.log(error);
     }
 };
 
