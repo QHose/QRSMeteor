@@ -1,6 +1,6 @@
 try {
-    var Reveal = require("reveal");
-} catch (error) {}
+    var Reveal = require("reveal.js");
+} catch (error) { }
 import "./reveal.css";
 // import 'reveal/theme/default.css';
 import lodash from "lodash";
@@ -19,19 +19,19 @@ var numberOfActiveSlides = 10;
 // ─── SLIDES ─────────────────────────────────────────────────────────────────────
 //
 
-Template.slides.onCreated(async function() {
+Template.slides.onCreated(async function () {
     $("body").css({
         overflow: "hidden"
     });
 });
 
-Template.slides.onDestroyed(function() {
+Template.slides.onDestroyed(function () {
     $("body").css({
         overflow: "auto"
     });
 });
 
-Template.slides.onRendered(async function() {
+Template.slides.onRendered(async function () {
     await slideDataLoaded();
     initializeReveal();
     this.$("aside").popup({
@@ -45,7 +45,7 @@ Template.slides.onRendered(async function() {
 });
 
 async function slideDataLoaded() {
-    Meteor.setTimeout(async function() {
+    Meteor.setTimeout(async function () {
         if (!Session.get("slideHeaders")) {
             console.log("------------------------------------");
             console.log(
@@ -58,7 +58,7 @@ async function slideDataLoaded() {
     }, 3000);
 }
 
-Meteor.startup(async function() {
+Meteor.startup(async function () {
     await initQlikSense();
 })
 
@@ -67,29 +67,157 @@ function initializeReveal() {
         window.Reveal = Reveal;
         console.log('initializeReveal', Reveal);
         Reveal.initialize({
-            width: window.innerWidth - 80,
-            embedded: true,
+            // Display presentation control arrows
             controls: true,
-            center: false,
-            // Flags if speaker notes should be visible to all viewers
-            showNotes: true,
-            autoPlayMedia: true,
-            fragments: false,
-            // autoSlide: 1000,
+
+            // Help the user learn the controls by providing hints, for example by
+            // bouncing the down arrow when they first encounter a vertical slide
+            controlsTutorial: true,
+
+            // Determines where controls appear, "edges" or "bottom-right"
+            controlsLayout: 'bottom-right',
+
+            // Visibility rule for backwards navigation arrows; "faded", "hidden"
+            // or "visible"
+            controlsBackArrows: 'faded',
+
+            // Display a presentation progress bar
+            progress: true,
+
+            // Display the page number of the current slide
+            slideNumber: false,
+
+            // Add the current slide number to the URL hash so that reloading the
+            // page/copying the URL will return you to the same slide
+            hash: false,
+
+            // Push each slide change to the browser history. Implies `hash: true`
+            history: false,
+
+            // Enable keyboard shortcuts for navigation
+            keyboard: true,
+
+            // Enable the slide overview mode
+            overview: true,
+
+            // Vertical centering of slides
+            center: true,
+
+            // Enables touch navigation on devices with touch input
+            touch: true,
+
+            // Loop the presentation
             loop: false,
-            transition: "slide", // none/fade/slide/convex/concave/zoom
+
+            // Change the presentation direction to be RTL
+            rtl: false,
+
+            // See https://github.com/hakimel/reveal.js/#navigation-mode
+            navigationMode: 'default',
+
+            // Randomizes the order of slides each time the presentation loads
+            shuffle: false,
+
+            // Turns fragments on and off globally
+            fragments: true,
+
+            // Flags whether to include the current fragment in the URL,
+            // so that reloading brings you to the same fragment position
+            fragmentInURL: false,
+
+            // Flags if the presentation is running in an embedded mode,
+            // i.e. contained within a limited portion of the screen
+            embedded: true,
+
+            // Flags if we should show a help overlay when the questionmark
+            // key is pressed
+            help: true,
+
+            // Flags if speaker notes should be visible to all viewers
+            showNotes: false,
+
+            // Global override for autoplaying embedded media (video/audio/iframe)
+            // - null: Media will only autoplay if data-autoplay is present
+            // - true: All media will autoplay, regardless of individual setting
+            // - false: No media will autoplay, regardless of individual setting
+            autoPlayMedia: null,
+
+            // Global override for preloading lazy-loaded iframes
+            // - null: Iframes with data-src AND data-preload will be loaded when within
+            //   the viewDistance, iframes with only data-src will be loaded when visible
+            // - true: All iframes with data-src will be loaded when within the viewDistance
+            // - false: All iframes with data-src will be loaded only when visible
+            preloadIframes: null,
+
+            // Number of milliseconds between automatically proceeding to the
+            // next slide, disabled when set to 0, this value can be overwritten
+            // by using a data-autoslide attribute on your slides
+            autoSlide: 0,
+
+            // Stop auto-sliding after user input
+            autoSlideStoppable: true,
+
+            // Use this method for navigation when auto-sliding
+            autoSlideMethod: Reveal.navigateNext,
+
+            // Specify the average time in seconds that you think you will spend
+            // presenting each slide. This is used to show a pacing timer in the
+            // speaker view
+            defaultTiming: 120,
+
+            // Enable slide navigation via mouse wheel
+            mouseWheel: false,
+
+            // Hide cursor if inactive
+            hideInactiveCursor: true,
+
+            // Time before the cursor is hidden (in ms)
+            hideCursorTime: 5000,
+
+            // Hides the address bar on mobile devices
+            hideAddressBar: true,
+
+            // Opens links in an iframe preview overlay
+            // Add `data-preview-link` and `data-preview-link="false"` to customise each link
+            // individually
             previewLinks: false,
-            slideNumber: true
+
+            // Transition style
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Transition speed
+            transitionSpeed: 'default', // default/fast/slow
+
+            // Transition style for full page slide backgrounds
+            backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+
+            // Number of slides away from the current that are visible
+            viewDistance: 3,
+
+            // Parallax background image
+            parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+            // Parallax background size
+            parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
+
+            // Number of pixels to move the parallax background per slide
+            // - Calculated automatically unless specified
+            // - Set to 0 to disable movement along an axis
+            parallaxBackgroundHorizontal: null,
+            parallaxBackgroundVertical: null,
+
+            // The display mode that will be used to show slides
+            display: 'block'
         });
 
         Session.set("activeStepNr", 0);
         addSlideChangedListener();
-    } catch (error) {}
+    } catch (error) { }
 }
 
 function addSlideChangedListener() {
     console.log('!!!!!!!!!!!!! addSlideChangedListener')
-    Reveal.addEventListener("slidechanged", function(evt) {
+    Reveal.addEventListener("slidechanged", function (evt) {
         console.log("slidechanged", evt.indexh);
         Session.set("activeStepNr", evt.indexh);
         $(".ui.embed").embed();
@@ -99,7 +227,7 @@ function addSlideChangedListener() {
 //
 // ─── SLIDE CONTENT ──────────────────────────────────────────────────────────────────────
 //
-Template.slideContent.onCreated(async function() {
+Template.slideContent.onCreated(async function () {
     var instance = this;
     instance.bullets = new ReactiveVar([]); //https://stackoverflow.com/questions/35047101/how-do-i-access-the-data-context-and-the-template-instance-in-each-case-event
     instance.comment = new ReactiveVar([]);
@@ -110,25 +238,25 @@ Template.slideContent.onCreated(async function() {
     // and now let's get the slide content:
     instance.bullets.set(await getLevel3(level1, level2));
     //get the comment of the page
-    instance.comment.set(await getComment(level1, level2));    
+    instance.comment.set(await getComment(level1, level2));
 });
 
 Template.slideContent.helpers({
-    bullets: function() {
+    bullets: function () {
         var res = Template.instance().bullets.get();
         if (res) var newArray = [];
-        res.forEach(function(item) {
+        res.forEach(function (item) {
             newArray.push(convertToHTML(item));
         });
         return newArray;
     },
-    comment: function() {
+    comment: function () {
         var comment = Template.instance().comment.get();
         if (comment.length > 10) return createCommentBox(comment);
     }
 });
 
-Template.slideContent.onRendered(async function() {
+Template.slideContent.onRendered(async function () {
     var template = this;
 
     //if the slide is shown, log it into the database
@@ -146,13 +274,13 @@ Template.slideContent.onRendered(async function() {
         viewDate: new Date() // current time
     });
 
-    Meteor.setTimeout(function() {
+    Meteor.setTimeout(function () {
         //embed youtube containers in a nice box without loading all content
         template.$(".ui.embed").embed({
             autoplay: false
         });
         //make sure all code gets highlighted using highlight.js
-        template.$("pre code").each(function(i, block) {
+        template.$("pre code").each(function (i, block) {
             hljs.highlightBlock(block);
         });
         //ensure all links open on a new tab
@@ -173,7 +301,7 @@ Template.slideContent.onRendered(async function() {
 });
 
 Template.slideContent.events({
-    "click a": function(e, t) {
+    "click a": function (e, t) {
         e.stopPropagation();
         Logger.insert({
             userId: Meteor.userId,
@@ -209,12 +337,12 @@ Template.slide.helpers({
     }
 });
 
-Template.registerHelper("level", function(level, slide) {
+Template.registerHelper("level", function (level, slide) {
     level -= 1;
     return slide[level].qText;
 });
 
-Template.registerHelper("step", function() {
+Template.registerHelper("step", function () {
     return Session.get("activeStepNr");
 });
 

@@ -17,10 +17,7 @@ import {
 } from '/imports/api/APILogs';
 const enigma = require('enigma.js');
 const Cookies = require('js-cookie');
-var Reveal = require('reveal');
-var IntegrationPresentationSelectionSheet = Meteor.settings.public.slideGenerator.selectionSheet; //'DYTpxv'; selection sheet of the slide generator
-var slideObject = Meteor.settings.public.slideGenerator.dataObject;
-var app = null;
+var Reveal = require('reveal.js');
 var qix = null;
 
 //var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
@@ -97,7 +94,6 @@ Tracker.autorun(() => {
 });
 // ONRENDERED.
 Template.useCaseSelection.onRendered(async function() {
-    $('body').addClass('mainLandingImage');
 
     //fill the dropdown using a array of values
     $.each(possibleRoles, function(i, item) {
@@ -238,11 +234,6 @@ export async function getQix(ticket = null) {
     }
 
 }
-
-//ONDESTROYED
-Template.useCaseSelection.onDestroyed(function() {
-    $('body').removeClass('mainLandingImage');
-});
 
 //HELPERS
 Template.useCaseSelection.helpers({

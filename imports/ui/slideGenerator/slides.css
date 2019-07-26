@@ -1,33 +1,3 @@
-/**
- * Mozilla DevRel Theme for reveal.js - Common properties.
- *
- * By Salvador de la Puente, http://unoyunodiez.com
- */
-
-/* @import url(../../lib/font/fira-sans/fira.css); */
-
-/* QLIK SENSE CIRCLES */
-
-/* @media screen and (min-width: 768px)
-.left-qlik-background {
-    width: 189px;
-    height: 346px;
-    background-size: auto 346px;
-    background-position: -110px 50%;
-    top: 200px;
-}
-@media screen and (min-width: 768px)
-.left-qlik-background {
-    display: block;
-    z-index: 1;
-}
-logout?targetUr…host:81/qmc:91
-.background {
-    background-repeat: no-repeat;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP4AAAEsCAYAAADjFw7BAABHi0lEQ…gmw2ulPt3zGQD770yGOIikeftplSIxfSRIcscOwmfqrq3/BzsBvWfTnIYYAAAAAElFTkSuQmCC);
-    position: absolute;
-    z-index: 1;
-} */
 
 /*********************************************
   * POP UP SELECTOR
@@ -48,11 +18,11 @@ logout?targetUr…host:81/qmc:91
 .footer {
     height: 150px;
     font-size: .8em;
-    background-image: url('./images/bg_footer.jpg');
+    /* background-image: url('./images/bg_footer.jpg'); */
     background-size: 100%;
     background-position: bottom right;
     background-repeat: no-repeat;
-    background-color: #F8F0E5;
+    /* background-color: #F8F0E5; */
     margin-top: 30px;
     padding-left: 0;
 }
@@ -81,10 +51,10 @@ logout?targetUr…host:81/qmc:91
     text-shadow: none;
 }
 
-.reveal .slides {
+/* .reveal .slides {
     position: absolute;
     top: 400px;
-}
+} */
 
 .reveal .slides>section,
 .reveal .slides>section>section {

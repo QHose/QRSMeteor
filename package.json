@@ -21,7 +21,7 @@
     "node-powershell": "^3.1.1",
     "qrs": "^2.0.3",
     "request": "^2.81.0",
-    "reveal": "0.0.4",
+    "reveal.js": "^3.6.0",
     "sanitize-filename": "^1.6.1",
     "showdown": "^1.5.5",
     "simpl-schema": "^0.2.3",

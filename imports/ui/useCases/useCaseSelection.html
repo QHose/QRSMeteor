@@ -2,41 +2,36 @@
     <div class="backGroundImageColor">
 
     </div>
-    <div class="ui two column grid landing">
+    <div class="ui two column grid landing" style="padding-top: 60px; color: #4B4B4B;">
         <div class="column selectRole">
-<!-- <div class="ui error message"> -->
-    <!-- <i class="close icon"></i> -->
-    <!-- <div class="header"> -->
-        <!-- Update in progress... -->
-    <!-- </div> -->
-    <!-- <ul class="list"> -->
-        <!-- <li>We are maintaining the site</li> -->
-        <!-- <li>Unfortunately you will get some errors and not all functionality is available</li> -->
-    <!-- </ul> -->
-<!-- </div> -->
-            <h1>INTEGRATION.QLIK.COM (BETA)</h1>
-            <p>Have embedding questions? Want to learn more about our embedding approaches, technology and relevant use cases
+            <h1>INTEGRATION.QLIK.COM</h1>
+            <p>Have embedding questions? Want to learn more about our embedding approaches, technology and relevant use
+                cases
                 with Qlik? We have answers – explore further.</p>
             <p>Map your road to embedding analytics success here. Select your role to start your journey</p>
             <p>
                 <select class="ui dropdown" id="bodyDropdown">
-                                        <option value="" disabled selected>Select your role</option>
+                    <option value="" disabled selected>Select your role</option>
                 </select>
 
             </p>
         </div>
+        <div class="column">
+            <div class="ui fluid rounded image">
+                <img src="https://www.qlik.com/us/-/media/42c726c85e6d45678aa9e7ad2f58fe8f.ashx" />
+            </div>
+        </div>
 
         <div class="row secondRow">
-            <div class="column">
+            <!-- <div class="column">
                 <h1>Video Library</h1>
                 <p>For a deeper dive where is my video resource playlist? </p>
                 <a id="videoButton" class="ui green basic button">Videos</a>
-                <!-- <a id="videoButton" href="{{pathFor 'documentation'}}?tab=video" class="ui green basic button">Videos</a>                 -->
-            </div>
+            </div> -->
             <div class="column">
                 <h1>Presentation explorer</h1>
-                <p>We have indexed all slides in a Qlik Sense app. Now, based on your selected skills & requirements we create a presentation on the fly. Topics include web,
-                    security and API integration, all powered by Qlik Core.</p>
+                <p>We have loaded all our slides in a Qlik Sense app. Now, based on your selected skills & requirements we can dynamically
+                    create a presentation that suits your needs.</p>
                 <div href="{{pathFor 'slides'}}" class="ui green basic button slides">Slides </div>
             </div>
         </div>
@@ -46,100 +41,4 @@
 
 
 
-
-
-    <!--<div class="ui three column centered grid">
-        <div class="row">
-            <h3 class="ui left aligned dividing header">Please select your demo</h3>
-        </div>
-        <div class="ui special centered cards">
-            <div class="fluid card">
-                <div class="blurring dimmable image">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <div class="center">
-                                <a href="{{pathFor 'impress'}}" class="ui positive button">Select this demo</a>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="images/SoftwareAsAService.png">
-                </div>
-                <div class="content">
-                    <a href="{{pathFor 'impress'}}" class="header">SaaS provisioning</a>
-                    <div class="meta">
-                        <span class="date">
-                        Here we show and reveal how you can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment. This demo shows you how to copy an app (dashboard) which serves as a "template layout" for each of your customers (<a href="{{URL_Youtube_concept_behind}}" target="_blank">video</a>).</span>
-                    </div>
-                </div>
-            </div>
-            <div class="fluid card">
-                <div class="blurring dimmable image">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <div class="center">
-                                <a href="{{pathFor 'selfService'}}" class="ui positive button">Select this demo</a>
-                            </div>
-                        </div>
-                    </div> <img src="images/QlikSelfServiceBI.png">
-                </div>
-                <div class="content">
-                    <a href="{{pathFor 'selfService'}}" class="header">Self Service</a>
-                    <div class="meta">
-                        <span class="date">Using a layered approach to functionality, this demo shows how users can create personalized reports and dynamic dashboards to explore vast amounts of data and find meaningful insights.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="fluid card">
-                <div class="blurring dimmable image">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <div class="center">
-                                <a href="{{webIntegrationDemo}}" class="ui positive button webIntegrationDemo">Select this demo</a>
-                            </div>
-                        </div>
-                    </div> <img src="images/webIntegrationUseCase.png">
-                </div>
-                <div class="content">
-                    <a href="{{webIntegrationDemo}}" class="header webIntegrationDemo">Embed Qlik Sense</a>
-                    <div class="meta">
-                        <span class="date">Here we demonstrate how you can embed the Qlik Sense hub, sheets or individual objects. Also we show the "data only use case", we you just "query" our data model and use your own HTML/JS to vizualize the content.</span>
-                    </div>
-                </div>
-            </div>
-             <div class="fluid card">
-                <div class="blurring dimmable image">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <div class="center">
-                                <a target="_blank" href="{{pathFor 'slides'}}" class="ui positive button">Select this demo</a>
-                            </div>
-                        </div>
-                    </div> <img src="images/Use case selection - API tool broker.png">
-                </div>
-                <div class="content">
-                    <a target="_blank" href="{{pathFor 'slides'}}" class="header">Slide generator</a>
-                    <div class="meta">
-                        <span class="date">Here we have multiple presentations and workshops about web, security and API integration with Qlik Sense powered by the Engine API.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="fluid card">
-                <div class="blurring dimmable image">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <div class="center">
-                                <a href="{{pathFor 'documentation'}}" class="ui positive button">Read more</a>
-                            </div>
-                        </div>
-                    </div> <img src="images/questions.png">
-                </div>
-                <div class="content">
-                    <a href="{{pathFor 'documentation'}}" class="header webIntegrationDemo">Integration questions?</a>
-                    <div class="meta">
-                        <span class="date">Documentation and videos about how you can integrate Qlik Sense into your platform.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </template>
