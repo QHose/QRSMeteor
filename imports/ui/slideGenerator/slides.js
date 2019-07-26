@@ -1,191 +1,225 @@
-try {
-    var Reveal = require("reveal");
-} catch (error) {}
-import "./reveal.css";
+var Reveal = require('reveal.js');
+// import './reveal.css';
 // import 'reveal/theme/default.css';
-import lodash from "lodash";
-import hljs from "highlight.js";
-import { Logger } from "/imports/api/logger";
+import lodash from 'lodash';
+import hljs from 'highlight.js';
+import { Logger } from '/imports/api/logger';
 import { getQix, initQlikSense } from "/imports/ui/useCases/useCaseSelection";
-import * as nav from "/imports/ui/nav.js";
 
 _ = lodash;
-var Cookies = require("js-cookie");
-var showdown = require("showdown");
+var Cookies = require('js-cookie');
+var showdown = require('showdown');
 var converter = new showdown.Converter();
-var numberOfActiveSlides = 10;
+var numberOfActiveSlides = 5;
 
-//
-// ─── SLIDES ─────────────────────────────────────────────────────────────────────
-//
+Meteor.startup(async function () {
+    await initQlikSense();
+  })
 
-Template.slides.onCreated(async function() {
-    $("body").css({
-        overflow: "hidden"
-    });
-});
-
-Template.slides.onDestroyed(function() {
-    $("body").css({
-        overflow: "auto"
-    });
-});
-
-Template.slides.onRendered(async function() {
+  Template.slides.onRendered(async function() {
     await slideDataLoaded();
     initializeReveal();
     this.$("aside").popup({
-        title: "Slides",
-        content: "You are navigating in a 'presentation', you can press escape to get an overview, or use your keyboard arrows to go to the next and previous slides.",
-        delay: {
-            show: 500,
-            hide: 0
-        }
+      title: "Slides",
+      content:
+        "You are navigating in a 'presentation', you can press escape to get an overview, or use your keyboard arrows to go to the next and previous slides.",
+      delay: {
+        show: 500,
+        hide: 0
+      }
     });
-});
-
-async function slideDataLoaded() {
+  });
+  
+  async function slideDataLoaded() {
     Meteor.setTimeout(async function() {
-        if (!Session.get("slideHeaders")) {
-            console.log("------------------------------------");
-            console.log(
-                "No slide data present in session, reroute the user back to the Selection screen."
-            );
-            console.log("------------------------------------");
-            nav.showSlideSelector();
-            return;
-        }
-    }, 3000);
-}
+      if (!Session.get("slideHeaders")) {
+        console.log("------------------------------------");
+        console.log(
+          "No slide data present in session, reroute the user back to the Selection screen."
+        );
+        console.log("------------------------------------");
+        //go back, since SOE does not show the slide selector
+        Router.go('/')
+      }
+    }, 4000);
+  }
+  
+var menuOptions = [];
 
-Meteor.startup(async function() {
-    await initQlikSense();
-})
-
-function initializeReveal() {
-    try {
-        window.Reveal = Reveal;
-        console.log('initializeReveal', Reveal);
-        Reveal.initialize({
-            width: window.innerWidth - 80,
-            embedded: true,
-            controls: true,
-            center: false,
-            // Flags if speaker notes should be visible to all viewers
-            showNotes: true,
-            autoPlayMedia: true,
-            fragments: false,
-            // autoSlide: 1000,
-            loop: false,
-            transition: "slide", // none/fade/slide/convex/concave/zoom
-            previewLinks: false,
-            slideNumber: true
+Template.slides.events({
+    'click .closeSlides': function(event, template) {
+        event.preventDefault();
+        console.log("click");
+        
+        $('.reveal').css({
+            top: '-100%'
         });
 
-        Session.set("activeStepNr", 0);
-        addSlideChangedListener();
-    } catch (error) {}
+        $('html').css({
+            overflow: 'auto'
+        });
+        $('body').css({
+            overflow: 'auto'
+        });
+    },
+
+    'click .dropdown-menu a': function(event, template) {
+        
+        var $target = $( event.currentTarget ),
+                val = $target.attr( 'data-value' ),
+                $inp = $target.find( 'input' ),
+                idx;
+
+            if ( ( idx = menuOptions.indexOf( val ) ) > -1 ) {
+                menuOptions.splice( idx, 1 );
+                setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
+            } else {
+                menuOptions.push( val );
+                setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
+            }
+
+            $( event.target ).blur();
+                
+            $('.commentBox').css({
+                display: (menuOptions.indexOf("hidecomments") > -1)? 'none' : 'block'
+            });
+            return false;
+    },
+
+    'click a.op-help': function() {
+        Reveal.toggleHelp();
+    },
+    'click a.op-overview': function() {
+        Reveal.toggleOverview();
+    }
+});
+
+function slideDataLoaded() {
+    if (!Session.get("slideHeaders")) {
+        console.log("------------------------------------");
+        console.log("No slide data present in session, reroute the user back to the useCaseSelection screen.");
+        console.log("------------------------------------");
+        Router.go("useCaseSelection");
+        return;
+    }
 }
 
-function addSlideChangedListener() {
-    console.log('!!!!!!!!!!!!! addSlideChangedListener')
-    Reveal.addEventListener("slidechanged", function(evt) {
-        console.log("slidechanged", evt.indexh);
-        Session.set("activeStepNr", evt.indexh);
-        $(".ui.embed").embed();
+function initializeReveal() {
+    window.Reveal = Reveal;
+    console.log('initializeReveal', Reveal);
+    Reveal.initialize({
+        // width: window.innerWidth - 80,
+        width: "100%",
+        height: "95%",
+        margin: 0,
+        minScale: 0.5,
+        maxScale: 1.5,
+
+        controlsTutorial: true,
+        embedded: true,
+        controls: true,
+        center: true,
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+        autoPlayMedia: true,
+        fragments: false,
+        // autoSlide: 1000,
+        loop: false,
+        transition: "slide", // none/fade/slide/convex/concave/zoom
+        previewLinks: false,
+        //slideNumber: 'c/t',
+        slideNumber: 'h/v',
+        display: "block",
+        help: true
+    });
+
+    Session.set('activeStepNr', 0);
+    Reveal.addEventListener('slidechanged', function(evt) {
+        //console.log('slidechanged', evt.indexh)
+        Session.set('activeStepNr', evt.indexh);
+        $('.ui.embed').embed();
+
+        $('.commentBox').css({
+            display: (menuOptions.indexOf("hidecomments") > -1)? 'none' : 'block'
+        });
     });
 }
+
+Template.slideContent.events({
+    'contextmenu *': function(e, t) {
+        e.stopPropagation();
+        console.log('template instance:\n', t);
+        console.log('data context:\n', Blaze.getData(e.currentTarget));
+    }
+});
 
 //
 // ─── SLIDE CONTENT ──────────────────────────────────────────────────────────────────────
 //
-Template.slideContent.onCreated(async function() {
-    var instance = this;
-    instance.bullets = new ReactiveVar([]); //https://stackoverflow.com/questions/35047101/how-do-i-access-the-data-context-and-the-template-instance-in-each-case-event
-    instance.comment = new ReactiveVar([]);
-
-    //the header and sub header for which we want to load the slide data/bullets
-    var level1 = Template.currentData().slide[0].qText;
-    var level2 = Template.currentData().slide[1].qText;
-    // and now let's get the slide content:
-    instance.bullets.set(await getLevel3(level1, level2));
-    //get the comment of the page
-    instance.comment.set(await getComment(level1, level2));    
-});
-
-Template.slideContent.helpers({
-    bullets: function() {
-        var res = Template.instance().bullets.get();
-        if (res) var newArray = [];
-        res.forEach(function(item) {
-            newArray.push(convertToHTML(item));
-        });
-        return newArray;
-    },
-    comment: function() {
-        var comment = Template.instance().comment.get();
-        if (comment.length > 10) return createCommentBox(comment);
-    }
-});
 
 Template.slideContent.onRendered(async function() {
-    var template = this;
+    //
+    // ─── GET SLIDE CONTENT LEVEL 3 ──────────────────────────────────────────────────
+    //
 
-    //if the slide is shown, log it into the database
+    //console.log('slideContent.onRendered')
+    var level1 = this.data.slide[0].qText;
+    var level2 = this.data.slide[1].qText;
+    var template = this;
+    if (level1 && level2) {
+        var bullets = await getLevel3(level1, level2); //using the parent, get all items that have this name as parent.
+        bullets.forEach(function(bullet) {
+            template.$('.slideContent').append(convertToHTML(bullet));
+        })
+
+    }
+
+    //
+    // ─── GET COMMENT AND CREATE A NICE HTML BOX AROUND THE TEXT ─────────────────────
+    //
+
+    var comment = await getComment(level1, level2);
+    // console.log('comment retrieved in slideContent onrendered', comment)
+    if (comment.length > 10)
+        template.$('.slideContent').append(createCommentBox(comment));
+   
+
     Logger.insert({
         userId: Meteor.userId,
-        role: Cookies.get("currentMainRole"),
-        userProfile: Meteor.user(),
-        website: location.href,
+        // userName: Meteor.user().profile.name,
         counter: 1,
-        eventType: "slideRendered",
+        eventType: 'slideRendered',
         topic: this.data.slide[0].qText,
         slide: this.data.slide[1].qText,
-        currentSlideNr: Reveal.getIndices().h,
-        slidesContainedInSelection: $(".slide").length,
         viewDate: new Date() // current time
     });
 
     Meteor.setTimeout(function() {
         //embed youtube containers in a nice box without loading all content
-        template.$(".ui.embed").embed({
-            autoplay: false
+        this.$('.ui.embed').embed({
+            autoplay: true
         });
         //make sure all code gets highlighted using highlight.js
-        template.$("pre code").each(function(i, block) {
+        this.$('pre code').each(function(i, block) {
             hljs.highlightBlock(block);
         });
         //ensure all links open on a new tab
-        template.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
-
-        //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
-        var slideContent = template.bullets.get();
-        // console.log("slideContent.onRendered array of bullets: ", slideContent);
-        if (slideContent.length === 0) {
-            console.log('------------------------------------');
-            console.log('No slide data retrieved from Qlik Sense, re-adding the slide changed event listener...');
-            console.log('------------------------------------');
-            addSlideChangedListener();
-            window.location.href = window.location.origin;
-            //location.reload(); //@todo to evaluate if this helps
-        }
-    }, 2000);
+        this.$('a[href^="http://"], a[href^="https://"]').attr('target', '_blank');
+    }, 1000);
 });
 
 Template.slideContent.events({
-    "click a": function(e, t) {
+    'click a': function(e, t) {
         e.stopPropagation();
         Logger.insert({
             userId: Meteor.userId,
-            userProfile: Meteor.user(),
-            role: Cookies.get("currentMainRole"),
+            // userName: Meteor.user().profile.name,
             counter: 1,
-            eventType: "linkClick",
-            topic: Template.parentData(1).slide[0].qText,
-            slide: Template.parentData(1).slide[1].qText,
+            eventType: 'linkClick',
+            topic: this.data.slide[0].qText,
+            slide: this.data.slide[1].qText,
             linkName: e.currentTarget.innerText,
-            linkSource: e.target.baseURI,
-            viewDate: new Date() // current time
+            viewDate: new Date(), // current time
         });
     }
 });
@@ -195,27 +229,25 @@ Template.slideContent.events({
 //
 Template.slides.helpers({
     slideHeaders() {
-        return Session.get("slideHeaders"); //only the level 1 and 2 colums, we need this for the headers of the slide
+        return Session.get('slideHeaders'); //only the level 1 and 2 colums, we need this for the headers of the slide
     }
 });
 
 Template.slide.helpers({
     active(slideNr) {
-        var activeSlide = Session.get("activeStepNr") ? Session.get("activeStepNr") : $(".slide-number").text();
-        var active =
-            slideNr < activeSlide + numberOfActiveSlides &&
-            slideNr > activeSlide - numberOfActiveSlides;
+        var activeSlide = Session.get('activeStepNr');
+        var active = slideNr < activeSlide + numberOfActiveSlides && slideNr > activeSlide - numberOfActiveSlides;
         return active;
     }
 });
 
-Template.registerHelper("level", function(level, slide) {
-    level -= 1;
-    return slide[level].qText;
+Template.registerHelper('level', function(level, slide) {
+    level -= 1
+    return slide[level].qText
 });
 
-Template.registerHelper("step", function() {
-    return Session.get("activeStepNr");
+Template.registerHelper('step', function() {
+    return Session.get('activeStepNr');
 });
 
 //
@@ -223,71 +255,50 @@ Template.registerHelper("step", function() {
 //
 async function getLevel3(level1, level2) {
     // console.log("getLevel3: " + level1 + ' -' + level2);
-    try {
-        var qix = await getQix();
-        var sessionModel = await qix.app.createSessionObject({
-            qInfo: {
-                qType: "cube"
-            },
-            qHyperCubeDef: {
-                qDimensions: [{
-                    qDef: {
-                        qFieldDefs: ["Level 3"]
-                    }
-                }],
-                qMeasures: [{
-                    qDef: {
-                        qDef: 'sum({< "Level 1"={"' +
-                            level1 +
-                            '"}, "Level 2"={"' +
-                            level2 +
-                            '"} >}1)'
-                    }
-                }]
-            }
-        });
-        // console.log('sessionModel', sessionModel)
-        // console.log('------------------------------------');
-        // console.log('QDEF IS sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)');
-        // console.log('------------------------------------');
-        sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
-            qTop: 0,
-            qLeft: 0,
-            qWidth: 2,
-            qHeight: 1000
-        }]);
+    var qix = await getQix();
+    var sessionModel = await qix.app.createSessionObject({
+        qInfo: {
+            qType: "cube"
+        },
+        qHyperCubeDef: {
+            qDimensions: [{
+                qDef: {
+                    qFieldDefs: ["Level 3"]
+                }
+            }],
+            qMeasures: [{
+                qDef: {
+                    qDef: 'sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)'
+                }
+            }]
+        }
+    });
+    // console.log('------------------------------------');
+    // console.log('QDEF IS sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)');
+    // console.log('------------------------------------');
+    sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 2,
+        qHeight: 1000
+    }]);
 
-        var level3Temp = sessionData[0].qMatrix;
-        /* console.log(
-          "Qlik returned the following data for the sheet: " + level2,
-          normalizeData(level3Temp)
-        ); */
-        sessionModel.removeAllListeners();
-        return normalizeData(level3Temp);
-    } catch (error) {
-        console.error(
-            "error getting level 3 data (the bullets) for the slide",
-            error
-        );
-        window.location.href = window.location.origin;
-    }
+    var level3Temp = sessionData[0].qMatrix;
+    return normalizeData(level3Temp);
 }
 
 function createCommentBox(text) {
     // console.log('createCommentBox for text', text)
-    var textAfterCommentMarker = text.split("!comment").pop();
-    var messagebox =
-        `
-        <section class="commentBox">
+    var textAfterCommentMarker = text.split('!comment').pop();
+    var messagebox = `
+        <section class="container ui commentBox">
             <div class="ui icon message">
             <i class="help icon"></i>
             <div class="content">
             <div class="header">
                 Let's explain what we mean here...
             </div>
-                 ` +
-        converter.makeHtml(textAfterCommentMarker) +
-        `
+                 ` + converter.makeHtml(textAfterCommentMarker) + `
             </div>
         </div>
         </section>`; //select all text after the !comment... and print it in a nice text box
@@ -298,6 +309,7 @@ function createCommentBox(text) {
 //
 // ─── FOR EACH SLIDE GET THE COMMENT TEXT USING SET ANALYSIS ─────────────────────
 //
+
 
 async function getComment(level1, level2) {
     var qix = await getQix();
@@ -313,11 +325,7 @@ async function getComment(level1, level2) {
             }],
             qMeasures: [{
                 qDef: {
-                    qDef: 'sum({< "Level 1"={"' +
-                        level1 +
-                        '"}, "Level 2"={"' +
-                        level2 +
-                        '"} >}1)'
+                    qDef: 'sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)'
                 }
             }]
         }
@@ -330,112 +338,116 @@ async function getComment(level1, level2) {
     }]);
 
     var comment = sessionData[0].qMatrix[0][0].qText;
-    return comment != "null" ? comment : "";
+    return comment != 'null' ? comment : '';
 }
+
+async function getPartnerPortalItem(level1, level2) {
+    var qix = await getQix();
+    var sessionModel = await qix.app.createSessionObject({
+        qInfo: {
+            qType: "cube"
+        },
+        qHyperCubeDef: {
+            qDimensions: [{
+                qDef: {
+                    qFieldDefs: ["Eid"]
+                }
+            }],
+            qMeasures: [{
+                qDef: {
+                    qDef: 'sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)'
+                }
+            }]
+        }
+    });
+    sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 2,
+        qHeight: 1000
+    }]);
+
+    var items = sessionData[0].qMatrix[0][0].qText;
+    return items != 'null' ? items : '';
+}
+
 
 function normalizeData(senseArray) {
     var result = [];
     senseArray.forEach(element => {
-        result.push(element[0].qText);
+        result.push(element[0].qText)
     });
     return result;
 }
 
 function convertToHTML(text) {
     // console.log('convertToHTML text', text)
-    var commentMarker = "!comment";
-    var embeddedImageMarker = `!embeddedImage`;
+    var commentMarker = '!comment';
+    var embeddedImageMarker = `!embeddedImage`
 
     //
     // ─── YOUTUBE ────────────────────────────────────────────────────────────────────
     //
-    if (youtube_parser(text)) {
-        //youtube video url
+    if (youtube_parser(text)) { //youtube video url
         // console.log('found an youtube link so embed with the formatting of semantic ui', text)
         var videoId = youtube_parser(text);
-        var html =
-            '<div class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' +
-            videoId +
-            '" data-icon="video" data-placeholder="images/youtube.jpg"></div></div>';
-        // console.log('generated video link: ', html);
+        var html = '<div class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' + videoId + '" data-icon="video" data-placeholder="images/youtube.jpg"></div></div>'
+            // console.log('generated video link: ', html);
         return html;
     }
 
     //
     // ─── IFRAME ─────────────────────────────────────────────────────────────────────
     //
-    else if (text.startsWith("iframe ")) {
-        //if a text starts with IFRAME: we convert it into an IFRAME with a class that sets the width and height etc...
-        var sourceURL = text.substr(text.indexOf(" ") + 1);
-        return (
-            '<iframe src="' +
-            sourceURL +
-            '" allowfullscreen="allowfullscreen" frameborder="0"></iframe>'
-        );
+    else if (text.startsWith('iframe ')) { //if a text starts with IFRAME: we convert it into an IFRAME with a class that sets the width and height etc...
+        var sourceURL = text.substr(text.indexOf(' ') + 1);
+        return '<iframe src="' + sourceURL + '" allowfullscreen="allowfullscreen" frameborder="0"></iframe>';
     }
 
     //
     // ─── IMAGE ──────────────────────────────────────────────────────────────────────
     //
-    else if (checkTextIsImage(text) && text.includes("https://")) {
-        return (
-            '<div class="ui container"> <img class="ui massive rounded bordered image"  style="width: 100%;" src="' +
-            text +
-            '"/></div>'
-        );
-    } else if (checkTextIsImage(text)) {
-        return (
-            '<div class="ui container"> <img class="ui massive rounded bordered image"  style="width: 100%;" src="images/' +
-            text +
-            '"/></div>'
-        );
-    } else if (text.startsWith(embeddedImageMarker)) {
-        //embedded image in text
+    else if (checkTextIsImage(text)) {
+        return '<div class="ui container"> <img class="ui massive rounded bordered image"  style="width: 100%;" src="images/' + text + '"/></div>';
+    } else if (text.startsWith(embeddedImageMarker)) { //embedded image in text
         var textMarker = text.split(embeddedImageMarker).pop();
-        return (
-            '<div class="ui container"><img class="ui massive rounded bordered image"   style="width: 100%;"  alt="Embedded Image" src="data:image/png;base64,' +
-            textMarker +
-            '"/> </div>'
-        );
+        return '<div class="ui container"><img class="ui massive rounded bordered image"   style="width: 100%;"  alt="Embedded Image" src="data:image/png;base64,' + textMarker + '"/> </div>';
     }
     //
     // ─── COMMENT ────────────────────────────────────────────────────────────────────
     //
-    else if (text.startsWith(commentMarker)) {
-        //vertical slide with comments
+    else if (text.startsWith(commentMarker)) { //vertical slide with comments
         //ignore, comments are added on another place
     }
 
     //
     // ─── CUSTOM HTML ────────────────────────────────────────────────────────────────
     //
-    else if (text.startsWith("<")) {
-        //custom HTML
+    else if (text.startsWith('<')) { //custom HTML
         return text;
     }
 
     //
     // ─── TEXT TO BE CONVERTED TO VIA MARKDOWN ───────────────────────────────────────
     //
-    else {
-        //text, convert the text (which can include markdown syntax) to valid HTML
+    else { //text, convert the text (which can include markdown syntax) to valid HTML
         var result = converter.makeHtml(text);
-        // console.log('Markdown result', result)
-        if (result.substring(1, 11) === "blockquote") {
-            return '<div class="ui green segment">' + result + "</div>";
+        if (result.substring(1, 11) === 'blockquote') {
+            return '<div class="ui green segment">' + result + '</div>';
         } else {
-            return '<div class="zBullet">' + result + "<br> </div>";
+            return result;
         }
     }
 }
+
 
 function youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
     // console.log('de url '+ url + ' is een match met youtube? '+ (match && match[7].length == 11));
-    return match && match[7].length == 11 ? match[7] : false;
+    return (match && match[7].length == 11) ? match[7] : false;
 }
 
 function checkTextIsImage(text) {
-    return text.match(/\.(jpeg|jpg|gif|png|svg)$/) != null;
+    return (text.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }
