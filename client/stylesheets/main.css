@@ -7,7 +7,7 @@ html {
 
 .mainNavBar {
     margin-top: 0px !important;
-    background-color: #62ac1e !important;
+    background-color: #0E2F4E !important;
 }
 
 .mainNavBar a {
@@ -39,7 +39,7 @@ html {
 
 .landing .selectRole {
     margin-top: 60px;
-    color: white;
+    color: #4B4B4B;
     height: 300px;
 }
 
