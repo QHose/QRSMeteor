@@ -5,6 +5,25 @@ html {
     min-height: 100%;
 }
 
+.mainLandingImage {
+    background-image: url('images/bg_intro.jpg');
+    background-size: auto 500px;
+    background-position: top center;
+    background-repeat: no-repeat;
+    text-align: left;
+}
+
+.mainLandingImage .backGroundImageColor {
+    content: "";
+    background-color: #62ac1e;
+    position: absolute;
+    height: 500px;
+    width: 40%;
+    top: 0px;
+    left: 0px;
+    /* z-index: -100; */
+}
+
 .mainNavBar {
     margin-top: 0px !important;
     background-color: #0E2F4E !important;

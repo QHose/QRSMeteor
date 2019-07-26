@@ -11,7 +11,7 @@ const _QIXSchema = require('/node_modules/enigma.js/schemas/qix/12.20.0/schema.j
 if (Meteor.isClient) {
     var _senseConfig = {
         "host": Meteor.settings.public.qlikSenseHost,
-        "port": Meteor.settings.public.useSSL? Meteor.settings.public.qlikSensePortSecure:Meteor.settings.public.qlikSensePort,
+        "port": Meteor.settings.public.qlikSensePort,
         "useSSL": Meteor.settings.public.useSSL,
         "virtualProxyClientUsage": Meteor.settings.public.virtualProxyClientUsage,
         "virtualProxySlideGenerator": Meteor.settings.public.slideGenerator.virtualProxy,

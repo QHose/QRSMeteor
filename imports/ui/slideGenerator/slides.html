@@ -1,67 +1,49 @@
-<template name="slides">
-  <!--         Create a chapter breaker if the level 1 has changed in the current row-->
-  <!-- The current level 1 and 2 headers -->
-  <div class="reveal slidesReveal">
-
-      <div class="button-group" style="z-index: 10; position: absolute; top: 10px; left: 10px;">
-          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-              <i class="fas fa-bars"></i>
-          </button>
-          <ul class="dropdown-menu" style="border: 1px solid #ccc">
-              <li>
-                  <a href="#" class="op-comments small" data-value="hidecomments" tabIndex="-1">
-                      <input type="checkbox" />&nbsp;Hide comments</a>
-              </li>
-              <li>
-                  <a href="#" class="op-overview small" data-value="overview" tabIndex="-1">Toggle Overview</a>
-              </li>
-              <li>
-                  <a href="#" class="op-help small" data-value="help" tabIndex="-1">Keyboard Shortcuts</a>
-              </li>
-          </ul>
-      </div>
-      <div class="closeSlides">X</div>
-      <div class="slides ui container">
-          {{#each slideHeaders }} {{#if chapterSlide this}}
-          <section>
-              <div class="ui segment integrationBreaker">
-                  <h1 class="ui header" style="font-size: 50px;">
-                      Next: {{this}}
-                      <!-- The current level 1 and 2 headers -->
-                  </h1>
-              </div>
-          </section>
-       {{else}} {{> slide slide=this slideNr=@index}} {{/if}} {{/each}}
-      </div>
-  </div>
+<template name="slidesContainerIFrame">
+  <iframe allowfullscreen src="{{pathFor 'slides'}}" class="frame"></iframe>
 </template>
 
-<template name="slideDisclaimer">
-  <section class="slide">
-      <div class="wrap">
-          <h3>Legal Disclaimer</h3>
-          <hr>
-          <div class="slideContent">
-              <div class="ui container">
-                  <img class="ui massive rounded bordered image" style="width: 100%;" src="images/LegalDisclaimerSlide.png">
-              </div>
-          </div>
-      </div>
-  </section>
+
+
+<template name="slides">
+  <!-- for each header: a level 1 and 2 combination -->
+  <!--         Create a chapter breaker if the level 1 has changed in the current row-->
+  <!-- The current level 1 and 2 headers -->
+
+  <div class="reveal">
+    <div class="slides">
+      {{#each slideHeaders }} {{#if chapterSlide this}}
+      <section data-autoslide="1500">
+        <div class="ui segment integrationBreaker">
+          <h1 class="ui header" style="font-size: 50px;">
+            Next: {{this}}
+            <!-- The current level 1 and 2 headers -->
+          </h1>
+        </div>
+      </section>
+      {{else}} {{> slide slide=this slideNr=@index}} {{/if}} {{/each}}
+    </div>
+  </div>
 </template>
 
 <template name="slide">
   <section class="slide">
-      <div class="wrap">
-          <h3>{{{level 1 slide}}}</h3>
-          <h1>{{{level 2 slide}}}</h1>
-          <hr> {{#if active slideNr}} {{> slideContent slide=slide}} {{/if}}
-      </div>
+    <div class="wrap">
+      {{#if active slideNr}} 
+        <h3> {{{level 1 slide}}}</h3>
+        <h1>{{{level 2 slide}}}
+          <hr>
+        </h1>
+        {{> slideContent slide=slide}} 
+      {{/if}}
+    </div>
+    {{> footer}}
   </section>
 </template>
 
+
 <template name="slideContent">
   <div class="slideContent">
-      <!-- slide content will be added via javascript in the onRendered of slideContent -->
+    {{#each bullet in bullets}} {{{bullet}}} {{/each}}
+ {{{ comment }}}
   </div>
 </template>
