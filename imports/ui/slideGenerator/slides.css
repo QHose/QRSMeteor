@@ -62,6 +62,9 @@
     font-weight: inherit;
 }
 
+.reveal .slides {
+    margin-top: 20px;
+}
 .reveal .slide {
     text-align: left;
     /* margin-top: 10px */
@@ -110,7 +113,7 @@
 .reveal h5,
 .reveal h6 {
     margin: 20px 0 20px 0;
-    color: #62ac1e;
+    color: #0E2F4E;
     font-family: "Fira Sans", Helvetica, sans-serif;
     font-weight: 600;
     line-height: 1.2;

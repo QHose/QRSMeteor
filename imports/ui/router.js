@@ -112,11 +112,6 @@ Router.route('/templateOverview', {
     layoutTemplate: 'SSOLayout'
 });
 
-Router.route('/slidegeneratorSlides', {
-    template: 'slidegeneratorSlides',
-    layoutTemplate: 'ImpressLayout'
-});
-
 Router.route('/securityRules', {
     template: 'securityRules',
     layoutTemplate: 'SSOLayout'
@@ -132,16 +127,6 @@ Router.route('/QMC', {
 Router.route('/SSO', {
     template: 'SSO',
     layoutTemplate: 'SSOLayout'
-});
-
-//SLIDES FOR THE SAAS AUTOMATION INTRODUCTION (/GENERATION)
-// Router.route('/impress', {
-//     template: 'impress',
-//     layoutTemplate: 'SSOLayout'
-// });
-Router.route('/SaaSIntroduction', function() {
-    this.layout('SlideGenerator');
-    this.render('impress');
 });
 
 //users for the slide generator have their own virtual proxy redirect path

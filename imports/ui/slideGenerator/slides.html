@@ -12,7 +12,7 @@
   <div class="reveal">
     <div class="slides">
       {{#each slideHeaders }} {{#if chapterSlide this}}
-      <section data-autoslide="1500">
+      <section>
         <div class="ui segment integrationBreaker">
           <h1 class="ui header" style="font-size: 50px;">
             Next: {{this}}
@@ -28,12 +28,12 @@
 <template name="slide">
   <section class="slide">
     <div class="wrap">
-      {{#if active slideNr}} 
-        <h3> {{{level 1 slide}}}</h3>
-        <h1>{{{level 2 slide}}}
-          <hr>
-        </h1>
-        {{> slideContent slide=slide}} 
+      {{#if active slideNr}}
+      <h3> {{{level 1 slide}}}</h3>
+      <h1>{{{level 2 slide}}}
+        <hr>
+      </h1>
+      {{> slideContent slide=slide}}
       {{/if}}
     </div>
     {{> footer}}
@@ -44,6 +44,6 @@
 <template name="slideContent">
   <div class="slideContent">
     {{#each bullet in bullets}} {{{bullet}}} {{/each}}
- {{{ comment }}}
+    {{{ comment }}}
   </div>
 </template>

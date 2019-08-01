@@ -20,7 +20,6 @@ const Cookies = require('js-cookie');
 var Reveal = require('reveal.js');
 var qix = null;
 
-//var possibleRoles = ['Developer', 'Product Owner', 'Hosting Ops', 'Business Analyst', 'CTO', 'C-Level, non-technical'];
 var possibleRoles = [
     "Developer",
     "Hosting Ops",
@@ -28,11 +27,6 @@ var possibleRoles = [
     "CTO",
     "C-Level - non-technical"
 ];
-
-// // ONCREATED
-// Template.useCaseSelection.onCreated(async function() {
-//     await initQlikSense();
-// })
 
 export async function initQlikSense() {
     //wait a bit, so Meteor can login, before requesting a ticket...
@@ -301,7 +295,6 @@ export async function getAllSlideHeadersPlain(qix) {
 //by default add extra slides (extra items in the data array), so you will get nice dynamic chapter breakers
 var sectionBreakerConfig = true;
 export async function getAllSlides(insertSectionBreakers = sectionBreakerConfig) {
-    console.log('getAllSlides: insertSectionBreakers', insertSectionBreakers)
     var qix = await getQix();
     //insert breakers before a change of topic? YES/NO... breakers are annoying when you make a menu selection or want to link to a sheet
     sectionBreakerConfig = insertSectionBreakers;
@@ -311,8 +304,6 @@ export async function getAllSlides(insertSectionBreakers = sectionBreakerConfig)
 
 
 export async function getComment(qix) {
-    console.log('getComment');
-
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {
             qType: 'cube'
@@ -376,7 +367,7 @@ function textOfLevel(row, level) {
 
 //http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm
 async function getCurrentSelections() {
-    console.log('function: getCurrentSelections');
+    // console.log('function: getCurrentSelections');
     try {
         var qix = await getQix();
         var genericObject = await qix.app.createSessionObject({

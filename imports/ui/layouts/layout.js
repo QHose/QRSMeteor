@@ -7,9 +7,6 @@ import {
 import {
     Session
 } from 'meteor/session';
-import {
-    senseConfig as config
-} from '/imports/api/config';
 
 import './layout.html';
 import './presentation.html';
@@ -17,12 +14,7 @@ import './presentation';
 import '../checkConfig.html';
 import '/imports/ui/nav.html';
 import '/imports/ui/nav.js';
-import {
-    getQix
-} from '/imports/ui/useCases/useCaseSelection';
 
-
-const webIntegrationDemo = 'http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort;
 
 Template.layout.helpers({
     NoSenseConnection() {
@@ -97,43 +89,6 @@ Template.layout.events({
 Template.layout.onCreated(function() {
     //see https://guide.meteor.com/data-loading.html
     this.subscribe('streams');
-    this.subscribe('customers');
-
-    const templateAppsHandle = Meteor.subscribe('templateApps');
-    const apiLogsHandle = Meteor.subscribe('apiLogs');
-    const senseSelectionsHandle = Meteor.subscribe('SenseSelections');
-    const customersHandle = Meteor.subscribe('customers', { //http://stackoverflow.com/questions/28621132/meteor-subscribe-callback
-        onReady: function() {
-            // if (freshEnvironment()) {
-            //     console.log('There is a freshEnvironment');
-            //     insertTemplateAndDummyCustomers()
-            //     Session.setAuth('currentStep', 3);
-            // };
-        },
-        onError: function() {
-            console.log("onError", arguments);
-        }
-    });
+    this.subscribe('customers');        
 });
 
-
-// Template.slideSelectionSheet.onRendered(function() {
-//     $('#sheetSelector').modal({
-//         // onHide: async function() {
-//         //     await abortQlikModalState();
-//         // },
-//         onHidden: async function() {
-//             console.log('------------------------------------');
-//             console.log('on hidden clicked');
-//             console.log('------------------------------------');
-//             await abortQlikModalState();
-//         },
-//         onHide: function() {
-//             console.log('hidden');
-
-//         },
-//         onShow: function() {
-//             console.log('shown');
-//         },
-//     })
-// })

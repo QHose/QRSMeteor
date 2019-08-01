@@ -1,12 +1,9 @@
-try {
-    var Reveal = require("reveal.js");
-} catch (error) { }
+var Reveal = require("reveal.js");
 import "./reveal.css";
-// import 'reveal/theme/default.css';
 import lodash from "lodash";
 import hljs from "highlight.js";
 import { Logger } from "/imports/api/logger";
-import { getQix, initQlikSense } from "/imports/ui/useCases/useCaseSelection";
+import { getQix } from "/imports/ui/useCases/useCaseSelection";
 import * as nav from "/imports/ui/nav.js";
 
 _ = lodash;
@@ -18,6 +15,13 @@ var numberOfActiveSlides = 10;
 //
 // ─── SLIDES ─────────────────────────────────────────────────────────────────────
 //
+
+
+Template.registerHelper('chapterSlide', function (currentRow) {
+    if (typeof (currentRow) === 'string') { //we got a chapter slide        
+        return true
+    }
+});
 
 Template.slides.onCreated(async function () {
     $("body").css({
@@ -34,9 +38,9 @@ Template.slides.onDestroyed(function () {
 Template.slides.onRendered(async function () {
     await slideDataLoaded();
     initializeReveal();
-    this.$("aside").popup({
+    this.$(".controls-arrow").popup({
         title: "Slides",
-        content: "You are navigating in a 'presentation', you can press escape to get an overview, or use your keyboard arrows to go to the next and previous slides.",
+        content: "You are navigating in a 'presentation', on your keyboard you can press escape to get an overview, press ? for help or use your arrows to go to the next and previous slides.",
         delay: {
             show: 500,
             hide: 0
@@ -49,7 +53,7 @@ async function slideDataLoaded() {
         if (!Session.get("slideHeaders")) {
             console.log("------------------------------------");
             console.log(
-                "No slide data present in session, reroute the user back to the Selection screen."
+                "No slide data present in session, show the Selection screen."
             );
             console.log("------------------------------------");
             nav.showSlideSelector();
@@ -58,161 +62,166 @@ async function slideDataLoaded() {
     }, 3000);
 }
 
-Meteor.startup(async function () {
-    await initQlikSense();
-})
+
+
+
 
 function initializeReveal() {
-    try {
-        window.Reveal = Reveal;
-        console.log('initializeReveal', Reveal);
-        Reveal.initialize({
-            // Display presentation control arrows
-            controls: true,
 
-            // Help the user learn the controls by providing hints, for example by
-            // bouncing the down arrow when they first encounter a vertical slide
-            controlsTutorial: true,
+    if (!window.Reveal) {
+        try {
+            window.Reveal = Reveal;
+            console.log('initializeReveal', Reveal);
 
-            // Determines where controls appear, "edges" or "bottom-right"
-            controlsLayout: 'bottom-right',
+            Reveal.initialize({
+                // Display presentation control arrows
+                controls: true,
 
-            // Visibility rule for backwards navigation arrows; "faded", "hidden"
-            // or "visible"
-            controlsBackArrows: 'faded',
+                // Help the user learn the controls by providing hints, for example by
+                // bouncing the down arrow when they first encounter a vertical slide
+                controlsTutorial: true,
 
-            // Display a presentation progress bar
-            progress: true,
+                // Determines where controls appear, "edges" or "bottom-right"
+                controlsLayout: 'edges',
 
-            // Display the page number of the current slide
-            slideNumber: false,
+                // Visibility rule for backwards navigation arrows; "faded", "hidden"
+                // or "visible"
+                controlsBackArrows: 'faded',
 
-            // Add the current slide number to the URL hash so that reloading the
-            // page/copying the URL will return you to the same slide
-            hash: false,
+                // Display a presentation progress bar
+                progress: false,
 
-            // Push each slide change to the browser history. Implies `hash: true`
-            history: false,
+                // Display the page number of the current slide
+                slideNumber: true,
 
-            // Enable keyboard shortcuts for navigation
-            keyboard: true,
+                // Add the current slide number to the URL hash so that reloading the
+                // page/copying the URL will return you to the same slide
+                hash: false,
 
-            // Enable the slide overview mode
-            overview: true,
+                // Push each slide change to the browser history. Implies `hash: true`
+                history: false,
 
-            // Vertical centering of slides
-            center: true,
+                // Enable keyboard shortcuts for navigation
+                keyboard: true,
 
-            // Enables touch navigation on devices with touch input
-            touch: true,
+                // Enable the slide overview mode
+                overview: true,
 
-            // Loop the presentation
-            loop: false,
+                // Vertical centering of slides
+                center: false,
 
-            // Change the presentation direction to be RTL
-            rtl: false,
+                // Enables touch navigation on devices with touch input
+                touch: false,
 
-            // See https://github.com/hakimel/reveal.js/#navigation-mode
-            navigationMode: 'default',
+                // Loop the presentation
+                loop: false,
 
-            // Randomizes the order of slides each time the presentation loads
-            shuffle: false,
+                // Change the presentation direction to be RTL
+                rtl: false,
 
-            // Turns fragments on and off globally
-            fragments: true,
+                // See https://github.com/hakimel/reveal.js/#navigation-mode
+                navigationMode: 'default',
 
-            // Flags whether to include the current fragment in the URL,
-            // so that reloading brings you to the same fragment position
-            fragmentInURL: false,
+                // Randomizes the order of slides each time the presentation loads
+                shuffle: false,
 
-            // Flags if the presentation is running in an embedded mode,
-            // i.e. contained within a limited portion of the screen
-            embedded: true,
+                // Turns fragments on and off globally
+                fragments: true,
 
-            // Flags if we should show a help overlay when the questionmark
-            // key is pressed
-            help: true,
+                // Flags whether to include the current fragment in the URL,
+                // so that reloading brings you to the same fragment position
+                fragmentInURL: false,
 
-            // Flags if speaker notes should be visible to all viewers
-            showNotes: false,
+                // Flags if the presentation is running in an embedded mode,
+                // i.e. contained within a limited portion of the screen
+                embedded: true,
 
-            // Global override for autoplaying embedded media (video/audio/iframe)
-            // - null: Media will only autoplay if data-autoplay is present
-            // - true: All media will autoplay, regardless of individual setting
-            // - false: No media will autoplay, regardless of individual setting
-            autoPlayMedia: null,
+                // Flags if we should show a help overlay when the questionmark
+                // key is pressed
+                help: true,
 
-            // Global override for preloading lazy-loaded iframes
-            // - null: Iframes with data-src AND data-preload will be loaded when within
-            //   the viewDistance, iframes with only data-src will be loaded when visible
-            // - true: All iframes with data-src will be loaded when within the viewDistance
-            // - false: All iframes with data-src will be loaded only when visible
-            preloadIframes: null,
+                // Flags if speaker notes should be visible to all viewers
+                showNotes: false,
 
-            // Number of milliseconds between automatically proceeding to the
-            // next slide, disabled when set to 0, this value can be overwritten
-            // by using a data-autoslide attribute on your slides
-            autoSlide: 0,
+                // Global override for autoplaying embedded media (video/audio/iframe)
+                // - null: Media will only autoplay if data-autoplay is present
+                // - true: All media will autoplay, regardless of individual setting
+                // - false: No media will autoplay, regardless of individual setting
+                autoPlayMedia: null,
 
-            // Stop auto-sliding after user input
-            autoSlideStoppable: true,
+                // Global override for preloading lazy-loaded iframes
+                // - null: Iframes with data-src AND data-preload will be loaded when within
+                //   the viewDistance, iframes with only data-src will be loaded when visible
+                // - true: All iframes with data-src will be loaded when within the viewDistance
+                // - false: All iframes with data-src will be loaded only when visible
+                preloadIframes: null,
 
-            // Use this method for navigation when auto-sliding
-            autoSlideMethod: Reveal.navigateNext,
+                // Number of milliseconds between automatically proceeding to the
+                // next slide, disabled when set to 0, this value can be overwritten
+                // by using a data-autoslide attribute on your slides
+                autoSlide: 0,
 
-            // Specify the average time in seconds that you think you will spend
-            // presenting each slide. This is used to show a pacing timer in the
-            // speaker view
-            defaultTiming: 120,
+                // Stop auto-sliding after user input
+                autoSlideStoppable: true,
 
-            // Enable slide navigation via mouse wheel
-            mouseWheel: false,
+                // Use this method for navigation when auto-sliding
+                autoSlideMethod: Reveal.navigateNext,
 
-            // Hide cursor if inactive
-            hideInactiveCursor: true,
+                // Specify the average time in seconds that you think you will spend
+                // presenting each slide. This is used to show a pacing timer in the
+                // speaker view
+                defaultTiming: 120,
 
-            // Time before the cursor is hidden (in ms)
-            hideCursorTime: 5000,
+                // Enable slide navigation via mouse wheel
+                mouseWheel: false,
 
-            // Hides the address bar on mobile devices
-            hideAddressBar: true,
+                // Hide cursor if inactive
+                hideInactiveCursor: true,
 
-            // Opens links in an iframe preview overlay
-            // Add `data-preview-link` and `data-preview-link="false"` to customise each link
-            // individually
-            previewLinks: false,
+                // Time before the cursor is hidden (in ms)
+                hideCursorTime: 5000,
 
-            // Transition style
-            transition: 'slide', // none/fade/slide/convex/concave/zoom
+                // Hides the address bar on mobile devices
+                hideAddressBar: true,
 
-            // Transition speed
-            transitionSpeed: 'default', // default/fast/slow
+                // Opens links in an iframe preview overlay
+                // Add `data-preview-link` and `data-preview-link="false"` to customise each link
+                // individually
+                previewLinks: false,
 
-            // Transition style for full page slide backgrounds
-            backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+                // Transition style
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-            // Number of slides away from the current that are visible
-            viewDistance: 3,
+                // Transition speed
+                transitionSpeed: 'default', // default/fast/slow
 
-            // Parallax background image
-            parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+                // Transition style for full page slide backgrounds
+                backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
 
-            // Parallax background size
-            parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
+                // Number of slides away from the current that are visible
+                viewDistance: 3,
 
-            // Number of pixels to move the parallax background per slide
-            // - Calculated automatically unless specified
-            // - Set to 0 to disable movement along an axis
-            parallaxBackgroundHorizontal: null,
-            parallaxBackgroundVertical: null,
+                // Parallax background image
+                parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
 
-            // The display mode that will be used to show slides
-            display: 'block'
-        });
+                // Parallax background size
+                parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
 
-        Session.set("activeStepNr", 0);
-        addSlideChangedListener();
-    } catch (error) { }
+                // Number of pixels to move the parallax background per slide
+                // - Calculated automatically unless specified
+                // - Set to 0 to disable movement along an axis
+                parallaxBackgroundHorizontal: null,
+                parallaxBackgroundVertical: null,
+
+                // The display mode that will be used to show slides
+                display: 'block'
+            });
+
+
+            Session.set("activeStepNr", 0);
+            addSlideChangedListener();
+        } catch (error) { }
+    }
 }
 
 function addSlideChangedListener() {
@@ -289,15 +298,16 @@ Template.slideContent.onRendered(async function () {
         //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
         var slideContent = template.bullets.get();
         // console.log("slideContent.onRendered array of bullets: ", slideContent);
-        if (slideContent.length === 0) {
+        if (!slideContent) {
             console.log('------------------------------------');
             console.log('No slide data retrieved from Qlik Sense, re-adding the slide changed event listener...');
             console.log('------------------------------------');
-            addSlideChangedListener();
-            window.location.href = window.location.origin;
+            // addSlideChangedListener();
+            nav.showSlideSelector();
+            // window.location.href = window.location.origin;
             //location.reload(); //@todo to evaluate if this helps
         }
-    }, 2000);
+    }, 3000);
 });
 
 Template.slideContent.events({
@@ -350,7 +360,7 @@ Template.registerHelper("step", function () {
 // ─── FOR EACH SLIDE GET THE LEVEL 3 ITEMS USING SET ANALYSIS ────────────────────
 //
 async function getLevel3(level1, level2) {
-    // console.log("getLevel3: " + level1 + ' -' + level2);
+
     try {
         var qix = await getQix();
         var sessionModel = await qix.app.createSessionObject({
@@ -374,10 +384,7 @@ async function getLevel3(level1, level2) {
                 }]
             }
         });
-        // console.log('sessionModel', sessionModel)
-        // console.log('------------------------------------');
-        // console.log('QDEF IS sum({< "Level 1"={"' + level1 + '"}, "Level 2"={"' + level2 + '"} >}1)');
-        // console.log('------------------------------------');
+
         sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
             qTop: 0,
             qLeft: 0,
@@ -386,18 +393,10 @@ async function getLevel3(level1, level2) {
         }]);
 
         var level3Temp = sessionData[0].qMatrix;
-        /* console.log(
-          "Qlik returned the following data for the sheet: " + level2,
-          normalizeData(level3Temp)
-        ); */
         sessionModel.removeAllListeners();
         return normalizeData(level3Temp);
-    } catch (error) {
-        console.error(
-            "error getting level 3 data (the bullets) for the slide",
-            error
-        );
-        window.location.href = window.location.origin;
+    } catch (error) {        
+        //error happens when you select something else after your selection... not a real error
     }
 }
 

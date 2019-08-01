@@ -481,7 +481,7 @@ html {
     bottom: 0;
     left: 0;
     margin: auto;
-    pointer-events: none;
+    pointer-events: auto;
     overflow: visible;
     z-index: 1;
     text-align: center;
