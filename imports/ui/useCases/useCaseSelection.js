@@ -156,7 +156,7 @@ async function getTicket() {
     } catch (error) {
         var message = 'We could not setup single sing on with Qlik Sense. See your console window for more information';
         console.error(message, error);
-        sAlert.error(message, error);
+        sAlert.error('Could not connect to Qlik Sense.');
     }
 }
 

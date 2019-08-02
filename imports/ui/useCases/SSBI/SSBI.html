@@ -1,11 +1,11 @@
 <!-- LAYOUT TEMPLATE -->
 <template name="SSBILayout">
-        {{> yield "nav"}}
-        <div class="ui grid">
-                {{> sAlert}}
-            <div class="four wide column">{{> yield "aside"}}</div>
-            <div class="twelve wide column">{{> yield}}</div>
-        </div>
+    {{> yield "nav"}}
+    <div class="ui grid">
+        {{> sAlert}}
+        <div class="four wide column">{{> yield "aside"}}</div>
+        <div class="twelve wide column">{{> yield}}</div>
+    </div>
 </template>
 
 <template name="SSBISenseApp">
@@ -23,17 +23,18 @@
             <div class="ui text loader">Logging in {{user}}...</div>
         </div>
         {{#unless loading}}
-            {{> userCards}}
+        {{> userCards}}
         {{/unless}}
         {{#if showSenseButtons}}
-            {{> senseButtons}}
+        {{> senseButtons}}
         {{/if}}
     </div>
     {{> modalSSBI}}
-        <h4 class="ui dividing header">What are we trying to demonstrate here?</h4>
+    <h4 class="ui dividing header">What are we trying to demonstrate here?</h4>
 
     <div class="ui message">
-        <i class="unlock alternate icon"></i>Here we demonstrate the effect of applying different access rights (derived from your platform) for some fictitious
+        <i class="unlock alternate icon"></i>Here we demonstrate the effect of applying different access rights (derived
+        from your platform) for some fictitious
         users. Qlik on a user to automatically login into Qlik Sense "as this user".
         <div class="ui accordion">
             <div class="title">
@@ -42,9 +43,12 @@
             <div class="content">
                 <h5 class="ui dividing header">Resource restriction</h5>
                 <p>The main goal is to show you how you can create a solid governed
-                    <a href="#" class="selfservice">self service</a> (segregation of duties) concept to prevent unrealiable reporting. A key control here is
-                    the use of an approval workflow before content is made available to all users (of a department). Example
-                    <a target="_blank" href="{{doc_sec_function_task_matrix}}">functions and tasks</a> to segregate using the
+                    <a href="#" class="selfservice">self service</a> (segregation of duties) concept to prevent
+                    unrealiable reporting. A key control here is
+                    the use of an approval workflow before content is made available to all users (of a department).
+                    Example
+                    <a target="_blank" href="{{doc_sec_function_task_matrix}}">functions and tasks</a> to segregate
+                    using the
                     <a href="{{pathFor 'securityRules'}}" target="_blank" class="item">security rules</a> are:
                     <ul>
                         <li>analyze (display) apps</li>
@@ -55,18 +59,25 @@
                     </ul>
                 </p>
                 <h5 class="ui dividing header">Data restriction (row/column level security)</h5>
-                <p>You’ll see a simple solution in our demonstration where both of our fictitious users, Linda and John, go to the
-                    same website, but see different things based on their authorizations. Qlik Sense makes this possible because
-                    it uses a dynamic, attribute-based security approach in which we re-use all the pre-existing users and roles
-                    from your SaaS platform or any other user provider like Windows AD or SAML. This ensures Qlik Sense stays
+                <p>You’ll see a simple solution in our demonstration where both of our fictitious users, Linda and John,
+                    go to the
+                    same website, but see different things based on their authorizations. Qlik Sense makes this possible
+                    because
+                    it uses a dynamic, attribute-based security approach in which we re-use all the pre-existing users
+                    and roles
+                    from your SaaS platform or any other user provider like Windows AD or SAML. This ensures Qlik Sense
+                    stays
                     in sync automatically and avoids the overhead of double maintenance.</p>
                 <h5 class="ui dividing header">Single Sign On via ticket exchange</h5>
-                <p>We forward the identity of the user from your SaaS platform to Qlik Sense via a ticket. A ticket contains the
-                    userId and his auhtorizations (groups). These groups can be used to restrict resources as well as data (rows
+                <p>We forward the identity of the user from your SaaS platform to Qlik Sense via a ticket. A ticket
+                    contains the
+                    userId and his auhtorizations (groups). These groups can be used to restrict resources as well as
+                    data (rows
                     & columns). Try to switch a user and see the ticket request in the
                     <a href="{{pathFor 'ApiLogsTable'}}">API Logs</a>.</p>
                 <p></p>
-                <img class="ui small image" data-action="zoom" src="images/flow - ticketing authentication for dummies.png" style="margin:20px">
+                <img class="ui small image" data-action="zoom"
+                    src="images/flow - ticketing authentication for dummies.png" style="margin:20px">
                 <p></p>
                 <h5 class="ui dividing header">Integrated authorization overview</h5>
                 <!-- <p>  -->
@@ -102,7 +113,8 @@
                 <div class="content">
                     <h5 class="header">Consumer</h5>
                     <div class="meta">
-                        <span class="price">John can analyse data in predefined sheets and apps. He can only see Germany.</span>
+                        <span class="price">John can analyse data in predefined sheets and apps. He can only see
+                            Germany.</span>
                     </div>
                 </div>
             </div>
@@ -124,7 +136,8 @@
                 <div class="content">
                     <h5 class="header">Contributor</h5>
                     <div class="meta">
-                        <span class="price">Linda can create her own sheets in predefined apps. She can only see USA.</span>
+                        <span class="price">Linda can create her own sheets in predefined apps. She can only see
+                            USA.</span>
                     </div>
                 </div>
             </div>
@@ -168,7 +181,8 @@
                 <div class="content">
                     <h5 class="header">Admin</h5>
                     <div class="meta">
-                        <span class="price">Paul can maintain apps and sheets of his own department in the Qlik Management Console (QMC).</span>
+                        <span class="price">Paul can maintain apps and sheets of his own department in the Qlik
+                            Management Console (QMC).</span>
                     </div>
                 </div>
             </div>

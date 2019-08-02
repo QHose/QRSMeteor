@@ -524,7 +524,7 @@ html {
   .reveal .slides > section.stack {
     padding-top: 0;
     padding-bottom: 0;
-    pointer-events: none;
+    /* pointer-events: none; */
     height: 100%; }
   
   .reveal .slides > section.present,
