@@ -182,9 +182,8 @@ blockquote .reveal h5,
     max-width: 100%;   
 }
 
-.SSBIIFrame {
-    height: 90vh;
-    height: calc(100vh - 20px);
+.SSBIIFrame {    
+    height: 700px;
     width: 100%;
     border: none;
 }
