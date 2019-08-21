@@ -25,15 +25,15 @@ Template.registerHelper('chapterSlide', function (currentRow) {
 
 Template.slides.onCreated(async function () {
     $("body").css({
-        overflow: "hidden"
+        overflow: "scroll"
     });
 });
 
-Template.slides.onDestroyed(function () {
-    $("body").css({
-        overflow: "auto"
-    });
-});
+// Template.slides.onDestroyed(function () {
+//     $("body").css({
+//         overflow: "auto"
+//     });
+// });
 
 Template.slides.onRendered(async function () {
     await slideDataLoaded();
