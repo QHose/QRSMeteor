@@ -132,7 +132,7 @@ blockquote .reveal h5,
 }
 
 .reveal h1 {
-    font-size: 1.2em;
+    font-size: 1.0em;
     margin-top: 20px;
 }
 
@@ -175,18 +175,28 @@ blockquote .reveal h5,
 /* .reveal img,.
 .reveal video, */
 
-.reveal iframe {
+body > div > div.twelve.wide.column > div > iframe {
     width: 100vw;
-    height: calc(100vh - 195px);
+    height: calc(90vh - 300px);
     margin: 0px 0px 20px 0px;
-    max-width: 100%;   
+    min-height: 600px;
+    max-width: 100%; 
+    border: none; 
 }
 
+.reveal iframe {
+    width: 100vw;
+    height: calc(90vh - 400px);
+    margin: 0px 0px 20px 0px;
+    min-height: 600px;
+    max-width: 100%;   
+}
+/* 
 .SSBIIFrame {    
-    height: 700px;
+    height: 95vh;
     width: 100%;
     border: none;
-}
+} */
 
 .reveal .ui.embed {
     margin: 20px;

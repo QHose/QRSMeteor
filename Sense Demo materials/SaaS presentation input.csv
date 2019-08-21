@@ -653,13 +653,15 @@ Focus on the following topics:
 - [install Meteor](https://www.meteor.com/install)
 - Create your first TODO app with MeteorJS [here](https://www.meteor.com/tutorials/angular/creating-an-app)",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Overview web integration","iframe /webIntegration_embedded",,"","","","","         0","0","Technical - 2 hours, Integration summary, CTO, Developer",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","# What does a successful integration look like?",,"","","","","         0","0","Developer, CTO, Product Owner, C-Level - non-technical",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","iframe https://webapps.qlik.com/#/",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Developer, CTO, Product Owner, C-Level - non-technical",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","[Marketing 360](https://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","Introduction - 30 minutes",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","[European datamarket](https://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","Technical - 1 day, PreSales, Introduction - 30 minutes",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","Create a custom hub using the [getApplist API](https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/APIs/Content/CapabilityAPIs/qlik-global-interface.htm)",,"","","","","         0","0","Technical - 1 day, Introduction - 30 minutes",
-"Web integration","Embed Qlik Sense: Examples of web sites that embedded Qlik Sense","!comment
-This slide gives a real life example of embedding. It shows you a collection of example web sites where Qlik Sense has been embedded.The URL is: [https://webapps.qlik.com](https://webapps.qlik.com).
+"Web integration","Examples of web sites that embedded Qlik Sense","# Examples: What does a successful integration look like?",,"","","","","         0","0","Developer, CTO, Product Owner, C-Level - non-technical",
+"Web integration","Examples of web sites that embedded Qlik Sense","iframe https://webapps.qlik.com/#/",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Developer, CTO, Product Owner, C-Level - non-technical",
+"Web integration","Examples of web sites that embedded Qlik Sense","## Other examples of customization",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Examples of web sites that embedded Qlik Sense","[Marketing 360](https://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Examples of web sites that embedded Qlik Sense","[European datamarket](https://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","Technical - 1 day, PreSales, Introduction - 30 minutes",
+"Web integration","Examples of web sites that embedded Qlik Sense","> Notice that you don't have to embed our vizualizations, you can also just get the data and create your own front-end",,"","","","","         0","0","Introduction - 30 minutes",
+"Web integration","Examples of web sites that embedded Qlik Sense","Create a custom hub using the [getApplist API](https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/APIs/Content/CapabilityAPIs/qlik-global-interface.htm)",,"","","","","         0","0","Technical - 1 day, Introduction - 30 minutes",
+"Web integration","Examples of web sites that embedded Qlik Sense","!comment
+This slide shows you a collection of example web sites where Qlik Sense has been embedded. The main URL is: [https://webapps.qlik.com](https://webapps.qlik.com).
 ",,"","","","","         0","0","Developer",
 "Web integration","Qlik embedded demos","# Barcelona Marathon",,,,,,,,,
 "Web integration","Qlik embedded demos","iframe https://webapps.qlik.com/barnamarato/index.html#/?lang=en",,"","","","","         0","0","Introduction - 30 minutes",
@@ -679,8 +681,8 @@ They can be residing in your back office covering all the internal processes in 
 It’s also become even more important that we share data and information with the partners we work with. For example by sharing customer feedback on supplier products, this in-turn helps our suppliers understand better about their end customer - and heightens their awareness of the need for better innovations and improvements across the overall supply chain",,,,,,,,,
 "Web integration","Video: What do we mean with embedding?","Here we embedded/integrated a YouTube video... ",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Video: What do we mean with embedding?","https://www.youtube.com/embed/O6Xo21L0ybE",,"","","","","         0","0","Technical - 1 day",
-"Web integration","Example: Embed the Qlik Sense hub","iframe https://jsfiddle.net/qhose/0nn9bvg6/embedded/result,html,css",,"","","","","         0","0","Introduction - 30 minutes; CTO; Developer",
-"Web integration","Example: Embed the Qlik Sense hub","!comment
+"Web integration","Embed Qlik Sense: the Qlik Sense hub","iframe https://jsfiddle.net/qhose/0nn9bvg6/embedded/result,html,css",,"","","","","         0","0","Introduction - 30 minutes; CTO; Developer",
+"Web integration","Embed Qlik Sense: the Qlik Sense hub","!comment
 # What is the hub?
 The Qlik Sense Hub can be seen as the starting page of a Qlik Sense environment . On the left you have an overview of all the streams a user has access to. Per stream it shows an overview of all the apps where a user has access to.
 
@@ -688,15 +690,15 @@ On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded hub.
  - HTML: Shows the HTML code for embedding the hub. It makes use of an IFrame. The URL is the source where the IFrame refers to.
  - CSS: Shows the underlying CSS code for this page.",,"","","","","         0","0","Developer",
-"Web integration","Example: Embed a sheet ","iframe https://jsfiddle.net/qhose/v993fpgy/embedded/result,html,css",,"","","","","         0","0","Introduction - 30 minutes; CTO; Developer",
-"Web integration","Example: Embed a sheet ","!comment
+"Web integration","Embed Qlik Sense: a sheet with our without selections or the menu bar.","iframe https://jsfiddle.net/qhose/v993fpgy/embedded/result,html,css",,"","","","","         0","0","Introduction - 30 minutes; CTO; Developer",
+"Web integration","Embed Qlik Sense: a sheet with our without selections or the menu bar.","!comment
 In this example you see an embedded sheet from an Qlik Sense app through an IFrame. Notice that only the sheet is visible. There is no selection bar or Qlik Sense menu buttons available.
 On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded sheet.
  - HTML: Shows the HTML code for embedding the hub. It makes use of an IFrame. The URL is the source where the IFrame refers to.
 CSS: Shows the underlying CSS code for this page.",,"","","","","         0","0","Developer",
-"Web integration","Example: Embed a chart","iframe https://jsfiddle.net/qhose/x1owu7yu/embedded/result,js,html,css/",,"","","","","         0","0","Introduction - 30 minutes; CTO; Product Owner; Developer",
-"Web integration","Example: Embed a chart","!comment
+"Web integration","Embed Qlik Sense: a chart","iframe https://jsfiddle.net/qhose/x1owu7yu/embedded/result,js,html,css/",,"","","","","         0","0","Introduction - 30 minutes; CTO; Product Owner; Developer",
+"Web integration","Embed Qlik Sense: a chart","!comment
 In this example you see an embedded chart from an Qlik Sense app through an IFrame. On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded chart.
  - HTML: Shows the HTML code for embedding the hub. It makes use of an IFrame. The URL is the source where the IFrame refers to.
@@ -749,13 +751,12 @@ You can also just take the data out of Qlik Sense and build your own front-end. 
 - You have a read only scenario and don't need to use the self service client. Or you are willing to create this functionality using the APIs.",,,,,,,,,
 "Web integration","Options to embed Qlik Sense: from simple to advanced use cases","iframe https://saasdemo.qlik.com",,"","","","","         0","0","Product Owner, Introduction - 30 minutes, CTO, Developer",
 "Web integration","Options to embed Qlik Sense: from simple to advanced use cases","!comment
-Through our  'Embedding Qlik Sense' demo on integration.qlik.com, you will notice we have embedded  different parts of Qlik Sense.
+In our  'Embedding Qlik Sense' demo we have embedded  different parts of Qlik Sense.
 On the left side of the screen you can choose which example you want to see. On the right side you will see the result.
 Basically there are 3 main ways of embedding Qlik Sense:
- - Through an IFrame: This method allows to embed the full hub, a complete app, a complete sheets or a collection of multiple objects.
- It allows Qlik Sense to be embedded is a fast and easy way. When using IFrame you are using the layout and objects define in Qlik Sense.
- - With Div tags you have the possibility to embed individual objects in a web page.  A Div tag is nothing more than a reserved place on a webpage. This allows you to make a customized webpage, that used Qlik Sense object.
-- Finally you can use Qlik Sense APIs to provide the data. In the JavaScript charts can be built on the fly through our API or  external visualizations (Eg. D3 charts)",,,,,,,,,
+ - Through an IFrame: This method allows to embed the full hub, a complete app, a complete sheets or a collection of multiple objects. It allows Qlik Sense to be embedded is a fast and easy way. When using IFrame you are using the layout and objects defined in Qlik Sense. Note that you can change the colors and fonts using ""themes"".
+ - With Div tags you have the possibility to embed individual Qlik Sense objects like charts in a web page.  A Div tag is nothing more than a reserved place on a webpage. This allows you to make a customized webpage in which you can have your own layout and functionality.
+- Finally you can use Qlik Sense APIs to get the data to be used by your own vizalization library. The JavaScript charts can be built on the fly through our APIs or via external visualizations libraries(Eg. D3 charts)",,,,,,,,,
 "Web integration","Summary: Which Qlik Sense resources can you embed with the QAP and Qlik Sense enterprise?","web-resources to embed v2.png",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Summary: Which Qlik Sense resources can you embed with the QAP and Qlik Sense enterprise?","!comment
 With Qlik Sense Enterprise you have all the possible options to embed. The Enterprise edition also contains the hub and its corresponding menus, toolbars and buttons. This makes it possible to also use these in your embedding. When choosing the Qlik Analytics Platform (QAP) you have all the same possibilities, except the whole visual layer. This means there is no hub, app overview, menu, toolbars,.. So with the QAP you can only embed sheets (without menu), objects and data on the fly.",,,,,,,,,
@@ -3565,6 +3566,79 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 "QPS - Proxy API","Video - ticketing with Node","https://youtu.be/gtN-M5huK2Y",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Use ticketing without the extra redirect","Its possible to directly pass on a ticket the first time you make a call to a static asset in Qlik Sense. See the comment from Alex below
 - if you do ticketing how it works is that you get a ticket from your auth module and then you fetch a static resource from behind the proxy such as the require.js file with `qlikTicket=<ticket value>` appended to the url. The proxy will see the ticket, validate it and consume the ticket and if it's a valid ticket it will send the resource back to the browser with a session cookie attached to the response. The browser will then append the session cookie to future requests and the proxy will see the session cookie and let the requests through",,,,,,,,,
+"QPS - Proxy API","Using JWT","Follow these instructions to setup your proxy and learn the flow [https://support.qlik.com/articles/000034966]",,,,,,,,,
+"QPS - Proxy API","Using JWT","qps jwt virtual proxy setup.png",,,,,,,,,
+"QPS - Proxy API","Using JWT","Create the web token",,,,,,,,,
+"QPS - Proxy API","Using JWT","qps jwt.io.png",,,,,,,,,
+"QPS - Proxy API","Using JWT","You can debug your login by using the browser network tab or see logs in `C:\ProgramData\Qlik\Sense\Log\Proxy\Trace`",,,,,,,,,
+"QPS - Proxy API","Using JWT","QPS - debug authentication failures like ticket or jwt.png",,,,,,,,,
+"QPS - Proxy API","Using JWT","qps - jwt browser console.png",,,,,,,,,
+"QPS - Proxy API","Using JWT","add the authorization header when you make your request",,,,,,,,,
+"QPS - Proxy API","Using JWT","qps jwt add authorization header.png",,,,,,,,,
+"QPS - Proxy API","Using JWT","> Note, if you get a 400 error it means you forgot the basic stuff like linking it to a proxy, or setting the virtual proxy white list etc. ",,,,,,,,,
+"QPS - Proxy API","Using JWT","After a succesful login you will see this",,,,,,,,,
+"QPS - Proxy API","Using JWT","qps jwt succesful login.png",,,,,,,,,
+"QPS - Proxy API","Using JWT","# Example JS [code](https://github.com/qlik-oss/enigma.js/blob/master/examples/authentication/sense-using-jwt/jwt.js)",,,,,,,,,
+"QPS - Proxy API","Using JWT","```
+const enigma = require('enigma.js');
+const WebSocket = require('ws');
+const path = require('path');
+const fs = require('fs');
+const jwt = require('jsonwebtoken');
+
+const schema = require('enigma.js/schemas/12.20.0.json');
+
+// Your Sense Enterprise installation hostname:
+const senseHost = 'localhost';
+
+// Your configured virtual proxy prefix for JWT authentication:
+const proxyPrefix = 'jwt';
+
+// The Sense Enterprise-configured user directory for the user you want to identify
+// as:
+const userDirectory = 'your-sense-user-directory';
+
+// The user to use when creating the session:
+const userId = 'your-sense-user';
+
+// The Sense Enterprise-configured JWT structure. Change the attributes to match
+// your configuration:
+const token = {
+  directory: userDirectory,
+  user: userId,
+};
+
+// Path to the private key used for JWT signing:
+const privateKeyPath = './keys/private.key';
+const key = fs.readFileSync(path.resolve(__dirname, privateKeyPath));
+
+// Sign the token using the RS256 algorithm:
+const signedToken = jwt.sign(token, key, { algorithm: 'RS256' });
+
+const config = {
+  schema,
+  url: `wss://${senseHost}/${proxyPrefix}/app/engineData`,
+  // Notice how the signed JWT is passed in the 'Authorization' header using the
+  // 'Bearer' schema:
+  createSocket: (url) => new WebSocket(url, {
+    headers: { Authorization: `Bearer ${signedToken}` },
+  }),
+};
+
+const session = enigma.create(config);
+
+session.open().then((global) => {
+  console.log('Session was opened successfully');
+  return global.getDocList().then((list) => {
+    const apps = list.map((app) => `${app.qDocId} (${app.qTitle || 'No title'})`).join(', ');
+    console.log(`Apps on this Engine that the configured user can open: ${apps}`);
+    session.close();
+  });
+}).catch((error) => {
+  console.log('Failed to open session and/or retrieve the app list:', error);
+  process.exit(1);
+});
+```",,,,,,,,,
 "QPS - Proxy API","Header","<q>Header authentication</q>",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","When to use header authentication?","Normally used within large environments",,,,,,,,,
 "QPS - Proxy API","When to use header authentication?","In which the already have a system that handles the authentication of the user",,,,,,,,,
