@@ -92,30 +92,33 @@
     <div class="footer">
         <div class="ui center aligned container">
             <div class="ui grid">
+
                 <div class="three wide column">
                     <img class="ui left floating image image" src="./images/qlik_logo.svg"
                         style="height: 100px; padding-top: 30px;">
                 </div>
                 <div class="three wide column">
                     <h4 class="ui  header">Technical</h4>
-                    <div class="ui  link list">
+                    <div class="ui  link list">                        
                         <a class="item" href="/apilogstable" target="_blank">API calls</a>
+                        <a class="item" href="/documentation?tab=video" target="_blank">Summary docs </a>
                         <a class="item"
                             href="https://help.qlik.com/en-US/sense-developer/June2018/Content/APIs-and-SDKs.htm"
                             target="_blank">API help</a>
-                        <a class="item" href="/securityRules" target="_blank">Security rules</a>
+                        <a class="item" href="/securityRules" targ*et="_blank">Security rules</a>
                         <a class="item" href="https://integration.qlik.com/useCaseSelection?selection=QJZQm885PCgYxYdqn" target="_blank">Ticketing flow explained</a>                       
 
-                        {{#if slideShowActive}}
-                        <a href="/useCaseSelection?selection={{permaLinkSelectionId}}"
-                            class="item permaLinkSelection">Link to selection</a>
-                        <!-- <a class="item permaLinkSlide">Link to slide</a> -->
-                        {{/if}}
+                       
                     </div>
                 </div>
                 <div class="three wide column">
                     <h4 class="ui  header">How to...</h4>
                     <div class="ui  link list">
+                            {{#if slideShowActive}}
+                            <a href="/useCaseSelection?selection={{permaLinkSelectionId}}"
+                            class="item permaLinkSelection">Share presentation link (copy link)</a>
+                            <!-- <a class="item permaLinkSlide">Link to slide</a> -->
+                            {{/if}}
                         <a href="https://www.youtube.com/channel/UCmPMsqh1UvXhQTcAhPMEjpA/videos" target="_blank"
                             class="item">How to videos</a>
                     </div>

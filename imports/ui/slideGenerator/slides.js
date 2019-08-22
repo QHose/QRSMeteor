@@ -199,7 +199,7 @@ function initializeReveal() {
                 backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
 
                 // Number of slides away from the current that are visible
-                viewDistance: 3,
+                viewDistance: 1,
 
                 // Parallax background image
                 parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
