@@ -16,6 +16,11 @@ Router.route('/', function() {
     Router.go('useCaseSelection');
 });
 
+
+Router.route('/questions', {
+    template: 'questions',
+    layoutTemplate: 'emptyContainerLayout'
+});
 //GENERATION
 Router.route('/generation');
 Router.route('/generation_embedded', {
