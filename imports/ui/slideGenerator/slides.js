@@ -25,8 +25,8 @@ Template.registerHelper('chapterSlide', function (currentRow) {
 
 Template.slides.onCreated(async function () {
     $("body").css({
-        overflow: "scroll"
-    });
+        overflow: "hidden"
+    });//
 });
 
 // Template.slides.onDestroyed(function () {
@@ -187,7 +187,7 @@ function initializeReveal() {
                 // Opens links in an iframe preview overlay
                 // Add `data-preview-link` and `data-preview-link="false"` to customise each link
                 // individually
-                previewLinks: false,
+                previewLinks: true,
 
                 // Transition style
                 transition: 'slide', // none/fade/slide/convex/concave/zoom
@@ -198,7 +198,7 @@ function initializeReveal() {
                 // Transition style for full page slide backgrounds
                 backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
 
-                // Number of slides away from the current that are visible
+                // Number of slides away from the current that are visible, changing this causes scroll issues with iframes
                 viewDistance: 1,
 
                 // Parallax background image
@@ -225,7 +225,7 @@ function initializeReveal() {
 }
 
 function addSlideChangedListener() {
-    console.log('!!!!!!!!!!!!! addSlideChangedListener')
+    // console.log('!!!!!!!!!!!!! addSlideChangedListener')
     Reveal.addEventListener("slidechanged", function (evt) {
         console.log("slidechanged", evt.indexh);
         Session.set("activeStepNr", evt.indexh);
