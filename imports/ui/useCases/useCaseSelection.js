@@ -241,6 +241,9 @@ Template.useCaseSelection.helpers({
 // ─── MAIN TOPICS LEVEL 1 AND 2 ─────────────────────────────────────────────────
 //
 export async function getAllSlideHeaders(qix) {
+    if (!qix){
+        qix = await getQix();
+    }
     //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.    
     // return insertSectionBreakers(await getAllSlideHeadersPlain(qix));
     var headers = await getAllSlideHeadersPlain(qix);
@@ -251,6 +254,9 @@ export async function getAllSlideHeaders(qix) {
 }
 
 export async function getAllSlideHeadersPlain(qix) {
+    if (!qix){
+        qix = await getQix();
+    }
     //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {

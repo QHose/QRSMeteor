@@ -1,38 +1,58 @@
 import './questions.html'
 import { Mongo } from 'meteor/mongo';
+import { getAllSlideHeadersPlain, } from "/imports/ui/useCases/useCaseSelection";
+import * as nav from "/imports/ui/nav.js";
 
-export const questions = new Mongo.Collection();
-var importantAnswers = [];
-var normalAnswers = [];
 
+export const questions = new Mongo.Collection(null);
 
 Template.questions.events({
-    'change .normalAnswer'(event) {
+    'click input'(event) {
         var checked = event.currentTarget.checked;
-        var feature = $(event.target).closest('tr').children('td:first').text();
+        // console.log('checked:', checked)
+        //get the value of the question answered
+        var question = $(event.target).closest('tr').children('td:first').text();
+        // console.log('question', question)
+        var answerImportance = $(event.currentTarget).attr("class");
+        // console.log('answerImportance', answerImportance)
 
-        console.log('checked:', checked)
+        //store it in the database
         if (checked) {
-            questions.upsert({})
+            questions.insert({ name: question, sort: answerImportance })
+        } else {
+            questions.remove({ name: question })
+        }
+
+        //@todo deselect the other checkbox
+        // $(event.target).closest('tr').find(':checkbox').prop('checked', this.checked);
+        // console.log(event);
+    },
+    'submit'(event) {
+        // Prevent default browser form submit
+        event.preventDefault();
+        console.log('submit clicked', questions.find({}).fetch())
+        var answerSet = [];
+        // for each answer get GetData  
+        try {
+            // questions.find({ sort: 'importantAnswer' }).forEach(async function (question) {
+
+            questions.find().forEach(async function (question) {
+                console.log('question', question)
+                //make a selection
+                await nav.makeSearchSelectionInField("Level 2", question.name);
+                //get the data
+                var slides = await getAllSlideHeadersPlain();
+                console.log('slides', slides)
+                //add to answerSet
+
+            })
+        } catch (error) {
+            console.error(error)
         }
 
 
-        console.log(event);
-    },
-    'submit'(event, template) {
-        // Prevent default browser form submit
-        event.preventDefault();
-        console.log('submit clicked')
-        // for each important answer checkbox checked, add to array 
-        template.find('tr input:checkbox:first').each(function () {
-            console.log('for each tr ', this);
-            if (this.checked) {
-                b = true;
-            }
 
-            // for each normal answer checkbox checked, add to array 
 
-        })
     }
 });
 

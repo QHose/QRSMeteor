@@ -6,6 +6,7 @@ import { getQix } from "/imports/ui/useCases/useCaseSelection";
 
 import { Session } from "meteor/session";
 import * as slideApp from "/imports/ui/useCases/useCaseSelection";
+import './nav.html';
 
 const Cookies = require("js-cookie");
 
