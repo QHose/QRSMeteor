@@ -19,7 +19,7 @@ Router.route('/', function() {
 
 Router.route('/questions', {
     template: 'questions',
-    layoutTemplate: 'emptyContainerLayout'
+    layoutTemplate: 'SSOLayout'
 });
 //GENERATION
 Router.route('/generation');

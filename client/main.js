@@ -1,4 +1,5 @@
 import '/imports/ui/router.js';
+import '/imports/ui/insert/questions.js'
 import '/imports/ui/generation/generation.js';
 import '/imports/ui/UIHelpers';
 import '/imports/ui/generation/customer.js';
