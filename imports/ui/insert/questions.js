@@ -5,20 +5,20 @@ import * as nav from "/imports/ui/nav.js";
 
 
 export const questions = new Mongo.Collection(null);
+var resultSet = [];
 
 Template.questions.events({
-    'click input'(event) {
+    async 'click input'(event) {
         var checked = event.currentTarget.checked;
-        // console.log('checked:', checked)
-        //get the value of the question answered
         var question = $(event.target).closest('tr').children('td:first').text();
-        // console.log('question', question)
         var answerImportance = $(event.currentTarget).attr("class");
-        // console.log('answerImportance', answerImportance)
-
-        //store it in the database
-        if (checked) {
-            questions.insert({ name: question, sort: answerImportance })
+        
+        //get the slide headers and store it in the database
+        if (checked) {            
+            await nav.makeSearchSelectionInField("Level 2", question);            
+            var slides = await getAllSlideHeadersPlain();
+            console.log('slides after checkbox click', slides)
+            questions.insert({ name: question, sort: answerImportance, slides: slides })
         } else {
             questions.remove({ name: question })
         }
@@ -30,28 +30,18 @@ Template.questions.events({
     'submit'(event) {
         // Prevent default browser form submit
         event.preventDefault();
-        console.log('submit clicked', questions.find({}).fetch())
-        var answerSet = [];
-        // for each answer get GetData  
-        try {
-            // questions.find({ sort: 'importantAnswer' }).forEach(async function (question) {
+        // console.log('questions in collection: ', questions.find({}).fetch());
+        questions.find({}).forEach(function(question){
+            console.log('question', question)
+            question.slides.forEach(function(slide){
+                console.log('slide', slide)
+                resultSet.push(slide)
+            }) // we now have a full slide deck, next store it in the session so slides.js can render it.
+            
+            Session.set('slideHeaders', resultSet);
+            Router.go('slides');
 
-            questions.find().forEach(async function (question) {
-                console.log('question', question)
-                //make a selection
-                await nav.makeSearchSelectionInField("Level 2", question.name);
-                //get the data
-                var slides = await getAllSlideHeadersPlain();
-                console.log('slides', slides)
-                //add to answerSet
-
-            })
-        } catch (error) {
-            console.error(error)
-        }
-
-
-
+        })
 
     }
 });
