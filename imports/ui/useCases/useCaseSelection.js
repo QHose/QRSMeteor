@@ -11,10 +11,7 @@ import {
 import {
     senseConfig
 } from '/imports/api/config.js';
-import {
-    APILogs,
-    REST_Log
-} from '/imports/api/APILogs';
+
 const enigma = require('enigma.js');
 const Cookies = require('js-cookie');
 var Reveal = require('reveal.js');
@@ -245,7 +242,6 @@ export async function getAllSlideHeaders(qix) {
         qix = await getQix();
     }
     //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.    
-    // return insertSectionBreakers(await getAllSlideHeadersPlain(qix));
     var headers = await getAllSlideHeadersPlain(qix);
     // console.log('headers', headers)
     var headersWithBreakers = insertSectionBreakers(headers);
@@ -299,11 +295,9 @@ export async function getAllSlideHeadersPlain(qix) {
 //
 
 //by default add extra slides (extra items in the data array), so you will get nice dynamic chapter breakers
-var sectionBreakerConfig = true;
-export async function getAllSlides(insertSectionBreakers = sectionBreakerConfig) {
+export async function getAllSlides(insertSectionBreakers = true) {
     var qix = await getQix();
     //insert breakers before a change of topic? YES/NO... breakers are annoying when you make a menu selection or want to link to a sheet
-    sectionBreakerConfig = insertSectionBreakers;
     var table = insertSectionBreakers ? await getAllSlideHeaders(qix) : await getAllSlideHeadersPlain(qix);
     Session.set('slideHeaders', table);
 }
