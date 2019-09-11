@@ -5,6 +5,7 @@ import hljs from "highlight.js";
 import { Logger } from "/imports/api/logger";
 import { getQix } from "/imports/ui/useCases/useCaseSelection";
 import * as nav from "/imports/ui/nav.js";
+import {questions} from "/imports/ui/insert/questions.js";
 
 _ = lodash;
 var Cookies = require("js-cookie");
@@ -360,6 +361,15 @@ Template.registerHelper("step", function () {
 // ─── FOR EACH SLIDE GET THE LEVEL 3 ITEMS USING SET ANALYSIS ────────────────────
 //
 async function getLevel3(level1, level2) {
+//first get the importance of this feature
+if(questions) //if the questions are use for the slide gen
+{
+    var question = questions.find({name: level2}).fetch();
+    var importance = question[0].importance;
+    console.log('getLevel3 feature', question);
+    console.log('getLevel3 importance', importance)
+    
+}
 
     try {
         var qix = await getQix();
@@ -379,7 +389,9 @@ async function getLevel3(level1, level2) {
                             level1 +
                             '"}, "Level 2"={"' +
                             level2 +
-                            '"} >}1)'
+                            '"} , "Workshop"={"' +
+                            importance +
+                            '"}>}1)'
                     }
                 }]
             }

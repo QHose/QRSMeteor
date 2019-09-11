@@ -690,8 +690,8 @@ On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded hub.
  - HTML: Shows the HTML code for embedding the hub. It makes use of an IFrame. The URL is the source where the IFrame refers to.
  - CSS: Shows the underlying CSS code for this page.",,"","","","","         0","0","Developer",
-"Web integration","Embed Qlik Sense: a sheet with our without selections or the menu bar.","iframe https://jsfiddle.net/qhose/v993fpgy/embedded/result,html,css",,"","","","","         0","0","Introduction - 30 minutes; CTO; Developer",
-"Web integration","Embed Qlik Sense: a sheet with our without selections or the menu bar.","!comment
+"Web integration","Embed Qlik Sense: a sheet with our without selections or menu bar","iframe https://jsfiddle.net/qhose/v993fpgy/embedded/result,html,css",,"","","","","         0","0","Introduction - 30 minutes; CTO; Developer",
+"Web integration","Embed Qlik Sense: a sheet with our without selections or menu bar","!comment
 In this example you see an embedded sheet from an Qlik Sense app through an IFrame. Notice that only the sheet is visible. There is no selection bar or Qlik Sense menu buttons available.
 On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded sheet.
@@ -1333,8 +1333,6 @@ This slide gives some performance tips when using our APIs.
 "Web integration","Theming","https://www.youtube.com/watch?v=wwSj2SAXGyc",,,,,,,,,
 "Web integration","Theming","https://www.youtube.com/watch?v=OL83rP9vgHU",,,,,,,,,
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","These [videos](https://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm) are designed to help you get started with and improve your knowledge and understanding of the APIs and tools delivered with Qlik Sense and Qlik Analytics Platform.",,"","","","","         0","0","Technical - 1 day, Developer",
-"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","# Video overview",,"","","","","         0","0","Technical - 1 day, Developer",
-"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","iframe https://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm",,"","","","","         0","0","Developer, Technical - 1 day",
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","Also see [Qlik help](https://help.qlik.com/en-US/videos)",,"","","","","         0","0","Developer, Technical - 1 day",
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","!comment
 These videos will help you getting started:
@@ -2760,7 +2758,7 @@ if it hangs (for example at `downloading..` , `extracting`or  `processing files.
 "Installation of demo platform","Try to startup your server","qrsmeteor - make sure you see the app ids after startup.png",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","Now you can start your browser and go to `localhost:3000`, Sense is running on port `81`.",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","# Issues? Sense not installed?",,"","","","","         0","0","Deep dive",
-"Installation of demo platform","Try to startup your server","Check the console of 'QRS Start.bat`, most of the time you will see an error here. Sometimes you have to install an extra package. (copy paste the suggestion in a new command window in your `project root`. In general you can always run `meteor npm install --save` if you have a missing package (dependency).",,,,,,,,,
+"Installation of demo platform","Try to startup your server","Check the console of `QRS Start.bat`, most times you will see an error here. Sometimes you have to install an extra package. (copy paste the suggestion in a new command window in your `project root`. In general you can always run `meteor npm install --save` if you have a missing package (dependency).",,,,,,,,,
 "Installation of demo platform","Try to startup your server","Make sure the `qService` user is created, if not, do it manually. Check the password ( Qlik123!@#$% ) in the `startSilentInstall.ps1` file.",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","- Open `C:\Windows\system32\cmd.exe`
 Run the command `powershell Set-ExecutionPolicy RemoteSigned`
@@ -3033,6 +3031,10 @@ volumes:
 "Installation of demo platform using docker","Clean old images and containers","$ docker container prune",,,,,,,,,
 "Installation of demo platform using docker","Clean old images and containers","$ docker image prune",,,,,,,,,
 "Installation of demo platform using docker","SaaS software design patterns","[https://12factor.net/](https://12factor.net/)",,"","","","","         0","0","Deep dive",
+"Requirement assessment","All customer data is stored in the cloud or in a central location","You are running a SaaS based application, please see the video below for our approach",,"","","","","         0","0","Moderate",
+"Requirement assessment","All customer data is stored in the cloud or in a central location","https://youtu.be/OulQS-1fH-A",,"","","","","         0","0","Moderate",
+"Requirement assessment","All customer data is stored in the cloud or in a central location","iframe generation_embedded",,"","","","","         0","0","Important",
+"Requirement assessment","We use an event driven data model, where data is streamed/pushed into another application","We do not yet support this requirement, but this can be solved by adding a database in between Qlik and your streaming application. ",,"","","","","         0","0","Moderate",
 "QRS API","What is the QRS REST API?","> Basically an extra layer around the QMC",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "QRS API","What can you do with the QRS REST API?","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
@@ -4437,10 +4439,10 @@ enigma.getService('qix', config).then((qix) => {
 }
 ```",,"","","","","         0","0","Deep dive",
 "Engine API","Example Engine API call: get list of apps","The code is `JSON-RPC`, Enigma.JS uses almost the same structure. the function names are `camelCase` instead. And you supply the params object in your Enigma function parameter.",,"","","","","         0","0","Deep dive",
-"Engine API","Example get table (hypercube)","In this example we will get a ""table"" of data out of Qlik Sense using the Engine API",,"","","","","         0","0","Deep dive",
-"Engine API","Example get table (hypercube)","The Engine API is a websocket based protocol (JSON RPC)",,"","","","","         0","0","Deep dive",
-"Engine API","Example get table (hypercube)","Because our website is written in Javascript. We use a javascript library Enigma.js to ""talk to/communicate"" with the Qlik Sense Eninge API",,"","","","","         0","0","Deep dive",
-"Engine API","Example get table (hypercube)","[see example code](https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs)",,"","","","","         0","0","Deep dive",
+"Engine API","Example get data via a hypercube","In this example we will get a ""table"" of data out of Qlik Sense using the Engine API",,"","","","","         0","0","Deep dive",
+"Engine API","Example get data via a hypercube","The Engine API is a websocket based protocol (JSON RPC)",,"","","","","         0","0","Deep dive",
+"Engine API","Example get data via a hypercube","Because our website is written in Javascript. We use a javascript library Enigma.js to ""talk to/communicate"" with the Qlik Sense Engine API",,"","","","","         0","0","Deep dive",
+"Engine API","Example get data via a hypercube","iframe https://github.com/qlik-oss/enigma.js/tree/master/examples/data/hypercubes",,"","","","","         0","0","Deep dive",
 "Engine API","Process flow of communication between components","![](https://www.lucidchart.com/publicSegments/view/7b2fbf74-afc8-4f81-aa90-de61707854aa/image.png)",,"","","","","         0","0","Deep dive",
 "Engine API","Get schema","```
 $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
@@ -4942,7 +4944,6 @@ let caseOwnerList = new qSessionObject({
 });  
 ```",,,,,,,,,
 "Engine API","More information about the Engine API, examples and tips","[Engine API help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/introducing-engine-API.htm)",,"","","","","         0","0","Deep dive, Technical - 1 day",
-"Engine API","More information about the Engine API, examples and tips","Use [Qlik Playground](playground.qlik.com) to learn the APIs via an interactive environmnent",,"","","","","         0","0","Technical - 1 day",
 "Engine API","More information about the Engine API, examples and tips","EnigmaJS help [Examples](https://github.com/qlik-oss/enigma.js/tree/master/examples)",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "Engine API","More information about the Engine API, examples and tips","Good examples to get a feeling of the API structure. Don't use the lib itself, use EnigmaJS [QSocks examples](https://github.com/mindspank/qsocks/tree/master/examples)",,"","","","","         0","0","Deep dive",
 "Engine API","More information about the Engine API, examples and tips","PS: the function names are camelCase in enigma.js",,"","","","","         0","0","Deep dive",

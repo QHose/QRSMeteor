@@ -15,10 +15,10 @@ Template.questions.events({
         
         //get the slide headers and store it in the database
         if (checked) {            
-            await nav.makeSearchSelectionInField("Level 2", question);            
+            await nav.makeSelectionInField("Level 2", [{qText: question}]);            
             var slides = await getAllSlideHeadersPlain();
             console.log('slides after checkbox click', slides)
-            questions.insert({ name: question, sort: answerImportance, slides: slides })
+            questions.insert({ name: question, importance: answerImportance, slides: slides })
         } else {
             questions.remove({ name: question })
         }
