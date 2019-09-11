@@ -159,18 +159,17 @@ export async function selectMenuItemInSense(slide) {
   }, 200);
 }
 
+//https://help.qlik.com/en-US/sense-developer/September2018/apis/EngineAPI/definitions-FieldValue.html
 export async function makeSelectionInField(fieldName, value) {
   console.log("makeSelectionInField", fieldName + " : " + value.toString());
   try {
     var qix = await slideApp.getQix();
-    // await slideApp.setChangeListener(qix);
     var myField = await qix.app.getField(fieldName);
     var result = await myField.selectValues(value);
   } catch (error) {
     var message =
-      "makeSelectionInField: Can not connect to the Qlik Sense Engine API via enigmaJS";
+      "selectValues: Can not connect to the Qlik Sense Engine API via enigmaJS";
     console.error(message + " Sense reported the following error: ", error);
-    // location.reload(); //reload the page
     sAlert.error(message, error);
   }
 }
@@ -183,7 +182,6 @@ export async function makeSearchSelectionInField(fieldName, value) {
   );
   try {
     var qix = await slideApp.getQix();
-    // await slideApp.setChangeListener(qix);
     var myField = await qix.app.getField(fieldName);
     var result = await myField.select(value);
   } catch (error) {
