@@ -7,7 +7,7 @@ import * as nav from "/imports/ui/nav.js";
 const Cookies = require('js-cookie');
 
 export const questions = new Mongo.Collection(null);
-var resultSet = [];
+
 
 //@todo get them from usecaseselection
 export var possibleRoles = [
@@ -23,10 +23,6 @@ var hostingOpsSections = ['security', 'automation', 'architecture'];
 var businessAnalystSections = ['dashboard'];
 var CTOSections = ['data', 'dashboard', 'embedding', 'security', 'automation'];
 var nonTechnicalSections = ['dashboard'];
-
-Template.questions.onRendered(async function () {
-    console.log('selectie in database ',questions.find({}).fetch())
-})
 
 Template.questions.helpers({
     applicableForRole: function (featureGroup) {
@@ -50,8 +46,9 @@ Template.questions.helpers({
 });
 
 
+
 Template.questions.events({
-    async 'click input'(event) {
+    async 'click input'(event, template) {
         var checked = event.currentTarget.checked;
         var question = $(event.target).closest('tr').children('td:first').text().replace(/\s+/g, ' ').trim(); //remove extra white spaces
         var answerImportance = $(event.currentTarget).attr("class");
@@ -60,37 +57,50 @@ Template.questions.events({
         if (checked) {
             await nav.makeSelectionInField("Level 2", [{ qText: question }]);
             var slides = await getAllSlideHeadersPlain();
-            console.log('slides', slides)
             questions.insert({ name: question, importance: answerImportance, slides: slides })
+
+            //uncheck other checkbox, a radio button would be better
+            $(event.target).closest('tr').find(':checkbox').prop('checked', false);
+            $(event.target).prop('checked', true);
         } else {
             questions.remove({ name: question })
+            $(event.target).prop('checked', false);
+        }
+    },
+    'click .view.button'(event) {
+        event.preventDefault();
+
+        console.log('questions.find().count()', questions.find().count())
+        if (!questions.find().count()){
+            sAlert.error('Please select at least 1 requirement');     
+            return;
         }
 
-        //@todo deselect the other checkbox
-        // $(event.target).closest('tr').find(':checkbox').prop('checked', this.checked);
-        // console.log(event);
-    },
-    'click .button'(event) {
-        event.preventDefault();
+        var resultSet = []; // the master deck
+        // we now have individual slides, merge them into 1 deck (1 array to be used by slides.js)
         questions.find({}).forEach(function (question) {
             question.slides.forEach(function (slide) {
-                resultSet.push(slide)
-            }) // we now have a full slide deck, next store it in the session so slides.js can render it.
-
-            resultSet.sort(compare);
-            Session.set('slideHeaders', resultSet);
-            Router.go('slides');
+                slide.importance = question.importance;
+                resultSet.push(slide) //add slide to master deck
+            }) // we now have a full slide deck, next store it in the session so slides.js can render it.            
 
         })
 
+        resultSet.sort(compare);
+        Session.set('slideHeaders', resultSet);
+        Router.go('slides');
+
+    },
+    'click .clear.button'(event) {
+        $('input:checkbox').removeAttr('checked');
     }
 });
 
 function compare(a, b) {
-    if (a.answerImportance < b.answerImportance) {
+    if (a.importance < b.importance) {
         return -1;
     }
-    if (a.answerImportance > b.answerImportance) {
+    if (a.importance > b.importance) {
         return 1;
     }
     return 0;

@@ -6,13 +6,19 @@
                 <div class="header">
                     Can you share your requirements with us?
                 </div>
-                <p>We will create a personalized presentation for you</p>
-                <p>Get all relevant documentation, videos at one place</p>
-                <p>Share the presentation with your colleques</p>
+                <p>Below we shared some key requirements grouped per topic</p>
+                <p>Select the requirements you think are interesting</p> 
+                <p>Based on your requirements we will present you an overview or a detailed explanation</p>
+                <p>If you like you can share the presentation with your colleagues</p>
             </div>
         </div>
 
-        <div class="ui green button">View our approach for your requirements</div> 
+        <div class="ui buttons">
+            <button class="ui positive view button">View our approach</button>
+            <div class="or"></div>
+            <button class="ui  clear button">Clear answers</button>
+          </div>
+        <!-- <div class="ui green button">View our approach for your requirements</div>  -->
         {{#if applicableForRole 'data'}}
         <form>
             <div class="ui horizontal divider">
@@ -256,7 +262,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td>The following authorization concept works for me: <br />Each customer can only see its own
                             data. Each customer can have 1 or more users. These users can be a member of 1 or more
                             groups/roles which determine what they can see or do in the system. E.g. a manager can see
@@ -271,7 +277,7 @@
                                 <input type="checkbox" class="Important">
                             </div>
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </form>

@@ -398,7 +398,6 @@ async function getLevel3(level1, level2) {
         }]);
 
         var level3Temp = sessionData[0].qMatrix;
-        console.log('RaW Qlik: ', level3Temp);
         sessionModel.removeAllListeners();
         return normalizeAndSortData(level3Temp);
     } catch (error) {
@@ -573,7 +572,7 @@ function convertToHTML(text) {
     else if (text.endsWith(".pdf")) {
         var index = text.lastIndexOf("_");
         var filename = text.substr(index + 1);
-        var link = '<a href="/docs/' + text + '" imageanchor="1"><img src="/images/PDF_32.png" border="0">' + filename + '</a>'
+        var link = '<a href="/docs/' + text + '" imageanchor="1"><img src="/images/PDF_32.png" target="_blank" border="0">' + filename + '</a>'
         return link;
 
     }
