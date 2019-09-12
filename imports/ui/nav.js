@@ -38,41 +38,7 @@ Template.sheetSelector.onRendered(function () {
 });
 
 Template.nav.onRendered(function() {
-  //
-  // ─── BOUNCE THE NAV BAR ITEM FOR SHEET SELECTION ────────────────────────────────
-  //
 
-  /*  this.$("#SSBI").popup({
-     title: "What is self service?",
-     content:
-       "Next we first introduce you to the concepts of self service using a video and we continue with a live demo so you can see and test the effects of different access rights on access to functionality and row level security",
-     delay: {
-       show: 500,
-       hide: 0
-     }
-   });
-
-     this.$("#generation").popup({
-       title: "Multi-tenant app provisioning demo",
-       content:
-         "Questions about SaaS and multi-tenancy with Qlik Sense? In our demonstration site, we show and reveal how you can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment.",
-       delay: {
-         show: 500,
-         hide: 0
-       }
-     });
-
-      this.$("#generation").popup({
-        title: "Embed Qlik Sense in your platform",
-        content:
-          `Qlik allows integration options. You can choose your desired level of web integration according to your business requirements. On the client side, you can use either the Qlik client or create your own client.
-
-If you choose to use the Qlik Sense Client, you have the following integration options: integrate the hub, an app, a sheet or individual charts. In most cases you have the ability to control whether you see our menu, see a selection bar or whether or not you provide initial selections to make charts static.`,
-        delay: {
-          show: 500,
-          hide: 0
-        }
-      }); */
 });
 
 //
@@ -81,29 +47,8 @@ If you choose to use the Qlik Sense Client, you have the following integration o
 
 Template.nav.events({
   "click a": function(event, template) {
-    event.preventDefault();
-    var menuItem = event.currentTarget.id;
-    switch (menuItem) {
-      case "home":
-        Router.go("useCaseSelection");
-        break;
-      case "SSBI":
-        selectMenuItemInSense("*What is governed self service with Qlik Sense*");
-        break;
-      case "generation":
-        selectMenuItemInSense("*multi-tenant SaaS platform with Qlik Sense*");
-        break;
-      case "embedding":
-        selectMenuItemInSense("*embed Qlik Sense*");
-        // window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
-        break;
-      case "video":
-        selectMenuItemInSense("*Video overview:*");
-        break;
-      case "sheetSelector":
-        showSlideSelector();
-        break;
-    }
+    window.location.href = '/';
+
   }
 });
 

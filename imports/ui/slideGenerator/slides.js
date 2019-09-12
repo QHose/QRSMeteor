@@ -358,25 +358,23 @@ async function getLevel3(level1, level2) {
     if (questions.find({ name: level2 })) //if the questions are use for the slide gen
     {
         var question = questions.find({ name: level2 }).fetch();
-        var importance = question[0].importance;
+        importance = question[0].importance;
     }
 
     try {
         var qix = await getQix();
         var sessionModel = await qix.app.createSessionObject({
             qInfo: {
-                qType: "cube"
+                qType: 'cube'
             },
             qHyperCubeDef: {
                 qDimensions: [{
                     qDef: {
-                        qFieldDefs: ["Level 3"],                        
-                        qSortCriterias: [
-                            {
-                                qSortByExpression: 1,
-                                qExpression: { qv: "max(CSVRowNo)" }
-                            }
-                        ]
+                        qFieldDefs: ["Level 3"]
+                    }
+                }, {
+                    qDef: {
+                        qFieldDefs: ["CSVRowNo"]
                     }
                 }],
                 qMeasures: [{
@@ -392,18 +390,17 @@ async function getLevel3(level1, level2) {
                 }]
             }
         });
-
-        sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
+        sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
             qTop: 0,
             qLeft: 0,
-            qWidth: 2,
-            qHeight: 1000
+            qWidth: 3,
+            qHeight: 3333
         }]);
 
         var level3Temp = sessionData[0].qMatrix;
+        console.log('RaW Qlik: ', level3Temp);
         sessionModel.removeAllListeners();
-        console.log('normalizeData(level3Temp);', normalizeData(level3Temp))
-        return normalizeData(level3Temp);
+        return normalizeAndSortData(level3Temp);
     } catch (error) {
         //error happens when you select something else after your selection... not a real error
     }
@@ -477,6 +474,26 @@ function normalizeData(senseArray) {
     return result;
 }
 
+function normalizeAndSortData(senseArray) {
+    var result = [];
+    senseArray.sort(compare);
+    senseArray.forEach(element => {
+        result.push(element[0].qText);
+    });
+    return result;
+}
+
+function compare(a, b) {
+    if (a[1].qNum < b[1].qNum) {
+        return -1;
+    }
+    if (a[1].qNum > b[1].qNum) {
+        return 1;
+    }
+    return 0;
+}
+
+
 function convertToHTML(text) {
     // console.log('convertToHTML text', text)
     var commentMarker = "!comment";
@@ -548,6 +565,17 @@ function convertToHTML(text) {
     else if (text.startsWith("<")) {
         //custom HTML
         return text;
+    }
+
+    //
+    // ─── pdf ────────────────────────────────────────────────────────────────
+    //
+    else if (text.endsWith(".pdf")) {
+        var index = text.lastIndexOf("_");
+        var filename = text.substr(index + 1);
+        var link = '<a href="/docs/' + text + '" imageanchor="1"><img src="/images/PDF_32.png" border="0">' + filename + '</a>'
+        return link;
+
     }
 
     //

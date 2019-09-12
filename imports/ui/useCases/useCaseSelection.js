@@ -17,7 +17,7 @@ const Cookies = require('js-cookie');
 var Reveal = require('reveal.js');
 var qix = null;
 
-var possibleRoles = [
+export var possibleRoles = [
     "Developer",
     "Hosting Ops",
     "Business Analyst",
@@ -116,14 +116,14 @@ Template.useCaseSelection.events({
     "click #videoButton": async function(e, t) {
         nav.selectMenuItemInSense("*Video overview:*");
     },
-    "blur .ui.dropdown.selection .menu": async function(e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
+    "blur .ui.dropdown.selection .menu": async function(e, t) { //if anything happens with the dropdown box... adjust the selection, and get new slides.
         var selectedRole = t.$(".ui.dropdown").find(":selected").val();
         Session.set("sheetSelectorSeen", true);
         Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
-        Meteor.setTimeout(function() {
-            Router.go("slides");
-        }, 200);
+        // Meteor.setTimeout(function() {
+            Router.go("questions");
+        // }, 200);
 
     }
 });
@@ -243,9 +243,7 @@ export async function getAllSlideHeaders(qix) {
     }
     //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.    
     var headers = await getAllSlideHeadersPlain(qix);
-    // console.log('headers', headers)
     var headersWithBreakers = insertSectionBreakers(headers);
-    console.log('headersWithBreakers', headersWithBreakers)
     return headersWithBreakers;
 }
 

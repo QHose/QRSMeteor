@@ -1,10 +1,23 @@
 <template name="questions">
-    <div class="ui container" id="questions">
-        <div class="ui horizontal divider">
-            Data
+    <div class="ui container" id="questions" >
+        <div class="ui icon message">
+            <i class="inbox icon"></i>
+            <div class="content">
+                <div class="header">
+                    Can you share your requirements with us?
+                </div>
+                <p>We will create a personalized presentation for you</p>
+                <p>Get all relevant documentation, videos at one place</p>
+                <p>Share the presentation with your colleques</p>
+            </div>
         </div>
+
+        <div class="ui green button">View our approach for your requirements</div> 
+        {{#if applicableForRole 'data'}}
         <form>
-            <input class="ui button" type="submit">
+            <div class="ui horizontal divider">
+                Data
+            </div>
 
             <table class="ui celled structured table">
 
@@ -14,8 +27,8 @@
                         <th colspan="2">Is this relevant for you?</th>
                     </tr>
                     <tr>
-                        <th>a little</th>
-                        <th>Agree</th>
+                        <th>A bit, some interest</th>
+                        <th>Agree, interesting</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,6 +76,10 @@
                 </tbody>
             </table>
         </form>
+        {{/if}}
+
+        {{#if applicableForRole 'dashboard'}}
+        
         <div class="ui horizontal divider">
             Dasbhoard
         </div>
@@ -75,8 +92,8 @@
                         <th colspan="2">Is this relevant for you?</th>
                     </tr>
                     <tr>
-                        <th>a little</th>
-                        <th>Agree</th>
+                        <th>A bit, some interest</th>
+                        <th>Agree, interesting</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -109,7 +126,9 @@
                 </tbody>
             </table>
         </form>
-
+{{/if}}
+{{#if applicableForRole 'embedding'}}
+        
         <div class="ui horizontal divider">
             Embedding
         </div>
@@ -122,13 +141,14 @@
                         <th colspan="2">Is this relevant for you?</th>
                     </tr>
                     <tr>
-                        <th>a little</th>
-                        <th>Agree</th>
+                        <th>A bit, some interest</th>
+                        <th>Agree, interesting</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>I would like to embed a sheet in the most simple way. I would like to re-use the client, sheets and vizualizations that Qlik created.</td>
+                        <td>I would like to embed a sheet in the most simple way. I would like to re-use the client,
+                            sheets and vizualizations that Qlik created.</td>
                         <td>
                             <div class="field">
                                 <input type="checkbox" class="Moderate">
@@ -174,6 +194,10 @@
                 </tbody>
             </table>
         </form>
+        {{/if}}
+
+        {{#if applicableForRole 'security'}}
+        
 
         <div class="ui horizontal divider">
             Security
@@ -187,8 +211,8 @@
                         <th colspan="2">Is this relevant for you?</th>
                     </tr>
                     <tr>
-                        <th>a little</th>
-                        <th>Agree</th>
+                        <th>A bit, some interest</th>
+                        <th>Agree, interesting</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -251,6 +275,10 @@
                 </tbody>
             </table>
         </form>
+        {{/if}}
+
+        {{#if applicableForRole 'automation'}}
+        
 
         <div class="ui horizontal divider">
             Automation
@@ -264,8 +292,8 @@
                         <th colspan="2">Is this relevant for you?</th>
                     </tr>
                     <tr>
-                        <th>a little</th>
-                        <th>Agree</th>
+                        <th>A bit, some interest</th>
+                        <th>Agree, interesting</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -284,7 +312,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>I would like to work with templates, in the sense that I can create a master and that each of my customers gets a private copy with predefined sheets and vizualizations.</td>
+                        <td>I would like to work with templates, in the sense that I can create a master and that each
+                            of my customers gets a private copy with predefined sheets and vizualizations.</td>
                         <td>
                             <div class="field">
                                 <input type="checkbox" class="Moderate">
@@ -297,7 +326,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>I already have "a piece of software" that automatically creates things for each of your tenants. (a process automation tool, a broker, a script that creates databases, client/tenant specific websites etc.)</td>
+                        <td>I already have "a piece of software" that automatically creates things for each of your
+                            tenants. (a process automation tool, a broker, a script that creates databases,
+                            client/tenant specific websites etc.)</td>
                         <td>
                             <div class="field">
                                 <input type="checkbox" class="Moderate">
@@ -313,8 +344,11 @@
                 </tbody>
             </table>
         </form>
+        {{/if}}
 
-        <!-- <div class="ui horizontal divider">
+        {{#if applicableForRole 'architecture'}}
+
+        <div class="ui horizontal divider">
                 Architecture
             </div>
             <form>
@@ -326,14 +360,13 @@
                             <th colspan="2">Is this relevant for you?</th>
                         </tr>
                         <tr>
-                            <th>a little</th>
-                            <th>Agree</th>
+                            <th>A bit, some interest</th>
+                            <th>Agree, interesting</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Do you use JWT, SAML or OIDC to authenticate?
-                                    </td>
+                            <td>My software is programmed in .NET</td>
                             <td>
                                 <div class="field">
                                     <input type="checkbox" class="Moderate">
@@ -346,7 +379,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>I have created my own custom single sign on solution</td>
+                            <td>My software is programmed in javascript</td>
                             <td>
                                 <div class="field">
                                     <input type="checkbox" class="Moderate">
@@ -359,7 +392,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Authorization: Qlik needs to re-use the authorizations/groups as defined in my SaaS platform</td>
+                            <td>My software is programmed in java</td>
                             <td>
                                 <div class="field">
                                     <input type="checkbox" class="Moderate">
@@ -372,7 +405,7 @@
                             </td>
                         </tr>
                         <tr>
-                                <td>Authorization: I can provide the groups via the single sign on (SSO) mechanism</td>
+                                <td>My software is installed on premise</td>
                                 <td>
                                     <div class="field">
                                         <input type="checkbox" class="Moderate">
@@ -385,7 +418,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                    <td>The following authorization concept works for me:  <br/>Each customer can only see its own data. Each customer can have 1 or more users. These users can be a member of 1 or more groups/roles which determine what they can see or do in the system. E.g. a manager can see the "whole world" and a regional manager only his "own region".</td>
+                                    <td>My software architecture for the client is web based</td>
                                     <td>
                                         <div class="field">
                                             <input type="checkbox" class="Moderate">
@@ -397,8 +430,35 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <tr>
+                                        <td>I am interested to run software on windows</td>
+                                        <td>
+                                            <div class="field">
+                                                <input type="checkbox" class="Moderate">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="field">
+                                                <input type="checkbox" class="Important">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                            <td>I am interested to run software on Kubernetes</td>
+                                            <td>
+                                                <div class="field">
+                                                    <input type="checkbox" class="Moderate">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="field">
+                                                    <input type="checkbox" class="Important">
+                                                </div>
+                                            </td>
+                                        </tr>
                     </tbody>
                 </table>
-            </form> -->
+            </form> 
+            {{/if}}
     </div>
 </template>
