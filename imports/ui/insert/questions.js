@@ -10,7 +10,7 @@ var resultSet = [];
 Template.questions.events({
     async 'click input'(event) {
         var checked = event.currentTarget.checked;
-        var question = $(event.target).closest('tr').children('td:first').text().replace(/\s+/g,' ').trim();
+        var question = $(event.target).closest('tr').children('td:first').text().replace(/\s+/g,' ').trim(); //remove extra white spaces
         console.log('question: ', question)
         var answerImportance = $(event.currentTarget).attr("class");
         
