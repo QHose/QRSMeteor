@@ -1,211 +1,13 @@
 <template name="questions">
     <div class="ui container" id="questions">
-    <div class="ui horizontal divider">
-        Data
-    </div>
-    <form>
-            <input class="ui button" type="submit">
-
-        <table class="ui celled structured table">
-
-            <thead>
-                <tr>
-                    <th rowspan="2">Feature</th>
-                    <th colspan="2">Is this relevant for you?</th>
-                </tr>
-                <tr>
-                    <th>a little</th>
-                    <th>Agree</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>All customer data is stored in the cloud or in a central location</td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Moderate">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Important">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>We use an event driven data model, where data is streamed/pushed into another application</td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Moderate">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Important">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>I have a database per customer</td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Moderate">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Important">
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
-    <div class="ui horizontal divider">
-        Dasbhoard
-    </div>
-    <form>
-        <table class="ui celled structured table">
-
-            <thead>
-                <tr>
-                    <th rowspan="2">Feature</th>
-                    <th colspan="2">Is this relevant for you?</th>
-                </tr>
-                <tr>
-                    <th>a little</th>
-                    <th>Agree</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>I need standard dashboards, not too advanced for "simple users"</td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Moderate">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Important">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>I like to offer self service (creation of dashboards) to specific user groups</td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Moderate">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Important">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Users only need access to "display only dashboards"</td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Moderate">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Important">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Some users need to be able to have "self service" options like the creation of apps or sheets.
-                    </td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Moderate">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Important">
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
-
-    <div class="ui horizontal divider">
-        Embedding
-    </div>
-    <form>
-        <table class="ui celled structured table">
-
-            <thead>
-                <tr>
-                    <th rowspan="2">Feature</th>
-                    <th colspan="2">Is this relevant for you?</th>
-                </tr>
-                <tr>
-                    <th>a little</th>
-                    <th>Agree</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>I would like to embed a sheet in the most simple way. I would like to re-use the client, sheets
-                        anc vizualizations that Qlik created.</td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Moderate">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Important">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>I would like to customize the Qlik Sense standard client:
-                        I only embed the Qlik Sense charts into my application and create other content (menu's, popups
-                        etc) myself.
-                    </td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Moderate">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Important">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>I would like to customize the Qlik Sense standard client:
-                        I want to create my own front-end and vizualizatons and let Qlik Sense supply the data</td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Moderate">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="field">
-                            <input type="checkbox" class="Important">
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
-
-    <div class="ui horizontal divider">
-            Security
+        <div class="ui horizontal divider">
+            Data
         </div>
         <form>
+            <input class="ui button" type="submit">
+
             <table class="ui celled structured table">
-    
+
                 <thead>
                     <tr>
                         <th rowspan="2">Feature</th>
@@ -218,8 +20,180 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Do you use JWT, SAML or OIDC to authenticate?
-                                </td>
+                        <td>All customer data is stored in the cloud or in a central location</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>We use an event driven data model, where data is streamed/pushed into another application
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>I have a database per customer</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <div class="ui horizontal divider">
+            Dasbhoard
+        </div>
+        <form>
+            <table class="ui celled structured table">
+
+                <thead>
+                    <tr>
+                        <th rowspan="2">Feature</th>
+                        <th colspan="2">Is this relevant for you?</th>
+                    </tr>
+                    <tr>
+                        <th>a little</th>
+                        <th>Agree</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>I need standard dashboards, not too advanced for "simple users"</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>I like to offer self service (creation of dashboards) to specific user groups</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <div class="ui horizontal divider">
+            Embedding
+        </div>
+        <form>
+            <table class="ui celled structured table">
+
+                <thead>
+                    <tr>
+                        <th rowspan="2">Feature</th>
+                        <th colspan="2">Is this relevant for you?</th>
+                    </tr>
+                    <tr>
+                        <th>a little</th>
+                        <th>Agree</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>I would like to embed a sheet in the most simple way. I would like to re-use the client, sheets and vizualizations that Qlik created.</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>I would like to customize the Qlik Sense standard client:
+                            I only embed the Qlik Sense charts into my application and create other content (menu's,
+                            popups
+                            etc) myself.
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>I would like to customize the Qlik Sense standard client:
+                            I want to create my own front-end and vizualizatons and let Qlik Sense supply the data</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <div class="ui horizontal divider">
+            Security
+        </div>
+        <form>
+            <table class="ui celled structured table">
+
+                <thead>
+                    <tr>
+                        <th rowspan="2">Feature</th>
+                        <th colspan="2">Is this relevant for you?</th>
+                    </tr>
+                    <tr>
+                        <th>a little</th>
+                        <th>Agree</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Do you use JWT, SAML or OIDC to authenticate?</td>
                         <td>
                             <div class="field">
                                 <input type="checkbox" class="Moderate">
@@ -245,7 +219,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Authorization: Qlik needs to re-use the authorizations/groups as defined in my SaaS platform</td>
+                        <td>Authorization: Qlik needs to re-use the authorizations/groups as defined in my SaaS platform
+                        </td>
                         <td>
                             <div class="field">
                                 <input type="checkbox" class="Moderate">
@@ -258,36 +233,88 @@
                         </td>
                     </tr>
                     <tr>
-                            <td>Authorization: I can provide the groups via the single sign on (SSO) mechanism</td>
-                            <td>
-                                <div class="field">
-                                    <input type="checkbox" class="Moderate">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="field">
-                                    <input type="checkbox" class="Important">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                                <td>The following authorization concept works for me:  <br/>Each customer can only see its own data. Each customer can have 1 or more users. These users can be a member of 1 or more groups/roles which determine what they can see or do in the system. E.g. a manager can see the "whole world" and a regional manager only his "own region".</td>
-                                <td>
-                                    <div class="field">
-                                        <input type="checkbox" class="Moderate">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="field">
-                                        <input type="checkbox" class="Important">
-                                    </div>
-                                </td>
-                            </tr>
+                        <td>The following authorization concept works for me: <br />Each customer can only see its own
+                            data. Each customer can have 1 or more users. These users can be a member of 1 or more
+                            groups/roles which determine what they can see or do in the system. E.g. a manager can see
+                            the "whole world" and a regional manager only his "own region".</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </form>
 
         <div class="ui horizontal divider">
+            Automation
+        </div>
+        <form>
+            <table class="ui celled structured table">
+
+                <thead>
+                    <tr>
+                        <th rowspan="2">Feature</th>
+                        <th colspan="2">Is this relevant for you?</th>
+                    </tr>
+                    <tr>
+                        <th>a little</th>
+                        <th>Agree</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>I would like to install Qlik Sense together with my application for on premise purposes. (in
+                            non SaaS solutions)</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>I would like to work with templates, in the sense that I can create a master and that each of my customers gets a private copy with predefined sheets and vizualizations.</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>I already have "a piece of software" that automatically creates things for each of your tenants. (a process automation tool, a broker, a script that creates databases, client/tenant specific websites etc.)</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </form>
+
+        <!-- <div class="ui horizontal divider">
                 Architecture
             </div>
             <form>
@@ -372,6 +399,6 @@
                                 </tr>
                     </tbody>
                 </table>
-            </form>
+            </form> -->
     </div>
 </template>

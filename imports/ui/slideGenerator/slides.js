@@ -5,7 +5,7 @@ import hljs from "highlight.js";
 import { Logger } from "/imports/api/logger";
 import { getQix } from "/imports/ui/useCases/useCaseSelection";
 import * as nav from "/imports/ui/nav.js";
-import {questions} from "/imports/ui/insert/questions.js";
+import { questions } from "/imports/ui/insert/questions.js";
 
 _ = lodash;
 var Cookies = require("js-cookie");
@@ -72,7 +72,6 @@ function initializeReveal() {
     if (!window.Reveal) {
         try {
             window.Reveal = Reveal;
-            console.log('initializeReveal', Reveal);
 
             Reveal.initialize({
                 // Display presentation control arrows
@@ -298,17 +297,10 @@ Template.slideContent.onRendered(async function () {
 
         //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
         var slideContent = template.bullets.get();
-        // console.log("slideContent.onRendered array of bullets: ", slideContent);
         if (!slideContent) {
-            console.log('------------------------------------');
-            console.log('No slide data retrieved from Qlik Sense, re-adding the slide changed event listener...');
-            console.log('------------------------------------');
-            // addSlideChangedListener();
             nav.showSlideSelector();
-            // window.location.href = window.location.origin;
-            //location.reload(); //@todo to evaluate if this helps
         }
-    }, 3000);
+    }, 1000);
 });
 
 Template.slideContent.events({
@@ -361,15 +353,13 @@ Template.registerHelper("step", function () {
 // ─── FOR EACH SLIDE GET THE LEVEL 3 ITEMS USING SET ANALYSIS ────────────────────
 //
 async function getLevel3(level1, level2) {
-//first get the importance of this feature
-if(questions) //if the questions are use for the slide gen
-{
-    var question = questions.find({name: level2}).fetch();
-    var importance = question[0].importance;
-    console.log('getLevel3 feature', question);
-    console.log('getLevel3 importance', importance)
-    
-}
+    //first get the importance of this feature
+    var importance = "";
+    if (questions.find({ name: level2 })) //if the questions are use for the slide gen
+    {
+        var question = questions.find({ name: level2 }).fetch();
+        var importance = question[0].importance;
+    }
 
     try {
         var qix = await getQix();
@@ -380,7 +370,13 @@ if(questions) //if the questions are use for the slide gen
             qHyperCubeDef: {
                 qDimensions: [{
                     qDef: {
-                        qFieldDefs: ["Level 3"]
+                        qFieldDefs: ["Level 3"],                        
+                        qSortCriterias: [
+                            {
+                                qSortByExpression: 1,
+                                qExpression: { qv: "max(CSVRowNo)" }
+                            }
+                        ]
                     }
                 }],
                 qMeasures: [{
@@ -406,8 +402,9 @@ if(questions) //if the questions are use for the slide gen
 
         var level3Temp = sessionData[0].qMatrix;
         sessionModel.removeAllListeners();
+        console.log('normalizeData(level3Temp);', normalizeData(level3Temp))
         return normalizeData(level3Temp);
-    } catch (error) {        
+    } catch (error) {
         //error happens when you select something else after your selection... not a real error
     }
 }
