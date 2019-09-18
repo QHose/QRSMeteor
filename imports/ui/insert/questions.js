@@ -70,7 +70,6 @@ Template.questions.events({
     'click .view.button'(event) {
         event.preventDefault();
 
-        console.log('questions.find().count()', questions.find().count())
         if (!questions.find().count()){
             sAlert.error('Please select at least 1 requirement');     
             return;
