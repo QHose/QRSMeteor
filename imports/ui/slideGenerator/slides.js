@@ -53,27 +53,25 @@ Template.slides.onRendered(async function () {
 });
 
 
-Template.slides.helpers({    
+Template.slides.helpers({
     shareLinkURL: function () {
-        var link = Session.get('shareLink')
+        var link = Session.get('shareLinkURL')
         return link;
     }
 });
 
 Template.slides.events({
     'click #sharePresentation': function (event, instance) {
-        console.log('click #sharePresentation')
         //save questions in link database
-
-        var id = FeatureLinks.insert({questions: questions.find().fetch()});
+        var id = FeatureLinks.insert({ questions: questions.find().fetch() });
+        var shareLinkURL = window.location.origin + '/?selection=' + id;
+        var formattedBody = "Hi, \nPlease have a look at the link below, describing some key Qlik Sense features \n"+shareLinkURL;
+        var mailToLink = "mailto:?body=" + encodeURIComponent(formattedBody);
         //update the value of the helper for the share link popup
-        Session.set('shareLink',window.location.origin + '/?selection=' + id )
+        Session.set('mailToLink', mailToLink);
+        Session.set('shareLinkURL', shareLinkURL);
         //show the popup
         showSlideShare();
-    },
-    'click .approve.green.button': function slideShareModal (event, instance){
-        console.log('slideShareModal click', event)
-
     }
 });
 
@@ -145,7 +143,7 @@ Template.slideContent.onRendered(async function () {
         if (!slideContent) {
             nav.showSlideSelector();
         }
-    }, 500);
+    }, 1000);
 });
 
 Template.slideContent.events({
@@ -168,10 +166,12 @@ Template.slideContent.events({
 
 
 function showSlideShare() {
-    console.log('function showSlideShare')
     $(".ui.modal.slideShare")
         .modal({
             onDeny: function () {
+                var formattedBody = "Hi, \nPlease have a look at this Qlik Sense presentation \n"+ Session.get('shareLinkURL');
+                var mailToLink = "mailto:?body=" + encodeURIComponent(formattedBody);
+                window.location.href = mailToLink;
                 return true;
             },
             onApprove: function () {
@@ -184,7 +184,7 @@ function showSlideShare() {
                 selection.removeAllRanges();
                 selection.addRange(range);
                 document.execCommand('copy');
-                sAlert.success("The link has been copied to your clipboard.");                
+                sAlert.success("The link has been copied to your clipboard.");
                 return true; //close the modal
             }
         })
@@ -193,7 +193,7 @@ function showSlideShare() {
             position: "fixed",
             top: "30%",
             height: "280px"
-        })    
+        })
 }
 
 

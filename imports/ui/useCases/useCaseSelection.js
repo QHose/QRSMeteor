@@ -124,20 +124,6 @@ async function makeSureSenseIsConnected() {
     return await getQix(await getTicket());
 }
 
-async function setSlideContentInSession(group) {
-    console.log('Try getting the slide data for group', group)
-    try {
-        check(group, String);
-        Cookies.set('currentMainRole', group);
-        var qix = await getQix();
-        await getAllSlides(true);
-    } catch (error) {
-        var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS, or group is not provided';
-        console.error(message, error);
-        sAlert.error(message, error);
-    };
-}
-
 export async function getQix(ticket = null) {
     // console.log('getQix with ticket:', ticket)
     try {
@@ -206,8 +192,8 @@ export async function getAllSlideHeaders(qix) {
     }
     //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.    
     var headers = await getAllSlideHeadersPlain(qix);
-    var headersWithBreakers = insertSectionBreakers(headers);
-    return headersWithBreakers;
+    // var headersWithBreakers = insertSectionBreakers(headers);
+    return headers;
 }
 
 export async function getAllSlideHeadersPlain(qix) {
@@ -256,7 +242,7 @@ export async function getAllSlideHeadersPlain(qix) {
 //
 
 //by default add extra slides (extra items in the data array), so you will get nice dynamic chapter breakers
-export async function getAllSlides(insertSectionBreakers = true) {
+export async function getAllSlides(insertSectionBreakers = false) {
     var qix = await getQix();
     //insert breakers before a change of topic? YES/NO... breakers are annoying when you make a menu selection or want to link to a sheet
     var table = insertSectionBreakers ? await getAllSlideHeaders(qix) : await getAllSlideHeadersPlain(qix);
@@ -289,20 +275,20 @@ export async function getComment(qix) {
 }
 
 export async function setChangeListener(qix) {
-    console.log('We are connected to Qlik Sense via the APIs, now setChangeListener', qix)
-    try {
-        qix.app.on('changed', async () => {
-            // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
-            await getCurrentSelections();
-            Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
-            Meteor.setTimeout(async function wait() {
-                await getAllSlides();
-                Reveal.slide(0); //go to the first slide after a data refresh.           
-            }, 100)
-        });
-    } catch (error) {
-        console.error('failed to set change listener: ', error);
-    }
+    // console.log('We are connected to Qlik Sense via the APIs, now setChangeListener', qix)
+    // try {
+    //     qix.app.on('changed', async () => {
+    //         // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
+    //         await getCurrentSelections();
+    //         Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
+    //         Meteor.setTimeout(async function wait() {
+    //             await getAllSlides();
+    //             Reveal.slide(0); //go to the first slide after a data refresh.           
+    //         }, 100)
+    //     });
+    // } catch (error) {
+    //     console.error('failed to set change listener: ', error);
+    // }
 }
 
 function insertSectionBreakers(table) {

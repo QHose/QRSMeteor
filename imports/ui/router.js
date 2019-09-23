@@ -15,10 +15,7 @@ Router.route('/slides', {
 
 // //map paths to blaze templates
 Router.route('/', async function() {
-    var selection = this.params.query.selection
-    console.log(
-        "Selection in route found: ",selection
-    );
+    var selection = this.params.query.selection  
     if (selection){
         await initQlikSense();
         await nav.getFeaturesAndShowSlides(selection);
