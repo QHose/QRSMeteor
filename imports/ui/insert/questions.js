@@ -74,26 +74,29 @@ Template.questions.events({
             sAlert.error('Please select at least 1 requirement');     
             return;
         }
-
-        var resultSet = []; // the master deck
-        // we now have individual slides, merge them into 1 deck (1 array to be used by slides.js)
-        questions.find({}).forEach(function (question) {
-            question.slides.forEach(function (slide) {
-                slide.importance = question.importance;
-                resultSet.push(slide) //add slide to master deck
-            }) // we now have a full slide deck, next store it in the session so slides.js can render it.            
-
-        })
-
-        resultSet.sort(compare);
-        Session.set('slideHeaders', resultSet);
-        Router.go('slides');
-
+        createMasterDeckAndShowSlides();
     },
     'click .clear.button'(event) {
         $('input:checkbox').removeAttr('checked');
     }
 });
+
+export function createMasterDeckAndShowSlides(){
+    console.log('questions - createMasterDeckAndShowSlides');
+    var resultSet = []; // the master deck
+    // we now have individual slides, merge them into 1 deck (1 array to be used by slides.js)
+    questions.find({}).forEach(function (question) {
+        question.slides.forEach(function (slide) {
+            slide.importance = question.importance;
+            resultSet.push(slide) //add slide to master deck
+        }) // we now have a full slide deck, next store it in the session so slides.js can render it.            
+
+    })
+
+    resultSet.sort(compare);
+    Session.set('slideHeaders', resultSet);
+    Router.go('slides');
+}
 
 function compare(a, b) {
     if (a.importance < b.importance) {

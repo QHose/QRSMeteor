@@ -1,5 +1,5 @@
 <template name="questions">
-    <div class="ui container" id="questions" >
+    <div class="ui container" id="questions">
         <div class="ui icon message">
             <i class="inbox icon"></i>
             <div class="content">
@@ -7,18 +7,13 @@
                     Can you share your requirements with us?
                 </div>
                 <p>Below we shared some key requirements grouped per topic</p>
-                <p>Select the requirements you think are interesting</p> 
+                <p>Select the requirements you think are interesting</p>
                 <p>Based on your requirements we will present you an overview or a detailed explanation</p>
                 <p>If you like you can share the presentation with your colleagues</p>
             </div>
         </div>
 
-        <div class="ui buttons">
-            <button class="ui positive view button">View our approach</button>
-            <div class="or"></div>
-            <button class="ui  clear button">Clear answers</button>
-          </div>
-        <!-- <div class="ui green button">View our approach for your requirements</div>  -->
+
         {{#if applicableForRole 'data'}}
         <form>
             <div class="ui horizontal divider">
@@ -85,7 +80,7 @@
         {{/if}}
 
         {{#if applicableForRole 'dashboard'}}
-        
+
         <div class="ui horizontal divider">
             Dasbhoard
         </div>
@@ -132,9 +127,9 @@
                 </tbody>
             </table>
         </form>
-{{/if}}
-{{#if applicableForRole 'embedding'}}
-        
+        {{/if}}
+        {{#if applicableForRole 'embedding'}}
+
         <div class="ui horizontal divider">
             Embedding
         </div>
@@ -203,7 +198,7 @@
         {{/if}}
 
         {{#if applicableForRole 'security'}}
-        
+
 
         <div class="ui horizontal divider">
             Security
@@ -284,7 +279,7 @@
         {{/if}}
 
         {{#if applicableForRole 'automation'}}
-        
+
 
         <div class="ui horizontal divider">
             Automation
@@ -355,116 +350,122 @@
         {{#if applicableForRole 'architecture'}}
 
         <div class="ui horizontal divider">
-                Architecture
+            Architecture
+        </div>
+        <form>
+            <table class="ui celled structured table">
+
+                <thead>
+                    <tr>
+                        <th rowspan="2">Feature</th>
+                        <th colspan="2">Is this relevant for you?</th>
+                    </tr>
+                    <tr>
+                        <th>A bit, some interest</th>
+                        <th>Agree, interesting</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>My software is programmed in .NET</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>My software is programmed in javascript</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>My software is programmed in java</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>My software is installed on premise</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>My software architecture for the client is web based</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>I am interested to run software on windows</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>I am interested to run software on Kubernetes</td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Moderate">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="field">
+                                <input type="checkbox" class="Important">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        {{/if}}
+            <div class="ui right floated buttons" style="margin-top: 20px">
+                <button class="ui positive view button">View our approach</button>
+                <div class="or"></div>
+                <button class="ui  clear button">Clear answers</button>
             </div>
-            <form>
-                <table class="ui celled structured table">
-        
-                    <thead>
-                        <tr>
-                            <th rowspan="2">Feature</th>
-                            <th colspan="2">Is this relevant for you?</th>
-                        </tr>
-                        <tr>
-                            <th>A bit, some interest</th>
-                            <th>Agree, interesting</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>My software is programmed in .NET</td>
-                            <td>
-                                <div class="field">
-                                    <input type="checkbox" class="Moderate">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="field">
-                                    <input type="checkbox" class="Important">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>My software is programmed in javascript</td>
-                            <td>
-                                <div class="field">
-                                    <input type="checkbox" class="Moderate">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="field">
-                                    <input type="checkbox" class="Important">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>My software is programmed in java</td>
-                            <td>
-                                <div class="field">
-                                    <input type="checkbox" class="Moderate">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="field">
-                                    <input type="checkbox" class="Important">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                                <td>My software is installed on premise</td>
-                                <td>
-                                    <div class="field">
-                                        <input type="checkbox" class="Moderate">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="field">
-                                        <input type="checkbox" class="Important">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                    <td>My software architecture for the client is web based</td>
-                                    <td>
-                                        <div class="field">
-                                            <input type="checkbox" class="Moderate">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="field">
-                                            <input type="checkbox" class="Important">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                        <td>I am interested to run software on windows</td>
-                                        <td>
-                                            <div class="field">
-                                                <input type="checkbox" class="Moderate">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="field">
-                                                <input type="checkbox" class="Important">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                            <td>I am interested to run software on Kubernetes</td>
-                                            <td>
-                                                <div class="field">
-                                                    <input type="checkbox" class="Moderate">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="field">
-                                                    <input type="checkbox" class="Important">
-                                                </div>
-                                            </td>
-                                        </tr>
-                    </tbody>
-                </table>
-            </form> 
-            {{/if}}
-    </div>
+        </div>
+
 </template>

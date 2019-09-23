@@ -11,6 +11,12 @@
 
   <div class="reveal">
     <div class="slides">
+   
+      <button id="sharePresentation" class="ui orange button" style="
+      position: absolute;
+      right: -150px;
+      top: 120px;      
+    ">Share</button>
       {{#each slideHeaders }} {{#if chapterSlide this}}
       <section>
         <div class="ui integrationBreaker">
@@ -21,6 +27,24 @@
         </div>
       </section>
       {{else}} {{> slide slide=this slideNr=@index}} {{/if}} {{/each}}
+    </div>
+  </div>
+
+  <!-- share your presentation modal-->
+  <div id="slideShareModal" class="ui modal slideShare">
+    <div class="header"> Share your presentation</div>
+    <div class="image content">
+      <img class="ui small image" src="images/socialCollaboration.png">
+      <div class="description">
+        <p>Please use the link below to share the presentation: <br /> <a id="shareRef"
+            href="{{shareLinkURL}}">{{shareLinkURL}}</a></p>
+
+        <p>You or another user can use this link to view this presentation at any time you like.</p>
+      </div>
+    </div>
+    <div class="actions">
+      <div id="copyLink" class="ui approve green button">Copy link to clipboard</div>
+      <div class="ui deny button">Done</div>
     </div>
   </div>
 </template>
@@ -42,6 +66,7 @@
 
 
 <template name="slideContent">
+
   <div class="slideContent">
     {{#each bullet in bullets}} {{{bullet}}} {{/each}}
     {{{ comment }}}

@@ -1,4 +1,6 @@
 var Cookies = require('js-cookie');
+import * as nav from "/imports/ui/nav.js";
+import {initQlikSense} from  '/imports/ui/useCases/useCaseSelection.js';
 
 //Layout Configuration. http://stackoverflow.com/questions/28864942/meteor-use-2-different-layouts-ironrouter
 Router.configure({
@@ -12,9 +14,20 @@ Router.route('/slides', {
 });
 
 // //map paths to blaze templates
-Router.route('/', function() {
-    Router.go('useCaseSelection');
+Router.route('/', async function() {
+    var selection = this.params.query.selection
+    console.log(
+        "Selection in route found: ",selection
+    );
+    if (selection){
+        await initQlikSense();
+        await nav.getFeaturesAndShowSlides(selection);
+    }
+    else{
+        Router.go('useCaseSelection');        
+    }
 });
+
 
 
 Router.route('/questions', {

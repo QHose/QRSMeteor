@@ -44,25 +44,8 @@
     <div class="ui container"> {{ sAlert}} {{> yield}} </div>
 </template>
 
-<template name="slideSelectionSheet">
-    <!-- <div id="myModal" class="modal" role="dialog">
-        <div class="modal-dialog" style="width: 90%;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Select the content to be presented</h4>
-                </div>
-                <div class="modal-body">
-                    <iframe src='{{IFrameURLChapterSelection}}' class="selector" style="width: 100%; height: calc(100vh - 250px); border: none;">
-                    </iframe>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
 
-        </div>
-    </div> -->
+<template name="slideSelectionSheet">
     <div id="sheetSelector" class="ui fullscreen modal sheetSelector">
         <i class="close icon"></i>
         <div class="header">
@@ -97,7 +80,10 @@
                     <img class="ui left floating image image" src="./images/qlik_logo.svg"
                         style="height: 100px; padding-top: 30px;">
                 </div>
-               
+                <div class="three wide column">
+
+                </div>
+
             </div>
         </div>
     </div>

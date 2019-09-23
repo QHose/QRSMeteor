@@ -7,6 +7,7 @@ import { getQix } from "/imports/ui/useCases/useCaseSelection";
 import { Session } from "meteor/session";
 import * as slideApp from "/imports/ui/useCases/useCaseSelection";
 import './nav.html';
+import { questions, createMasterDeckAndShowSlides } from '/imports/ui/insert/questions';
 
 const Cookies = require("js-cookie");
 
@@ -18,7 +19,7 @@ Template.nav.helpers({
 });
 
 Template.sheetSelector.onRendered(function () {
-   //
+  //
   // ─── CREATE POPUP ───────────────────────────────────────────────────────────────
   //
   this.$("#sheetSelector").popup({
@@ -31,13 +32,13 @@ Template.sheetSelector.onRendered(function () {
     }
   });
 
-    this.$(".selectSlides").transition({
-      animation: "bounce",
-      duration: "16s"
-    });
+  this.$(".selectSlides").transition({
+    animation: "bounce",
+    duration: "16s"
+  });
 });
 
-Template.nav.onRendered(function() {
+Template.nav.onRendered(function () {
 
 });
 
@@ -46,7 +47,7 @@ Template.nav.onRendered(function() {
 //
 
 Template.nav.events({
-  "click a": function(event, template) {
+  "click a": function (event, template) {
     window.location.href = '/';
 
   }
@@ -61,10 +62,10 @@ export function showSlideSelector() {
       height: "700px"
     })
     .modal({
-      onVisible: function() {
+      onVisible: function () {
         $(".ui.modal.sheetSelector").modal("refresh");
       },
-      onHide: function() {
+      onHide: function () {
         // console.log('hidden');
         Session.set("sheetSelectorSeen", true);
         abortQlikModalState();
@@ -74,20 +75,19 @@ export function showSlideSelector() {
       // },
     });
 }
+
 async function abortQlikModalState() {
   // console.log('slide selection modal closed');
   var qix = await getQix();
   qix.app.abortModal(true);
 }
 
-Template.yourSaasPlatformMenu.onRendered(function() {
+Template.yourSaasPlatformMenu.onRendered(function () {
   this.$(".ui.dropdown").dropdown();
 });
 
 export async function selectViaQueryId(mongoId) {
-  console.log("selectViaQueryId(mongoId)", mongoId);
   var qSelection = await Meteor.callPromise("getSenseSelectionObject", mongoId);
-  console.log("qSelection result from mongoDB", qSelection);
   if (qSelection) {
     await makeSelectionInFields(qSelection.selection);
   } else {
@@ -95,11 +95,34 @@ export async function selectViaQueryId(mongoId) {
   }
 }
 
+
+export async function getFeaturesAndShowSlides(mongoId) {
+  console.log('nav.js getFeaturesAndShowSlides', mongoId)
+  var features = await Meteor.callPromise("getFeatures", mongoId);
+  console.log('features', features)
+  var questionsReceived = features.questions;
+  console.log('questions', questions)
+  if (typeof questionsReceived !== 'undefined' && questionsReceived.length > 0) {
+    console.log('we have questions');
+    //delete any features we might already have locally in the client
+    questions._collection.remove({})
+    //populate it with the ones received from the server.
+    questionsReceived.forEach(function (question) {
+      console.log('insert each feature from databaseg into local answer list', question)
+      questions.insert(question)
+    })
+    console.log('new local questions list', questions.find().fetch())
+    createMasterDeckAndShowSlides();
+  } else {
+    sAlert.warning("We could not find your presentation...");
+  }
+}
+
 // if people click on a menu item, you want a specific slide to be selected, so the slide is the value to search for...
 export async function selectMenuItemInSense(slide) {
   console.log("selectMenuItemInSense - slide", slide);
   await makeSearchSelectionInField("Level 2", slide);
-  Meteor.setTimeout(function() {
+  Meteor.setTimeout(function () {
     Router.go("slides");
   }, 200);
 }
@@ -143,11 +166,11 @@ export async function makeSearchSelectionInField(fieldName, value) {
 export async function makeSelectionInFields(selections) {
   console.log("makeSelectionInFields(selections)", selections);
   //for each qField
-  selections.forEach(function(selectionField) {
+  selections.forEach(function (selectionField) {
     console.log("selectionField", selectionField);
     //for each selected value (qSelectedFieldSelectionInfo) (e.g. country can have germany and france selected)
     var selectValues = [];
-    selectionField.qSelectedFieldSelectionInfo.forEach(function(fieldValue) {
+    selectionField.qSelectedFieldSelectionInfo.forEach(function (fieldValue) {
       console.log("fieldValue", fieldValue);
       selectValues.push({
         qText: fieldValue.qName,

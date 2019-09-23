@@ -16,6 +16,8 @@ import {
     REST_Log
 } from '/imports/api/APILogs';
 
+import { FeatureLinks } from '/imports/api/featureLinks';
+
 //import meteor collections
 import {
     Streams
@@ -63,6 +65,15 @@ Meteor.methods({
         console.log('result of get selection by id', result)
         return result;
     },
+    getFeatures(id) {
+        console.log('------------------------------------');
+        console.log('getFeatures for id', id)
+        console.log('------------------------------------');
+        check(id, String);
+        var result = FeatureLinks.findOne({ _id: id });
+        console.log('result of get selection by id', result)
+        return result;
+    },
     getAppIDs() {
         return {
             SSBI: senseConfig.SSBIApp, // QSApp.getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream)[0].id,
@@ -83,7 +94,7 @@ Meteor.methods({
 
         try {
             if (!Meteor.settings.broker.qlikSense.multiTenantScenario) { //on premise installation for a single tenant (e.g. with MS Active Directory)
-                var customerNames = customers.map(function(c) {
+                var customerNames = customers.map(function (c) {
                     return c.name;
                 });
                 QSCustomProps.upsertCustomPropertyByName('customer', customerNames); //for non OEM scenarios (with MS AD), people like to use custom properties for authorization instead of the groups via a ticket.
@@ -136,7 +147,7 @@ Meteor.methods({
             REST_Log(call, generationUserSelection);
         }
         GeneratedResources.find(generationUserSelection)
-            .forEach(function(resource) {
+            .forEach(function (resource) {
                 // this.unblock()
                 //console.log('resetEnvironment for userId', Meteor.userId());generationUserSelection.generationUserId
 
@@ -208,7 +219,7 @@ Meteor.methods({
             throw new Meteor.Error("you can't delete the template app with guid: ", guid);
         }
     },
-    removeAllCustomers: function() {
+    removeAllCustomers: function () {
         return Customers.remove({
             'generationUserId': Meteor.userId()
         });
