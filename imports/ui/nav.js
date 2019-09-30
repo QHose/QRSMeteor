@@ -2,6 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { Template } from "meteor/templating";
 import { senseConfig } from "/imports/api/config.js";
 const enigma = require("enigma.js");
+import "/imports/ui/nav.html";
 import { getQix } from "/imports/ui/useCases/useCaseSelection";
 
 import { Session } from "meteor/session";
@@ -31,8 +32,8 @@ Template.sheetSelector.onRendered(function () {
   });
 
     this.$(".selectSlides").transition({
-      animation: "bounce",
-      duration: "16s"
+      animation: "tada",
+      duration: "26s"
     });
 });
 

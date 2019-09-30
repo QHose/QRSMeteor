@@ -690,8 +690,8 @@ On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded hub.
  - HTML: Shows the HTML code for embedding the hub. It makes use of an IFrame. The URL is the source where the IFrame refers to.
  - CSS: Shows the underlying CSS code for this page.",,"","","","","         0","0","Developer",
-"Web integration","Embed Qlik Sense: a sheet with our without selections or the menu bar.","iframe https://jsfiddle.net/qhose/v993fpgy/embedded/result,html,css",,"","","","","         0","0","Introduction - 30 minutes; CTO; Developer",
-"Web integration","Embed Qlik Sense: a sheet with our without selections or the menu bar.","!comment
+"Web integration","Embed Qlik Sense: a sheet with our without selections or menu bar","iframe https://jsfiddle.net/qhose/v993fpgy/embedded/result,html,css",,"","","","","         0","0","Introduction - 30 minutes; CTO; Developer",
+"Web integration","Embed Qlik Sense: a sheet with our without selections or menu bar","!comment
 In this example you see an embedded sheet from an Qlik Sense app through an IFrame. Notice that only the sheet is visible. There is no selection bar or Qlik Sense menu buttons available.
 On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded sheet.
@@ -918,7 +918,7 @@ The difference with an IFrame is that instead of embedding a full site, app or s
  - Integration example: Citybike
 Integration example: Marketing 360",,,,,,,,,
 "Web integration","Capabilities API - example code to embed chart using a DIV tag","[See demo on integration.qlik.com](https://saasdemo.qlik.com/multipleDivs)",,"","","","","         0","0","Technical - 2 hours",
-"Web integration","Capabilities API - example code to embed chart using a DIV tag","iframe https://jsfiddle.net/qhose/mv9Lyusu/12/embedded/",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Capabilities API - example code to embed chart using a DIV tag","iframe https://jsfiddle.net/qhose/arwo2yz9/embedded/",,"","","","","         0","0","Technical - 2 hours",
 "Web integration","Capabilities API - example code to embed chart using a DIV tag","!comment
 This slide shows the JavaScript example of using our capability APIs for integrating Qlik Sense objects into a webpage through Div tags.
 
@@ -999,11 +999,11 @@ checkAuthenticatedInQlik = function checkAuthenticatedInQlik(sourceURL){
         })
 }
 ```",,"","","","","         0","0","Deep dive",
-"Web integration","Make sure the user is authenticated before you show a mashup","PS: Make sure you white-list (both web-socket & cors-header) in the QMC",,"","","","","         0","0","Deep dive",
+"Web integration","Make sure the user is authenticated before you show a mashup","PS: Make sure you populate the websocket host white-list in the virtual proxy in the QMC",,"","","","","         0","0","Deep dive",
 "Web integration","Capabilities API - Host whitelist explained ","Capabilities API - DIV tag require.js flow.png",,"","","","","         0","0","PreSales",
 "Web integration","Capabilities API - Host whitelist explained ","<q>Which domains have access to Qlik Sense Proxy web sockets?</q>",,"","","","","         0","0","PreSales",
 "Web integration","Capabilities API - Host whitelist explained ","!comment
-The Host white list is a property on the Qlik Sense virtual proxies. In there the hostnames, IP addresses or subdomainsof the servers where Qlik Sense needs to connect to, can be entered.
+The Host white list is a property on the Qlik Sense virtual proxies. In there the hostnames, IP addresses or subdomains of the servers where Qlik Sense needs to connect to, can be entered.
 Now in an integration example:  
 First you have the webpages of the SaaS platform which contain HTML, CSS and JavaScript. The HTTP origin header comes from the SaaS platform web server. Whenever Qlik Sense is embedded though IFrame or Div tags , it also uses web content which again uses HTML, CSS and JavaScript. But here the HTTP origin header comes from Qlik Sense.
 Whenever the page on the SaaS platform is loaded, it will need the embedded content from Qlik Sense. To get to the content you always need to pass the Qlik Sense virtual proxy. If the virtual proxy does not know the address, hostname,… of the server then there will no WebSocket connection allowed. The page will not load in the Qlik Sense content.  
@@ -1026,9 +1026,10 @@ In the existing SaaS platform there are webpages. They consist out of:
  - JavaScript to use our APIs to embed the Qlik Sense objects in the Div tags.  
 When the page is shown, the user must be authenticated first. So a authentication check is done through our virtual proxy . (Most of the time this is done through ticketing or HTTP header). If the user fails the authentication check, a WebSocket error will occur.  
 After the user is authenticated the Qlik Sense engine will provide the corresponding objects. Authorization through our security rules will determine if the user has access to the correct stream(s) and app(s). At that point there can be a choice to use an existing chart, to create a new one on the fly using our Visualizations API or to simply get the data from the app. (That data can be used in a third party visualization). In order to show only the correct data, Section Access is applied.",,,,,,,,,
+"Web integration","Fixing CORS issues... (Access-Control-Allow-Origin)","CORS is intended to allow resource hosts (any service that makes its data available via HTTP) to restrict which websites may access that data. ([source](https://security.stackexchange.com/questions/108835/how-does-cors-prevent-xss)",,"","","","","         0","0","PreSales",
 "Web integration","Fixing CORS issues... (Access-Control-Allow-Origin)","web - cross site scripting explained.png",,"","","","","         0","0","PreSales",
-"Web integration","Fixing CORS issues... (Access-Control-Allow-Origin)","You need to add the prefix, host and port of your webserver (hosting your mashup) to the Qlik Sense virtual proxy response header. For example `Access-Control-Allow-Origin: http://desktop-78nsnfm:3030` ",,"","","","","         0","0","PreSales",
-"Web integration","Fixing CORS issues... (Access-Control-Allow-Origin)","Note: setting the *Access-Control-Allow-Origin* addition header or populating the host whitelist has the same effect",,"","","","","         0","0","Deep dive",
+"Web integration","Fixing CORS issues... (Access-Control-Allow-Origin)","You need to add the prefix, host and port of your webserver (hosting your mashup) to the Qlik Sense virtual proxy response header. For example `Access-Control-Allow-Origin: http://desktop-78nsnfm:3030`  and 'Access-Control-Allow-Credentials: true'",,"","","","","         0","0","PreSales",
+"Web integration","Fixing CORS issues... (Access-Control-Allow-Origin)","> In Qlik Sense 3.2.5, the Qlik Sense Proxy no longer honors the Access-Control-Allow-Origin header value set in the Additional response headers field. Access-Control-Allow-Origin values are passed by the Qlik Sense Proxy by the Host white list. Previously there were functionally two methods for controlling what web addresses could display Qlik Sense content (Additional response headers and Host white list). In Qlik Sense 3.2.5, this is simplified so that an administrator only needs to set the value in the Host white list.",,"","","","","         0","0","Deep dive",
 "Web integration","Fixing CORS issues... (Access-Control-Allow-Origin)","[see mozilla help](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)",,"","","","","         0","0","Deep dive",
 "Web integration","Fixing CORS issues... (Access-Control-Allow-Origin)","Page something.com loads up the Capabilities API and connects to server qliksense.com
 qliksense.com will then check if something.com  is a allowed origin by matching it against it's whitelist list.
@@ -1039,11 +1040,10 @@ If so, allow access otherwise deny access with a 403 response",,"","","","","   
 "Web integration","Proxy setting to prevent cross origin issues","CORS error.png",,"","","","","         0","0","Deep dive",
 "Web integration","Proxy setting to prevent cross origin issues","error - XMLhttprequest cannot load - access control allow origin header not present.png",,"","","","","         0","0","Deep dive",
 "Web integration","Proxy setting to prevent cross origin issues","Note: use this wisely since it is also a security control.",,"","","","","         0","0","Deep dive",
-"Web integration","Things you need to know about require.js","Javascript variable names can be global. To prevent conflicts between modules we use require.js.",,"","","","","         0","0","Deep dive",
-"Web integration","Things you need to know about require.js","Require.js loads only the pieces of software needed. (packages, or modules)",,"","","","","         0","0","Deep dive",
+"Web integration","Things you need to know about require.js","Require.js loads all the pieces of software needed for Qlik Sense. (packages, or modules)",,"","","","","         0","0","Deep dive",
 "Web integration","Things you need to know about require.js","Qlik inserted some extra code",,"","","","","         0","0","Deep dive",
 "Web integration","Things you need to know about require.js","So Qlik require is not equal to require.js",,"","","","","         0","0","Deep dive",
-"Web integration","Things you need to know about require.js","You really need to use the version that ships with your Sense version",,"","","","","         0","0","Deep dive",
+"Web integration","Things you need to know about require.js","You really need to use the version that ships with your Sense version located in `C:\Program Files\Qlik\Sense\Client\assets\external\requirejs`",,"","","","","         0","0","Deep dive",
 "Web integration","Things you need to know about require.js","!comment
 JavaScript is a vast collection of different libraries and frameworks, each with their own set of requirements.
 Require.js is a framework that loads in the required pieces of software (called packages or modules) in the correct order as certain frameworks are dependent of others. Qlik Sense uses a modified version Require.js. Certain pieces of code have been added to make sure all our APIs work properly.
@@ -1053,12 +1053,6 @@ This modified version of Qlik is not the same as the default require.js. In orde
 "Web integration","Dev-hub Mashup templates","You can create your own templates to be used by your users",,"","","","","         0","0","Deep dive",
 "Web integration","Dev-hub Mashup templates","See [this community link](https://community.qlik.com/blogs/qlikviewdesignblog/2017/02/24/introducing-dar-mashup-template) for a nice starter",,"","","","","         0","0","Deep dive",
 "Web integration","Dev-hub Mashup templates","https://youtu.be/O5uuzKWMS7I",,"","","","","         0","0","Deep dive",
-"Web integration","Exercise: Lets look at a existing mashup in the DEV-HUB","**Goal:** Know what are the needed components to create a mashup.",,"","","","","         0","0","Exercises",
-"Web integration","Exercise: Lets look at a existing mashup in the DEV-HUB","Please follow the steps:
-- Let's analyze the CityBike [mashup](https://integration.qlik.com/meteor/extensions/DemoMashup/home.html).
-- What is a mashup and why is CityBike one?
-- What components are needed to create a Mashup?
-Let's analyze the [CityBike mashup](https://senseintegration.qlik.com/anon/dev-hub/mashup-editor/#qext{DemoMashup}) in the DEV-HUB. (Called DemoMashup).",,"","","","","         0","0","Exercises",
 "Web integration","Exercise: Create a mashup in Qlik the Qlik Sense dev-hub","**Goal:** Create a mashup through the [Qlik Sense Dev-hub](https://senseintegration.qlik.com/anon/dev-hub).
 Please follow the steps:",,"","","","","         0","0","Exercises",
 "Web integration","Exercise: Create a mashup in Qlik the Qlik Sense dev-hub","- Open the Mashup editor in the Qlik Sense Dev-hub.
@@ -1333,8 +1327,6 @@ This slide gives some performance tips when using our APIs.
 "Web integration","Theming","https://www.youtube.com/watch?v=wwSj2SAXGyc",,,,,,,,,
 "Web integration","Theming","https://www.youtube.com/watch?v=OL83rP9vgHU",,,,,,,,,
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","These [videos](https://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm) are designed to help you get started with and improve your knowledge and understanding of the APIs and tools delivered with Qlik Sense and Qlik Analytics Platform.",,"","","","","         0","0","Technical - 1 day, Developer",
-"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","# Video overview",,"","","","","         0","0","Technical - 1 day, Developer",
-"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","iframe https://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm",,"","","","","         0","0","Developer, Technical - 1 day",
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","Also see [Qlik help](https://help.qlik.com/en-US/videos)",,"","","","","         0","0","Developer, Technical - 1 day",
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","!comment
 These videos will help you getting started:
@@ -2607,13 +2599,12 @@ drop table WorkshopParentChild;
         Session.set('mainTopics',table)         
         Impress().init();                                      
 ```",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Slide generator","Step 2: Extract the data from the Engine API using Enigma.js","[Source code on github](https://github.com/QHose/QRSMeteor/blob/48a6a560a5b142dd730dc9b1252d50ebcd4c6b2b/imports/ui/impress/ppt_integration.js#L235)",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Slide generator","Step 3: Create slides in HTML via impress.js","Get the [array of slides via Enigma.js](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.js#L221)",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Slide generator","Step 3: Create slides in HTML via impress.js","[Create DIV](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/impress/ppt_integration.html#L41)  with class *slide* for each slide (a level 1, 2 combination)",,"","","","","         0","0","What is this slide generator?, Deep dive",
-"Slide generator","Step 3: Create slides in HTML via impress.js","```
+"Slide generator","Step 2: Extract the data from the Engine API using Enigma.js","[Source code on github](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/slideGenerator/slides.js#L362)",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 3: Create slides in HTML via reveal.js","Get the [array of slides via Enigma.js](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/useCases/useCaseSelection.js#L243)",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 3: Create slides in HTML via reveal.js","[Create a DIV](https://github.com/QHose/QRSMeteor/blob/master/imports/ui/slideGenerator/slides.html#L31)  with class *slide* for each slide (a level 1, 2 combination)",,"","","","","         0","0","What is this slide generator?, Deep dive",
+"Slide generator","Step 3: Create slides in HTML via reveal.js","```
 {{# each slide}}
     <!-- for each header: a level 1 and 2 combination -->
-    <!-- CREATE A SLIDE USING IMPRESS.JS-->
         < div class=""slide"">
             <h2>
                 {{level 1 header }}
@@ -2760,7 +2751,7 @@ if it hangs (for example at `downloading..` , `extracting`or  `processing files.
 "Installation of demo platform","Try to startup your server","qrsmeteor - make sure you see the app ids after startup.png",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","Now you can start your browser and go to `localhost:3000`, Sense is running on port `81`.",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","# Issues? Sense not installed?",,"","","","","         0","0","Deep dive",
-"Installation of demo platform","Try to startup your server","Check the console of 'QRS Start.bat`, most of the time you will see an error here. Sometimes you have to install an extra package. (copy paste the suggestion in a new command window in your `project root`. In general you can always run `meteor npm install --save` if you have a missing package (dependency).",,,,,,,,,
+"Installation of demo platform","Try to startup your server","Check the console of `QRS Start.bat`, most times you will see an error here. Sometimes you have to install an extra package. (copy paste the suggestion in a new command window in your `project root`. In general you can always run `meteor npm install --save` if you have a missing package (dependency).",,,,,,,,,
 "Installation of demo platform","Try to startup your server","Make sure the `qService` user is created, if not, do it manually. Check the password ( Qlik123!@#$% ) in the `startSilentInstall.ps1` file.",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","- Open `C:\Windows\system32\cmd.exe`
 Run the command `powershell Set-ExecutionPolicy RemoteSigned`
@@ -3566,7 +3557,11 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 "QPS - Proxy API","Video - ticketing with Node","https://youtu.be/gtN-M5huK2Y",,"","","","","         0","0","Deep dive",
 "QPS - Proxy API","Use ticketing without the extra redirect","Its possible to directly pass on a ticket the first time you make a call to a static asset in Qlik Sense. See the comment from Alex below
 - if you do ticketing how it works is that you get a ticket from your auth module and then you fetch a static resource from behind the proxy such as the require.js file with `qlikTicket=<ticket value>` appended to the url. The proxy will see the ticket, validate it and consume the ticket and if it's a valid ticket it will send the resource back to the browser with a session cookie attached to the response. The browser will then append the session cookie to future requests and the proxy will see the session cookie and let the requests through",,,,,,,,,
-"QPS - Proxy API","Using JWT","Follow these instructions to setup your proxy and learn the flow [https://support.qlik.com/articles/000034966]",,,,,,,,,
+"QPS - Proxy API","Using JWT","Follow these instructions to setup your proxy and learn the [flow] (https://support.qlik.com/articles/000034966)",,,,,,,,,
+"QPS - Proxy API","Using JWT","#JWT authentication flow",,,,,,,,,
+"QPS - Proxy API","Using JWT","qps jwt authentication flow.png",,,,,,,,,
+"QPS - Proxy API","Using JWT","#Detailed instructions",,,,,,,,,
+"QPS - Proxy API","Using JWT","Virtual proxy setup",,,,,,,,,
 "QPS - Proxy API","Using JWT","qps jwt virtual proxy setup.png",,,,,,,,,
 "QPS - Proxy API","Using JWT","Create the web token",,,,,,,,,
 "QPS - Proxy API","Using JWT","qps jwt.io.png",,,,,,,,,
@@ -3576,7 +3571,7 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 "QPS - Proxy API","Using JWT","add the authorization header when you make your request",,,,,,,,,
 "QPS - Proxy API","Using JWT","qps jwt add authorization header.png",,,,,,,,,
 "QPS - Proxy API","Using JWT","> Note, if you get a 400 error it means you forgot the basic stuff like linking it to a proxy, or setting the virtual proxy white list etc. ",,,,,,,,,
-"QPS - Proxy API","Using JWT","After a succesful login you will see this",,,,,,,,,
+"QPS - Proxy API","Using JWT","After a successful login you will see this",,,,,,,,,
 "QPS - Proxy API","Using JWT","qps jwt succesful login.png",,,,,,,,,
 "QPS - Proxy API","Using JWT","# Example JS [code](https://github.com/qlik-oss/enigma.js/blob/master/examples/authentication/sense-using-jwt/jwt.js)",,,,,,,,,
 "QPS - Proxy API","Using JWT","```
@@ -4437,10 +4432,10 @@ enigma.getService('qix', config).then((qix) => {
 }
 ```",,"","","","","         0","0","Deep dive",
 "Engine API","Example Engine API call: get list of apps","The code is `JSON-RPC`, Enigma.JS uses almost the same structure. the function names are `camelCase` instead. And you supply the params object in your Enigma function parameter.",,"","","","","         0","0","Deep dive",
-"Engine API","Example get table (hypercube)","In this example we will get a ""table"" of data out of Qlik Sense using the Engine API",,"","","","","         0","0","Deep dive",
-"Engine API","Example get table (hypercube)","The Engine API is a websocket based protocol (JSON RPC)",,"","","","","         0","0","Deep dive",
-"Engine API","Example get table (hypercube)","Because our website is written in Javascript. We use a javascript library Enigma.js to ""talk to/communicate"" with the Qlik Sense Eninge API",,"","","","","         0","0","Deep dive",
-"Engine API","Example get table (hypercube)","[see example code](https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs)",,"","","","","         0","0","Deep dive",
+"Engine API","Example get data via a hypercube","In this example we will get a ""table"" of data out of Qlik Sense using the Engine API",,"","","","","         0","0","Deep dive",
+"Engine API","Example get data via a hypercube","The Engine API is a websocket based protocol (JSON RPC)",,"","","","","         0","0","Deep dive",
+"Engine API","Example get data via a hypercube","Because our website is written in Javascript. We use a javascript library Enigma.js to ""talk to/communicate"" with the Qlik Sense Engine API",,"","","","","         0","0","Deep dive",
+"Engine API","Example get data via a hypercube","iframe https://github.com/qlik-oss/enigma.js/tree/master/examples/data/hypercubes",,"","","","","         0","0","Deep dive",
 "Engine API","Process flow of communication between components","![](https://www.lucidchart.com/publicSegments/view/7b2fbf74-afc8-4f81-aa90-de61707854aa/image.png)",,"","","","","         0","0","Deep dive",
 "Engine API","Get schema","```
 $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
@@ -4942,7 +4937,6 @@ let caseOwnerList = new qSessionObject({
 });  
 ```",,,,,,,,,
 "Engine API","More information about the Engine API, examples and tips","[Engine API help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/introducing-engine-API.htm)",,"","","","","         0","0","Deep dive, Technical - 1 day",
-"Engine API","More information about the Engine API, examples and tips","Use [Qlik Playground](playground.qlik.com) to learn the APIs via an interactive environmnent",,"","","","","         0","0","Technical - 1 day",
 "Engine API","More information about the Engine API, examples and tips","EnigmaJS help [Examples](https://github.com/qlik-oss/enigma.js/tree/master/examples)",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "Engine API","More information about the Engine API, examples and tips","Good examples to get a feeling of the API structure. Don't use the lib itself, use EnigmaJS [QSocks examples](https://github.com/mindspank/qsocks/tree/master/examples)",,"","","","","         0","0","Deep dive",
 "Engine API","More information about the Engine API, examples and tips","PS: the function names are camelCase in enigma.js",,"","","","","         0","0","Deep dive",
@@ -5387,4 +5381,5 @@ Big data analytics can now be approached through a shopping cart like process wh
 * Responsive and smart
 * 1 app for  mobile, desktop and web integration
 * No fat clients",,,,,,,,,
+"Main Topic",,,,,,,,,,,
 "Main Topic",,,,,,,,,,,

@@ -29,68 +29,32 @@ var possibleRoles = [
 ];
 
 export async function initQlikSense() {
-    //wait a bit, so Meteor can login, before requesting a ticket...
-    Meteor.setTimeout(
-        async function() {
-            //connect to qlik sense
-            qix = await makeSureSenseIsConnected();
-            // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
-            await setChangeListener(
-                qix
-            );
 
-            //see if the user started up this screen, with a selection parameter
-            var value = getQueryParams(
-                "selection"
-            );
-            // console.log('getQueryParams return value', value)
-            //if we found a value, get the selection object from mongoDB and next call the sense selection api to make the selection
-            if (value) {
-                console.log(
-                    "%%%%%%%%%%  Slides oncreated: Query string found: ",
-                    value
-                );
-                await nav.selectViaQueryId(
-                    value
-                );
-                // get the data and go to the slides
-                await getAllSlides();
-                // after we got all data in an array from sense, change the router/browser to the slides page
-                Router.go("slides");
-            } else {
-                // console.log('no query selection parameter found');
-            }
-        },
-        0
+
+    //connect to qlik sense
+    qix = await makeSureSenseIsConnected();
+    // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
+    await setChangeListener(
+        qix
     );
-}
 
-// Replace with more Meteor approach
-function getQueryParams(name, url) {
-    // console.log('getQueryParams(name, url)', name + ' ' + url);
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
+
 }
 
 //make sure you go to the first slide when we have new slide data
 Tracker.autorun(() => {
     Session.get('slideHeaders');
-    Meteor.setTimeout(function() {
+    Meteor.setTimeout(function () {
         try {
             Reveal.slide(0);
-        } catch (error) {}
+        } catch (error) { }
     }, 500);
 });
 // ONRENDERED.
-Template.useCaseSelection.onRendered(async function() {
+Template.useCaseSelection.onRendered(async function () {
 
     //fill the dropdown using a array of values
-    $.each(possibleRoles, function(i, item) {
+    $.each(possibleRoles, function (i, item) {
         $('#bodyDropdown').append($('<option>', {
             value: item,
             text: item
@@ -108,23 +72,23 @@ Template.useCaseSelection.onRendered(async function() {
 //
 
 Template.useCaseSelection.events({
-    "click .button.slides": async function(e, t) {
+    "click .button.slides": async function (e, t) {
         Session.set("sheetSelectorSeen", false);
         Router.go("slides");
 
-        setTimeout(function() {
+        setTimeout(function () {
             nav.showSlideSelector();
         }, 100);
     },
-    "click #videoButton": async function(e, t) {
+    "click #videoButton": async function (e, t) {
         nav.selectMenuItemInSense("*Video overview:*");
     },
-    "blur .ui.dropdown.selection .menu": async function(e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
+    "blur .ui.dropdown.selection .menu": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
         var selectedRole = t.$(".ui.dropdown").find(":selected").val();
         Session.set("sheetSelectorSeen", true);
         Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
-        Meteor.setTimeout(function() {
+        Meteor.setTimeout(function () {
             Router.go("slides");
         }, 200);
 
@@ -194,7 +158,7 @@ export async function getQix(ticket = null) {
                 }
             },
             listeners: {
-                'notification:*': async(event, data) => {
+                'notification:*': async (event, data) => {
                     // console.log('Engima notification received, event: ' + event + ' & data: ', data)
                     if (data.mustAuthenticate || event === 'OnSessionTimedOut') { //if the user is not authenticated anymore request a new ticket and get a new connection
                         var ticket = await getTicket();
@@ -330,7 +294,7 @@ export async function getComment(qix) {
 export async function setChangeListener(qix) {
     console.log('We are connected to Qlik Sense via the APIs, now setChangeListener', qix)
     try {
-        qix.app.on('changed', async() => {
+        qix.app.on('changed', async () => {
             // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
             await getCurrentSelections();
             Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
@@ -348,7 +312,7 @@ function insertSectionBreakers(table) {
     var currentLevel1, previousLevel1 = '';
     var newTableWithChapter = [];
 
-    table.forEach(function(currentRow) {
+    table.forEach(function (currentRow) {
         var currentLevel1 = textOfLevel(currentRow, 1);
         if (previousLevel1 !== currentLevel1) {
             newTableWithChapter.push(currentLevel1)
@@ -387,7 +351,7 @@ async function getCurrentSelections() {
             eventType: "selectionChanged",
             selection: currentSelections,
             selectionDate: new Date() // current time
-        }, function(err, currentSelectionId) {
+        }, function (err, currentSelectionId) {
             if (err) { console.error('Failed to store the selection in mongoDb') }
             Session.set('currentSelectionId', currentSelectionId);
             return currentSelections;

@@ -1,4 +1,6 @@
 var Cookies = require('js-cookie');
+import {initQlikSense, getAllSlides} from  '/imports/ui/useCases/useCaseSelection.js';
+import * as nav from "/imports/ui/nav.js";
 
 //Layout Configuration. http://stackoverflow.com/questions/28864942/meteor-use-2-different-layouts-ironrouter
 Router.configure({
@@ -11,9 +13,19 @@ Router.route('/slides', {
     layoutTemplate: 'emptyLayout'
 });
 
-// //map paths to blaze templates
-Router.route('/', function() {
-    Router.go('useCaseSelection');
+Router.route('/', async function() {
+    var selection = this.params.query.selection  
+    if (selection){
+        await initQlikSense();
+        await nav.selectViaQueryId(selection);
+        // get the data and go to the slides
+        await getAllSlides();
+        // after we got all data in an array from sense, change the router/browser to the slides page
+        Router.go("slides");
+    }
+    else{
+        Router.go('useCaseSelection');        
+    }
 });
 
 //GENERATION

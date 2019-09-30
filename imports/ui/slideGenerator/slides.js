@@ -105,7 +105,7 @@ async function slideDataLoaded() {
             nav.showSlideSelector();
             return;
         }
-    }, 1000);
+    }, 3000);
 }
 
 
@@ -602,7 +602,7 @@ function initializeReveal() {
                 // Opens links in an iframe preview overlay
                 // Add `data-preview-link` and `data-preview-link="false"` to customise each link
                 // individually
-                previewLinks: true,
+                previewLinks: false,
 
                 // Transition style
                 transition: 'slide', // none/fade/slide/convex/concave/zoom
