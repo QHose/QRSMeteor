@@ -116,16 +116,13 @@ export function showSlideSelector() {
     })
     .modal({
       onVisible: function() {
-        $(".ui.modal.sheetSelector").modal("refresh");
+        // $(".ui.modal.sheetSelector").modal("refresh");
       },
       onHide: function() {
         // console.log('hidden');
         Session.set("sheetSelectorSeen", true);
         abortQlikModalState();
       }
-      // onShow: function() {
-      //     console.log('shown');
-      // },
     });
 }
 async function abortQlikModalState() {

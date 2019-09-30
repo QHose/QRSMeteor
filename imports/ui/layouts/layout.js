@@ -48,9 +48,9 @@ Template.emptyContainerLayout.events({
 })
 
 Template.footer.helpers({
-    permaLinkSelectionId() {
-        return Session.get('currentSelectionId');
-    },
+    // permaLinkSelectionId() {
+    //     return Session.get('currentSelectionId');
+    // },
     slideShowActive() {
         return Router.current().route.getName() === 'slides';
     }
