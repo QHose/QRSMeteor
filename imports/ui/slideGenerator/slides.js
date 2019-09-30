@@ -59,7 +59,7 @@ async function slideDataLoaded() {
             nav.showSlideSelector();
             return;
         }
-    }, 3000);
+    }, 1000);
 }
 
 
@@ -359,18 +359,22 @@ Template.registerHelper("step", function () {
 //
 // ─── FOR EACH SLIDE GET THE LEVEL 3 ITEMS USING SET ANALYSIS ────────────────────
 //
-async function getLevel3(level1, level2) {
+async function getLevel3(level1, level2) {    
 
     try {
         var qix = await getQix();
         var sessionModel = await qix.app.createSessionObject({
             qInfo: {
-                qType: "cube"
+                qType: 'cube'
             },
             qHyperCubeDef: {
                 qDimensions: [{
                     qDef: {
                         qFieldDefs: ["Level 3"]
+                    }
+                }, {
+                    qDef: {
+                        qFieldDefs: ["CSVRowNo"]
                     }
                 }],
                 qMeasures: [{
@@ -379,25 +383,43 @@ async function getLevel3(level1, level2) {
                             level1 +
                             '"}, "Level 2"={"' +
                             level2 +
-                            '"} >}1)'
+                            '"}>}1)'
                     }
                 }]
             }
         });
-
-        sessionData = await sessionModel.getHyperCubeData("/qHyperCubeDef", [{
+        sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
             qTop: 0,
             qLeft: 0,
-            qWidth: 2,
-            qHeight: 1000
+            qWidth: 3,
+            qHeight: 3333
         }]);
 
         var level3Temp = sessionData[0].qMatrix;
         sessionModel.removeAllListeners();
-        return normalizeData(level3Temp);
-    } catch (error) {        
+        return normalizeAndSortData(level3Temp);
+    } catch (error) {
         //error happens when you select something else after your selection... not a real error
     }
+}
+
+function normalizeAndSortData(senseArray) {
+    var result = [];
+    senseArray.sort(compare);
+    senseArray.forEach(element => {
+        result.push(element[0].qText);
+    });
+    return result;
+}
+
+function compare(a, b) {
+    if (a[1].qNum < b[1].qNum) {
+        return -1;
+    }
+    if (a[1].qNum > b[1].qNum) {
+        return 1;
+    }
+    return 0;
 }
 
 function createCommentBox(text) {
@@ -460,8 +482,9 @@ async function getComment(level1, level2) {
     return comment != "null" ? comment : "";
 }
 
-function normalizeData(senseArray) {
+function normalizeAndSortData(senseArray) {
     var result = [];
+    senseArray.sort(compare);
     senseArray.forEach(element => {
         result.push(element[0].qText);
     });
