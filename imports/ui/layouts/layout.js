@@ -26,34 +26,26 @@ Template.layout.helpers({
     }
 });
 
-Template.emptyLayout.onRendered(function () {
+Template.emptyLayout.onRendered(function() {
     Template.instance().$('.dimmer')
         .dimmer('show');
 });
 
 
-Template.loginDimmer.onRendered(function () {
+Template.loginDimmer.onRendered(function() {
     Template.instance().$('.dimmer')
         .dimmer('show');
 });
 
-Template.modalSaaSautomation.onRendered(function () {
+Template.modalSaaSautomation.onRendered(function() {
     this.$('.ui.embed').embed();
 });
 
 Template.emptyContainerLayout.events({
-    'keydown, click': function (event, template) {
+    'keydown, click': function(event, template) {
         Template.instance().$('*').popup('remove popup')
     }
 })
-
-
-//
-// ──────────────────────────────────────────────────── I ──────────
-//   :::::: F O O T E R : :  :   :    :     :        :          :
-// ──────────────────────────────────────────────────────────────
-//
-
 
 Template.footer.helpers({
     permaLinkSelectionId() {
@@ -64,39 +56,29 @@ Template.footer.helpers({
     }
 });
 
-
-
-
-//
-// ──────────────────────────────────────────────────── I ──────────
-//   :::::: L A Y O U T : :  :   :    :     :        :          :
-// ──────────────────────────────────────────────────────────────
-//
-
-
 Template.layout.events({
-    'keydown, click': function (event, template) {
+    'keydown, click': function(event, template) {
         Template.instance().$('*').popup('remove popup')
     },
-    'click .stepByStep'() {
+    'click .stepByStep' () {
         $('.ui.modal.stepByStep')
             .modal('show')
             .modal('refresh')
             .modal('refresh');
     },
-    'click .howDoesSaaSAutomationWork'() {
+    'click .howDoesSaaSAutomationWork' () {
         $('.ui.modal.howDoesSaaSAutomationWork')
             .modal('show')
             .modal('refresh')
             .modal('refresh');
     },
-    'click .selfservice'() {
+    'click .selfservice' () {
         $('.ui.modal.SSBI')
             .modal('show')
             .modal('refresh')
             .modal('refresh');
     },
-    'click .APIAutomation'() {
+    'click .APIAutomation' () {
         $('.ui.modal.APIAutomation')
             .modal('show')
             .modal('refresh')
@@ -104,9 +86,9 @@ Template.layout.events({
     },
 })
 
-Template.layout.onCreated(function () {
+Template.layout.onCreated(function() {
     //see https://guide.meteor.com/data-loading.html
     this.subscribe('streams');
-    this.subscribe('customers');
+    this.subscribe('customers');        
 });
 

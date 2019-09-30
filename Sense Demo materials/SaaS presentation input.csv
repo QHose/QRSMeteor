@@ -690,8 +690,8 @@ On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded hub.
  - HTML: Shows the HTML code for embedding the hub. It makes use of an IFrame. The URL is the source where the IFrame refers to.
  - CSS: Shows the underlying CSS code for this page.",,"","","","","         0","0","Developer",
-"Web integration","Embed Qlik Sense: a sheet with our without selections or menu bar","iframe https://jsfiddle.net/qhose/v993fpgy/embedded/result,html,css",,"","","","","         0","0","Introduction - 30 minutes; CTO; Developer",
-"Web integration","Embed Qlik Sense: a sheet with our without selections or menu bar","!comment
+"Web integration","Embed Qlik Sense: a sheet with our without selections or the menu bar.","iframe https://jsfiddle.net/qhose/v993fpgy/embedded/result,html,css",,"","","","","         0","0","Introduction - 30 minutes; CTO; Developer",
+"Web integration","Embed Qlik Sense: a sheet with our without selections or the menu bar.","!comment
 In this example you see an embedded sheet from an Qlik Sense app through an IFrame. Notice that only the sheet is visible. There is no selection bar or Qlik Sense menu buttons available.
 On the top of the slide you can choose between 3 possible views:
  - Result: shows the result of the embedded sheet.
@@ -1333,6 +1333,8 @@ This slide gives some performance tips when using our APIs.
 "Web integration","Theming","https://www.youtube.com/watch?v=wwSj2SAXGyc",,,,,,,,,
 "Web integration","Theming","https://www.youtube.com/watch?v=OL83rP9vgHU",,,,,,,,,
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","These [videos](https://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm) are designed to help you get started with and improve your knowledge and understanding of the APIs and tools delivered with Qlik Sense and Qlik Analytics Platform.",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","# Video overview",,"","","","","         0","0","Technical - 1 day, Developer",
+"Web integration","Video overview on Qlik.help: Getting started with the dev-hub","iframe https://help.qlik.com/en-US/sense-developer/3.2/Content/Videos/Videos-developer.htm",,"","","","","         0","0","Developer, Technical - 1 day",
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","Also see [Qlik help](https://help.qlik.com/en-US/videos)",,"","","","","         0","0","Developer, Technical - 1 day",
 "Web integration","Video overview on Qlik.help: Getting started with the dev-hub","!comment
 These videos will help you getting started:
@@ -2758,7 +2760,7 @@ if it hangs (for example at `downloading..` , `extracting`or  `processing files.
 "Installation of demo platform","Try to startup your server","qrsmeteor - make sure you see the app ids after startup.png",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","Now you can start your browser and go to `localhost:3000`, Sense is running on port `81`.",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","# Issues? Sense not installed?",,"","","","","         0","0","Deep dive",
-"Installation of demo platform","Try to startup your server","Check the console of `QRS Start.bat`, most times you will see an error here. Sometimes you have to install an extra package. (copy paste the suggestion in a new command window in your `project root`. In general you can always run `meteor npm install --save` if you have a missing package (dependency).",,,,,,,,,
+"Installation of demo platform","Try to startup your server","Check the console of 'QRS Start.bat`, most of the time you will see an error here. Sometimes you have to install an extra package. (copy paste the suggestion in a new command window in your `project root`. In general you can always run `meteor npm install --save` if you have a missing package (dependency).",,,,,,,,,
 "Installation of demo platform","Try to startup your server","Make sure the `qService` user is created, if not, do it manually. Check the password ( Qlik123!@#$% ) in the `startSilentInstall.ps1` file.",,"","","","","         0","0","Deep dive",
 "Installation of demo platform","Try to startup your server","- Open `C:\Windows\system32\cmd.exe`
 Run the command `powershell Set-ExecutionPolicy RemoteSigned`
@@ -3031,183 +3033,6 @@ volumes:
 "Installation of demo platform using docker","Clean old images and containers","$ docker container prune",,,,,,,,,
 "Installation of demo platform using docker","Clean old images and containers","$ docker image prune",,,,,,,,,
 "Installation of demo platform using docker","SaaS software design patterns","[https://12factor.net/](https://12factor.net/)",,"","","","","         0","0","Deep dive",
-"Requirement assessment: data","All customer data is stored in the cloud or in a central location","You are running a SaaS based application, please see the video below for our approach",,"","","","","         0","0","Moderate",
-"Requirement assessment: data","All customer data is stored in the cloud or in a central location","https://youtu.be/OulQS-1fH-A",,"","","","","         0","0","Moderate",
-"Requirement assessment: data","All customer data is stored in the cloud or in a central location","You can also try to run the example application below. ",,"","","","","         0","0","Important",
-"Requirement assessment: data","All customer data is stored in the cloud or in a central location","iframe generation_embedded",,"","","","","         0","0","Important",
-"Requirement assessment: data","We use an event driven data model, where data is streamed/pushed into another application","We do not yet support this requirement, but this can be solved by adding a database in between Qlik and your streaming application. ",,"","","","","         0","0","Moderate",
-"Requirement assessment: data","I have a database per customer","We create a unique app for each customer. Each app has its own vizualizations and data. The data can be loaded into an app via a script (a large string of text)",,"","","","","         0","0","Moderate",
-"Requirement assessment: data","I have a database per customer","After we copied a template app for each customer we can use the APIs to extract the script, next we adjust the database name for this specific customer, and we write the updated script (text file) back into the app and load the data from the new location into the app. ",,"","","","","         0","0","Moderate",
-"Requirement assessment: data","I have a database per customer","https://youtu.be/OulQS-1fH-A",,"","","","","         0","0","Moderate",
-"Requirement assessment: dashboard","I need standard dashboards, not too advanced for ""simple users""","We can limit what a user can see and do in an app.",,"","","","","         0","0","Moderate",
-"Requirement assessment: dashboard","I need standard dashboards, not too advanced for ""simple users""","We can remove the options to select things or to export data. ",,"","","","","         0","0","Moderate",
-"Requirement assessment: dashboard","I need standard dashboards, not too advanced for ""simple users""","We can remove the buttons and menus so users are not distracted.",,"","","","","         0","0","Moderate",
-"Requirement assessment: dashboard","I need standard dashboards, not too advanced for ""simple users""","Using the Qlik Sense security rules we can limit what a user can see or do in the system. ",,"","","","","         0","0","Important",
-"Requirement assessment: dashboard","I need standard dashboards, not too advanced for ""simple users""","DS-Qlik-Sense-Datasheet-EN.pdf",,"","","","","         0","0","Moderate",
-"Requirement assessment: dashboard","I like to offer self service (creation of dashboards) to specific user groups","#Let's investigate the 3 ways to self service",,"","","","","         0","0","Moderate",
-"Requirement assessment: dashboard","I like to offer self service (creation of dashboards) to specific user groups","https://youtu.be/pQae9S8S_vQ?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Moderate",
-"Requirement assessment: dashboard","I like to offer self service (creation of dashboards) to specific user groups","#Creating visualizations from your data using insight advisor",,"","","","","         0","0","Important",
-"Requirement assessment: dashboard","I like to offer self service (creation of dashboards) to specific user groups","If you do not know exactly what information exists in your app data or are new to creating visualizations with Qlik Sense, determining which visualizations to use with which fields can be a challenge. Insight advisor provides an entry point to both exploring your data and creating visualizations for your sheets. It uses the Qlik cognitive engine to suggest charts based on all the data you have loaded into Qlik Sense. You can then add the suggested charts to your sheets.
-
-Insight advisor uses the Qlik cognitive engine to create visualizations for you based on fields and master items you select. It can also automatically create a set of visualizations by analyzing your dataset as a whole. As you import data from data sources, you can use insight advisor to display visualizations that best match your search criteria, including new insight charts and existing visualizations from your sheets. As you change the data in your app, by adding data, making associations, editing tables, or classifying fields, the insight charts generated by insight advisor may change.",,"","","","","         0","0","Important",
-"Requirement assessment: dashboard","I like to offer self service (creation of dashboards) to specific user groups","https://youtu.be/sM3iHVAz5x8",,"","","","","         0","0","Important",
-"Requirement assessment: dashboard","I like to offer self service (creation of dashboards) to specific user groups","#Try different access rights by clicking on the users below",,"","","","","         0","0","Important",
-"Requirement assessment: dashboard","I like to offer self service (creation of dashboards) to specific user groups","iframe selfService_embedded",,"","","","","         0","0","Important",
-"Requirement assessment: dashboard","I like to offer self service (creation of dashboards) to specific user groups","#Example self service process",,"","","","","         0","0","Important",
-"Requirement assessment: dashboard","I like to offer self service (creation of dashboards) to specific user groups","ssbi task overview.png",,"","","","","         0","0","Important",
-"Requirement assessment: dashboard","I like to offer self service (creation of dashboards) to specific user groups","#Try to create your first app",,"","","","","         0","0","Important",
-"Requirement assessment: dashboard","I like to offer self service (creation of dashboards) to specific user groups","https://youtu.be/I8Ls7DDtkxE",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I would like to embed a sheet in the most simple way. I would like to re-use the client, sheets and vizualizations that Qlik created.","web - options to integrate content.png",,"","","","","         0","0","Moderate",
-"Requirement assessment: embedding","I would like to embed a sheet in the most simple way. I would like to re-use the client, sheets and vizualizations that Qlik created.","https://youtu.be/zuNvZ_UTmow",,"","","","","         0","0","Moderate",
-"Requirement assessment: embedding","I would like to embed a sheet in the most simple way. I would like to re-use the client, sheets and vizualizations that Qlik created.","Have a look at the IFrame options below",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I would like to embed a sheet in the most simple way. I would like to re-use the client, sheets and vizualizations that Qlik created.","iframe https://saasdemo.qlik.com",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I would like to embed a sheet in the most simple way. I would like to re-use the client, sheets and vizualizations that Qlik created.","!comment
-In our  'Embedding Qlik Sense' demo we have embedded  different parts of Qlik Sense.
-On the left side of the screen you can choose which example you want to see. On the right side you will see the result.
-Basically there are 3 main ways of embedding Qlik Sense:
- - Through an IFrame: This method allows to embed the full hub, a complete app, a complete sheets or a collection of multiple objects. It allows Qlik Sense to be embedded is a fast and easy way. When using IFrame you are using the layout and objects defined in Qlik Sense. Note that you can change the colors and fonts using ""themes"".
- - With Div tags you have the possibility to embed individual Qlik Sense objects like charts in a web page.  A Div tag is nothing more than a reserved place on a webpage. This allows you to make a customized webpage in which you can have your own layout and functionality.
-- Finally you can use Qlik Sense APIs to get the data to be used by your own vizalization library. The JavaScript charts can be built on the fly through our APIs or via external visualizations libraries(Eg. D3 charts)",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I want to use the Qlik Sense client, but I would like to include my own vizualizations","This is possible with Extensions. ",,"","","","","         0","0","Moderate",
-"Requirement assessment: embedding","I want to use the Qlik Sense client, but I would like to include my own vizualizations","extensions Examples.png",,"","","","","         0","0","Moderate",
-"Requirement assessment: embedding","I want to use the Qlik Sense client, but I would like to include my own vizualizations","extensions Examples.png",,"","","","","         0","0","Moderate",
-"Requirement assessment: embedding","I want to use the Qlik Sense client, but I would like to include my own vizualizations","Use the [extension API](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/APIs/Content/extensions-API-reference.htm), create charts that are not included  out of the box with Javascript and CSS",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I want to use the Qlik Sense client, but I would like to include my own vizualizations","# Video: extensions in 60 seconds",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I want to use the Qlik Sense client, but I would like to include my own vizualizations","https://youtu.be/-bxlwEdmaAQ",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I want to use the Qlik Sense client, but I would like to include my own vizualizations","# Video: introduction to extensions (3M)",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I want to use the Qlik Sense client, but I would like to include my own vizualizations","A short video that shows the power of visualization extensions. The big difference between widgets and extensions is that widgets do not use JavaScript. They only use HTML and CSS. This means that they are not interactive. Extensions are customized visualizations that use JavaScript in order to be interactive and clickable. In the end they will act like a native Qlik Sense visualization.",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I want to use the Qlik Sense client, but I would like to include my own vizualizations","https://youtu.be/QAeQKSVlhis",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I would like to customize the Qlik Sense standard client: I only embed the Qlik Sense charts into my application and create other content (menu's, popups etc) myself.","Have a look at the div tag options below.",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I would like to customize the Qlik Sense standard client: I only embed the Qlik Sense charts into my application and create other content (menu's, popups etc) myself.","iframe https://saasdemo.qlik.com",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I would like to customize the Qlik Sense standard client: I only embed the Qlik Sense charts into my application and create other content (menu's, popups etc) myself.","Watch the video below for more information",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I would like to customize the Qlik Sense standard client: I only embed the Qlik Sense charts into my application and create other content (menu's, popups etc) myself.","https://youtu.be/FHQRaYOogiU",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I would like to customize the Qlik Sense standard client: I want to create my own front-end and vizualizatons and let Qlik Sense supply the data","This is possible. ",,"","","","","         0","0","Moderate",
-"Requirement assessment: embedding","I would like to customize the Qlik Sense standard client: I want to create my own front-end and vizualizatons and let Qlik Sense supply the data","Have a look at the data only options below.",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I would like to customize the Qlik Sense standard client: I want to create my own front-end and vizualizatons and let Qlik Sense supply the data","iframe https://saasdemo.qlik.com",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I would like to customize the Qlik Sense standard client: I want to create my own front-end and vizualizatons and let Qlik Sense supply the data","Watch the video below for more information",,"","","","","         0","0","Important",
-"Requirement assessment: embedding","I would like to customize the Qlik Sense standard client: I want to create my own front-end and vizualizatons and let Qlik Sense supply the data","https://youtu.be/FHQRaYOogiU",,"","","","","         0","0","Important",
-"Requirement assessment: automation and APIs","I would like to install Qlik Sense together with my application for on premise purposes. (in non SaaS solutions)","You can use a silent script or our APIs to automate any activity you can do by hand.",,"","","","","         0","0","Moderate",
-"Requirement assessment: automation and APIs","I would like to work with templates, in the sense that I can create a master and that each of my customers gets a private copy with predefined sheets and vizualizations.","You can create a master template and push updates to the children. ",,"","","","","         0","0","Moderate",
-"Requirement assessment: automation and APIs","I would like to work with templates, in the sense that I can create a master and that each of my customers gets a private copy with predefined sheets and vizualizations.","https://youtu.be/1PjcTFnC4Mo",,"","","","","         0","0","Moderate",
-"Requirement assessment: automation and APIs","I would like to work with templates, in the sense that I can create a master and that each of my customers gets a private copy with predefined sheets and vizualizations.","#Demo Qlik Sense automation",,"","","","","         0","0","Important",
-"Requirement assessment: automation and APIs","I would like to work with templates, in the sense that I can create a master and that each of my customers gets a private copy with predefined sheets and vizualizations.","iframe generation_embedded",,"","","","","         0","0","Important",
-"Requirement assessment: automation and APIs","I would like to work with templates, in the sense that I can create a master and that each of my customers gets a private copy with predefined sheets and vizualizations.","!comment
-#Some basic principles in setting up SaaS provisioning with Qlik Sense:
- - Create 1 or multiple template apps per business or process area. This way the different apps are easy maintainable and grouped. Also administrator(s) per area can maintain their specific content. A template app contains about 80% of all layout, sheets and charts.
- - Apps can be manually created through the Qlik Sense Hub or through an API call. (Our APIs work all with a JSON structure).
- - When the template app will be copied to make the customer specific one, the customer specific data must be loaded in the app. A modification must be made to the script to made it customer specific. Most of the time only the database connection must be changed  as most of the customers will have the same structure in tables and fields. All this customer specific data is already stored in a database.
- - The modification of the script can be done through APIs. 
-There is also a possibility of using and INCLUDE file: This is an external file that contains customer specific script.
-
-# To summarize:  
-In the end you want that all your customers will get their own app with their own data.
-For this we use a piece of software that regulates your SaaS platform, or a broker. On the Qlik Sense server we have already our template apps. These are apps that already have a script, data model and layout ready. Whenever we need to provision an app the following steps happen: 
- - A stream is created with the name of the customer.
- - A copy of the template app will be made with the name of the customer.
- - Some script is inserted or modified to make sure the correct data is loaded.
- - The app is reloaded,
- - The app gets published in the correct stream.",,,,,,,,,
-"Requirement assessment: automation and APIs","I already have ""a piece of software"" that automatically creates things for each of your tenants. (a process automation tool, a broker, a script that creates databases, client/tenant specific websites etc.)","You can integrate Qlik Sense into your automation process by using our APIs.",,"","","","","         0","0","Moderate",
-"Requirement assessment: automation and APIs","I already have ""a piece of software"" that automatically creates things for each of your tenants. (a process automation tool, a broker, a script that creates databases, client/tenant specific websites etc.)","#Example Qlik Sense automation tasks",,"","","","","         0","0","Important",
-"Requirement assessment: automation and APIs","I already have ""a piece of software"" that automatically creates things for each of your tenants. (a process automation tool, a broker, a script that creates databases, client/tenant specific websites etc.)","Create a template Qlik Sense app per business process/area
- - you can use Qlik apps created via the Qlik hub or
-- create an app, sheet, chart via the API on the fly",,"","","","","         0","0","Important",
-"Requirement assessment: automation and APIs","I already have ""a piece of software"" that automatically creates things for each of your tenants. (a process automation tool, a broker, a script that creates databases, client/tenant specific websites etc.)","Template app contains the layout like sheets and charts",,"","","","","         0","0","Important",
-"Requirement assessment: automation and APIs","I already have ""a piece of software"" that automatically creates things for each of your tenants. (a process automation tool, a broker, a script that creates databases, client/tenant specific websites etc.)","The data will be loaded in the app via a customer specific script.",,"","","","","         0","0","Important",
-"Requirement assessment: automation and APIs","I already have ""a piece of software"" that automatically creates things for each of your tenants. (a process automation tool, a broker, a script that creates databases, client/tenant specific websites etc.)"," This script can be 
-- injected using the APIs
-- Read via an [include file](https://help.qlik.com/en-US/sense/3.1/Subsystems/Hub/Content/Scripting/SystemVariables/Include.htm)",,"","","","","         0","0","Important",
-"Requirement assessment: automation and APIs","I already have ""a piece of software"" that automatically creates things for each of your tenants. (a process automation tool, a broker, a script that creates databases, client/tenant specific websites etc.)","https://www.youtube.com/embed/1PjcTFnC4Mo",,"","","","","         0","0","Important",
-"Requirement assessment: automation and APIs","I already have ""a piece of software"" that automatically creates things for each of your tenants. (a process automation tool, a broker, a script that creates databases, client/tenant specific websites etc.)","# Each customer gets its own data and physically separated app",,"","","","","         0","0","Important",
-"Requirement assessment: automation and APIs","I already have ""a piece of software"" that automatically creates things for each of your tenants. (a process automation tool, a broker, a script that creates databases, client/tenant specific websites etc.)","deepDiveGeneration.png",,"","","","","         0","0","Important",
-"Requirement assessment: automation and APIs","I already have ""a piece of software"" that automatically creates things for each of your tenants. (a process automation tool, a broker, a script that creates databases, client/tenant specific websites etc.)","!comment
-#Some basic principles in setting up SaaS provisioning with Qlik Sense:
- - Create 1 or multiple template apps per business or process area. This way the different apps are easy maintainable and grouped. Also administrator(s) per area can maintain their specific content. A template app contains about 80% of all layout, sheets and charts.
- - Apps can be manually created through the Qlik Sense Hub or through an API call. (Our APIs work all with a JSON structure).
- - When the template app will be copied to make the customer specific one, the customer specific data must be loaded in the app. A modification must be made to the script to made it customer specific. Most of the time only the database connection must be changed  as most of the customers will have the same structure in tables and fields. All this customer specific data is already stored in a database.
- - The modification of the script can be done through APIs. 
-There is also a possibility of using and INCLUDE file: This is an external file that contains customer specific script.
-
-# To summarize:  
-In the end you want that all your customers will get their own app with their own data.
-For this we use a piece of software that regulates your SaaS platform, or a broker. On the Qlik Sense server we have already our template apps. These are apps that already have a script, data model and layout ready. Whenever we need to provision an app the following steps happen: 
- - A stream is created with the name of the customer.
- - A copy of the template app will be made with the name of the customer.
- - Some script is inserted or modified to make sure the correct data is loaded.
- - The app is reloaded,
- - The app gets published in the correct stream.",,,,,,,,,
-"Requirement assessment: security","Do you use JWT, SAML or OIDC to authenticate?","We support these out of the box. So you just need to configure it in Qlik Sense.",,"","","","","         0","0","Moderate",
-"Requirement assessment: security","Do you use JWT, SAML or OIDC to authenticate?","#Integrated web and security flow",,"","","","","         0","0","Important",
-"Requirement assessment: security","Do you use JWT, SAML or OIDC to authenticate?","https://youtu.be/M49nv6on5Eg",,"","","","","         0","0","Important",
-"Requirement assessment: security","Do you use JWT, SAML or OIDC to authenticate?","Qlik Sense has different options for authentication. You can create as many virtual proxies as you want, each with their own specific method of authenticating. The following authentication methods are supported:
- - Microsoft authentication (Local Windows directory or Active directory). This is one of the most common methods to authenticate. For Qlik Sense it is also the easiest: When a Qlik Sense Enterprise is installed, it authenticates by default against AD.
- - Ticketing. This method is used a lot in integration and SSO (Single Sign On) scenarios. A user is already authenticated in another software, but needs to see embedded Qlik Sense content. A ticket is passed to the virtual proxy of Qlik Sense. The ticket contains all the necessary information of the user ( ID, name, group,…)
- - SAML (Security Assertion Markup Language). Also used for SSO. It is an open standard for exchanging authentication and authorization data between parties, in particular, between an identity provider and a service provider.
- - Headers. This method is used for SSO and integration scenarios. The ID and additional information of the user is parsed in the HTTP(S) header.
- - JWT (JSON Web Token) is an open standard for secure transmission of information between two parties as a JavaScript Object Notation or JSON object. JWT is used for authentication and authorization. Because JWT enables single sign-on (SSO), it minimizes the number of times a user has to log on to cloud applications and websites.  
-Certificates are used for communication between different servers so that it is completely secured.",,"","","","","         0","0","Important",
-"Requirement assessment: security","I have created my own custom single sign on solution","We re-use your existing way of authenticating users. We insert a small piece of code inside your existing ""security module.” In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via an SSL certificate exchange), and send this information about the user (user ID, group membership) in a JSON object to Sense (we call this ticketing).",,"","","","","         0","0","Moderate",
-"Requirement assessment: security","I have created my own custom single sign on solution","architecture - OEM SaaS scenario.png",,"","","","","         0","0","Important",
-"Requirement assessment: security","I have created my own custom single sign on solution","#Video: Multi-tenant SaaS Applications with Qlik Sense -Security rules and section access deep dive",,"","","","","         0","0","Important",
-"Requirement assessment: security","I have created my own custom single sign on solution","https://youtu.be/iamo6RLc5Pg",,"","","","","         0","0","Important",
-"Requirement assessment: security","I have created my own custom single sign on solution","Click [here](https://integration.qlik.com/useCaseSelection?selection=8nxkyvBNWFATfAzWB) for more information",,"","","","","         0","0","Important",
-"Requirement assessment: security","Authorization: Qlik needs to re-use the authorizations/groups as defined in my SaaS platform","Based on the user ID and group membership streams, apps and sheets (called ""resources"" in our rule based security model) are either shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer their own stream, we can grant access if the name of the stream (the company name) matches the name of the company we received from the website in the ticket. This can be controlled by adding 1 row of security configuration: User.group = resource.name.",,"","","","","         0","0","Moderate",
-"Requirement assessment: security","Authorization: Qlik needs to re-use the authorizations/groups as defined in my SaaS platform","#introduction to security",,"","","","","         0","0","Important",
-"Requirement assessment: security","Authorization: Qlik needs to re-use the authorizations/groups as defined in my SaaS platform","https://youtu.be/sdCVsMzTf64",,"","","","","         0","0","Important",
-"Requirement assessment: security","Authorization: Qlik needs to re-use the authorizations/groups as defined in my SaaS platform","#security advanced",,"","","","","         0","0","Important",
-"Requirement assessment: security","Authorization: Qlik needs to re-use the authorizations/groups as defined in my SaaS platform","https://youtu.be/iamo6RLc5Pg",,"","","","","         0","0","Important",
-"Requirement assessment: security","The following authorization concept works for me:  Each customer can only see its own
-                            data. Each customer can have 1 or more users. These users can be a member of 1 or more
-                            groups/roles which determine what they can see or do in the system. E.g. a manager can see
-                            the ""whole world"" and a regional manager only his ""own region"".","This is our standard approach. You only have to maintain users and groups in your SaaS platform. The users and groups will be dynamically forwarded to Qlik Sense. ",,"","","","","         0","0","Moderate",
-"Requirement assessment: security","The following authorization concept works for me:  Each customer can only see its own
-                            data. Each customer can have 1 or more users. These users can be a member of 1 or more
-                            groups/roles which determine what they can see or do in the system. E.g. a manager can see
-                            the ""whole world"" and a regional manager only his ""own region"".","Your goal is to create embedded analytics using the Qlik platform within a multi-tenant SaaS environment, where each of your customers would only have access to their own data. It’s possible for each customer to have a more finely tuned authorization structure. For example, it is possible to provide authorizations for a specific department or country within a dashboard. You’ll see a simple solution in our demonstration where both of our fictitious users, Peter and John, go to the same website, but see different things based on their authorizations. Qlik Sense makes this possible because it uses a dynamic, attribute-based security approach in which we re-use all the pre-existing users and roles from your SaaS platform. This ensures Qlik Sense stays in sync automatically and avoids the overhead of double maintenance.",,"","","","","         0","0","Moderate",
-"Requirement assessment: security","The following authorization concept works for me:  Each customer can only see its own
-                            data. Each customer can have 1 or more users. These users can be a member of 1 or more
-                            groups/roles which determine what they can see or do in the system. E.g. a manager can see
-                            the ""whole world"" and a regional manager only his ""own region"".","securityOverview.png",,"","","","","         0","0","Important",
-"Requirement assessment: security","The following authorization concept works for me:  Each customer can only see its own
-                            data. Each customer can have 1 or more users. These users can be a member of 1 or more
-                            groups/roles which determine what they can see or do in the system. E.g. a manager can see
-                            the ""whole world"" and a regional manager only his ""own region"".","# Integrated security flow",,"","","","","         0","0","Important",
-"Requirement assessment: security","The following authorization concept works for me:  Each customer can only see its own
-                            data. Each customer can have 1 or more users. These users can be a member of 1 or more
-                            groups/roles which determine what they can see or do in the system. E.g. a manager can see
-                            the ""whole world"" and a regional manager only his ""own region"".","integratedArchitecture.png",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","My software is programmed in .NET","You can use our .NET SDK and the visual studio plugin to speed up web development.",,"","","","","         0","0","Moderate",
-"Requirement assessment: architecture","My software is programmed in javascript","
-Most of our APIs for the client use javascript.",,"","","","","         0","0","Moderate",
-"Requirement assessment: architecture","My software is programmed in javascript","iframe /API_embedded",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","My software is programmed in java","You can use REST APIs to do all management activities which you would normally do in the QMC",,"","","","","         0","0","Moderate",
-"Requirement assessment: architecture","My software is programmed in java","You might be able to use all our javascript libraries for the client",,"","","","","         0","0","Moderate",
-"Requirement assessment: architecture","My software is programmed in java","You can use ticketing (via a REST API) to implement the single sign on. ",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","My software is programmed in java","#Video - ticketing with Java",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","My software is programmed in java","https://youtu.be/qjxcsQH-Drk",,"","","","","         0","0","Deep dive, Important",
-"Requirement assessment: architecture","My software is installed on premise","You would normally use Qlik Sense Enterprise on Windows",,"","","","","         0","0","Moderate",
-"Requirement assessment: architecture","My software is installed on premise","Using a silent install script you can install Qlik Sense together with your installer and upload and configure it automatically.",,"","","","","         0","0","Moderate",
-"Requirement assessment: architecture","My software architecture for the client is web based","Qlik Sense is also 100% web based, so this ensures an easy integration.",,"","","","","         0","0","Moderate",
-"Requirement assessment: architecture","I am interested to run software on windows","This is possible using Qlik Sense Enterprise on Windows",,"","","","","         0","0","Moderate",
-"Requirement assessment: architecture","I am interested to run software on windows","DS-Qlik-Sense-Enterprise-EN.pdf",,"","","","","         0","0","Moderate",
-"Requirement assessment: architecture","I am interested to run software on Kubernetes","This is possible using Qlik Sense Enterprise on Kubernetes",,"","","","","         0","0","Moderate",
-"Requirement assessment: architecture","I am interested to run software on Kubernetes","#Installing Qlik Sense Enterprise on Kubernetes on a local Minikube",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","I am interested to run software on Kubernetes","https://youtu.be/uhNBgNt0M44",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","I am interested to run software on Kubernetes","#Deploying Qlik Sense Enterprise on Kubernetes",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","I am interested to run software on Kubernetes","As part of a Qlik Sense Enterprise Multi-Cloud deployment, you can install Qlik Sense Enterprise on Kubernetes. This is an implementation of Qlik Sense Enterprise running on a Kubernetes cluster using containers. This approach allows deployments into Kubernetes clusters running in public or private clouds on customer managed infrastructures.",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","I am interested to run software on Kubernetes"," Check the [help](https://help.qlik.com/en-US/sense/June2019/Subsystems/PlanningQlikSenseDeployments/Content/Sense_Deployment/Deploying-Qlik-Sense-multi-cloud-Efe.htm) for more information",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","I am interested in the deployment options","You can deploy Qlik Sense on Windows or using Kubernetes on Linux containers",,"","","","","         0","0","Moderate",
-"Requirement assessment: architecture","I am interested in the deployment options","[System requirements](https://help.qlik.com/en-US/sense/3.2/Content/Introduction/system-requirements.htm)",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","I am interested in the deployment options","[Port overview](https://help.qlik.com/en-US/sense/3.2/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Deployment-Ports.htm)",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","I am interested in the deployment options","[Plan your deployment](https://help.qlik.com/en-US/sense/3.2/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Planning-Deployments.htm)",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","I am interested in the deployment options","[Backup and restore Qlik Sense](https://help.qlik.com/en-US/sense/3.1/Subsystems/PlanningQlikSenseDeployments/Content/Server/Server-Backup-Restore.htm) . This section describes how to back up and restore Qlik Sense sites and certificates and how to move a node to a new machine.",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","I am interested in the deployment options","Server [whitelist](https://integration.qlik.com/docs/Qlik_Scalability_Center_Recommended Servers.pdf)",,"","","","","         0","0","Important",
-"Requirement assessment: architecture","I am interested in the deployment options","#Video Qlik's Multi-Cloud Solution - Introduction",,,,,,,,,
-"Requirement assessment: architecture","I am interested in the deployment options","# Part 1",,,,,,,,,
-"Requirement assessment: architecture","I am interested in the deployment options","https://youtu.be/EBja-gLKqMA",,,,,,,,,
-"Requirement assessment: architecture","I am interested in the deployment options","# Part 2",,,,,,,,,
-"Requirement assessment: architecture","I am interested in the deployment options","https://youtu.be/yQ6sP5xgCYU",,,,,,,,,
-"Requirement assessment: architecture","I am interested in the deployment options","checkout  [https://community.qlik.com/blogs/qlikproductinnovation/2018/06/28/introducing-multi-cloud-deployment-for-qlik-sense-enterprise](Qlik Community) and this [What Qlik Sense Enterprise for Elastic IS and IS NOT](https://community.qlik.com/thread/306428)",,,,,,,,,
 "QRS API","What is the QRS REST API?","> Basically an extra layer around the QMC",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "QRS API","What can you do with the QRS REST API?","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
@@ -4612,10 +4437,10 @@ enigma.getService('qix', config).then((qix) => {
 }
 ```",,"","","","","         0","0","Deep dive",
 "Engine API","Example Engine API call: get list of apps","The code is `JSON-RPC`, Enigma.JS uses almost the same structure. the function names are `camelCase` instead. And you supply the params object in your Enigma function parameter.",,"","","","","         0","0","Deep dive",
-"Engine API","Example get data via a hypercube","In this example we will get a ""table"" of data out of Qlik Sense using the Engine API",,"","","","","         0","0","Deep dive",
-"Engine API","Example get data via a hypercube","The Engine API is a websocket based protocol (JSON RPC)",,"","","","","         0","0","Deep dive",
-"Engine API","Example get data via a hypercube","Because our website is written in Javascript. We use a javascript library Enigma.js to ""talk to/communicate"" with the Qlik Sense Engine API",,"","","","","         0","0","Deep dive",
-"Engine API","Example get data via a hypercube","iframe https://github.com/qlik-oss/enigma.js/tree/master/examples/data/hypercubes",,"","","","","         0","0","Deep dive",
+"Engine API","Example get table (hypercube)","In this example we will get a ""table"" of data out of Qlik Sense using the Engine API",,"","","","","         0","0","Deep dive",
+"Engine API","Example get table (hypercube)","The Engine API is a websocket based protocol (JSON RPC)",,"","","","","         0","0","Deep dive",
+"Engine API","Example get table (hypercube)","Because our website is written in Javascript. We use a javascript library Enigma.js to ""talk to/communicate"" with the Qlik Sense Eninge API",,"","","","","         0","0","Deep dive",
+"Engine API","Example get table (hypercube)","[see example code](https://github.com/qlik-oss/enigma.js/blob/master/docs/qix/configuration.md#example-using-nodejs)",,"","","","","         0","0","Deep dive",
 "Engine API","Process flow of communication between components","![](https://www.lucidchart.com/publicSegments/view/7b2fbf74-afc8-4f81-aa90-de61707854aa/image.png)",,"","","","","         0","0","Deep dive",
 "Engine API","Get schema","```
 $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
@@ -5117,6 +4942,7 @@ let caseOwnerList = new qSessionObject({
 });  
 ```",,,,,,,,,
 "Engine API","More information about the Engine API, examples and tips","[Engine API help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/introducing-engine-API.htm)",,"","","","","         0","0","Deep dive, Technical - 1 day",
+"Engine API","More information about the Engine API, examples and tips","Use [Qlik Playground](playground.qlik.com) to learn the APIs via an interactive environmnent",,"","","","","         0","0","Technical - 1 day",
 "Engine API","More information about the Engine API, examples and tips","EnigmaJS help [Examples](https://github.com/qlik-oss/enigma.js/tree/master/examples)",,"","","","","         0","0","Deep dive, Technical - 1 day",
 "Engine API","More information about the Engine API, examples and tips","Good examples to get a feeling of the API structure. Don't use the lib itself, use EnigmaJS [QSocks examples](https://github.com/mindspank/qsocks/tree/master/examples)",,"","","","","         0","0","Deep dive",
 "Engine API","More information about the Engine API, examples and tips","PS: the function names are camelCase in enigma.js",,"","","","","         0","0","Deep dive",

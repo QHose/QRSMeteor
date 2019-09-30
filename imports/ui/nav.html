@@ -1,9 +1,21 @@
 <template name="nav">
   <div class="ui top fixed secondary menu mainNavBar">
     <div class="ui container">
-        <a class="item">Home</a>
-      </div>
-      
+      <!-- <a id="home" href="{{pathFor 'useCaseSelection'}}" class="{{#if isMainLandingPage}} active {{/if}} item">
+        HOME</a> -->
+      <a id="SSBI" href="{{pathFor 'selfService'}}" class="{{#if isSelfServicePage}} active {{/if}} item">
+        SELF SERVICE
+      </a>
+      {{#if isSaaSDemoPage}} {{> yourSaasPlatformMenu}} {{else}}
+      <a id="generation" href="{{pathFor 'generation'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
+        SAAS PROVISIONING
+      </a> {{/if}}
+      <a id="embedding" href="{{webIntegrationDemo}}" class="item">
+        EMBED
+      </a>
+      <a id="video" href="/documentation?tab=video" class="{{#if isDocumentationPage}} active {{/if}} item"> VIDEOS</a>
+      {{#if isPage 'slides'}} {{> sheetSelector}} {{/if}}
+    </div>
   </div>
 
 </template>
