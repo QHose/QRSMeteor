@@ -6,6 +6,8 @@ import { getQix } from "/imports/ui/useCases/useCaseSelection";
 
 import { Session } from "meteor/session";
 import * as slideApp from "/imports/ui/useCases/useCaseSelection";
+import './nav.html';
+import { questions, createMasterDeckAndShowSlides } from '/imports/ui/insert/questions';
 
 const Cookies = require("js-cookie");
 
@@ -17,7 +19,7 @@ Template.nav.helpers({
 });
 
 Template.sheetSelector.onRendered(function () {
-   //
+  //
   // ─── CREATE POPUP ───────────────────────────────────────────────────────────────
   //
   this.$("#sheetSelector").popup({
@@ -30,48 +32,14 @@ Template.sheetSelector.onRendered(function () {
     }
   });
 
-    this.$(".selectSlides").transition({
-      animation: "bounce",
-      duration: "16s"
-    });
+  this.$(".selectSlides").transition({
+    animation: "bounce",
+    duration: "16s"
+  });
 });
 
-Template.nav.onRendered(function() {
-  //
-  // ─── BOUNCE THE NAV BAR ITEM FOR SHEET SELECTION ────────────────────────────────
-  //
+Template.nav.onRendered(function () {
 
-  /*  this.$("#SSBI").popup({
-     title: "What is self service?",
-     content:
-       "Next we first introduce you to the concepts of self service using a video and we continue with a live demo so you can see and test the effects of different access rights on access to functionality and row level security",
-     delay: {
-       show: 500,
-       hide: 0
-     }
-   });
-
-     this.$("#generation").popup({
-       title: "Multi-tenant app provisioning demo",
-       content:
-         "Questions about SaaS and multi-tenancy with Qlik Sense? In our demonstration site, we show and reveal how you can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment.",
-       delay: {
-         show: 500,
-         hide: 0
-       }
-     });
-
-      this.$("#generation").popup({
-        title: "Embed Qlik Sense in your platform",
-        content:
-          `Qlik allows integration options. You can choose your desired level of web integration according to your business requirements. On the client side, you can use either the Qlik client or create your own client.
-
-If you choose to use the Qlik Sense Client, you have the following integration options: integrate the hub, an app, a sheet or individual charts. In most cases you have the ability to control whether you see our menu, see a selection bar or whether or not you provide initial selections to make charts static.`,
-        delay: {
-          show: 500,
-          hide: 0
-        }
-      }); */
 });
 
 //
@@ -79,30 +47,9 @@ If you choose to use the Qlik Sense Client, you have the following integration o
 //
 
 Template.nav.events({
-  "click a": function(event, template) {
-    event.preventDefault();
-    var menuItem = event.currentTarget.id;
-    switch (menuItem) {
-      case "home":
-        Router.go("useCaseSelection");
-        break;
-      case "SSBI":
-        selectMenuItemInSense("*What is governed self service with Qlik Sense*");
-        break;
-      case "generation":
-        selectMenuItemInSense("*multi-tenant SaaS platform with Qlik Sense*");
-        break;
-      case "embedding":
-        selectMenuItemInSense("*embed Qlik Sense*");
-        // window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
-        break;
-      case "video":
-        selectMenuItemInSense("*Video overview:*");
-        break;
-      case "sheetSelector":
-        showSlideSelector();
-        break;
-    }
+  "click a": function (event, template) {
+    window.location.href = '/';
+
   }
 });
 
@@ -115,10 +62,10 @@ export function showSlideSelector() {
       height: "700px"
     })
     .modal({
-      onVisible: function() {
+      onVisible: function () {
         $(".ui.modal.sheetSelector").modal("refresh");
       },
-      onHide: function() {
+      onHide: function () {
         // console.log('hidden');
         Session.set("sheetSelectorSeen", true);
         abortQlikModalState();
@@ -128,20 +75,19 @@ export function showSlideSelector() {
       // },
     });
 }
+
 async function abortQlikModalState() {
   // console.log('slide selection modal closed');
   var qix = await getQix();
   qix.app.abortModal(true);
 }
 
-Template.yourSaasPlatformMenu.onRendered(function() {
+Template.yourSaasPlatformMenu.onRendered(function () {
   this.$(".ui.dropdown").dropdown();
 });
 
 export async function selectViaQueryId(mongoId) {
-  console.log("selectViaQueryId(mongoId)", mongoId);
   var qSelection = await Meteor.callPromise("getSenseSelectionObject", mongoId);
-  console.log("qSelection result from mongoDB", qSelection);
   if (qSelection) {
     await makeSelectionInFields(qSelection.selection);
   } else {
@@ -149,27 +95,49 @@ export async function selectViaQueryId(mongoId) {
   }
 }
 
+
+export async function getFeaturesAndShowSlides(mongoId) {
+  console.log('nav.js getFeaturesAndShowSlides', mongoId)
+  var features = await Meteor.callPromise("getFeatures", mongoId);
+  console.log('features', features)
+  var questionsReceived = features.questions;
+  console.log('questions', questions)
+  if (typeof questionsReceived !== 'undefined' && questionsReceived.length > 0) {
+    console.log('we have questions');
+    //delete any features we might already have locally in the client
+    questions._collection.remove({})
+    //populate it with the ones received from the server.
+    questionsReceived.forEach(function (question) {
+      console.log('insert each feature from databaseg into local answer list', question)
+      questions.insert(question)
+    })
+    console.log('new local questions list', questions.find().fetch())
+    createMasterDeckAndShowSlides();
+  } else {
+    sAlert.warning("We could not find your presentation...");
+  }
+}
+
 // if people click on a menu item, you want a specific slide to be selected, so the slide is the value to search for...
 export async function selectMenuItemInSense(slide) {
   console.log("selectMenuItemInSense - slide", slide);
   await makeSearchSelectionInField("Level 2", slide);
-  Meteor.setTimeout(function() {
+  Meteor.setTimeout(function () {
     Router.go("slides");
   }, 200);
 }
 
+//https://help.qlik.com/en-US/sense-developer/September2018/apis/EngineAPI/definitions-FieldValue.html
 export async function makeSelectionInField(fieldName, value) {
   console.log("makeSelectionInField", fieldName + " : " + value.toString());
   try {
     var qix = await slideApp.getQix();
-    // await slideApp.setChangeListener(qix);
     var myField = await qix.app.getField(fieldName);
     var result = await myField.selectValues(value);
   } catch (error) {
     var message =
-      "makeSelectionInField: Can not connect to the Qlik Sense Engine API via enigmaJS";
+      "selectValues: Can not connect to the Qlik Sense Engine API via enigmaJS";
     console.error(message + " Sense reported the following error: ", error);
-    // location.reload(); //reload the page
     sAlert.error(message, error);
   }
 }
@@ -182,7 +150,6 @@ export async function makeSearchSelectionInField(fieldName, value) {
   );
   try {
     var qix = await slideApp.getQix();
-    // await slideApp.setChangeListener(qix);
     var myField = await qix.app.getField(fieldName);
     var result = await myField.select(value);
   } catch (error) {
@@ -199,11 +166,11 @@ export async function makeSearchSelectionInField(fieldName, value) {
 export async function makeSelectionInFields(selections) {
   console.log("makeSelectionInFields(selections)", selections);
   //for each qField
-  selections.forEach(function(selectionField) {
+  selections.forEach(function (selectionField) {
     console.log("selectionField", selectionField);
     //for each selected value (qSelectedFieldSelectionInfo) (e.g. country can have germany and france selected)
     var selectValues = [];
-    selectionField.qSelectedFieldSelectionInfo.forEach(function(fieldValue) {
+    selectionField.qSelectedFieldSelectionInfo.forEach(function (fieldValue) {
       console.log("fieldValue", fieldValue);
       selectValues.push({
         qText: fieldValue.qName,

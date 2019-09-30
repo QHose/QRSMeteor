@@ -6,6 +6,7 @@ import { APILogs, REST_Log } from "/imports/api/APILogs";
 //import meteor collections
 import { Streams } from "/imports/api/streams";
 import { Customers } from "/imports/api/customers";
+import "/imports/api/featureLinks";
 
 import * as QSApp from "/imports/api/server/QRSFunctionsApp";
 import * as QSStream from "/imports/api/server/QRSFunctionsStream";
