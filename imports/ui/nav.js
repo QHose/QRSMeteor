@@ -32,8 +32,8 @@ Template.sheetSelector.onRendered(function () {
   });
 
     this.$(".selectSlides").transition({
-      animation: "tada",
-      duration: "26s"
+      animation: "flash",
+      duration: "16s"
     });
 });
 
