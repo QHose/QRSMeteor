@@ -53,7 +53,7 @@ Template.slides.events({
         //save questions in link database
         var id = Session.get('currentSelectionId');
         var shareLinkURL = window.location.origin + '/?selection=' + id;
-        var formattedBody = "Hi, \nPlease have a look at the link below, describing some key Qlik Sense features \n"+shareLinkURL;
+        var formattedBody = "Hi, \nPlease have a look at the link below, describing some key Qlik Sense features \n" + shareLinkURL;
         var mailToLink = "mailto:?body=" + encodeURIComponent(formattedBody);
         //update the value of the helper for the share link popup
         Session.set('shareLinkURL', shareLinkURL);
@@ -66,7 +66,7 @@ function showSlideShare() {
     $(".ui.modal.slideShare")
         .modal({
             onDeny: function () {
-                var formattedBody = "Hi, \nPlease have a look at this Qlik Sense presentation \n"+ Session.get('shareLinkURL');
+                var formattedBody = "Hi, \nPlease have a look at this Qlik Sense presentation \n" + Session.get('shareLinkURL');
                 var mailToLink = "mailto:?body=" + encodeURIComponent(formattedBody);
                 window.location.href = mailToLink;
                 return true;
@@ -95,17 +95,17 @@ function showSlideShare() {
 
 
 async function slideDataLoaded() {
-    Meteor.setTimeout(async function () {
-        if (!Session.get("slideHeaders")) {
-            console.log("------------------------------------");
-            console.log(
-                "No slide data present in session, show the Selection screen."
-            );
-            console.log("------------------------------------");
-            nav.showSlideSelector();
-            return;
-        }
-    }, 3000);
+    // Meteor.setTimeout(async function () {
+    //     if (!Session.get("slideHeaders")) {
+    //         console.log("------------------------------------");
+    //         console.log(
+    //             "No slide data present in session, show the Selection screen."
+    //         );
+    //         console.log("------------------------------------");
+    //         nav.showSlideSelector();
+    //         return;
+    //     }
+    // }, 3000);
 }
 
 
@@ -167,6 +167,7 @@ Template.slideContent.onRendered(async function () {
         slidesContainedInSelection: $(".slide").length,
         viewDate: new Date() // current time
     });
+    $(".ui.embed").embed();
 
     Meteor.setTimeout(function () {
         //embed youtube containers in a nice box without loading all content
@@ -188,7 +189,7 @@ Template.slideContent.onRendered(async function () {
             console.log('No slide data retrieved from Qlik Sense, re-adding the slide changed event listener...');
             console.log('------------------------------------');
             // addSlideChangedListener();
-            nav.showSlideSelector();
+            // nav.showSlideSelector();
             // window.location.href = window.location.origin;
             //location.reload(); //@todo to evaluate if this helps
         }
@@ -473,7 +474,6 @@ function convertToHTML(text) {
 function youtube_parser(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
-    // console.log('de url '+ url + ' is een match met youtube? '+ (match && match[7].length == 11));
     return match && match[7].length == 11 ? match[7] : false;
 }
 
@@ -489,6 +489,10 @@ function initializeReveal() {
             console.log('initializeReveal', Reveal);
 
             Reveal.initialize({
+                // slide size
+                width: '80%',
+                // height: '100%'
+
                 // Display presentation control arrows
                 controls: true,
 

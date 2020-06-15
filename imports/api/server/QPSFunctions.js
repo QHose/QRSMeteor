@@ -345,7 +345,7 @@ Meteor.methods({
                 data: passport, // the user and group info for which we want to create a ticket
             });
         } catch (err) {
-            console.error('REST call to request a ticket failed', err);
+            console.error('REST call to request a ticket failed. PLEASE EXPORT AND IMPORT CERTIFICATES FROM QMC FOR THE CORRECT HOSTNAME', err);
             throw new Meteor.Error('Request ticket failed', err.message);
         }
         return response.data.Ticket;

@@ -40,11 +40,11 @@ Meteor.startup(function() {
 
 
 Meteor.startup(async function() {
-    process.env.ROOT_URL = "http://" + Meteor.settings.public.qlikSenseHost;
-    console.log(
-        "********* We expect Qlik Sense to run on host: ",
-        process.env.ROOT_URL + ":" + Meteor.settings.public.qlikSensePort
-    );
+    // process.env.ROOT_URL = "http://" + Meteor.settings.public.qlikSenseHost;
+    // console.log(
+    //     "********* We expect Qlik Sense to run on host: ",
+    //     process.env.ROOT_URL + ":" + Meteor.settings.public.qlikSensePort
+    // );
     // console.log('********* For END USERS we expect Sense to run on host: ', Meteor.settings.public.qlikSenseHost + ':' + Meteor.settings.public.qlikSensePort);
     await initQlikSense();
     removeGeneratedResources();
