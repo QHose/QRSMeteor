@@ -2,6 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { http } from "meteor/meteor";
 import { Apps, TemplateApps, GeneratedResources } from "/imports/api/apps";
 import { APILogs, REST_Log } from "/imports/api/APILogs";
+import { WebApp } from 'meteor/webapp';
 
 //import meteor collections
 import { Streams } from "/imports/api/streams";
@@ -32,6 +33,7 @@ var connectHandler = WebApp.connectHandlers; // get meteor-core's connect-implem
 
 // attach connect-style middleware for response header injection
 Meteor.startup(function() {
+    WebApp.addHtmlAttributeHook(() => ({ lang: 'en' }));
     connectHandler.use(function(req, res, next) {
         res.setHeader('access-control-allow-origin', '*');
         return next();
