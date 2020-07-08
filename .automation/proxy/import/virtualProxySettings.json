@@ -5,7 +5,7 @@
         "anonymousAccessMode": 1,
         "windowsAuthenticationEnabledDevicePattern": "Windows",
         "sessionCookieHeaderName": "X-Qlik-Session-anon",
-        "additionalResponseHeaders": "Access-Control-Allow-Origin: *, Access-Control-Allow-Credentials: true, withCredentials: false",
+        "additionalResponseHeaders": "Access-Control-Allow-Credentials: true",
         "sessionInactivityTimeout": 30,
         "websocketCrossOriginWhiteList": [
             "integration.qlik.com", "qrs.integration.qlik.com",
@@ -25,7 +25,7 @@
         "anonymousAccessMode": 0,
         "windowsAuthenticationEnabledDevicePattern": "",
         "sessionCookieHeaderName": "X-Qlik-Session-presentationsso",
-        "additionalResponseHeaders": "Access-Control-Allow-Origin: *, Access-Control-Allow-Credentials: true, withCredentials: false",
+        "additionalResponseHeaders": "Access-Control-Allow-Credentials: true",
         "sessionInactivityTimeout": 999,
         "websocketCrossOriginWhiteList": [
             "integration.qlik.com",
@@ -44,7 +44,7 @@
         "authenticationMethod": 0,
         "windowsAuthenticationEnabledDevicePattern": "",
         "sessionCookieHeaderName": "X-Qlik-Session-meteor",
-        "additionalResponseHeaders": "Access-Control-Allow-Origin: *, Access-Control-Allow-Credentials: true, withCredentials: false",
+        "additionalResponseHeaders": "Access-Control-Allow-Credentials: true",
         "sessionInactivityTimeout": 30,
         "websocketCrossOriginWhiteList": [
             "integration.qlik.com", "qrs.integration.qlik.com",
