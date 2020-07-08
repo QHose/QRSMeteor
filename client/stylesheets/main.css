@@ -41,6 +41,18 @@ html {
     height: 300px;
 }
 
+.footer h2.ui.header {
+    font-size: 0.9rem;
+}
+
+.footer ul{
+    list-style-type: none;
+    padding: 10px;
+  }
+
+  .footer a:hover{
+      color: #5EA819;
+  }
 .row {
     padding: 14px !important;
 }
@@ -84,3 +96,4 @@ pre {
 .text.container .right.floated.image {
     margin: 2em -4em 2em 5em;
 }
+
