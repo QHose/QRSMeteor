@@ -79,6 +79,7 @@
     </div>
 </template>
 <template name="containerlayout">
+    <div class="ui container">
     <div class="wrap" style="margin-top: 50px">
         {{> nav}}
         <div class="ui container">
@@ -86,6 +87,7 @@
         </div>
     </div>
     {{> footer}}
+</div>
 </template>
 
 <template name="footer">
@@ -94,46 +96,41 @@
             <div class="ui grid">
 
                 <div class="three wide column">
-                    <img class="ui left floating image image" src="./images/qlik_logo.svg"
+                    <img class="ui left floating image image" src="./images/qlik_logo.svg" alt="Qlik"
                         style="height: 100px; padding-top: 30px;">
                 </div>
                 <div class="three wide column">
-                    <h4 class="ui  header">Technical</h4>
-                    <div class="ui  link list">                        
-                        <a class="item" href="/apilogstable" target="_blank">API calls</a>
-                        <a class="item" href="/documentation?tab=video" target="_blank">Summary docs </a>
-                        <a class="item"
-                            href="https://help.qlik.com/en-US/sense-developer/June2018/Content/APIs-and-SDKs.htm"
-                            target="_blank">API help</a>
-                        <a class="item" href="/securityRules" target="_blank">Security rules</a>
-                        <a class="item" href="https://integration.qlik.com/useCaseSelection?selection=8nxkyvBNWFATfAzWB" target="_blank">Authentication flow</a>                       
+                    <h2 class="ui center aligned header">Technical</h2>
+                    <ul>
+                        <li><a href="/apilogstable" target="_blank">API calls</a></li>
+                        <li><a href="/documentation?tab=video" target="_blank">Summary docs </a></li>
+                        <li><a href="https://help.qlik.com/en-US/sense-developer/June2018/Content/APIs-and-SDKs.htm"
+                                target="_blank">API help</a></li>
+                        <li><a href="/securityRules" target="_blank">Security rules</a></li>
+                    </ul>
+                </div>
+                <div class="three wide column">
+                    <h2 class="ui center aligned header">How to...</h2>
 
-                       
-                    </div>
+                    <ul >
+                        {{>installation}}
+                        {{#if slideShowActive}}
+
+                        <!-- <a class="item permaLinkSlide">Link to slide</a> -->
+                        {{/if}}
+                        <li><a href="https://www.youtube.com/channel/UCmPMsqh1UvXhQTcAhPMEjpA/videos" target="_blank"
+                                >How to videos</a></li>
+                    </ul>
                 </div>
                 <div class="three wide column">
-                    <h4 class="ui  header">How to...</h4>
-                    
-                    <div class="ui  link list">
-                            {{>installation}}
-                            {{#if slideShowActive}}
-                            
-                            <!-- <a class="item permaLinkSlide">Link to slide</a> -->
-                            {{/if}}
-                        <a href="https://www.youtube.com/channel/UCmPMsqh1UvXhQTcAhPMEjpA/videos" target="_blank"
-                            class="item">How to videos</a>
-                    </div>
+                    <h2 class="ui center aligned header">Qlik sites</h2>
+                    <ul >
+                        <li><a class="item" href="http://developer.qlik.com" target="_blank">Branch</a> </li>
+                        <li><a class="item" href="legal" target="_blank">Terms of use</a></li>
+                    </ul>
                 </div>
                 <div class="three wide column">
-                    <h4 class="ui header">More Qlik</h4>
-                    <div class="ui link list">
-                        <a class="item" href="http://oem.qlik.com" target="_blank">OEM</a>
-                        <a class="item" href="http://branch.qlik.com" target="_blank">Branch</a>
-                        <a class="item" href="legal" target="_blank">Terms of use</a>
-                    </div>
-                </div>
-                <div class="three wide column">
-                    <!-- <h4 class="ui inverted header">Footer Header</h4>
+                    <!-- <h2 class="ui inverted header">Footer Header</h2>
                 <p>Extra space for a call to action inside the footer that could help re-engage users.</p> -->
                 </div>
             </div>
