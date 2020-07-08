@@ -112,7 +112,7 @@ async function slideDataLoaded() {
 function addSlideChangedListener() {
     // console.log('!!!!!!!!!!!!! addSlideChangedListener')
     Reveal.addEventListener("slidechanged", function (evt) {
-        console.log("slidechanged", evt.indexh);
+        // console.log("slidechanged", evt.indexh);
         Session.set("activeStepNr", evt.indexh);
         $(".ui.embed").embed();
     });
@@ -152,6 +152,9 @@ Template.slideContent.helpers({
 
 Template.slideContent.onRendered(async function () {
     var template = this;
+    //set html title    
+    document.title = this.data.slide[1].qText;
+
 
     //if the slide is shown, log it into the database
     Logger.insert({
@@ -181,6 +184,7 @@ Template.slideContent.onRendered(async function () {
         //ensure all links open on a new tab
         template.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
 
+        
         //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
         var slideContent = template.bullets.get();
         // console.log("slideContent.onRendered array of bullets: ", slideContent);

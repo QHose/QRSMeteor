@@ -128,8 +128,8 @@ But what are they?
  - Bookmarks: A bookmark is a saved state of selection. You can make new ones or apply existing bookmarks.
  - Stories: Stories give you the possibility to tell a story about your data. You can make snapshots of your sheet objects and use them in your story. You can add additional text, images and effects to your story to make it more clear. You can also add full sheets into your story. At any given time you have the possibility to go back to your source data on your sheets, make selections and go back to your story.
 ",,,,,,,,,
-"What is an app?","Self service data preparation","https://youtu.be/OZKVA6OZWOA",,"","","","","         0","0","Business Analyst, Technical - 1 hour",
-"What is an app?","Self service data preparation","!comment Self-service data preparation includes a number of visual and smart capabilities for integrating multiple data sources, transforming data, and loading it for analysis, without the need for scripting.
+"What is an app?","Self service data preparation -  Cognitive Engine, Chart Suggestions, Tips and Tricks!","https://youtu.be/OZKVA6OZWOA",,"","","","","         0","0","Business Analyst, Technical - 1 hour, Developer",
+"What is an app?","Self service data preparation -  Cognitive Engine, Chart Suggestions, Tips and Tricks!","!comment Self-service data preparation includes a number of visual and smart capabilities for integrating multiple data sources, transforming data, and loading it for analysis, without the need for scripting.
 
 Using a graphical interface with tables represented as ‘bubbles’, users can drag-and-drop to connect data sets together from multiple sources.  Qlik Sense intelligently profiles the data sets and automatically suggests the most relevant associations between them, allowing users to bring together disparate sources without having to be data experts.
 
@@ -138,7 +138,7 @@ Qlik Sense also includes additional smart profiling capabilities, including auto
 Qlik Sense includes a dedicated data manager space, new menus for easily selecting different data sources from our broad set of connectors, an improved scripting interface, and smart capabilities to offer insights about data sets represented as histograms and other statistics.  And with Qlik DataMarket, users can add external data sets to analysis to broaden perspective.
 
 Going forward, we will be making our data prep capabilities smarter and more powerful.  We will be adding more graphical and automated data transformation capabilities, and further enhancing our data profiling capabilities to identify and automatically process more data types. We will get even smarter about recommending associations and relationships in data, and generating key insights for further analysis. And data augmentation suggestions will be provided to users, based on a global library of internal and external sources.
-",,"","","","","         0","0","Technical - 2 hours, Developer, Business Analyst",
+",,,,,,,,,
 "What is an app?","In the hub apps are grouped per stream","web-resources to embed.png",,"","","","","         0","0","PreSales, Technical - 2 hours",
 "What is an app?","In the hub apps are grouped per stream","!comment
 When you open Qlik Sense, you will arrive on a screen where you can open your apps. This is called the Qlik Sense hub. You will notice that on the left side, there are different streams. When you click on a stream, you'll see the apps from the selected stream on the main screen.
@@ -517,7 +517,7 @@ domain names and translate them to
 "API -  generic introduction","Question -  How do you browse the internet today?","<q>You need to know which <b>sites</b> are available, right?</q>",,"","","","","         0","0","PreSales",
 "API -  generic introduction","How to get started with a REST API?","<q>You need to know with <b>endpoints</b> are available</q>",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","How to get started with a REST API (2)?","<q><b>Endpoints</b> are URLs that you can call to get or modify something</q>",,"","","","","         0","0","PreSales, Technical - 1 day",
-"API -  generic introduction","Example QRS API endpoints","iframe https://help.qlik.com/en-US/sense-developer/November2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-QRS-API-Endpoints.htm",,"","","","","         0","0","PreSales, Technical - 1 day",
+"API -  generic introduction","Example QRS API endpoints","Visit [Qlik help](https://help.qlik.com/en-US/sense-developer/November2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-QRS-API-Endpoints.htm)",,"","","","","         0","0","PreSales, Technical - 1 day",
 "API -  generic introduction","Example QRS API endpoints","!comment
 This slide shows some examples of special purpose endpoints from the Qlik Sense help for developers. These APIs are in the category of the Qlik Sense Repository APIs. These APIs make it possible to communicate with the Qlik Sense Repository which has all the settings content, security rules, user information,… from the Qlik Sense environment. Click on the link to go to the corresponding help page.
 ",,,,,,,,,
@@ -1889,7 +1889,7 @@ Basically all the things you can do yourself when you use an app
 - ...",,"","","","","         0","0","Developer, Technical - 2 hours",
 "Qlik Sense API introduction","Engine API","# Video: Introduction to QIX Engine API",,"","","","","         0","0","Technical - 2 hours, Developer",
 "Qlik Sense API introduction","Engine API","https://youtu.be/S_agrCHLPjo?list=PLW1uf5CQ_gSq0XCJXo0s5_x05L8dJQfEr",,"","","","","         0","0","Technical - 2 hours, Developer",
-"Qlik Sense API introduction","Engine API","iframe https://help.qlik.com/en-US/sense-developer/April2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm",,"","","","","         0","0","Developer, Technical - 2 hours",
+"Qlik Sense API introduction","Engine API","[Qlik Help](https://help.qlik.com/en-US/sense-developer/April2018/Subsystems/EngineAPI/Content/introducing-engine-API.ht)",,"","","","","         0","0","Developer, Technical - 2 hours",
 "Qlik Sense API introduction","How to create the source code?","The tools below can help you for your development, or help you to get an idea of the functions possible.",,,,,,,,,
 "Qlik Sense API introduction","How to create the source code?","[Visual studio plug in](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Plugins/Content/Introduction/Plugin-Intro.htm)",,"","","","","         0","0","Deep dive",
 "Qlik Sense API introduction","How to create the source code?","[Development hub](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/Dev-Hub/Content/Overview/dev-hub-launch-dev-hub.htm)",,"","","","","         0","0","Deep dive",
@@ -2475,7 +2475,7 @@ export async function makeSelectionInFields(selections) {
     });
 }
 ```",,"","","","","         0","0","Deep dive",
-"Integration.qlik.com key API calls","Web: set selections via API","iframe https://help.qlik.com/en-US/sense/April2018/APIs/EngineAPI/services-Field-SelectValues.html",,"","","","","         0","0","Deep dive",
+"Integration.qlik.com key API calls","Web: set selections via API","See [help](https://help.qlik.com/en-US/sense/April2018/APIs/EngineAPI/services-Field-SelectValues.html)",,"","","","","         0","0","Deep dive",
 "Integration.qlik.com key API calls","Security overview","# Security integration
 - Users get a Single Sign On via a ticket exchange  (or SAML, JWT, AD) 
 - The ticket contains the userId and groups from your Saas platform
@@ -3204,7 +3204,7 @@ https://<QRS machine name>:4242/<path>
 "QRS API","How do you create a REST URL? General purpose endpoints","```
 /qrs/user/count?filter=Name eq 'Joe Smith'
 ```",,"","","","","         0","0","Deep dive, Developer",
-"QRS API","How do you create a REST URL? General purpose endpoints","iframe https://help.qlik.com/en-US/sense-developer/April2018/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Getting-Started.htm",,"","","","","         0","0","Developer, Deep dive",
+"QRS API","How do you create a REST URL? General purpose endpoints","[Help](https://help.qlik.com/en-US/sense-developer/April2018/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Getting-Started.ht)",,"","","","","         0","0","Developer, Deep dive",
 "QRS API","Special purpose endpoints","QRS API - special purpose endpoints.png",,"","","","","         0","0","Deep dive, Developer",
 "QRS API","Special purpose endpoints","[See Qlik help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Special-Purpose-Paths.htm)",,"","","","","         0","0","Deep dive, Developer",
 "QRS API","Example code: Make a copy of an app","Request",,"","","","","         0","0","Deep dive, Developer",
@@ -3435,7 +3435,7 @@ export function upsertCustomPropertyByName(name, choiceValues) {
 "QRS API","Exercise: How to use Postman using windows authentication","Open the hub or the QMC in Chrome and authenticate to Qlik Sense.",,"","","","","         0","0","Exercises",
 "QRS API","Exercise: How to use Postman using windows authentication","Go to Postman and in the URL section type https://<machine hostname>/qrs/About?Xrfkey=12345678qwertyui",,"","","","","         0","0","Exercises",
 "QRS API","Exercise: How to use Postman using windows authentication","Also add the XREF key in the headers",,"","","","","         0","0","Exercises",
-"QRS API","Exercise: Connect to QRS API using Postman","iframe https://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Example-Connect-Postman.htm",,"","","","","         0","0","Exercises",
+"QRS API","Exercise: Connect to QRS API using Postman","[See Help](https://help.qlik.com/en-US/sense-developer/June2017/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Example-Connect-Postman.htm)",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 2","Next we are going to use Postman (Chrome app) to connect to the QRS API using
 - Header authentication",,"","","","","         0","0","Exercises",
 "QRS API","Exercise 2: Get apps via Postman with header authentication","PostManCopyApp.png",,"","","","","         0","0","Exercises",
@@ -4339,7 +4339,7 @@ Basically all the things you can do yourself when you use an app
 - the requests and responses",,"","","","","         0","0","PreSales, Developer",
 "Engine API","What can you do? Which end points are available?","https://www.youtube.com/watch?v=LqcFDe7V-CU",,"","","","","         0","0","PreSales, Developer",
 "Engine API","What can you do? Which end points are available?","# Engine API explorer documentation",,"","","","","         0","0","Developer",
-"Engine API","What can you do? Which end points are available?","iframe https://help.qlik.com/en-US/sense-developer/September2017/Subsystems/Dev-Hub/Content/EngineApiExplorer/engine-api-explorer.htm",,"","","","","         0","0","Deep dive, Developer",
+"Engine API","What can you do? Which end points are available?","[Qlik help](https://help.qlik.com/en-US/sense-developer/June2020/Subsystems/Dev-Hub/Content/Sense_Dev-Hub/EngineApiExplorer/engine-api-explorer.htm)",,"","","","","         0","0","Deep dive, Developer",
 "Engine API","Exercise Dev-hub Engine API explorer - My first API call","# Try to make your first API call",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
 "Engine API","Exercise Dev-hub Engine API explorer - My first API call","In the screen below, Select a macro 'get applist' and press 'execute'",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
 "Engine API","Exercise Dev-hub Engine API explorer - My first API call","<iframe class=""SenseEmbedFrame"" src=""https://senseintegration.qlik.com/anon/dev-hub/engine-api-explorer"" allowfullscreen=""allowfullscreen"" frameborder=""0""></iframe>",,"","","","","         0","0","Technical - 2 hours, Developer, Exercises",
@@ -4508,7 +4508,7 @@ enigma.getService('qix', config).then((qix) => {
 "Engine API","Example get data via a hypercube","In this example we will get a ""table"" of data out of Qlik Sense using the Engine API",,"","","","","         0","0","Deep dive",
 "Engine API","Example get data via a hypercube","The Engine API is a websocket based protocol (JSON RPC)",,"","","","","         0","0","Deep dive",
 "Engine API","Example get data via a hypercube","Because our website is written in Javascript. We use a javascript library Enigma.js to ""talk to/communicate"" with the Qlik Sense Engine API",,"","","","","         0","0","Deep dive",
-"Engine API","Example get data via a hypercube","iframe https://github.com/qlik-oss/enigma.js/tree/master/examples/data/hypercubes",,"","","","","         0","0","Deep dive",
+"Engine API","Example get data via a hypercube","View [examples on GitHub](https://github.com/qlik-oss/enigma.js/tree/master/examples/data/hypercubes)",,"","","","","         0","0","Deep dive",
 "Engine API","Process flow of communication between components","![](https://www.lucidchart.com/publicSegments/view/7b2fbf74-afc8-4f81-aa90-de61707854aa/image.png)",,"","","","","         0","0","Deep dive",
 "Engine API","Get schema","```
 $.get('https://unpkg.com/enigma.js/schemas/qix/3.1/schema.json')
@@ -4717,9 +4717,8 @@ async function setSelectionInSense(app, field, value) {
 }
 ```
 ",,"","","","","         0","0","Deep dive",
-"Engine API","Example code - make a selection","https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/select-values-in-field.htm",,"","","","","         0","0","Deep dive",
-"Engine API","Example code - make a selection","iframe https://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/select-all-values-field.htm",,,,,,,,,
-"Engine API","Get selected values","iframe https://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm",,,,,,,,,
+"Engine API","Example code - make a selection","[See help](https://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/select-all-values-field.htm)",,"","","","","         0","0","Deep dive",
+"Engine API","Get selected values","[view help](https://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm)",,,,,,,,,
 "Engine API","Example code: create a hyperCube","```
 //https://gist.github.com/mindspank/58b3080a342b1cd937e6
 //https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/WorkingWithAppsAndVisualizations/CreateVisualizations/create-hypercube.htm
@@ -5346,6 +5345,7 @@ This video shows you how to embed Qlik Sense in a Microsoft IIS webserver.",,,,,
 "Data integration","How to create a data model?","This video shows how to create a simple data model using visual data preparation.",,,,,,,,,
 "Data integration","How to create a data model?","https://youtu.be/zvEfv8Y6YQw",,,,,,,,,
 "Data integration","How to create a data model?","View [Qlik Community](https://community.qlik.com/docs/DOC-19092) for more information.",,,,,,,,,
+"Data integration","Embed real time data using dynamic views",,,,,,,,,,
 "Data integration","Qlik Connectors: To which data sources can Qlik Sense connect?","[Qlik Connectors](https://www.qlik.com/us/products/qlik-connectors), which now include QVSource, gather and combine data from databases, applications, spreadsheets, websites, Big Data lakes and custom sources. Gain extensive insight into your divergent data and enable holistic, data-driven decisions.",,,,,,,,,
 "Data integration","Qlik Connectors: To which data sources can Qlik Sense connect?","data - data which database can we connect.png",,,,,,,,,
 "Data integration","Qlik Connectors: To which data sources can Qlik Sense connect?","[Connectors on Qlik help](https://help.qlik.com/en-US/connectors/Content/QlikSense.htm)",,"","","","","         0","0","PreSales",
@@ -5415,16 +5415,19 @@ This approach allows users to easily define a relevant, usable view of Big Data 
 "Other","Big data - On demand app generation ( ODAG )","You can also watch [this webinar](https://event.on24.com/eventRegistration/EventLobbyServlet?target=reg20.jsp&referrer=https%3A%2F%2Fcommunity.qlik.com%2Fgroups%2Fus-healthcare-user-group%2Fblog%2F2016%2F06%2F02%2Fupcoming-qlik-healthcare-events&eventid=1596996&sessionid=1&key=B6CEC7948893B148B0CE0F9913C32F2A&regTag=&sourcepage=register)",,"","","","","         0","0","Deep dive",
 "Other","Big data - On demand app generation ( ODAG )","# ODAG API",,"","","","","         0","0","Deep dive",
 "Other","Big data - On demand app generation ( ODAG )","The ODAG REST service enables on-demand creation of Qlik Sense apps. With this feature, Qlik Sense developers can build mashups (and other applications) that directly access the ODAG service API.",,"","","","","         0","0","Deep dive",
-"Other","Big data - On demand app generation ( ODAG )","iframe https://help.qlik.com/en-US/sense-developer/April2018/apis/ODAGserviceAPI/index.html",,"","","","","         0","0","Deep dive",
+"Other","Big data - On demand app generation ( ODAG )","See [help](https://help.qlik.com/en-US/sense-developer/April2018/apis/ODAGserviceAPI/index.html)",,"","","","","         0","0","Deep dive",
 "Other","Big data - On demand app generation ( ODAG )","!comment This video is a brief overview of On Demand App Generation,  just one of several methodologies that can be used by Qlik to manage Big Data sets. On Demand App Generation is a methodology that can be used in any situation where each user wants to explore their own slice of the data and is built in from the June 2017 release of Qlik Sense.
 
 Big data analytics can now be approached through a shopping cart like process where dimensional data can be filtered at an aggregated high level and data slices automatically generated on-demand for further detailed analytics by users, all in a secure and governed manner.",,"","","","","         0","0","Deep dive",
 "Other","Documentation and video overview","iframe /generic_links_embedded",,"","","","","         0","0","Technical - 2 hours",
-"Other","#Introduction to NPrinting","iframe https://help.qlik.com/en-US/nprinting/February2018/Content/Introduction/Introduction.htm",,,,,,,,,
+"Other","Introduction to NPrinting","https://youtu.be/Z5dusmLj3tY",,,,,,,,,
+"Other","Introduction to NPrinting","See [help](https://help.qlik.com/en-US/nprinting/February2018/Content/Introduction/Introduction.htm) for more info. ",,,,,,,,,
+"Other","!comment Qlik NPrinting is an advanced reporting and distribution solution for Qlik Sense and QlikView. Create great-looking reports using data and analytics from QlikView. Develop reports with drag-and-drop simplicity, in a variety of popular formats such as Microsoft® Office formats (including PowerPoint, Excel and Word), HTML and PixelPerfect banded reports. With QlikView NPrinting you can deliver the right reports to the right people at the right time.",,,,,,,,,,
+"Other","Introduction to NPrinting APIs","https://youtu.be/Rf2ntjxHdNg",,,,,,,,,
 "Other","Introduction to NPrinting APIs","# Nprinting Feb 2018",,,,,,,,,
 "Other","Introduction to NPrinting APIs","[help](https://help.qlik.com/en-US/nprinting/February2018/APIs/NP+API/index.html)",,,,,,,,,
 "Other","Introduction to NPrinting APIs","# Nprinting 17.2",,,,,,,,,
-"Other","Introduction to NPrinting APIs","{help](https://help.qlik.com/en-US/nprinting/17.2/APIs/NP+API/index.html)",,,,,,,,,
+"Other","Introduction to NPrinting APIs","(help](https://help.qlik.com/en-US/nprinting/17.2/APIs/NP+API/index.html)",,,,,,,,,
 "Other","Introduction to NPrinting APIs","#Nprinting 16",,,,,,,,,
 "Other","Introduction to NPrinting APIs","View [Community](https://community.qlik.com/docs/DOC-8439) for more information.",,,,,,,,,
 "Other","Introduction to NPrinting APIs","# Nprinting April 2018",,,,,,,,,
