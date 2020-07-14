@@ -28,13 +28,23 @@ html {
     padding: 30px 0px 30px 0px;
 }
 
+#sheetSelector {
+    position: absolute;
+    margin-top: 60px;
+    z-index: 999;
+    padding: 10px;
+}
+
+#sheetSelector h1 {
+    font-size: 1.5rem;
+}
 .saasDemo.active.item {
     border-color: #E36E0F !important;
 }
 
 .wrap {
     min-height: calc(100vh - 234px);
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .landing .selectRole {        

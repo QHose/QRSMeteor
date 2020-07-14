@@ -1,0 +1,18 @@
+<template name="slideSelectionSheet">  
+    <div id="sheetSelector" class="sheetSelector">
+        <h1 class="ui header">
+            <img class="ui image" src="/images/school.png" alt="image of school">
+            <div class="content">
+              Learn More
+            </div>
+          </h1>
+          <p>Please choose the subjects below to generate the presentation</p>
+        <div class="ui segments">
+            <div class=""><iframe id="selectionSlide" src='{{IFrameURLChapterSelection}}' class="selector"
+                style="border: none;">
+            </iframe></div>            
+            <div class=""><div class="ui right floated ok positive start button">Start presentation</div></div>
+          </div>      
+        
+    </div>
+</template>

@@ -1,30 +1,46 @@
 <template name="nav">
   <div class="ui top fixed secondary menu mainNavBar">
     <div class="ui stackable grid container">
-      <!-- <a id="home" href="{{pathFor 'useCaseSelection'}}" class="{{#if isMainLandingPage}} active {{/if}} item">
-        HOME</a> -->
-      <a id="SSBI" href="{{pathFor 'selfService'}}" class="{{#if isSelfServicePage}} active {{/if}} item">
-        SELF SERVICE
-      </a>
-      {{#if isSaaSDemoPage}} {{> yourSaasPlatformMenu}} {{else}}
-      <a id="generation" href="{{pathFor 'generation'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
-        SAAS PROVISIONING
-      </a> {{/if}}
-      <a id="embedding" href="{{webIntegrationDemo}}" class="item">
-        EMBED
-      </a>
-      <a id="video" href="/documentation?tab=video" class="{{#if isDocumentationPage}} active {{/if}} item"> VIDEOS</a>
-      {{#if isPage 'slides'}} {{> sheetSelector}} {{/if}}
+      <div class="column"> <a id="home" href="{{pathFor 'useCaseSelection'}}"
+          class="{{#if isMainLandingPage}} active {{/if}} item">
+          HOME</a>
+      </div>
+      <div class="column"> <a id="SSBI" href="{{pathFor 'selfService'}}"
+          class="{{#if isSelfServicePage}} active {{/if}} item">
+          SELF SERVICE
+        </a>
+      </div>
+      <div class="column"> {{#if isSaaSDemoPage}} {{> yourSaasPlatformMenu}} {{else}}
+        <a id="generation" href="{{pathFor 'generation'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
+          SAAS PROVISIONING
+        </a> {{/if}}
+      </div>
+      <div class="column"> <a id="embedding" href="{{webIntegrationDemo}}" class="item">
+          EMBED
+        </a>
+      </div>
+      <div class="column"><a id="video" href="/documentation?tab=video"
+          class="{{#if isDocumentationPage}} active {{/if}} item"> VIDEOS</a>
+      </div>
+      <div class=" right aligned column">
+        <!-- {{#if isPage 'slides'}}  -->
+        <a id="sheetSelectorMenu" class="item"> CHANGE PRESENTATION</a>
+        <!-- {{/if}} -->
+      </div>
+
+
+
+
     </div>
   </div>
 
 </template>
 
 <template name="sheetSelector">
-  <div class="right orange menu">
-    <a id="sheetSelector" class="item selectSlides" href="#" data-toggle="modal" data-target="#myModal">
-      <i class="inverted search link icon"></i> CHANGE PRESENTATION</a>
-  </div>
+
+  <a id="sheetSelector" class="item selectSlides">
+    <i class="inverted search link icon"></i> CHANGE PRESENTATION</a>
+
 </template>
 
 <template name="yourSaasPlatformMenu">
@@ -36,7 +52,8 @@
           <a class="item" href="{{pathFor 'generation'}}">Provisioning admin panel</a>
           <a class="item" href="{{pathFor 'securityRules'}}">Security and license rules</a>
           {{#if readyToTestSSO}}
-          <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Your SaaS platform with Qlik Sense embedded</a>
+          <a class="item" href="{{webIntegrationDemo}}/hub" target="_blank">Your SaaS platform with Qlik Sense
+            embedded</a>
           <a class="item" href="{{senseServerHub}}" target="_blank">Not embedded, Hub using Single Sign On</a>
           <a class="item" href="{{senseServerQMC}}" target="_blank">Not embedded, QMC using Single Sign On</a>{{/if}}
           <a class="item" href="{{pathFor 'users'}}">Customers and users</a>

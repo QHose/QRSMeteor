@@ -3,7 +3,7 @@ import { Template } from "meteor/templating";
 import { senseConfig } from "/imports/api/config.js";
 const enigma = require("enigma.js");
 import "/imports/ui/nav.html";
-import { getQix } from "/imports/ui/useCases/useCaseSelection";
+import { getQix, getAllSlides } from "/imports/ui/useCases/useCaseSelection";
 
 import { Session } from "meteor/session";
 import * as slideApp from "/imports/ui/useCases/useCaseSelection";
@@ -11,9 +11,8 @@ import * as slideApp from "/imports/ui/useCases/useCaseSelection";
 const Cookies = require("js-cookie");
 
 Template.nav.helpers({
-  isPage(page) {
-    if (Router.current().route)
-      return Router.current().route.getName() === page;
+  isPage(page) {    
+      return Session.get("showSlides")
   }
 });
 
@@ -85,7 +84,7 @@ Template.nav.events({
     var menuItem = event.currentTarget.id;
     switch (menuItem) {
       case "home":
-        Router.go("useCaseSelection");
+        window.location.replace('/');
         break;
       case "SSBI":
         selectMenuItemInSense("*What is governed self service with Qlik Sense*");
@@ -94,13 +93,12 @@ Template.nav.events({
         selectMenuItemInSense("*multi-tenant SaaS platform with Qlik Sense*");
         break;
       case "embedding":
-        selectMenuItemInSense("*embed Qlik Sense*");
-        // window.location.replace('http://' + Meteor.settings.public.webIntegrationHost + ':' + Meteor.settings.public.webIntegrationDemoPort);
+        selectMenuItemInSense("*embed Qlik Sense*");        
         break;
       case "video":
         selectMenuItemInSense("*Video overview:*");
         break;
-      case "sheetSelector":
+      case "sheetSelectorMenu":
         showSlideSelector();
         break;
     }
@@ -108,23 +106,26 @@ Template.nav.events({
 });
 
 export function showSlideSelector() {
-  $(".ui.modal.sheetSelector")
-    .modal("show")
-    .css({
-      position: "fixed",
-      top: "30%",
-      height: "700px"
-    })
-    .modal({
-      onVisible: function() {
-        // $(".ui.modal.sheetSelector").modal("refresh");
-      },
-      onHide: function() {
-        // console.log('hidden');
-        Session.set("sheetSelectorSeen", true);
-        abortQlikModalState();
-      }
-    });
+  Session.set("showSelector", true);
+  // $(".ui.modal.sheetSelector")    
+  //   .css({
+  //     position: "fixed",
+  //     top: "30%",
+  //     height: document.body.scrollHeight*.8
+  //   })
+    // .modal({
+    //   onVisible: function() {
+    //   },
+    //   onHide: function() {
+    //     console.log('hidden');
+    //     Session.set("sheetSelectorSeen", true);
+    //     abortQlikModalState();
+    //   },
+    //   onApprove: function () {
+    //     console.log('start pres clicked');       
+    //     return true; //close the modal
+    // }
+    //};
 }
 async function abortQlikModalState() {
   // console.log('slide selection modal closed');
@@ -137,9 +138,9 @@ Template.yourSaasPlatformMenu.onRendered(function() {
 });
 
 export async function selectViaQueryId(mongoId) {
-  console.log("selectViaQueryId(mongoId)", mongoId);
+  // console.log("selectViaQueryId(mongoId)", mongoId);
   var qSelection = await Meteor.callPromise("getSenseSelectionObject", mongoId);
-  console.log("qSelection result from mongoDB", qSelection);
+  // console.log("qSelection result from mongoDB", qSelection);
   if (qSelection) {
     await makeSelectionInFields(qSelection.selection);
   } else {
@@ -151,9 +152,9 @@ export async function selectViaQueryId(mongoId) {
 export async function selectMenuItemInSense(slide) {
   console.log("selectMenuItemInSense - slide", slide);
   await makeSearchSelectionInField("Level 2", slide);
-  Meteor.setTimeout(function() {
+  //get slides
+  await getAllSlides();
     Router.go("slides");
-  }, 200);
 }
 
 export async function makeSelectionInField(fieldName, value) {

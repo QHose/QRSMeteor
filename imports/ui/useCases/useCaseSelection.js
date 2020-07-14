@@ -52,6 +52,7 @@ Tracker.autorun(() => {
 });
 // ONRENDERED.
 Template.useCaseSelection.onRendered(async function () {
+    Session.set("showSlides", false);
 
     //fill the dropdown using a array of values
     $.each(possibleRoles, function (i, item) {
@@ -73,25 +74,28 @@ Template.useCaseSelection.onRendered(async function () {
 
 Template.useCaseSelection.events({
     "click .button.slides": async function (e, t) {
-        Session.set("sheetSelectorSeen", false);
+        Session.set("showSelector", true);
+        Session.set("showSlides", false);
         Router.go("slides");
-
-        setTimeout(function () {
-            nav.showSlideSelector();
-        }, 100);
+            
     },
     "click #videoButton": async function (e, t) {
         nav.selectMenuItemInSense("*Video overview:*");
     },
     "blur .ui.dropdown.selection .menu": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
         var selectedRole = t.$(".ui.dropdown").find(":selected").val();
-        Session.set("sheetSelectorSeen", true);
+        // Session.set("sheetSelectorSeen", true);
         Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
-        Meteor.setTimeout(function () {
-            Router.go("slides");
-        }, 200);
 
+        //get slides
+        await getAllSlides();
+
+        Router.go("slides");
+        Session.set("showSelector", false);
+        Session.set("showSlides", true)        
+        ////go to the first slide after a data refresh.           
+        Reveal.slide(0); 
     }
 });
 
@@ -127,21 +131,6 @@ async function getTicket() {
 async function makeSureSenseIsConnected() {
     return await getQix(await getTicket());
 }
-
-async function setSlideContentInSession(group) {
-    console.log('Try getting the slide data for group', group)
-    try {
-        check(group, String);
-        Cookies.set('currentMainRole', group);
-        var qix = await getQix();
-        await getAllSlides(true);
-    } catch (error) {
-        var message = 'Can not connect to the Qlik Sense Engine API via enigmaJS, or group is not provided';
-        console.error(message, error);
-        sAlert.error(message, error);
-    };
-}
-
 export async function getQix(ticket = null) {
     // console.log('getQix with ticket:', ticket)
     try {
@@ -292,20 +281,21 @@ export async function getComment(qix) {
 }
 
 export async function setChangeListener(qix) {
-    console.log('We are connected to Qlik Sense via the APIs, now setChangeListener', qix)
-    try {
-        qix.app.on('changed', async () => {
-            // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
-            await getCurrentSelections();
-            Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
-            Meteor.setTimeout(async function wait() {
-                await getAllSlides();
-                Reveal.slide(0); //go to the first slide after a data refresh.           
-            }, 100)
-        });
-    } catch (error) {
-        console.error('failed to set change listener: ', error);
-    }
+    // $( ".slide" ).remove();
+    // console.log('We are connected to Qlik Sense via the APIs, now setChangeListener', qix)
+    // try {
+    //     qix.app.on('changed', async () => {
+    //         // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
+    //         await getCurrentSelections();
+    //         Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
+    //         Meteor.setTimeout(async function wait() {
+    //             await getAllSlides();
+    //             Reveal.slide(0); //go to the first slide after a data refresh.           
+    //         }, 100)
+    //     });
+    // } catch (error) {
+    //     console.error('failed to set change listener: ', error);
+    // }
 }
 
 function insertSectionBreakers(table) {
@@ -332,33 +322,33 @@ function textOfLevel(row, level) {
 //http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm
 async function getCurrentSelections() {
     // console.log('function: getCurrentSelections');
-    try {
-        var qix = await getQix();
-        var genericObject = await qix.app.createSessionObject({
-            qInfo: {
-                qType: 'SessionLists'
-            },
-            "qSelectionObjectDef": {}
-        });
-        // console.log("sessionObject", genericObject);
+    // try {
+    //     var qix = await getQix();
+    //     var genericObject = await qix.app.createSessionObject({
+    //         qInfo: {
+    //             qType: 'SessionLists'
+    //         },
+    //         "qSelectionObjectDef": {}
+    //     });
+    //     // console.log("sessionObject", genericObject);
 
-        var layout = await genericObject.getLayout();
-        // console.log('genericObject layout', layout)
-        var currentSelections = layout.qSelectionObject.qSelections;
-        SenseSelections.insert({
-            userId: Meteor.userId,
-            userName: Meteor.user().profile.name,
-            eventType: "selectionChanged",
-            selection: currentSelections,
-            selectionDate: new Date() // current time
-        }, function (err, currentSelectionId) {
-            if (err) { console.error('Failed to store the selection in mongoDb') }
-            Session.set('currentSelectionId', currentSelectionId);
-            return currentSelections;
-        });
-    } catch (error) {
-        var message = 'getCurrentSelections: Can not connect to the Qlik Sense Engine API via enigmaJS';
-        console.error(message, error);
-        sAlert.error(message, error);
-    };
+    //     var layout = await genericObject.getLayout();
+    //     // console.log('genericObject layout', layout)
+    //     var currentSelections = layout.qSelectionObject.qSelections;
+    //     SenseSelections.insert({
+    //         userId: Meteor.userId,
+    //         userName: Meteor.user().profile.name,
+    //         eventType: "selectionChanged",
+    //         selection: currentSelections,
+    //         selectionDate: new Date() // current time
+    //     }, function (err, currentSelectionId) {
+    //         if (err) { console.error('Failed to store the selection in mongoDb') }
+    //         Session.set('currentSelectionId', currentSelectionId);
+    //         return currentSelections;
+    //     });
+    // } catch (error) {
+    //     var message = 'getCurrentSelections: Can not connect to the Qlik Sense Engine API via enigmaJS';
+    //     console.error(message, error);
+    //     sAlert.error(message, error);
+    // };
 }

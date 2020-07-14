@@ -21,7 +21,7 @@ Template.layout.helpers({
         return Session.get('NoSenseConnection');
     },
     slideShowActive() {
-        console.log('Router.current().route.getName()', Router.current().route.getName())
+        // console.log('Router.current().route.getName()', Router.current().route.getName())
         return Router.current().route.getName() === 'slides';
     }
 });
@@ -91,4 +91,3 @@ Template.layout.onCreated(function() {
     this.subscribe('streams');
     this.subscribe('customers');        
 });
-
