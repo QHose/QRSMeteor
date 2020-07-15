@@ -1,9 +1,12 @@
-var Reveal = require("reveal.js");
+export var Reveal = require("reveal.js");
 import "./reveal.css";
 import lodash from "lodash";
 import hljs from "highlight.js";
 import { Logger } from "/imports/api/logger";
 import { getQix } from "/imports/ui/useCases/useCaseSelection";
+import "./slideSelectionSheet";
+
+
 import * as nav from "/imports/ui/nav.js";
 
 _ = lodash;
@@ -36,7 +39,6 @@ Template.slides.onCreated(async function () {
 // });
 
 Template.slides.onRendered(async function () {
-    await slideDataLoaded();
     initializeReveal();
     this.$(".controls-arrow").popup({
         title: "Slides",
@@ -94,26 +96,10 @@ function showSlideShare() {
 }
 
 
-async function slideDataLoaded() {
-    // Meteor.setTimeout(async function () {
-    //     if (!Session.get("slideHeaders")) {
-    //         console.log("------------------------------------");
-    //         console.log(
-    //             "No slide data present in session, show the Selection screen."
-    //         );
-    //         console.log("------------------------------------");
-    //         nav.showSlideSelector();
-    //         return;
-    //     }
-    // }, 3000);
-}
-
-
 function addSlideChangedListener() {
     // console.log('!!!!!!!!!!!!! addSlideChangedListener')
-    Reveal.addEventListener("slidechanged", function (evt) {
-        // console.log("slidechanged", evt.indexh);
-        Session.set("activeStepNr", evt.indexh);
+    Reveal.addEventListener("slidechanged", function (evt) {        
+        Session.set("activeStepNr", evt.    indexh);
         $(".ui.embed").embed();
     });
 }
@@ -228,6 +214,9 @@ Template.slides.helpers({
     shareLinkURL: function () {
         var link = Session.get('shareLinkURL')
         return link;
+    },
+    showSelector: function(){
+        return Session.get("showSelector");
     }
 });
 

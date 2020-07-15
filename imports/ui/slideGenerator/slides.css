@@ -63,7 +63,7 @@
 }
 
 .reveal .slide .wrap{
-    margin-top: 20px
+    /* margin-top: 30px */
 }
 
 /* chapter breaker */
@@ -177,7 +177,7 @@ blockquote .reveal h5,
 
 body > div > div.twelve.wide.column > div > iframe {
     width: 100vw;
-    height: calc(90vh - 300px);
+    height: 90vh;
     margin: 0px 0px 20px 0px;
     min-height: 600px;
     max-width: 100%; 
@@ -481,9 +481,9 @@ body > div > div.twelve.wide.column > div > iframe {
   * MOZILLA THEME OVERRIDES
   *********************************************/
 
-body {
+/* body {
     border-top: 2px solid white;
-}
+} */
 
 #tabzilla:before {
     background-color: #484848;

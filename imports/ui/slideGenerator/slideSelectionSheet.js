@@ -21,9 +21,7 @@ Template.slideSelectionSheet.events({
 
         //reset the slideheaders to ensure all slide content templates are re-rendered.
         Session.set("slideHeaders", null); 
-        var slides = $('.slides');
-        slides.empty();
-        1
+        
         //get slides
         await getAllSlides();
 

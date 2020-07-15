@@ -1,5 +1,5 @@
 var Cookies = require('js-cookie');
-import {initQlikSense, getAllSlides} from  '/imports/ui/useCases/useCaseSelection.js';
+import { initQlikSense, getAllSlides } from '/imports/ui/useCases/useCaseSelection.js';
 import * as nav from "/imports/ui/nav.js";
 
 //Layout Configuration. http://stackoverflow.com/questions/28864942/meteor-use-2-different-layouts-ironrouter
@@ -13,9 +13,9 @@ Router.route('/slides', {
     layoutTemplate: 'emptyLayout'
 });
 
-Router.route('/', async function() {
-    var selection = this.params.query.selection  
-    if (selection){
+Router.route('/', async function () {
+    var selection = this.params.query.selection
+    if (selection) {
         await initQlikSense();
         await nav.selectViaQueryId(selection);
         // get the data and go to the slides
@@ -23,10 +23,27 @@ Router.route('/', async function() {
         // after we got all data in an array from sense, change the router/browser to the slides page
         Router.go("slides");
     }
-    else{
-        Router.go('useCaseSelection');        
+    else {
+        Router.go('useCaseSelection');
     }
 });
+
+Router.route('/useCaseSelection', async function () {
+    var selection = this.params.query.selection
+    if (selection) {
+        await initQlikSense();
+        await nav.selectViaQueryId(selection);
+        // get the data and go to the slides
+        await getAllSlides();
+        // after we got all data in an array from sense, change the router/browser to the slides page
+        Router.go("slides");
+    }
+    else {
+        this.layout('containerlayout');
+        this.render('useCaseSelection');
+    }
+});
+
 
 //GENERATION
 Router.route('/generation');
@@ -40,7 +57,7 @@ Router.route('/users', {
 });
 
 //SELF SERVICE
-Router.route('/selfService', function() {
+Router.route('/selfService', function () {
     this.layout('SSBILayout');
     this.render('nav', { to: 'nav' });
     this.render('SSBIUsers', { to: 'aside' });
@@ -48,7 +65,7 @@ Router.route('/selfService', function() {
     this.render('SSBISenseApp');
 });
 
-Router.route('/selfService_embedded', function() {
+Router.route('/selfService_embedded', function () {
     this.layout('SSBILayout');
     this.render('SSBIUsers', { to: 'aside' });
     this.render('SSBISenseApp');
@@ -169,10 +186,6 @@ Router.route('/slideGenerator', {
     layoutTemplate: 'presentationLayout'
 });
 
-Router.route('/useCaseSelection', function() {
-    this.layout('containerlayout');
-    this.render('useCaseSelection');
-});
 
 
 
@@ -211,7 +224,7 @@ function mustBeSignedInDEV() {
     addRolesBasedonEmail(user);
 
     // "Logout"-Hook: Manual implementation, wait a bit to prevent multiple page loads, because the database needs to be update
-    Tracker.autorun(function() {
+    Tracker.autorun(function () {
         console.log('------------------------------------');
         console.log('tracker: login status changed...', Meteor.userId());
         console.log('------------------------------------');
@@ -227,7 +240,7 @@ function loginDEV(user) {
     if (!Meteor.userId()) { //if not yet logged in into Meteor, create a new meteor account, or log him via a token.
         console.log('user is not yet logged in into meteor', user);
 
-        Meteor.call('resetPasswordOrCreateUser', user, function(err, res) {
+        Meteor.call('resetPasswordOrCreateUser', user, function (err, res) {
             if (err) {
                 sAlert.error(err.message);
                 console.error(err);
@@ -235,7 +248,7 @@ function loginDEV(user) {
                 console.log('------------------------------------');
                 console.log('password reset..');
                 console.log('------------------------------------');
-                Meteor.loginWithPassword(user.email, user.password, function(err, res) { //
+                Meteor.loginWithPassword(user.email, user.password, function (err, res) { //
                     if (err) {
                         sAlert.error(err.message);
                         console.error(err);
@@ -251,7 +264,7 @@ function loginDEV(user) {
 
 function mustBeSignedInQlik() {
     // "Logout"-Hook: Manual implementation, wait a bit to prevent multiple page loads, because the database needs to be update
-    Logger.autorun(function() {
+    Logger.autorun(function () {
         if (!Meteor.userId()) {
             Meteor.setTimeout(loginQlik, 0); //give the browser some time to log the user in...
         }
@@ -302,11 +315,11 @@ function loginQlik() {
 
         console.log('the user has got a QLIK PROFILE', user, 'Now try to create the user in our local MONGODB or just log him in with a server only stored password');
         //unsafe code, only sufficient for our simple demo site
-        Meteor.call('resetPasswordOrCreateUser', user, function(err, res) {
+        Meteor.call('resetPasswordOrCreateUser', user, function (err, res) {
             if (err) {
                 console.error(err);
             } else {
-                Meteor.loginWithPassword(user.email, user.password, function(err, res) { //
+                Meteor.loginWithPassword(user.email, user.password, function (err, res) { //
                     if (err) {
                         sAlert.error('Error logging you in...', err.message);
                         console.error(err);

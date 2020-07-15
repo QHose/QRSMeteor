@@ -99,48 +99,18 @@ Template.nav.events({
         selectMenuItemInSense("*Video overview:*");
         break;
       case "sheetSelectorMenu":
-        showSlideSelector();
+        Session.set("showSelector", true);
         break;
     }
   }
 });
-
-export function showSlideSelector() {
-  Session.set("showSelector", true);
-  // $(".ui.modal.sheetSelector")    
-  //   .css({
-  //     position: "fixed",
-  //     top: "30%",
-  //     height: document.body.scrollHeight*.8
-  //   })
-    // .modal({
-    //   onVisible: function() {
-    //   },
-    //   onHide: function() {
-    //     console.log('hidden');
-    //     Session.set("sheetSelectorSeen", true);
-    //     abortQlikModalState();
-    //   },
-    //   onApprove: function () {
-    //     console.log('start pres clicked');       
-    //     return true; //close the modal
-    // }
-    //};
-}
-async function abortQlikModalState() {
-  // console.log('slide selection modal closed');
-  var qix = await getQix();
-  qix.app.abortModal(true);
-}
 
 Template.yourSaasPlatformMenu.onRendered(function() {
   this.$(".ui.dropdown").dropdown();
 });
 
 export async function selectViaQueryId(mongoId) {
-  // console.log("selectViaQueryId(mongoId)", mongoId);
   var qSelection = await Meteor.callPromise("getSenseSelectionObject", mongoId);
-  // console.log("qSelection result from mongoDB", qSelection);
   if (qSelection) {
     await makeSelectionInFields(qSelection.selection);
   } else {
@@ -151,24 +121,23 @@ export async function selectViaQueryId(mongoId) {
 // if people click on a menu item, you want a specific slide to be selected, so the slide is the value to search for...
 export async function selectMenuItemInSense(slide) {
   console.log("selectMenuItemInSense - slide", slide);
+  Session.set("slideHeaders", null); 
   await makeSearchSelectionInField("Level 2", slide);
   //get slides
   await getAllSlides();
-    Router.go("slides");
+  Router.go("slides");
 }
 
 export async function makeSelectionInField(fieldName, value) {
   console.log("makeSelectionInField", fieldName + " : " + value.toString());
   try {
     var qix = await slideApp.getQix();
-    // await slideApp.setChangeListener(qix);
     var myField = await qix.app.getField(fieldName);
     var result = await myField.selectValues(value);
   } catch (error) {
     var message =
       "makeSelectionInField: Can not connect to the Qlik Sense Engine API via enigmaJS";
     console.error(message + " Sense reported the following error: ", error);
-    // location.reload(); //reload the page
     sAlert.error(message, error);
   }
 }
@@ -181,14 +150,12 @@ export async function makeSearchSelectionInField(fieldName, value) {
   );
   try {
     var qix = await slideApp.getQix();
-    // await slideApp.setChangeListener(qix);
     var myField = await qix.app.getField(fieldName);
     var result = await myField.select(value);
   } catch (error) {
     var message =
       "make search SelectionInField: Can not connect to the Qlik Sense Engine API via enigmaJS";
     console.error(message + " Sense reported the following error: ", error);
-    // location.reload(); //reload the page
     sAlert.error(message, error);
   }
 }

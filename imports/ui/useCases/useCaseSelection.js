@@ -50,6 +50,8 @@ Tracker.autorun(() => {
         } catch (error) { }
     }, 500);
 });
+
+
 // ONRENDERED.
 Template.useCaseSelection.onRendered(async function () {
     Session.set("showSlides", false);
