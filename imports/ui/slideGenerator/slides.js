@@ -101,6 +101,11 @@ function addSlideChangedListener() {
     Reveal.addEventListener("slidechanged", function (evt) {        
         Session.set("activeStepNr", evt.    indexh);
         $(".ui.embed").embed();
+
+        
+
+        //set html title    
+        document.title = $(".present h1").text()
     });
 }
 
@@ -138,8 +143,7 @@ Template.slideContent.helpers({
 
 Template.slideContent.onRendered(async function () {
     var template = this;
-    //set html title    
-    document.title = this.data.slide[1].qText;
+    
 
 
     //if the slide is shown, log it into the database
@@ -183,7 +187,7 @@ Template.slideContent.onRendered(async function () {
             // window.location.href = window.location.origin;
             //location.reload(); //@todo to evaluate if this helps
         }
-    }, 3000);
+    }, 1000);
 });
 
 Template.slideContent.events({
