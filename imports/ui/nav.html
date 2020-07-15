@@ -1,36 +1,30 @@
 <template name="nav">
-  <div class="ui top fixed secondary menu mainNavBar">
-    <div class="ui stackable grid container">
-      <div class="column"> <a id="home" href="{{pathFor 'useCaseSelection'}}"
-          class="{{#if isMainLandingPage}} active {{/if}} item">
-          HOME</a>
-      </div>
-      <div class="column"> <a id="SSBI" href="{{pathFor 'selfService'}}"
-          class="{{#if isSelfServicePage}} active {{/if}} item">
-          SELF SERVICE
-        </a>
-      </div>
-      <div class="column"> {{#if isSaaSDemoPage}} {{> yourSaasPlatformMenu}} {{else}}
-        <a id="generation" href="{{pathFor 'generation'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
-          SAAS PROVISIONING
-        </a> {{/if}}
-      </div>
-      <div class="column"> <a id="embedding" href="{{webIntegrationDemo}}" class="item">
-          EMBED
-        </a>
-      </div>
-      <div class="column"><a id="video" href="/documentation?tab=video"
-          class="{{#if isDocumentationPage}} active {{/if}} item"> VIDEOS</a>
-      </div>
-      <div class=" right aligned column">
-        <!-- {{#if isPage 'slides'}}  -->
-        <a id="sheetSelectorMenu" class="item"> CHANGE PRESENTATION</a>
-        <!-- {{/if}} -->
-      </div>
-
-
-
-
+  <div class="ui container top secondary stackable menu mainNavBar">
+    <div class="column"> <a id="home" href="{{pathFor 'useCaseSelection'}}"
+        class="{{#if isMainLandingPage}} active {{/if}} item">
+        HOME</a>
+    </div>
+    <div class="column"> <a id="SSBI" href="{{pathFor 'selfService'}}"
+        class="{{#if isSelfServicePage}} active {{/if}} item">
+        SELF SERVICE
+      </a>
+    </div>
+    <div class="column"> {{#if isSaaSDemoPage}} {{> yourSaasPlatformMenu}} {{else}}
+      <a id="generation" href="{{pathFor 'generation'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
+        SAAS PROVISIONING
+      </a> {{/if}}
+    </div>
+    <div class="column"> <a id="embedding" href="{{webIntegrationDemo}}" class="item">
+        EMBED
+      </a>
+    </div>
+    <div class="column"><a id="video" href="/documentation?tab=video"
+        class="{{#if isDocumentationPage}} active {{/if}} item"> VIDEOS</a>
+    </div>
+    <div class=" right aligned column">
+      {{#if isPage 'slides'}} 
+      <a id="sheetSelectorMenu" class="item"> CHANGE PRESENTATION</a>
+      {{/if}}
     </div>
   </div>
 
