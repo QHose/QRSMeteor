@@ -32,5 +32,18 @@ Template.slideSelectionSheet.events({
 
 function resizeIFrameToFitContent(iFrame) {
     iFrame.width = document.body.scrollWidth * .9;
-    iFrame.height = document.body.scrollHeight * .7
+    iFrame.height = document.body.scrollHeight * .6;
 }
+
+
+Template.slideSelectionSheet.onCreated(async function () {
+    $("body").css({
+        overflow: "auto"
+    })
+});
+
+Template.slideSelectionSheet.onDestroyed(function () {
+    $("body").css({
+        overflow: "hidden"
+    });
+});
