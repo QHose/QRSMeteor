@@ -124,7 +124,7 @@ export async function selectMenuItemInSense(slide) {
   Session.set("slideHeaders", null); 
   await makeSearchSelectionInField("Level 2", slide);
   //get slides
-  await getAllSlides();
+  await getAllSlides(false);
   Router.go("slides");
 }
 
