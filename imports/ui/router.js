@@ -175,10 +175,10 @@ Router.route('/integration', {
     layoutTemplate: 'presentationLayout'
 });
 
-Router.route('/slideSorter', {
-    template: 'ppt_slideSorter',
-    layoutTemplate: 'presentationLayout'
-});
+// Router.route('/slideSorter', {
+//     template: 'ppt_slideSorter',
+//     layoutTemplate: 'presentationLayout'
+// });
 
 //START THE SLIDE SHOW
 Router.route('/slideGenerator', {
