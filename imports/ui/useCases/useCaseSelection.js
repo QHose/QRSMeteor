@@ -280,21 +280,21 @@ export async function getComment(qix) {
 }
 
 export async function setChangeListener(qix) {
-    // $( ".slide" ).remove();
+   
     // console.log('We are connected to Qlik Sense via the APIs, now setChangeListener', qix)
-    // try {
-    //     qix.app.on('changed', async () => {
-    //         // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
-    //         await getCurrentSelections();
-    //         Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
-    //         Meteor.setTimeout(async function wait() {
-    //             await getAllSlides();
-    //             Reveal.slide(0); //go to the first slide after a data refresh.           
-    //         }, 100)
-    //     });
-    // } catch (error) {
-    //     console.error('failed to set change listener: ', error);
-    // }
+    try {
+        qix.app.on('changed', async () => {
+            // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
+            await getCurrentSelections();
+            // Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
+            // Meteor.setTimeout(async function wait() {
+            //     await getAllSlides();
+            //     Reveal.slide(0); //go to the first slide after a data refresh.           
+            // }, 100)
+        });
+    } catch (error) {
+        console.error('failed to set change listener: ', error);
+    }
 }
 
 function insertSectionBreakers(table) {
@@ -321,33 +321,33 @@ function textOfLevel(row, level) {
 //http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm
 async function getCurrentSelections() {
     // console.log('function: getCurrentSelections');
-    // try {
-    //     var qix = await getQix();
-    //     var genericObject = await qix.app.createSessionObject({
-    //         qInfo: {
-    //             qType: 'SessionLists'
-    //         },
-    //         "qSelectionObjectDef": {}
-    //     });
-    //     // console.log("sessionObject", genericObject);
+    try {
+        var qix = await getQix();
+        var genericObject = await qix.app.createSessionObject({
+            qInfo: {
+                qType: 'SessionLists'
+            },
+            "qSelectionObjectDef": {}
+        });
+        // console.log("sessionObject", genericObject);
 
-    //     var layout = await genericObject.getLayout();
-    //     // console.log('genericObject layout', layout)
-    //     var currentSelections = layout.qSelectionObject.qSelections;
-    //     SenseSelections.insert({
-    //         userId: Meteor.userId,
-    //         userName: Meteor.user().profile.name,
-    //         eventType: "selectionChanged",
-    //         selection: currentSelections,
-    //         selectionDate: new Date() // current time
-    //     }, function (err, currentSelectionId) {
-    //         if (err) { console.error('Failed to store the selection in mongoDb') }
-    //         Session.set('currentSelectionId', currentSelectionId);
-    //         return currentSelections;
-    //     });
-    // } catch (error) {
-    //     var message = 'getCurrentSelections: Can not connect to the Qlik Sense Engine API via enigmaJS';
-    //     console.error(message, error);
-    //     sAlert.error(message, error);
-    // };
+        var layout = await genericObject.getLayout();
+        // console.log('genericObject layout', layout)
+        var currentSelections = layout.qSelectionObject.qSelections;
+        SenseSelections.insert({
+            userId: Meteor.userId,
+            userName: Meteor.user().profile.name,
+            eventType: "selectionChanged",
+            selection: currentSelections,
+            selectionDate: new Date() // current time
+        }, function (err, currentSelectionId) {
+            if (err) { console.error('Failed to store the selection in mongoDb') }
+            Session.set('currentSelectionId', currentSelectionId);
+            return currentSelections;
+        });
+    } catch (error) {
+        var message = 'getCurrentSelections: Can not connect to the Qlik Sense Engine API via enigmaJS';
+        console.error(message, error);
+        sAlert.error(message, error);
+    };
 }

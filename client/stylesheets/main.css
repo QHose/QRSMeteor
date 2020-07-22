@@ -35,6 +35,10 @@ html {
     text-shadow: none;
 }
 
+#bodyDropdown {
+    color: black
+}
+
 #sheetSelector {
     /* position: absolute; */
     /* margin-top: 60px; */

@@ -29,31 +29,7 @@
     </div>
   </div>
 
-  <!-- share your presentation modal-->
-  <div id="slideShareModal" class="ui modal slideShare">
-    <div class="header"> Share your presentation</div>
-    <div class="image content">
-      <img class="ui small image" src="images/socialCollaboration.png">
-      <div class="description">
-        <p>Please use one of the buttons below to share the presentation: </p>
-          <div style="position: absolute;
-          top: -9999px;
-          left: -9999px;" id="shareRef"
-          href="{{shareLinkURL}}">{{shareLinkURL}}</div>
-        <div class="actions">
-          <div class="ui buttons" style="margin-top: 20px">
-            <button class="ui deny button"> Send email </button>
-            <div class="or"></div>
-            <button class="ui approve green button">Copy link</button>
-          </div>
-        </div>
-        <!-- <p>You or another user can use this link to view this presentation at any time you like.</p> -->
-      </div>
-    </div>
-    <div class="actions">
-      <div class="ui deny button">Done</div>
-    </div>
-  </div>
+
 </template>
 
 <template name="slide">
@@ -64,6 +40,31 @@
       padding: 10px;
       color: white;
 ">Share this presentation</button>
+<!-- share your presentation modal-->
+<div id="slideShareModal" class="ui modal slideShare">
+  <div class="header"> Share your presentation</div>
+  <div class="image content">
+    <img class="ui small image" src="images/socialCollaboration.png">
+    <div class="description">
+      <p>Please use one of the buttons below to share the presentation: </p>
+        <div style="position: absolute;
+        top: -9999px;
+        left: -9999px;" id="shareRef"
+        href="{{shareLinkURL}}">{{shareLinkURL}}</div>
+      <div class="actions">
+        <div class="ui buttons" style="margin-top: 20px">
+          <button class="ui deny button"> Send email </button>
+          <div class="or"></div>
+          <button class="ui approve green button">Copy link</button>
+        </div>
+      </div>
+      <!-- <p>You or another user can use this link to view this presentation at any time you like.</p> -->
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui deny button">Done</div>
+  </div>
+</div>
       {{#if active slideNr}}
       <h3> {{{level 1 slide}}}</h3>
       <h1>{{{level 2 slide}}}
