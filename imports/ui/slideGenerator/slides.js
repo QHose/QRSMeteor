@@ -28,7 +28,7 @@ Template.registerHelper('chapterSlide', function (currentRow) {
 
 Template.slides.onCreated(async function () {
     $("body").css({
-        overflow: "hidden"
+        overflow: "overlay"
     });//
 });
 
@@ -40,6 +40,7 @@ Template.slides.onCreated(async function () {
 
 Template.slides.onRendered(async function () {
     initializeReveal();
+    Reveal.sync();
     this.$(".controls-arrow").popup({
         title: "Slides",
         content: "You are navigating in a 'presentation', on your keyboard you can press escape to get an overview, press ? for help or use your arrows to go to the next and previous slides.",
@@ -50,7 +51,7 @@ Template.slides.onRendered(async function () {
     });
 });
 
-Template.slides.events({
+Template.slide.events({
     'click #sharePresentation': function (event, instance) {
         //save questions in link database
         var id = Session.get('currentSelectionId');
@@ -100,9 +101,9 @@ function addSlideChangedListener() {
     // console.log('!!!!!!!!!!!!! addSlideChangedListener')
     Reveal.addEventListener("slidechanged", function (evt) {        
         Session.set("activeStepNr", evt.    indexh);
-        $(".ui.embed").embed();
-
-        
+        setTimeout(function(){
+            $(".ui.embed").embed();       
+        },200)
 
         //set html title    
         document.title = $(".present h1").text()
