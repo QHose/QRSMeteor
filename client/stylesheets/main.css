@@ -7,7 +7,7 @@ html {
 
 .mainNavBar {
     margin-top: 0px !important;
-    background-color: #0E2F4E !important;
+    background-color: #1c355e !important;
 }
 
 .mainNavBar a {
@@ -28,8 +28,15 @@ html {
     padding: 30px 0px 30px 0px;
 }
 
+.buttons .button:focus {
+    outline:medium dotted black;
+    background-color: #f9a900;
+    color: #fff;
+    text-shadow: none;
+}
+
 #sheetSelector {
-    position: absolute;
+    /* position: absolute; */
     /* margin-top: 60px; */
     z-index: 999;
     padding: 10px;
@@ -38,6 +45,11 @@ html {
 #sheetSelector h1 {
     font-size: 1.5rem;
 }
+
+#selectionSlide {
+    width: -webkit-fill-available;
+}
+
 .saasDemo.active.item {
     border-color: #E36E0F !important;
 }
@@ -47,22 +59,32 @@ html {
     /* margin-top: 30px; */
 }
 
-.landing .selectRole {        
+.landing .selectRole {
     height: 300px;
 }
 
-.footer h2.ui.header {
+#qlikFooter h2.ui.header {
     font-size: 0.9rem;
 }
 
-.footer ul{
-    list-style-type: none;
-    padding: 10px;
-  }
+#qlikFooter a {
+    text-decoration: none;
 
-  .footer a:hover{
-      color: #5EA819;
-  }
+}
+#qlikFooter ul {
+    list-style-type: none;
+    margin-bottom: 0.5em;
+    padding: 10px;
+}
+
+#qlikFooter li {
+    margin-bottom: 0.4em;
+}
+
+#qlikFooter a:hover {
+    color: #006937;
+}
+
 .row {
     padding: 14px !important;
 }
@@ -81,9 +103,10 @@ html {
 }
 
 .s-alert-success {
-    background: #5EA819;
+    background: #006937;
     /* your background color here */
-    color: #fff/* your text color here */
+    color: #fff
+        /* your text color here */
 }
 
 .ui.segment.SSBI {
@@ -106,4 +129,3 @@ pre {
 .text.container .right.floated.image {
     margin: 2em -4em 2em 5em;
 }
-
