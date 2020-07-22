@@ -54,8 +54,7 @@ Tracker.autorun(() => {
 
 // ONRENDERED.
 Template.useCaseSelection.onRendered(async function () {
-    Session.set("showSlides", false);
-
+    Session.set("showSelector", false);
     //fill the dropdown using a array of values
     $.each(possibleRoles, function (i, item) {
         $('#bodyDropdown').append($('<option>', {
@@ -77,7 +76,6 @@ Template.useCaseSelection.onRendered(async function () {
 Template.useCaseSelection.events({
     "click .button.slides": async function (e, t) {
         Session.set("showSelector", true);
-        Session.set("showSlides", false);
         Router.go("slides");
             
     },
@@ -95,7 +93,6 @@ Template.useCaseSelection.events({
 
         Router.go("slides");
         Session.set("showSelector", false);
-        Session.set("showSlides", true)        
         ////go to the first slide after a data refresh.           
         Reveal.slide(0); 
     }

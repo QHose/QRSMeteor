@@ -31,8 +31,8 @@ Template.slideSelectionSheet.events({
 });
 
 function resizeIFrameToFitContent(iFrame) {
-    iFrame.width = document.body.scrollWidth * .9;
-    iFrame.height = document.body.scrollHeight * .6;
+    iFrame.width = window.innerHeight *.7; //document.body.scrollWidth * .5;
+    iFrame.height = document.body.scrollHeight * .4;
 }
 
 
@@ -40,10 +40,20 @@ Template.slideSelectionSheet.onCreated(async function () {
     $("body").css({
         overflow: "auto"
     })
+
+    $(".reveal").css({
+        visibility: 'hidden'
+       })
+
+    
 });
 
 Template.slideSelectionSheet.onDestroyed(function () {
     $("body").css({
-        overflow: "hidden"
+        overflow: "auto"
     });
+
+    $(".reveal").css({
+        visibility: ''
+    })
 });
