@@ -12,14 +12,10 @@
   {{> slideSelectionSheet }}
 {{/if}}
 
+
+
   <div class="reveal">
-    <div class="slides">
-        <button id="sharePresentation" class="ui orange button" style="
-        position: absolute;
-        right: -150px;
-        top: 120px;      
-      ">Share</button>
-      
+    <div class="slides">      
       {{#each slideHeaders }} {{#if chapterSlide this}}
       <section>
         <div class="ui integrationBreaker">
@@ -63,6 +59,11 @@
 <template name="slide">
   <section class="slide">
     <div class="wrap">
+      <button id="sharePresentation" class="ui right floated button" style="
+      background-color: #870064;    
+      padding: 10px;
+      color: white;
+">Share this presentation</button>
       {{#if active slideNr}}
       <h3> {{{level 1 slide}}}</h3>
       <h1>{{{level 2 slide}}}
