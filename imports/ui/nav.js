@@ -11,8 +11,9 @@ import * as slideApp from "/imports/ui/useCases/useCaseSelection";
 const Cookies = require("js-cookie");
 
 Template.nav.helpers({
-  isPage(page) {    
-      return Session.get("showSlides")
+  isPage() {   
+    var show = Router.current().route.getName() == 'useCaseSelection'? false : true;
+    return show;
   }
 });
 

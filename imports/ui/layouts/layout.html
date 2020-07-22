@@ -27,8 +27,9 @@
 </template>
 
 <template name="slidelayout">
+    {{> nav}}
     <div class="wrap" style="position:absolute; top:100px;">
-        {{> nav}}
+        
         <div class="ui container">
             {{> sAlert}} {{> modals}} {{> yield}}
         </div>
@@ -46,8 +47,9 @@
 
 <template name="containerlayout">
     <div class="ui container">
-    <div class="wrap" style="margin-top: 50px">
         {{> nav}}
+    <div class="wrap" style="margin-top: 50px">
+        
         <div class="ui container">
             {{> sAlert}} {{> modals}} {{> yield}}
         </div>
@@ -57,7 +59,7 @@
 </template>
 
 <template name="footer">
-    <div class="footer">
+    <div id="qlikFooter" class="footer">
         <div class="ui center aligned container">
             <div class="ui grid">
 
