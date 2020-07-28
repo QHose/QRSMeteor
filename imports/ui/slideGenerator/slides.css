@@ -368,7 +368,7 @@ body > div > div.twelve.wide.column > div > iframe {
 
 .reveal a {
     color: #004939;
-    text-decoration: none;
+    text-decoration: underline;
     -webkit-transition: color .15s ease;
     -moz-transition: color .15s ease;
     transition: color .15s ease;
@@ -498,7 +498,10 @@ body > div > div.twelve.wide.column > div > iframe {
 }
 
 .reveal a {
-    text-decoration: underline;
+        text-decoration-color: #EA215A;
+        text-decoration-thickness: .125em;
+        text-underline-offset: 1.5px;
+      }
 }
 
 /* .reveal pre,

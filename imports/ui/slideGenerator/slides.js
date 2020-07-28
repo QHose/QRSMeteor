@@ -42,7 +42,7 @@ Template.slideShareModal.onRendered(function () {
                   For full screen scrolling modal, 
                   uncomment line below & comment line above
                  **************************/
-                // addModalContentHeight('tall');
+                // addModalContentHeight('tall');               
             },
             onClose: function (modal) {
                 console.log("micromodal close");
@@ -51,7 +51,13 @@ Template.slideShareModal.onRendered(function () {
     } catch (e) {
         console.log("micromodal error: ", e);
     }
-    console.log('modal inititalized')
+    var link = document.getElementById("shareRef")
+    const range = document.createRange();
+    range.selectNode(link);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand('copy');
 });
 
 
@@ -127,7 +133,7 @@ Template.slide.events({
         var id = Session.get('currentSelectionId');
         var shareLinkURL = window.location.origin + '/?selection=' + id;
         //update the value of the helper for the share link popup
-        Session.set('shareLinkURL', shareLinkURL);
+        Session.set('shareLinkURL', shareLinkURL);        
     }
 });
 
