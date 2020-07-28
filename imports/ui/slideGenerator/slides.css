@@ -158,6 +158,10 @@ blockquote .reveal h5,
     outline: medium dotted;
 }
 
+.reveal aside .controls-arrow {
+    color: #870064
+}
+
 .reveal p {
     margin: 10px 0;
     line-height: 1.3;

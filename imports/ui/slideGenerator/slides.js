@@ -1,6 +1,7 @@
 export var Reveal = require("reveal.js");
 import MicroModal from 'micromodal';
 import "./reveal.css";
+import "./helper.css"; //accessibility plugin for reveal https://github.com/marcysutton/reveal-a11y
 import lodash from "lodash";
 import hljs from "highlight.js";
 import { Logger } from "/imports/api/logger";
@@ -123,7 +124,6 @@ Template.slides.onRendered(function () {
 
 Template.slide.events({
     'click #sharePresentation': function (event, instance) {
-        //save questions in link database
         var id = Session.get('currentSelectionId');
         var shareLinkURL = window.location.origin + '/?selection=' + id;
         //update the value of the helper for the share link popup
@@ -524,6 +524,11 @@ function initializeReveal() {
             console.log('initializeReveal', Reveal);
 
             Reveal.initialize({
+                dependencies: [
+                    { src: 'plugin/accessibility/helper.js', async: true, condition: function() { 
+                        return !!document.body.classList; 
+                    } 
+                }],
                 // slide size
                 width: '80%',
                 // height: '100%'
@@ -540,7 +545,7 @@ function initializeReveal() {
 
                 // Visibility rule for backwards navigation arrows; "faded", "hidden"
                 // or "visible"
-                controlsBackArrows: 'faded',
+                controlsBackArrows: 'visible',
 
                 // Display a presentation progress bar
                 progress: false,
