@@ -39,6 +39,8 @@
 
 <template name="emptyLayout">
      {{> nav}} {{> sAlert}} {{> yield}}
+     {{> slideShareModal}}
+
 </template>
 
 <template name="emptyContainerLayout">
@@ -121,23 +123,25 @@
 </template>
 
 <template name="modals">
-    {{> modalSSBI}} {{> modalStepByStep}} {{> modalSaaSautomation}}
+    {{> modalSSBI}} {{> modalSaaSautomation}}
 </template>
 <template name="modalSSBI">
-    <div class="ui modal SSBI">
+    <div class="ui modal SSBI" role="dialog" aria-labelledby="ssbiExplained">
         <div class="ui icon message">
             <!--             <img class="icon" src="images/securityRules.png">
  -->
             <div class="content">
                 <div class="header">
-                    <h4>Example layered approach to the self service functionality</h4>
+                    <h4 id="ssbiExplained">Example layered approach to the self service functionality</h4>
                 </div>
                 <p>Example process which you can implement by using a mix between the authorizations from your SaaS
                     platform
                     and the Qlik Sense security rules.</p>
             </div>
         </div>
-        <img class="ui fluid image" src="/images/SelfServiceBI.png">
+        <img class="ui fluid image" alt="Example process which you can implement by using a mix between the authorizations from your SaaS
+        platform
+        and the Qlik Sense security rules." src="/images/SelfServiceBI.png">
         <div class="description">
             <p></p>
         </div>
@@ -152,38 +156,14 @@
         </div>
     </div>
 </template>
-<template name="modalStepByStep">
-    <div class="ui modal stepByStep">
-        <div class="ui icon message">
-            <img class="icon" src="images/intro.png">
-            <div class="content">
-                <div class="header">
-                    <h4>Step by step guide on how to use this demo platform</h4>
-                </div>
-                <!-- <p>This video is just a selection of the extended introduction video. This video shows you "where to click". Please watch the extended video for a complete overview. You can also watch a specific video from the "video menu" in the top menu.</p> -->
-            </div>
-        </div>
-        <div class="ui one column centered grid">
-            <div class="column centered">
-                <iframe width="854" height="480" src="https://www.youtube.com/embed/T9a3s5cnvPE" frameborder="0"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
-</template>
+
 <template name="modalSaaSautomation">
-    <div class="ui modal APIAutomation">
+    <div class="ui modal APIAutomation" aria-labelledby="saasexplained">
         <div class="ui icon message">
             <img class="icon" src="images/API.png">
             <div class="content">
                 <div class="header">
-                    <h4>What are the key concepts of SaaS provisioning using Qlik Sense?</h4>
+                    <h4 id="saasexplained">What are the key concepts of SaaS provisioning using Qlik Sense?</h4>
                 </div>
                 <p>This video highlights the concepts of SaaS provisioning. In will explain you the concept of template
                     apps,
