@@ -8,6 +8,7 @@
   <!-- for each header: a level 1 and 2 combination -->
   <!--         Create a chapter breaker if the level 1 has changed in the current row-->
   <!-- The current level 1 and 2 headers -->
+  {{> slideShareModal}}
   {{#if showSelector}}
   {{> slideSelectionSheet }}
   {{/if}}
@@ -43,7 +44,7 @@
         </header>
         <div id="modal-content-content" class="modal-content-content">
           <div id="modal-content" class="modal__content" style="display:none;">
-           <p>Please copy this <a href="{{shareLinkURL}}">link</a>. With this link another user can open this presentation with exactly the same selections.</p>
+           <p>Please copy this link: <a href="{{shareLinkURL}}">{{shareLinkURL}}</a>. With this link another user can open this presentation with exactly the same selections.</p>
           </div>
           <footer id="modal-footer" class="modal__footer">
             <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
@@ -64,10 +65,10 @@
 ">Share this presentation</button>
 
       {{#if active slideNr}}
-      <h3> {{{level 1 slide}}}</h3>
-      <h1>{{{level 2 slide}}}
-        <hr>
-      </h1>
+      <h1> {{{level 1 slide}}}</h1>
+      <h2>{{{level 2 slide}}}
+        <hr role="presentation">
+      </h2>
       {{> slideContent slide=slide}}
       {{/if}}
     </div>
