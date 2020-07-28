@@ -59,31 +59,32 @@ Template.footer.helpers({
 Template.layout.events({
     'keydown, click': function(event, template) {
         Template.instance().$('*').popup('remove popup')
-    },
-    'click .stepByStep' () {
-        $('.ui.modal.stepByStep')
-            .modal('show')
-            .modal('refresh')
-            .modal('refresh');
-    },
-    'click .howDoesSaaSAutomationWork' () {
-        $('.ui.modal.howDoesSaaSAutomationWork')
-            .modal('show')
-            .modal('refresh')
-            .modal('refresh');
-    },
-    'click .selfservice' () {
-        $('.ui.modal.SSBI')
-            .modal('show')
-            .modal('refresh')
-            .modal('refresh');
-    },
-    'click .APIAutomation' () {
-        $('.ui.modal.APIAutomation')
-            .modal('show')
-            .modal('refresh')
-            .modal('refresh');
-    },
+    }
+    // ,
+    // 'click .stepByStep' () {
+    //     $('.ui.modal.stepByStep')
+    //         .modal('show')
+    //         .modal('refresh')
+    //         .modal('refresh');
+    // },
+    // 'click .howDoesSaaSAutomationWork' () {
+    //     $('.ui.modal.howDoesSaaSAutomationWork')
+    //         .modal('show')
+    //         .modal('refresh')
+    //         .modal('refresh');
+    // },
+    // 'click .selfservice' () {
+    //     $('.ui.modal.SSBI')
+    //         .modal('show')
+    //         .modal('refresh')
+    //         .modal('refresh');
+    // },
+    // 'click .APIAutomation' () {
+    //     $('.ui.modal.APIAutomation')
+    //         .modal('show')
+    //         .modal('refresh')
+    //         .modal('refresh');
+    // },
 })
 
 Template.layout.onCreated(function() {

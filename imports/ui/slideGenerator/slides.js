@@ -118,14 +118,14 @@ Template.slides.onRendered(function () {
     initializeReveal();
     Reveal.sync();
 
-    this.$(".controls-arrow").popup({
-        title: "Slides",
-        content: "You are navigating in a 'presentation', on your keyboard you can press escape to get an overview, press ? for help or use your arrows to go to the next and previous slides.",
-        delay: {
-            show: 500,
-            hide: 0
-        }
-    });
+    // this.$(".controls-arrow").popup({
+    //     title: "Slides",
+    //     content: "You are navigating in a 'presentation', on your keyboard you can press escape to get an overview, press ? for help or use your arrows to go to the next and previous slides.",
+    //     delay: {
+    //         show: 500,
+    //         hide: 0
+    //     }
+    // });
 });
 
 Template.slide.events({
@@ -462,13 +462,13 @@ function convertToHTML(text) {
     //
     else if (checkTextIsImage(text) && text.includes("https://")) {
         return (
-            '<div class="ui container"> <img class="ui massive rounded bordered image"  style="width: 100%;" src="' +
+            '<div class="ui container"> <img alt="This image is explained by the text on this page" class="ui massive rounded bordered image"  style="width: 100%;" src="' +
             text +
             '"/></div>'
         );
     } else if (checkTextIsImage(text)) {
         return (
-            '<div class="ui container"> <img class="ui massive rounded bordered image"  style="width: 100%;" src="images/' +
+            '<div class="ui container"> <img alt="This image is explained by the text on this page" class="ui massive rounded bordered image"  style="width: 100%;" src="images/' +
             text +
             '"/></div>'
         );
