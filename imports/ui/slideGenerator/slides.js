@@ -133,7 +133,7 @@ Template.slide.events({
         var id = Session.get('currentSelectionId');
         var shareLinkURL = window.location.origin + '/?selection=' + id;
         //update the value of the helper for the share link popup
-        Session.set('shareLinkURL', shareLinkURL);        
+        Session.set('shareLinkURL', shareLinkURL);
     }
 });
 
@@ -264,8 +264,8 @@ Template.slides.helpers({
 Template.slideShareModal.helpers({
     shareLinkURL: function () {
         var link = Session.get('shareLinkURL')
-        return link; 
-    }   
+        return link;
+    }
 });
 
 
@@ -437,7 +437,7 @@ function convertToHTML(text) {
         // console.log('found an youtube link so embed with the formatting of semantic ui', text)
         var videoId = youtube_parser(text);
         var html =
-            '<div class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' +
+            '<div title="youTube video" class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' +
             videoId +
             '" data-icon="video" data-placeholder="images/youtube.jpg"></div></div>';
         // console.log('generated video link: ', html);
@@ -531,13 +531,17 @@ function initializeReveal() {
 
             Reveal.initialize({
                 dependencies: [
-                    { src: 'plugin/accessibility/helper.js', async: true, condition: function() { 
-                        return !!document.body.classList; 
-                    } 
-                }],
+                    {
+                        src: 'plugin/accessibility/helper.js', async: true, condition: function () {
+                            return !!document.body.classList;
+                        }
+                    }],
                 // slide size
                 width: '80%',
                 // height: '100%'
+                // Bounds for smallest/largest possible scale to apply to content
+                minScale: 1,
+                maxScale: 1,
 
                 // Display presentation control arrows
                 controls: true,
