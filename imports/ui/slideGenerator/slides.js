@@ -1,13 +1,11 @@
 export var Reveal = require("reveal.js");
+import MicroModal from 'micromodal';
 import "./reveal.css";
 import lodash from "lodash";
 import hljs from "highlight.js";
 import { Logger } from "/imports/api/logger";
 import { getQix } from "/imports/ui/useCases/useCaseSelection";
 import "./slideSelectionSheet";
-
-
-import * as nav from "/imports/ui/nav.js";
 
 _ = lodash;
 var Cookies = require("js-cookie");
@@ -26,21 +24,93 @@ Template.registerHelper('chapterSlide', function (currentRow) {
     }
 });
 
-Template.slides.onCreated(async function () {
+Template.slides.onCreated(function () {
     $("body").css({
         overflow: "overlay"
-    });//
+    });
 });
 
-// Template.slides.onDestroyed(function () {
-//     $("body").css({
-//         overflow: "auto"
-//     });
-// });
+Template.slideShareModal.onRendered(function () {
+    try {
+        MicroModal.init({
+            awaitCloseAnimation: true, // set to false, to remove close animation
+            onShow: function (modal) {
+                console.log("micromodal open");
+                addModalContentHeight('short');
+                /**************************
+                  For full screen scrolling modal, 
+                  uncomment line below & comment line above
+                 **************************/
+                // addModalContentHeight('tall');
+            },
+            onClose: function (modal) {
+                console.log("micromodal close");
+            }
+        });
+    } catch (e) {
+        console.log("micromodal error: ", e);
+    }
+    console.log('modal inititalized')
+});
 
-Template.slides.onRendered(async function () {
+
+function addModalContentHeight(type) {
+    var type = (arguments[0] != null) ? arguments[0] : 'short';
+    var modalContainer = $("#modal-container");
+    var modalHeader = $("#modal-header");
+    var modalContentContent = $("#modal-content-content");
+    var modalContent = $("#modal-content");
+    var modalFooter = $("#modal-footer");
+
+    var modalIsDefined =
+        modalContainer.length &&
+        modalHeader.length &&
+        modalContent.length &&
+        modalFooter.length;
+
+    if (modalIsDefined) {
+        var modalContainerHeight = modalContainer.outerHeight();
+        var modalHeaderHeight = modalHeader.outerHeight();
+        var modalFooterHeight = modalFooter.outerHeight();
+
+        console.log("modalContainerHeight: ", modalContainerHeight);
+        console.log("modalHeaderHeight: ", modalHeaderHeight);
+        console.log("modalFooterHeight: ", modalFooterHeight);
+
+        var offset = 80;
+
+        var height = modalContainerHeight - (modalHeaderHeight + modalFooterHeight + offset);
+
+        console.log('height: ', height);
+
+        if (!isNaN(height)) {
+            height = height > 0 ? height : 20;
+            if (type == 'short') {
+                modalContent.css({ 'height': height + 'px' });
+            }
+            else {
+                modalContainer.css({ 'height': '100%', 'overflow-y': 'hidden', 'margin-top': '40px' });
+                modalContentContent.css({ 'height': '100%', 'overflow-y': 'auto' });
+                modalContent.css({ 'overflow-y': 'visible' });
+                modalFooter.css({ 'margin-bottom': '120px' });
+            }
+            setTimeout(function () {
+                modalContent.css({ 'display': 'block' });
+                var modalContentDOM = document.querySelector('#modal-content');
+                modalContentDOM.scrollTop = 0;
+            });
+        }
+
+    }
+
+}
+
+
+
+Template.slides.onRendered(function () {
     initializeReveal();
     Reveal.sync();
+
     this.$(".controls-arrow").popup({
         title: "Slides",
         content: "You are navigating in a 'presentation', on your keyboard you can press escape to get an overview, press ? for help or use your arrows to go to the next and previous slides.",
@@ -56,54 +126,18 @@ Template.slide.events({
         //save questions in link database
         var id = Session.get('currentSelectionId');
         var shareLinkURL = window.location.origin + '/?selection=' + id;
-        var formattedBody = "Hi, \nPlease have a look at the link below, describing some key Qlik Sense features \n" + shareLinkURL;
-        var mailToLink = "mailto:?body=" + encodeURIComponent(formattedBody);
         //update the value of the helper for the share link popup
         Session.set('shareLinkURL', shareLinkURL);
-        //show the popup
-        showSlideShare();
     }
 });
 
-function showSlideShare() {
-    $(".ui.modal.slideShare")
-        .modal({
-            onDeny: function () {
-                var formattedBody = "Hi, \nPlease have a look at this Qlik Sense presentation \n" + Session.get('shareLinkURL');
-                var mailToLink = "mailto:?body=" + encodeURIComponent(formattedBody);
-                window.location.href = mailToLink;
-                return true;
-            },
-            onApprove: function () {
-                console.log('copyLink clicked')
-                /* Select and copy the text in the AHREF field */
-                var link = document.getElementById("shareRef")
-                const range = document.createRange();
-                range.selectNode(link);
-                const selection = window.getSelection();
-                selection.removeAllRanges();
-                selection.addRange(range);
-                document.execCommand('copy');
-                sAlert.success("The link has been copied to your clipboard.");
-                return true; //close the modal
-            }
-        })
-        .modal("show")
-        .css({
-            position: "fixed",
-            top: "30%",
-            height: "280px"
-        })
-}
-
-
 function addSlideChangedListener() {
     // console.log('!!!!!!!!!!!!! addSlideChangedListener')
-    Reveal.addEventListener("slidechanged", function (evt) {        
-        Session.set("activeStepNr", evt.    indexh);
-        setTimeout(function(){
-            $(".ui.embed").embed();       
-        },200)
+    Reveal.addEventListener("slidechanged", function (evt) {
+        Session.set("activeStepNr", evt.indexh);
+        setTimeout(function () {
+            $(".ui.embed").embed();
+        }, 200)
 
         //set html title    
         document.title = $(".present h1").text()
@@ -144,7 +178,7 @@ Template.slideContent.helpers({
 
 Template.slideContent.onRendered(async function () {
     var template = this;
-    
+
 
 
     //if the slide is shown, log it into the database
@@ -175,7 +209,7 @@ Template.slideContent.onRendered(async function () {
         //ensure all links open on a new tab
         template.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
 
-        
+
         //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
         var slideContent = template.bullets.get();
         // console.log("slideContent.onRendered array of bullets: ", slideContent);
@@ -216,13 +250,16 @@ Template.slides.helpers({
     slideHeaders() {
         return Session.get("slideHeaders"); //only the level 1 and 2 colums, we need this for the headers of the slide
     },
-    shareLinkURL: function () {
-        var link = Session.get('shareLinkURL')
-        return link;
-    },
-    showSelector: function(){
+    showSelector: function () {
         return Session.get("showSelector");
     }
+});
+
+Template.slideShareModal.helpers({
+    shareLinkURL: function () {
+        var link = Session.get('shareLinkURL')
+        return link; 
+    }   
 });
 
 
