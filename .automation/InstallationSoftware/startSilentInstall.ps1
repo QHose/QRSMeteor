@@ -33,7 +33,7 @@ $url = "https://www.dropbox.com/s/4u0c3hf6vf3d80b/Qlik_Sense_setup.exe?dl=0"
 $QlikSenseInstaller = "$SHARED_FOLDER\Qlik_Sense_setup.exe"
 $start_time = Get-Date
 
-Write-Host 'Download and start Qlik Sense installer...'
+Write-Host 'Downloady and start Qlik Sense installer...'
 $ProgressPreference = 'SilentlyContinue'
 Invoke-WebRequest -Uri $url -OutFile $QlikSenseInstaller
 Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
