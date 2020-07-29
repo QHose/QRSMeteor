@@ -364,9 +364,10 @@ function createCommentBox(text) {
             <div class="ui icon message">
             <i class="help icon"></i>
             <div class="content">
-            <div class="header">
-                Let's explain what we mean here...
-            </div>
+            <h3 class="header">
+            Let's explain what we mean here...
+            </h3>
+            
                  ` +
         converter.makeHtml(textAfterCommentMarker) +
         `
@@ -538,10 +539,16 @@ function initializeReveal() {
                     }],
                 // slide size
                 width: '80%',
-                // height: '100%'
+                height: '100%',
                 // Bounds for smallest/largest possible scale to apply to content
-                minScale: 1,
-                maxScale: 1,
+                // minScale: 1,
+                // maxScale: 1,
+                // Factor of the display size that should remain empty around the content
+                margin: 0.1,
+
+                // Bounds for smallest/largest possible scale to apply to content
+                minScale: 0.2,
+                maxScale: 1.0,
 
                 // Display presentation control arrows
                 controls: true,
