@@ -29,7 +29,7 @@
 <template name="slidelayout">
     {{> nav}}
     <div class="wrap" style="position:absolute; top:100px;">
-        
+
         <div class="ui container">
             {{> sAlert}} {{> modals}} {{> yield}}
         </div>
@@ -38,7 +38,7 @@
 </template>
 
 <template name="emptyLayout">
-     {{> nav}} {{> sAlert}} {{> yield}}
+    {{> nav}} {{> sAlert}} {{> yield}}
 
 </template>
 
@@ -49,14 +49,14 @@
 <template name="containerlayout">
     <div class="ui container">
         {{> nav}}
-    <div class="wrap" style="margin-top: 50px">
-        
-        <div class="ui container">
-            {{> sAlert}} {{> modals}} {{> yield}}
+        <div class="wrap" style="margin-top: 50px">
+
+            <div class="ui container">
+                {{> sAlert}} {{> modals}} {{> yield}}
+            </div>
         </div>
+        {{> footer}}
     </div>
-    {{> footer}}
-</div>
 </template>
 
 <template name="footer">
@@ -69,31 +69,31 @@
                         style="height: 100px; padding-top: 30px;">
                 </div>
                 <div class="three wide column">
-                    <h2 class="ui center aligned header">Technical</h2>
+                    <h2 class="ui center aligned header">Technical overviews</h2>
                     <ul>
-                        <li><a href="/apilogstable" target="_blank">API calls</a></li>
-                        <li><a href="/documentation?tab=video" target="_blank">Summary docs </a></li>
-                        <li><a href="https://help.qlik.com/en-US/sense-developer/June2018/Content/APIs-and-SDKs.htm"
-                                target="_blank">API help</a></li>
+                        <li><a href="/apilogstable" target="_blank">API calls used</a></li>
                         <li><a href="/securityRules" target="_blank">Security rules</a></li>
                     </ul>
                 </div>
                 <div class="three wide column">
-                    <h2 class="ui center aligned header">How to...</h2>
+                    <h2 class="ui center aligned header">How to manuals</h2>
 
-                    <ul >
+                    <ul>
                         {{>installation}}
                         {{#if slideShowActive}}
 
                         <!-- <a class="item permaLinkSlide">Link to slide</a> -->
                         {{/if}}
-                        <li><a href="https://www.youtube.com/channel/UCmPMsqh1UvXhQTcAhPMEjpA/videos" target="_blank"
-                                >How to videos</a></li>
+                        <li><a href="https://www.youtube.com/channel/UCmPMsqh1UvXhQTcAhPMEjpA/videos"
+                                target="_blank">How to videos</a></li>
                     </ul>
                 </div>
                 <div class="three wide column">
                     <h2 class="ui center aligned header">Qlik sites</h2>
-                    <ul >
+                    <ul>
+                        <li><a href="https://qlik.dev/" target="_blank">Qlik.dev docs</a></li>
+                        <li><a href="https://help.qlik.com/en-US/sense-developer/June2018/Content/APIs-and-SDKs.htm"
+                                target="_blank">API help</a></li>
                         <li><a class="item" href="http://developer.qlik.com" target="_blank">Branch</a> </li>
                         <li><a class="item" href="legal" target="_blank">Terms of use</a></li>
                     </ul>
@@ -127,8 +127,6 @@
 <template name="modalSSBI">
     <div class="ui modal SSBI" role="dialog" aria-labelledby="ssbiExplained">
         <div class="ui icon message">
-            <!--             <img class="icon" src="images/securityRules.png">
- -->
             <div class="content">
                 <div class="header">
                     <h4 id="ssbiExplained">Example layered approach to the self service functionality</h4>
@@ -159,7 +157,7 @@
 <template name="modalSaaSautomation">
     <div class="ui modal APIAutomation" aria-labelledby="saasexplained">
         <div class="ui icon message">
-            <img class="icon" src="images/API.png">
+            <img class="icon" alt="" src="images/API.png">
             <div class="content">
                 <div class="header">
                     <h4 id="saasexplained">What are the key concepts of SaaS provisioning using Qlik Sense?</h4>

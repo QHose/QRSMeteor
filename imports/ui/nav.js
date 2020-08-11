@@ -11,14 +11,14 @@ import * as slideApp from "/imports/ui/useCases/useCaseSelection";
 const Cookies = require("js-cookie");
 
 Template.nav.helpers({
-  isPage() {   
-    var show = Router.current().route.getName() == 'useCaseSelection'? false : true;
+  isPage() {
+    var show = Router.current().route.getName() == 'useCaseSelection' ? false : true;
     return show;
   }
 });
 
 Template.sheetSelector.onRendered(function () {
-   //
+  //
   // ─── CREATE POPUP ───────────────────────────────────────────────────────────────
   //
   this.$("#sheetSelector").popup({
@@ -31,48 +31,10 @@ Template.sheetSelector.onRendered(function () {
     }
   });
 
-    this.$(".selectSlides").transition({
-      animation: "flash",
-      duration: "16s"
-    });
-});
-
-Template.nav.onRendered(function() {
-  //
-  // ─── BOUNCE THE NAV BAR ITEM FOR SHEET SELECTION ────────────────────────────────
-  //
-
-  /*  this.$("#SSBI").popup({
-     title: "What is self service?",
-     content:
-       "Next we first introduce you to the concepts of self service using a video and we continue with a live demo so you can see and test the effects of different access rights on access to functionality and row level security",
-     delay: {
-       show: 500,
-       hide: 0
-     }
-   });
-
-     this.$("#generation").popup({
-       title: "Multi-tenant app provisioning demo",
-       content:
-         "Questions about SaaS and multi-tenancy with Qlik Sense? In our demonstration site, we show and reveal how you can easily leverage the power of the Qlik Sense APIs within a multi-tenant SaaS application environment.",
-       delay: {
-         show: 500,
-         hide: 0
-       }
-     });
-
-      this.$("#generation").popup({
-        title: "Embed Qlik Sense in your platform",
-        content:
-          `Qlik allows integration options. You can choose your desired level of web integration according to your business requirements. On the client side, you can use either the Qlik client or create your own client.
-
-If you choose to use the Qlik Sense Client, you have the following integration options: integrate the hub, an app, a sheet or individual charts. In most cases you have the ability to control whether you see our menu, see a selection bar or whether or not you provide initial selections to make charts static.`,
-        delay: {
-          show: 500,
-          hide: 0
-        }
-      }); */
+  this.$(".selectSlides").transition({
+    animation: "flash",
+    duration: "16s"
+  });
 });
 
 //
@@ -80,7 +42,7 @@ If you choose to use the Qlik Sense Client, you have the following integration o
 //
 
 Template.nav.events({
-  "click a": function(event, template) {
+  "click a": function (event, template) {
     event.preventDefault();
     var menuItem = event.currentTarget.id;
     switch (menuItem) {
@@ -94,10 +56,11 @@ Template.nav.events({
         selectMenuItemInSense("*multi-tenant SaaS platform with Qlik Sense*");
         break;
       case "embedding":
-        selectMenuItemInSense("*embed Qlik Sense*");        
+        selectMenuItemInSense("*embed Qlik Sense*");
         break;
       case "video":
-        selectMenuItemInSense("*Video overview:*");
+        var win = window.open('https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk', '_blank');
+        win.focus();
         break;
       case "sheetSelectorMenu":
         Session.set("showSelector", true);
@@ -106,7 +69,7 @@ Template.nav.events({
   }
 });
 
-Template.yourSaasPlatformMenu.onRendered(function() {
+Template.yourSaasPlatformMenu.onRendered(function () {
   this.$(".ui.dropdown").dropdown();
 });
 
@@ -122,7 +85,7 @@ export async function selectViaQueryId(mongoId) {
 // if people click on a menu item, you want a specific slide to be selected, so the slide is the value to search for...
 export async function selectMenuItemInSense(slide) {
   console.log("selectMenuItemInSense - slide", slide);
-  Session.set("slideHeaders", null); 
+  Session.set("slideHeaders", null);
   await makeSearchSelectionInField("Level 2", slide);
   //get slides
   await getAllSlides(false);
@@ -166,11 +129,11 @@ export async function makeSearchSelectionInField(fieldName, value) {
 export async function makeSelectionInFields(selections) {
   console.log("makeSelectionInFields(selections)", selections);
   //for each qField
-  selections.forEach(function(selectionField) {
+  selections.forEach(function (selectionField) {
     console.log("selectionField", selectionField);
     //for each selected value (qSelectedFieldSelectionInfo) (e.g. country can have germany and france selected)
     var selectValues = [];
-    selectionField.qSelectedFieldSelectionInfo.forEach(function(fieldValue) {
+    selectionField.qSelectedFieldSelectionInfo.forEach(function (fieldValue) {
       console.log("fieldValue", fieldValue);
       selectValues.push({
         qText: fieldValue.qName,

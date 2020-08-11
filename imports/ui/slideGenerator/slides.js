@@ -38,6 +38,13 @@ Template.slideShareModal.onRendered(function () {
             onShow: function (modal) {
                 console.log("micromodal open");
                 addModalContentHeight('short');
+                var link = document.getElementById("shareRef")
+                const range = document.createRange();
+                range.selectNode(link);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                document.execCommand('copy');
                 /**************************
                   For full screen scrolling modal, 
                   uncomment line below & comment line above
@@ -51,13 +58,7 @@ Template.slideShareModal.onRendered(function () {
     } catch (e) {
         console.log("micromodal error: ", e);
     }
-    var link = document.getElementById("shareRef")
-    const range = document.createRange();
-    range.selectNode(link);
-    const selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-    document.execCommand('copy');
+
 });
 
 
@@ -118,6 +119,7 @@ Template.slides.onRendered(function () {
     initializeReveal();
     Reveal.sync();
 
+
     // this.$(".controls-arrow").popup({
     //     title: "Slides",
     //     content: "You are navigating in a 'presentation', on your keyboard you can press escape to get an overview, press ? for help or use your arrows to go to the next and previous slides.",
@@ -157,10 +159,12 @@ Template.slideContent.onCreated(async function () {
     var instance = this;
     instance.bullets = new ReactiveVar([]); //https://stackoverflow.com/questions/35047101/how-do-i-access-the-data-context-and-the-template-instance-in-each-case-event
     instance.comment = new ReactiveVar([]);
+    instance.level2 = new ReactiveVar([]);
 
     //the header and sub header for which we want to load the slide data/bullets
     var level1 = Template.currentData().slide[0].qText;
     var level2 = Template.currentData().slide[1].qText;
+    instance.level2.set(level2)
     // and now let's get the slide content:
     instance.bullets.set(await getLevel3(level1, level2));
     //get the comment of the page
@@ -172,7 +176,7 @@ Template.slideContent.helpers({
         var res = Template.instance().bullets.get();
         if (res) var newArray = [];
         res.forEach(function (item) {
-            newArray.push(convertToHTML(item));
+            newArray.push(convertToHTML(item, Template.instance().level2.get()));
         });
         return newArray;
     },
@@ -184,8 +188,7 @@ Template.slideContent.helpers({
 
 Template.slideContent.onRendered(async function () {
     var template = this;
-
-
+    // $("div.slide-number > a").removeAttr("href"); werkt niet.
 
     //if the slide is shown, log it into the database
     Logger.insert({
@@ -201,13 +204,9 @@ Template.slideContent.onRendered(async function () {
         slidesContainedInSelection: $(".slide").length,
         viewDate: new Date() // current time
     });
-    $(".ui.embed").embed();
 
     Meteor.setTimeout(function () {
-        //embed youtube containers in a nice box without loading all content
-        template.$(".ui.embed").embed({
-            autoplay: false
-        });
+    
         //make sure all code gets highlighted using highlight.js
         template.$("pre code").each(function (i, block) {
             hljs.highlightBlock(block);
@@ -215,6 +214,23 @@ Template.slideContent.onRendered(async function () {
         //ensure all links open on a new tab
         template.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
 
+        //convert all h1 to h3 headers for accessibility reasons
+        template.$('.slideContent .zBullet h1').replaceWith(function() {
+            return $("<h3>", {
+                        "class": this.className,
+                        "html": $(this).html()
+                    });
+        });
+
+        template.$('.slideContent .zBullet h2').replaceWith(function() {
+            return $("<h4>", {
+                        "class": this.className,
+                        "html": $(this).html()
+                    });
+        });
+
+
+       
 
         //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
         var slideContent = template.bullets.get();
@@ -225,10 +241,10 @@ Template.slideContent.onRendered(async function () {
             console.log('------------------------------------');
             // addSlideChangedListener();
             // nav.showSlideSelector();
-            // window.location.href = window.location.origin;
+            window.location.href = window.location.origin;
             //location.reload(); //@todo to evaluate if this helps
         }
-    }, 1000);
+    }, 3000);
 });
 
 Template.slideContent.events({
@@ -425,52 +441,73 @@ function normalizeAndSortData(senseArray) {
     return result;
 }
 
-function convertToHTML(text) {
+function convertToHTML(text, level2) {
+
     // console.log('convertToHTML text', text)
     var commentMarker = "!comment";
     var embeddedImageMarker = `!embeddedImage`;
+    var altText = ''
+
+    //define image url
+    var split = text.indexOf('.')+4;
+    var url = text.substr(0, split);  //before . plus 4
+    // console.log('image url', url)
+
+    //check if alt text comment exists
+    //myimg.jpg my commment bla bla
+    altText = text.slice(text.indexOf('.') + 4  ).trim(); //after img extension
+    // console.log('IMAGE altText', altText)
+
+    if (altText.length < 2) {
+        altText = level2 + ' '+ text.substr(0,text.indexOf('.'));
+    }
+    // console.log('image altText', altText)
+
 
     //
     // ─── YOUTUBE ────────────────────────────────────────────────────────────────────
     //
-    if (youtube_parser(text)) {
-        //youtube video url
-        // console.log('found an youtube link so embed with the formatting of semantic ui', text)
-        var videoId = youtube_parser(text);
-        var html =
-            '<div title="youTube video" class="ui container videoPlaceholder"><div class="ui embed" data-source="youtube" data-id="' +
-            videoId +
-            '" data-icon="video" data-placeholder="images/youtube.jpg"></div></div>';
-        // console.log('generated video link: ', html);
-        return html;
+    if (containsYouTube(text)) {
+        var hasComment = text.trim().indexOf(' ');
+        if (hasComment < 0) {
+            altText = level2
+        } else {
+            altText = text.slice(text.indexOf(' ') + 1).trim(); //after space
+        }
+        var url = text.split(" ")[0] //before space
+        var link = '<div class="zBullet"> <a href="' + url + '"> YouTube video: ' + altText + '</a> <br> </div>'
+        return link;
     }
 
     //
     // ─── IFRAME ─────────────────────────────────────────────────────────────────────
     //
     else if (text.startsWith("iframe ")) {
-        //if a text starts with IFRAME: we convert it into an IFRAME with a class that sets the width and height etc...
-        var sourceURL = text.substr(text.indexOf(" ") + 1);
+        var urlWithDescription = text.substr(text.indexOf(" ") + 1); //everything after iframe 
+        var url = urlWithDescription.split(" ")[0]
+        var description = text.substr(text.indexOf(" ") + 1); //everything after iframe 
+
         return (
-            '<iframe src="' +
-            sourceURL +
-            '" allowfullscreen="allowfullscreen" frameborder="0"></iframe>'
+            '<iframe  title="' + description + '" src="' +
+            url +
+            '"frameborder="0"></iframe>'
         );
     }
 
     //
     // ─── IMAGE ──────────────────────────────────────────────────────────────────────
+    // first check if alt text description is present
     //
     else if (checkTextIsImage(text) && text.includes("https://")) {
         return (
-            '<div class="ui container"> <img alt="This image is explained by the text on this page" class="ui massive rounded bordered image"  style="width: 100%;" src="' +
+            '<div class="ui container"> <img alt="" class="ui massive rounded bordered image"  style="width: 100%;" src="' +
             text +
             '"/></div>'
         );
     } else if (checkTextIsImage(text)) {
         return (
-            '<div class="ui container"> <img alt="This image is explained by the text on this page" class="ui massive rounded bordered image"  style="width: 100%;" src="images/' +
-            text +
+            '<div class="ui container"> <img alt="' + altText + '" class="ui massive rounded bordered image"  style="width: 100%;" src="images/' +
+            url +
             '"/></div>'
         );
     } else if (text.startsWith(embeddedImageMarker)) {
@@ -502,6 +539,7 @@ function convertToHTML(text) {
     // ─── TEXT TO BE CONVERTED TO VIA MARKDOWN ───────────────────────────────────────
     //
     else {
+        // console.log('TEXT TO BE CONVERTED TO VIA MARKDOWN', text)
         //text, convert the text (which can include markdown syntax) to valid HTML
         var result = converter.makeHtml(text);
         // console.log('Markdown result', result)
@@ -513,15 +551,29 @@ function convertToHTML(text) {
     }
 }
 
-function youtube_parser(url) {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    return match && match[7].length == 11 ? match[7] : false;
+
+function containsYouTube(target) {
+    var pattern = ['youtube.com', 'youtu.be'];
+    var value = 0;
+    pattern.forEach(function (word) {
+        value = value + target.includes(word);
+    });
+    //contains a string with youtube, but is not markdown, and not custom html...
+    return (value === 1 && !target.startsWith("<") && !target.startsWith("["))
 }
 
-function checkTextIsImage(text) {
-    return text.match(/\.(jpeg|jpg|gif|png|svg)$/) != null;
+function checkTextIsImage(target) {
+    var pattern = ['.jpeg', '.jpg', '.svg', '.png', '.gif'];
+    var value = 0;
+    pattern.forEach(function (word) {
+        value = value + target.includes(word);
+    });
+    return (value === 1)
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                 init reveal                                */
+/* -------------------------------------------------------------------------- */
 
 function initializeReveal() {
 
@@ -538,7 +590,7 @@ function initializeReveal() {
                         }
                     }],
                 // slide size
-                width: '80%',
+                width: '95%',
                 height: '100%',
                 // Bounds for smallest/largest possible scale to apply to content
                 // minScale: 1,
@@ -699,3 +751,4 @@ function initializeReveal() {
         } catch (error) { }
     }
 }
+

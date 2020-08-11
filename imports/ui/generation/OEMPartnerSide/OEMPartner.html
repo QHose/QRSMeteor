@@ -1,9 +1,9 @@
 <template name='OEMPartner'>
     <div class="ui icon message">
         {{#if stepEqualTo 2}}
-            <img class="icon" src="images/app.png">
+            <img alt="" class="icon" src="images/app.png">
         {{else}}
-            <img class="icon" src="images/intro.png">
+            <img alt="" class="icon" src="images/intro.png">
         {{/if}}
         <div class="content">
             {{#if stepEqualTo 0}}
@@ -42,7 +42,7 @@
     {{#if readyToTestSSO}} {{> simulateUserLogin}} {{/if}} {{> mainButtons}}
     {{#if or noCustomers templateButNoCustomer}}
         <div class="ui icon message">
-            <img class="icon" src="images/customers.png">
+            <img class="icon" alt="" src="images/customers.png">
             <div class="content">
                 <div class="header">
                     <h4>No customers...</h4>

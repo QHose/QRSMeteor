@@ -58,17 +58,17 @@
 <template name="slide">
   <section class="slide">
     <div class="wrap">
-      <button id="sharePresentation" data-micromodal-trigger="modal-1" class="ui right floated button" style="
-      background-color: #870064;    
-      padding: 10px;
-      color: white;
-">Share this presentation</button>
-
       {{#if active slideNr}}
       <h1> {{{level 1 slide}}}</h1>
       <h2>{{{level 2 slide}}}
         <hr role="presentation">
       </h2>
+      <button id="sharePresentation" data-micromodal-trigger="modal-1" class="ui right floated button" style="
+      background-color: #870064;    
+      padding: 10px;
+      color: white;
+      margin-bottom: 10px;
+">Share this presentation</button>  
       {{> slideContent slide=slide}}
       {{/if}}
     </div>

@@ -55,17 +55,94 @@ Tracker.autorun(() => {
 // ONRENDERED.
 Template.useCaseSelection.onRendered(async function () {
     Session.set("showSelector", false);
-    //fill the dropdown using a array of values
-    $.each(possibleRoles, function (i, item) {
-        $('#bodyDropdown').append($('<option>', {
-            value: item,
-            text: item
-        }));
-    });
+    
 
     $(".ui.dropdown").dropdown("refresh");
     var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
     $(".ui.dropdown").dropdown("set selected", textToShow);
+
+    !function(){
+        var w = window,
+        d = w.document;
+    
+        if( w.onfocusin === undefined ){
+            d.addEventListener('focus' ,addPolyfill ,true);
+            d.addEventListener('blur' ,addPolyfill ,true);
+            d.addEventListener('focusin' ,removePolyfill ,true);
+            d.addEventListener('focusout' ,removePolyfill ,true);
+        }
+        function addPolyfill(e){
+            var type = e.type === 'focus' ? 'focusin' : 'focusout';
+            var event = new CustomEvent(type, { bubbles:true, cancelable:false });
+            event.c1Generated = true;
+            e.target.dispatchEvent( event );
+        }
+        function removePolyfill(e){
+    if(!e.c1Generated){ // focus after focusin, so chrome will the first time trigger tow times focusin
+        d.removeEventListener('focus' ,addPolyfill ,true);
+        d.removeEventListener('blur' ,addPolyfill ,true);
+        d.removeEventListener('focusin' ,removePolyfill ,true);
+        d.removeEventListener('focusout' ,removePolyfill ,true);
+    }
+    setTimeout(function(){
+        d.removeEventListener('focusin' ,removePolyfill ,true);
+        d.removeEventListener('focusout' ,removePolyfill ,true);
+    });
+    }
+    }();
+    
+    function hasClass(el, className) {
+        if (el.classList) {
+            return el.classList.contains(className);
+        } else {
+            return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+        }
+    }
+    
+    var menuItems1 = document.querySelectorAll('#flyoutnavkbfixed li.has-submenu');
+    var timer1, timer2;
+    
+    Array.prototype.forEach.call(menuItems1, function(el, i){
+            el.addEventListener("mouseover", function(event){
+                    this.className = "has-submenu open";
+                    clearTimeout(timer1);
+            });
+            el.addEventListener("mouseout", function(event){
+                    timer1 = setTimeout(function(event){
+                            var opennav = document.querySelector("#flyoutnavkbfixed .has-submenu.open");
+                            opennav.className = "has-submenu";
+                            opennav.querySelector('a').setAttribute('aria-expanded', "false");
+                    }, 1000);
+            });
+            el.querySelector('a').addEventListener("click",  function(event){
+                if (this.parentNode.className == "has-submenu") {
+                    this.parentNode.className = "has-submenu open";
+                    this.setAttribute('aria-expanded', "true");
+                } else {
+                    this.parentNode.className = "has-submenu";
+                    this.setAttribute('aria-expanded', "false");
+                }
+                event.preventDefault();
+            });
+            var links = el.querySelectorAll('a');
+            Array.prototype.forEach.call(links, function(el, i){
+                el.addEventListener("focus", function() {
+                    if (timer2) {
+                        clearTimeout(timer2);
+                        timer2 = null;
+                    }
+                });
+                el.addEventListener("blur", function(event) {
+                    timer2 = setTimeout(function () {
+                        var opennav = document.querySelector("#flyoutnavkbfixed .has-submenu.open")
+                        if (opennav) {
+                            opennav.className = "has-submenu";
+                            opennav.querySelector('a').setAttribute('aria-expanded', "false");
+                        }
+                    }, 10);
+                });
+            });
+    });
 
 })
 
@@ -82,9 +159,8 @@ Template.useCaseSelection.events({
     "click #videoButton": async function (e, t) {
         nav.selectMenuItemInSense("*Video overview:*");
     },
-    "blur .ui.dropdown.selection .menu": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
-        var selectedRole = t.$(".ui.dropdown").find(":selected").val();
-        // Session.set("sheetSelectorSeen", true);
+    "click a": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
+        var selectedRole = e.currentTarget.id;
         Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
 

@@ -1,11 +1,12 @@
 <template name="APIIntroduction">
-    <h3 class="ui header">              
+    <h3 class="ui header">
         Why integration.qlik.com?</h3>
-    <p>Here we demonstrate how you can embed and control Qlik Sense via an automated process in your SaaS platform. (<a href= {{pathFor 'introduction'}}>Read more</a>)</p>
-    <h3 class="ui header">              
-            What is the purpose of the demo platform?
-        </h3>
-    <div class="ui two column grid">
+    <p>Here we demonstrate how you can embed and control Qlik Sense via an automated process in your SaaS platform. (<a
+            href={{pathFor 'introduction'}}>Read more</a>)</p>
+    <h3 class="ui header">
+        What is the purpose of the demo platform?
+    </h3>
+    <div class="ui grid">
         <div class="column">
             <p>Demonstrate a sample SaaS platform with Qlik Sense embedded including:
             </p>
@@ -18,158 +19,102 @@
                 </li>
             </ul>
         </div>
-        <div class="column">
-            <!-- <h4 class="ui header">Concept of SaaS provisioning (4M)</h4> -->
-            <div class="ui embed" data-url="{{URL_Youtube_howToDemo}}" data-placeholder="/images/simple intro to saas automation.gif" style="margin: 0em -4em 2em 5em;"></div>
-        </div>
     </div>
 
-    <h3 class="ui header">              
-            API – Process integration</h3>
-    <img class="ui medium right floated image" data-action="zoom" src="images/API components overview.png">
-    <p>Integrate Qlik Sense in your SaaS automation or provisioning process using our .NET API and Visual Studio plugin. Or, use our JavaScript, web socket and REST based <a href="https://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm">APIs</a> to automate each manual activity. Using this mechanism, you can create, delete, or reload apps for each of your customers. You can even create complete dashboards or individual charts on the fly.</p>
-    <h3 class="ui header">              
-                Mindmap of common use cases</h3>
-    <img class="ui small right floated image" data-action="zoom" src="images/mindMapAPIIntegration.png">
-    <p>In the picture on the right we explain some use cases of the most important APIs.</p>
-    <h3 class="ui header">              
-                    More information?</h3>
-    <div class="ui mini buttons">
-        <a href="http://integration.qlik.com/ " target="_blank " class="positive ui button ">Slide generator</a>
-        <div class="or"></div>
-        <a href="{{doc_processIntegration}}" target="_blank" class="ui button">Community</a>
-        <div class="or"></div>
-        <a href="http://qlikbranch-slack-invite.herokuapp.com/" target="_blank" class="ui button">Slack</a>
-        <div class="or"></div>
-        <a href="http://playground.qlik.com/" target="_blank" class="ui button">Playground</a>
-        <div class="or"></div>
-        <a href= {{pathFor 'videoOverview'}} class="ui button"><i class="youtube icon"></i>Video overview</a>
-    </div>
+    <h3 class="ui header">
+        API – Process integration</h3>
+    <img class="ui medium right floated image" alt="" data-action="zoom" src="images/API components overview.png">
+    <p>Integrate Qlik Sense in your SaaS automation or provisioning process using our .NET API and Visual Studio plugin.
+        Or, 
+        <a href="https://help.qlik.com/en-US/sense-developer/3.1/Content/APIs-and-SDKs.htm">APIs</a> to automate each
+        manual activity. Using this mechanism, you can create, delete, or reload apps for each of your customers. You
+        can even create complete dashboards or individual charts on the fly.</p>
 </template>
 <template name='APILogs'>
     <div class="ui text container">
         {{>APIIntroduction}} {{> APISourceCode}}
-        <div class="center aligned column">
-            <div class="ui mini buttons">
-                <a href="{{doc_sourceCode}}" target="_blank" class="ui button">Source code guide</a>
-                <div class="or"></div>
-                <a href="{{doc_demo_setup_instructions}}" target="_blank" class="ui button">Setup your own SaaSDemo server</a>
-            </div>
-        </div>
-        {{> sequenceDiagrams}}
     </div>
-    <div class="sixteen wide column">
-        <div class="ui divider"></div>
-        {{> ApiLogsTable}}
-    </div>
-    <div class="ui fullscreen modal sequenceGeneration">
-        <i class="close icon"></i>
-        <div class="ui header">Deep dive sequence diagram of the generation part</div>
-        <div class="description">
-            <p>In this schema you will see the flow from the user requesting generation page via a click on the button on the introduction page. We skip the part of the user inserting customers and selecting a template. The thing which is explained on this page is the interaction between Meteor, Qlik Sense QRS and Engine APIs. In general you perform activities on QMC level with the QRS API and stuff inside an app with the Engine API.</p>
-        </div>
-        {{> sequenceDiagramGeneration}}
-        <div class="actions">
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
-    <div class="ui fullscreen modal sequenceOverview">
-        <i class="close icon"></i>
-        <div class="ui header">Sequence diagram of high level source code interaction</div>
-        <div class="description">
-            <p>In this schema you will see the flow from the user requesting the demo page, though the source code of this demo platform to Qlik Sense and back</p>
-        </div>
-        {{> sequenceDiagramOverview}}
-        <div class="actions">
-            <div class="ui positive right labeled icon button">
-                I got it...
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
-    {{>modalSaaSautomation}} {{>APIIntegrationMindMap}}
 </template>
 <template name="APISourceCode">
     <h3>Use the demo source code</h3>
-    <p>This demo platform provides you with a wrapper around the Qlik Sense <a href="https://help.qlik.com/en-US/sense/3.1/Content/Videos/Videos-qmc-intro.htm">QMC</a>, so you can send API calls to Qlik Sense by pressing certain buttons. Using these calls you can, for example, create streams and apps or complete any other activity that you’d be able to do in the QMC or app. Your SaaS platform most likely uses rest APIs already, so just copy the code and start automating. The tasks we have automated are what we refer to as the "generation.” These key steps that should be completed for each new customer are:
-        <!-- <img class="ui small left floated image" src="images/API.png"> -->
+    <p>This demo platform provides you with a wrapper around the  <a
+            href="https://help.qlik.com/en-US/sense/3.1/Content/Videos/Videos-qmc-intro.htm">Qlik Sense QMC</a>, so you can send
+        API calls to Qlik Sense by pressing certain buttons. Using these calls you can, for example, create streams and
+        apps or complete any other activity that you’d be able to do in the QMC or app. Your SaaS platform most likely
+        uses rest APIs already, so just copy the code and start automating. The tasks we have automated are what we
+        refer to as the "generation.” These key steps that should be completed for each new customer are:
         <br>
-        <ul class="ui list">
-            <li><a target="_blank" href="{{github_create_stream}}">Create a new stream with the customer’s name</a></li>
-            <li><a target="_blank" href="{{github_copy_app}}">Copy the template app</a> (note: you can also create apps on the fly using <a href="https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/CreatingAppLoadingData/CreateApps/create-app.htm">"session apps"</a>. For example, you can <a href="https://github.com/mindspank/sessionapp-simple/blob/master/index.js#L48">copy the app</a> and populate it with real time data in a couple of seconds when a user logs in.)</li>
-            <li><a target="_blank" href="{{github_replace_and_reload_app}}">Replace the script and reload the app.</a></li>
-            <li><a target="_blank" href="{{github_publish_app}}">Publish the app in the customer stream</a></li>
-        </ul>
+    <ul class="ui list">
+        <li><a target="_blank" href="{{github_create_stream}}">Create a new stream with the customer’s name</a></li>
+        <li><a target="_blank" href="{{github_copy_app}}">Copy the template app</a> (note: you can also create apps on
+            the fly using <a
+                href="https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/EngineAPI/Content/CreatingAppLoadingData/CreateApps/create-app.htm">"session
+                apps"</a>. For example, you can <a
+                href="https://github.com/mindspank/sessionapp-simple/blob/master/index.js#L48">copy the app</a> and
+            populate it with real time data in a couple of seconds when a user logs in.)</li>
+        <li><a target="_blank" href="{{github_replace_and_reload_app}}">Replace the script and reload the app.</a></li>
+        <li><a target="_blank" href="{{github_publish_app}}">Publish the app in the customer stream</a></li>
+    </ul>
     </p>
 </template>
 <template name="ApiLogsTable">
     {{> sAlert}}
     {{#if restrictedApiLogs.count}}
-        <h3 class="ui header">API interaction overview (logging)</h3>
+    <h3 class="ui header">API interaction overview (logging)</h3>
 
-        <p>In the table below you will see a real time overview of JSON messages being sent between this SaaS platform and the Qlik Sense QRS and the Engine API. You can search for specific words like app, stream, SSO, ticket, logout etc. to view the request and the response from Qlik Sense.</p>
-        <!-- {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}} -->
-        <table class="ui fixed table apiLogs">
-            <thead>
-                <tr>
-                    <th class="two wide">Action</th>
-                    <th class="six wide">Request</th>
-                    <th class="eight wide">Response</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each restrictedApiLogs}}
-                    <tr>
-                        <td>
-                            {{#if url}}
-                                <a href="{{url}}" target="_blank"> {{action}}</a>
-                            {{else}}
-                                {{action}}
-                            {{/if}}
-                        </td>
-                        <td>
-                            {{request}}
-                        </td>
-                        <td>
-                            {{#if response}}
-                                <pre><code>{{{formattedResponse response}}}</code></pre>
-                            {{/if}}
-                        </td>
-                    </tr>
-                {{/each}}
-            </tbody>
-        </table>
+    <p>In the table below you will see a real time overview of JSON messages being sent between this SaaS platform and
+        the Qlik Sense QRS and the Engine API. You can search for specific words like app, stream, SSO, ticket, logout
+        etc. to view the request and the response from Qlik Sense.</p>
+    <!-- {{> reactiveTable collection=restrictedApiLogs settings=RESTCallSettings}} -->
+    <table class="ui fixed table apiLogs">
+        <thead>
+            <tr>
+                <th class="two wide">Action</th>
+                <th class="six wide">Request</th>
+                <th class="eight wide">Response</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each restrictedApiLogs}}
+            <tr>
+                <td>
+                    {{#if url}}
+                    <a href="{{url}}" target="_blank"> {{action}}</a>
+                    {{else}}
+                    {{action}}
+                    {{/if}}
+                </td>
+                <td>
+                    {{request}}
+                </td>
+                <td>
+                    {{#if response}}
+                    <pre><code>{{{formattedResponse response}}}</code></pre>
+                    {{/if}}
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
     {{else}}
-        <div class="ui text container" style="margin-top:0px">
-            <h3 class="ui header">API interaction overview (logging)</h3>
-            <div class="ui segment">
-  <div class="ui active inverted dimmer">
-    <div class="ui text loader">Loading</div>
-  </div>
-                    <p>Please wait for the API logs to be shown. Or if you haven't already, please <a href= {{pathFor 'generation'}}>generate</a> some apps in the SaaS demo or try to login as a user, for example in step 4 of the SaaS demo or via the "self service" demo. This will generate some logging which you can investigate. It will also provide you links to the source code.</p>
-</div>
-            
+    <div class="ui text container" style="margin-top:0px">
+        <h3 class="ui header">API interaction overview (logging)</h3>
+        <div class="ui segment">
+            <div class="ui active inverted dimmer">
+                <div class="ui text loader">Loading</div>
+            </div>
+            <p>Please wait for the API logs to be shown. Or if you haven't already, please <a
+                    href={{pathFor 'generation'}}>generate</a> some apps in the SaaS demo or try to login as a user, for
+                example in step 4 of the SaaS demo or via the "self service" demo. This will generate some logging which
+                you can investigate. It will also provide you links to the source code.</p>
         </div>
+
+    </div>
 
     {{/if}}
 </template>
 <template name="sequenceDiagrams">
-    <h3>Sequence diagrams</h3>
-    <!--     <img class="ui small left floated image" src="images/Sequence diagram generation 1.png">
--->
-    <p>Understanding someone else's source code is complex, so we’ve provided both a high level and more granular sequence diagram to better demonstrate multi-tenant app publishing.</p>
-    <div class="center aligned column">
-        <div class="ui mini buttons">
-            <a href="http://knsv.github.io/mermaid/live_editor/#/view/c2VxdWVuY2VEaWFncmFtCkJyb3dzZXItPj5pbnRybyBwYWdlOiBjbGllbnRcbWFpbi5qcwpOb3RlIHJpZ2h0IG9mIGludHJvIHBhZ2U6IChpcm9uKXJvdXRlciBsb2FkcyB0ZW1wbGF0ZSBmb3Igcm91dGUgcGF0aCAvLiBjbGllbnRcbWFpbi5qcyBsb2FkcyBhbGwganMgYW5kIGh0bWwgaW4gXGltcG9ydHMgaW5jbHVkaW5nIHJvdXRlci5qcyB0aGF0IG1hcHMgdXJscyB0byBibGF6ZSB0ZW1wbGF0ZXMuIEFsbCB0ZW1wbGF0ZXMgYXJlIGxvY2F0ZWQgaW4gaW1wb3J0c1x1aS4gQWxsIHBhZ2VzIHVzZSB0aGUgc2FtZSBsYXlvdXQgd2l0aCB0aGUgaGVhZGVyIGFuZCBmb290ZXIuIFRoZSBjZW50ZXIgY29udGVudCAoeWllbGQgaW4gbGF5b3V0Lmh0bWwpIGlzIHJlcGxhY2VkIGJ5IHRoZSByb3V0ZXIuIFRoZSBsYXlvdXQgZW5naW5lIHVzZWQgaXMgQmxhemUsIHdoaWNoIHVzZXMgc3BhY2ViYXJzIChhIGZvcmsgb2YgSGFuZGxlYmFycykKaW50cm8gcGFnZS0tPj4gQnJvd3Nlcjogc2hvdyBpbnRyb2R1Y3Rpb24gdmlkZW9zIHBhZ2UKQnJvd3Nlci0-PiBHZW5lcmF0aW9uIHRlbXBsYXRlOiB1c2VyIGNsaWNrcyBkZW1vIGJ1dHRvbiB3aGljaCBvcGVucyBcZ2VuZXJhdGlvbiBwYXRoIGFuZCAgY29ycmVzcG9uZGluZyB0ZW1wbGF0ZQpOb3RlIHJpZ2h0IG9mIEdlbmVyYXRpb24gdGVtcGxhdGU6IEVhY2ggdGVtcGxhdGUgaGFzIGV2ZW50cyBhbmQgaGVscGVycyB3aGljaCBjb21tdW5pY2F0ZSB3aXRoIHRoZSBzZXJ2ZXIuIEhlbHBlcnMgY3JlYXRlIHJlYWR5IHRvIHVzZSBkYXRhLCBzbyB0aGF0IHRoZSBIVE1MIHJlbWFpbnMgc2ltcGxlLiBFdmVudHMgYXJlIHRyaWdnZXJlZCB3aGVuIHRoZSB1c2VyIGNsaWNrcyBvbiBzb21ldGhpbmcuCkdlbmVyYXRpb24gdGVtcGxhdGUtPj5TZXJ2ZXI6TWV0ZW9yLmNhbGwoImdldEFwcHMiKSB0aGUgc2VydmVyIGhhcyBtZXRob2RzIGZvciBlYWNoIGZ1bmN0aW9uLgpOb3RlIHJpZ2h0IG9mIFNlcnZlcjogU2VydmVyIHNpZGUgb2YgbWV0ZW9yIHNzdGFydHMgd2l0aCBzZXJ2ZXIvbWFpbi5qcyB0aGlzIGZpbGUgY29udGFpbnMgdGhlIE1ldGVvciBtZXRob2RzLiBUaGlzIGZpbGUgYWxzbyBpbXBvcnRzIGl0cyBkZXBlbmRlbmNpZXMuIExpa2UgdGhlIFNlbnNlIGZ1bmN0aW9ucy4KU2VydmVyLT4-QXBwRnVuY3Rpb25zOiBhIGZpbGUgcGVyIFNlbnNlIHR5cGUKTm90ZSByaWdodCBvZiBTZXJ2ZXI6IGEgZmlsZSBmb3IgUVBTLCBhcHBzLCBzdHJlYW1zLCBzeXN0ZW1ydWxlcwpOb3RlIHJpZ2h0IG9mIEFwcEZ1bmN0aW9uczogTWV0ZW9yIHNlcnZlciBzaWRlIGNvbW11bmljYXRlcyB3aXRoIFFsaWsgU2Vuc2UgdXNpbmcgUVJTIFJFU1QgYW5kIGVuZ2luZSAocXNvY2tzKSBBUEkgZm9yIHJlbG9hZHMuIEFsbCBjYWxscyBiZXR3ZWVuIE1ldGVvciBhbmQgU2Vuc2UgZ28gdmlhIGpzIGluIGltcG9ydHNcYXBpXHNlcnZlci4gVGhlIGFwcEZ1bmN0aW9ucyBhbHNvIGNvbnRhaW4gdGhlIGFwcCBnZW5lcmF0aW9uIGNoYWluIG9mIGV2ZW50cy4gKENvcHksIGRlbG" class="ui button" target="_blank">High level diagram</a>
-            <div class="or"></div>
-            <a href="https://is.gd/6ics9x" target="_blank" class="ui button">Generation diagram</a>
-            <div class="or"></div>
-            <a href="{{seq_ticketing_flow}}" target="_blank" class="ui button">Single Sign on (ticketing)</a>
-        </div>
-    </div>
+
 </template>
 <template name="APIIntegrationMindMap">
     <div class="ui modal APIIntegrationMindMap">

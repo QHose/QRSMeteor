@@ -12,10 +12,10 @@
     </div> -->
 </template>
 <template name="introductionArchitecturePage">
-    <img class="ui medium right floated image" data-action="zoom" src="images/architecture - OEM  SaaS scenario simple.png">
+    <img class="ui medium right floated image" data-action="zoom" alt="" src="images/architecture - OEM  SaaS scenario simple.png">
     <p> The integration of two software platforms entails multiple considerations. Each platform has its own nuances. In our approach here, we deconstruct our integration approach into the following categories: dashboard, data, security, web, APIs and architecture.</p>
     <h4>Integration flow summary</h4>
-    <p>The picture below outlines the key integration aspects.
+    <p>
         <UL>
             <li> A user logs in into your multi-tenant SaaS application platform. Your platform contains some Qlik Sense information in an IFrame or DIV tag.</li>
             <li>The proxy intercepts the request and redirects the user to the authentication module of your SaaS platform. Your platform knows the identity and group membership of the user and It requests an access ticket for this user.</li>
@@ -23,15 +23,15 @@
             <li> Now the authentication is complete and Qlik Sense will evaluate the security rules and will only present the authorized streams and apps to the user.</li>
         </UL>
     </p>
-    <img class="ui centered image" data-action="zoom" src="images/summary_integrated_architecture.png">
+    <img class="ui centered image" data-action="zoom" alt="" src="images/summary_integrated_architecture.png">
     <div class="ui divider"></div>
     <h4>Web integration</h4>
-    <img class="ui small left floated image" data-action="zoom" src="images/web - the qlik advantage css html javascript angular.png">
+    <!-- <img class="ui small left floated image" data-action="zoom" src="images/web - the qlik advantage css html javascript angular.png"> -->
     <p>You can integrate the Qlik Sense hub, apps, sheets or individual objects using an Iframe or DIV tag. All functionality is delivered via a webserver called the proxy (QPS). The QPS also performs the authentication check and does the load balancing over the engines, and redirects the user to your SaaS platform to request the ticket if not yet authenticated via a session cookie.
     </p>
     <div class="ui divider"></div>
     <h4>Data integration</h4>
-    <img class="ui small left floated image" data-action="zoom" src="images/dataIntegrationIntro.png">
+    <!-- <img class="ui small left floated image" data-action="zoom" src="images/dataIntegrationIntro.png"> -->
 
     <p>A powerful <a href="http://www.qlik.com/us/products/data-sources">data integration capability</a> for cleansing, transforming, and unifying multiple, disparate data sources for analysis. A robust data integration layer creates a unified view of information from many different sources, without requiring external tools or data repositories.
     </p>
@@ -43,7 +43,7 @@
     <div class="ui divider"></div>
     <!-- <img class="ui tiny right floated image" src="images/id.png"> -->
     <h4>Security integration</h4>
-    <img class="ui small left floated image" data-action="zoom" src="images/QPS - introduction to security flow.png">
+    <img class="ui small left floated image" data-action="zoom"   alt="" src="images/QPS - introduction to security flow.png">
     <p>Actually you don't need to do so much on the security side. You don't create users or groups in Sense. You just supply the userID and group membership in the security ticket. Based on the info in the ticket access is provided. Resources are protected using the <a href="https://help.qlik.com/en-US/sense/3.1/Subsystems/ManagementConsole/Content/property-based-access-control.htm">security rules</a>, data filtering inside an app is enforced using <a href="https://help.qlik.com/en-US/sense/3.1/Subsystems/Hub/Content/Scripting/Security/manage-security-with-section-access.htm">"section access"</a>.</p>
     <div class="ui divider"></div>
     <h4>API - Process integration</h4>
@@ -59,7 +59,7 @@
             </ul>
         </div>
         <div class="column">
-            <img class="ui medium centered image" data-action="zoom" src="images/saas demo concept simple.png">
+            <img class="ui medium centered image" alt="" data-action="zoom" src="images/saas demo concept simple.png">
         </div>
     </div>
     <div class="ui divider"></div>
@@ -74,53 +74,27 @@
                     <li>A master configuration database</li>
                     <li>Your current API "broker"</li>
                 </ul>
-                <div class="ui mini buttons">
-                    <a class="ui button" href="/images/QlikSense%20TopologiesV0_18.pdf" target="_blank">Topology sheet</a>
-                    <DIV class="or"></DIV>
-                    <a class="ui button" href="{{doc_integrationOverview}}" target="_blank">Integration overview paper</a>
-                </div>
             </p>
         </div>
-        <div class="column">
+        <!-- <div class="column">
             <img class="ui centered medium image" data-action="zoom" src="images/integratedArchitecture.png">
-        </div>
+        </div> -->
     </div>
     <div class="ui divider"></div>
     <div class="ui three column centered grid">
         <DIV class="column"> {{> introVideoArchitecture}}
         </DIV>
-        <!-- <DIV class="column">{{> videoWebExtended}}</DIV> -->
     </DIV>
-    <!-- <div class="ui divider"></div>
-<h4>Qlik Sense Topology</h4>
-    <p> In the picture below you will find the key components of Qlik Sense.
-    </p>
-    <img class="ui large centered image" data-action="zoom" src="images/topology v0.18.png"> -->
 </template>
 <template name="introVideoArchitecture">
     <h4 class="ui header">Integrated architecture (3M)</h4>
-    <div class="ui embed" data-url="{{URL_Youtube_architecture_introduction}}" data-placeholder="/images/integratedArchitectureVideo.png"></div>
+    <a href="{{URL_Youtube_architecture_introduction}}">Video architecture introduction</a>
     <div class="item">
-        <!-- <div class="content">
-            <div class="meta">
-                <span></span>
-            </div>
-            <div class="description">
-                <p>Qlik Sense architecture integration considerations:</p>
-            </div>
-            <div class="extra">
-                <ul>
-                    <li>What are the Qlik Sense key components?</li>
-                    <li>How do you load data?</li>
-                    <li>How do you connect to the Qlik Sense Hub and management console (QMC)? </li>
-                    <li>Security integration and use of APIs</li>
-                </ul>
-            </div>
-        </div> -->
+    
     </div>
 </template>
 <template name="introVideoArchitectureMike">
-    <h4 class="ui header">Introduction architecture (5M)</h4>
+    <!-- <h4 class="ui header">Introduction architecture (5M)</h4>
     <div class="ui embed" data-url="https://www.youtube.com/embed/4w5mMar5o-M"></div>
     <div class="item">
         <div class="content">
@@ -131,10 +105,10 @@
                 <p>This video presents a brief overview of the Qlik Sense platform architecture.</p>
             </div>
         </div>
-    </div>
+    </div> -->
 </template>
 <template name="introVideoArchitectureMarcus">
-    <h4 class="ui header">Scalability (9M)</h4>
+    <!-- <h4 class="ui header">Scalability (9M)</h4>
     <div class="ui embed" data-url="https://www.youtube.com/embed/XZx9nKLR4ps"></div>
     <div class="item">
         <div class="content">
@@ -145,5 +119,5 @@
                 <p>Marcus Spitzmiller, Master Principal Enterprise Architect, presents this high level presentation which is targeted toward technical leaders (IT, BI) that need to understand how the capabilities within Qlik Sense enable visual analytics to be scaled within an organization.</p>
             </div>
         </div>
-    </div>
+    </div> -->
 </template>
