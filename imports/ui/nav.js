@@ -17,25 +17,25 @@ Template.nav.helpers({
   }
 });
 
-Template.sheetSelector.onRendered(function () {
-  //
-  // ─── CREATE POPUP ───────────────────────────────────────────────────────────────
-  //
-  this.$("#sheetSelector").popup({
-    title: "Select your content",
-    content:
-      "You are navigating in a 'presentation'. In this screen you can select the content based on your job (business or technical) and needs. If you are done, press the green button to start your personal presentation. You can press escape to get an overview, press ? for help or use your keyboard arrows to go to the next and previous slides.",
-    delay: {
-      show: 500,
-      hide: 0
-    }
-  });
+// Template.sheetSelector.onRendered(function () {
+//   //
+//   // ─── CREATE POPUP ───────────────────────────────────────────────────────────────
+//   //
+//   this.$("#sheetSelector").popup({
+//     title: "Select your content",
+//     content:
+//       "You are navigating in a 'presentation'. In this screen you can select the content based on your job (business or technical) and needs. If you are done, press the green button to start your personal presentation. You can press escape to get an overview, press ? for help or use your keyboard arrows to go to the next and previous slides.",
+//     delay: {
+//       show: 500,
+//       hide: 0
+//     }
+//   });
 
-  this.$(".selectSlides").transition({
-    animation: "flash",
-    duration: "16s"
-  });
-});
+//   this.$(".selectSlides").transition({
+//     animation: "flash",
+//     duration: "16s"
+//   });
+// });
 
 //
 // ─── CLICK EVENTS ON MENU ITEMS ─────────────────────────────────────────────────
@@ -43,28 +43,40 @@ Template.sheetSelector.onRendered(function () {
 
 Template.nav.events({
   "click a": function (event, template) {
-    event.preventDefault();
     var menuItem = event.currentTarget.id;
-    switch (menuItem) {
-      case "home":
-        window.location.replace('/');
-        break;
-      case "SSBI":
-        selectMenuItemInSense("*What is governed self service with Qlik Sense*");
-        break;
-      case "generation":
-        selectMenuItemInSense("*multi-tenant SaaS platform with Qlik Sense*");
-        break;
-      case "embedding":
-        selectMenuItemInSense("*embed Qlik Sense*");
-        break;
-      case "video":
-        var win = window.open('https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk', '_blank');
-        win.focus();
-        break;
-      case "sheetSelectorMenu":
-        Session.set("showSelector", true);
-        break;
+    console.log('menuItem', menuItem)
+    if (menuItem) {
+      event.preventDefault();
+      switch (menuItem) {
+        case "home":
+          window.location.replace('/');
+          break;
+        case "SSBI":
+          selectMenuItemInSense("*What is governed self service with Qlik Sense*");
+          break;
+        case "generation":
+          selectMenuItemInSense("*multi-tenant SaaS platform with Qlik Sense*");
+          break;
+        case "embedding":
+          selectMenuItemInSense("*embed Qlik Sense*");
+          break;
+        case "video":
+          var win = window.open('https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk', '_blank');
+          win.focus();
+          break;
+        case "sheetSelectorMenu":
+          Session.set("showSelector", true);
+          break;
+        case "sharePresentation":
+        console.log('sharePresentation')
+          var id = Session.get('currentSelectionId');
+          var shareLinkURL = window.location.origin + '/?selection=' + id;
+          //update the value of the helper for the share link popup
+          Session.set('shareLinkURL', shareLinkURL);
+      }
+    } else{
+      //set focus on main content
+      $(".present #maincontent").focus();
     }
   }
 });
@@ -84,7 +96,7 @@ export async function selectViaQueryId(mongoId) {
 
 // if people click on a menu item, you want a specific slide to be selected, so the slide is the value to search for...
 export async function selectMenuItemInSense(slide) {
-  console.log("selectMenuItemInSense - slide", slide);
+  // console.log("selectMenuItemInSense - slide", slide);
   Session.set("slideHeaders", null);
   await makeSearchSelectionInField("Level 2", slide);
   //get slides
@@ -93,7 +105,7 @@ export async function selectMenuItemInSense(slide) {
 }
 
 export async function makeSelectionInField(fieldName, value) {
-  console.log("makeSelectionInField", fieldName + " : " + value.toString());
+  // console.log("makeSelectionInField", fieldName + " : " + value.toString());
   try {
     var qix = await slideApp.getQix();
     var myField = await qix.app.getField(fieldName);
@@ -127,7 +139,7 @@ export async function makeSearchSelectionInField(fieldName, value) {
 //
 
 export async function makeSelectionInFields(selections) {
-  console.log("makeSelectionInFields(selections)", selections);
+  // console.log("makeSelectionInFields(selections)", selections);
   //for each qField
   selections.forEach(function (selectionField) {
     console.log("selectionField", selectionField);

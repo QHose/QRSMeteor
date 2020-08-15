@@ -55,7 +55,7 @@ Tracker.autorun(() => {
 // ONRENDERED.
 Template.useCaseSelection.onRendered(async function () {
     Session.set("showSelector", false);
-    
+    this.$("#flyoutnavkbfixed").focus(); 
 
     $(".ui.dropdown").dropdown("refresh");
     var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
@@ -151,7 +151,7 @@ Template.useCaseSelection.onRendered(async function () {
 //
 
 Template.useCaseSelection.events({
-    "click .button.slides": async function (e, t) {
+    "click .slides": async function (e, t) {
         Session.set("showSelector", true);
         Router.go("slides");
             
@@ -159,7 +159,7 @@ Template.useCaseSelection.events({
     "click #videoButton": async function (e, t) {
         nav.selectMenuItemInSense("*Video overview:*");
     },
-    "click a": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
+    "click ul.selectRole a": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
         var selectedRole = e.currentTarget.id;
         Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
@@ -176,7 +176,6 @@ Template.useCaseSelection.events({
 
 
 async function setSelectionInSense(field, value) {
-    console.log('setSelectionInSense field:' + field + ' value:' + value);
     try {
         var qix = await getQix();
         console.log('qix', qix)
@@ -187,7 +186,7 @@ async function setSelectionInSense(field, value) {
                 "qText": value
             }]
         )
-        console.log('result of setting a selection in Sense', result)
+        // console.log('result of setting a selection in Sense', result)
     } catch (error) {
         console.error('Error making selection in Sense ', error);
     }
@@ -199,7 +198,7 @@ async function getTicket() {
     } catch (error) {
         var message = 'We could not setup single sing on with Qlik Sense. See your console window for more information';
         console.error(message, error);
-        sAlert.error('Could not connect to Qlik Sense.');
+        sAlert.error('Could not get a tiket in order to enforce SSO to Qlik Sense.');
     }
 }
 

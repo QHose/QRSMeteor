@@ -1,5 +1,7 @@
 <template name="nav">
   <div class="ui container top secondary stackable menu mainNavBar">
+    <div class="column"> <a class="skip-main item" href="#maincontent">SKIP TO CONTENT</a>
+  </div>
     <div class="column"> <a id="home" href="{{pathFor 'useCaseSelection'}}"
         class="{{#if isMainLandingPage}} active {{/if}} item">
         HOME</a>
@@ -21,11 +23,16 @@
     <div class="column"><a id="video" href=""
         class="item"> VIDEOS</a>
     </div>
-    <div class=" right aligned column">
+    <div class="column">
       {{#if isPage}} 
       <a id="sheetSelectorMenu"  href="" class="item selectSlides"> CHANGE PRESENTATION</a>
       {{/if}}
     </div>
+    <div class="column">
+      {{#if isPage}} 
+      <a id="sharePresentation"  href="" class="item" data-micromodal-trigger="modal-1"> SHARE PRESENTATION</a>
+      {{/if}}
+    </div>  
   </div>
 
 </template>

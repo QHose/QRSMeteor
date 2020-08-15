@@ -1,7 +1,7 @@
 <!-- LAYOUT TEMPLATE -->
 <template name="SSBILayout">
     {{> yield "nav"}}
-    <div class="ui grid" style="margin: 0px">
+    <div class="ui grid" style="margin: 10px">
         {{> sAlert}}
         <div class="four wide column" style="max-width: 400px;">{{> yield "aside"}}</div>
         <div class="twelve wide column">{{> yield}}</div>
@@ -17,16 +17,14 @@
     </div>
 </template>
 <template name="SSBIUsers">
-    <h4 class="ui dividing header">Select a user {{currentUser}}</h4>
-    <div class="ui two column grid userList">
-        <div class="ui {{#if loading}} active {{/if}} inverted dimmer">
-            <div class="ui text loader">Logging in {{user}}...</div>
-        </div>
-        {{#unless loading}}
+    <h4  class="ui dividing header">Select a user {{currentUser}}</h4>
+    <div class="ui  grid userList">
+        <div class="ui text loader">Logging in {{user}}...</div>
         {{> userCards}}
-        {{/unless}}
         {{#if showSenseButtons}}
+        <div class="ui row">
         {{> senseButtons}}
+    </div>
         {{/if}}
     </div>
     {{> modalSSBI}}
@@ -35,7 +33,10 @@
     <div class="ui message">
         <i class="unlock alternate icon"></i>Here we demonstrate the effect of applying different access rights (derived
         from your platform) for some fictitious
-        users. Qlik on a user to automatically login into Qlik Sense "as this user".
+        users. Qlik on a user to automatically login into Qlik Sense "as this user". John can analyse data in predefined sheets and apps. He can only see
+        Germany. Linda can create her own sheets in predefined apps. She can only see
+        USA. Paul can maintain apps and sheets of his own department in the Qlik
+        Management Console (QMC). Martin can create his own sheets and apps. He can see all countries
         <div class="ui accordion">
             <div class="title">
                 <i class="dropdown icon"></i>Read more...
@@ -50,13 +51,13 @@
                     <a target="_blank" href="{{doc_sec_function_task_matrix}}">functions and tasks</a> to segregate
                     using the
                     <a href="{{pathFor 'securityRules'}}" target="_blank" class="item">security rules</a> are:
-                    <ul>
-                        <li>analyze (display) apps</li>
-                        <li>create own sheets</li>
-                        <li>create own apps</li>
-                        <li>publish into stream/community</li>
-                        <li>maintain the Qlik management console (QMC)</li>
-                    </ul>
+                <ul>
+                    <li>analyze (display) apps</li>
+                    <li>create own sheets</li>
+                    <li>create own apps</li>
+                    <li>publish into stream/community</li>
+                    <li>maintain the Qlik management console (QMC)</li>
+                </ul>
                 </p>
                 <h5 class="ui dividing header">Data restriction (row/column level security)</h5>
                 <p>You’ll see a simple solution in our demonstration where both of our fictitious users, Linda and John,
@@ -76,12 +77,12 @@
                     & columns). Try to switch a user and see the ticket request in the
                     <a href="{{pathFor 'ApiLogsTable'}}">API Logs</a>.</p>
                 <p></p>
-                <img class="ui small image" data-action="zoom"
+                <img class="ui small image" alt="" data-action="zoom"
                     src="images/flow - ticketing authentication for dummies.png" style="margin:20px">
                 <p></p>
                 <h5 class="ui dividing header">Integrated authorization overview</h5>
                 <!-- <p>  -->
-                <img class="ui small image" data-action="zoom" src="images/securityOverview.png" style="margin:20px">
+                <img class="ui small image" alt="" data-action="zoom" src="images/securityOverview.png" style="margin:20px">
                 <!-- </p> -->
             </div>
         </div>
@@ -89,103 +90,47 @@
 </template>
 <template name="senseButtons">
     <h4 class="ui dividing header">Select Qlik Sense page</h4>
-    <div class="ui four inverted fluid positive buttons">
-        <div class="ui button hub">Hub</div>
-        <div class="ui button sheet">App</div>
-        <div class="ui button app">Sheet</div>
-        <div class="ui button QMC">QMC</div>
+    <div class="ui blue  button box-content" style="margin-bottom: 129px;">
+        <nav role="presentation" aria-label="Main Navigation" class="" id="flyoutnavkbfixed">
+            <ul>
+                <li class="has-submenu">
+                    <a href="#flyoutnavkbfixed" aria-expanded="false" aria-haspopup="true"
+                        id="bodyDropdown">Which page do you want to embed?</a>
+                    <ul class="selectRole">
+                        <li><a class="hub" href="#" >Hub</a></li>
+                        <li><a href="#" class="sheet">App</a></li>
+                        <li><a href="#" class="app">Sheet</a></li>
+                        <li><a href="#" class="QMC">QMC</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
     </div>
+<!-- 
+    <ul role="menubar" aria-label="functions" id="appmenu">
+        <li class="hub" role="menuitem"> <a href="">Hub</a> </li>
+        <li class="sheet" role="menuitem"><a href="">App</a> </li>
+        <li class="app" role="menuitem"><a href="">Sheet</a></li>
+        <li class="QMC" role="menuitem"><a href="">QMC</a></li>
+    </ul> -->
+    
 </template>
 <template name="userCards">
-    <div class="column">
-        <div class="ui segment SSBI">
-            <div class="item">
-                <a class="ui tiny blurring dimmable image john ">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <div class="center">
-                                <div class="ui button consumer">Login</div>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="images/QlikConsumer.png">
-                </a>
-                <div class="content">
-                    <h5 class="header">Consumer</h5>
-                    <div class="meta">
-                        <span class="price">John can analyse data in predefined sheets and apps. He can only see
-                            Germany.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="column">
-        <div class="ui segment SSBI">
-            <div class="item">
-                <a class="ui tiny blurring dimmable image linda ">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <div class="center">
-                                <div class="ui button contributor">Login</div>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="images/QlikContributor.png">
-                </a>
-                <div class="content">
-                    <h5 class="header">Contributor</h5>
-                    <div class="meta">
-                        <span class="price">Linda can create her own sheets in predefined apps. She can only see
-                            USA.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="column">
-        <div class="ui segment SSBI">
-            <div class="item">
-                <a class="ui tiny blurring dimmable image martin">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <div class="center">
-                                <div class="ui button developer">Login</div>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="images/QlikDeveloper.png">
-                </a>
-                <div class="content">
-                    <h5 class="header">Developer</h5>
-                    <div class="meta">
-                        <span class="price">Martin can create his own sheets and apps. He can see all countries.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="column">
-        <div class="ui segment SSBI">
-            <div class="item">
-                <a class="ui tiny blurring dimmable image paul">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <div class="center">
-                                <div class="ui button admin">Login</div>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="images/QlikAdmin.png">
-                </a>
-                <div class="content">
-                    <h5 class="header">Admin</h5>
-                    <div class="meta">
-                        <span class="price">Paul can maintain apps and sheets of his own department in the Qlik
-                            Management Console (QMC).</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <div class="ui blue  button box-content" style="margin-bottom: 129px;">
+        <nav role="presentation" aria-label="Main Navigation" class="" id="flyoutnavkbfixed">
+            <ul>
+                <li class="has-submenu">
+                    <a href="#flyoutnavkbfixed" aria-expanded="false" aria-haspopup="true"
+                        id="bodyDropdown">Select your role</a>
+                    <ul class="selectRole">
+                        <li><a class="consumer" href="#" >John - Consumer</a></li>
+                        <li><a href="#" class="contributor">Linda - Contributor</a></li>
+                        <li><a href="#" class="developer">Martin - Developer</a></li>
+                        <li><a href="#" class="admin">Paul - Admin</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
     </div>
 </template>

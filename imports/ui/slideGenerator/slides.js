@@ -130,14 +130,6 @@ Template.slides.onRendered(function () {
     // });
 });
 
-Template.slide.events({
-    'click #sharePresentation': function (event, instance) {
-        var id = Session.get('currentSelectionId');
-        var shareLinkURL = window.location.origin + '/?selection=' + id;
-        //update the value of the helper for the share link popup
-        Session.set('shareLinkURL', shareLinkURL);
-    }
-});
 
 function addSlideChangedListener() {
     // console.log('!!!!!!!!!!!!! addSlideChangedListener')
@@ -188,7 +180,8 @@ Template.slideContent.helpers({
 
 Template.slideContent.onRendered(async function () {
     var template = this;
-    // $("div.slide-number > a").removeAttr("href"); werkt niet.
+
+    this.$("#maincontent").focus(); 
 
     //if the slide is shown, log it into the database
     Logger.insert({
@@ -590,7 +583,7 @@ function initializeReveal() {
                         }
                     }],
                 // slide size
-                width: '95%',
+                width: '80%',
                 height: '100%',
                 // Bounds for smallest/largest possible scale to apply to content
                 // minScale: 1,

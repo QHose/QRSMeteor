@@ -17,7 +17,7 @@
 
 .footer {
     height: 150px;
-    font-size: .8em;
+    font-size: 0.8em;
     /* background-image: url('./images/bg_footer.jpg'); */
     background-size: 100%;
     background-position: bottom right;
@@ -25,6 +25,10 @@
     /* background-color: #F8F0E5; */
     margin-top: 30px;
     padding-left: 0;
+}
+
+.footer a {
+    color: black;
 }
 
 .footer .ui.grid {
@@ -60,6 +64,10 @@
 .reveal .slide {
     text-align: left;
     /* margin-top: 10px */
+}
+
+.reveal .slideContent {
+    margin-top: 25px;
 }
 
 .reveal .slide .wrap{
@@ -577,6 +585,11 @@ body > div > div.twelve.wide.column > div > iframe {
 .modal {
     font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
   }
+
+  .modal__btn:focus, modal__close:focus {
+    /* outline: none;  */
+    border: 1px solid red;
+  }
   
   .modal__overlay {
     position: fixed;
@@ -772,7 +785,7 @@ body > div > div.twelve.wide.column > div > iframe {
   **************************/
   
   .modal__container button {
-      outline: none;
+      /* outline: none; */
       cursor: pointer !important;
   }
   

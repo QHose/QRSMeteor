@@ -1,43 +1,35 @@
 <template name="useCaseSelection">
-    <div class="ui vertically divided grid">
-        <div class="two column row">
+    <div class="ui grid">
+        <div class="two column row" style="margin-bottom: 115px;">
             <div class="column">
-                <h1>QLIK INTEGRATION</h1>
-                <p>Have embedding questions? Want to learn more about our embedding approaches, technology and relevant
-                    use
-                    cases
-                    with Qlik? We have answers – explore further.</p>
-                <p>Map your road to embedding analytics success here. Select your role to start your journey</p>
-                <p>
-                    <!-- <select class="ui dropdown" id="bodyDropdown">
-                        <option value="" disabled selected>Select your role</option>
-                    </select> -->
-                <figure class="sample show-overflow">
-                    <div class="box-content">
+              
+                    <h1 style="    font-size: 1.5rem;">QLIK SENSE INTEGRATION</h1>
+                    <p class="present" id="maincontent" tabindex="-1">Have embedding questions? Want to learn more about our embedding approaches, technology and
+                        relevant
+                        use
+                        cases
+                        with Qlik Sense Enterprise on Windows? We have answers – explore further.</p>
+                    <p>Map your road to embedding analytics success here. Select your role to start your journey</p>
+                    <p>
 
-                        <nav role="presentation" aria-label="Main Navigation" id="flyoutnavkbfixed">
+                    <div class="box-content" style="width: fit-content">
+                        <nav role="presentation" aria-label="Main Navigation" class="" id="flyoutnavkbfixed">
                             <ul>
                                 <li class="has-submenu">
                                     <a href="#flyoutnavkbfixed" aria-expanded="false" aria-haspopup="true"
                                         id="bodyDropdown">Select your role</a>
-                                    <ul>
-                                        <li><a href="" id="Developer">Developer</a></li>
-                                        <li><a href="" id="Hosting Ops">Hosting Ops</a></li>
-                                        <li><a href="" id="Business Analyst">Business Analyst</a></li>
-                                        <li><a href="" id="CTO">CTO</a></li>
-                                        <li><a href="" id="C-Level - non-technical">C-Level - non-technical</a></li>
+                                    <ul class="selectRole">
+                                        <li><a href="#" id="Developer">Developer</a></li>
+                                        <li><a href="#" id="Hosting Ops">Hosting Ops</a></li>
+                                        <li><a href="#" id="Business Analyst">Business Analyst</a></li>
+                                        <li><a href="#" id="CTO">CTO</a></li>
+                                        <li><a href="#" id="C-Level - non-technical">C-Level - non-technical</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </nav>
-
-
-
-
                     </div>
-                </figure>
-
-                </p>
+                    </p>
             </div>
             <div class="column">
                 <div class="ui fluid rounded image">
@@ -46,13 +38,24 @@
                 </div>
             </div>
         </div>
-        <div class="three column row">
+        <div class="three column row" style="margin-bottom: 50px">
             <div class="column">
                 <h2>Presentation explorer</h2>
                 <p>If you want more freedom, you can use the selection sheet to create a customized presentation. By
                     using a Qlik Sense app and some API's, we can dynamically
                     create a presentation that suits your needs.</p>
-                <a href="/slides" class="ui gray button slides">Start your presentation </a>
+                <div class="box-content">
+
+                    <nav role="presentation" aria-label="Main Navigation" id="flyoutnavkbfixed">
+                        <ul>
+                            <li class="has-submenu">
+                                <a href="/slides" class="slides" aria-expanded="false" aria-haspopup="false"
+                                    id="bodyDropdown">Start your presentation</a>
+
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
             <div class="column">
                 <p></p>

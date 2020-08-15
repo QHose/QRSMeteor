@@ -20,7 +20,7 @@
       {{#each slideHeaders }} {{#if chapterSlide this}}
       <section>
         <div class="ui integrationBreaker">
-          <h1 class="ui header" style="font-size: 40px; color: #0E2F4E; position: absolute;">
+          <h1 class="ui header" style="font-size: 1em; color: #0E2F4E; position: absolute; width: 60%;">
             Next: {{this}}
             <!-- The current level 1 and 2 headers -->
           </h1>
@@ -59,16 +59,11 @@
   <section class="slide">
     <div class="wrap">
       {{#if active slideNr}}
-      <h1> {{{level 1 slide}}}</h1>
+      <h1 id="maincontent" tabindex="-1"> {{{level 1 slide}}}</h1>
       <h2>{{{level 2 slide}}}
         <hr role="presentation">
       </h2>
-      <button id="sharePresentation" data-micromodal-trigger="modal-1" class="ui right floated button" style="
-      background-color: #870064;    
-      padding: 10px;
-      color: white;
-      margin-bottom: 10px;
-">Share this presentation</button>  
+     
       {{> slideContent slide=slide}}
       {{/if}}
     </div>
