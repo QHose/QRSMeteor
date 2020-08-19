@@ -1,40 +1,34 @@
 <template name="stepsRow">
     <div class="row">
         <div class="header">
-            <h4>Steps to finish the demo</h4>
+            <h3>Steps to finish the demo</h3>
         </div>
         {{> steps}}
     </div>
 </template>
 <template name='generation'>
-        {{> yourSaasPlatformMenu}}
+    {{> yourSaasPlatformMenu}}
     {{> stepsRow}}
     <div class="row">
-        <div class="ui three column grid">
-            <div class="eight wide column">
-                <h4 class="ui dividing header">
-                Your Saas Platform: admin panel </h4> {{> OEMPartner}}
+        <div class="ui stackable two column grid">
+            <div class="column">
+                <h3 class="ui dividing header">
+                    Your Saas Platform: admin panel </h3> {{> OEMPartner}}
             </div>
             {{# if step3or4}} {{> QlikSense}} {{/if}}
         </div>
     </div>
 </template>
 <template name="QlikSense">
-    <div class="two wide column">
-        <div class="ui vertical divider">
-            <h2 class="ui header">  
-                          <img alt="" class="icon" src="images/generate.png">
-                      </h2>
-        </div>
-    </div>
-    <div class="ui six wide column">
-        <h4 class="ui dividing header">
-                    Qlik Sense</h4>
+    <div class="column">
+        <h3 class="ui dividing header">
+            Qlik Sense</h3>
         <div class="ui styled fluid accordion">
             <div class="ui"> {{> generationStreams }}</div>
             <div class="ui "> {{> generationApps }}</div>
             <div class="ui {{#if loading}} active {{/if}} inverted dimmer">
-                <div class="ui indeterminate text loader">Your SaaS platform is now managing Qlik Sense via <a href="{{pathFor 'ApiLogsTable'}}" target="_blank">API calls</a> </div>
+                <div class="ui indeterminate text loader">Your SaaS platform is now managing Qlik Sense via <a
+                        href="{{pathFor 'ApiLogsTable'}}" target="_blank">API calls</a> </div>
             </div>
         </div>
     </div>
@@ -48,23 +42,13 @@
             </div>
         </div>
     </div>
-    <!-- <div class="ui accordion"> -->
-    <div class="title">
-        <h4 class="ui header">
-                        <i class="dropdown icon"></i>
-                        <img class="ui dropdown mini image" src="images/stream.png">
-                        <div class="content">
-                            {{countStreams}} Streams                            
-                        </div>
-                    </h4>
-    </div>
     <div class="content">
-        <!-- <h4 class="ui header">Received {{countStreams}} streams via the QRS API</h4> -->
+        <h4 class="ui header">  <img class="ui dropdown mini image" alt="" src="images/stream.png">Received {{countStreams}} streams via the QRS API</h4>
         {{> reactiveTable settings=streamSettings}}
     </div>
-    <!-- </div> -->
 </template>
 <template name="generationApps">
+
     <div class="ui dimmer">
         <div class="content">
             <div class="center">
@@ -74,18 +58,9 @@
         </div>
     </div>
     <!-- <div class="ui accordion"> -->
-    <div class="title">
-        <h4 class="ui header">
-                            <i class="dropdown icon"></i>
-                            <img class="ui dropdown mini image" src="images/app.png">
-                            <div class="content">
-                               {{countApps}} Apps                         
-                            </div>
-                        </h4>
-    </div>
     <div class="{{#if readyToSelectTemplate}}active{{/if}} content">
-        <!-- <h2 class="ui header">Received {{countApps}} apps via the QRS API</h2> -->
+        <h4 class="ui header">            <img class="ui dropdown mini image" alt="" src="images/app.png">
+            Received {{countApps}} apps via the QRS API</h4>
         {{> reactiveTable settings=appSettings}}
-        <!-- </div> -->
     </div>
 </template>

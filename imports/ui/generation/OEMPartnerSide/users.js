@@ -133,6 +133,7 @@ Template.users.events({
     },
     'click .backToGeneration' () {
         console.log('go to step 2 clicked')
+        event.preventDefault();
         Session.set('currentStep', 2);
         Router.go('generation_embedded');
     },

@@ -40,11 +40,13 @@ Template.nav.helpers({
 //
 // ─── CLICK EVENTS ON MENU ITEMS ─────────────────────────────────────────────────
 //
+import { initQlikSense } from "/imports/ui/useCases/useCaseSelection";
+
 
 Template.nav.events({
   "click a": function (event, template) {
     var menuItem = event.currentTarget.id;
-    console.log('menuItem', menuItem)
+    initQlikSense();
     if (menuItem) {
       event.preventDefault();
       switch (menuItem) {
@@ -68,7 +70,6 @@ Template.nav.events({
           Session.set("showSelector", true);
           break;
         case "sharePresentation":
-        console.log('sharePresentation')
           var id = Session.get('currentSelectionId');
           var shareLinkURL = window.location.origin + '/?selection=' + id;
           //update the value of the helper for the share link popup
@@ -120,10 +121,10 @@ export async function makeSelectionInField(fieldName, value) {
 
 //https://qlikcore.com/docs/services/qix-engine/apis/qix/field/#select
 export async function makeSearchSelectionInField(fieldName, value) {
-  console.log(
-    "make search SelectionInField",
-    fieldName + " : " + value.toString()
-  );
+  // console.log(
+  //   "make search SelectionInField",
+  //   fieldName + " : " + value.toString()
+  // );
   try {
     var qix = await slideApp.getQix();
     var myField = await qix.app.getField(fieldName);
@@ -142,17 +143,17 @@ export async function makeSelectionInFields(selections) {
   // console.log("makeSelectionInFields(selections)", selections);
   //for each qField
   selections.forEach(function (selectionField) {
-    console.log("selectionField", selectionField);
+    // console.log("selectionField", selectionField);
     //for each selected value (qSelectedFieldSelectionInfo) (e.g. country can have germany and france selected)
     var selectValues = [];
     selectionField.qSelectedFieldSelectionInfo.forEach(function (fieldValue) {
-      console.log("fieldValue", fieldValue);
+      // console.log("fieldValue", fieldValue);
       selectValues.push({
         qText: fieldValue.qName,
         qIsNumeric: false,
         qNumber: 0
       });
-      console.log("selectValues", selectValues);
+      // console.log("selectValues", selectValues);
     });
     makeSelectionInField(selectionField.qField, selectValues);
   });

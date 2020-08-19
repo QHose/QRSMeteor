@@ -30,9 +30,15 @@ html {
     padding: 30px 0px 30px 0px;
 }
 
-.buttons .button:focus {
+.positive.button:focus,
+.ui.dropdown .menu > .item.selected
+.ui.dropdown .menu > .item:hover,
+basic.button:focus,
+ basic.button:hover,
+ .button:focus,
+ .button:hover {
     outline: medium dotted black;
-    background-color: #f9a900;
+    background-color: #f9a900 !important;
     color: #fff;
     text-shadow: none;
 }
@@ -71,17 +77,20 @@ html {
 
 #qlikFooter h2.ui.header {
     font-size: 0.9rem;
+    left: 36px;
+    position: relative;
 }
 
 #qlikFooter a {
     text-decoration: none;
+    font-size: 0.8em;
 
 }
 
 #qlikFooter ul {
     list-style-type: none;
     margin-bottom: 0.5em;
-    padding: 10px;
+    margin-left: 0px;
 }
 
 #qlikFooter li {
@@ -137,7 +146,6 @@ pre {
     margin: 2em -4em 2em 5em;
 }
 
-
 /* DROPDOWN FOR WCAG */
 
 .show-overflow {
@@ -182,11 +190,13 @@ pre {
 }
 
 #flyoutnavkbfixed a:hover,
-#flyoutnavkbfixed a:focus {
+#flyoutnavkbfixed a:focus,
+.ui.button a:hover {
     background-color: #fff;
     color: #1C355E;
     border: 1px solid #1C355E;
     text-decoration: underline;
+    
 }
 
 #flyoutnavkbfixed .current {
@@ -293,3 +303,4 @@ a.skip-main:focus, a.skip-main:active {
     font-size:1.2em;
     z-index:999;
 }
+

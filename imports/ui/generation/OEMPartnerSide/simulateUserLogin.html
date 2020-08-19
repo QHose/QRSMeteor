@@ -5,32 +5,55 @@
             <div class="header">
                 <h4>Simulate a user login</h4>
             </div>
-            Try different users and notice the difference in visible streams, apps and access to functionality. Notice that each user can only see their own "company space" in Qlik Sense, and users with role
+            Try different users and notice the difference in visible streams, apps and access to functionality. Notice
+            that each user can only see their own "company space" in Qlik Sense, and users with role
             <ul>
                 <li>Consumer can only display</li>
                 <li>Contributor can create sheets</li>
                 <li>Developer can create apps and load data</li>
                 <li>Admin can maintain apps in the QMC</li>
-                <li>Global auditor can display all apps and <a class="item" href="{{senseServerQMC}}" target="_blank">settings</a></li>
+                <li>Global auditor can display all apps and <a class="item" href="{{senseServerQMC}}"
+                        target="_blank">settings</a></li>
             </ul>
-            <div class="ui fluid selection dropdown">
+            <div class="box-content" style="width: fit-content">
+                <nav role="presentation" aria-label="Main Navigation" class="" id="flyoutnavkbfixed">
+                    <ul>
+                        <li class="has-submenu">
+                            <a href="#flyoutnavkbfixed" aria-expanded="false" aria-haspopup="true"
+                                id="bodyDropdown">Select your user  </a>
+                            <ul class="selectRole">
+
+                                {{#each customers}}
+                                {{#each users}}
+                                <li><a href="#" id="{{name}}" > <i class="male icon"></i> {{name}} ({{group}} -
+                                        {{../name}}</a></li>
+                                {{/each}}
+                                {{/each}}
+
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- <div class="ui fluid selection dropdown" aria-haspopup="listbox"
+            aria-labelledby="selectUser">
                 <input id="currentUser" type="hidden">
                 <i class="user icon"></i>
                 {{#if currentUser}} {{currentUser}} {{else}}
-                    <div class="default text">Select a user</div>
+                    <div id="selectUser" class="default text">Select a user</div>
                 {{/if}}
                 <i class="dropdown icon"></i>
                 <div class="menu">
                     <div class="header">Users from step 1</div>
                     {{#each customers}}
                         {{#each users}}
-                            <div class="item" data-value="{{name}}" data-text="{{name}}">
+                            <div role="option" class="item" data-value="{{name}}" data-text="{{name}}">
                                 <i class="male icon"></i> {{name}} ({{group}} - {{../name}})
                             </div>
                         {{/each}}
                     {{/each}}
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

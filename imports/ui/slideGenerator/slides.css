@@ -49,6 +49,11 @@
     min-height: calc(100vh - 48px);
 }
 
+.reveal .zBullet {
+    max-width: 80%;
+    margin-left: 10px;
+}
+
 ::selection {
     color: #fff;
     background: #00c99d;
@@ -112,7 +117,7 @@
 .reveal h4,
 .reveal h5,
 .reveal h6 {
-    margin: 20px 0 20px 0;
+    margin: 20px 0 0px 0;
     color: #0E2F4E;
     font-family: "Fira Sans", Helvetica, sans-serif;
     font-weight: 600;
@@ -202,7 +207,7 @@ body > div > div.twelve.wide.column > div > iframe {
 
 .reveal iframe {
     width: 100vw;
-    height: calc(90vh - 400px);
+    height: calc(100vh - 100px);
     margin: 0px 0px 20px 0px;
     min-height: 600px;
     max-width: 100%;   

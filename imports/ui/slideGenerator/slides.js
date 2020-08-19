@@ -583,7 +583,7 @@ function initializeReveal() {
                         }
                     }],
                 // slide size
-                width: '80%',
+                width: '100%',
                 height: '100%',
                 // Bounds for smallest/largest possible scale to apply to content
                 // minScale: 1,
