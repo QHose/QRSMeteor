@@ -17,7 +17,8 @@
     </div>
 </template>
 <template name="SSBIUsers">
-    <h4  class="ui dividing header">Select a user {{currentUser}}</h4>
+    <h4  class="ui dividing header" style="position: relative;
+    left: -13px; margin-top: 20px;" >Users: {{currentUser}}</h4>
     <div class="ui  grid userList">
         <div class="ui text loader">Logging in {{user}}...</div>
         {{> userCards}}
@@ -31,16 +32,17 @@
     <h4 class="ui dividing header">What are we trying to demonstrate here?</h4>
 
     <div class="ui message">
-        <i class="unlock alternate icon"></i>Here we demonstrate the effect of applying different access rights (derived
+        <i class="unlock alternate icon"></i>
+        Here we demonstrate the effect of applying different access rights (derived
         from your platform) for some fictitious
         users. Qlik on a user to automatically login into Qlik Sense "as this user". John can analyse data in predefined sheets and apps. He can only see
         Germany. Linda can create her own sheets in predefined apps. She can only see
         USA. Paul can maintain apps and sheets of his own department in the Qlik
-        Management Console (QMC). Martin can create his own sheets and apps. He can see all countries
-        <div class="ui accordion">
-            <div class="title">
+        Management Console (QMC). Martin can create his own sheets and apps and can display all countries. <br/><br/>
+        <!-- <div class="ui accordion"> -->
+            <!-- <div class="title">
                 <i class="dropdown icon"></i>Read more...
-            </div>
+            </div> -->
             <div class="content">
                 <h5 class="ui dividing header">Resource restriction</h5>
                 <p>The main goal is to show you how you can create a solid governed
@@ -75,7 +77,7 @@
                     userId and his auhtorizations (groups). These groups can be used to restrict resources as well as
                     data (rows
                     & columns). Try to switch a user and see the ticket request in the
-                    <a href="{{pathFor 'ApiLogsTable'}}">API Logs</a>.</p>
+                    <a target="" href="{{pathFor 'ApiLogsTable'}}">API Logs</a>.</p>
                 <p></p>
                 <img class="ui small image" alt="" data-action="zoom"
                     src="images/flow - ticketing authentication for dummies.png" style="margin:20px">
@@ -85,12 +87,12 @@
                 <img class="ui small image" alt="" data-action="zoom" src="images/securityOverview.png" style="margin:20px">
                 <!-- </p> -->
             </div>
-        </div>
+        <!-- </div> -->
     </div>
 </template>
 <template name="senseButtons">
     <h4 class="ui dividing header">Select Qlik Sense page</h4>
-    <div class="ui blue  button box-content" style="margin-bottom: 129px;">
+    <div class="ui blue button box-content" style="margin-bottom: 129px;">
         <nav role="presentation" aria-label="Main Navigation" class="" id="flyoutnavkbfixed">
             <ul>
                 <li class="has-submenu">
@@ -117,12 +119,12 @@
 </template>
 <template name="userCards">
 
-    <div class="ui blue  button box-content" style="margin-bottom: 129px;">
+    <div class="ui blue button box-content" style="margin-bottom: 129px; margin-top: 12px;">
         <nav role="presentation" aria-label="Main Navigation" class="" id="flyoutnavkbfixed">
             <ul>
                 <li class="has-submenu">
                     <a href="#flyoutnavkbfixed" aria-expanded="false" aria-haspopup="true"
-                        id="bodyDropdown">Select your role</a>
+                        id="bodyDropdown">Select your user</a>
                     <ul class="selectRole">
                         <li><a class="consumer" href="#" >John - Consumer</a></li>
                         <li><a href="#" class="contributor">Linda - Contributor</a></li>

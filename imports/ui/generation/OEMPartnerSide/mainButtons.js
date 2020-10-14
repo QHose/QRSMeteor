@@ -34,7 +34,7 @@ Template.mainButtons.events({
             if (err) {
                 sAlert.error(err);
             } else {
-                sAlert.success('All customers have been deleted from the local database of the SaaS platform');
+                // sAlert.success('All customers have been deleted from the local database of the SaaS platform');
             }
         });
     },

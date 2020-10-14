@@ -29,7 +29,7 @@ import './users.html';
 //http://www.webtempest.com/meteor-js-autoform-tutorial
 AutoForm.addHooks(['insertCustomerForm'], {
     onSuccess: function(operation, result, template) {
-        sAlert.success('We inserted the customer into your local MongoDB.');
+        // sAlert.success('We inserted the customer into your local MongoDB.');
         //Router.go("/posts");
     },
     // before: {
@@ -112,7 +112,7 @@ Template.updateGroupsFormStep1.events({
         };
 
         Meteor.call('updateUserForCustomer', updatedUser);
-        sAlert.success('Groups are updated for ' + updatedUser.name);
+        // sAlert.success('Groups are updated for ' + updatedUser.name);
     }
 });
 

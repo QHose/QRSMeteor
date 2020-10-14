@@ -358,7 +358,7 @@ async function login(passport) {
         console.log('login: the url to open is: ', URLtoOpen);
 
         // getCurrentUserLoggedInSense();
-        sAlert.success(passport.UserId + ' is now logged in into Qlik Sense');
+        // sAlert.success(passport.UserId + ' is now logged in into Qlik Sense');
         Session.set('IFrameUrl', URLtoOpen);
         // $('.SSBI .image.' + passport.UserId).css('background', '#62AC1E');
     } catch (err) {

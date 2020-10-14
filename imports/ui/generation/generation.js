@@ -184,7 +184,7 @@ Template.generation.events({
                         if (error) {
                             sAlert.error(error);
                         } else {
-                            sAlert.success("QVF '" + currentApp.name + " copied in Qlik Sense via the QRS API for each of the selected customers");
+                            // sAlert.success("QVF '" + currentApp.name + " copied in Qlik Sense via the QRS API for each of the selected customers");
                         }
                     }) //method call 
             }
@@ -198,7 +198,7 @@ Template.generation.events({
                             console.log(error);
                         } else {
                             console.log('app removed');
-                            sAlert.success("APP " + currentApp.name + " deleted in Qlik Sense via the QRS API");
+                            // sAlert.success("APP " + currentApp.name + " deleted in Qlik Sense via the QRS API");
                         }
                     }) //method call 
             } //end if delete button is clicked 
@@ -213,7 +213,7 @@ Template.generation.events({
                             console.log(error);
                         } else {
                             console.log('Stream removed');
-                            sAlert.success('Stream: ' + currentStream.name + " deleted in Qlik Sense via the QRS API");
+                            // sAlert.success('Stream: ' + currentStream.name + " deleted in Qlik Sense via the QRS API");
                         }
                     }) //method call 
             } //delete stream event target

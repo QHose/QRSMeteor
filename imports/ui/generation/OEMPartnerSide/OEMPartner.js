@@ -84,7 +84,7 @@ Template.OEMPartner.events({
             } else {
                 Session.set('loadingIndicator', '');
                 Session.set('currentUser', null);
-                sAlert.success("Qlik Sense has been cleaned up: we have removed all previously provisioned streams and apps");
+                // sAlert.success("Qlik Sense has been cleaned up: we have removed all previously provisioned streams and apps");
             }
         });
         Session.set('currentStep', 0);
@@ -108,20 +108,20 @@ Template.OEMPartner.events({
                 Session.setAuth('generated?', true);
                 Session.setAuth('currentStep', 4);
                 console.log('generateStreamAndApp succes', result);
-                sAlert.success('We have created "a copy" of the template app for each customer. And to group the apps, we created a stream with the name of the customer');
+                // sAlert.success('We have created "a copy" of the template app for each customer. And to group the apps, we created a stream with the name of the customer');
             }
         });
     },
     'click .insertDummyCustomers' (event) {
         event.preventDefault();
         insertTemplateAndDummyCustomers();
-        sAlert.success('We have pre-selected some fictitious customers. Which apps will you provide your customers?');
+        // sAlert.success('We have pre-selected some fictitious customers. Which apps will you provide your customers?');
         Session.setAuth('currentStep', 2);
     },
     'click .goToStep3' (event) {
         if (TemplateApps.find().count()) {
             Session.setAuth('currentStep', 3);
-            sAlert.success('We have now selected the customers and the apps they need. Now press start to create the apps in Qlik Sense');
+            // sAlert.success('We have now selected the customers and the apps they need. Now press start to create the apps in Qlik Sense');
         } else {
             sAlert.error('Please select at least one template');
         }
