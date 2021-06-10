@@ -65,7 +65,11 @@ The left side of the screen will show the 'broker'. This is a software capabilit
 In this demo, the broker will define following parameters:
  - Which customers need access to the applications?
  - What will be the roles and the access rights to the apps?
- - Which apps should be provided?",,,,,,,,,
+ - Which apps should be provided?
+
+On the right side of the screen, the result of the activities of the broker will be shown:
+ - Which streams were created.
+Which apps were copied and published.",,,,,,,,,
 "Integration.qlik.com demo platform","Now try it yourself in the multi-tenant SaaS platform with Qlik Sense demo below...","iframe generation_embedded This demo shows you how to copy an app (dashboard) which serves as a ""template layout"" for each of your customers. Besides creating a copy, we will also reload the app with data from the customer database.",,"","","","","         0","0","Hosting Ops, CTO, Introduction - 30 minutes",
 "Integration.qlik.com demo platform","Now try it yourself in the multi-tenant SaaS platform with Qlik Sense demo below...","Open demo in [new tab](/generation)",,"","","","","         0","0","Hosting Ops, CTO, Introduction - 30 minutes",
 "Integration.qlik.com demo platform","Now try it yourself in the multi-tenant SaaS platform with Qlik Sense demo below...","!comment 
@@ -232,7 +236,6 @@ For this we use a piece of software that regulates your SaaS platform, or a brok
 More information also on the [Community](https://community.qlik.com/t5/Qlik-Sense-Enterprise-Documents/Introduction-to-integrate-Qlik-Sense-in-your-Software-Site/at-p/1478692)",,"","","","","         0","0","Multiple days, Technical - 2 hours",
 "Web integration","Overview web integration","iframe /webIntegration_embedded",,"","","","","         0","0","Technical - 2 hours, Integration summary, CTO, Developer",
 "Web integration","An overview of sites which embedded Qlik Sense","[Qlik embedded example sites](https://webapps.qlik.com/#/)",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Developer, CTO, Product Owner, C-Level - non-technical",
-"Web integration","An overview of sites which embedded Qlik Sense","web integration examples.png",,"","","","","         0","0","Integration summary, Introduction - 30 minutes, Developer, CTO, Product Owner, C-Level - non-technical",
 "Web integration","An overview of sites which embedded Qlik Sense","## Other examples of customization",,"","","","","         0","0","Introduction - 30 minutes",
 "Web integration","An overview of sites which embedded Qlik Sense","[Marketing 360](https://webapps.qlik.com/marketing360/index.html#/web)",,"","","","","         0","0","Introduction - 30 minutes",
 "Web integration","An overview of sites which embedded Qlik Sense","[European datamarket](https://webapps.qlik.com/EuropeanDataMarket/index-qlik.html)",,"","","","","         0","0","Technical - 1 day, Multiple days, Introduction - 30 minutes",
@@ -609,7 +612,7 @@ The website [branch.qlik.com](branch.qlik.com)  is our open source community for
 "Web integration","Difference between QAP and Qlik Sense enterprise","# Introduction video to Qlik Analytics Platform (QAP)",,"","","","","         0","0","Multiple days",
 "Web integration","Difference between QAP and Qlik Sense enterprise","https://youtu.be/yLTqzftDa7s?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk",,"","","","","         0","0","Multiple days",
 "Web integration","Difference between QAP and Qlik Sense enterprise","# Summary of the differences",,"","","","","         0","0","Multiple days",
-"Web integration","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise sheet versus our client.png",,"","","","","         0","0","Technical - 2 hours",
+"Web integration","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise sheet versus our client.png",,"","","","","         0","0","Technical - 2 hours, Developer, CTO",
 "Web integration","Difference between QAP and Qlik Sense enterprise","web - difference QAP and Qlik sense enterprise.png",,"","","","","         0","0","Technical - 1 day",
 "Web integration","Difference between QAP and Qlik Sense enterprise","!comment
 This slide explain the difference between the Qlik Analytics Platform and Qlik Sense Enterprise. Basically the QAP is Qlik Sense Enterprise without the hub. This means that with the QAP you cannot create and edit apps, see an app overview,… through the hub. All these actions are available through our APIs.
@@ -1007,7 +1010,7 @@ Automate things on behalf of an end user
 - Login
 - Logout
 - Load balancing over the Engines",,"","","","","         0","0","Technical - 1 day, Developer, Technical - 2 hours",
-"Qlik Sense API introduction","QRS API","# What can you do with the QRS API?
+"Qlik Sense API introduction","QRS API","What can you do with the QRS API?
 - Basically everything you can do in the Qlik Sense Management Console (QMC)
 - copy/delete apps and streams
 - reload apps
@@ -1015,7 +1018,7 @@ Automate things on behalf of an end user
 - get (extract) and update settings",,"","","","","         0","0","Technical - 1 day, Developer, Technical - 2 hours",
 "Qlik Sense API introduction","QRS API","[QRS API help](https://help.qlik.com/en-US/sense-developer/3.1/Subsystems/RepositoryServiceAPI/Content/RepositoryServiceAPI/RepositoryServiceAPI-Introduction.htm)",,"","","","","         0","0","Technical - 1 day, Developer, Technical - 2 hours",
 "Qlik Sense API introduction","QRS API","# Key use cases and their API source code",,"","","","","         0","0","Technical - 2 hours",
-"Qlik Sense API introduction","QRS API","# Below you will find the key use cases we automated and you can click on the link to view the source on GitHub. ",,"","","","","         0","0","Multiple days, Developer, Technical - 2 hours",
+"Qlik Sense API introduction","QRS API","Below you will find the key use cases we automated and you can click on the link to view the source on GitHub. ",,"","","","","         0","0","Multiple days, Developer, Technical - 2 hours",
 "Qlik Sense API introduction","QRS API","Download and silent installation of Qlik Sense",,"","","","","         0","0","Developer, Technical - 2 hours",
 "Qlik Sense API introduction","QRS API","[Insert license](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js#L27)",,"","","","","         0","0","Developer, Technical - 2 hours",
 "Qlik Sense API introduction","QRS API","Setup [user access rules](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js#L62)",,"","","","","         0","0","Developer, Technical - 2 hours",
@@ -2165,16 +2168,8 @@ var config = {
 "QPS - Proxy API","Example: create a single sign on with a SaaS platform","QPS - introduction to security flow.png",,"","","","","         0","0","Multiple days, Technical - 2 hours",
 "QPS - Proxy API","Example: create a single sign on with a SaaS platform","We re-use your existing way of authenticating users. We insert a small piece of code inside your existing ""security module.” In this module you already know who the user is (authentication) and what his rights are (authorization). The only thing we need to do is create a trust relationship between your server and the new Qlik Sense server (via an SSL certificate exchange), and send this information about the user (user ID, group membership) in a JSON object to Sense (we call this ticketing).",,,,,,,,,
 "QPS - Proxy API","Example: create a single sign on with a SaaS platform","Based on the user ID and group membership streams, apps and sheets (called ""resources"" in our rule based security model) are either shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer their own stream, we can grant access if the name of the stream (the company name) matches the name of the company we received from the website in the ticket. This can be controlled by adding 1 row of security configuration: User.group = resource.name.",,,,,,,,,
-"QPS - Proxy API","Example: logout a user via the QPS API","# Server side via the QPS API",,"","","","","         0","0","Technical - 1 day",
-"QPS - Proxy API","Example: logout a user via the QPS API","API - logout user.png SaaS platform wants to logout a user in Qlik Sense. User clicks logout in SaaS platform. Browser. Web server (server side). Qlik Sense Proxy. Inter server communication done via REST API calls to QPS using a client certificate (exported from QMC)",,,,,,,,,
-"QPS - Proxy API","Example: logout a user via the QPS API"," 
-The REST API end point: ```'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
-```",,,,,,,,,
-"QPS - Proxy API","Example: logout a user via the QPS API"," 
-The result of the call via an HTTPS request ``` HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
-``` ",,,,,,,,,
-"QPS - Proxy API","Example: logout a user via the QPS API","View [source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L474) on GitHub.",,,,,,,,,
-"QPS - Proxy API","Example: logout a user via the QPS API","# Client side javascript code",,"","","","","         0","0","Technical - 1 day",
+"QPS - Proxy API","Example: logout a user via the QPS API","API - logout user.png log a user out via the qps api",,"","","","","         0","0","Technical - 1 day",
+"QPS - Proxy API","Example: logout a user via the QPS API","# javascript code",,"","","","","         0","0","Technical - 1 day",
 "QPS - Proxy API","Example: logout a user via the QPS API","```javascript
  var RESTCALL = 'https://integration.qlik.com/qps/user';
      try {
@@ -2188,8 +2183,6 @@ The result of the call via an HTTPS request ``` HTTP.call('DELETE', call.request
          console.error(err);
      }
 ```",,"","","","","         0","0","Technical - 1 day",
-"QPS - Proxy API","Example: logout a user via the QPS API","> Make sure you [set the cookie settings for the usage of third party cookies](https://medium.com/trabe/cookies-and-iframes-f7cca58b3b9e). if you embed Sense in an IFrame. ",,"","","","","         0","0","Technical - 1 day",
-"QPS - Proxy API","Example: logout a user via the QPS API","qps - virtual proxy settings host whitelist.png",,,,,,,,,
 "QPS - Proxy API","Connecting to the QPS API","##Make sure you check the following",,,,,,,,,
 "QPS - Proxy API","Connecting to the QPS API","- The request must be authenticated",,,,,,,,,
 "QPS - Proxy API","Connecting to the QPS API","- An Xrfkey must be passed to prevent cross-site scripting attacks",,,,,,,,,
@@ -2271,7 +2264,7 @@ redirectURI = ticketResponse.TargetUri + '?QlikTicket=' + ticketResponse.Ticket;
 "QPS - Proxy API","Video - ticketing with Node","https://youtu.be/gtN-M5huK2Y",,,,,,,,,
 "QPS - Proxy API","Use ticketing without the extra redirect","Its possible to directly pass on a ticket the first time you make a call to a static asset in Qlik Sense. See the comment from Alex below
 - if you do ticketing how it works is that you get a ticket from your auth module and then you fetch a static resource from behind the proxy such as the require.js file with `qlikTicket=<ticket value>` appended to the url. The proxy will see the ticket, validate it and consume the ticket and if it's a valid ticket it will send the resource back to the browser with a session cookie attached to the response. The browser will then append the session cookie to future requests and the proxy will see the session cookie and let the requests through",,,,,,,,,
-"QPS - Proxy API","Using JWT","Follow these instructions to setup your proxy and learn the [flow] (https://community.qlik.com/t5/Support-Knowledge-Base/Qlik-Sense-How-to-set-up-JWT-authentication/at-p/1716226",,,,,,,,,
+"QPS - Proxy API","Using JWT","Follow these instructions to setup your proxy and learn the [flow] (https://support.qlik.com/articles/000034966)",,,,,,,,,
 "QPS - Proxy API","Using JWT","#JWT authentication flow",,,,,,,,,
 "QPS - Proxy API","Using JWT","qps jwt authentication flow.png There is no authentication redirect in the Qlik Sense virtual proxy, so make sure the user has a valid JWT token before hitting Qlik Sense. Token contains userID and his groups to be used for authorization by the Sense security rules . Before Qlik Sense charts can be shown (or any API call can be made) a user needs to be authenticated. Since we use cookies it is not required to present a JWT token with each request. (But if you do, it will be analyzed). Your config object should use your JWT proxy",,,,,,,,,
 "QPS - Proxy API","Using JWT","#Detailed instructions",,,,,,,,,
@@ -2348,7 +2341,6 @@ session.open().then((global) => {
   process.exit(1);
 });
 ```",,,,,,,,,
-"QPS - Proxy API","Using JWT","[Example project with webserver and iframe embedded](https://github.com/jackBrioschi/JWT_Iframe_QSEoW)",,,,,,,,,
 "QPS - Proxy API","Using JWT","[data scramble example with JWT](https://support.qlik.com/articles/000077843)",,,,,,,,,
 "QPS - Proxy API","Using JWT","https://youtu.be/LrWoqVeRkwM Setting up a JWT authentication in Qlik Sense",,,,,,,,,
 "QPS - Proxy API","Using JWT",">you can remove carriage returns in your certificate using `control + j` in visual studio code.",,,,,,,,,
@@ -2372,6 +2364,14 @@ session.open().then((global) => {
 "QPS - Proxy API","How to setup and configure header authentication","See [a manual for configuration on Qlik help](https://help.qlik.com/en-US/sense-developer/3.2/Subsystems/Platform/Content/Examples/config-header-authentication.htm)",,,,,,,,,
 "QPS - Proxy API","How to setup and configure header authentication","[Use Qlik Sense with siteMinder](https://qliktechnologies365-my.sharepoint.com/:b:/g/personal/mbj_qlik_com/EWRF8BDRNr1Jpp5mT4ocEAwBRDWTlaDIP7s9gxzPpkerdw?e=J6zYis)",,,,,,,,,
 "QPS - Proxy API","How to setup and configure header authentication","QPS - header auth virtual proxy settings 2.png",,"","","","","         0","0","Multiple days",
+"QPS - Proxy API","Example code to logout a user via QPS API call","API - logout user.png SaaS platform wants to logout a user in Qlik Sense. User clicks logout in SaaS platform. Browser. Web server (server side). Qlik Sense Proxy. Inter server communication done via REST API calls to QPS using a client certificate (exported from QMC)",,,,,,,,,
+"QPS - Proxy API","Example code to logout a user via QPS API call","``` 
+The REST API end point = 'https://' + senseConfig.SenseServerInternalLanIP + ':4243/qps/' + senseConfig.virtualProxyClientUsage + '/user/' + UDC + '/' + name + '?xrfkey=' + senseConfig.xrfkey
+```",,,,,,,,,
+"QPS - Proxy API","Example code to logout a user via QPS API call","``` 
+The result of the call via an HTTPS request = HTTP.call('DELETE', call.request, { 'npmRequestOptions': certicate_communication_options })
+``` ",,,,,,,,,
+"QPS - Proxy API","Example code to logout a user via QPS API call","View [source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L474) on GitHub.",,,,,,,,,
 "QPS - Proxy API","Get the properties of the current user","QPS - get current logged in user session.png GET THE PROPERTIES OF THE CURRENT USER via a call to /qps/user",,,,,,,,,
 "QPS - Proxy API","Server side - SSO with QlikAuth","Use Rikard Braathens [QlikAuth module](https://github.com/braathen/qlik-auth)",,,,,,,,,
 "QPS - Proxy API","Server side - SSO with QlikAuth","Example Node.js code",,,,,,,,,
@@ -3278,7 +3278,7 @@ Users of all types can easily create and analyze in Qlik Sense using a unified H
 IT can utilize a simple and powerful, web based management console (QMC) for administration developed with the same technologies as the front-end client.
 Developers can integrate data and build analytics using the web client, and can extend and customize Qlik Sense through standard and open API’s
 
-Qlik supports a variaty of Authentication providers such as Microsoft Active Directory, SAML, JWT and others.
+Qlik supports a variaty of Authentication providers such as LDAP, Microsoft Active Directory, SAML, JWT and others.
 Qlik provides Client and server side  REST and websocket based APIs to automate or interact with external processes.
 
 ",,"","","","","         0","0","Hosting Ops",
@@ -3319,23 +3319,23 @@ Central node: the central point for managing all nodes in a site.
 "Architecture","Qlik Sense Scalability tool","https://www.youtube.com/watch?v=GiSF1yV9D9g",,,,,,,,,
 "Architecture","Qlik Sense Scalability tool","https://www.youtube.com/watch?v=3uPuCi7jzN0",,,,,,,,,
 "Architecture","Integrated architecture and security examples","> Qlik Sense will never stand on its own, there will always be users that have rights to specific resources. So next we will cover more examples on how authentication, authorization and architecture fit together.",,"","","","","         0","0","Hosting Ops",
-"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Internal users only",,"","","","","         0","0","Multiple days, Technical - 1 day",
-"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","Multiple days, Technical - 1 day",
-"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","architecture - windows domain internal user.png",,"","","","","         0","0","Multiple days, Technical - 1 day",
-"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - detailed flow","QlikSense - Architectures single server.png",,"","","","","         0","0","Multiple days, Technical - 1 day",
-"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","Technical - 1 day",
-"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,"","","","","         0","0","Technical - 1 day",
-"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","Technical - 1 day",
-"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","windows domain with external users.png",,"","","","","         0","0","Technical - 1 day",
-"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","Internal users are in the windows domain and have Single Sign On",,,,,,,,,
-"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,,,,,,,,
-"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,,,,,,,,
-"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","architecture - reverse proxy.png",,,,,,,,,
-"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","Make sure your proxy supports websockets and forwards all the ports needed for http and or https",,,,,,,,,
-"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","As always put correct server names in the proxy whitelist.",,,,,,,,,
-"Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","Internal users are in the windows domain and have Single Sign On",,,,,,,,,
-"Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","External users connect to Qlik Sense via the internet to a virtual proxy configured for *header authentication*.",,,,,,,,,
-"Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","architecture - authenticating reverse proxy.png",,,,,,,,,
+"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Internal users only",,"","","","","         0","0","Multiple days, Technical - 1 day, Hosting Ops",
+"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","Users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","Multiple days, Technical - 1 day, Hosting Ops",
+"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - Introduction","architecture - windows domain internal user.png",,"","","","","         0","0","Multiple days, Technical - 1 day, Hosting Ops",
+"Architecture","Architecture example 1: Qlik Sense server with Active directory with only INTERNAL users - detailed flow","QlikSense - Architectures single server.png",,"","","","","         0","0","Multiple days, Technical - 1 day, Hosting Ops",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
+"Architecture","Architecture example 2 : Qlik Sense server with Active directory with external users","windows domain with external users.png",,"","","","","         0","0","Technical - 1 day, Hosting Ops",
+"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","Hosting Ops",
+"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","External users connect to Qlik Sense via the internet to the same virtual proxy. (if those users exist in AD)",,"","","","","         0","0","Hosting Ops",
+"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","So all users connect to the Qlik Sense hub directly via the default virtual proxy",,"","","","","         0","0","Hosting Ops",
+"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","architecture - reverse proxy.png",,"","","","","         0","0","Hosting Ops",
+"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","Make sure your proxy supports websockets and forwards all the ports needed for http and or https",,"","","","","         0","0","Hosting Ops",
+"Architecture","Architecture example 3: Qlik Sense behind reverse proxy using windows authentication","As always put correct server names in the proxy whitelist.",,"","","","","         0","0","Hosting Ops",
+"Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","Internal users are in the windows domain and have Single Sign On",,"","","","","         0","0","Hosting Ops",
+"Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","External users connect to Qlik Sense via the internet to a virtual proxy configured for *header authentication*.",,"","","","","         0","0","Hosting Ops",
+"Architecture","Architecture example 4: 1 Qlik Sense behind authenticating reverse proxy with header authentication","architecture - authenticating reverse proxy.png",,"","","","","         0","0","Hosting Ops",
 "Architecture","Multi-tenant (OEM) architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","architecture - OEM SaaS scenario.png",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
 "Architecture","Multi-tenant (OEM) architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","External users connect to Qlik Sense via a login in your SaaS platform. ",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",
 "Architecture","Multi-tenant (OEM) architecture example 5 : 1 Qlik Sense server, 1 SaaS platform server","Users connect to the Qlik Sense hub directly, via an IFrame or a DIV tag integration.",,"","","","","         0","0","Technical - 2 hours, Hosting Ops",

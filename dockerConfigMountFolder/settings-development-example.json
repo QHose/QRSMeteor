@@ -1,5 +1,5 @@
 {
-    "adminEmails": "mbj@qlik.com",
+    "adminEmails": "test@test.com",
     "multiTenantScenario": false,
     "public": {
         "qlikSenseHost": "QLIK-AB0Q2URN5T",

@@ -101,7 +101,10 @@
 
 .reveal .commentBox h1,
 .reveal .commentBox h2,
-.reveal .commentBox h3 {
+.reveal .commentBox h3,
+.reveal .commentBox h4,
+.reveal .commentBox h5
+{
     color: black;
     font-size: 0.9em;
     text-transform: none;

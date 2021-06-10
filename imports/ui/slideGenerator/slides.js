@@ -118,7 +118,7 @@ function addModalContentHeight(type) {
 Template.slides.onRendered(function () {
     initializeReveal();
     Reveal.sync();
-
+    this.$(".reveal").removeAttr( "role" ); //removed to comply with WCAG 4.1.2
 
     // this.$(".controls-arrow").popup({
     //     title: "Slides",
@@ -181,7 +181,9 @@ Template.slideContent.helpers({
 Template.slideContent.onRendered(async function () {
     var template = this;
 
-    this.$("#maincontent").focus(); 
+    // this.$("a:first").css.focus()
+    this.$("a:first").attr("id", "maincontent");
+    
 
     //if the slide is shown, log it into the database
     Logger.insert({
@@ -222,6 +224,20 @@ Template.slideContent.onRendered(async function () {
                     });
         });
 
+        $('.commentBox h1').replaceWith(function() {
+            return $("<h4>", {
+                        "class": this.className,
+                        "html": $(this).html()
+                    });
+        });
+
+        $('.commentBox h2').replaceWith(function() {
+            return $("<h5>", {
+                        "class": this.className,
+                        "html": $(this).html()
+                    });
+        });
+
 
        
 
@@ -237,7 +253,7 @@ Template.slideContent.onRendered(async function () {
             window.location.href = window.location.origin;
             //location.reload(); //@todo to evaluate if this helps
         }
-    }, 3000);
+    }, 2000);
 });
 
 Template.slideContent.events({
@@ -556,7 +572,7 @@ function containsYouTube(target) {
 }
 
 function checkTextIsImage(target) {
-    var pattern = ['.jpeg', '.jpg', '.svg', '.png', '.gif'];
+    var pattern = ['.jpeg', '.jpg', '.svg', '.png', '.gif', '.ashx'];
     var value = 0;
     pattern.forEach(function (word) {
         value = value + target.includes(word);

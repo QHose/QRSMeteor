@@ -48,11 +48,11 @@ Watch [this playlist](https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WG
 See [qlik community](https://community.qlik.com/docs/DOC-9533) for an introduction to Qlik Sense integration
 
 # Introduction
-This "non Qlik" but Meteor.js based platform has been designed to demonstrate the power of the Qlik Sense API's for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please look at the video's below for an introduction. In the demo you will see a screen divided into two parts.
+This "non Qlik" but Meteor.js based platform has been designed to demonstrate the power of the Qlik Sense APIs for companies that are looking to integrate Qlik Sense in their multi-tenant SaaS platform. Please look at the video's below for an introduction. In the demo you will see a screen divided into two parts.
 
 The left side shows "the broker" in your SaaS platform; a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights and the relevant template apps (depending on what the customer has configured in your platform).
 The right side shows you the result of the activities of the broker; the apps and streams automatically created in Qlik Sense. This is also the side where you have to select your first template app.
-This demo tries to show you the activities from Sense that you can automate in your platform. Sense internally also works with the same REST API's you can use, so you can record the REST call from each manual activity in the QMC and use this code to create/delete/reload/publish streams and apps in your software. We will not cover all the use cases, lets say we cover 80%, but the examples and code provided should give you enough convidence to build the remaining 20% yourself.
+This demo tries to show you the activities from Sense that you can automate in your platform. Sense internally also works with the same REST APIs you can use, so you can record the REST call from each manual activity in the QMC and use this code to create/delete/reload/publish streams and apps in your software. We will not cover all the use cases, lets say we cover 80%, but the examples and code provided should give you enough convidence to build the remaining 20% yourself.
 
 # How to use the demo?
 

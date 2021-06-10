@@ -1,6 +1,6 @@
 <template name="nav">
   <div class="ui container top secondary stackable menu mainNavBar">
-    <div class="column"> <a class="skip-main item" href="#maincontent">SKIP TO CONTENT</a>
+    <div class="column"> <a class="skip-main item" href="#bodyDropdown">SKIP TO CONTENT</a>
   </div>
     <div class="column"> <a id="home" href="{{pathFor 'useCaseSelection'}}"
         class="{{#if isMainLandingPage}} active {{/if}} item">
@@ -13,7 +13,7 @@
     </div>
     <div class="column"> {{#if isSaaSDemoPage}} {{> yourSaasPlatformMenu}} {{else}}
       <a id="generation" href="{{pathFor 'generation'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
-        SAAS PROVISIONING
+        PROVISIONING
       </a> {{/if}}
     </div>
     <div class="column"> <a id="embedding" href="{{webIntegrationDemo}}" class="item">

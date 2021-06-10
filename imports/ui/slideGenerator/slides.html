@@ -20,11 +20,13 @@
       <div class="sr-only">Use your keyboard arrows to navigate through the slides</div>
       {{#each slideHeaders }} {{#if chapterSlide this}}
       <section>
-        <div class="ui integrationBreaker">
-          <h1 class="ui header" style="font-size: 1em; color: #0E2F4E; position: absolute; width: 60%;">
-            Next: {{this}}
-            <!-- The current level 1 and 2 headers -->
-          </h1>
+        <div class="ui container">
+          <div class="ui integrationBreaker">
+            <h1 class="ui header" style="font-size: 1em; color: #0E2F4E; width: 60%;">
+              Next: {{this}}
+              <!-- The current level 1 and 2 headers -->
+            </h1>
+          </div>
         </div>
       </section>
       {{else}} {{> slide slide=this slideNr=@index}} {{/if}} {{/each}}
@@ -36,7 +38,8 @@
 <template name="slideShareModal">
   <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div id="modal-container" class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+      <div id="modal-container" class="modal__container" role="dialog" aria-modal="true"
+        aria-labelledby="modal-1-title">
         <header id="modal-header" class="modal__header">
           <h2 class="modal__title">
             Get a link for this presentation
@@ -45,7 +48,8 @@
         </header>
         <div id="modal-content-content" class="modal-content-content">
           <div id="modal-content" class="modal__content" style="display:none;">
-           <p>Please copy this link: <a href="{{shareLinkURL}}">{{shareLinkURL}}</a>. With this link another user can open this presentation with exactly the same selections.</p>
+            <p>Please copy this link: <a href="{{shareLinkURL}}">{{shareLinkURL}}</a>. With this link another user can
+              open this presentation with exactly the same selections.</p>
           </div>
           <footer id="modal-footer" class="modal__footer">
             <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
@@ -53,18 +57,18 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>
 </template>
 
 <template name="slide">
   <section class="slide">
     <div class="wrap">
       {{#if active slideNr}}
-      <h1 id="maincontent" tabindex="-1"> {{{level 1 slide}}}</h1>
+      <h1> {{{level 1 slide}}}</h1>
       <h2>{{{level 2 slide}}}
         <hr role="presentation">
       </h2>
-     
+
       {{> slideContent slide=slide}}
       {{/if}}
     </div>

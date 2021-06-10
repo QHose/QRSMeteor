@@ -64,7 +64,7 @@ if (!numberOfUsers) {
 
     id = Accounts.createUser({
         username: 'admin',
-        email: 'mbj@qlik.com',
+        email: 'test@test.com', //these are just dummies
         password: 'Qlik456464',
         profile: { name: 'Qlik admin user' }
     });

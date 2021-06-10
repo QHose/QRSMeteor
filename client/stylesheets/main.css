@@ -16,6 +16,11 @@ html {
     color: white !important;
 }
 
+.mainNavBar a:hover {
+    background-color: #fff  !important;
+    color:#1c355e  !important;
+}
+
 .mainNavBar .saasDemo {
     color: white !important;
 }
@@ -37,14 +42,16 @@ basic.button:focus,
  basic.button:hover,
  .button:focus,
  .button:hover {
-    outline: medium dotted black;
-    background-color: #f9a900 !important;
-    color: #fff;
-    text-shadow: none;
-}
+    
+    /* background-color: #f9a900 !important; */
+    /* color: #fff; */
+    /* text-shadow: none; */ 
+    
+        outline-width: 1.5px;
+        outline-style: dashed;
+        outline-color: #4b4b4b;
+        outline-offset: 4px;
 
-#bodyDropdown {
-    color: black
 }
 
 #sheetSelector {
@@ -97,8 +104,12 @@ basic.button:focus,
     margin-bottom: 0.4em;
 }
 
-#qlikFooter a:hover {
+#qlikFooter a:hover, a:focus {
     color: #006937;
+    outline-width: 1.5px;
+    outline-style: dashed;
+    outline-color: #E36E0F;
+    outline-offset: 4px;
 }
 
 .row {

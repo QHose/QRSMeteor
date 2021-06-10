@@ -435,9 +435,8 @@ Meteor.methods({
         }
         const userExists = Accounts.findUserByEmail(user.email);
         var userId = {};
-        if (user.email === 'mbj@qlik.com') {
-            throw new Meteor.Error('Admin account', 'Please login as a different user on Qlik.com');
-        } else if (userExists) {
+
+        if (userExists) {
             // console.log('########### found user, now reset his password: ', userExists);
             userId = userExists._id;
             Accounts.setPassword(userId, user.password);
