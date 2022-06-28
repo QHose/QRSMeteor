@@ -326,7 +326,7 @@ Meteor.methods({
     //only for demo purposes! never supply groups from the client...
     requestTicketWithPassport(virtualProxy, passport) {
         console.log('getTicketNumber passport', passport);
-        var rootCas = require('ssl-root-cas/latest').create();
+        var rootCas = require('ssl-root-cas').create();        
 
         // default for all https requests
         // (whether using https directly, request, or another module)
