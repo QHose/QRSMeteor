@@ -273,7 +273,7 @@ export async function getAllSlideHeaders(qix) {
     var headers = await getAllSlideHeadersPlain(qix);
     // console.log('headers', headers)
     var headersWithBreakers = insertSectionBreakers(headers);
-    console.log('headersWithBreakers', headersWithBreakers)
+    // console.log('headersWithBreakers', headersWithBreakers)
     return headersWithBreakers;
 }
 
