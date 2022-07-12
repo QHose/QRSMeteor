@@ -27,7 +27,7 @@ if (Meteor.isClient) {
 //SERVER SIDE
 if (Meteor.isServer) {
     process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-    import sslRootCas from 'ssl-root-cas/latest';
+    import sslRootCas from 'ssl-root-cas';
     sslRootCas.inject();
     
     console.log('This tool uses this config as defined in the settings-XYZ.json file in the root folder: ', Meteor.settings);
