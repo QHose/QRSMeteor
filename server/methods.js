@@ -50,8 +50,19 @@ var fs = require('fs-extra');
 // ─── METEOR METHODS ─────────────────────────────────────────────────────────────
 //
 
+var showdown = require("showdown");
+var converter = new showdown.Converter();
 
 Meteor.methods({
+    getHTMLFromMarkdownUrl(url){
+        console.log('get markdown from the server: '+url)
+        // this.unblock();
+        var markdownResult = HTTP.get(url) 
+        var HTMLresult = converter.makeHtml(markdownResult.content);
+        console.log("🚀 ~ file: methods.js ~ line 62 ~ getHTMLFromMarkdownUrl ~ HTMLresult", HTMLresult)
+        return HTMLresult;
+        // return 'TEST static HTML CONTENT from method';
+    },
     getSenseSelectionObject(id) {
         console.log('------------------------------------');
         console.log('getSenseSelectionObject for id', id)

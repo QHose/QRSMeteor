@@ -118,7 +118,7 @@ function addModalContentHeight(type) {
 Template.slides.onRendered(function () {
     initializeReveal();
     Reveal.sync();
-    this.$(".reveal").removeAttr( "role" ); //removed to comply with WCAG 4.1.2
+    this.$(".reveal").removeAttr("role"); //removed to comply with WCAG 4.1.2
 
     // this.$(".controls-arrow").popup({
     //     title: "Slides",
@@ -165,12 +165,7 @@ Template.slideContent.onCreated(async function () {
 
 Template.slideContent.helpers({
     bullets: function () {
-        var res = Template.instance().bullets.get();
-        if (res) var newArray = [];
-        res.forEach(function (item) {
-            newArray.push(convertToHTML(item, Template.instance().level2.get()));
-        });
-        return newArray;
+        return Template.instance().bullets.get();
     },
     comment: function () {
         var comment = Template.instance().comment.get();
@@ -183,7 +178,7 @@ Template.slideContent.onRendered(async function () {
 
     // this.$("a:first").css.focus()
     this.$("a:first").attr("id", "maincontent");
-    
+
 
     //if the slide is shown, log it into the database
     Logger.insert({
@@ -201,7 +196,7 @@ Template.slideContent.onRendered(async function () {
     });
 
     Meteor.setTimeout(function () {
-    
+
         //make sure all code gets highlighted using highlight.js
         template.$("pre code").each(function (i, block) {
             hljs.highlightBlock(block);
@@ -210,49 +205,49 @@ Template.slideContent.onRendered(async function () {
         template.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
 
         //convert all h1 to h3 headers for accessibility reasons
-        template.$('.slideContent .zBullet h1').replaceWith(function() {
+        template.$('.slideContent .zBullet h1').replaceWith(function () {
             return $("<h3>", {
-                        "class": this.className,
-                        "html": $(this).html()
-                    });
+                "class": this.className,
+                "html": $(this).html()
+            });
         });
 
-        template.$('.slideContent .zBullet h2').replaceWith(function() {
+        template.$('.slideContent .zBullet h2').replaceWith(function () {
             return $("<h4>", {
-                        "class": this.className,
-                        "html": $(this).html()
-                    });
+                "class": this.className,
+                "html": $(this).html()
+            });
         });
 
-        $('.commentBox h1').replaceWith(function() {
+        $('.commentBox h1').replaceWith(function () {
             return $("<h4>", {
-                        "class": this.className,
-                        "html": $(this).html()
-                    });
+                "class": this.className,
+                "html": $(this).html()
+            });
         });
 
-        $('.commentBox h2').replaceWith(function() {
+        $('.commentBox h2').replaceWith(function () {
             return $("<h5>", {
-                        "class": this.className,
-                        "html": $(this).html()
-                    });
+                "class": this.className,
+                "html": $(this).html()
+            });
         });
 
 
-       
 
-        //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
-        var slideContent = template.bullets.get();
-        // console.log("slideContent.onRendered array of bullets: ", slideContent);
-        if (!slideContent) {
-            console.log('------------------------------------');
-            console.log('No slide data retrieved from Qlik Sense, re-adding the slide changed event listener...');
-            console.log('------------------------------------');
-            // addSlideChangedListener();
-            // nav.showSlideSelector();
-            window.location.href = window.location.origin;
-            //location.reload(); //@todo to evaluate if this helps
-        }
+
+        // //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
+        // var slideContent = template.bullets.get();
+        // // console.log("slideContent.onRendered array of bullets: ", slideContent);
+        // if (!slideContent) {
+        //     console.log('------------------------------------');
+        //     console.log('No slide data retrieved from Qlik Sense, re-adding the slide changed event listener...');
+        //     console.log('------------------------------------');
+        //     // addSlideChangedListener();
+        //     // nav.showSlideSelector();
+        //     window.location.href = window.location.origin;
+        //     //location.reload(); //@todo to evaluate if this helps
+        // }
     }, 2000);
 });
 
@@ -355,18 +350,29 @@ async function getLevel3(level1, level2) {
 
         var level3Temp = sessionData[0].qMatrix;
         sessionModel.removeAllListeners();
-        return normalizeAndSortData(level3Temp);
+
+        var sortedLevel3Bullets = normalizeAndSortData(level3Temp);
+
+        var newArray = [];
+        
+        for (const item of sortedLevel3Bullets) {            
+            newArray.push(await convertToHTML(item, level2));
+          }       
+
+        return newArray;
     } catch (error) {
         //error happens when you select something else after your selection... not a real error
     }
+
 }
 
 function normalizeAndSortData(senseArray) {
     var result = [];
     senseArray.sort(compare);
-    senseArray.forEach(element => {
-        result.push(element[0].qText);
-    });
+
+    for (const element of senseArray) {
+        result.push(element[0].qText);        
+      }
     return result;
 }
 
@@ -450,7 +456,7 @@ function normalizeAndSortData(senseArray) {
     return result;
 }
 
-function convertToHTML(text, level2) {
+async function convertToHTML(text, level2) {
 
     // console.log('convertToHTML text', text)
     var commentMarker = "!comment";
@@ -458,17 +464,17 @@ function convertToHTML(text, level2) {
     var altText = ''
 
     //define image url
-    var split = text.indexOf('.')+4;
+    var split = text.indexOf('.') + 4;
     var url = text.substr(0, split);  //before . plus 4
     // console.log('image url', url)
 
     //check if alt text comment exists
     //myimg.jpg my commment bla bla
-    altText = text.slice(text.indexOf('.') + 4  ).trim(); //after img extension
+    altText = text.slice(text.indexOf('.') + 4).trim(); //after img extension
     // console.log('IMAGE altText', altText)
 
     if (altText.length < 2) {
-        altText = level2 + ' '+ text.substr(0,text.indexOf('.'));
+        altText = level2 + ' ' + text.substr(0, text.indexOf('.'));
     }
     // console.log('image altText', altText)
 
@@ -548,15 +554,20 @@ function convertToHTML(text, level2) {
     // ─── TEXT TO BE CONVERTED TO VIA MARKDOWN ───────────────────────────────────────
     //
     else {
-        // console.log('TEXT TO BE CONVERTED TO VIA MARKDOWN', text)
         //text, convert the text (which can include markdown syntax) to valid HTML
-        var result = converter.makeHtml(text);
-        // console.log('Markdown result', result)
-        if (result.substring(1, 11) === "blockquote") {
-            return '<div class="ui green segment">' + result + "</div>";
-        } else {
-            return '<div class="zBullet">' + result + "<br> </div>";
-        }
+        var result = '';
+        if (text.endsWith('.md')) { //get content from external url on the server                
+            result = await Meteor.callPromise('getHTMLFromMarkdownUrl', text)
+            console.log("🚀 callPromise('getHTMLFromMarkdownUrl' result", result)
+            return result;
+        } else { //convert it locally
+            result = converter.makeHtml(text);
+            if (result.substring(1, 11) === "blockquote") {
+                return '<div class="ui green segment">' + result + "</div>";
+            } else {
+                return '<div class="zBullet">' + result + "<br> </div>";
+            }
+        }       
     }
 }
 
