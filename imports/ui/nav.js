@@ -1,41 +1,29 @@
 import { Meteor } from "meteor/meteor";
 import { Template } from "meteor/templating";
-import { senseConfig } from "/imports/api/config.js";
+// import { senseConfig } from "/imports/api/config.js";
 const enigma = require("enigma.js");
 import "/imports/ui/nav.html";
-import { getQix, getAllSlides } from "/imports/ui/useCases/useCaseSelection";
-
+import { getQix, getAllSlides, getLevel1 } from "/imports/ui/useCases/useCaseSelection";
+import {MenuItems} from  "/imports/ui/slideGenerator/slides"
 import { Session } from "meteor/session";
 import * as slideApp from "/imports/ui/useCases/useCaseSelection";
 
+
 const Cookies = require("js-cookie");
 
+
+
 Template.nav.helpers({
-  isPage() {
+  isSlide() {
     var show = Router.current().route.getName() == 'useCaseSelection' ? false : true;
     return show;
+  },
+  items() {    
+    var items = MenuItems.find({});
+    console.log("🚀 ~ file: nav.js ~ line 23 ~ items ~ items", items.fetch())
+    return items;
   }
 });
-
-// Template.sheetSelector.onRendered(function () {
-//   //
-//   // ─── CREATE POPUP ───────────────────────────────────────────────────────────────
-//   //
-//   this.$("#sheetSelector").popup({
-//     title: "Select your content",
-//     content:
-//       "You are navigating in a 'presentation'. In this screen you can select the content based on your job (business or technical) and needs. If you are done, press the green button to start your personal presentation. You can press escape to get an overview, press ? for help or use your keyboard arrows to go to the next and previous slides.",
-//     delay: {
-//       show: 500,
-//       hide: 0
-//     }
-//   });
-
-//   this.$(".selectSlides").transition({
-//     animation: "flash",
-//     duration: "16s"
-//   });
-// });
 
 //
 // ─── CLICK EVENTS ON MENU ITEMS ─────────────────────────────────────────────────
@@ -75,12 +63,18 @@ Template.nav.events({
           //update the value of the helper for the share link popup
           Session.set('shareLinkURL', shareLinkURL);
       }
-    } else{
+    } else {
       //set focus on main content
       $(".present #maincontent").focus();
     }
   }
 });
+
+
+Template.nav.onRendered(function () {
+  
+});
+
 
 Template.yourSaasPlatformMenu.onRendered(function () {
   this.$(".ui.dropdown").dropdown();

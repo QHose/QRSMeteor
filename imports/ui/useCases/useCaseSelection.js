@@ -159,8 +159,9 @@ Template.useCaseSelection.events({
     "click #videoButton": async function (e, t) {
         nav.selectMenuItemInSense("*Video overview:*");
     },
-    "click ul.selectRole a": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
+    "click .selectRole": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
         var selectedRole = e.currentTarget.id;
+        console.log("🚀 ~ file: useCaseSelection.js ~ line 164 ~ selectedRole", selectedRole)
         Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
 
@@ -170,7 +171,7 @@ Template.useCaseSelection.events({
         Router.go("slides");
         Session.set("showSelector", false);
         ////go to the first slide after a data refresh.           
-        Reveal.slide(0); 
+        // Reveal.slide(0); 
     }
 });
 
@@ -275,6 +276,27 @@ export async function getAllSlideHeaders(qix) {
     var headersWithBreakers = insertSectionBreakers(headers);
     // console.log('headersWithBreakers', headersWithBreakers)
     return headersWithBreakers;
+}
+export async function getLevel1(qix) {
+    var sessionModel = await qix.app.createSessionObject({
+        qInfo: {
+            qType: 'cube'
+        },
+        qHyperCubeDef: {
+            qDimensions: [{
+                qDef: {
+                    qFieldDefs: ['Level 1']
+                }
+            }]
+        }
+    });
+    sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 3,
+        qHeight: 3333
+    }]);
+    return sessionData[0].qMatrix
 }
 
 export async function getAllSlideHeadersPlain(qix) {

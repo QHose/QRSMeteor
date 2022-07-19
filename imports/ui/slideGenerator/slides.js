@@ -5,14 +5,16 @@ import "./helper.css"; //accessibility plugin for reveal https://github.com/marc
 import lodash from "lodash";
 import hljs from "highlight.js";
 import { Logger } from "/imports/api/logger";
-import { getQix } from "/imports/ui/useCases/useCaseSelection";
+import { getQix,getLevel1 } from "/imports/ui/useCases/useCaseSelection";
 import "./slideSelectionSheet";
+// import { fill } from 'core-js/core/array';
 
 _ = lodash;
 var Cookies = require("js-cookie");
 var showdown = require("showdown");
 var converter = new showdown.Converter();
 var numberOfActiveSlides = 10;
+export const MenuItems = new Mongo.Collection(null);
 
 //
 // ─── SLIDES ─────────────────────────────────────────────────────────────────────
@@ -52,11 +54,11 @@ Template.slideShareModal.onRendered(function () {
                 // addModalContentHeight('tall');               
             },
             onClose: function (modal) {
-                console.log("micromodal close");
+                // console.log("micromodal close");
             }
         });
     } catch (e) {
-        console.log("micromodal error: ", e);
+        // console.log("micromodal error: ", e);
     }
 
 });
@@ -115,21 +117,23 @@ function addModalContentHeight(type) {
 
 
 
-Template.slides.onRendered(function () {
+Template.slides.onRendered(async function () {
     initializeReveal();
     Reveal.sync();
     this.$(".reveal").removeAttr("role"); //removed to comply with WCAG 4.1.2
-
-    // this.$(".controls-arrow").popup({
-    //     title: "Slides",
-    //     content: "You are navigating in a 'presentation', on your keyboard you can press escape to get an overview, press ? for help or use your arrows to go to the next and previous slides.",
-    //     delay: {
-    //         show: 500,
-    //         hide: 0
-    //     }
-    // });
+    await populateNavMenuItems();
 });
 
+async function populateNavMenuItems () {    
+    var qix = await getQix();
+    var items = await getLevel1(qix);
+
+    //insert items in a collection
+    for (const item of items) {  
+        MenuItems.insert(item);
+    }
+    
+  };
 
 function addSlideChangedListener() {
     // console.log('!!!!!!!!!!!!! addSlideChangedListener')
@@ -558,7 +562,6 @@ async function convertToHTML(text, level2) {
         var result = '';
         if (text.endsWith('.md')) { //get content from external url on the server                
             result = await Meteor.callPromise('getHTMLFromMarkdownUrl', text)
-            console.log("🚀 callPromise('getHTMLFromMarkdownUrl' result", result)
             return result;
         } else { //convert it locally
             result = converter.makeHtml(text);
