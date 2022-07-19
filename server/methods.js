@@ -55,18 +55,15 @@ var converter = new showdown.Converter();
 
 Meteor.methods({
     getHTMLFromMarkdownUrl(url){
-        console.log('get markdown from the server: '+url)
-        // this.unblock();
+        // console.log('get markdown from the server: '+url)
         var markdownResult = HTTP.get(url) 
         var HTMLresult = converter.makeHtml(markdownResult.content);
-        console.log("🚀 ~ file: methods.js ~ line 62 ~ getHTMLFromMarkdownUrl ~ HTMLresult", HTMLresult)
-        return HTMLresult;
-        // return 'TEST static HTML CONTENT from method';
+        return HTMLresult;        
     },
     getSenseSelectionObject(id) {
-        console.log('------------------------------------');
-        console.log('getSenseSelectionObject for id', id)
-        console.log('------------------------------------');
+        // console.log('------------------------------------');
+        // console.log('getSenseSelectionObject for id', id)
+        // console.log('------------------------------------');
         check(id, String);
         var result = SenseSelections.findOne({
             _id: id
