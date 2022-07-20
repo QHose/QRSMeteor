@@ -5,7 +5,7 @@ import "./helper.css"; //accessibility plugin for reveal https://github.com/marc
 import lodash from "lodash";
 import hljs from "highlight.js";
 import { Logger } from "/imports/api/logger";
-import { getQix,getLevel1 } from "/imports/ui/useCases/useCaseSelection";
+import { getQix, getLevel1, getSubjectArea } from "/imports/ui/useCases/useCaseSelection";
 import "./slideSelectionSheet";
 // import { fill } from 'core-js/core/array';
 
@@ -15,10 +15,12 @@ var showdown = require("showdown");
 var converter = new showdown.Converter();
 var numberOfActiveSlides = 10;
 export const MenuItems = new Mongo.Collection(null);
+export const ChapterItems = new Mongo.Collection(null);
 
 //
 // ─── SLIDES ─────────────────────────────────────────────────────────────────────
 //
+
 
 
 Template.registerHelper('chapterSlide', function (currentRow) {
@@ -115,25 +117,37 @@ function addModalContentHeight(type) {
 
 }
 
+Template.slides.onCreated(async function () {    
+    await populateChapters();
+});
 
+
+async function populateChapters() {
+    var qix = await getQix();
+    var items = await getLevel1(qix);
+    
+    //insert items in a collection
+    for (const item of items) {
+        ChapterItems.insert(item[0]);
+    }
+};
 
 Template.slides.onRendered(async function () {
+    await populateNavMenuItems();
     initializeReveal();
     Reveal.sync();
     this.$(".reveal").removeAttr("role"); //removed to comply with WCAG 4.1.2
-    await populateNavMenuItems();
 });
 
-async function populateNavMenuItems () {    
+async function populateNavMenuItems() {
     var qix = await getQix();
-    var items = await getLevel1(qix);
+    var items = await getSubjectArea(qix);
 
     //insert items in a collection
-    for (const item of items) {  
-        MenuItems.insert(item);
+    for (const item of items) {
+        MenuItems.insert(item[0]);
     }
-    
-  };
+};
 
 function addSlideChangedListener() {
     // console.log('!!!!!!!!!!!!! addSlideChangedListener')
@@ -285,13 +299,6 @@ Template.slides.helpers({
     }
 });
 
-Template.slideShareModal.helpers({
-    shareLinkURL: function () {
-        var link = Session.get('shareLinkURL')
-        return link;
-    }
-});
-
 
 
 Template.slide.helpers({
@@ -301,8 +308,29 @@ Template.slide.helpers({
             slideNr < activeSlide + numberOfActiveSlides &&
             slideNr > activeSlide - numberOfActiveSlides;
         return active;
+    },
+    chapters() {
+        var chapters = ChapterItems.find({});        
+        console.log("🚀 ~ helper chapters", chapters)
+        return chapters;
+    }
+
+});
+
+
+Template.registerHelper('debug', function (object) {
+    console.log('td value: ', object)
+    // return JSON.parse(object);
+});
+
+Template.slideShareModal.helpers({
+    shareLinkURL: function () {
+        var link = Session.get('shareLinkURL')
+        return link;
     }
 });
+
+
 
 Template.registerHelper("level", function (level, slide) {
     level -= 1;
@@ -358,10 +386,10 @@ async function getLevel3(level1, level2) {
         var sortedLevel3Bullets = normalizeAndSortData(level3Temp);
 
         var newArray = [];
-        
-        for (const item of sortedLevel3Bullets) {            
+
+        for (const item of sortedLevel3Bullets) {
             newArray.push(await convertToHTML(item, level2));
-          }       
+        }
 
         return newArray;
     } catch (error) {
@@ -375,8 +403,8 @@ function normalizeAndSortData(senseArray) {
     senseArray.sort(compare);
 
     for (const element of senseArray) {
-        result.push(element[0].qText);        
-      }
+        result.push(element[0].qText);
+    }
     return result;
 }
 
@@ -570,7 +598,7 @@ async function convertToHTML(text, level2) {
             } else {
                 return '<div class="zBullet">' + result + "<br> </div>";
             }
-        }       
+        }
     }
 }
 

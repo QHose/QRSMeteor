@@ -20,7 +20,6 @@ Template.nav.helpers({
   },
   items() {    
     var items = MenuItems.find({});
-    console.log("🚀 ~ file: nav.js ~ line 23 ~ items ~ items", items.fetch())
     return items;
   }
 });

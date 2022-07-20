@@ -63,14 +63,36 @@
 <template name="slide">
   <section class="slide">
     <div class="wrap">
-      {{#if active slideNr}}
-      <h1> {{{level 1 slide}}}</h1>
-      <h2>{{{level 2 slide}}}
-        <hr role="presentation">
-      </h2>
+      <div class="ui grid">
+        <div class="two wide column">
+          <table class="ui celled table" style="    font-size: smaller;">
+            <thead>
+              <tr>
+                <th>Subjects to choose from</th>
 
-      {{> slideContent slide=slide}}
-      {{/if}}
+              </tr>
+            </thead>
+            <tbody>
+              {{#each chapter in chapters }}
+              <tr>
+                <td data-label="Name"> {{chapter.qText}} </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        <div class="twelve wide column">
+          {{#if active slideNr}}
+          <h1> {{{level 1 slide}}}</h1>
+          <h2>{{{level 2 slide}}}
+            <hr role="presentation">
+          </h2>
+
+          {{> slideContent slide=slide}}
+          {{/if}}
+        </div>
+
+      </div>
     </div>
     {{> footer}}
   </section>
@@ -80,7 +102,11 @@
 
 <template name="slideContent">
   <div class="slideContent">
+
     {{#each bullet in bullets}} {{{bullet}}} {{/each}}
     {{{ comment }}}
   </div>
+
+
+
 </template>

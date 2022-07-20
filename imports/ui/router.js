@@ -19,7 +19,7 @@ Router.route('/', async function () {
         await initQlikSense();
         await nav.selectViaQueryId(selection);
         // get the data and go to the slides
-        await getAllSlides();
+        await getAllSlides(false);
         // after we got all data in an array from sense, change the router/browser to the slides page
         Router.go("slides");
     }
@@ -34,7 +34,7 @@ Router.route('/useCaseSelection', async function () {
         await initQlikSense();
         await nav.selectViaQueryId(selection);
         // get the data and go to the slides
-        await getAllSlides();
+        await getAllSlides(false);
         // after we got all data in an array from sense, change the router/browser to the slides page
         Router.go("slides");
     }

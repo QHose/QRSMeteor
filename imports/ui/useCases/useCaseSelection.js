@@ -272,11 +272,55 @@ export async function getAllSlideHeaders(qix) {
     //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.    
     // return insertSectionBreakers(await getAllSlideHeadersPlain(qix));
     var headers = await getAllSlideHeadersPlain(qix);
-    // console.log('headers', headers)
     var headersWithBreakers = insertSectionBreakers(headers);
-    // console.log('headersWithBreakers', headersWithBreakers)
     return headersWithBreakers;
 }
+export async function getSubjectArea(qix) {
+    var sessionModel = await qix.app.createSessionObject({
+        qInfo: {
+            qType: 'cube'
+        },
+        qHyperCubeDef: {
+            qDimensions: [{
+                qDef: {
+                    qFieldDefs: ['Subject area']
+                }
+            }]
+        }
+    });
+    sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 3,
+        qHeight: 3333
+    }]);
+    console.log("🚀 ~ file: useCaseSelection.js ~ line 301 ~ getSubjectArea ~ sessionData[0].qMatrix", sessionData[0].qMatrix)
+    return sessionData[0].qMatrix
+}
+   
+
+export async function getLevel2(qix) {
+    var sessionModel = await qix.app.createSessionObject({
+        qInfo: {
+            qType: 'cube'
+        },
+        qHyperCubeDef: {
+            qDimensions: [{
+                qDef: {
+                    qFieldDefs: ['Level 2']
+                }
+            }]
+        }
+    });
+    sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 3,
+        qHeight: 3333
+    }]);
+    return sessionData[0].qMatrix
+}
+
 export async function getLevel1(qix) {
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {
@@ -342,7 +386,7 @@ export async function getAllSlideHeadersPlain(qix) {
 //
 
 //by default add extra slides (extra items in the data array), so you will get nice dynamic chapter breakers
-var sectionBreakerConfig = true;
+var sectionBreakerConfig = false;
 export async function getAllSlides(insertSectionBreakers = sectionBreakerConfig) {
     var qix = await getQix();
     //insert breakers before a change of topic? YES/NO... breakers are annoying when you make a menu selection or want to link to a sheet
