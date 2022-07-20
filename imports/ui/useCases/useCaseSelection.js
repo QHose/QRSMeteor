@@ -294,7 +294,6 @@ export async function getSubjectArea(qix) {
         qWidth: 3,
         qHeight: 3333
     }]);
-    console.log("🚀 ~ file: useCaseSelection.js ~ line 301 ~ getSubjectArea ~ sessionData[0].qMatrix", sessionData[0].qMatrix)
     return sessionData[0].qMatrix
 }
    

@@ -31,41 +31,44 @@ import { initQlikSense } from "/imports/ui/useCases/useCaseSelection";
 
 
 Template.nav.events({
-  "click a": function (event, template) {
+  "click a": async function (event, template) {
     var menuItem = event.currentTarget.id;
+    console.log("🚀 ~ file: nav.js ~ line 36 ~ menuItem", menuItem)
     initQlikSense();
-    if (menuItem) {
-      event.preventDefault();
-      switch (menuItem) {
-        case "home":
-          window.location.replace('/');
-          break;
-        case "SSBI":
-          selectMenuItemInSense("*What is governed self service with Qlik Sense*");
-          break;
-        case "generation":
-          selectMenuItemInSense("*multi-tenant SaaS platform with Qlik Sense*");
-          break;
-        case "embedding":
-          selectMenuItemInSense("*embed Qlik Sense*");
-          break;
-        case "video":
-          var win = window.open('https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk', '_blank');
-          win.focus();
-          break;
-        case "sheetSelectorMenu":
-          Session.set("showSelector", true);
-          break;
-        case "sharePresentation":
-          var id = Session.get('currentSelectionId');
-          var shareLinkURL = window.location.origin + '/?selection=' + id;
-          //update the value of the helper for the share link popup
-          Session.set('shareLinkURL', shareLinkURL);
-      }
-    } else {
-      //set focus on main content
-      $(".present #maincontent").focus();
-    }
+    // if (menuItem) {
+    //   event.preventDefault();
+    //   switch (menuItem) {
+    //     case "home":
+    //       window.location.replace('/');
+    //       break;      
+    //     // case "SSBI":
+    //     //   selectMenuItemInSense("*What is governed self service with Qlik Sense*");
+    //     //   break;
+    //     // case "generation":
+    //     //   selectMenuItemInSense("*multi-tenant SaaS platform with Qlik Sense*");
+    //     //   break;
+    //     // case "embedding":
+    //     //   selectMenuItemInSense("*embed Qlik Sense*");
+    //     //   break;
+    //     // case "video":
+    //     //   var win = window.open('https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk', '_blank');
+    //     //   win.focus();
+    //     //   break;
+    //     case "sheetSelectorMenu":
+    //       Session.set("showSelector", true);
+    //       break;
+    //     case "sharePresentation":
+    //       var id = Session.get('currentSelectionId');
+    //       var shareLinkURL = window.location.origin + '/?selection=' + id;
+    //       //update the value of the helper for the share link popup
+    //       Session.set('shareLinkURL', shareLinkURL);
+    //   }
+    // } else {
+      console.log('make selection based on id')
+      await selectInSense('Subject area',menuItem);
+      //set focus on main content      
+      // $(".present #maincontent").focus();
+    // }
   }
 });
 
@@ -87,6 +90,16 @@ export async function selectViaQueryId(mongoId) {
     sAlert.warning("We could not retreive a stored selection for this id...");
   }
 }
+
+export async function selectInSense(field, selection) {
+  console.log('make selection for field'+field+' for value '+selection);
+  Session.set("slideHeaders", null);
+  await makeSearchSelectionInField(field, selection);
+  //get slides
+  await getAllSlides(false);
+  Router.go("slides");
+}
+
 
 // if people click on a menu item, you want a specific slide to be selected, so the slide is the value to search for...
 export async function selectMenuItemInSense(slide) {

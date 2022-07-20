@@ -311,7 +311,6 @@ Template.slide.helpers({
     },
     chapters() {
         var chapters = ChapterItems.find({});        
-        console.log("🚀 ~ helper chapters", chapters)
         return chapters;
     }
 
