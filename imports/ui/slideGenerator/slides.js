@@ -117,7 +117,8 @@ function addModalContentHeight(type) {
 
 }
 
-Template.slides.onCreated(async function () {    
+Template.slide.onCreated(async function () {    
+    await populateNavMenuItems();
     await populateChapters();
 });
 
@@ -126,14 +127,14 @@ async function populateChapters() {
     var qix = await getQix();
     var items = await getLevel1(qix);
     
+    ChapterItems.remove({});
     //insert items in a collection
     for (const item of items) {
         ChapterItems.insert(item[0]);
     }
 };
 
-Template.slides.onRendered(async function () {
-    await populateNavMenuItems();
+Template.slides.onRendered(async function () {    
     initializeReveal();
     Reveal.sync();
     this.$(".reveal").removeAttr("role"); //removed to comply with WCAG 4.1.2
