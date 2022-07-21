@@ -2,14 +2,16 @@
   <div class="ui container top secondary stackable menu mainNavBar">
     <div class="column"> <a class="skip-main item" href="#bodyDropdown">SKIP TO CONTENT</a>
     </div>
-    <!-- {{#if isSlide}} -->
+    <div class="column"> <a href="{{pathFor 'useCaseSelection'}}"
+        class="{{#if isMainLandingPage}} active {{/if}} item">
+        HOME</a> </div>
     <!-- for each level 1, show menu item -->
     {{#each item in items }}
 
-      <div class="column"> <a id="{{item.qText}}" href="" class="item">        
-          {{item.qText}}
-        </a>
-      </div>
+    <div class="column"> <a id="{{item.qText}}" href="" class="item">
+        {{item.qText}}
+      </a>
+    </div>
 
     {{/each}}
 
