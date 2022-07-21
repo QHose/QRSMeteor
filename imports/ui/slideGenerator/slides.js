@@ -29,7 +29,9 @@ Template.registerHelper('chapterSlide', function (currentRow) {
     }
 });
 
-Template.slides.onCreated(function () {
+Template.slides.onCreated(async function () {
+    await populateNavMenuItems();
+    
     $("body").css({
         overflow: "overlay"
     });
@@ -117,8 +119,7 @@ function addModalContentHeight(type) {
 
 }
 
-Template.slide.onCreated(async function () {    
-    await populateNavMenuItems();
+Template.slide.onCreated(async function () {        
     await populateChapters();
 });
 
@@ -144,6 +145,7 @@ async function populateNavMenuItems() {
     var qix = await getQix();
     var items = await getSubjectArea(qix);
 
+    MenuItems.remove({});
     //insert items in a collection
     for (const item of items) {
         MenuItems.insert(item[0]);
@@ -294,6 +296,20 @@ Template.slideContent.events({
 Template.slides.helpers({
     slideHeaders() {
         return Session.get("slideHeaders"); //only the level 1 and 2 colums, we need this for the headers of the slide
+    },
+    TableOfContentForChapter() {
+     var headers = Session.get("slideHeaders"); //only the level 1 and 2 colums, we need this for the headers of the slide
+     var currentChapter = this.toString();
+     var toc =[];
+     for (const element of headers) {
+        var level1 = element[0].qText;
+        var level2 = element[1].qText
+        if(level1===currentChapter){
+            toc.push(level2)
+        }        
+      }
+      console.log("TableOfContentForChapter ~ toc", toc)
+      return toc;
     },
     showSelector: function () {
         return Session.get("showSelector");

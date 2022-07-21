@@ -18,44 +18,29 @@
   <div class="reveal">
     <div class="slides">
       <div class="sr-only">Use your keyboard arrows to navigate through the slides</div>
-      {{#each slideHeaders }} {{#if chapterSlide this}}
+      {{#each slideHeaders }}
+      {{#if chapterSlide this}}
       <section>
         <div class="ui container">
-          <div class="ui integrationBreaker">
-            <h1 class="ui header" style="font-size: 1em; color: #0E2F4E; width: 60%;">
-              Next: {{this}}
-              <!-- The current level 1 and 2 headers -->
-            </h1>
+          <div class="ui integrationBreaker" style="text-align: left;
+          font-size: 1.2em;">
+            <h1 class="ui header" style="color: #0E2F4E; width: 60%;">
+              Next chapter: {{this}} </h1>
+            <div class="ui divider"></div>
+            <div>
+
+              <h2 class="ui header">You will see the following slides: </h2>
+              {{#each slide in TableOfContentForChapter }}
+              <div class="ui bulleted list">
+                <div class="item"> {{slide}}
+                </div>
+              </div>
+              {{/each}}
+            </div>
           </div>
         </div>
       </section>
       {{else}} {{> slide slide=this slideNr=@index}} {{/if}} {{/each}}
-    </div>
-  </div>
-</template>
-
-
-<template name="slideShareModal">
-  <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div id="modal-container" class="modal__container" role="dialog" aria-modal="true"
-        aria-labelledby="modal-1-title">
-        <header id="modal-header" class="modal__header">
-          <h2 class="modal__title">
-            Get a link for this presentation
-          </h2>
-          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-        </header>
-        <div id="modal-content-content" class="modal-content-content">
-          <div id="modal-content" class="modal__content" style="display:none;">
-            <p>Please copy this link: <a href="{{shareLinkURL}}">{{shareLinkURL}}</a>. With this link another user can
-              open this presentation with exactly the same selection (slides).</p>
-          </div>
-          <footer id="modal-footer" class="modal__footer">
-            <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
-          </footer>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -65,11 +50,10 @@
     <div class="wrap">
       <div class="ui grid">
         <div class="two wide column">
-          <table class="ui celled table" style="    font-size: smaller;">
+          <table class="ui celled table" style="    margin-top: 90px; font-size: smaller;">
             <thead>
               <tr>
-                <th>Subjects to choose from</th>
-
+                <th>Select chapter</th>
               </tr>
             </thead>
             <tbody>
@@ -107,6 +91,29 @@
     {{{ comment }}}
   </div>
 
-
+  <template name="slideShareModal">
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div id="modal-container" class="modal__container" role="dialog" aria-modal="true"
+          aria-labelledby="modal-1-title">
+          <header id="modal-header" class="modal__header">
+            <h2 class="modal__title">
+              Get a link for this presentation
+            </h2>
+            <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+          </header>
+          <div id="modal-content-content" class="modal-content-content">
+            <div id="modal-content" class="modal__content" style="display:none;">
+              <p>Please copy this link: <a href="{{shareLinkURL}}">{{shareLinkURL}}</a>. With this link another user can
+                open this presentation with exactly the same selection (slides).</p>
+            </div>
+            <footer id="modal-footer" class="modal__footer">
+              <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
 
 </template>

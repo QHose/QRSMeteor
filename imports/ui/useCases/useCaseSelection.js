@@ -55,42 +55,42 @@ Tracker.autorun(() => {
 // ONRENDERED.
 Template.useCaseSelection.onRendered(async function () {
     Session.set("showSelector", false);
-    this.$("#flyoutnavkbfixed").focus(); 
+    this.$("#flyoutnavkbfixed").focus();
 
     $(".ui.dropdown").dropdown("refresh");
     var textToShow = Cookies.get('currentMainRole') ? Cookies.get('currentMainRole') : 'Your role?'
     $(".ui.dropdown").dropdown("set selected", textToShow);
 
-    !function(){
+    !function () {
         var w = window,
-        d = w.document;
-    
-        if( w.onfocusin === undefined ){
-            d.addEventListener('focus' ,addPolyfill ,true);
-            d.addEventListener('blur' ,addPolyfill ,true);
-            d.addEventListener('focusin' ,removePolyfill ,true);
-            d.addEventListener('focusout' ,removePolyfill ,true);
+            d = w.document;
+
+        if (w.onfocusin === undefined) {
+            d.addEventListener('focus', addPolyfill, true);
+            d.addEventListener('blur', addPolyfill, true);
+            d.addEventListener('focusin', removePolyfill, true);
+            d.addEventListener('focusout', removePolyfill, true);
         }
-        function addPolyfill(e){
+        function addPolyfill(e) {
             var type = e.type === 'focus' ? 'focusin' : 'focusout';
-            var event = new CustomEvent(type, { bubbles:true, cancelable:false });
+            var event = new CustomEvent(type, { bubbles: true, cancelable: false });
             event.c1Generated = true;
-            e.target.dispatchEvent( event );
+            e.target.dispatchEvent(event);
         }
-        function removePolyfill(e){
-    if(!e.c1Generated){ // focus after focusin, so chrome will the first time trigger tow times focusin
-        d.removeEventListener('focus' ,addPolyfill ,true);
-        d.removeEventListener('blur' ,addPolyfill ,true);
-        d.removeEventListener('focusin' ,removePolyfill ,true);
-        d.removeEventListener('focusout' ,removePolyfill ,true);
-    }
-    setTimeout(function(){
-        d.removeEventListener('focusin' ,removePolyfill ,true);
-        d.removeEventListener('focusout' ,removePolyfill ,true);
-    });
-    }
+        function removePolyfill(e) {
+            if (!e.c1Generated) { // focus after focusin, so chrome will the first time trigger tow times focusin
+                d.removeEventListener('focus', addPolyfill, true);
+                d.removeEventListener('blur', addPolyfill, true);
+                d.removeEventListener('focusin', removePolyfill, true);
+                d.removeEventListener('focusout', removePolyfill, true);
+            }
+            setTimeout(function () {
+                d.removeEventListener('focusin', removePolyfill, true);
+                d.removeEventListener('focusout', removePolyfill, true);
+            });
+        }
     }();
-    
+
     function hasClass(el, className) {
         if (el.classList) {
             return el.classList.contains(className);
@@ -98,50 +98,50 @@ Template.useCaseSelection.onRendered(async function () {
             return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
         }
     }
-    
+
     var menuItems1 = document.querySelectorAll('#flyoutnavkbfixed li.has-submenu');
     var timer1, timer2;
-    
-    Array.prototype.forEach.call(menuItems1, function(el, i){
-            el.addEventListener("mouseover", function(event){
-                    this.className = "has-submenu open";
-                    clearTimeout(timer1);
-            });
-            el.addEventListener("mouseout", function(event){
-                    timer1 = setTimeout(function(event){
-                            var opennav = document.querySelector("#flyoutnavkbfixed .has-submenu.open");
-                            opennav.className = "has-submenu";
-                            opennav.querySelector('a').setAttribute('aria-expanded', "false");
-                    }, 1000);
-            });
-            el.querySelector('a').addEventListener("click",  function(event){
-                if (this.parentNode.className == "has-submenu") {
-                    this.parentNode.className = "has-submenu open";
-                    this.setAttribute('aria-expanded', "true");
-                } else {
-                    this.parentNode.className = "has-submenu";
-                    this.setAttribute('aria-expanded', "false");
+
+    Array.prototype.forEach.call(menuItems1, function (el, i) {
+        el.addEventListener("mouseover", function (event) {
+            this.className = "has-submenu open";
+            clearTimeout(timer1);
+        });
+        el.addEventListener("mouseout", function (event) {
+            timer1 = setTimeout(function (event) {
+                var opennav = document.querySelector("#flyoutnavkbfixed .has-submenu.open");
+                opennav.className = "has-submenu";
+                opennav.querySelector('a').setAttribute('aria-expanded', "false");
+            }, 1000);
+        });
+        el.querySelector('a').addEventListener("click", function (event) {
+            if (this.parentNode.className == "has-submenu") {
+                this.parentNode.className = "has-submenu open";
+                this.setAttribute('aria-expanded', "true");
+            } else {
+                this.parentNode.className = "has-submenu";
+                this.setAttribute('aria-expanded', "false");
+            }
+            event.preventDefault();
+        });
+        var links = el.querySelectorAll('a');
+        Array.prototype.forEach.call(links, function (el, i) {
+            el.addEventListener("focus", function () {
+                if (timer2) {
+                    clearTimeout(timer2);
+                    timer2 = null;
                 }
-                event.preventDefault();
             });
-            var links = el.querySelectorAll('a');
-            Array.prototype.forEach.call(links, function(el, i){
-                el.addEventListener("focus", function() {
-                    if (timer2) {
-                        clearTimeout(timer2);
-                        timer2 = null;
+            el.addEventListener("blur", function (event) {
+                timer2 = setTimeout(function () {
+                    var opennav = document.querySelector("#flyoutnavkbfixed .has-submenu.open")
+                    if (opennav) {
+                        opennav.className = "has-submenu";
+                        opennav.querySelector('a').setAttribute('aria-expanded', "false");
                     }
-                });
-                el.addEventListener("blur", function(event) {
-                    timer2 = setTimeout(function () {
-                        var opennav = document.querySelector("#flyoutnavkbfixed .has-submenu.open")
-                        if (opennav) {
-                            opennav.className = "has-submenu";
-                            opennav.querySelector('a').setAttribute('aria-expanded', "false");
-                        }
-                    }, 10);
-                });
+                }, 10);
             });
+        });
     });
 
 })
@@ -154,7 +154,7 @@ Template.useCaseSelection.events({
     "click .slides": async function (e, t) {
         Session.set("showSelector", true);
         Router.go("slides");
-            
+
     },
     "click #videoButton": async function (e, t) {
         nav.selectMenuItemInSense("*Video overview:*");
@@ -281,11 +281,24 @@ export async function getSubjectArea(qix) {
             qType: 'cube'
         },
         qHyperCubeDef: {
-            qDimensions: [{
-                qDef: {
-                    qFieldDefs: ['Subject area']
-                }
-            }]
+            qDimensions: [
+                {
+                    qDef: {
+                        qFieldDefs: ['Subject area'],
+                        "qSortCriterias": [{
+                            "qSortByState": 0,
+                            "qSortByFrequency": 0,
+                            "qSortByNumeric": 0,
+                            "qSortByAscii": 0,
+                            "qSortByLoadOrder": 1,
+                            "qSortByExpression": 1,
+                            "qExpression": {
+                                "qv": "max(CSVRowNo)"
+                            },
+                            "qSortByGreyness": 0
+                        }],
+                    }
+                }]
         }
     });
     sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
@@ -296,7 +309,7 @@ export async function getSubjectArea(qix) {
     }]);
     return sessionData[0].qMatrix
 }
-   
+
 
 export async function getLevel2(qix) {
     var sessionModel = await qix.app.createSessionObject({
@@ -324,14 +337,27 @@ export async function getLevel1(qix) {
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {
             qType: 'cube'
-        },
-        qHyperCubeDef: {
-            qDimensions: [{
-                qDef: {
-                    qFieldDefs: ['Level 1']
-                }
-            }]
+        }, qHyperCubeDef: {
+            qDimensions: [
+                {
+                    qDef: {
+                        qFieldDefs: ['Level 1'],
+                        "qSortCriterias": [{
+                            "qSortByState": 0,
+                            "qSortByFrequency": 0,
+                            "qSortByNumeric": 0,
+                            "qSortByAscii": 0,
+                            "qSortByLoadOrder": 0,
+                            "qSortByExpression": 1,
+                            "qExpression": {
+                                "qv": "max(CSVRowNo)"
+                            },
+                            "qSortByGreyness": 0
+                        }],
+                    }
+                }]
         }
+
     });
     sessionData = await sessionModel.getHyperCubeData('/qHyperCubeDef', [{
         qTop: 0,
@@ -383,9 +409,9 @@ export async function getAllSlideHeadersPlain(qix) {
 //
 // ─── GET LEVEL 1 TO 3 ────────────────────────────────────────────
 //
-
 //by default add extra slides (extra items in the data array), so you will get nice dynamic chapter breakers
-var sectionBreakerConfig = false;
+var sectionBreakerConfig = true;
+
 export async function getAllSlides(insertSectionBreakers = sectionBreakerConfig) {
     var qix = await getQix();
     //insert breakers before a change of topic? YES/NO... breakers are annoying when you make a menu selection or want to link to a sheet
@@ -420,7 +446,7 @@ export async function getComment(qix) {
 }
 
 export async function setChangeListener(qix) {
-   
+
     // console.log('We are connected to Qlik Sense via the APIs, now setChangeListener', qix)
     try {
         qix.app.on('changed', async () => {
