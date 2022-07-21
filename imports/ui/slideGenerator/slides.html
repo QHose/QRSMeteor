@@ -18,6 +18,32 @@
   <div class="reveal">
     <div class="slides">
       <div class="sr-only">Use your keyboard arrows to navigate through the slides</div>
+
+      {{#if showSubjectAreaIntroduction}}
+      <section>
+      <div class="ui container">
+        <h1 class="ui dividing header">Select your favorite subject area<a class="anchor" id="types"></a></h1>
+        <p>You are navigating through slides in a presentation about {{presentationName}}. <br> Please select your favorite subject.</p>
+        <div class="ui list">
+
+          <div class="ui placeholder segment">
+            <div class="ui two column stackable center aligned grid">
+              {{#each item in subjectAreas }}
+              <div class="column">
+                <div id="{{item.qText}}" class="ui icon header subjectArea">
+                  <i class="search icon"></i>
+                  {{item.qText}}
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+      {{else}}
+
       {{#each slideHeaders }}
       {{#if chapterSlide this}}
       <section>
@@ -54,7 +80,8 @@
       {{> slide slide=this slideNr=@index}}
       {{/if}}
       {{/each}}
-    </div>
+      {{/if}}
+    </div>    
   </div>
 </template>
 

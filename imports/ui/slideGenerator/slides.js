@@ -325,6 +325,13 @@ Template.slides.helpers({
     },
     showSelector: function () {
         return Session.get("showSelector");
+    },
+    showSubjectAreaIntroduction: function () {
+        return Session.get("showSubjectAreaIntroduction");
+    },
+    subjectAreas() {
+        var items = MenuItems.find({});
+        return items;
     }
 });
 

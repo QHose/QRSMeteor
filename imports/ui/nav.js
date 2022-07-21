@@ -4,7 +4,7 @@ import { Template } from "meteor/templating";
 const enigma = require("enigma.js");
 import "/imports/ui/nav.html";
 import { getQix, getAllSlides, getLevel1 } from "/imports/ui/useCases/useCaseSelection";
-import {MenuItems} from  "/imports/ui/slideGenerator/slides"
+import { MenuItems } from "/imports/ui/slideGenerator/slides"
 import { Session } from "meteor/session";
 import * as slideApp from "/imports/ui/useCases/useCaseSelection";
 
@@ -18,7 +18,7 @@ Template.nav.helpers({
     var show = Router.current().route.getName() == 'useCaseSelection' ? false : true;
     return show;
   },
-  items() {    
+  items() {
     var items = MenuItems.find({});
     return items;
   }
@@ -32,49 +32,52 @@ import { initQlikSense } from "/imports/ui/useCases/useCaseSelection";
 
 Template.nav.events({
   "click a": async function (event, template) {
+    Session.set("showSubjectAreaIntroduction", false);
     var menuItem = event.currentTarget.id;
     console.log("🚀 ~ file: nav.js ~ line 36 ~ menuItem", menuItem)
-    initQlikSense();
-    // if (menuItem) {
-    //   event.preventDefault();
-    //   switch (menuItem) {
-    //     case "home":
-    //       window.location.replace('/');
-    //       break;      
-    //     // case "SSBI":
-    //     //   selectMenuItemInSense("*What is governed self service with Qlik Sense*");
-    //     //   break;
-    //     // case "generation":
-    //     //   selectMenuItemInSense("*multi-tenant SaaS platform with Qlik Sense*");
-    //     //   break;
-    //     // case "embedding":
-    //     //   selectMenuItemInSense("*embed Qlik Sense*");
-    //     //   break;
-    //     // case "video":
-    //     //   var win = window.open('https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk', '_blank');
-    //     //   win.focus();
-    //     //   break;
-    //     case "sheetSelectorMenu":
-    //       Session.set("showSelector", true);
-    //       break;
-    //     case "sharePresentation":
-    //       var id = Session.get('currentSelectionId');
-    //       var shareLinkURL = window.location.origin + '/?selection=' + id;
-    //       //update the value of the helper for the share link popup
-    //       Session.set('shareLinkURL', shareLinkURL);
-    //   }
-    // } else {
+
+    if (menuItem) {
+      initQlikSense();
+      event.preventDefault();
+      //   switch (menuItem) {
+      //     case "home":
+      //       window.location.replace('/');
+      //       break;      
+      //     // case "SSBI":
+      //     //   selectMenuItemInSense("*What is governed self service with Qlik Sense*");
+      //     //   break;
+      //     // case "generation":
+      //     //   selectMenuItemInSense("*multi-tenant SaaS platform with Qlik Sense*");
+      //     //   break;
+      //     // case "embedding":
+      //     //   selectMenuItemInSense("*embed Qlik Sense*");
+      //     //   break;
+      //     // case "video":
+      //     //   var win = window.open('https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk', '_blank');
+      //     //   win.focus();
+      //     //   break;
+      //     case "sheetSelectorMenu":
+      //       Session.set("showSelector", true);
+      //       break;
+      //     case "sharePresentation":
+      //       var id = Session.get('currentSelectionId');
+      //       var shareLinkURL = window.location.origin + '/?selection=' + id;
+      //       //update the value of the helper for the share link popup
+      //       Session.set('shareLinkURL', shareLinkURL);
+      //   }
+      // } else {
       console.log('make selection based on id')
-      await selectInSense('Subject area',menuItem);
-      //set focus on main content      
-      // $(".present #maincontent").focus();
+      await selectInSense('Subject area', menuItem);
+    }
+    //set focus on main content      
+    // $(".present #maincontent").focus();
     // }
   }
 });
 
 
 Template.nav.onRendered(function () {
-  
+
 });
 
 
@@ -92,7 +95,7 @@ export async function selectViaQueryId(mongoId) {
 }
 
 export async function selectInSense(field, selection) {
-  console.log('make selection for field'+field+' for value '+selection);
+  console.log('make selection for field' + field + ' for value ' + selection);
   Session.set("slideHeaders", null);
   await makeSearchSelectionInField(field, selection);
   //get slides
