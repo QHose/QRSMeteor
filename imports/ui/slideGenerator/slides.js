@@ -312,6 +312,7 @@ Template.slides.helpers({
      var headers = Session.get("slideHeaders"); //only the level 1 and 2 colums, we need this for the headers of the slide
      var currentChapter = this.toString();
      var toc =[];
+     if (headers){
      for (const element of headers) {
         var level1 = element[0].qText;
         var level2 = element[1].qText
@@ -319,11 +320,16 @@ Template.slides.helpers({
             toc.push(level2)
         }        
       }
+    }
       return toc;
     },
     showSelector: function () {
         return Session.get("showSelector");
     }
+});
+
+Template.registerHelper('presentationName', function (object) {
+    return Cookies.get("currentMainRole");
 });
 
 
