@@ -29,8 +29,6 @@ var possibleRoles = [
 ];
 
 export async function initQlikSense() {
-
-
     //connect to qlik sense
     qix = await makeSureSenseIsConnected();
     // make sure we get a signal if something changes in qlik sense, like a selection in the iframe menu
@@ -161,7 +159,6 @@ Template.useCaseSelection.events({
     },
     "click .selectRole": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
         var selectedRole = e.currentTarget.id;
-        console.log("🚀 ~ file: useCaseSelection.js ~ line 164 ~ selectedRole", selectedRole)
         Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
 
@@ -170,6 +167,7 @@ Template.useCaseSelection.events({
 
         Router.go("slides");
         Session.set("showSelector", false);
+        Session.set("showSubjectAreaIntroduction", true);
         ////go to the first slide after a data refresh.           
         // Reveal.slide(0); 
     }
@@ -333,7 +331,7 @@ export async function getLevel2(qix) {
     return sessionData[0].qMatrix
 }
 
-export async function getLevel1(qix) {
+export async function getLevel1(qix) { //chapters
     var sessionModel = await qix.app.createSessionObject({
         qInfo: {
             qType: 'cube'
@@ -368,10 +366,10 @@ export async function getLevel1(qix) {
                             "qSortByFrequency": 0,
                             "qSortByNumeric": 0,
                             "qSortByAscii": 0,
-                            "qSortByLoadOrder": 1,
-                            "qSortByExpression": 0,
+                            "qSortByLoadOrder": 0,
+                            "qSortByExpression": 1,
                             "qExpression": {
-                                "qv": " "
+                                "qv": "max(CSVRowNo)"
                             }
                         }
                     }
@@ -431,7 +429,6 @@ export async function getAllSlideHeadersPlain(qix) {
 //
 //by default add extra slides (extra items in the data array), so you will get nice dynamic chapter breakers
 var sectionBreakerConfig = true;
-
 export async function getAllSlides(insertSectionBreakers = sectionBreakerConfig) {
     var qix = await getQix();
     //insert breakers before a change of topic? YES/NO... breakers are annoying when you make a menu selection or want to link to a sheet
@@ -534,6 +531,6 @@ async function getCurrentSelections() {
     } catch (error) {
         var message = 'getCurrentSelections: Can not connect to the Qlik Sense Engine API via enigmaJS';
         console.error(message, error);
-        sAlert.error(message, error);
+        // sAlert.error(message, error);
     };
 }
