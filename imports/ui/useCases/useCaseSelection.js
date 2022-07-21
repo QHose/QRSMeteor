@@ -355,7 +355,27 @@ export async function getLevel1(qix) {
                             "qSortByGreyness": 0
                         }],
                     }
-                }]
+                }],
+                "qMeasures": [
+                    {
+                        "qDef": {
+                            "qDef": "Sum({$< [Level 1]= > } 1)"
+                        },
+                        "qLabel": "sum({1}1)",
+                        "qLibraryId": null,
+                        "qSortBy": {
+                            "qSortByState": 0,
+                            "qSortByFrequency": 0,
+                            "qSortByNumeric": 0,
+                            "qSortByAscii": 0,
+                            "qSortByLoadOrder": 1,
+                            "qSortByExpression": 0,
+                            "qExpression": {
+                                "qv": " "
+                            }
+                        }
+                    }
+                ]
         }
 
     });
