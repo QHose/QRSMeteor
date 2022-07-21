@@ -93,7 +93,10 @@
     <tbody>
       {{#each chapter in chapters }}
       <tr>
-        <td data-label="Name"> {{chapter.qText}} </td>
+
+        <td> <a id="{{chapter.qText}}" href="" class="item">        
+          {{chapter.qText}}
+        </a>  </td>
       </tr>
       {{/each}}
     </tbody>

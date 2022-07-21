@@ -6,6 +6,7 @@ import lodash from "lodash";
 import hljs from "highlight.js";
 import { Logger } from "/imports/api/logger";
 import { getQix, getLevel1, getSubjectArea } from "/imports/ui/useCases/useCaseSelection";
+import {selectInSense} from "/imports/ui/nav";
 import "./slideSelectionSheet";
 // import { fill } from 'core-js/core/array';
 
@@ -140,6 +141,16 @@ Template.slides.onRendered(async function () {
     Reveal.sync();
     this.$(".reveal").removeAttr("role"); //removed to comply with WCAG 4.1.2
 });
+
+
+Template.chapters.events({
+    "click a": async function (event, template) {
+      var menuItem = event.currentTarget.id;      
+        console.log('make selection in chapter based on id: '+menuItem)
+        await selectInSense('Level 1',menuItem);       
+    }
+  });
+  
 
 async function populateNavMenuItems() {
     var qix = await getQix();
