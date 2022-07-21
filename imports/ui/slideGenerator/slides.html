@@ -21,26 +21,39 @@
       {{#each slideHeaders }}
       {{#if chapterSlide this}}
       <section>
-        <div class="ui container">
-          <div class="ui integrationBreaker" style="text-align: left;
-          font-size: 1.2em;">
-            <h1 class="ui header" style="color: #0E2F4E; width: 60%;">
-              Next chapter: {{this}} </h1>
-            <div class="ui divider"></div>
-            <div>
+        <div class="ui grid">
+          <div class="two wide column">
+            {{>chapters}}
+          </div>
+          <div class="twelve wide column">
+            <div class="ui integrationBreaker" style="text-align: left;font-size: 1.2em;">
+              <h1 class="ui header" style="color: #0E2F4E; width: 60%;">
+                Next chapter: {{this}} </h1>
+              <div class="ui divider"></div>
+              <div>
 
-              <h2 class="ui header">You will see the following slides: </h2>
-              {{#each slide in TableOfContentForChapter }}
-              <div class="ui bulleted list">
-                <div class="item"> {{slide}}
+                <h2 class="ui header">You can navigate through the following slides: </h2>
+                {{#each slide in TableOfContentForChapter }}
+                <div class="ui bulleted list">
+                  <div class="item"> {{slide}}
+                  </div>
                 </div>
+                {{/each}}
+                <br>
+                Or select your another chapter on the left, <br> 
+                or a different subject area in the top.
               </div>
-              {{/each}}
+              <!-- <div class="ui secondary segment">
+                <p>Explain what the user is seeing, (a presentation with a table of chapters on the left, and subject on the top</p>
+              </div> -->
             </div>
           </div>
         </div>
       </section>
-      {{else}} {{> slide slide=this slideNr=@index}} {{/if}} {{/each}}
+      {{else}}
+      {{> slide slide=this slideNr=@index}}
+      {{/if}}
+      {{/each}}
     </div>
   </div>
 </template>
@@ -50,20 +63,7 @@
     <div class="wrap">
       <div class="ui grid">
         <div class="two wide column">
-          <table class="ui celled table" style="    margin-top: 90px; font-size: smaller;">
-            <thead>
-              <tr>
-                <th>Select chapter</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each chapter in chapters }}
-              <tr>
-                <td data-label="Name"> {{chapter.qText}} </td>
-              </tr>
-              {{/each}}
-            </tbody>
-          </table>
+          {{>chapters}}
         </div>
         <div class="twelve wide column">
           {{#if active slideNr}}
@@ -83,6 +83,22 @@
 
 </template>
 
+<template name="chapters">
+  <table class="ui celled table" style="    margin-top: 16px; font-size: smaller;">
+    <thead>
+      <tr>
+        <th>Select chapter</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each chapter in chapters }}
+      <tr>
+        <td data-label="Name"> {{chapter.qText}} </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
 
 <template name="slideContent">
   <div class="slideContent">
@@ -90,30 +106,29 @@
     {{#each bullet in bullets}} {{{bullet}}} {{/each}}
     {{{ comment }}}
   </div>
+</template>
 
-  <template name="slideShareModal">
-    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-        <div id="modal-container" class="modal__container" role="dialog" aria-modal="true"
-          aria-labelledby="modal-1-title">
-          <header id="modal-header" class="modal__header">
-            <h2 class="modal__title">
-              Get a link for this presentation
-            </h2>
-            <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-          </header>
-          <div id="modal-content-content" class="modal-content-content">
-            <div id="modal-content" class="modal__content" style="display:none;">
-              <p>Please copy this link: <a href="{{shareLinkURL}}">{{shareLinkURL}}</a>. With this link another user can
-                open this presentation with exactly the same selection (slides).</p>
-            </div>
-            <footer id="modal-footer" class="modal__footer">
-              <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
-            </footer>
+<template name="slideShareModal">
+  <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div id="modal-container" class="modal__container" role="dialog" aria-modal="true"
+        aria-labelledby="modal-1-title">
+        <header id="modal-header" class="modal__header">
+          <h2 class="modal__title">
+            Get a link for this presentation
+          </h2>
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+        </header>
+        <div id="modal-content-content" class="modal-content-content">
+          <div id="modal-content" class="modal__content" style="display:none;">
+            <p>Please copy this link: <a href="{{shareLinkURL}}">{{shareLinkURL}}</a>. With this link another user can
+              open this presentation with exactly the same selection (slides).</p>
           </div>
+          <footer id="modal-footer" class="modal__footer">
+            <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+          </footer>
         </div>
       </div>
     </div>
-  </template>
-
+  </div>
 </template>

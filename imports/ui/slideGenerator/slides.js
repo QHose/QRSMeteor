@@ -308,7 +308,6 @@ Template.slides.helpers({
             toc.push(level2)
         }        
       }
-      console.log("TableOfContentForChapter ~ toc", toc)
       return toc;
     },
     showSelector: function () {
@@ -325,12 +324,15 @@ Template.slide.helpers({
             slideNr < activeSlide + numberOfActiveSlides &&
             slideNr > activeSlide - numberOfActiveSlides;
         return active;
-    },
+    }
+});
+
+
+Template.chapters.helpers({
     chapters() {
         var chapters = ChapterItems.find({});        
         return chapters;
     }
-
 });
 
 
