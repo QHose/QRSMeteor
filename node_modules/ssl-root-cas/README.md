@@ -254,7 +254,7 @@ Kinda Bad Ideas
 ```javascript
     'use strict';
 
-    var request = require('request');
+    var request = require('@coolaj86/urequest');
     var agentOptions;
     var agent;
 

@@ -4,7 +4,7 @@
 
 var fs = require('fs')
   , path = require('path')
-  , request = require('request')
+  , request = require('@coolaj86/urequest')
   , CERTDB_URL = 'https://mxr.mozilla.org/nss/source/lib/ckfw/builtins/certdata.txt?raw=1'
   , outputFile
   , outputPemsDir
@@ -23,7 +23,7 @@ Certificate.prototype.quasiPEM = function quasiPEM() {
     ;
 
   bytes.shift();
-  converted = new Buffer(bytes.length);
+  converted = Buffer.alloc(bytes.length);
   while(bytes.length > 0) {
     converted.writeUInt8(parseInt(bytes.shift(), 8), offset++);
   }
@@ -155,8 +155,20 @@ function dumpCerts(certs, filename, pemsDir) {
   console.info("Wrote '" + filename.replace(/'/g, "\\'") + "'.");
 }
 
+/*global Promise*/
 function run(filename) {
-  var PromiseA = require('bluebird').Promise;
+  var PromiseA;
+  if ('undefined' !== typeof Promise) {
+    PromiseA = Promise;
+  } else {
+    try {
+      PromiseA = require('bluebird').Promise;
+    } catch(e) {
+      console.error("node " + process.version + " lacks Promise support. Please add bluebird to your project:");
+      console.error("    npm install --save bluebird");
+      process.exit(1);
+    }
+  }
 
   return new PromiseA(function (resolve, reject) {
     if (!filename) {
@@ -179,7 +191,7 @@ function run(filename) {
     }
 
     console.info("Loading latest certificates from " + CERTDB_URL);
-    request.get(CERTDB_URL, function (error, response, body) {
+    request({ url: CERTDB_URL }, function (error, response, body) {
       if (error) {
         console.error(error);
         console.error(error.stacktrace);
