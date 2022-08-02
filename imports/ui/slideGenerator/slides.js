@@ -22,7 +22,7 @@ export const ChapterItems = new Mongo.Collection(null);
 // ─── SLIDES ─────────────────────────────────────────────────────────────────────
 //
 
-
+// console.log('SHOWDOWN SETTINGS: ', showdown.getDefaultOptions());
 
 Template.registerHelper('chapterSlide', function (currentRow) {
     if (typeof (currentRow) === 'string') { //we got a chapter slide        
@@ -265,22 +265,9 @@ Template.slideContent.onRendered(async function () {
             });
         });
 
+        this.$('img').not('.ui.image').addClass('ui image');
 
-
-
-        // //check if there is content on the page, if not add the change listener again (happens sometimes when users keep the screen open for a long time)
-        // var slideContent = template.bullets.get();
-        // // console.log("slideContent.onRendered array of bullets: ", slideContent);
-        // if (!slideContent) {
-        //     console.log('------------------------------------');
-        //     console.log('No slide data retrieved from Qlik Sense, re-adding the slide changed event listener...');
-        //     console.log('------------------------------------');
-        //     // addSlideChangedListener();
-        //     // nav.showSlideSelector();
-        //     window.location.href = window.location.origin;
-        //     //location.reload(); //@todo to evaluate if this helps
-        // }
-    }, 2000);
+    }, 1000);
 });
 
 Template.slideContent.events({
@@ -440,7 +427,7 @@ async function getLevel3(level1, level2) {
 
 }
 
-function normalizeAndSortData(senseArray) {
+export function normalizeAndSortData(senseArray) {
     var result = [];
     senseArray.sort(compare);
 

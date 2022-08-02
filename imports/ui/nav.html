@@ -2,27 +2,26 @@
   <div class="ui container top secondary stackable menu mainNavBar">
     <div class="column"> <a class="skip-main item" href="#bodyDropdown">SKIP TO CONTENT</a>
     </div>
-    <!-- <div class="column"> <a href="/" class="item">
-        HOME</a> </div> -->
-    <!-- for each level 1, show menu item -->
-    {{#each item in items }}
-
-    <div class="column"> <a id="{{item.qText}}" href="" class="item">
-        {{item.qText}}
-      </a>
+    <div class="column"> <a id="home" class="{{#if isMainLandingPage}} active {{/if}} item">
+        HOME</a>
     </div>
+      <!-- for each level 1, show menu item -->
+      {{#each item in items }}
 
-    {{/each}}
-
-    <!-- {{/if}} -->
-
-
-
-
-    <!-- <div class="column"> <a id="home" href="{{pathFor 'useCaseSelection'}}"
-          class="{{#if isMainLandingPage}} active {{/if}} item">
-          HOME</a>
+      <div class="column"> <a id="{{item.qText}}" href="" class="item">
+          {{item.qText}}
+        </a>
       </div>
+
+      {{/each}}
+
+      <!-- {{/if}} -->
+
+
+
+
+
+      <!-- </div>
       <div class="column"> <a id="SSBI" href="{{pathFor 'selfService'}}"
           class="{{#if isSelfServicePage}} active {{/if}} item">
           SELF SERVICE
@@ -46,7 +45,7 @@
         <a id="sharePresentation" href="" class="item" data-micromodal-trigger="modal-1"> SHARE PRESENTATION</a>        
       </div> -->
 
-  </div>
+s  </div>
 </template>
 
 <template name="sheetSelector">

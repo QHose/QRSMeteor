@@ -21,27 +21,29 @@
 
       {{#if showSubjectAreaIntroduction}}
       <section>
-      <div class="ui container">
-        <h1 class="ui dividing header">Select your favorite subject area<a class="anchor" id="types"></a></h1>
-        <p>You are navigating through slides in a presentation about {{presentationName}}. <br> Please select your favorite subject.</p>
-        <div class="ui list">
+        <div class="ui container">
+          <h1 class="ui dividing header">Select your favorite subject area<a class="anchor" id="types"></a></h1>
+          <p>You are navigating through slides in a presentation about {{presentationName}}. <br> Please select your
+            favorite subject in the menu above.</p>
+          <div class="ui list">
 
-          <div class="ui placeholder segment">
-            <div class="ui two column stackable center aligned grid">
-              {{#each item in subjectAreas }}
-              <div class="column">
-                <div id="{{item.qText}}" class="ui icon header subjectArea">
-                  <i class="search icon"></i>
-                  {{item.qText}}
+            <div class="ui placeholder segment">
+              <img class="ui image" src="/images/subject area introduction.png">
+              <!-- <div class="ui two column stackable center aligned grid">
+                {{#each item in subjectAreas }}
+                <div class="column">
+                  <div id="{{item.qText}}" class="ui icon header subjectArea">
+                    <i class="search icon"></i>
+                    {{item.qText}}
+                  </div>
                 </div>
-              </div>
-              {{/each}}
+                {{/each}}
+              </div> -->
             </div>
-          </div>
 
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
       {{else}}
 
       {{#each slideHeaders }}
@@ -49,7 +51,7 @@
       <section>
         <div class="ui grid">
           <div class="two wide column">
-            <!-- {{>chapters}} -->
+            {{>chapters}}
           </div>
           <div class="twelve wide column">
             <div class="ui integrationBreaker" style="text-align: left;font-size: 1.2em;">
@@ -58,7 +60,7 @@
               <div class="ui divider"></div>
               <div>
 
-                <h2 class="ui header">You can navigate through the following slides: </h2>
+                <h2 class="ui header">In this chapter you will see the following slides: </h2>
                 {{#each slide in TableOfContentForChapter }}
                 <div class="ui bulleted list">
                   <div class="item"> {{slide}}
@@ -66,7 +68,7 @@
                 </div>
                 {{/each}}
                 <br>
-                Or select your another chapter on the left, <br> 
+                If you like other content, you can select another chapter on the left, <br>
                 or a different subject area in the top.
               </div>
               <!-- <div class="ui secondary segment">
@@ -81,7 +83,7 @@
       {{/if}}
       {{/each}}
       {{/if}}
-    </div>    
+    </div>
   </div>
 </template>
 
@@ -121,9 +123,9 @@
       {{#each chapter in chapters }}
       <tr>
 
-        <td> <a id="{{chapter.qText}}" href="" class="item">        
-          {{chapter.qText}}
-        </a>  </td>
+        <td> <a id="{{chapter.qText}}" href="" class="item">
+            {{chapter.qText}}
+          </a> </td>
       </tr>
       {{/each}}
     </tbody>

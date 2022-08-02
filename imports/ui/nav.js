@@ -31,6 +31,9 @@ import { initQlikSense } from "/imports/ui/useCases/useCaseSelection";
 
 
 Template.nav.events({
+  "click #home": function(){
+    window.location.replace('/');
+  },
   "click a": async function (event, template) {
     Session.set("showSubjectAreaIntroduction", false);
     var menuItem = event.currentTarget.id;
@@ -99,7 +102,7 @@ export async function selectInSense(field, selection) {
   Session.set("slideHeaders", null);
   await makeSearchSelectionInField(field, selection);
   //get slides
-  await getAllSlides(false);
+  await getAllSlides(true);
   Router.go("slides");
 }
 
@@ -110,7 +113,7 @@ export async function selectMenuItemInSense(slide) {
   Session.set("slideHeaders", null);
   await makeSearchSelectionInField("Level 2", slide);
   //get slides
-  await getAllSlides(false);
+  await getAllSlides(true);
   Router.go("slides");
 }
 
