@@ -154,10 +154,13 @@ Template.useCaseSelection.events({
         Router.go("slides");
 
     },
+    "click #CM": async function (e, t) {
+        window.open('https://integration.qlik.com', '_blank').focus();
+    },
     "click #videoButton": async function (e, t) {
         nav.selectMenuItemInSense("*Video overview:*");
     },
-    "click .selectRole": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
+    "click #CM2SAAS": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
         var selectedRole = e.currentTarget.id;
         Cookies.set("currentMainRole", selectedRole);
         await setSelectionInSense("Partial Workshop", selectedRole);
@@ -383,7 +386,28 @@ export async function getLevel1(qix) { //chapters
         qWidth: 3,
         qHeight: 3333
     }]);
-    return sessionData[0].qMatrix
+    return SortSenseData(sessionData[0].qMatrix); 
+}
+
+function SortSenseData(senseArray) {
+    var result = [];
+    senseArray.sort(compare);
+
+    for (const element of senseArray) {
+        result.push(element);
+    }
+    console.log("🚀  SortSenseData ~ result", result)
+    return result;
+}
+
+function compare(a, b) {
+    if (a[1].qNum < b[1].qNum) {
+        return -1;
+    }
+    if (a[1].qNum > b[1].qNum) {
+        return 1;
+    }
+    return 0;
 }
 
 export async function getAllSlideHeadersPlain(qix) {
