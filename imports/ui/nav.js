@@ -21,6 +21,13 @@ Template.nav.helpers({
   items() {
     var items = MenuItems.find({});
     return items;
+  },
+  active(item){
+    var text = item.qText;
+    if(text === Session.get("currentSubjectArea"))  
+    {
+      return 'active'
+    }     
   }
 });
 
@@ -35,54 +42,19 @@ Template.nav.events({
     window.location.replace('/');
   },
   "click a": async function (event, template) {
-    Session.set("showSubjectAreaIntroduction", false);
+    Session.set("showSubjectAreaIntroduction", false);   
     var menuItem = event.currentTarget.id;
+    Session.set("currentSubjectArea", menuItem);
     console.log("🚀 ~ file: nav.js ~ line 36 ~ menuItem", menuItem)
 
     if (menuItem) {
       initQlikSense();
-      event.preventDefault();
-      //   switch (menuItem) {
-      //     case "home":
-      //       window.location.replace('/');
-      //       break;      
-      //     // case "SSBI":
-      //     //   selectMenuItemInSense("*What is governed self service with Qlik Sense*");
-      //     //   break;
-      //     // case "generation":
-      //     //   selectMenuItemInSense("*multi-tenant SaaS platform with Qlik Sense*");
-      //     //   break;
-      //     // case "embedding":
-      //     //   selectMenuItemInSense("*embed Qlik Sense*");
-      //     //   break;
-      //     // case "video":
-      //     //   var win = window.open('https://www.youtube.com/playlist?list=PLqJfqgR62cVAZxS34WGnByjASKrGf0Fpk', '_blank');
-      //     //   win.focus();
-      //     //   break;
-      //     case "sheetSelectorMenu":
-      //       Session.set("showSelector", true);
-      //       break;
-      //     case "sharePresentation":
-      //       var id = Session.get('currentSelectionId');
-      //       var shareLinkURL = window.location.origin + '/?selection=' + id;
-      //       //update the value of the helper for the share link popup
-      //       Session.set('shareLinkURL', shareLinkURL);
-      //   }
-      // } else {
+      event.preventDefault();      
       console.log('make selection based on id')
       await selectInSense('Subject area', menuItem);
-    }
-    //set focus on main content      
-    // $(".present #maincontent").focus();
-    // }
+    }    
   }
 });
-
-
-Template.nav.onRendered(function () {
-
-});
-
 
 Template.yourSaasPlatformMenu.onRendered(function () {
   this.$(".ui.dropdown").dropdown();

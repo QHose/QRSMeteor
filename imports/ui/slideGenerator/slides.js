@@ -6,7 +6,7 @@ import lodash from "lodash";
 import hljs from "highlight.js";
 import { Logger } from "/imports/api/logger";
 import { getQix, getLevel1, getSubjectArea } from "/imports/ui/useCases/useCaseSelection";
-import {selectInSense} from "/imports/ui/nav";
+import { selectInSense } from "/imports/ui/nav";
 import "./slideSelectionSheet";
 // import { fill } from 'core-js/core/array';
 
@@ -32,7 +32,7 @@ Template.registerHelper('chapterSlide', function (currentRow) {
 
 Template.slides.onCreated(async function () {
     await populateNavMenuItems();
-    
+
     $("body").css({
         overflow: "overlay"
     });
@@ -69,58 +69,9 @@ Template.slideShareModal.onRendered(function () {
 });
 
 
-function addModalContentHeight(type) {
-    var type = (arguments[0] != null) ? arguments[0] : 'short';
-    var modalContainer = $("#modal-container");
-    var modalHeader = $("#modal-header");
-    var modalContentContent = $("#modal-content-content");
-    var modalContent = $("#modal-content");
-    var modalFooter = $("#modal-footer");
 
-    var modalIsDefined =
-        modalContainer.length &&
-        modalHeader.length &&
-        modalContent.length &&
-        modalFooter.length;
 
-    if (modalIsDefined) {
-        var modalContainerHeight = modalContainer.outerHeight();
-        var modalHeaderHeight = modalHeader.outerHeight();
-        var modalFooterHeight = modalFooter.outerHeight();
-
-        console.log("modalContainerHeight: ", modalContainerHeight);
-        console.log("modalHeaderHeight: ", modalHeaderHeight);
-        console.log("modalFooterHeight: ", modalFooterHeight);
-
-        var offset = 80;
-
-        var height = modalContainerHeight - (modalHeaderHeight + modalFooterHeight + offset);
-
-        console.log('height: ', height);
-
-        if (!isNaN(height)) {
-            height = height > 0 ? height : 20;
-            if (type == 'short') {
-                modalContent.css({ 'height': height + 'px' });
-            }
-            else {
-                modalContainer.css({ 'height': '100%', 'overflow-y': 'hidden', 'margin-top': '40px' });
-                modalContentContent.css({ 'height': '100%', 'overflow-y': 'auto' });
-                modalContent.css({ 'overflow-y': 'visible' });
-                modalFooter.css({ 'margin-bottom': '120px' });
-            }
-            setTimeout(function () {
-                modalContent.css({ 'display': 'block' });
-                var modalContentDOM = document.querySelector('#modal-content');
-                modalContentDOM.scrollTop = 0;
-            });
-        }
-
-    }
-
-}
-
-Template.slide.onCreated(async function () {        
+Template.slide.onCreated(async function () {
     await populateChapters();
 });
 
@@ -128,7 +79,7 @@ Template.slide.onCreated(async function () {
 async function populateChapters() {
     var qix = await getQix();
     var items = await getLevel1(qix);
-    
+
     ChapterItems.remove({});
     //insert items in a collection
     for (const item of items) {
@@ -136,7 +87,7 @@ async function populateChapters() {
     }
 };
 
-Template.slides.onRendered(async function () {    
+Template.slides.onRendered(async function () {
     initializeReveal();
     Reveal.sync();
     this.$(".reveal").removeAttr("role"); //removed to comply with WCAG 4.1.2
@@ -145,12 +96,13 @@ Template.slides.onRendered(async function () {
 
 Template.chapters.events({
     "click a": async function (event, template) {
-      var menuItem = event.currentTarget.id;      
-        console.log('make selection in chapter based on id: '+menuItem)
-        await selectInSense('Level 1',menuItem);       
+        var menuItem = event.currentTarget.id;
+        Session.set("currentChapter", menuItem);
+        console.log('make selection in chapter based on id: ' + menuItem)
+        await selectInSense('Level 1', menuItem);
     }
-  });
-  
+});
+
 
 async function populateNavMenuItems() {
     var qix = await getQix();
@@ -296,19 +248,19 @@ Template.slides.helpers({
         return Session.get("slideHeaders"); //only the level 1 and 2 colums, we need this for the headers of the slide
     },
     TableOfContentForChapter() {
-     var headers = Session.get("slideHeaders"); //only the level 1 and 2 colums, we need this for the headers of the slide
-     var currentChapter = this.toString();
-     var toc =[];
-     if (headers){
-     for (const element of headers) {
-        var level1 = element[0].qText;
-        var level2 = element[1].qText
-        if(level1===currentChapter){
-            toc.push(level2)
-        }        
-      }
-    }
-      return toc;
+        var headers = Session.get("slideHeaders"); //only the level 1 and 2 colums, we need this for the headers of the slide
+        var currentChapter = this.toString();
+        var toc = [];
+        if (headers) {
+            for (const element of headers) {
+                var level1 = element[0].qText;
+                var level2 = element[1].qText
+                if (level1 === currentChapter) {
+                    toc.push(level2)
+                }
+            }
+        }
+        return toc;
     },
     showSelector: function () {
         return Session.get("showSelector");
@@ -326,6 +278,9 @@ Template.registerHelper('presentationName', function (object) {
     return Cookies.get("currentMainRole");
 });
 
+Template.registerHelper('currentSubjectArea', function (object) {
+    return Session.get("currentSubjectArea")
+});
 
 
 Template.slide.helpers({
@@ -341,8 +296,11 @@ Template.slide.helpers({
 
 Template.chapters.helpers({
     chapters() {
-        var chapters = ChapterItems.find({});        
+        var chapters = ChapterItems.find({});
         return chapters;
+    },
+    active(){
+
     }
 });
 
@@ -832,3 +790,53 @@ function initializeReveal() {
     }
 }
 
+function addModalContentHeight(type) {
+    var type = (arguments[0] != null) ? arguments[0] : 'short';
+    var modalContainer = $("#modal-container");
+    var modalHeader = $("#modal-header");
+    var modalContentContent = $("#modal-content-content");
+    var modalContent = $("#modal-content");
+    var modalFooter = $("#modal-footer");
+
+    var modalIsDefined =
+        modalContainer.length &&
+        modalHeader.length &&
+        modalContent.length &&
+        modalFooter.length;
+
+    if (modalIsDefined) {
+        var modalContainerHeight = modalContainer.outerHeight();
+        var modalHeaderHeight = modalHeader.outerHeight();
+        var modalFooterHeight = modalFooter.outerHeight();
+
+        console.log("modalContainerHeight: ", modalContainerHeight);
+        console.log("modalHeaderHeight: ", modalHeaderHeight);
+        console.log("modalFooterHeight: ", modalFooterHeight);
+
+        var offset = 80;
+
+        var height = modalContainerHeight - (modalHeaderHeight + modalFooterHeight + offset);
+
+        console.log('height: ', height);
+
+        if (!isNaN(height)) {
+            height = height > 0 ? height : 20;
+            if (type == 'short') {
+                modalContent.css({ 'height': height + 'px' });
+            }
+            else {
+                modalContainer.css({ 'height': '100%', 'overflow-y': 'hidden', 'margin-top': '40px' });
+                modalContentContent.css({ 'height': '100%', 'overflow-y': 'auto' });
+                modalContent.css({ 'overflow-y': 'visible' });
+                modalFooter.css({ 'margin-bottom': '120px' });
+            }
+            setTimeout(function () {
+                modalContent.css({ 'display': 'block' });
+                var modalContentDOM = document.querySelector('#modal-content');
+                modalContentDOM.scrollTop = 0;
+            });
+        }
+
+    }
+
+}

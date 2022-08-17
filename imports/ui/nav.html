@@ -8,44 +8,15 @@
       <!-- for each level 1, show menu item -->
       {{#each item in items }}
 
-      <div class="column"> <a id="{{item.qText}}" href="" class="item">
+      <div class="column"> <a id="{{item.qText}}" href="" class="{{active item}} item">
           {{item.qText}}
         </a>
       </div>
 
       {{/each}}
 
-      <!-- {{/if}} -->
 
-
-
-
-
-      <!-- </div>
-      <div class="column"> <a id="SSBI" href="{{pathFor 'selfService'}}"
-          class="{{#if isSelfServicePage}} active {{/if}} item">
-          SELF SERVICE
-        </a>
-      </div>
-      <div class="column"> {{#if isSaaSDemoPage}} {{> yourSaasPlatformMenu}} {{else}}
-        <a id="generation" href="{{pathFor 'generation'}}" class="{{#if isSaaSDemoPage}} active {{/if}} item">
-          PROVISIONING
-        </a>         
-      </div>
-      <div class="column"> <a id="embedding" href="{{webIntegrationDemo}}" class="item">
-          EMBED
-        </a>
-      </div>
-      <div class="column"><a id="video" href="" class="item"> VIDEOS</a>
-      </div>
-      <div class="column">        
-        <a id="sheetSelectorMenu" href="" class="item selectSlides"> CHANGE PRESENTATION</a>        
-      </div>
-      <div class="column">        
-        <a id="sharePresentation" href="" class="item" data-micromodal-trigger="modal-1"> SHARE PRESENTATION</a>        
-      </div> -->
-
-s  </div>
+</div>
 </template>
 
 <template name="sheetSelector">

@@ -27,8 +27,11 @@ html {
 
 .mainNavBar a.active.item {
     border-color: #E36E0F !important;
+    background-color: white !important;
+    color:#1c355e  !important;
+    top: 2px;
     /* color: #E36E0F !important; */
-    font-size: 1.1em;
+    /* font-size: 1.1em; */
 }
 
 .mainContainerContent {

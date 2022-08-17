@@ -55,10 +55,10 @@
           </div>
           <div class="twelve wide column">
             <div class="ui integrationBreaker" style="text-align: left;font-size: 1.2em;">
-              <h1 class="ui header" style="color: #0E2F4E; width: 60%;">
+              <h1 class="ui header" style="color: #0E2F4E;">
                 Next chapter: {{this}} </h1>
               <div class="ui divider"></div>
-              <div>
+              <div style="width: 60%;">
 
                 <h2 class="ui header">In this chapter you will see the following slides: </h2>
                 {{#each slide in TableOfContentForChapter }}
@@ -68,7 +68,7 @@
                 </div>
                 {{/each}}
                 <br>
-                If you like other content, you can select another chapter on the left, <br>
+                You can select another chapter on the left, 
                 or a different subject area in the top.
               </div>
               <!-- <div class="ui secondary segment">
@@ -116,7 +116,7 @@
   <table class="ui celled table" style="    margin-top: 16px; font-size: smaller;">
     <thead>
       <tr>
-        <th>{{presentationName}} - chapters </th>
+        <th>{{presentationName}} - {{currentSubjectArea}} chapters </th>
       </tr>
     </thead>
     <tbody>
