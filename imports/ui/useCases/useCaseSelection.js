@@ -167,10 +167,10 @@ Template.useCaseSelection.events({
 
         //get slides
         await getAllSlides();
-
-        Router.go("slides");
         Session.set("showSelector", false);
         Session.set("showSubjectAreaIntroduction", true);
+
+        Router.go("slides");
         ////go to the first slide after a data refresh.           
         // Reveal.slide(0); 
     }
