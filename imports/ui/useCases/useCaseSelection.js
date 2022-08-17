@@ -348,8 +348,8 @@ export async function getLevel1(qix) { //chapters
                             "qSortByFrequency": 0,
                             "qSortByNumeric": 0,
                             "qSortByAscii": 0,
-                            "qSortByLoadOrder": 0,
-                            "qSortByExpression": 1,
+                            "qSortByLoadOrder": 1,
+                            "qSortByExpression": 0,
                             "qExpression": {
                                 "qv": "max(CSVRowNo)"
                             },
