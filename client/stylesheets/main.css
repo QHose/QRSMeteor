@@ -25,6 +25,7 @@ html {
     color: white !important;
 }
 
+
 .mainNavBar a.active.item {
     border-color: #E36E0F !important;
     background-color: white !important;
@@ -34,6 +35,10 @@ html {
     /* font-size: 1.1em; */
 }
 
+
+#chapters a.active.item {
+    background: rgba(0, 0, 0, 0.05) !important;
+}
 .mainContainerContent {
     padding: 30px 0px 30px 0px;
 }

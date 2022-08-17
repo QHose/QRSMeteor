@@ -68,7 +68,7 @@
                 </div>
                 {{/each}}
                 <br>
-                You can select another chapter on the left, 
+                You can select another chapter on the left,
                 or a different subject area in the top.
               </div>
               <!-- <div class="ui secondary segment">
@@ -96,10 +96,10 @@
         </div>
         <div class="twelve wide column">
           {{#if active slideNr}}
-          <h1> {{{level 1 slide}}}</h1>
+          <!-- <h1> {{{level 1 slide}}}</h1>
           <h2>{{{level 2 slide}}}
             <hr role="presentation">
-          </h2>
+          </h2> -->
 
           {{> slideContent slide=slide}}
           {{/if}}
@@ -113,23 +113,18 @@
 </template>
 
 <template name="chapters">
-  <table class="ui celled table" style="    margin-top: 16px; font-size: smaller;">
-    <thead>
-      <tr>
-        <th>{{presentationName}} - {{currentSubjectArea}} chapters </th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each chapter in chapters }}
-      <tr>
+  <div id="chapters" class="ui secondary vertical menu">
+    <div class="header item">
+      {{presentationName}} - {{currentSubjectArea}} chapters 
+    </div>
+    {{#each chapter in chapters }}
 
-        <td> <a id="{{chapter.qText}}" href="" class="item">
-            {{chapter.qText}}
-          </a> </td>
-      </tr>
-      {{/each}}
-    </tbody>
-  </table>
+    <a id="{{chapter.qText}}" href="" class="{{active chapter}} item">
+      {{chapter.qText}}
+    </a>
+
+    {{/each}}
+  </div>
 </template>
 
 <template name="slideContent">

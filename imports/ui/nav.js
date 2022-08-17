@@ -45,6 +45,7 @@ Template.nav.events({
     Session.set("showSubjectAreaIntroduction", false);   
     var menuItem = event.currentTarget.id;
     Session.set("currentSubjectArea", menuItem);
+    Session.set("currentChapter",null)
     console.log("🚀 ~ file: nav.js ~ line 36 ~ menuItem", menuItem)
 
     if (menuItem) {

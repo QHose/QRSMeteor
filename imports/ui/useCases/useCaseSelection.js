@@ -396,7 +396,7 @@ function SortSenseData(senseArray) {
     for (const element of senseArray) {
         result.push(element);
     }
-    console.log("🚀  SortSenseData ~ result", result)
+    // console.log("🚀  SortSenseData ~ result", result)
     return result;
 }
 
