@@ -162,19 +162,27 @@ Template.useCaseSelection.events({
     },
     "click #CM2SAAS": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
         var selectedRole = e.currentTarget.id;
-        Cookies.set("currentMainRole", selectedRole);
-        await setSelectionInSense("Partial Workshop", selectedRole);
-
-        //get slides
-        await getAllSlides();
-        Session.set("showSelector", false);
-        Session.set("showSubjectAreaIntroduction", true);
-
-        Router.go("slides");
-        ////go to the first slide after a data refresh.           
-        // Reveal.slide(0); 
+        await getSlides(selectedRole);
+    }
+    ,
+    "click #SAAS": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
+        var selectedRole = e.currentTarget.id;
+        await getSlides(selectedRole);
     }
 });
+
+async function getSlides(selectedRole) {
+    Cookies.set("currentMainRole", selectedRole);
+    await setSelectionInSense("Partial Workshop", selectedRole);
+    //get slides
+    await getAllSlides();
+    Session.set("showSelector", false);
+    Session.set("showSubjectAreaIntroduction", true);
+
+    Router.go("slides");
+    ////go to the first slide after a data refresh.           
+    // Reveal.slide(0); 
+}
 
 
 async function setSelectionInSense(field, value) {
@@ -357,26 +365,26 @@ export async function getLevel1(qix) { //chapters
                         }],
                     }
                 }],
-                "qMeasures": [
-                    {
-                        "qDef": {
-                            "qDef": "Sum({$< [Level 1]= > } 1)"
-                        },
-                        "qLabel": "sum({1}1)",
-                        "qLibraryId": null,
-                        "qSortBy": {
-                            "qSortByState": 0,
-                            "qSortByFrequency": 0,
-                            "qSortByNumeric": 0,
-                            "qSortByAscii": 0,
-                            "qSortByLoadOrder": 0,
-                            "qSortByExpression": 1,
-                            "qExpression": {
-                                "qv": "max(CSVRowNo)"
-                            }
+            "qMeasures": [
+                {
+                    "qDef": {
+                        "qDef": "Sum({$< [Level 1]= > } 1)"
+                    },
+                    "qLabel": "sum({1}1)",
+                    "qLibraryId": null,
+                    "qSortBy": {
+                        "qSortByState": 0,
+                        "qSortByFrequency": 0,
+                        "qSortByNumeric": 0,
+                        "qSortByAscii": 0,
+                        "qSortByLoadOrder": 0,
+                        "qSortByExpression": 1,
+                        "qExpression": {
+                            "qv": "max(CSVRowNo)"
                         }
                     }
-                ]
+                }
+            ]
         }
 
     });
@@ -386,7 +394,7 @@ export async function getLevel1(qix) { //chapters
         qWidth: 3,
         qHeight: 3333
     }]);
-    return SortSenseData(sessionData[0].qMatrix); 
+    return SortSenseData(sessionData[0].qMatrix);
 }
 
 function SortSenseData(senseArray) {

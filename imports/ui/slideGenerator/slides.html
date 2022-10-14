@@ -54,13 +54,13 @@
             {{>chapters}}
           </div>
           <div class="twelve wide column">
-            <div class="ui integrationBreaker" style="text-align: left;font-size: 1.2em;">
+            <div class="ui integrationBreaker" style="text-align: left;font-size: 0.8em;">
               <h1 class="ui header" style="color: #0E2F4E;">
                 Next chapter: {{this}} </h1>
               <div class="ui divider"></div>
-              <div style="width: 60%;">
+              <div style="width: 50%;">
 
-                <h2 class="ui header">In this chapter you will see the following slides: </h2>
+                <h2 class="ui header" style="font-size: 1em;" >In this chapter you will see the following slides: </h2>
                 {{#each slide in TableOfContentForChapter }}
                 <div class="ui bulleted list">
                   <div class="item"> {{slide}}
@@ -96,10 +96,10 @@
         </div>
         <div class="twelve wide column">
           {{#if active slideNr}}
-          <!-- <h1> {{{level 1 slide}}}</h1>
+          <!-- <h1> {{{level 1 slide}}}</h1> -->
           <h2>{{{level 2 slide}}}
             <hr role="presentation">
-          </h2> -->
+          </h2>
 
           {{> slideContent slide=slide}}
           {{/if}}
@@ -107,13 +107,14 @@
 
       </div>
     </div>
+    <hr role="presentation">
     {{> footer}}
   </section>
 
 </template>
 
 <template name="chapters">
-  <div id="chapters" class="ui secondary vertical menu">
+  <div id="chapters" class="ui secondary vertical fluid menu">
     <div class="header item">
       {{presentationName}} - {{currentSubjectArea}} chapters 
     </div>
