@@ -1,7 +1,7 @@
     cd C:\GitHub\QRSMeteor
     $PROJECT_ROOT = (Get-Item -Path ".\" -Verbose).FullName
     echo "Build tool project root directory: "$PROJECT_ROOT
-    $BASE_APP_NAME = "integrationV2"
+    $BASE_APP_NAME = "integrationv2"
     $BUILD_DIR = ".\.build"
     $BUNDLE_DIR = $BUILD_DIR+"\bundle"
     $VERSION = Get-Date -format yyyyMMdd-Hmm
@@ -24,11 +24,11 @@
         Remove-Item $tempDirectory -Force -Recurse | out-null
     }
     
-    echo "STEP delete old build files"
-    Remove-PathToLongDirectory $BUILD_DIR -recurse
+    # echo "STEP delete old build files"
+    # Remove-PathToLongDirectory $BUILD_DIR -recurse
 
-    echo "STEP build new meteor bundle"
-    meteor build --architecture=os.linux.x86_64 --allow-superuser --directory $BUILD_DIR
+    # echo "STEP build new meteor bundle"
+    # meteor build --architecture=os.linux.x86_64 --allow-superuser --directory $BUILD_DIR
 
     echo "STEP copy dockerfile to bundle folder, so docker can build the image"
     Copy-Item Dockerfile $BUNDLE_DIR
