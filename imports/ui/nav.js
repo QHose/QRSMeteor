@@ -51,7 +51,7 @@ Template.nav.events({
       event.preventDefault();
       switch (menuItem) {
         case "home":
-          window.location.replace('/');
+          window.location.replace('https://integration.qlik.com');
           break;
         case "SSBI":
           selectMenuItemInSense("*What is governed self service with Qlik Sense*");
