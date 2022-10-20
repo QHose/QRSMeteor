@@ -155,7 +155,7 @@ Template.useCaseSelection.events({
 
     },
     "click #CM": async function (e, t) {
-        window.open('https://integration.qlik.com', '_blank').focus();
+        window.open('https://evaluation.qlik.com', '_blank').focus();
     },
     "click #videoButton": async function (e, t) {
         nav.selectMenuItemInSense("*Video overview:*");
