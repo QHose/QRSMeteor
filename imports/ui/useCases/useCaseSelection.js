@@ -161,18 +161,19 @@ Template.useCaseSelection.events({
         nav.selectMenuItemInSense("*Video overview:*");
     },
     "click #CM2SAAS": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
-        var selectedRole = e.currentTarget.id;
+        var selectedRole = 'Client managed to SaaS' //e.currentTarget.id;
         await getSlides(selectedRole);
     }
     ,
     "click #SAAS": async function (e, t) { //if anaything happens with the dropdown box... adjust the selection, and get new slides.
-        var selectedRole = e.currentTarget.id;
+        var selectedRole = 'Qlik Cloud' //e.currentTarget.id;
         await getSlides(selectedRole);
     }
 });
 
 async function getSlides(selectedRole) {
     Cookies.set("currentMainRole", selectedRole);
+    // await nav.makeClearAll(); already in set selection
     await setSelectionInSense("Partial Workshop", selectedRole);
     //get slides
     await getAllSlides();
@@ -350,19 +351,7 @@ export async function getLevel1(qix) { //chapters
             qDimensions: [
                 {
                     qDef: {
-                        qFieldDefs: ['Level 1'],
-                        "qSortCriterias": [{
-                            "qSortByState": 0,
-                            "qSortByFrequency": 0,
-                            "qSortByNumeric": 0,
-                            "qSortByAscii": 0,
-                            "qSortByLoadOrder": 1,
-                            "qSortByExpression": 0,
-                            "qExpression": {
-                                "qv": "max(CSVRowNo)"
-                            },
-                            "qSortByGreyness": 0
-                        }],
+                        qFieldDefs: ['Level 1']
                     }
                 }],
             "qMeasures": [
@@ -377,10 +366,10 @@ export async function getLevel1(qix) { //chapters
                         "qSortByFrequency": 0,
                         "qSortByNumeric": 0,
                         "qSortByAscii": 0,
-                        "qSortByLoadOrder": 0,
-                        "qSortByExpression": 1,
+                        "qSortByLoadOrder": 1,
+                        "qSortByExpression": 0,
                         "qExpression": {
-                            "qv": "max(CSVRowNo)"
+                            "qv": "min(CSVRowNo)"
                         }
                     }
                 }
@@ -394,7 +383,8 @@ export async function getLevel1(qix) { //chapters
         qWidth: 3,
         qHeight: 3333
     }]);
-    return SortSenseData(sessionData[0].qMatrix);
+    return sessionData[0].qMatrix
+    // return SortSenseData(sessionData[0].qMatrix);
 }
 
 function SortSenseData(senseArray) {
@@ -404,7 +394,7 @@ function SortSenseData(senseArray) {
     for (const element of senseArray) {
         result.push(element);
     }
-    // console.log("🚀  SortSenseData ~ result", result)
+    console.log("🚀  SortSenseData ~ result", result)
     return result;
 }
 
@@ -440,7 +430,7 @@ export async function getAllSlideHeadersPlain(qix) {
                         "qSortByLoadOrder": 1,
                         "qSortByExpression": 1,
                         "qExpression": {
-                            "qv": "max(CSVRowNo)"
+                            "qv": "min(CSVRowNo)"
                         },
                         "qSortByGreyness": 0
                     }],
@@ -500,7 +490,7 @@ export async function setChangeListener(qix) {
     try {
         qix.app.on('changed', async () => {
             // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
-            await getCurrentSelections();
+            // await getCurrentSelections();
             // Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
             // Meteor.setTimeout(async function wait() {
             //     await getAllSlides();

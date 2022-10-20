@@ -22,12 +22,14 @@
       {{#if showSubjectAreaIntroduction}}
       <section>
         <div class="ui container">
-          <h1 class="ui dividing header">Select your favorite subject area<a class="anchor" id="types"></a></h1>
-          <p>You are navigating through slides in a presentation about {{presentationName}}. <br> Please select your
-            favorite subject in the menu above.</p>
+          <h1 class="ui dividing header">{{presentationName}} - Select your favorite subject area<a class="anchor"
+              id="types"></a></h1>
+          <p>From the top menu select the subject area of choice. In the left menu you find additional chapters related
+            to that subject area.
+          </p>
           <div class="ui list">
 
-            <div class="ui placeholder segment">
+            <div class="ui placeholder ">
               <img class="ui image" src="/images/subject area introduction.png">
               <!-- <div class="ui two column stackable center aligned grid">
                 {{#each item in subjectAreas }}
@@ -54,13 +56,13 @@
             {{>chapters}}
           </div>
           <div class="twelve wide column">
-            <div class="ui integrationBreaker" style="text-align: left;font-size: 0.8em;">
+            <div class="ui integrationBreaker" style="text-align: left;font-size: 1em;">
               <h1 class="ui header" style="color: #0E2F4E;">
                 Next chapter: {{this}} </h1>
               <div class="ui divider"></div>
-              <div style="width: 50%;">
+              <div>
 
-                <h2 class="ui header" style="font-size: 1em;" >In this chapter you will see the following slides: </h2>
+                <h2 class="ui header" style="font-size: 1em;">In this chapter you will see the following slides: </h2>
                 {{#each slide in TableOfContentForChapter }}
                 <div class="ui bulleted list">
                   <div class="item"> {{slide}}
@@ -68,12 +70,17 @@
                 </div>
                 {{/each}}
                 <br>
-                You can select another chapter on the left,
-                or a different subject area in the top.
+                <div class="ui icon message">
+                  <i class="book icon"></i>
+                  <div class="content">
+                    <div class="header">
+                      How to move through the content library?
+                    </div>
+                    <p>You can click the right arrow to navigate through all the slides, or you can directly go to a specific chapter by using the menu on the left,
+                      or start over by selecting a different subject area in the top. </p>
+                  </div>
+                </div>
               </div>
-              <!-- <div class="ui secondary segment">
-                <p>Explain what the user is seeing, (a presentation with a table of chapters on the left, and subject on the top</p>
-              </div> -->
             </div>
           </div>
         </div>
@@ -114,9 +121,9 @@
 </template>
 
 <template name="chapters">
-  <div id="chapters" class="ui secondary vertical fluid menu">
+  <div id="chapters" class="ui secondary vertical fluid menu" style="text-align: left">
     <div class="header item">
-      {{presentationName}} - {{currentSubjectArea}} chapters 
+      {{presentationName}} - {{currentSubjectArea}} chapters
     </div>
     {{#each chapter in chapters }}
 

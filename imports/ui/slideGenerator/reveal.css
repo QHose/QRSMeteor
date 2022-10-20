@@ -499,7 +499,7 @@ html {
     display: none;
     position: absolute;
     width: 100%;
-    padding: 20px 0px;
+    padding: 0px 0px;
     pointer-events: auto;
     z-index: 10;
     -webkit-transform-style: flat;

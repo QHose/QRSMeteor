@@ -301,7 +301,7 @@ Template.chapters.helpers({
     },
     active(chapter) {
         chapter = chapter.qText;
-        console.log("🚀 ~ file: slides.js ~ line 303 ~ active ~ chapter", chapter)
+        // console.log("🚀 ~ file: slides.js ~ line 303 ~ active ~ chapter", chapter)
         if (chapter === Session.get("currentChapter")) {
             return 'active'
         }

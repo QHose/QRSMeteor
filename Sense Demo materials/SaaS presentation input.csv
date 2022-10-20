@@ -1,21 +1,17 @@
 ﻿"Level 1","Level 2","Level 3","Priority","Progress","Start","Due","Duration (Days)","Milestone","Resources",
-"Data","OEM active intelligence pipeline",,,,,,,,,
-"Data","Hybrid data delivery","OEM Hybrid data delivery.png",,,,,,,,
-"Data","Direct access",,,,,,,,,
 "Security overview","We divide cloud security into 3 buckets
 - Cloud security
 - app security
 - data security",,,,,,,,,
-"Authentication examples","Use active directory on Azure for Qlik Cloud","[How To: Configure Qlik Sense Enterprise SaaS to use Azure AD as an IdP.](https://community.qlik.com/t5/Official-Support-Articles/How-To-Configure-Qlik-Sense-Enterprise-SaaS-to-use-Azure-AD-as/at-p/1704442)","","","","","         0","0","CM2SAAS",
-"Authentication examples","USE JWT WITH QLIK SENSE SAAS AND .NET","https://raw.githubusercontent.com/jacobvinzent/JWT-with-.Net-on-Qlik-Sense-SaaS/main/README.md","","","","","         0","0","CM2SAAS",
-"Authentication examples","Use JWT with JAVA example","https://raw.githubusercontent.com/jacobvinzent/JWT-with-JAVA-on-Qlik-Sense-SaaS/master/Readme.md","","","","","         0","0","CM2SAAS",
-"Authorization","Introduction to authorizations",,,,,,,,,
+"Authentication examples","Use active directory on Azure for Qlik Cloud","[How To: Configure Qlik Sense Enterprise SaaS to use Azure AD as an IdP.](https://community.qlik.com/t5/Official-Support-Articles/How-To-Configure-Qlik-Sense-Enterprise-SaaS-to-use-Azure-AD-as/at-p/1704442)","","","","","         0","0","Client managed to SaaS",
+"Authentication examples","Use JWT with .NET","https://raw.githubusercontent.com/jacobvinzent/JWT-with-.Net-on-Qlik-Sense-SaaS/main/README.md","","","","","         0","0","Client managed to SaaS",
+"Authentication examples","Use JWT with JAVA ","https://raw.githubusercontent.com/jacobvinzent/JWT-with-JAVA-on-Qlik-Sense-SaaS/master/Readme.md","","","","","         0","0","Client managed to SaaS",
+"Authorization","Introduction to authorizations","[visit Qlik help to learn more about Qlik Sense authorizations](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Admin/SaaS-user-permissions.htm)",,,,,,,,
 "Security videos","videos","1",,,,,,,,
 "Security videos","videos","2",,,,,,,,
 "Security videos","videos","3",,,,,,,,
 "Web videos",,,,,,,,,,
 "Web","Introduction to web integration","https://raw.githubusercontent.com/jackBrioschi/integration.Qlikv2/main/Readme_Analytics_Modernization.md",,,,,,,,
-"Architecture",,,,,,,,,,
 "API","Introduction to SaaS APIs","Integrate Qlik Cloud directly into partner application build pipelines",,,,,,,,
 "API","Introduction to SaaS APIs","APIs for
 - Tenant creation
@@ -53,6 +49,7 @@
 "API","Tenant Hydration","Apps",,,,,,,,
 "API","Tenant Hydration","Extensions",,,,,,,,
 "API","Tenant Hydration","Themes",,,,,,,,
+"API","Configuration - Management Console","At time of writing these are the things you can do with the APIs.",,,,,,,,
 "API","Configuration - Management Console","Configuration - Management Console.png",,,,,,,,
 "API","Configuration - deployment","Identity Providers
 - Configure JWT IdP
@@ -76,19 +73,50 @@ Web integrations",,,,,,,,
 "API","Hydration","Reloads",,,,,,,,
 "API","Hydration","Themes",,,,,,,,
 "API","End to  end Tutorials","[Visit Qlik.dev for more information about automatic provisioning](https://preview.qlik.dev/eap-feedback/tutorials/platform-operations-overview)",,,,,,,,
-"API","End to  end Tutorials","qlik.dev example.png",,,,,,,,
+"API","End to  end Tutorials","qlik dev example.png",,,,,,,,
 "API","End to End examples","[Visit Qlik OSS for examples](https://github.com/qlik-oss/qlik-platform-examples/tree/main/qlik.dev/tutorials/platform-operations)",,,,,,,,
 "API","End to End examples","end to end examples.png",,,,,,,,
+"Licensing","# High level overview",,,,,,,,,
 "Licensing","The license is shared across all tenants",,,,,,,,,
 "Licensing","All tenants on the license (entitlement) are equal",,,,,,,,,
-"Availability","Qlik backup and restore",,,,,,,,,
-"DEMO","Self service demo","iframe selfService_embedded self service demo",,,,,,,,
-"DEMO","Embedding (CM placeholder) demo","iframe /webIntegration_embedded",,,,,,,,
-"DEMO","Provisioning (CM placeholder) demo","iframe generation_embedded This demo shows you how to copy an app (dashboard) which serves as a ""template layout"" for each of your customers. Besides creating a copy, we will also reload the app with data from the customer database.",,,,,,,,
-"Migrate value added products","Value Added Products - overview","https://raw.githubusercontent.com/malcolmhawes/QlikSenseCM2SaaS/main/Value%20Added%20Products.md","","","","","         0","0","CM2SAAS",
-"Migrate value added products","Multi-cloud migration","https://raw.githubusercontent.com/teiching/qlik-integration/main/multicloud.md","","","","","         0","0","CM2SAAS",
-"Migrate security","Introduction"," https://raw.githubusercontent.com/apamo/QlikSenseCM2SaaS/main/introduction%20to%20Qlik%20Sense%20SaaS%20security.md","","","","","         0","0","CM2SAAS",
-"Migrate security","CM Ticketing to SaaS JWT","https://raw.githubusercontent.com/apamo/QlikSenseCM2SaaS/main/CM%20Ticketing%20to%20SaaS%20JWT.md","","","","","         0","0","CM2SAAS",
-"Migrate security","CM JWT to SaaS JWT","https://raw.githubusercontent.com/apamo/QlikSenseCM2SaaS/main/CM%20JWT%20to%20SaaS%20JWT.md","","","","","         0","0","CM2SAAS",
-"Migrate security","How to use CM section access in SaaS?","https://raw.githubusercontent.com/apamo/QlikSenseCM2SaaS/main/Section%20Access.md","","","","","         0","0","CM2SAAS",
-"Migrate web","Embedded Analytics Modernization: moving fast to Qlik Cloud","https://raw.githubusercontent.com/jackBrioschi/integration.Qlikv2/main/README.md","","","","","         0","0","CM2SAAS",
+"Licensing","# Detailed",,,,,,,,,
+"Licensing","# Principles and components
+A license with multiple tenants entitlement:
+Ability to create multiple tenants on that entitlement
+Ability to create OAuth clients (i.e. credentials) in My Qlik
+
+# Key principles:
+1 tenant per end customer + 1 dev/ staging tenant for the OEM partner (so n customer tenants + 1)
+Provisioning, configuration and hydration are driven programmatically
+No (or minimal, if interactive required) manual intervention required during provisioning
+All tenants are created equal
+
+# Key components:
+1 Qlik partner : 1 license*
+1 license : 1 organization
+1 organization : n tenants to support n end customers
+1 organization : 1 set of “credentials” per Qlik Cloud region 
+1 set of “credentials”: 1 bot user**
+
+",,,,,,,,,
+"Embed","Introduction","This is a placeholder for the Qlik Sense SaaS demo that will follow shortly. You will see content from client managed, which will also work with SaaS. ",,,,,,,,
+"Embed","Embedding (CM placeholder) demo","iframe https://saasdemo.qlik.com",,,,,,,,
+"Provisioning","Introduction","# Fully automated SaaS provisioning
+This demo shows you how to copy an app (dashboard) which serves as a ""template layout"" for each of your customers explained in this video. Besides creating a copy, we will also reload the app with data from the customer database.",,,,,,,,
+"Provisioning","Introduction","In the next slide you can populate your credentials and make a live connection to your Qlik SaaS tenant. ",,,,,,,,
+"Provisioning","Introduction","saas demo concept simple.png",,,,,,,,
+"Provisioning","Provisioning demo","iframe https://slides.qlik.com This demo shows you how to copy an app (dashboard) which serves as a ""template layout"" for each of your customers. Besides creating a copy, we will also reload the app with data from the customer database.",,,,,,,,
+"Self service content creation (embedded)","Introduction","This is a placeholder for the Qlik Sense SaaS demo that will follow shortly. ",,,,,,,,
+"Self service content creation (embedded)","Self service demo","iframe selfService_embedded self service demo",,,,,,,,
+"Migrate value added products","Value Added Products - overview","https://raw.githubusercontent.com/malcolmhawes/QlikSenseCM2SaaS/main/Value%20Added%20Products.md","","","","","         0","0","Client managed to SaaS",
+"Migrate value added products","Multi-cloud migration","https://raw.githubusercontent.com/teiching/qlik-integration/main/multicloud.md","","","","","         0","0","Client managed to SaaS",
+"Migrate security","Introduction"," https://raw.githubusercontent.com/apamo/QlikSenseCM2SaaS/main/introduction%20to%20Qlik%20Sense%20SaaS%20security.md","","","","","         0","0","Client managed to SaaS",
+"Migrate security","CM Ticketing to SaaS JWT","https://raw.githubusercontent.com/apamo/QlikSenseCM2SaaS/main/CM%20Ticketing%20to%20SaaS%20JWT.md","","","","","         0","0","Client managed to SaaS",
+"Migrate security","CM JWT to SaaS JWT","https://raw.githubusercontent.com/apamo/QlikSenseCM2SaaS/main/CM%20JWT%20to%20SaaS%20JWT.md","","","","","         0","0","Client managed to SaaS",
+"Migrate security","How to use CM section access in SaaS?","https://raw.githubusercontent.com/apamo/QlikSenseCM2SaaS/main/Section%20Access.md","","","","","         0","0","Client managed to SaaS",
+"Migrate web","How to move fast to Qlik Cloud","https://raw.githubusercontent.com/jackBrioschi/integration.Qlikv2/main/README.md","","","","","         0","0","Client managed to SaaS",
+"Architecture",,,,,,,,,,
+"Availability",,,,,,,,,,
+"Data","Introduction to architecture patterns to move data",,,,,,,,,
+"Data","Data movement",,,,,,,,,
+"Data","Direct access",,,,,,,,,

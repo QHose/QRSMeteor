@@ -52,6 +52,7 @@ Template.nav.events({
       initQlikSense();
       event.preventDefault();      
       console.log('make selection based on id')
+      await makeClearSelectionInField("Level 1");
       await selectInSense('Subject area', menuItem);
     }    
   }
@@ -121,6 +122,36 @@ export async function makeSearchSelectionInField(fieldName, value) {
     sAlert.error(message, error);
   }
 }
+
+export async function makeClearSelectionInField(fieldName) {
+console.log("🚀 ~ file: nav.js ~ line 127 ~ makeClearSelectionInField ~ makeClearSelectionInField", fieldName)
+
+  try {
+    var qix = await slideApp.getQix();
+    var myField = await qix.app.getField(fieldName);
+    var result = await myField.clear();
+  } catch (error) {
+    var message =
+      "make clear SelectionInField: Can not connect to the Qlik Sense Engine API via enigmaJS";
+    console.error(message + " Sense reported the following error: ", error);
+    sAlert.error(message, error);
+  }
+}
+
+export async function makeClearAll() {
+  console.log("🚀 ~ file: nav.js ~ line 142 ~ makeClearAll")
+  
+    try {
+      var qix = await slideApp.getQix();
+      await qix.app.clearAll();
+    } catch (error) {
+      var message =
+        "clear all selections: Can not connect to the Qlik Sense Engine API via enigmaJS";
+      console.error(message + " Sense reported the following error: ", error);
+      sAlert.error(message, error);
+    }
+  }
+
 
 //
 
