@@ -1,3 +1,7 @@
+# Introduction
+
+In the steps below we will outline how you can setup a multitenant Qlik Cloud analytics environment using the APIs.
+
 # Step 1 - Create a  Target Tenant
 
 - Generate client_id and client_secret Oauth credentials (OAuth clients and their associated credentials do not expire. Once created, you can regenerate the secret for the OAuth client, or delete the client altogether.)
