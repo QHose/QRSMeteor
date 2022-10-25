@@ -22,12 +22,11 @@ Template.nav.helpers({
     var items = MenuItems.find({});
     return items;
   },
-  active(item){
+  active(item) {
     var text = item.qText;
-    if(text === Session.get("currentSubjectArea"))  
-    {
+    if (text === Session.get("currentSubjectArea")) {
       return 'active'
-    }     
+    }
   }
 });
 
@@ -38,23 +37,32 @@ import { initQlikSense } from "/imports/ui/useCases/useCaseSelection";
 
 
 Template.nav.events({
-  "click #home": function(){
+  "click #home": function () {
     window.location.replace('/');
   },
   "click a": async function (event, template) {
-    Session.set("showSubjectAreaIntroduction", false);   
     var menuItem = event.currentTarget.id;
+
+    Session.set("showSubjectAreaIntroduction", false);
     Session.set("currentSubjectArea", menuItem);
-    Session.set("currentChapter",null)
-    console.log("🚀 ~ file: nav.js ~ line 36 ~ menuItem", menuItem)
+    Session.set("currentChapter", null)
+    // console.log("🚀 ~ file: nav.js ~ line 36 ~ menuItem", menuItem)
 
     if (menuItem) {
       initQlikSense();
-      event.preventDefault();      
-      console.log('make selection based on id')
-      await makeClearSelectionInField("Level 1");
-      await selectInSense('Subject area', menuItem);
-    }    
+      event.preventDefault();
+      // console.log('make selection based on id')
+      switch (menuItem) {
+        case "sharePresentation":
+          var id = Session.get('currentSelectionId');
+          var shareLinkURL = window.location.origin + '/?selection=' + id;
+          //update the value of the helper for the share link popup
+          Session.set('shareLinkURL', shareLinkURL);
+        default:
+          await makeClearSelectionInField("Level 1");
+          await selectInSense('Subject area', menuItem);
+      }
+    }
   }
 });
 
@@ -124,7 +132,7 @@ export async function makeSearchSelectionInField(fieldName, value) {
 }
 
 export async function makeClearSelectionInField(fieldName) {
-console.log("🚀 ~ file: nav.js ~ line 127 ~ makeClearSelectionInField ~ makeClearSelectionInField", fieldName)
+  console.log("🚀 ~ file: nav.js ~ line 127 ~ makeClearSelectionInField ~ makeClearSelectionInField", fieldName)
 
   try {
     var qix = await slideApp.getQix();
@@ -140,17 +148,17 @@ console.log("🚀 ~ file: nav.js ~ line 127 ~ makeClearSelectionInField ~ makeCl
 
 export async function makeClearAll() {
   console.log("🚀 ~ file: nav.js ~ line 142 ~ makeClearAll")
-  
-    try {
-      var qix = await slideApp.getQix();
-      await qix.app.clearAll();
-    } catch (error) {
-      var message =
-        "clear all selections: Can not connect to the Qlik Sense Engine API via enigmaJS";
-      console.error(message + " Sense reported the following error: ", error);
-      sAlert.error(message, error);
-    }
+
+  try {
+    var qix = await slideApp.getQix();
+    await qix.app.clearAll();
+  } catch (error) {
+    var message =
+      "clear all selections: Can not connect to the Qlik Sense Engine API via enigmaJS";
+    console.error(message + " Sense reported the following error: ", error);
+    sAlert.error(message, error);
   }
+}
 
 
 //

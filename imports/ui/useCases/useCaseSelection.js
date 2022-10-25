@@ -490,7 +490,7 @@ export async function setChangeListener(qix) {
     try {
         qix.app.on('changed', async () => {
             // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
-            // await getCurrentSelections();
+            await getCurrentSelections();
             // Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
             // Meteor.setTimeout(async function wait() {
             //     await getAllSlides();
