@@ -76,7 +76,8 @@
                     <div class="header">
                       How to move through the content library?
                     </div>
-                    <p>You can click the right arrow to navigate through all the slides, or you can directly go to a specific chapter by using the menu on the left,
+                    <p>You can click the right arrow to navigate through all the slides, or you can directly go to a
+                      specific chapter by using the menu on the left,
                       or start over by selecting a different subject area in the top. </p>
                   </div>
                 </div>
@@ -123,7 +124,11 @@
 <template name="chapters">
   <div id="chapters" class="ui secondary vertical fluid menu" style="text-align: left">
     <div class="header item">
+      {{#if presentationName}}
       {{presentationName}} - {{currentSubjectArea}} chapters
+      {{else}}
+      Chapters shared with you
+      {{/if}}
     </div>
     {{#each chapter in chapters }}
 

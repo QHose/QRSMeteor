@@ -43,25 +43,20 @@ Template.nav.events({
   "click a": async function (event, template) {
     var menuItem = event.currentTarget.id;
 
-    Session.set("showSubjectAreaIntroduction", false);
-    Session.set("currentSubjectArea", menuItem);
-    Session.set("currentChapter", null)
-    // console.log("🚀 ~ file: nav.js ~ line 36 ~ menuItem", menuItem)
-
-    if (menuItem) {
+    if (menuItem === "sharePresentation") {
       initQlikSense();
       event.preventDefault();
-      // console.log('make selection based on id')
-      switch (menuItem) {
-        case "sharePresentation":
-          var id = Session.get('currentSelectionId');
-          var shareLinkURL = window.location.origin + '/?selection=' + id;
-          //update the value of the helper for the share link popup
-          Session.set('shareLinkURL', shareLinkURL);
-        default:
-          await makeClearSelectionInField("Level 1");
-          await selectInSense('Subject area', menuItem);
-      }
+
+      var id = Session.get('currentSelectionId');
+      var shareLinkURL = window.location.origin + '/?selection=' + id;
+      //update the value of the helper for the share link popup
+      Session.set('shareLinkURL', shareLinkURL);
+    } else {
+      console.log('only see me for an area selection')
+      Session.set("showSubjectAreaIntroduction", false);
+      Session.set("currentSubjectArea", menuItem);
+      Session.set("currentChapter", null)
+      await selectInSense('Subject area', menuItem);
     }
   }
 });

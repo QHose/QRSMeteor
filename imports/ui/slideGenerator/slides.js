@@ -581,7 +581,8 @@ async function convertToHTML(text, level2) {
         var result = '';
         if (text.endsWith('.md')) { //get content from external url on the server                
             result = await Meteor.callPromise('getHTMLFromMarkdownUrl', text)
-            return result;
+            // return result;
+            return '<div class="ui container">' + result + "</div>";
         } else { //convert it locally
             result = converter.makeHtml(text);
             if (result.substring(1, 11) === "blockquote") {
