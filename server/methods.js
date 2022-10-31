@@ -45,6 +45,7 @@ import {
 import '/imports/startup/accounts-config.js';
 const path = require('path');
 var fs = require('fs-extra');
+var marked = require('marked');
 
 //
 // ─── METEOR METHODS ─────────────────────────────────────────────────────────────
@@ -57,7 +58,8 @@ Meteor.methods({
     getHTMLFromMarkdownUrl(url){
         // console.log('get markdown from the server: '+url)
         var markdownResult = HTTP.get(url) 
-        var HTMLresult = converter.makeHtml(markdownResult.content);
+        // var HTMLresult = converter.makeHtml(markdownResult.content);
+        var HTMLresult = marked.parse(markdownResult.content);
         return HTMLresult;        
     },
     getSenseSelectionObject(id) {

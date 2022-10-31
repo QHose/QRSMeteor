@@ -18,7 +18,7 @@
 
 ## Create a new tenant
 ## Configure the new tenant, including:
-  -Configure an identity provider, typically either JSON Web Token (JWT) where integrating with existing applications, or an interactive provider such as Azure AD for other use cases
+  Configure an identity provider, typically either JSON Web Token (JWT) where integrating with existing applications, or an interactive provider such as Azure AD for other use cases
   - Pre-provision groups for access control
 - Configure license and role allocations
 - Create and configure security on spaces (logical buckets within a tenant for securing content)
@@ -84,10 +84,15 @@ Web integrations",,,,,,,,
 "API introduction","Hydration","Reload Tasks",,,,,,,,
 "API introduction","Hydration","Reloads",,,,,,,,
 "API introduction","Hydration","Themes",,,,,,,,
-"API introduction","End to  end Tutorials","[Visit Qlik.dev for more information about automatic provisioning](https://preview.qlik.dev/eap-feedback/tutorials/platform-operations-overview)",,,,,,,,
 "API introduction","End to  end Tutorials","qlik dev example.png",,,,,,,,
+"API introduction","End to  end Tutorials","[Visit Qlik dev website for a tutorial on how to use the APIs to setup a multitenant environment](https://qlik.dev/tutorials/platform-operations-overview)",,,,,,,,
 "API introduction","End to End examples","[Visit Qlik OSS for examples](https://github.com/qlik-oss/qlik-platform-examples/tree/main/qlik.dev/tutorials/platform-operations)",,,,,,,,
 "API introduction","End to End examples","end to end examples.png",,,,,,,,
+"API introduction","OEM dashboard","OEM dashboard.png",,,,,,,,
+"API introduction","OEM dashboard","# Monitoring apps",,,,,,,,
+"API introduction","OEM dashboard","monitoring apps.png",,,,,,,,
+"Multitenancy APIs","Introduction tutorial and blog","[Visit Qlik dev website for a tutorial on how to use the APIs to setup a multitenant environment](https://qlik.dev/tutorials/platform-operations-overview)",,,,,,,,
+"Multitenancy APIs","Introduction tutorial and blog","Visit [Qlik innovation blog](https://community.qlik.com/t5/Product-Innovation/Qlik-now-offers-Multitenant-Provisioning-in-Qlik-Cloud-for-our)",,,,,,,,
 "Multitenancy APIs","Which APIs are needed to setup an multitenant environment?","https://raw.githubusercontent.com/QHose/QRSMeteor/Integration-v2/pages/saas%20apis%20detailed%20steps.md",,,,,,,,
 "Web videos",,,,,,,,,,
 "Web","Introduction to web integration","https://raw.githubusercontent.com/jackBrioschi/integration.Qlikv2/main/Readme_Analytics_Modernization.md",,,,,,,,
