@@ -1,0 +1,12 @@
+# The challenge
+- Your data is on premise
+- The software is in the cloud
+- You want your analytics to be up to date when changes occur
+
+
+
+# Our approach option 1- Data Access - leave the data where it is
+You can choose to leave your data on premise and use *data gateway - direct access*. Now you have access without the need to open ports in your firewall
+Or you can use the more traditional approach (not recommended) and open ports in your firewall and let Qlik Sense load data via a REST API as usual. 
+# Our approach option 2 - Data movement - replicate the data to a cloud target
+
