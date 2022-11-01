@@ -47,12 +47,12 @@ When you create tenants programmatically, the tenant is provisioned free from an
 
 The pre-requisite to perform these steps is that you’ve already created/imported a Template App on the Source Tenant. If you don’t have one, you can download the Template_App.qvf from the Postman Collection link and import it into your Source Tenant.
 
-- Request an access token for Source Tenant (if you don’t have a valid one)
-- Retrieve the Source Tenant’s template apps via Items APIs
-- Export the Template App you want to deploy
-- Request an access token for Target Tenant (if you don’t have a valid one)
-- Create a Shared Space on the Target Tenant (optional, can be imported in the Private Space as well)
-- Import the app into the newly created Shared Space
+- Request an access token for Source Tenant (if you don’t have a valid one)
+- Retrieve the Source Tenant’s template apps via Items APIs
+- Export the Template App you want to deploy
+- Request an access token for Target Tenant (if you don’t have a valid one)
+- Create a Shared Space on the Target Tenant (optional, can be imported in the Private Space as well)
+- Import the app into the newly created Shared Space
 - Publish the app to a Managed Space for end-users consumption
 
 ![image](https://user-images.githubusercontent.com/12411165/197152994-4aec46a9-de8d-484b-b5f9-4bd187b025f5.png)
