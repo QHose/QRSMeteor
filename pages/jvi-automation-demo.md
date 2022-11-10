@@ -14,8 +14,8 @@ There are following prerequisites before you can initiate the test:
 
 1. You need a license file from Qlik with more than one tenant in it.
 2. You need to create the first tenant (source tenant) by following the link in the welcome email from Qlik. You need the URL to that tenant in the next step.
-3. Naviagte to <https://account.myqlik.qlik.com/account>.
-4. Follow this guide https://qlik.dev/tutorials/create-a-tenant#1-generate-credentials to get you client ID and client secret.
+3. Navigate to [myQlik](https://account.myqlik.qlik.com/account)
+4. Follow this [guide to get your client ID and client secret](https://qlik.dev/tutorials/create-a-tenant#1-generate-credentials).
 5. Create an app and upload it to the source tenant. Copy the app ID (can be found in the URL when opening the app) for later use.
 6. If you want to use your own private and public certificate for JWT authentication, please have them in ready. If you want to use some test certificates, you can create them directly in the form on the next page.
 
