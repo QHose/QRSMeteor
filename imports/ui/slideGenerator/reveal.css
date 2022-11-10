@@ -265,9 +265,10 @@ html {
               transform-origin: 0.2em 50%;
       will-change: transform; }
     .reveal .controls .controls-arrow {
-      position: relative;
-      width: 3.6em;
-      height: 3.6em; }
+      position: fixed;
+      /* width: 3.6em;
+      height: 3.6em;  */
+    }
       .reveal .controls .controls-arrow:before {
         -webkit-transform: translateX(0.5em) translateY(1.55em) rotate(45deg);
                 transform: translateX(0.5em) translateY(1.55em) rotate(45deg); }
@@ -443,9 +444,9 @@ html {
    * SLIDE NUMBER
    *********************************************/
   .reveal .slide-number {
-    position: absolute;
+    position: fixed;
     display: block;
-    right: 8px;
+    right: 34px;
     bottom: 8px;
     z-index: 31;
     font-family: Helvetica, sans-serif;

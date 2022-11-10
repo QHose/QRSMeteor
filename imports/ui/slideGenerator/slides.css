@@ -51,7 +51,7 @@
 }
 
 .reveal .zBullet {
-    max-width: 80%;
+    /* max-width: 80%; */
     margin-left: 10px;
 }
 
@@ -550,13 +550,13 @@ body > div > div.twelve.wide.column > div > iframe {
 }
 
 .reveal strong {
-    color: #762313;
+    /* color: #762313; */
 }
 
 .reveal code:not(.hljs) {
-    padding: 0.3rem 0.5rem;
+    /* padding: 0.3rem 0.5rem;
     background-color: #dcd9d4;
-    border-radius: 8px;
+    border-radius: 8px; */
 }
 
 .reveal code[data-dim] mark {

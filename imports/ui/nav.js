@@ -19,7 +19,8 @@ Template.nav.helpers({
     return show;
   },
   items() {
-    var items = MenuItems.find({});
+    var items = MenuItems.find({}, { sort: { qElemNumber: 1 } });
+    // console.log("🚀 ~ file: nav.js ~ line 23 ~ items ~ items", items.fetch())
     return items;
   },
   active(item) {
@@ -31,7 +32,7 @@ Template.nav.helpers({
 });
 
 //
-// ─── CLICK EVENTS ON MENU ITEMS ─────────────────────────────────────────────────
+// ─── CLICK EVENTS ON MENU ITEMS ─────────────────────────────────────────────────.
 //
 import { initQlikSense } from "/imports/ui/useCases/useCaseSelection";
 
@@ -52,7 +53,7 @@ Template.nav.events({
       //update the value of the helper for the share link popup
       Session.set('shareLinkURL', shareLinkURL);
     } else {
-      console.log('only see me for an area selection')
+      // console.log('only see me for an area selection')
       Session.set("showSubjectAreaIntroduction", false);
       Session.set("currentSubjectArea", menuItem);
       Session.set("currentChapter", null)
@@ -75,7 +76,7 @@ export async function selectViaQueryId(mongoId) {
 }
 
 export async function selectInSense(field, selection) {
-  console.log('make selection for field' + field + ' for value ' + selection);
+  // console.log('make selection for field' + field + ' for value ' + selection);
   Session.set("slideHeaders", null);
   await makeSearchSelectionInField(field, selection);
   //get slides

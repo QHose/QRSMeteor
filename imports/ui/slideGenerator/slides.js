@@ -13,7 +13,10 @@ import "./slideSelectionSheet";
 _ = lodash;
 var Cookies = require("js-cookie");
 var showdown = require("showdown");
-var converter = new showdown.Converter();
+showdown.setFlavor('github');
+var converter = new showdown.Converter({tables:true, openLinksInNewWindow: true});
+var marked = require('marked');
+// console.log(converter.getOptions());
 var numberOfActiveSlides = 10;
 export const MenuItems = new Mongo.Collection(null);
 export const ChapterItems = new Mongo.Collection(null);
@@ -182,9 +185,9 @@ Template.slideContent.onRendered(async function () {
     Meteor.setTimeout(function () {
 
         //make sure all code gets highlighted using highlight.js
-        template.$("pre code").each(function (i, block) {
-            hljs.highlightBlock(block);
-        });
+        // template.$("pre code").each(function (i, block) {
+        //     hljs.highlightBlock(block);
+        // });
         //ensure all links open on a new tab
         template.$('a[href^="http://"], a[href^="https://"]').attr("target", "_blank");
 
@@ -219,7 +222,7 @@ Template.slideContent.onRendered(async function () {
 
         this.$('img').not('.ui.image').addClass('ui image');
 
-    }, 1000);
+    }, 2000);
 });
 
 Template.slideContent.events({
@@ -423,7 +426,7 @@ function createCommentBox(text) {
             </h3>
             
                  ` +
-        converter.makeHtml(textAfterCommentMarker) +
+        marked.parse(textAfterCommentMarker) +
         `
             </div>
         </div>
@@ -538,13 +541,13 @@ async function convertToHTML(text, level2) {
     //
     else if (checkTextIsImage(text) && text.includes("https://")) {
         return (
-            '<div class="ui container"> <img alt="" class="ui massive rounded bordered image"  style="width: 100%;" src="' +
+            '<div class="ui container"> <img alt="" class="ui centered massive rounded bordered image"  src="' +
             text +
             '"/></div>'
         );
     } else if (checkTextIsImage(text)) {
         return (
-            '<div class="ui container"> <img alt="' + altText + '" class="ui massive rounded bordered image"  style="width: 100%;" src="images/' +
+            '<div class="ui container"> <img alt="' + altText + '" class="ui centered massive rounded bordered image" src="images/' +
             url +
             '"/></div>'
         );
@@ -584,7 +587,7 @@ async function convertToHTML(text, level2) {
             // return result;
             return '<div class="ui container">' + result + "</div>";
         } else { //convert it locally
-            result = converter.makeHtml(text);
+            result = marked.parse(text);
             if (result.substring(1, 11) === "blockquote") {
                 return '<div class="ui green segment">' + result + "</div>";
             } else {
@@ -682,7 +685,7 @@ function initializeReveal() {
                 center: false,
 
                 // Enables touch navigation on devices with touch input
-                touch: false,
+                touch: true,
 
                 // Loop the presentation
                 loop: false,
@@ -697,7 +700,7 @@ function initializeReveal() {
                 shuffle: false,
 
                 // Turns fragments on and off globally
-                fragments: true,
+                fragments: false,
 
                 // Flags whether to include the current fragment in the URL,
                 // so that reloading brings you to the same fragment position

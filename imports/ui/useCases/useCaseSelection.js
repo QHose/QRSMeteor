@@ -366,8 +366,8 @@ export async function getLevel1(qix) { //chapters
                         "qSortByFrequency": 0,
                         "qSortByNumeric": 0,
                         "qSortByAscii": 0,
-                        "qSortByLoadOrder": 1,
-                        "qSortByExpression": 0,
+                        "qSortByLoadOrder": 0,
+                        "qSortByExpression": 1,
                         "qExpression": {
                             "qv": "min(CSVRowNo)"
                         }
@@ -387,26 +387,26 @@ export async function getLevel1(qix) { //chapters
     // return SortSenseData(sessionData[0].qMatrix);
 }
 
-function SortSenseData(senseArray) {
-    var result = [];
-    senseArray.sort(compare);
+// function SortSenseData(senseArray) {
+//     var result = [];
+//     senseArray.sort(compare);
 
-    for (const element of senseArray) {
-        result.push(element);
-    }
-    console.log("🚀  SortSenseData ~ result", result)
-    return result;
-}
+//     for (const element of senseArray) {
+//         result.push(element);
+//     }
+//     console.log("🚀  SortSenseData ~ result", result)
+//     return result;
+// }
 
-function compare(a, b) {
-    if (a[1].qNum < b[1].qNum) {
-        return -1;
-    }
-    if (a[1].qNum > b[1].qNum) {
-        return 1;
-    }
-    return 0;
-}
+// function compare(a, b) {
+//     if (a[1].qNum < b[1].qNum) {
+//         return -1;
+//     }
+//     if (a[1].qNum > b[1].qNum) {
+//         return 1;
+//     }
+//     return 0;
+// }
 
 export async function getAllSlideHeadersPlain(qix) {
     //get all level 1 and 2 fields in a table: these are the individual slides (titles). The bullets are contained in level 3.
