@@ -1,6 +1,6 @@
 # Introduction
 
-In the steps below we will outline how you can setup a multitenant Qlik Cloud analytics environment using the APIs. We also included a postman collection so you can directly start using the APIs.
+In the steps below we will outline how you can setup a multitenant Qlik Cloud analytics environment using the APIs. We also included a [postman collection](https://github.com/qlik-oss/qlik-cloud-examples/tree/main/qlik.dev/tutorials/platform-operations/api-collection) so you can directly start using the APIs.
 
 
 # Step 1 - Create a  Target Tenant
