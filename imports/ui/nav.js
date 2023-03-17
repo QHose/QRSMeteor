@@ -128,7 +128,7 @@ export async function makeSearchSelectionInField(fieldName, value) {
 }
 
 export async function makeClearSelectionInField(fieldName) {
-  console.log("🚀 ~ file: nav.js ~ line 127 ~ makeClearSelectionInField ~ makeClearSelectionInField", fieldName)
+  // console.log("🚀 ~ file: nav.js ~ line 127 ~ makeClearSelectionInField ~ makeClearSelectionInField", fieldName)
 
   try {
     var qix = await slideApp.getQix();
@@ -143,7 +143,7 @@ export async function makeClearSelectionInField(fieldName) {
 }
 
 export async function makeClearAll() {
-  console.log("🚀 ~ file: nav.js ~ line 142 ~ makeClearAll")
+  // console.log("🚀 ~ file: nav.js ~ line 142 ~ makeClearAll")
 
   try {
     var qix = await slideApp.getQix();
