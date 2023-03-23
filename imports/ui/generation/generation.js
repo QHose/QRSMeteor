@@ -119,8 +119,8 @@ Template.generationStreams.helpers({
         return {
             collection: Streams,
             rowsPerPage: 5,
-            showFilter: true,
-            showColumnToggles: true,
+            showFilter: false,
+            showColumnToggles: false,
             fields: [{
                     key: 'name',
                     label: 'Stream',
