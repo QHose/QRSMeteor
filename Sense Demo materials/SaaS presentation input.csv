@@ -76,6 +76,7 @@
 "Qlik Application Automation","Introduction","[View the whole playlist](https://www.youtube.com/watch?v=5ycYndC_PXs&list=PLkRFvjyuHFvIcy-KzdA4y6CIF8n34P4OO)",,,,,,,,
 "Web videos",,,,,,,,,,
 "Web","Introduction to web integration","https://raw.githubusercontent.com/jackBrioschi/integration.Qlikv2/main/Readme_Analytics_Modernization.md",,,,,,,,
+"Web","Source code example - IFrame a sheet using JWT for the Single Sign On","https://raw.githubusercontent.com/QHose/qlik-cloud-localserver-jwt-IFrame/main/README.md",,,,,,,,
 "Licensing","# High level overview",,,,,,,,,
 "Licensing","The license is shared across all tenants",,,,,,,,,
 "Licensing","All tenants on the license (entitlement) are equal",,,,,,,,,
@@ -183,7 +184,7 @@ In fact, Qlik APIs first approach allows many different level of integration. Yo
 "Data gateway","Qlik Data gateway - Direct access","[Check out our Overview and Demo video](https://videos.qlik.com/watch/P6VidB5S88aTY4L5GAYXvu?&_ga=2.223879645.714289542.1661217538-1234046203.1646404033)",,,,,,,,
 "Data gateway","Qlik Data gateway - Direct access","[Try Direct Access today with our demo app.](https://webapps.qlik.com/direct-access/index.html)",,,,,,,,
 "Data gateway","Qlik Data gateway - Direct access","[To set up your Data Gateway, follow these deployment instructions.](https://help.qlik.com/en-US/video/Z6buZY5r8MeGtyeqeYffBh)",,,,,,,,
-"Data gateway","Qlik Data gateway - Direct access","[Detailed capabilities shared on our Product Innovation Blog](https://community.qlik.com/t5/Product-Innovation/Securely-access-data-behind-a-firewall-or-VPC-with-Qlik-Data/ba-p/197147)",,,,,,,,
+"Data gateway","Qlik Data gateway - Direct access","[Detailed capabilities shared on our Product Innovation Blog](https://community.qlik.com/t5/Product-Innovation/Securely-access-data-behind-a-firewall-or-VPC-with-Qlik-Data/ba-p/1971477)",,,,,,,,
 "Data gateway","Qlik Data gateway - Direct access","direct access connector.png",,,,,,,,
 "Data gateway","Qlik Data gateway - Direct access","https://www.youtube.com/watch?v=wVNckBOGGww&t=2s",,,,,,,,
 "Data gateway","Common OEM use case with direct access","If you don't want to or can't replicate your data to a cloud database or Qlik cloud you can also leave your data on premise",,,,,,,,
@@ -250,10 +251,237 @@ In fact, Qlik APIs first approach allows many different level of integration. Yo
 
 Your APIs connect to the Qlik Cloud. You setup the security first, next you copy the template apps from the source tenant to each of your customer tenants. Each app tries to reload from the S3 connection. So you only need to change the S3 connection once for each tenant.   Each Qlik Sense cloud tenant has access to on premise data via the Qlik Data Gateway - Data Movement. The data inside the buckets is being refreshed by a continious data replication process using change data capture (CDC) technology. ",,,,,,,,
 "Data gateway","Common OEM use cases with data movement","SaaS integration charts - Data movement.png",,,,,,,,
+"Integration.qlik.com demo platform","History","In this presentation we *demonstrate a sample SaaS platform* with Qlik Sense embedded including:
+- The “look and feel” of an integrated solution
+- The possibility to include different ""self service"" levels
+- “Security”, re-using the security of your SaaS platform in Qlik Sense
+- “SaaS provisioning”, create apps based on templates using the data(base) of each customer.
+- ""Best practices"" and example source code","","","","","         0","0","Technical - 1 hour, CTO, C-Level - non-technical, Integration summary",
+"Integration.qlik.com demo platform","History","Use the menu in the top to go to your favorite demo.","","","","","         0","0","Technical - 1 hour, CTO, C-Level - non-technical, Integration summary",
+"Integration.qlik.com demo platform","History","useCasesOverview.png","","","","","         0","0","Technical - 1 hour, CTO, C-Level - non-technical, Integration summary",
+"Integration.qlik.com demo platform","History","!comment
+This website is completely focused in showing the key differentiators of our Qlik Sense APIs. What makes us truly unique?  
+The website demonstrates a sample SaaS platform with Qlik Sense embedded. If focuses on the following topics through demos and demonstrations:
+ - SaaS Provisioning: How can you embed the power of Qlik Sense  within a multi-tenant SaaS application environment. The demo shows you how you can automatically copy and distribute a Template application to each of your customers with their own data.
+ - Self Service: This demo shows you the flexible possibilities of creating a personalized dashboard and report through different levels of self service.
+ - Embed Qlik Sense: Qlik Sense is a software built from the ground up with the most recent web technologies. In this demo we show the different possibilities to embed Qlik Sense in your web platform.
+ - Slide Generator: A collection of presentations and workshops about web, security and API integration with Qlik Sense. The slides are dynamically generated by out Engine API.  
+ - Integration Questions? : Here you can find further in depth documentation and videos about integrating Qlik Sense in your platform.",,,,,,,,
+"Integration.qlik.com demo platform","Introduction to a SaaS multi-tenant scenario","multi-tenant SaaS Applications SaaS application with Qlik Sense.png","","","","","         0","0","Introduction - 30 minutes, C-Level - non-technical",
+"Integration.qlik.com demo platform","Introduction to a SaaS multi-tenant scenario","!comment
+In the end you want to provide an integrated view of Qlik Sense in your software. The user should be able to access only his authorized data in a seamless way. Also the user should be able to view Qlik Sense without having to authenticate again. You also want to make sure that the right Qlik Sense content is shown in an automated way with a minimum amount of manual work.",,,,,,,,
+"Integration.qlik.com demo platform","Video: How to create a multi-tenant SaaS platform with Qlik Sense embedded?","https://youtu.be/OulQS-1fH-A How to create a multi-tenant SaaS platform with Qlik Sense embedded?","","","","","         0","0","Technical - 1 hour, CTO, Integration summary",
+"Integration.qlik.com demo platform","Video: How to create a multi-tenant SaaS platform with Qlik Sense embedded?","simple intro to saas automation.gif","","","","","         0","0","Technical - 1 hour, CTO, Integration summary",
+"Integration.qlik.com demo platform","Video: How to create a multi-tenant SaaS platform with Qlik Sense embedded?","> Although the video talks about Qlik Sense Client Managed (Windows), the principle for SaaS is the same. But instead of creating a stream for each customer you will create a tenant for each customer.",,,,,,,,
+"Integration.qlik.com demo platform","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png","","","","","         0","0","Technical - 2 hours, CTO",
+"Integration.qlik.com demo platform","Given the goals, what are typical integration topics you have to deal with?","https://raw.githubusercontent.com/QHose/QRSMeteor/Integration-v2/pages/integrationTopics.md",,,,,,,,
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense demo you will see a screen divided into two parts","In the next slide you can play with a real SaaS automation demo. Here we give you an overview.","","","","","         0","0","Technical - 2 hours, CTO, Hosting Ops, Introduction - 30 minutes",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense demo you will see a screen divided into two parts","- The left side shows *the broker* (the API tool) in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers.","","","","","         0","0","Technical - 2 hours, CTO, Hosting Ops, Introduction - 30 minutes",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense demo you will see a screen divided into two parts","- This broker executes its activities based on *your customers*, *their access rights*, and the relevant *template apps*. ","","","","","         0","0","Technical - 2 hours, CTO, Hosting Ops, Introduction - 30 minutes",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense demo you will see a screen divided into two parts","- The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense via the APIs.","","","","","         0","0","Technical - 2 hours, CTO, Hosting Ops, Introduction - 30 minutes",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense demo you will see a screen divided into two parts","SaaS logo.png An example of steps to finish the demo - from selecting customers, template apps, and in the end start provisioning Qlik sense apps","","","","","         0","0","Technical - 2 hours, CTO, Hosting Ops, Introduction - 30 minutes",
+"Integration.qlik.com demo platform","In the multi-tenant SaaS platform with Qlik Sense demo you will see a screen divided into two parts","!comment
+The left side of the screen will show the 'broker'. This is a software capability that is already in place and manages the current SaaS platform. This piece of software will maintain the control of the SaaS platform and will communicate with our Sense platform through our APIs. This means that the control stays completely in the existing platform.
+
+In this demo, the broker will define following parameters:
+ - Which customers need access to the applications?
+ - What will be the roles and the access rights to the apps?
+ - Which apps should be provided?",,,,,,,,
+"Integration.qlik.com demo platform","Now try it yourself in the multi-tenant SaaS platform with Qlik Sense demo below...","iframe generation_embedded This demo shows you how to copy an app (dashboard) which serves as a ""template layout"" for each of your customers. Besides creating a copy, we will also reload the app with data from the customer database.","","","","","         0","0","Hosting Ops, CTO, Introduction - 30 minutes",
+"Integration.qlik.com demo platform","Now try it yourself in the multi-tenant SaaS platform with Qlik Sense demo below...","Open demo in [new tab](/generation)","","","","","         0","0","Hosting Ops, CTO, Introduction - 30 minutes",
+"Integration.qlik.com demo platform","Now try it yourself in the multi-tenant SaaS platform with Qlik Sense demo below...","!comment 
+<p> This demo shows you how to copy an app (dashboard) which serves as a ""template layout"" for each of your customers. Besides creating a copy, we will also reload the app with data from the customer database.
+
+ In the demo you will see a screen divided into two parts:
+                        <ul>
+                            <li>The left side shows ""the broker"" in your SaaS platform, a piece of software that you already use today to mass maintain the SaaS applications for all of your customers. This broker executes its activities based on the list of your customers, their access rights, and the relevant template apps (depending on what the customer has configured in your platform).</li>
+                            <li>The right side shows you the result of the activities of the broker: the apps and streams automatically created in Qlik Sense.</li>
+                        </ul>
+                        In order to finish the demo, you must complete the following steps:
+                        <ol>
+                            <li><b>Select your customers</b>. In your SaaS platform you have the ability to store which customers should receive which apps. We simulate this feature by letting you select the customers. By pressing the button, you also select an ""app"" to be used as a template for the layout.</li>
+         <li><b>Select your apps</b> Which apps do your customers need to receive?</li>
+                            <li><b>Press generate</b>, This will make a copy of the template app for each of your customers. It replaces the generic script with a customer specific one and reloads the app. Because you are able to insert a custom script, you can also specify specific data models like custom fields and tables or create them them on the fly in order to connect to big data sources. In the end we make a unique stream for each customer and publish the app into this stream.</li>
+                            <li><b>Select a user and press the green button.</b> This allows you to test the single sign on and make sure that each customer can only see their own data (streams and apps). You can also test row level security by opening the ""row level security"" app in the ""everyone stream"". This demonstrates that each user only sees the values pertaining to the country of their group membership.</li>
+                        </ol> </p>",,,,,,,,
+"Integration.qlik.com demo platform","integration demo architecture introduction","saas demo architecture introduction of components.png","","","","","         0","0","Technical - 1 day",
+"Integration.qlik.com demo platform","integration demo architecture introduction","!comment
+A user can be a computer or a human. What defines a user is the fact that it has a userID, that it belongs to a certain customer and that it has one or multiple groups. When that user logs on to the SaaS platform, he is authenticated.  At the point he needs to see Qlik Sense content, that user needs to be authenticated with Qlik Sense. At this point this information is passed through by means of a ticket. (There are other methods, but here we use ticketing). This ticket contains the userID and additional attributes ( like groups, specific script content,….). On this website thery are stored in a Mongo Database. Through APIs these can be fetched and passed to Qlik Sense. Based on the userID and group(s) the correct content will be shown and the user will have the correct rights based on the group membership.",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","In this section we will explain the most common integration concepts and approaches. Please use the `menu bar` above for more detailed information on a topic.","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","integrationTopics.png","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","#App (dashboard)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","Create a template Qlik Sense app per business process/area
+ - you can use Qlik apps created via the Qlik hub or
+- create an app, sheet, chart via the API on the fly
+- next you publish them into the `templates stream`","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","Template app contains the layout like sheets and charts","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","#Data",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","Which processes do you have?",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","Create an app per process",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","Create a data model per process (star schema)",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","Ensure you re-use entities that multiple apps need",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","Extract sources only once",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","Document this in a matrix...",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","data - bus matrix dimensions to business process.png","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","You can extract the data from your source and let Qlik do the enrichments. Some ETL examples below:","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","ETL functionality.png Convert code to meaningfull descriptions
+
+Create new business logic, like a calculation
+
+
+Create classes
+
+
+Create new field based on condition 
+
+Append one table under the other (make 1 longer table, with extra row)
+
+
+Left, right, inner, outer join tables
+
+
+You will always get the expected result since you control the join. 
+Store a loaded table onto the harddrive. This can be used to prevent double queries to the source system. (note that if you want to export to an external system, you can also use our REST API's directly)
+","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","#Web integration","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","You can integrate the Qlik Sense hub, apps, sheets or individual objects using an IFrame or DIV tag or only get the raw data and make your own front end.  [Get more info in the embbeding chapter](https://integration.qlik.com/?selection=hYqFSTnth9xpWtr3f)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","#Automation","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","In this chapter we demonstrate some key API calls used in SaaS automation, make sure you don't miss the generic [Qlik Sense API introduction](https://integration.qlik.com/?selection=sJEM43zXeyYvcnXXq)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","After you created your first template app we need to make it customer specific. ","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","> All examples relate to a multi-tenant SaaS platform, but if you have an 'on premise' approach, you just have 1 tenant for which you maybe want to setup things. ",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","#Video: Example SaaS automation approach","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","[Video: Example SaaS automation approach](https://www.youtube.com/embed/1PjcTFnC4Mo)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","#Each customer gets it own copy of the template with its own data","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","concept behind intro.png Each customer gets it own copy of the template with its own data","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","#API automation tasks overview","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","deepDiveGeneration.png API automation tasks overview","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","Make sure you checkout the `SAAS PROVISIONING` menu option in the top of the screen.",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","#Engine API","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","##What can you do with the engine API?","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","Basically all the things you can do yourself when you use an app
+- Open an app
+- Insert script
+- Copy an app
+- Get list of streams and apps
+- Get the layout (sheets and charts)
+- Reload the app","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","# Video: State of the API","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","[Video: Watch this video to get an update on Qlik's latest API capabilities](https://youtu.be/2ths0MQairw)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","See [Qlik Help](https://help.qlik.com/en-US/sense-developer/August2022/Subsystems/EngineAPI/Content/Sense_EngineAPI/introducing-engine-API.htm)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","#Engine API use cases and source code","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","# extract the script so you can find/replace the database connection etc.","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","``` var script = await qix.app.getScript(); ```","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","# and insert the new script back into the app","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","```await qix.app.setScript(replaceScript(script)) ```","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","# Reload the app","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","```await qix.app.doReload() ```","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","# Save the app","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","```await qix.app.doSave(); ```","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L276)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","#What is the QRS REST API?","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","- Basically everything you can do in the Qlik Sense Management Console (QMC):
+- copy/delete apps and streams, 
+- reload apps, 
+- get and update settings like tasks, licences, security, users ....","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","[QRS API reference](https://help.qlik.com/en-US/sense-developer/August2022/Subsystems/RepositoryServiceAPI/Content/Sense_RepositoryServiceAPI/RepositoryServiceAPI-Reference-Redirect.htm",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","https://youtu.be/M7EqXI7cZtg","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","#API source code examples for typical installation use cases","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","For most examples below we used the `QRS API` wich let you manage all the typical things you would normally do in the management console (QMC)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","* [Insert license](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js#L27)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","* Setup [user access rules](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsLicense.js#L62)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","* Setup [proxy](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L43) via config file definition","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","* Create [virtual proxies](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QPSFunctions.js#L94)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","* Upload [template apps](https://github.com/QHose/QRSMeteor/blob/8f829ef687feaf1cd3802c873b383b04726a4337/imports/api/server/QRSFunctionsApp.js#L67)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","* Upload [extensions](https://github.com/QHose/QRSMeteor/blob/8f829ef687feaf1cd3802c873b383b04726a4337/imports/api/server/QRSFunctionsExtension.js#L81)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","* Setup [security rules](https://github.com/QHose/QRSMeteor/blob/8f829ef687feaf1cd3802c873b383b04726a4337/imports/api/server/QRSFunctionsSystemRules.js#L55)","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","> Note, that if you don't use javascript you can always use our REST or Engine JSON based APIs, or the .NET SDK","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","#Security overview","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","## Authentication","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","Your goal is to create embedded analytics using the Qlik platform within a multi-tenant SaaS environment, where each of your customers would only have access to their own data. It’s possible for each customer to have a more finely tuned authorization structure. For example, it is possible to provide authorizations for a specific department or country within a dashboard. You’ll see a simple solution in our demonstration where both of our fictitious users, Peter and John, go to the same website, but see different things based on their authorizations. Qlik Sense makes this possible because it uses a dynamic, attribute-based security approach in which we re-use all the pre-existing users and roles from your SaaS platform. This ensures Qlik Sense stays in sync automatically and avoids the overhead of double maintenance.","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","Out of the box we support, AD, SAML, JWT, Header, OIDC. If you use your own method, we recommend the use of 'Qlik Sense ticketing' ","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","architecture - OEM SaaS scenario.png architecture - OEM SaaS scenario","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","##Authorization","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","Based on the user ID and group membership streams, apps and sheets (called ""resources"" in our rule based security model) are either shown or not. Let's say we start simple and each customer can only view their own dashboards. Since we gave each customer their own stream, we can grant access if the name of the stream (the company name) matches the name of the company we received from the website in the ticket./token. This can be controlled by adding 1 row of security configuration: `user.environment.group = resource.name`.","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","securityOverview.png","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","#Architecture","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","## Introduction video","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","https://youtu.be/sv5nKDvmRPI","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","##Integrated architecture design","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","We recommend to make an integrated architecture design in which all aspects are combined. An example can be found below.","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","integratedArchitecture.png","","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","# Your platform integrated with Qlik Cloud using the data gateway - data movement",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","SaaS integration charts - Data movement.png",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","# Data",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","This is a typical scenario we use in OEM use cases where we have relatively small data sets for each customer. Using the data gateway - data movement we replicate datasets to a AWS buckets (near realtime data refresh). Each tenant has its own bucket. In this bucket are QVDs (one for each table) that are automatically refreshed using CDC (change data capture) technology. ",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","# Embed",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","As for the Embedded Analytics part, we basically offer two different types of embedding strategies, the embedding via Iframe and the embedding using one of the available JS libraries. Let's see them in details in the next sections.
+
+## IFRAME INTEGRATION
+The simplest and by far the most common method of embedding into your solutions analytics built in Qlik Sense SaaS is certainly through the use of an Iframe. An Iframe is generally used to show the content of a web resource, in our case Qlik Sense, within a frame of a web page/main portal.
+
+## JAVASCRIPT INTEGRATION
+As you already know from the Introduction section, Qlik Solutions are based on standard web-technologies such as HTML, CSS and Javascript and that makes life easier when dealing with integration scenarios. If we add to this the fact that Qlik provides developers with a complete set of Javascript APIs to connect to the Qlik engine, retrieve a previously created app, retrieve its objects (Charts, Filters, etc...) and render them within a web-based solution, we can say that the integration experience that you have using the Javascript libraries is 360 degrees integration which allows a bi-directional communication between the information and objects contained in your web portal with the information and visualization objects contained in the Qlik apps. You can use it when you typically have an existing portal/web-page and you want to embed Qlik into it. Not only that, with the JS APIs is possible to interact with the Qlik engine by applying selections rather than actions coming from the web components of the html page external to the Qlik Sense server itself. Let's think for example about a button rather than a dropdown menu natively present within your portal. When the user makes a selection of an item from the dropdown menu, you could trigger a call to the Qlik engine that applies a data selection in the application based on the value selected by the user.
+
+In fact, Qlik APIs first approach allows many different level of integration. You can use APIs to extract information from the app data model to represent them within native objects of your solution or, viceversa by interacting with the native components of your solution you can trigger actions on the Qlik associative engine like for example applying a filter on the data that recalculates the Qlik charts in real time once you click on a dropdown menu, rather than a reset of the filters applied so far to the app.",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","# API",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","Qlik Cloud has been built with a set of APIs which allow provisioning, configuration, and hydration of Qlik Cloud tenants to serve automated deployment pipelines alongside your software and customer lifecycles.",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","Qlik Cloud's multitenant deployment pattern is an architecture where a Qlik partner receives a single entitlement (also known as license), which represents an organization inside Qlik Cloud. Within this organization, you can deploy multiple tenants - each a distinct logical instance. Although these tenants are linked to your organization, they are seperate, so you will need to configure and hydrate these tenants independently.",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","multitenant architecture.png",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","[Visit Qlik dev website for a tutorial on how to use the APIs to setup a multitenant environment](https://qlik.dev/tutorials/platform-operations-overview)",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","Visit [Qlik innovation blog](https://community.qlik.com/t5/Product-Innovation/Qlik-now-offers-Multitenant-Provisioning-in-Qlik-Cloud-for-our)",,,,,,,,
+"Integration.qlik.com demo platform","OEM good practice summary","!comment
+#Some basic principles in setting up SaaS provisioning with Qlik Sense:
+ - Create 1 or multiple template apps per business or process area. This way the different apps are relatively small and easy to maintain. Also administrator(s) per area can maintain their specific content. A template app contains about 80% of all layout, sheets and charts.
+ - Apps can be manually created through the Qlik Sense Hub or through an API call. 
+ - When the template app will be copied to make the customer specific one, the customer specific data must be loaded in the app. A modification must be made to the script to made it customer specific. Most of the time only the database connection must be changed as most of the customers will have the same structure in tables and fields. 
+ - The modification of the script can be done through APIs. Basically you wil GET the script, find the placeholder for the connection string, and replace it with the customer specific string. There is also a possibility of using and INCLUDE file: This is an external file that contains customer specific script.
+
+# To summarize:  
+What you want is that all of your customers will get their own app with their own data.
+For this we use a piece of software that you will probably already use today, a ""Broker/API connector"" that sets up or maintains your SaaS platform. On the Qlik Sense SaaS environment we have already our template apps. These are apps that already have a script, data model and layout ready. Whenever we need to provision an app the following steps happen: 
+ - A tenant is created for each customer.
+ - A copy of the template app will be made on this new tenant 
+ - The data load script (a bunch of SQL/REST statements) is modified with the correct source connection to make sure the correct data is loaded for that specific customer.
+ - The app is reloaded during which the data is indexed (a compressed copy) into the Qlik Sense app,
+ - The app gets published in the correct space.
+- Group membership is assigned to this space
+- Now users can login into your SaaS platform, it will create a JWT token (including the userId and groups), and sign in the user into Qlik Sense SaaS. ","","","","","         0","0","Multiple days, Technical - 2 hours",
+"Qlik Sense app","Introduction to embedded analytics with Qlik","# Introduction",,,,,,,,
+"Qlik Sense app","Introduction to embedded analytics with Qlik","app - why are we here.png",,,,,,,,
+"Qlik Sense app","Introduction to embedded analytics with Qlik","# Example integrated architecture",,,,,,,,
+"Qlik Sense app","Introduction to embedded analytics with Qlik","What would the end result look like for a succesful integration of Qlik Sense into your application architecture?
+
+Your goal is to create within a multi-tenant SaaS platform environment - embedded analytics - within your core application(s) where each of your customers would see and use only their data. 
+
+It’s possible for each customer to have a more fine grained authorization structure.  As an example, it is possible to provide authorizations for a specific department or country within a dashboard.
+
+Ultimately you will see a simple solution in our demonstration in which both of our fictitious users, Peter and John, go to the same website, but see different things based on their authorizations. Qlik Sense makes this possible because it uses a dynamic attribute-based security approach in which we re-use all the pre-existing users and roles from your SaaS platform.   This ensures Qlik Sense stays automatically in synch and avoids the overhead of double maintenance.",,,,,,,,
+"Qlik Sense app","Introduction to embedded analytics with Qlik","integrated example.png",,,,,,,,
+"Qlik Sense app","Introduction to embedded analytics with Qlik","# Integration topics to consider",,,,,,,,
+"Qlik Sense app","Introduction to embedded analytics with Qlik","The integration of two software platforms entails multiple considerations. Each platform has its own nuances.  In our illustrated approach here, we deconstruct our integration approach into the following categories:
+dashboard, data, security, web, APIs and architecture.  In the following slides we cover each category. 
+
+Before we discuss the first category, it’s important that you understand what an application is and how we work with the app. 
+We typically create a template app for each business process or domain found in your software. 
+We then use the APIs to copy and reload the app with customer specific data for each of your customer instances. 
+When the app is published or made available, your customers can view their unique application instance with the relevant charts embedded in your SaaS platform.  
+The Qlik APIs will then be used to copy and rerun the application with customer specific data for each unique instance.
+
+Once the app is published, your customers can view the app and its charts that are embedded in your multi-tenant SaaS platform.  
+Using ‘ticketing’, Qlik Sense dynamically re-uses your existing users and their authorizations which ensures an secure, integrated approach.  ",,,,,,,,
 "Qlik Sense app","What's an app?","# Introduction to a Qlik Sense App",,,,,,,,
-"Qlik Sense app","What's an app?","[Video - Qlik Sense product tour](https://videos.qlik.com/watch/x2mwjVSsWuFSvXXHeztatS?)",,,,,,,,
+"Qlik Sense app","What's an app?","[Video - Qlik Sense product tour](https://youtu.be/sd84bsRWSLY?t=19)",,,,,,,,
 "Qlik Sense app","What's an app?","[Video - Insight Advisor Chat & Business Logic](https://youtu.be/PO7GwxfdfFQ)",,,,,,,,
-"Qlik Sense app","What's an app?","[Video - How to load your data enhanced by AI](https://youtu.be/b2wFIjqV8U8)",,,,,,,,
+"Qlik Sense app","What's an app?","## How to get data into your app?",,,,,,,,
+"Qlik Sense app","What's an app?","[Video - How to load your data enhanced by AI 2M](https://youtu.be/b2wFIjqV8U8)",,,,,,,,
+"Qlik Sense app","What's an app?","[Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)",,,,,,,,
+"Qlik Sense app","What's an app?","# How to design an app?",,,,,,,,
+"Qlik Sense app","What's an app?","There are two ways you can create the design of a dashboard (app)
+- use AI to suggest charts
+- design the charts using drag and drop",,,,,,,,
+"Qlik Sense app","What's an app?","[Video using AI - 5M](https://youtu.be/jcyI_g0Ms2Y?list=PLkRFvjyuHFvLVhmiDe8ZPPbIgPzMnQGd3&t=123)",,,,,,,,
+"Qlik Sense app","What's an app?"," [Video -  use drag and drop - 5M](https://youtu.be/MEnfRAjbaDk)",,,,,,,,
+"Qlik Sense app","What's an app?","app - what is a qvf.png",,,,,,,,
 "Qlik Sense app","What's an app?","# Alerting",,,,,,,,
 "Qlik Sense app","What's an app?","[Video - Qlik Alerting](https://youtu.be/x-5lC14dV80)",,,,,,,,
 "Qlik Sense app","What's an app?","# Demo",,,,,,,,
@@ -266,8 +494,7 @@ Your APIs connect to the Qlik Cloud. You setup the security first, next you copy
 - let the system send a report or email via email/teams or some other system via Qlik Application Automation. ",,,,,,,,
 "Qlik Sense app","What's an app?","[Video - self-service reporting via a subscription capability](https://youtu.be/GY2045AZIyI)",,,,,,,,
 "Qlik Sense app","What's an app?","[Generate a report using Qlik Application Automation](https://youtu.be/RjbHlbkC7sI)",,,,,,,,
-"Qlik Sense app","What's an app?","[Sending a Personalized Email to Customers using Qlik App Automation and Qlik Sense](https://youtu.be/CC1evZTOZtI)",,,,,,,,
-"Qlik Sense app","Introducing the new authoring experience in Qlik Cloud","[This video will introduce you to the new authoring experience in Qlik Cloud.](https://youtu.be/jcyI_g0Ms2Y?list=PLkRFvjyuHFvLVhmiDe8ZPPbIgPzMnQGd3)",,,,,,,,
+"Qlik Sense app","What's an app?","[Sending a Personalized Email to Customers using Qlik App Automation](https://youtu.be/CC1evZTOZtI)",,,,,,,,
 "Qlik Sense app","Collaborating with other Qlik Sense users","# Introduction
 The cloud hub is a collaborative environment for developing and sharing content.
 
@@ -282,8 +509,8 @@ Use shared spaces to develop and share content with other members of your cloud 
 "Qlik Sense app","Collaborating with other Qlik Sense users","# Granting access to sheets, bookmarks, and stories",,,,,,,,
 "Qlik Sense app","Collaborating with other Qlik Sense users","You can make your sheets, bookmarks, and stories public so users with access to your app can view them.",,,,,,,,
 "Qlik Sense app","Collaborating with other Qlik Sense users","[Granting access to sheets, bookmarks, and stories](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Share/make-public-or-private.htm)",,,,,,,,
-"Qlik Sense app","Collaborating with other Qlik Sense users","# Troubleshooting",,,,,,,,
-"Qlik Sense app","Collaborating with other Qlik Sense users","[Troubleshooting - Working with others in the cloud hub](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Troubleshooting/troubleshooting-cloud-hub-collab.htm)",,,,,,,,
+"Qlik Sense app","Collaborating with other Qlik Sense users","# Detailed software development lifecycle (SDLC) for Qlik Sense apps",,,,,,,,
+"Qlik Sense app","Collaborating with other Qlik Sense users","Please [read this document explaining the SDLC using Qlik Sense](/docs/QSE SaaS SDLC v1.0.pdf)",,,,,,,,
 "Qlik Sense app","Predictive analytics","# Introduction to Qlik AutoML",,,,,,,,
 "Qlik Sense app","Predictive analytics","Qlik AutoML is part of a full suite of augmented analytics capabilities available in Qlik Cloud, it recognizes patterns and drivers in historical data to create machine learning models that can predict future outcomes; using a simple no code approach for business analysts and analytics teams. ",,,,,,,,
 "Qlik Sense app","Predictive analytics","automl introduction image.png",,,,,,,,
@@ -292,3 +519,41 @@ Use shared spaces to develop and share content with other members of your cloud 
 "Qlik Sense app","Predictive analytics","[Video - Basic Walkthrough Creating a Qlik Sense Predictive Analytics App - 24M](https://youtu.be/vwAt3aH4Hec)",,,,,,,,
 "Qlik Sense app","Predictive analytics","[Video - deep dive Building a Predictive analysis dashboard using Qlik Sense & Qlik AutoML](https://youtu.be/bN5OaY3kc6o)",,,,,,,,
 "Qlik Sense app","Predictive analytics","Make sure you check the [free AutoML trainings](https://learning.qlik.com/mod/page/view.php?id=24708&Category=Qlik+AutoML), search for ""AutoML"".",,,,,,,,
+"Qlik Sense app","Tutorial - Building an app","# Qlik Sense Desktop - Create Your First App and Visualization (20M)","","","","","         0","0","Technical - 2 hours",
+"Qlik Sense app","Tutorial - Building an app","https://youtu.be/u54qqmRQ16w?t=61","","","","","         0","0","Business Analyst, CTO, Developer",
+"Qlik Sense app","Tutorial - Building an app","[Sample data](https://www.youtube.com/redirect?redir_token=FFlFNx30Nr1TpoPm2s0YNeayvWN8MTUyNDczNzgxMUAxNTI0NjUxNDEx&event=video_description&v=I8Ls7DDtkxE&q=https%3A%2F%2Fhelp.qlik.com%2Fen-US%2Fsense%2FApril2018%2FContent%2FTutorials%2FTutorials-building-app.htm)","","","","","         0","0","Technical - 2 hours",
+"Qlik Sense app","Tutorial - Building an app","If you want to learn more go to [Qlik Community](https://community.qlik.com/docs/DOC-6932)","","","","","         0","0","Technical - 2 hours",
+"Qlik Sense app","Tutorial - Building an app","> This short video shows all the elements of building a basic Qlik Sense app with our free version of Qlik Sense:
+ - Creating a new app: How do you create a new app?
+ - Adding content: How can you add your own images, clips and style to an app?
+ - Loading the data and creating the associative model: How is data loaded and how are associations made?
+ - Creating visualizations: How can you make new sheets and visualizations in an app?","","","","","         0","0","Technical - 2 hours",
+"Qlik Sense app","Tutorial - Building an app","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)","","","","","         0","0","Business Analyst, CTO, Developer",
+"Qlik Sense app","Try the demo below: What is governed self service with Qlik Sense?","iframe selfService_embedded","","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner",
+"Qlik Sense app","Try the demo below: What is governed self service with Qlik Sense?","!comment
+Click on the link to see our self-service demo. With our governed self-service you have the possibility to define how to implement guided self-service. By creating roles or groups we have created different levels of self service on Qlik Sense.
+ - A consumer can only analyze data.
+ - A contributor can create own private sheets.
+ - A developer has the possibility to create its own sheets and apps.
+ - An admin can maintain the content of its department through the Qlik Management Console (QMC).
+
+By using row level security each user can only see the data it has access to.
+In the example here, John can only see data from Germany and Linda can only see data from the USA while Martin can see all the data.",,,,,,,,
+"Qlik Sense app","Contents of an app","contents of an app.png","","","","","         0","0","PreSales, Technical - 2 hours",
+"Qlik Sense app","Contents of an app","!comment
+You can see a Qlik Sense app as a container with 2 main layers:
+**First you have the foundation of the app. This contains:**
+ -The Data Model: The app contains all the data and the associations between the data. These components makes the associative data model. This means whenever you work in the app, no direct connection is needed to analyze the data. When the app is opened, the whole data model is loaded in the memory which makes for very fast and complete analysis.
+ -The script: Data can be loaded in the app through the Data Manager or the Data Load Editor. With the data manager  you load and connect the data in a visual way. The script will be automatically generated. You can also create the script manually through the data load editor. This option gives you more freedom to manipulate your data and script. The script contains connections to your data, the load statements, modifications in order to create a good model (ETL- Extract - Transform-Load), variables,… . 
+To resume, the script is needed to extract, transform and load your data in a Qlik Sense app, in order to create your data model.
+ - Measures and Dimensions: In order to show the data in Qlik Sense it is needed to have some well defined measures and dimensions. 
+This makes the end user experience a lot easier.
+But what are they?  
+  - Measures: WHAT do you want to see ? This is always a calculation that will show numbers. (Example: I want to see my Sales. ) These calculations will return 1 number. We call those aggregation calculations. The most commonly known ones are SUM,COUNT,MIN,MAX,AVG. So to calculate my Sales, the formula could be : SUM(Sales).  
+  - Dimensions: HOW do you want to see it? (Example: I want to see my Sales by Country). In this case the field that contains the list of countries is used as a dimension. For each country, the Sales will be shown.
+
+**Second you have the visual interface of the app. This contains:**
+ - Sheet with visualizations: Here you can add new visualizations on sheets, modify your sheets and analyze your data .
+ - Bookmarks: A bookmark is a saved state of selection. You can make new ones or apply existing bookmarks.
+ - Stories: Stories give you the possibility to tell a story about your data. You can make snapshots of your sheet objects and use them in your story. You can add additional text, images and effects to your story to make it more clear. You can also add full sheets into your story. At any given time you have the possibility to go back to your source data on your sheets, make selections and go back to your story.
+",,,,,,,,
