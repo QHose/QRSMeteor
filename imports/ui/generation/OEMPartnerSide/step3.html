@@ -24,25 +24,39 @@
         </ul>
         </p>
 
-        <h4>Some technical background...</h4>
-        <p>This demo platform provides you with a wrapper around the Qlik Sense <a
-                href="https://help.qlik.com/en-US/sense/3.1/Content/Videos/Videos-qmc-intro.htm">QMC</a>. This means you
-            can execute activities (like pressing buttons) in this demo platform, and in the end they will be executed
-            remotely in Qlik Sense (via API calls).</p>
-        <p>
-            Using these calls you can, for example, create streams and apps or complete any other activity that you’d be
-            able to do in the QMC or app. Each activity you do is <a href="{{pathFor 'ApiLogsTable'}}"
-                class="item">logged</a>. In these logs you can see the request from this demo platform and the responses
-            from Qlik Sense. </p>
-        <p>
-            Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish the
-            apps only for customers who pay or who have activited the app in your software, so this "selection"
-            simulates that use case.
-        </p>
-        <p>
-        <h4>Fully automated SaaS provisioning</h4>{{> usingTheDemo}}
-        </p>
-        <img class="ui medium centered image" alt="" data-action="zoom" src="images/saas demo concept simple.png">
+        <div class="ui accordion">
+            <div class="active title">
+                <i class="dropdown icon"></i>
+                Some technical background...
+            </div>
+            <div class="content">
+                <p>This demo platform provides you with a wrapper around the Qlik Sense <a
+                        href="https://help.qlik.com/en-US/sense/3.1/Content/Videos/Videos-qmc-intro.htm">QMC</a>. This
+                    means you
+                    can execute activities (like pressing buttons) in this demo platform, and in the end they will be
+                    executed
+                    remotely in Qlik Sense (via API calls).</p>
+                <p>
+                    Using these calls you can, for example, create streams and apps or complete any other activity that
+                    you’d be
+                    able to do in the QMC or app. Each activity you do is <a href="{{pathFor 'ApiLogsTable'}}"
+                        class="item">logged</a>. In these logs you can see the request from this demo platform and the
+                    responses
+                    from Qlik Sense. </p>
+                <p>
+                    Why do you have to select a customer first? Well, in your SaaS platform you probably want to publish
+                    the
+                    apps only for customers who pay or who have activited the app in your software, so this "selection"
+                    simulates that use case.
+                </p>
+                <p>
+                <h4>Fully automated SaaS provisioning</h4>{{> usingTheDemo}}
+                </p>
+                <img class="ui medium centered image" alt="" data-action="zoom"
+                    src="images/saas demo concept simple.png">
+
+            </div>
+        </div>
     </div>
 
 </Template>
