@@ -25,8 +25,8 @@ Template.generationApps.helpers({
         return {
             collection: Apps,
             rowsPerPage: 5,
-            showFilter: true,
-            showColumnToggles: true,
+            showFilter: false,
+            showColumnToggles: false,
             // fields: ['customer', 'telephone', 'email', 'status', 'itemCount', 'deliveryDate', 'remarks'],
 
             fields: [{
