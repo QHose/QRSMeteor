@@ -32,7 +32,6 @@ We’ve built in resiliency and HA by default. There are no additional configura
 We heard you, you want to get out of the server game. Qlik’s SaaS solution is fully managed, maintained, supported, upgraded by Qlik
 ## Global Tenants
 We have tenants available to meet the geographically distributed needs of your users
-![image](https://user-images.githubusercontent.com/12411165/227463291-7a7433e3-ccc6-4e58-95d1-5dbde7360ab2.png)
 
 # App/Dashboard
-Qlik Sense offers a wide array of beautiful visualizations in order to show your data as you want it. With the open standard of Qlik Sense it is very easy to download or create additional visualizations. With our drag and drop and scalability possibilities it is very easy to create a beautiful and powerful dashboard.![image](https://user-images.githubusercontent.com/12411165/227460317-4e5eeef5-aeef-4f9e-8bbe-aca049614d0d.png)
+Qlik Sense offers a wide array of beautiful visualizations in order to show your data as you want it. With the open standard of Qlik Sense it is very easy to download or create additional visualizations. With our drag and drop and scalability possibilities it is very easy to create a beautiful and powerful dashboard.
