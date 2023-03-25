@@ -43,9 +43,13 @@ We devide this section into two parts:
 
 #### Use logic to transform tables
 
-[The Power of Qlik Script - Reshaping Data - Part 1](https://youtu.be/xkBFyNys1LI)
-[The Power of Qlik Script - Reshaping Data - Part 2](https://youtu.be/YjATejfEOxc)
-[The Power of Qlik Script - Reshaping Data - Part 3](https://youtu.be/dhJv4A2eQz8)
+- [The Power of Qlik Script - Reshaping Data - Part 1](https://youtu.be/xkBFyNys1LI)
+- [The Power of Qlik Script - Reshaping Data - Part 2](https://youtu.be/YjATejfEOxc)
+- [The Power of Qlik Script - Reshaping Data - Part 3](https://youtu.be/dhJv4A2eQz8)
+
+![image](https://user-images.githubusercontent.com/12411165/227707170-8ea253cd-b10f-45ca-959a-115657d30721.png)
+
+[View Qlik help to learn more about data modelling functions](https://help.qlik.com/en-US/sense/November2022/Subsystems/Hub/Content/Sense_Hub/DataModeling/best-practices-data-modeling.htm)
 
 
 
