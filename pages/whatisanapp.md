@@ -32,7 +32,7 @@ There are 2 ways to connect to your data on a high level:
 
 ### Use AI
 [How to load your data enhanced by AI 2M](https://youtu.be/b2wFIjqV8U8)
-[Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)![image](https://user-images.githubusercontent.com/12411165/227706334-b1ddcfd2-3c48-407b-b741-bf950afb4721.png)
+[Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)
 
 ### Use the data load editor
 We devide this section into two parts:
