@@ -161,97 +161,118 @@ In fact, Qlik APIs first approach allows many different level of integration. Yo
 "AutoML","Example AutoML OEM architecture with Qlik Sense Client Managed","automl OEM architecture.png",,,,,,,,
 "AutoML","Example AutoML OEM architecture with Qlik Sense Client Managed","This is a possible scenario in which you use a bucket to store your on premise data. Next, this bucket is also being read by AutoML which runs in Qlik Cloud.  Using a schedule AutoML will process the files in the input bucket and store the results in an output bucket. The output bucket can be a data connection in your Qlik Sense Client managed installation. So you can reload your app as usual now also pointing to this output bucket of AutoML.",,,,,,,,
 "Availability",,,,,,,,,,
-"Data gateway","Why use the data gateway?","# Your challenge?",,,,,,,,
-"Data gateway","Why use the data gateway?","- Your data is on premise behind firewalls
+"Connecting to your data (data load)","What is an app (dashboard)?","# Introduction to a Qlik Sense App",,,,,,,,
+"Connecting to your data (data load)","What is an app (dashboard)?","Apps are task-specific, purpose-built applications. Apps contain data loaded from data sources that is interpreted through visualizations.",,,,,,,,
+"Connecting to your data (data load)","What is an app (dashboard)?","[A Practical Example of the Associative Difference](https://youtu.be/CuxKfp7PW1o)",,,,,,,,
+"Connecting to your data (data load)","What is an app (dashboard)?","app - what is a qvf.png",,,,,,,,
+"Connecting to your data (data load)","What is an app (dashboard)?","# How to get data into your app?",,,,,,,,
+"Connecting to your data (data load)","What is an app (dashboard)?","Apps are designed to help you understand data. Data sources can be added to spaces. They are either added from within an app or created in the cloud hub. Their data is then loaded into the app. Associations are made between related data tables. Using the data model, visualizations are added to sheets in the app to interpret the data. Visualizations are charts, tables, and similar representations of data.",,,,,,,,
+"Connecting to your data (data load)","What is an app (dashboard)?","> Normally you would create an app for each logical part of your software (Finance, HR etc.). Next you would make a data model containing the tables the are needed to answer the business questions. ",,,,,,,,
+"Connecting to your data (data load)","What is an app (dashboard)?","[How to load your data enhanced by AI 2M](https://youtu.be/b2wFIjqV8U8)",,,,,,,,
+"Connecting to your data (data load)","What is an app (dashboard)?","[Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)",,,,,,,,
+"Connecting to your data (data load)","What is an app (dashboard)?","> Note that if you want to have more control you can always use the ""data load editor"". In this way you can view the individual SQL/REST like load statements to prepare and customize your data (ETL). ",,,,,,,,
+"Connecting to your data (data load)","What is an app (dashboard)?","https://evaluation.qlik.com/images/data%20-%20app%20load%20data.png",,,,,,,,
+"Connecting to your data (data load)","What is the Qlik data engine?","https://raw.githubusercontent.com/QHose/QRSMeteor/Integration-v2/pages/whatisanapp.md",,,,,,,,
+"Connecting to your data (data load)","Tutorial - Building an app (dashboard)","# Qlik Sense Desktop - Create Your First App and Visualization (20M)","","","","","         0","0","Technical - 2 hours",
+"Connecting to your data (data load)","Tutorial - Building an app (dashboard)","https://youtu.be/u54qqmRQ16w?t=61","","","","","         0","0","Business Analyst, CTO, Developer",
+"Connecting to your data (data load)","Tutorial - Building an app (dashboard)","[Sample data](https://help.qlik.com/en-US/sense/April2018/Content/Tutorials/Tutorials-building-app.htm)","","","","","         0","0","Technical - 2 hours",
+"Connecting to your data (data load)","Tutorial - Building an app (dashboard)","> This short video shows all the elements of building a basic Qlik Sense app
+ - Creating a new app: How do you create a new app?
+ - Adding content: How can you add your own images, clips and style to an app?
+ - Loading the data and creating the associative model: How is data loaded and how are associations made?
+ - Creating visualizations: How can you make new sheets and visualizations in an app?","","","","","         0","0","Technical - 2 hours",
+"Connecting to your data (data load)","Tutorial - Building an app (dashboard)","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)","","","","","         0","0","Business Analyst, CTO, Developer",
+"Data gateway - introduction","Why use the data gateway?","# Your challenge?",,,,,,,,
+"Data gateway - introduction","Why use the data gateway?","- Your data is on premise behind firewalls
 - Your software or Qlik is in the cloud",,,,,,,,
-"Data gateway","Why use the data gateway?","How can you access your data?",,,,,,,,
-"Data gateway","Why use the data gateway?","# Solution 1 - direct access -  leave the data where it is",,,,,,,,
-"Data gateway","Why use the data gateway?","You can choose to leave your data on premise and 
+"Data gateway - introduction","Why use the data gateway?","How can you access your data?",,,,,,,,
+"Data gateway - introduction","Why use the data gateway?","# Solution 1 - direct access -  leave the data where it is",,,,,,,,
+"Data gateway - introduction","Why use the data gateway?","You can choose to leave your data on premise and 
 - use *data gateway - direct access*. Now you have access to your data from the cloud without the need to open ports in your firewall
 - create a REST API which exposes your on premise data and configure your firewall accordingly.",,,,,,,,
-"Data gateway","Why use the data gateway?","Note: you can always combine on premise data using the gateway and other data sources which are available via REST APIs in your analytics app.",,,,,,,,
-"Data gateway","Why use the data gateway?","# Solution 2 - data movement - replicate the data to a cloud target",,,,,,,,
-"Data gateway","Why use the data gateway?","You can choose to leave your data on premise and use *data gateway - data movement*. Now you can setup a task to ""keep tables in sync"" or ""replicated"" to the cloud.  ",,,,,,,,
-"Data gateway","Why use the data gateway?","In the cloud you have 2 options:
+"Data gateway - introduction","Why use the data gateway?","Note: you can always combine on premise data using the gateway and other data sources which are available via REST APIs in your analytics app.",,,,,,,,
+"Data gateway - introduction","Why use the data gateway?","# Solution 2 - data movement - replicate the data to a cloud target",,,,,,,,
+"Data gateway - introduction","Why use the data gateway?","You can choose to leave your data on premise and use *data gateway - data movement*. Now you can setup a task to ""keep tables in sync"" or ""replicated"" to the cloud.  ",,,,,,,,
+"Data gateway - introduction","Why use the data gateway?","In the cloud you have 2 options:
 - create a QVD per table and use that in Qlik Sense SaaS
 - create a table in a cloud database provider",,,,,,,,
-"Data gateway","Why use the data gateway?","For both options you can set a data refresh schedule",,,,,,,,
-"Data gateway","Why use the data gateway?","Now your data is being replicated into the cloud without impacting your source system. ",,,,,,,,
-"Data gateway","Why use the data gateway?","data gateway introduction.png",,,,,,,,
-"Data gateway","Why use the data gateway?","> Operating behind your organization’s firewall, Qlik Data Gateway - Data Movement allows you to move data from your enterprise data sources to cloud targets, over a strictly outbound, encrypted and mutually authenticated connection. By eliminating the need to open inbound firewall ports, Qlik Data Gateway - Data Movement provides a secure and trusted means for accessing your enterprise data.",,,,,,,,
-"Data gateway","Why use the data gateway?","Note:  You can use the more traditional approach and open ports in your firewall and let Qlik Sense load data via a REST API as usual. But this is not recommended for security reasons. ",,,,,,,,
-"Data gateway","Qlik Data gateway - Direct access","Qlik Data Gateway - Direct Access provides an encrypted connection to Qlik Cloud , allowing Qlik Sense SaaS applications to securely access and analyze data that resides behind your organization's firewall, without compromising your enterprises' network security.",,,,,,,,
-"Data gateway","Qlik Data gateway - Direct access","No matter if your protected data is on-premises or in a virtual private cloud, Qlik Data Gateway - Direct Access provides a sure way to analyze that data in Qlik Sense SaaS safely and securely.",,,,,,,,
-"Data gateway","Qlik Data gateway - Direct access","[Check out our Overview and Demo video](https://videos.qlik.com/watch/P6VidB5S88aTY4L5GAYXvu?&_ga=2.223879645.714289542.1661217538-1234046203.1646404033)",,,,,,,,
-"Data gateway","Qlik Data gateway - Direct access","[Try Direct Access today with our demo app.](https://webapps.qlik.com/direct-access/index.html)",,,,,,,,
-"Data gateway","Qlik Data gateway - Direct access","[To set up your Data Gateway, follow these deployment instructions.](https://help.qlik.com/en-US/video/Z6buZY5r8MeGtyeqeYffBh)",,,,,,,,
-"Data gateway","Qlik Data gateway - Direct access","[Detailed capabilities shared on our Product Innovation Blog](https://community.qlik.com/t5/Product-Innovation/Securely-access-data-behind-a-firewall-or-VPC-with-Qlik-Data/ba-p/1971477)",,,,,,,,
-"Data gateway","Qlik Data gateway - Direct access","direct access connector.png",,,,,,,,
-"Data gateway","Qlik Data gateway - Direct access","https://www.youtube.com/watch?v=wVNckBOGGww&t=2s",,,,,,,,
-"Data gateway","Common OEM use case with direct access","If you don't want to or can't replicate your data to a cloud database or Qlik cloud you can also leave your data on premise",,,,,,,,
-"Data gateway","Common OEM use case with direct access","Now you have 2 options:
+"Data gateway - introduction","Why use the data gateway?","For both options you can set a data refresh schedule",,,,,,,,
+"Data gateway - introduction","Why use the data gateway?","Now your data is being replicated into the cloud without impacting your source system. ",,,,,,,,
+"Data gateway - introduction","Why use the data gateway?","data gateway introduction.png",,,,,,,,
+"Data gateway - introduction","Why use the data gateway?","> Operating behind your organization’s firewall, Qlik Data Gateway - Data Movement allows you to move data from your enterprise data sources to cloud targets, over a strictly outbound, encrypted and mutually authenticated connection. By eliminating the need to open inbound firewall ports, Qlik Data Gateway - Data Movement provides a secure and trusted means for accessing your enterprise data.",,,,,,,,
+"Data gateway - introduction","Why use the data gateway?","Note:  You can use the more traditional approach and open ports in your firewall and let Qlik Sense load data via a REST API as usual. But this is not recommended for security reasons. ",,,,,,,,
+"Data gateway - direct access","Qlik Data gateway - Direct access","Qlik Data Gateway - Direct Access provides an encrypted connection to Qlik Cloud , allowing Qlik Sense SaaS applications to securely access and analyze data that resides behind your organization's firewall, without compromising your enterprises' network security.",,,,,,,,
+"Data gateway - direct access","Qlik Data gateway - Direct access","No matter if your protected data is on-premises or in a virtual private cloud, Qlik Data Gateway - Direct Access provides a sure way to analyze that data in Qlik Sense SaaS safely and securely.",,,,,,,,
+"Data gateway - direct access","Qlik Data gateway - Direct access","[Check out our Overview and Demo video](https://videos.qlik.com/watch/P6VidB5S88aTY4L5GAYXvu?&_ga=2.223879645.714289542.1661217538-1234046203.1646404033)",,,,,,,,
+"Data gateway - direct access","Qlik Data gateway - Direct access","[Try Direct Access today with our demo app.](https://webapps.qlik.com/direct-access/index.html)",,,,,,,,
+"Data gateway - direct access","Qlik Data gateway - Direct access","[To set up your Data Gateway, follow these deployment instructions.](https://help.qlik.com/en-US/video/Z6buZY5r8MeGtyeqeYffBh)",,,,,,,,
+"Data gateway - direct access","Qlik Data gateway - Direct access","[Detailed capabilities shared on our Product Innovation Blog](https://community.qlik.com/t5/Product-Innovation/Securely-access-data-behind-a-firewall-or-VPC-with-Qlik-Data/ba-p/1971477)",,,,,,,,
+"Data gateway - direct access","Qlik Data gateway - Direct access","direct access connector.png",,,,,,,,
+"Data gateway - direct access","Qlik Data gateway - Direct access","https://www.youtube.com/watch?v=wVNckBOGGww&t=2s",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","If you don't want to or can't replicate your data to a cloud database or Qlik cloud you can also leave your data on premise",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","Now you have 2 options:
 - Using the direct access gateway you can connect to your source database like they were on premise (firewall closed for inbound connections) or 
 - you can use your existing REST API (firewall open for this REST API port). ",,,,,,,,
-"Data gateway","Common OEM use case with direct access","This means you can still do a full load or a delta load like you did before (with Qlik Sense Client Managed)",,,,,,,,
-"Data gateway","Common OEM use case with direct access","# Data  gateway - direct access",,,,,,,,
-"Data gateway","Common OEM use case with direct access","Now you have 3 options:
+"Data gateway - direct access","Common OEM use case with direct access","This means you can still do a full load or a delta load like you did before (with Qlik Sense Client Managed)",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","# Data  gateway - direct access",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","Now you have 3 options:
 - Install a gateway per tenant
 - Use source tenant to *move apps* (QVF)
 - Use source tenant to *move tables* (QVD)",,,,,,,,
-"Data gateway","Common OEM use case with direct access","## Install a gateway per tenant",,,,,,,,
-"Data gateway","Common OEM use case with direct access","To access your data you will need to install a data gateway - direct access for each tenant. (so 1 gateway for 1 tenant. 2 gateways for 2 tenants). Each gateway needs to be run in a separate windows VM.",,,,,,,,
-"Data gateway","Common OEM use case with direct access","SaaS integration charts - Direct access.png",,,,,,,,
-"Data gateway","Common OEM use case with direct access","## Use source tenant to move apps (QVF)",,,,,,,,
-"Data gateway","Common OEM use case with direct access","In this scenario you will use 1 tenant (the source tenant) to connect to your on premise data source using the data gateway - direct access. (same as with moving tables (QVD)) ",,,,,,,,
-"Data gateway","Common OEM use case with direct access","Using the APIs you will copy the template app, connect to the tenant database, reload the app, and move the app (qvf) to the customer tenant. (and repeat this for all your customers)",,,,,,,,
-"Data gateway","Common OEM use case with direct access","SaaS integration charts - Move apps.png",,,,,,,,
-"Data gateway","Common OEM use case with direct access","## Use source tenant to move tables (QVD)",,,,,,,,
-"Data gateway","Common OEM use case with direct access","In this scenario you will use 1 tenant (the source tenant) to connect to your on premise data source using the data gateway - direct access. (same as with moving apps) ",,,,,,,,
-"Data gateway","Common OEM use case with direct access","For each customer you will reload the template app. But in this case you will save the loaded tables (during a reload) to an S3 bucket. Since each customer tenant has access to his own bucket, it can now reload its copy of the template app with its own data. ",,,,,,,,
-"Data gateway","Common OEM use case with direct access","SaaS integration charts - Move QVD.png",,,,,,,,
-"Data gateway","Common OEM use case with direct access","# REST API",,,,,,,,
-"Data gateway","Common OEM use case with direct access","You can also just load the data directly into the app if you have a REST connection available to your database. ",,,,,,,,
-"Data gateway","Common OEM use case with direct access","SaaS integration charts - Direct REST access .png",,,,,,,,
-"Data gateway","Data movement introduction","Data movement to cloud targets from on-premise and cloud sources",,,,,,,,
-"Data gateway","Data movement introduction","Based on a schedule your can move all changes in your source database to the cloud.",,,,,,,,
-"Data gateway","Data movement introduction","Once the data is refreshed your app is automatically refreshed with the most recent on premise data.",,,,,,,,
-"Data gateway","Data movement introduction","Data Movement Architecture.png",,,,,,,,
-"Data gateway","Data movement introduction","> The landing starts with a full load. You can then keep the data up-to-date using CDC (Change Data Capture) technology, or with full loads scheduled to reload periodically. CDC is supported by all sources, with some limitations. The database must support change processing and be configured adequately.",,,,,,,,
-"Data gateway","Data movement introduction","[Read more on Qlik help](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Gateways/replication-gateway.htm)",,,,,,,,
-"Data gateway","Data movement introduction","[Supported data sources when using Data Gateway - Data Movement](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/DataIntegration/SourcesConnections/supported-sources.htm)",,,,,,,,
-"Data gateway","Data movement introduction","# Detailed data and communication flows",,,,,,,,
-"Data gateway","Data movement introduction","data-movement-gateway_architecture_v2.png",,,,,,,,
-"Data gateway","Data movement introduction","The high-level communication sequence is as follows:
+"Data gateway - direct access","Common OEM use case with direct access","## Install a gateway per tenant",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","To access your data you will need to install a data gateway - direct access for each tenant. (so 1 gateway for 1 tenant. 2 gateways for 2 tenants). Each gateway needs to be run in a separate windows VM.",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","SaaS integration charts - Direct access.png",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","## Use source tenant to move apps (QVF)",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","In this scenario you will use 1 tenant (the source tenant) to connect to your on premise data source using the data gateway - direct access. (same as with moving tables (QVD)) ",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","Using the APIs you will copy the template app, connect to the tenant database, reload the app, and move the app (qvf) to the customer tenant. (and repeat this for all your customers)",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","SaaS integration charts - Move apps.png",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","## Use source tenant to move tables (QVD)",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","In this scenario you will use 1 tenant (the source tenant) to connect to your on premise data source using the data gateway - direct access. (same as with moving apps) ",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","For each customer you will reload the template app. But in this case you will save the loaded tables (during a reload) to an S3 bucket. Since each customer tenant has access to his own bucket, it can now reload its copy of the template app with its own data. ",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","SaaS integration charts - Move QVD.png",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","# REST API",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","You can also just load the data directly into the app if you have a REST connection available to your database. ",,,,,,,,
+"Data gateway - direct access","Common OEM use case with direct access","SaaS integration charts - Direct REST access .png",,,,,,,,
+"Data gateway - data movement","Data movement introduction","Data movement to cloud targets from on-premise and cloud sources",,,,,,,,
+"Data gateway - data movement","Data movement introduction","Based on a schedule your can move all changes in your source database to the cloud.",,,,,,,,
+"Data gateway - data movement","Data movement introduction","Once the data is refreshed your app is automatically refreshed with the most recent on premise data.",,,,,,,,
+"Data gateway - data movement","Data movement introduction","Data Movement Architecture.png",,,,,,,,
+"Data gateway - data movement","Data movement introduction","> The landing starts with a full load. You can then keep the data up-to-date using CDC (Change Data Capture) technology, or with full loads scheduled to reload periodically. CDC is supported by all sources, with some limitations. The database must support change processing and be configured adequately.",,,,,,,,
+"Data gateway - data movement","Data movement introduction","[Read more on Qlik help](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Gateways/replication-gateway.htm)",,,,,,,,
+"Data gateway - data movement","Data movement introduction","[Supported data sources when using Data Gateway - Data Movement](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/DataIntegration/SourcesConnections/supported-sources.htm)",,,,,,,,
+"Data gateway - data movement","Data movement introduction","# Detailed data and communication flows",,,,,,,,
+"Data gateway - data movement","Data movement introduction","data-movement-gateway_architecture_v2.png",,,,,,,,
+"Data gateway - data movement","Data movement introduction","The high-level communication sequence is as follows:
 
 - The Data Movement gateway establishes a mutually authenticated and encrypted connection to Qlik Cloud, using HTTPS.
 
 - Qlik Cloud sends a landing task definition to the Data Movement gateway.
 
 - The Data Movement gateway pushes the data from the enterprise data source to the data warehouse target.",,,,,,,,
-"Data gateway","Data movement introduction","# How to install the data gateway - data movement (Linux only)",,,,,,,,
-"Data gateway","Data movement introduction","[Visit this instruction video](https://youtu.be/auTmbSMfM4M)",,,,,,,,
-"Data gateway","Data movement introduction","[This clickable video demonstrates Qlik Replicate but has the same steps as the Gateway - data movement](https://webapps.qlik.com/agile-dw-automation-part1/index.html) so it gives you a good basic understanding of the moving parts. For example a source and target database (schema), and the actual movement of the data. ",,,,,,,,
-"Data gateway","Common OEM use cases with data movement","Below you will find an example OEM use case scenario where we convert source tables into active QVDs which can be consumed by a Qlik Sense app as usual. ",,,,,,,,
-"Data gateway","Common OEM use cases with data movement","We use this approach if you have
+"Data gateway - data movement","Data movement introduction","# How to install the data gateway - data movement (Linux only)",,,,,,,,
+"Data gateway - data movement","Data movement introduction","[Visit this instruction video](https://youtu.be/auTmbSMfM4M)",,,,,,,,
+"Data gateway - data movement","Data movement introduction","[This clickable video demonstrates Qlik Replicate but has the same steps as the Gateway - data movement](https://webapps.qlik.com/agile-dw-automation-part1/index.html) so it gives you a good basic understanding of the moving parts. For example a source and target database (schema), and the actual movement of the data. ",,,,,,,,
+"Data gateway - data movement","Common OEM use cases with data movement","Below you will find an example OEM use case scenario where we convert source tables into active QVDs which can be consumed by a Qlik Sense app as usual. ",,,,,,,,
+"Data gateway - data movement","Common OEM use cases with data movement","We use this approach if you have
 -  multiple on premise databases, 
 - multiple Qlik Sense SaaS tenants (one for each your customers)
 - the data per customer/tenant is not that big for an analytics app.
 - you want almost real time data refreshes for the analytics apps without impacting the source database (CPU/Memory usage)",,,,,,,,
-"Data gateway","Common OEM use cases with data movement","data gateway - data movement introduction architecture.png",,,,,,,,
-"Data gateway","Common OEM use cases with data movement","# Detailed architecture in a multitenant setup",,,,,,,,
-"Data gateway","Common OEM use cases with data movement","https://raw.githubusercontent.com/QHose/QRSMeteor/Integration-v2/pages/data%20gateway%20-%20data%20movement%20OEM.md",,,,,,,,
-"Data gateway","Common OEM use cases with data movement","# Complete architecture overview",,,,,,,,
-"Data gateway","Common OEM use cases with data movement","In the beginning of this chapter we discussed the different methods of moving data into the cloud. Below we define an example integrated architecture for the scenario:
+"Data gateway - data movement","Common OEM use cases with data movement","data gateway - data movement introduction architecture.png",,,,,,,,
+"Data gateway - data movement","Common OEM use cases with data movement","# Detailed architecture in a multitenant setup",,,,,,,,
+"Data gateway - data movement","Common OEM use cases with data movement","https://raw.githubusercontent.com/QHose/QRSMeteor/Integration-v2/pages/data%20gateway%20-%20data%20movement%20OEM.md",,,,,,,,
+"Data gateway - data movement","Common OEM use cases with data movement","# Complete architecture overview",,,,,,,,
+"Data gateway - data movement","Common OEM use cases with data movement","In the beginning of this chapter we discussed the different methods of moving data into the cloud. Below we define an example integrated architecture for the scenario:
 - data gateway - data movement 
 ",,,,,,,,
-"Data gateway","Common OEM use cases with data movement","# Data gateway - data movement",,,,,,,,
-"Data gateway","Common OEM use cases with data movement","The picture below outlines the complete integration
+"Data gateway - data movement","Common OEM use cases with data movement","# Data gateway - data movement",,,,,,,,
+"Data gateway - data movement","Common OEM use cases with data movement","The picture below outlines the complete integration
 - the embedding of content
 - the automatic provisioning using the APIs
 - the data replication to the cloud
 
 Your APIs connect to the Qlik Cloud. You setup the security first, next you copy the template apps from the source tenant to each of your customer tenants. Each app tries to reload from the S3 connection. So you only need to change the S3 connection once for each tenant.   Each Qlik Sense cloud tenant has access to on premise data via the Qlik Data Gateway - Data Movement. The data inside the buckets is being refreshed by a continious data replication process using change data capture (CDC) technology. ",,,,,,,,
-"Data gateway","Common OEM use cases with data movement","SaaS integration charts - Data movement.png",,,,,,,,
+"Data gateway - data movement","Common OEM use cases with data movement","SaaS integration charts - Data movement.png",,,,,,,,
 "Integration.qlik.com demo platform","History","In this presentation we *demonstrate a sample SaaS platform* with Qlik Sense embedded including:
 - What is a dashboard?
 - How to connect to and prepare your data.
@@ -280,59 +301,30 @@ In the end you want to provide an integrated view of Qlik Sense in your software
 "Integration.qlik.com demo platform","Given the goals, what are typical integration topics you have to deal with?","integrationTopics.png","","","","","         0","0","Technical - 2 hours, CTO",
 "Integration.qlik.com demo platform","Given the goals, what are typical integration topics you have to deal with?","https://raw.githubusercontent.com/QHose/QRSMeteor/Integration-v2/pages/integrationTopics.md",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","# Introduction to a Qlik Sense App",,,,,,,,
+"What is a Qlik Sense app?","What's an app?","Apps are task-specific, purpose-built applications. Apps contain data loaded from data sources that is interpreted through visualizations.",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","[Qlik Sense product tour](https://youtu.be/sd84bsRWSLY?t=19)",,,,,,,,
+"What is a Qlik Sense app?","What's an app?","app - what is a qvf.png",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","[A Practical Example of the Associative Difference](https://youtu.be/CuxKfp7PW1o)",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","[Insight Advisor Chat & Business Logic](https://youtu.be/PO7GwxfdfFQ)",,,,,,,,
-"What is a Qlik Sense app?","What's an app?","# How to get data into your app?",,,,,,,,
-"What is a Qlik Sense app?","What's an app?","[How to load your data enhanced by AI 2M](https://youtu.be/b2wFIjqV8U8)",,,,,,,,
-"What is a Qlik Sense app?","What's an app?","[Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)",,,,,,,,
-"What is a Qlik Sense app?","What's an app?","> Note that if you want to have full control you can always use the `data load editor` so you have full control over the load statements to prepare and customize your data (ETL). ",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","# 2 ways to design your app",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","[Use AI to suggest charts](https://youtu.be/jcyI_g0Ms2Y?list=PLkRFvjyuHFvLVhmiDe8ZPPbIgPzMnQGd3&t=123)",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","[Design the charts using drag and drop](https://youtu.be/MEnfRAjbaDk)",,,,,,,,
-"What is a Qlik Sense app?","What's an app?","app - what is a qvf.png",,,,,,,,
+"What is a Qlik Sense app?","What's an app?","https://raw.githubusercontent.com/QHose/QRSMeteor/979c8ccdcee1e8ab7c19ee9fdfb035c98507ef37/public/images/options%20for%20creating%20charts.png",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","# Alerting",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","[ Qlik Alerting](https://youtu.be/x-5lC14dV80)",,,,,,,,
-"What is a Qlik Sense app?","What's an app?","# Demo",,,,,,,,
+"What is a Qlik Sense app?","What's an app?","# Demo and examples",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","[Qlik Sense Demos page](https://demos.qlik.com/qliksense)",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","[Visualization examples](https://showcase3.qlik.com/sense/app/6157ecd5-a867-4dbb-9534-c1c8ebdd6db3/sheet/96dfa6e5-c65c-4299-bd6b-31d2710f8390/state/analysis)",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","web integration examples.png",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","> Note that the demos tagged with _mashup_ are custom HTML pages which embedded Qlik Sense objects via our APIs.",,,,,,,,
-"What is a Qlik Sense app?","What's an app?","# Reporting",,,,,,,,
-"What is a Qlik Sense app?","What's an app?","Reporting can be divided into two ways:
-- let the user subscribe to sheets or charts
-- let the system send a report or email via email/teams or some other system via Qlik Application Automation. ",,,,,,,,
-"What is a Qlik Sense app?","What's an app?","[ self-service reporting via a subscription capability](https://youtu.be/GY2045AZIyI)",,,,,,,,
-"What is a Qlik Sense app?","What's an app?","[Generate a report using Qlik Application Automation](https://youtu.be/RjbHlbkC7sI)",,,,,,,,
-"What is a Qlik Sense app?","What's an app?","[Sending a Personalized Email to Customers using Qlik App Automation](https://youtu.be/CC1evZTOZtI)",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","# Introduction
-The cloud hub is a collaborative environment for developing and sharing content.
-
-Use shared spaces to develop and share content with other members of your cloud hub. You can also share your personal apps with other cloud hub members. Use notes to capture and share insights.",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","# Working with Notes",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","Create notes to capture data insights and collaborate with others.",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","[Capturing and sharing insights using Notes](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Notes/notes-overview.htm)",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","[Watch the Collaborative Notes Overview (Quick Demo) video](https://youtu.be/u0_9DYejnT0)",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","# Working in spaces",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","You can collaborate and share apps with other users in spaces. A space is a user-created section in the cloud hub. Shared spaces enable the collaborative development of apps and controlled access to apps in the space. Managed spaces enable governed access to apps in that space.",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","[Learn more about spaces in this video](https://youtu.be/9QYpw3hx7c0)",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","[Working in spaces](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Spaces/Spaces.htm)",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","# Granting access to sheets, bookmarks, and stories",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","You can make your sheets, bookmarks, and stories public so users with access to your app can view them.",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","[Granting access to sheets, bookmarks, and stories](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Share/make-public-or-private.htm)",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","# Detailed software development lifecycle (SDLC) for Qlik Sense apps",,,,,,,,
-"What is a Qlik Sense app?","Collaborating with other users","Please [read this document explaining the SDLC using Qlik Sense](https://integration.qlik.com/docs/QSE SaaS SDLC v1.0.pdf)",,,,,,,,
-"What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","# Qlik Sense Desktop - Create Your First App and Visualization (20M)","","","","","         0","0","Technical - 2 hours",
-"What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","https://youtu.be/u54qqmRQ16w?t=61","","","","","         0","0","Business Analyst, CTO, Developer",
-"What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","[Sample data](https://help.qlik.com/en-US/sense/April2018/Content/Tutorials/Tutorials-building-app.htm)","","","","","         0","0","Technical - 2 hours",
-"What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","> This short video shows all the elements of building a basic Qlik Sense app with our free version of Qlik Sense:
- - Creating a new app: How do you create a new app?
- - Adding content: How can you add your own images, clips and style to an app?
- - Loading the data and creating the associative model: How is data loaded and how are associations made?
- - Creating visualizations: How can you make new sheets and visualizations in an app?","","","","","         0","0","Technical - 2 hours",
-"What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)","","","","","         0","0","Business Analyst, CTO, Developer",
-"What is a Qlik Sense app?","Try the demo below: What is governed self service with Qlik Sense?","iframe selfService_embedded","","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner",
-"What is a Qlik Sense app?","Try the demo below: What is governed self service with Qlik Sense?","!comment
+"What is a Qlik Sense app?","Try the Self Service Dashboard creation demo","In the demo below you can choose a user. We created 4 sample users, each with a separate role from ""your SaaS Platform"" which wants to embed Qlik Sense. [Open in full screen](https://integration.qlik.com/selfService_embedded)
+- John, can only display
+- Linda, can copy and create private sheets
+- Martin, can go to the hub, and create apps and connect to data sources
+- Paul, is a customer admin which can maintain the sheets and apps created by the users of your customer (tenant)",,,,,,,,
+"What is a Qlik Sense app?","Try the Self Service Dashboard creation demo","iframe selfService_embedded","","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner",
+"What is a Qlik Sense app?","Try the Self Service Dashboard creation demo","> Note this demo demonstrates Self Service Capabilities using Qlik Sense Client Managed (Windows), the capabilities in SaaS are comparable. But SaaS contains more advanced features like Qlik Application Automation and Notes and a more powerfull AI Engine, read more in the [Qlik help](https://help.qlik.com/en-US/migration/Content/Migration/differences-qcs-qse.htm) ",,,,,,,,
+"What is a Qlik Sense app?","Try the Self Service Dashboard creation demo","!comment
 Click on the link to see our self-service demo. With our governed self-service you have the possibility to define how to implement guided self-service. By creating roles or groups we have created different levels of self service on Qlik Sense.
  - A consumer can only analyze data.
  - A contributor can create own private sheets.
@@ -341,6 +333,41 @@ Click on the link to see our self-service demo. With our governed self-service y
 
 By using row level security each user can only see the data it has access to.
 In the example here, John can only see data from Germany and Linda can only see data from the USA while Martin can see all the data.",,,,,,,,
+"What is a Qlik Sense app?","How to connect to your data?","# How to load (index) the data into your app?",,,,,,,,
+"What is a Qlik Sense app?","How to connect to your data?","> Remember: Apps are task-specific, purpose-built applications. Apps contain data loaded from data sources that is interpreted through visualizations. That means your data is indexed into the app and does normally not contain a live connecting to your source for performance reasons. (Although this is also an option)",,,,,,,,
+"What is a Qlik Sense app?","How to connect to your data?","[How to load your data enhanced by AI 2M](https://youtu.be/b2wFIjqV8U8)",,,,,,,,
+"What is a Qlik Sense app?","How to connect to your data?","[Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)",,,,,,,,
+"What is a Qlik Sense app?","How to connect to your data?","> Note that if you want to have more control you can always use the ""data load editor"". In this way you can view the individual SQL/REST like load statements to prepare and customize your data (ETL). ",,,,,,,,
+"What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","# Qlik Sense Desktop - Create Your First App and Visualization (20M)","","","","","         0","0","Technical - 2 hours",
+"What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","https://youtu.be/u54qqmRQ16w?t=61","","","","","         0","0","Business Analyst, CTO, Developer",
+"What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","[Sample data](https://help.qlik.com/en-US/sense/April2018/Content/Tutorials/Tutorials-building-app.htm)","","","","","         0","0","Technical - 2 hours",
+"What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","> This short video shows all the elements of building a basic Qlik Sense app
+ - Creating a new app: How do you create a new app?
+ - Adding content: How can you add your own images, clips and style to an app?
+ - Loading the data and creating the associative model: How is data loaded and how are associations made?
+ - Creating visualizations: How can you make new sheets and visualizations in an app?","","","","","         0","0","Technical - 2 hours",
+"What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)","","","","","         0","0","Business Analyst, CTO, Developer",
+"What is a Qlik Sense app?","Collaborating with other users","# Introduction
+The cloud hub is a collaborative environment for developing and sharing content.
+
+Use shared spaces to develop and share content with other members of your cloud hub. You can also share your personal apps with other cloud hub members. Use notes to capture and share insights.",,,,,,,,
+"What is a Qlik Sense app?","Collaborating with other users","# Working with Notes",,,,,,,,
+"What is a Qlik Sense app?","Collaborating with other users","Create notes to capture data insights and collaborate with others.",,,,,,,,
+"What is a Qlik Sense app?","Collaborating with other users","[Capturing and sharing insights using Notes](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Notes/notes-overview.htm)",,,,,,,,
+"What is a Qlik Sense app?","Collaborating with other users","[Collaborative Notes Overview (Quick Demo) video](https://youtu.be/u0_9DYejnT0)",,,,,,,,
+"What is a Qlik Sense app?","Collaborating with other users","# Working in spaces",,,,,,,,
+"What is a Qlik Sense app?","Collaborating with other users","You can collaborate and share apps with other users in spaces. A space is a user-created section in the cloud hub. Shared spaces enable the collaborative development of apps and controlled access to apps in the space. Managed spaces enable governed access to apps in that space.",,,,,,,,
+"What is a Qlik Sense app?","Collaborating with other users","[Working in spaces](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Spaces/Spaces.htm)",,,,,,,,
+"What is a Qlik Sense app?","Collaborating with other users","[Working in spaces video](https://youtu.be/9QYpw3hx7c0)",,,,,,,,
+"What is a Qlik Sense app?","Collaborating with other users","# Granting access to sheets, bookmarks, and stories",,,,,,,,
+"What is a Qlik Sense app?","Collaborating with other users","You can make your sheets, bookmarks, and stories public so users with access to your app can view them.",,,,,,,,
+"What is a Qlik Sense app?","Collaborating with other users","[Granting access to sheets, bookmarks, and stories](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Share/make-public-or-private.htm)",,,,,,,,
+"What is a Qlik Sense app?","Reporting","Reporting can be divided into two ways:
+- let the user subscribe to sheets or charts
+- let the system send a report or email via email/teams or some other system via Qlik Application Automation. ",,,,,,,,
+"What is a Qlik Sense app?","Reporting","[ self-service reporting via a subscription capability](https://youtu.be/GY2045AZIyI)",,,,,,,,
+"What is a Qlik Sense app?","Reporting","[Generate a report using Qlik Application Automation](https://youtu.be/RjbHlbkC7sI)",,,,,,,,
+"What is a Qlik Sense app?","Reporting","[Sending a Personalized Email to Customers using Qlik App Automation](https://youtu.be/CC1evZTOZtI)",,,,,,,,
 "Provision apps to your customers (demo)","How to create a multi-tenant SaaS platform with Qlik Sense embedded?","https://youtu.be/OulQS-1fH-A How to create a multi-tenant SaaS platform with Qlik Sense embedded?","","","","","         0","0","Technical - 1 hour, CTO, Integration summary",
 "Provision apps to your customers (demo)","How to create a multi-tenant SaaS platform with Qlik Sense embedded?","simple intro to saas automation.gif","","","","","         0","0","Technical - 1 hour, CTO, Integration summary",
 "Provision apps to your customers (demo)","How to create a multi-tenant SaaS platform with Qlik Sense embedded?","> Although the video talks about Qlik Sense Client Managed (Windows), the principle for SaaS is the same. But instead of creating a stream for each customer you will create a tenant for each customer.",,,,,,,,
@@ -387,7 +414,7 @@ Basically there are 3 main ways of embedding Qlik Sense:
 "Predictive analytics","Introduction","And the data scientist can continue to build sophisticated models to tackle complex problems using the tool of their choice.  Qlik delivers the power of data science and machine learning to decision makers through real-time advanced analytics integration, allowing them to interactively explore calculations.",,,,,,,,
 "Predictive analytics","Predictive analytics with AutoML","# Introduction to Qlik AutoML",,,,,,,,
 "Predictive analytics","Predictive analytics with AutoML","Qlik AutoML is part of a full suite of augmented analytics capabilities available in Qlik Cloud, it recognizes patterns and drivers in historical data to create machine learning models that can predict future outcomes; using a simple no code approach for business analysts and analytics teams. ",,,,,,,,
-"Predictive analytics","Predictive analytics with AutoML","automl introduction image.png",,,,,,,,
+"Predictive analytics","Predictive analytics with AutoML","https://github.com/QHose/QRSMeteor/blob/Integration-v2/public/images/automl%20vs%20predictive.png",,,,,,,,
 "Predictive analytics","Predictive analytics with AutoML","[AutoML in 60 seconds](https://youtu.be/VDYtNcF5jEk)",,,,,,,,
 "Predictive analytics","Predictive analytics with AutoML","[Qlik AutoML - What you should know](https://youtu.be/4TCGyiWfqT4)",,,,,,,,
 "Predictive analytics","Predictive analytics with AutoML","[Basic Walkthrough Creating a Qlik Sense Predictive Analytics App - 24M](https://youtu.be/vwAt3aH4Hec)",,,,,,,,
