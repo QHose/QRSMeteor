@@ -295,7 +295,7 @@ Meteor.methods({
 
         return getRedirectURL(passport, proxyRestUri, targetId, Meteor.userId());
     },
-    getTicketNumber(userProperties, virtualProxy) { // only get a ticket number for a SPECIFIC virtual proxy
+    getTicketNumber(userProperties, virtualProxy) { // only get a ticket number for a SPECIFIC virtual proxy using a default group (if no groups are provided)
         // console.log('getTicketNumber using properties:')
         // console.log('virtualProxy', virtualProxy)
         // console.log('userProperties', userProperties)
@@ -316,7 +316,7 @@ Meteor.methods({
                     'group': userProperties.group
                 },
                 {
-                    'group': 'ITALY'
+                    'group': 'GERMANY'
                 }, // make sure the row level demo works by passing this
             ],
         };

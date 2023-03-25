@@ -150,7 +150,7 @@ Template.SSBIUsers.events({
                 'group': 'ADMIN'
             },
             {
-                'group': 'ITALY'
+                'group': 'AUSTRALIA'
             },
             ],
         };
