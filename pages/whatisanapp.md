@@ -25,5 +25,28 @@ Contrast these attributes with your typical database. In order to query across t
 [Comparison between the Qlik Engine and SQL/Query based tools](https://youtu.be/wlkML7Hys6o?t=4)
 [For a very technical deep dive into our Engine, watch this video](https://youtu.be/wevhFK_AID8?t=163)
 
+## How to connect to your data sources?
+There are 2 ways to connect to your data on a high level:
+- Let Qlik help you via AI
+- Use the data load editor, the editor contains a script with SQL/REST like statements combined with additional Qlik logic to transform and prepare your data
+
+### Use AI
+[How to load your data enhanced by AI 2M](https://youtu.be/b2wFIjqV8U8)
+[Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)![image](https://user-images.githubusercontent.com/12411165/227706334-b1ddcfd2-3c48-407b-b741-bf950afb4721.png)
+
+### Use the data load editor
+We devide this section into two parts:
+- Load simple tables without manipulation
+- Use logic to transform tables
+
+#### Load simple tables without manipulation
+
+#### Use logic to transform tables
+
+[The Power of Qlik Script - Reshaping Data - Part 1](https://youtu.be/xkBFyNys1LI)
+[The Power of Qlik Script - Reshaping Data - Part 2](https://youtu.be/YjATejfEOxc)
+[The Power of Qlik Script - Reshaping Data - Part 3](https://youtu.be/dhJv4A2eQz8)
+
+
 
 
