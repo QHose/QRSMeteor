@@ -63,6 +63,30 @@ Template.SSBISenseIFrame.helpers({
     }
 });
 
+Template.senseButtons.onRendered(function() {
+
+    this.$('.senseButtons')
+        .transition('scale in');
+})
+
+
+Template.SSBISenseIFrame.events({
+'click .selfservice '() {
+        $('.ui.modal.SSBI')
+            .modal('show')
+            .modal('refresh')
+            .modal('refresh');
+    },
+})
+
+Template.SSBIUsers.onRendered(function () {
+    this.$('.ui.accordion')
+        .accordion();
+
+        this.$('.SSBIUsers')
+        .transition('scale in');
+})
+
 Template.SSBIUsers.helpers({
     currentUser() {
         if (Session.get('currentUser')) {
@@ -76,6 +100,8 @@ Template.SSBIUsers.helpers({
         return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
     }
 })
+
+
 
 Template.SSBIUsers.events({
     'click .consumer'() {
@@ -130,12 +156,6 @@ Template.SSBIUsers.events({
         };
         login(passport);
     },
-    'click .selfservice '() {
-        $('.ui.modal.SSBI')
-            .modal('show')
-            .modal('refresh')
-            .modal('refresh');
-    },
     'click .hub '() {
         Session.set('IFrameUrl', hubUrl);
     },
@@ -154,10 +174,7 @@ Template.SSBIUsers.onCreated(function () {
     Session.set('appUrl', appUrl);
 })
 
-Template.SSBIUsers.onRendered(function () {
-    this.$('.ui.accordion')
-        .accordion();
-})
+
 
 Template.userCards.onRendered(function () {
     this.$('.dimmable.image').dimmer({

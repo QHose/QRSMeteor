@@ -9,27 +9,18 @@
 </template>
 
 <template name="SSBISenseApp">
-    {{#if show}} {{> SSBISenseIFrame}} {{/if}}
+    {{#if show}} {{> SSBISenseIFrame}} 
+
+    {{/if}}
 </template>
+
+
 <template name="SSBISenseIFrame">
     <div class="IFrameSense">
         <iframe class="SSBIIFrame" src="{{appURL}}"></iframe>
     </div>
-</template>
-<template name="SSBIUsers">
-    <h4  class="ui dividing header" style="position: relative;
-    left: -13px; margin-top: 20px;" >Users: {{currentUser}}</h4>
-    <div class="ui  grid userList">
-        <div class="ui text loader">Logging in {{user}}...</div>
-        {{> userCards}}
-        {{#if showSenseButtons}}
-        <div class="ui row">
-        {{> senseButtons}}
-    </div>
-        {{/if}}
-    </div>
-    {{> modalSSBI}}
-    <h4 class="ui dividing header">What are we trying to demonstrate here?</h4>
+    
+    <h1 class="ui dividing header">What are we trying to demonstrate here? (only applicable for Client Managed)</h1>
 
     <div class="ui message">
         <i class="unlock alternate icon"></i>
@@ -71,13 +62,13 @@
                     from your SaaS platform or any other user provider like Windows AD or SAML. This ensures Qlik Sense
                     stays
                     in sync automatically and avoids the overhead of double maintenance.</p>
-                <h5 class="ui dividing header">Single Sign On via ticket exchange</h5>
+                <h5 class="ui dividing header">Single Sign On via JWT/ticket exchange</h5>
                 <p>We forward the identity of the user from your SaaS platform to Qlik Sense via a ticket. A ticket
                     contains the
                     userId and his auhtorizations (groups). These groups can be used to restrict resources as well as
                     data (rows
                     & columns). Try to switch a user and see the ticket request in the
-                    <a target="" href="{{pathFor 'ApiLogsTable'}}">API Logs</a>.</p>
+                    <a target="_blank" href="{{pathFor 'ApiLogsTable'}}">API Logs</a>.</p>
                 <p></p>
                 <img class="ui small image" alt="" data-action="zoom"
                     src="images/flow - ticketing authentication for dummies.png" style="margin:20px">
@@ -90,7 +81,24 @@
         <!-- </div> -->
     </div>
 </template>
+<template name="SSBIUsers">
+    <div class="SSBIUsers">
+    <h4  class="ui dividing header" style="position: relative;
+    left: -13px; margin-top: 20px;" >Users: {{currentUser}}</h4>
+    <div class="ui  grid userList">
+        <div class="ui text loader">Logging in {{user}}...</div>
+        {{> userCards}}
+        {{#if showSenseButtons}}
+        <div class="ui row">
+        {{> senseButtons}}
+    </div>
+        {{/if}}
+    </div>
+    {{> modalSSBI}}
+</div>
+</template>
 <template name="senseButtons">
+    <div class="senseButtons">
     <h4 class="ui dividing header">Select Qlik Sense page</h4>
     <div class="ui blue button box-content" style="margin-bottom: 129px;">
         <nav role="presentation" aria-label="Main Navigation" class="" id="flyoutnavkbfixed">
@@ -108,6 +116,7 @@
             </ul>
         </nav>
     </div>
+</div>
 <!-- 
     <ul role="menubar" aria-label="functions" id="appmenu">
         <li class="hub" role="menuitem"> <a href="">Hub</a> </li>
