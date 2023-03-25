@@ -1,6 +1,6 @@
 
 # Introduction to the concept of an app
-In order to grasp the concept of an app, it might by a good idea to compare an app with an "Excel file". Both use some kind of connector (e.g. an ODBC connection) to connect to your database, and "copy" the data into the app/Excel file. Also, both the app and the file contain the sheets with vizualizations. So to summarize both an appo and an Excel file:
+In order to grasp the concept of an app, it might by a good idea to compare an app with an "Excel file". Both use some kind of connector (e.g. an ODBC connection) to connect to your database, and "copy" the data into the app/Excel file. Also, both the app and the file contain the sheets with vizualizations. So to summarize both an app and an Excel file:
 - contain the data loaded by a connector
 - contain vizualizations
 
