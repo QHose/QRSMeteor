@@ -30,6 +30,19 @@ This allows for auto-scaling to meet the demands; from initial testing all the w
 We’ve built in resiliency and HA by default. There are no additional configurations / plans / tiers needed here
 ## Full SaaS
 We heard you, you want to get out of the server game. Qlik’s SaaS solution is fully managed, maintained, supported, upgraded by Qlik
+
+## Made for multitenant scenarios
+![SaaS integration charts - Direct access](https://user-images.githubusercontent.com/12411165/227787196-64e46148-368e-4b9c-be26-4209c58595e1.png)
+
+Multitenant provisioning provides our OEM and ISV partners with a deployment model that fits their deployment patterns with each end customer receiving their own tenant. Using multiple tenants logically separates end customers, removing any potential data security issue and, importantly, allowing end customers to use all features in Qlik Cloud.
+
+Multitenant Provisioning for our OEM and ISV partners addresses the following use cases for an OEM partner:   
+
+- Creation of a new tenant
+- Configuration of a tenant
+- Hydration and updates of a tenant
+
+
 ## Global Tenants
 We have tenants available to meet the geographically distributed needs of your users
 
