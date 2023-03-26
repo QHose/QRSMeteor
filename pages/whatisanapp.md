@@ -22,8 +22,8 @@ In the Associative Model, all data points are associated. These associations exi
 
 Contrast these attributes with your typical database. In order to query across tables, you need to write complicated joins to get your results in the format you need. If you want to filter across multiple sets of data, you need to update all of your queries that yield those data sets to keep them in sync with your filters. Highlighting relationships or searching across entire models is typically not even possible with these tools. In general, these solutions require you to build and manage functionality like dynamic calculation and filtering from the application side; in contrast, Qlik’s Associative Model handles these functions for you in the Engine, making it quick and easy for a user to explore data.
 
-[Comparison between the Qlik Engine and SQL/Query based tools](https://youtu.be/wlkML7Hys6o?t=4)
-[For a very technical deep dive into our Engine, watch this video](https://youtu.be/wevhFK_AID8?t=163)
+- [Comparison between the Qlik Engine and SQL/Query based tools](https://youtu.be/wlkML7Hys6o?t=4)
+- [For a very technical deep dive into our Engine, watch this video](https://youtu.be/wevhFK_AID8?t=163)
 
 ## How to connect to your data sources?
 There are 2 ways to connect to your data on a high level:
