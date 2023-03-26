@@ -26,6 +26,9 @@ Qlik Sense is built on the newest web technologies (HTML5, JavaScript, CSS). Thi
 # SaaS provisioning 
 Our APIs allow the automatic creation of customer content. Creation of tenants, Identity Providers, apps, replacing the script with user specific script (to connect to customer specific database), copying apps, … [can all be done automatically](https://qlik.dev/tutorials/platform-operations-overview).  
 
+![image](https://user-images.githubusercontent.com/12411165/227790383-bf54eff7-0642-4d31-acf5-b8865309f65d.png)
+
+
 # Architecture
 Qlik delivers a cloud native enterprise architecture utilizing an elastic microservices architecture that utilizes Docker as our container platform, Kubernetes for orchestration and AWS as our cloud provider.
 
