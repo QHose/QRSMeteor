@@ -22,8 +22,10 @@ In the Associative Model, all data points are associated. These associations exi
 
 Contrast these attributes with your typical database. In order to query across tables, you need to write complicated joins to get your results in the format you need. If you want to filter across multiple sets of data, you need to update all of your queries that yield those data sets to keep them in sync with your filters. Highlighting relationships or searching across entire models is typically not even possible with these tools. In general, these solutions require you to build and manage functionality like dynamic calculation and filtering from the application side; in contrast, Qlik’s Associative Model handles these functions for you in the Engine, making it quick and easy for a user to explore data.
 
-[Comparison between the Qlik Engine and SQL/Query based tools](https://youtu.be/wlkML7Hys6o?t=4)
-[For a very technical deep dive into our Engine, watch this video](https://youtu.be/wevhFK_AID8?t=163)
+![image](https://user-images.githubusercontent.com/12411165/227788244-865618c5-7165-4179-9923-b2fa03d91777.png)
+
+- [Comparison between the Qlik Engine and SQL/Query based tools](https://youtu.be/wlkML7Hys6o?t=4)
+- [For a very technical deep dive into our Engine, watch this video](https://youtu.be/wevhFK_AID8?t=163)
 
 ## How to connect to your data sources?
 There are 2 ways to connect to your data on a high level:
@@ -31,17 +33,35 @@ There are 2 ways to connect to your data on a high level:
 - Use the data load editor, the editor contains a script with SQL/REST like statements combined with additional Qlik logic to transform and prepare your data
 
 ### Use AI
-[How to load your data enhanced by AI 2M](https://youtu.be/b2wFIjqV8U8)
-[Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)
+- [How to load your data enhanced by AI 2M](https://youtu.be/b2wFIjqV8U8)
+- [Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)
 
 ### Use the data load editor
+Qlik Sense uses a [data load script]((https://youtu.be/EBRgBsXLA4Y?t=5) ), which is managed in the data load editor, to connect to and retrieve data from various data sources. A data source can be a data file, for example an Excel file or a .csv file. A data source can also be a database, for example a Google BigQuery or Salesforce database.
+
+You can load data into Qlik Sense using the LOAD and SELECT statements. Each of these statements generates a compressed internal table. In the script, the fields and tables to load are specified. Scripting is often used to specify what data to load from your data sources. You can also manipulate the data structure by using script statements.
+
 We devide this section into two parts:
 - Load simple tables without manipulation
 - Use logic to transform tables
 
 #### Load simple tables without manipulation
 
+You load your data into Qlik Sense in 2 steps:
+- make a data connector, and select your table
+- reload the app.
+
+After you loaded your app, all fields and the data from the source is available so you can start building your dashboard (charts).
+
+![image](https://user-images.githubusercontent.com/12411165/227897060-edca4833-c08a-4fcc-9ba4-55a809750677.png)
+https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/LoadData/select-load-file-data.htm?
+
+
 #### Use logic to transform tables
+
+You can [transform and manipulate data using many different techniques in the data load editor.](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Tutorials/transforming-data.htm?)
+
+One of the advantages to data manipulation is that you can choose to load only a subset of the data from a file, such as a few chosen columns from a table, to make the data handling more efficient. You can also load the data more than once to split up the raw data into several new logical tables. It is also possible to load data from more than one source and merge it into one table in Qlik Sense.
 
 - [The Power of Qlik Script - Reshaping Data - Part 1](https://youtu.be/xkBFyNys1LI)
 - [The Power of Qlik Script - Reshaping Data - Part 2](https://youtu.be/YjATejfEOxc)
