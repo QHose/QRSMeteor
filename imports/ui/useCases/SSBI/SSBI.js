@@ -23,7 +23,6 @@ var server, QMCUrl, hubUrl, sheetUrl, appUrl = '';
 
 Template.SSBISenseApp.helpers({
     show() {
-        // console.log('SSBISenseApp helper, show iframe?: ', showIFrame());
         return Session.get('currentUser') && !Session.equals('loadingIndicator', 'loading') ? 'Yes' : null;
     }
 });
@@ -41,13 +40,13 @@ Template.SSBIUsers.onCreated(function () {
     } else {
         server = 'http://' + server;
     }
-    // console.log('server', server)
-    QMCUrl = server + '/qmc';
+    console.log('server', server)
+    QMCUrl = server + '/console';
     hubUrl = server + '/hub';
-    sheetUrl = server + '/sense/app/' + Session.get('SSBIAppId');
-    // console.log('sheetUrl', sheetUrl)
-    appUrl = server + "/sense/app/" + Session.get('SSBIAppId') + "/sheet/" + Meteor.settings.public.SSBI.sheetId + "/state/analysis";
-    // console.log('SSBIApp URL', appUrl);
+    sheetUrl = server + '/sense/app/' + Meteor.settings.public.SSBI.appId
+    console.log('sheetUrl', sheetUrl)
+    appUrl = server + "/sense/app/" + Meteor.settings.public.SSBI.appId + "/sheet/" + Meteor.settings.public.SSBI.sheetId + "/state/analysis";
+    console.log('SSBIApp URL', appUrl);
 
 })
 
@@ -124,7 +123,7 @@ Template.SSBIUsers.events({
                 'group': 'ADMIN'
             },
             {
-                'group': 'ITALY'
+                'group': 'AUSTRALIA'
             },
             ],
         };

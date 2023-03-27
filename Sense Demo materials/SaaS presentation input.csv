@@ -12,16 +12,7 @@
 "Authorization","Introduction to authorizations","> For OEM purposes we recommend to use the managed space approach only. This ensures users do NOT have the capability to create/edit data connections. 
 
 Also make sure to turn off `Professional entitlements can create private analytics content` under `Settings > Entitlement` in the Management Console.",,,,,,,,
-"API introduction","Qlik Cloud APIs","Qlik APIs for Qlik Cloud are public APIs that enable the automation of tasks such as reloading apps or auditing system events. Qlik APIs and tools can also help build, extend and deploy custom data-driven applications. You can also build mashups, create apps and visualizations on the fly, or embed rich and engaging analytics into your applications.",,,,,,,,
-"API introduction","Qlik Cloud APIs","Below we will guide you to the specific API reference
-- [Embed](https://qlik.dev/apis/#embed), also checkout the `embedding` area in the top menu. Or the embed demo under the `demo` top menu.
-- [Authenticate](https://qlik.dev/apis/#authenticate), also checkout the `security` section in the top menu.
-- [Extend](https://qlik.dev/apis/#extend), 
-- [Manage](https://qlik.dev/apis/#manage) also checkout the `API` section in the top menu.
-
-
-",,,,,,,,
-"API introduction","Qlik Cloud APIs","Qlik apis overview.png",,,,,,,,
+"API introduction","Qlik Cloud APIs","https://raw.githubusercontent.com/QHose/QRSMeteor/Integration-v2/pages/APIIntroduction.md",,,,,,,,
 "API introduction","End to  end tutorials","[Visit Qlik dev website for a tutorial on how to use the APIs to setup a multitenant environment](https://qlik.dev/tutorials/platform-operations-overview)",,,,,,,,
 "API introduction","End to  end tutorials","qlik dev example.png",,,,,,,,
 "API introduction","End to end examples","[Visit Qlik OSS for examples](https://github.com/qlik-oss/qlik-platform-examples/tree/main/qlik.dev/tutorials/platform-operations)",,,,,,,,
@@ -147,7 +138,6 @@ In fact, Qlik APIs first approach allows many different level of integration. Yo
 "Architecture","Your platform integrated with Qlik Cloud using the data gateway - data movement","Qlik Cloud's multitenant deployment pattern is an architecture where a Qlik partner receives a single entitlement (also known as license), which represents an organization inside Qlik Cloud. Within this organization, you can deploy multiple tenants - each a distinct logical instance. Although these tenants are linked to your organization, they are seperate, so you will need to configure and hydrate these tenants independently.",,,,,,,,
 "Architecture","Your platform integrated with Qlik Cloud using the data gateway - data movement","multitenant architecture.png",,,,,,,,
 "Architecture","Your platform integrated with Qlik Cloud using the data gateway - data movement","[Visit Qlik dev website for a tutorial on how to use the APIs to setup a multitenant environment](https://qlik.dev/tutorials/platform-operations-overview)",,,,,,,,
-"Architecture","Your platform integrated with Qlik Cloud using the data gateway - data movement","Visit [Qlik innovation blog](https://community.qlik.com/t5/Product-Innovation/Qlik-now-offers-Multitenant-Provisioning-in-Qlik-Cloud-for-our)",,,,,,,,
 "AutoML","Qlik AutoML - Machine Learning for analytics teams","automl introduction image.png",,,,,,,,
 "AutoML","Qlik AutoML - Machine Learning for analytics teams","Deliver predictive analytics for a variety of “everyday” use cases",,,,,,,,
 "AutoML","Qlik AutoML - Machine Learning for analytics teams","Auto-generate and refine Machine Learning (ML) models and predictions",,,,,,,,
@@ -161,27 +151,27 @@ In fact, Qlik APIs first approach allows many different level of integration. Yo
 "AutoML","Example AutoML OEM architecture with Qlik Sense Client Managed","automl OEM architecture.png",,,,,,,,
 "AutoML","Example AutoML OEM architecture with Qlik Sense Client Managed","This is a possible scenario in which you use a bucket to store your on premise data. Next, this bucket is also being read by AutoML which runs in Qlik Cloud.  Using a schedule AutoML will process the files in the input bucket and store the results in an output bucket. The output bucket can be a data connection in your Qlik Sense Client managed installation. So you can reload your app as usual now also pointing to this output bucket of AutoML.",,,,,,,,
 "Availability",,,,,,,,,,
-"Connecting to your data (data load)","What is an app (dashboard)?","# Introduction to a Qlik Sense App",,,,,,,,
-"Connecting to your data (data load)","What is an app (dashboard)?","Apps are task-specific, purpose-built applications. Apps contain data loaded from data sources that is interpreted through visualizations.",,,,,,,,
-"Connecting to your data (data load)","What is an app (dashboard)?","[A Practical Example of the Associative Difference](https://youtu.be/CuxKfp7PW1o)",,,,,,,,
-"Connecting to your data (data load)","What is an app (dashboard)?","app - what is a qvf.png",,,,,,,,
-"Connecting to your data (data load)","What is an app (dashboard)?","# How to get data into your app?",,,,,,,,
-"Connecting to your data (data load)","What is an app (dashboard)?","Apps are designed to help you understand data. Data sources can be added to spaces. They are either added from within an app or created in the cloud hub. Their data is then loaded into the app. Associations are made between related data tables. Using the data model, visualizations are added to sheets in the app to interpret the data. Visualizations are charts, tables, and similar representations of data.",,,,,,,,
-"Connecting to your data (data load)","What is an app (dashboard)?","> Normally you would create an app for each logical part of your software (Finance, HR etc.). Next you would make a data model containing the tables the are needed to answer the business questions. ",,,,,,,,
-"Connecting to your data (data load)","What is an app (dashboard)?","[How to load your data enhanced by AI 2M](https://youtu.be/b2wFIjqV8U8)",,,,,,,,
-"Connecting to your data (data load)","What is an app (dashboard)?","[Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)",,,,,,,,
-"Connecting to your data (data load)","What is an app (dashboard)?","> Note that if you want to have more control you can always use the ""data load editor"". In this way you can view the individual SQL/REST like load statements to prepare and customize your data (ETL). ",,,,,,,,
-"Connecting to your data (data load)","What is an app (dashboard)?","https://evaluation.qlik.com/images/data%20-%20app%20load%20data.png",,,,,,,,
-"Connecting to your data (data load)","What is the Qlik data engine?","https://raw.githubusercontent.com/QHose/QRSMeteor/Integration-v2/pages/whatisanapp.md",,,,,,,,
-"Connecting to your data (data load)","Tutorial - Building an app (dashboard)","# Qlik Sense Desktop - Create Your First App and Visualization (20M)","","","","","         0","0","Technical - 2 hours",
-"Connecting to your data (data load)","Tutorial - Building an app (dashboard)","https://youtu.be/u54qqmRQ16w?t=61","","","","","         0","0","Business Analyst, CTO, Developer",
-"Connecting to your data (data load)","Tutorial - Building an app (dashboard)","[Sample data](https://help.qlik.com/en-US/sense/April2018/Content/Tutorials/Tutorials-building-app.htm)","","","","","         0","0","Technical - 2 hours",
-"Connecting to your data (data load)","Tutorial - Building an app (dashboard)","> This short video shows all the elements of building a basic Qlik Sense app
+"Introduction - Connect to your data (load data)","What is an app (dashboard)?","# Introduction to a Qlik Sense App",,,,,,,,
+"Introduction - Connect to your data (load data)","What is an app (dashboard)?","Apps are task-specific, purpose-built applications. Apps contain data loaded from data sources that is interpreted through visualizations.",,,,,,,,
+"Introduction - Connect to your data (load data)","What is an app (dashboard)?","[A Practical Example of the Associative Difference](https://youtu.be/CuxKfp7PW1o)",,,,,,,,
+"Introduction - Connect to your data (load data)","What is an app (dashboard)?","app - what is a qvf.png",,,,,,,,
+"Introduction - Connect to your data (load data)","What is an app (dashboard)?","# How to get data into your app?",,,,,,,,
+"Introduction - Connect to your data (load data)","What is an app (dashboard)?","Apps are designed to help you understand data. Data sources can be added to spaces. They are either added from within an app or created in the cloud hub. Their data is then loaded into the app. Associations are made between related data tables. Using the data model, visualizations are added to sheets in the app to interpret the data. Visualizations are charts, tables, and similar representations of data.",,,,,,,,
+"Introduction - Connect to your data (load data)","What is an app (dashboard)?","> Normally you would create an app for each logical part of your software (Finance, HR etc.). Next you would make a data model containing the tables the are needed to answer the business questions. ",,,,,,,,
+"Introduction - Connect to your data (load data)","What is an app (dashboard)?","[How to load your data enhanced by AI 2M](https://youtu.be/b2wFIjqV8U8)",,,,,,,,
+"Introduction - Connect to your data (load data)","What is an app (dashboard)?","[Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)",,,,,,,,
+"Introduction - Connect to your data (load data)","What is an app (dashboard)?","> Note that if you want to have more control you can always use the ""data load editor"". In this way you can view the individual SQL/REST like load statements to prepare and customize your data (ETL). ",,,,,,,,
+"Introduction - Connect to your data (load data)","What is an app (dashboard)?","https://evaluation.qlik.com/images/data%20-%20app%20load%20data.png",,,,,,,,
+"Introduction - Connect to your data (load data)","What is the Qlik data engine?","https://raw.githubusercontent.com/QHose/QRSMeteor/Integration-v2/pages/whatisanapp.md",,,,,,,,
+"Introduction - Connect to your data (load data)","Tutorial - Building an app (dashboard)","# Qlik Sense Desktop - Create Your First App and Visualization (20M)","","","","","         0","0","Technical - 2 hours",
+"Introduction - Connect to your data (load data)","Tutorial - Building an app (dashboard)","https://youtu.be/u54qqmRQ16w?t=61","","","","","         0","0","Business Analyst, CTO, Developer",
+"Introduction - Connect to your data (load data)","Tutorial - Building an app (dashboard)","[Sample data](https://help.qlik.com/en-US/sense/April2018/Content/Tutorials/Tutorials-building-app.htm)","","","","","         0","0","Technical - 2 hours",
+"Introduction - Connect to your data (load data)","Tutorial - Building an app (dashboard)","> This short video shows all the elements of building a basic Qlik Sense app
  - Creating a new app: How do you create a new app?
  - Adding content: How can you add your own images, clips and style to an app?
  - Loading the data and creating the associative model: How is data loaded and how are associations made?
  - Creating visualizations: How can you make new sheets and visualizations in an app?","","","","","         0","0","Technical - 2 hours",
-"Connecting to your data (data load)","Tutorial - Building an app (dashboard)","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)","","","","","         0","0","Business Analyst, CTO, Developer",
+"Introduction - Connect to your data (load data)","Tutorial - Building an app (dashboard)","[Go to the new to Qlik Sense YouTube channel](https://www.youtube.com/channel/UCFxZPr8pHfZS0n3jxx74rpA)","","","","","         0","0","Business Analyst, CTO, Developer",
 "Data gateway - introduction","Why use the data gateway?","# Your challenge?",,,,,,,,
 "Data gateway - introduction","Why use the data gateway?","- Your data is on premise behind firewalls
 - Your software or Qlik is in the cloud",,,,,,,,
@@ -317,12 +307,12 @@ In the end you want to provide an integrated view of Qlik Sense in your software
 "What is a Qlik Sense app?","What's an app?","[Visualization examples](https://showcase3.qlik.com/sense/app/6157ecd5-a867-4dbb-9534-c1c8ebdd6db3/sheet/96dfa6e5-c65c-4299-bd6b-31d2710f8390/state/analysis)",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","web integration examples.png",,,,,,,,
 "What is a Qlik Sense app?","What's an app?","> Note that the demos tagged with _mashup_ are custom HTML pages which embedded Qlik Sense objects via our APIs.",,,,,,,,
-"What is a Qlik Sense app?","Try the Self Service Dashboard creation demo","In the demo below you can choose a user. We created 4 sample users, each with a separate role from ""your SaaS Platform"" which wants to embed Qlik Sense. [Open in full screen](https://integration.qlik.com/selfService_embedded)
+"What is a Qlik Sense app?","Try the Self Service Dashboard creation demo","In the demo below ([Open in full screen](https://evaluation.qlik.com/selfService_embedded)) you can choose a user (Click on the blue button). We created 4 sample users, each with a separate role from ""your SaaS Platform"" which wants to embed Qlik Sense. 
 - John, can only display
 - Linda, can copy and create private sheets
 - Martin, can go to the hub, and create apps and connect to data sources
 - Paul, is a customer admin which can maintain the sheets and apps created by the users of your customer (tenant)",,,,,,,,
-"What is a Qlik Sense app?","Try the Self Service Dashboard creation demo","iframe selfService_embedded","","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner",
+"What is a Qlik Sense app?","Try the Self Service Dashboard creation demo","iframe https://evaluation.qlik.com/selfService_embedded","","","","","         0","0","Introduction - 30 minutes, CTO, Business Analyst, Product Owner",
 "What is a Qlik Sense app?","Try the Self Service Dashboard creation demo","> Note this demo demonstrates Self Service Capabilities using Qlik Sense Client Managed (Windows), the capabilities in SaaS are comparable. But SaaS contains more advanced features like Qlik Application Automation and Notes and a more powerfull AI Engine, read more in the [Qlik help](https://help.qlik.com/en-US/migration/Content/Migration/differences-qcs-qse.htm) ",,,,,,,,
 "What is a Qlik Sense app?","Try the Self Service Dashboard creation demo","!comment
 Click on the link to see our self-service demo. With our governed self-service you have the possibility to define how to implement guided self-service. By creating roles or groups we have created different levels of self service on Qlik Sense.
@@ -334,11 +324,12 @@ Click on the link to see our self-service demo. With our governed self-service y
 By using row level security each user can only see the data it has access to.
 In the example here, John can only see data from Germany and Linda can only see data from the USA while Martin can see all the data.",,,,,,,,
 "What is a Qlik Sense app?","How to connect to your data?","# How to load (index) the data into your app?",,,,,,,,
-"What is a Qlik Sense app?","How to connect to your data?","> Remember: Apps are task-specific, purpose-built applications. Apps contain data loaded from data sources that is interpreted through visualizations. That means your data is indexed into the app and does normally not contain a live connecting to your source for performance reasons. (Although this is also an option)",,,,,,,,
 "What is a Qlik Sense app?","How to connect to your data?","[How to load your data enhanced by AI 2M](https://youtu.be/b2wFIjqV8U8)",,,,,,,,
+"What is a Qlik Sense app?","How to connect to your data?","datamarket data model simple.png",,,,,,,,
 "What is a Qlik Sense app?","How to connect to your data?","[Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)",,,,,,,,
-"What is a Qlik Sense app?","How to connect to your data?","> Note that if you want to have more control you can always use the ""data load editor"". In this way you can view the individual SQL/REST like load statements to prepare and customize your data (ETL). ",,,,,,,,
-"What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","# Qlik Sense Desktop - Create Your First App and Visualization (20M)","","","","","         0","0","Technical - 2 hours",
+"What is a Qlik Sense app?","How to connect to your data?","> Remember: Apps are task-specific, purpose-built applications. Apps contain data loaded from data sources that is interpreted through visualizations. That means your data is indexed into the app and does normally not contain a live connecting to your source for performance reasons. (Although this is also an option)",,,,,,,,
+"What is a Qlik Sense app?","How to connect to your data?","datamarket visual data preparation easy.png",,,,,,,,
+"What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","# Create Your First App and Visualization (20M)","","","","","         0","0","Technical - 2 hours",
 "What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","https://youtu.be/u54qqmRQ16w?t=61","","","","","         0","0","Business Analyst, CTO, Developer",
 "What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","[Sample data](https://help.qlik.com/en-US/sense/April2018/Content/Tutorials/Tutorials-building-app.htm)","","","","","         0","0","Technical - 2 hours",
 "What is a Qlik Sense app?","Tutorial - Building an app (dashboard)","> This short video shows all the elements of building a basic Qlik Sense app
@@ -365,7 +356,7 @@ Use shared spaces to develop and share content with other members of your cloud 
 "What is a Qlik Sense app?","Reporting","Reporting can be divided into two ways:
 - let the user subscribe to sheets or charts
 - let the system send a report or email via email/teams or some other system via Qlik Application Automation. ",,,,,,,,
-"What is a Qlik Sense app?","Reporting","[ self-service reporting via a subscription capability](https://youtu.be/GY2045AZIyI)",,,,,,,,
+"What is a Qlik Sense app?","Reporting","[Self-service reporting via a subscription capability](https://youtu.be/GY2045AZIyI)",,,,,,,,
 "What is a Qlik Sense app?","Reporting","[Generate a report using Qlik Application Automation](https://youtu.be/RjbHlbkC7sI)",,,,,,,,
 "What is a Qlik Sense app?","Reporting","[Sending a Personalized Email to Customers using Qlik App Automation](https://youtu.be/CC1evZTOZtI)",,,,,,,,
 "Provision apps to your customers (demo)","How to create a multi-tenant SaaS platform with Qlik Sense embedded?","https://youtu.be/OulQS-1fH-A How to create a multi-tenant SaaS platform with Qlik Sense embedded?","","","","","         0","0","Technical - 1 hour, CTO, Integration summary",
@@ -414,7 +405,7 @@ Basically there are 3 main ways of embedding Qlik Sense:
 "Predictive analytics","Introduction","And the data scientist can continue to build sophisticated models to tackle complex problems using the tool of their choice.  Qlik delivers the power of data science and machine learning to decision makers through real-time advanced analytics integration, allowing them to interactively explore calculations.",,,,,,,,
 "Predictive analytics","Predictive analytics with AutoML","# Introduction to Qlik AutoML",,,,,,,,
 "Predictive analytics","Predictive analytics with AutoML","Qlik AutoML is part of a full suite of augmented analytics capabilities available in Qlik Cloud, it recognizes patterns and drivers in historical data to create machine learning models that can predict future outcomes; using a simple no code approach for business analysts and analytics teams. ",,,,,,,,
-"Predictive analytics","Predictive analytics with AutoML","https://github.com/QHose/QRSMeteor/blob/Integration-v2/public/images/automl%20vs%20predictive.png",,,,,,,,
+"Predictive analytics","Predictive analytics with AutoML","https://raw.githubusercontent.com/QHose/QRSMeteor/Integration-v2/public/images/automl%20vs%20predictive.png",,,,,,,,
 "Predictive analytics","Predictive analytics with AutoML","[AutoML in 60 seconds](https://youtu.be/VDYtNcF5jEk)",,,,,,,,
 "Predictive analytics","Predictive analytics with AutoML","[Qlik AutoML - What you should know](https://youtu.be/4TCGyiWfqT4)",,,,,,,,
 "Predictive analytics","Predictive analytics with AutoML","[Basic Walkthrough Creating a Qlik Sense Predictive Analytics App - 24M](https://youtu.be/vwAt3aH4Hec)",,,,,,,,
