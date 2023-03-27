@@ -37,11 +37,21 @@ There are 2 ways to connect to your data on a high level:
 - [Overview of data connectors](https://youtu.be/SUN4P9FQwhQ)
 
 ### Use the data load editor
+Qlik Sense uses a [data load script]((https://youtu.be/EBRgBsXLA4Y?t=5) ), which is managed in the data load editor, to connect to and retrieve data from various data sources. A data source can be a data file, for example an Excel file or a .csv file. A data source can also be a database, for example a Google BigQuery or Salesforce database.
+
+You can load data into Qlik Sense using the LOAD and SELECT statements. Each of these statements generates a compressed internal table. In the script, the fields and tables to load are specified. Scripting is often used to specify what data to load from your data sources. You can also manipulate the data structure by using script statements.
+
 We devide this section into two parts:
 - Load simple tables without manipulation
 - Use logic to transform tables
 
 #### Load simple tables without manipulation
+
+![image](https://user-images.githubusercontent.com/12411165/227897060-edca4833-c08a-4fcc-9ba4-55a809750677.png)
+https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/LoadData/select-load-file-data.htm?
+
+After you loaded your table, all fields and the data from the source is available so you can start building your dashboard (charts).
+
 
 #### Use logic to transform tables
 
