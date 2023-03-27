@@ -47,13 +47,21 @@ We devide this section into two parts:
 
 #### Load simple tables without manipulation
 
+You load your data into Qlik Sense in 2 steps:
+- make a data connector, and select your table
+- reload the app.
+
+After you loaded your app, all fields and the data from the source is available so you can start building your dashboard (charts).
+
 ![image](https://user-images.githubusercontent.com/12411165/227897060-edca4833-c08a-4fcc-9ba4-55a809750677.png)
 https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/LoadData/select-load-file-data.htm?
 
-After you loaded your table, all fields and the data from the source is available so you can start building your dashboard (charts).
-
 
 #### Use logic to transform tables
+
+You can [transform and manipulate data using many different techniques in the data load editor.](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Tutorials/transforming-data.htm?)
+
+One of the advantages to data manipulation is that you can choose to load only a subset of the data from a file, such as a few chosen columns from a table, to make the data handling more efficient. You can also load the data more than once to split up the raw data into several new logical tables. It is also possible to load data from more than one source and merge it into one table in Qlik Sense.
 
 - [The Power of Qlik Script - Reshaping Data - Part 1](https://youtu.be/xkBFyNys1LI)
 - [The Power of Qlik Script - Reshaping Data - Part 2](https://youtu.be/YjATejfEOxc)
