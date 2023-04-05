@@ -1,6 +1,6 @@
 Authorizations are applied at 2 levels:
-- Restrict access to functionality
-- Restrict data (rows and columns, even based on hierarchies)
+- Restrict access to functionality (by mapping an JWT group to a Qlik Sense role)
+- Restrict data (rows and columns, even based on hierarchies by using a JWT group and linking/(inner joining) it to a field in you data)
 
 A user logs in into your SaaS platform and using JWT, we will forward the user and his group memberships to Qlik Sense. Using the APIs you have mapped your groups to Qlik Sense roles and spaces. 
 
