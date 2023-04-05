@@ -1,4 +1,4 @@
-Authorizations are applicable at 2 levels:
+Authorizations are applied at 2 levels:
 - Restrict access to functionality
 - Restrict data (rows and columns, even based on hierarchies)
 
