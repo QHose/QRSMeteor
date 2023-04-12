@@ -15,6 +15,24 @@ Security roles control what users and administrators can do in the tenant or acc
 
 [visit Qlik help to learn more about Qlik Sense authorizations](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Admin/SaaS-user-permissions.htm)
 
+### Managing permissions in managed spaces
+Permissions in spaces are controlled by roles assigned to members when they are added to a space. A role gives that member a set of permissions in the space and on resources in the space.
+
+> What actions that the permissions enable for members is determined by both your assigned space roles and your user entitlement. The permitted actions are more limited for users with Analyzer entitlement than for users with Professional entitlement.
+
+
+### Key limitations of managed spaces (recommended for OEM use cases)
+- You can only use master items when you duplicate a sheet in an app that is published in a managed space. Fields are not available in the assets panel.
+- You cannot change the data model of a published app in a managed space.
+- You cannot download apps from or upload apps to a managed space.
+
+> Note that these limitations are considered to be good practices for OEM deployments, if you want more freedom please use a managed space. 
+
+### Publishing sheets, bookmarks, and stories to Community in apps in managed spaces
+Depending on your permissions for a managed space, you can add content to apps in the space. New content is always private. Private items are only visible to you. You can share your content by publishing it to Community. Shared content in apps in managed spaces are added to the Community section. In the app overview, you publish content to Community or make it private again.
+
+
+
 
 ## Restrict data using Qlik Section access
 
