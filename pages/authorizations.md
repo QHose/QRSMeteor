@@ -15,13 +15,33 @@ Security roles control what users and administrators can do in the tenant or acc
 
 [visit Qlik help to learn more about Qlik Sense authorizations](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Admin/SaaS-user-permissions.htm)
 
-### Managing permissions in managed spaces
+### Managing permissions via spaces
 Permissions in spaces are controlled by roles assigned to members when they are added to a space. A role gives that member a set of permissions in the space and on resources in the space.
 
 > What actions that the permissions enable for members is determined by both your assigned space roles and your user entitlement. The permitted actions are more limited for users with Analyzer entitlement than for users with Professional entitlement.
 
+## Private space
+- An individual creates an application within personal space for sandbox or personal use. 
+- Apps valuable to other users are moved to a Shared Space for collaboration / further development or a Managed Space as governed content
+![image](https://user-images.githubusercontent.com/12411165/231541136-4b897434-e2b0-4652-a64a-cae43201d4b8.png)
 
-### Key limitations of managed spaces (recommended for OEM use cases)
+## Shared space
+A shared space is a section of the cloud Qlik Cloud Analytics hub used to develop apps collaboratively.
+
+You can create new apps directly in a shared space. You can also move apps from your personal space to a shared space so other members can work on them. For more information on collaborating with users in a space, see [Using apps in shared spaces](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Spaces/managing-apps-in-spaces.htm).
+
+## Application lifecycle - Team collaboration
+![image](https://user-images.githubusercontent.com/12411165/231542379-0c90400c-1a87-4a30-b20c-d7c3f8fba6e1.png)
+1. A SharedSpaceCreator creates a Shared Space, designates admin(s)
+2. Admin(s) invite others as viewers, editors
+3. Editors create apps and make public sheets for viewers to consume. (Supports multi-user authoring of application UI)
+4. Viewers consume apps / sheets others have created
+
+
+## Managed spaces
+These are recommend for OEM use cases, and are "more controlled environments".
+
+### Key limitations of managed spaces 
 - You can only use master items when you duplicate a sheet in an app that is published in a managed space. Fields are not available in the assets panel.
 - You cannot change the data model of a published app in a managed space.
 - You cannot download apps from or upload apps to a managed space.
