@@ -1,6 +1,4 @@
 
-
-
 ## Restrict data using Qlik Section access
 
 [Section Access](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Scripting/Security/manage-security-with-section-access.htm) is used to control the security of an application. It is basically a part of the data load script where you add a security table to define who gets to see what. Qlik Cloud uses this information to reduce data to the appropriate scope when the user opens the application, that is, some of the data in the app is hidden from the user based on their identity. Section Access is tightly integrated with the data in the app and relies upon it to control access. This form of dynamic data reduction can target table rows, columns, or a combination of both.
