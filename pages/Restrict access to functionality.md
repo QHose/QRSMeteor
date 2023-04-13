@@ -29,6 +29,9 @@ You can create new apps directly in a shared space. You can also move apps from 
 3. Editors create apps and make public sheets for viewers to consume. (Supports multi-user authoring of application UI)
 4. Viewers consume apps / sheets others have created
 
+![image](https://user-images.githubusercontent.com/12411165/231705287-7358b67e-14fa-4b29-be94-7b2fa9643a0e.png)
+
+
 
 ## Managed spaces
 These are recommend for OEM use cases, and are "more controlled environments".
