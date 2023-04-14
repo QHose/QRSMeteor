@@ -15,7 +15,7 @@ Permissions in spaces are controlled by roles assigned to members when they are 
 - Apps valuable to other users are moved to a Shared Space for collaboration / further development or a Managed Space as governed content
 ![image](https://user-images.githubusercontent.com/12411165/231541136-4b897434-e2b0-4652-a64a-cae43201d4b8.png)
 
-## Shared space
+## Shared space (Use for employees of OEM partner, not end users)
 A shared space is a section of the cloud Qlik Cloud Analytics hub used to develop apps collaboratively.
 
 You can create new apps directly in a shared space. You can also move apps from your personal space to a shared space so other members can work on them. For more information on collaborating with users in a space, see [Using apps in shared spaces](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Spaces/managing-apps-in-spaces.htm).
@@ -30,8 +30,7 @@ You can create new apps directly in a shared space. You can also move apps from 
 ![image](https://user-images.githubusercontent.com/12411165/231705287-7358b67e-14fa-4b29-be94-7b2fa9643a0e.png)
 
 
-
-## Managed spaces
+## Managed spaces (use for OEM end users)
 These are recommend for OEM use cases, and are "more controlled environments".
 
 ### Key limitations of managed spaces 
