@@ -1,4 +1,4 @@
-# Application Lifecycle – Dev, Test, Prod
+
 Below an example using a shared space in the middle. 
 
 ![image](https://user-images.githubusercontent.com/12411165/231542983-40487c95-ff32-45a2-a800-1b8f0eeabe67.png)
