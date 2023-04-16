@@ -1,4 +1,4 @@
-There are 2 keys roles in Qlik Sense Saas:
+There are 2 key role types in Qlik Sense Saas (which you want to map to a group supplied via JWT):
 - security roles
 - space roles
 
