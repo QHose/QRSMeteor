@@ -15,7 +15,8 @@ In OEM scenarios permissions in spaces are controlled by roles assigned to membe
 
 ## Private space
 - An individual creates an application within personal space for sandbox or personal use. 
-- Apps valuable to other users are moved to a Shared Space for collaboration / further development or a Managed Space as governed content
+- Apps valuable to other users are moved to a Shared Space for collaboration / further development or a Managed Space for a more governed environment. (less freedom)
+
 ![image](https://user-images.githubusercontent.com/12411165/231541136-4b897434-e2b0-4652-a64a-cae43201d4b8.png)
 
 ## Shared space (Use for employees of OEM partner, not end users)
@@ -34,7 +35,19 @@ You can create new apps directly in a shared space. You can also move apps from 
 
 
 ## Managed spaces (use for OEM end users)
-These are recommend for OEM use cases, and are "more controlled environments".
+These are recommend for OEM use cases, and are "more controlled environments" of the cloud hub. You can find your managed spaces using the spaces drop-down in Catalog.
+
+Apps can be published to a managed space from personal spaces and shared spaces. Publishing creates a copy of the app in the managed space. Published apps maintain a relationship to the original app for republishing.
+
+Managed spaces are restricted to members. When you add a member to a space, you assign them a space role. The role is a set of permissions that they have on that space and objects contained inside the space. The following space roles are available in managed spaces:
+
+- Owner: can manage the space and its members, as well as open apps in the space. This is not a role you can assign to other members of the space.
+- Can manage: can manage the space and its members.
+- Can publish: can publish apps to the space. They cannot open apps in the space.
+- Can contribute: can view and open apps in the space. Contributors can create private content in the app and make that content public.
+- Can view: can view and open apps in the space.
+- Has restricted view: Can view and open apps in the space. They can export sheets or charts as images and PDFs, but they cannot export data.
+- Can consume data: can consume data sources, but cannot create or edit data sources. They cannot create content or manage the space. See Managing data sources in spaces to learn about data sources inside a space.
 
 ### Key limitations of managed spaces 
 - You can only use master items when you duplicate a sheet in an app that is published in a managed space. Fields are not available in the assets panel.
