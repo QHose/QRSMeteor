@@ -9,7 +9,7 @@ A *security role* grants a set of permissions to all users who have been assigne
 [visit Qlik help to learn more about Qlik Sense authorizations](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Admin/SaaS-user-permissions.htm)
 
 ### Managing permissions via spaces
-Permissions in spaces are controlled by roles assigned to members when they are added to a space. A role gives that member a set of permissions in the space and on resources in the space.
+In OEM scenarios permissions in spaces are controlled by roles assigned to members/JWT supplied groups when they are added to a space. A role gives that member/group a set of permissions in the space and on resources in the space.
 
 > What actions that the permissions enable for members is determined by both your assigned space roles and your user entitlement. The permitted actions are more limited for users with Analyzer entitlement than for users with Professional entitlement.
 
