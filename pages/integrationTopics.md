@@ -28,8 +28,10 @@ When Qlik Sense is embedded, normally Single Sign-On must be provided for authen
 # Web 
 Qlik Sense is built on the newest web technologies (HTML5, JavaScript, CSS). This allows you to create 1 app that can be easily integrated in your SaaS platform. This can be with IFrame, and using our APIs for DIV tag embedding or using Qlik Sense for just the data. Qlik Sense is also completely responsive. So there is no need to create mobile content. 1 App can be used on all platforms.  
 
+[Read more](https://integration.qlik.com/?selection=qxT68oNhfBA8Nxz35)
+
 # SaaS provisioning 
-Our APIs allow the automatic creation of customer content. Creation of tenants (one for each of your customers/tenants), Identity Providers, apps, replacing the script with user specific script (to connect to customer specific database), copying apps, … [can all be done automatically](https://qlik.dev/tutorials/platform-operations-overview).  
+Our APIs allow the automatic creation of customer content. Creation of tenants (one for each of your customers/tenants), Identity Providers, apps, replacing the script with user specific script (to connect to customer specific database), copying apps, … can all be done automatically using [REST APIs or CLI](https://qlik.dev/tutorials/platform-operations-overview) or use [Qlik application automation](https://integration.qlik.com/?selection=FZ8tRcumcH6ASQFdh).  
 
 ![image](https://user-images.githubusercontent.com/12411165/227790383-bf54eff7-0642-4d31-acf5-b8865309f65d.png)
 
