@@ -24,7 +24,7 @@ Now you created your template apps we can provision them to each of your custome
 # Provisioning your multitenant environment
 * For each of your customers we will 
   * create a separate tenant. 
-  * copy the template app from the source to the customer specific tenant. The idea of this step is that you can use a master layout and copy this to all of your customers. This layout is supported by you and locked (visible as "public sheets"). If users want to create their own sheets they can copy your sheet and edit it or [create a new one using AI]() ![image](https://user-images.githubusercontent.com/12411165/236413583-a8832390-b82d-40a5-b08e-9e556dc45b78.png)
+  * copy the template app from the source to the customer specific tenant. The idea of this step is that you can use a master layout and copy this to all of your customers. This layout is supported by you and locked (visible as "public sheets"). If users want to create their own sheets they can copy your sheet and edit it or [create a new one using AI](https://youtu.be/dCLEf_Z0e08?t=16) ![image](https://user-images.githubusercontent.com/12411165/236413583-a8832390-b82d-40a5-b08e-9e556dc45b78.png)
 
   * update the data loading logic inside the script of the app to connect to the correct database (or limit the dataset using a where clause)
   * reload the app to index the data from the source table into the app (a compressed copy of your source tables into the Qlik Sense app)
