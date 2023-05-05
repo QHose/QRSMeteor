@@ -76,7 +76,7 @@ We will map your group membership to a predefined role in Qlik Sense (e.g. a vie
 Read more in the [security section](https://integration.qlik.com/?selection=igvu7dEBSy5D2Mti3
 
 # Qlik training
-Visit [Qlik continous classroom](https://learning.qlik.com/mod/page/view.php?id=24708&) or use [Qlik consulting](https://www.qlik.com/us/services/qlik-consulting)
+Visit [Qlik continous classroom](https://learning.qlik.com/mod/page/view.php?id=24708&) which includes a lot of free content or use [Qlik consulting](https://www.qlik.com/us/services/qlik-consulting)
 
 
 
