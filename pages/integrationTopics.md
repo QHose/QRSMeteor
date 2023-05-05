@@ -1,7 +1,14 @@
 
 # Introduction 
 
-When embedding Qlik Sense in your platform, there are several integration topics to cover.  
+When embedding Qlik Sense in your platform, there are several integration topics to cover. Key topics are
+
+* Data, how to get the data into the dashboard?
+* Web, how do you embed the content?
+* Security, how do you enforce single sing on?
+* Automation, how do you setup multitenant SaaS provisioning?
+
+Below we will go into more detail...
 
 # Data  
 Load your data in a Qlik Sense app. The data can be a combination of different data sources. Qlik Sense has a range of connectors that allow you to analyze ALL your data in a Qlik Sense App. While loading the data, you have the possibility to create an optimized associative data model. That model is then loaded in the memory when the app opens. Next to preloading your data into an app, you can also choose to have realtime apps or specific charts which refresh based on your selections.
