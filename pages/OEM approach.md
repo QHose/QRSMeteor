@@ -66,7 +66,13 @@ If you can't connect to your source database because you don't want to open your
 
 # Security
 
-For OEM purposes we normally use JWT to forward the users indentity (userId and groups) to Qlik. Read more in the [security section](https://integration.qlik.com/?selection=igvu7dEBSy5D2Mti3)
+When Qlik Sense is embedded, normally Single Sign-On must be provided for authentication using OIDC or JWT. After that, authorization must be applied (What can a user see and what rights does he have?). The good thing is that users, roles, groups,…. that are already defined in your SaaS platform, can be re-used in Qlik Sense.
+
+We create a tenant for each of your customers (a completely seperate Qlik environment, there is no link between your customer tenants. You will record the tenant settings in your configuration database and use the information together with your APIs to provision Qlik Sense).
+We will map your group membership to a predefined role in Qlik Sense (e.g. a view group from your platform supplied via the JWT token, gets the "can view" role in the customer specific Qlik Sense tenant.)
+
+Read more in the [security section](https://integration.qlik.com/?selection=igvu7dEBSy5D2Mti3
+
 
 
 
