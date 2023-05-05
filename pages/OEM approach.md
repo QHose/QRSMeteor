@@ -1,6 +1,6 @@
 # Introduction
 
-If you partner with Qlik you will have to integrate Qlik Cloud into your software, mulitple steps are involved which we try to outline here. 
+If you partner with Qlik you will have to integrate Qlik Cloud into your software, multiple steps are involved which we try to outline here. 
 
 You will create one tenant for your development work (source tenants), next you will create a tenant for each of your customers (target tenants). On your development tenant you will create templates dashboards (apps), which you want to distribute to your target tenants (for each customer 1 tenant).
 
@@ -24,7 +24,7 @@ Now you created your template apps we can provision them to each of your custome
 # Provisioning your multitenant environment
 * For each of your customers we will 
   * create a separate tenant. 
-  * copy the template app from the source to the customer specific tenant. The idea of this step is that you can use a master layout and copy this to all of your customers. This layout is supported by you and locked (visible as "public sheets").If users want to create their own sheets they can copy your sheet and edit. or create a new one ![image](https://user-images.githubusercontent.com/12411165/236413583-a8832390-b82d-40a5-b08e-9e556dc45b78.png)
+  * copy the template app from the source to the customer specific tenant. The idea of this step is that you can use a master layout and copy this to all of your customers. This layout is supported by you and locked (visible as "public sheets"). If users want to create their own sheets they can copy your sheet and edit it or [create a new one using AI]() ![image](https://user-images.githubusercontent.com/12411165/236413583-a8832390-b82d-40a5-b08e-9e556dc45b78.png)
 
   * update the data loading logic inside the script of the app to connect to the correct database (or limit the dataset using a where clause)
   * reload the app to index the data from the source table into the app (a compressed copy of your source tables into the Qlik Sense app)
@@ -73,7 +73,10 @@ When Qlik Sense is embedded, normally Single Sign-On must be provided for authen
 We create a tenant for each of your customers (a completely seperate Qlik environment, there is no link between your customer tenants. You will record the tenant settings in your configuration database and use the information together with your APIs to provision Qlik Sense).
 We will map your group membership to a predefined role in Qlik Sense (e.g. a view group from your platform supplied via the JWT token, gets the "can view" role in the customer specific Qlik Sense tenant.)
 
-Read more in the [security section](https://integration.qlik.com/?selection=igvu7dEBSy5D2Mti3)
+Read more in the [security section](https://integration.qlik.com/?selection=igvu7dEBSy5D2Mti3
+
+# Qlik training
+Visit [Qlik continous classroom](https://learning.qlik.com/mod/page/view.php?id=24708&) or use [Qlik consulting](https://www.qlik.com/us/services/qlik-consulting)
 
 
 
