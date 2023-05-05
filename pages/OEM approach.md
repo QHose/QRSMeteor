@@ -58,7 +58,7 @@ The picture below outlines the complete integration
 
 - the embedding of content
 - the automatic provisioning using the APIs
-- the data replication to the cloud
+- the data indexing into the cloud
 - Your APIs connect to the Qlik Cloud. You setup the security first, next you copy the template apps from the source tenant to each of your customer tenants. Each app tries to reload from your tenant specific source database. 
 ![image](https://user-images.githubusercontent.com/12411165/236435583-e13bb7ba-63ab-41ea-86d4-37900b3fb7f9.png)
 
