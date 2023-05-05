@@ -1,5 +1,7 @@
 # Introduction
 
+If you partner with Qlik you will have to integrate Qlik Cloud into your software, mulitple steps are involved which we try to outline here. 
+
 You will create one tenant for your development work (source tenants), next you will create a tenant for each of your customers (target tenants). On your development tenant you will create templates dashboards (apps), which you want to distribute to your target tenants (for each customer 1 tenant).
 
 Each tenant is isolated and has no relationship to other tenants. 
