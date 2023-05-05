@@ -23,5 +23,18 @@ In your OEM source tenant your team will create multiple templates.
   * copy the template app from the source to the customer specific tenant. The idea of this step is that you can use a master layout and copy this to all of your customers. This layout is supported by you and locked (visible as "public sheets").If users want to create their own sheets they can copy your sheet and edit. or create a new one ![image](https://user-images.githubusercontent.com/12411165/236413583-a8832390-b82d-40a5-b08e-9e556dc45b78.png)
 
   * update the data loading logic inside the script of the app to connect to the correct database (or limit the dataset using a where clause)
-  * reload the app to index the data from the source table into the app (a compressed copy of your source tables into the Qlik Sense app)
-* 
+  * reload the app to index the data from the source table into the app (a compressed copy of your source tables into the Qlik Sense app),
+
+## Your configuration data contains notes of Qlik settings per customer
+In your SaaS platfrom you will keep a note of the following for each customer (tenant)
+* Qlik tenantId
+* AppId for your module (e.g. a sales app for the sales module inside your platform)
+
+# embed qlik content into your SaaS platform
+Now the Qlik Sense environment has been provisioned (we created the tenants, and loaded/copied/indexed the customer specific data into customer specific apps), we have to embed the dashboads into your platform. 
+
+There are [multiple ways](https://integration.qlik.com/?selection=qxT68oNhfBA8Nxz35), but the must easy way is to embed sheets using an IFrame, this has the main advantage that its quick and proven and you don't have to do that much development. 
+
+In your platform you can make a menu linking to the apps inside Qlik. You will dynamically create the link, since each customer will link to a different sales app. (they all have their own copy of the "sales" template or whatever template app you made).
+
+
