@@ -17,4 +17,8 @@ Quickly build automations from within Qlik Cloud that leverage our powerful APIs
 # Broad SaaS Connectivity
 Rapidly connect to market leading SaaS applications such as Salesforce, Slack, Microsoft Teams and more. Application functionality appears as discrete blocks that encapsulate and simplify the complexity of low-level APIs.
 
-For more information about Qlik Application Automation, [visit us here](https://community.qlik.com/t5/custom/page/page-id/Connectors).
+For more information about Qlik Application Automation, [visit us here](https://community.qlik.com/t5/custom/page/page-id/Connectors
+
+# Learn more?
+Sign up for the [do more with Qlik tutorial series](https://pages.qlik.com/21Q3_QDEV_DA_GBL_DoMorewithQlikTargetpage_Registration-LP.html) and select session 40: ![image](https://user-images.githubusercontent.com/12411165/236488479-6cdc28ff-d766-4678-ae7d-18ced9c4714e.png)
+
