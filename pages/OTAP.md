@@ -31,3 +31,5 @@ In this example we now used multiple managed spaces.
 # Source version control
 
 Automations allow you to set up CI/CD pipelines for your Qlik Sense apps, using the Github connector. [Here we showcase various components of a CI/CD pipeline](https://community.qlik.com/t5/Official-Support-Articles/CI-CD-pipelines-for-Qlik-Sense-apps-with-automations-and-Github/ta-p/1860837), that can be combined and extended based on your own needs.
+
+![image](https://user-images.githubusercontent.com/12411165/236757491-54740f2b-bcbf-4520-aed3-0eadd770a901.png)
