@@ -12,4 +12,7 @@ Here are some of the web integration options available in Qlik Sense Cloud:
 
 - Overall, Qlik Sense Cloud offers a range of web integration options that make it easy to incorporate analytics into your web applications and leverage external data sources and services.
 
-In the next slides we will focus on the Embedding Qlik Sense Cloud content use case. If you can't wait you can already [view some demos](https://demos.qlik.com/qliksense) 
+In the next slides we will focus on the Embedding Qlik Sense Cloud content use case. If you can't wait you can already [view some demos](https://demos.qlik.com/qliksense) of sites that embedded Qlik Sense (note the tag "mashup").
+
+![image](https://user-images.githubusercontent.com/12411165/236863991-355badb2-47cb-417a-8346-44668642e2e6.png)
+
