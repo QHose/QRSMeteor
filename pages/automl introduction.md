@@ -16,7 +16,8 @@ Make sure you check the [free AutoML trainings](https://learning.qlik.com/mod/pa
 
 # Where does AutoML fit in the AI landscape?
 
-![automl vs predictive](https://user-images.githubusercontent.com/12411165/236762399-284a0cd6-1b8d-4cda-b8fe-a4feb51c4934.png)
+![image](https://user-images.githubusercontent.com/12411165/236764414-17712fd3-0b71-468b-89c5-6abd35c8f741.png)
+
 
 
 # Technical deep dive
