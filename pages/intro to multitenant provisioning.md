@@ -3,7 +3,7 @@ A multitenant architecture/deployment approach provides the OEM partner the abil
 
 To summarize: Using Qlik Cloud each end customer will get its own tenant. This is what we call "a tenant per tenant". If you want to automate the complete provisioning of your platform you have two options
 - Use the APIs to [setup a multitenant environment](https://qlik.dev/tutorials/platform-operations-overview). Or in addition to raw APIs, Qlik provides the 
-- [Platform Operations connector](https://community.qlik.com/t5/Official-Support-Articles/Qlik-Application-Automation-How-to-get-started-with-the-Qlik/ta-p/2038740)  This provides you with a no-code method for deploying and managing content across your Qlik Cloud estate.) in [Qlik Application Automation](https://www.qlik.com/us/products/application-automation).
+- [Platform Operations connector](https://community.qlik.com/t5/Official-Support-Articles/Qlik-Application-Automation-How-to-get-started-with-the-Qlik/ta-p/2038740)  This provides you with a no-code method for deploying and managing content across your Qlik Cloud estate) in [Qlik Application Automation](https://www.qlik.com/us/products/application-automation).
 
 # Customer specific provisioning
 Let's take a closer look at the detailed steps on how to provision the whole environment. 
