@@ -1,5 +1,4 @@
-Qlik Application Automation is a visual, no-code approach to connecting applications using actions and triggers, forming a sequence that automates a business process or data pipeline. Qlik Application Automation is part of Qlik's Active Intelligence vision.
-AutoML Automated machine learning finds patterns in your data and uses them to make predictions on future data. Machine learning experiments in the Qlik Cloud hub let you collaborate with other users and integrate your predictive analytics in Qlik Sense apps. In addition to making predictions, you can do an in-depth analysis of the key features that influence the predicted outcome.
+AutoML is an automated machine learning tool in a code free environment. Users can quickly generate models for classification and regression problems with business data. AutoML Automated machine learning finds patterns in your data and uses them to make predictions on future data. Machine learning experiments in the Qlik Cloud hub let you collaborate with other users and integrate your predictive analytics in Qlik Sense apps. In addition to making predictions, you can do an in-depth analysis of the key features that influence the predicted outcome.
 
 [AutoML in 60 seconds](https://youtu.be/VDYtNcF5jEk)
 [Qlik AutoML - What you should know](https://youtu.be/4TCGyiWfqT4)
