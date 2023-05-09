@@ -19,10 +19,7 @@ AutoML supports [Classification](https://help.qlik.com/en-US/cloud-services/Subs
 Make sure you check the [free AutoML trainings](https://learning.qlik.com/mod/page/view.php?id=24708&price=free), search for "AutoML".
 
 # Where does AutoML fit in the AI landscape?
-
-![image](https://user-images.githubusercontent.com/12411165/236764414-17712fd3-0b71-468b-89c5-6abd35c8f741.png)
-
-
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/b66b9531-b953-46c0-945d-7315a44eb883)
 
 # Technical deep dive
 Now we have an impression of the look and feel, lets take deeper dive...
@@ -43,7 +40,7 @@ Users can interact with the predictions in 2 ways:
 - Using realtime-prediction API. Use sliders or other input objects to manipulate the values and use the real time APIs to analyse the prediction results. 
   - [Example with Postman](https://community.qlik.com/t5/Official-Support-Articles/Qlik-AutoML-How-to-test-API-realtime-predictions-from-Postman/ta-p/1992894)
   - [Example with Python](https://community.qlik.com/t5/Official-Support-Articles/Qlik-AutoML-How-to-generate-predictions-via-API-realtime/ta-p/1995683),
-  - [Example in Qlik Sense App](https://community.qlik.com/t5/Official-Support-Articles/Qlik-AutoML-Generate-Predictions-with-AutoML-API-endpoint/ta-p/2045131) and [use the real time AutoML APIs](https://community.qlik.com/t5/Design/Building-What-If-Scenarios-using-SSE-and-the-Qlik-AutoML/ba-p/1907221) to do a what if analysis.
+  - [Example in Qlik Sense App](https://community.qlik.com/t5/Official-Support-Articles/Qlik-AutoML-Generate-Predictions-with-AutoML-API-endpoint/ta-p/2045131) and [What if example](https://community.qlik.com/t5/Design/Building-What-If-Scenarios-using-SSE-and-the-Qlik-AutoML/ba-p/1907221).
 
 
 ![automl introduction image](https://user-images.githubusercontent.com/12411165/236759569-78aeaaa6-a707-4188-989f-3cee99fb99bc.png)
