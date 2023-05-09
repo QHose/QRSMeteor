@@ -4,11 +4,11 @@ This video shows you how to use Qlik Application Automation to perform common [P
 
 # Resources
 
-[Support Article]( https://community.qlik.com/t5/Official-Support-Articles/Qlik-Application-Automation-How-to-get-start)
+- [Support Article]( https://community.qlik.com/t5/Official-Support-Articles/Qlik-Application-Automation-How-to-get-start)
 
-[Qlik Help](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Admin/mc-create-oauth-cl)
+- [Qlik Help](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Admin/mc-create-oauth-cl)
 
-[About OAuth](https://qlik.dev/authenticate/oauth)
+- [About OAuth](https://qlik.dev/authenticate/oauth)
 
 ![image](https://user-images.githubusercontent.com/12411165/236823380-76ce7e44-38a9-4ea4-9ca9-d70929ac640a.png)
 
