@@ -160,7 +160,8 @@ export function setAppIDs(params) {
         check(Meteor.settings.public.SSBI, {
             name: String,
             stream: String,
-            sheetId: String
+            sheetId: String,
+            appId: String
         });
     } catch (err) {
         console.error('Missing parameters in your settings.json file for the SSBI or slidegenerator...', err)

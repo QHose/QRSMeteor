@@ -299,9 +299,9 @@ export async function getSubjectArea(qix) {
                             "qSortByState": 0,
                             "qSortByFrequency": 0,
                             "qSortByNumeric": 0,
-                            "qSortByAscii": 0,
-                            "qSortByLoadOrder": 1,
-                            "qSortByExpression": 1,
+                            "qSortByAscii": 1,
+                            "qSortByLoadOrder": 0,
+                            "qSortByExpression": 0,
                             "qExpression": {
                                 "qv": "max(CSVRowNo)"
                             },
@@ -317,6 +317,7 @@ export async function getSubjectArea(qix) {
         qWidth: 3,
         qHeight: 3333
     }]);
+    console.log("🚀 ~ file: useCaseSelection.js:322 ~ getSubjectArea ~ sessionData[0].qMatrix:", sessionData[0].qMatrix)
     return sessionData[0].qMatrix
 }
 
@@ -357,7 +358,7 @@ export async function getLevel1(qix) { //chapters
             "qMeasures": [
                 {
                     "qDef": {
-                        "qDef": "Sum({$< [Level 1]= > } 1)"
+                        "qDef": "Sum({1} 1)"
                     },
                     "qLabel": "sum({1}1)",
                     "qLibraryId": null,
