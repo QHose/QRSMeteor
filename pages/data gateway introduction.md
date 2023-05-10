@@ -1,7 +1,7 @@
 
 - Your data is on premise behind firewalls, and you can't open a port.
 - Your software or Qlik is in the cloud
-- How can you access your data?
+How can you access your data?
 
 ![image](https://user-images.githubusercontent.com/12411165/236666972-84856b42-c822-43b9-9376-d7da36c39978.png)
 
