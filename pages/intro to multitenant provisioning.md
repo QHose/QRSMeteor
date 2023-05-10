@@ -1,7 +1,10 @@
 With multitenant provisioning, Qlik offers the ability to automate with flexible cloud APIs, key onboarding and maintenance tasks including tenant creation, configuration and ongoing content hydration at scale for both OEM ISV partners and enterprise customers.
 A multitenant architecture/deployment approach provides the OEM partner the ability to customize each end customer individually with appropriate configurations, capability settings, and most importantly, many opportunities to flexibly cross-sell/upsell back to each end customer in a personalized fashion – meeting their needs uniquely allowing for different monetization routes.
 
-To summarize: Using Qlik Cloud each end customer will get its own tenant. This is what we call "a tenant per tenant". If you want to automate the complete provisioning of your platform you have two options
+To summarize: Using Qlik Cloud each end customer will get its own tenant. This is what we call "a tenant per tenant". 
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/e9de84e4-3d3d-4d6e-a457-3b3679274c46)
+
+If you want to automate the complete provisioning of your platform you have two options
 - Use the APIs to [setup a multitenant environment](https://qlik.dev/tutorials/platform-operations-overview). Or in addition to raw APIs, Qlik provides the 
 - [Platform Operations connector](https://community.qlik.com/t5/Official-Support-Articles/Qlik-Application-Automation-How-to-get-started-with-the-Qlik/ta-p/2038740)  This provides you with a no-code method for deploying and managing content across your Qlik Cloud estate) in [Qlik Application Automation](https://www.qlik.com/us/products/application-automation).
 
