@@ -16,10 +16,6 @@ AutoML supports [Classification](https://help.qlik.com/en-US/cloud-services/Subs
 - [Getting started with AutoML in Qlik Cloud -5M](https://youtu.be/T7dFQUs_-Ek)
 - [Creating a Qlik Sense Predictive Analytics App - 24M](https://youtu.be/vwAt3aH4Hec)
 
-
-# Trainings
-Make sure you check the [free AutoML trainings](https://learning.qlik.com/mod/page/view.php?id=24708&price=free), search for "AutoML".
-
 # Where does AutoML fit in the AI landscape?
 ![image](https://github.com/QHose/QRSMeteor/assets/12411165/b66b9531-b953-46c0-945d-7315a44eb883)
 
@@ -60,5 +56,6 @@ Users can interact with the predictions in 2 ways:
 - [How to upload data, training, deploying and predicting a model](https://community.qlik.com/t5/Knowledge/Qlik-AutoML-How-to-upload-model-deploy-and-predict-on-Qlik-Cloud/ta-p/1960164)
 - [Qlik help](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/AutoML/home-automl.htm)
 - [Community blog](https://community.qlik.com/t5/Official-Support-Articles/How-To-Get-Started-with-Qlik-AutoML/ta-p/1983296)
+- Qlik Continuous Classroom with [free AutoML trainings](https://learning.qlik.com/mod/page/view.php?id=24708&price=free), search for "AutoML".
 
 
