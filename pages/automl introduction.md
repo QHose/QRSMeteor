@@ -35,6 +35,13 @@ To predict outcomes
 
 
 ![image](https://user-images.githubusercontent.com/12411165/236760266-56186559-30ab-4075-bfdd-ec51e21b6b8e.png)
+## End-to-end AutoML Workflow
+
+
+Putting it all together, the Qlik Cloud platform offers a complete, end-to-end workflow for AutoML.  Of course with Qlik, you can easily bring together data any and all data sources, and can leverage the power of our associative engine to create machine learning ready data sets.  Qlik AutoML then takes users through a simple, no-code workflow to create and deploy models and predictive analytics.  This includes selecting features, training, refining and deploying models, generating predictions and explainability data, publishing predictive data sets, and integrating models into Qlik Sense apps and dashboards for interactive exploration and what-if analysis.  And finally, with our active intelligence capabilities, you can directly trigger action based on predictive insights through alerts, automations, mobile analytics, and embedded analytics in workflows and mission critical applications.  With Qlik, you get the most complete platform available for automated machine learning, taking you rapidly from historical data to predictive insight and action.
+
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/63091552-96f0-46d8-92d4-93437fd1deb1)
+
 
 ## Predictive dashboard
 Users can interact with the predictions in 2 ways:
