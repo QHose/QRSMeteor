@@ -13,7 +13,9 @@ AutoML supports [Classification](https://help.qlik.com/en-US/cloud-services/Subs
 - [Walkthrough using predictive data in an app](https://app.getreprise.com/launch/D6l9l0n/?trk=feed_main-feed-card_feed-article-content)
 
 # Tutorial videos
+- [Getting started with AutoML in Qlik Cloud -5M](https://youtu.be/T7dFQUs_-Ek)
 - [Creating a Qlik Sense Predictive Analytics App - 24M](https://youtu.be/vwAt3aH4Hec)
+
 
 # Trainings
 Make sure you check the [free AutoML trainings](https://learning.qlik.com/mod/page/view.php?id=24708&price=free), search for "AutoML".
