@@ -9,8 +9,8 @@ AutoML supports [Classification](https://help.qlik.com/en-US/cloud-services/Subs
 - Multiclass Classification:  used for models with a Target of more than two unique values. Example grading gold, platinum/silver, milk grade. 
 - Regression: used for models with a Target that is a number. Example how much will a customer purchase, predicting housing prices 
 
-# Demo walkthrough
-- [Basic Walkthrough](https://app.getreprise.com/launch/D6l9l0n/?trk=feed_main-feed-card_feed-article-content)
+# Demo walkthrough 
+- [Walkthrough using predictive data in an app](https://app.getreprise.com/launch/D6l9l0n/?trk=feed_main-feed-card_feed-article-content)
 
 # Tutorial videos
 - [Creating a Qlik Sense Predictive Analytics App - 24M](https://youtu.be/vwAt3aH4Hec)
