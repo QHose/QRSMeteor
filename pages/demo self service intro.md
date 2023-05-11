@@ -14,7 +14,7 @@ This analytics self-service must be governed :
 - A global supervisor can be able to manage user content.
 - End-customers cannot add their own data in the tenant. They work on a Qlik application with a data model built by the partner.
 
-# 1. Identify your user profiles, roles and responsabilities
+# Identify your user profiles, roles and responsabilities
 
 First step is to identify the different user profiles you need on your tenant(s).
 
