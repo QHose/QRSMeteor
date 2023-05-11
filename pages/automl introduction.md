@@ -48,8 +48,10 @@ Users can interact with the predictions in 2 ways:
 ![automl introduction image](https://user-images.githubusercontent.com/12411165/236759569-78aeaaa6-a707-4188-989f-3cee99fb99bc.png)
 
 ## Tutorials 
+- [Get started with AutoML](https://community.qlik.com/t5/Official-Support-Articles/How-To-Get-Started-with-Qlik-AutoML/ta-p/1983296)
 - Video [Deep dive Building a Predictive analysis dashboard using Qlik Sense & Qlik AutoML](https://youtu.be/bN5OaY3kc6o)
 - [How to upload data, training, deploying and predicting a model](https://community.qlik.com/t5/Knowledge/Qlik-AutoML-How-to-upload-model-deploy-and-predict-on-Qlik-Cloud/ta-p/1960164)
 - [Qlik help](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/AutoML/home-automl.htm)
 - [Community blog](https://community.qlik.com/t5/Official-Support-Articles/How-To-Get-Started-with-Qlik-AutoML/ta-p/1983296)
+
 
