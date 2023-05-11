@@ -38,7 +38,8 @@ Let’s do a deeper dive and understand each step. What are the activities that 
 # The overal architecture
 Here we see a visualization of a complete integration in a multi-tenant environment in action
 
-![image](https://github.com/QHose/QRSMeteor/assets/12411165/d9500f8e-8c52-43c4-a449-ebc13d19df74)
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/8abe7429-1674-4762-baa6-914681721d58)
+
 
 
 On the left side you will see the current SaaS platform which needs its analytics update. We have implemented and integrated Qlik Sense which you will see on the lower right. 
