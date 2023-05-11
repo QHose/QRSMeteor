@@ -36,19 +36,21 @@ Let’s do a deeper dive and understand each step. What are the activities that 
 
 
 # The overal architecture
-Here we see a visualization of a complete integration in a multi-tenant environment in action.
+Here we see a visualization of a complete integration in a multi-tenant environment in action
+
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/d9500f8e-8c52-43c4-a449-ebc13d19df74)
+
 
 On the left side you will see the current SaaS platform which needs its analytics update. We have implemented and integrated Qlik Sense which you will see on the lower right. 
 In the middle you find the broker, a piece of software you already have to which we add some API calls so that Qlik Sense will also be controlled by your software. Or alternatively you can call a trigger URL inside Qlik application automation to do the setup for you. That simplifies the setup on your side.
 
 We’ve assumed you have a database per customer instance and you also have a master database in the left corner which contains the customers, the database connections, user rights and possibly customer specific custom tables and fields.
 
-Your software is now in control.  Your software selects the template apps that need to be copied to each customer tenant. In the demo platform we simulate this by pressing the ‘generate’ button. This button will execute the activities by making use of the REST and websocket based APIs. It then creates a customer specific tenant, copies, reloads and publishes the app into a managed space.
+Your software is now in control.  Your software selects the template apps that need to be copied to each customer tenant. In the demo platform we simulate this by pressing the ‘provision customers’ button. This button will execute the activities by making use of the REST and websocket based APIs. It then creates a customer specific tenant, copies, reloads and publishes the app into a managed space.
 
 Now our end customer users John and Linda will get a personalized dashboard which shows only the data they are authorized/allowed to see.
 
 If you want you can also allow users like Linda to create their own sheets.  In the self service demo you can try this by selecting Linda.
-![image](https://github.com/QHose/QRSMeteor/assets/12411165/d9500f8e-8c52-43c4-a449-ebc13d19df74)
 
 
 # Why does a Multitenant  approach  matter?
