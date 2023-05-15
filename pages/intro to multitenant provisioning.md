@@ -20,8 +20,7 @@ thus assume you have a piece of software which acts as a broker;  a software ca
 
 The principle of SaaS automation is quite simple. You first create a template app, also called a dashboard, and you make a copy for each of the customer instances on your SaaS platform. The template app already contains a template with 80% of the functionality and we provide some predefined sheets, charts, dimensions and measures to get you started.
 
-![image](https://github.com/QHose/QRSMeteor/assets/12411165/03024f61-f2cd-4987-aef3-d4656e721c0b)
-
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/e698981e-5348-4b04-ab3b-8e8c3730032d)
 
 # What are the steps for an individual (target) tenant?
 
@@ -32,13 +31,16 @@ Let’s do a deeper dive and understand each step. What are the activities that 
 - Using the new script, the app is reloaded.  This is where we basically make a compressed copy of the data and create the associative model. 
 - In the final stage we publish the app in the managed space.
 
-![image](https://github.com/QHose/QRSMeteor/assets/12411165/0f52f3fe-010c-4f71-904c-815f282d3397)
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/3260df86-deb0-4750-bf6b-097dfc1afd59)
+
 
 
 # The overal architecture
 Here we see a visualization of a complete integration in a multi-tenant environment in action
 
-![image](https://github.com/QHose/QRSMeteor/assets/12411165/8abe7429-1674-4762-baa6-914681721d58)
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/0f364379-c767-47fb-aa6e-814736785362)
+
+
 
 
 
