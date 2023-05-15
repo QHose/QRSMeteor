@@ -1,5 +1,8 @@
 Qlik Sense Cloud is a cloud-based analytics platform that allows you to create and share interactive data visualizations, dashboards, and reports. Qlik Sense Cloud offers a number of web integration options that allow you to embed Qlik Sense Cloud content in other web applications or access external content within Qlik Sense Cloud.
 
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/46704fcb-0f60-4003-9c94-ff21e772b94d)
+
+
 Here are some of the web integration options available in Qlik Sense Cloud:
 
 - Embedding Qlik Sense Cloud content: You can embed Qlik Sense Cloud content, such as visualizations and dashboards, directly in your web applications using the Qlik Sense Cloud API. This allows you to integrate analytics directly into your applications, providing your users with the ability to explore and analyze data within the context of your application.
