@@ -14,7 +14,7 @@ What would the end result look like for a succesful integration of Qlik Sense in
 Your goal is to create within a multi-tenant SaaS platform environment - embedded analytics - within your core application(s) where each of your customers would see and use only their data.
 
 It’s possible for each customer to have a more fine grained authorization structure.  As an example, it is possible to provide authorizations for a specific department or country within a dashboard.
-
+![image](https://github.com/QHose/QRSMeteor/blob/Integration-v2/public/images/b%202023%20OEM%20Story%20Board-s002%20720p.gif?raw=true)
 
 # Distribute a template dashboard from your source to your target (customer) tenants
 Let’s consider the goals of embedding Qlik Sense in a multi tenant SaaS environment. 
