@@ -8,6 +8,13 @@ If you want to automate the complete provisioning of your platform you have two 
 - Use the APIs to [setup a multitenant environment](https://qlik.dev/tutorials/platform-operations-overview). Or in addition to raw APIs, Qlik provides the 
 - [Platform Operations connector](https://community.qlik.com/t5/Official-Support-Articles/Qlik-Application-Automation-How-to-get-started-with-the-Qlik/ta-p/2038740)  This provides you with a no-code method for deploying and managing content across your Qlik Cloud estate) in [Qlik Application Automation](https://www.qlik.com/us/products/application-automation).
 
+# Embedding
+What would the end result look like for a succesful integration of Qlik Sense into your application architecture?
+
+Your goal is to create within a multi-tenant SaaS platform environment - embedded analytics - within your core application(s) where each of your customers would see and use only their data.
+
+It’s possible for each customer to have a more fine grained authorization structure.  As an example, it is possible to provide authorizations for a specific department or country within a dashboard.
+
 
 # Distribute a template dashboard from your source to your target (customer) tenants
 Let’s consider the goals of embedding Qlik Sense in a multi tenant SaaS environment. 
