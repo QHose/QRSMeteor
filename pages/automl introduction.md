@@ -3,7 +3,7 @@ AutoML is an automated machine learning tool in a code free environment. Users c
 - [AutoML in 60 seconds](https://youtu.be/VDYtNcF5jEk)
 - [Qlik AutoML - What you should know](https://youtu.be/4TCGyiWfqT4)
 
-# Types of Models Supported
+# Types of models supported
 AutoML supports [Classification](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/AutoML/classification-problems.htm) and [Regression](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/AutoML/regression-problems.htm) problems. 
 - Binary Classification: used for models with a Target of only two unique values. Example payment default, customer churn.
 - Multiclass Classification:  used for models with a Target of more than two unique values. Example grading gold, platinum/silver, milk grade. 
