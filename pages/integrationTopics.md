@@ -20,12 +20,14 @@ Depending on the location of your data, and the settings of your firewall we hav
 Below you will find a diagram for each method in a multitenant setup where each of your customers has its own database.
 
 ## REST/JDBC/... connection
-If the data source is available from the cloud you can just connect to it using a Qlik Connector, and copy/idex the data into a Qlik app.
-![image](https://user-images.githubusercontent.com/12411165/236435583-e13bb7ba-63ab-41ea-86d4-37900b3fb7f9.png)
-## Direct access
-![SaaS integration charts - Direct access](https://user-images.githubusercontent.com/12411165/227787196-64e46148-368e-4b9c-be26-4209c58595e1.png)
+If the data source is available from the cloud you can just connect to it using a Qlik Connector, and copy/idex the data into a Qlik app, or use "data gataway - direct access" if it is behind a firwall.
+
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/1d129f83-40d6-4dab-9fef-6021e3c5aa37)
+
 ## Data movement 
-![image](https://user-images.githubusercontent.com/12411165/227787774-a048df3b-aa4f-4154-a1bb-5a4f2336d3b1.png)
+
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/9dba1307-f6a2-44de-80e3-4487dfdae009)
+
 
 # Security: 
 When Qlik Sense is embedded, normally Single Sign-On must be provided for authentication using OIDC or JWT. After that, authorization must be applied (What can a user see and what rights does he have?). The good thing is that users, roles, groups,…. that are already defined in your SaaS platform, can be re-used in Qlik Sense. 
@@ -40,7 +42,7 @@ Qlik Sense is built on the newest web technologies (HTML5, JavaScript, CSS). Thi
 # SaaS provisioning 
 Our APIs allow the automatic creation of customer content. Creation of tenants (one for each of your customers/tenants), Identity Providers, apps, replacing the script with user specific script (to connect to customer specific database), copying apps, … can all be done automatically using [REST APIs or CLI](https://qlik.dev/tutorials/platform-operations-overview) or use [Qlik application automation](https://integration.qlik.com/?selection=FZ8tRcumcH6ASQFdh).  
 
-![image](https://user-images.githubusercontent.com/12411165/227790383-bf54eff7-0642-4d31-acf5-b8865309f65d.png)
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/bf6cfc7c-cab9-47d0-85d9-624b27334607)
 
 
 # Architecture
@@ -63,9 +65,15 @@ Multitenant Provisioning for our OEM and ISV partners addresses the following us
 - Configuration of a tenant
 - Hydration and updates of a tenant
 
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/8efc6e25-93a7-4191-9028-e72f6b436c83)
+
 
 ## Global Tenants
 We have tenants available to meet the geographically distributed needs of your users
+
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/570d4585-db53-4ec9-bf4c-18bde80de377)
+
+
 
 # App/Dashboard
 Qlik Sense offers a wide array of beautiful visualizations in order to show your data as you want it. With the open standard of Qlik Sense it is very easy to download or create additional visualizations. With our drag and drop and scalability possibilities it is very easy to create a beautiful and powerful dashboard.
