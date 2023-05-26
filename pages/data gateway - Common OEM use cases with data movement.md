@@ -7,6 +7,18 @@ We use this approach if you have
 
 ![image](https://github.com/QHose/QRSMeteor/assets/12411165/13d1bf7d-cb81-4ae0-a084-de28903b95e5)
 
+# Detailed flow of the multitenant data pipeline
+
+For each customer you will 
+- configure a data gateway task connecting to his database
+- create a bucket
+- create a tenant with an app
+- create a database connection to the bucket
+- load the data into the app. Please note that there is nothing special about the loading of the data into the app. The whole "real time magic" happens before, this is what the data gateway does for you. On the Qlik Sense side you just load the data from an S3 bucket. 
+
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/8f6cdaa5-9cf1-493d-87f7-3d0c0d993cfb)
+
+
 # Detailed architecture in a multitenant setup
 
 In the beginning of this chapter we discussed the different methods of moving data into the cloud. Below we define an example integrated architecture for the scenario: data gateway - data movement  
