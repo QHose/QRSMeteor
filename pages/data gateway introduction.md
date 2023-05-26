@@ -21,7 +21,7 @@ In the cloud you have 2 options:
 - create a table in a cloud database provider
 For both options you can set a data refresh schedule. Now your data is being replicated into the cloud without impacting your source system. 
 
-![image](https://github.com/QHose/QRSMeteor/assets/12411165/93c945af-a8f5-419a-a4e7-65331f96cbc1)
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/b1416ef1-5ce6-4c64-af9f-87befbe3faa1)
 
 
 > Operating behind your organization’s firewall, Qlik Data Gateway Data Movement allows you to move data from your enterprise data sources to cloud targets, over a strictly outbound, encrypted and mutually authenticated connection. By eliminating the need to open inbound firewall ports, Qlik Data Gateway Data Movement provides a secure and trusted means for accessing your enterprise data.
