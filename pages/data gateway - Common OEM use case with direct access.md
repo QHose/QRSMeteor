@@ -1,6 +1,8 @@
 If you don't want to or can't replicate your data to a cloud database or Qlik cloud you can also leave your data on premise
-Now you have 2 options: - Using the direct access gateway you can connect to your source database like they were on premise (firewall closed for inbound connections) or  - you can use your existing REST API (firewall open for this REST API port). 
-This means you can still do a full load or a delta load like you did before (with Qlik Sense Client Managed)
+Now you have 2 options: 
+- Using the direct access gateway you can connect to your source database like they were on premise (firewall closed for inbound connections) or  
+- you can use your existing REST API (firewall open for this REST API port). 
+This means you can still do a full load, a delta or a partial load like you did before (with Qlik Sense Client Managed)
 
 # Data  gateway - direct access
 
