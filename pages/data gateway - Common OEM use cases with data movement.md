@@ -17,7 +17,8 @@ For each customer you will
 - create a database connection to the bucket
 - load the data into the app. Please note that there is nothing special about the loading of the data into the app. The whole "real time magic" happens before, this is what the data gateway does for you. On the Qlik Sense side you just load the data from an S3 bucket. 
 
-![image](https://github.com/QHose/QRSMeteor/assets/12411165/8f6cdaa5-9cf1-493d-87f7-3d0c0d993cfb)
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/2242c771-2713-4db0-a6e6-2af43d426d4a)
+
 
 
 # Detailed architecture in a multitenant setup
