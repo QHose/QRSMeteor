@@ -5,7 +5,8 @@ We use this approach if you have
 - the data per customer/tenant is not that big for an analytics app. 
 - you want almost real time data refreshes for the analytics apps without impacting the source database (CPU/Memory usage)
 
-![image](https://github.com/QHose/QRSMeteor/assets/12411165/13d1bf7d-cb81-4ae0-a084-de28903b95e5)
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/cff1b8a5-4166-4781-900b-2e0317b2d0b9)
+
 
 # Detailed flow of the multitenant data pipeline
 
