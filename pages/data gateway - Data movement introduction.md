@@ -16,7 +16,7 @@ The high-level communication sequence is as follows:
 - Qlik Cloud sends a landing task definition to the Data Movement gateway.  
 - The Data Movement gateway pushes the data from the enterprise data source to the data warehouse target.
 
-![image](https://github.com/QHose/QRSMeteor/assets/12411165/3828159a-3ec2-4cd0-8197-56ed097a4861)
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/189d3063-68fe-4107-9c7c-dd3783a61f05)
 
 # How to install the data gateway - data movement (Linux only)
 [Visit this instruction video](https://youtu.be/auTmbSMfM4M)
