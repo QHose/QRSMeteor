@@ -1,5 +1,4 @@
-Data movement to cloud targets from on-premise and cloud sources
-Based on a schedule your can move all changes in your source database to the cloud.
+Data movement to cloud targets from on-premise and cloud sources. Based on a schedule your can move all changes in your source database to the cloud.
 Once the data is refreshed your app is automatically refreshed with the most recent on premise data.
 
 ![image](https://github.com/QHose/QRSMeteor/assets/12411165/aa30edb5-8ffd-4915-8b42-cecb581a0532)
