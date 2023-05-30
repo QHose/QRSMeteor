@@ -23,9 +23,7 @@ For each customer you will
 
 # Detailed architecture in a multitenant setup
 
-In the beginning of this chapter we discussed the different methods of moving data into the cloud. Below we define an example integrated architecture for the scenario: data gateway - data movement  
-
-The picture below outlines the complete integration 
+In the beginning of this chapter we discussed the different methods of moving data into the cloud. Below we define an example integrated architecture for the scenario: data gateway - data movement:
 - the embedding of content 
 - the automatic provisioning using the APIs 
 - the data replication to the cloud  
