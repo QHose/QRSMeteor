@@ -19,5 +19,5 @@ The high-level communication sequence is as follows:
 ![image](https://github.com/QHose/QRSMeteor/assets/12411165/189d3063-68fe-4107-9c7c-dd3783a61f05)
 
 # How to install the data gateway - data movement (Linux only)
-[Visit this instruction video](https://youtu.be/auTmbSMfM4M)
-[This guided walk through](https://webapps.qlik.com/agile-dw-automation-part1/index.html) demonstrates Qlik Replicate but has the same steps as the Gateway - data movement so it gives you a good basic understanding of the moving parts. For example a source and target database (schema), and the actual movement of the data. 
+- [Visit this instruction video](https://youtu.be/auTmbSMfM4M)
+- [This guided walk through](https://webapps.qlik.com/agile-dw-automation-part1/index.html) demonstrates Qlik Replicate but has the same steps as the Gateway - data movement so it gives you a good basic understanding of the moving parts. For example a source and target database (schema), and the actual movement of the data. 
