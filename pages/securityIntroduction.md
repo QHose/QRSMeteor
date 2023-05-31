@@ -11,5 +11,5 @@ Learn how to authenticate to Qlik Cloud and secure embedded analytics.
 # Integration overview
 Authentication is one of the key things to consider when embedding Qlik Sense. 
 
-![image](https://user-images.githubusercontent.com/12411165/228217751-1b4ee11d-08fe-4140-8322-6bab5aae5f38.png)
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/a4d032dd-5eba-4544-ae74-abd02939329f)
 
