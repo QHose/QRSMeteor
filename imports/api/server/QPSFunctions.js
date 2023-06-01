@@ -10,7 +10,7 @@ var fs = require("fs-extra");
 const path = require("path");
 var os = require("os");
 var ip = require("ip");
-const token = require("./token");
+// const token = require("./token");
 const { v4: uuidv4 } = require("uuid");
 
 
@@ -336,9 +336,9 @@ Meteor.methods({
   },
   getTicketNumber(userProperties, virtualProxy) {
     // only get a ticket number for a SPECIFIC virtual proxy
-    // console.log('getTicketNumber using properties:')
-    // console.log('virtualProxy', virtualProxy)
-    // console.log('userProperties', userProperties)
+    console.log('getTicketNumber using properties:')
+    console.log('virtualProxy', virtualProxy)
+    console.log('userProperties', userProperties)
     try {
       check(userProperties.group, String);
       check(virtualProxy, String);
@@ -369,13 +369,13 @@ Meteor.methods({
   },
   //only for demo purposes! never supply groups from the client...
   requestTicketWithPassport(virtualProxy, passport) {
-    // console.log('getTicketNumber passport', passport);
-    var rootCas = require("ssl-root-cas").create();
+    console.log('getTicketNumber passport', passport);
+    // var rootCas = require("ssl-root-cas").create();//
 
     // default for all https requests
 
     // (whether using https directly, request, or another module)
-    require("https").globalAgent.options.ca = rootCas;
+    // require("https").globalAgent.options.ca = rootCas;
 
     // http://help.qlik.com/en-US/sense-developer/June2017/Subsystems/ProxyServiceAPI/Content/ProxyServiceAPI/ProxyServiceAPI-ProxyServiceAPI-Authentication-Ticket-Add.htm
     var proxyGetTicketURI =
