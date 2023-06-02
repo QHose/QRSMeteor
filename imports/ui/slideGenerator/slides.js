@@ -484,7 +484,7 @@ function normalizeAndSortData(senseArray) {
 
 async function convertToHTML(text, level2) {
 
-    console.log('convertToHTML text', text)
+    // console.log('convertToHTML text', text)
     var commentMarker = "!comment";
     var embeddedImageMarker = `!embeddedImage`;
     var altText = ''
