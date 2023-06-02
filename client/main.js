@@ -92,7 +92,7 @@ Meteor.startup(async function() {
 
             } catch (error) {
                 var m = 'We could not retreive the app ids for the slide generator or the SSBI app. Did you forget to use the correct name for the SSBI or slidegenerator app in the settings.json file, are your apps in the correct stream? Did you forget to run once with "initializeQlikSense:true" in the settings.json? Check the server logs, most problems arise from the wrong hostnames, or no certificates.';
-                sAlert.error('Apps not found: ', error);
+                sAlert.error('Could not make a websocket connection from the browser using EngimaJS to Qlik Sense', error);
                 console.error(m + ' with error ' + error);
             }
         }
