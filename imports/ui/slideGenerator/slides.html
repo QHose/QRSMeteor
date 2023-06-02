@@ -21,29 +21,71 @@
 
       {{#if showSubjectAreaIntroduction}}
       <section>
-        <div class="ui container">
-          <h1 class="ui dividing header">{{presentationName}} - Select your favorite subject area<a class="anchor"
-              id="types"></a></h1>
-          <p>From the top menu select the subject area of choice. In the left menu you find additional chapters related
-            to that subject area.
-          </p>
-          <div class="ui list">
+        <div class="ui container" style="text-align:left">
+          <h1 class="ui dividing header">{{presentationName}} integration<a class="anchor" id="types"></a></h1>
 
-            <div class="ui placeholder ">
-              <img class="ui image" src="/images/subject area introduction.png">
-              <!-- <div class="ui two column stackable center aligned grid">
-                {{#each item in subjectAreas }}
-                <div class="column">
-                  <div id="{{item.qText}}" class="ui icon header subjectArea">
-                    <i class="search icon"></i>
-                    {{item.qText}}
-                  </div>
-                </div>
-                {{/each}}
-              </div> -->
-            </div>
+          <h2 class="ui header"> Introduction</h2>
+          When embedding Qlik Sense in your platform, there are several integration topics to cover. Some key topics
+          which you will find in the top menu are
+          <!-- <div class="ui bulleted list">
+            <div class="item">App, What is a Qlik Sense app, how to use alerts/reports and predictive models?
+              (dashboard)</div>
+            <div class="item">Data, how to get the data into the dashboard?</div>
+            <div class="item">Web, how do you embed the content into your site?</div>
+            <div class="item">Security, how do you enforce single sing on?</div>
+            <div class="item">API, how do you setup multitenant SaaS provisioning using the APIs?</div>
+            <div class="item">Deployment, how would an integrated architecture look like?</div>
+
+          </div> -->
+          <table id="subjectAreaIntro" class="ui celled table">
+            <thead>
+              <tr><th>Subject Area</th>
+              <th>Description</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td>App</td>
+                <td >What is a Qlik Sense app (dashboard), how to use alerts, reports and predictive models?
+                  </td>
+              </tr>
+              <tr>
+                <td >Data</td>
+                <td >How to get the data into the dashboard?</td>
+              </tr>
+              <tr>
+                <td >Embedding</td>
+                <td >How do you embed a dashboard into your platform?</td>
+              </tr>
+              <tr>
+                <td >Security</td>
+                <td >How do you enforce single sing on?</td>
+              </tr>
+              <tr>
+                <td >API</td>
+                <td >How to do multitenant SaaS provisioning using the APIs or Qlik Application Automation?</td>
+              </tr>
+              <tr>
+                <td >Deployment</td>
+                <td >What would an integrated architecture look like?</td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <h2 class="ui header">Navigation</h2>
+
+          <p>First, select the subject area of choice from the top menu. Next, you can find additional chapters related
+            to your selection on the left side. You are now navigating in a slide show created using the Qlik Sense
+            APIs, use your arrow buttons on your keyboard or click on the arrow.
+          </p>
+          <p>
+          <div class="ui placeholder ">
+            <img class="ui image" src="/images/subject area introduction.png">
 
           </div>
+
+
+          </p>
+
         </div>
       </section>
       {{else}}
@@ -64,7 +106,7 @@
 
                 <h2 class="ui header" style="font-size: 1em;">In this chapter you will see the following slides: </h2>
                 {{#each slide in TableOfContentForChapter }}
-                <div class="ui bulleted list">
+                <div class="ui bulleted list" style="">
                   <div class="item"> {{slide}}
                   </div>
                 </div>
@@ -106,7 +148,7 @@
           {{#if active slideNr}}
           <!-- <h1> {{{level 1 slide}}}</h1> -->
           <h2>{{{level 2 slide}}}
-            <hr role="presentation">
+            <!-- <hr role="presentation"> -->
           </h2>
 
           {{> slideContent slide=slide}}
