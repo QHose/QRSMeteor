@@ -5,7 +5,7 @@ import "./helper.css"; //accessibility plugin for reveal https://github.com/marc
 import lodash from "lodash";
 import hljs from "highlight.js";
 import { Logger } from "/imports/api/logger";
-import { getQix, getLevel1, getSubjectArea } from "/imports/ui/useCases/useCaseSelection";
+import { getSlideGenApp, getLevel1, getSubjectArea } from "/imports/ui/useCases/useCaseSelection";
 import { selectInSense } from "/imports/ui/nav";
 import "./slideSelectionSheet";
 // import { fill } from 'core-js/core/array';
@@ -80,7 +80,7 @@ Template.slide.onCreated(async function () {
 
 
 async function populateChapters() {
-    var qix = await getQix();
+    var qix = await getSlideGenApp();
     var items = await getLevel1(qix);
 
     ChapterItems.remove({});
@@ -108,7 +108,7 @@ Template.chapters.events({
 
 
 async function populateNavMenuItems() {
-    var qix = await getQix();
+    var qix = await getSlideGenApp();
     var items = await getSubjectArea(qix);
 
     MenuItems.remove({});
@@ -341,8 +341,8 @@ Template.registerHelper("step", function () {
 async function getLevel3(level1, level2) {
 
     try {
-        var qix = await getQix();
-        var sessionModel = await qix.app.createSessionObject({
+        var qix = await getSlideGenApp();
+        var sessionModel = await qix.createSessionObject({
             qInfo: {
                 qType: 'cube'
             },
@@ -440,8 +440,8 @@ function createCommentBox(text) {
 //
 
 async function getComment(level1, level2) {
-    var qix = await getQix();
-    var sessionModel = await qix.app.createSessionObject({
+    var qix = await getSlideGenApp();
+    var sessionModel = await qix.createSessionObject({
         qInfo: {
             qType: "cube"
         },

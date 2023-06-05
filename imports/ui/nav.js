@@ -3,7 +3,7 @@ import { Template } from "meteor/templating";
 // import { senseConfig } from "/imports/api/config.js";
 const enigma = require("enigma.js");
 import "/imports/ui/nav.html";
-import { getQix, getAllSlides, getLevel1 } from "/imports/ui/useCases/useCaseSelection";
+import { getSlideGenApp, getAllSlides, getLevel1 } from "/imports/ui/useCases/useCaseSelection";
 import { MenuItems } from "/imports/ui/slideGenerator/slides"
 import { Session } from "meteor/session";
 import * as slideApp from "/imports/ui/useCases/useCaseSelection";
@@ -96,11 +96,11 @@ export async function selectMenuItemInSense(slide) {
 }
 
 export async function makeSelectionInField(fieldName, value) {
-  // console.log("makeSelectionInField", fieldName + " : " + value.toString());
+  console.log("makeSelectionInField", fieldName + " : " + value.toString());
   try {
-    var qix = await slideApp.getQix();
-    var myField = await qix.app.getField(fieldName);
-    var result = await myField.selectValues(value);
+    var qix =     await slideApp.getSlideGenApp();
+    var myField = await qix.getField(fieldName);
+    var result =  await myField.selectValues(value);
   } catch (error) {
     var message =
       "makeSelectionInField: Can not connect to the Qlik Sense Engine API via enigmaJS";
@@ -116,8 +116,8 @@ export async function makeSearchSelectionInField(fieldName, value) {
   //   fieldName + " : " + value.toString()
   // );
   try {
-    var qix = await slideApp.getQix();
-    var myField = await qix.app.getField(fieldName);
+    var qix = await slideApp.getSlideGenApp();
+    var myField = await qix.getField(fieldName);
     var result = await myField.select(value);
   } catch (error) {
     var message =
@@ -131,8 +131,8 @@ export async function makeClearSelectionInField(fieldName) {
   // console.log("🚀 ~ file: nav.js ~ line 127 ~ makeClearSelectionInField ~ makeClearSelectionInField", fieldName)
 
   try {
-    var qix = await slideApp.getQix();
-    var myField = await qix.app.getField(fieldName);
+    var qix = await slideApp.getSlideGenApp();
+    var myField = await qix.getField(fieldName);
     var result = await myField.clear();
   } catch (error) {
     var message =
@@ -146,8 +146,8 @@ export async function makeClearAll() {
   // console.log("🚀 ~ file: nav.js ~ line 142 ~ makeClearAll")
 
   try {
-    var qix = await slideApp.getQix();
-    await qix.app.clearAll();
+    var qix = await slideApp.getSlideGenApp();
+    await qix.clearAll();
   } catch (error) {
     var message =
       "clear all selections: Can not connect to the Qlik Sense Engine API via enigmaJS";

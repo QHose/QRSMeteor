@@ -114,6 +114,16 @@
 /*********************************************
   * HEADERS
   *********************************************/
+  .reveal h1,
+  .reveal h2,
+  .reveal h3,
+  .reveal h4,
+  .reveal h5,
+  .reveal h6   
+ {
+      border-bottom: 1px solid  rgb(238, 238, 238);
+     padding-bottom: 6px;
+  }
 
 .reveal h1,
 .reveal h2,
@@ -121,7 +131,7 @@
 .reveal h4,
 .reveal h5,
 .reveal h6 {
-    margin: 20px 0 0px 0;
+    margin: 25px 0 25px 0;
     color: #0E2F4E;
     font-family: "Fira Sans", Helvetica, sans-serif;
     font-weight: 600;
@@ -148,25 +158,31 @@ blockquote .reveal h5,
     line-height: 1;
 }
 
-.reveal h1 {
+/* .reveal h1 {
     font-size: 1.0em;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .reveal h2 {
     font-size: 1em;
-    margin-top: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .reveal h3 {
     font-size: 1em;
-    color: #4B4B4B
+    color: #4B4B4B;
+    margin-top: 20px;
+    margin-bottom: 20px;
     ;
 }
 
 .reveal h4 {
     font-size: 1em;
-}
+    margin-top: 20px;
+    margin-bottom: 20px;
+} */
 
 /*********************************************
   * OTHER
@@ -176,7 +192,8 @@ blockquote .reveal h5,
 }
 
 .reveal aside .controls-arrow {
-    color: #870064
+    color: #870064;
+    zoom: 2;
 }
 
 .reveal p {
@@ -279,7 +296,7 @@ body > div > div.twelve.wide.column > div > iframe {
 .reveal q,
 .reveal blockquote {
     quotes: none;
-    font-size: 1.3em;
+    font-size: 1.1em;
 }
 
 .reveal blockquote {
@@ -342,7 +359,7 @@ body > div > div.twelve.wide.column > div > iframe {
 .reveal table td {
     text-align: left;
     padding: 0.2em 0.5em 0.2em 0.5em;
-    border-bottom: 1px solid;
+    /* border-bottom: 1px solid; */
 }
 
 .reveal table th[align="center"],

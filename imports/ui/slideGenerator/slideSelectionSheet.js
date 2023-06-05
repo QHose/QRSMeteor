@@ -1,5 +1,5 @@
 import "./slideSelectionSheet.html";
-import { getQix, getAllSlides } from "/imports/ui/useCases/useCaseSelection";
+import { getSlideGenApp, getAllSlides } from "/imports/ui/useCases/useCaseSelection";
 import { Reveal } from "/imports/ui/slideGenerator/slides";
 
 
@@ -16,8 +16,8 @@ Template.slideSelectionSheet.events({
         Session.set("showSelector", false);
 
         //RESET SENSE SELECTION OBJECT
-        var qix = await getQix();
-        qix.app.abortModal(true);
+        var qix = await getSlideGenApp();
+        qix.abortModal(true);
 
         //reset the slideheaders to ensure all slide content templates are re-rendered.
         Session.set("slideHeaders", null); 

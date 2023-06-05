@@ -176,13 +176,13 @@ Store a loaded table onto the harddrive. This can be used to prevent double quer
 "Integration.qlik.com demo platform","OEM good practice summary","See [Qlik help](https://help.qlik.com/en-US/sense-developer/April2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm)",,"","","","","         0","0","Technical - 2 hours",
 "Integration.qlik.com demo platform","OEM good practice summary","#Engine API use cases and source code",,"","","","","         0","0","Technical - 2 hours",
 "Integration.qlik.com demo platform","OEM good practice summary","# extract the script so you can find/replace the database connection etc.",,"","","","","         0","0","Technical - 2 hours",
-"Integration.qlik.com demo platform","OEM good practice summary","``` var script = await qix.app.getScript(); ```",,"","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","``` var script = await qix.getScript(); ```",,"","","","","         0","0","Technical - 2 hours",
 "Integration.qlik.com demo platform","OEM good practice summary","# and insert the new script back into the app",,"","","","","         0","0","Technical - 2 hours",
-"Integration.qlik.com demo platform","OEM good practice summary","```await qix.app.setScript(replaceScript(script)) ```",,"","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","```await qix.setScript(replaceScript(script)) ```",,"","","","","         0","0","Technical - 2 hours",
 "Integration.qlik.com demo platform","OEM good practice summary","# Reload the app",,"","","","","         0","0","Technical - 2 hours",
-"Integration.qlik.com demo platform","OEM good practice summary","```await qix.app.doReload() ```",,"","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","```await qix.doReload() ```",,"","","","","         0","0","Technical - 2 hours",
 "Integration.qlik.com demo platform","OEM good practice summary","# Save the app",,"","","","","         0","0","Technical - 2 hours",
-"Integration.qlik.com demo platform","OEM good practice summary","```await qix.app.doSave(); ```",,"","","","","         0","0","Technical - 2 hours",
+"Integration.qlik.com demo platform","OEM good practice summary","```await qix.doSave(); ```",,"","","","","         0","0","Technical - 2 hours",
 "Integration.qlik.com demo platform","OEM good practice summary","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L276)",,"","","","","         0","0","Technical - 2 hours",
 "Integration.qlik.com demo platform","OEM good practice summary","#What is the QRS REST API?",,"","","","","         0","0","Technical - 2 hours",
 "Integration.qlik.com demo platform","OEM good practice summary","- Basically everything you can do in the Qlik Sense Management Console (QMC):
@@ -1457,7 +1457,7 @@ var qix = await enigma.getService('qix', config);
 "Key API calls used on Integration.qlik.com","Connect to Qlik Sense using Enigma.js","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L250)",,,,,,,,,
 "Key API calls used on Integration.qlik.com","Engine: Create a folder data connection","# Create a windows folder so each customer can save and upload its own files [help](https://help.qlik.com/en-US/sense-developer/3.2/Subsystems/EngineAPI/Content/Classes/AppClass/App-class-CreateConnection-method.htm)",,"","","","","         0","0","Technical - 1 day",
 "Key API calls used on Integration.qlik.com","Engine: Create a folder data connection","```javascript
-  var qConnectionId = await qix.app.createConnection({
+  var qConnectionId = await qix.createConnection({
             ""qName"": customer.name,
             ""qType"": ""folder"",
             ""qConnectionString"": customerDataFolder
@@ -1467,19 +1467,19 @@ var qix = await enigma.getService('qix', config);
 "Key API calls used on Integration.qlik.com","Engine: Create a folder data connection","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L250)",,,,,,,,,
 "Key API calls used on Integration.qlik.com","Engine API:  Example code to replace the script from the template, reload and save the app","# extract the script so you can find/replace the database connection or anything you like",,"","","","","         0","0","Technical - 1 day, Developer",
 "Key API calls used on Integration.qlik.com","Engine API:  Example code to replace the script from the template, reload and save the app","```
-var script = await qix.app.getScript();
+var script = await qix.getScript();
 ```",,"","","","","         0","0","Technical - 1 day, Developer",
 "Key API calls used on Integration.qlik.com","Engine API:  Example code to replace the script from the template, reload and save the app","# and insert the new script back into the app",,"","","","","         0","0","Technical - 1 day, Developer",
 "Key API calls used on Integration.qlik.com","Engine API:  Example code to replace the script from the template, reload and save the app","```javascript
-await qix.app.setScript(replaceScript(script))
+await qix.setScript(replaceScript(script))
 ```",,"","","","","         0","0","Technical - 1 day, Developer",
 "Key API calls used on Integration.qlik.com","Engine API:  Example code to replace the script from the template, reload and save the app","# Reload the app",,"","","","","         0","0","Developer",
 "Key API calls used on Integration.qlik.com","Engine API:  Example code to replace the script from the template, reload and save the app","```javascript
-await qix.app.doReload()
+await qix.doReload()
 ```",,"","","","","         0","0","Technical - 1 day, Developer",
 "Key API calls used on Integration.qlik.com","Engine API:  Example code to replace the script from the template, reload and save the app","# Save the app",,"","","","","         0","0","Developer",
 "Key API calls used on Integration.qlik.com","Engine API:  Example code to replace the script from the template, reload and save the app","```javascript
-await qix.app.doSave();
+await qix.doSave();
 ```",,"","","","","         0","0","Technical - 1 day, Developer",
 "Key API calls used on Integration.qlik.com","Engine API:  Example code to replace the script from the template, reload and save the app","[Source code](https://github.com/QHose/QRSMeteor/blob/master/imports/api/server/QRSFunctionsApp.js#L276)",,,,,,,,,
 "Key API calls used on Integration.qlik.com","QRS: publish the app","Publishing apps in something you would normally do in the Qlik Management Console (QMC), therefore we use the QRS API to make the API call below. ",,,,,,,,,
@@ -1629,8 +1629,8 @@ export async function selectMenuItemInSense(slide) {
 export async function makeSelectionInField(fieldName, value) {
     console.log('makeSelectionInField', fieldName + ' : ' + value.toString());
     try {
-        var qix = await slideApp.getQix();
-        var myField = await qix.app.getField(fieldName);
+        var qix = await slideApp.getSlideGenApp();
+        var myField = await qix.getField(fieldName);
         var result = await myField.selectValues(value);
     } catch (error) {...
     };

@@ -2,6 +2,8 @@
     "adminEmails": "test@test.com",
     "public": {
         "qlikSenseHost": "",
+        "tenantDomain": "bies.eu.qlikcloud.com",
+        "qlikWebIntegrationId": "Ut-CrLsK42NqJ25a3kK3iUfP40G7zzd8",
         "SenseServerInternalLanIP": "",
         "webIntegrationHost": "",
         "TemplateAppStreamName": "Templates",
@@ -13,7 +15,8 @@
         "SSBI": {
             "name": "SSBI",
             "stream": "Everyone",
-            "sheetId": "puEpZK"
+            "sheetId": "puEpZK",
+            "appId":"c8133385-b9bf-4b27-af62-1faf52db8f1a"
         },
         "slideGenerator": {
             "name": "Slide generator",
@@ -25,6 +28,8 @@
         }
     },
     "private": {
+        "keyId":"",
+        "issuer":"",
         "certificatesDirectory": "",
         "useSSL": false,
         "passphrase": null,

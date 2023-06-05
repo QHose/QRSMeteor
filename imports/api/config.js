@@ -5,7 +5,7 @@ import {
     Random
 } from 'meteor/random';
 import _ from 'meteor/underscore';
-const _QIXSchema = require('/node_modules/enigma.js/schemas/qix/12.20.0/schema.json');
+const _QIXSchema = require('enigma.js/schemas/3.2.json');
 
 //This is the config that we need to make available on the client (the webpage)
 if (Meteor.isClient) {

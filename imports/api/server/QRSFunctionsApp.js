@@ -258,7 +258,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         /* try {
             //create folder connection 
             console.log('create folder connection, if you see a warning below that means the connection already existed.');
-            var qConnectionId = await qix.app.createConnection({
+            var qConnectionId = await qix.createConnection({
                 "qName": customer.name,
                 "qType": "folder",
                 "qConnectionString": customerDataFolder
@@ -274,7 +274,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         } */
 
         //get the script
-        var script = await qix.app.getScript();
+        var script = await qix.getScript();
         var call = {};
         call.action = 'Get data load script';
         call.url = gitHubLinks.getScript;
@@ -284,7 +284,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
 
         //set the new script
         var call = {};
-        call.response = await qix.app.setScript(replaceScript(script)) //we now just include the old script in this app
+        call.response = await qix.setScript(replaceScript(script)) //we now just include the old script in this app
         call.action = 'Insert customer specific data load script for its database';
         call.url = gitHubLinks.setScript;
         call.request = 'The script of the app has been replaced with a customer specific one. Normally you would replace the database connection for each customer. Or you can insert a customer specific script to enable customization per customer. ';
@@ -292,7 +292,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
 
         //reload the app
         var call = {};
-        call.response = await qix.app.doReload()
+        call.response = await qix.doReload()
         call.action = 'Reload the app';
         call.url = gitHubLinks.reloadApp;
         call.request = 'Has the app been reloaded with customer specific data?';
@@ -304,7 +304,7 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
         call.url = gitHubLinks.saveApp;
         call.request = 'App with GUID ' + appId + ' has been saved to disk';
         REST_Log(call, generationUserId);
-        await qix.app.doSave();
+        await qix.doSave();
 
         REST_Log(call, generationUserId);
         process.on('unhandledRejection', up => { throw up })
@@ -356,7 +356,7 @@ export async function createAppConnection(type, name, path) {
         //create folder connection 
         console.log('create folder connection, if you see a warning below that means the connection already existed.');
 
-        var qConnectionId = await qix.app.createConnection({
+        var qConnectionId = await qix.createConnection({
             "qName": name,
             "qType": type,
             "qConnectionString": path
