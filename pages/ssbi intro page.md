@@ -3,4 +3,4 @@ On the next slide you will find a live demo. We created 4 sample users, each wit
 ## Typical users in your customer specific tenant
 - John, can only display
 - Linda, can copy and create private sheets
-- Martin and Paul would normally create content or manage the environment (but are limited here because we are in a public demo environment).![image](https://github.com/QHose/QRSMeteor/assets/12411165/d05740a8-b19b-4d5a-91d7-2c007fc355fc)
+- Martin and Paul would normally create content or manage the environment (but are limited here because we are in a public demo environment).
