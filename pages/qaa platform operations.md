@@ -6,7 +6,7 @@ This video shows you how to use Qlik Application Automation to perform common [P
 
 - [Support Article]( https://community.qlik.com/t5/Official-Support-Articles/Qlik-Application-Automation-How-to-get-start)
 
-- [Qlik Help](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Admin/mc-create-oauth-cl)
+- [Qlik Help](https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Admin/mc-create-oauth-client.htm#:~:text=Creating%20an%20OAuth%20client,-OAuth%20clients%20are&text=In%20the%20Management%20Console%2C%20go,or%20Native%20for%20public%20clients.)
 
 - [About OAuth](https://qlik.dev/authenticate/oauth)
 
