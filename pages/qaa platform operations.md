@@ -1,6 +1,6 @@
 Perform many Qlik Cloud platform backend tasks directly with Qlik Application Automation. Create spaces, add members and so much more!
 
-This video shows you how to use Qlik Application Automation to perform common [Platform Operations on your Qlik Cloud tenant](https://youtu.be/76g-Wgtt14A?t=60). This can come in especially handy if you need to manage multiple Qlik Cloud tenants. 
+This video shows you how to use Qlik Application Automation to perform common [Platform Operations on your Qlik Cloud tenant](https://youtu.be/76g-Wgtt14A?t=60). This can come in especially handy if you need to manage multiple Qlik Cloud tenants. Or use it for [version control with GIT](https://www.youtube.com/watch?v=brLxm8Liz5Y).
 
 # Resources
 
@@ -20,7 +20,7 @@ Qlik’s Platform Operations Connector, a native connector for Qlik Application 
 - Enable external and extranet use cases where separation between corporate and end customer tenants is a requirement, leveraging CI/CD or straight deployment, as well as tenant provisioning and configuration
 
 ## CI/CD 
-Let's do a quick look into a CI/CD flow and an automation within your DTAP environment, beginning with the new Platform Operations Connector block in Qlik Application Automation to initiate the automation:
+Let's do a [quick look into a CI/CD flow](https://www.youtube.com/watch?v=brLxm8Liz5Y) and an automation within your DTAP environment, beginning with the new Platform Operations Connector block in Qlik Application Automation to initiate the automation:
 
 ![image](https://github.com/QHose/QRSMeteor/assets/12411165/c10b97cf-6f51-4236-8cf2-642e7cb9042b)
 
