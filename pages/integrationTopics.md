@@ -17,12 +17,13 @@ Depending on the location of your data, and the settings of your firewall we hav
 - use our Data Gateway to connect to data behind a firewall. You have 2 options, with the [data gateway - direct access](https://integration.qlik.com/?selection=kzxGWW9PHDmKoBBhb) you can connect to your source like your were on premise, with the [data gateway - data movement](https://integration.qlik.com/?selection=RZj8vS8WH4N3WKdr6) you can replicate your data in almost real time fashion from your on premise data source to the cloud. (This can be Qlik cloud or any other database target). The data inside the buckets or your target is being refreshed by a continious data replication process using change data capture (CDC) technology. 
 - use a connector to connect to your cloud data source or on premise database (if you opened the firewall). 
 
-## REST/JDBC/... connection
+## Direct Access or use a REST,JDBC or other connector 
 If the data source is available from the cloud you can just connect to it using a Qlik Connector, and copy/idex the data into a Qlik app, or use "data gataway - direct access" if it is behind a firwall.
 
 ![image](https://github.com/QHose/QRSMeteor/assets/12411165/1d129f83-40d6-4dab-9fef-6021e3c5aa37)
 
 ## Data movement 
+Use data movement to replicate the data from source to a target in real time fashion without impacting your source system. The target can be Qlik cloud or any other database provider. Now you have all your data data changes directly available for analytics in the cloud!
 
 ![image](https://github.com/QHose/QRSMeteor/assets/12411165/9dba1307-f6a2-44de-80e3-4487dfdae009)
 
