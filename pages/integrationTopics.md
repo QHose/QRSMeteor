@@ -32,6 +32,9 @@ When Qlik Sense is embedded, normally Single Sign-On must be provided for authen
 - We create a tenant for each of your customers (a completely seperate Qlik environment, there is no link between your customer tenants. You will record the tenant settings in your configuration database and use the information together with your APIs to provision Qlik Sense).
 - We will map your group membership to a predefined role in Qlik Sense (e.g. a view group from your platform supplied via the JWT token, gets the "can view" role in the customer specific Qlik Sense tenant.) 
 
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/898b443a-f4c3-4b3b-a73b-7e0bc368b151)
+
+
 # Web 
 Qlik Sense is built on the newest web technologies (HTML5, JavaScript, CSS). This allows you to create 1 app that can be easily integrated in your SaaS platform. This can be with IFrame, and using our APIs for DIV tag embedding or using Qlik Sense for just the data. Qlik Sense is also completely responsive. So there is no need to create mobile content. 1 App can be used on all platforms.  
 
