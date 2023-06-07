@@ -17,8 +17,6 @@ Depending on the location of your data, and the settings of your firewall we hav
 - use our Data Gateway to connect to data behind a firewall. You have 2 options, with the [data gateway - direct access](https://integration.qlik.com/?selection=kzxGWW9PHDmKoBBhb) you can connect to your source like your were on premise, with the [data gateway - data movement](https://integration.qlik.com/?selection=RZj8vS8WH4N3WKdr6) you can replicate your data in almost real time fashion from your on premise data source to the cloud. (This can be Qlik cloud or any other database target). The data inside the buckets or your target is being refreshed by a continious data replication process using change data capture (CDC) technology. 
 - use a connector to connect to your cloud data source or on premise database (if you opened the firewall). 
 
-Below you will find a diagram for each method in a multitenant setup where each of your customers has its own database.
-
 ## REST/JDBC/... connection
 If the data source is available from the cloud you can just connect to it using a Qlik Connector, and copy/idex the data into a Qlik app, or use "data gataway - direct access" if it is behind a firwall.
 
