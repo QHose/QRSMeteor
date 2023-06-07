@@ -67,7 +67,8 @@ Multitenant Provisioning for our OEM and ISV partners addresses the following us
 - Configuration of a tenant
 - Hydration and updates of a tenant
 
-![image](https://github.com/QHose/QRSMeteor/assets/12411165/8efc6e25-93a7-4191-9028-e72f6b436c83)
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/dcbf16c8-f638-42a2-9981-63ddece57d8c)
+
 
 
 ## Global Tenants
