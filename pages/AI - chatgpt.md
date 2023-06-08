@@ -1,3 +1,4 @@
+<<coming soon, functionality not yet available in Qlik Cloud>>
 
 This [video shows the art of the possible when leveraging Generative AI and Qlik](https://youtu.be/4eNeGv69uag), using ChatGPT to drive insights right within Qlik Cloud. Whether its finding new external data sets to add to your analysis, creating an analytics app or getting new insights from your data, ChatGPT can immediately add value to your experience in Qlik Cloud.
 
