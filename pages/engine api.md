@@ -17,3 +17,4 @@ The complete documentation for this library can also be found on GitHub.
 
 - GitHub: [enigma.js documentation](https://github.com/qlik-oss/enigma.js/)
 - Use the [Qix explorer](https://qixplorer.qlik.dev/) to navigate through the calls...
+- [Get current selections](https://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm)
