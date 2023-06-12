@@ -45,18 +45,18 @@ export async function getSlideGenApp(ticket) {
     url: `${config.useSSL ? "wss" : "ws"}://${config.host}:${
       config.useSSL
         ? Meteor.settings.public.qlikSensePortSecure
-        : Meteor.settings.public.qlikSensePort
-    }/${Meteor.settings.public.slideGenerator.virtualProxy}/app/${
+        : Meteor.settings.public.qlikSensePort}/${Meteor.settings.public.slideGenerator.virtualProxy}/app/${
       config.slideGeneratorAppId}${ticketUrl}`,
   };
   try {
     // create a new session:
     const session = enigma.create(engineConfig);
-    console.log(`Connecting to ${session.config.url}`);
+    // console.log(`Connecting to ${session.config.url}`);
 
+    //https://github.com/qlik-oss/enigma.js/blob/master/examples/basics/events/session.js
     // bind traffic events to log what is sent and received on the socket:
-    session.on("traffic:sent", (data) => console.log("sent:", data));
-    session.on("traffic:received", (data) => console.log("received:", data));
+    // session.on("traffic:sent", (data) => console.log("sent:", data));
+    // session.on("traffic:received", (data) => console.log("received:", data));
     // Catch possible errors sent on WebSocket
     let possibleEnigmaErr;
     session.on("traffic:received", (res) => {
@@ -67,10 +67,13 @@ export async function getSlideGenApp(ticket) {
 
     session.on('traffic:received', async (data)  => {
         if (data.method === 'OnAuthenticationInformation' && data.params.mustAuthenticate === true) {
-            console.error('User is not authenticated...')
+            console.error('User is not authenticated... Redirect to root URL')
+            window.location.href = window.location.origin;
         }
       })
+      
 
+      session.on('notification:*', (name) => console.log(`Session: Notification event: ${name}`));
     // open the socket and eventually receive the QIX global API, and then close
     // the session:
     
@@ -85,18 +88,18 @@ export async function getSlideGenApp(ticket) {
       console.log(`********** User is authenticated and connected to the app, Session: Document id: ${doc.id}`);
       return doc;
     } catch (error) {
-      console.log("🚀 ~ file: useCaseSelection.js:68 ~ error:", error);
+      console.error("🚀 ~ file: useCaseSelection.js:68 ~ error:", error);
     }
   } catch (error) {
-    if (err.enigmaError) {
-      console.error("Enigma error:", possibleEnigmaErr || err);
+    if (error.enigmaError) {
+      console.error("Enigma error:", possibleEnigmaErr || error);
     } else {
-      console.error(err);
+      console.error(
+        "Qlik Sense Qix error, cannot make a websocket connection from the browser to Sense. ",
+        error
+      );
     }
-    console.error(
-      "Qlik Sense Qix error, cannot make a websocket connection from the browser to Sense. ",
-      error
-    );
+    
     sAlert.error(error.message);
     // window.location.href = window.location.origin;
   }
@@ -246,7 +249,7 @@ async function getSlides(selectedRole) {
   // await nav.makeClearAll(); already in set selection
   await setSelectionInSense("Partial Workshop", selectedRole);
   //get slides
-//   await getAllSlides();
+  await getAllSlides();
   Session.set("showSelector", false);
   Session.set("showSubjectAreaIntroduction", true);
 
@@ -258,7 +261,7 @@ async function getSlides(selectedRole) {
 async function setSelectionInSense(field, value) {
   try {
     var qix = await getSlideGenApp();
-    console.log('qix', qix)
+    // console.log('qix', qix)
     await qix.clearAll();
     var myField = await qix.getField(field);
     var result = await myField.selectValues([
@@ -393,7 +396,7 @@ export async function getLevel1(qix) {
       qMeasures: [
         {
           qDef: {
-            qDef: "Sum({1} 1)",
+            qDef: "Sum({$< [Level 1]= > } 1)",
           },
           qLabel: "sum({1}1)",
           qLibraryId: null,
@@ -537,20 +540,20 @@ export async function getComment(qix) {
 
 //this code does not work since enigma v2...
 export async function setChangeListener(qix) {
-  // console.log('We are connected to Qlik Sense via the APIs, now setChangeListener', qix)
-  //   try {
-  //     qix.on("changed", async () => {
-  //       // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
-  //       await getCurrentSelections();
-  //       // Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
-  //       // Meteor.setTimeout(async function wait() {
-  //       //     await getAllSlides();
-  //       //     Reveal.slide(0); //go to the first slide after a data refresh.
-  //       // }, 100)
-  //     });
-  //   } catch (error) {
-  //     console.error("failed to set change listener: ", error);
-  //   }
+  console.log('We are connected to Qlik Sense via the APIs, now setChangeListener', qix)
+    try {
+      qix.on("changed", async () => {
+        // console.log('QIX instance change event received, so get the new data set out of Qlik Sense, and store the current selection in the database.');
+        await getCurrentSelections();
+        // Session.set("slideHeaders", null); //reset the slideheaders to ensure all slide content templates are re-rendered.
+        // Meteor.setTimeout(async function wait() {
+        //     await getAllSlides();
+        //     Reveal.slide(0); //go to the first slide after a data refresh.
+        // }, 100)
+      });
+    } catch (error) {
+      console.error("failed to set change listener: ", error);
+    }
 }
 
 function insertSectionBreakers(table) {
@@ -577,7 +580,7 @@ function textOfLevel(row, level) {
 
 //http://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm
 async function getCurrentSelections() {
-  // console.log('function: getCurrentSelections');
+  console.log('function: getCurrentSelections');
   try {
     var qix = await getSlideGenApp();
     var genericObject = await qix.createSessionObject({
@@ -586,10 +589,10 @@ async function getCurrentSelections() {
       },
       qSelectionObjectDef: {},
     });
-    // console.log("sessionObject", genericObject);
+    console.log("sessionObject", genericObject);
 
     var layout = await genericObject.getLayout();
-    // console.log('genericObject layout', layout)
+    console.log('genericObject layout', layout)
     var currentSelections = layout.qSelectionObject.qSelections;
     SenseSelections.insert(
       {
