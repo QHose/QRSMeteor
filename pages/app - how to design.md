@@ -9,14 +9,6 @@ On a high level you can create the design in 2 ways (or use the [APIs](https://i
 # Drag and drop
 [Walkthrough](https://webapps.qlik.com/simplified-authoring-experience/index.html)
 [Video](https://youtu.be/MEnfRAjbaDk)
-# Insight advisor deep dive
-- [Insight advisor tutorial](https://youtu.be/MwYlPRw52GA)
-- [Insight Advisor Chat & Business Logic](https://youtu.be/PO7GwxfdfFQ)
-- [Insight Advisor Analysis Types - Smart Sheet: Period Changes](https://youtu.be/5V-zCjxZeDw?list=PLW1uf5CQ_gSq6klZOXSpKQ0afQFJyqqEh)
-- [Business logic enhancements](https://youtu.be/9Law3vGI4Oo?t=14)
-
-![image](https://user-images.githubusercontent.com/12411165/236797504-b6184c5d-7356-4635-8d6b-cc8650f5a503.png)
-
 
 # Do more with qlik tutorial series
 In this [webinar series](https://pages.qlik.com/21Q3_QDEV_DA_GBL_DoMorewithQlikTargetpage_Registration-LP.html), Michael Tarallo from Qlik will present and demonstrate the many capabilities, that support Qlik’s innovation agenda around accelerating business value through data and analytics. You will see:  

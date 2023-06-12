@@ -15,4 +15,6 @@ enigma.js is not responsible for authentication; see enigma.js authentication an
 # Documentation
 The complete documentation for this library can also be found on GitHub.
 
-GitHub: [enigma.js documentation](https://github.com/qlik-oss/enigma.js/)
+- GitHub: [enigma.js documentation](https://github.com/qlik-oss/enigma.js/)
+- Use the [Qix explorer](https://qixplorer.qlik.dev/) to navigate through the calls...
+- [Get current selections](https://help.qlik.com/en-US/sense-developer/September2017/Subsystems/EngineAPI/Content/DiscoveringAndAnalysing/MakeSelections/get-current-selections.htm)

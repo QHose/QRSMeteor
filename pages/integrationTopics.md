@@ -17,14 +17,13 @@ Depending on the location of your data, and the settings of your firewall we hav
 - use our Data Gateway to connect to data behind a firewall. You have 2 options, with the [data gateway - direct access](https://integration.qlik.com/?selection=kzxGWW9PHDmKoBBhb) you can connect to your source like your were on premise, with the [data gateway - data movement](https://integration.qlik.com/?selection=RZj8vS8WH4N3WKdr6) you can replicate your data in almost real time fashion from your on premise data source to the cloud. (This can be Qlik cloud or any other database target). The data inside the buckets or your target is being refreshed by a continious data replication process using change data capture (CDC) technology. 
 - use a connector to connect to your cloud data source or on premise database (if you opened the firewall). 
 
-Below you will find a diagram for each method in a multitenant setup where each of your customers has its own database.
-
-## REST/JDBC/... connection
+## Direct Access or use a REST,JDBC or other connector 
 If the data source is available from the cloud you can just connect to it using a Qlik Connector, and copy/idex the data into a Qlik app, or use "data gataway - direct access" if it is behind a firwall.
 
 ![image](https://github.com/QHose/QRSMeteor/assets/12411165/1d129f83-40d6-4dab-9fef-6021e3c5aa37)
 
 ## Data movement 
+Use data movement to replicate the data from source to a target in real time fashion without impacting your source system. The target can be Qlik cloud or any other database provider. Now you have all your data data changes directly available for analytics in the cloud!
 
 ![image](https://github.com/QHose/QRSMeteor/assets/12411165/9dba1307-f6a2-44de-80e3-4487dfdae009)
 
@@ -33,6 +32,9 @@ If the data source is available from the cloud you can just connect to it using 
 When Qlik Sense is embedded, normally Single Sign-On must be provided for authentication using OIDC or JWT. After that, authorization must be applied (What can a user see and what rights does he have?). The good thing is that users, roles, groups,…. that are already defined in your SaaS platform, can be re-used in Qlik Sense. 
 - We create a tenant for each of your customers (a completely seperate Qlik environment, there is no link between your customer tenants. You will record the tenant settings in your configuration database and use the information together with your APIs to provision Qlik Sense).
 - We will map your group membership to a predefined role in Qlik Sense (e.g. a view group from your platform supplied via the JWT token, gets the "can view" role in the customer specific Qlik Sense tenant.) 
+
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/898b443a-f4c3-4b3b-a73b-7e0bc368b151)
+
 
 # Web 
 Qlik Sense is built on the newest web technologies (HTML5, JavaScript, CSS). This allows you to create 1 app that can be easily integrated in your SaaS platform. This can be with IFrame, and using our APIs for DIV tag embedding or using Qlik Sense for just the data. Qlik Sense is also completely responsive. So there is no need to create mobile content. 1 App can be used on all platforms.  
@@ -65,7 +67,8 @@ Multitenant Provisioning for our OEM and ISV partners addresses the following us
 - Configuration of a tenant
 - Hydration and updates of a tenant
 
-![image](https://github.com/QHose/QRSMeteor/assets/12411165/8efc6e25-93a7-4191-9028-e72f6b436c83)
+![image](https://github.com/QHose/QRSMeteor/assets/12411165/dcbf16c8-f638-42a2-9981-63ddece57d8c)
+
 
 
 ## Global Tenants
