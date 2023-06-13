@@ -1,6 +1,6 @@
 
 -	[Product introduction](https://www.qlik.com/us/products/qlik-sense/geospatial-analysis)
--	[Introduction video 1 ](https://youtu.be/p-qaljRPZzw), [Video 2](https://videos.qlik.com/watch/mK42jziUtTzc3knub5ss55?autoplay=2&second=5.52)
+-	[Video 1 ](https://youtu.be/p-qaljRPZzw), [video 2](https://videos.qlik.com/watch/mK42jziUtTzc3knub5ss55?autoplay=2&second=5.52)
 -	[Video playlist](https://www.youtube.com/playlist?list=PLkRFvjyuHFvI9wo4Bmxl531y9vwN79fp1)
 -	[Geo analytics demo page](https://demos.qlik.com/qliksense?tags=Qlik%20GeoAnalytics)
 
