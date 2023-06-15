@@ -8,6 +8,8 @@ If you want to automate the complete provisioning of your platform you have two 
 - Use the APIs to [setup a multitenant environment](https://qlik.dev/tutorials/platform-operations-overview). Or in addition to raw APIs, Qlik provides the 
 - [Platform Operations connector](https://community.qlik.com/t5/Official-Support-Articles/Qlik-Application-Automation-How-to-get-started-with-the-Qlik/ta-p/2038740)  This provides you with a no-code method for deploying and managing content across your Qlik Cloud estate) in [Qlik Application Automation](https://www.qlik.com/us/products/application-automation).
 
+Please watch [the concept of OEM SaaS provisioning](https://youtu.be/wFnLwapUqIU) first. 
+
 # Embedding
 What would the end result look like for a succesful integration of Qlik Sense into your application architecture?
 
