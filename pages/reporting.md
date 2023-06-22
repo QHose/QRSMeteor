@@ -1,6 +1,6 @@
 Reporting can be divided into two ways: 
 - let the user subscribe to sheets or charts 
-- let the system send a report or email via email/teams or some other system via Qlik Application Automation.
+- let the system send a report via email/teams or to  another system via Qlik Application Automation.
 
 # Videos
   
