@@ -12,10 +12,17 @@ AI can be used in Qlik Sense in various ways to enhance data analytics and decis
 
 - Personalized Insights and Recommendations: AI can provide personalized recommendations to users based on their data exploration and analysis patterns in Qlik Sense. By leveraging machine learning algorithms, AI can suggest relevant visualizations, dimensions, or measures based on user preferences or historical interactions. This enhances the user experience and helps users discover insights more efficiently.
 
-# ChatGPT - OpenAI Analytics Connector - Embed Generative AI Insights - Chart Expression 
+# ChatGPT - OpenAI Analytics Connector - Embed Generative AI Insights
+You can use OpenAI in 2 ways:
+- in your charts
+- as an additional dataset which you link (associate) to your existing dataset in the data load script inside an app.
 
-- Part 1 - [This video covers some important tips and tricks and need to know advice when using the OpenAI Connector](https://www.youtube.com/watch?v=R9ScDzEU9DQ) with a chart expression when embedding generative insights into your Qlik Cloud Analytics apps.
-- [Part 2 - Augment You Data Model with Generative AI](https://youtu.be/XCaaRenozb8?t=25)
+## Videos
+- 1 - Use in Chart - This video covers some important tips and tricks and need to know advice when using the [OpenAI Connector with a chart expression](https://www.youtube.com/watch?v=R9ScDzEU9DQ) when embedding generative insights into your Qlik Cloud Analytics apps. ![image](https://github.com/QHose/QRSMeteor/assets/12411165/f9247ab8-ec38-413d-962b-08e2f8711a47)
+
+- 2 - Use as additional dataset -  [Augment You Data Model with Generative AI](https://youtu.be/XCaaRenozb8?t=25)
+  ![image](https://github.com/QHose/QRSMeteor/assets/12411165/f71bb726-d8c7-476e-a0e0-32a663f38928)
+
 
 # Insight advisor deep dive
 - [Insight advisor tutorial](https://youtu.be/MwYlPRw52GA)
