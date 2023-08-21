@@ -2,7 +2,6 @@
     "adminEmails": "test@test.com",
     "public": {
         "qlikSenseHost": "",
-        "tenantDomain": "bies.eu.qlikcloud.com",
         "qlikWebIntegrationId": "Ut-CrLsK42NqJ25a3kK3iUfP40G7zzd8",
         "SenseServerInternalLanIP": "",
         "webIntegrationHost": "",
