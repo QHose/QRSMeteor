@@ -1,0 +1,1 @@
+{"head":"","body":"","js":"\nTemplate.__checkName(\"__IronDefaultLayout__\");\nTemplate[\"__IronDefaultLayout__\"] = new Template(\"Template.__IronDefaultLayout__\", (function() {\n  var view = this;\n  return Spacebars.include(view.lookupTemplate(\"yield\"));\n}));\n","bodyAttrs":{}}

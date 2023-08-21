@@ -1,0 +1,1 @@
+[{"type":"js","data":"(function () {\n\n/* Package-scope variables */\nvar BlazeLayout;\n\n\n\n/* Exports */\nPackage._define(\"kadira:blaze-layout\", {\n  BlazeLayout: BlazeLayout\n});\n\n})();\n","servePath":"/packages/kadira_blaze-layout.js"}]

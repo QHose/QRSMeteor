@@ -1,0 +1,1 @@
+{"head":"","body":"","js":"\nTemplate.__checkName(\"atSep\");\nTemplate[\"atSep\"] = new Template(\"Template.atSep\", (function() {\n  var view = this;\n  return HTML.DIV({\n    class: \"at-sep ui horizontal divider\"\n  }, \"\\n    \", Blaze.View(\"lookup:sepText\", function() {\n    return Spacebars.mustache(view.lookup(\"sepText\"));\n  }), \"\\n  \");\n}));\n","bodyAttrs":{}}

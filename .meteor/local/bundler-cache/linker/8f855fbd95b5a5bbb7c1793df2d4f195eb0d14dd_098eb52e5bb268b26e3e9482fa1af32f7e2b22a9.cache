@@ -1,0 +1,1 @@
+[{"type":"js","data":"(function () {\n\n\n\n/* Exports */\nPackage._define(\"cosmos:browserify\");\n\n})();\n","servePath":"/packages/cosmos_browserify.js"}]
