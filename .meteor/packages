@@ -65,7 +65,6 @@ deanius:promise
 
 
 shell-server@0.4.0
-u2622:persistent-session
 google-config-ui@1.0.1
 dynamic-import@0.5.1
 underscore@1.0.10
