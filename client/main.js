@@ -81,7 +81,7 @@ Meteor.startup(async function() {
             try {
                 senseConfig.SSBIAppId = IDs.SSBI;
                 senseConfig.slideGeneratorAppId = IDs.slideGenerator;
-                Session.setPersistent('SSBIAppId', IDs.SSBI);
+                Session.set('SSBIAppId', IDs.SSBI);
                 Cookies.set('slideGeneratorAppId', IDs.slideGenerator);
                 console.log('If the browser loads the appplication, we make an api call to get the appId to be used for the slide generator: '+IDs.slideGenerator+' and the self service BI app: '+IDs.SSBI);
                 check(senseConfig.SSBIAppId, String);
