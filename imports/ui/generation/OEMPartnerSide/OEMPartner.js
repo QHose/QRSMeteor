@@ -102,11 +102,11 @@ Template.OEMPartner.events({
                 sAlert.error(err);
                 console.log(err);
                 Session.set('loadingIndicator', '');
-                Session.setAuth('generated?', false);
+                Session.set('generated?', false);
             } else {
                 Session.set('loadingIndicator', '');
-                Session.setAuth('generated?', true);
-                Session.setAuth('currentStep', 4);
+                Session.set('generated?', true);
+                Session.set('currentStep', 4);
                 console.log('generateStreamAndApp succes', result);
                 // sAlert.success('We have created "a copy" of the template app for each customer. And to group the apps, we created a stream with the name of the customer');
             }
@@ -116,11 +116,11 @@ Template.OEMPartner.events({
         event.preventDefault();
         insertTemplateAndDummyCustomers();
         // sAlert.success('We have pre-selected some fictitious customers. Which apps will you provide your customers?');
-        Session.setAuth('currentStep', 2);
+        Session.set('currentStep', 2);
     },
     'click .goToStep3' (event) {
         if (TemplateApps.find().count()) {
-            Session.setAuth('currentStep', 3);
+            Session.set('currentStep', 3);
             // sAlert.success('We have now selected the customers and the apps they need. Now press start to create the apps in Qlik Sense');
         } else {
             sAlert.error('Please select at least one template');
@@ -160,7 +160,7 @@ export function insertTemplateAndDummyCustomers() {
 //             // if (freshEnvironment()) {
 //             //     console.log('There is a freshEnvironment');
 //             //     insertTemplateAndDummyCustomers()
-//             //     Session.setAuth('currentStep', 3);
+//             //     Session.set('currentStep', 3);
 //             // };
 //         },
 //         onError: function() { console.log("onError", arguments); }
