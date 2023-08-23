@@ -2,8 +2,10 @@
 
 > Expand placeholders in a template string.
 
+[![npm](https://img.shields.io/npm/v/expand-template.svg)](https://www.npmjs.com/package/expand-template)
 [![Build Status](https://travis-ci.org/ralphtheninja/expand-template.svg?branch=master)](https://travis-ci.org/ralphtheninja/expand-template)
-[![Greenkeeper badge](https://badges.greenkeeper.io/ralphtheninja/expand-template.svg)](https://greenkeeper.io/)
+[![dependencies](https://david-dm.org/ralptheninja/expand-template.svg)](https://david-dm.org/ralptheninja/expand-template)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 

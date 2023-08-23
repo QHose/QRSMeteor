@@ -35,8 +35,8 @@ $start_time = Get-Date
 
 Write-Host 'Downloady and start Qlik Sense installer...'
 $ProgressPreference = 'SilentlyContinue'
-Invoke-WebRequest -Uri $url -OutFile $QlikSenseInstaller
-Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
+# Invoke-WebRequest -Uri $url -OutFile $QlikSenseInstaller
+# Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
 
 
 & $QlikSenseInstaller -s -l ".\log.txt" spc='.\spc.cfg' userwithdomain="$env:COMPUTERNAME\$Username" userpassword=$Password
