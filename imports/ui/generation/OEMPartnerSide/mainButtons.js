@@ -13,21 +13,21 @@ import './mainButtons.html'
 Template.mainButtons.events({
     'click .forwardToSSOStep' () {
         console.log('forward to step 4 sso clicked');
-        // Session.setAuth('generated?', true);
-        Session.setAuth('currentStep', 4);
+        // Session.set('generated?', true);
+        Session.set('currentStep', 4);
     },
     'click .backToStep3' () {
-        Session.setAuth('currentStep', 3);
+        Session.set('currentStep', 3);
     },
     'click .backToStep2' () {
-        Session.setAuth('currentStep', 2);
+        Session.set('currentStep', 2);
     },
     'click .backToStep1' () {
-        Session.setAuth('currentStep', 1);
+        Session.set('currentStep', 1);
         Router.go('users');
     },
     'click .oneStepBack' () {
-        Session.setAuth('currentStep', Session.get('currentStep') - 1);
+        Session.set('currentStep', Session.get('currentStep') - 1);
     },
     'click .deleteAllCustomers' () {
         Meteor.call('removeAllCustomers', function(err, result) {
