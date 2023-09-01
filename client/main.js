@@ -1,35 +1,10 @@
 import '/imports/ui/router.js';
-import '/imports/ui/generation/generation.js';
 import '/imports/ui/UIHelpers';
-import '/imports/ui/generation/customer.js';
 import '/imports/ui/layouts/layout.js';
 import '/imports/ui/layouts/regionLayout.js';
-import '/imports/ui/pages/introduction.html';
-import '/imports/ui/pages/introduction.js';
-import '/imports/ui/pages/webIntegration.html';
-import '/imports/ui/pages/webIntegration.js';
-import '/imports/ui/pages/introductionSecurity.html';
-import '/imports/ui/pages/introductionSecurity.js';
-import '/imports/ui/pages/QMC.html';
-import '/imports/ui/users/login.js';
 import '/imports/ui/notFound.html';
 import '/imports/ui/useCases/useCaseSelection.js';
-import '/imports/ui/generation/OEMPartnerSide/users.js';
-import '/imports/SSO/client/SSO.html';
-import '/imports/SSO/client/SSO.js';
 import '/imports/ui/pages/legal.html';
-import '/imports/ui/pages/documentation.html';
-import '/imports/ui/pages/documentation.js';
-import '/imports/ui/pages/APILogs.html';
-import '/imports/ui/pages/videoOverview.html';
-import '/imports/ui/pages/APILogs.js';
-import '/imports/ui/pages/videoOverview.html';
-import '/imports/ui/pages/videoOverview.js';
-import '/imports/ui/pages/architecture.html';
-import '/imports/ui/pages/architecture.js';
-import '/imports/ui/pages/securityRules.html';
-import '/imports/ui/pages/securityRules.js';
-import '/imports/startup/accounts-config.js';
 import { senseConfig } from '/imports/api/config';
 import { initQlikSense } from "/imports/ui/useCases/useCaseSelection";
 
@@ -42,15 +17,6 @@ import {
     Apps,
     TemplateApps
 } from '/imports/api/apps';
-import {
-    Customers
-} from '/imports/api/customers';
-import {
-    Streams
-} from '/imports/api/streams'
-import {
-    APILogs
-} from '/imports/api/APILogs'
 import {
     Session
 } from 'meteor/session';
@@ -72,7 +38,7 @@ Meteor.startup(async function() {
         beep: false,
         onClose: _.noop
     });
-    AutoForm.setDefaultTemplate("semanticUI");    
+    AutoForm.setDefaultTemplate("semanticUI");
 
     Meteor.call('getAppIDs', async function(error, IDs) {
         if (error) {
@@ -83,7 +49,7 @@ Meteor.startup(async function() {
                 senseConfig.slideGeneratorAppId = IDs.slideGenerator;
                 Session.set('SSBIAppId', IDs.SSBI);
                 Cookies.set('slideGeneratorAppId', IDs.slideGenerator);
-                console.log('If the browser loads the appplication, we make an api call to get the appId to be used for the slide generator: '+IDs.slideGenerator+' and the self service BI app: '+IDs.SSBI);
+                console.log('If the browser loads the appplication, we make an api call to get the appId to be used for the slide generator: ' + IDs.slideGenerator + ' and the self service BI app: ' + IDs.SSBI);
                 check(senseConfig.SSBIAppId, String);
                 check(senseConfig.slideGeneratorAppId, String);
 
