@@ -19,11 +19,6 @@ module.exports = function(hljs) {
       }
     ]
   };
-  var ESCAPED_QUOTE = {
-    className: '',
-    begin: /\\"/
-
-  };
   var APOS_STRING = {
     className: 'string',
     begin: /'/, end: /'/
@@ -72,7 +67,6 @@ module.exports = function(hljs) {
       },
       hljs.HASH_COMMENT_MODE,
       QUOTE_STRING,
-      ESCAPED_QUOTE,
       APOS_STRING,
       VAR
     ]

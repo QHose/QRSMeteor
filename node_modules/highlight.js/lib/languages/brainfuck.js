@@ -27,7 +27,7 @@ module.exports = function(hljs){
       },
       {
         // this mode works as the only relevance counter
-        begin: /(?:\+\+|\-\-)/,
+        begin: /\+\+|\-\-/, returnBegin: true,
         contains: [LITERAL]
       },
       LITERAL

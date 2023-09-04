@@ -46,8 +46,11 @@ module.exports = function(hljs) {
     };
 
     var ruleDeclarationMode = {
-        className: "attribute",
-        begin: regexes.ruleDeclaration + '(?=\\s*=)',
+        begin: regexes.ruleDeclaration + '\\s*=',
+        returnBegin: true,
+        end: /=/,
+        relevance: 0,
+        contains: [{className: "attribute", begin: regexes.ruleDeclaration}]
     };
 
     return {

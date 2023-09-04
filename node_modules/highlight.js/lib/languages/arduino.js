@@ -1,10 +1,12 @@
 module.exports = function(hljs) {
-
-	var ARDUINO_KW = {
+  var CPP = hljs.getLanguage('cpp').exports;
+	return {
+    keywords: {
       keyword:
-        'boolean byte word String',
+        'boolean byte word string String array ' + CPP.keywords.keyword,
       built_in:
-        'setup loop' +
+        'setup loop while catch for if do goto try switch case else ' +
+        'default break continue return ' +
         'KeyboardController MouseController SoftwareSerial ' +
         'EthernetServer EthernetClient LiquidCrystal ' +
         'RobotControl GSMVoiceCall EthernetUDP EsploraTFT ' +
@@ -84,15 +86,14 @@ module.exports = function(hljs) {
         'SET_PIN_MODE INTERNAL2V56 SYSTEM_RESET LED_BUILTIN ' +
         'INTERNAL1V1 SYSEX_START INTERNAL EXTERNAL ' +
         'DEFAULT OUTPUT INPUT HIGH LOW'
+    },
+    contains: [
+      CPP.preprocessor,
+      hljs.C_LINE_COMMENT_MODE,
+      hljs.C_BLOCK_COMMENT_MODE,
+      hljs.APOS_STRING_MODE,
+      hljs.QUOTE_STRING_MODE,
+      hljs.C_NUMBER_MODE
+    ]
   };
-
-  var ARDUINO = hljs.requireLanguage('cpp').rawDefinition();
-
-  var kws = ARDUINO.keywords;
-
-  kws.keyword += ' ' + ARDUINO_KW.keyword;
-  kws.literal += ' ' + ARDUINO_KW.literal;
-  kws.built_in += ' ' + ARDUINO_KW.built_in;
-
-  return ARDUINO;
 };

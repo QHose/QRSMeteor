@@ -19,7 +19,7 @@ module.exports = function(hljs) {
       // lists (indicators only)
       {
         className: 'bullet',
-        begin: '^\\s*([*+-]|(\\d+\\.))\\s+'
+        begin: '^([*+-]|(\\d+\\.))\\s+'
       },
       // strong segments
       {
@@ -46,13 +46,13 @@ module.exports = function(hljs) {
         className: 'code',
         variants: [
           {
-            begin: '^```\\w*\\s*$', end: '^```[ ]*$'
+            begin: '^```\w*\s*$', end: '^```\s*$'
           },
           {
             begin: '`.+?`'
           },
           {
-            begin: '^( {4}|\\t)', end: '$',
+            begin: '^( {4}|\t)', end: '$',
             relevance: 0
           }
         ]

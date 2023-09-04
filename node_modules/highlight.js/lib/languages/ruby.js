@@ -58,16 +58,8 @@ module.exports = function(hljs) {
         // is the last character of a preceding identifier, as in: `func?4`
         begin: /\B\?(\\\d{1,3}|\\x[A-Fa-f0-9]{1,2}|\\u[A-Fa-f0-9]{4}|\\?\S)\b/
       },
-      { // heredocs
-        begin: /<<[-~]?'?(\w+)(?:.|\n)*?\n\s*\1\b/,
-        returnBegin: true,
-        contains: [
-          { begin: /<<[-~]?'?/ },
-          { begin: /\w+/,
-            endSameAsBegin: true,
-            contains: [hljs.BACKSLASH_ESCAPE, SUBST],
-          }
-        ]
+      {
+        begin: /<<(-?)\w+$/, end: /^\s*\w+$/,
       }
     ]
   };

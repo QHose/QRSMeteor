@@ -1,10 +1,6 @@
 module.exports = function(hljs) {
   var VARIABLE = {
-    className: 'variable',
-    variants: [
-      {begin: '\\b([gtps][A-Z]{1}[a-zA-Z0-9]*)(\\[.+\\])?(?:\\s*?)'},
-      {begin: '\\$_[A-Z]+'}
-    ],
+    begin: '\\b[gtps][A-Z]+[A-Za-z0-9_\\-]*\\b|\\$_[A-Z]+',
     relevance: 0
   };
   var COMMENT_MODES = [
@@ -47,12 +43,12 @@ module.exports = function(hljs) {
         'put abs acos aliasReference annuity arrayDecode arrayEncode asin atan atan2 average avg avgDev base64Decode ' +
         'base64Encode baseConvert binaryDecode binaryEncode byteOffset byteToNum cachedURL cachedURLs charToNum ' +
         'cipherNames codepointOffset codepointProperty codepointToNum codeunitOffset commandNames compound compress ' +
-        'constantNames cos date dateFormat decompress difference directories ' +
+        'constantNames cos date dateFormat decompress directories ' +
         'diskSpace DNSServers exp exp1 exp2 exp10 extents files flushEvents folders format functionNames geometricMean global ' +
         'globals hasMemory harmonicMean hostAddress hostAddressToName hostName hostNameToAddress isNumber ISOToMac itemOffset ' +
         'keys len length libURLErrorData libUrlFormData libURLftpCommand libURLLastHTTPHeaders libURLLastRHHeaders ' +
         'libUrlMultipartFormAddPart libUrlMultipartFormData libURLVersion lineOffset ln ln1 localNames log log2 log10 ' +
-        'longFilePath lower macToISO matchChunk matchText matrixMultiply max md5Digest median merge messageAuthenticationCode messageDigest millisec ' +
+        'longFilePath lower macToISO matchChunk matchText matrixMultiply max md5Digest median merge millisec ' +
         'millisecs millisecond milliseconds min monthNames nativeCharToNum normalizeText num number numToByte numToChar ' +
         'numToCodepoint numToNativeChar offset open openfiles openProcesses openProcessIDs openSockets ' +
         'paragraphOffset paramCount param params peerAddress pendingMessages platform popStdDev populationStandardDeviation ' +
@@ -82,9 +78,9 @@ module.exports = function(hljs) {
         'xsltLoadStylesheetFromFile add breakpoint cancel clear local variable file word line folder directory URL close socket process ' +
         'combine constant convert create new alias folder directory decrypt delete variable word line folder ' +
         'directory URL dispatch divide do encrypt filter get include intersect kill libURLDownloadToFile ' +
-        'libURLFollowHttpRedirects libURLftpUpload libURLftpUploadFile libURLresetAll libUrlSetAuthCallback libURLSetDriver ' +
+        'libURLFollowHttpRedirects libURLftpUpload libURLftpUploadFile libURLresetAll libUrlSetAuthCallback ' +
         'libURLSetCustomHTTPHeaders libUrlSetExpect100 libURLSetFTPListCommand libURLSetFTPMode libURLSetFTPStopTime ' +
-        'libURLSetStatusCallback load extension loadedExtensions multiply socket prepare process post seek rel relative read from process rename ' +
+        'libURLSetStatusCallback load multiply socket prepare process post seek rel relative read from process rename ' +
         'replace require resetAll resolve revAddXMLNode revAppendXML revCloseCursor revCloseDatabase revCommitDatabase ' +
         'revCopyFile revCopyFolder revCopyXMLNode revDeleteFolder revDeleteXMLNode revDeleteAllXMLTrees ' +
         'revDeleteXMLTree revExecuteSQL revGoURL revInsertXMLNode revMoveFolder revMoveToFirstRecord revMoveToLastRecord ' +
@@ -95,7 +91,7 @@ module.exports = function(hljs) {
         'revZipAddItemWithFile revZipAddUncompressedItemWithData revZipAddUncompressedItemWithFile revZipCancel ' +
         'revZipCloseArchive revZipDeleteItem revZipExtractItemToFile revZipExtractItemToVariable revZipSetProgressCallback ' +
         'revZipRenameItem revZipReplaceItemWithData revZipReplaceItemWithFile revZipOpenArchive send set sort split start stop ' +
-        'subtract symmetric union unload vectorDotProduct wait write'
+        'subtract union unload wait write'
     },
     contains: [
       VARIABLE,

@@ -1,12 +1,4 @@
 module.exports = function(hljs) {
-  var FRAGMENT = {
-    begin: '<>',
-    end: '</>'
-  };
-  var XML_TAG = {
-    begin: /<[A-Za-z0-9\\._:-]+/,
-    end: /\/[A-Za-z0-9\\._:-]+>|\/>/
-  };
   var IDENT_RE = '[A-Za-z$_][0-9A-Za-z$_]*';
   var KEYWORDS = {
     keyword:
@@ -28,12 +20,13 @@ module.exports = function(hljs) {
       'module console window document Symbol Set Map WeakSet WeakMap Proxy Reflect ' +
       'Promise'
   };
+  var EXPRESSIONS;
   var NUMBER = {
     className: 'number',
     variants: [
-      { begin: '\\b(0[bB][01]+)n?' },
-      { begin: '\\b(0[oO][0-7]+)n?' },
-      { begin: hljs.C_NUMBER_RE + 'n?' }
+      { begin: '\\b(0[bB][01]+)' },
+      { begin: '\\b(0[oO][0-7]+)' },
+      { begin: hljs.C_NUMBER_RE }
     ],
     relevance: 0
   };
@@ -42,28 +35,6 @@ module.exports = function(hljs) {
     begin: '\\$\\{', end: '\\}',
     keywords: KEYWORDS,
     contains: []  // defined later
-  };
-  var HTML_TEMPLATE = {
-    begin: 'html`', end: '',
-    starts: {
-      end: '`', returnEnd: false,
-      contains: [
-        hljs.BACKSLASH_ESCAPE,
-        SUBST
-      ],
-      subLanguage: 'xml',
-    }
-  };
-  var CSS_TEMPLATE = {
-    begin: 'css`', end: '',
-    starts: {
-      end: '`', returnEnd: false,
-      contains: [
-        hljs.BACKSLASH_ESCAPE,
-        SUBST
-      ],
-      subLanguage: 'css',
-    }
   };
   var TEMPLATE_STRING = {
     className: 'string',
@@ -76,19 +47,17 @@ module.exports = function(hljs) {
   SUBST.contains = [
     hljs.APOS_STRING_MODE,
     hljs.QUOTE_STRING_MODE,
-    HTML_TEMPLATE,
-    CSS_TEMPLATE,
     TEMPLATE_STRING,
     NUMBER,
     hljs.REGEXP_MODE
-  ];
+  ]
   var PARAMS_CONTAINS = SUBST.contains.concat([
     hljs.C_BLOCK_COMMENT_MODE,
     hljs.C_LINE_COMMENT_MODE
   ]);
 
   return {
-    aliases: ['js', 'jsx', 'mjs', 'cjs'],
+    aliases: ['js', 'jsx'],
     keywords: KEYWORDS,
     contains: [
       {
@@ -102,47 +71,12 @@ module.exports = function(hljs) {
       },
       hljs.APOS_STRING_MODE,
       hljs.QUOTE_STRING_MODE,
-      HTML_TEMPLATE,
-      CSS_TEMPLATE,
       TEMPLATE_STRING,
       hljs.C_LINE_COMMENT_MODE,
-      hljs.COMMENT(
-        '/\\*\\*',
-        '\\*/',
-        {
-          relevance : 0,
-          contains : [
-            {
-              className : 'doctag',
-              begin : '@[A-Za-z]+',
-              contains : [
-                {
-                  className: 'type',
-                  begin: '\\{',
-                  end: '\\}',
-                  relevance: 0
-                },
-                {
-                  className: 'variable',
-                  begin: IDENT_RE + '(?=\\s*(-)|$)',
-                  endsParent: true,
-                  relevance: 0
-                },
-                // eat spaces (not newlines) so we can find
-                // types or variables
-                {
-                  begin: /(?=[^\n])\s/,
-                  relevance: 0
-                },
-              ]
-            }
-          ]
-        }
-      ),
       hljs.C_BLOCK_COMMENT_MODE,
       NUMBER,
       { // object attr container
-        begin: /[{,\n]\s*/, relevance: 0,
+        begin: /[{,]\s*/, relevance: 0,
         contains: [
           {
             begin: IDENT_RE + '\\s*:', returnBegin: true,
@@ -182,25 +116,20 @@ module.exports = function(hljs) {
               }
             ]
           },
-          {
-            className: '',
-            begin: /\s/,
-            end: /\s*/,
-            skip: true,
-          },
-          { // JSX
-            variants: [
-              { begin: FRAGMENT.begin, end: FRAGMENT.end },
-              { begin: XML_TAG.begin, end: XML_TAG.end }
-            ],
+          { // E4X / JSX
+            begin: /</, end: /(\/\w+|\w+\/)>/,
             subLanguage: 'xml',
             contains: [
+              {begin: /<\w+\s*\/>/, skip: true},
               {
-                begin: XML_TAG.begin, end: XML_TAG.end, skip: true,
-                contains: ['self']
+                begin: /<\w+/, end: /(\/\w+|\w+\/)>/, skip: true,
+                contains: [
+                  {begin: /<\w+\s*\/>/, skip: true},
+                  'self'
+                ]
               }
             ]
-          },
+          }
         ],
         relevance: 0
       },
@@ -233,7 +162,7 @@ module.exports = function(hljs) {
         ]
       },
       {
-        beginKeywords: 'constructor get set', end: /\{/, excludeEnd: true
+        beginKeywords: 'constructor', end: /\{/, excludeEnd: true
       }
     ],
     illegal: /#(?!!)/

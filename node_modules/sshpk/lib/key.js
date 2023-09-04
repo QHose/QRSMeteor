@@ -1,4 +1,4 @@
-// Copyright 2018 Joyent, Inc.
+// Copyright 2017 Joyent, Inc.
 
 module.exports = Key;
 
@@ -31,9 +31,6 @@ formats['rfc4253'] = require('./formats/rfc4253');
 formats['ssh'] = require('./formats/ssh');
 formats['ssh-private'] = require('./formats/ssh-private');
 formats['openssh'] = formats['ssh-private'];
-formats['dnssec'] = require('./formats/dnssec');
-formats['putty'] = require('./formats/putty');
-formats['ppk'] = formats['putty'];
 
 function Key(opts) {
 	assert.object(opts, 'options');
@@ -100,44 +97,29 @@ Key.prototype.toString = function (format, options) {
 	return (this.toBuffer(format, options).toString());
 };
 
-Key.prototype.hash = function (algo, type) {
+Key.prototype.hash = function (algo) {
 	assert.string(algo, 'algorithm');
-	assert.optionalString(type, 'type');
-	if (type === undefined)
-		type = 'ssh';
 	algo = algo.toLowerCase();
 	if (algs.hashAlgs[algo] === undefined)
 		throw (new InvalidAlgorithmError(algo));
 
-	var cacheKey = algo + '||' + type;
-	if (this._hashCache[cacheKey])
-		return (this._hashCache[cacheKey]);
+	if (this._hashCache[algo])
+		return (this._hashCache[algo]);
 
-	var buf;
-	if (type === 'ssh') {
-		buf = this.toBuffer('rfc4253');
-	} else if (type === 'spki') {
-		buf = formats.pkcs8.pkcs8ToBuffer(this);
-	} else {
-		throw (new Error('Hash type ' + type + ' not supported'));
-	}
-	var hash = crypto.createHash(algo).update(buf).digest();
-	this._hashCache[cacheKey] = hash;
+	var hash = crypto.createHash(algo).
+	    update(this.toBuffer('rfc4253')).digest();
+	this._hashCache[algo] = hash;
 	return (hash);
 };
 
-Key.prototype.fingerprint = function (algo, type) {
+Key.prototype.fingerprint = function (algo) {
 	if (algo === undefined)
 		algo = 'sha256';
-	if (type === undefined)
-		type = 'ssh';
 	assert.string(algo, 'algorithm');
-	assert.string(type, 'type');
 	var opts = {
 		type: 'key',
-		hash: this.hash(algo, type),
-		algorithm: algo,
-		hashType: type
+		hash: this.hash(algo),
+		algorithm: algo
 	};
 	return (new Fingerprint(opts));
 };
@@ -274,10 +256,8 @@ Key.isKey = function (obj, ver) {
  * [1,3] -- added defaultHashAlgorithm
  * [1,4] -- added ed support, createDH
  * [1,5] -- first explicitly tagged version
- * [1,6] -- changed ed25519 part names
- * [1,7] -- spki hash types
  */
-Key.prototype._sshpkApiVersion = [1, 7];
+Key.prototype._sshpkApiVersion = [1, 5];
 
 Key._oldVersionDetect = function (obj) {
 	assert.func(obj.toBuffer);

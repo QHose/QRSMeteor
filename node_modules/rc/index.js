@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 var cc   = require('./lib/utils')
 var join = require('path').join
 var deepExtend = require('deep-extend')
@@ -50,4 +51,10 @@ module.exports = function (name, defaults, argv, parse) {
     argv,
     configFiles.length ? {configs: configFiles, config: configFiles[configFiles.length - 1]} : undefined,
   ]))
+}
+
+if(!module.parent) {
+  console.log(
+    JSON.stringify(module.exports(process.argv[2]), false, 2)
+  )
 }

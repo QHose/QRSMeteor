@@ -52,7 +52,7 @@ module.exports = function(hljs) {
       },
       {className: 'symbol',  begin: '^[A-Za-z0-9_.$]+:'},
       {className: 'meta', begin: '#', end: '$'},
-      {  // substitution within a macro
+      {  // подстановка в «.macro»
         className: 'subst',
         begin: '@[0-9]+'
       }

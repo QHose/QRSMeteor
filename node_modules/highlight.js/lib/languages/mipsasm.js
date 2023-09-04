@@ -47,8 +47,7 @@ module.exports = function(hljs) {
         ')',
         end: '\\s'
       },
-      // lines ending with ; or # aren't really comments, probably auto-detect fail
-      hljs.COMMENT('[;#](?!\s*$)', '$'),
+      hljs.COMMENT('[;#]', '$'),
       hljs.C_BLOCK_COMMENT_MODE,
       hljs.QUOTE_STRING_MODE,
       {
