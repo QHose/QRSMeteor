@@ -157,27 +157,27 @@ export function setAppIDs(params) {
             slideObject: String,
             virtualProxy: String
         });
-        check(Meteor.settings.public.SSBI, {
-            name: String,
-            stream: String,
-            sheetId: String,
-            appId: String
-        });
+        // check(Meteor.settings.public.SSBI, {
+        //     name: String,
+        //     stream: String,
+        //     sheetId: String,
+        //     appId: String
+        // });
     } catch (err) {
-        console.error('Missing parameters in your settings.json file for the SSBI or slidegenerator...', err)
+        console.error('Missing parameters in your settings.json file for the slidegenerator...', err)
     }
 
     try {
         var slideGeneratorApps = getApps(Meteor.settings.public.slideGenerator.name, Meteor.settings.public.slideGenerator.stream);
-        var SSBIApps = getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream);
+        // var SSBIApps = getApps(Meteor.settings.public.SSBI.name, Meteor.settings.public.SSBI.stream);
         if (slideGeneratorApps.length > 1) {
             throw new Error('Can not automatically set the app ID for the slide generator. You have not one but you have multiple slide generator apps under the name ' + Meteor.settings.public.slideGenerator.name + ' in the stream ' + Meteor.settings.public.slideGenerator.stream);
         }
-        if (SSBIApps.length > 1) {
-            throw new Error('Can not automatically set the app ID for the Self Service BI app. You have not one but you have multiple Self Service apps under the name ' + Meteor.settings.public.SSBI.name + ' in the stream ' + Meteor.settings.public.SSBI.stream);
-        }
-        senseConfig.SSBIApp = SSBIApps[0].id; //
-        console.log('The SSBI app id has been set to ', senseConfig.SSBIApp);
+        // if (SSBIApps.length > 1) {
+        //     throw new Error('Can not automatically set the app ID for the Self Service BI app. You have not one but you have multiple Self Service apps under the name ' + Meteor.settings.public.SSBI.name + ' in the stream ' + Meteor.settings.public.SSBI.stream);
+        // }
+        // senseConfig.SSBIApp = SSBIApps[0].id; //
+        // console.log('The SSBI app id has been set to ', senseConfig.SSBIApp);
 
         senseConfig.slideGeneratorAppId = slideGeneratorApps[0].id;
         console.log('The slide generator app id has been set to ', senseConfig.slideGeneratorAppId);
