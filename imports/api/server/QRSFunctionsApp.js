@@ -34,8 +34,7 @@ import {
     enigmaServerConfig,
     qrsSrv,
     qrs,
-    configCerticates,
-    _slideGeneratorAppId
+    configCerticates
 } from '/imports/api/config.js';
 import {
     APILogs,
@@ -50,7 +49,7 @@ _ = lodash;
 const path = require('path');
 const fs = require('fs-extra');
 const enigma = require('enigma.js');
-var promise = require('bluebird');
+// var promise = require('bluebird');
 var request = require('request');
 var sanitize = require("sanitize-filename");
 
@@ -152,9 +151,6 @@ export function setAppIDs(params) {
         check(Meteor.settings.public.slideGenerator, {
             name: String,
             stream: String,
-            selectionSheet: String,
-            dataObject: String,
-            slideObject: String,
             virtualProxy: String
         });
         // check(Meteor.settings.public.SSBI, {

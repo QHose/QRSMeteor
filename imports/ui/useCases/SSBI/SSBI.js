@@ -1,11 +1,7 @@
 import { Template } from "meteor/templating";
-import { Customers, dummyCustomers } from "/imports/api/customers";
 import { Session } from "meteor/session";
 import { senseConfig } from "/imports/api/config";
 import "/imports/ui/UIHelpers";
-import _ from "meteor/underscore";
-import Cookies from "js-cookie";
-import { insertTemplateAndDummyCustomers } from "/imports/ui/generation/OEMPartnerSide/OEMPartner";
 
 import "./SSBI.html";
 

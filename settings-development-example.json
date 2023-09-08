@@ -1,28 +1,20 @@
 {
-    "adminEmails": "test@test.com",
     "public": {
         "qlikSenseHost": "",
         "qlikWebIntegrationId": "Ut-CrLsK42NqJ25a3kK3iUfP40G7zzd8",
         "SenseServerInternalLanIP": "",
         "webIntegrationHost": "",
-        "TemplateAppStreamName": "Templates",
         "qlikSensePort": 81,
         "qlikSensePortSecure": 443,
-        "useSSL": true,
+        "useSSL": false,
         "virtualProxyClientUsage": "meteor",
-        "webIntegrationDemoPort": 3030,
         "SSBI": {
             "name": "SSBI",
-            "stream": "Everyone",
-            "sheetId": "puEpZK",
-            "appId":"c8133385-b9bf-4b27-af62-1faf52db8f1a"
+            "stream": "Everyone"
         },
         "slideGenerator": {
             "name": "Slide generator",
             "stream": "API apps",
-            "selectionSheet": "DYTpxv",
-            "dataObject": "pskL",
-            "slideObject": "BbbV",
             "virtualProxy": "presentationsso"
         }
     },
@@ -69,9 +61,5 @@
     },
     "security": {
         "rulesToDisable": ["Stream", "CreateAppObjectsPublishedApp", "CreateApp", "ExportAppData", "StreamEveryoneAnonymous"]
-    },
-    "PrerenderIO": {
-        "serviceUrl": "http://service.prerender.io/",
-        "token": "yourtoken"
     }
 }

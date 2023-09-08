@@ -4,7 +4,7 @@ import {
 import {
     Random
 } from 'meteor/random';
-import _ from 'meteor/underscore';
+// import _ from 'meteor/underscore';
 const _QIXSchema = require('enigma.js/schemas/3.2.json');
 
 //This is the config that we need to make available on the client (the webpage)
@@ -39,8 +39,8 @@ if (Meteor.isServer) {
     import {
         myQRS
     } from '/imports/api/server/QRSAPI';
-    const bluebird = require('bluebird');
-    const WebSocket = require('ws');
+    // const bluebird = require('bluebird');
+    // const WebSocket = require('ws');
 
     if (!Meteor.settings.public.qlikSenseHost) {
         Meteor.settings.public.qlikSenseHost = os.hostname();
@@ -135,27 +135,6 @@ if (Meteor.isServer) {
             appname: null,
             QIXSchema: _QIXSchema
         };
-
-        export const enigmaServerConfig = {
-            schema: _engineConfig.QIXSchema,
-            // appId: appId,
-            session: {
-                host: _engineConfig.host,
-                port: _engineConfig.port,
-            },
-            Promise: bluebird,
-            createSocket(url) {
-                return new WebSocket(url, {
-                    ca: _certs.ca,
-                    key: _certs.key,
-                    cert: _certs.cert,
-                    headers: {
-                        'X-Qlik-User': `UserDirectory=${qlikUserDomain};UserId=${qlikUser}`,
-                    },
-                });
-            },
-            // handleLog: logRow => console.log(JSON.stringify(logRow)),
-        }
 
         //for enigma.js
         export const engineConfig = _engineConfig;

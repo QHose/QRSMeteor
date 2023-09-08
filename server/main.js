@@ -23,11 +23,10 @@ process.on("unhandledRejection", up => {
 });
 
 //import config for Qlik Sense QRS and Engine API.
-import { senseConfig, authHeaders } from "/imports/api/config";
 import "/imports/startup/accounts-config.js";
 const path = require("path");
 var fs = require("fs-extra");
-import shell from "node-powershell";
+// import shell from "node-powershell";
 
 var connectHandler = WebApp.connectHandlers; // get meteor-core's connect-implementation
 
