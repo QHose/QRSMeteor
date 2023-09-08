@@ -317,50 +317,50 @@ async function reloadAppAndReplaceScriptviaEngine(appId, newAppName, streamId, c
     }
 }
 export async function createAppConnections() {
-    console.log('------------------------------------');
-    console.log('create app connections');
-    console.log('------------------------------------');
-    //create the default demo import folder where all the csv and qvf files are...
-    var senseDemoMaterials = path.join(Meteor.absolutePath, 'Sense Demo materials');
-    console.log('senseDemoMaterials', senseDemoMaterials)
-    await createAppConnection('folder', 'Import demo', senseDemoMaterials);
+    // console.log('------------------------------------');
+    // console.log('create app connections');
+    // console.log('------------------------------------');
+    // //create the default demo import folder where all the csv and qvf files are...
+    // var senseDemoMaterials = path.join(Meteor.absolutePath, 'Sense Demo materials');
+    // console.log('senseDemoMaterials', senseDemoMaterials)
+    // await createAppConnection('folder', 'Import demo', senseDemoMaterials);
 
-    for (let c of Meteor.settings.broker.dataConnections) {
-        await createAppConnection(c.type, c.name, c.connectionString);
-    }
+    // for (let c of Meteor.settings.broker.dataConnections) {
+    //     await createAppConnection(c.type, c.name, c.connectionString);
+    // }
 }
 
 export async function createAppConnection(type, name, path) {
 
-    //set the app ID to be used in the enigma connection to the engine API
-    var config = Object.assign({}, enigmaServerConfig);
-    config.appId = getApps('sales', 'Everyone')[0].id;
-    console.log('createAppConnection: ' + type + ' ' + name + ' ' + path + ' using the sales app in the everyone stream to create the connection: ' + config.appId);
-    try {
-        check(type, String);
-        check(path, String);
-        check(name, String);
-        check(config.appId, String);
-    } catch (error) {
-        console.error('Missing parameters to create a data connection', error);
-    }
+    // //set the app ID to be used in the enigma connection to the engine API
+    // var config = Object.assign({}, enigmaServerConfig);
+    // config.appId = getApps('sales', 'Everyone')[0].id;
+    // console.log('createAppConnection: ' + type + ' ' + name + ' ' + path + ' using the sales app in the everyone stream to create the connection: ' + config.appId);
+    // try {
+    //     check(type, String);
+    //     check(path, String);
+    //     check(name, String);
+    //     check(config.appId, String);
+    // } catch (error) {
+    //     console.error('Missing parameters to create a data connection', error);
+    // }
 
-    try {
-        //connect to the engine
-        var qix = await enigma.getService('qix', config);
+    // try {
+    //     //connect to the engine
+    //     var qix = await enigma.getService('qix', config);
 
-        //create folder connection 
-        console.log('create folder connection, if you see a warning below that means the connection already existed.');
+    //     //create folder connection 
+    //     console.log('create folder connection, if you see a warning below that means the connection already existed.');
 
-        var qConnectionId = await qix.createConnection({
-            "qName": name,
-            "qType": type,
-            "qConnectionString": path
-        })
-        console.log('created folder connection: ', qConnectionId);
-    } catch (error) {
-        console.error('Failed to create data connection', error);
-    }
+    //     var qConnectionId = await qix.createConnection({
+    //         "qName": name,
+    //         "qType": type,
+    //         "qConnectionString": path
+    //     })
+    //     console.log('created folder connection: ', qConnectionId);
+    // } catch (error) {
+    //     console.error('Failed to create data connection', error);
+    // }
 }
 
 function deleteDirectoryAndDataConnection(customerName) {

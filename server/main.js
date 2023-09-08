@@ -87,10 +87,10 @@ async function initQlikSense() {
             console.log(
                 "The runInitialQlikSenseSetup setting has been set to true, so we expect to have a fresh Qlik Sense installation for which we now automatically populate with the apps, streams, license, security rules etc."
             );
-            if (Meteor.settings.broker.qlikSense.installQlikSense) {
-                await installQlikSense();
-                // await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...
-            }
+            // if (Meteor.settings.broker.qlikSense.installQlikSense) {
+            //     await installQlikSense();
+            //     // await timeout(1000 * 60 * 20); //wait 20 minutes till the Qlik Sense installation has completed...
+            // }
             QSLic.insertLicense();
             QSLic.insertUserAccessRule();
             QSSystem.disableDefaultSecurityRules();
@@ -100,9 +100,9 @@ async function initQlikSense() {
             QSStream.initSenseStreams();
             await QSApp.uploadAndPublishTemplateApps();
             QSApp.setAppIDs();
-            await QSApp.createAppConnections(); //import extra connections
-            QSExtensions.uploadExtensions();
-            QSLic.saveSystemRules();
+            // await QSApp.createAppConnections(); //import extra connections
+            // QSExtensions.uploadExtensions();
+            // QSLic.saveSystemRules();
         } else {
             //set the app Id for the self service bi and the slide generator app, for use in the IFrames etc.
             QSApp.setAppIDs();

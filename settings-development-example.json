@@ -8,6 +8,7 @@
         "qlikSensePortSecure": 443,
         "useSSL": false,
         "virtualProxyClientUsage": "meteor",
+        "TemplateAppStreamName": "Templates",
         "SSBI": {
             "name": "SSBI",
             "stream": "Everyone"
@@ -43,7 +44,6 @@
         "automationBaseFolder": "",
         "runInitialQlikSenseSetup": true,
         "qlikSense": {
-            "installQlikSense": true,
             "multiTenantScenario": false,
             "connectToSenseAsUserDirectory": "",
             "connectToSenseAsUser": "",
