@@ -31,15 +31,30 @@ import shell from "node-powershell";
 
 var connectHandler = WebApp.connectHandlers; // get meteor-core's connect-implementation
 
+
 // attach connect-style middleware for response header injection
 Meteor.startup(function() {
     WebApp.addHtmlAttributeHook(() => ({ lang: 'en' }));
-    connectHandler.use(function(req, res, next) {
-        res.setHeader('access-control-allow-origin', '*');
-        return next();
-    })
+    // connectHandler.use(function(req, res, next) {
+    //     res.setHeader('access-control-allow-origin', '*');
+    //     return next();
+    // })
 })
 
+WebApp.rawConnectHandlers.use((_, res, next) => {
+    res.setHeader('Content-Security-Policy', 'default-src https:');
+    res.setHeader('Strict-Transport-Security', 'max-age=63072000');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('Content-Security-Policy','frame-ancestors', 'self');
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+    res.setHeader('X-XSS-Protection', '0'); 
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3030');
+    res.setHeader('Access-Control-Allow-Origin', 'https://integration.qlik.com');
+    res.setHeader('Access-Control-Allow-Origin', 'https://saasdemo.qlik.com');
+    res.setHeader('Access-Control-Allow-Headers', 'Authorization,Content-Type');
+    return next();
+  });
 
 Meteor.startup(async function() {
     // process.env.ROOT_URL = "http://" + Meteor.settings.public.qlikSenseHost;
